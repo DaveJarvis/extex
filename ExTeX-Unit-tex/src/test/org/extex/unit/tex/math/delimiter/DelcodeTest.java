@@ -33,7 +33,7 @@ public class DelcodeTest extends NoFlagsButGlobalPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(DelcodeTest.class);
     }
@@ -43,7 +43,7 @@ public class DelcodeTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public DelcodeTest(final String arg) {
+    public DelcodeTest(String arg) {
 
         super(arg, "delcode", "23 32");
     }

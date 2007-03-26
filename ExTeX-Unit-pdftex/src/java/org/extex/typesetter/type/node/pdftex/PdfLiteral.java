@@ -55,7 +55,7 @@ public class PdfLiteral extends WhatsItNode {
      *  immediately. If it is <code>false</code> then the insertin is deferred
      *  until shipout.
      */
-    public PdfLiteral(final String text, final boolean direct) {
+    public PdfLiteral(String text, boolean direct) {
 
         super();
         this.text = text;
@@ -98,8 +98,8 @@ public class PdfLiteral extends WhatsItNode {
      *      int,
      *      int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         sb.append("(pdfliteral " + (direct ? "direct " : "") + text + ")");
     }

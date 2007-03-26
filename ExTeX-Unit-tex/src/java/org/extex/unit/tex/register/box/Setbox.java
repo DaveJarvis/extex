@@ -144,9 +144,9 @@ public class Setbox extends AbstractAssignment {
      *
      * @throws InterpreterException in case of an error
      */
-    public static String getKey(final Context context,
-            final TokenSource source, final Typesetter typesetter,
-            final String name) throws InterpreterException {
+    public static String getKey(Context context,
+            TokenSource source, Typesetter typesetter,
+            String name) throws InterpreterException {
 
         String key = source.scanRegisterName(context, source, typesetter, name);
 
@@ -162,7 +162,7 @@ public class Setbox extends AbstractAssignment {
      *
      * @param name the name for debugging
      */
-    public Setbox(final String name) {
+    public Setbox(String name) {
 
         super(name);
     }
@@ -187,8 +187,8 @@ public class Setbox extends AbstractAssignment {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         String key = Setbox.getKey(context, source, typesetter, getName());

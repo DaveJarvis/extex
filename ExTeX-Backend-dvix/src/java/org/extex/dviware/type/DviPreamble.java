@@ -54,7 +54,7 @@ public class DviPreamble extends AbstractDviCode {
      * @param mag the magnification
      * @param comment the comment
      */
-    public DviPreamble(final int mag, final String comment) {
+    public DviPreamble(int mag, String comment) {
 
         super("pre");
 
@@ -76,7 +76,7 @@ public class DviPreamble extends AbstractDviCode {
      *
      * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
      */
-    public int write(final OutputStream stream) throws IOException {
+    public int write(OutputStream stream) throws IOException {
 
         stream.write(Dvi.PRE);
         stream.write(Dvi.DVI_ID);

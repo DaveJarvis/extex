@@ -72,8 +72,8 @@ public class ExTeXWords implements WordTokenizer {
      *
      * @throws HyphenationException in case of an error
      */
-    private static NodeList hyphenate(final NodeList list, final int index,
-            final LigatureBuilder ligatureBuilder) throws HyphenationException {
+    private static NodeList hyphenate(NodeList list, int index,
+            LigatureBuilder ligatureBuilder) throws HyphenationException {
 
         if (ligatureBuilder != null) {
             for (int i = 0; i < list.size(); i =
@@ -98,9 +98,9 @@ public class ExTeXWords implements WordTokenizer {
      *
      * @throws HyphenationException in case of an error
      */
-    private static int insertShyIntoLigature(final NodeList nodes,
-            final int insertionPoint, final int index, final LigatureNode node,
-            final boolean[] isHyph, final CharNode hyphenNode)
+    private static int insertShyIntoLigature(NodeList nodes,
+            int insertionPoint, int index, LigatureNode node,
+            boolean[] isHyph, CharNode hyphenNode)
             throws HyphenationException {
 
         int n = node.countChars();
@@ -166,7 +166,7 @@ public class ExTeXWords implements WordTokenizer {
      * @param node the character node to add to the word
      * @param word the container to add the node to
      */
-    private void addWord(final CharNode node, final UnicodeCharList word) {
+    private void addWord(CharNode node, UnicodeCharList word) {
 
         if (node instanceof LigatureNode) {
             LigatureNode ln = (LigatureNode) node;
@@ -192,8 +192,8 @@ public class ExTeXWords implements WordTokenizer {
      *
      * @throws HyphenationException in case of an error
      */
-    private int collectWord(final NodeList nodes, final UnicodeCharList word,
-            final int start, final Language lang) throws HyphenationException {
+    private int collectWord(NodeList nodes, UnicodeCharList word,
+            int start, Language lang) throws HyphenationException {
 
         int i = start;
         int size = nodes.size();
@@ -236,8 +236,8 @@ public class ExTeXWords implements WordTokenizer {
      *      int,
      *      org.extex.core.UnicodeCharList)
      */
-    public int findWord(final NodeList nodes, final int start,
-            final UnicodeCharList word) throws HyphenationException {
+    public int findWord(NodeList nodes, int start,
+            UnicodeCharList word) throws HyphenationException {
 
         int i = start;
         int size = nodes.size();
@@ -264,11 +264,11 @@ public class ExTeXWords implements WordTokenizer {
      *      boolean[],
      *      org.extex.typesetter.type.node.CharNode)
      */
-    public void insertShy(final NodeList nodes, final int insertionPoint,
-            final boolean[] spec, final CharNode hyphenNode)
+    public void insertShy(NodeList nodes, int insertionPoint,
+            boolean[] spec, CharNode hyphenNode)
             throws HyphenationException {
 
-        final UnicodeChar hyphen = hyphenNode.getCharacter();
+        UnicodeChar hyphen = hyphenNode.getCharacter();
         int insertion = insertionPoint;
         Node n;
         NodeList nobreak = null;
@@ -341,8 +341,8 @@ public class ExTeXWords implements WordTokenizer {
      *      org.extex.core.UnicodeCharList,
      *      org.extex.typesetter.TypesetterOptions)
      */
-    public UnicodeCharList normalize(final UnicodeCharList word,
-            final TypesetterOptions options) throws HyphenationException {
+    public UnicodeCharList normalize(UnicodeCharList word,
+            TypesetterOptions options) throws HyphenationException {
 
         UnicodeCharList list = new UnicodeCharList();
         int size = word.size();

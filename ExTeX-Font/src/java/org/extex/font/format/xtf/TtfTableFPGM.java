@@ -59,8 +59,8 @@ public class TtfTableFPGM extends AbstractXtfTable
      * @param rar       the RandomAccessInput
      * @throws IOException if an error occurred.
      */
-    TtfTableFPGM(final XtfTableMap tablemap, final XtfTableDirectory.Entry de,
-            final RandomAccessR rar) throws IOException {
+    TtfTableFPGM(XtfTableMap tablemap, XtfTableDirectory.Entry de,
+            RandomAccessR rar) throws IOException {
 
         super(tablemap);
         rar.seek(de.getOffset());
@@ -106,7 +106,7 @@ public class TtfTableFPGM extends AbstractXtfTable
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writeStartElement(writer);
         writer.writeByteArray(instructions);

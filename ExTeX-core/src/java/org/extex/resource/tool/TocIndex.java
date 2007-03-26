@@ -41,7 +41,7 @@ public class TocIndex {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         PrintStream err = System.err;
         PrintStream out = System.out;
@@ -106,7 +106,7 @@ public class TocIndex {
      *
      * @throws MalformedURLException just in case
      */
-    private void collect(final File file, final PrintStream out)
+    private void collect(File file, PrintStream out)
             throws MalformedURLException {
 
         String f = file.toURL().getFile();
@@ -136,7 +136,7 @@ public class TocIndex {
      *
      * @param arg the pattern to omit
      */
-    private void omit(final String arg) {
+    private void omit(String arg) {
 
         omit.add(arg);
     }

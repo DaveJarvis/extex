@@ -72,8 +72,8 @@ public class DviFntDef extends DviCommand {
      * @param a     the area
      * @param l     the name
      */
-    public DviFntDef(final int oc, final int sp, final int k, final int c,
-            final int s, final int d, final String a, final String l) {
+    public DviFntDef(int oc, int sp, int k, int c,
+            int s, int d, String a, String l) {
 
         super(oc, sp);
         font = k;
@@ -158,7 +158,7 @@ public class DviFntDef extends DviCommand {
      * @param mag   the maginification
      * @return Returns the scaled.
      */
-    public int getScaled(final int mag) {
+    public int getScaled(int mag) {
 
         return (int) ((double) mag * scale / designsize + ROUND);
     }
@@ -168,7 +168,7 @@ public class DviFntDef extends DviCommand {
      * @param mag   the maginification
      * @return Returns the scaled from a font as <code>Count</code>.
      */
-    public Count getScaledAsCount(final int mag) {
+    public Count getScaledAsCount(int mag) {
 
         return new Count(getScaled(mag));
     }

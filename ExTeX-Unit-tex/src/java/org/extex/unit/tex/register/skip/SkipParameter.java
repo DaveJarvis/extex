@@ -56,7 +56,7 @@ public class SkipParameter extends SkipPrimitive {
      *
      * @param name the name for debugging
      */
-    public SkipParameter(final String name) {
+    public SkipParameter(String name) {
 
         super(name);
     }
@@ -75,8 +75,8 @@ public class SkipParameter extends SkipPrimitive {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    protected String getKey(final Context context, final TokenSource source,
-            final Typesetter typesetter) {
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) {
 
         if (Namespace.SUPPORT_NAMESPACE_SKIP) {
             return context.getNamespace() + "\b" + getName();

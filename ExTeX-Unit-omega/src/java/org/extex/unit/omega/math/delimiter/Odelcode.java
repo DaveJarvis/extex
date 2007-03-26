@@ -133,7 +133,7 @@ public class Odelcode extends AbstractAssignment
      *
      * @param name the name for debugging
      */
-    public Odelcode(final String name) {
+    public Odelcode(String name) {
 
         super(name);
     }
@@ -155,8 +155,8 @@ public class Odelcode extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void advance(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void advance(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         UnicodeChar charCode =
@@ -191,8 +191,8 @@ public class Odelcode extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -216,9 +216,9 @@ public class Odelcode extends AbstractAssignment
      *
      * @throws InterpreterException in case of an error
      */
-    private void assign(final Flags prefix, final Context context,
-            final TokenSource source, final UnicodeChar charCode,
-            final long value) throws InterpreterException {
+    private void assign(Flags prefix, Context context,
+            TokenSource source, UnicodeChar charCode,
+            long value) throws InterpreterException {
 
         long globaldef = context.getCount("globaldefs").getValue();
         if (globaldef != 0) {
@@ -250,13 +250,13 @@ public class Odelcode extends AbstractAssignment
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.CountConvertible#convertCount(
+     * @see org.extex.core.count.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public long convertCount(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         UnicodeChar charCode =
                 source.scanCharacterCode(context, typesetter, getName());
@@ -281,8 +281,8 @@ public class Odelcode extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void divide(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void divide(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         UnicodeChar charCode =
@@ -317,8 +317,8 @@ public class Odelcode extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void multiply(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void multiply(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         UnicodeChar charCode =
@@ -349,8 +349,8 @@ public class Odelcode extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter)
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 CatcodeException {
 

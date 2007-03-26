@@ -39,7 +39,8 @@ public class FontManager {
     /**
      * The field <tt>fonts</tt> contains the registered fonts and characters.
      */
-    private Map fonts = new HashMap();
+    private Map<Font, Map<UnicodeChar, UnicodeChar>> fonts =
+            new HashMap<Font, Map<UnicodeChar, UnicodeChar>>();
 
     /**
      * Creates a new object.
@@ -77,11 +78,11 @@ public class FontManager {
      * @return <code>true</code> iff the font is not the one previously
      *  reported
      */
-    public String add(final Font font, final UnicodeChar c) {
+    public String add(Font font, UnicodeChar c) {
 
-        Map map = (Map) fonts.get(font);
+        Map<UnicodeChar, UnicodeChar> map = fonts.get(font);
         if (map == null) {
-            map = new HashMap();
+            map = new HashMap<UnicodeChar, UnicodeChar>();
             fonts.put(font, map);
         }
         map.put(c, c);
@@ -133,7 +134,7 @@ public class FontManager {
      *
      * @throws IOException in case of an IO error
      */
-    public void write(final OutputStream stream) throws IOException {
+    public void write(OutputStream stream) throws IOException {
 
         texdict.append("end\n");
         stream.write(texdict.toString().getBytes());

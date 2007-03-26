@@ -47,7 +47,7 @@ public class DviChar extends DviCommand {
      * @param sp        the start pointer
      * @param c     the character
      */
-    public DviChar(final int opc, final int sp, final int c) {
+    public DviChar(int opc, int sp, int c) {
 
         this(opc, sp, c, false);
     }
@@ -59,7 +59,7 @@ public class DviChar extends DviCommand {
      * @param c     the character
      * @param pm    the put-mode
      */
-    public DviChar(final int opc, final int sp, final int c, final boolean pm) {
+    public DviChar(int opc, int sp, int c, boolean pm) {
 
         super(opc, sp);
         ch = c;

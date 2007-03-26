@@ -45,7 +45,7 @@ public class DviWrongOpcodeException extends DviException {
      *
      * @param message   the message
      */
-    public DviWrongOpcodeException(final String message) {
+    public DviWrongOpcodeException(String message) {
 
         super(message);
     }

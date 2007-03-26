@@ -65,7 +65,7 @@ public class MathExpression extends AbstractMath
      * @param name the name for debugging
      * @throws GeneralException ...
      */
-    public MathExpression(final String name) throws GeneralException {
+    public MathExpression(String name) throws GeneralException {
 
         super(name);
 
@@ -98,7 +98,7 @@ public class MathExpression extends AbstractMath
      * @return  the real value
      * @throws InterpreterException if a error occoured
      */
-    protected Real calculate(final Context context, final TokenSource source)
+    protected Real calculate(Context context, TokenSource source)
             throws InterpreterException {
 
         Real real = new Real(0);

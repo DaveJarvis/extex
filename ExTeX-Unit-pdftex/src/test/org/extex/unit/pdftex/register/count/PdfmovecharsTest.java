@@ -33,7 +33,7 @@ public class PdfmovecharsTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PdfmovecharsTest.class);
     }
@@ -43,7 +43,7 @@ public class PdfmovecharsTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public PdfmovecharsTest(final String arg) {
+    public PdfmovecharsTest(String arg) {
 
         super(arg, "pdfmovechars", "", "0");
         setConfig("pdftex-test");

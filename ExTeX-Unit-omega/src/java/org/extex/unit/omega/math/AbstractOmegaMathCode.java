@@ -87,7 +87,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
         /**
          * @see org.extex.interpreter.type.math.MathClassVisitor#visitBinary(java.lang.Object, java.lang.Object)
          */
-        public Object visitBinary(final Object arg, final Object arg2) {
+        public Object visitBinary(Object arg, Object arg2) {
 
             return new Long(2);
         }
@@ -95,7 +95,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
         /**
          * @see org.extex.interpreter.type.math.MathClassVisitor#visitClosing(java.lang.Object, java.lang.Object)
          */
-        public Object visitClosing(final Object arg, final Object arg2) {
+        public Object visitClosing(Object arg, Object arg2) {
 
             return new Long(5);
         }
@@ -103,7 +103,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
         /**
          * @see org.extex.interpreter.type.math.MathClassVisitor#visitLarge(java.lang.Object, java.lang.Object)
          */
-        public Object visitLarge(final Object arg, final Object arg2) {
+        public Object visitLarge(Object arg, Object arg2) {
 
             return new Long(1);
         }
@@ -111,7 +111,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
         /**
          * @see org.extex.interpreter.type.math.MathClassVisitor#visitOpening(java.lang.Object, java.lang.Object)
          */
-        public Object visitOpening(final Object arg, final Object arg2) {
+        public Object visitOpening(Object arg, Object arg2) {
 
             return new Long(4);
         }
@@ -119,7 +119,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
         /**
          * @see org.extex.interpreter.type.math.MathClassVisitor#visitOrdinary(java.lang.Object, java.lang.Object)
          */
-        public Object visitOrdinary(final Object arg, final Object arg2) {
+        public Object visitOrdinary(Object arg, Object arg2) {
 
             return new Long(0);
         }
@@ -127,7 +127,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
         /**
          * @see org.extex.interpreter.type.math.MathClassVisitor#visitPunctation(java.lang.Object, java.lang.Object)
          */
-        public Object visitPunctation(final Object arg, final Object arg2) {
+        public Object visitPunctation(Object arg, Object arg2) {
 
             return new Long(6);
         }
@@ -135,7 +135,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
         /**
          * @see org.extex.interpreter.type.math.MathClassVisitor#visitRelation(java.lang.Object, java.lang.Object)
          */
-        public Object visitRelation(final Object arg, final Object arg2) {
+        public Object visitRelation(Object arg, Object arg2) {
 
             return new Long(3);
         }
@@ -143,7 +143,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
         /**
          * @see org.extex.interpreter.type.math.MathClassVisitor#visitVariable(java.lang.Object, java.lang.Object)
          */
-        public Object visitVariable(final Object arg, final Object arg2) {
+        public Object visitVariable(Object arg, Object arg2) {
 
             return new Long(7);
         }
@@ -158,7 +158,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
      *
      * @throws InterpreterException in case of an error
      */
-    public static long mathCodeToLong(final MathCode mc)
+    public static long mathCodeToLong(MathCode mc)
             throws InterpreterException {
 
         MathClass mathClass = mc.getMathClass();
@@ -195,9 +195,9 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
      *
      * @throws InterpreterException in case of an error
      */
-    public static MathCode parseMathCode(final Context context,
-            final TokenSource source, final Typesetter typesetter,
-            final String primitive) throws InterpreterException {
+    public static MathCode parseMathCode(Context context,
+            TokenSource source, Typesetter typesetter,
+            String primitive) throws InterpreterException {
 
         Token t = source.getToken(context);
         if (t instanceof LeftBraceToken) {
@@ -248,7 +248,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
      *
      * @param name the name for tracing and debugging
      */
-    public AbstractOmegaMathCode(final String name) {
+    public AbstractOmegaMathCode(String name) {
 
         super(name);
     }

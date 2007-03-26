@@ -155,9 +155,9 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      * @param lineskip the parameter \lineskip
      * @param lineskiplimit the parameter \lineskiplimit
      */
-    private void addLine(final VerticalListNode vlist,
-            final HorizontalListNode hlist, final FixedGlue baselineskip,
-            final FixedGlue lineskip, final FixedDimen lineskiplimit) {
+    private void addLine(VerticalListNode vlist,
+            HorizontalListNode hlist, FixedGlue baselineskip,
+            FixedGlue lineskip, FixedDimen lineskiplimit) {
 
         int end = vlist.size() - 1;
 
@@ -185,10 +185,10 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      *
      * @return the index of the first node after the ones already processed
      */
-    private int breakLine(final int start, final int len,
-            final HorizontalListNode nodes, final HorizontalListNode hlist,
-            final Dimen width, final WideGlue accumulator,
-            final FixedDimen height, final FixedDimen depth) {
+    private int breakLine(int start, int len,
+            HorizontalListNode nodes, HorizontalListNode hlist,
+            Dimen width, WideGlue accumulator,
+            FixedDimen height, FixedDimen depth) {
 
         Node node = nodes.get(start);
         hlist.add(node);
@@ -206,7 +206,7 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
                             saveNodes(nodes, i, point, hlist, accumulator,
                                 height, depth);
                 }
-                return discartNodes(i, len, nodes);
+                return discardNodes(i, len, nodes);
             }
 
             i = saveNodes(nodes, i, point, hlist, accumulator, height, depth);
@@ -229,7 +229,7 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#build(
      *      org.extex.typesetter.type.node.HorizontalListNode)
      */
-    public NodeList build(final HorizontalListNode nodes) {
+    public NodeList build(HorizontalListNode nodes) {
 
         if (options.getCountOption("tracingparagraphs").getValue() > 0) {
             tracer = logger;
@@ -297,17 +297,17 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
     }
 
     /**
-     * Skip over any discartable nodes and return the index of the next
-     * non-discartable node.
+     * Skip over any discardable nodes and return the index of the next
+     * non-discardable node.
      *
      * @param start the index to start at
      * @param len the length of the node list
      * @param nodes the node list to take into account
      *
-     * @return the index of the next non-discartable node
+     * @return the index of the next non-discardable node
      */
-    private int discartNodes(final int start, final int len,
-            final NodeList nodes) {
+    private int discardNodes(int start, int len,
+            NodeList nodes) {
 
         int i = start;
         while (i < len && nodes.get(i) instanceof Discardable) {
@@ -324,7 +324,7 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger log) {
+    public void enableLogging(Logger log) {
 
         this.logger = log;
     }
@@ -339,8 +339,8 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      * @return the index of the next break point or the index of the element
      *  past the end of the list if none is found
      */
-    private int findNextBreakPoint(final NodeList nodes, final int start,
-            final WideGlue width) {
+    private int findNextBreakPoint(NodeList nodes, int start,
+            WideGlue width) {
 
         Node node;
         boolean math = false;
@@ -435,10 +435,10 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      *
      * @return the index of the first node which has not been copied
      */
-    private int saveNodes(final HorizontalListNode nodes, final int start,
-            final int end, final HorizontalListNode hlist,
-            final WideGlue accumulator, final FixedDimen height,
-            final FixedDimen depth) {
+    private int saveNodes(HorizontalListNode nodes, int start,
+            int end, HorizontalListNode hlist,
+            WideGlue accumulator, FixedDimen height,
+            FixedDimen depth) {
 
         Node node;
         for (int i = start; i < end; i++) {
@@ -465,8 +465,9 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#setNodefactory(
      *      org.extex.typesetter.type.node.factory.NodeFactory)
      */
-    public void setNodefactory(final NodeFactory nodeFactory) {
+    public void setNodefactory(NodeFactory nodeFactory) {
 
+        // nothing to do
     }
 
     /**
@@ -477,7 +478,7 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#setOptions(
      *      org.extex.typesetter.TypesetterOptions)
      */
-    public void setOptions(final TypesetterOptions options) {
+    public void setOptions(TypesetterOptions options) {
 
         this.options = options;
     }
@@ -490,8 +491,8 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      *  adjusted
      * @param w the accumulated width of the hlist
      */
-    private void spread(final HorizontalListNode hlist,
-            final FixedDimen targetWidth, final WideGlue w) {
+    private void spread(HorizontalListNode hlist,
+            FixedDimen targetWidth, WideGlue w) {
 
         FixedDimen width = w.getLength();
         FixedGlueComponent component =

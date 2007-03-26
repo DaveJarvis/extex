@@ -45,7 +45,7 @@ public class FontReadException extends FontException {
      * Create a new object.
      * @param message   the message
      */
-    public FontReadException(final String message) {
+    public FontReadException(String message) {
 
         super(message);
     }

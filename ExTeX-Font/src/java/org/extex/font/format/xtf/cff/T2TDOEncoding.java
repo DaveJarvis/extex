@@ -39,7 +39,7 @@ public class T2TDOEncoding extends T2TDONumber {
      * @param stack the stack
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOEncoding(final List stack) throws IOException {
+    public T2TDOEncoding(List stack) throws IOException {
 
         super(stack, new short[]{ENCODING});
     }

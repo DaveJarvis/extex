@@ -45,7 +45,7 @@ public class DviUndefinedOpcodeException extends DviException {
      *
      * @param message   the message
      */
-    public DviUndefinedOpcodeException(final String message) {
+    public DviUndefinedOpcodeException(String message) {
 
         super(message);
     }

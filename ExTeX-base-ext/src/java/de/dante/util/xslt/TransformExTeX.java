@@ -79,7 +79,7 @@ public final class TransformExTeX {
      * @param args      the command line arguments
      * @throws Exception  in case of an error
      */
-    public static void main(final String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
         if (args.length != PARAMETER) {
             System.err.println("java de.dante.util.xslt.TransformExTeX "
@@ -137,7 +137,7 @@ public final class TransformExTeX {
          *
          * @throws Exception in case of an error
          */
-        public MyExTeX(final Properties theProperties, final String dotFile)
+        public MyExTeX(Properties theProperties, String dotFile)
                 throws Exception {
 
             super(theProperties, dotFile);
@@ -157,7 +157,7 @@ public final class TransformExTeX {
          *
          * @throws Exception in case of an error
          */
-        public MyExTeX(final Properties theProperties) throws Exception {
+        public MyExTeX(Properties theProperties) throws Exception {
 
             super(theProperties);
             makeConfig();
@@ -225,8 +225,8 @@ public final class TransformExTeX {
          * @throws ConfigurationException in case that some kind of problems have
          * been detected in the configuration
          */
-        protected FontFactory makemyFontFactory(final Configuration config,
-                final ResourceFinder finder) throws ConfigurationException {
+        protected FontFactory makemyFontFactory(Configuration config,
+                ResourceFinder finder) throws ConfigurationException {
 
             FontFactory fontFactory;
             String fontClass = config.getAttribute("class");

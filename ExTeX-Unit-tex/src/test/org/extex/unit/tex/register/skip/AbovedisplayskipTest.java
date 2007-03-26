@@ -31,7 +31,7 @@ public class AbovedisplayskipTest extends AbstractSkipRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(AbovedisplayskipTest.class);
     }
@@ -41,7 +41,7 @@ public class AbovedisplayskipTest extends AbstractSkipRegisterTester {
      *
      * @param arg the name
      */
-    public AbovedisplayskipTest(final String arg) {
+    public AbovedisplayskipTest(String arg) {
 
         super(arg, "abovedisplayskip", "", "0.0pt");
     }

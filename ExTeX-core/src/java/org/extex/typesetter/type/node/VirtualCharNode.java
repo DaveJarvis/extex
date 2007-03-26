@@ -68,7 +68,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
          *
          * @param node the parent node
          */
-        public NL(final VirtualCharNode node) {
+        public NL(VirtualCharNode node) {
 
             super();
             this.node = node;
@@ -83,7 +83,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
          * @see org.extex.typesetter.type.NodeList#addSkip(
          *      org.extex.core.glue.FixedGlue)
          */
-        public void addSkip(final FixedGlue glue) {
+        public void addSkip(FixedGlue glue) {
 
             // glues are ignored
         }
@@ -102,7 +102,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
          *      org.extex.typesetter.type.NodeVisitor,
          *      java.lang.Object)
          */
-        public Object visit(final NodeVisitor visitor, final Object value)
+        public Object visit(NodeVisitor visitor, Object value)
                 throws GeneralException {
 
             return visitor.visitChar(node, value);
@@ -125,8 +125,8 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @param context the typesetting context
      * @param uc the character represented by this node
      */
-    public VirtualCharNode(final TypesettingContext context,
-            final UnicodeChar uc) {
+    public VirtualCharNode(TypesettingContext context,
+            UnicodeChar uc) {
 
         super(context, uc);
         nodes = new NL(this);
@@ -141,7 +141,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @see org.extex.typesetter.type.NodeList#add(int,
      *      org.extex.typesetter.type.Node)
      */
-    public void add(final int index, final Node node) {
+    public void add(int index, Node node) {
 
         this.nodes.add(index, node);
     }
@@ -155,7 +155,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @see org.extex.typesetter.type.NodeList#add(
      *      org.extex.typesetter.type.Node)
      */
-    public void add(final Node node) {
+    public void add(Node node) {
 
         this.nodes.add(node);
     }
@@ -169,7 +169,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @see org.extex.typesetter.type.NodeList#addSkip(
      *      org.extex.core.glue.FixedGlue)
      */
-    public void addSkip(final FixedGlue glue) {
+    public void addSkip(FixedGlue glue) {
 
         this.nodes.addSkip(glue);
     }
@@ -182,7 +182,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @see org.extex.typesetter.type.node.AbstractNode#addWidthTo(
      *      org.extex.core.glue.WideGlue)
      */
-    public void addWidthTo(final WideGlue glue) {
+    public void addWidthTo(WideGlue glue) {
 
         this.nodes.addWidthTo(glue);
     }
@@ -212,8 +212,8 @@ public class VirtualCharNode extends CharNode implements NodeList {
      *      org.extex.typesetter.Typesetter,
      *      org.extex.typesetter.type.NodeVisitor, boolean)
      */
-    public Node atShipping(final Context context, final Typesetter typesetter,
-            final NodeVisitor visitor, final boolean inHMode)
+    public Node atShipping(Context context, Typesetter typesetter,
+            NodeVisitor visitor, boolean inHMode)
             throws GeneralException {
 
         return this.nodes.atShipping(context, typesetter, visitor, inHMode);
@@ -269,7 +269,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      *
      * @see org.extex.typesetter.type.NodeList#get(int)
      */
-    public Node get(final int index) {
+    public Node get(int index) {
 
         return this.nodes.get(index);
     }
@@ -399,7 +399,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      *
      * @see org.extex.typesetter.type.NodeList#remove(int)
      */
-    public Node remove(final int index) {
+    public Node remove(int index) {
 
         return this.nodes.remove(index);
     }
@@ -412,7 +412,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @see org.extex.typesetter.type.Node#setDepth(
      *      org.extex.core.dimen.FixedDimen)
      */
-    public void setDepth(final FixedDimen depth) {
+    public void setDepth(FixedDimen depth) {
 
         this.nodes.setDepth(depth);
     }
@@ -425,7 +425,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @see org.extex.typesetter.type.Node#setHeight(
      *      org.extex.core.dimen.FixedDimen)
      */
-    public void setHeight(final FixedDimen height) {
+    public void setHeight(FixedDimen height) {
 
         this.nodes.setHeight(height);
     }
@@ -441,7 +441,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @see org.extex.typesetter.type.NodeList#setMove(
      *      org.extex.core.dimen.FixedDimen)
      */
-    public void setMove(final FixedDimen d) {
+    public void setMove(FixedDimen d) {
 
         this.nodes.setMove(d);
     }
@@ -456,7 +456,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @see org.extex.typesetter.type.NodeList#setShift(
      *      org.extex.core.dimen.FixedDimen)
      */
-    public void setShift(final FixedDimen d) {
+    public void setShift(FixedDimen d) {
 
         this.nodes.setShift(d);
     }
@@ -469,7 +469,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @see org.extex.typesetter.type.Node#setWidth(
      *      org.extex.core.dimen.FixedDimen)
      */
-    public void setWidth(final FixedDimen width) {
+    public void setWidth(FixedDimen width) {
 
         this.nodes.setWidth(width);
     }
@@ -497,7 +497,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      *      org.extex.core.dimen.FixedDimen,
      *      org.extex.core.glue.FixedGlueComponent)
      */
-    public void spreadWidth(final FixedDimen width, final FixedGlueComponent sum) {
+    public void spreadWidth(FixedDimen width, FixedGlueComponent sum) {
 
         this.nodes.spreadWidth(width, sum);
     }
@@ -516,7 +516,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final NodeVisitor visitor, final Object value)
+    public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {
 
         return visitor.visitVirtualChar(this, value);

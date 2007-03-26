@@ -33,7 +33,7 @@ public class DimenexprTest extends ExTeXLauncher {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(DimenexprTest.class);
     }
@@ -43,7 +43,7 @@ public class DimenexprTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public DimenexprTest(final String arg) {
+    public DimenexprTest(String arg) {
 
         super(arg);
         setConfig("etex-test");

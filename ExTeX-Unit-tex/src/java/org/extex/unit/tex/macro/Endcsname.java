@@ -74,7 +74,7 @@ public class Endcsname extends AbstractCode {
      *
      * @param name the name for debugging
      */
-    public Endcsname(final String name) {
+    public Endcsname(String name) {
 
         super(name);
     }
@@ -97,8 +97,8 @@ public class Endcsname extends AbstractCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         throw new HelpingException(getLocalizer(), "TTP.ExtraEndcsname",

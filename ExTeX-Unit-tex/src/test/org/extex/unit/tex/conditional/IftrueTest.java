@@ -34,7 +34,7 @@ public class IftrueTest extends ExTeXLauncher {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(IftrueTest.class);
     }
@@ -44,7 +44,7 @@ public class IftrueTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public IftrueTest(final String arg) {
+    public IftrueTest(String arg) {
 
         super(arg);
     }

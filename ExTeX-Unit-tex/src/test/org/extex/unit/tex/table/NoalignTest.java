@@ -33,7 +33,7 @@ public class NoalignTest extends ExTeXLauncher {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(NoalignTest.class);
     }
@@ -43,7 +43,7 @@ public class NoalignTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public NoalignTest(final String arg) {
+    public NoalignTest(String arg) {
 
         super(arg);
     }

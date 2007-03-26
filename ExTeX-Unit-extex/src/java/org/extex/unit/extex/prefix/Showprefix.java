@@ -71,7 +71,7 @@ public class Showprefix extends AbstractCode implements LogEnabled {
      *
      * @param name the name for debugging
      */
-    public Showprefix(final String name) {
+    public Showprefix(String name) {
 
         super(name);
     }
@@ -94,8 +94,8 @@ public class Showprefix extends AbstractCode implements LogEnabled {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         logger.info("\n" + prefix.toText() + "\n");
@@ -110,7 +110,7 @@ public class Showprefix extends AbstractCode implements LogEnabled {
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger log) {
+    public void enableLogging(Logger log) {
 
         this.logger = log;
     }

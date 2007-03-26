@@ -34,7 +34,7 @@ public class PdffontobjnumTest extends AbstractReadonlyCountRegisterTester {
      *
      * @param arg the name
      */
-    public PdffontobjnumTest(final String arg) {
+    public PdffontobjnumTest(String arg) {
 
         super(arg, "pdffontobjnum", "\\f", "0", "\\font\\f cmr10 ");
         setConfig("pdftex-test");

@@ -68,7 +68,7 @@ public class Or extends AbstractCode {
      *
      * @param name the name for debugging
      */
-    public Or(final String name) {
+    public Or(String name) {
 
         super(name);
     }
@@ -91,8 +91,8 @@ public class Or extends AbstractCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Conditional cond = context.popConditional();
@@ -132,8 +132,8 @@ public class Or extends AbstractCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void expand(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void expand(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Conditional cond = context.popConditional();

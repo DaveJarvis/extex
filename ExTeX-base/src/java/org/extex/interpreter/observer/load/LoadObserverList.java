@@ -42,8 +42,8 @@ public final class LoadObserverList implements LoadObserver {
      *
      * @return the input list or a new one with the observer added
      */
-    public static LoadObserver register(final LoadObserver list,
-            final LoadObserver observer) {
+    public static LoadObserver register(LoadObserver list,
+            LoadObserver observer) {
 
         if (list instanceof LoadObserverList) {
             ((LoadObserverList) list).add(observer);
@@ -63,14 +63,14 @@ public final class LoadObserverList implements LoadObserver {
     /**
      * The field <tt>list</tt> contains the encapsulated list.
      */
-    private List list = new ArrayList();
+    private List<LoadObserver> list = new ArrayList<LoadObserver>();
 
     /**
      * Add an observer to the list.
      *
      * @param observer the observer to add to the list
      */
-    public void add(final LoadObserver observer) {
+    public void add(LoadObserver observer) {
 
         list.add(observer);
     }
@@ -79,14 +79,15 @@ public final class LoadObserverList implements LoadObserver {
      * Invoke all observers on the list to inform them of the format load
      * operation.
      *
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.observer.load.LoadObserver#update(
      *      org.extex.interpreter.context.Context)
      */
-    public void update(final Context context) throws InterpreterException {
+    public void update(Context context) throws InterpreterException {
 
-        int size = list.size();
-        for (int i = 0; i < size; i++) {
-            ((LoadObserver) list.get(i)).update(context);
+        for (LoadObserver obs : list) {
+            obs.update(context);
         }
     }
 

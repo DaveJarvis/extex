@@ -31,7 +31,7 @@ public class LineskipTest extends AbstractSkipRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(LineskipTest.class);
     }
@@ -41,7 +41,7 @@ public class LineskipTest extends AbstractSkipRegisterTester {
      *
      * @param arg the name
      */
-    public LineskipTest(final String arg) {
+    public LineskipTest(String arg) {
 
         super(arg, "lineskip", "", "0.0pt");
     }

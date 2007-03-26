@@ -68,7 +68,7 @@ public class NamedBool extends AbstractAssignment
      *
      * @param name the name for debugging
      */
-    public NamedBool(final String name) {
+    public NamedBool(String name) {
 
         super(name);
     }
@@ -80,8 +80,8 @@ public class NamedBool extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -107,7 +107,7 @@ public class NamedBool extends AbstractAssignment
      * @param value      the new value
      * @throws InterpreterException if the extension is not configured
      */
-    public void set(final Context context, final Bool value)
+    public void set(Context context, Bool value)
             throws InterpreterException {
 
         if (context instanceof ContextExtension) {
@@ -125,7 +125,7 @@ public class NamedBool extends AbstractAssignment
      * @param value      the new value as String
      * @throws InterpreterException if the extension is not configured
      */
-    public void set(final Context context, final String value)
+    public void set(Context context, String value)
             throws InterpreterException {
 
         if (context instanceof ContextExtension) {
@@ -154,8 +154,8 @@ public class NamedBool extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter)
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 CatcodeException {
 
@@ -176,7 +176,7 @@ public class NamedBool extends AbstractAssignment
      * @return the key
      * @throws InterpreterException in case of an error
      */
-    protected String getKey(final Context context, final TokenSource source)
+    protected String getKey(Context context, TokenSource source)
             throws InterpreterException {
 
         return getName();
@@ -187,7 +187,7 @@ public class NamedBool extends AbstractAssignment
      *     org.extex.interpreter.context.Context,
      *     org.extex.interpreter.TokenSource)
      */
-    public Bool convertBool(final Context context, final TokenSource source)
+    public Bool convertBool(Context context, TokenSource source)
             throws InterpreterException {
 
         if (context instanceof ContextExtension) {

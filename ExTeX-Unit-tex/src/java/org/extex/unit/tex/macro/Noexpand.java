@@ -77,7 +77,7 @@ public class Noexpand extends AbstractCode
      *
      * @param name the name for debugging
      */
-    public Noexpand(final String name) {
+    public Noexpand(String name) {
 
         super(name);
     }
@@ -100,8 +100,8 @@ public class Noexpand extends AbstractCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         // relax
@@ -127,8 +127,8 @@ public class Noexpand extends AbstractCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void expand(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void expand(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         // relax
@@ -151,8 +151,8 @@ public class Noexpand extends AbstractCode
      *      org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.tokens.Tokens)
      */
-    public void expandCode(final Context context, final TokenSource source,
-            final Typesetter typesetter, final Tokens tokens)
+    public void expandCode(Context context, TokenSource source,
+            Typesetter typesetter, Tokens tokens)
             throws InterpreterException {
 
         Token token = source.getToken(context);

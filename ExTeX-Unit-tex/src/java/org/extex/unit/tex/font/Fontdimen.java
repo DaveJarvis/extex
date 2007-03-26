@@ -100,7 +100,7 @@ public class Fontdimen extends AbstractAssignment
      *
      * @param name the name for debugging
      */
-    public Fontdimen(final String name) {
+    public Fontdimen(String name) {
 
         super(name);
     }
@@ -123,8 +123,8 @@ public class Fontdimen extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         String key = getKey(context, source, typesetter);
@@ -142,8 +142,8 @@ public class Fontdimen extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void expand(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void expand(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         source.push(the(context, source, typesetter));
@@ -162,8 +162,8 @@ public class Fontdimen extends AbstractAssignment
      *
      * @throws InterpreterException in case of an error
      */
-    protected String getKey(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         Token t = source.getNonSpace(context);
         if (t == null) {
@@ -185,8 +185,8 @@ public class Fontdimen extends AbstractAssignment
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         try {
             String key = getKey(context, source, typesetter);

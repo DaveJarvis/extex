@@ -47,7 +47,7 @@ public class ScannerException extends GeneralException {
      *
      * @param message the textual representation
      */
-    public ScannerException(final String message) {
+    public ScannerException(String message) {
 
         super(message);
     }
@@ -58,7 +58,7 @@ public class ScannerException extends GeneralException {
      * @param message the textual representation
      * @param cause the root of all evil
      */
-    public ScannerException(final String message, final Throwable cause) {
+    public ScannerException(String message, Throwable cause) {
 
         super(message, cause);
     }
@@ -68,7 +68,7 @@ public class ScannerException extends GeneralException {
      *
      * @param cause the root of all evil
      */
-    public ScannerException(final Throwable cause) {
+    public ScannerException(Throwable cause) {
 
         super(cause);
     }

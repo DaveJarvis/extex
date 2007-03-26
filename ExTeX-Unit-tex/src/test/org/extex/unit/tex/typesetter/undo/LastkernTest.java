@@ -33,7 +33,7 @@ public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(LastkernTest.class);
     }
@@ -43,7 +43,7 @@ public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
      *
      * @param arg the name
      */
-    public LastkernTest(final String arg) {
+    public LastkernTest(String arg) {
 
         super(arg, "lastkern", "", "0.0pt");
     }

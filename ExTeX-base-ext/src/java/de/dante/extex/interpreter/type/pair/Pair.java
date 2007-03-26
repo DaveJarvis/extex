@@ -71,7 +71,7 @@ public class Pair implements Serializable {
      * @param x    the x-value
      * @param y    the y-value
      */
-    public Pair(final Real x, final Real y) {
+    public Pair(Real x, Real y) {
 
         super();
         xval = x;
@@ -84,7 +84,7 @@ public class Pair implements Serializable {
      * @param x    the x-value
      * @param y    the y-value
      */
-    public Pair(final double x, final double y) {
+    public Pair(double x, double y) {
 
         super();
         xval = new Real(x);
@@ -101,7 +101,7 @@ public class Pair implements Serializable {
      * @throws InterpreterException ...
      * @throws ConfigurationException in case of an configuration error
      */
-    public Pair(final Context context, final TokenSource source)
+    public Pair(Context context, TokenSource source)
             throws InterpreterException, ConfigurationException {
 
         super();
@@ -115,7 +115,7 @@ public class Pair implements Serializable {
      * @param s     the value as String
      * @throws InterpreterException if a NumberFormatException is throws
      */
-    public Pair(final String s) throws InterpreterException {
+    public Pair(String s) throws InterpreterException {
 
         if (s == null || s.trim().length() == 0) {
             xval = new Real(0);
@@ -144,7 +144,7 @@ public class Pair implements Serializable {
      * Setter for the x-value.
      * @param x the new x-value
      */
-    public void setX(final Real x) {
+    public void setX(Real x) {
 
         xval = x;
     }
@@ -153,7 +153,7 @@ public class Pair implements Serializable {
      * Setter for the y-value.
      * @param y the new y-value
      */
-    public void setY(final Real y) {
+    public void setY(Real y) {
 
         xval = y;
     }
@@ -162,7 +162,7 @@ public class Pair implements Serializable {
      * Setter for the x-value.
      * @param x the new x-value
      */
-    public void setX(final double x) {
+    public void setX(double x) {
 
         xval = new Real(x);
     }
@@ -171,7 +171,7 @@ public class Pair implements Serializable {
      * Setter for the y-value.
      * @param y the new y-value
      */
-    public void setY(final double y) {
+    public void setY(double y) {
 
         xval = new Real(y);
     }
@@ -198,7 +198,7 @@ public class Pair implements Serializable {
      * add
      * @param val the value to add
      */
-    public void add(final Pair val) {
+    public void add(Pair val) {
 
         xval.add(val.getX());
         yval.add(val.getY());
@@ -209,7 +209,7 @@ public class Pair implements Serializable {
      * @param x the x-value to add
      * @param y the x-value to add
      */
-    public void add(final Real x, final Real y) {
+    public void add(Real x, Real y) {
 
         xval.add(x);
         yval.add(y);
@@ -220,7 +220,7 @@ public class Pair implements Serializable {
      * @param x the x-value to add
      * @param y the x-value to add
      */
-    public void add(final double x, final double y) {
+    public void add(double x, double y) {
 
         xval.add(x);
         yval.add(y);

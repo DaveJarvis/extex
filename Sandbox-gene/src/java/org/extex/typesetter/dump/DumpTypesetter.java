@@ -47,10 +47,12 @@ public class DumpTypesetter extends TypesetterImpl {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#add(
      *      org.extex.typesetter.type.Node)
      */
-    public void add(final Node node)
+    public void add(Node node)
             throws TypesetterException,
                 ConfigurationException {
 
@@ -58,21 +60,25 @@ public class DumpTypesetter extends TypesetterImpl {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#add(
      *      org.extex.core.glue.FixedGlue)
      */
-    public void add(final FixedGlue g) throws TypesetterException {
+    public void add(FixedGlue g) throws TypesetterException {
 
         super.add(g);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#addSpace(
      *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.core.count.Count)
      */
-    public void addSpace(final TypesettingContext typesettingContext,
-            final Count spacefactor)
+    public void addSpace(TypesettingContext typesettingContext,
+            Count spacefactor)
             throws TypesetterException,
                 ConfigurationException {
 
@@ -80,10 +86,12 @@ public class DumpTypesetter extends TypesetterImpl {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#complete(
      *      org.extex.typesetter.TypesetterOptions)
      */
-    public NodeList complete(final TypesetterOptions context)
+    public NodeList complete(TypesetterOptions context)
             throws TypesetterException,
                 ConfigurationException {
 

@@ -72,8 +72,8 @@ public class ChoiceNoad implements Noad {
      * @param scriptMath the noads used in script style
      * @param scriptscriptMath the noads used in scriptscript style
      */
-    public ChoiceNoad(final Noad displayMath, final Noad textMath,
-            final Noad scriptMath, final Noad scriptscriptMath) {
+    public ChoiceNoad(Noad displayMath, Noad textMath,
+            Noad scriptMath, Noad scriptscriptMath) {
 
         super();
         display = displayMath;
@@ -126,7 +126,7 @@ public class ChoiceNoad implements Noad {
      * @see org.extex.typesetter.type.noad.Noad#setSubscript(
      *      org.extex.typesetter.type.noad.Noad)
      */
-    public void setSubscript(final Noad subscript) {
+    public void setSubscript(Noad subscript) {
 
     }
 
@@ -138,7 +138,7 @@ public class ChoiceNoad implements Noad {
      * @see org.extex.typesetter.type.noad.Noad#setSuperscript(
      *      org.extex.typesetter.type.noad.Noad)
      */
-    public void setSuperscript(final Noad superscript) {
+    public void setSuperscript(Noad superscript) {
 
     }
 
@@ -150,7 +150,7 @@ public class ChoiceNoad implements Noad {
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer)
      */
-    public void toString(final StringBuffer sb) {
+    public void toString(StringBuffer sb) {
 
         toString(sb, Integer.MAX_VALUE);
     }
@@ -165,7 +165,7 @@ public class ChoiceNoad implements Noad {
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer, int)
      */
-    public void toString(final StringBuffer sb, final int depth) {
+    public void toString(StringBuffer sb, int depth) {
 
         sb.append("\\mathchoice");
         sb.append("D");
@@ -179,6 +179,8 @@ public class ChoiceNoad implements Noad {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see "TTP [731]"
      * @see org.extex.typesetter.type.noad.Noad#typeset(
      *      org.extex.typesetter.type.noad.Noad,
@@ -188,9 +190,9 @@ public class ChoiceNoad implements Noad {
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(final Noad previousNoad, final NoadList noads,
-            final int index, final NodeList list,
-            final MathContext mathContext, final Logger logger)
+    public void typeset(Noad previousNoad, NoadList noads,
+            int index, NodeList list,
+            MathContext mathContext, Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 

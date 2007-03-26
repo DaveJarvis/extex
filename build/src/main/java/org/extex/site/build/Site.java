@@ -43,7 +43,7 @@ import java.util.regex.Pattern;
  * This class contains a generator for the web site.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5413 $
  */
 public class Site {
 
@@ -66,7 +66,7 @@ public class Site {
      *
      * @throws IOException in case of an error
      */
-    private static void copy(final File from, final File to) throws IOException {
+    private static void copy(File from, File to) throws IOException {
 
         InputStream in = new FileInputStream(from);
         OutputStream out = new FileOutputStream(to);
@@ -87,7 +87,7 @@ public class Site {
      *
      * @param message the message to print or <code>null</code> for none
      */
-    private static void exit(final String message) {
+    private static void exit(String message) {
 
         if (message != null) {
             LOGGER.severe(message);
@@ -102,7 +102,7 @@ public class Site {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         String directory = ".";
         String destination = "tmp";
@@ -113,7 +113,7 @@ public class Site {
             /**
              * @see java.util.logging.Formatter#format(java.util.logging.LogRecord)
              */
-            public String format(final LogRecord record) {
+            public String format(LogRecord record) {
 
                 return record.getMessage() + "\n";
             }
@@ -167,7 +167,7 @@ public class Site {
      *
      * @param dir the directory to process
      */
-    private static void processDir(final File dir) {
+    private static void processDir(File dir) {
 
     }
 
@@ -180,8 +180,8 @@ public class Site {
      *
      * @throws IOException in case something went wrong
      */
-    private static void processFile(final File in, final File out,
-            final Site site) throws IOException {
+    private static void processFile(File in, File out,
+            Site site) throws IOException {
 
         String filename = in.getName();
         if (filename.endsWith("~") || filename.endsWith(".bak")
@@ -210,8 +210,8 @@ public class Site {
      *
      * @throws IOException in case something went wrong
      */
-    private static void processHtml(final File infile, final File outfile,
-            final Site site) throws IOException {
+    private static void processHtml(File infile, File outfile,
+            Site site) throws IOException {
 
         FileOutputStream out = null;
         try {
@@ -237,8 +237,8 @@ public class Site {
      *
      * @throws FileNotFoundException in case that the file could ot be opened
      */
-    private static void processHtml(final File from, final PrintStream stream,
-            final Site site) throws FileNotFoundException {
+    private static void processHtml(File from, PrintStream stream,
+            Site site) throws FileNotFoundException {
 
         String buffer = new String(readFile(from));
 
@@ -317,7 +317,7 @@ public class Site {
      *
      * @throws FileNotFoundException in case that the file could ot be opened
      */
-    private static char[] readFile(final File from)
+    private static char[] readFile(File from)
             throws FileNotFoundException {
 
         LOGGER.fine(" [" + from.toString() + "]");
@@ -347,8 +347,8 @@ public class Site {
      *
      * @throws IOException in case something went wrong
      */
-    private static void traverse(final File dir, final File out,
-            final Site parent) throws IOException {
+    private static void traverse(File dir, File out,
+            Site parent) throws IOException {
 
         String dirname = dir.getName();
         if (dirname.equals("CVS") || dirname.startsWith(".")) {
@@ -405,7 +405,7 @@ public class Site {
      * @param parent the parent site or <code>null</code> for the top
      * @param dir the associated directory
      */
-    protected Site(final Site parent, final File dir) {
+    protected Site(Site parent, File dir) {
 
         super();
         this.parent = parent;
@@ -422,7 +422,7 @@ public class Site {
      *
      * @throws FileNotFoundException in case that the file could not be opened
      */
-    public String find(final String name) throws FileNotFoundException {
+    public String find(String name) throws FileNotFoundException {
 
         File file = new File(dir, name);
         if (file.exists()) {
@@ -449,7 +449,7 @@ public class Site {
      *
      * @param parent the parent to set
      */
-    public void setParent(final Site parent) {
+    public void setParent(Site parent) {
 
         this.parent = parent;
     }

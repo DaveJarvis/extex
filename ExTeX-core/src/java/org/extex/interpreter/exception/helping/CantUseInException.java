@@ -45,7 +45,7 @@ public class CantUseInException extends HelpingException {
      * @param macro the name of the macro in which the eof has been encountered
      * @param mode the current mode
      */
-    public CantUseInException(final String macro, final String mode) {
+    public CantUseInException(String macro, String mode) {
 
         super(LocalizerFactory.getLocalizer(CantUseInException.class),
                 "TTP.CantUseIn", macro, mode);

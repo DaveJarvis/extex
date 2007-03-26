@@ -45,7 +45,7 @@ public class NoTokenStreamFactoryException extends ConfigurationException {
      *
      * @param aMessage the message string
      */
-    public NoTokenStreamFactoryException(final String aMessage) {
+    public NoTokenStreamFactoryException(String aMessage) {
 
         super(aMessage, (String) null);
         this.message = aMessage;

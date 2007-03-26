@@ -54,7 +54,7 @@ public class NumberedPair extends NamedPair {
      * Creates a new object.
      * @param name the name for debugging
      */
-    public NumberedPair(final String name) {
+    public NumberedPair(String name) {
 
         super(name);
     }
@@ -63,7 +63,7 @@ public class NumberedPair extends NamedPair {
      * Return the key (the number) for the register.
      * @see de.dante.extex.interpreter.primitives.register.pair.NamedPair#getKey(org.extex.interpreter.context.Context, org.extex.interpreter.TokenSource)
      */
-    protected String getKey(final Context context, final TokenSource source)
+    protected String getKey(Context context, TokenSource source)
             throws InterpreterException {
 
         return getName() + "#" + Long.toString(source.scanNumber(context));

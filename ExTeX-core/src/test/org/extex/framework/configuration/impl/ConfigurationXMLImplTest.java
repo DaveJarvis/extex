@@ -19,11 +19,12 @@
 
 package org.extex.framework.configuration.impl;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import junit.framework.TestCase;
 
-import org.extex.core.StringList;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationIOException;
@@ -70,6 +71,8 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#ConfigurationXMLImpl(java.io.InputStream, java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testConfigurationXMLImplInputStreamString1()
             throws Exception {
@@ -135,9 +138,11 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for
      * {@link org.extex.framework.configuration.impl.ConfigurationXMLImpl#ConfigurationXMLImpl(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testConfigurationXMLImplString4()
-            throws ConfigurationException {
+            throws Exception {
 
         ConfigurationXMLImpl cfg = new ConfigurationXMLImpl(CONFIGURATION);
         assertNotNull(cfg);
@@ -147,9 +152,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for
      * {@link org.extex.framework.configuration.impl.ConfigurationXMLImpl#findConfiguration(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testFindConfigurationString0()
-            throws ConfigurationException {
+    public final void testFindConfigurationString0() throws Exception {
 
         Configuration cfg = init();
         cfg = cfg.findConfiguration(null);
@@ -159,9 +165,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for
      * {@link org.extex.framework.configuration.impl.ConfigurationXMLImpl#findConfiguration(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testFindConfigurationString1()
-            throws ConfigurationException {
+    public final void testFindConfigurationString1() throws Exception {
 
         Configuration cfg = init();
         cfg = cfg.findConfiguration("undef");
@@ -171,9 +178,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#findConfiguration(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testFindConfigurationString2()
-            throws ConfigurationException {
+    public final void testFindConfigurationString2() throws Exception {
 
         Configuration cfg = init();
         cfg = cfg.findConfiguration("f");
@@ -185,9 +193,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#findConfiguration(java.lang.String, java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testFindConfigurationStringString1()
-            throws ConfigurationException {
+    public final void testFindConfigurationStringString1() throws Exception {
 
         Configuration cfg = init();
         cfg = cfg.findConfiguration(null, null);
@@ -197,9 +206,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#findConfiguration(java.lang.String, java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testFindConfigurationStringString2()
-            throws ConfigurationException {
+    public final void testFindConfigurationStringString2() throws Exception {
 
         Configuration cfg = init();
         cfg = cfg.findConfiguration("f", null);
@@ -209,9 +219,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#findConfiguration(java.lang.String, java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testFindConfigurationStringString3()
-            throws ConfigurationException {
+    public final void testFindConfigurationStringString3() throws Exception {
 
         Configuration cfg = init();
         cfg = cfg.findConfiguration(null, "");
@@ -221,9 +232,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#findConfiguration(java.lang.String, java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testFindConfigurationStringString4()
-            throws ConfigurationException {
+    public final void testFindConfigurationStringString4() throws Exception {
 
         Configuration cfg = init();
         cfg = cfg.findConfiguration("d", "45");
@@ -233,8 +245,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getAttribute(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetAttribute1() throws ConfigurationException {
+    public final void testGetAttribute1() throws Exception {
 
         Configuration cfg = init();
         assertNull(cfg.getAttribute(null));
@@ -243,8 +257,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getAttribute(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetAttribute2() throws ConfigurationException {
+    public final void testGetAttribute2() throws Exception {
 
         Configuration cfg = init();
         assertNull(cfg.getAttribute(""));
@@ -253,8 +269,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getAttribute(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetAttribute3() throws ConfigurationException {
+    public final void testGetAttribute3() throws Exception {
 
         Configuration cfg = init();
         cfg = cfg.findConfiguration("d");
@@ -266,9 +284,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getConfiguration(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetConfigurationString1()
-            throws ConfigurationException {
+    public final void testGetConfigurationString1() throws Exception {
 
         try {
             init().getConfiguration(null);
@@ -283,9 +302,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getConfiguration(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetConfigurationString2()
-            throws ConfigurationException {
+    public final void testGetConfigurationString2() throws Exception {
 
         try {
             init().getConfiguration("");
@@ -300,9 +320,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getConfiguration(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetConfigurationString3()
-            throws ConfigurationException {
+    public final void testGetConfigurationString3() throws Exception {
 
         try {
             init().getConfiguration("undef");
@@ -317,9 +338,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getConfiguration(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetConfigurationString4()
-            throws ConfigurationException {
+    public final void testGetConfigurationString4() throws Exception {
 
         Configuration cfg = init();
         assertNotNull(cfg.getConfiguration("d"));
@@ -328,9 +350,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getConfiguration(java.lang.String, java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetConfigurationStringString1()
-            throws ConfigurationException {
+    public final void testGetConfigurationStringString1() throws Exception {
 
         try {
             init().getConfiguration(null, null);
@@ -345,9 +368,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getConfiguration(java.lang.String, java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetConfigurationStringString2()
-            throws ConfigurationException {
+    public final void testGetConfigurationStringString2() throws Exception {
 
         try {
             init().getConfiguration("d", null);
@@ -362,9 +386,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getConfiguration(java.lang.String, java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetConfigurationStringString3()
-            throws ConfigurationException {
+    public final void testGetConfigurationStringString3() throws Exception {
 
         try {
             init().getConfiguration(null, "23");
@@ -379,9 +404,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getConfiguration(java.lang.String, java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetConfigurationStringString4()
-            throws ConfigurationException {
+    public final void testGetConfigurationStringString4() throws Exception {
 
         Configuration cfg = init();
         assertNotNull(cfg.getConfiguration("d", "23"));
@@ -390,8 +416,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValue()}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetValue1() throws ConfigurationException {
+    public final void testGetValue1() throws Exception {
 
         Configuration cfg = init();
         assertEquals("", cfg.getConfiguration("e").getValue());
@@ -400,8 +428,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValue()}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetValue2() throws ConfigurationException {
+    public final void testGetValue2() throws Exception {
 
         Configuration cfg = init();
         assertEquals("AA", cfg.getConfiguration("d").getValue());
@@ -410,8 +440,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValue()}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetValue3() throws ConfigurationException {
+    public final void testGetValue3() throws Exception {
 
         Configuration cfg = init();
         assertEquals("\n  \n  CC\n ", cfg.getConfiguration("f").getValue());
@@ -420,8 +452,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValue(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetValueString0() throws ConfigurationException {
+    public final void testGetValueString0() throws Exception {
 
         Configuration cfg = init();
         assertEquals("", cfg.getValue(null));
@@ -430,8 +464,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValue(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetValueString1() throws ConfigurationException {
+    public final void testGetValueString1() throws Exception {
 
         Configuration cfg = init();
         assertEquals("", cfg.getValue("undef"));
@@ -440,8 +476,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValue(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetValueString2() throws ConfigurationException {
+    public final void testGetValueString2() throws Exception {
 
         Configuration cfg = init();
         assertEquals("", cfg.getValue("e"));
@@ -450,8 +488,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValue(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetValueString3() throws ConfigurationException {
+    public final void testGetValueString3() throws Exception {
 
         Configuration cfg = init();
         assertEquals("AA", cfg.getValue("d"));
@@ -460,8 +500,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValueAsInteger(java.lang.String, int)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetValueAsInteger() throws ConfigurationException {
+    public final void testGetValueAsInteger() throws Exception {
 
         Configuration cfg = init();
         assertEquals(333, cfg.getValueAsInteger(null, 333));
@@ -470,8 +512,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValueAsInteger(java.lang.String, int)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetValueAsInteger0() throws ConfigurationException {
+    public final void testGetValueAsInteger0() throws Exception {
 
         Configuration cfg = init();
         assertEquals(333, cfg.getValueAsInteger("undef", 333));
@@ -480,8 +524,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValueAsInteger(java.lang.String, int)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetValueAsInteger1() throws ConfigurationException {
+    public final void testGetValueAsInteger1() throws Exception {
 
         Configuration cfg = init();
         assertEquals(333, cfg.getValueAsInteger(null, 333));
@@ -490,8 +536,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValueAsInteger(java.lang.String, int)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetValueAsInteger2() throws ConfigurationException {
+    public final void testGetValueAsInteger2() throws Exception {
 
         Configuration cfg = init();
         assertEquals(0, cfg.getValueAsInteger("n", 333));
@@ -500,8 +548,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValueAsInteger(java.lang.String, int)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetValueAsInteger3() throws ConfigurationException {
+    public final void testGetValueAsInteger3() throws Exception {
 
         Configuration cfg = init();
         assertEquals(1, cfg.getValueAsInteger("m", 333));
@@ -510,8 +560,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValueAsInteger(java.lang.String, int)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetValueAsInteger4() throws ConfigurationException {
+    public final void testGetValueAsInteger4() throws Exception {
 
         Configuration cfg = init();
         assertEquals(-1, cfg.getValueAsInteger("o", 333));
@@ -520,8 +572,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValueAsInteger(java.lang.String, int)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetValueAsInteger5() throws ConfigurationException {
+    public final void testGetValueAsInteger5() throws Exception {
 
         Configuration cfg = init();
         assertEquals(42, cfg.getValueAsInteger("p", 333));
@@ -530,11 +584,13 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValues(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetValuesString1() throws ConfigurationException {
+    public final void testGetValuesString1() throws Exception {
 
         Configuration cfg = init();
-        StringList values = cfg.getValues(null);
+        List<String> values = cfg.getValues(null);
         assertNotNull(values);
         assertEquals(0, values.size());
     }
@@ -542,11 +598,13 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValues(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetValuesString2() throws ConfigurationException {
+    public final void testGetValuesString2() throws Exception {
 
         Configuration cfg = init();
-        StringList values = cfg.getValues("undef");
+        List<String> values = cfg.getValues("undef");
         assertNotNull(values);
         assertEquals(0, values.size());
     }
@@ -554,11 +612,13 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValues(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetValuesString3() throws ConfigurationException {
+    public final void testGetValuesString3() throws Exception {
 
         Configuration cfg = init();
-        StringList values = cfg.getValues("e");
+        List<String> values = cfg.getValues("e");
         assertNotNull(values);
         assertEquals(1, values.size());
         assertEquals("", values.get(0));
@@ -567,11 +627,13 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValues(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetValuesString4() throws ConfigurationException {
+    public final void testGetValuesString4() throws Exception {
 
         Configuration cfg = init();
-        StringList values = cfg.getValues("d");
+        List<String> values = cfg.getValues("d");
         assertNotNull(values);
         assertEquals(2, values.size());
         assertEquals("AA", values.get(0));
@@ -580,10 +642,11 @@ public class ConfigurationXMLImplTest extends TestCase {
 
     /**
      * Test method for {@link
-     * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValues(org.extex.core.StringList, java.lang.String)}.
+     * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValues(List, java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetValuesStringListString0()
-            throws ConfigurationException {
+    public final void testGetValuesStringListString0() throws Exception {
 
         Configuration cfg = init();
         try {
@@ -596,39 +659,42 @@ public class ConfigurationXMLImplTest extends TestCase {
 
     /**
      * Test method for {@link
-     * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValues(org.extex.core.StringList, java.lang.String)}.
+     * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValues(List, java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetValuesStringListString1()
-            throws ConfigurationException {
+    public final void testGetValuesStringListString1() throws Exception {
 
         Configuration cfg = init();
-        StringList sl = new StringList();
+        List<String> sl = new ArrayList<String>();
         cfg.getValues(sl, null);
         assertEquals(0, sl.size());
     }
 
     /**
      * Test method for {@link
-     * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValues(org.extex.core.StringList, java.lang.String)}.
+     * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValues(List, java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetValuesStringListString2()
-            throws ConfigurationException {
+    public final void testGetValuesStringListString2() throws Exception {
 
         Configuration cfg = init();
-        StringList sl = new StringList();
+        List<String> sl = new ArrayList<String>();
         cfg.getValues(sl, "e");
         assertEquals(1, sl.size());
     }
 
     /**
      * Test method for {@link
-     * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValues(org.extex.core.StringList, java.lang.String)}.
+     * org.extex.framework.configuration.impl.ConfigurationXMLImpl#getValues(List, java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testGetValuesStringListString3()
-            throws ConfigurationException {
+    public final void testGetValuesStringListString3() throws Exception {
 
         Configuration cfg = init();
-        StringList sl = new StringList();
+        List<String> sl = new ArrayList<String>();
         cfg.getValues(sl, "d");
         assertEquals(2, sl.size());
     }
@@ -636,8 +702,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#iterator()}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testIterator1() throws ConfigurationException {
+    public final void testIterator1() throws Exception {
 
         Configuration cfg = init();
         Iterator iterator = cfg.iterator();
@@ -653,8 +721,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#iterator(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testIteratorString1() throws ConfigurationException {
+    public final void testIteratorString1() throws Exception {
 
         Configuration cfg = init();
         Iterator iterator = cfg.iterator(null);
@@ -670,8 +740,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#iterator(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testIteratorString2() throws ConfigurationException {
+    public final void testIteratorString2() throws Exception {
 
         Configuration cfg = init();
         Iterator iterator = cfg.iterator("undef");
@@ -687,8 +759,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#iterator(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testIteratorString3() throws ConfigurationException {
+    public final void testIteratorString3() throws Exception {
 
         Configuration cfg = init();
         Iterator iterator = cfg.iterator("e");
@@ -704,8 +778,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#iterator(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
-    public final void testIteratorString4() throws ConfigurationException {
+    public final void testIteratorString4() throws Exception {
 
         Configuration cfg = init();
         Iterator iterator = cfg.iterator("d");
@@ -721,9 +797,10 @@ public class ConfigurationXMLImplTest extends TestCase {
     /**
      * Test method for {@link
      * org.extex.framework.configuration.impl.ConfigurationXMLImpl#toString()}.
-     * @throws ConfigurationException
+     *
+     * @throws Exception in case of an error
      */
-    public final void testToString() throws ConfigurationException {
+    public final void testToString() throws Exception {
 
         ConfigurationXMLImpl cfg =
                 new ConfigurationXMLImpl(CONFIGURATION + ".xml");

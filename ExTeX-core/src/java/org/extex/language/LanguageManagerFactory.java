@@ -121,8 +121,8 @@ public class LanguageManagerFactory extends AbstractFactory {
      *
      * @throws ConfigurationException in case of an configuration error
      */
-    public LanguageManager newInstance(final String type,
-            final OutputStreamFactory outFactory, final ResourceFinder finder)
+    public LanguageManager newInstance(String type,
+            OutputStreamFactory outFactory, ResourceFinder finder)
             throws ConfigurationException {
 
         LanguageManager manager =

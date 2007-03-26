@@ -45,7 +45,7 @@ public interface NodeFactory {
      *
      * @return the new character node
      */
-    Node getNode(final TypesettingContext typesettingContext,
-            final UnicodeChar uc);
+    Node getNode(TypesettingContext typesettingContext,
+            UnicodeChar uc);
 
 }

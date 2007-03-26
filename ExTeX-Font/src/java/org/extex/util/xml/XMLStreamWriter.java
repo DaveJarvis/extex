@@ -82,7 +82,7 @@ public class XMLStreamWriter {
      * @param enc   The encoding
      * @throws IOException if an error occurs.
      */
-    public XMLStreamWriter(final OutputStream sout, final String enc)
+    public XMLStreamWriter(OutputStream sout, String enc)
             throws IOException {
 
         super();
@@ -130,8 +130,8 @@ public class XMLStreamWriter {
      * @param systemId  The system id.
      * @throws IOException if an IO-error occurred.
      */
-    public void setDocType(final String rootn, final String publicId,
-            final String systemId) throws IOException {
+    public void setDocType(String rootn, String publicId,
+            String systemId) throws IOException {
 
         if (!docopen) {
             rootName = rootn;
@@ -186,7 +186,7 @@ public class XMLStreamWriter {
      * @param text  The comment.
      * @throws IOException if an error occurs.
      */
-    public void writeComment(final String text) throws IOException {
+    public void writeComment(String text) throws IOException {
 
         closeElement();
         stack.setAppend();
@@ -202,7 +202,7 @@ public class XMLStreamWriter {
      * @param text  The cdata string.
      * @throws IOException if an error occurs.
      */
-    public void writeCDATA(final String text) throws IOException {
+    public void writeCDATA(String text) throws IOException {
 
         closeElement();
         stack.setAppend();
@@ -218,7 +218,7 @@ public class XMLStreamWriter {
      * @param array  The CDATA as array.
      * @throws IOException if an error occurs.
      */
-    public void writeCDATA(final byte[] array) throws IOException {
+    public void writeCDATA(byte[] array) throws IOException {
 
         writeCDATA(new String(array));
     }
@@ -249,7 +249,7 @@ public class XMLStreamWriter {
      * @param buf   The string buffer.
      * @throws IOException if an error occurs.
      */
-    private void printIndent(final StringBuffer buf) throws IOException {
+    private void printIndent(StringBuffer buf) throws IOException {
 
         if (beauty) {
             for (int i = 0, cnt = stack.size(); i < cnt; i++) {
@@ -263,7 +263,7 @@ public class XMLStreamWriter {
      * @param cnt   the count of the depth
      * @throws IOException if an error occurs.
      */
-    private void printIndent(final int cnt) throws IOException {
+    private void printIndent(int cnt) throws IOException {
 
         if (beauty) {
             for (int i = 0; i < cnt; i++) {
@@ -287,7 +287,7 @@ public class XMLStreamWriter {
      * @param element   the element
      * @throws IOException if an error occurs.
      */
-    public void writeStartElement(final String element) throws IOException {
+    public void writeStartElement(String element) throws IOException {
 
         writeStartElement(defaultns, element);
     }
@@ -298,7 +298,7 @@ public class XMLStreamWriter {
      * @param element   the element
      * @throws IOException if an error occurs.
      */
-    public void writeStartElement(final String ns, final String element)
+    public void writeStartElement(String ns, String element)
             throws IOException {
 
         closeElement();
@@ -370,7 +370,7 @@ public class XMLStreamWriter {
      * @param value     The value of the attribute.
      * @throws IOException if an error occurs.
      */
-    public void writeAttribute(final String name, final String value)
+    public void writeAttribute(String name, String value)
             throws IOException {
 
         writeAttribute(null, name, value);
@@ -383,8 +383,8 @@ public class XMLStreamWriter {
      * @param value     The value of the attribute.
      * @throws IOException if an error occurs.
      */
-    public void writeAttribute(final String ns, final String name,
-            final String value) throws IOException {
+    public void writeAttribute(String ns, String name,
+            String value) throws IOException {
 
         if (elementopen) {
             out.write(" ");
@@ -406,7 +406,7 @@ public class XMLStreamWriter {
      * @param value     The value of the attribute.
      * @throws IOException if an error occurs.
      */
-    public void writeAttribute(final String name, final long value)
+    public void writeAttribute(String name, long value)
             throws IOException {
 
         writeAttribute(name, String.valueOf(value));
@@ -418,7 +418,7 @@ public class XMLStreamWriter {
      * @param value     The value of the attribute.
      * @throws IOException if an error occurs.
      */
-    public void writeAttribute(final String name, final double value)
+    public void writeAttribute(String name, double value)
             throws IOException {
 
         writeAttribute(name, String.valueOf(value));
@@ -430,7 +430,7 @@ public class XMLStreamWriter {
      * @param value     The value of the attribute.
      * @throws IOException if an error occurs.
      */
-    public void writeFormatAttribute(final String name, final double value)
+    public void writeFormatAttribute(String name, double value)
             throws IOException {
 
         writeAttribute(name, numberformat.format(value));
@@ -457,7 +457,7 @@ public class XMLStreamWriter {
      * @param value     The value of the attribute.
      * @throws IOException if an error occurs.
      */
-    public void writeAttribute(final String name, final boolean value)
+    public void writeAttribute(String name, boolean value)
             throws IOException {
 
         writeAttribute(name, String.valueOf(value));
@@ -469,7 +469,7 @@ public class XMLStreamWriter {
      * @param value     The value of the attribute.
      * @throws IOException if an error occurs.
      */
-    public void writeAttribute(final String name, final Object value)
+    public void writeAttribute(String name, Object value)
             throws IOException {
 
         writeAttribute(name, value.toString());
@@ -480,7 +480,7 @@ public class XMLStreamWriter {
      * @param text  The text
      * @throws IOException  if an error occurs.
      */
-    public void writeCharacters(final String text) throws IOException {
+    public void writeCharacters(String text) throws IOException {
 
         closeElement();
         stack.setAppend();
@@ -502,7 +502,7 @@ public class XMLStreamWriter {
      * @param digits    The digits.
      * @return Returns a hex string.
      */
-    private String toHexString(final int value, final int digits) {
+    private String toHexString(int value, int digits) {
 
         StringBuffer buf = new StringBuffer();
         for (int i = 0; i < digits; i++) {
@@ -518,7 +518,7 @@ public class XMLStreamWriter {
      * @param bytes The byte array.
      * @throws IOException if an error occurs.
      */
-    public void writeByteArray(final byte[] bytes) throws IOException {
+    public void writeByteArray(byte[] bytes) throws IOException {
 
         StringBuffer buf = new StringBuffer(bytes.length * ENTRY_LENGTH);
         for (int i = 0; i < bytes.length; i++) {
@@ -537,7 +537,7 @@ public class XMLStreamWriter {
      * @param bytes The byte array.
      * @throws IOException if an error occurs.
      */
-    public void writeByteArrayAsEntries(final byte[] bytes) throws IOException {
+    public void writeByteArrayAsEntries(byte[] bytes) throws IOException {
 
         for (int i = 0; i < bytes.length; i++) {
             writeStartElement("entry");
@@ -553,7 +553,7 @@ public class XMLStreamWriter {
      * @param array The int array.
      * @throws IOException if an error occurs.
      */
-    public void writeIntArrayAsEntries(final int[] array) throws IOException {
+    public void writeIntArrayAsEntries(int[] array) throws IOException {
 
         for (int i = 0; i < array.length; i++) {
             writeStartElement("entry");
@@ -579,7 +579,7 @@ public class XMLStreamWriter {
      * @param shorts The short array.
      * @throws IOException if an error occurs.
      */
-    public void writeShortArray(final short[] shorts) throws IOException {
+    public void writeShortArray(short[] shorts) throws IOException {
 
         StringBuffer buf = new StringBuffer(shorts.length * ENTRY_LENGTH);
 
@@ -599,7 +599,7 @@ public class XMLStreamWriter {
      * @param text  The text.
      * @return Returns the text with entities.
      */
-    private String createEntity(final String text) {
+    private String createEntity(String text) {
 
         StringBuffer buf = new StringBuffer(text.length());
 
@@ -678,7 +678,7 @@ public class XMLStreamWriter {
      * @param ns The defaultns to set.
      * @throws IOException if an error occurs.
      */
-    public void setDefaultNamespace(final String ns) throws IOException {
+    public void setDefaultNamespace(String ns) throws IOException {
 
         if (!docopen) {
             defaultns = ns;
@@ -692,7 +692,7 @@ public class XMLStreamWriter {
      * @param b The beauty to set.
      * @throws IOException if an error occurs.
      */
-    public void setBeauty(final boolean b) throws IOException {
+    public void setBeauty(boolean b) throws IOException {
 
         if (!docopen) {
             beauty = b;
@@ -706,7 +706,7 @@ public class XMLStreamWriter {
      * @param i The indent to set.
      * @throws IOException if an error occurs.
      */
-    public void setIndent(final String i) throws IOException {
+    public void setIndent(String i) throws IOException {
 
         if (!docopen) {
             if (indent != null) {
@@ -743,7 +743,7 @@ public class XMLStreamWriter {
          * Add a element.
          * @param element   the element
          */
-        public void add(final String element) {
+        public void add(String element) {
 
             istack.addLast(new Values(element));
         }
@@ -753,7 +753,7 @@ public class XMLStreamWriter {
          * @param ns        the namespace
          * @param element   the element
          */
-        public void add(final String ns, final String element) {
+        public void add(String ns, String element) {
 
             istack.addLast(new Values(ns, element));
         }
@@ -832,7 +832,7 @@ public class XMLStreamWriter {
              * Create a new object.
              * @param el the element
              */
-            public Values(final String el) {
+            public Values(String el) {
 
                 element = el.trim();
                 append = false;
@@ -844,7 +844,7 @@ public class XMLStreamWriter {
              * @param ns the namespace
              * @param el the element
              */
-            public Values(final String ns, final String el) {
+            public Values(String ns, String el) {
 
                 element = el.trim();
                 append = false;
@@ -864,7 +864,7 @@ public class XMLStreamWriter {
              * Set the append.
              * @param app The append to set.
              */
-            public void setAppend(final boolean app) {
+            public void setAppend(boolean app) {
 
                 append = app;
             }

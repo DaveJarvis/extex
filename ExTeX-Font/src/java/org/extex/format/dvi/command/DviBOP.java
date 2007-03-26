@@ -45,7 +45,7 @@ public class DviBOP extends DviCommand {
      * @param carray    the c-array
      * @param ap        the p
      */
-    public DviBOP(final int oc, final int sp, final int[] carray, final int ap) {
+    public DviBOP(int oc, int sp, int[] carray, int ap) {
 
         super(oc, sp);
         c = carray;
@@ -71,6 +71,8 @@ public class DviBOP extends DviCommand {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviCommand#getName()
      */
     public String getName() {

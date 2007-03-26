@@ -20,14 +20,13 @@
 package org.extex.framework.configuration;
 
 import java.util.Iterator;
+import java.util.List;
 
-import org.extex.core.StringList;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationIOException;
 import org.extex.framework.configuration.exception.ConfigurationInvalidResourceException;
 import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
 import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
-
 
 /**
  * This is the interface for the configuration engine.
@@ -194,8 +193,7 @@ public interface Configuration {
      *  ConfigurationNotFoundException in case that the given name does
      * not correspond to one of the tags in the current configuration
      */
-    Configuration getConfiguration(String key)
-            throws ConfigurationException;
+    Configuration getConfiguration(String key) throws ConfigurationException;
 
     /**
      * Extract a sub-configuration with a given name and a given attribute.
@@ -299,11 +297,11 @@ public interface Configuration {
      *
      * @return the list of values
      */
-    StringList getValues(String key);
+    List<String> getValues(String key);
 
     /**
      * Get the list of all values with the given tag name in the current
-     * configuration and append them to a given {@link StringList StringList}.
+     * configuration and append them to a given String List.
      *
      * @param key the name of the tags. A value of <code>null</code> is legal.
      *  I this case nothing is appended.
@@ -311,7 +309,7 @@ public interface Configuration {
      *
      * @throws IllegalArgumentException in case that list is null
      */
-    void getValues(StringList list, String key);
+    void getValues(List<String> list, String key);
 
     /**
      * Get an iterator for all sub-configurations.

@@ -34,7 +34,7 @@ public class PdfnamesTest extends NoFlagsButProtectedPrimitiveTester {
      *
      * @param arg the name
      */
-    public PdfnamesTest(final String arg) {
+    public PdfnamesTest(String arg) {
 
         super(arg, "pdfnames", "{}");
         setConfig("pdftex-test");

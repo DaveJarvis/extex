@@ -34,7 +34,7 @@ public class NoDefaultOutputModeTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(NoDefaultOutputModeTest.class);
     }
@@ -44,7 +44,7 @@ public class NoDefaultOutputModeTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public NoDefaultOutputModeTest(final String arg) {
+    public NoDefaultOutputModeTest(String arg) {
 
         super(arg, "noDefaultOutputMode", "");
         setConfig("omega-test");

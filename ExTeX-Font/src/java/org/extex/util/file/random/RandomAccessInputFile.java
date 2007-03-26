@@ -52,7 +52,7 @@ public class RandomAccessInputFile implements RandomAccessR {
      * @param file  file for reading
      * @throws IOException if an IO-error occured
      */
-    public RandomAccessInputFile(final File file) throws IOException {
+    public RandomAccessInputFile(File file) throws IOException {
 
         super();
 
@@ -64,7 +64,7 @@ public class RandomAccessInputFile implements RandomAccessR {
      * @param filename  filename for reading
      * @throws IOException if an IO-error occured
      */
-    public RandomAccessInputFile(final String filename) throws IOException {
+    public RandomAccessInputFile(String filename) throws IOException {
 
         this(new File(filename));
     }
@@ -100,7 +100,7 @@ public class RandomAccessInputFile implements RandomAccessR {
     /**
      * @see org.extex.util.file.random.RandomAccessR#seek(long)
      */
-    public void seek(final long arg0) throws IOException {
+    public void seek(long arg0) throws IOException {
 
         raf.seek(arg0);
     }
@@ -175,7 +175,7 @@ public class RandomAccessInputFile implements RandomAccessR {
     /**
      * @see java.io.DataInput#readFully(byte[], int, int)
      */
-    public void readFully(final byte[] b, final int off, final int len)
+    public void readFully(byte[] b, int off, int len)
             throws IOException {
 
         raf.readFully(b, off, len);
@@ -184,7 +184,7 @@ public class RandomAccessInputFile implements RandomAccessR {
     /**
      * @see java.io.DataInput#readFully(byte[])
      */
-    public void readFully(final byte[] b) throws IOException {
+    public void readFully(byte[] b) throws IOException {
 
         raf.readFully(b);
     }
@@ -331,7 +331,7 @@ public class RandomAccessInputFile implements RandomAccessR {
      *
      * @see java.io.DataInput#skipBytes(int)
      */
-    public int skipBytes(final int n) throws IOException {
+    public int skipBytes(int n) throws IOException {
 
         return raf.skipBytes(n);
     }

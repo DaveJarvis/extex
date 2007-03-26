@@ -72,7 +72,7 @@ public class Errorstopmode extends AbstractAssignment {
      *
      * @param name the name for debugging
      */
-    public Errorstopmode(final String name) {
+    public Errorstopmode(String name) {
 
         super(name);
     }
@@ -97,8 +97,8 @@ public class Errorstopmode extends AbstractAssignment {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         context.setInteraction(Interaction.ERRORSTOPMODE);

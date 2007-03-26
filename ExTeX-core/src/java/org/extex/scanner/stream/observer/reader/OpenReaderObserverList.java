@@ -40,8 +40,8 @@ public final class OpenReaderObserverList implements OpenReaderObserver {
      *
      * @return the input list or a new one with the observer added
      */
-    public static OpenReaderObserver register(final OpenReaderObserver list,
-            final OpenReaderObserver observer) {
+    public static OpenReaderObserver register(OpenReaderObserver list,
+            OpenReaderObserver observer) {
 
         if (list instanceof OpenReaderObserverList) {
             ((OpenReaderObserverList) list).add(observer);
@@ -68,7 +68,7 @@ public final class OpenReaderObserverList implements OpenReaderObserver {
      *
      * @param observer the observer to add to the list
      */
-    public void add(final OpenReaderObserver observer) {
+    public void add(OpenReaderObserver observer) {
 
         list.add(observer);
     }
@@ -82,7 +82,7 @@ public final class OpenReaderObserverList implements OpenReaderObserver {
      * @see org.extex.scanner.stream.observer.reader.OpenReaderObserver#update(
      *      java.io.Reader)
      */
-    public void update(final Reader reader) {
+    public void update(Reader reader) {
 
         for (int i = 0; i < list.size(); i++) {
             ((OpenReaderObserver) list.get(i)).update(reader);

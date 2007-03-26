@@ -22,7 +22,6 @@ package org.extex.typesetter.type.noad;
 import java.util.logging.Logger;
 
 import org.extex.core.dimen.Dimen;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.type.math.MathDelimiter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.NodeList;
@@ -61,8 +60,8 @@ public class MiddleNoad extends LeftNoad {
      * @param delimiter the delimiter
      * @param noadPost the material after this noad
      */
-    public MiddleNoad(final LeftNoad noadPre, final MathDelimiter delimiter,
-            final Noad noadPost) {
+    public MiddleNoad(LeftNoad noadPre, MathDelimiter delimiter,
+            Noad noadPost) {
 
         super(noadPre, delimiter);
         this.delimiter = delimiter;
@@ -80,25 +79,14 @@ public class MiddleNoad extends LeftNoad {
      *      java.lang.StringBuffer,
      *      int)
      */
-    public void toStringAdd(final StringBuffer sb, final int depth) {
+    public void toStringAdd(StringBuffer sb, int depth) {
 
         sb.append("middle");
         delimiter.toString(sb);
     }
 
     /**
-     * Translate a Noad into a NodeList.
-     *
-     * @param previousNoad the previous noad
-     * @param noads the list of noads currently processed
-     * @param index the index of the current node in the list
-     * @param list the list to add the nodes to. This list contains the Nodes
-     *  previously typeset. Thus it can be used to look back
-     * @param mathContext the context to consider
-     * @param logger the logger for debugging and tracing information
-     *
-     * @throws TypesetterException in case of a problem
-     * @throws ConfigurationException in case of a configuration problem
+     * {@inheritDoc}
      *
      * @see org.extex.typesetter.type.noad.LeftNoad#typeset(
      *      org.extex.typesetter.type.noad.Noad,
@@ -110,12 +98,11 @@ public class MiddleNoad extends LeftNoad {
      *      org.extex.core.dimen.Dimen,
      *      org.extex.core.dimen.Dimen)
      */
-    public void typeset(final Noad previousNoad, final NoadList noads,
-            final int index, final NodeList list,
-            final MathContext mathContext, final Logger logger,
-            final Dimen height, final Dimen depth)
-            throws TypesetterException,
-                ConfigurationException {
+    public void typeset(Noad previousNoad, NoadList noads,
+            int index, NodeList list,
+            MathContext mathContext, Logger logger,
+            Dimen height, Dimen depth)
+            throws TypesetterException {
 
         getSpacingClass().addClearance(
             (previousNoad != null ? previousNoad.getSpacingClass() : null),

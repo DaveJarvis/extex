@@ -84,7 +84,7 @@ public class XtfTableDirectory implements XMLWriterConvertible {
      * @param rar           input
      * @throws IOException if an error occurs
      */
-    public XtfTableDirectory(final RandomAccessR rar) throws IOException {
+    public XtfTableDirectory(RandomAccessR rar) throws IOException {
 
         // read TableDirectory
         version = rar.readInt();
@@ -105,7 +105,7 @@ public class XtfTableDirectory implements XMLWriterConvertible {
             /**
              * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
              */
-            public int compare(final Object arg0, final Object arg1) {
+            public int compare(Object arg0, Object arg1) {
 
                 Entry e0 = (Entry) arg0;
                 Entry e1 = (Entry) arg1;
@@ -176,7 +176,7 @@ public class XtfTableDirectory implements XMLWriterConvertible {
      * @param index the index
      * @return Returns the DirectoryEntry at the index
      */
-    public Entry getEntry(final int index) {
+    public Entry getEntry(int index) {
 
         return entries[index];
     }
@@ -186,7 +186,7 @@ public class XtfTableDirectory implements XMLWriterConvertible {
      * @param tag   the tag
      * @return Returns the DirectoryEntry with a tag
      */
-    public Entry getEntryByTag(final int tag) {
+    public Entry getEntryByTag(int tag) {
 
         for (int i = 0; i < numTables; i++) {
             if (entries[i].getTag() == tag) {
@@ -257,7 +257,7 @@ public class XtfTableDirectory implements XMLWriterConvertible {
          * @param rar           input
          * @throws IOException if an error occurs
          */
-        Entry(final RandomAccessR rar) throws IOException {
+        Entry(RandomAccessR rar) throws IOException {
 
             tag = rar.readInt();
             checkSum = rar.readInt();
@@ -319,7 +319,7 @@ public class XtfTableDirectory implements XMLWriterConvertible {
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
-        public void writeXML(final XMLStreamWriter writer) throws IOException {
+        public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("entry");
 
@@ -337,7 +337,7 @@ public class XtfTableDirectory implements XMLWriterConvertible {
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("tabledirectory");
         writer.writeAttribute("version", XtfReader

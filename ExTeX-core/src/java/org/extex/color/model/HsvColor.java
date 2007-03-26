@@ -70,8 +70,8 @@ public class HsvColor implements Color {
      * @param thevalue the value channel
      * @param theAlpha the alpha channel
      */
-    protected HsvColor(final int thehue, final int thesaturation,
-            final int thevalue, final int theAlpha) {
+    protected HsvColor(int thehue, int thesaturation,
+            int thevalue, int theAlpha) {
 
         super();
         this.hue = (thehue < 0 ? 0 : thehue < MAX_VALUE ? thehue : MAX_VALUE);
@@ -95,7 +95,7 @@ public class HsvColor implements Color {
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
-    public boolean equals(final Object obj) {
+    public boolean equals(Object obj) {
 
         if (!(obj instanceof HsvColor)) {
             return false;
@@ -185,11 +185,13 @@ public class HsvColor implements Color {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Color#visit(
      *      org.extex.color.ColorVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final ColorVisitor visitor, final Object argument)
+    public Object visit(ColorVisitor visitor, Object argument)
             throws GeneralException {
 
         return visitor.visitHsv(this, argument);

@@ -45,7 +45,7 @@ public class NoTypesetterException extends ConfigurationException {
      *
      * @param aMessage the message string
      */
-    public NoTypesetterException(final String aMessage) {
+    public NoTypesetterException(String aMessage) {
 
         super(aMessage, (String) null);
         this.message = aMessage;

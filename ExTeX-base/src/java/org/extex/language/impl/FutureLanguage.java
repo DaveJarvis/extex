@@ -74,7 +74,7 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
      * @param creator the creator which should be contacted to perform the
      *  real task
      */
-    public FutureLanguage(final String index, final LanguageCreator creator) {
+    public FutureLanguage(String index, LanguageCreator creator) {
 
         super();
         this.name = index;
@@ -82,12 +82,14 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.language.hyphenation.Hyphenator#addHyphenation(
      *      org.extex.core.UnicodeCharList,
      *      org.extex.typesetter.TypesetterOptions)
      */
-    public void addHyphenation(final UnicodeCharList word,
-            final TypesetterOptions context) throws HyphenationException {
+    public void addHyphenation(UnicodeCharList word,
+            TypesetterOptions context) throws HyphenationException {
 
         if (language == null) {
             language = creator.loadLanguageInstance(name);
@@ -96,10 +98,12 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.language.hyphenation.Hyphenator#addPattern(
      *      org.extex.scanner.type.tokens.Tokens)
      */
-    public void addPattern(final Tokens pattern) throws HyphenationException {
+    public void addPattern(Tokens pattern) throws HyphenationException {
 
         if (language == null) {
             language = creator.createLanguageInstance(name);
@@ -108,13 +112,15 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.language.word.WordTokenizer#findWord(
      *      org.extex.typesetter.type.NodeList,
      *      int,
      *      org.extex.core.UnicodeCharList)
      */
-    public int findWord(final NodeList nodes, final int start,
-            final UnicodeCharList word) throws HyphenationException {
+    public int findWord(NodeList nodes, int start,
+            UnicodeCharList word) throws HyphenationException {
 
         if (language == null) {
             language = creator.createLanguageInstance(name);
@@ -123,6 +129,8 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.language.hyphenation.Hyphenator#getLeftHyphenmin()
      */
     public long getLeftHyphenmin() throws HyphenationException {
@@ -134,13 +142,15 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.language.ligature.LigatureBuilder#getLigature(
      *      org.extex.core.UnicodeChar,
      *      org.extex.core.UnicodeChar,
      *      org.extex.interpreter.type.font.Font)
      */
-    public UnicodeChar getLigature(final UnicodeChar c1, final UnicodeChar c2,
-            final Font f) throws HyphenationException {
+    public UnicodeChar getLigature(UnicodeChar c1, UnicodeChar c2,
+            Font f) throws HyphenationException {
 
         if (language == null) {
             language = creator.loadLanguageInstance(name);
@@ -149,6 +159,8 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.language.Language#getName()
      */
     public String getName() {
@@ -157,6 +169,8 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.language.hyphenation.Hyphenator#getRightHyphenmin()
      */
     public long getRightHyphenmin() throws HyphenationException {
@@ -168,6 +182,8 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.language.hyphenation.Hyphenator#hyphenate(
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.TypesetterOptions,
@@ -176,9 +192,9 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
      *      boolean,
      *      org.extex.typesetter.type.node.factory.NodeFactory)
      */
-    public boolean hyphenate(final NodeList nodelist,
-            final TypesetterOptions context, final UnicodeChar hyphen,
-            final int start, final boolean forall, final NodeFactory nodeFactory)
+    public boolean hyphenate(NodeList nodelist,
+            TypesetterOptions context, UnicodeChar hyphen,
+            int start, boolean forall, NodeFactory nodeFactory)
             throws HyphenationException {
 
         if (language == null) {
@@ -189,10 +205,12 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.language.ligature.LigatureBuilder#insertLigatures(
      *      org.extex.typesetter.type.NodeList, int)
      */
-    public int insertLigatures(final NodeList list, final int start)
+    public int insertLigatures(NodeList list, int start)
             throws HyphenationException {
 
         if (language == null) {
@@ -202,14 +220,16 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.language.word.WordTokenizer#insertShy(
      *      org.extex.typesetter.type.NodeList,
      *      int,
      *      boolean[],
      *      org.extex.typesetter.type.node.CharNode)
      */
-    public void insertShy(final NodeList nodes, final int insertionPoint,
-            final boolean[] spec, final CharNode hyphenNode)
+    public void insertShy(NodeList nodes, int insertionPoint,
+            boolean[] spec, CharNode hyphenNode)
             throws HyphenationException {
 
         if (language == null) {
@@ -219,6 +239,8 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.language.hyphenation.Hyphenator#isHyphenActive()
      */
     public boolean isHyphenActive() throws HyphenationException {
@@ -230,12 +252,14 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.language.word.WordTokenizer#normalize(
      *      org.extex.core.UnicodeCharList,
      *      org.extex.typesetter.TypesetterOptions)
      */
-    public UnicodeCharList normalize(final UnicodeCharList word,
-            final TypesetterOptions options) throws HyphenationException {
+    public UnicodeCharList normalize(UnicodeCharList word,
+            TypesetterOptions options) throws HyphenationException {
 
         if (language == null) {
             language = creator.createLanguageInstance(name);
@@ -256,18 +280,22 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.language.impl.ManagedLanguage#setCreator(
      *      org.extex.language.impl.LanguageCreator)
      */
-    public void setCreator(final LanguageCreator creator) {
+    public void setCreator(LanguageCreator creator) {
 
         this.creator = creator;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.language.hyphenation.Hyphenator#setHyphenActive(boolean)
      */
-    public void setHyphenActive(final boolean active)
+    public void setHyphenActive(boolean active)
             throws HyphenationException {
 
         if (language == null) {
@@ -277,9 +305,11 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.language.hyphenation.Hyphenator#setLeftHyphenmin(long)
      */
-    public void setLeftHyphenmin(final long left) throws HyphenationException {
+    public void setLeftHyphenmin(long left) throws HyphenationException {
 
         if (language == null) {
             language = creator.createLanguageInstance(name);
@@ -288,17 +318,21 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.language.Language#setName(java.lang.String)
      */
-    public void setName(final String name) {
+    public void setName(String name) {
 
         this.name = name;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.language.hyphenation.Hyphenator#setRightHyphenmin(long)
      */
-    public void setRightHyphenmin(final long right) throws HyphenationException {
+    public void setRightHyphenmin(long right) throws HyphenationException {
 
         if (language == null) {
             language = creator.createLanguageInstance(name);

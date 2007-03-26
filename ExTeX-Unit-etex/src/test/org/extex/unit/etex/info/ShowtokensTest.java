@@ -34,7 +34,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public ShowtokensTest(final String arg) {
+    public ShowtokensTest(String arg) {
 
         super(arg, "showtokens", "{abc}", "", "> abc.\n");
         setConfig("etex-test");

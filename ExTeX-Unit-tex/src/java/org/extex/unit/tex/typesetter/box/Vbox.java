@@ -60,10 +60,10 @@ import org.extex.typesetter.type.NodeList;
  *    &lang;box specification&rang;
  *      &rarr;
  *         | <tt>to</tt> {@linkplain
- *           org.extex.core.dimen.Dimen#parse(Context,TokenSource,Typesetter)
+ *           org.extex.core.dimen.DimenParser#parse(Context,TokenSource,Typesetter)
  *           &lang;rule dimension&rang;}
  *         | <tt>spread</tt> {@linkplain
- *           org.extex.core.dimen.Dimen#parse(Context,TokenSource,Typesetter)
+ *           org.extex.core.dimen.DimenParser#parse(Context,TokenSource,Typesetter)
  *           &lang;rule dimension&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -114,7 +114,7 @@ public class Vbox extends AbstractBoxPrimitive {
      *
      * @param name the name for debugging
      */
-    public Vbox(final String name) {
+    public Vbox(String name) {
 
         super(name);
     }
@@ -139,8 +139,8 @@ public class Vbox extends AbstractBoxPrimitive {
      *      org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
-    public Box getBox(final Context context, final TokenSource source,
-            final Typesetter typesetter, final Token insert)
+    public Box getBox(Context context, TokenSource source,
+            Typesetter typesetter, Token insert)
             throws InterpreterException {
 
         Token startToken = source.getLastToken();
@@ -191,9 +191,9 @@ public class Vbox extends AbstractBoxPrimitive {
      *
      * @throws InterpreterException in case of an error
      */
-    protected Box constructBox(final Context context, final TokenSource source,
-            final Typesetter typesetter, final Token startToken,
-            final Token insert) throws InterpreterException {
+    protected Box constructBox(Context context, TokenSource source,
+            Typesetter typesetter, Token startToken,
+            Token insert) throws InterpreterException {
 
         Box box =
                 acquireBox(context, source, typesetter, GroupType.VBOX_GROUP,
@@ -227,9 +227,9 @@ public class Vbox extends AbstractBoxPrimitive {
      *
      * @throws InterpreterException in case of an error
      */
-    protected Box acquireBox(final Context context, final TokenSource source,
-            final Typesetter typesetter, final GroupType groupType,
-            final Token startToken, final Token ins)
+    protected Box acquireBox(Context context, TokenSource source,
+            Typesetter typesetter, GroupType groupType,
+            Token startToken, Token ins)
             throws InterpreterException {
 
         Tokens everyvbox = context.getToks("everyvbox");

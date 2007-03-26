@@ -62,7 +62,7 @@ public class HorizontalListNode extends GenericNodeList {
      *
      * @param width the width of the box
      */
-    public HorizontalListNode(final FixedDimen width) {
+    public HorizontalListNode(FixedDimen width) {
 
         super();
         setWidth(width);
@@ -75,7 +75,7 @@ public class HorizontalListNode extends GenericNodeList {
      *
      * @param node the initial node to add
      */
-    public HorizontalListNode(final Node node) {
+    public HorizontalListNode(Node node) {
 
         super(node);
     }
@@ -87,7 +87,7 @@ public class HorizontalListNode extends GenericNodeList {
      * @param node1 the initial node
      * @param node2 the node to add after node1
      */
-    public HorizontalListNode(final Node node1, final Node node2) {
+    public HorizontalListNode(Node node1, Node node2) {
 
         super(node1);
         add(node2);
@@ -103,7 +103,7 @@ public class HorizontalListNode extends GenericNodeList {
      *     int,
      *     org.extex.typesetter.type.Node)
      */
-    public void add(final int index, final Node node) {
+    public void add(int index, Node node) {
 
         super.add(index, node);
         advanceWidth(node.getWidth());
@@ -120,7 +120,7 @@ public class HorizontalListNode extends GenericNodeList {
      * @see org.extex.typesetter.type.node.GenericNodeList#add(
      *      org.extex.typesetter.type.Node)
      */
-    public void add(final Node node) {
+    public void add(Node node) {
 
         super.add(node);
         advanceWidth(node.getWidth());
@@ -137,7 +137,7 @@ public class HorizontalListNode extends GenericNodeList {
      * @see org.extex.typesetter.type.NodeList#addSkip(
      *      FixedGlue)
      */
-    public void addSkip(final FixedGlue glue) {
+    public void addSkip(FixedGlue glue) {
 
         Node gNode = new GlueNode(glue, true);
         gNode.setWidth(glue.getLength());
@@ -168,8 +168,8 @@ public class HorizontalListNode extends GenericNodeList {
      *      org.extex.typesetter.type.NodeVisitor,
      *      boolean)
      */
-    public Node atShipping(final Context context, final Typesetter typesetter,
-            final NodeVisitor visitor, final boolean inHMode)
+    public Node atShipping(Context context, Typesetter typesetter,
+            NodeVisitor visitor, boolean inHMode)
             throws GeneralException {
 
         return super.atShipping(context, typesetter, visitor, true);
@@ -210,7 +210,7 @@ public class HorizontalListNode extends GenericNodeList {
      *
      * @param width the new target width
      */
-    public void hpack(final FixedDimen width) {
+    public void hpack(FixedDimen width) {
 
         setTargetWidth(width);
         hpack();
@@ -227,7 +227,7 @@ public class HorizontalListNode extends GenericNodeList {
      *      org.extex.core.dimen.FixedDimen,
      *      org.extex.core.glue.FixedGlueComponent)
      */
-    public void spreadWidth(final FixedDimen w, final FixedGlueComponent sum) {
+    public void spreadWidth(FixedDimen w, FixedGlueComponent sum) {
 
     }
 
@@ -245,8 +245,8 @@ public class HorizontalListNode extends GenericNodeList {
      *      java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         sb.append("\\hbox");
         super.toString(sb, prefix, breadth, depth);
@@ -264,7 +264,7 @@ public class HorizontalListNode extends GenericNodeList {
      *      java.lang.StringBuffer,
      *      java.lang.String)
      */
-    public void toText(final StringBuffer sb, final String prefix) {
+    public void toText(StringBuffer sb, String prefix) {
 
         sb.append("\n");
         sb.append(prefix);
@@ -286,7 +286,7 @@ public class HorizontalListNode extends GenericNodeList {
      *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final NodeVisitor visitor, final Object value)
+    public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {
 
         return visitor.visitHorizontalList(this, value);

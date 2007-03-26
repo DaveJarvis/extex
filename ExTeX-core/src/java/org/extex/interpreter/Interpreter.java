@@ -89,6 +89,8 @@ public interface Interpreter extends TokenSource {
      *
      * @param stream stream to read from
      * @param fmt the name of the format to be loaded
+     * @param contextType ...
+     * @param languageType ...
      *
      * @throws IOException in case of an IO error
      * @throws LoaderException in case of an error during loading
@@ -103,7 +105,7 @@ public interface Interpreter extends TokenSource {
      *
      * @throws ConfigurationException in case of an error
      */
-    void loadUnit(final String name) throws ConfigurationException;
+    void loadUnit(String name) throws ConfigurationException;
 
     /**
      * Process the current token streams by repeatedly reading a single token

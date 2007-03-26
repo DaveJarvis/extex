@@ -108,7 +108,7 @@ public class Hbox extends AbstractBoxPrimitive {
      *
      * @param name the name for debugging
      */
-    public Hbox(final String name) {
+    public Hbox(String name) {
 
         super(name);
     }
@@ -133,8 +133,8 @@ public class Hbox extends AbstractBoxPrimitive {
      *      org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
-    public Box getBox(final Context context, final TokenSource source,
-            final Typesetter typesetter, final Token insert)
+    public Box getBox(Context context, TokenSource source,
+            Typesetter typesetter, Token insert)
             throws InterpreterException {
 
         Token startToken = source.getLastToken();
@@ -174,7 +174,7 @@ public class Hbox extends AbstractBoxPrimitive {
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param startToken the token which started the group
-     * @param insert the token to insert either at the beginning of the box or
+     * @param ins the token to insert either at the beginning of the box or
      *   after the box has been gathered. If it is <code>null</code> then
      *   nothing is inserted
      * @param groupType the group type
@@ -183,9 +183,9 @@ public class Hbox extends AbstractBoxPrimitive {
      *
      * @throws InterpreterException in case of an error
      */
-    private Box acquireBox(final Context context, final TokenSource source,
-            final Typesetter typesetter, final Token startToken,
-            final GroupType groupType, final Token ins)
+    private Box acquireBox(Context context, TokenSource source,
+            Typesetter typesetter, Token startToken,
+            GroupType groupType, Token ins)
             throws InterpreterException {
 
         Tokens toks = context.getToks("everyhbox");

@@ -59,7 +59,7 @@ public class Splitbotmark extends Splitbotmarks {
      *
      * @param name the name for debugging
      */
-    public Splitbotmark(final String name) {
+    public Splitbotmark(String name) {
 
         super(name);
     }
@@ -78,8 +78,8 @@ public class Splitbotmark extends Splitbotmarks {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    protected String getKey(final Context context, final TokenSource source,
-            final Typesetter typesetter) {
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) {
 
         return "0";
     }

@@ -40,7 +40,7 @@ public abstract class AbstractToks extends AbstractAssignment {
      *
      * @param name the name for debugging
      */
-    public AbstractToks(final String name) {
+    public AbstractToks(String name) {
 
         super(name);
     }
@@ -58,8 +58,8 @@ public abstract class AbstractToks extends AbstractAssignment {
      * @throws InterpreterException in case that a derived class needs to
      *  throw an Exception this one is declared.
      */
-    protected String getKey(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         String name =
                 source.scanRegisterName(context, source, typesetter, getName());

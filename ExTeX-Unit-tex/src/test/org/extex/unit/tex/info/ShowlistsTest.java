@@ -36,7 +36,7 @@ public class ShowlistsTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public ShowlistsTest(final String arg) {
+    public ShowlistsTest(String arg) {
 
         super(arg, "showlists", "");
     }

@@ -62,14 +62,14 @@ public interface Noad {
      *
      * @param subscript the subscript to set.
      */
-    void setSubscript(final Noad subscript);
+    void setSubscript(Noad subscript);
 
     /**
      * Setter for the superscript.
      *
      * @param superscript the superscript to set.
      */
-    void setSuperscript(final Noad superscript);
+    void setSuperscript(Noad superscript);
 
     /**
      * Produce a printable representation of the noad in a StringBuffer.

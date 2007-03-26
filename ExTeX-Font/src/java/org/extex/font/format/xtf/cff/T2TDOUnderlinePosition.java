@@ -37,7 +37,7 @@ public class T2TDOUnderlinePosition extends T2TDONumber {
      * @param stack the stack
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOUnderlinePosition(final List stack) throws IOException {
+    public T2TDOUnderlinePosition(List stack) throws IOException {
 
         super(stack, new short[]{ESCAPE_BYTE, UNDERLINEPOSITION});
     }

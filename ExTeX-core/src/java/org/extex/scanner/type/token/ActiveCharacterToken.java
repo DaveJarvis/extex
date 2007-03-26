@@ -60,8 +60,8 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
      * @param uc the string value
      * @param theNamespace the namespace
      */
-    protected ActiveCharacterToken(final UnicodeChar uc,
-            final String theNamespace) {
+    protected ActiveCharacterToken(UnicodeChar uc,
+            String theNamespace) {
 
         super(uc);
         namespace = theNamespace;
@@ -93,7 +93,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
      * @see org.extex.scanner.type.token.CodeToken#cloneInNamespace(
      *      java.lang.String)
      */
-    public CodeToken cloneInNamespace(final String theNamespace) {
+    public CodeToken cloneInNamespace(String theNamespace) {
 
         if (theNamespace == null || namespace.equals(theNamespace)) {
             return this;
@@ -110,7 +110,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
-    public boolean equals(final Object other) {
+    public boolean equals(Object other) {
 
         if (other == null || !(other instanceof ActiveCharacterToken)) {
             return false;
@@ -187,7 +187,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
      *
      * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
      */
-    public void toString(final StringBuffer sb) {
+    public void toString(StringBuffer sb) {
 
         sb.append(getLocalizer().format("ActiveCharacterToken.Text", //
             super.toString()));
@@ -206,7 +206,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
      *      org.extex.scanner.type.token.TokenVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final TokenVisitor visitor, final Object arg1)
+    public Object visit(TokenVisitor visitor, Object arg1)
             throws Exception {
 
         return visitor.visitActive(this, arg1);

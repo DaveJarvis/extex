@@ -51,7 +51,7 @@ public class DviW0 extends AbstractDviCode {
      *
      * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
      */
-    public int write(final OutputStream stream) throws IOException {
+    public int write(OutputStream stream) throws IOException {
 
         stream.write(Dvi.W0);
         return 1;

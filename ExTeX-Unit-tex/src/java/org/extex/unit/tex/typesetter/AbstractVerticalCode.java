@@ -44,7 +44,7 @@ public abstract class AbstractVerticalCode extends AbstractCode {
      *
      * @param codeName the name of the code
      */
-    public AbstractVerticalCode(final String codeName) {
+    public AbstractVerticalCode(String codeName) {
 
         super(codeName);
     }
@@ -58,7 +58,7 @@ public abstract class AbstractVerticalCode extends AbstractCode {
      * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
      */
-    protected void ensureVerticalMode(final Typesetter typesetter)
+    protected void ensureVerticalMode(Typesetter typesetter)
             throws InterpreterException {
 
         Mode mode = typesetter.getMode();

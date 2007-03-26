@@ -51,7 +51,7 @@ public interface DviCode {
         /**
          * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
          */
-        public int write(final OutputStream stream) throws IOException {
+        public int write(OutputStream stream) throws IOException {
 
             stream.write(Dvi.POP);
             return 1;
@@ -77,7 +77,7 @@ public interface DviCode {
         /**
          * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
          */
-        public int write(final OutputStream stream) throws IOException {
+        public int write(OutputStream stream) throws IOException {
 
             stream.write(Dvi.PUSH);
             return 1;
@@ -103,7 +103,7 @@ public interface DviCode {
         /**
          * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
          */
-        public int write(final OutputStream stream) throws IOException {
+        public int write(OutputStream stream) throws IOException {
 
             stream.write(Dvi.W0);
             return 1;
@@ -129,7 +129,7 @@ public interface DviCode {
         /**
          * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
          */
-        public int write(final OutputStream stream) throws IOException {
+        public int write(OutputStream stream) throws IOException {
 
             stream.write(Dvi.X0);
             return 1;
@@ -155,7 +155,7 @@ public interface DviCode {
         /**
          * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
          */
-        public int write(final OutputStream stream) throws IOException {
+        public int write(OutputStream stream) throws IOException {
 
             stream.write(Dvi.Y0);
             return 1;
@@ -181,7 +181,7 @@ public interface DviCode {
         /**
          * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
          */
-        public int write(final OutputStream stream) throws IOException {
+        public int write(OutputStream stream) throws IOException {
 
             stream.write(Dvi.Z0);
             return 1;

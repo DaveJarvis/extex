@@ -20,8 +20,8 @@
 package org.extex.scanner.base;
 
 import java.util.Iterator;
+import java.util.List;
 
-import org.extex.core.StringList;
 import org.extex.framework.configuration.Configuration;
 
 /**
@@ -43,7 +43,7 @@ public class MyConfiguration implements Configuration {
      *
      * @param attribute the value for the attribute
      */
-    public MyConfiguration(final String attribute) {
+    public MyConfiguration(String attribute) {
 
         super();
         this.attribute = attribute;
@@ -58,7 +58,7 @@ public class MyConfiguration implements Configuration {
      *
      * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
      */
-    public Configuration findConfiguration(final String key) {
+    public Configuration findConfiguration(String key) {
 
         return null;
     }
@@ -73,7 +73,7 @@ public class MyConfiguration implements Configuration {
      *
      * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String, java.lang.String)
      */
-    public Configuration findConfiguration(final String key, final String a) {
+    public Configuration findConfiguration(String key, String a) {
 
         return null;
     }
@@ -88,7 +88,7 @@ public class MyConfiguration implements Configuration {
      *
      * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
      */
-    public String getAttribute(final String name) {
+    public String getAttribute(String name) {
 
         return attribute;
     }
@@ -102,7 +102,7 @@ public class MyConfiguration implements Configuration {
      *
      * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String)
      */
-    public Configuration getConfiguration(final String key) {
+    public Configuration getConfiguration(String key) {
 
         return null;
     }
@@ -117,7 +117,7 @@ public class MyConfiguration implements Configuration {
      *
      * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String, java.lang.String)
      */
-    public Configuration getConfiguration(final String key, final String a) {
+    public Configuration getConfiguration(String key, String a) {
 
         return null;
     }
@@ -143,7 +143,7 @@ public class MyConfiguration implements Configuration {
      *
      * @see org.extex.framework.configuration.Configuration#getValue(java.lang.String)
      */
-    public String getValue(final String key) {
+    public String getValue(String key) {
 
         return null;
     }
@@ -159,7 +159,7 @@ public class MyConfiguration implements Configuration {
      *
      * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String, int)
      */
-    public int getValueAsInteger(final String key, final int defaultValue) {
+    public int getValueAsInteger(String key, int defaultValue) {
 
         return 0;
     }
@@ -174,22 +174,18 @@ public class MyConfiguration implements Configuration {
      *
      * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
      */
-    public StringList getValues(final String key) {
+    public List<String> getValues(String key) {
 
         return null;
     }
 
     /**
-     * Get the list of all values with the given tag name in the current
-     * configuration and append them to a given {@link StringList StringList}.
+     * {@inheritDoc}
      *
-     * @param key the name of the tags. A value of <code>null</code> is legal.
-     *  I this case nothing is appended.
-     * @param list the list to append the values to
-     *
-     * @see org.extex.framework.configuration.Configuration#getValues(org.extex.core.StringList, java.lang.String)
+     * @see org.extex.framework.configuration.Configuration#getValues(
+     *      java.util.List, java.lang.String)
      */
-    public void getValues(final StringList list, final String key) {
+    public void getValues(List<String> list, String key) {
 
         //not needed
     }
@@ -215,7 +211,7 @@ public class MyConfiguration implements Configuration {
      *
      * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
      */
-    public Iterator iterator(final String key) {
+    public Iterator iterator(String key) {
 
         return null;
     }

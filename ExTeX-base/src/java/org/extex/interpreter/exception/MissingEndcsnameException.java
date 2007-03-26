@@ -44,7 +44,7 @@ public class MissingEndcsnameException extends InterpreterException {
      * @param context the interpreter context
      * @param t the token encountered
      */
-    public MissingEndcsnameException(final Context context, final Token t) {
+    public MissingEndcsnameException(Context context, Token t) {
 
         super(LocalizerFactory.getLocalizer(MissingEndcsnameException.class)
             .format("TTP.MissingEndcsname"));

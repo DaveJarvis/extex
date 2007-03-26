@@ -31,7 +31,7 @@ public class SkipTest extends AbstractSkipRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(SkipTest.class);
     }
@@ -41,7 +41,7 @@ public class SkipTest extends AbstractSkipRegisterTester {
      *
      * @param arg the name
      */
-    public SkipTest(final String arg) {
+    public SkipTest(String arg) {
 
         super(arg, "skip", "42", "0.0pt");
     }

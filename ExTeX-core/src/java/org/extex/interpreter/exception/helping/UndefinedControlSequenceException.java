@@ -40,7 +40,7 @@ public class UndefinedControlSequenceException extends HelpingException {
      *
      * @param macro the name of the macro which is undefined
      */
-    public UndefinedControlSequenceException(final String macro) {
+    public UndefinedControlSequenceException(String macro) {
 
         super(LocalizerFactory
                 .getLocalizer(UndefinedControlSequenceException.class),

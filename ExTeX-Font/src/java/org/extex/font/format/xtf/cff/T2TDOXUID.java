@@ -37,7 +37,7 @@ public class T2TDOXUID extends T2TDOArray {
      * @param stack the stack
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOXUID(final List stack) throws IOException {
+    public T2TDOXUID(List stack) throws IOException {
 
         super(stack, new short[]{XUID});
     }

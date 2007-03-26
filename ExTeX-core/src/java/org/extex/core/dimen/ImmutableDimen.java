@@ -42,7 +42,7 @@ public class ImmutableDimen extends Dimen implements Serializable {
      *
      * @param value the value to be stored
      */
-    public ImmutableDimen(final Dimen value) {
+    public ImmutableDimen(Dimen value) {
 
         super(value);
     }
@@ -52,7 +52,7 @@ public class ImmutableDimen extends Dimen implements Serializable {
      *
      * @param value the value to be stored
      */
-    public ImmutableDimen(final long value) {
+    public ImmutableDimen(long value) {
 
         super(value);
     }
@@ -66,7 +66,7 @@ public class ImmutableDimen extends Dimen implements Serializable {
      * @see org.extex.core.dimen.Dimen#add(
      *      org.extex.core.dimen.FixedDimen)
      */
-    public void add(final Dimen d) {
+    public void add(Dimen d) {
 
         throw new UnsupportedOperationException(
             "Unable to add to an immutable object");
@@ -80,7 +80,7 @@ public class ImmutableDimen extends Dimen implements Serializable {
      *
      * @see org.extex.core.dimen.Dimen#divide(long)
      */
-    public void divide(final long denom) {
+    public void divide(long denom) {
 
         throw new UnsupportedOperationException(
             "Unable to add to an immutable object");
@@ -96,7 +96,7 @@ public class ImmutableDimen extends Dimen implements Serializable {
      * @see org.extex.core.dimen.Dimen#max(
      *      org.extex.core.dimen.FixedDimen)
      */
-    public void max(final Dimen d) {
+    public void max(Dimen d) {
 
         throw new UnsupportedOperationException(
             "Unable to add to an immutable object");
@@ -110,7 +110,7 @@ public class ImmutableDimen extends Dimen implements Serializable {
      *
      * @see org.extex.core.dimen.Dimen#multiply(long)
      */
-    public void multiply(final long factor) {
+    public void multiply(long factor) {
 
         throw new UnsupportedOperationException(
             "Unable to add to an immutable object");
@@ -125,7 +125,7 @@ public class ImmutableDimen extends Dimen implements Serializable {
      * @see org.extex.core.dimen.Dimen#subtract(
      *      org.extex.core.dimen.FixedDimen)
      */
-    public void subtract(final FixedDimen d) {
+    public void subtract(FixedDimen d) {
 
         throw new UnsupportedOperationException(
             "Unable to add to an immutable object");

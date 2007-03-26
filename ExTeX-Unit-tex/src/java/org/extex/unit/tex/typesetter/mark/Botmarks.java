@@ -73,7 +73,7 @@ public class Botmarks extends AbstractMarksCode {
      *
      * @param name the name for debugging
      */
-    public Botmarks(final String name) {
+    public Botmarks(String name) {
 
         super(name);
     }
@@ -89,7 +89,7 @@ public class Botmarks extends AbstractMarksCode {
      * @see org.extex.unit.tex.typesetter.mark.AbstractMarksCode#getValue(
      *      org.extex.interpreter.context.Context, java.lang.String)
      */
-    protected Tokens getValue(final Context context, final String key) {
+    protected Tokens getValue(Context context, String key) {
 
         return context.getBottomMark(key);
     }

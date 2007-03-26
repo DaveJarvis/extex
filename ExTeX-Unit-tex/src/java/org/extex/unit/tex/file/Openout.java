@@ -40,7 +40,7 @@ import org.extex.unit.base.file.AbstractFileCode;
  * <p>
  *  The primitive <tt>\openout</tt> tries to open a file or other named resource
  *  for writing. The reference is stored in a write register to be used with
- *  {@link org.extex.unit.tex.file.Write <tt>\write</tt>].
+ *  {@link org.extex.unit.tex.file.Write <tt>\write</tt>}.
  *  If the opening fails then the write register is void.
  * </p>
  * <p>
@@ -94,7 +94,7 @@ public class Openout extends AbstractFileCode {
      *
      * @param name the name for debugging
      */
-    public Openout(final String name) {
+    public Openout(String name) {
 
         super(name);
     }
@@ -118,11 +118,13 @@ public class Openout extends AbstractFileCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException,ConfigurationException {
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
+            throws InterpreterException,
+                ConfigurationException {
 
-        String key = AbstractFileCode.scanOutFileKey(context, source, typesetter);
+        String key =
+                AbstractFileCode.scanOutFileKey(context, source, typesetter);
 
         source.getOptionalEquals(context);
         String name = scanFileName(context, source);

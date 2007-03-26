@@ -40,7 +40,7 @@ public class DocumentWriterPdfBoxColorException
      * Create a new object.
      * @param message The message.
      */
-    public DocumentWriterPdfBoxColorException(final String message) {
+    public DocumentWriterPdfBoxColorException(String message) {
 
         super(message);
     }
@@ -50,8 +50,8 @@ public class DocumentWriterPdfBoxColorException
      * @param message   The message.
      * @param cause     The cuase.
      */
-    public DocumentWriterPdfBoxColorException(final String message,
-            final Throwable cause) {
+    public DocumentWriterPdfBoxColorException(String message,
+            Throwable cause) {
 
         super(message, cause);
     }
@@ -60,7 +60,7 @@ public class DocumentWriterPdfBoxColorException
      * Create a new object.
      * @param cause The cause.
      */
-    public DocumentWriterPdfBoxColorException(final Throwable cause) {
+    public DocumentWriterPdfBoxColorException(Throwable cause) {
 
         super(cause);
     }

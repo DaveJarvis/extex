@@ -44,7 +44,7 @@ public class DviX extends DviCommand {
      * @param sp    the start pointer
      * @param v     the value
      */
-    public DviX(final int opc, final int sp, final int v) {
+    public DviX(int opc, int sp, int v) {
 
         this(opc, sp, v, false);
     }
@@ -56,7 +56,7 @@ public class DviX extends DviCommand {
      * @param v     the value
      * @param x     the x0
      */
-    public DviX(final int opc, final int sp, final int v, final boolean x) {
+    public DviX(int opc, int sp, int v, boolean x) {
 
         super(opc, sp);
         value = v;

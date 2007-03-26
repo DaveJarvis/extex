@@ -429,7 +429,7 @@ public final class T2PredefinedCharset {
      * @param sid   the sid for the name
      * @return Returns the name  or '.notdef' if number out of range.
      */
-    public static String getName(final int sid) {
+    public static String getName(int sid) {
 
         if (sid >= 0 && sid < DATA.length) {
             return DATA[sid];
@@ -442,7 +442,7 @@ public final class T2PredefinedCharset {
      * @param name  the name
      * @return Returns the SID for a name or -1 if not found.
      */
-    public static int getSID(final String name) {
+    public static int getSID(String name) {
 
         for (int i = 0; i < DATA.length; i++) {
             if (DATA[i].equals(name)) {

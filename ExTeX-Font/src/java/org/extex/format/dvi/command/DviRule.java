@@ -53,7 +53,7 @@ public class DviRule extends DviCommand {
      * @param a     the height
      * @param b     the width
      */
-    public DviRule(final int opc, final int sp, final int a, final int b) {
+    public DviRule(int opc, int sp, int a, int b) {
 
         this(opc, sp, a, b, false);
     }
@@ -66,8 +66,8 @@ public class DviRule extends DviCommand {
      * @param b     the width
      * @param pm    the put mode
      */
-    public DviRule(final int opc, final int sp, final int a, final int b,
-            final boolean pm) {
+    public DviRule(int opc, int sp, int a, int b,
+            boolean pm) {
 
         super(opc, sp);
         height = a;

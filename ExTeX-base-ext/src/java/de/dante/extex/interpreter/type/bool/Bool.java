@@ -65,7 +65,7 @@ public class Bool implements Serializable {
      *
      * @param val init with a boolean-value
      */
-    public Bool(final boolean val) {
+    public Bool(boolean val) {
 
         super();
         value = val;
@@ -78,7 +78,7 @@ public class Bool implements Serializable {
      * @param source    the token source
      * @throws InterpreterException in case of an error.
      */
-    public Bool(final Context context, final TokenSource source)
+    public Bool(Context context, TokenSource source)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -94,7 +94,7 @@ public class Bool implements Serializable {
      * @return the boolean value
      * @throws InterpreterException in case of an error
      */
-    private boolean scanBool(final Context context, final TokenSource source)
+    private boolean scanBool(Context context, TokenSource source)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -138,7 +138,7 @@ public class Bool implements Serializable {
      * <p>!= -> true</p>
      * @param l the value as long
      */
-    public Bool(final long l) {
+    public Bool(long l) {
 
         if (l == 0) {
             value = false;
@@ -156,7 +156,7 @@ public class Bool implements Serializable {
      * @param s     the value as String
      * @throws InterpreterException if no boolean-value are found
      */
-    public Bool(final String s) throws InterpreterException {
+    public Bool(String s) throws InterpreterException {
 
         if ("true".equalsIgnoreCase(s)) {
             value = true;
@@ -181,7 +181,7 @@ public class Bool implements Serializable {
      * Setter for the value.
      * @param b the new value
      */
-    public void setValue(final boolean b) {
+    public void setValue(boolean b) {
 
         value = b;
     }

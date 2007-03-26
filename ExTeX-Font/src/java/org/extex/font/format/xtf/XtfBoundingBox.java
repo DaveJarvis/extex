@@ -55,8 +55,8 @@ public class XtfBoundingBox {
      * @param xmax  The x-max.
      * @param ymax  The y-max. 
      */
-    public XtfBoundingBox(final short xmin, final short ymin, final short xmax,
-            final short ymax) {
+    public XtfBoundingBox(short xmin, short ymin, short xmax,
+            short ymax) {
 
         xMin = xmin;
         yMin = ymin;
@@ -74,8 +74,8 @@ public class XtfBoundingBox {
      * @param ymax  The y-max. 
      * @return <code>true</code>, if the values are equals.
      */
-    public boolean eq(final short xmin, final short ymin, final short xmax,
-            final short ymax) {
+    public boolean eq(short xmin, short ymin, short xmax,
+            short ymax) {
 
         if (xMin == xmin && yMin == ymin && xMax == xmax && yMax == ymax) {
             return true;
@@ -92,8 +92,8 @@ public class XtfBoundingBox {
      * @param ymax  The y-max. 
      * @return <code>true</code>, if the values are equals.
      */
-    public boolean eq(final int xmin, final int ymin, final int xmax,
-            final int ymax) {
+    public boolean eq(int xmin, int ymin, int xmax,
+            int ymax) {
 
         return eq((short) xmin, (short) ymin, (short) xmax, (short) ymax);
     }

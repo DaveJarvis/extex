@@ -53,7 +53,7 @@ public class TimeTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(TimeTest.class);
     }
@@ -63,7 +63,7 @@ public class TimeTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public TimeTest(final String arg) {
+    public TimeTest(String arg) {
 
         super(arg, "time", "", getDefaultValue());
     }

@@ -39,7 +39,7 @@ public class IllegalValueHyphenationException extends HyphenationException {
      *
      * @param message the message
      */
-    public IllegalValueHyphenationException(final String message) {
+    public IllegalValueHyphenationException(String message) {
 
         super(message);
     }

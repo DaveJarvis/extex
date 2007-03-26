@@ -116,81 +116,97 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
     private static final MathClassVisitor MCV = new MathClassVisitor() {
 
         /**
-         * @see org.extex.core.type.math.MathClassVisitor#visitBinary(
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitBinary(
          *      java.lang.Object,
          *      java.lang.Object)
          */
-        public Object visitBinary(final Object ignore, final Object ignore2) {
+        public Object visitBinary(Object ignore, Object ignore2) {
 
             return new Integer(2);
         }
 
         /**
-         * @see org.extex.core.type.math.MathClassVisitor#visitClosing(
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitClosing(
          *      java.lang.Object,
          *      java.lang.Object)
          */
-        public Object visitClosing(final Object ignore, final Object ignore2) {
+        public Object visitClosing(Object ignore, Object ignore2) {
 
             return new Integer(5);
         }
 
         /**
-         * @see org.extex.core.type.math.MathClassVisitor#visitLarge(
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitLarge(
          *      java.lang.Object,
          *      java.lang.Object)
          */
-        public Object visitLarge(final Object ignore, final Object ignore2) {
+        public Object visitLarge(Object ignore, Object ignore2) {
 
             return new Integer(1);
         }
 
         /**
-         * @see org.extex.core.type.math.MathClassVisitor#visitOpening(
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitOpening(
          *      java.lang.Object,
          *      java.lang.Object)
          */
-        public Object visitOpening(final Object ignore, final Object ignore2) {
+        public Object visitOpening(Object ignore, Object ignore2) {
 
             return new Integer(4);
         }
 
         /**
-         * @see org.extex.core.type.math.MathClassVisitor#visitOrdinary(
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitOrdinary(
          *      java.lang.Object,
          *      java.lang.Object)
          */
-        public Object visitOrdinary(final Object ignore, final Object ignore2) {
+        public Object visitOrdinary(Object ignore, Object ignore2) {
 
             return new Integer(0);
         }
 
         /**
-         * @see org.extex.core.type.math.MathClassVisitor#visitPunctation(
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitPunctation(
          *      java.lang.Object,
          *      java.lang.Object)
          */
-        public Object visitPunctation(final Object ignore, final Object ignore2) {
+        public Object visitPunctation(Object ignore, Object ignore2) {
 
             return new Integer(6);
         }
 
         /**
-         * @see org.extex.core.type.math.MathClassVisitor#visitRelation(
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitRelation(
          *      java.lang.Object,
          *      java.lang.Object)
          */
-        public Object visitRelation(final Object ignore, final Object ignore2) {
+        public Object visitRelation(Object ignore, Object ignore2) {
 
             return new Integer(3);
         }
 
         /**
-         * @see org.extex.core.type.math.MathClassVisitor#visitVariable(
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.type.math.MathClassVisitor#visitVariable(
          *      java.lang.Object,
          *      java.lang.Object)
          */
-        public Object visitVariable(final Object ignore, final Object ignore2) {
+        public Object visitVariable(Object ignore, Object ignore2) {
 
             return new Integer(7);
         }
@@ -243,7 +259,7 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
      *
      * @throws InterpreterException in case of a parameter out of range
      */
-    public static MathDelimiter newMathDelimiter(final long delcode)
+    public static MathDelimiter newMathDelimiter(long delcode)
             throws InterpreterException {
 
         int classCode = (int) ((delcode >> CLASS_SHIFT));
@@ -278,9 +294,9 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
      *
      * @throws InterpreterException in case of an error
      */
-    private static MathDelimiter parse(final Context context,
-            final TokenSource source, final Typesetter typesetter,
-            final MathClass mClass, final String primitive)
+    private static MathDelimiter parse(Context context,
+            TokenSource source, Typesetter typesetter,
+            MathClass mClass, String primitive)
             throws InterpreterException {
 
         int smallFam = (int) CountParser.scanNumber(context, source, typesetter);
@@ -312,9 +328,9 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
      * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
      */
-    public static MathDelimiter parseDelimiter(final Context context,
-            final TokenSource source, final Typesetter typesetter,
-            final String primitive)
+    public static MathDelimiter parseDelimiter(Context context,
+            TokenSource source, Typesetter typesetter,
+            String primitive)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -415,7 +431,7 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
      *
      * @throws HelpingException in case of an error
      */
-    public static long delimiterToLong(final MathDelimiter del)
+    public static long delimiterToLong(MathDelimiter del)
             throws HelpingException {
 
         if (del == null) {
@@ -454,7 +470,7 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
      *
      * @param name the name for tracing and debugging
      */
-    public AbstractOmegaDelimiter(final String name) {
+    public AbstractOmegaDelimiter(String name) {
 
         super(name);
     }

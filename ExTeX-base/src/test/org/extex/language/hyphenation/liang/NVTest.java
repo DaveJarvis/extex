@@ -90,7 +90,8 @@ public class NVTest extends TestCase {
         /**
          * The field <tt>map</tt> contains the glyph cache.
          */
-        private Map map = new HashMap();
+        private Map<UnicodeChar, MockGlyph> map =
+                new HashMap<UnicodeChar, MockGlyph>();
 
         /**
          * Creates a new object.
@@ -174,7 +175,7 @@ public class NVTest extends TestCase {
          *
          * @see org.extex.font.type.Fount#getFontDimen(java.lang.String)
          */
-        public FixedDimen getFontDimen(final String key) {
+        public FixedDimen getFontDimen(String key) {
 
             return Dimen.ONE_INCH;
         }
@@ -260,8 +261,9 @@ public class NVTest extends TestCase {
          * @see org.extex.interpreter.type.font.Font#setFontDimen(
          *      java.lang.String, org.extex.core.dimen.Dimen)
          */
-        public void setFontDimen(final String name, final Dimen value) {
+        public void setFontDimen(String name, Dimen value) {
 
+            // not needed
         }
 
         /**
@@ -271,7 +273,7 @@ public class NVTest extends TestCase {
          *
          * @see org.extex.interpreter.type.font.Font#setHyphenChar(org.extex.core.UnicodeChar)
          */
-        public void setHyphenChar(final UnicodeChar h) {
+        public void setHyphenChar(UnicodeChar h) {
 
             this.hyphen = h;
         }
@@ -283,8 +285,9 @@ public class NVTest extends TestCase {
          *
          * @see org.extex.interpreter.type.font.Font#setSkewChar(org.extex.core.UnicodeChar)
          */
-        public void setSkewChar(final UnicodeChar skew) {
+        public void setSkewChar(UnicodeChar skew) {
 
+            // not needed
         }
 
         /**
@@ -297,7 +300,7 @@ public class NVTest extends TestCase {
          *
          * @see org.extex.interpreter.type.font.Font#setEfCode(org.extex.core.UnicodeChar, long)
          */
-        public void setEfCode(final UnicodeChar uc, final long code) {
+        public void setEfCode(UnicodeChar uc, long code) {
 
             // TODO gene: setEfcode unimplemented
         }
@@ -311,7 +314,7 @@ public class NVTest extends TestCase {
          *
          * @see org.extex.font.type.other.NullFont#getEfCode(org.extex.core.UnicodeChar)
          */
-        public long getEfCode(final UnicodeChar uc) {
+        public long getEfCode(UnicodeChar uc) {
 
             // TODO gene: getEfcode unimplemented
             return 0;
@@ -336,7 +339,7 @@ public class NVTest extends TestCase {
          *
          * @param c the character
          */
-        public MockGlyph(final char c) {
+        public MockGlyph(char c) {
 
             super();
             this.c = c;
@@ -349,7 +352,7 @@ public class NVTest extends TestCase {
          *
          * @return the ligature
          */
-        public UnicodeChar getLigature(final UnicodeChar uc) {
+        public UnicodeChar getLigature(UnicodeChar uc) {
 
             if (c == 'f') {
                 if (uc.getCodePoint() == 'f') {
@@ -377,7 +380,7 @@ public class NVTest extends TestCase {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(NVTest.class);
     }
@@ -424,7 +427,7 @@ public class NVTest extends TestCase {
             Namespace.DEFAULT_NAMESPACE);
         l = tokenFactory.createToken(Catcode.LETTER, 'l', //
             Namespace.DEFAULT_NAMESPACE);
-        UnicodeChar hyphen = font.getHyphenChar();
+//        UnicodeChar hyphen = font.getHyphenChar();
         tc = new TypesettingContextImpl(font);
         ModifiableLanguage lang = new BaseHyphenationTable();
         lang.setLigatureBuilder(new LigatureBuilderImpl());
@@ -438,6 +441,7 @@ public class NVTest extends TestCase {
      */
     public void test00000000() throws Exception {
 
+        //
     }
 
     /**

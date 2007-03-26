@@ -86,7 +86,7 @@ public class Romannumeral extends AbstractCode implements ExpandableCode {
      *
      * @param name the name for tracing and debugging
      */
-    public Romannumeral(final String name) {
+    public Romannumeral(String name) {
 
         super(name);
     }
@@ -109,8 +109,8 @@ public class Romannumeral extends AbstractCode implements ExpandableCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         expand(prefix, context, source, typesetter);
@@ -136,8 +136,8 @@ public class Romannumeral extends AbstractCode implements ExpandableCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void expand(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void expand(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         long n = CountParser.scanInteger(context, source, typesetter);

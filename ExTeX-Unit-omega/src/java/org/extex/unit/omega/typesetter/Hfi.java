@@ -81,7 +81,7 @@ public class Hfi extends AbstractHorizontalCode implements HorizontalSkip {
      *
      * @param name the name for debugging
      */
-    public Hfi(final String name) {
+    public Hfi(String name) {
 
         super(name);
     }
@@ -104,8 +104,8 @@ public class Hfi extends AbstractHorizontalCode implements HorizontalSkip {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         switchToHorizontalMode(typesetter);
@@ -128,8 +128,8 @@ public class Hfi extends AbstractHorizontalCode implements HorizontalSkip {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public FixedGlue getGlue(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public FixedGlue getGlue(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         return FI;
     }

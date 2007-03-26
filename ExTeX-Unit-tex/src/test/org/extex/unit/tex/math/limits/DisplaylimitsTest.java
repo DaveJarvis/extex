@@ -32,7 +32,7 @@ public class DisplaylimitsTest extends AbstractLimitsTester {
      *
      * @param arg the name
      */
-    public DisplaylimitsTest(final String arg) {
+    public DisplaylimitsTest(String arg) {
 
         super(arg, "displaylimits", "", "\\mathop123 ");
     }

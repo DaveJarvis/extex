@@ -52,8 +52,8 @@ public final class ColorFactory {
      *
      * @return the new color
      */
-    public static CmykColor getCmyk(final int cyan, final int magenta,
-            final int yellow, final int black, final int alpha) {
+    public static CmykColor getCmyk(int cyan, int magenta,
+            int yellow, int black, int alpha) {
 
         return new CmykColor(cyan, magenta, yellow, black, alpha);
     }
@@ -66,7 +66,7 @@ public final class ColorFactory {
      *
      * @return the new color
      */
-    public static GrayscaleColor getGray(final int gray, final int alpha) {
+    public static GrayscaleColor getGray(int gray, int alpha) {
 
         return new GrayscaleColor(gray, alpha);
     }
@@ -81,8 +81,8 @@ public final class ColorFactory {
      *
      * @return the new color
      */
-    public static HsvColor getHsv(final int hue, final int saturation,
-            final int value, final int alpha) {
+    public static HsvColor getHsv(int hue, int saturation,
+            int value, int alpha) {
 
         return new HsvColor(hue, saturation, value, alpha);
     }
@@ -97,8 +97,8 @@ public final class ColorFactory {
      *
      * @return the new color
      */
-    public static RgbColor getRgb(final int red, final int green,
-            final int blue, final int alpha) {
+    public static RgbColor getRgb(int red, int green,
+            int blue, int alpha) {
 
         return new RgbColor(red, green, blue, alpha);
     }

@@ -86,9 +86,9 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
      * @throws ConfigurationException in case of an error in the configuration
      * @throws IOException in case of an IO error
      */
-    public TokenStreamImpl32(final Configuration config,
-            final TokenStreamOptions options, final InputStream stream,
-            final String theSource, final String encoding)
+    public TokenStreamImpl32(Configuration config,
+            TokenStreamOptions options, InputStream stream,
+            String theSource, String encoding)
             throws IOException,
                 ConfigurationException {
 
@@ -106,9 +106,9 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
      * @param theSource the description of the input source
      * @throws IOException in case of an IO error
      */
-    public TokenStreamImpl32(final Configuration config,
-            final TokenStreamOptions options, final Reader reader,
-            final Boolean isFile, final String theSource) throws IOException {
+    public TokenStreamImpl32(Configuration config,
+            TokenStreamOptions options, Reader reader,
+            Boolean isFile, String theSource) throws IOException {
 
         super(config, options, reader, isFile, theSource);
     }
@@ -123,9 +123,9 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
      * @param theSource the description of the input source
      * @throws IOException in case of an IO error
      */
-    public TokenStreamImpl32(final Configuration config,
-            final TokenStreamOptions options, final String theLine,
-            final String theSource) throws IOException {
+    public TokenStreamImpl32(Configuration config,
+            TokenStreamOptions options, String theLine,
+            String theSource) throws IOException {
 
         super(config, options, theLine, theSource);
     }
@@ -134,7 +134,7 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
      * @see org.extex.scanner.base.TokenStreamImpl#getChar(
      *      org.extex.scanner.Tokenizer)
      */
-    protected UnicodeChar getChar(final Tokenizer tokenizer)
+    protected UnicodeChar getChar(Tokenizer tokenizer)
             throws ScannerException {
 
         if (saveChar != null) {
@@ -226,7 +226,7 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
      * @return Returns the char value of a hex digit
      *         or 0 if no hex digit is given.
      */
-    private char hex2char(final int c) {
+    private char hex2char(int c) {
 
         char ch = Character.toLowerCase((char) c);
 
@@ -244,7 +244,7 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
      * @return UnicodeChar of a hex number
      * @throws ScannerException if no hex digit is found
      */
-    private UnicodeChar scanHex(final int n, final Tokenizer tokenizer)
+    private UnicodeChar scanHex(int n, Tokenizer tokenizer)
             throws ScannerException {
 
         StringBuffer buf = new StringBuffer();

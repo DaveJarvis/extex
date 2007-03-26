@@ -45,7 +45,7 @@ public class ConfigurationClassNotFoundException extends ConfigurationException 
      *
      * @param aClassName the name of the class which could not be found
      */
-    public ConfigurationClassNotFoundException(final String aClassName) {
+    public ConfigurationClassNotFoundException(String aClassName) {
 
         super(null);
         this.classname = aClassName;
@@ -58,8 +58,8 @@ public class ConfigurationClassNotFoundException extends ConfigurationException 
      * @param config the configuration in which the problem occurred or
      * <code>null</code>
      */
-    public ConfigurationClassNotFoundException(final String className,
-            final Configuration config) {
+    public ConfigurationClassNotFoundException(String className,
+            Configuration config) {
 
         super(null, config.toString());
         this.classname = className;

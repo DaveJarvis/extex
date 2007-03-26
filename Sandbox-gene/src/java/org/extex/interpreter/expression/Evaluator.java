@@ -61,18 +61,20 @@ public class Evaluator {
     private static final BinaryFunction ASSIGN = new BinaryFunction() {
 
         /**
-         * @see org.extex.interpreter.expression.Function2#apply(
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(
          *      org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
-        public EType apply(final EType arg1, final EType arg2)
-                throws CastException,
-                    UnsupportedException {
+        public EType apply(EType arg1, EType arg2) {
 
             return arg2;
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -89,11 +91,13 @@ public class Evaluator {
     private static final BinaryFunction EQ = new BinaryFunction() {
 
         /**
-         * @see org.extex.interpreter.expression.Function2#apply(
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(
          *      org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
-        public EType apply(final EType arg1, final EType arg2)
+        public EType apply(EType arg1, EType arg2)
                 throws CastException,
                     UnsupportedException {
 
@@ -101,6 +105,8 @@ public class Evaluator {
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -117,11 +123,13 @@ public class Evaluator {
     private static final BinaryFunction GE = new BinaryFunction() {
 
         /**
-         * @see org.extex.interpreter.expression.Function2#apply(
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(
          *      org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
-        public EType apply(final EType arg1, final EType arg2)
+        public EType apply(EType arg1, EType arg2)
                 throws CastException,
                     UnsupportedException {
 
@@ -129,6 +137,8 @@ public class Evaluator {
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -145,11 +155,13 @@ public class Evaluator {
     private static final BinaryFunction GT = new BinaryFunction() {
 
         /**
-         * @see org.extex.interpreter.expression.Function2#apply(
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(
          *      org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
-        public EType apply(final EType arg1, final EType arg2)
+        public EType apply(EType arg1, EType arg2)
                 throws CastException,
                     UnsupportedException {
 
@@ -157,6 +169,8 @@ public class Evaluator {
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -173,11 +187,13 @@ public class Evaluator {
     private static final BinaryFunction LAND = new BinaryFunction() {
 
         /**
-         * @see org.extex.interpreter.expression.Function2#apply(
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(
          *      org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
-        public EType apply(final EType arg1, final EType arg2)
+        public EType apply(EType arg1, EType arg2)
                 throws CastException,
                     UnsupportedException {
 
@@ -185,6 +201,8 @@ public class Evaluator {
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -201,11 +219,13 @@ public class Evaluator {
     private static final BinaryFunction LE = new BinaryFunction() {
 
         /**
-         * @see org.extex.interpreter.expression.Function2#apply(
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(
          *      org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
-        public EType apply(final EType arg1, final EType arg2)
+        public EType apply(EType arg1, EType arg2)
                 throws CastException,
                     UnsupportedException {
 
@@ -213,6 +233,8 @@ public class Evaluator {
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -229,11 +251,13 @@ public class Evaluator {
     private static final BinaryFunction LOR = new BinaryFunction() {
 
         /**
-         * @see org.extex.interpreter.expression.Function2#apply(
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(
          *      org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
-        public EType apply(final EType arg1, final EType arg2)
+        public EType apply(EType arg1, EType arg2)
                 throws CastException,
                     UnsupportedException {
 
@@ -241,6 +265,8 @@ public class Evaluator {
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -257,11 +283,13 @@ public class Evaluator {
     private static final BinaryFunction LT = new BinaryFunction() {
 
         /**
-         * @see org.extex.interpreter.expression.Function2#apply(
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(
          *      org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
-        public EType apply(final EType arg1, final EType arg2)
+        public EType apply(EType arg1, EType arg2)
                 throws CastException,
                     UnsupportedException {
 
@@ -269,6 +297,8 @@ public class Evaluator {
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -284,17 +314,21 @@ public class Evaluator {
     private static final BinaryFunction MINUS = new BinaryFunction() {
 
         /**
-         * @see org.extex.interpreter.expression.Function2#apply(
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(
          *      org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
-        public EType apply(final EType arg1, final EType arg2)
+        public EType apply(EType arg1, EType arg2)
                 throws HelpingException {
 
             return arg1.subtract(arg2);
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -311,11 +345,13 @@ public class Evaluator {
     private static final BinaryFunction NE = new BinaryFunction() {
 
         /**
-         * @see org.extex.interpreter.expression.Function2#apply(
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(
          *      org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
-        public EType apply(final EType arg1, final EType arg2)
+        public EType apply(EType arg1, EType arg2)
                 throws CastException,
                     UnsupportedException {
 
@@ -323,6 +359,8 @@ public class Evaluator {
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -338,17 +376,21 @@ public class Evaluator {
     private static final BinaryFunction PLUS = new BinaryFunction() {
 
         /**
-         * @see org.extex.interpreter.expression.Function2#apply(
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(
          *      org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
-        public EType apply(final EType arg1, final EType arg2)
+        public EType apply(EType arg1, EType arg2)
                 throws HelpingException {
 
             return arg1.add(arg2);
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -403,8 +445,8 @@ public class Evaluator {
      *
      * @throws InterpreterException in case of an error
      */
-    protected static void skipComma(final Context context,
-            final TokenSource source) throws InterpreterException {
+    protected static void skipComma(Context context,
+            TokenSource source) throws InterpreterException {
 
         Token t = source.getNonSpace(context);
         if (t == null) {
@@ -420,12 +462,12 @@ public class Evaluator {
      * The field <tt>functions</tt> contains the function object attached to a
      * function name.
      */
-    private Map functions = new HashMap();
+    private Map<String, Object> functions = new HashMap<String, Object>();
 
     /**
      * The field <tt>parsers</tt> contains the list of registered parsers.
      */
-    private List parsers = new ArrayList();
+    private List<ETypeParser> parsers = new ArrayList<ETypeParser>();
 
     /**
      * Creates a new object.
@@ -445,8 +487,8 @@ public class Evaluator {
      *
      * @throws InterpreterException in case of an error
      */
-    public void eval(final EType term, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void eval(EType term, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         term.set(evalLogicExpressionOrFunctionalExpression(context, source,
@@ -466,8 +508,8 @@ public class Evaluator {
      *
      * @throws InterpreterException in case of an error
      */
-    private EType evalExpression(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    private EType evalExpression(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         return evalExpression(evalTerm(context, source, typesetter), //
@@ -477,6 +519,7 @@ public class Evaluator {
     /**
      * Evaluate an expression.
      *
+     * @param start ...
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
@@ -485,8 +528,8 @@ public class Evaluator {
      *
      * @throws InterpreterException in case of an error
      */
-    private EType evalExpression(final EType start, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    private EType evalExpression(EType start, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         EType accumulator = null;
@@ -541,8 +584,8 @@ public class Evaluator {
      *
      * @throws InterpreterException in case of an error
      */
-    private EType evalGroup(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    private EType evalGroup(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         EType a = evalTerm(context, source, typesetter);
         Token t = source.getNonSpace(context);
@@ -597,9 +640,9 @@ public class Evaluator {
      *
      * @throws InterpreterException in case of an error
      */
-    private EType evalJunction(final EType start, final BinaryFunction junctor,
-            final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    private EType evalJunction(EType start, BinaryFunction junctor,
+            Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         EType a = start;
 
@@ -622,8 +665,8 @@ public class Evaluator {
      *
      * @throws InterpreterException in case of an error
      */
-    private EType evalLogicTerm(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    private EType evalLogicTerm(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Token t = source.getNonSpace(context);
@@ -670,8 +713,8 @@ public class Evaluator {
      * @throws InterpreterException in case of an error
      */
     private EType evalLogicExpressionOrFunctionalExpression(
-            final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+            Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         Token t = source.getNonSpace(context);
         if (t == null) {
@@ -718,8 +761,8 @@ public class Evaluator {
      *
      * @throws InterpreterException in case of an error
      */
-    private EType evalTerm(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    private EType evalTerm(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         for (Token t = source.getNonSpace(context); t != null; t =
                 source.getNonSpace(context)) {
@@ -741,8 +784,8 @@ public class Evaluator {
                         source.push(t);
                         for (int i = 0; i < parsers.size(); i++) {
                             EType term =
-                                    ((ETypeParser) parsers.get(i)).parse(
-                                        context, source, typesetter);
+                                    parsers.get(i).parse(context, source,
+                                        typesetter);
                             if (term != null) {
                                 return term;
                             }
@@ -755,8 +798,8 @@ public class Evaluator {
 
                 for (int i = 0; i < parsers.size(); i++) {
                     EType term =
-                            ((ETypeParser) parsers.get(i)).convert(code,
-                                context, source, typesetter);
+                            parsers.get(i).convert(code, context, source,
+                                typesetter);
                     if (term != null) {
                         return term;
                     }
@@ -842,8 +885,8 @@ public class Evaluator {
      *
      * @throws InterpreterException in case of an error
      */
-    private BinaryFunction getJunctor(final Context context,
-            final TokenSource source) throws InterpreterException {
+    private BinaryFunction getJunctor(Context context,
+            TokenSource source) throws InterpreterException {
 
         Token t = source.getNonSpace(context);
         Token t2;
@@ -877,7 +920,7 @@ public class Evaluator {
     }
 
     /**
-     * get a certain junctor from the token stream.
+     * Get a certain junctor from the token stream.
      *
      * @param junctor the junctor to look for
      * @param context the interpreter context
@@ -887,8 +930,8 @@ public class Evaluator {
      *
      * @throws InterpreterException in case of an error
      */
-    private boolean getJunctor(final BinaryFunction junctor,
-            final Context context, final TokenSource source)
+    private boolean getJunctor(BinaryFunction junctor,
+            Context context, TokenSource source)
             throws InterpreterException {
 
         Token t = source.getNonSpace(context);
@@ -950,7 +993,7 @@ public class Evaluator {
      *
      * @throws InterpreterException in case of an error
      */
-    private BinaryFunction getOp(final Context context, final TokenSource source)
+    private BinaryFunction getOp(Context context, TokenSource source)
             throws InterpreterException {
 
         Token t = source.getNonSpace(context);
@@ -1004,7 +1047,7 @@ public class Evaluator {
      *
      * @param parser the terminal parser instance
      */
-    public void register(final ETypeParser parser) {
+    public void register(ETypeParser parser) {
 
         parsers.add(parser);
         parser.registered(this);
@@ -1016,7 +1059,7 @@ public class Evaluator {
      * @param name the name of the function in the expression
      * @param function the function object
      */
-    public void register(final String name, final ParsingFunction function) {
+    public void register(String name, ParsingFunction function) {
 
         functions.put(name, function);
     }
@@ -1027,7 +1070,7 @@ public class Evaluator {
      * @param name the name of the function in the expression
      * @param function the function object
      */
-    public void register(final String name, final ConstantFunction function) {
+    public void register(String name, ConstantFunction function) {
 
         functions.put(name, function);
     }
@@ -1038,7 +1081,7 @@ public class Evaluator {
      * @param name the name of the function in the expression
      * @param function the function object
      */
-    public void register(final String name, final UnaryFunction function) {
+    public void register(String name, UnaryFunction function) {
 
         functions.put(name, function);
     }
@@ -1049,7 +1092,7 @@ public class Evaluator {
      * @param name the name of the function in the expression
      * @param function the function object
      */
-    public void register(final String name, final BinaryFunction function) {
+    public void register(String name, BinaryFunction function) {
 
         functions.put(name, function);
     }

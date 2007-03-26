@@ -103,7 +103,7 @@ public class Readline extends AbstractAssignment implements LogEnabled {
          * @see org.extex.scanner.Tokenizer#getCatcode(
          *      org.extex.core.UnicodeChar)
          */
-        public Catcode getCatcode(final UnicodeChar c) {
+        public Catcode getCatcode(UnicodeChar c) {
 
             return (c.getCodePoint() == ' ' ? Catcode.SPACE : Catcode.OTHER);
         }
@@ -132,7 +132,7 @@ public class Readline extends AbstractAssignment implements LogEnabled {
      *
      * @param name the name for debugging
      */
-    public Readline(final String name) {
+    public Readline(String name) {
 
         super(name);
     }
@@ -157,8 +157,8 @@ public class Readline extends AbstractAssignment implements LogEnabled {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         String key =
@@ -217,7 +217,7 @@ public class Readline extends AbstractAssignment implements LogEnabled {
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger log) {
+    public void enableLogging(Logger log) {
 
         this.logger = log;
     }

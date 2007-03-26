@@ -33,7 +33,7 @@ public class ExportTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ExportTest.class);
     }
@@ -43,7 +43,7 @@ public class ExportTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public ExportTest(final String arg) {
+    public ExportTest(String arg) {
 
         super(arg, "export", "{\\a}", DEFINE_BRACES);
         setConfig("namespace-test");

@@ -66,7 +66,7 @@ public final class LocalizerFactory {
          *
          * @param name name of the resource bundle
          */
-        public BasicLocalizer(final String name) {
+        public BasicLocalizer(String name) {
 
             super();
             bundleName = name;
@@ -79,7 +79,7 @@ public final class LocalizerFactory {
          * @return the resource string or the String
          * <tt>???</tt><i>key</i><tt>???</tt> if none is found
          */
-        public String format(final String key) {
+        public String format(String key) {
 
             if (bundle == null) {
                 bundle = ResourceBundle.getBundle(bundleName);
@@ -102,7 +102,7 @@ public final class LocalizerFactory {
          *
          * @return the expanded format string
          */
-        public String format(final String fmt, final Object a) {
+        public String format(String fmt, Object a) {
 
             return MessageFormat.format(format(fmt), new Object[]{a});
         }
@@ -119,7 +119,7 @@ public final class LocalizerFactory {
          *
          * @return the expanded format string
          */
-        public String format(final String fmt, final Object a, final Object b) {
+        public String format(String fmt, Object a, Object b) {
 
             return MessageFormat.format(format(fmt), new Object[]{a, b});
         }
@@ -137,8 +137,8 @@ public final class LocalizerFactory {
          *
          * @return the expanded format string
          */
-        public String format(final String fmt, final Object a, final Object b,
-                final Object c) {
+        public String format(String fmt, Object a, Object b,
+                Object c) {
 
             return MessageFormat.format(format(fmt), new Object[]{a, b, c});
         }
@@ -157,8 +157,8 @@ public final class LocalizerFactory {
          *
          * @return the expanded format string
          */
-        public String format(final String fmt, final Object a, final Object b,
-                final Object c, final Object d) {
+        public String format(String fmt, Object a, Object b,
+                Object c, Object d) {
 
             return MessageFormat.format(format(fmt), new Object[]{a, b, c, d});
         }
@@ -178,8 +178,8 @@ public final class LocalizerFactory {
          *
          * @return the expanded format string
          */
-        public String format(final String fmt, final Object a, final Object b,
-                final Object c, final Object d, final Object e) {
+        public String format(String fmt, Object a, Object b,
+                Object c, Object d, Object e) {
 
             return MessageFormat.format(format(fmt),
                 new Object[]{a, b, c, d, e});
@@ -196,7 +196,7 @@ public final class LocalizerFactory {
          *
          * @return the expanded format string
          */
-        public String format(final String fmt, final Object[] a) {
+        public String format(String fmt, Object[] a) {
 
             return MessageFormat.format(format(fmt), a);
         }
@@ -208,7 +208,7 @@ public final class LocalizerFactory {
          *
          * @return the resource string or <code>null</code>
          */
-        public String getFormat(final String key) {
+        public String getFormat(String key) {
 
             try {
                 return bundle.getString(key);
@@ -224,7 +224,7 @@ public final class LocalizerFactory {
          * @param writer the target output writer
          * @param fmt the key in the resource bundle to search for
          */
-        public void message(final PrintStream writer, final String fmt) {
+        public void message(PrintStream writer, String fmt) {
 
             writer.println(format(fmt));
         }
@@ -239,8 +239,8 @@ public final class LocalizerFactory {
          * @param fmt the key in the resource bundle to search for
          * @param a the Object used for the substring <tt>{0}</tt>
          */
-        public void message(final PrintStream writer, final String fmt,
-                final Object a) {
+        public void message(PrintStream writer, String fmt,
+                Object a) {
 
             writer.println(MessageFormat.format(format(fmt), new Object[]{a}));
         }
@@ -256,8 +256,8 @@ public final class LocalizerFactory {
          * @param a the Object used for the substring <tt>{0}</tt>
          * @param b the Object used for the substring <tt>{1}</tt>
          */
-        public void message(final PrintStream writer, final String fmt,
-                final Object a, final Object b) {
+        public void message(PrintStream writer, String fmt,
+                Object a, Object b) {
 
             writer.println(MessageFormat
                 .format(format(fmt), new Object[]{a, b}));
@@ -275,8 +275,8 @@ public final class LocalizerFactory {
          * @param b the Object used for the substring <tt>{1}</tt>
          * @param c the Object used for the substring <tt>{2}</tt>
          */
-        public void message(final PrintStream writer, final String fmt,
-                final Object a, final Object b, final Object c) {
+        public void message(PrintStream writer, String fmt,
+                Object a, Object b, Object c) {
 
             writer.println(MessageFormat.format(format(fmt), new Object[]{a, b,
                     c}));
@@ -289,7 +289,8 @@ public final class LocalizerFactory {
      * constructed. The localizers are cached to minimize the overhead of
      * acquiring the same localizer several times.
      */
-    private static final Map CACHE = new HashMap();
+    private static final Map<String, Localizer> CACHE =
+            new HashMap<String, Localizer>();
 
     /**
      * The field <tt>locale</tt> contains the ...
@@ -303,7 +304,7 @@ public final class LocalizerFactory {
      *
      * @return the localizer for the given name
      */
-    public static Localizer getLocalizer(final Class theClass) {
+    public static Localizer getLocalizer(Class<?> theClass) {
 
         return getLocalizer(theClass.getName());
     }
@@ -315,13 +316,13 @@ public final class LocalizerFactory {
      *
      * @return the localizer for the given name
      */
-    public static Localizer getLocalizer(final String name) {
+    public static Localizer getLocalizer(String name) {
 
         if (locale != Locale.getDefault()) {
             locale = Locale.getDefault();
             CACHE.clear();
         }
-        Localizer loc = (Localizer) CACHE.get(name);
+        Localizer loc = CACHE.get(name);
         if (loc == null) {
             loc = new BasicLocalizer(name);
             CACHE.put(name, loc);
@@ -335,6 +336,7 @@ public final class LocalizerFactory {
      */
     private LocalizerFactory() {
 
+        // not used
     }
 
 }

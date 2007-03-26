@@ -36,7 +36,7 @@ public class PdfannotTest
      *
      * @param arg the name
      */
-    public PdfannotTest(final String arg) {
+    public PdfannotTest(String arg) {
 
         super(arg, "pdfannot", "{}");
         setConfig("pdftex-test");

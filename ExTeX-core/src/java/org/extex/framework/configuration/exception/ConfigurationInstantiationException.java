@@ -39,8 +39,8 @@ public class ConfigurationInstantiationException extends ConfigurationException 
      * @param message the message text
      * @param cause the next Throwable in the list
      */
-    public ConfigurationInstantiationException(final String message,
-            final Throwable cause) {
+    public ConfigurationInstantiationException(String message,
+            Throwable cause) {
 
         super(message, cause);
     }
@@ -50,7 +50,7 @@ public class ConfigurationInstantiationException extends ConfigurationException 
      *
      * @param cause the next Throwable in the list
      */
-    public ConfigurationInstantiationException(final Throwable cause) {
+    public ConfigurationInstantiationException(Throwable cause) {
 
         super("", cause);
     }

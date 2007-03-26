@@ -40,8 +40,8 @@ public class RestrictedHorizontalListMaker extends HorizontalListMaker {
      * @param manager the manager to ask for global changes
      * @param locator the locator
      */
-    public RestrictedHorizontalListMaker(final ListManager manager,
-            final Locator locator) {
+    public RestrictedHorizontalListMaker(ListManager manager,
+            Locator locator) {
 
         super(manager, locator);
     }
@@ -77,7 +77,7 @@ public class RestrictedHorizontalListMaker extends HorizontalListMaker {
      *
      * @see org.extex.typesetter.ListMaker#complete(TypesetterOptions)
      */
-    public NodeList complete(final TypesetterOptions context)
+    public NodeList complete(TypesetterOptions context)
             throws TypesetterException,
                 ConfigurationException {
 

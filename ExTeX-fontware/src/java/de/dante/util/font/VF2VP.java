@@ -63,7 +63,7 @@ public final class VF2VP {
      * @param args      the comand line arguments
      * @throws Exception  in case of an error
      */
-    public static void main(final String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
         if (args.length != PARAMETER) {
             System.err
@@ -151,7 +151,7 @@ public final class VF2VP {
      * @throws ConfigurationException in case that some kind of problems have
      * been detected in the configuration
      */
-    protected static FontFactory makeFontFactory(final Configuration config)
+    protected static FontFactory makeFontFactory(Configuration config)
             throws ConfigurationException {
 
         FontFactory fontFactory;

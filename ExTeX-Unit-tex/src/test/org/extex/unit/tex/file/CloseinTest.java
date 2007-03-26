@@ -34,7 +34,7 @@ public class CloseinTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(CloseinTest.class);
     }
@@ -44,7 +44,7 @@ public class CloseinTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
      *
      * @param arg the name
      */
-    public CloseinTest(final String arg) {
+    public CloseinTest(String arg) {
 
         super(arg, "closein", "1");
     }

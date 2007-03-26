@@ -54,7 +54,7 @@ public class UnitInfo implements Serializable {
      *
      * @param name the name of the unit
      */
-    public UnitInfo(final String name) {
+    public UnitInfo(String name) {
 
         super();
         this.name = name;
@@ -75,7 +75,7 @@ public class UnitInfo implements Serializable {
      *
      * @param name the name to set
      */
-    public void setName(final String name) {
+    public void setName(String name) {
 
         this.name = name;
     }

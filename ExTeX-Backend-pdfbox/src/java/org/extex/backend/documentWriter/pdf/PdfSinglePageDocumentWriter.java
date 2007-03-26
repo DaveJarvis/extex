@@ -36,7 +36,6 @@ import org.extex.typesetter.type.NodeVisitor;
 import org.extex.typesetter.type.page.Page;
 import org.extex.util.Unit;
 
-
 /**
  * Implementation of a pdf document writer.
  *
@@ -88,8 +87,8 @@ public class PdfSinglePageDocumentWriter
      * @param cfg       the configuration
      * @param options   the options
      */
-    public PdfSinglePageDocumentWriter(final Configuration cfg,
-            final DocumentWriterOptions options) {
+    public PdfSinglePageDocumentWriter(Configuration cfg,
+            DocumentWriterOptions options) {
 
         super();
         docoptions = options;
@@ -103,6 +102,8 @@ public class PdfSinglePageDocumentWriter
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.backend.documentWriter.DocumentWriter#close()
      */
     public void close() throws DocumentWriterIOException {
@@ -111,6 +112,8 @@ public class PdfSinglePageDocumentWriter
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
      */
     public String getExtension() {
@@ -119,20 +122,24 @@ public class PdfSinglePageDocumentWriter
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.backend.documentWriter.MultipleDocumentStream#setOutputStreamFactory(
      *      org.extex.backend.outputStream.OutputStreamFactory)
      */
-    public void setOutputStreamFactory(final OutputStreamFactory writerFactory) {
+    public void setOutputStreamFactory(OutputStreamFactory writerFactory) {
 
         outFactory = writerFactory;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(
      *      java.lang.String,
      *      java.lang.String)
      */
-    public void setParameter(final String name, final String value) {
+    public void setParameter(String name, String value) {
 
     }
 
@@ -162,10 +169,12 @@ public class PdfSinglePageDocumentWriter
     private NodeVisitor nodeVisitor;
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
      *      org.extex.typesetter.type.page.Page)
      */
-    public int shipout(final Page page) throws DocumentWriterException {
+    public int shipout(Page page) throws DocumentWriterException {
 
         NodeList nodes = page.getNodes();
         try {
@@ -258,7 +267,7 @@ public class PdfSinglePageDocumentWriter
     //     * @param h the height as Dimen
     //     * @return Returns the new Rectangle
     //     */
-    //    private Rectangle createRectangle(final Dimen w, final Dimen h) {
+    //    private Rectangle createRectangle(Dimen w, Dimen h) {
     //
     //        return new Rectangle((float) Unit.getDimenAsBP(w), (float) Unit
     //                .getDimenAsBP(h));
@@ -269,7 +278,7 @@ public class PdfSinglePageDocumentWriter
     //     * @param node      the node
     //     * @return Returns the node-element
     //     */
-    //    private Element getNodeElement(final Node node) {
+    //    private Element getNodeElement(Node node) {
     //
     //        Element element = null;
     //        try {

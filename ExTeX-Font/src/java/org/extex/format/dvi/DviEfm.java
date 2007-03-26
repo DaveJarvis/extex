@@ -110,7 +110,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @param ff        the fontfactroy
      * @param fm        the font map
      */
-    public DviEfm(final Element element, final FontFactory ff, final Map fm) {
+    public DviEfm(Element element, FontFactory ff, Map fm) {
 
         dvi = element;
         // fontfactory = ff;
@@ -140,7 +140,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * Add h,v values to the element
      * @param element   the element
      */
-    private void addHV(final Element element) {
+    private void addHV(Element element) {
 
         TfmFixWord h = new TfmFixWord();
         TfmFixWord v = new TfmFixWord();
@@ -156,7 +156,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.DviInterpreter#interpret(
      *      org.extex.util.file.random.RandomAccessR)
      */
-    public void interpret(final RandomAccessR rar) throws IOException,
+    public void interpret(RandomAccessR rar) throws IOException,
             DviException, FontException, ConfigurationException {
 
         while (!rar.isEOF()) {
@@ -244,7 +244,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @param fw    the fixword value
      * @return Returns the new move element.
      */
-    private Element addMove(final String attr, final TfmFixWord fw) {
+    private Element addMove(String attr, TfmFixWord fw) {
 
         Element element = new Element("move");
 
@@ -257,7 +257,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviBOP)
      */
-    public void execute(final DviBOP command) throws DviException,
+    public void execute(DviBOP command) throws DviException,
             FontException, ConfigurationException {
 
         // do nothing
@@ -267,7 +267,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviChar)
      */
-    public void execute(final DviChar command) throws DviException,
+    public void execute(DviChar command) throws DviException,
             FontException, ConfigurationException {
 
         Element element = new Element("char");
@@ -297,7 +297,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviDown)
      */
-    public void execute(final DviDown command) throws DviException,
+    public void execute(DviDown command) throws DviException,
             FontException, ConfigurationException {
 
         if (SHOWALL) {
@@ -313,7 +313,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviEOP)
      */
-    public void execute(final DviEOP command) throws DviException,
+    public void execute(DviEOP command) throws DviException,
             FontException, ConfigurationException {
 
         // do nothing
@@ -323,7 +323,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviFntDef)
      */
-    public void execute(final DviFntDef command) throws DviException,
+    public void execute(DviFntDef command) throws DviException,
             FontException, ConfigurationException {
 
         // do nothing
@@ -333,7 +333,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviFntNum)
      */
-    public void execute(final DviFntNum command) throws DviException,
+    public void execute(DviFntNum command) throws DviException,
             FontException, ConfigurationException {
 
         val.setF(command.getFont());
@@ -352,7 +352,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviPOP)
      */
-    public void execute(final DviPOP command) throws DviException,
+    public void execute(DviPOP command) throws DviException,
             FontException, ConfigurationException {
 
         DviValues v = stack.pop();
@@ -367,7 +367,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviNOP)
      */
-    public void execute(final DviNOP command) throws DviException,
+    public void execute(DviNOP command) throws DviException,
             FontException, ConfigurationException {
 
         // do nothing
@@ -377,7 +377,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviPost)
      */
-    public void execute(final DviPost command) throws DviException,
+    public void execute(DviPost command) throws DviException,
             FontException, ConfigurationException {
 
         // do nothing
@@ -387,7 +387,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviPostPost)
      */
-    public void execute(final DviPostPost command) throws DviException,
+    public void execute(DviPostPost command) throws DviException,
             FontException, ConfigurationException {
 
         // do nothing
@@ -397,7 +397,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviPre)
      */
-    public void execute(final DviPre command) throws DviException,
+    public void execute(DviPre command) throws DviException,
             FontException, ConfigurationException {
 
         // do nothing
@@ -407,7 +407,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviPush)
      */
-    public void execute(final DviPush command) throws DviException,
+    public void execute(DviPush command) throws DviException,
             FontException, ConfigurationException {
 
         stack.push(val);
@@ -421,7 +421,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviRight)
      */
-    public void execute(final DviRight command) throws DviException,
+    public void execute(DviRight command) throws DviException,
             FontException, ConfigurationException {
 
         if (SHOWALL) {
@@ -436,7 +436,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviRule)
      */
-    public void execute(final DviRule command) throws DviException,
+    public void execute(DviRule command) throws DviException,
             FontException, ConfigurationException {
 
         TfmFixWord w = new TfmFixWord();
@@ -459,7 +459,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviW)
      */
-    public void execute(final DviW command) throws DviException, FontException,
+    public void execute(DviW command) throws DviException, FontException,
             ConfigurationException {
 
         if (SHOWALL) {
@@ -483,7 +483,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviX)
      */
-    public void execute(final DviX command) throws DviException, FontException,
+    public void execute(DviX command) throws DviException, FontException,
             ConfigurationException {
 
         if (SHOWALL) {
@@ -506,7 +506,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviXXX)
      */
-    public void execute(final DviXXX command) throws DviException,
+    public void execute(DviXXX command) throws DviException,
             FontException, ConfigurationException {
 
         Element element = new Element("special");
@@ -518,7 +518,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviY)
      */
-    public void execute(final DviY command) throws DviException, FontException,
+    public void execute(DviY command) throws DviException, FontException,
             ConfigurationException {
 
         if (SHOWALL) {
@@ -541,7 +541,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviZ)
      */
-    public void execute(final DviZ command) throws DviException, FontException,
+    public void execute(DviZ command) throws DviException, FontException,
             ConfigurationException {
 
         if (SHOWALL) {

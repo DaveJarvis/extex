@@ -33,7 +33,7 @@ public class TexxetstateTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(TexxetstateTest.class);
     }
@@ -43,7 +43,7 @@ public class TexxetstateTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public TexxetstateTest(final String arg) {
+    public TexxetstateTest(String arg) {
 
         super(arg, "TeXXeTstate", "", "0");
         setConfig("etex-test");

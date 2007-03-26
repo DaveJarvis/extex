@@ -19,8 +19,6 @@
 
 package org.extex.font;
 
-import org.extex.font.FontByteArray;
-
 /**
  * Class for a ttf-font-file.
  *
@@ -35,7 +33,7 @@ public class TtfFontByteArray extends AbstractFontByteArray
      * Create a new object
      * @param b  the byte array
      */
-    public TtfFontByteArray(final byte[] b) {
+    public TtfFontByteArray(byte[] b) {
 
         super(b);
     }

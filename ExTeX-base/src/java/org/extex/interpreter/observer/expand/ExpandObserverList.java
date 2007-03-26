@@ -41,8 +41,8 @@ public final class ExpandObserverList implements ExpandObserver {
      *
      * @return the input list or a new one with the observer added
      */
-    public static ExpandObserver register(final ExpandObserver list,
-            final ExpandObserver observer) {
+    public static ExpandObserver register(ExpandObserver list,
+            ExpandObserver observer) {
 
         if (list instanceof ExpandObserverList) {
             ((ExpandObserverList) list).add(observer);
@@ -62,14 +62,14 @@ public final class ExpandObserverList implements ExpandObserver {
     /**
      * The field <tt>list</tt> contains the encapsulated list.
      */
-    private List list = new ArrayList();
+    private List<ExpandObserver> list = new ArrayList<ExpandObserver>();
 
     /**
      * Add an observer to the list.
      *
      * @param observer the observer to add to the list
      */
-    public void add(final ExpandObserver observer) {
+    public void add(ExpandObserver observer) {
 
         list.add(observer);
     }
@@ -80,11 +80,10 @@ public final class ExpandObserverList implements ExpandObserver {
      *
      * @param token the token to be expanded
      */
-    public void update(final Token token) {
+    public void update(Token token) {
 
-        int size = list.size();
-        for (int i = 0; i < size; i++) {
-            ((ExpandObserver) list.get(i)).update(token);
+        for (ExpandObserver obs : list) {
+            obs.update(token);
         }
     }
 

@@ -117,7 +117,7 @@ public class JavaLoad extends AbstractCode implements Loader {
      *
      * @param codeName the name for debugging
      */
-    public JavaLoad(final String codeName) {
+    public JavaLoad(String codeName) {
 
         super(codeName);
     }
@@ -140,8 +140,8 @@ public class JavaLoad extends AbstractCode implements Loader {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         load(context, source, typesetter);
@@ -161,8 +161,8 @@ public class JavaLoad extends AbstractCode implements Loader {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void load(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public void load(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         String classname;
         try {

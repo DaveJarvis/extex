@@ -144,8 +144,8 @@ public class HelpingException extends InterpreterException {
      * @param messageTag the message
      * @param theLocalizer the localizer to use
      */
-    public HelpingException(final Localizer theLocalizer,
-            final String messageTag) {
+    public HelpingException(Localizer theLocalizer,
+            String messageTag) {
 
         super();
         this.tag = messageTag;
@@ -162,8 +162,8 @@ public class HelpingException extends InterpreterException {
      * @param a1 the first argument
      * @param theLocalizer the localizer to use
      */
-    public HelpingException(final Localizer theLocalizer,
-            final String messageTag, final String a1) {
+    public HelpingException(Localizer theLocalizer,
+            String messageTag, String a1) {
 
         super();
         this.tag = messageTag;
@@ -181,8 +181,8 @@ public class HelpingException extends InterpreterException {
      * @param a2 the second argument
      * @param theLocalizer the localizer to use
      */
-    public HelpingException(final Localizer theLocalizer,
-            final String messageTag, final String a1, final String a2) {
+    public HelpingException(Localizer theLocalizer,
+            String messageTag, String a1, String a2) {
 
         super();
         this.tag = messageTag;
@@ -201,9 +201,9 @@ public class HelpingException extends InterpreterException {
      * @param a3 the third argument
      * @param theLocalizer the localizer to use
      */
-    public HelpingException(final Localizer theLocalizer,
-            final String messageTag, final String a1, final String a2,
-            final String a3) {
+    public HelpingException(Localizer theLocalizer,
+            String messageTag, String a1, String a2,
+            String a3) {
 
         super();
         this.tag = messageTag;

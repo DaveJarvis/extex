@@ -99,7 +99,7 @@ public class Multiply extends AbstractAssignment {
      *
      * @param name the name for debugging
      */
-    public Multiply(final String name) {
+    public Multiply(String name) {
 
         super(name);
     }
@@ -124,8 +124,8 @@ public class Multiply extends AbstractAssignment {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Token cs = source.getToken(context);

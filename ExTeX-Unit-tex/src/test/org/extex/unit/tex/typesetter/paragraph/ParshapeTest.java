@@ -33,7 +33,7 @@ public class ParshapeTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ParshapeTest.class);
     }
@@ -43,7 +43,7 @@ public class ParshapeTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public ParshapeTest(final String arg) {
+    public ParshapeTest(String arg) {
 
         super(arg, "parshape", "0");
     }

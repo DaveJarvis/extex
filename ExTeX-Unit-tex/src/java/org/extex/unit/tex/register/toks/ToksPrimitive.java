@@ -104,7 +104,7 @@ public class ToksPrimitive extends AbstractToks
      *
      * @param name the name for debugging
      */
-    public ToksPrimitive(final String name) {
+    public ToksPrimitive(String name) {
 
         super(name);
     }
@@ -127,8 +127,8 @@ public class ToksPrimitive extends AbstractToks
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         String key = getKey(context, source, typesetter);
@@ -161,8 +161,8 @@ public class ToksPrimitive extends AbstractToks
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens convertTokens(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public Tokens convertTokens(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         String key = getKey(context, source, typesetter);
@@ -183,8 +183,8 @@ public class ToksPrimitive extends AbstractToks
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         return context.getToks(getKey(context, source, typesetter));
     }

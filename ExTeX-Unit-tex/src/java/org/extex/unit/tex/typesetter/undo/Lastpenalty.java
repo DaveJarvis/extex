@@ -68,7 +68,7 @@ public class Lastpenalty extends AbstractCode
      *
      * @param name the name for debugging
      */
-    public Lastpenalty(final String name) {
+    public Lastpenalty(String name) {
 
         super(name);
     }
@@ -87,13 +87,13 @@ public class Lastpenalty extends AbstractCode
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.CountConvertible#convertCount(
+     * @see org.extex.core.count.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public long convertCount(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         Node node = typesetter.getLastNode();
         return (node instanceof PenaltyNode
@@ -122,8 +122,8 @@ public class Lastpenalty extends AbstractCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public long convertDimen(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public long convertDimen(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         Node node = typesetter.getLastNode();
         return (node instanceof PenaltyNode
@@ -147,8 +147,8 @@ public class Lastpenalty extends AbstractCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter)
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 CatcodeException {
 

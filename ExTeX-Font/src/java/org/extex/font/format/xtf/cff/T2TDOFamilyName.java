@@ -37,7 +37,7 @@ public class T2TDOFamilyName extends T2TDOSID {
      * @param stack the stack
      * @throws IOException if an IO.error occurs.
      */
-    public T2TDOFamilyName(final List stack) throws IOException {
+    public T2TDOFamilyName(List stack) throws IOException {
 
         super(stack, new short[]{FAMILYNAME});
     }

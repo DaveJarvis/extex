@@ -71,7 +71,7 @@ public class Ifdefined extends AbstractIf {
      *
      * @param name the name for debugging
      */
-    public Ifdefined(final String name) {
+    public Ifdefined(String name) {
 
         super(name);
     }
@@ -95,8 +95,8 @@ public class Ifdefined extends AbstractIf {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public boolean conditional(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         Token token = source.getToken(context);
 

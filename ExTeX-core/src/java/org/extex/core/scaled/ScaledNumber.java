@@ -88,7 +88,7 @@ public class ScaledNumber {
          * @see org.extex.interpreter.primitives.register.count.Numexpr.BinOp#apply(
          *      long, long)
          */
-        public long apply(final long arg1, final long arg2) {
+        public long apply(long arg1, long arg2) {
 
             return arg1 - arg2;
         }
@@ -106,10 +106,11 @@ public class ScaledNumber {
     private static final BinOp PLUS = new BinOp() {
 
         /**
-         * @see org.extex.interpreter.primitives.register.count.Numexpr.BinOp#apply(
-         *      long, long)
+         * {@inheritDoc}
+         *
+         * @see org.extex.core.scaled.ScaledNumber.BinOp#apply(long, long)
          */
-        public long apply(final long arg1, final long arg2) {
+        public long apply(long arg1, long arg2) {
 
             return arg1 + arg2;
         }
@@ -122,10 +123,11 @@ public class ScaledNumber {
     private static final BinOp SECOND = new BinOp() {
 
         /**
-         * @see org.extex.interpreter.primitives.register.count.Numexpr.BinOp#apply(
-         *      long, long)
+         * {@inheritDoc}
+         *
+         * @see org.extex.core.scaled.ScaledNumber.BinOp#apply(long, long)
          */
-        public long apply(final long arg1, final long arg2) {
+        public long apply(long arg1, long arg2) {
 
             return arg2;
         }
@@ -143,8 +145,8 @@ public class ScaledNumber {
      *
      * @throws InterpreterException in case of an error
      */
-    private static long evalExpr(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    private static long evalExpr(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         long saveVal = 0;
@@ -197,8 +199,8 @@ public class ScaledNumber {
      *
      * @throws InterpreterException in case of an error
      */
-    public static long parse(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public static long parse(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         for (;;) {
             Token t = source.getNonSpace(context);
@@ -277,15 +279,16 @@ public class ScaledNumber {
      *
      * @param context the interpreter context
      * @param source the source for new tokens
+     * @param typesetter the typesetter
      * @param start the initial token to start with
      *
      * @return the fixed point representation of the floating number in units
      * of 2<sup>-16</sup>.
      * @throws InterpreterException in case of an error
      */
-    public static long scanFloat(final Context context,
-            final TokenSource source, final Typesetter typesetter,
-            final Token start) throws InterpreterException {
+    public static long scanFloat(Context context,
+            TokenSource source, Typesetter typesetter,
+            Token start) throws InterpreterException {
 
         boolean neg = false;
         long val = 0;
@@ -345,8 +348,8 @@ public class ScaledNumber {
      * @return the fixed point representation of the floating point number
      * @throws InterpreterException in case of an error
      */
-    public static ScaledNumber scanScaledNumber(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public static ScaledNumber scanScaledNumber(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         return new ScaledNumber(parse(context, source, typesetter));
@@ -359,7 +362,7 @@ public class ScaledNumber {
      * @param sb the output string buffer
      * @param value the internal value in multiples of ONE
      */
-    public static void toString(final StringBuffer sb, final long value) {
+    public static void toString(StringBuffer sb, long value) {
 
         long val = value;
 
@@ -419,7 +422,7 @@ public class ScaledNumber {
      *
      * @param value the initial value
      */
-    private ScaledNumber(final long value) {
+    private ScaledNumber(long value) {
 
         super();
         this.value = value;
@@ -430,7 +433,7 @@ public class ScaledNumber {
      *
      * @param scaled the number to add
      */
-    public void add(final long scaled) {
+    public void add(long scaled) {
 
         this.value += scaled;
     }
@@ -440,7 +443,7 @@ public class ScaledNumber {
      *
      * @param scaled the number to add
      */
-    public void add(final ScaledNumber scaled) {
+    public void add(ScaledNumber scaled) {
 
         this.value += scaled.value;
     }
@@ -450,7 +453,7 @@ public class ScaledNumber {
      *
      * @param scaled the divisor
      */
-    public void divide(final long scaled) {
+    public void divide(long scaled) {
 
         value = value / scaled * ONE;
     }
@@ -463,7 +466,7 @@ public class ScaledNumber {
      *
      * @return <code>true</code> iff <i>|this| == |d|</i>
      */
-    public boolean eq(final ScaledNumber d) {
+    public boolean eq(ScaledNumber d) {
 
         return (d != null && value == d.value);
     }
@@ -475,7 +478,7 @@ public class ScaledNumber {
      *
      * @return <code>true</code> iff this is greater or equal to d
      */
-    public boolean ge(final ScaledNumber d) {
+    public boolean ge(ScaledNumber d) {
 
         return (value >= d.value);
     }
@@ -497,7 +500,7 @@ public class ScaledNumber {
      *
      * @return <code>true</code> iff this is less or equal to d
      */
-    public boolean le(final ScaledNumber d) {
+    public boolean le(ScaledNumber d) {
 
         return (value <= d.value);
     }
@@ -509,7 +512,7 @@ public class ScaledNumber {
      *
      * @return <code>true</code> iff |this| &lt; |d|</i>
      */
-    public boolean lt(final ScaledNumber d) {
+    public boolean lt(ScaledNumber d) {
 
         return (value < d.value);
     }
@@ -519,7 +522,7 @@ public class ScaledNumber {
      *
      * @param scaled the multiplicant
      */
-    public void multiply(final long scaled) {
+    public void multiply(long scaled) {
 
         value = value * scaled / ONE;
     }
@@ -533,7 +536,7 @@ public class ScaledNumber {
      * @param nom nominator
      * @param denom denominator
      */
-    public void multiply(final long nom, final long denom) {
+    public void multiply(long nom, long denom) {
 
         this.value = this.value * nom / denom;
     }
@@ -551,7 +554,7 @@ public class ScaledNumber {
      *
      * @param scaled the new value
      */
-    public void set(final long scaled) {
+    public void set(long scaled) {
 
         value = scaled;
     }
@@ -561,7 +564,7 @@ public class ScaledNumber {
      *
      * @param scaled the new value
      */
-    public void set(final ScaledNumber scaled) {
+    public void set(ScaledNumber scaled) {
 
         value = scaled.value;
     }
@@ -571,7 +574,7 @@ public class ScaledNumber {
      *
      * @param scaled the number to subtract
      */
-    public void subtract(final ScaledNumber scaled) {
+    public void subtract(ScaledNumber scaled) {
 
         this.value -= scaled.value;
     }
@@ -603,7 +606,7 @@ public class ScaledNumber {
      *
      * @see "<logo>TeX</logo> &ndash; The Program [103]"
      */
-    public void toToks(final Tokens toks, final TokenFactory factory)
+    public void toToks(Tokens toks, TokenFactory factory)
             throws CatcodeException {
 
         long val = this.value;

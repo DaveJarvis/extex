@@ -36,7 +36,7 @@ public class HalignTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public HalignTest(final String arg) {
+    public HalignTest(String arg) {
 
         super(arg, "halign", "{#\\cr}", DEFINE_HASH);
     }

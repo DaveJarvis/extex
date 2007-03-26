@@ -50,7 +50,7 @@ public class DviBop extends AbstractDviCode {
      * @param pageNo the array of page numbers
      * @param lastBop the index of the last bop or -1 at the beginning
      */
-    public DviBop(final int[] pageNo, final int lastBop) {
+    public DviBop(int[] pageNo, int lastBop) {
 
         super("bop");
         if (pageNo.length != 10) {
@@ -71,7 +71,7 @@ public class DviBop extends AbstractDviCode {
      *
      * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
      */
-    public int write(final OutputStream stream) throws IOException {
+    public int write(OutputStream stream) throws IOException {
 
         stream.write(Dvi.BOP);
         int length = pageNo.length;

@@ -48,7 +48,7 @@ public class FontNoFileExtensionFoundException extends FontException {
      *
      * @param message   the message
      */
-    public FontNoFileExtensionFoundException(final String message) {
+    public FontNoFileExtensionFoundException(String message) {
 
         super(message);
     }

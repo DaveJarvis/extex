@@ -39,7 +39,7 @@ public class DocumentWriterPdfException extends DocumentWriterException {
      *
      * @param message the error message
      */
-    public DocumentWriterPdfException(final String message) {
+    public DocumentWriterPdfException(String message) {
 
         super(message);
     }
@@ -50,8 +50,8 @@ public class DocumentWriterPdfException extends DocumentWriterException {
      * @param message the message
      * @param cause the cause
      */
-    public DocumentWriterPdfException(final String message,
-            final Throwable cause) {
+    public DocumentWriterPdfException(String message,
+            Throwable cause) {
 
         super(message, cause);
     }
@@ -61,7 +61,7 @@ public class DocumentWriterPdfException extends DocumentWriterException {
      *
      * @param cause the cause
      */
-    public DocumentWriterPdfException(final Throwable cause) {
+    public DocumentWriterPdfException(Throwable cause) {
 
         super(cause);
     }

@@ -40,7 +40,7 @@ public class DocumentWriterPdfNotSupportedColorException
      * Create a new object.
      * @param message The message.
      */
-    public DocumentWriterPdfNotSupportedColorException(final String message) {
+    public DocumentWriterPdfNotSupportedColorException(String message) {
 
         super(message);
     }
@@ -50,8 +50,8 @@ public class DocumentWriterPdfNotSupportedColorException
      * @param message   The message.
      * @param cause     The cuase.
      */
-    public DocumentWriterPdfNotSupportedColorException(final String message,
-            final Throwable cause) {
+    public DocumentWriterPdfNotSupportedColorException(String message,
+            Throwable cause) {
 
         super(message, cause);
     }
@@ -60,7 +60,7 @@ public class DocumentWriterPdfNotSupportedColorException
      * Create a new object.
      * @param cause The cause.
      */
-    public DocumentWriterPdfNotSupportedColorException(final Throwable cause) {
+    public DocumentWriterPdfNotSupportedColorException(Throwable cause) {
 
         super(cause);
     }

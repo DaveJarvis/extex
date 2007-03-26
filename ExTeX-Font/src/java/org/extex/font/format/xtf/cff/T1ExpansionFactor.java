@@ -36,7 +36,7 @@ public class T1ExpansionFactor extends T1DictNumber {
      * @param stack the stack
      * @throws IOException if an IO.error occurs.
      */
-    public T1ExpansionFactor(final List stack) throws IOException {
+    public T1ExpansionFactor(List stack) throws IOException {
 
         super(stack, new short[]{ExpansionFactor});
     }

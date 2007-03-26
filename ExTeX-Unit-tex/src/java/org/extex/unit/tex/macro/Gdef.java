@@ -71,7 +71,7 @@ public class Gdef extends Def {
      *
      * @param name the name for debugging
      */
-    public Gdef(final String name) {
+    public Gdef(String name) {
 
         super(name);
     }
@@ -93,8 +93,8 @@ public class Gdef extends Def {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         prefix.setGlobal();

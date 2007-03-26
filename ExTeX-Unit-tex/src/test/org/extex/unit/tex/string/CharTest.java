@@ -33,7 +33,7 @@ public class CharTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(CharTest.class);
     }
@@ -43,7 +43,7 @@ public class CharTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public CharTest(final String arg) {
+    public CharTest(String arg) {
 
         super(arg, "char", "65");
     }

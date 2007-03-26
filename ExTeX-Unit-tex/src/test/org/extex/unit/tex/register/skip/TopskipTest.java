@@ -31,7 +31,7 @@ public class TopskipTest extends AbstractSkipRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(TopskipTest.class);
     }
@@ -41,7 +41,7 @@ public class TopskipTest extends AbstractSkipRegisterTester {
      *
      * @param arg the name
      */
-    public TopskipTest(final String arg) {
+    public TopskipTest(String arg) {
 
         super(arg, "topskip", "", "0.0pt");
     }

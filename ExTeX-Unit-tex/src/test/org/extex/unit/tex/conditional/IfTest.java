@@ -51,7 +51,7 @@ public class IfTest extends ExTeXLauncher {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(IfTest.class);
     }
@@ -61,7 +61,7 @@ public class IfTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public IfTest(final String arg) {
+    public IfTest(String arg) {
 
         super(arg);
     }
@@ -238,7 +238,7 @@ public class IfTest extends ExTeXLauncher {
          * @see org.extex.interpreter.TokenSource#addStream(
          *      org.extex.scanner.TokenStream)
          */
-        public void addStream(final TokenStream stream) {
+        public void addStream(TokenStream stream) {
 
         }
 
@@ -252,7 +252,7 @@ public class IfTest extends ExTeXLauncher {
          * @see org.extex.interpreter.TokenSource#closeAllStreams(
          *      org.extex.interpreter.context.Context)
          */
-        public void closeAllStreams(final Context context) {
+        public void closeAllStreams(Context context) {
 
         }
 
@@ -267,7 +267,7 @@ public class IfTest extends ExTeXLauncher {
          * @see org.extex.interpreter.TokenSource#closeNextFileStream(
          *      org.extex.interpreter.context.Context)
          */
-        public void closeNextFileStream(final Context context) {
+        public void closeNextFileStream(Context context) {
 
         }
 
@@ -283,8 +283,8 @@ public class IfTest extends ExTeXLauncher {
          *       org.extex.interpreter.context.Context,
          *       org.extex.typesetter.Typesetter)
          */
-        public void execute(final Token token, final Context context,
-                final Typesetter typesetter) {
+        public void execute(Token token, Context context,
+                Typesetter typesetter) {
 
         }
 
@@ -309,7 +309,7 @@ public class IfTest extends ExTeXLauncher {
          *      org.extex.scanner.type.tokens.Tokens,
          *      org.extex.typesetter.Typesetter)
          */
-        public Tokens expand(final Tokens tokens, final Typesetter typesetter) {
+        public Tokens expand(Tokens tokens, Typesetter typesetter) {
 
             return null;
         }
@@ -331,8 +331,8 @@ public class IfTest extends ExTeXLauncher {
          *      org.extex.interpreter.context.Context,
          *      org.extex.typesetter.Typesetter, Token)
          */
-        public Box getBox(final Flags flags, final Context context,
-                final Typesetter typesetter, final Token insert) {
+        public Box getBox(Flags flags, Context context,
+                Typesetter typesetter, Token insert) {
 
             return null;
         }
@@ -352,8 +352,8 @@ public class IfTest extends ExTeXLauncher {
          *      org.extex.interpreter.context.Context,
          *      org.extex.typesetter.Typesetter)
          */
-        public CodeToken getControlSequence(final Context context,
-                final Typesetter typesetter) {
+        public CodeToken getControlSequence(Context context,
+                Typesetter typesetter) {
 
             return null;
         }
@@ -371,7 +371,7 @@ public class IfTest extends ExTeXLauncher {
          * @see org.extex.interpreter.TokenSource#getFont(
          *       org.extex.interpreter.context.Context, java.lang.String)
          */
-        public Font getFont(final Context context, final String primitive)
+        public Font getFont(Context context, String primitive)
                 throws InterpreterException {
 
             return null;
@@ -392,7 +392,7 @@ public class IfTest extends ExTeXLauncher {
          * @see org.extex.interpreter.TokenSource#getKeyword(
          *      org.extex.interpreter.context.Context, java.lang.String)
          */
-        public boolean getKeyword(final Context context, final String keyword)
+        public boolean getKeyword(Context context, String keyword)
                 throws InterpreterException {
 
             return false;
@@ -436,7 +436,7 @@ public class IfTest extends ExTeXLauncher {
          * @see org.extex.interpreter.TokenSource#getNonSpace(
          *       org.extex.interpreter.context.Context)
          */
-        public Token getNonSpace(final Context context) {
+        public Token getNonSpace(Context context) {
 
             return null;
         }
@@ -450,7 +450,7 @@ public class IfTest extends ExTeXLauncher {
          * @see org.extex.interpreter.TokenSource#getOptionalEquals(
          *      org.extex.interpreter.context.Context)
          */
-        public void getOptionalEquals(final Context context) {
+        public void getOptionalEquals(Context context) {
 
         }
 
@@ -466,7 +466,7 @@ public class IfTest extends ExTeXLauncher {
          * @see org.extex.interpreter.TokenSource#getToken(
          *      org.extex.interpreter.context.Context)
          */
-        public Token getToken(final Context context)
+        public Token getToken(Context context)
                 throws InterpreterException {
 
             try {
@@ -505,8 +505,8 @@ public class IfTest extends ExTeXLauncher {
          *      org.extex.interpreter.TokenSource,
          *      org.extex.typesetter.Typesetter)
          */
-        public Tokens getTokens(final Context context,
-                final TokenSource source, final Typesetter typesetter) {
+        public Tokens getTokens(Context context,
+                TokenSource source, Typesetter typesetter) {
 
             return null;
         }
@@ -519,7 +519,7 @@ public class IfTest extends ExTeXLauncher {
          * @see org.extex.interpreter.TokenSource#push(
          *      org.extex.scanner.type.token.Token)
          */
-        public void push(final Token token) {
+        public void push(Token token) {
 
         }
 
@@ -531,7 +531,7 @@ public class IfTest extends ExTeXLauncher {
          * @see org.extex.interpreter.TokenSource#push(
          *      org.extex.scanner.type.token.Token[])
          */
-        public void push(final Token[] tokens) {
+        public void push(Token[] tokens) {
 
         }
 
@@ -545,7 +545,7 @@ public class IfTest extends ExTeXLauncher {
          * @see org.extex.interpreter.TokenSource#push(
          *      org.extex.scanner.type.tokens.Tokens)
          */
-        public void push(final Tokens tokens) throws InterpreterException {
+        public void push(Tokens tokens) throws InterpreterException {
 
         }
 
@@ -565,8 +565,8 @@ public class IfTest extends ExTeXLauncher {
          *      org.extex.interpreter.context.Context,
          *      org.extex.typesetter.Typesetter, java.lang.String)
          */
-        public UnicodeChar scanCharacterCode(final Context context,
-                final Typesetter typesetter, final String primitive) {
+        public UnicodeChar scanCharacterCode(Context context,
+                Typesetter typesetter, String primitive) {
 
             return null;
         }
@@ -581,7 +581,7 @@ public class IfTest extends ExTeXLauncher {
          * @see org.extex.interpreter.TokenSource#scanNonSpace(
          *      org.extex.interpreter.context.Context)
          */
-        public Token scanNonSpace(final Context context) {
+        public Token scanNonSpace(Context context) {
 
             return null;
         }
@@ -591,7 +591,7 @@ public class IfTest extends ExTeXLauncher {
          * @see org.extex.interpreter.TokenSource#scanNumber(
          *      org.extex.interpreter.context.Context)
          */
-        public long scanNumber(final Context context)
+        public long scanNumber(Context context)
                 throws InterpreterException {
 
             return 0;
@@ -603,7 +603,7 @@ public class IfTest extends ExTeXLauncher {
          *       org.extex.interpreter.context.Context,
          *       org.extex.scanner.type.token.Token)
          */
-        public long scanNumber(final Context context, final Token token)
+        public long scanNumber(Context context, Token token)
                 throws InterpreterException {
 
             return 0;
@@ -626,9 +626,9 @@ public class IfTest extends ExTeXLauncher {
          *      org.extex.typesetter.Typesetter,
          *      java.lang.String)
          */
-        public String scanRegisterName(final Context context,
-                final TokenSource source, final Typesetter typesetter,
-                final String primitive) {
+        public String scanRegisterName(Context context,
+                TokenSource source, Typesetter typesetter,
+                String primitive) {
 
             return null;
         }
@@ -648,7 +648,7 @@ public class IfTest extends ExTeXLauncher {
          * @see org.extex.interpreter.TokenSource#scanToken(
          *      org.extex.interpreter.context.Context)
          */
-        public Token scanToken(final Context context)
+        public Token scanToken(Context context)
                 throws InterpreterException {
 
             return getToken(context);
@@ -672,9 +672,9 @@ public class IfTest extends ExTeXLauncher {
          *      org.extex.interpreter.context.Context, boolean, boolean,
          *      java.lang.String)
          */
-        public Tokens scanTokens(final Context context,
-                final boolean reportUndefined, final boolean ignoreUndefined,
-                final String primitive) {
+        public Tokens scanTokens(Context context,
+                boolean reportUndefined, boolean ignoreUndefined,
+                String primitive) {
 
             return null;
         }
@@ -692,8 +692,8 @@ public class IfTest extends ExTeXLauncher {
          * @see org.extex.interpreter.TokenSource#scanTokensAsString(
          *      org.extex.interpreter.context.Context, java.lang.String)
          */
-        public String scanTokensAsString(final Context context,
-                final String primitive) {
+        public String scanTokensAsString(Context context,
+                String primitive) {
 
             return null;
         }
@@ -718,9 +718,9 @@ public class IfTest extends ExTeXLauncher {
          *      org.extex.interpreter.context.Context, boolean, boolean,
          *      java.lang.String)
          */
-        public Tokens scanUnprotectedTokens(final Context context,
-                final boolean reportUndefined, final boolean ignoreUndefined,
-                final String primitive) {
+        public Tokens scanUnprotectedTokens(Context context,
+                boolean reportUndefined, boolean ignoreUndefined,
+                String primitive) {
 
             return null;
         }
@@ -744,7 +744,7 @@ public class IfTest extends ExTeXLauncher {
          * @see org.extex.interpreter.TokenSource#update(
          *       java.lang.String, java.lang.String)
          */
-        public void update(final String name, final String text) {
+        public void update(String name, String text) {
 
         }
     };

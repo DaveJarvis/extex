@@ -73,8 +73,8 @@ public class LigatureNode extends CharNode implements Node {
      *
      * @see "<logo>TeX</logo> &ndash; The Program [144]"
      */
-    public LigatureNode(final TypesettingContext context, final UnicodeChar uc,
-            final CharNode left, final CharNode right) {
+    public LigatureNode(TypesettingContext context, UnicodeChar uc,
+            CharNode left, CharNode right) {
 
         super(context, uc);
         this.left = left;
@@ -159,8 +159,8 @@ public class LigatureNode extends CharNode implements Node {
      *      int,
      *      int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         Font font = getTypesettingContext().getFont();
         sb.append(getLocalizer().format("String.Format",
@@ -169,11 +169,13 @@ public class LigatureNode extends CharNode implements Node {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.Node#visit(
      *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final NodeVisitor visitor, final Object value)
+    public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {
 
         return visitor.visitLigature(this, value);

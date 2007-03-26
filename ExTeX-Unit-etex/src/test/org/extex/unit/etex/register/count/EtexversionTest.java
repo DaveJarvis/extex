@@ -33,7 +33,7 @@ public class EtexversionTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(EtexversionTest.class);
     }
@@ -43,7 +43,7 @@ public class EtexversionTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public EtexversionTest(final String arg) {
+    public EtexversionTest(String arg) {
 
         super(arg, "eTeXversion", "", "3");
         setConfig("etex-test");

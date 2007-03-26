@@ -29,7 +29,7 @@ package org.extex.core;
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5417 $
  */
 public class Switch {
 
@@ -43,7 +43,7 @@ public class Switch {
      *
      * @param on the initial value
      */
-    public Switch(final boolean on) {
+    public Switch(boolean on) {
 
         super();
         this.value = on;
@@ -64,7 +64,7 @@ public class Switch {
      *
      * @param on the value to set.
      */
-    public void set(final boolean on) {
+    public void set(boolean on) {
 
         this.value = on;
     }

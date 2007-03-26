@@ -48,7 +48,7 @@ public abstract class AbstractHorizontalCode extends AbstractCode {
      *
      * @param codeName the name of the code
      */
-    public AbstractHorizontalCode(final String codeName) {
+    public AbstractHorizontalCode(String codeName) {
 
         super(codeName);
     }
@@ -61,7 +61,7 @@ public abstract class AbstractHorizontalCode extends AbstractCode {
      *
      * @throws HelpingException in case of an error
      */
-    protected void ensureHorizontalMode(final Typesetter typesetter)
+    protected void ensureHorizontalMode(Typesetter typesetter)
             throws HelpingException {
 
         Mode mode = typesetter.getMode();
@@ -81,7 +81,7 @@ public abstract class AbstractHorizontalCode extends AbstractCode {
      *
      * @throws InterpreterException in case of an error
      */
-    protected void switchToHorizontalMode(final Typesetter typesetter)
+    protected void switchToHorizontalMode(Typesetter typesetter)
             throws InterpreterException {
 
         Mode mode = typesetter.getMode();

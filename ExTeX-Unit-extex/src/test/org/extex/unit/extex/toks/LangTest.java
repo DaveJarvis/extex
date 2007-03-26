@@ -33,7 +33,7 @@ public class LangTest extends AbstractToksRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(LangTest.class);
     }
@@ -43,7 +43,7 @@ public class LangTest extends AbstractToksRegisterTester {
      *
      * @param arg the name
      */
-    public LangTest(final String arg) {
+    public LangTest(String arg) {
 
         super(arg, "lang", "", "");
         setConfig("extex-test");

@@ -71,6 +71,8 @@ public class TrivialPageBuilder implements PageBuilder {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.pageBuilder.PageBuilder#close()
      */
     public void close() throws TypesetterException {
@@ -84,17 +86,13 @@ public class TrivialPageBuilder implements PageBuilder {
     }
 
     /**
-     * This method is used when the page builder has received its last nodes.
-     * It indicates that now the pages should be written out.
-     * <p>
-     * Nevertheless some shipouts might come afterwards.
-     * </p>
+     * {@inheritDoc}
      *
      * @see org.extex.typesetter.pageBuilder.PageBuilder#flush(
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.Typesetter)
      */
-    public void flush(final NodeList nodes, final Typesetter typesetter)
+    public void flush(NodeList nodes, Typesetter typesetter)
             throws TypesetterException {
 
         if (nodes.size() <= 0) {
@@ -119,16 +117,16 @@ public class TrivialPageBuilder implements PageBuilder {
      * properly filled.
      *
      * @param nodes the nodes to send
+     * @param typesetter the typesetter
      *
      * @throws TypesetterException in case of an error
-     * @param typesetter the typesetter
      *
      * @see org.extex.typesetter.pageBuilder.PageBuilder#inspectAndBuild(
      *      org.extex.typesetter.type.node.VerticalListNode,
      *      org.extex.typesetter.Typesetter)
      */
-    public void inspectAndBuild(final VerticalListNode nodes,
-            final Typesetter typesetter) throws TypesetterException {
+    public void inspectAndBuild(VerticalListNode nodes,
+            Typesetter typesetter) throws TypesetterException {
 
         FixedDimen d = nodes.getVerticalSize();
         if (d.ge(options.getDimenOption("vsize"))) {
@@ -146,16 +144,18 @@ public class TrivialPageBuilder implements PageBuilder {
      * @see org.extex.typesetter.Typesetter#setBackend(
      *      org.extex.backend.BackendDriver)
      */
-    public void setBackend(final BackendDriver backend) {
+    public void setBackend(BackendDriver backend) {
 
         this.backend = backend;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.pageBuilder.PageBuilder#setContext(
      *      org.extex.interpreter.context.Context)
      */
-    public void setContext(final Context context) {
+    public void setContext(Context context) {
 
         this.context = context;
     }
@@ -168,7 +168,7 @@ public class TrivialPageBuilder implements PageBuilder {
      * @see org.extex.typesetter.pageBuilder.PageBuilder#setOptions(
      *      org.extex.typesetter.TypesetterOptions)
      */
-    public void setOptions(final TypesetterOptions options) {
+    public void setOptions(TypesetterOptions options) {
 
         this.options = options;
     }
@@ -177,15 +177,16 @@ public class TrivialPageBuilder implements PageBuilder {
      * @see org.extex.typesetter.pageBuilder.PageBuilder#setOutputRoutine(
      *      org.extex.typesetter.output.OutputRoutine)
      */
-    public void setOutputRoutine(final OutputRoutine output) {
+    public void setOutputRoutine(OutputRoutine output) {
 
+        // not supported
     }
 
     /**
      * @see org.extex.typesetter.pageBuilder.PageBuilder#setPageFactory(
      *      org.extex.typesetter.type.page.PageFactory)
      */
-    public void setPageFactory(final PageFactory factory) {
+    public void setPageFactory(PageFactory factory) {
 
         pageFactory = factory;
     }
@@ -195,7 +196,7 @@ public class TrivialPageBuilder implements PageBuilder {
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.Typesetter)
      */
-    public void shipout(final NodeList nodes, final Typesetter typesetter)
+    public void shipout(NodeList nodes, Typesetter typesetter)
             throws TypesetterException {
 
         if (nodes.size() <= 0) {

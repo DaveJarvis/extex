@@ -83,8 +83,8 @@ class HyphenTree implements Serializable {
      * @param start the start index in code
      * @param source the reference array to read from
      */
-    public static void superimpose(final char[] code, final int start,
-            final char[] source) {
+    public static void superimpose(char[] code, int start,
+            char[] source) {
 
         if (source != null) {
             int j = start;
@@ -107,14 +107,14 @@ class HyphenTree implements Serializable {
     /**
      * The field <tt>nextTree</tt> contains the map for the next characters.
      */
-    private Map nextTree = null;
+    private Map<UnicodeChar, HyphenTree> nextTree = null;
 
     /**
      * Creates a new object.
      *
      * @param hc the hyphenation code to start with
      */
-    public HyphenTree(final char[] hc) {
+    public HyphenTree(char[] hc) {
 
         super();
         this.hc = hc;
@@ -126,7 +126,7 @@ class HyphenTree implements Serializable {
      * @param logger the target logger
      * @param prefix the initial string prepended before any line of output
      */
-    public void dump(final Logger logger, final String prefix) {
+    public void dump(Logger logger, String prefix) {
 
         logger.info(toString());
     }
@@ -142,7 +142,7 @@ class HyphenTree implements Serializable {
      *
      * @return the hyphenation code found or <code>null</code>
      */
-    public char[] get(final UnicodeChar[] chars, final int start) {
+    public char[] get(UnicodeChar[] chars, int start) {
 
         HyphenTree tree = this;
         char[] hyph = null;
@@ -182,7 +182,7 @@ class HyphenTree implements Serializable {
      *
      * @return the next tree
      */
-    public HyphenTree getNext(final UnicodeChar uc) {
+    public HyphenTree getNext(UnicodeChar uc) {
 
         return (this.nextTree != null
                 ? (HyphenTree) this.nextTree.get(uc)
@@ -204,13 +204,13 @@ class HyphenTree implements Serializable {
      * @throws DuplicateHyphenationException in case that the hyphen code
      *  is already set
      */
-    public HyphenTree insert(final UnicodeChar uc, final char[] hyph)
+    public HyphenTree insert(UnicodeChar uc, char[] hyph)
             throws DuplicateHyphenationException {
 
         if (nextTree == null) {
-            nextTree = new HashMap(5);
+            nextTree = new HashMap<UnicodeChar, HyphenTree>(5);
         }
-        HyphenTree tree = (HyphenTree) nextTree.get(uc);
+        HyphenTree tree = nextTree.get(uc);
         if (tree != null) {
             tree.setHyphenationCode(hyph);
         } else {
@@ -235,7 +235,7 @@ class HyphenTree implements Serializable {
      *
      * @param code the hyphenation code to set
      */
-    public void setCode(final char[] code) {
+    public void setCode(char[] code) {
 
         this.hc = code;
     }
@@ -248,7 +248,7 @@ class HyphenTree implements Serializable {
      * @throws DuplicateHyphenationException in case that the hyphen code
      *  is already set
      */
-    public void setHyphenationCode(final char[] code)
+    public void setHyphenationCode(char[] code)
             throws DuplicateHyphenationException {
 
         if (code != null) {
@@ -265,7 +265,7 @@ class HyphenTree implements Serializable {
      *
      * @param code the hyphenation code vector to superimpose
      */
-    public void superimposeAll(final char[] code) {
+    public void superimposeAll(char[] code) {
 
         if (nextTree == null) {
             return;
@@ -296,7 +296,7 @@ class HyphenTree implements Serializable {
      * @param sb the target string buffer
      * @param prefix the prefix for each line
      */
-    protected void toString(final StringBuffer sb, final String prefix) {
+    protected void toString(StringBuffer sb, String prefix) {
 
         if (nextTree == null) {
             return;
@@ -306,7 +306,7 @@ class HyphenTree implements Serializable {
 
         while (iter.hasNext()) {
             UnicodeChar key = (UnicodeChar) iter.next();
-            HyphenTree t = (HyphenTree) nextTree.get(key);
+            HyphenTree t = nextTree.get(key);
             sb.append(prefix);
             sb.append("'");
             sb.append(key);

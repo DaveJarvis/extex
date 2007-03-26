@@ -72,20 +72,22 @@ public class Detokenize extends AbstractCode implements ExpandableCode {
      *
      * @param codeName the name
      */
-    public Detokenize(final String codeName) {
+    public Detokenize(String codeName) {
 
         super(codeName);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.type.AbstractCode#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Tokens tokens;
@@ -100,14 +102,16 @@ public class Detokenize extends AbstractCode implements ExpandableCode {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.type.ExpandableCode#expand(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void expand(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void expand(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Tokens tokens;

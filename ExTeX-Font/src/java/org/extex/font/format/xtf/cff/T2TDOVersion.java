@@ -37,7 +37,7 @@ public class T2TDOVersion extends T2TDOSID {
      * @param stack the stack
      * @throws IOException if an IO.error occurs.
      */
-    public T2TDOVersion(final List stack) throws IOException {
+    public T2TDOVersion(List stack) throws IOException {
 
         super(stack, new short[]{VERSION});
     }

@@ -50,8 +50,8 @@ public abstract class NonExecuteTester extends ExTeXLauncher {
      * @param primitive the name of the primitive
      * @param arguments additional arguments for the flag test
      */
-    public NonExecuteTester(final String name, final String primitive,
-            final String arguments) {
+    public NonExecuteTester(String name, String primitive,
+            String arguments) {
 
         super(name);
         this.primitive = primitive;
@@ -66,8 +66,8 @@ public abstract class NonExecuteTester extends ExTeXLauncher {
      * @param arguments the parameters for the invocation
      * @param prepare the preparation code
      */
-    public NonExecuteTester(final String arg, final String primitive,
-            final String arguments, final String prepare) {
+    public NonExecuteTester(String arg, String primitive,
+            String arguments, String prepare) {
 
         this(arg, primitive, arguments);
         this.prepare = DEFINE_CATCODES + prepare;

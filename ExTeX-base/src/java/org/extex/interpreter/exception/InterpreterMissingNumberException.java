@@ -47,7 +47,7 @@ public class InterpreterMissingNumberException extends InterpreterException {
      *
      * @param message the message
      */
-    public InterpreterMissingNumberException(final String message) {
+    public InterpreterMissingNumberException(String message) {
 
         super(message);
     }

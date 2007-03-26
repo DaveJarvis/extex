@@ -31,7 +31,7 @@ public class ScriptspaceTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ScriptspaceTest.class);
     }
@@ -41,7 +41,7 @@ public class ScriptspaceTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public ScriptspaceTest(final String arg) {
+    public ScriptspaceTest(String arg) {
 
         super(arg, "scriptspace", "", "0.0pt");
     }

@@ -33,7 +33,7 @@ public class ScaledTest extends NoFlagsButGlobalPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ScaledTest.class);
     }
@@ -43,7 +43,7 @@ public class ScaledTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public ScaledTest(final String arg) {
+    public ScaledTest(String arg) {
 
         super(arg, "scaled", "\\x=0", "");
     }

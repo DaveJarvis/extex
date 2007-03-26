@@ -38,7 +38,7 @@ public class ConfigurationIllegalAccessException extends ConfigurationException 
      *
      * @param cause the next Throwable in the list
      */
-    public ConfigurationIllegalAccessException(final Throwable cause) {
+    public ConfigurationIllegalAccessException(Throwable cause) {
 
         super(null, cause);
     }

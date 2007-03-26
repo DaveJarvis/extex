@@ -72,7 +72,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      *
      * @param visitor <code>InspectableNodeVisitor</code> to inspect
      */
-    public DebugNodeVisitor(final InspectableNodeVisitor visitor) {
+    public DebugNodeVisitor(InspectableNodeVisitor visitor) {
 
         this.nodeVisitor = visitor;
         visitor.setVisitor(this);
@@ -84,11 +84,11 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @param buffer for appending information
      * @param value more information is added if this is a Node-object
      */
-    private void appendNodeInformation(final StringBuffer buffer,
-            final Object value) {
+    private void appendNodeInformation(StringBuffer buffer,
+            Object value) {
 
         if (value instanceof Node) {
-            final Node node = (Node) value;
+            Node node = (Node) value;
 
             buffer.append(" (wd=");
             buffer.append(convertDimen(node.getWidth()));
@@ -109,7 +109,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @param dimen this value is not modified
      * @return a string representing dimen
      */
-    private String convertDimen(final FixedDimen dimen) {
+    private String convertDimen(FixedDimen dimen) {
 
         return dimen.getValue() + "sp";
     }
@@ -121,8 +121,8 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @param node value for additional information
      * @param value value for additional information
      */
-    private void debugMessage(final String mesg, final Node node,
-            final Object value) {
+    private void debugMessage(String mesg, Node node,
+            Object value) {
 
         StringBuffer buffer = new StringBuffer("DEBUG: ");
 
@@ -141,7 +141,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @see
      *   InspectableNodeVisitor#setVisitor(org.extex.typesetter.type.NodeVisitor)
      */
-    public void setVisitor(final NodeVisitor visitor) {
+    public void setVisitor(NodeVisitor visitor) {
 
         nodeVisitor.setVisitor(visitor);
     }
@@ -159,7 +159,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @exception GeneralException if an error occurs
      * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(AdjustNode, Object)
      */
-    public Object visitAdjust(final AdjustNode node, final Object value)
+    public Object visitAdjust(AdjustNode node, Object value)
             throws GeneralException {
 
         debugMessage("visitAdjust", node, value);
@@ -175,7 +175,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @exception GeneralException if an error occurs
      * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(AfterMathNode, Object)
      */
-    public Object visitAfterMath(final AfterMathNode node, final Object value)
+    public Object visitAfterMath(AfterMathNode node, Object value)
             throws GeneralException {
 
         debugMessage("visitAfterMath", node, value);
@@ -191,8 +191,8 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @exception GeneralException if an error occurs
      * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(AlignedLeadersNode, Object)
      */
-    public Object visitAlignedLeaders(final AlignedLeadersNode node,
-            final Object value) throws GeneralException {
+    public Object visitAlignedLeaders(AlignedLeadersNode node,
+            Object value) throws GeneralException {
 
         debugMessage("visitAlignedLeaders", node, value);
         return nodeVisitor.visitAlignedLeaders(node, value);
@@ -207,7 +207,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @exception GeneralException if an error occurs
      * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(BeforeMathNode, Object)
      */
-    public Object visitBeforeMath(final BeforeMathNode node, final Object value)
+    public Object visitBeforeMath(BeforeMathNode node, Object value)
             throws GeneralException {
 
         debugMessage("visitBeforeMath", node, value);
@@ -223,8 +223,8 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @exception GeneralException if an error occurs
      * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(CenteredLeadersNode, Object)
      */
-    public Object visitCenteredLeaders(final CenteredLeadersNode node,
-            final Object value) throws GeneralException {
+    public Object visitCenteredLeaders(CenteredLeadersNode node,
+            Object value) throws GeneralException {
 
         debugMessage("visitCenteredLeaders", node, value);
         return nodeVisitor.visitCenteredLeaders(node, value);
@@ -239,7 +239,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @exception GeneralException if an error occurs
      * @see org.extex.typesetter.type.NodeVisitor#visitChar(CharNode, Object)
      */
-    public Object visitChar(final CharNode node, final Object value)
+    public Object visitChar(CharNode node, Object value)
             throws GeneralException {
 
         debugMessage("visitChar", node, value);
@@ -256,8 +256,8 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(DiscretionaryNode,
      *      Object)
      */
-    public Object visitDiscretionary(final DiscretionaryNode node,
-            final Object value) throws GeneralException {
+    public Object visitDiscretionary(DiscretionaryNode node,
+            Object value) throws GeneralException {
 
         debugMessage("visitDiscretionary", node, value);
         return nodeVisitor.visitDiscretionary(node, value);
@@ -273,8 +273,8 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(ExpandedLeadersNode,
      *      Object)
      */
-    public Object visitExpandedLeaders(final ExpandedLeadersNode node,
-            final Object value) throws GeneralException {
+    public Object visitExpandedLeaders(ExpandedLeadersNode node,
+            Object value) throws GeneralException {
 
         debugMessage("visitExpandedLeaders", node, value);
         return nodeVisitor.visitExpandedLeaders(node, value);
@@ -289,7 +289,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @exception GeneralException if an error occurs
      * @see org.extex.typesetter.type.NodeVisitor#visitGlue(GlueNode, Object)
      */
-    public Object visitGlue(final GlueNode node, final Object value)
+    public Object visitGlue(GlueNode node, Object value)
             throws GeneralException {
 
         debugMessage("visitGlue", node, value);
@@ -306,8 +306,8 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(HorizontalListNode,
      *      Object)
      */
-    public Object visitHorizontalList(final HorizontalListNode node,
-            final Object value) throws GeneralException {
+    public Object visitHorizontalList(HorizontalListNode node,
+            Object value) throws GeneralException {
 
         debugMessage("visitHorizontalList", node, value);
         return nodeVisitor.visitHorizontalList(node, value);
@@ -322,7 +322,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @exception GeneralException if an error occurs
      * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(InsertionNode, Object)
      */
-    public Object visitInsertion(final InsertionNode node, final Object value)
+    public Object visitInsertion(InsertionNode node, Object value)
             throws GeneralException {
 
         debugMessage("visitInsertion", node, value);
@@ -338,7 +338,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @exception GeneralException if an error occurs
      * @see org.extex.typesetter.type.NodeVisitor#visitKern(KernNode, Object)
      */
-    public Object visitKern(final KernNode node, final Object value)
+    public Object visitKern(KernNode node, Object value)
             throws GeneralException {
 
         debugMessage("visitKern", node, value);
@@ -354,7 +354,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @exception GeneralException if an error occurs
      * @see org.extex.typesetter.type.NodeVisitor#visitLigature(LigatureNode, Object)
      */
-    public Object visitLigature(final LigatureNode node, final Object value)
+    public Object visitLigature(LigatureNode node, Object value)
             throws GeneralException {
 
         debugMessage("visitLigature", node, value);
@@ -370,7 +370,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @exception GeneralException if an error occurs
      * @see org.extex.typesetter.type.NodeVisitor#visitMark(MarkNode, Object)
      */
-    public Object visitMark(final MarkNode node, final Object value)
+    public Object visitMark(MarkNode node, Object value)
             throws GeneralException {
 
         debugMessage("visitMark", node, value);
@@ -386,7 +386,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @exception GeneralException if an error occurs
      * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(PenaltyNode, Object)
      */
-    public Object visitPenalty(final PenaltyNode node, final Object value)
+    public Object visitPenalty(PenaltyNode node, Object value)
             throws GeneralException {
 
         debugMessage("visitPenalty", node, value);
@@ -402,7 +402,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @exception GeneralException if an error occurs
      * @see org.extex.typesetter.type.NodeVisitor#visitRule(RuleNode, Object)
      */
-    public Object visitRule(final RuleNode node, final Object value)
+    public Object visitRule(RuleNode node, Object value)
             throws GeneralException {
 
         debugMessage("visitRule", node, value);
@@ -418,7 +418,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @exception GeneralException if an error occurs
      * @see org.extex.typesetter.type.NodeVisitor#visitSpace(SpaceNode, Object)
      */
-    public Object visitSpace(final SpaceNode node, final Object value)
+    public Object visitSpace(SpaceNode node, Object value)
             throws GeneralException {
 
         debugMessage("visitSpace", node, value);
@@ -434,8 +434,8 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @exception GeneralException if an error occurs
      * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(VerticalListNode, Object)
      */
-    public Object visitVerticalList(final VerticalListNode node,
-            final Object value) throws GeneralException {
+    public Object visitVerticalList(VerticalListNode node,
+            Object value) throws GeneralException {
 
         debugMessage("visitVerticalList", node, value);
         return nodeVisitor.visitVerticalList(node, value);
@@ -444,8 +444,8 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(org.extex.typesetter.type.node.VirtualCharNode, java.lang.Object)
      */
-    public Object visitVirtualChar(final VirtualCharNode node,
-            final Object value) throws GeneralException {
+    public Object visitVirtualChar(VirtualCharNode node,
+            Object value) throws GeneralException {
 
         // TODO visitVirtualChar unimplemented
         return null;
@@ -460,7 +460,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @exception GeneralException if an error occurs
      * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(WhatsItNode, Object)
      */
-    public Object visitWhatsIt(final WhatsItNode node, final Object value)
+    public Object visitWhatsIt(WhatsItNode node, Object value)
             throws GeneralException {
 
         debugMessage("visitWhatsIt", node, value);

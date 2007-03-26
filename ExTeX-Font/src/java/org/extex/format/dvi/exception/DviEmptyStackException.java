@@ -45,7 +45,7 @@ public class DviEmptyStackException extends DviException {
      *
      * @param message   the message
      */
-    public DviEmptyStackException(final String message) {
+    public DviEmptyStackException(String message) {
 
         super(message);
     }

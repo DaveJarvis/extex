@@ -33,7 +33,7 @@ public class HfiTest extends AbstractHfillTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(HfiTest.class);
     }
@@ -43,7 +43,7 @@ public class HfiTest extends AbstractHfillTester {
      *
      * @param arg the name
      */
-    public HfiTest(final String arg) {
+    public HfiTest(String arg) {
 
         super(arg, "hfi", "");
         setConfig("omega-test");

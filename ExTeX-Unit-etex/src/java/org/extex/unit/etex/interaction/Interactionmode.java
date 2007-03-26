@@ -74,7 +74,7 @@ public class Interactionmode extends AbstractAssignment
      *
      * @param name the name for debugging
      */
-    public Interactionmode(final String name) {
+    public Interactionmode(String name) {
 
         super(name);
     }
@@ -99,8 +99,8 @@ public class Interactionmode extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         source.getOptionalEquals(context);
@@ -120,15 +120,13 @@ public class Interactionmode extends AbstractAssignment
      *
      * @return the converted value
      *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * @see org.extex.core.count.CountConvertible#convertCount(
+     *       org.extex.interpreter.context.Context,
+     *       org.extex.interpreter.TokenSource,
+     *       org.extex.typesetter.Typesetter)
      */
-    public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) {
+    public long convertCount(Context context, TokenSource source,
+            Typesetter typesetter) {
 
         try {
             return Interaction.get(context.getInteraction());
@@ -152,8 +150,8 @@ public class Interactionmode extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         try {
             return context.getTokenFactory().toTokens(//

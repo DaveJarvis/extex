@@ -64,7 +64,7 @@ public class TeXMathcharCode extends AbstractTeXMathCode
      * @param name the name for debugging
      * @param charCode the code of the math char
      */
-    public TeXMathcharCode(final String name, final MathCode charCode) {
+    public TeXMathcharCode(String name, MathCode charCode) {
 
         super(name);
         mathchar = charCode;
@@ -84,13 +84,13 @@ public class TeXMathcharCode extends AbstractTeXMathCode
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.CountConvertible#convertCount(
+     * @see org.extex.core.count.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public long convertCount(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         return mathCodeToLong(mathchar);
     }
@@ -114,8 +114,8 @@ public class TeXMathcharCode extends AbstractTeXMathCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public MathCode convertMathCode(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public MathCode convertMathCode(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         return mathchar;
@@ -139,8 +139,8 @@ public class TeXMathcharCode extends AbstractTeXMathCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
@@ -159,7 +159,7 @@ public class TeXMathcharCode extends AbstractTeXMathCode
      * @see org.extex.interpreter.type.Showable#show(
      *      org.extex.interpreter.context.Context)
      */
-    public Tokens show(final Context context) throws InterpreterException {
+    public Tokens show(Context context) throws InterpreterException {
 
         try {
             return context.getTokenFactory().toTokens(
@@ -189,8 +189,8 @@ public class TeXMathcharCode extends AbstractTeXMathCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter)
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 CatcodeException {
 

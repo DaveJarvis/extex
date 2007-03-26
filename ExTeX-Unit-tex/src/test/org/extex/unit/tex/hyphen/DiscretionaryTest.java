@@ -34,7 +34,7 @@ public class DiscretionaryTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public DiscretionaryTest(final String arg) {
+    public DiscretionaryTest(String arg) {
 
         super(arg, "discretionary", "{-}{}{}", DEFINE_BRACES);
     }

@@ -40,7 +40,7 @@ public class HyphenationException extends TypesetterException {
      *
      * @param message the message
      */
-    public HyphenationException(final String message) {
+    public HyphenationException(String message) {
 
         super(message);
     }
@@ -50,7 +50,7 @@ public class HyphenationException extends TypesetterException {
      *
      * @param cause the cause
      */
-    public HyphenationException(final Throwable cause) {
+    public HyphenationException(Throwable cause) {
 
         super(cause);
     }

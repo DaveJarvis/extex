@@ -41,7 +41,7 @@ public class LiangsHyphenationTableTest extends TestCase {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(LiangsHyphenationTableTest.class);
     }
@@ -56,7 +56,7 @@ public class LiangsHyphenationTableTest extends TestCase {
      *
      * @throws CatcodeException in case of an error
      */
-    private static Tokens newTokens(final String s) throws CatcodeException {
+    private static Tokens newTokens(String s) throws CatcodeException {
 
         TokenFactory factory = new TokenFactoryImpl();
         Tokens tokens = new Tokens();

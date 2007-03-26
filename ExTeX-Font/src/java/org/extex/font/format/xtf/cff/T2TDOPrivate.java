@@ -86,7 +86,7 @@ public class T2TDOPrivate extends T2TDOArray {
      * @param stack the stack
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOPrivate(final List stack) throws IOException {
+    public T2TDOPrivate(List stack) throws IOException {
 
         super(stack, new short[]{PRIVATE});
     }
@@ -104,8 +104,8 @@ public class T2TDOPrivate extends T2TDOArray {
      *      org.extex.util.file.random.RandomAccessR,
      *      org.extex.font.format.xtf.OtfTableCFF, int)
      */
-    public void init(final RandomAccessR rar, final OtfTableCFF cff,
-            final int baseoffset) throws IOException {
+    public void init(RandomAccessR rar, OtfTableCFF cff,
+            int baseoffset) throws IOException {
 
         hashValues = new HashMap();
 
@@ -146,7 +146,7 @@ public class T2TDOPrivate extends T2TDOArray {
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());
         writer.writeAttribute("size", size);

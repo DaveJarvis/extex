@@ -59,7 +59,7 @@ public class ContextExtensionImpl extends ContextImpl
      * @throws ConfigurationException ...
      * @throws GeneralException ...
      */
-    public ContextExtensionImpl(final Configuration config)
+    public ContextExtensionImpl(Configuration config)
             throws ConfigurationException, GeneralException {
 
         super();
@@ -73,7 +73,7 @@ public class ContextExtensionImpl extends ContextImpl
      * @see de.dante.extex.interpreter.context.ContextExtension#getReal(
      *      java.lang.String)
      */
-    public Real getReal(final String name) {
+    public Real getReal(String name) {
 
         return ((GroupExtension) getGroup()).getReal(name);
     }
@@ -84,8 +84,8 @@ public class ContextExtensionImpl extends ContextImpl
      *      de.dante.extex.interpreter.type.real.Real,
      *      boolean)
      */
-    public void setReal(final String name, final Real value,
-            final boolean global) {
+    public void setReal(String name, Real value,
+            boolean global) {
 
         ((GroupExtension) getGroup()).setReal(name, value, global);
     }
@@ -95,7 +95,7 @@ public class ContextExtensionImpl extends ContextImpl
      *      java.lang.String,
      *      de.dante.extex.interpreter.type.real.Real)
      */
-    public void setReal(final String name, final Real value) {
+    public void setReal(String name, Real value) {
 
         ((GroupExtension) getGroup()).setReal(name, value);
     }
@@ -103,7 +103,7 @@ public class ContextExtensionImpl extends ContextImpl
     /**
      * @see de.dante.extex.interpreter.context.ContextExtension#getBool(java.lang.String)
      */
-    public Bool getBool(final String name) {
+    public Bool getBool(String name) {
 
         return ((GroupExtension) getGroup()).getBool(name);
     }
@@ -113,8 +113,8 @@ public class ContextExtensionImpl extends ContextImpl
      *      java.lang.String,
      *      de.dante.extex.interpreter.type.bool.Bool, boolean)
      */
-    public void setBool(final String name, final Bool value,
-            final boolean global) {
+    public void setBool(String name, Bool value,
+            boolean global) {
 
         ((GroupExtension) getGroup()).setBool(name, value, global);
     }
@@ -124,7 +124,7 @@ public class ContextExtensionImpl extends ContextImpl
      *      java.lang.String,
      *      de.dante.extex.interpreter.type.bool.Bool)
      */
-    public void setBool(final String name, final Bool value) {
+    public void setBool(String name, Bool value) {
 
         ((GroupExtension) getGroup()).setBool(name, value);
     }
@@ -133,7 +133,7 @@ public class ContextExtensionImpl extends ContextImpl
      * @see de.dante.extex.interpreter.context.ContextExtension#getPair(
      *      java.lang.String)
      */
-    public Pair getPair(final String name) {
+    public Pair getPair(String name) {
 
         return ((GroupExtension) getGroup()).getPair(name);
     }
@@ -144,8 +144,8 @@ public class ContextExtensionImpl extends ContextImpl
      *      de.dante.extex.interpreter.type.pair.Pair,
      *      boolean)
      */
-    public void setPair(final String name, final Pair value,
-            final boolean global) {
+    public void setPair(String name, Pair value,
+            boolean global) {
 
         ((GroupExtension) getGroup()).setPair(name, value, global);
     }
@@ -155,7 +155,7 @@ public class ContextExtensionImpl extends ContextImpl
      *      java.lang.String,
      *      de.dante.extex.interpreter.type.pair.Pair)
      */
-    public void setPair(final String name, final Pair value) {
+    public void setPair(String name, Pair value) {
 
         ((GroupExtension) getGroup()).setPair(name, value);
     }
@@ -164,7 +164,7 @@ public class ContextExtensionImpl extends ContextImpl
      * @see de.dante.extex.interpreter.context.ContextExtension#getTransform(
      *      java.lang.String)
      */
-    public Transform getTransform(final String name) {
+    public Transform getTransform(String name) {
 
         return ((GroupExtension) getGroup()).getTransform(name);
     }
@@ -175,8 +175,8 @@ public class ContextExtensionImpl extends ContextImpl
      *      de.dante.extex.interpreter.type.transform.Transform,
      *      boolean)
      */
-    public void setTransform(final String name, final Transform value,
-            final boolean global) {
+    public void setTransform(String name, Transform value,
+            boolean global) {
 
         ((GroupExtension) getGroup()).setTransform(name, value, global);
     }
@@ -186,7 +186,7 @@ public class ContextExtensionImpl extends ContextImpl
      *      java.lang.String,
      *      de.dante.extex.interpreter.type.transform.Transform)
      */
-    public void setTransform(final String name, final Transform value) {
+    public void setTransform(String name, Transform value) {
 
         ((GroupExtension) getGroup()).setTransform(name, value);
     }
@@ -195,7 +195,7 @@ public class ContextExtensionImpl extends ContextImpl
      * @see de.dante.extex.interpreter.context.ContextExtension#getHashToks(
      *      java.lang.String)
      */
-    public HashToks getHashToks(final String name) {
+    public HashToks getHashToks(String name) {
 
         return ((GroupExtension) getGroup()).getHashToks(name);
     }
@@ -206,8 +206,8 @@ public class ContextExtensionImpl extends ContextImpl
      *      de.dante.extex.interpreter.type.hash.toks.HashToks,
      *      boolean)
      */
-    public void setHashToks(final String name, final HashToks value,
-            final boolean global) {
+    public void setHashToks(String name, HashToks value,
+            boolean global) {
 
         ((GroupExtension) getGroup()).setHashToks(name, value, global);
     }
@@ -217,7 +217,7 @@ public class ContextExtensionImpl extends ContextImpl
      *      java.lang.String,
      *      de.dante.extex.interpreter.type.hash.toks.HashToks)
      */
-    public void setHashToks(final String name, final HashToks value) {
+    public void setHashToks(String name, HashToks value) {
 
         ((GroupExtension) getGroup()).setHashToks(name, value);
     }

@@ -41,8 +41,8 @@ public final class PopObserverList implements PopObserver {
      *
      * @return the input list or a new one with the observer added
      */
-    public static PopObserver register(final PopObserver list,
-            final PopObserver observer) {
+    public static PopObserver register(PopObserver list,
+            PopObserver observer) {
 
         if (list instanceof PopObserverList) {
             ((PopObserverList) list).add(observer);
@@ -62,14 +62,14 @@ public final class PopObserverList implements PopObserver {
     /**
      * The field <tt>list</tt> contains the encapsulated list.
      */
-    private List list = new ArrayList();
+    private List<PopObserver> list = new ArrayList<PopObserver>();
 
     /**
      * Add an observer to the list.
      *
      * @param observer the observer to add to the list
      */
-    public void add(final PopObserver observer) {
+    public void add(PopObserver observer) {
 
         list.add(observer);
     }
@@ -80,11 +80,10 @@ public final class PopObserverList implements PopObserver {
      *
      * @param token the token to be poped
      */
-    public void update(final Token token) {
+    public void update(Token token) {
 
-        int size = list.size();
-        for (int i = 0; i < size; i++) {
-            ((PopObserver) list.get(i)).update(token);
+        for (PopObserver obs : list) {
+            obs.update(token);
         }
     }
 

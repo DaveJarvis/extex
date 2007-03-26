@@ -87,7 +87,7 @@ public class Closeout extends AbstractCode implements LogEnabled {
      *
      * @param name the name for debugging
      */
-    public Closeout(final String name) {
+    public Closeout(String name) {
 
         super(name);
     }
@@ -100,7 +100,7 @@ public class Closeout extends AbstractCode implements LogEnabled {
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger theLogger) {
+    public void enableLogging(Logger theLogger) {
 
         this.logger = theLogger;
     }
@@ -124,8 +124,8 @@ public class Closeout extends AbstractCode implements LogEnabled {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException, ConfigurationException {
 
         String key = AbstractFileCode.scanOutFileKey(context, source,

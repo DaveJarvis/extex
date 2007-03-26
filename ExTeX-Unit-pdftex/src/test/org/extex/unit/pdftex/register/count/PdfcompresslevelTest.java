@@ -33,7 +33,7 @@ public class PdfcompresslevelTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PdfcompresslevelTest.class);
     }
@@ -43,7 +43,7 @@ public class PdfcompresslevelTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public PdfcompresslevelTest(final String arg) {
+    public PdfcompresslevelTest(String arg) {
 
         super(arg, "pdfcompresslevel", "", "9");
         setConfig("pdftex-test");

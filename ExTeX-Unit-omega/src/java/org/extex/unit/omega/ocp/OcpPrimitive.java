@@ -72,7 +72,7 @@ public class OcpPrimitive extends AbstractFileCode implements ResourceConsumer {
      *
      * @param name the name for debugging
      */
-    public OcpPrimitive(final String name) {
+    public OcpPrimitive(String name) {
 
         super(name);
     }
@@ -96,8 +96,8 @@ public class OcpPrimitive extends AbstractFileCode implements ResourceConsumer {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -115,7 +115,7 @@ public class OcpPrimitive extends AbstractFileCode implements ResourceConsumer {
      * @see org.extex.resource.ResourceConsumer#setResourceFinder(
      *      org.extex.resource.ResourceFinder)
      */
-    public void setResourceFinder(final ResourceFinder resourceFinder) {
+    public void setResourceFinder(ResourceFinder resourceFinder) {
 
         this.finder = resourceFinder;
     }

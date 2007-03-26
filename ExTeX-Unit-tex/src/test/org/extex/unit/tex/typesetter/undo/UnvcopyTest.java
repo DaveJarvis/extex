@@ -33,7 +33,7 @@ public class UnvcopyTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(UnvcopyTest.class);
     }
@@ -43,7 +43,7 @@ public class UnvcopyTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public UnvcopyTest(final String arg) {
+    public UnvcopyTest(String arg) {
 
         super(arg, "unvcopy", "42");
     }

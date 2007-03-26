@@ -61,7 +61,7 @@ public class XtfPrintFonts extends XtfInfo {
      * @param args  The command line.
      * @throws Exception if an error occurred.
      */
-    public static void main(final String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
         XtfPrintFonts info = new XtfPrintFonts();
 
@@ -119,7 +119,7 @@ public class XtfPrintFonts extends XtfInfo {
      *
      * @param name  The xtf name.
      */
-    public void addXtfName(final String name) {
+    public void addXtfName(String name) {
 
         if (name != null) {
             xtflist.add(name);
@@ -258,8 +258,8 @@ public class XtfPrintFonts extends XtfInfo {
      * @return Returns <code>true</code>, if the glyph is found
      *         at least in one font.
      */
-    private String getGlyphName(final int idx, final BaseFont[] basefonts,
-            final XtfReader[] reader) {
+    private String getGlyphName(int idx, BaseFont[] basefonts,
+            XtfReader[] reader) {
 
         String name = "not found";
 
@@ -291,7 +291,7 @@ public class XtfPrintFonts extends XtfInfo {
      * @return Returns <code>true</code>, if the glyph is found
      *         at least in one font.
      */
-    private boolean glyphExists(final int idx, final BaseFont[] basefonts) {
+    private boolean glyphExists(int idx, BaseFont[] basefonts) {
 
         boolean glyphexists = false;
 
@@ -319,7 +319,7 @@ public class XtfPrintFonts extends XtfInfo {
      *
      * @param pdf The createPdf to set.
      */
-    public void setCreatePdf(final boolean pdf) {
+    public void setCreatePdf(boolean pdf) {
 
         createPdf = pdf;
     }

@@ -95,7 +95,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      *
      * @param value the value to imitate
      */
-    public Dimen(final FixedDimen value) {
+    public Dimen(FixedDimen value) {
 
         super(value == null ? 0 : value.getValue());
     }
@@ -106,7 +106,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      *
      * @param value the value to set
      */
-    public Dimen(final long value) {
+    public Dimen(long value) {
 
         super(value);
     }
@@ -116,7 +116,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      *
      * @param d the given value
      */
-    public void abs(final FixedDimen d) {
+    public void abs(FixedDimen d) {
 
         long v = d.getValue();
         setValue(v < 0 ? -v : v);
@@ -132,7 +132,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      *
      * @param d the Dimen to add
      */
-    public void add(final FixedDimen d) {
+    public void add(FixedDimen d) {
 
         setValue(getValue() + d.getValue());
     }
@@ -147,7 +147,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      *
      * @param d the value to add in sp
      */
-    public void add(final long d) {
+    public void add(long d) {
 
         if (d != 0) {
             setValue(getValue() + d);
@@ -167,7 +167,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      * @throws ArithmeticOverflowException in case of a division by 0, i.e. if
      *  denom is 0.
      */
-    public void divide(final long denom) throws ArithmeticOverflowException {
+    public void divide(long denom) throws ArithmeticOverflowException {
 
         if (denom == 0) {
             throw new ArithmeticOverflowException("");
@@ -204,7 +204,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      *
      * @param d the other dimen
      */
-    public void max(final FixedDimen d) {
+    public void max(FixedDimen d) {
 
         long val = d.getValue();
         if (val > getValue()) {
@@ -220,7 +220,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      *
      * @param d the other dimen
      */
-    public void min(final FixedDimen d) {
+    public void min(FixedDimen d) {
 
         long val = d.getValue();
         if (val < getValue()) {
@@ -238,7 +238,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      *
      * @param factor the factor to multiply with
      */
-    public void multiply(final long factor) {
+    public void multiply(long factor) {
 
         setValue(getValue() * factor);
     }
@@ -262,7 +262,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      *
      * @param d the new value
      */
-    public void set(final FixedGlueComponent d) {
+    public void set(FixedGlueComponent d) {
 
         set(d.getValue());
     }
@@ -277,7 +277,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      *
      * @param d the Dimen to subtract
      */
-    public void subtract(final FixedDimen d) {
+    public void subtract(FixedDimen d) {
 
         setValue(getValue() - d.getValue());
     }

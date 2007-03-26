@@ -31,7 +31,7 @@ public class RightskipTest extends AbstractSkipRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(RightskipTest.class);
     }
@@ -41,7 +41,7 @@ public class RightskipTest extends AbstractSkipRegisterTester {
      *
      * @param arg the name
      */
-    public RightskipTest(final String arg) {
+    public RightskipTest(String arg) {
 
         super(arg, "rightskip", "", "0.0pt");
     }

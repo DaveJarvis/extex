@@ -75,7 +75,7 @@ public class If extends AbstractIf {
      *
      * @param name the name for debugging
      */
-    public If(final String name) {
+    public If(String name) {
 
         super(name);
     }
@@ -99,8 +99,8 @@ public class If extends AbstractIf {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public boolean conditional(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Token t1 = source.scanToken(context);

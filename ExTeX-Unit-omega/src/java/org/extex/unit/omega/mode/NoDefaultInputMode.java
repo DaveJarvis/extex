@@ -63,7 +63,7 @@ public class NoDefaultInputMode extends AbstractModeCode {
      *
      * @param name the name for debugging
      */
-    public NoDefaultInputMode(final String name) {
+    public NoDefaultInputMode(String name) {
 
         super(name);
     }
@@ -86,8 +86,8 @@ public class NoDefaultInputMode extends AbstractModeCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         context.set(OmegaExtension.NAME, DEFAULT_INPUT_MODE, null, //

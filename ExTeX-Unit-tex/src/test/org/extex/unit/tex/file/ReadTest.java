@@ -41,7 +41,7 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ReadTest.class);
     }
@@ -51,7 +51,7 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public ReadTest(final String arg) {
+    public ReadTest(String arg) {
 
         super(arg, "read", "1 to \\x", "\\openin1 " + DATA_FILE + " ");
     }

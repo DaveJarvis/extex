@@ -43,7 +43,7 @@ public class MainUnknownOptionException extends MainException {
      *
      * @param message the name of the unknown option
      */
-    public MainUnknownOptionException(final String message) {
+    public MainUnknownOptionException(String message) {
 
         super(ERROR_CODE, message);
     }

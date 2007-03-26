@@ -101,10 +101,10 @@ public final class LoadUnit extends AbstractFactory {
      * @throws ConfigurationException in case of a configuration error
      * @throws GeneralException in case of an error
      */
-    public static void loadUnit(final Configuration configuration,
-            final Context context, final TokenSource source,
-            final Typesetter typesetter, final Logger logger,
-            final OutputStreamFactory outputFactory) throws GeneralException {
+    public static void loadUnit(Configuration configuration,
+            Context context, TokenSource source,
+            Typesetter typesetter, Logger logger,
+            OutputStreamFactory outputFactory) throws GeneralException {
 
         TokenFactory tokenFactory = context.getTokenFactory();
         LoadUnit primitiveFactory = new LoadUnit();
@@ -204,10 +204,10 @@ public final class LoadUnit extends AbstractFactory {
      *    in case of another error which is wrapped</li>
      * </ul>
      */
-    public void define(final Configuration configuration,
-            final TokenFactory tokenFactory, final Context context,
-            final Typesetter typesetter, final Logger outputLogger,
-            final OutputStreamFactory outputFactory) throws GeneralException {
+    public void define(Configuration configuration,
+            TokenFactory tokenFactory, Context context,
+            Typesetter typesetter, Logger outputLogger,
+            OutputStreamFactory outputFactory) throws GeneralException {
 
         enableLogging(outputLogger);
         UnicodeChar esc = UnicodeChar.get('\\');

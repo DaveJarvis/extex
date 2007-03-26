@@ -62,7 +62,7 @@ public class TokenStreamBaseImpl implements TokenStream {
      * @param isFile indicator whether or not the token stream is assigned to
      * a file
      */
-    public TokenStreamBaseImpl(final boolean isFile) {
+    public TokenStreamBaseImpl(boolean isFile) {
 
         super();
         this.fileStream = isFile;
@@ -75,7 +75,7 @@ public class TokenStreamBaseImpl implements TokenStream {
      * a file
      * @param tokens the tokens to push to the stream initially
      */
-    public TokenStreamBaseImpl(final boolean isFile, final Tokens tokens) {
+    public TokenStreamBaseImpl(boolean isFile, Tokens tokens) {
 
         super();
         this.fileStream = isFile;
@@ -116,7 +116,7 @@ public class TokenStreamBaseImpl implements TokenStream {
      *      org.extex.scanner.type.token.TokenFactory,
      *      org.extex.scanner.Tokenizer)
      */
-    public Token get(final TokenFactory factory, final Tokenizer tokenizer)
+    public Token get(TokenFactory factory, Tokenizer tokenizer)
             throws ScannerException {
 
         if (!skipSpaces) {
@@ -165,8 +165,8 @@ public class TokenStreamBaseImpl implements TokenStream {
      * @return the next Token or <code>null</code>
      * @throws ScannerException in case of an error
      */
-    protected Token getNext(final TokenFactory factory,
-            final Tokenizer tokenizer) throws ScannerException {
+    protected Token getNext(TokenFactory factory,
+            Tokenizer tokenizer) throws ScannerException {
 
         return null;
     }
@@ -223,7 +223,7 @@ public class TokenStreamBaseImpl implements TokenStream {
      * @see org.extex.scanner.TokenStream#put(
      *      org.extex.scanner.type.token.Token)
      */
-    public void put(final Token token) {
+    public void put(Token token) {
 
         if (token != null) {
             stack.add(token);

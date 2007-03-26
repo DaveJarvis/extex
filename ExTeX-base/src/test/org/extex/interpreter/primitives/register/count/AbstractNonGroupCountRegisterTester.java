@@ -59,8 +59,8 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * @param args ...
      * @param init ...
      */
-    public AbstractNonGroupCountRegisterTester(final String arg,
-            final String primitive, final String args, final String init) {
+    public AbstractNonGroupCountRegisterTester(String arg,
+            String primitive, String args, String init) {
 
         super(arg);
         this.primitive = primitive;
@@ -78,9 +78,9 @@ public abstract class AbstractNonGroupCountRegisterTester extends ExTeXLauncher 
      * @param init ...
      * @param prepare ...
      */
-    public AbstractNonGroupCountRegisterTester(final String arg,
-            final String primitive, final String args, final String init,
-            final String prepare) {
+    public AbstractNonGroupCountRegisterTester(String arg,
+            String primitive, String args, String init,
+            String prepare) {
 
         super(arg);
         this.primitive = primitive;

@@ -60,7 +60,7 @@ public class CharNode extends AbstractNode {
      * @param context the typesetting context
      * @param uc the Unicode character
      */
-    public CharNode(final TypesettingContext context, final UnicodeChar uc) {
+    public CharNode(TypesettingContext context, UnicodeChar uc) {
 
         super();
         typesettingContext = context;
@@ -146,8 +146,8 @@ public class CharNode extends AbstractNode {
      *      int,
      *      int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         Font font = typesettingContext.getFont();
         sb.append(getLocalizer().format("String.Format",
@@ -175,7 +175,7 @@ public class CharNode extends AbstractNode {
      *      java.lang.StringBuffer,
      *      java.lang.String)
      */
-    public void toText(final StringBuffer sb, final String prefix) {
+    public void toText(StringBuffer sb, String prefix) {
 
         Font font = typesettingContext.getFont();
         sb.append(getLocalizer().format("Text.Format",
@@ -196,7 +196,7 @@ public class CharNode extends AbstractNode {
      *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final NodeVisitor visitor, final Object value)
+    public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {
 
         return visitor.visitChar(this, value);

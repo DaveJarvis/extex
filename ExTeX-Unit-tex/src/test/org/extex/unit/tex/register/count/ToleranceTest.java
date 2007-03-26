@@ -33,7 +33,7 @@ public class ToleranceTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ToleranceTest.class);
     }
@@ -43,7 +43,7 @@ public class ToleranceTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public ToleranceTest(final String arg) {
+    public ToleranceTest(String arg) {
 
         super(arg, "tolerance", "", "10000");
     }

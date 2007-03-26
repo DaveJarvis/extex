@@ -47,7 +47,7 @@ public class T2NumberFormatException extends IOException {
      * Create a new object
      * @param s the message
      */
-    public T2NumberFormatException(final String s) {
+    public T2NumberFormatException(String s) {
 
         super(s);
     }

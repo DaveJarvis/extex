@@ -47,7 +47,7 @@ public class ImageNode extends WhatsItNode implements Node {
      *
      * @param theImage the image to pass to the backend driver
      */
-    public ImageNode(final Image theImage) {
+    public ImageNode(Image theImage) {
 
         super();
         this.image = theImage;

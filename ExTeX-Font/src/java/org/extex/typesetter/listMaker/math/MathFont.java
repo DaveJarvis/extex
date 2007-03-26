@@ -50,7 +50,7 @@ public class MathFont implements Font {
      *
      * @param font the font encapsulated
      */
-    public MathFont(final Font font) {
+    public MathFont(Font font) {
 
         super();
         this.font = font;
@@ -105,7 +105,7 @@ public class MathFont implements Font {
      * @see org.extex.interpreter.type.font.Font#getDepth(
      *      org.extex.core.UnicodeChar)
      */
-    public FixedGlue getDepth(final UnicodeChar uc) {
+    public FixedGlue getDepth(UnicodeChar uc) {
 
         return font.getDepth(uc);
     }
@@ -132,7 +132,7 @@ public class MathFont implements Font {
      * @see org.extex.interpreter.type.font.Font#getEfCode(
      *      org.extex.core.UnicodeChar)
      */
-    public long getEfCode(final UnicodeChar uc) {
+    public long getEfCode(UnicodeChar uc) {
 
         return font.getEfCode(uc);
     }
@@ -181,7 +181,7 @@ public class MathFont implements Font {
      *
      * @see org.extex.interpreter.type.font.Font#getFontDimen(String)
      */
-    public FixedDimen getFontDimen(final String key) {
+    public FixedDimen getFontDimen(String key) {
 
         return this.font.getFontDimen(key);
     }
@@ -220,7 +220,7 @@ public class MathFont implements Font {
      * @see org.extex.interpreter.type.font.Font#getHeight(
      *      org.extex.core.UnicodeChar)
      */
-    public FixedGlue getHeight(final UnicodeChar uc) {
+    public FixedGlue getHeight(UnicodeChar uc) {
 
         return font.getHeight(uc);
     }
@@ -247,7 +247,7 @@ public class MathFont implements Font {
      * @see org.extex.interpreter.type.font.Font#getItalicCorrection(
      *      org.extex.core.UnicodeChar)
      */
-    public FixedDimen getItalicCorrection(final UnicodeChar uc) {
+    public FixedDimen getItalicCorrection(UnicodeChar uc) {
 
         return font.getItalicCorrection(uc);
     }
@@ -263,7 +263,7 @@ public class MathFont implements Font {
      * @see org.extex.interpreter.type.font.Font#getKerning(
      *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
      */
-    public FixedDimen getKerning(final UnicodeChar uc1, final UnicodeChar uc2) {
+    public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
 
         return font.getKerning(uc1, uc2);
     }
@@ -279,7 +279,7 @@ public class MathFont implements Font {
      * @see org.extex.interpreter.type.font.Font#getLigature(
      *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
      */
-    public UnicodeChar getLigature(final UnicodeChar uc1, final UnicodeChar uc2) {
+    public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
 
         return font.getLigature(uc1, uc2);
     }
@@ -330,7 +330,7 @@ public class MathFont implements Font {
      * @see org.extex.interpreter.type.font.Font#getWidth(
      *      org.extex.core.UnicodeChar)
      */
-    public FixedGlue getWidth(final UnicodeChar uc) {
+    public FixedGlue getWidth(UnicodeChar uc) {
 
         return font.getWidth(uc);
     }
@@ -345,7 +345,7 @@ public class MathFont implements Font {
      * @see org.extex.interpreter.type.font.Font#hasGlyph(
      *      org.extex.core.UnicodeChar)
      */
-    public boolean hasGlyph(final UnicodeChar uc) {
+    public boolean hasGlyph(UnicodeChar uc) {
 
         return font.hasGlyph(uc);
     }
@@ -361,7 +361,7 @@ public class MathFont implements Font {
      * @see org.extex.interpreter.type.font.Font#setEfCode(
      *      org.extex.core.UnicodeChar, long)
      */
-    public void setEfCode(final UnicodeChar uc, final long code) {
+    public void setEfCode(UnicodeChar uc, long code) {
 
         font.setEfCode(uc, code);
     }
@@ -374,7 +374,7 @@ public class MathFont implements Font {
      *
      * @see org.extex.interpreter.type.font.Font#setFontDimen(String, Dimen)
      */
-    public void setFontDimen(final String key, final Dimen value) {
+    public void setFontDimen(String key, Dimen value) {
 
         this.font.setFontDimen(key, value);
     }
@@ -387,7 +387,7 @@ public class MathFont implements Font {
      * @see org.extex.interpreter.type.font.Font#setHyphenChar(
      *      org.extex.core.UnicodeChar)
      */
-    public void setHyphenChar(final UnicodeChar hyphen) {
+    public void setHyphenChar(UnicodeChar hyphen) {
 
         this.font.setHyphenChar(hyphen);
     }
@@ -400,7 +400,7 @@ public class MathFont implements Font {
      * @see org.extex.interpreter.type.font.Font#setSkewChar(
      *      org.extex.core.UnicodeChar)
      */
-    public void setSkewChar(final UnicodeChar skew) {
+    public void setSkewChar(UnicodeChar skew) {
 
         this.font.setSkewChar(skew);
     }

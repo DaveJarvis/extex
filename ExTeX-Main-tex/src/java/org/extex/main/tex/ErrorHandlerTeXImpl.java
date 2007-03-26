@@ -51,8 +51,8 @@ public class ErrorHandlerTeXImpl extends ErrorHandlerImpl {
      * @see org.extex.main.tex.ErrorHandlerImpl#showErrorLine(
      *      java.util.logging.Logger, java.lang.String, org.extex.core.Locator)
      */
-    protected void showErrorLine(final Logger logger, final String message,
-            final Locator locator) {
+    protected void showErrorLine(Logger logger, String message,
+            Locator locator) {
 
         StringBuffer sb = new StringBuffer();
         String file = locator.getResourceName();

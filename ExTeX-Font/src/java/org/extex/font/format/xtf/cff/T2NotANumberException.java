@@ -47,7 +47,7 @@ public class T2NotANumberException extends IOException {
      * Create a new object
      * @param s the message
      */
-    public T2NotANumberException(final String s) {
+    public T2NotANumberException(String s) {
 
         super(s);
     }

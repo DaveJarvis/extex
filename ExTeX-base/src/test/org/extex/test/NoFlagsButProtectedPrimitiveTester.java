@@ -56,8 +56,8 @@ public abstract class NoFlagsButProtectedPrimitiveTester extends ExTeXLauncher {
      * @param primitive the name of the primitive
      * @param arguments additional arguments for the flag test
      */
-    public NoFlagsButProtectedPrimitiveTester(final String name,
-            final String primitive, final String arguments) {
+    public NoFlagsButProtectedPrimitiveTester(String name,
+            String primitive, String arguments) {
 
         super(name);
         this.primitive = primitive;
@@ -72,8 +72,8 @@ public abstract class NoFlagsButProtectedPrimitiveTester extends ExTeXLauncher {
      * @param arguments the parameters for the invocation
      * @param prepare the preparation code
      */
-    public NoFlagsButProtectedPrimitiveTester(final String arg,
-            final String primitive, final String arguments, final String prepare) {
+    public NoFlagsButProtectedPrimitiveTester(String arg,
+            String primitive, String arguments, String prepare) {
 
         this(arg, primitive, arguments);
         this.prepare = DEFINE_BRACES + prepare;
@@ -88,9 +88,9 @@ public abstract class NoFlagsButProtectedPrimitiveTester extends ExTeXLauncher {
      * @param prepare the preparation code
      * @param out the prefix of the expected output
      */
-    public NoFlagsButProtectedPrimitiveTester(final String arg,
-            final String primitive, final String arguments,
-            final String prepare, final String out) {
+    public NoFlagsButProtectedPrimitiveTester(String arg,
+            String primitive, String arguments,
+            String prepare, String out) {
 
         this(arg, primitive, arguments);
         this.prepare = DEFINE_BRACES + prepare;

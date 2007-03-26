@@ -80,7 +80,7 @@ public abstract class AbstractFileCode extends AbstractCode
      *  <pre class="syntax">
      *    &lang;infile&nbsp;name&rang;
      *      &rarr; {@linkplain
-     *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
+     *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;} </pre>
      * </doc>
      *
@@ -93,8 +93,8 @@ public abstract class AbstractFileCode extends AbstractCode
      *
      * @throws InterpreterException in case of a failure
      */
-    public static String scanInFileKey(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public static String scanInFileKey(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         long no = CountParser.scanNumber(context, source, typesetter);
@@ -124,7 +124,7 @@ public abstract class AbstractFileCode extends AbstractCode
      *  <pre class="syntax">
      *    &lang;infile&nbsp;name&rang;
      *      &rarr; {@linkplain
-     *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
+     *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;} </pre>
      * </doc>
      *
@@ -137,8 +137,8 @@ public abstract class AbstractFileCode extends AbstractCode
      *
      * @throws InterpreterException in case of a failure
      */
-    public static String scanOutFileKey(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public static String scanOutFileKey(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         long no = CountParser.scanNumber(context, source, typesetter);
@@ -157,7 +157,7 @@ public abstract class AbstractFileCode extends AbstractCode
      *
      * @param name the name for debugging
      */
-    public AbstractFileCode(final String name) {
+    public AbstractFileCode(String name) {
 
         super(name);
     }
@@ -172,7 +172,7 @@ public abstract class AbstractFileCode extends AbstractCode
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
-    public void configure(final Configuration config) {
+    public void configure(Configuration config) {
 
         String strict = config.getAttribute("strict");
         strictTeX = (strict != null && Boolean.valueOf(strict).booleanValue());
@@ -191,7 +191,7 @@ public abstract class AbstractFileCode extends AbstractCode
      *
      * @return the encoding for the AbstractFileCodefile
      */
-    protected String getEncoding(final Context context) {
+    protected String getEncoding(Context context) {
 
         String encoding = context.getToks("fileencoding").toText().trim();
         if (encoding.length() == 0) {
@@ -227,8 +227,8 @@ public abstract class AbstractFileCode extends AbstractCode
      *
      * @throws InterpreterException in case of an error
      */
-    protected String scanFileName(final Context context,
-            final TokenSource source) throws InterpreterException {
+    protected String scanFileName(Context context,
+            TokenSource source) throws InterpreterException {
 
         Token t = source.scanNonSpace(context);
 

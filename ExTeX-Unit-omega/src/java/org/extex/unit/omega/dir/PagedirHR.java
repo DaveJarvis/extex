@@ -62,7 +62,7 @@ public class PagedirHR extends AbstractDirCode {
      *
      * @param name the name for debugging
      */
-    public PagedirHR(final String name) {
+    public PagedirHR(String name) {
 
         super(name);
     }
@@ -85,8 +85,8 @@ public class PagedirHR extends AbstractDirCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         //TODO gene: unimplemented

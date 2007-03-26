@@ -31,7 +31,7 @@ public class OverfullruleTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(OverfullruleTest.class);
     }
@@ -41,7 +41,7 @@ public class OverfullruleTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public OverfullruleTest(final String arg) {
+    public OverfullruleTest(String arg) {
 
         super(arg, "overfullrule", "", "0.0pt");
     }

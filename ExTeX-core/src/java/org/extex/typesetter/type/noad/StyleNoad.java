@@ -285,7 +285,7 @@ public final class StyleNoad implements Noad {
      * @param style the style
      * @param fontName the name of the font to use
      */
-    private StyleNoad(final int no, final String style, final String fontName) {
+    private StyleNoad(int no, String style, String fontName) {
 
         super();
         this.no = no;
@@ -391,7 +391,7 @@ public final class StyleNoad implements Noad {
      * @return <code>true</code> iff the current style is less than the other
      *  according to the list in the description of StyleNoad.
      */
-    public boolean less(final StyleNoad other) {
+    public boolean less(StyleNoad other) {
 
         return no < other.no;
     }
@@ -431,7 +431,7 @@ public final class StyleNoad implements Noad {
      * @see org.extex.typesetter.type.noad.Noad#setSubscript(
      *      org.extex.typesetter.type.noad.Noad)
      */
-    public void setSubscript(final Noad subscript) {
+    public void setSubscript(Noad subscript) {
 
         throw new UnsupportedOperationException("subscript in style");
     }
@@ -444,7 +444,7 @@ public final class StyleNoad implements Noad {
      * @see org.extex.typesetter.type.noad.Noad#setSuperscript(
      *      org.extex.typesetter.type.noad.Noad)
      */
-    public void setSuperscript(final Noad superscript) {
+    public void setSuperscript(Noad superscript) {
 
         throw new UnsupportedOperationException("superscript in style");
     }
@@ -494,7 +494,7 @@ public final class StyleNoad implements Noad {
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer)
      */
-    public void toString(final StringBuffer sb) {
+    public void toString(StringBuffer sb) {
 
         sb.append("\\" + style);
     }
@@ -508,7 +508,7 @@ public final class StyleNoad implements Noad {
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *       java.lang.StringBuffer, int)
      */
-    public void toString(final StringBuffer sb, final int depth) {
+    public void toString(StringBuffer sb, int depth) {
 
         toString(sb);
     }
@@ -535,9 +535,9 @@ public final class StyleNoad implements Noad {
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(final Noad previousNoad, final NoadList noads,
-            final int index, final NodeList list,
-            final MathContext mathContext, final Logger logger)
+    public void typeset(Noad previousNoad, NoadList noads,
+            int index, NodeList list,
+            MathContext mathContext, Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 

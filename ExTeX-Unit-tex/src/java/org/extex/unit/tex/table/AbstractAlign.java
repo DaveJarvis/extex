@@ -54,7 +54,7 @@ public abstract class AbstractAlign extends AbstractCode {
      *
      * @param codeName the name of the primitive for error messages
      */
-    public AbstractAlign(final String codeName) {
+    public AbstractAlign(String codeName) {
 
         super(codeName);
     }
@@ -80,10 +80,10 @@ public abstract class AbstractAlign extends AbstractCode {
      *
      * @throws InterpreterException in case of an error
      */
-    protected List getPreamble(final Context context, final TokenSource source)
-            throws InterpreterException {
+    protected List<PreambleItem> getPreamble(Context context,
+            TokenSource source) throws InterpreterException {
 
-        List preamble = new ArrayList();
+        List<PreambleItem> preamble = new ArrayList<PreambleItem>();
 
         while (addPreambleItem(context, source, preamble)) {
             //nothing more to do
@@ -105,8 +105,8 @@ public abstract class AbstractAlign extends AbstractCode {
      *
      * @throws InterpreterException in case of an error
      */
-    private boolean addPreambleItem(final Context context,
-            final TokenSource source, final List preamble)
+    private boolean addPreambleItem(Context context,
+            TokenSource source, List<PreambleItem> preamble)
             throws InterpreterException {
 
         Tokens pre = new Tokens();

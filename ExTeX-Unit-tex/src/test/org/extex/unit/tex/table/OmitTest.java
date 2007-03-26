@@ -33,7 +33,7 @@ public class OmitTest extends ExTeXLauncher {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(OmitTest.class);
     }
@@ -43,7 +43,7 @@ public class OmitTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public OmitTest(final String arg) {
+    public OmitTest(String arg) {
 
         super(arg);
     }

@@ -47,7 +47,7 @@ public class TrivialOutputFactory implements OutputStreamFactory {
     /**
      * The field <tt>observers</tt> contains the list of registered observers.
      */
-    private List observers = null;
+    private List<OutputStreamObserver> observers = null;
 
     /**
      * Creates a new object.
@@ -58,15 +58,17 @@ public class TrivialOutputFactory implements OutputStreamFactory {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.backend.outputStream.OutputStreamFactory#getOutputStream(
      *      java.lang.String, java.lang.String)
      */
-    public OutputStream getOutputStream(final String name, final String type)
+    public OutputStream getOutputStream(String name, String type)
             throws DocumentWriterException {
 
         String ext = (type != null ? type : extension);
         File file = new File(".", name + "." + ext);
-        NamedOutputStream stream = null;
+        NamedOutputStream stream;
         try {
             stream =
                     new NamedOutputStream(file.toString(),
@@ -74,33 +76,36 @@ public class TrivialOutputFactory implements OutputStreamFactory {
         } catch (FileNotFoundException e) {
             throw new DocumentWriterException(e);
         }
-        if (stream != null && observers != null) {
+        if (observers != null) {
             int size = observers.size();
             for (int i = 0; i < size; i++) {
-                ((OutputStreamObserver) observers.get(i)).update(name, type,
-                    stream);
+                observers.get(i).update(name, type, stream);
             }
         }
         return stream;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.backend.outputStream.OutputStreamFactory#register(
      *      org.extex.backend.outputStream.OutputStreamObserver)
      */
-    public void register(final OutputStreamObserver observer) {
+    public void register(OutputStreamObserver observer) {
 
         if (observers == null) {
-            observers = new ArrayList();
+            observers = new ArrayList<OutputStreamObserver>();
         }
         observers.add(observer);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.backend.outputStream.OutputStreamFactory#setExtension(
      *      java.lang.String)
      */
-    public void setExtension(final String extension) {
+    public void setExtension(String extension) {
 
         this.extension = extension;
     }

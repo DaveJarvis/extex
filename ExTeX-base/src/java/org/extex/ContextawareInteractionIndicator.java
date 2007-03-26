@@ -54,7 +54,7 @@ public class ContextawareInteractionIndicator implements InteractionIndicator {
      *
      * @param context the interpreter context
      */
-    public void setContext(final Context context) {
+    public void setContext(Context context) {
 
         this.context = context;
     }

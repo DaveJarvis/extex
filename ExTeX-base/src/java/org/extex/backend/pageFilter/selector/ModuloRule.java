@@ -44,7 +44,7 @@ class ModuloRule implements Rule {
      * @param mod the divider
      * @param rem the remainder
      */
-    public ModuloRule(final int mod, final int rem) {
+    public ModuloRule(int mod, int rem) {
 
         super();
         this.mod = mod;
@@ -60,7 +60,7 @@ class ModuloRule implements Rule {
      *
      * @see org.extex.backend.pageFilter.selector.Rule#check(int)
      */
-    public boolean check(final int value) {
+    public boolean check(int value) {
 
         return value % mod == rem;
     }

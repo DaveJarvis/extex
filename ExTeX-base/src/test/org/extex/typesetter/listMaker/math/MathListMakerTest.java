@@ -46,7 +46,7 @@ public class MathListMakerTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public MathListMakerTest(final String arg) {
+    public MathListMakerTest(String arg) {
 
         super(arg);
     }

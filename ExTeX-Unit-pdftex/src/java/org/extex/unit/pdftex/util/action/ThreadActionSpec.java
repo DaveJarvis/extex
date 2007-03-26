@@ -51,9 +51,9 @@ public class ThreadActionSpec extends ActionSpec {
      *
      * @throws InterpreterException in case of an error
      */
-    public static ActionSpec parseActionSpec(final Context context,
-            final TokenSource source, final Typesetter typesetter,
-            final String name) throws InterpreterException {
+    public static ActionSpec parseActionSpec(Context context,
+            TokenSource source, Typesetter typesetter,
+            String name) throws InterpreterException {
 
         String file = null;
         if (source.getKeyword(context, "file")) {
@@ -81,7 +81,7 @@ public class ThreadActionSpec extends ActionSpec {
      * @param file the file
      * @param id the id
      */
-    public ThreadActionSpec(final String file, final IdSpec id) {
+    public ThreadActionSpec(String file, IdSpec id) {
 
         super();
         this.file = file;
@@ -137,7 +137,7 @@ public class ThreadActionSpec extends ActionSpec {
      * @see org.extex.unit.pdftex.util.action.ActionSpec#visit(
      *      org.extex.unit.pdftex.util.action.ActionVisitor)
      */
-    public Object visit(final ActionVisitor visitor) {
+    public Object visit(ActionVisitor visitor) {
 
         return visitor.visitThread(this);
     }

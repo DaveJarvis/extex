@@ -80,7 +80,7 @@ public class Char extends AbstractCode implements ExpandableCode {
      *
      * @param name the name for tracing and debugging
      */
-    public Char(final String name) {
+    public Char(String name) {
 
         super(name);
     }
@@ -103,8 +103,8 @@ public class Char extends AbstractCode implements ExpandableCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         expand(prefix, context, source, typesetter);
@@ -130,8 +130,8 @@ public class Char extends AbstractCode implements ExpandableCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void expand(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void expand(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         UnicodeChar uc = source.scanCharacterCode(context, typesetter,

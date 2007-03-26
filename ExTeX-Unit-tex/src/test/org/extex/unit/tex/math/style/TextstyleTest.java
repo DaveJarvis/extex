@@ -34,7 +34,7 @@ public class TextstyleTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public TextstyleTest(final String arg) {
+    public TextstyleTest(String arg) {
 
         super(arg, "textstyle", "");
     }

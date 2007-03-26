@@ -44,7 +44,7 @@ public interface CodeToken extends Token {
      *
      * @return the new token
      */
-    CodeToken cloneInNamespace(final String namespace);
+    CodeToken cloneInNamespace(String namespace);
 
     /**
      * Getter for the name.

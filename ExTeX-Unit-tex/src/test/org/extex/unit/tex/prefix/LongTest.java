@@ -32,7 +32,7 @@ public class LongTest extends PrefixTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(LongTest.class);
     }
@@ -42,7 +42,7 @@ public class LongTest extends PrefixTester {
      *
      * @param arg the name
      */
-    public LongTest(final String arg) {
+    public LongTest(String arg) {
 
         super(arg, "long");
     }

@@ -158,6 +158,7 @@ public interface NoadConsumer extends ListMaker {
      *  should be used.
      * @param ruleWidth th width of the rule or <code>null</code> to indicate
      *  that the default width should be used
+     * @param tc the typesetting context
      *
      * @throws TypesetterException in case of an error
      */

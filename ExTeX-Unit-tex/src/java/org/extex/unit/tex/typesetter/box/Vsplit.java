@@ -84,7 +84,7 @@ public class Vsplit extends AbstractCode implements Boxable, LogEnabled {
      *
      * @param name the name for tracing and debugging
      */
-    public Vsplit(final String name) {
+    public Vsplit(String name) {
 
         super(name);
     }
@@ -97,7 +97,7 @@ public class Vsplit extends AbstractCode implements Boxable, LogEnabled {
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger log) {
+    public void enableLogging(Logger log) {
 
         this.logger = log;
     }
@@ -121,8 +121,8 @@ public class Vsplit extends AbstractCode implements Boxable, LogEnabled {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         NodeList nl = vsplit(context, source, typesetter);
@@ -149,8 +149,8 @@ public class Vsplit extends AbstractCode implements Boxable, LogEnabled {
      *      org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
-    public Box getBox(final Context context, final TokenSource source,
-            final Typesetter typesetter, Token insert)
+    public Box getBox(Context context, TokenSource source,
+            Typesetter typesetter, Token insert)
             throws InterpreterException {
 
         //TODO gene: treat insert
@@ -169,8 +169,8 @@ public class Vsplit extends AbstractCode implements Boxable, LogEnabled {
      *
      * @throws InterpreterException in case of an error
      */
-    private NodeList vsplit(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    private NodeList vsplit(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         String key = Setbox.getKey(context, source, typesetter, getName());
         if (!source.getKeyword(context, "to")) {

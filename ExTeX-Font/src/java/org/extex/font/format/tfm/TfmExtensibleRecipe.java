@@ -82,7 +82,7 @@ public class TfmExtensibleRecipe implements Serializable {
      * @param id    the id
      * @throws IOException if an IO-error occurs.
      */
-    public TfmExtensibleRecipe(final RandomAccessR rar, final int id)
+    public TfmExtensibleRecipe(RandomAccessR rar, int id)
             throws IOException {
 
         etid = id;

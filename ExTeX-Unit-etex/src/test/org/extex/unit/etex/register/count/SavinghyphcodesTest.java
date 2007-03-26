@@ -33,7 +33,7 @@ public class SavinghyphcodesTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(SavinghyphcodesTest.class);
     }
@@ -43,7 +43,7 @@ public class SavinghyphcodesTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public SavinghyphcodesTest(final String arg) {
+    public SavinghyphcodesTest(String arg) {
 
         super(arg, "savinghyphcodes", "", "0");
         setConfig("etex-test");

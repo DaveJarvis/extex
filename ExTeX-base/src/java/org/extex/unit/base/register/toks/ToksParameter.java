@@ -73,7 +73,7 @@ public class ToksParameter extends AbstractToks
      *
      * @return the key for the toks register
      */
-    public static String getKey(final String name, final Context context) {
+    public static String getKey(String name, Context context) {
 
         if (Namespace.SUPPORT_NAMESPACE_TOKS) {
             return context.getNamespace() + "\b" + name;
@@ -91,7 +91,7 @@ public class ToksParameter extends AbstractToks
      *
      * @param name the name for debugging
      */
-    public ToksParameter(final String name) {
+    public ToksParameter(String name) {
 
         super(name);
         key = name;
@@ -103,7 +103,7 @@ public class ToksParameter extends AbstractToks
      * @param name the name for debugging
      * @param key the key
      */
-    public ToksParameter(final String name, final String key) {
+    public ToksParameter(String name, String key) {
 
         super(name);
         this.key = key;
@@ -119,7 +119,7 @@ public class ToksParameter extends AbstractToks
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
-    public void configure(final Configuration config) {
+    public void configure(Configuration config) {
 
         String k = config.getAttribute("key");
         if (k != null) {
@@ -141,8 +141,8 @@ public class ToksParameter extends AbstractToks
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    protected String getKey(final Context context, final TokenSource source,
-            final Typesetter typesetter) {
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) {
 
         if (Namespace.SUPPORT_NAMESPACE_TOKS) {
             return context.getNamespace() + "\b" + key;
@@ -162,8 +162,8 @@ public class ToksParameter extends AbstractToks
      * @see org.extex.interpreter.type.InitializableCode#init(
      *      org.extex.interpreter.context.Context, TokenSource, Typesetter)
      */
-    public void init(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public void init(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         if (source != null) {
             Tokens toks = new Tokens();
@@ -195,8 +195,8 @@ public class ToksParameter extends AbstractToks
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         String key = getKey(context, source, typesetter);
@@ -229,8 +229,8 @@ public class ToksParameter extends AbstractToks
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens convertTokens(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public Tokens convertTokens(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         String key = getKey(context, source, typesetter);
@@ -249,9 +249,9 @@ public class ToksParameter extends AbstractToks
      *
      * @throws GeneralException in case of an error
      */
-    protected void expand(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter,
-            final String key) throws GeneralException {
+    protected void expand(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter,
+            String key) throws GeneralException {
 
         Tokens toks = source.getTokens(context, source, typesetter);
         context.setToks(key, toks, prefix.clearGlobal());
@@ -264,8 +264,8 @@ public class ToksParameter extends AbstractToks
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         return context.getToks(getKey(context, source, typesetter));
     }

@@ -37,7 +37,7 @@ public class DocumentWriterIOException extends DocumentWriterException {
      *
      * @param message the error message
      */
-    public DocumentWriterIOException(final String message) {
+    public DocumentWriterIOException(String message) {
 
         super(message);
     }
@@ -48,7 +48,7 @@ public class DocumentWriterIOException extends DocumentWriterException {
      * @param message the message
      * @param cause the cause
      */
-    public DocumentWriterIOException(final String message, final Throwable cause) {
+    public DocumentWriterIOException(String message, Throwable cause) {
 
         super(message, cause);
     }
@@ -58,7 +58,7 @@ public class DocumentWriterIOException extends DocumentWriterException {
      *
      * @param cause the cause
      */
-    public DocumentWriterIOException(final Throwable cause) {
+    public DocumentWriterIOException(Throwable cause) {
 
         super(cause);
     }

@@ -36,7 +36,7 @@ import org.apache.tools.ant.Task;
  * TODO gene: missing JavaDoc.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5413 $
  */
 public class TuneAntLogTask extends Task {
 
@@ -48,7 +48,7 @@ public class TuneAntLogTask extends Task {
     /**
      * TODO gene: missing JavaDoc
      *
-     * @throws BuildException
+     * @throws BuildException in case of an error
      *
      * @see org.apache.tools.ant.Task#execute()
      */
@@ -104,7 +104,7 @@ public class TuneAntLogTask extends Task {
      *
      * @param file the file to set
      */
-    public void setFile(final String file) {
+    public void setFile(String file) {
 
         this.file = file;
     }

@@ -21,7 +21,6 @@ package org.extex.typesetter.listMaker.math;
 
 import org.extex.core.Locator;
 import org.extex.core.count.Count;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
@@ -117,17 +116,18 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
      * @param manager the manager to ask for global changes
      * @param locator the locator
      */
-    public DisplaymathListMaker(final ListManager manager, final Locator locator) {
+    public DisplaymathListMaker(ListManager manager, Locator locator) {
 
         super(manager, locator);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#complete(TypesetterOptions)
      */
-    public NodeList complete(final TypesetterOptions context)
-            throws TypesetterException,
-                ConfigurationException {
+    public NodeList complete(TypesetterOptions context)
+            throws TypesetterException {
 
         // see [TTP 1195]
         if (insufficientSymbolFonts(context)) {
@@ -163,6 +163,8 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#getMode()
      */
     public Mode getMode() {
@@ -171,13 +173,15 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#mathShift(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
-    public void mathShift(final Context context, final TokenSource source,
-            final Token t) throws TypesetterException, ConfigurationException {
+    public void mathShift(Context context, TokenSource source,
+            Token t) throws TypesetterException {
 
         if (!isClosing()) {
             Tokens toks = context.getToks("everydisplayend");
@@ -210,18 +214,11 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
     }
 
     /**
-     * This method switches the collection of material to the target "equation
-     * number".
-     *
-     * @param left the indicator on which side to produce the equation number.
-     *  A value <code>true</code> indicates that the left side should be used.
-     *
-     * @throws CantUseInException in case that the eq number has already been
-     *  started
+     * {@inheritDoc}
      *
      * @see org.extex.typesetter.listMaker.math.EqConsumer#switchToNumber(boolean)
      */
-    public void switchToNumber(final boolean left) throws CantUseInException {
+    public void switchToNumber(boolean left) throws CantUseInException {
 
         if (eqno != null) {
             throw new CantUseInException(null, null);

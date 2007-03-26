@@ -69,19 +69,21 @@ public class Glueexpr extends AbstractCode implements MuskipConvertible {
      *
      * @param codeName the name
      */
-    public Glueexpr(final String codeName) {
+    public Glueexpr(String codeName) {
 
         super(codeName);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.core.muskip.MuskipConvertible#convertMuskip(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Muskip convertMuskip(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public Muskip convertMuskip(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         //TODO gene: unimplemented

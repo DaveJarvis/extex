@@ -45,7 +45,7 @@ public abstract class AbstractMarksCode extends AbstractCode
      *
      * @param name the name of the primitive
      */
-    public AbstractMarksCode(final String name) {
+    public AbstractMarksCode(String name) {
 
         super(name);
     }
@@ -69,8 +69,8 @@ public abstract class AbstractMarksCode extends AbstractCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens convertTokens(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public Tokens convertTokens(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Tokens mark = getValue(context, getKey(context, source, typesetter));
@@ -96,8 +96,8 @@ public abstract class AbstractMarksCode extends AbstractCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         source.push(getValue(context, getKey(context, source, typesetter)));
@@ -123,8 +123,8 @@ public abstract class AbstractMarksCode extends AbstractCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void expand(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void expand(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         source.push(getValue(context, getKey(context, source, typesetter)));
@@ -168,7 +168,7 @@ public abstract class AbstractMarksCode extends AbstractCode
      *  Thus it can normally not be entered easily since the catcode of the
      *  period is OTHER but needs to be LETTER. Thus you have to use a
      *  temporarily reassigned category code (see
-     *  {@link org.extex.unit.tex.register.CatcodePrimitive <tt>\catcode</tt>)
+     *  {@link org.extex.unit.tex.register.CatcodePrimitive <tt>\catcode</tt>}
      *   or use
      *  {@link org.extex.unit.tex.macro.Csname <tt>\csname</tt>}.
      * </p>
@@ -199,8 +199,8 @@ public abstract class AbstractMarksCode extends AbstractCode
      *
      * @throws InterpreterException in case of an error
      */
-    protected String getKey(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         return source.scanRegisterName(context, source, typesetter,
             printableControlSequence(context));
@@ -214,6 +214,6 @@ public abstract class AbstractMarksCode extends AbstractCode
      *
      * @return the value
      */
-    protected abstract Tokens getValue(final Context context, final String key);
+    protected abstract Tokens getValue(Context context, String key);
 
 }

@@ -121,7 +121,7 @@ public class FontKey implements Serializable {
      *
      * @param fk   The font key.
      */
-    protected FontKey(final FontKey fk) {
+    protected FontKey(FontKey fk) {
 
         name = fk.getName();
         stringMap = new HashMap(fk.getStringMap());
@@ -139,7 +139,7 @@ public class FontKey implements Serializable {
      *
      * @param theName   The name of the font.
      */
-    protected FontKey(final String theName) {
+    protected FontKey(String theName) {
 
         name = "".equals(theName) ? null : theName;
 
@@ -157,7 +157,7 @@ public class FontKey implements Serializable {
      * @param key The key.
      * @return Returns the value for the key.
      */
-    public boolean getBoolean(final String key) {
+    public boolean getBoolean(String key) {
 
         Boolean b = (Boolean) booleanMap.get(key);
         if (b == null) {
@@ -181,7 +181,7 @@ public class FontKey implements Serializable {
      * @param key The key.
      * @return Returns the value for the key.
      */
-    public FixedCount getCount(final String key) {
+    public FixedCount getCount(String key) {
 
         return (FixedCount) countMap.get(key);
     }
@@ -201,7 +201,7 @@ public class FontKey implements Serializable {
      * @param key The key.
      * @return Returns the value for the key.
      */
-    public FixedDimen getDimen(final String key) {
+    public FixedDimen getDimen(String key) {
 
         return (FixedDimen) dimenMap.get(key);
     }
@@ -221,7 +221,7 @@ public class FontKey implements Serializable {
      * @param key The key.
      * @return Returns the value for the key.
      */
-    public FixedGlue getGlue(final String key) {
+    public FixedGlue getGlue(String key) {
 
         return (FixedGlue) glueMap.get(key);
     }
@@ -250,7 +250,7 @@ public class FontKey implements Serializable {
      * @param key The key.
      * @return Returns the value for the key.
      */
-    public String getString(final String key) {
+    public String getString(String key) {
 
         return (String) stringMap.get(key);
     }
@@ -268,7 +268,7 @@ public class FontKey implements Serializable {
      * Put an key values pair on the map.
      * @param theMap    The map.
      */
-    public void put(final Map theMap) {
+    public void put(Map theMap) {
 
         Iterator it = theMap.keySet().iterator();
 
@@ -294,7 +294,7 @@ public class FontKey implements Serializable {
      * @param key   The key.
      * @param value The value.
      */
-    public void put(final String key, final boolean value) {
+    public void put(String key, boolean value) {
 
         booleanMap.put(key, Boolean.valueOf(value));
     }
@@ -304,7 +304,7 @@ public class FontKey implements Serializable {
      * @param key   The key.
      * @param value The value.
      */
-    public void put(final String key, final FixedCount value) {
+    public void put(String key, FixedCount value) {
 
         countMap.put(key, value);
     }
@@ -314,7 +314,7 @@ public class FontKey implements Serializable {
      * @param key   The key.
      * @param value The value.
      */
-    public void put(final String key, final FixedDimen value) {
+    public void put(String key, FixedDimen value) {
 
         dimenMap.put(key, value);
     }
@@ -324,7 +324,7 @@ public class FontKey implements Serializable {
      * @param key   The key.
      * @param value The value.
      */
-    public void put(final String key, final FixedGlue value) {
+    public void put(String key, FixedGlue value) {
 
         glueMap.put(key, value);
     }
@@ -334,7 +334,7 @@ public class FontKey implements Serializable {
      * @param key   The key.
      * @param value The value.
      */
-    public void put(final String key, final String value) {
+    public void put(String key, String value) {
 
         stringMap.put(key, value);
     }

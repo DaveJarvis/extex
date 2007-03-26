@@ -154,7 +154,7 @@ public class ColorPrimitive extends AbstractColor {
      *
      * @param name the name for debugging
      */
-    public ColorPrimitive(final String name) {
+    public ColorPrimitive(String name) {
 
         super(name);
     }
@@ -180,8 +180,8 @@ public class ColorPrimitive extends AbstractColor {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -207,8 +207,8 @@ public class ColorPrimitive extends AbstractColor {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Color convertColor(final Context context, final TokenSource source,
-            final Typesetter typesetter) {
+    public Color convertColor(Context context, TokenSource source,
+            Typesetter typesetter) {
 
         return context.getTypesettingContext().getColor();
     }

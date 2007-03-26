@@ -34,7 +34,7 @@ public class OpeninTest extends NoFlagsPrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(OpeninTest.class);
     }
@@ -44,7 +44,7 @@ public class OpeninTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public OpeninTest(final String arg) {
+    public OpeninTest(String arg) {
 
         super(arg, "openin", "1 develop/test/data/empty.tex ");
     }

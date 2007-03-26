@@ -39,7 +39,7 @@ public class DviDown extends DviCommand {
      * @param sp        the start pointer
      * @param v     the value
      */
-    public DviDown(final int opc, final int sp, final int v) {
+    public DviDown(int opc, int sp, int v) {
 
         super(opc, sp);
         value = v;

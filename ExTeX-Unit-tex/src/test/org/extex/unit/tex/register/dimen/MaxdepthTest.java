@@ -31,7 +31,7 @@ public class MaxdepthTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(MaxdepthTest.class);
     }
@@ -41,7 +41,7 @@ public class MaxdepthTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public MaxdepthTest(final String arg) {
+    public MaxdepthTest(String arg) {
 
         super(arg, "maxdepth", "", "0.0pt");
     }

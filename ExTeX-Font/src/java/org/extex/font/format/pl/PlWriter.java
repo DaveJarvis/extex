@@ -85,7 +85,7 @@ public class PlWriter extends PrintWriter {
      * @param  out        An output stream
      * @see java.io.OutputStreamWriter#OutputStreamWriter(java.io.OutputStream)
      */
-    public PlWriter(final OutputStream out) {
+    public PlWriter(OutputStream out) {
 
         this(out, false);
     }
@@ -102,7 +102,7 @@ public class PlWriter extends PrintWriter {
      *
      * @see java.io.OutputStreamWriter#OutputStreamWriter(java.io.OutputStream)
      */
-    public PlWriter(final OutputStream out, final boolean autoFlush) {
+    public PlWriter(OutputStream out, boolean autoFlush) {
 
         this(new BufferedWriter(new OutputStreamWriter(out)), autoFlush);
     }
@@ -114,7 +114,7 @@ public class PlWriter extends PrintWriter {
      * @param  autoFlush  A boolean; if true, the println() methods will flush
      *                    the output buffer
      */
-    public PlWriter(final Writer out, final boolean autoFlush) {
+    public PlWriter(Writer out, boolean autoFlush) {
 
         super(out, autoFlush);
     }
@@ -124,7 +124,7 @@ public class PlWriter extends PrintWriter {
      * @param   b the boolean value to be printed.
      * @return Return this, reference for subsequent printing.
      */
-    public PlWriter addBool(final boolean b) {
+    public PlWriter addBool(boolean b) {
 
         return out(b ? " TRUE" : " FALSE");
     }
@@ -140,7 +140,7 @@ public class PlWriter extends PrintWriter {
      * @param   c the character code to be printed.
      * @return Return this, reference for subsequent printing.
      */
-    public PlWriter addChar(final short c) {
+    public PlWriter addChar(short c) {
 
         return (!octChars && ('0' <= c && c <= '9' || 'A' <= c && c <= 'Z' || 'a' <= c
                 && c <= 'z')) ? out(" C ").out((char) c) : addOct(c);
@@ -152,7 +152,7 @@ public class PlWriter extends PrintWriter {
      * @param name  the name
      * @return Return this, reference for subsequent printing.
      */
-    public PlWriter addCharMetric(final double val, final String name) {
+    public PlWriter addCharMetric(double val, String name) {
 
         if (val != 0) {
             plopen(name).addReal(val).plclose();
@@ -169,7 +169,7 @@ public class PlWriter extends PrintWriter {
      * @param s the string
      * @return Return this, reference for subsequent printing.
      */
-    public PlWriter addComment(final String s) {
+    public PlWriter addComment(String s) {
 
         return plopen("COMMENT").addStr(s).plclose();
     }
@@ -179,7 +179,7 @@ public class PlWriter extends PrintWriter {
      * @param   i the number to be printed.
      * @return Return this, reference for subsequent printing.
      */
-    public PlWriter addDec(final int i) {
+    public PlWriter addDec(int i) {
 
         return out(" D " + i);
     }
@@ -191,7 +191,7 @@ public class PlWriter extends PrintWriter {
      * @param   face the Xerox face code to be printed.
      * @return Return this, reference for subsequent printing.
      */
-    public PlWriter addFace(final int face) {
+    public PlWriter addFace(int face) {
 
         int f = face;
         int ri = f % RI.length;
@@ -210,7 +210,7 @@ public class PlWriter extends PrintWriter {
      * @param name  the name
      * @return Return this, reference for subsequent printing.
      */
-    public PlWriter addFixWord(final TfmFixWord fw, final String name) {
+    public PlWriter addFixWord(TfmFixWord fw, String name) {
 
         if (fw != null && fw.getValue() != 0) {
             plopen(name).addReal(fw).plclose();
@@ -227,7 +227,7 @@ public class PlWriter extends PrintWriter {
      * @param   i the number to be printed.
      * @return Return this, reference for subsequent printing.
      */
-    public PlWriter addOct(final int i) {
+    public PlWriter addOct(int i) {
 
         return out(" O " + Integer.toOctalString(i));
     }
@@ -237,7 +237,7 @@ public class PlWriter extends PrintWriter {
      * @param   d    the real number.
      * @return Return this, reference for subsequent printing.
      */
-    public PlWriter addReal(final double d) {
+    public PlWriter addReal(double d) {
 
         return out(" R " + d);
     }
@@ -247,7 +247,7 @@ public class PlWriter extends PrintWriter {
      * @param   o the object which represents the real number.
      * @return Return this, reference for subsequent printing.
      */
-    public PlWriter addReal(final Object o) {
+    public PlWriter addReal(Object o) {
 
         return out(" R " + o.toString());
     }
@@ -257,7 +257,7 @@ public class PlWriter extends PrintWriter {
      * @param   s the string to be printed.
      * @return Return this, reference for subsequent printing.
      */
-    public PlWriter addStr(final String s) {
+    public PlWriter addStr(String s) {
 
         return out(' ').out(s);
     }
@@ -286,7 +286,7 @@ public class PlWriter extends PrintWriter {
      * @param c the char
      * @return Return this, reference for subsequent printing.
      */
-    public PlWriter out(final char c) {
+    public PlWriter out(char c) {
 
         print(c);
         newLine = false;
@@ -298,7 +298,7 @@ public class PlWriter extends PrintWriter {
      * @param s the string
      * @return Return this, reference for subsequent printing.
      */
-    public PlWriter out(final String s) {
+    public PlWriter out(String s) {
 
         print(s);
         newLine = false;
@@ -335,7 +335,7 @@ public class PlWriter extends PrintWriter {
      * @param   s the property name.
      * @return Return this, reference for subsequent printing.
      */
-    public PlWriter plopen(final String s) {
+    public PlWriter plopen(String s) {
 
         if (!newLine) {
             outLn();
@@ -348,7 +348,7 @@ public class PlWriter extends PrintWriter {
      * Print a zero fixpointwidth.
      * @param pzw   print or not
      */
-    public void printZeroWidth(final boolean pzw) {
+    public void printZeroWidth(boolean pzw) {
 
         printZeroWidth = pzw;
     }

@@ -82,7 +82,7 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
      *
      * @param name the name for tracing and debugging
      */
-    public The(final String name) {
+    public The(String name) {
 
         super(name);
     }
@@ -111,8 +111,8 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Token cs = source.getToken(context);
@@ -166,8 +166,8 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void expand(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void expand(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         execute(prefix, context, source, typesetter);
@@ -191,8 +191,8 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
      *      org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.tokens.Tokens)
      */
-    public void expandCode(final Context context, final TokenSource source,
-            final Typesetter typesetter, final Tokens tokens)
+    public void expandCode(Context context, TokenSource source,
+            Typesetter typesetter, Tokens tokens)
             throws InterpreterException {
 
         Token cs = source.getToken(context);

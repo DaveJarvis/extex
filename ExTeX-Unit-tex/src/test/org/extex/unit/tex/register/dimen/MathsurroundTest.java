@@ -33,7 +33,7 @@ public class MathsurroundTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(MathsurroundTest.class);
     }
@@ -43,7 +43,7 @@ public class MathsurroundTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public MathsurroundTest(final String arg) {
+    public MathsurroundTest(String arg) {
 
         super(arg, "mathsurround", "", "0.0pt");
     }

@@ -33,7 +33,7 @@ public class AccentTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(AccentTest.class);
     }
@@ -43,7 +43,7 @@ public class AccentTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public AccentTest(final String arg) {
+    public AccentTest(String arg) {
 
         super(arg, "accent", "13 a");
     }

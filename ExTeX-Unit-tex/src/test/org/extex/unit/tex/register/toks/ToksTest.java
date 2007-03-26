@@ -33,7 +33,7 @@ public class ToksTest extends AbstractToksRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ToksTest.class);
     }
@@ -43,7 +43,7 @@ public class ToksTest extends AbstractToksRegisterTester {
      *
      * @param arg the name
      */
-    public ToksTest(final String arg) {
+    public ToksTest(String arg) {
 
         super(arg, "toks", "42", "");
     }

@@ -51,7 +51,7 @@ public class InterpreterPanicException extends InterpreterException {
      * @param localizer the localizer
      * @param tag the name of the format for the localizer
      */
-    public InterpreterPanicException(final Localizer localizer, final String tag) {
+    public InterpreterPanicException(Localizer localizer, String tag) {
 
         super(localizer);
         this.tag = tag;
@@ -65,8 +65,8 @@ public class InterpreterPanicException extends InterpreterException {
      * @param tag the name of the format for the localizer
      * @param arg the argument
      */
-    public InterpreterPanicException(final Localizer localizer,
-            final String tag, final String arg) {
+    public InterpreterPanicException(Localizer localizer,
+            String tag, String arg) {
 
         super(localizer);
         this.tag = tag;

@@ -43,7 +43,7 @@ public class MainIOException extends MainException {
      *
      * @param cause the root of all evil
      */
-    public MainIOException(final Throwable cause) {
+    public MainIOException(Throwable cause) {
 
         super(ERROR_CODE, cause);
     }

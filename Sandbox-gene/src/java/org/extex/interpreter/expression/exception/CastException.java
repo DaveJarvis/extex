@@ -49,7 +49,7 @@ public class CastException extends HelpingException {
      * @param a1 the first argument
      * @param a2 the second argument
      */
-    public CastException(final String a1, final String a2) {
+    public CastException(String a1, String a2) {
 
         super(LocalizerFactory.getLocalizer(CastException.class),
             "CastException", a1, a2);

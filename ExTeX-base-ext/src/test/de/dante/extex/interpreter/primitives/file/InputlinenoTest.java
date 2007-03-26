@@ -34,7 +34,7 @@ public class InputlinenoTest extends AbstractReadonlyCountRegisterTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(InputlinenoTest.class);
     }
@@ -44,7 +44,7 @@ public class InputlinenoTest extends AbstractReadonlyCountRegisterTester {
      *
      * @param arg the name
      */
-    public InputlinenoTest(final String arg) {
+    public InputlinenoTest(String arg) {
 
         super(arg, "inputlineno", "1");
     }

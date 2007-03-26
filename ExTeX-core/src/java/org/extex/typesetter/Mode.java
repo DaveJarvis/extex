@@ -43,7 +43,7 @@ public abstract class Mode {
          *
          * @param theTag the tag of the mode
          */
-        protected HorizontalMode(final String theTag) {
+        protected HorizontalMode(String theTag) {
 
             super(theTag);
         }
@@ -72,7 +72,7 @@ public abstract class Mode {
          *
          * @param theTag the tag of the mode
          */
-        protected MathMode(final String theTag) {
+        protected MathMode(String theTag) {
 
             super(theTag);
         }
@@ -101,7 +101,7 @@ public abstract class Mode {
          *
          * @param theTag the tag of the mode
          */
-        protected VerticalMode(final String theTag) {
+        protected VerticalMode(String theTag) {
 
             super(theTag);
         }
@@ -175,7 +175,7 @@ public abstract class Mode {
      *
      * @param theTag the tag of the mode
      */
-    protected Mode(final String theTag) {
+    protected Mode(String theTag) {
 
         super();
         this.tag = theTag;

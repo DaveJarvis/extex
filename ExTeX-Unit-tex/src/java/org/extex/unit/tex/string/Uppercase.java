@@ -73,7 +73,7 @@ public class Uppercase extends AbstractCode {
      *
      * @param name the name for tracing and debugging
      */
-    public Uppercase(final String name) {
+    public Uppercase(String name) {
 
         super(name);
     }
@@ -96,8 +96,8 @@ public class Uppercase extends AbstractCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         expand(prefix, context, source, typesetter);
@@ -123,8 +123,8 @@ public class Uppercase extends AbstractCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void expand(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void expand(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Tokens toks;

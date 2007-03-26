@@ -33,7 +33,7 @@ public class LocalinterlinepenaltyTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(LocalinterlinepenaltyTest.class);
     }
@@ -43,7 +43,7 @@ public class LocalinterlinepenaltyTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public LocalinterlinepenaltyTest(final String arg) {
+    public LocalinterlinepenaltyTest(String arg) {
 
         super(arg, "localinterlinepenalty", " ", "0");
         setConfig("omega-test");

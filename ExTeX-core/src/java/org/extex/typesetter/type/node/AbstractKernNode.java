@@ -40,7 +40,7 @@ public abstract class AbstractKernNode extends AbstractNode implements KernNode 
      * @param kern the natural size
      * @param horizontal the indicator that the kern works horizontally
      */
-    public AbstractKernNode(final FixedDimen kern, final boolean horizontal) {
+    public AbstractKernNode(FixedDimen kern, boolean horizontal) {
 
         super((horizontal ? kern : Dimen.ZERO_PT), //
             (horizontal ? Dimen.ZERO_PT : kern), //
@@ -61,8 +61,8 @@ public abstract class AbstractKernNode extends AbstractNode implements KernNode 
      * @see org.extex.typesetter.type.Node#toString( java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         sb.append(getLocalizer().format("String.Format", //
             getWidth().toString()));
@@ -79,7 +79,7 @@ public abstract class AbstractKernNode extends AbstractNode implements KernNode 
      * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
-    public void toText(final StringBuffer sb, final String prefix) {
+    public void toText(StringBuffer sb, String prefix) {
 
         sb.append(getLocalizer().format("Text.Format", getWidth().toString()));
     }
@@ -97,7 +97,7 @@ public abstract class AbstractKernNode extends AbstractNode implements KernNode 
      * @see org.extex.typesetter.type.Node#visit(
      *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
      */
-    public Object visit(final NodeVisitor visitor, final Object value)
+    public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {
 
         return visitor.visitKern(this, value);

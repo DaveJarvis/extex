@@ -65,7 +65,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(TokenStreamStringImpl32Test.class);
     }
@@ -74,7 +74,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * Creates a new object.
      * @param name the name
      */
-    public TokenStreamStringImpl32Test(final String name) {
+    public TokenStreamStringImpl32Test(String name) {
 
         super(name);
     }
@@ -86,7 +86,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
      * @return the new token stream
      * @throws IOException in case of an error
      */
-    private TokenStream makeStream(final String line) throws IOException {
+    private TokenStream makeStream(String line) throws IOException {
 
         return new TokenStreamImpl32(null, null, new StringReader(line),
                 Boolean.FALSE, "");
@@ -101,7 +101,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
         fac = new TokenFactoryImpl();
         tokenizer = new Tokenizer() {
 
-            public Catcode getCatcode(final UnicodeChar c) {
+            public Catcode getCatcode(UnicodeChar c) {
                 if (c.isLetter()) {
                     return Catcode.LETTER;
                 }

@@ -66,7 +66,8 @@ public class TokenFactoryFactory extends AbstractFactory {
      *
      * @return an appropriate instance
      *
-     * @throws ConfigurationException in case of an error in the configuration
+     * @throws org.extex.framework.configuration.exception.ConfigurationException
+     *   in case of an error in the configuration
      */
     public TokenFactory createInstance() {
 

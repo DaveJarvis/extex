@@ -90,7 +90,7 @@ public final class AfmInfo extends AbstractFontUtil {
      * @throws ConfigurationException from the configuration system.
      * @throws FontException if a font error occurred.
      */
-    private void doIt(final String file) throws IOException,
+    private void doIt(String file) throws IOException,
             ConfigurationException, FontException {
 
         InputStream afmin = null;
@@ -134,7 +134,7 @@ public final class AfmInfo extends AbstractFontUtil {
      * @throws FontException          if a font error occurred.
      * @throws IOException            if a IO-error occurred.
      */
-    private void encoding(final String file, final AfmParser parser)
+    private void encoding(String file, AfmParser parser)
             throws ConfigurationException, FontException, IOException {
 
         InputStream encin = null;
@@ -194,7 +194,7 @@ public final class AfmInfo extends AbstractFontUtil {
      * GlyphInfo.
      * @param parser    The afm parser.
      */
-    private void glyphInfo(final AfmParser parser) {
+    private void glyphInfo(AfmParser parser) {
 
         AfmCharMetric metric = parser.getAfmCharMetric(glyphname);
         if (metric == null) {
@@ -254,7 +254,7 @@ public final class AfmInfo extends AbstractFontUtil {
      * The glyph list.
      * @param parser    The afm parser
      */
-    private void listGlyphs(final AfmParser parser) {
+    private void listGlyphs(AfmParser parser) {
 
         ArrayList list = parser.getAfmCharMetrics();
         for (int i = 0, n = list.size(); i < n; i++) {
@@ -269,7 +269,7 @@ public final class AfmInfo extends AbstractFontUtil {
      * @param file      The file name.
      * @param parser    The afm parser.
      */
-    private void doHead(final String file, final AfmParser parser) {
+    private void doHead(String file, AfmParser parser) {
 
         getLogger().severe(getLocalizer().format("AfmInfo.Head"));
         getLogger().severe(getLocalizer().format("AfmInfo.Filename", file));
@@ -344,7 +344,7 @@ public final class AfmInfo extends AbstractFontUtil {
      * @param args  The command line arguments.
      * @throws Exception if a error occurs.
      */
-    public static void main(final String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
         AfmInfo info = new AfmInfo();
 
@@ -403,7 +403,7 @@ public final class AfmInfo extends AbstractFontUtil {
      * The glyphinfo to set.
      * @param aglyphinfo The glyphinfo to set.
      */
-    public void setGlyphinfo(final boolean aglyphinfo) {
+    public void setGlyphinfo(boolean aglyphinfo) {
 
         glyphinfo = aglyphinfo;
     }
@@ -421,7 +421,7 @@ public final class AfmInfo extends AbstractFontUtil {
      * The glyphname to set.
      * @param aglyphname The glyphname to set.
      */
-    public void setGlyphname(final String aglyphname) {
+    public void setGlyphname(String aglyphname) {
 
         glyphname = aglyphname;
     }
@@ -439,7 +439,7 @@ public final class AfmInfo extends AbstractFontUtil {
      * The listglyphs to set.
      * @param alistglyphs The listglyphs to set.
      */
-    public void setListglyphs(final boolean alistglyphs) {
+    public void setListglyphs(boolean alistglyphs) {
 
         listglyphs = alistglyphs;
     }
@@ -457,7 +457,7 @@ public final class AfmInfo extends AbstractFontUtil {
      * The encoding to set.
      * @param aencoding The encoding to set.
      */
-    public void setEncoding(final boolean aencoding) {
+    public void setEncoding(boolean aencoding) {
 
         encoding = aencoding;
     }
@@ -475,7 +475,7 @@ public final class AfmInfo extends AbstractFontUtil {
      * The encname to set.
      * @param aencname The encname to set.
      */
-    public void setEncname(final String aencname) {
+    public void setEncname(String aencname) {
 
         encname = aencname;
     }

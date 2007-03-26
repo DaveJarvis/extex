@@ -47,7 +47,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5417 $
  */
 public class GeneralException extends Exception {
 
@@ -74,7 +74,7 @@ public class GeneralException extends Exception {
      *
      * @param code the exit code
      */
-    public GeneralException(final int code) {
+    public GeneralException(int code) {
 
         super();
         exitCode = code;
@@ -85,7 +85,7 @@ public class GeneralException extends Exception {
      *
      * @param message the message
      */
-    public GeneralException(final String message) {
+    public GeneralException(String message) {
 
         super(message);
     }
@@ -96,7 +96,7 @@ public class GeneralException extends Exception {
      * @param message the message
      * @param cause the cause for a chained exception
      */
-    public GeneralException(final String message, final Throwable cause) {
+    public GeneralException(String message, Throwable cause) {
 
         super(message, cause);
     }
@@ -106,7 +106,7 @@ public class GeneralException extends Exception {
      *
      * @param cause the cause for a chained exception
      */
-    public GeneralException(final Throwable cause) {
+    public GeneralException(Throwable cause) {
 
         super(cause);
     }

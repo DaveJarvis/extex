@@ -75,7 +75,7 @@ public class DviTypeTest extends TestCase {
      *
      * @param args the command line
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(DviTypeTest.class);
     }
@@ -97,7 +97,7 @@ public class DviTypeTest extends TestCase {
      * @param file the file to test
      * @throws IOException if an io-error occurs
      */
-    private void checkFile(final String file) throws IOException {
+    private void checkFile(String file) throws IOException {
 
         LineNumberReader inorg =
                 new LineNumberReader(new FileReader(PATH + file + ".dvitype"));
@@ -155,7 +155,7 @@ public class DviTypeTest extends TestCase {
      * @param s the String
      * @return Returns the String witout vv.. / hh..
      */
-    private String killVVHH(final String s) {
+    private String killVVHH(String s) {
 
         int i = s.indexOf("vv");
         if (i >= 0) {
@@ -207,7 +207,7 @@ public class DviTypeTest extends TestCase {
      * @throws ConfigurationException in case that some kind of problems have
      *             been detected in the configuration
      */
-    protected FontFactory makeFontFactory(final Configuration config)
+    protected FontFactory makeFontFactory(Configuration config)
             throws ConfigurationException {
 
         FontFactory fontFactory;
@@ -260,7 +260,7 @@ public class DviTypeTest extends TestCase {
      * @param map the map
      * @throws IOException if an io-error occurs
      */
-    private void readFile(final LineNumberReader in, final Map map)
+    private void readFile(LineNumberReader in, Map map)
             throws IOException {
 
         // read all line with start with a number "111:..."
@@ -281,7 +281,7 @@ public class DviTypeTest extends TestCase {
      *
      * @throws Exception ...
      */
-    private void run(final String name) throws Exception {
+    private void run(String name) throws Exception {
 
         String file = PATH + name + ".dvi";
         RandomAccessInputFile rar = new RandomAccessInputFile(file);

@@ -68,7 +68,7 @@ public class MuskipParameter extends AbstractAssignment
      *
      * @param name the name for debugging
      */
-    public MuskipParameter(final String name) {
+    public MuskipParameter(String name) {
 
         super(name);
     }
@@ -90,8 +90,8 @@ public class MuskipParameter extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void advance(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void advance(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         String key = getKey(context, source, typesetter);
@@ -119,8 +119,8 @@ public class MuskipParameter extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         String key = getKey(context, source, typesetter);
@@ -149,8 +149,8 @@ public class MuskipParameter extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Muskip convertMuskip(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public Muskip convertMuskip(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         String key = getKey(context, source, typesetter);
@@ -174,8 +174,8 @@ public class MuskipParameter extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void divide(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void divide(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         String key = getKey(context, source, typesetter);
@@ -203,8 +203,8 @@ public class MuskipParameter extends AbstractAssignment
      *
      * @throws InterpreterException in case of an error
      */
-    protected String getKey(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         if (Namespace.SUPPORT_NAMESPACE_MUSKIP) {
             return context.getNamespace() + "\b" + getName();
@@ -229,8 +229,8 @@ public class MuskipParameter extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void multiply(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void multiply(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         String key = getKey(context, source, typesetter);
@@ -257,8 +257,8 @@ public class MuskipParameter extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         String key = getKey(context, source, typesetter);
         try {

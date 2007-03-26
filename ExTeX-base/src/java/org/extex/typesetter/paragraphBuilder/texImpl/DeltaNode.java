@@ -52,7 +52,7 @@ public class DeltaNode extends WideGlue {
      *
      * @param glue the glue to copy
      */
-    public DeltaNode(final WideGlue glue) {
+    public DeltaNode(WideGlue glue) {
 
         super();
         set(glue);

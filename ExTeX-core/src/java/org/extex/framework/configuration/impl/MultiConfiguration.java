@@ -23,14 +23,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.extex.core.StringList;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationIOException;
 import org.extex.framework.configuration.exception.ConfigurationInvalidResourceException;
 import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
 import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
-
 
 /**
  * Container for several
@@ -54,11 +52,11 @@ public class MultiConfiguration implements Configuration {
      *
      * @throws ConfigurationException in case that the configuration is invalid
      */
-    public MultiConfiguration(final Configuration[] parts)
+    public MultiConfiguration(Configuration[] parts)
             throws ConfigurationException {
 
         super();
-        configs = parts;
+        this.configs = parts;
     }
 
     /**
@@ -80,13 +78,13 @@ public class MultiConfiguration implements Configuration {
      * @see org.extex.framework.configuration.Configuration#findConfiguration(
      *      java.lang.String)
      */
-    public Configuration findConfiguration(final String key)
+    public Configuration findConfiguration(String key)
             throws ConfigurationInvalidResourceException,
                 ConfigurationNotFoundException,
                 ConfigurationSyntaxException,
                 ConfigurationIOException {
 
-        List v = new ArrayList();
+        List<Configuration> v = new ArrayList<Configuration>();
 
         for (int i = 0; i < configs.length; i++) {
             Configuration cfg = configs[i].findConfiguration(key);
@@ -99,7 +97,7 @@ public class MultiConfiguration implements Configuration {
             case 0:
                 return null;
             case 1:
-                return (Configuration) v.get(0);
+                return v.get(0);
             default:
                 try {
                     return new MultiConfiguration((Configuration[]) v.toArray());
@@ -114,10 +112,10 @@ public class MultiConfiguration implements Configuration {
      *      java.lang.String,
      *      java.lang.String)
      */
-    public Configuration findConfiguration(final String key,
-            final String attribute) throws ConfigurationException {
+    public Configuration findConfiguration(String key,
+            String attribute) throws ConfigurationException {
 
-        List v = new ArrayList();
+        List<Configuration> v = new ArrayList<Configuration>();
 
         for (int i = 0; i < configs.length; i++) {
             Configuration cfg = configs[i].findConfiguration(key, attribute);
@@ -131,7 +129,7 @@ public class MultiConfiguration implements Configuration {
         }
 
         if (v.size() == 1) {
-            return (Configuration) v.get(0);
+            return v.get(0);
         }
 
         return new MultiConfiguration((Configuration[]) v.toArray());
@@ -149,7 +147,7 @@ public class MultiConfiguration implements Configuration {
      * @see org.extex.framework.configuration.Configuration#getAttribute(
      *      java.lang.String)
      */
-    public String getAttribute(final String name) {
+    public String getAttribute(String name) {
 
         for (int i = 0; i < configs.length; i++) {
             String att = configs[i].getAttribute(name);
@@ -164,10 +162,10 @@ public class MultiConfiguration implements Configuration {
      * @see org.extex.framework.configuration.Configuration#getConfiguration(
      *      java.lang.String)
      */
-    public Configuration getConfiguration(final String key)
+    public Configuration getConfiguration(String key)
             throws ConfigurationException {
 
-        List v = new ArrayList();
+        List<Configuration> v = new ArrayList<Configuration>();
 
         for (int i = 0; i < configs.length; i++) {
             Configuration cfg = configs[i].findConfiguration(key);
@@ -180,7 +178,7 @@ public class MultiConfiguration implements Configuration {
             case 0:
                 return null;
             case 1:
-                return (Configuration) v.get(0);
+                return v.get(0);
             default:
                 return new MultiConfiguration((Configuration[]) v.toArray());
         }
@@ -190,10 +188,10 @@ public class MultiConfiguration implements Configuration {
      * @see org.extex.framework.configuration.Configuration#getConfiguration(
      *      java.lang.String, java.lang.String)
      */
-    public Configuration getConfiguration(final String key,
-            final String attribute) throws ConfigurationException {
+    public Configuration getConfiguration(String key,
+            String attribute) throws ConfigurationException {
 
-        List v = new ArrayList();
+        List<Configuration> v = new ArrayList<Configuration>();
 
         for (int i = 0; i < configs.length; i++) {
             Configuration cfg = configs[i].findConfiguration(key, attribute);
@@ -207,7 +205,7 @@ public class MultiConfiguration implements Configuration {
                 throw new ConfigurationNotFoundException(null, key + "["
                         + attribute + "]");
             case 1:
-                return (Configuration) v.get(0);
+                return v.get(0);
             default:
                 return new MultiConfiguration((Configuration[]) v.toArray());
         }
@@ -239,7 +237,7 @@ public class MultiConfiguration implements Configuration {
     /**
      * @see org.extex.framework.configuration.Configuration#getValue(java.lang.String)
      */
-    public String getValue(final String key) throws ConfigurationException {
+    public String getValue(String key) throws ConfigurationException {
 
         for (int i = 0; i < configs.length; i++) {
             String val = configs[i].getValue(key);
@@ -256,7 +254,7 @@ public class MultiConfiguration implements Configuration {
      * @see org.extex.framework.configuration.Configuration#getValueAsInteger(
      *      java.lang.String, int)
      */
-    public int getValueAsInteger(final String key, final int defaultValue)
+    public int getValueAsInteger(String key, int defaultValue)
             throws ConfigurationException {
 
         for (int i = 0; i < configs.length; i++) {
@@ -273,9 +271,9 @@ public class MultiConfiguration implements Configuration {
     /**
      * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
      */
-    public StringList getValues(final String key) {
+    public List<String> getValues(String key) {
 
-        StringList result = new StringList();
+        List<String> result = new ArrayList<String>();
         getValues(result, key);
         return result;
     }
@@ -291,10 +289,10 @@ public class MultiConfiguration implements Configuration {
      *      org.extex.core.StringList,
      *      java.lang.String)
      */
-    public void getValues(final StringList list, final String key) {
+    public void getValues(List<String> list, String key) {
 
-        for (int i = 0; i < configs.length; i++) {
-            configs[i].getValues(list, key);
+        for (Configuration cfg : configs) {
+            cfg.getValues(list, key);
         }
     }
 
@@ -309,7 +307,7 @@ public class MultiConfiguration implements Configuration {
      *
      * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
      */
-    public Iterator iterator(final String key) throws ConfigurationException {
+    public Iterator iterator(String key) throws ConfigurationException {
 
         return new MultiConfigurationIterator(configs, key);
     }

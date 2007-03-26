@@ -94,7 +94,7 @@ public class SkipPrimitive extends AbstractSkip
      *
      * @param name the name for debugging
      */
-    public SkipPrimitive(final String name) {
+    public SkipPrimitive(String name) {
 
         super(name);
     }
@@ -116,8 +116,8 @@ public class SkipPrimitive extends AbstractSkip
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void advance(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void advance(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         String key = getKey(context, source, typesetter);
@@ -145,8 +145,8 @@ public class SkipPrimitive extends AbstractSkip
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         String key = getKey(context, source, typesetter);
@@ -174,8 +174,8 @@ public class SkipPrimitive extends AbstractSkip
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Glue convertGlue(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public Glue convertGlue(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         String key = getKey(context, source, typesetter);
         return context.getGlue(key);
@@ -198,8 +198,8 @@ public class SkipPrimitive extends AbstractSkip
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void divide(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void divide(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         String key = getKey(context, source, typesetter);
@@ -233,8 +233,8 @@ public class SkipPrimitive extends AbstractSkip
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void multiply(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void multiply(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         String key = getKey(context, source, typesetter);
@@ -261,8 +261,8 @@ public class SkipPrimitive extends AbstractSkip
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         String key = getKey(context, source, typesetter);
         try {

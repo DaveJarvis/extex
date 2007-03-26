@@ -27,7 +27,7 @@ import java.io.Serializable;
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision:5417 $
  */
 public class Locator implements Serializable {
 
@@ -71,8 +71,8 @@ public class Locator implements Serializable {
      * @param currentLine the current line of input
      * @param currentLinePointer the current position in the line of input
      */
-    public Locator(final String resource, final int lineNo,
-            final String currentLine, final int currentLinePointer) {
+    public Locator(String resource, int lineNo,
+            String currentLine, int currentLinePointer) {
 
         super();
         this.resource = resource;
@@ -142,7 +142,7 @@ public class Locator implements Serializable {
      *
      * @param cause the cause to set
      */
-    public final void setCause(final Locator cause) {
+    public final void setCause(Locator cause) {
 
         this.cause = cause;
     }

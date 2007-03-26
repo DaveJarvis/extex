@@ -34,7 +34,7 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public MathchardefTest(final String arg) {
+    public MathchardefTest(String arg) {
 
         super(arg, "mathchardef", "\\a=\"32 ");
     }

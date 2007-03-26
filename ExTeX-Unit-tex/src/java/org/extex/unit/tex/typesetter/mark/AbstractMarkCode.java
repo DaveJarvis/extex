@@ -42,7 +42,7 @@ public abstract class AbstractMarkCode extends AbstractCode {
      *
      * @param name the name of the primitive
      */
-    public AbstractMarkCode(final String name) {
+    public AbstractMarkCode(String name) {
 
         super(name);
     }
@@ -58,8 +58,8 @@ public abstract class AbstractMarkCode extends AbstractCode {
      *
      * @throws InterpreterException in case of an error
      */
-    protected String getKey(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         Token t = source.getNonSpace(context);
         source.push(t);

@@ -59,8 +59,8 @@ public abstract class AbstractNonGroupIntegerTester extends ExTeXLauncher {
      * @param args ...
      * @param init the default value
      */
-    public AbstractNonGroupIntegerTester(final String arg,
-            final String primitive, final String args, final String init) {
+    public AbstractNonGroupIntegerTester(String arg,
+            String primitive, String args, String init) {
 
         super(arg);
         this.primitive = primitive;
@@ -78,9 +78,9 @@ public abstract class AbstractNonGroupIntegerTester extends ExTeXLauncher {
      * @param init the default value
      * @param prepare ...
      */
-    public AbstractNonGroupIntegerTester(final String arg,
-            final String primitive, final String args, final String init,
-            final String prepare) {
+    public AbstractNonGroupIntegerTester(String arg,
+            String primitive, String args, String init,
+            String prepare) {
 
         super(arg);
         this.primitive = primitive;

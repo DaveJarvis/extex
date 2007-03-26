@@ -27,6 +27,7 @@ import org.extex.core.dimen.FixedDimen;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.ImpossibleException;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Code;
@@ -79,7 +80,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
          *
          * @param nodes the nodes of this cell
          */
-        public Cell(final NodeList nodes) {
+        public Cell(NodeList nodes) {
 
             super();
             list = nodes;
@@ -144,7 +145,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
     /**
      * The field <tt>rows</tt> contains the rows of this alignment.
      */
-    private List rows = new ArrayList();
+    private List<Cell[]> rows = new ArrayList<Cell[]>();
 
     /**
      * The field <tt>spread</tt> contains the indicator that the width should
@@ -176,9 +177,9 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      *
      * @throws InterpreterException in case of an error
      */
-    public HAlignListMaker(final ListManager manager, final Context context,
-            final TokenSource source, final List thePreamble,
-            final FixedDimen theWidth, final boolean theSpread)
+    public HAlignListMaker(ListManager manager, Context context,
+            TokenSource source, List thePreamble,
+            FixedDimen theWidth, boolean theSpread)
             throws InterpreterException {
 
         super(manager, source.getLocator());
@@ -202,7 +203,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      *
      * @throws TypesetterException in case of an error
      */
-    private void clearLine(final Context context, final TokenSource source)
+    private void clearLine(Context context, TokenSource source)
             throws TypesetterException {
 
         col = 0;
@@ -229,7 +230,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      * @see org.extex.typesetter.listMaker.RestrictedHorizontalListMaker#complete(
      *      org.extex.typesetter.TypesetterOptions)
      */
-    public NodeList complete(final TypesetterOptions context)
+    public NodeList complete(TypesetterOptions context)
             throws TypesetterException,
                 ConfigurationException {
 
@@ -238,7 +239,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
 
         for (int j = 0; j < rows.size(); j++) {
             NodeList row = new HorizontalListNode();
-            line = (Cell[]) rows.get(j);
+            line = rows.get(j);
 
             for (int i = 0; i < line.length; i++) {
                 Cell cell = line[i];
@@ -287,8 +288,8 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.type.NodeList)
      */
-    public void cr(final Context context, final TokenSource source,
-            final NodeList noalign) throws TypesetterException {
+    public void cr(Context context, TokenSource source,
+            NodeList noalign) throws TypesetterException {
 
         rows.add(line);
         if (noalign != null) {
@@ -316,8 +317,8 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void crcr(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws TypesetterException {
+    public void crcr(Context context, TokenSource source,
+            Typesetter typesetter) throws TypesetterException {
 
         if (col <= 0) {
             return;
@@ -368,7 +369,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
      */
-    public void span(final Context context, final TokenSource source)
+    public void span(Context context, TokenSource source)
             throws TypesetterException {
 
         if (col >= line.length) {
@@ -385,7 +386,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      *
      * @throws TypesetterException in case of an error
      */
-    private void startCell(final Context context, final TokenSource source)
+    private void startCell(Context context, TokenSource source)
             throws TypesetterException {
 
         format = (PreambleItem) preamble.get(col);
@@ -415,7 +416,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      *
      * @return the sum in a new Dimen
      */
-    public static Dimen sum(final Dimen[] d) {
+    public static Dimen sum(Dimen[] d) {
 
         Dimen sum = new Dimen();
 
@@ -440,8 +441,8 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      *      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
-    public void tab(final Context context, final TokenSource source,
-            final Token token)
+    public void tab(Context context, TokenSource source,
+            Token token)
             throws TypesetterException,
                 ConfigurationException {
 
@@ -456,6 +457,9 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
             throw new TypesetterException(e);
         }
 
+        if (!(context instanceof TypesetterOptions)) {
+            throw new ImpossibleException("context impl");
+        }
         line[col] = new Cell(super.complete((TypesetterOptions) context));
         maxWidth[col].max(line[col].getList().getWidth());
         setNodes(new HorizontalListNode());

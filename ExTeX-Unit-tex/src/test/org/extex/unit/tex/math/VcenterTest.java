@@ -32,7 +32,7 @@ public class VcenterTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public VcenterTest(final String arg) {
+    public VcenterTest(String arg) {
 
         super(arg, "vcenter", "{x}");
     }

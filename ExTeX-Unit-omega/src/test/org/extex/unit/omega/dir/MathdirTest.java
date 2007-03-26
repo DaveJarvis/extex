@@ -35,7 +35,7 @@ public class MathdirTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(MathdirTest.class);
     }
@@ -45,7 +45,7 @@ public class MathdirTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public MathdirTest(final String arg) {
+    public MathdirTest(String arg) {
 
         super(arg, "mathdir", " LRL");
         setConfig("omega-test");

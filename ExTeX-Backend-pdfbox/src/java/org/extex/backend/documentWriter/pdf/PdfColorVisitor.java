@@ -47,9 +47,11 @@ public class PdfColorVisitor implements ColorVisitor {
     private static final double DIVD = 0xffff;
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.color.ColorVisitor#visitCmyk(org.extex.color.model.CmykColor, java.lang.Object)
      */
-    public Object visitCmyk(final CmykColor color, final Object value)
+    public Object visitCmyk(CmykColor color, Object value)
             throws GeneralException {
 
         try {
@@ -66,10 +68,12 @@ public class PdfColorVisitor implements ColorVisitor {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.color.ColorVisitor#visitGray(
      *      org.extex.color.model.GrayscaleColor, java.lang.Object)
      */
-    public Object visitGray(final GrayscaleColor color, final Object value)
+    public Object visitGray(GrayscaleColor color, Object value)
             throws GeneralException {
 
         try {
@@ -84,20 +88,24 @@ public class PdfColorVisitor implements ColorVisitor {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.color.ColorVisitor#visitHsv(
      *      org.extex.color.model.HsvColor, java.lang.Object)
      */
-    public Object visitHsv(final HsvColor color, final Object value)
+    public Object visitHsv(HsvColor color, Object value)
             throws GeneralException {
 
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.color.ColorVisitor#visitRgb(
      *      org.extex.color.model.RgbColor, java.lang.Object)
      */
-    public Object visitRgb(final RgbColor color, final Object value)
+    public Object visitRgb(RgbColor color, Object value)
             throws GeneralException {
 
         try {

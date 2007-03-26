@@ -34,7 +34,7 @@ public class MkernTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public MkernTest(final String arg) {
+    public MkernTest(String arg) {
 
         super(arg, "mkern", "1mu");
     }

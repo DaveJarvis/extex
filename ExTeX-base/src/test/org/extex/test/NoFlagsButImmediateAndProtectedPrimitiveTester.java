@@ -49,8 +49,8 @@ public abstract class NoFlagsButImmediateAndProtectedPrimitiveTester
      * @param primitive the name of the primitive
      * @param args additional arguments for the flag test
      */
-    public NoFlagsButImmediateAndProtectedPrimitiveTester(final String name,
-            final String primitive, final String args) {
+    public NoFlagsButImmediateAndProtectedPrimitiveTester(String name,
+            String primitive, String args) {
 
         super(name);
         this.primitive = primitive;

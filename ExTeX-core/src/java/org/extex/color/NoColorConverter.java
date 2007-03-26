@@ -55,7 +55,7 @@ public class NoColorConverter implements ColorConverter {
      * @see org.extex.color.ColorConverter#toCmyk(
      *      org.extex.interpreter.context.Color)
      */
-    public CmykColor toCmyk(final Color color) {
+    public CmykColor toCmyk(Color color) {
 
         if (color instanceof CmykColor) {
             return (CmykColor) color;
@@ -77,7 +77,7 @@ public class NoColorConverter implements ColorConverter {
      * @see org.extex.color.ColorConverter#toGrayscale(
      *      org.extex.interpreter.context.Color)
      */
-    public GrayscaleColor toGrayscale(final Color color) {
+    public GrayscaleColor toGrayscale(Color color) {
 
         if (color instanceof GrayscaleColor) {
             return (GrayscaleColor) color;
@@ -99,7 +99,7 @@ public class NoColorConverter implements ColorConverter {
      * @see org.extex.color.ColorConverter#toHsv(
      *      org.extex.interpreter.context.Color)
      */
-    public HsvColor toHsv(final Color color) {
+    public HsvColor toHsv(Color color) {
 
         if (color instanceof HsvColor) {
             return (HsvColor) color;
@@ -121,7 +121,7 @@ public class NoColorConverter implements ColorConverter {
      * @see org.extex.color.ColorConverter#toRgb(
      *      org.extex.interpreter.context.Color)
      */
-    public RgbColor toRgb(final Color color) {
+    public RgbColor toRgb(Color color) {
 
         if (color instanceof RgbColor) {
             return (RgbColor) color;

@@ -35,7 +35,6 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-
 /**
  * Add the author to the checkstyle xml report.
  *
@@ -71,10 +70,10 @@ public final class ReportAddAuthor {
     /**
      * main.
      *
-     * @param args  tThe command line.
+     * @param args  the command line.
      * @throws Exception if an error occurred.
      */
-    public static void main(final String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
         if (args.length != PARAMETER) {
             err.println("java org.extex.checkstyle.ReportAddAuthor "
@@ -82,11 +81,11 @@ public final class ReportAddAuthor {
             System.exit(1);
         }
 
-        BufferedInputStream in = new BufferedInputStream(new FileInputStream(
-                args[0]));
+        BufferedInputStream in =
+                new BufferedInputStream(new FileInputStream(args[0]));
 
-        XMLStreamWriter out = new XMLStreamWriter(
-                new FileOutputStream(args[1]), ENCODING);
+        XMLStreamWriter out =
+                new XMLStreamWriter(new FileOutputStream(args[1]), ENCODING);
         // out.setBeauty(true);
 
         SAXParserFactory factory = SAXParserFactory.newInstance();
@@ -107,7 +106,7 @@ public final class ReportAddAuthor {
              *
              * @param xout  The output.
              */
-            public MyHandler(final XMLStreamWriter xout) {
+            public MyHandler(XMLStreamWriter xout) {
 
                 xmlout = xout;
             }
@@ -126,6 +125,8 @@ public final class ReportAddAuthor {
             }
 
             /**
+             * {@inheritDoc}
+             *
              * @see org.xml.sax.helpers.DefaultHandler#endDocument()
              */
             public void endDocument() throws SAXException {
@@ -140,10 +141,12 @@ public final class ReportAddAuthor {
             }
 
             /**
+             * {@inheritDoc}
+             *
              * @see org.xml.sax.helpers.DefaultHandler#startElement(java.lang.String, java.lang.String, java.lang.String, org.xml.sax.Attributes)
              */
-            public void startElement(final String uri, final String localName,
-                    final String qName, final Attributes attributes)
+            public void startElement(String uri, String localName,
+                    String qName, Attributes attributes)
                     throws SAXException {
 
                 super.startElement(uri, localName, qName, attributes);
@@ -153,7 +156,7 @@ public final class ReportAddAuthor {
 
                     for (int i = 0, n = attributes.getLength(); i < n; i++) {
                         xmlout.writeAttribute(attributes.getQName(i),
-                                attributes.getValue(i));
+                            attributes.getValue(i));
                     }
 
                     if ("file".equals(qName)) {
@@ -174,15 +177,15 @@ public final class ReportAddAuthor {
              * @return Return the author from the java file.
              * @throws IOException in an IO-error occurred.
              */
-            private String getAuthor(final Attributes attributes)
+            private String getAuthor(Attributes attributes)
                     throws IOException {
 
                 String file = attributes.getValue("name");
                 String author = "Unknown";
 
                 if (file != null && file.endsWith(".java")) {
-                    BufferedReader injava = new BufferedReader(new FileReader(
-                            file));
+                    BufferedReader injava =
+                            new BufferedReader(new FileReader(file));
                     String line;
                     while ((line = injava.readLine()) != null) {
                         int pos = line.indexOf("@author");
@@ -208,10 +211,12 @@ public final class ReportAddAuthor {
             }
 
             /**
+             * {@inheritDoc}
+             *
              * @see org.xml.sax.helpers.DefaultHandler#endElement(java.lang.String, java.lang.String, java.lang.String)
              */
-            public void endElement(final String uri, final String localName,
-                    final String qName) throws SAXException {
+            public void endElement(String uri, String localName,
+                    String qName) throws SAXException {
 
                 super.endElement(uri, localName, qName);
                 try {
@@ -222,10 +227,12 @@ public final class ReportAddAuthor {
             }
 
             /**
+             * {@inheritDoc}
+             *
              * @see org.xml.sax.helpers.DefaultHandler#characters(char[], int, int)
              */
-            public void characters(final char[] ch, final int start,
-                    final int length) throws SAXException {
+            public void characters(char[] ch, int start,
+                    int length) throws SAXException {
 
                 super.characters(ch, start, length);
                 try {

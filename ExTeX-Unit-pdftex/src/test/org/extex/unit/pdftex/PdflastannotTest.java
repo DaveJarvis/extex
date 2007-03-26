@@ -34,7 +34,7 @@ public class PdflastannotTest extends AbstractReadonlyCountRegisterTester {
      *
      * @param arg the name
      */
-    public PdflastannotTest(final String arg) {
+    public PdflastannotTest(String arg) {
 
         super(arg, "pdflastannot", "0");
         setConfig("pdftex-test");

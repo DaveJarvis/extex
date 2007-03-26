@@ -33,7 +33,7 @@ public class OutputTest extends NoFlagsButGlobalPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(OutputTest.class);
     }
@@ -43,7 +43,7 @@ public class OutputTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public OutputTest(final String arg) {
+    public OutputTest(String arg) {
 
         super(arg, "output", "{}", "");
     }

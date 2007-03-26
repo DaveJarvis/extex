@@ -42,7 +42,7 @@ public class DviX extends AbstractDviCode {
      *
      * @param value the value
      */
-    public DviX(final int value) {
+    public DviX(int value) {
 
         super("x" + variant(value));
         this.value = value;
@@ -59,7 +59,7 @@ public class DviX extends AbstractDviCode {
      *
      * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
      */
-    public int write(final OutputStream stream) throws IOException {
+    public int write(OutputStream stream) throws IOException {
 
         return opcodeSigned(Dvi.X1, value, stream);
     }

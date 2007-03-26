@@ -42,7 +42,7 @@ import org.xml.sax.SAXException;
  * TODO gene: missing JavaDoc.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5413 $
  */
 public class ConfigReader {
 
@@ -61,7 +61,7 @@ public class ConfigReader {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         try {
             ConfigReader configReader = new ConfigReader();
@@ -80,17 +80,18 @@ public class ConfigReader {
     /**
      * The field <tt>component</tt> contains the ...
      */
-    private List component = new ArrayList();
+    private List<String> component = new ArrayList<String>();
 
     /**
      * The field <tt>configurations</tt> contains the ...
      */
-    private List configurations = new ArrayList();
+    private List<ConfigurationInfo> configurations =
+            new ArrayList<ConfigurationInfo>();
 
     /**
      * The field <tt>units</tt> contains the ...
      */
-    private List units = new ArrayList();
+    private List<UnitInfo> units = new ArrayList<UnitInfo>();
 
     /**
      * Creates a new object.
@@ -112,7 +113,7 @@ public class ConfigReader {
      * @throws IOException ...
      * @throws SAXException ...
      */
-    public void add(final String cfg)
+    public void add(String cfg)
             throws ParserConfigurationException,
                 SAXException,
                 IOException {
@@ -137,7 +138,7 @@ public class ConfigReader {
      * @throws SAXException ...
      * @throws IOException ...
      */
-    private Element readXml(final File file)
+    private Element readXml(File file)
             throws SAXException,
                 IOException {
 
@@ -155,7 +156,7 @@ public class ConfigReader {
      * @throws SAXException ...
      * @throws IOException ...
      */
-    private void scan(final String name) throws IOException, SAXException {
+    private void scan(String name) throws IOException, SAXException {
 
         component.add(name);
 
@@ -193,7 +194,7 @@ public class ConfigReader {
      * @throws IOException ...
      * @throws SAXException ...
      */
-    private void scanConfig(final File base, final String f)
+    private void scanConfig(File base, String f)
             throws IOException,
                 SAXException {
 
@@ -238,7 +239,7 @@ public class ConfigReader {
      * @throws IOException ...
      * @throws SAXException ...
      */
-    private void scanUnit(final File base, final String f)
+    private void scanUnit(File base, String f)
             throws SAXException,
                 IOException {
 

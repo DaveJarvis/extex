@@ -34,7 +34,7 @@ public class CsnameTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public CsnameTest(final String arg) {
+    public CsnameTest(String arg) {
 
         super(arg);
     }

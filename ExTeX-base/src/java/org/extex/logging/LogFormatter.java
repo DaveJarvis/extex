@@ -64,7 +64,7 @@ public class LogFormatter extends Formatter {
      *
      * @see java.util.logging.Formatter#format(java.util.logging.LogRecord)
      */
-    public String format(final LogRecord record) {
+    public String format(LogRecord record) {
 
         String message = record.getMessage();
         StringBuffer msg = new StringBuffer(message == null ? "" : message);
@@ -101,7 +101,7 @@ public class LogFormatter extends Formatter {
      * @param out the target buffer
      * @param msg the message to process
      */
-    private void print(final StringBuffer out, final CharSequence msg) {
+    private void print(StringBuffer out, CharSequence msg) {
 
         CharSequence s = msg;
         int length = msg.length();
@@ -146,8 +146,8 @@ public class LogFormatter extends Formatter {
      *
      * @return the message
      */
-    private CharSequence breakLine(final StringBuffer out,
-            final CharSequence msg) {
+    private CharSequence breakLine(StringBuffer out,
+            CharSequence msg) {
 
         for (int i = LINE_LENGTH - col - 1; i >= 0; i--) {
             char c = msg.charAt(i);

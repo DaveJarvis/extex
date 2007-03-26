@@ -31,7 +31,7 @@ public class NulldelimiterspaceTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(NulldelimiterspaceTest.class);
     }
@@ -41,7 +41,7 @@ public class NulldelimiterspaceTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public NulldelimiterspaceTest(final String arg) {
+    public NulldelimiterspaceTest(String arg) {
 
         super(arg, "nulldelimiterspace", "", "0.0pt");
     }

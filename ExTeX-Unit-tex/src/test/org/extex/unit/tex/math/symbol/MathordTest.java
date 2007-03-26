@@ -32,7 +32,7 @@ public class MathordTest extends AbstractOperatorTester {
      *
      * @param arg the name
      */
-    public MathordTest(final String arg) {
+    public MathordTest(String arg) {
 
         super(arg, "mathord");
     }

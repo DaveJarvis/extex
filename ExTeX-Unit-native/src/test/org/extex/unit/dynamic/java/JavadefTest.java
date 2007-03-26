@@ -34,7 +34,7 @@ public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public JavadefTest(final String arg) {
+    public JavadefTest(String arg) {
 
         super(arg, "javadef",
                 "\\t{org.extex.unit.tex.Relax}");

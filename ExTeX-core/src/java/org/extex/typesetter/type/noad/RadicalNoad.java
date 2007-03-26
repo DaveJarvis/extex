@@ -52,8 +52,8 @@ public class RadicalNoad extends AbstractNucleusNoad {
      * @param nucleus the nucleus under the radical
      * @param tc the typesetting context for the color
      */
-    public RadicalNoad(final MathDelimiter leftDelimiter, final Noad nucleus,
-            final TypesettingContext tc) {
+    public RadicalNoad(MathDelimiter leftDelimiter, Noad nucleus,
+            TypesettingContext tc) {
 
         super(nucleus, tc);
         this.leftDelimiter = leftDelimiter;
@@ -70,7 +70,7 @@ public class RadicalNoad extends AbstractNucleusNoad {
      *      java.lang.StringBuffer,
      *      int)
      */
-    protected void toStringAdd(final StringBuffer sb, final int depth) {
+    protected void toStringAdd(StringBuffer sb, int depth) {
 
         sb.append("radical");
         leftDelimiter.toString(sb);
@@ -99,9 +99,9 @@ public class RadicalNoad extends AbstractNucleusNoad {
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(final Noad previousNoad, final NoadList noads,
-            final int index, final NodeList list,
-            final MathContext mathContext, final Logger logger)
+    public void typeset(Noad previousNoad, NoadList noads,
+            int index, NodeList list,
+            MathContext mathContext, Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 

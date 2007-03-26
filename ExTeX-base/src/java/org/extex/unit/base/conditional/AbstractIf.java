@@ -83,8 +83,8 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
      *
      * @throws InterpreterException in case of en error
      */
-    public static boolean skipToElseOrFi(final Context context,
-            final TokenSource source, final String name)
+    public static boolean skipToElseOrFi(Context context,
+            TokenSource source, String name)
             throws InterpreterException {
 
         Code code;
@@ -125,7 +125,7 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
      *
      * @param name the name for debugging
      */
-    public AbstractIf(final String name) {
+    public AbstractIf(String name) {
 
         super(name);
     }
@@ -145,8 +145,8 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
      * @throws InterpreterException in case of en error
      * @throws ConfigurationException in case of an configuration error
      */
-    public abstract boolean conditional(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public abstract boolean conditional(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException;
 
     /**
@@ -168,8 +168,8 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         if (conditional(context, source, typesetter)) {
@@ -187,8 +187,8 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void expand(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void expand(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         if (conditional(context, source, typesetter)) {

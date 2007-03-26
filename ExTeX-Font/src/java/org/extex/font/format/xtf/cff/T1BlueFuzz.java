@@ -36,7 +36,7 @@ public class T1BlueFuzz extends T1DictNumber {
      * @param stack the stack
      * @throws IOException if an IO.error occurs.
      */
-    public T1BlueFuzz(final List stack) throws IOException {
+    public T1BlueFuzz(List stack) throws IOException {
 
         super(stack, new short[]{BlueFuzz});
     }

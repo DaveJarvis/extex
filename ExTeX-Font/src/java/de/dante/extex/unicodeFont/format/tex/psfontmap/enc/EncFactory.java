@@ -47,7 +47,7 @@ public class EncFactory implements Serializable {
      * Create a new object.
      * @param afinder    finder
      */
-    public EncFactory(final ResourceFinder afinder) {
+    public EncFactory(ResourceFinder afinder) {
 
         finder = afinder;
         data = new HashMap();
@@ -77,7 +77,7 @@ public class EncFactory implements Serializable {
      * @throws FontException if an font-error occurred.
      * @throws ConfigurationException from the resource finder.
      */
-    public String[] getEncodingTable(final String filename)
+    public String[] getEncodingTable(String filename)
             throws FontException, ConfigurationException {
 
         EncReader encreader = getEncReader(filename);
@@ -91,7 +91,7 @@ public class EncFactory implements Serializable {
      * @throws FontException if an font-error occurred.
      * @throws ConfigurationException from the resource finder.
      */
-    public EncReader getEncReader(final String filename) throws FontException,
+    public EncReader getEncReader(String filename) throws FontException,
             ConfigurationException {
 
         EncReader encreader = (EncReader) data.get(filename);
@@ -115,7 +115,7 @@ public class EncFactory implements Serializable {
      * @throws FontException if an font-error occurred.
      * @throws ConfigurationException from the resource finder.
      */
-    public String[] getEncodingTableWithoutSlash(final String filename)
+    public String[] getEncodingTableWithoutSlash(String filename)
             throws FontException, ConfigurationException {
 
         String[] table = getEncodingTable(filename);

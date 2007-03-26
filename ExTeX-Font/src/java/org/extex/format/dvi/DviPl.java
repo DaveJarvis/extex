@@ -52,7 +52,6 @@ import org.extex.format.dvi.exception.DviException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.util.file.random.RandomAccessR;
 
-
 /**
  * DVI to PL converter.
  *
@@ -74,7 +73,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
     private int page = 0;
 
     /**
-     * the fontfactory
+     * the font factory
      */
     private FontFactory fontfactory;
 
@@ -103,7 +102,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
      *
      * @param ff        the fontfactroy
      */
-    public DviPl(final PlWriter plout, final FontFactory ff) {
+    public DviPl(PlWriter plout, FontFactory ff) {
 
         out = plout;
         fontfactory = ff;
@@ -118,11 +117,16 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
     private int mag;
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.DviInterpreter#interpret(
      *      org.extex.util.file.random.RandomAccessR)
      */
-    public void interpret(final RandomAccessR rar) throws IOException,
-            DviException, FontException, ConfigurationException {
+    public void interpret(RandomAccessR rar)
+            throws IOException,
+                DviException,
+                FontException,
+                ConfigurationException {
 
         while (!rar.isEOF()) {
             DviCommand command = DviCommand.getNextCommand(rar);
@@ -204,8 +208,8 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
-     * Set the fontmap.
-     * @param fontm The fontmap to set.
+     * Set the font map.
+     * @param fontm The font map to set.
      */
     public void setFontmap(Map fontm) {
 
@@ -213,61 +217,85 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviBOP)
      */
-    public void execute(final DviBOP command) throws DviException,
-            FontException, ConfigurationException {
+    public void execute(DviBOP command)
+            throws DviException,
+                FontException,
+                ConfigurationException {
 
         // do nothing
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviChar)
      */
-    public void execute(final DviChar command) throws DviException,
-            FontException, ConfigurationException {
+    public void execute(DviChar command)
+            throws DviException,
+                FontException,
+                ConfigurationException {
 
         out.plopen("SETCHAR").addChar((short) command.getCh()).plclose();
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviDown)
      */
-    public void execute(final DviDown command) throws DviException,
-            FontException, ConfigurationException {
+    public void execute(DviDown command)
+            throws DviException,
+                FontException,
+                ConfigurationException {
 
         val.addV(command.getValue());
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviEOP)
      */
-    public void execute(final DviEOP command) throws DviException,
-            FontException, ConfigurationException {
+    public void execute(DviEOP command)
+            throws DviException,
+                FontException,
+                ConfigurationException {
 
         // do nothing
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviFntDef)
      */
-    public void execute(final DviFntDef command) throws DviException,
-            FontException, ConfigurationException {
+    public void execute(DviFntDef command)
+            throws DviException,
+                FontException,
+                ConfigurationException {
 
         // do nothing
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviFntNum)
      */
-    public void execute(final DviFntNum command) throws DviException,
-            FontException, ConfigurationException {
+    public void execute(DviFntNum command)
+            throws DviException,
+                FontException,
+                ConfigurationException {
 
         val.setF(command.getFont());
         out.plopen("SELECTFONT").addDec(command.getFont()).plclose();
@@ -275,11 +303,15 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviPOP)
      */
-    public void execute(final DviPOP command) throws DviException,
-            FontException, ConfigurationException {
+    public void execute(DviPOP command)
+            throws DviException,
+                FontException,
+                ConfigurationException {
 
         DviValues v = stack.pop();
         val.setValues(v);
@@ -287,71 +319,99 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviNOP)
      */
-    public void execute(final DviNOP command) throws DviException,
-            FontException, ConfigurationException {
+    public void execute(DviNOP command)
+            throws DviException,
+                FontException,
+                ConfigurationException {
 
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviPost)
      */
-    public void execute(final DviPost command) throws DviException,
-            FontException, ConfigurationException {
+    public void execute(DviPost command)
+            throws DviException,
+                FontException,
+                ConfigurationException {
 
         // do nothing
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviPostPost)
      */
-    public void execute(final DviPostPost command) throws DviException,
-            FontException, ConfigurationException {
+    public void execute(DviPostPost command)
+            throws DviException,
+                FontException,
+                ConfigurationException {
 
         // do nothing
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviPre)
      */
-    public void execute(final DviPre command) throws DviException,
-            FontException, ConfigurationException {
+    public void execute(DviPre command)
+            throws DviException,
+                FontException,
+                ConfigurationException {
 
         // do nothing
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviPush)
      */
-    public void execute(final DviPush command) throws DviException,
-            FontException, ConfigurationException {
+    public void execute(DviPush command)
+            throws DviException,
+                FontException,
+                ConfigurationException {
 
         stack.push(val);
         out.plopen("PUSH").plclose();
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviRight)
      */
-    public void execute(final DviRight command) throws DviException,
-            FontException, ConfigurationException {
+    public void execute(DviRight command)
+            throws DviException,
+                FontException,
+                ConfigurationException {
 
         val.addH(command.getValue());
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviRule)
      */
-    public void execute(final DviRule command) throws DviException,
-            FontException, ConfigurationException {
+    public void execute(DviRule command)
+            throws DviException,
+                FontException,
+                ConfigurationException {
 
         if (!command.isPut()) {
             val.addH(command.getWidth());
@@ -366,11 +426,15 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviW)
      */
-    public void execute(final DviW command) throws DviException, FontException,
-            ConfigurationException {
+    public void execute(DviW command)
+            throws DviException,
+                FontException,
+                ConfigurationException {
 
         // calculate
         if (!command.isW0()) {
@@ -388,11 +452,15 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviX)
      */
-    public void execute(final DviX command) throws DviException, FontException,
-            ConfigurationException {
+    public void execute(DviX command)
+            throws DviException,
+                FontException,
+                ConfigurationException {
 
         if (!command.isX0()) {
             val.setX(command.getValue());
@@ -410,21 +478,29 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviXXX)
      */
-    public void execute(final DviXXX command) throws DviException,
-            FontException, ConfigurationException {
+    public void execute(DviXXX command)
+            throws DviException,
+                FontException,
+                ConfigurationException {
 
         out.plopen("SPECIAL").addStr(command.getXXXString()).plclose();
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviY)
      */
-    public void execute(final DviY command) throws DviException, FontException,
-            ConfigurationException {
+    public void execute(DviY command)
+            throws DviException,
+                FontException,
+                ConfigurationException {
 
         if (!command.isY0()) {
             val.setY(command.getValue());
@@ -442,11 +518,15 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviZ)
      */
-    public void execute(final DviZ command) throws DviException, FontException,
-            ConfigurationException {
+    public void execute(DviZ command)
+            throws DviException,
+                FontException,
+                ConfigurationException {
 
         if (!command.isZ0()) {
             val.setZ(command.getValue());

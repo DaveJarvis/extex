@@ -45,7 +45,7 @@ public class DviGlyphNotFoundException extends DviException {
      *
      * @param message   the message
      */
-    public DviGlyphNotFoundException(final String message) {
+    public DviGlyphNotFoundException(String message) {
 
         super(message);
     }

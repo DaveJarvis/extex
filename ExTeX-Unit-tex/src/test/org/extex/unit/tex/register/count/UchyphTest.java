@@ -33,7 +33,7 @@ public class UchyphTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(UchyphTest.class);
     }
@@ -43,7 +43,7 @@ public class UchyphTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public UchyphTest(final String arg) {
+    public UchyphTest(String arg) {
 
         super(arg, "uchyph", "", "0");
     }

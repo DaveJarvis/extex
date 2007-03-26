@@ -80,7 +80,7 @@ public class Moveleft extends AbstractBoxPrimitive {
      *
      * @param name the name for debugging
      */
-    public Moveleft(final String name) {
+    public Moveleft(String name) {
 
         super(name);
     }
@@ -105,8 +105,8 @@ public class Moveleft extends AbstractBoxPrimitive {
      *      org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
-    public Box getBox(final Context context, final TokenSource source,
-            final Typesetter typesetter, final Token insert)
+    public Box getBox(Context context, TokenSource source,
+            Typesetter typesetter, Token insert)
             throws InterpreterException {
 
         Dimen move = DimenParser.parse(context, source, typesetter);

@@ -95,7 +95,7 @@ public class Hyphenation extends HyphenationPrimitive {
      *
      * @param name the name for debugging
      */
-    public Hyphenation(final String name) {
+    public Hyphenation(String name) {
 
         super(name);
     }
@@ -112,8 +112,8 @@ public class Hyphenation extends HyphenationPrimitive {
      * @throws InterpreterException in case of an error
      * @throws CatcodeException in case of an exception in token creation
      */
-    protected UnicodeCharList collectWord(final Context context,
-            final TokenSource source, final Token token)
+    protected UnicodeCharList collectWord(Context context,
+            TokenSource source, Token token)
             throws InterpreterException,
                 CatcodeException {
 

@@ -59,7 +59,7 @@ public class MathRandom extends AbstractMath
      * @param name the name for debugging
      * @throws GeneralException ...
      */
-    public MathRandom(final String name) throws GeneralException {
+    public MathRandom(String name) throws GeneralException {
 
         super(name);
 
@@ -72,7 +72,7 @@ public class MathRandom extends AbstractMath
      * @return  the real value
      * @throws InterpreterException if a error occoured
      */
-    protected Real calculate(final Context context, final TokenSource source)
+    protected Real calculate(Context context, TokenSource source)
             throws InterpreterException {
 
         return new Real(Math.random());

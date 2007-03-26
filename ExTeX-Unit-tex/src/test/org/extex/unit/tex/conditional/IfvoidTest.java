@@ -34,7 +34,7 @@ public class IfvoidTest extends ExTeXLauncher {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(IfvoidTest.class);
     }
@@ -44,7 +44,7 @@ public class IfvoidTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public IfvoidTest(final String arg) {
+    public IfvoidTest(String arg) {
 
         super(arg);
     }

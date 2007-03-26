@@ -185,7 +185,7 @@ public class TftoPlTest extends TestCase {
      * @param   nr  the font nr
      * @throws IOException if a IO-error occurs
      */
-    private void fontTest(final int nr) throws IOException {
+    private void fontTest(int nr) throws IOException {
 
         RandomAccessR rarorg = new RandomAccessInputFile(PATH + FILES[nr]
                 + ".tftopl");
@@ -213,7 +213,7 @@ public class TftoPlTest extends TestCase {
      * @return the list
      * @throws IOException if an IO-error occurs
      */
-    private List readAllPl(final RandomAccessR rar, final String command)
+    private List readAllPl(RandomAccessR rar, String command)
             throws IOException {
 
         List list = new ArrayList();
@@ -235,7 +235,7 @@ public class TftoPlTest extends TestCase {
      * @return the line
      * @throws IOException if an IO-error occurs
      */
-    private String readPL(final RandomAccessR rar, final String command)
+    private String readPL(RandomAccessR rar, String command)
             throws IOException {
 
         rar.seek(0);
@@ -274,7 +274,7 @@ public class TftoPlTest extends TestCase {
      * test tftopl
      * @param args  the commandline
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(TftoPlTest.class);
     }

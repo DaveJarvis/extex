@@ -38,7 +38,7 @@ public class Fixed32 {
      *
      * @param value the fixed point value
      */
-    public Fixed32(final int value) {
+    public Fixed32(int value) {
 
         fp = value;
     }
@@ -48,7 +48,7 @@ public class Fixed32 {
      *
      * @param value the value as double
      */
-    public Fixed32(final double value) {
+    public Fixed32(double value) {
 
         fp = convert(value);
     }
@@ -59,7 +59,7 @@ public class Fixed32 {
      * @param dvalue    the doube value
      * @return Returns the fixed point format
      */
-    private int convert(final double dvalue) {
+    private int convert(double dvalue) {
 
         return (int) (dvalue * FRACTION + ROUND);
 
@@ -81,7 +81,7 @@ public class Fixed32 {
      * @param fpvalue   the fixed point value
      * @return Returns the double value
      */
-    private double convert(final int fpvalue) {
+    private double convert(int fpvalue) {
 
         return fpvalue / FRACTION;
     }

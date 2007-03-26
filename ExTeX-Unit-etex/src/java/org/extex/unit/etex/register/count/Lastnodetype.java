@@ -194,7 +194,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @return the type of the node
          * @exception GeneralException if an error occurs
          */
-        public int getNodetype(final Node node) throws GeneralException {
+        public int getNodetype(Node node) throws GeneralException {
 
             if (node == null) {
                 return NODE_TYPE_EMPTY_LIST;
@@ -215,7 +215,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(AdjustNode,
          *     java.lang.Object)
          */
-        public Object visitAdjust(final AdjustNode node, final Object arg) {
+        public Object visitAdjust(AdjustNode node, Object arg) {
 
             return NODETYPE_ADJUST;
         }
@@ -232,7 +232,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(AfterMathNode,
          *     java.lang.Object)
          */
-        public Object visitAfterMath(final AfterMathNode node, final Object arg) {
+        public Object visitAfterMath(AfterMathNode node, Object arg) {
 
             return NODETYPE_AFTERMATH;
         }
@@ -249,8 +249,8 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(AlignedLeadersNode,
          *     java.lang.Object)
          */
-        public Object visitAlignedLeaders(final AlignedLeadersNode node,
-                final Object arg) {
+        public Object visitAlignedLeaders(AlignedLeadersNode node,
+                Object arg) {
 
             //TODO unimplemented
             throw new RuntimeException("unimplemented");
@@ -269,8 +269,8 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(BeforeMathNode,
          *     java.lang.Object)
          */
-        public Object visitBeforeMath(final BeforeMathNode node,
-                final Object arg) {
+        public Object visitBeforeMath(BeforeMathNode node,
+                Object arg) {
 
             return NODETYPE_BEFOREMATH;
         }
@@ -287,8 +287,8 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(CenteredLeadersNode,
          *     java.lang.Object)
          */
-        public Object visitCenteredLeaders(final CenteredLeadersNode node,
-                final Object arg) {
+        public Object visitCenteredLeaders(CenteredLeadersNode node,
+                Object arg) {
 
             //TODO unimplemented
             throw new RuntimeException("unimplemented");
@@ -301,12 +301,13 @@ public class Lastnodetype extends AbstractReadonlyCount {
          *
          * @param node the visited node
          * @param arg null
+         *
          * @return type number of node as <code>Integer</code>
-         * @exception GeneralException if an error occurs
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitChar(CharNode,
          *     java.lang.Object)
          */
-        public Object visitChar(final CharNode node, final Object arg) {
+        public Object visitChar(CharNode node, Object arg) {
 
             return NODETYPE_CHAR;
         }
@@ -323,8 +324,8 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(DiscretionaryNode,
          *     java.lang.Object)
          */
-        public Object visitDiscretionary(final DiscretionaryNode node,
-                final Object arg) {
+        public Object visitDiscretionary(DiscretionaryNode node,
+                Object arg) {
 
             return NODETYPE_DISCRETIONARY;
         }
@@ -335,13 +336,14 @@ public class Lastnodetype extends AbstractReadonlyCount {
          *
          * @param node the visited node
          * @param arg null
+         *
          * @return type number of node as <code>Integer</code>
-         * @exception GeneralException if an error occurs
+         *
          * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(ExpandedLeadersNode,
          *     java.lang.Object)
          */
-        public Object visitExpandedLeaders(final ExpandedLeadersNode node,
-                final Object arg) {
+        public Object visitExpandedLeaders(ExpandedLeadersNode node,
+                Object arg) {
 
             //TODO unimplemented
             throw new RuntimeException("unimplemented");
@@ -360,7 +362,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @see org.extex.typesetter.type.NodeVisitor#visitGlue(GlueNode,
          *     java.lang.Object)
          */
-        public Object visitGlue(final GlueNode node, final Object arg) {
+        public Object visitGlue(GlueNode node, Object arg) {
 
             return NODETYPE_GLUE;
         }
@@ -377,8 +379,8 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(HorizontalListNode,
          *     java.lang.Object)
          */
-        public Object visitHorizontalList(final HorizontalListNode node,
-                final Object arg) {
+        public Object visitHorizontalList(HorizontalListNode node,
+                Object arg) {
 
             return NODETYPE_HORIZONTALLIST;
         }
@@ -395,7 +397,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(InsertionNode,
          *     java.lang.Object)
          */
-        public Object visitInsertion(final InsertionNode node, final Object arg) {
+        public Object visitInsertion(InsertionNode node, Object arg) {
 
             return NODETYPE_INSERTION;
         }
@@ -412,7 +414,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @see org.extex.typesetter.type.NodeVisitor#visitKern(KernNode,
          *     java.lang.Object)
          */
-        public Object visitKern(final KernNode node, final Object arg) {
+        public Object visitKern(KernNode node, Object arg) {
 
             return NODETYPE_KERN;
         }
@@ -429,7 +431,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @see org.extex.typesetter.type.NodeVisitor#visitLigature(LigatureNode,
          *     java.lang.Object)
          */
-        public Object visitLigature(final LigatureNode node, final Object arg) {
+        public Object visitLigature(LigatureNode node, Object arg) {
 
             return NODETYPE_LIGATURE;
         }
@@ -446,7 +448,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @see org.extex.typesetter.type.NodeVisitor#visitMark(MarkNode,
          *     java.lang.Object)
          */
-        public Object visitMark(final MarkNode node, final Object arg) {
+        public Object visitMark(MarkNode node, Object arg) {
 
             return NODETYPE_MARK;
         }
@@ -463,7 +465,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(PenaltyNode,
          *     java.lang.Object)
          */
-        public Object visitPenalty(final PenaltyNode node, final Object arg) {
+        public Object visitPenalty(PenaltyNode node, Object arg) {
 
             return NODETYPE_PENALTY;
         }
@@ -480,7 +482,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @see org.extex.typesetter.type.NodeVisitor#visitRule(RuleNode,
          *     java.lang.Object)
          */
-        public Object visitRule(final RuleNode node, final Object arg) {
+        public Object visitRule(RuleNode node, Object arg) {
 
             return NODETYPE_RULE;
         }
@@ -497,7 +499,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @see org.extex.typesetter.type.NodeVisitor#visitSpace(SpaceNode,
          *     java.lang.Object)
          */
-        public Object visitSpace(final SpaceNode node, final Object arg) {
+        public Object visitSpace(SpaceNode node, Object arg) {
 
             //TODO unimplemented
             throw new RuntimeException("unimplemented");
@@ -517,8 +519,8 @@ public class Lastnodetype extends AbstractReadonlyCount {
          *     VerticalListNode,
          *     java.lang.Object)
          */
-        public Object visitVerticalList(final VerticalListNode node,
-                final Object arg) {
+        public Object visitVerticalList(VerticalListNode node,
+                Object arg) {
 
             return NODETYPE_VERTICALLIST;
         }
@@ -526,8 +528,8 @@ public class Lastnodetype extends AbstractReadonlyCount {
         /**
          * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(org.extex.typesetter.type.node.VirtualCharNode, java.lang.Object)
          */
-        public Object visitVirtualChar(final VirtualCharNode node,
-                final Object value) {
+        public Object visitVirtualChar(VirtualCharNode node,
+                Object value) {
 
             return NODETYPE_CHAR;
         }
@@ -544,7 +546,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(WhatsItNode,
          *     java.lang.Object)
          */
-        public Object visitWhatsIt(final WhatsItNode node, final Object arg) {
+        public Object visitWhatsIt(WhatsItNode node, Object arg) {
 
             return NODETYPE_WHATSIT;
         }
@@ -567,7 +569,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
      *
      * @param name the name for debugging
      */
-    public Lastnodetype(final String name) {
+    public Lastnodetype(String name) {
 
         super(name);
     }
@@ -586,12 +588,12 @@ public class Lastnodetype extends AbstractReadonlyCount {
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.CountConvertible#convertCount(
+     * @see org.extex.core.count.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
-    public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public long convertCount(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         Node lastNode = typesetter.getLastNode();
 

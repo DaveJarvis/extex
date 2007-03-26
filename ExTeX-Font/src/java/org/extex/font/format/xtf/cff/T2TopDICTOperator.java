@@ -208,7 +208,7 @@ public abstract class T2TopDICTOperator extends T2Operator {
      * @return Returns the new T2Operatorr object.
      * @throws IOException if an IO-error occurs.
      */
-    public static T2Operator newInstance(final RandomAccessR rar)
+    public static T2Operator newInstance(RandomAccessR rar)
             throws IOException {
 
         List stack = new ArrayList();

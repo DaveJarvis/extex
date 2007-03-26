@@ -34,7 +34,7 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(FontnameTest.class);
     }
@@ -44,7 +44,7 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public FontnameTest(final String arg) {
+    public FontnameTest(String arg) {
 
         super(arg, "fontname", "\\nullfont");
     }

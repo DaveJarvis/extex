@@ -45,7 +45,7 @@ public class PfmReader {
      *
      * @param afm   The afm parser.
      */
-    public PfmReader(final AfmParser afm) {
+    public PfmReader(AfmParser afm) {
 
     }
 
@@ -55,7 +55,7 @@ public class PfmReader {
      * @param rar    The input.
      * @throws IOException if an IO-error occurred.
      */
-    public PfmReader(final RandomAccessR rar) throws IOException {
+    public PfmReader(RandomAccessR rar) throws IOException {
 
     }
 
@@ -65,7 +65,7 @@ public class PfmReader {
      * @param in    The input stream.
      * @throws IOException if an IO-error occurred.
      */
-    public PfmReader(final InputStream in) throws IOException {
+    public PfmReader(InputStream in) throws IOException {
 
         this(new RandomAccessInputStream(in));
     }
@@ -80,7 +80,7 @@ public class PfmReader {
      *
      * @param apfm   The pfm object.
      */
-    public PfmReader(final Pfm apfm) {
+    public PfmReader(Pfm apfm) {
 
         pfm = apfm;
     }

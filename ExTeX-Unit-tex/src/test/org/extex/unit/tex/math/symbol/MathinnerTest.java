@@ -32,7 +32,7 @@ public class MathinnerTest extends AbstractOperatorTester {
      *
      * @param arg the name
      */
-    public MathinnerTest(final String arg) {
+    public MathinnerTest(String arg) {
 
         super(arg, "mathinner");
     }

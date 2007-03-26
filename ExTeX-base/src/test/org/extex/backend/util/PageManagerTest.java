@@ -36,7 +36,7 @@ public class PageManagerTest extends TestCase {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PageManagerTest.class);
     }
@@ -48,7 +48,7 @@ public class PageManagerTest extends TestCase {
      *  result
      * @param spec the specification to test
      */
-    private void run(final String reference, final String spec) {
+    private void run(String reference, String spec) {
 
         PageManager pm = new PageManager();
         if (spec != null) {

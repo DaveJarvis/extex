@@ -64,8 +64,8 @@ public class GroupInfoImpl implements GroupInfo {
      * @param groupType the group type
      * @param groupStart the starting token
      */
-    public GroupInfoImpl(final Locator locator, final GroupType groupType,
-            final Token groupStart) {
+    public GroupInfoImpl(Locator locator, GroupType groupType,
+            Token groupStart) {
 
         super();
         this.locator = locator;
@@ -116,7 +116,7 @@ public class GroupInfoImpl implements GroupInfo {
      *
      * @param groupStart the groupStart to set
      */
-    public void setGroupStart(final Token groupStart) {
+    public void setGroupStart(Token groupStart) {
 
         this.groupStart = groupStart;
     }
@@ -126,7 +126,7 @@ public class GroupInfoImpl implements GroupInfo {
      *
      * @param type the groupType to set
      */
-    public void setGroupType(final GroupType type) {
+    public void setGroupType(GroupType type) {
 
         this.groupType = type;
     }
@@ -136,7 +136,7 @@ public class GroupInfoImpl implements GroupInfo {
      *
      * @param locator the locator to set
      */
-    public void setLocator(final Locator locator) {
+    public void setLocator(Locator locator) {
 
         this.locator = locator;
     }

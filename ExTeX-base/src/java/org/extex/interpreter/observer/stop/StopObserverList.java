@@ -41,8 +41,8 @@ public final class StopObserverList implements StopObserver {
      *
      * @return the input list or a new one with the observer added
      */
-    public static StopObserver register(final StopObserver list,
-            final StopObserver observer) {
+    public static StopObserver register(StopObserver list,
+            StopObserver observer) {
 
         if (list instanceof StopObserverList) {
             ((StopObserverList) list).add(observer);
@@ -62,14 +62,14 @@ public final class StopObserverList implements StopObserver {
     /**
      * The field <tt>list</tt> contains the encapsulated list.
      */
-    private List list = new ArrayList();
+    private List<StopObserver> list = new ArrayList<StopObserver>();
 
     /**
      * Add an observer to the list.
      *
      * @param observer the observer to add to the list
      */
-    public void add(final StopObserver observer) {
+    public void add(StopObserver observer) {
 
         list.add(observer);
     }
@@ -82,11 +82,10 @@ public final class StopObserverList implements StopObserver {
      * @see org.extex.interpreter.observer.stop.StopObserver#update(
      *      org.extex.interpreter.Interpreter)
      */
-    public void update(final Interpreter interpreter) {
+    public void update(Interpreter interpreter) {
 
-        int size = list.size();
-        for (int i = 0; i < size; i++) {
-            ((StopObserver) list.get(i)).update(interpreter);
+        for (StopObserver obs : list) {
+            obs.update(interpreter);
         }
     }
 

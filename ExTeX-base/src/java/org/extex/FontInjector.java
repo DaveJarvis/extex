@@ -49,7 +49,7 @@ public class FontInjector implements RegistrarObserver {
      *
      * @param factory the resource finder to inject
      */
-    public FontInjector(final CoreFontFactory factory) {
+    public FontInjector(CoreFontFactory factory) {
 
         super();
         this.factory = factory;
@@ -71,7 +71,7 @@ public class FontInjector implements RegistrarObserver {
      *
      * @see org.extex.framework.RegistrarObserver#reconnect(java.lang.Object)
      */
-    public Object reconnect(final Object object) throws RegistrarException {
+    public Object reconnect(Object object) throws RegistrarException {
 
         ModifiableFont font = (ModifiableFont) object;
         FontKey fontKey = font.getFontKey();

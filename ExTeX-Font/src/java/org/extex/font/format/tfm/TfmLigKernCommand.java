@@ -32,7 +32,7 @@ import org.extex.util.file.random.RandomAccessR;
  *     <tr><td>byte</td><td>description</td></tr>
  *   </thead>
  *   <tr><td>first  </td><td>skip_byte, indicates that this is the
- *                  final program step if the byte is 128 or more,
+ *                  program step if the byte is 128 or more,
  *                  otherwise the next step is obtained by skipping
  *                  this number of intervening steps.</td></tr>
  *   <tr><td>second </td><td>next_char: if next_char follows the
@@ -152,7 +152,7 @@ public class TfmLigKernCommand implements Serializable {
      * @param id    the id
      * @throws IOException if an IO-error occurs.
      */
-    public TfmLigKernCommand(final RandomAccessR rar, final int id)
+    public TfmLigKernCommand(RandomAccessR rar, int id)
             throws IOException {
 
         lkid = id;
@@ -333,7 +333,7 @@ public class TfmLigKernCommand implements Serializable {
      * @return Returns index to the <code>ligAuxTab</code>
      *         of the next lig/kern instruction.
      */
-    public int nextIndex(final int pos) {
+    public int nextIndex(int pos) {
 
         return pos + skipbyte() + 1;
     }
@@ -373,7 +373,7 @@ public class TfmLigKernCommand implements Serializable {
      *
      * @param act The activity to set.
      */
-    public void setActivity(final Activity act) {
+    public void setActivity(Activity act) {
 
         this.activity = act;
     }
@@ -383,7 +383,7 @@ public class TfmLigKernCommand implements Serializable {
      *
      * @param c the forced value of ligChar.
      */
-    public void setLigChar(final short c) {
+    public void setLigChar(short c) {
 
         remainder = (byte) c;
     }
@@ -393,7 +393,7 @@ public class TfmLigKernCommand implements Serializable {
      *
      * @param c     the forced value of >nextchar.
      */
-    public void setNextChar(final int c) {
+    public void setNextChar(int c) {
 
         nextchar = (byte) c;
     }

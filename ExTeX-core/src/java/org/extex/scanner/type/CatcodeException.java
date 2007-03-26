@@ -48,7 +48,7 @@ public class CatcodeException extends GeneralException {
      *
      * @param message the message of the exception
      */
-    public CatcodeException(final String message) {
+    public CatcodeException(String message) {
 
         super(message);
     }
@@ -59,7 +59,7 @@ public class CatcodeException extends GeneralException {
      * @param message the message of the exception
      * @param cause the cause of the exception in a chained exception
      */
-    public CatcodeException(final String message, final Throwable cause) {
+    public CatcodeException(String message, Throwable cause) {
 
         super(message, cause);
     }
@@ -69,7 +69,7 @@ public class CatcodeException extends GeneralException {
      *
      * @param cause the cause of the exception in a chained exception
      */
-    public CatcodeException(final Throwable cause) {
+    public CatcodeException(Throwable cause) {
 
         super(cause);
     }

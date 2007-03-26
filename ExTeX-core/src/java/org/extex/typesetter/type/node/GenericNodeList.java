@@ -52,7 +52,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * The field <tt>list</tt> is the container for the elements of this node
      * list.
      */
-    private ArrayList list = new ArrayList();
+    private ArrayList<Node> list = new ArrayList<Node>();
 
     /**
      * The field <tt>move</tt> contains the offset of the reference point in
@@ -98,7 +98,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      *
      * @param node the node to add initially
      */
-    public GenericNodeList(final Node node) {
+    public GenericNodeList(Node node) {
 
         super();
         add(node);
@@ -113,7 +113,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * @see org.extex.typesetter.type.NodeList#add(int,
      *      org.extex.typesetter.type.Node)
      */
-    public void add(final int index, final Node node) {
+    public void add(int index, Node node) {
 
         list.add(index, node);
     }
@@ -127,7 +127,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * @see org.extex.typesetter.type.NodeList#add(
      *      org.extex.typesetter.type.Node)
      */
-    public void add(final Node node) {
+    public void add(Node node) {
 
         if (node != null) {
             list.add(node);
@@ -143,7 +143,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * @see org.extex.typesetter.type.NodeList#addSkip(
      *      org.extex.core.glue.FixedGlue)
      */
-    public void addSkip(final FixedGlue glue) {
+    public void addSkip(FixedGlue glue) {
 
         throw new UnsupportedOperationException(getClass().getName()
                 + "#addSkip()");
@@ -173,15 +173,15 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      *      org.extex.typesetter.type.NodeVisitor,
      *      boolean)
      */
-    public Node atShipping(final Context context, final Typesetter typesetter,
-            final NodeVisitor visitor, final boolean inHMode)
+    public Node atShipping(Context context, Typesetter typesetter,
+            NodeVisitor visitor, boolean inHMode)
             throws GeneralException {
 
         Node node, n;
         int size = list.size();
 
         for (int i = 0; i < size; i++) {
-            node = (Node) list.get(i);
+            node = list.get(i);
             n = node.atShipping(context, typesetter, visitor, inHMode);
 
             if (n == null) {
@@ -224,7 +224,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
 
         try {
             GenericNodeList clone = (GenericNodeList) this.clone();
-            clone.list = (ArrayList) list.clone();
+            clone.list = (ArrayList<Node>) list.clone();
             return clone;
         } catch (CloneNotSupportedException e) {
             throw new ImpossibleException(e);
@@ -241,8 +241,8 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     public int countChars() {
 
         int count = 0;
-        for (int i = 0; i < list.size(); i++) {
-            count += ((Node) list.get(i)).countChars();
+        for (Node n : list) {
+            count += n.countChars();
         }
         return count;
     }
@@ -268,9 +268,9 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      *
      * @see org.extex.typesetter.type.NodeList#get(int)
      */
-    public Node get(final int index) {
+    public Node get(int index) {
 
-        return (Node) list.get(index);
+        return list.get(index);
     }
 
     /**
@@ -289,7 +289,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
         CharNode[] chars = new CharNode[len];
         int idx = 0;
         for (int i = 0; i < list.size(); i++) {
-            CharNode[] uca = ((Node) list.get(i)).getChars();
+            CharNode[] uca = list.get(i).getChars();
             for (int j = 0; j < uca.length; j++) {
                 chars[idx++] = uca[j];
             }
@@ -382,9 +382,9 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      *
      * @see org.extex.typesetter.type.NodeList#remove(int)
      */
-    public Node remove(final int index) {
+    public Node remove(int index) {
 
-        Node node = (Node) list.remove(index);
+        Node node = list.remove(index);
         return node;
     }
 
@@ -399,7 +399,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * @see org.extex.typesetter.type.NodeList#setMove(
      *      org.extex.core.dimen.FixedDimen)
      */
-    public void setMove(final FixedDimen d) {
+    public void setMove(FixedDimen d) {
 
         move.set(d);
     }
@@ -414,7 +414,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * @see org.extex.typesetter.type.NodeList#setShift(
      *      org.extex.core.dimen.FixedDimen)
      */
-    public void setShift(final FixedDimen d) {
+    public void setShift(FixedDimen d) {
 
         shift.set(d);
     }
@@ -424,7 +424,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      *
      * @param depth the target depth to set.
      */
-    public void setTargetDepth(final FixedDimen depth) {
+    public void setTargetDepth(FixedDimen depth) {
 
         if (this.targetDepth == null) {
             this.targetDepth = new Dimen(depth);
@@ -438,7 +438,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      *
      * @param height the target height to set.
      */
-    public void setTargetHeight(final FixedDimen height) {
+    public void setTargetHeight(FixedDimen height) {
 
         if (this.targetHeight == null) {
             this.targetHeight = new Dimen(height);
@@ -452,7 +452,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      *
      * @param width the target width to set.
      */
-    public void setTargetWidth(final FixedDimen width) {
+    public void setTargetWidth(FixedDimen width) {
 
         if (this.targetWidth == null) {
             this.targetWidth = new Dimen(width);
@@ -485,8 +485,8 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         sb.append("(");
         sb.append(getHeight().toString());
@@ -513,7 +513,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
         for (int i = 0; i < list.size() && i < breadth; i++) {
             sb.append(prefix2);
             if (depth >= 0) {
-                ((Node) list.get(i)).toString(sb, prefix2, breadth, depth - 1);
+                list.get(i).toString(sb, prefix2, breadth, depth - 1);
             }
         }
     }
@@ -535,12 +535,12 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
-    public void toText(final StringBuffer sb, final String prefix) {
+    public void toText(StringBuffer sb, String prefix) {
 
         String p = prefix + "  ";
 
-        for (int i = 0; i < list.size(); i++) {
-            ((Node) list.get(i)).toText(sb, p);
+        for (Node n : list) {
+            n.toText(sb, p);
         }
 
         sb.append(")");
@@ -560,7 +560,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final NodeVisitor visitor, final Object value)
+    public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {
 
         throw new ImpossibleException(getClass().getName() + "#visit()");

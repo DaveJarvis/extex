@@ -68,7 +68,7 @@ public class Real implements Serializable {
      *
      * @param val    init with double-value
      */
-    public Real(final double val) {
+    public Real(double val) {
 
         super();
         value = val;
@@ -85,7 +85,7 @@ public class Real implements Serializable {
      * @throws InterpreterException ...
      * @throws ConfigurationException in case of an configuration error
      */
-    public Real(final Context context, final TokenSource source)
+    public Real(Context context, TokenSource source)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -104,7 +104,7 @@ public class Real implements Serializable {
      * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
      */
-    private double scanReal(final Context context, final TokenSource source)
+    private double scanReal(Context context, TokenSource source)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -165,7 +165,7 @@ public class Real implements Serializable {
      * Creates a new object.
      * @param val   the value
      */
-    public Real(final Real val) {
+    public Real(Real val) {
 
         value = val.getValue();
     }
@@ -174,7 +174,7 @@ public class Real implements Serializable {
      * Creates a new object.
      * @param val   tha value as float
      */
-    public Real(final float val) {
+    public Real(float val) {
 
         value = val;
     }
@@ -183,7 +183,7 @@ public class Real implements Serializable {
      * Creates a new object.
      * @param l the value as long
      */
-    public Real(final long l) {
+    public Real(long l) {
 
         value = l;
     }
@@ -192,7 +192,7 @@ public class Real implements Serializable {
      * Creates a new object.
      * @param   i   the value as int
      */
-    public Real(final int i) {
+    public Real(int i) {
 
         value = i;
     }
@@ -203,7 +203,7 @@ public class Real implements Serializable {
      * @param s     the value as String
      * @throws InterpreterException if a NumberFormatException is throws
      */
-    public Real(final String s) throws InterpreterException {
+    public Real(String s) throws InterpreterException {
 
         if (s == null || s.trim().length() == 0) {
             value = 0.0d;
@@ -222,7 +222,7 @@ public class Real implements Serializable {
      *
      * @param d the new value
      */
-    public void setValue(final double d) {
+    public void setValue(double d) {
 
         value = d;
     }
@@ -242,7 +242,7 @@ public class Real implements Serializable {
      *
      * @param val the value to add
      */
-    public void add(final double val) {
+    public void add(double val) {
 
         value += val;
     }
@@ -252,7 +252,7 @@ public class Real implements Serializable {
      *
      * @param real the value to add
      */
-    public void add(final Real real) {
+    public void add(Real real) {
 
         value += real.getValue();
     }
@@ -264,7 +264,7 @@ public class Real implements Serializable {
      *
      * @throws InterpreterException in case of a division by zero
      */
-    public void divide(final double val) throws InterpreterException {
+    public void divide(double val) throws InterpreterException {
 
         if (val == 0.0d) {
             throw new InterpreterArithmeticException();
@@ -280,7 +280,7 @@ public class Real implements Serializable {
      *
      * @throws InterpreterException in case of a division by zero
      */
-    public void divide(final Real val) throws InterpreterException {
+    public void divide(Real val) throws InterpreterException {
 
         divide(val.getValue());
     }
@@ -290,7 +290,7 @@ public class Real implements Serializable {
      *
      * @param val the value to multiply
      */
-    public void multiply(final double val) {
+    public void multiply(double val) {
 
         value *= val;
     }
@@ -300,7 +300,7 @@ public class Real implements Serializable {
      *
      * @param val the value to multiply
      */
-    public void multiply(final Real val) {
+    public void multiply(Real val) {
 
         value *= val.getValue();
     }

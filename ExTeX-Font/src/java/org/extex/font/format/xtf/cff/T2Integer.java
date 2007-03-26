@@ -80,7 +80,7 @@ public class T2Integer extends T2Number {
      * @param b0    the b0
      * @throws IOException if an IO-error occurs.
      */
-    T2Integer(final RandomAccessR rar, final int b0) throws IOException {
+    T2Integer(RandomAccessR rar, int b0) throws IOException {
 
         super();
 

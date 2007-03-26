@@ -70,8 +70,8 @@ public class Conditional implements Serializable {
      * @param branch <code>true</code> iff the then branch is taken
      * @param neg indicator that the conditional has been negated
      */
-    public Conditional(final Locator locator, final Code primitive,
-            final long branch, final boolean neg) {
+    public Conditional(Locator locator, Code primitive,
+            long branch, boolean neg) {
 
         super();
         this.locator = locator;

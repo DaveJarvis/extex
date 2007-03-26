@@ -49,13 +49,13 @@ public class DviPostamble extends AbstractDviCode {
      * The field <tt>fontMap</tt> contains the fonts and their mapping to
      * indexes.
      */
-    private Map fontMap = new HashMap();
+    private Map<Font, Long> fontMap = new HashMap<Font, Long>();
 
     /**
      * The field <tt>fonts</tt> contains the list of the font def instructions
      * to be written out at the end.
      */
-    private List fonts = new ArrayList();
+    private List<DviFntDef> fonts = new ArrayList<DviFntDef>();
 
     /**
      * The field <tt>mag</tt> contains the magnification in permille.
@@ -94,7 +94,7 @@ public class DviPostamble extends AbstractDviCode {
      *
      * @param mag the magnification factor in permille
      */
-    public DviPostamble(final int mag) {
+    public DviPostamble(int mag) {
 
         super("post");
         this.mag = mag;
@@ -110,9 +110,9 @@ public class DviPostamble extends AbstractDviCode {
      *
      * @return the index in the font table to use
      */
-    public int mapFont(final Font fnt, final List list) {
+    public int mapFont(Font fnt, List<DviCode> list) {
 
-        Long idx = (Long) fontMap.get(fnt);
+        Long idx = fontMap.get(fnt);
         if (idx != null) {
             return idx.intValue();
         }
@@ -133,8 +133,8 @@ public class DviPostamble extends AbstractDviCode {
      * @param stacksize the stack size needed to process the push and pop
      *  operations of the current page
      */
-    public void recognizePage(final FixedDimen height, final FixedDimen depth,
-            final FixedDimen width, final int stacksize) {
+    public void recognizePage(FixedDimen height, FixedDimen depth,
+            FixedDimen width, int stacksize) {
 
         numberOfPages++;
 
@@ -159,7 +159,7 @@ public class DviPostamble extends AbstractDviCode {
      *
      * @param bopPointer the pointer to the last BOP
      */
-    public void setBop(final int bopPointer) {
+    public void setBop(int bopPointer) {
 
         this.bop = bopPointer;
     }
@@ -169,7 +169,7 @@ public class DviPostamble extends AbstractDviCode {
      *
      * @param pointer the offset for the last bop instruction
      */
-    public void setOffset(final int pointer) {
+    public void setOffset(int pointer) {
 
         this.bopOffset = pointer;
     }
@@ -185,7 +185,7 @@ public class DviPostamble extends AbstractDviCode {
      *
      * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
      */
-    public int write(final OutputStream stream) throws IOException {
+    public int write(OutputStream stream) throws IOException {
 
         int n = 39;
         stream.write(Dvi.POST);
@@ -199,7 +199,7 @@ public class DviPostamble extends AbstractDviCode {
         write2(stream, numberOfPages);
 
         for (int i = 0; i < fonts.size(); i++) {
-            n += (((DviFntDef) fonts.get(i))).write(stream);
+            n += fonts.get(i).write(stream);
         }
 
         stream.write(Dvi.POST_POST);

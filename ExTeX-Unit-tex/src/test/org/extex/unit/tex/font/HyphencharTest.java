@@ -32,7 +32,7 @@ public class HyphencharTest extends FontcharTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(HyphencharTest.class);
     }
@@ -42,7 +42,7 @@ public class HyphencharTest extends FontcharTester {
      *
      * @param arg the name
      */
-    public HyphencharTest(final String arg) {
+    public HyphencharTest(String arg) {
 
         super(arg, "hyphenchar", "\\nullfont=123 ", "45");
     }

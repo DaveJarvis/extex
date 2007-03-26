@@ -103,7 +103,7 @@ public class UnicodeChar implements Serializable {
      *
      * @return the Unicode character
      */
-    public static UnicodeChar get(final int code) {
+    public static UnicodeChar get(int code) {
 
         if (code < UCharacter.MIN_VALUE || code > UCharacter.MAX_VALUE) {
             return null;
@@ -127,7 +127,7 @@ public class UnicodeChar implements Serializable {
      *
      * @return the Unicode character
      */
-    public static UnicodeChar get(final String unicodeName) {
+    public static UnicodeChar get(String unicodeName) {
 
         int c = UCharacter.getCharFromName(unicodeName);
         return (c >= 0 ? get(c) : null);
@@ -144,7 +144,7 @@ public class UnicodeChar implements Serializable {
      *
      * @param codePoint the 32-bit code point
      */
-    protected UnicodeChar(final int codePoint) {
+    protected UnicodeChar(int codePoint) {
 
         super();
         if (codePoint < UCharacter.MIN_VALUE
@@ -168,7 +168,7 @@ public class UnicodeChar implements Serializable {
      * @return <code>true</code> if the characters are equal, otherwise
      *         <code>false</code>
      */
-    public boolean equals(final Object unicodeChar) {
+    public boolean equals(Object unicodeChar) {
 
         return ((unicodeChar instanceof UnicodeChar) && //
         this.code == ((UnicodeChar) unicodeChar).getCodePoint());

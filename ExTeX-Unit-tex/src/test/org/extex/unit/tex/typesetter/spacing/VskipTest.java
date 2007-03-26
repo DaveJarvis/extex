@@ -33,7 +33,7 @@ public class VskipTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(VskipTest.class);
     }
@@ -43,7 +43,7 @@ public class VskipTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public VskipTest(final String arg) {
+    public VskipTest(String arg) {
 
         super(arg, "vskip", "12pt");
     }

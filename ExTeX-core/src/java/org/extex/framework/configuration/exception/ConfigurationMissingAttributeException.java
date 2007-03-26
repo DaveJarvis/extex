@@ -43,8 +43,8 @@ public class ConfigurationMissingAttributeException
      * @param message the message string
      * @param origin the configuration in which the exception has occurred
      */
-    public ConfigurationMissingAttributeException(final String message,
-            final Configuration origin) {
+    public ConfigurationMissingAttributeException(String message,
+            Configuration origin) {
 
         super(message, origin.toString());
     }
@@ -55,8 +55,8 @@ public class ConfigurationMissingAttributeException
      * @param message the message string
      * @param location the location where the exception has occured
      */
-    public ConfigurationMissingAttributeException(final String message,
-            final String location) {
+    public ConfigurationMissingAttributeException(String message,
+            String location) {
 
         super(message, location);
     }
@@ -67,8 +67,8 @@ public class ConfigurationMissingAttributeException
      * @param message message the message string
      * @param cause the next Throwable in the list
      */
-    public ConfigurationMissingAttributeException(final String message,
-            final Throwable cause) {
+    public ConfigurationMissingAttributeException(String message,
+            Throwable cause) {
 
         super(message, cause);
     }

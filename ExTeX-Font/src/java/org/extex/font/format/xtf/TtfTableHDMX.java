@@ -98,8 +98,8 @@ public class TtfTableHDMX extends AbstractXtfTable
      * @param rar       input
      * @throws IOException if an IO-error occurs
      */
-    TtfTableHDMX(final XtfTableMap tablemap, final XtfTableDirectory.Entry de,
-            final RandomAccessR rar) throws IOException {
+    TtfTableHDMX(XtfTableMap tablemap, XtfTableDirectory.Entry de,
+            RandomAccessR rar) throws IOException {
 
         super(tablemap);
 
@@ -155,7 +155,7 @@ public class TtfTableHDMX extends AbstractXtfTable
          * @param numberOfGlyphs the number of glyphs
          * @throws IOException if an IO-error occurred.
          */
-        public DeviceRecord(final RandomAccessR rar, final int numberOfGlyphs)
+        public DeviceRecord(RandomAccessR rar, int numberOfGlyphs)
                 throws IOException {
 
             pixelSize = rar.readByteAsInt();
@@ -210,7 +210,7 @@ public class TtfTableHDMX extends AbstractXtfTable
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
-        public void writeXML(final XMLStreamWriter writer) throws IOException {
+        public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("devicerecord");
             writer.writeAttribute("maxwidth", String.valueOf(maxWidth));
@@ -297,7 +297,7 @@ public class TtfTableHDMX extends AbstractXtfTable
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writeStartElement(writer);
         writer.writeAttribute("version", String.valueOf(version));

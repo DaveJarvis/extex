@@ -61,7 +61,7 @@ public final class Fitness {
      *
      * @param theOrder the fitness class
      */
-    private Fitness(final int theOrder) {
+    private Fitness(int theOrder) {
 
         super();
         this.order = theOrder;
@@ -76,7 +76,7 @@ public final class Fitness {
      * @return <code>true</code> iff the order of the given fitness is equal
      *  or adjacent to the given one.
      */
-    public boolean adjacent(final Fitness fitness) {
+    public boolean adjacent(Fitness fitness) {
 
         return (fitness.order == order
                 || fitness.order + 1 == order

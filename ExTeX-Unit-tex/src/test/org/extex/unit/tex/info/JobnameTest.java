@@ -36,7 +36,7 @@ public class JobnameTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public JobnameTest(final String arg) {
+    public JobnameTest(String arg) {
 
         super(arg, "jobname", "");
     }

@@ -33,7 +33,7 @@ public class ClubpenaltiesTest extends AbstractCountArrayTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ClubpenaltiesTest.class);
     }
@@ -43,7 +43,7 @@ public class ClubpenaltiesTest extends AbstractCountArrayTester {
      *
      * @param arg the name
      */
-    public ClubpenaltiesTest(final String arg) {
+    public ClubpenaltiesTest(String arg) {
 
         super(arg, "clubpenalties", "255", "0");
         setConfig("etex-test");

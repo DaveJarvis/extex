@@ -46,7 +46,7 @@ public class InteractionModeObserver implements InteractionObserver {
      *
      * @param theHandler the target handler
      */
-    public InteractionModeObserver(final Handler theHandler) {
+    public InteractionModeObserver(Handler theHandler) {
 
         super();
         this.handler = theHandler;
@@ -64,8 +64,8 @@ public class InteractionModeObserver implements InteractionObserver {
      *      org.extex.interpreter.context.ContextInternals,
      *      org.extex.interpreter.interaction.Interaction)
      */
-    public void receiveInteractionChange(final ContextInternals context,
-            final Interaction mode) throws Exception {
+    public void receiveInteractionChange(ContextInternals context,
+            Interaction mode) throws Exception {
 
         handler.setLevel(mode == Interaction.BATCHMODE //
                 ? Level.SEVERE : Level.INFO);

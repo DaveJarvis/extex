@@ -33,7 +33,7 @@ public class TracingpagesTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(TracingpagesTest.class);
     }
@@ -43,7 +43,7 @@ public class TracingpagesTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public TracingpagesTest(final String arg) {
+    public TracingpagesTest(String arg) {
 
         super(arg, "tracingpages", "", "0");
     }

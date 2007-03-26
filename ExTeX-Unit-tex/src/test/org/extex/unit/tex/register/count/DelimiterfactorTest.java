@@ -33,7 +33,7 @@ public class DelimiterfactorTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(DelimiterfactorTest.class);
     }
@@ -43,7 +43,7 @@ public class DelimiterfactorTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public DelimiterfactorTest(final String arg) {
+    public DelimiterfactorTest(String arg) {
 
         super(arg, "delimiterfactor", "", "0");
     }

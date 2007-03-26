@@ -31,7 +31,7 @@ public class LastskipTest extends AbstractSkipRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(LastskipTest.class);
     }
@@ -41,7 +41,7 @@ public class LastskipTest extends AbstractSkipRegisterTester {
      *
      * @param arg the name
      */
-    public LastskipTest(final String arg) {
+    public LastskipTest(String arg) {
 
         super(arg, "lastskip", "", "0.0pt");
     }

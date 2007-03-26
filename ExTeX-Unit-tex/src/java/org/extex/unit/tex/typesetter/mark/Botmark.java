@@ -68,7 +68,7 @@ public class Botmark extends Botmarks {
      *
      * @param name the name for debugging
      */
-    public Botmark(final String name) {
+    public Botmark(String name) {
 
         super(name);
     }
@@ -87,8 +87,8 @@ public class Botmark extends Botmarks {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    protected String getKey(final Context context, final TokenSource source,
-            final Typesetter typesetter) {
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) {
 
         return "0";
     }

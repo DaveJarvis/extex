@@ -34,7 +34,7 @@ public class OmathcharTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public OmathcharTest(final String arg) {
+    public OmathcharTest(String arg) {
 
         super(arg, "omathchar", "123 ");
         setConfig("omega-test");

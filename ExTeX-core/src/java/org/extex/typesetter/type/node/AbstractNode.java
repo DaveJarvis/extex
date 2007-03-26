@@ -86,7 +86,7 @@ public abstract class AbstractNode implements Node {
      *
      * @param aWidth the width of the node
      */
-    public AbstractNode(final FixedDimen aWidth) {
+    public AbstractNode(FixedDimen aWidth) {
 
         super();
         this.width = new Glue(aWidth);
@@ -101,8 +101,8 @@ public abstract class AbstractNode implements Node {
      * @param aHeight the height of the node
      * @param aDepth the depth of the node
      */
-    public AbstractNode(final FixedDimen aWidth, final FixedDimen aHeight,
-            final FixedDimen aDepth) {
+    public AbstractNode(FixedDimen aWidth, FixedDimen aHeight,
+            FixedDimen aDepth) {
 
         super();
         this.width = new Glue(aWidth);
@@ -118,7 +118,7 @@ public abstract class AbstractNode implements Node {
      * @see org.extex.typesetter.type.Node#addDepthTo(
      *      org.extex.core.glue.WideGlue)
      */
-    public void addDepthTo(final WideGlue glue) {
+    public void addDepthTo(WideGlue glue) {
 
         glue.add(depth);
     }
@@ -131,7 +131,7 @@ public abstract class AbstractNode implements Node {
      * @see org.extex.typesetter.type.Node#addHeightTo(
      *      org.extex.core.glue.WideGlue)
      */
-    public void addHeightTo(final WideGlue glue) {
+    public void addHeightTo(WideGlue glue) {
 
         glue.add(height);
     }
@@ -144,7 +144,7 @@ public abstract class AbstractNode implements Node {
      * @see org.extex.typesetter.type.Node#addWidthTo(
      *      org.extex.core.glue.WideGlue)
      */
-    public void addWidthTo(final WideGlue glue) {
+    public void addWidthTo(WideGlue glue) {
 
         glue.add(width);
     }
@@ -154,7 +154,7 @@ public abstract class AbstractNode implements Node {
      *
      * @param x the length to add
      */
-    public void advanceDepth(final FixedDimen x) {
+    public void advanceDepth(FixedDimen x) {
 
         depth.add(x);
     }
@@ -164,7 +164,7 @@ public abstract class AbstractNode implements Node {
      *
      * @param x the length to add
      */
-    public void advanceHeight(final FixedDimen x) {
+    public void advanceHeight(FixedDimen x) {
 
         height.add(x);
     }
@@ -174,7 +174,7 @@ public abstract class AbstractNode implements Node {
      *
      * @param x the length to add
      */
-    public void advanceWidth(final FixedDimen x) {
+    public void advanceWidth(FixedDimen x) {
 
         width.add(x);
     }
@@ -205,8 +205,8 @@ public abstract class AbstractNode implements Node {
      *      org.extex.typesetter.type.NodeVisitor,
      *      boolean)
      */
-    public Node atShipping(final Context context, final Typesetter typesetter,
-            final NodeVisitor visitor, final boolean inHMode)
+    public Node atShipping(Context context, Typesetter typesetter,
+            NodeVisitor visitor, boolean inHMode)
             throws GeneralException {
 
         return (Node) this.visit(visitor, inHMode
@@ -223,8 +223,8 @@ public abstract class AbstractNode implements Node {
      *
      * @return the adjustment
      */
-    protected long computeAdjustment(final long size, final FixedGlue glue,
-            final FixedGlueComponent sum) {
+    protected long computeAdjustment(long size, FixedGlue glue,
+            FixedGlueComponent sum) {
 
         FixedGlueComponent s =
                 (size > 0 ? glue.getStretch() : glue.getShrink());
@@ -358,7 +358,7 @@ public abstract class AbstractNode implements Node {
      *
      * @param x the length to compare to
      */
-    public void maxDepth(final FixedDimen x) {
+    public void maxDepth(FixedDimen x) {
 
         if (depth.getLength().lt(x)) {
             depth.setLength(x);
@@ -371,7 +371,7 @@ public abstract class AbstractNode implements Node {
      *
      * @param x the length to compare to
      */
-    public void maxHeight(final FixedDimen x) {
+    public void maxHeight(FixedDimen x) {
 
         if (height.getLength().lt(x)) {
             height.setLength(x);
@@ -384,7 +384,7 @@ public abstract class AbstractNode implements Node {
      *
      * @param x the length to compare to
      */
-    public void maxWidth(final FixedDimen x) {
+    public void maxWidth(FixedDimen x) {
 
         if (width.getLength().lt(x)) {
             width.setLength(x);
@@ -399,7 +399,7 @@ public abstract class AbstractNode implements Node {
      * @see org.extex.typesetter.type.Node#setDepth(
      *      org.extex.core.dimen.FixedDimen)
      */
-    public void setDepth(final FixedDimen depth) {
+    public void setDepth(FixedDimen depth) {
 
         this.depth.set(depth);
     }
@@ -412,7 +412,7 @@ public abstract class AbstractNode implements Node {
      * @see org.extex.typesetter.type.Node#setHeight(
      *      org.extex.core.dimen.FixedDimen)
      */
-    public void setHeight(final FixedDimen height) {
+    public void setHeight(FixedDimen height) {
 
         this.height.set(height);
     }
@@ -425,7 +425,7 @@ public abstract class AbstractNode implements Node {
      * @see org.extex.typesetter.type.Node#setWidth(
      *      org.extex.core.dimen.FixedDimen)
      */
-    public void setWidth(final FixedDimen width) {
+    public void setWidth(FixedDimen width) {
 
         this.width.set(width);
     }
@@ -441,7 +441,7 @@ public abstract class AbstractNode implements Node {
      *      org.extex.core.dimen.FixedDimen,
      *      org.extex.core.glue.FixedGlueComponent)
      */
-    public void spreadHeight(final FixedDimen h, final FixedGlueComponent sum) {
+    public void spreadHeight(FixedDimen h, FixedGlueComponent sum) {
 
     }
 
@@ -456,7 +456,7 @@ public abstract class AbstractNode implements Node {
      *      org.extex.core.dimen.FixedDimen,
      *      org.extex.core.glue.FixedGlueComponent)
      */
-    public void spreadWidth(final FixedDimen w, final FixedGlueComponent sum) {
+    public void spreadWidth(FixedDimen w, FixedGlueComponent sum) {
 
     }
 
@@ -490,8 +490,8 @@ public abstract class AbstractNode implements Node {
      *      int,
      *      int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         sb.append(getLocalizer().format("String.Format"));
     }
@@ -503,7 +503,7 @@ public abstract class AbstractNode implements Node {
      *
      * @return the text representation of this object
      */
-    protected String toText(final String prefix) {
+    protected String toText(String prefix) {
 
         StringBuffer sb = new StringBuffer();
         toText(sb, prefix);
@@ -519,7 +519,7 @@ public abstract class AbstractNode implements Node {
      * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
-    public void toText(final StringBuffer sb, final String prefix) {
+    public void toText(StringBuffer sb, String prefix) {
 
         sb.append(getLocalizer().format("Text.Format"));
     }

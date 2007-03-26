@@ -58,7 +58,7 @@ public abstract class AbstractCode implements Code, Localizable, Serializable {
      *
      * @return the control sequence including the escape character
      */
-    public static String printable(final Context context, final Token token) {
+    public static String printable(Context context, Token token) {
 
         if (token instanceof ControlSequenceToken) {
             return context.esc("") + ((ControlSequenceToken) token).getName();
@@ -82,7 +82,7 @@ public abstract class AbstractCode implements Code, Localizable, Serializable {
      *
      * @param codeName the name of the primitive
      */
-    public AbstractCode(final String codeName) {
+    public AbstractCode(String codeName) {
 
         super();
         this.name = codeName;
@@ -96,7 +96,7 @@ public abstract class AbstractCode implements Code, Localizable, Serializable {
      * @see org.extex.framework.i18n.Localizable#enableLocalization(
      *      org.extex.framework.i18n.Localizer)
      */
-    public void enableLocalization(final Localizer theLocalizer) {
+    public void enableLocalization(Localizer theLocalizer) {
 
         this.localizer = theLocalizer;
     }
@@ -120,8 +120,8 @@ public abstract class AbstractCode implements Code, Localizable, Serializable {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         throw new CantUseInException(printableControlSequence(context),
@@ -174,7 +174,7 @@ public abstract class AbstractCode implements Code, Localizable, Serializable {
      *
      * @return the control sequence including the escape character
      */
-    protected String printableControlSequence(final Context context) {
+    protected String printableControlSequence(Context context) {
 
         return context.esc(name);
     }

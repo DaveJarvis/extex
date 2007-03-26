@@ -43,7 +43,7 @@ public class ZoomDestType extends DestType {
      *
      * @param zoom the zoom value
      */
-    public ZoomDestType(final long zoom) {
+    public ZoomDestType(long zoom) {
 
         super();
         this.zoom = zoom;
@@ -81,7 +81,7 @@ public class ZoomDestType extends DestType {
      * @see org.extex.unit.pdftex.util.destination.DestType#visit(
      *      org.extex.unit.pdftex.util.destination.DestinationVisitor)
      */
-    public Object visit(final DestinationVisitor visitor) {
+    public Object visit(DestinationVisitor visitor) {
 
         return visitor.visitZoom(this);
     }

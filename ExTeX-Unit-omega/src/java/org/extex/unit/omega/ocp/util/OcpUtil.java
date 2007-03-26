@@ -59,8 +59,8 @@ public final class OcpUtil {
      *
      * @throws InterpreterException in case of an error
      */
-    public static String scanOcpFileName(final TokenSource source,
-            final Context context) throws InterpreterException {
+    public static String scanOcpFileName(TokenSource source,
+            Context context) throws InterpreterException {
 
         StringBuffer sb = new StringBuffer();
 
@@ -84,8 +84,8 @@ public final class OcpUtil {
      *
      * @throws InterpreterException in case of an error
      */
-    public static Ocp scanOcp(final TokenSource source, final Context context,
-            final Typesetter typesetter) throws InterpreterException {
+    public static Ocp scanOcp(TokenSource source, Context context,
+            Typesetter typesetter) throws InterpreterException {
 
         Token t = source.getToken(context);
         if (t == null) {

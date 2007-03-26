@@ -43,7 +43,7 @@ public class TokenStreamStreamImplBufferedTest
      *
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(TokenStreamStreamImplBufferedTest.class);
     }
@@ -53,7 +53,7 @@ public class TokenStreamStreamImplBufferedTest
      *
      * @param name the name
      */
-    public TokenStreamStreamImplBufferedTest(final String name) {
+    public TokenStreamStreamImplBufferedTest(String name) {
 
         super(name);
     }
@@ -70,7 +70,7 @@ public class TokenStreamStreamImplBufferedTest
      * @return the new token stream
      * @throws IOException in case of an error
      */
-    protected TokenStream makeStream(final String line) throws IOException {
+    protected TokenStream makeStream(String line) throws IOException {
 
         return new TokenStreamImpl(CONF, null, new ByteArrayInputStream(line
             .getBytes()), "test", "ISO-8859-1");

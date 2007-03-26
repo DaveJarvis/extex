@@ -35,7 +35,7 @@ public class AbstractOperatorTester extends AbstractMathTester {
      * @param arg the name
      * @param primitive the name of the primitive
      */
-    public AbstractOperatorTester(final String arg, final String primitive) {
+    public AbstractOperatorTester(String arg, String primitive) {
 
         super(arg, primitive, " x");
     }

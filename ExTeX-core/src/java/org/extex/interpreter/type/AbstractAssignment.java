@@ -70,7 +70,7 @@ public abstract class AbstractAssignment extends AbstractCode {
      *
      * @param name the name for debugging
      */
-    public AbstractAssignment(final String name) {
+    public AbstractAssignment(String name) {
 
         super(name);
     }
@@ -90,8 +90,8 @@ public abstract class AbstractAssignment extends AbstractCode {
      * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
      */
-    public abstract void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public abstract void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException;
 
     /**
@@ -113,8 +113,8 @@ public abstract class AbstractAssignment extends AbstractCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public final void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public final void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         long globaldef = context.getCount("globaldefs").getValue();

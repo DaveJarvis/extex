@@ -40,7 +40,7 @@ public abstract class AbstractMuskip extends AbstractAssignment {
      *
      * @param name the name for debugging
      */
-    public AbstractMuskip(final String name) {
+    public AbstractMuskip(String name) {
 
         super(name);
     }
@@ -58,8 +58,8 @@ public abstract class AbstractMuskip extends AbstractAssignment {
      * @throws InterpreterException in case that a derived class need to throw
      *  an Exception this one is declared.
      */
-    protected String getKey(final TokenSource source, final Context context,
-            final Typesetter typesetter) throws InterpreterException {
+    protected String getKey(TokenSource source, Context context,
+            Typesetter typesetter) throws InterpreterException {
 
         String name =
                 source.scanRegisterName(context, source, typesetter, getName());

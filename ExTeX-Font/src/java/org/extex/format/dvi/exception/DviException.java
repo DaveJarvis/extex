@@ -45,7 +45,7 @@ public class DviException extends Exception {
      *
      * @param message   the message
      */
-    public DviException(final String message) {
+    public DviException(String message) {
 
         super(message);
     }

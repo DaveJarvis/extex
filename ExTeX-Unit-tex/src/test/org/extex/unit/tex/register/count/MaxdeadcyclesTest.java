@@ -33,7 +33,7 @@ public class MaxdeadcyclesTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(MaxdeadcyclesTest.class);
     }
@@ -43,7 +43,7 @@ public class MaxdeadcyclesTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public MaxdeadcyclesTest(final String arg) {
+    public MaxdeadcyclesTest(String arg) {
 
         super(arg, "maxdeadcycles", "", "25");
     }

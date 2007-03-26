@@ -56,8 +56,8 @@ public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher 
      * @param primitive the name of the primitive
      * @param defaultValue the default value
      */
-    public AbstractReadonlyCountRegisterTester(final String arg,
-            final String primitive, final String defaultValue) {
+    public AbstractReadonlyCountRegisterTester(String arg,
+            String primitive, String defaultValue) {
 
         super(arg);
         this.primitive = primitive;
@@ -72,9 +72,9 @@ public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher 
      * @param argument the argument
      * @param defaultValue the default value
      */
-    public AbstractReadonlyCountRegisterTester(final String arg,
-            final String primitive, final String argument,
-            final String defaultValue) {
+    public AbstractReadonlyCountRegisterTester(String arg,
+            String primitive, String argument,
+            String defaultValue) {
 
         super(arg);
         this.primitive = primitive;
@@ -91,9 +91,9 @@ public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher 
      * @param defaultValue the default value
      * @param prepare ...
      */
-    public AbstractReadonlyCountRegisterTester(final String arg,
-            final String primitive, final String argument,
-            final String defaultValue, final String prepare) {
+    public AbstractReadonlyCountRegisterTester(String arg,
+            String primitive, String argument,
+            String defaultValue, String prepare) {
 
         super(arg);
         this.primitive = primitive;

@@ -59,8 +59,8 @@ public class HangingParagraphShape extends ParagraphShape {
      * @param theHangindent the amount of indentation
      * @param theHsize the width of the line
      */
-    public HangingParagraphShape(final int theHangafter,
-            final FixedDimen theHangindent, final FixedDimen theHsize) {
+    public HangingParagraphShape(int theHangafter,
+            FixedDimen theHangindent, FixedDimen theHsize) {
 
         super();
         this.hsize = theHsize;
@@ -80,7 +80,7 @@ public class HangingParagraphShape extends ParagraphShape {
      *
      * @see org.extex.typesetter.paragraphBuilder.ParagraphShape#getIndent(int)
      */
-    public FixedDimen getIndent(final int index) {
+    public FixedDimen getIndent(int index) {
 
         if (hangafter > 0) {
             if (index >= hangafter) {
@@ -105,7 +105,7 @@ public class HangingParagraphShape extends ParagraphShape {
      *
      * @see org.extex.typesetter.paragraphBuilder.ParagraphShape#getLength(int)
      */
-    public FixedDimen getLength(final int index) {
+    public FixedDimen getLength(int index) {
 
         return hsize;
     }
@@ -115,7 +115,7 @@ public class HangingParagraphShape extends ParagraphShape {
      *
      * @param hangafter the hangafter to set.
      */
-    public void setHangafter(final int hangafter) {
+    public void setHangafter(int hangafter) {
 
         this.hangafter = hangafter;
     }
@@ -125,7 +125,7 @@ public class HangingParagraphShape extends ParagraphShape {
      *
      * @param hangindent the hangindent to set.
      */
-    public void setHangindent(final FixedDimen hangindent) {
+    public void setHangindent(FixedDimen hangindent) {
 
         this.hangindent = hangindent;
     }
@@ -135,7 +135,7 @@ public class HangingParagraphShape extends ParagraphShape {
      *
      * @param hsize the hsize to set.
      */
-    public void setHsize(final FixedDimen hsize) {
+    public void setHsize(FixedDimen hsize) {
 
         this.hsize = hsize;
     }

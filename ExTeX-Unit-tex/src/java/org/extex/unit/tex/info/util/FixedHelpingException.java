@@ -61,7 +61,7 @@ public class FixedHelpingException extends HelpingException {
      * @param message the message of this Exception
      * @param help the help string
      */
-    public FixedHelpingException(final String message, final String help) {
+    public FixedHelpingException(String message, String help) {
 
         super();
         this.message = message;

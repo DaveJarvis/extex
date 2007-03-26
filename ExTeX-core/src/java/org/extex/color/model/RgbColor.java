@@ -70,8 +70,8 @@ public class RgbColor implements Color {
      * @param blue the blue channel
      * @param alpha the alpha channel
      */
-    protected RgbColor(final int red, final int green, final int blue,
-            final int alpha) {
+    protected RgbColor(int red, int green, int blue,
+            int alpha) {
 
         super();
         this.red = (red < 0 ? 0 : red < MAX_VALUE ? red : MAX_VALUE);
@@ -89,7 +89,7 @@ public class RgbColor implements Color {
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
-    public boolean equals(final Object obj) {
+    public boolean equals(Object obj) {
 
         if (!(obj instanceof RgbColor)) {
             return false;
@@ -179,11 +179,13 @@ public class RgbColor implements Color {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Color#visit(
      *      org.extex.color.ColorVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final ColorVisitor visitor, final Object argument)
+    public Object visit(ColorVisitor visitor, Object argument)
             throws GeneralException {
 
         return visitor.visitRgb(this, argument);

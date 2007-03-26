@@ -42,8 +42,8 @@ public final class ExpandMacroObserverList implements ExpandMacroObserver {
      *
      * @return the input list or a new one with the observer added
      */
-    public static ExpandMacroObserver register(final ExpandMacroObserver list,
-            final ExpandMacroObserver observer) {
+    public static ExpandMacroObserver register(ExpandMacroObserver list,
+            ExpandMacroObserver observer) {
 
         if (list instanceof ExpandMacroObserverList) {
             ((ExpandMacroObserverList) list).add(observer);
@@ -63,14 +63,15 @@ public final class ExpandMacroObserverList implements ExpandMacroObserver {
     /**
      * The field <tt>list</tt> contains the encapsulated list.
      */
-    private List list = new ArrayList();
+    private List<ExpandMacroObserver> list =
+            new ArrayList<ExpandMacroObserver>();
 
     /**
      * Add an observer to the list.
      *
      * @param observer the observer to add to the list
      */
-    public void add(final ExpandMacroObserver observer) {
+    public void add(ExpandMacroObserver observer) {
 
         list.add(observer);
     }
@@ -86,11 +87,10 @@ public final class ExpandMacroObserverList implements ExpandMacroObserver {
      *      org.extex.scanner.type.token.Token,
      *      org.extex.interpreter.type.Code)
      */
-    public void update(final Token token, final Code code) {
+    public void update(Token token, Code code) {
 
-        int size = list.size();
-        for (int i = 0; i < size; i++) {
-            ((ExpandMacroObserver) list.get(i)).update(token, code);
+        for (ExpandMacroObserver obs : list) {
+            obs.update(token, code);
         }
     }
 

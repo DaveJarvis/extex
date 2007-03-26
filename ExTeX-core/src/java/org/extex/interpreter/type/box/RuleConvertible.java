@@ -19,6 +19,7 @@
 
 package org.extex.interpreter.type.box;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
@@ -48,6 +49,6 @@ public interface RuleConvertible extends BoxOrRule {
      * @throws ConfigurationException in case of an configuration error
      */
     RuleNode getRule(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+            throws InterpreterException, ConfigurationException;
 
 }

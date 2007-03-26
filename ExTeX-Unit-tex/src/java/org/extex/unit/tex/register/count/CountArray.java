@@ -44,7 +44,7 @@ public class CountArray extends CountPrimitive {
      *
      * @param name the name of the primitive
      */
-    public CountArray(final String name) {
+    public CountArray(String name) {
 
         super(name);
     }
@@ -67,8 +67,8 @@ public class CountArray extends CountPrimitive {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    protected String getKey(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         long no = CountParser.scanInteger(context, source, typesetter);
         return getName() + Long.toString(no);

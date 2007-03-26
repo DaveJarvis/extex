@@ -78,62 +78,73 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      * The field <tt>activeCache</tt> contains the cache for active character
      * tokens.
      */
-    private Map activeCache = new HashMap();
+    private Map<String, Map<UnicodeChar, WeakReference<ActiveCharacterToken>>> activeCache =
+            new HashMap<String, Map<UnicodeChar, WeakReference<ActiveCharacterToken>>>();
 
     /**
      * The field <tt>csCache</tt> contains the cache for control sequence
      * tokens.
      */
-    private Map csCache = new HashMap();
+    private Map<String, Map<String, WeakReference<ControlSequenceToken>>> csCache =
+            new HashMap<String, Map<String, WeakReference<ControlSequenceToken>>>();
 
     /**
      * The field <tt>leftBraceCache</tt> contains the cache for left brace
      * tokens.
      */
-    private Map leftBraceCache = new HashMap();
+    private Map<UnicodeChar, WeakReference<LeftBraceToken>> leftBraceCache =
+            new HashMap<UnicodeChar, WeakReference<LeftBraceToken>>();
 
     /**
      * The field <tt>letterCache</tt> contains the cache for letter tokens.
      */
-    private Map letterCache = new HashMap();
+    private Map<UnicodeChar, WeakReference<LetterToken>> letterCache =
+            new HashMap<UnicodeChar, WeakReference<LetterToken>>();
 
     /**
      * The field <tt>macroParamCache</tt> contains the cache for macro parameter
      * tokens.
      */
-    private Map macroParamCache = new HashMap();
+    private Map<UnicodeChar, WeakReference<MacroParamToken>> macroParamCache =
+            new HashMap<UnicodeChar, WeakReference<MacroParamToken>>();
 
     /**
      * The field <tt>mathShiftCache</tt> contains the cache for math shift
      * tokens.
      */
-    private Map mathShiftCache = new HashMap();
+    private Map<UnicodeChar, WeakReference<MathShiftToken>> mathShiftCache =
+            new HashMap<UnicodeChar, WeakReference<MathShiftToken>>();
 
     /**
      * The field <tt>otherCache</tt> contains the cache for other tokens.
      */
-    private Map otherCache = new HashMap();
+    private Map<UnicodeChar, WeakReference<OtherToken>> otherCache =
+            new HashMap<UnicodeChar, WeakReference<OtherToken>>();
 
     /**
      * The field <tt>rightBraceCache</tt> contains the cache for right brace
      * tokens.
      */
-    private Map rightBraceCache = new HashMap();
+    private Map<UnicodeChar, WeakReference<RightBraceToken>> rightBraceCache =
+            new HashMap<UnicodeChar, WeakReference<RightBraceToken>>();
 
     /**
      * The field <tt>subMarkCache</tt> contains the cache for sub mark tokens.
      */
-    private Map subMarkCache = new HashMap();
+    private Map<UnicodeChar, WeakReference<SubMarkToken>> subMarkCache =
+            new HashMap<UnicodeChar, WeakReference<SubMarkToken>>();
 
     /**
      * The field <tt>supMarkCache</tt> contains the cache for super mark tokens.
      */
-    private Map supMarkCache = new HashMap();
+    private Map<UnicodeChar, WeakReference<SupMarkToken>> supMarkCache =
+            new HashMap<UnicodeChar, WeakReference<SupMarkToken>>();
 
     /**
      * The field <tt>tabMarkCache</tt> contains the cache for tab mark tokens.
      */
-    private Map tabMarkCache = new HashMap();
+    private Map<UnicodeChar, WeakReference<TabMarkToken>> tabMarkCache =
+            new HashMap<UnicodeChar, WeakReference<TabMarkToken>>();
 
     /**
      * Creates a new object.
@@ -161,8 +172,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *      int,
      *      java.lang.String)
      */
-    public Token createToken(final Catcode code, final int c,
-            final String namespace) throws CatcodeException {
+    public Token createToken(Catcode code, int c,
+            String namespace) throws CatcodeException {
 
         try {
             return (Token) code.visit(this, null, //
@@ -184,7 +195,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      * @param code the catcode
      * @param c the Unicode character value
      * @param namespace the name space for the token. This is relevant for
-     *   ACTIVE and ESCAPE catcodes only.
+     *   ACTIVE and ESCAPE category codes only.
      *
      * @return the appropriate token
      *
@@ -195,8 +206,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *      org.extex.core.UnicodeChar,
      *      java.lang.String)
      */
-    public Token createToken(final Catcode code, final UnicodeChar c,
-            final String namespace) throws CatcodeException {
+    public Token createToken(Catcode code, UnicodeChar c,
+            String namespace) throws CatcodeException {
 
         try {
             return (Token) code.visit(this, null, c, namespace);
@@ -217,7 +228,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      * @param esc the Unicode character value of the escape character
      * @param value the value
      * @param namespace the name space for the token. This is relevant for
-     *  ACTIVE and ESCAPE catcodes only.
+     *  ACTIVE and ESCAPE category codes only.
      *
      * @return the appropriate token
      *
@@ -229,8 +240,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *      java.lang.String,
      *      java.lang.String)
      */
-    public Token createToken(final Catcode code, final UnicodeChar esc,
-            final String value, final String namespace) throws CatcodeException {
+    public Token createToken(Catcode code, UnicodeChar esc,
+            String value, String namespace) throws CatcodeException {
 
         try {
             return (Token) code.visit(this, value, esc, namespace);
@@ -260,7 +271,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *
      * @see org.extex.scanner.type.token.TokenFactory#toTokens(java.lang.CharSequence)
      */
-    public Tokens toTokens(final CharSequence s) throws CatcodeException {
+    public Tokens toTokens(CharSequence s) throws CatcodeException {
 
         Tokens tokens = new Tokens();
         if (s == null) {
@@ -293,7 +304,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *
      * @see org.extex.scanner.type.token.TokenFactory#toTokens(long)
      */
-    public Tokens toTokens(final long l) throws CatcodeException {
+    public Tokens toTokens(long l) throws CatcodeException {
 
         Tokens tokens = new Tokens();
         StringBuffer s = new StringBuffer();
@@ -310,7 +321,7 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * Active characters are cached. Thus a lookup in the cache precedes the
+     * Active characters are cached. Thus a look-up in the cache precedes the
      * creation of a new token.
      *
      * @param oValue the string value of the token
@@ -323,8 +334,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public Object visitActive(final Object oValue, final Object oChar,
-            final Object oNamespace) throws CatcodeException {
+    public Object visitActive(Object oValue, Object oChar,
+            Object oNamespace) throws CatcodeException {
 
         UnicodeChar uc;
         if (oChar != null) {
@@ -340,21 +351,21 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
         }
 
         String namespace = (String) oNamespace;
-        Map map = (Map) (activeCache.get(namespace));
+        Map<UnicodeChar, WeakReference<ActiveCharacterToken>> map =
+                activeCache.get(namespace);
 
         if (map == null) {
-            map = new HashMap();
+            map =
+                    new HashMap<UnicodeChar, WeakReference<ActiveCharacterToken>>();
             activeCache.put(namespace, map);
         }
 
-        Object token = map.get(uc);
+        WeakReference<ActiveCharacterToken> wr = map.get(uc);
+        ActiveCharacterToken token = (wr != null ? wr.get() : null);
 
-        if (token != null) {
-            token = ((WeakReference) token).get();
-        }
         if (token == null) {
             token = new ActiveCharacterToken(uc, namespace);
-            map.put(uc, new WeakReference(token));
+            map.put(uc, new WeakReference<ActiveCharacterToken>(token));
         }
 
         return token;
@@ -373,8 +384,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public Object visitComment(final Object oValue, final Object oChar,
-            final Object ignore) {
+    public Object visitComment(Object oValue, Object oChar,
+            Object ignore) {
 
         return null;
     }
@@ -391,8 +402,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      * @see org.extex.scanner.type.CatcodeVisitor#visitCr(java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public Object visitCr(final Object oValue, final Object oChar,
-            final Object ignore) {
+    public Object visitCr(Object oValue, Object oChar,
+            Object ignore) {
 
         return CR_TOKEN;
     }
@@ -407,14 +418,14 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *
      * @return the token requested
      *
-     * @throws Exception in case of an error
+     * @throws CatcodeException in case of an error
      *
      * @see org.extex.scanner.type.CatcodeVisitor#visitEscape(
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public Object visitEscape(final Object oValue, final Object oChar,
-            final Object oNamespace) throws CatcodeException {
+    public Object visitEscape(Object oValue, Object oChar,
+            Object oNamespace) throws CatcodeException {
 
         String value;
         if (oValue != null) {
@@ -426,23 +437,25 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
         }
 
         String namespace = (String) oNamespace;
-        Map map = (Map) (csCache.get(namespace));
+        Map<String, WeakReference<ControlSequenceToken>> map =
+                csCache.get(namespace);
 
         if (map == null) {
-            map = new HashMap();
+            map = new HashMap<String, WeakReference<ControlSequenceToken>>();
             csCache.put(namespace, map);
         }
 
-        Object token = map.get(value);
+        WeakReference<ControlSequenceToken> wr = map.get(value);
+        ControlSequenceToken token = null;
 
-        if (token != null) {
-            token = ((WeakReference) token).get();
+        if (wr != null) {
+            token = wr.get();
         }
         if (token == null) {
             token =
                     new ControlSequenceToken((UnicodeChar) oChar, value,
                         namespace);
-            map.put(value, new WeakReference(token));
+            map.put(value, new WeakReference<ControlSequenceToken>(token));
         }
 
         return token;
@@ -461,8 +474,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public Object visitIgnore(final Object oValue, final Object oChar,
-            final Object ignore) {
+    public Object visitIgnore(Object oValue, Object oChar,
+            Object ignore) {
 
         return null;
     }
@@ -480,8 +493,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public Object visitInvalid(final Object oValue, final Object oChar,
-            final Object ignore) {
+    public Object visitInvalid(Object oValue, Object oChar,
+            Object ignore) {
 
         return null;
     }
@@ -497,8 +510,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public Object visitLeftBrace(final Object oValue, final Object oChar,
-            final Object ignore) throws CatcodeException {
+    public Object visitLeftBrace(Object oValue, Object oChar,
+            Object ignore) throws CatcodeException {
 
         UnicodeChar uc;
         if (oChar != null) {
@@ -513,14 +526,12 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
             throw new CatcodeVisitorException();
         }
 
-        Object token = leftBraceCache.get(uc);
+        WeakReference<LeftBraceToken> wr = leftBraceCache.get(uc);
+        LeftBraceToken token = (wr != null ? wr.get() : null);
 
-        if (token != null) {
-            token = ((WeakReference) token).get();
-        }
         if (token == null) {
             token = new LeftBraceToken(uc);
-            leftBraceCache.put(uc, new WeakReference(token));
+            leftBraceCache.put(uc, new WeakReference<LeftBraceToken>(token));
         }
 
         return token;
@@ -537,8 +548,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public Object visitLetter(final Object oValue, final Object oChar,
-            final Object ignore) throws CatcodeException {
+    public Object visitLetter(Object oValue, Object oChar,
+            Object ignore) throws CatcodeException {
 
         UnicodeChar uc;
         if (oChar != null) {
@@ -553,14 +564,12 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
             throw new CatcodeVisitorException();
         }
 
-        Object token = letterCache.get(uc);
+        WeakReference<LetterToken> wr = letterCache.get(uc);
+        LetterToken token = (wr != null ? wr.get() : null);
 
-        if (token != null) {
-            token = ((WeakReference) token).get();
-        }
         if (token == null) {
             token = new LetterToken(uc);
-            letterCache.put(uc, new WeakReference(token));
+            letterCache.put(uc, new WeakReference<LetterToken>(token));
         }
 
         return token;
@@ -575,8 +584,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public Object visitMacroParam(final Object oValue, final Object oChar,
-            final Object ignore) throws CatcodeException {
+    public Object visitMacroParam(Object oValue, Object oChar,
+            Object ignore) throws CatcodeException {
 
         UnicodeChar uc;
         if (oChar != null) {
@@ -591,14 +600,12 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
             throw new CatcodeVisitorException();
         }
 
-        Object token = macroParamCache.get(uc);
+        WeakReference<MacroParamToken> wr = macroParamCache.get(uc);
+        MacroParamToken token = (wr != null ? wr.get() : null);
 
-        if (token != null) {
-            token = ((WeakReference) token).get();
-        }
         if (token == null) {
             token = new MacroParamToken(uc);
-            macroParamCache.put(uc, new WeakReference(token));
+            macroParamCache.put(uc, new WeakReference<MacroParamToken>(token));
         }
 
         return token;
@@ -613,8 +620,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public Object visitMathShift(final Object oValue, final Object oChar,
-            final Object ignore) throws CatcodeException {
+    public Object visitMathShift(Object oValue, Object oChar,
+            Object ignore) throws CatcodeException {
 
         UnicodeChar uc;
         if (oChar != null) {
@@ -629,14 +636,12 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
             throw new CatcodeVisitorException();
         }
 
-        Object token = mathShiftCache.get(uc);
+        WeakReference<MathShiftToken> wr = mathShiftCache.get(uc);
+        MathShiftToken token = (wr != null ? wr.get() : null);
 
-        if (token != null) {
-            token = ((WeakReference) token).get();
-        }
         if (token == null) {
             token = new MathShiftToken(uc);
-            mathShiftCache.put(uc, new WeakReference(token));
+            mathShiftCache.put(uc, new WeakReference<MathShiftToken>(token));
         }
 
         return token;
@@ -651,8 +656,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public Object visitOther(final Object oValue, final Object oChar,
-            final Object ignore) throws CatcodeException {
+    public Object visitOther(Object oValue, Object oChar,
+            Object ignore) throws CatcodeException {
 
         UnicodeChar uc;
         if (oChar != null) {
@@ -667,14 +672,12 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
             throw new CatcodeVisitorException();
         }
 
-        Object token = otherCache.get(uc);
+        WeakReference<OtherToken> wr = otherCache.get(uc);
+        OtherToken token = (wr != null ? wr.get() : null);
 
-        if (token != null) {
-            token = ((WeakReference) token).get();
-        }
         if (token == null) {
             token = new OtherToken(uc);
-            otherCache.put(uc, new WeakReference(token));
+            otherCache.put(uc, new WeakReference<OtherToken>(token));
         }
 
         return token;
@@ -689,8 +692,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public Object visitRightBrace(final Object oValue, final Object oChar,
-            final Object ignore) throws CatcodeException {
+    public Object visitRightBrace(Object oValue, Object oChar,
+            Object ignore) throws CatcodeException {
 
         UnicodeChar uc;
         if (oChar != null) {
@@ -705,14 +708,12 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
             throw new CatcodeVisitorException();
         }
 
-        Object token = rightBraceCache.get(uc);
+        WeakReference<RightBraceToken> wr = rightBraceCache.get(uc);
+        RightBraceToken token = (wr != null ? wr.get() : null);
 
-        if (token != null) {
-            token = ((WeakReference) token).get();
-        }
         if (token == null) {
             token = new RightBraceToken(uc);
-            rightBraceCache.put(uc, new WeakReference(token));
+            rightBraceCache.put(uc, new WeakReference<RightBraceToken>(token));
         }
 
         return token;
@@ -732,8 +733,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *      java.lang.Object, java.lang.Object)
      * @see "The TeXbook [Chapter 8, p. 47]"
      */
-    public Object visitSpace(final Object oValue, final Object oChar,
-            final Object ignore) {
+    public Object visitSpace(Object oValue, Object oChar,
+            Object ignore) {
 
         return SPACE_TOKEN;
     }
@@ -747,8 +748,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public Object visitSubMark(final Object oValue, final Object oChar,
-            final Object ignore) throws CatcodeException {
+    public Object visitSubMark(Object oValue, Object oChar,
+            Object ignore) throws CatcodeException {
 
         UnicodeChar uc;
         if (oChar != null) {
@@ -763,14 +764,12 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
             throw new CatcodeVisitorException();
         }
 
-        Object token = subMarkCache.get(uc);
+        WeakReference<SubMarkToken> wr = subMarkCache.get(uc);
+        SubMarkToken token = (wr != null ? wr.get() : null);
 
-        if (token != null) {
-            token = ((WeakReference) token).get();
-        }
         if (token == null) {
             token = new SubMarkToken(uc);
-            subMarkCache.put(uc, new WeakReference(token));
+            subMarkCache.put(uc, new WeakReference<SubMarkToken>(token));
         }
 
         return token;
@@ -785,8 +784,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public Object visitSupMark(final Object oValue, final Object oChar,
-            final Object ignore) throws CatcodeException {
+    public Object visitSupMark(Object oValue, Object oChar,
+            Object ignore) throws CatcodeException {
 
         UnicodeChar uc;
         if (oChar != null) {
@@ -801,14 +800,12 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
             throw new CatcodeVisitorException();
         }
 
-        Object token = supMarkCache.get(uc);
+        WeakReference<SupMarkToken> wr = supMarkCache.get(uc);
+        SupMarkToken token = (wr != null ? wr.get() : null);
 
-        if (token != null) {
-            token = ((WeakReference) token).get();
-        }
         if (token == null) {
             token = new SupMarkToken(uc);
-            supMarkCache.put(uc, new WeakReference(token));
+            supMarkCache.put(uc, new WeakReference<SupMarkToken>(token));
         }
 
         return token;
@@ -823,8 +820,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public Object visitTabMark(final Object oValue, final Object oChar,
-            final Object ignore) throws CatcodeException {
+    public Object visitTabMark(Object oValue, Object oChar,
+            Object ignore) throws CatcodeException {
 
         UnicodeChar uc;
         if (oChar != null) {
@@ -839,14 +836,12 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
             throw new CatcodeVisitorException();
         }
 
-        Object token = tabMarkCache.get(uc);
+        WeakReference<TabMarkToken> wr = tabMarkCache.get(uc);
+        TabMarkToken token = (wr != null ? wr.get() : null);
 
-        if (token != null) {
-            token = ((WeakReference) token).get();
-        }
         if (token == null) {
             token = new TabMarkToken(uc);
-            tabMarkCache.put(uc, new WeakReference(token));
+            tabMarkCache.put(uc, new WeakReference<TabMarkToken>(token));
         }
 
         return token;

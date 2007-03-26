@@ -33,7 +33,7 @@ public class BotmarksTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(BotmarksTest.class);
     }
@@ -43,7 +43,7 @@ public class BotmarksTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public BotmarksTest(final String arg) {
+    public BotmarksTest(String arg) {
 
         super(arg, "botmarks", "0");
         setConfig("etex-test");

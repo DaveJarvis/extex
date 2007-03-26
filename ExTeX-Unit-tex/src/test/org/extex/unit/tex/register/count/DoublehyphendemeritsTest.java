@@ -33,7 +33,7 @@ public class DoublehyphendemeritsTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(DoublehyphendemeritsTest.class);
     }
@@ -43,7 +43,7 @@ public class DoublehyphendemeritsTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public DoublehyphendemeritsTest(final String arg) {
+    public DoublehyphendemeritsTest(String arg) {
 
         super(arg, "doublehyphendemerits", "", "0");
     }

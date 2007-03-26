@@ -44,7 +44,7 @@ public class ConfigurationNotFoundException extends ConfigurationException {
      * @param name the name of the missing configuration
      * @param source the the name of the file for which this exception occurred
      */
-    public ConfigurationNotFoundException(final String name, final String source) {
+    public ConfigurationNotFoundException(String name, String source) {
 
         super(null, source);
         this.configName = name;

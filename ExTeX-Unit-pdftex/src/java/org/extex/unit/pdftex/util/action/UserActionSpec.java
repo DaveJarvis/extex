@@ -50,9 +50,9 @@ public class UserActionSpec extends ActionSpec {
      *
      * @throws InterpreterException in case of an error
      */
-    public static ActionSpec parseActionSpec(final Context context,
-            final TokenSource source, final Typesetter typesetter,
-            final String name) throws InterpreterException {
+    public static ActionSpec parseActionSpec(Context context,
+            TokenSource source, Typesetter typesetter,
+            String name) throws InterpreterException {
 
         String user = source.scanTokensAsString(context, name);
         return new UserActionSpec(user);
@@ -68,7 +68,7 @@ public class UserActionSpec extends ActionSpec {
      *
      * @param user the user
      */
-    public UserActionSpec(final String user) {
+    public UserActionSpec(String user) {
 
         super();
         this.user = user;
@@ -106,7 +106,7 @@ public class UserActionSpec extends ActionSpec {
      * @see org.extex.unit.pdftex.util.action.ActionSpec#visit(
      *      org.extex.unit.pdftex.util.action.ActionVisitor)
      */
-    public Object visit(final ActionVisitor visitor) {
+    public Object visit(ActionVisitor visitor) {
 
         return visitor.visitUser(this);
     }

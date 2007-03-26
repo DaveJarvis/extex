@@ -42,7 +42,7 @@ public interface FontFactory {
      * @throws ConfigurationException From the configuration system.
      * @throws FontException if an font-error occurred.
      */
-    TexFont newInstance(final FontKey key) throws ConfigurationException,
+    TexFont newInstance(FontKey key) throws ConfigurationException,
             FontException;
 
 }

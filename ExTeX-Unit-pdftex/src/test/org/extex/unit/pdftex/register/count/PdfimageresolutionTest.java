@@ -33,7 +33,7 @@ public class PdfimageresolutionTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PdfimageresolutionTest.class);
     }
@@ -43,7 +43,7 @@ public class PdfimageresolutionTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public PdfimageresolutionTest(final String arg) {
+    public PdfimageresolutionTest(String arg) {
 
         super(arg, "pdfimageresolution", "", "600");
         setConfig("pdftex-test");

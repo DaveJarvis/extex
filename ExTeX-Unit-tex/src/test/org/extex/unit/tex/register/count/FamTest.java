@@ -33,7 +33,7 @@ public class FamTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(FamTest.class);
     }
@@ -43,7 +43,7 @@ public class FamTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public FamTest(final String arg) {
+    public FamTest(String arg) {
 
         super(arg, "fam", "", "0");
     }

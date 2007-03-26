@@ -46,7 +46,7 @@ public class YearTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(YearTest.class);
     }
@@ -56,7 +56,7 @@ public class YearTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public YearTest(final String arg) {
+    public YearTest(String arg) {
 
         super(arg, "year", "", getDefaultValue());
     }

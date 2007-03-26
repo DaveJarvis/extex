@@ -43,7 +43,7 @@ public class ImpossibleException extends RuntimeException {
      *
      * @param message the description of the error
      */
-    public ImpossibleException(final String message) {
+    public ImpossibleException(String message) {
 
         super(message);
     }
@@ -53,7 +53,7 @@ public class ImpossibleException extends RuntimeException {
      *
      * @param cause the cause of the error
      */
-    public ImpossibleException(final Throwable cause) {
+    public ImpossibleException(Throwable cause) {
 
         super(cause);
     }
@@ -64,7 +64,7 @@ public class ImpossibleException extends RuntimeException {
      * @param message the description of the error
      * @param cause the cause of the error
      */
-    public ImpossibleException(final String message, final Throwable cause) {
+    public ImpossibleException(String message, Throwable cause) {
 
         super(message, cause);
     }

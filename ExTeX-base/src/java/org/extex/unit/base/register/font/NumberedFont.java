@@ -45,30 +45,21 @@ public class NumberedFont extends NamedFont {
      *
      * @param name the name for debugging
      */
-    public NumberedFont(final String name) {
+    public NumberedFont(String name) {
 
         super(name);
     }
 
     /**
-     * Return the key (the name of the primitive) for the numbered font
-     * register.
-     *
-     * @param context the interpreter context to use
-     * @param source the source for new tokens
-     *
-     * @return the key for the current register
-     *
-     * @throws InterpreterException in case that a derived class need to throw an
-     *  Exception this one is declared.
+     * {@inheritDoc}
      *
      * @see org.extex.unit.base.register.font.NamedFont#getKey(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    protected String getKey(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         return MathFontParameter.key(context, getName(), //
             Long.toString(CountParser.scanNumber(context, source, typesetter)));

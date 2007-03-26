@@ -38,7 +38,7 @@ public class CatcodeWrongLengthException extends CatcodeException {
      *
      * @param message the message of the exception
      */
-    public CatcodeWrongLengthException(final String message) {
+    public CatcodeWrongLengthException(String message) {
 
         super(message);
     }

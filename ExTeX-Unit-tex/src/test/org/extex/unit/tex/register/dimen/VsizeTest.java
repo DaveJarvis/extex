@@ -31,7 +31,7 @@ public class VsizeTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(VsizeTest.class);
     }
@@ -41,7 +41,7 @@ public class VsizeTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public VsizeTest(final String arg) {
+    public VsizeTest(String arg) {
 
         super(arg, "vsize", "", "0.0pt");
     }

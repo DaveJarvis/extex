@@ -36,7 +36,7 @@ public class T1StemSnapV extends T1DictDelta {
      * @param stack the stack
      * @throws IOException if an IO.error occurs.
      */
-    public T1StemSnapV(final List stack) throws IOException {
+    public T1StemSnapV(List stack) throws IOException {
 
         super(stack, new short[]{StemSnapV});
     }

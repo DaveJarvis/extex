@@ -32,7 +32,7 @@ public class ImmediateTest extends PrefixTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ImmediateTest.class);
     }
@@ -42,7 +42,7 @@ public class ImmediateTest extends PrefixTester {
      *
      * @param arg the name
      */
-    public ImmediateTest(final String arg) {
+    public ImmediateTest(String arg) {
 
         super(arg, "immediate");
     }

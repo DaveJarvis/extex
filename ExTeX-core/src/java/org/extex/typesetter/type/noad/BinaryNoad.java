@@ -21,7 +21,6 @@ package org.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.NodeList;
@@ -44,7 +43,7 @@ public class BinaryNoad extends AbstractNucleusNoad implements SimpleNoad {
      * @param nucleus the nucleus
      * @param tc the typesetting context for the color
      */
-    public BinaryNoad(final Noad nucleus, final TypesettingContext tc) {
+    public BinaryNoad(Noad nucleus, TypesettingContext tc) {
 
         super(nucleus, tc);
         setSpacingClass(MathSpacing.BIN);
@@ -61,7 +60,7 @@ public class BinaryNoad extends AbstractNucleusNoad implements SimpleNoad {
      *      java.lang.StringBuffer,
      *      int)
      */
-    protected void toStringAdd(final StringBuffer sb, final int depth) {
+    protected void toStringAdd(StringBuffer sb, int depth) {
 
         sb.append("mathbin");
     }
@@ -78,7 +77,6 @@ public class BinaryNoad extends AbstractNucleusNoad implements SimpleNoad {
      * @param logger the logger for debugging and tracing information
      *
      * @throws TypesetterException in case of a problem
-     * @throws ConfigurationException in case of a configuration problem
      *
      * @see org.extex.typesetter.type.noad.Noad#typeset(
      *      org.extex.typesetter.type.noad.Noad,
@@ -88,11 +86,10 @@ public class BinaryNoad extends AbstractNucleusNoad implements SimpleNoad {
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(final Noad previousNoad, final NoadList noads,
-            final int index, final NodeList list,
-            final MathContext mathContext, final Logger logger)
-            throws TypesetterException,
-                ConfigurationException {
+    public void typeset(Noad previousNoad, NoadList noads,
+            int index, NodeList list,
+            MathContext mathContext, Logger logger)
+            throws TypesetterException {
 
         // see [TTP 728]
         if (previousNoad instanceof BinaryNoad

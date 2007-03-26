@@ -31,7 +31,7 @@ public class ParskipTest extends AbstractSkipRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ParskipTest.class);
     }
@@ -41,7 +41,7 @@ public class ParskipTest extends AbstractSkipRegisterTester {
      *
      * @param arg the name
      */
-    public ParskipTest(final String arg) {
+    public ParskipTest(String arg) {
 
         super(arg, "parskip", "", "0.0pt");
     }

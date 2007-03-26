@@ -92,7 +92,7 @@ public class TfmFontType implements Serializable {
      *
      * @param codingscheme  the coding scheme
      */
-    public TfmFontType(final String codingscheme) {
+    public TfmFontType(String codingscheme) {
 
         if (codingscheme != null && codingscheme.startsWith("TEX MATH SY")) {
             type = MATHSY;

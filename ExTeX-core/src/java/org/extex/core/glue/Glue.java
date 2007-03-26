@@ -73,7 +73,7 @@ public class Glue implements Serializable, FixedGlue {
      *
      * @param theLength the natural length
      */
-    public Glue(final FixedDimen theLength) {
+    public Glue(FixedDimen theLength) {
 
         super();
         this.length = theLength.copy();
@@ -86,7 +86,7 @@ public class Glue implements Serializable, FixedGlue {
      *
      * @param glue the glue to clone
      */
-    public Glue(final FixedGlue glue) {
+    public Glue(FixedGlue glue) {
 
         super();
         this.length = new Dimen(glue.getLength());
@@ -101,9 +101,9 @@ public class Glue implements Serializable, FixedGlue {
      * @param theStretch the stretch specification
      * @param theShrink the shrink specification
      */
-    public Glue(final FixedGlueComponent theLength,
-            final FixedGlueComponent theStretch,
-            final FixedGlueComponent theShrink) {
+    public Glue(FixedGlueComponent theLength,
+            FixedGlueComponent theStretch,
+            FixedGlueComponent theShrink) {
 
         super();
         this.length = theLength.copy();
@@ -116,7 +116,7 @@ public class Glue implements Serializable, FixedGlue {
      *
      * @param theLength the natural length in scaled point
      */
-    public Glue(final long theLength) {
+    public Glue(long theLength) {
 
         super();
         this.length = new GlueComponent(theLength);
@@ -130,7 +130,7 @@ public class Glue implements Serializable, FixedGlue {
      *
      * @param g the glue to add
      */
-    public void add(final FixedGlue g) {
+    public void add(FixedGlue g) {
 
         this.length.add(g.getLength());
         this.stretch.add(g.getStretch());
@@ -143,7 +143,7 @@ public class Glue implements Serializable, FixedGlue {
      *
      * @param g the glue to add
      */
-    public void add(final FixedGlueComponent g) {
+    public void add(FixedGlueComponent g) {
 
         this.length.add(g);
     }
@@ -170,7 +170,7 @@ public class Glue implements Serializable, FixedGlue {
      * @see org.extex.core.glue.FixedGlue#eq(
      *      org.extex.core.glue.FixedGlue)
      */
-    public boolean eq(final FixedGlue glue) {
+    public boolean eq(FixedGlue glue) {
 
         return length.eq(glue.getLength()) && stretch.eq(glue.getStretch())
                 && shrink.eq(glue.getShrink());
@@ -185,7 +185,7 @@ public class Glue implements Serializable, FixedGlue {
      * @return <code>true</code> iff the current length is greater or equal
      *  than the given one
      */
-    public boolean ge(final FixedGlueComponent x) {
+    public boolean ge(FixedGlueComponent x) {
 
         return this.length.ge(x);
     }
@@ -241,7 +241,7 @@ public class Glue implements Serializable, FixedGlue {
      * @return <code>true</code> iff the current length is greater than the
      *  given one
      */
-    public boolean gt(final FixedGlueComponent x) {
+    public boolean gt(FixedGlueComponent x) {
 
         return this.length.gt(x);
     }
@@ -255,7 +255,7 @@ public class Glue implements Serializable, FixedGlue {
      * @return <code>true</code> iff the current length is less or equal
      *  than the given one
      */
-    public boolean le(final FixedGlueComponent x) {
+    public boolean le(FixedGlueComponent x) {
 
         return this.length.le(x);
     }
@@ -269,7 +269,7 @@ public class Glue implements Serializable, FixedGlue {
      * @return <code>true</code> iff the current length is less than the
      *  given one
      */
-    public boolean lt(final FixedGlueComponent x) {
+    public boolean lt(FixedGlueComponent x) {
 
         return this.length.lt(x);
     }
@@ -283,7 +283,7 @@ public class Glue implements Serializable, FixedGlue {
      * @param nom nominator
      * @param denom denominator
      */
-    public void multiply(final long nom, final long denom) {
+    public void multiply(long nom, long denom) {
 
         this.length.multiply(nom, denom);
     }
@@ -294,7 +294,7 @@ public class Glue implements Serializable, FixedGlue {
      * @param nom nominator
      * @param denom denominator
      */
-    public void multiplyAll(final long nom, final long denom) {
+    public void multiplyAll(long nom, long denom) {
 
         this.length.multiply(nom, denom);
         this.shrink.multiply(nom, denom);
@@ -310,7 +310,7 @@ public class Glue implements Serializable, FixedGlue {
      * @param nom nominator
      * @param denom denominator
      */
-    public void multiplyShrink(final long nom, final long denom) {
+    public void multiplyShrink(long nom, long denom) {
 
         this.shrink.multiply(nom, denom);
     }
@@ -324,7 +324,7 @@ public class Glue implements Serializable, FixedGlue {
      * @param nom nominator
      * @param denom denominator
      */
-    public void multiplyStretch(final long nom, final long denom) {
+    public void multiplyStretch(long nom, long denom) {
 
         this.stretch.multiply(nom, denom);
     }
@@ -334,7 +334,7 @@ public class Glue implements Serializable, FixedGlue {
      * @see org.extex.core.glue.FixedGlue#ne(
      *      org.extex.core.glue.FixedGlue)
      */
-    public boolean ne(final FixedGlue glue) {
+    public boolean ne(FixedGlue glue) {
 
         return length.ne(glue.getLength()) || stretch.ne(glue.getStretch())
                 || shrink.ne(glue.getShrink());
@@ -354,7 +354,7 @@ public class Glue implements Serializable, FixedGlue {
      *
      * @param theLength the new length
      */
-    public void set(final FixedDimen theLength) {
+    public void set(FixedDimen theLength) {
 
         this.length.set(theLength);
         this.shrink.set(0);
@@ -366,7 +366,7 @@ public class Glue implements Serializable, FixedGlue {
      *
      * @param theLength the new length
      */
-    public void set(final FixedGlue theLength) {
+    public void set(FixedGlue theLength) {
 
         this.length.set(theLength.getLength());
         this.shrink.set(theLength.getShrink());
@@ -378,7 +378,7 @@ public class Glue implements Serializable, FixedGlue {
      *
      * @param x the new length component
      */
-    public void setLength(final FixedDimen x) {
+    public void setLength(FixedDimen x) {
 
         length.set(x);
     }
@@ -388,7 +388,7 @@ public class Glue implements Serializable, FixedGlue {
      *
      * @param x the new shrink component
      */
-    public void setShrink(final FixedDimen x) {
+    public void setShrink(FixedDimen x) {
 
         shrink.set(x);
     }
@@ -398,7 +398,7 @@ public class Glue implements Serializable, FixedGlue {
      *
      * @param x the new stretch component
      */
-    public void setStretch(final FixedDimen x) {
+    public void setStretch(FixedDimen x) {
 
         stretch.set(x);
     }
@@ -409,7 +409,7 @@ public class Glue implements Serializable, FixedGlue {
      *
      * @param g the glue to add
      */
-    public void subtract(final FixedGlue g) {
+    public void subtract(FixedGlue g) {
 
         this.length.add(g.getLength());
         this.stretch.add(g.getStretch());
@@ -422,7 +422,7 @@ public class Glue implements Serializable, FixedGlue {
      *
      * @param g the glue to subtract
      */
-    public void subtract(final FixedGlueComponent g) {
+    public void subtract(FixedGlueComponent g) {
 
         this.length.subtract(g);
     }
@@ -462,7 +462,7 @@ public class Glue implements Serializable, FixedGlue {
      *
      * @see "<logo>TeX</logo> &ndash; The Program [178,177]"
      */
-    public Tokens toToks(final TokenFactory factory) throws GeneralException {
+    public Tokens toToks(TokenFactory factory) throws GeneralException {
 
         Tokens toks = length.toToks(factory);
 

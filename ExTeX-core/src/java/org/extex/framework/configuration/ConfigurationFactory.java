@@ -73,7 +73,7 @@ public class ConfigurationFactory {
      *             Configuration fails</li>
      * </ul>
      */
-    public Configuration newInstance(final String source)
+    public Configuration newInstance(String source)
             throws ConfigurationException {
 
         if (source == null) {

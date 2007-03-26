@@ -66,7 +66,7 @@ package org.extex.interpreter.type.math;
  *
  * public class MyClass {
  *
- *     public void myMethod(final MathClass mc) {
+ *     public void myMethod(MathClass mc) {
  *         <i>// Do something with node depending on its type</i>
  *     }
  * }
@@ -79,15 +79,15 @@ package org.extex.interpreter.type.math;
  *
  * public class MyClass <b>implements NodeVisitor</b> {
  *
- *     public void myMethod(final MathClass mc) {
+ *     public void myMethod(MathClass mc) {
  *         <i>// Do something with mc depending on its type</i>
  *     }
  * <b>
- *     public Object visitBinary(final Object arg, Object arg2) {
+ *     public Object visitBinary(Object arg, Object arg2) {
  *         <i>// do something for binary class</i>
  *     }
  *
- *     public Object visitClosing(final Object arg, Object arg2) {
+ *     public Object visitClosing(Object arg, Object arg2) {
  *         <i>// do something for closing delimiters</i>
  *     }
  *

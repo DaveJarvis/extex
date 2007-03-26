@@ -40,7 +40,7 @@ public class InteractionUnknownException extends InterpreterException {
      *
      * @param message the name of the missing argument
      */
-    public InteractionUnknownException(final String message) {
+    public InteractionUnknownException(String message) {
 
         super(message);
     }

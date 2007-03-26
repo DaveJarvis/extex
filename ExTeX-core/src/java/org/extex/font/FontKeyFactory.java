@@ -53,7 +53,7 @@ public class FontKeyFactory extends AbstractFactory {
      * @param theMap    The map with key value entries.
      * @return Returns a new font key instance.
      */
-    public FontKey newInstance(final FontKey fk, final Map theMap) {
+    public FontKey newInstance(FontKey fk, Map theMap) {
 
         FontKey newfk = new FontKey(fk);
         newfk.put(theMap);
@@ -69,8 +69,8 @@ public class FontKeyFactory extends AbstractFactory {
      * @param value     The value.
      * @return Returns a new font key instance.
      */
-    public FontKey newInstance(final FontKey fk, final String key,
-            final boolean value) {
+    public FontKey newInstance(FontKey fk, String key,
+            boolean value) {
 
         FontKey newfk = new FontKey(fk);
         newfk.put(key, value);
@@ -86,8 +86,8 @@ public class FontKeyFactory extends AbstractFactory {
      * @param value     The value.
      * @return Returns a new font key instance.
      */
-    public FontKey newInstance(final FontKey fk, final String key,
-            final FixedDimen value) {
+    public FontKey newInstance(FontKey fk, String key,
+            FixedDimen value) {
 
         FontKey newfk = new FontKey(fk);
         newfk.put(key, value);
@@ -103,8 +103,8 @@ public class FontKeyFactory extends AbstractFactory {
      * @param value     The value.
      * @return Returns a new font key instance.
      */
-    public FontKey newInstance(final FontKey fk, final String key,
-            final String value) {
+    public FontKey newInstance(FontKey fk, String key,
+            String value) {
 
         FontKey newfk = new FontKey(fk);
         newfk.put(key, value);
@@ -118,7 +118,7 @@ public class FontKeyFactory extends AbstractFactory {
      * @param theFontname   The font name.
      * @return Returns a new font key instance.
      */
-    public FontKey newInstance(final String theFontname) {
+    public FontKey newInstance(String theFontname) {
 
         return new FontKey(theFontname);
     }

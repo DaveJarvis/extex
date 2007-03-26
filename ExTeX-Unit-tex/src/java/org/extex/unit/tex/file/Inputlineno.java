@@ -75,7 +75,7 @@ public class Inputlineno extends AbstractCode
      *
      * @param name the name for debugging
      */
-    public Inputlineno(final String name) {
+    public Inputlineno(String name) {
 
         super(name);
     }
@@ -94,12 +94,12 @@ public class Inputlineno extends AbstractCode
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.CountConvertible#convertCount(
+     * @see org.extex.core.count.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
-    public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public long convertCount(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         return source.getLocator().getLineNumber();
     }
@@ -122,8 +122,8 @@ public class Inputlineno extends AbstractCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter)
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 CatcodeException {
 

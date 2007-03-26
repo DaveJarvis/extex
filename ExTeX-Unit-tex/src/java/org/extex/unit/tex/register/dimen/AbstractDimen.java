@@ -40,7 +40,7 @@ public abstract class AbstractDimen extends AbstractAssignment {
      *
      * @param name the name for debugging
      */
-    public AbstractDimen(final String name) {
+    public AbstractDimen(String name) {
 
         super(name);
     }
@@ -58,8 +58,8 @@ public abstract class AbstractDimen extends AbstractAssignment {
      * @throws InterpreterException in case that a derived class need to throw
      *  an Exception this on e is declared.
      */
-    protected String getKey(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         String name;
         try {

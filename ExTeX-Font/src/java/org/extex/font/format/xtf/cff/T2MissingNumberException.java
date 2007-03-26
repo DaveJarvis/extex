@@ -47,7 +47,7 @@ public class T2MissingNumberException extends IOException {
      * Create a new object
      * @param s the message
      */
-    public T2MissingNumberException(final String s) {
+    public T2MissingNumberException(String s) {
 
         super(s);
     }

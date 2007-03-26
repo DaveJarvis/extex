@@ -362,12 +362,12 @@ public class TeXParagraphBuilder
     /**
      * The field <tt>active</tt> contains the list of active and delta nodes.
      */
-    private List active = new ArrayList();
+    private List<Object> active = new ArrayList<Object>();
 
     /**
      * The field <tt>passive</tt> contains the list of potential break points.
      */
-    private List passive = new ArrayList();
+    private List<PassiveNode> passive = new ArrayList<PassiveNode>();
 
     /**
      * The field <tt>parshape</tt> contains the paragraph shape
@@ -404,10 +404,12 @@ public class TeXParagraphBuilder
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#build(
      *   org.extex.typesetter.type.node.HorizontalListNode)
      */
-    public NodeList build(final HorizontalListNode nodes)
+    public NodeList build(HorizontalListNode nodes)
             throws TypesetterException {
 
         if (nodes.size() == 0) {
@@ -484,41 +486,45 @@ public class TeXParagraphBuilder
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#setNodefactory(
      *      org.extex.typesetter.type.node.factory.NodeFactory)
      */
-    public void setNodefactory(final NodeFactory factory) {
+    public void setNodefactory(NodeFactory factory) {
 
         this.nodeFactory = factory;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#setOptions(
      *   org.extex.typesetter.TypesetterOptions)
      */
-    public void setOptions(final TypesetterOptions options) {
+    public void setOptions(TypesetterOptions options) {
 
         this.options = options;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *   java.util.logging.Logger)
      */
-    public void enableLogging(final Logger theLogger) {
+    public void enableLogging(Logger theLogger) {
 
         this.logger = theLogger;
     }
 
     /**
-     * Setter for the localizer.
-     *
-     * @param theLocalizer the new value for the localizer
+     * {@inheritDoc}
      *
      * @see org.extex.framework.i18n.Localizable#enableLocalization(
      *   org.extex.framework.i18n.Localizer)
      */
-    public void enableLocalization(final Localizer theLocalizer) {
+    public void enableLocalization(Localizer theLocalizer) {
 
         this.localizer = theLocalizer;
     }
@@ -637,7 +643,7 @@ public class TeXParagraphBuilder
      *
      * @param nodes the node list for the paragraph to break
      */
-    private void getReadyToStartLineBreaking(final NodeList nodes) {
+    private void getReadyToStartLineBreaking(NodeList nodes) {
 
         //link(temp_head) <-- link(head);
         Node n = nodes.get(nodes.size() - 1);
@@ -944,7 +950,7 @@ public class TeXParagraphBuilder
      *
      * @return the glue value to be used instead
      */
-    private FixedGlue checkShrinkage(final FixedGlue glue) {
+    private FixedGlue checkShrinkage(FixedGlue glue) {
 
         // if (shrink_order(#) != normal) && (shrink(#) != 0) then
         FixedGlueComponent shrink = glue.getShrink();
@@ -1136,8 +1142,8 @@ public class TeXParagraphBuilder
      * @param penalty the initial penalty
      * @param hyphenated the break type
      */
-    private void tryBreak(final NodeList nodes, final long penalty,
-            final boolean hyphenated) {
+    private void tryBreak(NodeList nodes, long penalty,
+            boolean hyphenated) {
 
         long pen = penalty;
         breakType = hyphenated;
@@ -1327,7 +1333,7 @@ public class TeXParagraphBuilder
      *
      * @return the indicator that the processing is at its end
      */
-    private boolean sub835(final NodeList nodes) {
+    private boolean sub835(NodeList nodes) {
 
         if (r >= active.size()) {
             l = Integer.MAX_VALUE;
@@ -1374,7 +1380,7 @@ public class TeXParagraphBuilder
      *
      * @param nodes the node list for the paragraph to break
      */
-    private void createNewActiveNodes(final NodeList nodes) {
+    private void createNewActiveNodes(NodeList nodes) {
 
         // begin if no_break_yet then
         if (noBreakYet) {
@@ -1456,7 +1462,7 @@ public class TeXParagraphBuilder
      *
      * @param nodes the node list for the paragraph to break
      */
-    private void computeBreakWidth(final NodeList nodes) {
+    private void computeBreakWidth(NodeList nodes) {
 
         // begin no_break_yet <-- false;
         noBreakYet = false;
@@ -1559,8 +1565,8 @@ public class TeXParagraphBuilder
      * @param nodes the node list for the paragraph to break
      * @param node the current node
      */
-    final void computeDiscretionaryBreakWidth(final NodeList nodes,
-            final Node node) {
+    void computeDiscretionaryBreakWidth(NodeList nodes,
+            Node node) {
 
         DiscretionaryNode x = (DiscretionaryNode) node;
         // begin t <-- replace_count(cur_p);
@@ -1596,8 +1602,10 @@ public class TeXParagraphBuilder
      * This code is used in section 840.
      *
      * «Subtract the width of node v from break_width 841» ::=
+     *
+     * @param v ...
      */
-    private void sub841(final Node v) {
+    private void sub841(Node v) {
 
         // if is_char_node(v) then
         // begin f <-- font(v);
@@ -1733,7 +1741,7 @@ public class TeXParagraphBuilder
      * @param nodes the node list for the paragraph to break
      * @param fitness the fitness
      */
-    private void insertActiveNode(final NodeList nodes, final Fitness fitness) {
+    private void insertActiveNode(NodeList nodes, Fitness fitness) {
 
         // begin q <-- get_node(passive_node_size);
         // link(q) <-- passive;
@@ -1780,12 +1788,12 @@ public class TeXParagraphBuilder
      *
      * @param aNode the active node
      */
-    private void printNewBreakNode(final ActiveNode aNode) {
+    private void printNewBreakNode(ActiveNode aNode) {
 
         // begin print_nl("@@");
         StringBuffer sb = new StringBuffer("@@");
         // print_int(serial(passive));
-        PassiveNode passiveNode = (PassiveNode) passive.get(passive.size() - 1);
+        PassiveNode passiveNode = passive.get(passive.size() - 1);
         sb.append(passiveNode.getSerial());
         // print(": line ");
         sb.append(": line ");
@@ -1891,7 +1899,7 @@ public class TeXParagraphBuilder
      *
      * @param line the line number
      */
-    private void computeLineWidth(final long line) {
+    private void computeLineWidth(long line) {
 
         // if l > easy_line then
         // begin line_width <-- second_width;
@@ -1933,7 +1941,7 @@ public class TeXParagraphBuilder
      *
      * @return <code>true</code> iff ...
      */
-    private boolean sub851(final NodeList nodes, final long penalty) {
+    private boolean sub851(NodeList nodes, long penalty) {
 
         // node_r_stays_active: boolean; {should node r remain in the
         // active list?}
@@ -2014,6 +2022,8 @@ public class TeXParagraphBuilder
      *
      * «Set the value of b to the badness for stretching the line, and
      * compute the corresponding fit_class 852» ::=
+     *
+     * @return ...
      */
     private int badnessForStretching() {
 
@@ -2112,7 +2122,7 @@ public class TeXParagraphBuilder
      *
      * @return ...
      */
-    private boolean prepareToDeactivate(final long badness) {
+    private boolean prepareToDeactivate(long badness) {
 
         // begin if final_pass && (minimum_demerits=awful_bad) &&
         // (link(r)=last_active) && (prev_r=active) then
@@ -2148,8 +2158,8 @@ public class TeXParagraphBuilder
      * @param penalty the penalty
      * @param badness the badness
      */
-    private void recordNewFeasibleBreak(final NodeList nodes,
-            final long penalty, final int badness) {
+    private void recordNewFeasibleBreak(NodeList nodes,
+            long penalty, int badness) {
 
         long d;
         // if artificial_demerits then
@@ -2200,8 +2210,8 @@ public class TeXParagraphBuilder
      * @param penalty the penalty
      * @param badness the badness
      */
-    private void printFeasibleBreak(final NodeList nodes, final long d,
-            final long penalty, final int badness) {
+    private void printFeasibleBreak(NodeList nodes, long d,
+            long penalty, int badness) {
 
         StringBuffer sb = new StringBuffer();
         // begin if printed_node != cur_p then
@@ -2272,7 +2282,7 @@ public class TeXParagraphBuilder
      * @param sb the target string buffer
      * @param nodes the node list for the paragraph to break
      */
-    private void printList(final StringBuffer sb, final NodeList nodes) {
+    private void printList(StringBuffer sb, NodeList nodes) {
 
         // begin print_nl("");
         // if cur_p=null then
@@ -2326,8 +2336,8 @@ public class TeXParagraphBuilder
      *
      * @return the demerits value
      */
-    private long computeDemertis(final ActiveNode activeNode,
-            final long penalty, final long badness) {
+    private long computeDemertis(ActiveNode activeNode,
+            long penalty, long badness) {
 
         // begin d <-- line_penalty+b;
         long d = linePenalty + badness;
@@ -2517,7 +2527,7 @@ public class TeXParagraphBuilder
      *
      * @throws GeneralException in case of an error
      */
-    private void findOptimalBreakpoints(final NodeList nodes)
+    private void findOptimalBreakpoints(NodeList nodes)
             throws GeneralException {
 
         // threshold <-- pretolerance;
@@ -2695,7 +2705,7 @@ public class TeXParagraphBuilder
      *
      * @param nodes the node list for the paragraph to break
      */
-    private void kernBreak(final NodeList nodes) {
+    private void kernBreak(NodeList nodes) {
 
         // begin if ¬ is_char_node(link(cur_p)) && auto_breaking then
         Node n = nodes.get(curBreak + 1);
@@ -2730,7 +2740,7 @@ public class TeXParagraphBuilder
      *
      * @throws GeneralException in case of an error
      */
-    private void callTryBreak(final NodeList nodes) throws GeneralException {
+    private void callTryBreak(NodeList nodes) throws GeneralException {
 
         // begin if is_char_node(cur_p) then
         // «Advance (c)cur_p to the node following the present string of
@@ -2785,7 +2795,7 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.AdjustNode,
          *      java.lang.Object)
          */
-        public Object visitAdjust(final AdjustNode node, final Object value) {
+        public Object visitAdjust(AdjustNode node, Object value) {
 
             return null;
         }
@@ -2795,8 +2805,8 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.AfterMathNode,
          *      java.lang.Object)
          */
-        public Object visitAfterMath(final AfterMathNode node,
-                final Object value) throws GeneralException {
+        public Object visitAfterMath(AfterMathNode node,
+                Object value) throws GeneralException {
 
             autoBreaking = true;
             kernBreak((NodeList) value);
@@ -2808,8 +2818,8 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.AlignedLeadersNode,
          *      java.lang.Object)
          */
-        public Object visitAlignedLeaders(final AlignedLeadersNode node,
-                final Object value) throws GeneralException {
+        public Object visitAlignedLeaders(AlignedLeadersNode node,
+                Object value) throws GeneralException {
 
             // confusion("paragraph")
             throw new HelpingException(localizer, "Panic.Paragraph");
@@ -2820,8 +2830,8 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.BeforeMathNode,
          *      java.lang.Object)
          */
-        public Object visitBeforeMath(final BeforeMathNode node,
-                final Object value) throws GeneralException {
+        public Object visitBeforeMath(BeforeMathNode node,
+                Object value) throws GeneralException {
 
             autoBreaking = false;
             kernBreak((HorizontalListNode) value);
@@ -2833,8 +2843,8 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.CenteredLeadersNode,
          *      java.lang.Object)
          */
-        public Object visitCenteredLeaders(final CenteredLeadersNode node,
-                final Object value) throws GeneralException {
+        public Object visitCenteredLeaders(CenteredLeadersNode node,
+                Object value) throws GeneralException {
 
             // confusion("paragraph")
             throw new HelpingException(localizer, "Panic.Paragraph");
@@ -2845,7 +2855,7 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.CharNode,
          *      java.lang.Object)
          */
-        public Object visitChar(final CharNode node, final Object value)
+        public Object visitChar(CharNode node, Object value)
                 throws GeneralException {
 
             // begin if is_char_node(cur_p) then
@@ -2860,8 +2870,8 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.DiscretionaryNode,
          *      java.lang.Object)
          */
-        public Object visitDiscretionary(final DiscretionaryNode node,
-                final Object value) throws GeneralException {
+        public Object visitDiscretionary(DiscretionaryNode node,
+                Object value) throws GeneralException {
 
             // disc_node: «Try to break after a discretionary fragment, then
             // goto done5 869»;
@@ -2925,8 +2935,8 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.ExpandedLeadersNode,
          *      java.lang.Object)
          */
-        public Object visitExpandedLeaders(final ExpandedLeadersNode node,
-                final Object value) throws GeneralException {
+        public Object visitExpandedLeaders(ExpandedLeadersNode node,
+                Object value) throws GeneralException {
 
             // confusion("paragraph")
             throw new HelpingException(localizer, "Panic.Paragraph");
@@ -2937,7 +2947,7 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.GlueNode,
          *      java.lang.Object)
          */
-        public Object visitGlue(final GlueNode glue, final Object value)
+        public Object visitGlue(GlueNode glue, Object value)
                 throws GeneralException {
 
             // glue_node: begin «If node cur_p is a legal breakpoint,
@@ -3000,8 +3010,8 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.HorizontalListNode,
          *      java.lang.Object)
          */
-        public Object visitHorizontalList(final HorizontalListNode node,
-                final Object value) throws GeneralException {
+        public Object visitHorizontalList(HorizontalListNode node,
+                Object value) throws GeneralException {
 
             activeWidth.add(node.getWidth());
             return null;
@@ -3012,8 +3022,8 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.InsertionNode,
          *      java.lang.Object)
          */
-        public Object visitInsertion(final InsertionNode node,
-                final Object value) throws GeneralException {
+        public Object visitInsertion(InsertionNode node,
+                Object value) throws GeneralException {
 
             return null;
         }
@@ -3023,7 +3033,7 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.KernNode,
          *      java.lang.Object)
          */
-        public Object visitKern(final KernNode node, final Object value)
+        public Object visitKern(KernNode node, Object value)
                 throws GeneralException {
 
             // kern_node: if subtype(cur_p)=explicit then
@@ -3042,7 +3052,7 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.LigatureNode,
          *      java.lang.Object)
          */
-        public Object visitLigature(final LigatureNode node, final Object value)
+        public Object visitLigature(LigatureNode node, Object value)
                 throws GeneralException {
 
             // ligature_node: begin f <-- font(lig_char(cur_p));
@@ -3060,7 +3070,7 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.MarkNode,
          *      java.lang.Object)
          */
-        public Object visitMark(final MarkNode node, final Object value)
+        public Object visitMark(MarkNode node, Object value)
                 throws GeneralException {
 
             return null;
@@ -3071,7 +3081,7 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.PenaltyNode,
          *      java.lang.Object)
          */
-        public Object visitPenalty(final PenaltyNode node, final Object value)
+        public Object visitPenalty(PenaltyNode node, Object value)
                 throws GeneralException {
 
             tryBreak((HorizontalListNode) value, (int) node.getPenalty(), false);
@@ -3083,7 +3093,7 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.RuleNode,
          *      java.lang.Object)
          */
-        public Object visitRule(final RuleNode node, final Object value)
+        public Object visitRule(RuleNode node, Object value)
                 throws GeneralException {
 
             activeWidth.add(node.getWidth());
@@ -3095,7 +3105,7 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.SpaceNode,
          *      java.lang.Object)
          */
-        public Object visitSpace(final SpaceNode node, final Object value)
+        public Object visitSpace(SpaceNode node, Object value)
                 throws GeneralException {
 
             return visitGlue(node, value);
@@ -3106,8 +3116,8 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.VerticalListNode,
          *      java.lang.Object)
          */
-        public Object visitVerticalList(final VerticalListNode node,
-                final Object value) throws GeneralException {
+        public Object visitVerticalList(VerticalListNode node,
+                Object value) throws GeneralException {
 
             activeWidth.add(node.getWidth());
             return null;
@@ -3118,8 +3128,8 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.VirtualCharNode,
          *      java.lang.Object)
          */
-        public Object visitVirtualChar(final VirtualCharNode node,
-                final Object value) throws GeneralException {
+        public Object visitVirtualChar(VirtualCharNode node,
+                Object value) throws GeneralException {
 
             return visitChar(node, value);
         }
@@ -3129,7 +3139,7 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.WhatsItNode,
          *      java.lang.Object)
          */
-        public Object visitWhatsIt(final WhatsItNode node, final Object value)
+        public Object visitWhatsIt(WhatsItNode node, Object value)
                 throws GeneralException {
 
             // whatsit_node: «Advance (p)past a whatsit node in the (l)
@@ -3169,7 +3179,7 @@ public class TeXParagraphBuilder
      *
      * @return the next non-char node
      */
-    private Node advanceToNonChar(final NodeList nodes) {
+    private Node advanceToNonChar(NodeList nodes) {
 
         Node node = nodes.get(curBreak);
 
@@ -3276,7 +3286,7 @@ public class TeXParagraphBuilder
      *
      * @return <code>true</code> iff the calling program should be finished
      */
-    private boolean tryTheFinalLineBreak(final NodeList nodes) {
+    private boolean tryTheFinalLineBreak(NodeList nodes) {
 
         // begin try_break(eject_penalty,hyphenated);
         tryBreak(nodes, Badness.EJECT_PENALTY, true);
@@ -3443,7 +3453,7 @@ public class TeXParagraphBuilder
      *
      * @throws HelpingException in case of an error
      */
-    private NodeList postLineBreak(final NodeList nodes)
+    private NodeList postLineBreak(NodeList nodes)
             throws HelpingException {
 
         VerticalListNode vlist = new VerticalListNode();
@@ -3582,8 +3592,8 @@ public class TeXParagraphBuilder
      * @param lineGlue the sum of the glues encountered so far.
      * @param vlist the vlist to add adjusted material to
      */
-    private void fillLine(final NodeList nodes, final int idx, final int to,
-            final NodeList line, final WideGlue lineGlue, final NodeList vlist) {
+    private void fillLine(NodeList nodes, int idx, int to,
+            NodeList line, WideGlue lineGlue, NodeList vlist) {
 
         Node n;
         int i = idx;
@@ -3689,8 +3699,8 @@ public class TeXParagraphBuilder
      *
      * @return the actual end index
      */
-    private int pruneUnwantedNodes(final NodeList nodes, final int idx,
-            final int to) {
+    private int pruneUnwantedNodes(NodeList nodes, int idx,
+            int to) {
 
         Node q;
         int i = idx;
@@ -3758,8 +3768,8 @@ public class TeXParagraphBuilder
      * @param line the current line
      * @param theBreak the current break point
      */
-    private void modifyEndOfLine(final NodeList nodes, final NodeList line,
-            final int theBreak) {
+    private void modifyEndOfLine(NodeList nodes, NodeList line,
+            int theBreak) {
 
         // q <-- cur_break(cur_p);
         // disc_break <-- false;
@@ -3826,8 +3836,8 @@ public class TeXParagraphBuilder
      * @param node the current node
      * @param line the target line
      */
-    private void changeDiscretionary(final DiscretionaryNode node,
-            final NodeList line) {
+    private void changeDiscretionary(DiscretionaryNode node,
+            NodeList line) {
 
         // begin t <-- replace_count(q);
         // «Destroy the t nodes following q, and make r point to the following
@@ -3888,7 +3898,7 @@ public class TeXParagraphBuilder
      *
      * @param postBreak the list of post break items
      */
-    private void transplantPostBreakList(final NodeList postBreak) {
+    private void transplantPostBreakList(NodeList postBreak) {
 
         // begin s <-- post_break(q);
         // while link(s) != null do
@@ -3913,8 +3923,8 @@ public class TeXParagraphBuilder
      * @param preBreak the pre-break list
      * @param line the current line
      */
-    private void transplantPreBreakList(final NodeList preBreak,
-            final NodeList line) {
+    private void transplantPreBreakList(NodeList preBreak,
+            NodeList line) {
 
         // begin s <-- pre_break(q);
         // link(q) <-- s;
@@ -3942,7 +3952,7 @@ public class TeXParagraphBuilder
      *
      * @param line the current line
      */
-    private void putLeftskipAndDetach(final NodeList line) {
+    private void putLeftskipAndDetach(NodeList line) {
 
         // r <-- link(q);
         // link(q) <-- null;
@@ -3974,8 +3984,8 @@ public class TeXParagraphBuilder
      * @param curLine the current line number
      * @param glue the sum of the glues in the line
      */
-    private void justifyLine(final HorizontalListNode line, final long curLine,
-            final WideGlue glue) {
+    private void justifyLine(HorizontalListNode line, long curLine,
+            WideGlue glue) {
 
         // if cur_line > last_special_line then
         // begin cur_width <-- second_width;
@@ -4016,7 +4026,7 @@ public class TeXParagraphBuilder
      * @param line the current line
      * @param curLine the current line number
      */
-    private void appendPenalty(final NodeList line, final long curLine) {
+    private void appendPenalty(NodeList line, long curLine) {
 
         long pen;
 
@@ -4056,6 +4066,7 @@ public class TeXParagraphBuilder
      */
     private void initializeForHyphenatingAParagraph() {
 
+        // nothing to do
     }
 
     /**
@@ -4066,7 +4077,7 @@ public class TeXParagraphBuilder
      *
      * @throws HyphenationException in case of an error
      */
-    private void hyphenateFollowingWord(final NodeList list, final int start)
+    private void hyphenateFollowingWord(NodeList list, int start)
             throws HyphenationException {
 
         Node n;

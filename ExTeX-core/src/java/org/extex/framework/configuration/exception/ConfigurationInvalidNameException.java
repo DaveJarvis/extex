@@ -38,7 +38,7 @@ public class ConfigurationInvalidNameException extends ConfigurationException {
      *
      * @param message the message string
      */
-    public ConfigurationInvalidNameException(final String message) {
+    public ConfigurationInvalidNameException(String message) {
 
         super(message, (String) null);
     }
@@ -49,8 +49,8 @@ public class ConfigurationInvalidNameException extends ConfigurationException {
      * @param message message the message string
      * @param cause the next Throwable in the list
      */
-    public ConfigurationInvalidNameException(final String message,
-            final Throwable cause) {
+    public ConfigurationInvalidNameException(String message,
+            Throwable cause) {
 
         super(message, cause);
     }

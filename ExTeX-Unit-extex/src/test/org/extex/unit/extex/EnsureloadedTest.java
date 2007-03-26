@@ -34,7 +34,7 @@ public class EnsureloadedTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public EnsureloadedTest(final String arg) {
+    public EnsureloadedTest(String arg) {
 
         super(arg, "ensureloaded", "{tex}");
         setConfig("extex-test");

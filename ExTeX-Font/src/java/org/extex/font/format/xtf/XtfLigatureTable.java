@@ -43,7 +43,7 @@ public abstract class XtfLigatureTable extends XtfLookupTable {
      * Create a new object.
      * @param format    the format
      */
-    XtfLigatureTable(final int format) {
+    XtfLigatureTable(int format) {
 
         super(format);
 
@@ -56,7 +56,7 @@ public abstract class XtfLigatureTable extends XtfLookupTable {
      * @return Returns the new ligaturetable
      * @throws IOException if an IO-error occurs.
      */
-    static XtfLigatureTable newInstance(final RandomAccessR rar, final int offset)
+    static XtfLigatureTable newInstance(RandomAccessR rar, int offset)
             throws IOException {
 
         XtfLigatureTable ls = null;
@@ -104,7 +104,7 @@ public abstract class XtfLigatureTable extends XtfLookupTable {
          * @param offset    the offset
          * @throws IOException if an IO-error occurs
          */
-        LigatureTableFormat1(final RandomAccessR rar, final int offset)
+        LigatureTableFormat1(RandomAccessR rar, int offset)
                 throws IOException {
 
             super(FORMAT1);
@@ -196,7 +196,7 @@ public abstract class XtfLigatureTable extends XtfLookupTable {
          * @param offset    the offset
          * @throws IOException if an IO-error occurs
          */
-        LigatureSet(final RandomAccessR rar, final int offset)
+        LigatureSet(RandomAccessR rar, int offset)
                 throws IOException {
 
             rar.seek(offset);
@@ -266,7 +266,7 @@ public abstract class XtfLigatureTable extends XtfLookupTable {
          * @param rar       the input
          * @throws IOException if an IO-error occurs
          */
-        Ligature(final RandomAccessR rar) throws IOException {
+        Ligature(RandomAccessR rar) throws IOException {
 
             ligGlyph = rar.readUnsignedShort();
             compCount = rar.readUnsignedShort();
@@ -290,7 +290,7 @@ public abstract class XtfLigatureTable extends XtfLookupTable {
          * @param i the index
          * @return Returns the glyph id.
          */
-        public int getGlyphId(final int i) {
+        public int getGlyphId(int i) {
 
             return (i == 0) ? ligGlyph : components[i - 1];
         }

@@ -38,6 +38,7 @@ public interface LoadableFont extends ExtexFont {
      * @param in        the stream for reading.
      * @param factory   the font factory.
      * @param fontKey   the font key.
+     *
      * @throws CorruptFontException if the font is corrupt.
      * @throws ConfigurationException from the configuration system.
      */

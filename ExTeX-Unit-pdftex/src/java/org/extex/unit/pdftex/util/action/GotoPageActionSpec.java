@@ -64,8 +64,8 @@ public class GotoPageActionSpec extends GotoActionSpec {
      * @param text the plain text
      * @param newwin the window indicator
      */
-    public GotoPageActionSpec(final String file, final long page,
-            final String text, final Boolean newwin) {
+    public GotoPageActionSpec(String file, long page,
+            String text, Boolean newwin) {
 
         super();
         this.file = file;
@@ -124,7 +124,7 @@ public class GotoPageActionSpec extends GotoActionSpec {
      * @see org.extex.unit.pdftex.util.action.ActionSpec#visit(
      *      org.extex.unit.pdftex.util.action.ActionVisitor)
      */
-    public Object visit(final ActionVisitor visitor) {
+    public Object visit(ActionVisitor visitor) {
 
         return visitor.visitGotoPage(this);
     }

@@ -46,8 +46,8 @@ public class TtfTablePCLT extends AbstractXtfTable
      * @param rar       input
      * @throws IOException if an IO-error occurs
      */
-    TtfTablePCLT(final XtfTableMap tablemap, final XtfTableDirectory.Entry de,
-            final RandomAccessR rar) throws IOException {
+    TtfTablePCLT(XtfTableMap tablemap, XtfTableDirectory.Entry de,
+            RandomAccessR rar) throws IOException {
 
         super(tablemap);
         rar.seek(de.getOffset());

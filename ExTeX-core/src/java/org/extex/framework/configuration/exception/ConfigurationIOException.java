@@ -39,7 +39,7 @@ public class ConfigurationIOException extends ConfigurationException {
      *
      * @param message the message string
      */
-    public ConfigurationIOException(final String message) {
+    public ConfigurationIOException(String message) {
 
         super(message, (String) null);
     }
@@ -50,7 +50,7 @@ public class ConfigurationIOException extends ConfigurationException {
      * @param message the message string
      * @param location the location of the IO configuration item
      */
-    public ConfigurationIOException(final String message, final String location) {
+    public ConfigurationIOException(String message, String location) {
 
         super(message, location);
     }
@@ -61,7 +61,7 @@ public class ConfigurationIOException extends ConfigurationException {
      * @param message message the message string
      * @param cause the next Throwable in the list
      */
-    public ConfigurationIOException(final String message, final Throwable cause) {
+    public ConfigurationIOException(String message, Throwable cause) {
 
         super(message, cause);
     }

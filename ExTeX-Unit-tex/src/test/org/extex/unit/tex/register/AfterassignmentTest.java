@@ -33,7 +33,7 @@ public class AfterassignmentTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(AfterassignmentTest.class);
     }
@@ -43,7 +43,7 @@ public class AfterassignmentTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public AfterassignmentTest(final String arg) {
+    public AfterassignmentTest(String arg) {
 
         super(arg, "afterassignment", " x", "");
     }

@@ -70,8 +70,8 @@ public abstract class AbstractExpandableNode extends AbstractNode {
      * @param horizontal indicator that the glue is used in horizontal
      *  mode
      */
-    public AbstractExpandableNode(final FixedDimen size,
-            final boolean horizontal) {
+    public AbstractExpandableNode(FixedDimen size,
+            boolean horizontal) {
 
         super(Dimen.ZERO_PT);
         this.size = new Glue(size);
@@ -93,7 +93,7 @@ public abstract class AbstractExpandableNode extends AbstractNode {
      * @param horizontal indicator that the glue is used in horizontal
      *  mode
      */
-    public AbstractExpandableNode(final FixedGlue size, final boolean horizontal) {
+    public AbstractExpandableNode(FixedGlue size, boolean horizontal) {
 
         super(Dimen.ZERO_PT);
         this.size = new Glue(size);
@@ -114,7 +114,7 @@ public abstract class AbstractExpandableNode extends AbstractNode {
      * @see org.extex.typesetter.type.Node#addDepthTo(
      *      org.extex.core.glue.WideGlue)
      */
-    public void addDepthTo(final WideGlue glue) {
+    public void addDepthTo(WideGlue glue) {
 
         if (horizontal) {
             glue.add(getDepth());
@@ -131,7 +131,7 @@ public abstract class AbstractExpandableNode extends AbstractNode {
      * @see org.extex.typesetter.type.Node#addHeightTo(
      *      org.extex.core.glue.WideGlue)
      */
-    public void addHeightTo(final WideGlue glue) {
+    public void addHeightTo(WideGlue glue) {
 
         if (horizontal) {
             glue.add(getHeight());
@@ -148,7 +148,7 @@ public abstract class AbstractExpandableNode extends AbstractNode {
      * @see org.extex.typesetter.type.Node#addWidthTo(
      *      org.extex.core.glue.WideGlue)
      */
-    public void addWidthTo(final WideGlue glue) {
+    public void addWidthTo(WideGlue glue) {
 
         if (horizontal) {
             glue.add(this.size);
@@ -172,7 +172,7 @@ public abstract class AbstractExpandableNode extends AbstractNode {
      *
      * @param skip the new value
      */
-    public void setSize(final FixedGlue skip) {
+    public void setSize(FixedGlue skip) {
 
         size.set(skip);
     }
@@ -188,8 +188,8 @@ public abstract class AbstractExpandableNode extends AbstractNode {
      *      org.extex.core.dimen.FixedDimen,
      *      org.extex.core.glue.FixedGlueComponent)
      */
-    public void spreadHeight(final FixedDimen height,
-            final FixedGlueComponent sum) {
+    public void spreadHeight(FixedDimen height,
+            FixedGlueComponent sum) {
 
         if (horizontal) {
             return;
@@ -211,7 +211,7 @@ public abstract class AbstractExpandableNode extends AbstractNode {
      *      org.extex.core.dimen.FixedDimen,
      *      org.extex.core.glue.FixedGlueComponent)
      */
-    public void spreadWidth(final FixedDimen width, final FixedGlueComponent sum) {
+    public void spreadWidth(FixedDimen width, FixedGlueComponent sum) {
 
         if (!horizontal) {
             return;

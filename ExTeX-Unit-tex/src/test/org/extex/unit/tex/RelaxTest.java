@@ -34,7 +34,7 @@ public class RelaxTest extends NoFlagsPrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(RelaxTest.class);
     }
@@ -44,7 +44,7 @@ public class RelaxTest extends NoFlagsPrimitiveTester {
      *
      * @param name the name
      */
-    public RelaxTest(final String name) {
+    public RelaxTest(String name) {
 
         super(name, "relax", "");
     }

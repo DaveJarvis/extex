@@ -33,7 +33,7 @@ public class VfiTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(VfiTest.class);
     }
@@ -43,7 +43,7 @@ public class VfiTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public VfiTest(final String arg) {
+    public VfiTest(String arg) {
 
         super(arg, "vfi", "");
         setConfig("omega-test");

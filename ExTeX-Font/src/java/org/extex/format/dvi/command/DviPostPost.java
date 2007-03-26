@@ -45,7 +45,7 @@ public class DviPostPost extends DviCommand {
      * @param p     the pointer
      * @param i     the identification
      */
-    public DviPostPost(final int oc, final int sp, final int p, final int i) {
+    public DviPostPost(int oc, int sp, int p, int i) {
 
         super(oc, sp);
         pointer = p;

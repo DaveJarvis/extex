@@ -41,7 +41,7 @@ public class IllegalRegisterException extends InterpreterException {
      *
      * @param message the message
      */
-    public IllegalRegisterException(final String message) {
+    public IllegalRegisterException(String message) {
 
         super(message);
     }

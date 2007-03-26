@@ -31,7 +31,7 @@ public class DisplaywidthTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(DisplaywidthTest.class);
     }
@@ -41,7 +41,7 @@ public class DisplaywidthTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public DisplaywidthTest(final String arg) {
+    public DisplaywidthTest(String arg) {
 
         super(arg, "displaywidth", "", "0.0pt");
     }

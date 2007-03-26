@@ -33,7 +33,7 @@ public class BoxTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(BoxTest.class);
     }
@@ -43,7 +43,7 @@ public class BoxTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public BoxTest(final String arg) {
+    public BoxTest(String arg) {
 
         super(arg, "box", "1", "0");
     }

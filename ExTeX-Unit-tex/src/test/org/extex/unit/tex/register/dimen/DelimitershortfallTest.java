@@ -31,7 +31,7 @@ public class DelimitershortfallTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(DelimitershortfallTest.class);
     }
@@ -41,7 +41,7 @@ public class DelimitershortfallTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public DelimitershortfallTest(final String arg) {
+    public DelimitershortfallTest(String arg) {
 
         super(arg, "delimitershortfall", "", "0.0pt");
     }

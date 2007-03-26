@@ -127,7 +127,7 @@ public class TfmHeaderArray implements Serializable {
      * @param lh    length of the header data
      * @throws IOException if an IO-error occurs.
      */
-    public TfmHeaderArray(final RandomAccessR rar, final short lh)
+    public TfmHeaderArray(RandomAccessR rar, short lh)
             throws IOException {
 
         int hr = lh;
@@ -261,7 +261,7 @@ public class TfmHeaderArray implements Serializable {
      * @return the string
      * @throws IOException if an I/O error occured
      */
-    private String readBCPL(final RandomAccessR rar, final int size)
+    private String readBCPL(RandomAccessR rar, int size)
             throws IOException {
 
         int len = rar.readByte();

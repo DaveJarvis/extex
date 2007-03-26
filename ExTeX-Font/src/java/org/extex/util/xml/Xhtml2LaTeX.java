@@ -56,8 +56,8 @@ public class Xhtml2LaTeX {
          * @see org.extex.util.xml.XhtmlCommand#startElement(
          *      java.io.PrintWriter, org.xml.sax.Attributes)
          */
-        public void startElement(final PrintWriter out,
-                final Attributes attributes) {
+        public void startElement(PrintWriter out,
+                Attributes attributes) {
 
             // do nothing
         }
@@ -65,7 +65,7 @@ public class Xhtml2LaTeX {
         /**
          * @see org.extex.util.xml.XhtmlCommand#endElement(java.io.PrintWriter)
          */
-        public void endElement(final PrintWriter out) {
+        public void endElement(PrintWriter out) {
 
             //          do nothing
 
@@ -83,8 +83,8 @@ public class Xhtml2LaTeX {
          * @see org.extex.util.xml.XhtmlCommand#startElement(
          *      java.io.PrintWriter, org.xml.sax.Attributes)
          */
-        public void startElement(final PrintWriter out,
-                final Attributes attributes) {
+        public void startElement(PrintWriter out,
+                Attributes attributes) {
 
             out.println("\\documentclass{scrartcl}");
         }
@@ -92,7 +92,7 @@ public class Xhtml2LaTeX {
         /**
          * @see org.extex.util.xml.XhtmlCommand#endElement(java.io.PrintWriter)
          */
-        public void endElement(final PrintWriter out) {
+        public void endElement(PrintWriter out) {
 
             out.println();
         }
@@ -104,8 +104,8 @@ public class Xhtml2LaTeX {
          * @see org.extex.util.xml.XhtmlCommand#startElement(
          *      java.io.PrintWriter, org.xml.sax.Attributes)
          */
-        public void startElement(final PrintWriter out,
-                final Attributes attributes) {
+        public void startElement(PrintWriter out,
+                Attributes attributes) {
 
             out.println("\\begin{document}");
         }
@@ -113,7 +113,7 @@ public class Xhtml2LaTeX {
         /**
          * @see org.extex.util.xml.XhtmlCommand#endElement(java.io.PrintWriter)
          */
-        public void endElement(final PrintWriter out) {
+        public void endElement(PrintWriter out) {
 
             out.println("\\end{document}");
         }
@@ -125,8 +125,8 @@ public class Xhtml2LaTeX {
          * @see org.extex.util.xml.XhtmlCommand#startElement(
          *      java.io.PrintWriter, org.xml.sax.Attributes)
          */
-        public void startElement(final PrintWriter out,
-                final Attributes attributes) {
+        public void startElement(PrintWriter out,
+                Attributes attributes) {
 
             out.print("\\section{");
         }
@@ -134,7 +134,7 @@ public class Xhtml2LaTeX {
         /**
          * @see org.extex.util.xml.XhtmlCommand#endElement(java.io.PrintWriter)
          */
-        public void endElement(final PrintWriter out) {
+        public void endElement(PrintWriter out) {
 
             out.println("}");
         }
@@ -164,7 +164,7 @@ public class Xhtml2LaTeX {
      *
      * @param pout  The Output.
      */
-    public Xhtml2LaTeX(final OutputStream pout) {
+    public Xhtml2LaTeX(OutputStream pout) {
 
         createCommands();
 
@@ -195,7 +195,7 @@ public class Xhtml2LaTeX {
      * @param xhtmlin     The xhtml input.
      * @throws IOException if an error occurs.
      */
-    public void transform(final InputStream xhtmlin) throws IOException {
+    public void transform(InputStream xhtmlin) throws IOException {
 
         try {
 
@@ -238,8 +238,8 @@ public class Xhtml2LaTeX {
          *      java.lang.String, java.lang.String, java.lang.String,
          *      org.xml.sax.Attributes)
          */
-        public void startElement(final String uri, final String localName,
-                final String qName, final Attributes attributes)
+        public void startElement(String uri, String localName,
+                String qName, Attributes attributes)
                 throws SAXException {
 
             super.startElement(uri, localName, qName, attributes);
@@ -257,8 +257,8 @@ public class Xhtml2LaTeX {
          * @see org.xml.sax.helpers.DefaultHandler#endElement(
          *      java.lang.String, java.lang.String, java.lang.String)
          */
-        public void endElement(final String uri, final String localName,
-                final String qName) throws SAXException {
+        public void endElement(String uri, String localName,
+                String qName) throws SAXException {
 
             super.endElement(uri, localName, qName);
 
@@ -286,7 +286,7 @@ public class Xhtml2LaTeX {
      * @param args  The command line arguments.
      * @throws IOException if an error occurs.
      */
-    public static void main(final String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
 
         if (args.length != 2) {
             System.err

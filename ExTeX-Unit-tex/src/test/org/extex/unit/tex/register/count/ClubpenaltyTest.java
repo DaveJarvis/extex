@@ -33,7 +33,7 @@ public class ClubpenaltyTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ClubpenaltyTest.class);
     }
@@ -43,7 +43,7 @@ public class ClubpenaltyTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public ClubpenaltyTest(final String arg) {
+    public ClubpenaltyTest(String arg) {
 
         super(arg, "clubpenalty", "", "0");
     }

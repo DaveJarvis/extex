@@ -148,8 +148,8 @@ public class OtfTableCFF extends AbstractXtfTable
      * @param rar       input
      * @throws IOException if an IO-error occurs
      */
-    OtfTableCFF(final XtfTableMap tablemap, final XtfTableDirectory.Entry de,
-            final RandomAccessR rar) throws IOException {
+    OtfTableCFF(XtfTableMap tablemap, XtfTableDirectory.Entry de,
+            RandomAccessR rar) throws IOException {
 
         super(tablemap);
         cff = this;
@@ -273,7 +273,7 @@ public class OtfTableCFF extends AbstractXtfTable
      * @param data  the data-array
      * @return Returns the String.
      */
-    private String convertArrayToString(final byte[] data) {
+    private String convertArrayToString(byte[] data) {
 
         StringBuffer buf = new StringBuffer(data.length);
 
@@ -328,7 +328,7 @@ public class OtfTableCFF extends AbstractXtfTable
      * @param sid   the SID for the string.
      * @return Returns the String or <code>null</code>, if not found.
      */
-    public String getStringIndex(final int sid) {
+    public String getStringIndex(int sid) {
 
         int highestSID = T2StandardStrings.getHighestSID();
         if (sid <= highestSID) {
@@ -431,8 +431,8 @@ public class OtfTableCFF extends AbstractXtfTable
      * @return Returns the data
      * @throws IOException if an IO-error occurs
      */
-    private byte[] readDataFromIndex(final int start, final int end,
-            final RandomAccessR rar) throws IOException {
+    private byte[] readDataFromIndex(int start, int end,
+            RandomAccessR rar) throws IOException {
 
         byte[] data = new byte[end - start];
         for (int i = 0; i < data.length; i++) {
@@ -452,7 +452,7 @@ public class OtfTableCFF extends AbstractXtfTable
      * @param rar  The Input.
      * @throws IOException if an IO-error occurs
      */
-    private void readHeader(final RandomAccessR rar) throws IOException {
+    private void readHeader(RandomAccessR rar) throws IOException {
 
         versionmajor = rar.readUnsignedByte();
         versionminor = rar.readUnsignedByte();
@@ -477,8 +477,8 @@ public class OtfTableCFF extends AbstractXtfTable
      * @param rar   The Input.
      * @throws IOException if an io-error occuured.
      */
-    private void readNameIndex(final XtfTableDirectory.Entry de,
-            final RandomAccessR rar) throws IOException {
+    private void readNameIndex(XtfTableDirectory.Entry de,
+            RandomAccessR rar) throws IOException {
 
         int offset = de.getOffset() + hdrSize;
         namedIndex = new ArrayList();
@@ -508,7 +508,7 @@ public class OtfTableCFF extends AbstractXtfTable
      * @return Returns the offset
      * @throws IOException if an IO-error occurs
      */
-    private int readOffsetFromIndex(final int os, final RandomAccessR rar)
+    private int readOffsetFromIndex(int os, RandomAccessR rar)
             throws IOException {
 
         int offset = 0;
@@ -528,7 +528,7 @@ public class OtfTableCFF extends AbstractXtfTable
      * @return Returns the offsets.
      * @throws IOException if a IO-error occurred.
      */
-    private int[] readOffsets(final RandomAccessR rar, int count)
+    private int[] readOffsets(RandomAccessR rar, int count)
             throws IOException {
 
         int ioffSize = rar.readUnsignedByte();
@@ -577,7 +577,7 @@ public class OtfTableCFF extends AbstractXtfTable
      * @param rar   The input.
      * @throws IOException if an IO-error occurred.
      */
-    private void readStringIndex(final RandomAccessR rar) throws IOException {
+    private void readStringIndex(RandomAccessR rar) throws IOException {
 
         stringIndex = new ArrayList();
 
@@ -600,7 +600,7 @@ public class OtfTableCFF extends AbstractXtfTable
      * @param rar   The input.
      * @throws IOException if an IO-error occurred.
      */
-    private void readTopDictIndex(final RandomAccessR rar) throws IOException {
+    private void readTopDictIndex(RandomAccessR rar) throws IOException {
 
         topDictIndex = new HashMap();
 
@@ -630,7 +630,7 @@ public class OtfTableCFF extends AbstractXtfTable
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writeStartElement(writer);
         writer.writeAttribute("version", String.valueOf(versionmajor) + "."

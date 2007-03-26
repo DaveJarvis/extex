@@ -70,8 +70,8 @@ public class TeXInputReader extends Reader {
      * @throws UnsupportedEncodingException in case that the encoding is not
      *  known
      */
-    public TeXInputReader(final Logger logger, final String charset,
-            final Interpreter interpreter) throws UnsupportedEncodingException {
+    public TeXInputReader(Logger logger, String charset,
+            Interpreter interpreter) throws UnsupportedEncodingException {
 
         super();
         this.logger = logger;
@@ -140,7 +140,7 @@ public class TeXInputReader extends Reader {
      *
      * @see java.io.Reader#read(char[])
      */
-    public int read(final char[] buffer) throws IOException {
+    public int read(char[] buffer) throws IOException {
 
         return this.reader.read(buffer);
     }
@@ -161,7 +161,7 @@ public class TeXInputReader extends Reader {
      *
      * @see java.io.Reader#read(char[], int, int)
      */
-    public int read(final char[] buffer, final int startIndex, final int len)
+    public int read(char[] buffer, int startIndex, int len)
             throws IOException {
 
         /*
@@ -235,7 +235,7 @@ public class TeXInputReader extends Reader {
      *
      * @see java.io.Reader#skip(long)
      */
-    public long skip(final long n) throws IOException {
+    public long skip(long n) throws IOException {
 
         return this.reader.skip(n);
     }

@@ -34,7 +34,7 @@ public class MathcharTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public MathcharTest(final String arg) {
+    public MathcharTest(String arg) {
 
         super(arg, "mathchar", "123 ");
     }

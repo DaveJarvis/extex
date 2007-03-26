@@ -46,7 +46,7 @@ public class ConfigurationNoSuchMethodException extends ConfigurationException {
      *
      * @param aClassName the name of the class which could not be found
      */
-    public ConfigurationNoSuchMethodException(final String aClassName) {
+    public ConfigurationNoSuchMethodException(String aClassName) {
 
         super(null);
         this.classname = aClassName;
@@ -58,8 +58,8 @@ public class ConfigurationNoSuchMethodException extends ConfigurationException {
      * @param className the name of the class which could not be found
      * @param config the configuration in which the exception occurred.
      */
-    public ConfigurationNoSuchMethodException(final String className,
-            final Configuration config) {
+    public ConfigurationNoSuchMethodException(String className,
+            Configuration config) {
 
         super(null, config.toString());
         this.classname = className;
@@ -70,7 +70,7 @@ public class ConfigurationNoSuchMethodException extends ConfigurationException {
      *
      * @param cause the next Throwable in the list
      */
-    public ConfigurationNoSuchMethodException(final Throwable cause) {
+    public ConfigurationNoSuchMethodException(Throwable cause) {
 
         super(null, cause);
     }

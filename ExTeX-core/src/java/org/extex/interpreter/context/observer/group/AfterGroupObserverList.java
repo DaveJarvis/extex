@@ -39,8 +39,8 @@ public final class AfterGroupObserverList implements AfterGroupObserver {
      *
      * @return the input list or a new one with the observer added
      */
-    public static AfterGroupObserver register(final AfterGroupObserver list,
-            final AfterGroupObserver observer) {
+    public static AfterGroupObserver register(AfterGroupObserver list,
+            AfterGroupObserver observer) {
 
         if (list instanceof AfterGroupObserverList) {
             ((AfterGroupObserverList) list).add(observer);
@@ -60,14 +60,14 @@ public final class AfterGroupObserverList implements AfterGroupObserver {
     /**
      * The field <tt>list</tt> contains the encapsulated list.
      */
-    private List list = new ArrayList();
+    private List<AfterGroupObserver> list = new ArrayList<AfterGroupObserver>();
 
     /**
      * Add an observer to the list.
      *
      * @param observer the observer to add to the list
      */
-    public void add(final AfterGroupObserver observer) {
+    public void add(AfterGroupObserver observer) {
 
         list.add(observer);
     }
@@ -78,8 +78,8 @@ public final class AfterGroupObserverList implements AfterGroupObserver {
      */
     public void update() {
 
-        for (int i = 0; i < list.size(); i++) {
-            ((AfterGroupObserver) list.get(i)).update();
+        for (AfterGroupObserver obs : list) {
+            obs.update();
         }
     }
 

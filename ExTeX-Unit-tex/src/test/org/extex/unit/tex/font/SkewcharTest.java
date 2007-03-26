@@ -32,7 +32,7 @@ public class SkewcharTest extends FontcharTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(SkewcharTest.class);
     }
@@ -42,7 +42,7 @@ public class SkewcharTest extends FontcharTester {
      *
      * @param arg the name
      */
-    public SkewcharTest(final String arg) {
+    public SkewcharTest(String arg) {
 
         super(arg, "skewchar", "\\nullfont=123 ", "-1");
     }

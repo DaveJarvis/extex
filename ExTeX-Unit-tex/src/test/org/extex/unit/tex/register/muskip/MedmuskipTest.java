@@ -31,7 +31,7 @@ public class MedmuskipTest extends AbstractMuskipRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(MedmuskipTest.class);
     }
@@ -41,7 +41,7 @@ public class MedmuskipTest extends AbstractMuskipRegisterTester {
      *
      * @param arg the name
      */
-    public MedmuskipTest(final String arg) {
+    public MedmuskipTest(String arg) {
 
         super(arg, "medmuskip", "", "0.0mu");
     }

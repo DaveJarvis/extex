@@ -42,7 +42,7 @@ public class TokenPushObserver implements PushObserver {
      *
      * @param theLogger the logger for potential output
      */
-    public TokenPushObserver(final Logger theLogger) {
+    public TokenPushObserver(Logger theLogger) {
 
         super();
         this.logger = theLogger;
@@ -56,7 +56,7 @@ public class TokenPushObserver implements PushObserver {
      * @see org.extex.interpreter.observer.push.PushObserver#update(
      *      org.extex.scanner.type.token.Token)
      */
-    public void update(final Token token) {
+    public void update(Token token) {
 
         logger.fine(": push " + token.toString() + "\n");
     }

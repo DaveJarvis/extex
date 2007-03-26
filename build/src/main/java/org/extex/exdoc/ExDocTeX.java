@@ -47,14 +47,15 @@ import org.extex.exdoc.util.Key;
  * Extract doc tags from sources and translate them to LaTeX.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5413 $
  */
 public class ExDocTeX extends ExDocXml {
 
     /**
      * The field <tt>ENTITY_MAP</tt> contains the mapping for entities.
      */
-    private static final Map ENTITY_MAP = new HashMap();
+    private static final Map<String, String> ENTITY_MAP =
+            new HashMap<String, String>();
 
     /**
      * The field <tt>XSLT</tt> contains the name of the XSLT file to use.
@@ -315,7 +316,7 @@ public class ExDocTeX extends ExDocXml {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         try {
             new ExDocTeX().run(args);
@@ -337,7 +338,7 @@ public class ExDocTeX extends ExDocXml {
     /**
      * The field <tt>keys</tt> contains the ...
      */
-    private List keys = new ArrayList();
+    private List<Key> keys = new ArrayList<Key>();
 
     /**
      * Creates a new object.
@@ -356,8 +357,8 @@ public class ExDocTeX extends ExDocXml {
      * @param from the string to be replaced
      * @param to the new string to be inserted
      */
-    private void replace(final StringBuffer content, final String from,
-            final String to) {
+    private void replace(StringBuffer content, String from,
+            String to) {
 
         int length = from.length();
 
@@ -374,7 +375,7 @@ public class ExDocTeX extends ExDocXml {
      * @param content the content to transform
      * @param name the name of the resource currently processed
      */
-    private void replaceEntities(final StringBuffer content, final Key name) {
+    private void replaceEntities(StringBuffer content, Key name) {
 
         int j;
         for (int i = content.indexOf("&"); i >= 0; i = content.indexOf("&", j)) {
@@ -390,7 +391,7 @@ public class ExDocTeX extends ExDocXml {
                 }
                 to = Character.toString((char) c);
             } else {
-                to = (String) ENTITY_MAP.get(entity);
+                to = ENTITY_MAP.get(entity);
                 if (to == null) {
                     warning(name.getLocation() + ": Unknown entity " + entity);
                     to = "???";
@@ -407,7 +408,7 @@ public class ExDocTeX extends ExDocXml {
      *
      * @param content the content to transform
      */
-    private void replaceTodo(final StringBuffer content) {
+    private void replaceTodo(StringBuffer content) {
 
         for (int i = content.indexOf("TODO "); i >= 0; i =
                 content.indexOf("TODO ", i + 5)) {
@@ -426,11 +427,11 @@ public class ExDocTeX extends ExDocXml {
      *
      * @see org.extex.exdoc.Exdoc#run(java.lang.String[])
      */
-    public void run(final String[] args) throws Exception {
+    public void run(String[] args) throws Exception {
 
         super.run(args);
 
-        Collections.sort(keys, new Comparator() {
+        Collections.sort(keys, new Comparator<Key>() {
 
             /**
              * Compare two objects.
@@ -438,24 +439,16 @@ public class ExDocTeX extends ExDocXml {
              * @param o1 the first object
              * @param o2 the second object
              *
-             * @return ...
-             *
-             * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
+             * @return -1, 0, 1 depending on the order of the objects
              */
-            public int compare(final Object o1, final Object o2) {
+            public int compare(Key o1, Key o2) {
 
-                if (o1 instanceof Key && o2 instanceof Key) {
-                    String s1 = ((Key) o1).toString();
-                    String s2 = ((Key) o2).toString();
-                    return s1.compareTo(s2);
-                }
-                throw new IllegalArgumentException();
+                return o1.toString().compareTo(o2.toString());
             }
         });
-        int size = keys.size();
-        for (int i = 0; i < size; i++) {
-            Key key = (Key) keys.get(i);
-            System.err.println(key.toString());
+
+        for (Key k : keys) {
+            System.err.println(k.toString());
         }
     }
 
@@ -471,7 +464,7 @@ public class ExDocTeX extends ExDocXml {
      *      org.extex.exdoc.util.Key,
      *      java.lang.StringBuffer)
      */
-    protected void shipout(final Key key, final StringBuffer content)
+    protected void shipout(Key key, StringBuffer content)
             throws IOException {
 
         FileOutputStream out =

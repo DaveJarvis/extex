@@ -80,7 +80,7 @@ public class Special extends AbstractCode {
      *
      * @param name the name for tracing and debugging
      */
-    public Special(final String name) {
+    public Special(String name) {
 
         super(name);
     }
@@ -107,8 +107,8 @@ public class Special extends AbstractCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException, ConfigurationException {
 
         String text = source.scanUnprotectedTokens(context, true, false,

@@ -34,7 +34,7 @@ public class LetTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public LetTest(final String arg) {
+    public LetTest(String arg) {
 
         super(arg, "let", "\\relax\\relax");
     }

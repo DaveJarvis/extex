@@ -34,7 +34,7 @@ public class InputfilenameTest extends NoFlagsPrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(InputfilenameTest.class);
     }
@@ -44,7 +44,7 @@ public class InputfilenameTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public InputfilenameTest(final String arg) {
+    public InputfilenameTest(String arg) {
 
         super(arg, "inputfilename", "", "\\javadef\\inputfilename{"
                 + Inputfilename.class.getName() + "}");

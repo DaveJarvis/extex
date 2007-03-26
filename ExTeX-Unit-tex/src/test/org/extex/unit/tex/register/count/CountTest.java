@@ -33,7 +33,7 @@ public class CountTest extends AbstractCountArrayTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(CountTest.class);
     }
@@ -43,7 +43,7 @@ public class CountTest extends AbstractCountArrayTester {
      *
      * @param arg the name
      */
-    public CountTest(final String arg) {
+    public CountTest(String arg) {
 
         super(arg, "count", "255", "0");
     }

@@ -43,7 +43,7 @@ public class T2SID extends T2Number {
      * @param rar   the input
      * @throws IOException if an IO-error occurs.
      */
-    T2SID(final RandomAccessR rar) throws IOException {
+    T2SID(RandomAccessR rar) throws IOException {
 
         super();
 

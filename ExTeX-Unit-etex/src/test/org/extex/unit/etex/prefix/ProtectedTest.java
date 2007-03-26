@@ -35,7 +35,7 @@ public class ProtectedTest extends PrefixTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ProtectedTest.class);
     }
@@ -45,7 +45,7 @@ public class ProtectedTest extends PrefixTester {
      *
      * @param arg the name
      */
-    public ProtectedTest(final String arg) {
+    public ProtectedTest(String arg) {
 
         super(arg, "protected");
         setConfig("etex-test");
@@ -61,8 +61,8 @@ public class ProtectedTest extends PrefixTester {
      *
      * @throws Exception in case of an error
      */
-    private void tryFlag(final String prefix, final String tag,
-            final Catcode catcode, final String longName) throws Exception {
+    private void tryFlag(String prefix, String tag,
+            Catcode catcode, String longName) throws Exception {
 
         assertFailure(//--- input code ---
                 "\\catcode`\\" + tag + "=" + catcode.getCode() + " \\" + prefix

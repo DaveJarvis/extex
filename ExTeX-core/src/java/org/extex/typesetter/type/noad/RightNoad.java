@@ -56,7 +56,7 @@ public class RightNoad extends AbstractNoad {
      * @param noad the preceding noad
      * @param delimiter the glue
      */
-    public RightNoad(final LeftNoad noad, final MathDelimiter delimiter) {
+    public RightNoad(LeftNoad noad, MathDelimiter delimiter) {
 
         super();
         this.noad = noad;
@@ -74,7 +74,7 @@ public class RightNoad extends AbstractNoad {
      *      java.lang.StringBuffer,
      *      int)
      */
-    public void toStringAdd(final StringBuffer sb, final int depth) {
+    public void toStringAdd(StringBuffer sb, int depth) {
 
         sb.append("right");
         delimiter.toString(sb);
@@ -103,9 +103,9 @@ public class RightNoad extends AbstractNoad {
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(final Noad previousNoad, final NoadList noads,
-            final int index, final NodeList list,
-            final MathContext mathContext, final Logger logger)
+    public void typeset(Noad previousNoad, NoadList noads,
+            int index, NodeList list,
+            MathContext mathContext, Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 

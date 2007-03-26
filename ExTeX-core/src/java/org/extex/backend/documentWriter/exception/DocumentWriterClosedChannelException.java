@@ -39,7 +39,7 @@ public class DocumentWriterClosedChannelException
      *
      * @param message the error message
      */
-    public DocumentWriterClosedChannelException(final String message) {
+    public DocumentWriterClosedChannelException(String message) {
 
         super(message);
     }
@@ -50,8 +50,8 @@ public class DocumentWriterClosedChannelException
      * @param message the message
      * @param cause the cause
      */
-    public DocumentWriterClosedChannelException(final String message,
-            final Throwable cause) {
+    public DocumentWriterClosedChannelException(String message,
+            Throwable cause) {
 
         super(message, cause);
     }
@@ -61,7 +61,7 @@ public class DocumentWriterClosedChannelException
      *
      * @param cause the cause
      */
-    public DocumentWriterClosedChannelException(final Throwable cause) {
+    public DocumentWriterClosedChannelException(Throwable cause) {
 
         super(cause);
     }

@@ -33,7 +33,7 @@ public class BinoppenaltyTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(BinoppenaltyTest.class);
     }
@@ -43,7 +43,7 @@ public class BinoppenaltyTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public BinoppenaltyTest(final String arg) {
+    public BinoppenaltyTest(String arg) {
 
         super(arg, "binoppenalty", "", "0");
     }

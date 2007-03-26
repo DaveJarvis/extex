@@ -94,10 +94,10 @@ public class FractionNoad extends AbstractNoad {
      *  default thickness
      * @param tc the typesetting context for the rule
      */
-    public FractionNoad(final MathList denom, final MathList num,
-            final MathDelimiter leftDelimiter,
-            final MathDelimiter rightDelimiter, final FixedDimen thickness,
-            final TypesettingContext tc) {
+    public FractionNoad(MathList denom, MathList num,
+            MathDelimiter leftDelimiter,
+            MathDelimiter rightDelimiter, FixedDimen thickness,
+            TypesettingContext tc) {
 
         super();
         this.denominator = denom;
@@ -119,7 +119,7 @@ public class FractionNoad extends AbstractNoad {
      *      java.lang.StringBuffer,
      *      int)
      */
-    public void toStringAdd(final StringBuffer sb, final int depth) {
+    public void toStringAdd(StringBuffer sb, int depth) {
 
         sb.append("fraction, thickness ");
         if (thickness == null) {
@@ -162,9 +162,9 @@ public class FractionNoad extends AbstractNoad {
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(final Noad previousNoad, final NoadList noads,
-            final int index, final NodeList list,
-            final MathContext mathContext, final Logger logger)
+    public void typeset(Noad previousNoad, NoadList noads,
+            int index, NodeList list,
+            MathContext mathContext, Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 

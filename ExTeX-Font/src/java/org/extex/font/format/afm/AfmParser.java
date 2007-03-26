@@ -61,7 +61,7 @@ public class AfmParser
      * @param in    The input.
      * @throws IOException TODO
      */
-    public AfmParser(final InputStream in) throws FontException {
+    public AfmParser(InputStream in) throws FontException {
 
         try {
             // create a Reader (AFM use US_ASCII)
@@ -112,7 +112,7 @@ public class AfmParser
      * @throws IOException    if a io error occurred.
      * @throws FontException  if a font error occurred.
      */
-    private void readAFMFile(final BufferedReader reader) throws IOException,
+    private void readAFMFile(BufferedReader reader) throws IOException,
             FontException {
 
         // line
@@ -258,7 +258,7 @@ public class AfmParser
      * @throws IOException if an IO-error occurs
      * @throws FontException if a font-error occurs.
      */
-    private boolean createMetric(final BufferedReader reader, final boolean ism)
+    private boolean createMetric(BufferedReader reader, boolean ism)
             throws IOException, FontException {
 
         boolean isMetrics = ism;
@@ -339,7 +339,7 @@ public class AfmParser
      * @param   s   the string
      * @return the string without a ','
      */
-    private String removeComma(final String s) {
+    private String removeComma(String s) {
 
         if (s != null) {
             return s.replaceAll(",", "");
@@ -352,7 +352,7 @@ public class AfmParser
      * @param   name    The name of char.
      * @return Returns the id for a char name.
      */
-    public String getIDforName(final String name) {
+    public String getIDforName(String name) {
 
         int id = -1;
 
@@ -414,7 +414,7 @@ public class AfmParser
      * @param c     The char (number)
      * @return Returns the char metric of a char.
      */
-    public AfmCharMetric getAfmCharMetric(final int c) {
+    public AfmCharMetric getAfmCharMetric(int c) {
 
         AfmCharMetric cm = null;
         for (int i = 0, n = afmCharMetrics.size(); i < n; i++) {
@@ -431,7 +431,7 @@ public class AfmParser
      * @param name   The char (name)
      * @return Returns the char metric of a char.
      */
-    public AfmCharMetric getAfmCharMetric(final String name) {
+    public AfmCharMetric getAfmCharMetric(String name) {
 
         AfmCharMetric cm = null;
         for (int i = 0, n = afmCharMetrics.size(); i < n; i++) {
@@ -446,7 +446,7 @@ public class AfmParser
     /**
      * @see org.extex.util.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("afm");
         writer.writeAttribute("name", header.getFontname());
@@ -525,7 +525,7 @@ public class AfmParser
     /**
      * @see org.extex.util.EFMWriterConvertible#writeEFM(org.extex.util.xml.XMLStreamWriter)
      */
-    public void writeEFM(final XMLStreamWriter writer) throws IOException {
+    public void writeEFM(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("font");
         writer.writeAttribute("id", header.getFontname());

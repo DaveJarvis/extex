@@ -65,8 +65,8 @@ public class BoundingBox implements Serializable {
      * @param rx    the urx
      * @param ry    the ury
      */
-    public BoundingBox(final Dimen lx, final Dimen ly, final Dimen rx,
-            final Dimen ry) {
+    public BoundingBox(Dimen lx, Dimen ly, Dimen rx,
+            Dimen ry) {
 
         super();
         llx = lx;
@@ -87,7 +87,7 @@ public class BoundingBox implements Serializable {
     /**
      * @param lx The llx to set.
      */
-    public void setLlx(final Dimen lx) {
+    public void setLlx(Dimen lx) {
 
         llx = lx;
     }
@@ -104,7 +104,7 @@ public class BoundingBox implements Serializable {
     /**
      * @param ly The lly to set.
      */
-    public void setLly(final Dimen ly) {
+    public void setLly(Dimen ly) {
 
         lly = ly;
     }
@@ -121,7 +121,7 @@ public class BoundingBox implements Serializable {
     /**
      * @param rx The urx to set.
      */
-    public void setUrx(final Dimen rx) {
+    public void setUrx(Dimen rx) {
 
         urx = rx;
     }
@@ -138,7 +138,7 @@ public class BoundingBox implements Serializable {
     /**
      * @param ry The ury to set.
      */
-    public void setUry(final Dimen ry) {
+    public void setUry(Dimen ry) {
 
         ury = ry;
     }

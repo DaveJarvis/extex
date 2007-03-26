@@ -45,7 +45,7 @@ public class EofInToksException extends EofException {
      *
      * @param macro the name of the macro
      */
-    public EofInToksException(final String macro) {
+    public EofInToksException(String macro) {
 
         super(LocalizerFactory.getLocalizer(EofInToksException.class),
                 "TTP.EOFinToks", macro);

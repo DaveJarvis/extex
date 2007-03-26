@@ -45,6 +45,6 @@ public interface FontPfb {
      * @param in    The input.
      * @throws FontException if an error occurs.
      */
-    void setPfb(final InputStream in) throws FontException;
+    void setPfb(InputStream in) throws FontException;
 
 }

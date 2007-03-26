@@ -55,7 +55,7 @@ public abstract class AbstractDviCode implements DviCode {
      *
      * @return the variant
      */
-    protected static String variant(final int value) {
+    protected static String variant(int value) {
 
         if (value <= ONE_BYTE_MASK) {
             return "1";
@@ -76,7 +76,7 @@ public abstract class AbstractDviCode implements DviCode {
      *
      * @throws IOException in case of an error
      */
-    protected static void write2(final OutputStream stream, final int value)
+    protected static void write2(OutputStream stream, int value)
             throws IOException {
 
         stream.write(value >> 8);
@@ -93,7 +93,7 @@ public abstract class AbstractDviCode implements DviCode {
      *
      * @param name the name of the dvi instruction
      */
-    protected AbstractDviCode(final String name) {
+    protected AbstractDviCode(String name) {
 
         super();
         this.name = name;
@@ -124,8 +124,8 @@ public abstract class AbstractDviCode implements DviCode {
      *
      * @throws IOException in case of an error
      */
-    protected int opcode(final int baseOpcode, final int value,
-            final OutputStream stream) throws IOException {
+    protected int opcode(int baseOpcode, int value,
+            OutputStream stream) throws IOException {
 
         if (value <= ONE_BYTE_MASK) {
             stream.write(baseOpcode);
@@ -167,8 +167,8 @@ public abstract class AbstractDviCode implements DviCode {
      *
      * @throws IOException in case of an error
      */
-    protected int opcodeSigned(final int baseOpcode, final int value,
-            final OutputStream stream) throws IOException {
+    protected int opcodeSigned(int baseOpcode, int value,
+            OutputStream stream) throws IOException {
 
         if (-0x80 <= value && value < 0x7f) {
             stream.write(baseOpcode);
@@ -203,7 +203,7 @@ public abstract class AbstractDviCode implements DviCode {
      *
      * @throws IOException in case of an error
      */
-    protected void write3(final OutputStream stream, final int value)
+    protected void write3(OutputStream stream, int value)
             throws IOException {
 
         stream.write(value >> 16);
@@ -219,7 +219,7 @@ public abstract class AbstractDviCode implements DviCode {
      *
      * @throws IOException in case of an error
      */
-    protected void write4(final OutputStream stream, final int value)
+    protected void write4(OutputStream stream, int value)
             throws IOException {
 
         stream.write(value >> 24);

@@ -61,7 +61,7 @@ public class MathAdd extends AbstractMath
      * @param name the name for debugging
      * @throws GeneralException ...
      */
-    public MathAdd(final String name) throws GeneralException {
+    public MathAdd(String name) throws GeneralException {
 
         super(name);
 
@@ -77,7 +77,7 @@ public class MathAdd extends AbstractMath
      * @throws InterpreterException if a error occurred
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Real calculate(final Context context, final TokenSource source)
+    protected Real calculate(Context context, TokenSource source)
             throws InterpreterException,
                 ConfigurationException {
 

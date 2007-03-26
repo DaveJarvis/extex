@@ -37,7 +37,7 @@ public class DocumentWriterFontException extends DocumentWriterException {
      *
      * @param message the error message
      */
-    public DocumentWriterFontException(final String message) {
+    public DocumentWriterFontException(String message) {
 
         super(message);
     }
@@ -48,8 +48,8 @@ public class DocumentWriterFontException extends DocumentWriterException {
      * @param message the message
      * @param cause the cause
      */
-    public DocumentWriterFontException(final String message,
-            final Throwable cause) {
+    public DocumentWriterFontException(String message,
+            Throwable cause) {
 
         super(message, cause);
     }
@@ -59,7 +59,7 @@ public class DocumentWriterFontException extends DocumentWriterException {
      *
      * @param cause the cause
      */
-    public DocumentWriterFontException(final Throwable cause) {
+    public DocumentWriterFontException(Throwable cause) {
 
         super(cause);
     }

@@ -75,7 +75,7 @@ public class Textstyle extends AbstractMathCode {
      *
      * @param name the name for tracing and debugging
      */
-    public Textstyle(final String name) {
+    public Textstyle(String name) {
 
         super(name);
     }
@@ -98,8 +98,8 @@ public class Textstyle extends AbstractMathCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);

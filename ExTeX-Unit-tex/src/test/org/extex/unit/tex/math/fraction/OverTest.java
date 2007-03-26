@@ -34,7 +34,7 @@ public class OverTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public OverTest(final String arg) {
+    public OverTest(String arg) {
 
         super(arg, "over", " b$", "a ");
     }

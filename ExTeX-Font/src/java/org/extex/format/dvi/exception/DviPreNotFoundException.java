@@ -45,7 +45,7 @@ public class DviPreNotFoundException extends DviException {
      *
      * @param message   the message
      */
-    public DviPreNotFoundException(final String message) {
+    public DviPreNotFoundException(String message) {
 
         super(message);
     }

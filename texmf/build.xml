@@ -109,7 +109,7 @@
            includes="**/TocIndex.java"
            destdir="target/classes" />
 
-    <java classname="org.extex.util.resource.tool.TocIndex"
+    <java classname="org.extex.resource.tool.TocIndex"
           fork="true"
           dir="src/texmf"
           failonerror="true"

@@ -34,7 +34,7 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(MultiplyTest.class);
     }
@@ -44,7 +44,7 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public MultiplyTest(final String arg) {
+    public MultiplyTest(String arg) {
 
         super(arg, "multiply", "\\count1 1 ");
     }

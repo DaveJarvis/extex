@@ -88,7 +88,7 @@ public class InputXslt extends AbstractFileCode {
      * Create a new object.
      * @param codeName  the CodeName
      */
-    public InputXslt(final String codeName) {
+    public InputXslt(String codeName) {
 
         super(codeName);
     }
@@ -100,8 +100,8 @@ public class InputXslt extends AbstractFileCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         // MGN incomplete
@@ -152,8 +152,8 @@ public class InputXslt extends AbstractFileCode {
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
      */
-    protected String scanFileName(final Context context,
-            final TokenSource source) throws InterpreterException {
+    protected String scanFileName(Context context,
+            TokenSource source) throws InterpreterException {
 
         return source.scanTokensAsString(context, getName());
     }

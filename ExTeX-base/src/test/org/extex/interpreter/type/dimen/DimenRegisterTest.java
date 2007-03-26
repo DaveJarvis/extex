@@ -43,7 +43,7 @@ public class DimenRegisterTest extends TestCase {
      * Creates a new object.
      * @param arg0 the name
      */
-    public DimenRegisterTest(final String arg0) {
+    public DimenRegisterTest(String arg0) {
 
         super(arg0);
     }
@@ -52,7 +52,7 @@ public class DimenRegisterTest extends TestCase {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(DimenRegisterTest.class);
     }
@@ -67,7 +67,7 @@ public class DimenRegisterTest extends TestCase {
      * @throws ConfigurationException in case of an error in the configuration
      * @throws GeneralException in case of an error during parsing
      */
-    private long doTest(final String spec) throws GeneralException {
+    private long doTest(String spec) throws GeneralException {
 
         Configuration config =
                 new ConfigurationFactory().newInstance("config/base-test.xml");

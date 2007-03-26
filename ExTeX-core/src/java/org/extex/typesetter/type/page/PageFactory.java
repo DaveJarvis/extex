@@ -44,7 +44,7 @@ public interface PageFactory {
      *
      * @throws GeneralException in case of an error
      */
-    Page newInstance(final NodeList nodes, final Context context,
-            final Typesetter typesetter) throws GeneralException;
+    Page newInstance(NodeList nodes, Context context,
+            Typesetter typesetter) throws GeneralException;
 
 }

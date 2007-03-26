@@ -38,7 +38,7 @@ public class DuplicateHyphenationException extends HyphenationException {
      *
      * @param message the message
      */
-    public DuplicateHyphenationException(final String message) {
+    public DuplicateHyphenationException(String message) {
 
         super(message);
     }

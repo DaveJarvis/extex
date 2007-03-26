@@ -55,7 +55,7 @@ public class NumberedTransform extends NamedTransform {
      * Creates a new object.
      * @param name the name for debugging
      */
-    public NumberedTransform(final String name) {
+    public NumberedTransform(String name) {
 
         super(name);
     }
@@ -68,7 +68,7 @@ public class NumberedTransform extends NamedTransform {
      * @return Return the key
      * @throws InterpreterException if an ecxeption was occured
      */
-    protected String getKey(final Context context, final TokenSource source)
+    protected String getKey(Context context, TokenSource source)
             throws InterpreterException {
 
         return getName() + "#" + Long.toString(source.scanNumber(context));

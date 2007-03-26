@@ -37,7 +37,7 @@ public class T2TDOisFixedPitch extends T2TDOBoolean {
      * @param stack the stack
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOisFixedPitch(final List stack) throws IOException {
+    public T2TDOisFixedPitch(List stack) throws IOException {
 
         super(stack, new short[]{ESCAPE_BYTE, ISFIXEDPITCH});
     }

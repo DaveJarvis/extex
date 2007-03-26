@@ -47,36 +47,42 @@ public final class TGlueParser implements ETypeParser {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.ETypeParser#convert(
      *      org.extex.interpreter.type.Code,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public EType convert(final Code code, final Context context,
-            final TokenSource source, final Typesetter typesetter) {
+    public EType convert(Code code, Context context,
+            TokenSource source, Typesetter typesetter) {
 
         // TODO gene: convert unimplemented
         return null;
     }
 
     /**
-     * @see org.extex.interpreter.expression.TerminalParser#parse(
+     * {@inheritDoc}
+     *
+     * @see org.extex.interpreter.expression.ETypeParser#parse(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public EType parse(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public EType parse(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         return null;
     }
 
     /**
-     * @see org.extex.interpreter.expression.TerminalParser#registered(
+     * {@inheritDoc}
+     *
+     * @see org.extex.interpreter.expression.ETypeParser#registered(
      *      org.extex.interpreter.expression.Evaluator)
      */
-    public void registered(final Evaluator evaluator) {
+    public void registered(Evaluator evaluator) {
 
     }
 

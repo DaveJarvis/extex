@@ -73,7 +73,7 @@ public class Jobname extends AbstractCode implements ExpandableCode {
      *
      * @param name the name for tracing and debugging
      */
-    public Jobname(final String name) {
+    public Jobname(String name) {
 
         super(name);
     }
@@ -96,8 +96,8 @@ public class Jobname extends AbstractCode implements ExpandableCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         source.push(context.getToks(JOBNAME));
@@ -123,8 +123,8 @@ public class Jobname extends AbstractCode implements ExpandableCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void expand(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void expand(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         source.push(context.getToks(JOBNAME));

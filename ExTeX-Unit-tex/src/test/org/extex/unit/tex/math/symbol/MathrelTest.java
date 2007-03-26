@@ -32,7 +32,7 @@ public class MathrelTest extends AbstractOperatorTester {
      *
      * @param arg the name
      */
-    public MathrelTest(final String arg) {
+    public MathrelTest(String arg) {
 
         super(arg, "mathrel");
     }

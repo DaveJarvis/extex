@@ -35,7 +35,7 @@ public class TeXParagraphBuiderTest extends AbstractParagraphBuiderTester {
      *
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(TeXParagraphBuiderTest.class);
     }

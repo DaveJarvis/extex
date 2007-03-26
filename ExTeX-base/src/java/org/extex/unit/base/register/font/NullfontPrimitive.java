@@ -20,7 +20,6 @@
 package org.extex.unit.base.register.font;
 
 import org.extex.font.type.other.NullFont;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -78,17 +77,19 @@ public class NullfontPrimitive extends AbstractCode
      *
      * @param name the name of the primitive
      */
-    public NullfontPrimitive(final String name) {
+    public NullfontPrimitive(String name) {
 
         super(name);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.type.ComparableCode#compare(
      *      org.extex.scanner.type.token.Token,
      *      org.extex.interpreter.context.Context)
      */
-    public boolean compare(final Token token, final Context context)
+    public boolean compare(Token token, Context context)
             throws InterpreterException {
 
         return (token instanceof CodeToken)
@@ -96,36 +97,21 @@ public class NullfontPrimitive extends AbstractCode
     }
 
     /**
-     * Convert some primitive value into a font.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @return the converted value
+     * {@inheritDoc}
      *
      * @see org.extex.interpreter.type.font.FontConvertible#convertFont(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Font convertFont(final Context context, final TokenSource source,
-            final Typesetter typesetter) {
+    public Font convertFont(Context context, TokenSource source,
+            Typesetter typesetter) {
 
         return nullFont;
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws ConfigurationException in case of an configuration error
+     * {@inheritDoc}
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -133,8 +119,8 @@ public class NullfontPrimitive extends AbstractCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter) {
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter) {
 
         context.set(nullFont, prefix.clearGlobal());
     }

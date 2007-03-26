@@ -57,7 +57,7 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
      * @param id    the operator-id for the value
      * @throws IOException if an IO-error occurs.
      */
-    protected T2TDOSID(final List stack, final short[] id) throws IOException {
+    protected T2TDOSID(List stack, short[] id) throws IOException {
 
         super();
 
@@ -98,8 +98,8 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
      *      org.extex.util.file.random.RandomAccessR,
      *      org.extex.font.format.xtf.OtfTableCFF, int)
      */
-    public void init(final RandomAccessR rar, final OtfTableCFF cff,
-            final int baseoffset) throws IOException {
+    public void init(RandomAccessR rar, OtfTableCFF cff,
+            int baseoffset) throws IOException {
 
         sidstring = cff.getStringIndex(getSID());
     }
@@ -116,7 +116,7 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());
         writer.writeAttribute("value", getValue());

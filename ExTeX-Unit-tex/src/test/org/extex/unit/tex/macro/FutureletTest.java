@@ -34,7 +34,7 @@ public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public FutureletTest(final String arg) {
+    public FutureletTest(String arg) {
 
         super(arg, "futurelet", "\\relax\\relax\\relax");
     }

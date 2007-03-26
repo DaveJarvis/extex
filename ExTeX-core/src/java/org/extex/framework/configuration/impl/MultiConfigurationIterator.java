@@ -63,8 +63,8 @@ public class MultiConfigurationIterator implements Iterator {
      *
      * @throws ConfigurationException in case of an error in a sub-iterator
      */
-    public MultiConfigurationIterator(final Configuration[] theConfigs,
-            final String theKey) throws ConfigurationException {
+    public MultiConfigurationIterator(Configuration[] theConfigs,
+            String theKey) throws ConfigurationException {
 
         super();
         this.configs = theConfigs;

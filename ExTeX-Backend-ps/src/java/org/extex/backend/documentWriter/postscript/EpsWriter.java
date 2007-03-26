@@ -34,7 +34,7 @@ import org.extex.typesetter.type.page.Page;
 
 /**
  * This document writer produces Encapsulated Postscript documents.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -52,33 +52,33 @@ public class EpsWriter extends AbstractPostscriptWriter {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param options the options for the document writer
      */
-    public EpsWriter(final DocumentWriterOptions options) {
+    public EpsWriter(DocumentWriterOptions options) {
 
         super();
         fontManager = new FontManager();
     }
 
     /**
-     * This method is invoked upon the end of the processing.
-     * It does simply nothing for this class.
-     *
+     * This method is invoked upon the end of the processing. It does simply
+     * nothing for this class.
+     * 
      * @see org.extex.backend.documentWriter.DocumentWriter#close()
      */
     public void close() {
 
-        //nothing to do
+        // nothing to do
     }
 
     /**
      * Getter for the extension associated with this kind of output. For
      * instance <tt>pdf</tt> is the expected value for PDF files and
      * <tt>dvi</tt> is the expected value for DVI files.
-     *
+     * 
      * @return the appropriate extension for file names
-     *
+     * 
      * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
      */
     public String getExtension() {
@@ -90,22 +90,22 @@ public class EpsWriter extends AbstractPostscriptWriter {
      * This is the entry point for the document writer. Here it receives a
      * complete node list to be sent to the output writer. It can be assumed
      * that all values for width, height, and depth of the node lists are
-     * properly filled. Thus all information should be present to place the
-     * ink on the paper.
-     *
+     * properly filled. Thus all information should be present to place the ink
+     * on the paper.
+     * 
      * @param page the page to send
-     *
+     * 
      * @return returns the number of pages shipped
-     *
+     * 
      * @throws GeneralException in case of a general exception<br>
-     *  especially<br>
-     *  DocumentWriterException in case of an error
+     *         especially<br>
+     *         DocumentWriterException in case of an error
      * @throws IOException in case of an IO exception
-     *
+     * 
      * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
      *      org.extex.typesetter.type.page.Page)
      */
-    public int shipout(final Page page) throws GeneralException, IOException {
+    public int shipout(Page page) throws GeneralException, IOException {
 
         PsConverter converter = getConverter(headerManager);
 
@@ -132,15 +132,15 @@ public class EpsWriter extends AbstractPostscriptWriter {
 
     /**
      * Write a BoundingBox DSC to an output stream.
-     *
+     * 
      * @param stream the target stream to write to
      * @param name the name of the DSC comment
      * @param nodes the nodes to extract the dimensions from
-     *
+     * 
      * @throws IOException in case of an error during writing
      */
-    private void writeBB(final OutputStream stream, final String name,
-            final NodeList nodes) throws IOException {
+    private void writeBB(OutputStream stream, String name, NodeList nodes)
+            throws IOException {
 
         StringBuffer sb = new StringBuffer();
         stream.write('%');
@@ -162,15 +162,15 @@ public class EpsWriter extends AbstractPostscriptWriter {
 
     /**
      * Write a HiResBoundingBox DSC to an output stream.
-     *
+     * 
      * @param stream the target stream to write to
      * @param name the name of the DSC comment
      * @param nodes the nodes to extract the dimensions from
-     *
+     * 
      * @throws IOException in case of an error during writing
      */
-    private void writeHRBB(final OutputStream stream, final String name,
-            final NodeList nodes) throws IOException {
+    private void writeHRBB(OutputStream stream, String name, NodeList nodes)
+            throws IOException {
 
         StringBuffer sb = new StringBuffer();
         stream.write('%');

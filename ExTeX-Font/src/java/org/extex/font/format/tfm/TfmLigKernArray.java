@@ -40,7 +40,7 @@ import org.extex.util.file.random.RandomAccessR;
  *     <tr><td>byte</td><td>description</td></tr>
  *   </thead>
  *   <tr><td>first  </td><td>skip_byte, indicates that this is the
- *                  final program step if the byte is 128 or more,
+ *                  program step if the byte is 128 or more,
  *                  otherwise the next step is obtained by skipping
  *                  this number of intervening steps.</td></tr>
  *   <tr><td>second </td><td>next_char: if next_char follows the
@@ -162,7 +162,7 @@ public class TfmLigKernArray implements PlFormat, Serializable {
      * @param nl    number of words in the lig/kern table
      * @throws IOException if an IO-error occurs.
      */
-    public TfmLigKernArray(final RandomAccessR rar, final short nl)
+    public TfmLigKernArray(RandomAccessR rar, short nl)
             throws IOException {
 
         ligkerncommand = new TfmLigKernCommand[nl];
@@ -224,8 +224,8 @@ public class TfmLigKernArray implements PlFormat, Serializable {
      * @param akern     the kern
      * @param abc       smallest character code in the font
      */
-    public void calculate(final TfmCharInfoArray chari,
-            final TfmKernArray akern, final short abc) {
+    public void calculate(TfmCharInfoArray chari,
+            TfmKernArray akern, short abc) {
 
         charinfo = chari;
         kern = akern;
@@ -245,7 +245,7 @@ public class TfmLigKernArray implements PlFormat, Serializable {
      * @param ciw   the char
      * @return Returns true, if the char has a ligature or a kern
      */
-    public boolean foundLigKern(final TfmCharInfoWord ciw) {
+    public boolean foundLigKern(TfmCharInfoWord ciw) {
 
         boolean found = false;
         int ligstart = ciw.getLigkernstart();
@@ -309,7 +309,7 @@ public class TfmLigKernArray implements PlFormat, Serializable {
      * @param cp2 the right char. This character has to exist.
      * @return the kerning.
      */
-    public TfmFixWord getKerning(final int cp1, final int cp2) {
+    public TfmFixWord getKerning(int cp1, int cp2) {
 
         TfmCharInfoWord[] ciwArray = charinfo.getCharinfoword();
         if (cp1 < 0 || cp1 >= ciwArray.length) {
@@ -332,7 +332,7 @@ public class TfmLigKernArray implements PlFormat, Serializable {
      * @param cp2 the right char. This character has to exist.
      * @return the ligature.
      */
-    public int getLigature(final int cp1, final int cp2) {
+    public int getLigature(int cp1, int cp2) {
 
         TfmCharInfoWord[] ciwArray = charinfo.getCharinfoword();
         if (cp1 < 0 || cp1 >= ciwArray.length) {
@@ -374,7 +374,7 @@ public class TfmLigKernArray implements PlFormat, Serializable {
      * @return Returns the skip amount of the next instruction
      *         in the final version of lig/kern program.
      */
-    private int getSkip(final int pos) {
+    private int getSkip(int pos) {
 
         TfmLigKernCommand lkc = ligkerncommand[pos];
         if (lkc.meansStop()) {
@@ -400,7 +400,7 @@ public class TfmLigKernArray implements PlFormat, Serializable {
      *                  given in a character info.
      * @return Returns the actual starting index.
      */
-    private int ligStart(final int start) {
+    private int ligStart(int start) {
 
         int newstart = start;
         if (newstart < ligkerncommand.length) {
@@ -424,7 +424,7 @@ public class TfmLigKernArray implements PlFormat, Serializable {
      *              of the lig/kern program.
      * @return Returns the ligkern
      */
-    private TfmLigKern makeKern(final TfmLigKernCommand lkc, final int skip) {
+    private TfmLigKern makeKern(TfmLigKernCommand lkc, int skip) {
 
         int kernIdx = lkc.kernIndex();
         TfmFixWord kernword = null;
@@ -444,7 +444,7 @@ public class TfmLigKernArray implements PlFormat, Serializable {
      *              of the lig/kern program.
      * @return Returns the ligkern
      */
-    private TfmLigKern makeLig(final TfmLigKernCommand lkc, final int skip) {
+    private TfmLigKern makeLig(TfmLigKernCommand lkc, int skip) {
 
         //       if (!charExists(lkc.ligChar())) {
         //           badchar(lkc.ligChar(), "Ligature step produces the");
@@ -499,7 +499,7 @@ public class TfmLigKernArray implements PlFormat, Serializable {
      * @param start the position of corresponding instruction in final lig/kern
      *              table LigKernTable.
      */
-    private void setLigStarts(final int pos, final int start) {
+    private void setLigStarts(int pos, int start) {
 
         TfmIndexMultimap.Enum lab = labels.forKey(pos);
         while (lab.hasMore()) {
@@ -543,7 +543,7 @@ public class TfmLigKernArray implements PlFormat, Serializable {
      * @see org.extex.font.type.PlFormat#toPL(
      *      org.extex.font.type.PlWriter)
      */
-    public void toPL(final PlWriter out) throws IOException {
+    public void toPL(PlWriter out) throws IOException {
 
         if (boundaryChar != TfmCharInfoWord.NOCHARCODE) {
             out.plopen("BOUNDARYCHAR").addChar(boundaryChar).plclose();

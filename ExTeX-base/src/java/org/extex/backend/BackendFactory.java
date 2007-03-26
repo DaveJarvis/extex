@@ -101,7 +101,7 @@ public class BackendFactory extends AbstractFactory {
      *
      * @throws ConfigurationException in case of an configuration error
      */
-    public BackendFactory(final Configuration config, final Logger logger) {
+    public BackendFactory(Configuration config, Logger logger) {
 
         super();
         enableLogging(logger);
@@ -117,6 +117,7 @@ public class BackendFactory extends AbstractFactory {
      * @param finder the resource finder
      * @param properties the properties
      * @param creator the creator string
+     * @param fontFactory the font factory
      * @param colorConverter the color converter
      *
      * @return the new instance
@@ -124,16 +125,15 @@ public class BackendFactory extends AbstractFactory {
      * @throws DocumentWriterException in case of an error
      * @throws ConfigurationException in case of an error in the configuration
      */
-    public BackendDriver newInstance(final String type,
-            final DocumentWriterOptions options,
-            final OutputStreamFactory outFactory, final ResourceFinder finder,
-            final Properties properties, final String creator,
-            final CoreFontFactory fontFactory,
-            final ColorConverter colorConverter) throws DocumentWriterException {
+    public BackendDriver newInstance(String type,
+            DocumentWriterOptions options,
+            OutputStreamFactory outFactory, ResourceFinder finder,
+            Properties properties, String creator,
+            CoreFontFactory fontFactory,
+            ColorConverter colorConverter) throws DocumentWriterException {
 
         BackendDriver backend =
-                (BackendDriver) createInstanceForConfiguration(
-                    getConfiguration(), BackendDriver.class);
+                (BackendDriver) createInstance(BackendDriver.class);
 
         DocumentWriterFactory factory =
                 new DocumentWriterFactory(getConfiguration().getConfiguration(

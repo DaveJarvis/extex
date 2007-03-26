@@ -33,7 +33,7 @@ public class PdfvoriginTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PdfvoriginTest.class);
     }
@@ -43,7 +43,7 @@ public class PdfvoriginTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public PdfvoriginTest(final String arg) {
+    public PdfvoriginTest(String arg) {
 
         super(arg, "pdfvorigin", "", "72.26999pt");
         setConfig("pdftex-test");

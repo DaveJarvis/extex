@@ -61,7 +61,7 @@ public class MathASin extends AbstractMath
      * @param name the name for debugging
      * @throws GeneralException ...
      */
-    public MathASin(final String name) throws GeneralException {
+    public MathASin(String name) throws GeneralException {
 
         super(name);
 
@@ -77,7 +77,7 @@ public class MathASin extends AbstractMath
      * @throws InterpreterException if a error occurred
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Real calculate(final Context context, final TokenSource source)
+    protected Real calculate(Context context, TokenSource source)
             throws InterpreterException, ConfigurationException {
 
         Real real = new Real(context, source);

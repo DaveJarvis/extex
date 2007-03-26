@@ -62,7 +62,7 @@ public class ResourceFinderList implements ResourceFinder, RecursiveFinder {
      *
      * @param finder the file finder to add
      */
-    public void add(final ResourceFinder finder) {
+    public void add(ResourceFinder finder) {
 
         list.add(finder);
 
@@ -81,7 +81,7 @@ public class ResourceFinderList implements ResourceFinder, RecursiveFinder {
      *
      * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
      */
-    public void enableTracing(final boolean flag) {
+    public void enableTracing(boolean flag) {
 
         for (int i = 0; i < list.size(); i++) {
             ((ResourceFinder) list.get(i)).enableTracing(flag);
@@ -102,7 +102,7 @@ public class ResourceFinderList implements ResourceFinder, RecursiveFinder {
      * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
      *      java.lang.String)
      */
-    public InputStream findResource(final String name, final String type)
+    public InputStream findResource(String name, String type)
             throws ConfigurationException {
 
         for (int i = 0; i < list.size(); i++) {
@@ -125,7 +125,7 @@ public class ResourceFinderList implements ResourceFinder, RecursiveFinder {
      * @see org.extex.resource.RecursiveFinder#setParent(
      *      org.extex.resource.ResourceFinder)
      */
-    public void setParent(final ResourceFinder theParent) {
+    public void setParent(ResourceFinder theParent) {
 
         for (int i = 0; i < list.size(); i++) {
             ResourceFinder finder = (ResourceFinder) list.get(i);

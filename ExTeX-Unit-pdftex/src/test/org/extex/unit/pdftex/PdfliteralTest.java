@@ -34,7 +34,7 @@ public class PdfliteralTest extends NoFlagsButProtectedPrimitiveTester {
      *
      * @param arg the name
      */
-    public PdfliteralTest(final String arg) {
+    public PdfliteralTest(String arg) {
 
         super(arg, "pdfliteral", "{}", "");
         setConfig("pdftex-test");

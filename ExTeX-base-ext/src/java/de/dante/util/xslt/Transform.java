@@ -71,7 +71,7 @@ public final class Transform {
      * @param args      the command line arguments
      * @throws Exception  in case of an error
      */
-    public static void main(final String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
         if (args.length != PARAMETER) {
             outerr.println("java de.dante.util.xslt.Transform "
@@ -96,8 +96,8 @@ public final class Transform {
      * @throws TransformerException if a transformer error occurred.
      * @throws IOException if a IO error occurred.
      */
-    public static void transform(final Source xml, final Source xsl,
-            final URIResolver resolver, final OutputStream out)
+    public static void transform(Source xml, Source xsl,
+            URIResolver resolver, OutputStream out)
             throws TransformerException, IOException {
 
         StreamResult result = new StreamResult(out);
@@ -119,8 +119,8 @@ public final class Transform {
      * @throws TransformerException if a transformer error occurred.
      * @throws IOException if a IO error occurred.
      */
-    public static void transform(final Source xml, final Source xsl,
-            final URIResolver resolver, final Writer out)
+    public static void transform(Source xml, Source xsl,
+            URIResolver resolver, Writer out)
             throws TransformerException, IOException {
 
         StreamResult result = new StreamResult(out);
@@ -142,8 +142,8 @@ public final class Transform {
      * @throws TransformerException if a transformer error occurred.
      * @throws IOException if a IO error occurred.
      */
-    public static void transform(final Source xml, final Source xsl,
-            final URIResolver resolver, final Result result)
+    public static void transform(Source xml, Source xsl,
+            URIResolver resolver, Result result)
             throws TransformerException, IOException {
 
         TransformerFactory factory = TransformerFactory.newInstance();

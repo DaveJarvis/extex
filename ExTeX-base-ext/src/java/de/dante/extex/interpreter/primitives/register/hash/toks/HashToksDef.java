@@ -51,7 +51,7 @@ public class HashToksDef extends AbstractAssignment {
      * Creates a new object.
      * @param name the name for debugging
      */
-    public HashToksDef(final String name) {
+    public HashToksDef(String name) {
 
         super(name);
     }
@@ -63,8 +63,8 @@ public class HashToksDef extends AbstractAssignment {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         //  \hashtoksdef\hugo=7

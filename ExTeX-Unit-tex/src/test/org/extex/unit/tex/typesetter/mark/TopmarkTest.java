@@ -33,7 +33,7 @@ public class TopmarkTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(TopmarkTest.class);
     }
@@ -43,7 +43,7 @@ public class TopmarkTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public TopmarkTest(final String arg) {
+    public TopmarkTest(String arg) {
 
         super(arg, "topmark", "");
     }

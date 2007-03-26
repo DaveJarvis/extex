@@ -133,7 +133,7 @@ public class ExTeXWordsTest extends TestCase {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ExTeXWordsTest.class);
     }
@@ -145,7 +145,7 @@ public class ExTeXWordsTest extends TestCase {
      *
      * @return a node list made of te characters
      */
-    private static NodeList makeList(final CharSequence s) {
+    private static NodeList makeList(CharSequence s) {
 
         NodeList nodes = new HorizontalListNode();
 

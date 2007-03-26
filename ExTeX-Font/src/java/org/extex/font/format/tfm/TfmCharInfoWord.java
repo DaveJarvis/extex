@@ -279,7 +279,7 @@ public class TfmCharInfoWord implements Serializable {
      * @param id    the id
      * @throws IOException if an IO-error occurs.
      */
-    public TfmCharInfoWord(final RandomAccessR rar, final int id)
+    public TfmCharInfoWord(RandomAccessR rar, int id)
             throws IOException {
 
         charid = id;
@@ -316,7 +316,7 @@ public class TfmCharInfoWord implements Serializable {
      * Add glyph to the element.
      * @param glyph   the element
      */
-    public void addGlyph(final Element glyph) {
+    public void addGlyph(Element glyph) {
 
         glyph.setAttribute("width", getWidth().toStringComma());
         glyph.setAttribute("height", getHeight().toStringComma());
@@ -551,7 +551,7 @@ public class TfmCharInfoWord implements Serializable {
      * @param cp2 the right char. This character has to exist.
      * @return the kerning.
      */
-    public TfmFixWord getKerning(final int cp2) {
+    public TfmFixWord getKerning(int cp2) {
 
         if (kernmap == null) {
             return TfmFixWord.ZERO;
@@ -572,7 +572,7 @@ public class TfmCharInfoWord implements Serializable {
      * @param cp2 the right char. This character has to exist.
      * @return the ligature.
      */
-    public int getLigature(final int cp2) {
+    public int getLigature(int cp2) {
 
         if (ligmap == null) {
             return -1;
@@ -697,7 +697,7 @@ public class TfmCharInfoWord implements Serializable {
      * Set bc.
      * @param abc The bc to set.
      */
-    public void setBc(final short abc) {
+    public void setBc(short abc) {
 
         bc = abc;
     }
@@ -706,7 +706,7 @@ public class TfmCharInfoWord implements Serializable {
      * Set the bot.
      * @param abot The bot to set.
      */
-    public void setBot(final short abot) {
+    public void setBot(short abot) {
 
         bot = abot;
     }
@@ -715,7 +715,7 @@ public class TfmCharInfoWord implements Serializable {
      * Det the depth.
      * @param adepth The depth to set.
      */
-    public void setDepth(final TfmFixWord adepth) {
+    public void setDepth(TfmFixWord adepth) {
 
         depth = adepth;
     }
@@ -724,7 +724,7 @@ public class TfmCharInfoWord implements Serializable {
      * Set the glyphname.
      * @param gn The glyphname to set.
      */
-    public void setGlyphname(final String gn) {
+    public void setGlyphname(String gn) {
 
         glyphname = gn;
     }
@@ -733,7 +733,7 @@ public class TfmCharInfoWord implements Serializable {
      * Set the height.
      * @param aheight The height to set.
      */
-    public void setHeight(final TfmFixWord aheight) {
+    public void setHeight(TfmFixWord aheight) {
 
         height = aheight;
     }
@@ -742,7 +742,7 @@ public class TfmCharInfoWord implements Serializable {
      * Set the italic.
      * @param aitalic The italic to set.
      */
-    public void setItalic(final TfmFixWord aitalic) {
+    public void setItalic(TfmFixWord aitalic) {
 
         italic = aitalic;
     }
@@ -751,7 +751,7 @@ public class TfmCharInfoWord implements Serializable {
      * Set the ligkernstart.
      * @param ligkerns  The ligkernstart to set.
      */
-    public void setLigkernstart(final int ligkerns) {
+    public void setLigkernstart(int ligkerns) {
 
         ligkernstart = ligkerns;
     }
@@ -760,7 +760,7 @@ public class TfmCharInfoWord implements Serializable {
      * Set the ligKernTable.
      * @param lk    The ligKernTable to set.
      */
-    public void setLigKernTable(final TfmLigKern[] lk) {
+    public void setLigKernTable(TfmLigKern[] lk) {
 
         ligKernTable = lk;
     }
@@ -769,7 +769,7 @@ public class TfmCharInfoWord implements Serializable {
      * Set the mid.
      * @param amid The mid to set.
      */
-    public void setMid(final short amid) {
+    public void setMid(short amid) {
 
         mid = amid;
     }
@@ -778,7 +778,7 @@ public class TfmCharInfoWord implements Serializable {
      * Set the nextchar.
      * @param anextchar The nextchar to set.
      */
-    public void setNextchar(final short anextchar) {
+    public void setNextchar(short anextchar) {
 
         nextchar = anextchar;
     }
@@ -787,7 +787,7 @@ public class TfmCharInfoWord implements Serializable {
      * Set the rep.
      * @param arep The rep to set.
      */
-    public void setRep(final short arep) {
+    public void setRep(short arep) {
 
         rep = arep;
     }
@@ -796,7 +796,7 @@ public class TfmCharInfoWord implements Serializable {
      * Set the top.
      * @param atop The top to set.
      */
-    public void setTop(final short atop) {
+    public void setTop(short atop) {
 
         top = atop;
     }
@@ -805,7 +805,7 @@ public class TfmCharInfoWord implements Serializable {
      * Set the width.
      * @param awidth The width to set.
      */
-    public void setWidth(final TfmFixWord awidth) {
+    public void setWidth(TfmFixWord awidth) {
 
         width = awidth;
     }

@@ -76,6 +76,8 @@ public class PageBuilderImpl implements PageBuilder {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.pageBuilder.PageBuilder#close()
      */
     public void close() throws TypesetterException {
@@ -89,17 +91,13 @@ public class PageBuilderImpl implements PageBuilder {
     }
 
     /**
-     * This method is used when the page builder has received its last nodes.
-     * It indicates that now the pages should be written out.
-     * <p>
-     * Nevertheless some shipouts might come afterwards.
-     * </p>
+     * {@inheritDoc}
      *
      * @see org.extex.typesetter.pageBuilder.PageBuilder#flush(
      *     org.extex.typesetter.type.NodeList,
      *     org.extex.typesetter.Typesetter)
      */
-    public void flush(final NodeList nodes, final Typesetter typesetter)
+    public void flush(NodeList nodes, Typesetter typesetter)
             throws TypesetterException {
 
         if (nodes.size() <= 0) {
@@ -122,22 +120,14 @@ public class PageBuilderImpl implements PageBuilder {
     }
 
     /**
-     * This is the entry point for the page builder. Here it receives a
-     * complete node list to be sent to the output writer. It can be assumed
-     * that all values for width, height, and depth of the node lists are
-     * properly filled.
-     *
-     * @param nodes the nodes to send
-     * @param typesetter the typesetter
-     *
-     * @throws TypesetterException in case of an error
+     * {@inheritDoc}
      *
      * @see org.extex.typesetter.pageBuilder.PageBuilder#inspectAndBuild(
      *      org.extex.typesetter.type.node.VerticalListNode,
      *      org.extex.typesetter.Typesetter)
      */
-    public void inspectAndBuild(final VerticalListNode nodes,
-            final Typesetter typesetter) throws TypesetterException {
+    public void inspectAndBuild(VerticalListNode nodes,
+            Typesetter typesetter) throws TypesetterException {
 
         FixedDimen d = nodes.getVerticalSize();
         if (d.ge(options.getDimenOption("vsize"))) {
@@ -148,24 +138,23 @@ public class PageBuilderImpl implements PageBuilder {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.pageBuilder.PageBuilder#setContext(
      *      org.extex.interpreter.context.Context)
      */
-    public void setContext(final Context context) {
+    public void setContext(Context context) {
 
         this.context = context;
     }
 
     /**
-     * Setter for the document writer.
-     * This has to be provided before the page builder can be active.
-     *
-     * @param backend the new document writer to use
+     * {@inheritDoc}
      *
      * @see org.extex.typesetter.Typesetter#setBackend(
      *      org.extex.backend.BackendDriver)
      */
-    public void setBackend(final BackendDriver backend) {
+    public void setBackend(BackendDriver backend) {
 
         this.backendDriver = backend;
     }
@@ -175,35 +164,41 @@ public class PageBuilderImpl implements PageBuilder {
      *
      * @param options the options to set
      */
-    public void setOptions(final TypesetterOptions options) {
+    public void setOptions(TypesetterOptions options) {
 
         this.options = options;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.pageBuilder.PageBuilder#setOutputRoutine(
      *      org.extex.typesetter.output.OutputRoutine)
      */
-    public void setOutputRoutine(final OutputRoutine output) {
+    public void setOutputRoutine(OutputRoutine output) {
 
         this.outputRoutine = output;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.pageBuilder.PageBuilder#setPageFactory(
      *      org.extex.typesetter.type.page.PageFactory)
      */
-    public void setPageFactory(final PageFactory factory) {
+    public void setPageFactory(PageFactory factory) {
 
         pageFactory = factory;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.pageBuilder.PageBuilder#shipout(
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.Typesetter)
      */
-    public void shipout(final NodeList nodes, final Typesetter typesetter)
+    public void shipout(NodeList nodes, Typesetter typesetter)
             throws TypesetterException {
 
         if (nodes.size() <= 0) {

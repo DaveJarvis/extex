@@ -61,7 +61,7 @@ public class MathDiv extends AbstractMath
      * @param name the name for debugging
      * @throws GeneralException ...
      */
-    public MathDiv(final String name) throws GeneralException {
+    public MathDiv(String name) throws GeneralException {
 
         super(name);
 
@@ -77,7 +77,7 @@ public class MathDiv extends AbstractMath
      * @throws InterpreterException if a error occurred
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Real calculate(final Context context, final TokenSource source)
+    protected Real calculate(Context context, TokenSource source)
             throws InterpreterException,
                 ConfigurationException {
 

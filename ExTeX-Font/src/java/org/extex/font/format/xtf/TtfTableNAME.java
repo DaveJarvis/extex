@@ -85,8 +85,8 @@ public class TtfTableNAME extends AbstractXtfTable
      * @param rar       input
      * @throws IOException if an IO-error occurs
      */
-    TtfTableNAME(final XtfTableMap tablemap, final XtfTableDirectory.Entry de,
-            final RandomAccessR rar) throws IOException {
+    TtfTableNAME(XtfTableMap tablemap, XtfTableDirectory.Entry de,
+            RandomAccessR rar) throws IOException {
 
         super(tablemap);
         rar.seek(de.getOffset());
@@ -184,7 +184,7 @@ public class TtfTableNAME extends AbstractXtfTable
      * @param nameId    name id
      * @return Returns the record.
      */
-    public String getRecord(final short nameId) {
+    public String getRecord(short nameId) {
 
         // Search for the first instance of this name ID
         for (int i = 0; i < count; i++) {
@@ -245,7 +245,7 @@ public class TtfTableNAME extends AbstractXtfTable
      * @param platfromid    Teh platform id.
      * @return Returns <code>true</code>, if a record for the platform exists.
      */
-    public boolean existsPlatfrom(final int platfromid) {
+    public boolean existsPlatfrom(int platfromid) {
 
         for (int i = 0; i < namerecords.length; i++) {
             if (namerecords[i].getPlatformId() == platfromid) {
@@ -260,7 +260,7 @@ public class TtfTableNAME extends AbstractXtfTable
      * @param platfromid The platform id.
      * @return Returns the namerecords for a platfrom id.
      */
-    public NameRecord[] getNameRecords(final int platfromid) {
+    public NameRecord[] getNameRecords(int platfromid) {
 
         int cnt = 0;
         for (int i = 0; i < namerecords.length; i++) {
@@ -284,7 +284,7 @@ public class TtfTableNAME extends AbstractXtfTable
      * @param platfromid The platform id.
      * @return Returns the namerecords for a platfrom id.
      */
-    public String getRecordString(final int platfromid, final int id) {
+    public String getRecordString(int platfromid, int id) {
 
         NameRecord[] rec = getNameRecords(platfromid);
 
@@ -326,7 +326,7 @@ public class TtfTableNAME extends AbstractXtfTable
      * @param id    The platform id.
      * @return Returns the platform name for a id.
      */
-    public static String getPlatformName(final int id) {
+    public static String getPlatformName(int id) {
 
         if (id >= 0 && id < PLATFORMNAME.length) {
             return PLATFORMNAME[id];
@@ -339,7 +339,7 @@ public class TtfTableNAME extends AbstractXtfTable
      * @param id    The name id.
      * @return Returns the name name for a id.
      */
-    public static String getIdName(final int id) {
+    public static String getIdName(int id) {
 
         if (id >= 0 && id < IDNAME.length) {
             return IDNAME[id];
@@ -351,7 +351,7 @@ public class TtfTableNAME extends AbstractXtfTable
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writeStartElement(writer);
         writer.writeAttribute("format", String.valueOf(format));
@@ -450,7 +450,7 @@ public class TtfTableNAME extends AbstractXtfTable
          * @param rar       input
          * @throws IOException if an IO-error occurs
          */
-        NameRecord(final RandomAccessR rar) throws IOException {
+        NameRecord(RandomAccessR rar) throws IOException {
 
             platformId = rar.readShort();
             encodingId = rar.readShort();
@@ -511,8 +511,8 @@ public class TtfTableNAME extends AbstractXtfTable
          * @param stringStorageOffset   offsset
          * @throws IOException if an IO-error occurs
          */
-        public void loadString(final RandomAccessR rar,
-                final int stringStorageOffset) throws IOException {
+        public void loadString(RandomAccessR rar,
+                int stringStorageOffset) throws IOException {
 
             StringBuffer sb = new StringBuffer();
             rar.seek(stringStorageOffset + stringOffset);
@@ -584,7 +584,7 @@ public class TtfTableNAME extends AbstractXtfTable
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
-        public void writeXML(final XMLStreamWriter writer) throws IOException {
+        public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("namerecord");
             writer.writeAttribute("platformid", String.valueOf(platformId));

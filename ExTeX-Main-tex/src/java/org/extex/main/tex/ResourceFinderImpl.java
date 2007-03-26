@@ -74,10 +74,8 @@ public class ResourceFinderImpl
      * Creates a new object.
      *
      * @param theConfiguration the configuration to use
-     *
-     * @throws ConfigurationException in case of an error in the configuration
      */
-    public ResourceFinderImpl(final Configuration theConfiguration) {
+    public ResourceFinderImpl(Configuration theConfiguration) {
 
         super();
         this.configuration = theConfiguration;
@@ -91,7 +89,7 @@ public class ResourceFinderImpl
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger theLogger) {
+    public void enableLogging(Logger theLogger) {
 
         this.logger = theLogger;
     }
@@ -104,7 +102,7 @@ public class ResourceFinderImpl
      *
      * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
      */
-    public void enableTracing(final boolean flag) {
+    public void enableTracing(boolean flag) {
 
     }
 
@@ -123,7 +121,7 @@ public class ResourceFinderImpl
      *      java.lang.String,
      *      java.lang.String)
      */
-    public InputStream findResource(final String name, final String type)
+    public InputStream findResource(String name, String type)
             throws ConfigurationException {
 
         Configuration cfg = configuration.findConfiguration(type);
@@ -194,7 +192,7 @@ public class ResourceFinderImpl
      * @see org.extex.resource.InteractionAware#setInteractionProvider(
      *      org.extex.resource.InteractionIndicator)
      */
-    public void setInteractionProvider(final InteractionIndicator provider) {
+    public void setInteractionProvider(InteractionIndicator provider) {
 
         this.provider = provider;
     }
@@ -207,7 +205,7 @@ public class ResourceFinderImpl
      * @see org.extex.resource.RecursiveFinder#setParent(
      *      org.extex.resource.ResourceFinder)
      */
-    public void setParent(final ResourceFinder parent) {
+    public void setParent(ResourceFinder parent) {
 
         this.parent = parent;
     }

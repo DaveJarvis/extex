@@ -104,8 +104,8 @@ public class Transform implements Serializable {
      * @param v5    the value 5
      * @param v6    the value 6
      */
-    public Transform(final Real v1, final Real v2, final Real v3,
-            final Real v4, final Real v5, final Real v6) {
+    public Transform(Real v1, Real v2, Real v3,
+            Real v4, Real v5, Real v6) {
 
         super();
         val[T1] = v1;
@@ -126,8 +126,8 @@ public class Transform implements Serializable {
      * @param v5    the value 5
      * @param v6    the value 6
      */
-    public Transform(final double v1, final double v2, final double v3,
-            final double v4, final double v5, final double v6) {
+    public Transform(double v1, double v2, double v3,
+            double v4, double v5, double v6) {
 
         super();
         val[T1] = new Real(v1);
@@ -147,7 +147,7 @@ public class Transform implements Serializable {
      * @throws InterpreterException ...
      * @throws ConfigurationException in case of an configuration error
      */
-    public Transform(final Context context, final TokenSource source)
+    public Transform(Context context, TokenSource source)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -163,7 +163,7 @@ public class Transform implements Serializable {
      * @param s     the value as String
      * @throws InterpreterException if a NumberFormatException is thrown
      */
-    public Transform(final String s) throws InterpreterException {
+    public Transform(String s) throws InterpreterException {
 
         if (s == null || s.trim().length() == 0) {
             for (int i = 0; i < MAXVAL; i++) {
@@ -190,7 +190,7 @@ public class Transform implements Serializable {
      * Setter for the value.
      * @param value the new value
      */
-    public void set(final Transform value) {
+    public void set(Transform value) {
 
         for (int i = 0; i < MAXVAL; i++) {
             val[i] = value.get(i);
@@ -202,7 +202,7 @@ public class Transform implements Serializable {
      * @param idx   the index
      * @param value the value with index
      */
-    public void set(final int idx, final Real value) {
+    public void set(int idx, Real value) {
 
         if (idx >= 0 && idx < MAXVAL) {
             val[idx] = value;
@@ -215,7 +215,7 @@ public class Transform implements Serializable {
      * @param idx   the number of the value
      * @return  the value on index idx
      */
-    public Real get(final int idx) {
+    public Real get(int idx) {
 
         if (idx >= 0 && idx < MAXVAL) {
             return val[idx];

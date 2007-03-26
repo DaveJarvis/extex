@@ -39,6 +39,7 @@ public final class Finder {
      */
     private Finder() {
 
+        //not used
     }
 
     /**
@@ -46,7 +47,7 @@ public final class Finder {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         PrintStream printStream = System.out;
         ClassLoader classLoader = Finder.class.getClassLoader();

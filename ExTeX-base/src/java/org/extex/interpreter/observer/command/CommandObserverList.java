@@ -41,8 +41,8 @@ public final class CommandObserverList implements CommandObserver {
      *
      * @return the input list or a new one with the observer added
      */
-    public static CommandObserver register(final CommandObserver list,
-            final CommandObserver observer) {
+    public static CommandObserver register(CommandObserver list,
+            CommandObserver observer) {
 
         if (list instanceof CommandObserverList) {
             ((CommandObserverList) list).add(observer);
@@ -62,14 +62,14 @@ public final class CommandObserverList implements CommandObserver {
     /**
      * The field <tt>list</tt> contains the encapsulated list.
      */
-    private List list = new ArrayList();
+    private List<CommandObserver> list = new ArrayList<CommandObserver>();
 
     /**
      * Add an observer to the list.
      *
      * @param observer the observer to add to the list
      */
-    public void add(final CommandObserver observer) {
+    public void add(CommandObserver observer) {
 
         list.add(observer);
     }
@@ -80,11 +80,10 @@ public final class CommandObserverList implements CommandObserver {
      *
      * @param token the token to be expanded
      */
-    public void update(final Token token) {
+    public void update(Token token) {
 
-        int size = list.size();
-        for (int i = 0; i < size; i++) {
-            ((CommandObserver) list.get(i)).update(token);
+        for (CommandObserver obs : list) {
+            obs.update(token);
         }
     }
 

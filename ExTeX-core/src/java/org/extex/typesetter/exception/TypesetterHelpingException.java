@@ -143,8 +143,8 @@ public class TypesetterHelpingException extends TypesetterException {
      * @param messageTag the message
      * @param theLocalizer the localizer to use
      */
-    public TypesetterHelpingException(final Localizer theLocalizer,
-            final String messageTag) {
+    public TypesetterHelpingException(Localizer theLocalizer,
+            String messageTag) {
 
         super();
         this.tag = messageTag;
@@ -161,8 +161,8 @@ public class TypesetterHelpingException extends TypesetterException {
      * @param a1 the first argument
      * @param theLocalizer the localizer to use
      */
-    public TypesetterHelpingException(final Localizer theLocalizer,
-            final String messageTag, final String a1) {
+    public TypesetterHelpingException(Localizer theLocalizer,
+            String messageTag, String a1) {
 
         super();
         this.tag = messageTag;
@@ -180,8 +180,8 @@ public class TypesetterHelpingException extends TypesetterException {
      * @param a2 the second argument
      * @param theLocalizer the localizer to use
      */
-    public TypesetterHelpingException(final Localizer theLocalizer,
-            final String messageTag, final String a1, final String a2) {
+    public TypesetterHelpingException(Localizer theLocalizer,
+            String messageTag, String a1, String a2) {
 
         super();
         this.tag = messageTag;
@@ -200,9 +200,9 @@ public class TypesetterHelpingException extends TypesetterException {
      * @param a3 the third argument
      * @param theLocalizer the localizer to use
      */
-    public TypesetterHelpingException(final Localizer theLocalizer,
-            final String messageTag, final String a1, final String a2,
-            final String a3) {
+    public TypesetterHelpingException(Localizer theLocalizer,
+            String messageTag, String a1, String a2,
+            String a3) {
 
         super();
         this.tag = messageTag;

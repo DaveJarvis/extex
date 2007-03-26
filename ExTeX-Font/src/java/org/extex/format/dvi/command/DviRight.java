@@ -39,7 +39,7 @@ public class DviRight extends DviCommand {
      * @param sp    the start pointer
      * @param v     the value
      */
-    public DviRight(final int opc, final int sp, final int v) {
+    public DviRight(int opc, int sp, int v) {
 
         super(opc, sp);
         value = v;

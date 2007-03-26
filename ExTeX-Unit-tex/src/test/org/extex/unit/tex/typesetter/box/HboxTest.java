@@ -33,7 +33,7 @@ public class HboxTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(HboxTest.class);
     }
@@ -43,7 +43,7 @@ public class HboxTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public HboxTest(final String arg) {
+    public HboxTest(String arg) {
 
         super(arg, "hbox", "{} ");
     }

@@ -71,7 +71,7 @@ public class ExTeXRunner extends TestCase {
          *
          * @throws Exception in case of an error
          */
-        public MyExTeX(final Properties theProperties, final String dotFile)
+        public MyExTeX(Properties theProperties, String dotFile)
                 throws Exception {
 
             super(theProperties, dotFile);
@@ -90,7 +90,7 @@ public class ExTeXRunner extends TestCase {
          *
          * @throws Exception in case of an error
          */
-        public MyExTeX(final Properties theProperties) throws Exception {
+        public MyExTeX(Properties theProperties) throws Exception {
 
             super(theProperties);
             makeConfig();

@@ -61,7 +61,7 @@ public class GlueNode extends AbstractExpandableNode
      * @param horizontal indicator that the glue is used in horizontal
      *  mode
      */
-    public GlueNode(final FixedDimen size, final boolean horizontal) {
+    public GlueNode(FixedDimen size, boolean horizontal) {
 
         super(size, horizontal);
     }
@@ -75,7 +75,7 @@ public class GlueNode extends AbstractExpandableNode
      * @param horizontal indicator that the glue is used in horizontal
      *  mode
      */
-    public GlueNode(final FixedGlue size, final boolean horizontal) {
+    public GlueNode(FixedGlue size, boolean horizontal) {
 
         super(size, horizontal);
     }
@@ -97,8 +97,8 @@ public class GlueNode extends AbstractExpandableNode
      *      int,
      *      int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         sb.append(getLocalizer().format("String.Format", getSize().toString()));
     }
@@ -114,7 +114,7 @@ public class GlueNode extends AbstractExpandableNode
      * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
-    public void toText(final StringBuffer sb, final String prefix) {
+    public void toText(StringBuffer sb, String prefix) {
 
         sb.append(getLocalizer().format("Text.Format", getSize().toString()));
     }
@@ -133,7 +133,7 @@ public class GlueNode extends AbstractExpandableNode
      *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final NodeVisitor visitor, final Object value)
+    public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {
 
         return visitor.visitGlue(this, value);

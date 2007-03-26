@@ -74,8 +74,7 @@ public class UnitInfoFactory extends AbstractFactory {
      */
     public UnitInfo createUnitInfo() throws ConfigurationException {
 
-        return (UnitInfo) createInstanceForConfiguration(getConfiguration(),
-                UnitInfo.class);
+        return (UnitInfo) createInstance(UnitInfo.class);
     }
 
 }

@@ -23,7 +23,7 @@ package org.extex.exdoc.util;
  * This class is a container for an author with an email address.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5413 $
  */
 public class Author {
 
@@ -43,7 +43,7 @@ public class Author {
      * @param name the name
      * @param email the email address
      */
-    public Author(final String name, final String email) {
+    public Author(String name, String email) {
 
         super();
         this.name = name;

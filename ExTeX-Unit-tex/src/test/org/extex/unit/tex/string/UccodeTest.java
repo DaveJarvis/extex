@@ -31,7 +31,7 @@ public class UccodeTest extends AbstractCharMapTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(UccodeTest.class);
     }
@@ -41,7 +41,7 @@ public class UccodeTest extends AbstractCharMapTester {
      *
      * @param arg the name
      */
-    public UccodeTest(final String arg) {
+    public UccodeTest(String arg) {
 
         super(arg, "uccode", "65", "65", "1114111");
     }

@@ -40,7 +40,7 @@ public class DocumentWriterException extends BackendException {
      *
      * @param message the error message
      */
-    public DocumentWriterException(final String message) {
+    public DocumentWriterException(String message) {
 
         super(message);
     }
@@ -51,7 +51,7 @@ public class DocumentWriterException extends BackendException {
      * @param message the message
      * @param cause the cause
      */
-    public DocumentWriterException(final String message, final Throwable cause) {
+    public DocumentWriterException(String message, Throwable cause) {
 
         super(message, cause);
     }
@@ -61,7 +61,7 @@ public class DocumentWriterException extends BackendException {
      *
      * @param cause the cause
      */
-    public DocumentWriterException(final Throwable cause) {
+    public DocumentWriterException(Throwable cause) {
 
         super(cause);
     }

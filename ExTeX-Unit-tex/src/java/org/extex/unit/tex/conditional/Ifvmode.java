@@ -65,7 +65,7 @@ public class Ifvmode extends AbstractIf {
      *
      * @param name the name for debugging
      */
-    public Ifvmode(final String name) {
+    public Ifvmode(String name) {
 
         super(name);
     }
@@ -87,8 +87,8 @@ public class Ifvmode extends AbstractIf {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(final Context context,
-            final TokenSource source, final Typesetter typesetter) {
+    public boolean conditional(Context context,
+            TokenSource source, Typesetter typesetter) {
 
         Mode mode = typesetter.getMode();
         return (mode == Mode.VERTICAL || mode == Mode.INNER_VERTICAL);

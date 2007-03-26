@@ -51,7 +51,7 @@ public class AdjustNode extends AbstractNode implements Node {
      *
      * @param nodes the list of nodes contained
      */
-    public AdjustNode(final NodeList nodes) {
+    public AdjustNode(NodeList nodes) {
 
         super();
         this.nodes = nodes;
@@ -84,8 +84,8 @@ public class AdjustNode extends AbstractNode implements Node {
      *      int,
      *      int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         sb.append(getLocalizer().format("String.Format", //
             getWidth().toString()));
@@ -103,7 +103,7 @@ public class AdjustNode extends AbstractNode implements Node {
      * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
-    public void toText(final StringBuffer sb, final String prefix) {
+    public void toText(StringBuffer sb, String prefix) {
 
         sb.append(getLocalizer().format("Text.Format", getWidth().toString()));
     }
@@ -122,7 +122,7 @@ public class AdjustNode extends AbstractNode implements Node {
      *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final NodeVisitor visitor, final Object value)
+    public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {
 
         return visitor.visitAdjust(this, value);

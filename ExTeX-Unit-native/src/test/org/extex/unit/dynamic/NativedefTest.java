@@ -34,7 +34,7 @@ public class NativedefTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public NativedefTest(final String arg) {
+    public NativedefTest(String arg) {
 
         super(arg, "nativedef",
                 "{java}\\t{org.extex.unit.tex.Relax}");

@@ -129,7 +129,7 @@ public class PsBasicConverter
          * @param xx the x position
          * @param yy the y position
          */
-        public void add(final UnicodeChar c, final Dimen xx, final Dimen yy) {
+        public void add(UnicodeChar c, Dimen xx, Dimen yy) {
 
             if (empty) {
                 shift = currY.ne(yy);
@@ -160,7 +160,7 @@ public class PsBasicConverter
          *
          * @param out the target string buffer
          */
-        public void clear(final StringBuffer out) {
+        public void clear(StringBuffer out) {
 
             if (empty) {
                 return;
@@ -250,7 +250,7 @@ public class PsBasicConverter
      *
      * @throws IOException in case of an error while loading
      */
-    public void init(final HeaderManager header) throws IOException {
+    public void init(HeaderManager header) throws IOException {
 
         String name = this.getClass().getName().replace('.', '/') + ".ps";
         InputStream stream =
@@ -279,8 +279,8 @@ public class PsBasicConverter
      *      org.extex.backend.documentWriter.postscript.util.FontManager,
      *      org.extex.backend.documentWriter.postscript.util.HeaderManager)
      */
-    public byte[] toPostScript(final Page page, final FontManager fontManager,
-            final HeaderManager headerManager) throws DocumentWriterException {
+    public byte[] toPostScript(Page page, FontManager fontManager,
+            HeaderManager headerManager) throws DocumentWriterException {
 
         x.set(page.getMediaHOffset());
         y.set(page.getMediaHeight());
@@ -310,7 +310,7 @@ public class PsBasicConverter
      * @see org.extex.color.ColorAware#setColorConverter(
      *      org.extex.color.ColorConverter)
      */
-    public void setColorConverter(final ColorConverter converter) {
+    public void setColorConverter(ColorConverter converter) {
 
         cc = converter;
     }
@@ -319,7 +319,7 @@ public class PsBasicConverter
      * @see org.extex.resource.ResourceConsumer#setResourceFinder(
      *      org.extex.resource.ResourceFinder)
      */
-    public void setResourceFinder(final ResourceFinder resourceFinder) {
+    public void setResourceFinder(ResourceFinder resourceFinder) {
 
         this.finder = resourceFinder;
     }
@@ -331,7 +331,7 @@ public class PsBasicConverter
      *
      * @throws GeneralException in case of an error
      */
-    private void specialHeader(final String name) throws GeneralException {
+    private void specialHeader(String name) throws GeneralException {
 
         try {
             InputStream s = finder.findResource(name, "pro");
@@ -356,7 +356,7 @@ public class PsBasicConverter
      *
      * @throws GeneralException in case of an error
      */
-    private void specialPsfile(final StringBuffer out, final String name)
+    private void specialPsfile(StringBuffer out, String name)
             throws GeneralException {
 
         try {
@@ -383,7 +383,7 @@ public class PsBasicConverter
      * @param color the color to switch to
      * @param out the target buffer
      */
-    private void switchColors(final Color color, final StringBuffer out) {
+    private void switchColors(Color color, StringBuffer out) {
 
         out.append(' ');
         if (color instanceof GrayscaleColor) {
@@ -407,7 +407,7 @@ public class PsBasicConverter
      *      org.extex.typesetter.type.node.AdjustNode,
      *      java.lang.Object)
      */
-    public Object visitAdjust(final AdjustNode node, final Object oOut)
+    public Object visitAdjust(AdjustNode node, Object oOut)
             throws GeneralException {
 
         buffer.clear((StringBuffer) oOut);
@@ -419,7 +419,7 @@ public class PsBasicConverter
      *      org.extex.typesetter.type.node.AfterMathNode,
      *      java.lang.Object)
      */
-    public Object visitAfterMath(final AfterMathNode node, final Object oOut)
+    public Object visitAfterMath(AfterMathNode node, Object oOut)
             throws GeneralException {
 
         buffer.clear((StringBuffer) oOut);
@@ -431,8 +431,8 @@ public class PsBasicConverter
      *      org.extex.typesetter.type.node.AlignedLeadersNode,
      *      java.lang.Object)
      */
-    public Object visitAlignedLeaders(final AlignedLeadersNode node,
-            final Object oOut) throws GeneralException {
+    public Object visitAlignedLeaders(AlignedLeadersNode node,
+            Object oOut) throws GeneralException {
 
         buffer.clear((StringBuffer) oOut);
         return null;
@@ -443,7 +443,7 @@ public class PsBasicConverter
      *      org.extex.typesetter.type.node.BeforeMathNode,
      *      java.lang.Object)
      */
-    public Object visitBeforeMath(final BeforeMathNode node, final Object oOut)
+    public Object visitBeforeMath(BeforeMathNode node, Object oOut)
             throws GeneralException {
 
         buffer.clear((StringBuffer) oOut);
@@ -455,8 +455,8 @@ public class PsBasicConverter
      *      org.extex.typesetter.type.node.CenteredLeadersNode,
      *      java.lang.Object)
      */
-    public Object visitCenteredLeaders(final CenteredLeadersNode node,
-            final Object oOut) throws GeneralException {
+    public Object visitCenteredLeaders(CenteredLeadersNode node,
+            Object oOut) throws GeneralException {
 
         buffer.clear((StringBuffer) oOut);
         return null;
@@ -467,7 +467,7 @@ public class PsBasicConverter
      *      org.extex.typesetter.type.node.CharNode,
      *      java.lang.Object)
      */
-    public Object visitChar(final CharNode node, final Object oOut)
+    public Object visitChar(CharNode node, Object oOut)
             throws GeneralException {
 
         StringBuffer out = (StringBuffer) oOut;
@@ -497,8 +497,8 @@ public class PsBasicConverter
      *      org.extex.typesetter.type.node.DiscretionaryNode,
      *      java.lang.Object)
      */
-    public Object visitDiscretionary(final DiscretionaryNode node,
-            final Object oOut) throws GeneralException {
+    public Object visitDiscretionary(DiscretionaryNode node,
+            Object oOut) throws GeneralException {
 
         buffer.clear((StringBuffer) oOut);
         return null;
@@ -509,8 +509,8 @@ public class PsBasicConverter
      *      org.extex.typesetter.type.node.ExpandedLeadersNode,
      *      java.lang.Object)
      */
-    public Object visitExpandedLeaders(final ExpandedLeadersNode node,
-            final Object oOut) throws GeneralException {
+    public Object visitExpandedLeaders(ExpandedLeadersNode node,
+            Object oOut) throws GeneralException {
 
         buffer.clear((StringBuffer) oOut);
         return null;
@@ -521,7 +521,7 @@ public class PsBasicConverter
      *      org.extex.typesetter.type.node.GlueNode,
      *      java.lang.Object)
      */
-    public Object visitGlue(final GlueNode node, final Object oOut)
+    public Object visitGlue(GlueNode node, Object oOut)
             throws GeneralException {
 
         buffer.clear((StringBuffer) oOut);
@@ -533,8 +533,8 @@ public class PsBasicConverter
      *      org.extex.typesetter.type.node.HorizontalListNode,
      *      java.lang.Object)
      */
-    public Object visitHorizontalList(final HorizontalListNode node,
-            final Object oOut) throws GeneralException {
+    public Object visitHorizontalList(HorizontalListNode node,
+            Object oOut) throws GeneralException {
 
         StringBuffer out = (StringBuffer) oOut;
         buffer.clear(out);
@@ -564,7 +564,7 @@ public class PsBasicConverter
      *      org.extex.typesetter.type.node.InsertionNode,
      *      java.lang.Object)
      */
-    public Object visitInsertion(final InsertionNode node, final Object oOut)
+    public Object visitInsertion(InsertionNode node, Object oOut)
             throws GeneralException {
 
         buffer.clear((StringBuffer) oOut);
@@ -576,7 +576,7 @@ public class PsBasicConverter
      *      org.extex.typesetter.type.node.KernNode,
      *      java.lang.Object)
      */
-    public Object visitKern(final KernNode node, final Object oOut)
+    public Object visitKern(KernNode node, Object oOut)
             throws GeneralException {
 
         buffer.clear((StringBuffer) oOut);
@@ -588,7 +588,7 @@ public class PsBasicConverter
      *      org.extex.typesetter.type.node.LigatureNode,
      *      java.lang.Object)
      */
-    public Object visitLigature(final LigatureNode node, final Object oOut)
+    public Object visitLigature(LigatureNode node, Object oOut)
             throws GeneralException {
 
         return visitChar(node, oOut);
@@ -599,7 +599,7 @@ public class PsBasicConverter
      *      org.extex.typesetter.type.node.MarkNode,
      *      java.lang.Object)
      */
-    public Object visitMark(final MarkNode node, final Object oOut)
+    public Object visitMark(MarkNode node, Object oOut)
             throws GeneralException {
 
         buffer.clear((StringBuffer) oOut);
@@ -611,7 +611,7 @@ public class PsBasicConverter
      *      org.extex.typesetter.type.node.PenaltyNode,
      *      java.lang.Object)
      */
-    public Object visitPenalty(final PenaltyNode node, final Object oOut)
+    public Object visitPenalty(PenaltyNode node, Object oOut)
             throws GeneralException {
 
         buffer.clear((StringBuffer) oOut);
@@ -623,7 +623,7 @@ public class PsBasicConverter
      *      org.extex.typesetter.type.node.RuleNode,
      *      java.lang.Object)
      */
-    public Object visitRule(final RuleNode node, final Object oOut)
+    public Object visitRule(RuleNode node, Object oOut)
             throws GeneralException {
 
         StringBuffer out = (StringBuffer) oOut;
@@ -654,7 +654,7 @@ public class PsBasicConverter
      *      org.extex.typesetter.type.node.SpaceNode,
      *      java.lang.Object)
      */
-    public Object visitSpace(final SpaceNode node, final Object oOut)
+    public Object visitSpace(SpaceNode node, Object oOut)
             throws GeneralException {
 
         buffer.clear((StringBuffer) oOut);
@@ -666,8 +666,8 @@ public class PsBasicConverter
      *      org.extex.typesetter.type.node.VerticalListNode,
      *      java.lang.Object)
      */
-    public Object visitVerticalList(final VerticalListNode node,
-            final Object oOut) throws GeneralException {
+    public Object visitVerticalList(VerticalListNode node,
+            Object oOut) throws GeneralException {
 
         StringBuffer out = (StringBuffer) oOut;
         buffer.clear(out);
@@ -698,7 +698,7 @@ public class PsBasicConverter
      *      org.extex.typesetter.type.node.VirtualCharNode,
      *      java.lang.Object)
      */
-    public Object visitVirtualChar(final VirtualCharNode node, final Object oOut)
+    public Object visitVirtualChar(VirtualCharNode node, Object oOut)
             throws GeneralException {
 
         buffer.clear((StringBuffer) oOut);
@@ -710,7 +710,7 @@ public class PsBasicConverter
      *      org.extex.typesetter.type.node.WhatsItNode,
      *      java.lang.Object)
      */
-    public Object visitWhatsIt(final WhatsItNode node, final Object oOut)
+    public Object visitWhatsIt(WhatsItNode node, Object oOut)
             throws GeneralException {
 
         buffer.clear((StringBuffer) oOut);

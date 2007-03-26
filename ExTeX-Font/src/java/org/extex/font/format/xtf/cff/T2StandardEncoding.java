@@ -307,7 +307,7 @@ public final class T2StandardEncoding {
      * @param code  the code
      * @return Returns the SID for a code or -1 if not found.
      */
-    public static int getSID(final int code) {
+    public static int getSID(int code) {
 
         if (code >= 0 && code < DATA.length) {
             return Integer.parseInt(DATA[code][1]);
@@ -320,7 +320,7 @@ public final class T2StandardEncoding {
      * @param code   the codefor the string
      * @return Returns the name or '.notdef' if number out of range.
      */
-    public static String getString(final int code) {
+    public static String getString(int code) {
 
         if (code >= 0 && code < DATA.length) {
             return DATA[code][0];

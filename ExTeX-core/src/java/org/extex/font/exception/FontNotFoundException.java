@@ -45,7 +45,7 @@ public class FontNotFoundException extends FontException {
      * Create a new object.
      * @param message   the message
      */
-    public FontNotFoundException(final String message) {
+    public FontNotFoundException(String message) {
 
         super(message);
     }

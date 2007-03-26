@@ -61,7 +61,8 @@ public interface Divideable {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
-     * @throws ConfigurationException in case of an configuration error
+     * @throws org.extex.framework.configuration.exception.ConfigurationException
+     *   in case of an configuration error
      */
     void divide(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter)

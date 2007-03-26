@@ -45,7 +45,7 @@ public class DviMissingFontException extends DviException {
      *
      * @param message   the message
      */
-    public DviMissingFontException(final String message) {
+    public DviMissingFontException(String message) {
 
         super(message);
     }

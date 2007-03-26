@@ -80,7 +80,7 @@ public class PsFontEncoding implements Serializable {
      * Set the encoding file.
      * @param encf The encoding file to set.
      */
-    public void setEncfile(final String encf) {
+    public void setEncfile(String encf) {
 
         encfile = encf;
     }
@@ -98,7 +98,7 @@ public class PsFontEncoding implements Serializable {
      * Add a string to <tt>encodingtxt</tt>.
      * @param s the string to add
      */
-    public void addEncodingtxt(final String s) {
+    public void addEncodingtxt(String s) {
 
         encodingtxt += s + " ";
     }
@@ -107,7 +107,7 @@ public class PsFontEncoding implements Serializable {
      * Set the encoding text.
      * @param enctxt The encoding text to set.
      */
-    public void setEncodingtxt(final String enctxt) {
+    public void setEncodingtxt(String enctxt) {
 
         encodingtxt = enctxt;
     }
@@ -125,7 +125,7 @@ public class PsFontEncoding implements Serializable {
      * Set the file name.
      * @param name The file name to set.
      */
-    public void setFilename(final String name) {
+    public void setFilename(String name) {
 
         filename = name;
     }
@@ -143,7 +143,7 @@ public class PsFontEncoding implements Serializable {
      * Set the font name.
      * @param name The font name to set.
      */
-    public void setFontname(final String name) {
+    public void setFontname(String name) {
 
         fontname = name;
     }
@@ -161,7 +161,7 @@ public class PsFontEncoding implements Serializable {
      * Set the font file.
      * @param file The font file to set.
      */
-    public void setFontfile(final String file) {
+    public void setFontfile(String file) {
 
         fontfile = file;
     }

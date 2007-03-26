@@ -46,8 +46,8 @@ public class TtfTableVHEA extends AbstractXtfTable
      * @param rar       input
      * @throws IOException if an IO-error occurs
      */
-    TtfTableVHEA(final XtfTableMap tablemap, final XtfTableDirectory.Entry de,
-            final RandomAccessR rar) throws IOException {
+    TtfTableVHEA(XtfTableMap tablemap, XtfTableDirectory.Entry de,
+            RandomAccessR rar) throws IOException {
 
         super(tablemap);
         rar.seek(de.getOffset());

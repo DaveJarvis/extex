@@ -32,7 +32,7 @@ public class XdefTest extends AbstractXdefTester {
      *
      * @param arg the name
      */
-    public XdefTest(final String arg) {
+    public XdefTest(String arg) {
 
         super(arg, "xdef");
     }

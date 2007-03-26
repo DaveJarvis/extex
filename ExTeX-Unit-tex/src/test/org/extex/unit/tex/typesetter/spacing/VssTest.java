@@ -33,7 +33,7 @@ public class VssTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(VssTest.class);
     }
@@ -43,7 +43,7 @@ public class VssTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public VssTest(final String arg) {
+    public VssTest(String arg) {
 
         super(arg, "vss", "");
     }

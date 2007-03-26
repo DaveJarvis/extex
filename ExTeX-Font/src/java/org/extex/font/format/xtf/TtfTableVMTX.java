@@ -46,8 +46,8 @@ public class TtfTableVMTX extends AbstractXtfTable
      * @param rar       input
      * @throws IOException if an IO-error occurs
      */
-    TtfTableVMTX(final XtfTableMap tablemap, final XtfTableDirectory.Entry de,
-            final RandomAccessR rar) throws IOException {
+    TtfTableVMTX(XtfTableMap tablemap, XtfTableDirectory.Entry de,
+            RandomAccessR rar) throws IOException {
 
         super(tablemap);
         rar.seek(de.getOffset());

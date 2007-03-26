@@ -33,7 +33,7 @@ public class GlueshrinkorderTest extends AbstractReadonlyCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(GlueshrinkorderTest.class);
     }
@@ -43,7 +43,7 @@ public class GlueshrinkorderTest extends AbstractReadonlyCountRegisterTester {
      *
      * @param arg the name
      */
-    public GlueshrinkorderTest(final String arg) {
+    public GlueshrinkorderTest(String arg) {
 
         super(arg, "glueshrinkorder", "\\skip0 ", "0");
         setConfig("etex-test");

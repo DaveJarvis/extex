@@ -62,7 +62,7 @@ public class NamedPair extends AbstractAssignment
      * Creates a new object.
      * @param name the name for debugging
      */
-    public NamedPair(final String name) {
+    public NamedPair(String name) {
 
         super(name);
     }
@@ -74,8 +74,8 @@ public class NamedPair extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException, ConfigurationException {
 
         if (context instanceof ContextExtension) {
@@ -100,7 +100,7 @@ public class NamedPair extends AbstractAssignment
      * @param value      the new value
      * @throws InterpreterException if no extension is configured.
      */
-    public void set(final Context context, final Pair value)
+    public void set(Context context, Pair value)
             throws InterpreterException {
 
         if (context instanceof ContextExtension) {
@@ -118,7 +118,7 @@ public class NamedPair extends AbstractAssignment
      * @param value      the new value as String
      * @throws InterpreterException if no extension is configured
      */
-    public void set(final Context context, final String value)
+    public void set(Context context, String value)
             throws InterpreterException {
 
         if (context instanceof ContextExtension) {
@@ -147,8 +147,8 @@ public class NamedPair extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException, CatcodeException {
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException, CatcodeException {
 
         if (context instanceof ContextExtension) {
             ContextExtension contextextex = (ContextExtension) context;
@@ -167,7 +167,7 @@ public class NamedPair extends AbstractAssignment
      * @return the key
      * @throws InterpreterException in case of an error.
      */
-    protected String getKey(final Context context, final TokenSource source)
+    protected String getKey(Context context, TokenSource source)
             throws InterpreterException {
 
         return getName();
@@ -178,7 +178,7 @@ public class NamedPair extends AbstractAssignment
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
      */
-    public Pair convertPair(final Context context, final TokenSource source)
+    public Pair convertPair(Context context, TokenSource source)
             throws InterpreterException {
 
         if (context instanceof ContextExtension) {

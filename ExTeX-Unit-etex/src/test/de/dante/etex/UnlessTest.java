@@ -34,7 +34,7 @@ public class UnlessTest extends TestCase {
      * Main entry function for running alone.
      * @param args command line args
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(UnlessTest.class);
     }

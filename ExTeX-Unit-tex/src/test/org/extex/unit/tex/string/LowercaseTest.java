@@ -33,7 +33,7 @@ public class LowercaseTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(LowercaseTest.class);
     }
@@ -43,7 +43,7 @@ public class LowercaseTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public LowercaseTest(final String arg) {
+    public LowercaseTest(String arg) {
 
         super(arg, "lowercase", "{abc}");
     }

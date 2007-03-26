@@ -54,7 +54,7 @@ public class SpaceNode extends GlueNode implements Node {
      *
      * @param theWidth the size of the space
      */
-    public SpaceNode(final FixedGlue theWidth) {
+    public SpaceNode(FixedGlue theWidth) {
 
         super(theWidth, true);
         this.size = theWidth;
@@ -76,8 +76,8 @@ public class SpaceNode extends GlueNode implements Node {
      *      int,
      *      int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         if (!DEVELOP || getWidth().eq(size.getLength())) {
             sb.append(getLocalizer().format("String.Format", //
@@ -100,7 +100,7 @@ public class SpaceNode extends GlueNode implements Node {
      *      java.lang.StringBuffer,
      *      java.lang.String)
      */
-    public void toText(final StringBuffer sb, final String prefix) {
+    public void toText(StringBuffer sb, String prefix) {
 
         sb.append(getLocalizer().format("Text.Format", size.toString()));
     }
@@ -119,7 +119,7 @@ public class SpaceNode extends GlueNode implements Node {
      *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final NodeVisitor visitor, final Object value)
+    public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {
 
         return visitor.visitSpace(this, value);

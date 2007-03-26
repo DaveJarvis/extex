@@ -69,8 +69,8 @@ public class LigatureBuilderImpl implements LigatureBuilder {
      *      org.extex.core.UnicodeChar,
      *      org.extex.interpreter.type.font.Font)
      */
-    public UnicodeChar getLigature(final UnicodeChar c1, final UnicodeChar c2,
-            final Font f) {
+    public UnicodeChar getLigature(UnicodeChar c1, UnicodeChar c2,
+            Font f) {
 
         return f.getLigature(c1, c2);
     }
@@ -91,7 +91,7 @@ public class LigatureBuilderImpl implements LigatureBuilder {
      * @see org.extex.language.ligature.LigatureBuilder#insertLigatures(
      *      org.extex.typesetter.type.NodeList, int)
      */
-    public int insertLigatures(final NodeList list, final int start)
+    public int insertLigatures(NodeList list, int start)
             throws HyphenationException {
 
         int i = start;

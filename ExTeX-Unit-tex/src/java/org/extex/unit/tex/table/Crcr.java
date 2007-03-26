@@ -64,7 +64,7 @@ public class Crcr extends Cr {
      *
      * @param name the name for tracing and debugging
      */
-    public Crcr(final String name) {
+    public Crcr(String name) {
 
         super(name);
     }
@@ -87,8 +87,8 @@ public class Crcr extends Cr {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         ListMaker maker = typesetter.getListMaker();

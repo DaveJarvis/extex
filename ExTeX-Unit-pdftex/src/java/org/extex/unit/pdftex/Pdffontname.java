@@ -77,7 +77,7 @@ public class Pdffontname extends AbstractPdftexCode
      *
      * @param name the name for tracing and debugging
      */
-    public Pdffontname(final String name) {
+    public Pdffontname(String name) {
 
         super(name);
     }
@@ -101,8 +101,8 @@ public class Pdffontname extends AbstractPdftexCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens convertTokens(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public Tokens convertTokens(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         PdftexSupport writer = ensurePdftex(context, typesetter);
@@ -135,8 +135,8 @@ public class Pdffontname extends AbstractPdftexCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         source.push(convertTokens(context, source, typesetter));
@@ -162,8 +162,8 @@ public class Pdffontname extends AbstractPdftexCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void expand(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void expand(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         source.push(convertTokens(context, source, typesetter));
@@ -184,8 +184,8 @@ public class Pdffontname extends AbstractPdftexCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         return convertTokens(context, source, typesetter);
 

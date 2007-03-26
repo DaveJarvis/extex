@@ -34,7 +34,7 @@ public class PdfendlinkTest extends NoFlagsButProtectedPrimitiveTester {
      *
      * @param arg the name
      */
-    public PdfendlinkTest(final String arg) {
+    public PdfendlinkTest(String arg) {
 
         super(arg, "pdfendlink", "");
         setConfig("pdftex-test");

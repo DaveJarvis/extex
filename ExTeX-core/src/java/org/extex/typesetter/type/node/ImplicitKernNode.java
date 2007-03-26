@@ -43,7 +43,7 @@ public class ImplicitKernNode extends AbstractKernNode {
      * @param kern the natural size
      * @param horizontal the indicator that the kern works horizontally
      */
-    public ImplicitKernNode(final FixedDimen kern, final boolean horizontal) {
+    public ImplicitKernNode(FixedDimen kern, boolean horizontal) {
 
         super(kern, horizontal);
     }

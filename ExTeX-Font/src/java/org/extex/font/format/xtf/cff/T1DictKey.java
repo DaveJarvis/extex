@@ -134,7 +134,7 @@ public abstract class T1DictKey extends T2CharString
      * @return Returns the new T2Operatorr object.
      * @throws IOException if an IO-error occurs.
      */
-    public static T1DictKey newInstance(final RandomAccessR rar)
+    public static T1DictKey newInstance(RandomAccessR rar)
             throws IOException {
 
         List stack = new ArrayList();
@@ -202,7 +202,7 @@ public abstract class T1DictKey extends T2CharString
      * @param id        the id-array
      * @return Return the byte-array
      */
-    protected short[] convertStackaddID(final List stack, final short[] id) {
+    protected short[] convertStackaddID(List stack, short[] id) {
 
         // calculate size
         int size = id.length;
@@ -248,8 +248,8 @@ public abstract class T1DictKey extends T2CharString
      *      org.extex.util.file.random.RandomAccessR,
      *      org.extex.font.format.xtf.OtfTableCFF, int)
      */
-    public void init(final RandomAccessR rar, final OtfTableCFF cff,
-            final int baseoffset) throws IOException {
+    public void init(RandomAccessR rar, OtfTableCFF cff,
+            int baseoffset) throws IOException {
 
         // do nothing
 

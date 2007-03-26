@@ -73,7 +73,7 @@ public class Ifcat extends AbstractIf {
      *
      * @param name the name for debugging
      */
-    public Ifcat(final String name) {
+    public Ifcat(String name) {
 
         super(name);
     }
@@ -97,8 +97,8 @@ public class Ifcat extends AbstractIf {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public boolean conditional(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Token t1 = source.getToken(context);

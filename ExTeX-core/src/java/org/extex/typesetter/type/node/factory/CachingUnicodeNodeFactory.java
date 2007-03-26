@@ -39,7 +39,7 @@ public class CachingUnicodeNodeFactory extends SimpleUnicodeNodeFactory {
     /**
      * The field <tt>cache</tt> contains the cache for previously created nodes.
      */
-    private Map cache;
+    private Map<TypesettingContext, Map<UnicodeChar, Node>> cache;
 
     /**
      * Creates a new object.
@@ -47,7 +47,7 @@ public class CachingUnicodeNodeFactory extends SimpleUnicodeNodeFactory {
     public CachingUnicodeNodeFactory() {
 
         super();
-        cache = new HashMap();
+        cache = new HashMap<TypesettingContext, Map<UnicodeChar, Node>>();
     }
 
     /**
@@ -62,18 +62,18 @@ public class CachingUnicodeNodeFactory extends SimpleUnicodeNodeFactory {
      *
      * @see org.extex.typesetter.type.node.factory.NodeFactory#getNode(
      *      org.extex.interpreter.context.tc.TypesettingContext,
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
-    public Node getNode(final TypesettingContext typesettingContext,
-            final UnicodeChar uc) {
+    public Node getNode(TypesettingContext typesettingContext,
+            UnicodeChar uc) {
 
-        Map map = (Map) cache.get(typesettingContext);
+        Map<UnicodeChar, Node> map = cache.get(typesettingContext);
         if (map == null) {
-            map = new HashMap();
+            map = new HashMap<UnicodeChar, Node>();
             cache.put(typesettingContext, map);
         }
 
-        Node node = (Node) map.get(uc);
+        Node node = map.get(uc);
 
         if (node == null) {
             node = super.getNode(typesettingContext, uc);

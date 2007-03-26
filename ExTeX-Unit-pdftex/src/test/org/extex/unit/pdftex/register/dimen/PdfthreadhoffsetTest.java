@@ -33,7 +33,7 @@ public class PdfthreadhoffsetTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PdfthreadhoffsetTest.class);
     }
@@ -43,7 +43,7 @@ public class PdfthreadhoffsetTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public PdfthreadhoffsetTest(final String arg) {
+    public PdfthreadhoffsetTest(String arg) {
 
         super(arg, "pdfthreadhoffset", "", "0.0pt");
         setConfig("pdftex-test");

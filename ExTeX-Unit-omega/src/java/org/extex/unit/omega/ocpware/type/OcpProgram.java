@@ -62,8 +62,8 @@ public class OcpProgram implements Serializable {
      * @param value the value to print
      * @param post the postfix string
      */
-    private static void dump(final PrintStream out, final String pre,
-            final int value, final String post) {
+    private static void dump(PrintStream out, String pre,
+            int value, String post) {
 
         out.print(pre);
         out.print(Integer.toHexString(value));
@@ -87,7 +87,7 @@ public class OcpProgram implements Serializable {
      *
      * @throws IOException in case of an IO error
      */
-    public static OcpProgram load(final InputStream stream) throws IOException {
+    public static OcpProgram load(InputStream stream) throws IOException {
 
         OcpProgram ocp = new OcpProgram();
 
@@ -123,7 +123,7 @@ public class OcpProgram implements Serializable {
      *
      * @throws IOException in case of an error
      */
-    private static int[] read(final InputStream in, final int len)
+    private static int[] read(InputStream in, int len)
             throws IOException {
 
         int[] a = new int[len];
@@ -142,7 +142,7 @@ public class OcpProgram implements Serializable {
      *
      * @throws IOException in case of an error
      */
-    private static int readWord(final InputStream in) throws IOException {
+    private static int readWord(InputStream in) throws IOException {
 
         int a = in.read();
         if (a < 0) {
@@ -167,7 +167,7 @@ public class OcpProgram implements Serializable {
     /**
      * The field <tt>arithStack</tt> contains the ...
      */
-    private Stack arithStack = new Stack();
+    private Stack<Integer> arithStack = new Stack<Integer>();
 
     /**
      * The field <tt>first</tt> contains the ...
@@ -208,17 +208,17 @@ public class OcpProgram implements Serializable {
     /**
      * The field <tt>states</tt> contains the states.
      */
-    private List states = new ArrayList();
+    private List<int[]> states = new ArrayList<int[]>();
 
     /**
      * The field <tt>stateStack</tt> contains the ...
      */
-    private Stack stateStack = new Stack();
+    private Stack<Integer> stateStack = new Stack<Integer>();
 
     /**
      * The field <tt>tables</tt> contains the tables.
      */
-    private List tables = new ArrayList();
+    private List<int[]> tables = new ArrayList<int[]>();
 
     /**
      * Creates a new object.
@@ -234,7 +234,7 @@ public class OcpProgram implements Serializable {
      *
      * @param t the state to add
      */
-    public void addState(final int[] t) {
+    public void addState(int[] t) {
 
         states.add(t);
     }
@@ -244,7 +244,7 @@ public class OcpProgram implements Serializable {
      *
      * @param t the table to add
      */
-    public void addTable(final int[] t) {
+    public void addTable(int[] t) {
 
         tables.add(t);
     }
@@ -255,7 +255,7 @@ public class OcpProgram implements Serializable {
      * @param out the output stream
      * @param orig ...
      */
-    public void dump(final PrintStream out, final boolean orig) {
+    public void dump(PrintStream out, boolean orig) {
 
         if (length >= 0) {
             dump(out, "ctp_length     : ", length, "\n");
@@ -265,18 +265,18 @@ public class OcpProgram implements Serializable {
         dump(out, "ctp_no_tables  : ", tables.size(), "\n");
         int mem = 0;
         for (int i = 0; i < tables.size(); i++) {
-            mem += ((int[]) tables.get(i)).length;
+            mem += tables.get(i).length;
         }
         dump(out, "ctp_room_tables: ", mem, "\n");
         dump(out, "ctp_no_states  : ", states.size(), "\n");
         mem = 0;
         for (int i = 0; i < states.size(); i++) {
-            mem += ((int[]) states.get(i)).length;
+            mem += states.get(i).length;
         }
         dump(out, "ctp_room_states: ", mem, "\n");
 
         for (int i = 0; i < states.size(); i++) {
-            int[] t = ((int[]) states.get(i));
+            int[] t = states.get(i);
             dump(out, "\nState ", i, "");
             dump(out, ": ", t.length, " entries\n\n");
 
@@ -320,7 +320,7 @@ public class OcpProgram implements Serializable {
      *
      * @return <code>true</code> iff another word as argument is required
      */
-    private boolean dumpDis(final PrintStream out, final int[] t, final int j) {
+    private boolean dumpDis(PrintStream out, int[] t, int j) {
 
         boolean two = true;
         int c = t[j];
@@ -486,7 +486,7 @@ public class OcpProgram implements Serializable {
      */
     public void run() {
 
-        step(null, null, (int[]) states.get(state));
+        step(null, null, states.get(state));
     }
 
     /**
@@ -494,7 +494,7 @@ public class OcpProgram implements Serializable {
      *
      * @param input the input to set
      */
-    public void setInput(final int input) {
+    public void setInput(int input) {
 
         this.input = input;
     }
@@ -504,7 +504,7 @@ public class OcpProgram implements Serializable {
      *
      * @param len the length
      */
-    private void setLength(final int len) {
+    private void setLength(int len) {
 
         this.length = len;
     }
@@ -514,7 +514,7 @@ public class OcpProgram implements Serializable {
      *
      * @param output the output to set
      */
-    public void setOutput(final int output) {
+    public void setOutput(int output) {
 
         this.output = output;
     }
@@ -526,8 +526,8 @@ public class OcpProgram implements Serializable {
      * @param out the output stream
      * @param currentState the stack of states
      */
-    private void step(final PushbackInputStream in, final OutputStream out,
-            final int[] currentState) {
+    private void step(PushbackInputStream in, OutputStream out,
+            int[] currentState) {
 
         int a;
         int b;
@@ -571,32 +571,32 @@ public class OcpProgram implements Serializable {
                     break;
                 case 11:
                     // OTP_ADD
-                    a = ((Integer) arithStack.pop()).intValue();
-                    b = ((Integer) arithStack.pop()).intValue();
+                    a = arithStack.pop().intValue();
+                    b = arithStack.pop().intValue();
                     arithStack.push(new Integer(b + a));
                     break;
                 case 12:
                     // OTP_SUB
-                    a = ((Integer) arithStack.pop()).intValue();
-                    b = ((Integer) arithStack.pop()).intValue();
+                    a = arithStack.pop().intValue();
+                    b = arithStack.pop().intValue();
                     arithStack.push(new Integer(b - a));
                     break;
                 case 13:
                     // OTP_MULT
-                    a = ((Integer) arithStack.pop()).intValue();
-                    b = ((Integer) arithStack.pop()).intValue();
+                    a = arithStack.pop().intValue();
+                    b = arithStack.pop().intValue();
                     arithStack.push(new Integer(b * a));
                     break;
                 case 14:
                     // OTP_DIV
-                    a = ((Integer) arithStack.pop()).intValue();
-                    b = ((Integer) arithStack.pop()).intValue();
+                    a = arithStack.pop().intValue();
+                    b = arithStack.pop().intValue();
                     arithStack.push(new Integer(b / a));
                     break;
                 case 15:
                     // OTP_MOD
-                    a = ((Integer) arithStack.pop()).intValue();
-                    b = ((Integer) arithStack.pop()).intValue();
+                    a = arithStack.pop().intValue();
+                    b = arithStack.pop().intValue();
                     arithStack.push(new Integer(b % a));
                     break;
                 case 16:

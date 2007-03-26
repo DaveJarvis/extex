@@ -45,7 +45,7 @@ public class LetterToken extends AbstractToken implements Token {
      *
      * @param uc the letter as a single character string
      */
-    protected LetterToken(final UnicodeChar uc) {
+    protected LetterToken(UnicodeChar uc) {
 
         super(uc);
     }
@@ -81,7 +81,7 @@ public class LetterToken extends AbstractToken implements Token {
      *
      * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
      */
-    public void toString(final StringBuffer sb) {
+    public void toString(StringBuffer sb) {
 
         sb.append(getLocalizer().format("LetterToken.Text", super.toString()));
     }
@@ -99,7 +99,7 @@ public class LetterToken extends AbstractToken implements Token {
      *      org.extex.scanner.type.token.TokenVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final TokenVisitor visitor, final Object arg1)
+    public Object visit(TokenVisitor visitor, Object arg1)
             throws Exception {
 
         return visitor.visitLetter(this, arg1);

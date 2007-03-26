@@ -34,7 +34,7 @@ public class InputXsltTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(InputXsltTest.class);
     }
@@ -44,7 +44,7 @@ public class InputXsltTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public InputXsltTest(final String arg) {
+    public InputXsltTest(String arg) {
 
         super(arg, "javadef",
                 "\\inputXSLT{de.dante.extex.interpreter.primitives.file.xslt.InputXslt}");

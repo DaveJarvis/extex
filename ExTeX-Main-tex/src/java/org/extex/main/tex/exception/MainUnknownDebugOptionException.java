@@ -43,7 +43,7 @@ public class MainUnknownDebugOptionException extends MainException {
      *
      * @param message the name of the unknown option
      */
-    public MainUnknownDebugOptionException(final String message) {
+    public MainUnknownDebugOptionException(String message) {
 
         super(ERROR_CODE, message);
     }

@@ -81,7 +81,7 @@ public class PageImpl implements Page {
      * @param nodes the nodes to transport
      * @param pageNo the array of page numbers
      */
-    public PageImpl(final NodeList nodes, final FixedCount[] pageNo) {
+    public PageImpl(NodeList nodes, FixedCount[] pageNo) {
 
         super();
         this.nodes = nodes;
@@ -178,7 +178,7 @@ public class PageImpl implements Page {
      * @see org.extex.typesetter.type.page.Page#setColor(
      *      org.extex.interpreter.context.Color)
      */
-    public void setColor(final Color bg) {
+    public void setColor(Color bg) {
 
         this.background = bg;
     }
@@ -188,7 +188,7 @@ public class PageImpl implements Page {
      *
      * @param mediaHeight the mediaHeight to set
      */
-    public void setMediaHeight(final Dimen mediaHeight) {
+    public void setMediaHeight(Dimen mediaHeight) {
 
         mediaHeight.set(mediaHeight);
     }
@@ -201,7 +201,7 @@ public class PageImpl implements Page {
      * @see org.extex.typesetter.type.page.Page#setMediaHOffset(
      *      org.extex.core.dimen.Dimen)
      */
-    public void setMediaHOffset(final Dimen offset) {
+    public void setMediaHOffset(Dimen offset) {
 
         mediaHOffset.set(offset);
     }
@@ -214,7 +214,7 @@ public class PageImpl implements Page {
      * @see org.extex.typesetter.type.page.Page#setMediaVOffset(
      *      org.extex.core.dimen.Dimen)
      */
-    public void setMediaVOffset(final Dimen offset) {
+    public void setMediaVOffset(Dimen offset) {
 
         mediaVOffset.set(offset);
     }
@@ -227,7 +227,7 @@ public class PageImpl implements Page {
      * @see org.extex.typesetter.type.page.Page#setMediaWidth(
      *      org.extex.core.dimen.Dimen)
      */
-    public void setMediaWidth(final Dimen width) {
+    public void setMediaWidth(Dimen width) {
 
         mediaWidth.set(width);
     }

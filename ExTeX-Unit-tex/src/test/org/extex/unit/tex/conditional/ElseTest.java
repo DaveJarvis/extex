@@ -34,7 +34,7 @@ public class ElseTest extends ExTeXLauncher {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ElseTest.class);
     }
@@ -44,7 +44,7 @@ public class ElseTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public ElseTest(final String arg) {
+    public ElseTest(String arg) {
 
         super(arg);
     }

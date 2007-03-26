@@ -31,7 +31,7 @@ public class HfuzzTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(HfuzzTest.class);
     }
@@ -41,7 +41,7 @@ public class HfuzzTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public HfuzzTest(final String arg) {
+    public HfuzzTest(String arg) {
 
         super(arg, "hfuzz", "", "0.0pt");
     }

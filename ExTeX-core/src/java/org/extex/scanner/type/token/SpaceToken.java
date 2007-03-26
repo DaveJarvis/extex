@@ -52,7 +52,7 @@ public class SpaceToken extends AbstractToken implements Token {
      *
      * @see "The TeXbook [Chapter 8; p.47]"
      */
-    protected SpaceToken(final String value) {
+    protected SpaceToken(String value) {
 
         super(SPACE);
     }
@@ -88,7 +88,7 @@ public class SpaceToken extends AbstractToken implements Token {
      *
      * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
      */
-    public void toString(final StringBuffer sb) {
+    public void toString(StringBuffer sb) {
 
         sb.append(getLocalizer().format("SpaceToken.Text", super.toString()));
     }
@@ -106,7 +106,7 @@ public class SpaceToken extends AbstractToken implements Token {
      *      org.extex.scanner.type.token.TokenVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final TokenVisitor visitor, final Object arg1)
+    public Object visit(TokenVisitor visitor, Object arg1)
             throws Exception {
 
         return visitor.visitSpace(this, arg1);

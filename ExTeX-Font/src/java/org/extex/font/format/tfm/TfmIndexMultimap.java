@@ -59,7 +59,7 @@ public class TfmIndexMultimap implements Serializable {
          *
          * @param k the key for which the values are required.
          */
-        private Enum(final int k) {
+        private Enum(int k) {
 
             super();
             synchronized (data) {
@@ -117,7 +117,7 @@ public class TfmIndexMultimap implements Serializable {
      * @param key the key of the new pair.
      * @param val the value of the new pair.
      */
-    public void add(final int key, final int val) {
+    public void add(int key, int val) {
 
         synchronized (data) {
             int pos = search(key);
@@ -134,7 +134,7 @@ public class TfmIndexMultimap implements Serializable {
      * @param i the position of pair to be examined.
      * @return Return the pair at given position.
      */
-    public TfmKeyInt at(final int i) {
+    public TfmKeyInt at(int i) {
 
         return (TfmKeyInt) data.get(i);
     }
@@ -145,7 +145,7 @@ public class TfmIndexMultimap implements Serializable {
      * @param key the given key.
      * @return Return the object representing the sequence of associated values.
      */
-    public Enum forKey(final int key) {
+    public Enum forKey(int key) {
 
         return new Enum(key);
     }
@@ -156,7 +156,7 @@ public class TfmIndexMultimap implements Serializable {
      * @param p the pair to be inserted.
      * @param i the position to be inserted to.
      */
-    public void insert(final TfmKeyInt p, final int i) {
+    public void insert(TfmKeyInt p, int i) {
 
         data.add(i, p);
     }
@@ -168,7 +168,7 @@ public class TfmIndexMultimap implements Serializable {
      * @param key the key searched for.
      * @return Return the position.
      */
-    public int search(final int key) {
+    public int search(int key) {
 
         int beg = 0;
         int end = size();

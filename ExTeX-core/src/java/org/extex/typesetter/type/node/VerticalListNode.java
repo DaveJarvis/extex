@@ -78,7 +78,7 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
      *      int,
      *      org.extex.typesetter.type.Node)
      */
-    public void add(final int index, final Node node) {
+    public void add(int index, Node node) {
 
         super.add(index, node);
         maxWidth(node.getWidth());
@@ -115,7 +115,7 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
      * @see org.extex.typesetter.type.node.GenericNodeList#add(
      *      org.extex.typesetter.type.Node)
      */
-    public void add(final Node node) {
+    public void add(Node node) {
 
         super.add(node);
         maxWidth(node.getWidth());
@@ -142,7 +142,7 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
      * @see org.extex.typesetter.type.NodeList#addSkip(
      *      org.extex.core.glue.FixedGlue)
      */
-    public void addSkip(final FixedGlue glue) {
+    public void addSkip(FixedGlue glue) {
 
         add(new GlueNode(glue, false));
     }
@@ -171,8 +171,8 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
      *      org.extex.typesetter.type.NodeVisitor,
      *      boolean)
      */
-    public Node atShipping(final Context context, final Typesetter typesetter,
-            final NodeVisitor visitor, final boolean inHMode)
+    public Node atShipping(Context context, Typesetter typesetter,
+            NodeVisitor visitor, boolean inHMode)
             throws GeneralException {
 
         return super.atShipping(context, typesetter, visitor, false);
@@ -193,7 +193,7 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
      *
      * @param top the top to set
      */
-    public void setTop(final boolean top) {
+    public void setTop(boolean top) {
 
         this.top = top;
     }
@@ -209,8 +209,8 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
      *
      * @return the split off material
      */
-    public VerticalListNode split(final FixedDimen height, final Logger logger,
-            final Logger traceLogger) {
+    public VerticalListNode split(FixedDimen height, Logger logger,
+            Logger traceLogger) {
 
         long penalty;
         long bestPenalty = Badness.INF_PENALTY + 1;
@@ -257,8 +257,8 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
      *
      * @return the penalty in the range 0 to 10000, including
      */
-    private long splitPenalty(final long penalty, final WideGlue ht,
-            final FixedDimen height) {
+    private long splitPenalty(long penalty, WideGlue ht,
+            FixedDimen height) {
 
         //        long badness = Badness.badness(height.getValue(), //
         //                ht.getLength().getValue());
@@ -275,7 +275,7 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
      *
      * @return the badness of the spread
      */
-    public long spread(final FixedDimen height) {
+    public long spread(FixedDimen height) {
 
         int size = size();
 
@@ -305,8 +305,8 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
      *      org.extex.core.dimen.FixedDimen,
      *      org.extex.core.glue.FixedGlueComponent)
      */
-    public void spreadHeight(final FixedDimen height,
-            final FixedGlueComponent sum) {
+    public void spreadHeight(FixedDimen height,
+            FixedGlueComponent sum) {
 
     }
 
@@ -324,8 +324,8 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
      *      java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         sb.append("\\vbox");
         super.toString(sb, prefix, breadth, depth);
@@ -343,7 +343,7 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
      *      java.lang.StringBuffer,
      *      java.lang.String)
      */
-    public void toText(final StringBuffer sb, final String prefix) {
+    public void toText(StringBuffer sb, String prefix) {
 
         sb.append("(vlist ");
         super.toText(sb, prefix);
@@ -363,7 +363,7 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
      *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final NodeVisitor visitor, final Object value)
+    public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {
 
         return visitor.visitVerticalList(this, value);
@@ -376,7 +376,7 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
      *
      * @return the badness
      */
-    public long vpack(final FixedDimen targetHeight) {
+    public long vpack(FixedDimen targetHeight) {
 
         int size = size();
 

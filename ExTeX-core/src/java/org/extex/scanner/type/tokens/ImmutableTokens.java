@@ -55,7 +55,7 @@ public class ImmutableTokens extends Tokens {
      * @see org.extex.scanner.type.tokens.Tokens#add(
      *      org.extex.scanner.type.token.Token)
      */
-    public void add(final Token t) {
+    public void add(Token t) {
 
         throw new UnsupportedOperationException(
             "Unable to add to an immutable object");
@@ -70,7 +70,7 @@ public class ImmutableTokens extends Tokens {
      * @see org.extex.scanner.type.tokens.Tokens#add(
      *      org.extex.scanner.type.tokens.Tokens)
      */
-    public void add(final Tokens toks) {
+    public void add(Tokens toks) {
 
         throw new UnsupportedOperationException(
             "Unable to add to an immutable object");

@@ -33,7 +33,7 @@ public class EveryvboxTest extends AbstractToksRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(EveryvboxTest.class);
     }
@@ -43,7 +43,7 @@ public class EveryvboxTest extends AbstractToksRegisterTester {
      *
      * @param arg the name
      */
-    public EveryvboxTest(final String arg) {
+    public EveryvboxTest(String arg) {
 
         super(arg, "everyvbox", "", "");
     }

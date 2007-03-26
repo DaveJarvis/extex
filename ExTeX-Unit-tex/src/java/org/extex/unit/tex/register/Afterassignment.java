@@ -75,7 +75,7 @@ public class Afterassignment extends AbstractCode {
      *
      * @param name the name for tracing and debugging
      */
-    public Afterassignment(final String name) {
+    public Afterassignment(String name) {
 
         super(name);
     }
@@ -98,8 +98,8 @@ public class Afterassignment extends AbstractCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Token t = source.getToken(context);

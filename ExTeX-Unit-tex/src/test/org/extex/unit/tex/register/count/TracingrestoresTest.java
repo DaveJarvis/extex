@@ -33,7 +33,7 @@ public class TracingrestoresTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(TracingrestoresTest.class);
     }
@@ -43,7 +43,7 @@ public class TracingrestoresTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public TracingrestoresTest(final String arg) {
+    public TracingrestoresTest(String arg) {
 
         super(arg, "tracingrestores", "", "0");
     }

@@ -34,7 +34,7 @@ public class LastboxTest extends ExTeXLauncher {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(LastboxTest.class);
     }
@@ -44,7 +44,7 @@ public class LastboxTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public LastboxTest(final String arg) {
+    public LastboxTest(String arg) {
 
         super(arg);
     }

@@ -61,8 +61,8 @@ public class PdfEndThread extends WhatsItNode {
      *      int,
      *      int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         sb.append("(pdfendthread)");
     }

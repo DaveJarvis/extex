@@ -25,7 +25,6 @@ import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
-import org.extex.core.glue.Glue;
 import org.extex.font.ExtexFont;
 import org.extex.font.FontKey;
 
@@ -39,6 +38,8 @@ import org.extex.font.FontKey;
 public class NullExtexFont implements ExtexFont {
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.BaseFont#getActualFontKey()
      */
     public FontKey getActualFontKey() {
@@ -47,6 +48,8 @@ public class NullExtexFont implements ExtexFont {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.ExtexFont#getActualSize()
      */
     public FixedDimen getActualSize() {
@@ -55,14 +58,18 @@ public class NullExtexFont implements ExtexFont {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.ExtexFont#getDepth(org.extex.core.UnicodeChar)
      */
-    public FixedGlue getDepth(final UnicodeChar uc) {
+    public FixedGlue getDepth(UnicodeChar uc) {
 
-        return Glue.ZERO;
+        return FixedGlue.ZERO;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.ExtexFont#getDesignSize()
      */
     public FixedDimen getDesignSize() {
@@ -71,6 +78,8 @@ public class NullExtexFont implements ExtexFont {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.ExtexFont#getEm()
      */
     public FixedDimen getEm() {
@@ -79,6 +88,8 @@ public class NullExtexFont implements ExtexFont {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.ExtexFont#getEx()
      */
     public FixedDimen getEx() {
@@ -87,14 +98,18 @@ public class NullExtexFont implements ExtexFont {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.ExtexFont#getFontDimen(java.lang.String)
      */
-    public FixedDimen getFontDimen(final String name) {
+    public FixedDimen getFontDimen(String name) {
 
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.BaseFont#getFontKey()
      */
     public FontKey getFontKey() {
@@ -103,6 +118,8 @@ public class NullExtexFont implements ExtexFont {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.ExtexFont#getFontName()
      */
     public String getFontName() {
@@ -111,40 +128,50 @@ public class NullExtexFont implements ExtexFont {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.ExtexFont#getHeight(org.extex.core.UnicodeChar)
      */
-    public FixedGlue getHeight(final UnicodeChar uc) {
+    public FixedGlue getHeight(UnicodeChar uc) {
 
-        return Glue.ZERO;
+        return FixedGlue.ZERO;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.ExtexFont#getItalicCorrection(org.extex.core.UnicodeChar)
      */
-    public FixedDimen getItalicCorrection(final UnicodeChar uc) {
+    public FixedDimen getItalicCorrection(UnicodeChar uc) {
 
         return Dimen.ZERO_PT;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.ExtexFont#getKerning(org.extex.core.UnicodeChar,
      *       org.extex.core.UnicodeChar)
      */
-    public FixedDimen getKerning(final UnicodeChar uc1, final UnicodeChar uc2) {
+    public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
 
         return Dimen.ZERO_PT;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.ExtexFont#getLigature(org.extex.core.UnicodeChar,
      *      org.extex.core.UnicodeChar)
      */
-    public UnicodeChar getLigature(final UnicodeChar uc1, final UnicodeChar uc2) {
+    public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
 
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.ExtexFont#getScaleFactor()
      */
     public FixedCount getScaleFactor() {
@@ -153,25 +180,31 @@ public class NullExtexFont implements ExtexFont {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.ExtexFont#getSpace()
      */
     public FixedGlue getSpace() {
 
-        return Glue.ZERO;
+        return FixedGlue.ZERO;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.ExtexFont#getWidth(org.extex.core.UnicodeChar)
      */
-    public FixedGlue getWidth(final UnicodeChar uc) {
+    public FixedGlue getWidth(UnicodeChar uc) {
 
-        return Glue.ZERO;
+        return FixedGlue.ZERO;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.ExtexFont#hasGlyph(org.extex.core.UnicodeChar)
      */
-    public boolean hasGlyph(final UnicodeChar uc) {
+    public boolean hasGlyph(UnicodeChar uc) {
 
         return false;
     }

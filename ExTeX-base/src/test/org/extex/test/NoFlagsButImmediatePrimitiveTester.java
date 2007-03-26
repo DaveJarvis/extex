@@ -47,8 +47,8 @@ public abstract class NoFlagsButImmediatePrimitiveTester extends ExTeXLauncher {
      * @param primitive the name of the primitive
      * @param args additional arguments for the flag test
      */
-    public NoFlagsButImmediatePrimitiveTester(final String name,
-            final String primitive, final String args) {
+    public NoFlagsButImmediatePrimitiveTester(String name,
+            String primitive, String args) {
 
         super(name);
         this.primitive = primitive;

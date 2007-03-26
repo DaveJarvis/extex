@@ -105,7 +105,7 @@ public class EnsureLoaded extends AbstractCode
      *
      * @param codeName the name of the primitive
      */
-    public EnsureLoaded(final String codeName) {
+    public EnsureLoaded(String codeName) {
 
         super(codeName);
     }
@@ -118,7 +118,7 @@ public class EnsureLoaded extends AbstractCode
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger log) {
+    public void enableLogging(Logger log) {
 
         this.logger = log;
     }
@@ -142,8 +142,8 @@ public class EnsureLoaded extends AbstractCode
      *       org.extex.interpreter.TokenSource,
      *       org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         String cs = printableControlSequence(context);
@@ -177,7 +177,7 @@ public class EnsureLoaded extends AbstractCode
      * @see org.extex.interpreter.type.OutputStreamConsumer#setOutputStreamFactory(
      *      org.extex.backend.outputStream.OutputStreamFactory)
      */
-    public void setOutputStreamFactory(final OutputStreamFactory factory) {
+    public void setOutputStreamFactory(OutputStreamFactory factory) {
 
         this.outFactory = factory;
     }

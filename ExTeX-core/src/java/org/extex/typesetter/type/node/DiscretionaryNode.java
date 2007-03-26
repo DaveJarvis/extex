@@ -68,8 +68,8 @@ public class DiscretionaryNode extends AbstractNode implements Node {
      * @param no the Tokens to be inserted in case of no line breaking at this
      *  position.
      */
-    public DiscretionaryNode(final NodeList pre, final NodeList post,
-            final NodeList no) {
+    public DiscretionaryNode(NodeList pre, NodeList post,
+            NodeList no) {
 
         super();
         preBreak = pre;
@@ -124,8 +124,8 @@ public class DiscretionaryNode extends AbstractNode implements Node {
      *      int,
      *      int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         String pre = prefix + ".";
         sb.append(getLocalizer().format("String.Format"));
@@ -156,7 +156,7 @@ public class DiscretionaryNode extends AbstractNode implements Node {
      *      java.lang.StringBuffer,
      *      java.lang.String)
      */
-    public void toText(final StringBuffer sb, final String prefix) {
+    public void toText(StringBuffer sb, String prefix) {
 
         sb.append(getLocalizer().format("Text.Format"));
     }
@@ -175,7 +175,7 @@ public class DiscretionaryNode extends AbstractNode implements Node {
      *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final NodeVisitor visitor, final Object value)
+    public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {
 
         return visitor.visitDiscretionary(this, value);

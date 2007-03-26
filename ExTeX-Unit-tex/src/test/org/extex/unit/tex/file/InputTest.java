@@ -39,7 +39,7 @@ public class InputTest extends NoFlagsPrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(InputTest.class);
     }
@@ -49,7 +49,7 @@ public class InputTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public InputTest(final String arg) {
+    public InputTest(String arg) {
 
         super(arg, "input", " " + EMPTY_TEX + " ", "\\nonstopmode");
     }

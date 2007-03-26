@@ -34,7 +34,7 @@ public class PdfendthreadTest extends NoFlagsButProtectedPrimitiveTester {
      *
      * @param arg the name
      */
-    public PdfendthreadTest(final String arg) {
+    public PdfendthreadTest(String arg) {
 
         super(arg, "pdfendthread", "");
         setConfig("pdftex-test");

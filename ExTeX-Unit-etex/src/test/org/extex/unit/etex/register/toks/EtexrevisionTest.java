@@ -33,7 +33,7 @@ public class EtexrevisionTest extends AbstractToksRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(EtexrevisionTest.class);
     }
@@ -43,7 +43,7 @@ public class EtexrevisionTest extends AbstractToksRegisterTester {
      *
      * @param arg the name
      */
-    public EtexrevisionTest(final String arg) {
+    public EtexrevisionTest(String arg) {
 
         super(arg, "eTeXrevision", "", ".141592");
         setConfig("etex-test");

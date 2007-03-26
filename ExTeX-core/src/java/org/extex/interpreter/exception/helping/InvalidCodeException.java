@@ -44,7 +44,7 @@ public class InvalidCodeException extends HelpingException {
      * @param code the code actually found
      * @param max the maximal allowed value
      */
-    public InvalidCodeException(final String code, final String max) {
+    public InvalidCodeException(String code, String max) {
 
         super(LocalizerFactory.getLocalizer(//
                 InvalidCodeException.class), "TTP.InvalidCode", code, max);

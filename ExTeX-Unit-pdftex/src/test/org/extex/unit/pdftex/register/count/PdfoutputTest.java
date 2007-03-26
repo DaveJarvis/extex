@@ -33,7 +33,7 @@ public class PdfoutputTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PdfoutputTest.class);
     }
@@ -43,7 +43,7 @@ public class PdfoutputTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public PdfoutputTest(final String arg) {
+    public PdfoutputTest(String arg) {
 
         super(arg, "pdfoutput", "", "1");
         setConfig("pdftex-test");

@@ -28,4 +28,5 @@ package org.extex.interpreter.type.box;
  */
 public interface BoxOrRule {
 
+    // marker interface
 }

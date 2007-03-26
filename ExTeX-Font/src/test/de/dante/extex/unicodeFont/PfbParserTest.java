@@ -135,7 +135,7 @@ public class PfbParserTest extends TestCase {
     // *
     // * @throws Exception in case of an error
     // */
-    // public MyExTeX(final Properties theProperties, final String dotFile)
+    // public MyExTeX(Properties theProperties, String dotFile)
     // throws Exception {
     //
     // super(theProperties, dotFile);
@@ -154,7 +154,7 @@ public class PfbParserTest extends TestCase {
     // *
     // * @throws Exception in case of an error
     // */
-    // public MyExTeX(final Properties theProperties) throws Exception {
+    // public MyExTeX(Properties theProperties) throws Exception {
     //
     // super(theProperties);
     // makeConfig();
@@ -222,7 +222,7 @@ public class PfbParserTest extends TestCase {
     // * @throws ConfigurationException in case that some kind of problems have
     // * been detected in the configuration
     // */
-    // protected FontFactory makemyFontFactory(final Configuration cfg,
+    // protected FontFactory makemyFontFactory(Configuration cfg,
     // final ResourceFinder rfinder) throws ConfigurationException {
     //
     // FontFactory foFactory;
@@ -271,7 +271,7 @@ public class PfbParserTest extends TestCase {
      * 
      * @param args The command line.
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PfbParserTest.class);
     }

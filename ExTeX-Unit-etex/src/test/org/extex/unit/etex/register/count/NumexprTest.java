@@ -33,7 +33,7 @@ public class NumexprTest extends ExTeXLauncher {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(NumexprTest.class);
     }
@@ -43,7 +43,7 @@ public class NumexprTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public NumexprTest(final String arg) {
+    public NumexprTest(String arg) {
 
         super(arg);
         setConfig("etex-test");

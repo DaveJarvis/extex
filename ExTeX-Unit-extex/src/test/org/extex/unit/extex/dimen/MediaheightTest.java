@@ -33,7 +33,7 @@ public class MediaheightTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(MediaheightTest.class);
     }
@@ -43,7 +43,7 @@ public class MediaheightTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public MediaheightTest(final String arg) {
+    public MediaheightTest(String arg) {
 
         super(arg, "mediaheight", "", "845.04684pt");
         setConfig("extex-test");

@@ -34,7 +34,7 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ColordefTest.class);
     }
@@ -44,7 +44,7 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public ColordefTest(final String arg) {
+    public ColordefTest(String arg) {
 
         super(arg, "colordef", "\\x{.1 .2 .3}", "");
         setConfig("colorextex-test");

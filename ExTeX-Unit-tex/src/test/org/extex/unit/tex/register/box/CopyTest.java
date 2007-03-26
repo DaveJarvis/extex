@@ -33,7 +33,7 @@ public class CopyTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(CopyTest.class);
     }
@@ -43,7 +43,7 @@ public class CopyTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public CopyTest(final String arg) {
+    public CopyTest(String arg) {
 
         super(arg, "copy", "1", "0");
     }

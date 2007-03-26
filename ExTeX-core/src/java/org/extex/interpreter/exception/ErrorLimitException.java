@@ -42,7 +42,7 @@ public class ErrorLimitException extends InterpreterException {
      *
      * @param limit the maximal allowed number of errors
      */
-    public ErrorLimitException(final long limit) {
+    public ErrorLimitException(long limit) {
 
         super();
         this.limit = limit;

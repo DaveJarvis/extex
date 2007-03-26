@@ -52,7 +52,7 @@ public class XtfGlyph {
      * @param lsb       lsb
      * @param advance   advance
      */
-    public XtfGlyph(final Descript gd, final short lsb, final int advance) {
+    public XtfGlyph(Descript gd, short lsb, int advance) {
 
         leftSideBearing = lsb;
         advanceWidth = advance;
@@ -82,7 +82,7 @@ public class XtfGlyph {
      * @param i     the index
      * @return Returns the point.
      */
-    public Point getPoint(final int i) {
+    public Point getPoint(int i) {
 
         return points[i];
     }
@@ -122,7 +122,7 @@ public class XtfGlyph {
      * Scale
      * @param factor a 16.16 fixed value
      */
-    public void scale(final int factor) {
+    public void scale(int factor) {
 
         for (int i = 0; i < points.length; i++) {
             //points[i].x = ( points[i].x * factor ) >> 6;
@@ -140,7 +140,7 @@ public class XtfGlyph {
      * Set the points of a glyph from the Description
      * @param gd glyph description
      */
-    private void describe(final Descript gd) {
+    private void describe(Descript gd) {
 
         int endPtIndex = 0;
         points = new Point[gd.getPointCount() + 2];
@@ -203,8 +203,8 @@ public class XtfGlyph {
          * @param aonCurve       on curve
          * @param aendOfContour  end of contour
          */
-        public Point(final int ax, final int ay, final boolean aonCurve,
-                final boolean aendOfContour) {
+        public Point(int ax, int ay, boolean aonCurve,
+                boolean aendOfContour) {
 
             x = ax;
             y = ay;
@@ -260,7 +260,7 @@ public class XtfGlyph {
         /**
          * @param aendOfContour The endOfContour to set.
          */
-        public void setEndOfContour(final boolean aendOfContour) {
+        public void setEndOfContour(boolean aendOfContour) {
 
             endOfContour = aendOfContour;
         }
@@ -268,7 +268,7 @@ public class XtfGlyph {
         /**
          * @param aonCurve The onCurve to set.
          */
-        public void setOnCurve(final boolean aonCurve) {
+        public void setOnCurve(boolean aonCurve) {
 
             onCurve = aonCurve;
         }
@@ -276,7 +276,7 @@ public class XtfGlyph {
         /**
          * @param atouched The touched to set.
          */
-        public void setTouched(final boolean atouched) {
+        public void setTouched(boolean atouched) {
 
             touched = atouched;
         }
@@ -284,7 +284,7 @@ public class XtfGlyph {
         /**
          * @param ax The x to set.
          */
-        public void setX(final int ax) {
+        public void setX(int ax) {
 
             x = ax;
         }
@@ -292,7 +292,7 @@ public class XtfGlyph {
         /**
          * @param ay The y to set.
          */
-        public void setY(final int ay) {
+        public void setY(int ay) {
 
             y = ay;
         }

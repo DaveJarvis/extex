@@ -59,7 +59,7 @@ public class InFile implements Serializable {
      * @param inStream the token stream to read from
      * @param isStandard the stream is the standard input stream
      */
-    public InFile(final TokenStream inStream, final boolean isStandard) {
+    public InFile(TokenStream inStream, boolean isStandard) {
 
         super();
         this.stream = inStream;
@@ -91,7 +91,9 @@ public class InFile implements Serializable {
     }
 
     /**
-     * @see org.extex.scanner.TokenStream#isFileStream()
+     * Check if this stream is attached to a file.
+     *
+     * @return <code>true</code> if this stream reads from a file
      */
     public boolean isFileStream() {
 
@@ -129,7 +131,7 @@ public class InFile implements Serializable {
      *
      * @throws InterpreterException in case of an error
      */
-    public Tokens read(final TokenFactory factory, final Tokenizer tokenizer)
+    public Tokens read(TokenFactory factory, Tokenizer tokenizer)
             throws InterpreterException {
 
         if (stream == null) {

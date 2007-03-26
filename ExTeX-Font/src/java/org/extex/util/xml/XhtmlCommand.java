@@ -37,13 +37,13 @@ public interface XhtmlCommand {
      * @param out        The Output.
      * @param attributes The attributes attached to the element.
      */
-    void startElement(final PrintWriter out, final Attributes attributes);
+    void startElement(PrintWriter out, Attributes attributes);
 
     /**
      * Execute the stop tag for an element.
      *
      * @param out        The Output.
      */
-    void endElement(final PrintWriter out);
+    void endElement(PrintWriter out);
 
 }

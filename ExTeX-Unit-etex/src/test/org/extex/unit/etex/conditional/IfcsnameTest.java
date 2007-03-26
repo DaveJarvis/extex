@@ -34,7 +34,7 @@ public class IfcsnameTest extends ExTeXLauncher {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(IfcsnameTest.class);
     }
@@ -44,7 +44,7 @@ public class IfcsnameTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public IfcsnameTest(final String arg) {
+    public IfcsnameTest(String arg) {
 
         super(arg);
         setConfig("etex-test");

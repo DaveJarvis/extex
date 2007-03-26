@@ -68,7 +68,7 @@ public class InsertionNode extends AbstractNode implements Node {
      *
      * @see "<logo>TeX</logo> &ndash; The Program [140]"
      */
-    public InsertionNode(final long subtype, final NodeList nodes) {
+    public InsertionNode(long subtype, NodeList nodes) {
 
         super();
         this.subtype = subtype;
@@ -97,8 +97,8 @@ public class InsertionNode extends AbstractNode implements Node {
      *      int,
      *      int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         sb.append(getLocalizer().format("String.Format",
             Long.toString(subtype), //
@@ -110,11 +110,13 @@ public class InsertionNode extends AbstractNode implements Node {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.Node#visit(
      *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final NodeVisitor visitor, final Object value)
+    public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {
 
         return visitor.visitInsertion(this, value);

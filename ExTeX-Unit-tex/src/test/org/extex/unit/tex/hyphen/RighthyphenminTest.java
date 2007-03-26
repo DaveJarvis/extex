@@ -34,7 +34,7 @@ public class RighthyphenminTest extends AbstractNonGroupCountRegisterTester {
      *
      * @param arg the name
      */
-    public RighthyphenminTest(final String arg) {
+    public RighthyphenminTest(String arg) {
 
         super(arg, "righthyphenmin", "", "0");
     }

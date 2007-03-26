@@ -330,7 +330,7 @@ public class Dvi {
      *
      * @param dvi the input stream
      */
-    public Dvi(final InputStream dvi) {
+    public Dvi(InputStream dvi) {
 
         super();
         this.dvi = dvi;
@@ -344,7 +344,7 @@ public class Dvi {
      *
      * @throws IOException in case of an error
      */
-    public void parse(final DviProcessor proc) throws IOException {
+    public void parse(DviProcessor proc) throws IOException {
 
         int a;
         int b;
@@ -812,7 +812,7 @@ public class Dvi {
      *
      * @throws IOException in case of an error
      */
-    private String read(final int len) throws IOException {
+    private String read(int len) throws IOException {
 
         int c;
         StringBuffer sb = new StringBuffer();
@@ -967,7 +967,7 @@ public class Dvi {
      *
      * @throws IOException in case of an error
      */
-    private byte[] readBytes(final int len) throws IOException {
+    private byte[] readBytes(int len) throws IOException {
 
         int c;
         byte[] bytes = new byte[len];

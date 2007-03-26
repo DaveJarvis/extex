@@ -32,7 +32,7 @@ public class MathbinTest extends AbstractOperatorTester {
      *
      * @param arg the name
      */
-    public MathbinTest(final String arg) {
+    public MathbinTest(String arg) {
 
         super(arg, "mathbin");
     }

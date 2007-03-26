@@ -56,7 +56,7 @@ public class GrayscaleColor implements Color {
      * @param thegray the gray channel
      * @param theAlpha the alpha channel
      */
-    protected GrayscaleColor(final int thegray, final int theAlpha) {
+    protected GrayscaleColor(int thegray, int theAlpha) {
 
         super();
         this.gray = (thegray < 0 ? 0 : thegray < MAX_VALUE
@@ -76,7 +76,7 @@ public class GrayscaleColor implements Color {
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
-    public boolean equals(final Object obj) {
+    public boolean equals(Object obj) {
 
         if (!(obj instanceof GrayscaleColor)) {
             return false;
@@ -139,11 +139,13 @@ public class GrayscaleColor implements Color {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Color#visit(
      *      org.extex.color.ColorVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final ColorVisitor visitor, final Object argument)
+    public Object visit(ColorVisitor visitor, Object argument)
             throws GeneralException {
 
         return visitor.visitGray(this, argument);

@@ -57,7 +57,7 @@ public class BasicColorConverter implements ColorConverter {
          *      org.extex.color.model.CmykColor,
          *      java.lang.Object)
          */
-        public Object visitCmyk(final CmykColor color, final Object value)
+        public Object visitCmyk(CmykColor color, Object value)
                 throws GeneralException {
 
             return color;
@@ -68,7 +68,7 @@ public class BasicColorConverter implements ColorConverter {
          *      org.extex.color.model.GrayscaleColor,
          *      java.lang.Object)
          */
-        public Object visitGray(final GrayscaleColor color, final Object value)
+        public Object visitGray(GrayscaleColor color, Object value)
                 throws GeneralException {
 
             return null;
@@ -79,7 +79,7 @@ public class BasicColorConverter implements ColorConverter {
          *      org.extex.color.model.HsvColor,
          *      java.lang.Object)
          */
-        public Object visitHsv(final HsvColor color, final Object value)
+        public Object visitHsv(HsvColor color, Object value)
                 throws GeneralException {
 
             return null;
@@ -90,7 +90,7 @@ public class BasicColorConverter implements ColorConverter {
          *      org.extex.color.model.RgbColor,
          *      java.lang.Object)
          */
-        public Object visitRgb(final RgbColor color, final Object value)
+        public Object visitRgb(RgbColor color, Object value)
                 throws GeneralException {
 
             int r = Color.MAX_VALUE - color.getRed();
@@ -119,7 +119,7 @@ public class BasicColorConverter implements ColorConverter {
          *      org.extex.color.model.CmykColor,
          *      java.lang.Object)
          */
-        public Object visitCmyk(final CmykColor color, final Object value)
+        public Object visitCmyk(CmykColor color, Object value)
                 throws GeneralException {
 
             return null;
@@ -130,7 +130,7 @@ public class BasicColorConverter implements ColorConverter {
          *      org.extex.color.model.GrayscaleColor,
          *      java.lang.Object)
          */
-        public Object visitGray(final GrayscaleColor color, final Object value)
+        public Object visitGray(GrayscaleColor color, Object value)
                 throws GeneralException {
 
             return color;
@@ -141,7 +141,7 @@ public class BasicColorConverter implements ColorConverter {
          *      org.extex.color.model.HsvColor,
          *      java.lang.Object)
          */
-        public Object visitHsv(final HsvColor color, final Object value)
+        public Object visitHsv(HsvColor color, Object value)
                 throws GeneralException {
 
             return null;
@@ -152,7 +152,7 @@ public class BasicColorConverter implements ColorConverter {
          *      org.extex.color.model.RgbColor,
          *      java.lang.Object)
          */
-        public Object visitRgb(final RgbColor color, final Object value)
+        public Object visitRgb(RgbColor color, Object value)
                 throws GeneralException {
 
             return ColorFactory.getGray((222 * color.getRed() + 707
@@ -172,7 +172,7 @@ public class BasicColorConverter implements ColorConverter {
          *      org.extex.color.model.CmykColor,
          *      java.lang.Object)
          */
-        public Object visitCmyk(final CmykColor color, final Object value)
+        public Object visitCmyk(CmykColor color, Object value)
                 throws GeneralException {
 
             int r =
@@ -198,7 +198,7 @@ public class BasicColorConverter implements ColorConverter {
          *      org.extex.color.model.GrayscaleColor,
          *      java.lang.Object)
          */
-        public Object visitGray(final GrayscaleColor color, final Object value)
+        public Object visitGray(GrayscaleColor color, Object value)
                 throws GeneralException {
 
             int g = color.getGray();
@@ -210,7 +210,7 @@ public class BasicColorConverter implements ColorConverter {
          *      org.extex.color.model.HsvColor,
          *      java.lang.Object)
          */
-        public Object visitHsv(final HsvColor color, final Object value)
+        public Object visitHsv(HsvColor color, Object value)
                 throws GeneralException {
 
             return null;
@@ -221,7 +221,7 @@ public class BasicColorConverter implements ColorConverter {
          *      org.extex.color.model.RgbColor,
          *      java.lang.Object)
          */
-        public Object visitRgb(final RgbColor color, final Object value)
+        public Object visitRgb(RgbColor color, Object value)
                 throws GeneralException {
 
             return color;
@@ -239,7 +239,7 @@ public class BasicColorConverter implements ColorConverter {
          *      org.extex.color.model.CmykColor,
          *      java.lang.Object)
          */
-        public Object visitCmyk(final CmykColor color, final Object value)
+        public Object visitCmyk(CmykColor color, Object value)
                 throws GeneralException {
 
             return null;
@@ -250,7 +250,7 @@ public class BasicColorConverter implements ColorConverter {
          *      org.extex.color.model.GrayscaleColor,
          *      java.lang.Object)
          */
-        public Object visitGray(final GrayscaleColor color, final Object value)
+        public Object visitGray(GrayscaleColor color, Object value)
                 throws GeneralException {
 
             return null;
@@ -261,7 +261,7 @@ public class BasicColorConverter implements ColorConverter {
          *      org.extex.color.model.HsvColor,
          *      java.lang.Object)
          */
-        public Object visitHsv(final HsvColor color, final Object value)
+        public Object visitHsv(HsvColor color, Object value)
                 throws GeneralException {
 
             return color;
@@ -272,7 +272,7 @@ public class BasicColorConverter implements ColorConverter {
          *      org.extex.color.model.RgbColor,
          *      java.lang.Object)
          */
-        public Object visitRgb(final RgbColor color, final Object value)
+        public Object visitRgb(RgbColor color, Object value)
                 throws GeneralException {
 
             return null;
@@ -291,7 +291,7 @@ public class BasicColorConverter implements ColorConverter {
      * @see org.extex.color.ColorConverter#toCmyk(
      *      org.extex.interpreter.context.Color)
      */
-    public CmykColor toCmyk(final Color color) {
+    public CmykColor toCmyk(Color color) {
 
         try {
             return (CmykColor) color.visit(CMYK_CONVERTER, null);
@@ -312,7 +312,7 @@ public class BasicColorConverter implements ColorConverter {
      * @see org.extex.color.ColorConverter#toGrayscale(
      *      org.extex.interpreter.context.Color)
      */
-    public GrayscaleColor toGrayscale(final Color color) {
+    public GrayscaleColor toGrayscale(Color color) {
 
         try {
             return (GrayscaleColor) color.visit(GRAY_CONVERTER, null);
@@ -333,7 +333,7 @@ public class BasicColorConverter implements ColorConverter {
      * @see org.extex.color.ColorConverter#toHsv(
      *      org.extex.interpreter.context.Color)
      */
-    public HsvColor toHsv(final Color color) {
+    public HsvColor toHsv(Color color) {
 
         try {
             return (HsvColor) color.visit(HSV_CONVERTER, null);
@@ -354,7 +354,7 @@ public class BasicColorConverter implements ColorConverter {
      * @see org.extex.color.ColorConverter#toRgb(
      *      org.extex.interpreter.context.Color)
      */
-    public RgbColor toRgb(final Color color) {
+    public RgbColor toRgb(Color color) {
 
         try {
             return (RgbColor) color.visit(RGB_CONVERTER, null);

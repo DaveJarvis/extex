@@ -45,7 +45,7 @@ public class DviBopEopException extends DviException {
      *
      * @param message   the message
      */
-    public DviBopEopException(final String message) {
+    public DviBopEopException(String message) {
 
         super(message);
     }

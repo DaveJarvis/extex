@@ -36,7 +36,7 @@ public class T1nominalWidthX extends T1DictNumber {
      * @param stack the stack
      * @throws IOException if an IO.error occurs.
      */
-    public T1nominalWidthX(final List stack) throws IOException {
+    public T1nominalWidthX(List stack) throws IOException {
 
         super(stack, new short[]{nominalWidthX});
     }

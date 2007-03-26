@@ -36,7 +36,7 @@ public class TypesetterTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public TypesetterTest(final String arg) {
+    public TypesetterTest(String arg) {
 
         super(arg);
     }

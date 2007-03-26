@@ -85,8 +85,8 @@ public final class ColorParser {
          *      int,
          *      java.lang.String)
          */
-        public Color parse(final Context context, final TokenSource source,
-                final Typesetter typesetter, final int alpha, final String name)
+        public Color parse(Context context, TokenSource source,
+                Typesetter typesetter, int alpha, String name)
                 throws InterpreterException {
 
             int c = scanColorComponent(context, source, typesetter, name);
@@ -111,8 +111,8 @@ public final class ColorParser {
          *      int,
          *      java.lang.String)
          */
-        public Color parse(final Context context, final TokenSource source,
-                final Typesetter typesetter, final int alpha, final String name)
+        public Color parse(Context context, TokenSource source,
+                Typesetter typesetter, int alpha, String name)
                 throws InterpreterException {
 
             int gray = scanColorComponent(context, source, typesetter, name);
@@ -134,8 +134,8 @@ public final class ColorParser {
          *      int,
          *      java.lang.String)
          */
-        public Color parse(final Context context, final TokenSource source,
-                final Typesetter typesetter, final int alpha, final String name)
+        public Color parse(Context context, TokenSource source,
+                Typesetter typesetter, int alpha, String name)
                 throws InterpreterException {
 
             int h = scanColorComponent(context, source, typesetter, name);
@@ -157,10 +157,17 @@ public final class ColorParser {
     private static final ColorMode RGB_MODE = new ColorMode() {
 
         /**
-         * @see org.extex.unit.color.ColorPrimitive.ColorMode#parse()
+         * {@inheritDoc}
+         *
+         * @see org.extex.unit.color.util.ColorParser.ColorMode#parse(
+         *      org.extex.interpreter.context.Context,
+         *      org.extex.interpreter.TokenSource,
+         *      org.extex.typesetter.Typesetter,
+         *      int,
+         *      java.lang.String)
          */
-        public Color parse(final Context context, final TokenSource source,
-                final Typesetter typesetter, final int alpha, final String name)
+        public Color parse(Context context, TokenSource source,
+                Typesetter typesetter, int alpha, String name)
                 throws InterpreterException {
 
             int r = scanColorComponent(context, source, typesetter, name);
@@ -190,9 +197,9 @@ public final class ColorParser {
      *
      * @throws InterpreterException in case of an error
      */
-    public static Color parseColor(final Context context,
-            final TokenSource source, final Typesetter typesetter,
-            final String name) throws InterpreterException {
+    public static Color parseColor(Context context,
+            TokenSource source, Typesetter typesetter,
+            String name) throws InterpreterException {
 
         Token t = source.getNonSpace(context);
         Color color = null;
@@ -230,9 +237,9 @@ public final class ColorParser {
      *
      * @throws InterpreterException in case of an error
      */
-    public static Color parseColorConstant(final Context context,
-            final TokenSource source, final Typesetter typesetter,
-            final String name) throws InterpreterException {
+    public static Color parseColorConstant(Context context,
+            TokenSource source, Typesetter typesetter,
+            String name) throws InterpreterException {
 
         int alpha = 0;
         ColorMode mode = RGB_MODE;
@@ -281,9 +288,9 @@ public final class ColorParser {
      *
      * @throws InterpreterException in case of an error
      */
-    private static int scanColorComponent(final Context context,
-            final TokenSource source, final Typesetter typesetter,
-            final String name) throws InterpreterException {
+    private static int scanColorComponent(Context context,
+            TokenSource source, Typesetter typesetter,
+            String name) throws InterpreterException {
 
         long cc;
         try {

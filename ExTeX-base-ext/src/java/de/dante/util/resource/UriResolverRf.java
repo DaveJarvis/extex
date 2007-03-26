@@ -49,7 +49,7 @@ public class UriResolverRf implements URIResolver {
      * Create a new object.
      * @param rf    The resource finder to use.
      */
-    public UriResolverRf(final ResourceFinder rf) {
+    public UriResolverRf(ResourceFinder rf) {
 
         finder = rf;
     }
@@ -58,7 +58,7 @@ public class UriResolverRf implements URIResolver {
      * @see javax.xml.transform.URIResolver#resolve(
      *      java.lang.String, java.lang.String)
      */
-    public Source resolve(final String href, final String base)
+    public Source resolve(String href, String base)
             throws TransformerException {
 
         System.out.print("href = '" + href + "'");

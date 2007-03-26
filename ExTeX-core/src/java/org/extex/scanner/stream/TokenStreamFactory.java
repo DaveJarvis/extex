@@ -68,7 +68,7 @@ import org.extex.scanner.stream.observer.string.OpenStringObserverList;
  * an appropriate constructor is required:
  * <pre>
  *     public TheClass(Configuration config, Reader reader, Boolean isFile,
- *          final String theSource) throws IOException
+ *          String theSource) throws IOException
  * </pre>
  * </p>
  *
@@ -206,8 +206,8 @@ public class TokenStreamFactory extends AbstractFactory
      *
      * @throws ConfigurationException in case of an error in the configuration
      */
-    public TokenStreamFactory(final Configuration theConfiguration,
-            final String tag) throws ConfigurationException {
+    public TokenStreamFactory(Configuration theConfiguration,
+            String tag) throws ConfigurationException {
 
         super();
         configure(theConfiguration);
@@ -276,7 +276,7 @@ public class TokenStreamFactory extends AbstractFactory
      *
      * @throws ConfigurationException in case of an error in the configuration
      */
-    public TokenStream newInstance(final CharSequence line)
+    public TokenStream newInstance(CharSequence line)
             throws ConfigurationException {
 
         TokenStream stream;
@@ -313,7 +313,7 @@ public class TokenStreamFactory extends AbstractFactory
      *
      * @throws ConfigurationException in case of an error in the configuration
      */
-    public TokenStream newInstance(final Reader reader)
+    public TokenStream newInstance(Reader reader)
             throws ConfigurationException {
 
         TokenStream stream;
@@ -355,8 +355,8 @@ public class TokenStreamFactory extends AbstractFactory
      *
      * @throws ConfigurationException in case of an error in the configuration
      */
-    public TokenStream newInstance(final String name, final String type,
-            final String encoding) throws ConfigurationException {
+    public TokenStream newInstance(String name, String type,
+            String encoding) throws ConfigurationException {
 
         if (resourceFinder == null) {
             throw new MissingResourceFinderException("");
@@ -405,7 +405,7 @@ public class TokenStreamFactory extends AbstractFactory
      *
      * @param decorator the additional decorator
      */
-    public void register(final StreamDecorator decorator) {
+    public void register(StreamDecorator decorator) {
 
         if (decorators == null) {
             decorators = new ArrayList();
@@ -417,7 +417,7 @@ public class TokenStreamFactory extends AbstractFactory
      * @see org.extex.scanner.stream.observer.file.OpenFileObservable#registerObserver(
      *      org.extex.scanner.stream.observer.file.OpenFileObserver)
      */
-    public void registerObserver(final OpenFileObserver observer) {
+    public void registerObserver(OpenFileObserver observer) {
 
         openFileObservers = OpenFileObserverList.register(openFileObservers,
                 observer);
@@ -427,7 +427,7 @@ public class TokenStreamFactory extends AbstractFactory
      * @see org.extex.scanner.stream.observer.reader.OpenReaderObservable#registerObserver(
      *      org.extex.scanner.stream.observer.reader.OpenReaderObserver)
      */
-    public void registerObserver(final OpenReaderObserver observer) {
+    public void registerObserver(OpenReaderObserver observer) {
 
         openReaderObservers = OpenReaderObserverList.register(
                 openReaderObservers, observer);
@@ -437,7 +437,7 @@ public class TokenStreamFactory extends AbstractFactory
      * @see org.extex.scanner.stream.observer.string.OpenStringObservable#registerObserver(
      *      org.extex.scanner.stream.observer.string.OpenStringObserver)
      */
-    public void registerObserver(final OpenStringObserver observer) {
+    public void registerObserver(OpenStringObserver observer) {
 
         openStringObservers = OpenStringObserverList.register(
                 openStringObservers, observer);
@@ -448,7 +448,7 @@ public class TokenStreamFactory extends AbstractFactory
      *
      * @param options the options to set.
      */
-    public void setOptions(final TokenStreamOptions options) {
+    public void setOptions(TokenStreamOptions options) {
 
         this.options = options;
     }
@@ -458,7 +458,7 @@ public class TokenStreamFactory extends AbstractFactory
      *
      * @param finder the new file finder
      */
-    public void setResourceFinder(final ResourceFinder finder) {
+    public void setResourceFinder(ResourceFinder finder) {
 
         this.resourceFinder = finder;
     }

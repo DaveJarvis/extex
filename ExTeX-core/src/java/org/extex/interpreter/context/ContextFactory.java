@@ -23,17 +23,18 @@ import java.util.logging.Logger;
 
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides a factory for a
  * {@link org.extex.interpreter.context.Context Context}.
- *
- *
+ * 
+ * 
  * <pre>
  *  &lt;Context class="the.package.TheClass"&gt;
  *  &lt;/Context&gt;
  * </pre>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -41,13 +42,14 @@ public class ContextFactory extends AbstractFactory {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param configuration the configuration for this factory
      * @param logger the logger
-     *
+     * 
      * @throws ConfigurationException in case of an error in the configuration.
      */
-    public ContextFactory(final Configuration configuration, final Logger logger) {
+    public ContextFactory(Configuration configuration, Logger logger)
+            throws ConfigurationException {
 
         super();
         enableLogging(logger);
@@ -55,19 +57,18 @@ public class ContextFactory extends AbstractFactory {
     }
 
     /**
-     * Get an instance of a context.
-     * This method selects one of the entries in the configuration. The
-     * selection is done with the help of a type String. If the type is
-     * <code>null</code> or the empty string then the default from the
-     * configuration is used.
-     *
+     * Get an instance of a context. This method selects one of the entries in
+     * the configuration. The selection is done with the help of a type String.
+     * If the type is <code>null</code> or the empty string then the default
+     * from the configuration is used.
+     * 
      * @param type the type to use
-     *
+     * 
      * @return a new context
-     *
+     * 
      * @throws ConfigurationException in case of an configuration error
      */
-    public Context newInstance(final String type) {
+    public Context newInstance(String type) throws ConfigurationException {
 
         return (Context) createInstance(type, Context.class);
     }

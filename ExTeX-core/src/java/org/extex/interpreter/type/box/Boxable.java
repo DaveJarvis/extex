@@ -19,6 +19,7 @@
 
 package org.extex.interpreter.type.box;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
@@ -50,6 +51,6 @@ public interface Boxable extends BoxOrRule {
      * @throws ConfigurationException in case of an configuration error
      */
     Box getBox(Context context, TokenSource source, Typesetter typesetter,
-            Token insert) throws InterpreterException;
+            Token insert) throws InterpreterException, ConfigurationException;
 
 }

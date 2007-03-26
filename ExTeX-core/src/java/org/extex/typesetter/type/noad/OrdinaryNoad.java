@@ -48,7 +48,7 @@ public class OrdinaryNoad extends AbstractNucleusNoad implements SimpleNoad {
      * @param nucleus the nucleus
      * @param tc the typesetting context for the color
      */
-    public OrdinaryNoad(final Noad nucleus, final TypesettingContext tc) {
+    public OrdinaryNoad(Noad nucleus, TypesettingContext tc) {
 
         super(nucleus, tc);
         setSpacingClass(MathSpacing.ORD);
@@ -65,7 +65,7 @@ public class OrdinaryNoad extends AbstractNucleusNoad implements SimpleNoad {
      *      java.lang.StringBuffer,
      *      int)
      */
-    protected void toStringAdd(final StringBuffer sb, final int depth) {
+    protected void toStringAdd(StringBuffer sb, int depth) {
 
         sb.append("mathord");
     }
@@ -93,9 +93,9 @@ public class OrdinaryNoad extends AbstractNucleusNoad implements SimpleNoad {
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(final Noad previousNoad, final NoadList noads,
-            final int index, final NodeList list,
-            final MathContext mathContext, final Logger logger)
+    public void typeset(Noad previousNoad, NoadList noads,
+            int index, NodeList list,
+            MathContext mathContext, Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 
@@ -127,9 +127,9 @@ public class OrdinaryNoad extends AbstractNucleusNoad implements SimpleNoad {
      *
      * @return the index of the next noad to consider
      */
-    public static final int make_ord(final NoadList noads, final int index,
-            final NodeList list, final MathContext mathContext,
-            final Logger logger) {
+    public static final int make_ord(NoadList noads, int index,
+            NodeList list, MathContext mathContext,
+            Logger logger) {
 
         int i = index;
         //    var a: integer;  {address of lig/kern instruction}

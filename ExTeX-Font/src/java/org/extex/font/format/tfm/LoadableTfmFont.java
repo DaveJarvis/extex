@@ -94,7 +94,7 @@ public class LoadableTfmFont implements LoadableFont {
     /**
      * @see org.extex.font.ExtexFont#getDepth(org.extex.core.UnicodeChar)
      */
-    public FixedGlue getDepth(final UnicodeChar uc) {
+    public FixedGlue getDepth(UnicodeChar uc) {
 
         int cp = charPos(uc);
         if (cp >= 0 && reader.getDepth(cp) != null) {
@@ -131,7 +131,7 @@ public class LoadableTfmFont implements LoadableFont {
     /**
      * @see org.extex.font.ExtexFont#getFontDimen(java.lang.String)
      */
-    public FixedDimen getFontDimen(final String name) {
+    public FixedDimen getFontDimen(String name) {
 
         TfmFixWord param = reader.getParamAsFixWord(name);
 
@@ -158,7 +158,7 @@ public class LoadableTfmFont implements LoadableFont {
     /**
      * @see org.extex.font.ExtexFont#getHeight(org.extex.core.UnicodeChar)
      */
-    public FixedGlue getHeight(final UnicodeChar uc) {
+    public FixedGlue getHeight(UnicodeChar uc) {
 
         int cp = charPos(uc);
         if (cp >= 0 && reader.getHeight(cp) != null) {
@@ -171,7 +171,7 @@ public class LoadableTfmFont implements LoadableFont {
     /**
      * @see org.extex.font.ExtexFont#getItalicCorrection(org.extex.core.UnicodeChar)
      */
-    public FixedDimen getItalicCorrection(final UnicodeChar uc) {
+    public FixedDimen getItalicCorrection(UnicodeChar uc) {
 
         int cp = charPos(uc);
         if (cp >= 0 && reader.getItalicCorrection(cp) != null) {
@@ -184,7 +184,7 @@ public class LoadableTfmFont implements LoadableFont {
     /**
      * @see org.extex.font.ExtexFont#getKerning(org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
      */
-    public FixedDimen getKerning(final UnicodeChar uc1, final UnicodeChar uc2) {
+    public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
 
         int cp1 = charPos(uc1);
         int cp2 = charPos(uc2);
@@ -198,7 +198,7 @@ public class LoadableTfmFont implements LoadableFont {
     /**
      * @see org.extex.font.ExtexFont#getLigature(org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
      */
-    public UnicodeChar getLigature(final UnicodeChar uc1, final UnicodeChar uc2) {
+    public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
 
         int cp1 = charPos(uc1);
         int cp2 = charPos(uc2);
@@ -238,7 +238,7 @@ public class LoadableTfmFont implements LoadableFont {
     /**
      * @see org.extex.font.ExtexFont#getWidth(org.extex.core.UnicodeChar)
      */
-    public FixedGlue getWidth(final UnicodeChar uc) {
+    public FixedGlue getWidth(UnicodeChar uc) {
 
         int cp = charPos(uc);
         if (cp >= 0 && reader.getWidth(cp) != null) {
@@ -257,7 +257,7 @@ public class LoadableTfmFont implements LoadableFont {
      * @param uc    the Unicode char.
      * @return the char position of a Unicode char.
      */
-    private int charPos(final UnicodeChar uc) {
+    private int charPos(UnicodeChar uc) {
 
         if (uc == null) {
             return -1;
@@ -281,7 +281,7 @@ public class LoadableTfmFont implements LoadableFont {
     /**
      * @see org.extex.interpreter.type.font.Font#hasGlyph(org.extex.core.UnicodeChar)
      */
-    public boolean hasGlyph(final UnicodeChar uc) {
+    public boolean hasGlyph(UnicodeChar uc) {
 
         int cp = charPos(uc);
         TfmFixWord w = reader.getWidth(cp);
@@ -295,8 +295,8 @@ public class LoadableTfmFont implements LoadableFont {
      * @see org.extex.font.LoadableFont#loadFont(java.io.InputStream,
      *      org.extex.font.CoreFontFactory, org.extex.font.FontKey)
      */
-    public void loadFont(final InputStream in, final CoreFontFactory factory,
-            final FontKey fontKey) throws CorruptFontException,
+    public void loadFont(InputStream in, CoreFontFactory factory,
+            FontKey fontKey) throws CorruptFontException,
             ConfigurationException {
 
         this.fontKey = fontKey;

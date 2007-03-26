@@ -33,7 +33,7 @@ public class PdfpagewidthTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PdfpagewidthTest.class);
     }
@@ -43,7 +43,7 @@ public class PdfpagewidthTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public PdfpagewidthTest(final String arg) {
+    public PdfpagewidthTest(String arg) {
 
         super(arg, "pdfpagewidth", "", "597.50787pt");
         setConfig("pdftex-test");

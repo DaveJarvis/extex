@@ -34,7 +34,7 @@ public class ScanNumberTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public ScanNumberTest(final String arg) {
+    public ScanNumberTest(String arg) {
 
         super(arg);
     }

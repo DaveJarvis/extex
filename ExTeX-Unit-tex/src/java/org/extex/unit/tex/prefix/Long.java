@@ -73,7 +73,7 @@ public class Long extends AbstractCode implements PrefixCode {
      *
      * @param name the name for debugging
      */
-    public Long(final String name) {
+    public Long(String name) {
 
         super(name);
     }
@@ -96,8 +96,8 @@ public class Long extends AbstractCode implements PrefixCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         prefix.setLong();

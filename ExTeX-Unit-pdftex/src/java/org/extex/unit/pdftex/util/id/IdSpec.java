@@ -55,8 +55,8 @@ public abstract class IdSpec implements Serializable {
      *
      * @throws InterpreterException in case of an parse error
      */
-    public static IdSpec parseIdSpec(final Context context,
-            final TokenSource source, final Typesetter typesetter, final String name)
+    public static IdSpec parseIdSpec(Context context,
+            TokenSource source, Typesetter typesetter, String name)
             throws InterpreterException {
 
         if (source.getKeyword(context, "num")) {

@@ -69,7 +69,7 @@ public class Valign extends AbstractAlign {
      *
      * @param name the name for tracing and debugging
      */
-    public Valign(final String name) {
+    public Valign(String name) {
 
         super(name);
     }
@@ -86,9 +86,9 @@ public class Valign extends AbstractAlign {
      *
      * @throws InterpreterException in case of an error
      */
-    private void applyPreamble(final List preamble, final Dimen height,
-            final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    private void applyPreamble(List preamble, Dimen height,
+            Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         //TODO gene: execute() unimplemented
         throw new RuntimeException("unimplemented");
@@ -112,8 +112,8 @@ public class Valign extends AbstractAlign {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Dimen height = null;

@@ -33,7 +33,7 @@ public class HskipTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(HskipTest.class);
     }
@@ -43,7 +43,7 @@ public class HskipTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public HskipTest(final String arg) {
+    public HskipTest(String arg) {
 
         super(arg, "hskip", "12pt", "A");
     }

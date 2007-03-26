@@ -31,7 +31,7 @@ public class HfilnegTest extends AbstractHfillTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(HfilnegTest.class);
     }
@@ -41,7 +41,7 @@ public class HfilnegTest extends AbstractHfillTester {
      *
      * @param arg the name
      */
-    public HfilnegTest(final String arg) {
+    public HfilnegTest(String arg) {
 
         super(arg, "hfilneg", "");
     }

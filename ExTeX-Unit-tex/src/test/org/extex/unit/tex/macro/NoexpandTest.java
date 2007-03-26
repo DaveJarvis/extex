@@ -34,7 +34,7 @@ public class NoexpandTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public NoexpandTest(final String arg) {
+    public NoexpandTest(String arg) {
 
         super(arg, "noexpand", "\\relax");
     }

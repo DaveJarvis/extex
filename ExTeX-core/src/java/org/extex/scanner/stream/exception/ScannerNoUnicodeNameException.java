@@ -47,7 +47,7 @@ public class ScannerNoUnicodeNameException extends ScannerException {
      * Create a new Object.
      * @param wrongUnicodeName   The wrong name.
      */
-    public ScannerNoUnicodeNameException(final String wrongUnicodeName) {
+    public ScannerNoUnicodeNameException(String wrongUnicodeName) {
 
         super(wrongUnicodeName);
     }

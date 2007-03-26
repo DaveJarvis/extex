@@ -33,7 +33,7 @@ public class VboxTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(VboxTest.class);
     }
@@ -43,7 +43,7 @@ public class VboxTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public VboxTest(final String arg) {
+    public VboxTest(String arg) {
 
         super(arg, "vbox", "{}");
     }

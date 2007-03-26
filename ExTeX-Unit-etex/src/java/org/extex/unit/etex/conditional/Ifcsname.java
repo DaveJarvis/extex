@@ -70,7 +70,7 @@ public class Ifcsname extends AbstractIf {
      *
      * @param name the name for debugging
      */
-    public Ifcsname(final String name) {
+    public Ifcsname(String name) {
 
         super(name);
     }
@@ -94,8 +94,8 @@ public class Ifcsname extends AbstractIf {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public boolean conditional(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         Tokens toks =
                 Csname.scanToEndCsname(context, source, typesetter,

@@ -125,7 +125,7 @@ public class DviXmlTest extends TestCase {
      * @return Return the root element
      * @throws Exception if an error occurs
      */
-    private Element readXML(final int nr) throws Exception {
+    private Element readXML(int nr) throws Exception {
 
         String file = PATH + FILES[nr] + ".dvi";
         RandomAccessInputFile rar = new RandomAccessInputFile(file);
@@ -189,8 +189,8 @@ public class DviXmlTest extends TestCase {
      * @throws ConfigurationException in case that some kind of problems have
      * been detected in the configuration
      */
-    protected FontFactory makeFontFactory(final Configuration config,
-            final Configuration finderCfg) throws ConfigurationException {
+    protected FontFactory makeFontFactory(Configuration config,
+            Configuration finderCfg) throws ConfigurationException {
 
         FontFactory fontFactory;
         String fontClass = config.getAttribute("class");
@@ -259,7 +259,7 @@ public class DviXmlTest extends TestCase {
      * test DviXml.
      * @param args  the commandline
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(DviXmlTest.class);
     }

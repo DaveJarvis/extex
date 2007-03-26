@@ -44,7 +44,7 @@ public class RelationNoad extends AbstractNucleusNoad implements SimpleNoad {
      * @param nucleus the nucleus
      * @param tc the typesetting context for the color
      */
-    public RelationNoad(final Noad nucleus, final TypesettingContext tc) {
+    public RelationNoad(Noad nucleus, TypesettingContext tc) {
 
         super(nucleus, tc);
         setSpacingClass(MathSpacing.REL);
@@ -61,7 +61,7 @@ public class RelationNoad extends AbstractNucleusNoad implements SimpleNoad {
      *      java.lang.StringBuffer,
      *      int)
      */
-    protected void toStringAdd(final StringBuffer sb, final int depth) {
+    protected void toStringAdd(StringBuffer sb, int depth) {
 
         sb.append("mathrel");
     }
@@ -88,9 +88,9 @@ public class RelationNoad extends AbstractNucleusNoad implements SimpleNoad {
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(final Noad previousNoad, final NoadList noads,
-            final int index, final NodeList list,
-            final MathContext mathContext, final Logger logger)
+    public void typeset(Noad previousNoad, NoadList noads,
+            int index, NodeList list,
+            MathContext mathContext, Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 

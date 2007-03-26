@@ -141,7 +141,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      * @param c The class for the logger.
      * @throws ConfigurationException from the configuration system.
      */
-    protected AfmUtil(final Class c) throws ConfigurationException {
+    protected AfmUtil(Class c) throws ConfigurationException {
 
         super(c);
 
@@ -164,7 +164,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      * @param file  The afm file name.
      * @throws Exception if an error occurs.
      */
-    private void doIt(final String file) throws Exception {
+    private void doIt(String file) throws Exception {
 
         InputStream afmin = null;
 
@@ -307,7 +307,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      * @param names     The names for the files.
      * @throws IOException if a IO-error occurred.
      */
-    private void createEncFiles(final ArrayList names) throws IOException {
+    private void createEncFiles(ArrayList names) throws IOException {
 
         int cnt = 0;
         int filecnt = 0;
@@ -374,8 +374,8 @@ public abstract class AfmUtil extends AbstractFontUtil {
      * @param readenc   The existing glyph names.
      * @param names     The glyph names from the afm file.
      */
-    private void removeExistingNames(final ArrayList readenc,
-            final ArrayList names) {
+    private void removeExistingNames(ArrayList readenc,
+            ArrayList names) {
 
         for (int i = 0, n = readenc.size(); i < n; i++) {
             String name = (String) readenc.get(i);
@@ -405,7 +405,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      * @param name  The name of the pl file.
      * @throws IOException if an IO-error occurred.
      */
-    private void createPl(final EncReader enc, final String name)
+    private void createPl(EncReader enc, String name)
             throws IOException {
 
         PlWriter pl = new PlWriter(new FileOutputStream(outdir + File.separator
@@ -436,7 +436,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      * @param enc   The encoding table.
      * @param pl    The pl writer.
      */
-    private void printCharacter(final EncReader enc, final PlWriter pl) {
+    private void printCharacter(EncReader enc, PlWriter pl) {
 
         String[] table = enc.getTable();
         for (int i = 0; i < table.length; i++) {
@@ -464,7 +464,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      * @param enc   The encoding vector.
      * @param pl    The pl writer.
      */
-    private void printLigTable(final EncReader enc, final PlWriter pl) {
+    private void printLigTable(EncReader enc, PlWriter pl) {
 
         pl.plopen("LIGTABLE");
 
@@ -517,7 +517,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      * Print the FONTDIMEN.
      * @param pl    The pl writer.
      */
-    private void printFontDimen(final PlWriter pl) {
+    private void printFontDimen(PlWriter pl) {
 
         pl.plopen("FONTDIMEN");
 
@@ -585,7 +585,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      * @param value  The value to scale
      * @return Scale the value.
      */
-    private double scale(final long value) {
+    private double scale(long value) {
 
         //      (((what / 1000) << 20) + (((what % 1000) << 20) + 500) / 1000);
         return value / 1000d;
@@ -597,7 +597,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      * @param y y
      * @return The transform value.
      */
-    private int transform(final int x, final int y) {
+    private int transform(int x, int y) {
 
         double acc = efactor * x + slant * y;
         return (int) (acc >= 0 ? Math.floor(acc + 0.5) : Math.ceil(acc - 0.5));
@@ -611,7 +611,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      * @throws ConfigurationException from the configuration system.
      * @throws FontException if a font error occurred.
      */
-    private void readAllGlyphName(final ArrayList readenc) throws IOException,
+    private void readAllGlyphName(ArrayList readenc) throws IOException,
             ConfigurationException, FontException {
 
         for (int i = 0, n = enclist.size(); i < n; i++) {
@@ -676,7 +676,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      * @param n The name.
      * @return Returns only the name of a file.
      */
-    private String removeExtensions(final String n) {
+    private String removeExtensions(String n) {
 
         StringBuffer buf = new StringBuffer();
 
@@ -704,7 +704,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      * @param f The file.
      * @return Returns only the name of a file.
      */
-    private String removeExtensions(final File f) {
+    private String removeExtensions(File f) {
 
         return removeExtensions(f.getName());
     }
@@ -772,7 +772,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
     //     * @param args the command line arguments.
     //     * @throws Exception if a error occurs.
     //     */
-    //    public static void main(final String[] args) throws Exception {
+    //    public static void main(String[] args) throws Exception {
     //
     //        AfmUtil afm = new AfmUtil();
     //
@@ -864,7 +864,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      * The toxml to set.
      * @param xml The toxml to set.
      */
-    public void setToxml(final boolean xml) {
+    public void setToxml(boolean xml) {
 
         toxml = xml;
     }
@@ -882,7 +882,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      * The xmlname to set.
      * @param name The xmlname to set.
      */
-    public void setXmlname(final String name) {
+    public void setXmlname(String name) {
 
         xmlname = name;
     }
@@ -900,7 +900,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      * The efmname to set.
      * @param name The efmname to set.
      */
-    public void setEfmname(final String name) {
+    public void setEfmname(String name) {
 
         efmname = name;
     }
@@ -918,7 +918,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      * The toefm to set.
      * @param efm The toefm to set.
      */
-    public void setToefm(final boolean efm) {
+    public void setToefm(boolean efm) {
 
         toefm = efm;
     }
@@ -936,7 +936,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      * The enclist to set.
      * @param list The enclist to set.
      */
-    public void setEnclist(final ArrayList list) {
+    public void setEnclist(ArrayList list) {
 
         enclist = list;
     }
@@ -954,7 +954,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      * The encname to set.
      * @param name The encname to set.
      */
-    public void setEncname(final String name) {
+    public void setEncname(String name) {
 
         encname = name;
     }
@@ -972,7 +972,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      * The toenc to set.
      * @param enc The toenc to set.
      */
-    public void setToenc(final boolean enc) {
+    public void setToenc(boolean enc) {
 
         toenc = enc;
     }
@@ -990,7 +990,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      * The tomap to set.
      * @param map The tomap to set.
      */
-    public void setTomap(final boolean map) {
+    public void setTomap(boolean map) {
 
         tomap = map;
     }
@@ -1008,7 +1008,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      * The topl to set.
      * @param pl The topl to set.
      */
-    public void setTopl(final boolean pl) {
+    public void setTopl(boolean pl) {
 
         topl = pl;
     }
@@ -1046,8 +1046,8 @@ public abstract class AfmUtil extends AbstractFontUtil {
          * @param gn            The glyph name.
          * @param n             The number.
          */
-        public EncGlpyh(final String basefont, final String fontencname,
-                final String gn, final int n) {
+        public EncGlpyh(String basefont, String fontencname,
+                String gn, int n) {
 
             font = basefont;
             fonte = fontencname;
@@ -1126,7 +1126,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      * Set the enccheck.
      * @param check The enccheck to set.
      */
-    public void setEnccheck(final boolean check) {
+    public void setEnccheck(boolean check) {
 
         enccheck = check;
     }
@@ -1145,7 +1145,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      *
      * @param missingglyph The missingGlyph to set.
      */
-    public void setMissingGlyph(final boolean missingglyph) {
+    public void setMissingGlyph(boolean missingglyph) {
 
         this.missingGlyph = missingglyph;
     }
@@ -1169,7 +1169,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
      *
      * @param out The outdir to set.
      */
-    public void setOutdir(final String out) {
+    public void setOutdir(String out) {
 
         outdir = out;
     }

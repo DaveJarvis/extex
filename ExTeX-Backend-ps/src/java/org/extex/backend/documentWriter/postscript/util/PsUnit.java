@@ -25,28 +25,28 @@ import org.extex.core.dimen.FixedDimen;
 
 /**
  * This class contains some utility methods.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public abstract class PsUnit {
 
     /**
-     * The constant <tt>BP100_PER_IN</tt> contains the number of 100 big points
-     * per inch.
+     * The constant <tt>BP100_PER_IN</tt> contains the number of 100 big
+     * points per inch.
      */
     private static final int BP100_PER_IN = 7200;
 
     /**
-     * The constant <tt>CM100_PER_IN</tt> contains the number of 100 centimeters
-     * per inch.
+     * The constant <tt>CM100_PER_IN</tt> contains the number of 100
+     * centimeters per inch.
      */
     private static final int CM100_PER_IN = 254;
 
     /**
      * The constant <tt>FLOAT_DIGITS</tt> contains the number of digits to
      * consider when producing a string representation of this type.
-     *
+     * 
      * Attention: Do not change this value unless you have read and understood
      * <logo>TeX</logo> the program!
      */
@@ -65,14 +65,14 @@ public abstract class PsUnit {
 
     /**
      * Get the next character from a character sequence.
-     *
+     * 
      * @param seq the sequence to read from
      * @param index the index of the next character to read
-     *
-     * @return the code of the next character or a negative number if none
-     *  could be read
+     * 
+     * @return the code of the next character or a negative number if none could
+     *         be read
      */
-    public static int getChar(final CharSequence seq, final Count index) {
+    public static int getChar(CharSequence seq, Count index) {
 
         int i = (int) index.getValue();
         if (i >= seq.length()) {
@@ -84,14 +84,14 @@ public abstract class PsUnit {
 
     /**
      * Get the next non-space character from a character sequence.
-     *
+     * 
      * @param seq the sequence to read from
      * @param index the index of the next character to read
-     *
-     * @return the code of the next character or a negative number if none
-     *  could be read
+     * 
+     * @return the code of the next character or a negative number if none could
+     *         be read
      */
-    private static int getNonSpace(final CharSequence seq, final Count index) {
+    private static int getNonSpace(CharSequence seq, Count index) {
 
         int i = (int) index.getValue();
         int length = seq.length();
@@ -107,16 +107,15 @@ public abstract class PsUnit {
     }
 
     /**
-     * Scan a floating point number from a character sequence.
-     * White-space characters at the beginning and after the optional sign are
-     * ignored.
-     *
+     * Scan a floating point number from a character sequence. White-space
+     * characters at the beginning and after the optional sign are ignored.
+     * 
      * @param seq the sequence to read from
      * @param index the index of the next character to read
-     *
+     * 
      * @return the fixed point number in multiples of 2^16
      */
-    public static long getFloat(final CharSequence seq, final Count index) {
+    public static long getFloat(CharSequence seq, Count index) {
 
         boolean neg = false;
         long val = 0;
@@ -162,27 +161,30 @@ public abstract class PsUnit {
     }
 
     /**
-     * Parse a character sequence for a length and return it in sp.
-     * The length is given as a float number optionally preceded by white-space
-     * and a sign. This number is followed by optional white-space and a unit
-     * given as two letters.
-     * The following units are supported: pt, sp, bp, mm, cm, cc, dd, pc.
-     *
-     * <p>Examples</p>
+     * Parse a character sequence for a length and return it in sp. The length
+     * is given as a float number optionally preceded by white-space and a sign.
+     * This number is followed by optional white-space and a unit given as two
+     * letters. The following units are supported: pt, sp, bp, mm, cm, cc, dd,
+     * pc.
+     * 
+     * <p>
+     * Examples
+     * </p>
+     * 
      * <pre>
      *  1sp
      *  .2 pt
      *  -3.4 mm
      * </pre>
-     *
+     * 
      * @param seq the sequence to read from
      * @param index the index of the next character to read
-     *
+     * 
      * @return the length in scaled points
-     *
+     * 
      * @throws NumberFormatException in case of a parsing error
      */
-    public static long getLength(final CharSequence seq, final Count index)
+    public static long getLength(CharSequence seq, Count index)
             throws NumberFormatException {
 
         long length = getFloat(seq, index);
@@ -244,14 +246,13 @@ public abstract class PsUnit {
     /**
      * This method produces a printable representation of a length in terms of
      * PostScript points. This means that 72 PostScript points are 1 inch.
-     *
+     * 
      * @param d the dimen to convert
      * @param out the target buffer
      * @param strip indicator whether rounding to the next higher integral
-     *  number is desirable
+     *        number is desirable
      */
-    public static void toPoint(final FixedDimen d, final StringBuffer out,
-            final boolean strip) {
+    public static void toPoint(FixedDimen d, StringBuffer out, boolean strip) {
 
         long val = d.getValue() * BP100_PER_IN / POINT_PER_100_IN;
 
@@ -268,9 +269,9 @@ public abstract class PsUnit {
 
         long v = val / Dimen.ONE;
         if (v == 0) {
-            //            if (val == 0) {
+            // if (val == 0) {
             out.append('0');
-            //            }
+            // }
         } else {
             long m = 1;
             while (m <= v) {
@@ -292,7 +293,7 @@ public abstract class PsUnit {
 
         val = 10 * (val % Dimen.ONE) + 5;
         long delta = 10;
-        delta = 10000; //gene: precision
+        delta = 10000; // gene: precision
         do {
             if (delta > Dimen.ONE) {
                 val = val + 0100000 - 50000; // round the last digit
@@ -310,6 +311,7 @@ public abstract class PsUnit {
      */
     private PsUnit() {
 
+        // not needed
     }
 
 }

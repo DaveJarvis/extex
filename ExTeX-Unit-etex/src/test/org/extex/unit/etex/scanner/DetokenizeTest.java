@@ -33,7 +33,7 @@ public class DetokenizeTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(DetokenizeTest.class);
     }
@@ -43,7 +43,7 @@ public class DetokenizeTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public DetokenizeTest(final String arg) {
+    public DetokenizeTest(String arg) {
 
         super(arg, "detokenize", "{}");
         setConfig("etex-test");

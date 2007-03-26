@@ -21,7 +21,6 @@ package org.extex.resource;
 
 import java.io.InputStream;
 
-import org.extex.core.StringListIterator;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
@@ -96,7 +95,7 @@ public class ClasspathFinder extends AbstractFinder {
      *
      * @throws ConfigurationMissingException in case of an error
      */
-    public ClasspathFinder(final Configuration configuration)
+    public ClasspathFinder(Configuration configuration)
             throws ConfigurationMissingException {
 
         super(configuration);
@@ -107,7 +106,7 @@ public class ClasspathFinder extends AbstractFinder {
      *      java.lang.String,
      *      java.lang.String)
      */
-    public InputStream findResource(final String name, final String type)
+    public InputStream findResource(String name, String type)
             throws ConfigurationException {
 
         ClassLoader classLoader = this.getClass().getClassLoader();
@@ -136,10 +135,9 @@ public class ClasspathFinder extends AbstractFinder {
             prefix = "";
         }
 
-        StringListIterator extIt = cfg.getValues("extension").getIterator();
+        for (String ext : cfg.getValues("extension")) {
 
-        while (extIt.hasNext()) {
-            String fullName = prefix + name + extIt.next();
+            String fullName = prefix + name + ext;
             fullName = fullName.replaceAll("\\{type\\}", type);
             trace("Try", fullName, null);
             InputStream stream = classLoader.getResourceAsStream(fullName);

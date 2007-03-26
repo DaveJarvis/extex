@@ -98,7 +98,7 @@ public class Showgroups extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitAdjustedHboxGroup(
          *      java.lang.Object)
          */
-        public Object visitAdjustedHboxGroup(final Object arg) {
+        public Object visitAdjustedHboxGroup(Object arg) {
 
             return "adjusted.hbox.group";
         }
@@ -113,7 +113,7 @@ public class Showgroups extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitAlignGroup(
          *      java.lang.Object)
          */
-        public Object visitAlignGroup(final Object arg) {
+        public Object visitAlignGroup(Object arg) {
 
             return "align.group";
         }
@@ -128,7 +128,7 @@ public class Showgroups extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitBottomLevelGroup(
          *      java.lang.Object)
          */
-        public Object visitBottomLevelGroup(final Object arg) {
+        public Object visitBottomLevelGroup(Object arg) {
 
             return "bottom.level.group";
         }
@@ -143,7 +143,7 @@ public class Showgroups extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitDiscGroup(
          *      java.lang.Object)
          */
-        public Object visitDiscGroup(final Object arg) {
+        public Object visitDiscGroup(Object arg) {
 
             return "disc.group";
         }
@@ -158,7 +158,7 @@ public class Showgroups extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitHboxGroup(
          *      java.lang.Object)
          */
-        public Object visitHboxGroup(final Object arg) {
+        public Object visitHboxGroup(Object arg) {
 
             return "hbox.group";
         }
@@ -173,7 +173,7 @@ public class Showgroups extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitInsertGroup(
          *      java.lang.Object)
          */
-        public Object visitInsertGroup(final Object arg) {
+        public Object visitInsertGroup(Object arg) {
 
             return "insert.group";
         }
@@ -188,7 +188,7 @@ public class Showgroups extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathChoiceGroup(
          *      java.lang.Object)
          */
-        public Object visitMathChoiceGroup(final Object arg) {
+        public Object visitMathChoiceGroup(Object arg) {
 
             return "math.choice.group";
         }
@@ -203,7 +203,7 @@ public class Showgroups extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathGroup(
          *      java.lang.Object)
          */
-        public Object visitMathGroup(final Object arg) {
+        public Object visitMathGroup(Object arg) {
 
             return "math.group";
         }
@@ -218,7 +218,7 @@ public class Showgroups extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathLeftGroup(
          *      java.lang.Object)
          */
-        public Object visitMathLeftGroup(final Object arg) {
+        public Object visitMathLeftGroup(Object arg) {
 
             return "math.left.group";
         }
@@ -233,7 +233,7 @@ public class Showgroups extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathShiftGroup(
          *      java.lang.Object)
          */
-        public Object visitMathShiftGroup(final Object arg) {
+        public Object visitMathShiftGroup(Object arg) {
 
             return "math.shift.group";
         }
@@ -248,7 +248,7 @@ public class Showgroups extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitNoAlignGroup(
          *      java.lang.Object)
          */
-        public Object visitNoAlignGroup(final Object arg) {
+        public Object visitNoAlignGroup(Object arg) {
 
             return "no.align.group";
         }
@@ -263,7 +263,7 @@ public class Showgroups extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitOutputGroup(
          *      java.lang.Object)
          */
-        public Object visitOutputGroup(final Object arg) {
+        public Object visitOutputGroup(Object arg) {
 
             return "output.group";
         }
@@ -278,7 +278,7 @@ public class Showgroups extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitSemiSimpleGroup(
          *      java.lang.Object)
          */
-        public Object visitSemiSimpleGroup(final Object arg) {
+        public Object visitSemiSimpleGroup(Object arg) {
 
             return "semi.simple.group";
         }
@@ -293,7 +293,7 @@ public class Showgroups extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitSimpleGroup(
          *      java.lang.Object)
          */
-        public Object visitSimpleGroup(final Object arg) {
+        public Object visitSimpleGroup(Object arg) {
 
             return "simple.group";
         }
@@ -308,7 +308,7 @@ public class Showgroups extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVboxGroup(
          *      java.lang.Object)
          */
-        public Object visitVboxGroup(final Object arg) {
+        public Object visitVboxGroup(Object arg) {
 
             return "vbox.group";
         }
@@ -323,7 +323,7 @@ public class Showgroups extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVcenterGroup(
          *      java.lang.Object)
          */
-        public Object visitVcenterGroup(final Object arg) {
+        public Object visitVcenterGroup(Object arg) {
 
             return "vcenter.group";
         }
@@ -338,7 +338,7 @@ public class Showgroups extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVtopGroup(
          *      java.lang.Object)
          */
-        public Object visitVtopGroup(final Object arg) {
+        public Object visitVtopGroup(Object arg) {
 
             return "vtop.group";
         }
@@ -361,7 +361,7 @@ public class Showgroups extends AbstractCode
      *
      * @param name the name for tracing and debugging
      */
-    public Showgroups(final String name) {
+    public Showgroups(String name) {
 
         super(name);
     }
@@ -376,7 +376,7 @@ public class Showgroups extends AbstractCode
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
-    public void configure(final Configuration config)
+    public void configure(Configuration config)
             throws ConfigurationException {
 
         String format = config.getAttribute("format");
@@ -393,7 +393,7 @@ public class Showgroups extends AbstractCode
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger log) {
+    public void enableLogging(Logger log) {
 
         this.logger = log;
     }
@@ -416,8 +416,8 @@ public class Showgroups extends AbstractCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Localizer loc = getLocalizer();

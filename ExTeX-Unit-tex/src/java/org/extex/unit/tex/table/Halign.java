@@ -89,7 +89,7 @@ public class Halign extends AbstractAlign implements Boxable {
      *
      * @param name the name for tracing and debugging
      */
-    public Halign(final String name) {
+    public Halign(String name) {
 
         super(name);
     }
@@ -113,8 +113,8 @@ public class Halign extends AbstractAlign implements Boxable {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Flags f = prefix.copy();
@@ -143,8 +143,8 @@ public class Halign extends AbstractAlign implements Boxable {
      *      org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
-    public Box getBox(final Context context, final TokenSource source,
-            final Typesetter typesetter, final Token insert)
+    public Box getBox(Context context, TokenSource source,
+            Typesetter typesetter, Token insert)
             throws InterpreterException {
 
         //TODO gene: treat insert
@@ -163,8 +163,8 @@ public class Halign extends AbstractAlign implements Boxable {
      * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
      */
-    private NodeList getNodes(final Context context, final TokenSource source,
-            final Typesetter typesetter)
+    private NodeList getNodes(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException {
 
         FixedDimen width = null;

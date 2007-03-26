@@ -61,7 +61,7 @@ import org.extex.typesetter.type.page.Page;
 
 /**
  * This is a implementation of a dvi document writer.
- *
+ * 
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
  * @version $Revision:4704 $
  */
@@ -73,7 +73,7 @@ public class DviDocumentWriter
 
     /**
      * Internal <code>NodeVisitor</code> of this class.
-     *
+     * 
      */
     private final class DviVisitor
             implements
@@ -81,76 +81,75 @@ public class DviDocumentWriter
                 InspectableNodeVisitor {
 
         /**
-         * Writer for the dvi code.  The writer knows the dvi format.
-         *
+         * Writer for the dvi code. The writer knows the dvi format.
+         * 
          */
         private DviWriter dviWriter = null;
 
         /**
-         * Visitor for nested nodes.  This is normally
-         * <code>this</code>.  It changes during debugging.
-         *
+         * Visitor for nested nodes. This is normally <code>this</code>. It
+         * changes during debugging.
+         * 
          */
         private NodeVisitor visitor = this;
 
         /**
          * Creates a new instance.
-         *
+         * 
          * @param theDviWriter writer for the dvi output
          */
-        public DviVisitor(final DviWriter theDviWriter) {
+        public DviVisitor(DviWriter theDviWriter) {
 
             dviWriter = theDviWriter;
         }
 
-
         /**
          * Get wrong node.
-         *
+         * 
          * @param node the wrong node
          * @return Exception for this confusion.
-         *
+         * 
          * @exception GeneralException if an error occurs
          */
-        private GeneralException confusion(final String node)
+        private GeneralException confusion(String node)
                 throws GeneralException {
 
-//            String argument;
-//            if (localizer == null) {
-//                argument = "ExTeX.DocumentWriterWrongNode: " + node;
-//            } else {
-//                argument = localizer.format("ExTeX.DocumentWriterWrongNode",
-//                        node);
-//            }
+            // String argument;
+            // if (localizer == null) {
+            // argument = "ExTeX.DocumentWriterWrongNode: " + node;
+            // } else {
+            // argument = localizer.format("ExTeX.DocumentWriterWrongNode",
+            // node);
+            // }
 
-            // TODO: return new PanicException(localizer, "TTP.Confusion", argument); (TE)
+            // TODO: return new PanicException(localizer, "TTP.Confusion",
+            // argument); (TE)
             return new PanicException();
         }
 
         /**
          * Set the visitor for recursive inspection of Nodes (NodeLists).
-         *
+         * 
          * @param theVisitor the new <code>NodeVisitor</code>
          */
-        public void setVisitor(final NodeVisitor theVisitor) {
+        public void setVisitor(NodeVisitor theVisitor) {
 
             // this method is needed for debugging
 
             visitor = theVisitor;
         }
 
-
         /**
          * Inspect Adjust for dvi file.
-         *
+         * 
          * @param node the <code>AdjustNode</code> value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
          * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(AdjustNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitAdjust(final AdjustNode node, final Object value)
+        public Object visitAdjust(AdjustNode node, Object value)
                 throws GeneralException {
 
             // TODO unimplemented
@@ -159,16 +158,16 @@ public class DviDocumentWriter
 
         /**
          * Inspect AfterMathNode for dvi file.
-         *
+         * 
          * @param node the <code>AfterMathNode</code> value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
          * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(AfterMathNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitAfterMath(final AfterMathNode node,
-                final Object value) throws GeneralException {
+        public Object visitAfterMath(AfterMathNode node,
+                Object value) throws GeneralException {
 
             // TODO unimplemented
             throw new GeneralException("unimplemented");
@@ -176,16 +175,16 @@ public class DviDocumentWriter
 
         /**
          * Inspect AlignedLeadersNode for dvi file.
-         *
+         * 
          * @param node the <code>AlignedLeadersNode</code> value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
          * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(AlignedLeadersNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitAlignedLeaders(final AlignedLeadersNode node,
-                final Object value) throws GeneralException {
+        public Object visitAlignedLeaders(AlignedLeadersNode node,
+                Object value) throws GeneralException {
 
             // TODO unimplemented
             throw new GeneralException("unimplemented");
@@ -193,34 +192,33 @@ public class DviDocumentWriter
 
         /**
          * Inspect BeforeMathNode for dvi file.
-         *
+         * 
          * @param node the <code>BeforeMathNode</code> value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
          * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(BeforeMathNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitBeforeMath(final BeforeMathNode node,
-                final Object value) throws GeneralException {
+        public Object visitBeforeMath(BeforeMathNode node,
+                Object value) throws GeneralException {
 
             // TODO unimplemented
             throw new GeneralException("unimplemented");
         }
 
-
         /**
          * Inspect CenteredLeadersNode for dvi file.
-         *
+         * 
          * @param node the <code>CenteredLeadersNode</code> value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
          * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(CenteredLeadersNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitCenteredLeaders(final CenteredLeadersNode node,
-                final Object value) throws GeneralException {
+        public Object visitCenteredLeaders(CenteredLeadersNode node,
+                Object value) throws GeneralException {
 
             // TODO unimplemented
             throw new GeneralException("unimplemented");
@@ -228,15 +226,17 @@ public class DviDocumentWriter
 
         /**
          * Write an CharNode to dvi file.
-         *
+         * 
          * @param node the <code>CharNode</code> value
          * @param value ignored
          * @return null
-         * @exception GeneralException if an error occurs
-         * @see org.extex.typesetter.type.NodeVisitor#visitChar(AfterMathNode,
-         *     java.lang.Object)
+         * 
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.type.NodeVisitor#visitChar(
+         *      org.extex.typesetter.type.node.CharNode, java.lang.Object)
          */
-        public Object visitChar(final CharNode node, final Object value)
+        public Object visitChar(CharNode node, Object value)
                 throws GeneralException {
 
             Font font = node.getTypesettingContext().getFont();
@@ -251,54 +251,51 @@ public class DviDocumentWriter
             return null;
         }
 
-
         /**
          * Inspect DiscretionaryNode for dvi file.
-         *
+         * 
          * @param node the <code>DiscretionaryNode</code> value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
          * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(DiscretionaryNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitDiscretionary(final DiscretionaryNode node,
-                final Object value) throws GeneralException {
+        public Object visitDiscretionary(DiscretionaryNode node,
+                Object value) throws GeneralException {
 
             // TODO unimplemented
             throw new GeneralException("unimplemented");
         }
 
-
         /**
          * Inspect ExpandedLeadersNode for dvi file.
-         *
+         * 
          * @param node the <code>ExpandedLeadersNode</code> value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
          * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(ExpandedLeadersNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitExpandedLeaders(final ExpandedLeadersNode node,
-                final Object value) throws GeneralException {
+        public Object visitExpandedLeaders(ExpandedLeadersNode node,
+                Object value) throws GeneralException {
 
             // TODO unimplemented
             throw new GeneralException("unimplemented");
         }
 
-
         /**
          * Write an GlueNode to dvi file.
-         *
+         * 
          * @param node the <code>GlueNode</code> value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
          * @see org.extex.typesetter.type.NodeVisitor#visitGlue(GlueNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitGlue(final GlueNode node, final Object value)
+        public Object visitGlue(GlueNode node, Object value)
                 throws GeneralException {
 
             dviWriter.writeSpace(node.getWidth(), mode);
@@ -306,19 +303,18 @@ public class DviDocumentWriter
             return null;
         }
 
-
         /**
          * Write horizontal list to dvi file.
-         *
+         * 
          * @param nodes the <code>VerticalListNode</code> value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
          * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(HorizontalListNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitHorizontalList(final HorizontalListNode nodes,
-                final Object value) throws GeneralException {
+        public Object visitHorizontalList(HorizontalListNode nodes,
+                Object value) throws GeneralException {
 
             Mode oldMode = mode;
 
@@ -330,35 +326,33 @@ public class DviDocumentWriter
             return null;
         }
 
-
         /**
          * Inspect insertion for dvi file.
-         *
+         * 
          * @param node the <code>InsertionNode</code> value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
          * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(InsertionNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitInsertion(final InsertionNode node,
-                final Object value) throws GeneralException {
+        public Object visitInsertion(InsertionNode node,
+                Object value) throws GeneralException {
 
             throw confusion("insertion");
         }
 
-
         /**
          * Write an KernNode to dvi file.
-         *
+         * 
          * @param node the <code>KernNode</code> value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
          * @see org.extex.typesetter.type.NodeVisitor#visitKern(KernNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitKern(final KernNode node, final Object value)
+        public Object visitKern(KernNode node, Object value)
                 throws GeneralException {
 
             dviWriter.writeSpace(node.getWidth(), mode);
@@ -366,18 +360,17 @@ public class DviDocumentWriter
             return null;
         }
 
-
         /**
          * Write an LigatureNode to dvi file.
-         *
+         * 
          * @param node the <code>LigatureNode</code> value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
          * @see org.extex.typesetter.type.NodeVisitor#visitLigature(LigatureNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitLigature(final LigatureNode node, final Object value)
+        public Object visitLigature(LigatureNode node, Object value)
                 throws GeneralException {
 
             visitChar(node, value);
@@ -385,52 +378,49 @@ public class DviDocumentWriter
             return null;
         }
 
-
         /**
          * Inspect mark for dvi file.
-         *
+         * 
          * @param node the <code>MarkNode</code> value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
          * @see org.extex.typesetter.type.NodeVisitor#visitMark(MarkNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitMark(final MarkNode node, final Object value)
+        public Object visitMark(MarkNode node, Object value)
                 throws GeneralException {
 
             throw confusion("mark");
         }
 
-
         /**
          * Inspect PenaltyNode for dvi file.
-         *
+         * 
          * @param node the <code>PenaltyNode</code> value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
          * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(PenaltyNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitPenalty(final PenaltyNode node, final Object value)
+        public Object visitPenalty(PenaltyNode node, Object value)
                 throws GeneralException {
 
             throw confusion("penalty");
         }
 
-
         /**
          * Write a RuleNode to dvi file.
-         *
+         * 
          * @param node the <code>RuleNode</code> value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
          * @see org.extex.typesetter.type.NodeVisitor#visitRule(RuleNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitRule(final RuleNode node, final Object value)
+        public Object visitRule(RuleNode node, Object value)
                 throws GeneralException {
 
             dviWriter.writeNode(node);
@@ -438,18 +428,17 @@ public class DviDocumentWriter
             return null;
         }
 
-
         /**
          * Write a SpaceNode to dvi file.
-         *
+         * 
          * @param node the <code>SpaceNode</code> value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
          * @see org.extex.typesetter.type.NodeVisitor#visitSpace(SpaceNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitSpace(final SpaceNode node, final Object value)
+        public Object visitSpace(SpaceNode node, Object value)
                 throws GeneralException {
 
             dviWriter.writeSpace(node.getWidth(), mode);
@@ -457,19 +446,18 @@ public class DviDocumentWriter
             return null;
         }
 
-
         /**
          * Write a vertical list to dvi file.
-         *
+         * 
          * @param nodes the <code>VerticalListNode</code> value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
          * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(VerticalListNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitVerticalList(final VerticalListNode nodes,
-                final Object value) throws GeneralException {
+        public Object visitVerticalList(VerticalListNode nodes,
+                Object value) throws GeneralException {
 
             Mode oldMode = mode;
 
@@ -481,12 +469,12 @@ public class DviDocumentWriter
             return null;
         }
 
-
         /**
-         * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(org.extex.typesetter.type.node.VirtualCharNode, java.lang.Object)
+         * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(org.extex.typesetter.type.node.VirtualCharNode,
+         *      java.lang.Object)
          */
-        public Object visitVirtualChar(final VirtualCharNode node,
-                final Object value) throws GeneralException {
+        public Object visitVirtualChar(VirtualCharNode node,
+                Object value) throws GeneralException {
 
             // TODO visitVirtualChar unimplemented
             return null;
@@ -494,15 +482,15 @@ public class DviDocumentWriter
 
         /**
          * Write a WhatsItNode to dvi file.
-         *
+         * 
          * @param node the <code>WhatsItNode</code> value
          * @param value ignored
          * @return null
          * @exception GeneralException if an error occurs
          * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(WhatsItNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitWhatsIt(final WhatsItNode node, final Object value)
+        public Object visitWhatsIt(WhatsItNode node, Object value)
                 throws GeneralException {
 
             dviWriter.writeNode(node);
@@ -510,12 +498,12 @@ public class DviDocumentWriter
         }
 
         /**
-         * Write nodelist to dvi file.
-         *
+         * Write node list to dvi file.
+         * 
          * @param nodes <code>NodeList</code> for writing.
          * @exception GeneralException if an error occurs
          */
-        private void writeNodes(final NodeList nodes) throws GeneralException {
+        private void writeNodes(NodeList nodes) throws GeneralException {
 
             NodeIterator iterator = nodes.iterator();
 
@@ -540,86 +528,81 @@ public class DviDocumentWriter
     /**
      * Configuration of ExTeX.
      */
-    private Configuration configuration = null;
-
+    //private Configuration configuration = null;
 
     /**
-     * Saves the current font.  Need the check if there is a font
-     * change needed.
+     * Saves the current font. Need the check if there is a font change needed.
      */
     private Font currentFont = null;
 
     // TODO: docu (TE)
     /*
-     * TODO:
-     * - perhaps it is better to put the mode in the visitor-argument
-     * - handle first vertical box special
-     * (TE)
+     * TODO: - perhaps it is better to put the mode in the visitor-argument -
+     * handle first vertical box special (TE)
      */
 
     /**
      * The constant <code>DEBUG</code> turn debug on or off.
-     *
+     * 
      */
     private final boolean DEBUG = false;
 
     /**
      * Options of the document writer.
-     *
+     * 
      */
     private DocumentWriterOptions documentWriterOptions = null;
 
     /**
      * DviWriter used to write the DviFile.
-     *
+     * 
      */
     private DviWriter dviWriter = null;
 
     /**
      * Set iff we are at the beginning of the dvi-file.
-     *
+     * 
      */
     private boolean isBeginDviFile = true;
 
     /**
      * Object for localize strings messages.
-     *
      */
-    private Localizer localizer = null;
+    //private Localizer localizer = null;
 
     /**
      * Current mode (<code>{@link
      * org.extex.typesetter.Mode#VERTICAL Mode.VERTICAL}</code>
      * or <code>{@link org.extex.typesetter.Mode#HORIZONTAL
      * Mode.HORIZONTAL}</code>).
-     *
+     * 
      */
     private Mode mode = Mode.VERTICAL;
 
     /**
      * Visitor for the nodes.
-     *
+     * 
      */
     private InspectableNodeVisitor visitor = null;
 
     /**
      * Creates a new instance.
-     *
+     * 
      * @param theCfg configuration of ExTeX
      * @param options options for <code>DviDocumentWriter</code>
      */
-    public DviDocumentWriter(final Configuration theCfg,
-            final DocumentWriterOptions options) {
+    public DviDocumentWriter(Configuration theCfg,
+            DocumentWriterOptions options) {
 
         super();
-        this.configuration = theCfg;
+        //this.configuration = theCfg;
         documentWriterOptions = options;
     }
 
     /**
-     * This method is invoked upon the end of the processing.  End of
-     * dvi file is written.
-     *
+     * This method is invoked upon the end of the processing. End of dvi file is
+     * written.
+     * 
      * @exception GeneralException if an error occurs
      * @exception IOException if an error occurs
      */
@@ -630,20 +613,20 @@ public class DviDocumentWriter
 
     /**
      * Set the <code>Localizer</code> method here.
-     *
+     * 
      * @param theLocalizer a <code>Localizer</code> value
-     *
+     * 
      * @see org.extex.framework.i18n.Localizable#enableLocalization(
      *      org.extex.framework.i18n.Localizer)
      */
-    public void enableLocalization(final Localizer theLocalizer) {
+    public void enableLocalization(Localizer theLocalizer) {
 
-        localizer = theLocalizer;
+        //localizer = theLocalizer;
     }
 
     /**
      * Getter for the extension associated with dvi output.
-     *
+     * 
      * @return normally "dvi"
      */
     public String getExtension() {
@@ -653,7 +636,7 @@ public class DviDocumentWriter
 
     /**
      * Get the number of written pages until now.
-     *
+     * 
      * @return the number of written pages
      */
     public int getPages() {
@@ -662,14 +645,13 @@ public class DviDocumentWriter
     }
 
     /**
-     * Setter for the output stream.  This method throws no exception.
-     * If somethings goes wrong {@link
-     * #shipout(Page) shipout(Page)}
-     * informs the caller.
-     *
+     * Setter for the output stream. This method throws no exception. If
+     * somethings goes wrong {@link #shipout(Page) shipout(Page)} informs the
+     * caller.
+     * 
      * @param writer an <code>OutputStream</code> value
      */
-    public void setOutputStream(final OutputStream writer) {
+    public void setOutputStream(OutputStream writer) {
 
         dviWriter = new DviWriter(writer, documentWriterOptions);
         visitor = new DviVisitor(dviWriter);
@@ -680,29 +662,27 @@ public class DviDocumentWriter
     }
 
     /**
-     * Setter of an named parameter.  This Documentwriter supports no
-     * parameters yet.
-     *
+     * Setter of an named parameter. This Documentwriter supports no parameters
+     * yet.
+     * 
      * @param name a <code>String</code> value
      * @param value a <code>String</code> value
      */
-    public void setParameter(final String name, final String value) {
+    public void setParameter(String name, String value) {
 
         // there no paramters yet
     }
 
     /**
-     * This is the entry point for the document writer.  Exceptions of
-     * the initialisation of the class will be thrown here.
-     *
+     * This is the entry point for the document writer. Exceptions of the
+     * initialisation of the class will be thrown here.
+     * 
      * @param page the <code>Page</code> to send
      * @return number of pages
      * @exception GeneralException if an error occurs
      * @exception IOException if an error occurs
      */
-    public int shipout(final Page page)
-            throws GeneralException,
-                IOException {
+    public int shipout(Page page) throws GeneralException, IOException {
 
         NodeList nodes = page.getNodes();
         GeneralException error;

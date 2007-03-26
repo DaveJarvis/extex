@@ -22,7 +22,6 @@ package org.extex.unit.base.register.count.util;
 import org.extex.core.count.Count;
 import org.extex.core.count.CountConvertible;
 import org.extex.core.count.CountParser;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -70,7 +69,7 @@ public class IntegerCode extends AbstractAssignment
      *
      * @param name the first name of the primitive
      */
-    public IntegerCode(final String name) {
+    public IntegerCode(String name) {
 
         super(name);
         this.value = 0;
@@ -82,21 +81,23 @@ public class IntegerCode extends AbstractAssignment
      * @param name the first name of the primitive
      * @param value the initial value
      */
-    public IntegerCode(final String name, final long value) {
+    public IntegerCode(String name, long value) {
 
         super(name);
         this.value = value;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.type.arithmetic.Advanceable#advance(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void advance(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void advance(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         source.getKeyword(context, "by");
@@ -105,14 +106,16 @@ public class IntegerCode extends AbstractAssignment
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         source.getOptionalEquals(context);
@@ -121,26 +124,30 @@ public class IntegerCode extends AbstractAssignment
     }
 
     /**
-     * @see org.extex.interpreter.type.CountConvertible#convertCount(
+     * {@inheritDoc}
+     *
+     * @see org.extex.core.count.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public long convertCount(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         return value;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.type.arithmetic.Divideable#divide(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void divide(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void divide(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         source.getKeyword(context, "by");
@@ -153,14 +160,16 @@ public class IntegerCode extends AbstractAssignment
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.type.ExpandableCode#expand(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void expand(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void expand(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         try {
@@ -181,13 +190,15 @@ public class IntegerCode extends AbstractAssignment
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.type.InitializableCode#init(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void init(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public void init(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         if (source == null) {
             return;
@@ -196,14 +207,16 @@ public class IntegerCode extends AbstractAssignment
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.type.arithmetic.Multiplyable#multiply(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void multiply(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void multiply(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         source.getKeyword(context, "by");
@@ -222,25 +235,15 @@ public class IntegerCode extends AbstractAssignment
     }
 
     /**
-     * This method is the getter for the description of the primitive.
-     *
-     * @param context the interpreter context
-     * @param source the source for further tokens to qualify the request
-     * @param typesetter the typesetter to use
-     *
-     * @return the description of the primitive as list of Tokens
-     *
-     * @throws InterpreterException in case of an error
-     * @throws CatcodeException in case of an error in token creation
-     * @throws ConfigurationException in case of an configuration error
+     * {@inheritDoc}
      *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter)
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 CatcodeException {
 

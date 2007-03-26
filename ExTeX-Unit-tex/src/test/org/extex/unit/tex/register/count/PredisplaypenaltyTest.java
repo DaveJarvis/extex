@@ -33,7 +33,7 @@ public class PredisplaypenaltyTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PredisplaypenaltyTest.class);
     }
@@ -43,7 +43,7 @@ public class PredisplaypenaltyTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public PredisplaypenaltyTest(final String arg) {
+    public PredisplaypenaltyTest(String arg) {
 
         super(arg, "predisplaypenalty", "", "0");
     }

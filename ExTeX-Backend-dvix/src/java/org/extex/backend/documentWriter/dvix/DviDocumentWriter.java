@@ -81,7 +81,7 @@ import org.extex.typesetter.type.page.Page;
 
 /**
  * This class provides a base implementation of a DVI document writer.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4457 $
  */
@@ -110,8 +110,8 @@ public class DviDocumentWriter
     private int bopPointer = -1;
 
     /**
-     * The field <tt>colorSpecials</tt> contains the indicator whether or not to
-     * include color specials.
+     * The field <tt>colorSpecials</tt> contains the indicator whether or not
+     * to include color specials.
      */
     private boolean colorSpecials = false;
 
@@ -128,7 +128,7 @@ public class DviDocumentWriter
     /**
      * The field <tt>dviStack</tt> contains the stack of the DVI interpreter.
      */
-    private Stack dviStack = new Stack();
+    private Stack<int[]> dviStack = new Stack<int[]>();
 
     /**
      * The field <tt>dviV</tt> contains the v value of the DVI interpreter.
@@ -178,8 +178,8 @@ public class DviDocumentWriter
     private int pointer = 0;
 
     /**
-     * The field <tt>postamble</tt> contains the postamble carrying the
-     * font list.
+     * The field <tt>postamble</tt> contains the postamble carrying the font
+     * list.
      */
     private DviPostamble postamble;
 
@@ -200,17 +200,17 @@ public class DviDocumentWriter
     private Color textColor;
 
     /**
-     * The field <tt>visitor</tt> contains the visitor carrying the methods for
-     * translating nodes to DVI instructions.
+     * The field <tt>visitor</tt> contains the visitor carrying the methods
+     * for translating nodes to DVI instructions.
      * <p>
-     *  Each node visited can assume that the reference point is positioned
-     *  properly. After the processing the current point should be on the
-     *  reference point again. The caller is responsible for modifying the
-     *  reference point.
+     * Each node visited can assume that the reference point is positioned
+     * properly. After the processing the current point should be on the
+     * reference point again. The caller is responsible for modifying the
+     * reference point.
      * </p>
      * <p>
-     *  If the return value is <code>null</code> then the processing has been
-     *  performed successfully. Otherwise the node should be ignored.
+     * If the return value is <code>null</code> then the processing has been
+     * performed successfully. Otherwise the node should be ignored.
      * </p>
      */
     private NodeVisitor visitor = new NodeVisitor() {
@@ -222,21 +222,20 @@ public class DviDocumentWriter
         private boolean horizontal = true;
 
         /**
-         * Move the reference point to vertically.
-         * This means move it downwards or upwards if the argument is
-         * negative.
-         *
+         * Move the reference point to vertically. This means move it downwards
+         * or upwards if the argument is negative.
+         * 
          * @param dist the distance to move down
          * @param list the list with DVI instructions.
          */
-        private void down(final List list, final long dist) {
+        private void down(List<DviCode> list, long dist) {
 
             if (dist != 0) {
 
                 dviV += dist;
 
                 for (int i = list.size() - 1; i >= 0; i--) {
-                    Object n = list.get(i);
+                    DviCode n = list.get(i);
                     if (n instanceof DviDown) {
                         ((DviDown) n).add((int) dist);
                         return;
@@ -251,14 +250,14 @@ public class DviDocumentWriter
 
         /**
          * Pop the state from the DVI stack.
-         *
+         * 
          * @param list the list with DVI instructions.
          */
-        private void pop(final List list) {
+        private void pop(List<DviCode> list) {
 
             int size = list.size();
             while (size > 0) {
-                DviCode code = (DviCode) list.get(size - 1);
+                DviCode code = list.get(size - 1);
                 if (code instanceof DviRight || code instanceof DviDown) {
                     list.remove(--size);
                 } else {
@@ -267,7 +266,7 @@ public class DviDocumentWriter
             }
 
             list.add(DviCode.POP);
-            int[] frame = (int[]) dviStack.pop();
+            int[] frame = dviStack.pop();
             dviW = frame[0];
             dviX = frame[1];
             dviY = frame[2];
@@ -276,24 +275,23 @@ public class DviDocumentWriter
 
         /**
          * Push the state to the DVI stack.
-         *
+         * 
          * @param list the list with DVI instructions.
          */
-        private void push(final List list) {
+        private void push(List<DviCode> list) {
 
             list.add(DviCode.PUSH);
             dviStack.push(new int[]{dviW, dviX, dviY, dviZ});
         }
 
         /**
-         * Move the reference point to horizontally.
-         * This means move it rightwards or leftwards if the argument is
-         * negative.
-         *
+         * Move the reference point to horizontally. This means move it
+         * rightwards or leftwards if the argument is negative.
+         * 
          * @param dist the distance to move right
          * @param list the list with DVI instructions.
          */
-        private void right(final List list, final long dist) {
+        private void right(List<DviCode> list, long dist) {
 
             if (dist != 0) {
                 dviH += dist;
@@ -315,11 +313,11 @@ public class DviDocumentWriter
         /**
          * Insert a color switching special if the current color is not set to
          * the expected value and remember the current color.
-         *
+         * 
          * @param dviCode list of DVI instructions to add the special to
          * @param color the new color
          */
-        private void switchColors(final List dviCode, final Color color) {
+        private void switchColors(List<DviCode> dviCode, Color color) {
 
             if (!color.equals(textColor)) {
                 textColor = color;
@@ -332,10 +330,9 @@ public class DviDocumentWriter
 
         /**
          * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(
-         *      org.extex.typesetter.type.node.AdjustNode,
-         *      java.lang.Object)
+         *      org.extex.typesetter.type.node.AdjustNode, java.lang.Object)
          */
-        public Object visitAdjust(final AdjustNode node, final Object value)
+        public Object visitAdjust(AdjustNode node, Object value)
                 throws GeneralException {
 
             // silently ignored
@@ -344,11 +341,10 @@ public class DviDocumentWriter
 
         /**
          * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(
-         *      org.extex.typesetter.type.node.AfterMathNode,
-         *      java.lang.Object)
+         *      org.extex.typesetter.type.node.AfterMathNode, java.lang.Object)
          */
-        public Object visitAfterMath(final AfterMathNode node,
-                final Object value) throws GeneralException {
+        public Object visitAfterMath(AfterMathNode node,
+                Object value) throws GeneralException {
 
             return null;
         }
@@ -358,19 +354,18 @@ public class DviDocumentWriter
          *      org.extex.typesetter.type.node.AlignedLeadersNode,
          *      java.lang.Object)
          */
-        public Object visitAlignedLeaders(final AlignedLeadersNode node,
-                final Object value) throws GeneralException {
+        public Object visitAlignedLeaders(AlignedLeadersNode node,
+                Object value) throws GeneralException {
 
             return null;
         }
 
         /**
          * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(
-         *      org.extex.typesetter.type.node.BeforeMathNode,
-         *      java.lang.Object)
+         *      org.extex.typesetter.type.node.BeforeMathNode, java.lang.Object)
          */
-        public Object visitBeforeMath(final BeforeMathNode node,
-                final Object value) throws GeneralException {
+        public Object visitBeforeMath(BeforeMathNode node,
+                Object value) throws GeneralException {
 
             return null;
         }
@@ -380,21 +375,20 @@ public class DviDocumentWriter
          *      org.extex.typesetter.type.node.CenteredLeadersNode,
          *      java.lang.Object)
          */
-        public Object visitCenteredLeaders(final CenteredLeadersNode node,
-                final Object value) throws GeneralException {
+        public Object visitCenteredLeaders(CenteredLeadersNode node,
+                Object value) throws GeneralException {
 
             return null;
         }
 
         /**
          * @see org.extex.typesetter.type.NodeVisitor#visitChar(
-         *      org.extex.typesetter.type.node.CharNode,
-         *      java.lang.Object)
+         *      org.extex.typesetter.type.node.CharNode, java.lang.Object)
          */
-        public Object visitChar(final CharNode node, final Object code)
+        public Object visitChar(CharNode node, Object code)
                 throws GeneralException {
 
-            List dviCode = (List) code;
+            List<DviCode> dviCode = (List<DviCode>) code;
             Font font = node.getTypesettingContext().getFont();
             int f = postamble.mapFont(font, dviCode);
             if (f != fontIndex) {
@@ -420,8 +414,8 @@ public class DviDocumentWriter
          *      org.extex.typesetter.type.node.DiscretionaryNode,
          *      java.lang.Object)
          */
-        public Object visitDiscretionary(final DiscretionaryNode node,
-                final Object value) throws GeneralException {
+        public Object visitDiscretionary(DiscretionaryNode node,
+                Object value) throws GeneralException {
 
             NodeList n = node.getNoBreak();
             if (n != null) {
@@ -435,18 +429,17 @@ public class DviDocumentWriter
          *      org.extex.typesetter.type.node.ExpandedLeadersNode,
          *      java.lang.Object)
          */
-        public Object visitExpandedLeaders(final ExpandedLeadersNode node,
-                final Object value) throws GeneralException {
+        public Object visitExpandedLeaders(ExpandedLeadersNode node,
+                Object value) throws GeneralException {
 
             return null;
         }
 
         /**
          * @see org.extex.typesetter.type.NodeVisitor#visitGlue(
-         *      org.extex.typesetter.type.node.GlueNode,
-         *      java.lang.Object)
+         *      org.extex.typesetter.type.node.GlueNode, java.lang.Object)
          */
-        public Object visitGlue(final GlueNode node, final Object value)
+        public Object visitGlue(GlueNode node, Object value)
                 throws GeneralException {
 
             return null;
@@ -458,17 +451,17 @@ public class DviDocumentWriter
          *      org.extex.typesetter.type.node.HorizontalListNode,
          *      java.lang.Object)
          */
-        public Object visitHorizontalList(final HorizontalListNode node,
-                final Object value) throws GeneralException {
+        public Object visitHorizontalList(HorizontalListNode node,
+                Object value) throws GeneralException {
 
             Node n;
             boolean save = horizontal;
             horizontal = true;
-            List list = (List) value;
+            List<DviCode> list = (List<DviCode>) value;
             down(list, node.getShift().getValue());
             right(list, node.getMove().getValue());
-            int size = node.size();
             int v0 = dviV;
+            int size = node.size();
 
             for (int i = 0; i < size; i++) {
                 n = node.get(i);
@@ -483,11 +476,10 @@ public class DviDocumentWriter
 
         /**
          * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(
-         *      org.extex.typesetter.type.node.InsertionNode,
-         *      java.lang.Object)
+         *      org.extex.typesetter.type.node.InsertionNode, java.lang.Object)
          */
-        public Object visitInsertion(final InsertionNode node,
-                final Object value) throws GeneralException {
+        public Object visitInsertion(InsertionNode node,
+                Object value) throws GeneralException {
 
             // silently ignored
             return Boolean.TRUE;
@@ -495,10 +487,9 @@ public class DviDocumentWriter
 
         /**
          * @see org.extex.typesetter.type.NodeVisitor#visitKern(
-         *      org.extex.typesetter.type.node.KernNode,
-         *      java.lang.Object)
+         *      org.extex.typesetter.type.node.KernNode, java.lang.Object)
          */
-        public Object visitKern(final KernNode node, final Object value)
+        public Object visitKern(KernNode node, Object value)
                 throws GeneralException {
 
             return null;
@@ -506,10 +497,9 @@ public class DviDocumentWriter
 
         /**
          * @see org.extex.typesetter.type.NodeVisitor#visitLigature(
-         *      org.extex.typesetter.type.node.LigatureNode,
-         *      java.lang.Object)
+         *      org.extex.typesetter.type.node.LigatureNode, java.lang.Object)
          */
-        public Object visitLigature(final LigatureNode node, final Object value)
+        public Object visitLigature(LigatureNode node, Object value)
                 throws GeneralException {
 
             return visitChar(node, value);
@@ -517,10 +507,9 @@ public class DviDocumentWriter
 
         /**
          * @see org.extex.typesetter.type.NodeVisitor#visitMark(
-         *      org.extex.typesetter.type.node.MarkNode,
-         *      java.lang.Object)
+         *      org.extex.typesetter.type.node.MarkNode, java.lang.Object)
          */
-        public Object visitMark(final MarkNode node, final Object value)
+        public Object visitMark(MarkNode node, Object value)
                 throws GeneralException {
 
             // silently ignored
@@ -529,10 +518,9 @@ public class DviDocumentWriter
 
         /**
          * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(
-         *      org.extex.typesetter.type.node.PenaltyNode,
-         *      java.lang.Object)
+         *      org.extex.typesetter.type.node.PenaltyNode, java.lang.Object)
          */
-        public Object visitPenalty(final PenaltyNode node, final Object value)
+        public Object visitPenalty(PenaltyNode node, Object value)
                 throws GeneralException {
 
             // silently ignored
@@ -541,13 +529,12 @@ public class DviDocumentWriter
 
         /**
          * @see org.extex.typesetter.type.NodeVisitor#visitRule(
-         *      org.extex.typesetter.type.node.RuleNode,
-         *      java.lang.Object)
+         *      org.extex.typesetter.type.node.RuleNode, java.lang.Object)
          */
-        public Object visitRule(final RuleNode node, final Object code)
+        public Object visitRule(RuleNode node, Object code)
                 throws GeneralException {
 
-            List dviCode = (List) code;
+            List<DviCode> dviCode = (List<DviCode>) code;
             int width = (int) node.getWidth().getValue();
             int height = (int) node.getHeight().getValue();
 
@@ -562,10 +549,9 @@ public class DviDocumentWriter
 
         /**
          * @see org.extex.typesetter.type.NodeVisitor#visitSpace(
-         *      org.extex.typesetter.type.node.SpaceNode,
-         *      java.lang.Object)
+         *      org.extex.typesetter.type.node.SpaceNode, java.lang.Object)
          */
-        public Object visitSpace(final SpaceNode node, final Object value)
+        public Object visitSpace(SpaceNode node, Object value)
                 throws GeneralException {
 
             return null;
@@ -577,11 +563,11 @@ public class DviDocumentWriter
          *      org.extex.typesetter.type.node.VerticalListNode,
          *      java.lang.Object)
          */
-        public Object visitVerticalList(final VerticalListNode node,
-                final Object value) throws GeneralException {
+        public Object visitVerticalList(VerticalListNode node,
+                Object value) throws GeneralException {
 
             Node n;
-            List list = (List) value;
+            List<DviCode> list = (List<DviCode>) value;
             boolean save = horizontal;
             horizontal = false;
             int v0 = dviV;
@@ -610,22 +596,22 @@ public class DviDocumentWriter
          *      org.extex.typesetter.type.node.VirtualCharNode,
          *      java.lang.Object)
          */
-        public Object visitVirtualChar(final VirtualCharNode node,
-                final Object value) throws GeneralException {
+        public Object visitVirtualChar(VirtualCharNode node,
+                Object value) throws GeneralException {
 
             return visitChar(node, value);
         }
 
         /**
          * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(
-         *       org.extex.typesetter.type.node.WhatsItNode,
-         *       java.lang.Object)
+         *      org.extex.typesetter.type.node.WhatsItNode, java.lang.Object)
          */
-        public Object visitWhatsIt(final WhatsItNode node, final Object value)
+        @SuppressWarnings("unchecked")
+        public Object visitWhatsIt(WhatsItNode node, Object value)
                 throws GeneralException {
 
             if (node instanceof SpecialNode) {
-                List list = (List) value;
+                List<DviCode> list = (List<DviCode>) value;
                 String text = ((SpecialNode) node).getText();
                 int length = text.length();
                 byte[] content = new byte[length];
@@ -642,16 +628,18 @@ public class DviDocumentWriter
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param options the document writer options
      */
-    public DviDocumentWriter(final DocumentWriterOptions options) {
+    public DviDocumentWriter(DocumentWriterOptions options) {
 
         super();
         this.options = options;
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.backend.documentWriter.DocumentWriter#close()
      */
     public void close() throws GeneralException, IOException {
@@ -673,12 +661,12 @@ public class DviDocumentWriter
 
     /**
      * Get the color representation for the specials.
-     *
+     * 
      * @param color the color
-     *
+     * 
      * @return the string representation
      */
-    private String color(final Color color) {
+    private String color(Color color) {
 
         if (color instanceof RgbColor) {
             RgbColor rgb = (RgbColor) color;
@@ -710,15 +698,16 @@ public class DviDocumentWriter
 
     /**
      * Configure an object according to a given Configuration.
-     *
+     * 
      * @param config the configuration object to consider
-     *
+     * 
      * @throws ConfigurationException in case that something went wrong
-     *
+     * 
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
-    public void configure(final Configuration config) {
+    public void configure(Configuration config)
+            throws ConfigurationException {
 
         String col = config.getAttribute("color");
         if (col != null) {
@@ -730,9 +719,9 @@ public class DviDocumentWriter
      * Getter for the extension associated with this kind of output. For
      * instance <tt>pdf</tt> is the expected value for PDF files and
      * <tt>dvi</tt> is the expected value for DVI files.
-     *
+     * 
      * @return the appropriate extension for file names
-     *
+     * 
      * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
      */
     public String getExtension() {
@@ -742,54 +731,52 @@ public class DviDocumentWriter
 
     /**
      * Optimize the description of a single page.
-     *
+     * 
      * @param list the list of codes for the page
      */
-    protected void optimize(final List list) {
+    protected void optimize(List list) {
 
         // not yet
     }
 
     /**
      * Setter for the color converter.
-     *
+     * 
      * @param converter the color converter
-     *
+     * 
      * @see org.extex.color.ColorAware#setColorConverter(
      *      org.extex.color.ColorConverter)
      */
-    public void setColorConverter(final ColorConverter converter) {
+    public void setColorConverter(ColorConverter converter) {
 
         this.colorConverter = converter;
     }
 
     /**
      * Setter for the output stream.
-     *
+     * 
      * @param writer the output stream
-     *
+     * 
      * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(
      *      java.io.OutputStream)
      */
-    public void setOutputStream(final OutputStream writer) {
+    public void setOutputStream(OutputStream writer) {
 
         this.stream = writer;
     }
 
     /**
-     * Setter for a named parameter.
-     * Parameters are a general mechanism to influence the behavior of the
-     * document writer. Any parameter not known by the document writer has to
-     * be ignored.
-     *
+     * Setter for a named parameter. Parameters are a general mechanism to
+     * influence the behavior of the document writer. Any parameter not known by
+     * the document writer has to be ignored.
+     * 
      * @param name the name of the parameter
      * @param value the value of the parameter
-     *
+     * 
      * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(
-     *      java.lang.String,
-     *      java.lang.String)
+     *      java.lang.String, java.lang.String)
      */
-    public void setParameter(final String name, final String value) {
+    public void setParameter(String name, String value) {
 
         if ("color".equals(name)) {
             colorSpecials = Boolean.valueOf(value).booleanValue();
@@ -800,22 +787,22 @@ public class DviDocumentWriter
      * This is the entry point for the document writer. Here it receives a
      * complete node list to be sent to the output writer. It can be assumed
      * that all values for width, height, and depth of the node lists are
-     * properly filled. Thus all information should be present to place the
-     * ink on the paper.
-     *
+     * properly filled. Thus all information should be present to place the ink
+     * on the paper.
+     * 
      * @param page the page to send
-     *
+     * 
      * @return returns the number of pages shipped
-     *
+     * 
      * @throws GeneralException in case of a general exception<br>
-     *  especially<br>
-     *  DocumentWriterException in case of an error
+     *         especially<br>
+     *         DocumentWriterException in case of an error
      * @throws IOException in case of an IO exception
-     *
+     * 
      * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
      *      org.extex.typesetter.type.page.Page)
      */
-    public int shipout(final Page page) throws GeneralException, IOException {
+    public int shipout(Page page) throws GeneralException, IOException {
 
         if (notInitialized) {
             writePreamble();
@@ -837,7 +824,7 @@ public class DviDocumentWriter
         dviY = 0;
         dviZ = 0;
         fontIndex = -1;
-        List dviCode = new ArrayList();
+        List<DviXxx> dviCode = new ArrayList<DviXxx>();
         NodeList nodes = page.getNodes();
 
         if (colorSpecials) {
@@ -854,7 +841,7 @@ public class DviDocumentWriter
         int stackDepth = 0;
 
         for (int i = 0; i < dviCode.size(); i++) {
-            DviCode code = (DviCode) dviCode.get(i);
+            DviCode code = dviCode.get(i);
             pointer += code.write(stream);
             if (code == DviCode.PUSH) {
                 stackDepth++;
@@ -875,12 +862,12 @@ public class DviDocumentWriter
     /**
      * Ensure that a string has at least two characters length by padding it
      * with 0 if necessary.
-     *
+     * 
      * @param name the name of the count register
-     *
+     * 
      * @return the string representation of the value padded with a leading 0
      */
-    private String two(final String name) {
+    private String two(String name) {
 
         String s = options.getCountOption(name).toString();
         return (s.length() > 1 ? s : "0" + s);
@@ -888,9 +875,9 @@ public class DviDocumentWriter
 
     /**
      * Write the preamble.
-     *
+     * 
      * @throws IOException in case of an error
-     *
+     * 
      * @see "TTP [617]"
      */
     private void writePreamble() throws IOException {

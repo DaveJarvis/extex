@@ -49,7 +49,7 @@ public class InterpreterPdftexUnsupportedException extends InterpreterException 
      *
      * @param primitive the name of the primitive in action
      */
-    public InterpreterPdftexUnsupportedException(final String primitive) {
+    public InterpreterPdftexUnsupportedException(String primitive) {
 
         super(primitive);
     }

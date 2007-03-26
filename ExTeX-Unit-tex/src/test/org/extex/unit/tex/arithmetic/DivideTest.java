@@ -34,7 +34,7 @@ public class DivideTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(DivideTest.class);
     }
@@ -44,7 +44,7 @@ public class DivideTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public DivideTest(final String arg) {
+    public DivideTest(String arg) {
 
         super(arg, "divide", "\\count1 1 ");
     }

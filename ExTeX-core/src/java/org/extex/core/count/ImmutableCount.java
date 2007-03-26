@@ -38,7 +38,7 @@ public class ImmutableCount extends Count {
      *
      * @param value the value to be stored
      */
-    public ImmutableCount(final long value) {
+    public ImmutableCount(long value) {
 
         super(value);
     }
@@ -48,7 +48,7 @@ public class ImmutableCount extends Count {
      *
      * @param value the value to be stored
      */
-    public ImmutableCount(final FixedCount value) {
+    public ImmutableCount(FixedCount value) {
 
         super(value);
     }
@@ -60,7 +60,7 @@ public class ImmutableCount extends Count {
      *
      * @see org.extex.core.count.Count#add(long)
      */
-    public void add(final long val) {
+    public void add(long val) {
 
         throw new UnsupportedOperationException(
             "Unable to set an immutable object");
@@ -73,7 +73,7 @@ public class ImmutableCount extends Count {
      *
      * @see org.extex.core.count.Count#divide(long)
      */
-    public void divide(final long val) {
+    public void divide(long val) {
 
         throw new UnsupportedOperationException(
             "Unable to set an immutable object");
@@ -86,7 +86,7 @@ public class ImmutableCount extends Count {
      *
      * @see org.extex.core.count.Count#multiply(long)
      */
-    public void multiply(final long val) {
+    public void multiply(long val) {
 
         throw new UnsupportedOperationException(
             "Unable to set an immutable object");

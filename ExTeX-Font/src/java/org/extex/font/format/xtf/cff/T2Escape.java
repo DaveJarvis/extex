@@ -62,8 +62,8 @@ public class T2Escape extends T2CharString {
      *      org.extex.util.file.random.RandomAccessR,
      *      org.extex.font.format.xtf.OtfTableCFF, int)
      */
-    public void init(final RandomAccessR rar, final OtfTableCFF cff,
-            final int baseoffset) throws IOException {
+    public void init(RandomAccessR rar, OtfTableCFF cff,
+            int baseoffset) throws IOException {
 
     }
 }

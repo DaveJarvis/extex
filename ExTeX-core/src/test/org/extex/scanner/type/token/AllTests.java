@@ -34,6 +34,7 @@ public final class AllTests {
      */
     private AllTests() {
 
+        //not used
     }
 
     /**

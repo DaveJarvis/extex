@@ -65,7 +65,7 @@ public class Pdfinfo extends AbstractPdftexCode {
      *
      * @param name the name for tracing and debugging
      */
-    public Pdfinfo(final String name) {
+    public Pdfinfo(String name) {
 
         super(name);
     }
@@ -89,8 +89,8 @@ public class Pdfinfo extends AbstractPdftexCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         PdftexSupport writer = ensurePdftex(context, typesetter);

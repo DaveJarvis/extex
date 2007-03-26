@@ -33,7 +33,7 @@ public class FlagsImplTest extends TestCase {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(FlagsImplTest.class);
     }

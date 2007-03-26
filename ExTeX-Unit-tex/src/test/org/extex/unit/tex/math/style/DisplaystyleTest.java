@@ -34,7 +34,7 @@ public class DisplaystyleTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public DisplaystyleTest(final String arg) {
+    public DisplaystyleTest(String arg) {
 
         super(arg, "displaystyle", "");
     }

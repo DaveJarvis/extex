@@ -47,7 +47,7 @@ public class FixedParagraphShape extends ParagraphShape {
      *
      * @param theHsize the width
      */
-    public FixedParagraphShape(final FixedDimen theHsize) {
+    public FixedParagraphShape(FixedDimen theHsize) {
 
         super();
         this.hsize = theHsize;
@@ -65,7 +65,7 @@ public class FixedParagraphShape extends ParagraphShape {
      *
      * @see org.extex.typesetter.paragraphBuilder.ParagraphShape#getIndent(int)
      */
-    public FixedDimen getIndent(final int index) {
+    public FixedDimen getIndent(int index) {
 
         return Dimen.ZERO_PT;
     }
@@ -82,7 +82,7 @@ public class FixedParagraphShape extends ParagraphShape {
      *
      * @see org.extex.typesetter.paragraphBuilder.ParagraphShape#getLength(int)
      */
-    public FixedDimen getLength(final int index) {
+    public FixedDimen getLength(int index) {
 
         return hsize;
     }
@@ -92,7 +92,7 @@ public class FixedParagraphShape extends ParagraphShape {
      *
      * @param theHsize the hsize to set.
      */
-    public void setHsize(final FixedDimen theHsize) {
+    public void setHsize(FixedDimen theHsize) {
 
         this.hsize = theHsize;
     }

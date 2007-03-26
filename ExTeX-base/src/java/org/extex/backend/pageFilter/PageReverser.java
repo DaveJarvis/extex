@@ -22,7 +22,6 @@ package org.extex.backend.pageFilter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.exception.BackendException;
 import org.extex.backend.exception.BackendMissingTargetException;
 import org.extex.typesetter.type.page.Page;
@@ -43,7 +42,7 @@ public class PageReverser implements PagePipe {
     /**
      * The field <tt>pages</tt> contains the pages.
      */
-    private List pages = new ArrayList();
+    private List<Page> pages = new ArrayList<Page>();
 
     /**
      * Creates a new object.
@@ -55,6 +54,8 @@ public class PageReverser implements PagePipe {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.backend.pageFilter.PagePipe#close()
      */
     public void close() throws BackendException {
@@ -64,7 +65,7 @@ public class PageReverser implements PagePipe {
         }
 
         for (int i = pages.size() - 1; i >= 0; i--) {
-            out.shipout((Page) pages.get(i));
+            out.shipout(pages.get(i));
         }
         out.close();
     }
@@ -77,7 +78,7 @@ public class PageReverser implements PagePipe {
      * @see org.extex.backend.pageFilter.PagePipe#setOutput(
      *     org.extex.backend.pageFilter.PagePipe)
      */
-    public void setOutput(final PagePipe pipe) {
+    public void setOutput(PagePipe pipe) {
 
         this.out = pipe;
     }
@@ -94,7 +95,7 @@ public class PageReverser implements PagePipe {
      * @see org.extex.backend.pageFilter.PagePipe#setParameter(
      *     java.lang.String, java.lang.String)
      */
-    public void setParameter(final String name, final String value) {
+    public void setParameter(String name, String value) {
 
         //not needed
     }
@@ -108,12 +109,10 @@ public class PageReverser implements PagePipe {
      *
      * @param page the page to send
      *
-     * @throws BackendException in case of an error
-     *
      * @see org.extex.backend.pageFilter.PagePipe#shipout(
      *      org.extex.typesetter.type.page.Page)
      */
-    public void shipout(final Page page) throws DocumentWriterException {
+    public void shipout(Page page) {
 
         pages.add(page);
     }

@@ -31,7 +31,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.FactoryConfigurationError;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.extex.core.StringList;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationIOException;
@@ -45,7 +44,7 @@ import org.xml.sax.SAXException;
 
 /**
  * This class provides means to deal with configurations stored as XML files.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -54,7 +53,7 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
     /**
      * This inner class provides an iterator for all sub-configurations of a
      * given node.
-     *
+     * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
      */
@@ -67,10 +66,10 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
 
         /**
          * Creates a new object.
-         *
+         * 
          * @param node the root node
          */
-        protected ConfigIterator(final Node node) {
+        protected ConfigIterator(Node node) {
 
             super();
             this.node = node;
@@ -78,11 +77,11 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
 
         /**
          * Returns <tt>true</tt> if the iteration has more elements. (In other
-         * words, returns <tt>true</tt> if <tt>next</tt> would return an element
-         * rather than throwing an exception.)
-         *
+         * words, returns <tt>true</tt> if <tt>next</tt> would return an
+         * element rather than throwing an exception.)
+         * 
          * @return <tt>true</tt> if the iterator has more elements.
-         *
+         * 
          * @see java.util.Iterator#hasNext()
          */
         public boolean hasNext() {
@@ -102,9 +101,9 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
 
         /**
          * Returns the next element in the iteration.
-         *
+         * 
          * @return the next element in the iteration.
-         *
+         * 
          * @see java.util.Iterator#next()
          */
         public Object next() {
@@ -124,7 +123,7 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
 
         /**
          * This is an unsupported operation and leads to an exception.
-         *
+         * 
          * @see java.util.Iterator#remove()
          */
         public void remove() {
@@ -147,17 +146,18 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
     private static final String[] PATHS = {"config/", ""};
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 27012007L;
 
     /**
      * Recursively collect the Xpath from the root to the given node.
-     *
+     * 
      * @param sb the output string buffer
      * @param node the node to start with
      */
-    private static void toString(final StringBuffer sb, final Node node) {
+    private static void toString(StringBuffer sb, Node node) {
 
         if (node == null) {
             return;
@@ -183,7 +183,8 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
     private String resource;
 
     /**
-     * The field <tt>root</tt> contains the root element for this configuration.
+     * The field <tt>root</tt> contains the root element for this
+     * configuration.
      */
     private Element root;
 
@@ -195,13 +196,13 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
     /**
      * Creates a new object with a given root element. This constructor is
      * private since it is meant for internal purposes only.
-     *
+     * 
      * @param root the new root element
      * @param base the base for the resource
      * @param resource the name of the resource
      */
-    private ConfigurationXMLImpl(final Element root, final String base,
-            final String resource) {
+    private ConfigurationXMLImpl(Element root, String base,
+            String resource) {
 
         super();
         this.root = root;
@@ -215,29 +216,29 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
      * <p>
      * The path given is the location of the XML resource (file) containing the
      * configuration information. This path is used to determine the XML
-     * resource utilizing the class loader for this class.
-     * Thus it is possible to place the XML file into a jar archive.
+     * resource utilizing the class loader for this class. Thus it is possible
+     * to place the XML file into a jar archive.
      * </p>
      * <p>
      * Beside of the class loader a search is performed by appending
      * <tt>.xml</tt> and/or prepending <tt>config/</tt> if the path is not
      * sufficient to find the resource.
      * </p>
-     *
+     * 
      * @param stream the stream to read the configuration from.
-     * @param resource the name of the resource to be used;
-     *  i.e. something like the file name
-     *
+     * @param resource the name of the resource to be used; i.e. something like
+     *        the file name
+     * 
      * @throws ConfigurationInvalidResourceException in case that the given
-     *  resource name is <code>null</code> or empty.
+     *         resource name is <code>null</code> or empty.
      * @throws ConfigurationNotFoundException in case that the named path does
-     *  not lead to a resource.
+     *         not lead to a resource.
      * @throws ConfigurationSyntaxException in case that the resource contains
-     *  syntax errors.
-     * @throws ConfigurationIOException in case of an IO exception while
-     *  reading the resource.
+     *         syntax errors.
+     * @throws ConfigurationIOException in case of an IO exception while reading
+     *         the resource.
      */
-    public ConfigurationXMLImpl(final InputStream stream, final String resource)
+    public ConfigurationXMLImpl(InputStream stream, String resource)
             throws ConfigurationInvalidResourceException,
                 ConfigurationNotFoundException,
                 ConfigurationSyntaxException,
@@ -250,47 +251,50 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
     /**
      * Creates a new object.
      * <p>
-     *  The path given is the location of the XML file containing the
-     *  configuration information. This path is used to determine the XML file
-     *  utilizing the class loader for this class. Thus it is possible to place
-     *  the XML file into a jar archive.
+     * The path given is the location of the XML file containing the
+     * configuration information. This path is used to determine the XML file
+     * utilizing the class loader for this class. Thus it is possible to place
+     * the XML file into a jar archive.
      * </p>
      * <p>
-     *  Beside of the class loader a search is performed by appending
-     *  <tt>.xml</tt> and/or prepending <tt>config/</tt> if the path is not
-     *  sufficient to find the resource.
+     * Beside of the class loader a search is performed by appending
+     * <tt>.xml</tt> and/or prepending <tt>config/</tt> if the path is not
+     * sufficient to find the resource.
      * </p>
-     *
+     * 
      * <h3>Example</h3>
      * <p>
-     *  Consider the following creation of an instance of this class
-     *  <pre>
+     * Consider the following creation of an instance of this class
+     * 
+     * <pre>
      *   cfg = new ConfigurationXMLImpl("cfg");
      *  </pre>
-     *  Then the following files are searched on the classpath until one is
-     *  found:
-     *  <pre>
+     * 
+     * Then the following files are searched on the classpath until one is
+     * found:
+     * 
+     * <pre>
      *     cfg   cfg.xml   config/cfg   config/cfg.xml
      *  </pre>
+     * 
      * </p>
-     *
-     *
-     *
-     *
-     *
-     * @param resource the name of the resource to be used;
-     * i.e. the file name
-     *
+     * 
+     * 
+     * 
+     * 
+     * 
+     * @param resource the name of the resource to be used; i.e. the file name
+     * 
      * @throws ConfigurationInvalidResourceException in case that the given
-     *  resource name is <code>null</code> or empty
+     *         resource name is <code>null</code> or empty
      * @throws ConfigurationNotFoundException in case that the named path does
-     *  not lead to a resource
+     *         not lead to a resource
      * @throws ConfigurationSyntaxException in case that the resource contains
-     *  syntax errors
-     * @throws ConfigurationIOException in case of an IO exception while
-     *  reading the resource
+     *         syntax errors
+     * @throws ConfigurationIOException in case of an IO exception while reading
+     *         the resource
      */
-    public ConfigurationXMLImpl(final String resource)
+    public ConfigurationXMLImpl(String resource)
             throws ConfigurationInvalidResourceException,
                 ConfigurationNotFoundException,
                 ConfigurationSyntaxException,
@@ -313,10 +317,10 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
     /**
      * Extract a sub-configuration with a given name.
      * <p>
-     *  Consider the following example with the configuration currently rooted
-     *  at cfg:
+     * Consider the following example with the configuration currently rooted at
+     * cfg:
      * </p>
-     *
+     * 
      * <pre>
      *  &lt;cfg&gt;
      *    . . .
@@ -326,37 +330,37 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
      *    . . .
      *  &lt;/cfg&gt;
      * </pre>
-     *
+     * 
      * <p>
-     *  Then <tt>findConfiguration("abc")</tt> returns a new XMLConfig
-     *  rooted at abc.
+     * Then <tt>findConfiguration("abc")</tt> returns a new XMLConfig rooted
+     * at abc.
      * </p>
      * <p>
-     *  If there are more than one tags with the same name then the first one is
-     *  used.
+     * If there are more than one tags with the same name then the first one is
+     * used.
      * </p>
      * <p>
-     *  If there are no tags with the given name then an exception is thrown.
+     * If there are no tags with the given name then an exception is thrown.
      * </p>
-     *
+     * 
      * @param name the tag name of the sub-configuration
-     *
+     * 
      * @return the sub-configuration or <code>null</code> if none was found
-     *
+     * 
      * @throws ConfigurationInvalidResourceException in case that the given
-     *  resource name is <code>null</code> or empty
+     *         resource name is <code>null</code> or empty
      * @throws ConfigurationNotFoundException in case that the named path does
-     *  not lead to a resource
+     *         not lead to a resource
      * @throws ConfigurationSyntaxException in case that the resource contains
-     *  syntax errors
-     * @throws ConfigurationIOException in case of an IO exception while
-     *  reading the resource
-     *
+     *         syntax errors
+     * @throws ConfigurationIOException in case of an IO exception while reading
+     *         the resource
+     * 
      * @see #getConfiguration(java.lang.String)
      * @see org.extex.framework.configuration.Configuration#findConfiguration(
      *      java.lang.String)
      */
-    public Configuration findConfiguration(final String name)
+    public Configuration findConfiguration(String name)
             throws ConfigurationInvalidResourceException,
                 ConfigurationNotFoundException,
                 ConfigurationSyntaxException,
@@ -383,9 +387,10 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
     /**
      * Extract a sub-configuration with a given name and a given attribute.
      * <p>
-     * Consider the following example with the configuration currently rooted
-     * at cfg:
+     * Consider the following example with the configuration currently rooted at
+     * cfg:
      * </p>
+     * 
      * <pre>
      *   &lt;cfg&gt;
      *     . . .
@@ -398,6 +403,7 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
      *     . . .
      *   &lt;/cfg&gt;
      * </pre>
+     * 
      * <p>
      * Then <tt>getConfig("abc","two")</tt> returns a new XMLConfig rooted at
      * the abc with the name attribute "two".
@@ -410,16 +416,16 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
      * If there are no tags with the given name then <code>null</code> is
      * returned.
      * </p>
-     *
+     * 
      * @param key the tag name of the sub-configuration
      * @param attribute the value of the attribute name
-     *
+     * 
      * @return the sub-configuration
-     *
+     * 
      * @throws ConfigurationException in case of other errors.
      */
-    public Configuration findConfiguration(final String key,
-            final String attribute) throws ConfigurationException {
+    public Configuration findConfiguration(String key,
+            String attribute) throws ConfigurationException {
 
         if (key == null || attribute == null) {
             return null;
@@ -440,7 +446,7 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
      * @see org.extex.framework.configuration.Configuration#getAttribute(
      *      java.lang.String)
      */
-    public String getAttribute(final String name) {
+    public String getAttribute(String name) {
 
         return (this.root.getAttributeNode(name) == null ? null : //
                 this.root.getAttribute(name));
@@ -449,10 +455,10 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
     /**
      * Extract a sub-configuration with a given name.
      * <p>
-     * Consider the following example with the configuration currently rooted
-     * at cfg:
+     * Consider the following example with the configuration currently rooted at
+     * cfg:
      * </p>
-     *
+     * 
      * <pre>
      *  &lt;cfg&gt;
      *    . . .
@@ -462,7 +468,7 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
      *    . . .
      *  &lt;/cfg&gt;
      * </pre>
-     *
+     * 
      * <p>
      * Then <tt>getConfiguration("abc")</tt> returns a new XMLConfig rooted at
      * abc.
@@ -474,23 +480,23 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
      * <p>
      * If there are no tags with the given name then an exception is thrown.
      * </p>
-     *
+     * 
      * @param name the tag name of the sub-configuration
-     *
+     * 
      * @return the sub-configuration
-     *
+     * 
      * @throws ConfigurationNotFoundException in case that the configuration
-     *  does not exist.
+     *         does not exist.
      * @throws ConfigurationIOException in case that an IOException occurred
-     *  while reading the configuration.
+     *         while reading the configuration.
      * @throws ConfigurationSyntaxException in case of a syntax error in the
-     *  configuration.
+     *         configuration.
      * @throws ConfigurationInvalidResourceException in case that the given
-     *  resource name is <code>null</code> or empty
-     *
+     *         resource name is <code>null</code> or empty
+     * 
      * @see #findConfiguration(String)
      */
-    public Configuration getConfiguration(final String name)
+    public Configuration getConfiguration(String name)
             throws ConfigurationInvalidResourceException,
                 ConfigurationNotFoundException,
                 ConfigurationSyntaxException,
@@ -507,10 +513,10 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
     /**
      * Extract a sub-configuration with a given name and a given attribute.
      * <p>
-     * Consider the following example with the configuration currently rooted
-     * at cfg:
+     * Consider the following example with the configuration currently rooted at
+     * cfg:
      * </p>
-     *
+     * 
      * <pre>
      *  &lt;cfg&gt;
      *    . . .
@@ -523,7 +529,7 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
      *    . . .
      *  &lt;/cfg&gt;
      * </pre>
-     *
+     * 
      * <p>
      * Then <tt>getConfig("abc","two")</tt> returns a new XMLConfig rooted at
      * the abc with the name attribute "two".
@@ -535,18 +541,18 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
      * <p>
      * If there are no tags with the given name then an exception is thrown.
      * </p>
-     *
+     * 
      * @param key the tag name of the sub-configuration
      * @param attribute the value of the attribute name
-     *
+     * 
      * @return the sub-configuration
-     *
+     * 
      * @throws ConfigurationNotFoundException in case that the given name does
-     * not correspond to one of the tags in the current configuration
+     *         not correspond to one of the tags in the current configuration
      * @throws ConfigurationException in case of some other kind of error
      */
-    public Configuration getConfiguration(final String key,
-            final String attribute)
+    public Configuration getConfiguration(String key,
+            String attribute)
             throws ConfigurationNotFoundException,
                 ConfigurationException {
 
@@ -560,9 +566,12 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
     }
 
     /**
-     * @see org.extex.framework.configuration.Configuration#getNodeValue(Node)
+     * Get the accumulated text values of a node.
+     * 
+     * @param node the node
+     * @return the accumulated text value
      */
-    private String getNodeValue(final Node node) {
+    private String getNodeValue(Node node) {
 
         StringBuffer sb = new StringBuffer();
 
@@ -587,9 +596,10 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
      * Get the text value of the first tag with a given name in the
      * configuration. If none is found then the empty string is returned.
      * <p>
-     * Consider the following example with the configuration currently rooted
-     * at cfg:
+     * Consider the following example with the configuration currently rooted at
+     * cfg:
      * </p>
+     * 
      * <pre>
      *   &lt;cfg&gt;
      *     . . .
@@ -598,15 +608,16 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
      *     . . .
      *   &lt;/cfg&gt;
      * </pre>
+     * 
      * <p>
      * Then <tt>getValue("two")</tt> returns the String "the second value".
      * </p>
-     *
+     * 
      * @param tag the name of the tag
-     *
+     * 
      * @return the value of the tag or the empty string
      */
-    public String getValue(final String tag) {
+    public String getValue(String tag) {
 
         for (Node node = root.getFirstChild(); node != null; node =
                 node.getNextSibling()) {
@@ -622,7 +633,7 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
      * @see org.extex.framework.configuration.Configuration#getValueAsInteger(
      *      java.lang.String, int)
      */
-    public int getValueAsInteger(final String key, final int defaultValue)
+    public int getValueAsInteger(String key, int defaultValue)
             throws ConfigurationException {
 
         String s = getValue(key);
@@ -639,16 +650,16 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
     /**
      * Get the list of all values with the given tag name in the current
      * configuration.
-     *
+     * 
      * @param tag the name of the tags
-     *
+     * 
      * @return the list of values
-     *
+     * 
      * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
      */
-    public StringList getValues(final String tag) {
+    public List<String> getValues(String tag) {
 
-        StringList result = new StringList();
+        List<String> result = new ArrayList<String>();
         getValues(result, tag);
         return result;
     }
@@ -657,14 +668,12 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
      * Get the list of all values with the given tag name in the current
      * configuration and append them to a given StringList.
      *
-     * @param key the name of the tags
-     * @param list the list to append the values to
-     *
-     * @see org.extex.framework.configuration.Configuration#getValues(
-     *      org.extex.core.StringList,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.framework.configuration.Configuration#getValues(java.util.List,
      *      java.lang.String)
      */
-    public void getValues(final StringList list, final String key) {
+    public void getValues(List<String> list, String key) {
 
         if (list == null) {
             throw new IllegalArgumentException("list");
@@ -680,9 +689,9 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
 
     /**
      * Get an iterator for all sub-configurations.
-     *
+     * 
      * @return an iterator for all sub-configurations
-     *
+     * 
      * @see org.extex.framework.configuration.Configuration#iterator()
      */
     public Iterator iterator() {
@@ -692,29 +701,29 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
 
     /**
      * Retrieve an iterator over all items of a sub-configuration.
-     *
+     * 
      * @param key the name of the sub-configuration
-     *
+     * 
      * @return the iterator
-     *
+     * 
      * @throws ConfigurationIOException in case that an IO exception occurs
-     *  during the reading of the configuration.
+     *         during the reading of the configuration.
      * @throws ConfigurationSyntaxException in case that the configuration
-     *  contains a syntax error.
+     *         contains a syntax error.
      * @throws ConfigurationNotFoundException in case that the specified
-     *  configuration can not be found.
+     *         configuration can not be found.
      * @throws ConfigurationInvalidResourceException in case that the resource
-     *  is invalid
-     *
+     *         is invalid
+     * 
      * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
      */
-    public Iterator iterator(final String key)
+    public Iterator iterator(String key)
             throws ConfigurationInvalidResourceException,
                 ConfigurationNotFoundException,
                 ConfigurationSyntaxException,
                 ConfigurationIOException {
 
-        List list = new ArrayList();
+        List<Configuration> list = new ArrayList<Configuration>();
 
         for (Node node = root.getFirstChild(); node != null; node =
                 node.getNextSibling()) {
@@ -736,17 +745,16 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
     /**
      * Search for a configuration file taking into account a list of prefixes
      * (path) and postfixes (ext)
-     *
-     * @param name the base name of the configuration to find. The path
-     *  elements and extensions are attached in turn to build the complete
-     *  name.
+     * 
+     * @param name the base name of the configuration to find. The path elements
+     *        and extensions are attached in turn to build the complete name.
      * @param classLoader the class loader to use for finding the resource
-     *
+     * 
      * @return an input stream to the requested configuration or
-     * <code>null</code> if none could be opened.
+     *         <code>null</code> if none could be opened.
      */
-    private InputStream locateConfiguration(final String name,
-            final ClassLoader classLoader) {
+    private InputStream locateConfiguration(String name,
+            ClassLoader classLoader) {
 
         for (int pi = 0; pi < PATHS.length; pi++) {
             for (int ei = 0; ei < EXTENSIONS.length; ei++) {
@@ -762,20 +770,20 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
 
     /**
      * Read the configuration from a stream.
-     *
+     * 
      * @param stream the stream to read the configuration from.
-     * @param theResource the name of the resource to be used;
-     *  i.e. something like the file name
+     * @param theResource the name of the resource to be used; i.e. something
+     *        like the file name
      * @param theBase the new value for base
-     *
+     * 
      * @throws ConfigurationNotFoundException in case that the configuration
-     *  could not be found
+     *         could not be found
      * @throws ConfigurationIOException in case of an IO error during reading
      * @throws ConfigurationSyntaxException in case of a syntax error in the
-     *  configuration XML
+     *         configuration XML
      */
-    protected void readConfiguration(final InputStream stream,
-            final String theResource, final String theBase)
+    protected void readConfiguration(InputStream stream,
+            String theResource, String theBase)
             throws ConfigurationNotFoundException,
                 ConfigurationIOException,
                 ConfigurationSyntaxException {
@@ -806,20 +814,19 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
 
     /**
      * Recursively follow the src attribute if present.
-     *
+     * 
      * @param name the name of the current tag
      * @param node the current DOM node
-     *
+     * 
      * @return the configuration
-     *
+     * 
      * @throws ConfigurationInvalidResourceException in case of an invalid
-     *  resource
-     * @throws ConfigurationNotFoundException in case of a missing
-     *  configuration
+     *         resource
+     * @throws ConfigurationNotFoundException in case of a missing configuration
      * @throws ConfigurationSyntaxException in case of an syntax error
      * @throws ConfigurationIOException in case of an IO error
      */
-    protected Configuration src(final String name, final Node node)
+    protected Configuration src(String name, Node node)
             throws ConfigurationInvalidResourceException,
                 ConfigurationNotFoundException,
                 ConfigurationSyntaxException,
@@ -839,10 +846,10 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
     }
 
     /**
-     * Get the printable representation of this configuration.
-     * Something like an XPath expression describing the configuration is
-     * produced for this instance.
-     *
+     * Get the printable representation of this configuration. Something like an
+     * XPath expression describing the configuration is produced for this
+     * instance.
+     * 
      * @see java.lang.Object#toString()
      */
     public String toString() {

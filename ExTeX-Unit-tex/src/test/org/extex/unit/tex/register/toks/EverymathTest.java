@@ -34,7 +34,7 @@ public class EverymathTest extends AbstractToksRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(EverymathTest.class);
     }
@@ -44,7 +44,7 @@ public class EverymathTest extends AbstractToksRegisterTester {
      *
      * @param arg the name
      */
-    public EverymathTest(final String arg) {
+    public EverymathTest(String arg) {
 
         super(arg, "everymath", "", "");
     }

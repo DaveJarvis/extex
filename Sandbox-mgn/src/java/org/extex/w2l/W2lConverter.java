@@ -109,7 +109,7 @@ public class W2lConverter {
      *
      * @param config The configStream to set.
      */
-    public void setConfigStream(final InputStream config) {
+    public void setConfigStream(InputStream config) {
 
         configStream = config;
     }
@@ -119,7 +119,7 @@ public class W2lConverter {
      *
      * @param output The outputStream to set.
      */
-    public void setOutput(final OutputStream output) {
+    public void setOutput(OutputStream output) {
 
         outputStream = output;
     }
@@ -129,7 +129,7 @@ public class W2lConverter {
      *
      * @param source The sourceStream to set.
      */
-    public void setSourceStream(final InputStream source) {
+    public void setSourceStream(InputStream source) {
 
         sourceStream = source;
     }

@@ -47,7 +47,7 @@ public class AfmMissingEndFontMetricsException extends FontException {
      * Create a new object.
      * @param message   the message
      */
-    public AfmMissingEndFontMetricsException(final String message) {
+    public AfmMissingEndFontMetricsException(String message) {
 
         super(message);
     }

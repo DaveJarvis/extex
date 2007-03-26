@@ -50,7 +50,7 @@ public class OverlinedNoad extends AbstractNucleusNoad {
      * @param nucleus the nucleus to be underlined
      * @param tc the typesetting context for the color
      */
-    public OverlinedNoad(final Noad nucleus, final TypesettingContext tc) {
+    public OverlinedNoad(Noad nucleus, TypesettingContext tc) {
 
         super(nucleus, tc);
     }
@@ -66,7 +66,7 @@ public class OverlinedNoad extends AbstractNucleusNoad {
      *      java.lang.StringBuffer,
      *      int)
      */
-    protected void toStringAdd(final StringBuffer sb, final int depth) {
+    protected void toStringAdd(StringBuffer sb, int depth) {
 
         sb.append("overline");
     }
@@ -81,10 +81,10 @@ public class OverlinedNoad extends AbstractNucleusNoad {
      * @param mathContext the context to consider
      * @param logger the logger for debugging and tracing information
      *
-     * @return the index of the next noad to consider
-     *
      * @throws TypesetterException in case of a problem
      * @throws ConfigurationException in case of a configuration problem
+     *
+     * {@inheritDoc}
      *
      * @see "TTP [705,734]"
      *
@@ -96,9 +96,9 @@ public class OverlinedNoad extends AbstractNucleusNoad {
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(final Noad previousNoad, final NoadList noads,
-            final int index, final NodeList list,
-            final MathContext mathContext, final Logger logger)
+    public void typeset(Noad previousNoad, NoadList noads,
+            int index, NodeList list,
+            MathContext mathContext, Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 

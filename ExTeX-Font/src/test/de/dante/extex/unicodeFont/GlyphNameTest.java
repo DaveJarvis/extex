@@ -75,7 +75,7 @@ public class GlyphNameTest extends TestCase {
      * @param hex   the hex string.
      * @return Convert a hex string to a int value.
      */
-    private int hex2int(final String hex) {
+    private int hex2int(String hex) {
 
         return Integer.parseInt(hex, 16);
     }
@@ -99,7 +99,7 @@ public class GlyphNameTest extends TestCase {
      * main.
      * @param args  The command line.
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(GlyphNameTest.class);
     }

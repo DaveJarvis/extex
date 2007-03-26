@@ -41,7 +41,7 @@ public class NodeIterator {
      *
      * @param list the list to iterate through
      */
-    public NodeIterator(final List list) {
+    public NodeIterator(List list) {
 
         super();
         iterator = list.iterator();

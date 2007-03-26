@@ -48,7 +48,7 @@ public class TypesetterException extends InterpreterException {
      *
      * @param message the textual representation
      */
-    public TypesetterException(final String message) {
+    public TypesetterException(String message) {
 
         super(message);
     }
@@ -58,7 +58,7 @@ public class TypesetterException extends InterpreterException {
      *
      * @param cause the root of all evil
      */
-    public TypesetterException(final Throwable cause) {
+    public TypesetterException(Throwable cause) {
 
         super(cause);
     }

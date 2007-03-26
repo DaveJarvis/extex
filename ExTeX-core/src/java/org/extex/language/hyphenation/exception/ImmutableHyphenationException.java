@@ -38,7 +38,7 @@ public class ImmutableHyphenationException extends HyphenationException {
      *
      * @param message the message
      */
-    public ImmutableHyphenationException(final String message) {
+    public ImmutableHyphenationException(String message) {
 
         super(message);
     }

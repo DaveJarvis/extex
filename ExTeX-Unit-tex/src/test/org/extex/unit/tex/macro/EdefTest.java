@@ -32,7 +32,7 @@ public class EdefTest extends AbstractXdefTester {
      *
      * @param arg the name
      */
-    public EdefTest(final String arg) {
+    public EdefTest(String arg) {
 
         super(arg, "edef");
     }

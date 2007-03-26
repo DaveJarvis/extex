@@ -34,7 +34,7 @@ public class OpenoutTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(OpenoutTest.class);
     }
@@ -44,7 +44,7 @@ public class OpenoutTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
      *
      * @param arg the name
      */
-    public OpenoutTest(final String arg) {
+    public OpenoutTest(String arg) {
 
         super(arg, "openout", "1 texput.test");
     }

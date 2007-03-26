@@ -63,7 +63,7 @@ public class AfmKernPairs implements Serializable {
      * Set the kerningsize.
      * @param ksize The kerningsize to set.
      */
-    public void setKerningsize(final float ksize) {
+    public void setKerningsize(float ksize) {
 
         kerningsize = ksize;
     }
@@ -81,7 +81,7 @@ public class AfmKernPairs implements Serializable {
      * Set the charpost.
      * @param cp The charpost to set.
      */
-    public void setCharpost(final String cp) {
+    public void setCharpost(String cp) {
 
         charpost = cp;
     }
@@ -99,7 +99,7 @@ public class AfmKernPairs implements Serializable {
      * Set the charpre.
      * @param cp The charpre to set.
      */
-    public void setCharpre(final String cp) {
+    public void setCharpre(String cp) {
 
         charpre = cp;
     }

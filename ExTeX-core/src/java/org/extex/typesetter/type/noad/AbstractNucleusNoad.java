@@ -46,7 +46,7 @@ public abstract class AbstractNucleusNoad extends AbstractNoad {
      * @param nucleus the nucleus of inner noads
      * @param tc the typesetting context for the color
      */
-    public AbstractNucleusNoad(final Noad nucleus, final TypesettingContext tc) {
+    public AbstractNucleusNoad(Noad nucleus, TypesettingContext tc) {
 
         super();
         this.nucleus = nucleus;
@@ -93,7 +93,7 @@ public abstract class AbstractNucleusNoad extends AbstractNoad {
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer, int)
      */
-    public void toString(final StringBuffer sb, final int depth) {
+    public void toString(StringBuffer sb, int depth) {
 
         if (depth < 0) {
             sb.append(" {}");

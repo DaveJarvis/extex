@@ -75,7 +75,7 @@ public class FountKey implements Serializable {
      * Create a new object.
      * @param n     the name
      */
-    public FountKey(final String n) {
+    public FountKey(String n) {
 
         this(n, null, null, new Glue(0), false, false);
     }
@@ -85,7 +85,7 @@ public class FountKey implements Serializable {
      * @param n     the name
      * @param s     the size
      */
-    public FountKey(final String n, final Dimen s) {
+    public FountKey(String n, Dimen s) {
 
         this(n, s, null, new Glue(0), false, false);
     }
@@ -99,8 +99,8 @@ public class FountKey implements Serializable {
      * @param lig   the ligature
      * @param kern  the kerning
      */
-    public FountKey(final String n, final Dimen s, final Count sf,
-            final Glue ls, final boolean lig, final boolean kern) {
+    public FountKey(String n, Dimen s, Count sf,
+            Glue ls, boolean lig, boolean kern) {
 
         name = n;
         size = s;
@@ -117,7 +117,7 @@ public class FountKey implements Serializable {
      * @return Returns <code>true</code>, if the two objects are equals,
      *         or <code>false</code>, if not.
      */
-    public boolean eq(final FountKey key) {
+    public boolean eq(FountKey key) {
 
         if (key != null) {
             if (key.getName() != null && key.getName().equals(name)) {
@@ -197,7 +197,7 @@ public class FountKey implements Serializable {
      * Set the kerning.
      * @param k The kerning to set.
      */
-    public void setKerning(final boolean k) {
+    public void setKerning(boolean k) {
 
         kerning = k;
     }
@@ -206,7 +206,7 @@ public class FountKey implements Serializable {
      * Set the letter spaced.
      * @param l The letter spaced to set.
      */
-    public void setLetterspaced(final Glue l) {
+    public void setLetterspaced(Glue l) {
 
         letterspaced = l;
     }
@@ -215,7 +215,7 @@ public class FountKey implements Serializable {
      * Set the ligatures.
      * @param l The ligatures to set.
      */
-    public void setLigatures(final boolean l) {
+    public void setLigatures(boolean l) {
 
         ligatures = l;
     }
@@ -224,7 +224,7 @@ public class FountKey implements Serializable {
      * Set the name.
      * @param n The name to set.
      */
-    public void setName(final String n) {
+    public void setName(String n) {
 
         name = n;
     }
@@ -233,7 +233,7 @@ public class FountKey implements Serializable {
      * Set the scale.
      * @param s The scale to set.
      */
-    public void setScale(final Count s) {
+    public void setScale(Count s) {
 
         scale = s;
     }
@@ -242,7 +242,7 @@ public class FountKey implements Serializable {
      * Set the size.
      * @param s The size to set.
      */
-    public void setSize(final Dimen s) {
+    public void setSize(Dimen s) {
 
         size = s;
     }

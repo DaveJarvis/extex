@@ -169,7 +169,7 @@ public class VFTest extends TestCase {
      * @throws ConfigurationException in case that some kind of problems have
      * been detected in the configuration
      */
-    protected FontFactory makeFontFactory(final Configuration config)
+    protected FontFactory makeFontFactory(Configuration config)
             throws ConfigurationException {
 
         FontFactory fontFactory;
@@ -243,7 +243,7 @@ public class VFTest extends TestCase {
      * test DviXml
      * @param args  the commandline
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(VFTest.class);
     }

@@ -41,7 +41,7 @@ import org.extex.typesetter.type.page.Page;
 
 /**
  * This document writer produces multi-page PostScript documents.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -69,7 +69,7 @@ public class PsWriter extends AbstractPostscriptWriter
     /**
      * The field <tt>page</tt> contains the byte arrays of the single pages.
      */
-    private List page = new ArrayList();
+    private List<byte[]> page = new ArrayList<byte[]>();
 
     /**
      * The field <tt>pageHeight</tt> contains the height of the paper.
@@ -88,15 +88,17 @@ public class PsWriter extends AbstractPostscriptWriter
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param options the options for the document writer
      */
-    public PsWriter(final DocumentWriterOptions options) {
+    public PsWriter(DocumentWriterOptions options) {
 
         super();
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.backend.documentWriter.DocumentWriter#close()
      */
     public void close() throws DocumentWriterException, IOException {
@@ -139,6 +141,8 @@ public class PsWriter extends AbstractPostscriptWriter
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
      */
     public String getExtension() {
@@ -147,19 +151,23 @@ public class PsWriter extends AbstractPostscriptWriter
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(
      *      java.io.OutputStream)
      */
-    public void setOutputStream(final OutputStream out) {
+    public void setOutputStream(OutputStream out) {
 
         this.stream = out;
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
      *      org.extex.typesetter.type.page.Page)
      */
-    public int shipout(final Page p) throws GeneralException, IOException {
+    public int shipout(Page p) throws GeneralException, IOException {
 
         PsConverter converter = getConverter(headerManager);
         page.add(converter.toPostScript(p, fontManager, headerManager));
@@ -168,12 +176,12 @@ public class PsWriter extends AbstractPostscriptWriter
 
     /**
      * Write a single page to the output.
-     *
+     * 
      * @param no the page number in the array
-     *
+     * 
      * @throws IOException in case of an error during writing
      */
-    private void writePage(final int no) throws IOException {
+    private void writePage(int no) throws IOException {
 
         stream.write("%%Page: ".getBytes());
         byte[] pageno = Integer.toString(no + 1).getBytes();
@@ -181,7 +189,7 @@ public class PsWriter extends AbstractPostscriptWriter
         stream.write(' ');
         stream.write(pageno);
         stream.write('\n');
-        stream.write((byte[]) page.get(no));
+        stream.write(page.get(no));
         stream.write("showpage\n".getBytes());
     }
 

@@ -34,7 +34,7 @@ public class DefaultInputModeTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(DefaultInputModeTest.class);
     }
@@ -44,7 +44,7 @@ public class DefaultInputModeTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public DefaultInputModeTest(final String arg) {
+    public DefaultInputModeTest(String arg) {
 
         super(arg, "DefaultInputMode", " onebyte ");
         setConfig("omega-test");

@@ -33,7 +33,7 @@ public class CountdefTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(CountdefTest.class);
     }
@@ -43,7 +43,7 @@ public class CountdefTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public CountdefTest(final String arg) {
+    public CountdefTest(String arg) {
 
         super(arg, "x", "", "0", "\\countdef\\x=42 ");
     }

@@ -47,7 +47,7 @@ public class BoxParameter extends AbstractCode {
      *
      * @param name the name of the box
      */
-    public BoxParameter(final String name) {
+    public BoxParameter(String name) {
 
         super(name);
     }
@@ -70,8 +70,8 @@ public class BoxParameter extends AbstractCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         String key = getKey(source, context);
@@ -90,7 +90,7 @@ public class BoxParameter extends AbstractCode {
      *
      * @throws InterpreterException in case of an error
      */
-    protected String getKey(final TokenSource source, final Context context)
+    protected String getKey(TokenSource source, Context context)
             throws InterpreterException {
 
         if (Namespace.SUPPORT_NAMESPACE_BOX) {

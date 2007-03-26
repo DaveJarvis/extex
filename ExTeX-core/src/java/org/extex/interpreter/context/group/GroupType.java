@@ -95,7 +95,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
-        public Object visit(final GroupTypeVisitor visitor, final Object arg) {
+        public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitAdjustedHboxGroup(arg);
         }
@@ -138,7 +138,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
-        public Object visit(final GroupTypeVisitor visitor, final Object arg) {
+        public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitAlignGroup(arg);
         }
@@ -181,7 +181,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
-        public Object visit(final GroupTypeVisitor visitor, final Object arg) {
+        public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitBottomLevelGroup(arg);
         }
@@ -224,7 +224,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
-        public Object visit(final GroupTypeVisitor visitor, final Object arg) {
+        public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitDiscGroup(arg);
         }
@@ -267,7 +267,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
-        public Object visit(final GroupTypeVisitor visitor, final Object arg) {
+        public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitHboxGroup(arg);
         }
@@ -310,7 +310,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
-        public Object visit(final GroupTypeVisitor visitor, final Object arg) {
+        public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitInsertGroup(arg);
         }
@@ -353,7 +353,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
-        public Object visit(final GroupTypeVisitor visitor, final Object arg) {
+        public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitMathChoiceGroup(arg);
         }
@@ -396,7 +396,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
-        public Object visit(final GroupTypeVisitor visitor, final Object arg) {
+        public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitMathGroup(arg);
         }
@@ -439,7 +439,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
-        public Object visit(final GroupTypeVisitor visitor, final Object arg) {
+        public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitMathLeftGroup(arg);
         }
@@ -482,7 +482,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
-        public Object visit(final GroupTypeVisitor visitor, final Object arg) {
+        public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitMathShiftGroup(arg);
         }
@@ -525,7 +525,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
-        public Object visit(final GroupTypeVisitor visitor, final Object arg) {
+        public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitNoAlignGroup(arg);
         }
@@ -568,7 +568,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
-        public Object visit(final GroupTypeVisitor visitor, final Object arg) {
+        public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitOutputGroup(arg);
         }
@@ -611,7 +611,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
-        public Object visit(final GroupTypeVisitor visitor, final Object arg) {
+        public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitSemiSimpleGroup(arg);
         }
@@ -654,7 +654,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
-        public Object visit(final GroupTypeVisitor visitor, final Object arg) {
+        public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitSimpleGroup(arg);
         }
@@ -697,7 +697,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
-        public Object visit(final GroupTypeVisitor visitor, final Object arg) {
+        public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitVboxGroup(arg);
         }
@@ -740,7 +740,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
-        public Object visit(final GroupTypeVisitor visitor, final Object arg) {
+        public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitVcenterGroup(arg);
         }
@@ -783,7 +783,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
-        public Object visit(final GroupTypeVisitor visitor, final Object arg) {
+        public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitVtopGroup(arg);
         }
@@ -808,7 +808,7 @@ public abstract class GroupType implements Serializable {
      *
      * @return some object
      */
-    public abstract Object visit(final GroupTypeVisitor visitor,
-            final Object arg);
+    public abstract Object visit(GroupTypeVisitor visitor,
+            Object arg);
 
 }

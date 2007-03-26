@@ -33,7 +33,7 @@ public class GlueshrinkTest extends ExTeXLauncher {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(GlueshrinkTest.class);
     }
@@ -43,7 +43,7 @@ public class GlueshrinkTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public GlueshrinkTest(final String arg) {
+    public GlueshrinkTest(String arg) {
 
         super(arg);
         setConfig("etex-test");

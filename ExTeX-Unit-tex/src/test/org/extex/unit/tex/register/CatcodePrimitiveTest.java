@@ -33,7 +33,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(CatcodePrimitiveTest.class);
     }
@@ -43,7 +43,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public CatcodePrimitiveTest(final String arg) {
+    public CatcodePrimitiveTest(String arg) {
 
         super(arg, "catcode", "1=1 ", "");
     }

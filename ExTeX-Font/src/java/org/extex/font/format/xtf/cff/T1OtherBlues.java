@@ -36,7 +36,7 @@ public class T1OtherBlues extends T1DictDelta {
      * @param stack the stack
      * @throws IOException if an IO.error occurs.
      */
-    public T1OtherBlues(final List stack) throws IOException {
+    public T1OtherBlues(List stack) throws IOException {
 
         super(stack, new short[]{OtherBlues});
     }

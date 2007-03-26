@@ -24,8 +24,6 @@ import java.io.IOException;
 
 import junit.framework.TestCase;
 
-import org.extex.util.xml.XMLStreamWriter;
-
 /**
  * Test for XMLStreamWriter.
  *
@@ -412,7 +410,7 @@ public class XMLStreamWriterTest extends TestCase {
      * main
      * @param args the commandline
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(XMLStreamWriterTest.class);
     }

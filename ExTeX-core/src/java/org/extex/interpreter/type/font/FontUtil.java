@@ -79,9 +79,9 @@ public final class FontUtil {
      *
      * @see "TTP [581]"
      */
-    public static void charWarning(final Logger logger,
-            final TypesetterOptions context, final Font font,
-            final UnicodeChar c) {
+    public static void charWarning(Logger logger,
+            TypesetterOptions context, Font font,
+            UnicodeChar c) {
 
         if (context.getCountOption("tracinglostchars").gt(Count.ZERO)) {
             logger.info(LOCALIZER.format("TTP.MissingChar", c.toString(), font

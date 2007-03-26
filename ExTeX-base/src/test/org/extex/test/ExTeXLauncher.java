@@ -81,7 +81,7 @@ public class ExTeXLauncher extends TestCase {
          *
          * @param theLogger the target logger
          */
-        public EHandler(final Logger theLogger) {
+        public EHandler(Logger theLogger) {
 
             super();
             this.logger = theLogger;
@@ -103,8 +103,8 @@ public class ExTeXLauncher extends TestCase {
          *      org.extex.interpreter.TokenSource,
          *      org.extex.interpreter.context.Context)
          */
-        public boolean handleError(final GeneralException e, final Token token,
-                final TokenSource source, final Context context) {
+        public boolean handleError(GeneralException e, Token token,
+                TokenSource source, Context context) {
 
             logger.log(Level.SEVERE, e.getLocalizedMessage());
             return false;
@@ -118,8 +118,9 @@ public class ExTeXLauncher extends TestCase {
          * @see org.extex.interpreter.ErrorHandler#setEditHandler(
          *      org.extex.main.errorHandler.editHandler.EditHandler)
          */
-        public void setEditHandler(final EditHandler editHandler) {
+        public void setEditHandler(EditHandler editHandler) {
 
+            // not supported
         }
     }
 
@@ -162,7 +163,8 @@ public class ExTeXLauncher extends TestCase {
      * The field <tt>levelMap</tt> contains the mapping for debug levels from
      * String representation to Level values.
      */
-    private static final Map LEVEL_MAP = new HashMap();
+    private static final Map<String, Level> LEVEL_MAP =
+            new HashMap<String, Level>();
 
     /**
      * The constant <tt>TERM</tt> contains the terminating string for output.
@@ -192,7 +194,7 @@ public class ExTeXLauncher extends TestCase {
      *
      * @param properties the properties to adapt
      */
-    private static void prepareProperties(final Properties properties) {
+    private static void prepareProperties(Properties properties) {
 
         provide(properties, "extex.output", "test-plain");
         provide(properties, "extex.interaction", "batchmode");
@@ -207,8 +209,8 @@ public class ExTeXLauncher extends TestCase {
      * @param name the name of the property
      * @param value the new value
      */
-    private static void provide(final Properties properties, final String name,
-            final String value) {
+    private static void provide(Properties properties, String name,
+            String value) {
 
         if (properties.getProperty(name) == null) {
             properties.setProperty(name, value);
@@ -244,7 +246,7 @@ public class ExTeXLauncher extends TestCase {
      *
      * @param arg the name
      */
-    public ExTeXLauncher(final String arg) {
+    public ExTeXLauncher(String arg) {
 
         super(arg);
         Locale.setDefault(Locale.ENGLISH);
@@ -263,8 +265,8 @@ public class ExTeXLauncher extends TestCase {
      *
      * @throws Exception in case of an error
      */
-    public Interpreter assertFailure(final Properties properties,
-            final String code, final String log) throws Exception {
+    public Interpreter assertFailure(Properties properties,
+            String code, String log) throws Exception {
 
         return assertOutput(properties, code, log, "");
     }
@@ -281,7 +283,7 @@ public class ExTeXLauncher extends TestCase {
      *
      * @throws Exception in case of an error
      */
-    public Interpreter assertFailure(final String code, final String log)
+    public Interpreter assertFailure(String code, String log)
             throws Exception {
 
         return assertOutput(getProps(), code, log, "");
@@ -301,8 +303,8 @@ public class ExTeXLauncher extends TestCase {
      *
      * @throws InterpreterException in case of an error
      */
-    public Interpreter assertOutput(final Properties properties,
-            final String code, final String log, final String expect)
+    public Interpreter assertOutput(Properties properties,
+            String code, String log, String expect)
             throws InterpreterException {
 
         boolean errorP = false;
@@ -321,9 +323,9 @@ public class ExTeXLauncher extends TestCase {
              *      org.extex.backend.outputStream.OutputStreamFactory,
              *      org.extex.resource.ResourceFinder, java.lang.String)
              */
-            protected Interpreter makeInterpreter(final Configuration config,
-                    final OutputStreamFactory outFatory,
-                    final ResourceFinder finder, final String jobname)
+            protected Interpreter makeInterpreter(Configuration config,
+                    OutputStreamFactory outFatory,
+                    ResourceFinder finder, String jobname)
                     throws GeneralException,
                         FontException,
                         IOException {
@@ -411,8 +413,8 @@ public class ExTeXLauncher extends TestCase {
      *
      * @throws Exception in case of an error
      */
-    public Interpreter assertOutput(final String code, final String log,
-            final String expect) throws Exception {
+    public Interpreter assertOutput(String code, String log,
+            String expect) throws Exception {
 
         return assertOutput(getProps(), code, log, expect);
     }
@@ -430,8 +432,8 @@ public class ExTeXLauncher extends TestCase {
      *
      * @throws Exception in case of an error
      */
-    public Interpreter assertSuccess(final Properties properties,
-            final String code, final String expect) throws Exception {
+    public Interpreter assertSuccess(Properties properties,
+            String code, String expect) throws Exception {
 
         return assertOutput(properties, code, defaultLog, expect);
     }
@@ -448,7 +450,7 @@ public class ExTeXLauncher extends TestCase {
      *
      * @throws Exception in case of an error
      */
-    public Interpreter assertSuccess(final String code, final String expect)
+    public Interpreter assertSuccess(String code, String expect)
             throws Exception {
 
         return assertOutput(getProps(), code, defaultLog, expect);
@@ -481,11 +483,11 @@ public class ExTeXLauncher extends TestCase {
      *
      * @return the log level
      */
-    private Level getLogLevel(final Properties properties) {
+    private Level getLogLevel(Properties properties) {
 
         Level level =
-                (Level) LEVEL_MAP.get(properties.getProperty(
-                    "extex.launcher.loglevel", "info"));
+                LEVEL_MAP.get(properties.getProperty("extex.launcher.loglevel",
+                    "info"));
 
         return level == null ? Level.INFO : level;
     }
@@ -519,8 +521,9 @@ public class ExTeXLauncher extends TestCase {
      *
      * @param extex the ExTeX object
      */
-    protected void init(final ExTeX extex) {
+    protected void init(ExTeX extex) {
 
+        //
     }
 
     /**
@@ -542,7 +545,7 @@ public class ExTeXLauncher extends TestCase {
      *
      * @return the formatted message according to the log channel rules
      */
-    public String out(final String message) {
+    public String out(String message) {
 
         return "> " + message + ".\n";
     }
@@ -556,7 +559,7 @@ public class ExTeXLauncher extends TestCase {
      *
      * @throws Exception in case of an error
      */
-    public String runFile(final String file) throws Exception {
+    public String runFile(String file) throws Exception {
 
         return runFile(file, System.getProperties());
     }
@@ -571,7 +574,7 @@ public class ExTeXLauncher extends TestCase {
      *
      * @throws Exception in case of an error
      */
-    public String runFile(final String file, final Properties properties)
+    public String runFile(String file, Properties properties)
             throws Exception {
 
         prepareProperties(properties);
@@ -607,7 +610,7 @@ public class ExTeXLauncher extends TestCase {
      *
      * @param config the config to set
      */
-    public void setConfig(final String config) {
+    public void setConfig(String config) {
 
         this.config = config;
     }
@@ -617,7 +620,7 @@ public class ExTeXLauncher extends TestCase {
      *
      * @param defaultLog the defaultLog to set
      */
-    protected void setDefaultLog(final String defaultLog) {
+    protected void setDefaultLog(String defaultLog) {
 
         this.defaultLog = defaultLog;
     }
@@ -627,7 +630,7 @@ public class ExTeXLauncher extends TestCase {
      *
      * @param setHsize the setHsize to set
      */
-    protected void setHsize(final boolean setHsize) {
+    protected void setHsize(boolean setHsize) {
 
         this.setHsize = setHsize;
     }

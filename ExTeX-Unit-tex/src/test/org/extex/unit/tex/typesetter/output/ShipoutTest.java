@@ -33,7 +33,7 @@ public class ShipoutTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ShipoutTest.class);
     }
@@ -43,7 +43,7 @@ public class ShipoutTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public ShipoutTest(final String arg) {
+    public ShipoutTest(String arg) {
 
         super(arg, "shipout", "\\box0");
     }

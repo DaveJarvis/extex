@@ -36,7 +36,7 @@ public class Fixed32Test extends TestCase {
      * mains
      * @param args  The command line
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(Fixed32Test.class);
     }

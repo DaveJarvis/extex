@@ -40,7 +40,7 @@ public class ColorConverterFacory extends AbstractFactory {
      *
      * @throws ConfigurationException in case of an error
      */
-    public ColorConverterFacory(final Configuration config, final Logger logger) {
+    public ColorConverterFacory(Configuration config, Logger logger) {
 
         super();
         enableLogging(logger);
@@ -57,7 +57,7 @@ public class ColorConverterFacory extends AbstractFactory {
      *
      * @throws ConfigurationException in case of a problem in the configuration
      */
-    public ColorConverter newInstance(final String type) {
+    public ColorConverter newInstance(String type) {
 
         return (ColorConverter) createInstance(type, ColorConverter.class);
     }

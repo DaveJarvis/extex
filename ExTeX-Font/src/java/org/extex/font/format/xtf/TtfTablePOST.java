@@ -468,8 +468,8 @@ public class TtfTablePOST extends AbstractXtfTable
      * @param rar       input
      * @throws IOException if an IO-error occured
      */
-    TtfTablePOST(final XtfTableMap tablemap, final XtfTableDirectory.Entry de,
-            final RandomAccessR rar) throws IOException {
+    TtfTablePOST(XtfTableMap tablemap, XtfTableDirectory.Entry de,
+            RandomAccessR rar) throws IOException {
 
         super(tablemap);
         rar.seek(de.getOffset());
@@ -547,7 +547,7 @@ public class TtfTablePOST extends AbstractXtfTable
      * @param i index
      * @return Returns the glyph name
      */
-    public String getGlyphName(final int i) {
+    public String getGlyphName(int i) {
 
         switch (version) {
             case FORMAT1 :
@@ -571,7 +571,7 @@ public class TtfTablePOST extends AbstractXtfTable
      * @param glypname The glpyh name.
      * @return Returns the position of a glpyhname.
      */
-    public int getGlyphNamePosition(final String glypname) {
+    public int getGlyphNamePosition(String glypname) {
 
         if (glypname != null) {
             for (int i = 0; i < numGlyphs; i++) {
@@ -713,7 +713,7 @@ public class TtfTablePOST extends AbstractXtfTable
      * @param id    the id for the glyph
      * @return Returns the int-value for a glyph.
      */
-    public int getGlyphValue(final int id) {
+    public int getGlyphValue(int id) {
 
         if (glyphNameIndex != null && id >= 0 && id < glyphNameIndex.length) {
 
@@ -726,7 +726,7 @@ public class TtfTablePOST extends AbstractXtfTable
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writeStartElement(writer);
         writer.writeAttribute("version", "0x" + Integer.toHexString(version));

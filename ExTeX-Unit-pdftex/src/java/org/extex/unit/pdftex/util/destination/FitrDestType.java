@@ -46,7 +46,7 @@ public class FitrDestType extends DestType {
      *
      * @param rule the rule
      */
-    public FitrDestType(final RuleNode rule) {
+    public FitrDestType(RuleNode rule) {
 
         super();
         this.rule = rule;
@@ -102,7 +102,7 @@ public class FitrDestType extends DestType {
      * @see org.extex.unit.pdftex.util.destination.DestType#visit(
      *      org.extex.unit.pdftex.util.destination.DestinationVisitor)
      */
-    public Object visit(final DestinationVisitor visitor) {
+    public Object visit(DestinationVisitor visitor) {
 
         return visitor.visitFitr(this);
     }

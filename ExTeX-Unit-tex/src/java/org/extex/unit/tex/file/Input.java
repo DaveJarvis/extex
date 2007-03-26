@@ -93,7 +93,7 @@ public class Input extends AbstractFileCode {
      *
      * @param name the name for debugging
      */
-    public Input(final String name) {
+    public Input(String name) {
 
         super(name);
     }
@@ -117,8 +117,8 @@ public class Input extends AbstractFileCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         String name = scanFileName(context, source);

@@ -22,6 +22,7 @@ package org.extex.unit.tex.typesetter;
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
 import org.extex.core.dimen.Dimen;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -80,7 +81,7 @@ public class Accent extends AbstractCode {
      *
      * @param name the name for debugging
      */
-    public Accent(final String name) {
+    public Accent(String name) {
 
         super(name);
     }
@@ -105,9 +106,9 @@ public class Accent extends AbstractCode {
      *      org.extex.typesetter.Typesetter)
      * @see "TTP [1123,1124,1125]"
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
+            throws InterpreterException, ConfigurationException {
 
         if (typesetter.getMode().isMath()) {
             throw new HelpingException(

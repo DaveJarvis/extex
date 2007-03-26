@@ -35,7 +35,7 @@ public class CrTokenTest extends TestCase {
      * Command line interface.
      * @param args the argiuments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(CrTokenTest.class);
     }

@@ -321,7 +321,7 @@ public class FlagsImpl implements Flags {
      * @see org.extex.interpreter.Flags#set(
      *      org.extex.interpreter.Flags)
      */
-    public void set(final Flags flags) {
+    public void set(Flags flags) {
 
         globalP = flags.isGlobal();
         immediateP = flags.isImmediate();
@@ -352,7 +352,7 @@ public class FlagsImpl implements Flags {
      *
      * @param value the new value for the global flag
      */
-    public void setGlobal(final boolean value) {
+    public void setGlobal(boolean value) {
 
         globalP = value;
     }

@@ -36,7 +36,7 @@ public class PlainTest extends ExTeXLauncher {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PlainTest.class);
     }
@@ -46,7 +46,7 @@ public class PlainTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public PlainTest(final String arg) {
+    public PlainTest(String arg) {
 
         super(arg);
     }

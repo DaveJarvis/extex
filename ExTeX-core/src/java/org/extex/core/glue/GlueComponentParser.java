@@ -108,9 +108,9 @@ public class GlueComponentParser {
      *
      * @throws InterpreterException in case of an error
      */
-    public static GlueComponent parse(final Context context,
-            final TokenSource source, final Typesetter typesetter,
-            final boolean fixed) throws InterpreterException {
+    public static GlueComponent parse(Context context,
+            TokenSource source, Typesetter typesetter,
+            boolean fixed) throws InterpreterException {
 
         long value = 0;
 
@@ -163,9 +163,9 @@ public class GlueComponentParser {
      *
      * @throws InterpreterException in case of an error
      */
-    public static GlueComponent attachUnit(final long value,
-            final Context context, final TokenSource source,
-            final Typesetter typesetter, final boolean fixed)
+    public static GlueComponent attachUnit(long value,
+            Context context, TokenSource source,
+            Typesetter typesetter, boolean fixed)
             throws InterpreterException {
 
         Token t;
@@ -354,8 +354,8 @@ public class GlueComponentParser {
      *
      * @throws InterpreterException in case of an error
      */
-    public static GlueComponent parse(final TokenSource source,
-            final Context context, final Typesetter typesetter)
+    public static GlueComponent parse(TokenSource source,
+            Context context, Typesetter typesetter)
             throws InterpreterException {
 
         return parse(context, source, typesetter, false);

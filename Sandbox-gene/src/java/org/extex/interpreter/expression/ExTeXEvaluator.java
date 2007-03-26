@@ -42,7 +42,7 @@ public class ExTeXEvaluator extends Evaluator {
     //             * @see org.extex.interpreter.type.dimen.parser.Function1#apply(
     //             *      org.extex.interpreter.type.dimen.parser.Accumulator)
     //             */
-    //            public void apply(final Terminal accumulator)
+    //            public void apply(Terminal accumulator)
     //                    throws InterpreterException {
     //
     //                //                if (accumulator.value < 0) {
@@ -63,9 +63,9 @@ public class ExTeXEvaluator extends Evaluator {
     //             *
     //             * @throws InterpreterException in case of an error
     //             */
-    //            public void apply(final Terminal accumulator,
-    //                    final Context context, final TokenSource source,
-    //                    final Typesetter typesetter) throws InterpreterException {
+    //            public void apply(Terminal accumulator,
+    //                    Context context, TokenSource source,
+    //                    Typesetter typesetter) throws InterpreterException {
     //
     //                Token t;
     //                evalExpr(accumulator, context, source, typesetter);
@@ -100,9 +100,9 @@ public class ExTeXEvaluator extends Evaluator {
     //             *
     //             * @throws InterpreterException in case of an error
     //             */
-    //            public void apply(final Terminal accumulator,
-    //                    final Context context, final TokenSource source,
-    //                    final Typesetter typesetter) throws InterpreterException {
+    //            public void apply(Terminal accumulator,
+    //                    Context context, TokenSource source,
+    //                    Typesetter typesetter) throws InterpreterException {
     //
     //                Token t;
     //                evalExpr(accumulator, context, source, typesetter);
@@ -134,7 +134,7 @@ public class ExTeXEvaluator extends Evaluator {
     //             * @see org.extex.interpreter.type.dimen.parser.Function1#apply(
     //             *      org.extex.interpreter.type.dimen.parser.Accumulator)
     //             */
-    //            public void apply(final Terminal accumulator)
+    //            public void apply(Terminal accumulator)
     //                    throws InterpreterException {
     //
     //                //                if (accumulator.value > 0) {

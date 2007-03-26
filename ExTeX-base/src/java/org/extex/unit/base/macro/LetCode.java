@@ -55,7 +55,7 @@ public class LetCode extends AbstractCode implements ExpandableCode {
      *
      * @param token the token which encapsulated
      */
-    public LetCode(final Token token) {
+    public LetCode(Token token) {
 
         super(token.toString());
         this.token = token;
@@ -79,8 +79,8 @@ public class LetCode extends AbstractCode implements ExpandableCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         source.execute(token, context, typesetter);
@@ -107,8 +107,8 @@ public class LetCode extends AbstractCode implements ExpandableCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void expand(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void expand(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 

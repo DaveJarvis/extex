@@ -33,7 +33,7 @@ public class VadjustTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(VadjustTest.class);
     }
@@ -43,7 +43,7 @@ public class VadjustTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public VadjustTest(final String arg) {
+    public VadjustTest(String arg) {
 
         super(arg, "vadjust", "{}", "a");
     }

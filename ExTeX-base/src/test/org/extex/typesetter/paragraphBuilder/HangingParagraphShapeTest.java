@@ -46,7 +46,7 @@ public class HangingParagraphShapeTest extends TestCase {
      *
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(HangingParagraphShapeTest.class);
     }

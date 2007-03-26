@@ -53,7 +53,7 @@ public class T2TDOCharset extends T2TDONumber {
      * @param stack the stack
      * @throws IOException if an IO.error occurs.
      */
-    public T2TDOCharset(final List stack) throws IOException {
+    public T2TDOCharset(List stack) throws IOException {
 
         super(stack, new short[]{CHARSET});
     }
@@ -77,8 +77,8 @@ public class T2TDOCharset extends T2TDONumber {
      *      org.extex.util.file.random.RandomAccessR,
      *      org.extex.font.format.xtf.OtfTableCFF, int)
      */
-    public void init(final RandomAccessR rar, final OtfTableCFF cff,
-            final int baseoffset) throws IOException {
+    public void init(RandomAccessR rar, OtfTableCFF cff,
+            int baseoffset) throws IOException {
 
         int offset = getInteger();
         if (offset > 0) {
@@ -97,7 +97,7 @@ public class T2TDOCharset extends T2TDONumber {
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());
         writer.writeAttribute("value", getValue());

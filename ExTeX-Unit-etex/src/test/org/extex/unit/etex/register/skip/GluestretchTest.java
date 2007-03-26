@@ -33,7 +33,7 @@ public class GluestretchTest extends ExTeXLauncher {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(GluestretchTest.class);
     }
@@ -43,7 +43,7 @@ public class GluestretchTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public GluestretchTest(final String arg) {
+    public GluestretchTest(String arg) {
 
         super(arg);
         setConfig("etex-test");

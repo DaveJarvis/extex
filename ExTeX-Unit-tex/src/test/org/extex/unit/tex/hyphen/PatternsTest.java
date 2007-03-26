@@ -34,7 +34,7 @@ public class PatternsTest extends NoFlagsPrimitiveTester {
      *
      * @param name the name
      */
-    public PatternsTest(final String name) {
+    public PatternsTest(String name) {
 
         super(name, "patterns", "{}");
     }

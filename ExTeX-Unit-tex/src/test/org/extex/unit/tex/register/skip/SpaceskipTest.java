@@ -31,7 +31,7 @@ public class SpaceskipTest extends AbstractSkipRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(SpaceskipTest.class);
     }
@@ -41,7 +41,7 @@ public class SpaceskipTest extends AbstractSkipRegisterTester {
      *
      * @param arg the name
      */
-    public SpaceskipTest(final String arg) {
+    public SpaceskipTest(String arg) {
 
         super(arg, "spaceskip", "", "0.0pt");
     }

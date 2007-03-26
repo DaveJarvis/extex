@@ -68,7 +68,7 @@ public class W2lConverterTest extends TestCase {
      * @return Return the file as String.
      * @throws IOException if an IO-error occurred.
      */
-    private static String readFile(final String filename) throws IOException {
+    private static String readFile(String filename) throws IOException {
 
         BufferedReader in = new BufferedReader(new FileReader(filename));
 

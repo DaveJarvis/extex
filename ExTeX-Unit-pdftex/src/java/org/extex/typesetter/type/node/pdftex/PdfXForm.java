@@ -48,7 +48,7 @@ public class PdfXForm extends WhatsItNode {
      *
      * @param nodes the nodes in the xform
      */
-    public PdfXForm(final NodeList nodes) {
+    public PdfXForm(NodeList nodes) {
 
         super();
         this.nodes = nodes;
@@ -80,8 +80,8 @@ public class PdfXForm extends WhatsItNode {
      *      int,
      *      int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         sb.append("(pdfxform " + nodes.toString() + ")");
     }

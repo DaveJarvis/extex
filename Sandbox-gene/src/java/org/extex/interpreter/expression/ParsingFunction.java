@@ -36,10 +36,11 @@ public interface ParsingFunction {
     /**
      * Acquire arguments and compute a function.
      *
-     * @param accumulator the accumulator to receive the result
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
+     *
+     * @return the result 
      *
      * @throws InterpreterException in case of an error
      */

@@ -33,7 +33,7 @@ public class MagTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(MagTest.class);
     }
@@ -43,7 +43,7 @@ public class MagTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
      *
      * @param arg the name
      */
-    public MagTest(final String arg) {
+    public MagTest(String arg) {
 
         super(arg, "mag", "=999");
     }

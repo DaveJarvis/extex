@@ -47,7 +47,7 @@ public class ConfigurationFactoryTest extends TestCase {
      *
      * @param name the name
      */
-    public ConfigurationFactoryTest(final String name) {
+    public ConfigurationFactoryTest(String name) {
 
         super(name);
         Locale.setDefault(Locale.ENGLISH);

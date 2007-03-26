@@ -755,7 +755,8 @@ public class TeX extends ExTeX {
      * The constant <tt>TRACE_MAP</tt> contains the mapping from single
      * characters to tracing property names.
      */
-    private static final Map TRACE_MAP = new HashMap();
+    private static final Map<String, String> TRACE_MAP =
+            new HashMap<String, String>();
 
     static {
         TRACE_MAP.put("+", PROP_TRACING_ONLINE);
@@ -782,7 +783,7 @@ public class TeX extends ExTeX {
      *
      * @param args the list of command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         System.exit(mainProgram(args));
     }
@@ -807,7 +808,7 @@ public class TeX extends ExTeX {
      *
      * @return the program exit status
      */
-    public static int mainProgram(final String[] args) {
+    public static int mainProgram(String[] args) {
 
         try {
 
@@ -849,7 +850,7 @@ public class TeX extends ExTeX {
      *       work.
      * </p>
      */
-    private List observers = new ArrayList();
+    private List<Object> observers = new ArrayList<Object>();
 
     /**
      * The field <tt>primaryFile</tt> contains the ...
@@ -880,7 +881,7 @@ public class TeX extends ExTeX {
      *
      * @see org.extex.ExTeX#ExTeX(java.util.Properties, java.lang.String)
      */
-    public TeX(final Properties theProperties, final String dotFile)
+    public TeX(Properties theProperties, String dotFile)
             throws InterpreterException,
                 IOException {
 
@@ -897,7 +898,7 @@ public class TeX extends ExTeX {
      *
      * @throws IOException in case of an IO error
      */
-    private int copying(final PrintStream printStream) throws IOException {
+    private int copying(PrintStream printStream) throws IOException {
 
         String file =
                 this.getClass().getName().replace('.', '/').replaceAll(
@@ -946,7 +947,7 @@ public class TeX extends ExTeX {
      *
      * @param message the message to log
      */
-    private int info(final String message) {
+    private int info(String message) {
 
         getLogger().info(message);
         return EXIT_OK;
@@ -972,8 +973,8 @@ public class TeX extends ExTeX {
      *      org.extex.interpreter.Interpreter,
      *      java.util.Properties)
      */
-    protected boolean initializeStreams(final Interpreter interpreter,
-            final Properties properties) {
+    protected boolean initializeStreams(Interpreter interpreter,
+            Properties properties) {
 
         TokenStreamFactory factory = interpreter.getTokenStreamFactory();
 
@@ -1000,7 +1001,7 @@ public class TeX extends ExTeX {
      *
      * @see org.extex.ExTeX#logPages(org.extex.backend.BackendDriver)
      */
-    protected void logPages(final BackendDriver backend) {
+    protected void logPages(BackendDriver backend) {
 
         int pages = backend.getPages();
 
@@ -1041,11 +1042,11 @@ public class TeX extends ExTeX {
      *      org.extex.resource.ResourceFinder,
      *      CoreFontFactory)
      */
-    protected BackendDriver makeBackend(final Configuration config,
-            final OutputStreamFactory outFactory,
-            final DocumentWriterOptions options,
-            final Configuration colorConfig, final ResourceFinder finder,
-            final CoreFontFactory fontFactory)
+    protected BackendDriver makeBackend(Configuration config,
+            OutputStreamFactory outFactory,
+            DocumentWriterOptions options,
+            Configuration colorConfig, ResourceFinder finder,
+            CoreFontFactory fontFactory)
             throws DocumentWriterException,
                 ConfigurationException {
 
@@ -1063,8 +1064,8 @@ public class TeX extends ExTeX {
              *      java.lang.String,
              *      java.io.OutputStream)
              */
-            public void update(final String name, final String type,
-                    final OutputStream stream) {
+            public void update(String name, String type,
+                    OutputStream stream) {
 
                 if (primaryFile != null) {
                     // ignore
@@ -1102,9 +1103,9 @@ public class TeX extends ExTeX {
      *      org.extex.resource.ResourceFinder,
      *      java.lang.String)
      */
-    protected Interpreter makeInterpreter(final Configuration config,
-            final OutputStreamFactory outFactory, final ResourceFinder finder,
-            final String jobname)
+    protected Interpreter makeInterpreter(Configuration config,
+            OutputStreamFactory outFactory, ResourceFinder finder,
+            String jobname)
             throws ConfigurationException,
                 GeneralException,
                 FontException,
@@ -1158,7 +1159,7 @@ public class TeX extends ExTeX {
      *   events could not be registered
      */
     protected TokenStreamFactory makeTokenStreamFactory(
-            final Configuration config, final ResourceFinder finder)
+            Configuration config, ResourceFinder finder)
             throws ConfigurationException,
                 NotObservableException {
 
@@ -1190,8 +1191,8 @@ public class TeX extends ExTeX {
                  *      java.lang.String,
                  *      java.io.InputStream)
                  */
-                public void update(final String filename,
-                        final String filetype, final InputStream stream) {
+                public void update(String filename,
+                        String filetype, InputStream stream) {
 
                     if ("tex".equals(filetype) && first) {
                         first = false;
@@ -1253,7 +1254,7 @@ public class TeX extends ExTeX {
      *
      * @throws IOException just in case
      */
-    protected boolean mergeProperties(final String arg) throws IOException {
+    protected boolean mergeProperties(String arg) throws IOException {
 
         InputStream in = getClass().getResourceAsStream("/config/extex/" + arg);
         if (in == null) {
@@ -1282,7 +1283,7 @@ public class TeX extends ExTeX {
      *
      * @return the exit status
      */
-    public int run(final String[] args) {
+    public int run(String[] args) {
 
         try {
 
@@ -1365,7 +1366,7 @@ public class TeX extends ExTeX {
      * @throws InteractionUnknownException in case of an unknown interaction
      *  mode
      */
-    protected int runCommandLine(final String[] args)
+    protected int runCommandLine(String[] args)
             throws MainException,
                 IOException,
                 InteractionUnknownException {
@@ -1633,7 +1634,7 @@ public class TeX extends ExTeX {
      *
      * @throws MainException in case of an error in {@link #run() run()}
      */
-    private int runWithCode(final String[] arguments, final int position)
+    private int runWithCode(String[] arguments, int position)
             throws MainException {
 
         if (position < arguments.length) {
@@ -1665,7 +1666,7 @@ public class TeX extends ExTeX {
      * @throws InteractionUnknownException if the interaction from the
      *   properties is unknown
      */
-    private int runWithFile(final String[] arguments, final int position)
+    private int runWithFile(String[] arguments, int position)
             throws MainException,
                 InteractionUnknownException {
 
@@ -1723,7 +1724,7 @@ public class TeX extends ExTeX {
      * @return <code>true</code> iff the syntax is correct and the value of the
      *   property has been set
      */
-    private boolean set(final String name, final String tag, final String value) {
+    private boolean set(String name, String tag, String value) {
 
         int i = value.indexOf('=');
         if (i < 0 || !name.startsWith(value.substring(0, i))) {
@@ -1747,8 +1748,8 @@ public class TeX extends ExTeX {
      *
      * @throws MainMissingArgumentException in case of an error
      */
-    protected boolean set(final String name, final String tag,
-            final String[] arguments, final int position)
+    protected boolean set(String name, String tag,
+            String[] arguments, int position)
             throws MainMissingArgumentException {
 
         if (!name.startsWith(arguments[position].substring(1))) {
@@ -1767,7 +1768,7 @@ public class TeX extends ExTeX {
      * @param name the name of the input file. If it is <code>null</code> then
      *  the values are reset to the initial state
      */
-    private void setInputFileName(final String name) {
+    private void setInputFileName(String name) {
 
         if (name != null) {
             setProperty(PROP_JOBNAME, //
@@ -1786,7 +1787,7 @@ public class TeX extends ExTeX {
      *
      * @param queryFileHandler the queryFileHandler to set
      */
-    public void setQueryFileHandler(final QueryFileHandler queryFileHandler) {
+    public void setQueryFileHandler(QueryFileHandler queryFileHandler) {
 
         this.queryFileHandler = queryFileHandler;
     }
@@ -1801,13 +1802,13 @@ public class TeX extends ExTeX {
      * @throws MainUnknownDebugOptionException in case that the specified option
      *   letter has no assigned property to set
      */
-    protected void useTrace(final String arg)
+    protected void useTrace(String arg)
             throws MainUnknownDebugOptionException {
 
         getLogger().setLevel(Level.FINE);
 
         for (int i = 0; i < arg.length(); i++) {
-            String prop = (String) TRACE_MAP.get(arg.substring(i, i + 1));
+            String prop = TRACE_MAP.get(arg.substring(i, i + 1));
             if (prop != null) {
                 setProperty(prop, "true");
             } else {

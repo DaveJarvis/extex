@@ -36,7 +36,7 @@ public class T1FamilyBlues extends T1DictDelta {
      * @param stack the stack
      * @throws IOException if an IO.error occurs.
      */
-    public T1FamilyBlues(final List stack) throws IOException {
+    public T1FamilyBlues(List stack) throws IOException {
 
         super(stack, new short[]{FamilyBlues});
     }

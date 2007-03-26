@@ -32,7 +32,7 @@ public class UnderlineTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public UnderlineTest(final String arg) {
+    public UnderlineTest(String arg) {
 
         super(arg, "underline", " x");
     }

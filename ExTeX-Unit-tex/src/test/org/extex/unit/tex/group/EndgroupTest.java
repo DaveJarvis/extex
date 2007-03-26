@@ -34,7 +34,7 @@ public class EndgroupTest extends NoFlagsPrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(EndgroupTest.class);
     }
@@ -44,7 +44,7 @@ public class EndgroupTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public EndgroupTest(final String arg) {
+    public EndgroupTest(String arg) {
 
         super(arg, "endgroup", "", "\\begingroup");
     }

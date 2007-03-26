@@ -63,7 +63,7 @@ public class Splitbotmarks extends AbstractMarksCode {
      *
      * @param name the name for debugging
      */
-    public Splitbotmarks(final String name) {
+    public Splitbotmarks(String name) {
 
         super(name);
     }
@@ -79,7 +79,7 @@ public class Splitbotmarks extends AbstractMarksCode {
      * @see org.extex.unit.tex.typesetter.mark.AbstractMarksCode#getValue(
      *      org.extex.interpreter.context.Context, java.lang.String)
      */
-    protected Tokens getValue(final Context context, final String key) {
+    protected Tokens getValue(Context context, String key) {
 
         return context.getSplitBottomMark(key);
     }

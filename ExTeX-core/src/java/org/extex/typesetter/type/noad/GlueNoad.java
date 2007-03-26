@@ -21,9 +21,9 @@ package org.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
+import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
 import org.extex.core.muskip.Muskip;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.noad.util.MathContext;
@@ -48,7 +48,7 @@ public class GlueNoad extends AbstractNoad {
      *
      * @param muglue the glue
      */
-    public GlueNoad(final Muskip muglue) {
+    public GlueNoad(Muskip muglue) {
 
         super();
         this.muglue = muglue;
@@ -77,6 +77,8 @@ public class GlueNoad extends AbstractNoad {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.noad.Noad#typeset(
      *      org.extex.typesetter.type.noad.Noad,
      *      org.extex.typesetter.type.noad.NoadList,
@@ -85,11 +87,10 @@ public class GlueNoad extends AbstractNoad {
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(final Noad previousNoad, final NoadList noads,
-            final int index, final NodeList list,
-            final MathContext mathContext, final Logger logger)
-            throws TypesetterException,
-                ConfigurationException {
+    public void typeset(Noad previousNoad, NoadList noads,
+            int index, NodeList list,
+            MathContext mathContext, Logger logger)
+            throws TypesetterException {
 
         if (previousNoad instanceof GlueNoad
                 && ((GlueNoad) previousNoad).isKill()) {
@@ -102,7 +103,7 @@ public class GlueNoad extends AbstractNoad {
 
         setSpacingClass(previousNoad.getSpacingClass());
         Glue glue = mathContext.convert(muglue);
-        if (!glue.eq(Glue.ZERO)) {
+        if (!glue.eq(FixedGlue.ZERO)) {
             list.add(new GlueNode(glue, true));
         }
     }

@@ -64,14 +64,14 @@ public class StringSource extends Moritz {
         /**
          * The field <tt>stack</tt> contains the stack for pushed tokens.
          */
-        private List stack = new ArrayList();
+        private List<Token> stack = new ArrayList<Token>();
 
         /**
          * Creates a new object.
          *
          * @param cs the character sequence to read from
          */
-        protected TStream(final CharSequence cs) {
+        protected TStream(CharSequence cs) {
 
             this.cs = cs;
         }
@@ -107,12 +107,12 @@ public class StringSource extends Moritz {
          *      org.extex.scanner.type.token.TokenFactory,
          *      org.extex.scanner.Tokenizer)
          */
-        public Token get(final TokenFactory factory, final Tokenizer tokenizer)
+        public Token get(TokenFactory factory, Tokenizer tokenizer)
                 throws ScannerException {
 
             int size = stack.size();
             if (size > 0) {
-                return (Token) stack.remove(size - 1);
+                return stack.remove(size - 1);
             }
             if (next < cs.length()) {
                 UnicodeChar c = UnicodeChar.get(cs.charAt(next++));
@@ -200,7 +200,7 @@ public class StringSource extends Moritz {
          * @see org.extex.scanner.TokenStream#put(
          *      org.extex.scanner.type.token.Token)
          */
-        public void put(final Token token) {
+        public void put(Token token) {
 
             stack.add(token);
         }
@@ -222,7 +222,7 @@ public class StringSource extends Moritz {
      *
      * @throws ConfigurationException in case of errors in the configuration
      */
-    public StringSource(final CharSequence cs) {
+    public StringSource(CharSequence cs) {
 
         super();
         addStream(new TStream(cs));
@@ -236,7 +236,7 @@ public class StringSource extends Moritz {
      *
      * @throws InterpreterException in case of an error
      */
-    public void reset(final CharSequence cs) throws InterpreterException {
+    public void reset(CharSequence cs) throws InterpreterException {
 
         closeAllStreams(getContext());
         addStream(new TStream(cs));

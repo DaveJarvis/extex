@@ -33,7 +33,7 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(LastpenaltyTest.class);
     }
@@ -43,7 +43,7 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
      *
      * @param arg the name
      */
-    public LastpenaltyTest(final String arg) {
+    public LastpenaltyTest(String arg) {
 
         super(arg, "lastpenalty", "", "0");
     }

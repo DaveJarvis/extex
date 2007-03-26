@@ -34,7 +34,7 @@ public class JavaloadTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public JavaloadTest(final String arg) {
+    public JavaloadTest(String arg) {
 
         super(arg, "javaload",
                 "{org.extex.interpreter.primitives.dynamic.java.JavaloadSensor}");

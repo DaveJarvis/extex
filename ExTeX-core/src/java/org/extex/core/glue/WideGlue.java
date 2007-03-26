@@ -70,7 +70,7 @@ public class WideGlue {
      *
      * @param dimen the length to add
      */
-    public void add(final FixedDimen dimen) {
+    public void add(FixedDimen dimen) {
 
         length.add(dimen.getValue());
     }
@@ -80,7 +80,7 @@ public class WideGlue {
      *
      * @param glue the glue to add
      */
-    public void add(final FixedGlue glue) {
+    public void add(FixedGlue glue) {
 
         length.add(glue.getLength());
         FixedGlueComponent s = glue.getStretch();
@@ -95,7 +95,7 @@ public class WideGlue {
      *
      * @param glue the glue to add
      */
-    public void add(final WideGlue glue) {
+    public void add(WideGlue glue) {
 
         this.length.add(glue.length);
 
@@ -110,7 +110,7 @@ public class WideGlue {
      *
      * @param s the length to add
      */
-    public void addStretch(final FixedDimen s) {
+    public void addStretch(FixedDimen s) {
 
         shrink[0] += s.getValue();
     }
@@ -122,7 +122,7 @@ public class WideGlue {
      *
      * @return the highest glue component or ZERO
      */
-    private FixedGlueComponent getGC(final long[] a) {
+    private FixedGlueComponent getGC(long[] a) {
 
         for (int i = SIZE - 1; i >= 0; i--) {
             if (a[i] != 0) {
@@ -180,7 +180,7 @@ public class WideGlue {
      *
      * @param glue the glue to copy
      */
-    public void set(final FixedGlue glue) {
+    public void set(FixedGlue glue) {
 
         this.length.set(glue.getLength());
 
@@ -198,7 +198,7 @@ public class WideGlue {
      *
      * @param len the length
      */
-    public void set(final ImmutableDimen len) {
+    public void set(ImmutableDimen len) {
 
         this.length.set(len);
 
@@ -213,7 +213,7 @@ public class WideGlue {
      *
      * @param wg the glue to copy
      */
-    public void set(final WideGlue wg) {
+    public void set(WideGlue wg) {
 
         this.length.set(wg.length);
 
@@ -228,7 +228,7 @@ public class WideGlue {
      *
      * @param glue the glue to add
      */
-    public void subtract(final FixedGlue glue) {
+    public void subtract(FixedGlue glue) {
 
         length.subtract(glue.getLength());
         FixedGlueComponent s = glue.getStretch();
@@ -243,7 +243,7 @@ public class WideGlue {
      *
      * @param dimen the length to subtract
      */
-    public void subtract(final FixedDimen dimen) {
+    public void subtract(FixedDimen dimen) {
 
         length.subtract(dimen);
     }
@@ -253,7 +253,7 @@ public class WideGlue {
      *
      * @param glue the glue to subtract
      */
-    public void subtract(final WideGlue glue) {
+    public void subtract(WideGlue glue) {
 
         this.length.subtract(glue.length);
 

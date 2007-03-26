@@ -57,7 +57,7 @@ public class Ocp implements Code, OcpConvertible, Serializable {
      * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
      */
-    public static Ocp load(final String resource, final ResourceFinder finder)
+    public static Ocp load(String resource, ResourceFinder finder)
             throws InterpreterException, ConfigurationException {
 
         InputStream stream = null;
@@ -91,7 +91,7 @@ public class Ocp implements Code, OcpConvertible, Serializable {
      * @param resource the name of the resource
      * @param stream the stream to read the resource from
      */
-    public Ocp(final String resource, final InputStream stream) {
+    public Ocp(String resource, InputStream stream) {
 
         super();
         // TODO gene: load unimplemented
@@ -113,8 +113,8 @@ public class Ocp implements Code, OcpConvertible, Serializable {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Ocp convertOcp(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public Ocp convertOcp(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         return ocp;
     }
@@ -137,8 +137,8 @@ public class Ocp implements Code, OcpConvertible, Serializable {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         //TODO gene: unimplemented
@@ -187,7 +187,7 @@ public class Ocp implements Code, OcpConvertible, Serializable {
      *
      * @param name the name to set
      */
-    public void setName(final String name) {
+    public void setName(String name) {
 
         this.name = name;
     }

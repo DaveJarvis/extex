@@ -51,7 +51,7 @@ public class PsFontsMapReader implements Serializable {
      * @param in    The input for reading.
      * @throws FontException if an font-error occurred.
      */
-    public PsFontsMapReader(final InputStream in) throws FontException {
+    public PsFontsMapReader(InputStream in) throws FontException {
 
         try {
             data = new HashMap();
@@ -148,7 +148,7 @@ public class PsFontsMapReader implements Serializable {
      * @param filename      The font-filename.
      * @return Returns the encoding for a font.
      */
-    public PsFontEncoding getPSFontEncoding(final String filename) {
+    public PsFontEncoding getPSFontEncoding(String filename) {
 
         return (PsFontEncoding) data.get(filename);
     }

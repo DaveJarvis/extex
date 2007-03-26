@@ -70,8 +70,8 @@ public class WhatsItWriteNode extends WhatsItNode {
      * @param source the interpreter for expansion
      * @param writer the target writer
      */
-    public WhatsItWriteNode(final String key, final Tokens tokens,
-            final TokenSource source, final TokensWriter writer) {
+    public WhatsItWriteNode(String key, Tokens tokens,
+            TokenSource source, TokensWriter writer) {
 
         super();
         this.key = key;
@@ -103,8 +103,8 @@ public class WhatsItWriteNode extends WhatsItNode {
      *      org.extex.typesetter.type.NodeVisitor,
      *      boolean)
      */
-    public Node atShipping(final Context context, final Typesetter typesetter,
-            final NodeVisitor visitor, final boolean inHMode)
+    public Node atShipping(Context context, Typesetter typesetter,
+            NodeVisitor visitor, boolean inHMode)
             throws GeneralException {
 
         Tokens toks = source.expand(tokens, typesetter);

@@ -47,7 +47,7 @@ public class AfmMissingEndKernPairsException extends FontException {
      * Create a new object.
      * @param message   the message
      */
-    public AfmMissingEndKernPairsException(final String message) {
+    public AfmMissingEndKernPairsException(String message) {
 
         super(message);
     }

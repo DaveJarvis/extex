@@ -72,8 +72,8 @@ public class TtfTableKERN extends AbstractXtfTable
      * @param rar       input
      * @throws IOException if an IO-error occurs
      */
-    TtfTableKERN(final XtfTableMap tablemap, final XtfTableDirectory.Entry de,
-            final RandomAccessR rar) throws IOException {
+    TtfTableKERN(XtfTableMap tablemap, XtfTableDirectory.Entry de,
+            RandomAccessR rar) throws IOException {
 
         super(tablemap);
         rar.seek(de.getOffset());
@@ -100,7 +100,7 @@ public class TtfTableKERN extends AbstractXtfTable
      * @param i index
      * @return Returns the table
      */
-    public KernSubtable getTable(final int i) {
+    public KernSubtable getTable(int i) {
 
         return tables[i];
     }
@@ -126,7 +126,7 @@ public class TtfTableKERN extends AbstractXtfTable
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writeStartElement(writer);
         writer.writeAttribute("version", String.valueOf(version));
@@ -158,7 +158,7 @@ public class TtfTableKERN extends AbstractXtfTable
          * @param i index
          * @return  Returns the kerning
          */
-        public abstract KerningPair getKerning(final int i);
+        public abstract KerningPair getKerning(int i);
 
         /**
          * format 0
@@ -176,7 +176,7 @@ public class TtfTableKERN extends AbstractXtfTable
          * @return Returns the table
          * @throws IOException if an IO-error occurs
          */
-        public static KernSubtable read(final RandomAccessR rar)
+        public static KernSubtable read(RandomAccessR rar)
                 throws IOException {
 
             KernSubtable table = null;
@@ -280,7 +280,7 @@ public class TtfTableKERN extends AbstractXtfTable
          * @param rar       input
          * @throws IOException if an IO-error occurs
          */
-        KernSubtableFormat0(final RandomAccessR rar) throws IOException {
+        KernSubtableFormat0(RandomAccessR rar) throws IOException {
 
             nPairs = rar.readUnsignedShort();
             searchRange = rar.readUnsignedShort();
@@ -305,7 +305,7 @@ public class TtfTableKERN extends AbstractXtfTable
         /**
          * @see org.extex.font.format.xtf.TtfTableKERN.KernSubtable#getKerning(int)
          */
-        public KerningPair getKerning(final int i) {
+        public KerningPair getKerning(int i) {
 
             return kerningPairs[i];
         }
@@ -341,7 +341,7 @@ public class TtfTableKERN extends AbstractXtfTable
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
-        public void writeXML(final XMLStreamWriter writer) throws IOException {
+        public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("kernsubtable");
             writer.writeAttribute("format", "0");
@@ -415,7 +415,7 @@ public class TtfTableKERN extends AbstractXtfTable
          * @param rar       input
          * @throws IOException if an IO-error occurs
          */
-        KernSubtableFormat2(final RandomAccessR rar) throws IOException {
+        KernSubtableFormat2(RandomAccessR rar) throws IOException {
 
             rowWidth = rar.readUnsignedShort();
             leftClassTable = rar.readUnsignedShort();
@@ -434,7 +434,7 @@ public class TtfTableKERN extends AbstractXtfTable
         /**
          * @see org.extex.font.format.xtf.TtfTableKERN.KernSubtable#getKerning(int)
          */
-        public KerningPair getKerning(final int i) {
+        public KerningPair getKerning(int i) {
 
             return null;
         }
@@ -479,7 +479,7 @@ public class TtfTableKERN extends AbstractXtfTable
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
-        public void writeXML(final XMLStreamWriter writer) throws IOException {
+        public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("kernsubtable");
             writer.writeAttribute("format", "2");
@@ -516,7 +516,7 @@ public class TtfTableKERN extends AbstractXtfTable
          * @param rar       the input
          * @throws IOException if an IO-error occurs
          */
-        KerningPair(final RandomAccessR rar) throws IOException {
+        KerningPair(RandomAccessR rar) throws IOException {
 
             left = rar.readUnsignedShort();
             right = rar.readUnsignedShort();
@@ -554,7 +554,7 @@ public class TtfTableKERN extends AbstractXtfTable
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
-        public void writeXML(final XMLStreamWriter writer) throws IOException {
+        public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("kerningpair");
             writer.writeAttribute("left", String.valueOf(left));

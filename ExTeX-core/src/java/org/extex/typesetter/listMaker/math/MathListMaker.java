@@ -206,8 +206,8 @@ public class MathListMaker extends HorizontalListMaker
          *            constructs. a Value of <code>true</code> indicates a
          *            block.
          */
-        public MathMemento(final MathList ip, final Noad noads,
-                final boolean block) {
+        public MathMemento(MathList ip, Noad noads,
+                boolean block) {
 
             super();
             this.ip = ip;
@@ -272,7 +272,7 @@ public class MathListMaker extends HorizontalListMaker
      * @see "[TTP 1195]"
      */
     protected static boolean insufficientExtensionFonts(
-            final TypesetterOptions options) {
+            TypesetterOptions options) {
 
         Font textfont3 =
                 options
@@ -310,7 +310,7 @@ public class MathListMaker extends HorizontalListMaker
      * @see "[TTP 1195]"
      */
     protected static boolean insufficientSymbolFonts(
-            final TypesetterOptions options) {
+            TypesetterOptions options) {
 
         Font textfont2 =
                 options
@@ -367,7 +367,7 @@ public class MathListMaker extends HorizontalListMaker
      * @param manager the manager to ask for global changes
      * @param locator the locator
      */
-    public MathListMaker(final ListManager manager, final Locator locator) {
+    public MathListMaker(ListManager manager, Locator locator) {
 
         super(manager, locator);
         insertionPoint = new MathList();
@@ -384,7 +384,7 @@ public class MathListMaker extends HorizontalListMaker
      * @see org.extex.typesetter.ListMaker#add(
      *      org.extex.core.glue.FixedGlue)
      */
-    public void add(final FixedDimen g) throws TypesetterException {
+    public void add(FixedDimen g) throws TypesetterException {
 
         insertionPoint.add(new NodeNoad(new GlueNode(g, true)));
     }
@@ -401,7 +401,7 @@ public class MathListMaker extends HorizontalListMaker
      *      org.extex.interpreter.type.math.MathCode,
      *      org.extex.interpreter.context.tc.TypesettingContext)
      */
-    public void add(final MathCode mc, final TypesettingContext tc)
+    public void add(MathCode mc, TypesettingContext tc)
             throws TypesetterException {
 
         insertionPoint.add(NOAD_FACTORY.getNoad(mc, tc));
@@ -419,7 +419,7 @@ public class MathListMaker extends HorizontalListMaker
      *      org.extex.interpreter.type.math.MathDelimiter,
      *      org.extex.interpreter.context.tc.TypesettingContext)
      */
-    public void add(final MathDelimiter delimiter, final TypesettingContext tc)
+    public void add(MathDelimiter delimiter, TypesettingContext tc)
             throws TypesetterException {
 
         MathGlyph smallChar = delimiter.getSmallChar(); // TODO: gene why???
@@ -437,7 +437,7 @@ public class MathListMaker extends HorizontalListMaker
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(
      *      org.extex.core.muskip.Mudimen)
      */
-    public void add(final Mudimen skip) throws TypesetterException {
+    public void add(Mudimen skip) throws TypesetterException {
 
         insertionPoint.add(new KernNoad(skip));
     }
@@ -452,7 +452,7 @@ public class MathListMaker extends HorizontalListMaker
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(
      *      org.extex.core.muskip.Muskip)
      */
-    public void add(final Muskip glue) throws TypesetterException {
+    public void add(Muskip glue) throws TypesetterException {
 
         insertionPoint.add(new GlueNoad(glue));
     }
@@ -468,7 +468,7 @@ public class MathListMaker extends HorizontalListMaker
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(
      *      org.extex.typesetter.type.noad.Noad)
      */
-    public void add(final Noad noad) throws TypesetterException {
+    public void add(Noad noad) throws TypesetterException {
 
         insertionPoint.add(noad);
     }
@@ -486,7 +486,7 @@ public class MathListMaker extends HorizontalListMaker
      * @see org.extex.typesetter.ListMaker#add(
      *      org.extex.typesetter.type.Node)
      */
-    public void add(final Node node)
+    public void add(Node node)
             throws TypesetterException,
                 ConfigurationException {
 
@@ -517,8 +517,8 @@ public class MathListMaker extends HorizontalListMaker
      *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.core.count.Count)
      */
-    public void addSpace(final TypesettingContext typesettingContext,
-            final Count spacefactor)
+    public void addSpace(TypesettingContext typesettingContext,
+            Count spacefactor)
             throws TypesetterException,
                 ConfigurationException {
 
@@ -538,7 +538,7 @@ public class MathListMaker extends HorizontalListMaker
      * @see org.extex.typesetter.ListMaker#complete(TypesetterOptions)
      * @see "<logo>TeX</logo> &ndash; The Program [719]"
      */
-    public NodeList complete(final TypesetterOptions context)
+    public NodeList complete(TypesetterOptions context)
             throws TypesetterException,
                 ConfigurationException {
 
@@ -561,7 +561,7 @@ public class MathListMaker extends HorizontalListMaker
         }
 
         GenericNodeList list = new GenericNodeList();
-        final FixedDimen mathsurround = context.getDimenOption("mathsurround");
+        FixedDimen mathsurround = context.getDimenOption("mathsurround");
         // see [TTP 1196]
         list.add(new BeforeMathNode(mathsurround));
         noads.typeset(null, null, 0, list, new MathContext(StyleNoad.TEXTSTYLE,
@@ -588,8 +588,8 @@ public class MathListMaker extends HorizontalListMaker
      *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
-    public void cr(final Context context, final TypesettingContext tc,
-            final UnicodeChar uc) throws TypesetterException {
+    public void cr(Context context, TypesettingContext tc,
+            UnicodeChar uc) throws TypesetterException {
 
     }
 
@@ -601,7 +601,7 @@ public class MathListMaker extends HorizontalListMaker
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger log) {
+    public void enableLogging(Logger log) {
 
         this.logger = log;
     }
@@ -706,7 +706,7 @@ public class MathListMaker extends HorizontalListMaker
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#left(
      *      org.extex.interpreter.type.math.MathDelimiter)
      */
-    public void left(final MathDelimiter delimiter) throws TypesetterException {
+    public void left(MathDelimiter delimiter) throws TypesetterException {
 
         stack.push(new MathMemento(insertionPoint, noads, false));
         insertionPoint = new MathList();
@@ -747,9 +747,9 @@ public class MathListMaker extends HorizontalListMaker
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.core.Locator)
      */
-    public boolean letter(final UnicodeChar symbol,
-            final TypesettingContext tc, final Context context,
-            final TokenSource source, final Locator locator)
+    public boolean letter(UnicodeChar symbol,
+            TypesettingContext tc, Context context,
+            TokenSource source, Locator locator)
             throws TypesetterException {
 
         MathCode mcode = context.getMathcode(symbol);
@@ -792,8 +792,8 @@ public class MathListMaker extends HorizontalListMaker
      *      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
-    public void mathShift(final Context context, final TokenSource source,
-            final Token t) throws TypesetterException, ConfigurationException {
+    public void mathShift(Context context, TokenSource source,
+            Token t) throws TypesetterException, ConfigurationException {
 
         if (!closing) {
             Tokens toks = context.getToks("everymathend");
@@ -821,7 +821,7 @@ public class MathListMaker extends HorizontalListMaker
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#middle(
      *      org.extex.interpreter.type.math.MathDelimiter)
      */
-    public void middle(final MathDelimiter delimiter)
+    public void middle(MathDelimiter delimiter)
             throws TypesetterException {
 
         if (stack.empty()) {
@@ -875,7 +875,7 @@ public class MathListMaker extends HorizontalListMaker
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#right(
      *      org.extex.interpreter.type.math.MathDelimiter)
      */
-    public void right(final MathDelimiter delimiter) throws TypesetterException {
+    public void right(MathDelimiter delimiter) throws TypesetterException {
 
         if (stack.empty()) {
             throw new TypesetterHelpingException(getLocalizer(),
@@ -942,9 +942,9 @@ public class MathListMaker extends HorizontalListMaker
      *      java.lang.String,
      *      org.extex.interpreter.context.group.GroupType)
      */
-    public Noad scanNoad(final Flags flags, final Context context,
-            final TokenSource source, final Typesetter typesetter,
-            final String primitive, final GroupType groupType)
+    public Noad scanNoad(Flags flags, Context context,
+            TokenSource source, Typesetter typesetter,
+            String primitive, GroupType groupType)
             throws TypesetterException {
 
         Flags f = null;
@@ -983,7 +983,7 @@ public class MathListMaker extends HorizontalListMaker
      *
      * @param closing the closing to set
      */
-    protected void setClosing(final boolean closing) {
+    protected void setClosing(boolean closing) {
 
         this.closing = closing;
     }
@@ -993,7 +993,7 @@ public class MathListMaker extends HorizontalListMaker
      *
      * @param insertionPoint the insertionPoint to set
      */
-    protected void setInsertionPoint(final MathList insertionPoint) {
+    protected void setInsertionPoint(MathList insertionPoint) {
 
         this.insertionPoint = insertionPoint;
     }
@@ -1008,8 +1008,8 @@ public class MathListMaker extends HorizontalListMaker
      * @see org.extex.typesetter.ListMaker#showlist(
      *      java.lang.StringBuffer, long, long)
      */
-    public void showlist(final StringBuffer sb, final long depth,
-            final long breadth) {
+    public void showlist(StringBuffer sb, long depth,
+            long breadth) {
 
     }
 
@@ -1028,8 +1028,8 @@ public class MathListMaker extends HorizontalListMaker
      *      org.extex.interpreter.TokenSource, Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
-    public void subscriptMark(final Context context, final TokenSource source,
-            final Typesetter typesetter, final Token token)
+    public void subscriptMark(Context context, TokenSource source,
+            Typesetter typesetter, Token token)
             throws TypesetterException {
 
         Noad sub =
@@ -1062,9 +1062,9 @@ public class MathListMaker extends HorizontalListMaker
      *      org.extex.interpreter.TokenSource, Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
-    public void superscriptMark(final Context context,
-            final TokenSource source, final Typesetter typesetter,
-            final Token token) throws TypesetterException {
+    public void superscriptMark(Context context,
+            TokenSource source, Typesetter typesetter,
+            Token token) throws TypesetterException {
 
         Noad sup =
                 scanNoad(null, context, source, typesetter, token.toString(),
@@ -1101,9 +1101,9 @@ public class MathListMaker extends HorizontalListMaker
      *      org.extex.core.dimen.FixedDimen,
      *      org.extex.interpreter.context.tc.TypesettingContext)
      */
-    public void switchToFraction(final MathDelimiter leftDelimiter,
-            final MathDelimiter rightDelimiter, final FixedDimen ruleWidth,
-            final TypesettingContext tc) throws TypesetterException {
+    public void switchToFraction(MathDelimiter leftDelimiter,
+            MathDelimiter rightDelimiter, FixedDimen ruleWidth,
+            TypesettingContext tc) throws TypesetterException {
 
         // see [TTP 1183]
         if (!(noads instanceof MathList)) {

@@ -47,7 +47,7 @@ public class RegistrarException extends ObjectStreamException {
      *
      * @param message the message
      */
-    public RegistrarException(final String message) {
+    public RegistrarException(String message) {
 
         super(message);
     }
@@ -57,7 +57,7 @@ public class RegistrarException extends ObjectStreamException {
      *
      * @param cause the cause
      */
-    public RegistrarException(final Throwable cause) {
+    public RegistrarException(Throwable cause) {
 
         super(cause.getMessage());
     }

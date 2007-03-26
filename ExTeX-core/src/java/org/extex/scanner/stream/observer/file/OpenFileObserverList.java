@@ -40,8 +40,8 @@ public final class OpenFileObserverList implements OpenFileObserver {
      *
      * @return the input list or a new one with the observer added
      */
-    public static OpenFileObserver register(final OpenFileObserver list,
-            final OpenFileObserver observer) {
+    public static OpenFileObserver register(OpenFileObserver list,
+            OpenFileObserver observer) {
 
         if (list instanceof OpenFileObserverList) {
             ((OpenFileObserverList) list).add(observer);
@@ -68,7 +68,7 @@ public final class OpenFileObserverList implements OpenFileObserver {
      *
      * @param observer the observer to add to the list
      */
-    public void add(final OpenFileObserver observer) {
+    public void add(OpenFileObserver observer) {
 
         list.add(observer);
     }
@@ -87,8 +87,8 @@ public final class OpenFileObserverList implements OpenFileObserver {
      *      java.lang.String,
      *      java.io.InputStream)
      */
-    public void update(final String filename, final String filetype,
-            final InputStream stream) {
+    public void update(String filename, String filetype,
+            InputStream stream) {
 
         for (int i = 0; i < list.size(); i++) {
             ((OpenFileObserver) list.get(i)).update(filename, filetype, stream);

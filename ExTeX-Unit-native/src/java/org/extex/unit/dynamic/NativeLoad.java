@@ -167,14 +167,15 @@ public class NativeLoad extends AbstractCode
      * The field <tt>map</tt> contains the mapping from a symbolic name to a
      * configuration.
      */
-    private Map map = new HashMap();
+    private Map<String, Configuration> map =
+            new HashMap<String, Configuration>();
 
     /**
      * Creates a new object.
      *
      * @param codeName the name of the primitive
      */
-    public NativeLoad(final String codeName) {
+    public NativeLoad(String codeName) {
 
         super(codeName);
     }
@@ -189,7 +190,7 @@ public class NativeLoad extends AbstractCode
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
-    public void configure(final Configuration config)
+    public void configure(Configuration config)
             throws ConfigurationException {
 
         Iterator iterator = config.iterator("load");
@@ -207,7 +208,7 @@ public class NativeLoad extends AbstractCode
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger log) {
+    public void enableLogging(Logger log) {
 
         this.logger = log;
     }
@@ -231,8 +232,8 @@ public class NativeLoad extends AbstractCode
      *       org.extex.interpreter.TokenSource,
      *       org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException, ConfigurationException {
 
         String name;
@@ -241,7 +242,7 @@ public class NativeLoad extends AbstractCode
         } catch (EofException e) {
             throw new EofInToksException(printableControlSequence(context));
         }
-        Configuration cfg = (Configuration) map.get(name);
+        Configuration cfg = map.get(name);
         if (cfg == null) {
             throw new HelpingException(getLocalizer(), "UnknownType", name,
                 getName());

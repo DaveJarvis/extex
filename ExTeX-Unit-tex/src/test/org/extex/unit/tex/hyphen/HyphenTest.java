@@ -34,7 +34,7 @@ public class HyphenTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public HyphenTest(final String arg) {
+    public HyphenTest(String arg) {
 
         super(arg, "-", "");
     }

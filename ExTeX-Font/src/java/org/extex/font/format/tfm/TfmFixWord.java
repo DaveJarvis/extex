@@ -115,7 +115,7 @@ public class TfmFixWord implements Serializable {
      *              (design size for font dimen, actual size for all others)
      * @return Returns the Dimen value.
      */
-    public Dimen toDimen(final FixedDimen size) {
+    public Dimen toDimen(FixedDimen size) {
 
         if (size == null) {
             throw new IllegalArgumentException("size");
@@ -148,7 +148,7 @@ public class TfmFixWord implements Serializable {
      * @param val the values as int. 
      *            This int value represents the length in points.
      */
-    public TfmFixWord(final int val) {
+    public TfmFixWord(int val) {
 
         value = val << POINTSHIFT;
     }
@@ -161,7 +161,7 @@ public class TfmFixWord implements Serializable {
      * @param num   the num
      * @param den   the den
      */
-    public TfmFixWord(final int num, final int den) {
+    public TfmFixWord(int num, int den) {
 
         value = ((long) num << POINTSHIFT) / den;
     }
@@ -171,7 +171,7 @@ public class TfmFixWord implements Serializable {
      *
      * @param val the values as String
      */
-    public TfmFixWord(final String val) {
+    public TfmFixWord(String val) {
 
         try {
             value = Integer.parseInt(val);
@@ -198,7 +198,7 @@ public class TfmFixWord implements Serializable {
      * @return <code>true</code>, if the internal values is lesser,
      * otherwise <code>false</code>
      */
-    public boolean lessThan(final int num) {
+    public boolean lessThan(int num) {
 
         return (value < (num << POINTSHIFT));
     }
@@ -210,7 +210,7 @@ public class TfmFixWord implements Serializable {
      * @return <code>true</code>, if the internal values are more,
      * otherwise <code>false</code>
      */
-    public boolean moreThan(final int num) {
+    public boolean moreThan(int num) {
 
         return (value > (num << POINTSHIFT));
     }
@@ -219,7 +219,7 @@ public class TfmFixWord implements Serializable {
      * Set the value.
      * @param v The value to set.
      */
-    public void setValue(final long v) {
+    public void setValue(long v) {
 
         value = v;
     }

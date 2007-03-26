@@ -78,7 +78,7 @@ public class Pdfobj extends AbstractPdftexCode {
      *
      * @param name the name for tracing and debugging
      */
-    public Pdfobj(final String name) {
+    public Pdfobj(String name) {
 
         super(name);
     }
@@ -102,8 +102,8 @@ public class Pdfobj extends AbstractPdftexCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,ConfigurationException {
 
         PdftexSupport writer = ensurePdftex(context, typesetter);

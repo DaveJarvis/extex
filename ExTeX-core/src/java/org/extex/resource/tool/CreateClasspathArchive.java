@@ -63,7 +63,7 @@ public class CreateClasspathArchive {
      * @param args  the command line
      * @throws Exception if an error occurred.
      */
-    public static void main(final String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
         CreateClasspathArchive cca = new CreateClasspathArchive();
 
@@ -131,8 +131,8 @@ public class CreateClasspathArchive {
      * @param name  The name of the entry.
      * @throws IOException if an IO-error occurred.
      */
-    private void addFile(final JarOutputStream out, final File f,
-            final String name) throws IOException {
+    private void addFile(JarOutputStream out, File f,
+            String name) throws IOException {
 
         // source
         BufferedInputStream in = new BufferedInputStream(
@@ -158,7 +158,7 @@ public class CreateClasspathArchive {
      *
      * @param file the current file to consider
      */
-    private void collect(final File file) {
+    private void collect(File file) {
 
         String f = file.getAbsolutePath();
         f = f.substring(basedir.getAbsolutePath().length())
@@ -181,7 +181,7 @@ public class CreateClasspathArchive {
      * @param tocindex  The toc index file.
      * @throws IOException if a IO-error occurred.
      */
-    private void createJarFile(final String jarname, final File tocindex)
+    private void createJarFile(String jarname, File tocindex)
             throws FileNotFoundException, IOException {
 
         JarOutputStream out = new JarOutputStream(new BufferedOutputStream(
@@ -213,7 +213,7 @@ public class CreateClasspathArchive {
      * @return Returns the file handle for the toc index.
      * @throws IOException if an IO-error occurred.
      */
-    private File createTocindex(final String dir) throws IOException {
+    private File createTocindex(String dir) throws IOException {
 
         tocIndexProps = new Properties();
         File tocindex = File.createTempFile("toc", ".index");
@@ -233,7 +233,7 @@ public class CreateClasspathArchive {
      * @param jarname   The name of the jar file.
      * @throws IOException if a IO-error occurred.
      */
-    public void doIt(final String jarname, final String dir)
+    public void doIt(String jarname, String dir)
             throws IOException {
 
         getLogger().info(

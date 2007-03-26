@@ -50,7 +50,7 @@ public abstract class T2TDOArray extends T2TopDICTOperator {
      * @param id    the operator-id for the value
      * @throws IOException if an IO.error occurs.
      */
-    protected T2TDOArray(final List stack, final short[] id) throws IOException {
+    protected T2TDOArray(List stack, short[] id) throws IOException {
 
         super();
         if (stack.size() < 1) {
@@ -106,7 +106,7 @@ public abstract class T2TDOArray extends T2TopDICTOperator {
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());
         for (int i = 0; i < value.length; i++) {

@@ -31,7 +31,7 @@ public class LccodeTest extends AbstractCharMapTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(LccodeTest.class);
     }
@@ -41,7 +41,7 @@ public class LccodeTest extends AbstractCharMapTester {
      *
      * @param arg the name
      */
-    public LccodeTest(final String arg) {
+    public LccodeTest(String arg) {
 
         super(arg, "lccode", "65", "97", "1114111");
     }

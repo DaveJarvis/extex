@@ -130,7 +130,7 @@ public abstract class T2CharString {
      * @return Returns the number.
      * @throws IOException if an IO-error occurs.
      */
-    public static T2Number readNumber(final RandomAccessR rar)
+    public static T2Number readNumber(RandomAccessR rar)
             throws IOException {
 
         return T2Number.newInstance(rar);
@@ -144,7 +144,7 @@ public abstract class T2CharString {
      * @return Returns the number.
      * @throws IOException if an IO-error occurs.
      */
-    public static T2Number readNumber(final RandomAccessR rar, final int b0)
+    public static T2Number readNumber(RandomAccessR rar, int b0)
             throws IOException {
 
         return T2Number.newInstance(rar, b0);
@@ -161,7 +161,7 @@ public abstract class T2CharString {
      * @return Returns the SID.
      * @throws IOException if an IO-error occurs.
      */
-    public static T2SID readSID(final RandomAccessR rar) throws IOException {
+    public static T2SID readSID(RandomAccessR rar) throws IOException {
 
         return new T2SID(rar);
     }
@@ -173,7 +173,7 @@ public abstract class T2CharString {
      * @return Returns the operator.
      * @throws IOException if an IO-error occurs.
      */
-    public static T2Operator readOperator(final RandomAccessR rar)
+    public static T2Operator readOperator(RandomAccessR rar)
             throws IOException {
 
         return T2Operator.newInstance(rar);
@@ -186,7 +186,7 @@ public abstract class T2CharString {
      * @return  Return the Top DICT operator
      * @throws IOException if an IO-error occurs
      */
-    public static T2Operator readTopDICTOperator(final RandomAccessR rar)
+    public static T2Operator readTopDICTOperator(RandomAccessR rar)
             throws IOException {
 
         return T2TopDICTOperator.newInstance(rar);
@@ -200,7 +200,7 @@ public abstract class T2CharString {
      * @param baseoffset The base offset from cff.
      * @throws IOException if an IO-error occurred.
      */
-    public abstract void init(final RandomAccessR rar, final OtfTableCFF cff,
-            final int baseoffset) throws IOException;
+    public abstract void init(RandomAccessR rar, OtfTableCFF cff,
+            int baseoffset) throws IOException;
 
 }

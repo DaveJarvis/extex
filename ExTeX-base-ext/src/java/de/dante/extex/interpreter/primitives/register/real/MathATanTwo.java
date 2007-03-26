@@ -63,7 +63,7 @@ public class MathATanTwo extends AbstractMath
      * @param name the name for debugging
      * @throws GeneralException ...
      */
-    public MathATanTwo(final String name) throws GeneralException {
+    public MathATanTwo(String name) throws GeneralException {
 
         super(name);
 
@@ -79,7 +79,7 @@ public class MathATanTwo extends AbstractMath
      * @throws InterpreterException if a error occurred
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Real calculate(final Context context, final TokenSource source)
+    protected Real calculate(Context context, TokenSource source)
             throws InterpreterException,
                 ConfigurationException {
 

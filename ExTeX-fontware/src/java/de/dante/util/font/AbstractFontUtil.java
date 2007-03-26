@@ -84,7 +84,7 @@ public abstract class AbstractFontUtil {
      * @param loggerclass The class for the logger
      * @throws ConfigurationException if a config-error occurs.
      */
-    public AbstractFontUtil(final Class loggerclass)
+    public AbstractFontUtil(Class loggerclass)
             throws ConfigurationException {
 
         super();

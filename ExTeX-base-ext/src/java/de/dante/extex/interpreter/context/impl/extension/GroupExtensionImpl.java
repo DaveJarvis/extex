@@ -90,7 +90,7 @@ public class GroupExtensionImpl extends GroupImpl
      *            then this is the global base
      * @throws GeneralException if the group is not a groupextension
      */
-    public GroupExtensionImpl(final Group next) throws GeneralException {
+    public GroupExtensionImpl(Group next) throws GeneralException {
 
         super(next);
         if (next != null && !(next instanceof GroupExtension)) {
@@ -103,7 +103,7 @@ public class GroupExtensionImpl extends GroupImpl
      * @see de.dante.extex.interpreter.context.impl.extension.GroupExtension#getReal(
      *      java.lang.String)
      */
-    public Real getReal(final String name) {
+    public Real getReal(String name) {
 
         Real real = (Real) (realMap.get(name));
 
@@ -125,8 +125,8 @@ public class GroupExtensionImpl extends GroupImpl
      *      de.dante.extex.interpreter.type.real.Real,
      *      boolean)
      */
-    public void setReal(final String name, final Real value,
-            final boolean global) {
+    public void setReal(String name, Real value,
+            boolean global) {
 
         setReal(name, value);
 
@@ -140,7 +140,7 @@ public class GroupExtensionImpl extends GroupImpl
      *      java.lang.String,
      *      de.dante.extex.interpreter.type.real.Real)
      */
-    public void setReal(final String name, final Real value) {
+    public void setReal(String name, Real value) {
 
         realMap.put(name, value);
     }
@@ -149,7 +149,7 @@ public class GroupExtensionImpl extends GroupImpl
      * @see de.dante.extex.interpreter.context.impl.extension.GroupExtension#getBool(
      *      java.lang.String)
      */
-    public Bool getBool(final String name) {
+    public Bool getBool(String name) {
 
         Bool bool = (Bool) (boolMap.get(name));
 
@@ -170,8 +170,8 @@ public class GroupExtensionImpl extends GroupImpl
      *      java.lang.String,
      *      de.dante.extex.interpreter.type.bool.Bool, boolean)
      */
-    public void setBool(final String name, final Bool value,
-            final boolean global) {
+    public void setBool(String name, Bool value,
+            boolean global) {
 
         setBool(name, value);
 
@@ -185,7 +185,7 @@ public class GroupExtensionImpl extends GroupImpl
      *      java.lang.String,
      *      de.dante.extex.interpreter.type.bool.Bool)
      */
-    public void setBool(final String name, final Bool value) {
+    public void setBool(String name, Bool value) {
 
         boolMap.put(name, value);
     }
@@ -194,7 +194,7 @@ public class GroupExtensionImpl extends GroupImpl
      * @see de.dante.extex.interpreter.context.impl.extension.GroupExtension#getPair(
      *      java.lang.String)
      */
-    public Pair getPair(final String name) {
+    public Pair getPair(String name) {
 
         Pair pair = (Pair) (pairMap.get(name));
 
@@ -216,8 +216,8 @@ public class GroupExtensionImpl extends GroupImpl
      *      de.dante.extex.interpreter.type.pair.Pair,
      *      boolean)
      */
-    public void setPair(final String name, final Pair value,
-            final boolean global) {
+    public void setPair(String name, Pair value,
+            boolean global) {
 
         setPair(name, value);
 
@@ -231,7 +231,7 @@ public class GroupExtensionImpl extends GroupImpl
      *      java.lang.String,
      *      de.dante.extex.interpreter.type.pair.Pair)
      */
-    public void setPair(final String name, final Pair value) {
+    public void setPair(String name, Pair value) {
 
         pairMap.put(name, value);
     }
@@ -240,7 +240,7 @@ public class GroupExtensionImpl extends GroupImpl
      * @see de.dante.extex.interpreter.context.impl.extension.GroupExtension#getTransform(
      *      java.lang.String)
      */
-    public Transform getTransform(final String name) {
+    public Transform getTransform(String name) {
 
         Transform transform = (Transform) (transformMap.get(name));
 
@@ -262,8 +262,8 @@ public class GroupExtensionImpl extends GroupImpl
      *      de.dante.extex.interpreter.type.transform.Transform,
      *      boolean)
      */
-    public void setTransform(final String name, final Transform value,
-            final boolean global) {
+    public void setTransform(String name, Transform value,
+            boolean global) {
 
         setTransform(name, value);
 
@@ -278,7 +278,7 @@ public class GroupExtensionImpl extends GroupImpl
      *      java.lang.String,
      *      de.dante.extex.interpreter.type.transform.Transform)
      */
-    public void setTransform(final String name, final Transform value) {
+    public void setTransform(String name, Transform value) {
 
         transformMap.put(name, value);
     }
@@ -287,7 +287,7 @@ public class GroupExtensionImpl extends GroupImpl
      * @see de.dante.extex.interpreter.context.impl.extension.GroupExtension#getHashToks(
      *      java.lang.String)
      */
-    public HashToks getHashToks(final String name) {
+    public HashToks getHashToks(String name) {
 
         HashToks hashtoks = (HashToks) (hashtoksMap.get(name));
 
@@ -309,8 +309,8 @@ public class GroupExtensionImpl extends GroupImpl
      *      de.dante.extex.interpreter.type.hash.toks.HashToks,
      *      boolean)
      */
-    public void setHashToks(final String name, final HashToks value,
-            final boolean global) {
+    public void setHashToks(String name, HashToks value,
+            boolean global) {
 
         setHashToks(name, value);
 
@@ -325,7 +325,7 @@ public class GroupExtensionImpl extends GroupImpl
      *      java.lang.String,
      *      de.dante.extex.interpreter.type.hash.toks.HashToks)
      */
-    public void setHashToks(final String name, final HashToks value) {
+    public void setHashToks(String name, HashToks value) {
 
         hashtoksMap.put(name, value);
     }

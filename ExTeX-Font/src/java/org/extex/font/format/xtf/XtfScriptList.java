@@ -54,7 +54,7 @@ public class XtfScriptList {
      * @param offset    offset
      * @throws IOException if an IO-error occurs
      */
-    XtfScriptList(final RandomAccessR rar, final int offset) throws IOException {
+    XtfScriptList(RandomAccessR rar, int offset) throws IOException {
 
         rar.seek(offset);
 
@@ -83,7 +83,7 @@ public class XtfScriptList {
      * @param i     the number
      * @return Rweturns the script record
      */
-    public Record getRecord(final int i) {
+    public Record getRecord(int i) {
 
         return records[i];
     }
@@ -93,7 +93,7 @@ public class XtfScriptList {
      * @param tag   the tag for the script
      * @return Returns the script
      */
-    public Script findScript(final String tag) {
+    public Script findScript(String tag) {
 
         if (tag.length() != 4) {
             return null;
@@ -147,7 +147,7 @@ public class XtfScriptList {
          * @param rar       input
          * @throws IOException if an IO-error occurs
          */
-        Record(final RandomAccessR rar) throws IOException {
+        Record(RandomAccessR rar) throws IOException {
 
             tag = rar.readInt();
             offset = rar.readUnsignedShort();
@@ -223,7 +223,7 @@ public class XtfScriptList {
          * @param offset    offset
          * @throws IOException if an IO-error occurs
          */
-        Script(final RandomAccessR rar, final int offset) throws IOException {
+        Script(RandomAccessR rar, int offset) throws IOException {
 
             rar.seek(offset);
 
@@ -339,7 +339,7 @@ public class XtfScriptList {
          * @param rar       input
          * @throws IOException if an IO-error occurs
          */
-        LangSys(final RandomAccessR rar) throws IOException {
+        LangSys(RandomAccessR rar) throws IOException {
 
             lookupOrder = rar.readUnsignedShort();
             reqFeatureIndex = rar.readUnsignedShort();
@@ -356,7 +356,7 @@ public class XtfScriptList {
          * @return  Returns <code>true</code>, if is a feature index,
          *          otherwise <code>false</code>
          */
-        public boolean isFeatureIndexed(final int n) {
+        public boolean isFeatureIndexed(int n) {
 
             for (int i = 0; i < featureCount; i++) {
                 if (featureIndex[i] == n) {
@@ -432,7 +432,7 @@ public class XtfScriptList {
          * @param rar       input
          * @throws IOException if an IO-error occurs
          */
-        LangSysRecord(final RandomAccessR rar) throws IOException {
+        LangSysRecord(RandomAccessR rar) throws IOException {
 
             tag = rar.readInt();
             offset = rar.readUnsignedShort();

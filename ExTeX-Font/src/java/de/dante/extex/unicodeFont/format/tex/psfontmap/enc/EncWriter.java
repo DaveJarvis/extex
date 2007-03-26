@@ -67,7 +67,7 @@ public class EncWriter {
      * @param pos   The position.
      * @param name  The glyph name.
      */
-    public void setEncoding(final int pos, final String name) {
+    public void setEncoding(int pos, String name) {
 
         if (pos >= 0 && pos < ENCODINGSIZE) {
             enc[pos] = name;
@@ -87,7 +87,7 @@ public class EncWriter {
      * The encname to set.
      * @param name The encname to set.
      */
-    public void setEncname(final String name) {
+    public void setEncname(String name) {
 
         encname = name;
     }
@@ -105,7 +105,7 @@ public class EncWriter {
      * The comments to set.
      * @param c The comments to set.
      */
-    public void setComments(final boolean c) {
+    public void setComments(boolean c) {
 
         comments = c;
     }
@@ -115,7 +115,7 @@ public class EncWriter {
      * @param out   The output
      * @throws IOException if an IO-error occurred.
      */
-    public void write(final OutputStream out) throws IOException {
+    public void write(OutputStream out) throws IOException {
 
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out,
                 "ASCII"));

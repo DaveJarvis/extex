@@ -64,7 +64,7 @@ public class CharNoad extends AbstractNoad {
      * @param character the character representation
      * @param tc the typesetting context for the color
      */
-    protected CharNoad(final MathGlyph character, final TypesettingContext tc) {
+    protected CharNoad(MathGlyph character, TypesettingContext tc) {
 
         super();
         this.glyph = character;
@@ -89,7 +89,7 @@ public class CharNoad extends AbstractNoad {
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer)
      */
-    public void toString(final StringBuffer sb) {
+    public void toString(StringBuffer sb) {
 
         glyph.toString(sb);
     }
@@ -116,9 +116,9 @@ public class CharNoad extends AbstractNoad {
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(final Noad previousNoad, final NoadList noads,
-            final int index, final NodeList nodes,
-            final MathContext mathContext, final Logger logger)
+    public void typeset(Noad previousNoad, NoadList noads,
+            int index, NodeList nodes,
+            MathContext mathContext, Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 

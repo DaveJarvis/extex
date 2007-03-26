@@ -163,7 +163,7 @@ public class AfmHeader implements XMLWriterConvertible {
      * Set the ascender.
      * @param a The ascender to set.
      */
-    public void setAscender(final float a) {
+    public void setAscender(float a) {
 
         ascender = a;
     }
@@ -181,7 +181,7 @@ public class AfmHeader implements XMLWriterConvertible {
      * Set the capheight.
      * @param height The capheight to set.
      */
-    public void setCapheight(final float height) {
+    public void setCapheight(float height) {
 
         capheight = height;
     }
@@ -199,7 +199,7 @@ public class AfmHeader implements XMLWriterConvertible {
      * Set the characterset.
      * @param cs The characterset to set.
      */
-    public void setCharacterset(final String cs) {
+    public void setCharacterset(String cs) {
 
         characterset = cs;
     }
@@ -217,7 +217,7 @@ public class AfmHeader implements XMLWriterConvertible {
      * Set the desender.
      * @param d The descender to set.
      */
-    public void setDescender(final float d) {
+    public void setDescender(float d) {
 
         descender = d;
     }
@@ -235,7 +235,7 @@ public class AfmHeader implements XMLWriterConvertible {
      * Set the encodingscheme.
      * @param encoding The encodingscheme to set.
      */
-    public void setEncodingscheme(final String encoding) {
+    public void setEncodingscheme(String encoding) {
 
         encodingscheme = encoding;
     }
@@ -253,7 +253,7 @@ public class AfmHeader implements XMLWriterConvertible {
      * Set the familyname.
      * @param fname The familyname to set.
      */
-    public void setFamilyname(final String fname) {
+    public void setFamilyname(String fname) {
 
         familyname = fname;
     }
@@ -271,7 +271,7 @@ public class AfmHeader implements XMLWriterConvertible {
      * Set the fontname.
      * @param fname The fontname to set.
      */
-    public void setFontname(final String fname) {
+    public void setFontname(String fname) {
 
         fontname = fname;
     }
@@ -289,7 +289,7 @@ public class AfmHeader implements XMLWriterConvertible {
      * Set the fullname.
      * @param fname The fullname to set.
      */
-    public void setFullname(final String fname) {
+    public void setFullname(String fname) {
 
         fullname = fname;
     }
@@ -307,7 +307,7 @@ public class AfmHeader implements XMLWriterConvertible {
      * Set the isfixedpitch.
      * @param fixedpitch The isfixedpitch to set.
      */
-    public void setFixedpitch(final boolean fixedpitch) {
+    public void setFixedpitch(boolean fixedpitch) {
 
         isfixedpitch = fixedpitch;
     }
@@ -325,7 +325,7 @@ public class AfmHeader implements XMLWriterConvertible {
      * Set the italicangle.
      * @param i The italicangle to set.
      */
-    public void setItalicangle(final float i) {
+    public void setItalicangle(float i) {
 
         italicangle = i;
     }
@@ -343,7 +343,7 @@ public class AfmHeader implements XMLWriterConvertible {
      * Set the llx.
      * @param x The llx to set.
      */
-    public void setLlx(final float x) {
+    public void setLlx(float x) {
 
         llx = x;
     }
@@ -361,7 +361,7 @@ public class AfmHeader implements XMLWriterConvertible {
      * Set the lly.
      * @param y The lly to set.
      */
-    public void setLly(final float y) {
+    public void setLly(float y) {
 
         lly = y;
     }
@@ -379,7 +379,7 @@ public class AfmHeader implements XMLWriterConvertible {
      * Set the stdhw.
      * @param hw The stdhw to set.
      */
-    public void setStdhw(final float hw) {
+    public void setStdhw(float hw) {
 
         stdhw = hw;
     }
@@ -397,7 +397,7 @@ public class AfmHeader implements XMLWriterConvertible {
      * Set the stdvw.
      * @param vw The stdvw to set.
      */
-    public void setStdvw(final float vw) {
+    public void setStdvw(float vw) {
 
         stdvw = vw;
     }
@@ -415,7 +415,7 @@ public class AfmHeader implements XMLWriterConvertible {
      * Set the underlineposition.
      * @param position The underlineposition to set.
      */
-    public void setUnderlineposition(final float position) {
+    public void setUnderlineposition(float position) {
 
         underlineposition = position;
     }
@@ -433,7 +433,7 @@ public class AfmHeader implements XMLWriterConvertible {
      * Set the thickness.
      * @param thickness The underlinethickness to set.
      */
-    public void setUnderlinethickness(final float thickness) {
+    public void setUnderlinethickness(float thickness) {
 
         underlinethickness = thickness;
     }
@@ -451,7 +451,7 @@ public class AfmHeader implements XMLWriterConvertible {
      * Set the urx.
      * @param x The urx to set.
      */
-    public void setUrx(final float x) {
+    public void setUrx(float x) {
 
         urx = x;
     }
@@ -469,7 +469,7 @@ public class AfmHeader implements XMLWriterConvertible {
      * Set the ury.
      * @param y The ury to set.
      */
-    public void setUry(final float y) {
+    public void setUry(float y) {
 
         ury = y;
     }
@@ -487,7 +487,7 @@ public class AfmHeader implements XMLWriterConvertible {
      * Set the weight.
      * @param w The weight to set.
      */
-    public void setWeight(final String w) {
+    public void setWeight(String w) {
 
         weight = w;
     }
@@ -505,7 +505,7 @@ public class AfmHeader implements XMLWriterConvertible {
      * Set the xheight.
      * @param x The xheight to set.
      */
-    public void setXheight(final float x) {
+    public void setXheight(float x) {
 
         xheight = x;
     }
@@ -514,7 +514,7 @@ public class AfmHeader implements XMLWriterConvertible {
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("header");
         writer.writeAttribute("name", fontname);

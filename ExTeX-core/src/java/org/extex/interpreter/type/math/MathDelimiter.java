@@ -67,8 +67,8 @@ public class MathDelimiter implements Noad, Serializable {
      * @param smallChar the small character
      * @param largeChar the large character
      */
-    public MathDelimiter(final MathClass mathClass, final MathGlyph smallChar,
-            final MathGlyph largeChar) {
+    public MathDelimiter(MathClass mathClass, MathGlyph smallChar,
+            MathGlyph largeChar) {
 
         super();
         this.mathClass = mathClass;
@@ -150,7 +150,7 @@ public class MathDelimiter implements Noad, Serializable {
      * @see org.extex.typesetter.type.noad.Noad#setSubscript(
      *      org.extex.typesetter.type.noad.Noad)
      */
-    public void setSubscript(final Noad subscript) {
+    public void setSubscript(Noad subscript) {
 
         throw new UnsupportedOperationException("setSubscript");
     }
@@ -163,7 +163,7 @@ public class MathDelimiter implements Noad, Serializable {
      * @see org.extex.typesetter.type.noad.Noad#setSuperscript(
      *      org.extex.typesetter.type.noad.Noad)
      */
-    public void setSuperscript(final Noad superscript) {
+    public void setSuperscript(Noad superscript) {
 
         throw new UnsupportedOperationException("setSuperscript");
     }
@@ -190,7 +190,7 @@ public class MathDelimiter implements Noad, Serializable {
      *
      * @see "TTP [691]"
      */
-    public void toString(final StringBuffer sb) {
+    public void toString(StringBuffer sb) {
 
         //sb.append('\"');
         mathClass.toString(sb);
@@ -207,7 +207,7 @@ public class MathDelimiter implements Noad, Serializable {
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer, int)
      */
-    public void toString(final StringBuffer sb, final int depth) {
+    public void toString(StringBuffer sb, int depth) {
 
         toString(sb);
     }
@@ -234,9 +234,9 @@ public class MathDelimiter implements Noad, Serializable {
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(final Noad previousNoad, final NoadList noads,
-            final int index, final NodeList list,
-            final MathContext mathContext, final Logger logger)
+    public void typeset(Noad previousNoad, NoadList noads,
+            int index, NodeList list,
+            MathContext mathContext, Logger logger)
             throws TypesetterException {
 
         typeset(list, mathContext, null, null);
@@ -256,8 +256,8 @@ public class MathDelimiter implements Noad, Serializable {
      * @throws TypesetterException in case of a problem
      * @throws ConfigurationException in case of a configuration problem
      */
-    public void typeset(final NodeList list, final MathContext mathContext,
-            final FixedDimen height, final FixedDimen depth)
+    public void typeset(NodeList list, MathContext mathContext,
+            FixedDimen height, FixedDimen depth)
             throws TypesetterException {
 
         if (mathClass == null && smallChar == null && largeChar == null) {

@@ -64,7 +64,7 @@ public class DimenParameter extends DimenPrimitive
      *
      * @param name the name for debugging
      */
-    public DimenParameter(final String name) {
+    public DimenParameter(String name) {
 
         super(name);
         key = name;
@@ -80,7 +80,7 @@ public class DimenParameter extends DimenPrimitive
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
-    public void configure(final Configuration config)
+    public void configure(Configuration config)
             throws ConfigurationException {
 
         String k = config.getAttribute("key");
@@ -102,8 +102,8 @@ public class DimenParameter extends DimenPrimitive
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    protected String getKey(final Context context, final TokenSource source,
-            final Typesetter typesetter) {
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) {
 
         return key;
     }
@@ -120,8 +120,8 @@ public class DimenParameter extends DimenPrimitive
      * @see org.extex.interpreter.type.InitializableCode#init(
      *      org.extex.interpreter.context.Context, TokenSource, Typesetter)
      */
-    public void init(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public void init(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         if (source == null) {
             return;

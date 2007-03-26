@@ -54,7 +54,7 @@ public class XtfLookupList {
      * @param offset    offset
      * @throws IOException if an IO-error occurs
      */
-    XtfLookupList(final RandomAccessR rar, final int offset) throws IOException {
+    XtfLookupList(RandomAccessR rar, int offset) throws IOException {
 
         rar.seek(offset);
         lookupCount = rar.readUnsignedShort();
@@ -74,7 +74,7 @@ public class XtfLookupList {
      * @param index     index
      * @return Returns the lookup
      */
-    public XtfLookup getLookup(final XtfFeatureList.Feature feature, final int index) {
+    public XtfLookup getLookup(XtfFeatureList.Feature feature, int index) {
 
         if (feature.getLookupCount() > index) {
             int i = feature.getLookupListIndex(index);

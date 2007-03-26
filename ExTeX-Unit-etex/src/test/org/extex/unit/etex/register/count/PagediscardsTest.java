@@ -33,7 +33,7 @@ public class PagediscardsTest extends AbstractCountArrayTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PagediscardsTest.class);
     }
@@ -43,7 +43,7 @@ public class PagediscardsTest extends AbstractCountArrayTester {
      *
      * @param arg the name
      */
-    public PagediscardsTest(final String arg) {
+    public PagediscardsTest(String arg) {
 
         super(arg, "pagediscards", "255", "0");
         setConfig("etex-test");

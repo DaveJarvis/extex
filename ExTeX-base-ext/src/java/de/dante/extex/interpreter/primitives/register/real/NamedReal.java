@@ -72,7 +72,7 @@ public class NamedReal extends AbstractAssignment
      *
      * @param name the name for debugging
      */
-    public NamedReal(final String name) {
+    public NamedReal(String name) {
 
         super(name);
     }
@@ -84,8 +84,8 @@ public class NamedReal extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -111,7 +111,7 @@ public class NamedReal extends AbstractAssignment
      * @param value      the new value as Real
      * @throws InterpreterException if no extension is configured
      */
-    public void set(final Context context, final Real value)
+    public void set(Context context, Real value)
             throws InterpreterException {
 
         if (context instanceof ContextExtension) {
@@ -129,7 +129,7 @@ public class NamedReal extends AbstractAssignment
      * @param value      the new value as String
      * @throws InterpreterException if no extension is configured
      */
-    public void set(final Context context, final String value)
+    public void set(Context context, String value)
             throws GeneralException {
 
         if (context instanceof ContextExtension) {
@@ -158,8 +158,8 @@ public class NamedReal extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter)
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 CatcodeException {
 
@@ -180,7 +180,7 @@ public class NamedReal extends AbstractAssignment
      * @return the key
      * @throws InterpreterException in case of an error.
      */
-    protected String getKey(final Context context, final TokenSource source)
+    protected String getKey(Context context, TokenSource source)
             throws InterpreterException {
 
         return getName();
@@ -193,8 +193,8 @@ public class NamedReal extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void advance(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void advance(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -221,8 +221,8 @@ public class NamedReal extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void multiply(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void multiply(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -249,8 +249,8 @@ public class NamedReal extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void divide(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void divide(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -274,7 +274,7 @@ public class NamedReal extends AbstractAssignment
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
      */
-    public Real convertReal(final Context context, final TokenSource source)
+    public Real convertReal(Context context, TokenSource source)
             throws InterpreterException {
 
         if (context instanceof ContextExtension) {
@@ -287,13 +287,13 @@ public class NamedReal extends AbstractAssignment
     }
 
     /**
-     * @see org.extex.interpreter.type.CountConvertible#convertCount(
+     * @see org.extex.core.count.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public long convertCount(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         if (context instanceof ContextExtension) {
             ContextExtension contextextex = (ContextExtension) context;

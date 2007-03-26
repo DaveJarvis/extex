@@ -32,7 +32,7 @@ import java.util.List;
  * TODO gene: missing JavaDoc.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5413 $
  */
 public final class Summary {
 
@@ -41,7 +41,7 @@ public final class Summary {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         String directory = ".";
 
@@ -64,17 +64,17 @@ public final class Summary {
             /**
              * @see java.io.FilenameFilter#accept(java.io.File, java.lang.String)
              */
-            public boolean accept(final File dir, final String name) {
+            public boolean accept(File dir, String name) {
 
                 return name.endsWith(".xml");
             }
         });
-        List l = new ArrayList();
+        List<String> l = new ArrayList<String>();
         for (int j = 0; j < list.length; j++) {
             l.add(list[j]);
         }
 
-        Collections.sort(l, new Comparator() {
+        Collections.sort(l, new Comparator<String>() {
 
             /**
              * Compare two objects.
@@ -86,9 +86,9 @@ public final class Summary {
              *
              * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
              */
-            public int compare(final Object o1, final Object o2) {
+            public int compare(String o1, String o2) {
 
-                return ((String) o1).compareTo((String) o2);
+                return o1.compareTo(o2);
             }
         });
 
@@ -113,7 +113,7 @@ public final class Summary {
      */
     private Summary() {
 
-        super();
+        // not used
     }
 
 }

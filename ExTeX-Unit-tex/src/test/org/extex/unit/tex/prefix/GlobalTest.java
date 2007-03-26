@@ -32,7 +32,7 @@ public class GlobalTest extends PrefixTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(GlobalTest.class);
     }
@@ -42,7 +42,7 @@ public class GlobalTest extends PrefixTester {
      *
      * @param arg the name
      */
-    public GlobalTest(final String arg) {
+    public GlobalTest(String arg) {
 
         super(arg, "global");
     }

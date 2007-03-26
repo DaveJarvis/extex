@@ -31,7 +31,7 @@ public class ThinmuskipTest extends AbstractMuskipRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ThinmuskipTest.class);
     }
@@ -41,7 +41,7 @@ public class ThinmuskipTest extends AbstractMuskipRegisterTester {
      *
      * @param arg the name
      */
-    public ThinmuskipTest(final String arg) {
+    public ThinmuskipTest(String arg) {
 
         super(arg, "thinmuskip", "", "0.0mu");
     }

@@ -33,7 +33,7 @@ public class DefaultskewcharTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(DefaultskewcharTest.class);
     }
@@ -43,7 +43,7 @@ public class DefaultskewcharTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public DefaultskewcharTest(final String arg) {
+    public DefaultskewcharTest(String arg) {
 
         super(arg, "defaultskewchar", "", "0");
     }

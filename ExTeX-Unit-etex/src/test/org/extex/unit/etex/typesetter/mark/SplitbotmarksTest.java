@@ -33,7 +33,7 @@ public class SplitbotmarksTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(SplitbotmarksTest.class);
     }
@@ -43,7 +43,7 @@ public class SplitbotmarksTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public SplitbotmarksTest(final String arg) {
+    public SplitbotmarksTest(String arg) {
 
         super(arg, "splitbotmarks", "0");
         setConfig("etex-test");

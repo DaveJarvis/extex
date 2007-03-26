@@ -33,7 +33,7 @@ public class ErrorcontextlinesTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ErrorcontextlinesTest.class);
     }
@@ -43,7 +43,7 @@ public class ErrorcontextlinesTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public ErrorcontextlinesTest(final String arg) {
+    public ErrorcontextlinesTest(String arg) {
 
         super(arg, "errorcontextlines", "", "0");
     }

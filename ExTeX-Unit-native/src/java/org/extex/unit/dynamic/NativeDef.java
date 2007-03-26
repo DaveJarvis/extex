@@ -168,8 +168,7 @@ public class NativeDef extends AbstractAssignment
          */
         public Definer createLoad() throws ConfigurationException {
 
-            return (Definer) createInstanceForConfiguration(getConfiguration(),
-                Definer.class);
+            return (Definer) createInstance(Definer.class);
         }
     }
 
@@ -187,14 +186,15 @@ public class NativeDef extends AbstractAssignment
      * The field <tt>map</tt> contains the mapping from a symbolic name to a
      * configuration.
      */
-    private Map map = new HashMap();
+    private Map<String, Configuration> map =
+            new HashMap<String, Configuration>();
 
     /**
      * Creates a new object.
      *
      * @param codeName the name of the primitive
      */
-    public NativeDef(final String codeName) {
+    public NativeDef(String codeName) {
 
         super(codeName);
     }
@@ -220,9 +220,10 @@ public class NativeDef extends AbstractAssignment
      *       org.extex.interpreter.TokenSource,
      *       org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException, ConfigurationException {
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
+            throws InterpreterException,
+                ConfigurationException {
 
         String name;
         try {
@@ -230,7 +231,7 @@ public class NativeDef extends AbstractAssignment
         } catch (EofException e) {
             throw new EofInToksException(printableControlSequence(context));
         }
-        Configuration cfg = (Configuration) map.get(name);
+        Configuration cfg = map.get(name);
         if (cfg == null) {
             throw new InterpreterException(getLocalizer().format("UnknownType",
                 name, getName()));
@@ -252,7 +253,7 @@ public class NativeDef extends AbstractAssignment
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
-    public void configure(final Configuration config)
+    public void configure(Configuration config)
             throws ConfigurationException {
 
         Iterator iterator = config.iterator("load");
@@ -270,7 +271,7 @@ public class NativeDef extends AbstractAssignment
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger log) {
+    public void enableLogging(Logger log) {
 
         this.logger = log;
     }

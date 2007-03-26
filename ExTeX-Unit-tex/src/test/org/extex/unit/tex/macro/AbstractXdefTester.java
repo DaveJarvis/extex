@@ -33,7 +33,7 @@ public abstract class AbstractXdefTester extends AbstractDefTester {
      * @param name the name
      * @param def the name of the primitive
      */
-    public AbstractXdefTester(final String name, final String def) {
+    public AbstractXdefTester(String name, String def) {
 
         super(name, def);
     }

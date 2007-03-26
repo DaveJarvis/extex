@@ -94,7 +94,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
          *
          * @param stream the stream
          */
-        public TokenStreamProxy(final TokenStream stream) {
+        public TokenStreamProxy(TokenStream stream) {
 
             super();
             this.stream = stream;
@@ -131,7 +131,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
          *      org.extex.scanner.type.token.TokenFactory,
          *      org.extex.scanner.Tokenizer)
          */
-        public Token get(final TokenFactory factory, final Tokenizer tokenizer)
+        public Token get(TokenFactory factory, Tokenizer tokenizer)
                 throws ScannerException {
 
             return stream.get(factory, tokenizer);
@@ -173,7 +173,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
          * @see org.extex.scanner.TokenStream#put(
          *      org.extex.scanner.type.token.Token)
          */
-        public void put(final Token token) {
+        public void put(Token token) {
 
             stream.put(token);
         }
@@ -190,7 +190,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
      *
      * @param codeName the name of the primitive for debugging
      */
-    public Scantokens(final String codeName) {
+    public Scantokens(String codeName) {
 
         super(codeName);
     }
@@ -214,8 +214,8 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -251,8 +251,8 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void expand(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void expand(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 

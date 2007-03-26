@@ -71,7 +71,7 @@ public class NoDefaultOutputTranslation extends AbstractModeCode {
      *
      * @param name the name for debugging
      */
-    public NoDefaultOutputTranslation(final String name) {
+    public NoDefaultOutputTranslation(String name) {
 
         super(name);
     }
@@ -94,8 +94,8 @@ public class NoDefaultOutputTranslation extends AbstractModeCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         OmegaMode mode = scanInputMode(context, source);

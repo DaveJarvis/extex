@@ -33,7 +33,7 @@ public class FloatingpenaltyTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(FloatingpenaltyTest.class);
     }
@@ -43,7 +43,7 @@ public class FloatingpenaltyTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public FloatingpenaltyTest(final String arg) {
+    public FloatingpenaltyTest(String arg) {
 
         super(arg, "floatingpenalty", "", "0");
     }

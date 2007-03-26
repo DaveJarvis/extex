@@ -64,7 +64,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
      * @param fk        the fount key
      * @param tfmfont   the tfm font
      */
-    public ModifiableFountTFM(final FontKey fk, final TfmReader tfmfont) {
+    public ModifiableFountTFM(FontKey fk, TfmReader tfmfont) {
 
         fountkey = fk;
         font = tfmfont;
@@ -139,7 +139,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
     /**
      * @see org.extex.font.type.ModifiableFount#setProperty(java.lang.String, java.lang.String)
      */
-    public void setProperty(final String key, final String value) {
+    public void setProperty(String key, String value) {
 
         property.put(key, value);
     }
@@ -154,7 +154,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
      *      java.lang.String,
      *      org.extex.core.dimen.Dimen)
      */
-    public void setFontDimen(final String key, final Dimen value) {
+    public void setFontDimen(String key, Dimen value) {
 
         fontdimen.put(key, value);
     }
@@ -167,7 +167,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
     /**
      * @see org.extex.font.type.InternalFount#getGlyph(org.extex.core.UnicodeChar)
      */
-    public Glyph getGlyph(final UnicodeChar c) {
+    public Glyph getGlyph(UnicodeChar c) {
 
         Glyph g = (Glyph) glyphmap.get(c);
         if (g == null) {
@@ -263,7 +263,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
      * @param fw    the fixword value
      * @return Returns the Dimen value.
      */
-    private Dimen convertFixWordToDimen(final TfmFixWord fw) {
+    private Dimen convertFixWordToDimen(TfmFixWord fw) {
 
         int shift = 20;
         long z = actualsize.getValue();
@@ -313,7 +313,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
     /**
      * @see org.extex.font.type.Fount#getFontDimen(java.lang.String)
      */
-    public FixedDimen getFontDimen(final String key) {
+    public FixedDimen getFontDimen(String key) {
 
         Dimen rt = (Dimen) fontdimen.get(key);
         if (rt == null) {
@@ -325,7 +325,7 @@ public class ModifiableFountTFM implements ModifiableFount, Serializable {
     /**
      * @see org.extex.font.type.Fount#getProperty(java.lang.String)
      */
-    public String getProperty(final String key) {
+    public String getProperty(String key) {
 
         return (String) property.get(key);
     }

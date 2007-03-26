@@ -47,7 +47,7 @@ public class AbstractDirCode extends AbstractCode {
      *
      * @param codeName the name of the primitive for tracing
      */
-    public AbstractDirCode(final String codeName) {
+    public AbstractDirCode(String codeName) {
 
         super(codeName);
     }
@@ -62,7 +62,7 @@ public class AbstractDirCode extends AbstractCode {
      *
      * @throws InterpreterException in case of an error
      */
-    protected Direction scanDir(final TokenSource source, final Context context)
+    protected Direction scanDir(TokenSource source, Context context)
             throws InterpreterException {
 
         Dir a = scan(source, context);
@@ -91,7 +91,7 @@ public class AbstractDirCode extends AbstractCode {
      *
      * @throws InterpreterException in case of an error
      */
-    private Dir scan(final TokenSource source, final Context context)
+    private Dir scan(TokenSource source, Context context)
             throws InterpreterException {
 
         Token t = source.scanToken(context);

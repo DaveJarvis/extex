@@ -33,7 +33,7 @@ public class TracingonlineTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(TracingonlineTest.class);
     }
@@ -43,7 +43,7 @@ public class TracingonlineTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public TracingonlineTest(final String arg) {
+    public TracingonlineTest(String arg) {
 
         super(arg, "tracingonline", "", "0");
     }

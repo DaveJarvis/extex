@@ -45,7 +45,7 @@ public class UnusedPrefixException extends HelpingException {
      * @param flag the name of the flag which has been used
      * @param token the command on which this has happened
      */
-    public UnusedPrefixException(final String flag, final Token token) {
+    public UnusedPrefixException(String flag, Token token) {
 
         super(LocalizerFactory.getLocalizer(UnusedPrefixException.class),
             "UnusedPrefix", flag, token.toString());

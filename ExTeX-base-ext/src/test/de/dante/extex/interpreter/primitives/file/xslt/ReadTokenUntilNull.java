@@ -63,7 +63,7 @@ public class ReadTokenUntilNull extends AbstractCode {
      * Create a new object.
      * @param codeName  the CodeName
      */
-    public ReadTokenUntilNull(final String codeName) {
+    public ReadTokenUntilNull(String codeName) {
 
         super(codeName);
     }
@@ -80,8 +80,8 @@ public class ReadTokenUntilNull extends AbstractCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         try {
@@ -119,8 +119,8 @@ public class ReadTokenUntilNull extends AbstractCode {
          *      org.extex.scanner.type.token.ActiveCharacterToken,
          *      java.lang.Object)
          */
-        public Object visitActive(final ActiveCharacterToken token,
-                final Object arg) throws Exception {
+        public Object visitActive(ActiveCharacterToken token,
+                Object arg) throws Exception {
 
             return "[A:" + token.toText() + "]";
         }
@@ -130,7 +130,7 @@ public class ReadTokenUntilNull extends AbstractCode {
          *      org.extex.scanner.type.token.CrToken,
          *      java.lang.Object)
          */
-        public Object visitCr(final CrToken token, final Object arg)
+        public Object visitCr(CrToken token, Object arg)
                 throws Exception {
 
             return "[CR]";
@@ -141,8 +141,8 @@ public class ReadTokenUntilNull extends AbstractCode {
          *      org.extex.scanner.type.token.ControlSequenceToken,
          *      java.lang.Object)
          */
-        public Object visitEscape(final ControlSequenceToken token,
-                final Object arg) throws Exception {
+        public Object visitEscape(ControlSequenceToken token,
+                Object arg) throws Exception {
 
             return "/" + token.getName() + " ";
         }
@@ -152,8 +152,8 @@ public class ReadTokenUntilNull extends AbstractCode {
          *      org.extex.scanner.type.token.LeftBraceToken,
          *      java.lang.Object)
          */
-        public Object visitLeftBrace(final LeftBraceToken token,
-                final Object arg) throws Exception {
+        public Object visitLeftBrace(LeftBraceToken token,
+                Object arg) throws Exception {
 
             return "(";
         }
@@ -163,7 +163,7 @@ public class ReadTokenUntilNull extends AbstractCode {
          *      org.extex.scanner.type.token.LetterToken,
          *      java.lang.Object)
          */
-        public Object visitLetter(final LetterToken token, final Object arg)
+        public Object visitLetter(LetterToken token, Object arg)
                 throws Exception {
 
             return token.toText();
@@ -174,8 +174,8 @@ public class ReadTokenUntilNull extends AbstractCode {
          *      org.extex.scanner.type.token.MacroParamToken,
          *      java.lang.Object)
          */
-        public Object visitMacroParam(final MacroParamToken token,
-                final Object arg) throws Exception {
+        public Object visitMacroParam(MacroParamToken token,
+                Object arg) throws Exception {
 
             return "[M:" + token.toText() + "]";
         }
@@ -185,8 +185,8 @@ public class ReadTokenUntilNull extends AbstractCode {
          *      org.extex.scanner.type.token.MathShiftToken,
          *      java.lang.Object)
          */
-        public Object visitMathShift(final MathShiftToken token,
-                final Object arg) throws Exception {
+        public Object visitMathShift(MathShiftToken token,
+                Object arg) throws Exception {
 
             return token.toText();
         }
@@ -196,7 +196,7 @@ public class ReadTokenUntilNull extends AbstractCode {
          *      org.extex.scanner.type.token.OtherToken,
          *      java.lang.Object)
          */
-        public Object visitOther(final OtherToken token, final Object arg)
+        public Object visitOther(OtherToken token, Object arg)
                 throws Exception {
 
             return token.toText();
@@ -207,8 +207,8 @@ public class ReadTokenUntilNull extends AbstractCode {
          *      org.extex.scanner.type.token.RightBraceToken,
          *      java.lang.Object)
          */
-        public Object visitRightBrace(final RightBraceToken token,
-                final Object arg) throws Exception {
+        public Object visitRightBrace(RightBraceToken token,
+                Object arg) throws Exception {
 
             return ")";
         }
@@ -218,7 +218,7 @@ public class ReadTokenUntilNull extends AbstractCode {
          *      org.extex.scanner.type.token.SpaceToken,
          *      java.lang.Object)
          */
-        public Object visitSpace(final SpaceToken token, final Object arg)
+        public Object visitSpace(SpaceToken token, Object arg)
                 throws Exception {
 
             return " ";
@@ -229,7 +229,7 @@ public class ReadTokenUntilNull extends AbstractCode {
          *      org.extex.scanner.type.token.SubMarkToken,
          *      java.lang.Object)
          */
-        public Object visitSubMark(final SubMarkToken token, final Object arg)
+        public Object visitSubMark(SubMarkToken token, Object arg)
                 throws Exception {
 
             return token.toText();
@@ -240,7 +240,7 @@ public class ReadTokenUntilNull extends AbstractCode {
          *      org.extex.scanner.type.token.SupMarkToken,
          *      java.lang.Object)
          */
-        public Object visitSupMark(final SupMarkToken token, final Object arg)
+        public Object visitSupMark(SupMarkToken token, Object arg)
                 throws Exception {
 
             return token.toText();
@@ -251,7 +251,7 @@ public class ReadTokenUntilNull extends AbstractCode {
          *      org.extex.scanner.type.token.TabMarkToken,
          *      java.lang.Object)
          */
-        public Object visitTabMark(final TabMarkToken token, final Object arg)
+        public Object visitTabMark(TabMarkToken token, Object arg)
                 throws Exception {
 
             return token.toText();

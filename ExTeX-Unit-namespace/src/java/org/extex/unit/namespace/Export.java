@@ -95,7 +95,7 @@ public class Export extends AbstractAssignment {
      *
      * @param name the name for debugging
      */
-    public Export(final String name) {
+    public Export(String name) {
 
         super(name);
     }
@@ -107,8 +107,8 @@ public class Export extends AbstractAssignment {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Tokens export;

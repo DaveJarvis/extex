@@ -63,8 +63,8 @@ public class QueryFileHandlerTeXImpl implements QueryFileHandler {
      * unlikely
      * @throws HelpingException in case of EOF on terminal
      */
-    protected String promptAndReadLine(final Localizer localizer,
-            final Logger logger, final String prompt)
+    protected String promptAndReadLine(Localizer localizer,
+            Logger logger, String prompt)
             throws IOException,
                 HelpingException {
 
@@ -99,7 +99,7 @@ public class QueryFileHandlerTeXImpl implements QueryFileHandler {
      *      java.util.logging.Logger,
      *      java.util.Properties)
      */
-    public String query(final Logger logger, final Properties properties) {
+    public String query(Logger logger, Properties properties) {
 
         Localizer localizer = LocalizerFactory
                 .getLocalizer(QueryFileHandlerTeXImpl.class);

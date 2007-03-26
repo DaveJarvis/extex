@@ -36,7 +36,7 @@ public class NonstopmodeTest extends NoFlagsPrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(NonstopmodeTest.class);
     }
@@ -46,7 +46,7 @@ public class NonstopmodeTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public NonstopmodeTest(final String arg) {
+    public NonstopmodeTest(String arg) {
 
         super(arg, "nonstopmode", "");
     }

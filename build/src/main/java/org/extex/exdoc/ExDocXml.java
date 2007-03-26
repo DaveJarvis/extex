@@ -42,7 +42,7 @@ import org.xml.sax.SAXException;
  * Collect the doc snippets from Java code and store them in XML files.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5413 $
  */
 public class ExDocXml extends Traverser {
 
@@ -51,7 +51,7 @@ public class ExDocXml extends Traverser {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         try {
             new ExDocXml().run(args);
@@ -82,7 +82,7 @@ public class ExDocXml extends Traverser {
      * (package.class_method) to a long form including the name. This is only
      * valid after the collecting pass has been finished.
      */
-    private Map keys = new HashMap();
+    private Map<String, Key> keys = new HashMap<String, Key>();
 
     /**
      * Creates a new object.
@@ -114,7 +114,7 @@ public class ExDocXml extends Traverser {
      *
      * @return ...
      */
-    private Key makeKey(final Map a) {
+    private Key makeKey(Map<String, String> a) {
 
         Key key = new Key(a);
 
@@ -133,10 +133,10 @@ public class ExDocXml extends Traverser {
      *
      * @see org.extex.exdoc.util.Traverser#out(java.lang.String, StringBuffer)
      */
-    protected void out(final String key, final StringBuffer content)
+    protected void out(String key, StringBuffer content)
             throws Exception {
 
-        Map a = new HashMap();
+        Map<String, String> a = new HashMap<String, String>();
         try {
             Element root = scan(content);
             a.put("name", "");
@@ -173,8 +173,8 @@ public class ExDocXml extends Traverser {
      * @param endTag the additional tag to insert at the end
      * @param k the name of resource where the original text came from
      */
-    protected void resolveLink(final StringBuffer content, final String start,
-            final String startTag, final String endTag, final Key k) {
+    protected void resolveLink(StringBuffer content, String start,
+            String startTag, String endTag, Key k) {
 
         for (int i = content.indexOf(start); i >= 0; i = content.indexOf(start)) {
             int j = content.indexOf("}", i);
@@ -192,14 +192,13 @@ public class ExDocXml extends Traverser {
                 text = s.substring(is + 1);
             }
             String x = tuneKey(ref.replaceAll("\\(.*", "").replace('#', '_'));
-            String href = (String) keys.get(x);
+            String href = keys.get(x).toString();
             if (href != null) {
                 content.replace(i, j + 1, startTag + "<a href=\"" + href
                         + "\">" + text + "</a>" + endTag);
             } else {
                 content.replace(i, j + 1, startTag + text + endTag);
-                warning(k.getLocation() + ": Unable to resolve link "
-                        + ref);
+                warning(k.getLocation() + ": Unable to resolve link " + ref);
             }
         }
     }
@@ -213,7 +212,7 @@ public class ExDocXml extends Traverser {
      *
      * @see org.extex.exdoc.util.Traverser#run(java.lang.String[])
      */
-    public void run(final String[] args) throws Exception {
+    public void run(String[] args) throws Exception {
 
         collecting = true;
         super.run(args);
@@ -231,7 +230,7 @@ public class ExDocXml extends Traverser {
      * @throws IOException in case of an I/O error
      * @throws SAXException in case of a parse error
      */
-    protected Element scan(final CharSequence cs)
+    protected Element scan(CharSequence cs)
             throws SAXException,
                 IOException {
 
@@ -253,7 +252,7 @@ public class ExDocXml extends Traverser {
      *
      * @param defaultOutputDirectory the defaultOutputDirectory to set
      */
-    protected void setDefaultOutputDirectory(final String defaultOutputDirectory) {
+    protected void setDefaultOutputDirectory(String defaultOutputDirectory) {
 
         this.defaultOutputDirectory = defaultOutputDirectory;
     }
@@ -266,7 +265,7 @@ public class ExDocXml extends Traverser {
      *
      * @throws IOException in case of an I/O error
      */
-    protected void shipout(final Key key, final StringBuffer content)
+    protected void shipout(Key key, StringBuffer content)
             throws IOException {
 
         content.insert(0, "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" ?>\n");
@@ -292,7 +291,7 @@ public class ExDocXml extends Traverser {
      *
      * @return ...
      */
-    protected String tuneKey(final String p) {
+    protected String tuneKey(String p) {
 
         return p.replaceFirst("^org.extex.", "");
     }

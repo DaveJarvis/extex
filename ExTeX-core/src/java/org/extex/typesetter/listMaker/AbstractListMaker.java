@@ -66,7 +66,7 @@ public abstract class AbstractListMaker implements ListMaker {
      * @param theManager the manager to ask for global changes
      * @param locator the locator
      */
-    public AbstractListMaker(final ListManager theManager, final Locator locator) {
+    public AbstractListMaker(ListManager theManager, Locator locator) {
 
         super();
         this.manager = theManager;
@@ -148,6 +148,8 @@ public abstract class AbstractListMaker implements ListMaker {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#leftBrace()
      */
     public void leftBrace() {
@@ -171,8 +173,8 @@ public abstract class AbstractListMaker implements ListMaker {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
-    public void mathShift(final Context context, final TokenSource source,
-            final Token t) throws TypesetterException, ConfigurationException {
+    public void mathShift(Context context, TokenSource source,
+            Token t) throws TypesetterException, ConfigurationException {
 
         try {
             Token next = source.getToken(context);
@@ -220,7 +222,7 @@ public abstract class AbstractListMaker implements ListMaker {
      * @see org.extex.typesetter.ListMaker#setPrevDepth(
      *      org.extex.core.dimen.FixedDimen)
      */
-    public void setPrevDepth(final FixedDimen pd)
+    public void setPrevDepth(FixedDimen pd)
             throws TypesetterUnsupportedException {
 
         throw new TypesetterUnsupportedException();
@@ -237,7 +239,7 @@ public abstract class AbstractListMaker implements ListMaker {
      * @see org.extex.typesetter.ListMaker#setSpacefactor(
      *      org.extex.core.count.FixedCount)
      */
-    public void setSpacefactor(final FixedCount sf)
+    public void setSpacefactor(FixedCount sf)
             throws TypesetterUnsupportedException,
                 InvalidSpacefactorException {
 
@@ -260,8 +262,8 @@ public abstract class AbstractListMaker implements ListMaker {
      *      org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
-    public void subscriptMark(final Context context, final TokenSource source,
-            final Typesetter typesetter, final Token token)
+    public void subscriptMark(Context context, TokenSource source,
+            Typesetter typesetter, Token token)
             throws TypesetterException {
 
         throw new TypesetterException(
@@ -284,9 +286,9 @@ public abstract class AbstractListMaker implements ListMaker {
      *      org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
-    public void superscriptMark(final Context context,
-            final TokenSource source, final Typesetter typesetter,
-            final Token token) throws TypesetterException {
+    public void superscriptMark(Context context,
+            TokenSource source, Typesetter typesetter,
+            Token token) throws TypesetterException {
 
         throw new TypesetterException(
                 new MissingMathException(token.toString()));
@@ -298,8 +300,8 @@ public abstract class AbstractListMaker implements ListMaker {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
-    public void tab(final Context context, final TokenSource source,
-            final Token token)
+    public void tab(Context context, TokenSource source,
+            Token token)
             throws TypesetterException,
                 ConfigurationException {
 

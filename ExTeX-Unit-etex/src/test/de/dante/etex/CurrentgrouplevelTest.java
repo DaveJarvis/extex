@@ -35,7 +35,7 @@ public class CurrentgrouplevelTest extends TestCase {
      *
      * @param  args command line args
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(CurrentgrouplevelTest.class);
     }

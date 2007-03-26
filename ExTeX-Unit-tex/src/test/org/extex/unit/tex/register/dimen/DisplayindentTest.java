@@ -31,7 +31,7 @@ public class DisplayindentTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(DisplayindentTest.class);
     }
@@ -41,7 +41,7 @@ public class DisplayindentTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public DisplayindentTest(final String arg) {
+    public DisplayindentTest(String arg) {
 
         super(arg, "displayindent", "", "0.0pt");
     }

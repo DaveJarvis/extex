@@ -45,7 +45,7 @@ public class CrToken extends AbstractToken implements Token {
      *
      * @param value the string value
      */
-    protected CrToken(final UnicodeChar value) {
+    protected CrToken(UnicodeChar value) {
 
         super(value);
     }
@@ -64,7 +64,7 @@ public class CrToken extends AbstractToken implements Token {
      *      org.extex.scanner.type.Catcode,
      *      char)
      */
-    public boolean equals(final Catcode cc, final char c) {
+    public boolean equals(Catcode cc, char c) {
 
         return cc == getCatcode();
     }
@@ -82,7 +82,7 @@ public class CrToken extends AbstractToken implements Token {
      * @see org.extex.scanner.type.token.AbstractToken#equals(
      *      org.extex.scanner.type.Catcode, java.lang.String)
      */
-    public boolean equals(final Catcode cc, final String s) {
+    public boolean equals(Catcode cc, String s) {
 
         return cc == getCatcode();
     }
@@ -97,7 +97,7 @@ public class CrToken extends AbstractToken implements Token {
      *
      * @see org.extex.scanner.type.token.AbstractToken#equals(char)
      */
-    public boolean equals(final char c) {
+    public boolean equals(char c) {
 
         return false;
     }
@@ -133,7 +133,7 @@ public class CrToken extends AbstractToken implements Token {
      *
      * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
      */
-    public void toString(final StringBuffer sb) {
+    public void toString(StringBuffer sb) {
 
         sb.append(getLocalizer().format("CrToken.Text", super.toString()));
     }
@@ -167,7 +167,7 @@ public class CrToken extends AbstractToken implements Token {
      *      org.extex.scanner.type.token.TokenVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final TokenVisitor visitor, final Object arg1)
+    public Object visit(TokenVisitor visitor, Object arg1)
             throws Exception {
 
         return visitor.visitCr(this, arg1);

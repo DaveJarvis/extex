@@ -98,7 +98,7 @@ public class LatexTask extends Task {
          *
          * @see org.extex.ant.latex.AuxVisitor#visitBibTeX(java.io.File)
          */
-        public void visitBibTeX(final File f) throws IOException {
+        public void visitBibTeX(File f) throws IOException {
 
             run(bibtex);
         }
@@ -112,7 +112,7 @@ public class LatexTask extends Task {
          *
          * @see org.extex.ant.latex.AuxVisitor#visitLaTeX(java.io.File)
          */
-        public void visitLaTeX(final File f) throws IOException {
+        public void visitLaTeX(File f) throws IOException {
 
             run(executable);
         }
@@ -126,7 +126,7 @@ public class LatexTask extends Task {
          *
          * @see org.extex.ant.latex.AuxVisitor#visitMakeindex(java.io.File)
          */
-        public void visitMakeindex(final File f) throws IOException {
+        public void visitMakeindex(File f) throws IOException {
 
             run(makeindex);
         }
@@ -138,7 +138,7 @@ public class LatexTask extends Task {
      *
      * @param fileset ...
      */
-    public void addFileset(final FileSet fileset) {
+    public void addFileset(FileSet fileset) {
 
         filesets.add(fileset);
     }
@@ -170,7 +170,7 @@ public class LatexTask extends Task {
      *
      * @throws IOException in case of an error
      */
-    private void execute(final AuxFile aux) throws IOException {
+    private void execute(AuxFile aux) throws IOException {
 
         File t = new File(target != null ? target : basename + ".pdf");
         if (upToDate(t)) {
@@ -193,7 +193,7 @@ public class LatexTask extends Task {
      *
      * @throws IOException in case of an error
      */
-    private void run(final String program) throws IOException {
+    private void run(String program) throws IOException {
 
         String[] cmd = {program, basename};
         Process process = Runtime.getRuntime().exec(cmd);
@@ -205,7 +205,7 @@ public class LatexTask extends Task {
      *
      * @param executable the executable to set.
      */
-    public void setExecutable(final String executable) {
+    public void setExecutable(String executable) {
 
         this.executable = executable;
     }
@@ -215,7 +215,7 @@ public class LatexTask extends Task {
      *
      * @param name the name to set.
      */
-    public void setFile(final String name) {
+    public void setFile(String name) {
 
         this.file = name;
     }
@@ -225,7 +225,7 @@ public class LatexTask extends Task {
      *
      * @param keep the keepAux to set.
      */
-    public void setKeepAux(final String keep) {
+    public void setKeepAux(String keep) {
 
         this.keepAux = Boolean.getBoolean(keep);
     }
@@ -235,7 +235,7 @@ public class LatexTask extends Task {
      *
      * @param target the target to set.
      */
-    public void setTarget(final String target) {
+    public void setTarget(String target) {
 
         this.target = target;
     }
@@ -247,7 +247,7 @@ public class LatexTask extends Task {
      *
      * @return <code>true</code> iff ...
      */
-    private boolean upToDate(final File f) {
+    private boolean upToDate(File f) {
 
         if (!f.exists()) {
             return false;

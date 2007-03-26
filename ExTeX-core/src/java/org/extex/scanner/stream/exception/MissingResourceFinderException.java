@@ -45,7 +45,7 @@ public class MissingResourceFinderException extends ConfigurationException {
      *
      * @param aMessage the message string
      */
-    public MissingResourceFinderException(final String aMessage) {
+    public MissingResourceFinderException(String aMessage) {
 
         super(aMessage, (String) null);
         this.message = aMessage;

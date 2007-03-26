@@ -27,12 +27,10 @@ import java.util.Iterator;
 import java.util.Properties;
 import java.util.logging.Logger;
 
-import org.extex.core.StringListIterator;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
 import org.extex.framework.logger.LogEnabled;
-
 
 /**
  * This file finder search recursively in a directory.
@@ -74,7 +72,7 @@ public class FileFinderRPathImpl
      *
      * @param configuration the encapsulated configuration object
      */
-    public FileFinderRPathImpl(final Configuration configuration) {
+    public FileFinderRPathImpl(Configuration configuration) {
 
         super();
         config = configuration;
@@ -85,10 +83,12 @@ public class FileFinderRPathImpl
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
      *      java.lang.String)
      */
-    public InputStream findResource(final String name, final String type)
+    public InputStream findResource(String name, String type)
             throws ConfigurationException {
 
         // config
@@ -97,7 +97,7 @@ public class FileFinderRPathImpl
             String t = config.getAttribute("default");
             if (t == null) {
                 throw new ConfigurationMissingAttributeException("default",
-                        config);
+                    config);
             }
             cfg = config.getConfiguration(t);
 
@@ -148,13 +148,11 @@ public class FileFinderRPathImpl
      * @param cfg   the configuration
      * @return Returns the input stream
      */
-    private InputStream findFile(final File fpath, final String name,
-            final Configuration cfg) {
+    private InputStream findFile(File fpath, String name,
+            Configuration cfg) {
 
         File file;
-        StringListIterator extIt = cfg.getValues("extension").getIterator();
-        while (extIt.hasNext()) {
-            String ext = extIt.next();
+        for (String ext : cfg.getValues("extension")) {
             file = new File(fpath, name + (ext.equals("") ? "" : ".") + ext);
             if (trace && logger != null) {
                 logger.fine("FileFinder: Try " + file + "\n");
@@ -201,25 +199,31 @@ public class FileFinderRPathImpl
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
      */
-    public void enableTracing(final boolean flag) {
+    public void enableTracing(boolean flag) {
 
         trace = flag;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.resource.PropertyConfigurable#setProperties(java.util.Properties)
      */
-    public void setProperties(final Properties prop) {
+    public void setProperties(Properties prop) {
 
         properties = prop;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
-    public void enableLogging(final Logger alogger) {
+    public void enableLogging(Logger alogger) {
 
         logger = alogger;
     }

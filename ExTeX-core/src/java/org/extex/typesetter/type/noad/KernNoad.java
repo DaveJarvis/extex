@@ -49,13 +49,15 @@ public class KernNoad extends AbstractNoad {
      *
      * @param kern the glue
      */
-    public KernNoad(final Mudimen kern) {
+    public KernNoad(Mudimen kern) {
 
         super();
         this.kern = kern;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.noad.Noad#typeset(
      *      org.extex.typesetter.type.noad.Noad,
      *      org.extex.typesetter.type.noad.NoadList,
@@ -64,9 +66,9 @@ public class KernNoad extends AbstractNoad {
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(final Noad previousNoad, final NoadList noads,
-            final int index, final NodeList list,
-            final MathContext mathContext, final Logger logger)
+    public void typeset(Noad previousNoad, NoadList noads,
+            int index, NodeList list,
+            MathContext mathContext, Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 
@@ -88,7 +90,7 @@ public class KernNoad extends AbstractNoad {
      * @param sb the target string buffer
      * @param depth the recursion depth
      */
-    protected void toStringAdd(final StringBuffer sb, final int depth) {
+    protected void toStringAdd(StringBuffer sb, int depth) {
 
         sb.append("kern");
         kern.toString(sb);

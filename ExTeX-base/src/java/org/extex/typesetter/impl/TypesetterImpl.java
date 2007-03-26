@@ -20,6 +20,7 @@
 package org.extex.typesetter.impl;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import org.extex.backend.BackendDriver;
@@ -129,7 +130,7 @@ public class TypesetterImpl
     /**
      * The field <tt>saveStack</tt> contains the stack of list makers.
      */
-    private ArrayList saveStack = new ArrayList();
+    private List<ListMaker> saveStack = new ArrayList<ListMaker>();
 
     /**
      * The field <tt>shipoutMark</tt> contains the recorded state of the
@@ -159,7 +160,7 @@ public class TypesetterImpl
      * @see org.extex.typesetter.ListMaker#add(
      *      org.extex.core.glue.FixedGlue)
      */
-    public void add(final FixedGlue glue) throws TypesetterException {
+    public void add(FixedGlue glue) throws TypesetterException {
 
         listMaker.add(glue);
     }
@@ -177,7 +178,7 @@ public class TypesetterImpl
      * @see org.extex.typesetter.ListMaker#add(
      *     org.extex.typesetter.type.Node)
      */
-    public void add(final Node node) throws TypesetterException {
+    public void add(Node node) throws TypesetterException {
 
         if (node == null) {
             return;
@@ -210,8 +211,8 @@ public class TypesetterImpl
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.TypesetterOptions)
      */
-    public void addAndAdjust(final NodeList list,
-            final TypesetterOptions options) throws TypesetterException {
+    public void addAndAdjust(NodeList list,
+            TypesetterOptions options) throws TypesetterException {
 
         listMaker.addAndAdjust(list, options);
     }
@@ -231,8 +232,8 @@ public class TypesetterImpl
      *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.core.count.Count)
      */
-    public void addSpace(final TypesettingContext typesettingContext,
-            final Count spacefactor) throws TypesetterException {
+    public void addSpace(TypesettingContext typesettingContext,
+            Count spacefactor) throws TypesetterException {
 
         listMaker.addSpace(typesettingContext, null);
     }
@@ -245,7 +246,7 @@ public class TypesetterImpl
      * @see org.extex.typesetter.ListMaker#afterParagraph(
      *      ParagraphObserver)
      */
-    public void afterParagraph(final ParagraphObserver observer) {
+    public void afterParagraph(ParagraphObserver observer) {
 
         listMaker.afterParagraph(observer);
     }
@@ -262,7 +263,7 @@ public class TypesetterImpl
      * @see org.extex.typesetter.listMaker.ListManager#buildParagraph(
      *      org.extex.typesetter.type.node.HorizontalListNode)
      */
-    public NodeList buildParagraph(final HorizontalListNode nodes)
+    public NodeList buildParagraph(HorizontalListNode nodes)
             throws TypesetterException {
 
         return this.paragraphBuilder.build(nodes);
@@ -300,7 +301,7 @@ public class TypesetterImpl
      * @see org.extex.typesetter.ListMaker#complete(
      *      org.extex.typesetter.TypesetterOptions)
      */
-    public NodeList complete(final TypesetterOptions context)
+    public NodeList complete(TypesetterOptions context)
             throws TypesetterException {
 
         NodeList nodes = listMaker.complete(context);
@@ -322,8 +323,8 @@ public class TypesetterImpl
      *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
-    public void cr(final Context context, final TypesettingContext tc,
-            final UnicodeChar uc) throws TypesetterException {
+    public void cr(Context context, TypesettingContext tc,
+            UnicodeChar uc) throws TypesetterException {
 
         listMaker.cr(context, tc, uc);
     }
@@ -336,7 +337,7 @@ public class TypesetterImpl
      * @see org.extex.framework.i18n.Localizable#enableLocalization(
      *      org.extex.framework.i18n.Localizer)
      */
-    public void enableLocalization(final Localizer theLocalizer) {
+    public void enableLocalization(Localizer theLocalizer) {
 
         localizer = theLocalizer;
     }
@@ -349,7 +350,7 @@ public class TypesetterImpl
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger theLogger) {
+    public void enableLogging(Logger theLogger) {
 
         logger = theLogger;
         if (pageBuilder instanceof LogEnabled) {
@@ -397,7 +398,7 @@ public class TypesetterImpl
      * @see org.extex.typesetter.listMaker.ListManager#ensureHorizontalMode(
      *      org.extex.core.Locator)
      */
-    public ListMaker ensureHorizontalMode(final Locator locator)
+    public ListMaker ensureHorizontalMode(Locator locator)
             throws TypesetterException {
 
         if (!(listMaker instanceof HorizontalListMaker)) {
@@ -604,8 +605,8 @@ public class TypesetterImpl
      *      org.extex.interpreter.TokenSource,
      *      org.extex.core.Locator)
      */
-    public boolean letter(final UnicodeChar uc, final TypesettingContext tc,
-            final Context context, TokenSource source, final Locator locator)
+    public boolean letter(UnicodeChar uc, TypesettingContext tc,
+            Context context, TokenSource source, Locator locator)
             throws TypesetterException {
 
         return listMaker.letter(uc, tc, context, source, locator);
@@ -628,8 +629,8 @@ public class TypesetterImpl
      *      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
-    public void mathShift(final Context context, final TokenSource source,
-            final Token t) throws TypesetterException {
+    public void mathShift(Context context, TokenSource source,
+            Token t) throws TypesetterException {
 
         ensureHorizontalMode(source.getLocator());
         listMaker.mathShift(context, source, t);
@@ -669,7 +670,7 @@ public class TypesetterImpl
             throw new ImpossibleException("Typesetter.EmptyStack");
         }
         ListMaker current = listMaker;
-        this.listMaker = (ListMaker) (saveStack.remove(saveStack.size() - 1));
+        this.listMaker = saveStack.remove(saveStack.size() - 1);
         return current;
     }
 
@@ -683,7 +684,7 @@ public class TypesetterImpl
      * @see org.extex.typesetter.listMaker.ListManager#push(
      *      org.extex.typesetter.ListMaker)
      */
-    public void push(final ListMaker listMaker) throws TypesetterException {
+    public void push(ListMaker listMaker) throws TypesetterException {
 
         saveStack.add(this.listMaker);
         this.listMaker = listMaker;
@@ -725,7 +726,7 @@ public class TypesetterImpl
      * @see org.extex.typesetter.Typesetter#setBackend(
      *      org.extex.backend.BackendDriver)
      */
-    public void setBackend(final BackendDriver driver) {
+    public void setBackend(BackendDriver driver) {
 
         backend = driver;
         pageBuilder.setBackend(driver);
@@ -739,7 +740,7 @@ public class TypesetterImpl
      * @see org.extex.typesetter.Typesetter#setNodeFactory(
      *      org.extex.typesetter.type.node.factory.NodeFactory)
      */
-    public void setNodeFactory(final NodeFactory nodeFactory) {
+    public void setNodeFactory(NodeFactory nodeFactory) {
 
         this.nodeFactory = nodeFactory;
     }
@@ -752,7 +753,7 @@ public class TypesetterImpl
      * @see org.extex.typesetter.Typesetter#setOptions(
      *      org.extex.typesetter.TypesetterOptions)
      */
-    public void setOptions(final TypesetterOptions options) {
+    public void setOptions(TypesetterOptions options) {
 
         this.options = options;
         pageBuilder.setOptions(options);
@@ -766,7 +767,7 @@ public class TypesetterImpl
      * @see org.extex.typesetter.Typesetter#setOutputRoutine(
      *      org.extex.typesetter.output.OutputRoutine)
      */
-    public void setOutputRoutine(final OutputRoutine output) {
+    public void setOutputRoutine(OutputRoutine output) {
 
         this.outputRoutine = output;
         if (this.pageBuilder != null) {
@@ -782,7 +783,7 @@ public class TypesetterImpl
      * @see org.extex.typesetter.Typesetter#setPageBuilder(
      *      org.extex.typesetter.pageBuilder.PageBuilder)
      */
-    public void setPageBuilder(final PageBuilder pageBuilder) {
+    public void setPageBuilder(PageBuilder pageBuilder) {
 
         this.pageBuilder = pageBuilder;
         pageBuilder.setBackend(backend);
@@ -797,7 +798,7 @@ public class TypesetterImpl
      *
      * @param parBuilder the paragraph builder to set.
      */
-    public void setParagraphBuilder(final ParagraphBuilder parBuilder) {
+    public void setParagraphBuilder(ParagraphBuilder parBuilder) {
 
         paragraphBuilder = parBuilder;
         if (paragraphBuilder instanceof LogEnabled) {
@@ -815,7 +816,7 @@ public class TypesetterImpl
      * @see org.extex.typesetter.ListMaker#setPrevDepth(
      *      org.extex.core.dimen.FixedDimen)
      */
-    public void setPrevDepth(final FixedDimen pd)
+    public void setPrevDepth(FixedDimen pd)
             throws TypesetterUnsupportedException {
 
         listMaker.setPrevDepth(pd);
@@ -832,7 +833,7 @@ public class TypesetterImpl
      * @see org.extex.typesetter.ListMaker#setSpacefactor(
      *      org.extex.core.count.FixedCount)
      */
-    public void setSpacefactor(final FixedCount sf)
+    public void setSpacefactor(FixedCount sf)
             throws TypesetterUnsupportedException,
                 InvalidSpacefactorException {
 
@@ -850,7 +851,7 @@ public class TypesetterImpl
      * @see org.extex.typesetter.Typesetter#shipout(
      *      org.extex.typesetter.type.NodeList)
      */
-    public void shipout(final NodeList nodes) throws TypesetterException {
+    public void shipout(NodeList nodes) throws TypesetterException {
 
         pageBuilder.shipout(nodes, this);
         shipoutMark = true;
@@ -860,8 +861,8 @@ public class TypesetterImpl
      * @see org.extex.typesetter.ListMaker#showlist(java.lang.StringBuffer,
      *       long, long)
      */
-    public void showlist(final StringBuffer sb, final long depth,
-            final long breadth) {
+    public void showlist(StringBuffer sb, long depth,
+            long breadth) {
 
         listMaker.showlist(sb, depth, breadth);
     }
@@ -877,8 +878,8 @@ public class TypesetterImpl
      * @see org.extex.typesetter.Typesetter#showlists(
      *      java.lang.StringBuffer, long, long)
      */
-    public void showlists(final StringBuffer sb, final long depth,
-            final long breadth) {
+    public void showlists(StringBuffer sb, long depth,
+            long breadth) {
 
         sb.append(localizer.format("Showlist.Format", listMaker.getMode()
             .toString(), Integer.toString(listMaker.getLocator()
@@ -886,7 +887,7 @@ public class TypesetterImpl
         listMaker.showlist(sb, depth, breadth);
 
         for (int i = saveStack.size() - 1; i >= 0; i--) {
-            ListMaker lm = (ListMaker) saveStack.get(i);
+            ListMaker lm = saveStack.get(i);
             sb
                 .append(localizer.format("Showlist.Format", lm.getMode()
                     .toString(), Integer.toString(lm.getLocator()
@@ -911,8 +912,8 @@ public class TypesetterImpl
      *      org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
-    public void subscriptMark(final Context context, final TokenSource source,
-            final Typesetter typesetter, final Token t)
+    public void subscriptMark(Context context, TokenSource source,
+            Typesetter typesetter, Token t)
             throws TypesetterException {
 
         listMaker.subscriptMark(context, source, typesetter, t);
@@ -933,8 +934,8 @@ public class TypesetterImpl
      *      org.extex.interpreter.TokenSource,
      *      Typesetter, org.extex.scanner.type.token.Token)
      */
-    public void superscriptMark(final Context context,
-            final TokenSource source, final Typesetter typesetter, final Token t)
+    public void superscriptMark(Context context,
+            TokenSource source, Typesetter typesetter, Token t)
             throws TypesetterException {
 
         listMaker.superscriptMark(context, source, typesetter, t);
@@ -954,8 +955,8 @@ public class TypesetterImpl
      *      Context,
      *      TokenSource, org.extex.scanner.type.token.Token)
      */
-    public void tab(final Context context, final TokenSource source,
-            final Token t) throws TypesetterException {
+    public void tab(Context context, TokenSource source,
+            Token t) throws TypesetterException {
 
         listMaker.tab(context, source, t);
     }

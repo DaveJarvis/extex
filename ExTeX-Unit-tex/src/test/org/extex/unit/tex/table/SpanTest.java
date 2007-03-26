@@ -33,7 +33,7 @@ public class SpanTest extends ExTeXLauncher {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(SpanTest.class);
     }
@@ -43,7 +43,7 @@ public class SpanTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public SpanTest(final String arg) {
+    public SpanTest(String arg) {
 
         super(arg);
     }

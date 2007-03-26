@@ -31,7 +31,7 @@ public class HsizeTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(HsizeTest.class);
     }
@@ -41,7 +41,7 @@ public class HsizeTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public HsizeTest(final String arg) {
+    public HsizeTest(String arg) {
 
         super(arg, "hsize", "", "0.0pt");
         setHsize(false);

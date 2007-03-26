@@ -103,7 +103,7 @@ public class Dump extends AbstractCode
      *
      * @param name the name for debugging
      */
-    public Dump(final String name) {
+    public Dump(String name) {
 
         super(name);
     }
@@ -116,7 +116,7 @@ public class Dump extends AbstractCode
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger log) {
+    public void enableLogging(Logger log) {
 
         this.logger = log;
     }
@@ -140,8 +140,8 @@ public class Dump extends AbstractCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         if (!context.isGlobalGroup()) {
@@ -198,7 +198,7 @@ public class Dump extends AbstractCode
      * @see org.extex.interpreter.type.OutputStreamConsumer#setOutputStreamFactory(
      *      org.extex.backend.outputStream.OutputStreamFactory)
      */
-    public void setOutputStreamFactory(final OutputStreamFactory factory) {
+    public void setOutputStreamFactory(OutputStreamFactory factory) {
 
         this.outFactory = factory;
     }

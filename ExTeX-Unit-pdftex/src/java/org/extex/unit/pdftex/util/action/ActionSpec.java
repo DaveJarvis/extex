@@ -47,9 +47,9 @@ public abstract class ActionSpec implements Serializable {
      *
      * @throws InterpreterException in case of an error
      */
-    public static ActionSpec parseActionSpec(final Context context,
-            final TokenSource source, final Typesetter typesetter,
-            final String name) throws InterpreterException {
+    public static ActionSpec parseActionSpec(Context context,
+            TokenSource source, Typesetter typesetter,
+            String name) throws InterpreterException {
 
         if (source.getKeyword(context, "user")) {
             return UserActionSpec.parseActionSpec(context, source, typesetter,
@@ -72,6 +72,6 @@ public abstract class ActionSpec implements Serializable {
      *
      * @return an arbitrary return object
      */
-    public abstract Object visit(final ActionVisitor visitor);
+    public abstract Object visit(ActionVisitor visitor);
 
 }

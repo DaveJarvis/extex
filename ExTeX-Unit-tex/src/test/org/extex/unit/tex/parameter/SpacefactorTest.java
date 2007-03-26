@@ -33,7 +33,7 @@ public class SpacefactorTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(SpacefactorTest.class);
     }
@@ -43,7 +43,7 @@ public class SpacefactorTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public SpacefactorTest(final String arg) {
+    public SpacefactorTest(String arg) {
 
         super(arg, "spacefactor", "1024", "a");
     }

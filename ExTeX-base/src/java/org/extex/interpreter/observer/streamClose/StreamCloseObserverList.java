@@ -42,8 +42,8 @@ public final class StreamCloseObserverList implements StreamCloseObserver {
      * @return the input list or a new one with the observer added
      */
     public static StreamCloseObserverList register(
-            final StreamCloseObserverList list,
-            final StreamCloseObserver observer) {
+            StreamCloseObserverList list,
+            StreamCloseObserver observer) {
 
         if (list == null) {
             StreamCloseObserverList result = new StreamCloseObserverList();
@@ -57,14 +57,15 @@ public final class StreamCloseObserverList implements StreamCloseObserver {
     /**
      * The field <tt>list</tt> contains the encapsulated list.
      */
-    private List list = new ArrayList();
+    private List<StreamCloseObserver> list =
+            new ArrayList<StreamCloseObserver>();
 
     /**
      * Add an observer to the list
      *
      * @param observer the observer to add to the list
      */
-    public void add(final StreamCloseObserver observer) {
+    public void add(StreamCloseObserver observer) {
 
         list.add(observer);
     }
@@ -77,10 +78,10 @@ public final class StreamCloseObserverList implements StreamCloseObserver {
      * @see org.extex.interpreter.observer.streamClose.StreamCloseObserver#update(
      *      org.extex.scanner.TokenStream)
      */
-    public void update(final TokenStream stream) {
+    public void update(TokenStream stream) {
 
-        for (int i = 0; i < list.size(); i++) {
-            ((StreamCloseObserver) list.get(i)).update(stream);
+        for (StreamCloseObserver obs : list) {
+            obs.update(stream);
         }
     }
 

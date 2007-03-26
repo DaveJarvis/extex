@@ -33,7 +33,7 @@ public class HangafterTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(HangafterTest.class);
     }
@@ -43,7 +43,7 @@ public class HangafterTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public HangafterTest(final String arg) {
+    public HangafterTest(String arg) {
 
         super(arg, "hangafter", "", "0");
     }

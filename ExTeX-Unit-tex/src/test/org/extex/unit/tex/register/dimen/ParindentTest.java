@@ -31,7 +31,7 @@ public class ParindentTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ParindentTest.class);
     }
@@ -41,7 +41,7 @@ public class ParindentTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public ParindentTest(final String arg) {
+    public ParindentTest(String arg) {
 
         super(arg, "parindent", "", "0.0pt");
     }

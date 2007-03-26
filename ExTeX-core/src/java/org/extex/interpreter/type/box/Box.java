@@ -89,10 +89,10 @@ public class Box implements BoxOrRule, Serializable {
      * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
      */
-    public Box(final Context context, final TokenSource source,
-            final Typesetter typesetter, final boolean isHorizontal,
-            final Tokens insert, final GroupType groupType,
-            final Token startToken) throws InterpreterException {
+    public Box(Context context, TokenSource source,
+            Typesetter typesetter, boolean isHorizontal,
+            Tokens insert, GroupType groupType,
+            Token startToken) throws InterpreterException {
 
         super();
 
@@ -134,7 +134,7 @@ public class Box implements BoxOrRule, Serializable {
      *
      * @param list the node list
      */
-    public Box(final NodeList list) {
+    public Box(NodeList list) {
 
         nodes = list;
     }
@@ -144,7 +144,7 @@ public class Box implements BoxOrRule, Serializable {
      *
      * @param box the box to copy (shallow)
      */
-    public Box(final Box box) {
+    public Box(Box box) {
 
         nodes = (box == null ? null : box.getNodes());
     }
@@ -268,7 +268,7 @@ public class Box implements BoxOrRule, Serializable {
      *
      * @param depth the new width
      */
-    public void setDepth(final Dimen depth) {
+    public void setDepth(Dimen depth) {
 
         if (nodes != null) {
             nodes.setDepth(depth);
@@ -281,7 +281,7 @@ public class Box implements BoxOrRule, Serializable {
      *
      * @param height the new width
      */
-    public void setHeight(final FixedDimen height) {
+    public void setHeight(FixedDimen height) {
 
         if (nodes != null) {
             if (nodes instanceof VerticalListNode) {
@@ -300,7 +300,7 @@ public class Box implements BoxOrRule, Serializable {
      *
      * @param d the new move parameter
      */
-    public void setMove(final Dimen d) {
+    public void setMove(Dimen d) {
 
         this.nodes.setMove(d);
     }
@@ -312,7 +312,7 @@ public class Box implements BoxOrRule, Serializable {
      *
      * @param d the new shift parameter
      */
-    public void setShift(final Dimen d) {
+    public void setShift(Dimen d) {
 
         this.nodes.setShift(d);
     }
@@ -323,7 +323,7 @@ public class Box implements BoxOrRule, Serializable {
      *
      * @param width the new width
      */
-    public void setWidth(final FixedDimen width) {
+    public void setWidth(FixedDimen width) {
 
         if (nodes != null) {
             nodes.setWidth(width);
@@ -338,7 +338,7 @@ public class Box implements BoxOrRule, Serializable {
      *
      * @param spread the length to add to the height
      */
-    public void spreadHeight(final FixedDimen spread) {
+    public void spreadHeight(FixedDimen spread) {
 
         if (nodes != null) {
             Dimen x = new Dimen(nodes.getHeight());
@@ -363,7 +363,7 @@ public class Box implements BoxOrRule, Serializable {
      *
      * @param spread the length to add to the width
      */
-    public void spreadWidth(final FixedDimen spread) {
+    public void spreadWidth(FixedDimen spread) {
 
         if (nodes != null) {
             Dimen x = new Dimen(nodes.getWidth());
@@ -384,7 +384,7 @@ public class Box implements BoxOrRule, Serializable {
      *
      * @see "TTP [977]"
      */
-    public VerticalListNode vsplit(final Dimen height, final Logger logger)
+    public VerticalListNode vsplit(Dimen height, Logger logger)
             throws OperationNotSupportedException {
 
         if (!isVbox()) {

@@ -119,7 +119,7 @@ public abstract class AbstractHyphenationCode extends AbstractCode {
      *
      * @param name the name for debugging
      */
-    public AbstractHyphenationCode(final String name) {
+    public AbstractHyphenationCode(String name) {
 
         super(name);
     }
@@ -133,7 +133,7 @@ public abstract class AbstractHyphenationCode extends AbstractCode {
      *
      * @throws InterpreterException in case of an error
      */
-    protected Language getHyphenationTable(final Context context)
+    protected Language getHyphenationTable(Context context)
             throws InterpreterException {
 
         Tokens lang = context.getToksOrNull(LANGUAGE_TOKS);

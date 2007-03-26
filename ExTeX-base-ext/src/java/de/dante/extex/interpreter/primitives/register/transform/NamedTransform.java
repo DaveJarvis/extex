@@ -58,7 +58,7 @@ public class NamedTransform extends AbstractAssignment implements Theable {
      * Creates a new object.
      * @param name the name for debugging
      */
-    public NamedTransform(final String name) {
+    public NamedTransform(String name) {
 
         super(name);
     }
@@ -70,8 +70,8 @@ public class NamedTransform extends AbstractAssignment implements Theable {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -97,7 +97,7 @@ public class NamedTransform extends AbstractAssignment implements Theable {
      * @param value      the new value
      * @throws InterpreterException if an error occurred.
      */
-    public void set(final Context context, final Transform value)
+    public void set(Context context, Transform value)
             throws InterpreterException {
 
         if (context instanceof ContextExtension) {
@@ -115,7 +115,7 @@ public class NamedTransform extends AbstractAssignment implements Theable {
      * @param value      the new value as String
      * @throws InterpreterException if an error occured.
      */
-    public void set(final Context context, final String value)
+    public void set(Context context, String value)
             throws InterpreterException {
 
         if (context instanceof ContextExtension) {
@@ -144,8 +144,8 @@ public class NamedTransform extends AbstractAssignment implements Theable {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter)
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 CatcodeException {
 
@@ -166,7 +166,7 @@ public class NamedTransform extends AbstractAssignment implements Theable {
      * @return the key
      * @throws InterpreterException if an error occured.
      */
-    protected String getKey(final Context context, final TokenSource source)
+    protected String getKey(Context context, TokenSource source)
             throws InterpreterException {
 
         return getName();

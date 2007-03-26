@@ -37,7 +37,7 @@ public class BoolRegisterTest extends TestCase {
      * Creates a new object.
      * @param arg0 ...
      */
-    public BoolRegisterTest(final String arg0) {
+    public BoolRegisterTest(String arg0) {
 
         super(arg0);
     }
@@ -46,7 +46,7 @@ public class BoolRegisterTest extends TestCase {
      * ...
      * @param args ...
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(BoolRegisterTest.class);
     }

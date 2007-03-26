@@ -34,7 +34,7 @@ public class MskipTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public MskipTest(final String arg) {
+    public MskipTest(String arg) {
 
         super(arg, "mskip", " 1mu");
     }

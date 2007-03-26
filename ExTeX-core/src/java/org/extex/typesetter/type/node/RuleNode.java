@@ -64,9 +64,9 @@ public class RuleNode extends AbstractNode implements Node {
      *
      * @see "<logo>TeX</logo> &ndash; The Program [139]"
      */
-    public RuleNode(final FixedDimen width, final FixedDimen height,
-            final FixedDimen depth, final TypesettingContext theContext,
-            final boolean horizontal) {
+    public RuleNode(FixedDimen width, FixedDimen height,
+            FixedDimen depth, TypesettingContext theContext,
+            boolean horizontal) {
 
         super(width, height, depth);
         this.context = theContext;
@@ -110,8 +110,8 @@ public class RuleNode extends AbstractNode implements Node {
      *      int,
      *      int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         FixedDimen x = getHeight();
         String h = (x == null ? "*" : x.toString());
@@ -134,7 +134,7 @@ public class RuleNode extends AbstractNode implements Node {
      *      java.lang.StringBuffer,
      *      java.lang.String)
      */
-    public void toText(final StringBuffer sb, final String prefix) {
+    public void toText(StringBuffer sb, String prefix) {
 
         FixedDimen x = getHeight();
         String h = (x == null ? "*" : x.toString());
@@ -159,7 +159,7 @@ public class RuleNode extends AbstractNode implements Node {
      *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final NodeVisitor visitor, final Object value)
+    public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {
 
         return visitor.visitRule(this, value);

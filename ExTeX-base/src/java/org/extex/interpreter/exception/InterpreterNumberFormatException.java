@@ -47,7 +47,7 @@ public class InterpreterNumberFormatException extends InterpreterException {
      *
      * @param message   the message
      */
-    public InterpreterNumberFormatException(final String message) {
+    public InterpreterNumberFormatException(String message) {
 
         super(message);
     }

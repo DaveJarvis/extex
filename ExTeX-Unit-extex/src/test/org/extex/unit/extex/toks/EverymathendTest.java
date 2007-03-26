@@ -33,7 +33,7 @@ public class EverymathendTest extends AbstractToksRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(EverymathendTest.class);
     }
@@ -43,7 +43,7 @@ public class EverymathendTest extends AbstractToksRegisterTester {
      *
      * @param arg the name
      */
-    public EverymathendTest(final String arg) {
+    public EverymathendTest(String arg) {
 
         super(arg, "everymathend", "", "");
         setConfig("extex-test");

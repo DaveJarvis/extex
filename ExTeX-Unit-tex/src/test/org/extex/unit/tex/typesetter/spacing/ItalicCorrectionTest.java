@@ -33,7 +33,7 @@ public class ItalicCorrectionTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ItalicCorrectionTest.class);
     }
@@ -43,7 +43,7 @@ public class ItalicCorrectionTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public ItalicCorrectionTest(final String arg) {
+    public ItalicCorrectionTest(String arg) {
 
         super(arg, "/", "");
     }

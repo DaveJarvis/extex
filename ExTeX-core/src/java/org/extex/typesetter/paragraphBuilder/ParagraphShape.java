@@ -61,7 +61,7 @@ public class ParagraphShape implements Serializable {
      * @param left the left margin
      * @param right the right margin
      */
-    public void add(final Dimen left, final Dimen right) {
+    public void add(Dimen left, Dimen right) {
 
         points.add(left);
         points.add(right);
@@ -77,7 +77,7 @@ public class ParagraphShape implements Serializable {
      *
      * @return the left hand margin
      */
-    public FixedDimen getIndent(final int index) {
+    public FixedDimen getIndent(int index) {
 
         if (index < 0) {
             return Dimen.ZERO_PT;
@@ -96,7 +96,7 @@ public class ParagraphShape implements Serializable {
      *
      * @return the right hand margin
      */
-    public FixedDimen getLength(final int index) {
+    public FixedDimen getLength(int index) {
 
         if (index < 0) {
             return Dimen.ZERO_PT;

@@ -36,7 +36,7 @@ public class T1LanguageGroup extends T1DictNumber {
      * @param stack the stack
      * @throws IOException if an IO.error occurs.
      */
-    public T1LanguageGroup(final List stack) throws IOException {
+    public T1LanguageGroup(List stack) throws IOException {
 
         super(stack, new short[]{LanguageGroup});
     }

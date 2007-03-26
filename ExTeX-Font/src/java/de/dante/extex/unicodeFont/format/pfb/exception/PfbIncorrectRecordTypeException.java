@@ -45,7 +45,7 @@ public class PfbIncorrectRecordTypeException extends PfbException {
      *
      * @param message   the message
      */
-    public PfbIncorrectRecordTypeException(final String message) {
+    public PfbIncorrectRecordTypeException(String message) {
 
         super(message);
     }

@@ -33,7 +33,7 @@ public class PdfdecimaldigitsTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PdfdecimaldigitsTest.class);
     }
@@ -43,7 +43,7 @@ public class PdfdecimaldigitsTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public PdfdecimaldigitsTest(final String arg) {
+    public PdfdecimaldigitsTest(String arg) {
 
         super(arg, "pdfdecimaldigits", "", "3");
         setConfig("pdftex-test");

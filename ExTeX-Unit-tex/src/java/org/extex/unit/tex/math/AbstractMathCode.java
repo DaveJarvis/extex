@@ -45,7 +45,7 @@ public abstract class AbstractMathCode extends AbstractCode {
      *
      * @param name the name for tracing and debugging
      */
-    public AbstractMathCode(final String name) {
+    public AbstractMathCode(String name) {
 
         super(name);
     }
@@ -62,8 +62,8 @@ public abstract class AbstractMathCode extends AbstractCode {
      * @throws MissingMathException in case that the current mode is not a
      *  math mode
      */
-    protected NoadConsumer getListMaker(final Context context,
-            final Typesetter typesetter) throws MissingMathException {
+    protected NoadConsumer getListMaker(Context context,
+            Typesetter typesetter) throws MissingMathException {
 
         ListMaker lm = typesetter.getListMaker();
         if (!(lm instanceof NoadConsumer)) {

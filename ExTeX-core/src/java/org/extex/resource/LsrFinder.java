@@ -32,8 +32,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import org.extex.core.StringList;
-import org.extex.core.StringListIterator;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationIOException;
@@ -150,7 +148,7 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
     /**
      * The field <tt>cache</tt> contains the map for the ls-R entries.
      */
-    private Map cache = null;
+    private Map<String, Object> cache = null;
 
     /**
      * The field <tt>initialCapacity</tt> contains the initial capacity of the
@@ -172,7 +170,7 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
      *
      * @throws ConfigurationMissingException in case of an error
      */
-    public LsrFinder(final Configuration configuration)
+    public LsrFinder(Configuration configuration)
             throws ConfigurationMissingException {
 
         super(configuration);
@@ -191,7 +189,8 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
      * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
      *      java.lang.String)
      */
-    public InputStream findResource(final String name, final String type)
+    @SuppressWarnings("unchecked")
+    public InputStream findResource(String name, String type)
             throws ConfigurationException {
 
         trace("Searching", name, type, null);
@@ -222,10 +221,9 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
             return null;
         }
 
-        StringListIterator it = cfg.getValues(EXTENSION_TAG).getIterator();
+        for (String ext : cfg.getValues(EXTENSION_TAG)) {
 
-        while (it.hasNext()) {
-            Object c = cache.get(name + it.next());
+            Object c = cache.get(name + ext);
             if (c == null) {
                 continue;
             } else if (c instanceof File) {
@@ -244,9 +242,7 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
                 }
             } else {
 
-                List l = (List) c;
-                for (int i = 0; i < l.size(); i++) {
-                    File file = (File) l.get(i);
+                for (File file : (List<File>) c) {
                     if (file != null) {
                         trace("Try", file.toString(), null, null);
                         if (!file.canRead()) {
@@ -285,9 +281,8 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
         }
 
         cache =
-                (initialCapacity > 0
-                        ? new HashMap(initialCapacity)
-                        : new HashMap());
+                (initialCapacity > 0 ? new HashMap<String, Object>(
+                    initialCapacity) : new HashMap<String, Object>());
 
         while (it.hasNext()) {
             Configuration cfg = (Configuration) it.next();
@@ -298,11 +293,9 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
                 if (name == null) {
                     trace("UndefinedProperty", pathProperty, null, null);
                 } else {
-                    StringListIterator sit =
-                            new StringList(name, System.getProperty(
-                                "path.separator", ":")).getIterator();
-                    while (sit.hasNext()) {
-                        load(sit.next());
+                    for (String s : name.split(System.getProperty(
+                        "path.separator", ":"))) {
+                        load(s);
                     }
                 }
             } else {
@@ -321,7 +314,7 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
      *
      * @throws ConfigurationException if an error occurred
      */
-    private void load(final String path) throws ConfigurationException {
+    private void load(String path) throws ConfigurationException {
 
         long start = System.currentTimeMillis();
         File file = new File(path, LSR_FILE_NAME);
@@ -362,12 +355,13 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
                             if (cc == null) {
                                 cache.put(key, value);
                             } else if (cc instanceof File) {
-                                List list = new ArrayList(INITIAL_LIST_SIZE);
+                                List<Object> list =
+                                        new ArrayList<Object>(INITIAL_LIST_SIZE);
                                 cache.put(key, list);
                                 list.add(cc);
                                 list.add(value);
                             } else {
-                                List list = (List) cc;
+                                List<File> list = (List) cc;
                                 list.add(value);
                             }
                         }
@@ -427,7 +421,7 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
      * @see org.extex.resource.PropertyConfigurable#setProperties(
      *      java.util.Properties)
      */
-    public void setProperties(final Properties prop) {
+    public void setProperties(Properties prop) {
 
         properties = prop;
     }

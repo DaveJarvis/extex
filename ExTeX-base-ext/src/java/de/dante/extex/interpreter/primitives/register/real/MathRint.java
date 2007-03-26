@@ -62,7 +62,7 @@ public class MathRint extends AbstractMath
      * @param name the name for debugging
      * @throws GeneralException ...
      */
-    public MathRint(final String name) throws GeneralException {
+    public MathRint(String name) throws GeneralException {
 
         super(name);
 
@@ -78,7 +78,7 @@ public class MathRint extends AbstractMath
      * @throws InterpreterException if a error occurred
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Real calculate(final Context context, final TokenSource source)
+    protected Real calculate(Context context, TokenSource source)
             throws InterpreterException,
                 ConfigurationException {
 

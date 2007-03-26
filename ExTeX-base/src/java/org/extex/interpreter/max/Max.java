@@ -146,7 +146,7 @@ import org.extex.unit.base.register.count.util.IntegerCode;
  *      &rarr; <tt>\ignorevoid</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -335,8 +335,8 @@ public abstract class Max
          *      org.extex.scanner.type.token.ActiveCharacterToken,
          *      java.lang.Object)
          */
-        public Object visitActive(final ActiveCharacterToken token,
-                final Object arg) throws Exception {
+        public Object visitActive(ActiveCharacterToken token,
+                Object arg) throws Exception {
 
             Code code = context.getCode(token);
             if (code instanceof ExpandableCode) {
@@ -363,7 +363,7 @@ public abstract class Max
          * @see org.extex.scanner.type.token.TokenVisitor#visitCr(
          *      org.extex.scanner.type.token.CrToken, java.lang.Object)
          */
-        public Object visitCr(final CrToken token, final Object arg)
+        public Object visitCr(CrToken token, Object arg)
                 throws Exception {
 
             //TODO gene: unimplemented
@@ -384,8 +384,8 @@ public abstract class Max
          *      org.extex.scanner.type.token.ControlSequenceToken,
          *      java.lang.Object)
          */
-        public Object visitEscape(final ControlSequenceToken token,
-                final Object arg) throws Exception {
+        public Object visitEscape(ControlSequenceToken token,
+                Object arg) throws Exception {
 
             Code code = context.getCode(token);
             if (code instanceof ExpandableCode) {
@@ -412,8 +412,8 @@ public abstract class Max
          *      org.extex.scanner.type.token.LeftBraceToken,
          *      java.lang.Object)
          */
-        public Object visitLeftBrace(final LeftBraceToken token,
-                final Object arg) {
+        public Object visitLeftBrace(LeftBraceToken token,
+                Object arg) {
 
             return token;
         }
@@ -429,7 +429,7 @@ public abstract class Max
          *      org.extex.scanner.type.token.LetterToken,
          *      java.lang.Object)
          */
-        public Object visitLetter(final LetterToken token, final Object arg) {
+        public Object visitLetter(LetterToken token, Object arg) {
 
             return token;
         }
@@ -446,8 +446,8 @@ public abstract class Max
          *      org.extex.scanner.type.token.MacroParamToken,
          *      java.lang.Object)
          */
-        public Object visitMacroParam(final MacroParamToken token,
-                final Object arg) {
+        public Object visitMacroParam(MacroParamToken token,
+                Object arg) {
 
             return token;
         }
@@ -464,8 +464,8 @@ public abstract class Max
          *      org.extex.scanner.type.token.MathShiftToken,
          *      java.lang.Object)
          */
-        public Object visitMathShift(final MathShiftToken token,
-                final Object arg) {
+        public Object visitMathShift(MathShiftToken token,
+                Object arg) {
 
             return token;
         }
@@ -481,7 +481,7 @@ public abstract class Max
          *      org.extex.scanner.type.token.OtherToken,
          *      java.lang.Object)
          */
-        public Object visitOther(final OtherToken token, final Object arg) {
+        public Object visitOther(OtherToken token, Object arg) {
 
             return token;
         }
@@ -497,8 +497,8 @@ public abstract class Max
          *      org.extex.scanner.type.token.RightBraceToken,
          *      java.lang.Object)
          */
-        public Object visitRightBrace(final RightBraceToken token,
-                final Object arg) {
+        public Object visitRightBrace(RightBraceToken token,
+                Object arg) {
 
             return token;
         }
@@ -514,7 +514,7 @@ public abstract class Max
          *      org.extex.scanner.type.token.SpaceToken,
          *      java.lang.Object)
          */
-        public Object visitSpace(final SpaceToken token, final Object arg) {
+        public Object visitSpace(SpaceToken token, Object arg) {
 
             return token;
         }
@@ -531,7 +531,7 @@ public abstract class Max
          *      org.extex.scanner.type.token.SubMarkToken,
          *      java.lang.Object)
          */
-        public Object visitSubMark(final SubMarkToken token, final Object arg) {
+        public Object visitSubMark(SubMarkToken token, Object arg) {
 
             return token;
         }
@@ -548,7 +548,7 @@ public abstract class Max
          *      org.extex.scanner.type.token.SupMarkToken,
          *      java.lang.Object)
          */
-        public Object visitSupMark(final SupMarkToken token, final Object arg) {
+        public Object visitSupMark(SupMarkToken token, Object arg) {
 
             return token;
         }
@@ -565,7 +565,7 @@ public abstract class Max
          *      org.extex.scanner.type.token.TabMarkToken,
          *      java.lang.Object)
          */
-        public Object visitTabMark(final TabMarkToken token, final Object arg) {
+        public Object visitTabMark(TabMarkToken token, Object arg) {
 
             return token;
         }
@@ -590,7 +590,7 @@ public abstract class Max
              * @see org.extex.interpreter.observer.start.StartObserver#update(
              *      org.extex.interpreter.Interpreter)
              */
-            public void update(final Interpreter interpreter)
+            public void update(Interpreter interpreter)
                     throws InterpreterException {
 
                 try {
@@ -618,7 +618,7 @@ public abstract class Max
      *
      * @throws ConfigurationException in case of a configuration error
      */
-    public void configure(final Configuration config) {
+    public void configure(Configuration config) {
 
         if (config == null) {
             throw new ConfigurationMissingException("Interpreter");
@@ -635,7 +635,7 @@ public abstract class Max
      * @see org.extex.framework.i18n.Localizable#enableLocalization(
      *      org.extex.framework.i18n.Localizer)
      */
-    public void enableLocalization(final Localizer theLocalizer) {
+    public void enableLocalization(Localizer theLocalizer) {
 
         this.localizer = theLocalizer;
     }
@@ -648,7 +648,7 @@ public abstract class Max
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *         java.util.logging.Logger)
      */
-    public void enableLogging(final Logger theLogger) {
+    public void enableLogging(Logger theLogger) {
 
         this.logger = theLogger;
     }
@@ -664,7 +664,7 @@ public abstract class Max
      *   the configured error limit</li>
      * </ul>
      */
-    private void execute(final Switch onceMore) throws InterpreterException {
+    private void execute(Switch onceMore) throws InterpreterException {
 
         for (Token token = getToken(context); token != null; token =
                 getToken(context)) {
@@ -709,8 +709,8 @@ public abstract class Max
      * @see org.extex.interpreter.TokenSource#execute(
      *      org.extex.scanner.type.token.Token, Context, Typesetter)
      */
-    public void execute(final Token token, final Context theContext,
-            final Typesetter theTypesetter) throws InterpreterException {
+    public void execute(Token token, Context theContext,
+            Typesetter theTypesetter) throws InterpreterException {
 
         if (observersCommand != null) {
             observersCommand.update(token);
@@ -760,7 +760,7 @@ public abstract class Max
      * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Token expand(final Token token) throws InterpreterException {
+    protected Token expand(Token token) throws InterpreterException {
 
         Token t = token;
         Code code;
@@ -789,14 +789,14 @@ public abstract class Max
      *
      * @return the expanded tokens
      *
-     * @throws GeneralException in case of an error
+     * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration problem
      *
      * @see org.extex.interpreter.Interpreter#expand(
      *      org.extex.scanner.type.tokens.Tokens,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens expand(final Tokens tokens, final Typesetter typesetter)
+    public Tokens expand(Tokens tokens, Typesetter typesetter)
             throws InterpreterException {
 
         Tokens result = new Tokens();
@@ -838,7 +838,7 @@ public abstract class Max
      * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Token expandUnproteced(final Token token, final Tokens tokens)
+    protected Token expandUnproteced(Token token, Tokens tokens)
             throws InterpreterException {
 
         Token t = token;
@@ -866,6 +866,8 @@ public abstract class Max
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.max.Moritz#getContext()
      */
     public Context getContext() {
@@ -934,8 +936,8 @@ public abstract class Max
      *  especially<br>
      *  ErrorLimitException in case that the error limit has been exceeded.
      */
-    private void handleException(final Token token, final Context cx,
-            final InterpreterException e, final Typesetter ts)
+    private void handleException(Token token, Context cx,
+            InterpreterException e, Typesetter ts)
             throws InterpreterException {
 
         if (e.isProcessed()) {
@@ -983,7 +985,7 @@ public abstract class Max
      *      &rarr; <tt>\day</tt> {@linkplain
      *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
-     *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
+     *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      *
      * <h4>Examples</h4>
@@ -1015,7 +1017,7 @@ public abstract class Max
      *      &rarr; <tt>\month</tt> {@linkplain
      *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
-     *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
+     *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      *
      * <h4>Examples</h4>
@@ -1046,7 +1048,7 @@ public abstract class Max
      *      &rarr; <tt>\year</tt> {@linkplain
      *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
-     *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
+     *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      *
      * <h4>Examples</h4>
@@ -1079,7 +1081,7 @@ public abstract class Max
      *      &rarr; <tt>\time</tt> {@linkplain
      *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
-     *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
+     *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      *
      * <h4>Examples</h4>
@@ -1099,7 +1101,7 @@ public abstract class Max
      *
      * @throws InterpreterException in case of an error
      */
-    protected void initializeDate(final Calendar calendar)
+    protected void initializeDate(Calendar calendar)
             throws InterpreterException {
 
         context.setCount("day", calendar.get(Calendar.DAY_OF_MONTH), true);
@@ -1128,8 +1130,8 @@ public abstract class Max
      *      java.lang.String,
      *      java.lang.String)
      */
-    public void loadFormat(final InputStream stream, final String fmt,
-            final String contextType, final String languageType)
+    public void loadFormat(InputStream stream, String fmt,
+            String contextType, String languageType)
             throws IOException,
                 LoaderException {
 
@@ -1140,7 +1142,7 @@ public abstract class Max
              * @see org.extex.framework.RegistrarObserver#reconnect(
              *      java.lang.Object)
              */
-            public Object reconnect(final Object object) {
+            public Object reconnect(Object object) {
 
                 ((LogEnabled) object).enableLogging(logger);
                 return object;
@@ -1153,7 +1155,7 @@ public abstract class Max
              * @see org.extex.framework.RegistrarObserver#reconnect(
              *      java.lang.Object)
              */
-            public Object reconnect(final Object object) {
+            public Object reconnect(Object object) {
 
                 ((Localizable) object).enableLocalization(LocalizerFactory
                     .getLocalizer(object.getClass()));
@@ -1230,7 +1232,7 @@ public abstract class Max
      *
      * @see org.extex.interpreter.Interpreter#loadUnit(java.lang.String)
      */
-    public void loadUnit(final String name) {
+    public void loadUnit(String name) {
 
         Configuration cfg = new ConfigurationFactory().newInstance(name);
 
@@ -1251,7 +1253,7 @@ public abstract class Max
      *
      * @param observer the observer to add
      */
-    public void registerObserver(final CommandObserver observer) {
+    public void registerObserver(CommandObserver observer) {
 
         observersCommand =
                 CommandObserverList.register(observersCommand, observer);
@@ -1262,7 +1264,7 @@ public abstract class Max
      *
      * @param observer the observer to add
      */
-    public void registerObserver(final ErrorObserver observer) {
+    public void registerObserver(ErrorObserver observer) {
 
         observersError = ErrorObserverList.register(observersError, observer);
     }
@@ -1272,7 +1274,7 @@ public abstract class Max
      *
      * @param observer the observer to add
      */
-    public void registerObserver(final ExpandMacroObserver observer) {
+    public void registerObserver(ExpandMacroObserver observer) {
 
         observersMacro =
                 ExpandMacroObserverList.register(observersMacro, observer);
@@ -1283,7 +1285,7 @@ public abstract class Max
      *
      * @param observer the observer to add
      */
-    public void registerObserver(final ExpandObserver observer) {
+    public void registerObserver(ExpandObserver observer) {
 
         observersExpand =
                 ExpandObserverList.register(observersExpand, observer);
@@ -1293,7 +1295,7 @@ public abstract class Max
      * @see org.extex.interpreter.observer.load.LoadObservable#registerObserver(
      *      org.extex.interpreter.observer.load.LoadObserver)
      */
-    public void registerObserver(final LoadObserver observer) {
+    public void registerObserver(LoadObserver observer) {
 
         observersLoad = LoadObserverList.register(observersLoad, observer);
     }
@@ -1303,7 +1305,7 @@ public abstract class Max
      *
      * @param observer the observer to add
      */
-    public void registerObserver(final StartObserver observer) {
+    public void registerObserver(StartObserver observer) {
 
         observersStart = StartObserverList.register(observersStart, observer);
     }
@@ -1313,7 +1315,7 @@ public abstract class Max
      *
      * @param observer the observer to add
      */
-    public void registerObserver(final StopObserver observer) {
+    public void registerObserver(StopObserver observer) {
 
         observersStop = StopObserverList.register(observersStop, observer);
     }
@@ -1325,7 +1327,7 @@ public abstract class Max
      *
      * @throws HelpingException with the appropriate error message
      */
-    private void reportDirtyFlag(final Token token) throws HelpingException {
+    private void reportDirtyFlag(Token token) throws HelpingException {
 
         String cause = prefix.toText();
         prefix.clear();
@@ -1415,7 +1417,7 @@ public abstract class Max
      * @see org.extex.interpreter.Interpreter#run(
      *      org.extex.scanner.TokenStream)
      */
-    public void run(final TokenStream stream) throws InterpreterException {
+    public void run(TokenStream stream) throws InterpreterException {
 
         addStream(stream);
         run();
@@ -1432,7 +1434,7 @@ public abstract class Max
      * @see org.extex.interpreter.Interpreter#setContext(
      *      org.extex.interpreter.context.Context)
      */
-    public Context setContext(final Context context) {
+    public Context setContext(Context context) {
 
         Context c = this.context;
         this.context = context;
@@ -1448,7 +1450,7 @@ public abstract class Max
      * @see org.extex.interpreter.Interpreter#setErrorHandler(
      *      org.extex.interpreter.ErrorHandler)
      */
-    public void setErrorHandler(final ErrorHandler handler) {
+    public void setErrorHandler(ErrorHandler handler) {
 
         errorHandler = handler;
     }
@@ -1461,7 +1463,7 @@ public abstract class Max
      * @see org.extex.interpreter.Interpreter#setFontFactory(
      *      org.extex.font.CoreFontFactory)
      */
-    public void setFontFactory(final CoreFontFactory fontFactory) {
+    public void setFontFactory(CoreFontFactory fontFactory) {
 
         context.setFontFactory(fontFactory);
     }
@@ -1476,7 +1478,7 @@ public abstract class Max
      * @see org.extex.interpreter.Interpreter#setInteraction(
      *      org.extex.interpreter.interaction.Interaction)
      */
-    public void setInteraction(final Interaction interaction)
+    public void setInteraction(Interaction interaction)
             throws GeneralException {
 
         context.setInteraction(interaction);
@@ -1491,7 +1493,7 @@ public abstract class Max
      *
      * @see org.extex.interpreter.Interpreter#setJobname(java.lang.String)
      */
-    public void setJobname(final String jobname) throws GeneralException {
+    public void setJobname(String jobname) throws GeneralException {
 
         context.setToks("jobname", //
             context.getTokenFactory().toTokens( jobname), true);
@@ -1505,7 +1507,7 @@ public abstract class Max
      * @see org.extex.interpreter.type.OutputStreamConsumer#setOutputStreamFactory(
      *      org.extex.backend.outputStream.OutputStreamFactory)
      */
-    public void setOutputStreamFactory(final OutputStreamFactory factory) {
+    public void setOutputStreamFactory(OutputStreamFactory factory) {
 
         this.outFactory = factory;
     }
@@ -1518,7 +1520,7 @@ public abstract class Max
      * @see org.extex.interpreter.Interpreter#setTypesetter(
      *      org.extex.typesetter.Typesetter)
      */
-    public void setTypesetter(final Typesetter typesetter) {
+    public void setTypesetter(Typesetter typesetter) {
 
         this.typesetter = typesetter;
     }
@@ -1539,8 +1541,8 @@ public abstract class Max
      *      org.extex.scanner.type.token.ActiveCharacterToken,
      *      java.lang.Object)
      */
-    public Object visitActive(final ActiveCharacterToken token,
-            final Object ignore) throws InterpreterException {
+    public Object visitActive(ActiveCharacterToken token,
+            Object ignore) throws InterpreterException {
 
         Code code = context.getCode(token);
         if (code == null) {
@@ -1574,7 +1576,7 @@ public abstract class Max
      * @see org.extex.scanner.type.token.TokenVisitor#visitCr(
      *      org.extex.scanner.type.token.CrToken, java.lang.Object)
      */
-    public Object visitCr(final CrToken token, final Object ignore)
+    public Object visitCr(CrToken token, Object ignore)
             throws InterpreterException {
 
         if (prefix.isDirty()) {
@@ -1601,8 +1603,8 @@ public abstract class Max
      *      org.extex.scanner.type.token.ControlSequenceToken,
      *      java.lang.Object)
      */
-    public Object visitEscape(final ControlSequenceToken token,
-            final Object ignore) throws InterpreterException {
+    public Object visitEscape(ControlSequenceToken token,
+            Object ignore) throws InterpreterException {
 
         Code code = context.getCode(token);
         if (observersMacro != null) {
@@ -1641,7 +1643,7 @@ public abstract class Max
      *      org.extex.scanner.type.token.LeftBraceToken,
      *      java.lang.Object)
      */
-    public Object visitLeftBrace(final LeftBraceToken token, final Object ignore)
+    public Object visitLeftBrace(LeftBraceToken token, Object ignore)
             throws InterpreterException {
 
         if (prefix.isDirty()) {
@@ -1667,7 +1669,7 @@ public abstract class Max
      *      org.extex.scanner.type.token.LetterToken,
      *      java.lang.Object)
      */
-    public Object visitLetter(final LetterToken token, final Object ignore)
+    public Object visitLetter(LetterToken token, Object ignore)
             throws InterpreterException {
 
         if (prefix.isDirty()) {
@@ -1701,8 +1703,8 @@ public abstract class Max
      *      org.extex.scanner.type.token.MacroParamToken,
      *      java.lang.Object)
      */
-    public Object visitMacroParam(final MacroParamToken token,
-            final Object ignore) throws GeneralException {
+    public Object visitMacroParam(MacroParamToken token,
+            Object ignore) throws GeneralException {
 
         throw new CantUseInException(token.toString(), typesetter.getMode()
             .toString());
@@ -1726,7 +1728,7 @@ public abstract class Max
      *      org.extex.scanner.type.token.MathShiftToken,
      *      java.lang.Object)
      */
-    public Object visitMathShift(final MathShiftToken token, final Object ignore)
+    public Object visitMathShift(MathShiftToken token, Object ignore)
             throws InterpreterException {
 
         if (prefix.isDirty()) {
@@ -1752,7 +1754,7 @@ public abstract class Max
      *      org.extex.scanner.type.token.OtherToken,
      *      java.lang.Object)
      */
-    public Object visitOther(final OtherToken token, final Object ignore)
+    public Object visitOther(OtherToken token, Object ignore)
             throws InterpreterException {
 
         if (prefix.isDirty()) {
@@ -1780,8 +1782,8 @@ public abstract class Max
      *      org.extex.scanner.type.token.RightBraceToken,
      *      java.lang.Object)
      */
-    public Object visitRightBrace(final RightBraceToken token,
-            final Object ignore) throws InterpreterException {
+    public Object visitRightBrace(RightBraceToken token,
+            Object ignore) throws InterpreterException {
 
         if (prefix.isDirty()) {
             reportDirtyFlag(token);
@@ -1808,7 +1810,7 @@ public abstract class Max
      *      org.extex.scanner.type.token.SpaceToken,
      *      java.lang.Object)
      */
-    public Object visitSpace(final SpaceToken token, final Object ignore)
+    public Object visitSpace(SpaceToken token, Object ignore)
             throws GeneralException {
 
         if (prefix.isDirty()) {
@@ -1835,7 +1837,7 @@ public abstract class Max
      *      org.extex.scanner.type.token.SubMarkToken,
      *      java.lang.Object)
      */
-    public Object visitSubMark(final SubMarkToken token, final Object ignore)
+    public Object visitSubMark(SubMarkToken token, Object ignore)
             throws InterpreterException {
 
         if (prefix.isDirty()) {
@@ -1870,7 +1872,7 @@ public abstract class Max
      *      org.extex.scanner.type.token.SupMarkToken,
      *      java.lang.Object)
      */
-    public Object visitSupMark(final SupMarkToken token, final Object ignore)
+    public Object visitSupMark(SupMarkToken token, Object ignore)
             throws InterpreterException {
 
         if (prefix.isDirty()) {
@@ -1906,7 +1908,7 @@ public abstract class Max
      *      org.extex.scanner.type.token.TabMarkToken,
      *      java.lang.Object)
      */
-    public Object visitTabMark(final TabMarkToken token, final Object ignore)
+    public Object visitTabMark(TabMarkToken token, Object ignore)
             throws InterpreterException {
 
         if (prefix.isDirty()) {

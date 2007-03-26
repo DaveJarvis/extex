@@ -59,7 +59,7 @@ public class InterpreterException extends GeneralException {
      *
      * @param localizer the localizer
      */
-    public InterpreterException(final Localizer localizer) {
+    public InterpreterException(Localizer localizer) {
 
         super();
         this.localizer = localizer;
@@ -70,7 +70,7 @@ public class InterpreterException extends GeneralException {
      *
      * @param message the message field
      */
-    public InterpreterException(final String message) {
+    public InterpreterException(String message) {
 
         super(message);
     }
@@ -81,7 +81,7 @@ public class InterpreterException extends GeneralException {
      * @param message the message field
      * @param cause the root of all evil
      */
-    public InterpreterException(final String message, final Throwable cause) {
+    public InterpreterException(String message, Throwable cause) {
 
         super(message, cause);
     }
@@ -91,7 +91,7 @@ public class InterpreterException extends GeneralException {
      *
      * @param cause the root of all evil
      */
-    public InterpreterException(final Throwable cause) {
+    public InterpreterException(Throwable cause) {
 
         super(cause);
     }
@@ -123,7 +123,7 @@ public class InterpreterException extends GeneralException {
      *
      * @param processed the processed to set
      */
-    public void setProcessed(final boolean processed) {
+    public void setProcessed(boolean processed) {
 
         this.processed = processed;
     }

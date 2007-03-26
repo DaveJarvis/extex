@@ -44,7 +44,7 @@ public class ConfigurationMissingException extends ConfigurationException {
      *
      * @param message the message string
      */
-    public ConfigurationMissingException(final String message) {
+    public ConfigurationMissingException(String message) {
 
         super(message, (String) null);
     }
@@ -55,8 +55,8 @@ public class ConfigurationMissingException extends ConfigurationException {
      * @param message the message string
      * @param location the location of the missing configuration item
      */
-    public ConfigurationMissingException(final String message,
-            final String location) {
+    public ConfigurationMissingException(String message,
+            String location) {
 
         super(null, location);
         item = message;
@@ -68,8 +68,8 @@ public class ConfigurationMissingException extends ConfigurationException {
      * @param message message the message string
      * @param cause the next Throwable in the list
      */
-    public ConfigurationMissingException(final String message,
-            final Throwable cause) {
+    public ConfigurationMissingException(String message,
+            Throwable cause) {
 
         super(message, cause);
     }

@@ -32,7 +32,7 @@ public class MathaccentTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public MathaccentTest(final String arg) {
+    public MathaccentTest(String arg) {
 
         super(arg, "mathaccent", "12 a");
     }

@@ -34,7 +34,7 @@ public class LengthParserTest extends ExTeXLauncher {
      *
      * @param arg the argument
      */
-    public LengthParserTest(final String arg) {
+    public LengthParserTest(String arg) {
 
         super(arg);
     }

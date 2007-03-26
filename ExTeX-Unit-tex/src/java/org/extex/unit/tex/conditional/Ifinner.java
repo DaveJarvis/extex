@@ -66,7 +66,7 @@ public class Ifinner extends AbstractIf {
      *
      * @param name the name for debugging
      */
-    public Ifinner(final String name) {
+    public Ifinner(String name) {
 
         super(name);
     }
@@ -88,8 +88,8 @@ public class Ifinner extends AbstractIf {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(final Context context,
-            final TokenSource source, final Typesetter typesetter) {
+    public boolean conditional(Context context,
+            TokenSource source, Typesetter typesetter) {
 
         Mode mode = typesetter.getMode();
         return (mode == Mode.RESTRICTED_HORIZONTAL

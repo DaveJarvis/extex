@@ -34,7 +34,7 @@ public class AboveTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public AboveTest(final String arg) {
+    public AboveTest(String arg) {
 
         super(arg, "above", "1pt b$", "a");
     }

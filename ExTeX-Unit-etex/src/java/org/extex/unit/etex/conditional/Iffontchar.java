@@ -68,7 +68,7 @@ public class Iffontchar extends AbstractIf {
      *
      * @param name the name for debugging
      */
-    public Iffontchar(final String name) {
+    public Iffontchar(String name) {
 
         super(name);
     }
@@ -92,8 +92,8 @@ public class Iffontchar extends AbstractIf {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public boolean conditional(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         Font font = source.getFont(context, getName());
         UnicodeChar uc =

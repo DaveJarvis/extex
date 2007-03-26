@@ -33,7 +33,7 @@ public class InterlinepenaltiesTest extends AbstractCountArrayTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(InterlinepenaltiesTest.class);
     }
@@ -43,7 +43,7 @@ public class InterlinepenaltiesTest extends AbstractCountArrayTester {
      *
      * @param arg the name
      */
-    public InterlinepenaltiesTest(final String arg) {
+    public InterlinepenaltiesTest(String arg) {
 
         super(arg, "interlinepenalties", "255", "0");
         setConfig("etex-test");

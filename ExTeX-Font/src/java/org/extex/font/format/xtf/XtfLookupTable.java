@@ -36,7 +36,7 @@ public abstract class XtfLookupTable {
      * Create a new object.
      * @param f the format
      */
-    public XtfLookupTable(final int f) {
+    public XtfLookupTable(int f) {
 
         format = f;
     }

@@ -48,7 +48,7 @@ import org.extex.typesetter.type.page.PageImpl;
 
 /**
  * JUnit tests for class <code>DviDocumentWriter</code>.
- *
+ * 
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
  * @version $Revision:4458 $
  */
@@ -80,14 +80,14 @@ public class DviDocumentWriterTest extends TestCase {
     private OutputStream outputStream = null;
 
     /**
-     * The if DviDocumentWriter throws the exception, if the node is
-     * added to the NodeList.
-     *
+     * The if DviDocumentWriter throws the exception, if the node is added to
+     * the NodeList.
+     * 
      * @param node a <code>Node</code> value
      * @param exception a <code>Class</code> value
      * @throws Exception if an error occurs
      */
-    private void checkException(final Node node, final Class exception)
+    private void checkException(Node node, Class exception)
             throws Exception {
 
         boolean gotException = false;
@@ -109,9 +109,10 @@ public class DviDocumentWriterTest extends TestCase {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(DviDocumentWriterTest.class);
     }
@@ -125,10 +126,9 @@ public class DviDocumentWriterTest extends TestCase {
     }
 
     /**
-     * Setup the fixtures.  All class variables get threr value here.
-     * This is not done in the constructor so the variables get new
-     * values for each test.
-     *
+     * Setup the fixtures. All class variables get threr value here. This is not
+     * done in the constructor so the variables get new values for each test.
+     * 
      * @throws Exception if an error occurs
      */
     public void setUp() throws Exception {
@@ -144,15 +144,12 @@ public class DviDocumentWriterTest extends TestCase {
     }
 
     /**
-     * Test if {@link
-     *   org.extex.backend.documentWriter.dvi.DviDocumentWriter
-     *   DviDocumentWriter}
-     * throws a {@link
-     *   org.extex.backend.documentWriter.exception.NoOutputStreamException
-     *   NoOutputStreamException},
-     * if there is no OutputStream set before {@link
-     *   org.extex.backend.documentWriter.DocumentWriter#shipout(Page) shipout()}.
-     *
+     * Test if {@link org.extex.backend.documentWriter.dvi.DviDocumentWriter
+     * DviDocumentWriter} throws a {@link
+     * org.extex.backend.documentWriter.exception.NoOutputStreamException
+     * NoOutputStreamException}, if there is no OutputStream set before {@link
+     * org.extex.backend.documentWriter.DocumentWriter#shipout(Page) shipout()}.
+     * 
      * @throws Exception if an error occurs
      */
     public void testNoOutputStream() throws Exception {
@@ -174,9 +171,9 @@ public class DviDocumentWriterTest extends TestCase {
     }
 
     /**
-     * Test if the DviDocumentWriter throws new Exception if the
-     * node list is empty.
-     *
+     * Test if the DviDocumentWriter throws new Exception if the node list is
+     * empty.
+     * 
      * @throws Exception if an error occurs
      */
     public void testEmptyList() throws Exception {
@@ -187,7 +184,7 @@ public class DviDocumentWriterTest extends TestCase {
 
     /**
      * Test if a mark node throws a panic Exception.
-     *
+     * 
      * @throws Exception if an error occurs
      */
     public void testMarkNode() throws Exception {
@@ -197,7 +194,7 @@ public class DviDocumentWriterTest extends TestCase {
 
     /**
      * Test if a insertion node throws a panic Exception.
-     *
+     * 
      * @throws Exception if an error occurs
      */
     public void testInsertionNode() throws Exception {
@@ -207,7 +204,7 @@ public class DviDocumentWriterTest extends TestCase {
 
     /**
      * Test valid nodes.
-     *
+     * 
      * @throws Exception if an error occurs
      */
     public void testValidNodes() throws Exception {
@@ -217,7 +214,7 @@ public class DviDocumentWriterTest extends TestCase {
         nodeList.add(new GlueNode(new Glue(1234), true));
         // TODO: nodeList.add(new LigatureNode()); (TE)
         // TODO: nodeList.add(new SpecialNode("Test")); (TE)
-        //nodeList.add(new WhatsItNode("Test"));
+        // nodeList.add(new WhatsItNode("Test"));
 
         FixedCount[] pageNo = null;
         documentWriter.shipout(new PageImpl(nodeList, pageNo));
@@ -225,12 +222,12 @@ public class DviDocumentWriterTest extends TestCase {
 
     /**
      * Check the specified magnification.
-     *
+     * 
      * @param magnification for check
-     *
+     * 
      * @throws Exception if an error occurs
      */
-    private void checkMagnification(final long magnification) throws Exception {
+    private void checkMagnification(long magnification) throws Exception {
 
         documentWriterOptions.setMagnification(magnification);
         documentWriter =
@@ -242,7 +239,7 @@ public class DviDocumentWriterTest extends TestCase {
 
     /**
      * Test magnifications in the document writer options.
-     *
+     * 
      * @throws Exception if an error occurs
      */
     public void testMagnification() throws Exception {
@@ -265,7 +262,7 @@ public class DviDocumentWriterTest extends TestCase {
 
     /**
      * TODO gene: missing JavaDoc.
-     *
+     * 
      */
     private class MockFixedCount implements FixedCount {
 
@@ -276,19 +273,19 @@ public class DviDocumentWriterTest extends TestCase {
 
         /**
          * Creates a new object.
-         *
+         * 
          * @param theValue the value in scaled points
          */
-        public MockFixedCount(final long theValue) {
+        public MockFixedCount(long theValue) {
 
             value = theValue;
         }
 
         /**
          * Getter for the value
-         *
+         * 
          * @return the value
-         *
+         * 
          * @see org.extex.core.count.FixedCount#getValue()
          */
         public long getValue() {
@@ -297,60 +294,77 @@ public class DviDocumentWriterTest extends TestCase {
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.core.count.FixedCount#eq(org.extex.core.count.FixedCount)
          */
-        public boolean eq(final FixedCount count) {
+        public boolean eq(FixedCount count) {
 
             // TODO eq unimplemented
             return false;
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.core.count.FixedCount#ge(org.extex.core.count.FixedCount)
          */
-        public boolean ge(final FixedCount count) {
+        public boolean ge(FixedCount count) {
 
             // TODO ge unimplemented
             return false;
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.core.count.FixedCount#gt(org.extex.core.count.FixedCount)
          */
-        public boolean gt(final FixedCount count) {
+        public boolean gt(FixedCount count) {
 
             // TODO gt unimplemented
             return false;
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.core.count.FixedCount#le(org.extex.core.count.FixedCount)
          */
-        public boolean le(final FixedCount count) {
+        public boolean le(FixedCount count) {
 
             // TODO le unimplemented
             return false;
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.core.count.FixedCount#lt(org.extex.core.count.FixedCount)
          */
-        public boolean lt(final FixedCount count) {
+        public boolean lt(FixedCount count) {
 
             // TODO lt unimplemented
             return false;
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.core.count.FixedCount#ne(org.extex.core.count.FixedCount)
          */
-        public boolean ne(final FixedCount count) {
+        public boolean ne(FixedCount count) {
 
             // TODO ne unimplemented
             return false;
         }
 
-        public void toString(final StringBuffer buffer) {
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.core.count.FixedCount#toString(java.lang.StringBuffer)
+         */
+        public void toString(StringBuffer buffer) {
 
             buffer.append(toString());
         }
@@ -358,11 +372,13 @@ public class DviDocumentWriterTest extends TestCase {
 
     /**
      * TODO gene: missing JavaDoc.
-     *
+     * 
      */
     private class MockDocumentWriterOptions implements DocumentWriterOptions {
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.backend.documentWriter.DocumentWriterOptions#getTokensOption(java.lang.String)
          */
         public Tokens getTokensOption(String name) {
@@ -370,30 +386,58 @@ public class DviDocumentWriterTest extends TestCase {
             return null;
         }
 
-        long magnification = 1000;
+        /**
+         * The field <tt>magnification</tt> contains the magnification.
+         */
+        private long magnification = 1000;
 
+        /**
+         * Creates a new object.
+         */
         public MockDocumentWriterOptions() {
 
+            super();
         }
 
-        public FixedCount getCountOption(final String count) {
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.backend.documentWriter.DocumentWriterOptions#getCountOption(java.lang.String)
+         */
+        public FixedCount getCountOption(String count) {
 
             return new MockFixedCount(0);
         }
 
-        public FixedDimen getDimenOption(final String dimen) {
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.backend.documentWriter.DocumentWriterOptions#getDimenOption(java.lang.String)
+         */
+        public FixedDimen getDimenOption(String dimen) {
 
             return null;
         }
 
+        /**
+         * Setter for the magnification.
+         * 
+         * @param theMagnification the magnification
+         */
         public void setMagnification(long theMagnification) {
 
             magnification = theMagnification;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.backend.documentWriter.DocumentWriterOptions#getMagnification()
+         */
         public long getMagnification() {
 
             return magnification;
         }
     }
+
 }

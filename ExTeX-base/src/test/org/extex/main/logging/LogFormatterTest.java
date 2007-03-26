@@ -39,7 +39,7 @@ public class LogFormatterTest extends TestCase {
      *
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(LogFormatterTest.class);
     }
@@ -49,7 +49,7 @@ public class LogFormatterTest extends TestCase {
      *
      * @param name the name
      */
-    public LogFormatterTest(final String name) {
+    public LogFormatterTest(String name) {
 
         super(name);
     }

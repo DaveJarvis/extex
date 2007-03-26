@@ -45,8 +45,8 @@ public class BadFileNumberException extends HelpingException {
      * @param min the minimum for numerical values
      * @param max the maximum for numerical values
      */
-    public BadFileNumberException(final String value, final String min,
-            final String max) {
+    public BadFileNumberException(String value, String min,
+            String max) {
 
         super(LocalizerFactory.getLocalizer(BadFileNumberException.class),
                 "TTP.BadFileNumber", value, min, max);

@@ -34,7 +34,7 @@ public class NonscriptTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public NonscriptTest(final String arg) {
+    public NonscriptTest(String arg) {
 
         super(arg, "nonscript", "");
     }

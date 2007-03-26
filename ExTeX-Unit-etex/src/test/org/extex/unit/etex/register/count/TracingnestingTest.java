@@ -33,7 +33,7 @@ public class TracingnestingTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(TracingnestingTest.class);
     }
@@ -43,7 +43,7 @@ public class TracingnestingTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public TracingnestingTest(final String arg) {
+    public TracingnestingTest(String arg) {
 
         super(arg, "tracingnesting", "", "0");
         setConfig("etex-test");

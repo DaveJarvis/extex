@@ -33,7 +33,7 @@ public class CountTest extends TestCase {
      * main
      * @param  args commandlineargs
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(CountTest.class);
     }

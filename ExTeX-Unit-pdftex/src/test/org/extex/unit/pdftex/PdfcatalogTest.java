@@ -34,7 +34,7 @@ public class PdfcatalogTest extends NoFlagsButProtectedPrimitiveTester {
      *
      * @param arg the name
      */
-    public PdfcatalogTest(final String arg) {
+    public PdfcatalogTest(String arg) {
 
         super(arg, "pdfcatalog", "{}", "");
         setConfig("pdftex-test");

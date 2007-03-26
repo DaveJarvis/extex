@@ -50,7 +50,7 @@ public class UnderlinedNoad extends AbstractNucleusNoad {
      * @param nucleus the nucleus to be underlined
      * @param tc the typesetting context for the color
      */
-    public UnderlinedNoad(final Noad nucleus, final TypesettingContext tc) {
+    public UnderlinedNoad(Noad nucleus, TypesettingContext tc) {
 
         super(nucleus, tc);
     }
@@ -66,7 +66,7 @@ public class UnderlinedNoad extends AbstractNucleusNoad {
      *      java.lang.StringBuffer,
      *      int)
      */
-    protected void toStringAdd(final StringBuffer sb, final int depth) {
+    protected void toStringAdd(StringBuffer sb, int depth) {
 
         sb.append("underline");
     }
@@ -94,9 +94,9 @@ public class UnderlinedNoad extends AbstractNucleusNoad {
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(final Noad previousNoad, final NoadList noads,
-            final int index, final NodeList list,
-            final MathContext mathContext, final Logger logger)
+    public void typeset(Noad previousNoad, NoadList noads,
+            int index, NodeList list,
+            MathContext mathContext, Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 

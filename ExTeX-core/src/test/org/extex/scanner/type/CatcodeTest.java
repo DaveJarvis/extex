@@ -129,7 +129,7 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(CatcodeTest.class);
     }
@@ -586,8 +586,8 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public Object visitActive(final Object arg1, final Object arg2,
-            final Object uc) {
+    public Object visitActive(Object arg1, Object arg2,
+            Object uc) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
@@ -608,8 +608,8 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
      * @see org.extex.scanner.type.CatcodeVisitor#visitComment(
      *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public final Object visitComment(final Object arg1, final Object arg2,
-            final Object uc) {
+    public final Object visitComment(Object arg1, Object arg2,
+            Object uc) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
@@ -629,8 +629,8 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
      * @see org.extex.scanner.type.CatcodeVisitor#visitCr(
      *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public final Object visitCr(final Object arg1, final Object arg2,
-            final Object uc) {
+    public final Object visitCr(Object arg1, Object arg2,
+            Object uc) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
@@ -651,8 +651,8 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
      * @see org.extex.scanner.type.CatcodeVisitor#visitEscape(
      *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public final Object visitEscape(final Object arg1, final Object arg2,
-            final Object uc) {
+    public final Object visitEscape(Object arg1, Object arg2,
+            Object uc) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
@@ -672,8 +672,8 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
      * @see org.extex.scanner.type.CatcodeVisitor#visitIgnore(
      *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public final Object visitIgnore(final Object arg1, final Object arg2,
-            final Object uc) {
+    public final Object visitIgnore(Object arg1, Object arg2,
+            Object uc) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
@@ -693,8 +693,8 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
      * @see org.extex.scanner.type.CatcodeVisitor#visitInvalid(
      *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public final Object visitInvalid(final Object arg1, final Object arg2,
-            final Object uc) {
+    public final Object visitInvalid(Object arg1, Object arg2,
+            Object uc) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
@@ -714,8 +714,8 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
      * @see org.extex.scanner.type.CatcodeVisitor#visitLeftBrace(
      *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public final Object visitLeftBrace(final Object arg1, final Object arg2,
-            final Object uc) {
+    public final Object visitLeftBrace(Object arg1, Object arg2,
+            Object uc) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
@@ -735,8 +735,8 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
      * @see org.extex.scanner.type.CatcodeVisitor#visitLetter(
      *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public final Object visitLetter(final Object arg1, final Object arg2,
-            final Object uc) {
+    public final Object visitLetter(Object arg1, Object arg2,
+            Object uc) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
@@ -757,8 +757,8 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
      * @see org.extex.scanner.type.CatcodeVisitor#visitMacroParam(
      *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public final Object visitMacroParam(final Object arg1, final Object arg2,
-            final Object uc) {
+    public final Object visitMacroParam(Object arg1, Object arg2,
+            Object uc) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
@@ -780,8 +780,8 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public final Object visitMathShift(final Object arg1, final Object arg2,
-            final Object uc) {
+    public final Object visitMathShift(Object arg1, Object arg2,
+            Object uc) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
@@ -802,8 +802,8 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public final Object visitOther(final Object arg1, final Object arg2,
-            final Object uc) {
+    public final Object visitOther(Object arg1, Object arg2,
+            Object uc) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
@@ -824,8 +824,8 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
      *      java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public final Object visitRightBrace(final Object arg1, final Object arg2,
-            final Object uc) {
+    public final Object visitRightBrace(Object arg1, Object arg2,
+            Object uc) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
@@ -845,8 +845,8 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
      * @see org.extex.scanner.type.CatcodeVisitor#visitSpace(
      *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public final Object visitSpace(final Object arg1, final Object arg2,
-            final Object uc) {
+    public final Object visitSpace(Object arg1, Object arg2,
+            Object uc) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
@@ -867,8 +867,8 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
      * @see org.extex.scanner.type.CatcodeVisitor#visitSubMark(
      *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public final Object visitSubMark(final Object arg1, final Object arg2,
-            final Object uc) {
+    public final Object visitSubMark(Object arg1, Object arg2,
+            Object uc) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
@@ -889,8 +889,8 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
      * @see org.extex.scanner.type.CatcodeVisitor#visitSupMark(
      *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public final Object visitSupMark(final Object arg1, final Object arg2,
-            final Object uc) {
+    public final Object visitSupMark(Object arg1, Object arg2,
+            Object uc) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
@@ -911,8 +911,8 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
      * @see org.extex.scanner.type.CatcodeVisitor#visitTabMark(
      *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public final Object visitTabMark(final Object arg1, final Object arg2,
-            final Object uc) {
+    public final Object visitTabMark(Object arg1, Object arg2,
+            Object uc) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);

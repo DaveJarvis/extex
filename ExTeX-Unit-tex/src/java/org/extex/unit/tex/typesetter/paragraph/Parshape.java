@@ -105,7 +105,7 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
      *
      * @param name the name for debugging
      */
-    public Parshape(final String name) {
+    public Parshape(String name) {
 
         super(name);
     }
@@ -124,12 +124,12 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.CountConvertible#convertCount(
+     * @see org.extex.core.count.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
-    public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public long convertCount(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         ParagraphShape parshape = context.getParshape();
         return (parshape != null ? parshape.getSize() / 2 : 0);
@@ -153,8 +153,8 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         long n = CountParser.scanInteger(context, source, typesetter);
@@ -187,8 +187,8 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter)
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 CatcodeException {
 

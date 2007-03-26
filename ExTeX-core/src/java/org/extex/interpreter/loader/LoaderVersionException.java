@@ -37,7 +37,7 @@ public class LoaderVersionException extends LoaderException {
      *
      * @param message the message
      */
-    public LoaderVersionException(final String message) {
+    public LoaderVersionException(String message) {
 
         super(message);
     }

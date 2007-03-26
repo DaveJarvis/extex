@@ -83,7 +83,7 @@ public abstract class AbstractFactory
      * @see org.extex.resource.ResourceConsumer#setResourceFinder(
      *      org.extex.resource.ResourceFinder)
      */
-    public void setResourceFinder(final ResourceFinder finder) {
+    public void setResourceFinder(ResourceFinder finder) {
 
         this.resourceFinder = finder;
     }
@@ -110,8 +110,8 @@ public abstract class AbstractFactory
      *
      * @throws ConfigurationException in case of an error
      */
-    public static void configure(final Object instance,
-            final Configuration configuration) throws ConfigurationException {
+    public static void configure(Object instance,
+            Configuration configuration) throws ConfigurationException {
 
         if (configuration != null && instance instanceof Configurable) {
             ((Configurable) instance).configure(configuration);
@@ -124,8 +124,8 @@ public abstract class AbstractFactory
      * @param instance the instance to pass the localizer to
      * @param className the class name for the instance
      */
-    private static void enableLocalization(final Object instance,
-            final String className) {
+    private static void enableLocalization(Object instance,
+            String className) {
 
         if (instance instanceof Localizable) {
             ((Localizable) instance).enableLocalization(LocalizerFactory
@@ -142,7 +142,7 @@ public abstract class AbstractFactory
      * @param logger the logger to pass. If the logger is <code>null</code>
      *  then nothing is done.
      */
-    public static void enableLogging(final Object instance, final Logger logger) {
+    public static void enableLogging(Object instance, Logger logger) {
 
         if (logger != null && instance instanceof LogEnabled) {
             ((LogEnabled) instance).enableLogging(logger);
@@ -184,7 +184,7 @@ public abstract class AbstractFactory
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
-    public void configure(final Configuration theConfiguration)
+    public void configure(Configuration theConfiguration)
             throws ConfigurationException {
 
         configuration = theConfiguration;
@@ -199,7 +199,7 @@ public abstract class AbstractFactory
      *
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Object createInstance(final Class target)
+    protected Object createInstance(Class<?> target)
             throws ConfigurationException {
 
         return createInstanceForConfiguration(configuration, target);
@@ -219,7 +219,7 @@ public abstract class AbstractFactory
      *
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Object createInstance(final String type, final Class target)
+    protected Object createInstance(String type, Class<?> target)
             throws ConfigurationException {
 
         return createInstanceForConfiguration(selectConfiguration(type), target);
@@ -238,8 +238,8 @@ public abstract class AbstractFactory
      *
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Object createInstance(final String type, final Class target,
-            final Class argClass, final Object arg)
+    protected Object createInstance(String type, Class<?> target,
+            Class<?> argClass, Object arg)
             throws ConfigurationException {
 
         return createInstanceForConfiguration(selectConfiguration(type),
@@ -256,9 +256,12 @@ public abstract class AbstractFactory
      *
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Object createInstanceForConfiguration(final Configuration config,
-            final Class target) throws ConfigurationException {
+    protected Object createInstanceForConfiguration(Configuration config,
+            Class<?> target) throws ConfigurationException {
 
+        if (config == null) {
+            throw new ConfigurationMissingException("");
+        }
         String className = config.getAttribute(CLASS_ATTRIBUTE);
 
         if (className == null) {
@@ -266,7 +269,7 @@ public abstract class AbstractFactory
                 config);
         }
 
-        Class theClass;
+        Class<?> theClass;
         try {
             theClass = Class.forName(className);
         } catch (ClassNotFoundException e1) {
@@ -339,9 +342,13 @@ public abstract class AbstractFactory
      *
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Object createInstanceForConfiguration(final Configuration config,
-            final Class target, final Class argClass, final Object arg)
+    protected Object createInstanceForConfiguration(Configuration config,
+            Class<?> target, Class<?> argClass, Object arg)
             throws ConfigurationException {
+
+        if (config == null) {
+            throw new ConfigurationMissingException("");
+        }
 
         String className = config.getAttribute(CLASS_ATTRIBUTE);
 
@@ -350,7 +357,7 @@ public abstract class AbstractFactory
                 config);
         }
 
-        Class theClass;
+        Class<?> theClass;
         try {
             theClass = Class.forName(className);
         } catch (ClassNotFoundException e1) {
@@ -367,7 +374,7 @@ public abstract class AbstractFactory
             Object instance = null;
 
             for (int i = 0; i < constructors.length; i++) {
-                Class[] args = constructors[i].getParameterTypes();
+                Class<?>[] args = constructors[i].getParameterTypes();
                 switch (args.length) {
                     case 1:
                         if (args[0].isAssignableFrom(argClass)) {
@@ -434,8 +441,8 @@ public abstract class AbstractFactory
      *
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Object createInstanceForConfiguration(final Configuration config,
-            final Class target, final String arg1)
+    protected Object createInstanceForConfiguration(Configuration config,
+            Class<?> target, String arg1)
             throws ConfigurationException {
 
         String className = config.getAttribute(CLASS_ATTRIBUTE);
@@ -446,7 +453,7 @@ public abstract class AbstractFactory
         }
 
         try {
-            Class theClass = Class.forName(className);
+            Class<?> theClass = Class.forName(className);
 
             if (!target.isAssignableFrom(theClass)) {
                 throw new ConfigurationInvalidClassException(
@@ -457,7 +464,7 @@ public abstract class AbstractFactory
             Object instance = null;
 
             for (int i = 0; i < constructors.length; i++) {
-                Class[] args = constructors[i].getParameterTypes();
+                Class<?>[] args = constructors[i].getParameterTypes();
                 switch (args.length) {
                     case 1:
                         if (args[0].isAssignableFrom(String.class)) {
@@ -509,8 +516,8 @@ public abstract class AbstractFactory
      * @throws IllegalAccessException in case of an access error
      * @throws ConfigurationException in case of a configuration error
      */
-    private Object createInstanceForConfiguration0(final Configuration config,
-            final String className, final Class theClass)
+    private Object createInstanceForConfiguration0(Configuration config,
+            String className, Class<?> theClass)
             throws InstantiationException,
                 IllegalAccessException,
                 ConfigurationException {
@@ -540,9 +547,9 @@ public abstract class AbstractFactory
      * @throws InvocationTargetException in case of an invocation error
      * @throws ConfigurationException in case of a configuration error
      */
-    private Object createInstanceForConfiguration1(final Configuration config,
-            final Class target, final String className,
-            final Constructor constructor, final Class arg0)
+    private Object createInstanceForConfiguration1(Configuration config,
+            Class<?> target, String className,
+            Constructor constructor, Class<?> arg0)
             throws InstantiationException,
                 IllegalAccessException,
                 InvocationTargetException,
@@ -582,9 +589,10 @@ public abstract class AbstractFactory
      * @throws IllegalAccessException in case of an access error
      * @throws InvocationTargetException in case of an invocation error
      */
-    private Object createInstanceForConfiguration2(final Configuration config,
-            final Class target, final String className,
-            final Constructor constructor, final Class arg0, final Class arg1)
+    private Object createInstanceForConfiguration2(Configuration config,
+            Class<?> target, String className,
+            Constructor constructor, Class<?> arg0,
+            Class<?> arg1)
             throws InstantiationException,
                 IllegalAccessException,
                 InvocationTargetException {
@@ -609,7 +617,7 @@ public abstract class AbstractFactory
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger theLogger) {
+    public void enableLogging(Logger theLogger) {
 
         this.logger = theLogger;
     }
@@ -637,7 +645,7 @@ public abstract class AbstractFactory
     /**
      * @see org.extex.framework.RegistrarObserver#reconnect(java.lang.Object)
      */
-    public Object reconnect(final Object instance) throws RegistrarException {
+    public Object reconnect(Object instance) throws RegistrarException {
 
         try {
             enableLogging(instance, getLogger());
@@ -660,7 +668,7 @@ public abstract class AbstractFactory
      *
      * @throws ConfigurationException in case of an error
      */
-    protected Configuration selectConfiguration(final String type)
+    protected Configuration selectConfiguration(String type)
             throws ConfigurationException {
 
         if (this.configuration == null) {

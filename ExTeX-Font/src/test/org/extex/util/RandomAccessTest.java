@@ -43,7 +43,7 @@ public class RandomAccessTest extends TestCase {
      * Creates a new object.
      * @param arg0 the name
      */
-    public RandomAccessTest(final String arg0) {
+    public RandomAccessTest(String arg0) {
 
         super(arg0);
     }
@@ -52,7 +52,7 @@ public class RandomAccessTest extends TestCase {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(RandomAccessTest.class);
     }

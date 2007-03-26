@@ -27,9 +27,9 @@ import org.xml.sax.SAXException;
 
 /**
  * TODO gene: missing JavaDoc.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5413 $
  */
 public class ExdocEntityResolver implements EntityResolver {
 
@@ -38,26 +38,29 @@ public class ExdocEntityResolver implements EntityResolver {
      */
     public ExdocEntityResolver() {
 
+        super();
     }
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @param publicId ...
      * @param systemId ...
-     *
+     * 
      * @return ...
-     *
+     * 
      * @throws SAXException ...
      * @throws IOException ...
-     *
-     * @see org.xml.sax.EntityResolver#resolveEntity(java.lang.String, java.lang.String)
+     * 
+     * @see org.xml.sax.EntityResolver#resolveEntity(java.lang.String,
+     *      java.lang.String)
      */
-    public InputSource resolveEntity(final String publicId,
-            final String systemId) throws SAXException, IOException {
+    public InputSource resolveEntity(String publicId, String systemId)
+            throws SAXException,
+                IOException {
 
         String name =
-            getClass().getName().replace('.', '/').replaceFirst(
+                getClass().getName().replace('.', '/').replaceFirst(
                     "ExdocEntityResolver$", "html.dtd");
         InputSource source =
                 new InputSource(getClass().getClassLoader()

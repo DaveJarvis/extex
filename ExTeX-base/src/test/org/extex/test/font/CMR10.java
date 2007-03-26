@@ -69,7 +69,7 @@ public class CMR10 implements Font, Serializable {
          * @param w the width
          * @param h the height
          */
-        public MyGlyph(final UnicodeChar c, final Dimen w, final Dimen h) {
+        public MyGlyph(UnicodeChar c, Dimen w, Dimen h) {
 
             //            super(h, Dimen.ZERO_PT, w, Dimen.ZERO_PT);
             //                setName(c.toString());
@@ -84,8 +84,8 @@ public class CMR10 implements Font, Serializable {
          * @param d the depth
          * @param ic the italic correction
          */
-        public MyGlyph(final UnicodeChar c, final Dimen w, final Dimen h,
-                final Dimen d, final Dimen ic) {
+        public MyGlyph(UnicodeChar c, Dimen w, Dimen h,
+                Dimen d, Dimen ic) {
 
             //                super(h, d, w, ic);
             //            setName(c.toString());
@@ -97,7 +97,7 @@ public class CMR10 implements Font, Serializable {
         //         * @param c the next letter
         //         * @param d the ligature letter
         //         */
-        //        public void addLig(final char c, final char d) {
+        //        public void addLig(char c, char d) {
         //
         //            Ligature lig = new Ligature();
         //            lig.setLetter(Character.toString(c));
@@ -113,7 +113,7 @@ public class CMR10 implements Font, Serializable {
         //         * @param c the character
         //         * @param dimen the kerning
         //         */
-        //        public void addKern(final char c, final Dimen dimen) {
+        //        public void addKern(char c, Dimen dimen) {
         //
         //            String s = Character.toString(c);
         //            addKerning(new Kerning(s, s, dimen));
@@ -1569,7 +1569,7 @@ public class CMR10 implements Font, Serializable {
      *
      * @see org.extex.font.type.Fount#getFontDimen(java.lang.String)
      */
-    public FixedDimen getFontDimen(final String key) {
+    public FixedDimen getFontDimen(String key) {
 
         return fontdimen[Integer.parseInt(key)];
     }
@@ -1643,7 +1643,7 @@ public class CMR10 implements Font, Serializable {
      *
      * @return ...
      */
-//    private MyGlyph makeGlyph(final char c, final Dimen w, final Dimen h) {
+//    private MyGlyph makeGlyph(char c, Dimen w, Dimen h) {
 //
 //        UnicodeChar uc = UnicodeChar.get(c);
 //        MyGlyph g = new MyGlyph(uc, w, h);
@@ -1662,8 +1662,8 @@ public class CMR10 implements Font, Serializable {
      *
      * @return ...
      */
-//    private MyGlyph makeGlyph(final char c, final Dimen w, final Dimen h,
-//            final Dimen d, final Dimen ic) {
+//    private MyGlyph makeGlyph(char c, Dimen w, Dimen h,
+//            Dimen d, Dimen ic) {
 //
 //        UnicodeChar uc = UnicodeChar.get(c);
 //        MyGlyph g = new MyGlyph(uc, w, h, d, ic);
@@ -1681,7 +1681,7 @@ public class CMR10 implements Font, Serializable {
      *      java.lang.String,
      *      org.extex.core.dimen.Dimen)
      */
-    public void setFontDimen(final String key, final Dimen value) {
+    public void setFontDimen(String key, Dimen value) {
 
         fontdimen[Integer.parseInt(key)].set(value);
     }
@@ -1694,7 +1694,7 @@ public class CMR10 implements Font, Serializable {
      * @see org.extex.interpreter.type.font.Font#setHyphenChar(
      *      org.extex.core.UnicodeChar)
      */
-    public void setHyphenChar(final UnicodeChar hyphen) {
+    public void setHyphenChar(UnicodeChar hyphen) {
 
         this.hypenChar = hyphen;
     }
@@ -1707,7 +1707,7 @@ public class CMR10 implements Font, Serializable {
      * @see org.extex.interpreter.type.font.Font#setSkewChar(
      *      org.extex.core.UnicodeChar)
      */
-    public void setSkewChar(final UnicodeChar skew) {
+    public void setSkewChar(UnicodeChar skew) {
 
         this.skewChar = skew;
     }
@@ -1723,7 +1723,7 @@ public class CMR10 implements Font, Serializable {
      * @see org.extex.interpreter.type.font.Font#setEfCode(
      *      org.extex.core.UnicodeChar, long)
      */
-    public void setEfCode(final UnicodeChar uc, final long code) {
+    public void setEfCode(UnicodeChar uc, long code) {
 
         efcode.put(uc, new Long(code));
     }
@@ -1731,7 +1731,7 @@ public class CMR10 implements Font, Serializable {
     /**
      * The field <tt>efcode</tt> contains the ef code.
      */
-    private Map efcode = new HashMap();
+    private Map<UnicodeChar, Long> efcode = new HashMap<UnicodeChar, Long>();
 
     /**
      * Getter for the ef code.
@@ -1743,9 +1743,9 @@ public class CMR10 implements Font, Serializable {
      * @see org.extex.interpreter.type.font.Font#getEfCode(
      *      org.extex.core.UnicodeChar)
      */
-    public long getEfCode(final UnicodeChar uc) {
+    public long getEfCode(UnicodeChar uc) {
 
-        Long x = (Long) efcode.get(uc);
+        Long x = efcode.get(uc);
         return (x == null ? 0 : x.longValue());
     }
 
@@ -1758,7 +1758,7 @@ public class CMR10 implements Font, Serializable {
      *
      * @see org.extex.interpreter.type.font.Font#getDepth(org.extex.core.UnicodeChar)
      */
-    public FixedGlue getDepth(final UnicodeChar uc) {
+    public FixedGlue getDepth(UnicodeChar uc) {
 
         // TODO gene: getDepth unimplemented
         return null;
@@ -1773,7 +1773,7 @@ public class CMR10 implements Font, Serializable {
      *
      * @see org.extex.interpreter.type.font.Font#getHeight(org.extex.core.UnicodeChar)
      */
-    public FixedGlue getHeight(final UnicodeChar uc) {
+    public FixedGlue getHeight(UnicodeChar uc) {
 
         // TODO gene: getHeight unimplemented
         return null;
@@ -1788,7 +1788,7 @@ public class CMR10 implements Font, Serializable {
      *
      * @see org.extex.interpreter.type.font.Font#getItalicCorrection(org.extex.core.UnicodeChar)
      */
-    public FixedDimen getItalicCorrection(final UnicodeChar uc) {
+    public FixedDimen getItalicCorrection(UnicodeChar uc) {
 
         // TODO gene: getItalicCorrection unimplemented
         return null;
@@ -1806,7 +1806,7 @@ public class CMR10 implements Font, Serializable {
      *      org.extex.core.UnicodeChar,
      *      org.extex.core.UnicodeChar)
      */
-    public FixedDimen getKerning(final UnicodeChar uc1, final UnicodeChar uc2) {
+    public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
 
         // TODO gene: getKerning unimplemented
         return null;
@@ -1824,7 +1824,7 @@ public class CMR10 implements Font, Serializable {
      *      org.extex.core.UnicodeChar,
      *      org.extex.core.UnicodeChar)
      */
-    public UnicodeChar getLigature(final UnicodeChar uc1, final UnicodeChar uc2) {
+    public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
 
         // TODO gene: getLigature unimplemented
         return null;
@@ -1840,7 +1840,7 @@ public class CMR10 implements Font, Serializable {
      * @see org.extex.interpreter.type.font.Font#getWidth(
      *      org.extex.core.UnicodeChar)
      */
-    public FixedGlue getWidth(final UnicodeChar uc) {
+    public FixedGlue getWidth(UnicodeChar uc) {
 
         // TODO gene: getWidth unimplemented
         return null;
@@ -1856,7 +1856,7 @@ public class CMR10 implements Font, Serializable {
      * @see org.extex.interpreter.type.font.Font#hasGlyph(
      *      org.extex.core.UnicodeChar)
      */
-    public boolean hasGlyph(final UnicodeChar uc) {
+    public boolean hasGlyph(UnicodeChar uc) {
 
         return true;
     }

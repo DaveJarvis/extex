@@ -47,7 +47,7 @@ public class AfmNoBoundingBoxFoundException extends FontException {
      * Create a new object.
      * @param message   the message
      */
-    public AfmNoBoundingBoxFoundException(final String message) {
+    public AfmNoBoundingBoxFoundException(String message) {
 
         super(message);
     }

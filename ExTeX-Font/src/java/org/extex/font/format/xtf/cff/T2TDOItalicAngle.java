@@ -37,7 +37,7 @@ public class T2TDOItalicAngle extends T2TDONumber {
      * @param stack the stack
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOItalicAngle(final List stack) throws IOException {
+    public T2TDOItalicAngle(List stack) throws IOException {
 
         super(stack, new short[]{ESCAPE_BYTE, ITALICANGLE});
     }

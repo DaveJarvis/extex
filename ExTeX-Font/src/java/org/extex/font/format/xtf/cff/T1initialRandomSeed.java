@@ -36,7 +36,7 @@ public class T1initialRandomSeed extends T1DictNumber {
      * @param stack the stack
      * @throws IOException if an IO.error occurs.
      */
-    public T1initialRandomSeed(final List stack) throws IOException {
+    public T1initialRandomSeed(List stack) throws IOException {
 
         super(stack, new short[]{initialRandomSeed});
     }

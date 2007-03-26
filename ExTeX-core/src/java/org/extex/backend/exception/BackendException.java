@@ -49,7 +49,7 @@ public class BackendException extends GeneralException {
      *
      * @param message the message
      */
-    public BackendException(final String message) {
+    public BackendException(String message) {
 
         super(message);
     }
@@ -60,7 +60,7 @@ public class BackendException extends GeneralException {
      * @param message the message
      * @param cause the cause of all evil
      */
-    public BackendException(final String message, final Throwable cause) {
+    public BackendException(String message, Throwable cause) {
 
         super(message, cause);
     }
@@ -70,7 +70,7 @@ public class BackendException extends GeneralException {
      *
      * @param cause the cause of all evil
      */
-    public BackendException(final Throwable cause) {
+    public BackendException(Throwable cause) {
 
         super(cause);
     }

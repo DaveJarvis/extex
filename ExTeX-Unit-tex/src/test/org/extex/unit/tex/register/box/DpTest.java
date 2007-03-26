@@ -31,7 +31,7 @@ public class DpTest extends AbstractBoxDimenTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(DpTest.class);
     }
@@ -41,7 +41,7 @@ public class DpTest extends AbstractBoxDimenTester {
      *
      * @param arg the name
      */
-    public DpTest(final String arg) {
+    public DpTest(String arg) {
 
         super(arg, "dp");
     }

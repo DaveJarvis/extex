@@ -58,7 +58,7 @@ public class MathGlyph implements Noad, Serializable {
      * @param family the math family of the glyph
      * @param character the character in the font
      */
-    public MathGlyph(final int family, final UnicodeChar character) {
+    public MathGlyph(int family, UnicodeChar character) {
 
         super();
         this.family = family;
@@ -129,7 +129,7 @@ public class MathGlyph implements Noad, Serializable {
      * @see org.extex.typesetter.type.noad.Noad#setSubscript(
      *       org.extex.typesetter.type.noad.Noad)
      */
-    public void setSubscript(final Noad subscript) {
+    public void setSubscript(Noad subscript) {
 
         throw new UnsupportedOperationException("subscript");
     }
@@ -142,7 +142,7 @@ public class MathGlyph implements Noad, Serializable {
      * @see org.extex.typesetter.type.noad.Noad#setSuperscript(
      *       org.extex.typesetter.type.noad.Noad)
      */
-    public void setSuperscript(final Noad superscript) {
+    public void setSuperscript(Noad superscript) {
 
         throw new UnsupportedOperationException("superscript");
     }
@@ -169,7 +169,7 @@ public class MathGlyph implements Noad, Serializable {
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *       java.lang.StringBuffer)
      */
-    public void toString(final StringBuffer sb) {
+    public void toString(StringBuffer sb) {
 
         toString(sb, 1);
     }
@@ -184,7 +184,7 @@ public class MathGlyph implements Noad, Serializable {
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *       java.lang.StringBuffer, int)
      */
-    public void toString(final StringBuffer sb, final int depth) {
+    public void toString(StringBuffer sb, int depth) {
 
         if (depth >= 0) {
             sb.append("\\fam");
@@ -221,9 +221,9 @@ public class MathGlyph implements Noad, Serializable {
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(final Noad previousNoad, final NoadList noads,
-            final int index, final NodeList list,
-            final MathContext mathContext, final Logger logger)
+    public void typeset(Noad previousNoad, NoadList noads,
+            int index, NodeList list,
+            MathContext mathContext, Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 

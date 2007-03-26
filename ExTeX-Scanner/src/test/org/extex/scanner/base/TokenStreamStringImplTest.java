@@ -68,7 +68,7 @@ public class TokenStreamStringImplTest extends TestCase {
          * @see org.extex.scanner.Tokenizer#getCatcode(
          *      org.extex.core.UnicodeChar)
          */
-        public Catcode getCatcode(final UnicodeChar c) {
+        public Catcode getCatcode(UnicodeChar c) {
 
             if (c.isLetter()) {
                 return Catcode.LETTER;
@@ -129,7 +129,7 @@ public class TokenStreamStringImplTest extends TestCase {
      *
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(TokenStreamStringImplTest.class);
     }
@@ -139,7 +139,7 @@ public class TokenStreamStringImplTest extends TestCase {
      *
      * @param name the name
      */
-    public TokenStreamStringImplTest(final String name) {
+    public TokenStreamStringImplTest(String name) {
 
         super(name);
     }
@@ -151,7 +151,7 @@ public class TokenStreamStringImplTest extends TestCase {
      * @return the new token stream
      * @throws IOException in case of an error
      */
-    protected TokenStream makeStream(final String line) throws IOException {
+    protected TokenStream makeStream(String line) throws IOException {
 
         return new TokenStreamImpl(null, null, new StringReader(line),
             Boolean.FALSE, "test");

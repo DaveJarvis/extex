@@ -41,8 +41,8 @@ public final class MathFontParameter {
      *
      * @return the key
      */
-    public static String key(final TypesetterOptions context,
-            final String theName, final String theNumber) {
+    public static String key(TypesetterOptions context,
+            String theName, String theNumber) {
 
         if (Namespace.SUPPORT_NAMESPACE_FONT) {
             return context.getNamespace() + "\b" + theName + "#" + theNumber;
@@ -59,8 +59,8 @@ public final class MathFontParameter {
      *
      * @return the key
      */
-    public static String key(final Context context, final String theName,
-            final String theNumber) {
+    public static String key(Context context, String theName,
+            String theNumber) {
 
         if (Namespace.SUPPORT_NAMESPACE_FONT) {
             return context.getNamespace() + "\b" + theName + "#" + theNumber;
@@ -247,7 +247,7 @@ public final class MathFontParameter {
      *            symbol font. Otherwise it is taken from the extension font.
      * @param no the number of the font parameter as string.
      */
-    private MathFontParameter(final boolean inSymbol, final String no) {
+    private MathFontParameter(boolean inSymbol, String no) {
 
         super();
         this.inSymbol = inSymbol;

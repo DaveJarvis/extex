@@ -45,7 +45,7 @@ public class InvalidCharacterScannerException extends ScannerException {
      *
      * @param invalid the invalid character
      */
-    public InvalidCharacterScannerException(final UnicodeChar invalid) {
+    public InvalidCharacterScannerException(UnicodeChar invalid) {
 
         super();
         this.invalid = invalid;

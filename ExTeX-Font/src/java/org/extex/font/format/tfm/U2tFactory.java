@@ -88,7 +88,7 @@ public class U2tFactory {
      * @throws ConfigurationException from the configuration system.
      * @throws NumberFormatException if a parse error occurred.
      */
-    public Map loadU2t(final String name, final ResourceFinder finder)
+    public Map loadU2t(String name, ResourceFinder finder)
             throws IOException, ConfigurationException, NumberFormatException {
 
         if (name == null || finder == null) {
@@ -138,7 +138,7 @@ public class U2tFactory {
      * @throws ConfigurationException from the configuration system.
      * @throws NumberFormatException if a parse error occurred.
      */
-    public Map loadT2u(final String name, final ResourceFinder finder)
+    public Map loadT2u(String name, ResourceFinder finder)
             throws IOException, ConfigurationException, NumberFormatException {
 
         if (name == null || finder == null) {

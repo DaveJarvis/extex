@@ -36,6 +36,6 @@ public interface FontPfa extends FontPfb {
      * @param out   The output.
      * @throws IOException if an IO-error occurred.
      */
-    void writePfa(final OutputStream out) throws IOException;
+    void writePfa(OutputStream out) throws IOException;
 
 }

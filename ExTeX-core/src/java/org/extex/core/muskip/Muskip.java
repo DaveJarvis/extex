@@ -67,8 +67,8 @@ public class Muskip extends Mudimen implements Serializable {
      *
      * @throws InterpreterException in case of an error
      */
-    public static Muskip parse(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public static Muskip parse(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         Token t;
         for (;;) {
@@ -128,8 +128,8 @@ public class Muskip extends Mudimen implements Serializable {
      *
      * @throws InterpreterException in case of an error
      */
-    private static GlueComponent scanMuOrFill(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    private static GlueComponent scanMuOrFill(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Token t = source.getToken(context);
@@ -187,7 +187,7 @@ public class Muskip extends Mudimen implements Serializable {
      *
      * @param kill the kill indicator
      */
-    public Muskip(final boolean kill) {
+    public Muskip(boolean kill) {
 
         super();
         this.kill = kill;
@@ -199,7 +199,7 @@ public class Muskip extends Mudimen implements Serializable {
      *
      * @param theLength the natural length
      */
-    public Muskip(final FixedDimen theLength) {
+    public Muskip(FixedDimen theLength) {
 
         super(theLength.getValue());
         this.kill = false;
@@ -211,7 +211,7 @@ public class Muskip extends Mudimen implements Serializable {
      *
      * @param theLength the natural length
      */
-    public Muskip(final long theLength) {
+    public Muskip(long theLength) {
 
         super(theLength);
         this.kill = false;
@@ -224,9 +224,9 @@ public class Muskip extends Mudimen implements Serializable {
      * @param theStretch the stretchability
      * @param theShrink the shrinkability
      */
-    public Muskip(final FixedGlueComponent theLength,
-            final FixedGlueComponent theStretch,
-            final FixedGlueComponent theShrink) {
+    public Muskip(FixedGlueComponent theLength,
+            FixedGlueComponent theStretch,
+            FixedGlueComponent theShrink) {
 
         super(theLength.getValue());
         this.stretch = theStretch.copy();
@@ -239,7 +239,7 @@ public class Muskip extends Mudimen implements Serializable {
      *
      * @param x the other muskip
      */
-    public Muskip(final Muskip x) {
+    public Muskip(Muskip x) {
 
         super(x.getLength().getValue());
         this.stretch = x.stretch.copy();
@@ -253,7 +253,7 @@ public class Muskip extends Mudimen implements Serializable {
      *
      * @param ms the muglue to add
      */
-    public void add(final Muskip ms) {
+    public void add(Muskip ms) {
 
         super.add(ms.getLength().getValue());
         this.stretch.add(ms.getStretch());
@@ -308,7 +308,7 @@ public class Muskip extends Mudimen implements Serializable {
      * @param nom nominator
      * @param denom denominator
      */
-    public void multiply(final long nom, final long denom) {
+    public void multiply(long nom, long denom) {
 
         super.multiply(nom, denom);
         this.shrink.multiply(nom, denom);
@@ -320,7 +320,7 @@ public class Muskip extends Mudimen implements Serializable {
      *
      * @param kill the kill to set
      */
-    public void setKill(final boolean kill) {
+    public void setKill(boolean kill) {
 
         this.kill = kill;
     }
@@ -343,7 +343,7 @@ public class Muskip extends Mudimen implements Serializable {
      *
      * @param sb the target string buffer
      */
-    public void toString(final StringBuffer sb) {
+    public void toString(StringBuffer sb) {
 
         super.toString(sb);
         if (stretch.ne(GlueComponent.ZERO)) {
@@ -369,7 +369,7 @@ public class Muskip extends Mudimen implements Serializable {
      *
      * @see "<logo>TeX</logo> &ndash; The Program [178,177]"
      */
-    public Tokens toToks(final TokenFactory factory) throws GeneralException {
+    public Tokens toToks(TokenFactory factory) throws GeneralException {
 
         Tokens toks = new Tokens();
         super.toToks(toks, factory, 'm', 'u');

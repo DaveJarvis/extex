@@ -33,7 +33,7 @@ public class JobnameTest extends TestCase {
      * main
      * @param args commandlineparams
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(JobnameTest.class);
     }

@@ -35,7 +35,7 @@ public class AbstractNumberingTester extends NoFlagsPrimitiveTester {
      * @param name the name
      * @param primitive the name of the primitive
      */
-    public AbstractNumberingTester(final String name, final String primitive) {
+    public AbstractNumberingTester(String name, String primitive) {
 
         super(name, primitive, "$$", DEFINE_MATH + "$$");
     }

@@ -41,8 +41,8 @@ public final class PushObserverList implements PushObserver {
      *
      * @return the input list or a new one with the observer added
      */
-    public static PushObserver register(final PushObserver list,
-            final PushObserver observer) {
+    public static PushObserver register(PushObserver list,
+            PushObserver observer) {
 
         if (list instanceof PushObserverList) {
             ((PushObserverList) list).add(observer);
@@ -62,14 +62,14 @@ public final class PushObserverList implements PushObserver {
     /**
      * The field <tt>list</tt> contains the encapsulated list.
      */
-    private List list = new ArrayList();
+    private List<PushObserver> list = new ArrayList<PushObserver>();
 
     /**
      * Add an observer to the list.
      *
      * @param observer the observer to add to the list
      */
-    public void add(final PushObserver observer) {
+    public void add(PushObserver observer) {
 
         list.add(observer);
     }
@@ -80,11 +80,10 @@ public final class PushObserverList implements PushObserver {
      *
      * @param token the token to be pushed
      */
-    public void update(final Token token) {
+    public void update(Token token) {
 
-        int size = list.size();
-        for (int i = 0; i < size; i++) {
-            ((PushObserver) list.get(i)).update(token);
+        for (PushObserver obs : list) {
+            obs.update(token);
         }
     }
 

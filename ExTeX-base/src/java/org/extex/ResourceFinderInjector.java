@@ -43,7 +43,7 @@ public class ResourceFinderInjector implements RegistrarObserver {
      *
      * @param finder the resource finder to inject
      */
-    public ResourceFinderInjector(final ResourceFinder finder) {
+    public ResourceFinderInjector(ResourceFinder finder) {
 
         super();
         this.finder = finder;
@@ -65,7 +65,7 @@ public class ResourceFinderInjector implements RegistrarObserver {
      *
      * @see org.extex.framework.RegistrarObserver#reconnect(java.lang.Object)
      */
-    public Object reconnect(final Object object) throws RegistrarException {
+    public Object reconnect(Object object) throws RegistrarException {
 
         ((ResourceConsumer) object).setResourceFinder(finder);
         return object;

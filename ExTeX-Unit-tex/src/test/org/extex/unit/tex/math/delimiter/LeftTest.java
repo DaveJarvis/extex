@@ -34,7 +34,7 @@ public class LeftTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public LeftTest(final String arg) {
+    public LeftTest(String arg) {
 
         super(arg, "left", "123 ");
     }

@@ -37,7 +37,7 @@ public class T2TDOCharStrings extends T2TDONumber {
      * @param stack the stack
      * @throws IOException if an IO.error occurs.
      */
-    public T2TDOCharStrings(final List stack) throws IOException {
+    public T2TDOCharStrings(List stack) throws IOException {
 
         super(stack, new short[]{CHARSTRINGS});
     }

@@ -33,7 +33,7 @@ public class VsplitTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(VsplitTest.class);
     }
@@ -43,7 +43,7 @@ public class VsplitTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public VsplitTest(final String arg) {
+    public VsplitTest(String arg) {
 
         super(arg, "vsplit", "42 to 1pt", "\\setbox42=\\vbox{A}");
     }

@@ -34,7 +34,7 @@ public class RightTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public RightTest(final String arg) {
+    public RightTest(String arg) {
 
         super(arg, "right", ". ");
         appendToPrepare("\\left. ");

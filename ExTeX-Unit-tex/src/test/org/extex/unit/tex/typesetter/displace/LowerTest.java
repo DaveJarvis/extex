@@ -33,7 +33,7 @@ public class LowerTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(LowerTest.class);
     }
@@ -43,7 +43,7 @@ public class LowerTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public LowerTest(final String arg) {
+    public LowerTest(String arg) {
 
         super(arg, "lower", "1pt\\hbox{} ");
     }

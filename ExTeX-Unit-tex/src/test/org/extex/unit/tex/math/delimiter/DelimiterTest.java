@@ -34,7 +34,7 @@ public class DelimiterTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public DelimiterTest(final String arg) {
+    public DelimiterTest(String arg) {
 
         super(arg, "delimiter", ". ");
     }

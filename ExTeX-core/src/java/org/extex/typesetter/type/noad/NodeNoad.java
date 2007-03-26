@@ -48,7 +48,7 @@ public class NodeNoad implements Noad {
      *
      * @param node the node to
      */
-    public NodeNoad(final Node node) {
+    public NodeNoad(Node node) {
 
         super();
         this.node = node;
@@ -99,7 +99,7 @@ public class NodeNoad implements Noad {
      * @see org.extex.typesetter.type.noad.Noad#setSubscript(
      *      org.extex.typesetter.type.noad.Noad)
      */
-    public void setSubscript(final Noad subscript) {
+    public void setSubscript(Noad subscript) {
 
         throw new UnsupportedOperationException();
     }
@@ -113,7 +113,7 @@ public class NodeNoad implements Noad {
      * @see org.extex.typesetter.type.noad.Noad#setSuperscript(
      *      org.extex.typesetter.type.noad.Noad)
      */
-    public void setSuperscript(final Noad superscript) {
+    public void setSuperscript(Noad superscript) {
 
         throw new UnsupportedOperationException();
     }
@@ -126,7 +126,7 @@ public class NodeNoad implements Noad {
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer)
      */
-    public void toString(final StringBuffer sb) {
+    public void toString(StringBuffer sb) {
 
         node.toString(sb, "", Integer.MAX_VALUE, Integer.MAX_VALUE);
     }
@@ -140,7 +140,7 @@ public class NodeNoad implements Noad {
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer, int)
      */
-    public void toString(final StringBuffer sb, final int depth) {
+    public void toString(StringBuffer sb, int depth) {
 
         node.toString(sb, "", Integer.MAX_VALUE, Integer.MAX_VALUE);
     }
@@ -167,9 +167,9 @@ public class NodeNoad implements Noad {
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(final Noad previousNoad, final NoadList noads,
-            final int index, final NodeList list,
-            final MathContext mathContext, final Logger logger)
+    public void typeset(Noad previousNoad, NoadList noads,
+            int index, NodeList list,
+            MathContext mathContext, Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 

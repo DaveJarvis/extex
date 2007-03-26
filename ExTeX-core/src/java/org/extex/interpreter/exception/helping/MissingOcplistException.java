@@ -44,7 +44,7 @@ public class MissingOcplistException extends InterpreterException {
      * @param context the interpreter context
      * @param t the token encountered
      */
-    public MissingOcplistException(final Context context, final Token t) {
+    public MissingOcplistException(Context context, Token t) {
 
         super(LocalizerFactory.getLocalizer(MissingOcplistException.class)
             .format("Omega.MissingOcplist"));

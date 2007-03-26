@@ -22,10 +22,6 @@ package org.extex.font.format.xtf.cff;
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.font.format.xtf.OtfTableCFF;
-import org.extex.util.file.random.RandomAccessR;
-import org.extex.util.xml.XMLStreamWriter;
-
 /**
  * Notice.
  *
@@ -41,7 +37,7 @@ public class T2TDONotice extends T2TDOSID {
      * @param stack the stack
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDONotice(final List stack) throws IOException {
+    public T2TDONotice(List stack) throws IOException {
 
         super(stack, new short[]{NOTICE});
     }

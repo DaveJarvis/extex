@@ -33,7 +33,7 @@ public class WidowpenaltyTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(WidowpenaltyTest.class);
     }
@@ -43,7 +43,7 @@ public class WidowpenaltyTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public WidowpenaltyTest(final String arg) {
+    public WidowpenaltyTest(String arg) {
 
         super(arg, "widowpenalty", "", "0");
     }

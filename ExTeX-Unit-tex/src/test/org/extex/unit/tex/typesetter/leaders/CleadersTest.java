@@ -33,7 +33,7 @@ public class CleadersTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(CleadersTest.class);
     }
@@ -43,7 +43,7 @@ public class CleadersTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public CleadersTest(final String arg) {
+    public CleadersTest(String arg) {
 
         super(arg, "cleaders", "\\vrule\\vfill");
     }

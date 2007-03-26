@@ -45,7 +45,7 @@ public abstract class AbstractPdftexCode extends AbstractCode {
      *
      * @param name the name for tracing and debugging
      */
-    public AbstractPdftexCode(final String name) {
+    public AbstractPdftexCode(String name) {
 
         super(name);
     }
@@ -60,8 +60,8 @@ public abstract class AbstractPdftexCode extends AbstractCode {
      *
      * @throws InterpreterPdftexException in case that pdfTeX is not active
      */
-    protected PdftexSupport ensurePdftex(final Context context,
-            final Typesetter typesetter) throws InterpreterPdftexException {
+    protected PdftexSupport ensurePdftex(Context context,
+            Typesetter typesetter) throws InterpreterPdftexException {
 
         DocumentWriter documentWriter =
                 typesetter.getBackendDriver().getDocumentWriter();

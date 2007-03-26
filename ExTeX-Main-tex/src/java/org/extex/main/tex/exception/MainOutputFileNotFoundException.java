@@ -43,7 +43,7 @@ public class MainOutputFileNotFoundException extends MainException {
      *
      * @param filename the name of the file to open
      */
-    public MainOutputFileNotFoundException(final String filename) {
+    public MainOutputFileNotFoundException(String filename) {
 
         super(ERROR_CODE, filename);
     }

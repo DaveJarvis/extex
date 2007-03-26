@@ -91,7 +91,7 @@ public abstract class AbstractFinder implements LogEnabled, ResourceFinder {
      * @throws ConfigurationMissingException in case of an error: The argument
      *   configuration is <code>null</code>.
      */
-    public AbstractFinder(final Configuration configuration)
+    public AbstractFinder(Configuration configuration)
             throws ConfigurationMissingException {
 
         super();
@@ -113,7 +113,7 @@ public abstract class AbstractFinder implements LogEnabled, ResourceFinder {
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger theLogger) {
+    public void enableLogging(Logger theLogger) {
 
         this.logger = theLogger;
     }
@@ -128,7 +128,7 @@ public abstract class AbstractFinder implements LogEnabled, ResourceFinder {
      *
      * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
      */
-    public void enableTracing(final boolean flag) {
+    public void enableTracing(boolean flag) {
 
         trace = flag;
     }
@@ -150,7 +150,7 @@ public abstract class AbstractFinder implements LogEnabled, ResourceFinder {
      * @param arg the first argument to insert
      * @param arg2 the second argument to insert
      */
-    protected void trace(final String key, final String arg, final String arg2) {
+    protected void trace(String key, String arg, String arg2) {
 
         if (trace && logger != null) {
             if (bundle == null) {
@@ -170,8 +170,8 @@ public abstract class AbstractFinder implements LogEnabled, ResourceFinder {
      * @param arg2 the second argument to insert
      * @param arg3 the third argument to insert
      */
-    protected void trace(final String key, final String arg, final String arg2,
-            final String arg3) {
+    protected void trace(String key, String arg, String arg2,
+            String arg3) {
 
         if (trace && logger != null) {
             if (bundle == null) {

@@ -32,7 +32,7 @@ public class MathchoiceTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public MathchoiceTest(final String arg) {
+    public MathchoiceTest(String arg) {
 
         super(arg, "mathchoice", "{}{}{}{}");
     }

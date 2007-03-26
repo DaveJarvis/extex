@@ -31,7 +31,7 @@ public class HoffsetTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(HoffsetTest.class);
     }
@@ -41,7 +41,7 @@ public class HoffsetTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public HoffsetTest(final String arg) {
+    public HoffsetTest(String arg) {
 
         super(arg, "hoffset", "", "0.0pt");
     }

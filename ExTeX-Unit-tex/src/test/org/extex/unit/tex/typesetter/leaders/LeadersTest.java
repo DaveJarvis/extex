@@ -33,7 +33,7 @@ public class LeadersTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(LeadersTest.class);
     }
@@ -43,7 +43,7 @@ public class LeadersTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public LeadersTest(final String arg) {
+    public LeadersTest(String arg) {
 
         super(arg, "leaders", "\\vrule\\vfil");
     }

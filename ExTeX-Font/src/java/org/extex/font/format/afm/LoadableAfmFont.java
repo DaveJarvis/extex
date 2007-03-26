@@ -89,7 +89,7 @@ public class LoadableAfmFont implements LoadableFont {
      * @param val   the value
      * @return the <code>Dimen</code> value of the float value.
      */
-    private FixedDimen floatToDimen(final float val) {
+    private FixedDimen floatToDimen(float val) {
 
         long l = (long) (getActualSize().getValue() * val / 1000);
 
@@ -120,7 +120,7 @@ public class LoadableAfmFont implements LoadableFont {
      * @return the char metric for a Unicode char,
      *         or <code>null</code>, if not found.
      */
-    private AfmCharMetric getCharMetric(final UnicodeChar uc) {
+    private AfmCharMetric getCharMetric(UnicodeChar uc) {
 
         if (uc != null) {
             if (uc == lastUsedUc) {
@@ -143,7 +143,7 @@ public class LoadableAfmFont implements LoadableFont {
     /**
      * @see org.extex.font.ExtexFont#getDepth(org.extex.core.UnicodeChar)
      */
-    public FixedGlue getDepth(final UnicodeChar uc) {
+    public FixedGlue getDepth(UnicodeChar uc) {
 
         AfmCharMetric cm = getCharMetric(uc);
         if (cm != null) {
@@ -180,7 +180,7 @@ public class LoadableAfmFont implements LoadableFont {
     /**
      * @see org.extex.font.ExtexFont#getFontDimen(java.lang.String)
      */
-    public FixedDimen getFontDimen(final String name) {
+    public FixedDimen getFontDimen(String name) {
 
         return Dimen.ZERO_PT;
     }
@@ -204,7 +204,7 @@ public class LoadableAfmFont implements LoadableFont {
     /**
      * @see org.extex.font.ExtexFont#getHeight(org.extex.core.UnicodeChar)
      */
-    public FixedGlue getHeight(final UnicodeChar uc) {
+    public FixedGlue getHeight(UnicodeChar uc) {
 
         AfmCharMetric cm = getCharMetric(uc);
         if (cm != null) {
@@ -216,7 +216,7 @@ public class LoadableAfmFont implements LoadableFont {
     /**
      * @see org.extex.font.ExtexFont#getItalicCorrection(org.extex.core.UnicodeChar)
      */
-    public FixedDimen getItalicCorrection(final UnicodeChar uc) {
+    public FixedDimen getItalicCorrection(UnicodeChar uc) {
 
         // TODO mgn: getItalicCorrection unimplemented
         return null;
@@ -225,7 +225,7 @@ public class LoadableAfmFont implements LoadableFont {
     /**
      * @see org.extex.font.ExtexFont#getKerning(org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
      */
-    public FixedDimen getKerning(final UnicodeChar uc1, final UnicodeChar uc2) {
+    public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
 
         // TODO mgn: nokerning beachten
 
@@ -247,7 +247,7 @@ public class LoadableAfmFont implements LoadableFont {
     /**
      * @see org.extex.font.ExtexFont#getLigature(org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
      */
-    public UnicodeChar getLigature(final UnicodeChar uc1, final UnicodeChar uc2) {
+    public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
 
         // TODO mgn: noligature beachten
         AfmCharMetric cm1 = getCharMetric(uc1);
@@ -292,7 +292,7 @@ public class LoadableAfmFont implements LoadableFont {
     /**
      * @see org.extex.font.ExtexFont#getWidth(org.extex.core.UnicodeChar)
      */
-    public FixedGlue getWidth(final UnicodeChar uc) {
+    public FixedGlue getWidth(UnicodeChar uc) {
 
         AfmCharMetric cm = getCharMetric(uc);
         if (cm != null) {
@@ -304,7 +304,7 @@ public class LoadableAfmFont implements LoadableFont {
     /**
      * @see org.extex.font.ExtexFont#hasGlyph(org.extex.core.UnicodeChar)
      */
-    public boolean hasGlyph(final UnicodeChar uc) {
+    public boolean hasGlyph(UnicodeChar uc) {
 
         return getCharMetric(uc) != null ? true : false;
     }
@@ -312,7 +312,7 @@ public class LoadableAfmFont implements LoadableFont {
     /**
      * @see org.extex.font.LoadableFont#loadFont(java.io.InputStream, org.extex.font.CoreFontFactory, org.extex.font.FontKey)
      */
-    public void loadFont(final InputStream in, final CoreFontFactory factory,
+    public void loadFont(InputStream in, CoreFontFactory factory,
             FontKey fontKey) throws CorruptFontException {
 
         this.fontKey = fontKey;

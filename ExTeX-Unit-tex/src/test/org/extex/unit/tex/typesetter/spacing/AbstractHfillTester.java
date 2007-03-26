@@ -47,8 +47,8 @@ public abstract class AbstractHfillTester extends NoFlagsPrimitiveTester {
      * @param primitive the name of the primitive
      * @param args the arguments for the invocation
      */
-    public AbstractHfillTester(final String arg, final String primitive,
-            final String args) {
+    public AbstractHfillTester(String arg, String primitive,
+            String args) {
 
         super(arg, primitive, args);
         this.invocation = primitive + args;

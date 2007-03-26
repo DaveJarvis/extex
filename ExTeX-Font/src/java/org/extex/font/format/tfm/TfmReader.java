@@ -148,7 +148,7 @@ public class TfmReader implements Serializable {
      * @param afontname The font name.
      * @throws IOException if a IO-error occurred.
      */
-    public TfmReader(final InputStream in, final String afontname)
+    public TfmReader(InputStream in, String afontname)
             throws IOException {
 
         this(new RandomAccessInputStream(in), afontname);
@@ -161,7 +161,7 @@ public class TfmReader implements Serializable {
      * @param afontname The font name.
      * @throws IOException if a IO-error occurred.
      */
-    public TfmReader(final RandomAccessR rar, final String afontname)
+    public TfmReader(RandomAccessR rar, String afontname)
             throws IOException {
 
         fontname = afontname;
@@ -199,7 +199,7 @@ public class TfmReader implements Serializable {
      * @param  file the filename
      * @return  the filename without the path
      */
-    private String filenameWithoutPath(final String file) {
+    private String filenameWithoutPath(String file) {
 
         String rt = file;
         int i = rt.lastIndexOf(File.separator);
@@ -253,7 +253,7 @@ public class TfmReader implements Serializable {
      * @param pos   the position
      * @return the depth of a char, or <code>null</code>, if it does not exist.
      */
-    public TfmFixWord getDepth(final int pos) {
+    public TfmFixWord getDepth(int pos) {
 
         TfmCharInfoWord ci = charinfo.getCharInfoWord(pos);
         if (ci != null) {
@@ -369,7 +369,7 @@ public class TfmReader implements Serializable {
      * @param pos   the position
      * @return the height of a char, or <code>null</code>, if it does not exist.
      */
-    public TfmFixWord getHeight(final int pos) {
+    public TfmFixWord getHeight(int pos) {
 
         TfmCharInfoWord ci = charinfo.getCharInfoWord(pos);
         if (ci != null) {
@@ -393,7 +393,7 @@ public class TfmReader implements Serializable {
      * @param pos   the position
      * @return the italic correction of a char, or <code>null</code>, if it does not exist.
      */
-    public TfmFixWord getItalicCorrection(final int pos) {
+    public TfmFixWord getItalicCorrection(int pos) {
 
         TfmCharInfoWord ci = charinfo.getCharInfoWord(pos);
         if (ci != null) {
@@ -414,7 +414,7 @@ public class TfmReader implements Serializable {
     /**
      * @see org.extex.font.format.tfm.TfmLigKernArray#getKerning(int, int)
      */
-    public TfmFixWord getKerning(final int cp1, final int cp2) {
+    public TfmFixWord getKerning(int cp1, int cp2) {
 
         return ligkern.getKerning(cp1, cp2);
     }
@@ -431,7 +431,7 @@ public class TfmReader implements Serializable {
     /**
      * @see org.extex.font.format.tfm.TfmLigKernArray#getLigature(int, int)
      */
-    public int getLigature(final int cp1, final int cp2) {
+    public int getLigature(int cp1, int cp2) {
 
         return ligkern.getLigature(cp1, cp2);
     }
@@ -460,7 +460,7 @@ public class TfmReader implements Serializable {
      * @param name the name of the parameter.
      * @return the value of a font parameter.
      */
-    public FixedDimen getParam(final String name) {
+    public FixedDimen getParam(String name) {
 
         return param.getParam(name).toDimen(getDesignSize());
     }
@@ -471,7 +471,7 @@ public class TfmReader implements Serializable {
      * @param name the name of the parameter.
      * @return the value of a font parameter as a fix word.
      */
-    public TfmFixWord getParamAsFixWord(final String name) {
+    public TfmFixWord getParamAsFixWord(String name) {
 
         return param.getParam(name);
     }
@@ -527,7 +527,7 @@ public class TfmReader implements Serializable {
      * @param pos   the position
      * @return the width of a char, or <code>null</code>, if it does not exist.
      */
-    public TfmFixWord getWidth(final int pos) {
+    public TfmFixWord getWidth(int pos) {
 
         TfmCharInfoWord ci = charinfo.getCharInfoWord(pos);
         if (ci != null) {
@@ -543,8 +543,8 @@ public class TfmReader implements Serializable {
      * @throws FontException if a font-erorr occured
      * @throws ConfigurationException from the resourcefinder
      */
-    public void setFontMapEncoding(final PsFontsMapReader apsfontmap,
-            final EncFactory encf) throws FontException, ConfigurationException {
+    public void setFontMapEncoding(PsFontsMapReader apsfontmap,
+            EncFactory encf) throws FontException, ConfigurationException {
 
         psfontmap = apsfontmap;
         encfactory = encf;
@@ -574,7 +574,7 @@ public class TfmReader implements Serializable {
      * The pfbparser to set.
      * @param parser The pfbparser to set.
      */
-    public void setPfbParser(final PfbParser parser) {
+    public void setPfbParser(PfbParser parser) {
 
         pfbparser = parser;
         if (enctable == null && parser != null) {
@@ -592,7 +592,7 @@ public class TfmReader implements Serializable {
      * @param visitor The visitor.
      * @throws IOException if a io error occurred.
      */
-    public void visit(final TfmVisitor visitor) throws IOException {
+    public void visit(TfmVisitor visitor) throws IOException {
 
         visitor.visitTfmReader(this);
         visitor.visitTfmHeaderLengths(lengths);

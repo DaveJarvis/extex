@@ -33,7 +33,7 @@ public class PdflinkmarginTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PdflinkmarginTest.class);
     }
@@ -43,7 +43,7 @@ public class PdflinkmarginTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public PdflinkmarginTest(final String arg) {
+    public PdflinkmarginTest(String arg) {
 
         super(arg, "pdflinkmargin", "", "0.0pt");
         setConfig("pdftex-test");

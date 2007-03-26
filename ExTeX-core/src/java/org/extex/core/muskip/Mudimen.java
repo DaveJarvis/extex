@@ -62,8 +62,8 @@ public class Mudimen implements Serializable {
      *
      * @throws InterpreterException in case of an error
      */
-    protected static long scanMu(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    protected static long scanMu(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Token t = source.getToken(context);
@@ -116,11 +116,14 @@ public class Mudimen implements Serializable {
      *
      * @param context the processor context
      * @param source the source for new tokens
+     * @param typesetter the typesetter
+     *
+     * @return the new object
      *
      * @throws InterpreterException in case of an error
      */
-    public static Mudimen parseMudimen(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public static Mudimen parseMudimen(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         return new Mudimen(scanMu(context, source, typesetter));
@@ -131,7 +134,7 @@ public class Mudimen implements Serializable {
      *
      * @param len the length
      */
-    public Mudimen(final long len) {
+    public Mudimen(long len) {
 
         super();
         length.set(len);
@@ -142,7 +145,7 @@ public class Mudimen implements Serializable {
      *
      * @param value the value to add
      */
-    public void add(final long value) {
+    public void add(long value) {
 
         this.length.add(new GlueComponent(value));
     }
@@ -176,7 +179,7 @@ public class Mudimen implements Serializable {
      * @param nom nominator
      * @param denom denominator
      */
-    public void multiply(final long nom, final long denom) {
+    public void multiply(long nom, long denom) {
 
         length.multiply(nom, denom);
     }
@@ -199,7 +202,7 @@ public class Mudimen implements Serializable {
      *
      * @param sb the target string buffer
      */
-    public void toString(final StringBuffer sb) {
+    public void toString(StringBuffer sb) {
 
         length.toString(sb, 'm', 'u');
     }
@@ -219,8 +222,8 @@ public class Mudimen implements Serializable {
      *
      * @throws CatcodeException in case of an error
      */
-    public void toToks(final Tokens toks, final TokenFactory factory,
-            final char c1, final char c2) throws CatcodeException {
+    public void toToks(Tokens toks, TokenFactory factory,
+            char c1, char c2) throws CatcodeException {
 
         length.toToks(toks, factory, c1, c2);
     }

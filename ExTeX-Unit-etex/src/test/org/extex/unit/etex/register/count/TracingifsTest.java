@@ -33,7 +33,7 @@ public class TracingifsTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(TracingifsTest.class);
     }
@@ -43,7 +43,7 @@ public class TracingifsTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public TracingifsTest(final String arg) {
+    public TracingifsTest(String arg) {
 
         super(arg, "tracingifs", "", "0");
         setConfig("etex-test");

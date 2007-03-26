@@ -27,7 +27,7 @@ import org.apache.tools.ant.BuildFileTest;
  * TODO gene: missing JavaDoc.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5413 $
  */
 public class ExdocTaskTest extends BuildFileTest {
 
@@ -36,11 +36,16 @@ public class ExdocTaskTest extends BuildFileTest {
      *
      * @param name the name
      */
-    public ExdocTaskTest(final String name) {
+    public ExdocTaskTest(String name) {
 
         super(name);
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @see junit.framework.TestCase#setUp()
+     */
     public void setUp() {
 
         configureProject("src/test/org/extex/exdoc/ant/ExdocTaskTest1.xml");

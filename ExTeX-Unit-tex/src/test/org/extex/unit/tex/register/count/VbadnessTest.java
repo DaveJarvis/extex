@@ -33,7 +33,7 @@ public class VbadnessTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(VbadnessTest.class);
     }
@@ -43,7 +43,7 @@ public class VbadnessTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public VbadnessTest(final String arg) {
+    public VbadnessTest(String arg) {
 
         super(arg, "vbadness", "", "0");
     }

@@ -39,7 +39,7 @@ public class AuxFile {
      *
      * @param name ...
      */
-    public AuxFile(final String name) {
+    public AuxFile(String name) {
 
         super();
 
@@ -64,7 +64,7 @@ public class AuxFile {
      *
      * @return ...
      */
-    public boolean redo(final AuxVisitor visitor) {
+    public boolean redo(AuxVisitor visitor) {
 
         // TODO Auto-generated method stub
         return false;

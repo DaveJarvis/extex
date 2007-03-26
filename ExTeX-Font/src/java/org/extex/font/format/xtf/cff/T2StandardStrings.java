@@ -450,7 +450,7 @@ public final class T2StandardStrings {
      * @param sid   the sid for the string
      * @return Returns the StandardString  or '.notdef' if number out of range.
      */
-    public static String getString(final int sid) {
+    public static String getString(int sid) {
 
         if (sid >= 0 && sid < DATA.length) {
             return DATA[sid];
@@ -468,7 +468,7 @@ public final class T2StandardStrings {
      * @param name  the StandardString
      * @return Returns the SID for a StandardString or -1 if not found.
      */
-    public static int getSID(final String name) {
+    public static int getSID(String name) {
 
         if (names == null) {
             for (int i = 0; i < DATA.length; i++) {

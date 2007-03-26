@@ -79,8 +79,8 @@ public abstract class Interaction implements Serializable {
          *      org.extex.interpreter.InteractionVisitor,
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public boolean visit(final InteractionVisitor visitor,
-                final Object arg1, final Object arg2, final Object arg3)
+        public boolean visit(InteractionVisitor visitor,
+                Object arg1, Object arg2, Object arg3)
                 throws GeneralException {
 
             return visitor.visitBatchmode(arg1, arg2, arg3);
@@ -133,8 +133,8 @@ public abstract class Interaction implements Serializable {
          *      org.extex.interpreter.InteractionVisitor,
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public boolean visit(final InteractionVisitor visitor,
-                final Object arg1, final Object arg2, final Object arg3)
+        public boolean visit(InteractionVisitor visitor,
+                Object arg1, Object arg2, Object arg3)
                 throws GeneralException {
 
             return visitor.visitErrorstopmode(arg1, arg2, arg3);
@@ -187,8 +187,8 @@ public abstract class Interaction implements Serializable {
          *      org.extex.interpreter.InteractionVisitor,
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public boolean visit(final InteractionVisitor visitor,
-                final Object arg1, final Object arg2, final Object arg3)
+        public boolean visit(InteractionVisitor visitor,
+                Object arg1, Object arg2, Object arg3)
                 throws GeneralException {
 
             return visitor.visitNonstopmode(arg1, arg2, arg3);
@@ -240,8 +240,8 @@ public abstract class Interaction implements Serializable {
          *      org.extex.interpreter.InteractionVisitor,
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public boolean visit(final InteractionVisitor visitor,
-                final Object arg1, final Object arg2, final Object arg3)
+        public boolean visit(InteractionVisitor visitor,
+                Object arg1, Object arg2, Object arg3)
                 throws GeneralException {
 
             return visitor.visitScrollmode(arg1, arg2, arg3);
@@ -270,7 +270,7 @@ public abstract class Interaction implements Serializable {
      * @throws InteractionUnknownException in case that the numerical value
      *   is out of range and does not correspond to an interaction mode
      */
-    public static Interaction get(final int mode)
+    public static Interaction get(int mode)
             throws InteractionUnknownException {
 
         if (mode < 0 || mode >= MODE_MAP.length) {
@@ -289,7 +289,7 @@ public abstract class Interaction implements Serializable {
      *
      * @throws InteractionUnknownException in case of an error
      */
-    public static int get(final Interaction mode)
+    public static int get(Interaction mode)
             throws InteractionUnknownException {
 
         for (int i = 0; i < MODE_MAP.length; i++) {
@@ -320,7 +320,7 @@ public abstract class Interaction implements Serializable {
      * @throws InteractionUnknownException in case that something is passed
      *             in which can not be interpreted as interaction mode
      */
-    public static Interaction get(final String mode)
+    public static Interaction get(String mode)
             throws InteractionUnknownException {
 
         if (mode == null || "".equals(mode)) {
@@ -385,8 +385,8 @@ public abstract class Interaction implements Serializable {
      *
      * @see InteractionVisitor
      */
-    public abstract boolean visit(final InteractionVisitor visitor,
-            final Object arg1, final Object arg2, final Object arg3)
+    public abstract boolean visit(InteractionVisitor visitor,
+            Object arg1, Object arg2, Object arg3)
             throws GeneralException;
 
 }

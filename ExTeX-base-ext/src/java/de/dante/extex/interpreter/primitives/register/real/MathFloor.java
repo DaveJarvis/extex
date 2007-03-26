@@ -62,7 +62,7 @@ public class MathFloor extends AbstractMath
      * @param name the name for debugging
      * @throws GeneralException ...
      */
-    public MathFloor(final String name) throws GeneralException {
+    public MathFloor(String name) throws GeneralException {
 
         super(name);
 
@@ -78,7 +78,7 @@ public class MathFloor extends AbstractMath
      * @throws InterpreterException if a error occurred
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Real calculate(final Context context, final TokenSource source)
+    protected Real calculate(Context context, TokenSource source)
             throws InterpreterException,
                 ConfigurationException {
 

@@ -45,7 +45,7 @@ public class DviPostNotFoundException extends DviException {
      *
      * @param message   the message
      */
-    public DviPostNotFoundException(final String message) {
+    public DviPostNotFoundException(String message) {
 
         super(message);
     }

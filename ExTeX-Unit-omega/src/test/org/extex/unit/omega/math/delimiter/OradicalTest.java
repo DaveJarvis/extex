@@ -34,7 +34,7 @@ public class OradicalTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public OradicalTest(final String arg) {
+    public OradicalTest(String arg) {
 
         super(arg, "oradical", "12 32");
         setConfig("omega-test");

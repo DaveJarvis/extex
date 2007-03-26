@@ -37,7 +37,6 @@ import org.extex.typesetter.Mode;
 import org.extex.typesetter.ParagraphObserver;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
-import org.extex.typesetter.exception.InvalidSpacefactorException;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.exception.TypesetterUnsupportedException;
 import org.extex.typesetter.listMaker.ListManager;
@@ -72,10 +71,12 @@ public class NullTypesetterImpl implements Typesetter {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#add(
      *      org.extex.core.glue.FixedGlue)
      */
-    public void add(final FixedGlue g) throws TypesetterException {
+    public void add(FixedGlue g) throws TypesetterException {
 
         // nothing to do
     }
@@ -93,7 +94,7 @@ public class NullTypesetterImpl implements Typesetter {
      * @see org.extex.typesetter.ListMaker#add(
      *     org.extex.typesetter.type.Node)
      */
-    public void add(final Node node) throws TypesetterException {
+    public void add(Node node) throws TypesetterException {
 
         // nothing to do
     }
@@ -112,9 +113,10 @@ public class NullTypesetterImpl implements Typesetter {
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.TypesetterOptions)
      */
-    public void addAndAdjust(final NodeList list,
-            final TypesetterOptions options) throws TypesetterException {
+    public void addAndAdjust(NodeList list,
+            TypesetterOptions options) throws TypesetterException {
 
+        // nothing to do
     }
 
     /**
@@ -132,8 +134,8 @@ public class NullTypesetterImpl implements Typesetter {
      *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.core.count.Count)
      */
-    public void addSpace(final TypesettingContext typesettingContext,
-            final Count spacefactor)
+    public void addSpace(TypesettingContext typesettingContext,
+            Count spacefactor)
             throws TypesetterException,
                 ConfigurationException {
 
@@ -147,8 +149,9 @@ public class NullTypesetterImpl implements Typesetter {
      *
      * @see org.extex.typesetter.ListMaker#afterParagraph(ParagraphObserver)
      */
-    public void afterParagraph(final ParagraphObserver observer) {
+    public void afterParagraph(ParagraphObserver observer) {
 
+        // nothing to do
     }
 
     /**
@@ -159,6 +162,7 @@ public class NullTypesetterImpl implements Typesetter {
      */
     public void clearShipoutMark() {
 
+        // nothing to do
     }
 
     /**
@@ -179,7 +183,7 @@ public class NullTypesetterImpl implements Typesetter {
      *
      * @see org.extex.typesetter.Typesetter#complete(TypesetterOptions)
      */
-    public NodeList complete(final TypesetterOptions context)
+    public NodeList complete(TypesetterOptions context)
             throws TypesetterException,
                 ConfigurationException {
 
@@ -196,7 +200,7 @@ public class NullTypesetterImpl implements Typesetter {
      * @see org.extex.framework.configuration.Configurable#configure(
      *     org.extex.framework.configuration.Configuration)
      */
-    public void configure(final Configuration config) {
+    public void configure(Configuration config) {
 
         // nothing to do
     }
@@ -215,9 +219,10 @@ public class NullTypesetterImpl implements Typesetter {
      *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
-    public void cr(final Context context, final TypesettingContext tc,
-            final UnicodeChar uc) throws TypesetterException {
+    public void cr(Context context, TypesettingContext tc,
+            UnicodeChar uc) throws TypesetterException {
 
+        // nothing to do
     }
 
     /**
@@ -227,8 +232,6 @@ public class NullTypesetterImpl implements Typesetter {
      * @param locator the locator
      *
      * @return the horizontal list maker
-     *
-     * @throws TypesetterException in case of an error
      *
      * @see org.extex.typesetter.Typesetter#ensureHorizontalMode(
      *      org.extex.core.Locator)
@@ -242,9 +245,6 @@ public class NullTypesetterImpl implements Typesetter {
      * Instructs the typesetter to perform any actions necessary for cleaning up
      * everything at the end of processing. This should involve a shipout of
      * any material still left unprocessed.
-     *
-     * @throws TypesetterException in case of an error
-     * @throws ConfigurationException in case of an configuration problem
      *
      * @see org.extex.typesetter.Typesetter#finish()
      */
@@ -395,6 +395,7 @@ public class NullTypesetterImpl implements Typesetter {
      */
     public void leftBrace() {
 
+        // nothing to do
     }
 
     /**
@@ -419,8 +420,8 @@ public class NullTypesetterImpl implements Typesetter {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.core.Locator)
      */
-    public boolean letter(final UnicodeChar uc, final TypesettingContext tc,
-            final Context context, TokenSource source, final Locator locator)
+    public boolean letter(UnicodeChar uc, TypesettingContext tc,
+            Context context, TokenSource source, Locator locator)
             throws TypesetterException {
 
         return false;
@@ -443,9 +444,10 @@ public class NullTypesetterImpl implements Typesetter {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
-    public void mathShift(final Context context, final TokenSource source,
-            final Token t) throws TypesetterException, ConfigurationException {
+    public void mathShift(Context context, TokenSource source,
+            Token t) throws TypesetterException, ConfigurationException {
 
+        // nothing to do
     }
 
     /**
@@ -473,8 +475,9 @@ public class NullTypesetterImpl implements Typesetter {
      * @see org.extex.typesetter.Typesetter#push(
      *      org.extex.typesetter.ListMaker)
      */
-    public void push(final ListMaker listMaker) throws TypesetterException {
+    public void push(ListMaker listMaker) throws TypesetterException {
 
+        // nothing to do
     }
 
     /**
@@ -485,6 +488,7 @@ public class NullTypesetterImpl implements Typesetter {
      */
     public void removeLastNode() {
 
+        // nothing to do
     }
 
     /**
@@ -497,6 +501,7 @@ public class NullTypesetterImpl implements Typesetter {
      */
     public void rightBrace() throws TypesetterException {
 
+        // nothing to do
     }
 
     /**
@@ -509,7 +514,7 @@ public class NullTypesetterImpl implements Typesetter {
      * @see org.extex.typesetter.Typesetter#setBackend(
      *      org.extex.backend.BackendDriver)
      */
-    public void setBackend(final BackendDriver driver) {
+    public void setBackend(BackendDriver driver) {
 
         backend = driver;
     }
@@ -522,8 +527,9 @@ public class NullTypesetterImpl implements Typesetter {
      * @see org.extex.typesetter.Typesetter#setNodeFactory(
      *      org.extex.typesetter.type.node.factory.NodeFactory)
      */
-    public void setNodeFactory(final NodeFactory nodeFactory) {
+    public void setNodeFactory(NodeFactory nodeFactory) {
 
+        // nothing to do
     }
 
     /**
@@ -534,8 +540,9 @@ public class NullTypesetterImpl implements Typesetter {
      * @see org.extex.typesetter.Typesetter#setOptions(
      *      org.extex.typesetter.TypesetterOptions)
      */
-    public void setOptions(final TypesetterOptions options) {
+    public void setOptions(TypesetterOptions options) {
 
+        // nothing to do
     }
 
     /**
@@ -546,8 +553,9 @@ public class NullTypesetterImpl implements Typesetter {
      * @see org.extex.typesetter.Typesetter#setOutputRoutine(
      *      org.extex.typesetter.output.OutputRoutine)
      */
-    public void setOutputRoutine(final OutputRoutine output) {
+    public void setOutputRoutine(OutputRoutine output) {
 
+        // nothing to do
     }
 
     /**
@@ -559,8 +567,9 @@ public class NullTypesetterImpl implements Typesetter {
      * @see org.extex.typesetter.Typesetter#setPageBuilder(
      *       org.extex.typesetter.pageBuilder.PageBuilder)
      */
-    public void setPageBuilder(final PageBuilder pageBuilder) {
+    public void setPageBuilder(PageBuilder pageBuilder) {
 
+        // nothing to do
     }
 
     /**
@@ -572,8 +581,9 @@ public class NullTypesetterImpl implements Typesetter {
      * @see org.extex.typesetter.Typesetter#setParagraphBuilder(
      *       org.extex.typesetter.paragraphBuilder.ParagraphBuilder)
      */
-    public void setParagraphBuilder(final ParagraphBuilder paragraphBuilder) {
+    public void setParagraphBuilder(ParagraphBuilder paragraphBuilder) {
 
+        // not supported yet
     }
 
     /**
@@ -581,12 +591,10 @@ public class NullTypesetterImpl implements Typesetter {
      *
      * @param pd the previous depth parameter
      *
-     * @throws TypesetterUnsupportedException in case of an error
-     *
      * @see org.extex.typesetter.ListMaker#setPrevDepth(
      *     org.extex.core.dimen.FixedDimen)
      */
-    public void setPrevDepth(final FixedDimen pd) {
+    public void setPrevDepth(FixedDimen pd) {
 
         // nothing to do
     }
@@ -596,14 +604,10 @@ public class NullTypesetterImpl implements Typesetter {
      *
      * @param sf the space factor to set
      *
-     * @throws TypesetterUnsupportedException in case of an error
-     * @throws InvalidSpacefactorException in case of an invalid space factor
-     *
      * @see org.extex.typesetter.ListMaker#setSpacefactor(
      *     org.extex.core.count.FixedCount)
      */
-    public void setSpacefactor(final FixedCount sf)
-            throws InvalidSpacefactorException {
+    public void setSpacefactor(FixedCount sf) {
 
         // nothing to do
     }
@@ -614,12 +618,10 @@ public class NullTypesetterImpl implements Typesetter {
      *
      * @param nodes the nodes to send to the typesetter
      *
-     * @throws TypesetterException in case of an error
-     *
      * @see org.extex.typesetter.Typesetter#shipout(
      *     org.extex.typesetter.type.NodeList)
      */
-    public void shipout(final NodeList nodes) {
+    public void shipout(NodeList nodes) {
 
         // nothing to do
     }
@@ -634,9 +636,10 @@ public class NullTypesetterImpl implements Typesetter {
      * @see org.extex.typesetter.ListMaker#showlist(
      *      java.lang.StringBuffer, long, long)
      */
-    public void showlist(final StringBuffer sb, final long depth,
-            final long breadth) {
+    public void showlist(StringBuffer sb, long depth,
+            long breadth) {
 
+        // nothing to do
     }
 
     /**
@@ -652,9 +655,10 @@ public class NullTypesetterImpl implements Typesetter {
      *      long,
      *      long)
      */
-    public void showlists(final StringBuffer sb, final long depth,
-            final long breadth) {
+    public void showlists(StringBuffer sb, long depth,
+            long breadth) {
 
+        // nothing to do
     }
 
     /**
@@ -673,10 +677,11 @@ public class NullTypesetterImpl implements Typesetter {
      *      org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
-    public void subscriptMark(final Context context, final TokenSource source,
-            final Typesetter typesetter, final Token t)
+    public void subscriptMark(Context context, TokenSource source,
+            Typesetter typesetter, Token t)
             throws TypesetterException {
 
+        // nothing to do
     }
 
     /**
@@ -695,10 +700,11 @@ public class NullTypesetterImpl implements Typesetter {
      *      org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
-    public void superscriptMark(final Context context,
-            final TokenSource source, final Typesetter typesetter, final Token t)
+    public void superscriptMark(Context context,
+            TokenSource source, Typesetter typesetter, Token t)
             throws TypesetterException {
 
+        // nothing to do
     }
 
     /**
@@ -716,9 +722,10 @@ public class NullTypesetterImpl implements Typesetter {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
-    public void tab(final Context context, final TokenSource source,
-            final Token t) throws TypesetterException {
+    public void tab(Context context, TokenSource source,
+            Token t) throws TypesetterException {
 
+        // nothing to do
     }
 
 }

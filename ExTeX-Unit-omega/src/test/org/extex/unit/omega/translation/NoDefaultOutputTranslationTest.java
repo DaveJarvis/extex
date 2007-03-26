@@ -34,7 +34,7 @@ public class NoDefaultOutputTranslationTest extends NoFlagsButGlobalPrimitiveTes
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(NoDefaultOutputTranslationTest.class);
     }
@@ -44,7 +44,7 @@ public class NoDefaultOutputTranslationTest extends NoFlagsButGlobalPrimitiveTes
      *
      * @param arg the name
      */
-    public NoDefaultOutputTranslationTest(final String arg) {
+    public NoDefaultOutputTranslationTest(String arg) {
 
         super(arg, "noDefaultOutputTranslation", " onebyte ");
         setConfig("omega-test");

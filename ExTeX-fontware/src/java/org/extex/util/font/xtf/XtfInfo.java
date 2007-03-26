@@ -44,7 +44,7 @@ public abstract class XtfInfo extends AbstractFontUtil {
      * @param c The class for the logging.
      * @throws ConfigurationException if a configuration error occurs.
      */
-    protected XtfInfo(final Class c) throws ConfigurationException {
+    protected XtfInfo(Class c) throws ConfigurationException {
 
         super(c);
 
@@ -76,7 +76,7 @@ public abstract class XtfInfo extends AbstractFontUtil {
      * @param ext The file extension with dot
      * @return Returns the complete output file name.
      */
-    public String getOutputName(final String ext) {
+    public String getOutputName(String ext) {
 
         return output + File.separator + outputname + ext;
     }
@@ -165,7 +165,7 @@ public abstract class XtfInfo extends AbstractFontUtil {
      * @param dst    The destination file.
      * @throws IOException if an IO-error occurred.
      */
-    protected void copy(final File src, final File dst) throws IOException {
+    protected void copy(File src, File dst) throws IOException {
 
         BufferedInputStream in = new BufferedInputStream(new FileInputStream(
                 src), BUFFERSIZE);
@@ -197,7 +197,7 @@ public abstract class XtfInfo extends AbstractFontUtil {
     //                /**
     //                 * @see java.io.FilenameFilter#accept(java.io.File, java.lang.String)
     //                 */
-    //                public boolean accept(final File directory, final String name) {
+    //                public boolean accept(File directory, String name) {
     //
     //                    return name.matches(".*\\.[tToO][tT][fF]");
     //                }
@@ -277,7 +277,7 @@ public abstract class XtfInfo extends AbstractFontUtil {
     //     * @throws DocumentException from iText
     //     * @throws IOException if an IO-error occurred.
     //     */
-    //    private void printGlpyhs(final String outdir) throws IOException,
+    //    private void printGlpyhs(String outdir) throws IOException,
     //            DocumentException {
     //
     //        Document document = new Document();
@@ -423,7 +423,7 @@ public abstract class XtfInfo extends AbstractFontUtil {
      * @param c The int.
      * @return Returns the hex value.
      */
-    protected String cst(final int c) {
+    protected String cst(int c) {
 
         String s = "0000" + Integer.toHexString(c).toUpperCase();
         return "0x" + s.substring(s.length() - 4);
@@ -448,7 +448,7 @@ public abstract class XtfInfo extends AbstractFontUtil {
      *
      * @param out The output to set.
      */
-    public void setOutput(final String out) {
+    public void setOutput(String out) {
 
         output = out;
     }
@@ -468,7 +468,7 @@ public abstract class XtfInfo extends AbstractFontUtil {
      *
      * @param name The outputname to set.
      */
-    public void setOutputname(final String name) {
+    public void setOutputname(String name) {
 
         outputname = name;
     }
@@ -608,7 +608,7 @@ public abstract class XtfInfo extends AbstractFontUtil {
     //     * @param args  The command line arguments.
     //     * @throws Exception if a error occurs.
     //     */
-    //    public static void main(final String[] args) throws Exception {
+    //    public static void main(String[] args) throws Exception {
     //
     //        XtfInfo info = new XtfInfo();
     //        Properties p = info.getProperties();

@@ -50,209 +50,247 @@ import org.extex.typesetter.type.node.WhatsItNode;
 public abstract class AbstractNodeVisitor implements NodeVisitor {
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(
      *      org.extex.typesetter.type.node.AdjustNode,
      *      java.lang.Object)
      */
-    public Object visitAdjust(final AdjustNode node, final Object value)
+    public Object visitAdjust(AdjustNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(
      *      org.extex.typesetter.type.node.AfterMathNode,
      *      java.lang.Object)
      */
-    public Object visitAfterMath(final AfterMathNode node, final Object value)
+    public Object visitAfterMath(AfterMathNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(
      *      org.extex.typesetter.type.node.AlignedLeadersNode,
      *      java.lang.Object)
      */
-    public Object visitAlignedLeaders(final AlignedLeadersNode node,
-            final Object value) throws GeneralException {
+    public Object visitAlignedLeaders(AlignedLeadersNode node,
+            Object value) throws GeneralException {
 
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(
      *      org.extex.typesetter.type.node.BeforeMathNode,
      *      java.lang.Object)
      */
-    public Object visitBeforeMath(final BeforeMathNode node, final Object value)
+    public Object visitBeforeMath(BeforeMathNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(
      *      org.extex.typesetter.type.node.CenteredLeadersNode,
      *      java.lang.Object)
      */
-    public Object visitCenteredLeaders(final CenteredLeadersNode node,
-            final Object value) throws GeneralException {
+    public Object visitCenteredLeaders(CenteredLeadersNode node,
+            Object value) throws GeneralException {
 
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitChar(
      *      org.extex.typesetter.type.node.CharNode,
      *      java.lang.Object)
      */
-    public Object visitChar(final CharNode node, final Object value)
+    public Object visitChar(CharNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(
      *      org.extex.typesetter.type.node.DiscretionaryNode,
      *      java.lang.Object)
      */
-    public Object visitDiscretionary(final DiscretionaryNode node,
-            final Object value) throws GeneralException {
+    public Object visitDiscretionary(DiscretionaryNode node,
+            Object value) throws GeneralException {
 
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(
      *      org.extex.typesetter.type.node.ExpandedLeadersNode,
      *      java.lang.Object)
      */
-    public Object visitExpandedLeaders(final ExpandedLeadersNode node,
-            final Object value) throws GeneralException {
+    public Object visitExpandedLeaders(ExpandedLeadersNode node,
+            Object value) throws GeneralException {
 
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitGlue(
      *      org.extex.typesetter.type.node.GlueNode,
      *      java.lang.Object)
      */
-    public Object visitGlue(final GlueNode node, final Object value)
+    public Object visitGlue(GlueNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(
      *      org.extex.typesetter.type.node.HorizontalListNode,
      *      java.lang.Object)
      */
-    public Object visitHorizontalList(final HorizontalListNode node,
-            final Object value) throws GeneralException {
+    public Object visitHorizontalList(HorizontalListNode node,
+            Object value) throws GeneralException {
 
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(
      *      org.extex.typesetter.type.node.InsertionNode,
      *      java.lang.Object)
      */
-    public Object visitInsertion(final InsertionNode node, final Object value)
+    public Object visitInsertion(InsertionNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitKern(
      *      org.extex.typesetter.type.node.KernNode,
      *      java.lang.Object)
      */
-    public Object visitKern(final KernNode node, final Object value)
+    public Object visitKern(KernNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitLigature(
      *      org.extex.typesetter.type.node.LigatureNode,
      *      java.lang.Object)
      */
-    public Object visitLigature(final LigatureNode node, final Object value)
+    public Object visitLigature(LigatureNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitMark(
      *      org.extex.typesetter.type.node.MarkNode,
      *      java.lang.Object)
      */
-    public Object visitMark(final MarkNode node, final Object value)
+    public Object visitMark(MarkNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(
      *      org.extex.typesetter.type.node.PenaltyNode,
      *      java.lang.Object)
      */
-    public Object visitPenalty(final PenaltyNode node, final Object value)
+    public Object visitPenalty(PenaltyNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitRule(
      *      org.extex.typesetter.type.node.RuleNode,
      *      java.lang.Object)
      */
-    public Object visitRule(final RuleNode node, final Object value)
+    public Object visitRule(RuleNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitSpace(
      *      org.extex.typesetter.type.node.SpaceNode,
      *      java.lang.Object)
      */
-    public Object visitSpace(final SpaceNode node, final Object value)
+    public Object visitSpace(SpaceNode node, Object value)
             throws GeneralException {
 
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(
      *      org.extex.typesetter.type.node.VerticalListNode,
      *      java.lang.Object)
      */
-    public Object visitVerticalList(final VerticalListNode node,
-            final Object value) throws GeneralException {
+    public Object visitVerticalList(VerticalListNode node,
+            Object value) throws GeneralException {
 
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(
      *      org.extex.typesetter.type.node.WhatsItNode,
      *      java.lang.Object)
      */
-    public Object visitWhatsIt(final WhatsItNode n0de, final Object value)
+    public Object visitWhatsIt(WhatsItNode node, Object value)
             throws GeneralException {
 
         return null;

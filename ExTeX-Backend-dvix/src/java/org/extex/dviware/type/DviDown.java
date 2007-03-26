@@ -42,7 +42,7 @@ public class DviDown extends AbstractDviCode {
      *
      * @param dist the distance to move down
      */
-    public DviDown(final int dist) {
+    public DviDown(int dist) {
 
         super("down");
         this.dist = dist;
@@ -53,7 +53,7 @@ public class DviDown extends AbstractDviCode {
      *
      * @param x the value to add
      */
-    public void add(final int x) {
+    public void add(int x) {
 
         dist += x;
     }
@@ -69,7 +69,7 @@ public class DviDown extends AbstractDviCode {
      *
      * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
      */
-    public int write(final OutputStream stream) throws IOException {
+    public int write(OutputStream stream) throws IOException {
 
         return opcodeSigned(Dvi.DOWN1, dist, stream);
     }

@@ -45,8 +45,8 @@ public class ProtectedMacroCode extends MacroCode implements ProtectedCode {
      * @param thePattern the pattern for the acquiring of the arguments
      * @param theBody the expansion text
      */
-    public ProtectedMacroCode(final String name, final Flags flags,
-            final MacroPattern thePattern, final Tokens theBody) {
+    public ProtectedMacroCode(String name, Flags flags,
+            MacroPattern thePattern, Tokens theBody) {
 
         super(name, flags, thePattern, theBody);
     }

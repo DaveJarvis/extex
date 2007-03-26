@@ -35,7 +35,7 @@ public class IfinnerTest extends ExTeXLauncher {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(IfinnerTest.class);
     }
@@ -45,7 +45,7 @@ public class IfinnerTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public IfinnerTest(final String arg) {
+    public IfinnerTest(String arg) {
 
         super(arg);
     }

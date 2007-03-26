@@ -381,7 +381,7 @@ public class DviWriter {
      * Fonts defined in the dvi-file.
      *
      */
-    private Vector definedFonts = new Vector();
+    private Vector<Font> definedFonts = new Vector<Font>();
 
     /**
      * Options for the documentWriter.
@@ -423,7 +423,7 @@ public class DviWriter {
      * Space to save currentPosition.
      *
      */
-    private Stack savedPositions = new Stack();
+    private Stack<DviPositions> savedPositions = new Stack<DviPositions>();
 
     /**
      * Variable for remembering errors. If an error occurs this variable is set
@@ -438,8 +438,8 @@ public class DviWriter {
      * @param outputStream the dvi file is written to this stream
      * @param options options for the dvi-file
      */
-    public DviWriter(final OutputStream outputStream,
-            final DocumentWriterOptions options) {
+    public DviWriter(OutputStream outputStream,
+            DocumentWriterOptions options) {
 
         this.dviOutputStream = new DviOutputStream(outputStream);
         this.documentWriterOptions = options;
@@ -460,7 +460,7 @@ public class DviWriter {
      * @exception GeneralException iff the <code>long</code> value is not in
      *                the range of an <code>int</code> value.
      */
-    private int convertToInt(final long number) throws GeneralException {
+    private int convertToInt(long number) throws GeneralException {
 
         if ((number < Integer.MIN_VALUE) || (number > Integer.MAX_VALUE)) {
             throw new GeneralException("long-Value not in range of Integer");
@@ -484,8 +484,8 @@ public class DviWriter {
      * @param buffer <code>StringBuffer</code> to append
      * @param number the value
      */
-    private void appendZeroFilledToBuffer(final StringBuffer buffer,
-            final long number) {
+    private void appendZeroFilledToBuffer(StringBuffer buffer,
+            long number) {
 
         if (number < 10) {
             buffer.append("0");
@@ -625,7 +625,7 @@ public class DviWriter {
      * @param font the <code>Font</code>
      * @exception GeneralException if an error occurs
      */
-    private void defineFont(final Font font) throws GeneralException {
+    private void defineFont(Font font) throws GeneralException {
 
         int fontNumber = definedFonts.indexOf(font);
         /*
@@ -655,7 +655,7 @@ public class DviWriter {
      * @param font the <code>Font</code>
      * @exception GeneralException if an error occurs
      */
-    public void selectFont(final Font font) throws GeneralException {
+    public void selectFont(Font font) throws GeneralException {
 
         int fontNumber;
 
@@ -688,7 +688,7 @@ public class DviWriter {
      * @param node the <code>CharNode</code>
      * @exception GeneralException if an error occurs
      */
-    public void writeNode(final CharNode node) throws GeneralException {
+    public void writeNode(CharNode node) throws GeneralException {
 
         UnicodeChar unicodeChar = node.getCharacter();
         int characterNumber;
@@ -715,7 +715,7 @@ public class DviWriter {
      * @exception GeneralException if an error occurs
      * @see "TeX -- The Program [585]"
      */
-    public void writeNode(final RuleNode node) throws GeneralException {
+    public void writeNode(RuleNode node) throws GeneralException {
 
         int width = convertToInt(node.getWidth().getValue());
         int height = convertToInt(node.getHeight().getValue()
@@ -732,7 +732,7 @@ public class DviWriter {
      * @param node a <code>WhatsItNode</code>
      * @exception GeneralException if an error occurs
      */
-    public void writeNode(final WhatsItNode node) throws GeneralException {
+    public void writeNode(WhatsItNode node) throws GeneralException {
 
         // TODO unimplemented
         throw new RuntimeException("unimplemented");
@@ -757,7 +757,7 @@ public class DviWriter {
      * @param mode current Mode
      * @exception GeneralException if an error occurs
      */
-    public void writeSpace(final FixedDimen space, final Mode mode)
+    public void writeSpace(FixedDimen space, Mode mode)
             throws GeneralException {
 
         if (mode == Mode.HORIZONTAL) {
@@ -775,7 +775,7 @@ public class DviWriter {
      * @param space space size
      * @exception GeneralException if an error occurs
      */
-    public void writeHorizontalSpace(final FixedDimen space)
+    public void writeHorizontalSpace(FixedDimen space)
             throws GeneralException {
 
         writeRight(convertToInt(space.getValue()));
@@ -787,7 +787,7 @@ public class DviWriter {
      * @param space space size
      * @exception GeneralException if an error occurs
      */
-    public void writeVerticalSpace(final FixedDimen space)
+    public void writeVerticalSpace(FixedDimen space)
             throws GeneralException {
 
         writeDown(convertToInt(space.getValue()));
@@ -825,7 +825,7 @@ public class DviWriter {
         dviOutputStream.writeByte(DVI_POP);
 
         try {
-            currentPositions = (DviPositions) savedPositions.pop();
+            currentPositions = savedPositions.pop();
         } catch (EmptyStackException e) {
             throw new GeneralException(e);
         }
@@ -858,7 +858,7 @@ public class DviWriter {
      * @param units distance (in sp)
      * @exception GeneralException if an error occurs
      */
-    private void writeDown(final int units) throws GeneralException {
+    private void writeDown(int units) throws GeneralException {
 
         if (units != 0) {
             dviOutputStream.writeCodeNumberAndArg(DVI_DOWN, units);
@@ -873,7 +873,7 @@ public class DviWriter {
      * @param units distance (in sp)
      * @exception GeneralException if an error occurs
      */
-    private void writeRight(final int units) throws GeneralException {
+    private void writeRight(int units) throws GeneralException {
 
         if (units != 0) {
             dviOutputStream.writeCodeNumberAndArg(DVI_RIGHT, units);

@@ -34,7 +34,7 @@ public class PdfximageTest extends NoFlagsButImmediateAndProtectedPrimitiveTeste
      *
      * @param arg the name
      */
-    public PdfximageTest(final String arg) {
+    public PdfximageTest(String arg) {
 
         super(arg, "pdfximage", "{}");
         setConfig("pdftex-test");

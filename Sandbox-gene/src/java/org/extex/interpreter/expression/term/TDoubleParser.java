@@ -67,20 +67,22 @@ public final class TDoubleParser implements ETypeParser {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public EType convert(final Code code, final Context context,
-            final TokenSource source, final Typesetter typesetter) {
+    public EType convert(Code code, Context context,
+            TokenSource source, Typesetter typesetter) {
 
         return null;
     }
 
     /**
-     * @see org.extex.interpreter.expression.TerminalParser#parse(
+     * {@inheritDoc}
+     *
+     * @see org.extex.interpreter.expression.ETypeParser#parse(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public EType parse(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public EType parse(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         boolean period = false;
         StringBuffer sb = new StringBuffer();
@@ -126,10 +128,12 @@ public final class TDoubleParser implements ETypeParser {
     }
 
     /**
-     * @see org.extex.interpreter.expression.TerminalParser#registered(
+     * {@inheritDoc}
+     *
+     * @see org.extex.interpreter.expression.ETypeParser#registered(
      *      org.extex.interpreter.expression.Evaluator)
      */
-    public void registered(final Evaluator evaluator) {
+    public void registered(Evaluator evaluator) {
 
         //
         //        functions.put("cos", new Function1() {
@@ -140,7 +144,7 @@ public final class TDoubleParser implements ETypeParser {
         //             * @see org.extex.interpreter.type.dimen.parser.Function1#apply(
         //             *      org.extex.interpreter.type.dimen.parser.Accumulator)
         //             */
-        //            public void apply(final Terminal accumulator)
+        //            public void apply(Terminal accumulator)
         //                    throws InterpreterException {
         //
         //                //                if (accumulator.sp != 0) {
@@ -161,7 +165,7 @@ public final class TDoubleParser implements ETypeParser {
         //             * @see org.extex.interpreter.type.dimen.parser.Function1#apply(
         //             *      org.extex.interpreter.type.dimen.parser.Accumulator)
         //             */
-        //            public void apply(final Terminal accumulator)
+        //            public void apply(Terminal accumulator)
         //                    throws InterpreterException {
         //
         //                //                if (accumulator.sp != 0) {
@@ -182,7 +186,7 @@ public final class TDoubleParser implements ETypeParser {
         //             * @see org.extex.interpreter.type.dimen.parser.Function1#apply(
         //             *      org.extex.interpreter.type.dimen.parser.Accumulator)
         //             */
-        //            public void apply(final Terminal accumulator)
+        //            public void apply(Terminal accumulator)
         //                    throws InterpreterException {
         //
         //                //                if (accumulator.sp != 0) {
@@ -209,10 +213,12 @@ public final class TDoubleParser implements ETypeParser {
         evaluator.register("float", new UnaryFunction() {
 
             /**
-             * @see org.extex.interpreter.expression.Function1#apply(
+             * {@inheritDoc}
+             *
+             * @see org.extex.interpreter.expression.UnaryFunction#apply(
              *      org.extex.interpreter.expression.EType)
              */
-            public EType apply(final EType accumulator)
+            public EType apply(EType accumulator)
                     throws InterpreterException {
 
                 return new TDouble().set(accumulator);

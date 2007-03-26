@@ -53,7 +53,7 @@ public abstract class TfmLigKern implements Serializable {
      *        means that there is no next instruction (this is the last).
      * @param next the code of the next character.
      */
-    public TfmLigKern(final int askip, final short next) {
+    public TfmLigKern(int askip, short next) {
 
         skip = askip;
         nextChar = next;
@@ -85,7 +85,7 @@ public abstract class TfmLigKern implements Serializable {
      * @return the index of the next instruction or <code>NOINDEX</code>
      * if this is the last instruction of the lig/kern program.
      */
-    public int nextIndex(final int pos) {
+    public int nextIndex(int pos) {
 
         return (skip < 0) ? TfmCharInfoWord.NOINDEX : pos + skip + 1;
     }

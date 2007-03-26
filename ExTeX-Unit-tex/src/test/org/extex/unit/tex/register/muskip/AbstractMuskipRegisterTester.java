@@ -60,8 +60,8 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      * @param args the parameters for the invocation
      * @param init the default value
      */
-    public AbstractMuskipRegisterTester(final String arg,
-            final String primitive, final String args, final String init) {
+    public AbstractMuskipRegisterTester(String arg,
+            String primitive, String args, String init) {
 
         super(arg);
         this.primitive = primitive;
@@ -78,9 +78,9 @@ public abstract class AbstractMuskipRegisterTester extends ExTeXLauncher {
      * @param init the default value
      * @param prepare the preparation code inserted before each test
      */
-    public AbstractMuskipRegisterTester(final String arg,
-            final String primitive, final String args, final String init,
-            final String prepare) {
+    public AbstractMuskipRegisterTester(String arg,
+            String primitive, String args, String init,
+            String prepare) {
 
         this(arg, primitive, args, init);
         this.prepare = this.prepare + prepare;

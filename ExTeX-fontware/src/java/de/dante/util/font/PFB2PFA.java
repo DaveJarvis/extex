@@ -52,7 +52,7 @@ public final class PFB2PFA extends AbstractFontUtil {
      * @param args the command line
      * @throws Exception if an error occurs.
      */
-    private void doIt(final String[] args) throws Exception {
+    private void doIt(String[] args) throws Exception {
 
         // pfb-file
         InputStream in = getFinder().findResource(args[0], "");
@@ -85,7 +85,7 @@ public final class PFB2PFA extends AbstractFontUtil {
      * @param args      the command line arguments
      * @throws Exception if an error occurred.
      */
-    public static void main(final String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
         if (args.length != PARAMETER) {
             System.err.println("java de.dante.util.font.PFB2PFA <pfb-file>");

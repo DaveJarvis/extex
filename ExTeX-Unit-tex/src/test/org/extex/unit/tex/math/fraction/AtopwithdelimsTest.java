@@ -34,7 +34,7 @@ public class AtopwithdelimsTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public AtopwithdelimsTest(final String arg) {
+    public AtopwithdelimsTest(String arg) {
 
         super(arg, "atopwithdelims", " 123 456 a$", "b");
     }

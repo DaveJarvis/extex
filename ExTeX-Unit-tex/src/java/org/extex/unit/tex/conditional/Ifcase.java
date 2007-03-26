@@ -102,7 +102,7 @@ public class Ifcase extends AbstractIf {
      *
      * @param name the name for debugging
      */
-    public Ifcase(final String name) {
+    public Ifcase(String name) {
 
         super(name);
     }
@@ -125,8 +125,8 @@ public class Ifcase extends AbstractIf {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         long branch = CountParser.scanInteger(context, source, typesetter);
@@ -176,8 +176,8 @@ public class Ifcase extends AbstractIf {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void expand(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void expand(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         execute(prefix, context, source, typesetter);
@@ -196,8 +196,8 @@ public class Ifcase extends AbstractIf {
      *
      * @throws InterpreterException in case of an error
      */
-    private Tag skipToOrOrElseOrFi(final Context context,
-            final TokenSource source) throws InterpreterException {
+    private Tag skipToOrOrElseOrFi(Context context,
+            TokenSource source) throws InterpreterException {
 
         Code code;
         int n = 0;
@@ -243,15 +243,13 @@ public class Ifcase extends AbstractIf {
      *
      * @return the boolean value
      *
-     * @throws InterpreterException in case of en error
-     *
      * @see org.extex.unit.base.conditional.AbstractIf#conditional(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(final Context context, final TokenSource source,
-            final Typesetter typesetter) {
+    public boolean conditional(Context context, TokenSource source,
+            Typesetter typesetter) {
 
         throw new ImpossibleException("\\ifcase conditional");
     }

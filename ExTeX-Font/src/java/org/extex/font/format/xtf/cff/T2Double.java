@@ -63,7 +63,7 @@ public class T2Double extends T2Number {
      * @param b0    the b0
      * @throws IOException if an IO-error occurs.
      */
-    T2Double(final RandomAccessR rar, final int b0) throws IOException {
+    T2Double(RandomAccessR rar, int b0) throws IOException {
 
         super();
 
@@ -132,7 +132,7 @@ public class T2Double extends T2Number {
      * @return Return the nibbles
      * @throws IOException if an IO-error occurs.
      */
-    private byte[] readNibble(final RandomAccessR rar) throws IOException {
+    private byte[] readNibble(RandomAccessR rar) throws IOException {
 
         byte[] data = new byte[MAXSIZE];
         short[] sdata = new short[MAXSIZE];

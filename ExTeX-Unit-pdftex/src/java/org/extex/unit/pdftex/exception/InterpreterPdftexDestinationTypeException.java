@@ -49,7 +49,7 @@ public class InterpreterPdftexDestinationTypeException
      *
      * @param primitive the name of the primitive in action
      */
-    public InterpreterPdftexDestinationTypeException(final String primitive) {
+    public InterpreterPdftexDestinationTypeException(String primitive) {
 
         super(primitive);
     }

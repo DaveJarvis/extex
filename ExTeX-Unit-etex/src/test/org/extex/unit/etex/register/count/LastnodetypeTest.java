@@ -33,7 +33,7 @@ public class LastnodetypeTest extends AbstractReadonlyCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(LastnodetypeTest.class);
     }
@@ -43,7 +43,7 @@ public class LastnodetypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @param arg the name
      */
-    public LastnodetypeTest(final String arg) {
+    public LastnodetypeTest(String arg) {
 
         super(arg, "lastnodetype", "", "-1");
         setConfig("etex-test");

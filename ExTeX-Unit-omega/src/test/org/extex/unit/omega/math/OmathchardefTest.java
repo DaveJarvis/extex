@@ -35,7 +35,7 @@ public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public OmathchardefTest(final String arg) {
+    public OmathchardefTest(String arg) {
 
         super(arg, "omathchardef", "\\a=\"32 ");
         setConfig("omega-test");

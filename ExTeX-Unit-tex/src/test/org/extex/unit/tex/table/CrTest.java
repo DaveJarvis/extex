@@ -34,7 +34,7 @@ public class CrTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public CrTest(final String arg) {
+    public CrTest(String arg) {
 
         super(arg, "cr", "}", DEFINE_HASH + "\\halign{#\\cr");
     }

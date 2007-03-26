@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
-import org.extex.core.glue.Glue;
+import org.extex.core.glue.FixedGlue;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
@@ -75,7 +75,7 @@ public abstract class AbstractNoad implements Noad {
      *
      * @see "TTP [715]"
      */
-    protected static Node rebox(final Node node, final Dimen width) {
+    protected static Node rebox(Node node, Dimen width) {
 
         if (node.getWidth().eq(width)) {
             return node;
@@ -84,8 +84,8 @@ public abstract class AbstractNoad implements Noad {
                 (node instanceof HorizontalListNode
                         ? (HorizontalListNode) node
                         : new HorizontalListNode());
-        hlist.add(0, new GlueNode(Glue.S_S, true));
-        hlist.add(new GlueNode(Glue.S_S, true));
+        hlist.add(0, new GlueNode(FixedGlue.S_S, true));
+        hlist.add(new GlueNode(FixedGlue.S_S, true));
         return hlist;
     }
 
@@ -100,8 +100,8 @@ public abstract class AbstractNoad implements Noad {
      *
      * @see "TTP [692]"
      */
-    protected static void toStringSubsidiaray(final StringBuffer sb,
-            final Noad noad, final int depth, final String prefix) {
+    protected static void toStringSubsidiaray(StringBuffer sb,
+            Noad noad, int depth, String prefix) {
 
         if (noad != null) {
             sb.append(prefix);
@@ -191,8 +191,8 @@ public abstract class AbstractNoad implements Noad {
      *
      * @see "TTP [756,757]"
      */
-    protected Node makeScripts(final Node node, final MathContext mc,
-            final FixedDimen delta, final Logger logger)
+    protected Node makeScripts(Node node, MathContext mc,
+            FixedDimen delta, Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 
@@ -246,11 +246,14 @@ public abstract class AbstractNoad implements Noad {
 
             clr.abs(mc.mathParameter(MathFontParameter.MATH_X_HEIGHT));
             clr.multiply(-4, 5);
-            clr.add(sub.getHeight());
+            if (sub != null) {
+                clr.add(sub.getHeight());
+            }
             shiftDown.max(clr);
-            sub.setShift(shiftDown);
-
-            hlist.add(sub);
+            if (sub != null) {
+                sub.setShift(shiftDown);
+                hlist.add(sub);
+            }
             return hlist;
         }
         HorizontalListNode sup = new HorizontalListNode();
@@ -287,7 +290,9 @@ public abstract class AbstractNoad implements Noad {
         clr.multiply(4);
         clr.subtract(shiftUp);
         clr.add(sup.getDepth());
-        clr.subtract(sub.getHeight());
+        if (sub != null) {
+            clr.subtract(sub.getHeight());
+        }
         clr.add(shiftDown);
 
         if (clr.gt(Dimen.ZERO_PT)) {
@@ -310,7 +315,9 @@ public abstract class AbstractNoad implements Noad {
         //            p ? new_kern((shift_up-depth(x))-(height(y)-shift _down));
         clr.set(shiftUp);
         clr.subtract(sup.getDepth());
-        clr.subtract(sub.getHeight());
+        if (sub != null) {
+            clr.subtract(sub.getHeight());
+        }
         clr.add(shiftDown);
         vlist.add(new ImplicitKernNode(clr, false));
         vlist.add(sub);
@@ -328,7 +335,7 @@ public abstract class AbstractNoad implements Noad {
      *
      * @param spacingClass the spacingClass to set
      */
-    protected void setSpacingClass(final MathSpacing spacingClass) {
+    protected void setSpacingClass(MathSpacing spacingClass) {
 
         this.spacingClass = spacingClass;
     }
@@ -338,7 +345,7 @@ public abstract class AbstractNoad implements Noad {
      *
      * @param subscript the subscript to set.
      */
-    public void setSubscript(final Noad subscript) {
+    public void setSubscript(Noad subscript) {
 
         this.subscript = subscript;
     }
@@ -348,7 +355,7 @@ public abstract class AbstractNoad implements Noad {
      *
      * @param superscript the superscript to set.
      */
-    public void setSuperscript(final Noad superscript) {
+    public void setSuperscript(Noad superscript) {
 
         this.superscript = superscript;
     }
@@ -358,7 +365,7 @@ public abstract class AbstractNoad implements Noad {
      */
     public String toString() {
 
-        final StringBuffer sb = new StringBuffer();
+        StringBuffer sb = new StringBuffer();
         toString(sb, Integer.MAX_VALUE);
         return sb.toString();
     }
@@ -367,7 +374,7 @@ public abstract class AbstractNoad implements Noad {
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer)
      */
-    public void toString(final StringBuffer sb) {
+    public void toString(StringBuffer sb) {
 
         toString(sb, Integer.MAX_VALUE);
     }
@@ -377,7 +384,7 @@ public abstract class AbstractNoad implements Noad {
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer, int)
      */
-    public void toString(final StringBuffer sb, final int depth) {
+    public void toString(StringBuffer sb, int depth) {
 
         if (depth < 0) {
             sb.append(" {}");
@@ -395,8 +402,9 @@ public abstract class AbstractNoad implements Noad {
      * @param sb the target string buffer
      * @param depth the recursion depth
      */
-    protected void toStringAdd(final StringBuffer sb, final int depth) {
+    protected void toStringAdd(StringBuffer sb, int depth) {
 
+        // default is to do nothing
     }
 
 }

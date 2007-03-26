@@ -111,7 +111,7 @@ public class TfmCharInfoArray implements Serializable {
      * @param cc    number of character
      * @throws IOException if an IO-error occurs.
      */
-    public TfmCharInfoArray(final RandomAccessR rar, final int cc)
+    public TfmCharInfoArray(RandomAccessR rar, int cc)
             throws IOException {
 
         charinfoword = new TfmCharInfoWord[cc];
@@ -126,7 +126,7 @@ public class TfmCharInfoArray implements Serializable {
      * @param pos   the checked character code.
      * @return <code>true</code> if the character is present.
      */
-    private boolean charExists(final short pos) {
+    private boolean charExists(short pos) {
 
         int c = pos - bc;
         return (c >= 0 && c < charinfoword.length && charinfoword[c].exists());
@@ -142,10 +142,10 @@ public class TfmCharInfoArray implements Serializable {
      * @param abc           the bc
      * @param lk            the ligKernTable
      */
-    public void createCharTable(final TfmWidthArray widtha,
-            final TfmHeightArray heighta, final TfmDepthArray deptha,
-            final TfmItalicArray italica, final TfmExtenArray extena,
-            final short abc, final TfmLigKern[] lk) {
+    public void createCharTable(TfmWidthArray widtha,
+            TfmHeightArray heighta, TfmDepthArray deptha,
+            TfmItalicArray italica, TfmExtenArray extena,
+            short abc, TfmLigKern[] lk) {
 
         width = widtha;
         height = heighta;
@@ -231,7 +231,7 @@ public class TfmCharInfoArray implements Serializable {
      * @param i the position of the character
      * @return Returns the charinfoword for the character.
      */
-    public TfmCharInfoWord getCharInfoWord(final int i) {
+    public TfmCharInfoWord getCharInfoWord(int i) {
 
         if (i < bc) {
             return null;
@@ -286,7 +286,7 @@ public class TfmCharInfoArray implements Serializable {
      * Set the encdoing table.
      * @param et    the encoding table
      */
-    public void setEncodingTable(final String[] et) {
+    public void setEncodingTable(String[] et) {
 
         if (et != null) {
             enctable = et;
@@ -307,8 +307,8 @@ public class TfmCharInfoArray implements Serializable {
      *                  error messages.
      * @return Returns the FixWord
      */
-    private TfmFixWord takeDimen(final TfmFixWord[] table, final short i,
-            final int pos) {
+    private TfmFixWord takeDimen(TfmFixWord[] table, short i,
+            int pos) {
 
         if (i < table.length) {
             return table[i];
@@ -325,7 +325,7 @@ public class TfmCharInfoArray implements Serializable {
      * @param pos position of currently processed character in <code>charTable</code>.
      * @return <code>true</code> if the associated chain is consistent.
      */
-    private boolean validCharList(final int pos) {
+    private boolean validCharList(int pos) {
 
         TfmCharInfoWord ciw = charinfoword[pos];
         short next = ciw.getRemainder();

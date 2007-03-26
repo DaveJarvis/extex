@@ -49,7 +49,7 @@ public class PdfBoxType1Font extends PDType1Font {
      * @return Returns the instance for the font.
      * @throws IOException if an IO-error occurred.
      */
-    public static PDFont getInstance(final PDDocument doc, final Font font)
+    public static PDFont getInstance(PDDocument doc, Font font)
             throws IOException {
 
         FontKey key = font.getFontKey();
@@ -73,7 +73,7 @@ public class PdfBoxType1Font extends PDType1Font {
      * @param doc   the PDDocument.
      * @param font  the extex font
      */
-    private PdfBoxType1Font(final PDDocument doc, final Font font)
+    private PdfBoxType1Font(PDDocument doc, Font font)
             throws IOException {
 
         fd = new PDFontDescriptorDictionary();

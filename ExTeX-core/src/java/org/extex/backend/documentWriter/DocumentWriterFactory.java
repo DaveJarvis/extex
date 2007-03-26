@@ -79,8 +79,8 @@ public class DocumentWriterFactory extends AbstractFactory {
      *
      * @throws ConfigurationException in case of an error
      */
-    public DocumentWriterFactory(final Configuration configuration,
-            final Logger logger) {
+    public DocumentWriterFactory(Configuration configuration,
+            Logger logger) {
 
         super();
         enableLogging(logger);
@@ -113,9 +113,9 @@ public class DocumentWriterFactory extends AbstractFactory {
      * @throws DocumentWriterException in case of a problem
      * @throws ConfigurationException in case of a configuration problem
      */
-    public DocumentWriter newInstance(final String type,
-            final DocumentWriterOptions options,
-            final OutputStreamFactory outFactory)
+    public DocumentWriter newInstance(String type,
+            DocumentWriterOptions options,
+            OutputStreamFactory outFactory)
             throws DocumentWriterException {
 
         String outputType = type;

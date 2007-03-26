@@ -30,6 +30,11 @@ import junit.framework.TestSuite;
  */
 public class AllTests {
 
+    /**
+     * Create the test suite.
+     *
+     * @return the suite
+     */
     public static Test suite() {
 
         TestSuite suite = new TestSuite("Test for org.extex.unit.namespace");

@@ -37,7 +37,7 @@ public class VerticalListNodeTest extends TestCase {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(VerticalListNodeTest.class);
     }

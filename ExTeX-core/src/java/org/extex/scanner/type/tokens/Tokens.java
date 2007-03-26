@@ -50,7 +50,7 @@ public class Tokens implements Serializable, FixedTokens {
     /**
      * The internal list of tokens
      */
-    private List tokens = new ArrayList();
+    private List<Token> tokens = new ArrayList<Token>();
 
     /**
      * Creates a new object which does not contain any elements.
@@ -65,7 +65,7 @@ public class Tokens implements Serializable, FixedTokens {
      *
      * @param t the initial token
      */
-    public Tokens(final Token t) {
+    public Tokens(Token t) {
 
         super();
         tokens.add(t);
@@ -76,7 +76,7 @@ public class Tokens implements Serializable, FixedTokens {
      *
      * @param t The token to add
      */
-    public void add(final Token t) {
+    public void add(Token t) {
 
         tokens.add(t);
     }
@@ -86,7 +86,7 @@ public class Tokens implements Serializable, FixedTokens {
      *
      * @param toks the tokens to add
      */
-    public void add(final Tokens toks) {
+    public void add(Tokens toks) {
 
         int len = toks.length();
         for (int i = 0; i < len; i++) {
@@ -107,16 +107,17 @@ public class Tokens implements Serializable, FixedTokens {
      * {@inheritDoc}
      * @see java.lang.Object#equals(java.lang.Object)
      */
-    public boolean equals(final Object object) {
+    public boolean equals(Object object) {
 
         if (!(object instanceof Tokens)) {
             return false;
         }
         Tokens toks = (Tokens) object;
-        if (toks.length() != length()) {
+        int len = length();
+        if (toks.length() != len) {
             return false;
         }
-        for (int i = 0; i < length(); i++) {
+        for (int i = 0; i < len; i++) {
             if (!get(i).equals(toks.get(i))) {
                 return false;
             }
@@ -133,9 +134,9 @@ public class Tokens implements Serializable, FixedTokens {
      * @return the i<sup>th</sup> token or <code>null</code> if i is out of
      *  bounds
      */
-    public Token get(final int i) {
+    public Token get(int i) {
 
-        return (i >= 0 && i < tokens.size() ? (Token) (tokens.get(i)) : null);
+        return (i >= 0 && i < tokens.size() ? tokens.get(i) : null);
     }
 
     /**
@@ -160,7 +161,7 @@ public class Tokens implements Serializable, FixedTokens {
      * @param index the index to add the token to
      * @param t the token to add
      */
-    public void insert(final int index, final Token t) {
+    public void insert(int index, Token t) {
 
         tokens.add(index, t);
     }
@@ -177,6 +178,32 @@ public class Tokens implements Serializable, FixedTokens {
     }
 
     /**
+     * Remove the first toke from the list and return it.
+     *
+     * @return the token taken from the from the front of the list or
+     *   <code>null</code> if the list is empty
+     */
+    public Token pop() {
+
+        if (tokens.size() == 0) {
+            return null;
+        }
+        Token t = tokens.get(0);
+        tokens.remove(0);
+        return t;
+    }
+
+    /**
+     * Push a token to the front of the list.
+     *
+     * @param token the token to push
+     */
+    public void push(Token token) {
+
+        tokens.add(0, token);
+    }
+
+    /**
      * Remove the last token from the list and return it. If the list is empty
      * then <code>null</code> is returned.
      *
@@ -187,7 +214,7 @@ public class Tokens implements Serializable, FixedTokens {
         if (tokens.size() == 0) {
             return null;
         }
-        return (Token) tokens.remove(tokens.size() - 1);
+        return tokens.remove(tokens.size() - 1);
     }
 
     /**
@@ -207,10 +234,10 @@ public class Tokens implements Serializable, FixedTokens {
      *
      * @param sb the target string buffer
      */
-    public void toString(final StringBuffer sb) {
+    public void toString(StringBuffer sb) {
 
         for (int i = 0; i < tokens.size(); i++) {
-            ((Token) tokens.get(i)).toString(sb);
+            tokens.get(i).toString(sb);
             sb.append("\n  ");
         }
     }
@@ -228,7 +255,7 @@ public class Tokens implements Serializable, FixedTokens {
 
         int size = tokens.size();
         for (int i = 0; i < size; i++) {
-            Token t = (Token) tokens.get(i);
+            Token t = tokens.get(i);
             sb.append(t.toText());
             if (t instanceof ControlSequenceToken && i != size - 1) {
                 sb.append(' ');
@@ -247,13 +274,13 @@ public class Tokens implements Serializable, FixedTokens {
      *
      * @see org.extex.scanner.type.tokens.FixedTokens#toText(UnicodeChar)
      */
-    public String toText(final UnicodeChar esc) {
+    public String toText(UnicodeChar esc) {
 
         StringBuffer sb = new StringBuffer();
 
         int size = tokens.size();
         for (int i = 0; i < size; i++) {
-            Token t = (Token) tokens.get(i);
+            Token t = tokens.get(i);
             sb.append(t.toText(esc));
             if (t instanceof ControlSequenceToken && i != size - 1) {
                 sb.append(' ');
@@ -261,32 +288,6 @@ public class Tokens implements Serializable, FixedTokens {
         }
 
         return sb.toString();
-    }
-
-    /**
-     * Remove the first toke from the list and return it.
-     *
-     * @return the token taken from the from the front of the list or
-     *   <code>null</code> if the list is empty
-     */
-    public Token pop() {
-
-        if (tokens.size() == 0) {
-            return null;
-        }
-        Token t = (Token) tokens.get(0);
-        tokens.remove(0);
-        return t;
-    }
-
-    /**
-     * Push a token to the front of the list.
-     *
-     * @param token the token to push
-     */
-    public void push(final Token token) {
-
-        tokens.add(0, token);
     }
 
 }

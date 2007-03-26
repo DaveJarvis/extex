@@ -45,7 +45,7 @@ public class FontMapNotFoundException extends FontException {
      * Create a new object.
      * @param message   the message
      */
-    public FontMapNotFoundException(final String message) {
+    public FontMapNotFoundException(String message) {
 
         super(message);
     }

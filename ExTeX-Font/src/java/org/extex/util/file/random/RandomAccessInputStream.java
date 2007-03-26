@@ -78,7 +78,7 @@ public class RandomAccessInputStream implements RandomAccessR {
      * @param iostream  stream for reading
      * @throws IOException if an IO-error occured
      */
-    public RandomAccessInputStream(final InputStream iostream)
+    public RandomAccessInputStream(InputStream iostream)
             throws IOException {
 
         super();
@@ -94,7 +94,7 @@ public class RandomAccessInputStream implements RandomAccessR {
      * @return Return a short-array
      * @throws IOException in case of an error
      */
-    private byte[] readStream(final InputStream iostream) throws IOException {
+    private byte[] readStream(InputStream iostream) throws IOException {
 
         BufferedInputStream bufin = new BufferedInputStream(iostream, BLOCKSIZE);
 
@@ -136,18 +136,22 @@ public class RandomAccessInputStream implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.util.file.random.RandomAccessR#close()
      */
-    public void close() throws IOException {
+    public void close() {
 
         buffer = null;
         pointer = -1;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.util.file.random.RandomAccessR#length()
      */
-    public long length() throws IOException {
+    public long length() {
 
         if (buffer != null) {
             return buffer.length;
@@ -156,9 +160,11 @@ public class RandomAccessInputStream implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.util.file.random.RandomAccessR#seek(long)
      */
-    public void seek(final long arg0) throws IOException {
+    public void seek(long arg0) throws IOException {
 
         if (buffer != null) {
             if (arg0 < buffer.length && arg0 < Integer.MAX_VALUE) {
@@ -171,6 +177,8 @@ public class RandomAccessInputStream implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.io.DataInput#readBoolean()
      */
     public boolean readBoolean() throws IOException {
@@ -183,6 +191,8 @@ public class RandomAccessInputStream implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.io.DataInput#readByte()
      */
     public byte readByte() throws IOException {
@@ -195,6 +205,8 @@ public class RandomAccessInputStream implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.util.file.random.RandomAccessR#readByteAsInt()
      */
     public int readByteAsInt() throws IOException {
@@ -218,6 +230,8 @@ public class RandomAccessInputStream implements RandomAccessR {
      * </pre></blockquote>
      * <p>
      *
+     * {@inheritDoc}
+     *
      * @see java.io.DataInput#readChar()
      */
     public char readChar() throws IOException {
@@ -233,6 +247,8 @@ public class RandomAccessInputStream implements RandomAccessR {
     /**
      * Reads a <code>double</code> from the input.
      *
+     * {@inheritDoc}
+     *
      * @see java.io.DataInput#readDouble()
      */
     public double readDouble() throws IOException {
@@ -243,6 +259,8 @@ public class RandomAccessInputStream implements RandomAccessR {
     /**
      * Reads a <code>float</code> from the input.
      *
+     * {@inheritDoc}
+     *
      * @see java.io.DataInput#readFloat()
      */
     public float readFloat() throws IOException {
@@ -251,9 +269,11 @@ public class RandomAccessInputStream implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.io.DataInput#readFully(byte[], int, int)
      */
-    public void readFully(final byte[] b, final int off, final int len)
+    public void readFully(byte[] b, int off, int len)
             throws IOException {
 
         try {
@@ -269,7 +289,7 @@ public class RandomAccessInputStream implements RandomAccessR {
      * @param off the start offset in the data
      * @param len the number of bytes that are written
      */
-    private void readBytes(final byte[] b, final int off, final int len) {
+    private void readBytes(byte[] b, int off, int len) {
 
         for (int i = 0; i < len; i++) {
             b[off + i] = buffer[pointer++];
@@ -280,9 +300,11 @@ public class RandomAccessInputStream implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.io.DataInput#readFully(byte[])
      */
-    public void readFully(final byte[] b) throws IOException {
+    public void readFully(byte[] b) throws IOException {
 
         readFully(b, 0, b.length);
     }
@@ -298,6 +320,9 @@ public class RandomAccessInputStream implements RandomAccessR {
      *     (b1 &lt;&lt; 24) | (b2 &lt;&lt; 16) + (b3 &lt;&lt; 8) + b4
      * </pre></blockquote>
      * <p>
+     *
+     * {@inheritDoc}
+     *
      * @see java.io.DataInput#readInt()
      */
     public int readInt() throws IOException {
@@ -323,6 +348,9 @@ public class RandomAccessInputStream implements RandomAccessR {
      *     (b1 &lt;&lt; 16) + (b2 &lt;&lt; 8) + b3
      * </pre></blockquote>
      * <p>
+     *
+     * {@inheritDoc}
+     *
      * @see java.io.DataInput#readInt()
      */
     public int readInt24() throws IOException {
@@ -338,6 +366,8 @@ public class RandomAccessInputStream implements RandomAccessR {
 
     /**
      * Reads the next line of text from the input.
+     *
+     * {@inheritDoc}
      *
      * @see java.io.DataInput#readLine()
      */
@@ -391,6 +421,9 @@ public class RandomAccessInputStream implements RandomAccessR {
      *     + ((long)b7 &lt;&lt; 8) + b8
      * </pre></blockquote>
      * <p>
+     *
+     * {@inheritDoc}
+     *
      * @see java.io.DataInput#readLong()
      */
     public long readLong() throws IOException {
@@ -415,6 +448,8 @@ public class RandomAccessInputStream implements RandomAccessR {
      * </pre></blockquote>
      * <p>
      *
+     * {@inheritDoc}
+     *
      * @see java.io.DataInput#readShort()
      */
     public short readShort() throws IOException {
@@ -429,6 +464,8 @@ public class RandomAccessInputStream implements RandomAccessR {
 
     /**
      * Reads an unsigned eight-bit number from the input.
+     *
+     * {@inheritDoc}
      *
      * @see java.io.DataInput#readUnsignedByte()
      */
@@ -452,6 +489,9 @@ public class RandomAccessInputStream implements RandomAccessR {
      *     (b1 &lt;&lt; 8) | b2
      * </pre></blockquote>
      * <p>
+     *
+     * {@inheritDoc}
+     *
      * @see java.io.DataInput#readUnsignedShort()
      */
     public int readUnsignedShort() throws IOException {
@@ -468,6 +508,8 @@ public class RandomAccessInputStream implements RandomAccessR {
      * Reads in a string from this file. The string has been encoded
      * using a modified UTF-8 format.
      *
+     * {@inheritDoc}
+     *
      * @see java.io.DataInput#readUTF()
      */
     public String readUTF() throws IOException {
@@ -479,9 +521,11 @@ public class RandomAccessInputStream implements RandomAccessR {
      * Attempts to skip over <code>n</code> bytes of input discarding the
      * skipped bytes.
      *
+     * {@inheritDoc}
+     *
      * @see java.io.DataInput#skipBytes(int)
      */
-    public int skipBytes(final int n) throws IOException {
+    public int skipBytes(int n) throws IOException {
 
         long pos;
         long len;
@@ -502,6 +546,8 @@ public class RandomAccessInputStream implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.util.file.random.RandomAccessR#getPointer()
      */
     public long getPointer() {
@@ -510,6 +556,8 @@ public class RandomAccessInputStream implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.util.file.random.RandomAccessR#isEOF()
      */
     public boolean isEOF() throws IOException {
@@ -518,6 +566,8 @@ public class RandomAccessInputStream implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.util.file.random.RandomAccessR#readInt16()
      */
     public int readInt16() throws IOException {
@@ -531,6 +581,8 @@ public class RandomAccessInputStream implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.util.file.random.RandomAccessR#readInt8()
      */
     public int readInt8() throws IOException {
@@ -539,6 +591,8 @@ public class RandomAccessInputStream implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.util.file.random.RandomAccessR#readSignInt24()
      */
     public int readSignInt24() throws IOException {
@@ -549,4 +603,5 @@ public class RandomAccessInputStream implements RandomAccessR {
         }
         return v;
     }
+
 }

@@ -33,7 +33,7 @@ public class ParTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ParTest.class);
     }
@@ -43,7 +43,7 @@ public class ParTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public ParTest(final String arg) {
+    public ParTest(String arg) {
 
         super(arg, "par", "");
     }

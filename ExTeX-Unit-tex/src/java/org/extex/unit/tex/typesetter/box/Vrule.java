@@ -100,7 +100,7 @@ public class Vrule extends AbstractCode implements RuleConvertible {
      *
      * @param name the name for debugging
      */
-    public Vrule(final String name) {
+    public Vrule(String name) {
 
         super(name);
     }
@@ -125,8 +125,8 @@ public class Vrule extends AbstractCode implements RuleConvertible {
      *      org.extex.typesetter.Typesetter)
      * @see "<logo>TeX</logo> &ndash; The Program [463]"
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         typesetter.add(getRule(context, source, typesetter));
@@ -149,8 +149,8 @@ public class Vrule extends AbstractCode implements RuleConvertible {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public RuleNode getRule(final Context context, final TokenSource source,
-            final Typesetter typesetter)
+    public RuleNode getRule(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException {
 
         Mode mode = typesetter.getMode();

@@ -87,7 +87,7 @@ public class Discretionary extends AbstractCode {
      *
      * @param name the name for debugging
      */
-    public Discretionary(final String name) {
+    public Discretionary(String name) {
 
         super(name);
     }
@@ -111,8 +111,8 @@ public class Discretionary extends AbstractCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Tokens pre = source.getTokens(context, source, typesetter);
@@ -144,9 +144,9 @@ public class Discretionary extends AbstractCode {
      * @throws TypesetterException in case of an error
      * @throws ConfigurationException in case of a configuration error
      */
-    private NodeList fill(final Tokens tokens, final TypesettingContext tc,
-            final Context context, final TokenSource source,
-            final Typesetter typesetter, final Locator locator)
+    private NodeList fill(Tokens tokens, TypesettingContext tc,
+            Context context, TokenSource source,
+            Typesetter typesetter, Locator locator)
             throws TypesetterException {
 
         if (tokens.length() == 0) {

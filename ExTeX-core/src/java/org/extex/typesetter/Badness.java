@@ -103,7 +103,7 @@ public final class Badness {
      *
      * @see "TTP [108]"
      */
-    public static int badness(final long total, final long sum) {
+    public static int badness(long total, long sum) {
 
         if (total <= 0) {
             return 0;
@@ -130,6 +130,7 @@ public final class Badness {
      */
     private Badness() {
 
+        // not needed
     }
 
 }

@@ -106,7 +106,7 @@ public class XtfLookup {
      * @param offset    offset
      * @throws IOException if an IO-error occurs
      */
-    XtfLookup(final RandomAccessR rar, final int offset) throws IOException {
+    XtfLookup(RandomAccessR rar, int offset) throws IOException {
 
         rar.seek(offset);
 
@@ -162,8 +162,8 @@ public class XtfLookup {
      * @return Returns the subtable
      * @throws IOException if an IO-error occurs
      */
-    public XtfLookupTable newInstance(final int tabletype, final RandomAccessR rar,
-            final int offset) throws IOException {
+    public XtfLookupTable newInstance(int tabletype, RandomAccessR rar,
+            int offset) throws IOException {
 
         XtfLookupTable s = null;
         switch (tabletype) {
@@ -210,7 +210,7 @@ public class XtfLookup {
      * @param i index
      * @return  Returns the subtable
      */
-    public XtfLookupTable getSubtable(final int i) {
+    public XtfLookupTable getSubtable(int i) {
 
         return subTables[i];
     }

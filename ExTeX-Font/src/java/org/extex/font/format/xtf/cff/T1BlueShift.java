@@ -36,7 +36,7 @@ public class T1BlueShift extends T1DictNumber {
      * @param stack the stack
      * @throws IOException if an IO.error occurs.
      */
-    public T1BlueShift(final List stack) throws IOException {
+    public T1BlueShift(List stack) throws IOException {
 
         super(stack, new short[]{BlueShift});
     }

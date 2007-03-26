@@ -43,7 +43,7 @@ public class NameIdSpec extends IdSpec {
      *
      * @param name the name
      */
-    public NameIdSpec(final String name) {
+    public NameIdSpec(String name) {
 
         super();
         this.name = name;

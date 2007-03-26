@@ -46,7 +46,7 @@ public class InterpreterMissingHashKeyException extends InterpreterException {
      * Create a new object.
      * @param message   the message
      */
-    public InterpreterMissingHashKeyException(final String message) {
+    public InterpreterMissingHashKeyException(String message) {
 
         super(message);
     }

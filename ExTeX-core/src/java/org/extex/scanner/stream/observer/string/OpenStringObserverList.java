@@ -39,8 +39,8 @@ public final class OpenStringObserverList implements OpenStringObserver {
      *
      * @return the input list or a new one with the observer added
      */
-    public static OpenStringObserver register(final OpenStringObserver list,
-            final OpenStringObserver observer) {
+    public static OpenStringObserver register(OpenStringObserver list,
+            OpenStringObserver observer) {
 
         if (list instanceof OpenStringObserverList) {
             ((OpenStringObserverList) list).add(observer);
@@ -67,7 +67,7 @@ public final class OpenStringObserverList implements OpenStringObserver {
      *
      * @param observer the observer to add to the list
      */
-    public void add(final OpenStringObserver observer) {
+    public void add(OpenStringObserver observer) {
 
         list.add(observer);
     }
@@ -81,7 +81,7 @@ public final class OpenStringObserverList implements OpenStringObserver {
      * @see org.extex.scanner.stream.observer.string.OpenStringObserver#update(
      *      java.lang.CharSequence)
      */
-    public void update(final CharSequence string) {
+    public void update(CharSequence string) {
 
         for (int i = 0; i < list.size(); i++) {
             ((OpenStringObserver) list.get(i)).update(string);

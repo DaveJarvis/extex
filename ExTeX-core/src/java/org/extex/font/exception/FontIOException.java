@@ -45,7 +45,7 @@ public class FontIOException extends FontException {
      * Create a new object.
      * @param message   the message
      */
-    public FontIOException(final String message) {
+    public FontIOException(String message) {
 
         super(message);
     }

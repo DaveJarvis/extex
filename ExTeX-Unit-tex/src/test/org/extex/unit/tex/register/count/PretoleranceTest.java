@@ -33,7 +33,7 @@ public class PretoleranceTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PretoleranceTest.class);
     }
@@ -43,7 +43,7 @@ public class PretoleranceTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public PretoleranceTest(final String arg) {
+    public PretoleranceTest(String arg) {
 
         super(arg, "pretolerance", "", "0");
     }

@@ -48,8 +48,8 @@ public class InterpreterFactory extends AbstractFactory {
      *
      * @throws ConfigurationException in case of an error in the configuration.
      */
-    public InterpreterFactory(final Configuration configuration,
-            final Logger logger) throws ConfigurationException {
+    public InterpreterFactory(Configuration configuration,
+            Logger logger) throws ConfigurationException {
 
         super();
         enableLogging(logger);
@@ -67,8 +67,8 @@ public class InterpreterFactory extends AbstractFactory {
      *
      * @throws ConfigurationException in case of an error in the configuration
      */
-    public Interpreter newInstance(final Properties properties,
-            final OutputStreamFactory outFactory) throws ConfigurationException {
+    public Interpreter newInstance(Properties properties,
+            OutputStreamFactory outFactory) throws ConfigurationException {
 
         Interpreter interpreter =
                 (Interpreter) createInstance(Interpreter.class);

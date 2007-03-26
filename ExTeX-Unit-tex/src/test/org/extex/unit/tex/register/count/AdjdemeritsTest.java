@@ -33,7 +33,7 @@ public class AdjdemeritsTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(AdjdemeritsTest.class);
     }
@@ -43,7 +43,7 @@ public class AdjdemeritsTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public AdjdemeritsTest(final String arg) {
+    public AdjdemeritsTest(String arg) {
 
         super(arg, "adjdemerits", "", "0");
     }

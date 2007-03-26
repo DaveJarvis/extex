@@ -67,7 +67,7 @@ public class Mathaccent extends AbstractTeXMathCode {
      *
      * @param name the name for tracing and debugging
      */
-    public Mathaccent(final String name) {
+    public Mathaccent(String name) {
 
         super(name);
     }
@@ -90,8 +90,8 @@ public class Mathaccent extends AbstractTeXMathCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);

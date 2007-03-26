@@ -33,7 +33,7 @@ public class DviEOP extends DviCommand {
      * @param oc        the opcode
      * @param sp        the start pointer
      */
-    public DviEOP(final int oc, final int sp) {
+    public DviEOP(int oc, int sp) {
 
         super(oc, sp);
     }

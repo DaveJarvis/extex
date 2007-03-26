@@ -34,7 +34,7 @@ public class FiTest extends ExTeXLauncher {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(FiTest.class);
     }
@@ -44,7 +44,7 @@ public class FiTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public FiTest(final String arg) {
+    public FiTest(String arg) {
 
         super(arg);
     }

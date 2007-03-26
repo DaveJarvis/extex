@@ -43,8 +43,8 @@ public class FontcharTester extends NoFlagsPrimitiveTester {
      * @param arguments the arguments for smoke testing
      * @param def ...
      */
-    public FontcharTester(final String name, final String primitive,
-            final String arguments, final String def) {
+    public FontcharTester(String name, String primitive,
+            String arguments, String def) {
 
         super(name, primitive, arguments);
         this.def = def;

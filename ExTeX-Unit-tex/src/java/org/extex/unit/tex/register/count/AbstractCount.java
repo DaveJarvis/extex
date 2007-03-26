@@ -45,7 +45,7 @@ public abstract class AbstractCount extends AbstractAssignment
      *
      * @param name the name for debugging
      */
-    public AbstractCount(final String name) {
+    public AbstractCount(String name) {
 
         super(name);
     }
@@ -63,8 +63,8 @@ public abstract class AbstractCount extends AbstractAssignment
      * @throws InterpreterException in case that a derived class need to throw
      *  an Exception this one is declared.
      */
-    protected String getKey(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         String name;
         name = source.scanRegisterName(context, source, typesetter, getName());
@@ -89,8 +89,8 @@ public abstract class AbstractCount extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void init(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public void init(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         if (source == null) {
             return;

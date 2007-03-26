@@ -40,7 +40,7 @@ public class PfmWriter {
      *
      * @param pfm   The pfm object.
      */
-    public PfmWriter(final Pfm pfm) {
+    public PfmWriter(Pfm pfm) {
 
     }
 
@@ -49,7 +49,7 @@ public class PfmWriter {
      * @param out   The output.
      * @throws IOException if an IO-error occurred.
      */
-    public void write(final OutputStream out) throws IOException {
+    public void write(OutputStream out) throws IOException {
 
     }
 

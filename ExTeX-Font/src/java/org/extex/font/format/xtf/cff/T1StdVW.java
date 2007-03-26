@@ -36,7 +36,7 @@ public class T1StdVW extends T1DictNumber {
      * @param stack the stack
      * @throws IOException if an IO.error occurs.
      */
-    public T1StdVW(final List stack) throws IOException {
+    public T1StdVW(List stack) throws IOException {
 
         super(stack, new short[]{StdVW});
     }

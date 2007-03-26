@@ -31,7 +31,7 @@ public class WdTest extends AbstractBoxDimenTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(WdTest.class);
     }
@@ -41,7 +41,7 @@ public class WdTest extends AbstractBoxDimenTester {
      *
      * @param arg the name
      */
-    public WdTest(final String arg) {
+    public WdTest(String arg) {
 
         super(arg, "wd");
     }

@@ -43,7 +43,7 @@ class IntervalRule implements Rule {
      * @param from the lower limit
      * @param to the upper limit
      */
-    public IntervalRule(final int from, final int to) {
+    public IntervalRule(int from, int to) {
 
         this.from = from;
         this.to = to;
@@ -56,7 +56,7 @@ class IntervalRule implements Rule {
      *
      * @return <code>true</code> iff the value is in the interval
      */
-    public boolean check(final int value) {
+    public boolean check(int value) {
 
         return value >= from && value <= to;
     }

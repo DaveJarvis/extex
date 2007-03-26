@@ -63,20 +63,22 @@ public class Pdfcatalog extends AbstractPdftexCode {
      *
      * @param name the name for tracing and debugging
      */
-    public Pdfcatalog(final String name) {
+    public Pdfcatalog(String name) {
 
         super(name);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         PdftexSupport writer = ensurePdftex(context, typesetter);

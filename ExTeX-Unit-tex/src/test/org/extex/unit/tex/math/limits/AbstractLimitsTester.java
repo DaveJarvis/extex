@@ -60,8 +60,8 @@ public class AbstractLimitsTester extends ExTeXLauncher {
      * @param primitive the name of the primitive to test
      * @param arguments the arguments for the invocation
      */
-    public AbstractLimitsTester(final String arg, final String primitive,
-            final String arguments) {
+    public AbstractLimitsTester(String arg, String primitive,
+            String arguments) {
 
         this(arg, primitive, arguments, "");
     }
@@ -74,8 +74,8 @@ public class AbstractLimitsTester extends ExTeXLauncher {
      * @param arguments the arguments for the invocation
      * @param prepare the code to insert before the invocation
      */
-    public AbstractLimitsTester(final String arg, final String primitive,
-            final String arguments, final String prepare) {
+    public AbstractLimitsTester(String arg, String primitive,
+            String arguments, String prepare) {
 
         super(arg);
         this.primitive = primitive;

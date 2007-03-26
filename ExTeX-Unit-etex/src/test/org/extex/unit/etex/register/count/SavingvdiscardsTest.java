@@ -33,7 +33,7 @@ public class SavingvdiscardsTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(SavingvdiscardsTest.class);
     }
@@ -43,7 +43,7 @@ public class SavingvdiscardsTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public SavingvdiscardsTest(final String arg) {
+    public SavingvdiscardsTest(String arg) {
 
         super(arg, "savingvdiscards", "", "0");
         setConfig("etex-test");

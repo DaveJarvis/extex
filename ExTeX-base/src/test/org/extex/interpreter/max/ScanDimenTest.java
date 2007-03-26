@@ -34,7 +34,7 @@ public class ScanDimenTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public ScanDimenTest(final String arg) {
+    public ScanDimenTest(String arg) {
 
         super(arg);
     }

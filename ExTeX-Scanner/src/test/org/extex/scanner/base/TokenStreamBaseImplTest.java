@@ -39,7 +39,7 @@ public class TokenStreamBaseImplTest extends TestCase {
      *
      * @param name the name
      */
-    public TokenStreamBaseImplTest(final String name) {
+    public TokenStreamBaseImplTest(String name) {
 
         super(name);
     }

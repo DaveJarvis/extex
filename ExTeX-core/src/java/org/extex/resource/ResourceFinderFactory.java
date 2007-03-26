@@ -68,9 +68,9 @@ public class ResourceFinderFactory {
      * @throws ConfigurationException in cse of an error in the configuration
      *  or during instantiation
      */
-    public ResourceFinder createResourceFinder(final Configuration config,
-            final Logger logger, final Properties properties,
-            final InteractionIndicator provider) throws ConfigurationException {
+    public ResourceFinder createResourceFinder(Configuration config,
+            Logger logger, Properties properties,
+            InteractionIndicator provider) throws ConfigurationException {
 
         ResourceFinderList list = new ResourceFinderList();
 

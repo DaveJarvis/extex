@@ -43,7 +43,7 @@ public class DviXxx extends AbstractDviCode {
      *
      * @param content the array of bytes to pass to the DVI processor
      */
-    public DviXxx(final byte[] content) {
+    public DviXxx(byte[] content) {
 
         super("xxx" + variant(content.length));
         this.content = content;
@@ -54,7 +54,7 @@ public class DviXxx extends AbstractDviCode {
      *
      * @param content the array of bytes to pass to the DVI processor
      */
-    public DviXxx(final String content) {
+    public DviXxx(String content) {
 
         this(content.getBytes());
     }
@@ -70,7 +70,7 @@ public class DviXxx extends AbstractDviCode {
      *
      * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
      */
-    public int write(final OutputStream stream) throws IOException {
+    public int write(OutputStream stream) throws IOException {
 
         int len;
         if (content.length < 1) {

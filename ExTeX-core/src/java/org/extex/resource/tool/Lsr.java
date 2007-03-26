@@ -80,7 +80,7 @@ public class Lsr {
      * Creates a new object.
      * @param theBasedirectory  The base directory for searching
      */
-    public Lsr(final File theBasedirectory) {
+    public Lsr(File theBasedirectory) {
 
         basedirectory = theBasedirectory;
         excludeDir = new ArrayList();
@@ -93,7 +93,7 @@ public class Lsr {
      *
      * @param name  The name of the directory.
      */
-    public void addExcludeDir(final String name) {
+    public void addExcludeDir(String name) {
 
         excludeDir.add(name);
     }
@@ -103,7 +103,7 @@ public class Lsr {
      *
      * @param name  The name of the directory.
      */
-    public void addExcludeRegExp(final String name) {
+    public void addExcludeRegExp(String name) {
 
         excludeRegExp.add(name);
     }
@@ -116,7 +116,7 @@ public class Lsr {
      * @param directory     The base directory for output.
      * @throws IOException if an io-error occurs.
      */
-    private void printLsr(final PrintStream printStream, final File directory)
+    private void printLsr(PrintStream printStream, File directory)
             throws IOException {
 
         if (directory != null) {
@@ -126,7 +126,7 @@ public class Lsr {
                 /**
                  * @see java.io.FileFilter#accept(java.io.File)
                  */
-                public boolean accept(final File pathname) {
+                public boolean accept(File pathname) {
 
                     // 'ls-R'
                     if (pathname.getName().equals(LS_R)) {
@@ -183,7 +183,7 @@ public class Lsr {
      *                      the <code>PrintStream</code>.
      * @throws IOException if an io-error occurs.
      */
-    public void printLsr(final PrintStream printStream) throws IOException {
+    public void printLsr(PrintStream printStream) throws IOException {
 
         Collections.sort(excludeDir);
         PrintStream out = printStream;
@@ -206,7 +206,7 @@ public class Lsr {
      *                  -excludeRegExp xxx
      * @throws IOException if an io-error occurs.
      */
-    public static void main(final String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
 
         if (args.length >= 1) {
             Lsr lsr = new Lsr(new File(args[0]));

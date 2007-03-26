@@ -55,15 +55,16 @@ public class LanguageObserver implements CountObserver, TokensObserver {
      * @param value the new value assigned to the name. In case of
      *  <code>null</code> the name is unbound.
      *
-     * @throws ConfigurationException in case of a problem
+     * @throws org.extex.framework.configuration.exception.ConfigurationException
+     *   in case of a problem
      *
      * @see org.extex.interpreter.context.observer.count.CountObserver#receiveCountChange(
      *      org.extex.interpreter.context.ContextInternals,
      *      java.lang.String,
      *      org.extex.core.count.Count)
      */
-    public void receiveCountChange(final ContextInternals context,
-            final String name, final Count value) {
+    public void receiveCountChange(ContextInternals context,
+            String name, Count value) {
 
         if ("language".equals(name)) { // this should never fail; just to be sure
             Tokens lang = context.getToks("lang");
@@ -87,8 +88,8 @@ public class LanguageObserver implements CountObserver, TokensObserver {
      *      java.lang.String,
      *      org.extex.scanner.type.tokens.Tokens)
      */
-    public void receiveTokensChange(final ContextInternals context,
-            final String name, final Tokens value) {
+    public void receiveTokensChange(ContextInternals context,
+            String name, Tokens value) {
 
         if ("lang".equals(name)) { // this should never fail; just to be sure
 

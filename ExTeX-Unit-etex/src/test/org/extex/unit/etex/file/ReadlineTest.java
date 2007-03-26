@@ -41,7 +41,7 @@ public class ReadlineTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ReadlineTest.class);
     }
@@ -51,7 +51,7 @@ public class ReadlineTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public ReadlineTest(final String arg) {
+    public ReadlineTest(String arg) {
 
         super(arg, "readline", "1 to \\x", "\\openin1 " + DATA_FILE + " ");
         setConfig("etex-test");

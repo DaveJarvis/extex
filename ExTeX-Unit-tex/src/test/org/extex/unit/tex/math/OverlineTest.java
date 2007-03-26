@@ -32,7 +32,7 @@ public class OverlineTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public OverlineTest(final String arg) {
+    public OverlineTest(String arg) {
 
         super(arg, "overline", " x");
     }

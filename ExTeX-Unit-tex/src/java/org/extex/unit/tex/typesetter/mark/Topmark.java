@@ -73,7 +73,7 @@ public class Topmark extends Topmarks {
      *
      * @param name the name for debugging
      */
-    public Topmark(final String name) {
+    public Topmark(String name) {
 
         super(name);
     }
@@ -92,8 +92,8 @@ public class Topmark extends Topmarks {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    protected String getKey(final Context context, final TokenSource source,
-            final Typesetter typesetter) {
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) {
 
         return "0";
     }

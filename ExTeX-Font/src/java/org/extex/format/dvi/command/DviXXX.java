@@ -41,7 +41,7 @@ public class DviXXX extends DviCommand {
      * @param sp    the start pointer
      * @param v     the values
      */
-    public DviXXX(final int opc, final int sp, final int[] v) {
+    public DviXXX(int opc, int sp, int[] v) {
 
         super(opc, sp);
         values = v;

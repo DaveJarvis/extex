@@ -45,7 +45,7 @@ public class LoaderClassCastException extends LoaderException {
      *
      * @param arg0 the cause for this exception
      */
-    public LoaderClassCastException(final Throwable arg0) {
+    public LoaderClassCastException(Throwable arg0) {
 
         super(arg0);
     }

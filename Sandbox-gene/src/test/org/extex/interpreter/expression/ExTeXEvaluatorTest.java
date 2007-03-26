@@ -38,12 +38,14 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ExTeXEvaluatorTest.class);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.TeXEvaluatorTest#getInstanceForTest()
      */
     protected Evaluator getInstanceForTest() {

@@ -33,7 +33,7 @@ public class ParshapelengthTest extends NonExecuteTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ParshapelengthTest.class);
     }
@@ -43,7 +43,7 @@ public class ParshapelengthTest extends NonExecuteTester {
      *
      * @param arg the name
      */
-    public ParshapelengthTest(final String arg) {
+    public ParshapelengthTest(String arg) {
 
         super(arg, "parshapelength", "");
         setConfig("etex-test");

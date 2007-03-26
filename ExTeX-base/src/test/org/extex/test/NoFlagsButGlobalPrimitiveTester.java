@@ -56,8 +56,8 @@ public abstract class NoFlagsButGlobalPrimitiveTester extends ExTeXLauncher {
      * @param primitive the name of the primitive
      * @param args the arguments for assignment
      */
-    public NoFlagsButGlobalPrimitiveTester(final String arg,
-            final String primitive, final String args) {
+    public NoFlagsButGlobalPrimitiveTester(String arg,
+            String primitive, String args) {
 
         super(arg);
         this.primitive = primitive;
@@ -72,8 +72,8 @@ public abstract class NoFlagsButGlobalPrimitiveTester extends ExTeXLauncher {
      * @param args the arguments for assignment
      * @param prepare the preparation code
      */
-    public NoFlagsButGlobalPrimitiveTester(final String arg,
-            final String primitive, final String args, final String prepare) {
+    public NoFlagsButGlobalPrimitiveTester(String arg,
+            String primitive, String args, String prepare) {
 
         this(arg, primitive, args);
         this.prepare = DEFINE_BRACES + prepare;
@@ -88,9 +88,9 @@ public abstract class NoFlagsButGlobalPrimitiveTester extends ExTeXLauncher {
      * @param prepare the preparation code
      * @param out prefix of the output message
      */
-    public NoFlagsButGlobalPrimitiveTester(final String arg,
-            final String primitive, final String args, final String prepare,
-            final String out) {
+    public NoFlagsButGlobalPrimitiveTester(String arg,
+            String primitive, String args, String prepare,
+            String out) {
 
         this(arg, primitive, args, prepare);
         this.out = out;

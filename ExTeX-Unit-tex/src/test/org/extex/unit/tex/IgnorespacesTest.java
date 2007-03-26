@@ -34,7 +34,7 @@ public class IgnorespacesTest extends NoFlagsPrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(IgnorespacesTest.class);
     }
@@ -44,7 +44,7 @@ public class IgnorespacesTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public IgnorespacesTest(final String arg) {
+    public IgnorespacesTest(String arg) {
 
         super(arg, "ignorespaces", "");
     }

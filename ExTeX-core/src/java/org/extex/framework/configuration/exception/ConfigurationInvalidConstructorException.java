@@ -50,8 +50,8 @@ public class ConfigurationInvalidConstructorException
      * @param config the configuration in which the problem occurred or
      * <code>null</code>
      */
-    public ConfigurationInvalidConstructorException(final String className,
-            final Configuration config) {
+    public ConfigurationInvalidConstructorException(String className,
+            Configuration config) {
 
         super(null, config.toString());
         this.className = className;

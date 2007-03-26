@@ -58,7 +58,7 @@ public class Afm2Xml extends AfmUtil {
      * @param file  The afm file name.
      * @throws Exception if an error occurs.
      */
-    private void doIt(final String file) throws Exception {
+    private void doIt(String file) throws Exception {
 
         getLogger().severe(getLocalizer().format("Afm2Xml.start", file));
 
@@ -106,7 +106,7 @@ public class Afm2Xml extends AfmUtil {
      * @param args  The command line.
      * @throws Exception if an error occurred.
      */
-    public static void main(final String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
         Afm2Xml afm = new Afm2Xml();
 

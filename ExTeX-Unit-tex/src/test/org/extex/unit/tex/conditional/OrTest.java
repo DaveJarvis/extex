@@ -34,7 +34,7 @@ public class OrTest extends ExTeXLauncher {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(OrTest.class);
     }
@@ -44,7 +44,7 @@ public class OrTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public OrTest(final String arg) {
+    public OrTest(String arg) {
 
         super(arg);
     }

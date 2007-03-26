@@ -62,7 +62,7 @@ public class HyphenActive extends AbstractHyphenationCode implements Theable {
      *
      * @param name the name for debugging
      */
-    public HyphenActive(final String name) {
+    public HyphenActive(String name) {
 
         super(name);
     }
@@ -76,8 +76,8 @@ public class HyphenActive extends AbstractHyphenationCode implements Theable {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Language table = getHyphenationTable(context);
@@ -112,8 +112,8 @@ public class HyphenActive extends AbstractHyphenationCode implements Theable {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter)
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 CatcodeException {
 

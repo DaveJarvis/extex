@@ -34,7 +34,7 @@ public class AllocTest extends ExTeXLauncher {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(AllocTest.class);
     }
@@ -44,7 +44,7 @@ public class AllocTest extends ExTeXLauncher {
      *
      * @param name the name
      */
-    public AllocTest(final String name) {
+    public AllocTest(String name) {
 
         super(name);
     }

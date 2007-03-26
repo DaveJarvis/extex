@@ -33,7 +33,7 @@ public class GluetomuTest extends NonExecuteTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(GluetomuTest.class);
     }
@@ -43,7 +43,7 @@ public class GluetomuTest extends NonExecuteTester {
      *
      * @param arg the name
      */
-    public GluetomuTest(final String arg) {
+    public GluetomuTest(String arg) {
 
         super(arg, "gluetomu", "");
         setConfig("etex-test");

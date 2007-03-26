@@ -34,7 +34,7 @@ public class OmathaccentTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public OmathaccentTest(final String arg) {
+    public OmathaccentTest(String arg) {
 
         super(arg, "omathaccent", "12 a");
         setConfig("omega-test");

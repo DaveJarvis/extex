@@ -93,7 +93,7 @@ public class HyphenationPrimitive extends AbstractHyphenationCode {
      *
      * @param name the name for debugging
      */
-    public HyphenationPrimitive(final String name) {
+    public HyphenationPrimitive(String name) {
 
         super(name);
     }
@@ -110,8 +110,8 @@ public class HyphenationPrimitive extends AbstractHyphenationCode {
      * @throws InterpreterException in case of an error
      * @throws CatcodeException in case of an exception in token creation
      */
-    protected UnicodeCharList collectWord(final Context context,
-            final TokenSource source, final Token token)
+    protected UnicodeCharList collectWord(Context context,
+            TokenSource source, Token token)
             throws InterpreterException,
                 CatcodeException {
 
@@ -154,8 +154,8 @@ public class HyphenationPrimitive extends AbstractHyphenationCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Language table = getHyphenationTable(context);
@@ -204,7 +204,7 @@ public class HyphenationPrimitive extends AbstractHyphenationCode {
      *
      * @throws InterpreterException in case of an error
      */
-    protected boolean isWordConstituent(final Token t, final Context context)
+    protected boolean isWordConstituent(Token t, Context context)
             throws InterpreterException {
 
         if (t == null) {

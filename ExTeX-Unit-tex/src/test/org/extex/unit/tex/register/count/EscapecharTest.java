@@ -33,7 +33,7 @@ public class EscapecharTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(EscapecharTest.class);
     }
@@ -43,7 +43,7 @@ public class EscapecharTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public EscapecharTest(final String arg) {
+    public EscapecharTest(String arg) {
 
         super(arg, "escapechar", "", "92");
     }

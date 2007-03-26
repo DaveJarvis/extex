@@ -68,6 +68,12 @@ public class DviOutputStream {
      */
     private int streamPosition = 0;
 
+    /**
+     * ...
+     *
+     * @throws GeneralException ...
+     * @throws IOException ...
+     */
     public void close() throws GeneralException, IOException {
 
         outputStream.close();
@@ -88,19 +94,19 @@ public class DviOutputStream {
      *
      * @param theOutputStream <code>OutputStream</code> for dvi file
      */
-    public DviOutputStream(final OutputStream theOutputStream) {
+    public DviOutputStream(OutputStream theOutputStream) {
 
         super();
         outputStream = theOutputStream;
     }
 
     /**
-     * Writes a single byte to the outputstream.
+     * Writes a single byte to the output stream.
      *
      * @param theByte the output
      * @exception GeneralException if an error occurs
      */
-    public void writeByte(final int theByte) throws GeneralException {
+    public void writeByte(int theByte) throws GeneralException {
 
         try {
             outputStream.write(theByte);
@@ -111,13 +117,13 @@ public class DviOutputStream {
     }
 
     /**
-     * Write a number to the outputstream.
+     * Write a number to the output stream.
      *
      * @param number the number
      * @param bytes the number of bytes for the number
      * @exception GeneralException if an error occurs
      */
-    public void writeNumber(final int number, final int bytes)
+    public void writeNumber(int number, int bytes)
             throws GeneralException {
 
         int shift = (bytes - 1) * BITS_PER_BYTE;
@@ -130,16 +136,16 @@ public class DviOutputStream {
             mask >>>= BITS_PER_BYTE;
         }
 
-        // TODO: exception, if the number is not written completly (TE)
+        // TODO: exception, if the number is not written completely (TE)
     }
 
     /**
-     * Write a string to the outputstream.
+     * Write a string to the output stream.
      *
      * @param string the string
      * @exception GeneralException if an error occurs
      */
-    public void writeString(final String string) throws GeneralException {
+    public void writeString(String string) throws GeneralException {
 
         for (int i = 0; i < string.length(); i++) {
             writeByte(string.charAt(i));
@@ -147,13 +153,13 @@ public class DviOutputStream {
     }
 
     /**
-     * Write a string to the outputstream.  Before the string the
+     * Write a string to the output stream.  Before the string the
      * number of characters is written.
      *
      * @param string the string
      * @exception GeneralException if an error occurs
      */
-    public void writeStringAndSize(final String string) throws GeneralException {
+    public void writeStringAndSize(String string) throws GeneralException {
 
         int length = string.length();
 
@@ -166,7 +172,7 @@ public class DviOutputStream {
     }
 
     /**
-     * Write a value and the dvi code to the outputstream.  The code
+     * Write a value and the dvi code to the output stream.  The code
      * depends on the number.
      *
      * @param codes codes for one, two, ... long argument
@@ -174,7 +180,7 @@ public class DviOutputStream {
      * @exception GeneralException if an error occurs
      * @see "TTP [610]"
      */
-    public void writeCodeNumberAndArg(final int[] codes, final int argNumber)
+    public void writeCodeNumberAndArg(int[] codes, int argNumber)
             throws GeneralException {
 
         int numberBytes = 0;
@@ -205,8 +211,8 @@ public class DviOutputStream {
      * @param argNumber the argument
      * @exception GeneralException if an error occurs
      */
-    public void writeCodeNumberAndArg(final int[] shortCodes,
-            final int[] codes, final int argNumber) throws GeneralException {
+    public void writeCodeNumberAndArg(int[] shortCodes,
+            int[] codes, int argNumber) throws GeneralException {
 
         if (argNumber < shortCodes.length) {
             writeByte(shortCodes[argNumber]);

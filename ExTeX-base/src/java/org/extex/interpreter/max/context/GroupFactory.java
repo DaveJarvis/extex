@@ -55,7 +55,7 @@ public class GroupFactory {
     /**
      * The field <tt>constructor</tt> contains the constructor of the class to
      * instantiate. It is kept here to speed up the method
-     * {@link #newInstance(org.extex.interpreter.max.context.Group)
+     * {@link #newInstance(Group, Locator, Token, GroupType)
      *  newInstance}.
      */
     private Constructor constructor;
@@ -67,7 +67,7 @@ public class GroupFactory {
      *
      * @throws ConfigurationException in case of an error in the configuration.
      */
-    public GroupFactory(final Configuration config) {
+    public GroupFactory(Configuration config) {
 
         super();
 
@@ -101,10 +101,10 @@ public class GroupFactory {
      *
      * @return a new instance for the interface Group
      *
-     * @throws ConfigurationException in case of an error in the configuration.
+     * @throws ConfigurationInstantiationException in case of an error in the configuration.
      */
-    public Group newInstance(final Group next, final Locator locator,
-            final Token start, final GroupType type) {
+    public Group newInstance(Group next, Locator locator,
+            Token start, GroupType type) {
 
         Group group;
 

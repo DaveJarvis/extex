@@ -63,7 +63,7 @@ public class Iffalse extends AbstractIf {
      *
      * @param name the name for debugging
      */
-    public Iffalse(final String name) {
+    public Iffalse(String name) {
 
         super(name);
     }
@@ -85,8 +85,8 @@ public class Iffalse extends AbstractIf {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(final Context context,
-            final TokenSource source, final Typesetter typesetter) {
+    public boolean conditional(Context context,
+            TokenSource source, Typesetter typesetter) {
 
         return false;
     }

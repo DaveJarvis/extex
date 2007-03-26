@@ -34,7 +34,7 @@ public class PdflastximageTest extends AbstractReadonlyCountRegisterTester {
      *
      * @param arg the name
      */
-    public PdflastximageTest(final String arg) {
+    public PdflastximageTest(String arg) {
 
         super(arg, "pdflastximage", "0");
         setConfig("pdftex-test");

@@ -69,7 +69,7 @@ public class Hskip extends AbstractHorizontalCode implements HorizontalSkip {
      *
      * @param name the name for debugging
      */
-    public Hskip(final String name) {
+    public Hskip(String name) {
 
         super(name);
     }
@@ -92,8 +92,8 @@ public class Hskip extends AbstractHorizontalCode implements HorizontalSkip {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         switchToHorizontalMode(typesetter);
@@ -121,8 +121,8 @@ public class Hskip extends AbstractHorizontalCode implements HorizontalSkip {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public FixedGlue getGlue(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public FixedGlue getGlue(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         return GlueParser.parse(source, context, typesetter);
     }

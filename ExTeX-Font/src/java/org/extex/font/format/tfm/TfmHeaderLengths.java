@@ -148,7 +148,7 @@ public class TfmHeaderLengths implements Serializable {
      * @param rar   the input
      * @throws IOException if an IO-error occurs.
      */
-    public TfmHeaderLengths(final RandomAccessR rar) throws IOException {
+    public TfmHeaderLengths(RandomAccessR rar) throws IOException {
 
         lf = rar.readShort();
         lh = rar.readShort();

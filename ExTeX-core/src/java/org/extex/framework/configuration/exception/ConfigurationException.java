@@ -46,7 +46,7 @@ public abstract class ConfigurationException extends RuntimeException {
      *
      * @param message the message string
      */
-    public ConfigurationException(final String message) {
+    public ConfigurationException(String message) {
 
         super(message);
     }
@@ -57,7 +57,7 @@ public abstract class ConfigurationException extends RuntimeException {
      * @param message the message string
      * @param source the name of the file causing this error
      */
-    public ConfigurationException(final String message, final String source) {
+    public ConfigurationException(String message, String source) {
 
         super(message);
         this.source = source;
@@ -69,7 +69,7 @@ public abstract class ConfigurationException extends RuntimeException {
      * @param message message the message string
      * @param cause the next Throwable in the chained list
      */
-    public ConfigurationException(final String message, final Throwable cause) {
+    public ConfigurationException(String message, Throwable cause) {
 
         super(message, cause);
     }

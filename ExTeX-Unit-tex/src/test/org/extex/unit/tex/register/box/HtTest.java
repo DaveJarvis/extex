@@ -31,7 +31,7 @@ public class HtTest extends AbstractBoxDimenTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(HtTest.class);
     }
@@ -41,7 +41,7 @@ public class HtTest extends AbstractBoxDimenTester {
      *
      * @param arg the name
      */
-    public HtTest(final String arg) {
+    public HtTest(String arg) {
 
         super(arg, "ht");
     }

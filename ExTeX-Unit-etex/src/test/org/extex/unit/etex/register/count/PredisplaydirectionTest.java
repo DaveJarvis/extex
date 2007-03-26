@@ -33,7 +33,7 @@ public class PredisplaydirectionTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PredisplaydirectionTest.class);
     }
@@ -43,7 +43,7 @@ public class PredisplaydirectionTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public PredisplaydirectionTest(final String arg) {
+    public PredisplaydirectionTest(String arg) {
 
         super(arg, "predisplaydirection", "", "0");
         setConfig("etex-test");

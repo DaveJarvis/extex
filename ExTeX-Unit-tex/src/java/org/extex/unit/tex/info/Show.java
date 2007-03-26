@@ -116,7 +116,7 @@ public class Show extends AbstractCode implements LogEnabled {
      *
      * @param name the name for tracing and debugging
      */
-    public Show(final String name) {
+    public Show(String name) {
 
         super(name);
     }
@@ -129,7 +129,7 @@ public class Show extends AbstractCode implements LogEnabled {
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger log) {
+    public void enableLogging(Logger log) {
 
         this.logger = log;
     }
@@ -152,8 +152,8 @@ public class Show extends AbstractCode implements LogEnabled {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Token t = source.getToken(context);
@@ -173,7 +173,7 @@ public class Show extends AbstractCode implements LogEnabled {
      *
      * @throws InterpreterException in case of an error
      */
-    protected Tokens meaning(final Token t, final Context context)
+    protected Tokens meaning(Token t, Context context)
             throws InterpreterException {
 
         Tokens toks;

@@ -56,8 +56,8 @@ public class InteractionTest extends TestCase {
          * @see org.extex.interpreter.interaction.InteractionVisitor#visitBatchmode(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public boolean visitBatchmode(final Object arg1, final Object arg2,
-                final Object arg3) throws GeneralException {
+        public boolean visitBatchmode(Object arg1, Object arg2,
+                Object arg3) throws GeneralException {
 
             mode = Interaction.BATCHMODE;
             return false;
@@ -77,8 +77,8 @@ public class InteractionTest extends TestCase {
          * @see org.extex.interpreter.interaction.InteractionVisitor#visitErrorstopmode(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public boolean visitErrorstopmode(final Object arg1, final Object arg2,
-                final Object arg3) throws GeneralException {
+        public boolean visitErrorstopmode(Object arg1, Object arg2,
+                Object arg3) throws GeneralException {
 
             mode = Interaction.ERRORSTOPMODE;
             return false;
@@ -98,8 +98,8 @@ public class InteractionTest extends TestCase {
          * @see org.extex.interpreter.interaction.InteractionVisitor#visitNonstopmode(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public boolean visitNonstopmode(final Object arg1, final Object arg2,
-                final Object arg3) throws GeneralException {
+        public boolean visitNonstopmode(Object arg1, Object arg2,
+                Object arg3) throws GeneralException {
 
             mode = Interaction.NONSTOPMODE;
             return false;
@@ -119,8 +119,8 @@ public class InteractionTest extends TestCase {
          * @see org.extex.interpreter.interaction.InteractionVisitor#visitScrollmode(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public boolean visitScrollmode(final Object arg1, final Object arg2,
-                final Object arg3) throws GeneralException {
+        public boolean visitScrollmode(Object arg1, Object arg2,
+                Object arg3) throws GeneralException {
 
             mode = Interaction.SCROLLMODE;
             return false;
@@ -159,6 +159,8 @@ public class InteractionTest extends TestCase {
     /**
      * Test method for {@link
      *  org.extex.interpreter.interaction.Interaction#get(int)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testGetInt1() throws Exception {
 
@@ -168,6 +170,8 @@ public class InteractionTest extends TestCase {
     /**
      * Test method for {@link
      *  org.extex.interpreter.interaction.Interaction#get(int)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testGetInt2() throws Exception {
 
@@ -177,6 +181,8 @@ public class InteractionTest extends TestCase {
     /**
      * Test method for {@link
      *  org.extex.interpreter.interaction.Interaction#get(int)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testGetInt3() throws Exception {
 
@@ -186,6 +192,8 @@ public class InteractionTest extends TestCase {
     /**
      * Test method for {@link
      *  org.extex.interpreter.interaction.Interaction#get(int)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testGetInt4() throws Exception {
 
@@ -212,6 +220,8 @@ public class InteractionTest extends TestCase {
      * Test method for {@link
      *  org.extex.interpreter.interaction.Interaction#get(
      *  org.extex.interpreter.interaction.Interaction)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testGetInteraction1() throws Exception {
 
@@ -222,6 +232,8 @@ public class InteractionTest extends TestCase {
      * Test method for {@link
      *  org.extex.interpreter.interaction.Interaction#get(
      *  org.extex.interpreter.interaction.Interaction)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testGetInteraction2() throws Exception {
 
@@ -232,6 +244,8 @@ public class InteractionTest extends TestCase {
      * Test method for {@link
      *  org.extex.interpreter.interaction.Interaction#get(
      *  org.extex.interpreter.interaction.Interaction)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testGetInteraction3() throws Exception {
 
@@ -242,6 +256,8 @@ public class InteractionTest extends TestCase {
      * Test method for {@link
      *  org.extex.interpreter.interaction.Interaction#get(
      *  org.extex.interpreter.interaction.Interaction)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testGetInteraction4() throws Exception {
 
@@ -311,6 +327,8 @@ public class InteractionTest extends TestCase {
     /**
      * Test method for {@link
      *  org.extex.interpreter.interaction.Interaction#get(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testGetString1() throws Exception {
 
@@ -320,6 +338,8 @@ public class InteractionTest extends TestCase {
     /**
      * Test method for {@link
      *  org.extex.interpreter.interaction.Interaction#get(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testGetString11() throws Exception {
 
@@ -329,6 +349,8 @@ public class InteractionTest extends TestCase {
     /**
      * Test method for {@link
      *  org.extex.interpreter.interaction.Interaction#get(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testGetString12() throws Exception {
 
@@ -338,6 +360,8 @@ public class InteractionTest extends TestCase {
     /**
      * Test method for {@link
      *  org.extex.interpreter.interaction.Interaction#get(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testGetString13() throws Exception {
 
@@ -347,6 +371,8 @@ public class InteractionTest extends TestCase {
     /**
      * Test method for {@link
      *  org.extex.interpreter.interaction.Interaction#get(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testGetString2() throws Exception {
 
@@ -356,6 +382,8 @@ public class InteractionTest extends TestCase {
     /**
      * Test method for {@link
      *  org.extex.interpreter.interaction.Interaction#get(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testGetString3() throws Exception {
 
@@ -365,6 +393,8 @@ public class InteractionTest extends TestCase {
     /**
      * Test method for {@link
      *  org.extex.interpreter.interaction.Interaction#get(java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testGetString4() throws Exception {
 
@@ -413,6 +443,8 @@ public class InteractionTest extends TestCase {
      *  org.extex.interpreter.interaction.Interaction#visit(
      *  org.extex.interpreter.interaction.InteractionVisitor,
      *  java.lang.Object, java.lang.Object, java.lang.Object)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testVisit0() throws Exception {
 
@@ -426,6 +458,8 @@ public class InteractionTest extends TestCase {
      *  org.extex.interpreter.interaction.Interaction#visit(
      *  org.extex.interpreter.interaction.InteractionVisitor,
      *  java.lang.Object, java.lang.Object, java.lang.Object)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testVisit1() throws Exception {
 
@@ -439,6 +473,8 @@ public class InteractionTest extends TestCase {
      *  org.extex.interpreter.interaction.Interaction#visit(
      *  org.extex.interpreter.interaction.InteractionVisitor,
      *  java.lang.Object, java.lang.Object, java.lang.Object)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testVisit2() throws Exception {
 
@@ -452,6 +488,8 @@ public class InteractionTest extends TestCase {
      *  org.extex.interpreter.interaction.Interaction#visit(
      *  org.extex.interpreter.interaction.InteractionVisitor,
      *  java.lang.Object, java.lang.Object, java.lang.Object)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testVisit3() throws Exception {
 

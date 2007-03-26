@@ -73,7 +73,7 @@ public class DviValues {
      * Create a new object.
      * @param val   the new values.
      */
-    public DviValues(final DviValues val) {
+    public DviValues(DviValues val) {
 
         h = val.h;
         v = val.v;
@@ -143,7 +143,7 @@ public class DviValues {
     /**
      * @param ah The h to set.
      */
-    public void setH(final int ah) {
+    public void setH(int ah) {
 
         h = ah;
     }
@@ -151,7 +151,7 @@ public class DviValues {
     /**
      * @param ah The h to add.
      */
-    public void addH(final int ah) {
+    public void addH(int ah) {
 
         h += ah;
     }
@@ -168,7 +168,7 @@ public class DviValues {
     /**
      * @param av The v to set.
      */
-    public void setV(final int av) {
+    public void setV(int av) {
 
         v = av;
     }
@@ -176,7 +176,7 @@ public class DviValues {
     /**
      * @param av The v to add.
      */
-    public void addV(final int av) {
+    public void addV(int av) {
 
         v += av;
     }
@@ -193,7 +193,7 @@ public class DviValues {
     /**
      * @param aw The w to set.
      */
-    public void setW(final int aw) {
+    public void setW(int aw) {
 
         w = aw;
     }
@@ -210,7 +210,7 @@ public class DviValues {
     /**
      * @param ax The x to set.
      */
-    public void setX(final int ax) {
+    public void setX(int ax) {
 
         x = ax;
     }
@@ -227,7 +227,7 @@ public class DviValues {
     /**
      * @param ay The y to set.
      */
-    public void setY(final int ay) {
+    public void setY(int ay) {
 
         y = ay;
     }
@@ -244,7 +244,7 @@ public class DviValues {
     /**
      * @param az The z to set.
      */
-    public void setZ(final int az) {
+    public void setZ(int az) {
 
         z = az;
     }
@@ -261,7 +261,7 @@ public class DviValues {
     /**
      * @param af The f to set.
      */
-    public void setF(final int af) {
+    public void setF(int af) {
 
         f = af;
     }
@@ -270,7 +270,7 @@ public class DviValues {
      * set the values (without f!)
      * @param val   the new values
      */
-    public void setValues(final DviValues val) {
+    public void setValues(DviValues val) {
 
         h = val.h;
         v = val.v;

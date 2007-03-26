@@ -44,7 +44,7 @@ public class DviY extends DviCommand {
      * @param sp    the start pointer
      * @param v     the value
      */
-    public DviY(final int opc, final int sp, final int v) {
+    public DviY(int opc, int sp, int v) {
 
         this(opc, sp, v, false);
     }
@@ -56,7 +56,7 @@ public class DviY extends DviCommand {
      * @param v     the value
      * @param y     the y0
      */
-    public DviY(final int opc, final int sp, final int v, final boolean y) {
+    public DviY(int opc, int sp, int v, boolean y) {
 
         super(opc, sp);
         value = v;

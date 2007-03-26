@@ -78,8 +78,8 @@ public class TfmLigature extends TfmLigKern implements Serializable {
      * @param s     number of characters from the current one to be stepped
      *              over after performing of this instruction.
      */
-    public TfmLigature(final int skip, final short next, final short a,
-            final boolean l, final boolean r, final byte s) {
+    public TfmLigature(int skip, short next, short a,
+            boolean l, boolean r, byte s) {
 
         super(skip, next);
         addingChar = a;

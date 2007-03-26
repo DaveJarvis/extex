@@ -74,7 +74,7 @@ import org.extex.typesetter.Typesetter;
  *      &rarr; <tt>\parindent</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.core.dimen.Dimen#parse(Context,TokenSource,Typesetter)
+ *        org.extex.core.dimen.DimenParser#parse(Context,TokenSource,Typesetter)
  *        &lang;dimen&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -100,7 +100,7 @@ public class Par extends AbstractCode {
      *
      * @param name the name for debugging
      */
-    public Par(final String name) {
+    public Par(String name) {
 
         super(name);
     }
@@ -124,8 +124,8 @@ public class Par extends AbstractCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         typesetter.par();

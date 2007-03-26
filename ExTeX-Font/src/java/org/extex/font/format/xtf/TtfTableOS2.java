@@ -282,8 +282,8 @@ public class TtfTableOS2 extends AbstractXtfTable
      * @param rar       the RandomAccessInput
      * @throws IOException if an error occured
      */
-    TtfTableOS2(final XtfTableMap tablemap, final XtfTableDirectory.Entry de,
-            final RandomAccessR rar) throws IOException {
+    TtfTableOS2(XtfTableMap tablemap, XtfTableDirectory.Entry de,
+            RandomAccessR rar) throws IOException {
 
         super(tablemap);
         rar.seek(de.getOffset());
@@ -632,7 +632,7 @@ public class TtfTableOS2 extends AbstractXtfTable
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writeStartElement(writer);
         writer.writeAttribute("version", XtfReader
@@ -973,7 +973,7 @@ public class TtfTableOS2 extends AbstractXtfTable
          *
          * @param panosearray    the panose
          */
-        public Panose(final byte[] panosearray) {
+        public Panose(byte[] panosearray) {
 
             familyType = panosearray[FAMILYTYPE];
             serifStyle = panosearray[SERIFSTYLE];
@@ -991,7 +991,7 @@ public class TtfTableOS2 extends AbstractXtfTable
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
-        public void writeXML(final XMLStreamWriter writer) throws IOException {
+        public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("panose");
             writer.writeAttribute("familytype", String.valueOf(familyType));

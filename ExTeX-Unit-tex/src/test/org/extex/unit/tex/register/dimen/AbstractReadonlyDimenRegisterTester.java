@@ -51,8 +51,8 @@ public abstract class AbstractReadonlyDimenRegisterTester extends ExTeXLauncher 
      * @param primitive the name of the primitive
      * @param defaultValue the default value
      */
-    public AbstractReadonlyDimenRegisterTester(final String arg,
-            final String primitive, final String defaultValue) {
+    public AbstractReadonlyDimenRegisterTester(String arg,
+            String primitive, String defaultValue) {
 
         super(arg);
         this.primitive = primitive;
@@ -67,9 +67,9 @@ public abstract class AbstractReadonlyDimenRegisterTester extends ExTeXLauncher 
      * @param argument the argument
      * @param defaultValue the default value
      */
-    public AbstractReadonlyDimenRegisterTester(final String arg,
-            final String primitive, final String argument,
-            final String defaultValue) {
+    public AbstractReadonlyDimenRegisterTester(String arg,
+            String primitive, String argument,
+            String defaultValue) {
 
         super(arg);
         this.primitive = primitive;

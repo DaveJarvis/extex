@@ -43,7 +43,7 @@ public class NumIdSpec extends IdSpec {
      *
      * @param num the num
      */
-    public NumIdSpec(final long num) {
+    public NumIdSpec(long num) {
 
         super();
         this.num = num;

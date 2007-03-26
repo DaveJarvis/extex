@@ -107,7 +107,7 @@ import org.extex.typesetter.type.node.WhatsItNode;
  *      &rarr; &lang;optional prefix&rang; <tt>\mediawidth</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@link
- *        org.extex.core.dimen.Dimen#parse(Context,TokenSource,Typesetter)
+ *        org.extex.core.dimen.DimenParser#parse(Context,TokenSource,Typesetter)
  *        &lang;dimen value&rang;}
  *
  *    &lang;optional prefix&rang;
@@ -139,7 +139,7 @@ import org.extex.typesetter.type.node.WhatsItNode;
  *      &rarr; &lang;optional prefix&rang; <tt>\mediaheight</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@link
- *        org.extex.core.dimen.Dimen#parse(Context,TokenSource,Typesetter)
+ *        org.extex.core.dimen.DimenParser#parse(Context,TokenSource,Typesetter)
  *        &lang;dimen value&rang;}
  *
  *    &lang;optional prefix&rang;
@@ -177,7 +177,7 @@ import org.extex.typesetter.type.node.WhatsItNode;
  *      &rarr; &lang;optional prefix&rang; <tt>\hoffset</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@link
- *        org.extex.core.dimen.Dimen#parse(Context,TokenSource,Typesetter)
+ *        org.extex.core.dimen.DimenParser#parse(Context,TokenSource,Typesetter)
  *        &lang;dimen value&rang;}
  *
  *    &lang;optional prefix&rang;
@@ -215,7 +215,7 @@ import org.extex.typesetter.type.node.WhatsItNode;
  *      &rarr; &lang;optional prefix&rang; <tt>\voffset</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@link
- *        org.extex.core.dimen.Dimen#parse(Context,TokenSource,Typesetter)
+ *        org.extex.core.dimen.DimenParser#parse(Context,TokenSource,Typesetter)
  *        &lang;dimen value&rang;}
  *
  *    &lang;optional prefix&rang;
@@ -280,7 +280,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          * @see org.extex.typesetter.type.page.PageFactoryNodeVisitor#setContext(
          *      org.extex.interpreter.context.Context)
          */
-        public void setContext(final Context context) {
+        public void setContext(Context context) {
 
             this.context = context;
         }
@@ -293,7 +293,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          * @see org.extex.typesetter.type.page.PageFactoryNodeVisitor#setPage(
          *      org.extex.typesetter.type.page.Page)
          */
-        public void setPage(final Page page) {
+        public void setPage(Page page) {
 
             this.page = page;
         }
@@ -301,12 +301,12 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
         /**
          * Setter for the typesetter.
          *
-         * @param typsetter the typesetter
+         * @param typesetter the typesetter
          *
          * @see org.extex.typesetter.type.page.PageFactoryNodeVisitor#setTypesetter(
          *      org.extex.typesetter.Typesetter)
          */
-        public void setTypesetter(final Typesetter typesetter) {
+        public void setTypesetter(Typesetter typesetter) {
 
             this.typesetter = typesetter;
         }
@@ -327,7 +327,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.AdjustNode,
          *      java.lang.Object)
          */
-        public Object visitAdjust(final AdjustNode node, final Object value)
+        public Object visitAdjust(AdjustNode node, Object value)
                 throws GeneralException {
 
             return node;
@@ -347,8 +347,8 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.AfterMathNode,
          *      java.lang.Object)
          */
-        public Object visitAfterMath(final AfterMathNode node,
-                final Object value) {
+        public Object visitAfterMath(AfterMathNode node,
+                Object value) {
 
             if (((Boolean) value).booleanValue()) {
                 if (node.getWidth().eq(Dimen.ZERO_PT)) {
@@ -374,8 +374,8 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.AlignedLeadersNode,
          *      java.lang.Object)
          */
-        public Object visitAlignedLeaders(final AlignedLeadersNode node,
-                final Object value) {
+        public Object visitAlignedLeaders(AlignedLeadersNode node,
+                Object value) {
 
             return node;
         }
@@ -394,8 +394,8 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.BeforeMathNode,
          *      java.lang.Object)
          */
-        public Object visitBeforeMath(final BeforeMathNode node,
-                final Object value) {
+        public Object visitBeforeMath(BeforeMathNode node,
+                Object value) {
 
             if (((Boolean) value).booleanValue()) {
                 if (node.getWidth().eq(Dimen.ZERO_PT)) {
@@ -421,8 +421,8 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.CenteredLeadersNode,
          *      java.lang.Object)
          */
-        public Object visitCenteredLeaders(final CenteredLeadersNode node,
-                final Object value) {
+        public Object visitCenteredLeaders(CenteredLeadersNode node,
+                Object value) {
 
             return node;
         }
@@ -441,7 +441,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.CharNode,
          *      java.lang.Object)
          */
-        public Object visitChar(final CharNode node, final Object value) {
+        public Object visitChar(CharNode node, Object value) {
 
             return node;
         }
@@ -460,8 +460,8 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.DiscretionaryNode,
          *      java.lang.Object)
          */
-        public Object visitDiscretionary(final DiscretionaryNode node,
-                final Object value) {
+        public Object visitDiscretionary(DiscretionaryNode node,
+                Object value) {
 
             return node;
         }
@@ -480,8 +480,8 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.ExpandedLeadersNode,
          *      java.lang.Object)
          */
-        public Object visitExpandedLeaders(final ExpandedLeadersNode node,
-                final Object value) {
+        public Object visitExpandedLeaders(ExpandedLeadersNode node,
+                Object value) {
 
             return node;
         }
@@ -492,7 +492,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          * has been encountered.
          *
          * @param node the first parameter for the visitor is the node visited
-         * @param value the second parameter for the visitor
+         * @param hMode the second parameter for the visitor
          *
          * @return the visitor specific value
          *
@@ -500,7 +500,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.GlueNode,
          *      java.lang.Object)
          */
-        public Object visitGlue(final GlueNode node, final Object hMode) {
+        public Object visitGlue(GlueNode node, Object hMode) {
 
             if (((Boolean) hMode).booleanValue()) {
                 if (node.getWidth().eq(Dimen.ZERO_PT)) {
@@ -527,8 +527,8 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.HorizontalListNode,
          *      java.lang.Object)
          */
-        public Object visitHorizontalList(final HorizontalListNode node,
-                final Object value) {
+        public Object visitHorizontalList(HorizontalListNode node,
+                Object value) {
 
             return (node.size() == 0 ? null : node);
         }
@@ -547,8 +547,8 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.InsertionNode,
          *      java.lang.Object)
          */
-        public Object visitInsertion(final InsertionNode node,
-                final Object value) {
+        public Object visitInsertion(InsertionNode node,
+                Object value) {
 
             return null;
         }
@@ -567,7 +567,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.KernNode,
          *      java.lang.Object)
          */
-        public Object visitKern(final KernNode node, final Object value) {
+        public Object visitKern(KernNode node, Object value) {
 
             if (((Boolean) value).booleanValue()) {
                 if (node.getWidth().eq(Dimen.ZERO_PT)) {
@@ -593,7 +593,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.LigatureNode,
          *      java.lang.Object)
          */
-        public Object visitLigature(final LigatureNode node, final Object value) {
+        public Object visitLigature(LigatureNode node, Object value) {
 
             return node;
         }
@@ -612,7 +612,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.MarkNode,
          *      java.lang.Object)
          */
-        public Object visitMark(final MarkNode node, final Object value) {
+        public Object visitMark(MarkNode node, Object value) {
 
             return null;
         }
@@ -631,7 +631,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.PenaltyNode,
          *      java.lang.Object)
          */
-        public Object visitPenalty(final PenaltyNode node, final Object value) {
+        public Object visitPenalty(PenaltyNode node, Object value) {
 
             return null;
         }
@@ -650,7 +650,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.RuleNode,
          *      java.lang.Object)
          */
-        public Object visitRule(final RuleNode node, final Object value) {
+        public Object visitRule(RuleNode node, Object value) {
 
             return node;
         }
@@ -669,7 +669,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.SpaceNode,
          *      java.lang.Object)
          */
-        public Object visitSpace(final SpaceNode node, final Object value) {
+        public Object visitSpace(SpaceNode node, Object value) {
 
             return node;
         }
@@ -688,8 +688,8 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.VerticalListNode,
          *      java.lang.Object)
          */
-        public Object visitVerticalList(final VerticalListNode node,
-                final Object value) {
+        public Object visitVerticalList(VerticalListNode node,
+                Object value) {
 
             return (node.size() == 0 ? null : node);
         }
@@ -708,8 +708,8 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.VirtualCharNode,
          *      java.lang.Object)
          */
-        public Object visitVirtualChar(final VirtualCharNode node,
-                final Object value) {
+        public Object visitVirtualChar(VirtualCharNode node,
+                Object value) {
 
             return node.getNodes();
         }
@@ -730,7 +730,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.WhatsItNode,
          *      java.lang.Object)
          */
-        public Object visitWhatsIt(final WhatsItNode node, final Object value)
+        public Object visitWhatsIt(WhatsItNode node, Object value)
                 throws GeneralException {
 
             if (node instanceof SpecialNode) {
@@ -778,10 +778,12 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger log) {
+    public void enableLogging(Logger log) {
 
         logger = log;
     }
@@ -797,8 +799,8 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
      *
      * @throws GeneralException in case of an error
      */
-    public Page newInstance(final NodeList nodes, final Context context,
-            final Typesetter typesetter) throws GeneralException {
+    public Page newInstance(NodeList nodes, Context context,
+            Typesetter typesetter) throws GeneralException {
 
         FixedCount[] pageNo = new FixedCount[10];
         for (int i = 0; i < 10; i++) {

@@ -33,7 +33,7 @@ public class VfilnegTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(VfilnegTest.class);
     }
@@ -43,7 +43,7 @@ public class VfilnegTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public VfilnegTest(final String arg) {
+    public VfilnegTest(String arg) {
 
         super(arg, "vfilneg", "");
     }

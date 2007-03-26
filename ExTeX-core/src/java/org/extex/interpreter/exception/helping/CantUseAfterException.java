@@ -46,7 +46,7 @@ public class CantUseAfterException extends HelpingException {
      *  encountered
      * @param predecessor the preceding token
      */
-    public CantUseAfterException(final String cause, final String predecessor) {
+    public CantUseAfterException(String cause, String predecessor) {
 
         super(LocalizerFactory.getLocalizer(CantUseAfterException.class),
                 "TTP.CantUseAfter", cause, predecessor);

@@ -33,7 +33,7 @@ public class UnpenaltyTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(UnpenaltyTest.class);
     }
@@ -43,7 +43,7 @@ public class UnpenaltyTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public UnpenaltyTest(final String arg) {
+    public UnpenaltyTest(String arg) {
 
         super(arg, "unpenalty", "", "a");
     }

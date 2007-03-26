@@ -34,7 +34,7 @@ public class IfdimTest extends ExTeXLauncher {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(IfdimTest.class);
     }
@@ -44,7 +44,7 @@ public class IfdimTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public IfdimTest(final String arg) {
+    public IfdimTest(String arg) {
 
         super(arg);
     }

@@ -38,7 +38,7 @@ public class ImmutableReal extends Real {
      *
      * @param val    init with double-value
      */
-    public ImmutableReal(final double val) {
+    public ImmutableReal(double val) {
 
         super(val);
     }
@@ -47,7 +47,7 @@ public class ImmutableReal extends Real {
      * Creates a new object.
      * @param l the value as long
      */
-    public ImmutableReal(final long l) {
+    public ImmutableReal(long l) {
 
         super(l);
     }
@@ -57,7 +57,7 @@ public class ImmutableReal extends Real {
      *
      * @param d the new value
      */
-    public void setValue(final double d) {
+    public void setValue(double d) {
 
         throw new RuntimeException("Unable to set an immutable object");
     }
@@ -67,7 +67,7 @@ public class ImmutableReal extends Real {
      *
      * @param val ...
      */
-    public void add(final double val) {
+    public void add(double val) {
 
         throw new RuntimeException("Unable to set an immutable object");
     }
@@ -77,7 +77,7 @@ public class ImmutableReal extends Real {
      *
      * @param real ...
      */
-    public void add(final Real real) {
+    public void add(Real real) {
 
         throw new RuntimeException("Unable to set an immutable object");
     }
@@ -87,7 +87,7 @@ public class ImmutableReal extends Real {
      *
      * @param val ...
      */
-    public void divide(final double val) {
+    public void divide(double val) {
 
         throw new RuntimeException("Unable to set an immutable object");
     }
@@ -97,7 +97,7 @@ public class ImmutableReal extends Real {
      *
      * @param val ...
      */
-    public void divide(final Real val) {
+    public void divide(Real val) {
 
         throw new RuntimeException("Unable to set an immutable object");
     }
@@ -107,7 +107,7 @@ public class ImmutableReal extends Real {
      *
      * @param val ...
      */
-    public void multiply(final double val) {
+    public void multiply(double val) {
 
         throw new RuntimeException("Unable to set an immutable object");
     }
@@ -117,7 +117,7 @@ public class ImmutableReal extends Real {
      *
      * @param val ...
      */
-    public void multiply(final Real val) {
+    public void multiply(Real val) {
 
         throw new RuntimeException("Unable to set an immutable object");
     }

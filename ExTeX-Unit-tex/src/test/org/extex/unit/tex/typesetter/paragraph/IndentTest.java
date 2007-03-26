@@ -33,7 +33,7 @@ public class IndentTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(IndentTest.class);
     }
@@ -43,7 +43,7 @@ public class IndentTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public IndentTest(final String arg) {
+    public IndentTest(String arg) {
 
         super(arg, "indent", "");
     }

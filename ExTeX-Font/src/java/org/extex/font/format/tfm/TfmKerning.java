@@ -50,7 +50,7 @@ public class TfmKerning extends TfmLigKern implements Serializable {
      * @param k     the amount of kerning between the current and
      *              the next characters.
      */
-    public TfmKerning(final int skip, final short next, final TfmFixWord k) {
+    public TfmKerning(int skip, short next, TfmFixWord k) {
 
         super(skip, next);
         kern = k;

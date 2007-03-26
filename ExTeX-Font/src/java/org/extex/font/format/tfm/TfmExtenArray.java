@@ -62,7 +62,7 @@ public class TfmExtenArray implements Serializable {
      * @param ne    number of words in the extensible character table
      * @throws IOException if an IO-error occurs.
      */
-    public TfmExtenArray(final RandomAccessR rar, final short ne)
+    public TfmExtenArray(RandomAccessR rar, short ne)
             throws IOException {
 
         extensiblerecipe = new TfmExtensibleRecipe[ne];

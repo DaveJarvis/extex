@@ -55,7 +55,7 @@ public class NumberedHashToks extends NamedHashToks {
      * Creates a new object.
      * @param name the name for debugging
      */
-    public NumberedHashToks(final String name) {
+    public NumberedHashToks(String name) {
 
         super(name);
     }
@@ -65,7 +65,7 @@ public class NumberedHashToks extends NamedHashToks {
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
      */
-    protected String getKey(final Context context, final TokenSource source)
+    protected String getKey(Context context, TokenSource source)
             throws InterpreterException {
 
         return getName() + "#" + Long.toString(source.scanNumber(context));

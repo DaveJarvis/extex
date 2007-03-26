@@ -125,7 +125,7 @@ public final class GlyphName {
      * @return Returns the <code>UnicodeChar</code> for the glyph name
      *         or <code>null</code>, if not found.
      */
-    public UnicodeChar getUnicode(final String name) {
+    public UnicodeChar getUnicode(String name) {
 
         return (UnicodeChar) glyphmap.get(name);
     }
@@ -137,7 +137,7 @@ public final class GlyphName {
      * @param uc    the Unicode char.
      * @return the name of the glyph, or <code>null</code>, if not found.
      */
-    public String getGlyphname(final UnicodeChar uc) {
+    public String getGlyphname(UnicodeChar uc) {
 
         return (String) unicodemap.get(uc);
     }

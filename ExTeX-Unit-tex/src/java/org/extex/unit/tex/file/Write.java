@@ -143,7 +143,7 @@ public class Write extends AbstractCode
      *
      * @param name the name for debugging
      */
-    public Write(final String name) {
+    public Write(String name) {
 
         super(name);
     }
@@ -158,7 +158,7 @@ public class Write extends AbstractCode
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
-    public void configure(final Configuration config)
+    public void configure(Configuration config)
             throws ConfigurationException {
 
         write18 =
@@ -173,7 +173,7 @@ public class Write extends AbstractCode
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger log) {
+    public void enableLogging(Logger log) {
 
         this.logger = log;
     }
@@ -197,8 +197,8 @@ public class Write extends AbstractCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -234,7 +234,7 @@ public class Write extends AbstractCode
      *
      * @throws InterpreterException in case of an error
      */
-    public void write(final String key, final Tokens toks, final Context context)
+    public void write(String key, Tokens toks, Context context)
             throws InterpreterException {
 
         OutFile file = context.getOutFile(key);

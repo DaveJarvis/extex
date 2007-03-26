@@ -51,7 +51,7 @@ public class TfmKeyInt implements Serializable {
      * @param k the key
      * @param v the value
      */
-    TfmKeyInt(final int k, final int v) {
+    TfmKeyInt(int k, int v) {
 
         key = k;
         val = v;

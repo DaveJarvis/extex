@@ -56,11 +56,13 @@ public abstract class AbstractColor extends AbstractAssignment
     private static ColorVisitor theVisitor = new ColorVisitor() {
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.color.ColorVisitor#visitCmyk(
          *       org.extex.color.model.CmykColor,
          *       java.lang.Object)
          */
-        public Object visitCmyk(final CmykColor color, final Object c)
+        public Object visitCmyk(CmykColor color, Object c)
                 throws GeneralException {
 
             StringBuffer sb = new StringBuffer();
@@ -78,11 +80,13 @@ public abstract class AbstractColor extends AbstractAssignment
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.color.ColorVisitor#visitGray(
          *      org.extex.color.model.GrayscaleColor,
          *      java.lang.Object)
          */
-        public Object visitGray(final GrayscaleColor color, final Object c)
+        public Object visitGray(GrayscaleColor color, Object c)
                 throws GeneralException {
 
             StringBuffer sb = new StringBuffer();
@@ -94,11 +98,13 @@ public abstract class AbstractColor extends AbstractAssignment
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.color.ColorVisitor#visitHsv(
          *      org.extex.color.model.HsvColor,
          *      java.lang.Object)
          */
-        public Object visitHsv(final HsvColor color, final Object c)
+        public Object visitHsv(HsvColor color, Object c)
                 throws GeneralException {
 
             StringBuffer sb = new StringBuffer();
@@ -118,7 +124,7 @@ public abstract class AbstractColor extends AbstractAssignment
          *      org.extex.color.model.RgbColor,
          *      java.lang.Object)
          */
-        public Object visitRgb(final RgbColor color, final Object c)
+        public Object visitRgb(RgbColor color, Object c)
                 throws GeneralException {
 
             StringBuffer sb = new StringBuffer();
@@ -140,16 +146,18 @@ public abstract class AbstractColor extends AbstractAssignment
      *
      * @param name the name for tracing
      */
-    public AbstractColor(final String name) {
+    public AbstractColor(String name) {
 
         super(name);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.type.Showable#show(
      *      org.extex.interpreter.context.Context)
      */
-    public Tokens show(final Context context) throws InterpreterException {
+    public Tokens show(Context context) throws InterpreterException {
 
         Color color = convertColor(context, null, null);
         try {
@@ -163,13 +171,15 @@ public abstract class AbstractColor extends AbstractAssignment
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         Color color = convertColor(context, source, typesetter);
         try {

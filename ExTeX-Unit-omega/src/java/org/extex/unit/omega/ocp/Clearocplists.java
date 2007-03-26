@@ -62,7 +62,7 @@ public class Clearocplists extends AbstractCode {
      *
      * @param name the name for debugging
      */
-    public Clearocplists(final String name) {
+    public Clearocplists(String name) {
 
         super(name);
     }
@@ -85,8 +85,8 @@ public class Clearocplists extends AbstractCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         //TODO gene: unimplemented

@@ -68,7 +68,7 @@ public class Noalign extends AbstractCode {
      *
      * @param name the name for tracing and debugging
      */
-    public Noalign(final String name) {
+    public Noalign(String name) {
 
         super(name);
     }
@@ -91,8 +91,8 @@ public class Noalign extends AbstractCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         throw new HelpingException(getLocalizer(), "TTP.MisplacedNoalign",
@@ -111,8 +111,8 @@ public class Noalign extends AbstractCode {
      *
      * @throws InterpreterException in case of an error
      */
-    public NodeList exec(final Context context, final TokenSource source,
-            final Typesetter typesetter, final Token start)
+    public NodeList exec(Context context, TokenSource source,
+            Typesetter typesetter, Token start)
             throws InterpreterException {
 
         Box b = new Box(context, source, typesetter, false, null,

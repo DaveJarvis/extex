@@ -56,8 +56,8 @@ public class EofException extends HelpingException {
      * @param messageTag the name of the message
      * @param a the argument
      */
-    public EofException(final Localizer localizer, final String messageTag,
-            final String a) {
+    public EofException(Localizer localizer, String messageTag,
+            String a) {
 
         super(localizer, messageTag, a);
     }
@@ -69,7 +69,7 @@ public class EofException extends HelpingException {
      *  If the value is <code>null</code> then a shortened error message is
      *  used.
      */
-    public EofException(final String macro) {
+    public EofException(String macro) {
 
         super(LocalizerFactory.getLocalizer(EofException.class), //
                 (macro != null ? "UnexpectedEofIn" : "UnexpectedEof"), macro);

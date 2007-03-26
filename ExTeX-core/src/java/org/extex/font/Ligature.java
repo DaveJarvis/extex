@@ -72,7 +72,7 @@ public class Ligature implements Serializable {
     /**
      * @param let The letter to set.
      */
-    public void setLetter(final String let) {
+    public void setLetter(String let) {
 
         letter = let;
     }
@@ -88,7 +88,7 @@ public class Ligature implements Serializable {
     /**
      * @param letid The letterid to set.
      */
-    public void setLetterid(final String letid) {
+    public void setLetterid(String letid) {
 
         letterid = letid;
     }
@@ -104,7 +104,7 @@ public class Ligature implements Serializable {
     /**
      * @param li The lig to set.
      */
-    public void setLig(final String li) {
+    public void setLig(String li) {
 
         lig = li;
     }
@@ -120,7 +120,7 @@ public class Ligature implements Serializable {
     /**
      * @param liid The ligid to set.
      */
-    public void setLigid(final String liid) {
+    public void setLigid(String liid) {
 
         ligid = liid;
     }

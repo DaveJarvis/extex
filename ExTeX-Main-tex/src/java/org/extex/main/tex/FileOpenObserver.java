@@ -44,7 +44,7 @@ public class FileOpenObserver implements OpenFileObserver {
      *
      * @param theLogger the logger to use
      */
-    public FileOpenObserver(final Logger theLogger) {
+    public FileOpenObserver(Logger theLogger) {
 
         super();
         this.logger = theLogger;
@@ -64,8 +64,8 @@ public class FileOpenObserver implements OpenFileObserver {
      *      java.lang.String,
      *      java.io.InputStream)
      */
-    public void update(final String filename, final String filetype,
-            final InputStream stream) {
+    public void update(String filename, String filetype,
+            InputStream stream) {
 
         logger.info("(" + filename + " ");
     }

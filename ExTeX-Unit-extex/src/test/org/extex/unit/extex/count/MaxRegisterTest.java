@@ -33,7 +33,7 @@ public class MaxRegisterTest extends AbstractNonGroupIntegerTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(MaxRegisterTest.class);
     }
@@ -43,7 +43,7 @@ public class MaxRegisterTest extends AbstractNonGroupIntegerTester {
      *
      * @param arg the name
      */
-    public MaxRegisterTest(final String arg) {
+    public MaxRegisterTest(String arg) {
 
         super(arg, "maxRegister", "", "-1", DEFINE_BRACES
                 + "\\namespace{system}");

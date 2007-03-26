@@ -80,7 +80,7 @@ public class Vtop extends Vbox {
      *
      * @param name the name for tracing and debugging
      */
-    public Vtop(final String name) {
+    public Vtop(String name) {
 
         super(name);
     }
@@ -106,9 +106,9 @@ public class Vtop extends Vbox {
      *      org.extex.scanner.type.token.Token,
      *      org.extex.scanner.type.token.Token)
      */
-    protected Box constructBox(final Context context, final TokenSource source,
-            final Typesetter typesetter, final Token startToken,
-            final Token insert) throws InterpreterException {
+    protected Box constructBox(Context context, TokenSource source,
+            Typesetter typesetter, Token startToken,
+            Token insert) throws InterpreterException {
 
         Box box =
                 acquireBox(context, source, typesetter, GroupType.VTOP_GROUP,

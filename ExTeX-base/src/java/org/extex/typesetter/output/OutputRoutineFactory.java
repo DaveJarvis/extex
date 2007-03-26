@@ -39,10 +39,11 @@ public class OutputRoutineFactory extends AbstractFactory {
      * @param configuration the configuration for this factory
      * @param logger the logger
      *
-     * @throws ConfigurationException in case of an error in the configuration.
+     * @throws org.extex.framework.configuration.exception.ConfigurationException
+     *   in case of an error in the configuration.
      */
-    public OutputRoutineFactory(final Configuration configuration,
-            final Logger logger) {
+    public OutputRoutineFactory(Configuration configuration,
+            Logger logger) {
 
         super();
         enableLogging(logger);
@@ -58,9 +59,10 @@ public class OutputRoutineFactory extends AbstractFactory {
      *
      * @return the output routine
      *
-     * @throws ConfigurationException in case of a configuration error
+     * @throws org.extex.framework.configuration.exception.ConfigurationException
+     *   in case of a configuration error
      */
-    public OutputRoutine newInstance(final Interpreter interpreter) {
+    public OutputRoutine newInstance(Interpreter interpreter) {
 
         return (OutputRoutine) createInstanceForConfiguration(
             getConfiguration(), OutputRoutine.class, Interpreter.class,

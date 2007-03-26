@@ -42,7 +42,7 @@ public class TokenObserver implements PopObserver {
      *
      * @param theLogger the logger for potential output
      */
-    public TokenObserver(final Logger theLogger) {
+    public TokenObserver(Logger theLogger) {
 
         super();
         this.logger = theLogger;
@@ -56,7 +56,7 @@ public class TokenObserver implements PopObserver {
      * @see org.extex.interpreter.observer.pop.PopObserver#update(
      *      org.extex.scanner.type.token.Token)
      */
-    public void update(final Token token) {
+    public void update(Token token) {
 
         logger.fine(token.toString() + "\n");
     }

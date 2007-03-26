@@ -72,7 +72,7 @@ public class Ifhbox extends AbstractIf {
      *
      * @param name the name for debugging
      */
-    public Ifhbox(final String name) {
+    public Ifhbox(String name) {
 
         super(name);
     }
@@ -96,8 +96,8 @@ public class Ifhbox extends AbstractIf {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public boolean conditional(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         String key = Setbox.getKey(context, source, typesetter, getName());
         Box box = context.getBox(key);

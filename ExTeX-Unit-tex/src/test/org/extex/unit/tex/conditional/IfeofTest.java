@@ -39,7 +39,7 @@ public class IfeofTest extends ExTeXLauncher {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(IfeofTest.class);
     }
@@ -49,7 +49,7 @@ public class IfeofTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public IfeofTest(final String arg) {
+    public IfeofTest(String arg) {
 
         super(arg);
     }

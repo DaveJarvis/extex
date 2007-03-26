@@ -76,8 +76,8 @@ public class TtfTableGLYF extends AbstractXtfTable
      * @param rar       the RandomAccessInput
      * @throws IOException if an error occured
      */
-    TtfTableGLYF(final XtfTableMap tablemap, final XtfTableDirectory.Entry de,
-            final RandomAccessR rar) throws IOException {
+    TtfTableGLYF(XtfTableMap tablemap, XtfTableDirectory.Entry de,
+            RandomAccessR rar) throws IOException {
 
         super(tablemap);
         rar.seek(de.getOffset());
@@ -148,7 +148,7 @@ public class TtfTableGLYF extends AbstractXtfTable
      * @param i index
      * @return Returns the description
      */
-    public Descript getDescription(final int i) {
+    public Descript getDescription(int i) {
 
         return descript[i];
     }
@@ -173,7 +173,7 @@ public class TtfTableGLYF extends AbstractXtfTable
     /**
      * @see org.extex.util.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writeStartElement(writer);
         for (int i = 0; i < descript.length; i++) {
@@ -344,8 +344,8 @@ public class TtfTableGLYF extends AbstractXtfTable
          * @param numberOfContours  number of conttours
          * @param bais              the basis
          */
-        protected Descript(final TtfTableGLYF parentTable,
-                final short numberOfContours, final ByteArrayInputStream bais) {
+        protected Descript(TtfTableGLYF parentTable,
+                short numberOfContours, ByteArrayInputStream bais) {
 
             this.parentTable = parentTable;
             this.numberOfContours = numberOfContours;
@@ -405,28 +405,28 @@ public class TtfTableGLYF extends AbstractXtfTable
          * @param i the index
          * @return Returns the end pt of contours
          */
-        abstract int getEndPtOfContours(final int i);
+        abstract int getEndPtOfContours(int i);
 
         /**
          * Returns the flags.
          * @param i the index
          * @return Returns the flags.
          */
-        abstract byte getFlags(final int i);
+        abstract byte getFlags(int i);
 
         /**
          * Returns the x coordinate.
          * @param i the index
          * @return Returns the x coordinate
          */
-        abstract short getXCoordinate(final int i);
+        abstract short getXCoordinate(int i);
 
         /**
          * Returns the y coordinate.
          * @param i the index
          * @return Returns the y coordinate
          */
-        abstract short getYCoordinate(final int i);
+        abstract short getYCoordinate(int i);
 
         /**
          * Returns the composite.
@@ -452,7 +452,7 @@ public class TtfTableGLYF extends AbstractXtfTable
          * @param count     count
          * @throws IOException if an IO-error occurs
          */
-        protected void readInstructions(final RandomAccessR rar, final int count)
+        protected void readInstructions(RandomAccessR rar, int count)
                 throws IOException {
 
             instructions = new short[count];
@@ -466,8 +466,8 @@ public class TtfTableGLYF extends AbstractXtfTable
          * @param bais      input
          * @param count     count
          */
-        protected void readInstructions(final ByteArrayInputStream bais,
-                final int count) {
+        protected void readInstructions(ByteArrayInputStream bais,
+                int count) {
 
             instructions = new short[count];
             for (int i = 0; i < count; i++) {
@@ -479,7 +479,7 @@ public class TtfTableGLYF extends AbstractXtfTable
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
-        public void writeXML(final XMLStreamWriter writer) throws IOException {
+        public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("descript");
             writer.writeAttribute("numberofcontours", String
@@ -573,8 +573,8 @@ public class TtfTableGLYF extends AbstractXtfTable
          * @param parentTable   the parent table
          * @param bais          the bais
          */
-        public CompositeDescript(final TtfTableGLYF parentTable,
-                final ByteArrayInputStream bais) {
+        public CompositeDescript(TtfTableGLYF parentTable,
+                ByteArrayInputStream bais) {
 
             super(parentTable, (short) -1, bais);
 
@@ -603,7 +603,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         /**
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getEndPtOfContours(int)
          */
-        public int getEndPtOfContours(final int i) {
+        public int getEndPtOfContours(int i) {
 
             CompositeComp c = getCompositeCompEndPt(i);
             if (c != null) {
@@ -617,7 +617,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         /**
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getFlags(int)
          */
-        public byte getFlags(final int i) {
+        public byte getFlags(int i) {
 
             CompositeComp c = getCompositeComp(i);
             if (c != null) {
@@ -630,7 +630,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         /**
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getXCoordinate(int)
          */
-        public short getXCoordinate(final int i) {
+        public short getXCoordinate(int i) {
 
             CompositeComp c = getCompositeComp(i);
             if (c != null) {
@@ -648,7 +648,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         /**
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getYCoordinate(int)
          */
-        public short getYCoordinate(final int i) {
+        public short getYCoordinate(int i) {
 
             CompositeComp c = getCompositeComp(i);
             if (c != null) {
@@ -700,7 +700,7 @@ public class TtfTableGLYF extends AbstractXtfTable
          * @param i the index
          * @return Returns the component index.
          */
-        public int getComponentIndex(final int i) {
+        public int getComponentIndex(int i) {
 
             return ((CompositeComp) components.elementAt(i)).getFirstIndex();
         }
@@ -719,7 +719,7 @@ public class TtfTableGLYF extends AbstractXtfTable
          * @param i the index
          * @return Returns the composite comp.
          */
-        protected CompositeComp getCompositeComp(final int i) {
+        protected CompositeComp getCompositeComp(int i) {
 
             CompositeComp c;
             for (int n = 0; n < components.size(); n++) {
@@ -738,7 +738,7 @@ public class TtfTableGLYF extends AbstractXtfTable
          * @param i the index
          * @return Returns the composite end
          */
-        protected CompositeComp getCompositeCompEndPt(final int i) {
+        protected CompositeComp getCompositeCompEndPt(int i) {
 
             CompositeComp c;
             for (int j = 0; j < components.size(); j++) {
@@ -866,8 +866,8 @@ public class TtfTableGLYF extends AbstractXtfTable
          * @param numberOfContours  the number of contours
          * @param bais              the basis
          */
-        SimpleDescript(final TtfTableGLYF parentTable,
-                final short numberOfContours, final ByteArrayInputStream bais) {
+        SimpleDescript(TtfTableGLYF parentTable,
+                short numberOfContours, ByteArrayInputStream bais) {
 
             super(parentTable, numberOfContours, bais);
 
@@ -893,7 +893,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         /**
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getEndPtOfContours(int)
          */
-        public int getEndPtOfContours(final int i) {
+        public int getEndPtOfContours(int i) {
 
             return endPtsOfContours[i];
         }
@@ -901,7 +901,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         /**
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getFlags(int)
          */
-        public byte getFlags(final int i) {
+        public byte getFlags(int i) {
 
             return flags[i];
         }
@@ -909,7 +909,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         /**
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getXCoordinate(int)
          */
-        public short getXCoordinate(final int i) {
+        public short getXCoordinate(int i) {
 
             return xCoordinates[i];
         }
@@ -917,7 +917,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         /**
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getYCoordinate(int)
          */
-        public short getYCoordinate(final int i) {
+        public short getYCoordinate(int i) {
 
             return yCoordinates[i];
         }
@@ -952,7 +952,7 @@ public class TtfTableGLYF extends AbstractXtfTable
          * @param   cnt         count
          * @param   bais        the input
          */
-        private void readCoords(final int cnt, final ByteArrayInputStream bais) {
+        private void readCoords(int cnt, ByteArrayInputStream bais) {
 
             short x = 0;
             short y = 0;
@@ -994,8 +994,8 @@ public class TtfTableGLYF extends AbstractXtfTable
          * @param   flagCount   the flag count
          * @param   bais        the input
          */
-        private void readFlags(final int flagCount,
-                final ByteArrayInputStream bais) {
+        private void readFlags(int flagCount,
+                ByteArrayInputStream bais) {
 
             try {
                 for (int index = 0; index < flagCount; index++) {
@@ -1142,8 +1142,8 @@ public class TtfTableGLYF extends AbstractXtfTable
          * @param firstContour  the first contour
          * @param bais          the input
          */
-        CompositeComp(final int firstIndex, final int firstContour,
-                final ByteArrayInputStream bais) {
+        CompositeComp(int firstIndex, int firstContour,
+                ByteArrayInputStream bais) {
 
             this.firstIndex = firstIndex;
             this.firstContour = firstContour;
@@ -1311,7 +1311,7 @@ public class TtfTableGLYF extends AbstractXtfTable
          * @param y The y-coordinate of the point to transform
          * @return The transformed x-coordinate
          */
-        public int scaleX(final int x, final int y) {
+        public int scaleX(int x, int y) {
 
             return Math.round((float) (x * xscale + y * scale10));
         }
@@ -1323,7 +1323,7 @@ public class TtfTableGLYF extends AbstractXtfTable
          * @param y The y-coordinate of the point to transform
          * @return The transformed y-coordinate
          */
-        public int scaleY(final int x, final int y) {
+        public int scaleY(int x, int y) {
 
             return Math.round((float) (x * scale01 + y * yscale));
         }

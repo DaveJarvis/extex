@@ -84,7 +84,7 @@ public class Import extends Let {
      *
      * @param name the name for debugging
      */
-    public Import(final String name) {
+    public Import(String name) {
 
         super(name);
     }
@@ -96,8 +96,8 @@ public class Import extends Let {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         String ns;

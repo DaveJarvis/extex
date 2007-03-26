@@ -32,7 +32,7 @@ public class MathcloseTest extends AbstractOperatorTester {
      *
      * @param arg the name
      */
-    public MathcloseTest(final String arg) {
+    public MathcloseTest(String arg) {
 
         super(arg, "mathclose");
     }

@@ -58,7 +58,7 @@ public class InputFileEncoding extends InputFile {
      *
      * @param name the name for debugging
      */
-    public InputFileEncoding(final String name) {
+    public InputFileEncoding(String name) {
 
         super(name);
     }
@@ -73,8 +73,8 @@ public class InputFileEncoding extends InputFile {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         String encoding = source.scanTokensAsString(context, getName());

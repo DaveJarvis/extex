@@ -34,7 +34,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public MessageTest(final String arg) {
+    public MessageTest(String arg) {
 
         super(arg, "message", "{}");
     }

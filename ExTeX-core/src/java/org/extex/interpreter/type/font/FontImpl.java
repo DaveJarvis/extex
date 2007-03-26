@@ -77,7 +77,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @param font the font
      */
-    public FontImpl(final ExtexFont font) {
+    public FontImpl(ExtexFont font) {
 
         super();
 
@@ -120,7 +120,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      * @see org.extex.interpreter.type.font.Font#getDepth(
      *      org.extex.core.UnicodeChar)
      */
-    public FixedGlue getDepth(final UnicodeChar uc) {
+    public FixedGlue getDepth(UnicodeChar uc) {
 
         return font.getDepth(uc);
     }
@@ -169,7 +169,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @see org.extex.font.type.Fount#getFontDimen(java.lang.String)
      */
-    public FixedDimen getFontDimen(final String k) {
+    public FixedDimen getFontDimen(String k) {
 
         FixedDimen fd = super.getFontDimen(k);
         if (fd != null) {
@@ -221,7 +221,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      * @see org.extex.interpreter.type.font.Font#getHeight(
      *      org.extex.core.UnicodeChar)
      */
-    public FixedGlue getHeight(final UnicodeChar uc) {
+    public FixedGlue getHeight(UnicodeChar uc) {
 
         return font.getHeight(uc);
     }
@@ -236,7 +236,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      * @see org.extex.interpreter.type.font.Font#getItalicCorrection(
      *      org.extex.core.UnicodeChar)
      */
-    public FixedDimen getItalicCorrection(final UnicodeChar uc) {
+    public FixedDimen getItalicCorrection(UnicodeChar uc) {
 
         return font.getItalicCorrection(uc);
     }
@@ -253,7 +253,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *      org.extex.core.UnicodeChar,
      *      org.extex.core.UnicodeChar)
      */
-    public FixedDimen getKerning(final UnicodeChar uc1, final UnicodeChar uc2) {
+    public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
 
         return font.getKerning(uc1, uc2);
     }
@@ -270,7 +270,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *      org.extex.core.UnicodeChar,
      *      org.extex.core.UnicodeChar)
      */
-    public UnicodeChar getLigature(final UnicodeChar uc1, final UnicodeChar uc2) {
+    public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
 
         return font.getLigature(uc1, uc2);
     }
@@ -297,7 +297,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      * @see org.extex.interpreter.type.font.Font#getWidth(
      *      org.extex.core.UnicodeChar)
      */
-    public FixedGlue getWidth(final UnicodeChar uc) {
+    public FixedGlue getWidth(UnicodeChar uc) {
 
         return font.getWidth(uc);
     }
@@ -312,7 +312,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      * @see org.extex.interpreter.type.font.Font#hasGlyph(
      *      org.extex.core.UnicodeChar)
      */
-    public boolean hasGlyph(final UnicodeChar uc) {
+    public boolean hasGlyph(UnicodeChar uc) {
 
         return font.hasGlyph(uc);
     }
@@ -336,7 +336,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @see org.extex.interpreter.type.font.ModifiableFont#setFont(org.extex.font.ExtexFont)
      */
-    public void setFont(final ExtexFont font) {
+    public void setFont(ExtexFont font) {
 
         this.font = font;
     }

@@ -55,7 +55,7 @@ public final class OutOcp {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         PrintStream err = System.err;
         String file = null;

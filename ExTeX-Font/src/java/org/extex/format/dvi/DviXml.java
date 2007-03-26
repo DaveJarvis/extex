@@ -132,7 +132,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @param element   the root element
      * @param ff        the fontfactroy
      */
-    public DviXml(final Element element, final FontFactory ff) {
+    public DviXml(Element element, FontFactory ff) {
 
         parent = element;
         fontfactory = ff;
@@ -160,7 +160,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @throws FontException if an font-error occured.
      * @throws ConfigurationException from the config-system.
      */
-    private void loadFont(final DviFntDef command) throws DviException,
+    private void loadFont(DviFntDef command) throws DviException,
             FontException, ConfigurationException {
 
         Integer key = new Integer(command.getFont());
@@ -183,8 +183,8 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @param command   the command
      * @param element   the element
      */
-    private void addFontAttributes(final DviFntDef command,
-            final Element element) {
+    private void addFontAttributes(DviFntDef command,
+            Element element) {
 
         element.setAttribute("font", String.valueOf(command.getFont()));
         element.setAttribute("checksum", String.valueOf(command.getChecksum()));
@@ -208,7 +208,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.DviInterpreter#interpret(
      *      org.extex.util.file.random.RandomAccessR)
      */
-    public void interpret(final RandomAccessR rar) throws IOException,
+    public void interpret(RandomAccessR rar) throws IOException,
             DviException, FontException, ConfigurationException {
 
         while (!rar.isEOF()) {
@@ -308,7 +308,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @throws FontException if a font-error occurs.
      * @throws ConfigurationException from the config systen.
      */
-    public Element readNextElement(final RandomAccessR rar) throws IOException,
+    public Element readNextElement(RandomAccessR rar) throws IOException,
             DviException, FontException, ConfigurationException {
 
         // store old parent
@@ -419,7 +419,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * Set the values in the xml-element.
      * @param element   the element
      */
-    private void setValues(final Element element) {
+    private void setValues(Element element) {
 
         element.setAttribute("h", String.valueOf(val.getH()));
         element.setAttribute("v", String.valueOf(val.getV()));
@@ -449,7 +449,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @param element   the element
      * @throws DviMissingFontException  if the font is missinbg.
      */
-    private void setFontGlyphInfo(final int opcode, final Element element)
+    private void setFontGlyphInfo(int opcode, Element element)
             throws DviMissingFontException {
 
         Font font = getFont();
@@ -475,7 +475,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * Set the value for showPT.
      * @param show The showPT to set.
      */
-    public void setShowPT(final boolean show) {
+    public void setShowPT(boolean show) {
 
         showPT = show;
     }
@@ -493,7 +493,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviBOP)
      */
-    public void execute(final DviBOP command) throws DviException,
+    public void execute(DviBOP command) throws DviException,
             FontException, ConfigurationException {
 
         page++;
@@ -522,7 +522,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviChar)
      */
-    public void execute(final DviChar command) throws DviException,
+    public void execute(DviChar command) throws DviException,
             FontException, ConfigurationException {
 
         Integer key = new Integer(val.getF());
@@ -556,7 +556,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviDown)
      */
-    public void execute(final DviDown command) throws DviException,
+    public void execute(DviDown command) throws DviException,
             FontException, ConfigurationException {
 
         Element element = createElement(command);
@@ -575,7 +575,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviEOP)
      */
-    public void execute(final DviEOP command) throws DviException,
+    public void execute(DviEOP command) throws DviException,
             FontException, ConfigurationException {
 
         Element element = createElement(command);
@@ -595,7 +595,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviFntDef)
      */
-    public void execute(final DviFntDef command) throws DviException,
+    public void execute(DviFntDef command) throws DviException,
             FontException, ConfigurationException {
 
         Element element = createElement(command);
@@ -613,7 +613,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviFntNum)
      */
-    public void execute(final DviFntNum command) throws DviException,
+    public void execute(DviFntNum command) throws DviException,
             FontException, ConfigurationException {
 
         Element element = createElement(command);
@@ -631,7 +631,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviPOP)
      */
-    public void execute(final DviPOP command) throws DviException,
+    public void execute(DviPOP command) throws DviException,
             FontException, ConfigurationException {
 
         Element element = createElement(command);
@@ -650,7 +650,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviNOP)
      */
-    public void execute(final DviNOP command) throws DviException,
+    public void execute(DviNOP command) throws DviException,
             FontException, ConfigurationException {
 
         Element element = createElement(command);
@@ -666,7 +666,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviPost)
      */
-    public void execute(final DviPost command) throws DviException,
+    public void execute(DviPost command) throws DviException,
             FontException, ConfigurationException {
 
         Element element = createElement(command);
@@ -695,7 +695,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviPostPost)
      */
-    public void execute(final DviPostPost command) throws DviException,
+    public void execute(DviPostPost command) throws DviException,
             FontException, ConfigurationException {
 
         if (parentstack.empty()) {
@@ -719,7 +719,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviPre)
      */
-    public void execute(final DviPre command) throws DviException,
+    public void execute(DviPre command) throws DviException,
             FontException, ConfigurationException {
 
         mag = command.getMag();
@@ -746,7 +746,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviPush)
      */
-    public void execute(final DviPush command) throws DviException,
+    public void execute(DviPush command) throws DviException,
             FontException, ConfigurationException {
 
         Element element = createElement(command);
@@ -764,7 +764,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviRight)
      */
-    public void execute(final DviRight command) throws DviException,
+    public void execute(DviRight command) throws DviException,
             FontException, ConfigurationException {
 
         Element element = createElement(command);
@@ -783,7 +783,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviRule)
      */
-    public void execute(final DviRule command) throws DviException,
+    public void execute(DviRule command) throws DviException,
             FontException, ConfigurationException {
 
         Element element = createElement(command);
@@ -805,7 +805,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviW)
      */
-    public void execute(final DviW command) throws DviException, FontException,
+    public void execute(DviW command) throws DviException, FontException,
             ConfigurationException {
 
         Element element = createElement(command);
@@ -827,7 +827,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviX)
      */
-    public void execute(final DviX command) throws DviException, FontException,
+    public void execute(DviX command) throws DviException, FontException,
             ConfigurationException {
 
         Element element = createElement(command);
@@ -849,7 +849,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviXXX)
      */
-    public void execute(final DviXXX command) throws DviException,
+    public void execute(DviXXX command) throws DviException,
             FontException, ConfigurationException {
 
         Element element = createElement(command);
@@ -866,7 +866,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviY)
      */
-    public void execute(final DviY command) throws DviException, FontException,
+    public void execute(DviY command) throws DviException, FontException,
             ConfigurationException {
 
         Element element = createElement(command);
@@ -888,7 +888,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviZ)
      */
-    public void execute(final DviZ command) throws DviException, FontException,
+    public void execute(DviZ command) throws DviException, FontException,
             ConfigurationException {
 
         Element element = createElement(command);
@@ -911,7 +911,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @param command   the command
      * @return Returns the element.
      */
-    private Element createElement(final DviCommand command) {
+    private Element createElement(DviCommand command) {
 
         Element e = new Element(command.getName());
         e.setAttribute("opcode", String.valueOf(command.getOpcode()));

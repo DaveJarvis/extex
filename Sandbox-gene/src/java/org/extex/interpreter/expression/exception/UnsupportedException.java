@@ -49,7 +49,7 @@ public class UnsupportedException extends HelpingException {
      * @param op the operation
      * @param arg the argument
      */
-    public UnsupportedException(final String op, final String arg) {
+    public UnsupportedException(String op, String arg) {
 
         super(LocalizerFactory.getLocalizer(UnsupportedException.class),
                 "UnsupportedException", op, arg);

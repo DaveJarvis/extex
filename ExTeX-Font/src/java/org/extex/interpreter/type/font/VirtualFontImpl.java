@@ -43,7 +43,7 @@ public class VirtualFontImpl implements VirtualFount {
      * Create a new Object
      * @param afount  the fount
      */
-    public VirtualFontImpl(final ModifiableFount afount) {
+    public VirtualFontImpl(ModifiableFount afount) {
 
         //super(afount);
     }
@@ -53,8 +53,8 @@ public class VirtualFontImpl implements VirtualFount {
      *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
-    public VirtualCharNode getVirtualCharNode(final TypesettingContext context,
-            final UnicodeChar uc) {
+    public VirtualCharNode getVirtualCharNode(TypesettingContext context,
+            UnicodeChar uc) {
 
 //        VirtualCharNode cnode = new VirtualCharNode(context, uc);
 //
@@ -127,9 +127,9 @@ public class VirtualFontImpl implements VirtualFount {
 //     * @param node  the Node (CharNode, RuleNode )
 //     * @param cnode the VirtualCharNode
 //     */
-//    private void calculateMoveShift(final Dimen v, final Dimen h,
-//            final EfmHVW hvw, final AbstractNode node,
-//            final VirtualCharNode cnode) {
+//    private void calculateMoveShift(Dimen v, Dimen h,
+//            EfmHVW hvw, AbstractNode node,
+//            VirtualCharNode cnode) {
 //
 //        // calculate move and shift
 //        // v goes down -> shift goes up

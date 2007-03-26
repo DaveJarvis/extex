@@ -70,19 +70,21 @@ public class Mutoglue extends AbstractCode implements GlueConvertible {
      *
      * @param name the name for tracing and debugging
      */
-    public Mutoglue(final String name) {
+    public Mutoglue(String name) {
 
         super(name);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.core.glue.GlueConvertible#convertGlue(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Glue convertGlue(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public Glue convertGlue(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         Muskip muskip = Muskip.parse(context, source, typesetter);
 

@@ -31,7 +31,7 @@ public class PageshrinkTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PageshrinkTest.class);
     }
@@ -41,7 +41,7 @@ public class PageshrinkTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public PageshrinkTest(final String arg) {
+    public PageshrinkTest(String arg) {
 
         super(arg, "pageshrink", "", "0.0pt");
     }

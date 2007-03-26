@@ -82,7 +82,7 @@ public class Parshapelength extends AbstractCode
      *
      * @param name the name for debugging
      */
-    public Parshapelength(final String name) {
+    public Parshapelength(String name) {
 
         super(name);
     }
@@ -101,12 +101,12 @@ public class Parshapelength extends AbstractCode
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.CountConvertible#convertCount(
+     * @see org.extex.core.count.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
-    public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public long convertCount(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         return convertDimen(context, source, typesetter);
     }
@@ -132,8 +132,8 @@ public class Parshapelength extends AbstractCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public long convertDimen(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public long convertDimen(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         int n = (int) CountParser.scanInteger(context, source, typesetter);
         ParagraphShape parshape = context.getParshape();
@@ -155,8 +155,8 @@ public class Parshapelength extends AbstractCode
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         int n = (int) CountParser.scanInteger(context, source, typesetter);
         ParagraphShape parshape = context.getParshape();

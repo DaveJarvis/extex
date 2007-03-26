@@ -74,7 +74,7 @@ public class XtfTableMap {
      * @param key   the key as int
      * @return Returns, if the map has the special key
      */
-    public boolean containsKey(final int key) {
+    public boolean containsKey(int key) {
 
         return data.containsKey(new Integer(key));
     }
@@ -83,7 +83,7 @@ public class XtfTableMap {
      * @param key   the key as int
      * @return Returns the value for the key
      */
-    public XtfTable get(final int key) {
+    public XtfTable get(int key) {
 
         return (XtfTable) data.get(new Integer(key));
     }
@@ -92,7 +92,7 @@ public class XtfTableMap {
      * @param key   the key as int
      * @return Returns the removed element
      */
-    public XtfTable remove(final int key) {
+    public XtfTable remove(int key) {
 
         return (XtfTable) data.remove(new Integer(key));
     }
@@ -101,7 +101,7 @@ public class XtfTableMap {
      * @param key   the key as int
      * @param val   the value for the key
      */
-    public void put(final int key, final XtfTable val) {
+    public void put(int key, XtfTable val) {
 
         data.put(new Integer(key), val);
     }

@@ -77,8 +77,8 @@ public class BreakPoint {
      * @param pwd the point width for this break point
      * @param pen the penalty for this break point
      */
-    public BreakPoint(final int pos, final WideGlue wd, final WideGlue pwd,
-            final int pen) {
+    public BreakPoint(int pos, WideGlue wd, WideGlue pwd,
+            int pen) {
 
         super();
         this.position = pos;
@@ -164,7 +164,7 @@ public class BreakPoint {
      *
      * @param fitness the fitness to set.
      */
-    public void setFitness(final Fitness fitness) {
+    public void setFitness(Fitness fitness) {
 
         this.fitness = fitness;
     }

@@ -26,7 +26,7 @@ import java.util.List;
  * TODO gene: missing JavaDoc.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5413 $
  */
 public class ConfigurationInfo {
 
@@ -43,7 +43,7 @@ public class ConfigurationInfo {
     /**
      * The field <tt>units</tt> contains the ...
      */
-    private List units = new ArrayList();
+    private List<String> units = new ArrayList<String>();
 
     /**
      * Creates a new object.
@@ -51,7 +51,7 @@ public class ConfigurationInfo {
      * @param name ...
      * @param banner ...
      */
-    public ConfigurationInfo(final String name, final String banner) {
+    public ConfigurationInfo(String name, String banner) {
 
         super();
         this.name = name;
@@ -63,7 +63,7 @@ public class ConfigurationInfo {
      *
      * @param src ...
      */
-    public void addUnit(final String src) {
+    public void addUnit(String src) {
 
         System.err.println(src);
         units.add(src);
@@ -94,7 +94,7 @@ public class ConfigurationInfo {
      *
      * @return the units
      */
-    public List getUnits() {
+    public List<String> getUnits() {
 
         return units;
     }

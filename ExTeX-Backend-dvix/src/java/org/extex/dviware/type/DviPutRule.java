@@ -48,7 +48,7 @@ public class DviPutRule extends AbstractDviCode {
      * @param a the first parameter
      * @param b the second parameter
      */
-    public DviPutRule(final int a, final int b) {
+    public DviPutRule(int a, int b) {
 
         super("put_rule");
         this.a = a;
@@ -68,7 +68,7 @@ public class DviPutRule extends AbstractDviCode {
      *
      * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
      */
-    public int write(final OutputStream stream) throws IOException {
+    public int write(OutputStream stream) throws IOException {
 
         if (a == 0 && b == 0) {
             return 0;

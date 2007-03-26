@@ -100,7 +100,7 @@ public class SerialLoader {
      * @throws LoaderException in case of an format error during the read
      * @throws IOException in case of an IO error
      */
-    public Context load(final InputStream stream)
+    public Context load(InputStream stream)
             throws IOException,
                 LoaderException {
 
@@ -146,8 +146,8 @@ public class SerialLoader {
      *
      * @throws IOException in case of an IO error
      */
-    public void save(final OutputStream stream, final String jobname,
-            final Context context) throws IOException {
+    public void save(OutputStream stream, String jobname,
+            Context context) throws IOException {
 
         OutputStream outStream = new BufferedOutputStream(stream);
 

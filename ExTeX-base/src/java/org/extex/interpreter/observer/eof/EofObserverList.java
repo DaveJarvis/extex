@@ -39,8 +39,8 @@ public final class EofObserverList implements EofObserver {
      *
      * @return the input list or a new one with the observer added
      */
-    public static EofObserver register(final EofObserver list,
-            final EofObserver observer) {
+    public static EofObserver register(EofObserver list,
+            EofObserver observer) {
 
         if (list instanceof EofObserverList) {
             ((EofObserverList) list).add(observer);
@@ -60,14 +60,14 @@ public final class EofObserverList implements EofObserver {
     /**
      * The field <tt>list</tt> contains the encapsulated list.
      */
-    private List list = new ArrayList();
+    private List<EofObserver> list = new ArrayList<EofObserver>();
 
     /**
      * Add an observer to the list.
      *
      * @param observer the observer to add to the list
      */
-    public void add(final EofObserver observer) {
+    public void add(EofObserver observer) {
 
         list.add(observer);
     }
@@ -78,9 +78,8 @@ public final class EofObserverList implements EofObserver {
      */
     public void update() {
 
-        int size = list.size();
-        for (int i = 0; i < size; i++) {
-            ((EofObserver) list.get(i)).update();
+        for (EofObserver obs : list) {
+            obs.update();
         }
     }
 

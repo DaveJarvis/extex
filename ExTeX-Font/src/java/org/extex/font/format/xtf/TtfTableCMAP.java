@@ -99,7 +99,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * @param rar       input
          * @throws IOException if an IO-error occurs
          */
-        Format(final int form, final RandomAccessR rar) throws IOException {
+        Format(int form, RandomAccessR rar) throws IOException {
 
             format = form;
             length = rar.readUnsignedShort();
@@ -111,7 +111,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * @param writer    The xml writer.
          * @throws IOException if an IO-error occurs.
          */
-        public void addAttributes(final XMLStreamWriter writer)
+        public void addAttributes(XMLStreamWriter writer)
                 throws IOException {
 
             writer.writeAttribute("version", fversion);
@@ -151,7 +151,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * @param charCode  the charcode
          * @return Returns the map char code
          */
-        public abstract int mapCharCode(final int charCode);
+        public abstract int mapCharCode(int charCode);
 
         /**
          * Returns the info for this class.
@@ -203,7 +203,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * @param rar       input
          * @throws IOException if an error occured
          */
-        Format0(final RandomAccessR rar) throws IOException {
+        Format0(RandomAccessR rar) throws IOException {
 
             super(TtfTableCMAP.FORMAT0, rar);
             for (int i = 0; i < glyphIdArray.length; i++) {
@@ -214,7 +214,7 @@ public class TtfTableCMAP extends AbstractXtfTable
         /**
          * @see org.extex.font.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
-        public int mapCharCode(final int charCode) {
+        public int mapCharCode(int charCode) {
 
             if (0 <= charCode && charCode < glyphIdArray.length) {
                 return glyphIdArray[charCode];
@@ -226,7 +226,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
-        public void writeXML(final XMLStreamWriter writer) throws IOException {
+        public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("format");
             addAttributes(writer);
@@ -275,7 +275,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * @param rar       input
          * @throws IOException if an error occured
          */
-        Format10(final RandomAccessR rar) throws IOException {
+        Format10(RandomAccessR rar) throws IOException {
 
             super(TtfTableCMAP.FORMAT10, rar);
 
@@ -284,7 +284,7 @@ public class TtfTableCMAP extends AbstractXtfTable
         /**
          * @see org.extex.font.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
-        public int mapCharCode(final int charCode) {
+        public int mapCharCode(int charCode) {
 
             return 0;
         }
@@ -293,7 +293,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
-        public void writeXML(final XMLStreamWriter writer) throws IOException {
+        public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("format");
             addAttributes(writer);
@@ -329,7 +329,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * @param rar       input
          * @throws IOException if an error occured
          */
-        Format12(final RandomAccessR rar) throws IOException {
+        Format12(RandomAccessR rar) throws IOException {
 
             super(TtfTableCMAP.FORMAT12, rar);
 
@@ -338,7 +338,7 @@ public class TtfTableCMAP extends AbstractXtfTable
         /**
          * @see org.extex.font.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
-        public int mapCharCode(final int charCode) {
+        public int mapCharCode(int charCode) {
 
             return 0;
         }
@@ -347,7 +347,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
-        public void writeXML(final XMLStreamWriter writer) throws IOException {
+        public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("format");
             addAttributes(writer);
@@ -433,7 +433,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * @param rar       input
          * @throws IOException if an error occured
          */
-        Format2(final RandomAccessR rar) throws IOException {
+        Format2(RandomAccessR rar) throws IOException {
 
             super(TtfTableCMAP.FORMAT2, rar);
         }
@@ -441,7 +441,7 @@ public class TtfTableCMAP extends AbstractXtfTable
         /**
          * @see org.extex.font.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
-        public int mapCharCode(final int charCode) {
+        public int mapCharCode(int charCode) {
 
             return 0;
         }
@@ -450,7 +450,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
-        public void writeXML(final XMLStreamWriter writer) throws IOException {
+        public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("format");
             addAttributes(writer);
@@ -565,7 +565,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * @param rar       input
          * @throws IOException if an error occured
          */
-        Format4(final RandomAccessR rar) throws IOException {
+        Format4(RandomAccessR rar) throws IOException {
 
             super(TtfTableCMAP.FORMAT4, rar);
             segCountX2 = rar.readUnsignedShort();
@@ -701,7 +701,7 @@ public class TtfTableCMAP extends AbstractXtfTable
         /**
          * @see org.extex.font.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
-        public int mapCharCode(final int charCode) {
+        public int mapCharCode(int charCode) {
 
             try {
                 for (int i = 0; i < segCount; i++) {
@@ -729,7 +729,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
-        public void writeXML(final XMLStreamWriter writer) throws IOException {
+        public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("format");
             addAttributes(writer);
@@ -815,7 +815,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * @param rar       input
          * @throws IOException if an error occured
          */
-        Format6(final RandomAccessR rar) throws IOException {
+        Format6(RandomAccessR rar) throws IOException {
 
             super(TtfTableCMAP.FORMAT6, rar);
 
@@ -824,7 +824,7 @@ public class TtfTableCMAP extends AbstractXtfTable
         /**
          * @see org.extex.font.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
-        public int mapCharCode(final int charCode) {
+        public int mapCharCode(int charCode) {
 
             return 0;
         }
@@ -833,7 +833,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
-        public void writeXML(final XMLStreamWriter writer) throws IOException {
+        public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("format");
             addAttributes(writer);
@@ -886,7 +886,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * @param rar       input
          * @throws IOException if an error occured
          */
-        Format8(final RandomAccessR rar) throws IOException {
+        Format8(RandomAccessR rar) throws IOException {
 
             super(TtfTableCMAP.FORMAT8, rar);
 
@@ -895,7 +895,7 @@ public class TtfTableCMAP extends AbstractXtfTable
         /**
          * @see org.extex.font.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
-        public int mapCharCode(final int charCode) {
+        public int mapCharCode(int charCode) {
 
             return 0;
         }
@@ -904,7 +904,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
-        public void writeXML(final XMLStreamWriter writer) throws IOException {
+        public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("format");
             addAttributes(writer);
@@ -985,7 +985,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * @param rar   the RandomAccessInput
          * @throws IOException if an error occured
          */
-        IndexEntry(final RandomAccessR rar) throws IOException {
+        IndexEntry(RandomAccessR rar) throws IOException {
 
             platformId = rar.readUnsignedShort();
             encodingId = rar.readUnsignedShort();
@@ -1126,7 +1126,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
-        public void writeXML(final XMLStreamWriter writer) throws IOException {
+        public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("indexentry");
             writer.writeAttribute("platformid", platformId);
@@ -1846,8 +1846,8 @@ public class TtfTableCMAP extends AbstractXtfTable
      * @param rar       the RandomAccessInput
      * @throws IOException if an error occured
      */
-    TtfTableCMAP(final XtfTableMap tablemap, final XtfTableDirectory.Entry de,
-            final RandomAccessR rar) throws IOException {
+    TtfTableCMAP(XtfTableMap tablemap, XtfTableDirectory.Entry de,
+            RandomAccessR rar) throws IOException {
 
         super(tablemap);
         rar.seek(de.getOffset());
@@ -1917,7 +1917,7 @@ public class TtfTableCMAP extends AbstractXtfTable
      * @param encodingId    encoding id
      * @return Returns the cmap format
      */
-    public Format getFormat(final short platformId, final short encodingId) {
+    public Format getFormat(short platformId, short encodingId) {
 
         // Find the requested format
         for (int i = 0; i < numTables; i++) {
@@ -1977,7 +1977,7 @@ public class TtfTableCMAP extends AbstractXtfTable
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writeStartElement(writer);
         writer.writeAttribute("version", String.valueOf(XtfReader

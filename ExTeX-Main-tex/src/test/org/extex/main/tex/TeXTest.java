@@ -98,7 +98,7 @@ public class TeXTest extends TestCase {
      *
      * @param args command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(TeXTest.class);
     }
@@ -122,14 +122,13 @@ public class TeXTest extends TestCase {
      * @param args the array of command line arguments
      * @param expect the expected result on the error stream or
      *            <code>null</code>
-     * @param exit the expected exit code
      *
      * @return the result on the error stream
      *
      * @throws InterpreterException in case of an interpreter error
      * @throws IOException in case of an io error
      */
-    public static String runFailure(final String[] args, final String expect)
+    public static String runFailure(String[] args, String expect)
             throws InterpreterException,
                 IOException {
 
@@ -143,14 +142,13 @@ public class TeXTest extends TestCase {
      * @param args the array of command line arguments
      * @param expect the expected result on the error stream or
      *            <code>null</code>
-     * @param exit the expected exit code
      *
      * @return the result on the error stream
      *
      * @throws InterpreterException in case of an interpreter error
      * @throws IOException in case of an io error
      */
-    public static String runSuccess(final String[] args, final String expect)
+    public static String runSuccess(String[] args, String expect)
             throws InterpreterException,
                 IOException {
 
@@ -171,8 +169,8 @@ public class TeXTest extends TestCase {
      * @throws InterpreterException in case of an interpreter error
      * @throws IOException in case of an io error
      */
-    public static String runTest(final String[] args,
-            final Properties properties, final String expect, final int exit)
+    public static String runTest(String[] args,
+            Properties properties, String expect, int exit)
             throws InterpreterException,
                 IOException {
 
@@ -221,20 +219,20 @@ public class TeXTest extends TestCase {
      * @throws InterpreterException in case of an interpreter error
      * @throws IOException in case of an io error
      */
-    public static String runTest(final String[] args, final String expect,
-            final int exit) throws InterpreterException, IOException {
+    public static String runTest(String[] args, String expect,
+            int exit) throws InterpreterException, IOException {
 
         return runTest(args, makeProperties(), expect, exit);
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Determine the transcript message for a file.
      *
      * @param name the name of the log file
      *
-     * @return
+     * @return the transcript message
      */
-    private static String transcript(final String name) {
+    private static String transcript(String name) {
 
         File file = new File(".", name + ".log");
         return "Transcript written on " + file.toString() + ".\n";
@@ -254,7 +252,7 @@ public class TeXTest extends TestCase {
      *
      * @param name the name
      */
-    public TeXTest(final String name) {
+    public TeXTest(String name) {
 
         super(name);
         Locale.setDefault(Locale.ENGLISH);

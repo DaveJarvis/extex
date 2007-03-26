@@ -93,7 +93,7 @@ public final class CountParser {
          *
          * @see org.extex.core.count.CountParser.BinOp#apply(long, long)
          */
-        public long apply(final long arg1, final long arg2) {
+        public long apply(long arg1, long arg2) {
 
             return arg1 - arg2;
         }
@@ -117,7 +117,7 @@ public final class CountParser {
          *
          * @see org.extex.core.count.CountParser.BinOp#apply(long, long)
          */
-        public long apply(final long arg1, final long arg2) {
+        public long apply(long arg1, long arg2) {
 
             return arg1 + arg2;
         }
@@ -141,7 +141,7 @@ public final class CountParser {
          *
          * @see org.extex.core.count.CountParser.BinOp#apply(long, long)
          */
-        public long apply(final long arg1, final long arg2) {
+        public long apply(long arg1, long arg2) {
 
             return arg2;
         }
@@ -174,8 +174,8 @@ public final class CountParser {
      *
      * @throws InterpreterException in case of an error
      */
-    private static long evalExpr(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    private static long evalExpr(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         long saveVal = 0;
@@ -253,8 +253,8 @@ public final class CountParser {
      *
      * @throws InterpreterException in case of an error
      */
-    public static long scanInteger(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public static long scanInteger(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         for (;;) {
@@ -335,8 +335,8 @@ public final class CountParser {
      * @throws InterpreterException in case that no number is found or the end
      *             of file has been reached before an integer could be acquired
      */
-    public static long scanNumber(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public static long scanNumber(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         return scanNumber(context, source, typesetter, source
@@ -359,9 +359,9 @@ public final class CountParser {
      * @throws InterpreterException in case that no number is found or the end
      *             of file has been reached before an integer could be acquired
      */
-    public static long scanNumber(final Context context,
-            final TokenSource source, final Typesetter typesetter,
-            final Token token) throws InterpreterException {
+    public static long scanNumber(Context context,
+            TokenSource source, Typesetter typesetter,
+            Token token) throws InterpreterException {
 
         long n = 0;
         Token t = token;
@@ -532,8 +532,8 @@ public final class CountParser {
      *
      * @throws InterpreterException in case of an error
      */
-    public static Count parse(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public static Count parse(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         return new Count(scanInteger(context, source, typesetter));
     }

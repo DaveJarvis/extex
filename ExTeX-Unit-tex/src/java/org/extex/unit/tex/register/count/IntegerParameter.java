@@ -67,7 +67,7 @@ public class IntegerParameter extends CountPrimitive
      *
      * @param name the name for debugging
      */
-    public IntegerParameter(final String name) {
+    public IntegerParameter(String name) {
 
         super(name);
         key = name;
@@ -83,7 +83,7 @@ public class IntegerParameter extends CountPrimitive
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
-    public void configure(final Configuration config)
+    public void configure(Configuration config)
             throws ConfigurationException {
 
         String k = config.getAttribute("key");
@@ -102,16 +102,13 @@ public class IntegerParameter extends CountPrimitive
      *
      * @return the key for the current register
      *
-     * @throws InterpreterException in case that a derived class need to throw
-     *  an Exception this one is declared.
-     *
      * @see org.extex.unit.tex.register.count.AbstractCount#getKey(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    protected String getKey(final Context context, final TokenSource source,
-            final Typesetter typesetter) {
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) {
 
         return key;
     }
@@ -130,8 +127,8 @@ public class IntegerParameter extends CountPrimitive
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void init(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public void init(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         if (source != null) {
             Token t = source.getToken(context);

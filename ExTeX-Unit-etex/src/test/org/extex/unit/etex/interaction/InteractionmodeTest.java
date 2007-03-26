@@ -34,7 +34,7 @@ public class InteractionmodeTest extends ExTeXLauncher {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(InteractionmodeTest.class);
     }
@@ -44,7 +44,7 @@ public class InteractionmodeTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public InteractionmodeTest(final String arg) {
+    public InteractionmodeTest(String arg) {
 
         super(arg);
         setConfig("etex-test");

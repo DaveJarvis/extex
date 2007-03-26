@@ -34,7 +34,7 @@ public class ErrmessageTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public ErrmessageTest(final String arg) {
+    public ErrmessageTest(String arg) {
 
         super(arg);
     }

@@ -58,7 +58,7 @@ public class TfmKernArray implements Serializable {
      * @param size  number of words in the table
      * @throws IOException if an IO-error occurs.
      */
-    public TfmKernArray(final RandomAccessR rar, final int size)
+    public TfmKernArray(RandomAccessR rar, int size)
             throws IOException {
 
         table = new TfmFixWord[size];

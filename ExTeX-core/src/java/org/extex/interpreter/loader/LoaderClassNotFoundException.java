@@ -37,7 +37,7 @@ public class LoaderClassNotFoundException extends LoaderException {
      *
      * @param cause the cause of all evil
      */
-    public LoaderClassNotFoundException(final Throwable cause) {
+    public LoaderClassNotFoundException(Throwable cause) {
 
         super(cause);
     }

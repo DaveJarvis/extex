@@ -33,7 +33,7 @@ public class VtopTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(VtopTest.class);
     }
@@ -43,7 +43,7 @@ public class VtopTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public VtopTest(final String arg) {
+    public VtopTest(String arg) {
 
         super(arg, "vtop", "{}");
     }

@@ -45,7 +45,7 @@ class Breaks {
      * @param thePenalty the accumulated penalty
      * @param thePoints the array of points
      */
-    public Breaks(final int thePenalty, final int[] thePoints) {
+    public Breaks(int thePenalty, int[] thePoints) {
 
         super();
         this.penalty = thePenalty;

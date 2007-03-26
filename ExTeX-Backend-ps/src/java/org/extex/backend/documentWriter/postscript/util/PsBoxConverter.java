@@ -109,8 +109,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      * @param height the height; this can be negative as well
      * @param box the name of the box command to use for printing
      */
-    private void drawBox(final Node node, final StringBuffer out,
-            final FixedDimen height, final String box) {
+    private void drawBox(Node node, StringBuffer out,
+            FixedDimen height, String box) {
 
         if (height.ne(Dimen.ZERO_PT)) {
             PsUnit.toPoint(node.getWidth(), out, false);
@@ -134,8 +134,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      * @param out the target string buffer
      * @param box the name of the box command to use for printing
      */
-    private void drawBox(final Node node, final StringBuffer out,
-            final String box) {
+    private void drawBox(Node node, StringBuffer out,
+            String box) {
 
         if (trace) {
             out.append("% ");
@@ -158,7 +158,7 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      *
      * @throws IOException in case of an error during the writing
      */
-    public void init(final HeaderManager header) throws IOException {
+    public void init(HeaderManager header) throws IOException {
 
         String name = this.getClass().getName().replace('.', '/') + ".ps";
         InputStream stream =
@@ -182,8 +182,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      *
      * @throws DocumentWriterException in case of an error
      */
-    public byte[] toPostScript(final Page page, final FontManager fontManager,
-            final HeaderManager headerManager) throws DocumentWriterException {
+    public byte[] toPostScript(Page page, FontManager fontManager,
+            HeaderManager headerManager) throws DocumentWriterException {
 
         fm = fontManager;
 
@@ -210,11 +210,13 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(
      *      org.extex.typesetter.type.node.AdjustNode,
      *      java.lang.Object)
      */
-    public Object visitAdjust(final AdjustNode node, final Object oOut)
+    public Object visitAdjust(AdjustNode node, Object oOut)
             throws GeneralException {
 
         drawBox(node, (StringBuffer) oOut, "box");
@@ -222,57 +224,67 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(
      *      org.extex.typesetter.type.node.AfterMathNode,
      *      java.lang.Object)
      */
-    public Object visitAfterMath(final AfterMathNode node, final Object oOut)
+    public Object visitAfterMath(AfterMathNode node, Object oOut)
             throws GeneralException {
 
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(
      *      org.extex.typesetter.type.node.AlignedLeadersNode,
      *      java.lang.Object)
      */
-    public Object visitAlignedLeaders(final AlignedLeadersNode node,
-            final Object oOut) throws GeneralException {
+    public Object visitAlignedLeaders(AlignedLeadersNode node,
+            Object oOut) throws GeneralException {
 
         drawBox(node, (StringBuffer) oOut, "box");
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(
      *      org.extex.typesetter.type.node.BeforeMathNode,
      *      java.lang.Object)
      */
-    public Object visitBeforeMath(final BeforeMathNode node, final Object oOut)
+    public Object visitBeforeMath(BeforeMathNode node, Object oOut)
             throws GeneralException {
 
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(
      *      org.extex.typesetter.type.node.CenteredLeadersNode,
      *      java.lang.Object)
      */
-    public Object visitCenteredLeaders(final CenteredLeadersNode node,
-            final Object oOut) throws GeneralException {
+    public Object visitCenteredLeaders(CenteredLeadersNode node,
+            Object oOut) throws GeneralException {
 
         drawBox(node, (StringBuffer) oOut, "box");
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitChar(
      *      org.extex.typesetter.type.node.CharNode,
      *      java.lang.Object)
      */
-    public Object visitChar(final CharNode node, final Object oOut)
+    public Object visitChar(CharNode node, Object oOut)
             throws GeneralException {
 
         StringBuffer out = (StringBuffer) oOut;
@@ -308,12 +320,14 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(
      *      org.extex.typesetter.type.node.DiscretionaryNode,
      *      java.lang.Object)
      */
-    public Object visitDiscretionary(final DiscretionaryNode node,
-            final Object oOut) throws GeneralException {
+    public Object visitDiscretionary(DiscretionaryNode node,
+            Object oOut) throws GeneralException {
 
         if (trace) {
             StringBuffer out = (StringBuffer) oOut;
@@ -326,23 +340,27 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(
      *      org.extex.typesetter.type.node.ExpandedLeadersNode,
      *      java.lang.Object)
      */
-    public Object visitExpandedLeaders(final ExpandedLeadersNode node,
-            final Object oOut) throws GeneralException {
+    public Object visitExpandedLeaders(ExpandedLeadersNode node,
+            Object oOut) throws GeneralException {
 
         drawBox(node, (StringBuffer) oOut, "box");
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitGlue(
      *      org.extex.typesetter.type.node.GlueNode,
      *      java.lang.Object)
      */
-    public Object visitGlue(final GlueNode node, final Object oOut)
+    public Object visitGlue(GlueNode node, Object oOut)
             throws GeneralException {
 
         drawBox(node, (StringBuffer) oOut, "box");
@@ -350,12 +368,14 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(
      *      org.extex.typesetter.type.node.HorizontalListNode,
      *      java.lang.Object)
      */
-    public Object visitHorizontalList(final HorizontalListNode node,
-            final Object oOut) throws GeneralException {
+    public Object visitHorizontalList(HorizontalListNode node,
+            Object oOut) throws GeneralException {
 
         Dimen saveX = new Dimen(x);
         Dimen saveY = new Dimen(y);
@@ -379,11 +399,13 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(
      *      org.extex.typesetter.type.node.InsertionNode,
      *      java.lang.Object)
      */
-    public Object visitInsertion(final InsertionNode node, final Object oOut)
+    public Object visitInsertion(InsertionNode node, Object oOut)
             throws GeneralException {
 
         drawBox(node, (StringBuffer) oOut, "box");
@@ -391,11 +413,13 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitKern(
      *      org.extex.typesetter.type.node.KernNode,
      *      java.lang.Object)
      */
-    public Object visitKern(final KernNode node, final Object oOut)
+    public Object visitKern(KernNode node, Object oOut)
             throws GeneralException {
 
         if (trace) {
@@ -409,22 +433,26 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitLigature(
      *      org.extex.typesetter.type.node.LigatureNode,
      *      java.lang.Object)
      */
-    public Object visitLigature(final LigatureNode node, final Object oOut)
+    public Object visitLigature(LigatureNode node, Object oOut)
             throws GeneralException {
 
         return visitChar(node, oOut);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitMark(
      *      org.extex.typesetter.type.node.MarkNode,
      *      java.lang.Object)
      */
-    public Object visitMark(final MarkNode node, final Object oOut)
+    public Object visitMark(MarkNode node, Object oOut)
             throws GeneralException {
 
         if (trace) {
@@ -438,11 +466,13 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(
      *      org.extex.typesetter.type.node.PenaltyNode,
      *      java.lang.Object)
      */
-    public Object visitPenalty(final PenaltyNode node, final Object oOut)
+    public Object visitPenalty(PenaltyNode node, Object oOut)
             throws GeneralException {
 
         if (trace) {
@@ -456,11 +486,13 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitRule(
      *      org.extex.typesetter.type.node.RuleNode,
      *      java.lang.Object)
      */
-    public Object visitRule(final RuleNode node, final Object oOut)
+    public Object visitRule(RuleNode node, Object oOut)
             throws GeneralException {
 
         drawBox(node, (StringBuffer) oOut, "box");
@@ -468,11 +500,13 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitSpace(
      *      org.extex.typesetter.type.node.SpaceNode,
      *      java.lang.Object)
      */
-    public Object visitSpace(final SpaceNode node, final Object oOut)
+    public Object visitSpace(SpaceNode node, Object oOut)
             throws GeneralException {
 
         if (trace) {
@@ -486,12 +520,14 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(
      *      org.extex.typesetter.type.node.VerticalListNode,
      *      java.lang.Object)
      */
-    public Object visitVerticalList(final VerticalListNode node,
-            final Object oOut) throws GeneralException {
+    public Object visitVerticalList(VerticalListNode node,
+            Object oOut) throws GeneralException {
 
         Dimen saveX = new Dimen(x);
         Dimen saveY = new Dimen(y);
@@ -516,22 +552,26 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(
      *      org.extex.typesetter.type.node.VirtualCharNode,
      *      java.lang.Object)
      */
-    public Object visitVirtualChar(final VirtualCharNode node, final Object oOut)
+    public Object visitVirtualChar(VirtualCharNode node, Object oOut)
             throws GeneralException {
 
         return visitChar(node, oOut);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(
      *      org.extex.typesetter.type.node.WhatsItNode,
      *      java.lang.Object)
      */
-    public Object visitWhatsIt(final WhatsItNode node, final Object oOut)
+    public Object visitWhatsIt(WhatsItNode node, Object oOut)
             throws GeneralException {
 
         StringBuffer out = (StringBuffer) oOut;

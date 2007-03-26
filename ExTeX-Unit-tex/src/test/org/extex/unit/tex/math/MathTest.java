@@ -34,7 +34,7 @@ public class MathTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public MathTest(final String arg) {
+    public MathTest(String arg) {
 
         super(arg);
     }

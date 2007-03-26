@@ -27,14 +27,14 @@ import junit.framework.TestCase;
  * ...
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5413 $
  */
 public class LatexTaskTest extends TestCase {
 
     /**
-     * The field <tt>VERBOSE</tt> contains the ...
+     * The constant <tt>VERBOSE</tt> contains the verbosity indicator.
      */
-    private static boolean VERBOSE = false;
+    private static final boolean VERBOSE = false;
 
     /**
      * ...
@@ -61,10 +61,12 @@ public class LatexTaskTest extends TestCase {
     /**
      * ...
      * 
-     * @param target
-     * @return
-     * @throws IOException
-     * @throws InterruptedException
+     * @param target ...
+     *
+     * @return ...
+     *
+     * @throws IOException ...
+     * @throws InterruptedException ...
      */
     private Process run(String target) throws IOException, InterruptedException {
 

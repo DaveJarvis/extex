@@ -96,7 +96,8 @@ public final class FormatPrinter {
      * The field <tt>printerMap</tt> contains the mapping from class name to
      * printing routine.
      */
-    private static Map printerMap = new HashMap();
+    private static Map<Class<?>, PrintRoutine> printerMap =
+            new HashMap<Class<?>, PrintRoutine>();
 
     /**
      * The field <tt>verbose</tt> contains the verbosity indicator.
@@ -106,7 +107,7 @@ public final class FormatPrinter {
     static {
         printerMap.put(String.class, new PrintRoutine() {
 
-            public void print(final PrintStream out, final Object obj) {
+            public void print(PrintStream out, Object obj) {
 
                 out.print(" \"");
                 out.print(obj);
@@ -115,7 +116,7 @@ public final class FormatPrinter {
         });
         printerMap.put(Long.class, new PrintRoutine() {
 
-            public void print(final PrintStream out, final Object obj) {
+            public void print(PrintStream out, Object obj) {
 
                 out.print(" ");
                 out.print(((Long) obj).longValue());
@@ -123,7 +124,7 @@ public final class FormatPrinter {
         });
         printerMap.put(Short.class, new PrintRoutine() {
 
-            public void print(final PrintStream out, final Object obj) {
+            public void print(PrintStream out, Object obj) {
 
                 out.print(" ");
                 out.print(((Short) obj).shortValue());
@@ -131,7 +132,7 @@ public final class FormatPrinter {
         });
         printerMap.put(Integer.class, new PrintRoutine() {
 
-            public void print(final PrintStream out, final Object obj) {
+            public void print(PrintStream out, Object obj) {
 
                 out.print(" ");
                 out.print(((Integer) obj).intValue());
@@ -139,7 +140,7 @@ public final class FormatPrinter {
         });
         printerMap.put(Boolean.class, new PrintRoutine() {
 
-            public void print(final PrintStream out, final Object obj) {
+            public void print(PrintStream out, Object obj) {
 
                 out.print(" ");
                 out.print(((Boolean) obj).booleanValue() ? "t" : "nil");
@@ -147,7 +148,7 @@ public final class FormatPrinter {
         });
         printerMap.put(Count.class, new PrintRoutine() {
 
-            public void print(final PrintStream out, final Object obj) {
+            public void print(PrintStream out, Object obj) {
 
                 out.print(" ");
                 out.print(obj.toString());
@@ -155,7 +156,7 @@ public final class FormatPrinter {
         });
         printerMap.put(Glue.class, new PrintRoutine() {
 
-            public void print(final PrintStream out, final Object obj) {
+            public void print(PrintStream out, Object obj) {
 
                 out.print(" ");
                 out.print(obj.toString());
@@ -163,7 +164,7 @@ public final class FormatPrinter {
         });
         printerMap.put(Dimen.class, new PrintRoutine() {
 
-            public void print(final PrintStream out, final Object obj) {
+            public void print(PrintStream out, Object obj) {
 
                 out.print(" ");
                 out.print(obj.toString());
@@ -171,7 +172,7 @@ public final class FormatPrinter {
         });
         printerMap.put(Character.class, new PrintRoutine() {
 
-            public void print(final PrintStream out, final Object obj) {
+            public void print(PrintStream out, Object obj) {
 
                 out.print(" '");
                 char c = ((Character) obj).charValue();
@@ -204,7 +205,7 @@ public final class FormatPrinter {
         });
         printerMap.put(UnicodeChar.class, new PrintRoutine() {
 
-            public void print(final PrintStream out, final Object obj) {
+            public void print(PrintStream out, Object obj) {
 
                 out.print(" \\u'");
                 out.print(obj.toString());
@@ -213,7 +214,7 @@ public final class FormatPrinter {
         });
         printerMap.put(OtherToken.class, new PrintRoutine() {
 
-            public void print(final PrintStream out, final Object obj) {
+            public void print(PrintStream out, Object obj) {
 
                 out.print("(o '");
                 out.print(((Token) obj).getChar().toString());
@@ -222,7 +223,7 @@ public final class FormatPrinter {
         });
         printerMap.put(LetterToken.class, new PrintRoutine() {
 
-            public void print(final PrintStream out, final Object obj) {
+            public void print(PrintStream out, Object obj) {
 
                 out.print("(l '");
                 out.print(((Token) obj).getChar().toString());
@@ -231,7 +232,7 @@ public final class FormatPrinter {
         });
         printerMap.put(SpaceToken.class, new PrintRoutine() {
 
-            public void print(final PrintStream out, final Object obj) {
+            public void print(PrintStream out, Object obj) {
 
                 out.print("(s '");
                 out.print(((Token) obj).getChar().toString());
@@ -240,7 +241,7 @@ public final class FormatPrinter {
         });
         printerMap.put(MacroParamToken.class, new PrintRoutine() {
 
-            public void print(final PrintStream out, final Object obj) {
+            public void print(PrintStream out, Object obj) {
 
                 out.print("(p '");
                 out.print(((Token) obj).getChar().toString());
@@ -249,7 +250,7 @@ public final class FormatPrinter {
         });
         printerMap.put(MathShiftToken.class, new PrintRoutine() {
 
-            public void print(final PrintStream out, final Object obj) {
+            public void print(PrintStream out, Object obj) {
 
                 out.print("(m '");
                 out.print(((Token) obj).getChar().toString());
@@ -258,7 +259,7 @@ public final class FormatPrinter {
         });
         printerMap.put(LeftBraceToken.class, new PrintRoutine() {
 
-            public void print(final PrintStream out, final Object obj) {
+            public void print(PrintStream out, Object obj) {
 
                 out.print("(lb '");
                 out.print(((Token) obj).getChar().toString());
@@ -267,7 +268,7 @@ public final class FormatPrinter {
         });
         printerMap.put(RightBraceToken.class, new PrintRoutine() {
 
-            public void print(final PrintStream out, final Object obj) {
+            public void print(PrintStream out, Object obj) {
 
                 out.print("(rb '");
                 out.print(((Token) obj).getChar().toString());
@@ -276,7 +277,7 @@ public final class FormatPrinter {
         });
         printerMap.put(ControlSequenceToken.class, new PrintRoutine() {
 
-            public void print(final PrintStream out, final Object obj) {
+            public void print(PrintStream out, Object obj) {
 
                 ControlSequenceToken cs = (ControlSequenceToken) obj;
                 out.print("(cs ");
@@ -297,7 +298,7 @@ public final class FormatPrinter {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         PrintStream err = System.err;
         int i = 0;
@@ -396,8 +397,8 @@ public final class FormatPrinter {
      * @param prefix the prefix to print after any new line
      * @param obj the object to print
      */
-    private static void print(final PrintStream out, final String prefix,
-            final Object obj) {
+    private static void print(PrintStream out, String prefix,
+            Object obj) {
 
         if (obj == null) {
             out.print(" nil");
@@ -405,7 +406,7 @@ public final class FormatPrinter {
         }
         String pre = prefix + "  ";
         String pre2 = prefix + "    ";
-        Class c = obj.getClass();
+        Class<?> c = obj.getClass();
         if (c.isArray()) {
             int len = Array.getLength(obj);
             out.print(" [");
@@ -470,7 +471,7 @@ public final class FormatPrinter {
             return;
         }
 
-        PrintRoutine pr = (PrintRoutine) printerMap.get(c);
+        PrintRoutine pr = printerMap.get(c);
         if (pr != null) {
             pr.print(out, obj);
             return;

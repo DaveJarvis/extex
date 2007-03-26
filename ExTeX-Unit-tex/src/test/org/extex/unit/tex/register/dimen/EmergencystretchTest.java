@@ -31,7 +31,7 @@ public class EmergencystretchTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(EmergencystretchTest.class);
     }
@@ -41,7 +41,7 @@ public class EmergencystretchTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public EmergencystretchTest(final String arg) {
+    public EmergencystretchTest(String arg) {
 
         super(arg, "emergencystretch", "", "0.0pt");
     }

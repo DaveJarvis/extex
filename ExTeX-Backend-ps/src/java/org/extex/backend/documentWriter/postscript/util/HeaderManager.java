@@ -52,7 +52,7 @@ public class HeaderManager {
      *
      * @throws IOException in case of an error during the writing
      */
-    public void add(final InputStream stream, final String name)
+    public void add(InputStream stream, String name)
             throws IOException {
 
         header.append("%%BeginProcSet: ");
@@ -73,7 +73,7 @@ public class HeaderManager {
      *
      * @throws IOException in case of an error during the writing
      */
-    public void add(final String value, final String name) throws IOException {
+    public void add(String value, String name) throws IOException {
 
         header.append("%%BeginProcSet: ");
         header.append(name);
@@ -97,7 +97,7 @@ public class HeaderManager {
      *
      * @throws IOException in case of an IO error
      */
-    public void write(final OutputStream stream) throws IOException {
+    public void write(OutputStream stream) throws IOException {
 
         stream.write(header.toString().getBytes());
     }

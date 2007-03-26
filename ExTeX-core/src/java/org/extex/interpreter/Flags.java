@@ -216,7 +216,7 @@ public interface Flags {
         /**
          * @see org.extex.interpreter.Flags#set(org.extex.interpreter.Flags)
          */
-        public void set(final Flags flags) {
+        public void set(Flags flags) {
 
             throw new UnsupportedOperationException();
         }
@@ -240,7 +240,7 @@ public interface Flags {
         /**
          * @see org.extex.interpreter.Flags#setGlobal(boolean)
          */
-        public void setGlobal(final boolean value) {
+        public void setGlobal(boolean value) {
 
             throw new UnsupportedOperationException();
         }
@@ -467,7 +467,7 @@ public interface Flags {
      * @see #isGlobal()
      * @see #setGlobal()
      */
-    void setGlobal(final boolean value);
+    void setGlobal(boolean value);
 
     /**
      * Setter for the immediate flag. The flag is set to <code>true</code>.

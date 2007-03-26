@@ -64,8 +64,8 @@ public final class TBooleanParser implements ETypeParser {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public EType convert(final Code code, final Context context,
-            final TokenSource source, final Typesetter typesetter) {
+    public EType convert(Code code, Context context,
+            TokenSource source, Typesetter typesetter) {
 
         return null;
     }
@@ -87,8 +87,8 @@ public final class TBooleanParser implements ETypeParser {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public EType parse(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public EType parse(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         if (source.getKeyword(context, "true")) {
             return new TBoolean(true);
@@ -108,7 +108,7 @@ public final class TBooleanParser implements ETypeParser {
      * @see org.extex.interpreter.expression.ETypeParser#registered(
      *      org.extex.interpreter.expression.Evaluator)
      */
-    public void registered(final Evaluator evaluator) {
+    public void registered(Evaluator evaluator) {
 
         evaluator.register("boolean", new UnaryFunction() {
 
@@ -116,7 +116,7 @@ public final class TBooleanParser implements ETypeParser {
              * @see org.extex.interpreter.expression.Function1#apply(
              *      org.extex.interpreter.expression.EType)
              */
-            public EType apply(final EType accumulator)
+            public EType apply(EType accumulator)
                     throws InterpreterException {
 
                 return new TBoolean().set(accumulator);

@@ -38,7 +38,7 @@ public class OutputStreamOpenException extends DocumentWriterException {
      * @param message the error message
      * @param cause the root of all evil
      */
-    public OutputStreamOpenException(final String message, final Throwable cause) {
+    public OutputStreamOpenException(String message, Throwable cause) {
 
         super(message, cause);
     }

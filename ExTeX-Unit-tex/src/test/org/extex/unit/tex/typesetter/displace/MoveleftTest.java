@@ -33,7 +33,7 @@ public class MoveleftTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(MoveleftTest.class);
     }
@@ -43,7 +43,7 @@ public class MoveleftTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public MoveleftTest(final String arg) {
+    public MoveleftTest(String arg) {
 
         super(arg, "moveleft", "1pt\\hbox{}");
     }

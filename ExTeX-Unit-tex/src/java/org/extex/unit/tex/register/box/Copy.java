@@ -75,7 +75,7 @@ public class Copy extends AbstractCode implements Boxable {
      *
      * @param name the name for debugging
      */
-    public Copy(final String name) {
+    public Copy(String name) {
 
         super(name);
     }
@@ -99,8 +99,8 @@ public class Copy extends AbstractCode implements Boxable {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -131,8 +131,8 @@ public class Copy extends AbstractCode implements Boxable {
      *      org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
-    public Box getBox(final Context context, final TokenSource source,
-            final Typesetter typesetter, final Token insert)
+    public Box getBox(Context context, TokenSource source,
+            Typesetter typesetter, Token insert)
             throws InterpreterException {
 
         String key = Setbox.getKey(context, source, typesetter, getName());

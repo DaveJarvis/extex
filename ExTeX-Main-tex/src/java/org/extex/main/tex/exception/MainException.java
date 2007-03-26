@@ -51,7 +51,7 @@ public class MainException extends GeneralException {
      *
      * @param cause the cause for this Exception
      */
-    public MainException(final GeneralException cause) {
+    public MainException(GeneralException cause) {
 
         super(cause);
         this.code = cause.getExitCode();
@@ -63,7 +63,7 @@ public class MainException extends GeneralException {
      * @param theCode the exit code
      * @param theMessage the message
      */
-    public MainException(final int theCode, final String theMessage) {
+    public MainException(int theCode, String theMessage) {
 
         super(theMessage);
         this.message = theMessage;
@@ -76,7 +76,7 @@ public class MainException extends GeneralException {
      * @param theCode the exit code
      * @param cause the cause for this Exception
      */
-    public MainException(final int theCode, final Throwable cause) {
+    public MainException(int theCode, Throwable cause) {
 
         super(cause);
         this.code = theCode;

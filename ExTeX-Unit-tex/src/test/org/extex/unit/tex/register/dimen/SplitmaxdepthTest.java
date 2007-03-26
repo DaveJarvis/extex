@@ -31,7 +31,7 @@ public class SplitmaxdepthTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(SplitmaxdepthTest.class);
     }
@@ -41,7 +41,7 @@ public class SplitmaxdepthTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public SplitmaxdepthTest(final String arg) {
+    public SplitmaxdepthTest(String arg) {
 
         super(arg, "splitmaxdepth", "", "0.0pt");
     }

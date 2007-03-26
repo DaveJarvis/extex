@@ -155,7 +155,7 @@ public class JavaDef extends AbstractAssignment implements Definer {
      *
      * @param codeName the name for debugging
      */
-    public JavaDef(final String codeName) {
+    public JavaDef(String codeName) {
 
         super(codeName);
     }
@@ -180,8 +180,8 @@ public class JavaDef extends AbstractAssignment implements Definer {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         define(prefix, context, source, typesetter);
@@ -203,8 +203,8 @@ public class JavaDef extends AbstractAssignment implements Definer {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void define(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void define(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         CodeToken cs = source.getControlSequence(context, typesetter);

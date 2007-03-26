@@ -43,7 +43,7 @@ public class MainMissingArgumentException extends MainException {
      *
      * @param message the name of the missing argument
      */
-    public MainMissingArgumentException(final String message) {
+    public MainMissingArgumentException(String message) {
 
         super(ERROR_CODE, message);
     }

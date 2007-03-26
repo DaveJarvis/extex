@@ -83,7 +83,7 @@ public class Ifnum extends AbstractIf {
      *
      * @param name the name for debugging
      */
-    public Ifnum(final String name) {
+    public Ifnum(String name) {
 
         super(name);
     }
@@ -107,8 +107,8 @@ public class Ifnum extends AbstractIf {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public boolean conditional(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         long value = CountParser.scanInteger(context, source, typesetter);
         Token rel = source.getToken(context);

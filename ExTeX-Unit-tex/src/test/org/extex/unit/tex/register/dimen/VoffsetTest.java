@@ -31,7 +31,7 @@ public class VoffsetTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(VoffsetTest.class);
     }
@@ -41,7 +41,7 @@ public class VoffsetTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public VoffsetTest(final String arg) {
+    public VoffsetTest(String arg) {
 
         super(arg, "voffset", "", "0.0pt");
     }

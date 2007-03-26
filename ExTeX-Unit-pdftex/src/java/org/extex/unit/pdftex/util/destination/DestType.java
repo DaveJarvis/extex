@@ -33,7 +33,7 @@ import org.extex.unit.pdftex.exception.InterpreterPdftexDestinationTypeException
 
 /**
  * This is the abstract base class for destination types in PDF.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4409 $
  */
@@ -51,15 +51,19 @@ public abstract class DestType implements Serializable {
         private static final long serialVersionUID = 2007L;
 
         /**
-         * @see org.extex.unit.pdftex.util.destType.DestType#visit(
-         *      org.extex.unit.pdftex.util.destType.DestTypeVisitor)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.unit.pdftex.util.destination.DestType#visit(
+         *      org.extex.unit.pdftex.util.destination.DestinationVisitor)
          */
-        public Object visit(final DestinationVisitor visitor) {
+        public Object visit(DestinationVisitor visitor) {
 
             return visitor.visitFit(this);
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -67,7 +71,7 @@ public abstract class DestType implements Serializable {
             return "fit";
         }
 
-        //TODO gene: readResolve()
+        // TODO gene: readResolve()
 
     };
 
@@ -83,15 +87,19 @@ public abstract class DestType implements Serializable {
         private static final long serialVersionUID = 2007L;
 
         /**
-         * @see org.extex.unit.pdftex.util.destType.DestType#visit(
-         *      org.extex.unit.pdftex.util.destType.DestTypeVisitor)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.unit.pdftex.util.destination.DestType#visit(
+         *      org.extex.unit.pdftex.util.destination.DestinationVisitor)
          */
-        public Object visit(final DestinationVisitor visitor) {
+        public Object visit(DestinationVisitor visitor) {
 
             return visitor.visitFitb(this);
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -99,7 +107,7 @@ public abstract class DestType implements Serializable {
             return "fitb";
         }
 
-        //TODO gene: readResolve()
+        // TODO gene: readResolve()
 
     };
 
@@ -115,15 +123,19 @@ public abstract class DestType implements Serializable {
         private static final long serialVersionUID = 2007L;
 
         /**
-         * @see org.extex.unit.pdftex.util.destType.DestType#visit(
-         *      org.extex.unit.pdftex.util.destType.DestTypeVisitor)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.unit.pdftex.util.destination.DestType#visit(
+         *      org.extex.unit.pdftex.util.destination.DestinationVisitor)
          */
-        public Object visit(final DestinationVisitor visitor) {
+        public Object visit(DestinationVisitor visitor) {
 
             return visitor.visitFitbh(this);
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -131,7 +143,7 @@ public abstract class DestType implements Serializable {
             return "fitbh";
         }
 
-        //TODO gene: readResolve()
+        // TODO gene: readResolve()
 
     };
 
@@ -147,15 +159,19 @@ public abstract class DestType implements Serializable {
         private static final long serialVersionUID = 2007L;
 
         /**
-         * @see org.extex.unit.pdftex.util.destType.DestType#visit(
-         *      org.extex.unit.pdftex.util.destType.DestTypeVisitor)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.unit.pdftex.util.destination.DestType#visit(
+         *      org.extex.unit.pdftex.util.destination.DestinationVisitor)
          */
-        public Object visit(final DestinationVisitor visitor) {
+        public Object visit(DestinationVisitor visitor) {
 
             return visitor.visitFitbv(this);
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -163,7 +179,7 @@ public abstract class DestType implements Serializable {
             return "fitbv";
         }
 
-        //TODO gene: readResolve()
+        // TODO gene: readResolve()
 
     };
 
@@ -179,15 +195,19 @@ public abstract class DestType implements Serializable {
         private static final long serialVersionUID = 2007L;
 
         /**
-         * @see org.extex.unit.pdftex.util.destType.DestType#visit(
-         *      org.extex.unit.pdftex.util.destType.DestTypeVisitor)
+         * {@inheritDoc}
+         *
+         * @see org.extex.unit.pdftex.util.destination.DestType#visit(
+         *      org.extex.unit.pdftex.util.destination.DestinationVisitor)
          */
-        public Object visit(final DestinationVisitor visitor) {
+        public Object visit(DestinationVisitor visitor) {
 
             return visitor.visitFith(this);
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -195,7 +215,7 @@ public abstract class DestType implements Serializable {
             return "fith";
         }
 
-        //TODO gene: readResolve()
+        // TODO gene: readResolve()
 
     };
 
@@ -211,15 +231,19 @@ public abstract class DestType implements Serializable {
         private static final long serialVersionUID = 2007L;
 
         /**
-         * @see org.extex.unit.pdftex.util.destType.DestType#visit(
-         *      org.extex.unit.pdftex.util.destType.DestTypeVisitor)
+         * {@inheritDoc}
+         *
+         * @see org.extex.unit.pdftex.util.destination.DestType#visit(
+         *      org.extex.unit.pdftex.util.destination.DestinationVisitor)
          */
-        public Object visit(final DestinationVisitor visitor) {
+        public Object visit(DestinationVisitor visitor) {
 
             return visitor.visitFitv(this);
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -227,7 +251,7 @@ public abstract class DestType implements Serializable {
             return "fitv";
         }
 
-        //TODO gene: readResolve()
+        // TODO gene: readResolve()
 
     };
 
@@ -243,15 +267,19 @@ public abstract class DestType implements Serializable {
         private static final long serialVersionUID = 2007L;
 
         /**
-         * @see org.extex.unit.pdftex.util.destType.DestType#visit(
-         *      org.extex.unit.pdftex.util.destType.DestTypeVisitor)
+         * {@inheritDoc}
+         *
+         * @see org.extex.unit.pdftex.util.destination.DestType#visit(
+         *      org.extex.unit.pdftex.util.destination.DestinationVisitor)
          */
-        public Object visit(final DestinationVisitor visitor) {
+        public Object visit(DestinationVisitor visitor) {
 
             return visitor.visitXyz(this);
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -259,25 +287,24 @@ public abstract class DestType implements Serializable {
             return "xyz";
         }
 
-        //TODO gene: readResolve()
+        // TODO gene: readResolve()
 
     };
 
     /**
      * Parse a destination type.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param name the name of the invoking primitive
-     *
+     * 
      * @return the destination type
-     *
+     * 
      * @throws InterpreterException in case of an error
      */
-    public static DestType parseDestType(final Context context,
-            final TokenSource source, final Typesetter typesetter,
-            final String name) throws InterpreterException {
+    public static DestType parseDestType(Context context, TokenSource source,
+            Typesetter typesetter, String name) throws InterpreterException {
 
         if (source.getKeyword(context, "xyz")) {
             return XYZ;
@@ -332,11 +359,11 @@ public abstract class DestType implements Serializable {
 
     /**
      * This method is the entry point for the visitor pattern.
-     *
+     * 
      * @param visitor the visitor to call back
-     *
+     * 
      * @return an arbitrary return object
      */
-    public abstract Object visit(final DestinationVisitor visitor);
+    public abstract Object visit(DestinationVisitor visitor);
 
 }

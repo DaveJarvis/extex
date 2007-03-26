@@ -32,7 +32,7 @@ public class GdefTest extends AbstractDefTester {
      *
      * @param arg the name
      */
-    public GdefTest(final String arg) {
+    public GdefTest(String arg) {
 
         super(arg, "gdef");
     }

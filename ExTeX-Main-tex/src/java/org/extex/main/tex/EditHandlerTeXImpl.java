@@ -52,7 +52,7 @@ public class EditHandlerTeXImpl implements EditHandler {
      *      org.extex.framework.i18n.Localizer,
      *      org.extex.core.Locator)
      */
-    public boolean edit(final Localizer localizer, final Locator locator) {
+    public boolean edit(Localizer localizer, Locator locator) {
 
         System.err.println(localizer.format("EditHandler.edit", locator
             .getResourceName(), Integer.toString(locator.getLineNumber())));

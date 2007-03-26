@@ -58,20 +58,14 @@ public class WhatsItCloseNode extends WhatsItNode implements LogEnabled {
      *
      * @param theKey the key of the file to open
      */
-    public WhatsItCloseNode(final String theKey) {
+    public WhatsItCloseNode(String theKey) {
 
         super();
         this.key = theKey;
     }
 
     /**
-     * This method performs any action which are required to executed at the
-     * time of shipping the node to the DocumentWriter.
-     *
-     * @param context the interpreter context
-     * @param typesetter the typesetter
-     *
-     * @throws GeneralException in case of an error
+     * {@inheritDoc}
      *
      * @see org.extex.typesetter.type.Node#atShipping(
      *      org.extex.interpreter.context.Context,
@@ -79,8 +73,8 @@ public class WhatsItCloseNode extends WhatsItNode implements LogEnabled {
      *      org.extex.typesetter.type.NodeVisitor,
      *      boolean)
      */
-    public Node atShipping(final Context context, final Typesetter typesetter,
-            final NodeVisitor visitor, final boolean inHMode)
+    public Node atShipping(Context context, Typesetter typesetter,
+            NodeVisitor visitor, boolean inHMode)
             throws GeneralException {
 
         OutFile file = context.getOutFile(key);
@@ -103,7 +97,7 @@ public class WhatsItCloseNode extends WhatsItNode implements LogEnabled {
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger theLogger) {
+    public void enableLogging(Logger theLogger) {
 
         this.logger = theLogger;
     }

@@ -42,8 +42,8 @@ public final class StartObserverList implements StartObserver {
      *
      * @return the input list or a new one with the observer added
      */
-    public static StartObserver register(final StartObserver list,
-            final StartObserver observer) {
+    public static StartObserver register(StartObserver list,
+            StartObserver observer) {
 
         if (list instanceof StartObserverList) {
             ((StartObserverList) list).add(observer);
@@ -63,14 +63,14 @@ public final class StartObserverList implements StartObserver {
     /**
      * The field <tt>list</tt> contains the encapsulated list.
      */
-    private List list = new ArrayList();
+    private List<StartObserver> list = new ArrayList<StartObserver>();
 
     /**
      * Add an observer to the list.
      *
      * @param observer the observer to add to the list
      */
-    public void add(final StartObserver observer) {
+    public void add(StartObserver observer) {
 
         list.add(observer);
     }
@@ -78,15 +78,16 @@ public final class StartObserverList implements StartObserver {
     /**
      * Invoke all observers on the list to inform them of the start operation.
      *
-     * @see org.extex.interpreter.observer.load.LoadObserver#update(
-     *      org.extex.interpreter.context.Context)
+     * {@inheritDoc}
+     *
+     * @see org.extex.interpreter.observer.start.StartObserver#update(
+     *      org.extex.interpreter.Interpreter)
      */
-    public void update(final Interpreter interpreter)
+    public void update(Interpreter interpreter)
             throws InterpreterException {
 
-        int size = list.size();
-        for (int i = 0; i < size; i++) {
-            ((StartObserver) list.get(i)).update(interpreter);
+        for (StartObserver obs : list) {
+            obs.update(interpreter);
         }
     }
 

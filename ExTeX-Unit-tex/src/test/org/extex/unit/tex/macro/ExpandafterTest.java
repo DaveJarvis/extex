@@ -34,7 +34,7 @@ public class ExpandafterTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public ExpandafterTest(final String arg) {
+    public ExpandafterTest(String arg) {
 
         super(arg);
     }

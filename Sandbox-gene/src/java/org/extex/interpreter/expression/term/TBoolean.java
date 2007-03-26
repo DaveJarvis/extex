@@ -42,7 +42,7 @@ public class TBoolean implements EType {
      *
      * @throws CastException in case of an error
      */
-    protected static boolean castTerminal(final EType t) throws CastException {
+    protected static boolean castTerminal(EType t) throws CastException {
 
         if (t instanceof TBoolean) {
             return ((TBoolean) t).isValue();
@@ -73,7 +73,7 @@ public class TBoolean implements EType {
      *
      * @param value the initial value
      */
-    public TBoolean(final boolean value) {
+    public TBoolean(boolean value) {
 
         super();
         this.value = value;
@@ -83,7 +83,7 @@ public class TBoolean implements EType {
      * @see org.extex.interpreter.expression.EType#add(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType add(final EType t) throws UnsupportedException {
+    public EType add(EType t) throws UnsupportedException {
 
         throw new UnsupportedException("+", toString());
     }
@@ -92,7 +92,7 @@ public class TBoolean implements EType {
      * @see org.extex.interpreter.expression.EType#and(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType and(final EType t) throws CastException {
+    public EType and(EType t) throws CastException {
 
         this.value &= castTerminal(t);
         return this;
@@ -102,7 +102,7 @@ public class TBoolean implements EType {
      * @see org.extex.interpreter.expression.EType#divide(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType divide(final EType t)
+    public EType divide(EType t)
             throws CastException,
                 UnsupportedException {
 
@@ -113,7 +113,7 @@ public class TBoolean implements EType {
      * @see org.extex.interpreter.expression.EType#eq(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean eq(final EType t) throws UnsupportedException {
+    public TBoolean eq(EType t) throws UnsupportedException {
 
         throw new UnsupportedException("eq", toString());
     }
@@ -122,7 +122,7 @@ public class TBoolean implements EType {
      * @see org.extex.interpreter.expression.EType#ge(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean ge(final EType t) throws UnsupportedException {
+    public TBoolean ge(EType t) throws UnsupportedException {
 
         throw new UnsupportedException("ge", toString());
     }
@@ -131,7 +131,7 @@ public class TBoolean implements EType {
      * @see org.extex.interpreter.expression.EType#gt(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean gt(final EType t) throws UnsupportedException {
+    public TBoolean gt(EType t) throws UnsupportedException {
 
         throw new UnsupportedException("gt", toString());
     }
@@ -150,7 +150,7 @@ public class TBoolean implements EType {
      * @see org.extex.interpreter.expression.EType#le(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean le(final EType t) throws UnsupportedException {
+    public TBoolean le(EType t) throws UnsupportedException {
 
         throw new UnsupportedException("le", toString());
     }
@@ -159,7 +159,7 @@ public class TBoolean implements EType {
      * @see org.extex.interpreter.expression.EType#lt(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean lt(final EType t) throws UnsupportedException {
+    public TBoolean lt(EType t) throws UnsupportedException {
 
         throw new UnsupportedException("lt", toString());
     }
@@ -168,7 +168,7 @@ public class TBoolean implements EType {
      * @see org.extex.interpreter.expression.EType#multiply(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType multiply(final EType t)
+    public EType multiply(EType t)
             throws CastException,
                 UnsupportedException {
 
@@ -179,7 +179,7 @@ public class TBoolean implements EType {
      * @see org.extex.interpreter.expression.EType#ne(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean ne(final EType t) throws UnsupportedException {
+    public TBoolean ne(EType t) throws UnsupportedException {
 
         throw new UnsupportedException("ne", toString());
     }
@@ -205,7 +205,7 @@ public class TBoolean implements EType {
      * @see org.extex.interpreter.expression.EType#or(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType or(final EType t) throws CastException {
+    public EType or(EType t) throws CastException {
 
         this.value |= castTerminal(t);
         return this;
@@ -215,7 +215,7 @@ public class TBoolean implements EType {
      * @see org.extex.interpreter.expression.EType#parse(
      *      java.lang.CharSequence)
      */
-    public EType parse(final CharSequence sequence) {
+    public EType parse(CharSequence sequence) {
 
         switch (sequence.length()) {
             case 4:
@@ -238,10 +238,12 @@ public class TBoolean implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#set(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType set(final EType t) throws CastException {
+    public EType set(EType t) throws CastException {
 
         this.value = castTerminal(t);
         return this;
@@ -252,7 +254,7 @@ public class TBoolean implements EType {
      *
      * @param value the value to set
      */
-    public void setValue(final boolean value) {
+    public void setValue(boolean value) {
 
         this.value = value;
     }
@@ -261,7 +263,7 @@ public class TBoolean implements EType {
      * @see org.extex.interpreter.expression.EType#subtract(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType subtract(final EType t) throws UnsupportedException {
+    public EType subtract(EType t) throws UnsupportedException {
 
         throw new UnsupportedException("-", toString());
     }

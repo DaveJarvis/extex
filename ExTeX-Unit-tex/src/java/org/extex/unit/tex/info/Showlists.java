@@ -71,7 +71,7 @@ public class Showlists extends AbstractCode implements LogEnabled {
      *
      * @param name the name for tracing and debugging
      */
-    public Showlists(final String name) {
+    public Showlists(String name) {
 
         super(name);
     }
@@ -84,7 +84,7 @@ public class Showlists extends AbstractCode implements LogEnabled {
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger log) {
+    public void enableLogging(Logger log) {
 
         this.logger = log;
     }
@@ -107,8 +107,8 @@ public class Showlists extends AbstractCode implements LogEnabled {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Count depth = context.getCount("showboxdepth");

@@ -33,7 +33,7 @@ public class HyphenpenaltyTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(HyphenpenaltyTest.class);
     }
@@ -43,7 +43,7 @@ public class HyphenpenaltyTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public HyphenpenaltyTest(final String arg) {
+    public HyphenpenaltyTest(String arg) {
 
         super(arg, "hyphenpenalty", "", "0");
     }

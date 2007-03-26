@@ -74,8 +74,8 @@ public class FontFactoryImpl extends AbstractFactory
      * @param theFinder The resource finder.
      * @throws ConfigurationException from the configuration system.
      */
-    public FontFactoryImpl(final Configuration config,
-            final ResourceFinder theFinder) throws ConfigurationException {
+    public FontFactoryImpl(Configuration config,
+            ResourceFinder theFinder) throws ConfigurationException {
 
         super();
 
@@ -91,7 +91,7 @@ public class FontFactoryImpl extends AbstractFactory
     /**
      * @see de.dante.extex.unicodeFont.FontFactory#newInstance(org.extex.font.FontKey)
      */
-    public TexFont newInstance(final FontKey key)
+    public TexFont newInstance(FontKey key)
             throws ConfigurationException, FontException {
 
         Configuration config = getConfiguration();
@@ -213,7 +213,7 @@ public class FontFactoryImpl extends AbstractFactory
      * @return Returns <code>true</code>, if the font is a virtual font.
      * @throws ConfigurationException from the configuration system.
      */
-    private boolean isVF(final String fontname) throws ConfigurationException {
+    private boolean isVF(String fontname) throws ConfigurationException {
 
         InputStream in = finder.findResource(fontname, VF);
         if (in != null) {
@@ -250,7 +250,7 @@ public class FontFactoryImpl extends AbstractFactory
      * @see org.extex.resource.ResourceConsumer#setResourceFinder(
      *      org.extex.resource.ResourceFinder)
      */
-    public void setResourceFinder(final ResourceFinder theFinder) {
+    public void setResourceFinder(ResourceFinder theFinder) {
 
         finder = theFinder;
     }
@@ -258,7 +258,7 @@ public class FontFactoryImpl extends AbstractFactory
     /**
      * @see org.extex.framework.AbstractFactory#reconnect(java.lang.Object)
      */
-    public Object reconnect(final Object instance) throws RegistrarException {
+    public Object reconnect(Object instance) throws RegistrarException {
 
         Object object = super.reconnect(instance);
 
@@ -285,7 +285,7 @@ public class FontFactoryImpl extends AbstractFactory
      * @see org.extex.resource.PropertyConfigurable#setProperties(
      *      java.util.Properties)
      */
-    public void setProperties(final Properties theProperties) {
+    public void setProperties(Properties theProperties) {
 
         properties = theProperties;
     }

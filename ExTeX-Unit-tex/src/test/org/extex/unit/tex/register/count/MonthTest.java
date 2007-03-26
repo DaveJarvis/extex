@@ -46,7 +46,7 @@ public class MonthTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(MonthTest.class);
     }
@@ -56,7 +56,7 @@ public class MonthTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public MonthTest(final String arg) {
+    public MonthTest(String arg) {
 
         super(arg, "month", "", getDefaultValue());
     }

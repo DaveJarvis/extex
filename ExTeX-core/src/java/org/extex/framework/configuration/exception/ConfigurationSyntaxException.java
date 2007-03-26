@@ -38,8 +38,8 @@ public class ConfigurationSyntaxException extends ConfigurationException {
      * @param message the message string
      * @param source the source of the exception
      */
-    public ConfigurationSyntaxException(final String message,
-            final String source) {
+    public ConfigurationSyntaxException(String message,
+            String source) {
 
         super(message, source);
     }
@@ -50,8 +50,8 @@ public class ConfigurationSyntaxException extends ConfigurationException {
      * @param message message the message string
      * @param cause the next Throwable in the list
      */
-    public ConfigurationSyntaxException(final String message,
-            final Throwable cause) {
+    public ConfigurationSyntaxException(String message,
+            Throwable cause) {
 
         super(message, cause);
     }

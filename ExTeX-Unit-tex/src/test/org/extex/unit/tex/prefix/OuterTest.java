@@ -32,7 +32,7 @@ public class OuterTest extends PrefixTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(OuterTest.class);
     }
@@ -42,7 +42,7 @@ public class OuterTest extends PrefixTester {
      *
      * @param arg the name
      */
-    public OuterTest(final String arg) {
+    public OuterTest(String arg) {
 
         super(arg, "outer");
     }

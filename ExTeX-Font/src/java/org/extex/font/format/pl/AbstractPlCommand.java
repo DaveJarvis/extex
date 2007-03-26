@@ -33,6 +33,8 @@ public abstract class AbstractPlCommand implements PlCommand {
     protected String param;
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.pl.PlCommand#getParameter()
      */
     public String getParameter() {
@@ -41,9 +43,11 @@ public abstract class AbstractPlCommand implements PlCommand {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.pl.PlCommand#setParameter(java.lang.String)
      */
-    public void setParameter(final String p) {
+    public void setParameter(String p) {
 
         param = p;
     }

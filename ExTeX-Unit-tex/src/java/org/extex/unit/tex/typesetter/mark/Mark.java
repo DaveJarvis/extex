@@ -119,7 +119,7 @@ public class Mark extends Marks {
      *
      * @param name the name for debugging
      */
-    public Mark(final String name) {
+    public Mark(String name) {
 
         super(name);
     }
@@ -138,8 +138,8 @@ public class Mark extends Marks {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    protected String getKey(final Context context, final TokenSource source,
-            final Typesetter typesetter) {
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) {
 
         return "0";
     }

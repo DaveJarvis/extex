@@ -19,24 +19,21 @@
 
 package org.extex.resource;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import junit.framework.TestCase;
 
-import org.extex.core.StringList;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationIOException;
-import org.extex.framework.configuration.exception.ConfigurationInvalidResourceException;
 import org.extex.framework.configuration.exception.ConfigurationMissingException;
-import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
-import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
 
 /**
  * TODO gene: missing JavaDoc.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5417 $
  */
 public class ClasspathArchiveFinderTest extends TestCase {
 
@@ -45,38 +42,34 @@ public class ClasspathArchiveFinderTest extends TestCase {
      */
     private static final Configuration CFG = new Configuration() {
 
-        public Configuration findConfiguration(final String key)
-                throws ConfigurationInvalidResourceException,
-                    ConfigurationNotFoundException,
-                    ConfigurationSyntaxException,
-                    ConfigurationIOException {
+        public Configuration findConfiguration(String key) {
 
             return null;
         }
 
-        public Configuration findConfiguration(final String key,
-                final String attribute) throws ConfigurationException {
+        public Configuration findConfiguration(String key,
+                String attribute) throws ConfigurationException {
 
             return null;
         }
 
-        public String getAttribute(final String name) {
+        public String getAttribute(String name) {
 
-            if ( "default".equals(name)) {
+            if ("default".equals(name)) {
                 return "xxx";
             }
 
             return null;
         }
 
-        public Configuration getConfiguration(final String key)
+        public Configuration getConfiguration(String key)
                 throws ConfigurationException {
 
             return this;
         }
 
-        public Configuration getConfiguration(final String key,
-                final String attribute) throws ConfigurationException {
+        public Configuration getConfiguration(String key,
+                String attribute) throws ConfigurationException {
 
             return this;
         }
@@ -86,27 +79,31 @@ public class ClasspathArchiveFinderTest extends TestCase {
             return null;
         }
 
-        public String getValue(final String key) throws ConfigurationException {
+        public String getValue(String key) throws ConfigurationException {
 
             return null;
         }
 
-        public int getValueAsInteger(final String key, final int defaultValue)
+        public int getValueAsInteger(String key, int defaultValue)
                 throws ConfigurationException {
 
             return defaultValue;
         }
 
-        public StringList getValues(final String key) {
+        public List<String> getValues(String key) {
 
             if ("extension".equals(key)) {
-                return new StringList(":.tex",":");
+                List<String> list = new ArrayList<String>();
+                list.add("");
+                list.add(".tex");
+                return list;
             }
             return null;
         }
 
-        public void getValues(final StringList list, final String key) {
+        public void getValues(List<String> list, String key) {
 
+            // not needed
         }
 
         public Iterator iterator() throws ConfigurationException {
@@ -114,7 +111,8 @@ public class ClasspathArchiveFinderTest extends TestCase {
             return null;
         }
 
-        public Iterator iterator(final String key) throws ConfigurationException {
+        public Iterator iterator(String key)
+                throws ConfigurationException {
 
             return null;
         }
@@ -138,6 +136,8 @@ public class ClasspathArchiveFinderTest extends TestCase {
 
     /**
      * Test method for {@link org.extex.resource.ClasspathArchiveFinder#findResource(java.lang.String, java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testFindResource0() throws Exception {
 
@@ -148,6 +148,8 @@ public class ClasspathArchiveFinderTest extends TestCase {
 
     /**
      * Test method for {@link org.extex.resource.ClasspathArchiveFinder#findResource(java.lang.String, java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testFindResource1() throws Exception {
 
@@ -158,6 +160,8 @@ public class ClasspathArchiveFinderTest extends TestCase {
 
     /**
      * Test method for {@link org.extex.resource.ClasspathArchiveFinder#findResource(java.lang.String, java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testFindResource2() throws Exception {
 
@@ -168,6 +172,8 @@ public class ClasspathArchiveFinderTest extends TestCase {
 
     /**
      * Test method for {@link org.extex.resource.ClasspathArchiveFinder#findResource(java.lang.String, java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testFindResource3() throws Exception {
 
@@ -178,6 +184,8 @@ public class ClasspathArchiveFinderTest extends TestCase {
 
     /**
      * Test method for {@link org.extex.resource.ClasspathArchiveFinder#findResource(java.lang.String, java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testFindResource4() throws Exception {
 
@@ -188,6 +196,8 @@ public class ClasspathArchiveFinderTest extends TestCase {
 
     /**
      * Test method for {@link org.extex.resource.ClasspathArchiveFinder#findResource(java.lang.String, java.lang.String)}.
+     *
+     * @throws Exception in case of an error
      */
     public final void testFindResource5() throws Exception {
 

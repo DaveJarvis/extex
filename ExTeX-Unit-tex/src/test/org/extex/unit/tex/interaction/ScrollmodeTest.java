@@ -36,7 +36,7 @@ public class ScrollmodeTest extends NoFlagsPrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ScrollmodeTest.class);
     }
@@ -46,7 +46,7 @@ public class ScrollmodeTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public ScrollmodeTest(final String arg) {
+    public ScrollmodeTest(String arg) {
 
         super(arg, "scrollmode", "");
     }

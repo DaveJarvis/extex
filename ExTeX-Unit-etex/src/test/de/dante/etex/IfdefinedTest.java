@@ -34,7 +34,7 @@ public class IfdefinedTest extends TestCase {
      * main
      * @param  args command line args
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(IfdefinedTest.class);
     }

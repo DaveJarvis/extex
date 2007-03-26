@@ -89,7 +89,7 @@ public abstract class T2Number extends T2CharString {
      * @return Returns the new T2Number object.
      * @throws IOException if an IO-error occurs.
      */
-    public static T2Number newInstance(final RandomAccessR rar)
+    public static T2Number newInstance(RandomAccessR rar)
             throws IOException {
 
         int b0 = rar.readUnsignedByte();
@@ -104,7 +104,7 @@ public abstract class T2Number extends T2CharString {
      * @return Returns the new T2Number object.
      * @throws IOException if an IO-error occurs.
      */
-    public static T2Number newInstance(final RandomAccessR rar, final int b0)
+    public static T2Number newInstance(RandomAccessR rar, int b0)
             throws IOException {
 
         if ((b0 >= T2Integer.R1 && b0 <= T2Integer.R6)
@@ -135,8 +135,8 @@ public abstract class T2Number extends T2CharString {
      *      org.extex.util.file.random.RandomAccessR,
      *      org.extex.font.format.xtf.OtfTableCFF, int)
      */
-    public void init(final RandomAccessR rar, final OtfTableCFF cff,
-            final int baseoffset) throws IOException {
+    public void init(RandomAccessR rar, OtfTableCFF cff,
+            int baseoffset) throws IOException {
 
     }
 }

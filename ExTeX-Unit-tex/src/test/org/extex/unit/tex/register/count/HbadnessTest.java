@@ -33,7 +33,7 @@ public class HbadnessTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(HbadnessTest.class);
     }
@@ -43,7 +43,7 @@ public class HbadnessTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public HbadnessTest(final String arg) {
+    public HbadnessTest(String arg) {
 
         super(arg, "hbadness", "", "0");
     }

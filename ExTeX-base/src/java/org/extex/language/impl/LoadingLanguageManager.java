@@ -130,7 +130,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * @see org.extex.language.impl.BaseLanguageManager#createLanguage(
      *      java.lang.String)
      */
-    protected Language createLanguage(final String name) {
+    protected Language createLanguage(String name) {
 
         return new FutureLanguage(name, this);
     }
@@ -148,7 +148,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * @see org.extex.language.impl.LanguageCreator#createLanguageInstance(
      *      java.lang.String)
      */
-    public Language createLanguageInstance(final String name)
+    public Language createLanguageInstance(String name)
             throws HyphenationException {
 
         Language language;
@@ -170,7 +170,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * @see org.extex.language.impl.LanguageCreator#loadLanguageInstance(
      *      java.lang.String)
      */
-    public Language loadLanguageInstance(final String name)
+    public Language loadLanguageInstance(String name)
             throws HyphenationException {
 
         if (name == null || name.matches(NON_LOADABLE_LANGUAGE_PATTERN)) {
@@ -231,7 +231,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * @throws ClassNotFoundException in case of a non existing class
      *  definition
      */
-    private void readObject(final ObjectInputStream in)
+    private void readObject(ObjectInputStream in)
             throws IOException,
                 ClassNotFoundException {
 
@@ -276,7 +276,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * @throws IOException in case of an IO error
      * @throws DocumentWriterException in case of an error
      */
-    protected boolean saveTable(final String name, final Language value)
+    protected boolean saveTable(String name, Language value)
             throws IOException,
                 DocumentWriterException {
 
@@ -308,7 +308,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * @see org.extex.interpreter.type.OutputStreamConsumer#setOutputStreamFactory(
      *      org.extex.backend.outputStream.OutputStreamFactory)
      */
-    public void setOutputStreamFactory(final OutputStreamFactory factory) {
+    public void setOutputStreamFactory(OutputStreamFactory factory) {
 
         this.outFactory = factory;
     }
@@ -321,7 +321,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * @see org.extex.resource.ResourceConsumer#setResourceFinder(
      *      org.extex.resource.ResourceFinder)
      */
-    public void setResourceFinder(final ResourceFinder finder) {
+    public void setResourceFinder(ResourceFinder finder) {
 
         this.finder = finder;
     }
@@ -332,13 +332,14 @@ public class LoadingLanguageManager extends BaseLanguageManager
      *
      * @param out the output stream to write on
      *
-     * @throws IOException in case of an IO error
+     * @throws IOException in case of an I/O error
+     * @throws DocumentWriterException in case of an error
      */
-    private void writeObject(final ObjectOutputStream out)
+    private void writeObject(ObjectOutputStream out)
             throws IOException,
                 DocumentWriterException {
 
-        Map map = new HashMap();
+        Map<String, Language> map = new HashMap<String, Language>();
         Iterator iter = getTables().entrySet().iterator();
         while (iter.hasNext()) {
             Map.Entry e = (Map.Entry) iter.next();

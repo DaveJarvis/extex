@@ -127,7 +127,7 @@ public class TexUnitInfo extends UnitInfo
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger log) {
+    public void enableLogging(Logger log) {
 
         this.logger = log;
     }
@@ -146,8 +146,8 @@ public class TexUnitInfo extends UnitInfo
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void load(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public void load(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         receiveLoaded(context, source);
     }
@@ -169,7 +169,7 @@ public class TexUnitInfo extends UnitInfo
      *      org.extex.interpreter.context.Context,
      *       org.extex.interpreter.TokenSource)
      */
-    public void receiveLoaded(final Context context, final TokenSource source)
+    public void receiveLoaded(Context context, TokenSource source)
             throws InterpreterException {
 
         if (context.getCount(TRACING_COMMANDS).gt(Count.ZERO)) {
@@ -189,8 +189,8 @@ public class TexUnitInfo extends UnitInfo
                      *      org.extex.core.count.Count)
                      */
                     public void receiveCountChange(
-                            final ContextInternals context, final String name,
-                            final Count value) throws Exception {
+                            ContextInternals context, String name,
+                            Count value) throws Exception {
 
                         if (notRegistered && value != null
                                 && value.getValue() > 0

@@ -47,7 +47,7 @@ public class InterpreterArithmeticException extends InterpreterException {
      *
      * @param message the message
      */
-    public InterpreterArithmeticException(final String message) {
+    public InterpreterArithmeticException(String message) {
 
         super(message);
     }

@@ -40,7 +40,7 @@ public abstract class T2TDOBoolean extends T2TopDICTOperator {
      * @param id    the operator-id for the value
      * @throws IOException if an IO-error occurs.
      */
-    protected T2TDOBoolean(final List stack, final short[] id)
+    protected T2TDOBoolean(List stack, short[] id)
             throws IOException {
 
         super();
@@ -114,7 +114,7 @@ public abstract class T2TDOBoolean extends T2TopDICTOperator {
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());
         writer.writeAttribute("value", value);

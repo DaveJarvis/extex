@@ -65,7 +65,7 @@ public class Fi extends AbstractCode implements ExpandableCode {
      *
      * @param name the name for debugging
      */
-    public Fi(final String name) {
+    public Fi(String name) {
 
         super(name);
     }
@@ -79,14 +79,16 @@ public class Fi extends AbstractCode implements ExpandableCode {
      *  an exception is raised.
      * </p>
      *
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         if (context.popConditional() == null) {
@@ -104,14 +106,16 @@ public class Fi extends AbstractCode implements ExpandableCode {
      *  an exception is raised.
      * </p>
      *
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.type.ExpandableCode#expand(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void expand(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void expand(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         if (context.popConditional() == null) {

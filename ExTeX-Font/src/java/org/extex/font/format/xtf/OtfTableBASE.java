@@ -68,8 +68,8 @@ public class OtfTableBASE extends AbstractXtfTable
      * @param rar       input
      * @throws IOException if an IO-error occurs
      */
-    OtfTableBASE(final XtfTableMap tablemap, final XtfTableDirectory.Entry de,
-            final RandomAccessR rar) throws IOException {
+    OtfTableBASE(XtfTableMap tablemap, XtfTableDirectory.Entry de,
+            RandomAccessR rar) throws IOException {
 
         super(tablemap);
         rar.seek(de.getOffset());
@@ -196,7 +196,7 @@ public class OtfTableBASE extends AbstractXtfTable
          * @param n         the name of the table
          * @throws IOException if an IO-error occurs.
          */
-        public Axis(final RandomAccessR rar, final int offset, final String n)
+        public Axis(RandomAccessR rar, int offset, String n)
                 throws IOException {
 
             name = n;
@@ -227,7 +227,7 @@ public class OtfTableBASE extends AbstractXtfTable
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
-        public void writeXML(final XMLStreamWriter writer) throws IOException {
+        public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("axis");
             writer.writeAttribute("name", name);
@@ -285,8 +285,8 @@ public class OtfTableBASE extends AbstractXtfTable
          * @param n         the name
          * @throws IOException if an IO-error occurs.
          */
-        public BaseTagList(final RandomAccessR rar, final int offset,
-                final String n) throws IOException {
+        public BaseTagList(RandomAccessR rar, int offset,
+                String n) throws IOException {
 
             name = n;
             rar.seek(offset);
@@ -297,7 +297,7 @@ public class OtfTableBASE extends AbstractXtfTable
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
-        public void writeXML(final XMLStreamWriter writer) throws IOException {
+        public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("basetaglist");
             writer.writeAttribute("name", name);
@@ -311,7 +311,7 @@ public class OtfTableBASE extends AbstractXtfTable
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writeStartElement(writer);
         writer.writeComment("incomplete");

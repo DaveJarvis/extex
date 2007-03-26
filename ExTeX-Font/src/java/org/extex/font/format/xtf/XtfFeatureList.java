@@ -54,7 +54,7 @@ public class XtfFeatureList {
      * @param offset    offset
      * @throws IOException if an IO-error occurs
      */
-    XtfFeatureList(final RandomAccessR rar, final int offset) throws IOException {
+    XtfFeatureList(RandomAccessR rar, int offset) throws IOException {
 
         rar.seek(offset);
         featureCount = rar.readUnsignedShort();
@@ -75,7 +75,7 @@ public class XtfFeatureList {
      * @param tag        the tag
      * @return Returns a feature
      */
-    public Feature findFeature(final XtfScriptList.LangSys langSys, final String tag) {
+    public Feature findFeature(XtfScriptList.LangSys langSys, String tag) {
 
         if (tag.length() != 4) {
             return null;
@@ -160,7 +160,7 @@ public class XtfFeatureList {
          * @param offset    offset
          * @throws IOException if an IO-error occurs
          */
-        Feature(final RandomAccessR rar, final int offset) throws IOException {
+        Feature(RandomAccessR rar, int offset) throws IOException {
 
             rar.seek(offset);
 
@@ -186,7 +186,7 @@ public class XtfFeatureList {
          * @param i index
          * @return Returns the lookuplistindex
          */
-        public int getLookupListIndex(final int i) {
+        public int getLookupListIndex(int i) {
 
             return lookupListIndex[i];
         }
@@ -228,7 +228,7 @@ public class XtfFeatureList {
          * @param rar       input
          * @throws IOException if an IO-error occurs
          */
-        Record(final RandomAccessR rar) throws IOException {
+        Record(RandomAccessR rar) throws IOException {
 
             tag = rar.readInt();
             offset = rar.readUnsignedShort();

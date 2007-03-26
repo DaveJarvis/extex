@@ -38,7 +38,7 @@ import org.extex.exdoc.ExDocXml;
  * Provide an Ant task for the Exdoc functionality.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5413 $
  */
 public class ExdocTask extends Task {
 
@@ -55,7 +55,7 @@ public class ExdocTask extends Task {
     /**
      * The field <tt>roots</tt> contains the list of root directories to consider.
      */
-    private List roots = new ArrayList();
+    private List<String> roots = new ArrayList<String>();
 
     /**
      * The field <tt>verbose</tt> contains the verbosity indicator.
@@ -67,7 +67,7 @@ public class ExdocTask extends Task {
      *
      * @param dirSet the included dir set
      */
-    public void addConfigured(final DirSet dirSet) {
+    public void addConfigured(DirSet dirSet) {
 
         DirectoryScanner ds = dirSet.getDirectoryScanner(getProject());
         File basedir = ds.getBasedir();
@@ -83,7 +83,7 @@ public class ExdocTask extends Task {
      *
      * @param path the included dir set
      */
-    public void addConfigured(final Path path) {
+    public void addConfigured(Path path) {
 
         log("got path");
         String[] list = path.list();
@@ -120,7 +120,7 @@ public class ExdocTask extends Task {
         String[] args = new String[size + 1];
         args[0] = "-";
         for (int i = 0; i < size; i++) {
-            args[i + 1] = (String) roots.get(i);
+            args[i + 1] = roots.get(i);
         }
         exdoc.setVerbose(verbose);
         exdoc.setOutput(output);
@@ -149,7 +149,7 @@ public class ExdocTask extends Task {
                  *
                  * @see org.extex.exdoc.util.Traverser#info(java.lang.String)
                  */
-                protected void info(final String msg) {
+                protected void info(String msg) {
 
                     if (verbose) {
                         log(msg);
@@ -163,7 +163,7 @@ public class ExdocTask extends Task {
                  *
                  * @see org.extex.exdoc.util.Traverser#warning(java.lang.String)
                  */
-                protected void warning(final String msg) {
+                protected void warning(String msg) {
 
                     log(msg);
                 }
@@ -192,7 +192,7 @@ public class ExdocTask extends Task {
                  *
                  * @see org.extex.exdoc.util.Traverser#info(java.lang.String)
                  */
-                protected void info(final String msg) {
+                protected void info(String msg) {
 
                     if (verbose) {
                         log(msg);
@@ -206,7 +206,7 @@ public class ExdocTask extends Task {
                  *
                  * @see org.extex.exdoc.util.Traverser#warning(java.lang.String)
                  */
-                protected void warning(final String msg) {
+                protected void warning(String msg) {
 
                     log(msg);
                 }
@@ -235,7 +235,7 @@ public class ExdocTask extends Task {
                  *
                  * @see org.extex.exdoc.util.Traverser#info(java.lang.String)
                  */
-                protected void info(final String msg) {
+                protected void info(String msg) {
 
                     if (verbose) {
                         log(msg);
@@ -249,7 +249,7 @@ public class ExdocTask extends Task {
                  *
                  * @see org.extex.exdoc.util.Traverser#warning(java.lang.String)
                  */
-                protected void warning(final String msg) {
+                protected void warning(String msg) {
 
                     log(msg);
                 }
@@ -265,7 +265,7 @@ public class ExdocTask extends Task {
      *
      * @param format the format to set
      */
-    public void setFormat(final String format) {
+    public void setFormat(String format) {
 
         this.format = format;
     }
@@ -275,7 +275,7 @@ public class ExdocTask extends Task {
      *
      * @param output the output to set
      */
-    public void setOutput(final String output) {
+    public void setOutput(String output) {
 
         this.output = output;
     }
@@ -285,7 +285,7 @@ public class ExdocTask extends Task {
      *
      * @param verbose the verbose to set
      */
-    public void setVerbose(final boolean verbose) {
+    public void setVerbose(boolean verbose) {
 
         this.verbose = verbose;
     }

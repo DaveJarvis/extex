@@ -33,7 +33,7 @@ public class SpecialTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(SpecialTest.class);
     }
@@ -43,7 +43,7 @@ public class SpecialTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public SpecialTest(final String arg) {
+    public SpecialTest(String arg) {
 
         super(arg, "special", "{}");
     }

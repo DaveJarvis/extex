@@ -58,7 +58,7 @@ public class MagicInputFilter extends InputStream {
      * @param stream ...
      * @param context the interpreter context
      */
-    public MagicInputFilter(final InputStream stream, final Context context) {
+    public MagicInputFilter(InputStream stream, Context context) {
 
         super();
         this.context = context;
@@ -66,6 +66,8 @@ public class MagicInputFilter extends InputStream {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.io.InputStream#read()
      */
     public int read() throws IOException {
@@ -93,6 +95,8 @@ public class MagicInputFilter extends InputStream {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.io.InputStream#available()
      */
     public int available() throws IOException {
@@ -101,6 +105,8 @@ public class MagicInputFilter extends InputStream {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.io.InputStream#close()
      */
     public void close() throws IOException {
@@ -109,14 +115,18 @@ public class MagicInputFilter extends InputStream {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.io.InputStream#mark(int)
      */
-    public void mark(final int readlimit) {
+    public void mark(int readlimit) {
 
         stream.mark(readlimit);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.io.InputStream#markSupported()
      */
     public boolean markSupported() {
@@ -125,23 +135,29 @@ public class MagicInputFilter extends InputStream {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.io.InputStream#read(byte[], int, int)
      */
-    public int read(final byte[] b, final int off, final int len)
+    public int read(byte[] b, int off, int len)
             throws IOException {
 
         return stream.read(b, off, len);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.io.InputStream#read(byte[])
      */
-    public int read(final byte[] b) throws IOException {
+    public int read(byte[] b) throws IOException {
 
         return stream.read(b);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.io.InputStream#reset()
      */
     public void reset() throws IOException {
@@ -150,9 +166,11 @@ public class MagicInputFilter extends InputStream {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.io.InputStream#skip(long)
      */
-    public long skip(final long n) throws IOException {
+    public long skip(long n) throws IOException {
 
         return stream.skip(n);
     }

@@ -58,7 +58,7 @@ public class TfmHeightArray implements Serializable {
      * @param size  number of words in the table
      * @throws IOException if an IO-error occurs.
      */
-    public TfmHeightArray(final RandomAccessR rar, final int size)
+    public TfmHeightArray(RandomAccessR rar, int size)
             throws IOException {
 
         table = new TfmFixWord[size];

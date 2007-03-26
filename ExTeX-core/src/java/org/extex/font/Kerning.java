@@ -76,7 +76,7 @@ public class Kerning implements Serializable {
      * @param gname     the name
      * @param gsize     the size
      */
-    public Kerning(final String gid, final String gname, final Dimen gsize) {
+    public Kerning(String gid, String gname, Dimen gsize) {
 
         id = gid;
         name = gname;
@@ -94,7 +94,7 @@ public class Kerning implements Serializable {
     /**
      * @param gid The id to set.
      */
-    public void setId(final String gid) {
+    public void setId(String gid) {
 
         id = gid;
     }
@@ -110,7 +110,7 @@ public class Kerning implements Serializable {
     /**
      * @param gname The name to set.
      */
-    public void setName(final String gname) {
+    public void setName(String gname) {
 
         name = gname;
     }
@@ -126,7 +126,7 @@ public class Kerning implements Serializable {
     /**
      * @param gsize The size to set as <code>Dimen</code>.
      */
-    public void setSize(final Dimen gsize) {
+    public void setSize(Dimen gsize) {
 
         size = gsize;
     }
@@ -136,7 +136,7 @@ public class Kerning implements Serializable {
     //     * @param em            The em-size.
     //     * @param unitsperem    The unit per em.
     //     */
-    //    public void setSize(final String gsize, final Dimen em, final int unitsperem) {
+    //    public void setSize(String gsize, Dimen em, int unitsperem) {
     //
     //        try {
     //            float fsize = Float.parseFloat(gsize);
@@ -158,7 +158,7 @@ public class Kerning implements Serializable {
     /**
      * @param aidleft The idleft to set.
      */
-    public void setIdleft(final String aidleft) {
+    public void setIdleft(String aidleft) {
 
         idleft = aidleft;
     }
@@ -174,7 +174,7 @@ public class Kerning implements Serializable {
     /**
      * @param anameleft The nameleft to set.
      */
-    public void setNameleft(final String anameleft) {
+    public void setNameleft(String anameleft) {
 
         nameleft = anameleft;
     }

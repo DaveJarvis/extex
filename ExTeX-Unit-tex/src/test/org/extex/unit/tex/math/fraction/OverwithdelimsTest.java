@@ -34,7 +34,7 @@ public class OverwithdelimsTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public OverwithdelimsTest(final String arg) {
+    public OverwithdelimsTest(String arg) {
 
         super(arg, "overwithdelims", " 123 456 a$", "b");
     }

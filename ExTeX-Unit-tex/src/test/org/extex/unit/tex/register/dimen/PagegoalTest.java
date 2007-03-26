@@ -31,7 +31,7 @@ public class PagegoalTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PagegoalTest.class);
     }
@@ -41,7 +41,7 @@ public class PagegoalTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public PagegoalTest(final String arg) {
+    public PagegoalTest(String arg) {
 
         super(arg, "pagegoal", "", "0.0pt");
     }

@@ -76,7 +76,7 @@ public class Xleaders extends AbstractCode {
      *
      * @param name the name for debugging
      */
-    public Xleaders(final String name) {
+    public Xleaders(String name) {
 
         super(name);
     }
@@ -100,8 +100,8 @@ public class Xleaders extends AbstractCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         CodeToken cs = source.getControlSequence(context, typesetter);

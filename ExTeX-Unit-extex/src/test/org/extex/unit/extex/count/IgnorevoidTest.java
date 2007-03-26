@@ -33,7 +33,7 @@ public class IgnorevoidTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(IgnorevoidTest.class);
     }
@@ -43,7 +43,7 @@ public class IgnorevoidTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public IgnorevoidTest(final String arg) {
+    public IgnorevoidTest(String arg) {
 
         super(arg, "ignorevoid", "", "0");
         setConfig("extex-test");

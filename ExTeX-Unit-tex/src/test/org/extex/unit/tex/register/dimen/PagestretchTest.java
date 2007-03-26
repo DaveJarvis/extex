@@ -31,7 +31,7 @@ public class PagestretchTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PagestretchTest.class);
     }
@@ -41,7 +41,7 @@ public class PagestretchTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public PagestretchTest(final String arg) {
+    public PagestretchTest(String arg) {
 
         super(arg, "pagestretch", "", "0.0pt");
     }

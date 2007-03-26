@@ -146,7 +146,7 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
          *
          * @see org.extex.unit.tex.register.count.Numexpr.BinOp#apply(long, long)
          */
-        public long apply(final long arg1, final long arg2) {
+        public long apply(long arg1, long arg2) {
 
             return arg2;
         }
@@ -167,7 +167,7 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
          *
          * @see org.extex.unit.tex.register.count.Numexpr.BinOp#apply(long, long)
          */
-        public long apply(final long arg1, final long arg2) {
+        public long apply(long arg1, long arg2) {
 
             return arg1 + arg2;
         }
@@ -188,7 +188,7 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
          *
          * @see org.extex.unit.tex.register.count.Numexpr.BinOp#apply(long, long)
          */
-        public long apply(final long arg1, final long arg2) {
+        public long apply(long arg1, long arg2) {
 
             return arg1 - arg2;
         }
@@ -215,7 +215,7 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
      *
      * @param name the name for debugging
      */
-    public Numexpr(final String name) {
+    public Numexpr(String name) {
 
         super(name);
     }
@@ -234,13 +234,13 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.CountConvertible#convertCount(
+     * @see org.extex.core.count.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public long convertCount(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         long result = evalExpr(context, source, typesetter);
         Token t = source.getToken(context);
@@ -262,8 +262,8 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
      *
      * @throws InterpreterException in case of an error
      */
-    private long evalExpr(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    private long evalExpr(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         long saveVal = 0;
         BinOp op = SECOND;
@@ -313,8 +313,8 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
      *
      * @throws InterpreterException in case of an error
      */
-    public long evalOperand(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public long evalOperand(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         Token t = source.getNonSpace(context);
         if (t == null) {
@@ -358,8 +358,8 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter)
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 CatcodeException {
 

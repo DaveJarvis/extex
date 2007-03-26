@@ -67,7 +67,7 @@ public class Pagedir extends AbstractDirCode {
      *
      * @param name the name for debugging
      */
-    public Pagedir(final String name) {
+    public Pagedir(String name) {
 
         super(name);
     }
@@ -91,8 +91,8 @@ public class Pagedir extends AbstractDirCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 

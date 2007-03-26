@@ -33,7 +33,7 @@ public class UnskipTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(UnskipTest.class);
     }
@@ -43,7 +43,7 @@ public class UnskipTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public UnskipTest(final String arg) {
+    public UnskipTest(String arg) {
 
         super(arg, "unskip", "", "a");
     }

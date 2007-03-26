@@ -61,7 +61,7 @@ public class MacroPattern extends Tokens {
      * @param tokens the tokens contained
      * @param theArity the number of parameters
      */
-    public MacroPattern(final Tokens tokens, final int theArity) {
+    public MacroPattern(Tokens tokens, int theArity) {
 
         super();
         add(tokens);
@@ -84,7 +84,7 @@ public class MacroPattern extends Tokens {
      *
      * @param arity the new arity
      */
-    public void setArity(final int arity) {
+    public void setArity(int arity) {
 
         this.arity = arity;
     }

@@ -33,7 +33,7 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(SetboxTest.class);
     }
@@ -43,7 +43,7 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public SetboxTest(final String arg) {
+    public SetboxTest(String arg) {
 
         super(arg, "setbox", "1=\\hbox{}", "0");
     }

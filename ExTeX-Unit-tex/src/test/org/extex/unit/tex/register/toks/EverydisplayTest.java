@@ -34,7 +34,7 @@ public class EverydisplayTest extends AbstractToksRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(EverydisplayTest.class);
     }
@@ -44,7 +44,7 @@ public class EverydisplayTest extends AbstractToksRegisterTester {
      *
      * @param arg the name
      */
-    public EverydisplayTest(final String arg) {
+    public EverydisplayTest(String arg) {
 
         super(arg, "everydisplay", "", "");
     }

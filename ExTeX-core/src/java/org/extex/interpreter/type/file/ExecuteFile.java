@@ -24,7 +24,6 @@ import java.util.logging.Logger;
 
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.scanner.type.tokens.Tokens;
 
 /**
@@ -53,7 +52,7 @@ public class ExecuteFile extends OutFile {
      *
      * @param logger the target Logger
      */
-    public ExecuteFile(final Logger logger) {
+    public ExecuteFile(Logger logger) {
 
         super(null);
         this.logger = logger;
@@ -68,6 +67,7 @@ public class ExecuteFile extends OutFile {
      */
     public void close() throws IOException {
 
+        // nothing to do
     }
 
     /**
@@ -89,6 +89,7 @@ public class ExecuteFile extends OutFile {
      */
     public void open() {
 
+        // nothing to do
     }
 
     /**
@@ -96,13 +97,12 @@ public class ExecuteFile extends OutFile {
      *
      * @param toks tokens to write
      *
-     * @throws InterpreterException in case of an error
      * @throws IOException in case of an IO error
      *
      * @see org.extex.interpreter.type.file.OutFile#write(
      *      org.extex.scanner.type.tokens.Tokens)
      */
-    public void write(final Tokens toks) throws IOException {
+    public void write(Tokens toks) throws IOException {
 
         Localizer localizer = LocalizerFactory.getLocalizer(ExecuteFile.class);
         String command = toks.toText();

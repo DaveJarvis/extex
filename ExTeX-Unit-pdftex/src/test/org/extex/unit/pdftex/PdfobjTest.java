@@ -34,7 +34,7 @@ public class PdfobjTest extends NoFlagsButImmediateAndProtectedPrimitiveTester {
      *
      * @param arg the name
      */
-    public PdfobjTest(final String arg) {
+    public PdfobjTest(String arg) {
 
         super(arg, "pdfobj", "{}");
         setConfig("pdftex-test");

@@ -31,7 +31,7 @@ public class XspaceskipTest extends AbstractSkipRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(XspaceskipTest.class);
     }
@@ -41,7 +41,7 @@ public class XspaceskipTest extends AbstractSkipRegisterTester {
      *
      * @param arg the name
      */
-    public XspaceskipTest(final String arg) {
+    public XspaceskipTest(String arg) {
 
         super(arg, "xspaceskip", "", "0.0pt");
     }

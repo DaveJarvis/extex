@@ -34,7 +34,7 @@ public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(AdvanceTest.class);
     }
@@ -44,7 +44,7 @@ public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public AdvanceTest(final String arg) {
+    public AdvanceTest(String arg) {
 
         super(arg, "advance", "\\count0 1 ");
     }

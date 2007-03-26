@@ -35,7 +35,7 @@ public class TextdirTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(TextdirTest.class);
     }
@@ -45,7 +45,7 @@ public class TextdirTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public TextdirTest(final String arg) {
+    public TextdirTest(String arg) {
 
         super(arg, "textdir", " LRL");
         setConfig("omega-test");

@@ -65,8 +65,8 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
      * @param init the default value
      * @param max ...
      */
-    public AbstractCharMapTester(final String arg, final String primitive,
-            final String args, final String init, final String max) {
+    public AbstractCharMapTester(String arg, String primitive,
+            String args, String init, String max) {
 
         super(arg);
         this.primitive = primitive;

@@ -34,7 +34,7 @@ public class CurrentifbranchTest extends AbstractReadonlyCountRegisterTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(CurrentifbranchTest.class);
     }
@@ -44,7 +44,7 @@ public class CurrentifbranchTest extends AbstractReadonlyCountRegisterTester {
      *
      * @param arg the name
      */
-    public CurrentifbranchTest(final String arg) {
+    public CurrentifbranchTest(String arg) {
 
         super(arg, "currentifbranch", "0");
         setConfig("etex-test");

@@ -19,23 +19,22 @@
 
 package org.extex.font;
 
-import org.extex.font.FontByteArray;
-
 /**
  * Class for a pfb-font-file.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4728 $
  */
-public class PfbFontByteArray extends AbstractFontByteArray implements
-        FontByteArray {
+public class PfbFontByteArray extends AbstractFontByteArray
+        implements
+            FontByteArray {
 
     /**
      * Create a new object
      * 
      * @param b the byte array
      */
-    public PfbFontByteArray(final byte[] b) {
+    public PfbFontByteArray(byte[] b) {
 
         super(b);
     }

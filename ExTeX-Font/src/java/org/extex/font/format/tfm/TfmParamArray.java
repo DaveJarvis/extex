@@ -88,8 +88,8 @@ public class TfmParamArray implements Serializable {
      * @param ft    the font type
      * @throws IOException if an IO-error occurs.
      */
-    public TfmParamArray(final RandomAccessR rar, final int size,
-            final TfmFontType ft) throws IOException {
+    public TfmParamArray(RandomAccessR rar, int size,
+            TfmFontType ft) throws IOException {
 
         fonttpye = ft;
 
@@ -122,7 +122,7 @@ public class TfmParamArray implements Serializable {
      * @param id    the id
      * @return Returns the label of the parameter.
      */
-    public String getLabelName(final int id) {
+    public String getLabelName(int id) {
 
         String label = "";
         String[] labels = null;
@@ -154,7 +154,7 @@ public class TfmParamArray implements Serializable {
      * @param name  The name of the parameter.
      * @return Returns the parameter with the name <code>name</code>.
      */
-    public TfmFixWord getParam(final String name) {
+    public TfmFixWord getParam(String name) {
 
         TfmFixWord value = (TfmFixWord) param.get(name);
         return value == null ? TfmFixWord.ZERO : value;

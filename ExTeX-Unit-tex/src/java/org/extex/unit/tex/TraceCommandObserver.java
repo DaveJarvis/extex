@@ -62,7 +62,7 @@ public class TraceCommandObserver implements CommandObserver {
      * @param context the interpreter context for access to
      *  <tt>\tracingonline</tt>
      */
-    public TraceCommandObserver(final Logger theLogger, final Context context) {
+    public TraceCommandObserver(Logger theLogger, Context context) {
 
         super();
         this.logger = theLogger;
@@ -76,7 +76,7 @@ public class TraceCommandObserver implements CommandObserver {
      *
      * @param token the token to be expanded
      */
-    public void update(final Token token) {
+    public void update(Token token) {
 
         long tracing = context.getCount("tracingcommands").getValue();
 

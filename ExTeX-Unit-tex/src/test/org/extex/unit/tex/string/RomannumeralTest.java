@@ -34,7 +34,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(RomannumeralTest.class);
     }
@@ -44,7 +44,7 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public RomannumeralTest(final String arg) {
+    public RomannumeralTest(String arg) {
 
         super(arg, "romannumeral", "1");
     }

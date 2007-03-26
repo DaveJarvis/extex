@@ -70,7 +70,7 @@ public class Pdflastobj extends AbstractPdftexCode
      *
      * @param name the name for tracing and debugging
      */
-    public Pdflastobj(final String name) {
+    public Pdflastobj(String name) {
 
         super(name);
     }
@@ -89,13 +89,13 @@ public class Pdflastobj extends AbstractPdftexCode
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.CountConvertible#convertCount(
+     * @see org.extex.core.count.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public long convertCount(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         PdftexSupport writer = ensurePdftex(context, typesetter);
 
@@ -121,8 +121,8 @@ public class Pdflastobj extends AbstractPdftexCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens convertTokens(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public Tokens convertTokens(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         try {
@@ -148,8 +148,8 @@ public class Pdflastobj extends AbstractPdftexCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         return convertTokens(context, source, typesetter);
 

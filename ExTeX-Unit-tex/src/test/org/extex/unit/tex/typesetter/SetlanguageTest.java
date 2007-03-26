@@ -33,7 +33,7 @@ public class SetlanguageTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(SetlanguageTest.class);
     }
@@ -43,7 +43,7 @@ public class SetlanguageTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public SetlanguageTest(final String arg) {
+    public SetlanguageTest(String arg) {
 
         super(arg, "setlanguage", "1");
     }

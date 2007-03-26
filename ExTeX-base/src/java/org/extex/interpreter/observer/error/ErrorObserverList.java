@@ -39,8 +39,8 @@ public final class ErrorObserverList implements ErrorObserver {
      *
      * @return the input list or a new one with the observer added
      */
-    public static ErrorObserver register(final ErrorObserver list,
-            final ErrorObserver observer) {
+    public static ErrorObserver register(ErrorObserver list,
+            ErrorObserver observer) {
 
         if (list instanceof ErrorObserverList) {
             ((ErrorObserverList) list).add(observer);
@@ -60,14 +60,14 @@ public final class ErrorObserverList implements ErrorObserver {
     /**
      * The field <tt>list</tt> contains the encapsulated list.
      */
-    private List list = new ArrayList();
+    private List<ErrorObserver> list = new ArrayList<ErrorObserver>();
 
     /**
      * Add an observer to the list.
      *
      * @param observer the observer to add to the list
      */
-    public void add(final ErrorObserver observer) {
+    public void add(ErrorObserver observer) {
 
         list.add(observer);
     }
@@ -80,11 +80,10 @@ public final class ErrorObserverList implements ErrorObserver {
      * @see org.extex.interpreter.observer.error.ErrorObserver#update(
      *      java.lang.Exception)
      */
-    public void update(final Exception e) {
+    public void update(Exception e) {
 
-        int size = list.size();
-        for (int i = 0; i < size; i++) {
-            ((ErrorObserver) list.get(i)).update(e);
+        for (ErrorObserver obs : list) {
+            obs.update(e);
         }
     }
 

@@ -33,7 +33,7 @@ public class TracingparagraphsTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(TracingparagraphsTest.class);
     }
@@ -43,7 +43,7 @@ public class TracingparagraphsTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public TracingparagraphsTest(final String arg) {
+    public TracingparagraphsTest(String arg) {
 
         super(arg, "tracingparagraphs", "", "0");
         setDefaultLog(null); // ignore log output in some inherited test cases

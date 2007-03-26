@@ -23,9 +23,9 @@ import java.util.Map;
 
 /**
  * TODO gene: missing JavaDoc.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5413 $
  */
 public class Key {
 
@@ -61,10 +61,10 @@ public class Key {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param a the attributes
      */
-    public Key(final Map a) {
+    public Key(Map a) {
 
         thePackage = (String) a.get("package");
         theClass = (String) a.get("class");
@@ -75,7 +75,7 @@ public class Key {
 
     /**
      * Getter for theClass.
-     *
+     * 
      * @return the theClass
      */
     public String getTheClass() {
@@ -85,7 +85,7 @@ public class Key {
 
     /**
      * Getter for theMethod.
-     *
+     * 
      * @return the theMethod
      */
     public String getTheMethod() {
@@ -95,7 +95,7 @@ public class Key {
 
     /**
      * Getter for theName.
-     *
+     * 
      * @return the theName
      */
     public String getTheName() {
@@ -105,7 +105,7 @@ public class Key {
 
     /**
      * Getter for thePackage.
-     *
+     * 
      * @return the thePackage
      */
     public String getThePackage() {
@@ -115,7 +115,7 @@ public class Key {
 
     /**
      * Getter for theType.
-     *
+     * 
      * @return the theType
      */
     public String getTheType() {
@@ -125,7 +125,7 @@ public class Key {
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @return ...
      */
     public String toString() {
@@ -158,7 +158,7 @@ public class Key {
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @return ...
      */
     public String getLocation() {
@@ -179,12 +179,12 @@ public class Key {
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @param p ...
-     *
+     * 
      * @return ...
      */
-    protected String tuneKey(final String p) {
+    protected String tuneKey(String p) {
 
         return p.replaceFirst("^org.extex.", "");
     }

@@ -57,7 +57,7 @@ public class ExplicitKernNode extends AbstractKernNode implements Discardable {
      *
      * @see "<logo>TeX</logo> &ndash; The Program [156]"
      */
-    public ExplicitKernNode(final FixedDimen kern, final boolean horizontal) {
+    public ExplicitKernNode(FixedDimen kern, boolean horizontal) {
 
         super(kern, horizontal);
     }
@@ -78,8 +78,8 @@ public class ExplicitKernNode extends AbstractKernNode implements Discardable {
      *      int,
      *      int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         sb.append(getLocalizer().format("String.Format", //
             getWidth().toString()));
@@ -98,7 +98,7 @@ public class ExplicitKernNode extends AbstractKernNode implements Discardable {
      *      java.lang.StringBuffer,
      *      java.lang.String)
      */
-    public void toText(final StringBuffer sb, final String prefix) {
+    public void toText(StringBuffer sb, String prefix) {
 
         sb.append(getLocalizer().format("Text.Format", getWidth().toString()));
     }

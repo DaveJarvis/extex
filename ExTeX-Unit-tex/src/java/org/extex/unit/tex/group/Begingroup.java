@@ -72,7 +72,7 @@ public class Begingroup extends AbstractCode {
      *
      * @param name the name for debugging
      */
-    public Begingroup(final String name) {
+    public Begingroup(String name) {
 
         super(name);
     }
@@ -88,7 +88,6 @@ public class Begingroup extends AbstractCode {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
-     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -96,8 +95,8 @@ public class Begingroup extends AbstractCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         context.openGroup(GroupType.SEMI_SIMPLE_GROUP, source.getLocator(),

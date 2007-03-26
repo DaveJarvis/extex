@@ -70,7 +70,7 @@ public class Insert extends AbstractCode {
      *
      * @param name the name for tracing and debugging
      */
-    public Insert(final String name) {
+    public Insert(String name) {
 
         super(name);
     }
@@ -94,8 +94,8 @@ public class Insert extends AbstractCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException, ConfigurationException {
 
         Flags f = prefix.copy();

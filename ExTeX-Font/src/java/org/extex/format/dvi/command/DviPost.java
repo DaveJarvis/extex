@@ -81,9 +81,9 @@ public class DviPost extends DviCommand {
      * @param s     the stack depth
      * @param t     the total pages
      */
-    public DviPost(final int oc, final int sp, final int p, final int anum,
-            final int aden, final int amag, final int l, final int u,
-            final int s, final int t) {
+    public DviPost(int oc, int sp, int p, int anum,
+            int aden, int amag, int l, int u,
+            int s, int t) {
 
         super(oc, sp);
         pointer = p;

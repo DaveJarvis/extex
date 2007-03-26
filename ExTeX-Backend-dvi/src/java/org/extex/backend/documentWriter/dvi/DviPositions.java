@@ -75,8 +75,8 @@ public class DviPositions implements Cloneable {
      * @param y for repeated vertical space
      * @param z for repeated vertical space
      */
-    public DviPositions(final int h, final int v, final int w, final int x,
-            final int y, final int z) {
+    public DviPositions(int h, int v, int w, int x,
+            int y, int z) {
 
         super();
         dviH = h;
@@ -92,7 +92,7 @@ public class DviPositions implements Cloneable {
      *
      * @return a clone of this instance
      */
-    public Object clone() {
+    public DviPositions clone() {
 
         DviPositions obj;
 
@@ -116,7 +116,7 @@ public class DviPositions implements Cloneable {
      *
      * @param increment for incrementing
      */
-    public void addToH(final int increment) {
+    public void addToH(int increment) {
 
         dviH += increment;
     }
@@ -126,7 +126,7 @@ public class DviPositions implements Cloneable {
      *
      * @param increment for incrementing
      */
-    public void addToV(final int increment) {
+    public void addToV(int increment) {
 
         dviV += increment;
     }

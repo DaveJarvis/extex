@@ -59,7 +59,7 @@ public class EncReader implements Serializable {
      * @param in    input stream for reading
      * @throws FontException if an IO-error occurred
      */
-    public EncReader(final InputStream in) throws FontException {
+    public EncReader(InputStream in) throws FontException {
 
         try {
             BufferedReader reader = new BufferedReader(
@@ -122,7 +122,7 @@ public class EncReader implements Serializable {
      * @param name  The glyph name.
      * @return Returns the position of the glyph in the table or -1 if not found.
      */
-    public int getPosition(final String name) {
+    public int getPosition(String name) {
 
         String n = "/" + name.replaceAll("/", "");
 

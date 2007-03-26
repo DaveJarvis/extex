@@ -45,7 +45,7 @@ public class PfbStartMarkerMissingException extends PfbException {
      *
      * @param message   the message
      */
-    public PfbStartMarkerMissingException(final String message) {
+    public PfbStartMarkerMissingException(String message) {
 
         super(message);
     }

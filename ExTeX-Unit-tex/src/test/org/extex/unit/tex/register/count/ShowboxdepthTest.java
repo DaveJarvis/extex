@@ -33,7 +33,7 @@ public class ShowboxdepthTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ShowboxdepthTest.class);
     }
@@ -43,7 +43,7 @@ public class ShowboxdepthTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public ShowboxdepthTest(final String arg) {
+    public ShowboxdepthTest(String arg) {
 
         super(arg, "showboxdepth", "", "0");
     }

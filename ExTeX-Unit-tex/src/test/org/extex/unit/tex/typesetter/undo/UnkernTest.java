@@ -33,7 +33,7 @@ public class UnkernTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(UnkernTest.class);
     }
@@ -43,7 +43,7 @@ public class UnkernTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public UnkernTest(final String arg) {
+    public UnkernTest(String arg) {
 
         super(arg, "unkern", "", "\\kern1pt");
     }

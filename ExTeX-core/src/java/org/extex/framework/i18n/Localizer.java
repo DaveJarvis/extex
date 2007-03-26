@@ -125,7 +125,7 @@ public interface Localizer extends Serializable {
      *
      * @return the expanded format string
      */
-    String format(final String fmt, final Object[] a);
+    String format(String fmt, Object[] a);
 
     /**
      * Getter for the value of a format string associated to a given key.

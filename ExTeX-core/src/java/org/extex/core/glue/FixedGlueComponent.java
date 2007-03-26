@@ -48,7 +48,7 @@ public interface FixedGlueComponent {
      *
      * @return <code>true</code> iff <i>|this| == |d| and ord(this) == ord(d)</i>
      */
-    boolean eq(final FixedGlueComponent d);
+    boolean eq(FixedGlueComponent d);
 
     /**
      * Compares the current instance with another GlueComponent.
@@ -57,7 +57,7 @@ public interface FixedGlueComponent {
      *
      * @return <code>true</code> iff this is greater or equal to d
      */
-    boolean ge(final FixedGlueComponent d);
+    boolean ge(FixedGlueComponent d);
 
     /**
      * Getter for order.
@@ -81,7 +81,7 @@ public interface FixedGlueComponent {
      * @return <code>true</code> iff <i>ord(this) == ord(d) && |this| &gt; |d|</i>
      * or <i>ord(this) &gt; ord(d)</i>
      */
-    boolean gt(final FixedGlueComponent d);
+    boolean gt(FixedGlueComponent d);
 
     /**
      * Compares the current instance with another GlueComponent.
@@ -90,7 +90,7 @@ public interface FixedGlueComponent {
      *
      * @return <code>true</code> iff this is less or equal to d
      */
-    boolean le(final FixedGlueComponent d);
+    boolean le(FixedGlueComponent d);
 
     /**
      * Compares the current instance with another GlueComponent.
@@ -100,7 +100,7 @@ public interface FixedGlueComponent {
      * @return <code>true</code> iff <i>ord(this) == ord(d) && |this| &lt; |d|</i>
      * or <i>ord(this) &lt; ord(d)</i>
      */
-    boolean lt(final FixedGlueComponent d);
+    boolean lt(FixedGlueComponent d);
 
     /**
      * Compares the current instance with another GlueComponent for equality.
@@ -110,7 +110,7 @@ public interface FixedGlueComponent {
      *
      * @return <code>false</code> iff <i>|this| == |d| and ord(this) == ord(d)</i>
      */
-    boolean ne(final FixedGlueComponent d);
+    boolean ne(FixedGlueComponent d);
 
     /**
      * Determine the printable representation of the object.
@@ -130,7 +130,7 @@ public interface FixedGlueComponent {
      *
      * @see #toString()
      */
-    void toString(final StringBuffer sb);
+    void toString(StringBuffer sb);
 
     /**
      * Determine the printable representation of the object and return it as a

@@ -63,8 +63,8 @@ public class DviPre extends DviCommand {
      * @param amag  the mag
      * @param com   the comment
      */
-    public DviPre(final int oc, final int sp, final int i, final int anum,
-            final int aden, final int amag, final String com) {
+    public DviPre(int oc, int sp, int i, int anum,
+            int aden, int amag, String com) {
 
         super(oc, sp);
         identifier = i;

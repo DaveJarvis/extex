@@ -46,7 +46,7 @@ public class NamedOutputStream extends OutputStream {
      * @param name the name
      * @param stream the stream
      */
-    public NamedOutputStream(final String name, final OutputStream stream) {
+    public NamedOutputStream(String name, OutputStream stream) {
 
         super();
         this.name = name;
@@ -78,7 +78,7 @@ public class NamedOutputStream extends OutputStream {
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
-    public boolean equals(final Object obj) {
+    public boolean equals(Object obj) {
 
         return this.stream.equals(obj);
     }
@@ -147,7 +147,7 @@ public class NamedOutputStream extends OutputStream {
      *
      * @see java.io.OutputStream#write(byte[])
      */
-    public void write(final byte[] b) throws IOException {
+    public void write(byte[] b) throws IOException {
 
         this.stream.write(b);
     }
@@ -165,7 +165,7 @@ public class NamedOutputStream extends OutputStream {
      *
      * @see java.io.OutputStream#write(byte[], int, int)
      */
-    public void write(final byte[] b, final int off, final int len)
+    public void write(byte[] b, int off, int len)
             throws IOException {
 
         this.stream.write(b, off, len);
@@ -181,7 +181,7 @@ public class NamedOutputStream extends OutputStream {
      *
      * @see java.io.OutputStream#write(int)
      */
-    public void write(final int b) throws IOException {
+    public void write(int b) throws IOException {
 
         this.stream.write(b);
     }

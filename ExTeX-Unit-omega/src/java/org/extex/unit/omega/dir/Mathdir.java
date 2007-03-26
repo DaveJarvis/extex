@@ -67,7 +67,7 @@ public class Mathdir extends AbstractDirCode {
      *
      * @param name the name for debugging
      */
-    public Mathdir(final String name) {
+    public Mathdir(String name) {
 
         super(name);
     }
@@ -91,8 +91,8 @@ public class Mathdir extends AbstractDirCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 

@@ -39,6 +39,7 @@ public final class StripPath {
      */
     private StripPath() {
 
+        // not used
     }
 
     /**
@@ -46,7 +47,7 @@ public final class StripPath {
      *
      * @param arg the command line arguments
      */
-    public static void main(final String[] arg) {
+    public static void main(String[] arg) {
 
         for (int i = 0; i < arg.length; i++) {
             try {
@@ -68,7 +69,7 @@ public final class StripPath {
      *
      * @throws IOException in case of an error
      */
-    private static void process(final String name) throws IOException {
+    private static void process(String name) throws IOException {
 
         LineNumberReader reader = new LineNumberReader(new FileReader(name));
         String line;

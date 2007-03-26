@@ -32,7 +32,7 @@ public class MathpunctTest extends AbstractOperatorTester {
      *
      * @param arg the name
      */
-    public MathpunctTest(final String arg) {
+    public MathpunctTest(String arg) {
 
         super(arg, "mathpunct");
     }

@@ -35,7 +35,7 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(CurrentgrouptypeTest.class);
     }
@@ -45,7 +45,7 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
      *
      * @param arg the name
      */
-    public CurrentgrouptypeTest(final String arg) {
+    public CurrentgrouptypeTest(String arg) {
 
         super(arg, "currentgrouptype", "0");
         setConfig("etex-test");

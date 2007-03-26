@@ -71,7 +71,7 @@ public class Ifvoid extends AbstractIf {
      *
      * @param name the name for debugging
      */
-    public Ifvoid(final String name) {
+    public Ifvoid(String name) {
 
         super(name);
     }
@@ -95,8 +95,8 @@ public class Ifvoid extends AbstractIf {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public boolean conditional(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         String key = Setbox.getKey(context, source, typesetter, getName());

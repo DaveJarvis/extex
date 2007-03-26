@@ -34,7 +34,7 @@ public class ScriptstyleTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public ScriptstyleTest(final String arg) {
+    public ScriptstyleTest(String arg) {
 
         super(arg, "scriptstyle", "");
     }

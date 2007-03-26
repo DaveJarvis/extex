@@ -86,8 +86,8 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case or an error
          */
-        public Object visit(final CatcodeVisitor visitor, final Object arg1,
-                final Object arg2, final Object arg3) throws Exception {
+        public Object visit(CatcodeVisitor visitor, Object arg1,
+                Object arg2, Object arg3) throws Exception {
 
             return visitor.visitActive(arg1, arg2, arg3);
         }
@@ -142,8 +142,8 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
-        public Object visit(final CatcodeVisitor visitor, final Object arg1,
-                final Object arg2, final Object arg3) throws Exception {
+        public Object visit(CatcodeVisitor visitor, Object arg1,
+                Object arg2, Object arg3) throws Exception {
 
             return visitor.visitComment(arg1, arg2, arg3);
         }
@@ -197,8 +197,8 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
-        public Object visit(final CatcodeVisitor visitor, final Object arg1,
-                final Object arg2, final Object arg3) throws Exception {
+        public Object visit(CatcodeVisitor visitor, Object arg1,
+                Object arg2, Object arg3) throws Exception {
 
             return visitor.visitCr(arg1, arg2, arg3);
         }
@@ -252,8 +252,8 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
-        public Object visit(final CatcodeVisitor visitor, final Object arg1,
-                final Object arg2, final Object arg3) throws Exception {
+        public Object visit(CatcodeVisitor visitor, Object arg1,
+                Object arg2, Object arg3) throws Exception {
 
             return visitor.visitEscape(arg1, arg2, arg3);
         }
@@ -307,8 +307,8 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
-        public Object visit(final CatcodeVisitor visitor, final Object arg1,
-                final Object arg2, final Object arg3) throws Exception {
+        public Object visit(CatcodeVisitor visitor, Object arg1,
+                Object arg2, Object arg3) throws Exception {
 
             return visitor.visitIgnore(arg1, arg2, arg3);
         }
@@ -362,8 +362,8 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
-        public Object visit(final CatcodeVisitor visitor, final Object arg1,
-                final Object arg2, final Object arg3) throws Exception {
+        public Object visit(CatcodeVisitor visitor, Object arg1,
+                Object arg2, Object arg3) throws Exception {
 
             return visitor.visitInvalid(arg1, arg2, arg3);
         }
@@ -418,8 +418,8 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
-        public Object visit(final CatcodeVisitor visitor, final Object arg1,
-                final Object arg2, final Object arg3) throws Exception {
+        public Object visit(CatcodeVisitor visitor, Object arg1,
+                Object arg2, Object arg3) throws Exception {
 
             return visitor.visitLeftBrace(arg1, arg2, arg3);
         }
@@ -473,8 +473,8 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
-        public Object visit(final CatcodeVisitor visitor, final Object arg1,
-                final Object arg2, final Object arg3) throws Exception {
+        public Object visit(CatcodeVisitor visitor, Object arg1,
+                Object arg2, Object arg3) throws Exception {
 
             return visitor.visitLetter(arg1, arg2, arg3);
         }
@@ -529,8 +529,8 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
-        public Object visit(final CatcodeVisitor visitor, final Object arg1,
-                final Object arg2, final Object arg3) throws Exception {
+        public Object visit(CatcodeVisitor visitor, Object arg1,
+                Object arg2, Object arg3) throws Exception {
 
             return visitor.visitMacroParam(arg1, arg2, arg3);
         }
@@ -585,8 +585,8 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
-        public Object visit(final CatcodeVisitor visitor, final Object arg1,
-                final Object arg2, final Object arg3) throws Exception {
+        public Object visit(CatcodeVisitor visitor, Object arg1,
+                Object arg2, Object arg3) throws Exception {
 
             return visitor.visitMathShift(arg1, arg2, arg3);
         }
@@ -640,8 +640,8 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
-        public Object visit(final CatcodeVisitor visitor, final Object arg1,
-                final Object arg2, final Object arg3) throws Exception {
+        public Object visit(CatcodeVisitor visitor, Object arg1,
+                Object arg2, Object arg3) throws Exception {
 
             return visitor.visitOther(arg1, arg2, arg3);
         }
@@ -696,8 +696,8 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
-        public Object visit(final CatcodeVisitor visitor, final Object arg1,
-                final Object arg2, final Object arg3) throws Exception {
+        public Object visit(CatcodeVisitor visitor, Object arg1,
+                Object arg2, Object arg3) throws Exception {
 
             return visitor.visitRightBrace(arg1, arg2, arg3);
         }
@@ -751,8 +751,8 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
-        public Object visit(final CatcodeVisitor visitor, final Object arg1,
-                final Object arg2, final Object arg3) throws Exception {
+        public Object visit(CatcodeVisitor visitor, Object arg1,
+                Object arg2, Object arg3) throws Exception {
 
             return visitor.visitSpace(arg1, arg2, arg3);
         }
@@ -806,8 +806,8 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
-        public Object visit(final CatcodeVisitor visitor, final Object arg1,
-                final Object arg2, final Object arg3) throws Exception {
+        public Object visit(CatcodeVisitor visitor, Object arg1,
+                Object arg2, Object arg3) throws Exception {
 
             return visitor.visitSubMark(arg1, arg2, arg3);
         }
@@ -861,8 +861,8 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
-        public Object visit(final CatcodeVisitor visitor, final Object arg1,
-                final Object arg2, final Object arg3) throws Exception {
+        public Object visit(CatcodeVisitor visitor, Object arg1,
+                Object arg2, Object arg3) throws Exception {
 
             return visitor.visitSupMark(arg1, arg2, arg3);
         }
@@ -916,8 +916,8 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
-        public Object visit(final CatcodeVisitor visitor, final Object arg1,
-                final Object arg2, final Object arg3) throws Exception {
+        public Object visit(CatcodeVisitor visitor, Object arg1,
+                Object arg2, Object arg3) throws Exception {
 
             return visitor.visitTabMark(arg1, arg2, arg3);
         }
@@ -980,7 +980,7 @@ public abstract class Catcode implements Serializable {
 
     /**
      * The constant <tt>MACROPARAM</tt> contains the unique object representing
-     * the macro param catcode.
+     * the macro parameter catcode.
      */
     public static final Catcode MACROPARAM = new CatcodeMacroParam();
 
@@ -1051,7 +1051,7 @@ public abstract class Catcode implements Serializable {
      *
      * @return the catcode as integer
      */
-    public static int getCode(final Catcode cc) {
+    public static int getCode(Catcode cc) {
 
         for (int i = 0; i < CATCODES.length; i++) {
             if (CATCODES[i] == cc) {
@@ -1081,7 +1081,7 @@ public abstract class Catcode implements Serializable {
      * @throws CatcodeException in case that the catcode is not in the
      *     allowed range
      */
-    public static Catcode toCatcode(final int theCode) throws CatcodeException {
+    public static Catcode toCatcode(int theCode) throws CatcodeException {
 
         if (theCode < 0 || theCode >= CATCODES.length) {
             throw new CatcodeException(Integer.toString(theCode));
@@ -1097,6 +1097,7 @@ public abstract class Catcode implements Serializable {
      */
     private Catcode() {
 
+        super();
     }
 
     /**
@@ -1129,8 +1130,8 @@ public abstract class Catcode implements Serializable {
      *
      * @throws Exception in case of an error
      */
-    public abstract Object visit(final CatcodeVisitor visitor,
-            final Object arg1, final Object arg2, final Object arg3)
+    public abstract Object visit(CatcodeVisitor visitor,
+            Object arg1, Object arg2, Object arg3)
             throws Exception;
 
 }

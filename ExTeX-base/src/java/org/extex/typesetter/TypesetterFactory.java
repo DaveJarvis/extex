@@ -104,7 +104,8 @@ public class TypesetterFactory extends AbstractFactory {
      *
      * @throws ConfigurationException in case of an configuration error
      */
-    private NodeFactory makeNodeFactory(final Configuration config) {
+    private NodeFactory makeNodeFactory(Configuration config)
+            throws ConfigurationException {
 
         Configuration cfg = config.getConfiguration("NodeFactory");
         NodeFactory nodeFactory =
@@ -133,8 +134,8 @@ public class TypesetterFactory extends AbstractFactory {
      * @throws ConfigurationException in case of an configuration error
      * @throws TypesetterException in case of an error
      */
-    private PageBuilder makePageBuilder(final Configuration config,
-            final Context context, final Typesetter typesetter)
+    private PageBuilder makePageBuilder(Configuration config,
+            Context context, Typesetter typesetter)
             throws TypesetterException {
 
         Configuration cfg = config.getConfiguration("PageBuilder");
@@ -161,8 +162,8 @@ public class TypesetterFactory extends AbstractFactory {
      *
      * @throws ConfigurationException in case of an configuration error
      */
-    private ParagraphBuilder makeParagraphBuilder(final Configuration config,
-            final TypesetterOptions options, final NodeFactory nodeFactory) {
+    private ParagraphBuilder makeParagraphBuilder(Configuration config,
+            TypesetterOptions options, NodeFactory nodeFactory) {
 
         Configuration cfg = config.getConfiguration("ParagraphBuilder");
         ParagraphBuilder builder =
@@ -193,8 +194,8 @@ public class TypesetterFactory extends AbstractFactory {
      * @throws ConfigurationException in case of an configuration error
      * @throws TypesetterException in case of another error
      */
-    public Typesetter newInstance(final String type, final Context context,
-            final BackendDriver backend) throws TypesetterException {
+    public Typesetter newInstance(String type, Context context,
+            BackendDriver backend) throws TypesetterException {
 
         Configuration cfg = selectConfiguration(type);
 

@@ -79,7 +79,7 @@ public final class Dvi2Xml {
      * @param args      the comandlinearguments
      * @throws Exception  in case of an error
      */
-    public static void main(final String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
         if (args.length != PARAMETER) {
             System.err
@@ -122,8 +122,8 @@ public final class Dvi2Xml {
      * @param start     <code>boolean</code> print the starttag or the enttag
      * @throws IOException if an IO-error occurs
      */
-    private static void printElement(final Element element,
-            final BufferedWriter out, final boolean start) throws IOException {
+    private static void printElement(Element element,
+            BufferedWriter out, boolean start) throws IOException {
 
         if (!start) {
             out.write("</");
@@ -146,8 +146,8 @@ public final class Dvi2Xml {
      * @param encoding      the xml encoding
      * @throws IOException if an IO-error occurs
      */
-    private static void printDeclaration(final BufferedWriter out,
-            final String version, final String encoding) throws IOException {
+    private static void printDeclaration(BufferedWriter out,
+            String version, String encoding) throws IOException {
 
         out.write("<?xml version=\"" + version + "\"");
         out.write(" encoding=\"" + encoding + "\"");
@@ -188,7 +188,7 @@ public final class Dvi2Xml {
      * @throws ConfigurationException in case that some kind of problems have
      * been detected in the configuration
      */
-    protected static FontFactory makeFontFactory(final Configuration config)
+    protected static FontFactory makeFontFactory(Configuration config)
             throws ConfigurationException {
 
         FontFactory fontFactory;

@@ -23,11 +23,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Properties;
 
-import org.extex.core.StringList;
-import org.extex.core.StringListIterator;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
@@ -133,7 +133,7 @@ public class FileFinder extends AbstractFinder implements PropertyConfigurable {
      *
      * @throws ConfigurationMissingException in case of an error
      */
-    public FileFinder(final Configuration configuration)
+    public FileFinder(Configuration configuration)
             throws ConfigurationMissingException {
 
         super(configuration);
@@ -149,13 +149,11 @@ public class FileFinder extends AbstractFinder implements PropertyConfigurable {
      * @return the input stream for the file or <code>null</code> if none was
      *  found.
      */
-    private InputStream find(final String name, final String path,
-            final Configuration cfg) {
+    private InputStream find(String name, String path,
+            Configuration cfg) {
 
-        StringListIterator extIt = cfg.getValues(EXTENSION_TAG).getIterator();
+        for (String ext : cfg.getValues(EXTENSION_TAG)) {
 
-        while (extIt.hasNext()) {
-            String ext = extIt.next();
             File file = new File(path, name + ext);
 
             trace("Try", file.toString(), null);
@@ -185,11 +183,11 @@ public class FileFinder extends AbstractFinder implements PropertyConfigurable {
      * @return the input stream for the file or <code>null</code> if none was
      *  found.
      */
-    private InputStream find(final String name, final StringList paths,
-            final Configuration cfg) {
+    private InputStream find(String name, List<String> paths,
+            Configuration cfg) {
 
         InputStream stream = null;
-        StringListIterator iterator = paths.getIterator();
+        Iterator<String> iterator = paths.iterator();
 
         while (stream == null && iterator.hasNext()) {
             String p = iterator.next();
@@ -203,7 +201,7 @@ public class FileFinder extends AbstractFinder implements PropertyConfigurable {
      * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
      *      java.lang.String)
      */
-    public InputStream findResource(final String name, final String type)
+    public InputStream findResource(String name, String type)
             throws ConfigurationException {
 
         trace("Searching", name, type);
@@ -229,10 +227,13 @@ public class FileFinder extends AbstractFinder implements PropertyConfigurable {
             if (prop != null) {
                 String path = properties.getProperty(prop, null);
                 if (path != null) {
-                    stream =
-                            find(name, //
-                                new StringList(path, System.getProperty(
-                                    "path.separator", ":")), cfg);
+                    List<String> list = new ArrayList<String>();
+                    for (String s : path.split(System.getProperty(
+                        "path.separator", ":"))) {
+                        list.add(s);
+                    }
+
+                    stream = find(name, list, cfg);
                 } else {
                     trace("UndefinedProperty", prop, null);
                 }
@@ -252,7 +253,7 @@ public class FileFinder extends AbstractFinder implements PropertyConfigurable {
      * @see org.extex.resource.PropertyConfigurable#setProperties(
      *      java.util.Properties)
      */
-    public void setProperties(final Properties properties) {
+    public void setProperties(Properties properties) {
 
         this.properties = properties;
     }

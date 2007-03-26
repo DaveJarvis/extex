@@ -31,7 +31,7 @@ public class TabskipTest extends AbstractSkipRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(TabskipTest.class);
     }
@@ -41,7 +41,7 @@ public class TabskipTest extends AbstractSkipRegisterTester {
      *
      * @param arg the name
      */
-    public TabskipTest(final String arg) {
+    public TabskipTest(String arg) {
 
         super(arg, "tabskip", "", "0.0pt");
     }

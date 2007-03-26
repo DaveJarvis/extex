@@ -32,7 +32,7 @@ public class NolimitsTest extends AbstractLimitsTester {
      *
      * @param arg the name
      */
-    public NolimitsTest(final String arg) {
+    public NolimitsTest(String arg) {
 
         super(arg, "nolimits", "", "\\mathop 123");
     }

@@ -116,6 +116,6 @@ public interface FixedCount {
      *
      * @see #toString()
      */
-    void toString(final StringBuffer sb);
+    void toString(StringBuffer sb);
 
 }

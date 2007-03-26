@@ -34,7 +34,7 @@ public class CurrentiflevelTest extends AbstractReadonlyCountRegisterTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(CurrentiflevelTest.class);
     }
@@ -44,7 +44,7 @@ public class CurrentiflevelTest extends AbstractReadonlyCountRegisterTester {
      *
      * @param arg the name
      */
-    public CurrentiflevelTest(final String arg) {
+    public CurrentiflevelTest(String arg) {
 
         super(arg, "currentiflevel", "0");
         setConfig("etex-test");

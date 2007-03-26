@@ -83,7 +83,7 @@ import org.extex.core.exception.GeneralException;
  *
  * public class MyDocumentWriter implements DocumentWriter {
  *
- *     public void myMethod(final Color color) {
+ *     public void myMethod(Color color) {
  *         <i>// Do something with color depending on its type</i>
  *     }
  * }
@@ -96,15 +96,15 @@ import org.extex.core.exception.GeneralException;
  *
  * public class MyDocumentWriter implements DocumentWriter<b>, ColorVisitor</b> {
  *
- *     public void myMethod(final Color color) {
+ *     public void myMethod(Color color) {
  *         <i>// Do something with color depending on its type</i>
  *     }
  * <b>
- *     public Object visitRgb(final RgbColor color, final Object arg) {
+ *     public Object visitRgb(RgbColor color, Object arg) {
  *         <i>// do something for RGB colors</i>
  *     }
  *
- *     public Object visitGray(final GrayscaleColor color, final Object arg) {
+ *     public Object visitGray(GrayscaleColor color, Object arg) {
  *         <i>// do something for grayscale colors</i>
  *     }
  *
@@ -124,16 +124,16 @@ import org.extex.core.exception.GeneralException;
  *
  * public class MyDocumentWriter implements DocumentWriter, ColorVisitor {
  *
- *     public void myMethod(final Color color) {
+ *     public void myMethod(Color color) {
  *         <b>color.visit(this, "some value");</b>
  *     }
  *
- *     public Object visitRgb(final RgbColor color, final Object arg) {
+ *     public Object visitRgb(RgbColor color, Object arg) {
  *         <b>String s = (String) arg;</b>
  *         <i>// do something for RGB colors</i>
  *     }
  *
- *     public Object visitGray(final GrayscaleColor color, final Object arg) {
+ *     public Object visitGray(GrayscaleColor color, Object arg) {
  *         <b>String s = (String) arg;</b>
  *         <i>// do something for grayscale colors</i>
  *     }

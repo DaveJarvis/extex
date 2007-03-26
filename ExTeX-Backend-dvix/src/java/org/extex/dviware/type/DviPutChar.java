@@ -42,7 +42,7 @@ public class DviPutChar extends AbstractDviCode {
      *
      * @param codePoint ...
      */
-    public DviPutChar(final int codePoint) {
+    public DviPutChar(int codePoint) {
 
         super("put_char" + variant(codePoint));
         this.codePoint = codePoint;
@@ -59,7 +59,7 @@ public class DviPutChar extends AbstractDviCode {
      *
      * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
      */
-    public int write(final OutputStream stream) throws IOException {
+    public int write(OutputStream stream) throws IOException {
 
         return opcode(Dvi.PUT_CHAR1, codePoint, stream);
     }

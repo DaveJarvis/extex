@@ -33,7 +33,7 @@ public class PrevdepthTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PrevdepthTest.class);
     }
@@ -43,7 +43,7 @@ public class PrevdepthTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public PrevdepthTest(final String arg) {
+    public PrevdepthTest(String arg) {
 
         super(arg, "prevdepth", "2pt");
     }

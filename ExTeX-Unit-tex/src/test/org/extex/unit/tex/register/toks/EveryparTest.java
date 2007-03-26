@@ -33,7 +33,7 @@ public class EveryparTest extends AbstractToksRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(EveryparTest.class);
     }
@@ -43,7 +43,7 @@ public class EveryparTest extends AbstractToksRegisterTester {
      *
      * @param arg the name
      */
-    public EveryparTest(final String arg) {
+    public EveryparTest(String arg) {
 
         super(arg, "everypar", "", "");
     }

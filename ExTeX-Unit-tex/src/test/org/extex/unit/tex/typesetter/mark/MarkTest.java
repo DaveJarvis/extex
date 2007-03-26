@@ -33,7 +33,7 @@ public class MarkTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(MarkTest.class);
     }
@@ -43,7 +43,7 @@ public class MarkTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public MarkTest(final String arg) {
+    public MarkTest(String arg) {
 
         super(arg, "mark", "{}");
     }

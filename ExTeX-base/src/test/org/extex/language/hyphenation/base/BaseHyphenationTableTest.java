@@ -134,7 +134,7 @@ public class BaseHyphenationTableTest extends TestCase {
          *
          * @see org.extex.font.type.Fount#getFontDimen(java.lang.String)
          */
-        public FixedDimen getFontDimen(final String key) {
+        public FixedDimen getFontDimen(String key) {
 
             return Dimen.ONE_INCH;
         }
@@ -219,7 +219,7 @@ public class BaseHyphenationTableTest extends TestCase {
          * @see org.extex.interpreter.type.font.Font#hasGlyph(
          *      org.extex.core.UnicodeChar)
          */
-        public boolean hasGlyph(final UnicodeChar uc) {
+        public boolean hasGlyph(UnicodeChar uc) {
 
             return true;
         }
@@ -235,7 +235,7 @@ public class BaseHyphenationTableTest extends TestCase {
          * @see org.extex.interpreter.type.font.Font#setEfCode(org.extex.core.UnicodeChar,
          *      long)
          */
-        public void setEfCode(final UnicodeChar uc, final long code) {
+        public void setEfCode(UnicodeChar uc, long code) {
 
             // TODO gene: setEfcode unimplemented
         }
@@ -249,8 +249,9 @@ public class BaseHyphenationTableTest extends TestCase {
          * @see org.extex.interpreter.type.font.Font#setFontDimen(
          *      java.lang.String, org.extex.core.dimen.Dimen)
          */
-        public void setFontDimen(final String name, final Dimen value) {
+        public void setFontDimen(String name, Dimen value) {
 
+            // nothing to do
         }
 
         /**
@@ -261,7 +262,7 @@ public class BaseHyphenationTableTest extends TestCase {
          * @see org.extex.interpreter.type.font.Font#setHyphenChar(
          *      org.extex.core.UnicodeChar)
          */
-        public void setHyphenChar(final UnicodeChar h) {
+        public void setHyphenChar(UnicodeChar h) {
 
             this.hyphen = h;
         }
@@ -274,8 +275,9 @@ public class BaseHyphenationTableTest extends TestCase {
          * @see org.extex.interpreter.type.font.Font#setSkewChar(
          *      org.extex.core.UnicodeChar)
          */
-        public void setSkewChar(final UnicodeChar s) {
+        public void setSkewChar(UnicodeChar s) {
 
+            // nothing to do
         }
 
     }
@@ -293,8 +295,6 @@ public class BaseHyphenationTableTest extends TestCase {
 
         /**
          * Creates a new object.
-         *
-         * @throws ConfigurationException in case of an error
          */
         protected MyMockContext() {
 
@@ -313,7 +313,7 @@ public class BaseHyphenationTableTest extends TestCase {
          * @see org.extex.interpreter.context.Context#getLccode(
          *      org.extex.core.UnicodeChar)
          */
-        public UnicodeChar getLccode(final UnicodeChar uc) {
+        public UnicodeChar getLccode(UnicodeChar uc) {
 
             return null;
         }
@@ -329,7 +329,7 @@ public class BaseHyphenationTableTest extends TestCase {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(BaseHyphenationTableTest.class);
     }
@@ -341,7 +341,7 @@ public class BaseHyphenationTableTest extends TestCase {
      *
      * @return the list
      */
-    private static UnicodeCharList makeList(final CharSequence s) {
+    private static UnicodeCharList makeList(CharSequence s) {
 
         UnicodeCharList list = new UnicodeCharList();
         for (int i = 0; i < s.length(); i++) {
@@ -376,7 +376,7 @@ public class BaseHyphenationTableTest extends TestCase {
      *
      * @return a horizontal list
      */
-    private HorizontalListNode hlist(final String s) {
+    private HorizontalListNode hlist(String s) {
 
         TypesettingContext tc = new TypesettingContextImpl(new MockFont());
         HorizontalListNode n = new HorizontalListNode();

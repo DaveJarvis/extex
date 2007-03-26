@@ -33,7 +33,7 @@ public class UnhboxTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(UnhboxTest.class);
     }
@@ -43,7 +43,7 @@ public class UnhboxTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public UnhboxTest(final String arg) {
+    public UnhboxTest(String arg) {
 
         super(arg, "unhbox", "42 ");
     }

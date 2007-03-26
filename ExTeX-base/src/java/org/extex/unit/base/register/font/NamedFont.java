@@ -55,20 +55,22 @@ public class NamedFont extends AbstractAssignment
      *
      * @param name the name for debugging
      */
-    public NamedFont(final String name) {
+    public NamedFont(String name) {
 
         super(name);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         String key = getKey(context, source, typesetter);
@@ -79,13 +81,15 @@ public class NamedFont extends AbstractAssignment
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.type.font.FontConvertible#convertFont(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Font convertFont(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public Font convertFont(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         return context.getFont(getKey(context, source, typesetter));
     }
@@ -95,13 +99,14 @@ public class NamedFont extends AbstractAssignment
      *
      * @param context the interpreter context to use
      * @param source the source for the next tokens &ndash; if required
+     * @param typesetter the typesetter
      *
      * @return the key for the font register
      *
-     * @throws InterpreterException in case oif an error
+     * @throws InterpreterException in case of an error
      */
-    protected String getKey(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         if (Namespace.SUPPORT_NAMESPACE_FONT) {
             return context.getNamespace() + "\b" + getName();
@@ -127,8 +132,8 @@ public class NamedFont extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter)
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 CatcodeException {
 

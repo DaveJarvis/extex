@@ -34,7 +34,7 @@ public class FontdimenTest extends NoFlagsPrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(FontdimenTest.class);
     }
@@ -44,7 +44,7 @@ public class FontdimenTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public FontdimenTest(final String arg) {
+    public FontdimenTest(String arg) {
 
         super(arg, "fontdimen", "0\\nullfont=123pt ");
     }

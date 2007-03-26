@@ -58,31 +58,35 @@ public final class TCountParser implements ETypeParser {
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#convert(
+     * {@inheritDoc}
+     *
+     * @see org.extex.interpreter.expression.ETypeParser#convert(
      *      org.extex.interpreter.type.Code,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public EType convert(final Code code, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public EType convert(Code code, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         if (code instanceof CountConvertible) {
             return new TCount(((CountConvertible) code).convertCount(context,
-                    source, typesetter));
+                source, typesetter));
         }
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.ETypeParser#parse(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public EType parse(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public EType parse(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         long n = 0;
         Token t = source.getNonSpace(context);
@@ -109,12 +113,11 @@ public final class TCountParser implements ETypeParser {
                         n = c - '0';
 
                         for (t = source.getToken(context); t instanceof OtherToken
-                                && t.getChar().isDigit(); t = source
-                                .getToken(context)) {
+                                && t.getChar().isDigit(); t =
+                                source.getToken(context)) {
                             n = n * 10 + t.getChar().getCodePoint() - '0';
                             save.add(t);
                         }
-
                         if (t instanceof SpaceToken) {
                             source.skipSpace();
                         } else {
@@ -125,7 +128,6 @@ public final class TCountParser implements ETypeParser {
                     case '`':
                         t = source.getToken(context);
                         save.add(t);
-
                         if (t instanceof ControlSequenceToken) {
                             String s = ((ControlSequenceToken) t).getName();
                             n = ("".equals(s) ? 0 : s.charAt(0));
@@ -158,7 +160,6 @@ public final class TCountParser implements ETypeParser {
                             }
                             n = n * 8 + no;
                         }
-
                         while (t instanceof SpaceToken) {
                             t = source.getToken(context);
                         }
@@ -207,7 +208,6 @@ public final class TCountParser implements ETypeParser {
                                     return new TCount(n);
                             }
                         }
-
                         while (t instanceof SpaceToken) {
                             t = source.getToken(context);
                         }
@@ -223,13 +223,13 @@ public final class TCountParser implements ETypeParser {
                     break;
 
                 } else if (code instanceof CountConvertible) {
-                    n = ((CountConvertible) code).convertCount(context, source,
-                            typesetter);
+                    n = ((CountConvertible) code).convertCount(context, //
+                        source, typesetter);
                     return new TCount(n);
                 } else if (code instanceof ExpandableCode) {
                     save.removeLast();
                     ((ExpandableCode) code).expand(Flags.NONE, context, source,
-                            typesetter);
+                        typesetter);
                     t = source.getToken(context);
                 } else {
                     break;
@@ -244,18 +244,22 @@ public final class TCountParser implements ETypeParser {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.ETypeParser#registered(
      *      org.extex.interpreter.expression.Evaluator)
      */
-    public void registered(final Evaluator evaluator) {
+    public void registered(Evaluator evaluator) {
 
         evaluator.register("int", new UnaryFunction() {
 
             /**
-             * @see org.extex.interpreter.expression.Function1#apply(
+             * {@inheritDoc}
+             *
+             * @see org.extex.interpreter.expression.UnaryFunction#apply(
              *      org.extex.interpreter.expression.EType)
              */
-            public EType apply(final EType accumulator)
+            public EType apply(EType accumulator)
                     throws InterpreterException {
 
                 return new TCount().set(accumulator);

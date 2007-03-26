@@ -84,7 +84,7 @@ public abstract class AbstractModeCode extends AbstractCode {
      *
      * @param codeName the name for tracing
      */
-    public AbstractModeCode(final String codeName) {
+    public AbstractModeCode(String codeName) {
 
         super(codeName);
     }
@@ -99,8 +99,8 @@ public abstract class AbstractModeCode extends AbstractCode {
      *
      * @throws InterpreterException in case of an error
      */
-    protected OmegaMode scanInputMode(final Context context,
-            final TokenSource source) throws InterpreterException {
+    protected OmegaMode scanInputMode(Context context,
+            TokenSource source) throws InterpreterException {
 
         OmegaMode mode = scanMode(context, source);
 
@@ -127,7 +127,7 @@ public abstract class AbstractModeCode extends AbstractCode {
      *
      * @throws InterpreterException in case of an error
      */
-    private OmegaMode scanMode(final Context context, final TokenSource source)
+    private OmegaMode scanMode(Context context, TokenSource source)
             throws InterpreterException {
 
         if (source.getKeyword(context, "onebyte")) {
@@ -153,8 +153,8 @@ public abstract class AbstractModeCode extends AbstractCode {
      *
      * @throws InterpreterException in case of an error
      */
-    protected OmegaMode scanOutputMode(final Context context,
-            final TokenSource source) throws InterpreterException {
+    protected OmegaMode scanOutputMode(Context context,
+            TokenSource source) throws InterpreterException {
 
         OmegaMode mode = scanMode(context, source);
 

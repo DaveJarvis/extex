@@ -47,7 +47,7 @@ public class AfmMissingStartCharMetricsException extends FontException {
      * Create a new object.
      * @param message   the message
      */
-    public AfmMissingStartCharMetricsException(final String message) {
+    public AfmMissingStartCharMetricsException(String message) {
 
         super(message);
     }

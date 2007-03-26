@@ -32,7 +32,7 @@ public class LimitsTest extends AbstractLimitsTester {
      *
      * @param arg the name
      */
-    public LimitsTest(final String arg) {
+    public LimitsTest(String arg) {
 
         super(arg, "limits", "");
     }

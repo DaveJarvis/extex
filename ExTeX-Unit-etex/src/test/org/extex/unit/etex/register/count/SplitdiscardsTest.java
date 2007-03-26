@@ -33,7 +33,7 @@ public class SplitdiscardsTest extends AbstractCountArrayTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(SplitdiscardsTest.class);
     }
@@ -43,7 +43,7 @@ public class SplitdiscardsTest extends AbstractCountArrayTester {
      *
      * @param arg the name
      */
-    public SplitdiscardsTest(final String arg) {
+    public SplitdiscardsTest(String arg) {
 
         super(arg, "splitdiscards", "255", "0");
         setConfig("etex-test");

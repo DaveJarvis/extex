@@ -39,7 +39,7 @@ public class ConfigurationWrapperException extends ConfigurationException {
      *
      * @param cause the Exception causing the error
      */
-    public ConfigurationWrapperException(final Throwable cause) {
+    public ConfigurationWrapperException(Throwable cause) {
 
         super(null, cause);
     }

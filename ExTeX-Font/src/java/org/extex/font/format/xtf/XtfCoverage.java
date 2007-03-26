@@ -52,7 +52,7 @@ public abstract class XtfCoverage {
      *
      * @param fm the format
      */
-    XtfCoverage(final int fm) {
+    XtfCoverage(int fm) {
 
         format = fm;
     }
@@ -64,7 +64,7 @@ public abstract class XtfCoverage {
      * @return Returns the index of the glyph within the coverage, or -1 if the glyph
      * can't be found.
      */
-    public abstract int findGlyph(final int glyphId);
+    public abstract int findGlyph(int glyphId);
 
     /**
      * Create a new instance and read the coverage
@@ -73,7 +73,7 @@ public abstract class XtfCoverage {
      * @return Returns the new coverage
      * @throws IOException if an IO-error occrs
      */
-    static XtfCoverage newInstance(final RandomAccessR rar) throws IOException {
+    static XtfCoverage newInstance(RandomAccessR rar) throws IOException {
 
         XtfCoverage c = null;
         int format = rar.readUnsignedShort();
@@ -115,7 +115,7 @@ public abstract class XtfCoverage {
          * @param rar   input
          * @throws IOException if an IO-error occurs
          */
-        CoverageFormat1(final RandomAccessR rar) throws IOException {
+        CoverageFormat1(RandomAccessR rar) throws IOException {
 
             super(XtfCoverage.FORMAT1);
 
@@ -129,7 +129,7 @@ public abstract class XtfCoverage {
         /**
          * @see org.extex.font.format.xtf.XtfCoverage#findGlyph(int)
          */
-        public int findGlyph(final int glyphId) {
+        public int findGlyph(int glyphId) {
 
             for (int i = 0; i < glyphCount; i++) {
                 if (glyphIds[i] == glyphId) {
@@ -162,7 +162,7 @@ public abstract class XtfCoverage {
          * @param rar   input
          * @throws IOException if an IO-error occurs
          */
-        CoverageFormat2(final RandomAccessR rar) throws IOException {
+        CoverageFormat2(RandomAccessR rar) throws IOException {
 
             super(XtfCoverage.FORMAT2);
 
@@ -176,7 +176,7 @@ public abstract class XtfCoverage {
         /**
          * @see org.extex.font.format.xtf.XtfCoverage#findGlyph(int)
          */
-        public int findGlyph(final int glyphId) {
+        public int findGlyph(int glyphId) {
 
             for (int i = 0; i < rangeCount; i++) {
                 int n = rangeRecords[i].getCoverageIndex(glyphId);
@@ -214,7 +214,7 @@ public abstract class XtfCoverage {
          * @param rar       the input
          * @throws IOException if an IO-error occurs
          */
-        RangeRecord(final RandomAccessR rar) throws IOException {
+        RangeRecord(RandomAccessR rar) throws IOException {
 
             start = rar.readUnsignedShort();
             end = rar.readUnsignedShort();
@@ -226,7 +226,7 @@ public abstract class XtfCoverage {
          * @param glyphId   the glyph id
          * @return Check, if the glyph id is in the range.
          */
-        public boolean isInRange(final int glyphId) {
+        public boolean isInRange(int glyphId) {
 
             return (start <= glyphId && glyphId <= end);
         }
@@ -236,7 +236,7 @@ public abstract class XtfCoverage {
          * @param glyphId   the glyph id
          * @return Returns the coverage index
          */
-        public int getCoverageIndex(final int glyphId) {
+        public int getCoverageIndex(int glyphId) {
 
             if (isInRange(glyphId)) {
                 return startCoverageIndex + glyphId - start;

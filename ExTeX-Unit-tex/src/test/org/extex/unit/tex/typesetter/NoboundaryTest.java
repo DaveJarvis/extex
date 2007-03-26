@@ -33,7 +33,7 @@ public class NoboundaryTest extends ExTeXLauncher {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(NoboundaryTest.class);
     }
@@ -43,7 +43,7 @@ public class NoboundaryTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public NoboundaryTest(final String arg) {
+    public NoboundaryTest(String arg) {
 
         super(arg);
     }

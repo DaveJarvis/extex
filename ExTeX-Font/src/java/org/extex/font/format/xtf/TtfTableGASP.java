@@ -126,8 +126,8 @@ public class TtfTableGASP extends AbstractXtfTable
      * @param rar       input
      * @throws IOException if an IO-error occurs
      */
-    TtfTableGASP(final XtfTableMap tablemap, final XtfTableDirectory.Entry de,
-            final RandomAccessR rar) throws IOException {
+    TtfTableGASP(XtfTableMap tablemap, XtfTableDirectory.Entry de,
+            RandomAccessR rar) throws IOException {
 
         super(tablemap);
         rar.seek(de.getOffset());
@@ -151,7 +151,7 @@ public class TtfTableGASP extends AbstractXtfTable
          * @param rar   the input
          * @throws IOException if an IO-error occurred.
          */
-        public GaspRange(final RandomAccessR rar) throws IOException {
+        public GaspRange(RandomAccessR rar) throws IOException {
 
             rangeMaxPPEM = rar.readUnsignedShort();
             rangeGaspBehavior = rar.readUnsignedShort();
@@ -207,7 +207,7 @@ public class TtfTableGASP extends AbstractXtfTable
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
-        public void writeXML(final XMLStreamWriter writer) throws IOException {
+        public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("gasprange");
             writer.writeAttribute("rangemaxPPEM", String.valueOf(rangeMaxPPEM));
@@ -281,7 +281,7 @@ public class TtfTableGASP extends AbstractXtfTable
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writeStartElement(writer);
         writer.writeAttribute("version", String.valueOf(version));

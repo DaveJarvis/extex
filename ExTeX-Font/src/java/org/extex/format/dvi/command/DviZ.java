@@ -44,7 +44,7 @@ public class DviZ extends DviCommand {
      * @param sp    the start pointer
      * @param v     the value
      */
-    public DviZ(final int opc, final int sp, final int v) {
+    public DviZ(int opc, int sp, int v) {
 
         this(opc, sp, v, false);
     }
@@ -56,7 +56,7 @@ public class DviZ extends DviCommand {
      * @param v     the value
      * @param z     the z0
      */
-    public DviZ(final int opc, final int sp, final int v, final boolean z) {
+    public DviZ(int opc, int sp, int v, boolean z) {
 
         super(opc, sp);
         value = v;

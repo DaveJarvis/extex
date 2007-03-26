@@ -44,7 +44,7 @@ public class DviW extends DviCommand {
      * @param sp        the start pointer
      * @param v     the value
      */
-    public DviW(final int opc, final int sp, final int v) {
+    public DviW(int opc, int sp, int v) {
 
         this(opc, sp, v, false);
     }
@@ -56,7 +56,7 @@ public class DviW extends DviCommand {
      * @param v     the value
      * @param w     the w0
      */
-    public DviW(final int opc, final int sp, final int v, final boolean w) {
+    public DviW(int opc, int sp, int v, boolean w) {
 
         super(opc, sp);
         value = v;

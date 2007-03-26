@@ -48,7 +48,7 @@ public class SwitchObserver implements AfterGroupObserver {
      * @param theTarget the target switch
      * @param theValue the new value
      */
-    public SwitchObserver(final Switch theTarget, final boolean theValue) {
+    public SwitchObserver(Switch theTarget, boolean theValue) {
 
         super();
         this.target = theTarget;

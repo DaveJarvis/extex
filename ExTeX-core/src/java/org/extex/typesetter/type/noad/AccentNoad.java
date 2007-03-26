@@ -50,8 +50,8 @@ public class AccentNoad extends AbstractNucleusNoad {
      * @param nucleus the nucleus
      * @param tc the typesetting context for the color
      */
-    public AccentNoad(final MathCode accent, final Noad nucleus,
-            final TypesettingContext tc) {
+    public AccentNoad(MathCode accent, Noad nucleus,
+            TypesettingContext tc) {
 
         super(nucleus, tc);
         this.accent = accent;
@@ -68,7 +68,7 @@ public class AccentNoad extends AbstractNucleusNoad {
      *      java.lang.StringBuffer,
      *      int)
      */
-    protected void toStringAdd(final StringBuffer sb, final int depth) {
+    protected void toStringAdd(StringBuffer sb, int depth) {
 
         sb.append("accent");
         accent.toString(sb);
@@ -97,9 +97,9 @@ public class AccentNoad extends AbstractNucleusNoad {
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(final Noad previousNoad, final NoadList noads,
-            final int index, final NodeList list,
-            final MathContext mathContext, final Logger logger)
+    public void typeset(Noad previousNoad, NoadList noads,
+            int index, NodeList list,
+            MathContext mathContext, Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 

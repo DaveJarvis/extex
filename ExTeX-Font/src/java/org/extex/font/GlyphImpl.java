@@ -24,10 +24,6 @@ import java.util.HashMap;
 
 import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.Dimen;
-import org.extex.font.FontByteArray;
-import org.extex.font.Glyph;
-import org.extex.font.Kerning;
-import org.extex.font.Ligature;
 
 /**
  * GlyphImplementation
@@ -112,7 +108,7 @@ public class GlyphImpl implements Glyph, Serializable {
      * @param w  the width
      * @param i  the italic
      */
-    public GlyphImpl(final Dimen h, final Dimen d, final Dimen w, final Dimen i) {
+    public GlyphImpl(Dimen h, Dimen d, Dimen w, Dimen i) {
 
         super();
         height = h;
@@ -132,7 +128,7 @@ public class GlyphImpl implements Glyph, Serializable {
     /**
      * @param d The depth to set.
      */
-    public void setDepth(final Dimen d) {
+    public void setDepth(Dimen d) {
 
         depth = d;
     }
@@ -142,8 +138,8 @@ public class GlyphImpl implements Glyph, Serializable {
     //     * @param em            The em-size.
     //     * @param unitsperem    The unit per em.
     //     */
-    //    public void setDepth(final String gsize, final Dimen em,
-    //            final int unitsperem) {
+    //    public void setDepth(String gsize, Dimen em,
+    //            int unitsperem) {
     //
     //        try {
     //            float fsize = Float.parseFloat(gsize);
@@ -165,7 +161,7 @@ public class GlyphImpl implements Glyph, Serializable {
     /**
      * @param h The height to set.
      */
-    public void setHeight(final Dimen h) {
+    public void setHeight(Dimen h) {
 
         height = h;
     }
@@ -175,8 +171,8 @@ public class GlyphImpl implements Glyph, Serializable {
     //     * @param em            The em-size.
     //     * @param unitsperem    The unit per em.
     //     */
-    //    public void setHeight(final String gsize, final Dimen em,
-    //            final int unitsperem) {
+    //    public void setHeight(String gsize, Dimen em,
+    //            int unitsperem) {
     //
     //        try {
     //            float fsize = Float.parseFloat(gsize);
@@ -198,7 +194,7 @@ public class GlyphImpl implements Glyph, Serializable {
     /**
      * @param d the italic to set.
      */
-    public void setItalicCorrection(final Dimen d) {
+    public void setItalicCorrection(Dimen d) {
 
         italic = d;
     }
@@ -208,8 +204,8 @@ public class GlyphImpl implements Glyph, Serializable {
     //     * @param em            The em-size.
     //     * @param unitsperem    The unit per em.
     //     */
-    //    public void setItalicCorrection(final String gsize, final Dimen em,
-    //            final int unitsperem) {
+    //    public void setItalicCorrection(String gsize, Dimen em,
+    //            int unitsperem) {
     //
     //        try {
     //            float fsize = Float.parseFloat(gsize);
@@ -231,7 +227,7 @@ public class GlyphImpl implements Glyph, Serializable {
     /**
      * @param w The width to set.
      */
-    public void setWidth(final Dimen w) {
+    public void setWidth(Dimen w) {
 
         width = w;
     }
@@ -241,8 +237,8 @@ public class GlyphImpl implements Glyph, Serializable {
     //     * @param em            The em-size.
     //     * @param unitsperem    The unit per em. (default 1000)
     //     */
-    //    public void setWidth(final String gsize, final Dimen em,
-    //            final int unitsperem) {
+    //    public void setWidth(String gsize, Dimen em,
+    //            int unitsperem) {
     //
     //        try {
     //            double fsize = Double.parseDouble(gsize);
@@ -258,7 +254,7 @@ public class GlyphImpl implements Glyph, Serializable {
     //     *      de.dante.extex.font.type.tfm.TFMFixWord,
     //     *      de.dante.extex.interpreter.type.dimen.Dimen)
     //     */
-    //    public void setWidth(final TFMFixWord size, final Dimen em) {
+    //    public void setWidth(TFMFixWord size, Dimen em) {
     //
     //        try {
     //            long l = size.getValue() * em.getValue()
@@ -275,7 +271,7 @@ public class GlyphImpl implements Glyph, Serializable {
     //     *      de.dante.extex.font.type.tfm.TFMFixWord,
     //     *      de.dante.extex.interpreter.type.dimen.Dimen)
     //     */
-    //    public void setDepth(final TFMFixWord size, final Dimen em) {
+    //    public void setDepth(TFMFixWord size, Dimen em) {
     //
     //        try {
     //            long l = size.getValue() * em.getValue()
@@ -293,7 +289,7 @@ public class GlyphImpl implements Glyph, Serializable {
     //     *      de.dante.extex.font.type.tfm.TFMFixWord,
     //     *      de.dante.extex.interpreter.type.dimen.Dimen)
     //     */
-    //    public void setHeight(final TFMFixWord size, final Dimen em) {
+    //    public void setHeight(TFMFixWord size, Dimen em) {
     //
     //        try {
     //            long l = size.getValue() * em.getValue()
@@ -311,7 +307,7 @@ public class GlyphImpl implements Glyph, Serializable {
     //     *      de.dante.extex.font.type.tfm.TFMFixWord,
     //     *      de.dante.extex.interpreter.type.dimen.Dimen)
     //     */
-    //    public void setItalicCorrection(final TFMFixWord size, final Dimen em) {
+    //    public void setItalicCorrection(TFMFixWord size, Dimen em) {
     //
     //        try {
     //            long l = size.getValue() * em.getValue()
@@ -335,7 +331,7 @@ public class GlyphImpl implements Glyph, Serializable {
     /**
      * @param n The name to set.
      */
-    public void setName(final String n) {
+    public void setName(String n) {
 
         name = n;
     }
@@ -351,7 +347,7 @@ public class GlyphImpl implements Glyph, Serializable {
     /**
      * @param nr The number to set.
      */
-    public void setNumber(final String nr) {
+    public void setNumber(String nr) {
 
         number = nr;
     }
@@ -360,7 +356,7 @@ public class GlyphImpl implements Glyph, Serializable {
      * Add kerning for the glyph.
      * @param kern  the kerning
      */
-    public void addKerning(final Kerning kern) {
+    public void addKerning(Kerning kern) {
 
         if (kerning == null) {
             kerning = new HashMap();
@@ -373,7 +369,7 @@ public class GlyphImpl implements Glyph, Serializable {
      * @param uc    the following character
      * @return  the kerning-size as <code>Dimen</code>
      */
-    public Dimen getKerning(final UnicodeChar uc) {
+    public Dimen getKerning(UnicodeChar uc) {
 
         if (kerning != null) {
             Kerning kv = (Kerning) kerning.get(String
@@ -389,7 +385,7 @@ public class GlyphImpl implements Glyph, Serializable {
      * Add ligature for the glyph.
      * @param lig  the ligature
      */
-    public void addLigature(final Ligature lig) {
+    public void addLigature(Ligature lig) {
 
         if (ligature == null) {
             ligature = new HashMap();
@@ -408,7 +404,7 @@ public class GlyphImpl implements Glyph, Serializable {
      * @param uc    the following character
      * @return  the ligature
      */
-    public UnicodeChar getLigature(final UnicodeChar uc) {
+    public UnicodeChar getLigature(UnicodeChar uc) {
 
         UnicodeChar liguc = null;
         if (ligature != null) {
@@ -438,7 +434,7 @@ public class GlyphImpl implements Glyph, Serializable {
     /**
      * @param file The externalfile to set.
      */
-    public void setExternalFile(final FontByteArray file) {
+    public void setExternalFile(FontByteArray file) {
 
         externalfile = file;
     }
@@ -454,7 +450,7 @@ public class GlyphImpl implements Glyph, Serializable {
     /**
      * @param ls The leftSpace to set.
      */
-    public void setLeftSpace(final Dimen ls) {
+    public void setLeftSpace(Dimen ls) {
 
         leftSpace = ls;
     }
@@ -470,7 +466,7 @@ public class GlyphImpl implements Glyph, Serializable {
     /**
      * @param rs The rightSpace to set.
      */
-    public void setRightSpace(final Dimen rs) {
+    public void setRightSpace(Dimen rs) {
 
         rightSpace = rs;
     }

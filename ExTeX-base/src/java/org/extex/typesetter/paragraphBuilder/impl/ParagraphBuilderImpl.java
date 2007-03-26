@@ -244,10 +244,12 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#build(
      *      org.extex.typesetter.type.node.HorizontalListNode)
      */
-    public NodeList build(final HorizontalListNode nodes)
+    public NodeList build(HorizontalListNode nodes)
             throws HyphenationException {
 
         //split into smaller methods?
@@ -340,8 +342,8 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
      *
      * @return a breaks container
      */
-    private Breaks collect(final BreakPoint[] breakPoint, final int depth,
-            final int penalty) {
+    private Breaks collect(BreakPoint[] breakPoint, int depth,
+            int penalty) {
 
         int[] a = new int[depth + 1];
         int xi = 0;
@@ -367,9 +369,9 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
      *
      * @see "TTP [851]"
      */
-    private int computeDemerits(final BreakPoint[] breakPoint, final int pi,
-            final FixedGlue leftskip, final FixedGlue rightskip,
-            final FixedGlue lineWidth, final int threshold) {
+    private int computeDemerits(BreakPoint[] breakPoint, int pi,
+            FixedGlue leftskip, FixedGlue rightskip,
+            FixedGlue lineWidth, int threshold) {
 
         Glue width = new Glue(breakPoint[pi].getWidth());
         for (int i = pi - 1; i > 0 && !breakPoint[i].isActive(); i--) {
@@ -386,6 +388,7 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
             long shortfall = line - width.getLength().getValue();
 
             if (shortfall > 7230584) {
+                // overflow
 
             } else if (shortfall > 0) { //TTP [852]
                 if (line < 1663497) {
@@ -427,8 +430,8 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
      *
      * @return the index of the next non-discardable node
      */
-    private int discartNodes(final int start, final int len,
-            final NodeList nodes, final WideGlue wd) {
+    private int discartNodes(int start, int len,
+            NodeList nodes, WideGlue wd) {
 
         int i = start;
         while (++i < len && nodes.get(i) instanceof Discardable) {
@@ -438,10 +441,12 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger theLogger) {
+    public void enableLogging(Logger theLogger) {
 
         this.logger = theLogger;
     }
@@ -462,10 +467,10 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
      * @return the container with the breaks or <code>null</code> if none is
      *  found.
      */
-    private Breaks findOptimalBreakPoints(final BreakPoint[] breakPoint,
-            final int line, final int threshold, final int depth,
-            final int pointIndex, final FixedGlue leftskip,
-            final FixedGlue rightskip, final FixedDimen emergencystretch) {
+    private Breaks findOptimalBreakPoints(BreakPoint[] breakPoint,
+            int line, int threshold, int depth,
+            int pointIndex, FixedGlue leftskip,
+            FixedGlue rightskip, FixedDimen emergencystretch) {
 
         if (tracer != null) {
             tracer.log(Level.FINE,
@@ -516,7 +521,7 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
      *
      * @throws HyphenationException in case of an error
      */
-    private void hyphenate(final HorizontalListNode nodes)
+    private void hyphenate(HorizontalListNode nodes)
             throws HyphenationException {
 
         if (tracer != null) {
@@ -548,11 +553,11 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
      *
      * @return a complete list of admissible break points
      */
-    private BreakPoint[] makeBreakPoints(final HorizontalListNode nodes,
-            final int hyphenpenalty, final int exhyphenpenalty) {
+    private BreakPoint[] makeBreakPoints(HorizontalListNode nodes,
+            int hyphenpenalty, int exhyphenpenalty) {
 
         int len = nodes.size();
-        List breakList = new ArrayList(1 + len / 5); // size is a heuristic
+        List<BreakPoint> breakList = new ArrayList<BreakPoint>(1 + len / 5); // size is a heuristic
         WideGlue w = new WideGlue();
         WideGlue wd = new WideGlue();
         boolean math = false;
@@ -641,9 +646,9 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
      * @return the resulting vertical node list or <code>null</code> if this
      *  attempt has not been successful
      */
-    private NodeList pass1(final HorizontalListNode nodes,
-            final int hyphenpenalty, final int exhyphenpenalty,
-            final FixedGlue leftskip, final FixedGlue rightskip) {
+    private NodeList pass1(HorizontalListNode nodes,
+            int hyphenpenalty, int exhyphenpenalty,
+            FixedGlue leftskip, FixedGlue rightskip) {
 
         int pretolerance =
                 (int) options.getCountOption("pretolerance").getValue();
@@ -691,19 +696,23 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#setNodefactory(
      *      org.extex.typesetter.type.node.factory.NodeFactory)
      */
-    public void setNodefactory(final NodeFactory factory) {
+    public void setNodefactory(NodeFactory factory) {
 
         this.nodeFactory = factory;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#setOptions(
      *      org.extex.typesetter.TypesetterOptions)
      */
-    public void setOptions(final TypesetterOptions options) {
+    public void setOptions(TypesetterOptions options) {
 
         this.options = options;
     }
@@ -719,8 +728,8 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
      *
      * @return a vlist with the lines
      */
-    private NodeList splitNodeList(final NodeList nodes, final Breaks breaks,
-            final FixedGlue leftskip, final FixedGlue rightskip) {
+    private NodeList splitNodeList(NodeList nodes, Breaks breaks,
+            FixedGlue leftskip, FixedGlue rightskip) {
 
         VerticalListNode vlist = new VerticalListNode();
         int[] a = breaks.getPoints();
@@ -734,7 +743,7 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
             vlist.add(hlist);
 
             int max = (i + 1 < a.length ? a[i + 1] : nodes.size());
-            // skip discartable items at end of line
+            // skip discardable items at end of line
             while (hi < max && nodes.get(hi) instanceof Discardable) {
                 hi++;
             }

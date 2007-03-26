@@ -68,7 +68,7 @@ public class PrintFormat extends AbstractCode implements Theable {
      *
      * @param name the name for tracing and debugging
      */
-    public PrintFormat(final String name) {
+    public PrintFormat(String name) {
 
         super(name);
     }
@@ -82,8 +82,8 @@ public class PrintFormat extends AbstractCode implements Theable {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -95,8 +95,8 @@ public class PrintFormat extends AbstractCode implements Theable {
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter)
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 

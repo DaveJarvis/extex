@@ -50,7 +50,7 @@ public class NoadList {
      *
      * @param noad the noad to add
      */
-    public void add(final Noad noad) {
+    public void add(Noad noad) {
 
         list.add(noad);
     }
@@ -74,7 +74,7 @@ public class NoadList {
      * @return the node at position <i>index</i> of <code>null</code> if index
      * is out of bounds
      */
-    public Noad get(final int index) {
+    public Noad get(int index) {
 
         return (Noad) list.get(index);
     }
@@ -97,7 +97,7 @@ public class NoadList {
      *
      * @return the element previously located at position <i>index</i>
      */
-    public Noad remove(final int index) {
+    public Noad remove(int index) {
 
         return (Noad) list.remove(index);
     }

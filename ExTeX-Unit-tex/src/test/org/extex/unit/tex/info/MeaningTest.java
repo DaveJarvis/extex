@@ -34,7 +34,7 @@ public class MeaningTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public MeaningTest(final String arg) {
+    public MeaningTest(String arg) {
 
         super(arg, "meaning", "\\count1 ");
     }

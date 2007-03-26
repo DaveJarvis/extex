@@ -187,8 +187,8 @@ public class XMLDocumentWriter
      * @param cfg       the configuration
      * @param options   the options
      */
-    public XMLDocumentWriter(final Configuration cfg,
-            final DocumentWriterOptions options) {
+    public XMLDocumentWriter(Configuration cfg,
+            DocumentWriterOptions options) {
 
         super();
         docoptions = options;
@@ -240,7 +240,7 @@ public class XMLDocumentWriter
      * @param node      the node
      * @throws IOException if an error occurs.
      */
-    private void addNodeAttributes(final Node node) throws IOException {
+    private void addNodeAttributes(Node node) throws IOException {
 
         Dimen wd = new Dimen(node.getWidth());
         Dimen ht = new Dimen(node.getHeight());
@@ -300,7 +300,7 @@ public class XMLDocumentWriter
      * @param dimen     the dimen
      * @throws IOException if an error occurs.
      */
-    private void setDimenLength(final String name, final Dimen dimen)
+    private void setDimenLength(String name, Dimen dimen)
             throws IOException {
 
         Dimen d = dimen;
@@ -324,7 +324,7 @@ public class XMLDocumentWriter
      * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(
      *      java.io.OutputStream)
      */
-    public void setOutputStream(final OutputStream outStream) {
+    public void setOutputStream(OutputStream outStream) {
 
         out = outStream;
     }
@@ -332,14 +332,14 @@ public class XMLDocumentWriter
     /**
      * map for the parameters.
      */
-    private Map param = new HashMap();
+    private Map<String, String> param = new HashMap<String, String>();
 
     /**
      * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(
      *      java.lang.String,
      *      java.lang.String)
      */
-    public void setParameter(final String name, final String value) {
+    public void setParameter(String name, String value) {
 
         param.put(name, value);
     }
@@ -374,7 +374,7 @@ public class XMLDocumentWriter
         while (it.hasNext()) {
             String name = (String) it.next();
             writer.writeStartElement(name);
-            writer.writeCharacters((String) param.get(name));
+            writer.writeCharacters(param.get(name));
             writer.writeEndElement();
         }
         writer.writeEndElement();
@@ -389,7 +389,7 @@ public class XMLDocumentWriter
      * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
      *      org.extex.typesetter.type.page.Page)
      */
-    public int shipout(final Page page) throws GeneralException {
+    public int shipout(Page page) throws GeneralException {
 
         NodeList nodes = page.getNodes();
 
@@ -449,7 +449,7 @@ public class XMLDocumentWriter
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
-    public void configure(final Configuration cfg)
+    public void configure(Configuration cfg)
             throws ConfigurationException {
 
         if (cfg != null) {
@@ -501,7 +501,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(AdjustNode,
      * java.lang.Object)
      */
-    public Object visitAdjust(final AdjustNode node, final Object value2)
+    public Object visitAdjust(AdjustNode node, Object value2)
             throws DocumentWriterException {
 
         try {
@@ -518,7 +518,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(AfterMathNode,
      * java.lang.Object)
      */
-    public Object visitAfterMath(final AfterMathNode node, final Object value2)
+    public Object visitAfterMath(AfterMathNode node, Object value2)
             throws DocumentWriterException {
 
         try {
@@ -535,8 +535,8 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(AlignedLeadersNode,
      * java.lang.Object)
      */
-    public Object visitAlignedLeaders(final AlignedLeadersNode node,
-            final Object value2) throws DocumentWriterException {
+    public Object visitAlignedLeaders(AlignedLeadersNode node,
+            Object value2) throws DocumentWriterException {
 
         try {
             writer.writeStartElement("alignedleaders");
@@ -552,7 +552,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(BeforeMathNode,
      * java.lang.Object)
      */
-    public Object visitBeforeMath(final BeforeMathNode node, final Object value2)
+    public Object visitBeforeMath(BeforeMathNode node, Object value2)
             throws DocumentWriterException {
 
         try {
@@ -569,8 +569,8 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(CenteredLeadersNode,
      * java.lang.Object)
      */
-    public Object visitCenteredLeaders(final CenteredLeadersNode node,
-            final Object value) throws DocumentWriterException {
+    public Object visitCenteredLeaders(CenteredLeadersNode node,
+            Object value) throws DocumentWriterException {
 
         try {
             writer.writeStartElement("centeredleaders");
@@ -586,7 +586,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitChar(CharNode,
      * java.lang.Object)
      */
-    public Object visitChar(final CharNode node, final Object value)
+    public Object visitChar(CharNode node, Object value)
             throws DocumentWriterException {
 
         try {
@@ -622,8 +622,8 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(DiscretionaryNode,
      * java.lang.Object)
      */
-    public Object visitDiscretionary(final DiscretionaryNode node,
-            final Object value) throws DocumentWriterException {
+    public Object visitDiscretionary(DiscretionaryNode node,
+            Object value) throws DocumentWriterException {
 
         try {
             writer.writeStartElement("discretionary");
@@ -639,8 +639,8 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(ExpandedLeadersNode,
      * java.lang.Object)
      */
-    public Object visitExpandedLeaders(final ExpandedLeadersNode node,
-            final Object value) throws DocumentWriterException {
+    public Object visitExpandedLeaders(ExpandedLeadersNode node,
+            Object value) throws DocumentWriterException {
 
         try {
             writer.writeStartElement("expandedleaders");
@@ -656,7 +656,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitGlue(GlueNode,
      * java.lang.Object)
      */
-    public Object visitGlue(final GlueNode node, final Object value)
+    public Object visitGlue(GlueNode node, Object value)
             throws DocumentWriterException {
 
         try {
@@ -676,8 +676,8 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(HorizontalListNode,
      * java.lang.Object)
      */
-    public Object visitHorizontalList(final HorizontalListNode node,
-            final Object value) throws GeneralException {
+    public Object visitHorizontalList(HorizontalListNode node,
+            Object value) throws GeneralException {
 
         try {
             writer.writeStartElement("horizontallist");
@@ -706,7 +706,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(InsertionNode,
      * java.lang.Object)
      */
-    public Object visitInsertion(final InsertionNode node, final Object value)
+    public Object visitInsertion(InsertionNode node, Object value)
             throws DocumentWriterException {
 
         try {
@@ -723,7 +723,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitKern(KernNode,
      * java.lang.Object)
      */
-    public Object visitKern(final KernNode node, final Object value)
+    public Object visitKern(KernNode node, Object value)
             throws DocumentWriterException {
 
         try {
@@ -740,7 +740,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitLigature(LigatureNode,
      * java.lang.Object)
      */
-    public Object visitLigature(final LigatureNode node, final Object value)
+    public Object visitLigature(LigatureNode node, Object value)
             throws GeneralException {
 
         try {
@@ -767,7 +767,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitMark(MarkNode,
      * java.lang.Object)
      */
-    public Object visitMark(final MarkNode node, final Object value)
+    public Object visitMark(MarkNode node, Object value)
             throws DocumentWriterException {
 
         try {
@@ -784,7 +784,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(PenaltyNode,
      * java.lang.Object)
      */
-    public Object visitPenalty(final PenaltyNode node, final Object value)
+    public Object visitPenalty(PenaltyNode node, Object value)
             throws DocumentWriterException {
 
         try {
@@ -802,7 +802,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitRule(RuleNode,
      * java.lang.Object)
      */
-    public Object visitRule(final RuleNode node, final Object value)
+    public Object visitRule(RuleNode node, Object value)
             throws DocumentWriterException {
 
         try {
@@ -819,7 +819,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitSpace(SpaceNode,
      * java.lang.Object)
      */
-    public Object visitSpace(final SpaceNode node, final Object value)
+    public Object visitSpace(SpaceNode node, Object value)
             throws DocumentWriterException {
 
         try {
@@ -836,8 +836,8 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(VerticalListNode,
      * java.lang.Object)
      */
-    public Object visitVerticalList(final VerticalListNode node,
-            final Object value) throws GeneralException {
+    public Object visitVerticalList(VerticalListNode node,
+            Object value) throws GeneralException {
 
         try {
             writer.writeStartElement("verticallist");
@@ -869,8 +869,8 @@ public class XMLDocumentWriter
      *      org.extex.typesetter.type.node.VirtualCharNode,
      *      java.lang.Object)
      */
-    public Object visitVirtualChar(final VirtualCharNode node,
-            final Object value) throws GeneralException {
+    public Object visitVirtualChar(VirtualCharNode node,
+            Object value) throws GeneralException {
 
         try {
             writer.writeStartElement("virtualchar");
@@ -900,7 +900,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(WhatsItNode,
      * java.lang.Object)
      */
-    public Object visitWhatsIt(final WhatsItNode node, final Object value)
+    public Object visitWhatsIt(WhatsItNode node, Object value)
             throws DocumentWriterException {
 
         try {

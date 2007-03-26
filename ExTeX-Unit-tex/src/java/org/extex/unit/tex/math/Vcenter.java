@@ -66,7 +66,7 @@ public class Vcenter extends AbstractMathCode {
      *
      * @param name the name for tracing and debugging
      */
-    public Vcenter(final String name) {
+    public Vcenter(String name) {
 
         super(name);
     }
@@ -89,8 +89,8 @@ public class Vcenter extends AbstractMathCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);

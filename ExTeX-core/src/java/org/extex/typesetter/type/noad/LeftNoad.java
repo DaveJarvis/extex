@@ -57,7 +57,7 @@ public class LeftNoad extends AbstractNoad {
      * @param noad the noad following the left delimiter
      * @param delimiter the glue
      */
-    public LeftNoad(final Noad noad, final MathDelimiter delimiter) {
+    public LeftNoad(Noad noad, MathDelimiter delimiter) {
 
         super();
         this.delimiter = delimiter;
@@ -75,7 +75,7 @@ public class LeftNoad extends AbstractNoad {
      *      java.lang.StringBuffer,
      *      int)
      */
-    public void toStringAdd(final StringBuffer sb, final int depth) {
+    public void toStringAdd(StringBuffer sb, int depth) {
 
         sb.append("left");
         delimiter.toString(sb);
@@ -103,9 +103,9 @@ public class LeftNoad extends AbstractNoad {
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(final Noad previousNoad, final NoadList noads,
-            final int index, final NodeList list,
-            final MathContext mathContext, final Logger logger)
+    public void typeset(Noad previousNoad, NoadList noads,
+            int index, NodeList list,
+            MathContext mathContext, Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 
@@ -132,10 +132,10 @@ public class LeftNoad extends AbstractNoad {
      *
      * @see "TTP [762]"
      */
-    public void typeset(final Noad previousNoad, final NoadList noads,
-            final int index, final NodeList list,
-            final MathContext mathContext, final Logger logger,
-            final Dimen height, final Dimen depth)
+    public void typeset(Noad previousNoad, NoadList noads,
+            int index, NodeList list,
+            MathContext mathContext, Logger logger,
+            Dimen height, Dimen depth)
             throws TypesetterException,
                 ConfigurationException {
 

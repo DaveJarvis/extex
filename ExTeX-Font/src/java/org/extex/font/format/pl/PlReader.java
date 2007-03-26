@@ -53,11 +53,11 @@ public class PlReader {
      * @param in    The input stream.
      * @throws IOException if an IO-error occurred.
      */
-    public PlReader(final InputStream in) throws IOException {
+    public PlReader(InputStream in) throws IOException {
 
-        commands = new HashMap();
+        commands = new HashMap<String, PlCommand>();
         plcommands = new HashMap();
-        characters = new TreeMap();
+        characters = new TreeMap<Integer, Chars>();
 
         commands.put("VTITLE", new PlVtitle());
         commands.put("CHARACTER", new PlCharacter());
@@ -73,7 +73,7 @@ public class PlReader {
      * @param file  The file.
      * @throws IOException if an IO-error occurred.
      */
-    public PlReader(final File file) throws IOException {
+    public PlReader(File file) throws IOException {
 
         this(new FileInputStream(file));
     }
@@ -84,7 +84,7 @@ public class PlReader {
      * @param file  The file.
      * @throws IOException if an IO-error occurred.
      */
-    public PlReader(final String file) throws IOException {
+    public PlReader(String file) throws IOException {
 
         this(new File(file));
     }
@@ -92,7 +92,7 @@ public class PlReader {
     /**
      * The commands.
      */
-    private Map commands;
+    private Map<String, PlCommand> commands;
 
     /**
      * The pl commands.
@@ -102,7 +102,7 @@ public class PlReader {
     /**
      * The characters.
      */
-    private SortedMap characters;
+    private SortedMap<Integer, Chars> characters;
 
     /**
      * Read the file.
@@ -110,10 +110,10 @@ public class PlReader {
      * @param in    The input.
      * @throws IOException if an IO-error occurred.
      */
-    private void read(final InputStream in) throws IOException {
+    private void read(InputStream in) throws IOException {
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(in,
-                "ASCII"));
+        BufferedReader reader =
+                new BufferedReader(new InputStreamReader(in, "ASCII"));
 
         commandLoop(reader);
 
@@ -126,12 +126,12 @@ public class PlReader {
      * @param reader    The reader.
      * @throws IOException if an IO-error occurred.
      */
-    private void commandLoop(final Reader reader) throws IOException {
+    private void commandLoop(Reader reader) throws IOException {
 
         String command;
         while ((command = readCommand(reader)) != null) {
 
-            PlCommand cmd = (PlCommand) commands.get(command);
+            PlCommand cmd = commands.get(command);
             if (cmd != null) {
                 cmd.execute(reader);
             } else {
@@ -147,7 +147,7 @@ public class PlReader {
      * @return Returns the command.
      * @throws IOException if an IO-error occurred.
      */
-    private String readCommand(final Reader reader) throws IOException {
+    private String readCommand(Reader reader) throws IOException {
 
         StringBuffer buf = new StringBuffer();
 
@@ -183,7 +183,7 @@ public class PlReader {
      * @return Returns the number of -1 if not found.
      * @throws IOException if an IO-error occurred.s
      */
-    private float readNumber(final Reader reader) throws IOException {
+    private float readNumber(Reader reader) throws IOException {
 
         float f = -1.0f;
         String type = readCommand(reader);
@@ -191,7 +191,7 @@ public class PlReader {
 
         if (type.equals("O")) {
             // octal
-            f = (int) Integer.parseInt(value, 8);
+            f = Integer.parseInt(value, 8);
         } else if (type.equals("C")) {
             // char
             char c = value.charAt(0);
@@ -213,7 +213,7 @@ public class PlReader {
      * @return Returns the parameter.
      * @throws IOException if an IO-error occurred.
      */
-    private String readParameter(final Reader reader) throws IOException {
+    private String readParameter(Reader reader) throws IOException {
 
         StringBuffer buf = new StringBuffer();
 
@@ -239,7 +239,7 @@ public class PlReader {
      * @return  Returns the character.
      * @throws IOException  if an IO-error occurred.
      */
-    private int readChar(final Reader reader) throws IOException {
+    private int readChar(Reader reader) throws IOException {
 
         int c;
         while ((c = reader.read()) != -1) {
@@ -258,9 +258,11 @@ public class PlReader {
     private class PlNULL extends AbstractPlCommand {
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.font.format.pl.PlCommand#execute(java.io.Reader)
          */
-        public void execute(final Reader reader) throws IOException {
+        public void execute(Reader reader) throws IOException {
 
             param = readParameter(reader);
         }
@@ -272,9 +274,11 @@ public class PlReader {
     private class PlVtitle extends AbstractPlCommand {
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.font.format.pl.PlCommand#execute(java.io.Reader)
          */
-        public void execute(final Reader reader) throws IOException {
+        public void execute(Reader reader) throws IOException {
 
             param = readParameter(reader);
         }
@@ -291,9 +295,11 @@ public class PlReader {
     private class PlCharacter extends AbstractPlCommand {
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.font.format.pl.PlCommand#execute(java.io.Reader)
          */
-        public void execute(final Reader reader) throws IOException {
+        public void execute(Reader reader) throws IOException {
 
             actual = new Chars();
             param = readParameter(reader);
@@ -313,9 +319,11 @@ public class PlReader {
     private class PlMap extends AbstractPlCommand {
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.font.format.pl.PlCommand#execute(java.io.Reader)
          */
-        public void execute(final Reader reader) throws IOException {
+        public void execute(Reader reader) throws IOException {
 
             param = readParameter(reader);
             StringReader r = new StringReader(param);
@@ -334,9 +342,11 @@ public class PlReader {
         private int ch;
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.font.format.pl.PlCommand#execute(java.io.Reader)
          */
-        public void execute(final Reader reader) throws IOException {
+        public void execute(Reader reader) throws IOException {
 
             param = readParameter(reader);
             StringReader r = new StringReader(param);
@@ -403,7 +413,7 @@ public class PlReader {
          * The ch to set.
          * @param c The ch to set.
          */
-        public void setCh(final int c) {
+        public void setCh(int c) {
 
             ch = c;
         }
@@ -421,7 +431,7 @@ public class PlReader {
          * The mapch to set.
          * @param c The mapch to set.
          */
-        public void setMapch(final int c) {
+        public void setMapch(int c) {
 
             mapch = c;
         }

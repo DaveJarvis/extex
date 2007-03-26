@@ -76,8 +76,8 @@ public final class GlueParser {
      *
      * @throws InterpreterException in case of an error
      */
-    public static Glue parse(final TokenSource source, final Context context,
-            final Typesetter typesetter) throws InterpreterException {
+    public static Glue parse(TokenSource source, Context context,
+            Typesetter typesetter) throws InterpreterException {
 
         GlueComponent length;
         GlueComponent shrink;

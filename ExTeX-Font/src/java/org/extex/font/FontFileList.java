@@ -22,8 +22,6 @@ package org.extex.font;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import org.extex.font.FontByteArray;
-
 /**
  * Class for a <code>FontFile</code>List.
  *
@@ -55,7 +53,7 @@ public class FontFileList implements Serializable {
      * Create a new object.
      * @param initsize  the initsize for the list
      */
-    public FontFileList(final int initsize) {
+    public FontFileList(int initsize) {
 
         super();
         list = new ArrayList(initsize);
@@ -74,7 +72,7 @@ public class FontFileList implements Serializable {
      * Add a <code>FontFile</code>
      * @param fontfile  the fontfile to add
      */
-    public void add(final FontByteArray fontfile) {
+    public void add(FontByteArray fontfile) {
 
         list.add(fontfile);
     }
@@ -84,7 +82,7 @@ public class FontFileList implements Serializable {
      * @param idx   the position
      * @return  the fontfile at position idx
      */
-    public FontByteArray getFontFile(final int idx) {
+    public FontByteArray getFontFile(int idx) {
 
         return (FontByteArray) list.get(idx);
     }

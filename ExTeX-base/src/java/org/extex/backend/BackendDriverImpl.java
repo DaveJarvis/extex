@@ -53,7 +53,9 @@ public class BackendDriverImpl
     private class Counter implements PagePipe {
 
         /**
-         * @see org.extex.backend.nodeFilter.NodePipe#close()
+         * {@inheritDoc}
+         *
+         * @see org.extex.backend.pageFilter.PagePipe#close()
          */
         public void close() throws BackendException {
 
@@ -68,28 +70,34 @@ public class BackendDriverImpl
         }
 
         /**
-         * @see org.extex.backend.nodeFilter.NodePipe#setNext(
-         *      org.extex.backend.nodeFilter.NodePipe)
+         * {@inheritDoc}
+         *
+         * @see org.extex.backend.pageFilter.PagePipe#setOutput(
+         *      org.extex.backend.pageFilter.PagePipe)
          */
-        public void setOutput(final PagePipe next) {
+        public void setOutput(PagePipe next) {
 
             throw new RuntimeException("this should not happen");
         }
 
         /**
-         * @see org.extex.backend.nodeFilter.NodePipe#setParameter(
-         *      java.lang.String,
-         *      java.lang.String)
+         * {@inheritDoc}
+         *
+         * @see org.extex.backend.pageFilter.PagePipe#setParameter(
+         *      java.lang.String, java.lang.String)
          */
-        public void setParameter(final String name, final String value) {
+        public void setParameter(String name, String value) {
 
+            // nothing to do
         }
 
         /**
-         * @see org.extex.backend.nodeFilter.NodePipe#process(
+         * {@inheritDoc}
+         *
+         * @see org.extex.backend.pageFilter.PagePipe#shipout(
          *      org.extex.typesetter.type.page.Page)
          */
-        public void shipout(final Page nodes) throws BackendException {
+        public void shipout(Page nodes) throws BackendException {
 
             try {
                 documentWriter.shipout(nodes);
@@ -143,10 +151,12 @@ public class BackendDriverImpl
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.backend.BackendDriver#add(
      *      org.extex.backend.pageFilter.PagePipe)
      */
-    public void add(final PagePipe processor) {
+    public void add(PagePipe processor) {
 
         processor.setOutput(counter);
 
@@ -160,6 +170,8 @@ public class BackendDriverImpl
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.backend.BackendDriver#close()
      */
     public void close() throws BackendException {
@@ -179,21 +191,18 @@ public class BackendDriverImpl
     }
 
     /**
-     * Configure an object according to a given Configuration.
-     *
-     * @param config the configuration object to consider
+     * {@inheritDoc}
      *
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
-    public void configure(final Configuration config) {
+    public void configure(Configuration config) {
 
+        // nothing to do
     }
 
     /**
-     * Getter for the document writer.
-     *
-     * @return the document writer
+     * {@inheritDoc}
      *
      * @see org.extex.backend.BackendDriver#getDocumentWriter()
      */
@@ -236,7 +245,7 @@ public class BackendDriverImpl
      * @see org.extex.backend.BackendDriver#setDocumentWriter(
      *      org.extex.backend.documentWriter.DocumentWriter)
      */
-    public void setDocumentWriter(final DocumentWriter docWriter) {
+    public void setDocumentWriter(DocumentWriter docWriter) {
 
         documentWriter = docWriter;
     }
@@ -249,7 +258,7 @@ public class BackendDriverImpl
      * @see org.extex.backend.documentWriter.MultipleDocumentStream#setOutputStreamFactory(
      *      org.extex.backend.outputStream.OutputStreamFactory)
      */
-    public void setOutputStreamFactory(final OutputStreamFactory factory) {
+    public void setOutputStreamFactory(OutputStreamFactory factory) {
 
         if (documentWriter instanceof MultipleDocumentStream) {
             ((MultipleDocumentStream) documentWriter)
@@ -270,7 +279,7 @@ public class BackendDriverImpl
      *      java.lang.String,
      *      java.lang.String)
      */
-    public void setParameter(final String name, final String value) {
+    public void setParameter(String name, String value) {
 
         if (documentWriter != null) {
             documentWriter.setParameter(name, value);
@@ -293,7 +302,7 @@ public class BackendDriverImpl
      * @see org.extex.backend.BackendDriver#shipout(
      *      org.extex.typesetter.type.page.Page)
      */
-    public int shipout(final Page page) throws BackendException {
+    public int shipout(Page page) throws BackendException {
 
         int n = pages;
         pipeFirst.shipout(page);

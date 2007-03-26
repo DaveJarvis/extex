@@ -34,7 +34,7 @@ public class ShowboxTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public ShowboxTest(final String arg) {
+    public ShowboxTest(String arg) {
 
         super(arg, "showbox", "1 ", "", "\\box1=void\nOK\n");
     }

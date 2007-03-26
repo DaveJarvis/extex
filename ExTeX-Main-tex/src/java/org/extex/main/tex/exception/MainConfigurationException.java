@@ -43,7 +43,7 @@ public class MainConfigurationException extends MainException {
      *
      * @param cause the root of all evil
      */
-    public MainConfigurationException(final Throwable cause) {
+    public MainConfigurationException(Throwable cause) {
 
         super(ERROR_CODE, cause);
     }

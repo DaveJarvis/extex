@@ -33,7 +33,7 @@ public class NamespaceTest extends NoFlagsButGlobalPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(NamespaceTest.class);
     }
@@ -43,7 +43,7 @@ public class NamespaceTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public NamespaceTest(final String arg) {
+    public NamespaceTest(String arg) {
 
         super(arg, "namespace", "{a}", DEFINE_BRACES);
         setConfig("namespace-test");

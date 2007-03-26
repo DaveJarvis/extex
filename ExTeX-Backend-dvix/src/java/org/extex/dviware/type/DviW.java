@@ -42,7 +42,7 @@ public class DviW extends AbstractDviCode {
      *
      * @param value the value
      */
-    public DviW(final int value) {
+    public DviW(int value) {
 
         super("w" + variant(value));
         this.value = value;
@@ -59,7 +59,7 @@ public class DviW extends AbstractDviCode {
      *
      * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
      */
-    public int write(final OutputStream stream) throws IOException {
+    public int write(OutputStream stream) throws IOException {
 
         return opcodeSigned(Dvi.W1, value, stream);
     }

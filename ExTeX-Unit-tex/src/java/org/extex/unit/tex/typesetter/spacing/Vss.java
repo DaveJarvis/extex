@@ -65,7 +65,7 @@ public class Vss extends AbstractVerticalCode implements VerticalSkip {
      *
      * @param name the name for debugging
      */
-    public Vss(final String name) {
+    public Vss(String name) {
 
         super(name);
     }
@@ -89,8 +89,8 @@ public class Vss extends AbstractVerticalCode implements VerticalSkip {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -112,8 +112,8 @@ public class Vss extends AbstractVerticalCode implements VerticalSkip {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public FixedGlue getGlue(final Context context, final TokenSource source,
-            final Typesetter typesetter) {
+    public FixedGlue getGlue(Context context, TokenSource source,
+            Typesetter typesetter) {
 
         return FixedGlue.S_S;
     }

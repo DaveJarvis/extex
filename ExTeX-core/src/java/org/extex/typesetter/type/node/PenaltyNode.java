@@ -55,7 +55,7 @@ public class PenaltyNode extends AbstractNode implements Node, Discardable {
      *
      * @see "<logo>TeX</logo> &ndash; The Program [158]"
      */
-    public PenaltyNode(final Count thePenalty) {
+    public PenaltyNode(Count thePenalty) {
 
         this(thePenalty.getValue());
     }
@@ -65,7 +65,7 @@ public class PenaltyNode extends AbstractNode implements Node, Discardable {
      *
      * @param thePenalty the penalty value
      */
-    public PenaltyNode(final long thePenalty) {
+    public PenaltyNode(long thePenalty) {
 
         super();
         this.penalty = thePenalty;
@@ -98,8 +98,8 @@ public class PenaltyNode extends AbstractNode implements Node, Discardable {
      *      int,
      *      int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         sb.append(getLocalizer()
             .format("String.Format", Long.toString(penalty)));
@@ -117,7 +117,7 @@ public class PenaltyNode extends AbstractNode implements Node, Discardable {
      *      java.lang.StringBuffer,
      *      java.lang.String)
      */
-    public void toText(final StringBuffer sb, final String prefix) {
+    public void toText(StringBuffer sb, String prefix) {
 
         sb.append(getLocalizer().format("Text.Format", Long.toString(penalty)));
     }
@@ -136,7 +136,7 @@ public class PenaltyNode extends AbstractNode implements Node, Discardable {
      *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final NodeVisitor visitor, final Object value)
+    public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {
 
         return visitor.visitPenalty(this, value);

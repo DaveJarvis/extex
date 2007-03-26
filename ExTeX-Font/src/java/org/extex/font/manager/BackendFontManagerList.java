@@ -69,7 +69,7 @@ public class BackendFontManagerList implements BackendFontManager {
      *
      * @param manager the new manager.
      */
-    public void add(final BackendFontManager manager) {
+    public void add(BackendFontManager manager) {
 
         if (manager == null) {
             throw new IllegalArgumentException("manager");
@@ -81,7 +81,7 @@ public class BackendFontManagerList implements BackendFontManager {
     /**
      * @see java.util.List#get(int)
      */
-    public BackendFontManager get(final int index) {
+    public BackendFontManager get(int index) {
 
         return (BackendFontManager) managers.get(index);
     }
@@ -196,7 +196,7 @@ public class BackendFontManagerList implements BackendFontManager {
      * @see org.extex.font.BackendFontManager#recognize(org.extex.font.FontKey,
      *      org.extex.core.UnicodeChar)
      */
-    public boolean recognize(final FontKey fontKey, final UnicodeChar uc) {
+    public boolean recognize(FontKey fontKey, UnicodeChar uc) {
 
         if (fontKey == null) {
             throw new IllegalArgumentException("fontkey");
@@ -246,7 +246,7 @@ public class BackendFontManagerList implements BackendFontManager {
      * {@inheritDoc}
      * @see org.extex.font.BackendFontManager#setBackendFontFactory(org.extex.font.BackendFontFactory)
      */
-    public void setBackendFontFactory(final BackendFontFactory factory) {
+    public void setBackendFontFactory(BackendFontFactory factory) {
 
         this.factory = factory;
 

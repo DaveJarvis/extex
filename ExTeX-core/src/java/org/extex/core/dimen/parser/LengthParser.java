@@ -68,7 +68,7 @@ public final class LengthParser {
          *      org.extex.core.dimen.parser.Accumulator,
          *      org.extex.core.dimen.parser.Accumulator)
          */
-        public void apply(final Accumulator arg1, final Accumulator arg2) {
+        public void apply(Accumulator arg1, Accumulator arg2) {
 
             arg1.value = arg2.value;
             arg1.sp = arg2.sp;
@@ -79,7 +79,8 @@ public final class LengthParser {
      * The field <tt>functions</tt> contains the function object attached to a
      * function name.
      */
-    private static Map functions = new HashMap();
+    private static Map<String, Object> functions =
+            new HashMap<String, Object>();
 
     /**
      * The field <tt>MINUS</tt> contains the subtractor.
@@ -91,7 +92,7 @@ public final class LengthParser {
          *      org.extex.core.dimen.parser.Accumulator,
          *      org.extex.core.dimen.parser.Accumulator)
          */
-        public void apply(final Accumulator arg1, final Accumulator arg2)
+        public void apply(Accumulator arg1, Accumulator arg2)
                 throws HelpingException {
 
             if (arg1.sp != arg2.sp) {
@@ -114,7 +115,7 @@ public final class LengthParser {
          *      org.extex.core.dimen.parser.Accumulator,
          *      org.extex.core.dimen.parser.Accumulator)
          */
-        public void apply(final Accumulator arg1, final Accumulator arg2)
+        public void apply(Accumulator arg1, Accumulator arg2)
                 throws HelpingException {
 
             if (arg1.sp != arg2.sp) {
@@ -136,7 +137,7 @@ public final class LengthParser {
              * @see org.extex.core.dimen.parser.Function1#apply(
              *      org.extex.core.dimen.parser.Accumulator)
              */
-            public void apply(final Accumulator accumulator)
+            public void apply(Accumulator accumulator)
                     throws InterpreterException {
 
                 if (accumulator.value < 0) {
@@ -157,9 +158,9 @@ public final class LengthParser {
              *
              * @throws InterpreterException in case of an error
              */
-            public void apply(final Accumulator accumulator,
-                    final Context context, final TokenSource source,
-                    final Typesetter typesetter) throws InterpreterException {
+            public void apply(Accumulator accumulator,
+                    Context context, TokenSource source,
+                    Typesetter typesetter) throws InterpreterException {
 
                 Token t;
                 evalExpr(accumulator, context, source, typesetter);
@@ -195,9 +196,9 @@ public final class LengthParser {
              *
              * @throws InterpreterException in case of an error
              */
-            public void apply(final Accumulator accumulator,
-                    final Context context, final TokenSource source,
-                    final Typesetter typesetter) throws InterpreterException {
+            public void apply(Accumulator accumulator,
+                    Context context, TokenSource source,
+                    Typesetter typesetter) throws InterpreterException {
 
                 Token t;
                 evalExpr(accumulator, context, source, typesetter);
@@ -230,7 +231,7 @@ public final class LengthParser {
              * @see org.extex.core.dimen.parser.Function1#apply(
              *      org.extex.core.dimen.parser.Accumulator)
              */
-            public void apply(final Accumulator accumulator)
+            public void apply(Accumulator accumulator)
                     throws InterpreterException {
 
                 if (accumulator.value > 0) {
@@ -252,7 +253,7 @@ public final class LengthParser {
              * @see org.extex.core.dimen.parser.Function1#apply(
              *      org.extex.core.dimen.parser.Accumulator)
              */
-            public void apply(final Accumulator accumulator)
+            public void apply(Accumulator accumulator)
                     throws InterpreterException {
 
                 if (accumulator.sp != 0) {
@@ -273,7 +274,7 @@ public final class LengthParser {
              * @see org.extex.core.dimen.parser.Function1#apply(
              *      org.extex.core.dimen.parser.Accumulator)
              */
-            public void apply(final Accumulator accumulator)
+            public void apply(Accumulator accumulator)
                     throws InterpreterException {
 
                 if (accumulator.sp != 0) {
@@ -294,7 +295,7 @@ public final class LengthParser {
              * @see org.extex.core.dimen.parser.Function1#apply(
              *      org.extex.core.dimen.parser.Accumulator)
              */
-            public void apply(final Accumulator accumulator)
+            public void apply(Accumulator accumulator)
                     throws InterpreterException {
 
                 if (accumulator.sp != 0) {
@@ -314,7 +315,7 @@ public final class LengthParser {
              *
              * @param accumulator the accumulator to receive the result
              */
-            public void apply(final Accumulator accumulator) {
+            public void apply(Accumulator accumulator) {
 
                 accumulator.sp = 0;
                 accumulator.value = 205887;
@@ -332,9 +333,9 @@ public final class LengthParser {
      *
      * @throws InterpreterException in case of an error
      */
-    private static void evalExpr(final Accumulator accumulator,
-            final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    private static void evalExpr(Accumulator accumulator,
+            Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         Token t;
         Function2 op = ASSIGN;
@@ -399,9 +400,9 @@ public final class LengthParser {
      *
      * @throws InterpreterException in case of an error
      */
-    public static void evalTerm(final Accumulator accumulator,
-            final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public static void evalTerm(Accumulator accumulator,
+            Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         for (Token t = source.getNonSpace(context); t != null; t =
                 source.getNonSpace(context)) {
@@ -433,8 +434,8 @@ public final class LengthParser {
                                 t);
 
                     GlueComponent gc =
-                        GlueComponentParser.attachUnit(value, context, source,
-                                typesetter, false);
+                            GlueComponentParser.attachUnit(value, context,
+                                source, typesetter, false);
                     if (gc == null) {
                         accumulator.value = value;
                         accumulator.sp = 0;
@@ -551,8 +552,8 @@ public final class LengthParser {
      *
      * @throws InterpreterException in case of an error
      */
-    public static Dimen parse(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public static Dimen parse(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         Accumulator accumulator = new Accumulator();
         evalTerm(accumulator, context, source, typesetter);
@@ -566,22 +567,46 @@ public final class LengthParser {
         return new Dimen(accumulator.value);
     }
 
-    public static void register(final String name, final Function function) {
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param name ...
+     * @param function ...
+     */
+    public static void register(String name, Function function) {
 
         functions.put(name, function);
     }
 
-    public static void register(final String name, final Function0 function) {
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param name ...
+     * @param function ...
+     */
+    public static void register(String name, Function0 function) {
 
         functions.put(name, function);
     }
 
-    public static void register(final String name, final Function1 function) {
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param name ...
+     * @param function ...
+     */
+    public static void register(String name, Function1 function) {
 
         functions.put(name, function);
     }
 
-    public static void register(final String name, final Function2 function) {
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param name ...
+     * @param function ...
+     */
+    public static void register(String name, Function2 function) {
 
         functions.put(name, function);
     }
@@ -595,8 +620,8 @@ public final class LengthParser {
      *
      * @throws InterpreterException in case of an error
      */
-    private static void skipComma(final Context context,
-            final TokenSource source) throws InterpreterException {
+    private static void skipComma(Context context,
+            TokenSource source) throws InterpreterException {
 
         Token t = source.getNonSpace(context);
         if (t == null) {

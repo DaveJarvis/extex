@@ -55,7 +55,7 @@ public class NumberedBool extends NamedBool {
      *
      * @param name the name for debugging
      */
-    public NumberedBool(final String name) {
+    public NumberedBool(String name) {
 
         super(name);
     }
@@ -65,7 +65,7 @@ public class NumberedBool extends NamedBool {
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
      */
-    protected String getKey(final Context context, final TokenSource source)
+    protected String getKey(Context context, TokenSource source)
             throws InterpreterException {
 
         return getName() + "#" + Long.toString(source.scanNumber(context));

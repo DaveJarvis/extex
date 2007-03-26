@@ -41,8 +41,8 @@ public class ConfigurationUnsupportedEncodingException
      * @param message the message string
      * @param source the the name of the file for which this exception occurred
      */
-    public ConfigurationUnsupportedEncodingException(final String message,
-            final String source) {
+    public ConfigurationUnsupportedEncodingException(String message,
+            String source) {
 
         super(message, source);
     }
@@ -53,8 +53,8 @@ public class ConfigurationUnsupportedEncodingException
      * @param message message the message string
      * @param cause the next Throwable in the list
      */
-    public ConfigurationUnsupportedEncodingException(final String message,
-            final Throwable cause) {
+    public ConfigurationUnsupportedEncodingException(String message,
+            Throwable cause) {
 
         super(message, cause);
     }

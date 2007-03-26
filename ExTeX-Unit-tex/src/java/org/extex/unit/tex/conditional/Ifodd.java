@@ -68,7 +68,7 @@ public class Ifodd extends AbstractIf {
      *
      * @param name the name for debugging
      */
-    public Ifodd(final String name) {
+    public Ifodd(String name) {
 
         super(name);
     }
@@ -92,8 +92,8 @@ public class Ifodd extends AbstractIf {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public boolean conditional(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         return ((CountParser.scanInteger(context, source, typesetter) & 1) == 1);

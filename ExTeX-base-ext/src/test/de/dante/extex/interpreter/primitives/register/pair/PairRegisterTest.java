@@ -37,7 +37,7 @@ public class PairRegisterTest extends TestCase {
      * Creates a new object.
      * @param arg0 ...
      */
-    public PairRegisterTest(final String arg0) {
+    public PairRegisterTest(String arg0) {
 
         super(arg0);
     }
@@ -46,7 +46,7 @@ public class PairRegisterTest extends TestCase {
      * ...
      * @param args ...
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PairRegisterTest.class);
     }

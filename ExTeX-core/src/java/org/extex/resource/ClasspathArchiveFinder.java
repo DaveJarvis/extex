@@ -28,7 +28,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import org.extex.core.StringListIterator;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
@@ -46,7 +45,7 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  *  resource does not exist.
  * </p>
  * <p>
- *  The sequence in which the different indices on the class path are consulted
+ *  The sequence in which the different indexes on the class path are consulted
  *  is unspecified.
  * </p>
  *
@@ -155,7 +154,7 @@ public class ClasspathArchiveFinder extends AbstractFinder {
      *
      * @throws ConfigurationException in case of an error
      */
-    public ClasspathArchiveFinder(final Configuration configuration)
+    public ClasspathArchiveFinder(Configuration configuration)
             throws ConfigurationException {
 
         super(configuration);
@@ -176,7 +175,7 @@ public class ClasspathArchiveFinder extends AbstractFinder {
      *      java.lang.String,
      *      java.lang.String)
      */
-    public InputStream findResource(final String name, final String type)
+    public InputStream findResource(String name, String type)
             throws ConfigurationException {
 
         trace("Searching", name, type);
@@ -210,10 +209,9 @@ public class ClasspathArchiveFinder extends AbstractFinder {
             prefix = "";
         }
 
-        StringListIterator extIt = cfg.getValues(EXTENSION_TAG).getIterator();
+        for (String ext : cfg.getValues(EXTENSION_TAG)) {
 
-        while (extIt.hasNext()) {
-            String fullName = prefix + name + extIt.next();
+            String fullName = prefix + name + ext;
             fullName = fullName.replaceAll("\\{type\\}", type);
             trace("Try", fullName, null);
             URL url = (URL) index.get(fullName);
@@ -243,13 +241,13 @@ public class ClasspathArchiveFinder extends AbstractFinder {
      *
      * @return the cache
      *
-     * @throws IOException in case of an error
+     * @throws ConfigurationWrapperException in case of a configuration problem
      */
-    protected Map initialize(final String tocName)
+    protected Map initialize(String tocName)
             throws ConfigurationWrapperException {
 
         long start = System.currentTimeMillis();
-        Map cache = new HashMap();
+        Map<String, URL> cache = new HashMap<String, URL>();
 
         ClassLoader classLoader = getClass().getClassLoader();
 

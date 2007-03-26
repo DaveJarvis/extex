@@ -34,7 +34,7 @@ public class AftergroupTest extends NoFlagsPrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(AftergroupTest.class);
     }
@@ -44,7 +44,7 @@ public class AftergroupTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public AftergroupTest(final String arg) {
+    public AftergroupTest(String arg) {
 
         super(arg, "aftergroup", " x");
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -84,45 +84,51 @@ public class Glueshrink extends AbstractCode
      *
      * @param name the name for debugging
      */
-    public Glueshrink(final String name) {
+    public Glueshrink(String name) {
 
         super(name);
     }
 
     /**
-     * @see org.extex.interpreter.type.CountConvertible#convertCount(
+     * {@inheritDoc}
+     *
+     * @see org.extex.core.count.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public long convertCount(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         Glue glue = GlueParser.parse(source, context, typesetter);
         return glue.getShrink().getValue();
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.core.dimen.DimenConvertible#convertDimen(
      *     org.extex.interpreter.context.Context,
      *     org.extex.interpreter.TokenSource,
      *     org.extex.typesetter.Typesetter)
      */
-    public long convertDimen(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public long convertDimen(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         Glue glue = GlueParser.parse(source, context, typesetter);
         return glue.getShrink().getValue();
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter)
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter)
             throws CatcodeException,
                 InterpreterException {
 

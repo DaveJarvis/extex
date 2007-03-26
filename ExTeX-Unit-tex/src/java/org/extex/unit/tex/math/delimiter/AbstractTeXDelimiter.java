@@ -151,15 +151,15 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
         /**
          * Invoke the visitor method for a binary operator.
          *
-         * @param arg the argument
-         * @param arg2 the second argument
+         * @param ignore the argument
+         * @param ignore2 the second argument
          *
          * @return the result
          *
          * @see org.extex.interpreter.type.math.MathClassVisitor#visitBinary(
          *      java.lang.Object, java.lang.Object)
          */
-        public Object visitBinary(final Object ignore, final Object ignore2) {
+        public Object visitBinary(Object ignore, Object ignore2) {
 
             return DEL_BINARY;
         }
@@ -167,15 +167,15 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
         /**
          * Invoke the visitor method for a closing delimiter.
          *
-         * @param arg the argument
-         * @param arg2 the second argument
+         * @param ignore the argument
+         * @param ignore2 the second argument
          *
          * @return the result
          *
          * @see org.extex.interpreter.type.math.MathClassVisitor#visitClosing(
          *      java.lang.Object, java.lang.Object)
          */
-        public Object visitClosing(final Object ignore, final Object ignore2) {
+        public Object visitClosing(Object ignore, Object ignore2) {
 
             return DEL_CLOSING;
         }
@@ -183,15 +183,15 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
         /**
          * Invoke the visitor method for a large operator.
          *
-         * @param arg the argument
-         * @param arg2 the second argument
+         * @param ignore the argument
+         * @param ignore2 the second argument
          *
          * @return the result
          *
          * @see org.extex.interpreter.type.math.MathClassVisitor#visitLarge(
          *      java.lang.Object, java.lang.Object)
          */
-        public Object visitLarge(final Object ignore, final Object ignore2) {
+        public Object visitLarge(Object ignore, Object ignore2) {
 
             return DEL_LARGE;
         }
@@ -199,15 +199,15 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
         /**
          * Invoke the visitor method for a opening delimiter.
          *
-         * @param arg the argument
-         * @param arg2 the second argument
+         * @param ignore the argument
+         * @param ignore2 the second argument
          *
          * @return the result
          *
          * @see org.extex.interpreter.type.math.MathClassVisitor#visitOpening(
          *      java.lang.Object, java.lang.Object)
          */
-        public Object visitOpening(final Object ignore, final Object ignore2) {
+        public Object visitOpening(Object ignore, Object ignore2) {
 
             return DEL_OPENING;
         }
@@ -215,15 +215,15 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
         /**
          * Invoke the visitor method for an ordinary symbol .
          *
-         * @param arg the argument
-         * @param arg2 the second argument
+         * @param ignore the argument
+         * @param ignore2 the second argument
          *
          * @return the result
          *
          * @see org.extex.interpreter.type.math.MathClassVisitor#visitOrdinary(
          *      java.lang.Object, java.lang.Object)
          */
-        public Object visitOrdinary(final Object ignore, final Object ignore2) {
+        public Object visitOrdinary(Object ignore, Object ignore2) {
 
             return DEL_ORDINARY;
         }
@@ -231,15 +231,15 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
         /**
          * Invoke the visitor method for a punctation symbol.
          *
-         * @param arg the argument
-         * @param arg2 the second argument
+         * @param ignore the argument
+         * @param ignore2 the second argument
          *
          * @return the result
          *
          * @see org.extex.interpreter.type.math.MathClassVisitor#visitPunctation(
          *      java.lang.Object, java.lang.Object)
          */
-        public Object visitPunctation(final Object ignore, final Object ignore2) {
+        public Object visitPunctation(Object ignore, Object ignore2) {
 
             return DEL_PUNCTATION;
         }
@@ -247,15 +247,15 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
         /**
          * Invoke the visitor method for a relation operator.
          *
-         * @param arg the argument
-         * @param arg2 the second argument
+         * @param ignore the argument
+         * @param ignore2 the second argument
          *
          * @return the result
          *
          * @see org.extex.interpreter.type.math.MathClassVisitor#visitRelation(
          *      java.lang.Object, java.lang.Object)
          */
-        public Object visitRelation(final Object ignore, final Object ignore2) {
+        public Object visitRelation(Object ignore, Object ignore2) {
 
             return DEL_RELATION;
         }
@@ -263,15 +263,15 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
         /**
          * Invoke the visitor method for a variable width symbol.
          *
-         * @param arg the argument
-         * @param arg2 the second argument
+         * @param ignore the argument
+         * @param ignore2 the second argument
          *
          * @return the result
          *
          * @see org.extex.interpreter.type.math.MathClassVisitor#visitVariable(
          *      java.lang.Object, java.lang.Object)
          */
-        public Object visitVariable(final Object ignore, final Object ignore2) {
+        public Object visitVariable(Object ignore, Object ignore2) {
 
             return DEL_VARIABLE;
         }
@@ -304,7 +304,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
      *
      * @throws HelpingException in case of an error
      */
-    public static long delimiterToLong(final MathDelimiter del)
+    public static long delimiterToLong(MathDelimiter del)
             throws HelpingException {
 
         if (del == null) {
@@ -373,7 +373,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
      *
      * @throws InterpreterException in case of a parameter out of range
      */
-    public static MathDelimiter newMathDelimiter(final long delcode)
+    public static MathDelimiter newMathDelimiter(long delcode)
             throws InterpreterException {
 
         int classCode = (int) ((delcode >> CLASS_SHIFT));
@@ -408,9 +408,9 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
      *
      * @throws InterpreterException in case of an error
      */
-    private static MathDelimiter parse(final Context context,
-            final TokenSource source, final Typesetter typesetter,
-            final MathClass mClass, final String primitive)
+    private static MathDelimiter parse(Context context,
+            TokenSource source, Typesetter typesetter,
+            MathClass mClass, String primitive)
             throws InterpreterException {
 
         int smallFam = (int) CountParser.scanNumber(context, source, typesetter);
@@ -442,9 +442,9 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
      * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
      */
-    public static MathDelimiter parseDelimiter(final Context context,
-            final TokenSource source, final Typesetter typesetter,
-            final String primitive)
+    public static MathDelimiter parseDelimiter(Context context,
+            TokenSource source, Typesetter typesetter,
+            String primitive)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -540,7 +540,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
      *
      * @param name the name for tracing and debugging
      */
-    public AbstractTeXDelimiter(final String name) {
+    public AbstractTeXDelimiter(String name) {
 
         super(name);
     }

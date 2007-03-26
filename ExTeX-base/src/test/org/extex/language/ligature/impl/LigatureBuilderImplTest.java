@@ -70,7 +70,7 @@ public class LigatureBuilderImplTest extends TestCase {
          * @see org.extex.interpreter.type.font.Font#hasGlyph(
          *      org.extex.core.UnicodeChar)
          */
-        public boolean hasGlyph(final UnicodeChar uc) {
+        public boolean hasGlyph(UnicodeChar uc) {
 
             switch (uc.getCodePoint()) {
                 case 'a':
@@ -97,8 +97,8 @@ public class LigatureBuilderImplTest extends TestCase {
          *      org.extex.core.UnicodeChar,
          *      org.extex.core.UnicodeChar)
          */
-        public UnicodeChar getLigature(final UnicodeChar uc1,
-                final UnicodeChar uc2) {
+        public UnicodeChar getLigature(UnicodeChar uc1,
+                UnicodeChar uc2) {
 
             switch (uc1.getCodePoint()) {
                 case 'f':
@@ -164,9 +164,9 @@ public class LigatureBuilderImplTest extends TestCase {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(LigatureBuilderImpl.class);
+        junit.textui.TestRunner.run(LigatureBuilderImplTest.class);
     }
 
     /**

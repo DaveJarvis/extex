@@ -33,7 +33,7 @@ public class LocalbrokenpenaltyTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(LocalbrokenpenaltyTest.class);
     }
@@ -43,7 +43,7 @@ public class LocalbrokenpenaltyTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public LocalbrokenpenaltyTest(final String arg) {
+    public LocalbrokenpenaltyTest(String arg) {
 
         super(arg, "localbrokenpenalty", " ", "0");
         setConfig("omega-test");

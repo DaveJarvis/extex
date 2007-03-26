@@ -44,7 +44,7 @@ public class FileCloseObserver implements StreamCloseObserver {
      *
      * @param theLogger the logger for potential output
      */
-    public FileCloseObserver(final Logger theLogger) {
+    public FileCloseObserver(Logger theLogger) {
 
         super();
         this.logger = theLogger;
@@ -58,7 +58,7 @@ public class FileCloseObserver implements StreamCloseObserver {
      * @see org.extex.interpreter.observer.streamClose.StreamCloseObserver#update(
      *      org.extex.scanner.TokenStream)
      */
-    public void update(final TokenStream stream) {
+    public void update(TokenStream stream) {
 
         if (stream.isFileStream()) {
             logger.info(")");

@@ -72,7 +72,7 @@ public class PageManager {
          * @param min the lowest value
          * @param max the highest value
          */
-        public Range(final int min, final int max) {
+        public Range(int min, int max) {
 
             this.min = min;
             this.max = max;
@@ -85,7 +85,7 @@ public class PageManager {
          *
          * @return <code>true</code> iff the number is contained in the range.
          */
-        public boolean valid(final int page) {
+        public boolean valid(int page) {
 
             return page >= min && page <= max;
         }
@@ -95,7 +95,7 @@ public class PageManager {
      * The field <tt>pages</tt> contains the list of validators. If the value is
      * <code>null</code> then all pages are selected.
      */
-    private List pages = null;
+    private List<Range> pages = null;
 
     /**
      * Creates a new object.
@@ -126,10 +126,10 @@ public class PageManager {
      *
      * @throws IllegalArgumentException in case of a parse error
      */
-    public void addPages(final CharSequence spec) {
+    public void addPages(CharSequence spec) {
 
         if (pages == null) {
-            pages = new ArrayList();
+            pages = new ArrayList<Range>();
         }
 
         int len = spec.length();
@@ -151,8 +151,8 @@ public class PageManager {
      * @param start the start index
      * @param end the index of the first character not to be considered
      */
-    private void addPages(final CharSequence spec, final int start,
-            final int end) {
+    private void addPages(CharSequence spec, int start,
+            int end) {
 
         int i = skipSpace(spec, start, end);
         if (i >= end) {
@@ -220,8 +220,8 @@ public class PageManager {
      *
      * @return the index of the first character after the spaces
      */
-    private int skipSpace(final CharSequence spec, final int start,
-            final int end) {
+    private int skipSpace(CharSequence spec, int start,
+            int end) {
 
         int i = start;
         while (i < end) {
@@ -240,7 +240,7 @@ public class PageManager {
      *
      * @return <code>true</code> iff the page is in a selected range
      */
-    public boolean isSelected(final int page) {
+    public boolean isSelected(int page) {
 
         if (pages == null) {
             return true;

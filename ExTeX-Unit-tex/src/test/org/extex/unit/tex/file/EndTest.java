@@ -34,7 +34,7 @@ public class EndTest extends NoFlagsPrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(EndTest.class);
     }
@@ -44,7 +44,7 @@ public class EndTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public EndTest(final String arg) {
+    public EndTest(String arg) {
 
         super(arg, "end", "");
     }

@@ -22,8 +22,6 @@ package org.extex.font.format.xtf.cff;
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.font.format.xtf.OtfTableCFF;
-
 /**
  * FullName.
  *
@@ -39,7 +37,7 @@ public class T2TDOFullName extends T2TDOSID {
      * @param stack the stack
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOFullName(final List stack) throws IOException {
+    public T2TDOFullName(List stack) throws IOException {
 
         super(stack, new short[]{FULLNAME});
     }

@@ -59,8 +59,8 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
      * @param args the parameters for the invocation
      * @param init ...
      */
-    public AbstractToksRegisterTester(final String arg, final String primitive,
-            final String args, final String init) {
+    public AbstractToksRegisterTester(String arg, String primitive,
+            String args, String init) {
 
         super(arg);
         this.primitive = primitive;
@@ -77,8 +77,8 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
      * @param init ...
      * @param prepare the preparation code
      */
-    public AbstractToksRegisterTester(final String arg, final String primitive,
-            final String args, final String init, final String prepare) {
+    public AbstractToksRegisterTester(String arg, String primitive,
+            String args, String init, String prepare) {
 
         this(arg, primitive, args, init);
         this.prepare = DEFINE_BRACES + prepare;

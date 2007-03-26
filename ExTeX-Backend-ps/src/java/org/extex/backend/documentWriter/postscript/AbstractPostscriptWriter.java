@@ -78,7 +78,7 @@ public abstract class AbstractPostscriptWriter
     /**
      * The field <tt>parameter</tt> contains the map for parameters.
      */
-    private Map parameter = new HashMap();
+    private Map<String, String> parameter = new HashMap<String, String>();
 
     /**
      * The field <tt>writerFactory</tt> contains the output stream factory.
@@ -106,7 +106,8 @@ public abstract class AbstractPostscriptWriter
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
-    public void configure(final Configuration config) {
+    public void configure(Configuration config)
+            throws ConfigurationException {
 
         String b = config.getAttribute("boxed");
         boxed = (b == null ? false : Boolean.valueOf(b).booleanValue());
@@ -119,9 +120,9 @@ public abstract class AbstractPostscriptWriter
      *
      * @return the value of the parameter or <code>null</code> if none exists
      */
-    protected String getParameter(final String name) {
+    protected String getParameter(String name) {
 
-        return (String) parameter.get(name);
+        return parameter.get(name);
     }
 
     /**
@@ -138,7 +139,7 @@ public abstract class AbstractPostscriptWriter
      *
      * @throws IOException in case of an IO error
      */
-    protected PsConverter getConverter(final HeaderManager headerManager)
+    protected PsConverter getConverter(HeaderManager headerManager)
             throws IOException {
 
         if (converter != null) {
@@ -171,7 +172,7 @@ public abstract class AbstractPostscriptWriter
      *
      * @throws DocumentWriterException in case of an error
      */
-    protected OutputStream newOutputStream(final String type)
+    protected OutputStream newOutputStream(String type)
             throws DocumentWriterException {
 
         return writerFactory.getOutputStream(null, type);
@@ -185,7 +186,7 @@ public abstract class AbstractPostscriptWriter
      * @see org.extex.color.ColorAware#setColorConverter(
      *      org.extex.color.ColorConverter)
      */
-    public void setColorConverter(final ColorConverter converter) {
+    public void setColorConverter(ColorConverter converter) {
 
         this.colorConverter = converter;
     }
@@ -198,7 +199,7 @@ public abstract class AbstractPostscriptWriter
      * @see org.extex.backend.documentWriter.MultipleDocumentStream#setOutputStreamFactory(
      *      org.extex.backend.outputStream.OutputStreamFactory)
      */
-    public void setOutputStreamFactory(final OutputStreamFactory factory) {
+    public void setOutputStreamFactory(OutputStreamFactory factory) {
 
         this.writerFactory = factory;
     }
@@ -216,7 +217,7 @@ public abstract class AbstractPostscriptWriter
      *      java.lang.String,
      *      java.lang.String)
      */
-    public void setParameter(final String name, final String value) {
+    public void setParameter(String name, String value) {
 
         parameter.put(name, value);
     }
@@ -229,7 +230,7 @@ public abstract class AbstractPostscriptWriter
      * @see org.extex.resource.ResourceConsumer#setResourceFinder(
      *      org.extex.resource.ResourceFinder)
      */
-    public void setResourceFinder(final ResourceFinder resourceFinder) {
+    public void setResourceFinder(ResourceFinder resourceFinder) {
 
         this.finder = resourceFinder;
     }
@@ -242,7 +243,7 @@ public abstract class AbstractPostscriptWriter
      *
      * @throws IOException in case of an error during writing
      */
-    protected void writeDsc(final OutputStream stream, final String name)
+    protected void writeDsc(OutputStream stream, String name)
             throws IOException {
 
         stream.write('%');
@@ -260,8 +261,8 @@ public abstract class AbstractPostscriptWriter
      *
      * @throws IOException in case of an error during writing
      */
-    protected void writeDsc(final OutputStream stream, final String name,
-            final String value) throws IOException {
+    protected void writeDsc(OutputStream stream, String name,
+            String value) throws IOException {
 
         stream.write('%');
         stream.write('%');
@@ -282,8 +283,8 @@ public abstract class AbstractPostscriptWriter
      *
      * @throws IOException in case of an error during writing
      */
-    protected void writeFonts(final OutputStream stream,
-            final FontManager fontManager) throws IOException {
+    protected void writeFonts(OutputStream stream,
+            FontManager fontManager) throws IOException {
 
         stream.write("%%DocumentFonts:".getBytes());
         Font[] fonts = fontManager.listFonts();

@@ -46,7 +46,7 @@ public abstract class XtfSingleTable extends XtfLookupTable {
      * Create a new object.
      * @param format    the format
      */
-    XtfSingleTable(final int format) {
+    XtfSingleTable(int format) {
 
         super(format);
 
@@ -57,7 +57,7 @@ public abstract class XtfSingleTable extends XtfLookupTable {
      * @param glyphId   hte glyph id
      * @return Retunrs the subsitute.
      */
-    public abstract int substitute(final int glyphId);
+    public abstract int substitute(int glyphId);
 
     /**
      * Create a new Instance.
@@ -66,8 +66,8 @@ public abstract class XtfSingleTable extends XtfLookupTable {
      * @return Returns the new instance.
      * @throws IOException if an IO-error occurs
      */
-    public static XtfSingleTable newInstance(final RandomAccessR rar,
-            final int offset) throws IOException {
+    public static XtfSingleTable newInstance(RandomAccessR rar,
+            int offset) throws IOException {
 
         XtfSingleTable s = null;
         rar.seek(offset);
@@ -106,7 +106,7 @@ public abstract class XtfSingleTable extends XtfLookupTable {
          * @param offset    the offset
          * @throws IOException if an IO_error occurs
          */
-        SingleTableFormat1(final RandomAccessR rar, final int offset)
+        SingleTableFormat1(RandomAccessR rar, int offset)
                 throws IOException {
 
             super(FORMAT1);
@@ -119,7 +119,7 @@ public abstract class XtfSingleTable extends XtfLookupTable {
         /**
          * @see org.extex.font.format.xtf.XtfSingleTable#substitute(int)
          */
-        public int substitute(final int glyphId) {
+        public int substitute(int glyphId) {
 
             int i = coverage.findGlyph(glyphId);
             if (i > -1) {
@@ -160,7 +160,7 @@ public abstract class XtfSingleTable extends XtfLookupTable {
          * @param offset    the offset
          * @throws IOException if an IO-error occurs
          */
-        SingleTableFormat2(final RandomAccessR rar, final int offset)
+        SingleTableFormat2(RandomAccessR rar, int offset)
                 throws IOException {
 
             super(FORMAT2);
@@ -177,7 +177,7 @@ public abstract class XtfSingleTable extends XtfLookupTable {
         /**
          * @see org.extex.font.format.xtf.XtfSingleTable#substitute(int)
          */
-        public int substitute(final int glyphId) {
+        public int substitute(int glyphId) {
 
             int i = coverage.findGlyph(glyphId);
             if (i > -1) {

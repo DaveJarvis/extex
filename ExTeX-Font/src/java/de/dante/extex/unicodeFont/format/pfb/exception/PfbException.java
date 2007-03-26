@@ -47,7 +47,7 @@ public class PfbException extends FontException {
      *
      * @param message   the message
      */
-    public PfbException(final String message) {
+    public PfbException(String message) {
 
         super(message);
     }

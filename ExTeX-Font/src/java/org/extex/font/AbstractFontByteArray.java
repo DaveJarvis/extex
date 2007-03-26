@@ -19,8 +19,6 @@
 
 package org.extex.font;
 
-import org.extex.font.FontByteArray;
-
 /**
  * Abstract class for a font byte array.
  *
@@ -33,7 +31,7 @@ public abstract class AbstractFontByteArray implements FontByteArray {
      * Create a new object
      * @param b  the byte array
      */
-    AbstractFontByteArray(final byte[] b) {
+    AbstractFontByteArray(byte[] b) {
 
         super();
         data = b;

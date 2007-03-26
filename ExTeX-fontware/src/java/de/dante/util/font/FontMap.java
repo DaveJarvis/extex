@@ -124,7 +124,7 @@ public class FontMap extends AbstractFontUtil {
      * @param args  The command line.
      * @throws Exception if an error occurred.
      */
-    public static void main(final String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
         FontMap map = new FontMap();
         map.getConsoleHandler().setLevel(Level.ALL);
@@ -224,7 +224,7 @@ public class FontMap extends AbstractFontUtil {
      * @param psfontfile    The psfont.map file.
      * @throws FontException if an error occurred.
      */
-    public void addPsFontMap(final String psfontfile) throws FontException {
+    public void addPsFontMap(String psfontfile) throws FontException {
 
         try {
             getLogger().info(
@@ -260,7 +260,7 @@ public class FontMap extends AbstractFontUtil {
      * @throws ConfigurationException from the configuration system.
      * @throws FontException if an font error occurred.
      */
-    private void addEntries(final PsFontEncoding fe)
+    private void addEntries(PsFontEncoding fe)
             throws ConfigurationException, FontException {
 
         String texfontname = fe.getFilename();
@@ -320,9 +320,9 @@ public class FontMap extends AbstractFontUtil {
      * @throws ConfigurationException from the configuration system.
      * @throws FontException if an font error occurred.
      */
-    private void createEfmFile(final String texfontname, final String efmfile,
-            final String exfontfile, final String texencfile,
-            final String encfile) throws ConfigurationException, FontException {
+    private void createEfmFile(String texfontname, String efmfile,
+            String exfontfile, String texencfile,
+            String encfile) throws ConfigurationException, FontException {
 
         try {
             // vf ?
@@ -394,7 +394,7 @@ public class FontMap extends AbstractFontUtil {
      * @throws ConfigurationException from the configuration system.
      * @throws FontException if an font error occurred.
      */
-    private void createEncVector(final String texencfile, final String encfile)
+    private void createEncVector(String texencfile, String encfile)
             throws ConfigurationException, FontException {
 
         try {
@@ -463,7 +463,7 @@ public class FontMap extends AbstractFontUtil {
      * @param file The fontMapFile to set.
      * @throws IOException if an IO-error occurred.
      */
-    public void setFontMapFile(final String file) throws IOException {
+    public void setFontMapFile(String file) throws IOException {
 
         fontMapFile = file;
         read();
@@ -581,8 +581,8 @@ public class FontMap extends AbstractFontUtil {
          *      java.lang.String, java.lang.String,
          *      java.lang.String, org.xml.sax.Attributes)
          */
-        public void startElement(final String uri, final String localName,
-                final String qName, final Attributes attributes)
+        public void startElement(String uri, String localName,
+                String qName, Attributes attributes)
                 throws SAXException {
 
             super.startElement(uri, localName, qName, attributes);
@@ -625,7 +625,7 @@ public class FontMap extends AbstractFontUtil {
          *
          * @param attributes    The xml attributes.
          */
-        public MapEntry(final Attributes attributes) {
+        public MapEntry(Attributes attributes) {
 
             setTexFont(attributes.getValue(ATT_TEXFONT));
             setEncVec(attributes.getValue(ATT_ENCVEC));
@@ -640,8 +640,8 @@ public class FontMap extends AbstractFontUtil {
          * @param aefmfile      The efm file.
          * @param aexfontfile   The font file e.g. cmr12.pfb.
          */
-        public MapEntry(final String atexfontname, final String aencfile,
-                final String aefmfile, final String aexfontfile) {
+        public MapEntry(String atexfontname, String aencfile,
+                String aefmfile, String aexfontfile) {
 
             texFont = atexfontname;
             encVec = aencfile;
@@ -662,7 +662,7 @@ public class FontMap extends AbstractFontUtil {
          * Set the efmFile.
          * @param aefmFile The efmFile to set.
          */
-        public void setEfmFile(final String aefmFile) {
+        public void setEfmFile(String aefmFile) {
 
             if (aefmFile != null) {
                 efmFile = aefmFile;
@@ -682,7 +682,7 @@ public class FontMap extends AbstractFontUtil {
          * Set the encVec.
          * @param aencVec The encVec to set.
          */
-        public void setEncVec(final String aencVec) {
+        public void setEncVec(String aencVec) {
 
             if (aencVec != null) {
                 encVec = aencVec;
@@ -702,7 +702,7 @@ public class FontMap extends AbstractFontUtil {
          * Set the texFont.
          * @param atexFont The texFont to set.
          */
-        public void setTexFont(final String atexFont) {
+        public void setTexFont(String atexFont) {
 
             if (atexFont != null) {
                 texFont = atexFont;
@@ -732,7 +732,7 @@ public class FontMap extends AbstractFontUtil {
          * Set the exFontFile.
          * @param file The exFontFile to set.
          */
-        public void setExFontFile(final String file) {
+        public void setExFontFile(String file) {
 
             if (file != null) {
                 exFontFile = file;
@@ -744,7 +744,7 @@ public class FontMap extends AbstractFontUtil {
      * Set the efm output directory.
      * @param dir The efm output directory to set.
      */
-    public void setEfmoutput(final String dir) {
+    public void setEfmoutput(String dir) {
 
         efmoutput = dir;
     }
@@ -753,7 +753,7 @@ public class FontMap extends AbstractFontUtil {
      * Set the encoding output.
      * @param dir The encoding output to set.
      */
-    public void setEncoutput(final String dir) {
+    public void setEncoutput(String dir) {
 
         encoutput = dir;
     }

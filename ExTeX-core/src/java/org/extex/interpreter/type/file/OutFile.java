@@ -69,8 +69,8 @@ public class OutFile implements Serializable {
          *      org.extex.scanner.type.ActiveCharacterToken,
          *      java.lang.Object)
          */
-        public Object visitActive(final ActiveCharacterToken token,
-                final Object w) throws Exception {
+        public Object visitActive(ActiveCharacterToken token,
+                Object w) throws Exception {
 
             ((Writer) w).write(token.getChar().getCodePoint());
             return null;
@@ -80,7 +80,7 @@ public class OutFile implements Serializable {
          * @see org.extex.scanner.type.token.TokenVisitor#visitCr(
          *      org.extex.scanner.type.CrToken, java.lang.Object)
          */
-        public Object visitCr(final CrToken token, final Object w)
+        public Object visitCr(CrToken token, Object w)
                 throws Exception {
 
             ((Writer) w).write(token.getChar().getCodePoint());
@@ -92,8 +92,8 @@ public class OutFile implements Serializable {
          *      org.extex.scanner.type.ControlSequenceToken,
          *      java.lang.Object)
          */
-        public Object visitEscape(final ControlSequenceToken token,
-                final Object w) throws Exception {
+        public Object visitEscape(ControlSequenceToken token,
+                Object w) throws Exception {
 
             UnicodeChar c = token.getChar();
             if (c != null) {
@@ -108,7 +108,7 @@ public class OutFile implements Serializable {
          *      org.extex.scanner.type.LeftBraceToken,
          *      java.lang.Object)
          */
-        public Object visitLeftBrace(final LeftBraceToken token, final Object w)
+        public Object visitLeftBrace(LeftBraceToken token, Object w)
                 throws Exception {
 
             ((Writer) w).write(token.getChar().getCodePoint());
@@ -120,7 +120,7 @@ public class OutFile implements Serializable {
          *      org.extex.scanner.type.LetterToken,
          *      java.lang.Object)
          */
-        public Object visitLetter(final LetterToken token, final Object w)
+        public Object visitLetter(LetterToken token, Object w)
                 throws Exception {
 
             ((Writer) w).write(token.getChar().getCodePoint());
@@ -132,8 +132,8 @@ public class OutFile implements Serializable {
          *      org.extex.scanner.type.MacroParamToken,
          *      java.lang.Object)
          */
-        public Object visitMacroParam(final MacroParamToken token,
-                final Object w) throws Exception {
+        public Object visitMacroParam(MacroParamToken token,
+                Object w) throws Exception {
 
             ((Writer) w).write(token.getChar().getCodePoint());
             return null;
@@ -144,7 +144,7 @@ public class OutFile implements Serializable {
          *      org.extex.scanner.type.MathShiftToken,
          *      java.lang.Object)
          */
-        public Object visitMathShift(final MathShiftToken token, final Object w)
+        public Object visitMathShift(MathShiftToken token, Object w)
                 throws Exception {
 
             ((Writer) w).write(token.getChar().getCodePoint());
@@ -156,7 +156,7 @@ public class OutFile implements Serializable {
          *      org.extex.scanner.type.OtherToken,
          *      java.lang.Object)
          */
-        public Object visitOther(final OtherToken token, final Object w)
+        public Object visitOther(OtherToken token, Object w)
                 throws Exception {
 
             ((Writer) w).write(token.getChar().getCodePoint());
@@ -168,8 +168,8 @@ public class OutFile implements Serializable {
          *      org.extex.scanner.type.RightBraceToken,
          *      java.lang.Object)
          */
-        public Object visitRightBrace(final RightBraceToken token,
-                final Object w) throws Exception {
+        public Object visitRightBrace(RightBraceToken token,
+                Object w) throws Exception {
 
             ((Writer) w).write(token.getChar().getCodePoint());
             return null;
@@ -180,7 +180,7 @@ public class OutFile implements Serializable {
          *      org.extex.scanner.type.SpaceToken,
          *      java.lang.Object)
          */
-        public Object visitSpace(final SpaceToken token, final Object w)
+        public Object visitSpace(SpaceToken token, Object w)
                 throws Exception {
 
             ((Writer) w).write(token.getChar().getCodePoint());
@@ -192,7 +192,7 @@ public class OutFile implements Serializable {
          *      org.extex.scanner.type.SubMarkToken,
          *      java.lang.Object)
          */
-        public Object visitSubMark(final SubMarkToken token, final Object w)
+        public Object visitSubMark(SubMarkToken token, Object w)
                 throws Exception {
 
             ((Writer) w).write(token.getChar().getCodePoint());
@@ -204,7 +204,7 @@ public class OutFile implements Serializable {
          *      org.extex.scanner.type.SupMarkToken,
          *      java.lang.Object)
          */
-        public Object visitSupMark(final SupMarkToken token, final Object w)
+        public Object visitSupMark(SupMarkToken token, Object w)
                 throws Exception {
 
             ((Writer) w).write(token.getChar().getCodePoint());
@@ -216,7 +216,7 @@ public class OutFile implements Serializable {
          *      org.extex.scanner.type.TabMarkToken,
          *      java.lang.Object)
          */
-        public Object visitTabMark(final TabMarkToken token, final Object w)
+        public Object visitTabMark(TabMarkToken token, Object w)
                 throws Exception {
 
             ((Writer) w).write(token.getChar().getCodePoint());
@@ -241,7 +241,7 @@ public class OutFile implements Serializable {
      *
      * @param name the file to write to
      */
-    public OutFile(final File name) {
+    public OutFile(File name) {
 
         super();
         this.file = name;
@@ -297,7 +297,7 @@ public class OutFile implements Serializable {
      * @throws InterpreterException in case of an error
      * @throws IOException in case of an IO error
      */
-    public void write(final Tokens toks)
+    public void write(Tokens toks)
             throws InterpreterException,
                 IOException {
 

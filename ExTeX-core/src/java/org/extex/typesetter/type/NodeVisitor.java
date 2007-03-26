@@ -126,7 +126,7 @@ import org.extex.typesetter.type.node.WhatsItNode;
  *
  * public class MyDocumentWriter implements DocumentWriter {
  *
- *     public void myMethod(final Node node) {
+ *     public void myMethod(Node node) {
  *         <i>// Do something with node depending on its type</i>
  *     }
  * }
@@ -139,15 +139,15 @@ import org.extex.typesetter.type.node.WhatsItNode;
  *
  * public class MyDocumentWriter implements DocumentWriter<b>, NodeVisitor</b> {
  *
- *     public void myMethod(final Node node) {
+ *     public void myMethod(Node node) {
  *         <i>// Do something with node depending on its type</i>
  *     }
  * <b>
- *     public Object visitAdjust(final AdjustNode node, final Object arg) {
+ *     public Object visitAdjust(AdjustNode node, Object arg) {
  *         <i>// do something for adjust nodes</i>
  *     }
  *
- *     public Object visitChar(final CharNode node, final Object arg) {
+ *     public Object visitChar(CharNode node, Object arg) {
  *         <i>// do something for char nodes</i>
  *     }
  *
@@ -171,16 +171,16 @@ import org.extex.typesetter.type.node.WhatsItNode;
  *
  * public class MyDocumentWriter implements DocumentWriter, NodeVisitor {
  *
- *     public void myMethod(final Node node) {
+ *     public void myMethod(Node node) {
  *         <b>node.visit(this, "some value");</b>
  *     }
  *
- *     public Object visitAdjust(final AdjustNode node, final Object arg) {
+ *     public Object visitAdjust(AdjustNode node, Object arg) {
  *         <b>String s = (String) arg;</b>
  *         <i>// do something for adjust nodes</i>
  *     }
  *
- *     public Object visitChar(final CharNode node, final Object arg) {
+ *     public Object visitChar(CharNode node, Object arg) {
  *         <b>String s = (String) arg;</b>
  *         <i>// do something for char nodes</i>
  *     }

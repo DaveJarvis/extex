@@ -33,7 +33,7 @@ public class InsertTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(InsertTest.class);
     }
@@ -43,7 +43,7 @@ public class InsertTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public InsertTest(final String arg) {
+    public InsertTest(String arg) {
 
         super(arg, "insert", "42{abc}");
     }

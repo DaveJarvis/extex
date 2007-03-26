@@ -69,7 +69,7 @@ public class Firstmark extends Firstmarks {
      *
      * @param name the name for debugging
      */
-    public Firstmark(final String name) {
+    public Firstmark(String name) {
 
         super(name);
     }
@@ -88,8 +88,8 @@ public class Firstmark extends Firstmarks {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    protected String getKey(final Context context, final TokenSource source,
-            final Typesetter typesetter) {
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) {
 
         return "0";
     }

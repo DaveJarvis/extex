@@ -46,7 +46,7 @@ public class FontNoExternalFileException extends FontException {
      * Create a new object.
      * @param message   the message
      */
-    public FontNoExternalFileException(final String message) {
+    public FontNoExternalFileException(String message) {
 
         super(message);
     }

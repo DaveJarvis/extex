@@ -63,8 +63,8 @@ public class AbstractMathTester extends NoFlagsPrimitiveTester {
      * @param primitive the name of the primitive to test
      * @param arguments the arguments for the invocation
      */
-    public AbstractMathTester(final String arg, final String primitive,
-            final String arguments) {
+    public AbstractMathTester(String arg, String primitive,
+            String arguments) {
 
         this(arg, primitive, arguments, "");
     }
@@ -77,8 +77,8 @@ public class AbstractMathTester extends NoFlagsPrimitiveTester {
      * @param arguments the arguments for the invocation
      * @param prepare the code to insert before the invocation
      */
-    public AbstractMathTester(final String arg, final String primitive,
-            final String arguments, final String prepare) {
+    public AbstractMathTester(String arg, String primitive,
+            String arguments, String prepare) {
 
         super(arg, primitive, arguments + "$", "\\catcode`\\$=3 $" + prepare);
         this.primitive = primitive;

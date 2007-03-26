@@ -70,7 +70,7 @@ public class RandomAccessInputArray implements RandomAccessR {
      * Create a new object
      * @param array     the array
      */
-    public RandomAccessInputArray(final byte[] array) {
+    public RandomAccessInputArray(byte[] array) {
 
         super();
 
@@ -115,7 +115,7 @@ public class RandomAccessInputArray implements RandomAccessR {
     /**
      * @see org.extex.util.file.random.RandomAccessR#seek(long)
      */
-    public void seek(final long arg0) throws IOException {
+    public void seek(long arg0) throws IOException {
 
         if (buffer != null) {
             if (arg0 < buffer.length && arg0 < Integer.MAX_VALUE) {
@@ -210,7 +210,7 @@ public class RandomAccessInputArray implements RandomAccessR {
     /**
      * @see java.io.DataInput#readFully(byte[], int, int)
      */
-    public void readFully(final byte[] b, final int off, final int len)
+    public void readFully(byte[] b, int off, int len)
             throws IOException {
 
         try {
@@ -226,7 +226,7 @@ public class RandomAccessInputArray implements RandomAccessR {
      * @param off the start offset in the data
      * @param len the number of bytes that are written
      */
-    private void readBytes(final byte[] b, final int off, final int len) {
+    private void readBytes(byte[] b, int off, int len) {
 
         for (int i = 0; i < len; i++) {
             b[off + i] = (byte) buffer[pointer++];
@@ -239,7 +239,7 @@ public class RandomAccessInputArray implements RandomAccessR {
     /**
      * @see java.io.DataInput#readFully(byte[])
      */
-    public void readFully(final byte[] b) throws IOException {
+    public void readFully(byte[] b) throws IOException {
 
         readFully(b, 0, b.length);
     }
@@ -438,7 +438,7 @@ public class RandomAccessInputArray implements RandomAccessR {
      *
      * @see java.io.DataInput#skipBytes(int)
      */
-    public int skipBytes(final int n) throws IOException {
+    public int skipBytes(int n) throws IOException {
 
         long pos;
         long len;

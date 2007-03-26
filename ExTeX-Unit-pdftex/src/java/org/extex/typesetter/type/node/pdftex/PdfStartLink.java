@@ -61,8 +61,8 @@ public class PdfStartLink extends WhatsItNode {
      * @param attr the attribute string. This can be <code>null</code>.
      * @param action the action specification
      */
-    public PdfStartLink(final RuleNode rule, final String attr,
-            final ActionSpec action) {
+    public PdfStartLink(RuleNode rule, String attr,
+            ActionSpec action) {
 
         super();
         this.rule = rule;
@@ -116,8 +116,8 @@ public class PdfStartLink extends WhatsItNode {
      *      int,
      *      int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         sb.append("(pdfstartlink)");
     }

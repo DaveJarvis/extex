@@ -98,7 +98,7 @@ public class MacroCode extends AbstractCode
          * @param tokens the tokens
          * @param locator the locator of the invocation
          */
-        public MacroTokenStream(final Tokens tokens, final Locator locator) {
+        public MacroTokenStream(Tokens tokens, Locator locator) {
 
             super();
             this.tokens = tokens;
@@ -135,7 +135,7 @@ public class MacroCode extends AbstractCode
          *      org.extex.scanner.type.token.TokenFactory,
          *      org.extex.scanner.Tokenizer)
          */
-        public Token get(final TokenFactory factory, final Tokenizer tokenizer)
+        public Token get(TokenFactory factory, Tokenizer tokenizer)
                 throws ScannerException {
 
             return tokens.pop();
@@ -218,7 +218,7 @@ public class MacroCode extends AbstractCode
          * @see org.extex.scanner.TokenStream#put(
          *      org.extex.scanner.type.token.Token)
          */
-        public void put(final Token token) {
+        public void put(Token token) {
 
             tokens.push(token);
         }
@@ -260,8 +260,8 @@ public class MacroCode extends AbstractCode
      * @param pattern the pattern for the acquiring of the arguments
      * @param body the expansion text
      */
-    public MacroCode(final String name, final Flags flags,
-            final MacroPattern pattern, final Tokens body) {
+    public MacroCode(String name, Flags flags,
+            MacroPattern pattern, Tokens body) {
 
         super(name);
         this.body = body;
@@ -285,7 +285,7 @@ public class MacroCode extends AbstractCode
      *      org.extex.scanner.type.token.Token,
      *      org.extex.interpreter.context.Context)
      */
-    public boolean compare(final Token token, final Context context)
+    public boolean compare(Token token, Context context)
             throws InterpreterException {
 
         if (!(token instanceof CodeToken)) {
@@ -324,8 +324,8 @@ public class MacroCode extends AbstractCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Tokens[] args = matchPattern(context, source, typesetter);
@@ -387,8 +387,8 @@ public class MacroCode extends AbstractCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void expand(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void expand(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         execute(prefix, context, source, typesetter);
@@ -419,8 +419,8 @@ public class MacroCode extends AbstractCode
      *
      * @throws InterpreterException in case of an error
      */
-    private Tokens getTokenOrBlock(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    private Tokens getTokenOrBlock(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Token t = source.getToken(context);
@@ -469,9 +469,9 @@ public class MacroCode extends AbstractCode
      *
      * @throws InterpreterException in case of an error
      */
-    private int matchParameter(final Context context, final TokenSource source,
-            final Typesetter typesetter, final Tokens[] args, final int len,
-            final int i) throws InterpreterException {
+    private int matchParameter(Context context, TokenSource source,
+            Typesetter typesetter, Tokens[] args, int len,
+            int i) throws InterpreterException {
 
         Token t;
 
@@ -522,8 +522,8 @@ public class MacroCode extends AbstractCode
      *
      * @throws InterpreterException in case of an error during the matching
      */
-    private Tokens[] matchPattern(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    private Tokens[] matchPattern(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Tokens[] args = new Tokens[pattern.getArity()];
@@ -561,8 +561,8 @@ public class MacroCode extends AbstractCode
      *
      * @throws InterpreterException in case of an error
      */
-    private Tokens scanTo(final Context context, final TokenSource source,
-            final Token to) throws InterpreterException {
+    private Tokens scanTo(Context context, TokenSource source,
+            Token to) throws InterpreterException {
 
         Tokens toks = new Tokens();
         int depth = 0;
@@ -603,7 +603,7 @@ public class MacroCode extends AbstractCode
      * @see org.extex.interpreter.type.Showable#show(
      *      org.extex.interpreter.context.Context)
      */
-    public Tokens show(final Context context) throws InterpreterException {
+    public Tokens show(Context context) throws InterpreterException {
 
         try {
             StringBuffer sb = new StringBuffer();
@@ -639,14 +639,10 @@ public class MacroCode extends AbstractCode
      * @param context  the processor context
      * @param toks the tokens to add to
      *
-     * @throws GeneralException in case of an error
-     *
-     * @see org.extex.scanner.type.tokens.FixedTokens#show(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.scanner.type.tokens.Tokens)
+     * @throws CatcodeException in case of an error
      */
-    private void show(final Tokens tokens, final Context context,
-            final Tokens toks) throws CatcodeException {
+    private void show(Tokens tokens, Context context,
+            Tokens toks) throws CatcodeException {
 
         TokenFactory factory = context.getTokenFactory();
         Token t;

@@ -54,8 +54,8 @@ public class CenteredLeadersNode extends AbstractExpandableNode
      * @param glue the desired size
      * @param horizontal the indicator for the stretchability mode
      */
-    public CenteredLeadersNode(final Node node, final FixedGlue glue,
-            final boolean horizontal) {
+    public CenteredLeadersNode(Node node, FixedGlue glue,
+            boolean horizontal) {
 
         super(glue, horizontal);
         this.node = node;
@@ -88,19 +88,21 @@ public class CenteredLeadersNode extends AbstractExpandableNode
      *      int,
      *      int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         sb.append(getLocalizer().format("String.Format", getSize().toString()));
         node.toString(sb, prefix, Integer.MAX_VALUE, Integer.MAX_VALUE);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.Node#visit(
      *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final NodeVisitor visitor, final Object value)
+    public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {
 
         return visitor.visitCenteredLeaders(this, value);

@@ -33,7 +33,7 @@ public class InputlinenoTest extends ExTeXLauncher {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(InputlinenoTest.class);
     }
@@ -43,7 +43,7 @@ public class InputlinenoTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public InputlinenoTest(final String arg) {
+    public InputlinenoTest(String arg) {
 
         super(arg);
     }

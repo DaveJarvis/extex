@@ -77,7 +77,7 @@ public class Vfi extends AbstractVerticalCode implements VerticalSkip {
      *
      * @param name the name for debugging
      */
-    public Vfi(final String name) {
+    public Vfi(String name) {
 
         super(name);
     }
@@ -101,8 +101,8 @@ public class Vfi extends AbstractVerticalCode implements VerticalSkip {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -124,8 +124,8 @@ public class Vfi extends AbstractVerticalCode implements VerticalSkip {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public FixedGlue getGlue(final Context context, final TokenSource source,
-            final Typesetter typesetter) {
+    public FixedGlue getGlue(Context context, TokenSource source,
+            Typesetter typesetter) {
 
         return FI;
     }

@@ -76,8 +76,7 @@ public class LoaderFactory extends AbstractFactory {
      */
     public Loader createLoad() throws ConfigurationException {
 
-        return (Loader) createInstanceForConfiguration(getConfiguration(),
-                                                       Loader.class);
+        return (Loader) createInstance(Loader.class);
     }
 
 }

@@ -36,7 +36,7 @@ public class CorruptedTfmFontMappingException extends CorruptFontException {
      * @param key the font key.
      * @param msg the message.
      */
-    public CorruptedTfmFontMappingException(final FontKey key, final String msg) {
+    public CorruptedTfmFontMappingException(FontKey key, String msg) {
 
         super(key, msg);
     }

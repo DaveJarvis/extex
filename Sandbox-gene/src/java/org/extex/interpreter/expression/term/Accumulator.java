@@ -48,28 +48,34 @@ public class Accumulator implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#add(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType add(final EType t) throws CastException, UnsupportedException {
+    public EType add(EType t) throws CastException, UnsupportedException {
 
         return (value != null ? value.add(t) : null);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#and(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType and(final EType t) throws CastException, UnsupportedException {
+    public EType and(EType t) throws CastException, UnsupportedException {
 
         return (value != null ? value.and(t) : null);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#divide(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType divide(final EType t)
+    public EType divide(EType t)
             throws CastException,
                 UnsupportedException,
                 ArithmeticOverflowException {
@@ -78,10 +84,12 @@ public class Accumulator implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#eq(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean eq(final EType t)
+    public TBoolean eq(EType t)
             throws CastException,
                 UnsupportedException {
 
@@ -89,10 +97,12 @@ public class Accumulator implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#ge(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean ge(final EType t)
+    public TBoolean ge(EType t)
             throws CastException,
                 UnsupportedException {
 
@@ -110,10 +120,12 @@ public class Accumulator implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#gt(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean gt(final EType t)
+    public TBoolean gt(EType t)
             throws CastException,
                 UnsupportedException {
 
@@ -121,10 +133,12 @@ public class Accumulator implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#le(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean le(final EType t)
+    public TBoolean le(EType t)
             throws CastException,
                 UnsupportedException {
 
@@ -132,10 +146,12 @@ public class Accumulator implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#lt(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean lt(final EType t)
+    public TBoolean lt(EType t)
             throws CastException,
                 UnsupportedException {
 
@@ -143,10 +159,12 @@ public class Accumulator implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#multiply(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType multiply(final EType t)
+    public EType multiply(EType t)
             throws CastException,
                 UnsupportedException {
 
@@ -154,10 +172,12 @@ public class Accumulator implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#ne(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean ne(final EType t)
+    public TBoolean ne(EType t)
             throws CastException,
                 UnsupportedException {
 
@@ -165,6 +185,8 @@ public class Accumulator implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#negate()
      */
     public EType negate() throws UnsupportedException {
@@ -173,6 +195,8 @@ public class Accumulator implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#not()
      */
     public EType not() {
@@ -181,19 +205,23 @@ public class Accumulator implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#or(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType or(final EType t) throws CastException, UnsupportedException {
+    public EType or(EType t) throws CastException, UnsupportedException {
 
         return (value != null ? value.or(t) : null);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#set(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType set(final EType t) {
+    public EType set(EType t) {
 
         if (t instanceof Accumulator) {
             value = ((Accumulator) t).value;
@@ -204,10 +232,12 @@ public class Accumulator implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#subtract(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType subtract(final EType t)
+    public EType subtract(EType t)
             throws CastException,
                 UnsupportedException {
 
@@ -216,6 +246,8 @@ public class Accumulator implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {

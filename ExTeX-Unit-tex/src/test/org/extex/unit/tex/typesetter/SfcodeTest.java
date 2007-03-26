@@ -33,7 +33,7 @@ public class SfcodeTest extends NoFlagsButGlobalPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(SfcodeTest.class);
     }
@@ -43,7 +43,7 @@ public class SfcodeTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public SfcodeTest(final String arg) {
+    public SfcodeTest(String arg) {
 
         super(arg, "sfcode", "1 1000");
     }

@@ -34,7 +34,7 @@ public class IfnumTest extends ExTeXLauncher {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(IfnumTest.class);
     }
@@ -44,7 +44,7 @@ public class IfnumTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public IfnumTest(final String arg) {
+    public IfnumTest(String arg) {
 
         super(arg);
     }

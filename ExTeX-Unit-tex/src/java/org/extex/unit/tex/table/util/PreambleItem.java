@@ -45,7 +45,7 @@ public class PreambleItem {
      * @param preTokens the tokens before the insertion text
      * @param postTokens the tokens after the insertion text
      */
-    public PreambleItem(final Tokens preTokens, final Tokens postTokens) {
+    public PreambleItem(Tokens preTokens, Tokens postTokens) {
 
         super();
         this.pre = preTokens;

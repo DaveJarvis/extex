@@ -70,8 +70,8 @@ public class HashToks implements Serializable {
      * @param source    the token source
      * @throws InterpreterException if an error occurs.
      */
-    public HashToks(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public HashToks(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         super();
         map = new HashMap();
@@ -112,7 +112,7 @@ public class HashToks implements Serializable {
      * @param key       the key
      * @param toks      the tokens
      */
-    public void put(final String key, final Tokens toks) {
+    public void put(String key, Tokens toks) {
 
         map.put(key, toks);
     }
@@ -122,7 +122,7 @@ public class HashToks implements Serializable {
      * @param key   the key
      * @return  the token for this key
      */
-    public Tokens get(final String key) {
+    public Tokens get(String key) {
 
         Tokens toks = (Tokens) map.get(key);
         if (toks == null) {
@@ -145,7 +145,7 @@ public class HashToks implements Serializable {
      * @param key   the key
      * @return  <code>true</code> if the key exists, otherwise <code>false</code>
      */
-    public boolean containsKey(final String key) {
+    public boolean containsKey(String key) {
 
         return map.containsKey(key);
     }

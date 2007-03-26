@@ -43,7 +43,7 @@ public final class ColorUtil {
      * @param sb the target string buffer
      * @param cc the color component
      */
-    public static void formatComponent(final StringBuffer sb, final long cc) {
+    public static void formatComponent(StringBuffer sb, long cc) {
 
         sb.append((float) cc / Color.MAX_VALUE);
     }
@@ -56,7 +56,7 @@ public final class ColorUtil {
      * @param sb the target string buffer
      * @param alpha the alpha value
      */
-    public static void formatAlpha(final StringBuffer sb, final long alpha) {
+    public static void formatAlpha(StringBuffer sb, long alpha) {
 
         sb.append(alpha == 0 ? "" : "alpha " + (float) alpha / Color.MAX_VALUE
                 + " ");

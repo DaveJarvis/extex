@@ -42,7 +42,7 @@ public class DviFnt extends AbstractDviCode {
      *
      * @param index the index of the font to use
      */
-    public DviFnt(final int index) {
+    public DviFnt(int index) {
 
         super("fnt" + variant(index));
         this.index = index;
@@ -59,7 +59,7 @@ public class DviFnt extends AbstractDviCode {
      *
      * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
      */
-    public int write(final OutputStream stream) throws IOException {
+    public int write(OutputStream stream) throws IOException {
 
         return opcode(Dvi.FNT1, index, stream);
     }

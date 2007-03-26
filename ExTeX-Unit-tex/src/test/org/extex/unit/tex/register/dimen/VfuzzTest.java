@@ -31,7 +31,7 @@ public class VfuzzTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(VfuzzTest.class);
     }
@@ -41,7 +41,7 @@ public class VfuzzTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public VfuzzTest(final String arg) {
+    public VfuzzTest(String arg) {
 
         super(arg, "vfuzz", "", "0.0pt");
     }

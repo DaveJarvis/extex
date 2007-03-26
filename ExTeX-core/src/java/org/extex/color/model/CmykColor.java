@@ -77,8 +77,8 @@ public class CmykColor implements Color {
      * @param black the black channel
      * @param alpha the alpha channel
      */
-    protected CmykColor(final int cyan, final int magenta, final int yellow,
-            final int black, final int alpha) {
+    protected CmykColor(int cyan, int magenta, int yellow,
+            int black, int alpha) {
 
         super();
         this.cyan = (cyan < 0 ? 0 : cyan < MAX_VALUE ? cyan : MAX_VALUE);
@@ -99,7 +99,7 @@ public class CmykColor implements Color {
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
-    public boolean equals(final Object obj) {
+    public boolean equals(Object obj) {
 
         if (!(obj instanceof CmykColor)) {
             return false;
@@ -204,11 +204,13 @@ public class CmykColor implements Color {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Color#visit(
      *      org.extex.color.ColorVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final ColorVisitor visitor, final Object value)
+    public Object visit(ColorVisitor visitor, Object value)
             throws GeneralException {
 
         return visitor.visitCmyk(this, value);

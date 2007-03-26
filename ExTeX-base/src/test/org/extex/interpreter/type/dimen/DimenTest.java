@@ -42,7 +42,7 @@ public class DimenTest extends TestCase {
      *
      * @param arg the argument
      */
-    public DimenTest(final String arg) {
+    public DimenTest(String arg) {
 
         super(arg);
     }

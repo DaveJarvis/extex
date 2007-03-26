@@ -34,7 +34,7 @@ public class IfcaseTest extends ExTeXLauncher {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(IfcaseTest.class);
     }
@@ -44,7 +44,7 @@ public class IfcaseTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public IfcaseTest(final String arg) {
+    public IfcaseTest(String arg) {
 
         super(arg);
     }

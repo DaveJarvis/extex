@@ -44,7 +44,7 @@ public class TeXEvaluatorTest extends TestCase {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(TeXEvaluatorTest.class);
     }
@@ -52,12 +52,12 @@ public class TeXEvaluatorTest extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      *
-     * @param s
-     * @return
+     * @param s ...
+     * @return ...
      *
      * @throws InterpreterException in case of an error
      */
-    protected Accumulator apply(final String s) throws InterpreterException {
+    protected Accumulator apply(String s) throws InterpreterException {
 
         Evaluator ev = getInstanceForTest();
         Accumulator accumulator = new Accumulator();

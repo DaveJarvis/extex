@@ -54,7 +54,8 @@ public class InnerVerticalListMaker extends AbstractListMaker {
      * The field <tt>afterParagraphObservers</tt> contains the observers to be
      * invoked after the paragraph has been completed.
      */
-    private List afterParagraphObservers = new ArrayList();
+    private List<ParagraphObserver> afterParagraphObservers =
+            new ArrayList<ParagraphObserver>();
 
     /**
      * The field <tt>nodes</tt> contains the list of nodes encapsulated.
@@ -77,30 +78,32 @@ public class InnerVerticalListMaker extends AbstractListMaker {
      * @param manager the manager to ask for global changes
      * @param locator the locator
      */
-    public InnerVerticalListMaker(final ListManager manager,
-            final Locator locator) {
+    public InnerVerticalListMaker(ListManager manager,
+            Locator locator) {
 
         super(manager, locator);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#add(
      *      org.extex.typesetter.type.Node)
      */
-    public void add(final Node n)
-            throws TypesetterException,
-                ConfigurationException {
+    public void add(Node n) {
 
         nodes.add(n);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#addAndAdjust(
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.TypesetterOptions)
      */
-    public void addAndAdjust(final NodeList list,
-            final TypesetterOptions options)
+    public void addAndAdjust(NodeList list,
+            TypesetterOptions options)
             throws TypesetterException,
                 ConfigurationException {
 
@@ -111,56 +114,64 @@ public class InnerVerticalListMaker extends AbstractListMaker {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#add(
      *      org.extex.core.glue.FixedGlue)
      */
-    public void add(final FixedGlue g) throws TypesetterException {
+    public void add(FixedGlue g) throws TypesetterException {
 
         nodes.addSkip(g);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#addSpace(
      *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.core.count.Count)
      */
-    public void addSpace(final TypesettingContext typesettingContext,
-            final Count spacefactor)
-            throws TypesetterException,
-                ConfigurationException {
+    public void addSpace(TypesettingContext typesettingContext,
+            Count spacefactor) {
 
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#afterParagraph(ParagraphObserver)
      */
-    public void afterParagraph(final ParagraphObserver observer) {
+    public void afterParagraph(ParagraphObserver observer) {
 
         afterParagraphObservers.add(observer);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#complete(TypesetterOptions)
      */
-    public NodeList complete(final TypesetterOptions context)
-            throws TypesetterException,
-                ConfigurationException {
+    public NodeList complete(TypesetterOptions context) {
 
         return nodes;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#cr(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
-    public void cr(final Context context, final TypesettingContext tc,
-            final UnicodeChar uc) throws TypesetterException {
+    public void cr(Context context, TypesettingContext tc,
+            UnicodeChar uc) throws TypesetterException {
 
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#getLastNode()
      */
     public Node getLastNode() {
@@ -169,6 +180,8 @@ public class InnerVerticalListMaker extends AbstractListMaker {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#getMode()
      */
     public Mode getMode() {
@@ -177,6 +190,8 @@ public class InnerVerticalListMaker extends AbstractListMaker {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#getPrevDepth()
      */
     public FixedDimen getPrevDepth() throws TypesetterUnsupportedException {
@@ -185,6 +200,8 @@ public class InnerVerticalListMaker extends AbstractListMaker {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#letter(
      *      org.extex.core.UnicodeChar,
      *      org.extex.interpreter.context.tc.TypesettingContext,
@@ -192,17 +209,19 @@ public class InnerVerticalListMaker extends AbstractListMaker {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.core.Locator)
      */
-    public boolean letter(final UnicodeChar symbol,
-            final TypesettingContext tc, final Context context,
-            final TokenSource source, final Locator locator)
+    public boolean letter(UnicodeChar symbol,
+            TypesettingContext tc, Context context,
+            TokenSource source, Locator locator)
             throws TypesetterException {
 
         return getManager().ensureHorizontalMode(locator).letter(symbol, tc,
-                context, source, locator);
+            context, source, locator);
     }
 
     /**
      * <tt>\par</tt> s are silently ignored in vertical mode.
+     *
+     * {@inheritDoc}
      *
      * @see org.extex.typesetter.ListMaker#par()
      */
@@ -212,8 +231,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
             // Note: the observers have to be run in reverse order to restore
             // the language properly.
             for (int i = afterParagraphObservers.size() - 1; i >= 0; i--) {
-                ((ParagraphObserver) afterParagraphObservers.get(i))
-                        .atParagraph(nodes);
+                afterParagraphObservers.get(i).atParagraph(nodes);
             }
         } catch (InterpreterException e) {
             throw new TypesetterException(e);
@@ -222,6 +240,8 @@ public class InnerVerticalListMaker extends AbstractListMaker {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#removeLastNode()
      */
     public void removeLastNode() {
@@ -230,10 +250,12 @@ public class InnerVerticalListMaker extends AbstractListMaker {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#setPrevDepth(
      *      org.extex.core.dimen.FixedDimen)
      */
-    public void setPrevDepth(final FixedDimen pd) {
+    public void setPrevDepth(FixedDimen pd) {
 
         if (prevDepth == null) {
             prevDepth = new Dimen(pd);
@@ -243,10 +265,12 @@ public class InnerVerticalListMaker extends AbstractListMaker {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#showlist(
      *      java.lang.StringBuffer, long, long)
      */
-    public void showlist(final StringBuffer sb, final long l, final long m) {
+    public void showlist(StringBuffer sb, long l, long m) {
 
         sb.append("prevdepth ");
         if (prevDepth == null) {
@@ -258,6 +282,8 @@ public class InnerVerticalListMaker extends AbstractListMaker {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {

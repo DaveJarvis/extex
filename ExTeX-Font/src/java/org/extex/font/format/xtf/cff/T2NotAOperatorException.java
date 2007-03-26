@@ -47,7 +47,7 @@ public class T2NotAOperatorException extends IOException {
      * Create a new object
      * @param s the message
      */
-    public T2NotAOperatorException(final String s) {
+    public T2NotAOperatorException(String s) {
 
         super(s);
     }

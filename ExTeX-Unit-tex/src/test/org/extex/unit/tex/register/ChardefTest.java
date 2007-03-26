@@ -33,7 +33,7 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ChardefTest.class);
     }
@@ -43,7 +43,7 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public ChardefTest(final String arg) {
+    public ChardefTest(String arg) {
 
         super(arg, "chardef", "\\x=123", "");
     }

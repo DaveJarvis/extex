@@ -48,7 +48,7 @@ public class GroupEntries {
      *
      * @param size  The initialize size of the list.
      */
-    public GroupEntries(final int size) {
+    public GroupEntries(int size) {
 
         list = new ArrayList(size);
     }
@@ -57,7 +57,7 @@ public class GroupEntries {
      * Add the entry if it not exists in the list.
      * @param val   The entry.
      */
-    public void add(final Object val) {
+    public void add(Object val) {
 
         if (!list.contains(val)) {
             list.add(val);
@@ -68,7 +68,7 @@ public class GroupEntries {
      * Add the entry if it not exists in the list.
      * @param val   The entry.
      */
-    public void add(final int val) {
+    public void add(int val) {
 
         Integer v = new Integer(val);
         if (!list.contains(v)) {
@@ -90,7 +90,7 @@ public class GroupEntries {
      * @param idx   The index.
      * @return Returns the entry at position 'idx'.
      */
-    public Object get(final int idx) {
+    public Object get(int idx) {
 
         return list.get(idx);
     }

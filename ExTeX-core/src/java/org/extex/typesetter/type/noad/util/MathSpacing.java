@@ -125,7 +125,7 @@ public final class MathSpacing {
      * @param spec the string to determine the actual distance to a following
      *  noad
      */
-    private MathSpacing(final int id, final String spec) {
+    private MathSpacing(int id, String spec) {
 
         super();
         this.id = id;
@@ -143,8 +143,8 @@ public final class MathSpacing {
      *
      * @see "TTP [766]"
      */
-    public void addClearance(final MathSpacing previous, final NodeList list,
-            final MathContext mathContext) throws TypesetterException {
+    public void addClearance(MathSpacing previous, NodeList list,
+            MathContext mathContext) throws TypesetterException {
 
         if (spec == null || previous == null) {
             return;

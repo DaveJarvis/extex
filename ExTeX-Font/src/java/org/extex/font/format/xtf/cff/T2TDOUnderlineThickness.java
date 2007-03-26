@@ -37,7 +37,7 @@ public class T2TDOUnderlineThickness extends T2TDONumber {
      * @param stack the stack
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOUnderlineThickness(final List stack) throws IOException {
+    public T2TDOUnderlineThickness(List stack) throws IOException {
 
         super(stack, new short[]{ESCAPE_BYTE, UNDERLINETHICKNESS});
     }

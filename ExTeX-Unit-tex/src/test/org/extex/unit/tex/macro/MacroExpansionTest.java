@@ -34,7 +34,7 @@ public class MacroExpansionTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public MacroExpansionTest(final String arg) {
+    public MacroExpansionTest(String arg) {
 
         super(arg);
     }

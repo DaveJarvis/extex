@@ -33,7 +33,7 @@ public class KernTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(KernTest.class);
     }
@@ -43,7 +43,7 @@ public class KernTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public KernTest(final String arg) {
+    public KernTest(String arg) {
 
         super(arg, "kern", "1pt");
     }

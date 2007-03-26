@@ -67,21 +67,23 @@ public class ScaledCode extends AbstractAssignment
      * @param name the initial name of the primitive
      * @param scaled the initial value
      */
-    public ScaledCode(final String name, final ScaledNumber scaled) {
+    public ScaledCode(String name, ScaledNumber scaled) {
 
         super(name);
         value.set(scaled);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.type.arithmetic.Advanceable#advance(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void advance(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void advance(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         source.getKeyword(context, "by");
@@ -90,14 +92,16 @@ public class ScaledCode extends AbstractAssignment
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         source.getOptionalEquals(context);
@@ -106,26 +110,30 @@ public class ScaledCode extends AbstractAssignment
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.core.scaled.ScaledConvertible#convertScaled(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public long convertScaled(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public long convertScaled(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         return value.getValue();
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.type.arithmetic.Divideable#divide(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void divide(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void divide(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         source.getKeyword(context, "by");
@@ -138,14 +146,16 @@ public class ScaledCode extends AbstractAssignment
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.type.arithmetic.Multiplyable#multiply(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void multiply(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void multiply(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         source.getKeyword(context, "by");
@@ -154,13 +164,15 @@ public class ScaledCode extends AbstractAssignment
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         Tokens tokens = new Tokens();
         try {

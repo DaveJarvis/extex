@@ -53,7 +53,7 @@ public abstract class AbstractMath extends AbstractCode
      * @param name the name for debugging
      * @throws GeneralException ...
      */
-    public AbstractMath(final String name) throws GeneralException {
+    public AbstractMath(String name) throws GeneralException {
 
         super(name);
 
@@ -66,8 +66,8 @@ public abstract class AbstractMath extends AbstractCode
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -97,8 +97,8 @@ public abstract class AbstractMath extends AbstractCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter)
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException, CatcodeException {
 
@@ -111,7 +111,7 @@ public abstract class AbstractMath extends AbstractCode
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
      */
-    public Real convertReal(final Context context, final TokenSource source)
+    public Real convertReal(Context context, TokenSource source)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -119,12 +119,15 @@ public abstract class AbstractMath extends AbstractCode
     }
 
     /**
-     * @see org.extex.interpreter.type.CountConvertible#convertCount(
+     * {@inheritDoc}
+     *
+     * @see org.extex.core.count.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource,
+     *       org.extex.typesetter.Typesetter)
      */
-    public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter)
+    public long convertCount(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -136,12 +139,12 @@ public abstract class AbstractMath extends AbstractCode
      *
      * @param context the context
      * @param source the token source
-     * @return the real-value
-     * @throws GeneralException if a error occurred
+     * @return the real value
+     * @throws InterpreterException if a error occurred
      * @throws ConfigurationException in case of an configuration error
      */
-    protected abstract Real calculate(final Context context,
-            final TokenSource source)
+    protected abstract Real calculate(Context context,
+            TokenSource source)
             throws InterpreterException,
                 ConfigurationException;
 

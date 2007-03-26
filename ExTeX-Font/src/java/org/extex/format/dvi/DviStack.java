@@ -68,7 +68,7 @@ public class DviStack {
      * @param item the item to be pushed onto this stack.
      * @return Returns the item argument.
      */
-    public DviValues push(final DviValues item) {
+    public DviValues push(DviValues item) {
 
         return (DviValues) stack.push(new DviValues(item));
     }

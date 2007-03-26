@@ -38,7 +38,7 @@ public class IllegalTokenHyphenationException extends HyphenationException {
      *
      * @param message the message
      */
-    public IllegalTokenHyphenationException(final String message) {
+    public IllegalTokenHyphenationException(String message) {
 
         super(message);
     }

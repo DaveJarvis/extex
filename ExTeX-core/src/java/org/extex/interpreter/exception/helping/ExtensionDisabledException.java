@@ -40,7 +40,7 @@ public class ExtensionDisabledException extends HelpingException {
      *
      * @param macro the name of the macro which is disabled
      */
-    public ExtensionDisabledException(final String macro) {
+    public ExtensionDisabledException(String macro) {
 
         super(LocalizerFactory.getLocalizer(ExtensionDisabledException.class),
                 "ExtensionDisabled");

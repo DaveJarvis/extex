@@ -38,7 +38,7 @@ public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public MathcodeTest(final String arg) {
+    public MathcodeTest(String arg) {
 
         super(arg, "mathcode", "12=32 ");
     }

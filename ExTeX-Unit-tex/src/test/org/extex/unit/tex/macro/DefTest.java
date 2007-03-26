@@ -32,7 +32,7 @@ public class DefTest extends AbstractDefTester {
      *
      * @param arg the name
      */
-    public DefTest(final String arg) {
+    public DefTest(String arg) {
 
         super(arg, "def");
     }

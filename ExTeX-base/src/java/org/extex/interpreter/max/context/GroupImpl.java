@@ -101,58 +101,58 @@ public class GroupImpl implements Group {
      * The field <tt>boxMap</tt> contains the map for the boxes.
      * The field is initialized lacy. Thus new groups come up faster.
      */
-    private Map boxMap;
+    private Map<String, Box> boxMap;
 
     /**
-     * The field <tt>catcodeMap</tt> contains the map for the catcodes.
+     * The field <tt>catcodeMap</tt> contains the map for the category codes.
      * The field is initialized lacy. Thus new groups come up faster.
      */
-    private Map catcodeMap;
+    private Map<UnicodeChar, Catcode> catcodeMap;
 
     /**
      * The field <tt>codeMap</tt> contains the map for the active characters and
      * macros. The key is a Token. The value is a Code.
      * The field is initialized lacy. Thus new groups come up faster.
      */
-    private Map codeMap;
+    private Map<Token, Code> codeMap;
 
     /**
      * The field <tt>countMap</tt> contains the map for the count registers.
      * The field is initialized lacy. Thus new groups come up faster.
      */
-    private Map countMap;
+    private Map<String, Count> countMap;
 
     /**
      * The field <tt>delcodeMap</tt> contains the map for the delimiter code
      * of the characters.
      * The field is initialized lacy. Thus new groups come up faster.
      */
-    private Map delcodeMap;
+    private Map<UnicodeChar, MathDelimiter> delcodeMap;
 
     /**
      * The field <tt>dimenMap</tt> contains the map for the dimen registers.
      * The field is initialized lacy. Thus new groups come up faster.
      */
-    private Map dimenMap;
+    private Map<String, Dimen> dimenMap;
 
     /**
      * The field <tt>extensionMap</tt> contains the mapping from extension to
      * their HashMap.
      * The field is initialized lacy. Thus new groups come up faster.
      */
-    private Map extensionMap;
+    private HashMap<Object, Map<Object, Object>> extensionMap;
 
     /**
      * The field <tt>fontMap</tt> contains the map for the fonts.
      * The field is initialized lacy. Thus new groups come up faster.
      */
-    private Map fontMap;
+    private Map<String, Font> fontMap;
 
     /**
      * The field <tt>ifMap</tt> contains the map for the booleans.
      * The field is initialized lacy. Thus new groups come up faster.
      */
-    private Map ifMap;
+    private Map<String, Boolean> ifMap;
 
     /**
      * The field <tt>inFileMap</tt> contains the map for the input files.
@@ -160,14 +160,14 @@ public class GroupImpl implements Group {
      * The map is not stored in the format file since files can not be kept
      * open.
      */
-    private transient Map inFileMap;
+    private transient Map<String, InFile> inFileMap;
 
     /**
      * The field <tt>lccodeMap</tt> contains the map for the translation to
      * lower case.
      * The field is initialized lacy. Thus new groups come up faster.
      */
-    private Map lccodeMap;
+    private Map<UnicodeChar, UnicodeChar> lccodeMap;
 
     /**
      * The field <tt>locator</tt> contains the locator to determine the
@@ -179,13 +179,13 @@ public class GroupImpl implements Group {
      * The field <tt>mathcodeMap</tt> contains the map for the category codes.
      * The field is initialized lacy. Thus new groups come up faster.
      */
-    private Map mathcodeMap;
+    private Map<UnicodeChar, MathCode> mathcodeMap;
 
     /**
      * The field <tt>muskipMap</tt> contains the map for the muskip registers.
      * The field is initialized lacy. Thus new groups come up faster.
      */
-    private Map muskipMap;
+    private Map<String, Muskip> muskipMap;
 
     /**
      * The field <tt>namespace</tt> contains the current name space.
@@ -203,19 +203,19 @@ public class GroupImpl implements Group {
      * The map is not stored in the format file since files can not be kept
      * open.
      */
-    private transient Map outFileMap;
+    private transient Map<String, OutFile> outFileMap;
 
     /**
      * The field <tt>sfcodeMap</tt> contains the map for the space factor.
      * The field is initialized lacy. Thus new groups come up faster.
      */
-    private Map sfcodeMap;
+    private Map<UnicodeChar, Count> sfcodeMap;
 
     /**
      * The field <tt>skipMap</tt> contains the map for the skip registers
      * The field is initialized lacy. Thus new groups come up faster.
      */
-    private Map skipMap;
+    private Map<String, Glue> skipMap;
 
     /**
      * The field <tt>standardTokenStream</tt> contains the standard token
@@ -232,7 +232,7 @@ public class GroupImpl implements Group {
      * The field <tt>toksMap</tt> contains the map for the tokens registers.
      * The field is initialized lacy. Thus new groups come up faster.
      */
-    private Map toksMap;
+    private Map<String, Tokens> toksMap;
 
     /**
      * The field <tt>type</tt> contains the type number of the group as returned
@@ -251,7 +251,7 @@ public class GroupImpl implements Group {
      * upper case.
      * The field is initialized lacy. Thus new groups come up faster.
      */
-    private Map uccodeMap;
+    private Map<UnicodeChar, UnicodeChar> uccodeMap;
 
     /**
      * Creates a new object.
@@ -259,7 +259,7 @@ public class GroupImpl implements Group {
      * @param nextGroup the next group in the stack. If the value is
      *      <code>null</code> then this is the global base
      */
-    public GroupImpl(final Group nextGroup) {
+    public GroupImpl(Group nextGroup) {
 
         super();
         this.next = nextGroup;
@@ -273,7 +273,7 @@ public class GroupImpl implements Group {
      * @see org.extex.interpreter.max.context.Group#afterGroup(
      *      AfterGroupObserver)
      */
-    public void afterGroup(final AfterGroupObserver observer) {
+    public void afterGroup(AfterGroupObserver observer) {
 
         afterGroupObservers =
                 AfterGroupObserverList.register(afterGroupObservers, observer);
@@ -287,7 +287,7 @@ public class GroupImpl implements Group {
      * @see org.extex.interpreter.max.context.Group#afterGroup(
      *      org.extex.scanner.type.token.Token)
      */
-    public void afterGroup(final Token t) {
+    public void afterGroup(Token t) {
 
         if (afterGroup == null) {
             afterGroup = new Tokens();
@@ -309,10 +309,10 @@ public class GroupImpl implements Group {
      *      java.lang.Object,
      *      java.lang.Object)
      */
-    public Object get(final Object extension, final Object key) {
+    public Object get(Object extension, Object key) {
 
         if (extensionMap != null) {
-            Map map = (Map) extensionMap.get(extension);
+            Map map = extensionMap.get(extension);
             if (map != null) {
                 Object value = map.get(key);
                 if (value != null) {
@@ -350,10 +350,10 @@ public class GroupImpl implements Group {
      * @see org.extex.interpreter.max.context.Group#getBox(
      *      java.lang.String)
      */
-    public Box getBox(final String name) {
+    public Box getBox(String name) {
 
         if (boxMap != null) {
-            Box box = (Box) (boxMap.get(name));
+            Box box = boxMap.get(name);
             if (box != null) {
                 return box;
             }
@@ -371,10 +371,10 @@ public class GroupImpl implements Group {
      * @see org.extex.scanner.Tokenizer#getCatcode(
      *      org.extex.core.UnicodeChar)
      */
-    public Catcode getCatcode(final UnicodeChar c) {
+    public Catcode getCatcode(UnicodeChar c) {
 
         if (catcodeMap != null) {
-            Catcode value = (Catcode) catcodeMap.get(c);
+            Catcode value = catcodeMap.get(c);
 
             if (value != null) {
                 return value;
@@ -418,7 +418,7 @@ public class GroupImpl implements Group {
      * @see org.extex.interpreter.max.context.Group#getCode(
      *      CodeToken)
      */
-    public Code getCode(final CodeToken token) {
+    public Code getCode(CodeToken token) {
 
         Code code = getCodeForToken(token);
 
@@ -439,10 +439,10 @@ public class GroupImpl implements Group {
      * @return the code assigned to the token or <code>null</code> if none is
      *  found.
      */
-    protected Code getCodeForToken(final CodeToken token) {
+    protected Code getCodeForToken(CodeToken token) {
 
         if (codeMap != null) {
-            Code code = (Code) (codeMap.get(token));
+            Code code = codeMap.get(token);
             if (code != null) {
                 return code;
             }
@@ -469,10 +469,10 @@ public class GroupImpl implements Group {
      * @see org.extex.interpreter.max.context.Group#getCount(
      *      java.lang.String)
      */
-    public Count getCount(final String name) {
+    public Count getCount(String name) {
 
         if (countMap != null) {
-            Count count = (Count) (countMap.get(name));
+            Count count = countMap.get(name);
 
             if (count != null) {
                 return count;
@@ -484,27 +484,27 @@ public class GroupImpl implements Group {
 
         Count count = new Count(0);
         if (countMap == null) {
-            countMap = new HashMap();
+            countMap = new HashMap<String, Count>();
         }
         countMap.put(name, count);
         return count;
     }
 
     /**
-     * Getter for the delcode of a character.
-     * The delcode is -1 unless changed explicitly.
+     * Getter for the delimiter code of a character.
+     * The delimiter code is -1 unless changed explicitly.
      *
-     * @param c the character to get the delcode for
+     * @param c the character to get the delimiter code for
      *
-     * @return the delcode for the given character
+     * @return the delimiter code for the given character
      *
      * @see org.extex.interpreter.max.context.Group#getDelcode(
      *      org.extex.core.UnicodeChar)
      */
-    public MathDelimiter getDelcode(final UnicodeChar c) {
+    public MathDelimiter getDelcode(UnicodeChar c) {
 
         if (delcodeMap != null) {
-            MathDelimiter delcode = (MathDelimiter) (delcodeMap.get(c));
+            MathDelimiter delcode = delcodeMap.get(c);
 
             if (delcode != null) {
                 return delcode;
@@ -543,10 +543,10 @@ public class GroupImpl implements Group {
      * @see org.extex.interpreter.max.context.Group#getDimen(
      *      java.lang.String)
      */
-    public Dimen getDimen(final String name) {
+    public Dimen getDimen(String name) {
 
         if (dimenMap != null) {
-            Dimen dimen = (Dimen) (dimenMap.get(name));
+            Dimen dimen = dimenMap.get(name);
 
             if (dimen != null) {
                 return dimen;
@@ -558,7 +558,7 @@ public class GroupImpl implements Group {
 
         Dimen dimen = new Dimen();
         if (dimenMap == null) {
-            dimenMap = new HashMap();
+            dimenMap = new HashMap<String, Dimen>();
         }
         dimenMap.put(name, dimen);
         return dimen;
@@ -574,10 +574,10 @@ public class GroupImpl implements Group {
      * @see org.extex.interpreter.max.context.Group#getFont(
      *      java.lang.String)
      */
-    public Font getFont(final String name) {
+    public Font getFont(String name) {
 
         if (fontMap != null) {
-            Font font = (Font) (fontMap.get(name));
+            Font font = fontMap.get(name);
 
             if (font != null) {
                 return font;
@@ -596,10 +596,10 @@ public class GroupImpl implements Group {
      * @see org.extex.interpreter.max.context.Group#getIf(
      *      java.lang.String)
      */
-    public boolean getIf(final String name) {
+    public boolean getIf(String name) {
 
         if (ifMap != null) {
-            Boolean b = (Boolean) (ifMap.get(name));
+            Boolean b = ifMap.get(name);
             if (b != null) {
                 return b.booleanValue();
             }
@@ -619,14 +619,14 @@ public class GroupImpl implements Group {
      * @see org.extex.interpreter.max.context.Group#getInFile(
      *      java.lang.String)
      */
-    public InFile getInFile(final String name) {
+    public InFile getInFile(String name) {
 
         if (name == null) {
             return new InFile(standardTokenStream, true);
         }
 
         if (inFileMap != null) {
-            InFile inFile = (InFile) (inFileMap.get(name));
+            InFile inFile = inFileMap.get(name);
 
             if (null != inFile) {
                 return inFile;
@@ -647,10 +647,10 @@ public class GroupImpl implements Group {
      * @see org.extex.interpreter.max.context.Group#getLccode(
      *      org.extex.core.UnicodeChar)
      */
-    public UnicodeChar getLccode(final UnicodeChar lc) {
+    public UnicodeChar getLccode(UnicodeChar lc) {
 
         if (lccodeMap != null) {
-            UnicodeChar value = (UnicodeChar) lccodeMap.get(lc);
+            UnicodeChar value = lccodeMap.get(lc);
 
             if (value != null) {
                 return value;
@@ -665,7 +665,7 @@ public class GroupImpl implements Group {
             UnicodeChar value = lc.lower();
             // the value is stored to avoid constructing UnicodeChars again
             if (lccodeMap == null) {
-                lccodeMap = new HashMap();
+                lccodeMap = new HashMap<UnicodeChar, UnicodeChar>();
             }
             lccodeMap.put(lc, value);
             return value;
@@ -709,10 +709,10 @@ public class GroupImpl implements Group {
      * @see org.extex.interpreter.max.context.Group#getMathcode(
      *      org.extex.core.UnicodeChar)
      */
-    public MathCode getMathcode(final UnicodeChar c) {
+    public MathCode getMathcode(UnicodeChar c) {
 
         if (mathcodeMap != null) {
-            MathCode mathcode = (MathCode) (mathcodeMap.get(c));
+            MathCode mathcode = mathcodeMap.get(c);
             if (mathcode != null) {
                 return mathcode;
             }
@@ -734,7 +734,7 @@ public class GroupImpl implements Group {
         }
 
         if (mathcodeMap == null) {
-            mathcodeMap = new HashMap();
+            mathcodeMap = new HashMap<UnicodeChar, MathCode>();
         }
         mathcodeMap.put(c, mc);
         return mc;
@@ -756,10 +756,10 @@ public class GroupImpl implements Group {
      * @see org.extex.interpreter.max.context.Group#getMuskip(
      *      java.lang.String)
      */
-    public Muskip getMuskip(final String name) {
+    public Muskip getMuskip(String name) {
 
         if (muskipMap != null) {
-            Muskip muskip = (Muskip) (muskipMap.get(name));
+            Muskip muskip = muskipMap.get(name);
             if (muskip != null) {
                 return muskip;
             }
@@ -809,10 +809,10 @@ public class GroupImpl implements Group {
      * @see org.extex.interpreter.max.context.Group#getOutFile(
      *      java.lang.String)
      */
-    public OutFile getOutFile(final String name) {
+    public OutFile getOutFile(String name) {
 
         if (outFileMap != null) {
-            return (OutFile) (outFileMap.get(name));
+            return outFileMap.get(name);
         }
         return null;
     }
@@ -829,10 +829,10 @@ public class GroupImpl implements Group {
      * @see org.extex.interpreter.max.context.Group#getSfcode(
      *      org.extex.core.UnicodeChar)
      */
-    public Count getSfcode(final UnicodeChar c) {
+    public Count getSfcode(UnicodeChar c) {
 
         if (sfcodeMap != null) {
-            Count sfcode = (Count) (sfcodeMap.get(c));
+            Count sfcode = sfcodeMap.get(c);
             if (sfcode != null) {
                 return sfcode;
             }
@@ -865,10 +865,10 @@ public class GroupImpl implements Group {
      * @see org.extex.interpreter.max.context.Group#getSkip(
      *      java.lang.String)
      */
-    public Glue getSkip(final String name) {
+    public Glue getSkip(String name) {
 
         if (skipMap != null) {
-            Glue skip = (Glue) (skipMap.get(name));
+            Glue skip = skipMap.get(name);
             if (skip != null) {
                 return skip;
             }
@@ -916,10 +916,10 @@ public class GroupImpl implements Group {
      * @see org.extex.interpreter.max.context.Group#getToks(
      *      java.lang.String)
      */
-    public Tokens getToks(final String name) {
+    public Tokens getToks(String name) {
 
         if (toksMap != null) {
-            Tokens toks = (Tokens) (toksMap.get(name));
+            Tokens toks = toksMap.get(name);
             if (toks != null) {
                 return toks;
             }
@@ -940,10 +940,10 @@ public class GroupImpl implements Group {
      *
      * @see org.extex.interpreter.max.context.Group#getToksOrNull(java.lang.String)
      */
-    public Tokens getToksOrNull(final String name) {
+    public Tokens getToksOrNull(String name) {
 
         if (toksMap != null) {
-            Tokens toks = (Tokens) (toksMap.get(name));
+            Tokens toks = toksMap.get(name);
             if (toks != null) {
                 return toks;
             }
@@ -990,10 +990,10 @@ public class GroupImpl implements Group {
      * @see org.extex.interpreter.max.context.Group#getUccode(
      *      org.extex.core.UnicodeChar)
      */
-    public UnicodeChar getUccode(final UnicodeChar uc) {
+    public UnicodeChar getUccode(UnicodeChar uc) {
 
         if (uccodeMap != null) {
-            UnicodeChar value = (UnicodeChar) uccodeMap.get(uc);
+            UnicodeChar value = uccodeMap.get(uc);
             if (value != null) {
                 return value;
             }
@@ -1008,7 +1008,7 @@ public class GroupImpl implements Group {
             UnicodeChar value = uc.upper();
             // the value is stored to avoid constructing UnicodeChars again
             if (uccodeMap == null) {
-                uccodeMap = new HashMap();
+                uccodeMap = new HashMap<UnicodeChar, UnicodeChar>();
             }
             uccodeMap.put(uc, value);
             return value;
@@ -1037,15 +1037,15 @@ public class GroupImpl implements Group {
      *      java.lang.Object,
      *      boolean)
      */
-    public void set(final Object extension, final Object key,
-            final Object value, final boolean global) {
+    public void set(Object extension, Object key,
+            Object value, boolean global) {
 
         if (extensionMap == null) {
-            extensionMap = new HashMap();
+            extensionMap = new HashMap<Object, Map<Object, Object>>();
         }
-        Map map = (Map) extensionMap.get(extension);
+        Map<Object, Object> map = extensionMap.get(extension);
         if (map == null) {
-            map = new HashMap();
+            map = new HashMap<Object, Object>();
             extensionMap.put(extension, map);
         }
 
@@ -1069,10 +1069,10 @@ public class GroupImpl implements Group {
      * @see org.extex.interpreter.max.context.Group#setBox(
      *      java.lang.String, org.extex.interpreter.type.box.Box, boolean)
      */
-    public void setBox(final String name, final Box value, final boolean global) {
+    public void setBox(String name, Box value, boolean global) {
 
         if (boxMap == null) {
-            boxMap = new HashMap();
+            boxMap = new HashMap<String, Box>();
         }
 
         boxMap.put(name, value);
@@ -1095,11 +1095,11 @@ public class GroupImpl implements Group {
      *      org.extex.scanner.type.Catcode,
      *      boolean)
      */
-    public void setCatcode(final UnicodeChar uc, final Catcode code,
-            final boolean global) {
+    public void setCatcode(UnicodeChar uc, Catcode code,
+            boolean global) {
 
         if (catcodeMap == null) {
-            catcodeMap = new HashMap();
+            catcodeMap = new HashMap<UnicodeChar, Catcode>();
         }
 
         catcodeMap.put(uc, code);
@@ -1122,10 +1122,10 @@ public class GroupImpl implements Group {
      *      org.extex.scanner.type.token.Token,
      *      org.extex.interpreter.type.Code, boolean)
      */
-    public void setCode(final Token token, final Code code, final boolean global) {
+    public void setCode(Token token, Code code, boolean global) {
 
         if (codeMap == null) {
-            codeMap = new HashMap();
+            codeMap = new HashMap<Token, Code>();
         }
 
         codeMap.put(token, code);
@@ -1147,11 +1147,11 @@ public class GroupImpl implements Group {
      *      java.lang.String,
      *      org.extex.core.count.Count, boolean)
      */
-    public void setCount(final String name, final Count value,
-            final boolean global) {
+    public void setCount(String name, Count value,
+            boolean global) {
 
         if (countMap == null) {
-            countMap = new HashMap();
+            countMap = new HashMap<String, Count>();
         }
 
         countMap.put(name, value);
@@ -1162,10 +1162,10 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * Setter for the delcode of a character.
+     * Setter for the delimiter code of a character.
      *
-     * @param uc the character to set the delcode for
-     * @param code the new delcode
+     * @param uc the character to set the delimiter code for
+     * @param code the new delimiter code
      * @param global the indicator for the scope; <code>true</code> means all
      *  groups; otherwise the current group is affected only
      *
@@ -1173,11 +1173,11 @@ public class GroupImpl implements Group {
      *      org.extex.core.UnicodeChar,
      *      MathDelimiter, boolean)
      */
-    public void setDelcode(final UnicodeChar uc, final MathDelimiter code,
-            final boolean global) {
+    public void setDelcode(UnicodeChar uc, MathDelimiter code,
+            boolean global) {
 
         if (delcodeMap == null) {
-            delcodeMap = new HashMap();
+            delcodeMap = new HashMap<UnicodeChar, MathDelimiter>();
         }
 
         delcodeMap.put(uc, code);
@@ -1199,11 +1199,11 @@ public class GroupImpl implements Group {
      *      java.lang.String,
      *      org.extex.core.dimen.Dimen, boolean)
      */
-    public void setDimen(final String name, final Dimen value,
-            final boolean global) {
+    public void setDimen(String name, Dimen value,
+            boolean global) {
 
         if (dimenMap == null) {
-            dimenMap = new HashMap();
+            dimenMap = new HashMap<String, Dimen>();
         }
 
         dimenMap.put(name, value);
@@ -1224,10 +1224,10 @@ public class GroupImpl implements Group {
      * @see org.extex.interpreter.max.context.Group#setFont(
      *      java.lang.String, org.extex.interpreter.type.font.Font, boolean)
      */
-    public void setFont(final String name, final Font font, final boolean global) {
+    public void setFont(String name, Font font, boolean global) {
 
         if (fontMap == null) {
-            fontMap = new HashMap();
+            fontMap = new HashMap<String, Font>();
         }
 
         fontMap.put(name, font);
@@ -1249,11 +1249,11 @@ public class GroupImpl implements Group {
      *      java.lang.String,
      *      boolean, boolean)
      */
-    public void setIf(final String name, final boolean value,
-            final boolean global) {
+    public void setIf(String name, boolean value,
+            boolean global) {
 
         if (ifMap == null) {
-            ifMap = new HashMap();
+            ifMap = new HashMap<String, Boolean>();
         }
 
         ifMap.put(name, (value ? Boolean.TRUE : Boolean.FALSE));
@@ -1275,11 +1275,11 @@ public class GroupImpl implements Group {
      *      java.lang.String,
      *      org.extex.interpreter.type.file.InFile, boolean)
      */
-    public void setInFile(final String name, final InFile file,
-            final boolean global) {
+    public void setInFile(String name, InFile file,
+            boolean global) {
 
         if (inFileMap == null) {
-            inFileMap = new HashMap();
+            inFileMap = new HashMap<String, InFile>();
         }
 
         inFileMap.put(name, file);
@@ -1303,11 +1303,11 @@ public class GroupImpl implements Group {
      *      org.extex.core.UnicodeChar,
      *      boolean)
      */
-    public void setLccode(final UnicodeChar lc, final UnicodeChar uc,
-            final boolean global) {
+    public void setLccode(UnicodeChar lc, UnicodeChar uc,
+            boolean global) {
 
         if (lccodeMap == null) {
-            lccodeMap = new HashMap();
+            lccodeMap = new HashMap<UnicodeChar, UnicodeChar>();
         }
 
         lccodeMap.put(lc, uc);
@@ -1322,7 +1322,7 @@ public class GroupImpl implements Group {
      *
      * @param locator the locator to set
      */
-    public void setLocator(final Locator locator) {
+    public void setLocator(Locator locator) {
 
         this.locator = locator;
     }
@@ -1339,11 +1339,11 @@ public class GroupImpl implements Group {
      *      org.extex.core.UnicodeChar,
      *      MathCode, boolean)
      */
-    public void setMathcode(final UnicodeChar uc, final MathCode code,
-            final boolean global) {
+    public void setMathcode(UnicodeChar uc, MathCode code,
+            boolean global) {
 
         if (mathcodeMap == null) {
-            mathcodeMap = new HashMap();
+            mathcodeMap = new HashMap<UnicodeChar, MathCode>();
         }
 
         mathcodeMap.put(uc, code);
@@ -1365,11 +1365,11 @@ public class GroupImpl implements Group {
      *      java.lang.String,
      *      org.extex.core.muskip.Muskip, boolean)
      */
-    public void setMuskip(final String name, final Muskip value,
-            final boolean global) {
+    public void setMuskip(String name, Muskip value,
+            boolean global) {
 
         if (muskipMap == null) {
-            muskipMap = new HashMap();
+            muskipMap = new HashMap<String, Muskip>();
         }
 
         muskipMap.put(name, value);
@@ -1388,7 +1388,7 @@ public class GroupImpl implements Group {
      * @see org.extex.interpreter.max.context.Group#setNamespace(
      *      java.lang.String, boolean)
      */
-    public void setNamespace(final String theNamespace, final boolean global) {
+    public void setNamespace(String theNamespace, boolean global) {
 
         this.namespace = theNamespace;
 
@@ -1409,11 +1409,11 @@ public class GroupImpl implements Group {
      *       java.lang.String,
      *       org.extex.interpreter.type.file.OutFile, boolean)
      */
-    public void setOutFile(final String name, final OutFile file,
-            final boolean global) {
+    public void setOutFile(String name, OutFile file,
+            boolean global) {
 
         if (outFileMap == null) {
-            outFileMap = new HashMap();
+            outFileMap = new HashMap<String, OutFile>();
         }
 
         outFileMap.put(name, file);
@@ -1435,11 +1435,11 @@ public class GroupImpl implements Group {
      *      org.extex.core.UnicodeChar,
      *      org.extex.core.count.Count, boolean)
      */
-    public void setSfcode(final UnicodeChar uc, final Count code,
-            final boolean global) {
+    public void setSfcode(UnicodeChar uc, Count code,
+            boolean global) {
 
         if (sfcodeMap == null) {
-            sfcodeMap = new HashMap();
+            sfcodeMap = new HashMap<UnicodeChar, Count>();
         }
 
         sfcodeMap.put(uc, code);
@@ -1461,11 +1461,11 @@ public class GroupImpl implements Group {
      *      java.lang.String,
      *      org.extex.core.glue.Glue, boolean)
      */
-    public void setSkip(final String name, final Glue value,
-            final boolean global) {
+    public void setSkip(String name, Glue value,
+            boolean global) {
 
         if (skipMap == null) {
-            skipMap = new HashMap();
+            skipMap = new HashMap<String, Glue>();
         }
 
         skipMap.put(name, value);
@@ -1483,7 +1483,7 @@ public class GroupImpl implements Group {
      * @see org.extex.interpreter.max.context.Group#setStandardTokenStream(
      *      org.extex.scanner.TokenStream)
      */
-    public void setStandardTokenStream(final TokenStream standardTokenStream) {
+    public void setStandardTokenStream(TokenStream standardTokenStream) {
 
         this.standardTokenStream = standardTokenStream;
     }
@@ -1493,7 +1493,7 @@ public class GroupImpl implements Group {
      *
      * @param start the start token to set
      */
-    public void setStart(final Token start) {
+    public void setStart(Token start) {
 
         this.start = start;
     }
@@ -1510,11 +1510,11 @@ public class GroupImpl implements Group {
      *      java.lang.String,
      *      org.extex.scanner.type.tokens.Tokens, boolean)
      */
-    public void setToks(final String name, final Tokens value,
-            final boolean global) {
+    public void setToks(String name, Tokens value,
+            boolean global) {
 
         if (toksMap == null) {
-            toksMap = new HashMap();
+            toksMap = new HashMap<String, Tokens>();
         }
 
         toksMap.put(name, value);
@@ -1532,7 +1532,7 @@ public class GroupImpl implements Group {
      * @see org.extex.interpreter.max.context.Group#setType(
      *      org.extex.interpreter.context.group.GroupType)
      */
-    public void setType(final GroupType type) {
+    public void setType(GroupType type) {
 
         this.type = type;
     }
@@ -1548,8 +1548,8 @@ public class GroupImpl implements Group {
      *      org.extex.interpreter.context.tc.TypesettingContext,
      *      boolean)
      */
-    public void setTypesettingContext(final TypesettingContext context,
-            final boolean global) {
+    public void setTypesettingContext(TypesettingContext context,
+            boolean global) {
 
         typesettingContext = context;
 
@@ -1572,11 +1572,11 @@ public class GroupImpl implements Group {
      *      org.extex.core.UnicodeChar,
      *      boolean)
      */
-    public void setUccode(final UnicodeChar uc, final UnicodeChar lc,
-            final boolean global) {
+    public void setUccode(UnicodeChar uc, UnicodeChar lc,
+            boolean global) {
 
         if (uccodeMap == null) {
-            uccodeMap = new HashMap();
+            uccodeMap = new HashMap<UnicodeChar, UnicodeChar>();
         }
 
         uccodeMap.put(uc, lc);

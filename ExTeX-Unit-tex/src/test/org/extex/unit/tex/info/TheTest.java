@@ -34,7 +34,7 @@ public class TheTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public TheTest(final String arg) {
+    public TheTest(String arg) {
 
         super(arg, "the", "\\count1 ");
     }

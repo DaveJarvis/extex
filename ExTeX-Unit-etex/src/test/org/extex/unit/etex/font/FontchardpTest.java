@@ -34,7 +34,7 @@ public class FontchardpTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public FontchardpTest(final String arg) {
+    public FontchardpTest(String arg) {
 
         super(arg);
         setConfig("etex-test");

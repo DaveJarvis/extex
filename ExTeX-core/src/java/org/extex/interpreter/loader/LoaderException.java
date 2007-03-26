@@ -47,7 +47,7 @@ public class LoaderException extends InterpreterException {
      *
      * @param message the message
      */
-    public LoaderException(final String message) {
+    public LoaderException(String message) {
 
         super(message);
     }
@@ -57,7 +57,7 @@ public class LoaderException extends InterpreterException {
      *
      * @param cause the cause
      */
-    public LoaderException(final Throwable cause) {
+    public LoaderException(Throwable cause) {
 
         super(cause);
     }

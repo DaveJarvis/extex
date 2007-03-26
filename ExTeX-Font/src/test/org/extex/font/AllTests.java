@@ -38,8 +38,13 @@ import org.extex.font.format.xtf.XtfReaderLmRoman10Regular01Test;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class AllTests {
+public final class AllTests {
 
+    /**
+     * Create the test suite.
+     *
+     * @return the suite
+     */
     public static Test suite() {
 
         TestSuite suite = new TestSuite("Test for org.extex.font");

@@ -50,7 +50,7 @@ public class DviFntDef extends AbstractDviCode {
      * @param index the number of the font in the font table
      * @param font the font
      */
-    public DviFntDef(final int index, final Font font) {
+    public DviFntDef(int index, Font font) {
 
         super("fnt_def" + variant(index));
         this.index = index;
@@ -68,7 +68,7 @@ public class DviFntDef extends AbstractDviCode {
      *
      * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
      */
-    public int write(final OutputStream stream) throws IOException {
+    public int write(OutputStream stream) throws IOException {
 
         int n = opcode(Dvi.FNT_DEF1, index, stream);
         write4(stream, font.getCheckSum());

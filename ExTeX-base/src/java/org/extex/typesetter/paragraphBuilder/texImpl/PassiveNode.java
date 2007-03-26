@@ -54,8 +54,8 @@ public class PassiveNode {
      * @param serial the serial number for printing
      * @param prevBreak the previous passive node
      */
-    public PassiveNode(final int curBreak, final int serial,
-            final PassiveNode prevBreak) {
+    public PassiveNode(int curBreak, int serial,
+            PassiveNode prevBreak) {
 
         super();
         this.curBreak = curBreak;
@@ -108,7 +108,7 @@ public class PassiveNode {
      *
      * @param pn the next passive node
      */
-    public void setNextBreak(final PassiveNode pn) {
+    public void setNextBreak(PassiveNode pn) {
 
         nextBreak = pn;
     }
@@ -132,7 +132,7 @@ public class PassiveNode {
      *
      * @param sb the target string buffer
      */
-    public void toString(final StringBuffer sb) {
+    public void toString(StringBuffer sb) {
 
         sb.append("<");
         sb.append(curBreak);

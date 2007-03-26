@@ -32,7 +32,7 @@ public class EqnoTest extends AbstractNumberingTester {
      *
      * @param arg the name
      */
-    public EqnoTest(final String arg) {
+    public EqnoTest(String arg) {
 
         super(arg, "eqno");
     }

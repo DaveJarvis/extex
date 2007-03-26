@@ -36,7 +36,7 @@ public class ErrorstopmodeTest extends NoFlagsPrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ErrorstopmodeTest.class);
     }
@@ -46,7 +46,7 @@ public class ErrorstopmodeTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public ErrorstopmodeTest(final String arg) {
+    public ErrorstopmodeTest(String arg) {
 
         super(arg, "errorstopmode", "");
     }

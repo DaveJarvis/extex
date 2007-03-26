@@ -71,7 +71,7 @@ public class ItalicCorrection extends AbstractCode {
      *
      * @param name the name for debugging
      */
-    public ItalicCorrection(final String name) {
+    public ItalicCorrection(String name) {
 
         super(name);
     }
@@ -95,8 +95,8 @@ public class ItalicCorrection extends AbstractCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -119,7 +119,7 @@ public class ItalicCorrection extends AbstractCode {
      *
      * @return the italic correction
      */
-    private FixedDimen italicCorrection(final UnicodeChar uc, final Font font) {
+    private FixedDimen italicCorrection(UnicodeChar uc, Font font) {
 
         FixedDimen ic = font.getItalicCorrection(uc);
         return (ic != null ? ic : Dimen.ZERO_PT);

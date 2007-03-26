@@ -42,7 +42,7 @@ public class TDouble implements EType {
      *
      * @throws CastException in case of an error
      */
-    protected static double castTerminal(final EType t) throws CastException {
+    protected static double castTerminal(EType t) throws CastException {
 
         if (t instanceof TDouble) {
             return ((TDouble) t).getValue();
@@ -76,7 +76,7 @@ public class TDouble implements EType {
      *
      * @param d the value
      */
-    public TDouble(final double d) {
+    public TDouble(double d) {
 
         super();
         this.value = d;
@@ -86,7 +86,7 @@ public class TDouble implements EType {
      * @see org.extex.interpreter.expression.EType#add(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType add(final EType t) throws CastException {
+    public EType add(EType t) throws CastException {
 
         this.value += castTerminal(t);
         return this;
@@ -96,7 +96,7 @@ public class TDouble implements EType {
      * @see org.extex.interpreter.expression.EType#and(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType and(final EType t) throws CastException, UnsupportedException {
+    public EType and(EType t) throws CastException, UnsupportedException {
 
         throw new UnsupportedException("&&", toString());
     }
@@ -105,7 +105,7 @@ public class TDouble implements EType {
      * @see org.extex.interpreter.expression.EType#divide(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType divide(final EType t)
+    public EType divide(EType t)
             throws CastException,
                 ArithmeticOverflowException {
 
@@ -121,7 +121,7 @@ public class TDouble implements EType {
      * @see org.extex.interpreter.expression.EType#eq(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean eq(final EType t) throws CastException {
+    public TBoolean eq(EType t) throws CastException {
 
         return new TBoolean(this.value == castTerminal(t));
     }
@@ -130,7 +130,7 @@ public class TDouble implements EType {
      * @see org.extex.interpreter.expression.EType#ge(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean ge(final EType t) throws CastException {
+    public TBoolean ge(EType t) throws CastException {
 
         return new TBoolean(this.value >= castTerminal(t));
     }
@@ -149,7 +149,7 @@ public class TDouble implements EType {
      * @see org.extex.interpreter.expression.EType#gt(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean gt(final EType t) throws CastException {
+    public TBoolean gt(EType t) throws CastException {
 
         return new TBoolean(this.value > castTerminal(t));
     }
@@ -158,7 +158,7 @@ public class TDouble implements EType {
      * @see org.extex.interpreter.expression.EType#le(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean le(final EType t) throws CastException {
+    public TBoolean le(EType t) throws CastException {
 
         return new TBoolean(this.value <= castTerminal(t));
     }
@@ -167,7 +167,7 @@ public class TDouble implements EType {
      * @see org.extex.interpreter.expression.EType#lt(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean lt(final EType t) throws CastException {
+    public TBoolean lt(EType t) throws CastException {
 
         return new TBoolean(this.value < castTerminal(t));
     }
@@ -176,7 +176,7 @@ public class TDouble implements EType {
      * @see org.extex.interpreter.expression.EType#multiply(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType multiply(final EType t) throws CastException {
+    public EType multiply(EType t) throws CastException {
 
         this.value *= castTerminal(t);
         return this;
@@ -186,7 +186,7 @@ public class TDouble implements EType {
      * @see org.extex.interpreter.expression.EType#ne(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean ne(final EType t) throws CastException {
+    public TBoolean ne(EType t) throws CastException {
 
         return new TBoolean(this.value != castTerminal(t));
     }
@@ -212,7 +212,7 @@ public class TDouble implements EType {
      * @see org.extex.interpreter.expression.EType#or(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType or(final EType t) throws CastException, UnsupportedException {
+    public EType or(EType t) throws CastException, UnsupportedException {
 
         throw new UnsupportedException("||", toString());
     }
@@ -221,7 +221,7 @@ public class TDouble implements EType {
      * @see org.extex.interpreter.expression.EType#parse(
      *      java.lang.CharSequence)
      */
-    public EType parse(final CharSequence sequence) {
+    public EType parse(CharSequence sequence) {
 
         try {
             this.value = Double.parseDouble(sequence.toString());
@@ -235,7 +235,7 @@ public class TDouble implements EType {
      * @see org.extex.interpreter.expression.EType#set(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType set(final EType t) throws CastException {
+    public EType set(EType t) throws CastException {
 
         this.value = castTerminal(t);
         return this;
@@ -246,7 +246,7 @@ public class TDouble implements EType {
      *
      * @param value the value to set
      */
-    protected void setValue(final double value) {
+    protected void setValue(double value) {
 
         this.value = value;
     }
@@ -255,7 +255,7 @@ public class TDouble implements EType {
      * @see org.extex.interpreter.expression.EType#subtract(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType subtract(final EType t) throws CastException {
+    public EType subtract(EType t) throws CastException {
 
         this.value -= castTerminal(t);
         return null;

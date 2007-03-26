@@ -34,7 +34,7 @@ public class AbovewithdelimsTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public AbovewithdelimsTest(final String arg) {
+    public AbovewithdelimsTest(String arg) {
 
         super(arg);
     }

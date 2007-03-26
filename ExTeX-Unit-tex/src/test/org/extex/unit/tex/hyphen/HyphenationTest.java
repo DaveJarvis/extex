@@ -34,7 +34,7 @@ public class HyphenationTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public HyphenationTest(final String arg) {
+    public HyphenationTest(String arg) {
 
         super(arg, "hyphenation", "{}", DEFINE_BRACES);
     }

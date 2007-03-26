@@ -45,7 +45,7 @@ public class MacroParamToken extends AbstractToken implements Token {
      *
      * @param uc the actual value
      */
-    protected MacroParamToken(final UnicodeChar uc) {
+    protected MacroParamToken(UnicodeChar uc) {
 
         super(uc);
     }
@@ -81,7 +81,7 @@ public class MacroParamToken extends AbstractToken implements Token {
      *
      * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
      */
-    public void toString(final StringBuffer sb) {
+    public void toString(StringBuffer sb) {
 
         sb.append(getLocalizer().format("MacroParamToken.Text",
             super.toString()));
@@ -100,7 +100,7 @@ public class MacroParamToken extends AbstractToken implements Token {
      *      org.extex.scanner.type.token.TokenVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final TokenVisitor visitor, final Object arg1)
+    public Object visit(TokenVisitor visitor, Object arg1)
             throws Exception {
 
         return visitor.visitMacroParam(this, arg1);

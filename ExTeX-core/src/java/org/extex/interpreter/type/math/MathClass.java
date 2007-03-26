@@ -81,7 +81,7 @@ public abstract class MathClass implements Serializable {
          *
          * @param sb the target string buffer
          */
-        public void toString(final StringBuffer sb) {
+        public void toString(StringBuffer sb) {
 
             sb.append("bin");
         }
@@ -101,8 +101,8 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
-        public Object visit(final MathClassVisitor visitor, final Object arg,
-                final Object arg2) {
+        public Object visit(MathClassVisitor visitor, Object arg,
+                Object arg2) {
 
             return visitor.visitBinary(arg, arg2);
         }
@@ -137,7 +137,7 @@ public abstract class MathClass implements Serializable {
          *
          * @param sb the target string buffer
          */
-        public void toString(final StringBuffer sb) {
+        public void toString(StringBuffer sb) {
 
             sb.append("close");
         }
@@ -157,8 +157,8 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
-        public Object visit(final MathClassVisitor visitor, final Object arg,
-                final Object arg2) {
+        public Object visit(MathClassVisitor visitor, Object arg,
+                Object arg2) {
 
             return visitor.visitClosing(arg, arg2);
         }
@@ -196,7 +196,7 @@ public abstract class MathClass implements Serializable {
          *
          * @param sb the target string buffer
          */
-        public void toString(final StringBuffer sb) {
+        public void toString(StringBuffer sb) {
 
             sb.append("large");
         }
@@ -216,8 +216,8 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
-        public Object visit(final MathClassVisitor visitor, final Object arg,
-                final Object arg2) {
+        public Object visit(MathClassVisitor visitor, Object arg,
+                Object arg2) {
 
             return visitor.visitLarge(arg, arg2);
         }
@@ -255,7 +255,7 @@ public abstract class MathClass implements Serializable {
          *
          * @param sb the target string buffer
          */
-        public void toString(final StringBuffer sb) {
+        public void toString(StringBuffer sb) {
 
             sb.append("open");
         }
@@ -275,8 +275,8 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
-        public Object visit(final MathClassVisitor visitor, final Object arg,
-                final Object arg2) {
+        public Object visit(MathClassVisitor visitor, Object arg,
+                Object arg2) {
 
             return visitor.visitOpening(arg, arg2);
         }
@@ -314,7 +314,7 @@ public abstract class MathClass implements Serializable {
          *
          * @param sb the target string buffer
          */
-        public void toString(final StringBuffer sb) {
+        public void toString(StringBuffer sb) {
 
             sb.append("ord");
         }
@@ -334,8 +334,8 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
-        public Object visit(final MathClassVisitor visitor, final Object arg,
-                final Object arg2) {
+        public Object visit(MathClassVisitor visitor, Object arg,
+                Object arg2) {
 
             return visitor.visitOrdinary(arg, arg2);
         }
@@ -373,7 +373,7 @@ public abstract class MathClass implements Serializable {
          *
          * @param sb the target string buffer
          */
-        public void toString(final StringBuffer sb) {
+        public void toString(StringBuffer sb) {
 
             sb.append("punct");
         }
@@ -393,8 +393,8 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
-        public Object visit(final MathClassVisitor visitor, final Object arg,
-                final Object arg2) {
+        public Object visit(MathClassVisitor visitor, Object arg,
+                Object arg2) {
 
             return visitor.visitPunctation(arg, arg2);
         }
@@ -432,7 +432,7 @@ public abstract class MathClass implements Serializable {
          *
          * @param sb the target string buffer
          */
-        public void toString(final StringBuffer sb) {
+        public void toString(StringBuffer sb) {
 
             sb.append("rel");
         }
@@ -452,8 +452,8 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
-        public Object visit(final MathClassVisitor visitor, final Object arg,
-                final Object arg2) {
+        public Object visit(MathClassVisitor visitor, Object arg,
+                Object arg2) {
 
             return visitor.visitRelation(arg, arg2);
         }
@@ -491,7 +491,7 @@ public abstract class MathClass implements Serializable {
          *
          * @param sb the target string buffer
          */
-        public void toString(final StringBuffer sb) {
+        public void toString(StringBuffer sb) {
 
             sb.append("var");
         }
@@ -511,8 +511,8 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
-        public Object visit(final MathClassVisitor visitor, final Object arg,
-                final Object arg2) {
+        public Object visit(MathClassVisitor visitor, Object arg,
+                Object arg2) {
 
             return visitor.visitVariable(arg, arg2);
         }
@@ -621,7 +621,7 @@ public abstract class MathClass implements Serializable {
      * @return the MathClass instance corresponding to the <logo>TeX</logo>
      *  code
      */
-    public static final MathClass getMathClass(final int n) {
+    public static final MathClass getMathClass(int n) {
 
         return MC[n];
     }
@@ -642,9 +642,9 @@ public abstract class MathClass implements Serializable {
      *
      * @throws InterpreterException in case of an error
      */
-    public static MathClass parse(final Context context,
-            final TokenSource source, final Typesetter typesetter,
-            final String primitive) throws InterpreterException {
+    public static MathClass parse(Context context,
+            TokenSource source, Typesetter typesetter,
+            String primitive) throws InterpreterException {
 
         Token t = source.getToken(context);
 
@@ -726,7 +726,7 @@ public abstract class MathClass implements Serializable {
      *
      * @param sb the target string buffer
      */
-    public abstract void toString(final StringBuffer sb);
+    public abstract void toString(StringBuffer sb);
 
     /**
      * @see java.lang.Object#toString()
@@ -748,7 +748,7 @@ public abstract class MathClass implements Serializable {
      *
      * @return an arbitrary return value
      */
-    public abstract Object visit(final MathClassVisitor visitor,
-            final Object arg, final Object arg2);
+    public abstract Object visit(MathClassVisitor visitor,
+            Object arg, Object arg2);
 
 }

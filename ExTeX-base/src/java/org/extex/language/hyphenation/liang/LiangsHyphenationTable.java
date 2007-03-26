@@ -165,7 +165,7 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
      * @see org.extex.language.Language#addPattern(
      *      Tokens)
      */
-    public void addPattern(final Tokens pattern)
+    public void addPattern(Tokens pattern)
             throws IllegalValueHyphenationException,
                 IllegalTokenHyphenationException,
                 DuplicateHyphenationException,
@@ -218,7 +218,7 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
      *
      * @param logger the target logger
      */
-    public void dump(final Logger logger) {
+    public void dump(Logger logger) {
 
         patterns.dump(logger, "");
     }
@@ -243,9 +243,9 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
      *      boolean,
      *      org.extex.typesetter.type.node.factory.NodeFactory)
      */
-    public boolean hyphenate(final NodeList nodelist,
-            final TypesetterOptions context, final UnicodeChar hyphen,
-            final int start, final boolean forall, final NodeFactory nodeFactory)
+    public boolean hyphenate(NodeList nodelist,
+            TypesetterOptions context, UnicodeChar hyphen,
+            int start, boolean forall, NodeFactory nodeFactory)
             throws HyphenationException {
 
         if (hyphen == null || !isHyphenActive() || nodelist.size() < 2) {
@@ -284,9 +284,9 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
      *      org.extex.core.UnicodeCharList,
      *      org.extex.typesetter.type.node.CharNode)
      */
-    public boolean hyphenateOne(final NodeList nodelist,
-            final TypesetterOptions context, final int start,
-            final UnicodeCharList word, final CharNode hyphenNode)
+    public boolean hyphenateOne(NodeList nodelist,
+            TypesetterOptions context, int start,
+            UnicodeCharList word, CharNode hyphenNode)
             throws HyphenationException {
 
         int len = word.size();

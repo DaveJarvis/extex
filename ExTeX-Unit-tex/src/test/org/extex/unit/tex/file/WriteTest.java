@@ -34,7 +34,7 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(WriteTest.class);
     }
@@ -44,7 +44,7 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
      *
      * @param arg the name
      */
-    public WriteTest(final String arg) {
+    public WriteTest(String arg) {
 
         super(arg, "write", "1 {abc}");
     }

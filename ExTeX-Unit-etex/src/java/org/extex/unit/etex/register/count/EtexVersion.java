@@ -53,18 +53,20 @@ public class EtexVersion extends AbstractReadonlyCount {
      *
      * @param name the name for debugging
      */
-    public EtexVersion(final String name) {
+    public EtexVersion(String name) {
 
         super(name);
     }
 
     /**
-     * @see org.extex.interpreter.type.CountConvertible#convertCount(
+     * {@inheritDoc}
+     *
+     * @see org.extex.core.count.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
-    public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public long convertCount(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         return ETEX_VERSION;
     }

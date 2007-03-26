@@ -31,7 +31,7 @@ public class MuskipdefTest extends AbstractMuskipRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(MuskipdefTest.class);
     }
@@ -41,7 +41,7 @@ public class MuskipdefTest extends AbstractMuskipRegisterTester {
      *
      * @param arg the name
      */
-    public MuskipdefTest(final String arg) {
+    public MuskipdefTest(String arg) {
 
         super(arg, "x", "", "0.0mu", "\\muskipdef\\x=42 ");
     }

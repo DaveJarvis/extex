@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group
+ * Copyright (C) 2004-2007 The ExTeX Group
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,6 +32,7 @@ import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.documentWriter.exception.DocumentWriterIOException;
 import org.extex.backend.documentWriter.pdf.exception.DocumentWriterPdfException;
 import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.framework.configuration.Configuration;
 import org.extex.typesetter.type.NodeList;
@@ -43,7 +44,6 @@ import org.pdfbox.pdmodel.PDDocument;
 import org.pdfbox.pdmodel.PDPage;
 import org.pdfbox.pdmodel.common.PDRectangle;
 import org.pdfbox.pdmodel.edit.PDPageContentStream;
-
 
 /**
  * Implementation of a pdf document writer.
@@ -84,8 +84,8 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
      * @param cfg       the configuration
      * @param options   the options
      */
-    public PdfDocumentWriter(final Configuration cfg,
-            final DocumentWriterOptions options) {
+    public PdfDocumentWriter(Configuration cfg,
+            DocumentWriterOptions options) {
 
         super();
         docoptions = options;
@@ -104,6 +104,8 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
     private PDDocument document = null;
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.backend.documentWriter.DocumentWriter#close()
      */
     public void close() throws DocumentWriterException {
@@ -128,6 +130,8 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
      */
     public String getExtension() {
@@ -136,10 +140,12 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(
      *      java.io.OutputStream)
      */
-    public void setOutputStream(final OutputStream outStream) {
+    public void setOutputStream(OutputStream outStream) {
 
         out = outStream;
     }
@@ -147,14 +153,16 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
     /**
      * map for the parameters.
      */
-    private Map param = new HashMap();
+    private Map<String, String> param = new HashMap<String, String>();
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(
      *      java.lang.String,
      *      java.lang.String)
      */
-    public void setParameter(final String name, final String value) {
+    public void setParameter(String name, String value) {
 
         param.put(name, value);
     }
@@ -190,10 +198,12 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
     private NodeVisitor nodeVisitor;
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
      *      org.extex.typesetter.type.page.Page)
      */
-    public int shipout(final Page p) throws DocumentWriterException {
+    public int shipout(Page p) throws DocumentWriterException {
 
         NodeList nodes = p.getNodes();
         try {
@@ -202,12 +212,13 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
                 document = new PDDocument();
             }
             PDPage page = new PDPage();
-            PDPageContentStream contentStream = new PDPageContentStream(
-                    document, page);
+            PDPageContentStream contentStream =
+                    new PDPageContentStream(document, page);
 
             document.addPage(page);
-            nodeVisitor = new PdfNodeVisitor(document, contentStream, currentX,
-                    currentY);
+            nodeVisitor =
+                    new PdfNodeVisitor(document, contentStream, currentX,
+                        currentY);
 
             shippedPages++;
             //            System.err.print("[" + shippedPages + "]");
@@ -219,22 +230,23 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
             Unit.setDimenFromCM(paperwidth, WIDTH_A4_BP);
             Unit.setDimenFromCM(paperheight, HEIGHT_A4_BP);
             if (docoptions != null) {
-                Dimen w = (Dimen) docoptions.getDimenOption("paperwidth");
-                Dimen h = (Dimen) docoptions.getDimenOption("paperheight");
+                FixedDimen w = docoptions.getDimenOption("paperwidth");
+                FixedDimen h = docoptions.getDimenOption("paperheight");
                 if (!(h.getValue() == 0 || w.getValue() == 0)) {
                     paperheight.set(h);
                     paperwidth.set(w);
                     phBP = Unit.getDimenAsBP(paperheight);
                     if (nodeVisitor instanceof PdfNodeVisitor) {
                         ((PdfNodeVisitor) nodeVisitor)
-                                .setPaperheight(paperheight);
+                            .setPaperheight(paperheight);
                     }
                 }
             }
 
             // set page size and margin
-            PDRectangle pagesize = new PDRectangle(Unit
-                    .getDimenAsBP(paperwidth), Unit.getDimenAsBP(paperheight));
+            PDRectangle pagesize =
+                    new PDRectangle(Unit.getDimenAsBP(paperwidth), Unit
+                        .getDimenAsBP(paperheight));
             page.setMediaBox(pagesize);
 
             // set start point

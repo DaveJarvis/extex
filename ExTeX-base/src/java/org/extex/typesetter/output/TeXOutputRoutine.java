@@ -115,7 +115,7 @@ import org.extex.typesetter.type.page.Page;
  *      &rarr; <tt>\deadcycles</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -145,7 +145,7 @@ import org.extex.typesetter.type.page.Page;
  *      &rarr; <tt>\maxdeadcycles</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -189,7 +189,7 @@ public class TeXOutputRoutine implements OutputRoutine {
      *
      * @throws CatcodeException in case of an error
      */
-    public TeXOutputRoutine(final Interpreter interpreter)
+    public TeXOutputRoutine(Interpreter interpreter)
             throws CatcodeException {
 
         super();
@@ -218,7 +218,7 @@ public class TeXOutputRoutine implements OutputRoutine {
      *      org.extex.typesetter.type.page.Page,
      *      org.extex.backend.BackendDriver)
      */
-    public void output(final Page page, final BackendDriver backend)
+    public void output(Page page, BackendDriver backend)
             throws GeneralException {
 
         Context context = interpreter.getContext();

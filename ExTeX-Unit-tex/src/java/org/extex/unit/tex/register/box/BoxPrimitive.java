@@ -74,7 +74,7 @@ public class BoxPrimitive extends AbstractCode implements Boxable {
      *
      * @param name the name for debugging
      */
-    public BoxPrimitive(final String name) {
+    public BoxPrimitive(String name) {
 
         super(name);
     }
@@ -98,8 +98,8 @@ public class BoxPrimitive extends AbstractCode implements Boxable {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -131,8 +131,8 @@ public class BoxPrimitive extends AbstractCode implements Boxable {
      *       org.extex.interpreter.TokenSource,
      *       org.extex.typesetter.Typesetter, Token)
      */
-    public Box getBox(final Context context, final TokenSource source,
-            final Typesetter typesetter, final Token insert)
+    public Box getBox(Context context, TokenSource source,
+            Typesetter typesetter, Token insert)
             throws InterpreterException, ConfigurationException {
 
         String key = Setbox.getKey(context, source, typesetter, getName());

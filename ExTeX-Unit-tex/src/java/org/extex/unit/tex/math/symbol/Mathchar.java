@@ -75,7 +75,7 @@ public class Mathchar extends AbstractTeXMathCode
      *
      * @param name the name for debugging
      */
-    public Mathchar(final String name) {
+    public Mathchar(String name) {
 
         super(name);
     }
@@ -99,8 +99,8 @@ public class Mathchar extends AbstractTeXMathCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public MathCode convertMathCode(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public MathCode convertMathCode(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         return parseMathCode(context, source, typesetter,
@@ -125,8 +125,8 @@ public class Mathchar extends AbstractTeXMathCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);

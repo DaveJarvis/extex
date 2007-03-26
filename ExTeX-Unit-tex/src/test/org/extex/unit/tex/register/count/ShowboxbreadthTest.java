@@ -33,7 +33,7 @@ public class ShowboxbreadthTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ShowboxbreadthTest.class);
     }
@@ -43,7 +43,7 @@ public class ShowboxbreadthTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public ShowboxbreadthTest(final String arg) {
+    public ShowboxbreadthTest(String arg) {
 
         super(arg, "showboxbreadth", "", "0");
     }

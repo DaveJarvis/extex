@@ -56,10 +56,10 @@ public class SimpleNodeFactory implements NodeFactory {
      *
      * @see org.extex.typesetter.type.node.factory.NodeFactory#getNode(
      *      org.extex.interpreter.context.tc.TypesettingContext,
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
-    public Node getNode(final TypesettingContext typesettingContext,
-            final UnicodeChar uc) {
+    public Node getNode(TypesettingContext typesettingContext,
+            UnicodeChar uc) {
 
         Font font = typesettingContext.getFont();
 

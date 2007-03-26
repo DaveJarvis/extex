@@ -62,7 +62,7 @@ public class EntityResolverRf implements EntityResolver {
      * Create a new object.
      * @param rf    The resource finder to use.
      */
-    public EntityResolverRf(final ResourceFinder rf) {
+    public EntityResolverRf(ResourceFinder rf) {
 
         finder = rf;
     }
@@ -76,8 +76,8 @@ public class EntityResolverRf implements EntityResolver {
      * @see org.xml.sax.EntityResolver#resolveEntity(
      *      java.lang.String, java.lang.String)
      */
-    public InputSource resolveEntity(final String publicId,
-            final String systemId) throws SAXException, IOException {
+    public InputSource resolveEntity(String publicId,
+            String systemId) throws SAXException, IOException {
 
         InputSource source = null;
 

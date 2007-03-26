@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,7 +23,6 @@ import org.extex.core.count.CountConvertible;
 import org.extex.core.dimen.DimenConvertible;
 import org.extex.core.glue.Glue;
 import org.extex.core.glue.GlueParser;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
@@ -84,19 +83,21 @@ public class Glueshrinkorder extends AbstractCode
      *
      * @param name the name for debugging
      */
-    public Glueshrinkorder(final String name) {
+    public Glueshrinkorder(String name) {
 
         super(name);
     }
 
     /**
-     * @see org.extex.interpreter.type.CountConvertible#convertCount(
+     * {@inheritDoc}
+     *
+     * @see org.extex.core.count.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public long convertCount(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         Glue glue = GlueParser.parse(source, context, typesetter);
         int order = glue.getShrink().getOrder();
@@ -104,13 +105,15 @@ public class Glueshrinkorder extends AbstractCode
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.core.dimen.DimenConvertible#convertDimen(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public long convertDimen(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public long convertDimen(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         Glue glue = GlueParser.parse(source, context, typesetter);
         int order = glue.getShrink().getOrder();
@@ -118,29 +121,19 @@ public class Glueshrinkorder extends AbstractCode
     }
 
     /**
-     * This method is the getter for the description of the primitive.
-     *
-     * @param context the interpreter context
-     * @param source the source for further tokens to qualify the request
-     * @param typesetter the typesetter to use
-     *
-     * @return the description of the primitive as list of Tokens
-     *
-     * @throws InterpreterException in case of an error
-     * @throws CatcodeException in case of an error in token creation
-     * @throws ConfigurationException in case of an configuration error
+     * {@inheritDoc}
      *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter)
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 CatcodeException {
 
-        return context.getTokenFactory().toTokens( //
+        return context.getTokenFactory().toTokens(//
             convertCount(context, source, typesetter));
     }
 

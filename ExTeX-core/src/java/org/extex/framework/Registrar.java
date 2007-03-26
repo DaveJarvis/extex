@@ -85,7 +85,7 @@ public final class Registrar {
         /**
          * The field <tt>type</tt> contains the class.
          */
-        private Class type;
+        private Class<?> type;
 
         /**
          * Creates a new object.
@@ -93,7 +93,7 @@ public final class Registrar {
          * @param observer the observer
          * @param type the interface or class to be observed
          */
-        public Obs(final RegistrarObserver observer, final Class type) {
+        public Obs(RegistrarObserver observer, Class<?> type) {
 
             super();
             this.type = type;
@@ -115,7 +115,7 @@ public final class Registrar {
          *
          * @return the type
          */
-        public Class getType() {
+        public Class<?> getType() {
 
             return this.type;
         }
@@ -143,7 +143,7 @@ public final class Registrar {
      * The field <tt>pipe</tt> contains the list of registrars which wait to be
      * activated.
      */
-    private static List pipe = new ArrayList();
+    private static List<Registrar> pipe = new ArrayList<Registrar>();
 
     /**
      * Create a new registrar and activate it.
@@ -166,7 +166,7 @@ public final class Registrar {
      *
      * @throws RegistrarException in case of an error
      */
-    public static void activate(final Registrar registrar)
+    public static void activate(Registrar registrar)
             throws RegistrarException {
 
         if (active != null) {
@@ -187,14 +187,14 @@ public final class Registrar {
      *
      * @throws RegistrarException in case of an error
      */
-    public static void deactivate(final Registrar registrar)
+    public static void deactivate(Registrar registrar)
             throws RegistrarException {
 
         if (active != registrar) {
             throw new RegistrarException("registrar is not active");
         }
         if (pipe.size() > 0) {
-            active = (Registrar) pipe.remove(0);
+            active = pipe.remove(0);
             active.notifyAll();
         } else {
             active = null;
@@ -211,14 +211,14 @@ public final class Registrar {
      *
      * @throws RegistrarException in case of a problem with registration
      */
-    public static Object reconnect(final Object object)
+    public static Object reconnect(Object object)
             throws RegistrarException {
 
         Object ob = object;
-        List observers = active.observers;
+        List<Obs> observers = active.observers;
         int n = observers.size();
         for (int i = 0; i < n; i++) {
-            Obs obs = (Obs) observers.get(i);
+            Obs obs = observers.get(i);
             if (obs.getType().isInstance(object)) {
                 ob = obs.getObserver().reconnect(ob);
             }
@@ -237,8 +237,8 @@ public final class Registrar {
      * @return a reference to an object which can be passed to unregister() for
      *  removing the registered observer.
      */
-    public static Object register(final RegistrarObserver observer,
-            final Class type) {
+    public static Object register(RegistrarObserver observer,
+            Class<?> type) {
 
         Obs obs = new Obs(observer, type);
         active.observers.add(obs);
@@ -252,7 +252,7 @@ public final class Registrar {
      *
      * @return <code>true</code> iff the removal succeeded
      */
-    public static boolean unregister(final Object obs) {
+    public static boolean unregister(Object obs) {
 
         if (!(obs instanceof Obs)) {
             throw new IllegalArgumentException("#unregister()");
@@ -264,7 +264,7 @@ public final class Registrar {
      * The field <tt>observers</tt> contains the observers which are currently
      * registered.
      */
-    private List observers = new ArrayList();
+    private List<Obs> observers = new ArrayList<Obs>();
 
     /**
      * Private constructor to avoid instantiation.

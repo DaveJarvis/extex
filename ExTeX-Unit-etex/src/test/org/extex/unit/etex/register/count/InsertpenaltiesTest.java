@@ -33,7 +33,7 @@ public class InsertpenaltiesTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(InsertpenaltiesTest.class);
     }
@@ -43,7 +43,7 @@ public class InsertpenaltiesTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public InsertpenaltiesTest(final String arg) {
+    public InsertpenaltiesTest(String arg) {
 
         super(arg, "insertpenalties", "", "0");
         setConfig("etex-test");

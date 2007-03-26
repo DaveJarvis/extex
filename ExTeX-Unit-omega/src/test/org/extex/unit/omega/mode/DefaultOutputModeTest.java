@@ -34,7 +34,7 @@ public class DefaultOutputModeTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(DefaultOutputModeTest.class);
     }
@@ -44,7 +44,7 @@ public class DefaultOutputModeTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public DefaultOutputModeTest(final String arg) {
+    public DefaultOutputModeTest(String arg) {
 
         super(arg, "DefaultOutputMode", " onebyte ");
         setConfig("omega-test");

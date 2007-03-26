@@ -33,7 +33,7 @@ public class XleadersTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(XleadersTest.class);
     }
@@ -43,7 +43,7 @@ public class XleadersTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public XleadersTest(final String arg) {
+    public XleadersTest(String arg) {
 
         super(arg, "xleaders", "\\vrule\\vfill");
     }

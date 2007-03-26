@@ -18,6 +18,8 @@
 
 package org.extex.interpreter.type.font;
 
+import java.io.Serializable;
+
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.Dimen;
@@ -32,7 +34,7 @@ import org.extex.font.FontKey;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4388 $
  */
-public interface Font {
+public interface Font extends Serializable {
 
     /**
      * Returns the actual FontKey for this font.

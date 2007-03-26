@@ -31,7 +31,7 @@ public class HangindentTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(HangindentTest.class);
     }
@@ -41,7 +41,7 @@ public class HangindentTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public HangindentTest(final String arg) {
+    public HangindentTest(String arg) {
 
         super(arg, "hangindent", "", "0.0pt");
     }

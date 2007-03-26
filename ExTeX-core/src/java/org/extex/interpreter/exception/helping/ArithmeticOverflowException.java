@@ -47,7 +47,7 @@ public class ArithmeticOverflowException extends HelpingException {
      *
      * @param macro the name of the macro in which the eof has been encountered
      */
-    public ArithmeticOverflowException(final String macro) {
+    public ArithmeticOverflowException(String macro) {
 
         super(LocalizerFactory.getLocalizer(//
             ArithmeticOverflowException.class), //

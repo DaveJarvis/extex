@@ -50,7 +50,7 @@ public class InvalidCharacterException extends HelpingException {
      *
      * @param uc the invalid character
      */
-    public InvalidCharacterException(final UnicodeChar uc) {
+    public InvalidCharacterException(UnicodeChar uc) {
 
         super(LocalizerFactory.getLocalizer(InvalidCharacterException.class),
             "TTP.InvalidChar", uc.toString());
@@ -62,7 +62,7 @@ public class InvalidCharacterException extends HelpingException {
      *
      * @param uc the invalid character
      */
-    public InvalidCharacterException(final String uc) {
+    public InvalidCharacterException(String uc) {
 
         super(LocalizerFactory.getLocalizer(InvalidCharacterException.class),
             "TTP.InvalidChar", uc);
@@ -76,8 +76,8 @@ public class InvalidCharacterException extends HelpingException {
      * @param messageTag the message tag
      * @param arg the argument
      */
-    public InvalidCharacterException(final Localizer localizer,
-            final String messageTag, final String arg) {
+    public InvalidCharacterException(Localizer localizer,
+            String messageTag, String arg) {
 
         super(localizer, messageTag, arg);
     }

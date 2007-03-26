@@ -168,12 +168,14 @@ public class ContextImpl
     /**
      * The field <tt>bottommarks</tt> contains the bottom marks.
      */
-    private static Map bottommarks = new HashMap();
+    private static Map<Object, Tokens> bottommarks =
+            new HashMap<Object, Tokens>();
 
     /**
      * The field <tt>firstmarks</tt> contains the first marks.
      */
-    private static Map firstmarks = new HashMap();
+    private static Map<Object, Tokens> firstmarks =
+            new HashMap<Object, Tokens>();
 
     /**
      * The constant <tt>GROUP_TAG</tt> contains the name of the tag for the
@@ -196,7 +198,7 @@ public class ContextImpl
     /**
      * The field <tt>topmarks</tt> contains the top marks.
      */
-    private static Map topmarks = new HashMap();
+    private static Map<Object, Tokens> topmarks = new HashMap<Object, Tokens>();
 
     /**
      * The constant <tt>TYPESETTING_CONTEXT_TAG</tt> contains the name of the
@@ -214,25 +216,25 @@ public class ContextImpl
      * The field <tt>changeCodeObservers</tt> contains the list of observers
      * registered for change event on the code.
      */
-    private transient Map changeCodeObservers;
+    private transient Map<Token, List<CodeObserver>> changeCodeObservers;
 
     /**
      * The field <tt>changeCountObservers</tt> contains the list of observers
      * registered for change event on the count registers.
      */
-    private transient Map changeCountObservers;
+    private transient Map<String, List<CountObserver>> changeCountObservers;
 
     /**
      * The field <tt>changeDimenObservers</tt> contains the list of observers
      * registered for change event on the dimen registers.
      */
-    private transient Map changeDimenObservers;
+    private transient Map<String, List<DimenObserver>> changeDimenObservers;
 
     /**
      * The field <tt>dimenChangeObservers</tt> contains the list of observers
      * registered for change event on the glue (skip) registers.
      */
-    private transient Map changeGlueObservers;
+    private transient Map<String, List<GlueObserver>> changeGlueObservers;
 
     /**
      * The field <tt>observersInteraction</tt> contains the observer list which
@@ -240,29 +242,29 @@ public class ContextImpl
      * when the interaction is changed. The argument is the new interaction
      * mode.
      */
-    private transient List changeInteractionObservers;
+    private transient List<InteractionObserver> changeInteractionObservers;
 
     /**
      * The field <tt>toksChangeObservers</tt> contains the list of observers
-     * registered for change event on the toks registers.
+     * registered for change event on the tokens registers.
      */
-    private transient Map changeToksObservers;
+    private transient Map<String, List<TokensObserver>> changeToksObservers;
 
     /**
      * The field <tt>conditionalObservers</tt> contains the observer for
      * conditionals. The value <code>null</code> is treated like the empty list.
      */
-    private transient List conditionalObservers = null;
+    private transient List<ConditionalObserver> conditionalObservers = null;
 
     /**
      * The field <tt>conditionalStack</tt> contains the stack for conditionals.
      */
-    private List conditionalStack = new ArrayList();
+    private List<Conditional> conditionalStack = new ArrayList<Conditional>();
 
     /**
      * The field <tt>dirStack</tt> contains the stack of directions.
      */
-    private Stack dirStack = new Stack();
+    private Stack<Direction> dirStack = new Stack<Direction>();
 
     /**
      * The field <tt>errorCount</tt> contains the error counter.
@@ -290,7 +292,7 @@ public class ContextImpl
      * The field <tt>groupObservers</tt> contains the list of observers
      * registered for change event on groups.
      */
-    private transient List groupObservers;
+    private transient List<GroupObserver> groupObservers;
 
     /**
      * The field <tt>id</tt> contains the is string.
@@ -317,7 +319,7 @@ public class ContextImpl
      * Note that this list is stored within the format. Thus it is <i>not</i>
      * <tt>transient</tt>.
      */
-    private List loadObservers = null;
+    private List<LoadedObserver> loadObservers = null;
 
     /**
      * The field <tt>localizer</tt> contains the localizer to use.
@@ -360,12 +362,14 @@ public class ContextImpl
     /**
      * The field <tt>splitBottomMarks</tt> contains the split bottom marks.
      */
-    private Map splitBottomMarks = new Hashtable();
+    private Map<Object, Tokens> splitBottomMarks =
+            new Hashtable<Object, Tokens>();
 
     /**
      * The field <tt>splitFirstMarks</tt> contains the split first marks.
      */
-    private Map splitFirstMarks = new Hashtable();
+    private Map<Object, Tokens> splitFirstMarks =
+            new Hashtable<Object, Tokens>();
 
     /**
      * The field <tt>standardTokenStream</tt> contains the standard token
@@ -388,7 +392,7 @@ public class ContextImpl
     /**
      * The field <tt>units</tt> contains the list of unit infos.
      */
-    private List units = new ArrayList();
+    private List<UnitInfo> units = new ArrayList<UnitInfo>();
 
     /**
      * Creates a new object.
@@ -410,7 +414,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#addUnit(
      *      org.extex.interpreter.unit.UnitInfo)
      */
-    public void addUnit(final UnitInfo info) {
+    public void addUnit(UnitInfo info) {
 
         if (info == null) {
             throw new IllegalArgumentException("addUnit()");
@@ -427,7 +431,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#afterGroup(
      *      AfterGroupObserver)
      */
-    public void afterGroup(final AfterGroupObserver observer) {
+    public void afterGroup(AfterGroupObserver observer) {
 
         group.afterGroup(observer);
     }
@@ -440,7 +444,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#afterGroup(
      *      org.extex.scanner.type.token.Token)
      */
-    public void afterGroup(final Token t) {
+    public void afterGroup(Token t) {
 
         group.afterGroup(t);
     }
@@ -468,7 +472,7 @@ public class ContextImpl
      *      org.extex.typesetter.Typesetter,
      *     org.extex.interpreter.TokenSource)
      */
-    public void closeGroup(final Typesetter typesetter, final TokenSource source)
+    public void closeGroup(Typesetter typesetter, TokenSource source)
             throws InterpreterException {
 
         Group next = group.getNext();
@@ -487,16 +491,14 @@ public class ContextImpl
         }
 
         if (groupObservers != null) {
-            int size = groupObservers.size();
-            for (int i = 0; i < size; i++) {
-                try {
-                    ((GroupObserver) groupObservers.get(i))
-                        .receiveCloseGroup(this);
-                } catch (InterpreterException e) {
-                    throw e;
-                } catch (Exception e) {
-                    throw new InterpreterException(e);
+            try {
+                for (GroupObserver obs : groupObservers) {
+                    obs.receiveCloseGroup(this);
                 }
+            } catch (InterpreterException e) {
+                throw e;
+            } catch (Exception e) {
+                throw new InterpreterException(e);
             }
         }
     }
@@ -511,7 +513,7 @@ public class ContextImpl
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
-    public void configure(final Configuration configuration) {
+    public void configure(Configuration configuration) {
 
         magnificationMax =
                 configuration.getValueAsInteger("maximalMagnification",
@@ -564,7 +566,7 @@ public class ContextImpl
      * @see org.extex.framework.i18n.Localizable#enableLocalization(
      *      org.extex.framework.i18n.Localizer)
      */
-    public void enableLocalization(final Localizer theLocalizer) {
+    public void enableLocalization(Localizer theLocalizer) {
 
         this.localizer = theLocalizer;
     }
@@ -577,7 +579,7 @@ public class ContextImpl
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger logger) {
+    public void enableLogging(Logger logger) {
 
         this.logger = logger;
     }
@@ -597,7 +599,7 @@ public class ContextImpl
      *
      * @see org.extex.interpreter.context.Context#esc(java.lang.String)
      */
-    public String esc(final String name) {
+    public String esc(String name) {
 
         UnicodeChar escapechar = escapechar();
         return (escapechar != null ? escapechar.toString() + name : name);
@@ -614,7 +616,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#esc(
      *      org.extex.scanner.type.token.Token)
      */
-    public String esc(final Token token) {
+    public String esc(Token token) {
 
         return token.toText(escapechar());
     }
@@ -640,7 +642,7 @@ public class ContextImpl
      *      java.lang.Object,
      *      java.lang.Object)
      */
-    public Object get(final Object extension, final Object key) {
+    public Object get(Object extension, Object key) {
 
         return group.get(extension, key);
     }
@@ -667,13 +669,13 @@ public class ContextImpl
      * @see org.extex.interpreter.context.ContextMark#getBottomMark(
      *      java.lang.Object)
      */
-    public Tokens getBottomMark(final Object name) {
+    public Tokens getBottomMark(Object name) {
 
-        Tokens mark = (Tokens) bottommarks.get(name);
+        Tokens mark = bottommarks.get(name);
         if (mark == null) {
-            mark = (Tokens) firstmarks.get(name);
+            mark = firstmarks.get(name);
             if (mark == null) {
-                mark = (Tokens) topmarks.get(name);
+                mark = topmarks.get(name);
             }
         }
         return mark;
@@ -690,7 +692,7 @@ public class ContextImpl
      *
      * @see org.extex.interpreter.context.Context#getBox(java.lang.String)
      */
-    public Box getBox(final String name) {
+    public Box getBox(String name) {
 
         return group.getBox(name);
     }
@@ -704,7 +706,7 @@ public class ContextImpl
      *
      * @see org.extex.scanner.Tokenizer#getCatcode(org.extex.core.UnicodeChar)
      */
-    public Catcode getCatcode(final UnicodeChar uc) {
+    public Catcode getCatcode(UnicodeChar uc) {
 
         return group.getCatcode(uc);
     }
@@ -723,7 +725,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.ContextCode#getCode(
      *      org.extex.scanner.type.token.CodeToken)
      */
-    public Code getCode(final CodeToken t) throws InterpreterException {
+    public Code getCode(CodeToken t) throws InterpreterException {
 
         return group.getCode(t);
     }
@@ -741,7 +743,7 @@ public class ContextImpl
         if (size <= 0) {
             return null;
         }
-        return ((Conditional) conditionalStack.get(size - 1));
+        return conditionalStack.get(size - 1);
     }
 
     /**
@@ -760,7 +762,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#getCount(
      *      java.lang.String)
      */
-    public Count getCount(final String name) {
+    public Count getCount(String name) {
 
         return group.getCount(name);
     }
@@ -775,7 +777,7 @@ public class ContextImpl
      * @see org.extex.typesetter.TypesetterOptions#getCountOption(
      *      java.lang.String)
      */
-    public FixedCount getCountOption(final String name) {
+    public FixedCount getCountOption(String name) {
 
         return group.getCount(name);
     }
@@ -790,7 +792,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#getDelcode(
      *      org.extex.core.UnicodeChar)
      */
-    public MathDelimiter getDelcode(final UnicodeChar c) {
+    public MathDelimiter getDelcode(UnicodeChar c) {
 
         return group.getDelcode(c);
     }
@@ -805,7 +807,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#getDimen(
      *      java.lang.String)
      */
-    public Dimen getDimen(final String name) {
+    public Dimen getDimen(String name) {
 
         return group.getDimen(name);
     }
@@ -820,7 +822,7 @@ public class ContextImpl
      * @see org.extex.typesetter.TypesetterOptions#getDimenOption(
      *      java.lang.String)
      */
-    public FixedDimen getDimenOption(final String name) {
+    public FixedDimen getDimenOption(String name) {
 
         return group.getDimen(name);
     }
@@ -837,11 +839,11 @@ public class ContextImpl
      * @see org.extex.interpreter.context.ContextMark#getFirstMark(
      *      java.lang.Object)
      */
-    public Tokens getFirstMark(final Object name) {
+    public Tokens getFirstMark(Object name) {
 
-        Tokens mark = (Tokens) firstmarks.get(name);
+        Tokens mark = firstmarks.get(name);
         if (mark == null) {
-            mark = (Tokens) topmarks.get(name);
+            mark = topmarks.get(name);
         }
         return mark;
     }
@@ -849,7 +851,7 @@ public class ContextImpl
     /**
      * @see org.extex.interpreter.context.Context#getFont(java.lang.String)
      */
-    public Font getFont(final String name) {
+    public Font getFont(String name) {
 
         return this.group.getFont(name);
     }
@@ -865,7 +867,7 @@ public class ContextImpl
     /**
      * @see org.extex.interpreter.context.Context#getGlue(java.lang.String)
      */
-    public Glue getGlue(final String name) {
+    public Glue getGlue(String name) {
 
         return group.getSkip(name);
     }
@@ -873,7 +875,7 @@ public class ContextImpl
     /**
      * @see org.extex.typesetter.TypesetterOptions#getGlueOption(java.lang.String)
      */
-    public FixedGlue getGlueOption(final String name) {
+    public FixedGlue getGlueOption(String name) {
 
         return group.getSkip(name);
     }
@@ -976,7 +978,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#getInFile(
      *      java.lang.String)
      */
-    public InFile getInFile(final String name) {
+    public InFile getInFile(String name) {
 
         return group.getInFile(name);
     }
@@ -1009,7 +1011,7 @@ public class ContextImpl
      *
      * @see org.extex.interpreter.context.Context#getLanguage(String)
      */
-    public Language getLanguage(final String language)
+    public Language getLanguage(String language)
             throws InterpreterException {
 
         return languageManager.getLanguage(language);
@@ -1038,7 +1040,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#getLccode(
      *      org.extex.core.UnicodeChar)
      */
-    public UnicodeChar getLccode(final UnicodeChar uc) {
+    public UnicodeChar getLccode(UnicodeChar uc) {
 
         return group.getLccode(uc);
     }
@@ -1066,7 +1068,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#getMathcode(
      *      org.extex.core.UnicodeChar)
      */
-    public MathCode getMathcode(final UnicodeChar uc) {
+    public MathCode getMathcode(UnicodeChar uc) {
 
         return group.getMathcode(uc);
     }
@@ -1081,7 +1083,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#getMuskip(
      *      java.lang.String)
      */
-    public Muskip getMuskip(final String name) {
+    public Muskip getMuskip(String name) {
 
         return group.getMuskip(name);
     }
@@ -1108,7 +1110,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#getOutFile(
      *      java.lang.String)
      */
-    public OutFile getOutFile(final String name) {
+    public OutFile getOutFile(String name) {
 
         return group.getOutFile(name);
     }
@@ -1135,7 +1137,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#getSfcode(
      *      org.extex.core.UnicodeChar)
      */
-    public Count getSfcode(final UnicodeChar uc) {
+    public Count getSfcode(UnicodeChar uc) {
 
         return group.getSfcode(uc);
     }
@@ -1150,9 +1152,9 @@ public class ContextImpl
      * @see org.extex.interpreter.context.ContextMark#getSplitBottomMark(
      *      java.lang.Object)
      */
-    public Tokens getSplitBottomMark(final Object name) {
+    public Tokens getSplitBottomMark(Object name) {
 
-        return (Tokens) splitBottomMarks.get(name);
+        return splitBottomMarks.get(name);
     }
 
     /**
@@ -1165,9 +1167,9 @@ public class ContextImpl
      * @see org.extex.interpreter.context.ContextMark#getSplitFirstMark(
      *      java.lang.Object)
      */
-    public Tokens getSplitFirstMark(final Object name) {
+    public Tokens getSplitFirstMark(Object name) {
 
-        return (Tokens) splitFirstMarks.get(name);
+        return splitFirstMarks.get(name);
     }
 
     /**
@@ -1205,7 +1207,7 @@ public class ContextImpl
     /**
      * @see org.extex.backend.documentWriter.DocumentWriterOptions#getTokensOption(java.lang.String)
      */
-    public Tokens getTokensOption(final String name) {
+    public Tokens getTokensOption(String name) {
 
         return group.getToks(name);
     }
@@ -1213,7 +1215,7 @@ public class ContextImpl
     /**
      * @see org.extex.interpreter.context.Context#getToks(java.lang.String)
      */
-    public Tokens getToks(final String name) {
+    public Tokens getToks(String name) {
 
         return group.getToks(name);
     }
@@ -1222,7 +1224,7 @@ public class ContextImpl
      * @see org.extex.scanner.stream.TokenStreamOptions#getToksOption(
      *      java.lang.String)
      */
-    public FixedTokens getToksOption(final String name) {
+    public FixedTokens getToksOption(String name) {
 
         return group.getToks(name);
     }
@@ -1230,7 +1232,7 @@ public class ContextImpl
     /**
      * @see org.extex.interpreter.context.Context#getToksOrNull(java.lang.String)
      */
-    public Tokens getToksOrNull(final String name) {
+    public Tokens getToksOrNull(String name) {
 
         return group.getToksOrNull(name);
     }
@@ -1239,9 +1241,9 @@ public class ContextImpl
      * @see org.extex.interpreter.context.ContextMark#getTopMark(
      *      java.lang.Object)
      */
-    public Tokens getTopMark(final Object name) {
+    public Tokens getTopMark(Object name) {
 
-        return (Tokens) topmarks.get(name);
+        return topmarks.get(name);
     }
 
     /**
@@ -1268,7 +1270,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#getUccode(
      *      org.extex.core.UnicodeChar)
      */
-    public UnicodeChar getUccode(final UnicodeChar lc) {
+    public UnicodeChar getUccode(UnicodeChar lc) {
 
         return group.getUccode(lc);
     }
@@ -1286,12 +1288,12 @@ public class ContextImpl
      */
     private void init() {
 
-        changeCodeObservers = new HashMap();
-        changeCountObservers = new HashMap();
-        changeDimenObservers = new HashMap();
-        changeGlueObservers = new HashMap();
-        changeToksObservers = new HashMap();
-        changeInteractionObservers = new ArrayList();
+        changeCodeObservers = new HashMap<Token, List<CodeObserver>>();
+        changeCountObservers = new HashMap<String, List<CountObserver>>();
+        changeDimenObservers = new HashMap<String, List<DimenObserver>>();
+        changeGlueObservers = new HashMap<String, List<GlueObserver>>();
+        changeToksObservers = new HashMap<String, List<TokensObserver>>();
+        changeInteractionObservers = new ArrayList<InteractionObserver>();
         groupObservers = null;
 
         LanguageObserver languageObserver = new LanguageObserver();
@@ -1327,22 +1329,20 @@ public class ContextImpl
      *      org.extex.core.Locator,
      *      org.extex.scanner.type.token.Token)
      */
-    public void openGroup(final GroupType type, final Locator locator,
-            final Token start) throws InterpreterException {
+    public void openGroup(GroupType type, Locator locator,
+            Token start) throws InterpreterException {
 
         group = groupFactory.newInstance(group, locator, start, type);
         group.setStandardTokenStream(standardTokenStream);
         if (groupObservers != null) {
-            int size = groupObservers.size();
-            for (int i = 0; i < size; i++) {
-                try {
-                    ((GroupObserver) groupObservers.get(i))
-                        .receiveOpenGroup(this);
-                } catch (InterpreterException e) {
-                    throw e;
-                } catch (Exception e) {
-                    throw new InterpreterException(e);
+            try {
+                for (GroupObserver obs : groupObservers) {
+                    obs.receiveOpenGroup(this);
                 }
+            } catch (InterpreterException e) {
+                throw e;
+            } catch (Exception e) {
+                throw new InterpreterException(e);
             }
         }
     }
@@ -1353,8 +1353,6 @@ public class ContextImpl
      *
      * @return the formerly topmost element from the conditional stack
      *
-     * @throws InterpreterException in case of an error
-     *
      * @see org.extex.interpreter.context.Context#popConditional()
      */
     public Conditional popConditional() {
@@ -1363,14 +1361,13 @@ public class ContextImpl
         if (len <= 0) {
             return null;
         }
-        Conditional cond = ((Conditional) conditionalStack.remove(len - 1));
+        Conditional cond = conditionalStack.remove(len - 1);
 
         if (conditionalObservers != null) {
-            int size = conditionalObservers.size();
-            for (int i = 0; i < size; i++) {
+
+            for (ConditionalObserver obs : conditionalObservers) {
                 try {
-                    ((ConditionalObserver) conditionalObservers.get(i))
-                        .receiveEndConditional(this, cond);
+                    obs.receiveEndConditional(this, cond);
                 } catch (Exception e) {
                     logger.log(Level.INFO, "", e);
                 }
@@ -1389,7 +1386,7 @@ public class ContextImpl
      */
     public Direction popDirection() {
 
-        return (Direction) (dirStack.isEmpty() ? null : dirStack.pop());
+        return (dirStack.isEmpty() ? null : dirStack.pop());
     }
 
     /**
@@ -1409,9 +1406,9 @@ public class ContextImpl
      *      long,
      *      boolean)
      */
-    public void pushConditional(final Locator locator,
-            final boolean isIfThenElse, final Code primitive,
-            final long branch, final boolean neg) {
+    public void pushConditional(Locator locator,
+            boolean isIfThenElse, Code primitive,
+            long branch, boolean neg) {
 
         Conditional cond = isIfThenElse
         //
@@ -1420,14 +1417,12 @@ public class ContextImpl
         conditionalStack.add(cond);
 
         if (conditionalObservers != null) {
-            int size = conditionalObservers.size();
-            for (int i = 0; i < size; i++) {
-                try {
-                    ((ConditionalObserver) conditionalObservers.get(i))
-                        .receiveStartConditional(this, cond);
-                } catch (Exception e) {
-                    logger.log(Level.INFO, "", e);
+            try {
+                for (ConditionalObserver obs : conditionalObservers) {
+                    obs.receiveStartConditional(this, cond);
                 }
+            } catch (Exception e) {
+                logger.log(Level.INFO, "", e);
             }
         }
     }
@@ -1440,7 +1435,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#pushDirection(
      *      org.extex.interpreter.context.tc.Direction)
      */
-    public void pushDirection(final Direction dir) {
+    public void pushDirection(Direction dir) {
 
         dirStack.push(dir);
     }
@@ -1470,13 +1465,12 @@ public class ContextImpl
      * @see org.extex.interpreter.context.observer.load.LoadedObservable#receiveLoad(
      *      org.extex.interpreter.TokenSource)
      */
-    public void receiveLoad(final TokenSource source)
+    public void receiveLoad(TokenSource source)
             throws InterpreterException {
 
         if (loadObservers != null) {
-            for (int i = 0; i < loadObservers.size(); i++) {
-                ((LoadedObserver) loadObservers.get(i)).receiveLoaded(this,
-                    source);
+            for (LoadedObserver obs : loadObservers) {
+                obs.receiveLoaded(this, source);
             }
         }
     }
@@ -1495,12 +1489,12 @@ public class ContextImpl
      *      org.extex.scanner.type.token.Token,
      *      org.extex.interpreter.context.observer.code.CodeObserver)
      */
-    public synchronized void registerCodeChangeObserver(final Token token,
-            final CodeObserver observer) {
+    public synchronized void registerCodeChangeObserver(Token token,
+            CodeObserver observer) {
 
-        List observerList = (List) changeCodeObservers.get(token);
+        List<CodeObserver> observerList = changeCodeObservers.get(token);
         if (null == observerList) {
-            observerList = new ArrayList();
+            observerList = new ArrayList<CodeObserver>();
             changeCodeObservers.put(token, observerList);
         }
         observerList.add(observer);
@@ -1516,10 +1510,10 @@ public class ContextImpl
      *      org.extex.interpreter.context.observer.conditional.ConditionalObserver)
      */
     public synchronized void registerConditionalObserver(
-            final ConditionalObserver observer) {
+            ConditionalObserver observer) {
 
         if (conditionalObservers == null) {
-            conditionalObservers = new ArrayList();
+            conditionalObservers = new ArrayList<ConditionalObserver>();
         }
         conditionalObservers.add(observer);
     }
@@ -1543,12 +1537,12 @@ public class ContextImpl
      *      java.lang.String,
      *      org.extex.interpreter.context.observer.count.CountObserver)
      */
-    public synchronized void registerCountObserver(final String name,
-            final CountObserver observer) {
+    public synchronized void registerCountObserver(String name,
+            CountObserver observer) {
 
-        List list = (List) changeCountObservers.get(name);
+        List<CountObserver> list = changeCountObservers.get(name);
         if (list == null) {
-            list = new ArrayList();
+            list = new ArrayList<CountObserver>();
             changeCountObservers.put(name, list);
         }
         list.add(observer);
@@ -1573,12 +1567,12 @@ public class ContextImpl
      *      java.lang.String,
      *      org.extex.interpreter.context.observer.dimen.DimenObserver)
      */
-    public synchronized void registerDimenObserver(final String name,
-            final DimenObserver observer) {
+    public synchronized void registerDimenObserver(String name,
+            DimenObserver observer) {
 
-        List list = (List) changeDimenObservers.get(name);
+        List<DimenObserver> list = changeDimenObservers.get(name);
         if (list == null) {
-            list = new ArrayList();
+            list = new ArrayList<DimenObserver>();
             changeDimenObservers.put(name, list);
         }
         list.add(observer);
@@ -1603,12 +1597,12 @@ public class ContextImpl
      *      java.lang.String,
      *      org.extex.interpreter.context.observer.glue.GlueObserver)
      */
-    public synchronized void registerGlueObserver(final String name,
-            final GlueObserver observer) {
+    public synchronized void registerGlueObserver(String name,
+            GlueObserver observer) {
 
-        List list = (List) changeGlueObservers.get(name);
+        List<GlueObserver> list = changeGlueObservers.get(name);
         if (list == null) {
-            list = new ArrayList();
+            list = new ArrayList<GlueObserver>();
             changeGlueObservers.put(name, list);
         }
         list.add(observer);
@@ -1624,10 +1618,10 @@ public class ContextImpl
      * @see org.extex.interpreter.context.observer.group.GroupObservable#registerGroupObserver(
      *      org.extex.interpreter.context.observer.group.GroupObserver)
      */
-    public synchronized void registerGroupObserver(final GroupObserver observer) {
+    public synchronized void registerGroupObserver(GroupObserver observer) {
 
         if (groupObservers == null) {
-            groupObservers = new ArrayList();
+            groupObservers = new ArrayList<GroupObserver>();
         }
         groupObservers.add(observer);
     }
@@ -1650,7 +1644,7 @@ public class ContextImpl
      *      org.extex.interpreter.context.observer.interaction.InteractionObserver)
      */
     public synchronized void registerInteractionObserver(
-            final InteractionObserver observer) {
+            InteractionObserver observer) {
 
         changeInteractionObservers.add(observer);
     }
@@ -1664,10 +1658,10 @@ public class ContextImpl
      * @see org.extex.interpreter.context.observer.load.LoadedObservable#registerLoadObserver(
      *      org.extex.interpreter.context.observer.load.LoadedObserver)
      */
-    public void registerLoadObserver(final LoadedObserver observer) {
+    public void registerLoadObserver(LoadedObserver observer) {
 
         if (loadObservers == null) {
-            loadObservers = new ArrayList();
+            loadObservers = new ArrayList<LoadedObserver>();
         }
         loadObservers.add(observer);
     }
@@ -1686,12 +1680,12 @@ public class ContextImpl
      *      java.lang.String,
      *      org.extex.interpreter.context.observer.tokens.TokensObserver)
      */
-    public synchronized void registerTokensObserver(final String name,
-            final TokensObserver observer) {
+    public synchronized void registerTokensObserver(String name,
+            TokensObserver observer) {
 
-        List list = (List) changeToksObservers.get(name);
+        List<TokensObserver> list = changeToksObservers.get(name);
         if (list == null) {
-            list = new ArrayList();
+            list = new ArrayList<TokensObserver>();
             changeToksObservers.put(name, list);
         }
         list.add(observer);
@@ -1707,14 +1701,12 @@ public class ContextImpl
      *
      * @throws InterpreterException in case of a problem in an observer
      */
-    private void runCodeObservers(final CodeToken t, final Code code,
-            final List observerList) throws InterpreterException {
+    private void runCodeObservers(CodeToken t, Code code,
+            List<CodeObserver> observerList) throws InterpreterException {
 
         try {
-            int len = observerList.size();
-            for (int i = 0; i < len; i++) {
-                ((CodeObserver) observerList.get(i)).receiveCodeChange(this, t,
-                    code);
+            for (CodeObserver obs : observerList) {
+                obs.receiveCodeChange(this, t, code);
             }
         } catch (InterpreterException e) {
             throw e;
@@ -1732,14 +1724,12 @@ public class ContextImpl
      *
      * @throws InterpreterException in case of a problem in an observer
      */
-    private void runCountObservers(final String name, final Count count,
-            final List observerList) throws InterpreterException {
+    private void runCountObservers(String name, Count count,
+            List<CountObserver> observerList) throws InterpreterException {
 
         try {
-            int len = observerList.size();
-            for (int i = 0; i < len; i++) {
-                ((CountObserver) observerList.get(i)).receiveCountChange(this,
-                    name, count);
+            for (CountObserver obs : observerList) {
+                obs.receiveCountChange(this, name, count);
             }
         } catch (InterpreterException e) {
             throw e;
@@ -1757,14 +1747,12 @@ public class ContextImpl
      *
      * @throws InterpreterException in case of a problem in an observer
      */
-    private void runDimenObservers(final String name, final Dimen dimen,
-            final List observerList) throws InterpreterException {
+    private void runDimenObservers(String name, Dimen dimen,
+            List<DimenObserver> observerList) throws InterpreterException {
 
         try {
-            int len = observerList.size();
-            for (int i = 0; i < len; i++) {
-                ((DimenObserver) observerList.get(i)).receiveDimenChange(this,
-                    name, dimen);
+            for (DimenObserver obs : observerList) {
+                obs.receiveDimenChange(this, name, dimen);
             }
         } catch (InterpreterException e) {
             throw e;
@@ -1782,14 +1770,12 @@ public class ContextImpl
      *
      * @throws InterpreterException in case of a problem in an observer
      */
-    private void runGlueObservers(final String name, final Glue glue,
-            final List observerList) throws InterpreterException {
+    private void runGlueObservers(String name, Glue glue,
+            List<GlueObserver> observerList) throws InterpreterException {
 
         try {
-            int len = observerList.size();
-            for (int i = 0; i < len; i++) {
-                ((GlueObserver) observerList.get(i)).receiveGlueChange(this,
-                    name, glue);
+            for (GlueObserver obs : observerList) {
+                obs.receiveGlueChange(this, name, glue);
             }
         } catch (InterpreterException e) {
             throw e;
@@ -1807,14 +1793,13 @@ public class ContextImpl
      *
      * @throws InterpreterException in case of a problem in an observer
      */
-    private void runTokensObservers(final String name, final Tokens toks,
-            final List observerList) throws InterpreterException {
+    private void runTokensObservers(String name, Tokens toks,
+            List<TokensObserver> observerList)
+            throws InterpreterException {
 
         try {
-            int len = observerList.size();
-            for (int i = 0; i < len; i++) {
-                ((TokensObserver) observerList.get(i)).receiveTokensChange(
-                    this, name, toks);
+            for (TokensObserver obs : observerList) {
+                obs.receiveTokensChange(this, name, toks);
             }
         } catch (InterpreterException e) {
             throw e;
@@ -1836,7 +1821,7 @@ public class ContextImpl
      *      org.extex.interpreter.context.Color,
      *      boolean)
      */
-    public void set(final Color color, final boolean global)
+    public void set(Color color, boolean global)
             throws ConfigurationException {
 
         group.setTypesettingContext(typesettingContextFactory.newInstance(group
@@ -1856,7 +1841,7 @@ public class ContextImpl
      *      org.extex.interpreter.context.tc.Direction,
      *      boolean)
      */
-    public void set(final Direction direction, final boolean global)
+    public void set(Direction direction, boolean global)
             throws ConfigurationException {
 
         group.setTypesettingContext(typesettingContextFactory.newInstance(group
@@ -1876,7 +1861,7 @@ public class ContextImpl
      *      org.extex.interpreter.type.font.Font,
      *      boolean)
      */
-    public void set(final Font font, final boolean global)
+    public void set(Font font, boolean global)
             throws ConfigurationException {
 
         group.setTypesettingContext(typesettingContextFactory.newInstance(group
@@ -1896,7 +1881,7 @@ public class ContextImpl
      *      org.extex.language.Language,
      *      boolean)
      */
-    public void set(final Language language, final boolean global)
+    public void set(Language language, boolean global)
             throws ConfigurationException {
 
         group.setTypesettingContext(typesettingContextFactory.newInstance(group
@@ -1918,8 +1903,8 @@ public class ContextImpl
      *      java.lang.Object,
      *      boolean)
      */
-    public void set(final Object extension, final Object key,
-            final Object value, final boolean global) {
+    public void set(Object extension, Object key,
+            Object value, boolean global) {
 
         group.set(extension, key, value, global);
     }
@@ -1931,7 +1916,7 @@ public class ContextImpl
      * @param global if <code>true</code> then the new value is set in all
      *            groups, otherwise only in the current group.
      */
-    public void set(final TypesettingContext context, final boolean global) {
+    public void set(TypesettingContext context, boolean global) {
 
         group.setTypesettingContext(context, global);
     }
@@ -1944,7 +1929,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#setAfterassignment(
      *      org.extex.scanner.type.token.Token)
      */
-    public void setAfterassignment(final Token token) {
+    public void setAfterassignment(Token token) {
 
         afterassignment = token;
     }
@@ -1965,7 +1950,7 @@ public class ContextImpl
      *      java.lang.String,
      *      org.extex.interpreter.type.box.Box, boolean)
      */
-    public void setBox(final String name, final Box value, final boolean global) {
+    public void setBox(String name, Box value, boolean global) {
 
         group.setBox(name, value, global);
     }
@@ -1978,14 +1963,12 @@ public class ContextImpl
      * @param global the indicator for the scope; <code>true</code> means all
      *            groups; otherwise the current group is affected only
      *
-     * @throws HelpingException in case of an error
-     *
      * @see org.extex.interpreter.context.Context#setCatcode(
      *      org.extex.core.UnicodeChar,
      *      org.extex.scanner.type.Catcode, boolean)
      */
-    public void setCatcode(final UnicodeChar c, final Catcode catcode,
-            final boolean global) {
+    public void setCatcode(UnicodeChar c, Catcode catcode,
+            boolean global) {
 
         group.setCatcode(c, catcode, global);
     }
@@ -2008,16 +1991,16 @@ public class ContextImpl
      *      org.extex.scanner.type.token.CodeToken,
      *      org.extex.interpreter.type.Code, boolean)
      */
-    public void setCode(final CodeToken t, final Code code, final boolean global)
+    public void setCode(CodeToken t, Code code, boolean global)
             throws InterpreterException {
 
         group.setCode(t, code, global);
 
-        List observerList = (List) changeCodeObservers.get(t);
+        List<CodeObserver> observerList = changeCodeObservers.get(t);
         if (null != observerList) {
             runCodeObservers(t, code, observerList);
         }
-        observerList = (List) changeCodeObservers.get(null);
+        observerList = changeCodeObservers.get(null);
         if (null != observerList) {
             runCodeObservers(t, code, observerList);
         }
@@ -2042,17 +2025,17 @@ public class ContextImpl
      *      java.lang.String,
      *      long, boolean)
      */
-    public void setCount(final String name, final long value,
-            final boolean global) throws InterpreterException {
+    public void setCount(String name, long value,
+            boolean global) throws InterpreterException {
 
         Count count = new Count(value);
         group.setCount(name, count, global);
 
-        List observerList = (List) changeCountObservers.get(name);
+        List<CountObserver> observerList = changeCountObservers.get(name);
         if (null != observerList) {
             runCountObservers(name, count, observerList);
         }
-        observerList = (List) changeCountObservers.get(null);
+        observerList = changeCountObservers.get(null);
         if (null != observerList) {
             runCountObservers(name, count, observerList);
         }
@@ -2068,7 +2051,7 @@ public class ContextImpl
      *      java.lang.String,
      *      long)
      */
-    public void setCountOption(final String name, final long value)
+    public void setCountOption(String name, long value)
             throws GeneralException {
 
         setCount(name, value, false);
@@ -2087,8 +2070,8 @@ public class ContextImpl
      *      org.extex.interpreter.type.math.MathDelimiter,
      *      boolean)
      */
-    public void setDelcode(final UnicodeChar c, final MathDelimiter delimiter,
-            final boolean global) {
+    public void setDelcode(UnicodeChar c, MathDelimiter delimiter,
+            boolean global) {
 
         group.setDelcode(c, delimiter, global);
     }
@@ -2112,16 +2095,16 @@ public class ContextImpl
      *      org.extex.core.dimen.Dimen,
      *      boolean)
      */
-    public void setDimen(final String name, final Dimen value,
-            final boolean global) throws InterpreterException {
+    public void setDimen(String name, Dimen value,
+            boolean global) throws InterpreterException {
 
         group.setDimen(name, value, global);
 
-        List observerList = (List) changeDimenObservers.get(name);
+        List<DimenObserver> observerList = changeDimenObservers.get(name);
         if (null != observerList) {
             runDimenObservers(name, value, observerList);
         }
-        observerList = (List) changeDimenObservers.get(null);
+        observerList = changeDimenObservers.get(null);
         if (null != observerList) {
             runDimenObservers(name, value, observerList);
         }
@@ -2145,8 +2128,8 @@ public class ContextImpl
      *      java.lang.String,
      *      long, boolean)
      */
-    public void setDimen(final String name, final long value,
-            final boolean global) throws InterpreterException {
+    public void setDimen(String name, long value,
+            boolean global) throws InterpreterException {
 
         setDimen(name, new Dimen(value), global);
     }
@@ -2164,7 +2147,7 @@ public class ContextImpl
      *      org.extex.interpreter.type.font.Font,
      *      boolean)
      */
-    public void setFont(final String name, final Font font, final boolean global) {
+    public void setFont(String name, Font font, boolean global) {
 
         group.setFont(name, font, global);
     }
@@ -2177,7 +2160,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#setFontFactory(
      *      org.extex.font.CoreFontFactory)
      */
-    public void setFontFactory(final CoreFontFactory factory) {
+    public void setFontFactory(CoreFontFactory factory) {
 
         this.fontFactory = factory;
     }
@@ -2196,16 +2179,16 @@ public class ContextImpl
      *      java.lang.String,
      *      org.extex.core.glue.Glue, boolean)
      */
-    public void setGlue(final String name, final Glue value,
-            final boolean global) throws InterpreterException {
+    public void setGlue(String name, Glue value,
+            boolean global) throws InterpreterException {
 
         group.setSkip(name, value, global);
 
-        List observerList = (List) changeGlueObservers.get(name);
+        List<GlueObserver> observerList = changeGlueObservers.get(name);
         if (null != observerList) {
             runGlueObservers(name, value, observerList);
         }
-        observerList = (List) changeGlueObservers.get(null);
+        observerList = changeGlueObservers.get(null);
         if (null != observerList) {
             runGlueObservers(name, value, observerList);
         }
@@ -2219,7 +2202,7 @@ public class ContextImpl
      *
      * @see org.extex.interpreter.context.Context#setId(java.lang.String)
      */
-    public void setId(final String theId) {
+    public void setId(String theId) {
 
         this.id = theId;
     }
@@ -2240,8 +2223,8 @@ public class ContextImpl
      *      java.lang.String,
      *      org.extex.interpreter.type.file.InFile, boolean)
      */
-    public void setInFile(final String name, final InFile file,
-            final boolean global) {
+    public void setInFile(String name, InFile file,
+            boolean global) {
 
         group.setInFile(name, file, global);
     }
@@ -2257,15 +2240,14 @@ public class ContextImpl
      * @see org.extex.interpreter.context.ContextInteraction#setInteraction(
      *      org.extex.interpreter.interaction.Interaction)
      */
-    public void setInteraction(final Interaction interaction)
+    public void setInteraction(Interaction interaction)
             throws InterpreterException {
 
         if (this.interaction != interaction) {
             this.interaction = interaction;
             try {
-                for (int i = 0; i < changeInteractionObservers.size(); i++) {
-                    ((InteractionObserver) changeInteractionObservers.get(i))
-                        .receiveInteractionChange(this, interaction);
+                for (InteractionObserver obs : changeInteractionObservers) {
+                    obs.receiveInteractionChange(this, interaction);
                 }
             } catch (Exception e) {
                 throw new InterpreterException(e);
@@ -2281,7 +2263,7 @@ public class ContextImpl
      * @see org.extex.language.LanguageManagerCarrier#setLanguageManager(
      *      org.extex.language.LanguageManager)
      */
-    public void setLanguageManager(final LanguageManager manager)
+    public void setLanguageManager(LanguageManager manager)
             throws ConfigurationException {
 
         if (languageManager == null) {
@@ -2305,8 +2287,8 @@ public class ContextImpl
      *      org.extex.core.UnicodeChar,
      *      boolean)
      */
-    public void setLccode(final UnicodeChar uc, final UnicodeChar lc,
-            final boolean global) {
+    public void setLccode(UnicodeChar uc, UnicodeChar lc,
+            boolean global) {
 
         group.setLccode(uc, lc, global);
     }
@@ -2321,7 +2303,7 @@ public class ContextImpl
      *
      * @see org.extex.interpreter.context.Context#setMagnification(long, boolean)
      */
-    public void setMagnification(final long mag, final boolean lock)
+    public void setMagnification(long mag, boolean lock)
             throws HelpingException {
 
         if (magnificationLock && this.magnification != mag) {
@@ -2350,7 +2332,7 @@ public class ContextImpl
      *      java.lang.Object,
      *      org.extex.scanner.type.tokens.Tokens)
      */
-    public void setMark(final Object name, final Tokens mark) {
+    public void setMark(Object name, Tokens mark) {
 
         if (firstmarks.get(name) == null) {
             firstmarks.put(name, mark);
@@ -2370,8 +2352,8 @@ public class ContextImpl
      *      org.extex.core.UnicodeChar,
      *      MathCode, boolean)
      */
-    public void setMathcode(final UnicodeChar uc, final MathCode code,
-            final boolean global) {
+    public void setMathcode(UnicodeChar uc, MathCode code,
+            boolean global) {
 
         group.setMathcode(uc, code, global);
     }
@@ -2388,8 +2370,8 @@ public class ContextImpl
      *      java.lang.String,
      *      org.extex.core.muskip.Muskip, boolean)
      */
-    public void setMuskip(final String name, final Muskip value,
-            final boolean global) {
+    public void setMuskip(String name, Muskip value,
+            boolean global) {
 
         group.setMuskip(name, value, global);
     }
@@ -2404,7 +2386,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#setNamespace(
      *      java.lang.String, boolean)
      */
-    public void setNamespace(final String namespace, final boolean global) {
+    public void setNamespace(String namespace, boolean global) {
 
         group.setNamespace(namespace, global);
     }
@@ -2421,8 +2403,8 @@ public class ContextImpl
      *      java.lang.String,
      *      org.extex.interpreter.type.file.OutFile, boolean)
      */
-    public void setOutFile(final String name, final OutFile file,
-            final boolean global) {
+    public void setOutFile(String name, OutFile file,
+            boolean global) {
 
         group.setOutFile(name, file, global);
     }
@@ -2435,7 +2417,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#setParshape(
      *      org.extex.typesetter.paragraphBuilder.ParagraphShape)
      */
-    public void setParshape(final ParagraphShape shape) {
+    public void setParshape(ParagraphShape shape) {
 
         this.parshape = shape;
     }
@@ -2454,8 +2436,8 @@ public class ContextImpl
      *      org.extex.core.UnicodeChar,
      *      org.extex.core.count.Count, boolean)
      */
-    public void setSfcode(final UnicodeChar uc, final Count code,
-            final boolean global) {
+    public void setSfcode(UnicodeChar uc, Count code,
+            boolean global) {
 
         group.setSfcode(uc, code, global);
     }
@@ -2471,7 +2453,7 @@ public class ContextImpl
      *      java.lang.Object,
      *      org.extex.scanner.type.tokens.Tokens)
      */
-    public void setSplitMark(final Object name, final Tokens mark) {
+    public void setSplitMark(Object name, Tokens mark) {
 
         if (splitFirstMarks.get(name) == null) {
             splitFirstMarks.put(name, mark);
@@ -2487,7 +2469,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#setStandardTokenStream(
      *      org.extex.scanner.TokenStream)
      */
-    public void setStandardTokenStream(final TokenStream standardTokenStream) {
+    public void setStandardTokenStream(TokenStream standardTokenStream) {
 
         this.standardTokenStream = standardTokenStream;
         group.setStandardTokenStream(standardTokenStream);
@@ -2501,7 +2483,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#setTokenFactory(
      *      org.extex.scanner.type.token.TokenFactory)
      */
-    public void setTokenFactory(final TokenFactory factory) {
+    public void setTokenFactory(TokenFactory factory) {
 
         tokenFactory = factory;
     }
@@ -2523,16 +2505,16 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#setToks(java.lang.String,
      *      org.extex.scanner.type.tokens.Tokens, boolean)
      */
-    public void setToks(final String name, final Tokens toks,
-            final boolean global) throws InterpreterException {
+    public void setToks(String name, Tokens toks,
+            boolean global) throws InterpreterException {
 
         group.setToks(name, toks, global);
 
-        List observerList = (List) changeToksObservers.get(name);
+        List<TokensObserver> observerList = changeToksObservers.get(name);
         if (null != observerList) {
             runTokensObservers(name, toks, observerList);
         }
-        observerList = (List) changeToksObservers.get(null);
+        observerList = changeToksObservers.get(null);
         if (null != observerList) {
             runTokensObservers(name, toks, observerList);
         }
@@ -2552,8 +2534,8 @@ public class ContextImpl
      *      org.extex.core.UnicodeChar,
      *      boolean)
      */
-    public void setUccode(final UnicodeChar lc, final UnicodeChar uc,
-            final boolean global) {
+    public void setUccode(UnicodeChar lc, UnicodeChar uc,
+            boolean global) {
 
         group.setUccode(lc, uc, global);
     }
@@ -2580,7 +2562,7 @@ public class ContextImpl
      *
      * @see org.extex.interpreter.context.Context#unitIterator()
      */
-    public Iterator unitIterator() {
+    public Iterator<UnitInfo> unitIterator() {
 
         return units.iterator();
     }
@@ -2599,14 +2581,13 @@ public class ContextImpl
      *      org.extex.scanner.type.token.Token,
      *      org.extex.interpreter.context.observer.code.CodeObserver)
      */
-    public synchronized void unregisterCodeChangeObserver(final Token name,
-            final CodeObserver observer) {
+    public synchronized void unregisterCodeChangeObserver(Token name,
+            CodeObserver observer) {
 
-        List observerList = (List) changeCodeObservers.get(name);
-        if (null == observerList) {
-            return;
+        List<CodeObserver> observerList = changeCodeObservers.get(name);
+        if (null != observerList) {
+            observerList.remove(observer);
         }
-        observerList.remove(observer);
     }
 
     /**
@@ -2619,11 +2600,13 @@ public class ContextImpl
      *      org.extex.interpreter.context.observer.conditional.ConditionalObserver)
      */
     public synchronized void unregisterConditionalObserver(
-            final ConditionalObserver observer) {
+            ConditionalObserver observer) {
 
-        conditionalObservers.remove(observer);
-        if (conditionalObservers.size() == 0) {
-            conditionalObservers = null;
+        if (conditionalObservers != null) {
+            conditionalObservers.remove(observer);
+            if (conditionalObservers.size() == 0) {
+                conditionalObservers = null;
+            }
         }
     }
 
@@ -2650,10 +2633,10 @@ public class ContextImpl
      *      java.lang.String,
      *      org.extex.interpreter.context.observer.count.CountObserver)
      */
-    public synchronized void unregisterCountObserver(final String name,
-            final CountObserver observer) {
+    public synchronized void unregisterCountObserver(String name,
+            CountObserver observer) {
 
-        List list = (List) changeCountObservers.get(name);
+        List list = changeCountObservers.get(name);
         if (list != null) {
             while (list.remove(observer)) {
                 // just removing the observer is enough
@@ -2684,10 +2667,10 @@ public class ContextImpl
      *      java.lang.String,
      *      org.extex.interpreter.context.observer.dimen.DimenObserver)
      */
-    public synchronized void unregisterDimenObserver(final String name,
-            final DimenObserver observer) {
+    public synchronized void unregisterDimenObserver(String name,
+            DimenObserver observer) {
 
-        List list = (List) changeDimenObservers.get(name);
+        List list = changeDimenObservers.get(name);
         if (list != null) {
             while (list.remove(observer)) {
                 // just removing the observer is enough
@@ -2718,10 +2701,10 @@ public class ContextImpl
      *      java.lang.String,
      *      org.extex.interpreter.context.observer.glue.GlueObserver)
      */
-    public synchronized void unregisterGlueObserver(final String name,
-            final GlueObserver observer) {
+    public synchronized void unregisterGlueObserver(String name,
+            GlueObserver observer) {
 
-        List list = (List) changeGlueObservers.get(name);
+        List<GlueObserver> list = changeGlueObservers.get(name);
         if (list != null) {
             while (list.remove(observer)) {
                 // just removing the observer is enough
@@ -2740,11 +2723,13 @@ public class ContextImpl
      *      org.extex.interpreter.context.observer.group.GroupObserver)
      */
     public synchronized void unregisterGroupObserver(
-            final GroupObserver observer) {
+            GroupObserver observer) {
 
-        groupObservers.remove(observer);
-        if (groupObservers.size() == 0) {
-            groupObservers = null;
+        if (groupObservers != null) {
+            groupObservers.remove(observer);
+            if (groupObservers.size() == 0) {
+                groupObservers = null;
+            }
         }
     }
 
@@ -2760,7 +2745,7 @@ public class ContextImpl
      *      org.extex.interpreter.context.observer.interaction.InteractionObserver)
      */
     public synchronized void unregisterInteractionObserver(
-            final InteractionObserver observer) {
+            InteractionObserver observer) {
 
         while (changeInteractionObservers.remove(observer)) {
             // just removing the observer is enough
@@ -2776,7 +2761,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.observer.load.LoadedObservable#unregisterLoadObserver(
      *      org.extex.interpreter.context.observer.load.LoadedObserver)
      */
-    public void unregisterLoadObserver(final LoadedObserver observer) {
+    public void unregisterLoadObserver(LoadedObserver observer) {
 
         if (loadObservers != null) {
             loadObservers.remove(observer);
@@ -2800,10 +2785,10 @@ public class ContextImpl
      *      java.lang.String,
      *      org.extex.interpreter.context.observer.tokens.TokensObserver)
      */
-    public synchronized void unregisterTokensChangeObserver(final String name,
-            final TokensObserver observer) {
+    public synchronized void unregisterTokensChangeObserver(String name,
+            TokensObserver observer) {
 
-        List list = (List) changeToksObservers.get(name);
+        List<TokensObserver> list = changeToksObservers.get(name);
         if (list != null) {
             while (list.remove(observer)) {
                 // just removing the observer is enough

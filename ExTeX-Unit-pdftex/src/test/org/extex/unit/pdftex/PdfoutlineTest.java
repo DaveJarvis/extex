@@ -34,7 +34,7 @@ public class PdfoutlineTest extends NoFlagsButProtectedPrimitiveTester {
      *
      * @param arg the name
      */
-    public PdfoutlineTest(final String arg) {
+    public PdfoutlineTest(String arg) {
 
         super(arg, "pdfoutline", " thread name {a}{}", "");
         setConfig("pdftex-test");

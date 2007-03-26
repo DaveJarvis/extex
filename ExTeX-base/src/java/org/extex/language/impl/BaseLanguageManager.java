@@ -27,6 +27,7 @@ import java.util.Map;
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.Registrar;
 import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.language.Language;
@@ -67,7 +68,7 @@ public class BaseLanguageManager extends AbstractFactory
      * The field <tt>tables</tt> contains the mapping from index to
      * hyphenation table.
      */
-    private Map tables = new HashMap();
+    private Map<String, Language> tables = new HashMap<String, Language>();
 
     /**
      * Creates a new object.
@@ -87,7 +88,8 @@ public class BaseLanguageManager extends AbstractFactory
      *
      * @throws ConfigurationException in case of a configuration error
      */
-    protected Language createLanguage(final String name) {
+    protected Language createLanguage(String name)
+            throws ConfigurationException {
 
         ModifiableLanguage lang;
         Configuration cfg = selectConfiguration(name);
@@ -111,33 +113,13 @@ public class BaseLanguageManager extends AbstractFactory
     }
 
     /**
-     * Return the <code>Language</code> for a given name.
-     * <p>
-     *  If there is no language present with the given name then
-     *  a new one is created.
-     * </p>
-     * <p>
-     *  The index in <logo>TeX</logo> is the language number as
-     *  <code>String</code>. This implementation does not have this restriction.
-     *  The name can be any string.
-     * </p>
-     * <p>
-     *  The proposal is to use a natural number for backward compatibility and
-     *  ISO language codes otherwise.
-     * </p>
+     * {@inheritDoc}
      *
-     * @param name the name for which the language is requested
-     *
-     * @return the language for the given name
-     *
-     * @throws ConfigurationException in case of an error in the configuration
-     *
-     * @see org.extex.language.LanguageManager#getLanguage(
-     *      java.lang.String)
+     * @see org.extex.language.LanguageManager#getLanguage(java.lang.String)
      */
-    public Language getLanguage(final String name) {
+    public Language getLanguage(String name) {
 
-        Language table = (Language) tables.get(name);
+        Language table = tables.get(name);
         if (table == null) {
             table = createLanguage(name);
             tables.put(name, table);
@@ -160,7 +142,7 @@ public class BaseLanguageManager extends AbstractFactory
      *
      * @return the tables map
      */
-    protected Map getTables() {
+    protected Map<String, Language> getTables() {
 
         return tables;
     }

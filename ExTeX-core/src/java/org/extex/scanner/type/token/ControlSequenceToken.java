@@ -73,8 +73,8 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      *  escape character token
      * @param namespace the name space
      */
-    protected ControlSequenceToken(final UnicodeChar esc, final String name,
-            final String namespace) {
+    protected ControlSequenceToken(UnicodeChar esc, String name,
+            String namespace) {
 
         super(esc);
         this.namespace = namespace;
@@ -109,7 +109,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * @see org.extex.scanner.type.token.CodeToken#cloneInNamespace(
      *      java.lang.String)
      */
-    public CodeToken cloneInNamespace(final String theNamespace) {
+    public CodeToken cloneInNamespace(String theNamespace) {
 
         if (theNamespace == null || namespace.equals(theNamespace)) {
             return this;
@@ -130,7 +130,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * @see org.extex.scanner.type.token.AbstractToken#equals(
      *      org.extex.scanner.type.Catcode, char)
      */
-    public boolean equals(final Catcode cc, final char c) {
+    public boolean equals(Catcode cc, char c) {
 
         return getCatcode() == cc && name.length() == 1 && name.charAt(0) == c;
     }
@@ -148,7 +148,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * @see org.extex.scanner.type.token.Token#equals(
      *      org.extex.scanner.type.Catcode, java.lang.String)
      */
-    public boolean equals(final Catcode cc, final String s) {
+    public boolean equals(Catcode cc, String s) {
 
         return getCatcode() == cc && name.equals(s);
     }
@@ -163,7 +163,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      *
      * @see org.extex.scanner.type.token.AbstractToken#equals(char)
      */
-    public boolean equals(final char c) {
+    public boolean equals(char c) {
 
         return name.length() == 1 && name.charAt(0) == c;
     }
@@ -177,7 +177,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
-    public boolean equals(final Object other) {
+    public boolean equals(Object other) {
 
         if (other instanceof ControlSequenceToken) {
             ControlSequenceToken othertoken = (ControlSequenceToken) other;
@@ -256,7 +256,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      *
      * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
      */
-    public void toString(final StringBuffer sb) {
+    public void toString(StringBuffer sb) {
 
         sb.append(getLocalizer().format("ControlSequenceToken.Text",
             getChar().toString(), name, namespace));
@@ -290,7 +290,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * @see org.extex.scanner.type.token.Token#toText(
      *      org.extex.core.UnicodeChar)
      */
-    public String toText(final UnicodeChar esc) {
+    public String toText(UnicodeChar esc) {
 
         if (esc != null) {
             return esc.toString() + name;
@@ -312,7 +312,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      *      org.extex.scanner.type.token.TokenVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final TokenVisitor visitor, final Object arg1)
+    public Object visit(TokenVisitor visitor, Object arg1)
             throws Exception {
 
         return visitor.visitEscape(this, arg1);

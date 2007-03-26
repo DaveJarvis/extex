@@ -42,7 +42,7 @@ public class CorruptFontException extends FontException {
      * @param key the font key.
      * @param msg the message.
      */
-    public CorruptFontException(final FontKey key, final String msg) {
+    public CorruptFontException(FontKey key, String msg) {
 
         super(msg);
         this.key = key;

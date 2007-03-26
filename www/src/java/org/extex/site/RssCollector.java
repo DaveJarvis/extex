@@ -20,12 +20,8 @@
 package org.extex.site;
 
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.io.Reader;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
@@ -48,7 +44,7 @@ public class RssCollector extends Task {
      *
      * @param args
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         String in = "overview-summary.html";
         String out = null;
@@ -87,7 +83,7 @@ public class RssCollector extends Task {
      *
      * @throws IOException in case of an error
      */
-    private static void process(final String in, final String out)
+    private static void process(String in, String out)
             throws IOException {
 
         // TODO ???

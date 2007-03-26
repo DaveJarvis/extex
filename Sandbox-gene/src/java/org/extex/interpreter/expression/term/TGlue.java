@@ -55,36 +55,42 @@ public class TGlue extends WideGlue implements EType {
      *
      * @param val the value
      */
-    public TGlue(final Glue val) {
+    public TGlue(Glue val) {
 
         super();
         value.set(val);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#add(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType add(final EType t) {
+    public EType add(EType t) {
 
         // TODO gene: add unimplemented
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#and(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType and(final EType t) throws UnsupportedException {
+    public EType and(EType t) throws UnsupportedException {
 
         throw new UnsupportedException("&&", toString());
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#divide(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType divide(final EType t) throws CastException {
+    public EType divide(EType t) throws CastException {
 
         if (t instanceof TCount) {
             long x = ((TCount) t).getValue();
@@ -106,10 +112,12 @@ public class TGlue extends WideGlue implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#eq(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean eq(final EType t) throws CastException {
+    public TBoolean eq(EType t) throws CastException {
 
         if (t instanceof TGlue) {
             return new TBoolean(value.eq(((TGlue) t).value));
@@ -118,10 +126,12 @@ public class TGlue extends WideGlue implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#ge(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean ge(final EType t) throws CastException {
+    public TBoolean ge(EType t) throws CastException {
 
         if (!(t instanceof TGlue)) {
             throw new CastException();
@@ -131,10 +141,12 @@ public class TGlue extends WideGlue implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#gt(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean gt(final EType t) throws CastException {
+    public TBoolean gt(EType t) throws CastException {
 
         if (!(t instanceof TGlue)) {
             throw new CastException();
@@ -144,10 +156,12 @@ public class TGlue extends WideGlue implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#le(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean le(final EType t) throws CastException {
+    public TBoolean le(EType t) throws CastException {
 
         if (!(t instanceof TGlue)) {
             throw new CastException();
@@ -157,10 +171,12 @@ public class TGlue extends WideGlue implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#lt(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean lt(final EType t) throws CastException {
+    public TBoolean lt(EType t) throws CastException {
 
         if (t instanceof TGlue) {
             Glue x = ((TGlue) t).value;
@@ -171,20 +187,24 @@ public class TGlue extends WideGlue implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#multiply(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType multiply(final EType t) {
+    public EType multiply(EType t) {
 
         // TODO gene: multiply unimplemented
         return null;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#ne(
      *      org.extex.interpreter.expression.EType)
      */
-    public TBoolean ne(final EType t) throws CastException {
+    public TBoolean ne(EType t) throws CastException {
 
         if (t instanceof TGlue) {
             return new TBoolean(value.ne(((TGlue) t).value));
@@ -194,6 +214,8 @@ public class TGlue extends WideGlue implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#negate()
      */
     public EType negate() {
@@ -203,6 +225,8 @@ public class TGlue extends WideGlue implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#not()
      */
     public EType not() throws UnsupportedException {
@@ -211,19 +235,23 @@ public class TGlue extends WideGlue implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#or(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType or(final EType t) throws UnsupportedException {
+    public EType or(EType t) throws UnsupportedException {
 
         throw new UnsupportedException("||", toString());
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#set(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType set(final EType t) throws CastException {
+    public EType set(EType t) throws CastException {
 
         if (t instanceof TGlue) {
             value.set(((TGlue) t).value);
@@ -233,10 +261,12 @@ public class TGlue extends WideGlue implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.expression.EType#subtract(
      *      org.extex.interpreter.expression.EType)
      */
-    public EType subtract(final EType t) throws CastException {
+    public EType subtract(EType t) throws CastException {
 
         if (t instanceof TGlue) {
             value.subtract(((TGlue) t).value);
@@ -247,6 +277,8 @@ public class TGlue extends WideGlue implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {

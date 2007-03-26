@@ -33,7 +33,7 @@ public class OdelcodeTest extends NoFlagsButGlobalPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(OdelcodeTest.class);
     }
@@ -43,7 +43,7 @@ public class OdelcodeTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public OdelcodeTest(final String arg) {
+    public OdelcodeTest(String arg) {
 
         super(arg, "odelcode", "23 32");
         setConfig("omega-test");

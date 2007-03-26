@@ -33,7 +33,7 @@ public class HoldinginsertsTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(HoldinginsertsTest.class);
     }
@@ -43,7 +43,7 @@ public class HoldinginsertsTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public HoldinginsertsTest(final String arg) {
+    public HoldinginsertsTest(String arg) {
 
         super(arg, "holdinginserts", "", "0");
     }

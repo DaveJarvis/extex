@@ -92,7 +92,7 @@ public class Def extends AbstractAssignment {
      *
      * @param name the name for debugging
      */
-    public Def(final String name) {
+    public Def(String name) {
 
         super(name);
     }
@@ -115,8 +115,8 @@ public class Def extends AbstractAssignment {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         CodeToken cs = source.getControlSequence(context, typesetter);
@@ -151,8 +151,8 @@ public class Def extends AbstractAssignment {
      *
      * @throws InterpreterException in case of an error
      */
-    protected MacroPattern getPattern(final Context context,
-            final TokenSource source) throws InterpreterException {
+    protected MacroPattern getPattern(Context context,
+            TokenSource source) throws InterpreterException {
 
         MacroPattern pattern = new MacroPattern();
         int no = 1;

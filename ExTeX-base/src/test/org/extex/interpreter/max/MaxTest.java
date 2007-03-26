@@ -42,8 +42,8 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    private void tryFlag(final String prefix, final String tag,
-            final Catcode catcode, final String longName) throws Exception {
+    private void tryFlag(String prefix, String tag,
+            Catcode catcode, String longName) throws Exception {
 
         assertFailure(//--- input code ---
                 "\\catcode`\\" + tag + "=" + catcode.getCode() + " \\" + prefix
@@ -58,7 +58,7 @@ public class MaxTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public MaxTest(final String arg) {
+    public MaxTest(String arg) {
 
         super(arg);
     }

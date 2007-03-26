@@ -104,7 +104,7 @@ public class TfmBackendFontManager implements BackendFontManager {
     /**
      * @see org.extex.font.BackendFontManager#recognize(org.extex.font.FontKey, org.extex.core.UnicodeChar)
      */
-    public boolean recognize(final FontKey fontKey, final UnicodeChar uc) {
+    public boolean recognize(FontKey fontKey, UnicodeChar uc) {
 
         if (fontKey == null) {
             throw new IllegalArgumentException("fontkey");
@@ -141,7 +141,7 @@ public class TfmBackendFontManager implements BackendFontManager {
          *
          * @param uc    the Unicode char.
          */
-        public BackendCharacterImpl(final UnicodeChar uc) {
+        public BackendCharacterImpl(UnicodeChar uc) {
 
             this.uc = uc;
         }
@@ -209,7 +209,7 @@ public class TfmBackendFontManager implements BackendFontManager {
     /**
      * @see org.extex.font.BackendFontManager#setBackendFontFactory(org.extex.font.BackendFontFactory)
      */
-    public void setBackendFontFactory(final BackendFontFactory factory) {
+    public void setBackendFontFactory(BackendFontFactory factory) {
 
         this.factory = factory;
 

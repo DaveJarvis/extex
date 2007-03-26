@@ -43,7 +43,7 @@ public abstract class AbstractXtfTable implements XtfTable {
      *
      * @param tm    the table map
      */
-    public AbstractXtfTable(final XtfTableMap tm) {
+    public AbstractXtfTable(XtfTableMap tm) {
 
         tablemap = tm;
     }
@@ -77,7 +77,7 @@ public abstract class AbstractXtfTable implements XtfTable {
      * @param writer    The xml stream writer.
      * @throws IOException if an IO-error occurred.
      */
-    protected void writeStartElement(final XMLStreamWriter writer)
+    protected void writeStartElement(XMLStreamWriter writer)
             throws IOException {
 
         writer.writeStartElement(getShortcut());

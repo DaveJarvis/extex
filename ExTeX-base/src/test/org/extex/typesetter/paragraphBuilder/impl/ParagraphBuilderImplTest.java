@@ -26,7 +26,6 @@ import org.extex.core.count.Count;
 import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
-import org.extex.core.exception.GeneralException;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
 import org.extex.core.muskip.Muskip;
@@ -65,7 +64,7 @@ public class ParagraphBuilderImplTest extends TestCase {
          *
          * @see org.extex.typesetter.TypesetterOptions#getCountOption(java.lang.String)
          */
-        public FixedCount getCountOption(final String name) {
+        public FixedCount getCountOption(String name) {
 
             if (name.equals("tracingparagraphs")) {
                 return new Count(0);
@@ -90,7 +89,7 @@ public class ParagraphBuilderImplTest extends TestCase {
          *
          * @see org.extex.typesetter.TypesetterOptions#getDimenOption(java.lang.String)
          */
-        public FixedDimen getDimenOption(final String name) {
+        public FixedDimen getDimenOption(String name) {
 
             if (name.equals("hsize")) {
                 return new Dimen(300 * Dimen.ONE);
@@ -108,7 +107,7 @@ public class ParagraphBuilderImplTest extends TestCase {
          * @see org.extex.typesetter.TypesetterOptions#getFont(
          *      java.lang.String)
          */
-        public Font getFont(final String name) {
+        public Font getFont(String name) {
 
             return null;
         }
@@ -123,7 +122,7 @@ public class ParagraphBuilderImplTest extends TestCase {
          * @see org.extex.typesetter.TypesetterOptions#getGlueOption(
          *      java.lang.String)
          */
-        public FixedGlue getGlueOption(final String name) {
+        public FixedGlue getGlueOption(String name) {
 
             if (name.equals("parfillskip")) {
                 return new Glue(1000);
@@ -142,7 +141,7 @@ public class ParagraphBuilderImplTest extends TestCase {
          * @see org.extex.typesetter.TypesetterOptions#getLccode(
          *      org.extex.core.UnicodeChar)
          */
-        public UnicodeChar getLccode(final UnicodeChar uc) {
+        public UnicodeChar getLccode(UnicodeChar uc) {
 
             return null;
         }
@@ -217,25 +216,19 @@ public class ParagraphBuilderImplTest extends TestCase {
          * @see org.extex.typesetter.TypesetterOptions#setParshape(
          *      org.extex.typesetter.paragraphBuilder.ParagraphShape)
          */
-        public void setParshape(final ParagraphShape shape) {
+        public void setParshape(ParagraphShape shape) {
 
+            // nothing to do
         }
 
         /**
-         * Setter for a count register.
+         * {@inheritDoc}
          *
-         * @param name the name of the register
-         * @param value the value
-         *
-         * @throws GeneralException in case of an error
-         *
-         * @see org.extex.typesetter.TypesetterOptions#setCountOption(
-         *      java.lang.String,
-         *      org.extex.core.count.FixedCount)
+         * @see org.extex.typesetter.TypesetterOptions#setCountOption(java.lang.String, long)
          */
-        public void setCountOption(final String name, final long value)
-                throws GeneralException {
+        public void setCountOption(String name, long value) {
 
+            // nothing to do
         }
 
         /**
@@ -247,7 +240,7 @@ public class ParagraphBuilderImplTest extends TestCase {
          *
          * @see org.extex.typesetter.TypesetterOptions#getMuskip(java.lang.String)
          */
-        public Muskip getMuskip(final String name) {
+        public Muskip getMuskip(String name) {
 
             // TODO gene: getMuskip unimplemented
             return null;
@@ -258,7 +251,7 @@ public class ParagraphBuilderImplTest extends TestCase {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ParagraphBuilderImplTest.class);
     }
@@ -266,7 +259,7 @@ public class ParagraphBuilderImplTest extends TestCase {
     /**
      * TODO gene: missing JavaDoc
      *
-     * @throws Exception
+     * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 

@@ -80,7 +80,7 @@ public class Overwithdelims extends AbstractTeXDelimiter {
      *
      * @param name the name for tracing and debugging
      */
-    public Overwithdelims(final String name) {
+    public Overwithdelims(String name) {
 
         super(name);
     }
@@ -104,8 +104,8 @@ public class Overwithdelims extends AbstractTeXDelimiter {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 

@@ -48,7 +48,7 @@ public class RegistrarFontNotFoundException extends RegistrarException {
      *
      * @param key the key of the fount in question
      */
-    public RegistrarFontNotFoundException(final FontKey key) {
+    public RegistrarFontNotFoundException(FontKey key) {
 
         this.key = key;
     }

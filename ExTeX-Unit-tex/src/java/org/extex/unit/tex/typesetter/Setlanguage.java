@@ -97,7 +97,7 @@ public class Setlanguage extends AbstractCode {
          *
          * @param context the context
          */
-        public ParObserver(final Context context) {
+        public ParObserver(Context context) {
 
             super();
             this.context = context;
@@ -106,10 +106,12 @@ public class Setlanguage extends AbstractCode {
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.typesetter.ParagraphObserver#atParagraph(
          *      org.extex.typesetter.type.NodeList)
          */
-        public void atParagraph(final NodeList nodes)
+        public void atParagraph(NodeList nodes)
                 throws InterpreterException {
 
             context.setCount("language", language, false);
@@ -122,7 +124,7 @@ public class Setlanguage extends AbstractCode {
      *
      * @param name the name for tracing and debugging
      */
-    public Setlanguage(final String name) {
+    public Setlanguage(String name) {
 
         super(name);
     }
@@ -145,8 +147,8 @@ public class Setlanguage extends AbstractCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         typesetter.afterParagraph(new ParObserver(context));

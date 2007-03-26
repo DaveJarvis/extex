@@ -33,7 +33,7 @@ public class ScantokensTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ScantokensTest.class);
     }
@@ -43,7 +43,7 @@ public class ScantokensTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public ScantokensTest(final String arg) {
+    public ScantokensTest(String arg) {
 
         super(arg, "scantokens", "{}");
         setConfig("etex-test");

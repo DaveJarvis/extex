@@ -47,7 +47,7 @@ public class PdfRefXImage extends WhatsItNode {
      *
      * @param index the index of the object
      */
-    public PdfRefXImage(final long index) {
+    public PdfRefXImage(long index) {
 
         super();
         this.index = index;
@@ -79,8 +79,8 @@ public class PdfRefXImage extends WhatsItNode {
      *      int,
      *      int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         sb.append("(pdfrefximage " + index + ")");
     }

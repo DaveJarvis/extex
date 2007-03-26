@@ -46,7 +46,7 @@ import org.extex.exdoc.util.Key;
  * Extract doc tags from sources and translate them to HTML.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5413 $
  */
 public class ExDocHtml extends ExDocXml {
 
@@ -60,7 +60,7 @@ public class ExDocHtml extends ExDocXml {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         try {
             new ExDocHtml().run(args);
@@ -70,9 +70,9 @@ public class ExDocHtml extends ExDocXml {
     }
 
     /**
-     * The field <tt>keys</tt> contains the ...
+     * The field <tt>keys</tt> contains the list of keys.
      */
-    private List keys = new ArrayList();
+    private List<Key> keys = new ArrayList<Key>();
 
     /**
      * Creates a new object.
@@ -89,7 +89,7 @@ public class ExDocHtml extends ExDocXml {
      *
      * @param content the content to transform
      */
-    private void replaceTodo(final StringBuffer content) {
+    private void replaceTodo(StringBuffer content) {
 
         for (int i = content.indexOf("TODO "); i >= 0; i =
                 content.indexOf("TODO ", i + 5)) {
@@ -106,13 +106,15 @@ public class ExDocHtml extends ExDocXml {
      *
      * @throws Exception in case of an error
      *
-     * @see org.extex.exdoc.Exdoc#run(java.lang.String[])
+     * {@inheritDoc}
+     *
+     * @see org.extex.exdoc.ExDocXml#run(java.lang.String[])
      */
-    public void run(final String[] args) throws Exception {
+    public void run(String[] args) throws Exception {
 
         super.run(args);
 
-        Collections.sort(keys, new Comparator() {
+        Collections.sort(keys, new Comparator<Key>() {
 
             /**
              * Compare two objects.
@@ -124,24 +126,17 @@ public class ExDocHtml extends ExDocXml {
              *
              * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
              */
-            public int compare(final Object o1, final Object o2) {
+            public int compare(Key o1, Key o2) {
 
-                if (o1 instanceof Key && o2 instanceof Key) {
-                    String s1 = ((Key) o1).toString();
-                    String s2 = ((Key) o2).toString();
-                    return s1.compareTo(s2);
-                }
-                throw new IllegalArgumentException();
+                return o1.toString().compareTo(o2.toString());
             }
         });
         int size = keys.size();
-        File file = new File(getOutput(),
-                            "primitives.html");
-        PrintStream prim =
-                new PrintStream(new FileOutputStream(file));
+        File file = new File(getOutput(), "primitives.html");
+        PrintStream prim = new PrintStream(new FileOutputStream(file));
         try {
             for (int i = 0; i < size; i++) {
-                Key key = (Key) keys.get(i);
+                Key key = keys.get(i);
                 if ("".equals(key.getTheClass())) {
                     prim.print("<a href=\"");
                     prim.print(key.getLocation());
@@ -163,9 +158,12 @@ public class ExDocHtml extends ExDocXml {
      *
      * @throws IOException in case of an I/O error
      *
-     * @see org.extex.exdoc.Exdoc#shipout(java.lang.String, java.lang.StringBuffer)
+     * {@inheritDoc}
+     *
+     * @see org.extex.exdoc.ExDocXml#shipout(
+     *      org.extex.exdoc.util.Key, java.lang.StringBuffer)
      */
-    protected void shipout(final Key name, final StringBuffer content)
+    protected void shipout(Key name, StringBuffer content)
             throws IOException {
 
         FileOutputStream out =
@@ -195,7 +193,7 @@ public class ExDocHtml extends ExDocXml {
             throw new RuntimeException(e);
         }
 
-        keys.add(name);
+//        keys.add(name);
     }
 
 }

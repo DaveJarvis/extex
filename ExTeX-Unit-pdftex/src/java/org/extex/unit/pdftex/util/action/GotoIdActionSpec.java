@@ -57,8 +57,8 @@ public class GotoIdActionSpec extends GotoActionSpec {
      * @param id id.
      * @param newwin the indicator for the new window
      */
-    public GotoIdActionSpec(final String file, final IdSpec id,
-            final Boolean newwin) {
+    public GotoIdActionSpec(String file, IdSpec id,
+            Boolean newwin) {
 
         super();
         this.file = file;
@@ -106,7 +106,7 @@ public class GotoIdActionSpec extends GotoActionSpec {
      * @see org.extex.unit.pdftex.util.action.ActionSpec#visit(
      *      org.extex.unit.pdftex.util.action.ActionVisitor)
      */
-    public Object visit(final ActionVisitor visitor) {
+    public Object visit(ActionVisitor visitor) {
 
         return visitor.visitGotoId(this);
     }

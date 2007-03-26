@@ -31,7 +31,7 @@ public class PredisplaysizeTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PredisplaysizeTest.class);
     }
@@ -41,7 +41,7 @@ public class PredisplaysizeTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public PredisplaysizeTest(final String arg) {
+    public PredisplaysizeTest(String arg) {
 
         super(arg, "predisplaysize", "", "0.0pt");
     }

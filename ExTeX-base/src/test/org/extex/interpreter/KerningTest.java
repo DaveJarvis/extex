@@ -33,7 +33,7 @@ public class KerningTest extends ExTeXLauncher {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(KerningTest.class);
     }
@@ -43,7 +43,7 @@ public class KerningTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public KerningTest(final String arg) {
+    public KerningTest(String arg) {
 
         super(arg);
     }

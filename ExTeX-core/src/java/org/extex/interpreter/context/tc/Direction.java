@@ -270,8 +270,8 @@ public class Direction implements Serializable {
      * @param beginningOfLine the beginning of the line
      * @param topOfLine the top of the line
      */
-    public Direction(final Dir beginningOfPage, final Dir beginningOfLine,
-            final Dir topOfLine) {
+    public Direction(Dir beginningOfPage, Dir beginningOfLine,
+            Dir topOfLine) {
 
         super();
         this.beginningOfPage = beginningOfPage;

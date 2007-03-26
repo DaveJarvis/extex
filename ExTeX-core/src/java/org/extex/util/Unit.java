@@ -80,7 +80,7 @@ public final class Unit {
      * @param value the <code>Dimen</code>
      * @return Returns the <code>Dimen</code>-value as BP
      */
-    public static float getDimenAsBP(final FixedDimen value) {
+    public static float getDimenAsBP(FixedDimen value) {
 
         return ((float) value.getValue() * MULBP) / (DEN << SHIFT);
     }
@@ -90,7 +90,7 @@ public final class Unit {
      * @param value the <code>Dimen</code>
      * @return Returns the <code>Dimen</code>-value as PT
      */
-    public static double getDimenAsPT(final FixedDimen value) {
+    public static double getDimenAsPT(FixedDimen value) {
 
         return ((double) value.getValue()) / GlueComponent.ONE;
     }
@@ -100,7 +100,7 @@ public final class Unit {
      * @param value the <code>Dimen</code>
      * @return Returns the <code>Dimen</code>-value (round) as PT as String
      */
-    public static String getDimenAsPTString(final FixedDimen value) {
+    public static String getDimenAsPTString(FixedDimen value) {
 
         return getDimenAsPTString(value, 2);
     }
@@ -111,8 +111,8 @@ public final class Unit {
      * @param round the round position
      * @return Returns the <code>Dimen</code>-value (round) as PT as String
      */
-    public static String getDimenAsPTString(final FixedDimen value,
-            final int round) {
+    public static String getDimenAsPTString(FixedDimen value,
+            int round) {
 
         NumberFormat nf = NumberFormat.getInstance(Locale.ENGLISH);
         nf.setGroupingUsed(false);
@@ -125,7 +125,7 @@ public final class Unit {
      * @param value the <code>Dimen</code>
      * @return Returns the <code>Dimen</code>-value as MM
      */
-    public static double getDimenAsMM(final FixedDimen value) {
+    public static double getDimenAsMM(FixedDimen value) {
 
         return ((double) value.getValue() * MULMM) / (DEN << SHIFT);
     }
@@ -135,7 +135,7 @@ public final class Unit {
      * @param value the <code>Dimen</code>
      * @return Returns the <code>Dimen</code>-value as CM
      */
-    public static double getDimenAsCM(final FixedDimen value) {
+    public static double getDimenAsCM(FixedDimen value) {
 
         return ((double) value.getValue() * MULCM) / (DEN << SHIFT);
     }
@@ -145,7 +145,7 @@ public final class Unit {
      * @param value the <code>Dimen</code>
      * @return Returns the <code>Dimen</code>-value as IN
      */
-    public static double getDimenAsIN(final FixedDimen value) {
+    public static double getDimenAsIN(FixedDimen value) {
 
         return ((double) value.getValue() * MULIN) / (DEN << SHIFT);
     }
@@ -155,7 +155,7 @@ public final class Unit {
      * @param cm    the cm-value
      * @return Returns the new <code>Dimne</code> from cm-value.
      */
-    public static Dimen createDimenFromCM(final double cm) {
+    public static Dimen createDimenFromCM(double cm) {
 
         return new Dimen((long) (cm * (DEN << SHIFT)) / MULCM);
     }
@@ -165,7 +165,7 @@ public final class Unit {
      * @param d     the dimen
      * @param bp    the bp-value
      */
-    public static void setDimenFromCM(final Dimen d, final float bp) {
+    public static void setDimenFromCM(Dimen d, float bp) {
 
         d.setValue((long) ((bp * (DEN << SHIFT)) / MULBP));
     }
@@ -176,7 +176,7 @@ public final class Unit {
      * @param round the number of decimals to round (not round: negative value)
      * @return Returns the rounded double-value
      */
-    public static double round(final double value, final int round) {
+    public static double round(double value, int round) {
 
         if (round < 0) {
             return value;

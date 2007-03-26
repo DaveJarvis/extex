@@ -19,9 +19,10 @@
 
 package org.extex.font;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
-import org.extex.core.StringList;
 import org.extex.core.UnicodeChar;
 
 /**
@@ -68,7 +69,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font manager.
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     public void test03() throws Exception {
@@ -76,7 +77,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
         CoreFontFactory factory = makeFontFactory();
 
         try {
-            factory.createManager(new StringList());
+            factory.createManager(new ArrayList<String>());
             assertTrue(false);
         } catch (IllegalArgumentException e) {
             assertTrue(true);
@@ -86,14 +87,14 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font manager.
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     public void test04() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
 
-        StringList sl = new StringList();
+        List<String> sl = new ArrayList<String>();
         sl.add("tfm");
 
         BackendFontManager manager = factory.createManager(sl);
@@ -103,14 +104,14 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font manager.
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     public void test05() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
 
-        StringList sl = new StringList();
+        List<String> sl = new ArrayList<String>();
         sl.add("tfm");
 
         BackendFontManager manager = factory.createManager(sl);
@@ -128,7 +129,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font manager.
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     public void test06() throws Exception {
@@ -137,7 +138,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
 
         FontKey key = factory.getFontKey("cmr12");
 
-        StringList sl = new StringList();
+        List<String> sl = new ArrayList<String>();
         sl.add("tfm");
 
         BackendFontManager manager = factory.createManager(sl);
@@ -155,7 +156,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font manager.
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     public void test07() throws Exception {
@@ -164,7 +165,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
 
         FontKey key = factory.getFontKey("cmr12");
 
-        StringList sl = new StringList();
+        List<String> sl = new ArrayList<String>();
         sl.add("tfm");
 
         BackendFontManager manager = factory.createManager(sl);
@@ -185,8 +186,9 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
     public void testManager0() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
-        BackendFontManager manager = factory
-                .createManager(new StringList("tfm"));
+        List<String> sl = new ArrayList<String>();
+        sl.add("tfm");
+        BackendFontManager manager = factory.createManager(sl);
         assertNotNull(manager);
 
         assertFalse("nothing recognized yet", manager.isNewRecongnizedFont());
@@ -205,13 +207,14 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
     public void testManager1() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
-        BackendFontManager manager = factory
-                .createManager(new StringList("tfm"));
+        List<String> sl = new ArrayList<String>();
+        sl.add("tfm");
+        BackendFontManager manager = factory.createManager(sl);
         assertNotNull(manager);
 
         FontKey key = factory.getFontKey("cmr12");
         assertTrue("A in cmr12 should be managable", //
-                   manager.recognize(key, UnicodeChar.get('A')));
+            manager.recognize(key, UnicodeChar.get('A')));
         assertTrue("first always is new", manager.isNewRecongnizedFont());
         BackendCharacter cid = manager.getRecognizedCharId();
         assertEquals('A', cid.getId());
@@ -235,17 +238,18 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
     public void testManager2() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
-        BackendFontManager manager = factory
-                .createManager(new StringList("tfm"));
+        List<String> sl = new ArrayList<String>();
+        sl.add("tfm");
+        BackendFontManager manager = factory.createManager(sl);
         assertNotNull(manager);
 
         FontKey key = factory.getFontKey("cmr12");
         assertTrue("A in cmr12 should be managable", //
-                   manager.recognize(key, UnicodeChar.get('A')));
+            manager.recognize(key, UnicodeChar.get('A')));
         assertTrue("B in cmr12 should be managable", //
-                   manager.recognize(key, UnicodeChar.get('B')));
+            manager.recognize(key, UnicodeChar.get('B')));
         assertFalse("second is not new any more", manager
-                .isNewRecongnizedFont());
+            .isNewRecongnizedFont());
         BackendCharacter cid = manager.getRecognizedCharId();
         assertEquals('B', cid.getId());
         assertEquals("66", cid.getName());
@@ -270,16 +274,17 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
     public void testManager3() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
-        BackendFontManager manager = factory
-                .createManager(new StringList("tfm"));
+        List<String> sl = new ArrayList<String>();
+        sl.add("tfm");
+        BackendFontManager manager = factory.createManager(sl);
         assertNotNull(manager);
 
         FontKey key = factory.getFontKey("cmr12");
         assertTrue("A in cmr12 should be managable", //
-                   manager.recognize(key, UnicodeChar.get('A')));
+            manager.recognize(key, UnicodeChar.get('A')));
         key = factory.getFontKey("cmr10");
         assertTrue("B in cmr12 should be managable", //
-                   manager.recognize(key, UnicodeChar.get('B')));
+            manager.recognize(key, UnicodeChar.get('B')));
         assertTrue("second is new", manager.isNewRecongnizedFont());
         BackendCharacter cid = manager.getRecognizedCharId();
         assertEquals('B', cid.getId());
@@ -313,17 +318,21 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
     public void testManagerReset1() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
-        BackendFontManager manager = factory
-                .createManager(new StringList("tfm"));
+        List<String> sl = new ArrayList<String>();
+        sl.add("tfm");
+        BackendFontManager manager = factory.createManager(sl);
         assertNotNull(manager);
         assertTrue("A in cmr12 should be managable", //
-                   manager.recognize(factory.getFontKey("cmr12"), UnicodeChar.get('A')));
+            manager
+                .recognize(factory.getFontKey("cmr12"), UnicodeChar.get('A')));
         assertTrue("B in cmr12 should be managable", //
-                   manager.recognize(factory.getFontKey("cmr10"), UnicodeChar.get('B')));
+            manager
+                .recognize(factory.getFontKey("cmr10"), UnicodeChar.get('B')));
 
         manager.reset();
-        
-        assertFalse("nothing recognized any more", manager.isNewRecongnizedFont());
+
+        assertFalse("nothing recognized any more", manager
+            .isNewRecongnizedFont());
         assertNull("no char recognized any more", manager.getRecognizedCharId());
         assertNull("no font recognized any more", manager.getRecognizedFont());
         Iterator it = manager.iterate();

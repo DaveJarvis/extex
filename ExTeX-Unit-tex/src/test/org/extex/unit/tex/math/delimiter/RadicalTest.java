@@ -34,7 +34,7 @@ public class RadicalTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public RadicalTest(final String arg) {
+    public RadicalTest(String arg) {
 
         super(arg, "radical", "12 32");
     }

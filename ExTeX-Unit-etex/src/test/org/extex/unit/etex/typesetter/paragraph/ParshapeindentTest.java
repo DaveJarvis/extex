@@ -33,7 +33,7 @@ public class ParshapeindentTest extends NonExecuteTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ParshapeindentTest.class);
     }
@@ -43,7 +43,7 @@ public class ParshapeindentTest extends NonExecuteTester {
      *
      * @param arg the name
      */
-    public ParshapeindentTest(final String arg) {
+    public ParshapeindentTest(String arg) {
 
         super(arg, "parshapeindent", "");
         setConfig("etex-test");

@@ -32,21 +32,22 @@ import java.util.regex.Pattern;
 /**
  * Traverse a set of directories and extract comment marked with the XML tag
  * <tt>doc</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5413 $
  */
 public class Traverser {
 
     /**
-     * The constant <tt>PATTERN_AUTHOR</tt> contains the pattern for the author.
+     * The constant <tt>PATTERN_AUTHOR</tt> contains the pattern for the
+     * author.
      */
     private static final Pattern PATTERN_AUTHOR =
             Pattern.compile("@author\\s+<a href=\"mailto:(.*)\">(.*)</a>");
 
     /**
-     * The constant <tt>PATTERN_CLASS</tt> contains the pattern for the class or
-     * interface.
+     * The constant <tt>PATTERN_CLASS</tt> contains the pattern for the class
+     * or interface.
      */
     private static final Pattern PATTERN_CLASS =
             Pattern.compile("^public.* (class|interface)\\s+(\\w+)");
@@ -67,17 +68,18 @@ public class Traverser {
             Pattern.compile("^\\s*([a-zA-Z_0-9 ]*) (\\w+)\\(");
 
     /**
-     * The constant <tt>PATTERN_PACKAGE</tt> contains the pattern for a package.
+     * The constant <tt>PATTERN_PACKAGE</tt> contains the pattern for a
+     * package.
      */
     private static final Pattern PATTERN_PACKAGE =
             Pattern.compile("^package[ ]*([^;]*);");
 
     /**
      * The main program for this class.
-     *
+     * 
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         try {
             new Traverser().run(args);
@@ -87,7 +89,8 @@ public class Traverser {
     }
 
     /**
-     * The field <tt>authors</tt> contains the mapping from classes to authors.
+     * The field <tt>authors</tt> contains the mapping from classes to
+     * authors.
      */
     private Map authors = new HashMap();
 
@@ -103,13 +106,12 @@ public class Traverser {
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @param sb the target string buffer
      * @param attribute the name of the attribute
      * @param value the value of the attribute
      */
-    private void addAttribute(final StringBuffer sb, final String attribute,
-            final String value) {
+    private void addAttribute(StringBuffer sb, String attribute, String value) {
 
         if (value != null) {
             sb.append(" ");
@@ -122,7 +124,7 @@ public class Traverser {
 
     /**
      * Getter for output.
-     *
+     * 
      * @return the output
      */
     protected String getOutput() {
@@ -132,10 +134,10 @@ public class Traverser {
 
     /**
      * Log an informative message.
-     *
+     * 
      * @param msg the message
      */
-    protected void info(final String msg) {
+    protected void info(String msg) {
 
         if (verbose) {
             System.err.println(msg);
@@ -144,7 +146,7 @@ public class Traverser {
 
     /**
      * Getter for verbose.
-     *
+     * 
      * @return the verbose
      */
     public boolean isVerbose() {
@@ -154,43 +156,42 @@ public class Traverser {
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @param key ...
      * @param author the author
      */
-    protected void out(final String key, final Author author) {
+    protected void out(String key, Author author) {
 
         authors.put(key, author);
     }
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @param key ...
      * @param cs ...
-     *
+     * 
      * @throws Exception in case of an error
      */
-    protected void out(final String key, final StringBuffer cs)
-            throws Exception {
+    protected void out(String key, StringBuffer cs) throws Exception {
 
     }
 
     /**
      * Process a HTML file.
-     *
+     * 
      * @param f the HTML file
-     *
+     * 
      * @throws Exception in case of an error
      */
-    private void processHtml(final File f) throws Exception {
+    private void processHtml(File f) throws Exception {
 
         if (verbose) {
             info(f.toString());
         }
 
         LineNumberReader in = new LineNumberReader(new FileReader(f));
-        Stack stack = new Stack();
+        Stack<CharSequence> stack = new Stack<CharSequence>();
         String line;
         Matcher m;
         Author author = null;
@@ -218,19 +219,19 @@ public class Traverser {
 
     /**
      * Process a Java file.
-     *
+     * 
      * @param f the Java file
-     *
+     * 
      * @throws Exception in case of an error
      */
-    private void processJava(final File f) throws Exception {
+    private void processJava(File f) throws Exception {
 
         if (verbose) {
             info(f.toString());
         }
 
         LineNumberReader in = new LineNumberReader(new FileReader(f));
-        Stack stack = new Stack();
+        Stack<CharSequence> stack = new Stack<CharSequence>();
         String packageName = "";
         String className = "";
         Matcher m;
@@ -295,14 +296,14 @@ public class Traverser {
     }
 
     /**
-     * Run with the command line arguments.
-     * A value of <code>null</code> is ignored.
-     *
+     * Run with the command line arguments. A value of <code>null</code> is
+     * ignored.
+     * 
      * @param args the command line arguments
-     *
+     * 
      * @throws Exception in case of an error
      */
-    public void run(final String[] args) throws Exception {
+    public void run(String[] args) throws Exception {
 
         boolean opt = true;
 
@@ -336,17 +337,16 @@ public class Traverser {
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @param arg the current argument
      * @param args the list of all arguments
      * @param i the index of arg
-     *
+     * 
      * @return the index of the last arg processed
-     *
+     * 
      * @throws Exception in case of an error
      */
-    protected int runOption(final String arg, final String[] args, final int i)
-            throws Exception {
+    protected int runOption(String arg, String[] args, int i) throws Exception {
 
         int idx = i;
         if ("-quiet".startsWith(arg)) {
@@ -363,17 +363,17 @@ public class Traverser {
 
     /**
      * Scan the input stream for until </doc> is found.
-     *
+     * 
      * @param in the stream to read from
      * @param startLine the line already read
      * @param offset the offset to cut off the beginning of each line
-     *
+     * 
      * @return the characters read
-     *
+     * 
      * @throws IOException in case of an error
      */
-    private CharSequence scanDoc(final LineNumberReader in,
-            final String startLine, final int offset) throws IOException {
+    private CharSequence scanDoc(LineNumberReader in, String startLine,
+            int offset) throws IOException {
 
         String line = startLine;
         StringBuffer sb = new StringBuffer();
@@ -383,7 +383,7 @@ public class Traverser {
             }
             sb.append('\n');
             line = in.readLine();
-        } while (in != null && line.indexOf("</doc>") < 0);
+        } while (line != null && line.indexOf("</doc>") < 0);
 
         sb.append("</doc>");
         sb.append('\n');
@@ -392,33 +392,33 @@ public class Traverser {
 
     /**
      * Setter for output.
-     *
+     * 
      * @param output the output to set
      */
-    public void setOutput(final String output) {
+    public void setOutput(String output) {
 
         this.output = output;
     }
 
     /**
      * Setter for verbose.
-     *
+     * 
      * @param verbose the verbose to set
      */
-    public void setVerbose(final boolean verbose) {
+    public void setVerbose(boolean verbose) {
 
         this.verbose = verbose;
     }
 
     /**
-     * Traverse a directory structure and call the processing methods
-     * when appropriate files are found.
-     *
+     * Traverse a directory structure and call the processing methods when
+     * appropriate files are found.
+     * 
      * @param file the current directory
-     *
+     * 
      * @throws Exception in case of an error
      */
-    private void traverse(final File file) throws Exception {
+    private void traverse(File file) throws Exception {
 
         String name = file.getName();
 
@@ -444,16 +444,15 @@ public class Traverser {
 
     /**
      * Process a list of package level docs.
-     *
+     * 
      * @param stack the list of docs
      * @param author the author
-     * @param packageName the name of the package
-     *   class level docs
-     *
+     * @param packageName the name of the package class level docs
+     * 
      * @throws Exception in case of an error
      */
-    private void treatDocs(final Stack stack, final Author author,
-            final String packageName) throws Exception {
+    private void treatDocs(Stack stack, Author author, String packageName)
+            throws Exception {
 
         while (!stack.isEmpty()) {
             CharSequence cs = (CharSequence) stack.pop();
@@ -470,18 +469,17 @@ public class Traverser {
 
     /**
      * Process a list of method level docs.
-     *
+     * 
      * @param stack the list of docs
      * @param author the author
      * @param packageName the name of the package
      * @param className the name of the class
-     * @param methodName the name if the method or <code>null</code> for
-     *   class level docs
+     * @param methodName the name if the method or <code>null</code> for class
+     *        level docs
      * @throws Exception in case of an error
      */
-    private void treatDocs(final Stack stack, final Author author,
-            final String packageName, final String className,
-            final String methodName) throws Exception {
+    private void treatDocs(Stack stack, Author author, String packageName,
+            String className, String methodName) throws Exception {
 
         String name = packageName + "." + className + "#" + methodName;
 
@@ -502,17 +500,16 @@ public class Traverser {
 
     /**
      * Process a list of class level docs.
-     *
+     * 
      * @param stack the list of docs
      * @param author the author
      * @param packageName the name of the package
-     * @param className the name of the class
-     *   class level docs
-     *
+     * @param className the name of the class class level docs
+     * 
      * @throws Exception in case of an error
      */
-    private void treatDocs(final Stack stack, final Author author,
-            final String packageName, final String className) throws Exception {
+    private void treatDocs(Stack stack, Author author, String packageName,
+            String className) throws Exception {
 
         String name = packageName + "." + className;
 
@@ -532,10 +529,10 @@ public class Traverser {
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @param msg the message
      */
-    protected void warning(final String msg) {
+    protected void warning(String msg) {
 
         System.err.println(msg);
     }

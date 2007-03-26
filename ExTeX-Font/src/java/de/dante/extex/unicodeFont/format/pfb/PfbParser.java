@@ -58,7 +58,7 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
      * @param filename  the file name
      * @throws FontException if an font error occurs.
      */
-    public PfbParser(final String filename) throws FontException {
+    public PfbParser(String filename) throws FontException {
 
         try {
             parsePfb(new RandomAccessInputFile(filename));
@@ -73,7 +73,7 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
      * @param in   The input.
      * @throws FontException if an IO-error occurs.
      */
-    public PfbParser(final InputStream in) throws FontException {
+    public PfbParser(InputStream in) throws FontException {
 
         try {
             parsePfb(new RandomAccessInputStream(in));
@@ -134,7 +134,7 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
      * @throws IOException in an IO-error occurs.
      * @throws FontException if a font error occurs.
      */
-    private void parsePfb(final RandomAccessR rar) throws IOException,
+    private void parsePfb(RandomAccessR rar) throws IOException,
             FontException {
 
         pfbdata = new byte[(int) (rar.length() - PFB_HEADER_LENGTH)];
@@ -167,7 +167,7 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
      * @param  idx the part index.
      * @return Returns the part of the array
      */
-    public byte[] getPart(final int idx) {
+    public byte[] getPart(int idx) {
 
         byte[] tmp = new byte[lengths[idx]];
         System.arraycopy(pfbdata, starts[idx], tmp, 0, lengths[idx]);
@@ -282,7 +282,7 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
      * @param enc  the string array
      * @param s    the string
      */
-    private void insert(final String[] enc, final String s) {
+    private void insert(String[] enc, String s) {
 
         String[] split = s.split("/");
         try {
@@ -296,7 +296,7 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
     /**
      * @see org.extex.util.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("pfb");
         writer.writeStartElement("encoding");
@@ -332,7 +332,7 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
      * @param out   The output.
      * @throws IOException if an IO-error occurs.
      */
-    public void toPfa(final OutputStream out) throws IOException {
+    public void toPfa(OutputStream out) throws IOException {
 
         // write part 1 - idx 0   ASCII
         byte[] tmp = getPart(0);

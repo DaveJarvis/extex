@@ -52,7 +52,7 @@ public interface OutputStreamFactory {
      *
      * @param observer the observers to register
      */
-    public void register(final OutputStreamObserver observer);
+    public void register(OutputStreamObserver observer);
 
     /**
      * Setter for the default extension.

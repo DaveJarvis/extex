@@ -65,7 +65,7 @@ public class OutputFactory extends AbstractFactory
          *
          * @param val the initial value
          */
-        public Int(final int val) {
+        public Int(int val) {
 
             super();
             this.value = val;
@@ -124,7 +124,7 @@ public class OutputFactory extends AbstractFactory
     /**
      * The field <tt>countMap</tt> contains the internal counter for file names.
      */
-    private Map countMap = new HashMap();
+    private Map<String, Int> countMap = new HashMap<String, Int>();
 
     /**
      * The field <tt>defaultExtension</tt> contains the default extension.
@@ -140,12 +140,12 @@ public class OutputFactory extends AbstractFactory
     /**
      * The field <tt>handlers</tt> contains the registered handlers.
      */
-    private Map handlers = null;
+    private Map<String, OutputFactory> handlers = null;
 
     /**
      * The field <tt>observers</tt> contains the list of registered observers.
      */
-    private List observers = null;
+    private List<OutputStreamObserver> observers = null;
 
     /**
      * The field <tt>outputDirectories</tt> contains the list of output
@@ -159,10 +159,10 @@ public class OutputFactory extends AbstractFactory
      * @param outdirs the list of output directories
      * @param basename the base name of the main stream
      */
-    public OutputFactory(final String[] outdirs, final String basename) {
+    public OutputFactory(String[] outdirs, String basename) {
 
         super();
-        this.outputDirectories = (String[]) outdirs.clone();
+        this.outputDirectories = outdirs.clone();
         this.basename = basename;
     }
 
@@ -183,7 +183,7 @@ public class OutputFactory extends AbstractFactory
      *      java.lang.String,
      *      java.lang.String)
      */
-    public OutputStream getOutputStream(final String name, final String type)
+    public OutputStream getOutputStream(String name, String type)
             throws DocumentWriterException {
 
         OutputStream stream = makeOutputStream(name, type);
@@ -191,8 +191,7 @@ public class OutputFactory extends AbstractFactory
         if (stream != null && observers != null) {
             int size = observers.size();
             for (int i = 0; i < size; i++) {
-                ((OutputStreamObserver) observers.get(i)).update(name, type,
-                    stream);
+                observers.get(i).update(name, type, stream);
             }
         }
         return stream;
@@ -211,7 +210,7 @@ public class OutputFactory extends AbstractFactory
      *
      * @throws DocumentWriterException in case of an error
      */
-    private OutputStream makeOutputStream(final String name, final String type)
+    private OutputStream makeOutputStream(String name, String type)
             throws DocumentWriterException {
 
         String ext =
@@ -220,8 +219,7 @@ public class OutputFactory extends AbstractFactory
                         : "");
 
         if (handlers != null) {
-            OutputStreamFactory handler =
-                    (OutputStreamFactory) handlers.get(ext);
+            OutputStreamFactory handler = handlers.get(ext);
             if (handler != null) {
                 return handler.getOutputStream(name, type);
             }
@@ -235,7 +233,7 @@ public class OutputFactory extends AbstractFactory
             format = "{0}{1}{2,number,0000}{3}";
         }
 
-        Int iCount = (Int) countMap.get(ext);
+        Int iCount = countMap.get(ext);
         if (iCount == null) {
             iCount = new Int(0);
             countMap.put(ext, iCount);
@@ -299,8 +297,8 @@ public class OutputFactory extends AbstractFactory
      *
      * @return the output stream or <code>null</code>
      */
-    protected OutputStream openOutputStream(final String dir,
-            final String filename, final boolean isDefault) {
+    protected OutputStream openOutputStream(String dir,
+            String filename, boolean isDefault) {
 
         if (dir == null) {
             return null;
@@ -326,10 +324,10 @@ public class OutputFactory extends AbstractFactory
      * @see org.extex.backend.outputStream.OutputStreamFactory#register(
      *      org.extex.backend.outputStream.OutputStreamObserver)
      */
-    public void register(final OutputStreamObserver observer) {
+    public void register(OutputStreamObserver observer) {
 
         if (observers == null) {
-            observers = new ArrayList();
+            observers = new ArrayList<OutputStreamObserver>();
         }
         observers.add(observer);
     }
@@ -347,13 +345,13 @@ public class OutputFactory extends AbstractFactory
      * @param type the type
      * @param factory the handler to be invoked
      */
-    public void register(final String type, final OutputFactory factory) {
+    public void register(String type, OutputFactory factory) {
 
         if (type == null) {
             throw new IllegalArgumentException("type");
         }
         if (handlers == null) {
-            handlers = new HashMap();
+            handlers = new HashMap<String, OutputFactory>();
         }
         handlers.put(type, factory);
     }
@@ -363,7 +361,7 @@ public class OutputFactory extends AbstractFactory
      *
      * @param defaultStream the defaultStream to set
      */
-    public void setDefaultStream(final OutputStream defaultStream) {
+    public void setDefaultStream(OutputStream defaultStream) {
 
         this.defaultStream = defaultStream;
     }
@@ -377,7 +375,7 @@ public class OutputFactory extends AbstractFactory
      * @see org.extex.backend.outputStream.OutputStreamFactory#setExtension(
      *      java.lang.String)
      */
-    public void setExtension(final String extension) {
+    public void setExtension(String extension) {
 
         this.defaultExtension = extension;
     }

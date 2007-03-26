@@ -33,7 +33,7 @@ public class MediawidthTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(MediawidthTest.class);
     }
@@ -43,7 +43,7 @@ public class MediawidthTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public MediawidthTest(final String arg) {
+    public MediawidthTest(String arg) {
 
         super(arg, "mediawidth", "", "597.50787pt");
         setConfig("extex-test");

@@ -34,7 +34,7 @@ public class MiddleTest extends AbstractMathTester {
      *
      * @param arg the name
      */
-    public MiddleTest(final String arg) {
+    public MiddleTest(String arg) {
 
         super(arg, "middle", "123 ");
         setConfig("etex-test");

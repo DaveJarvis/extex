@@ -33,7 +33,7 @@ public class EveryhboxTest extends AbstractToksRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(EveryhboxTest.class);
     }
@@ -43,7 +43,7 @@ public class EveryhboxTest extends AbstractToksRegisterTester {
      *
      * @param arg the name
      */
-    public EveryhboxTest(final String arg) {
+    public EveryhboxTest(String arg) {
 
         super(arg, "everyhbox", "", "");
     }

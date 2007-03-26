@@ -31,7 +31,7 @@ public class BaselineskipTest extends AbstractSkipRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(BaselineskipTest.class);
     }
@@ -41,7 +41,7 @@ public class BaselineskipTest extends AbstractSkipRegisterTester {
      *
      * @param arg the name
      */
-    public BaselineskipTest(final String arg) {
+    public BaselineskipTest(String arg) {
 
         super(arg, "baselineskip", "", "0.0pt");
     }

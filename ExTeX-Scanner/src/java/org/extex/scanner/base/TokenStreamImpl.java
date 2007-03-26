@@ -74,7 +74,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
          *
          * @param name the print name of the state
          */
-        public State(final String name) {
+        public State(String name) {
 
             super();
             this.name = name;
@@ -171,19 +171,19 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
          * This visit method is invoked on an active token.
          * In <logo>TeX</logo> this is e.g. ~.
          *
-         * @param arg1 the first argument to pass
-         * @param arg2 the second argument to pass
-         * @param arg3 the third argument to pass
+         * @param oFactory the first argument to pass
+         * @param oTokenizer the second argument to pass
+         * @param uc the third argument to pass
          *
          * @return some value
          *
-         * @throws Exception in case of an error
+         * @throws GeneralException in case of an error
          *
          * @see org.extex.scanner.type.CatcodeVisitor#visitActive(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public Object visitActive(final Object oFactory,
-                final Object oTokenizer, final Object uc)
+        public Object visitActive(Object oFactory,
+                Object oTokenizer, Object uc)
                 throws GeneralException {
 
             state = MID_LINE;
@@ -198,19 +198,19 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
          * This visit method is invoked on a comment token.
          * In <logo>TeX</logo> this normally is a %.
          *
-         * @param arg1 the first argument to pass
-         * @param arg2 the second argument to pass
-         * @param arg3 the third argument to pass
+         * @param oFactory the first argument to pass
+         * @param oTokenizer the second argument to pass
+         * @param uc the third argument to pass
          *
-         * @return some value
+         * @return <code>null</code>
          *
-         * @throws Exception in case of an error
+         * @throws GeneralException in case of an error
          *
          * @see org.extex.scanner.type.CatcodeVisitor#visitComment(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public Object visitComment(final Object oFactory,
-                final Object oTokenizer, final Object uc)
+        public Object visitComment(Object oFactory,
+                Object oTokenizer, Object uc)
                 throws GeneralException {
 
             endLine();
@@ -220,19 +220,19 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         /**
          * This visit method is invoked on a cr token.
          *
-         * @param arg1 the first argument to pass
-         * @param arg2 the second argument to pass
-         * @param arg3 the third argument to pass
+         * @param oFactory the first argument to pass
+         * @param oTokenizer the second argument to pass
+         * @param uchar the third argument to pass
          *
          * @return some value
          *
-         * @throws Exception in case of an error
+         * @throws GeneralException in case of an error
          *
          * @see org.extex.scanner.type.CatcodeVisitor#visitCr(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public Object visitCr(final Object oFactory, final Object oTokenizer,
-                final Object uchar) throws GeneralException {
+        public Object visitCr(Object oFactory, Object oTokenizer,
+                Object uchar) throws GeneralException {
 
             TokenFactory factory = (TokenFactory) oFactory;
             Tokenizer tokenizer = (Tokenizer) oTokenizer;
@@ -257,19 +257,19 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
          * This visit method is invoked on an escape token.
          * In <logo>TeX</logo> this normally means a control sequence.
          *
-         * @param arg1 the first argument to pass
-         * @param arg2 the second argument to pass
-         * @param arg3 the third argument to pass
+         * @param oFactory the first argument to pass
+         * @param oTokenizer the second argument to pass
+         * @param uchar the third argument to pass
          *
          * @return some value
          *
-         * @throws Exception in case of an error
+         * @throws GeneralException in case of an error
          *
          * @see org.extex.scanner.type.CatcodeVisitor#visitEscape(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public Object visitEscape(final Object oFactory,
-                final Object oTokenizer, final Object uchar)
+        public Object visitEscape(Object oFactory,
+                Object oTokenizer, Object uchar)
                 throws GeneralException {
 
             TokenFactory factory = (TokenFactory) oFactory;
@@ -316,19 +316,19 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         /**
          * This visit method is invoked on an ignore token.
          *
-         * @param arg1 the first argument to pass
-         * @param arg2 the second argument to pass
-         * @param arg3 the third argument to pass
+         * @param oFactory the first argument to pass
+         * @param oTokenizer the second argument to pass
+         * @param uc the third argument to pass
          *
          * @return some value
          *
-         * @throws Exception in case of an error
+         * @throws GeneralException in case of an error
          *
          * @see org.extex.scanner.type.CatcodeVisitor#visitIgnore(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public Object visitIgnore(final Object oFactory,
-                final Object oTokenizer, final Object uc)
+        public Object visitIgnore(Object oFactory,
+                Object oTokenizer, Object uc)
                 throws GeneralException {
 
             return null;
@@ -337,19 +337,19 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         /**
          * This visit method is invoked on an invalid token.
          *
-         * @param arg1 the first argument to pass
-         * @param arg2 the second argument to pass
-         * @param arg3 the third argument to pass
+         * @param oFactory the first argument to pass
+         * @param oTokenizer the second argument to pass
+         * @param uc the third argument to pass
          *
          * @return some value
          *
-         * @throws Exception in case of an error
+         * @throws GeneralException in case of an error
          *
          * @see org.extex.scanner.type.CatcodeVisitor#visitInvalid(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public Object visitInvalid(final Object oFactory,
-                final Object oTokenizer, final Object uc)
+        public Object visitInvalid(Object oFactory,
+                Object oTokenizer, Object uc)
                 throws GeneralException {
 
             state = MID_LINE;
@@ -360,19 +360,19 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         /**
          * This visit method is invoked on a left brace token.
          *
-         * @param arg1 the first argument to pass
-         * @param arg2 the second argument to pass
-         * @param arg3 the third argument to pass
+         * @param oFactory the first argument to pass
+         * @param oTokenizer the second argument to pass
+         * @param uc the third argument to pass
          *
          * @return some value
          *
-         * @throws Exception in case of an error
+         * @throws GeneralException in case of an error
          *
          * @see org.extex.scanner.type.CatcodeVisitor#visitLeftBrace(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public Object visitLeftBrace(final Object oFactory,
-                final Object oTokenizer, final Object uc)
+        public Object visitLeftBrace(Object oFactory,
+                Object oTokenizer, Object uc)
                 throws GeneralException {
 
             Tokenizer tokenizer = (Tokenizer) oTokenizer;
@@ -385,19 +385,19 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         /**
          * This visit method is invoked on a letter token.
          *
-         * @param arg1 the first argument to pass
-         * @param arg2 the second argument to pass
-         * @param arg3 the third argument to pass
+         * @param oFactory the first argument to pass
+         * @param oTokenizer the second argument to pass
+         * @param uc the third argument to pass
          *
          * @return some value
          *
-         * @throws Exception in case of an error
+         * @throws GeneralException in case of an error
          *
          * @see org.extex.scanner.type.CatcodeVisitor#visitLetter(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public Object visitLetter(final Object oFactory,
-                final Object oTokenizer, final Object uc)
+        public Object visitLetter(Object oFactory,
+                Object oTokenizer, Object uc)
                 throws GeneralException {
 
             Tokenizer tokenizer = (Tokenizer) oTokenizer;
@@ -411,19 +411,19 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
          * This visit method is invoked on a macro parameter token.
          * In <logo>TeX</logo> this normally is a #.
          *
-         * @param arg1 the first argument to pass
-         * @param arg2 the second argument to pass
-         * @param arg3 the third argument to pass
+         * @param oFactory the first argument to pass
+         * @param oTokenizer the second argument to pass
+         * @param uc the third argument to pass
          *
          * @return some value
          *
-         * @throws Exception in case of an error
+         * @throws GeneralException in case of an error
          *
          * @see org.extex.scanner.type.CatcodeVisitor#visitMacroParam(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public Object visitMacroParam(final Object oFactory,
-                final Object oTokenizer, final Object uc)
+        public Object visitMacroParam(Object oFactory,
+                Object oTokenizer, Object uc)
                 throws GeneralException {
 
             Tokenizer tokenizer = (Tokenizer) oTokenizer;
@@ -437,19 +437,19 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
          * This visit method is invoked on a math shift token.
          * In <logo>TeX</logo> this normally is a $.
          *
-         * @param arg1 the first argument to pass
-         * @param arg2 the second argument to pass
-         * @param arg3 the third argument to pass
+         * @param oFactory the first argument to pass
+         * @param oTokenizer the second argument to pass
+         * @param uc the third argument to pass
          *
          * @return some value
          *
-         * @throws Exception in case of an error
+         * @throws GeneralException in case of an error
          *
          * @see org.extex.scanner.type.CatcodeVisitor#visitMathShift(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public Object visitMathShift(final Object oFactory,
-                final Object oTokenizer, final Object uc)
+        public Object visitMathShift(Object oFactory,
+                Object oTokenizer, Object uc)
                 throws GeneralException {
 
             Tokenizer tokenizer = (Tokenizer) oTokenizer;
@@ -462,19 +462,19 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         /**
          * This visit method is invoked on an other token.
          *
-         * @param arg1 the first argument to pass
-         * @param arg2 the second argument to pass
-         * @param arg3 the third argument to pass
+         * @param oFactory the first argument to pass
+         * @param oTokenizer the second argument to pass
+         * @param uc the third argument to pass
          *
          * @return some value
          *
-         * @throws Exception in case of an error
+         * @throws GeneralException in case of an error
          *
          * @see org.extex.scanner.type.CatcodeVisitor#visitOther(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public Object visitOther(final Object oFactory,
-                final Object oTokenizer, final Object uc)
+        public Object visitOther(Object oFactory,
+                Object oTokenizer, Object uc)
                 throws GeneralException {
 
             Tokenizer tokenizer = (Tokenizer) oTokenizer;
@@ -487,19 +487,19 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         /**
          * This visit method is invoked on a right brace token.
          *
-         * @param arg1 the first argument to pass
-         * @param arg2 the second argument to pass
-         * @param arg3 the third argument to pass
+         * @param oFactory the first argument to pass
+         * @param oTokenizer the second argument to pass
+         * @param uc the third argument to pass
          *
          * @return some value
          *
-         * @throws Exception in case of an error
+         * @throws GeneralException in case of an error
          *
          * @see org.extex.scanner.type.CatcodeVisitor#visitRightBrace(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public Object visitRightBrace(final Object oFactory,
-                final Object oTokenizer, final Object uc)
+        public Object visitRightBrace(Object oFactory,
+                Object oTokenizer, Object uc)
                 throws GeneralException {
 
             Tokenizer tokenizer = (Tokenizer) oTokenizer;
@@ -525,8 +525,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          * @see "The TeXbook [Chapter 8, page 47]"
          */
-        public Object visitSpace(final Object oFactory,
-                final Object oTokenizer, final Object uc)
+        public Object visitSpace(Object oFactory,
+                Object oTokenizer, Object uc)
                 throws CatcodeException {
 
             TokenFactory factory = (TokenFactory) oFactory;
@@ -544,19 +544,19 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
          * This visit method is invoked on a sub mark token.
          * In <logo>TeX</logo> this normally is a _.
          *
-         * @param arg1 the first argument to pass
-         * @param arg2 the second argument to pass
-         * @param arg3 the third argument to pass
+         * @param oFactory the first argument to pass
+         * @param oTokenizer the second argument to pass
+         * @param uc the third argument to pass
          *
          * @return some value
          *
-         * @throws Exception in case of an error
+         * @throws GeneralException in case of an error
          *
          * @see org.extex.scanner.type.CatcodeVisitor#visitSubMark(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public Object visitSubMark(final Object oFactory,
-                final Object oTokenizer, final Object uc)
+        public Object visitSubMark(Object oFactory,
+                Object oTokenizer, Object uc)
                 throws GeneralException {
 
             Tokenizer tokenizer = (Tokenizer) oTokenizer;
@@ -570,19 +570,19 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
          * This visit method is invoked on a sup mark token.
          * In <logo>TeX</logo> this normally is a ^.
          *
-         * @param arg1 the first argument to pass
-         * @param arg2 the second argument to pass
-         * @param arg3 the third argument to pass
+         * @param oFactory the first argument to pass
+         * @param oTokenizer the second argument to pass
+         * @param uc the third argument to pass
          *
          * @return some value
          *
-         * @throws Exception in case of an error
+         * @throws GeneralException in case of an error
          *
          * @see org.extex.scanner.type.CatcodeVisitor#visitSupMark(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public Object visitSupMark(final Object oFactory,
-                final Object oTokenizer, final Object uc)
+        public Object visitSupMark(Object oFactory,
+                Object oTokenizer, Object uc)
                 throws GeneralException {
 
             Tokenizer tokenizer = (Tokenizer) oTokenizer;
@@ -596,19 +596,19 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
          * This visit method is invoked on a tab mark token.
          * In <logo>TeX</logo> this normally is a &.
          *
-         * @param arg1 the first argument to pass
-         * @param arg2 the second argument to pass
-         * @param arg3 the third argument to pass
+         * @param oFactory the first argument to pass
+         * @param oTokenizer the second argument to pass
+         * @param uc the third argument to pass
          *
          * @return some value
          *
-         * @throws Exception in case of an error
+         * @throws GeneralException in case of an error
          *
          * @see org.extex.scanner.type.CatcodeVisitor#visitTabMark(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public Object visitTabMark(final Object oFactory,
-                final Object oTokenizer, final Object uc)
+        public Object visitTabMark(Object oFactory,
+                Object oTokenizer, Object uc)
                 throws GeneralException {
 
             Tokenizer tokenizer = (Tokenizer) oTokenizer;
@@ -634,9 +634,9 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      * @throws ConfigurationException in case of an error in the configuration
      * @throws IOException in case of an IO error
      */
-    public TokenStreamImpl(final Configuration config,
-            final TokenStreamOptions options, final InputStream stream,
-            final String theSource, final String encoding)
+    public TokenStreamImpl(Configuration config,
+            TokenStreamOptions options, InputStream stream,
+            String theSource, String encoding)
             throws IOException,
                 ConfigurationException {
 
@@ -678,9 +678,9 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      *
      * @throws IOException in case of an IO error
      */
-    public TokenStreamImpl(final Configuration config,
-            final TokenStreamOptions options, final Reader reader,
-            final Boolean isFile, final String theSource) throws IOException {
+    public TokenStreamImpl(Configuration config,
+            TokenStreamOptions options, Reader reader,
+            Boolean isFile, String theSource) throws IOException {
 
         super(isFile.booleanValue());
         this.in = new LineNumberReader(reader);
@@ -698,9 +698,9 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      *
      * @throws IOException in case of an IO error
      */
-    public TokenStreamImpl(final Configuration config,
-            final TokenStreamOptions options, final String theLine,
-            final String theSource) throws IOException {
+    public TokenStreamImpl(Configuration config,
+            TokenStreamOptions options, String theLine,
+            String theSource) throws IOException {
 
         super(false);
         this.in = new LineNumberReader(new StringReader(theLine));
@@ -740,7 +740,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      * @throws ScannerException in the rare case that an IO Exception has
      *             occurred.
      */
-    protected UnicodeChar getChar(final Tokenizer tokenizer)
+    protected UnicodeChar getChar(Tokenizer tokenizer)
             throws ScannerException {
 
         if (saveChar != null) {
@@ -785,8 +785,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      *
      * @return ...
      */
-    private UnicodeChar caretCaret(final UnicodeChar caret1,
-            final UnicodeChar caret2) {
+    private UnicodeChar caretCaret(UnicodeChar caret1,
+            UnicodeChar caret2) {
 
         UnicodeChar c = getRawChar();
         if (c == null) {
@@ -847,8 +847,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      *      org.extex.scanner.type.token.TokenFactory,
      *      org.extex.scanner.Tokenizer)
      */
-    protected Token getNext(final TokenFactory factory,
-            final Tokenizer tokenizer) throws ScannerException {
+    protected Token getNext(TokenFactory factory,
+            Tokenizer tokenizer) throws ScannerException {
 
         Token t = null;
 
@@ -895,7 +895,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      *
      * @return the integer value of a hex digit or -1 if no hex digit is given
      */
-    protected int hex2int(final int c) {
+    protected int hex2int(int c) {
 
         if ('0' <= c && c <= '9') {
             return c - '0';
@@ -940,10 +940,6 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      * Check to see if the token stream is currently at the end of line.
      *
      * @return <code>true</code> if the stream is at end of line
-     *
-     * @throws ScannerException in case that an error has been encountered.
-     *  Especially if an IO exceptions occurs it is delivered as chained
-     *  exception in a ScannerException.
      *
      * @see org.extex.scanner.TokenStream#isEol()
      */
@@ -994,7 +990,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      *
      * @param uc the character to save
      */
-    private void ungetChar(final UnicodeChar uc) {
+    private void ungetChar(UnicodeChar uc) {
 
         saveChar = uc;
     }

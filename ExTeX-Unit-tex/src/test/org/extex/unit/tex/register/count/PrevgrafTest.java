@@ -33,7 +33,7 @@ public class PrevgrafTest extends NoFlagsButGlobalPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PrevgrafTest.class);
     }
@@ -43,7 +43,7 @@ public class PrevgrafTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public PrevgrafTest(final String arg) {
+    public PrevgrafTest(String arg) {
 
         super(arg, "prevgraf", "0", "0");
     }

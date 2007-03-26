@@ -30,7 +30,7 @@ import org.extex.typesetter.Typesetter;
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision:5417 $
  */
 public final class DimenParser {
 
@@ -65,8 +65,8 @@ public final class DimenParser {
      *
      * @throws InterpreterException in case of an error
      */
-    public static Dimen parse(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public static Dimen parse(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         return LengthParser.parse(context, source, typesetter);
     }

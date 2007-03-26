@@ -49,7 +49,7 @@ public class InputFile extends Input {
      *
      * @param name the name for debugging
      */
-    public InputFile(final String name) {
+    public InputFile(String name) {
 
         super(name);
     }
@@ -67,8 +67,8 @@ public class InputFile extends Input {
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
      */
-    protected String scanFileName(final Context context,
-            final TokenSource source) throws InterpreterException {
+    protected String scanFileName(Context context,
+            TokenSource source) throws InterpreterException {
 
         return source.scanTokensAsString(context, getName());
     }

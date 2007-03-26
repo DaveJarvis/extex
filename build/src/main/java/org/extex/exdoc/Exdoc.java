@@ -23,7 +23,7 @@ package org.extex.exdoc;
  * Collect the doc snippets from Java code and store them in XML files.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5413 $
  */
 public final class Exdoc {
 
@@ -32,7 +32,7 @@ public final class Exdoc {
      *
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         try {
             if (args.length == 0) {
@@ -59,6 +59,7 @@ public final class Exdoc {
      */
     private Exdoc() {
 
+        // not used
     }
 
 }

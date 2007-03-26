@@ -33,7 +33,7 @@ public class DisplaywidowpenaltiesTest extends AbstractCountArrayTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(DisplaywidowpenaltiesTest.class);
     }
@@ -43,7 +43,7 @@ public class DisplaywidowpenaltiesTest extends AbstractCountArrayTester {
      *
      * @param arg the name
      */
-    public DisplaywidowpenaltiesTest(final String arg) {
+    public DisplaywidowpenaltiesTest(String arg) {
 
         super(arg, "displaywidowpenalties", "255", "0");
         setConfig("etex-test");

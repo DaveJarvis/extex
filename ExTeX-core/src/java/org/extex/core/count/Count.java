@@ -69,7 +69,7 @@ public class Count implements Serializable, FixedCount {
      *
      * @param count the reference to be copied
      */
-    public Count(final FixedCount count) {
+    public Count(FixedCount count) {
 
         super();
         this.value = count.getValue();
@@ -80,7 +80,7 @@ public class Count implements Serializable, FixedCount {
      *
      * @param value the value
      */
-    public Count(final long value) {
+    public Count(long value) {
 
         super();
         this.value = value;
@@ -91,7 +91,7 @@ public class Count implements Serializable, FixedCount {
      *
      * @param val the value to add to
      */
-    public void add(final long val) {
+    public void add(long val) {
 
         value += val;
     }
@@ -101,7 +101,7 @@ public class Count implements Serializable, FixedCount {
      *
      * @param val the value to add to
      */
-    public void add(final Count val) {
+    public void add(Count val) {
 
         value += val.getValue();
     }
@@ -113,7 +113,7 @@ public class Count implements Serializable, FixedCount {
      *
      * @throws ArithmeticOverflowException in case of a division by zero
      */
-    public void divide(final long denom) throws ArithmeticOverflowException {
+    public void divide(long denom) throws ArithmeticOverflowException {
 
         if (denom == 0) {
             throw new ArithmeticOverflowException(null);
@@ -129,7 +129,7 @@ public class Count implements Serializable, FixedCount {
      *
      * @throws ArithmeticOverflowException in case of a division by zero
      */
-    public void divide(final Count denom) throws ArithmeticOverflowException {
+    public void divide(Count denom) throws ArithmeticOverflowException {
 
         long d = denom.getValue();
         if (d == 0) {
@@ -143,7 +143,7 @@ public class Count implements Serializable, FixedCount {
      * @see org.extex.core.count.FixedCount#eq(
      *      org.extex.core.count.FixedCount)
      */
-    public boolean eq(final FixedCount count) {
+    public boolean eq(FixedCount count) {
 
         return count.getValue() == value;
     }
@@ -152,7 +152,7 @@ public class Count implements Serializable, FixedCount {
      * @see org.extex.core.count.FixedCount#ge(
      *      org.extex.core.count.FixedCount)
      */
-    public boolean ge(final FixedCount count) {
+    public boolean ge(FixedCount count) {
 
         return value >= count.getValue();
     }
@@ -182,7 +182,7 @@ public class Count implements Serializable, FixedCount {
      * @see org.extex.core.count.FixedCount#gt(
      *      org.extex.core.count.FixedCount)
      */
-    public boolean gt(final FixedCount count) {
+    public boolean gt(FixedCount count) {
 
         return value > count.getValue();
     }
@@ -191,7 +191,7 @@ public class Count implements Serializable, FixedCount {
      * @see org.extex.core.count.FixedCount#le(
      *      org.extex.core.count.FixedCount)
      */
-    public boolean le(final FixedCount count) {
+    public boolean le(FixedCount count) {
 
         return value <= count.getValue();
     }
@@ -200,7 +200,7 @@ public class Count implements Serializable, FixedCount {
      * @see org.extex.core.count.FixedCount#lt(
      *      org.extex.core.count.FixedCount)
      */
-    public boolean lt(final FixedCount count) {
+    public boolean lt(FixedCount count) {
 
         return value < count.getValue();
     }
@@ -210,7 +210,7 @@ public class Count implements Serializable, FixedCount {
      *
      * @param factor the factor to multiply with
      */
-    public void multiply(final long factor) {
+    public void multiply(long factor) {
 
         value *= factor;
     }
@@ -220,7 +220,7 @@ public class Count implements Serializable, FixedCount {
      *
      * @param factor the factor to multiply with
      */
-    public void multiply(final Count factor) {
+    public void multiply(Count factor) {
 
         value *= factor.getValue();
     }
@@ -229,7 +229,7 @@ public class Count implements Serializable, FixedCount {
      * @see org.extex.core.count.FixedCount#ne(
      *      org.extex.core.count.FixedCount)
      */
-    public boolean ne(final FixedCount count) {
+    public boolean ne(FixedCount count) {
 
         return value != count.getValue();
     }
@@ -239,9 +239,9 @@ public class Count implements Serializable, FixedCount {
      *
      * @param l the new value
      *
-     * @see #setValue(long)
+     * @see #set(Count)
      */
-    public void set(final long l) {
+    public void set(long l) {
 
         value = l;
     }
@@ -251,9 +251,9 @@ public class Count implements Serializable, FixedCount {
      *
      * @param c the new value
      *
-     * @see #setValue(long)
+     * @see #set(long)
      */
-    public void set(final Count c) {
+    public void set(Count c) {
 
         value = c.getValue();
     }
@@ -281,7 +281,7 @@ public class Count implements Serializable, FixedCount {
      *
      * @see #toString()
      */
-    public void toString(final StringBuffer sb) {
+    public void toString(StringBuffer sb) {
 
         sb.append(value);
     }

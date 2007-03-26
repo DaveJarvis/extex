@@ -95,7 +95,7 @@ public class Currentgrouptype extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitAdjustedHboxGroup(
          *     java.lang.Object)
          */
-        public Object visitAdjustedHboxGroup(final Object arg) {
+        public Object visitAdjustedHboxGroup(Object arg) {
 
             return ADJUSTED_HBOX;
         }
@@ -104,7 +104,7 @@ public class Currentgrouptype extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitAlignGroup(
          *     java.lang.Object)
          */
-        public Object visitAlignGroup(final Object arg) {
+        public Object visitAlignGroup(Object arg) {
 
             return ALIGNMENT;
         }
@@ -113,7 +113,7 @@ public class Currentgrouptype extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitBottomLevelGroup(
          *     java.lang.Object)
          */
-        public Object visitBottomLevelGroup(final Object arg) {
+        public Object visitBottomLevelGroup(Object arg) {
 
             return BOTTOM_LEVEL;
         }
@@ -122,7 +122,7 @@ public class Currentgrouptype extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitDiscGroup(
          *     java.lang.Object)
          */
-        public Object visitDiscGroup(final Object arg) {
+        public Object visitDiscGroup(Object arg) {
 
             return DISCRETIONARY;
         }
@@ -131,7 +131,7 @@ public class Currentgrouptype extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitHboxGroup(
          *     java.lang.Object)
          */
-        public Object visitHboxGroup(final Object arg) {
+        public Object visitHboxGroup(Object arg) {
 
             return HBOX;
         }
@@ -140,7 +140,7 @@ public class Currentgrouptype extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitInsertGroup(
          *     java.lang.Object)
          */
-        public Object visitInsertGroup(final Object arg) {
+        public Object visitInsertGroup(Object arg) {
 
             return INSERT;
         }
@@ -149,7 +149,7 @@ public class Currentgrouptype extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathChoiceGroup(
          *     java.lang.Object)
          */
-        public Object visitMathChoiceGroup(final Object arg) {
+        public Object visitMathChoiceGroup(Object arg) {
 
             return MATH_CHOICE;
         }
@@ -158,7 +158,7 @@ public class Currentgrouptype extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathGroup(
          *     java.lang.Object)
          */
-        public Object visitMathGroup(final Object arg) {
+        public Object visitMathGroup(Object arg) {
 
             return MATH;
         }
@@ -167,7 +167,7 @@ public class Currentgrouptype extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathLeftGroup(
          *     java.lang.Object)
          */
-        public Object visitMathLeftGroup(final Object arg) {
+        public Object visitMathLeftGroup(Object arg) {
 
             return MATH_LEFT;
         }
@@ -176,7 +176,7 @@ public class Currentgrouptype extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathShiftGroup(
          *     java.lang.Object)
          */
-        public Object visitMathShiftGroup(final Object arg) {
+        public Object visitMathShiftGroup(Object arg) {
 
             return MATH_SHIFT;
         }
@@ -185,7 +185,7 @@ public class Currentgrouptype extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitNoAlignGroup(
          *     java.lang.Object)
          */
-        public Object visitNoAlignGroup(final Object arg) {
+        public Object visitNoAlignGroup(Object arg) {
 
             return NO_ALIGN;
         }
@@ -194,7 +194,7 @@ public class Currentgrouptype extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitOutputGroup(
          *     java.lang.Object)
          */
-        public Object visitOutputGroup(final Object arg) {
+        public Object visitOutputGroup(Object arg) {
 
             return OUTPUT;
         }
@@ -203,7 +203,7 @@ public class Currentgrouptype extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitSemiSimpleGroup(
          *     java.lang.Object)
          */
-        public Object visitSemiSimpleGroup(final Object arg) {
+        public Object visitSemiSimpleGroup(Object arg) {
 
             return SEMI_SIMPLE;
         }
@@ -212,7 +212,7 @@ public class Currentgrouptype extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitSimpleGroup(
          *     java.lang.Object)
          */
-        public Object visitSimpleGroup(final Object arg) {
+        public Object visitSimpleGroup(Object arg) {
 
             return SIMPLE;
         }
@@ -221,7 +221,7 @@ public class Currentgrouptype extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVboxGroup(
          *     java.lang.Object)
          */
-        public Object visitVboxGroup(final Object arg) {
+        public Object visitVboxGroup(Object arg) {
 
             return VBOX;
         }
@@ -230,7 +230,7 @@ public class Currentgrouptype extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVcenterGroup(
          *     java.lang.Object)
          */
-        public Object visitVcenterGroup(final Object arg) {
+        public Object visitVcenterGroup(Object arg) {
 
             return VCENTER;
         }
@@ -239,7 +239,7 @@ public class Currentgrouptype extends AbstractCode
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVtopGroup(
          *     java.lang.Object)
          */
-        public Object visitVtopGroup(final Object arg) {
+        public Object visitVtopGroup(Object arg) {
 
             return VTOP;
         }
@@ -350,7 +350,7 @@ public class Currentgrouptype extends AbstractCode
      *
      * @param name the name for debugging
      */
-    public Currentgrouptype(final String name) {
+    public Currentgrouptype(String name) {
 
         super(name);
     }
@@ -369,13 +369,13 @@ public class Currentgrouptype extends AbstractCode
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.CountConvertible#convertCount(
+     * @see org.extex.core.count.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public long convertCount(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         return ((Long) context.getGroupType().visit(GTV, null)).longValue();
     }
@@ -398,8 +398,8 @@ public class Currentgrouptype extends AbstractCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter)
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 CatcodeException {
 

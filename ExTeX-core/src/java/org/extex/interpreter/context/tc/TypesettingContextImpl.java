@@ -83,7 +83,7 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
      *
      * @param theFont the font to use
      */
-    public TypesettingContextImpl(final Font theFont) {
+    public TypesettingContextImpl(Font theFont) {
 
         super();
         this.font = theFont;
@@ -94,7 +94,7 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
      *
      * @param tc the typesetting context to copy
      */
-    public TypesettingContextImpl(final TypesettingContext tc) {
+    public TypesettingContextImpl(TypesettingContext tc) {
 
         super();
         if (tc != null) {
@@ -165,7 +165,7 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
      * @see org.extex.interpreter.context.tc.ModifiableTypesettingContext#set(
      *      org.extex.interpreter.context.tc.TypesettingContext)
      */
-    public void set(final TypesettingContext context) {
+    public void set(TypesettingContext context) {
 
         if (context != null) {
             this.font = context.getFont();
@@ -183,7 +183,7 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
      * @see org.extex.interpreter.context.tc.ModifiableTypesettingContext#setColor(
      *      org.extex.interpreter.context.Color)
      */
-    public void setColor(final Color color) {
+    public void setColor(Color color) {
 
         this.color = color;
     }
@@ -196,7 +196,7 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
      * @see org.extex.interpreter.context.tc.ModifiableTypesettingContext#setDirection(
      *      org.extex.interpreter.context.tc.Direction)
      */
-    public void setDirection(final Direction direction) {
+    public void setDirection(Direction direction) {
 
         this.direction = direction;
     }
@@ -209,7 +209,7 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
      * @see org.extex.interpreter.context.tc.ModifiableTypesettingContext#setFont(
      *      org.extex.interpreter.type.font.Font)
      */
-    public void setFont(final Font font) {
+    public void setFont(Font font) {
 
         this.font = font;
     }
@@ -222,7 +222,7 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
      * @see org.extex.interpreter.context.tc.ModifiableTypesettingContext#setLanguage(
      *      org.extex.language.Language)
      */
-    public void setLanguage(final Language language) {
+    public void setLanguage(Language language) {
 
         this.language = language;
     }

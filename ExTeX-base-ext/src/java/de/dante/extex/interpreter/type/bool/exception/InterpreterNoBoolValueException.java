@@ -48,7 +48,7 @@ public class InterpreterNoBoolValueException extends InterpreterException {
      *
      * @param message   the message
      */
-    public InterpreterNoBoolValueException(final String message) {
+    public InterpreterNoBoolValueException(String message) {
 
         super(message);
     }

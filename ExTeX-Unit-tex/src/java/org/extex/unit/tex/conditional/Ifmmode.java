@@ -65,7 +65,7 @@ public class Ifmmode extends AbstractIf {
      *
      * @param name the name for debugging
      */
-    public Ifmmode(final String name) {
+    public Ifmmode(String name) {
 
         super(name);
     }
@@ -87,8 +87,8 @@ public class Ifmmode extends AbstractIf {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(final Context context,
-            final TokenSource source, final Typesetter typesetter) {
+    public boolean conditional(Context context,
+            TokenSource source, Typesetter typesetter) {
 
         Mode mode = typesetter.getMode();
         return (mode == Mode.MATH || mode == Mode.DISPLAYMATH);

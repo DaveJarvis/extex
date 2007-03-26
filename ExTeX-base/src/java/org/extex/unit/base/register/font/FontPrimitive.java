@@ -19,6 +19,7 @@
 
 package org.extex.unit.base.register.font;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -32,6 +33,7 @@ import org.extex.core.glue.Glue;
 import org.extex.core.glue.GlueParser;
 import org.extex.font.CoreFontFactory;
 import org.extex.font.ExtexFont;
+import org.extex.font.FontKey;
 import org.extex.font.exception.FontException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationIOException;
@@ -53,32 +55,33 @@ import org.extex.typesetter.Typesetter;
 
 /**
  * This class provides an implementation for the primitive <code>\font</code>.
- *
+ * 
  * <doc name="font">
  * <h3>The Primitive <tt>\font</tt></h3>
  * <p>
- *  The primitive <tt>\font</tt> can be used to load a font with some specified
- *  properties and assign it to a control sequence. The primary option is the
- *  specification of a size for the font. If no size is given then the font is
- *  loaded at its design size.
+ * The primitive <tt>\font</tt> can be used to load a font with some specified
+ * properties and assign it to a control sequence. The primary option is the
+ * specification of a size for the font. If no size is given then the font is
+ * loaded at its design size.
  * </p>
  * <p>
- *  An exact size can be specified with the <tt>at</tt> keyword. The dimension
- *  following this keyword determines the size of the font.
+ * An exact size can be specified with the <tt>at</tt> keyword. The dimension
+ * following this keyword determines the size of the font.
  * </p>
  * <p>
- *  The design size can be multiplied by a scale factor. This scale factor is
- *  given as number after the keyword <tt>scaled</tt>. The value given is 1000
- *  times the scale factor to be used.
+ * The design size can be multiplied by a scale factor. This scale factor is
+ * given as number after the keyword <tt>scaled</tt>. The value given is 1000
+ * times the scale factor to be used.
  * </p>
- *  TODO missing documentation of the extensions
+ * TODO missing documentation of the extensions
  * <p>
- *  This primitive is an assignment.
+ * This primitive is an assignment.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;font&rang;
  *      &rarr; &lang;prefix&rang; <tt>\font</tt> {@linkplain
  *       org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
@@ -96,7 +99,7 @@ import org.extex.typesetter.Typesetter;
  *
  *    &lang;option&rang;
  *      &rarr; [scaled] {@linkplain
-     *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}
  *       | [at] {@linkplain
  *           org.extex.core.dimen#Dimen(org.extex.interpreter.context.Context,org.extex.interpreter.TokenSource)
@@ -104,46 +107,57 @@ import org.extex.typesetter.Typesetter;
  *       | [noligatures]
  *       | [nokerning]
  *       | [letterspaced]  </pre>
- *
- *
+ * 
+ * 
  * <h4>Examples</h4>
  * <p>
- *  In the following example the font cmr12 is loaded at its design size. The
- *  macro <tt>\myfont</tt> is bound to this font.
+ * In the following example the font cmr12 is loaded at its design size. The
+ * macro <tt>\myfont</tt> is bound to this font.
  * </p>
+ * 
  * <pre class="TeXSample">
  *   \font\myfont=cmr12  </pre>
+ * 
  * <p>
- *  In the following example the font cmr12 is loaded at the size 15pt. The
- *  macro <tt>\myfont</tt> is bound to this font.
+ * In the following example the font cmr12 is loaded at the size 15pt. The macro
+ * <tt>\myfont</tt> is bound to this font.
  * </p>
+ * 
  * <pre class="TeXSample">
  *   \font\myfont=cmr12 at 15pt  </pre>
+ * 
  * <p>
- *  In the following example the font cmr12 is loaded at the double design size.
- *  The scale factor 2000 is divided by 1000 to get the effective scaling factor.
- *  The macro <tt>\magnifiedfiverm</tt> is bound to this font.
+ * In the following example the font cmr12 is loaded at the double design size.
+ * The scale factor 2000 is divided by 1000 to get the effective scaling factor.
+ * The macro <tt>\magnifiedfiverm</tt> is bound to this font.
  * </p>
+ * 
  * <pre class="TeXSample">
  *   \font\magnifiedfiverm=cmr5 scaled 2000  </pre>
+ * 
  * <p>
- *  In the following example the font cmr10 is loaded at the size of 12 true pt.
- *  The macro <tt>\second</tt> is bound to this font.
+ * In the following example the font cmr10 is loaded at the size of 12 true pt.
+ * The macro <tt>\second</tt> is bound to this font.
  * </p>
+ * 
  * <pre class="TeXSample">
  *   \font\second=cmr10 at 12truept  </pre>
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * <h3>Possible Extension</h3>
- * <p>Example</p>
+ * <p>
+ * Example
+ * </p>
+ * 
  * <pre>
  * \font\myfont=cmr12 at 15pt letterspaced 10sp plus 3sp minus 2sp
  * \font\myfont=cmr12 at 15pt letterspaced 10sp plus 3sp minus 2sp noligatures
  * \font\myfont=cmr12 at 15pt noligatures
  * \font\myfont=cmr12 at 15pt noligatures nokerning
  * </pre>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision:4431 $
@@ -154,7 +168,8 @@ public class FontPrimitive extends AbstractAssignment
             LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
@@ -171,10 +186,10 @@ public class FontPrimitive extends AbstractAssignment
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
-    public FontPrimitive(final String name) {
+    public FontPrimitive(String name) {
 
         super(name);
     }
@@ -185,23 +200,21 @@ public class FontPrimitive extends AbstractAssignment
      * This method is preferable to <tt>execute()</tt> since the
      * <tt>execute()</tt> method provided in this class takes care of
      * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> as well.
-     *
+     * 
      * @param prefix the prefix controlling the execution
      * @param context the interpreter context
      * @param source the token source
      * @param typesetter the typesetter
-     *
+     * 
      * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
-     *
+     * 
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         CodeToken fontId = source.getControlSequence(context, typesetter);
@@ -221,7 +234,7 @@ public class FontPrimitive extends AbstractAssignment
             long s = CountParser.scanInteger(context, source, typesetter);
             if (s <= 0) {
                 throw new HelpingException(getLocalizer(), "TTP.IllegalMag",
-                    Long.toString(s), "32768"); //TODO gene: max ok?
+                    Long.toString(s), "32768"); // TODO gene: max ok?
             }
             scale = new Count(s);
         }
@@ -245,14 +258,16 @@ public class FontPrimitive extends AbstractAssignment
 
         CoreFontFactory factory = context.getFontFactory();
         ExtexFont fnt;
+        FontKey fontKey;
         try {
-            Map fontKeyMap = new HashMap();
+            Map<String, Serializable> fontKeyMap =
+                    new HashMap<String, Serializable>();
             fontKeyMap.put("scale", scale);
             fontKeyMap.put("letterspaced", letterspaced);
             fontKeyMap.put("ligatures", Boolean.valueOf(ligatures));
             fontKeyMap.put("kerning", Boolean.valueOf(kerning));
-            fnt = factory.getInstance(factory.getFontKey(fontname, //
-                fontSize, fontKeyMap));
+            fontKey = factory.getFontKey(fontname, fontSize, fontKeyMap);
+            fnt = factory.getInstance(fontKey);
         } catch (FontException e) {
             if (logger != null) {
                 logger.log(Level.FINE, "FontPrimitive", e);
@@ -279,35 +294,34 @@ public class FontPrimitive extends AbstractAssignment
 
     /**
      * Convert some primitive value into a font.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the converted value
-     *
+     * 
      * @throws InterpreterException In case of an error
-     *
+     * 
      * @see org.extex.interpreter.type.font.FontConvertible#convertFont(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public Font convertFont(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public Font convertFont(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         return context.getTypesettingContext().getFont();
     }
 
     /**
      * Setter for the logger.
-     *
+     * 
      * @param log the logger to use
-     *
+     * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger log) {
+    public void enableLogging(Logger log) {
 
         if (DEBUG) {
             this.logger = log;
@@ -316,15 +330,15 @@ public class FontPrimitive extends AbstractAssignment
 
     /**
      * Scan the file name until a <code>SpaceToken</code> is found.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
-     *
+     * 
      * @return the file name as string
-     *
+     * 
      * @throws InterpreterException in case of an error
      */
-    private String scanFontName(final Context context, final TokenSource source)
+    private String scanFontName(Context context, TokenSource source)
             throws InterpreterException {
 
         Token t = source.scanNonSpace(context);

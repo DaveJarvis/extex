@@ -46,7 +46,7 @@ public class ExtensionNode extends WhatsItNode implements Node {
      *
      * @param theExtension the extension object
      */
-    public ExtensionNode(final Extension theExtension) {
+    public ExtensionNode(Extension theExtension) {
 
         super();
         this.extension = theExtension;
@@ -96,7 +96,7 @@ public class ExtensionNode extends WhatsItNode implements Node {
      * @see org.extex.typesetter.type.Node#setDepth(
      *      org.extex.core.dimen.FixedDimen)
      */
-    public void setDepth(final FixedDimen depth) {
+    public void setDepth(FixedDimen depth) {
 
         this.extension.setDepth(depth);
     }
@@ -109,7 +109,7 @@ public class ExtensionNode extends WhatsItNode implements Node {
      * @see org.extex.typesetter.type.Node#setHeight(
      *      org.extex.core.dimen.FixedDimen)
      */
-    public void setHeight(final FixedDimen height) {
+    public void setHeight(FixedDimen height) {
 
         this.extension.setHeight(height);
     }
@@ -122,7 +122,7 @@ public class ExtensionNode extends WhatsItNode implements Node {
      * @see org.extex.typesetter.type.Node#setWidth(
      *      org.extex.core.dimen.FixedDimen)
      */
-    public void setWidth(final FixedDimen width) {
+    public void setWidth(FixedDimen width) {
 
         this.extension.setWidth(width);
     }

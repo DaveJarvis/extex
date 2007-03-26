@@ -35,7 +35,7 @@ public class IfmmodeTest extends ExTeXLauncher {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(IfmmodeTest.class);
     }
@@ -45,7 +45,7 @@ public class IfmmodeTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public IfmmodeTest(final String arg) {
+    public IfmmodeTest(String arg) {
 
         super(arg);
     }

@@ -18,18 +18,19 @@
 
 package org.extex.core;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-
+import java.util.List;
 
 /**
  * This class provides a list of <code>UnicodeChar</code>s.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision:5417 $
  */
-public class UnicodeCharList implements Serializable {
+public class UnicodeCharList extends ArrayList<UnicodeChar>
+        implements
+            List<UnicodeChar> {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -38,48 +39,12 @@ public class UnicodeCharList implements Serializable {
     private static final long serialVersionUID = 20060814L;
 
     /**
-     * The field <tt>list</tt> contains the list.
-     */
-    private ArrayList list;
-
-    /**
      * Create a new object.
      * This list is initially empty.
      */
     public UnicodeCharList() {
 
         super();
-        list = new ArrayList();
-    }
-
-    /**
-     * Create a new object.
-     * This list is initially empty.
-     *
-     * @param initsize initial size for the <code>ArrayList</code>
-     */
-    public UnicodeCharList(final int initsize) {
-
-        super();
-        list = new ArrayList(initsize);
-    }
-
-    /**
-     * Add a new element.
-     *
-     * @param uc the <code>UnicodeChar</code> to add
-     */
-    public void add(final UnicodeChar uc) {
-
-        list.add(uc);
-    }
-
-    /**
-     * @see java.util.ArrayList#clear()
-     */
-    public void clear() {
-
-        this.list.clear();
     }
 
     /**
@@ -91,37 +56,25 @@ public class UnicodeCharList implements Serializable {
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
-    public boolean equals(final Object obj) {
+    public boolean equals(Object obj) {
 
         if (!(obj instanceof UnicodeCharList)) {
             return false;
         }
 
         UnicodeCharList ucl = (UnicodeCharList) obj;
-        int size = list.size();
-        if (size != ucl.list.size()) {
+        if (size() != ucl.size()) {
             return false;
         }
 
-        for (int i = 0; i < size; i++) {
-            if (!list.get(i).equals(ucl.list.get(i))) {
+        int i = 0;
+        for (UnicodeChar uc : this) {
+            if (!uc.equals(ucl.get(i++))) {
                 return false;
             }
         }
 
         return true;
-    }
-
-    /**
-     * Return the <code>UnicodeChar</code> at index.
-     *
-     * @param index the index
-     *
-     * @return  the <code>UnicodeChar</code> at index.
-     */
-    public UnicodeChar get(final int index) {
-
-        return (UnicodeChar) list.get(index);
     }
 
     /**
@@ -133,23 +86,12 @@ public class UnicodeCharList implements Serializable {
      */
     public int hashCode() {
 
-        int size = list.size();
         int hash = 0;
 
-        for (int i = 0; i < size; i++) {
-            hash += list.get(i).hashCode();
+        for (UnicodeChar uc : this) {
+            hash += uc.hashCode();
         }
         return hash;
-    }
-
-    /**
-     * Return the size of the list.
-     *
-     * @return the size of the list
-     */
-    public int size() {
-
-        return list.size();
     }
 
     /**
@@ -159,9 +101,9 @@ public class UnicodeCharList implements Serializable {
      */
     public String toString() {
 
-        StringBuffer buf = new StringBuffer(list.size());
-        for (int i = 0; i < list.size(); i++) {
-            buf.append(get(i).toString());
+        StringBuffer buf = new StringBuffer(size());
+        for (UnicodeChar uc : this) {
+            buf.append(uc.toString());
         }
         return buf.toString();
     }

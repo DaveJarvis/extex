@@ -34,7 +34,7 @@ public class CloseoutTest extends NoFlagsButImmediatePrimitiveTester {
      *
      * @param args command line parameter
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(CloseoutTest.class);
     }
@@ -44,7 +44,7 @@ public class CloseoutTest extends NoFlagsButImmediatePrimitiveTester {
      *
      * @param arg the name
      */
-    public CloseoutTest(final String arg) {
+    public CloseoutTest(String arg) {
 
         super(arg, "closeout", "1");
     }

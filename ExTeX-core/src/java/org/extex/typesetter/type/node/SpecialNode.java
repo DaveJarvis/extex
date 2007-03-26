@@ -45,7 +45,7 @@ public class SpecialNode extends WhatsItNode implements Node {
      *
      * @param text the text to pass to the backend driver
      */
-    public SpecialNode(final String text) {
+    public SpecialNode(String text) {
 
         super();
         this.text = text;
@@ -77,8 +77,8 @@ public class SpecialNode extends WhatsItNode implements Node {
      *      int,
      *      int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         sb.append("\\special{" + text + "}");
     }

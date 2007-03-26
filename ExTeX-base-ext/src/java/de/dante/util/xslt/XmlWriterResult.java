@@ -40,7 +40,7 @@ public class XmlWriterResult extends SAXResult {
      *
      * @param writer    The xml stream writer.
      */
-    public XmlWriterResult(final XMLStreamWriter writer) {
+    public XmlWriterResult(XMLStreamWriter writer) {
 
         super.setHandler(new RemoveSingleNewline(writer));
 
@@ -61,7 +61,7 @@ public class XmlWriterResult extends SAXResult {
          *
          * @param w The xml writer.
          */
-        public RemoveSingleNewline(final XMLStreamWriter w) {
+        public RemoveSingleNewline(XMLStreamWriter w) {
 
             writer = w;
         }
@@ -69,8 +69,8 @@ public class XmlWriterResult extends SAXResult {
         /**
          * @see org.xml.sax.ContentHandler#characters(char[], int, int)
          */
-        public void characters(final char[] ch, final int start,
-                final int length) throws SAXException {
+        public void characters(char[] ch, int start,
+                int length) throws SAXException {
 
             try {
                 String text = new String(ch, start, length);
@@ -99,8 +99,8 @@ public class XmlWriterResult extends SAXResult {
          * @see org.xml.sax.ContentHandler#endElement(java.lang.String,
          *      java.lang.String, java.lang.String)
          */
-        public void endElement(final String uri, final String localName,
-                final String qName) throws SAXException {
+        public void endElement(String uri, String localName,
+                String qName) throws SAXException {
 
             try {
                 writer.writeEndElement();
@@ -113,8 +113,8 @@ public class XmlWriterResult extends SAXResult {
         /**
          * @see org.xml.sax.ContentHandler#ignorableWhitespace(char[], int, int)
          */
-        public void ignorableWhitespace(final char[] ch, final int start,
-                final int length) throws SAXException {
+        public void ignorableWhitespace(char[] ch, int start,
+                int length) throws SAXException {
 
             // TODO incomplete
             throw new SAXException("not implemented");
@@ -124,7 +124,7 @@ public class XmlWriterResult extends SAXResult {
          * @see org.xml.sax.ContentHandler#processingInstruction(java.lang.String,
          *      java.lang.String)
          */
-        public void processingInstruction(final String target, final String data)
+        public void processingInstruction(String target, String data)
                 throws SAXException {
 
             // TODO incomplete
@@ -148,8 +148,8 @@ public class XmlWriterResult extends SAXResult {
          * @see org.xml.sax.ContentHandler#startElement(java.lang.String,
          *      java.lang.String, java.lang.String, org.xml.sax.Attributes)
          */
-        public void startElement(final String uri, final String localName,
-                final String qName, final Attributes atts) throws SAXException {
+        public void startElement(String uri, String localName,
+                String qName, Attributes atts) throws SAXException {
 
             try {
                 writer.writeStartElement(qName);

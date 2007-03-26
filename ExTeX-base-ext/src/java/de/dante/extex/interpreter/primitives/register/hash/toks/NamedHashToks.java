@@ -59,7 +59,7 @@ public class NamedHashToks extends AbstractAssignment implements Theable {
      * Creates a new object.
      * @param name the name for debugging
      */
-    public NamedHashToks(final String name) {
+    public NamedHashToks(String name) {
 
         super(name);
     }
@@ -71,8 +71,8 @@ public class NamedHashToks extends AbstractAssignment implements Theable {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void assign(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void assign(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         if (context instanceof ContextExtension) {
@@ -109,8 +109,8 @@ public class NamedHashToks extends AbstractAssignment implements Theable {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter)
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 CatcodeException {
 
@@ -131,7 +131,7 @@ public class NamedHashToks extends AbstractAssignment implements Theable {
      * @return the key
      * @throws InterpreterException in case of an error.
      */
-    protected String getKey(final Context context, final TokenSource source)
+    protected String getKey(Context context, TokenSource source)
             throws InterpreterException {
 
         return getName();

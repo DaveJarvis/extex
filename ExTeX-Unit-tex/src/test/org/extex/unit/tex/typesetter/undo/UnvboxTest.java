@@ -33,7 +33,7 @@ public class UnvboxTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(UnvboxTest.class);
     }
@@ -43,7 +43,7 @@ public class UnvboxTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public UnvboxTest(final String arg) {
+    public UnvboxTest(String arg) {
 
         super(arg, "unvbox", "42 ");
     }

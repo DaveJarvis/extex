@@ -48,11 +48,10 @@ public class PageSelector implements PagePipe {
     /**
      * The field <tt>ranges</tt> contains the list of ranges to check.
      */
-    private List ranges = null;
+    private List<Rule> ranges = null;
 
     /**
      * Creates a new object.
-     *
      */
     public PageSelector() {
 
@@ -65,7 +64,7 @@ public class PageSelector implements PagePipe {
      *
      * @param spec the specification of the pages to select
      */
-    public PageSelector(final String spec) {
+    public PageSelector(String spec) {
 
         super();
         addSelector(spec);
@@ -76,9 +75,9 @@ public class PageSelector implements PagePipe {
      *
      * @param spec the specification of the pages to select
      */
-    public void addSelector(final String spec) {
+    public void addSelector(String spec) {
 
-        ranges = new ArrayList();
+        ranges = new ArrayList<Rule>();
         String[] r = spec.split(",");
 
         for (int i = 0; i < r.length; i++) {
@@ -107,12 +106,14 @@ public class PageSelector implements PagePipe {
      *
      * @param rule the rule to add
      */
-    protected void addRule(final IntervalRule rule) {
+    protected void addRule(IntervalRule rule) {
 
         ranges.add(rule);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.backend.pageFilter.PagePipe#close()
      */
     public void close() throws BackendException {
@@ -125,29 +126,35 @@ public class PageSelector implements PagePipe {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.backend.pageFilter.PagePipe#setOutput(
      *      org.extex.backend.pageFilter.PagePipe)
      */
-    public void setOutput(final PagePipe pipe) {
+    public void setOutput(PagePipe pipe) {
 
         this.out = pipe;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.backend.pageFilter.PagePipe#setParameter(
      *      java.lang.String,
      *      java.lang.String)
      */
-    public void setParameter(final String name, final String value) {
+    public void setParameter(String name, String value) {
 
         //not needed
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.backend.pageFilter.PagePipe#shipout(
      *      org.extex.typesetter.type.page.Page)
      */
-    public void shipout(final Page page) throws BackendException {
+    public void shipout(Page page) throws BackendException {
 
         if (out == null) {
             throw new BackendMissingTargetException();
@@ -162,7 +169,7 @@ public class PageSelector implements PagePipe {
 
         int size = ranges.size();
         for (int i = 0; i < size; i++) {
-            if (((IntervalRule) ranges.get(i)).check(pageNo)) {
+            if (ranges.get(i).check(pageNo)) {
                 out.shipout(page);
                 return;
             }

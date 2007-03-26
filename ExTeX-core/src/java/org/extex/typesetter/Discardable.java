@@ -29,4 +29,5 @@ package org.extex.typesetter;
  */
 public interface Discardable {
 
+    // that's all
 }

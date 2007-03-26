@@ -44,7 +44,7 @@ public class MissingMathException extends HelpingException {
      *
      * @param macro the name of the macro in which the eof has been encountered
      */
-    public MissingMathException(final String macro) {
+    public MissingMathException(String macro) {
 
         super(LocalizerFactory.getLocalizer(MissingMathException.class),
                 "TTP.MissingDollar", macro);

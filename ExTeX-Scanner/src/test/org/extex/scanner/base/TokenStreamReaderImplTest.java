@@ -36,7 +36,7 @@ public class TokenStreamReaderImplTest extends TokenStreamStringImplTest {
      *
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(TokenStreamReaderImplTest.class);
     }
@@ -46,7 +46,7 @@ public class TokenStreamReaderImplTest extends TokenStreamStringImplTest {
      *
      * @param name the name
      */
-    public TokenStreamReaderImplTest(final String name) {
+    public TokenStreamReaderImplTest(String name) {
 
         super(name);
     }
@@ -58,7 +58,7 @@ public class TokenStreamReaderImplTest extends TokenStreamStringImplTest {
      * @return the new token stream
      * @throws IOException in case of an error
      */
-    protected TokenStream makeStream(final String line) throws IOException {
+    protected TokenStream makeStream(String line) throws IOException {
 
         return new TokenStreamImpl(null, null, line, "test");
     }

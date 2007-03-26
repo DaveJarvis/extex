@@ -33,7 +33,7 @@ public class MaxErrorTest extends AbstractNonGroupIntegerTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(MaxErrorTest.class);
     }
@@ -43,7 +43,7 @@ public class MaxErrorTest extends AbstractNonGroupIntegerTester {
      *
      * @param arg the name
      */
-    public MaxErrorTest(final String arg) {
+    public MaxErrorTest(String arg) {
 
         super(arg, "maxError", "", "100", DEFINE_BRACES
                 + "\\namespace{system}");

@@ -33,7 +33,7 @@ public class SplitfirstmarkTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(SplitfirstmarkTest.class);
     }
@@ -43,7 +43,7 @@ public class SplitfirstmarkTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public SplitfirstmarkTest(final String arg) {
+    public SplitfirstmarkTest(String arg) {
 
         super(arg, "splitfirstmark", "");
     }

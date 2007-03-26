@@ -22,7 +22,7 @@ package org.extex.backend.documentWriter.rtf;
 /**
  * This class provides a color with 8-bit RGB channels but without alpha
  * channel.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -41,36 +41,37 @@ public class Rgb8Color {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param blue the blue component
      * @param green the green component
      * @param red the red component
      */
-    public Rgb8Color(final int red, final int green, final int blue) {
+    public Rgb8Color(int red, int green, int blue) {
 
         super();
-        this.value = (red & EIGHT_BIT_MASK) | ((green & EIGHT_BIT_MASK) << 8)
-                | ((blue & EIGHT_BIT_MASK) << 16);
+        this.value = (red & EIGHT_BIT_MASK);
+        this.value |= (green & EIGHT_BIT_MASK) << 8;
+        this.value |= (blue & EIGHT_BIT_MASK) << 16;
     }
 
     /**
      * Indicates whether some other object is "equal to" this one.
-     *
-     * @param   obj   the reference object with which to compare.
-     *
-     * @return  <code>true</code> if this object is the same as the obj
-     *          argument; <code>false</code> otherwise.
-     *
+     * 
+     * @param obj the reference object with which to compare.
+     * 
+     * @return <code>true</code> if this object is the same as the obj
+     *         argument; <code>false</code> otherwise.
+     * 
      * @see java.lang.Object#equals(java.lang.Object)
      */
-    public boolean equals(final Object obj) {
+    public boolean equals(Object obj) {
 
         return (obj instanceof Rgb8Color) && ((Rgb8Color) obj).value == value;
     }
 
     /**
      * Getter for blue.
-     *
+     * 
      * @return the blue
      */
     public int getBlue() {
@@ -80,7 +81,7 @@ public class Rgb8Color {
 
     /**
      * Getter for green.
-     *
+     * 
      * @return the green
      */
     public int getGreen() {
@@ -90,7 +91,7 @@ public class Rgb8Color {
 
     /**
      * Getter for red.
-     *
+     * 
      * @return the red
      */
     public int getRed() {
@@ -100,9 +101,9 @@ public class Rgb8Color {
 
     /**
      * Compute the has code for this object.
-     *
+     * 
      * @return the hash code
-     *
+     * 
      * @see java.lang.Object#hashCode()
      */
     public int hashCode() {

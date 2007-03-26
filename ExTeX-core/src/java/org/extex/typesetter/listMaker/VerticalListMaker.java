@@ -82,7 +82,7 @@ public class VerticalListMaker extends InnerVerticalListMaker {
      * @param manager the manager to ask for global changes
      * @param locator the locator
      */
-    public VerticalListMaker(final ListManager manager, final Locator locator) {
+    public VerticalListMaker(ListManager manager, Locator locator) {
 
         super(manager, locator);
     }
@@ -113,12 +113,14 @@ public class VerticalListMaker extends InnerVerticalListMaker {
      * </i>
      *
      *
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.ListMaker#addAndAdjust(
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.TypesetterOptions)
      */
-    public void addAndAdjust(final NodeList nodes,
-            final TypesetterOptions context)
+    public void addAndAdjust(NodeList nodes,
+            TypesetterOptions context)
             throws TypesetterException,
                 ConfigurationException {
 
@@ -151,6 +153,8 @@ public class VerticalListMaker extends InnerVerticalListMaker {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.listMaker.InnerVerticalListMaker#getMode()
      */
     public Mode getMode() {

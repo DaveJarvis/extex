@@ -56,8 +56,8 @@ public class ConfigurationInvalidClassException extends ConfigurationException {
      * @param config the configuration in which the problem occurred or
      * <code>null</code>
      */
-    public ConfigurationInvalidClassException(final String className,
-            final String interfaceName, final Configuration config) {
+    public ConfigurationInvalidClassException(String className,
+            String interfaceName, Configuration config) {
 
         super(null, config.toString());
         this.className = className;

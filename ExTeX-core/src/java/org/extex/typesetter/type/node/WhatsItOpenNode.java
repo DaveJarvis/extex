@@ -55,7 +55,7 @@ public class WhatsItOpenNode extends WhatsItNode {
      * @param theKey the key of the file to open
      * @param outFile the out file to open
      */
-    public WhatsItOpenNode(final String theKey, final OutFile outFile) {
+    public WhatsItOpenNode(String theKey, OutFile outFile) {
 
         super();
         this.key = theKey;
@@ -82,8 +82,8 @@ public class WhatsItOpenNode extends WhatsItNode {
      *      org.extex.typesetter.type.NodeVisitor,
      *      boolean)
      */
-    public Node atShipping(final Context context, final Typesetter typesetter,
-            final NodeVisitor visitor, final boolean inHMode)
+    public Node atShipping(Context context, Typesetter typesetter,
+            NodeVisitor visitor, boolean inHMode)
             throws GeneralException {
 
         file.open();

@@ -114,9 +114,9 @@ public class ActiveNode {
      * @param lineNumber the sequence number of the line
      * @param breakNode the index of the break
      */
-    public ActiveNode(final Fitness fitness, final boolean hyphenated,
-            final long demerits, final int lineNumber,
-            final PassiveNode breakNode) {
+    public ActiveNode(Fitness fitness, boolean hyphenated,
+            long demerits, int lineNumber,
+            PassiveNode breakNode) {
 
         super();
         this.fitness = fitness;

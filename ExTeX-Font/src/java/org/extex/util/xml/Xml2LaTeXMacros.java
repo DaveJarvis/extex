@@ -63,7 +63,7 @@ public class Xml2LaTeXMacros {
      * Create a new object.
      * @param output   The Output
      */
-    public Xml2LaTeXMacros(final PrintStream output) {
+    public Xml2LaTeXMacros(PrintStream output) {
 
         out = output;
     }
@@ -73,7 +73,7 @@ public class Xml2LaTeXMacros {
      * @param in    The input.
      * @throws IOException if an IO-error occurs.
      */
-    public void printLaTeXMacros(final InputStream in) throws IOException {
+    public void printLaTeXMacros(InputStream in) throws IOException {
 
         try {
 
@@ -143,8 +143,8 @@ public class Xml2LaTeXMacros {
          *      java.lang.String, java.lang.String, java.lang.String,
          *      org.xml.sax.Attributes)
          */
-        public void startElement(final String uri, final String localName,
-                final String qName, final Attributes attributes)
+        public void startElement(String uri, String localName,
+                String qName, Attributes attributes)
                 throws SAXException {
 
             super.startElement(uri, localName, qName, attributes);
@@ -163,8 +163,8 @@ public class Xml2LaTeXMacros {
          * @see org.xml.sax.helpers.DefaultHandler#endElement(
          *      java.lang.String, java.lang.String, java.lang.String)
          */
-        public void endElement(final String uri, final String localName,
-                final String qName) throws SAXException {
+        public void endElement(String uri, String localName,
+                String qName) throws SAXException {
 
             super.endElement(uri, localName, qName);
             level--;
@@ -177,7 +177,7 @@ public class Xml2LaTeXMacros {
          * Prints the Attributes
          * @param attributes    The attributes
          */
-        private void printAttributes(final Attributes attributes) {
+        private void printAttributes(Attributes attributes) {
 
             if (attributes.getLength() > 0) {
                 for (int i = 0, n = attributes.getLength(); i < n; i++) {
@@ -222,7 +222,7 @@ public class Xml2LaTeXMacros {
      * @param args  The command line
      * @throws IOException if an IO-error occurs.
      */
-    public static void main(final String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
 
         if (args.length != 1) {
             System.err

@@ -85,7 +85,7 @@ public class MuskipPrimitive extends MuskipParameter {
      *
      * @param name the name for debugging
      */
-    public MuskipPrimitive(final String name) {
+    public MuskipPrimitive(String name) {
 
         super(name);
     }
@@ -106,8 +106,8 @@ public class MuskipPrimitive extends MuskipParameter {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    protected String getKey(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         String number =
                 Long.toString(CountParser.scanNumber(context, source,

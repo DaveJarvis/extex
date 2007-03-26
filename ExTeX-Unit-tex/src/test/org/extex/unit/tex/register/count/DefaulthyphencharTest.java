@@ -33,7 +33,7 @@ public class DefaulthyphencharTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(DefaulthyphencharTest.class);
     }
@@ -43,7 +43,7 @@ public class DefaulthyphencharTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public DefaulthyphencharTest(final String arg) {
+    public DefaulthyphencharTest(String arg) {
 
         super(arg, "defaulthyphenchar", "", "45");
     }

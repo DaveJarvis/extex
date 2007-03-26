@@ -5,7 +5,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/checkstyle-all-4.2.jar"/>
 	<classpathentry kind="lib" path="lib/checkstyle-optional-4.2.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3.8.1"/>
 	<classpathentry kind="var" path="ANT_HOME/lib/ant.jar" sourcepath="/ANT_HOME/src/main"/>
 	<classpathentry kind="var" path="ANT_HOME/lib/ant-antlr.jar" sourcepath="/ANT_HOME/src/main"/>
 	<classpathentry kind="var" path="ANT_HOME/lib/ant-apache-bcel.jar" sourcepath="/ANT_HOME/src/main"/>
@@ -22,7 +21,6 @@
 	<classpathentry kind="var" path="ANT_HOME/lib/ant-jdepend.jar" sourcepath="/ANT_HOME/src/main"/>
 	<classpathentry kind="var" path="ANT_HOME/lib/ant-jmf.jar" sourcepath="/ANT_HOME/src/main"/>
 	<classpathentry kind="var" path="ANT_HOME/lib/ant-jsch.jar" sourcepath="/ANT_HOME/src/main"/>
-	<classpathentry kind="var" path="ANT_HOME/lib/ant-junit.jar" sourcepath="/ANT_HOME/src/main"/>
 	<classpathentry kind="var" path="ANT_HOME/lib/ant-launcher.jar" sourcepath="/ANT_HOME/src/main"/>
 	<classpathentry kind="var" path="ANT_HOME/lib/ant-nodeps.jar" sourcepath="/ANT_HOME/src/main"/>
 	<classpathentry kind="var" path="ANT_HOME/lib/ant-stylebook.jar" sourcepath="/ANT_HOME/src/main"/>
@@ -33,5 +31,6 @@
 	<classpathentry kind="var" path="ANT_HOME/lib/ant-xslp.jar" sourcepath="/ANT_HOME/src/main"/>
 	<classpathentry kind="var" path="ANT_HOME/lib/xercesImpl.jar" sourcepath="/ANT_HOME/src/main"/>
 	<classpathentry kind="var" path="ANT_HOME/lib/xml-apis.jar" sourcepath="/ANT_HOME/src/main"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

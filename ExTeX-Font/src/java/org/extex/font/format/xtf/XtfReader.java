@@ -383,7 +383,7 @@ public class XtfReader implements XMLWriterConvertible {
      * @param value the long format (mac)
      * @return Returns the calculate Date
      */
-    static Date convertDate(final long value) {
+    static Date convertDate(long value) {
 
         // TODO wrong!!!
         return new Date(value);
@@ -398,7 +398,7 @@ public class XtfReader implements XMLWriterConvertible {
      * @param value the int value
      * @return Returns the binary string
      */
-    static String convertIntToBinaryString(final int value) {
+    static String convertIntToBinaryString(int value) {
 
         StringBuffer buf = new StringBuffer("00000000000000000000000000000000");
         buf.append(Integer.toBinaryString(value));
@@ -410,7 +410,7 @@ public class XtfReader implements XMLWriterConvertible {
      * @param value the int value
      * @return Returns the hex string
      */
-    static String convertIntToHexString(final int value) {
+    static String convertIntToHexString(int value) {
 
         StringBuffer buf = new StringBuffer("00000000");
         buf.append(Integer.toHexString(value));
@@ -425,7 +425,7 @@ public class XtfReader implements XMLWriterConvertible {
      * @param value the fixed value
      * @return Returns the float-value
      */
-    static float convertVersion(final int value) {
+    static float convertVersion(int value) {
 
         int v1 = value >> XtfConstants.SHIFTX10;
         return v1;
@@ -501,7 +501,7 @@ public class XtfReader implements XMLWriterConvertible {
      * @param   file     file for input
      * @throws IOException if an IO-error occurs
      */
-    public XtfReader(final File file) throws IOException {
+    public XtfReader(File file) throws IOException {
 
         this(new RandomAccessInputFile(file));
     }
@@ -511,7 +511,7 @@ public class XtfReader implements XMLWriterConvertible {
      * @param   iostream    stream for input
      * @throws IOException if an IO-error occurs
      */
-    public XtfReader(final InputStream iostream) throws IOException {
+    public XtfReader(InputStream iostream) throws IOException {
 
         this(new RandomAccessInputStream(iostream));
     }
@@ -521,7 +521,7 @@ public class XtfReader implements XMLWriterConvertible {
      * @param   rar     input
      * @throws IOException if an IO-error occurs
      */
-    public XtfReader(final RandomAccessR rar) throws IOException {
+    public XtfReader(RandomAccessR rar) throws IOException {
 
         super();
         type = TTF;
@@ -534,7 +534,7 @@ public class XtfReader implements XMLWriterConvertible {
      * @param   filename     file name for input
      * @throws IOException if an IO-error occurs
      */
-    public XtfReader(final String filename) throws IOException {
+    public XtfReader(String filename) throws IOException {
 
         this(new RandomAccessInputFile(filename));
     }
@@ -546,8 +546,8 @@ public class XtfReader implements XMLWriterConvertible {
      * @return Returns the table
      * @throws IOException if an IO-error occurs
      */
-    private XtfTable create(final XtfTableDirectory.Entry de,
-            final RandomAccessR rar) throws IOException {
+    private XtfTable create(XtfTableDirectory.Entry de,
+            RandomAccessR rar) throws IOException {
 
         XtfTable t = null;
         switch (de.getTag()) {
@@ -794,7 +794,7 @@ public class XtfReader implements XMLWriterConvertible {
      * @param   i   glyph number
      * @return Returns the glyph
      */
-    public XtfGlyph getGlyph(final int i) {
+    public XtfGlyph getGlyph(int i) {
 
         return (glyf.getDescription(i) != null) ? new XtfGlyph(glyf
                 .getDescription(i), hmtx.getLeftSideBearing(i), hmtx
@@ -896,7 +896,7 @@ public class XtfReader implements XMLWriterConvertible {
      * @param tabletype the table type
      * @return Returns the table
      */
-    public XtfTable getTable(final int tabletype) {
+    public XtfTable getTable(int tabletype) {
 
         return tablemap.get(tabletype);
     }
@@ -955,8 +955,8 @@ public class XtfReader implements XMLWriterConvertible {
      * @param encodingId The encoding id.
      * @return Returns the glyph name for the char.
      */
-    public String mapCharCodeToGlyphname(final int charCode,
-            final short platformId, final short encodingId) {
+    public String mapCharCodeToGlyphname(int charCode,
+            short platformId, short encodingId) {
 
         // get format
         Format format = getCmapTable().getFormat(platformId, encodingId);
@@ -979,8 +979,8 @@ public class XtfReader implements XMLWriterConvertible {
      * @param encodingId The encoding id.
      * @return Returns the glyph width for the char.
      */
-    public int mapCharCodeToWidth(final int charCode, final short platformId,
-            final short encodingId) {
+    public int mapCharCodeToWidth(int charCode, short platformId,
+            short encodingId) {
 
         // get format
         Format format = getCmapTable().getFormat(platformId, encodingId);
@@ -1003,8 +1003,8 @@ public class XtfReader implements XMLWriterConvertible {
      * @param encodingId The encoding id.
      * @return Returns the glyph width for the char.
      */
-    public int mapCharCodeToWidth(final String glypname,
-            final short platformId, final short encodingId) {
+    public int mapCharCodeToWidth(String glypname,
+            short platformId, short encodingId) {
 
         int pos = post.getGlyphNamePosition(glypname);
         if (pos < 0) {
@@ -1027,8 +1027,8 @@ public class XtfReader implements XMLWriterConvertible {
      * @param encodingId The encoding id.
      * @return Returns the glyph bounding box for the char.
      */
-    public XtfBoundingBox mapCharCodeToBB(final String glypname,
-            final short platformId, final short encodingId) {
+    public XtfBoundingBox mapCharCodeToBB(String glypname,
+            short platformId, short encodingId) {
 
         int pos = post.getGlyphNamePosition(glypname);
         if (pos < 0) {
@@ -1047,8 +1047,8 @@ public class XtfReader implements XMLWriterConvertible {
         return null;
     }
 
-    public int getKerning(final String glypname1, final String glypname2,
-            final short platformId, final short encodingId) {
+    public int getKerning(String glypname1, String glypname2,
+            short platformId, short encodingId) {
 
         // TODO
         
@@ -1060,7 +1060,7 @@ public class XtfReader implements XMLWriterConvertible {
      * @param rar   input
      * @throws IOException if an IO-error occurs.
      */
-    private void read(final RandomAccessR rar) throws IOException {
+    private void read(RandomAccessR rar) throws IOException {
 
         tableDirectory = new XtfTableDirectory(rar);
 
@@ -1092,7 +1092,7 @@ public class XtfReader implements XMLWriterConvertible {
             /**
              * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
              */
-            public int compare(final Object arg0, final Object arg1) {
+            public int compare(Object arg0, Object arg1) {
 
                 XtfTable t0 = (XtfTable) arg0;
                 XtfTable t1 = (XtfTable) arg1;
@@ -1116,7 +1116,7 @@ public class XtfReader implements XMLWriterConvertible {
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
-    public void writeXML(final XMLStreamWriter writer) throws IOException {
+    public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("font");
         writer.writeAttribute("type", type == TTF ? "ttf" : "otf");

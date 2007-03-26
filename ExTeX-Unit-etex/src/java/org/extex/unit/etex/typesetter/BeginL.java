@@ -20,7 +20,6 @@
 package org.extex.unit.etex.typesetter;
 
 import org.extex.core.count.Count;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -72,7 +71,7 @@ public class BeginL extends AbstractCode {
      *
      * @param name the name for debugging
      */
-    public BeginL(final String name) {
+    public BeginL(String name) {
 
         super(name);
     }
@@ -88,7 +87,6 @@ public class BeginL extends AbstractCode {
      * @param typesetter the typesetter
      *
      * @throws InterpreterException in case of an error
-     * @throws ConfigurationException in case of an configuration error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -96,10 +94,9 @@ public class BeginL extends AbstractCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
+            throws InterpreterException {
 
         if (context.getCount("TeXXeTstate").le(Count.ZERO)) {
             throw new ExtensionDisabledException(

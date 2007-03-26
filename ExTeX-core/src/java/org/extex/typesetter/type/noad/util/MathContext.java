@@ -62,7 +62,7 @@ public class MathContext {
      * @param style the new style
      * @param context the typesetter context
      */
-    public MathContext(final StyleNoad style, final TypesetterOptions context) {
+    public MathContext(StyleNoad style, TypesetterOptions context) {
 
         super();
         this.style = style;
@@ -81,7 +81,7 @@ public class MathContext {
      *
      * @see "TTP [708]"
      */
-    public FixedDimen mathParameter(final MathFontParameter p)
+    public FixedDimen mathParameter(MathFontParameter p)
             throws TypesetterException {
 
         return mathParameter(p, style);
@@ -100,8 +100,8 @@ public class MathContext {
      * @throws TypesetterException in case of an error. The exception will have
      *  a cause exception in it containing a HelpingException
      */
-    public FixedDimen mathParameter(final MathFontParameter p,
-            final StyleNoad actualStyle) throws TypesetterException {
+    public FixedDimen mathParameter(MathFontParameter p,
+            StyleNoad actualStyle) throws TypesetterException {
 
         Font font = options.getFont(MathFontParameter.key(options, //
             actualStyle.getFontName(), p.inSymbol() ? "2" : "3"));
@@ -139,7 +139,7 @@ public class MathContext {
      *
      * @see "TTP [717]"
      */
-    public Dimen convert(final Mudimen mudimen) throws TypesetterException {
+    public Dimen convert(Mudimen mudimen) throws TypesetterException {
 
         Dimen length = new Dimen(mudimen.getLength().getValue());
         length.multiply(mathParameter(MathFontParameter.MATH_QUAD, style)
@@ -169,7 +169,7 @@ public class MathContext {
      *
      * @see "TTP [716]"
      */
-    public Glue convert(final Muskip muglue) throws TypesetterException {
+    public Glue convert(Muskip muglue) throws TypesetterException {
 
         long factor =
                 mathParameter(MathFontParameter.MATH_QUAD, style).getValue();
@@ -215,7 +215,7 @@ public class MathContext {
      *
      * @param style the style to set.
      */
-    public void setStyle(final StyleNoad style) {
+    public void setStyle(StyleNoad style) {
 
         this.style = style;
     }

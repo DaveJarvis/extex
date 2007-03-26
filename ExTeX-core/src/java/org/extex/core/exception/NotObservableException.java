@@ -24,7 +24,7 @@ package org.extex.core.exception;
  * requested to be registered.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5417 $
  */
 public class NotObservableException extends GeneralException {
 
@@ -38,7 +38,7 @@ public class NotObservableException extends GeneralException {
      *
      * @param message the message
      */
-    public NotObservableException(final String message) {
+    public NotObservableException(String message) {
 
         super(message);
     }
@@ -49,7 +49,7 @@ public class NotObservableException extends GeneralException {
      * @param message the message
      * @param cause the chained throwable
      */
-    public NotObservableException(final String message, final Throwable cause) {
+    public NotObservableException(String message, Throwable cause) {
 
         super(message, cause);
     }
@@ -59,7 +59,7 @@ public class NotObservableException extends GeneralException {
      *
      * @param cause the cause for this exception
      */
-    public NotObservableException(final Throwable cause) {
+    public NotObservableException(Throwable cause) {
 
         super(cause);
     }

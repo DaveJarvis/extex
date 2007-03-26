@@ -31,7 +31,7 @@ public class DimendefTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(DimendefTest.class);
     }
@@ -41,7 +41,7 @@ public class DimendefTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public DimendefTest(final String arg) {
+    public DimendefTest(String arg) {
 
         super(arg, "x", "", "0.0pt", "\\dimendef\\x=42 ");
     }

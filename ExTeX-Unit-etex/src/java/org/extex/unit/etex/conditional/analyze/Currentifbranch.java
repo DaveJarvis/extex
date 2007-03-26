@@ -93,7 +93,7 @@ public class Currentifbranch extends AbstractCode
      *
      * @param name the name for debugging
      */
-    public Currentifbranch(final String name) {
+    public Currentifbranch(String name) {
 
         super(name);
     }
@@ -112,13 +112,13 @@ public class Currentifbranch extends AbstractCode
      *
      * @throws InterpreterException in case of an error
      *
-     * @see org.extex.interpreter.type.CountConvertible#convertCount(
+     * @see org.extex.core.count.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public long convertCount(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public long convertCount(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         Conditional conditional = context.getConditional();
         return (conditional == null ? 0 : conditional.getBranch());
@@ -142,8 +142,8 @@ public class Currentifbranch extends AbstractCode
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Tokens the(final Context context, final TokenSource source,
-            final Typesetter typesetter)
+    public Tokens the(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 CatcodeException {
 

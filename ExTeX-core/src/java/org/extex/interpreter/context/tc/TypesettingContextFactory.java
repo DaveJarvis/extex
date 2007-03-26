@@ -57,7 +57,7 @@ public class TypesettingContextFactory extends AbstractFactory {
      * kept here to speed up the method
      * <tt>{@link #newInstance() newInstance()}</tt>.
      */
-    private Class theClass;
+    private Class<?> theClass;
 
     /**
      * Creates a new object.
@@ -86,7 +86,8 @@ public class TypesettingContextFactory extends AbstractFactory {
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
-    public void configure(final Configuration configuration) {
+    public void configure(Configuration configuration)
+            throws ConfigurationException {
 
         super.configure(configuration);
 
@@ -142,8 +143,8 @@ public class TypesettingContextFactory extends AbstractFactory {
      * @throws ConfigurationInstantiationException in case that the
      *             instantiation of the class failed.
      */
-    public TypesettingContext newInstance(final TypesettingContext context,
-            final Color color) throws ConfigurationInstantiationException {
+    public TypesettingContext newInstance(TypesettingContext context,
+            Color color) throws ConfigurationInstantiationException {
 
         ModifiableTypesettingContext c = newInstance();
         c.set(context);
@@ -163,8 +164,8 @@ public class TypesettingContextFactory extends AbstractFactory {
      * @throws ConfigurationInstantiationException in case that the
      *             instantiation of the class failed.
      */
-    public TypesettingContext newInstance(final TypesettingContext context,
-            final Direction direction)
+    public TypesettingContext newInstance(TypesettingContext context,
+            Direction direction)
             throws ConfigurationInstantiationException {
 
         ModifiableTypesettingContext c = newInstance();
@@ -185,8 +186,8 @@ public class TypesettingContextFactory extends AbstractFactory {
      * @throws ConfigurationInstantiationException in case that the
      *             instantiation of the class failed.
      */
-    public TypesettingContext newInstance(final TypesettingContext context,
-            final Font font) throws ConfigurationInstantiationException {
+    public TypesettingContext newInstance(TypesettingContext context,
+            Font font) throws ConfigurationInstantiationException {
 
         ModifiableTypesettingContext c = newInstance();
         c.set(context);
@@ -206,8 +207,8 @@ public class TypesettingContextFactory extends AbstractFactory {
      *
      * @throws ConfigurationException in case of a configuration problem
      */
-    public TypesettingContext newInstance(final TypesettingContext context,
-            final Language language) {
+    public TypesettingContext newInstance(TypesettingContext context,
+            Language language) {
 
         ModifiableTypesettingContext c = newInstance();
         c.set(context);
@@ -227,8 +228,8 @@ public class TypesettingContextFactory extends AbstractFactory {
      *
      * @throws ConfigurationException in case of a configuration problem
      */
-    public TypesettingContext newInstance(final TypesettingContext tc,
-            final String language) {
+    public TypesettingContext newInstance(TypesettingContext tc,
+            String language) {
 
         ModifiableTypesettingContext c = newInstance();
         c.set(tc);
@@ -242,7 +243,7 @@ public class TypesettingContextFactory extends AbstractFactory {
      *
      * @param languageManager the new language manager
      */
-    public void setLanguageManager(final LanguageManager languageManager) {
+    public void setLanguageManager(LanguageManager languageManager) {
 
         this.languageManager = languageManager;
     }
@@ -273,7 +274,7 @@ public class TypesettingContextFactory extends AbstractFactory {
      *
      * @throws ConfigurationException in case of an error
      */
-    public TypesettingContext newInstance(final TypesettingContext tc) {
+    public TypesettingContext newInstance(TypesettingContext tc) {
 
         if (languageManager != null) {
             return newInstance(tc, languageManager.getLanguage(tc.getLanguage()

@@ -71,19 +71,21 @@ public class Gluetomu extends AbstractCode implements MuskipConvertible {
      *
      * @param name the name for tracing and debugging
      */
-    public Gluetomu(final String name) {
+    public Gluetomu(String name) {
 
         super(name);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.core.muskip.MuskipConvertible#convertMuskip(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public Muskip convertMuskip(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public Muskip convertMuskip(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         Glue glue = GlueParser.parse(source, context, typesetter);
@@ -92,14 +94,16 @@ public class Gluetomu extends AbstractCode implements MuskipConvertible {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         throw new CantUseInException(printableControlSequence(context),

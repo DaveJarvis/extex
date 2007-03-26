@@ -52,7 +52,7 @@ public class JavaloadSensor implements Loadable {
      *
      * @param sensed the sensed to set
      */
-    public static void setSensed(final boolean sensed) {
+    public static void setSensed(boolean sensed) {
 
         JavaloadSensor.sensed = sensed;
     }
@@ -79,7 +79,7 @@ public class JavaloadSensor implements Loadable {
      *      org.extex.interpreter.context.Context,
      *      org.extex.typesetter.Typesetter)
      */
-    public void init(final Context context, final Typesetter typesetter)
+    public void init(Context context, Typesetter typesetter)
             throws GeneralException {
 
         sensed = true;

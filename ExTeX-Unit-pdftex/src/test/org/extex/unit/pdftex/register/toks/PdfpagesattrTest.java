@@ -33,7 +33,7 @@ public class PdfpagesattrTest extends AbstractToksRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PdfpagesattrTest.class);
     }
@@ -43,7 +43,7 @@ public class PdfpagesattrTest extends AbstractToksRegisterTester {
      *
      * @param arg the name
      */
-    public PdfpagesattrTest(final String arg) {
+    public PdfpagesattrTest(String arg) {
 
         super(arg, "pdfpagesattr", "", "");
         setConfig("pdftex-test");

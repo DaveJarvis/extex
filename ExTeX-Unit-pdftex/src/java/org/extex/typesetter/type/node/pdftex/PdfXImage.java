@@ -66,8 +66,8 @@ public class PdfXImage extends WhatsItNode {
      * @param attr the attribute string. This can be <code>null</code>.
      * @param page the page number
      */
-    public PdfXImage(final String resource, final RuleNode rule,
-            final String attr, final long page) {
+    public PdfXImage(String resource, RuleNode rule,
+            String attr, long page) {
 
         super();
         this.resource = resource;
@@ -132,8 +132,8 @@ public class PdfXImage extends WhatsItNode {
      *      int,
      *      int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         sb.append("(pdfximage " + resource + ")");
     }

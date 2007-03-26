@@ -83,19 +83,21 @@ public class Ifscaled extends AbstractIf {
      *
      * @param name the name for debugging
      */
-    public Ifscaled(final String name) {
+    public Ifscaled(String name) {
 
         super(name);
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.unit.base.conditional.AbstractIf#conditional(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public boolean conditional(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         long value = ScaledNumber.parse(context, source, typesetter);

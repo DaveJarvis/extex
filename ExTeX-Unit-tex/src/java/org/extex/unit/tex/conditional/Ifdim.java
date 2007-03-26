@@ -78,7 +78,7 @@ public class Ifdim extends AbstractIf {
      *
      * @param name the name for debugging
      */
-    public Ifdim(final String name) {
+    public Ifdim(String name) {
 
         super(name);
     }
@@ -102,8 +102,8 @@ public class Ifdim extends AbstractIf {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public boolean conditional(Context context,
+            TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         long x = DimenParser.parse(context, source, typesetter).getValue();

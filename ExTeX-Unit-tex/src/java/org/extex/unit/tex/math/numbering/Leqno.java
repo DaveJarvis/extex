@@ -22,7 +22,6 @@ package org.extex.unit.tex.math.numbering;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.CantUseInException;
 import org.extex.typesetter.ListMaker;
 import org.extex.typesetter.Typesetter;
@@ -72,7 +71,7 @@ public class Leqno extends AbstractMathCode {
      *
      * @param name the name for tracing and debugging
      */
-    public Leqno(final String name) {
+    public Leqno(String name) {
 
         super(name);
     }
@@ -87,7 +86,7 @@ public class Leqno extends AbstractMathCode {
      * @param source the token source
      * @param typesetter the typesetter
      *
-     * @throws InterpreterException in case of an error
+     * @throws CantUseInException in case of an error
      *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
@@ -95,8 +94,8 @@ public class Leqno extends AbstractMathCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public void execute(final Flags prefix, final Context context,
-            final TokenSource source, final Typesetter typesetter)
+    public void execute(Flags prefix, Context context,
+            TokenSource source, Typesetter typesetter)
             throws CantUseInException {
 
         ListMaker lm = typesetter.getListMaker();

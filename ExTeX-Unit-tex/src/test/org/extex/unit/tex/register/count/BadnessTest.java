@@ -33,7 +33,7 @@ public class BadnessTest extends AbstractReadonlyCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(BadnessTest.class);
     }
@@ -43,7 +43,7 @@ public class BadnessTest extends AbstractReadonlyCountRegisterTester {
      *
      * @param arg the name
      */
-    public BadnessTest(final String arg) {
+    public BadnessTest(String arg) {
 
         super(arg, "badness", "", "0");
     }

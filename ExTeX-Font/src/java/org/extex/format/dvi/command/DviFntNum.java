@@ -39,7 +39,7 @@ public class DviFntNum extends DviCommand {
      * @param sp    the start pointer
      * @param f     the font
      */
-    public DviFntNum(final int opc, final int sp, final int f) {
+    public DviFntNum(int opc, int sp, int f) {
 
         super(opc, sp);
         font = f;

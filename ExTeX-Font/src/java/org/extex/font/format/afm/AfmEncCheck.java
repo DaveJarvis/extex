@@ -69,7 +69,7 @@ public class AfmEncCheck {
      *
      * @param afm   The afm parser.
      */
-    public AfmEncCheck(final AfmParser afm, final ResourceFinder afinder) {
+    public AfmEncCheck(AfmParser afm, ResourceFinder afinder) {
 
         parser = afm;
         finder = afinder;
@@ -93,7 +93,7 @@ public class AfmEncCheck {
      * @throws FontException if a font-error occurred.
      * @throws ConfigurationException from the configuration system.
      */
-    public void createPdfTable(final OutputStream out, final List enclist)
+    public void createPdfTable(OutputStream out, List enclist)
             throws IOException, DocumentException, FontException,
             ConfigurationException {
 
@@ -192,7 +192,7 @@ public class AfmEncCheck {
      * @throws ConfigurationException from the configuration system.
      * @throws IOException if an IO_error occurred.
      */
-    private EncReader[] getEncodingVectors(final List enclist)
+    private EncReader[] getEncodingVectors(List enclist)
             throws FontException, IOException, ConfigurationException {
 
         EncReader[] encv = new EncReader[enclist.size()];
@@ -219,7 +219,7 @@ public class AfmEncCheck {
         return encv;
     }
 
-    public void printMissingGlyphs(final OutputStream out, final List enclist)
+    public void printMissingGlyphs(OutputStream out, List enclist)
             throws IOException, FontException, ConfigurationException {
 
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out,

@@ -33,7 +33,7 @@ public class VruleTest extends NoFlagsPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(VruleTest.class);
     }
@@ -43,7 +43,7 @@ public class VruleTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public VruleTest(final String arg) {
+    public VruleTest(String arg) {
 
         super(arg, "vrule", "");
     }

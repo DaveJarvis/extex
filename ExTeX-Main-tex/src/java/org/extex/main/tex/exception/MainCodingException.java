@@ -43,7 +43,7 @@ public class MainCodingException extends MainException {
      *
      * @param cause the root of all evil
      */
-    public MainCodingException(final Throwable cause) {
+    public MainCodingException(Throwable cause) {
 
         super(ERROR_CODE, cause);
     }

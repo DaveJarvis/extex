@@ -56,7 +56,7 @@ public class NumberedReal extends NamedReal {
      *
      * @param name the name for debugging
      */
-    public NumberedReal(final String name) {
+    public NumberedReal(String name) {
 
         super(name);
     }
@@ -67,7 +67,7 @@ public class NumberedReal extends NamedReal {
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
      */
-    protected String getKey(final Context context, final TokenSource source)
+    protected String getKey(Context context, TokenSource source)
             throws InterpreterException {
 
         return getName() + "#" + Long.toString(source.scanNumber(context));

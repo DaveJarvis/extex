@@ -47,10 +47,10 @@ public class CompressedLiangsHyphenationTable extends LiangsHyphenationTable {
      * @param tree the tree to traverse
      * @param map the map of common codes
      */
-    private void compress(final HyphenTree tree, final Map map) {
+    private void compress(HyphenTree tree, Map<char[], char[]> map) {
 
         char[] hc = tree.getHyphenationCode();
-        char[] code = (char[]) map.get(hc);
+        char[] code = map.get(hc);
         if (code == null) {
             map.put(hc, hc);
         } else {
@@ -72,10 +72,10 @@ public class CompressedLiangsHyphenationTable extends LiangsHyphenationTable {
      *
      * @throws IOException in case of an IO error
      */
-    private void writeObject(final ObjectOutputStream out) throws IOException {
+    private void writeObject(ObjectOutputStream out) throws IOException {
 
         if (!isCompressed()) {
-            compress(getPatterns(), new HashMap());
+            compress(getPatterns(), new HashMap<char[], char[]>());
             setCompressed();
         }
         out.defaultWriteObject();

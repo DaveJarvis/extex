@@ -69,7 +69,7 @@ public class Ifeof extends AbstractIf {
      *
      * @param name the name for debugging
      */
-    public Ifeof(final String name) {
+    public Ifeof(String name) {
 
         super(name);
     }
@@ -93,8 +93,8 @@ public class Ifeof extends AbstractIf {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(final Context context, final TokenSource source,
-            final Typesetter typesetter) throws InterpreterException {
+    public boolean conditional(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         String key =
                 AbstractFileCode.scanInFileKey(context, source, typesetter);

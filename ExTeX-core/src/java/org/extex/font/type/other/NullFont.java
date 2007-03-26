@@ -128,9 +128,9 @@ public class NullFont implements Font, Serializable {
      * @return the depth of the char
      *
      * @see org.extex.interpreter.type.font.Font#getDepth(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
-    public FixedGlue getDepth(final UnicodeChar uc) {
+    public FixedGlue getDepth(UnicodeChar uc) {
 
         return Glue.ZERO;
     }
@@ -155,9 +155,9 @@ public class NullFont implements Font, Serializable {
      * @return the ef code
      *
      * @see org.extex.interpreter.type.font.Font#getEfCode(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
-    public long getEfCode(final UnicodeChar uc) {
+    public long getEfCode(UnicodeChar uc) {
 
         if (efCode == null) {
             return DEFAULT_EF_CODE;
@@ -199,7 +199,7 @@ public class NullFont implements Font, Serializable {
      * @see org.extex.interpreter.type.font.Font#getFontDimen(
      *      java.lang.String)
      */
-    public FixedDimen getFontDimen(final String name) {
+    public FixedDimen getFontDimen(String name) {
 
         return (fontDimens == null ? null : (FixedDimen) fontDimens.get(name));
     }
@@ -235,9 +235,9 @@ public class NullFont implements Font, Serializable {
      * @return the height of the char
      *
      * @see org.extex.interpreter.type.font.Font#getHeight(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
-    public FixedGlue getHeight(final UnicodeChar uc) {
+    public FixedGlue getHeight(UnicodeChar uc) {
 
         return null;
     }
@@ -262,9 +262,9 @@ public class NullFont implements Font, Serializable {
      * @return the italic correction of the char
      *
      * @see org.extex.interpreter.type.font.Font#getItalicCorrection(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
-    public FixedDimen getItalicCorrection(final UnicodeChar uc) {
+    public FixedDimen getItalicCorrection(UnicodeChar uc) {
 
         return Dimen.ZERO_PT;
     }
@@ -277,9 +277,9 @@ public class NullFont implements Font, Serializable {
      * @return the kerning between two chars
      *
      * @see org.extex.interpreter.type.font.Font#getKerning(
-     *      org.extex.type.UnicodeChar, org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
      */
-    public FixedDimen getKerning(final UnicodeChar uc1, final UnicodeChar uc2) {
+    public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
 
         return Dimen.ZERO_PT;
     }
@@ -292,10 +292,10 @@ public class NullFont implements Font, Serializable {
      * @return the ligature for two chars
      *
      * @see org.extex.interpreter.type.font.Font#getLigature(
-     *      org.extex.type.UnicodeChar,
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar,
+     *      org.extex.core.UnicodeChar)
      */
-    public UnicodeChar getLigature(final UnicodeChar uc1, final UnicodeChar uc2) {
+    public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
 
         return null;
     }
@@ -343,9 +343,9 @@ public class NullFont implements Font, Serializable {
      * @return the width of the character
      *
      * @see org.extex.interpreter.type.font.Font#getWidth(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
-    public FixedGlue getWidth(final UnicodeChar uc) {
+    public FixedGlue getWidth(UnicodeChar uc) {
 
         return null;
     }
@@ -358,9 +358,9 @@ public class NullFont implements Font, Serializable {
      * @return <code>true</code> iff the glyph is present
      *
      * @see org.extex.interpreter.type.font.Font#hasGlyph(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
-    public boolean hasGlyph(final UnicodeChar uc) {
+    public boolean hasGlyph(UnicodeChar uc) {
 
         return false;
     }
@@ -374,9 +374,9 @@ public class NullFont implements Font, Serializable {
      * @param code the associated code
      *
      * @see org.extex.interpreter.type.font.Font#setEfCode(
-     *      org.extex.type.UnicodeChar, long)
+     *      org.extex.core.UnicodeChar, long)
      */
-    public void setEfCode(final UnicodeChar uc, final long code) {
+    public void setEfCode(UnicodeChar uc, long code) {
 
         if (efCode == null) {
             efCode = new HashMap();
@@ -393,7 +393,7 @@ public class NullFont implements Font, Serializable {
      * @see org.extex.interpreter.type.font.Font#setFontDimen(
      *      java.lang.String, org.extex.core.dimen.Dimen)
      */
-    public void setFontDimen(final String name, final Dimen value) {
+    public void setFontDimen(String name, Dimen value) {
 
         if (fontDimens == null) {
             fontDimens = new HashMap();
@@ -407,9 +407,9 @@ public class NullFont implements Font, Serializable {
      * @param uc the hyphen char
      *
      * @see org.extex.interpreter.type.font.Font#setHyphenChar(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
-    public void setHyphenChar(final UnicodeChar uc) {
+    public void setHyphenChar(UnicodeChar uc) {
 
         this.hyphen = uc;
     }
@@ -420,9 +420,9 @@ public class NullFont implements Font, Serializable {
      * @param uc the skew char
      *
      * @see org.extex.interpreter.type.font.Font#setSkewChar(
-     *      org.extex.type.UnicodeChar)
+     *      org.extex.core.UnicodeChar)
      */
-    public void setSkewChar(final UnicodeChar uc) {
+    public void setSkewChar(UnicodeChar uc) {
 
         this.skew = uc;
     }

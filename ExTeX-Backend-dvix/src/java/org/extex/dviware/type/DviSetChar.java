@@ -43,7 +43,7 @@ public class DviSetChar extends AbstractDviCode {
      *
      * @param codePoint the code point of the character to set
      */
-    public DviSetChar(final int codePoint) {
+    public DviSetChar(int codePoint) {
 
         super(codePoint <= Dvi.SET_CHAR127
                 ? "set_char" + codePoint
@@ -62,7 +62,7 @@ public class DviSetChar extends AbstractDviCode {
      *
      * @see org.extex.dviware.type.DviCode#write(java.io.OutputStream)
      */
-    public int write(final OutputStream stream) throws IOException {
+    public int write(OutputStream stream) throws IOException {
 
         if (codePoint <= Dvi.SET_CHAR127) {
             stream.write(codePoint);

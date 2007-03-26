@@ -34,7 +34,7 @@ public class InterpreterTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public InterpreterTest(final String arg) {
+    public InterpreterTest(String arg) {
 
         super(arg);
     }

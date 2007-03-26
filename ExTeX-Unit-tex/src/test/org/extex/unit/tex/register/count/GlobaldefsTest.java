@@ -33,7 +33,7 @@ public class GlobaldefsTest extends ExTeXLauncher {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(GlobaldefsTest.class);
     }
@@ -43,7 +43,7 @@ public class GlobaldefsTest extends ExTeXLauncher {
      *
      * @param arg the name
      */
-    public GlobaldefsTest(final String arg) {
+    public GlobaldefsTest(String arg) {
 
         super(arg);
     }

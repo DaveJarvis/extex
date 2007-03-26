@@ -33,7 +33,7 @@ public class PdftexversionTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PdftexversionTest.class);
     }
@@ -43,7 +43,7 @@ public class PdftexversionTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public PdftexversionTest(final String arg) {
+    public PdftexversionTest(String arg) {
 
         super(arg, "pdftexversion", "", "112");
         setConfig("pdftex-test");

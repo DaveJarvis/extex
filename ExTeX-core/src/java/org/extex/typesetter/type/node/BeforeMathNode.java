@@ -50,7 +50,7 @@ public class BeforeMathNode extends AbstractNode implements Discardable {
      *
      * @param mathsurround the width to add after the math
      */
-    public BeforeMathNode(final FixedDimen mathsurround) {
+    public BeforeMathNode(FixedDimen mathsurround) {
 
         super(mathsurround);
     }
@@ -72,8 +72,8 @@ public class BeforeMathNode extends AbstractNode implements Discardable {
      *      int,
      *      int)
      */
-    public void toString(final StringBuffer sb, final String prefix,
-            final int breadth, final int depth) {
+    public void toString(StringBuffer sb, String prefix,
+            int breadth, int depth) {
 
         FixedDimen width = getWidth();
 
@@ -86,11 +86,13 @@ public class BeforeMathNode extends AbstractNode implements Discardable {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.Node#visit(
      *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
-    public Object visit(final NodeVisitor visitor, final Object value)
+    public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {
 
         return visitor.visitBeforeMath(this, value);

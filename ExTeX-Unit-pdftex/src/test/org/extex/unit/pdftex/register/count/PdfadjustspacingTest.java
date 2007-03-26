@@ -33,7 +33,7 @@ public class PdfadjustspacingTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(PdfadjustspacingTest.class);
     }
@@ -43,7 +43,7 @@ public class PdfadjustspacingTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public PdfadjustspacingTest(final String arg) {
+    public PdfadjustspacingTest(String arg) {
 
         super(arg, "pdfadjustspacing", "", "0");
         setConfig("pdftex-test");

@@ -24,9 +24,9 @@ import java.util.List;
 
 /**
  * TODO gene: missing JavaDoc.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5413 $
  */
 public class UnitInfo {
 
@@ -42,10 +42,10 @@ public class UnitInfo {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name ...
      */
-    public UnitInfo(final String name) {
+    public UnitInfo(String name) {
 
         super();
         this.name = name;
@@ -53,11 +53,11 @@ public class UnitInfo {
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @param def ...
      * @param c ...
      */
-    public void add(final String def, final String c) {
+    public void add(String def, String c) {
 
         // TODO gene: add unimplemented
 
@@ -65,7 +65,7 @@ public class UnitInfo {
 
     /**
      * Getter for name.
-     *
+     * 
      * @return the name
      */
     public String getName() {
@@ -75,7 +75,7 @@ public class UnitInfo {
 
     /**
      * Getter for primitives.
-     *
+     * 
      * @return the primitives
      */
     public List getPrimitives() {

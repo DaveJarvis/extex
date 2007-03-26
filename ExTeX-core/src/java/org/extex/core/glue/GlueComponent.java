@@ -128,7 +128,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      *
      * @param component the fixed value
      */
-    public GlueComponent(final FixedGlueComponent component) {
+    public GlueComponent(FixedGlueComponent component) {
 
         super();
         this.value = component.getValue();
@@ -140,7 +140,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      *
      * @param theValue the fixed value
      */
-    public GlueComponent(final long theValue) {
+    public GlueComponent(long theValue) {
 
         super();
         this.value = theValue;
@@ -152,7 +152,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      * @param theValue the fixed width or the factor
      * @param theOrder the order
      */
-    public GlueComponent(final long theValue, final int theOrder) {
+    public GlueComponent(long theValue, int theOrder) {
 
         super();
         this.value = theValue;
@@ -170,7 +170,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      *
      * @param g the GlueCoponent to add
      */
-    public void add(final FixedGlueComponent g) {
+    public void add(FixedGlueComponent g) {
 
         int o = g.getOrder();
         if (order == o) {
@@ -199,7 +199,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      *
      * @return <code>true</code> iff <i>|this| == |d| and ord(this) == ord(d)</i>
      */
-    public boolean eq(final FixedGlueComponent d) {
+    public boolean eq(FixedGlueComponent d) {
 
         return (d != null && //
                 value == d.getValue() && order == d.getOrder());
@@ -212,7 +212,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      *
      * @return <code>true</code> iff this is greater or equal to d
      */
-    public boolean ge(final FixedGlueComponent d) {
+    public boolean ge(FixedGlueComponent d) {
 
         return (!lt(d));
     }
@@ -244,7 +244,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      * @return <code>true</code> iff <i>ord(this) == ord(d) && |this| &gt; |d|</i>
      * or <i>ord(this) &gt; ord(d)</i>
      */
-    public boolean gt(final FixedGlueComponent d) {
+    public boolean gt(FixedGlueComponent d) {
 
         return ((order == d.getOrder() && value > d.getValue()) || //
         order > d.getOrder());
@@ -257,7 +257,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      *
      * @return <code>true</code> iff this is less or equal to d
      */
-    public boolean le(final FixedGlueComponent d) {
+    public boolean le(FixedGlueComponent d) {
 
         return (!gt(d));
     }
@@ -270,7 +270,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      * @return <code>true</code> iff <i>ord(this) == ord(d) && |this| &lt; |d|</i>
      * or <i>ord(this) &lt; ord(d)</i>
      */
-    public boolean lt(final FixedGlueComponent d) {
+    public boolean lt(FixedGlueComponent d) {
 
         return ((order == d.getOrder() && value < d.getValue()) || //
         order < d.getOrder());
@@ -285,7 +285,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      * @param nom nominator
      * @param denom denominator
      */
-    public void multiply(final long nom, final long denom) {
+    public void multiply(long nom, long denom) {
 
         this.value = this.value * nom / denom;
     }
@@ -307,7 +307,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      *
      * @return <code>false</code> iff <i>|this| == |d| and ord(this) == ord(d)</i>
      */
-    public boolean ne(final FixedGlueComponent d) {
+    public boolean ne(FixedGlueComponent d) {
 
         return (d != null && (value != d.getValue() || order != d.getOrder()));
     }
@@ -317,7 +317,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      *
      * @param d the new value
      */
-    public void set(final FixedGlueComponent d) {
+    public void set(FixedGlueComponent d) {
 
         this.value = d.getValue();
         this.order = d.getOrder();
@@ -329,7 +329,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      *
      * @param theValue the new value
      */
-    public void set(final long theValue) {
+    public void set(long theValue) {
 
         this.value = theValue;
         this.order = 0;
@@ -340,7 +340,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      *
      * @param val the new value
      */
-    public void setValue(final long val) {
+    public void setValue(long val) {
 
         this.value = val;
     }
@@ -353,7 +353,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      *
      * @param g the GlueCoponent to subtract
      */
-    public void subtract(final FixedGlueComponent g) {
+    public void subtract(FixedGlueComponent g) {
 
         int o = g.getOrder();
         if (order == o) {
@@ -387,7 +387,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      *
      * @see #toString()
      */
-    public void toString(final StringBuffer sb) {
+    public void toString(StringBuffer sb) {
 
         toString(sb, 'p', 't');
     }
@@ -402,7 +402,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      *
      * @see #toString(StringBuffer)
      */
-    public void toString(final StringBuffer sb, final char c1, final char c2) {
+    public void toString(StringBuffer sb, char c1, char c2) {
 
         long val = getValue();
 
@@ -475,7 +475,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      * @see #toString()
      * @see #toString(StringBuffer)
      */
-    public Tokens toToks(final TokenFactory factory) throws CatcodeException {
+    public Tokens toToks(TokenFactory factory) throws CatcodeException {
 
         Tokens toks = new Tokens();
         toToks(toks, factory, 'p', 't');
@@ -502,8 +502,8 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      * @see #toString()
      * @see #toString(StringBuffer)
      */
-    public void toToks(final Tokens toks, final TokenFactory factory,
-            final char c1, final char c2) throws CatcodeException {
+    public void toToks(Tokens toks, TokenFactory factory,
+            char c1, char c2) throws CatcodeException {
 
         long val = getValue();
 

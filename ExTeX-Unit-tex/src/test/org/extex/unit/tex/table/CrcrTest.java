@@ -34,7 +34,7 @@ public class CrcrTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public CrcrTest(final String arg) {
+    public CrcrTest(String arg) {
 
         super(arg, "crcr", "}", DEFINE_HASH + "\\halign{#\\cr");
     }

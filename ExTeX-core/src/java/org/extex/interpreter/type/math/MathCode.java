@@ -75,7 +75,7 @@ public class MathCode implements Serializable {
      * @param mathClass the class
      * @param mathGlyph the glyph
      */
-    public MathCode(final MathClass mathClass, final MathGlyph mathGlyph) {
+    public MathCode(MathClass mathClass, MathGlyph mathGlyph) {
 
         super();
         this.mathClass = mathClass;
@@ -86,8 +86,10 @@ public class MathCode implements Serializable {
      * Creates a new object.
      *
      * @param code the integer to analyze for the desired field values
+     *
+     * @throws InterpreterException in case of an error
      */
-    public MathCode(final long code) throws InterpreterException {
+    public MathCode(long code) throws InterpreterException {
 
         super();
         if (code < 0 || code > 0x8000) {
@@ -138,7 +140,7 @@ public class MathCode implements Serializable {
      *
      * @param sb the target string buffer
      */
-    public void toString(final StringBuffer sb) {
+    public void toString(StringBuffer sb) {
 
         mathClass.toString(sb);
         sb.append(' ');

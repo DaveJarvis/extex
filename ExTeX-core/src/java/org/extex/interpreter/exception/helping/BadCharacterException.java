@@ -51,7 +51,7 @@ public class BadCharacterException extends HelpingException {
      *
      * @param code the bad character code
      */
-    public BadCharacterException(final long code) {
+    public BadCharacterException(long code) {
 
         super(LocalizerFactory.getLocalizer(BadCharacterException.class),
                 "TTP.BadChar", Long.toString(code));

@@ -57,7 +57,7 @@ public abstract class AbstractToken implements Token, Serializable {
      *
      * @param uc the value of the token
      */
-    protected AbstractToken(final UnicodeChar uc) {
+    protected AbstractToken(UnicodeChar uc) {
 
         super();
         this.character = uc;
@@ -77,7 +77,7 @@ public abstract class AbstractToken implements Token, Serializable {
      *      org.extex.scanner.type.Catcode,
      *      char)
      */
-    public boolean equals(final Catcode cc, final char c) {
+    public boolean equals(Catcode cc, char c) {
 
         return getCatcode() == cc && equals(c);
     }
@@ -96,7 +96,7 @@ public abstract class AbstractToken implements Token, Serializable {
      *      org.extex.scanner.type.Catcode,
      *      java.lang.String)
      */
-    public boolean equals(final Catcode cc, final String s) {
+    public boolean equals(Catcode cc, String s) {
 
         return getCatcode() == cc && s.length() == 1
                 && character.getCodePoint() == s.charAt(0);
@@ -112,7 +112,7 @@ public abstract class AbstractToken implements Token, Serializable {
      *
      * @see org.extex.scanner.type.token.Token#equals(char)
      */
-    public boolean equals(final char c) {
+    public boolean equals(char c) {
 
         UnicodeChar uc = getChar();
 
@@ -128,7 +128,7 @@ public abstract class AbstractToken implements Token, Serializable {
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
-    public boolean equals(final Object t) {
+    public boolean equals(Object t) {
 
         return this == t
                 || (t instanceof Token
@@ -189,7 +189,7 @@ public abstract class AbstractToken implements Token, Serializable {
      * @see org.extex.scanner.type.token.Token#isa(
      *      org.extex.scanner.type.Catcode)
      */
-    public boolean isa(final Catcode cc) {
+    public boolean isa(Catcode cc) {
 
         return getCatcode() == cc;
     }
@@ -230,7 +230,7 @@ public abstract class AbstractToken implements Token, Serializable {
      * @see org.extex.scanner.type.token.Token#toText(
      *      org.extex.core.UnicodeChar)
      */
-    public String toText(final UnicodeChar esc) {
+    public String toText(UnicodeChar esc) {
 
         return character.toString();
     }

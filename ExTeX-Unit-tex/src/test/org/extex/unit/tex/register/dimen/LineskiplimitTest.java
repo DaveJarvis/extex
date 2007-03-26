@@ -31,7 +31,7 @@ public class LineskiplimitTest extends AbstractDimenRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(LineskiplimitTest.class);
     }
@@ -41,7 +41,7 @@ public class LineskiplimitTest extends AbstractDimenRegisterTester {
      *
      * @param arg the name
      */
-    public LineskiplimitTest(final String arg) {
+    public LineskiplimitTest(String arg) {
 
         super(arg, "lineskiplimit", "", "0.0pt");
     }

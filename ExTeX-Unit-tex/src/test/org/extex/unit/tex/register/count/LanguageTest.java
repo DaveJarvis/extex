@@ -33,7 +33,7 @@ public class LanguageTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(LanguageTest.class);
     }
@@ -43,7 +43,7 @@ public class LanguageTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public LanguageTest(final String arg) {
+    public LanguageTest(String arg) {
 
         super(arg, "language", "", "0");
     }

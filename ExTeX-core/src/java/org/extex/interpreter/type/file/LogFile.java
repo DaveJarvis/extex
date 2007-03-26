@@ -26,18 +26,19 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.scanner.type.tokens.Tokens;
 
 /**
- * This implementation of an OutFile encapsulates a Logger.
- * It outputs the items to the log file only.
- *
+ * This implementation of an OutFile encapsulates a Logger. It outputs the items
+ * to the log file only.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class LogFile extends OutFile {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>logger</tt> contains the encapsulated logger.
@@ -46,10 +47,10 @@ public class LogFile extends OutFile {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param logger the target Logger
      */
-    public LogFile(final Logger logger) {
+    public LogFile(Logger logger) {
 
         super(null);
         this.logger = logger;
@@ -57,20 +58,21 @@ public class LogFile extends OutFile {
 
     /**
      * Close the current file.
-     *
+     * 
      * @throws IOException in case of an error
-     *
+     * 
      * @see org.extex.interpreter.type.file.OutFile#close()
      */
     public void close() throws IOException {
 
+        this.logger = null;
     }
 
     /**
      * Check whether the output file is open.
-     *
+     * 
      * @return <code>true</code> iff the instance is open
-     *
+     * 
      * @see org.extex.interpreter.type.file.OutFile#isOpen()
      */
     public boolean isOpen() {
@@ -80,29 +82,32 @@ public class LogFile extends OutFile {
 
     /**
      * Open the current file.
-     *
+     * 
      * @see org.extex.interpreter.type.file.OutFile#open()
      */
     public void open() {
 
+        // nothing to do
     }
 
     /**
      * Write some tokens to the output writer.
-     *
+     * 
      * @param toks tokens to write
-     *
+     * 
      * @throws InterpreterException in case of an error
      * @throws IOException in case of an IO error
-     *
+     * 
      * @see org.extex.interpreter.type.file.OutFile#write(
      *      org.extex.scanner.type.tokens.Tokens)
      */
-    public void write(final Tokens toks)
+    public void write(Tokens toks)
             throws InterpreterException,
                 IOException {
 
-        logger.fine(toks.toText());
+        if (logger != null) {
+            logger.fine(toks.toText());
+        }
     }
 
 }

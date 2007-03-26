@@ -87,7 +87,7 @@ public class AfmCharMetric implements Serializable {
      * Add a kerning.
      * @param kp    The kerning pairs.
      */
-    public void addK(final AfmKernPairs kp) {
+    public void addK(AfmKernPairs kp) {
 
         if (k == null) {
             k = new ArrayList();
@@ -102,7 +102,7 @@ public class AfmCharMetric implements Serializable {
      * @param letter    the basic letter
      * @param lig        the ligature
      */
-    public void addL(final String letter, final String lig) {
+    public void addL(String letter, String lig) {
 
         if (l == null) {
             l = new HashMap();
@@ -118,7 +118,7 @@ public class AfmCharMetric implements Serializable {
      * @return Returns a kerning pair for a letter,
      *         or <code>null</code>, if no kerning is found.
      */
-    public AfmKernPairs getAfmKernPair(final String charpost) {
+    public AfmKernPairs getAfmKernPair(String charpost) {
 
         AfmKernPairs kp = null;
         if (k != null && charpost != null) {
@@ -228,7 +228,7 @@ public class AfmCharMetric implements Serializable {
      * @return Returns the ligature for a letter or <code>null</code>, if
      *         no ligature found.
      */
-    public String getLigature(final String letter) {
+    public String getLigature(String letter) {
 
         if (l != null && letter != null) {
             return (String) l.get(letter);
@@ -299,7 +299,7 @@ public class AfmCharMetric implements Serializable {
      * Set the bllx.
      * @param ibllx The bllx to set.
      */
-    public void setBllx(final float ibllx) {
+    public void setBllx(float ibllx) {
 
         bllx = ibllx;
     }
@@ -308,7 +308,7 @@ public class AfmCharMetric implements Serializable {
      * Set the blly.
      * @param iblly The blly to set.
      */
-    public void setBlly(final float iblly) {
+    public void setBlly(float iblly) {
 
         blly = iblly;
     }
@@ -317,7 +317,7 @@ public class AfmCharMetric implements Serializable {
      * Set the burx.
      * @param iburx The burx to set.
      */
-    public void setBurx(final float iburx) {
+    public void setBurx(float iburx) {
 
         burx = iburx;
     }
@@ -326,7 +326,7 @@ public class AfmCharMetric implements Serializable {
      * Set the bury.
      * @param ibury The bury to set.
      */
-    public void setBury(final float ibury) {
+    public void setBury(float ibury) {
 
         bury = ibury;
     }
@@ -335,7 +335,7 @@ public class AfmCharMetric implements Serializable {
      * Set the c.
      * @param ic The c to set.
      */
-    public void setC(final int ic) {
+    public void setC(int ic) {
 
         c = ic;
     }
@@ -344,7 +344,7 @@ public class AfmCharMetric implements Serializable {
      * Set the n.
      * @param s The n to set.
      */
-    public void setN(final String s) {
+    public void setN(String s) {
 
         n = s;
     }
@@ -353,7 +353,7 @@ public class AfmCharMetric implements Serializable {
      * Set the wx.
      * @param iwx The wx to set.
      */
-    public void setWx(final float iwx) {
+    public void setWx(float iwx) {
 
         wx = iwx;
     }

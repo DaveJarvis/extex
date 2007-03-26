@@ -33,7 +33,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(IntegerTest.class);
     }
@@ -43,7 +43,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
      *
      * @param arg the name
      */
-    public IntegerTest(final String arg) {
+    public IntegerTest(String arg) {
 
         super(arg, "integer", "\\x=123", "123");
         setConfig("extex-test");

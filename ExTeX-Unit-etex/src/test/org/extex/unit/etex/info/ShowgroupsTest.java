@@ -36,7 +36,7 @@ public class ShowgroupsTest extends NoFlagsPrimitiveTester {
      *
      * @param arg the name
      */
-    public ShowgroupsTest(final String arg) {
+    public ShowgroupsTest(String arg) {
 
         super(arg, "showgroups", "", "", "### bottom level group\n");
         setConfig("etex-test");

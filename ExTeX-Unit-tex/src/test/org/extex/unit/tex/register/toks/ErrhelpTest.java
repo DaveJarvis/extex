@@ -33,7 +33,7 @@ public class ErrhelpTest extends AbstractToksRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(ErrhelpTest.class);
     }
@@ -43,7 +43,7 @@ public class ErrhelpTest extends AbstractToksRegisterTester {
      *
      * @param arg the name
      */
-    public ErrhelpTest(final String arg) {
+    public ErrhelpTest(String arg) {
 
         super(arg, "errhelp", "", "");
     }

@@ -48,7 +48,7 @@ public class TestSummary extends Task {
      *
      * @param args
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         String in = "overview-summary.html";
         String out = null;
@@ -87,7 +87,7 @@ public class TestSummary extends Task {
      *
      * @throws IOException in case of an error
      */
-    private static void process(final String in, final String out)
+    private static void process(String in, String out)
             throws IOException {
 
         StringBuffer sb = new StringBuffer();
@@ -174,8 +174,8 @@ public class TestSummary extends Task {
      * @param i
      * @return
      */
-    private static String get(final StringBuffer sb, final Matcher m,
-            final int i) {
+    private static String get(StringBuffer sb, Matcher m,
+            int i) {
 
         return sb.substring(m.start(i), m.end(i));
     }

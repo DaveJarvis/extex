@@ -47,7 +47,7 @@ public class InterpreterMissingLeftBraceException extends InterpreterException {
      * Create a new object.
      * @param message   the message
      */
-    public InterpreterMissingLeftBraceException(final String message) {
+    public InterpreterMissingLeftBraceException(String message) {
 
         super(message);
     }

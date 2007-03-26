@@ -33,7 +33,7 @@ public class EveryeofTest extends AbstractToksRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(EveryeofTest.class);
     }
@@ -43,7 +43,7 @@ public class EveryeofTest extends AbstractToksRegisterTester {
      *
      * @param arg the name
      */
-    public EveryeofTest(final String arg) {
+    public EveryeofTest(String arg) {
 
         super(arg, "everyeof", "", "");
         setConfig("etex-test");

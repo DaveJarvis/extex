@@ -33,7 +33,7 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
      * Command line interface.
      * @param args the arguments
      */
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
 
         junit.textui.TestRunner.run(TracinglostcharsTest.class);
     }
@@ -43,7 +43,7 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
      *
      * @param arg the name
      */
-    public TracinglostcharsTest(final String arg) {
+    public TracinglostcharsTest(String arg) {
 
         super(arg, "tracinglostchars", "", "0");
     }

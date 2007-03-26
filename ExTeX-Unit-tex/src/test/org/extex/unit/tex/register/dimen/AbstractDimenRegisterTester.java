@@ -60,8 +60,8 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      * @param args the parameters for the invocation
      * @param init the initializing code which goes before the invocation
      */
-    public AbstractDimenRegisterTester(final String arg,
-            final String primitive, final String args, final String init) {
+    public AbstractDimenRegisterTester(String arg,
+            String primitive, String args, String init) {
 
         super(arg);
         this.primitive = primitive;
@@ -78,9 +78,9 @@ public abstract class AbstractDimenRegisterTester extends ExTeXLauncher {
      * @param init the initial value
      * @param prepare the prepare code
      */
-    public AbstractDimenRegisterTester(final String arg,
-            final String primitive, final String args, final String init,
-            final String prepare) {
+    public AbstractDimenRegisterTester(String arg,
+            String primitive, String args, String init,
+            String prepare) {
 
         this(arg, primitive, args, init);
         this.prepare = prepare;

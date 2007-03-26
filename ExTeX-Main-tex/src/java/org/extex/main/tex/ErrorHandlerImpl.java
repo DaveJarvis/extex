@@ -79,28 +79,30 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
     private InteractionVisitor iv = new InteractionVisitor() {
 
         /**
-         * @see org.extex.interpreter.InteractionVisitor#visitBatchmode(
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.interaction.InteractionVisitor#visitBatchmode(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public boolean visitBatchmode(final Object arg1, final Object arg2,
-                final Object arg3) throws GeneralException {
+        public boolean visitBatchmode(Object arg1, Object arg2,
+                Object arg3) throws GeneralException {
 
             return true;
         }
 
         /**
-         * Interact with the user in case of an error.
+         * {@inheritDoc}
          *
-         * @see org.extex.interpreter.InteractionVisitor#visitErrorstopmode(
+         * @see org.extex.interpreter.interaction.InteractionVisitor#visitErrorstopmode(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public boolean visitErrorstopmode(final Object oSource,
-                final Object oContext, final Object oException)
+        public boolean visitErrorstopmode(Object oSource,
+                Object oContext, Object oException)
                 throws GeneralException {
 
-            final TokenSource source = (TokenSource) oSource;
-            final Context context = (Context) oContext;
-            final GeneralException ex = (GeneralException) oException;
+            TokenSource source = (TokenSource) oSource;
+            Context context = (Context) oContext;
+            GeneralException ex = (GeneralException) oException;
             if (ex.getCause() instanceof ConfigurationException) {
                 showErrorLine(logger, ex.getCause().getLocalizedMessage(),
                     source.getLocator());
@@ -223,21 +225,25 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
         }
 
         /**
-         * @see org.extex.interpreter.InteractionVisitor#visitNonstopmode(
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.interaction.InteractionVisitor#visitNonstopmode(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public boolean visitNonstopmode(final Object arg1, final Object arg2,
-                final Object arg3) throws GeneralException {
+        public boolean visitNonstopmode(Object arg1, Object arg2,
+                Object arg3) throws GeneralException {
 
             return true;
         }
 
         /**
-         * @see org.extex.interpreter.InteractionVisitor#visitScrollmode(
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.interaction.InteractionVisitor#visitScrollmode(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public boolean visitScrollmode(final Object oSource,
-                final Object oContext, final Object oException)
+        public boolean visitScrollmode(Object oSource,
+                Object oContext, Object oException)
                 throws GeneralException {
 
             return false;
@@ -267,23 +273,23 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
     }
 
     /**
-     * Setter for the localizer.
-     *
-     * @param theLocalizer the new localizer
+     * {@inheritDoc}
      *
      * @see org.extex.framework.i18n.Localizable#enableLocalization(
      *      org.extex.framework.i18n.Localizer)
      */
-    public void enableLocalization(final Localizer theLocalizer) {
+    public void enableLocalization(Localizer theLocalizer) {
 
         this.localizer = theLocalizer;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(final Logger theLogger) {
+    public void enableLogging(Logger theLogger) {
 
         this.logger = theLogger;
     }
@@ -338,8 +344,8 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.interpreter.context.Context)
      */
-    public boolean handleError(final GeneralException exception, final Token t,
-            final TokenSource source, final Context context)
+    public boolean handleError(GeneralException exception, Token t,
+            TokenSource source, Context context)
             throws InterpreterException {
 
         try {
@@ -363,7 +369,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
      *
      * @throws HelpingException in case of EOF on terminal
      */
-    protected String promptAndReadLine(final String prompt)
+    protected String promptAndReadLine(String prompt)
             throws HelpingException {
 
         logger.severe(prompt);
@@ -396,7 +402,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
      * @see org.extex.interpreter.ErrorHandler#setEditHandler(
      *      org.extex.main.errorHandler.editHandler.EditHandler)
      */
-    public void setEditHandler(final EditHandler editHandler) {
+    public void setEditHandler(EditHandler editHandler) {
 
         this.editHandler = editHandler;
     }
@@ -408,8 +414,8 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
      * @param message the error message
      * @param locator the locator for the error position
      */
-    protected void showErrorLine(final Logger logger, final String message,
-            final Locator locator) {
+    protected void showErrorLine(Logger logger, String message,
+            Locator locator) {
 
         if (locator == null) {
             return;

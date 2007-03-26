@@ -24,7 +24,7 @@ package org.extex.core;
  * to it.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5417 $
  */
 public class ComposedUnicodeChar extends UnicodeChar {
 
@@ -47,7 +47,7 @@ public class ComposedUnicodeChar extends UnicodeChar {
      * @param codePoint the 32-bit code point
      * @param combining the array of code points for the combining characters
      */
-    public ComposedUnicodeChar(final int codePoint, final int[] combining) {
+    public ComposedUnicodeChar(int codePoint, int[] combining) {
 
         super(codePoint);
         for (int i = 0; i < combining.length; i++) {
@@ -73,7 +73,7 @@ public class ComposedUnicodeChar extends UnicodeChar {
      * @return <code>true</code> if the characters are equal, otherwise
      *         <code>false</code>
      */
-    public boolean equals(final Object unicodeChar) {
+    public boolean equals(Object unicodeChar) {
 
         if (!(unicodeChar instanceof ComposedUnicodeChar)
                 || this.getCodePoint() != ((UnicodeChar) unicodeChar)

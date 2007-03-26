@@ -35,6 +35,7 @@ public final class AllTests {
      */
     private AllTests() {
 
+        //
     }
 
     /**

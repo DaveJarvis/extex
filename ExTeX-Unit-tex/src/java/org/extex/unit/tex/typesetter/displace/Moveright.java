@@ -84,7 +84,7 @@ public class Moveright extends AbstractBoxPrimitive {
      *
      * @param name the name for debugging
      */
-    public Moveright(final String name) {
+    public Moveright(String name) {
 
         super(name);
     }
@@ -109,8 +109,8 @@ public class Moveright extends AbstractBoxPrimitive {
      *      org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
-    public Box getBox(final Context context, final TokenSource source,
-            final Typesetter typesetter, final Token insert)
+    public Box getBox(Context context, TokenSource source,
+            Typesetter typesetter, Token insert)
             throws InterpreterException {
 
         Dimen move = DimenParser.parse(context, source, typesetter);
