@@ -89,6 +89,40 @@ public class XtfReaderFxlrTest extends TestCase {
     }
 
     /**
+     * test 04.
+     *
+     * @throws Exception if an error occurred.
+     */
+    public void test04() throws Exception {
+
+        OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
+        assertNotNull(cff);
+
+        assertEquals("2.4.9", cff.getTopDictIndex("version").getValue());
+        assertEquals(
+                "LinuxLibertine by Philipp H. Poll, Free Font under Terms of the GPL (General Public License - http://www.gnu.org/copyleft/gpl.html) and OFL (Open Font Licence). Created with FontForge 1.0 (http://fontforge.sf.net) Sept 2003, 2004, 2005, 2006, 2007",
+                cff.getTopDictIndex("notice").getValue());
+        assertEquals("Linux Libertine", cff.getTopDictIndex("fullname")
+                .getValue());
+        assertEquals("Linux Libertine", cff.getTopDictIndex("familyname")
+                .getValue());
+        assertEquals("Regular", cff.getTopDictIndex("weight").getValue());
+        //    assertEquals("StandardEncoding", cff.getEncoding());
+        //        assertEquals(false, cff.isFixedPitch());
+        //        assertEquals(0, cff.getItalicAngle());
+        //        assertEquals(-146, cff.getUnderlinePosition());
+        //        assertEquals(40, cff.getUnderlineThicknessn());
+        //        assertEquals("0", cff.getTopDictIndex("PaintType").getValue());
+        //        assertEquals("2", cff.getTopDictIndex("CharstringType").getValue());
+        //        assertEquals("0", cff.getTopDictIndex("StrokeWidth").getValue());
+
+        //        <FontMatrix value="0.001 0 0 0.001 0 0"/>
+        //        <FontBBox value="-430 -290 1417 1127"/>
+        //        <StrokeWidth value="0"/>
+
+    }
+
+    /**
      * test 99.
      *
      * @throws Exception if an error occurred.

@@ -34,6 +34,9 @@ import org.extex.util.xml.XMLStreamWriter;
  * successive values. For example, an array a0, a1, ...,
  * an would be encoded as: a0 (a1-a0) (a2-a1) ..., (an-a(n-1)).
  * </p>
+ * <p>
+ * For calculation, you must use a0 (a1+a0) (a2+a1) ..., (an+a(n-1))
+ * </p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -57,8 +60,7 @@ public abstract class T1DictDelta extends T1DictKey {
      * @param id    the operator-id for the value
      * @throws IOException if an IO.error occurs.
      */
-    protected T1DictDelta(List stack, short[] id)
-            throws IOException {
+    protected T1DictDelta(List stack, short[] id) throws IOException {
 
         super();
         if (stack.size() < 1) {
@@ -73,8 +75,8 @@ public abstract class T1DictDelta extends T1DictKey {
         for (int i = 0; i < stack.size(); i++) {
             T2Number number = (T2Number) stack.get(i);
             int act = number.getInteger();
-            value[i] = new Integer(act - old);
-            old = act;
+            old = act + old;
+            value[i] = new Integer(old);
         }
     }
 

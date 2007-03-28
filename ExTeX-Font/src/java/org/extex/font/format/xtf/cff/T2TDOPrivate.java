@@ -100,12 +100,23 @@ public class T2TDOPrivate extends T2TDOArray {
     }
 
     /**
+     * Returns the dict key for the name.
+     *
+     * @param name  The name of the key.
+     * @return Returns the dict key for the name.
+     */
+    public T1DictKey getT1DictKey(String name) {
+
+        return (T1DictKey) hashValues.get(name.toLowerCase());
+    }
+
+    /**
      * @see org.extex.font.format.xtf.cff.T2Operator#init(
      *      org.extex.util.file.random.RandomAccessR,
      *      org.extex.font.format.xtf.OtfTableCFF, int)
      */
-    public void init(RandomAccessR rar, OtfTableCFF cff,
-            int baseoffset) throws IOException {
+    public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset)
+            throws IOException {
 
         hashValues = new HashMap();
 

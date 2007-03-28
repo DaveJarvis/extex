@@ -90,11 +90,11 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
     }
 
     /**
-     * test 04.
+     * test 04a.
      *
      * @throws Exception if an error occurred.
      */
-    public void test04() throws Exception {
+    public void test04a() throws Exception {
 
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
         assertNotNull(cff);
@@ -112,13 +112,160 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
         assertEquals(0, cff.getItalicAngle());
         assertEquals(-146, cff.getUnderlinePosition());
         assertEquals(40, cff.getUnderlineThicknessn());
-        //        assertEquals("0", cff.getTopDictIndex("PaintType").getValue());
-        //        assertEquals("2", cff.getTopDictIndex("CharstringType").getValue());
-        //        assertEquals("0", cff.getTopDictIndex("StrokeWidth").getValue());
+        assertEquals(0, cff.getPaintType());
+        assertEquals(2, cff.getCharstringType());
+        assertEquals(0, cff.getStrokeWidth());
 
+    }
+
+    /**
+     * test 04b.
+     *
+     * @throws Exception if an error occurred.
+     */
+    public void test04b() throws Exception {
+
+        OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
+        assertNotNull(cff);
+
+        double[] fm = cff.getFontMatrix();
+        assertNotNull(fm);
+        assertEquals(6, fm.length);
         //        <FontMatrix value="0.001 0 0 0.001 0 0"/>
+        double[] d = {0.001, 0, 0, 0.001, 0, 0};
+        for (int i = 0; i < d.length; i++) {
+            assertEquals(d[i], fm[i]);
+        }
+
+    }
+
+    /**
+     * test 04c.
+     *
+     * @throws Exception if an error occurred.
+     */
+    public void test04c() throws Exception {
+
+        OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
+        assertNotNull(cff);
+
+        int[] fb = cff.getFontBBox();
+        assertNotNull(fb);
+        assertEquals(4, fb.length);
         //        <FontBBox value="-430 -290 1417 1127"/>
-        //        <StrokeWidth value="0"/>
+        int[] iarr = {-430, -290, 1417, 1127};
+        for (int i = 0; i < iarr.length; i++) {
+            assertEquals(iarr[i], fb[i]);
+        }
+    }
+
+    /**
+     * test 05a.
+     *
+     * @throws Exception if an error occurred.
+     */
+    public void test05a() throws Exception {
+
+        OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
+        assertNotNull(cff);
+
+        int[] val = cff.getBlueValues();
+        assertNotNull(val);
+        assertEquals(8, val.length);
+        //        <BlueValues value="-22 0 431 448 666 677 683 705"/>
+        int[] iarr = {-22, 0, 431, 448, 666, 677, 683, 705};
+
+        for (int i = 0; i < iarr.length; i++) {
+            assertEquals(iarr[i], val[i]);
+        }
+    }
+
+    /**
+     * test 05b.
+     *
+     * @throws Exception if an error occurred.
+     */
+    public void test05b() throws Exception {
+
+        OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
+        assertNotNull(cff);
+
+        int[] val = cff.getStemSnapH();
+        assertNotNull(val);
+        assertEquals(12, val.length);
+        //        <StemSnapH value="21 22 23 25 26 28 30 31 40 42 45 106"/>
+        int[] iarr = {21, 22, 23, 25, 26, 28, 30, 31, 40, 42, 45, 106};
+
+        for (int i = 0; i < iarr.length; i++) {
+            assertEquals(iarr[i], val[i]);
+        }
+
+    }
+
+    /**
+     * test 05c.
+     *
+     * @throws Exception if an error occurred.
+     */
+    public void test05c() throws Exception {
+
+        OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
+        assertNotNull(cff);
+
+        int[] val = cff.getStemSnapV();
+        assertNotNull(val);
+        assertEquals(12, val.length);
+        //        <StemSnapV value="25 30 40 66 69 77 83 89 92 97 103 107"/>
+        int[] iarr = {25, 30, 40, 66, 69, 77, 83, 89, 92, 97, 103, 107};
+
+        for (int i = 0; i < iarr.length; i++) {
+            assertEquals(iarr[i], val[i]);
+        }
+
+    }
+
+    /**
+     * test 05d.
+     *
+     * @throws Exception if an error occurred.
+     */
+    public void test05d() throws Exception {
+
+        OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
+        assertNotNull(cff);
+
+        //        <BlueScale value="0.04546"/>
+        assertEquals(0.04546, cff.getBlueScale());
+
+        //        <BlueShift value="7"/>
+        assertEquals(7, cff.getBlueShift());
+
+        //        <BlueFuzz value="0"/>
+        assertEquals(0, cff.getBlueFuzz());
+
+        //        <StdHW value="31"/>
+        assertEquals(31, cff.getStdHW());
+
+        //        <StdVW value="25"/>
+        assertEquals(25, cff.getStdVW());
+
+        //        <ForceBold value="0"/>
+        assertEquals(false, cff.getForceBold());
+
+        //        <LanguageGroup value="0"/>
+        assertEquals(0, cff.getLanguageGroup());
+
+        //        <ExpansionFactor value="0.06"/>
+        assertEquals(0.06, cff.getExpansionFactor());
+
+        //        <initialRandomSeed value="0"/>
+        assertEquals(0, cff.getInitialRandomSeed());
+
+        //        <defaultWidthX value="500"/>
+        assertEquals(500, cff.getDefaultWidthX());
+
+        //        <nominalWidthX value="658"/>
+        assertEquals(658, cff.getNominalWidthX());
 
     }
 

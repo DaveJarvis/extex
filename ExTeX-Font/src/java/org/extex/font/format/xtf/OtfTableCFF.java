@@ -26,12 +26,22 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.extex.font.format.xtf.cff.T1DictBoolean;
+import org.extex.font.format.xtf.cff.T1DictKey;
+import org.extex.font.format.xtf.cff.T1DictNumber;
 import org.extex.font.format.xtf.cff.T2CharString;
+import org.extex.font.format.xtf.cff.T2Number;
 import org.extex.font.format.xtf.cff.T2Operator;
 import org.extex.font.format.xtf.cff.T2StandardEncoding;
 import org.extex.font.format.xtf.cff.T2StandardStrings;
 import org.extex.font.format.xtf.cff.T2TDOBoolean;
+import org.extex.font.format.xtf.cff.T2TDOCharStringType;
+import org.extex.font.format.xtf.cff.T2TDOFontBBox;
+import org.extex.font.format.xtf.cff.T2TDOFontMatrix;
 import org.extex.font.format.xtf.cff.T2TDOItalicAngle;
+import org.extex.font.format.xtf.cff.T2TDOPaintType;
+import org.extex.font.format.xtf.cff.T2TDOPrivate;
+import org.extex.font.format.xtf.cff.T2TDOStrokeWidth;
 import org.extex.font.format.xtf.cff.T2TDOUnderlinePosition;
 import org.extex.font.format.xtf.cff.T2TDOUnderlineThickness;
 import org.extex.util.XMLWriterConvertible;
@@ -178,7 +188,547 @@ public class OtfTableCFF extends AbstractXtfTable
     }
 
     /**
+     * Returns the nominalWidthX.
+     * (default: 0)
+     *
+     * @return Returns the nominalWidthX.
+     */
+    public int getNominalWidthX() {
+
+        T2Operator op = (T2Operator) topDictIndex.get("private");
+        if (op == null) {
+            return 0;
+        }
+        if (op instanceof T2TDOPrivate) {
+            T2TDOPrivate val = (T2TDOPrivate) op;
+
+            T1DictKey dictkey = val.getT1DictKey("nominalWidthX");
+            if (dictkey == null) {
+                return 0;
+            }
+            if (dictkey instanceof T1DictNumber) {
+                T1DictNumber t1 = (T1DictNumber) dictkey;
+                return t1.getInteger();
+            }
+        }
+
+        return 0;
+    }
+
+    /**
+     * Returns the defaultWidthX.
+     * (default: 0)
+     *
+     * @return Returns the defaultWidthX.
+     */
+    public int getDefaultWidthX() {
+
+        T2Operator op = (T2Operator) topDictIndex.get("private");
+        if (op == null) {
+            return 0;
+        }
+        if (op instanceof T2TDOPrivate) {
+            T2TDOPrivate val = (T2TDOPrivate) op;
+
+            T1DictKey dictkey = val.getT1DictKey("defaultWidthX");
+            if (dictkey == null) {
+                return 0;
+            }
+            if (dictkey instanceof T1DictNumber) {
+                T1DictNumber t1 = (T1DictNumber) dictkey;
+                return t1.getInteger();
+            }
+        }
+
+        return 0;
+    }
+
+    /**
+     * Returns the initialRandomSeed.
+     * (default: 0)
+     *
+     * @return Returns the initialRandomSeed.
+     */
+    public int getInitialRandomSeed() {
+
+        T2Operator op = (T2Operator) topDictIndex.get("private");
+        if (op == null) {
+            return 0;
+        }
+        if (op instanceof T2TDOPrivate) {
+            T2TDOPrivate val = (T2TDOPrivate) op;
+
+            T1DictKey dictkey = val.getT1DictKey("initialRandomSeed");
+            if (dictkey == null) {
+                return 0;
+            }
+            if (dictkey instanceof T1DictNumber) {
+                T1DictNumber t1 = (T1DictNumber) dictkey;
+                return t1.getInteger();
+            }
+        }
+
+        return 0;
+    }
+
+    /**
+     * The default for EXPANSIONSFACTOR.
+     */
+    private static final double EXPANSIONSFACTOR = 0.06;
+
+    /**
+     * Returns the ExpansionFactor.
+     * (default: 0.06)
+     *
+     * @return Returns the ExpansionFactor.
+     */
+    public double getExpansionFactor() {
+
+        T2Operator op = (T2Operator) topDictIndex.get("private");
+        if (op == null) {
+            return EXPANSIONSFACTOR;
+        }
+        if (op instanceof T2TDOPrivate) {
+            T2TDOPrivate val = (T2TDOPrivate) op;
+
+            T1DictKey dictkey = val.getT1DictKey("ExpansionFactor");
+            if (dictkey == null) {
+                return EXPANSIONSFACTOR;
+            }
+            if (dictkey instanceof T1DictNumber) {
+                T1DictNumber t1 = (T1DictNumber) dictkey;
+                return t1.getDouble();
+            }
+        }
+
+        return EXPANSIONSFACTOR;
+    }
+
+    /**
+     * Returns the LanguageGroup.
+     * (default: 0)
+     *
+     * @return Returns the LanguageGroup.
+     */
+    public int getLanguageGroup() {
+
+        T2Operator op = (T2Operator) topDictIndex.get("private");
+        if (op == null) {
+            return 0;
+        }
+        if (op instanceof T2TDOPrivate) {
+            T2TDOPrivate val = (T2TDOPrivate) op;
+
+            T1DictKey dictkey = val.getT1DictKey("LanguageGroup");
+            if (dictkey == null) {
+                return 0;
+            }
+            if (dictkey instanceof T1DictNumber) {
+                T1DictNumber t1 = (T1DictNumber) dictkey;
+                return t1.getInteger();
+            }
+        }
+
+        return 0;
+    }
+
+    /**
+     * Returns the ForceBold.
+     * (default: false)
+     *
+     * @return Returns the ForceBold.
+     */
+    public boolean getForceBold() {
+
+        T2Operator op = (T2Operator) topDictIndex.get("private");
+        if (op == null) {
+            return false;
+        }
+        if (op instanceof T2TDOPrivate) {
+            T2TDOPrivate val = (T2TDOPrivate) op;
+
+            T1DictKey dictkey = val.getT1DictKey("ForceBold");
+            if (dictkey == null) {
+                return false;
+            }
+            if (dictkey instanceof T1DictBoolean) {
+                T1DictBoolean t1 = (T1DictBoolean) dictkey;
+                return t1.isValue();
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Returns the StdVW.
+     * (default: -)
+     *
+     * @return Returns the StdVW.
+     */
+    public int getStdVW() {
+
+        T2Operator op = (T2Operator) topDictIndex.get("private");
+        if (op == null) {
+            return 0;
+        }
+        if (op instanceof T2TDOPrivate) {
+            T2TDOPrivate val = (T2TDOPrivate) op;
+
+            T1DictKey dictkey = val.getT1DictKey("StdVW");
+            if (dictkey == null) {
+                return 0;
+            }
+            if (dictkey instanceof T1DictNumber) {
+                T1DictNumber t1 = (T1DictNumber) dictkey;
+                return t1.getInteger();
+            }
+        }
+
+        return 0;
+    }
+
+    /**
+     * Returns the StdHW.
+     * (default: -)
+     *
+     * @return Returns the StdHW.
+     */
+    public int getStdHW() {
+
+        T2Operator op = (T2Operator) topDictIndex.get("private");
+        if (op == null) {
+            return 0;
+        }
+        if (op instanceof T2TDOPrivate) {
+            T2TDOPrivate val = (T2TDOPrivate) op;
+
+            T1DictKey dictkey = val.getT1DictKey("StdHW");
+            if (dictkey == null) {
+                return 0;
+            }
+            if (dictkey instanceof T1DictNumber) {
+                T1DictNumber t1 = (T1DictNumber) dictkey;
+                return t1.getInteger();
+            }
+        }
+
+        return 0;
+    }
+
+    /**
+     * Returns the BlueFuzz.
+     * (default: 1)
+     *
+     * @return Returns the BlueFuzz.
+     */
+    public int getBlueFuzz() {
+
+        T2Operator op = (T2Operator) topDictIndex.get("private");
+        if (op == null) {
+            return 1;
+        }
+        if (op instanceof T2TDOPrivate) {
+            T2TDOPrivate val = (T2TDOPrivate) op;
+
+            T1DictKey dictkey = val.getT1DictKey("BlueFuzz");
+            if (dictkey == null) {
+                return 1;
+            }
+            if (dictkey instanceof T1DictNumber) {
+                T1DictNumber t1 = (T1DictNumber) dictkey;
+                return t1.getInteger();
+            }
+        }
+
+        return 1;
+    }
+
+    /**
+     * Returns the BlueShift.
+     * (default: 7)
+     *
+     * @return Returns the BlueShift.
+     */
+    public int getBlueShift() {
+
+        T2Operator op = (T2Operator) topDictIndex.get("private");
+        if (op == null) {
+            return 7;
+        }
+        if (op instanceof T2TDOPrivate) {
+            T2TDOPrivate val = (T2TDOPrivate) op;
+
+            T1DictKey dictkey = val.getT1DictKey("BlueShift");
+            if (dictkey == null) {
+                return 7;
+            }
+            if (dictkey instanceof T1DictNumber) {
+                T1DictNumber t1 = (T1DictNumber) dictkey;
+                return t1.getInteger();
+            }
+        }
+
+        return 7;
+    }
+
+    /**
+     * The default for BlueScale.
+     */
+    private static final double BLUESCALE = 0.039625;
+
+    /**
+     * Returns the BlueScale.
+     * (default: 0.039625)
+     *
+     * @return Returns the BlueScale.
+     */
+    public double getBlueScale() {
+
+        T2Operator op = (T2Operator) topDictIndex.get("private");
+        if (op == null) {
+            return BLUESCALE;
+        }
+        if (op instanceof T2TDOPrivate) {
+            T2TDOPrivate val = (T2TDOPrivate) op;
+
+            T1DictKey dictkey = val.getT1DictKey("BlueScale");
+            if (dictkey == null) {
+                return BLUESCALE;
+            }
+            if (dictkey instanceof T1DictNumber) {
+                T1DictNumber t1 = (T1DictNumber) dictkey;
+                return t1.getDouble();
+            }
+        }
+
+        return BLUESCALE;
+    }
+
+    /**
+     * Returns the StemSnapV.
+     * (default: -)
+     *
+     * @return Returns the StemSnapV.
+     */
+    public int[] getStemSnapV() {
+
+        T2Operator op = (T2Operator) topDictIndex.get("private");
+        if (op == null) {
+            return null;
+        }
+        if (op instanceof T2TDOPrivate) {
+            T2TDOPrivate val = (T2TDOPrivate) op;
+
+            T1DictKey dictkey = val.getT1DictKey("StemSnapV");
+            if (dictkey == null) {
+                return null;
+            }
+            Integer[] iarr = (Integer[]) dictkey.getValue();
+            if (iarr == null) {
+                return null;
+            }
+            int[] ii = new int[iarr.length];
+            for (int i = 0; i < ii.length; i++) {
+                ii[i] = iarr[i].intValue();
+            }
+            return ii;
+        }
+
+        return null;
+    }
+
+    /**
+     * Returns the StemSnapH.
+     * (default: -)
+     *
+     * @return Returns the StemSnapH.
+     */
+    public int[] getStemSnapH() {
+
+        T2Operator op = (T2Operator) topDictIndex.get("private");
+        if (op == null) {
+            return null;
+        }
+        if (op instanceof T2TDOPrivate) {
+            T2TDOPrivate val = (T2TDOPrivate) op;
+
+            T1DictKey dictkey = val.getT1DictKey("StemSnapH");
+            if (dictkey == null) {
+                return null;
+            }
+            Integer[] iarr = (Integer[]) dictkey.getValue();
+            if (iarr == null) {
+                return null;
+            }
+            int[] ii = new int[iarr.length];
+            for (int i = 0; i < ii.length; i++) {
+                ii[i] = iarr[i].intValue();
+            }
+            return ii;
+        }
+
+        return null;
+    }
+
+    /**
+     * Returns the BlueValues.
+     * (default: -)
+     *
+     * @return Returns the BlueValues.
+     */
+    public int[] getBlueValues() {
+
+        T2Operator op = (T2Operator) topDictIndex.get("private");
+        if (op == null) {
+            return null;
+        }
+        if (op instanceof T2TDOPrivate) {
+            T2TDOPrivate val = (T2TDOPrivate) op;
+
+            T1DictKey dictkey = val.getT1DictKey("BlueValues");
+            if (dictkey == null) {
+                return null;
+            }
+            Integer[] iarr = (Integer[]) dictkey.getValue();
+            if (iarr == null) {
+                return null;
+            }
+            int[] ii = new int[iarr.length];
+            for (int i = 0; i < ii.length; i++) {
+                ii[i] = iarr[i].intValue();
+            }
+            return ii;
+        }
+
+        return null;
+    }
+
+    /**
+     * Default for the FontBBox.
+     */
+    private static final int[] FONTBBOX = {0, 0, 0, 0};
+
+    /**
+     * Returns the FontBBox.
+     * (default: 0, 0, 0, 0)
+     *
+     * @return Returns the FontBBox.
+     */
+    public int[] getFontBBox() {
+
+        T2Operator op = (T2Operator) topDictIndex.get("fontbbox");
+        if (op == null) {
+            return FONTBBOX;
+        }
+        if (op instanceof T2TDOFontBBox) {
+            T2TDOFontBBox val = (T2TDOFontBBox) op;
+            T2Number[] t2 = (T2Number[]) val.getValue();
+            int[] darr = new int[t2.length];
+            for (int i = 0; i < t2.length; i++) {
+                darr[i] = t2[i].getInteger();
+            }
+            return darr;
+        }
+
+        return FONTBBOX;
+    }
+
+    /**
+     * Default for the FontMatrix.
+     */
+    private static final double[] FONTMATRIX = {0.001, 0, 0, 0.001, 0, 0};
+
+    /**
+     * Returns the FontMatrix.
+     * (default: 0.001 0 0 0.001 0 0)
+     *
+     * @return Returns the FontMatrix.
+     */
+    public double[] getFontMatrix() {
+
+        T2Operator op = (T2Operator) topDictIndex.get("fontmatrix");
+        if (op == null) {
+            return FONTMATRIX;
+        }
+        if (op instanceof T2TDOFontMatrix) {
+            T2TDOFontMatrix val = (T2TDOFontMatrix) op;
+            T2Number[] t2 = (T2Number[]) val.getValue();
+            double[] darr = new double[t2.length];
+            for (int i = 0; i < t2.length; i++) {
+                darr[i] = t2[i].getDouble();
+            }
+            return darr;
+        }
+
+        return FONTMATRIX;
+    }
+
+    /**
+     * Returns the StrokeWidth.
+     * (default: 0)
+     *
+     * @return Returns the StrokeWidth.
+     */
+    public int getStrokeWidth() {
+
+        T2Operator op = (T2Operator) topDictIndex.get("strokewidth");
+        if (op == null) {
+            return 0;
+        }
+        if (op instanceof T2TDOStrokeWidth) {
+            T2TDOStrokeWidth val = (T2TDOStrokeWidth) op;
+            return val.getInteger();
+        }
+
+        return 0;
+
+    }
+
+    /**
+     * Returns the CharstringType.
+     * (default: 2)
+     *
+     * @return Returns the CharstringType.
+     */
+    public int getCharstringType() {
+
+        T2Operator op = (T2Operator) topDictIndex.get("charstringtype");
+        if (op == null) {
+            return 2;
+        }
+        if (op instanceof T2TDOCharStringType) {
+            T2TDOCharStringType val = (T2TDOCharStringType) op;
+            return val.getInteger();
+        }
+
+        return 2;
+
+    }
+
+    /**
+     * Returns the painttype.
+     * (default: 0)  
+     *
+     * @return Returns the painttype.
+     */
+    public int getPaintType() {
+
+        T2Operator op = (T2Operator) topDictIndex.get("painttype");
+        if (op == null) {
+            return 0;
+        }
+        if (op instanceof T2TDOPaintType) {
+            T2TDOPaintType val = (T2TDOPaintType) op;
+            return val.getInteger();
+        }
+
+        return 0;
+    }
+
+    /**
      * Returns the UnderlineThickness.
+     * (deault: 50)
      *
      * @return Returns the UnderlineThickness.
      */
@@ -186,18 +736,19 @@ public class OtfTableCFF extends AbstractXtfTable
 
         T2Operator op = (T2Operator) topDictIndex.get("underlinethickness");
         if (op == null) {
-            return 0;
+            return 50;
         }
         if (op instanceof T2TDOUnderlineThickness) {
             T2TDOUnderlineThickness val = (T2TDOUnderlineThickness) op;
             return val.getInteger();
         }
 
-        return 0;
+        return 50;
     }
 
     /**
      * Returns the UnderlinePosition.
+     * (default: -100)
      *
      * @return Returns the UnderlinePosition.
      */
@@ -205,18 +756,19 @@ public class OtfTableCFF extends AbstractXtfTable
 
         T2Operator op = (T2Operator) topDictIndex.get("underlineposition");
         if (op == null) {
-            return 0;
+            return -100;
         }
         if (op instanceof T2TDOUnderlinePosition) {
             T2TDOUnderlinePosition val = (T2TDOUnderlinePosition) op;
             return val.getInteger();
         }
 
-        return 0;
+        return -100;
     }
 
     /**
      * Returns the ItalicAngle.
+     * (default: 0)
      *
      * @return Returns the ItalicAngle.
      */
@@ -236,6 +788,7 @@ public class OtfTableCFF extends AbstractXtfTable
 
     /**
      * Returns the value of fixed pitch.
+     * (default: false)
      *
      * @return Returns the value of fixed pitch.
      */
@@ -431,8 +984,8 @@ public class OtfTableCFF extends AbstractXtfTable
      * @return Returns the data
      * @throws IOException if an IO-error occurs
      */
-    private byte[] readDataFromIndex(int start, int end,
-            RandomAccessR rar) throws IOException {
+    private byte[] readDataFromIndex(int start, int end, RandomAccessR rar)
+            throws IOException {
 
         byte[] data = new byte[end - start];
         for (int i = 0; i < data.length; i++) {
@@ -477,8 +1030,8 @@ public class OtfTableCFF extends AbstractXtfTable
      * @param rar   The Input.
      * @throws IOException if an io-error occuured.
      */
-    private void readNameIndex(XtfTableDirectory.Entry de,
-            RandomAccessR rar) throws IOException {
+    private void readNameIndex(XtfTableDirectory.Entry de, RandomAccessR rar)
+            throws IOException {
 
         int offset = de.getOffset() + hdrSize;
         namedIndex = new ArrayList();
@@ -528,8 +1081,7 @@ public class OtfTableCFF extends AbstractXtfTable
      * @return Returns the offsets.
      * @throws IOException if a IO-error occurred.
      */
-    private int[] readOffsets(RandomAccessR rar, int count)
-            throws IOException {
+    private int[] readOffsets(RandomAccessR rar, int count) throws IOException {
 
         int ioffSize = rar.readUnsignedByte();
         int[] offsetarray = new int[count + 1];
