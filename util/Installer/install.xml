@@ -10,7 +10,7 @@
       <author name="Sebastian Waschik" email="sebastian.waschik@gmx.de"/>
     </authors>
     <url>http://www.extex.org/</url>
-    <javaversion>1.4</javaversion>
+    <javaversion>1.5</javaversion>
   </info>
 
   <variables>
