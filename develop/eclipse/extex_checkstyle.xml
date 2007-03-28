@@ -3,7 +3,7 @@
 	This configuration file was written by the eclipse-cs plugin configuration editor
 -->
 <!--
-Checkstyle-Configuration: ExTeX
+Checkstyle-Configuration: ExTeX checks
 Description:
 
 -->
@@ -11,12 +11,73 @@ Description:
 <module name="Checker">
     <property name="severity" value="warning"/>
     <module name="TreeWalker">
+        <module name="ArrayTypeStyle"/>
+        <module name="FinalParameters">
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="GenericIllegalRegexp">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Trailing spaces"/>
+            <property name="severity" value="ignore"/>
+            <property name="format" value="\s+$"/>
+            <property name="message" value="Line has trailing spaces."/>
+        </module>
+        <module name="GenericIllegalRegexp">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="System.*.print"/>
+            <property name="format" value="[^/][^/].*System.(err|out).print"/>
+            <property name="message" value="Direct output discouraged"/>
+        </module>
+        <module name="ModifierOrder"/>
+        <module name="RedundantModifier"/>
+        <module name="UpperEll"/>
+        <module name="AvoidNestedBlocks"/>
+        <module name="EmptyBlock">
+            <property name="option" value="text"/>
+            <property name="tokens" value="LITERAL_CATCH, LITERAL_DO, LITERAL_ELSE, LITERAL_FINALLY, LITERAL_IF, LITERAL_FOR, LITERAL_TRY, LITERAL_WHILE, STATIC_INIT"/>
+        </module>
+        <module name="LeftCurly"/>
+        <module name="NeedBraces"/>
+        <module name="RightCurly"/>
+        <module name="CovariantEquals"/>
+        <module name="DoubleCheckedLocking"/>
+        <module name="EmptyStatement"/>
+        <module name="EqualsHashCode"/>
+        <module name="HiddenField">
+            <property name="tokens" value="PARAMETER_DEF, VARIABLE_DEF"/>
+            <property name="ignoreConstructorParameter" value="true"/>
+            <property name="ignoreSetter" value="true"/>
+        </module>
+        <module name="IllegalInstantiation"/>
+        <module name="InnerAssignment"/>
+        <module name="MagicNumber">
+            <property name="severity" value="info"/>
+            <property name="ignoreNumbers" value="-1, 0, 1, 2, 3, 4, 5, 8, 10, 16, 100, 1000"/>
+        </module>
+        <module name="MissingSwitchDefault"/>
+        <module name="PackageDeclaration"/>
+        <module name="ParameterAssignment"/>
+        <module name="RedundantThrows">
+            <property name="allowUnchecked" value="true"/>
+            <property name="allowSubclasses" value="true"/>
+            <property name="logLoadErrors" value="true"/>
+            <property name="suppressLoadErrors" value="true"/>
+        </module>
+        <module name="SimplifyBooleanExpression"/>
+        <module name="SimplifyBooleanReturn"/>
+        <module name="StringLiteralEquality"/>
+        <module name="DesignForExtension">
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="FinalClass"/>
+        <module name="HideUtilityClassConstructor"/>
+        <module name="InterfaceIsType"/>
+        <module name="VisibilityModifier"/>
+        <module name="AvoidStarImport"/>
+        <module name="IllegalImport"/>
+        <module name="RedundantImport"/>
+        <module name="UnusedImports"/>
         <module name="JavadocMethod"/>
         <module name="JavadocType"/>
         <module name="JavadocVariable"/>
-        <module name="JavadocStyle">
-            <property name="checkEmptyJavadoc" value="true"/>
-        </module>
         <module name="ConstantName"/>
         <module name="LocalFinalVariableName"/>
         <module name="LocalVariableName"/>
@@ -26,79 +87,40 @@ Description:
         <module name="ParameterName"/>
         <module name="StaticVariableName"/>
         <module name="TypeName"/>
-        <module name="AvoidStarImport"/>
-        <module name="IllegalImport"/>
-        <module name="RedundantImport"/>
-        <module name="UnusedImports"/>
-        <module name="FileLength">
-            <property name="max" value="4096"/>
-        </module>
+        <module name="FileLength"/>
         <module name="LineLength">
             <property name="ignorePattern" value="^.*@see.*$"/>
-            <property name="max" value="100"/>
+            <property name="max" value="128"/>
+            <property name="tabWidth" value="8"/>
         </module>
-        <module name="MethodLength">
-            <property name="max" value="200"/>
-        </module>
+        <module name="MethodLength"/>
         <module name="ParameterNumber"/>
         <module name="EmptyForIteratorPad"/>
-        <module name="MethodParamPad"/>
         <module name="NoWhitespaceAfter">
-            <property name="tokens" value="ARRAY_INIT,BNOT,DEC,DOT,INC,LNOT,UNARY_MINUS,UNARY_PLUS"/>
+            <property name="allowLineBreaks" value="false"/>
+            <property name="tokens" value="ARRAY_INIT, BNOT, DEC, DOT, INC, LNOT, UNARY_MINUS, UNARY_PLUS"/>
         </module>
-        <module name="NoWhitespaceBefore"/>
+        <module name="NoWhitespaceBefore">
+            <property name="tokens" value="SEMI, POST_DEC, POST_INC"/>
+        </module>
         <module name="OperatorWrap"/>
         <module name="ParenPad"/>
-        <module name="TypecastParenPad"/>
         <module name="TabCharacter"/>
         <module name="WhitespaceAfter"/>
-        <module name="WhitespaceAround"/>
-        <module name="ModifierOrder"/>
-        <module name="RedundantModifier"/>
-        <module name="AvoidNestedBlocks"/>
-        <module name="EmptyBlock"/>
-        <module name="LeftCurly"/>
-        <module name="NeedBraces"/>
-        <module name="RightCurly"/>
-        <module name="AvoidInlineConditionals"/>
-        <module name="DoubleCheckedLocking"/>
-        <module name="EmptyStatement"/>
-        <module name="EqualsHashCode"/>
-        <module name="HiddenField"/>
-        <module name="IllegalInstantiation"/>
-        <module name="InnerAssignment"/>
-        <module name="MagicNumber">
-            <property name="ignoreNumbers" value="-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 16, 100, 1000"/>
+        <module name="WhitespaceAround">
+            <property name="tokens" value="ASSIGN,BAND,BAND_ASSIGN,BOR,BOR_ASSIGN,BSR,BSR_ASSIGN,BXOR,BXOR_ASSIGN,COLON,DIV,DIV_ASSIGN,EQUAL,GE,GT,LAND,LCURLY,LE,LITERAL_ASSERT,LITERAL_CATCH,LITERAL_DO,LITERAL_ELSE,LITERAL_FINALLY,LITERAL_FOR,LITERAL_IF,LITERAL_RETURN,LITERAL_SYNCHRONIZED,LITERAL_TRY,LITERAL_WHILE,LOR,LT,MINUS,MINUS_ASSIGN,MOD,MOD_ASSIGN,NOT_EQUAL,PLUS,PLUS_ASSIGN,QUESTION,RCURLY,SL,SLIST,SL_ASSIGN,SR,SR_ASSIGN,STAR,STAR_ASSIGN,LITERAL_ASSERT"/>
         </module>
-        <module name="MissingSwitchDefault"/>
-        <module name="RedundantThrows"/>
-        <module name="SimplifyBooleanExpression"/>
-        <module name="SimplifyBooleanReturn"/>
-        <module name="FinalClass"/>
-        <module name="HideUtilityClassConstructor"/>
-        <module name="InterfaceIsType"/>
-        <module name="VisibilityModifier"/>
-        <module name="ArrayTypeStyle"/>
-        <module name="FinalParameters"/>
-        <module name="GenericIllegalRegexp">
-            <property name="format" value="\s+$"/>
-            <property name="message" value="Line has trailing spaces."/>
+        <module name="DefaultComesLast">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Default Comes Last"/>
         </module>
-        <module name="TodoComment"/>
-        <module name="UpperEll"/>
-        <module name="GenericIllegalRegexp">
-            <property name="format" value="[^/][^/].*System.(err|out).print"/>
-            <property name="message" value="Direct output discouraged"/>
+        <module name="IllegalThrows"/>
+        <module name="MultipleVariableDeclarations"/>
+        <module name="BooleanExpressionComplexity">
+            <property name="max" value="6"/>
         </module>
-        <module name="JavadocMethod">
-            <property name="scope" value="public"/>
-            <property name="allowMissingParamTags" value="true"/>
-            <property name="allowMissingThrowsTags" value="true"/>
-            <property name="allowMissingReturnTag" value="true"/>
-            <property name="tokens" value="METHOD_DEF"/>
+        <module name="HiddenField">
+            <property name="ignoreConstructorParameter" value="true"/>
+            <property name="ignoreSetter" value="true"/>
         </module>
     </module>
-    <module name="PackageHtml"/>
-    <module name="NewlineAtEndOfFile"/>
-    <module name="Translation"/>
 </module>
