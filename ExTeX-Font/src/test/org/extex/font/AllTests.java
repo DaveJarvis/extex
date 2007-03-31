@@ -32,10 +32,11 @@ import org.extex.font.format.xtf.XtfReaderGara2Test;
 import org.extex.font.format.xtf.XtfReaderGara3Test;
 import org.extex.font.format.xtf.XtfReaderGara4Test;
 import org.extex.font.format.xtf.XtfReaderLmRoman10Regular01Test;
+import org.extex.font.format.xtf.XtfReaderLmRoman10Regular02Test;
 
 /**
  * Test suite for the fonts.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -43,13 +44,13 @@ public final class AllTests {
 
     /**
      * Create the test suite.
-     *
+     * 
      * @return the suite
      */
     public static Test suite() {
 
         TestSuite suite = new TestSuite("Test for org.extex.font");
-        //$JUnit-BEGIN$
+        // $JUnit-BEGIN$
         suite.addTestSuite(FontFactoryImplGenCmtt10Test.class);
         suite.addTestSuite(FontFactoryImplGenCmr10Test.class);
         suite.addTestSuite(FontFactoryImplGenLogosl9Test.class);
@@ -74,8 +75,9 @@ public final class AllTests {
         suite.addTestSuite(U2tFactoryTest.class);
         suite.addTestSuite(AfmParserTest.class);
         suite.addTestSuite(XtfReaderLmRoman10Regular01Test.class);
+        suite.addTestSuite(XtfReaderLmRoman10Regular02Test.class);
         suite.addTestSuite(XtfReaderFxlrTest.class);
-        //$JUnit-END$
+        // $JUnit-END$
         return suite;
     }
 

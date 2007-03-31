@@ -27,9 +27,9 @@ import org.extex.font.format.xtf.TtfTableCMAP.Format;
 
 /**
  * Tests for the <code>XtfReader</code> with opentype files.
- *
- * The test use the data from the <code>ttx</code> output. 
- *
+ * 
+ * The test use the data from the <code>ttx</code> output.
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -42,20 +42,21 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @throws IOException if an error occurred.
      */
     public XtfReaderLmRoman10Regular01Test() throws IOException {
 
         if (reader == null) {
-            reader = new XtfReader(
-                    "../ExTeX-Font/src/font/lmotf/lmroman10-regular.otf");
+            reader =
+                    new XtfReader(
+                        "../ExTeX-Font/src/font/lmotf/lmroman10-regular.otf");
         }
     }
 
     /**
      * test 01.
-     *
+     * 
      * @throws Exception if an error occurred.
      */
     public void test01() throws Exception {
@@ -65,7 +66,7 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
 
     /**
      * test 02.
-     *
+     * 
      * @throws Exception if an error occurred.
      */
     public void test02() throws Exception {
@@ -76,7 +77,7 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
 
     /**
      * test 03.
-     *
+     * 
      * @throws Exception if an error occurred.
      */
     public void test03() throws Exception {
@@ -91,7 +92,7 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
 
     /**
      * test 04a.
-     *
+     * 
      * @throws Exception if an error occurred.
      */
     public void test04a() throws Exception {
@@ -101,10 +102,10 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
 
         assertEquals("1.010", cff.getTopDictIndex("version").getValue());
         assertEquals(
-                "Copyright 2003, 2007 B. Jackowski and J. M. Nowacki (on behalf of TeX users groups). This work is released under the GUST Font License --  see http://tug.org/fonts/licenses/GUST-FONT-LICENSE.txt for details.",
-                cff.getTopDictIndex("notice").getValue());
+            "Copyright 2003, 2007 B. Jackowski and J. M. Nowacki (on behalf of TeX users groups). This work is released under the GUST Font License --  see http://tug.org/fonts/licenses/GUST-FONT-LICENSE.txt for details.",
+            cff.getTopDictIndex("notice").getValue());
         assertEquals("LMRoman10-Regular", cff.getTopDictIndex("fullname")
-                .getValue());
+            .getValue());
         assertEquals("LMRoman10", cff.getTopDictIndex("familyname").getValue());
         assertEquals("Normal", cff.getTopDictIndex("weight").getValue());
         assertEquals("StandardEncoding", cff.getEncoding());
@@ -120,7 +121,7 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
 
     /**
      * test 04b.
-     *
+     * 
      * @throws Exception if an error occurred.
      */
     public void test04b() throws Exception {
@@ -131,7 +132,7 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
         double[] fm = cff.getFontMatrix();
         assertNotNull(fm);
         assertEquals(6, fm.length);
-        //        <FontMatrix value="0.001 0 0 0.001 0 0"/>
+        // <FontMatrix value="0.001 0 0 0.001 0 0"/>
         double[] d = {0.001, 0, 0, 0.001, 0, 0};
         for (int i = 0; i < d.length; i++) {
             assertEquals(d[i], fm[i]);
@@ -141,7 +142,7 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
 
     /**
      * test 04c.
-     *
+     * 
      * @throws Exception if an error occurred.
      */
     public void test04c() throws Exception {
@@ -152,7 +153,7 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
         int[] fb = cff.getFontBBox();
         assertNotNull(fb);
         assertEquals(4, fb.length);
-        //        <FontBBox value="-430 -290 1417 1127"/>
+        // <FontBBox value="-430 -290 1417 1127"/>
         int[] iarr = {-430, -290, 1417, 1127};
         for (int i = 0; i < iarr.length; i++) {
             assertEquals(iarr[i], fb[i]);
@@ -161,7 +162,7 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
 
     /**
      * test 05a.
-     *
+     * 
      * @throws Exception if an error occurred.
      */
     public void test05a() throws Exception {
@@ -172,7 +173,7 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
         int[] val = cff.getBlueValues();
         assertNotNull(val);
         assertEquals(8, val.length);
-        //        <BlueValues value="-22 0 431 448 666 677 683 705"/>
+        // <BlueValues value="-22 0 431 448 666 677 683 705"/>
         int[] iarr = {-22, 0, 431, 448, 666, 677, 683, 705};
 
         for (int i = 0; i < iarr.length; i++) {
@@ -182,7 +183,7 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
 
     /**
      * test 05b.
-     *
+     * 
      * @throws Exception if an error occurred.
      */
     public void test05b() throws Exception {
@@ -193,7 +194,7 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
         int[] val = cff.getStemSnapH();
         assertNotNull(val);
         assertEquals(12, val.length);
-        //        <StemSnapH value="21 22 23 25 26 28 30 31 40 42 45 106"/>
+        // <StemSnapH value="21 22 23 25 26 28 30 31 40 42 45 106"/>
         int[] iarr = {21, 22, 23, 25, 26, 28, 30, 31, 40, 42, 45, 106};
 
         for (int i = 0; i < iarr.length; i++) {
@@ -204,7 +205,7 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
 
     /**
      * test 05c.
-     *
+     * 
      * @throws Exception if an error occurred.
      */
     public void test05c() throws Exception {
@@ -215,7 +216,7 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
         int[] val = cff.getStemSnapV();
         assertNotNull(val);
         assertEquals(12, val.length);
-        //        <StemSnapV value="25 30 40 66 69 77 83 89 92 97 103 107"/>
+        // <StemSnapV value="25 30 40 66 69 77 83 89 92 97 103 107"/>
         int[] iarr = {25, 30, 40, 66, 69, 77, 83, 89, 92, 97, 103, 107};
 
         for (int i = 0; i < iarr.length; i++) {
@@ -226,7 +227,7 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
 
     /**
      * test 05d.
-     *
+     * 
      * @throws Exception if an error occurred.
      */
     public void test05d() throws Exception {
@@ -234,73 +235,75 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
         assertNotNull(cff);
 
-        //        <BlueScale value="0.04546"/>
+        // <BlueScale value="0.04546"/>
         assertEquals(0.04546, cff.getBlueScale());
 
-        //        <BlueShift value="7"/>
+        // <BlueShift value="7"/>
         assertEquals(7, cff.getBlueShift());
 
-        //        <BlueFuzz value="0"/>
+        // <BlueFuzz value="0"/>
         assertEquals(0, cff.getBlueFuzz());
 
-        //        <StdHW value="31"/>
+        // <StdHW value="31"/>
         assertEquals(31, cff.getStdHW());
 
-        //        <StdVW value="25"/>
+        // <StdVW value="25"/>
         assertEquals(25, cff.getStdVW());
 
-        //        <ForceBold value="0"/>
+        // <ForceBold value="0"/>
         assertEquals(false, cff.getForceBold());
 
-        //        <LanguageGroup value="0"/>
+        // <LanguageGroup value="0"/>
         assertEquals(0, cff.getLanguageGroup());
 
-        //        <ExpansionFactor value="0.06"/>
+        // <ExpansionFactor value="0.06"/>
         assertEquals(0.06, cff.getExpansionFactor());
 
-        //        <initialRandomSeed value="0"/>
+        // <initialRandomSeed value="0"/>
         assertEquals(0, cff.getInitialRandomSeed());
 
-        //        <defaultWidthX value="500"/>
+        // <defaultWidthX value="500"/>
         assertEquals(500, cff.getDefaultWidthX());
 
-        //        <nominalWidthX value="658"/>
+        // <nominalWidthX value="658"/>
         assertEquals(658, cff.getNominalWidthX());
 
     }
 
-    //    /**
-    //     * test 05.
-    //     *
-    //     * @throws Exception if an error occurred.
-    //     */
-    //    public void test05() throws Exception {
-    //
-    //        // plattformid = 3 (Windows) , encodingid = 1 (Unicode)
-    //        assertEquals("space", reader.mapCharCodeToGlyphname(0x20, (short) 3,
-    //                (short) 1));
-    //
-    //    }
-
     /**
-     * test 99.
-     *
+     * test 05.
+     * 
      * @throws Exception if an error occurred.
      */
-    public void test99() throws Exception {
+    public void test05() throws Exception {
 
-        //        XMLStreamWriter writer = new XMLStreamWriter(new FileOutputStream(
-        //                "/home/mgn/extex/Sandbox-mgn/src/xml/lmroman10-regular.xml"),
-        //                "ISO8859-1");
-        //        writer.setBeauty(true);
-        //        writer.writeStartDocument();
-        //        reader.writeXML(writer);
-        //        writer.writeEndDocument();
-        //        writer.close();
+        // plattformid = 3 (Windows) , encodingid = 1 (Unicode)
+        assertEquals("space", reader.mapCharCodeToGlyphname(0x20, (short) 3,
+            (short) 1));
+        assertEquals("zero", reader.mapCharCodeToGlyphname(0x30, (short) 3,
+            (short) 1));
 
-        //        assertEquals("space", reader.mapCharCodeToGlyphname(0x20, (short) 3,
-        //                (short) 1));
     }
+
+    // /**
+    // * test 99.
+    // *
+    // * @throws Exception if an error occurred.
+    // */
+    // public void test99() throws Exception {
+    //
+    // XMLStreamWriter writer =
+    // new XMLStreamWriter(
+    // new FileOutputStream(
+    // "/home/mgn/extex/Sandbox-mgn/src/xml/lmroman10-regular.xml"),
+    // "ISO8859-1");
+    // writer.setBeauty(true);
+    // writer.writeStartDocument();
+    // reader.writeXML(writer);
+    // writer.writeEndDocument();
+    // writer.close();
+    //
+    // }
 
     // --------------------------------------------------------------
 }

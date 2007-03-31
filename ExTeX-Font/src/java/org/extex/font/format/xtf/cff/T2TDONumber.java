@@ -26,7 +26,7 @@ import org.extex.util.xml.XMLStreamWriter;
 
 /**
  * Abstract class for all number-values.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -35,13 +35,12 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
 
     /**
      * Create a new object.
-     *
+     * 
      * @param stack the stack
-     * @param id    the operator-id for the value
+     * @param id the operator-id for the value
      * @throws IOException if an IO-error occurs.
      */
-    protected T2TDONumber(List stack, short[] id)
-            throws IOException {
+    protected T2TDONumber(List stack, short[] id) throws IOException {
 
         super();
         if (stack.size() < 1) {
@@ -51,6 +50,15 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
 
         bytes = convertStackaddID(stack, id);
 
+    }
+
+    /**
+     * Creates a new object.
+     */
+    protected T2TDONumber() {
+
+        value = new T2DummyNumber();
+        bytes = value.getBytes();
     }
 
     /**
@@ -73,6 +81,7 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
 
     /**
      * Check, if the objekt is a integer.
+     * 
      * @return Returns <code>true</code>, if the object is a integer.
      */
     public boolean isInteger() {
@@ -82,6 +91,7 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
 
     /**
      * Check, if the objekt is a double.
+     * 
      * @return Returns <code>true</code>, if the object is a double.
      */
     public boolean isDouble() {

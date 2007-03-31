@@ -36,7 +36,7 @@ import org.extex.util.xml.XMLStreamWriter;
 
 /**
  * Reader for a TrueType / OpenType font.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -59,248 +59,227 @@ public class XtfReader implements XMLWriterConvertible {
     }
 
     /**
-     * Accent attachment.
-     * Table tag "acnt" in the Open Type Specification.
+     * Accent attachment. Table tag "acnt" in the Open Type Specification.
      */
     public static final int ACNT = 0x61636e74;
 
     /**
-     * Axis variaiton.
-     * Table tag "avar" in the Open Type Specification.
+     * Axis variaiton. Table tag "avar" in the Open Type Specification.
      */
     public static final int AVAR = 0x61766172;
 
     /**
-     * Baseline data.
-     * Table tag "BASE" in the Open Type Specification.
+     * Baseline data. Table tag "BASE" in the Open Type Specification.
      */
     public static final int BASE = 0x42415345;
 
     /**
-     * Bitmap data.
-     * Table tag "bdat" in the Open Type Specification.
+     * Bitmap data. Table tag "bdat" in the Open Type Specification.
      */
     public static final int BDAT = 0x62646174;
 
     /**
-     * Bitmap location.
-     * Table tag "bloc" in the Open Type Specification.
+     * Bitmap location. Table tag "bloc" in the Open Type Specification.
      */
     public static final int BLOC = 0x626c6f63;
 
     /**
-     * Baseline table.
-     * Table tag "bsln" in the Open Type Specification.
+     * Baseline table. Table tag "bsln" in the Open Type Specification.
      */
     public static final int BSLN = 0x62736c6e;
 
     /**
-     * Compact font format (Type1 font).
-     * Table tag "CFF " in the Open Type Specification.
+     * Compact font format (Type1 font). Table tag "CFF " in the Open Type
+     * Specification.
      */
     public static final int CFF = 0x43464620;
 
     /**
-     * Character to glyph mapping. (TTF required)
-     * Table tag "cmap" in the Open Type Specification.
+     * Character to glyph mapping. (TTF required) Table tag "cmap" in the Open
+     * Type Specification.
      */
     public static final int CMAP = 0x636d6170;
 
     /**
-     * CVT variation.
-     * Table tag "cvar" in the Open Type Specification.
+     * CVT variation. Table tag "cvar" in the Open Type Specification.
      */
     public static final int CVAR = 0x63766172;
 
     /**
-     * Control value table. (TTF optional)
-     * Table tag "cvt " in the Open Type Specification.
+     * Control value table. (TTF optional) Table tag "cvt " in the Open Type
+     * Specification.
      */
     public static final int CVT = 0x63767420;
 
     /**
-     * Digital signature.
-     * Table tag "DSIG" in the Open Type Specification.
+     * Digital signature. Table tag "DSIG" in the Open Type Specification.
      */
     public static final int DSIG = 0x44534947;
 
     /**
-     * Embedded bitmap data. (TTF optional)
-     * Table tag "EBDT" in the Open Type Specification.
+     * Embedded bitmap data. (TTF optional) Table tag "EBDT" in the Open Type
+     * Specification.
      */
     public static final int EBDT = 0x45424454;
 
     /**
-     * Embedded bitmap location. (TTF optional)
-     * Table tag "EBLC" in the Open Type Specification.
+     * Embedded bitmap location. (TTF optional) Table tag "EBLC" in the Open
+     * Type Specification.
      */
     public static final int EBLC = 0x45424c43;
 
     /**
-     * Embedded bitmap scaling. (TTF optional)
-     * Table tag "EBSC" in the Open Type Specification.
+     * Embedded bitmap scaling. (TTF optional) Table tag "EBSC" in the Open Type
+     * Specification.
      */
     public static final int EBSC = 0x45425343;
 
     /**
-     * BaseFont descriptors.
-     * Table tag "fdsc" in the Open Type Specification.
+     * BaseFont descriptors. Table tag "fdsc" in the Open Type Specification.
      */
     public static final int FDSC = 0x66647363;
 
     /**
-     * Feature name.
-     * Table tag "feat" in the Open Type Specification.
+     * Feature name. Table tag "feat" in the Open Type Specification.
      */
     public static final int FEAT = 0x66656174;
 
     /**
-     * BaseFont metrics.
-     * Table tag "fmtx" in the Open Type Specification.
+     * BaseFont metrics. Table tag "fmtx" in the Open Type Specification.
      */
     public static final int FMTX = 0x666d7478;
 
     /**
-     * BaseFont program. (TTF optional)
-     * Table tag "fpgm" in the Open Type Specification.
+     * BaseFont program. (TTF optional) Table tag "fpgm" in the Open Type
+     * Specification.
      */
     public static final int FPGM = 0x6670676d;
 
     /**
-     * BaseFont variation.
-     * Table tag "fvar" in the Open Type Specification.
+     * BaseFont variation. Table tag "fvar" in the Open Type Specification.
      */
     public static final int FVAR = 0x66766172;
 
     /**
-     * Grid-fitting and scan conversion procedure. (TTF optional)
-     * Table tag "gasp" in the Open Type Specification.
+     * Grid-fitting and scan conversion procedure. (TTF optional) Table tag
+     * "gasp" in the Open Type Specification.
      */
     public static final int GASP = 0x67617370;
 
     /**
-     * Glyph definition.
-     * Table tag "GDEF" in the Open Type Specification.
+     * Glyph definition. Table tag "GDEF" in the Open Type Specification.
      */
     public static final int GDEF = 0x47444546;
 
     /**
-     * Glyph data. (TTF required)
-     * Table tag "glyf" in the Open Type Specification.
+     * Glyph data. (TTF required) Table tag "glyf" in the Open Type
+     * Specification.
      */
     public static final int GLYF = 0x676c7966;
 
     /**
-     * Glyph positioning.
-     * Table tag "GPOS" in the Open Type Specification.
+     * Glyph positioning. Table tag "GPOS" in the Open Type Specification.
      */
     public static final int GPOS = 0x47504f53;
 
     /**
-     * Glyph substitution.
-     * Table tag "GSUB" in the Open Type Specification.
+     * Glyph substitution. Table tag "GSUB" in the Open Type Specification.
      */
     public static final int GSUB = 0x47535542;
 
     /**
-     * Glyph variation.
-     * Table tag "gvar" in the Open Type Specification.
+     * Glyph variation. Table tag "gvar" in the Open Type Specification.
      */
     public static final int GVAR = 0x67766172;
 
     /**
-     * Horizontal device metrics. (TTF optional)
-     * Table tag "hdmx" in the Open Type Specification.
+     * Horizontal device metrics. (TTF optional) Table tag "hdmx" in the Open
+     * Type Specification.
      */
     public static final int HDMX = 0x68646d78;
 
     /**
-     * BaseFont header. (TTF required)
-     * Table tag "head" in the Open Type Specification.
+     * BaseFont header. (TTF required) Table tag "head" in the Open Type
+     * Specification.
      */
     public static final int HEAD = 0x68656164;
 
     /**
-     * Horizontal metrics header. (TTF required)
-     * Table tag "hhea" in the Open Type Specification.
+     * Horizontal metrics header. (TTF required) Table tag "hhea" in the Open
+     * Type Specification.
      */
     public static final int HHEA = 0x68686561;
 
     /**
-     * Horizontal metrics. (TTF required)
-     * Table tag "hmtx" in the Open Type Specification.
+     * Horizontal metrics. (TTF required) Table tag "hmtx" in the Open Type
+     * Specification.
      */
     public static final int HMTX = 0x686d7478;
 
     /**
-     * Justification.
-     * Table tag "JSTF" in the Open Type Specification.
+     * Justification. Table tag "JSTF" in the Open Type Specification.
      */
     public static final int JSTF = 0x4a535446;
 
     /**
-     * Justification.
-     * Table tag "just" in the Open Type Specification.
+     * Justification. Table tag "just" in the Open Type Specification.
      */
     public static final int JUST = 0x6a757374;
 
     /**
-     * Kerning. (TTF optional)
-     * Table tag "kern" in the Open Type Specification.
+     * Kerning. (TTF optional) Table tag "kern" in the Open Type Specification.
      */
     public static final int KERN = 0x6b65726e;
 
     /**
-     * Ligature caret.
-     * Table tag "lcar" in the Open Type Specification.
+     * Ligature caret. Table tag "lcar" in the Open Type Specification.
      */
     public static final int LCAR = 0x6c636172;
 
     /**
-     * Index to location. (TTF required)
-     * Table tag "loca" in the Open Type Specification.
+     * Index to location. (TTF required) Table tag "loca" in the Open Type
+     * Specification.
      */
     public static final int LOCA = 0x6c6f6361;
 
     /**
-     * Linear threshold. (TTF optional)
-     * Table tag "LTSH" in the Open Type Specification.
+     * Linear threshold. (TTF optional) Table tag "LTSH" in the Open Type
+     * Specification.
      */
     public static final int LTSH = 0x4c545348;
 
     /**
-     * Maximum profile. (TTF required)
-     * Table tag "maxp" in the Open Type Specification.
+     * Maximum profile. (TTF required) Table tag "maxp" in the Open Type
+     * Specification.
      */
     public static final int MAXP = 0x6d617870;
 
     /**
-     * Multiple master font metrics.
-     * Table tag "MMFX" in the Open Type Specification.
+     * Multiple master font metrics. Table tag "MMFX" in the Open Type
+     * Specification.
      */
     public static final int MMFX = 0x4d4d4658;
 
     /**
-     * Multiple master supplementary data.
-     * Table tag "MMSD" in the Open Type Specification.
+     * Multiple master supplementary data. Table tag "MMSD" in the Open Type
+     * Specification.
      */
     public static final int MMSD = 0x4d4d5344;
 
     /**
-     * Glyph metamorphosis.
-     * Table tag "mort" in the Open Type Specification.
+     * Glyph metamorphosis. Table tag "mort" in the Open Type Specification.
      */
     public static final int MORT = 0x6d6f7274;
 
     /**
-     * Naming table. (TTF required)
-     * Table tag "name" in the Open Type Specification.
+     * Naming table. (TTF required) Table tag "name" in the Open Type
+     * Specification.
      */
     public static final int NAME = 0x6e616d65;
 
     /**
-     * OS/2 and Windows specific metrics. (TTF required)
-     * Table tag "OS/2" in the Open Type Specification.
+     * OS/2 and Windows specific metrics. (TTF required) Table tag "OS/2" in the
+     * Open Type Specification.
      */
     public static final int OS_2 = 0x4f532f32;
 
@@ -310,38 +289,35 @@ public class XtfReader implements XMLWriterConvertible {
     public static final Type OTF = new Type();
 
     /**
-     * PCL 5 data. (TTF optional)
-     * Table tag "PCLT" in the Open Type Specification.
+     * PCL 5 data. (TTF optional) Table tag "PCLT" in the Open Type
+     * Specification.
      */
     public static final int PCLT = 0x50434c54;
 
     /**
-     * PostScript Information. (TTF required)
-     * Table tag "post" in the Open Type Specification.
+     * PostScript Information. (TTF required) Table tag "post" in the Open Type
+     * Specification.
      */
     public static final int POST = 0x706f7374;
 
     /**
-     * CVT preprogram. (TTF optional)
-     * Table tag "prep" in the Open Type Specification.
+     * CVT preprogram. (TTF optional) Table tag "prep" in the Open Type
+     * Specification.
      */
     public static final int PREP = 0x70726570;
 
     /**
-     * Optical bounds.
-     * Table tag "opbd" in the Open Type Specification.
+     * Optical bounds. Table tag "opbd" in the Open Type Specification.
      */
-    //   public static final int OPBD = 0x6d6f7274;
+    // public static final int OPBD = 0x6d6f7274;
     // entspricht mort
     /**
-     * Glyph properties.
-     * Table tag "prop" in the Open Type Specification.
+     * Glyph properties. Table tag "prop" in the Open Type Specification.
      */
     public static final int PROP = 0x70726f70;
 
     /**
-     * Tracking.
-     * Table tag "trak" in the Open Type Specification.
+     * Tracking. Table tag "trak" in the Open Type Specification.
      */
     public static final int TRAK = 0x7472616b;
 
@@ -351,35 +327,35 @@ public class XtfReader implements XMLWriterConvertible {
     public static final Type TTF = new Type();
 
     /**
-     * Adobe Type 1 font data.
-     * Table tag "typ1" in the Open Type Specification.
+     * Adobe Type 1 font data. Table tag "typ1" in the Open Type Specification.
      */
     public static final int TYP1 = 0x74797031;
 
     /**
-     * Vertical device metrics. (TTF optional)
-     * Table tag "VDMX" in the Open Type Specification.
+     * Vertical device metrics. (TTF optional) Table tag "VDMX" in the Open Type
+     * Specification.
      */
     public static final int VDMX = 0x56444d58;
 
     /**
-     * Vertical metrics header. (TTF optional)
-     * Table tag "vhea" in the Open Type Specification.
+     * Vertical metrics header. (TTF optional) Table tag "vhea" in the Open Type
+     * Specification.
      */
     public static final int VHEA = 0x76686561;
 
     /**
-     * Vertical metrics. (TTF optional)
-     * Table tag "vmtx" in the Open Type Specification.
+     * Vertical metrics. (TTF optional) Table tag "vmtx" in the Open Type
+     * Specification.
      */
     public static final int VMTX = 0x766d7478;
 
     /**
      * Convert the internal long date format to a Date.
      * <p>
-     * Calculate the difference between the original Mac epoch (1904)
-     * to the epoch on this machine.
+     * Calculate the difference between the original Mac epoch (1904) to the
+     * epoch on this machine.
      * </p>
+     * 
      * @param value the long format (mac)
      * @return Returns the calculate Date
      */
@@ -392,9 +368,11 @@ public class XtfReader implements XMLWriterConvertible {
     /**
      * seconds from 1904 to 1971
      */
-    //private static final long SECONDS1904TO1971 = 60 * 60 * 24 * (365 * (1971 - 1904) + 17);
+    // private static final long SECONDS1904TO1971 = 60 * 60 * 24 * (365 * (1971
+    // - 1904) + 17);
     /**
      * Convert a int value in a binary string.
+     * 
      * @param value the int value
      * @return Returns the binary string
      */
@@ -407,6 +385,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Convert a int value in a hex string.
+     * 
      * @param value the int value
      * @return Returns the hex string
      */
@@ -421,7 +400,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Convert a Fixed value (Version).
-     *
+     * 
      * @param value the fixed value
      * @return Returns the float-value
      */
@@ -498,7 +477,8 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Create a new object.
-     * @param   file     file for input
+     * 
+     * @param file file for input
      * @throws IOException if an IO-error occurs
      */
     public XtfReader(File file) throws IOException {
@@ -508,7 +488,8 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Create a new object.
-     * @param   iostream    stream for input
+     * 
+     * @param iostream stream for input
      * @throws IOException if an IO-error occurs
      */
     public XtfReader(InputStream iostream) throws IOException {
@@ -518,7 +499,8 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Create a new object.
-     * @param   rar     input
+     * 
+     * @param rar input
      * @throws IOException if an IO-error occurs
      */
     public XtfReader(RandomAccessR rar) throws IOException {
@@ -531,7 +513,8 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Create a new object.
-     * @param   filename     file name for input
+     * 
+     * @param filename file name for input
      * @throws IOException if an IO-error occurs
      */
     public XtfReader(String filename) throws IOException {
@@ -541,195 +524,196 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Create the table.
-     * @param de        directory entry
-     * @param rar       input
+     * 
+     * @param de directory entry
+     * @param rar input
      * @return Returns the table
      * @throws IOException if an IO-error occurs
      */
-    private XtfTable create(XtfTableDirectory.Entry de,
-            RandomAccessR rar) throws IOException {
+    private XtfTable create(XtfTableDirectory.Entry de, RandomAccessR rar)
+            throws IOException {
 
         XtfTable t = null;
         switch (de.getTag()) {
-            case GPOS :
+            case GPOS:
                 t = new OtfTableGPOS(tablemap, de, rar);
                 type = OTF;
                 break;
-            case GSUB :
+            case GSUB:
                 t = new OtfTableGSUB(tablemap, de, rar);
                 type = OTF;
                 break;
-            case OS_2 :
+            case OS_2:
                 t = new TtfTableOS2(tablemap, de, rar);
                 break;
-            case CMAP :
+            case CMAP:
                 t = new TtfTableCMAP(tablemap, de, rar);
                 break;
-            case CVT :
+            case CVT:
                 t = new TtfTableCVT(tablemap, de, rar);
                 break;
-            case FPGM :
+            case FPGM:
                 t = new TtfTableFPGM(tablemap, de, rar);
                 break;
-            case GLYF :
+            case GLYF:
                 t = new TtfTableGLYF(tablemap, de, rar);
                 break;
-            case HEAD :
+            case HEAD:
                 t = new TtfTableHEAD(tablemap, de, rar);
                 break;
-            case HHEA :
+            case HHEA:
                 t = new TtfTableHHEA(tablemap, de, rar);
                 break;
-            case HMTX :
+            case HMTX:
                 t = new TtfTableHMTX(tablemap, de, rar);
                 break;
-            case KERN :
+            case KERN:
                 t = new TtfTableKERN(tablemap, de, rar);
                 break;
-            case LOCA :
+            case LOCA:
                 t = new TtfTableLOCA(tablemap, de, rar);
                 break;
-            case MAXP :
+            case MAXP:
                 t = new TtfTableMAXP(tablemap, de, rar);
                 break;
-            case NAME :
+            case NAME:
                 t = new TtfTableNAME(tablemap, de, rar);
                 break;
-            case PREP :
+            case PREP:
                 t = new TtfTablePREP(tablemap, de, rar);
                 break;
-            case POST :
+            case POST:
                 t = new TtfTablePOST(tablemap, de, rar);
                 break;
-            case HDMX :
+            case HDMX:
                 t = new TtfTableHDMX(tablemap, de, rar);
                 break;
-            case GASP :
+            case GASP:
                 t = new TtfTableGASP(tablemap, de, rar);
                 break;
-            case VDMX :
+            case VDMX:
                 t = new TtfTableVDMX(tablemap, de, rar);
                 break;
-            case VMTX :
+            case VMTX:
                 t = new TtfTableVMTX(tablemap, de, rar);
                 break;
-            case VHEA :
+            case VHEA:
                 t = new TtfTableVHEA(tablemap, de, rar);
                 break;
-            case TYP1 :
+            case TYP1:
                 t = new OtfTableTYP1(tablemap, de, rar);
                 type = OTF;
                 break;
-            case BSLN :
+            case BSLN:
                 t = new OtfTableBSLN(tablemap, de, rar);
                 type = OTF;
                 break;
-            case DSIG :
+            case DSIG:
                 t = new OtfTableDSIG(tablemap, de, rar);
                 type = OTF;
                 break;
-            case FVAR :
+            case FVAR:
                 t = new OtfTableFVAR(tablemap, de, rar);
                 type = OTF;
                 break;
-            case GVAR :
+            case GVAR:
                 t = new OtfTableGVAR(tablemap, de, rar);
                 type = OTF;
                 break;
-            case CFF :
+            case CFF:
                 t = new OtfTableCFF(tablemap, de, rar);
                 type = OTF;
                 break;
-            case MMSD :
+            case MMSD:
                 t = new OtfTableMMSD(tablemap, de, rar);
                 type = OTF;
                 break;
-            case MMFX :
+            case MMFX:
                 t = new OtfTableMMFX(tablemap, de, rar);
                 type = OTF;
                 break;
-            case GDEF :
+            case GDEF:
                 t = new OtfTableGDEF(tablemap, de, rar);
                 type = OTF;
                 break;
-            case JSTF :
+            case JSTF:
                 t = new OtfTableJSTF(tablemap, de, rar);
                 type = OTF;
                 break;
-            case EBDT :
+            case EBDT:
                 t = new TtfTableEBDT(tablemap, de, rar);
                 break;
-            case EBLC :
+            case EBLC:
                 t = new TtfTableEBLC(tablemap, de, rar);
                 break;
-            case EBSC :
+            case EBSC:
                 t = new TtfTableEBSC(tablemap, de, rar);
                 break;
-            case LTSH :
+            case LTSH:
                 t = new TtfTableLTSH(tablemap, de, rar);
                 break;
-            case PCLT :
+            case PCLT:
                 t = new TtfTablePCLT(tablemap, de, rar);
                 break;
-            case ACNT :
+            case ACNT:
                 t = new OtfTableACNT(tablemap, de, rar);
                 type = OTF;
                 break;
-            case AVAR :
+            case AVAR:
                 t = new OtfTableAVAR(tablemap, de, rar);
                 break;
-            case BDAT :
+            case BDAT:
                 t = new OtfTableBDAT(tablemap, de, rar);
                 type = OTF;
                 break;
-            case BLOC :
+            case BLOC:
                 t = new OtfTableBLOC(tablemap, de, rar);
                 type = OTF;
                 break;
-            case CVAR :
+            case CVAR:
                 t = new OtfTableCVAR(tablemap, de, rar);
                 type = OTF;
                 break;
-            case FEAT :
+            case FEAT:
                 t = new OtfTableFEAT(tablemap, de, rar);
                 type = OTF;
                 break;
-            case FDSC :
+            case FDSC:
                 t = new OtfTableFDSC(tablemap, de, rar);
                 type = OTF;
                 break;
-            case FMTX :
+            case FMTX:
                 t = new OtfTableFMTX(tablemap, de, rar);
                 type = OTF;
                 break;
-            case JUST :
+            case JUST:
                 t = new OtfTableJUST(tablemap, de, rar);
                 type = OTF;
                 break;
-            case LCAR :
+            case LCAR:
                 t = new OtfTableLCAR(tablemap, de, rar);
                 type = OTF;
                 break;
-            case MORT :
+            case MORT:
                 t = new OtfTableMORT(tablemap, de, rar);
                 type = OTF;
                 break;
-            //            case OPBD :
-            //                t = new TTFTableOPBD(de, rar);
-            //                break;
-            case PROP :
+            // case OPBD :
+            // t = new TTFTableOPBD(de, rar);
+            // break;
+            case PROP:
                 t = new OtfTablePROP(tablemap, de, rar);
                 type = OTF;
                 break;
-            case TRAK :
+            case TRAK:
                 t = new OtfTableTRAK(tablemap, de, rar);
                 type = OTF;
                 break;
-            case BASE :
+            case BASE:
                 t = new OtfTableBASE(tablemap, de, rar);
                 type = OTF;
                 break;
-            default :
+            default:
                 t = null;
         }
         return t;
@@ -737,6 +721,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Returns the ascent.
+     * 
      * @return Returns the ascent
      */
     public int getAscent() {
@@ -746,10 +731,19 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Returns the BoundingBox.
-     * <p>0 xmin</p>
-     * <p>1 ymin</p>
-     * <p>2 xmax</p>
-     * <p>3 ymax</p>
+     * <p>
+     * 0 xmin
+     * </p>
+     * <p>
+     * 1 ymin
+     * </p>
+     * <p>
+     * 2 xmax
+     * </p>
+     * <p>
+     * 3 ymax
+     * </p>
+     * 
      * @return Returns the BoundingBox.
      */
     public int[] getBoundingBox() {
@@ -764,6 +758,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Returns the cmap table.
+     * 
      * @return Returns the cmap table
      */
     public TtfTableCMAP getCmapTable() {
@@ -773,6 +768,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Returns the descent.
+     * 
      * @return Returns the descent
      */
     public int getDescent() {
@@ -782,6 +778,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Returns the font family name.
+     * 
      * @return Returns the font family name.
      */
     public String getFontFamilyName() {
@@ -791,18 +788,20 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Returns the glyph.
-     * @param   i   glyph number
+     * 
+     * @param i glyph number
      * @return Returns the glyph
      */
     public XtfGlyph getGlyph(int i) {
 
         return (glyf.getDescription(i) != null) ? new XtfGlyph(glyf
-                .getDescription(i), hmtx.getLeftSideBearing(i), hmtx
-                .getAdvanceWidth(i)) : null;
+            .getDescription(i), hmtx.getLeftSideBearing(i), hmtx
+            .getAdvanceWidth(i)) : null;
     }
 
     /**
      * Returns the head table.
+     * 
      * @return Returns the head table
      */
     public TtfTableHEAD getHeadTable() {
@@ -812,6 +811,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Returns the hhea table.
+     * 
      * @return Returns the hhea table
      */
     public TtfTableHHEA getHheaTable() {
@@ -821,6 +821,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Returns the hmtx table.
+     * 
      * @return Returns the hmtx table
      */
     public TtfTableHMTX getHmtxTable() {
@@ -830,6 +831,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Returns the italic angle.
+     * 
      * @return Returns the italic angle.
      */
     public int getItalicAngle() {
@@ -839,6 +841,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Returns the loca table.
+     * 
      * @return Returns the loca table
      */
     public TtfTableLOCA getLocaTable() {
@@ -848,6 +851,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Returns the os2 table.
+     * 
      * @return Returns the os2 table
      */
     public TtfTableMAXP getMaxpTable() {
@@ -857,6 +861,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Returns the maxp table.
+     * 
      * @return Returns the maxp table
      */
     public TtfTableNAME getNameTable() {
@@ -866,6 +871,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Returns the number of glyphs.
+     * 
      * @return Returns the number of glyphs.
      */
     public int getNumberOfGlyphs() {
@@ -875,6 +881,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Returns the os2 table.
+     * 
      * @return Returns the os2 table
      */
     public TtfTableOS2 getOS2Table() {
@@ -884,6 +891,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Returns the post table.
+     * 
      * @return Returns the post table
      */
     public TtfTablePOST getPostTable() {
@@ -893,6 +901,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Return the table with the special type.
+     * 
      * @param tabletype the table type
      * @return Returns the table
      */
@@ -903,6 +912,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Returns the table directory.
+     * 
      * @return Returns the table directory
      */
     public XtfTableDirectory getTableDirectory() {
@@ -912,6 +922,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Returns the font type.
+     * 
      * @return Returns the font type
      */
     public Type getType() {
@@ -921,6 +932,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Return the underline position.
+     * 
      * @return Return the underline position.
      */
     public int getUnderlinePos() {
@@ -930,6 +942,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Return the underline thickness.
+     * 
      * @return Return the underline thickness.
      */
     public int getUnderlineThickness() {
@@ -939,6 +952,7 @@ public class XtfReader implements XMLWriterConvertible {
 
     /**
      * Returns the units per em.
+     * 
      * @return Returns the units per em.
      */
     public int getUntisPerEm() {
@@ -947,16 +961,16 @@ public class XtfReader implements XMLWriterConvertible {
     }
 
     /**
-     * Returns the glyph name for the char by using the platform and encoding. If no char ist found,
-     * <code>null</code> will be returned.
-     *
-     * @param charCode   The char code.
+     * Returns the glyph name for the char by using the platform and encoding.
+     * If no char is found, <code>null</code> will be returned.
+     * 
+     * @param charCode The char code.
      * @param platformId The platform id.
      * @param encodingId The encoding id.
      * @return Returns the glyph name for the char.
      */
-    public String mapCharCodeToGlyphname(int charCode,
-            short platformId, short encodingId) {
+    public String mapCharCodeToGlyphname(int charCode, short platformId,
+            short encodingId) {
 
         // get format
         Format format = getCmapTable().getFormat(platformId, encodingId);
@@ -964,7 +978,16 @@ public class XtfReader implements XMLWriterConvertible {
             int glyphpos = format.mapCharCode(charCode);
 
             if (glyphpos > 0) {
-                return getPostTable().getGlyphName(glyphpos);
+                String postGylphName = getPostTable().getGlyphName(glyphpos);
+                if (postGylphName != null) {
+                    return postGylphName;
+                }
+                // search in cff
+                XtfTable cff = getTable(CFF);
+                if (cff != null && cff instanceof OtfTableCFF) {
+                    OtfTableCFF cfftab = (OtfTableCFF) cff;
+                    return cfftab.mapGlyphPosToGlyphName(glyphpos);
+                }
             }
         }
         return null;
@@ -973,8 +996,8 @@ public class XtfReader implements XMLWriterConvertible {
     /**
      * Returns the glyph width for the char by using the platform and encoding.
      * If no char is found, 0 be returned.
-     *
-     * @param charCode   The char code.
+     * 
+     * @param charCode The char code.
      * @param platformId The platform id.
      * @param encodingId The encoding id.
      * @return Returns the glyph width for the char.
@@ -997,14 +1020,14 @@ public class XtfReader implements XMLWriterConvertible {
     /**
      * Returns the glyph width for the char by using the platform and encoding.
      * If no char is found, 0 be returned.
-     *
-     * @param glypname   The glyph name.
+     * 
+     * @param glypname The glyph name.
      * @param platformId The platform id.
      * @param encodingId The encoding id.
      * @return Returns the glyph width for the char.
      */
-    public int mapCharCodeToWidth(String glypname,
-            short platformId, short encodingId) {
+    public int mapCharCodeToWidth(String glypname, short platformId,
+            short encodingId) {
 
         int pos = post.getGlyphNamePosition(glypname);
         if (pos < 0) {
@@ -1019,16 +1042,16 @@ public class XtfReader implements XMLWriterConvertible {
     }
 
     /**
-     * Returns the glyph bounding box for the char by using the platform and encoding.
-     * If no char is found, <code>null</code> be returned.
-     *
-     * @param glypname   The glyph name.
+     * Returns the glyph bounding box for the char by using the platform and
+     * encoding. If no char is found, <code>null</code> be returned.
+     * 
+     * @param glypname The glyph name.
      * @param platformId The platform id.
      * @param encodingId The encoding id.
      * @return Returns the glyph bounding box for the char.
      */
-    public XtfBoundingBox mapCharCodeToBB(String glypname,
-            short platformId, short encodingId) {
+    public XtfBoundingBox mapCharCodeToBB(String glypname, short platformId,
+            short encodingId) {
 
         int pos = post.getGlyphNamePosition(glypname);
         if (pos < 0) {
@@ -1041,23 +1064,24 @@ public class XtfReader implements XMLWriterConvertible {
             Descript desc = glyf.getDescription(pos);
             if (desc != null) {
                 return new XtfBoundingBox(desc.getXMin(), desc.getYMin(), desc
-                        .getXMax(), desc.getYMax());
+                    .getXMax(), desc.getYMax());
             }
         }
         return null;
     }
 
-    public int getKerning(String glypname1, String glypname2,
-            short platformId, short encodingId) {
+    public int getKerning(String glypname1, String glypname2, short platformId,
+            short encodingId) {
 
         // TODO
-        
+
         return 0;
     }
 
     /**
      * Read the TTF.
-     * @param rar   input
+     * 
+     * @param rar input
      * @throws IOException if an IO-error occurs.
      */
     private void read(RandomAccessR rar) throws IOException {
@@ -1090,7 +1114,8 @@ public class XtfReader implements XMLWriterConvertible {
         Arrays.sort(tabs, new Comparator() {
 
             /**
-             * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
+             * @see java.util.Comparator#compare(java.lang.Object,
+             *      java.lang.Object)
              */
             public int compare(Object arg0, Object arg1) {
 

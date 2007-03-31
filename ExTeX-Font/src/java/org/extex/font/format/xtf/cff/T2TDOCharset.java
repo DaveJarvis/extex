@@ -28,25 +28,21 @@ import org.extex.util.xml.XMLStreamWriter;
 
 /**
  * Charset.
- *
+ * 
  * <p>
- * Charset data is located via the offset operand to the charset operator
- * in the Top DICT. Each charset is described by a format-type identifier
- * byte followed by format-specific data.
- * </p>
- * <p>TODO change to HTML table
- * Format 0
- * Type  Name                Description
- * Card8 format              =0
- * SID   glyph  [nGlyphs-1]  Glyph name array
+ * Charset data is located via the offset operand to the charset operator in the
+ * Top DICT. Each charset is described by a format-type identifier byte followed
+ * by format-specific data.
  * </p>
  * <p>
- * Format 1
- * Type    Name                Description
- * Card8   format              =1
- * struct  Range1 [varies]     Range1 array (see Table 19)
+ * TODO change to HTML table Format 0 Type Name Description Card8 format =0 SID
+ * glyph [nGlyphs-1] Glyph name array
  * </p>
- *
+ * <p>
+ * Format 1 Type Name Description Card8 format =1 struct Range1 [varies] Range1
+ * array (see Table 19)
+ * </p>
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -65,7 +61,7 @@ public class T2TDOCharset extends T2TDONumber {
 
     /**
      * Create a new object.
-     *
+     * 
      * @param stack the stack
      * @throws IOException if an IO.error occurs.
      */
@@ -84,7 +80,10 @@ public class T2TDOCharset extends T2TDONumber {
 
     /**
      * Returns the sid.
-     *
+     * <p>
+     * If the pos out of range, 0 (.notdef) is returned.
+     * </p>
+     * 
      * @param pos nThe position in the array.
      * @return Returns the sid.
      */
@@ -97,12 +96,10 @@ public class T2TDOCharset extends T2TDONumber {
     }
 
     /**
-     * Read the charset entry.
-     * Charset data is located via the offset operand to the
-     * charset operator in the Top DICT. Each charset
-     * is described by a format-type identifier byte followed
-     * by format-specific data.
-     *
+     * Read the charset entry. Charset data is located via the offset operand to
+     * the charset operator in the Top DICT. Each charset is described by a
+     * format-type identifier byte followed by format-specific data.
+     * 
      * @see org.extex.font.format.xtf.cff.T2Operator#init(
      *      org.extex.util.file.random.RandomAccessR,
      *      org.extex.font.format.xtf.OtfTableCFF, int)
@@ -127,18 +124,18 @@ public class T2TDOCharset extends T2TDONumber {
                 int j = 1;
 
                 switch (format) {
-                    case 0 :
+                    case 0:
 
                         for (j = 1; j < numberOfGlyphs; j++) {
                             sid[j] = rar.readUnsignedShort();
                         }
                         break;
 
-                    case 1 :
+                    case 1:
                         // Range1 Format (Charset)
-                        // Type   Name    Description
-                        // sid    first   First glyph in range
-                        // Card8  nLeft   Glyphs left in range (excluding first)
+                        // Type Name Description
+                        // sid first First glyph in range
+                        // Card8 nLeft Glyphs left in range (excluding first)
                         //
                         // Each Range1 describes a group of sequential SIDs.
                         // The number of ranges is not explicitly specified
@@ -163,10 +160,10 @@ public class T2TDOCharset extends T2TDONumber {
                         }
 
                         break;
-                    case 2 :
+                    case 2:
                         // Range2 Format
-                        // Type   Name  Description
-                        // sid    first First glyph in range
+                        // Type Name Description
+                        // sid first First glyph in range
                         // Card16 nLeft Glyphs left in range (excluding first)
                         // Format 2 differs from format 1 only in the size of
                         // the nLeft field in each range. This format is most
@@ -189,7 +186,7 @@ public class T2TDOCharset extends T2TDONumber {
                         }
 
                         break;
-                    default :
+                    default:
                         break;
                 }
             }
@@ -201,7 +198,7 @@ public class T2TDOCharset extends T2TDONumber {
 
     /**
      * Returns the value as hex string.
-     *
+     * 
      * @param i The int value.
      * @return Returns the value as hex string.
      */
@@ -222,10 +219,10 @@ public class T2TDOCharset extends T2TDONumber {
         // writer.writeAttribute("value", getValue());
         writer.writeAttribute("format", format);
         switch (format) {
-            case 0 :
+            case 0:
 
                 break;
-            case 1 :
+            case 1:
                 for (int i = 0; i < sid.length; i++) {
                     writer.writeStartElement("entry");
                     writer.writeAttribute("sid", i);
@@ -234,11 +231,11 @@ public class T2TDOCharset extends T2TDONumber {
                     writer.writeEndElement();
                 }
                 break;
-            case 2 :
+            case 2:
 
                 break;
 
-            default :
+            default:
                 break;
         }
         writer.writeEndElement();
@@ -247,7 +244,7 @@ public class T2TDOCharset extends T2TDONumber {
 
     /**
      * Getter for sid.
-     *
+     * 
      * @return Returns the sid.
      */
     public int[] getSid() {
