@@ -344,4 +344,17 @@ public final class T2StandardEncoding {
         return "StandardEncoding";
     }
 
+    /**
+     * Returns the SID array.
+     *
+     * @return Returns the SID array.
+     */
+    public static int[] getSidArray() {
+
+        int[] arr = new int[DATA.length];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = getSID(i);
+        }
+        return arr;
+    }
 }
