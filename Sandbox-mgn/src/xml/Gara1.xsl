@@ -6,9 +6,10 @@
    
    <!-- root -->
    <xsl:template match="/">
-      <xsl:apply-templates select="//cmap_format_4"/>
+      <xsl:apply-templates select="//cmap_format_4[@platformID='3' and @platEncID='1']"/>
    </xsl:template>
    
+   <!-- plattformid = 3 (Windows) , encodingid = 1 (Unicode) -->
    <xsl:template match="cmap_format_4">
       <xsl:apply-templates select="map"/>
    </xsl:template>
