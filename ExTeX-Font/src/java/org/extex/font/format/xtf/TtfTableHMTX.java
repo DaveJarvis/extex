@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -26,32 +26,37 @@ import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
-
 /**
- * The 'hmtx' table contains metric information for the
- * horizontal layout each of the glyphs in the font.
- *
- * <table BORDER="1">
- *   <tbody>
- *     <tr><td><b>Field</b></td><td><b>Type</b></td><td><b>Description</b></td></tr>
- *   </tbody>
- *   <tr><td>hMetrics</td><td>longHorMetric[numberOfHMetrics]</td><td>
- *          Paired advance width and left side bearing values
- *          for each glyph. The value numOfHMetrics comes from the &lsquo;hhea&rsquo;
- *          table. If the font is monospaced, only one entry need be in the
- *          array, but that entry is required. The last entry applies to all
- *          subsequent glyphs.</td></tr>
- *   <tr><td>leftSideBearing</td><td>FWord[ ]</td><td>
- *          Here the advanceWidth is assumed to be the same as
- *          the advanceWidth for the last entry above. The number of entries
- *          in this array is derived from numGlyphs (from &lsquo;maxp&rsquo;
- *          table) minus numberOfHMetrics. This generally is used with a run
- *          of monospaced glyphs (e.g., Kanji fonts or Courier fonts). Only
- *          one run is allowed and it must be at the end. This allows a
- *          monospaced font to vary the left side bearing values for each
- *          glyph.</td></tr>
+ * The 'hmtx' table contains metric information for the horizontal layout each
+ * of the glyphs in the font.
+ * 
+ * <table BORDER="1"> <tbody>
+ * <tr>
+ * <td><b>Field</b></td>
+ * <td><b>Type</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * </tbody>
+ * <tr>
+ * <td>hMetrics</td>
+ * <td>longHorMetric[numberOfHMetrics]</td>
+ * <td> Paired advance width and left side bearing values for each glyph. The
+ * value numOfHMetrics comes from the &lsquo;hhea&rsquo; table. If the font is
+ * monospaced, only one entry need be in the array, but that entry is required.
+ * The last entry applies to all subsequent glyphs.</td>
+ * </tr>
+ * <tr>
+ * <td>leftSideBearing</td>
+ * <td>FWord[ ]</td>
+ * <td> Here the advanceWidth is assumed to be the same as the advanceWidth for
+ * the last entry above. The number of entries in this array is derived from
+ * numGlyphs (from &lsquo;maxp&rsquo; table) minus numberOfHMetrics. This
+ * generally is used with a run of monospaced glyphs (e.g., Kanji fonts or
+ * Courier fonts). Only one run is allowed and it must be at the end. This
+ * allows a monospaced font to vary the left side bearing values for each glyph.</td>
+ * </tr>
  * </table>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -71,16 +76,26 @@ public class TtfTableHMTX extends AbstractXtfTable
     private int[] hMetrics = null;
 
     /**
+     * length of hmetrics
+     */
+    private int hMetricslength;
+
+    /**
      * leftsidebearing
      */
     private short[] leftSideBearing = null;
 
     /**
+     * length of lsb
+     */
+    private int lsblength;
+
+    /**
      * Create a new object
-     *
-     * @param tablemap  the tablemap
-     * @param de        entray
-     * @param rar       input
+     * 
+     * @param tablemap the tablemap
+     * @param de entray
+     * @param rar input
      * @throws IOException if an IO-error occurs
      */
     TtfTableHMTX(XtfTableMap tablemap, XtfTableDirectory.Entry de,
@@ -95,14 +110,22 @@ public class TtfTableHMTX extends AbstractXtfTable
     }
 
     /**
-     * length of hmetrics
+     * Returns the advanced width
+     * 
+     * @param i index
+     * @return Returns the advanced width
      */
-    private int hMetricslength;
+    public int getAdvanceWidth(int i) {
 
-    /**
-     * length of lsb
-     */
-    private int lsblength;
+        if (hMetrics == null) {
+            return 0;
+        }
+        if (i < hMetrics.length) {
+            return hMetrics[i] >> XtfConstants.SHIFT16;
+        }
+        return hMetrics[hMetrics.length - 1] >> XtfConstants.SHIFT16;
+
+    }
 
     /**
      * @see org.extex.font.format.xtf.AbstractXtfTable#getInitOrder()
@@ -110,6 +133,42 @@ public class TtfTableHMTX extends AbstractXtfTable
     public int getInitOrder() {
 
         return 1;
+    }
+
+    /**
+     * Return the left side bearing
+     * 
+     * @param i index
+     * @return Return the left side bearing
+     */
+    public short getLeftSideBearing(int i) {
+
+        if (hMetrics == null) {
+            return 0;
+        }
+        if (i < hMetrics.length) {
+            return (short) (hMetrics[i] & XtfConstants.CONSTXFFFF);
+        }
+        return leftSideBearing[i - hMetrics.length];
+
+    }
+
+    /**
+     * @see org.extex.font.format.xtf.XtfTable#getShortcut()
+     */
+    public String getShortcut() {
+
+        return "hmtx";
+    }
+
+    /**
+     * Get the table type, as a table directory value.
+     * 
+     * @return Returns the table type
+     */
+    public int getType() {
+
+        return XtfReader.HMTX;
     }
 
     /**
@@ -136,69 +195,20 @@ public class TtfTableHMTX extends AbstractXtfTable
         hMetrics = new int[numberOfHMetrics];
         ByteArrayInputStream bais = new ByteArrayInputStream(buf);
         for (int i = 0; i < numberOfHMetrics; i++) {
-            hMetrics[i] = (bais.read() << XtfConstants.SHIFT24
-                    | bais.read() << XtfConstants.SHIFT16
-                    | bais.read() << XtfConstants.SHIFT8 | bais.read());
+            hMetrics[i] =
+                    (bais.read() << XtfConstants.SHIFT24
+                            | bais.read() << XtfConstants.SHIFT16
+                            | bais.read() << XtfConstants.SHIFT8 | bais.read());
         }
         if (lsbCount > 0) {
             leftSideBearing = new short[lsbCount];
             for (int i = 0; i < lsbCount; i++) {
-                leftSideBearing[i] = (short) (bais.read() << XtfConstants.SHIFT8 | bais
-                        .read());
+                leftSideBearing[i] =
+                        (short) (bais.read() << XtfConstants.SHIFT8 | bais
+                            .read());
             }
         }
         buf = null;
-    }
-
-    /**
-     * Returns the advanced width
-     * @param i index
-     * @return Returns the advanced width
-     */
-    public int getAdvanceWidth(int i) {
-
-        if (hMetrics == null) {
-            return 0;
-        }
-        if (i < hMetrics.length) {
-            return hMetrics[i] >> XtfConstants.SHIFT16;
-        }
-        return hMetrics[hMetrics.length - 1] >> XtfConstants.SHIFT16;
-
-    }
-
-    /**
-     * Return the left side bearing
-     * @param i index
-     * @return Return the left side bearing
-     */
-    public short getLeftSideBearing(int i) {
-
-        if (hMetrics == null) {
-            return 0;
-        }
-        if (i < hMetrics.length) {
-            return (short) (hMetrics[i] & XtfConstants.CONSTXFFFF);
-        }
-        return leftSideBearing[i - hMetrics.length];
-
-    }
-
-    /**
-     * Get the table type, as a table directory value.
-     * @return Returns the table type
-     */
-    public int getType() {
-
-        return XtfReader.HMTX;
-    }
-
-    /**
-     * @see org.extex.font.format.xtf.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
-
-        return "hmtx";
     }
 
     /**
@@ -228,7 +238,7 @@ public class TtfTableHMTX extends AbstractXtfTable
         TtfTablePOST post = (TtfTablePOST) getTableMap().get(XtfReader.POST);
         TtfTableGLYF glyf = (TtfTableGLYF) getTableMap().get(XtfReader.GLYF);
 
-        if (maxp != null && post != null && glyf != null) {
+        if (maxp != null && post != null) {
             writer.writeStartElement("glyphs");
             int numGlyphs = maxp.getNumGlyphs();
             for (int i = 0; i < numGlyphs; i++) {
@@ -238,29 +248,46 @@ public class TtfTableHMTX extends AbstractXtfTable
                 writer.writeAttribute("width", String.valueOf(aw));
                 int lsb = getLeftSideBearing(i);
                 writer.writeAttribute("lsb", String.valueOf(lsb));
-                writer.writeAttribute("name", post.getGlyphName(i));
 
-                // For any glyph, xmax and xmin are given in glyf table,
-                // lsb and aw are given in hmtx table.
-                // rsb is calculated as follows: rsb = aw - (lsb + xmax - xmin)
-                TtfTableGLYF.Descript des = glyf.getDescription(i);
-                if (des != null) {
-                    int xmax = des.getXMax();
-                    int xmin = des.getXMin();
-                    int rsb = aw - (lsb + xmax - xmin);
-                    writer.writeAttribute("xmax", String.valueOf(xmax));
-                    writer.writeAttribute("xmin", String.valueOf(xmin));
-                    writer.writeAttribute("rsb", String.valueOf(rsb));
+                String postGylphName = post.getGlyphName(i);
 
-                    // If pp1 and pp2 are phantom points used to control lsb
-                    // and rsb, their initial position in x is calculated
-                    // as follows:
-                    // pp1 = xmin - lsb
-                    // pp2 = pp1 + aw
-                    int pp1 = xmin - lsb;
-                    int pp2 = pp1 + aw;
-                    writer.writeAttribute("pp1", String.valueOf(pp1));
-                    writer.writeAttribute("pp2", String.valueOf(pp2));
+                if (postGylphName == null) {
+                    // search in cff
+                    XtfTable cff = getTableMap().get(XtfReader.CFF);
+                    if (cff != null && cff instanceof OtfTableCFF) {
+                        OtfTableCFF cfftab = (OtfTableCFF) cff;
+                        postGylphName = cfftab.mapGlyphPosToGlyphName(i);
+                    }
+                }
+                if (postGylphName == null) {
+                    postGylphName = "???";
+                }
+                writer.writeAttribute("name", postGylphName);
+
+                if (glyf != null) {
+                    // For any glyph, xmax and xmin are given in glyf table,
+                    // lsb and aw are given in hmtx table.
+                    // rsb is calculated as follows: rsb = aw - (lsb + xmax -
+                    // xmin)
+                    TtfTableGLYF.Descript des = glyf.getDescription(i);
+                    if (des != null) {
+                        int xmax = des.getXMax();
+                        int xmin = des.getXMin();
+                        int rsb = aw - (lsb + xmax - xmin);
+                        writer.writeAttribute("xmax", String.valueOf(xmax));
+                        writer.writeAttribute("xmin", String.valueOf(xmin));
+                        writer.writeAttribute("rsb", String.valueOf(rsb));
+
+                        // If pp1 and pp2 are phantom points used to control lsb
+                        // and rsb, their initial position in x is calculated
+                        // as follows:
+                        // pp1 = xmin - lsb
+                        // pp2 = pp1 + aw
+                        int pp1 = xmin - lsb;
+                        int pp2 = pp1 + aw;
+                        writer.writeAttribute("pp1", String.valueOf(pp1));
+                        writer.writeAttribute("pp2", String.valueOf(pp2));
+                    }
                 }
                 writer.writeEndElement();
             }

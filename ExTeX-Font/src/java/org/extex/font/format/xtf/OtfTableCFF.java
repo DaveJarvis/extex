@@ -215,6 +215,11 @@ public class OtfTableCFF extends AbstractXtfTable
     private List stringIndex;
 
     /**
+     * The map for the string name - sid
+     */
+    private Map<String, Integer> stringIndexName = null;
+
+    /**
      * The top dict index.
      */
     private Map topDictIndex;
@@ -911,6 +916,12 @@ public class OtfTableCFF extends AbstractXtfTable
 
     }
 
+    // ---------------------------------------------------
+    // ---------------------------------------------------
+    // ---------------------------------------------------
+    // ---------------------------------------------------
+    // ---------------------------------------------------
+
     /**
      * Returns the type 2 operator for the key.
      * 
@@ -921,12 +932,6 @@ public class OtfTableCFF extends AbstractXtfTable
 
         return (T2Operator) topDictIndex.get(key);
     }
-
-    // ---------------------------------------------------
-    // ---------------------------------------------------
-    // ---------------------------------------------------
-    // ---------------------------------------------------
-    // ---------------------------------------------------
 
     /**
      * Get the table type, as a table directory value.
@@ -1012,6 +1017,43 @@ public class OtfTableCFF extends AbstractXtfTable
             return bool.isValue();
         }
         return false;
+    }
+
+    /**
+     * Map the glyph name to the glyph position. If the glyph name not found, -1
+     * is returned.
+     * 
+     * @param glyphname The glyph name
+     * @return Returns the position of the glyph name.
+     */
+    public int mapGlyphNameToGlyphPos(String glyphname) {
+
+        // find the sid for the name
+        if (stringIndexName == null) {
+            int maxgl =
+                    T2StandardStrings.getHighestSID() + stringIndex.size() + 1;
+            stringIndexName = new HashMap<String, Integer>(maxgl);
+            for (int i = 0; i < maxgl; i++) {
+                String name = getStringIndex(i);
+                if (name == null) {
+                    break;
+                }
+                stringIndexName.put(name, new Integer(i));
+            }
+        }
+        Integer sid = stringIndexName.get(glyphname);
+        if (sid != null) {
+
+            // get charset
+            T2Operator op = (T2Operator) topDictIndex.get("charset");
+            if (op != null && op instanceof T2TDOCharset) {
+
+                T2TDOCharset val = (T2TDOCharset) op;
+                int glyphpossid = val.getSidForStringIndex(sid);
+                return glyphpossid;
+            }
+        }
+        return -1;
     }
 
     /**

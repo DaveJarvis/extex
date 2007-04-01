@@ -839,6 +839,14 @@ public class XtfReader implements XMLWriterConvertible {
         return post.getItalicAngle();
     }
 
+    public int getKerning(String glypname1, String glypname2, short platformId,
+            short encodingId) {
+
+        // TODO
+
+        return 0;
+    }
+
     /**
      * Returns the loca table.
      * 
@@ -961,6 +969,35 @@ public class XtfReader implements XMLWriterConvertible {
     }
 
     /**
+     * Returns the glyph bounding box for the char by using the platform and
+     * encoding. If no char is found, <code>null</code> be returned.
+     * 
+     * @param glypname The glyph name.
+     * @param platformId The platform id.
+     * @param encodingId The encoding id.
+     * @return Returns the glyph bounding box for the char.
+     */
+    public XtfBoundingBox mapCharCodeToBB(String glypname, short platformId,
+            short encodingId) {
+
+        int pos = post.getGlyphNamePosition(glypname);
+        if (pos < 0) {
+            return null;
+        }
+        // get format
+        Format format = getCmapTable().getFormat(platformId, encodingId);
+        if (format != null) {
+
+            Descript desc = glyf.getDescription(pos);
+            if (desc != null) {
+                return new XtfBoundingBox(desc.getXMin(), desc.getYMin(), desc
+                    .getXMax(), desc.getYMax());
+            }
+        }
+        return null;
+    }
+
+    /**
      * Returns the glyph name for the char by using the platform and encoding.
      * If no char is found, <code>null</code> will be returned.
      * 
@@ -1021,60 +1058,31 @@ public class XtfReader implements XMLWriterConvertible {
      * Returns the glyph width for the char by using the platform and encoding.
      * If no char is found, 0 be returned.
      * 
-     * @param glypname The glyph name.
+     * @param glyphname The glyph name.
      * @param platformId The platform id.
      * @param encodingId The encoding id.
      * @return Returns the glyph width for the char.
      */
-    public int mapCharCodeToWidth(String glypname, short platformId,
+    public int mapCharCodeToWidth(String glyphname, short platformId,
             short encodingId) {
 
-        int pos = post.getGlyphNamePosition(glypname);
+        int pos = post.getGlyphNamePosition(glyphname);
         if (pos < 0) {
-            return 0;
+            // search in cff
+            XtfTable cff = getTable(CFF);
+            if (cff != null && cff instanceof OtfTableCFF) {
+                OtfTableCFF cfftab = (OtfTableCFF) cff;
+                pos = cfftab.mapGlyphNameToGlyphPos(glyphname);
+            }
+            if (pos < 0) {
+                return 0;
+            }
         }
         // get format
         Format format = getCmapTable().getFormat(platformId, encodingId);
         if (format != null) {
             return hmtx.getAdvanceWidth(pos);
         }
-        return 0;
-    }
-
-    /**
-     * Returns the glyph bounding box for the char by using the platform and
-     * encoding. If no char is found, <code>null</code> be returned.
-     * 
-     * @param glypname The glyph name.
-     * @param platformId The platform id.
-     * @param encodingId The encoding id.
-     * @return Returns the glyph bounding box for the char.
-     */
-    public XtfBoundingBox mapCharCodeToBB(String glypname, short platformId,
-            short encodingId) {
-
-        int pos = post.getGlyphNamePosition(glypname);
-        if (pos < 0) {
-            return null;
-        }
-        // get format
-        Format format = getCmapTable().getFormat(platformId, encodingId);
-        if (format != null) {
-
-            Descript desc = glyf.getDescription(pos);
-            if (desc != null) {
-                return new XtfBoundingBox(desc.getXMin(), desc.getYMin(), desc
-                    .getXMax(), desc.getYMax());
-            }
-        }
-        return null;
-    }
-
-    public int getKerning(String glypname1, String glypname2, short platformId,
-            short encodingId) {
-
-        // TODO
-
         return 0;
     }
 

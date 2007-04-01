@@ -20,7 +20,9 @@
 package org.extex.font.format.xtf.cff;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.extex.font.format.xtf.OtfTableCFF;
 import org.extex.util.file.random.RandomAccessR;
@@ -60,6 +62,11 @@ public class T2TDOCharset extends T2TDONumber {
     private int[] sid;
 
     /**
+     * The map for the values.
+     */
+    private Map<Integer, Integer> valuesid = null;
+
+    /**
      * Create a new object.
      * 
      * @param stack the stack
@@ -79,6 +86,16 @@ public class T2TDOCharset extends T2TDONumber {
     }
 
     /**
+     * Getter for sid.
+     * 
+     * @return Returns the sid.
+     */
+    public int[] getSid() {
+
+        return sid;
+    }
+
+    /**
      * Returns the sid.
      * <p>
      * If the pos out of range, 0 (.notdef) is returned.
@@ -92,6 +109,29 @@ public class T2TDOCharset extends T2TDONumber {
         if (pos >= 0 && pos < sid.length) {
             return sid[pos];
         }
+        return 0;
+    }
+
+    /**
+     * Returns the sid for a value. If the value is not found, 0 is returned.
+     * 
+     * @param value The value.
+     * @return Returns the sid for a value.
+     */
+    public int getSidForStringIndex(int stringIndexpos) {
+
+        // initialize
+        if (valuesid == null) {
+            valuesid = new HashMap<Integer, Integer>(sid.length);
+            for (int i = 0; i < sid.length; i++) {
+                valuesid.put(sid[i], i);
+            }
+        }
+        Integer ii = valuesid.get(stringIndexpos);
+        if (ii != null) {
+            return ii;
+        }
+
         return 0;
     }
 
@@ -240,16 +280,6 @@ public class T2TDOCharset extends T2TDONumber {
         }
         writer.writeEndElement();
 
-    }
-
-    /**
-     * Getter for sid.
-     * 
-     * @return Returns the sid.
-     */
-    public int[] getSid() {
-
-        return sid;
     }
 
 }
