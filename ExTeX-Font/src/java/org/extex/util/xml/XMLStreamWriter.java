@@ -294,6 +294,11 @@ public class XMLStreamWriter {
     private String publicID;
 
     /**
+     * remove white space from characters.
+     */
+    private boolean removeWhiteSpace = false;
+
+    /**
      * The name of the root element (for doctype).
      */
     private String rootName;
@@ -407,7 +412,6 @@ public class XMLStreamWriter {
         out.flush();
     }
 
-    // --------------------------------------------------
     /**
      * Returns the default namespace.
      * 
@@ -419,13 +423,23 @@ public class XMLStreamWriter {
     }
 
     /**
+     * Getter for removeWhiteSpace.
+     * 
+     * @return the removeWhiteSpace
+     */
+    public boolean isRemoveWhiteSpace() {
+
+        return removeWhiteSpace;
+    }
+
+    /**
      * Write a newline to the output.
      * 
      * @throws IOException if an error occurs.
      */
     public void newLine() throws IOException {
 
-        out.write('\n');
+        out.write("\n");
     }
 
     /**
@@ -558,6 +572,16 @@ public class XMLStreamWriter {
     public void setNumberformat(NumberFormat nformat) {
 
         numberformat = nformat;
+    }
+
+    /**
+     * Setter for removeWhiteSpace.
+     * 
+     * @param removeWhiteSpace the removeWhiteSpace to set
+     */
+    public void setRemoveWhiteSpace(boolean removeWhiteSpace) {
+
+        this.removeWhiteSpace = removeWhiteSpace;
     }
 
     /**
@@ -763,6 +787,21 @@ public class XMLStreamWriter {
     /**
      * Write characters to the output.
      * 
+     * @param ch The char array.
+     * @param start The start position.
+     * @param length The length.
+     * @throws IOException if an error occurs.
+     */
+    public void writeCharacters(char[] ch, int start, int length)
+            throws IOException {
+
+        writeCharacters(new String(ch, start, length));
+
+    }
+
+    /**
+     * Write characters to the output.
+     * 
      * @param text The text
      * @throws IOException if an error occurs.
      */
@@ -770,11 +809,19 @@ public class XMLStreamWriter {
 
         closeElement();
         stack.setAppend();
-        if (nlset) {
-            printIndent();
+        String xtext = null;
+        if (removeWhiteSpace) {
+            xtext = text.trim();
+        } else {
+            xtext = text;
         }
-        out.write(createEntity(text));
-        nlset = false;
+        if (xtext.length() > 0) {
+            if (nlset) {
+                printIndent();
+            }
+            out.write(createEntity(xtext));
+            nlset = false;
+        }
     }
 
     /**
