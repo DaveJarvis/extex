@@ -135,7 +135,7 @@ public class XMLStreamWriter {
         /**
          * The stack.
          */
-        private LinkedList istack = new LinkedList();
+        private LinkedList<Values> istack = new LinkedList<Values>();
 
         /**
          * Add a element.
@@ -150,7 +150,7 @@ public class XMLStreamWriter {
         /**
          * Add a element.
          * 
-         * @param ns the namespace
+         * @param ns the name space
          * @param element the element
          */
         public void add(String ns, String element) {
@@ -165,7 +165,7 @@ public class XMLStreamWriter {
          */
         public String get() {
 
-            return ((Values) istack.getLast()).getElement();
+            return istack.getLast().getElement();
         }
 
         /**
@@ -175,7 +175,7 @@ public class XMLStreamWriter {
          */
         public String getNameSpace() {
 
-            return ((Values) istack.getLast()).getNameSpace();
+            return istack.getLast().getNameSpace();
         }
 
         /**
@@ -187,7 +187,7 @@ public class XMLStreamWriter {
         public boolean isAppend() {
 
             if (size() > 0) {
-                return ((Values) istack.getLast()).isAppend();
+                return istack.getLast().isAppend();
             }
             return false;
         }
@@ -199,7 +199,7 @@ public class XMLStreamWriter {
          */
         public String remove() {
 
-            return ((Values) istack.removeLast()).getElement();
+            return istack.removeLast().getElement();
         }
 
         /**
@@ -208,7 +208,7 @@ public class XMLStreamWriter {
         public void setAppend() {
 
             if (size() > 0) {
-                ((Values) istack.getLast()).setAppend(true);
+                istack.getLast().setAppend(true);
             }
         }
 
@@ -471,9 +471,8 @@ public class XMLStreamWriter {
      * Print a indent in a string buffer, if beauty is set.
      * 
      * @param buf The string buffer.
-     * @throws IOException if an error occurs.
      */
-    private void printIndent(StringBuffer buf) throws IOException {
+    private void printIndent(StringBuffer buf) {
 
         if (beauty) {
             for (int i = 0, cnt = stack.size(); i < cnt; i++) {
@@ -511,9 +510,9 @@ public class XMLStreamWriter {
     }
 
     /**
-     * Set the default namespace for elements.
+     * Set the default name space for elements.
      * 
-     * @param ns The defaultns to set.
+     * @param ns The default name space to set.
      * @throws IOException if an error occurs.
      */
     public void setDefaultNamespace(String ns) throws IOException {
@@ -565,9 +564,9 @@ public class XMLStreamWriter {
     }
 
     /**
-     * Setter for numberformat.
+     * Setter for number format.
      * 
-     * @param nformat The numberformat to set.
+     * @param nformat The number format to set.
      */
     public void setNumberformat(NumberFormat nformat) {
 
@@ -587,7 +586,7 @@ public class XMLStreamWriter {
     /**
      * Convert a long value to a hex string with the specified length.
      * 
-     * @param val The vlaue.
+     * @param val The value.
      * @param length The length of the hex string.
      * @return Returns the hex value of the long value.
      */
@@ -980,7 +979,7 @@ public class XMLStreamWriter {
     /**
      * Write the start element to the output.
      * 
-     * @param ns the namespace
+     * @param ns the name space
      * @param element the element
      * @throws IOException if an error occurs.
      */
