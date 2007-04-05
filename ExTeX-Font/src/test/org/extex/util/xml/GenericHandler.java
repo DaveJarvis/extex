@@ -25,8 +25,6 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import com.lowagie.text.xml.XmlWriter;
-
 /**
  * Generic Handler.
  * 
@@ -36,14 +34,14 @@ import com.lowagie.text.xml.XmlWriter;
 public class GenericHandler extends DefaultHandler {
 
     /**
-     * The {@link XmlWriter} for the output.
+     * The {@link XMLStreamWriter} for the output.
      */
     private XMLStreamWriter writer;
 
     /**
      * Creates a new object.
      * 
-     * @param writer The {@link XmlWriter} for the output.
+     * @param writer The {@link XMLStreamWriter} for the output.
      */
     public GenericHandler(XMLStreamWriter writer) {
 
