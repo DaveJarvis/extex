@@ -54,7 +54,9 @@
   <option name="image_options" value="width=\maxwidth" />
   <option name="remove_graphics_extension" value="true" />
   <option name="keep_image_size" value="true" />
-
+  <option name="image_content" value="ignore" />
+  <option name="table_content" value="ignore" />
+  
   <option name="figure_sequence_name" value="Illustration" />
   <option name="float_figures" value="true" />
   <option name="float_options" value="" />

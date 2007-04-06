@@ -32,15 +32,16 @@
   <option name="ignore_double_spaces" value="true" />
   <option name="no_preamble" value="true" />
 
-  <heading-map max-level="6">
+  <heading-map max-level="4">
     <heading-level-map writer-level="1" name="chapter" level="1" />
     <heading-level-map writer-level="2" name="section" level="2" />
     <heading-level-map writer-level="3" name="subsection" level="3" />
     <heading-level-map writer-level="4" name="minisec" level="4" />
-    <heading-level-map writer-level="5" name="errorsection" level="5" />
-    <heading-level-map writer-level="6" name="errorsection" level="6" />
   </heading-map>
-
+  <option name="other_styles" value="error" />
+  <style-map name="Text body" class="paragraph" before="" after="" />
+  <style-map name="Standard" class="paragraph" before="" after="" />
+  
    <option name="formatting" value="ignore_most" />
    <style-map name="Dateinnamen" class="text" before="\url{" after="}" verbatim="true"/>
 
