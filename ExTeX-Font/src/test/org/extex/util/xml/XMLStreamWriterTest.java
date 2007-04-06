@@ -32,7 +32,7 @@ import junit.framework.TestCase;
  * Test for XMLStreamWriter.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 0001$
+ * @version $Revision: 5438 $
  */
 public class XMLStreamWriterTest extends TestCase {
 
@@ -449,7 +449,7 @@ public class XMLStreamWriterTest extends TestCase {
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser parser = factory.newSAXParser();
 
-            GenericHandler handler = new GenericHandler(writer);
+            XmlHandler handler = new XmlHandler(writer);
             parser.parse(new File("../ExTeX-Font/src/test/xml/xmltest1.xml"),
                 handler);
 
@@ -463,4 +463,5 @@ public class XMLStreamWriterTest extends TestCase {
             assertTrue(false);
         }
     }
+
 }

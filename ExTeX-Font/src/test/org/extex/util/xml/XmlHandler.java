@@ -20,6 +20,7 @@
 package org.extex.util.xml;
 
 import java.io.IOException;
+import java.util.LinkedList;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -29,21 +30,40 @@ import org.xml.sax.helpers.DefaultHandler;
  * Generic Handler.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 0001 $
+ * @version $Revision: 5438 $
  */
-public class GenericHandler extends DefaultHandler {
+public class XmlHandler extends DefaultHandler {
+
+    /**
+     * The child level in the xml document.
+     */
+    private int level = 0;
+
+    /**
+     * The list for the current element.
+     */
+    private LinkedList<String> list = new LinkedList<String>();
 
     /**
      * The {@link XMLStreamWriter} for the output.
      */
-    private XMLStreamWriter writer;
+    private XMLStreamWriter writer = null;
+
+    /**
+     * Creates a new object.
+     */
+    public XmlHandler() {
+
+        super();
+
+    }
 
     /**
      * Creates a new object.
      * 
      * @param writer The {@link XMLStreamWriter} for the output.
      */
-    public GenericHandler(XMLStreamWriter writer) {
+    public XmlHandler(XMLStreamWriter writer) {
 
         this.writer = writer;
 
@@ -55,6 +75,7 @@ public class GenericHandler extends DefaultHandler {
     public void characters(char[] ch, int start, int length)
             throws SAXException {
 
+        checkWriter();
         try {
             writer.writeCharacters(ch, start, length);
         } catch (IOException e) {
@@ -64,10 +85,23 @@ public class GenericHandler extends DefaultHandler {
     }
 
     /**
+     * Check, if a writer exists.
+     * 
+     * @throws SAXException if not writer is set.
+     */
+    private void checkWriter() throws SAXException {
+
+        if (writer == null) {
+            throw new SAXException("writer not set!");
+        }
+    }
+
+    /**
      * @see org.xml.sax.helpers.DefaultHandler#endDocument()
      */
     public void endDocument() throws SAXException {
 
+        checkWriter();
         try {
             writer.writeEndDocument();
         } catch (IOException e) {
@@ -82,11 +116,77 @@ public class GenericHandler extends DefaultHandler {
     public void endElement(String arg0, String arg1, String arg2)
             throws SAXException {
 
+        checkWriter();
         try {
             writer.writeEndElement();
         } catch (IOException e) {
             throw new SAXException(e);
         }
+        level--;
+        list.removeLast();
+    }
+
+    /**
+     * Returns the name of the current element. If no name in the list, a empty
+     * string is returned.
+     * 
+     * @return Returns the name of the current element.
+     */
+    public String getCurrentElementName() {
+
+        if (list.size() > 0) {
+            return list.getLast();
+        }
+        return "";
+    }
+
+    /**
+     * Returns the full name of the current element.
+     * 
+     * @return Returns the full name of the current element.
+     */
+    public String getFullName() {
+
+        StringBuffer buf = new StringBuffer();
+
+        for (int i = 0, n = list.size(); i < n; i++) {
+            buf.append("/");
+            buf.append(list.get(i));
+        }
+
+        return buf.toString();
+    }
+
+    /**
+     * Getter for level.
+     * 
+     * @return the level
+     */
+    public int getLevel() {
+
+        return level;
+    }
+
+    /**
+     * Check, if the parser is in the element.
+     * 
+     * @param name The name of the element.
+     * @return Returns <code>true</code>, if the parser parse the named
+     *         element.
+     */
+    public boolean isInElement(String name) {
+
+        return getCurrentElementName().equals(name);
+    }
+
+    /**
+     * Setter for writer.
+     * 
+     * @param writer the writer to set
+     */
+    public void setWriter(XMLStreamWriter writer) {
+
+        this.writer = writer;
     }
 
     /**
@@ -94,6 +194,7 @@ public class GenericHandler extends DefaultHandler {
      */
     public void startDocument() throws SAXException {
 
+        checkWriter();
         try {
             writer.writeStartDocument();
         } catch (IOException e) {
@@ -109,6 +210,9 @@ public class GenericHandler extends DefaultHandler {
     public void startElement(String uri, String localName, String qName,
             Attributes attributes) throws SAXException {
 
+        checkWriter();
+        level++;
+        list.addLast(qName);
         try {
             writer.writeStartElement(qName);
             writeAttr(attributes);
