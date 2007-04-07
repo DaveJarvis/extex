@@ -62,12 +62,13 @@ public class LookupType21 extends LookupType1 {
      * @param rar The input.
      * @param type The type.
      * @param posFormat The pos format.
+     * @param offset The offset of the table.
      * @throws IOException if a io-error occurred.
      */
-    public LookupType21(RandomAccessR rar, int type, int posFormat)
+    public LookupType21(RandomAccessR rar, int type, int posFormat, int offset)
             throws IOException {
 
-        super(type, posFormat);
+        super(type, posFormat, offset);
 
         coverageOffset = rar.readUnsignedShort();
         valueFormat1 = rar.readUnsignedShort();
@@ -78,8 +79,13 @@ public class LookupType21 extends LookupType1 {
             pairSetOffsetArray[i] = rar.readUnsignedShort();
         }
 
-        // TODO mgn: load PairSettable
-        
+        PairSetTable[] pairSetTable = new PairSetTable[pairSetCount];
+        for (int i = 0; i < pairSetCount; i++) {
+            pairSetTable[i] =
+                    new PairSetTable(rar, getBaseoffset()
+                            + pairSetOffsetArray[i]);
+        }
+
     }
 
     /**

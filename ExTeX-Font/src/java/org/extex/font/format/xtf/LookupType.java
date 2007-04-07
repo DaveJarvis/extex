@@ -49,7 +49,8 @@ public abstract class LookupType implements XMLWriterConvertible {
                 return LookupType1.getInstance(rar, type, offset);
 
             case 2:
-                return null;
+                return LookupType2.getInstance(rar, type, offset);
+
             case 3:
                 return null;
             case 4:
@@ -72,6 +73,11 @@ public abstract class LookupType implements XMLWriterConvertible {
     }
 
     /**
+     * The offset of the table.
+     */
+    private int baseoffset;
+
+    /**
      * The type.
      */
     private int type;
@@ -80,10 +86,22 @@ public abstract class LookupType implements XMLWriterConvertible {
      * Creates a new object.
      * 
      * @param type The type.
+     * @param offset The offset of the table.
      */
-    protected LookupType(int type) {
+    protected LookupType(int type, int offset) {
 
         this.type = type;
+        baseoffset = offset;
+    }
+
+    /**
+     * Getter for baseoffset.
+     * 
+     * @return the baseoffset
+     */
+    public int getBaseoffset() {
+
+        return baseoffset;
     }
 
     /**
@@ -95,4 +113,5 @@ public abstract class LookupType implements XMLWriterConvertible {
 
         return type;
     }
+
 }

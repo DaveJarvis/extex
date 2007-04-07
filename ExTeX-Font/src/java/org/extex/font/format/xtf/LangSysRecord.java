@@ -26,7 +26,7 @@ import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
- * Class for a langsys record.
+ * Class for a langsys table.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 5438 $
@@ -55,9 +55,9 @@ public class LangSysRecord implements XMLWriterConvertible {
     private int reqFeatureIndex;
 
     /**
-     * The tag: 4-byte LangSysTag identifier
+     * The LangSysTag identifier.
      */
-    private int[] tag = new int[4];
+    private LanguageSystemTag tag;
 
     /**
      * Creates a new object.
@@ -67,10 +67,7 @@ public class LangSysRecord implements XMLWriterConvertible {
      */
     public LangSysRecord(RandomAccessR rar) throws IOException {
 
-        for (int i = 0; i < 4; i++) {
-            tag[i] = rar.readUnsignedByte();
-        }
-
+        tag = new LanguageSystemTag(rar);
         offset = rar.readUnsignedShort();
     }
 
@@ -119,7 +116,7 @@ public class LangSysRecord implements XMLWriterConvertible {
      * 
      * @return the tag
      */
-    public int[] getTag() {
+    public LanguageSystemTag getTag() {
 
         return tag;
     }
@@ -207,13 +204,11 @@ public class LangSysRecord implements XMLWriterConvertible {
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
-        writer.writeStartElement("record");
-        int[] tag = getTag();
-        for (int t = 0; t < tag.length; t++) {
-            writer.writeAttribute("tag_" + t, tag[t]);
-        }
+        writer.writeStartElement("langsystemtable");
+        writer.writeAttribute("tag", tag.toString());
+        writer.writeAttribute("tagname", tag.getName());
         writer.writeAttribute("offset", getOffset(), 8);
-        writer.writeAttribute("lookupOrderOffset", lookupOrderOffset, 8);
+        // writer.writeAttribute("lookupOrderOffset", lookupOrderOffset, 8);
         writer.writeAttribute("reqFeatureIndex", reqFeatureIndex, 8);
         writer.writeStartElement("featureindex");
         writer.writeIntArrayAsEntries(featureIndex);

@@ -50,22 +50,32 @@ public class ScriptRecord implements XMLWriterConvertible {
     private int offset;
 
     /**
-     * The tag: 4-byte ScriptTag identifier
+     * The ScriptTag.
      */
-    private int[] tag = new int[4];
+    private ScriptTag tag;
+
+    /**
+     * The default Langsys.
+     */
+    private LangSysRecord defaultLangSys;
+
+    /**
+     * The gpos table.
+     */
+    private OtfTableGPOS gpos;
 
     /**
      * Creates a new object.
      * 
+     * @param tableGPOS The gpos table.
      * @param rar input
      * @throws IOException if a io-error occurred.
      */
-    public ScriptRecord(RandomAccessR rar) throws IOException {
+    public ScriptRecord(OtfTableGPOS tableGPOS, RandomAccessR rar)
+            throws IOException {
 
-        for (int i = 0; i < 4; i++) {
-            tag[i] = rar.readUnsignedByte();
-        }
-
+        gpos = tableGPOS;
+        tag = new ScriptTag(rar);
         offset = rar.readUnsignedShort();
     }
 
@@ -104,7 +114,7 @@ public class ScriptRecord implements XMLWriterConvertible {
      * 
      * @return the tag
      */
-    public int[] getTag() {
+    public ScriptTag getTag() {
 
         return tag;
     }
@@ -143,18 +153,22 @@ public class ScriptRecord implements XMLWriterConvertible {
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("record");
-        int[] tag = getTag();
-        for (int t = 0; t < tag.length; t++) {
-            writer.writeAttribute("tag_" + t, tag[t]);
-        }
+        writer.writeAttribute("tag", tag);
+        writer.writeAttribute("tagname", tag.getName());
         writer.writeAttribute("offset", getOffset(), 8);
         writer.writeAttribute("defaultLangSysOffset",
             getDefaultLangSysOffset(), 8);
 
+        writer.writeStartElement("defaultlangsysrecord");
+        if (defaultLangSys != null) {
+            defaultLangSys.writeXML(writer);
+        }
+        writer.writeEndElement();
+
         writer.writeStartElement("langsysrecord");
-        LangSysRecord[] langsys = getLangSysRecord();
-        for (int l = 0; l < langsys.length; l++) {
-            langsys[l].writeXML(writer);
+        writer.writeAttribute("count", langSysRecord.length);
+        for (int l = 0; l < langSysRecord.length; l++) {
+            langSysRecord[l].writeXML(writer);
         }
         writer.writeEndElement();
         writer.writeEndElement();

@@ -53,12 +53,13 @@ public class LookupType11 extends LookupType1 {
      * @param rar The input.
      * @param type The type.
      * @param posFormat The pos format.
+     * @param offset The offset of the table.
      * @throws IOException if a io-error occurred.
      */
-    public LookupType11(RandomAccessR rar, int type, int posFormat)
+    public LookupType11(RandomAccessR rar, int type, int posFormat, int offset)
             throws IOException {
 
-        super(type, posFormat);
+        super(type, posFormat, offset);
 
         coverageOffset = rar.readUnsignedShort();
         valueFormat = rar.readUnsignedShort();

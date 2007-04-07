@@ -20,6 +20,8 @@
 package org.extex.font.format.xtf;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
@@ -250,6 +252,12 @@ public class OtfTableGPOS extends AbstractXtfTable
     private LookupTable[] lookupTable;
 
     /**
+     * The map for the script list.
+     */
+    private Map<String, ScriptRecord> scriptListMap =
+            new HashMap<String, ScriptRecord>();
+
+    /**
      * scriptlist.
      */
     private int scriptListOffset;
@@ -289,6 +297,18 @@ public class OtfTableGPOS extends AbstractXtfTable
         readScriptList(rar);
         readFeatureList(rar);
         readLookupList(rar);
+    }
+
+    /**
+     * Returns the ScriptList with the tag name. If no scriptlist found,
+     * <code>null</code> is returned.
+     * 
+     * @param tag The tag.
+     * @return Returns the ScriptList with the tag name.
+     */
+    public ScriptRecord getScriptRecord(String tag) {
+
+        return scriptListMap.get(tag);
     }
 
     /**
@@ -394,7 +414,7 @@ public class OtfTableGPOS extends AbstractXtfTable
         featureRecord = new FeatureRecord[featureCount];
 
         for (int i = 0; i < featureCount; i++) {
-            featureRecord[i] = new FeatureRecord(rar);
+            featureRecord[i] = new FeatureRecord(this, rar);
         }
 
         // read the feature table
@@ -457,15 +477,10 @@ public class OtfTableGPOS extends AbstractXtfTable
         lookupTable = new LookupTable[lookupCount];
         for (int i = 0; i < lookupCount; i++) {
             lookupTable[i] =
-                    new LookupTable(rar, gposBaseOffset + lookupListOffset,
-                        lookupOffsetArray[i]);
+                    new LookupTable(this, rar, gposBaseOffset
+                            + lookupListOffset, lookupOffsetArray[i]);
 
         }
-
-        // // read the feature table
-        // for (int i = 0; i < featureCount; i++) {
-        // featureRecord[i].read(rar, baseoffset + featureListOffset);
-        // }
 
     }
 
@@ -566,13 +581,15 @@ public class OtfTableGPOS extends AbstractXtfTable
 
         scriptRecord = new ScriptRecord[striptCount];
         for (int i = 0; i < striptCount; i++) {
-            scriptRecord[i] = new ScriptRecord(rar);
+            scriptRecord[i] = new ScriptRecord(this, rar);
         }
 
         // read the script table
         for (int i = 0; i < striptCount; i++) {
             scriptRecord[i].readScriptTable(rar, gposBaseOffset
                     + scriptListOffset);
+            scriptListMap.put(scriptRecord[i].getTag().toString(),
+                scriptRecord[i]);
         }
 
     }
@@ -585,23 +602,26 @@ public class OtfTableGPOS extends AbstractXtfTable
 
         writeStartElement(writer);
         writer.writeAttribute("version", version, 8);
-        writer.writeAttribute("feature", featureListOffset, 8);
-        writer.writeAttribute("lookup", lookupListOffset, 8);
-        writer.writeAttribute("script", scriptListOffset, 8);
+        // writer.writeAttribute("feature", featureListOffset, 8);
+        // writer.writeAttribute("lookup", lookupListOffset, 8);
+        // writer.writeAttribute("script", scriptListOffset, 8);
 
         writer.writeStartElement("scriptrecord");
+        writer.writeAttribute("count", scriptRecord.length);
         for (int i = 0; i < scriptRecord.length; i++) {
             scriptRecord[i].writeXML(writer);
         }
         writer.writeEndElement();
 
         writer.writeStartElement("featurerecord");
+        writer.writeAttribute("count", featureRecord.length);
         for (int i = 0; i < featureRecord.length; i++) {
             featureRecord[i].writeXML(writer);
         }
         writer.writeEndElement();
 
         writer.writeStartElement("lookuptable");
+        writer.writeAttribute("count", lookupTable.length);
         for (int i = 0; i < lookupTable.length; i++) {
             lookupTable[i].writeXML(writer);
         }

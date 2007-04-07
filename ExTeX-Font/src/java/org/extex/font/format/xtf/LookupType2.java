@@ -401,11 +401,12 @@ public abstract class LookupType2 extends LookupType {
      * 
      * @param type The lookup tpye.
      * @param format The pos format.
+     * @param offset The offset of the table.
      * @throws IOException if a io-error occurred.
      */
-    protected LookupType2(int type, int format) throws IOException {
+    protected LookupType2(int type, int format, int offset) throws IOException {
 
-        super(type);
+        super(type, offset);
 
         posFormat = format;
 
@@ -429,9 +430,10 @@ public abstract class LookupType2 extends LookupType {
 
         switch (posFormat) {
             case 1:
-                return new LookupType21(rar, type, posFormat);
+                return new LookupType21(rar, type, posFormat, offset);
+
             case 2:
-                return null;// new LookupType12(rar, type, posFormat);
+                return new LookupType22(rar, type, posFormat, offset);
 
             default:
                 throw new IOException("wrong posformat");

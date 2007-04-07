@@ -211,22 +211,23 @@ public class LookupTable implements XMLWriterConvertible {
     private int[] subtablesOffset;
 
     /**
-     * only for tesst.
+     * The gpos table.
      */
-    private int xoffset;
+    private OtfTableGPOS gpos;
 
     /**
      * Creates a new object.
      * 
+     * @param tableGPOS The gpos table.
      * @param rar input
      * @param offset The offset for the table.
      * @param lookupTableBaseOffset The base offset.
      * @throws IOException if a io-error occurred.
      */
-    public LookupTable(RandomAccessR rar, int lookupTableBaseOffset, int offset)
-            throws IOException {
+    public LookupTable(OtfTableGPOS tableGPOS, RandomAccessR rar,
+            int lookupTableBaseOffset, int offset) throws IOException {
 
-        xoffset = lookupTableBaseOffset + offset;
+        gpos = tableGPOS;
         rar.seek(lookupTableBaseOffset + offset);
 
         lookupType = rar.readUnsignedShort();
@@ -320,7 +321,6 @@ public class LookupTable implements XMLWriterConvertible {
         writer
             .writeAttribute("IgnoreMarks", checkFlag(lookupFlag, IgnoreMarks));
         writer.writeAttribute("type", lookupType, 4);
-        writer.writeAttribute("xoffset", xoffset);
         writer.writeIntArrayAsEntries(subtablesOffset);
 
         for (int i = 0; i < lookupTypeArray.length; i++) {

@@ -52,22 +52,27 @@ public class FeatureRecord implements XMLWriterConvertible {
     private int offset;
 
     /**
-     * The tag: 4-byte feature identification tag
+     * The feature identification tag.
      */
-    private int[] tag = new int[4];
+    private FeatureTag tag;
+
+    /**
+     * The gpos table.
+     */
+    private OtfTableGPOS gpos;
 
     /**
      * Creates a new object.
      * 
+     * @param tableGPOS The gpos table.
      * @param rar input
      * @throws IOException if a io-error occurred.
      */
-    public FeatureRecord(RandomAccessR rar) throws IOException {
+    public FeatureRecord(OtfTableGPOS tableGPOS, RandomAccessR rar)
+            throws IOException {
 
-        for (int i = 0; i < 4; i++) {
-            tag[i] = rar.readUnsignedByte();
-        }
-
+        gpos = tableGPOS;
+        tag = new FeatureTag(rar);
         offset = rar.readUnsignedShort();
 
     }
@@ -107,7 +112,7 @@ public class FeatureRecord implements XMLWriterConvertible {
      * 
      * @return the tag
      */
-    public int[] getTag() {
+    public FeatureTag getTag() {
 
         return tag;
     }
@@ -189,10 +194,8 @@ public class FeatureRecord implements XMLWriterConvertible {
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("record");
-        int[] tag = getTag();
-        for (int t = 0; t < tag.length; t++) {
-            writer.writeAttribute("tag_" + t, tag[t]);
-        }
+        writer.writeAttribute("tag", tag.toString());
+        writer.writeAttribute("tagname", tag.getName());
         writer.writeAttribute("offset", getOffset(), 8);
         writer.writeAttribute("featureParamsOffset", featureParamsOffset, 8);
         writer.writeStartElement("lookupListIndex");
