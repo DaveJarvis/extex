@@ -131,7 +131,7 @@ public class LauncherFont implements Font, Serializable {
             case ')':
                 return new Glue(Dimen.ONE);
             default:
-                return Glue.ZERO;
+                return FixedGlue.ZERO;
         }
     }
 

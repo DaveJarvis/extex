@@ -39,7 +39,7 @@ import org.extex.framework.configuration.Configuration;
 /**
  * This factory creates an output stream from a specification in the
  * configuration.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4728 $
  */
@@ -49,7 +49,7 @@ public class OutputFactory extends AbstractFactory
 
     /**
      * This class provides a mutable Integer.
-     *
+     * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision: 4728 $
      */
@@ -62,7 +62,7 @@ public class OutputFactory extends AbstractFactory
 
         /**
          * Creates a new object.
-         *
+         * 
          * @param val the initial value
          */
         public Int(int val) {
@@ -73,7 +73,7 @@ public class OutputFactory extends AbstractFactory
 
         /**
          * Getter for value.
-         *
+         * 
          * @return the value
          */
         public int getValue() {
@@ -83,7 +83,7 @@ public class OutputFactory extends AbstractFactory
 
         /**
          * Get the current value and increment the counter for further use.
-         *
+         * 
          * @return the old value
          */
         public int incr() {
@@ -122,7 +122,8 @@ public class OutputFactory extends AbstractFactory
     private boolean continuousNumbering = false;
 
     /**
-     * The field <tt>countMap</tt> contains the internal counter for file names.
+     * The field <tt>countMap</tt> contains the internal counter for file
+     * names.
      */
     private Map<String, Int> countMap = new HashMap<String, Int>();
 
@@ -132,8 +133,9 @@ public class OutputFactory extends AbstractFactory
     private String defaultExtension = null;
 
     /**
-     * The field <tt>defaultStream</tt> contains the default output stream to be
-     * delivered to the first request for an output stream of the default type.
+     * The field <tt>defaultStream</tt> contains the default output stream to
+     * be delivered to the first request for an output stream of the default
+     * type.
      */
     private OutputStream defaultStream = null;
 
@@ -155,7 +157,7 @@ public class OutputFactory extends AbstractFactory
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param outdirs the list of output directories
      * @param basename the base name of the main stream
      */
@@ -167,21 +169,19 @@ public class OutputFactory extends AbstractFactory
     }
 
     /**
-     * Create an output stream of a certain type.
-     * The creation is tried in a number of directories. The first succeeding
-     * attempt is returned.
-     *
+     * Create an output stream of a certain type. The creation is tried in a
+     * number of directories. The first succeeding attempt is returned.
+     * 
      * @param name the name of the file to open
      * @param type the type of the file
-     *
+     * 
      * @return a stream for the output or <code>null</code> if none could be
-     * opened.
-     *
+     *         opened.
+     * 
      * @throws DocumentWriterException in case of an error
-     *
+     * 
      * @see org.extex.backend.outputStream.OutputStreamFactory#getOutputStream(
-     *      java.lang.String,
-     *      java.lang.String)
+     *      java.lang.String, java.lang.String)
      */
     public OutputStream getOutputStream(String name, String type)
             throws DocumentWriterException {
@@ -198,16 +198,15 @@ public class OutputFactory extends AbstractFactory
     }
 
     /**
-     * Create an output stream of a certain type.
-     * The creation is tried in a number of directories. The first succeeding
-     * attempt is returned.
-     *
+     * Create an output stream of a certain type. The creation is tried in a
+     * number of directories. The first succeeding attempt is returned.
+     * 
      * @param name the name of the file to open
      * @param type the type of the file
-     *
+     * 
      * @return a stream for the output or <code>null</code> if none could be
-     * opened.
-     *
+     *         opened.
+     * 
      * @throws DocumentWriterException in case of an error
      */
     private OutputStream makeOutputStream(String name, String type)
@@ -271,10 +270,10 @@ public class OutputFactory extends AbstractFactory
         if (c != null) {
             try {
                 Configuration cfg = c.getConfiguration(ext);
-                Iterator iter = cfg.iterator(PATH_TAG);
+                Iterator<Configuration> iter = cfg.iterator(PATH_TAG);
                 while (iter.hasNext()) {
                     OutputStream os =
-                            openOutputStream((String) (iter.next()), filename,
+                            openOutputStream(iter.next().getValue(), filename,
                                 isDefault);
                     if (os != null) {
                         return os;
@@ -290,15 +289,15 @@ public class OutputFactory extends AbstractFactory
 
     /**
      * This method tries to open a new output stream.
-     *
+     * 
      * @param dir the directory or <code>null</code>
      * @param filename the file name
      * @param isDefault the indicator whether the file should be saved
-     *
+     * 
      * @return the output stream or <code>null</code>
      */
-    protected OutputStream openOutputStream(String dir,
-            String filename, boolean isDefault) {
+    protected OutputStream openOutputStream(String dir, String filename,
+            boolean isDefault) {
 
         if (dir == null) {
             return null;
@@ -316,11 +315,11 @@ public class OutputFactory extends AbstractFactory
     }
 
     /**
-     * Register an observer which is invoked to notify about any output
-     * stream requested via a call to getOututStream(),
-     *
+     * Register an observer which is invoked to notify about any output stream
+     * requested via a call to getOututStream(),
+     * 
      * @param observer the observers to register
-     *
+     * 
      * @see org.extex.backend.outputStream.OutputStreamFactory#register(
      *      org.extex.backend.outputStream.OutputStreamObserver)
      */
@@ -333,15 +332,15 @@ public class OutputFactory extends AbstractFactory
     }
 
     /**
-     * Register a handler for creation of an output stream of a certain type.
-     * If no handler is registered then an appropriate file is opened.
+     * Register a handler for creation of an output stream of a certain type. If
+     * no handler is registered then an appropriate file is opened.
      * <p>
-     *  You can register a handler if you want to redirect certain output
-     *  streams to different directions. For instance if you want to process
-     *  an output stream in memory. For instance this can be the case if an
-     *  integrated preview can be used instead of writing the output to a file.
+     * You can register a handler if you want to redirect certain output streams
+     * to different directions. For instance if you want to process an output
+     * stream in memory. For instance this can be the case if an integrated
+     * preview can be used instead of writing the output to a file.
      * </p>
-     *
+     * 
      * @param type the type
      * @param factory the handler to be invoked
      */
@@ -358,7 +357,7 @@ public class OutputFactory extends AbstractFactory
 
     /**
      * Setter for defaultStream.
-     *
+     * 
      * @param defaultStream the defaultStream to set
      */
     public void setDefaultStream(OutputStream defaultStream) {
@@ -367,11 +366,11 @@ public class OutputFactory extends AbstractFactory
     }
 
     /**
-     * Setter for the default extension.
-     * The default extension is used when the type specified is <code>null</code>.
-     *
+     * Setter for the default extension. The default extension is used when the
+     * type specified is <code>null</code>.
+     * 
      * @param extension the default extension
-     *
+     * 
      * @see org.extex.backend.outputStream.OutputStreamFactory#setExtension(
      *      java.lang.String)
      */

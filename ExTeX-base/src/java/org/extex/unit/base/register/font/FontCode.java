@@ -19,7 +19,6 @@
 
 package org.extex.unit.base.register.font;
 
-import org.extex.font.FontKey;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;

@@ -1203,9 +1203,9 @@ public abstract class Max
         context = newContext;
 
         try {
-            Iterator unitIterator = context.unitIterator();
+            Iterator<UnitInfo> unitIterator = context.unitIterator();
             while (unitIterator.hasNext()) {
-                UnitInfo ui = (UnitInfo) unitIterator.next();
+                UnitInfo ui = unitIterator.next();
                 if (ui instanceof LoadedObserver) {
                     ((LoadedObserver) ui).receiveLoaded(context, this);
                 }

@@ -157,9 +157,9 @@ public class BackendFactory extends AbstractFactory {
         }
         docWriter.setParameter("Creator", creator);
 
-        Iterator iterator = getConfiguration().iterator("parameter");
+        Iterator<Configuration> iterator = getConfiguration().iterator("parameter");
         while (iterator.hasNext()) {
-            Configuration p = (Configuration) iterator.next();
+            Configuration p = iterator.next();
             String name = p.getAttribute("name");
             String s = p.getAttribute("value");
             if (s != null) {

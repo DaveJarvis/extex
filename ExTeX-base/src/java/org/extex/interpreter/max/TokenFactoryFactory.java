@@ -20,42 +20,45 @@
 package org.extex.interpreter.max;
 
 import org.extex.framework.AbstractFactory;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.scanner.type.token.TokenFactory;
 
 /**
  * This class provides a factory for a
- * {@link org.extex.scanner.type.token.TokenFactory TokenFactory}.
- * This factory inherits its properties from the
- * {@link org.extex.framework.AbstractFactory AbstractFactory}. Among them
- * the support for configuration and logging.
- *
+ * {@link org.extex.scanner.type.token.TokenFactory TokenFactory}. This factory
+ * inherits its properties from the
+ * {@link org.extex.framework.AbstractFactory AbstractFactory}. Among them the
+ * support for configuration and logging.
+ * 
  * <h3>Configuration</h3>
- *
+ * 
  * <p>
- *  Mainly the configuration needs to specify which class to use for the
- *  TokenFactory. The name of the class is given as the argument <tt>class</tt>
- *  as shown below.
- *  <pre>
+ * Mainly the configuration needs to specify which class to use for the
+ * TokenFactory. The name of the class is given as the argument <tt>class</tt>
+ * as shown below.
+ * 
+ * <pre>
  *   &lt;TokenFactory class="org.extex.scanner.type.token.TokenFactoryImpl"/&gt;
  *  </pre>
+ * 
  * </p>
  * <p>
- *  The named class needs to implement the interface
- *  {@link org.extex.scanner.type.token.TokenFactory TokenFactory}. If
- *  this interface is not implemented an error is raised.
+ * The named class needs to implement the interface
+ * {@link org.extex.scanner.type.token.TokenFactory TokenFactory}. If this
+ * interface is not implemented an error is raised.
  * </p>
  * <p>
- *  The configuration is passed down to the new instance if it implements the
- *  interface {@link org.extex.framework.configuration.Configurable Configurable}.
+ * The configuration is passed down to the new instance if it implements the
+ * interface {@link org.extex.framework.configuration.Configurable Configurable}.
  * </p>
  * <p>
- *  If the class implements the interface
- *  {@link org.extex.framework.logger.LogEnabled LogEnabled} then a logger
- *  is passed to the new instance. For this purpose the factory itself is
- *  log enabled to receive the logger.
+ * If the class implements the interface
+ * {@link org.extex.framework.logger.LogEnabled LogEnabled} then a logger is
+ * passed to the new instance. For this purpose the factory itself is log
+ * enabled to receive the logger.
  * </p>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
@@ -63,13 +66,12 @@ public class TokenFactoryFactory extends AbstractFactory {
 
     /**
      * Instance delivering method.
-     *
+     * 
      * @return an appropriate instance
-     *
-     * @throws org.extex.framework.configuration.exception.ConfigurationException
-     *   in case of an error in the configuration
+     * 
+     * @throws ConfigurationException in case of an error in the configuration
      */
-    public TokenFactory createInstance() {
+    public TokenFactory createInstance() throws ConfigurationException {
 
         return (TokenFactory) createInstance(TokenFactory.class);
     }

@@ -57,9 +57,9 @@ public class CompressedLiangsHyphenationTable extends LiangsHyphenationTable {
             tree.setCode(code);
         }
 
-        Iterator iter = tree.iterator();
+        Iterator<HyphenTree> iter = tree.iterator();
         while (iter.hasNext()) {
-            compress((HyphenTree) iter.next(), map);
+            compress(iter.next(), map);
         }
 
     }

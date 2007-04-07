@@ -55,7 +55,7 @@ import org.extex.typesetter.type.noad.MathGlyph;
  * This is a simple implementation for a group. The whole stack of groups is
  * implemented as a linked list. The list itself is mixed within the pure
  * elements of the linked list.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4770 $
@@ -69,13 +69,14 @@ public class GroupImpl implements Group {
     private static final int INVALID_CHAR_CODE = 127;
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 20060512L;
 
     /**
-     * The field <tt>SFCODE_DEFAULT</tt> contains the default space factor code
-     * for non-letters.
+     * The field <tt>SFCODE_DEFAULT</tt> contains the default space factor
+     * code for non-letters.
      */
     private static final Count SFCODE_DEFAULT = new ImmutableCount(1000);
 
@@ -98,8 +99,8 @@ public class GroupImpl implements Group {
     private transient AfterGroupObserver afterGroupObservers = null;
 
     /**
-     * The field <tt>boxMap</tt> contains the map for the boxes.
-     * The field is initialized lacy. Thus new groups come up faster.
+     * The field <tt>boxMap</tt> contains the map for the boxes. The field is
+     * initialized lacy. Thus new groups come up faster.
      */
     private Map<String, Box> boxMap;
 
@@ -110,9 +111,9 @@ public class GroupImpl implements Group {
     private Map<UnicodeChar, Catcode> catcodeMap;
 
     /**
-     * The field <tt>codeMap</tt> contains the map for the active characters and
-     * macros. The key is a Token. The value is a Code.
-     * The field is initialized lacy. Thus new groups come up faster.
+     * The field <tt>codeMap</tt> contains the map for the active characters
+     * and macros. The key is a Token. The value is a Code. The field is
+     * initialized lacy. Thus new groups come up faster.
      */
     private Map<Token, Code> codeMap;
 
@@ -124,8 +125,8 @@ public class GroupImpl implements Group {
 
     /**
      * The field <tt>delcodeMap</tt> contains the map for the delimiter code
-     * of the characters.
-     * The field is initialized lacy. Thus new groups come up faster.
+     * of the characters. The field is initialized lacy. Thus new groups come up
+     * faster.
      */
     private Map<UnicodeChar, MathDelimiter> delcodeMap;
 
@@ -137,35 +138,34 @@ public class GroupImpl implements Group {
 
     /**
      * The field <tt>extensionMap</tt> contains the mapping from extension to
-     * their HashMap.
-     * The field is initialized lacy. Thus new groups come up faster.
+     * their HashMap. The field is initialized lacy. Thus new groups come up
+     * faster.
      */
     private HashMap<Object, Map<Object, Object>> extensionMap;
 
     /**
-     * The field <tt>fontMap</tt> contains the map for the fonts.
-     * The field is initialized lacy. Thus new groups come up faster.
+     * The field <tt>fontMap</tt> contains the map for the fonts. The field is
+     * initialized lacy. Thus new groups come up faster.
      */
     private Map<String, Font> fontMap;
 
     /**
-     * The field <tt>ifMap</tt> contains the map for the booleans.
-     * The field is initialized lacy. Thus new groups come up faster.
+     * The field <tt>ifMap</tt> contains the map for the booleans. The field
+     * is initialized lacy. Thus new groups come up faster.
      */
     private Map<String, Boolean> ifMap;
 
     /**
-     * The field <tt>inFileMap</tt> contains the map for the input files.
-     * The field is initialized lacy. Thus new groups come up faster.
-     * The map is not stored in the format file since files can not be kept
-     * open.
+     * The field <tt>inFileMap</tt> contains the map for the input files. The
+     * field is initialized lacy. Thus new groups come up faster. The map is not
+     * stored in the format file since files can not be kept open.
      */
     private transient Map<String, InFile> inFileMap;
 
     /**
      * The field <tt>lccodeMap</tt> contains the map for the translation to
-     * lower case.
-     * The field is initialized lacy. Thus new groups come up faster.
+     * lower case. The field is initialized lacy. Thus new groups come up
+     * faster.
      */
     private Map<UnicodeChar, UnicodeChar> lccodeMap;
 
@@ -199,21 +199,20 @@ public class GroupImpl implements Group {
 
     /**
      * The field <tt>outFileMap</tt> contains the map for the output files.
-     * The field is initialized lacy. Thus new groups come up faster.
-     * The map is not stored in the format file since files can not be kept
-     * open.
+     * The field is initialized lacy. Thus new groups come up faster. The map is
+     * not stored in the format file since files can not be kept open.
      */
     private transient Map<String, OutFile> outFileMap;
 
     /**
-     * The field <tt>sfcodeMap</tt> contains the map for the space factor.
-     * The field is initialized lacy. Thus new groups come up faster.
+     * The field <tt>sfcodeMap</tt> contains the map for the space factor. The
+     * field is initialized lacy. Thus new groups come up faster.
      */
     private Map<UnicodeChar, Count> sfcodeMap;
 
     /**
-     * The field <tt>skipMap</tt> contains the map for the skip registers
-     * The field is initialized lacy. Thus new groups come up faster.
+     * The field <tt>skipMap</tt> contains the map for the skip registers The
+     * field is initialized lacy. Thus new groups come up faster.
      */
     private Map<String, Glue> skipMap;
 
@@ -235,8 +234,8 @@ public class GroupImpl implements Group {
     private Map<String, Tokens> toksMap;
 
     /**
-     * The field <tt>type</tt> contains the type number of the group as returned
-     * by <tt>\currentgrouptype</tt>.
+     * The field <tt>type</tt> contains the type number of the group as
+     * returned by <tt>\currentgrouptype</tt>.
      */
     private GroupType type = GroupType.BOTTOM_LEVEL_GROUP;
 
@@ -248,16 +247,16 @@ public class GroupImpl implements Group {
 
     /**
      * The field <tt>uccodeMap</tt> contains the map for the translation to
-     * upper case.
-     * The field is initialized lacy. Thus new groups come up faster.
+     * upper case. The field is initialized lacy. Thus new groups come up
+     * faster.
      */
     private Map<UnicodeChar, UnicodeChar> uccodeMap;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param nextGroup the next group in the stack. If the value is
-     *      <code>null</code> then this is the global base
+     *        <code>null</code> then this is the global base
      */
     public GroupImpl(Group nextGroup) {
 
@@ -267,9 +266,9 @@ public class GroupImpl implements Group {
 
     /**
      * Register an observer to be invoked after the group has been closed.
-     *
+     * 
      * @param observer the observer to register
-     *
+     * 
      * @see org.extex.interpreter.max.context.Group#afterGroup(
      *      AfterGroupObserver)
      */
@@ -281,9 +280,9 @@ public class GroupImpl implements Group {
 
     /**
      * Add the token to the tokens to be inserted after the group is closed.
-     *
+     * 
      * @param t the token to add
-     *
+     * 
      * @see org.extex.interpreter.max.context.Group#afterGroup(
      *      org.extex.scanner.type.token.Token)
      */
@@ -298,21 +297,20 @@ public class GroupImpl implements Group {
 
     /**
      * Get some extension object stored in the group.
-     *
+     * 
      * @param extension the reference for the extension
      * @param key the key of the object
-     *
+     * 
      * @return the object stored for the extension under the given key or
-     *   <code>null</code> if none is there
-     *
-     * @see org.extex.interpreter.max.context.Group#get(
-     *      java.lang.Object,
+     *         <code>null</code> if none is there
+     * 
+     * @see org.extex.interpreter.max.context.Group#get( java.lang.Object,
      *      java.lang.Object)
      */
     public Object get(Object extension, Object key) {
 
         if (extensionMap != null) {
-            Map map = extensionMap.get(extension);
+            Map<?, ?> map = extensionMap.get(extension);
             if (map != null) {
                 Object value = map.get(key);
                 if (value != null) {
@@ -325,11 +323,10 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * Getter for the tokens which are inserted after the group has been
-     * closed.
-     *
+     * Getter for the tokens which are inserted after the group has been closed.
+     * 
      * @return the after group tokens
-     *
+     * 
      * @see org.extex.interpreter.max.context.Group#getAfterGroup()
      */
     public Tokens getAfterGroup() {
@@ -342,13 +339,12 @@ public class GroupImpl implements Group {
      * Count registers are named, either with a number or an arbitrary string.
      * The numbered registers where limited to 256 in <logo>TeX</logo>. This
      * restriction does no longer hold for <logo>ExTeX</logo>.
-     *
+     * 
      * @param name the name or number of the count register
-     *
+     * 
      * @return the count register or <code>null</code> if it is not defined
-     *
-     * @see org.extex.interpreter.max.context.Group#getBox(
-     *      java.lang.String)
+     * 
+     * @see org.extex.interpreter.max.context.Group#getBox( java.lang.String)
      */
     public Box getBox(String name) {
 
@@ -363,13 +359,12 @@ public class GroupImpl implements Group {
 
     /**
      * Getter for the category code of a character.
-     *
+     * 
      * @param c the Unicode character to analyze
-     *
+     * 
      * @return the category code of a character
-     *
-     * @see org.extex.scanner.Tokenizer#getCatcode(
-     *      org.extex.core.UnicodeChar)
+     * 
+     * @see org.extex.scanner.Tokenizer#getCatcode( org.extex.core.UnicodeChar)
      */
     public Catcode getCatcode(UnicodeChar c) {
 
@@ -409,14 +404,13 @@ public class GroupImpl implements Group {
 
     /**
      * Getter for the definition of an active character or macro.
-     *
+     * 
      * @param token the name of the active character or macro
-     *
-     * @return the code associated to the name or <code>null</code> if none
-     *         is defined yet
-     *
-     * @see org.extex.interpreter.max.context.Group#getCode(
-     *      CodeToken)
+     * 
+     * @return the code associated to the name or <code>null</code> if none is
+     *         defined yet
+     * 
+     * @see org.extex.interpreter.max.context.Group#getCode( CodeToken)
      */
     public Code getCode(CodeToken token) {
 
@@ -433,11 +427,11 @@ public class GroupImpl implements Group {
 
     /**
      * Recurse down the group stack and search for the definition of a token.
-     *
+     * 
      * @param token the token to look-up the definition for
-     *
+     * 
      * @return the code assigned to the token or <code>null</code> if none is
-     *  found.
+     *         found.
      */
     protected Code getCodeForToken(CodeToken token) {
 
@@ -456,18 +450,17 @@ public class GroupImpl implements Group {
      * first case the behavior of the numbered count registers is emulated. The
      * other case can be used to store special count values.
      * <p>
-     * Note: The number of count registers is not limited to 256 as in
-     *  <logo>TeX</logo>.
-     * </p><p>
+     * Note: The number of count registers is not limited to 256 as in <logo>TeX</logo>.
+     * </p>
+     * <p>
      * As a default value 0 is returned.
      * </p>
-     *
+     * 
      * @param name the name of the count register
-     *
+     * 
      * @return the value of the count register or its default
-     *
-     * @see org.extex.interpreter.max.context.Group#getCount(
-     *      java.lang.String)
+     * 
+     * @see org.extex.interpreter.max.context.Group#getCount( java.lang.String)
      */
     public Count getCount(String name) {
 
@@ -491,13 +484,13 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * Getter for the delimiter code of a character.
-     * The delimiter code is -1 unless changed explicitly.
-     *
+     * Getter for the delimiter code of a character. The delimiter code is -1
+     * unless changed explicitly.
+     * 
      * @param c the character to get the delimiter code for
-     *
+     * 
      * @return the delimiter code for the given character
-     *
+     * 
      * @see org.extex.interpreter.max.context.Group#getDelcode(
      *      org.extex.core.UnicodeChar)
      */
@@ -530,18 +523,17 @@ public class GroupImpl implements Group {
      * first case the behavior of the numbered dimen registers is emulated. The
      * other case can be used to store special dimen values.
      * <p>
-     * Note: The number of dimen registers is not limited to 256 as in
-     *  <logo>TeX</logo>.
-     * </p><p>
+     * Note: The number of dimen registers is not limited to 256 as in <logo>TeX</logo>.
+     * </p>
+     * <p>
      * As a default value 0 is returned.
      * </p>
-     *
+     * 
      * @param name the name of the dimen register
-     *
+     * 
      * @return the value of the dimen register or its default
-     *
-     * @see org.extex.interpreter.max.context.Group#getDimen(
-     *      java.lang.String)
+     * 
+     * @see org.extex.interpreter.max.context.Group#getDimen( java.lang.String)
      */
     public Dimen getDimen(String name) {
 
@@ -566,13 +558,12 @@ public class GroupImpl implements Group {
 
     /**
      * Getter for the current font.
-     *
+     * 
      * @param name the name of the font
-     *
+     * 
      * @return the current font
-     *
-     * @see org.extex.interpreter.max.context.Group#getFont(
-     *      java.lang.String)
+     * 
+     * @see org.extex.interpreter.max.context.Group#getFont( java.lang.String)
      */
     public Font getFont(String name) {
 
@@ -588,13 +579,12 @@ public class GroupImpl implements Group {
 
     /**
      * Getter for the boolean value.
-     *
+     * 
      * @param name the name of the boolean
-     *
+     * 
      * @return the value
-     *
-     * @see org.extex.interpreter.max.context.Group#getIf(
-     *      java.lang.String)
+     * 
+     * @see org.extex.interpreter.max.context.Group#getIf( java.lang.String)
      */
     public boolean getIf(String name) {
 
@@ -608,16 +598,15 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * Getter for a input file register.  In the case that the named
-     * descriptor does not exist yet <code>null</code> is returned.
-     * If the name is <code>null</code> then the default input stream is used.
-     *
+     * Getter for a input file register. In the case that the named descriptor
+     * does not exist yet <code>null</code> is returned. If the name is
+     * <code>null</code> then the default input stream is used.
+     * 
      * @param name the name or the number of the file register
-     *
+     * 
      * @return the input file descriptor
-     *
-     * @see org.extex.interpreter.max.context.Group#getInFile(
-     *      java.lang.String)
+     * 
+     * @see org.extex.interpreter.max.context.Group#getInFile( java.lang.String)
      */
     public InFile getInFile(String name) {
 
@@ -637,13 +626,13 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * Getter for the lccode mapping of upper case characters to their
-     * lower case equivalent.
-     *
+     * Getter for the lccode mapping of upper case characters to their lower
+     * case equivalent.
+     * 
      * @param lc the upper case character
-     *
+     * 
      * @return the lower case equivalent or null if none exists
-     *
+     * 
      * @see org.extex.interpreter.max.context.Group#getLccode(
      *      org.extex.core.UnicodeChar)
      */
@@ -677,9 +666,9 @@ public class GroupImpl implements Group {
      * Getter for the group level. The group level is the number of groups which
      * are currently open. Thus this number of groups can be closed. Since the
      * top-level group can not be closed this group counts as 0.
-     *
+     * 
      * @return the group level
-     *
+     * 
      * @see org.extex.interpreter.max.context.Group#getLevel()
      */
     public long getLevel() {
@@ -689,9 +678,9 @@ public class GroupImpl implements Group {
 
     /**
      * Getter for the locator describing where the group started.
-     *
+     * 
      * @return the locator
-     *
+     * 
      * @see org.extex.interpreter.max.context.Group#getLocator()
      */
     public Locator getLocator() {
@@ -701,11 +690,11 @@ public class GroupImpl implements Group {
 
     /**
      * Getter for the math code of a character.
-     *
+     * 
      * @param c the character to get the math code for
-     *
+     * 
      * @return the math code for the given character
-     *
+     * 
      * @see org.extex.interpreter.max.context.Group#getMathcode(
      *      org.extex.core.UnicodeChar)
      */
@@ -724,10 +713,10 @@ public class GroupImpl implements Group {
             return next.getMathcode(c);
 
         } else if (c.isDigit()) {
-            //return new Count(c.getCodePoint() + MATHCODE_DIGIT_OFFSET);
+            // return new Count(c.getCodePoint() + MATHCODE_DIGIT_OFFSET);
             mc = new MathCode(MathClass.VARIABLE, new MathGlyph(0, c));
         } else if (c.isLetter()) {
-            //return new Count(c.getCodePoint() + MATHCODE_LETTER_OFFSET);
+            // return new Count(c.getCodePoint() + MATHCODE_LETTER_OFFSET);
             mc = new MathCode(MathClass.VARIABLE, new MathGlyph(1, c));
         } else {
             mc = new MathCode(MathClass.ORDINARY, new MathGlyph(0, c));
@@ -743,18 +732,17 @@ public class GroupImpl implements Group {
     /**
      * Getter for the named muskip register in the current group. The name can
      * either be a string representing a number or an arbitrary string. In the
-     * first case the behavior of the numbered muskip registers is emulated.
-     * The other case can be used to store special muskip values.
+     * first case the behavior of the numbered muskip registers is emulated. The
+     * other case can be used to store special muskip values.
      * <p>
      * As a default value 0 is returned.
      * </p>
-     *
+     * 
      * @param name the name of the count register
-     *
+     * 
      * @return the value of the count register or its default
-     *
-     * @see org.extex.interpreter.max.context.Group#getMuskip(
-     *      java.lang.String)
+     * 
+     * @see org.extex.interpreter.max.context.Group#getMuskip( java.lang.String)
      */
     public Muskip getMuskip(String name) {
 
@@ -769,9 +757,9 @@ public class GroupImpl implements Group {
 
     /**
      * Getter for the name space.
-     *
+     * 
      * @return the name space
-     *
+     * 
      * @see org.extex.interpreter.max.context.Group#getNamespace()
      */
     public String getNamespace() {
@@ -787,11 +775,11 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * Getter for the next group in the linked list. Maybe this method should
-     * be hidden.
-     *
+     * Getter for the next group in the linked list. Maybe this method should be
+     * hidden.
+     * 
      * @return the next group
-     *
+     * 
      * @see org.extex.interpreter.max.context.Group#getNext()
      */
     public Group getNext() {
@@ -801,11 +789,11 @@ public class GroupImpl implements Group {
 
     /**
      * Getter for the output file descriptor.
-     *
+     * 
      * @param name the name of the descriptor to get
-     *
+     * 
      * @return the output file descriptor
-     *
+     * 
      * @see org.extex.interpreter.max.context.Group#getOutFile(
      *      java.lang.String)
      */
@@ -818,14 +806,13 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * Getter for the space factor code of a character.
-     * The sfcode is 999 for letters and 1000 for other characters unless
-     * changed explicitly.
-     *
+     * Getter for the space factor code of a character. The sfcode is 999 for
+     * letters and 1000 for other characters unless changed explicitly.
+     * 
      * @param c the character for which the sfcode is requested
-     *
+     * 
      * @return the sfcode of the given character
-     *
+     * 
      * @see org.extex.interpreter.max.context.Group#getSfcode(
      *      org.extex.core.UnicodeChar)
      */
@@ -857,13 +844,12 @@ public class GroupImpl implements Group {
      * <p>
      * As a default value 0 is returned.
      * </p>
-     *
+     * 
      * @param name the name of the count register
-     *
+     * 
      * @return the value of the count register or its default
-     *
-     * @see org.extex.interpreter.max.context.Group#getSkip(
-     *      java.lang.String)
+     * 
+     * @see org.extex.interpreter.max.context.Group#getSkip( java.lang.String)
      */
     public Glue getSkip(String name) {
 
@@ -878,9 +864,9 @@ public class GroupImpl implements Group {
 
     /**
      * Getter for standardTokenStream.
-     *
+     * 
      * @return the standardTokenStream
-     *
+     * 
      * @see org.extex.interpreter.max.context.Group#getStandardTokenStream()
      */
     public TokenStream getStandardTokenStream() {
@@ -890,9 +876,9 @@ public class GroupImpl implements Group {
 
     /**
      * Getter for the token which started the group.
-     *
+     * 
      * @return the start token
-     *
+     * 
      * @see org.extex.interpreter.max.context.Group#getStart()
      */
     public Token getStart() {
@@ -908,13 +894,12 @@ public class GroupImpl implements Group {
      * <p>
      * As a default value the empty toks register is returned.
      * </p>
-     *
+     * 
      * @param name the name of the toks register
-     *
+     * 
      * @return the value of the toks register or its default
-     *
-     * @see org.extex.interpreter.max.context.Group#getToks(
-     *      java.lang.String)
+     * 
+     * @see org.extex.interpreter.max.context.Group#getToks( java.lang.String)
      */
     public Tokens getToks(String name) {
 
@@ -932,12 +917,12 @@ public class GroupImpl implements Group {
      * either be a string representing a number or an arbitrary string. In the
      * first case the behavior of the numbered toks registers is emulated. The
      * other case can be used to store special toks values.
-     *
+     * 
      * @param name the name of the toks register
-     *
+     * 
      * @return the value of the toks register or <code>null</code> if none is
-     *  defined
-     *
+     *         defined
+     * 
      * @see org.extex.interpreter.max.context.Group#getToksOrNull(java.lang.String)
      */
     public Tokens getToksOrNull(String name) {
@@ -953,9 +938,9 @@ public class GroupImpl implements Group {
 
     /**
      * Getter for the group type.
-     *
+     * 
      * @return the group type
-     *
+     * 
      * @see org.extex.interpreter.max.context.Group#getType()
      */
     public GroupType getType() {
@@ -965,9 +950,9 @@ public class GroupImpl implements Group {
 
     /**
      * Getter for the typesetting context.
-     *
+     * 
      * @return the typesetting context
-     *
+     * 
      * @see org.extex.interpreter.max.context.Group#getTypesettingContext()
      */
     public TypesettingContext getTypesettingContext() {
@@ -980,13 +965,13 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * Getter for the uccode mapping of lower case characters to their
-     * upper case equivalent.
-     *
+     * Getter for the uccode mapping of lower case characters to their upper
+     * case equivalent.
+     * 
      * @param uc the upper case character
-     *
+     * 
      * @return the upper case equivalent or null if none exists
-     *
+     * 
      * @see org.extex.interpreter.max.context.Group#getUccode(
      *      org.extex.core.UnicodeChar)
      */
@@ -1018,9 +1003,9 @@ public class GroupImpl implements Group {
 
     /**
      * Invoke all registered observers for the end-of-group event.
-     *
+     * 
      * @throws InterpreterException in case of an error
-     *
+     * 
      * @see org.extex.interpreter.max.context.Group#runAfterGroup()
      */
     public void runAfterGroup() throws InterpreterException {
@@ -1031,14 +1016,10 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * @see org.extex.interpreter.max.context.Group#set(
-     *      java.lang.Object,
-     *      java.lang.Object,
-     *      java.lang.Object,
-     *      boolean)
+     * @see org.extex.interpreter.max.context.Group#set( java.lang.Object,
+     *      java.lang.Object, java.lang.Object, boolean)
      */
-    public void set(Object extension, Object key,
-            Object value, boolean global) {
+    public void set(Object extension, Object key, Object value, boolean global) {
 
         if (extensionMap == null) {
             extensionMap = new HashMap<Object, Map<Object, Object>>();
@@ -1057,17 +1038,17 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * Setter for the {@link org.extex.interpreter.type.box.Box box}
-     * register in all requested groups. Count registers are named, either with
-     * a number or an arbitrary string.
-     *
+     * Setter for the {@link org.extex.interpreter.type.box.Box box} register in
+     * all requested groups. Count registers are named, either with a number or
+     * an arbitrary string.
+     * 
      * @param name the name or the number of the register
      * @param value the new value of the register
      * @param global the indicator for the scope; <code>true</code> means all
-     *  groups; otherwise the current group is affected only
-     *
-     * @see org.extex.interpreter.max.context.Group#setBox(
-     *      java.lang.String, org.extex.interpreter.type.box.Box, boolean)
+     *        groups; otherwise the current group is affected only
+     * 
+     * @see org.extex.interpreter.max.context.Group#setBox( java.lang.String,
+     *      org.extex.interpreter.type.box.Box, boolean)
      */
     public void setBox(String name, Box value, boolean global) {
 
@@ -1084,19 +1065,16 @@ public class GroupImpl implements Group {
 
     /**
      * Setter for the catcode of a character in the specified groups.
-     *
+     * 
      * @param uc the character
      * @param code the catcode
      * @param global the indicator for the scope; <code>true</code> means all
-     *  groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @see org.extex.interpreter.max.context.Group#setCatcode(
-     *      org.extex.core.UnicodeChar,
-     *      org.extex.scanner.type.Catcode,
-     *      boolean)
+     *      org.extex.core.UnicodeChar, org.extex.scanner.type.Catcode, boolean)
      */
-    public void setCatcode(UnicodeChar uc, Catcode code,
-            boolean global) {
+    public void setCatcode(UnicodeChar uc, Catcode code, boolean global) {
 
         if (catcodeMap == null) {
             catcodeMap = new HashMap<UnicodeChar, Catcode>();
@@ -1111,16 +1089,16 @@ public class GroupImpl implements Group {
 
     /**
      * Setter for active characters or macros in the requested group.
-     *
+     * 
      * @param token the name of the active character, i.e. a single letter
-     *   string
+     *        string
      * @param code the new code
      * @param global the indicator for the scope; <code>true</code> means all
-     *   groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @see org.extex.interpreter.max.context.Group#setCode(
-     *      org.extex.scanner.type.token.Token,
-     *      org.extex.interpreter.type.Code, boolean)
+     *      org.extex.scanner.type.token.Token, org.extex.interpreter.type.Code,
+     *      boolean)
      */
     public void setCode(Token token, Code code, boolean global) {
 
@@ -1137,18 +1115,16 @@ public class GroupImpl implements Group {
 
     /**
      * Setter for a count register in the requested groups.
-     *
+     * 
      * @param name the name of the count register
      * @param value the value of the count register
      * @param global the indicator for the scope; <code>true</code> means all
-     *            groups; otherwise the current group is affected only
-     *
-     * @see org.extex.interpreter.max.context.Group#setCount(
-     *      java.lang.String,
+     *        groups; otherwise the current group is affected only
+     * 
+     * @see org.extex.interpreter.max.context.Group#setCount( java.lang.String,
      *      org.extex.core.count.Count, boolean)
      */
-    public void setCount(String name, Count value,
-            boolean global) {
+    public void setCount(String name, Count value, boolean global) {
 
         if (countMap == null) {
             countMap = new HashMap<String, Count>();
@@ -1163,18 +1139,16 @@ public class GroupImpl implements Group {
 
     /**
      * Setter for the delimiter code of a character.
-     *
+     * 
      * @param uc the character to set the delimiter code for
      * @param code the new delimiter code
      * @param global the indicator for the scope; <code>true</code> means all
-     *  groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @see org.extex.interpreter.max.context.Group#setDelcode(
-     *      org.extex.core.UnicodeChar,
-     *      MathDelimiter, boolean)
+     *      org.extex.core.UnicodeChar, MathDelimiter, boolean)
      */
-    public void setDelcode(UnicodeChar uc, MathDelimiter code,
-            boolean global) {
+    public void setDelcode(UnicodeChar uc, MathDelimiter code, boolean global) {
 
         if (delcodeMap == null) {
             delcodeMap = new HashMap<UnicodeChar, MathDelimiter>();
@@ -1189,18 +1163,16 @@ public class GroupImpl implements Group {
 
     /**
      * Setter for a dimen register in the requested groups.
-     *
+     * 
      * @param name the name of the count register
      * @param value the value of the count register
      * @param global the indicator for the scope; <code>true</code> means all
-     *  groups; otherwise the current group is affected only
-     *
-     * @see org.extex.interpreter.max.context.Group#setDimen(
-     *      java.lang.String,
+     *        groups; otherwise the current group is affected only
+     * 
+     * @see org.extex.interpreter.max.context.Group#setDimen( java.lang.String,
      *      org.extex.core.dimen.Dimen, boolean)
      */
-    public void setDimen(String name, Dimen value,
-            boolean global) {
+    public void setDimen(String name, Dimen value, boolean global) {
 
         if (dimenMap == null) {
             dimenMap = new HashMap<String, Dimen>();
@@ -1215,14 +1187,14 @@ public class GroupImpl implements Group {
 
     /**
      * Setter for the font with a given name.
-     *
+     * 
      * @param name the name of the font
      * @param font the new font
      * @param global the indicator for the scope; <code>true</code> means all
-     *  groups; otherwise the current group is affected only
-     *
-     * @see org.extex.interpreter.max.context.Group#setFont(
-     *      java.lang.String, org.extex.interpreter.type.font.Font, boolean)
+     *        groups; otherwise the current group is affected only
+     * 
+     * @see org.extex.interpreter.max.context.Group#setFont( java.lang.String,
+     *      org.extex.interpreter.type.font.Font, boolean)
      */
     public void setFont(String name, Font font, boolean global) {
 
@@ -1239,18 +1211,16 @@ public class GroupImpl implements Group {
 
     /**
      * Setter for the value of the booleans in all groups.
-     *
+     * 
      * @param name the name of the boolean
      * @param value the truth value
      * @param global the indicator for the scope; <code>true</code> means all
-     *  groups; otherwise the current group is affected only
-     *
-     * @see org.extex.interpreter.max.context.Group#setIf(
-     *      java.lang.String,
+     *        groups; otherwise the current group is affected only
+     * 
+     * @see org.extex.interpreter.max.context.Group#setIf( java.lang.String,
      *      boolean, boolean)
      */
-    public void setIf(String name, boolean value,
-            boolean global) {
+    public void setIf(String name, boolean value, boolean global) {
 
         if (ifMap == null) {
             ifMap = new HashMap<String, Boolean>();
@@ -1265,18 +1235,16 @@ public class GroupImpl implements Group {
 
     /**
      * Setter for an input file.
-     *
+     * 
      * @param name the name of the input file
      * @param file the input file specification
      * @param global the indicator for the scope; <code>true</code> means all
-     *  groups; otherwise the current group is affected only
-     *
-     * @see org.extex.interpreter.max.context.Group#setInFile(
-     *      java.lang.String,
+     *        groups; otherwise the current group is affected only
+     * 
+     * @see org.extex.interpreter.max.context.Group#setInFile( java.lang.String,
      *      org.extex.interpreter.type.file.InFile, boolean)
      */
-    public void setInFile(String name, InFile file,
-            boolean global) {
+    public void setInFile(String name, InFile file, boolean global) {
 
         if (inFileMap == null) {
             inFileMap = new HashMap<String, InFile>();
@@ -1292,19 +1260,16 @@ public class GroupImpl implements Group {
     /**
      * Declare the translation from an upper case character to a lower case
      * character.
-     *
+     * 
      * @param uc upper case character
      * @param lc lower case equivalent
      * @param global the indicator for the scope; <code>true</code> means all
-     *  groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @see org.extex.interpreter.max.context.Group#setLccode(
-     *      org.extex.core.UnicodeChar,
-     *      org.extex.core.UnicodeChar,
-     *      boolean)
+     *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar, boolean)
      */
-    public void setLccode(UnicodeChar lc, UnicodeChar uc,
-            boolean global) {
+    public void setLccode(UnicodeChar lc, UnicodeChar uc, boolean global) {
 
         if (lccodeMap == null) {
             lccodeMap = new HashMap<UnicodeChar, UnicodeChar>();
@@ -1319,7 +1284,7 @@ public class GroupImpl implements Group {
 
     /**
      * Setter for locator.
-     *
+     * 
      * @param locator the locator to set
      */
     public void setLocator(Locator locator) {
@@ -1329,18 +1294,16 @@ public class GroupImpl implements Group {
 
     /**
      * Setter for the math code of a character.
-     *
+     * 
      * @param uc the character to set the math code for
      * @param code the new math code
      * @param global the indicator for the scope; <code>true</code> means all
-     *  groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @see org.extex.interpreter.max.context.Group#setMathcode(
-     *      org.extex.core.UnicodeChar,
-     *      MathCode, boolean)
+     *      org.extex.core.UnicodeChar, MathCode, boolean)
      */
-    public void setMathcode(UnicodeChar uc, MathCode code,
-            boolean global) {
+    public void setMathcode(UnicodeChar uc, MathCode code, boolean global) {
 
         if (mathcodeMap == null) {
             mathcodeMap = new HashMap<UnicodeChar, MathCode>();
@@ -1355,18 +1318,16 @@ public class GroupImpl implements Group {
 
     /**
      * Setter for the muskip register in the requested groups.
-     *
+     * 
      * @param name the name of the register
      * @param value the value of the register
      * @param global the indicator for the scope; <code>true</code> means all
-     *  groups; otherwise the current group is affected only
-     *
-     * @see org.extex.interpreter.max.context.Group#setMuskip(
-     *      java.lang.String,
+     *        groups; otherwise the current group is affected only
+     * 
+     * @see org.extex.interpreter.max.context.Group#setMuskip( java.lang.String,
      *      org.extex.core.muskip.Muskip, boolean)
      */
-    public void setMuskip(String name, Muskip value,
-            boolean global) {
+    public void setMuskip(String name, Muskip value, boolean global) {
 
         if (muskipMap == null) {
             muskipMap = new HashMap<String, Muskip>();
@@ -1381,10 +1342,10 @@ public class GroupImpl implements Group {
 
     /**
      * Setter for the name space.
-     *
+     * 
      * @param theNamespace the new value for the name space
      * @param global the scoping of the assignment
-     *
+     * 
      * @see org.extex.interpreter.max.context.Group#setNamespace(
      *      java.lang.String, boolean)
      */
@@ -1399,18 +1360,16 @@ public class GroupImpl implements Group {
 
     /**
      * Setter for the output file for a given name.
-     *
+     * 
      * @param name the name of the output file
      * @param file the output file specification
      * @param global the indicator for the scope; <code>true</code> means all
-     *            groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @see org.extex.interpreter.max.context.Group#setOutFile(
-     *       java.lang.String,
-     *       org.extex.interpreter.type.file.OutFile, boolean)
+     *      java.lang.String, org.extex.interpreter.type.file.OutFile, boolean)
      */
-    public void setOutFile(String name, OutFile file,
-            boolean global) {
+    public void setOutFile(String name, OutFile file, boolean global) {
 
         if (outFileMap == null) {
             outFileMap = new HashMap<String, OutFile>();
@@ -1425,18 +1384,16 @@ public class GroupImpl implements Group {
 
     /**
      * Setter for the space factor code of a character.
-     *
+     * 
      * @param uc the character to set the space factor code for
      * @param code the new space factor code
      * @param global the indicator for the scope; <code>true</code> means all
-     *  groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @see org.extex.interpreter.max.context.Group#setSfcode(
-     *      org.extex.core.UnicodeChar,
-     *      org.extex.core.count.Count, boolean)
+     *      org.extex.core.UnicodeChar, org.extex.core.count.Count, boolean)
      */
-    public void setSfcode(UnicodeChar uc, Count code,
-            boolean global) {
+    public void setSfcode(UnicodeChar uc, Count code, boolean global) {
 
         if (sfcodeMap == null) {
             sfcodeMap = new HashMap<UnicodeChar, Count>();
@@ -1451,18 +1408,16 @@ public class GroupImpl implements Group {
 
     /**
      * Setter for a skip register in all groups.
-     *
+     * 
      * @param name the name of the count register
      * @param value the value of the count register
      * @param global the indicator for the scope; <code>true</code> means all
-     *  groups; otherwise the current group is affected only
-     *
-     * @see org.extex.interpreter.max.context.Group#setSkip(
-     *      java.lang.String,
+     *        groups; otherwise the current group is affected only
+     * 
+     * @see org.extex.interpreter.max.context.Group#setSkip( java.lang.String,
      *      org.extex.core.glue.Glue, boolean)
      */
-    public void setSkip(String name, Glue value,
-            boolean global) {
+    public void setSkip(String name, Glue value, boolean global) {
 
         if (skipMap == null) {
             skipMap = new HashMap<String, Glue>();
@@ -1477,9 +1432,9 @@ public class GroupImpl implements Group {
 
     /**
      * Setter for standard Token stream.
-     *
+     * 
      * @param standardTokenStream the standardTokenStream to set.
-     *
+     * 
      * @see org.extex.interpreter.max.context.Group#setStandardTokenStream(
      *      org.extex.scanner.TokenStream)
      */
@@ -1490,7 +1445,7 @@ public class GroupImpl implements Group {
 
     /**
      * Setter for start token.
-     *
+     * 
      * @param start the start token to set
      */
     public void setStart(Token start) {
@@ -1500,18 +1455,16 @@ public class GroupImpl implements Group {
 
     /**
      * Setter for a toks register in all groups.
-     *
+     * 
      * @param name the name of the toks register
      * @param value the value of the toks register
      * @param global the indicator for the scope; <code>true</code> means all
-     *  groups; otherwise the current group is affected only
-     *
-     * @see org.extex.interpreter.max.context.Group#setToks(
-     *      java.lang.String,
+     *        groups; otherwise the current group is affected only
+     * 
+     * @see org.extex.interpreter.max.context.Group#setToks( java.lang.String,
      *      org.extex.scanner.type.tokens.Tokens, boolean)
      */
-    public void setToks(String name, Tokens value,
-            boolean global) {
+    public void setToks(String name, Tokens value, boolean global) {
 
         if (toksMap == null) {
             toksMap = new HashMap<String, Tokens>();
@@ -1526,9 +1479,9 @@ public class GroupImpl implements Group {
 
     /**
      * Setter for the type.
-     *
+     * 
      * @param type the type of the group
-     *
+     * 
      * @see org.extex.interpreter.max.context.Group#setType(
      *      org.extex.interpreter.context.group.GroupType)
      */
@@ -1539,17 +1492,15 @@ public class GroupImpl implements Group {
 
     /**
      * Setter for the typesetting context in the specified groups.
-     *
+     * 
      * @param context the new typesetting context
      * @param global the indicator for the scope; <code>true</code> means all
-     *            groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @see org.extex.interpreter.max.context.Group#setTypesettingContext(
-     *      org.extex.interpreter.context.tc.TypesettingContext,
-     *      boolean)
+     *      org.extex.interpreter.context.tc.TypesettingContext, boolean)
      */
-    public void setTypesettingContext(TypesettingContext context,
-            boolean global) {
+    public void setTypesettingContext(TypesettingContext context, boolean global) {
 
         typesettingContext = context;
 
@@ -1561,19 +1512,16 @@ public class GroupImpl implements Group {
     /**
      * Declare the translation from a lower case character to an upper case
      * character.
-     *
+     * 
      * @param lc lower case character
      * @param uc uppercase equivalent
      * @param global the indicator for the scope; <code>true</code> means all
-     *  groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @see org.extex.interpreter.max.context.Group#setUccode(
-     *      org.extex.core.UnicodeChar,
-     *      org.extex.core.UnicodeChar,
-     *      boolean)
+     *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar, boolean)
      */
-    public void setUccode(UnicodeChar uc, UnicodeChar lc,
-            boolean global) {
+    public void setUccode(UnicodeChar uc, UnicodeChar lc, boolean global) {
 
         if (uccodeMap == null) {
             uccodeMap = new HashMap<UnicodeChar, UnicodeChar>();
@@ -1588,9 +1536,9 @@ public class GroupImpl implements Group {
 
     /**
      * Get the string representation of this object for debugging purposes.
-     *
+     * 
      * @return the string representation
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     public String toString() {

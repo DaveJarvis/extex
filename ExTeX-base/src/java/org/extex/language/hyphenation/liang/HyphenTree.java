@@ -225,7 +225,7 @@ class HyphenTree implements Serializable {
      *
      * @return the iterator for the children
      */
-    public Iterator iterator() {
+    public Iterator<HyphenTree> iterator() {
 
         return nextTree.values().iterator();
     }
@@ -270,9 +270,9 @@ class HyphenTree implements Serializable {
         if (nextTree == null) {
             return;
         }
-        Iterator iterator = nextTree.values().iterator();
+        Iterator<HyphenTree> iterator = nextTree.values().iterator();
         while (iterator.hasNext()) {
-            HyphenTree t = (HyphenTree) iterator.next();
+            HyphenTree t = iterator.next();
             if (t.hc != null) {
                 superimpose(t.hc, 0, code);
             }
@@ -302,10 +302,10 @@ class HyphenTree implements Serializable {
             return;
         }
         String p = prefix + "  ";
-        Iterator iter = nextTree.keySet().iterator();
+        Iterator<UnicodeChar> iter = nextTree.keySet().iterator();
 
         while (iter.hasNext()) {
-            UnicodeChar key = (UnicodeChar) iter.next();
+            UnicodeChar key = iter.next();
             HyphenTree t = nextTree.get(key);
             sb.append(prefix);
             sb.append("'");

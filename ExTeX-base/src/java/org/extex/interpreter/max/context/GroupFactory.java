@@ -58,7 +58,7 @@ public class GroupFactory {
      * {@link #newInstance(Group, Locator, Token, GroupType)
      *  newInstance}.
      */
-    private Constructor constructor;
+    private Constructor<?> constructor;
 
     /**
      * Creates a new object.

@@ -29,11 +29,11 @@ import org.extex.scanner.type.tokens.Tokens;
  * This observer is meant for keeping the current typesetting context in sync
  * with the registers <tt>\language</tt> and <tt>\lang</tt>.
  * <p>
- *  The tokens register <tt>\lang</tt> is considered first. Only if this
- *  register is not set or it is empty then the count register <tt>\language</tt>
- *  is taken into account.
+ * The tokens register <tt>\lang</tt> is considered first. Only if this
+ * register is not set or it is empty then the count register <tt>\language</tt>
+ * is taken into account.
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4728 $
  */
@@ -48,25 +48,17 @@ public class LanguageObserver implements CountObserver, TokensObserver {
     }
 
     /**
-     * Receive a notification on a count change.
-     *
-     * @param context the interpreter context
-     * @param name the token containing the name of the changed Count.
-     * @param value the new value assigned to the name. In case of
-     *  <code>null</code> the name is unbound.
-     *
-     * @throws org.extex.framework.configuration.exception.ConfigurationException
-     *   in case of a problem
+     * {@inheritDoc}
      *
      * @see org.extex.interpreter.context.observer.count.CountObserver#receiveCountChange(
-     *      org.extex.interpreter.context.ContextInternals,
-     *      java.lang.String,
+     *      org.extex.interpreter.context.ContextInternals, java.lang.String,
      *      org.extex.core.count.Count)
      */
-    public void receiveCountChange(ContextInternals context,
-            String name, Count value) {
+    public void receiveCountChange(ContextInternals context, String name,
+            Count value) {
 
-        if ("language".equals(name)) { // this should never fail; just to be sure
+        if ("language".equals(name)) { // this should never fail; just to be
+                                        // sure
             Tokens lang = context.getToks("lang");
             if (lang == null || lang.length() == 0) {
                 context.getTypesettingContextFactory().newInstance(
@@ -76,20 +68,14 @@ public class LanguageObserver implements CountObserver, TokensObserver {
     }
 
     /**
-     * Receive a notification on a tokens change.
-     *
-     * @param context the interpreter context
-     * @param name the token containing the name of the changed tokens.
-     * @param value the new value assigned to the name. In case of
-     *  <code>null</code> the name is unbound.
+     * {@inheritDoc}
      *
      * @see org.extex.interpreter.context.observer.tokens.TokensObserver#receiveTokensChange(
-     *      org.extex.interpreter.context.ContextInternals,
-     *      java.lang.String,
+     *      org.extex.interpreter.context.ContextInternals, java.lang.String,
      *      org.extex.scanner.type.tokens.Tokens)
      */
-    public void receiveTokensChange(ContextInternals context,
-            String name, Tokens value) {
+    public void receiveTokensChange(ContextInternals context, String name,
+            Tokens value) {
 
         if ("lang".equals(name)) { // this should never fail; just to be sure
 

@@ -43,8 +43,6 @@ import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.token.TokenFactoryImpl;
-import org.extex.typesetter.type.node.factory.CachingNodeFactory;
-import org.extex.typesetter.type.node.factory.NodeFactory;
 
 /**
  * This is the test class for NV.
@@ -388,12 +386,12 @@ public class NVTest extends TestCase {
     /**
      * The field <tt>cnf</tt> contains the char node factory.
      */
-    private NodeFactory cnf;
+//    private NodeFactory cnf;
 
     /**
      * The field <tt>f</tt> contains the token for f.
      */
-    private Token f;
+//    private Token f;
 
     /**
      * The field <tt>font</tt> contains the font.
@@ -421,10 +419,10 @@ public class NVTest extends TestCase {
 
         super.setUp();
         font = new MockFont();
-        cnf = new CachingNodeFactory();
+//        cnf = new CachingNodeFactory();
         tokenFactory = new TokenFactoryImpl();
-        f = tokenFactory.createToken(Catcode.LETTER, 'f', //
-            Namespace.DEFAULT_NAMESPACE);
+//        f = tokenFactory.createToken(Catcode.LETTER, 'f', //
+//            Namespace.DEFAULT_NAMESPACE);
         l = tokenFactory.createToken(Catcode.LETTER, 'l', //
             Namespace.DEFAULT_NAMESPACE);
 //        UnicodeChar hyphen = font.getHyphenChar();

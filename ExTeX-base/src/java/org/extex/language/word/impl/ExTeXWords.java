@@ -41,35 +41,35 @@ import org.extex.typesetter.type.node.LigatureNode;
 import org.extex.typesetter.type.node.WhatsItNode;
 
 /**
- * This class tokenizes a list of nodes according to the rules of
- * <logo>ExTeX</logo>.
- *
+ * This class tokenizes a list of nodes according to the rules of <logo>ExTeX</logo>.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4784 $
  */
 public class ExTeXWords implements WordTokenizer {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
     /**
      * Hyphenate subsequent char nodes from a ligature.
-     *
+     * 
      * <p>
-     *  Note that <logo>TeX</logo> only considers the first hyphenation point
-     *  in a ligature. The others are ignored. Nevertheless the ligature builder
-     *  is applied to the remaining characters. This might lead to other
-     *  ligatures than the ones encoded in the ligature node.
+     * Note that <logo>TeX</logo> only considers the first hyphenation point in
+     * a ligature. The others are ignored. Nevertheless the ligature builder is
+     * applied to the remaining characters. This might lead to other ligatures
+     * than the ones encoded in the ligature node.
      * </p>
-     *
+     * 
      * @param list the node list to hyphenate
      * @param index the index in the hyphen array
      * @param ligatureBuilder the ligature builder to use
-     *
+     * 
      * @return the hyphenated node list
-     *
+     * 
      * @throws HyphenationException in case of an error
      */
     private static NodeList hyphenate(NodeList list, int index,
@@ -86,22 +86,21 @@ public class ExTeXWords implements WordTokenizer {
 
     /**
      * Process a ligature node.
-     *
+     * 
      * @param nodes the node list to modify
      * @param insertionPoint the index in the nodes to start with
      * @param index the index in the hyphenation list
      * @param node the ligature node to split for hyphenation
      * @param isHyph array of indicators for hyphenation points
      * @param hyphenNode the node to be used to carry the hyphen character
-     *
+     * 
      * @return the new index in the hyphenation list
-     *
+     * 
      * @throws HyphenationException in case of an error
      */
     private static int insertShyIntoLigature(NodeList nodes,
-            int insertionPoint, int index, LigatureNode node,
-            boolean[] isHyph, CharNode hyphenNode)
-            throws HyphenationException {
+            int insertionPoint, int index, LigatureNode node, boolean[] isHyph,
+            CharNode hyphenNode) throws HyphenationException {
 
         int n = node.countChars();
         int needHyphen = 0;
@@ -162,7 +161,7 @@ public class ExTeXWords implements WordTokenizer {
 
     /**
      * Add the characters extracted from a char node to the word container.
-     *
+     * 
      * @param node the character node to add to the word
      * @param word the container to add the node to
      */
@@ -182,18 +181,18 @@ public class ExTeXWords implements WordTokenizer {
 
     /**
      * Collect all characters form a node list that make up a word.
-     *
+     * 
      * @param nodes the nodes to process
      * @param word the word with hyphenation marks
      * @param start the start index
      * @param lang the language in effect
-     *
+     * 
      * @return the index of the first node past the ones processed
-     *
+     * 
      * @throws HyphenationException in case of an error
      */
-    private int collectWord(NodeList nodes, UnicodeCharList word,
-            int start, Language lang) throws HyphenationException {
+    private int collectWord(NodeList nodes, UnicodeCharList word, int start,
+            Language lang) throws HyphenationException {
 
         int i = start;
         int size = nodes.size();
@@ -232,12 +231,11 @@ public class ExTeXWords implements WordTokenizer {
 
     /**
      * @see org.extex.language.word.WordTokenizer#findWord(
-     *      org.extex.typesetter.type.NodeList,
-     *      int,
+     *      org.extex.typesetter.type.NodeList, int,
      *      org.extex.core.UnicodeCharList)
      */
-    public int findWord(NodeList nodes, int start,
-            UnicodeCharList word) throws HyphenationException {
+    public int findWord(NodeList nodes, int start, UnicodeCharList word)
+            throws HyphenationException {
 
         int i = start;
         int size = nodes.size();
@@ -259,14 +257,11 @@ public class ExTeXWords implements WordTokenizer {
 
     /**
      * @see org.extex.language.word.WordTokenizer#insertShy(
-     *      org.extex.typesetter.type.NodeList,
-     *      int,
-     *      boolean[],
+     *      org.extex.typesetter.type.NodeList, int, boolean[],
      *      org.extex.typesetter.type.node.CharNode)
      */
-    public void insertShy(NodeList nodes, int insertionPoint,
-            boolean[] spec, CharNode hyphenNode)
-            throws HyphenationException {
+    public void insertShy(NodeList nodes, int insertionPoint, boolean[] spec,
+            CharNode hyphenNode) throws HyphenationException {
 
         UnicodeChar hyphen = hyphenNode.getCharacter();
         int insertion = insertionPoint;
@@ -287,6 +282,10 @@ public class ExTeXWords implements WordTokenizer {
                 insertion++;
             }
 
+            if (nobreak == null) {
+                nobreak = new HorizontalListNode(n);
+            }
+
             if (spec[si]) {
 
                 if (prev instanceof CharNode) {
@@ -297,9 +296,10 @@ public class ExTeXWords implements WordTokenizer {
                     if (lig != null) {
                         nodes.remove(insertion--);
                         post =
-                                new HorizontalListNode(new LigatureNode(
-                                    ((CharNode) prev).getTypesettingContext(),
-                                    lig, (CharNode) prev, hyphenNode));
+                                new HorizontalListNode(//
+                                    new LigatureNode(((CharNode) prev)
+                                        .getTypesettingContext(), lig,
+                                        (CharNode) prev, hyphenNode));
                         nobreak.add(prev);
                     } else {
                         FixedDimen kern = font.getKerning(c, hyphen);

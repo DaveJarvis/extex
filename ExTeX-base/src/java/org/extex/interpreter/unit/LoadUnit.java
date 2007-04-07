@@ -46,11 +46,11 @@ import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.macro.LetCode;
 
 /**
- * This is a factory load to units from a configuration.
- * A unit is a configuration consisting of an optional setup class and a set of
- * primitives. When the unit is loaded the setup class is instantiated and run.
- * Then the primitives are created and registered in the context.
- *
+ * This is a factory load to units from a configuration. A unit is a
+ * configuration consisting of an optional setup class and a set of primitives.
+ * When the unit is loaded the setup class is instantiated and run. Then the
+ * primitives are created and registered in the context.
+ * 
  * <pre>
  *  &lt;unit name="the name"
  *        class="the.setup.Class"&gt;
@@ -61,7 +61,7 @@ import org.extex.unit.base.macro.LetCode;
  *    &lt;/primitive&gt;
  *  &lt;/unit&gt;
  * </pre>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
@@ -80,8 +80,8 @@ public final class LoadUnit extends AbstractFactory {
     private static final String NAME_ATTRIBUTE = "name";
 
     /**
-     * The field <tt>NAMESPACE_ATTRIBUTE</tt> contains the attribute name
-     * to find the name space for the new primitive.
+     * The field <tt>NAMESPACE_ATTRIBUTE</tt> contains the attribute name to
+     * find the name space for the new primitive.
      */
     private static final String NAMESPACE_ATTRIBUTE = "namespace";
 
@@ -90,20 +90,19 @@ public final class LoadUnit extends AbstractFactory {
      * configuration may contain sub-configurations with the name
      * <tt>primitives</tt> which includes the definition of primitives. Those
      * primitives are defined no matter if they are already defined or not.
-     *
+     * 
      * @param configuration the configuration
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param logger the logger to use
      * @param outputFactory the output stream factory
-     *
+     * 
      * @throws ConfigurationException in case of a configuration error
      * @throws GeneralException in case of an error
      */
-    public static void loadUnit(Configuration configuration,
-            Context context, TokenSource source,
-            Typesetter typesetter, Logger logger,
+    public static void loadUnit(Configuration configuration, Context context,
+            TokenSource source, Typesetter typesetter, Logger logger,
             OutputStreamFactory outputFactory) throws GeneralException {
 
         TokenFactory tokenFactory = context.getTokenFactory();
@@ -130,16 +129,15 @@ public final class LoadUnit extends AbstractFactory {
             ((Loader) unitInfo).load(context, source, typesetter);
         }
 
-        Iterator iterator = configuration.iterator("primitives");
+        Iterator<Configuration> iterator = configuration.iterator("primitives");
         while (iterator.hasNext()) {
-            primitiveFactory.define((Configuration) iterator.next(),
-                tokenFactory, context, typesetter, logger, outputFactory);
+            primitiveFactory.define(iterator.next(), tokenFactory, context,
+                typesetter, logger, outputFactory);
         }
 
         iterator = configuration.iterator("import");
         while (iterator.hasNext()) {
-            String ns =
-                    ((Configuration) iterator.next()).getAttribute("namespace");
+            String ns = iterator.next().getAttribute("namespace");
             Tokens export = context.getToks(ns + "\bexport");
             String namespace = context.getNamespace();
             int length = export.length();
@@ -183,38 +181,37 @@ public final class LoadUnit extends AbstractFactory {
 
     /**
      * Scan a configuration and define the primitives found.
-     *
+     * 
      * @param configuration the configuration to scan
      * @param tokenFactory the token factory to use
      * @param context the interpreter context to register the primitive in
      * @param typesetter the typesetter
      * @param outputLogger the logger to produce output to
      * @param outputFactory the factory for new output streams
-     *
+     * 
      * @throws GeneralException In case of an error
      * @throws ConfigurationException in case of an error
-     * <ul>
-     *  <li>ConfigurationMissingAttributeException
-     *    in case of a missing argument</li>
-     *  <li>ConfigurationInstantiationException
-     *    in case of an error during instantiation</li>
-     *  <li>ConfigurationClassNotFoundException
-     *    in case of a missing class</li>
-     *  <li>ConfigurationWrapperException
-     *    in case of another error which is wrapped</li>
-     * </ul>
+     *         <ul>
+     *         <li>ConfigurationMissingAttributeException in case of a missing
+     *         argument</li>
+     *         <li>ConfigurationInstantiationException in case of an error
+     *         during instantiation</li>
+     *         <li>ConfigurationClassNotFoundException in case of a missing
+     *         class</li>
+     *         <li>ConfigurationWrapperException in case of another error which
+     *         is wrapped</li>
+     *         </ul>
      */
-    public void define(Configuration configuration,
-            TokenFactory tokenFactory, Context context,
-            Typesetter typesetter, Logger outputLogger,
+    public void define(Configuration configuration, TokenFactory tokenFactory,
+            Context context, Typesetter typesetter, Logger outputLogger,
             OutputStreamFactory outputFactory) throws GeneralException {
 
         enableLogging(outputLogger);
         UnicodeChar esc = UnicodeChar.get('\\');
-        Iterator iterator = configuration.iterator(DEFINE_TAG);
+        Iterator<Configuration> iterator = configuration.iterator(DEFINE_TAG);
 
         while (iterator.hasNext()) {
-            Configuration cfg = (Configuration) iterator.next();
+            Configuration cfg = iterator.next();
 
             String name = cfg.getAttribute(NAME_ATTRIBUTE);
             Code code =

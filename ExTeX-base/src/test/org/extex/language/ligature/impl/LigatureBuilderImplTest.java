@@ -143,17 +143,17 @@ public class LigatureBuilderImplTest extends TestCase {
     /**
      * The constant <tt>FF</tt> contains the ...
      */
-    private static final UnicodeChar FF = UnicodeChar.get(CC_FF);
+//    private static final UnicodeChar FF = UnicodeChar.get(CC_FF);
 
     /**
      * The constant <tt>FFL</tt> contains the ...
      */
-    private static final UnicodeChar FFL = UnicodeChar.get(CC_FFL);
+//    private static final UnicodeChar FFL = UnicodeChar.get(CC_FFL);
 
     /**
      * The constant <tt>FL</tt> contains the ...
      */
-    private static final UnicodeChar FL = UnicodeChar.get(CC_FL);
+//    private static final UnicodeChar FL = UnicodeChar.get(CC_FL);
 
     /**
      * The field <tt>tc1</tt> contains the typesetting context.

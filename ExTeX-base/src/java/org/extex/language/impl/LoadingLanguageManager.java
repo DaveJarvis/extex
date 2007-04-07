@@ -29,6 +29,7 @@ import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
@@ -44,12 +45,12 @@ import org.extex.resource.ResourceConsumer;
 import org.extex.resource.ResourceFinder;
 
 /**
- * This class manages the <code>Language</code>s. It is a container
- * which can be asked to provide an appropriate instance. This instance is
- * either taken from existing instances or a new instance is created. Since
- * at the time of creation it can not be decided whether a new one should be
- * used or an existing one should be loaded a future object is returned
- * which enables us to postpone the operation until the decision can be made.
+ * This class manages the <code>Language</code>s. It is a container which can
+ * be asked to provide an appropriate instance. This instance is either taken
+ * from existing instances or a new instance is created. Since at the time of
+ * creation it can not be decided whether a new one should be used or an
+ * existing one should be loaded a future object is returned which enables us to
+ * postpone the operation until the decision can be made.
  * <p>
  * The future object invokes one of the methods of
  * {@link LanguageCreator LanguageCreator}. In this case we know whether to
@@ -57,17 +58,17 @@ import org.extex.resource.ResourceFinder;
  * the resulting language is put into the map overwriting the future object.
  * </p>
  * <p>
- *  TODO gene: documentation incomplete
+ * TODO gene: documentation incomplete
  * </p>
- *
+ * 
  * <h2>Configuration</h2>
- *
+ * 
  * This instance is configurable. The configuration is used to select the
  * appropriate class and optional parameters for a requested instance. In this
  * respect this class makes best use of the infrastructure of the
  * {@link org.extex.framework.AbstractFactory AbstractFactory}.
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4784 $
  */
@@ -85,7 +86,8 @@ public class LoadingLanguageManager extends BaseLanguageManager
     private static final String NON_LOADABLE_LANGUAGE_PATTERN = "^\\d*$";
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
@@ -96,8 +98,8 @@ public class LoadingLanguageManager extends BaseLanguageManager
     private static final String TABLE_EXTENSION = "lfm";
 
     /**
-     * The constant <tt>VERSION</tt> contains the version id to be written into
-     * the external file.
+     * The constant <tt>VERSION</tt> contains the version id to be written
+     * into the external file.
      */
     private static final String VERSION = "1.0";
 
@@ -122,11 +124,11 @@ public class LoadingLanguageManager extends BaseLanguageManager
 
     /**
      * Create a new language and put it into the table.
-     *
+     * 
      * @param name the name of the language
-     *
+     * 
      * @return the new instance of a language
-     *
+     * 
      * @see org.extex.language.impl.BaseLanguageManager#createLanguage(
      *      java.lang.String)
      */
@@ -137,14 +139,14 @@ public class LoadingLanguageManager extends BaseLanguageManager
 
     /**
      * Create a new instance for the given index if required.
-     *
+     * 
      * @param name the symbolic name of the language
-     *
+     * 
      * @return the new instance
-     *
+     * 
      * @throws HyphenationException in case of an error
      * @throws ConfigurationException in case of an configuration error
-     *
+     * 
      * @see org.extex.language.impl.LanguageCreator#createLanguageInstance(
      *      java.lang.String)
      */
@@ -160,13 +162,13 @@ public class LoadingLanguageManager extends BaseLanguageManager
 
     /**
      * Load or create a new instance for the given index if required.
-     *
+     * 
      * @param name the symbolic name of the language
-     *
+     * 
      * @return the new instance
-     *
+     * 
      * @throws HyphenationException in case of an error
-     *
+     * 
      * @see org.extex.language.impl.LanguageCreator#loadLanguageInstance(
      *      java.lang.String)
      */
@@ -224,30 +226,29 @@ public class LoadingLanguageManager extends BaseLanguageManager
     /**
      * This method arranges that the data written out about the tables can be
      * read back in.
-     *
+     * 
      * @param in the stream to read from
-     *
+     * 
      * @throws IOException in case of an IO error
-     * @throws ClassNotFoundException in case of a non existing class
-     *  definition
+     * @throws ClassNotFoundException in case of a non existing class definition
      */
     private void readObject(ObjectInputStream in)
             throws IOException,
                 ClassNotFoundException {
 
-        //        Registrar.register(new CreatorInjector(this), ManagedLanguage.class);
+        // Registrar.register(new CreatorInjector(this), ManagedLanguage.class);
     }
 
     /**
      * Restore the internal state when the instance is loaded from file.
-     *
+     * 
      * @return the object which should be used instead of the one read
-     *
+     * 
      * @throws ObjectStreamException in case of an error
      */
     protected Object readResolve() throws ObjectStreamException {
 
-        Iterator iterator = getTables().values().iterator();
+        Iterator<Language> iterator = getTables().values().iterator();
         while (iterator.hasNext()) {
             Object lang = iterator.next();
             if (lang instanceof ManagedLanguage) {
@@ -263,16 +264,16 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * Try to save the hyphenation table by other means. This can be used to
      * write the result to another place than the default output stream.
      * <p>
-     *  The table is not saved if the name is purely numeric. This guarantees
-     *  the backward compatibility with TeX, since <logo>TeX</logo> uses
-     *  numerical names for hyphenation tables only.
+     * The table is not saved if the name is purely numeric. This guarantees the
+     * backward compatibility with TeX, since <logo>TeX</logo> uses numerical
+     * names for hyphenation tables only.
      * </p>
-     *
+     * 
      * @param name the name of the table
      * @param value the table itself
-     *
+     * 
      * @return <code>true</code> iff the table has been saved
-     *
+     * 
      * @throws IOException in case of an IO error
      * @throws DocumentWriterException in case of an error
      */
@@ -302,9 +303,9 @@ public class LoadingLanguageManager extends BaseLanguageManager
 
     /**
      * This method takes an output stream factory for further use.
-     *
+     * 
      * @param factory the output stream factory to use
-     *
+     * 
      * @see org.extex.interpreter.type.OutputStreamConsumer#setOutputStreamFactory(
      *      org.extex.backend.outputStream.OutputStreamFactory)
      */
@@ -315,9 +316,9 @@ public class LoadingLanguageManager extends BaseLanguageManager
 
     /**
      * Setter for the resource finder.
-     *
+     * 
      * @param finder the resource finder
-     *
+     * 
      * @see org.extex.resource.ResourceConsumer#setResourceFinder(
      *      org.extex.resource.ResourceFinder)
      */
@@ -329,9 +330,9 @@ public class LoadingLanguageManager extends BaseLanguageManager
     /**
      * Write the hyphenation tables to the output stream which can not by saved
      * separately.
-     *
+     * 
      * @param out the output stream to write on
-     *
+     * 
      * @throws IOException in case of an I/O error
      * @throws DocumentWriterException in case of an error
      */
@@ -340,11 +341,12 @@ public class LoadingLanguageManager extends BaseLanguageManager
                 DocumentWriterException {
 
         Map<String, Language> map = new HashMap<String, Language>();
-        Iterator iter = getTables().entrySet().iterator();
+        Iterator<Entry<String, Language>> iter =
+                getTables().entrySet().iterator();
         while (iter.hasNext()) {
-            Map.Entry e = (Map.Entry) iter.next();
-            String key = (String) e.getKey();
-            Language value = (Language) e.getValue();
+            Map.Entry<String, Language> e = iter.next();
+            String key = e.getKey();
+            Language value = e.getValue();
             if (!saveTable(key, value)) {
                 map.put(key, value);
             }

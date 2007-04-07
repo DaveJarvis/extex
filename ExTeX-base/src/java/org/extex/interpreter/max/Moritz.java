@@ -1094,31 +1094,6 @@ public class Moritz extends Max
     }
 
     /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.interpreter.TokenSource#scanNumber(
-     *      org.extex.interpreter.context.Context)
-     */
-    public long scanNumber(Context context) throws InterpreterException {
-
-        return CountParser.scanNumber(context, this, getTypesetter(),
-            getNonSpace(context));
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.interpreter.TokenSource#scanNumber(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.scanner.type.token.Token)
-     */
-    public long scanNumber(Context context, Token token)
-            throws InterpreterException {
-
-        return CountParser.scanNumber(context, this, getTypesetter(), token);
-    }
-
-    /**
      * @see org.extex.interpreter.TokenSource#scanRegisterName(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
