@@ -25,59 +25,70 @@ import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
-
 /**
  * The table 'LTSH' (The Linear Threshold Table).
- *
+ * 
  * <p>
- * The LTSH table relates to OpenType fonts containing TrueType outlines.
- * There are noticeable improvements to fonts on the screen when instructions
- * are carefully applied to the sidebearings. The gain in readability is offset
- * by the necessity for the OS to grid fit the glyphs in order to find the
- * actual advance width for the glyphs (since instructions may be moving
- * the sidebearing points). The TrueType outline format already has two
- * mechanisms to side step the speed issues: the 'hdmx' table, where precomputed
- * advance widths may be saved for selected ppem sizes, and the 'vdmx' table,
- * where precomputed vertical advance widths may be saved for selected ppem
- * sizes. The 'LTSH' table (Linear ThreSHold) is a second, complementary method.
+ * The LTSH table relates to OpenType fonts containing TrueType outlines. There
+ * are noticeable improvements to fonts on the screen when instructions are
+ * carefully applied to the sidebearings. The gain in readability is offset by
+ * the necessity for the OS to grid fit the glyphs in order to find the actual
+ * advance width for the glyphs (since instructions may be moving the
+ * sidebearing points). The TrueType outline format already has two mechanisms
+ * to side step the speed issues: the 'hdmx' table, where precomputed advance
+ * widths may be saved for selected ppem sizes, and the 'vdmx' table, where
+ * precomputed vertical advance widths may be saved for selected ppem sizes. The
+ * 'LTSH' table (Linear ThreSHold) is a second, complementary method.
  * </p>
  * <p>
- * The LTSH table defines the point at which it is reasonable to assume
- * linearly scaled advance widths on a glyph-by-glyph basis. This table
- * should not be included unless bit 4 of the "flags" field in the 'head'
- * table is set. The criteria for linear scaling is:
+ * The LTSH table defines the point at which it is reasonable to assume linearly
+ * scaled advance widths on a glyph-by-glyph basis. This table should not be
+ * included unless bit 4 of the "flags" field in the 'head' table is set. The
+ * criteria for linear scaling is:
  * </p>
  * <p>
- * a. (ppem size is 50) AND (difference between the rounded linear width
- * and the rounded instructed width £ 2% of the rounded linear width)
+ * a. (ppem size is 50) AND (difference between the rounded linear width and the
+ * rounded instructed width £ 2% of the rounded linear width)
  * </p>
  * <p>
  * or b. Linear width == Instructed width
  * </p>
  * <p>
  * The LTSH table records the ppem for each glyph at which the scaling becomes
- * linear again, despite instructions effecting the advance width.
- * It is a requirement that, at and above the recorded threshold size,
- * the glyph remain linear in its scaling (i.e., not legal to set threshold
- * at 55 ppem if glyph becomes nonlinear again at 90 ppem). The format for the
- * table is:
+ * linear again, despite instructions effecting the advance width. It is a
+ * requirement that, at and above the recorded threshold size, the glyph remain
+ * linear in its scaling (i.e., not legal to set threshold at 55 ppem if glyph
+ * becomes nonlinear again at 90 ppem). The format for the table is:
  * <p>
- * <table border="1">
- *   <thead>
- *     <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
- *   </thead>
- *   <tr><td>USHORT</td><td>version</td><td>Version number (starts at 0).</td></tr>
- *   <tr><td>USHORT</td><td>numGlyphs</td>
- *       <td>Number of glyphs (from "numGlyphs" in 'maxp' table).</td></tr>
- *   <tr><td>BYTE</td><td>yPels[numGlyphs]</td>
- *       <td>The vertical pel height at which the glyph can be assumed to
- *           scale linearly. On a per glyph basis.</td></tr>
+ * <table border="1"> <thead>
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * </thead>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>version</td>
+ * <td>Version number (starts at 0).</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>numGlyphs</td>
+ * <td>Number of glyphs (from "numGlyphs" in 'maxp' table).</td>
+ * </tr>
+ * <tr>
+ * <td>BYTE</td>
+ * <td>yPels[numGlyphs]</td>
+ * <td>The vertical pel height at which the glyph can be assumed to scale
+ * linearly. On a per glyph basis.</td>
+ * </tr>
  * </table>
  * <p>
- * Note that glyphs which do not have instructions on their sidebearings
- * should have yPels = 1; i.e., always scales linearly.
+ * Note that glyphs which do not have instructions on their sidebearings should
+ * have yPels = 1; i.e., always scales linearly.
  * </p>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -88,10 +99,10 @@ public class TtfTableLTSH extends AbstractXtfTable
 
     /**
      * Create a new object
-     *
-     * @param tablemap  the table map
-     * @param de        entry
-     * @param rar       input
+     * 
+     * @param tablemap the table map
+     * @param de entry
+     * @param rar input
      * @throws IOException if an IO-error occurs
      */
     TtfTableLTSH(XtfTableMap tablemap, XtfTableDirectory.Entry de,
@@ -117,13 +128,14 @@ public class TtfTableLTSH extends AbstractXtfTable
     private int numGlyphs;
 
     /**
-     * The vertical pel height at which the glyph can be assumed
-     * to scale linearly. On a per glyph basis.
+     * The vertical pel height at which the glyph can be assumed to scale
+     * linearly. On a per glyph basis.
      */
     private byte[] yPels;
 
     /**
      * Get the table type, as a table directory value.
+     * 
      * @return Returns the table type
      */
     public int getType() {
@@ -132,6 +144,8 @@ public class TtfTableLTSH extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -141,6 +155,7 @@ public class TtfTableLTSH extends AbstractXtfTable
 
     /**
      * Returns the numGlyphs.
+     * 
      * @return Returns the numGlyphs.
      */
     public int getNumGlyphs() {
@@ -150,6 +165,7 @@ public class TtfTableLTSH extends AbstractXtfTable
 
     /**
      * Returns the version.
+     * 
      * @return Returns the version.
      */
     public int getVersion() {
@@ -159,6 +175,7 @@ public class TtfTableLTSH extends AbstractXtfTable
 
     /**
      * Returns the yPels.
+     * 
      * @return Returns the yPels.
      */
     public byte[] getYPels() {
@@ -167,6 +184,8 @@ public class TtfTableLTSH extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
@@ -178,4 +197,5 @@ public class TtfTableLTSH extends AbstractXtfTable
         writer.writeByteArray(yPels);
         writer.writeEndElement();
     }
+
 }

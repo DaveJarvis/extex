@@ -25,45 +25,55 @@ import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
-
 /**
- * The 'cmap' table maps character codes to glyph indices.
- * The choice of encoding for a particular font is dependent upon the conventions used
- * by the intended platform. A font intended to run on multiple platforms with different
- * encoding conventions will require multiple encoding tables. As a result, the 'cmap' table
- * may contain multiple subtables, one for each supported encoding scheme.
- *
- * Character codes that do not correspond to any glyph in the font should be mapped
- * to glyph index 0.
- * At this location in the font there must be a special glyph representing a missing character,
- * typically a box. No character code should be mapped to glyph index -1, which is a special
- * value reserved in processing to indicate the position of a glyph deleted from the glyph stream.
- *
- * The 'cmap' table begins with an index containing the table version number followed by the number
- * of encoding tables. The encoding subtables follow.
- *
- * The original definition of the 'cmap' table only allowed for mappings from traditional character
- * set standards, which used eight, a mixture of eight and sixteen, or sixteen bits for each
- * character. With the introduction of ISO/IEC 10646-1 and the use of surrogates in versions
- * of Unicode from 2.0 onwards, it is possible that fonts may require references to data that
- * uses a mixture of sixteen and thirty-two or thirty-two bits per character.
- *
- * It was originally suggested that a version number of 0 is used to indicate that only encoding
- * subtables of types 0 through 6 are present in the 'cmap' table. If the 'cmap' table contains
- * encoding subtables of types 8.0 or higher, the version number would then be set to 1.
- * These latter encoding subtable types have been introduced to provide better support for
- * Unicode text encoded using surrogates.
- *
- * <table BORDER="1">
- *   <tbody>
- *     <tr><td><b>Type</b></td><td><b>Description</b></td></tr>
- *   </tbody>
- *   <tr><td>USHORT</td><td>Table version number (0).</td></tr>
- *   <tr><td>USHORT</td><td>Number of encoding tables, <I>n.</I></td></tr>
+ * The 'cmap' table maps character codes to glyph indices. The choice of
+ * encoding for a particular font is dependent upon the conventions used by the
+ * intended platform. A font intended to run on multiple platforms with
+ * different encoding conventions will require multiple encoding tables. As a
+ * result, the 'cmap' table may contain multiple subtables, one for each
+ * supported encoding scheme.
+ * 
+ * Character codes that do not correspond to any glyph in the font should be
+ * mapped to glyph index 0. At this location in the font there must be a special
+ * glyph representing a missing character, typically a box. No character code
+ * should be mapped to glyph index -1, which is a special value reserved in
+ * processing to indicate the position of a glyph deleted from the glyph stream.
+ * 
+ * The 'cmap' table begins with an index containing the table version number
+ * followed by the number of encoding tables. The encoding subtables follow.
+ * 
+ * The original definition of the 'cmap' table only allowed for mappings from
+ * traditional character set standards, which used eight, a mixture of eight and
+ * sixteen, or sixteen bits for each character. With the introduction of ISO/IEC
+ * 10646-1 and the use of surrogates in versions of Unicode from 2.0 onwards, it
+ * is possible that fonts may require references to data that uses a mixture of
+ * sixteen and thirty-two or thirty-two bits per character.
+ * 
+ * It was originally suggested that a version number of 0 is used to indicate
+ * that only encoding subtables of types 0 through 6 are present in the 'cmap'
+ * table. If the 'cmap' table contains encoding subtables of types 8.0 or
+ * higher, the version number would then be set to 1. These latter encoding
+ * subtable types have been introduced to provide better support for Unicode
+ * text encoded using surrogates.
+ * 
+ * <table BORDER="1"> <tbody>
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * </tbody>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>Table version number (0).</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>Number of encoding tables, <I>n.</I></td>
+ * </tr>
  * </table>
- *
+ * 
  * TODO incompelte
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -94,9 +104,9 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Create a new object.
-         *
-         * @param form      format
-         * @param rar       input
+         * 
+         * @param form format
+         * @param rar input
          * @throws IOException if an IO-error occurs
          */
         Format(int form, RandomAccessR rar) throws IOException {
@@ -108,11 +118,11 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Add the attrinbutes.
-         * @param writer    The xml writer.
+         * 
+         * @param writer The xml writer.
          * @throws IOException if an IO-error occurs.
          */
-        public void addAttributes(XMLStreamWriter writer)
-                throws IOException {
+        public void addAttributes(XMLStreamWriter writer) throws IOException {
 
             writer.writeAttribute("version", fversion);
             writer.writeAttribute("format", format);
@@ -121,6 +131,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Returns the format.
+         * 
          * @return Returns the format
          */
         public int getFormat() {
@@ -130,6 +141,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Returns the length.
+         * 
          * @return Returns the length
          */
         public int getLength() {
@@ -139,6 +151,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Returns the version.
+         * 
          * @return returns the version
          */
         public int getVersion() {
@@ -148,13 +161,15 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * map char code.
-         * @param charCode  the charcode
+         * 
+         * @param charCode the charcode
          * @return Returns the map char code
          */
         public abstract int mapCharCode(int charCode);
 
         /**
          * Returns the info for this class.
+         * 
          * @return Returns the info for this class
          */
         public String toString() {
@@ -169,20 +184,39 @@ public class TtfTableCMAP extends AbstractXtfTable
     }
 
     /**
-     * Format 0 is suitable for fonts whose character codes
-     * and glyph indices are restricted to a single byte.
-     * <p>It is the standard Apple character to glyph index mapping table.</p>
-     *
-     * <table BORDER="1">
-     *   <tbody>
-     *     <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
-     *   </tbody>
-     *   <tr><td>USHORT</td><td>format</td><td>Format number is set to 0.</td></tr>
-     *   <tr><td>USHORT</td><td>length</td><td>This is the length in bytes
-     *                                         of the subtable.</td></tr>
-     *   <tr><td>USHORT</td><td>version</td><td>Version number (starts at 0).</td></tr>
-     *   <tr><td>BYTE</td><td>glyphIdArray[256]</td><td>An array that maps character
-     *                                                  codes to glyph index values.</td></tr>
+     * Format 0 is suitable for fonts whose character codes and glyph indices
+     * are restricted to a single byte.
+     * <p>
+     * It is the standard Apple character to glyph index mapping table.
+     * </p>
+     * 
+     * <table BORDER="1"> <tbody>
+     * <tr>
+     * <td><b>Type</b></td>
+     * <td><b>Name</b></td>
+     * <td><b>Description</b></td>
+     * </tr>
+     * </tbody>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>format</td>
+     * <td>Format number is set to 0.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>length</td>
+     * <td>This is the length in bytes of the subtable.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>version</td>
+     * <td>Version number (starts at 0).</td>
+     * </tr>
+     * <tr>
+     * <td>BYTE</td>
+     * <td>glyphIdArray[256]</td>
+     * <td>An array that maps character codes to glyph index values.</td>
+     * </tr>
      * </table>
      */
     public class Format0 extends Format {
@@ -199,8 +233,8 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Create a new object.
-         *
-         * @param rar       input
+         * 
+         * @param rar input
          * @throws IOException if an error occured
          */
         Format0(RandomAccessR rar) throws IOException {
@@ -212,6 +246,8 @@ public class TtfTableCMAP extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.font.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
         public int mapCharCode(int charCode) {
@@ -223,6 +259,8 @@ public class TtfTableCMAP extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
@@ -246,33 +284,54 @@ public class TtfTableCMAP extends AbstractXtfTable
     }
 
     /**
-     * Format 10.0 is a bit like format 6, in that it defines a
-     * trimmed array for a tight range of 32-bit character codes.
-     *
-     * <table border="1">
-     *   <tbody>
-     *      <tr><td>Type</td><td>Name</td><td>Description</td></tr>
-     *   </tbody>
-     *   <tr><td>Fixed32</td><td>format</td><td>
-     *          Subtable format; set to 10.0</td></tr>
-     *   <tr><td>UInt32</td><td>length</td><td>
-     *          Byte length of this subtable (including the header)</td></tr>
-     *   <tr><td>UInt32</td><td>language</td><td>
-     *          0 if don't care</td></tr>
-     *   <tr><td>UInt32</td><td>startCharCode</td><td>
-     *          First character code covered</td></tr>
-     *   <tr><td>UInt32</td><td>numChars</td><td>
-     *          Number of character codes covered</td></tr>
-     *   <tr><td>UInt16</td><td>glyphs[]</td><td>
-     *          Array of glyph indices for the character codes covered</td></tr>
+     * Format 10.0 is a bit like format 6, in that it defines a trimmed array
+     * for a tight range of 32-bit character codes.
+     * 
+     * <table border="1"> <tbody>
+     * <tr>
+     * <td>Type</td>
+     * <td>Name</td>
+     * <td>Description</td>
+     * </tr>
+     * </tbody>
+     * <tr>
+     * <td>Fixed32</td>
+     * <td>format</td>
+     * <td> Subtable format; set to 10.0</td>
+     * </tr>
+     * <tr>
+     * <td>UInt32</td>
+     * <td>length</td>
+     * <td> Byte length of this subtable (including the header)</td>
+     * </tr>
+     * <tr>
+     * <td>UInt32</td>
+     * <td>language</td>
+     * <td> 0 if don't care</td>
+     * </tr>
+     * <tr>
+     * <td>UInt32</td>
+     * <td>startCharCode</td>
+     * <td> First character code covered</td>
+     * </tr>
+     * <tr>
+     * <td>UInt32</td>
+     * <td>numChars</td>
+     * <td> Number of character codes covered</td>
+     * </tr>
+     * <tr>
+     * <td>UInt16</td>
+     * <td>glyphs[]</td>
+     * <td> Array of glyph indices for the character codes covered</td>
+     * </tr>
      * </table>
      */
     public class Format10 extends Format {
 
         /**
          * Create a new object.
-         *
-         * @param rar       input
+         * 
+         * @param rar input
          * @throws IOException if an error occured
          */
         Format10(RandomAccessR rar) throws IOException {
@@ -282,6 +341,8 @@ public class TtfTableCMAP extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.font.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
         public int mapCharCode(int charCode) {
@@ -290,6 +351,8 @@ public class TtfTableCMAP extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
@@ -304,29 +367,44 @@ public class TtfTableCMAP extends AbstractXtfTable
     }
 
     /**
-     * Format 12.0 is a bit like format 4, in that it defines
-     * segments for sparse representation in 4-byte character space.
-     *
-     * <table border="1">
-     *   <tbody>
-     *     <tr><td>Type</td><td>Name</td><td>Description</td></tr>
-     *   </tbody>
-     *   <tr><td>Fixed32</td><td>format</td><td>
-     *          Subtable format; set to 12.0</td></tr>
-     *   <tr><td>UInt32</td><td>length</td><td>
-     *          Byte length of this subtable (including the header)</td></tr>
-     *   <tr><td>UInt32</td><td>language</td><td>
-     *          0 if don't care</td></tr>
-     *   <tr><td>UInt32</td><td>nGroups</td><td>
-     *          Number of groupings which follow</td></tr>
+     * Format 12.0 is a bit like format 4, in that it defines segments for
+     * sparse representation in 4-byte character space.
+     * 
+     * <table border="1"> <tbody>
+     * <tr>
+     * <td>Type</td>
+     * <td>Name</td>
+     * <td>Description</td>
+     * </tr>
+     * </tbody>
+     * <tr>
+     * <td>Fixed32</td>
+     * <td>format</td>
+     * <td> Subtable format; set to 12.0</td>
+     * </tr>
+     * <tr>
+     * <td>UInt32</td>
+     * <td>length</td>
+     * <td> Byte length of this subtable (including the header)</td>
+     * </tr>
+     * <tr>
+     * <td>UInt32</td>
+     * <td>language</td>
+     * <td> 0 if don't care</td>
+     * </tr>
+     * <tr>
+     * <td>UInt32</td>
+     * <td>nGroups</td>
+     * <td> Number of groupings which follow</td>
+     * </tr>
      * </table>
      */
     public class Format12 extends Format {
 
         /**
          * Create a new object.
-         *
-         * @param rar       input
+         * 
+         * @param rar input
          * @throws IOException if an error occured
          */
         Format12(RandomAccessR rar) throws IOException {
@@ -336,6 +414,8 @@ public class TtfTableCMAP extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.font.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
         public int mapCharCode(int charCode) {
@@ -344,6 +424,8 @@ public class TtfTableCMAP extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
@@ -361,76 +443,127 @@ public class TtfTableCMAP extends AbstractXtfTable
 
     /**
      * The format 2 mapping subtable type is used for fonts containing Japanese,
-     * Chinese, or Korean characters. The code standards used in this table
-     * are supported on Macintosh systems in Asia.
-     * <p>These fonts contain a mixed 8/16-bit encoding, in which
-     * certain byte values are set aside to signal the first byte
-     * of a 2-byte character. These special values are also legal
-     * as the second byte of a 2-byte character.</p>
-     *
-     * <table BORDER="1">
-     *   <tbody>
-     *     <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
-     *   </tbody>
-     *   <tr><td>USHORT</td><td>format</td><td>Format number is set to 2.</td></tr>
-     *   <tr><td>USHORT</td><td>length</td><td>Length in bytes.</td></tr>
-     *   <tr><td>USHORT</td><td>version</td><td>Version number (starts at 0)</td></tr>
-     *   <tr><td>USHORT</td><td>subHeaderKeys[256]</td><td>Array that maps high bytes
-     *             to subHeaders: value is subHeader index * 8.</td></tr>
-     *   <tr><td>4 words struct</td><td>subHeaders[ ]</td><td>Variable-length
-     *               array of subHeader structures.</td></tr>
-     *   <tr><td>4 words-struct</td><td>subHeaders[ ]</td><td></td></tr>
-     *   <tr><td>USHORT</td><td>glyphIndexArray[ ]</td><td>Variable-length
-     *             array containing subarrays used for
-     *              mapping the low byte of 2-byte characters.</td></tr>
+     * Chinese, or Korean characters. The code standards used in this table are
+     * supported on Macintosh systems in Asia.
+     * <p>
+     * These fonts contain a mixed 8/16-bit encoding, in which certain byte
+     * values are set aside to signal the first byte of a 2-byte character.
+     * These special values are also legal as the second byte of a 2-byte
+     * character.
+     * </p>
+     * 
+     * <table BORDER="1"> <tbody>
+     * <tr>
+     * <td><b>Type</b></td>
+     * <td><b>Name</b></td>
+     * <td><b>Description</b></td>
+     * </tr>
+     * </tbody>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>format</td>
+     * <td>Format number is set to 2.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>length</td>
+     * <td>Length in bytes.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>version</td>
+     * <td>Version number (starts at 0)</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>subHeaderKeys[256]</td>
+     * <td>Array that maps high bytes to subHeaders: value is subHeader index *
+     * 8.</td>
+     * </tr>
+     * <tr>
+     * <td>4 words struct</td>
+     * <td>subHeaders[ ]</td>
+     * <td>Variable-length array of subHeader structures.</td>
+     * </tr>
+     * <tr>
+     * <td>4 words-struct</td>
+     * <td>subHeaders[ ]</td>
+     * <td></td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>glyphIndexArray[ ]</td>
+     * <td>Variable-length array containing subarrays used for mapping the low
+     * byte of 2-byte characters.</td>
+     * </tr>
      * </table>
-     *
-     * <p>A subHeader is structured as follows:</p>
-     *
-     * <table BORDER="1">
-     *   <tbody>
-     *      <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
-     *   </tbody>
-     *   <tr><td>USHORT</td><td>firstCode</td><td>First valid low byte for
-     *          this subHeader.</td></tr>
-     *   <tr><td>USHORT</td><td>entryCount</td><td>Number of valid low
-     *          bytes for this subHeader.</td></tr>
-     *   <tr><td>SHORT</td><td>idDelta</td><td>See text below.</td></tr>
-     *   <tr><td>USHORT</td><td>idRangeOffset</td><td>
-     *      <p>
-     *      The firstCode and entryCount values specify a subrange
-     *      that begins at firstCode and has a length equal to the value of
-     *      entryCount. This subrange stays within the 0&ndash;255 range of the
-     *      byte being mapped. Bytes outside of this subrange are mapped to glyph
-     *      index 0 (missing glyph).The offset of the byte within this subrange
-     *      is then used as index into a corresponding subarray of
-     *      glyphIndexArray. This subarray is also of length entryCount. The
-     *      value of the idRangeOffset is the number of bytes past the actual
-     *      location of the idRangeOffset word where the glyphIndexArray element
-     *      corresponding to firstCode appears.</p>
-     *      <p>
-     *      Finally, if the value obtained from the subarray is not
-     *      0 (which indicates the missing glyph), you should add idDelta to it
-     *      in order to get the glyphIndex. The value idDelta permits the same
-     *      subarray to be used for several different subheaders. The idDelta
-     *      arithmetic is modulo 65536.</p>
-     *    </td></tr>
+     * 
+     * <p>
+     * A subHeader is structured as follows:
+     * </p>
+     * 
+     * <table BORDER="1"> <tbody>
+     * <tr>
+     * <td><b>Type</b></td>
+     * <td><b>Name</b></td>
+     * <td><b>Description</b></td>
+     * </tr>
+     * </tbody>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>firstCode</td>
+     * <td>First valid low byte for this subHeader.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>entryCount</td>
+     * <td>Number of valid low bytes for this subHeader.</td>
+     * </tr>
+     * <tr>
+     * <td>SHORT</td>
+     * <td>idDelta</td>
+     * <td>See text below.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>idRangeOffset</td>
+     * <td>
+     * <p>
+     * The firstCode and entryCount values specify a subrange that begins at
+     * firstCode and has a length equal to the value of entryCount. This
+     * subrange stays within the 0&ndash;255 range of the byte being mapped.
+     * Bytes outside of this subrange are mapped to glyph index 0 (missing
+     * glyph).The offset of the byte within this subrange is then used as index
+     * into a corresponding subarray of glyphIndexArray. This subarray is also
+     * of length entryCount. The value of the idRangeOffset is the number of
+     * bytes past the actual location of the idRangeOffset word where the
+     * glyphIndexArray element corresponding to firstCode appears.
+     * </p>
+     * <p>
+     * Finally, if the value obtained from the subarray is not 0 (which
+     * indicates the missing glyph), you should add idDelta to it in order to
+     * get the glyphIndex. The value idDelta permits the same subarray to be
+     * used for several different subheaders. The idDelta arithmetic is modulo
+     * 65536.
+     * </p>
+     * </td>
+     * </tr>
      * </table>
      */
     public class Format2 extends Format {
 
-        //    private short[] subHeaderKeys = new short[256];
+        // private short[] subHeaderKeys = new short[256];
         //
-        //    private int[] subHeaders1;
+        // private int[] subHeaders1;
         //
-        //    private int[] subHeaders2;
+        // private int[] subHeaders2;
         //
-        //    private short[] glyphIndexArray;
+        // private short[] glyphIndexArray;
 
         /**
          * Create a new object.
-         *
-         * @param rar       input
+         * 
+         * @param rar input
          * @throws IOException if an error occured
          */
         Format2(RandomAccessR rar) throws IOException {
@@ -439,6 +572,8 @@ public class TtfTableCMAP extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.font.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
         public int mapCharCode(int charCode) {
@@ -447,6 +582,8 @@ public class TtfTableCMAP extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
@@ -461,45 +598,100 @@ public class TtfTableCMAP extends AbstractXtfTable
     }
 
     /**
-     * Format 4 is a two-byte encoding format.
-     * It should be used when the character codes for a font
-     * fall into several contiguous ranges, possibly with
-     * holes in some or all of the ranges.
-     * That is, some of the codes in a range may not be
-     * associated with glyphs in the font.
-     * Two-byte fonts that are densely mapped should use Format 6.
-     *
-     * <p>This is the Microsoft standard character to glyph index mapping table.</p>
-     * <p>1.  A four-word header gives parameters for an optimized
-     *        search of the segment list;</p>
-     * <p>2.  Four parallel arrays describe the segments (one
-     *        segment for each contiguous range of codes);</p>
-     * <p>3.  A variable-length array of glyph IDs (unsigned
-     *        words).</p>
-     *
-     * <table BORDER="1">
-     *   <tbody>
-     *     <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
-     *   </tbody>
-     *   <tr><td>USHORT</td><td>format</td><td>Format number is set to 4.</td></tr>
-     *   <tr><td>USHORT</td><td>length</td><td>Length in bytes.</td></tr>
-     *   <tr><td>USHORT</td><td>version</td><td>Version number (starts at 0).</td></tr>
-     *   <tr><td>USHORT</td><td>segCountX2</td><td>2 x segCount.</td></tr>
-     *   <tr><td>USHORT</td><td>searchRange</td>
-     *               <td>2 x 2**floor(log 2 (segCount)))</td></tr>
-     *   <tr><td>USHORT</td><td>entrySelector</td><td>2 (searchRange/2)</td></tr>
-     *   <tr><td>USHORT</td><td>rangeShift</td><td>2 x segCount - searchRange</td></tr>
-     *   <tr><td>USHORT</td><td>endCount[segCount]</td><td>End characterCode
-     *                 for each segment,<BR>last =0xFFFF.</td></tr>
-     *   <tr><td>USHORT</td><td>reservedPad</td><td>Set to 0.</td></tr>
-     *   <tr><td>USHORT</td><td>startCount[segCount]</td><td>Start character code
-     *                for each segment.</td></tr>
-     *   <tr><td>USHORT</td><td>idDelta[segCount]</td><td>Delta for all
-     *             character codes in segment.</td></tr>
-     *   <tr><td>USHORT</td><td>idRangeOffset[segCount]</td><td>
-     *              Offsets into glyphIdArray or 0</td></tr>
-     *   <tr><td>USHORT</td><td>glyphIdArray[ ]</td><td>
-     *                 Glyph index array (arbitrary length)</td></tr>
+     * Format 4 is a two-byte encoding format. It should be used when the
+     * character codes for a font fall into several contiguous ranges, possibly
+     * with holes in some or all of the ranges. That is, some of the codes in a
+     * range may not be associated with glyphs in the font. Two-byte fonts that
+     * are densely mapped should use Format 6.
+     * 
+     * <p>
+     * This is the Microsoft standard character to glyph index mapping table.
+     * </p>
+     * <p>
+     * 1. A four-word header gives parameters for an optimized search of the
+     * segment list;
+     * </p>
+     * <p>
+     * 2. Four parallel arrays describe the segments (one segment for each
+     * contiguous range of codes);
+     * </p>
+     * <p>
+     * 3. A variable-length array of glyph IDs (unsigned words).
+     * </p>
+     * 
+     * <table BORDER="1"> <tbody>
+     * <tr>
+     * <td><b>Type</b></td>
+     * <td><b>Name</b></td>
+     * <td><b>Description</b></td>
+     * </tr>
+     * </tbody>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>format</td>
+     * <td>Format number is set to 4.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>length</td>
+     * <td>Length in bytes.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>version</td>
+     * <td>Version number (starts at 0).</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>segCountX2</td>
+     * <td>2 x segCount.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>searchRange</td>
+     * <td>2 x 2**floor(log 2 (segCount)))</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>entrySelector</td>
+     * <td>2 (searchRange/2)</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>rangeShift</td>
+     * <td>2 x segCount - searchRange</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>endCount[segCount]</td>
+     * <td>End characterCode for each segment,<BR>
+     * last =0xFFFF.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>reservedPad</td>
+     * <td>Set to 0.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>startCount[segCount]</td>
+     * <td>Start character code for each segment.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>idDelta[segCount]</td>
+     * <td>Delta for all character codes in segment.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>idRangeOffset[segCount]</td>
+     * <td> Offsets into glyphIdArray or 0</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>glyphIdArray[ ]</td>
+     * <td> Glyph index array (arbitrary length)</td>
+     * </tr>
      * </table>
      */
     public class Format4 extends Format {
@@ -561,8 +753,8 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Create a new object.
-         *
-         * @param rar       input
+         * 
+         * @param rar input
          * @throws IOException if an error occured
          */
         Format4(RandomAccessR rar) throws IOException {
@@ -601,6 +793,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Returns the endCode.
+         * 
          * @return Returns the endCode.
          */
         public int[] getEndCode() {
@@ -610,6 +803,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Returns the entrySelector.
+         * 
          * @return Returns the entrySelector.
          */
         public int getEntrySelector() {
@@ -619,6 +813,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Returns the glyphIdArray.
+         * 
          * @return Returns the glyphIdArray.
          */
         public int[] getGlyphIdArray() {
@@ -628,6 +823,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Returns the idDelta.
+         * 
          * @return Returns the idDelta.
          */
         public int[] getIdDelta() {
@@ -637,6 +833,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Returns the idRangeOffset.
+         * 
          * @return Returns the idRangeOffset.
          */
         public int[] getIdRangeOffset() {
@@ -646,6 +843,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Returns the language.
+         * 
          * @return Returns the language.
          */
         public int getLanguage() {
@@ -655,6 +853,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Returns the rangeShift.
+         * 
          * @return Returns the rangeShift.
          */
         public int getRangeShift() {
@@ -664,6 +863,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Returns the searchRange.
+         * 
          * @return Returns the searchRange.
          */
         public int getSearchRange() {
@@ -673,6 +873,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Returns the segCount.
+         * 
          * @return Returns the segCount.
          */
         public int getSegCount() {
@@ -682,6 +883,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Returns the segCountX2.
+         * 
          * @return Returns the segCountX2.
          */
         public int getSegCountX2() {
@@ -691,6 +893,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Returns the startCode.
+         * 
          * @return Returns the startCode.
          */
         public int[] getStartCode() {
@@ -699,6 +902,8 @@ public class TtfTableCMAP extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.font.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
         public int mapCharCode(int charCode) {
@@ -724,8 +929,9 @@ public class TtfTableCMAP extends AbstractXtfTable
             return 0;
         }
 
-
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
@@ -771,48 +977,69 @@ public class TtfTableCMAP extends AbstractXtfTable
     // -------------------------------------------------------
 
     /**
-     * Format 6 is used to map 16-bit, 2-byte, characters to glyph indexes.
-     * It is sometimes called the trimmed table mapping.
-     * It should be used when character codes for a font fall
-     * into a single contiguous range.
-     * This results in what is termed adense mapping.
-     * Two-byte fonts that are not densely mapped
-     * (due to their multiple contiguous ranges) should use Format 4.
-     *
-     * <table BORDER="1">
-     *   <tbody>
-     *     <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
-     *   </tbody>
-     *   <tr><td>USHORT</td><td>format</td><td>Format number is set to 6.</td></tr>
-     *   <tr><td>USHORT</td><td>length</td><td>Length in bytes.</td></tr>
-     *   <tr><td>USHORT</td><td>version</td><td>Version number (starts at 0)</td></tr>
-     *   <tr><td>USHORT</td><td>firstCode</td><td>
-     *           First character code of subrange.</td></tr>
-     *   <tr><td>USHORT</td><td>entryCount</td><td>
-     *           Number of character codes in subrange.</td></tr>
-     *   <tr><td>USHORT</td><td>glyphIdArray [entryCount]</td><td>
-     *            Array of glyph index values for character codes in
-     *            the range.</td><tr>
-     * </table>
+     * Format 6 is used to map 16-bit, 2-byte, characters to glyph indexes. It
+     * is sometimes called the trimmed table mapping. It should be used when
+     * character codes for a font fall into a single contiguous range. This
+     * results in what is termed adense mapping. Two-byte fonts that are not
+     * densely mapped (due to their multiple contiguous ranges) should use
+     * Format 4.
+     * 
+     * <table BORDER="1"> <tbody>
+     * <tr>
+     * <td><b>Type</b></td>
+     * <td><b>Name</b></td>
+     * <td><b>Description</b></td>
+     * </tr>
+     * </tbody>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>format</td>
+     * <td>Format number is set to 6.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>length</td>
+     * <td>Length in bytes.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>version</td>
+     * <td>Version number (starts at 0)</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>firstCode</td>
+     * <td> First character code of subrange.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>entryCount</td>
+     * <td> Number of character codes in subrange.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>glyphIdArray [entryCount]</td>
+     * <td> Array of glyph index values for character codes in the range.</td>
+     * <tr> </table>
      */
     public class Format6 extends Format {
 
-        //    private short format;
+        // private short format;
         //
-        //    private short length;
+        // private short length;
         //
-        //    private short version;
+        // private short version;
         //
-        //    private short firstCode;
+        // private short firstCode;
         //
-        //    private short entryCount;
+        // private short entryCount;
         //
-        //    private short[] glyphIdArray;
+        // private short[] glyphIdArray;
 
         /**
          * Create a new object.
-         *
-         * @param rar       input
+         * 
+         * @param rar input
          * @throws IOException if an error occured
          */
         Format6(RandomAccessR rar) throws IOException {
@@ -822,6 +1049,8 @@ public class TtfTableCMAP extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.font.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
         public int mapCharCode(int charCode) {
@@ -830,6 +1059,8 @@ public class TtfTableCMAP extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
@@ -844,46 +1075,55 @@ public class TtfTableCMAP extends AbstractXtfTable
     }
 
     /**
-     * Format 8.0 is a bit like format 2, in that it provides
-     * for mixed-length character codes. If a font contains
-     * Unicode surrogates, it's likely that it will also include
-     * other, regular 16-bit Unicodes as well.
-     * This requires a format to map a mixture of 16-bit
-     * and 32-bit character codes, just as format 2 allows
-     * a mixture of 8-bit and 16-bit codes.
-     * A simplifying assumption is made: namely, that there are
-     * no 32-bit character codes which share the same first
-     * 16 bits as any 16-bit character code.
-     * This means that the determination as to whether
-     * a particular 16-bit value is a standalone character
-     * code or the start of a 32-bit character code can be
-     * made by looking at the 16-bit value directly,
-     * with no further information required.
-     *
-     * <table border="1">
-     *   <tbody>
-     *      <tr><td>Type</td><td>Name</td><td>Description</td></tr>
-     *   </tbody>
-     *   <tr><td>Fixed32</td><td>format</td><td>
-     *          Subtable format; set to 8.0</td></tr>
-     *   <tr><td>UInt32</td><td>length</td><td>
-     *          Byte length of this subtable (including the header)</td></tr>
-     *   <tr><td>UInt32</td><td>language</td><td>
-     *          Language code for this encoding subtable,
-     *          or zero if language-independent</td></tr>
-     *   <tr><td>UInt8</td><td>is32[65536]</td><td>
-     *          Tightly packed array of bits (8K bytes total)
-     *          indicating whether the particular 16-bit (index)
-     *          value is the start of a 32-bit character code</td><tr>
-     * </table>
-     *
+     * Format 8.0 is a bit like format 2, in that it provides for mixed-length
+     * character codes. If a font contains Unicode surrogates, it's likely that
+     * it will also include other, regular 16-bit Unicodes as well. This
+     * requires a format to map a mixture of 16-bit and 32-bit character codes,
+     * just as format 2 allows a mixture of 8-bit and 16-bit codes. A
+     * simplifying assumption is made: namely, that there are no 32-bit
+     * character codes which share the same first 16 bits as any 16-bit
+     * character code. This means that the determination as to whether a
+     * particular 16-bit value is a standalone character code or the start of a
+     * 32-bit character code can be made by looking at the 16-bit value
+     * directly, with no further information required.
+     * 
+     * <table border="1"> <tbody>
+     * <tr>
+     * <td>Type</td>
+     * <td>Name</td>
+     * <td>Description</td>
+     * </tr>
+     * </tbody>
+     * <tr>
+     * <td>Fixed32</td>
+     * <td>format</td>
+     * <td> Subtable format; set to 8.0</td>
+     * </tr>
+     * <tr>
+     * <td>UInt32</td>
+     * <td>length</td>
+     * <td> Byte length of this subtable (including the header)</td>
+     * </tr>
+     * <tr>
+     * <td>UInt32</td>
+     * <td>language</td>
+     * <td> Language code for this encoding subtable, or zero if
+     * language-independent</td>
+     * </tr>
+     * <tr>
+     * <td>UInt8</td>
+     * <td>is32[65536]</td>
+     * <td> Tightly packed array of bits (8K bytes total) indicating whether the
+     * particular 16-bit (index) value is the start of a 32-bit character code</td>
+     * <tr> </table>
+     * 
      */
     public class Format8 extends Format {
 
         /**
          * Create a new object.
-         *
-         * @param rar       input
+         * 
+         * @param rar input
          * @throws IOException if an error occured
          */
         Format8(RandomAccessR rar) throws IOException {
@@ -893,6 +1133,8 @@ public class TtfTableCMAP extends AbstractXtfTable
         }
 
         /**
+     * {@inheritDoc}
+     *
          * @see org.extex.font.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
         public int mapCharCode(int charCode) {
@@ -901,6 +1143,8 @@ public class TtfTableCMAP extends AbstractXtfTable
         }
 
         /**
+     * {@inheritDoc}
+     *
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
@@ -916,15 +1160,26 @@ public class TtfTableCMAP extends AbstractXtfTable
 
     /**
      * cmap index entry.
-     *
-     * <table BORDER="1">
-     *   <tbody>
-     *     <tr><td><b>Type</b></td><td><b>Description</b></td></tr>
-     *   </tbody>
-     *   <tr><td>USHORT</td><td>Platform ID.</td></tr>
-     *   <tr><td>USHORT</td><td>Platform-specific encoding ID.</td></tr>
-     *   <tr><td>ULONG</td><td>Byte offset from beginning of table to
-     *                         the subtable for this encoding.</td></tr>
+     * 
+     * <table BORDER="1"> <tbody>
+     * <tr>
+     * <td><b>Type</b></td>
+     * <td><b>Description</b></td>
+     * </tr>
+     * </tbody>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>Platform ID.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>Platform-specific encoding ID.</td>
+     * </tr>
+     * <tr>
+     * <td>ULONG</td>
+     * <td>Byte offset from beginning of table to the subtable for this
+     * encoding.</td>
+     * </tr>
      * </table>
      */
     public class IndexEntry implements XMLWriterConvertible {
@@ -981,8 +1236,8 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Create a new object.
-         *
-         * @param rar   the RandomAccessInput
+         * 
+         * @param rar the RandomAccessInput
          * @throws IOException if an error occured
          */
         IndexEntry(RandomAccessR rar) throws IOException {
@@ -994,6 +1249,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Returns the encoding id.
+         * 
          * @return Returns the encoding id
          */
         public int getEncodingId() {
@@ -1003,6 +1259,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Returns the encoding name.
+         * 
          * @return Returns the encoding name.
          */
         public String getEncodingName() {
@@ -1010,21 +1267,21 @@ public class TtfTableCMAP extends AbstractXtfTable
             if (platformId == PLATFORM_MICROSOFT) {
                 // Windows specific encodings
                 switch (encodingId) {
-                    case ENC_SYMBOL :
+                    case ENC_SYMBOL:
                         return " (Symbol)";
-                    case ENC_UNICODE :
+                    case ENC_UNICODE:
                         return " (Unicode)";
-                    case ENC_SHIFTJIS :
+                    case ENC_SHIFTJIS:
                         return " (ShiftJIS)";
-                    case ENC_BIG5 :
+                    case ENC_BIG5:
                         return " (Big5)";
-                    case ENC_PRC :
+                    case ENC_PRC:
                         return " (PRC)";
-                    case ENC_WANSUNG :
+                    case ENC_WANSUNG:
                         return " (Wansung)";
-                    case ENC_JOHAB :
+                    case ENC_JOHAB:
                         return " (Johab)";
-                    default :
+                    default:
                         return "? " + encodingId + " ?";
                 }
             }
@@ -1033,6 +1290,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Returns the offset.
+         * 
          * @return returns the offset
          */
         public int getOffset() {
@@ -1042,6 +1300,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Returns the platform id.
+         * 
          * @return Returns the platform id
          */
         public int getPlatformId() {
@@ -1051,6 +1310,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Returns the platform name.
+         * 
          * @return Returns the platform name.
          */
         public String getPlatformName() {
@@ -1060,6 +1320,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         /**
          * Returns the info for this class.
+         * 
          * @return Returns the info for this class
          */
         public String toString() {
@@ -1068,46 +1329,46 @@ public class TtfTableCMAP extends AbstractXtfTable
             String encoding = "";
 
             switch (platformId) {
-                case PLATFORM_APPLE_UNICODE :
+                case PLATFORM_APPLE_UNICODE:
                     platform = " (Apple Unicode)";
                     break;
-                case PLATFORM_MACINTOSH :
+                case PLATFORM_MACINTOSH:
                     platform = " (Macintosh)";
                     break;
-                case PLATFORM_ISO :
+                case PLATFORM_ISO:
                     platform = " (Iso)";
                     break;
-                case PLATFORM_MICROSOFT :
+                case PLATFORM_MICROSOFT:
                     platform = " (Windows)";
                     break;
-                default :
+                default:
                     platform = "???";
             }
             if (platformId == PLATFORM_MICROSOFT) {
                 // Windows specific encodings
                 switch (encodingId) {
-                    case ENC_SYMBOL :
+                    case ENC_SYMBOL:
                         encoding = " (Symbol)";
                         break;
-                    case ENC_UNICODE :
+                    case ENC_UNICODE:
                         encoding = " (Unicode)";
                         break;
-                    case ENC_SHIFTJIS :
+                    case ENC_SHIFTJIS:
                         encoding = " (ShiftJIS)";
                         break;
-                    case ENC_BIG5 :
+                    case ENC_BIG5:
                         encoding = " (Big5)";
                         break;
-                    case ENC_PRC :
+                    case ENC_PRC:
                         encoding = " (PRC)";
                         break;
-                    case ENC_WANSUNG :
+                    case ENC_WANSUNG:
                         encoding = " (Wansung)";
                         break;
-                    case ENC_JOHAB :
+                    case ENC_JOHAB:
                         encoding = " (Johab)";
                         break;
-                    default :
+                    default:
                         encoding = "";
                 }
             }
@@ -1123,6 +1384,8 @@ public class TtfTableCMAP extends AbstractXtfTable
         }
 
         /**
+     * {@inheritDoc}
+     *
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
@@ -1136,19 +1399,19 @@ public class TtfTableCMAP extends AbstractXtfTable
             String encoding = "";
 
             switch (platformId) {
-                case PLATFORM_APPLE_UNICODE :
+                case PLATFORM_APPLE_UNICODE:
                     platform = " (Apple Unicode)";
                     break;
-                case PLATFORM_MACINTOSH :
+                case PLATFORM_MACINTOSH:
                     platform = " (Macintosh)";
                     break;
-                case PLATFORM_ISO :
+                case PLATFORM_ISO:
                     platform = " (Iso)";
                     break;
-                case PLATFORM_MICROSOFT :
+                case PLATFORM_MICROSOFT:
                     platform = " (Windows)";
                     break;
-                default :
+                default:
                     platform = "???";
             }
             writer.writeAttribute("platform", platform);
@@ -1156,28 +1419,28 @@ public class TtfTableCMAP extends AbstractXtfTable
             if (platformId == PLATFORM_MICROSOFT) {
                 // Windows specific encodings
                 switch (encodingId) {
-                    case ENC_SYMBOL :
+                    case ENC_SYMBOL:
                         encoding = " (Symbol)";
                         break;
-                    case ENC_UNICODE :
+                    case ENC_UNICODE:
                         encoding = " (Unicode)";
                         break;
-                    case ENC_SHIFTJIS :
+                    case ENC_SHIFTJIS:
                         encoding = " (ShiftJIS)";
                         break;
-                    case ENC_BIG5 :
+                    case ENC_BIG5:
                         encoding = " (Big5)";
                         break;
-                    case ENC_PRC :
+                    case ENC_PRC:
                         encoding = " (PRC)";
                         break;
-                    case ENC_WANSUNG :
+                    case ENC_WANSUNG:
                         encoding = " (Wansung)";
                         break;
-                    case ENC_JOHAB :
+                    case ENC_JOHAB:
                         encoding = " (Johab)";
                         break;
-                    default :
+                    default:
                         encoding = "";
                 }
             }
@@ -1314,7 +1577,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
     /**
      * Macintosh Encoding IDs: ENCODING_ROMAN.
-
+     * 
      */
     public static final short ENCODING_ROMAN = 0;
 
@@ -1840,11 +2103,11 @@ public class TtfTableCMAP extends AbstractXtfTable
 
     /**
      * Create a new object.
-     *
-     * @param tablemap  the tablemap
-     * @param de        directory entry
-     * @param rar       the RandomAccessInput
-     * @throws IOException if an error occured
+     * 
+     * @param tablemap the table map
+     * @param de directory entry
+     * @param rar the RandomAccessInput
+     * @throws IOException if an error occurred
      */
     TtfTableCMAP(XtfTableMap tablemap, XtfTableDirectory.Entry de,
             RandomAccessR rar) throws IOException {
@@ -1869,27 +2132,27 @@ public class TtfTableCMAP extends AbstractXtfTable
             int format = rar.readUnsignedShort();
             Format cmapformat = null;
             switch (format) {
-                case FORMAT0 :
+                case FORMAT0:
                     cmapformat = new Format0(rar);
                     break;
-                case FORMAT2 :
+                case FORMAT2:
                     cmapformat = new Format2(rar);
                     break;
-                case FORMAT4 :
+                case FORMAT4:
                     cmapformat = new Format4(rar);
                     break;
-                case FORMAT6 :
+                case FORMAT6:
                     cmapformat = new Format6(rar);
                     break;
-                case FORMAT8 :
+                case FORMAT8:
                     break;
-                case FORMAT10 :
+                case FORMAT10:
                     break;
-                case FORMAT12 :
+                case FORMAT12:
                     break;
-                default :
+                default:
                     // wrong format - ignore
-                    cmapformat = null;
+                    // null;
             }
 
             formats[i] = cmapformat;
@@ -1904,6 +2167,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
     /**
      * Returns the entries.
+     * 
      * @return Returns the entries.
      */
     public IndexEntry[] getEntries() {
@@ -1913,8 +2177,9 @@ public class TtfTableCMAP extends AbstractXtfTable
 
     /**
      * Returns the cmap format.
-     * @param platformId    platform id
-     * @param encodingId    encoding id
+     * 
+     * @param platformId platform id
+     * @param encodingId encoding id
      * @return Returns the cmap format
      */
     public Format getFormat(short platformId, short encodingId) {
@@ -1931,6 +2196,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
     /**
      * Returns the formats.
+     * 
      * @return Returns the formats.
      */
     public Format[] getFormats() {
@@ -1940,6 +2206,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
     /**
      * Returns the numTables.
+     * 
      * @return Returns the numTables.
      */
     public int getNumTables() {
@@ -1948,6 +2215,8 @@ public class TtfTableCMAP extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -1957,6 +2226,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
     /**
      * Get the table type, as a table directory value.
+     * 
      * @return Returns the table type
      */
     public int getType() {
@@ -1966,6 +2236,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
     /**
      * Returns the version.
+     * 
      * @return Returns the version.
      */
     public int getVersion() {
@@ -1974,6 +2245,8 @@ public class TtfTableCMAP extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
@@ -1981,7 +2254,7 @@ public class TtfTableCMAP extends AbstractXtfTable
 
         writeStartElement(writer);
         writer.writeAttribute("version", String.valueOf(XtfReader
-                .convertVersion(version)));
+            .convertVersion(version)));
         writer.writeAttribute("numberoftables", String.valueOf(numTables));
 
         for (int i = 0; i < entries.length; i++) {
@@ -1998,4 +2271,5 @@ public class TtfTableCMAP extends AbstractXtfTable
         }
         writer.writeEndElement();
     }
+
 }

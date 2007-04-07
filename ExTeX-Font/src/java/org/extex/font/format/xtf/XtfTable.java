@@ -55,6 +55,8 @@ public interface XtfTable {
 
     /**
      * Init the table.
+     *
+     * @throws IOException TODO mgn
      */
     void init() throws IOException;
 

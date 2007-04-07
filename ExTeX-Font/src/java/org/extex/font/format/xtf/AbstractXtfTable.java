@@ -23,10 +23,9 @@ import java.io.IOException;
 
 import org.extex.util.xml.XMLStreamWriter;
 
-
 /**
  * Abstract class for all TTF/OTF tables.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -40,8 +39,8 @@ public abstract class AbstractXtfTable implements XtfTable {
 
     /**
      * Create a new object.
-     *
-     * @param tm    the table map
+     * 
+     * @param tm the table map
      */
     public AbstractXtfTable(XtfTableMap tm) {
 
@@ -49,6 +48,8 @@ public abstract class AbstractXtfTable implements XtfTable {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.XtfTable#getTableMap()
      */
     public XtfTableMap getTableMap() {
@@ -57,6 +58,8 @@ public abstract class AbstractXtfTable implements XtfTable {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.XtfTable#getInitOrder()
      */
     public int getInitOrder() {
@@ -65,6 +68,8 @@ public abstract class AbstractXtfTable implements XtfTable {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.XtfTable#init()
      */
     public void init() throws IOException {
@@ -74,11 +79,11 @@ public abstract class AbstractXtfTable implements XtfTable {
 
     /**
      * Write the tag an the id attribute for the table element.
-     * @param writer    The xml stream writer.
+     * 
+     * @param writer The xml stream writer.
      * @throws IOException if an IO-error occurred.
      */
-    protected void writeStartElement(XMLStreamWriter writer)
-            throws IOException {
+    protected void writeStartElement(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getShortcut());
         writer.writeAttribute("id", XtfReader.convertIntToHexString(getType()));

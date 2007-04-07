@@ -25,63 +25,92 @@ import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
-
 /**
  * The table 'hdmx' (Horizontal Device Metrics).
- *
+ * 
  * <p>
- * The hdmx table relates to OpenType fonts with TrueType outlines.
- * The Horizontal Device Metrics table stores integer advance widths
- * scaled to particular pixel sizes. This allows the font manager
- * to build integer width tables without calling the scaler for each glyph.
- * Typically this table contains only selected screen sizes.
- * This table is sorted by pixel size. The checksum for this table
- * applies to both subtables listed.
+ * The hdmx table relates to OpenType fonts with TrueType outlines. The
+ * Horizontal Device Metrics table stores integer advance widths scaled to
+ * particular pixel sizes. This allows the font manager to build integer width
+ * tables without calling the scaler for each glyph. Typically this table
+ * contains only selected screen sizes. This table is sorted by pixel size. The
+ * checksum for this table applies to both subtables listed.
  * </p>
  * <p>
- * Note that for non-square pixel grids, the character width (in pixels) will
- * be used to determine which device record to use. For example, a 12 point
- * character on a device with a resolution of 72x96 would be 12 pixels high
- * and 16 pixels wide. The hdmx device record for 16 pixel characters would
- * be used.
+ * Note that for non-square pixel grids, the character width (in pixels) will be
+ * used to determine which device record to use. For example, a 12 point
+ * character on a device with a resolution of 72x96 would be 12 pixels high and
+ * 16 pixels wide. The hdmx device record for 16 pixel characters would be used.
  * </p>
  * <p>
- * If bit 4 of the flag field in the 'head' table is not set, then it is
- * assumed that the font scales linearly; in this case an 'hdmx' table
- * is not necessary and should not be built. If bit 4 of the flag field
- * is set, then one or more glyphs in the font are assumed to scale nonlinearly.
- * In this case, performance can be improved by including the 'hdmx' table
- * with one or more important DeviceRecord's for important sizes.
+ * If bit 4 of the flag field in the 'head' table is not set, then it is assumed
+ * that the font scales linearly; in this case an 'hdmx' table is not necessary
+ * and should not be built. If bit 4 of the flag field is set, then one or more
+ * glyphs in the font are assumed to scale nonlinearly. In this case,
+ * performance can be improved by including the 'hdmx' table with one or more
+ * important DeviceRecord's for important sizes.
  * </p>
- *
- * <p>hdmx Header</p>
- * <table border="1">
- *   <thead>
- *     <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
- *   </thead>
- *   <tr><td>USHORT</td><td>version</td><td>
- *       <td>Table version number (0)</td></tr>
- *   <tr><td>SHORT</td><td>numRecords</td>
- *       <td>Number of device records.</td></tr>
- *   <tr><td>LONG</td><td>sizeDeviceRecord</td>
- *        <td>Size of a device record, long aligned.</td></tr>
- *   <tr><td>DeviceRecord</td><td>records[numRecords]</td>
- *        <td>Array of device records.</td></tr>
+ * 
+ * <p>
+ * hdmx Header
+ * </p>
+ * <table border="1"> <thead>
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * </thead>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>version</td>
+ * <td>
+ * <td>Table version number (0)</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>numRecords</td>
+ * <td>Number of device records.</td>
+ * </tr>
+ * <tr>
+ * <td>LONG</td>
+ * <td>sizeDeviceRecord</td>
+ * <td>Size of a device record, long aligned.</td>
+ * </tr>
+ * <tr>
+ * <td>DeviceRecord</td>
+ * <td>records[numRecords]</td>
+ * <td>Array of device records.</td>
+ * </tr>
  * </table>
- *
- * <p>Device Record</p>
- * <table border="1">
- *   <thead>
- *     <tr><<td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
- *   </thead>
- *   <tr><td>BYTE</td><td>pixelSize</td>
- *       <td>Pixel size for following widths (as ppem).</td></tr>
- *   <tr><td>BYTE</td><td>maxWidth</td>
- *       <td>Maximum width.</td></tr>
- *   <tr><td>BYTE</td><td>Widths[numGlyphs]</td>
- *       <td>Array of widths (numGlyphs is from the 'maxp' table).</td></tr>
+ * 
+ * <p>
+ * Device Record
+ * </p>
+ * <table border="1"> <thead>
+ * <tr><
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * </thead>
+ * <tr>
+ * <td>BYTE</td>
+ * <td>pixelSize</td>
+ * <td>Pixel size for following widths (as ppem).</td>
+ * </tr>
+ * <tr>
+ * <td>BYTE</td>
+ * <td>maxWidth</td>
+ * <td>Maximum width.</td>
+ * </tr>
+ * <tr>
+ * <td>BYTE</td>
+ * <td>Widths[numGlyphs]</td>
+ * <td>Array of widths (numGlyphs is from the 'maxp' table).</td>
+ * </tr>
  * </table>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -92,10 +121,10 @@ public class TtfTableHDMX extends AbstractXtfTable
 
     /**
      * Create a new object
-     *
-     * @param tablemap  the tablemap
-     * @param de        entry
-     * @param rar       input
+     * 
+     * @param tablemap the tablemap
+     * @param de entry
+     * @param rar input
      * @throws IOException if an IO-error occurs
      */
     TtfTableHDMX(XtfTableMap tablemap, XtfTableDirectory.Entry de,
@@ -108,6 +137,8 @@ public class TtfTableHDMX extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.AbstractXtfTable#init()
      */
     public void init() throws IOException {
@@ -119,14 +150,15 @@ public class TtfTableHDMX extends AbstractXtfTable
             numRecords = rarinput.readUnsignedShort();
             sizeDeviceRecord = rarinput.readInt();
 
-            TtfTableMAXP maxp = (TtfTableMAXP) getTableMap()
-                    .get(XtfReader.MAXP);
+            TtfTableMAXP maxp =
+                    (TtfTableMAXP) getTableMap().get(XtfReader.MAXP);
             if (maxp != null) {
                 int numberOfGlyphs = maxp.getNumGlyphs();
 
                 deviceRecord = new DeviceRecord[numRecords];
                 for (int i = 0; i < numRecords; i++) {
-                    deviceRecord[i] = new DeviceRecord(rarinput, numberOfGlyphs);
+                    deviceRecord[i] =
+                            new DeviceRecord(rarinput, numberOfGlyphs);
                 }
             }
             rarinput = null;
@@ -150,8 +182,8 @@ public class TtfTableHDMX extends AbstractXtfTable
 
         /**
          * Create a new object.
-         *
-         * @param rar            the input
+         * 
+         * @param rar the input
          * @param numberOfGlyphs the number of glyphs
          * @throws IOException if an IO-error occurred.
          */
@@ -181,6 +213,7 @@ public class TtfTableHDMX extends AbstractXtfTable
 
         /**
          * Returns the maxWidth.
+         * 
          * @return Returns the maxWidth.
          */
         public int getMaxWidth() {
@@ -190,6 +223,7 @@ public class TtfTableHDMX extends AbstractXtfTable
 
         /**
          * Returns the pixelSize.
+         * 
          * @return Returns the pixelSize.
          */
         public int getPixelSize() {
@@ -199,6 +233,7 @@ public class TtfTableHDMX extends AbstractXtfTable
 
         /**
          * Returns the widths.
+         * 
          * @return Returns the widths.
          */
         public byte[] getWidths() {
@@ -207,6 +242,8 @@ public class TtfTableHDMX extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
@@ -242,6 +279,7 @@ public class TtfTableHDMX extends AbstractXtfTable
 
     /**
      * Returns the deviceRecord.
+     * 
      * @return Returns the deviceRecord.
      */
     public DeviceRecord[] getDeviceRecord() {
@@ -251,6 +289,7 @@ public class TtfTableHDMX extends AbstractXtfTable
 
     /**
      * Returns the numRecords.
+     * 
      * @return Returns the numRecords.
      */
     public int getNumRecords() {
@@ -260,6 +299,7 @@ public class TtfTableHDMX extends AbstractXtfTable
 
     /**
      * Returns the sizeDeviceRecord.
+     * 
      * @return Returns the sizeDeviceRecord.
      */
     public int getSizeDeviceRecord() {
@@ -269,6 +309,7 @@ public class TtfTableHDMX extends AbstractXtfTable
 
     /**
      * Returns the version.
+     * 
      * @return Returns the version.
      */
     public int getVersion() {
@@ -278,6 +319,7 @@ public class TtfTableHDMX extends AbstractXtfTable
 
     /**
      * Get the table type, as a table directory value.
+     * 
      * @return Returns the table type
      */
     public int getType() {
@@ -286,6 +328,8 @@ public class TtfTableHDMX extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -294,6 +338,8 @@ public class TtfTableHDMX extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
@@ -303,10 +349,11 @@ public class TtfTableHDMX extends AbstractXtfTable
         writer.writeAttribute("version", String.valueOf(version));
         writer.writeAttribute("numrecords", String.valueOf(numRecords));
         writer.writeAttribute("sizedevicerecord", String
-                .valueOf(sizeDeviceRecord));
+            .valueOf(sizeDeviceRecord));
         for (int i = 0; i < deviceRecord.length; i++) {
             deviceRecord[i].writeXML(writer);
         }
         writer.writeEndElement();
     }
+
 }

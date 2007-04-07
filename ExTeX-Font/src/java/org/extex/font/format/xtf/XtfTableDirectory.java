@@ -27,23 +27,43 @@ import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
-
 /**
  * Class for a TTF/OTF TableDirectory.
- *
- * <table border="1">
- *   <thead>
- *     <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
- *   </thead>
- *   <tr><td>Fixed</td><td>sfnt version</td><td>0x00010000 for version 1.0.</td></tr>
- *   <tr><td>USHORT</td><td>numTables</td><td>Number of tables.</td></tr>
- *   <tr><td>USHORT</td><td>searchRange</td><td>
- *                  (Maximum power of 2 &#61603; numTables) x 16.</td></tr>
- *   <tr><td>USHORT</td><td>entrySelector</td><td>
- *                  2 (maximum power of 2 &#61603; numTables).</td></tr>
- *   <tr><td>USHORT</td><td>rangeShift</td><td>NumTables x 16-searchRange.</td></tr>
+ * 
+ * <table border="1"> <thead>
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * </thead>
+ * <tr>
+ * <td>Fixed</td>
+ * <td>sfnt version</td>
+ * <td>0x00010000 for version 1.0.</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>numTables</td>
+ * <td>Number of tables.</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>searchRange</td>
+ * <td> (Maximum power of 2 &#61603; numTables) x 16.</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>entrySelector</td>
+ * <td> 2 (maximum power of 2 &#61603; numTables).</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>rangeShift</td>
+ * <td>NumTables x 16-searchRange.</td>
+ * </tr>
  * </table>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -81,7 +101,8 @@ public class XtfTableDirectory implements XMLWriterConvertible {
 
     /**
      * Create a new object.
-     * @param rar           input
+     * 
+     * @param rar input
      * @throws IOException if an error occurs
      */
     public XtfTableDirectory(RandomAccessR rar) throws IOException {
@@ -100,10 +121,11 @@ public class XtfTableDirectory implements XMLWriterConvertible {
         }
 
         // sort the entries by offset
-        Arrays.sort(entries, new Comparator() {
+        Arrays.sort(entries, new Comparator<Object>() {
 
             /**
-             * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
+             * @see java.util.Comparator#compare(java.lang.Object,
+             *      java.lang.Object)
              */
             public int compare(Object arg0, Object arg1) {
 
@@ -120,6 +142,7 @@ public class XtfTableDirectory implements XMLWriterConvertible {
 
     /**
      * Returns the entries.
+     * 
      * @return Returns the entries.
      */
     public Entry[] getEntries() {
@@ -129,6 +152,7 @@ public class XtfTableDirectory implements XMLWriterConvertible {
 
     /**
      * Returns the entrySelector.
+     * 
      * @return Returns the entrySelector.
      */
     public short getEntrySelector() {
@@ -138,6 +162,7 @@ public class XtfTableDirectory implements XMLWriterConvertible {
 
     /**
      * Returns the numTables.
+     * 
      * @return Returns the numTables.
      */
     public short getNumTables() {
@@ -147,6 +172,7 @@ public class XtfTableDirectory implements XMLWriterConvertible {
 
     /**
      * Returns the rangeShift.
+     * 
      * @return Returns the rangeShift.
      */
     public short getRangeShift() {
@@ -156,6 +182,7 @@ public class XtfTableDirectory implements XMLWriterConvertible {
 
     /**
      * Returns the searchRange.
+     * 
      * @return Returns the searchRange.
      */
     public short getSearchRange() {
@@ -173,6 +200,7 @@ public class XtfTableDirectory implements XMLWriterConvertible {
 
     /**
      * Returns the DirectoryEntry at the index
+     * 
      * @param index the index
      * @return Returns the DirectoryEntry at the index
      */
@@ -183,7 +211,8 @@ public class XtfTableDirectory implements XMLWriterConvertible {
 
     /**
      * Returns the DirectoryEntry with a tag
-     * @param tag   the tag
+     * 
+     * @param tag the tag
      * @return Returns the DirectoryEntry with a tag
      */
     public Entry getEntryByTag(int tag) {
@@ -198,16 +227,34 @@ public class XtfTableDirectory implements XMLWriterConvertible {
 
     /**
      * Class for a TTF TableDirectory-Entry.
-     *
-     * <table border="1">
-     *  <thead>
-     *    <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
-     *  </thead>
-     *  <tr><td>ULONG</td><td>tag</td><td>4 -byte identifier.</td></tr>
-     *  <tr><td>ULONG</td><td>checkSum</td><td>CheckSum for this table.</td></tr>
-     *  <tr><td>ULONG</td><td>offset</td><td>
-     *          Offset from beginning of TrueType font file.</td></tr>
-     *  <tr><td>ULONG</td><td>length</td><td>Length of this table.</td></tr>
+     * 
+     * <table border="1"> <thead>
+     * <tr>
+     * <td><b>Type</b></td>
+     * <td><b>Name</b></td>
+     * <td><b>Description</b></td>
+     * </tr>
+     * </thead>
+     * <tr>
+     * <td>ULONG</td>
+     * <td>tag</td>
+     * <td>4 -byte identifier.</td>
+     * </tr>
+     * <tr>
+     * <td>ULONG</td>
+     * <td>checkSum</td>
+     * <td>CheckSum for this table.</td>
+     * </tr>
+     * <tr>
+     * <td>ULONG</td>
+     * <td>offset</td>
+     * <td> Offset from beginning of TrueType font file.</td>
+     * </tr>
+     * <tr>
+     * <td>ULONG</td>
+     * <td>length</td>
+     * <td>Length of this table.</td>
+     * </tr>
      * </table>
      */
     public static class Entry implements XMLWriterConvertible {
@@ -254,7 +301,8 @@ public class XtfTableDirectory implements XMLWriterConvertible {
 
         /**
          * Create a new object.
-         * @param rar           input
+         * 
+         * @param rar input
          * @throws IOException if an error occurs
          */
         Entry(RandomAccessR rar) throws IOException {
@@ -267,6 +315,7 @@ public class XtfTableDirectory implements XMLWriterConvertible {
 
         /**
          * Returns the checkSum.
+         * 
          * @return Returns the checkSum.
          */
         public int getCheckSum() {
@@ -276,6 +325,7 @@ public class XtfTableDirectory implements XMLWriterConvertible {
 
         /**
          * Returns the length.
+         * 
          * @return Returns the length.
          */
         public int getLength() {
@@ -285,6 +335,7 @@ public class XtfTableDirectory implements XMLWriterConvertible {
 
         /**
          * Returns the offset.
+         * 
          * @return Returns the offset.
          */
         public int getOffset() {
@@ -294,6 +345,7 @@ public class XtfTableDirectory implements XMLWriterConvertible {
 
         /**
          * Returns the tag.
+         * 
          * @return Returns the tag.
          */
         public int getTag() {
@@ -303,6 +355,7 @@ public class XtfTableDirectory implements XMLWriterConvertible {
 
         /**
          * Returns the tag name.
+         * 
          * @return Returns the tag name.
          */
         public String getTagName() {
@@ -316,6 +369,8 @@ public class XtfTableDirectory implements XMLWriterConvertible {
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
@@ -325,15 +380,17 @@ public class XtfTableDirectory implements XMLWriterConvertible {
 
             writer.writeAttribute("tag", getTagName());
             writer.writeAttribute("offset", XtfReader
-                    .convertIntToHexString(offset));
+                .convertIntToHexString(offset));
             writer.writeAttribute("length", String.valueOf(length));
             writer.writeAttribute("checksum", XtfReader
-                    .convertIntToHexString(checkSum));
+                .convertIntToHexString(checkSum));
             writer.writeEndElement();
         }
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
@@ -341,7 +398,7 @@ public class XtfTableDirectory implements XMLWriterConvertible {
 
         writer.writeStartElement("tabledirectory");
         writer.writeAttribute("version", XtfReader
-                .convertIntToHexString(version));
+            .convertIntToHexString(version));
         writer.writeAttribute("numberoftables", String.valueOf(numTables));
         writer.writeAttribute("searchrange", String.valueOf(searchRange));
         writer.writeAttribute("entryselector", String.valueOf(entrySelector));
@@ -351,4 +408,5 @@ public class XtfTableDirectory implements XMLWriterConvertible {
         }
         writer.writeEndElement();
     }
+
 }

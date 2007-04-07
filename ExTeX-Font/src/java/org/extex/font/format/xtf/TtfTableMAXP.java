@@ -25,48 +25,95 @@ import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
-
 /**
  * The 'maxp' table establishes the memory requirements for a font.
- *
- * <table BORDER="1">
- *   <tbody>
- *     <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
- *   </tbody>
- *   <tr><td>Fixed</td><td>Table version number</td><td>
- *          0x00010000 for version 1.0.</td></tr>
- *   <tr><td>USHORT</td><td>numGlyphs</td><td>
- *          The number of glyphs in the font.</td></tr>
- *   <tr><td>USHORT</td><td>maxPoints</td><td>
- *          Maximum points in a non-composite glyph.</td></tr>
- *   <tr><td>USHORT</td><td>maxContours</td><td>
- *          Maximum contours in a non-composite glyph.</td></tr>
- *   <tr><td>USHORT</td><td>maxCompositePoints</td><td>
- *          Maximum points in a composite glyph.</td></tr>
- *   <tr><td>USHORT</td><td>maxCompositeContours</td><td>
- *          Maximum contours in a composite glyph.</td></tr>
- *   <tr><td>USHORT</td><td>maxZones</td><td>
- *          1 if instructions do not use the twilight zone (Z0),
- *          or 2 if instructions do use Z0; should be set to 2 in most cases.</td></tr>
- *   <tr><td>USHORT</td><td>maxTwilightPoints</td><td>
- *          Maximum points used in Z0.</td></tr>
- *   <tr><td>USHORT</td><td>maxStorage</td><td>
- *          Number of Storage Area locations.</td></tr>
- *   <tr><td>USHORT</td><td>maxFunctionDefs</td><td>
- *          Number of FDEFs.</td></tr>
- *   <tr><td>USHORT</td><td>maxInstructionDefs</td><td>Number of IDEFs.</td></tr>
- *   <tr><td>USHORT</td><td>maxStackElements</td><td>
- *          Maximum stack depth 2.</td></tr>
- *   <tr><td>USHORT</td><<td>maxSizeOfInstructions</td><td>
- *          Maximum byte count for glyph instructions.</td></tr>
- *   <tr><td>USHORT</td><td>maxComponentElements</td><td>
- *          Maximum number of components referenced at &ldquo;top
- *          level&rdquo; for any composite glyph.</td></tr>
- *   <tr><td>USHORT</td><td>maxComponentDepth</td><td>
- *          Maximum levels of recursion; 1 for simple
- *          components.</td></tr>
+ * 
+ * <table BORDER="1"> <tbody>
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * </tbody>
+ * <tr>
+ * <td>Fixed</td>
+ * <td>Table version number</td>
+ * <td> 0x00010000 for version 1.0.</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>numGlyphs</td>
+ * <td> The number of glyphs in the font.</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>maxPoints</td>
+ * <td> Maximum points in a non-composite glyph.</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>maxContours</td>
+ * <td> Maximum contours in a non-composite glyph.</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>maxCompositePoints</td>
+ * <td> Maximum points in a composite glyph.</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>maxCompositeContours</td>
+ * <td> Maximum contours in a composite glyph.</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>maxZones</td>
+ * <td> 1 if instructions do not use the twilight zone (Z0), or 2 if
+ * instructions do use Z0; should be set to 2 in most cases.</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>maxTwilightPoints</td>
+ * <td> Maximum points used in Z0.</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>maxStorage</td>
+ * <td> Number of Storage Area locations.</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>maxFunctionDefs</td>
+ * <td> Number of FDEFs.</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>maxInstructionDefs</td>
+ * <td>Number of IDEFs.</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>maxStackElements</td>
+ * <td> Maximum stack depth 2.</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td><
+ * <td>maxSizeOfInstructions</td>
+ * <td> Maximum byte count for glyph instructions.</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>maxComponentElements</td>
+ * <td> Maximum number of components referenced at &ldquo;top level&rdquo; for
+ * any composite glyph.</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>maxComponentDepth</td>
+ * <td> Maximum levels of recursion; 1 for simple components.</td>
+ * </tr>
  * </table>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -152,11 +199,11 @@ public class TtfTableMAXP extends AbstractXtfTable
 
     /**
      * Create a new object.
-     *
-     * @param tablemap  the table map
-     * @param de        directory entry
-     * @param rar       input
-     * @throws IOException  if an IO-error occurs
+     * 
+     * @param tablemap the table map
+     * @param de directory entry
+     * @param rar input
+     * @throws IOException if an IO-error occurs
      */
     TtfTableMAXP(XtfTableMap tablemap, XtfTableDirectory.Entry de,
             RandomAccessR rar) throws IOException {
@@ -182,6 +229,7 @@ public class TtfTableMAXP extends AbstractXtfTable
 
     /**
      * Returns the max component depth
+     * 
      * @return Returns the max component depth
      */
     public int getMaxComponentDepth() {
@@ -191,6 +239,7 @@ public class TtfTableMAXP extends AbstractXtfTable
 
     /**
      * Returns the max component elements
+     * 
      * @return Returns the max component elements
      */
     public int getMaxComponentElements() {
@@ -200,6 +249,7 @@ public class TtfTableMAXP extends AbstractXtfTable
 
     /**
      * Returns the max composite contours
+     * 
      * @return Returns the max composite contours
      */
     public int getMaxCompositeContours() {
@@ -209,6 +259,7 @@ public class TtfTableMAXP extends AbstractXtfTable
 
     /**
      * Returns the max composite points
+     * 
      * @return Returns the max composite points
      */
     public int getMaxCompositePoints() {
@@ -218,6 +269,7 @@ public class TtfTableMAXP extends AbstractXtfTable
 
     /**
      * Returns the max contours
+     * 
      * @return Returns the max contours
      */
     public int getMaxContours() {
@@ -227,6 +279,7 @@ public class TtfTableMAXP extends AbstractXtfTable
 
     /**
      * Returns the max function defs
+     * 
      * @return Returns the max function defs
      */
     public int getMaxFunctionDefs() {
@@ -236,6 +289,7 @@ public class TtfTableMAXP extends AbstractXtfTable
 
     /**
      * Returns the max instruction defs
+     * 
      * @return Returns the max instruction defs
      */
     public int getMaxInstructionDefs() {
@@ -245,6 +299,7 @@ public class TtfTableMAXP extends AbstractXtfTable
 
     /**
      * Returns the max points
+     * 
      * @return Returns the max points
      */
     public int getMaxPoints() {
@@ -254,6 +309,7 @@ public class TtfTableMAXP extends AbstractXtfTable
 
     /**
      * Returns the max size of instructions
+     * 
      * @return Returns the max size of instructions
      */
     public int getMaxSizeOfInstructions() {
@@ -263,6 +319,7 @@ public class TtfTableMAXP extends AbstractXtfTable
 
     /**
      * Returns the max stack elements
+     * 
      * @return Returns the max stack elements
      */
     public int getMaxStackElements() {
@@ -272,6 +329,7 @@ public class TtfTableMAXP extends AbstractXtfTable
 
     /**
      * Returns the max storage
+     * 
      * @return Returns the max storage
      */
     public int getMaxStorage() {
@@ -281,6 +339,7 @@ public class TtfTableMAXP extends AbstractXtfTable
 
     /**
      * Returns the max twilight points
+     * 
      * @return Returns the max twilight points
      */
     public int getMaxTwilightPoints() {
@@ -290,6 +349,7 @@ public class TtfTableMAXP extends AbstractXtfTable
 
     /**
      * Returns the max zones
+     * 
      * @return Returns the max zones
      */
     public int getMaxZones() {
@@ -299,6 +359,7 @@ public class TtfTableMAXP extends AbstractXtfTable
 
     /**
      * Returns the number of glyphs
+     * 
      * @return Returns the number of glyphs
      */
     public int getNumGlyphs() {
@@ -308,6 +369,7 @@ public class TtfTableMAXP extends AbstractXtfTable
 
     /**
      * Get the table type, as a table directory value.
+     * 
      * @return Returns the table type
      */
     public int getType() {
@@ -316,6 +378,8 @@ public class TtfTableMAXP extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -325,6 +389,7 @@ public class TtfTableMAXP extends AbstractXtfTable
 
     /**
      * Returns the versionNumber.
+     * 
      * @return Returns the versionNumber.
      */
     public int getVersion() {
@@ -333,6 +398,8 @@ public class TtfTableMAXP extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
@@ -340,30 +407,31 @@ public class TtfTableMAXP extends AbstractXtfTable
 
         writeStartElement(writer);
         writer.writeAttribute("version", XtfReader
-                .convertIntToHexString(version));
+            .convertIntToHexString(version));
         writer.writeAttribute("numberofglyphs", String.valueOf(numGlyphs));
         writer.writeAttribute("maxpoints", String.valueOf(maxPoints));
         writer.writeAttribute("maxcontours", String.valueOf(maxContours));
         writer.writeAttribute("maxcompositepoints", String
-                .valueOf(maxCompositePoints));
+            .valueOf(maxCompositePoints));
         writer.writeAttribute("maxcompositecontours", String
-                .valueOf(maxCompositeContours));
+            .valueOf(maxCompositeContours));
         writer.writeAttribute("maxzones", String.valueOf(maxZones));
         writer.writeAttribute("maxtwilightpoints", String
-                .valueOf(maxTwilightPoints));
+            .valueOf(maxTwilightPoints));
         writer.writeAttribute("maxstorage", String.valueOf(maxStorage));
         writer.writeAttribute("maxfunctiondefs", String
-                .valueOf(maxFunctionDefs));
+            .valueOf(maxFunctionDefs));
         writer.writeAttribute("maxinstructionsdefs", String
-                .valueOf(maxInstructionDefs));
+            .valueOf(maxInstructionDefs));
         writer.writeAttribute("maxstackelements", String
-                .valueOf(maxStackElements));
+            .valueOf(maxStackElements));
         writer.writeAttribute("maxsizeofinstructions", String
-                .valueOf(maxSizeOfInstructions));
+            .valueOf(maxSizeOfInstructions));
         writer.writeAttribute("maxcomponentelements", String
-                .valueOf(maxComponentElements));
+            .valueOf(maxComponentElements));
         writer.writeAttribute("maxcomponentdepth", String
-                .valueOf(maxComponentDepth));
+            .valueOf(maxComponentDepth));
         writer.writeEndElement();
     }
+
 }

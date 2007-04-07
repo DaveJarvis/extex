@@ -25,25 +25,28 @@ import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
-
 /**
- * The 'prep' table stores the instructions that make up the control
- * value program, a set of TrueType instructions that will be executed
- * once when the font is first accessed and again whenever the font,
- * point size or transformation matrix change. It consists of an ordered
- * list of instructions opcodes. Each opcode is a byte.
- * The tag 'prep', referring to the preProgram, is anachronistic
- * but some people still call the control value program the preProgram.
- *
- * <table BORDER="1">
- *   <tbody>
- *     <tr><td><b>Type</b></td><td><b>Description</b></td></tr>
- *   </tbody>
- *   <tr><td>BYTE[ ]</td><td>
- *          Set of instructions executed whenever point size or
- *          font or transformation change</td></tr>
+ * The 'prep' table stores the instructions that make up the control value
+ * program, a set of TrueType instructions that will be executed once when the
+ * font is first accessed and again whenever the font, point size or
+ * transformation matrix change. It consists of an ordered list of instructions
+ * opcodes. Each opcode is a byte. The tag 'prep', referring to the preProgram,
+ * is anachronistic but some people still call the control value program the
+ * preProgram.
+ * 
+ * <table BORDER="1"> <tbody>
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * </tbody>
+ * <tr>
+ * <td>BYTE[ ]</td>
+ * <td> Set of instructions executed whenever point size or font or
+ * transformation change</td>
+ * </tr>
  * </table>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -54,10 +57,10 @@ public class TtfTablePREP extends AbstractXtfTable
 
     /**
      * Create a new object.
-     *
-     * @param tablemap  the table map
-     * @param de        directory entry
-     * @param rar       input
+     * 
+     * @param tablemap the table map
+     * @param de directory entry
+     * @param rar input
      * @throws IOException if an IO-error occurs
      */
     TtfTablePREP(XtfTableMap tablemap, XtfTableDirectory.Entry de,
@@ -78,6 +81,7 @@ public class TtfTablePREP extends AbstractXtfTable
 
     /**
      * Returns the instructions
+     * 
      * @return Returns the instructions
      */
     public byte[] getInstructions() {
@@ -87,6 +91,7 @@ public class TtfTablePREP extends AbstractXtfTable
 
     /**
      * Get the table type, as a table directory value.
+     * 
      * @return Returns the table type
      */
     public int getType() {
@@ -95,6 +100,8 @@ public class TtfTablePREP extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -103,6 +110,8 @@ public class TtfTablePREP extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
@@ -112,4 +121,5 @@ public class TtfTablePREP extends AbstractXtfTable
         writer.writeByteArray(instructions);
         writer.writeEndElement();
     }
+
 }

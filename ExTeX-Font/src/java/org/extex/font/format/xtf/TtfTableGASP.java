@@ -25,71 +25,121 @@ import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
-
 /**
  * The table 'gasp'.
- *
+ * 
  * <p>
- * This table contains information which describes the preferred
- * rasterization techniques for the typeface when it is rendered
- * on grayscale-capable devices. This table also has some use for
- * monochrome devices, which may use the table to turn off hinting
- * at very large or small sizes, to improve performance.
+ * This table contains information which describes the preferred rasterization
+ * techniques for the typeface when it is rendered on grayscale-capable devices.
+ * This table also has some use for monochrome devices, which may use the table
+ * to turn off hinting at very large or small sizes, to improve performance.
  * </p>
- * <table border="1">
- *  <thead>
- *  <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
- *  </thead>
- *  <tr><td>USHORT</td><td>version</td><td>Version number (set to 0)</td></tr>
- *  <tr><td>USHORT</td><td>numRanges</td><td>Number of records to follow</td></tr>
- *  <tr><td>GASPRANGE</td><td>gaspRange[numRanges]</td><td>Sorted by ppem</td></tr>
+ * <table border="1"> <thead>
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * </thead>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>version</td>
+ * <td>Version number (set to 0)</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>numRanges</td>
+ * <td>Number of records to follow</td>
+ * </tr>
+ * <tr>
+ * <td>GASPRANGE</td>
+ * <td>gaspRange[numRanges]</td>
+ * <td>Sorted by ppem</td>
+ * </tr>
  * </table>
- *
- * <p>GASPRANGE</p>
- * <table border="1">
- *   <thead>
- *     <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
- *   </thead>
- *   <tr><td>USHORT</td><td>rangeMaxPPEM</td>
- *       <td>Upper limit of range, in PPEM</td></tr>
- *   <tr><td>USHORT</td><td>rangeGaspBehavior</td>
- *       <td>Flags describing desired rasterizer behavior.</td></tr>
- * </table>
- *
- * <p>There are two flags for the rangeGaspBehavior flags:<p>
- * <table border="1">
- *   <thead>
- *     <tr><td>Flag</b></td><td><b>Meaning</b></td></tr>
- *   </thead>
- *   <tr><td>GASP_GRIDFIT</td><td>Use gridfitting</td></tr>
- *   <tr><td>GASP_DOGRAY</td><td>Use grayscale rendering</td></tr>
- * </table>
- *
- * <p>The four currently defined values of rangeGaspBehavior
- *    would have the following uses:</p>
- * <table border="1">
- *   <thead>
- *     <tr><td>Flag</b></td><td><b>Value</b></td><td><b>Meaning</b></td></tr>
- *   </thead>
- *   <tr><td>GASP_DOGRAY</td><td>0x0002</td>
- *       <td>small sizes, typically ppem&lt;9</td></tr>
- *   <tr><td>GASP_GRIDFIT</td><td>0x0001</td>
- *       <td>medium sizes, typically 9&lt;=ppem&lt;=16</td></tr>
- *   <tr><td>GASP_DOGRAY|GASP_GRIDFIT</td><td>0x0003</td>
- *       <td>large sizes, typically ppem&gt;16</td></tr>
- *   <tr><td>(neither)</td><td>0x0000</td>
- *       <td>optional for very large sizes, typically ppem&gt;2048</td></tr>
- * </table>
- *
+ * 
  * <p>
- * The records in the gaspRange[] array must be sorted in order of
- * increasing rangeMaxPPEM value. The last record should use 0xFFFF
- * as a sentinel value for rangeMaxPPEM and should describe the behavior
- * desired at all sizes larger than the previous record's upper limit.
- * If the only entry in 'gasp' is the 0xFFFF sentinel value, the behavior
- * described will be used for all sizes.
+ * GASPRANGE
  * </p>
- *
+ * <table border="1"> <thead>
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * </thead>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>rangeMaxPPEM</td>
+ * <td>Upper limit of range, in PPEM</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>rangeGaspBehavior</td>
+ * <td>Flags describing desired rasterizer behavior.</td>
+ * </tr>
+ * </table>
+ * 
+ * <p>
+ * There are two flags for the rangeGaspBehavior flags:
+ * <p>
+ * <table border="1"> <thead>
+ * <tr>
+ * <td>Flag</b></td>
+ * <td><b>Meaning</b></td>
+ * </tr>
+ * </thead>
+ * <tr>
+ * <td>GASP_GRIDFIT</td>
+ * <td>Use gridfitting</td>
+ * </tr>
+ * <tr>
+ * <td>GASP_DOGRAY</td>
+ * <td>Use grayscale rendering</td>
+ * </tr>
+ * </table>
+ * 
+ * <p>
+ * The four currently defined values of rangeGaspBehavior would have the
+ * following uses:
+ * </p>
+ * <table border="1"> <thead>
+ * <tr>
+ * <td>Flag</b></td>
+ * <td><b>Value</b></td>
+ * <td><b>Meaning</b></td>
+ * </tr>
+ * </thead>
+ * <tr>
+ * <td>GASP_DOGRAY</td>
+ * <td>0x0002</td>
+ * <td>small sizes, typically ppem&lt;9</td>
+ * </tr>
+ * <tr>
+ * <td>GASP_GRIDFIT</td>
+ * <td>0x0001</td>
+ * <td>medium sizes, typically 9&lt;=ppem&lt;=16</td>
+ * </tr>
+ * <tr>
+ * <td>GASP_DOGRAY|GASP_GRIDFIT</td>
+ * <td>0x0003</td>
+ * <td>large sizes, typically ppem&gt;16</td>
+ * </tr>
+ * <tr>
+ * <td>(neither)</td>
+ * <td>0x0000</td>
+ * <td>optional for very large sizes, typically ppem&gt;2048</td>
+ * </tr>
+ * </table>
+ * 
+ * <p>
+ * The records in the gaspRange[] array must be sorted in order of increasing
+ * rangeMaxPPEM value. The last record should use 0xFFFF as a sentinel value for
+ * rangeMaxPPEM and should describe the behavior desired at all sizes larger
+ * than the previous record's upper limit. If the only entry in 'gasp' is the
+ * 0xFFFF sentinel value, the behavior described will be used for all sizes.
+ * </p>
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -120,10 +170,10 @@ public class TtfTableGASP extends AbstractXtfTable
 
     /**
      * Create a new object
-     *
-     * @param tablemap  the table map
-     * @param de        entry
-     * @param rar       input
+     * 
+     * @param tablemap the table map
+     * @param de entry
+     * @param rar input
      * @throws IOException if an IO-error occurs
      */
     TtfTableGASP(XtfTableMap tablemap, XtfTableDirectory.Entry de,
@@ -147,8 +197,8 @@ public class TtfTableGASP extends AbstractXtfTable
 
         /**
          * Create a new object.
-         *
-         * @param rar   the input
+         * 
+         * @param rar the input
          * @throws IOException if an IO-error occurred.
          */
         public GaspRange(RandomAccessR rar) throws IOException {
@@ -169,6 +219,7 @@ public class TtfTableGASP extends AbstractXtfTable
 
         /**
          * Returns the rangeGaspBehavior.
+         * 
          * @return Returns the rangeGaspBehavior.
          */
         public int getRangeGaspBehavior() {
@@ -178,6 +229,7 @@ public class TtfTableGASP extends AbstractXtfTable
 
         /**
          * Returns the rangeMaxPPEM.
+         * 
          * @return Returns the rangeMaxPPEM.
          */
         public int getRangeMaxPPEM() {
@@ -187,6 +239,7 @@ public class TtfTableGASP extends AbstractXtfTable
 
         /**
          * Returns the Flags as String.
+         * 
          * @return Returns the Flags as String.
          */
         public String getFlags() {
@@ -204,6 +257,8 @@ public class TtfTableGASP extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
@@ -212,7 +267,7 @@ public class TtfTableGASP extends AbstractXtfTable
             writer.writeStartElement("gasprange");
             writer.writeAttribute("rangemaxPPEM", String.valueOf(rangeMaxPPEM));
             writer.writeAttribute("rangegaspbehavior", String
-                    .valueOf(rangeGaspBehavior));
+                .valueOf(rangeGaspBehavior));
             writer.writeAttribute("flags", getFlags());
             writer.writeEndElement();
         }
@@ -235,6 +290,7 @@ public class TtfTableGASP extends AbstractXtfTable
 
     /**
      * Returns the gaspRange.
+     * 
      * @return Returns the gaspRange.
      */
     public GaspRange[] getGaspRange() {
@@ -244,6 +300,7 @@ public class TtfTableGASP extends AbstractXtfTable
 
     /**
      * Returns the numRanges.
+     * 
      * @return Returns the numRanges.
      */
     public int getNumRanges() {
@@ -253,6 +310,7 @@ public class TtfTableGASP extends AbstractXtfTable
 
     /**
      * Returns the version.
+     * 
      * @return Returns the version.
      */
     public int getVersion() {
@@ -262,6 +320,7 @@ public class TtfTableGASP extends AbstractXtfTable
 
     /**
      * Get the table type, as a table directory value.
+     * 
      * @return Returns the table type
      */
     public int getType() {
@@ -270,6 +329,8 @@ public class TtfTableGASP extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -278,6 +339,8 @@ public class TtfTableGASP extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */

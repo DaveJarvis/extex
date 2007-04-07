@@ -27,76 +27,146 @@ import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
-
 /**
- * The 'head' table contains global information about the font.
- * It records such facts as the font version number, the creation
- * and modification dates, revision number and basic typographic
- * data that applies to the font as a whole. This includes a
- * specification of the font bounding box, the direction in which
- * the font's glyphs are most likely to be written and other
+ * The 'head' table contains global information about the font. It records such
+ * facts as the font version number, the creation and modification dates,
+ * revision number and basic typographic data that applies to the font as a
+ * whole. This includes a specification of the font bounding box, the direction
+ * in which the font's glyphs are most likely to be written and other
  * information about the placement of glyphs in the em square.
- *
- * <table BORDER="1">
- *   <tbody>
- *     <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
- *   </tbody>
- *   <tr><td>Fixed</td><td>Table version number</td><td>
- *             0x00010000 for version 1.0.</td></tr>
- *   <tr><td>Fixed</td><td>fontRevision</td><td>Set by font manufacturer.</td></tr>
- *   <tr><td>ULONG</td><td>checkSumAdjustment</td><td>
- *              To compute:  set it to 0, sum the entire font as
- *              ULONG, then store 0xB1B0AFBA - sum.</td></tr>
- *   <tr><td>ULONG</td><td>magicNumber</td><td>Set to 0x5F0F3CF5.</td></tr>
- *   <tr><td>USHORT</td><td>flags</td><td>
- *              <p>
- *              Bit 0 - baseline for font at y=0;</p>
- *              <p>
- *              Bit 1 - left sidebearing at x=0;</p>
- *              <p>
- *              Bit 2 - instructions may depend on point size;</p>
- *              <p>
- *              Bit 3 - force ppem to integer values for all
- *              internal scaler math; may use fractional ppem sizes if this bit
- *              is clear;</p>
- *              <p>
- *              Bit 4 - instructions may alter advance width (the
- *              advance widths might not scale linearly);</p>
- *              <p>
- *              Note: All other bits must be zero.</p>
- *          </td></tr>
- *   <tr><td>USHORT</td><td>unitsPerEm</td><td>
- *           Valid range is from 16 to 16384</td></tr>
- *   <tr><td>longDateTime</td><td>created</td><td>
- *           International date (8-byte field).</td></tr>
- *   <tr><td>longDateTime</td><td>modified</td><td>
- *           International date (8-byte field).</td>
- *   <tr><td>FWord</td><td>xMin</td><td>For all glyph bounding boxes.</td></tr>
- *   <tr><td>FWord</td><td>yMin</td><td>For all glyph bounding boxes.</td></tr>
- *   <tr><td>FWord</td><td>xMax</td><td>For all glyph bounding boxes.</td></tr>
- *   <tr><td>FWord</td><td>yMax</td><td>For all glyph bounding boxes.</td></tr>
- *   <tr><td>USHORT</td><td>macStyle</td><td>
- *              Bit 0 bold (if set to 1); Bit 1 italic (if set to
- *              1)<BR>Bits 2-15 reserved (set to 0).</td></tr>
- *   <tr><td>USHORT</td><td>lowestRecPPEM</td><td>
- *                Smallest readable size in pixels.</td></tr>
- *   <tr><td>SHORT</td><td>fontDirectionHint</td><td>
- *              <p>
- *                0   Fully mixed directional glyphs;</p>
- *               <p>
- *                1   Only strongly left to right;</p>
- *               <p>
- *                2   Like 1 but also contains neutrals 1;</p>
- *               <p>
- *               -1   Only strongly right to left;</p>
- *               <p>
- *               -2   Like -1 but also contains neutrals.</p>
- *           </td></tr>
- *   <tr><td>SHORT</td><td>indexToLocFormat</td><td>
- *               0 for short offsets, 1 for long.</td></tr>
- *   <tr><td>SHORT</td><td>glyphDataFormat</td><td>0 for current format.</td></tr>
+ * 
+ * <table BORDER="1"> <tbody>
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * </tbody>
+ * <tr>
+ * <td>Fixed</td>
+ * <td>Table version number</td>
+ * <td> 0x00010000 for version 1.0.</td>
+ * </tr>
+ * <tr>
+ * <td>Fixed</td>
+ * <td>fontRevision</td>
+ * <td>Set by font manufacturer.</td>
+ * </tr>
+ * <tr>
+ * <td>ULONG</td>
+ * <td>checkSumAdjustment</td>
+ * <td> To compute: set it to 0, sum the entire font as ULONG, then store
+ * 0xB1B0AFBA - sum.</td>
+ * </tr>
+ * <tr>
+ * <td>ULONG</td>
+ * <td>magicNumber</td>
+ * <td>Set to 0x5F0F3CF5.</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>flags</td>
+ * <td>
+ * <p>
+ * Bit 0 - baseline for font at y=0;
+ * </p>
+ * <p>
+ * Bit 1 - left sidebearing at x=0;
+ * </p>
+ * <p>
+ * Bit 2 - instructions may depend on point size;
+ * </p>
+ * <p>
+ * Bit 3 - force ppem to integer values for all internal scaler math; may use
+ * fractional ppem sizes if this bit is clear;
+ * </p>
+ * <p>
+ * Bit 4 - instructions may alter advance width (the advance widths might not
+ * scale linearly);
+ * </p>
+ * <p>
+ * Note: All other bits must be zero.
+ * </p>
+ * </td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>unitsPerEm</td>
+ * <td> Valid range is from 16 to 16384</td>
+ * </tr>
+ * <tr>
+ * <td>longDateTime</td>
+ * <td>created</td>
+ * <td> International date (8-byte field).</td>
+ * </tr>
+ * <tr>
+ * <td>longDateTime</td>
+ * <td>modified</td>
+ * <td> International date (8-byte field).</td>
+ * <tr>
+ * <td>FWord</td>
+ * <td>xMin</td>
+ * <td>For all glyph bounding boxes.</td>
+ * </tr>
+ * <tr>
+ * <td>FWord</td>
+ * <td>yMin</td>
+ * <td>For all glyph bounding boxes.</td>
+ * </tr>
+ * <tr>
+ * <td>FWord</td>
+ * <td>xMax</td>
+ * <td>For all glyph bounding boxes.</td>
+ * </tr>
+ * <tr>
+ * <td>FWord</td>
+ * <td>yMax</td>
+ * <td>For all glyph bounding boxes.</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>macStyle</td>
+ * <td> Bit 0 bold (if set to 1); Bit 1 italic (if set to 1)<BR>
+ * Bits 2-15 reserved (set to 0).</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>lowestRecPPEM</td>
+ * <td> Smallest readable size in pixels.</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>fontDirectionHint</td>
+ * <td>
+ * <p>
+ * 0 Fully mixed directional glyphs;
+ * </p>
+ * <p>
+ * 1 Only strongly left to right;
+ * </p>
+ * <p>
+ * 2 Like 1 but also contains neutrals 1;
+ * </p>
+ * <p>
+ * -1 Only strongly right to left;
+ * </p>
+ * <p>
+ * -2 Like -1 but also contains neutrals.
+ * </p>
+ * </td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>indexToLocFormat</td>
+ * <td> 0 for short offsets, 1 for long.</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>glyphDataFormat</td>
+ * <td>0 for current format.</td>
+ * </tr>
  * </table>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -192,10 +262,10 @@ public class TtfTableHEAD extends AbstractXtfTable
 
     /**
      * Create a new object.
-     *
-     * @param tablemap  the tablemap
-     * @param de        entry
-     * @param rar       input
+     * 
+     * @param tablemap the tablemap
+     * @param de entry
+     * @param rar input
      * @throws IOException if an IO-error occurs
      */
     TtfTableHEAD(XtfTableMap tablemap, XtfTableDirectory.Entry de,
@@ -224,6 +294,7 @@ public class TtfTableHEAD extends AbstractXtfTable
 
     /**
      * Returns the checkSumAdjustment.
+     * 
      * @return Returns the checkSumAdjustment.
      */
     public int getCheckSumAdjustment() {
@@ -233,6 +304,7 @@ public class TtfTableHEAD extends AbstractXtfTable
 
     /**
      * Returns the created.
+     * 
      * @return Returns the created.
      */
     public long getCreated() {
@@ -242,6 +314,7 @@ public class TtfTableHEAD extends AbstractXtfTable
 
     /**
      * Returns the flags.
+     * 
      * @return Returns the flags.
      */
     public short getFlags() {
@@ -251,6 +324,7 @@ public class TtfTableHEAD extends AbstractXtfTable
 
     /**
      * Returns the fontDirectionHint.
+     * 
      * @return Returns the fontDirectionHint.
      */
     public short getFontDirectionHint() {
@@ -260,6 +334,7 @@ public class TtfTableHEAD extends AbstractXtfTable
 
     /**
      * Returns the fontRevision.
+     * 
      * @return Returns the fontRevision.
      */
     public Fixed32 getFontRevision() {
@@ -269,6 +344,7 @@ public class TtfTableHEAD extends AbstractXtfTable
 
     /**
      * Returns the indexToLocFormat.
+     * 
      * @return Returns the indexToLocFormat.
      */
     public short getIndexToLocFormat() {
@@ -278,6 +354,7 @@ public class TtfTableHEAD extends AbstractXtfTable
 
     /**
      * Returns the lowestRecPPEM.
+     * 
      * @return Returns the lowestRecPPEM.
      */
     public short getLowestRecPPEM() {
@@ -287,6 +364,7 @@ public class TtfTableHEAD extends AbstractXtfTable
 
     /**
      * Returns the macStyle.
+     * 
      * @return Returns the macStyle.
      */
     public short getMacStyle() {
@@ -296,6 +374,7 @@ public class TtfTableHEAD extends AbstractXtfTable
 
     /**
      * Returns the magicNumber.
+     * 
      * @return Returns the magicNumber.
      */
     public int getMagicNumber() {
@@ -305,6 +384,7 @@ public class TtfTableHEAD extends AbstractXtfTable
 
     /**
      * Returns the modified.
+     * 
      * @return Returns the modified.
      */
     public long getModified() {
@@ -314,6 +394,7 @@ public class TtfTableHEAD extends AbstractXtfTable
 
     /**
      * Returns the unitsPerEm.
+     * 
      * @return Returns the unitsPerEm.
      */
     public short getUnitsPerEm() {
@@ -323,6 +404,7 @@ public class TtfTableHEAD extends AbstractXtfTable
 
     /**
      * Returns the version.
+     * 
      * @return Returns the version.
      */
     public int getVersion() {
@@ -332,6 +414,7 @@ public class TtfTableHEAD extends AbstractXtfTable
 
     /**
      * Returns the xMax.
+     * 
      * @return Returns the xMax.
      */
     public short getXMax() {
@@ -341,6 +424,7 @@ public class TtfTableHEAD extends AbstractXtfTable
 
     /**
      * Returns the xMin.
+     * 
      * @return Returns the xMin.
      */
     public short getXMin() {
@@ -350,6 +434,7 @@ public class TtfTableHEAD extends AbstractXtfTable
 
     /**
      * Returns the yMax.
+     * 
      * @return Returns the yMax.
      */
     public short getYMax() {
@@ -359,6 +444,7 @@ public class TtfTableHEAD extends AbstractXtfTable
 
     /**
      * Returns the yMin.
+     * 
      * @return Returns the yMin.
      */
     public short getYMin() {
@@ -368,6 +454,7 @@ public class TtfTableHEAD extends AbstractXtfTable
 
     /**
      * Get the table type, as a table directory value.
+     * 
      * @return Returns the table type
      */
     public int getType() {
@@ -376,6 +463,8 @@ public class TtfTableHEAD extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -384,6 +473,8 @@ public class TtfTableHEAD extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
@@ -393,38 +484,39 @@ public class TtfTableHEAD extends AbstractXtfTable
 
         DateFormat dformat = DateFormat.getDateInstance();
         writer.writeAttribute("version", XtfReader
-                .convertIntToHexString(version));
+            .convertIntToHexString(version));
         writer.writeAttribute("fontrevision", String.valueOf(fontRevision
-                .getDoubleValue()));
+            .getDoubleValue()));
         writer.writeAttribute("checksumadjustment", XtfReader
-                .convertIntToHexString(checkSumAdjustment));
+            .convertIntToHexString(checkSumAdjustment));
         writer.writeAttribute("magicnumber", XtfReader
-                .convertIntToHexString(magicNumber));
+            .convertIntToHexString(magicNumber));
         writer.writeAttribute("flags", XtfReader
-                .convertIntToBinaryString(flags));
+            .convertIntToBinaryString(flags));
         writer.writeAttribute("unitsperem", String.valueOf(unitsPerEm));
         writer.writeAttribute("created", dformat.format(XtfReader
-                .convertDate(created)));
+            .convertDate(created)));
         writer.writeAttribute("modified", dformat.format(XtfReader
-                .convertDate(modified)));
+            .convertDate(modified)));
         writer.writeAttribute("xmin", String.valueOf(xMin));
         writer.writeAttribute("ymin", String.valueOf(yMin));
         writer.writeAttribute("xmax", String.valueOf(xMax));
         writer.writeAttribute("ymax", String.valueOf(yMax));
         writer.writeAttribute("macstyle", XtfReader
-                .convertIntToBinaryString(macStyle));
+            .convertIntToBinaryString(macStyle));
         writer.writeAttribute("lowestrecppem", String.valueOf(lowestRecPPEM));
         writer.writeAttribute("fontdiretionhint", String
-                .valueOf(fontDirectionHint));
+            .valueOf(fontDirectionHint));
         writer.writeAttribute("indextolocformat", String
-                .valueOf(indexToLocFormat));
+            .valueOf(indexToLocFormat));
         writer.writeAttribute("glyphdataformat", String
-                .valueOf(glyphDataFormat));
+            .valueOf(glyphDataFormat));
         writer.writeEndElement();
     }
 
     /**
      * Returns the glyphDataFormat.
+     * 
      * @return Returns the glyphDataFormat.
      */
     public short getGlyphDataFormat() {

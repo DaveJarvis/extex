@@ -26,49 +26,90 @@ import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
-
 /**
- * The 'loca' table stores the offsets to the locations
- * of the glyphs in the font relative to the beginning of
- * the 'glyf' table. Its purpose is to provide quick
- * access to the data for a particular character.
- *
- * <table border="1">
- *   <tbody>
- *     <tr><td><b>Glyph Index</b></td><td><b>Offset</b></td><td><b>Glyph length</b></td></tr>
- *   </tbody>
- *   <tr><td>0</td><td>0</td><td>100</td></tr>
- *   <tr><td>1</td><td>100</td><td>150</td></tr>
- *   <tr><td>2</td><td>250</td><td></td></tr>
- *   <tr><td><td>..</td><td>..</td><td>..</td></tr>
- *   <tr><td>n-1</td><td>1170</td><td>120</td></tr>
- *   <tr><td>extra</td><td>1290</td><td></td></tr>
+ * The 'loca' table stores the offsets to the locations of the glyphs in the
+ * font relative to the beginning of the 'glyf' table. Its purpose is to provide
+ * quick access to the data for a particular character.
+ * 
+ * <table border="1"> <tbody>
+ * <tr>
+ * <td><b>Glyph Index</b></td>
+ * <td><b>Offset</b></td>
+ * <td><b>Glyph length</b></td>
+ * </tr>
+ * </tbody>
+ * <tr>
+ * <td>0</td>
+ * <td>0</td>
+ * <td>100</td>
+ * </tr>
+ * <tr>
+ * <td>1</td>
+ * <td>100</td>
+ * <td>150</td>
+ * </tr>
+ * <tr>
+ * <td>2</td>
+ * <td>250</td>
+ * <td></td>
+ * </tr>
+ * <tr>
+ * <td>
+ * <td>..</td>
+ * <td>..</td>
+ * <td>..</td>
+ * </tr>
+ * <tr>
+ * <td>n-1</td>
+ * <td>1170</td>
+ * <td>120</td>
+ * </tr>
+ * <tr>
+ * <td>extra</td>
+ * <td>1290</td>
+ * <td></td>
+ * </tr>
  * </table>
- *
- * <p><code>'loca'</code> short version</p>
- * <table border="1">
- *   <tbody>
- *     <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
- *   </tbody>
- *   <tr><td>uint16</td><td>offsets[n]</td><td>
- *          The actual local offset divided by 2 is stored.
- *          The value of n is the number of glyphs in the font + 1.
- *          The number of glyphs in the font is found in the maximum
- *          profile table.</td></tr>
+ * 
+ * <p>
+ * <code>'loca'</code> short version
+ * </p>
+ * <table border="1"> <tbody>
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * </tbody>
+ * <tr>
+ * <td>uint16</td>
+ * <td>offsets[n]</td>
+ * <td> The actual local offset divided by 2 is stored. The value of n is the
+ * number of glyphs in the font + 1. The number of glyphs in the font is found
+ * in the maximum profile table.</td>
+ * </tr>
  * </table>
- *
- * <p><code>'loca'</code> long version</p>
- *
- * <table border="1">
- *   <tbody>
- *     <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
- *   </tbody>
- *   <tr><td>uint32</td><td>offsets[n]</td><td>
- *          The actual local offset is stored. The value of n is the
- *          number of glyphs in the font + 1. The number of glyphs
- *          in the font is found in the maximum profile table.</td></tr>
+ * 
+ * <p>
+ * <code>'loca'</code> long version
+ * </p>
+ * 
+ * <table border="1"> <tbody>
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * </tbody>
+ * <tr>
+ * <td>uint32</td>
+ * <td>offsets[n]</td>
+ * <td> The actual local offset is stored. The value of n is the number of
+ * glyphs in the font + 1. The number of glyphs in the font is found in the
+ * maximum profile table.</td>
+ * </tr>
  * </table>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -89,17 +130,21 @@ public class TtfTableLOCA extends AbstractXtfTable
 
     /**
      * factor.
-     * <p>short : 2</p>
-     * <p>long : 1</p>
+     * <p>
+     * short : 2
+     * </p>
+     * <p>
+     * long : 1
+     * </p>
      */
     private short factor = 0;
 
     /**
      * Create a new object.
-     *
-     * @param tablemap  the tablemap
-     * @param de        entry
-     * @param rar       input
+     * 
+     * @param tablemap the tablemap
+     * @param de entry
+     * @param rar input
      * @throws IOException if an IO-error occurs
      */
     TtfTableLOCA(XtfTableMap tablemap, XtfTableDirectory.Entry de,
@@ -112,6 +157,8 @@ public class TtfTableLOCA extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.AbstractXtfTable#getInitOrder()
      */
     public int getInitOrder() {
@@ -120,6 +167,8 @@ public class TtfTableLOCA extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.AbstractXtfTable#init()
      */
     public void init() {
@@ -146,8 +195,9 @@ public class TtfTableLOCA extends AbstractXtfTable
         } else {
             factor = 1;
             for (int i = 0; i <= numGlyphs; i++) {
-                offsets[i] = (bais.read() << 24 | bais.read() << 16
-                        | bais.read() << 8 | bais.read());
+                offsets[i] =
+                        (bais.read() << 24 | bais.read() << 16
+                                | bais.read() << 8 | bais.read());
             }
         }
         buf = null;
@@ -155,6 +205,7 @@ public class TtfTableLOCA extends AbstractXtfTable
 
     /**
      * Returns the offset.
+     * 
      * @param i index
      * @return Returns the offset
      */
@@ -168,6 +219,7 @@ public class TtfTableLOCA extends AbstractXtfTable
 
     /**
      * Get the table type, as a table directory value.
+     * 
      * @return Returns the table type
      */
     public int getType() {
@@ -176,6 +228,8 @@ public class TtfTableLOCA extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -184,6 +238,8 @@ public class TtfTableLOCA extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */

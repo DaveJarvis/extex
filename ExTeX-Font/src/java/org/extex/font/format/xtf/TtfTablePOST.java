@@ -25,77 +25,115 @@ import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
-
 /**
- * The 'post' table contains information needed to use a
- * TrueType font on a PostScript printer.
- * It contains the data needed for the FontInfo
- * dictionary entry as well as the PostScript
- * names for all of the glyphs in the font.
- * It also contains memory usage information
- * needed by the PostScript driver for memory management.
- *
- * <table BORDER="1">
- *   <tbody>
- *     <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
- *   </tbody>
- *   <tr><td>Fixed</td><td>Format Type</td><td>
- *              0x00010000 for format 1.0, 0x00020000 for format
- *              2.0, and so on</td></tr>
- *   <tr><td>Fixed</td><td>italicAngle</td><td>
- *              Italic angle in counter-clockwise degrees from the
- *               vertical. Zero for upright text, negative for text that leans to
- *              the right (forward)</td></tr>
- *   <tr><td>FWord</td><td>underlinePosition</td><td>
- *              Suggested values for the underline position
- *              (negative values indicate below baseline).</td></tr>
- *   <tr><td>FWord</td><td>underlineThickness</td><td>
- *          Suggested values for the underline thickness.</td></tr>
- *   <tr><td>ULONG</td><td>isFixedPitch</td><td>
- *              Set to 0 if the font is proportionally spaced,
- *              non-zero if the font is not proportionally spaced (i.e.
- *              monospaced).</td></tr>
- *   <tr><td>ULONG</td><td>minMemType42</td><td>
- *              Minimum memory usage when a TrueType font is
- *              downloaded.</td></tr>
- *   <tr><td>ULONG</td><td>maxMemType42</td><td>
- *              Maximum memory usage when a TrueType font is
- *              downloaded.</td><tr>
- *   <tr><td>ULONG</td><td>minMemType1</td><td>
- *              Minimum memory usage when a TrueType font is
- *              downloaded as a Type 1 font.</td></tr>
- *   <tr><td>ULONG</td><td>maxMemType1</td><td>
- *              Maximum memory usage when a TrueType font is
- *              downloaded as a Type 1 font.</td><tr>
- * </table>
- *
- * <p>Format 2</p>
- * <table border="1">
- *   <tbody>
- *     <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
- *   </tbody>
- *   <tr><td>uint16</td><td>numberOfGlyphs</td><td>number of glyphs</td></tr>
- *   <tr><td>uint16</td><td>glyphNameIndex[numberOfGlyphs]</td><td>
- *          Ordinal number of this glyph in <code>'post'</code> string tables.
- *          This is not an offset.</td></tr>
- *   <tr><td>Pascal string</td><td>names[numberNewGlyphs]</td><td>
- *          glyph names with length bytes [variable] (a Pascal string)</td></tr>
- * </table>
- *
- * <p>Format 3</p>
+ * The 'post' table contains information needed to use a TrueType font on a
+ * PostScript printer. It contains the data needed for the FontInfo dictionary
+ * entry as well as the PostScript names for all of the glyphs in the font. It
+ * also contains memory usage information needed by the PostScript driver for
+ * memory management.
+ * 
+ * <table BORDER="1"> <tbody>
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * </tbody>
+ * <tr>
+ * <td>Fixed</td>
+ * <td>Format Type</td>
+ * <td> 0x00010000 for format 1.0, 0x00020000 for format 2.0, and so on</td>
+ * </tr>
+ * <tr>
+ * <td>Fixed</td>
+ * <td>italicAngle</td>
+ * <td> Italic angle in counter-clockwise degrees from the vertical. Zero for
+ * upright text, negative for text that leans to the right (forward)</td>
+ * </tr>
+ * <tr>
+ * <td>FWord</td>
+ * <td>underlinePosition</td>
+ * <td> Suggested values for the underline position (negative values indicate
+ * below baseline).</td>
+ * </tr>
+ * <tr>
+ * <td>FWord</td>
+ * <td>underlineThickness</td>
+ * <td> Suggested values for the underline thickness.</td>
+ * </tr>
+ * <tr>
+ * <td>ULONG</td>
+ * <td>isFixedPitch</td>
+ * <td> Set to 0 if the font is proportionally spaced, non-zero if the font is
+ * not proportionally spaced (i.e. monospaced).</td>
+ * </tr>
+ * <tr>
+ * <td>ULONG</td>
+ * <td>minMemType42</td>
+ * <td> Minimum memory usage when a TrueType font is downloaded.</td>
+ * </tr>
+ * <tr>
+ * <td>ULONG</td>
+ * <td>maxMemType42</td>
+ * <td> Maximum memory usage when a TrueType font is downloaded.</td>
+ * <tr>
+ * <tr>
+ * <td>ULONG</td>
+ * <td>minMemType1</td>
+ * <td> Minimum memory usage when a TrueType font is downloaded as a Type 1
+ * font.</td>
+ * </tr>
+ * <tr>
+ * <td>ULONG</td>
+ * <td>maxMemType1</td>
+ * <td> Maximum memory usage when a TrueType font is downloaded as a Type 1
+ * font.</td>
+ * <tr> </table>
+ * 
  * <p>
- * This version is used by OpenType fonts with TrueType or CFF data.
- * The version makes it possible to create a special font that is
- * not burdened with a large 'post' table set of glyph names.
+ * Format 2
+ * </p>
+ * <table border="1"> <tbody>
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * </tbody>
+ * <tr>
+ * <td>uint16</td>
+ * <td>numberOfGlyphs</td>
+ * <td>number of glyphs</td>
+ * </tr>
+ * <tr>
+ * <td>uint16</td>
+ * <td>glyphNameIndex[numberOfGlyphs]</td>
+ * <td> Ordinal number of this glyph in <code>'post'</code> string tables.
+ * This is not an offset.</td>
+ * </tr>
+ * <tr>
+ * <td>Pascal string</td>
+ * <td>names[numberNewGlyphs]</td>
+ * <td> glyph names with length bytes [variable] (a Pascal string)</td>
+ * </tr>
+ * </table>
+ * 
+ * <p>
+ * Format 3
  * </p>
  * <p>
- * This version specifies that no PostScript name information is provided
- * for the glyphs in this font file. The printing behavior of this version
- * on PostScript printers is unspecified, except that it should not result
- * in a fatal or unrecoverable error. Some drivers may print nothing,
- * other drivers may attempt to print using a default naming scheme.
+ * This version is used by OpenType fonts with TrueType or CFF data. The version
+ * makes it possible to create a special font that is not burdened with a large
+ * 'post' table set of glyph names.
  * </p>
- *
+ * <p>
+ * This version specifies that no PostScript name information is provided for
+ * the glyphs in this font file. The printing behavior of this version on
+ * PostScript printers is unspecified, except that it should not result in a
+ * fatal or unrecoverable error. Some drivers may print nothing, other drivers
+ * may attempt to print using a default naming scheme.
+ * </p>
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -131,14 +169,16 @@ public class TtfTablePOST extends AbstractXtfTable
 
     /**
      * 'post' Format 1
-     * <p>The order in which glyphs are placed in a font
-     * is at the convenience of the font developer To use format 1,
-     * a font must contain exactly the 258 glyphs
-     * in the standard Macintosh ordering.
-     * For such fonts, the glyph names are taken from the system.
-     * As a result, this format does not require a special subtable.
+     * <p>
+     * The order in which glyphs are placed in a font is at the convenience of
+     * the font developer To use format 1, a font must contain exactly the 258
+     * glyphs in the standard Macintosh ordering. For such fonts, the glyph
+     * names are taken from the system. As a result, this format does not
+     * require a special subtable.
      * </p>
-     * <p>The names for these 258 glyphs are, in order:</p>
+     * <p>
+     * The names for these 258 glyphs are, in order:
+     * </p>
      */
     private static final String[] FORMAT1NAME = {".notdef", // 0
             ".null", // 1
@@ -310,7 +350,7 @@ public class TtfTablePOST extends AbstractXtfTable
             "approxequal", // 167
             "increment", // 168
             "guillemotleft", // 169
-            "guillemotright", //170
+            "guillemotright", // 170
             "ellipsis", // 171
             "nbspace", // 172
             "Agrave", // 173
@@ -331,12 +371,12 @@ public class TtfTablePOST extends AbstractXtfTable
             "fraction", // 188
             "currency", // 189
             "guilsinglleft", // 190
-            "guilsinglright", //191
+            "guilsinglright", // 191
             "fi", // 192
             "fl", // 193
             "daggerdbl", // 194
             "middot", // 195
-            "quotesinglbase", //196
+            "quotesinglbase", // 196
             "quotedblbase", // 197
             "perthousand", // 198
             "Acircumflex", // 199
@@ -462,10 +502,10 @@ public class TtfTablePOST extends AbstractXtfTable
 
     /**
      * Create a new object.
-     *
-     * @param tablemap  the tablemap
-     * @param de        directory entry
-     * @param rar       input
+     * 
+     * @param tablemap the tablemap
+     * @param de directory entry
+     * @param rar input
      * @throws IOException if an IO-error occured
      */
     TtfTablePOST(XtfTableMap tablemap, XtfTableDirectory.Entry de,
@@ -484,10 +524,10 @@ public class TtfTablePOST extends AbstractXtfTable
         maxMemType1 = rar.readInt();
 
         switch (version) {
-            case FORMAT1 :
+            case FORMAT1:
                 // see FORMAT1NAME
                 break;
-            case FORMAT2 :
+            case FORMAT2:
                 // This TrueType-based font file contains glyphs
                 // not in the standard Macintosh set or the ordering
                 // of the glyphs in the TrueType font file is non-standard
@@ -516,19 +556,20 @@ public class TtfTablePOST extends AbstractXtfTable
                     }
                 }
                 break;
-            case FORMAT25 :
+            case FORMAT25:
                 break;
-            case FORMAT3 :
+            case FORMAT3:
                 break;
-            case FORMAT4 :
+            case FORMAT4:
                 break;
-            default :
+            default:
                 break;
         }
     }
 
     /**
      * Returns the highest glyph index.
+     * 
      * @return Returns the highest glyph index
      */
     private int highestGlyphNameIndex() {
@@ -544,23 +585,24 @@ public class TtfTablePOST extends AbstractXtfTable
 
     /**
      * Returns the glyph name.
+     * 
      * @param i index
      * @return Returns the glyph name
      */
     public String getGlyphName(int i) {
 
         switch (version) {
-            case FORMAT1 :
+            case FORMAT1:
                 return (i > FORMAT1NAME.length - 1)
                         ? ".notdef"
                         : FORMAT1NAME[i];
-            case FORMAT2 :
+            case FORMAT2:
                 return (glyphNameIndex[i] > FORMAT1NAME.length - 1)
                         ? psGlyphName[glyphNameIndex[i] - FORMAT1NAME.length]
                         : FORMAT1NAME[glyphNameIndex[i]];
             case FORMAT3:
                 // TODO
-            default :
+            default:
                 break;
         }
         return null;
@@ -568,6 +610,7 @@ public class TtfTablePOST extends AbstractXtfTable
 
     /**
      * Returns the position of a glpyhname or -1 if not found.
+     * 
      * @param glypname The glpyh name.
      * @return Returns the position of a glpyhname.
      */
@@ -585,6 +628,7 @@ public class TtfTablePOST extends AbstractXtfTable
 
     /**
      * Get the table type, as a table directory value.
+     * 
      * @return The table type
      */
     public int getType() {
@@ -593,6 +637,8 @@ public class TtfTablePOST extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -602,6 +648,7 @@ public class TtfTablePOST extends AbstractXtfTable
 
     /**
      * Returns the glyphNameIndex.
+     * 
      * @return Returns the glyphNameIndex.
      */
     public int[] getGlyphNameIndex() {
@@ -611,6 +658,7 @@ public class TtfTablePOST extends AbstractXtfTable
 
     /**
      * Returns the isFixedPitch.
+     * 
      * @return Returns the isFixedPitch.
      */
     public int getIsFixedPitch() {
@@ -620,6 +668,7 @@ public class TtfTablePOST extends AbstractXtfTable
 
     /**
      * Returns the italicAngle.
+     * 
      * @return Returns the italicAngle.
      */
     public int getItalicAngle() {
@@ -629,6 +678,7 @@ public class TtfTablePOST extends AbstractXtfTable
 
     /**
      * Returns the maxMemType1.
+     * 
      * @return Returns the maxMemType1.
      */
     public int getMaxMemType1() {
@@ -638,6 +688,7 @@ public class TtfTablePOST extends AbstractXtfTable
 
     /**
      * Returns the maxMemType42.
+     * 
      * @return Returns the maxMemType42.
      */
     public int getMaxMemType42() {
@@ -647,6 +698,7 @@ public class TtfTablePOST extends AbstractXtfTable
 
     /**
      * Returns the minMemType1.
+     * 
      * @return Returns the minMemType1.
      */
     public int getMinMemType1() {
@@ -656,6 +708,7 @@ public class TtfTablePOST extends AbstractXtfTable
 
     /**
      * Returns the minMemType42.
+     * 
      * @return Returns the minMemType42.
      */
     public int getMinMemType42() {
@@ -665,6 +718,7 @@ public class TtfTablePOST extends AbstractXtfTable
 
     /**
      * Returns the numGlyphs.
+     * 
      * @return Returns the numGlyphs.
      */
     public int getNumGlyphs() {
@@ -674,6 +728,7 @@ public class TtfTablePOST extends AbstractXtfTable
 
     /**
      * Returns the psGlyphName.
+     * 
      * @return Returns the psGlyphName.
      */
     public String[] getPsGlyphName() {
@@ -683,6 +738,7 @@ public class TtfTablePOST extends AbstractXtfTable
 
     /**
      * Returns the underlinePosition.
+     * 
      * @return Returns the underlinePosition.
      */
     public short getUnderlinePosition() {
@@ -692,6 +748,7 @@ public class TtfTablePOST extends AbstractXtfTable
 
     /**
      * Returns the underlineThickness.
+     * 
      * @return Returns the underlineThickness.
      */
     public short getUnderlineThickness() {
@@ -701,6 +758,7 @@ public class TtfTablePOST extends AbstractXtfTable
 
     /**
      * Returns the version.
+     * 
      * @return Returns the version.
      */
     public int getVersion() {
@@ -710,7 +768,8 @@ public class TtfTablePOST extends AbstractXtfTable
 
     /**
      * Returns the int-value for a glyph.
-     * @param id    the id for the glyph
+     * 
+     * @param id the id for the glyph
      * @return Returns the int-value for a glyph.
      */
     public int getGlyphValue(int id) {
@@ -723,6 +782,8 @@ public class TtfTablePOST extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
@@ -738,17 +799,16 @@ public class TtfTablePOST extends AbstractXtfTable
         writer.writeAttribute("minmentype42", String.valueOf(minMemType42));
         writer.writeAttribute("numglyphs", String.valueOf(numGlyphs));
         writer
-                .writeAttribute("underlinepos", String
-                        .valueOf(underlinePosition));
+            .writeAttribute("underlinepos", String.valueOf(underlinePosition));
         writer.writeAttribute("underlinethickness", String
-                .valueOf(underlineThickness));
+            .valueOf(underlineThickness));
 
         if (glyphNameIndex != null) {
             for (int i = 0; i < glyphNameIndex.length; i++) {
                 writer.writeStartElement("glyphname");
                 writer.writeAttribute("id", String.valueOf(i));
                 writer.writeAttribute("value", String
-                        .valueOf(glyphNameIndex[i]));
+                    .valueOf(glyphNameIndex[i]));
                 writer.writeAttribute("name", getGlyphName(i));
                 writer.writeEndElement();
             }

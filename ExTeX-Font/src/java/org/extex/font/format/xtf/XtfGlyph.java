@@ -101,6 +101,7 @@ public class XtfGlyph {
      */
     public void reset() {
 
+        //???
     }
 
     /**

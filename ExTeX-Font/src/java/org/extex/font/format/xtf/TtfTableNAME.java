@@ -26,29 +26,46 @@ import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
-
 /**
- * The name table(tag name: 'name') allows you to include human-readable
- * names for features and settings, copyright notices, font names,
- * style names, and other information related to your font.
- *
- * <table border="1">
- *   <tbody>
- *     <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
- *   </tbody>
- *   <tr><td>UInt16</td><td>format</td><td>Format selector. Set to 0.</td></tr>
- *   <tr><td>UInt16</td><td>count</td><td>
- *              The number of nameRecords in this name table.</td></tr>
- *   <tr><td>UInt16</td><td>stringOffset</td><td>
- *              Offset in bytes to the beginning of the
- *              name character strings.</td></tr>
- *   <tr><td>NameRecord</td><td>nameRecord[count]</td><td>
- *              The name records array.</td></tr>
- *   <tr><td>variable</td><td>name</td><td>
- *              character strings The character strings of the names.
- *              Note that these are not necessarily ASCII!</td></tr>
+ * The name table(tag name: 'name') allows you to include human-readable names
+ * for features and settings, copyright notices, font names, style names, and
+ * other information related to your font.
+ * 
+ * <table border="1"> <tbody>
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * </tbody>
+ * <tr>
+ * <td>UInt16</td>
+ * <td>format</td>
+ * <td>Format selector. Set to 0.</td>
+ * </tr>
+ * <tr>
+ * <td>UInt16</td>
+ * <td>count</td>
+ * <td> The number of nameRecords in this name table.</td>
+ * </tr>
+ * <tr>
+ * <td>UInt16</td>
+ * <td>stringOffset</td>
+ * <td> Offset in bytes to the beginning of the name character strings.</td>
+ * </tr>
+ * <tr>
+ * <td>NameRecord</td>
+ * <td>nameRecord[count]</td>
+ * <td> The name records array.</td>
+ * </tr>
+ * <tr>
+ * <td>variable</td>
+ * <td>name</td>
+ * <td> character strings The character strings of the names. Note that these
+ * are not necessarily ASCII!</td>
+ * </tr>
  * </table>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -79,10 +96,10 @@ public class TtfTableNAME extends AbstractXtfTable
 
     /**
      * Create a new object.
-     *
-     * @param tablemap  the tablemap
-     * @param de        directory entry
-     * @param rar       input
+     * 
+     * @param tablemap the tablemap
+     * @param de directory entry
+     * @param rar input
      * @throws IOException if an IO-error occurs
      */
     TtfTableNAME(XtfTableMap tablemap, XtfTableDirectory.Entry de,
@@ -95,7 +112,8 @@ public class TtfTableNAME extends AbstractXtfTable
         stringOffset = rar.readShort();
         namerecords = new NameRecord[count];
 
-        // Load the records, which contain the encoding information and string offsets
+        // Load the records, which contain the encoding information and string
+        // offsets
         for (int i = 0; i < count; i++) {
             namerecords[i] = new NameRecord(rar);
         }
@@ -149,9 +167,10 @@ public class TtfTableNAME extends AbstractXtfTable
     /**
      * ID - name.
      */
-    public static final String[] IDNAME = {"COPYRIGHTNOTICE", "FONTFAMILYNAME",
-            "FONTSUBFAMILYNAM", "UNIQUEFONTIDENTIFIER", "FULLFONTNAME",
-            "VERSIONSTRING", "POSTSCRIPTNAME", "TRADEMARK"};
+    public static final String[] IDNAME =
+            {"COPYRIGHTNOTICE", "FONTFAMILYNAME", "FONTSUBFAMILYNAM",
+                    "UNIQUEFONTIDENTIFIER", "FULLFONTNAME", "VERSIONSTRING",
+                    "POSTSCRIPTNAME", "TRADEMARK"};
 
     /**
      * platform apple unicode.
@@ -176,12 +195,13 @@ public class TtfTableNAME extends AbstractXtfTable
     /**
      * platform names.
      */
-    public static final String[] PLATFORMNAME = {"APPLEUNICODE", "MACINTOSH",
-            "ISO", "MICROSOFT"};
+    public static final String[] PLATFORMNAME =
+            {"APPLEUNICODE", "MACINTOSH", "ISO", "MICROSOFT"};
 
     /**
      * Returns the record.
-     * @param nameId    name id
+     * 
+     * @param nameId name id
      * @return Returns the record.
      */
     public String getRecord(short nameId) {
@@ -197,6 +217,7 @@ public class TtfTableNAME extends AbstractXtfTable
 
     /**
      * Get the table type, as a table directory value.
+     * 
      * @return Returns the table type
      */
     public int getType() {
@@ -205,6 +226,8 @@ public class TtfTableNAME extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -214,6 +237,7 @@ public class TtfTableNAME extends AbstractXtfTable
 
     /**
      * Returns the format.
+     * 
      * @return Returns the format.
      */
     public short getFormat() {
@@ -222,8 +246,8 @@ public class TtfTableNAME extends AbstractXtfTable
     }
 
     /**
-     * Returns the count.
-     * The number of nameRecords in this name table.
+     * Returns the count. The number of nameRecords in this name table.
+     * 
      * @return Returns the count.
      */
     public short getCount() {
@@ -232,8 +256,9 @@ public class TtfTableNAME extends AbstractXtfTable
     }
 
     /**
-     * Returns the namerecords.
-     * @return Returns the namerecords.
+     * Returns the name records.
+     * 
+     * @return Returns the name records.
      */
     public NameRecord[] getNameRecords() {
 
@@ -242,8 +267,10 @@ public class TtfTableNAME extends AbstractXtfTable
 
     /**
      * Check, if a record for the platform exists.
-     * @param platfromid    Teh platform id.
-     * @return Returns <code>true</code>, if a record for the platform exists.
+     * 
+     * @param platfromid The platform id.
+     * @return Returns <code>true</code>, if a record for the platform
+     *         exists.
      */
     public boolean existsPlatfrom(int platfromid) {
 
@@ -256,9 +283,10 @@ public class TtfTableNAME extends AbstractXtfTable
     }
 
     /**
-     * Returns the namerecords for a platfrom id.
+     * Returns the name records for a platform id.
+     * 
      * @param platfromid The platform id.
-     * @return Returns the namerecords for a platfrom id.
+     * @return Returns the name records for a platform id.
      */
     public NameRecord[] getNameRecords(int platfromid) {
 
@@ -280,9 +308,11 @@ public class TtfTableNAME extends AbstractXtfTable
     }
 
     /**
-     * Returns the namerecords for a platfrom id.
+     * Returns the name records for a platform id.
+     * 
      * @param platfromid The platform id.
-     * @return Returns the namerecords for a platfrom id.
+     * @param id TODO mgn
+     * @return Returns the name records for a platform id.
      */
     public String getRecordString(int platfromid, int id) {
 
@@ -298,6 +328,7 @@ public class TtfTableNAME extends AbstractXtfTable
 
     /**
      * Returns the stringOffset.
+     * 
      * @return Returns the stringOffset.
      */
     public short getStringOffset() {
@@ -307,6 +338,7 @@ public class TtfTableNAME extends AbstractXtfTable
 
     /**
      * Returns the platform ids.
+     * 
      * @return Returns the platform ids.
      */
     public int[] getPlatformIDs() {
@@ -323,7 +355,8 @@ public class TtfTableNAME extends AbstractXtfTable
 
     /**
      * Returns the platform name for a id.
-     * @param id    The platform id.
+     * 
+     * @param id The platform id.
      * @return Returns the platform name for a id.
      */
     public static String getPlatformName(int id) {
@@ -336,7 +369,8 @@ public class TtfTableNAME extends AbstractXtfTable
 
     /**
      * Returns the name for a id.
-     * @param id    The name id.
+     * 
+     * @param id The name id.
      * @return Returns the name name for a id.
      */
     public static String getIdName(int id) {
@@ -348,6 +382,8 @@ public class TtfTableNAME extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
@@ -370,41 +406,91 @@ public class TtfTableNAME extends AbstractXtfTable
 
     /**
      * NameRecord.
-     *
-     * <table BORDER="1">
-     *   <tbody>
-     *     <tr><td><b>Type</b></td><td><b>Description</b></td></tr>
-     *   </tbody>
-     *   <tr><td>USHORT</td><td>Platform ID.</td></tr>
-     *   <tr><td>USHORT</td><<td>Platform-specific encoding ID.</td></tr>
-     *   <tr><td>USHORT</td><td>Language ID.</td></tr>
-     *   <tr><td>USHORT</td><td>Name ID.</td></tr>
-     *   <tr><td>USHORT</td><td>String length (in bytes).</td>/tr>
-     *   <tr><td>USHORT</td><td>String offset from start
-     *                   of storage area (in bytes).</td></tr>
+     * 
+     * <table BORDER="1"> <tbody>
+     * <tr>
+     * <td><b>Type</b></td>
+     * <td><b>Description</b></td>
+     * </tr>
+     * </tbody>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>Platform ID.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td><
+     * <td>Platform-specific encoding ID.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>Language ID.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>Name ID.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>String length (in bytes).</td>
+     * /tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>String offset from start of storage area (in bytes).</td>
+     * </tr>
      * </table>
-     *
-     * <p><b>Platform ID</b></p>
-     *
-     * <table BORDER="1">
-     *   <tbody>
-     *     <tr><td><b>ID</b></td><td><b>Platform</b></td><td><b>Specific encoding</b></td></tr>
-     *   </tbody>
-     *   <tr><td>0</td><td>Unicode</td><td>none</td></tr>
-     *   <tr><td>1</td><td>Macintosh</td><td>Script manager code</td></tr>
-     *   <tr><td>2</td><td>ISO</td><td>ISO encoding</td></tr>
-     *   <tr><td>3</td><td>Microsoft</td><td>Microsoft encoding</td></tr>
+     * 
+     * <p>
+     * <b>Platform ID</b>
+     * </p>
+     * 
+     * <table BORDER="1"> <tbody>
+     * <tr>
+     * <td><b>ID</b></td>
+     * <td><b>Platform</b></td>
+     * <td><b>Specific encoding</b></td>
+     * </tr>
+     * </tbody>
+     * <tr>
+     * <td>0</td>
+     * <td>Unicode</td>
+     * <td>none</td>
+     * </tr>
+     * <tr>
+     * <td>1</td>
+     * <td>Macintosh</td>
+     * <td>Script manager code</td>
+     * </tr>
+     * <tr>
+     * <td>2</td>
+     * <td>ISO</td>
+     * <td>ISO encoding</td>
+     * </tr>
+     * <tr>
+     * <td>3</td>
+     * <td>Microsoft</td>
+     * <td>Microsoft encoding</td>
+     * </tr>
      * </table>
-     *
-     * <p><b>Microsoft platform-specific encoding ID&rsquo;s (platform ID = 3)</b></p>
-     *
-     * <table BORDER="1">
-     *   <tbody>
-     *     <tr><td><b>Code</b></td><td><b>Description</b></td></tr>
-     *   </tbody>
-     *   <tr><td>0</td><td>Undefined character set or indexing scheme</td></tr>
-     *   <tr><td>1</td><td>UGL character set  with Unicode indexing scheme (see
-     *                     chapter, &ldquo;Character Sets.&rdquo;)</td></tr>
+     * 
+     * <p>
+     * <b>Microsoft platform-specific encoding ID&rsquo;s (platform ID = 3)</b>
+     * </p>
+     * 
+     * <table BORDER="1"> <tbody>
+     * <tr>
+     * <td><b>Code</b></td>
+     * <td><b>Description</b></td>
+     * </tr>
+     * </tbody>
+     * <tr>
+     * <td>0</td>
+     * <td>Undefined character set or indexing scheme</td>
+     * </tr>
+     * <tr>
+     * <td>1</td>
+     * <td>UGL character set with Unicode indexing scheme (see chapter,
+     * &ldquo;Character Sets.&rdquo;)</td>
+     * </tr>
      * </table>
      */
     public class NameRecord implements XMLWriterConvertible {
@@ -446,8 +532,8 @@ public class TtfTableNAME extends AbstractXtfTable
 
         /**
          * Create a new object.
-         *
-         * @param rar       input
+         * 
+         * @param rar input
          * @throws IOException if an IO-error occurs
          */
         NameRecord(RandomAccessR rar) throws IOException {
@@ -462,6 +548,7 @@ public class TtfTableNAME extends AbstractXtfTable
 
         /**
          * Returns the encoding id.
+         * 
          * @return Returns the encoding id
          */
         public short getEncodingId() {
@@ -471,6 +558,7 @@ public class TtfTableNAME extends AbstractXtfTable
 
         /**
          * Returns the language id.
+         * 
          * @return Returns the language id
          */
         public short getLanguageId() {
@@ -480,6 +568,7 @@ public class TtfTableNAME extends AbstractXtfTable
 
         /**
          * Returns the name id.
+         * 
          * @return Returns the name id
          */
         public short getNameId() {
@@ -489,6 +578,7 @@ public class TtfTableNAME extends AbstractXtfTable
 
         /**
          * Returns the platform id.
+         * 
          * @return Returns the platform id
          */
         public short getPlatformId() {
@@ -498,6 +588,7 @@ public class TtfTableNAME extends AbstractXtfTable
 
         /**
          * Returns the record string.
+         * 
          * @return Returns the record string
          */
         public String getRecordString() {
@@ -507,35 +598,36 @@ public class TtfTableNAME extends AbstractXtfTable
 
         /**
          * Load the string.
-         * @param rar                   input
-         * @param stringStorageOffset   offsset
+         * 
+         * @param rar input
+         * @param stringStorageOffset offset
          * @throws IOException if an IO-error occurs
          */
-        public void loadString(RandomAccessR rar,
-                int stringStorageOffset) throws IOException {
+        public void loadString(RandomAccessR rar, int stringStorageOffset)
+                throws IOException {
 
             StringBuffer sb = new StringBuffer();
             rar.seek(stringStorageOffset + stringOffset);
             switch (platformId) {
-                case APPLE_UNICODE :
+                case APPLE_UNICODE:
                     for (int i = 0; i < stringLength / 2; i++) {
                         sb.append(rar.readChar());
                     }
                     break;
-                case MACINTOSH :
+                case MACINTOSH:
                     for (int i = 0; i < stringLength; i++) {
                         sb.append((char) rar.readByte());
                     }
                     break;
-                case ISO :
+                case ISO:
                     for (int i = 0; i < stringLength; i++) {
                         sb.append((char) rar.readByte());
                     }
-                case MICROSOFT :
+                case MICROSOFT:
                     for (int i = 0; i < stringLength / 2; i++) {
                         sb.append(rar.readChar());
                     }
-                default :
+                default:
                     break;
             }
             record = sb.toString();
@@ -543,6 +635,7 @@ public class TtfTableNAME extends AbstractXtfTable
 
         /**
          * Returns the record.
+         * 
          * @return Returns the record.
          */
         public String getRecord() {
@@ -552,6 +645,7 @@ public class TtfTableNAME extends AbstractXtfTable
 
         /**
          * Returns the stringLength.
+         * 
          * @return Returns the stringLength.
          */
         public short getStringLength() {
@@ -561,6 +655,7 @@ public class TtfTableNAME extends AbstractXtfTable
 
         /**
          * Returns the stringOffset.
+         * 
          * @return Returns the stringOffset.
          */
         public short getStringOffset() {
@@ -570,6 +665,7 @@ public class TtfTableNAME extends AbstractXtfTable
 
         /**
          * Returns the info for this class.
+         * 
          * @return Returns the info for this class
          */
         public String toString() {
@@ -581,6 +677,8 @@ public class TtfTableNAME extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
@@ -603,4 +701,5 @@ public class TtfTableNAME extends AbstractXtfTable
             writer.writeEndElement();
         }
     }
+
 }

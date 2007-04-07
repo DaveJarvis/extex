@@ -23,10 +23,9 @@ import java.io.IOException;
 
 import org.extex.util.file.random.RandomAccessR;
 
-
 /**
  * Abstract class for all coverage
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -49,7 +48,7 @@ public abstract class XtfCoverage {
 
     /**
      * Create a new onject
-     *
+     * 
      * @param fm the format
      */
     XtfCoverage(int fm) {
@@ -59,17 +58,17 @@ public abstract class XtfCoverage {
 
     /**
      * Returns the index of the glyph within the coverage
-     *
+     * 
      * @param glyphId The ID of the glyph to find.
-     * @return Returns the index of the glyph within the coverage, or -1 if the glyph
-     * can't be found.
+     * @return Returns the index of the glyph within the coverage, or -1 if the
+     *         glyph can't be found.
      */
     public abstract int findGlyph(int glyphId);
 
     /**
      * Create a new instance and read the coverage
-     *
-     * @param rar   input
+     * 
+     * @param rar input
      * @return Returns the new coverage
      * @throws IOException if an IO-error occrs
      */
@@ -87,6 +86,7 @@ public abstract class XtfCoverage {
 
     /**
      * Returns the format
+     * 
      * @return Returns the format
      */
     public int getFormat() {
@@ -111,8 +111,8 @@ public abstract class XtfCoverage {
 
         /**
          * Create a new object
-         *
-         * @param rar   input
+         * 
+         * @param rar input
          * @throws IOException if an IO-error occurs
          */
         CoverageFormat1(RandomAccessR rar) throws IOException {
@@ -127,6 +127,8 @@ public abstract class XtfCoverage {
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.font.format.xtf.XtfCoverage#findGlyph(int)
          */
         public int findGlyph(int glyphId) {
@@ -158,8 +160,8 @@ public abstract class XtfCoverage {
 
         /**
          * Create a new object
-         *
-         * @param rar   input
+         * 
+         * @param rar input
          * @throws IOException if an IO-error occurs
          */
         CoverageFormat2(RandomAccessR rar) throws IOException {
@@ -174,6 +176,8 @@ public abstract class XtfCoverage {
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.font.format.xtf.XtfCoverage#findGlyph(int)
          */
         public int findGlyph(int glyphId) {
@@ -211,7 +215,8 @@ public abstract class XtfCoverage {
 
         /**
          * Create anew object
-         * @param rar       the input
+         * 
+         * @param rar the input
          * @throws IOException if an IO-error occurs
          */
         RangeRecord(RandomAccessR rar) throws IOException {
@@ -223,7 +228,8 @@ public abstract class XtfCoverage {
 
         /**
          * Check, if the glyph id is in the range.
-         * @param glyphId   the glyph id
+         * 
+         * @param glyphId the glyph id
          * @return Check, if the glyph id is in the range.
          */
         public boolean isInRange(int glyphId) {
@@ -233,7 +239,8 @@ public abstract class XtfCoverage {
 
         /**
          * Returns the coverage index
-         * @param glyphId   the glyph id
+         * 
+         * @param glyphId the glyph id
          * @return Returns the coverage index
          */
         public int getCoverageIndex(int glyphId) {

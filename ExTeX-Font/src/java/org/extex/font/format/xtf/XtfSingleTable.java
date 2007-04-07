@@ -23,10 +23,9 @@ import java.io.IOException;
 
 import org.extex.util.file.random.RandomAccessR;
 
-
 /**
  * SingleTable
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -44,7 +43,8 @@ public abstract class XtfSingleTable extends XtfLookupTable {
 
     /**
      * Create a new object.
-     * @param format    the format
+     * 
+     * @param format the format
      */
     XtfSingleTable(int format) {
 
@@ -53,21 +53,23 @@ public abstract class XtfSingleTable extends XtfLookupTable {
     }
 
     /**
-     * Retunrs the subsitute.
-     * @param glyphId   hte glyph id
-     * @return Retunrs the subsitute.
+     * Returns the substitute.
+     * 
+     * @param glyphId the glyph id
+     * @return Returns the substitute.
      */
     public abstract int substitute(int glyphId);
 
     /**
      * Create a new Instance.
-     * @param rar       the input
-     * @param offset    the offset
+     * 
+     * @param rar the input
+     * @param offset the offset
      * @return Returns the new instance.
      * @throws IOException if an IO-error occurs
      */
-    public static XtfSingleTable newInstance(RandomAccessR rar,
-            int offset) throws IOException {
+    public static XtfSingleTable newInstance(RandomAccessR rar, int offset)
+            throws IOException {
 
         XtfSingleTable s = null;
         rar.seek(offset);
@@ -102,12 +104,12 @@ public abstract class XtfSingleTable extends XtfLookupTable {
 
         /**
          * Create a new object.
-         * @param rar       the input
-         * @param offset    the offset
+         * 
+         * @param rar the input
+         * @param offset the offset
          * @throws IOException if an IO_error occurs
          */
-        SingleTableFormat1(RandomAccessR rar, int offset)
-                throws IOException {
+        SingleTableFormat1(RandomAccessR rar, int offset) throws IOException {
 
             super(FORMAT1);
             coverageOffset = rar.readUnsignedShort();
@@ -117,6 +119,8 @@ public abstract class XtfSingleTable extends XtfLookupTable {
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.font.format.xtf.XtfSingleTable#substitute(int)
          */
         public int substitute(int glyphId) {
@@ -156,12 +160,12 @@ public abstract class XtfSingleTable extends XtfLookupTable {
 
         /**
          * Create a new object.
-         * @param rar       the input
-         * @param offset    the offset
+         * 
+         * @param rar the input
+         * @param offset the offset
          * @throws IOException if an IO-error occurs
          */
-        SingleTableFormat2(RandomAccessR rar, int offset)
-                throws IOException {
+        SingleTableFormat2(RandomAccessR rar, int offset) throws IOException {
 
             super(FORMAT2);
             coverageOffset = rar.readUnsignedShort();
@@ -175,6 +179,8 @@ public abstract class XtfSingleTable extends XtfLookupTable {
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.font.format.xtf.XtfSingleTable#substitute(int)
          */
         public int substitute(int glyphId) {
@@ -187,4 +193,3 @@ public abstract class XtfSingleTable extends XtfLookupTable {
         }
     }
 }
-

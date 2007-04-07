@@ -25,24 +25,28 @@ import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
-
 /**
  * The table 'fpgm' (BaseFont Program).
- *
+ * 
  * <p>
  * This table is similar to the CVT Program, except that it is only run once,
- * when the font is first used. It is used only for FDEFs and IDEFs.
- * Thus the CVT Program need not contain function definitions.
- * However, the CVT Program may redefine existing FDEFs or IDEFs.
+ * when the font is first used. It is used only for FDEFs and IDEFs. Thus the
+ * CVT Program need not contain function definitions. However, the CVT Program
+ * may redefine existing FDEFs or IDEFs.
  * <p>
- *
- * <table BORDER="1">
- *   <thead>
- *      <tr><td><b>Type</b></td><td><b>Description</b></td></tr>
- *   </thead>
- *   <tr><td>BYTE[ <I>n</I> ]</td><td>Instructions</td></tr>
+ * 
+ * <table BORDER="1"> <thead>
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * </thead>
+ * <tr>
+ * <td>BYTE[ <I>n</I> ]</td>
+ * <td>Instructions</td>
+ * </tr>
  * </table>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -53,10 +57,10 @@ public class TtfTableFPGM extends AbstractXtfTable
 
     /**
      * Create a new object.
-     *
-     * @param tablemap  the table map
-     * @param de        directory entry
-     * @param rar       the RandomAccessInput
+     * 
+     * @param tablemap the table map
+     * @param de directory entry
+     * @param rar the RandomAccessInput
      * @throws IOException if an error occurred.
      */
     TtfTableFPGM(XtfTableMap tablemap, XtfTableDirectory.Entry de,
@@ -78,6 +82,7 @@ public class TtfTableFPGM extends AbstractXtfTable
 
     /**
      * Returns the instructions
+     * 
      * @return Returns the instructions
      */
     public byte[] getInstructions() {
@@ -87,6 +92,7 @@ public class TtfTableFPGM extends AbstractXtfTable
 
     /**
      * Get the table type, as a table directory value.
+     * 
      * @return Returns the table type
      */
     public int getType() {
@@ -95,6 +101,8 @@ public class TtfTableFPGM extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -103,6 +111,8 @@ public class TtfTableFPGM extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */

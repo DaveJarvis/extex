@@ -27,29 +27,48 @@ import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
-
 /**
- * The 'glyf' table contains the data that defines the appearance
- * of the glyphs in the font. This includes specification of the
- * points that describe the contours that make up a glyph outline
- * and the instructions that grid-fit that glyph. The 'glyf' table
- * supports the definition of simple glyphs and compound glyphs,
- * that is, glyphs that are made up of other glyphs.
- *
- * <table BORDER="1">
- *   <tbody>
- *    <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
- *   </tbody>
- *   <tr><td>SHORT</td><td>numberOfContours</td><td>
- *           If the number of contours is greater than or equal
- *           to zero, this is a single glyph; if negative, this is a composite
- *           glyph.</td></tr>
- *   <tr><td>FWord</td><td>xMin</td><td>Minimum x for coordinate data.</td></tr>
- *   <tr><td>FWord</td><td>yMin</td><td>Minimum y for coordinate data.</td></tr>
- *   <tr><td>FWord</td><td>xMax</td><td>Maximum x for coordinate data.</td></tr>
- *   <tr><td>FWord</td><td>yMax</td><td>Maximum y for coordinate data.</td></tr>
+ * The 'glyf' table contains the data that defines the appearance of the glyphs
+ * in the font. This includes specification of the points that describe the
+ * contours that make up a glyph outline and the instructions that grid-fit that
+ * glyph. The 'glyf' table supports the definition of simple glyphs and compound
+ * glyphs, that is, glyphs that are made up of other glyphs.
+ * 
+ * <table BORDER="1"> <tbody>
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * </tbody>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>numberOfContours</td>
+ * <td> If the number of contours is greater than or equal to zero, this is a
+ * single glyph; if negative, this is a composite glyph.</td>
+ * </tr>
+ * <tr>
+ * <td>FWord</td>
+ * <td>xMin</td>
+ * <td>Minimum x for coordinate data.</td>
+ * </tr>
+ * <tr>
+ * <td>FWord</td>
+ * <td>yMin</td>
+ * <td>Minimum y for coordinate data.</td>
+ * </tr>
+ * <tr>
+ * <td>FWord</td>
+ * <td>xMax</td>
+ * <td>Maximum x for coordinate data.</td>
+ * </tr>
+ * <tr>
+ * <td>FWord</td>
+ * <td>yMax</td>
+ * <td>Maximum y for coordinate data.</td>
+ * </tr>
  * </table>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -70,10 +89,10 @@ public class TtfTableGLYF extends AbstractXtfTable
 
     /**
      * Create a new object.
-     *
-     * @param tablemap  the tablemap
-     * @param de        directory entry
-     * @param rar       the RandomAccessInput
+     * 
+     * @param tablemap the tablemap
+     * @param de directory entry
+     * @param rar the RandomAccessInput
      * @throws IOException if an error occured
      */
     TtfTableGLYF(XtfTableMap tablemap, XtfTableDirectory.Entry de,
@@ -87,6 +106,8 @@ public class TtfTableGLYF extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.AbstractXtfTable#getInitOrder()
      */
     public int getInitOrder() {
@@ -95,6 +116,8 @@ public class TtfTableGLYF extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.AbstractXtfTable#init()
      */
     public void init() {
@@ -117,11 +140,12 @@ public class TtfTableGLYF extends AbstractXtfTable
             if (len > 0) {
                 bais.reset();
                 bais.skip(loca.getOffset(i));
-                short numberOfContours = (short) (bais.read() << XtfConstants.SHIFT8 | bais
-                        .read());
+                short numberOfContours =
+                        (short) (bais.read() << XtfConstants.SHIFT8 | bais
+                            .read());
                 if (numberOfContours >= 0) {
-                    descript[i] = new SimpleDescript(this, numberOfContours,
-                            bais);
+                    descript[i] =
+                            new SimpleDescript(this, numberOfContours, bais);
                 }
             } else {
                 descript[i] = null;
@@ -133,8 +157,9 @@ public class TtfTableGLYF extends AbstractXtfTable
             if (len > 0) {
                 bais.reset();
                 bais.skip(loca.getOffset(i));
-                short numberOfContours = (short) (bais.read() << XtfConstants.SHIFT8 | bais
-                        .read());
+                short numberOfContours =
+                        (short) (bais.read() << XtfConstants.SHIFT8 | bais
+                            .read());
                 if (numberOfContours < 0) {
                     descript[i] = new CompositeDescript(this, bais);
                 }
@@ -145,6 +170,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
     /**
      * Returns the description
+     * 
      * @param i index
      * @return Returns the description
      */
@@ -155,6 +181,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
     /**
      * Get the table type, as a table directory value.
+     * 
      * @return Returns the table type
      */
     public int getType() {
@@ -163,6 +190,8 @@ public class TtfTableGLYF extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -171,6 +200,8 @@ public class TtfTableGLYF extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.util.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
@@ -195,70 +226,117 @@ public class TtfTableGLYF extends AbstractXtfTable
 
     /**
      * Simple Glyph Description.
-     *
-     * <table BORDER="1">
-     *   <tbody>
-     *     <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
-     *   </tbody>
-     *   <tr><td>USHORT</td><td>endPtsOfContours[<I>n</I>]</td></td>
-     *              Array of last points of each contour; <I>n</I>  is
-     *              the number of contours.</td></tr>
-     *   <tr><td>USHORT</td><td>instructionLength</td><td>
-     *              Total number of bytes for instructions.</td></tr>
-     *   <tr><td>BYTE</td><td>instructions[<I>n</I>]</td><td>
-     *              Array of instructions for each glyph; <I>n  </I>is
-     *              the number of instructions.</td></tr>
-     *   <tr><td>BYTE</td><td>flags[<I>n</I>]</td><td>
-     *              Array of flags for each coordinate in outline; <I>n</I>
-     *              is the number of flags.</td></tr>
-     *   <tr><td>BYTE or SHORT</td><td>xCoordinates[ ]</td><td>
-     *              First coordinates relative to (0,0); others are
-     *              relative to previous point.</td></tr>
-     *   <tr><td>BYTE or SHORT</td><td>yCoordinates[ ]</td><td>
-     *              First coordinates relative to (0,0); others are
-     *              relative to previous point.</td></tr>
+     * 
+     * <table BORDER="1"> <tbody>
+     * <tr>
+     * <td><b>Type</b></td>
+     * <td><b>Name</b></td>
+     * <td><b>Description</b></td>
+     * </tr>
+     * </tbody>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>endPtsOfContours[<I>n</I>]</td>
+     * </td>
+     * Array of last points of each contour; <I>n</I> is the number of
+     * contours.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>instructionLength</td>
+     * <td> Total number of bytes for instructions.</td>
+     * </tr>
+     * <tr>
+     * <td>BYTE</td>
+     * <td>instructions[<I>n</I>]</td>
+     * <td> Array of instructions for each glyph; <I>n </I>is the number of
+     * instructions.</td>
+     * </tr>
+     * <tr>
+     * <td>BYTE</td>
+     * <td>flags[<I>n</I>]</td>
+     * <td> Array of flags for each coordinate in outline; <I>n</I> is the
+     * number of flags.</td>
+     * </tr>
+     * <tr>
+     * <td>BYTE or SHORT</td>
+     * <td>xCoordinates[ ]</td>
+     * <td> First coordinates relative to (0,0); others are relative to previous
+     * point.</td>
+     * </tr>
+     * <tr>
+     * <td>BYTE or SHORT</td>
+     * <td>yCoordinates[ ]</td>
+     * <td> First coordinates relative to (0,0); others are relative to previous
+     * point.</td>
+     * </tr>
      * </table>
-     *
-     * <p>Each flag is a single byte. Their meanings are shown below.</p>
-     *
-     * <table BORDER="1">
-     *   <tbody>
-     *     <tr><td><b>Flags</b></td><td><b>Bit </b></td><td><b>Description</b></td></tr>
-     *   </tbody>
-     *   <tr><td>On Curve</td><td>0</td><td>
-     *              If set, the point is on the curve; otherwise, it is
-     *              off the curve.</td></tr>
-     *   <tr><td>x-Short Vector</td><td>1</td><td>
-     *              If set, the corresponding x-coordinate is 1 byte
-     *              long, not 2.</td></tr>
-     *   <tr><td>y-Short Vector</td><td>2</td><td>
-     *              If set, the corresponding y-coordinate is 1 byte
-     *               long, not 2.</td></tr>
-     *   <tr><td>Repeat</td><td>3</td><td>
-     *              If set, the next byte specifies the number of
-     *              additional times this set of flags is to be repeated. In this
-     *              way, the number of flags listed can be smaller than the number of
-     *              points in a character.</td></tr>
-     *   <tr><td>This x is same (Positive x-Short Vector)</td><td>4</td><td>
-     *              This flag has two meanings, depending on how the
-     *              x-Short Vector flag is set. If x-Short Vector is set, this bit
-     *              describes the sign of the value, with 1 equalling positive and 0
-     *              negative. If the x-Short Vector bit is not set and this bit is
-     *              set, then the current x-coordinate is the same as the previous
-     *              x-coordinate. If the x-Short Vector bit is not set and this bit
-     *              is also not set, the current x-coordinate is a signed 16-bit
-     *              delta vector.</td>/tr>
-     *    <tr><td>This y is same (Positive y-Short Vector)</td><td>5</td><td>
-     *              This flag has two meanings, depending on how the
-     *              y-Short Vector flag is set. If y-Short Vector is set, this bit
-     *              describes the sign of the value, with 1 equalling positive and 0
-     *              negative. If the y-Short Vector bit is not set and this bit is
-     *              set, then the current y-coordinate is the same as the previous
-     *              y-coordinate. If the y-Short Vector bit is not set and this bit
-     *              is also not set, the current y-coordinate is a signed 16-bit
-     *              delta vector.</td></tr>
-     *     <tr><td>Reserved</td><td>6</td><td>This bit is reserved. Set it to zero.</td></tr>
-     *     <tr><td>Reserved</td><td>7</td><td>This bit is reserved. Set it to zero.</td></tr>
+     * 
+     * <p>
+     * Each flag is a single byte. Their meanings are shown below.
+     * </p>
+     * 
+     * <table BORDER="1"> <tbody>
+     * <tr>
+     * <td><b>Flags</b></td>
+     * <td><b>Bit </b></td>
+     * <td><b>Description</b></td>
+     * </tr>
+     * </tbody>
+     * <tr>
+     * <td>On Curve</td>
+     * <td>0</td>
+     * <td> If set, the point is on the curve; otherwise, it is off the curve.</td>
+     * </tr>
+     * <tr>
+     * <td>x-Short Vector</td>
+     * <td>1</td>
+     * <td> If set, the corresponding x-coordinate is 1 byte long, not 2.</td>
+     * </tr>
+     * <tr>
+     * <td>y-Short Vector</td>
+     * <td>2</td>
+     * <td> If set, the corresponding y-coordinate is 1 byte long, not 2.</td>
+     * </tr>
+     * <tr>
+     * <td>Repeat</td>
+     * <td>3</td>
+     * <td> If set, the next byte specifies the number of additional times this
+     * set of flags is to be repeated. In this way, the number of flags listed
+     * can be smaller than the number of points in a character.</td>
+     * </tr>
+     * <tr>
+     * <td>This x is same (Positive x-Short Vector)</td>
+     * <td>4</td>
+     * <td> This flag has two meanings, depending on how the x-Short Vector flag
+     * is set. If x-Short Vector is set, this bit describes the sign of the
+     * value, with 1 equalling positive and 0 negative. If the x-Short Vector
+     * bit is not set and this bit is set, then the current x-coordinate is the
+     * same as the previous x-coordinate. If the x-Short Vector bit is not set
+     * and this bit is also not set, the current x-coordinate is a signed 16-bit
+     * delta vector.</td>
+     * /tr>
+     * <tr>
+     * <td>This y is same (Positive y-Short Vector)</td>
+     * <td>5</td>
+     * <td> This flag has two meanings, depending on how the y-Short Vector flag
+     * is set. If y-Short Vector is set, this bit describes the sign of the
+     * value, with 1 equalling positive and 0 negative. If the y-Short Vector
+     * bit is not set and this bit is set, then the current y-coordinate is the
+     * same as the previous y-coordinate. If the y-Short Vector bit is not set
+     * and this bit is also not set, the current y-coordinate is a signed 16-bit
+     * delta vector.</td>
+     * </tr>
+     * <tr>
+     * <td>Reserved</td>
+     * <td>6</td>
+     * <td>This bit is reserved. Set it to zero.</td>
+     * </tr>
+     * <tr>
+     * <td>Reserved</td>
+     * <td>7</td>
+     * <td>This bit is reserved. Set it to zero.</td>
+     * </tr>
      * </table>
      */
     public abstract static class Descript implements XMLWriterConvertible {
@@ -330,6 +408,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the instructions
+         * 
          * @return Returns the instructions
          */
         public short[] getInstructions() {
@@ -339,13 +418,13 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Create a new object.
-         *
-         * @param parentTable       the parent table
-         * @param numberOfContours  number of conttours
-         * @param bais              the basis
+         * 
+         * @param parentTable the parent table
+         * @param numberOfContours number of conttours
+         * @param bais the basis
          */
-        protected Descript(TtfTableGLYF parentTable,
-                short numberOfContours, ByteArrayInputStream bais) {
+        protected Descript(TtfTableGLYF parentTable, short numberOfContours,
+                ByteArrayInputStream bais) {
 
             this.parentTable = parentTable;
             this.numberOfContours = numberOfContours;
@@ -357,6 +436,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the number of contours.
+         * 
          * @return Returns the number of contours.
          */
         public int getNumberOfContours() {
@@ -366,6 +446,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the x max.
+         * 
          * @return Returns the x max.
          */
         public short getXMax() {
@@ -375,6 +456,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the x min.
+         * 
          * @return Returns the x min
          */
         public short getXMin() {
@@ -384,6 +466,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the y max.
+         * 
          * @return Returns the y max.
          */
         public short getYMax() {
@@ -393,6 +476,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the y min.
+         * 
          * @return Returns the y min.
          */
         public short getYMin() {
@@ -402,6 +486,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the end pt of contours
+         * 
          * @param i the index
          * @return Returns the end pt of contours
          */
@@ -409,6 +494,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the flags.
+         * 
          * @param i the index
          * @return Returns the flags.
          */
@@ -416,6 +502,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the x coordinate.
+         * 
          * @param i the index
          * @return Returns the x coordinate
          */
@@ -423,6 +510,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the y coordinate.
+         * 
          * @param i the index
          * @return Returns the y coordinate
          */
@@ -430,26 +518,30 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the composite.
+         * 
          * @return Returns the composite.
          */
         abstract boolean isComposite();
 
         /**
          * Returns the point count.
+         * 
          * @return Returns the point count.
          */
         abstract int getPointCount();
 
         /**
          * Returns the contour count.
+         * 
          * @return Returns the contour count.
          */
         abstract int getContourCount();
 
         /**
          * Read the instructions
-         * @param rar       input
-         * @param count     count
+         * 
+         * @param rar input
+         * @param count count
          * @throws IOException if an IO-error occurs
          */
         protected void readInstructions(RandomAccessR rar, int count)
@@ -463,11 +555,11 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Read the instructions
-         * @param bais      input
-         * @param count     count
+         * 
+         * @param bais input
+         * @param count count
          */
-        protected void readInstructions(ByteArrayInputStream bais,
-                int count) {
+        protected void readInstructions(ByteArrayInputStream bais, int count) {
 
             instructions = new short[count];
             for (int i = 0; i < count; i++) {
@@ -476,6 +568,8 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
@@ -483,7 +577,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
             writer.writeStartElement("descript");
             writer.writeAttribute("numberofcontours", String
-                    .valueOf(numberOfContours));
+                .valueOf(numberOfContours));
             writer.writeAttribute("xmin", String.valueOf(xMin));
             writer.writeAttribute("ymin", String.valueOf(yMin));
             writer.writeAttribute("xmax", String.valueOf(xMax));
@@ -499,65 +593,120 @@ public class TtfTableGLYF extends AbstractXtfTable
     /**
      * <p>
      * Compound glyphs are glyphs made up of two or more component glyphs. A
-     * compound glyph description begins like a simple glyph description with four
-     * words describing the bounding box. It is followed by n component glyph parts.
-     * Each component glyph parts consists of a flag entry, two offset entries
-     * and from one to four transformation entries.
+     * compound glyph description begins like a simple glyph description with
+     * four words describing the bounding box. It is followed by n component
+     * glyph parts. Each component glyph parts consists of a flag entry, two
+     * offset entries and from one to four transformation entries.
      * </p>
-     *
-     * <table border="1">
-     *   <tbody>
-     *     <tr><th>Type</th><th>Name</th><th>Description</th></tr>
-     *   </tbody>
-     *   <tr><td>uint16</td><td>flags</td><td>Component flag</td></tr>
-     *   <tr><td>uint16</td><td>glyphIndex</td><td>
-     *      Glyph index of component</td></tr>
-     *   <tr><td>int16, uint16, int8 or uint8</td><td>argument1</td><td>
-     *      X-offset for component or point number; type depends on
-     *      bits 0 and 1 in component flags</td></tr>
-     *   <tr><td>int16, uint16, int8 or uint8</td><td>argument2</td><td>
-     *      Y-offset for component or point number type depends
-     *      on bits 0 and 1 in component flags</td></tr>
-     *   <tr><td>transformation option</td><td>
-     *      One of the transformation options from Table 19</td></tr>
+     * 
+     * <table border="1"> <tbody>
+     * <tr>
+     * <th>Type</th>
+     * <th>Name</th>
+     * <th>Description</th>
+     * </tr>
+     * </tbody>
+     * <tr>
+     * <td>uint16</td>
+     * <td>flags</td>
+     * <td>Component flag</td>
+     * </tr>
+     * <tr>
+     * <td>uint16</td>
+     * <td>glyphIndex</td>
+     * <td> Glyph index of component</td>
+     * </tr>
+     * <tr>
+     * <td>int16, uint16, int8 or uint8</td>
+     * <td>argument1</td>
+     * <td> X-offset for component or point number; type depends on bits 0 and 1
+     * in component flags</td>
+     * </tr>
+     * <tr>
+     * <td>int16, uint16, int8 or uint8</td>
+     * <td>argument2</td>
+     * <td> Y-offset for component or point number type depends on bits 0 and 1
+     * in component flags</td>
+     * </tr>
+     * <tr>
+     * <td>transformation option</td>
+     * <td> One of the transformation options from Table 19</td>
+     * </tr>
      * </table>
-     *
-     * <p>Component flags</p>
-     *
-     * <table border="1">
-     *   <tbody>
-     *      <tr><th>Flags</th><th>Bit</th><th>Description</th></tr>
-     *   </tbody>
-     *   <tr><td>ARG_1_AND_2_ARE_WORDS</td><td>0</td><td>
-     *      If set, the arguments are words; <br>
-     *      If not set, they are bytes.</td></tr>
-     *   <tr><td>ARGS_ARE_XY_VALUES</td><td>1</td><td>
-     *      If set, the arguments are xy values; <br>
-     *      If not set, they are points.</td></tr>
-     *   <tr><td>ROUND_XY_TO_GRID</td><td>2</td><td>
-     *      If set, round the xy values to grid; <br>
-     *      if not set do not round xy values to grid
-     *      (relevant only to bit 1 is set)</td></tr>
-     *   <tr><td>WE_HAVE_A_SCALE</td><td>3</td><td>
-     *      If set, there is a simple scale for the component.<br>
-     *      If not set, scale is 1.0.</td></tr>
-     *   <tr><td>(this bit is obsolete)</td><td>4</td><td>
-     *      (obsolete; set to zero)</td></tr>
-     *   <tr><td>MORE_COMPONENTS</td><td>5</td><td>
-     *      If set, at least one additional glyph follows this one.</td></tr>
-     *   <tr><td>WE_HAVE_AN_X_AND_Y_SCALE</td><td>6</td><td>
-     *      If set the x direction will use a different scale than
-     *      the y direction.</td></tr>
-     *   <tr><td>WE_HAVE_A_TWO_BY_TWO</td><td>7</td><td>
-     *      If set there is a 2-by-2 transformation that will be used
-     *      to scale the component.</td></tr>
-     *   <tr><td>WE_HAVE_INSTRUCTIONS</td><td>8</td><td>
-     *      If set, instructions for the component character follow
-     *      the last component.</td></tr>
-     *   <tr><td>USE_MY_METRICS</td><td>9</td><td>Use metrics from
-     *      this component for the compound glyph.</td></tr>
-     *   <tr><td>OVERLAP_COMPOUND</td><td>10</td><td>
-     *      If set, the components of this compound glyph overlap.</td></tr>
+     * 
+     * <p>
+     * Component flags
+     * </p>
+     * 
+     * <table border="1"> <tbody>
+     * <tr>
+     * <th>Flags</th>
+     * <th>Bit</th>
+     * <th>Description</th>
+     * </tr>
+     * </tbody>
+     * <tr>
+     * <td>ARG_1_AND_2_ARE_WORDS</td>
+     * <td>0</td>
+     * <td> If set, the arguments are words; <br>
+     * If not set, they are bytes.</td>
+     * </tr>
+     * <tr>
+     * <td>ARGS_ARE_XY_VALUES</td>
+     * <td>1</td>
+     * <td> If set, the arguments are xy values; <br>
+     * If not set, they are points.</td>
+     * </tr>
+     * <tr>
+     * <td>ROUND_XY_TO_GRID</td>
+     * <td>2</td>
+     * <td> If set, round the xy values to grid; <br>
+     * if not set do not round xy values to grid (relevant only to bit 1 is set)</td>
+     * </tr>
+     * <tr>
+     * <td>WE_HAVE_A_SCALE</td>
+     * <td>3</td>
+     * <td> If set, there is a simple scale for the component.<br>
+     * If not set, scale is 1.0.</td>
+     * </tr>
+     * <tr>
+     * <td>(this bit is obsolete)</td>
+     * <td>4</td>
+     * <td> (obsolete; set to zero)</td>
+     * </tr>
+     * <tr>
+     * <td>MORE_COMPONENTS</td>
+     * <td>5</td>
+     * <td> If set, at least one additional glyph follows this one.</td>
+     * </tr>
+     * <tr>
+     * <td>WE_HAVE_AN_X_AND_Y_SCALE</td>
+     * <td>6</td>
+     * <td> If set the x direction will use a different scale than the y
+     * direction.</td>
+     * </tr>
+     * <tr>
+     * <td>WE_HAVE_A_TWO_BY_TWO</td>
+     * <td>7</td>
+     * <td> If set there is a 2-by-2 transformation that will be used to scale
+     * the component.</td>
+     * </tr>
+     * <tr>
+     * <td>WE_HAVE_INSTRUCTIONS</td>
+     * <td>8</td>
+     * <td> If set, instructions for the component character follow the last
+     * component.</td>
+     * </tr>
+     * <tr>
+     * <td>USE_MY_METRICS</td>
+     * <td>9</td>
+     * <td>Use metrics from this component for the compound glyph.</td>
+     * </tr>
+     * <tr>
+     * <td>OVERLAP_COMPOUND</td>
+     * <td>10</td>
+     * <td> If set, the components of this compound glyph overlap.</td>
+     * </tr>
      * </table>
      */
     public class CompositeDescript extends Descript {
@@ -565,13 +714,13 @@ public class TtfTableGLYF extends AbstractXtfTable
         /**
          * the components
          */
-        private Vector components = new Vector();
+        private Vector<CompositeComp> components = new Vector<CompositeComp>();
 
         /**
          * Create a new object.
-         *
-         * @param parentTable   the parent table
-         * @param bais          the bais
+         * 
+         * @param parentTable the parent table
+         * @param bais the bais
          */
         public CompositeDescript(TtfTableGLYF parentTable,
                 ByteArrayInputStream bais) {
@@ -596,11 +745,13 @@ public class TtfTableGLYF extends AbstractXtfTable
 
             if ((comp.getFlags() & CompositeComp.WE_HAVE_INSTRUCTIONS) != 0) {
                 readInstructions(bais,
-                        (bais.read() << XtfConstants.SHIFT8 | bais.read()));
+                    (bais.read() << XtfConstants.SHIFT8 | bais.read()));
             }
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getEndPtOfContours(int)
          */
         public int getEndPtOfContours(int i) {
@@ -615,6 +766,8 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getFlags(int)
          */
         public byte getFlags(int i) {
@@ -628,6 +781,8 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getXCoordinate(int)
          */
         public short getXCoordinate(int i) {
@@ -646,6 +801,8 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getYCoordinate(int)
          */
         public short getYCoordinate(int i) {
@@ -664,6 +821,8 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#isComposite()
          */
         public boolean isComposite() {
@@ -672,41 +831,45 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getPointCount()
          */
         public int getPointCount() {
 
-            CompositeComp c = (CompositeComp) components.elementAt(components
-                    .size() - 1);
+            CompositeComp c = components.elementAt(components.size() - 1);
             return c.getFirstIndex()
                     + parentTable.getDescription(c.getGlyphIndex())
-                            .getPointCount();
+                        .getPointCount();
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getContourCount()
          */
         public int getContourCount() {
 
-            CompositeComp c = (CompositeComp) components.elementAt(components
-                    .size() - 1);
+            CompositeComp c = components.elementAt(components.size() - 1);
             return c.getFirstContour()
                     + parentTable.getDescription(c.getGlyphIndex())
-                            .getContourCount();
+                        .getContourCount();
         }
 
         /**
          * Returns the component index.
+         * 
          * @param i the index
          * @return Returns the component index.
          */
         public int getComponentIndex(int i) {
 
-            return ((CompositeComp) components.elementAt(i)).getFirstIndex();
+            return components.elementAt(i).getFirstIndex();
         }
 
         /**
          * Returns the component count.
+         * 
          * @return Returns the component count
          */
         public int getComponentCount() {
@@ -716,6 +879,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the composite comp.
+         * 
          * @param i the index
          * @return Returns the composite comp.
          */
@@ -723,7 +887,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
             CompositeComp c;
             for (int n = 0; n < components.size(); n++) {
-                c = (CompositeComp) components.elementAt(n);
+                c = components.elementAt(n);
                 Descript gd = parentTable.getDescription(c.getGlyphIndex());
                 if (c.getFirstIndex() <= i
                         && i < (c.getFirstIndex() + gd.getPointCount())) {
@@ -735,6 +899,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the composite end pt.
+         * 
          * @param i the index
          * @return Returns the composite end
          */
@@ -742,7 +907,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
             CompositeComp c;
             for (int j = 0; j < components.size(); j++) {
-                c = (CompositeComp) components.elementAt(j);
+                c = components.elementAt(j);
                 Descript gd = parentTable.getDescription(c.getGlyphIndex());
                 if (c.getFirstContour() <= i
                         && i < (c.getFirstContour() + gd.getContourCount())) {
@@ -756,80 +921,121 @@ public class TtfTableGLYF extends AbstractXtfTable
     /**
      * SimleDescript.
      * <p>
-     * the table specifies the format of a simple glyph.
-     * A more detailed description 0f glyph outline requirements is given in
-     * <a href="http://developer.apple.com/fonts/TTRefMan/RM01/Chap1.html">
+     * the table specifies the format of a simple glyph. A more detailed
+     * description 0f glyph outline requirements is given in <a
+     * href="http://developer.apple.com/fonts/TTRefMan/RM01/Chap1.html">
      * Digitizing Letterform Designs</a>.
      * </p>
-     * <table border="1">
-     *   <tbody>
-     *     <tr><td>Type</td><td>Name</td><td>Description</td></tr>
-     *   </tbody>
-     *   <tr><td>uint16</td><td>endPtsOfContours[n]</td><td>
-     *      Array of last points of each contour;
-     *      n is the number of contours; array
-     *      entries are point indices</td></tr>
-     *   <tr><td>uint16</td><td>instructionLength</td><td>
-     *      Total number of bytes needed for instructions</td></tr>
-     *   <tr><td>uint8</td><td>instructions[instructionLength]</td><td>
-     *      Array of instructions for this glyph</td></tr>
-     *   <tr><td>uint8</td><td>flags[variable]</td><td>Array of flags</td></tr>
-     *   <tr><td>uint8 or int16</td><td>xCoordinates[]</td><td>
-     *      Array of x-coordinates; the first is relative to (0,0),
-     *      others are relative to previous point</td></tr>
-     *   <tr><td>uint8 or int16</td><td>yCoordinates[]</td><td>
-     *      Array of y-coordinates; the first is relative to (0,0),
-     *      others are relative to previous point</td></tr>
+     * <table border="1"> <tbody>
+     * <tr>
+     * <td>Type</td>
+     * <td>Name</td>
+     * <td>Description</td>
+     * </tr>
+     * </tbody>
+     * <tr>
+     * <td>uint16</td>
+     * <td>endPtsOfContours[n]</td>
+     * <td> Array of last points of each contour; n is the number of contours;
+     * array entries are point indices</td>
+     * </tr>
+     * <tr>
+     * <td>uint16</td>
+     * <td>instructionLength</td>
+     * <td> Total number of bytes needed for instructions</td>
+     * </tr>
+     * <tr>
+     * <td>uint8</td>
+     * <td>instructions[instructionLength]</td>
+     * <td> Array of instructions for this glyph</td>
+     * </tr>
+     * <tr>
+     * <td>uint8</td>
+     * <td>flags[variable]</td>
+     * <td>Array of flags</td>
+     * </tr>
+     * <tr>
+     * <td>uint8 or int16</td>
+     * <td>xCoordinates[]</td>
+     * <td> Array of x-coordinates; the first is relative to (0,0), others are
+     * relative to previous point</td>
+     * </tr>
+     * <tr>
+     * <td>uint8 or int16</td>
+     * <td>yCoordinates[]</td>
+     * <td> Array of y-coordinates; the first is relative to (0,0), others are
+     * relative to previous point</td>
+     * </tr>
      * </table>
-     *
+     * 
      * <p>
      * Each entry in the flags array is a byte in size.The meanings associated
      * with each bit in that byte are given in Table 16 below.
      * </p>
-     *
-     * <table border="1">
-     *   <tbody>
-     *      <tr><td>Flags</td><td>Bit (0 is lsb)</td><td>Description</td></tr>
-     *   </tbody>
-     *   <tr><td>On Curve</td><td>0</td><td>
-     *      If set, the point is on the curve;<br>
-     *      Otherwise, it is off the curve.</td></tr>
-     *   <tr><td>x-Short Vector</td><td>1</td><td>
-     *      If set, the corresponding x-coordinate is 1 byte long;<br>
-     *      Otherwise, the corresponding x-coordinate is 2 bytes long</td></tr>
-     *   <tr><td>y-Short Vector</td><td>2</td><td>
-     *      If set, the corresponding y-coordinate is 1 byte long;<br>
-     *      Otherwise, the corresponding y-coordinate is 2 bytes long</td></tr>
-     *   <tr><td>Repeat</td><td>3</td><td>
-     *      If set, the next byte specifies the number of additional
-     *      times this set of flags is to be repeated. In this way,
-     *      the number of flags listed can be smaller than the number
-     *      of points in a character.</td></tr>
-     *   <tr><td>This x is same (Positive x-Short vector)</td><td>4</td><td>
-     *      This flag has one of two meanings, depending on how the x-Short
-     *      Vector flag is set.<br>
-     *      If the x-Short Vector bit is set, this bit describes the sign
-     *      of the value, with a value of 1 equalling positive and a zero
-     *      value negative.<br>
-     *      If the x-short Vector bit is not set, and this bit is set,
-     *      then the current x-coordinate is the same as the previous
-     *      x-coordinate.<br>
-     *      If the x-short Vector bit is not set, and this bit is not set,
-     *      the current x-coordinate is a signed 16-bit delta vector.
-     *      In this case, the delta vector is the change in x</td></tr>
-     *   <tr><td>This y is same (Positive y-Short vector)</td><td>5</td><td>
-     *      This flag has one of two meanings, depending on how the
-     *      y-Short Vector flag is set.<br>
-     *      If the y-Short Vector bit is set, this bit describes the
-     *      sign of the value, with a value of 1 equalling positive and
-     *      a zero value negative.<br>
-     *      If the y-short Vector bit is not set, and this bit is set,
-     *      then the current y-coordinate is the same as the previous
-     *      y-coordinate.<br
-     *      If the y-short Vector bit is not set, and this bit is not set,
-     *      the current y-coordinate is a signed 16-bit delta vector.
-     *      In this case, the delta vector is the change in y</td></tr>
-     *   <tr><td>Reserved</td><td>6 - 7</td><td>Set to zero</td></tr>
+     * 
+     * <table border="1"> <tbody>
+     * <tr>
+     * <td>Flags</td>
+     * <td>Bit (0 is lsb)</td>
+     * <td>Description</td>
+     * </tr>
+     * </tbody>
+     * <tr>
+     * <td>On Curve</td>
+     * <td>0</td>
+     * <td> If set, the point is on the curve;<br>
+     * Otherwise, it is off the curve.</td>
+     * </tr>
+     * <tr>
+     * <td>x-Short Vector</td>
+     * <td>1</td>
+     * <td> If set, the corresponding x-coordinate is 1 byte long;<br>
+     * Otherwise, the corresponding x-coordinate is 2 bytes long</td>
+     * </tr>
+     * <tr>
+     * <td>y-Short Vector</td>
+     * <td>2</td>
+     * <td> If set, the corresponding y-coordinate is 1 byte long;<br>
+     * Otherwise, the corresponding y-coordinate is 2 bytes long</td>
+     * </tr>
+     * <tr>
+     * <td>Repeat</td>
+     * <td>3</td>
+     * <td> If set, the next byte specifies the number of additional times this
+     * set of flags is to be repeated. In this way, the number of flags listed
+     * can be smaller than the number of points in a character.</td>
+     * </tr>
+     * <tr>
+     * <td>This x is same (Positive x-Short vector)</td>
+     * <td>4</td>
+     * <td> This flag has one of two meanings, depending on how the x-Short
+     * Vector flag is set.<br>
+     * If the x-Short Vector bit is set, this bit describes the sign of the
+     * value, with a value of 1 equalling positive and a zero value negative.<br>
+     * If the x-short Vector bit is not set, and this bit is set, then the
+     * current x-coordinate is the same as the previous x-coordinate.<br>
+     * If the x-short Vector bit is not set, and this bit is not set, the
+     * current x-coordinate is a signed 16-bit delta vector. In this case, the
+     * delta vector is the change in x</td>
+     * </tr>
+     * <tr>
+     * <td>This y is same (Positive y-Short vector)</td>
+     * <td>5</td>
+     * <td> This flag has one of two meanings, depending on how the y-Short
+     * Vector flag is set.<br>
+     * If the y-Short Vector bit is set, this bit describes the sign of the
+     * value, with a value of 1 equalling positive and a zero value negative.<br>
+     * If the y-short Vector bit is not set, and this bit is set, then the
+     * current y-coordinate is the same as the previous y-coordinate.<br If the
+     * y-short Vector bit is not set, and this bit is not set, the current
+     * y-coordinate is a signed 16-bit delta vector. In this case, the delta
+     * vector is the change in y</td>
+     * </tr>
+     * <tr>
+     * <td>Reserved</td>
+     * <td>6 - 7</td>
+     * <td>Set to zero</td>
+     * </tr>
      * </table>
      */
     public class SimpleDescript extends Descript {
@@ -861,20 +1067,20 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Create a new object.
-         *
-         * @param parentTable       the parent table
-         * @param numberOfContours  the number of contours
-         * @param bais              the basis
+         * 
+         * @param parentTable the parent table
+         * @param numberOfContours the number of contours
+         * @param bais the basis
          */
-        SimpleDescript(TtfTableGLYF parentTable,
-                short numberOfContours, ByteArrayInputStream bais) {
+        SimpleDescript(TtfTableGLYF parentTable, short numberOfContours,
+                ByteArrayInputStream bais) {
 
             super(parentTable, numberOfContours, bais);
 
             endPtsOfContours = new int[numberOfContours];
             for (int i = 0; i < numberOfContours; i++) {
-                endPtsOfContours[i] = (bais.read() << XtfConstants.SHIFT8 | bais
-                        .read());
+                endPtsOfContours[i] =
+                        (bais.read() << XtfConstants.SHIFT8 | bais.read());
             }
 
             // The last end point index reveals the total number of points
@@ -883,14 +1089,16 @@ public class TtfTableGLYF extends AbstractXtfTable
             xCoordinates = new short[count];
             yCoordinates = new short[count];
 
-            int instructionCount = (bais.read() << XtfConstants.SHIFT8 | bais
-                    .read());
+            int instructionCount =
+                    (bais.read() << XtfConstants.SHIFT8 | bais.read());
             readInstructions(bais, instructionCount);
             readFlags(count, bais);
             readCoords(count, bais);
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getEndPtOfContours(int)
          */
         public int getEndPtOfContours(int i) {
@@ -899,6 +1107,8 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getFlags(int)
          */
         public byte getFlags(int i) {
@@ -907,6 +1117,8 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getXCoordinate(int)
          */
         public short getXCoordinate(int i) {
@@ -915,6 +1127,8 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getYCoordinate(int)
          */
         public short getYCoordinate(int i) {
@@ -923,6 +1137,8 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#isComposite()
          */
         public boolean isComposite() {
@@ -931,6 +1147,8 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getPointCount()
          */
         public int getPointCount() {
@@ -939,6 +1157,8 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getContourCount()
          */
         public int getContourCount() {
@@ -947,10 +1167,11 @@ public class TtfTableGLYF extends AbstractXtfTable
         }
 
         /**
-         * The table is stored as relative values,
-         * but we store them as absolutes
-         * @param   cnt         count
-         * @param   bais        the input
+         * The table is stored as relative values, but we store them as
+         * absolutes
+         * 
+         * @param cnt count
+         * @param bais the input
          */
         private void readCoords(int cnt, ByteArrayInputStream bais) {
 
@@ -965,8 +1186,9 @@ public class TtfTableGLYF extends AbstractXtfTable
                     if ((flags[i] & XSHORTVECTOR) != 0) {
                         x += (short) -((short) bais.read());
                     } else {
-                        x += (short) (bais.read() << XtfConstants.SHIFT8 | bais
-                                .read());
+                        x +=
+                                (short) (bais.read() << XtfConstants.SHIFT8 | bais
+                                    .read());
                     }
                 }
                 xCoordinates[i] = x;
@@ -981,8 +1203,9 @@ public class TtfTableGLYF extends AbstractXtfTable
                     if ((flags[i] & YSHORTVECTOR) != 0) {
                         y += (short) -((short) bais.read());
                     } else {
-                        y += (short) (bais.read() << XtfConstants.SHIFT8 | bais
-                                .read());
+                        y +=
+                                (short) (bais.read() << XtfConstants.SHIFT8 | bais
+                                    .read());
                     }
                 }
                 yCoordinates[i] = y;
@@ -991,11 +1214,11 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * The flags are run-length encoded.
-         * @param   flagCount   the flag count
-         * @param   bais        the input
+         * 
+         * @param flagCount the flag count
+         * @param bais the input
          */
-        private void readFlags(int flagCount,
-                ByteArrayInputStream bais) {
+        private void readFlags(int flagCount, ByteArrayInputStream bais) {
 
             try {
                 for (int index = 0; index < flagCount; index++) {
@@ -1137,10 +1360,10 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Create a new object.
-         *
-         * @param firstIndex    the first index
-         * @param firstContour  the first contour
-         * @param bais          the input
+         * 
+         * @param firstIndex the first index
+         * @param firstContour the first contour
+         * @param bais the input
          */
         CompositeComp(int firstIndex, int firstContour,
                 ByteArrayInputStream bais) {
@@ -1148,15 +1371,17 @@ public class TtfTableGLYF extends AbstractXtfTable
             this.firstIndex = firstIndex;
             this.firstContour = firstContour;
             flags = (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
-            glyphIndex = (short) (bais.read() << XtfConstants.SHIFT8 | bais
-                    .read());
+            glyphIndex =
+                    (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
 
             // Get the arguments as just their raw values
             if ((flags & ARG_1_AND_2_ARE_WORDS) != 0) {
-                argument1 = (short) (bais.read() << XtfConstants.SHIFT8 | bais
-                        .read());
-                argument2 = (short) (bais.read() << XtfConstants.SHIFT8 | bais
-                        .read());
+                argument1 =
+                        (short) (bais.read() << XtfConstants.SHIFT8 | bais
+                            .read());
+                argument2 =
+                        (short) (bais.read() << XtfConstants.SHIFT8 | bais
+                            .read());
             } else {
                 argument1 = (short) bais.read();
                 argument2 = (short) bais.read();
@@ -1173,18 +1398,21 @@ public class TtfTableGLYF extends AbstractXtfTable
 
             // Get the scale values (if any)
             if ((flags & WE_HAVE_A_SCALE) != 0) {
-                int i = (short) (bais.read() << XtfConstants.SHIFT8 | bais
-                        .read());
+                int i =
+                        (short) (bais.read() << XtfConstants.SHIFT8 | bais
+                            .read());
                 xscale = yscale = (double) i / (double) 0x4000;
             } else if ((flags & WE_HAVE_AN_X_AND_Y_SCALE) != 0) {
-                short i = (short) (bais.read() << XtfConstants.SHIFT8 | bais
-                        .read());
+                short i =
+                        (short) (bais.read() << XtfConstants.SHIFT8 | bais
+                            .read());
                 xscale = (double) i / (double) 0x4000;
                 i = (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
                 yscale = (double) i / (double) 0x4000;
             } else if ((flags & WE_HAVE_A_TWO_BY_TWO) != 0) {
-                int i = (short) (bais.read() << XtfConstants.SHIFT8 | bais
-                        .read());
+                int i =
+                        (short) (bais.read() << XtfConstants.SHIFT8 | bais
+                            .read());
                 xscale = (double) i / (double) 0x4000;
                 i = (short) (bais.read() << XtfConstants.SHIFT8 | bais.read());
                 scale01 = (double) i / (double) 0x4000;
@@ -1197,6 +1425,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the first index.
+         * 
          * @return Returns the first index.
          */
         public int getFirstIndex() {
@@ -1206,6 +1435,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the first contour.
+         * 
          * @return Returns the first contour.
          */
         public int getFirstContour() {
@@ -1215,6 +1445,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the argument 1.
+         * 
          * @return Returns the argument 1.
          */
         public short getArgument1() {
@@ -1224,8 +1455,9 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the argument 2.
+         * 
          * @return Returns the argument 2.
-
+         * 
          */
         public short getArgument2() {
 
@@ -1234,6 +1466,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the flags.
+         * 
          * @return Returns the flags.
          */
         public short getFlags() {
@@ -1243,6 +1476,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the glyph index.
+         * 
          * @return Returns the glyph index.
          */
         public short getGlyphIndex() {
@@ -1252,6 +1486,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the scale 1.
+         * 
          * @return Returns the scale 1.
          */
         public double getScale01() {
@@ -1261,6 +1496,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the scale 0.
+         * 
          * @return Returns the scale 0.
          */
         public double getScale10() {
@@ -1270,6 +1506,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the x scale.
+         * 
          * @return Returns the x scale.
          */
         public double getXScale() {
@@ -1279,6 +1516,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the y scale.
+         * 
          * @return Returns the y scale.
          */
         public double getYScale() {
@@ -1288,6 +1526,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the x translate.
+         * 
          * @return Returns the x translate.
          */
         public int getXTranslate() {
@@ -1297,6 +1536,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Returns the y translate.
+         * 
          * @return Returns the y translate.
          */
         public int getYTranslate() {
@@ -1306,7 +1546,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Transforms an x-coordinate of a point for this component.
-         *
+         * 
          * @param x The x-coordinate of the point to transform
          * @param y The y-coordinate of the point to transform
          * @return The transformed x-coordinate
@@ -1318,7 +1558,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * Transforms a y-coordinate of a point for this component.
-         *
+         * 
          * @param x The x-coordinate of the point to transform
          * @param y The y-coordinate of the point to transform
          * @return The transformed y-coordinate

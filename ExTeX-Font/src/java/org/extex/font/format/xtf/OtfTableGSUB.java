@@ -25,17 +25,16 @@ import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
-
 /**
  * Glyph substitution.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public class OtfTableGSUB extends AbstractXtfTable
         implements
             XtfTable,
-            XMLWriterConvertible{
+            XMLWriterConvertible {
 
     /**
      * Version
@@ -59,10 +58,10 @@ public class OtfTableGSUB extends AbstractXtfTable
 
     /**
      * Create a new object
-     *
-     * @param tablemap  the tablemap
-     * @param de        directory entry
-     * @param rar       input
+     * 
+     * @param tablemap the tablemap
+     * @param de directory entry
+     * @param rar input
      * @throws IOException if an IO-error occurs
      */
     OtfTableGSUB(XtfTableMap tablemap, XtfTableDirectory.Entry de,
@@ -81,7 +80,8 @@ public class OtfTableGSUB extends AbstractXtfTable
         scriptList = new XtfScriptList(rar, de.getOffset() + scriptListOffset);
 
         // Feature List
-        featureList = new XtfFeatureList(rar, de.getOffset() + featureListOffset);
+        featureList =
+                new XtfFeatureList(rar, de.getOffset() + featureListOffset);
 
         // Lookup List
         lookupList = new XtfLookupList(rar, de.getOffset() + lookupListOffset);
@@ -89,13 +89,17 @@ public class OtfTableGSUB extends AbstractXtfTable
 
     /**
      * Get the table type, as a table directory value.
+     * 
      * @return Returns the table type
      */
     public int getType() {
 
         return XtfReader.GSUB;
     }
+
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -136,6 +140,8 @@ public class OtfTableGSUB extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */

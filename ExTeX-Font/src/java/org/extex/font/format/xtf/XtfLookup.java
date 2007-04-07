@@ -182,7 +182,7 @@ public class XtfLookup {
             case CHAINING :
                 break;
             default :
-                s = null;
+                //null;
         }
         return s;
     }

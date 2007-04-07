@@ -27,31 +27,41 @@ import org.extex.util.xml.XMLStreamWriter;
 import org.jdom.Comment;
 import org.jdom.Element;
 
-
 /**
- * The Baseline table (BASE) provides information used to
- * align glyphs of different scripts and sizes in a line of text,
- * whether the glyphs are in the same font or in different fonts.
- * To improve text layout, the Baseline table also provides
- * minimum (min) and maximum (max) glyph extent values for
- * each script, language system, or feature in a font.
- *
- * <p><img src="TTFTableBASE.png"/></p>
- *
- * <table border="1">
- *   <thead>
- *     <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
- *   </thead>
- *   <tr><td>fixed32</td><td>Version</td><td>
- *          Version of the BASE table-initially 0x00010000</td></tr>
- *   <tr><td>Offset</td><td>HorizAxis</td><td>
- *          Offset to horizontal Axis table-from beginning of
- *          BASE table-may be NULL</td></tr>
- *   <tr><td>Offset</td><td>VertAxis</td><td>
- *          Offset to vertical Axis table-from beginning of
- *          BASE table-may be NULL</td></tr>
+ * The Baseline table (BASE) provides information used to align glyphs of
+ * different scripts and sizes in a line of text, whether the glyphs are in the
+ * same font or in different fonts. To improve text layout, the Baseline table
+ * also provides minimum (min) and maximum (max) glyph extent values for each
+ * script, language system, or feature in a font.
+ * 
+ * <p>
+ * <img src="TTFTableBASE.png"/>
+ * </p>
+ * 
+ * <table border="1"> <thead>
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * </thead>
+ * <tr>
+ * <td>fixed32</td>
+ * <td>Version</td>
+ * <td> Version of the BASE table-initially 0x00010000</td>
+ * </tr>
+ * <tr>
+ * <td>Offset</td>
+ * <td>HorizAxis</td>
+ * <td> Offset to horizontal Axis table-from beginning of BASE table-may be NULL</td>
+ * </tr>
+ * <tr>
+ * <td>Offset</td>
+ * <td>VertAxis</td>
+ * <td> Offset to vertical Axis table-from beginning of BASE table-may be NULL</td>
+ * </tr>
  * </table>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -62,10 +72,10 @@ public class OtfTableBASE extends AbstractXtfTable
 
     /**
      * Create a new object
-     *
-     * @param tablemap  the tablemap
-     * @param de        entry
-     * @param rar       input
+     * 
+     * @param tablemap the table map
+     * @param de entry
+     * @param rar input
      * @throws IOException if an IO-error occurs
      */
     OtfTableBASE(XtfTableMap tablemap, XtfTableDirectory.Entry de,
@@ -78,9 +88,10 @@ public class OtfTableBASE extends AbstractXtfTable
         horizAxisOffset = rar.readUnsignedShort();
         vertAxisOffset = rar.readUnsignedShort();
 
-        //        vertical = new Axis(rar, de.getOffset() + vertAxisOffset, "vertical");
-        //        horizontal = new Axis(rar, de.getOffset() + horizAxisOffset,
-        //                "horizontal");
+        // vertical = new Axis(rar, de.getOffset() + vertAxisOffset,
+        // "vertical");
+        // horizontal = new Axis(rar, de.getOffset() + horizAxisOffset,
+        // "horizontal");
 
         // incomplete
     }
@@ -112,6 +123,7 @@ public class OtfTableBASE extends AbstractXtfTable
 
     /**
      * Get the table type, as a table directory value.
+     * 
      * @return Returns the table type
      */
     public int getType() {
@@ -120,6 +132,8 @@ public class OtfTableBASE extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -128,6 +142,9 @@ public class OtfTableBASE extends AbstractXtfTable
     }
 
     /**
+     * TODO mgn: missing JavaDoc
+     * 
+     * @return ...
      * @see org.extex.util.XMLConvertible#toXML()
      */
     public Element toXML() {
@@ -141,6 +158,7 @@ public class OtfTableBASE extends AbstractXtfTable
 
     /**
      * Returns the horizAxisOffset.
+     * 
      * @return Returns the horizAxisOffset.
      */
     public int getHorizAxisOffset() {
@@ -150,6 +168,7 @@ public class OtfTableBASE extends AbstractXtfTable
 
     /**
      * Returns the version.
+     * 
      * @return Returns the version.
      */
     public int getVersion() {
@@ -159,6 +178,7 @@ public class OtfTableBASE extends AbstractXtfTable
 
     /**
      * Returns the vertAxisOffset.
+     * 
      * @return Returns the vertAxisOffset.
      */
     public int getVertAxisOffset() {
@@ -168,17 +188,24 @@ public class OtfTableBASE extends AbstractXtfTable
 
     /**
      * Axis (vertical or horizontal)
-     *
-     * <table border="1">
-     *   <thead>
-     *     <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
-     *   </thead>
-     *   <tr><td>Offset</td><td>BaseTagList</td><td>
-     *      Offset to BaseTagList table-from beginning of Axis
-     *      table-may be NULL</td></tr>
-     *   <tr><td>Offset</td><td>BaseScriptList</td><td>
-     *      Offset to BaseScriptList table-from beginning
-     *      of Axis table</td></tr>
+     * 
+     * <table border="1"> <thead>
+     * <tr>
+     * <td><b>Type</b></td>
+     * <td><b>Name</b></td>
+     * <td><b>Description</b></td>
+     * </tr>
+     * </thead>
+     * <tr>
+     * <td>Offset</td>
+     * <td>BaseTagList</td>
+     * <td> Offset to BaseTagList table-from beginning of Axis table-may be NULL</td>
+     * </tr>
+     * <tr>
+     * <td>Offset</td>
+     * <td>BaseScriptList</td>
+     * <td> Offset to BaseScriptList table-from beginning of Axis table</td>
+     * </tr>
      * </table>
      */
     public class Axis implements XMLWriterConvertible {
@@ -190,14 +217,13 @@ public class OtfTableBASE extends AbstractXtfTable
 
         /**
          * Create a new object.
-         *
-         * @param rar       the input
-         * @param offset    the offset
-         * @param n         the name of the table
+         * 
+         * @param rar the input
+         * @param offset the offset
+         * @param n the name of the table
          * @throws IOException if an IO-error occurs.
          */
-        public Axis(RandomAccessR rar, int offset, String n)
-                throws IOException {
+        public Axis(RandomAccessR rar, int offset, String n) throws IOException {
 
             name = n;
             rar.seek(offset);
@@ -205,7 +231,8 @@ public class OtfTableBASE extends AbstractXtfTable
             baseTagListOffset = rar.readUnsignedShort();
             baseScriptListOffset = rar.readUnsignedShort();
 
-            basetaglist = new BaseTagList(rar, offset + baseTagListOffset, name);
+            basetaglist =
+                    new BaseTagList(rar, offset + baseTagListOffset, name);
         }
 
         /**
@@ -224,6 +251,8 @@ public class OtfTableBASE extends AbstractXtfTable
         private int baseScriptListOffset;
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
@@ -237,6 +266,7 @@ public class OtfTableBASE extends AbstractXtfTable
 
         /**
          * Returns the name.
+         * 
          * @return Returns the name.
          */
         public String getName() {
@@ -246,6 +276,7 @@ public class OtfTableBASE extends AbstractXtfTable
 
         /**
          * Returns the baseScriptListOffset.
+         * 
          * @return Returns the baseScriptListOffset.
          */
         public int getBaseScriptListOffset() {
@@ -255,6 +286,7 @@ public class OtfTableBASE extends AbstractXtfTable
 
         /**
          * Returns the baseTagListOffset.
+         * 
          * @return Returns the baseTagListOffset.
          */
         public int getBaseTagListOffset() {
@@ -264,11 +296,10 @@ public class OtfTableBASE extends AbstractXtfTable
     }
 
     /**
-     * The BaseTagList table identifies the baselines for
-     * all scripts in the font that are rendered in the
-     * same text direction. Each baseline is identified
-     * with a 4-byte baseline tag.
-     *
+     * The BaseTagList table identifies the baselines for all scripts in the
+     * font that are rendered in the same text direction. Each baseline is
+     * identified with a 4-byte baseline tag.
+     * 
      */
     public class BaseTagList implements XMLWriterConvertible {
 
@@ -279,14 +310,14 @@ public class OtfTableBASE extends AbstractXtfTable
 
         /**
          * Create a new object.
-         *
-         * @param rar       the input
-         * @param offset    the offset
-         * @param n         the name
+         * 
+         * @param rar the input
+         * @param offset the offset
+         * @param n the name
          * @throws IOException if an IO-error occurs.
          */
-        public BaseTagList(RandomAccessR rar, int offset,
-                String n) throws IOException {
+        public BaseTagList(RandomAccessR rar, int offset, String n)
+                throws IOException {
 
             name = n;
             rar.seek(offset);
@@ -294,6 +325,8 @@ public class OtfTableBASE extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
@@ -308,6 +341,8 @@ public class OtfTableBASE extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */

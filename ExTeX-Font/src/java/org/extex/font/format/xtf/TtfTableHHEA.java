@@ -25,48 +25,108 @@ import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
-
 /**
- * The 'hhea' table contains information needed to layout fonts
- * whose characters are written horizontally, that is, either
- * left to right or right to left. This table contains information
- * that is general to the font as a whole.
- *
- * <table BORDER="1">
- * <tbody>
- *   <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
+ * The 'hhea' table contains information needed to layout fonts whose characters
+ * are written horizontally, that is, either left to right or right to left.
+ * This table contains information that is general to the font as a whole.
+ * 
+ * <table BORDER="1"> <tbody>
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
  * </tbody>
- * <tr><td>Fixed</td><td>Table version number</td><td>
- *          0x00010000 for version 1.0.</td></tr>
- * <tr><td>FWord</td><td>Ascender</td><td>Typographic ascent.</td></tr>
- * <tr><td>FWord</td><td>Descender</td><td>Typographic descent.</td></tr>
- * <tr>FWord</td><td>LineGap</td><td>
- *          Typographic line gap. Negative LineGap values are
- *          treated as zero <BR>in Windows 3.1, System 6, and <BR>System 7.</td></tr>
- * <tr><td>uFWord</td><td>advanceWidthMax</td><td>
- *          Maximum advance width value in &lsquo;hmtx&rsquo; table.</td></tr>
- * <tr><td>FWord</td><td>minLeftSideBearing</td><td>
- *          Minimum left sidebearing value in &lsquo;hmtx&rsquo; table.</td></tr>
- * <tr><td>FWord</td><td>minRightSideBearing</td><td>
- *          Minimum right sidebearing value; calculated as
- *          Min(aw - lsb - (xMax - xMin)).</td></tr>
- * <tr><td>FWord</td><td>xMaxExtent</td><td>Max(lsb + (xMax - xMin)).</td></tr>
- * <tr><td>SHORT</td><<td>caretSlopeRise</td><td>
- *          Used to calculate the slope of the cursor
- *          (rise/run); 1 for vertical.</td></tr>
- * <tr><td>SHORT</td><td>caretSlopeRun</td><td>0 for vertical.</td></tr>
- * <tr><td>SHORT</td><td>(reserved)</td><td>set to 0</td></tr>
- * <tr><td>SHORT</td><td>(reserved)</td><td>set to 0</td></tr>
- * <tr><td>SHORT</td><td>(reserved)</td><td>set to 0</td></tr>
- * <tr><td>SHORT</td><td>(reserved)</td><td>set to 0</td></tr>
- * <tr><td>SHORT</td><td>(reserved)</td><td>set to 0</td></tr>
- * <tr><td>SHORT</td><td>metricDataFormat</td><td>0 for current format.</td></tr>
- * <tr><td>USHORT</td><td>numberOfHMetrics</td><td>
- *          Number of hMetric entries in  &lsquo;hmtx&rsquo;
- *          table; may be smaller than the total number of glyphs in the
- *          font.</td></tr>
+ * <tr>
+ * <td>Fixed</td>
+ * <td>Table version number</td>
+ * <td> 0x00010000 for version 1.0.</td>
+ * </tr>
+ * <tr>
+ * <td>FWord</td>
+ * <td>Ascender</td>
+ * <td>Typographic ascent.</td>
+ * </tr>
+ * <tr>
+ * <td>FWord</td>
+ * <td>Descender</td>
+ * <td>Typographic descent.</td>
+ * </tr>
+ * <tr>FWord</td>
+ * <td>LineGap</td>
+ * <td> Typographic line gap. Negative LineGap values are treated as zero <BR>
+ * in Windows 3.1, System 6, and <BR>
+ * System 7.</td>
+ * </tr>
+ * <tr>
+ * <td>uFWord</td>
+ * <td>advanceWidthMax</td>
+ * <td> Maximum advance width value in &lsquo;hmtx&rsquo; table.</td>
+ * </tr>
+ * <tr>
+ * <td>FWord</td>
+ * <td>minLeftSideBearing</td>
+ * <td> Minimum left sidebearing value in &lsquo;hmtx&rsquo; table.</td>
+ * </tr>
+ * <tr>
+ * <td>FWord</td>
+ * <td>minRightSideBearing</td>
+ * <td> Minimum right sidebearing value; calculated as Min(aw - lsb - (xMax -
+ * xMin)).</td>
+ * </tr>
+ * <tr>
+ * <td>FWord</td>
+ * <td>xMaxExtent</td>
+ * <td>Max(lsb + (xMax - xMin)).</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td><
+ * <td>caretSlopeRise</td>
+ * <td> Used to calculate the slope of the cursor (rise/run); 1 for vertical.</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>caretSlopeRun</td>
+ * <td>0 for vertical.</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>(reserved)</td>
+ * <td>set to 0</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>(reserved)</td>
+ * <td>set to 0</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>(reserved)</td>
+ * <td>set to 0</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>(reserved)</td>
+ * <td>set to 0</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>(reserved)</td>
+ * <td>set to 0</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>metricDataFormat</td>
+ * <td>0 for current format.</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>numberOfHMetrics</td>
+ * <td> Number of hMetric entries in &lsquo;hmtx&rsquo; table; may be smaller
+ * than the total number of glyphs in the font.</td>
+ * </tr>
  * </table>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -162,10 +222,10 @@ public class TtfTableHHEA extends AbstractXtfTable
 
     /**
      * Create a new object
-     *
-     * @param tablemap  the tablemap
-     * @param de        entry
-     * @param rar       input
+     * 
+     * @param tablemap the tablemap
+     * @param de entry
+     * @param rar input
      * @throws IOException if an IO-error occurs
      */
     TtfTableHHEA(XtfTableMap tablemap, XtfTableDirectory.Entry de,
@@ -194,6 +254,7 @@ public class TtfTableHHEA extends AbstractXtfTable
 
     /**
      * Get the table type, as a table directory value.
+     * 
      * @return Returns the table type
      */
     public int getType() {
@@ -202,6 +263,8 @@ public class TtfTableHHEA extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -211,6 +274,7 @@ public class TtfTableHHEA extends AbstractXtfTable
 
     /**
      * Returns the advanceWidthMax.
+     * 
      * @return Returns the advanceWidthMax.
      */
     public short getAdvanceWidthMax() {
@@ -220,6 +284,7 @@ public class TtfTableHHEA extends AbstractXtfTable
 
     /**
      * Returns the ascender.
+     * 
      * @return Returns the ascender.
      */
     public short getAscender() {
@@ -229,6 +294,7 @@ public class TtfTableHHEA extends AbstractXtfTable
 
     /**
      * Returns the caretSlopeRise.
+     * 
      * @return Returns the caretSlopeRise.
      */
     public short getCaretSlopeRise() {
@@ -238,6 +304,7 @@ public class TtfTableHHEA extends AbstractXtfTable
 
     /**
      * Returns the caretSlopeRun.
+     * 
      * @return Returns the caretSlopeRun.
      */
     public short getCaretSlopeRun() {
@@ -247,6 +314,7 @@ public class TtfTableHHEA extends AbstractXtfTable
 
     /**
      * Returns the descender.
+     * 
      * @return Returns the descender.
      */
     public short getDescender() {
@@ -256,6 +324,7 @@ public class TtfTableHHEA extends AbstractXtfTable
 
     /**
      * Returns the lineGap.
+     * 
      * @return Returns the lineGap.
      */
     public short getLineGap() {
@@ -265,6 +334,7 @@ public class TtfTableHHEA extends AbstractXtfTable
 
     /**
      * Returns the metricDataFormat.
+     * 
      * @return Returns the metricDataFormat.
      */
     public short getMetricDataFormat() {
@@ -274,6 +344,7 @@ public class TtfTableHHEA extends AbstractXtfTable
 
     /**
      * Returns the minLeftSideBearing.
+     * 
      * @return Returns the minLeftSideBearing.
      */
     public short getMinLeftSideBearing() {
@@ -283,6 +354,7 @@ public class TtfTableHHEA extends AbstractXtfTable
 
     /**
      * Returns the minRightSideBearing.
+     * 
      * @return Returns the minRightSideBearing.
      */
     public short getMinRightSideBearing() {
@@ -292,6 +364,7 @@ public class TtfTableHHEA extends AbstractXtfTable
 
     /**
      * Returns the numberOfHMetrics.
+     * 
      * @return Returns the numberOfHMetrics.
      */
     public short getNumberOfHMetrics() {
@@ -301,6 +374,7 @@ public class TtfTableHHEA extends AbstractXtfTable
 
     /**
      * Returns the version.
+     * 
      * @return Returns the version.
      */
     public int getVersion() {
@@ -310,6 +384,7 @@ public class TtfTableHHEA extends AbstractXtfTable
 
     /**
      * Returns the xMaxExtent.
+     * 
      * @return Returns the xMaxExtent.
      */
     public short getXMaxExtent() {
@@ -318,6 +393,8 @@ public class TtfTableHHEA extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
@@ -325,23 +402,23 @@ public class TtfTableHHEA extends AbstractXtfTable
 
         writeStartElement(writer);
         writer.writeAttribute("version", String.valueOf(XtfReader
-                .convertVersion(version)));
+            .convertVersion(version)));
         writer.writeAttribute("ascender", String.valueOf(ascender));
         writer.writeAttribute("descender", String.valueOf(descender));
         writer.writeAttribute("linegap", String.valueOf(lineGap));
         writer.writeAttribute("advancewidthmax", String
-                .valueOf(advanceWidthMax));
+            .valueOf(advanceWidthMax));
         writer.writeAttribute("minleftsidebearing", String
-                .valueOf(minLeftSideBearing));
+            .valueOf(minLeftSideBearing));
         writer.writeAttribute("minrightsidebearing", String
-                .valueOf(minRightSideBearing));
+            .valueOf(minRightSideBearing));
         writer.writeAttribute("xmaxextent", String.valueOf(xMaxExtent));
         writer.writeAttribute("caretsloperise", String.valueOf(caretSlopeRise));
         writer.writeAttribute("caretsloperun", String.valueOf(caretSlopeRun));
         writer.writeAttribute("metricdataformat", String
-                .valueOf(metricDataFormat));
+            .valueOf(metricDataFormat));
         writer.writeAttribute("numberofhmetrics", String
-                .valueOf(numberOfHMetrics));
+            .valueOf(numberOfHMetrics));
         writer.writeAttribute("reserved0", String.valueOf(reserved0));
         writer.writeAttribute("reserved1", String.valueOf(reserved1));
         writer.writeAttribute("reserved2", String.valueOf(reserved2));

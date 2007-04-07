@@ -25,22 +25,31 @@ import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
-
 /**
- * The 'kern' table contains the values that adjust the
- * intercharacter spacing for glyphs in a font.
- *
- * <table border="1">
- *   <tbody>
- *     <tr><td><b>Type</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>
- *   </tbody>
- *   <tr><td>fixed32</td><td>version</td><td>
- *          The version number of the kerning table
- *          (0x00010000 for the current version).</td></tr>
- *   <tr><td>uint32</td><td>nTables</td></td>
- *          The number of subtables included in the kerning table.</td></tr>
+ * The 'kern' table contains the values that adjust the intercharacter spacing
+ * for glyphs in a font.
+ * 
+ * <table border="1"> <tbody>
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * </tbody>
+ * <tr>
+ * <td>fixed32</td>
+ * <td>version</td>
+ * <td> The version number of the kerning table (0x00010000 for the current
+ * version).</td>
+ * </tr>
+ * <tr>
+ * <td>uint32</td>
+ * <td>nTables</td>
+ * </td>
+ * The number of subtables included in the kerning table.</td>
+ * </tr>
  * </table>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -66,10 +75,10 @@ public class TtfTableKERN extends AbstractXtfTable
 
     /**
      * Create a new object
-     *
-     * @param tablemap  the tablemap
-     * @param de        entry
-     * @param rar       input
+     * 
+     * @param tablemap the tablemap
+     * @param de entry
+     * @param rar input
      * @throws IOException if an IO-error occurs
      */
     TtfTableKERN(XtfTableMap tablemap, XtfTableDirectory.Entry de,
@@ -88,6 +97,7 @@ public class TtfTableKERN extends AbstractXtfTable
 
     /**
      * Returns the number of tables.
+     * 
      * @return Returns the number of tables.
      */
     public int getNTables() {
@@ -97,6 +107,7 @@ public class TtfTableKERN extends AbstractXtfTable
 
     /**
      * Returns the table
+     * 
      * @param i index
      * @return Returns the table
      */
@@ -107,6 +118,7 @@ public class TtfTableKERN extends AbstractXtfTable
 
     /**
      * Get the table type, as a table directory value.
+     * 
      * @return The table type
      */
     public int getType() {
@@ -115,6 +127,8 @@ public class TtfTableKERN extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -123,6 +137,8 @@ public class TtfTableKERN extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
@@ -149,14 +165,16 @@ public class TtfTableKERN extends AbstractXtfTable
 
         /**
          * Returns the number of kerning pairs.
+         * 
          * @return Returns the number of kerning pairs.
          */
         public abstract int getKerningCount();
 
         /**
          * Returns the kerning
+         * 
          * @param i index
-         * @return  Returns the kerning
+         * @return Returns the kerning
          */
         public abstract KerningPair getKerning(int i);
 
@@ -172,12 +190,12 @@ public class TtfTableKERN extends AbstractXtfTable
 
         /**
          * Read the table
-         * @param rar       input
+         * 
+         * @param rar input
          * @return Returns the table
          * @throws IOException if an IO-error occurs
          */
-        public static KernSubtable read(RandomAccessR rar)
-                throws IOException {
+        public static KernSubtable read(RandomAccessR rar) throws IOException {
 
             KernSubtable table = null;
             int version = rar.readUnsignedShort();
@@ -186,13 +204,13 @@ public class TtfTableKERN extends AbstractXtfTable
             int format = coverage >> 8;
 
             switch (format) {
-                case FORMAT0 :
+                case FORMAT0:
                     table = new KernSubtableFormat0(rar);
                     break;
-                case FORMAT2 :
+                case FORMAT2:
                     table = new KernSubtableFormat2(rar);
                     break;
-                default :
+                default:
                     break;
             }
             return table;
@@ -201,51 +219,76 @@ public class TtfTableKERN extends AbstractXtfTable
 
     /**
      * Format 0.
-     * <p>This is the only format that will be properly
-     *    interpreted by Windows and OS/2.</p>
-     *
-     * <table BORDER="1">
-     *   <tbody>
-     *     <tr><td><b>Type</b></td><td><b>Field</b></td><td><b>Description</b></td></tr>
-     *   </tbody>
-     *   <tr><td>USHORT</td><td>nPairs</td><td>
-     *          This gives the number of kerning pairs in the table.</td></tr>
-     *   <tr><td>USHORT</td><td>searchRange</td><td>
-     *          The largest power of two less than or equal to the
-     *          value of nPairs, multiplied by the size in bytes of an entry in
-     *          the table.</td></tr>
-     *   <tr><td>USHORT</td><td>entrySelector</td><td>
-     *          <SUB>2</SUB>
-     *          of the largest power of two less than or equal to the value of
-     *          nPairs. This value indicates how many iterations of the search
-     *          loop will have to be made. (For example, in a list of eight
-     *          items, there would have to be three iterations of the loop).</td></tr>
-     *   <tr><td>USHORT</td><td>rangeShift</td><td>
-     *          The value of nPairs minus the largest power of two
-     *          less than or equal to nPairs, and then multiplied by the size in
-     *          bytes of an entry in the table.</td></tr>
+     * <p>
+     * This is the only format that will be properly interpreted by Windows and
+     * OS/2.
+     * </p>
+     * 
+     * <table BORDER="1"> <tbody>
+     * <tr>
+     * <td><b>Type</b></td>
+     * <td><b>Field</b></td>
+     * <td><b>Description</b></td>
+     * </tr>
+     * </tbody>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>nPairs</td>
+     * <td> This gives the number of kerning pairs in the table.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>searchRange</td>
+     * <td> The largest power of two less than or equal to the value of nPairs,
+     * multiplied by the size in bytes of an entry in the table.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>entrySelector</td>
+     * <td> <SUB>2</SUB> of the largest power of two less than or equal to the
+     * value of nPairs. This value indicates how many iterations of the search
+     * loop will have to be made. (For example, in a list of eight items, there
+     * would have to be three iterations of the loop).</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>rangeShift</td>
+     * <td> The value of nPairs minus the largest power of two less than or
+     * equal to nPairs, and then multiplied by the size in bytes of an entry in
+     * the table.</td>
+     * </tr>
      * </table>
-     *
-     * <p>This is followed by the list of kerning pairs and
-     *    values. Each has the following format:</p>
-     *
-     * <table BORDER="1">
-     *   <tbody>
-     *     <tr><b>Type</b></td><td><b>Field</b></td><td><b>Description</b></td></tr>
-     *   </tbody>
-     *   <tr><td>USHORT</td><td>left</td><td>
-     *      The glyph index for the left-hand glyph in the
-     *      kerning pair.</td></tr>
-     *   <tr><td>USHORT</td><td>right</td><td>
-     *      The glyph index for the right-hand glyph in the
-     *      kerning pair.</td></tr>
-     *   <tr><td>FWORD</td><td>value</td><td>
-     *      The kerning value for the above pair, in FUnits. If
-     *      this value is greater than zero, the characters will be moved
-     *      apart. If this value is less than zero, the character will be
-     *      moved closer together.</td></tr>
+     * 
+     * <p>
+     * This is followed by the list of kerning pairs and values. Each has the
+     * following format:
+     * </p>
+     * 
+     * <table BORDER="1"> <tbody>
+     * <tr><b>Type</b></td>
+     * <td><b>Field</b></td>
+     * <td><b>Description</b></td>
+     * </tr>
+     * </tbody>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>left</td>
+     * <td> The glyph index for the left-hand glyph in the kerning pair.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>right</td>
+     * <td> The glyph index for the right-hand glyph in the kerning pair.</td>
+     * </tr>
+     * <tr>
+     * <td>FWORD</td>
+     * <td>value</td>
+     * <td> The kerning value for the above pair, in FUnits. If this value is
+     * greater than zero, the characters will be moved apart. If this value is
+     * less than zero, the character will be moved closer together.</td>
+     * </tr>
      * </table>
-     *
+     * 
      */
     public static class KernSubtableFormat0 extends KernSubtable {
 
@@ -276,8 +319,8 @@ public class TtfTableKERN extends AbstractXtfTable
 
         /**
          * Create a new object
-         *
-         * @param rar       input
+         * 
+         * @param rar input
          * @throws IOException if an IO-error occurs
          */
         KernSubtableFormat0(RandomAccessR rar) throws IOException {
@@ -295,6 +338,8 @@ public class TtfTableKERN extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.font.format.xtf.TtfTableKERN.KernSubtable#getKerningCount()
          */
         public int getKerningCount() {
@@ -303,6 +348,8 @@ public class TtfTableKERN extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.font.format.xtf.TtfTableKERN.KernSubtable#getKerning(int)
          */
         public KerningPair getKerning(int i) {
@@ -312,6 +359,7 @@ public class TtfTableKERN extends AbstractXtfTable
 
         /**
          * Returns the searchRange.
+         * 
          * @return Returns the searchRange.
          */
         public int getSearchRange() {
@@ -321,6 +369,7 @@ public class TtfTableKERN extends AbstractXtfTable
 
         /**
          * Returns the entrySelector.
+         * 
          * @return Returns the entrySelector.
          */
         public int getEntrySelector() {
@@ -330,6 +379,7 @@ public class TtfTableKERN extends AbstractXtfTable
 
         /**
          * Returns the rangeShift.
+         * 
          * @return Returns the rangeShift.
          */
         public int getRangeShift() {
@@ -338,6 +388,8 @@ public class TtfTableKERN extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
@@ -357,34 +409,62 @@ public class TtfTableKERN extends AbstractXtfTable
 
     /**
      * Format 2.
-     *
-     * <p>This subtable is a two-dimensional array of kerning values.</p>
-     *
-     * <table BORDER="1">
-     *   <tbody>
-     *     <tr><td><b>Type</b></td><td><b>Field</b></td><td><b>Description</b></td></tr>
-     *   </tbody>
-     *   <tr><td>USHORT</td><td>rowWidth</td><td>
-     *      The width, in bytes, of a row in the table.</td></tr>
-     *   <tr><td>USHORT</td><td>leftClassTable</td><td>
-     *      Offset from beginning of this subtable to left-hand
-     *      class table.</td></tr>
-     *   <tr><td>USHORT</td><td>rightClassTable</td><td>
-     *      Offset from beginning of this subtable to right-hand
-     *      class table.</td></tr>
-     *   <tr><td>USHORT</td><td>array</td><td>
-     *      Offset from beginning of this subtable to the start
-     *      of the kerning array.</td></tr>
+     * 
+     * <p>
+     * This subtable is a two-dimensional array of kerning values.
+     * </p>
+     * 
+     * <table BORDER="1"> <tbody>
+     * <tr>
+     * <td><b>Type</b></td>
+     * <td><b>Field</b></td>
+     * <td><b>Description</b></td>
+     * </tr>
+     * </tbody>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>rowWidth</td>
+     * <td> The width, in bytes, of a row in the table.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>leftClassTable</td>
+     * <td> Offset from beginning of this subtable to left-hand class table.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>rightClassTable</td>
+     * <td> Offset from beginning of this subtable to right-hand class table.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>array</td>
+     * <td> Offset from beginning of this subtable to the start of the kerning
+     * array.</td>
+     * </tr>
      * </table>
-     *
-     * <p>Each class table has the following header:</p>
-     *
-     * <table BORDER="1">
-     *   <tbody>
-     *     <tr><td><b>Type</b></td><td><b>Field</b></td><td><b>Description</b></td></tr>
-     *   <tbody>
-     *   <tr><td>USHORT</td><td>firstGlyph</td><td>First glyph in class range.</td></tr>
-     *   <tr><td>USHORT</td><td>nGlyphs</td><td>Number of glyph in class range.</td></tr>
+     * 
+     * <p>
+     * Each class table has the following header:
+     * </p>
+     * 
+     * <table BORDER="1"> <tbody>
+     * <tr>
+     * <td><b>Type</b></td>
+     * <td><b>Field</b></td>
+     * <td><b>Description</b></td>
+     * </tr>
+     * <tbody>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>firstGlyph</td>
+     * <td>First glyph in class range.</td>
+     * </tr>
+     * <tr>
+     * <td>USHORT</td>
+     * <td>nGlyphs</td>
+     * <td>Number of glyph in class range.</td>
+     * </tr>
      * </table>
      */
     public static class KernSubtableFormat2 extends KernSubtable {
@@ -411,8 +491,8 @@ public class TtfTableKERN extends AbstractXtfTable
 
         /**
          * Create a new object.
-         *
-         * @param rar       input
+         * 
+         * @param rar input
          * @throws IOException if an IO-error occurs
          */
         KernSubtableFormat2(RandomAccessR rar) throws IOException {
@@ -424,6 +504,8 @@ public class TtfTableKERN extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.font.format.xtf.TtfTableKERN.KernSubtable#getKerningCount()
          */
         public int getKerningCount() {
@@ -432,6 +514,8 @@ public class TtfTableKERN extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.font.format.xtf.TtfTableKERN.KernSubtable#getKerning(int)
          */
         public KerningPair getKerning(int i) {
@@ -441,6 +525,7 @@ public class TtfTableKERN extends AbstractXtfTable
 
         /**
          * Returns the array.
+         * 
          * @return Returns the array.
          */
         public int getArray() {
@@ -450,6 +535,7 @@ public class TtfTableKERN extends AbstractXtfTable
 
         /**
          * Returns the leftClassTable.
+         * 
          * @return Returns the leftClassTable.
          */
         public int getLeftClassTable() {
@@ -459,6 +545,7 @@ public class TtfTableKERN extends AbstractXtfTable
 
         /**
          * Returns the rightClassTable.
+         * 
          * @return Returns the rightClassTable.
          */
         public int getRightClassTable() {
@@ -468,6 +555,7 @@ public class TtfTableKERN extends AbstractXtfTable
 
         /**
          * Returns the rowWidth.
+         * 
          * @return Returns the rowWidth.
          */
         public int getRowWidth() {
@@ -476,6 +564,8 @@ public class TtfTableKERN extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
@@ -512,8 +602,8 @@ public class TtfTableKERN extends AbstractXtfTable
 
         /**
          * Create a new object.
-         *
-         * @param rar       the input
+         * 
+         * @param rar the input
          * @throws IOException if an IO-error occurs
          */
         KerningPair(RandomAccessR rar) throws IOException {
@@ -525,6 +615,7 @@ public class TtfTableKERN extends AbstractXtfTable
 
         /**
          * Returns the left char.
+         * 
          * @return Returns the left char.
          */
         public int getLeft() {
@@ -534,6 +625,7 @@ public class TtfTableKERN extends AbstractXtfTable
 
         /**
          * Returns the right char.
+         * 
          * @return Returns the right char.
          */
         public int getRight() {
@@ -543,6 +635,7 @@ public class TtfTableKERN extends AbstractXtfTable
 
         /**
          * Returns the value.
+         * 
          * @return Returns the value.
          */
         public short getValue() {
@@ -551,6 +644,8 @@ public class TtfTableKERN extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
@@ -563,4 +658,5 @@ public class TtfTableKERN extends AbstractXtfTable
             writer.writeEndElement();
         }
     }
+
 }

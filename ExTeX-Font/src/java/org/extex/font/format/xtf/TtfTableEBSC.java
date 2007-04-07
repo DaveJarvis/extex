@@ -26,10 +26,9 @@ import org.extex.util.file.random.RandomAccessR;
 import org.jdom.Comment;
 import org.jdom.Element;
 
-
 /**
  * The 'EBSC' ... TODO incomplete
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -40,10 +39,10 @@ public class TtfTableEBSC extends AbstractXtfTable
 
     /**
      * Create a new object
-     *
-     * @param tablemap  the tablemap
-     * @param de        entry
-     * @param rar       input
+     * 
+     * @param tablemap the tablemap
+     * @param de entry
+     * @param rar input
      * @throws IOException if an IO-error occurs
      */
     TtfTableEBSC(XtfTableMap tablemap, XtfTableDirectory.Entry de,
@@ -57,13 +56,17 @@ public class TtfTableEBSC extends AbstractXtfTable
 
     /**
      * Get the table type, as a table directory value.
+     * 
      * @return Returns the table type
      */
     public int getType() {
 
         return XtfReader.EBSC;
     }
+
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -72,6 +75,8 @@ public class TtfTableEBSC extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.XMLConvertible#toXML()
      */
     public Element toXML() {
@@ -82,4 +87,5 @@ public class TtfTableEBSC extends AbstractXtfTable
         table.addContent(c);
         return table;
     }
+
 }

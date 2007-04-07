@@ -63,6 +63,8 @@ public class OtfTableFEAT extends AbstractXtfTable
         return XtfReader.FEAT;
     }
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -71,6 +73,8 @@ public class OtfTableFEAT extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */

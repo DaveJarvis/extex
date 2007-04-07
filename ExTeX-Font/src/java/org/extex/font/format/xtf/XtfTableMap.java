@@ -38,15 +38,16 @@ public class XtfTableMap {
     public XtfTableMap() {
 
         super();
-        data = new HashMap();
+        data = new HashMap<Integer, XtfTable>();
     }
 
     /**
      * map
      */
-    private Map data;
+    private Map<Integer, XtfTable> data;
 
     /**
+     * @return TODO mgn
      * @see java.util.Map#size()
      */
     public int size() {
@@ -63,6 +64,7 @@ public class XtfTableMap {
     }
 
     /**
+     * @return TODO mgn
      * @see java.util.Map#isEmpty()
      */
     public boolean isEmpty() {
@@ -85,7 +87,7 @@ public class XtfTableMap {
      */
     public XtfTable get(int key) {
 
-        return (XtfTable) data.get(new Integer(key));
+        return data.get(new Integer(key));
     }
 
     /**
@@ -94,7 +96,7 @@ public class XtfTableMap {
      */
     public XtfTable remove(int key) {
 
-        return (XtfTable) data.remove(new Integer(key));
+        return data.remove(new Integer(key));
     }
 
     /**
@@ -112,9 +114,9 @@ public class XtfTableMap {
      */
     public int[] getKeys() {
 
-        Set set = data.keySet();
+        Set<Integer> set = data.keySet();
         Integer[] i = new Integer[set.size()];
-        i = (Integer[]) set.toArray(i);
+        i = set.toArray(i);
         int[] keys = new int[i.length];
         for (int k = 0; k < i.length; k++) {
             keys[k] = i[k].intValue();

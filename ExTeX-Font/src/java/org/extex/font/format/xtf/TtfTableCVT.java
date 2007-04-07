@@ -25,27 +25,28 @@ import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
-
 /**
  * The 'cvt ' table is optional.
  * <p>
- * It can be used by fonts that contain instructions.
- * It contains an array of FWords that can be accessed by instructions.
- * The 'cvt ' is used to tie together certain font features when
- * their values are sufficiently close to the table value.
- * The number of control value table entries can be calculated
- * by dividing the length of the 'cvt ' table,
- * as given in the table directory, by 4.
+ * It can be used by fonts that contain instructions. It contains an array of
+ * FWords that can be accessed by instructions. The 'cvt ' is used to tie
+ * together certain font features when their values are sufficiently close to
+ * the table value. The number of control value table entries can be calculated
+ * by dividing the length of the 'cvt ' table, as given in the table directory,
+ * by 4.
  * </p>
- *
- * <table BORDER="1">
- *   <tbody>
- *     <tr><td><b>Type</b></td><td><b>Description</b></td><tr>
- *   </tbody>
- *   <tr><td>FWORD[ <I>n</I> ]</td><td>List of <I>n</I> values referenceable by
- *           instructions.</td></tr>
+ * 
+ * <table BORDER="1"> <tbody>
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Description</b></td>
+ * <tr> </tbody>
+ * <tr>
+ * <td>FWORD[ <I>n</I> ]</td>
+ * <td>List of <I>n</I> values referenceable by instructions.</td>
+ * </tr>
  * </table>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -61,10 +62,10 @@ public class TtfTableCVT extends AbstractXtfTable
 
     /**
      * Create a new object.
-     *
-     * @param tablemap  the tablemap
-     * @param de    directory entry
-     * @param rar   the RandomAccessInput
+     * 
+     * @param tablemap the tablemap
+     * @param de directory entry
+     * @param rar the RandomAccessInput
      * @throws IOException if an error occured
      */
     TtfTableCVT(XtfTableMap tablemap, XtfTableDirectory.Entry de,
@@ -82,6 +83,7 @@ public class TtfTableCVT extends AbstractXtfTable
 
     /**
      * Get the table type, as a table directory value.
+     * 
      * @return Returns the table type
      */
     public int getType() {
@@ -90,6 +92,8 @@ public class TtfTableCVT extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -99,6 +103,7 @@ public class TtfTableCVT extends AbstractXtfTable
 
     /**
      * Returns the values
+     * 
      * @return Returns the values
      */
     public short[] getValues() {
@@ -107,6 +112,8 @@ public class TtfTableCVT extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
@@ -116,4 +123,5 @@ public class TtfTableCVT extends AbstractXtfTable
         writer.writeShortArray(values);
         writer.writeEndElement();
     }
+
 }

@@ -25,24 +25,23 @@ import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
-
 /**
  * The 'JSTF' ... TODO incomplete
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public class OtfTableJSTF extends AbstractXtfTable
         implements
             XtfTable,
-            XMLWriterConvertible{
+            XMLWriterConvertible {
 
     /**
      * Create a new object
-     *
-     * @param tablemap  the tablemap
-     * @param de        entry
-     * @param rar       input
+     * 
+     * @param tablemap the tablemap
+     * @param de entry
+     * @param rar input
      * @throws IOException if an IO-error occurs
      */
     OtfTableJSTF(XtfTableMap tablemap, XtfTableDirectory.Entry de,
@@ -56,13 +55,17 @@ public class OtfTableJSTF extends AbstractXtfTable
 
     /**
      * Get the table type, as a table directory value.
+     * 
      * @return Returns the table type
      */
     public int getType() {
 
         return XtfReader.JSTF;
     }
+
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -71,6 +74,8 @@ public class OtfTableJSTF extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */

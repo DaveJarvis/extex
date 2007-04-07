@@ -25,82 +25,185 @@ import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
-
 /**
- * The 'OS/2' table consists of a set of metrics
- * that are required by OS/2 and Windows.
- * It is not used by the Mac OS.
- *
- * <table BORDER="1">
- *   <tbody>
- *      <tr><td><b>Type</b></td><td><b>Name of Entry</b></td><td><b>Comments</b></td></tr>
- *   </tbody>
- *   <tr><td>USHORT</td><td>version</td><td>
- *          table version number (set to 0)</td></tr>
- *   <tr><td>SHORT</td><td>xAvgCharWidth;</td><td>
- *          average weighted advance width of lower case letters and space</td></tr>
- *   <tr><td>USHORT</td><td>usWeightClass;</td><td>
- *          visual weight (degree of blackness or thickness) of stroke in glyphs</td></tr>
- *   <tr><td>USHORT</td><td>usWidthClass;</td><td>
- *          relative change from the normal aspect
- *          ratio (width to height ratio) as specified
- *          by a font designer for the glyphs in the font</td></tr>
- *   <tr><td>SHORT</td><td>fsType;</td><td>
- *          characteristics and properties of this font
- *          (set undefined bits to zero)</td></tr>
- *   <tr><td>SHORT</td><td>ySubscriptXSize;</td><td>
- *          recommended horizontal size in pixels for subscripts</td></tr>
- *   <tr><td>SHORT</td><td>ySubscriptYSize;</td><td>
- *          recommended vertical size in pixels for subscripts</td></tr>
- *   <tr><td>SHORT</td><td>ySubscriptXOffset;</td><td>
- *          recommended horizontal offset for subscripts</td></tr>
- *   <tr><td>SHORT</td><td>ySubscriptYOffset;</td><td>
- *          recommended vertical offset form the baseline for subscripts</td></tr>
- *   <tr><td>SHORT</td><td>ySuperscriptXSize;</td><td>
- *          recommended horizontal size in pixels for superscripts</td></tr>
- *   <tr><td>SHORT</td><td>ySuperscriptYSize;</td><td>
- *          recommended vertical size in pixels for superscripts</td></tr>
- *   <tr><td>SHORT</td><td>ySuperscriptXOffset;</td><td>
- *          recommended horizontal offset for superscripts</td></tr>
- *   <tr><td>SHORT</td><td>ySuperscriptYOffset;</td><td>
- *          recommended vertical offset from the baseline for superscripts</td></tr>
- *   <tr><td>SHORT</td><td>yStrikeoutSize;</td><td>
- *          width of the strikeout stroke</td></tr>
- *   <tr><td>SHORT</td><td>yStrikeoutPosition;</td><td>
- *          position of the strikeout stroke relative to the baseline</td></tr>
- *   <tr><td>SHORT</td><td>sFamilyClass;</td><td>
- *          classification of font-family design.</td></tr>
- *   <tr><td>PANOSE</td><td>panose;</td><td>
- *          10 byte series of number used to describe the
- *          visual characteristics of a given typeface</td></tr>
- *   <tr><td>ULONG</td><td>ulUnicodeRange1</td><td>
- *          Field is split into two bit fields of 96 and 36 bits each.
- *          The low 96 bits are used to specify the Unicode blocks
- *          encompassed by the font file. The high 32 bits are
- *          used to specify the character or script sets covered
- *          by the font file. Bit assignments are pending. Set to 0<br/>
- *          Bits 0&ndash;31</td></tr>
- *   <tr><td>ULONG</td><td>ulUnicodeRange2</td><td>Bits 32&ndash;63</td></tr>
- *   <tr><td>ULONG</td><td>ulUnicodeRange3</td><td>Bits 64&ndash;95</td></tr>
- *   <tr><td>ULONG</td><td>ulUnicodeRange4</td><td>Bits 96&ndash;127</td></tr>
- *   <tr><td>CHAR</td><td>achVendID[4];</td><td>
- *          four character identifier for the font vendor</td></tr>
- *   <tr><td>USHORT</td><td>fsSelection;</td><td>
- *          2-byte bit field containing information concerning
- *          the nature of the font patterns</td></tr>
- *   <tr><td>USHORT</td><td>usFirstCharIndex</td><td>
- *          The minimum Unicode index in this font.</td></tr>
- *   <tr><td>USHORT</td><td>usLastCharIndex</td><td>
- *          The maximum Unicode index in this font.</td></tr>
- *   <tr><td>USHORT</td><td>sTypoAscender</td><td></td></tr>
- *   <tr><td>USHORT</td><td>sTypoDescender</td><td></td></tr>
- *   <tr><td>USHORT</td><td>sTypoLineGap</td><td></td></tr>
- *   <tr><td>USHORT</td><td>usWinAscent</td><td></td></tr>
- *   <tr><td>USHORT</td><td>usWinDescent</td><td></td></tr>
- *   <tr><td>ULONG</td><td>ulCodePageRange1</td><td>Bits 0-31</td></tr>
- *   <tr><td>ULONG</td><td>ulCodePageRange2</td><td>Bits 32-63</td></tr>
+ * The 'OS/2' table consists of a set of metrics that are required by OS/2 and
+ * Windows. It is not used by the Mac OS.
+ * 
+ * <table BORDER="1"> <tbody>
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name of Entry</b></td>
+ * <td><b>Comments</b></td>
+ * </tr>
+ * </tbody>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>version</td>
+ * <td> table version number (set to 0)</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>xAvgCharWidth;</td>
+ * <td> average weighted advance width of lower case letters and space</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>usWeightClass;</td>
+ * <td> visual weight (degree of blackness or thickness) of stroke in glyphs</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>usWidthClass;</td>
+ * <td> relative change from the normal aspect ratio (width to height ratio) as
+ * specified by a font designer for the glyphs in the font</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>fsType;</td>
+ * <td> characteristics and properties of this font (set undefined bits to zero)</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>ySubscriptXSize;</td>
+ * <td> recommended horizontal size in pixels for subscripts</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>ySubscriptYSize;</td>
+ * <td> recommended vertical size in pixels for subscripts</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>ySubscriptXOffset;</td>
+ * <td> recommended horizontal offset for subscripts</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>ySubscriptYOffset;</td>
+ * <td> recommended vertical offset form the baseline for subscripts</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>ySuperscriptXSize;</td>
+ * <td> recommended horizontal size in pixels for superscripts</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>ySuperscriptYSize;</td>
+ * <td> recommended vertical size in pixels for superscripts</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>ySuperscriptXOffset;</td>
+ * <td> recommended horizontal offset for superscripts</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>ySuperscriptYOffset;</td>
+ * <td> recommended vertical offset from the baseline for superscripts</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>yStrikeoutSize;</td>
+ * <td> width of the strikeout stroke</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>yStrikeoutPosition;</td>
+ * <td> position of the strikeout stroke relative to the baseline</td>
+ * </tr>
+ * <tr>
+ * <td>SHORT</td>
+ * <td>sFamilyClass;</td>
+ * <td> classification of font-family design.</td>
+ * </tr>
+ * <tr>
+ * <td>PANOSE</td>
+ * <td>panose;</td>
+ * <td> 10 byte series of number used to describe the visual characteristics of
+ * a given typeface</td>
+ * </tr>
+ * <tr>
+ * <td>ULONG</td>
+ * <td>ulUnicodeRange1</td>
+ * <td> Field is split into two bit fields of 96 and 36 bits each. The low 96
+ * bits are used to specify the Unicode blocks encompassed by the font file. The
+ * high 32 bits are used to specify the character or script sets covered by the
+ * font file. Bit assignments are pending. Set to 0<br/> Bits 0&ndash;31</td>
+ * </tr>
+ * <tr>
+ * <td>ULONG</td>
+ * <td>ulUnicodeRange2</td>
+ * <td>Bits 32&ndash;63</td>
+ * </tr>
+ * <tr>
+ * <td>ULONG</td>
+ * <td>ulUnicodeRange3</td>
+ * <td>Bits 64&ndash;95</td>
+ * </tr>
+ * <tr>
+ * <td>ULONG</td>
+ * <td>ulUnicodeRange4</td>
+ * <td>Bits 96&ndash;127</td>
+ * </tr>
+ * <tr>
+ * <td>CHAR</td>
+ * <td>achVendID[4];</td>
+ * <td> four character identifier for the font vendor</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>fsSelection;</td>
+ * <td> 2-byte bit field containing information concerning the nature of the
+ * font patterns</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>usFirstCharIndex</td>
+ * <td> The minimum Unicode index in this font.</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>usLastCharIndex</td>
+ * <td> The maximum Unicode index in this font.</td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>sTypoAscender</td>
+ * <td></td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>sTypoDescender</td>
+ * <td></td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>sTypoLineGap</td>
+ * <td></td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>usWinAscent</td>
+ * <td></td>
+ * </tr>
+ * <tr>
+ * <td>USHORT</td>
+ * <td>usWinDescent</td>
+ * <td></td>
+ * </tr>
+ * <tr>
+ * <td>ULONG</td>
+ * <td>ulCodePageRange1</td>
+ * <td>Bits 0-31</td>
+ * </tr>
+ * <tr>
+ * <td>ULONG</td>
+ * <td>ulCodePageRange2</td>
+ * <td>Bits 32-63</td>
+ * </tr>
  * </table>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -276,10 +379,10 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Create a new object.
-     *
-     * @param tablemap  the tablemap
-     * @param de        directory entry
-     * @param rar       the RandomAccessInput
+     * 
+     * @param tablemap the tablemap
+     * @param de directory entry
+     * @param rar the RandomAccessInput
      * @throws IOException if an error occured
      */
     TtfTableOS2(XtfTableMap tablemap, XtfTableDirectory.Entry de,
@@ -325,6 +428,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Get the table type, as a table directory value.
+     * 
      * @return Returns the table type
      */
     public int getType() {
@@ -333,6 +437,8 @@ public class TtfTableOS2 extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -342,6 +448,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the achVendorID.
+     * 
      * @return Returns the achVendorID.
      */
     public int getAchVendorID() {
@@ -351,6 +458,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the fsSelection.
+     * 
      * @return Returns the fsSelection.
      */
     public short getFsSelection() {
@@ -360,6 +468,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the fsType.
+     * 
      * @return Returns the fsType.
      */
     public short getFsType() {
@@ -369,6 +478,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the panose.
+     * 
      * @return Returns the panose.
      */
     public Panose getPanose() {
@@ -378,6 +488,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the sFamilyClass.
+     * 
      * @return Returns the sFamilyClass.
      */
     public short getSFamilyClass() {
@@ -387,6 +498,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the sTypoAscender.
+     * 
      * @return Returns the sTypoAscender.
      */
     public short getSTypoAscender() {
@@ -396,6 +508,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the sTypoDescender.
+     * 
      * @return Returns the sTypoDescender.
      */
     public short getSTypoDescender() {
@@ -405,6 +518,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the sTypoLineGap.
+     * 
      * @return Returns the sTypoLineGap.
      */
     public short getSTypoLineGap() {
@@ -414,6 +528,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the ulCodePageRange1.
+     * 
      * @return Returns the ulCodePageRange1.
      */
     public int getUlCodePageRange1() {
@@ -423,6 +538,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the ulCodePageRange2.
+     * 
      * @return Returns the ulCodePageRange2.
      */
     public int getUlCodePageRange2() {
@@ -432,6 +548,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the ulUnicodeRange1.
+     * 
      * @return Returns the ulUnicodeRange1.
      */
     public int getUlUnicodeRange1() {
@@ -441,6 +558,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the ulUnicodeRange2.
+     * 
      * @return Returns the ulUnicodeRange2.
      */
     public int getUlUnicodeRange2() {
@@ -450,6 +568,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the ulUnicodeRange3.
+     * 
      * @return Returns the ulUnicodeRange3.
      */
     public int getUlUnicodeRange3() {
@@ -459,6 +578,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the ulUnicodeRange4.
+     * 
      * @return Returns the ulUnicodeRange4.
      */
     public int getUlUnicodeRange4() {
@@ -468,6 +588,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the usFirstCharIndex.
+     * 
      * @return Returns the usFirstCharIndex.
      */
     public int getUsFirstCharIndex() {
@@ -477,6 +598,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the usLastCharIndex.
+     * 
      * @return Returns the usLastCharIndex.
      */
     public int getUsLastCharIndex() {
@@ -486,6 +608,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the usWeightClass.
+     * 
      * @return Returns the usWeightClass.
      */
     public int getUsWeightClass() {
@@ -495,6 +618,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the usWidthClass.
+     * 
      * @return Returns the usWidthClass.
      */
     public int getUsWidthClass() {
@@ -504,6 +628,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the usWinAscent.
+     * 
      * @return Returns the usWinAscent.
      */
     public int getUsWinAscent() {
@@ -513,6 +638,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the usWinDescent.
+     * 
      * @return Returns the usWinDescent.
      */
     public int getUsWinDescent() {
@@ -522,6 +648,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the version.
+     * 
      * @return Returns the version.
      */
     public int getVersion() {
@@ -531,6 +658,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the xAvgCharWidth.
+     * 
      * @return Returns the xAvgCharWidth.
      */
     public short getXAvgCharWidth() {
@@ -540,6 +668,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the yStrikeoutPosition.
+     * 
      * @return Returns the yStrikeoutPosition.
      */
     public short getYStrikeoutPosition() {
@@ -549,6 +678,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the yStrikeoutSize.
+     * 
      * @return Returns the yStrikeoutSize.
      */
     public short getYStrikeoutSize() {
@@ -558,6 +688,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the ySubscriptXOffset.
+     * 
      * @return Returns the ySubscriptXOffset.
      */
     public short getYSubscriptXOffset() {
@@ -567,6 +698,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the ySubscriptXSize.
+     * 
      * @return Returns the ySubscriptXSize.
      */
     public short getYSubscriptXSize() {
@@ -576,6 +708,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the ySubscriptYOffset.
+     * 
      * @return Returns the ySubscriptYOffset.
      */
     public short getYSubscriptYOffset() {
@@ -585,6 +718,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the ySubscriptYSize.
+     * 
      * @return Returns the ySubscriptYSize.
      */
     public short getYSubscriptYSize() {
@@ -594,6 +728,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the ySuperscriptXOffset.
+     * 
      * @return Returns the ySuperscriptXOffset.
      */
     public short getYSuperscriptXOffset() {
@@ -603,6 +738,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the ySuperscriptXSize.
+     * 
      * @return Returns the ySuperscriptXSize.
      */
     public short getYSuperscriptXSize() {
@@ -612,6 +748,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the ySuperscriptYOffset.
+     * 
      * @return Returns the ySuperscriptYOffset.
      */
     public short getYSuperscriptYOffset() {
@@ -621,6 +758,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
     /**
      * Returns the ySuperscriptYSize.
+     * 
      * @return Returns the ySuperscriptYSize.
      */
     public short getYSuperscriptYSize() {
@@ -629,6 +767,8 @@ public class TtfTableOS2 extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
@@ -636,57 +776,57 @@ public class TtfTableOS2 extends AbstractXtfTable
 
         writeStartElement(writer);
         writer.writeAttribute("version", XtfReader
-                .convertIntToHexString(version));
+            .convertIntToHexString(version));
         writer.writeAttribute("xavgcharwidth", String.valueOf(xAvgCharWidth));
         writer.writeAttribute("usweightclass", String.valueOf(usWeightClass));
         writer.writeAttribute("uswidthclass", String.valueOf(usWidthClass));
         writer.writeAttribute("fstype", XtfReader
-                .convertIntToBinaryString(fsType));
+            .convertIntToBinaryString(fsType));
         writer.writeAttribute("ysubscriptxsize", String
-                .valueOf(ySubscriptXSize));
+            .valueOf(ySubscriptXSize));
         writer.writeAttribute("ysubscriptysize", String
-                .valueOf(ySubscriptYSize));
+            .valueOf(ySubscriptYSize));
         writer.writeAttribute("ysubscriptxoffset", String
-                .valueOf(ySubscriptXOffset));
+            .valueOf(ySubscriptXOffset));
         writer.writeAttribute("ysubscriptyoffset", String
-                .valueOf(ySubscriptYOffset));
+            .valueOf(ySubscriptYOffset));
         writer.writeAttribute("ysubscriptxsize", String
-                .valueOf(ySuperscriptXSize));
+            .valueOf(ySuperscriptXSize));
         writer.writeAttribute("ysubscriptysize", String
-                .valueOf(ySuperscriptYSize));
+            .valueOf(ySuperscriptYSize));
         writer.writeAttribute("ysuperscriptxoffset", String
-                .valueOf(ySuperscriptXOffset));
+            .valueOf(ySuperscriptXOffset));
         writer.writeAttribute("ysuperscriptyoffset", String
-                .valueOf(ySuperscriptYOffset));
+            .valueOf(ySuperscriptYOffset));
         writer.writeAttribute("ystrikeoutsize", String.valueOf(yStrikeoutSize));
         writer.writeAttribute("ystrikeoutposition", String
-                .valueOf(yStrikeoutPosition));
+            .valueOf(yStrikeoutPosition));
         writer.writeAttribute("sfamilyclass", String.valueOf(sFamilyClass));
         writer.writeAttribute("ulunicoderange1", XtfReader
-                .convertIntToBinaryString(ulUnicodeRange1));
+            .convertIntToBinaryString(ulUnicodeRange1));
         writer.writeAttribute("ulunicoderange2", XtfReader
-                .convertIntToBinaryString(ulUnicodeRange2));
+            .convertIntToBinaryString(ulUnicodeRange2));
         writer.writeAttribute("ulunicoderange3", XtfReader
-                .convertIntToBinaryString(ulUnicodeRange3));
+            .convertIntToBinaryString(ulUnicodeRange3));
         writer.writeAttribute("ulunicoderange4", XtfReader
-                .convertIntToBinaryString(ulUnicodeRange4));
+            .convertIntToBinaryString(ulUnicodeRange4));
         writer.writeAttribute("achvendorid", XtfReader
-                .convertIntToHexString(achVendorID));
+            .convertIntToHexString(achVendorID));
         writer.writeAttribute("fsselection", XtfReader
-                .convertIntToBinaryString(fsSelection));
+            .convertIntToBinaryString(fsSelection));
         writer.writeAttribute("usfirstcharindex", String
-                .valueOf(usFirstCharIndex));
+            .valueOf(usFirstCharIndex));
         writer.writeAttribute("uslastcharindex", String
-                .valueOf(usLastCharIndex));
+            .valueOf(usLastCharIndex));
         writer.writeAttribute("stypoascender", String.valueOf(sTypoAscender));
         writer.writeAttribute("stypodescender", String.valueOf(sTypoDescender));
         writer.writeAttribute("stypolinegap", String.valueOf(sTypoLineGap));
         writer.writeAttribute("uswinAscent", String.valueOf(usWinAscent));
         writer.writeAttribute("uswindescent", String.valueOf(usWinDescent));
         writer.writeAttribute("ulcodepagerange1", XtfReader
-                .convertIntToBinaryString(ulCodePageRange1));
+            .convertIntToBinaryString(ulCodePageRange1));
         writer.writeAttribute("ulcodepagerange1", XtfReader
-                .convertIntToBinaryString(ulCodePageRange2));
+            .convertIntToBinaryString(ulCodePageRange2));
         if (panose != null) {
             panose.writeXML(writer);
         }
@@ -696,11 +836,10 @@ public class TtfTableOS2 extends AbstractXtfTable
     /**
      * panose.
      * <p>
-     * This 10 byte series of numbers are used to describe
-     * the visual characteristics of a given typeface.
-     * These characteristics are then used to associate
-     * the font with other fonts of similar appearance
-     * having different names.
+     * This 10 byte series of numbers are used to describe the visual
+     * characteristics of a given typeface. These characteristics are then used
+     * to associate the font with other fonts of similar appearance having
+     * different names.
      * </p>
      */
     public static class Panose implements XMLWriterConvertible {
@@ -970,8 +1109,8 @@ public class TtfTableOS2 extends AbstractXtfTable
 
         /**
          * Create a new object.
-         *
-         * @param panosearray    the panose
+         * 
+         * @param panosearray the panose
          */
         public Panose(byte[] panosearray) {
 
@@ -988,6 +1127,8 @@ public class TtfTableOS2 extends AbstractXtfTable
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
@@ -996,44 +1137,40 @@ public class TtfTableOS2 extends AbstractXtfTable
             writer.writeStartElement("panose");
             writer.writeAttribute("familytype", String.valueOf(familyType));
             writer.writeAttribute("familytypename",
-                    familyType < FAMILYTYPENAME.length
-                            ? FAMILYTYPENAME[familyType]
-                            : "");
+                familyType < FAMILYTYPENAME.length
+                        ? FAMILYTYPENAME[familyType]
+                        : "");
             writer.writeAttribute("serifstyle", String.valueOf(serifStyle));
             writer.writeAttribute("serifstylename",
-                    serifStyle < SERIFSTYLENAME.length
-                            ? SERIFSTYLENAME[serifStyle]
-                            : "");
+                serifStyle < SERIFSTYLENAME.length
+                        ? SERIFSTYLENAME[serifStyle]
+                        : "");
             writer.writeAttribute("weight", String.valueOf(weight));
             writer.writeAttribute("weigthname", weight < WEIGHTNAME.length
                     ? WEIGHTNAME[weight]
                     : "");
             writer.writeAttribute("proportion", String.valueOf(proportion));
             writer.writeAttribute("proportionname",
-                    proportion < PROPORTIONAME.length
-                            ? PROPORTIONAME[proportion]
-                            : "");
+                proportion < PROPORTIONAME.length
+                        ? PROPORTIONAME[proportion]
+                        : "");
             writer.writeAttribute("contrast", String.valueOf(contrast));
             writer.writeAttribute("contrastname",
-                    contrast < CONTRASTNAME.length
-                            ? CONTRASTNAME[contrast]
-                            : "");
+                contrast < CONTRASTNAME.length ? CONTRASTNAME[contrast] : "");
             writer.writeAttribute("strokevariation", String
-                    .valueOf(strokeVariation));
+                .valueOf(strokeVariation));
             writer.writeAttribute("strokevariationname",
-                    strokeVariation < STROKEVARIATIONNAME.length
-                            ? STROKEVARIATIONNAME[strokeVariation]
-                            : "");
+                strokeVariation < STROKEVARIATIONNAME.length
+                        ? STROKEVARIATIONNAME[strokeVariation]
+                        : "");
             writer.writeAttribute("armstyle", String.valueOf(armStyle));
             writer.writeAttribute("armstylename",
-                    armStyle < ARMSTYLENAME.length
-                            ? ARMSTYLENAME[armStyle]
-                            : "");
+                armStyle < ARMSTYLENAME.length ? ARMSTYLENAME[armStyle] : "");
             writer.writeAttribute("letterform", String.valueOf(letterform));
             writer.writeAttribute("letterformname",
-                    letterform < LETTERFORMNAME.length
-                            ? LETTERFORMNAME[letterform]
-                            : "");
+                letterform < LETTERFORMNAME.length
+                        ? LETTERFORMNAME[letterform]
+                        : "");
             writer.writeAttribute("midline", String.valueOf(midline));
             writer.writeAttribute("midlinename", midline < MIDLINENAME.length
                     ? MIDLINENAME[midline]
@@ -1047,6 +1184,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
         /**
          * Returns the armStyle.
+         * 
          * @return Returns the armStyle.
          */
         public byte getArmStyle() {
@@ -1056,6 +1194,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
         /**
          * Returns the contrast.
+         * 
          * @return Returns the contrast.
          */
         public byte getContrast() {
@@ -1065,6 +1204,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
         /**
          * Returns the familyType.
+         * 
          * @return Returns the familyType.
          */
         public byte getFamilyType() {
@@ -1074,6 +1214,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
         /**
          * Returns the ferifStyle.
+         * 
          * @return Returns the ferifStyle.
          */
         public byte getFerifStyle() {
@@ -1083,6 +1224,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
         /**
          * Returns the letterform.
+         * 
          * @return Returns the letterform.
          */
         public byte getLetterform() {
@@ -1092,6 +1234,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
         /**
          * Returns the midline.
+         * 
          * @return Returns the midline.
          */
         public byte getMidline() {
@@ -1101,6 +1244,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
         /**
          * Returns the proportion.
+         * 
          * @return Returns the proportion.
          */
         public byte getProportion() {
@@ -1110,6 +1254,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
         /**
          * Returns the strokeVariation.
+         * 
          * @return Returns the strokeVariation.
          */
         public byte getStrokeVariation() {
@@ -1119,6 +1264,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
         /**
          * Returns the weight.
+         * 
          * @return Returns the weight.
          */
         public byte getWeight() {
@@ -1128,6 +1274,7 @@ public class TtfTableOS2 extends AbstractXtfTable
 
         /**
          * Returns the xHeight.
+         * 
          * @return Returns the xHeight.
          */
         public byte getXHeight() {
