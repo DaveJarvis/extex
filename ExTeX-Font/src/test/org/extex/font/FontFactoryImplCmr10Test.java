@@ -206,7 +206,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
         FixedGlue w = font.getWidth(null);
 
         assertNotNull(w);
-        assertTrue(w.toString(), Glue.ZERO.eq(w));
+        assertTrue(w.toString(), FixedGlue.ZERO.eq(w));
 
     }
 
@@ -263,7 +263,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
         FixedGlue w = font.getDepth(null);
 
         assertNotNull(w);
-        assertTrue(w.toString(), Glue.ZERO.eq(w));
+        assertTrue(w.toString(), FixedGlue.ZERO.eq(w));
 
     }
 
@@ -317,7 +317,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
         FixedGlue w = font.getHeight(null);
 
         assertNotNull(w);
-        assertTrue(w.toString(), Glue.ZERO.eq(w));
+        assertTrue(w.toString(), FixedGlue.ZERO.eq(w));
 
     }
 

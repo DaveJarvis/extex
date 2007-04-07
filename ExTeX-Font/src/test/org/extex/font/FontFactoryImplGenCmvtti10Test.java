@@ -76,6 +76,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 0: Width=475133, Height=400498, Depth=0, IC=90568
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C0() throws Exception {
 
@@ -99,6 +101,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 1: Width=628048, Height=400498, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C1() throws Exception {
 
@@ -122,6 +126,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 2: Width=589820, Height=400498, Depth=0, IC=50971
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C2() throws Exception {
 
@@ -145,6 +151,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 3: Width=513361, Height=400498, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C3() throws Exception {
 
@@ -168,6 +176,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 4: Width=513361, Height=400498, Depth=0, IC=86745
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C4() throws Exception {
 
@@ -191,6 +201,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 5: Width=551591, Height=400498, Depth=0, IC=89203
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C5() throws Exception {
 
@@ -214,6 +226,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 6: Width=551591, Height=400498, Depth=0, IC=81010
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C6() throws Exception {
 
@@ -237,6 +251,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 7: Width=589820, Height=400498, Depth=0, IC=60985
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C7() throws Exception {
 
@@ -260,6 +276,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 8: Width=551591, Height=400498, Depth=0, IC=30946
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C8() throws Exception {
 
@@ -283,6 +301,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 9: Width=589820, Height=400498, Depth=0, IC=60985
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C9() throws Exception {
 
@@ -306,6 +326,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 10: Width=551591, Height=400498, Depth=0, IC=55978
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C10() throws Exception {
 
@@ -329,6 +351,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 11: Width=491518, Height=400498, Depth=145636, IC=128796
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C11() throws Exception {
 
@@ -353,6 +377,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 12: Width=453290, Height=400498, Depth=145636, IC=65385
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C12() throws Exception {
 
@@ -377,6 +403,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 13: Width=472403, Height=400498, Depth=145636, IC=65385
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C13() throws Exception {
 
@@ -401,6 +429,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 14: Width=708606, Height=400498, Depth=145636, IC=65385
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C14() throws Exception {
 
@@ -425,6 +455,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 15: Width=718163, Height=400498, Depth=145636, IC=65385
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C15() throws Exception {
 
@@ -449,6 +481,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 16: Width=245758, Height=282168, Depth=0, IC=65385
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C16() throws Exception {
 
@@ -472,6 +506,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 17: Width=264873, Height=282168, Depth=145636, IC=16840
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C17() throws Exception {
 
@@ -496,6 +532,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 18: Width=398675, Height=400498, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C18() throws Exception {
 
@@ -519,6 +557,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 19: Width=398675, Height=400498, Depth=0, IC=42781
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C19() throws Exception {
 
@@ -542,6 +582,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 20: Width=398675, Height=370916, Depth=0, IC=48583
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C20() throws Exception {
 
@@ -565,6 +607,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 21: Width=398675, Height=400498, Depth=0, IC=62806
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C21() throws Exception {
 
@@ -588,6 +632,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 22: Width=398675, Height=370641, Depth=0, IC=63988
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C22() throws Exception {
 
@@ -611,6 +657,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 23: Width=591033, Height=400498, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C23() throws Exception {
 
@@ -634,6 +682,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 24: Width=360446, Height=0, Depth=127431, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C24() throws Exception {
 
@@ -657,6 +707,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 25: Width=417791, Height=400498, Depth=145636, IC=51883
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C25() throws Exception {
 
@@ -681,6 +733,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 26: Width=551591, Height=282168, Depth=0, IC=55068
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C26() throws Exception {
 
@@ -704,6 +758,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 27: Width=551591, Height=282168, Depth=0, IC=55068
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C27() throws Exception {
 
@@ -727,6 +783,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 28: Width=398675, Height=354986, Depth=72818, IC=70543
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C28() throws Exception {
 
@@ -751,6 +809,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 29: Width=666278, Height=400498, Depth=0, IC=81010
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C29() throws Exception {
 
@@ -774,6 +834,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 30: Width=742736, Height=400498, Depth=0, IC=81010
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C30() throws Exception {
 
@@ -797,6 +859,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 31: Width=589820, Height=436906, Depth=36408, IC=50971
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C31() throws Exception {
 
@@ -821,6 +885,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 32: Width=207530, Height=282168, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C32() throws Exception {
 
@@ -844,6 +910,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 33: Width=245758, Height=400498, Depth=0, IC=56435
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C33() throws Exception {
 
@@ -867,6 +935,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 34: Width=398675, Height=400498, Depth=0, IC=8921
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C34() throws Exception {
 
@@ -890,6 +960,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 35: Width=628048, Height=400498, Depth=0, IC=48981
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C35() throws Exception {
 
@@ -913,6 +985,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 36: Width=569341, Height=400498, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C36() throws Exception {
 
@@ -936,6 +1010,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 37: Width=628048, Height=455111, Depth=54613, IC=20933
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C37() throws Exception {
 
@@ -960,6 +1036,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 38: Width=589820, Height=400498, Depth=0, IC=42781
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C38() throws Exception {
 
@@ -983,6 +1061,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 39: Width=245758, Height=400498, Depth=0, IC=56435
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C39() throws Exception {
 
@@ -1006,6 +1086,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 40: Width=322216, Height=455111, Depth=54611, IC=94663
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C40() throws Exception {
 
@@ -1030,6 +1112,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 41: Width=322216, Height=455111, Depth=54611, IC=30946
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C41() throws Exception {
 
@@ -1054,6 +1138,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 42: Width=398675, Height=341333, Depth=0, IC=56661
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C42() throws Exception {
 
@@ -1077,6 +1163,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 43: Width=589820, Height=429623, Depth=29125, IC=30946
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C43() throws Exception {
 
@@ -1101,6 +1189,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 44: Width=245758, Height=65536, Depth=91021, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C44() throws Exception {
 
@@ -1125,6 +1215,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 45: Width=283988, Height=282168, Depth=0, IC=16156
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C45() throws Exception {
 
@@ -1148,6 +1240,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 46: Width=245758, Height=65536, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C46() throws Exception {
 
@@ -1171,6 +1265,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 47: Width=398675, Height=455111, Depth=54611, IC=94663
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C47() throws Exception {
 
@@ -1195,6 +1291,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 48: Width=398675, Height=400498, Depth=0, IC=81010
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C48() throws Exception {
 
@@ -1218,6 +1316,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 49: Width=398675, Height=400498, Depth=0, IC=81010
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C49() throws Exception {
 
@@ -1241,6 +1341,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 50: Width=398675, Height=400498, Depth=0, IC=81010
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C50() throws Exception {
 
@@ -1264,6 +1366,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 51: Width=398675, Height=400498, Depth=0, IC=81010
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C51() throws Exception {
 
@@ -1287,6 +1391,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 52: Width=398675, Height=400498, Depth=145636, IC=81010
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C52() throws Exception {
 
@@ -1311,6 +1417,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 53: Width=398675, Height=400498, Depth=0, IC=81010
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C53() throws Exception {
 
@@ -1334,6 +1442,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 54: Width=398675, Height=400498, Depth=0, IC=81010
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C54() throws Exception {
 
@@ -1357,6 +1467,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 55: Width=398675, Height=400498, Depth=145636, IC=81010
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C55() throws Exception {
 
@@ -1381,6 +1493,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 56: Width=398675, Height=400498, Depth=0, IC=81010
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C56() throws Exception {
 
@@ -1404,6 +1518,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 57: Width=398675, Height=400498, Depth=0, IC=81010
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C57() throws Exception {
 
@@ -1427,6 +1543,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 58: Width=245758, Height=282168, Depth=0, IC=26851
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C58() throws Exception {
 
@@ -1450,6 +1568,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 59: Width=245758, Height=282168, Depth=91021, IC=26851
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C59() throws Exception {
 
@@ -1474,6 +1594,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 60: Width=245758, Height=254861, Depth=145636, IC=20026
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C60() throws Exception {
 
@@ -1498,6 +1620,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 61: Width=589820, Height=272383, Depth=-128115, IC=48981
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C61() throws Exception {
 
@@ -1522,6 +1646,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 62: Width=398675, Height=254861, Depth=145636, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C62() throws Exception {
 
@@ -1546,6 +1672,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 63: Width=398675, Height=400498, Depth=0, IC=61896
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C63() throws Exception {
 
@@ -1569,6 +1697,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 64: Width=513361, Height=400498, Depth=0, IC=50971
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C64() throws Exception {
 
@@ -1592,6 +1722,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 65: Width=551591, Height=400498, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C65() throws Exception {
 
@@ -1615,6 +1747,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 66: Width=532476, Height=400498, Depth=0, IC=55978
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C66() throws Exception {
 
@@ -1638,6 +1772,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 67: Width=551591, Height=400498, Depth=0, IC=81010
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C67() throws Exception {
 
@@ -1661,6 +1797,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 68: Width=570706, Height=400498, Depth=0, IC=50971
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C68() throws Exception {
 
@@ -1684,6 +1822,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 69: Width=513361, Height=400498, Depth=0, IC=81010
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C69() throws Exception {
 
@@ -1707,6 +1847,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 70: Width=494248, Height=400498, Depth=0, IC=90568
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C70() throws Exception {
 
@@ -1730,6 +1872,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 71: Width=589820, Height=400498, Depth=0, IC=42781
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C71() throws Exception {
 
@@ -1753,6 +1897,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 72: Width=551591, Height=400498, Depth=0, IC=89203
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C72() throws Exception {
 
@@ -1776,6 +1922,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 73: Width=283988, Height=400498, Depth=0, IC=90568
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C73() throws Exception {
 
@@ -1799,6 +1947,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 74: Width=398675, Height=400498, Depth=0, IC=73728
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C74() throws Exception {
 
@@ -1822,6 +1972,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 75: Width=570706, Height=400498, Depth=0, IC=81010
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C75() throws Exception {
 
@@ -1845,6 +1997,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 76: Width=475133, Height=400498, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C76() throws Exception {
 
@@ -1868,6 +2022,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 77: Width=666278, Height=400498, Depth=0, IC=89203
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C77() throws Exception {
 
@@ -1891,6 +2047,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 78: Width=551591, Height=400498, Depth=0, IC=89203
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C78() throws Exception {
 
@@ -1914,6 +2072,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 79: Width=589820, Height=400498, Depth=0, IC=50971
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C79() throws Exception {
 
@@ -1937,6 +2097,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 80: Width=513361, Height=400498, Depth=0, IC=55978
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C80() throws Exception {
 
@@ -1960,6 +2122,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 81: Width=589820, Height=400498, Depth=91021, IC=50971
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C81() throws Exception {
 
@@ -1984,6 +2148,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 82: Width=551591, Height=400498, Depth=0, IC=8193
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C82() throws Exception {
 
@@ -2007,6 +2173,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 83: Width=436903, Height=400498, Depth=0, IC=61896
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C83() throws Exception {
 
@@ -2030,6 +2198,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 84: Width=551591, Height=400498, Depth=0, IC=90568
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C84() throws Exception {
 
@@ -2053,6 +2223,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 85: Width=551591, Height=400498, Depth=0, IC=89203
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C85() throws Exception {
 
@@ -2076,6 +2248,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 86: Width=551591, Height=400498, Depth=0, IC=109681
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C86() throws Exception {
 
@@ -2099,6 +2273,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 87: Width=742736, Height=400498, Depth=0, IC=109681
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C87() throws Exception {
 
@@ -2122,6 +2298,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 88: Width=551591, Height=400498, Depth=0, IC=90568
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C88() throws Exception {
 
@@ -2145,6 +2323,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 89: Width=551591, Height=400498, Depth=0, IC=117328
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C89() throws Exception {
 
@@ -2168,6 +2348,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 90: Width=475133, Height=400498, Depth=0, IC=81010
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C90() throws Exception {
 
@@ -2191,6 +2373,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 91: Width=249401, Height=455111, Depth=54611, IC=113778
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C91() throws Exception {
 
@@ -2215,6 +2399,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 92: Width=398675, Height=400498, Depth=0, IC=96301
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C92() throws Exception {
 
@@ -2238,6 +2424,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 93: Width=249401, Height=455111, Depth=54611, IC=60076
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C93() throws Exception {
 
@@ -2262,6 +2450,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 94: Width=398675, Height=400498, Depth=0, IC=41188
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C94() throws Exception {
 
@@ -2285,6 +2475,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 95: Width=245758, Height=400498, Depth=0, IC=56435
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C95() throws Exception {
 
@@ -2308,6 +2500,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 96: Width=245758, Height=400498, Depth=0, IC=56435
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C96() throws Exception {
 
@@ -2331,6 +2525,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 97: Width=398675, Height=282168, Depth=0, IC=65385
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C97() throws Exception {
 
@@ -2354,6 +2550,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 98: Width=360446, Height=400498, Depth=0, IC=33906
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C98() throws Exception {
 
@@ -2377,6 +2575,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 99: Width=360446, Height=282168, Depth=0, IC=32313
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C99() throws Exception {
 
@@ -2400,6 +2600,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 100: Width=398675, Height=400498, Depth=0, IC=65385
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C100() throws Exception {
 
@@ -2423,6 +2625,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 101: Width=360446, Height=282168, Depth=0, IC=55068
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C101() throws Exception {
 
@@ -2446,6 +2650,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 102: Width=245760, Height=400498, Depth=145636, IC=128796
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C102() throws Exception {
 
@@ -2470,6 +2676,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 103: Width=360446, Height=282168, Depth=145636, IC=55068
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C103() throws Exception {
 
@@ -2494,6 +2702,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 104: Width=398675, Height=400498, Depth=0, IC=65385
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C104() throws Exception {
 
@@ -2517,6 +2727,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 105: Width=245758, Height=400498, Depth=0, IC=65385
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C105() throws Exception {
 
@@ -2540,6 +2752,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 106: Width=245758, Height=400498, Depth=145636, IC=84651
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C106() throws Exception {
 
@@ -2564,6 +2778,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 107: Width=360446, Height=400498, Depth=0, IC=70541
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C107() throws Exception {
 
@@ -2587,6 +2803,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 108: Width=207530, Height=400498, Depth=0, IC=65385
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C108() throws Exception {
 
@@ -2610,6 +2828,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 109: Width=628048, Height=282168, Depth=0, IC=65385
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C109() throws Exception {
 
@@ -2633,6 +2853,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 110: Width=436903, Height=282168, Depth=0, IC=65385
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C110() throws Exception {
 
@@ -2656,6 +2878,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 111: Width=398675, Height=282168, Depth=0, IC=33906
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C111() throws Exception {
 
@@ -2679,6 +2903,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 112: Width=398675, Height=282168, Depth=145636, IC=33906
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C112() throws Exception {
 
@@ -2703,6 +2929,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 113: Width=360446, Height=282168, Depth=145636, IC=55068
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C113() throws Exception {
 
@@ -2727,6 +2955,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 114: Width=331775, Height=282168, Depth=0, IC=70541
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C114() throws Exception {
 
@@ -2750,6 +2980,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 115: Width=322216, Height=282168, Depth=0, IC=51426
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C115() throws Exception {
 
@@ -2773,6 +3005,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 116: Width=264873, Height=400498, Depth=0, IC=65385
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C116() throws Exception {
 
@@ -2796,6 +3030,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 117: Width=417790, Height=282168, Depth=0, IC=65385
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C117() throws Exception {
 
@@ -2819,6 +3055,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 118: Width=360446, Height=282168, Depth=0, IC=70541
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C118() throws Exception {
 
@@ -2842,6 +3080,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 119: Width=513361, Height=282168, Depth=0, IC=70541
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C119() throws Exception {
 
@@ -2865,6 +3105,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 120: Width=361356, Height=282168, Depth=0, IC=80098
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C120() throws Exception {
 
@@ -2888,6 +3130,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 121: Width=379561, Height=282168, Depth=145636, IC=55068
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C121() throws Exception {
 
@@ -2912,6 +3156,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 122: Width=322218, Height=282168, Depth=0, IC=93298
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C122() throws Exception {
 
@@ -2935,6 +3181,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 123: Width=398675, Height=282168, Depth=0, IC=62711
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C123() throws Exception {
 
@@ -2958,6 +3206,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 124: Width=797350, Height=282168, Depth=0, IC=62711
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C124() throws Exception {
 
@@ -2981,6 +3231,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 125: Width=398675, Height=400498, Depth=0, IC=61896
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C125() throws Exception {
 
@@ -3004,6 +3256,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 126: Width=398675, Height=400498, Depth=0, IC=61896
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C126() throws Exception {
 
@@ -3027,6 +3281,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 127: Width=398675, Height=400498, Depth=0, IC=46878
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C127() throws Exception {
 
@@ -3050,6 +3306,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 128: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C128() throws Exception {
 
@@ -3059,6 +3317,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 129: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C129() throws Exception {
 
@@ -3068,6 +3328,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 130: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C130() throws Exception {
 
@@ -3077,6 +3339,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 131: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C131() throws Exception {
 
@@ -3086,6 +3350,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 132: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C132() throws Exception {
 
@@ -3095,6 +3361,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 133: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C133() throws Exception {
 
@@ -3104,6 +3372,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 134: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C134() throws Exception {
 
@@ -3113,6 +3383,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 135: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C135() throws Exception {
 
@@ -3122,6 +3394,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 136: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C136() throws Exception {
 
@@ -3131,6 +3405,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 137: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C137() throws Exception {
 
@@ -3140,6 +3416,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 138: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C138() throws Exception {
 
@@ -3149,6 +3427,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 139: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C139() throws Exception {
 
@@ -3158,6 +3438,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 140: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C140() throws Exception {
 
@@ -3167,6 +3449,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 141: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C141() throws Exception {
 
@@ -3176,6 +3460,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 142: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C142() throws Exception {
 
@@ -3185,6 +3471,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 143: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C143() throws Exception {
 
@@ -3194,6 +3482,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 144: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C144() throws Exception {
 
@@ -3203,6 +3493,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 145: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C145() throws Exception {
 
@@ -3212,6 +3504,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 146: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C146() throws Exception {
 
@@ -3221,6 +3515,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 147: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C147() throws Exception {
 
@@ -3230,6 +3526,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 148: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C148() throws Exception {
 
@@ -3239,6 +3537,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 149: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C149() throws Exception {
 
@@ -3248,6 +3548,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 150: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C150() throws Exception {
 
@@ -3257,6 +3559,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 151: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C151() throws Exception {
 
@@ -3266,6 +3570,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 152: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C152() throws Exception {
 
@@ -3275,6 +3581,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 153: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C153() throws Exception {
 
@@ -3284,6 +3592,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 154: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C154() throws Exception {
 
@@ -3293,6 +3603,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 155: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C155() throws Exception {
 
@@ -3302,6 +3614,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 156: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C156() throws Exception {
 
@@ -3311,6 +3625,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 157: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C157() throws Exception {
 
@@ -3320,6 +3636,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 158: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C158() throws Exception {
 
@@ -3329,6 +3647,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 159: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C159() throws Exception {
 
@@ -3338,6 +3658,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 160: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C160() throws Exception {
 
@@ -3347,6 +3669,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 161: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C161() throws Exception {
 
@@ -3356,6 +3680,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 162: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C162() throws Exception {
 
@@ -3365,6 +3691,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 163: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C163() throws Exception {
 
@@ -3374,6 +3702,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 164: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C164() throws Exception {
 
@@ -3383,6 +3713,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 165: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C165() throws Exception {
 
@@ -3392,6 +3724,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 166: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C166() throws Exception {
 
@@ -3401,6 +3735,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 167: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C167() throws Exception {
 
@@ -3410,6 +3746,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 168: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C168() throws Exception {
 
@@ -3419,6 +3757,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 169: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C169() throws Exception {
 
@@ -3428,6 +3768,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 170: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C170() throws Exception {
 
@@ -3437,6 +3779,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 171: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C171() throws Exception {
 
@@ -3446,6 +3790,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 172: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C172() throws Exception {
 
@@ -3455,6 +3801,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 173: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C173() throws Exception {
 
@@ -3464,6 +3812,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 174: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C174() throws Exception {
 
@@ -3473,6 +3823,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 175: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C175() throws Exception {
 
@@ -3482,6 +3834,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 176: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C176() throws Exception {
 
@@ -3491,6 +3845,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 177: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C177() throws Exception {
 
@@ -3500,6 +3856,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 178: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C178() throws Exception {
 
@@ -3509,6 +3867,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 179: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C179() throws Exception {
 
@@ -3518,6 +3878,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 180: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C180() throws Exception {
 
@@ -3527,6 +3889,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 181: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C181() throws Exception {
 
@@ -3536,6 +3900,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 182: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C182() throws Exception {
 
@@ -3545,6 +3911,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 183: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C183() throws Exception {
 
@@ -3554,6 +3922,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 184: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C184() throws Exception {
 
@@ -3563,6 +3933,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 185: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C185() throws Exception {
 
@@ -3572,6 +3944,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 186: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C186() throws Exception {
 
@@ -3581,6 +3955,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 187: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C187() throws Exception {
 
@@ -3590,6 +3966,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 188: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C188() throws Exception {
 
@@ -3599,6 +3977,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 189: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C189() throws Exception {
 
@@ -3608,6 +3988,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 190: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C190() throws Exception {
 
@@ -3617,6 +3999,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 191: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C191() throws Exception {
 
@@ -3626,6 +4010,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 192: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C192() throws Exception {
 
@@ -3635,6 +4021,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 193: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C193() throws Exception {
 
@@ -3644,6 +4032,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 194: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C194() throws Exception {
 
@@ -3653,6 +4043,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 195: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C195() throws Exception {
 
@@ -3662,6 +4054,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 196: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C196() throws Exception {
 
@@ -3671,6 +4065,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 197: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C197() throws Exception {
 
@@ -3680,6 +4076,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 198: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C198() throws Exception {
 
@@ -3689,6 +4087,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 199: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C199() throws Exception {
 
@@ -3698,6 +4098,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 200: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C200() throws Exception {
 
@@ -3707,6 +4109,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 201: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C201() throws Exception {
 
@@ -3716,6 +4120,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 202: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C202() throws Exception {
 
@@ -3725,6 +4131,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 203: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C203() throws Exception {
 
@@ -3734,6 +4142,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 204: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C204() throws Exception {
 
@@ -3743,6 +4153,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 205: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C205() throws Exception {
 
@@ -3752,6 +4164,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 206: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C206() throws Exception {
 
@@ -3761,6 +4175,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 207: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C207() throws Exception {
 
@@ -3770,6 +4186,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 208: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C208() throws Exception {
 
@@ -3779,6 +4197,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 209: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C209() throws Exception {
 
@@ -3788,6 +4208,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 210: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C210() throws Exception {
 
@@ -3797,6 +4219,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 211: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C211() throws Exception {
 
@@ -3806,6 +4230,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 212: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C212() throws Exception {
 
@@ -3815,6 +4241,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 213: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C213() throws Exception {
 
@@ -3824,6 +4252,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 214: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C214() throws Exception {
 
@@ -3833,6 +4263,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 215: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C215() throws Exception {
 
@@ -3842,6 +4274,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 216: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C216() throws Exception {
 
@@ -3851,6 +4285,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 217: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C217() throws Exception {
 
@@ -3860,6 +4296,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 218: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C218() throws Exception {
 
@@ -3869,6 +4307,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 219: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C219() throws Exception {
 
@@ -3878,6 +4318,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 220: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C220() throws Exception {
 
@@ -3887,6 +4329,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 221: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C221() throws Exception {
 
@@ -3896,6 +4340,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 222: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C222() throws Exception {
 
@@ -3905,6 +4351,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 223: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C223() throws Exception {
 
@@ -3914,6 +4362,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 224: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C224() throws Exception {
 
@@ -3923,6 +4373,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 225: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C225() throws Exception {
 
@@ -3932,6 +4384,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 226: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C226() throws Exception {
 
@@ -3941,6 +4395,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 227: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C227() throws Exception {
 
@@ -3950,6 +4406,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 228: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C228() throws Exception {
 
@@ -3959,6 +4417,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 229: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C229() throws Exception {
 
@@ -3968,6 +4428,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 230: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C230() throws Exception {
 
@@ -3977,6 +4439,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 231: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C231() throws Exception {
 
@@ -3986,6 +4450,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 232: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C232() throws Exception {
 
@@ -3995,6 +4461,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 233: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C233() throws Exception {
 
@@ -4004,6 +4472,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 234: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C234() throws Exception {
 
@@ -4013,6 +4483,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 235: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C235() throws Exception {
 
@@ -4022,6 +4494,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 236: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C236() throws Exception {
 
@@ -4031,6 +4505,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 237: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C237() throws Exception {
 
@@ -4040,6 +4516,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 238: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C238() throws Exception {
 
@@ -4049,6 +4527,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 239: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C239() throws Exception {
 
@@ -4058,6 +4538,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 240: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C240() throws Exception {
 
@@ -4067,6 +4549,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 241: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C241() throws Exception {
 
@@ -4076,6 +4560,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 242: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C242() throws Exception {
 
@@ -4085,6 +4571,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 243: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C243() throws Exception {
 
@@ -4094,6 +4582,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 244: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C244() throws Exception {
 
@@ -4103,6 +4593,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 245: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C245() throws Exception {
 
@@ -4112,6 +4604,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 246: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C246() throws Exception {
 
@@ -4121,6 +4615,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 247: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C247() throws Exception {
 
@@ -4130,6 +4626,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 248: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C248() throws Exception {
 
@@ -4139,6 +4637,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 249: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C249() throws Exception {
 
@@ -4148,6 +4648,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 250: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C250() throws Exception {
 
@@ -4157,6 +4659,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 251: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C251() throws Exception {
 
@@ -4166,6 +4670,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 252: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C252() throws Exception {
 
@@ -4175,6 +4681,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 253: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C253() throws Exception {
 
@@ -4184,6 +4692,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 254: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C254() throws Exception {
 
@@ -4193,6 +4703,8 @@ public class FontFactoryImplGenCmvtti10Test extends AbstractFontFactoryTester {
     /**
      * test cmvtti10
      * Char 255: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmvtti10C255() throws Exception {
 

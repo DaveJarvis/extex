@@ -52,6 +52,7 @@ public class TfmReaderTest extends TestCase {
 
     /**
      * Test method for {@link org.extex.font.format.tfm.TfmReader#getParam(java.lang.String)}.
+     * @throws Exception TODO mgn
      */
     public void testGetParamString01() throws Exception {
 
@@ -62,6 +63,7 @@ public class TfmReaderTest extends TestCase {
 
     /**
      * Test method for {@link org.extex.font.format.tfm.TfmReader#getParam(java.lang.String)}.
+     * @throws Exception TODO mgn
      */
     public void testGetParamString02() throws Exception {
 
@@ -72,6 +74,7 @@ public class TfmReaderTest extends TestCase {
 
     /**
      * Test method for {@link org.extex.font.format.tfm.TfmReader#getParam(java.lang.String)}.
+     * @throws Exception TODO mgn
      */
     public void testGetParamString03() throws Exception {
 
@@ -82,6 +85,7 @@ public class TfmReaderTest extends TestCase {
 
     /**
      * Test method for {@link org.extex.font.format.tfm.TfmReader#getParam(java.lang.String)}.
+     * @throws Exception TODO mgn
      */
     public void testGetParamString04() throws Exception {
 
@@ -92,6 +96,7 @@ public class TfmReaderTest extends TestCase {
 
     /**
      * Test method for {@link org.extex.font.format.tfm.TfmReader#getParam(java.lang.String)}.
+     * @throws Exception TODO mgn
      */
     public void testGetParamString05() throws Exception {
 
@@ -105,6 +110,7 @@ public class TfmReaderTest extends TestCase {
 
     /**
      * test width
+     * @throws Exception TODO mgn
      */
     public void testWidth01() throws Exception {
 
@@ -119,6 +125,7 @@ public class TfmReaderTest extends TestCase {
 
     /**
      * test width
+     * @throws Exception TODO mgn
      */
     public void testWidth02() throws Exception {
 
@@ -130,6 +137,7 @@ public class TfmReaderTest extends TestCase {
 
     /**
      * test width
+     * @throws Exception TODO mgn
      */
     public void testWidth03() throws Exception {
 
@@ -140,6 +148,7 @@ public class TfmReaderTest extends TestCase {
 
     /**
      * test width
+     * @throws Exception TODO mgn
      */
     public void testHeight01() throws Exception {
 
@@ -149,6 +158,7 @@ public class TfmReaderTest extends TestCase {
 
     /**
      * test width
+     * @throws Exception TODO mgn
      */
     public void testHeight02() throws Exception {
 
@@ -160,6 +170,7 @@ public class TfmReaderTest extends TestCase {
 
     /**
      * test width
+     * @throws Exception TODO mgn
      */
     public void testHeight03() throws Exception {
 
@@ -170,6 +181,7 @@ public class TfmReaderTest extends TestCase {
 
     /**
      * test depth
+     * @throws Exception TODO mgn
      */
     public void testDepth01() throws Exception {
 
@@ -179,6 +191,7 @@ public class TfmReaderTest extends TestCase {
 
     /**
      * test depth
+     * @throws Exception TODO mgn
      */
     public void testDepth02() throws Exception {
 
@@ -190,6 +203,7 @@ public class TfmReaderTest extends TestCase {
 
     /**
      * test depth
+     * @throws Exception TODO mgn
      */
     public void testDepth03() throws Exception {
 
@@ -200,6 +214,7 @@ public class TfmReaderTest extends TestCase {
 
     /**
      * test depth
+     * @throws Exception TODO mgn
      */
     public void testDepth04() throws Exception {
 
@@ -211,6 +226,7 @@ public class TfmReaderTest extends TestCase {
 
     /**
      * test italic correction
+     * @throws Exception TODO mgn
      */
     public void testItalic01() throws Exception {
 
@@ -220,6 +236,7 @@ public class TfmReaderTest extends TestCase {
 
     /**
      * test italic correction
+     * @throws Exception TODO mgn
      */
     public void testItalic02() throws Exception {
 
@@ -231,6 +248,7 @@ public class TfmReaderTest extends TestCase {
 
     /**
      * test italic correction
+     * @throws Exception TODO mgn
      */
     public void testItalic03() throws Exception {
 
@@ -241,6 +259,7 @@ public class TfmReaderTest extends TestCase {
 
     /**
      * test italic correction
+     * @throws Exception TODO mgn
      */
     public void testItalic04() throws Exception {
 

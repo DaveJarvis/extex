@@ -28,14 +28,15 @@ import org.extex.font.format.NullExtexFont;
 
 /**
  * Test for the font factory.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public class FontFactoryImplTest extends AbstractFontFactoryTester {
 
     /**
-     * Test for the font key: null 
+     * Test for the font key: null
+     * 
      * @throws Exception if an error occurred.
      */
     public void test01() throws Exception {
@@ -48,7 +49,8 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: font key null 
+     * Test for the font key: font key null
+     * 
      * @throws Exception if an error occurred.
      */
     public void test02() throws Exception {
@@ -63,7 +65,8 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: font key empty 
+     * Test for the font key: font key empty
+     * 
      * @throws Exception if an error occurred.
      */
     public void test03() throws Exception {
@@ -78,22 +81,24 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void test05() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
 
-        FontKey key = factory.getFontKey((String) null, new Dimen(
-                Dimen.ONE * 20));
+        FontKey key =
+                factory.getFontKey((String) null, new Dimen(Dimen.ONE * 20));
         ExtexFont font = factory.getInstance(key);
 
         assertTrue(font instanceof NullExtexFont);
     }
 
     /**
-     * Test for the font: does not exists 
+     * Test for the font: does not exists
+     * 
      * @throws Exception if an error occurred.
      */
     public void test06() throws Exception {
@@ -107,7 +112,8 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font: corrupt font 
+     * Test for the font: corrupt font
+     * 
      * @throws Exception if an error occurred.
      */
     public void test07() throws Exception {
@@ -120,13 +126,14 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
             ExtexFont font = factory.getInstance(key);
         } catch (CorruptFontException e) {
             assertEquals("Font file is corrupt: empty\n", e
-                    .getLocalizedMessage());
+                .getLocalizedMessage());
         }
 
     }
 
     /**
-     * Test for the font: corrupt font 
+     * Test for the font: corrupt font
+     * 
      * @throws Exception if an error occurred.
      */
     public void test08() throws Exception {
@@ -148,7 +155,8 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
     // -------------------------------------------------
 
     /**
-     * Test for the font key: null key 
+     * Test for the font key: null key
+     * 
      * @throws Exception if an error occurred.
      */
     public void testKey01() throws Exception {
@@ -166,7 +174,8 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: empty key 
+     * Test for the font key: empty key
+     * 
      * @throws Exception if an error occurred.
      */
     public void testKey02() throws Exception {
@@ -184,7 +193,8 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void testKey03() throws Exception {
@@ -202,7 +212,8 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void testKey04() throws Exception {
@@ -219,7 +230,8 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void testKey05() throws Exception {
@@ -234,14 +246,17 @@ public class FontFactoryImplTest extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void testKey06() throws Exception {
 
         CoreFontFactory factory = makeFontFactory();
 
-        FontKey key = factory.getFontKey("cmr10", null, new HashMap());
+        FontKey key =
+                factory
+                    .getFontKey("cmr10", null, new HashMap<String, Object>());
         assertNotNull(key);
 
         assertNull(key.getDimen("size"));

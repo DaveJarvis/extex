@@ -33,6 +33,7 @@ public class GlyphNameTest extends TestCase {
 
     /**
      * Test method for {@link org.extex.font.unicode.GlyphName#getUnicode(java.lang.String)}.
+     * @throws Exception TODO mgn
      */
     public void testGetUnicode01() throws Exception {
 
@@ -53,6 +54,7 @@ public class GlyphNameTest extends TestCase {
 
     /**
      * Test method for {@link org.extex.font.unicode.GlyphName#getGlyphname(org.extex.core.UnicodeChar)}.
+     * @throws Exception TODO mgn
      */
     public void testGetGlyphname() throws Exception {
 
@@ -72,4 +74,5 @@ public class GlyphNameTest extends TestCase {
         assertEquals("space", g.getGlyphname(UnicodeChar.get(32)));
 
     }
+
 }

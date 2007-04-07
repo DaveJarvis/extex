@@ -52,6 +52,8 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
     private static CoreFontFactory factory;
 
     /**
+     * {@inheritDoc}
+     * 
      * @see junit.framework.TestCase#setUp()
      */
     protected void setUp() throws Exception {
@@ -181,7 +183,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
         FixedGlue wx = font.getWidth(UnicodeChar.get(65535));
         assertNotNull(wx);
-        assertTrue(wx.toString(), Glue.ZERO.eq(wx));
+        assertTrue(wx.toString(), FixedGlue.ZERO.eq(wx));
 
         // C 65 ; WX 695 ; N A ; B 2 -1 690 662
         FixedGlue w = font.getWidth(UnicodeChar.get('A'));

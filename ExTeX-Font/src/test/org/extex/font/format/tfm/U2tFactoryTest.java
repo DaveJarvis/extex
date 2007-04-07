@@ -81,7 +81,7 @@ public class U2tFactoryTest extends TestCase {
         U2tFactory u2t = U2tFactory.getInstance();
         assertNotNull(u2t);
 
-        Map map = u2t.loadU2t(null, null);
+        Map<UnicodeChar, Integer> map = u2t.loadU2t(null, null);
         assertNull(map);
 
     }
@@ -98,7 +98,7 @@ public class U2tFactoryTest extends TestCase {
         U2tFactory u2t = U2tFactory.getInstance();
         assertNotNull(u2t);
 
-        Map map = u2t.loadU2t("xxx", null);
+        Map<UnicodeChar, Integer> map = u2t.loadU2t("xxx", null);
         assertNull(map);
 
     }
@@ -116,7 +116,7 @@ public class U2tFactoryTest extends TestCase {
         assertNotNull(u2t);
         assertNotNull(finder);
 
-        Map map = u2t.loadU2t("xxx_not_defined", finder);
+        Map<UnicodeChar, Integer> map = u2t.loadU2t("xxx_not_defined", finder);
         assertNull(map);
 
     }
@@ -135,7 +135,7 @@ public class U2tFactoryTest extends TestCase {
 
         assertNotNull(finder);
 
-        Map map = u2t.loadU2t("textext", finder);
+        Map<UnicodeChar, Integer> map = u2t.loadU2t("textext", finder);
         assertNotNull(map);
 
     }
@@ -153,7 +153,7 @@ public class U2tFactoryTest extends TestCase {
         assertNotNull(u2t);
         assertNotNull(finder);
 
-        Map map = u2t.loadU2t("textext", finder);
+        Map<UnicodeChar, Integer> map = u2t.loadU2t("textext", finder);
         assertTrue(map.size() > 0);
 
     }
@@ -171,7 +171,7 @@ public class U2tFactoryTest extends TestCase {
         assertNotNull(u2t);
         assertNotNull(finder);
 
-        Map map = u2t.loadU2t("textext", finder);
+        Map<UnicodeChar, Integer> map = u2t.loadU2t("textext", finder);
 
         Object val = map.get(null);
         assertNull(val);
@@ -191,9 +191,9 @@ public class U2tFactoryTest extends TestCase {
         assertNotNull(u2t);
         assertNotNull(finder);
 
-        Map map = u2t.loadU2t("textext", finder);
+        Map<UnicodeChar, Integer> map = u2t.loadU2t("textext", finder);
 
-        Integer val = (Integer) map.get(UnicodeChar.get(0xFFFF));
+        Integer val = map.get(UnicodeChar.get(0xFFFF));
         assertNull(val);
 
     }
@@ -211,9 +211,9 @@ public class U2tFactoryTest extends TestCase {
         assertNotNull(u2t);
         assertNotNull(finder);
 
-        Map map = u2t.loadU2t("textext", finder);
+        Map<UnicodeChar, Integer> map = u2t.loadU2t("textext", finder);
 
-        Integer val = (Integer) map.get(UnicodeChar.get(0x0041));
+        Integer val = map.get(UnicodeChar.get(0x0041));
         assertNotNull(val);
         assertEquals(0x41, val.intValue());
 
@@ -232,9 +232,9 @@ public class U2tFactoryTest extends TestCase {
         assertNotNull(u2t);
         assertNotNull(finder);
 
-        Map map = u2t.loadU2t("textext", finder);
+        Map<UnicodeChar, Integer> map = u2t.loadU2t("textext", finder);
 
-        Integer val = (Integer) map.get(UnicodeChar.get(0x00b8));
+        Integer val = map.get(UnicodeChar.get(0x00b8));
         assertNotNull(val);
         assertEquals(0x18, val.intValue());
 
@@ -253,9 +253,9 @@ public class U2tFactoryTest extends TestCase {
         assertNotNull(u2t);
         assertNotNull(finder);
 
-        Map map = u2t.loadU2t("textext", finder);
+        Map<UnicodeChar, Integer> map = u2t.loadU2t("textext", finder);
 
-        Integer val = (Integer) map.get(UnicodeChar.get(0x0392));
+        Integer val = map.get(UnicodeChar.get(0x0392));
         assertNotNull(val);
         assertEquals(0x42, val.intValue());
 
@@ -273,7 +273,7 @@ public class U2tFactoryTest extends TestCase {
         U2tFactory u2t = U2tFactory.getInstance();
         assertNotNull(u2t);
 
-        Map map = u2t.loadT2u(null, null);
+        Map<Integer, UnicodeChar> map = u2t.loadT2u(null, null);
         assertNull(map);
 
     }
@@ -290,7 +290,7 @@ public class U2tFactoryTest extends TestCase {
         U2tFactory u2t = U2tFactory.getInstance();
         assertNotNull(u2t);
 
-        Map map = u2t.loadT2u("xxx", null);
+        Map<Integer, UnicodeChar> map = u2t.loadT2u("xxx", null);
         assertNull(map);
 
     }
@@ -308,7 +308,7 @@ public class U2tFactoryTest extends TestCase {
         assertNotNull(u2t);
         assertNotNull(finder);
 
-        Map map = u2t.loadT2u("xxx_not_defined", finder);
+        Map<Integer, UnicodeChar> map = u2t.loadT2u("xxx_not_defined", finder);
         assertNull(map);
 
     }
@@ -326,7 +326,7 @@ public class U2tFactoryTest extends TestCase {
         assertNotNull(u2t);
         assertNotNull(finder);
 
-        Map map = u2t.loadT2u("textext", finder);
+        Map<Integer, UnicodeChar> map = u2t.loadT2u("textext", finder);
         assertNotNull(map);
 
     }
@@ -344,7 +344,7 @@ public class U2tFactoryTest extends TestCase {
         assertNotNull(u2t);
         assertNotNull(finder);
 
-        Map map = u2t.loadT2u("textext", finder);
+        Map<Integer, UnicodeChar> map = u2t.loadT2u("textext", finder);
         assertNotNull(map);
 
         Object val = map.get(null);
@@ -365,10 +365,10 @@ public class U2tFactoryTest extends TestCase {
         assertNotNull(u2t);
         assertNotNull(finder);
 
-        Map map = u2t.loadT2u("textext", finder);
+        Map<Integer, UnicodeChar> map = u2t.loadT2u("textext", finder);
         assertNotNull(map);
 
-        UnicodeChar uc = (UnicodeChar) map.get(new Integer(0xFFFF));
+        UnicodeChar uc = map.get(new Integer(0xFFFF));
         assertNull(uc);
 
     }
@@ -386,10 +386,10 @@ public class U2tFactoryTest extends TestCase {
         assertNotNull(u2t);
         assertNotNull(finder);
 
-        Map map = u2t.loadT2u("textext", finder);
+        Map<Integer, UnicodeChar> map = u2t.loadT2u("textext", finder);
         assertNotNull(map);
 
-        UnicodeChar uc = (UnicodeChar) map.get(new Integer(0x41));
+        UnicodeChar uc = map.get(new Integer(0x41));
         assertNotNull(uc);
 
         assertEquals(0x41, uc.getCodePoint());
@@ -409,10 +409,10 @@ public class U2tFactoryTest extends TestCase {
         assertNotNull(u2t);
         assertNotNull(finder);
 
-        Map map = u2t.loadT2u("textext", finder);
+        Map<Integer, UnicodeChar> map = u2t.loadT2u("textext", finder);
         assertNotNull(map);
 
-        UnicodeChar uc = (UnicodeChar) map.get(new Integer(0x48));
+        UnicodeChar uc = map.get(new Integer(0x48));
         assertNotNull(uc);
 
         assertEquals(0x48, uc.getCodePoint());

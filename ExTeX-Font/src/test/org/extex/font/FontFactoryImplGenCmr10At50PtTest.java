@@ -78,6 +78,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 0: Width=2048006, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C0() throws Exception {
 
@@ -101,6 +103,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 1: Width=2730675, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C1() throws Exception {
 
@@ -124,6 +128,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 2: Width=2548631, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C2() throws Exception {
 
@@ -147,6 +153,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 3: Width=2275559, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C3() throws Exception {
 
@@ -170,6 +178,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 4: Width=2184540, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C4() throws Exception {
 
@@ -193,6 +203,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 5: Width=2457606, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C5() throws Exception {
 
@@ -216,6 +228,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 6: Width=2366584, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C6() throws Exception {
 
@@ -239,6 +253,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 7: Width=2548631, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C7() throws Exception {
 
@@ -262,6 +278,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 8: Width=2366584, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C8() throws Exception {
 
@@ -285,6 +303,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 9: Width=2548631, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C9() throws Exception {
 
@@ -308,6 +328,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 10: Width=2366584, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C10() throws Exception {
 
@@ -331,6 +353,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 11: Width=1911475, Height=2275556, Depth=0, IC=254865
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C11() throws Exception {
 
@@ -354,6 +378,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 12: Width=1820450, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C12() throws Exception {
 
@@ -377,6 +403,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 13: Width=1820450, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C13() throws Exception {
 
@@ -400,6 +428,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 14: Width=2730675, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C14() throws Exception {
 
@@ -423,6 +453,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 15: Width=2730675, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C15() throws Exception {
 
@@ -446,6 +478,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 16: Width=910225, Height=1410843, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C16() throws Exception {
 
@@ -469,6 +503,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 17: Width=1001250, Height=1410843, Depth=637156, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C17() throws Exception {
 
@@ -493,6 +529,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 18: Width=1638406, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C18() throws Exception {
 
@@ -516,6 +554,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 19: Width=1638406, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C19() throws Exception {
 
@@ -539,6 +579,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 20: Width=1638406, Height=2059381, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C20() throws Exception {
 
@@ -562,6 +604,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 21: Width=1638406, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C21() throws Exception {
 
@@ -585,6 +629,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 22: Width=1638406, Height=1860490, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C22() throws Exception {
 
@@ -608,6 +654,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 23: Width=2457606, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C23() throws Exception {
 
@@ -631,6 +679,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 24: Width=1456359, Height=0, Depth=557509, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C24() throws Exception {
 
@@ -654,6 +704,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 25: Width=1638409, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C25() throws Exception {
 
@@ -677,6 +729,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 26: Width=2366584, Height=1410843, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C26() throws Exception {
 
@@ -700,6 +754,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 27: Width=2548631, Height=1410843, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C27() throws Exception {
 
@@ -723,6 +779,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 28: Width=1638406, Height=1729425, Depth=318581, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C28() throws Exception {
 
@@ -747,6 +805,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 29: Width=2958231, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C29() throws Exception {
 
@@ -770,6 +830,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 30: Width=3322318, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C30() throws Exception {
 
@@ -793,6 +855,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 31: Width=2548631, Height=2398434, Depth=159290, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C31() throws Exception {
 
@@ -817,6 +881,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 32: Width=910225, Height=1410843, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C32() throws Exception {
 
@@ -840,6 +906,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 33: Width=910225, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C33() throws Exception {
 
@@ -863,6 +931,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 34: Width=1638406, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C34() throws Exception {
 
@@ -886,6 +956,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 35: Width=2730675, Height=2275556, Depth=637150, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C35() throws Exception {
 
@@ -910,6 +982,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 36: Width=1638406, Height=2457600, Depth=182043, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C36() throws Exception {
 
@@ -934,6 +1008,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 37: Width=2730675, Height=2457600, Depth=182043, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C37() throws Exception {
 
@@ -958,6 +1034,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 38: Width=2548631, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C38() throws Exception {
 
@@ -981,6 +1059,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 39: Width=910225, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C39() throws Exception {
 
@@ -1004,6 +1084,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 40: Width=1274315, Height=2457600, Depth=819200, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C40() throws Exception {
 
@@ -1028,6 +1110,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 41: Width=1274315, Height=2457600, Depth=819200, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C41() throws Exception {
 
@@ -1052,6 +1136,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 42: Width=1638406, Height=2457600, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C42() throws Exception {
 
@@ -1075,6 +1161,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 43: Width=2548631, Height=1911468, Depth=273068, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C43() throws Exception {
 
@@ -1099,6 +1187,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 44: Width=910225, Height=345884, Depth=637156, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C44() throws Exception {
 
@@ -1123,6 +1213,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 45: Width=1092268, Height=1410843, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C45() throws Exception {
 
@@ -1146,6 +1238,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 46: Width=910225, Height=345884, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C46() throws Exception {
 
@@ -1169,6 +1263,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 47: Width=1638406, Height=2457600, Depth=819200, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C47() throws Exception {
 
@@ -1193,6 +1289,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 48: Width=1638406, Height=2111715, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C48() throws Exception {
 
@@ -1216,6 +1314,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 49: Width=1638406, Height=2111715, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C49() throws Exception {
 
@@ -1239,6 +1339,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 50: Width=1638406, Height=2111715, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C50() throws Exception {
 
@@ -1262,6 +1364,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 51: Width=1638406, Height=2111715, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C51() throws Exception {
 
@@ -1285,6 +1389,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 52: Width=1638406, Height=2111715, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C52() throws Exception {
 
@@ -1308,6 +1414,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 53: Width=1638406, Height=2111715, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C53() throws Exception {
 
@@ -1331,6 +1439,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 54: Width=1638406, Height=2111715, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C54() throws Exception {
 
@@ -1354,6 +1464,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 55: Width=1638406, Height=2111715, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C55() throws Exception {
 
@@ -1377,6 +1489,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 56: Width=1638406, Height=2111715, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C56() throws Exception {
 
@@ -1400,6 +1514,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 57: Width=1638406, Height=2111715, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C57() throws Exception {
 
@@ -1423,6 +1539,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 58: Width=910225, Height=1410843, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C58() throws Exception {
 
@@ -1446,6 +1564,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 59: Width=910225, Height=1410843, Depth=637156, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C59() throws Exception {
 
@@ -1470,6 +1590,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 60: Width=910225, Height=1638400, Depth=637156, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C60() throws Exception {
 
@@ -1494,6 +1616,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 61: Width=2548631, Height=1202175, Depth=-436225, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C61() throws Exception {
 
@@ -1518,6 +1642,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 62: Width=1547384, Height=1638400, Depth=637156, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C62() throws Exception {
 
@@ -1542,6 +1668,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 63: Width=1547384, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C63() throws Exception {
 
@@ -1565,6 +1693,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 64: Width=2548631, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C64() throws Exception {
 
@@ -1588,6 +1718,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 65: Width=2457606, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C65() throws Exception {
 
@@ -1611,6 +1743,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 66: Width=2321075, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C66() throws Exception {
 
@@ -1634,6 +1768,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 67: Width=2366584, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C67() throws Exception {
 
@@ -1657,6 +1793,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 68: Width=2503118, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C68() throws Exception {
 
@@ -1680,6 +1818,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 69: Width=2230050, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C69() throws Exception {
 
@@ -1703,6 +1843,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 70: Width=2139031, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C70() throws Exception {
 
@@ -1726,6 +1868,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 71: Width=2571384, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C71() throws Exception {
 
@@ -1749,6 +1893,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 72: Width=2457606, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C72() throws Exception {
 
@@ -1772,6 +1918,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 73: Width=1183290, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C73() throws Exception {
 
@@ -1795,6 +1943,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 74: Width=1683915, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C74() throws Exception {
 
@@ -1818,6 +1968,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 75: Width=2548631, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C75() throws Exception {
 
@@ -1841,6 +1993,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 76: Width=2048006, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C76() throws Exception {
 
@@ -1864,6 +2018,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 77: Width=3003740, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C77() throws Exception {
 
@@ -1887,6 +2043,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 78: Width=2457606, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C78() throws Exception {
 
@@ -1910,6 +2068,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 79: Width=2548631, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C79() throws Exception {
 
@@ -1933,6 +2093,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 80: Width=2230050, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C80() throws Exception {
 
@@ -1956,6 +2118,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 81: Width=2548631, Height=2239143, Depth=637156, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C81() throws Exception {
 
@@ -1980,6 +2144,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 82: Width=2412093, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C82() throws Exception {
 
@@ -2003,6 +2169,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 83: Width=1820450, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C83() throws Exception {
 
@@ -2026,6 +2194,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 84: Width=2366584, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C84() throws Exception {
 
@@ -2049,6 +2219,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 85: Width=2457606, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C85() throws Exception {
 
@@ -2072,6 +2244,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 86: Width=2457606, Height=2239143, Depth=0, IC=45509
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C86() throws Exception {
 
@@ -2095,6 +2269,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 87: Width=3367831, Height=2239143, Depth=0, IC=45509
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C87() throws Exception {
 
@@ -2118,6 +2294,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 88: Width=2457606, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C88() throws Exception {
 
@@ -2141,6 +2319,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 89: Width=2457606, Height=2239143, Depth=0, IC=81918
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C89() throws Exception {
 
@@ -2164,6 +2344,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 90: Width=2002493, Height=2239143, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C90() throws Exception {
 
@@ -2187,6 +2369,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 91: Width=910225, Height=2457600, Depth=819200, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C91() throws Exception {
 
@@ -2211,6 +2395,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 92: Width=1638406, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C92() throws Exception {
 
@@ -2234,6 +2420,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 93: Width=910225, Height=2457600, Depth=819200, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C93() throws Exception {
 
@@ -2258,6 +2446,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 94: Width=1638406, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C94() throws Exception {
 
@@ -2281,6 +2471,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 95: Width=910225, Height=2188440, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C95() throws Exception {
 
@@ -2304,6 +2496,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 96: Width=910225, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C96() throws Exception {
 
@@ -2327,6 +2521,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 97: Width=1638406, Height=1410843, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C97() throws Exception {
 
@@ -2350,6 +2546,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 98: Width=1820450, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C98() throws Exception {
 
@@ -2373,6 +2571,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 99: Width=1456359, Height=1410843, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C99() throws Exception {
 
@@ -2396,6 +2596,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 100: Width=1820450, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C100() throws Exception {
 
@@ -2419,6 +2621,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 101: Width=1456359, Height=1410843, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C101() throws Exception {
 
@@ -2442,6 +2646,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 102: Width=1001250, Height=2275556, Depth=0, IC=254865
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C102() throws Exception {
 
@@ -2465,6 +2671,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 103: Width=1638406, Height=1410843, Depth=637156, IC=45509
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C103() throws Exception {
 
@@ -2489,6 +2697,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 104: Width=1820450, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C104() throws Exception {
 
@@ -2512,6 +2722,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 105: Width=910225, Height=2188440, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C105() throws Exception {
 
@@ -2535,6 +2747,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 106: Width=1001250, Height=2188440, Depth=637156, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C106() throws Exception {
 
@@ -2559,6 +2773,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 107: Width=1729431, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C107() throws Exception {
 
@@ -2582,6 +2798,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 108: Width=910225, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C108() throws Exception {
 
@@ -2605,6 +2823,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 109: Width=2730675, Height=1410843, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C109() throws Exception {
 
@@ -2628,6 +2848,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 110: Width=1820450, Height=1410843, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C110() throws Exception {
 
@@ -2651,6 +2873,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 111: Width=1638406, Height=1410843, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C111() throws Exception {
 
@@ -2674,6 +2898,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 112: Width=1820450, Height=1410843, Depth=637156, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C112() throws Exception {
 
@@ -2698,6 +2924,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 113: Width=1729425, Height=1410843, Depth=637156, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C113() throws Exception {
 
@@ -2722,6 +2950,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 114: Width=1283418, Height=1410843, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C114() throws Exception {
 
@@ -2745,6 +2975,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 115: Width=1292518, Height=1410843, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C115() throws Exception {
 
@@ -2768,6 +3000,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 116: Width=1274315, Height=2015493, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C116() throws Exception {
 
@@ -2791,6 +3025,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 117: Width=1820450, Height=1410843, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C117() throws Exception {
 
@@ -2814,6 +3050,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 118: Width=1729431, Height=1410843, Depth=0, IC=45509
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C118() throws Exception {
 
@@ -2837,6 +3075,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 119: Width=2366584, Height=1410843, Depth=0, IC=45509
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C119() throws Exception {
 
@@ -2860,6 +3100,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 120: Width=1729431, Height=1410843, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C120() throws Exception {
 
@@ -2883,6 +3125,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 121: Width=1729431, Height=1410843, Depth=637156, IC=45509
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C121() throws Exception {
 
@@ -2907,6 +3151,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 122: Width=1456359, Height=1410843, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C122() throws Exception {
 
@@ -2930,6 +3176,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 123: Width=1638406, Height=1410843, Depth=0, IC=91025
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C123() throws Exception {
 
@@ -2953,6 +3201,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 124: Width=3276809, Height=1410843, Depth=0, IC=91025
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C124() throws Exception {
 
@@ -2976,6 +3226,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 125: Width=1638406, Height=2275556, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C125() throws Exception {
 
@@ -2999,6 +3251,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 126: Width=1638406, Height=2188440, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C126() throws Exception {
 
@@ -3022,6 +3276,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 127: Width=1638406, Height=2188440, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C127() throws Exception {
 
@@ -3045,6 +3301,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 128: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C128() throws Exception {
 
@@ -3054,6 +3312,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 129: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C129() throws Exception {
 
@@ -3063,6 +3323,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 130: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C130() throws Exception {
 
@@ -3072,6 +3334,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 131: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C131() throws Exception {
 
@@ -3081,6 +3345,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 132: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C132() throws Exception {
 
@@ -3090,6 +3356,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 133: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C133() throws Exception {
 
@@ -3099,6 +3367,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 134: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C134() throws Exception {
 
@@ -3108,6 +3378,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 135: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C135() throws Exception {
 
@@ -3117,6 +3389,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 136: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C136() throws Exception {
 
@@ -3126,6 +3400,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 137: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C137() throws Exception {
 
@@ -3135,6 +3411,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 138: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C138() throws Exception {
 
@@ -3144,6 +3422,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 139: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C139() throws Exception {
 
@@ -3153,6 +3433,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 140: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C140() throws Exception {
 
@@ -3162,6 +3444,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 141: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C141() throws Exception {
 
@@ -3171,6 +3455,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 142: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C142() throws Exception {
 
@@ -3180,6 +3466,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 143: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C143() throws Exception {
 
@@ -3189,6 +3477,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 144: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C144() throws Exception {
 
@@ -3198,6 +3488,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 145: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C145() throws Exception {
 
@@ -3207,6 +3499,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 146: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C146() throws Exception {
 
@@ -3216,6 +3510,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 147: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C147() throws Exception {
 
@@ -3225,6 +3521,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 148: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C148() throws Exception {
 
@@ -3234,6 +3532,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 149: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C149() throws Exception {
 
@@ -3243,6 +3543,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 150: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C150() throws Exception {
 
@@ -3252,6 +3554,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 151: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C151() throws Exception {
 
@@ -3261,6 +3565,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 152: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C152() throws Exception {
 
@@ -3270,6 +3576,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 153: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C153() throws Exception {
 
@@ -3279,6 +3587,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 154: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C154() throws Exception {
 
@@ -3288,6 +3598,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 155: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C155() throws Exception {
 
@@ -3297,6 +3609,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 156: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C156() throws Exception {
 
@@ -3306,6 +3620,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 157: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C157() throws Exception {
 
@@ -3315,6 +3631,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 158: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C158() throws Exception {
 
@@ -3324,6 +3642,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 159: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C159() throws Exception {
 
@@ -3333,6 +3653,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 160: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C160() throws Exception {
 
@@ -3342,6 +3664,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 161: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C161() throws Exception {
 
@@ -3351,6 +3675,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 162: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C162() throws Exception {
 
@@ -3360,6 +3686,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 163: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C163() throws Exception {
 
@@ -3369,6 +3697,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 164: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C164() throws Exception {
 
@@ -3378,6 +3708,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 165: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C165() throws Exception {
 
@@ -3387,6 +3719,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 166: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C166() throws Exception {
 
@@ -3396,6 +3730,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 167: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C167() throws Exception {
 
@@ -3405,6 +3741,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 168: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C168() throws Exception {
 
@@ -3414,6 +3752,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 169: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C169() throws Exception {
 
@@ -3423,6 +3763,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 170: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C170() throws Exception {
 
@@ -3432,6 +3774,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 171: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C171() throws Exception {
 
@@ -3441,6 +3785,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 172: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C172() throws Exception {
 
@@ -3450,6 +3796,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 173: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C173() throws Exception {
 
@@ -3459,6 +3807,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 174: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C174() throws Exception {
 
@@ -3468,6 +3818,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 175: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C175() throws Exception {
 
@@ -3477,6 +3829,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 176: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C176() throws Exception {
 
@@ -3486,6 +3840,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 177: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C177() throws Exception {
 
@@ -3495,6 +3851,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 178: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C178() throws Exception {
 
@@ -3504,6 +3862,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 179: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C179() throws Exception {
 
@@ -3513,6 +3873,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 180: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C180() throws Exception {
 
@@ -3522,6 +3884,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 181: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C181() throws Exception {
 
@@ -3531,6 +3895,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 182: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C182() throws Exception {
 
@@ -3540,6 +3906,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 183: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C183() throws Exception {
 
@@ -3549,6 +3917,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 184: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C184() throws Exception {
 
@@ -3558,6 +3928,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 185: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C185() throws Exception {
 
@@ -3567,6 +3939,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 186: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C186() throws Exception {
 
@@ -3576,6 +3950,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 187: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C187() throws Exception {
 
@@ -3585,6 +3961,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 188: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C188() throws Exception {
 
@@ -3594,6 +3972,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 189: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C189() throws Exception {
 
@@ -3603,6 +3983,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 190: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C190() throws Exception {
 
@@ -3612,6 +3994,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 191: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C191() throws Exception {
 
@@ -3621,6 +4005,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 192: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C192() throws Exception {
 
@@ -3630,6 +4016,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 193: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C193() throws Exception {
 
@@ -3639,6 +4027,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 194: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C194() throws Exception {
 
@@ -3648,6 +4038,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 195: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C195() throws Exception {
 
@@ -3657,6 +4049,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 196: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C196() throws Exception {
 
@@ -3666,6 +4060,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 197: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C197() throws Exception {
 
@@ -3675,6 +4071,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 198: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C198() throws Exception {
 
@@ -3684,6 +4082,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 199: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C199() throws Exception {
 
@@ -3693,6 +4093,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 200: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C200() throws Exception {
 
@@ -3702,6 +4104,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 201: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C201() throws Exception {
 
@@ -3711,6 +4115,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 202: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C202() throws Exception {
 
@@ -3720,6 +4126,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 203: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C203() throws Exception {
 
@@ -3729,6 +4137,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 204: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C204() throws Exception {
 
@@ -3738,6 +4148,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 205: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C205() throws Exception {
 
@@ -3747,6 +4159,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 206: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C206() throws Exception {
 
@@ -3756,6 +4170,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 207: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C207() throws Exception {
 
@@ -3765,6 +4181,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 208: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C208() throws Exception {
 
@@ -3774,6 +4192,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 209: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C209() throws Exception {
 
@@ -3783,6 +4203,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 210: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C210() throws Exception {
 
@@ -3792,6 +4214,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 211: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C211() throws Exception {
 
@@ -3801,6 +4225,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 212: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C212() throws Exception {
 
@@ -3810,6 +4236,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 213: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C213() throws Exception {
 
@@ -3819,6 +4247,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 214: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C214() throws Exception {
 
@@ -3828,6 +4258,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 215: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C215() throws Exception {
 
@@ -3837,6 +4269,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 216: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C216() throws Exception {
 
@@ -3846,6 +4280,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 217: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C217() throws Exception {
 
@@ -3855,6 +4291,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 218: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C218() throws Exception {
 
@@ -3864,6 +4302,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 219: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C219() throws Exception {
 
@@ -3873,6 +4313,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 220: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C220() throws Exception {
 
@@ -3882,6 +4324,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 221: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C221() throws Exception {
 
@@ -3891,6 +4335,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 222: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C222() throws Exception {
 
@@ -3900,6 +4346,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 223: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C223() throws Exception {
 
@@ -3909,6 +4357,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 224: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C224() throws Exception {
 
@@ -3918,6 +4368,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 225: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C225() throws Exception {
 
@@ -3927,6 +4379,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 226: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C226() throws Exception {
 
@@ -3936,6 +4390,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 227: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C227() throws Exception {
 
@@ -3945,6 +4401,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 228: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C228() throws Exception {
 
@@ -3954,6 +4412,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 229: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C229() throws Exception {
 
@@ -3963,6 +4423,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 230: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C230() throws Exception {
 
@@ -3972,6 +4434,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 231: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C231() throws Exception {
 
@@ -3981,6 +4445,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 232: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C232() throws Exception {
 
@@ -3990,6 +4456,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 233: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C233() throws Exception {
 
@@ -3999,6 +4467,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 234: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C234() throws Exception {
 
@@ -4008,6 +4478,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 235: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C235() throws Exception {
 
@@ -4017,6 +4489,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 236: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C236() throws Exception {
 
@@ -4026,6 +4500,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 237: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C237() throws Exception {
 
@@ -4035,6 +4511,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 238: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C238() throws Exception {
 
@@ -4044,6 +4522,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 239: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C239() throws Exception {
 
@@ -4053,6 +4533,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 240: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C240() throws Exception {
 
@@ -4062,6 +4544,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 241: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C241() throws Exception {
 
@@ -4071,6 +4555,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 242: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C242() throws Exception {
 
@@ -4080,6 +4566,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 243: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C243() throws Exception {
 
@@ -4089,6 +4577,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 244: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C244() throws Exception {
 
@@ -4098,6 +4588,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 245: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C245() throws Exception {
 
@@ -4107,6 +4599,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 246: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C246() throws Exception {
 
@@ -4116,6 +4610,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 247: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C247() throws Exception {
 
@@ -4125,6 +4621,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 248: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C248() throws Exception {
 
@@ -4134,6 +4632,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 249: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C249() throws Exception {
 
@@ -4143,6 +4643,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 250: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C250() throws Exception {
 
@@ -4152,6 +4654,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 251: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C251() throws Exception {
 
@@ -4161,6 +4665,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 252: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C252() throws Exception {
 
@@ -4170,6 +4676,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 253: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C253() throws Exception {
 
@@ -4179,6 +4687,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 254: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C254() throws Exception {
 
@@ -4188,6 +4698,8 @@ public class FontFactoryImplGenCmr10At50PtTest
     /**
      * test cmr10 at 50pt
      * Char 255: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmr10C255() throws Exception {
 

@@ -95,6 +95,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 0: Width=300375, Height=26213, Depth=760226, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC0() throws Exception {
 
@@ -119,6 +121,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 1: Width=300375, Height=26213, Depth=760226, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC1() throws Exception {
 
@@ -143,6 +147,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 2: Width=273068, Height=26213, Depth=760226, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC2() throws Exception {
 
@@ -167,6 +173,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 3: Width=273068, Height=26213, Depth=760226, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC3() throws Exception {
 
@@ -191,6 +199,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 4: Width=309476, Height=26213, Depth=760226, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC4() throws Exception {
 
@@ -215,6 +225,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 5: Width=309476, Height=26213, Depth=760226, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC5() throws Exception {
 
@@ -239,6 +251,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 6: Width=309476, Height=26213, Depth=760226, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC6() throws Exception {
 
@@ -263,6 +277,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 7: Width=309476, Height=26213, Depth=760226, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC7() throws Exception {
 
@@ -287,6 +303,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 8: Width=382295, Height=26213, Depth=760226, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC8() throws Exception {
 
@@ -311,6 +329,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 9: Width=382295, Height=26213, Depth=760226, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC9() throws Exception {
 
@@ -335,6 +355,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 10: Width=309476, Height=26213, Depth=760226, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC10() throws Exception {
 
@@ -359,6 +381,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 11: Width=309476, Height=26213, Depth=760226, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC11() throws Exception {
 
@@ -383,6 +407,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 12: Width=218453, Height=0, Depth=393220, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC12() throws Exception {
 
@@ -406,6 +432,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 13: Width=364090, Height=0, Depth=393220, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC13() throws Exception {
 
@@ -429,6 +457,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 14: Width=378653, Height=26213, Depth=760226, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC14() throws Exception {
 
@@ -453,6 +483,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 15: Width=378653, Height=26213, Depth=760226, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC15() throws Exception {
 
@@ -477,6 +509,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 16: Width=391396, Height=26213, Depth=1153446, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC16() throws Exception {
 
@@ -501,6 +535,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 17: Width=391396, Height=26213, Depth=1153446, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC17() throws Exception {
 
@@ -525,6 +561,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 18: Width=482420, Height=26213, Depth=1546666, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC18() throws Exception {
 
@@ -549,6 +587,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 19: Width=482420, Height=26213, Depth=1546666, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC19() throws Exception {
 
@@ -573,6 +613,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 20: Width=345886, Height=26213, Depth=1546666, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC20() throws Exception {
 
@@ -597,6 +639,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 21: Width=345886, Height=26213, Depth=1546666, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC21() throws Exception {
 
@@ -621,6 +665,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 22: Width=382295, Height=26213, Depth=1546666, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC22() throws Exception {
 
@@ -645,6 +691,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 23: Width=382295, Height=26213, Depth=1546666, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC23() throws Exception {
 
@@ -669,6 +717,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 24: Width=382295, Height=26213, Depth=1546666, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC24() throws Exception {
 
@@ -693,6 +743,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 25: Width=382295, Height=26213, Depth=1546666, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC25() throws Exception {
 
@@ -717,6 +769,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 26: Width=491521, Height=26213, Depth=1546666, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC26() throws Exception {
 
@@ -741,6 +795,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 27: Width=491521, Height=26213, Depth=1546666, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC27() throws Exception {
 
@@ -765,6 +821,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 28: Width=491521, Height=26213, Depth=1546666, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC28() throws Exception {
 
@@ -789,6 +847,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 29: Width=491521, Height=26213, Depth=1546666, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC29() throws Exception {
 
@@ -813,6 +873,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 30: Width=684488, Height=26213, Depth=1546666, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC30() throws Exception {
 
@@ -837,6 +899,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 31: Width=684488, Height=26213, Depth=1546666, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC31() throws Exception {
 
@@ -861,6 +925,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 32: Width=518828, Height=26213, Depth=1939886, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC32() throws Exception {
 
@@ -885,6 +951,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 33: Width=518828, Height=26213, Depth=1939886, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC33() throws Exception {
 
@@ -909,6 +977,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 34: Width=382295, Height=26213, Depth=1939886, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC34() throws Exception {
 
@@ -933,6 +1003,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 35: Width=382295, Height=26213, Depth=1939886, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC35() throws Exception {
 
@@ -957,6 +1029,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 36: Width=418703, Height=26213, Depth=1939886, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC36() throws Exception {
 
@@ -981,6 +1055,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 37: Width=418703, Height=26213, Depth=1939886, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC37() throws Exception {
 
@@ -1005,6 +1081,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 38: Width=418703, Height=26213, Depth=1939886, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC38() throws Exception {
 
@@ -1029,6 +1107,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 39: Width=418703, Height=26213, Depth=1939886, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC39() throws Exception {
 
@@ -1053,6 +1133,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 40: Width=527931, Height=26213, Depth=1939886, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC40() throws Exception {
 
@@ -1077,6 +1159,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 41: Width=527931, Height=26213, Depth=1939886, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC41() throws Exception {
 
@@ -1101,6 +1185,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 42: Width=527931, Height=26213, Depth=1939886, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC42() throws Exception {
 
@@ -1125,6 +1211,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 43: Width=527931, Height=26213, Depth=1939886, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC43() throws Exception {
 
@@ -1149,6 +1237,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 44: Width=837406, Height=26213, Depth=1939886, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC44() throws Exception {
 
@@ -1173,6 +1263,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 45: Width=837406, Height=26213, Depth=1939886, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC45() throws Exception {
 
@@ -1197,6 +1289,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 46: Width=531571, Height=26213, Depth=1153446, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC46() throws Exception {
 
@@ -1221,6 +1315,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 47: Width=531571, Height=26213, Depth=1153446, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC47() throws Exception {
 
@@ -1245,6 +1341,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 48: Width=573441, Height=26213, Depth=1153446, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC48() throws Exception {
 
@@ -1269,6 +1367,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 49: Width=573441, Height=26213, Depth=1153446, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC49() throws Exception {
 
@@ -1293,6 +1393,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 50: Width=436908, Height=26213, Depth=1153446, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC50() throws Exception {
 
@@ -1317,6 +1419,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 51: Width=436908, Height=26213, Depth=1153446, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC51() throws Exception {
 
@@ -1341,6 +1445,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 52: Width=436908, Height=26213, Depth=1153446, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC52() throws Exception {
 
@@ -1365,6 +1471,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 53: Width=436908, Height=26213, Depth=1153446, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC53() throws Exception {
 
@@ -1389,6 +1497,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 54: Width=436908, Height=0, Depth=393220, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC54() throws Exception {
 
@@ -1412,6 +1522,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 55: Width=436908, Height=0, Depth=393220, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC55() throws Exception {
 
@@ -1435,6 +1547,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 56: Width=582543, Height=0, Depth=589830, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC56() throws Exception {
 
@@ -1458,6 +1572,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 57: Width=582543, Height=0, Depth=589830, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC57() throws Exception {
 
@@ -1481,6 +1597,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 58: Width=582543, Height=0, Depth=589830, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC58() throws Exception {
 
@@ -1504,6 +1622,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 59: Width=582543, Height=0, Depth=589830, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC59() throws Exception {
 
@@ -1527,6 +1647,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 60: Width=582543, Height=0, Depth=1179660, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC60() throws Exception {
 
@@ -1550,6 +1672,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 61: Width=582543, Height=0, Depth=1179660, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC61() throws Exception {
 
@@ -1573,6 +1697,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 62: Width=582543, Height=0, Depth=196610, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC62() throws Exception {
 
@@ -1596,6 +1722,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 63: Width=436908, Height=0, Depth=393220, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC63() throws Exception {
 
@@ -1619,6 +1747,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 64: Width=573441, Height=26213, Depth=1153446, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC64() throws Exception {
 
@@ -1643,6 +1773,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 65: Width=573441, Height=26213, Depth=1153446, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC65() throws Exception {
 
@@ -1667,6 +1799,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 66: Width=573441, Height=0, Depth=393220, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC66() throws Exception {
 
@@ -1690,6 +1824,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 67: Width=573441, Height=0, Depth=393220, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC67() throws Exception {
 
@@ -1713,6 +1849,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 68: Width=400498, Height=26213, Depth=1153446, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC68() throws Exception {
 
@@ -1737,6 +1875,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 69: Width=400498, Height=26213, Depth=1153446, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC69() throws Exception {
 
@@ -1761,6 +1901,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 70: Width=546135, Height=0, Depth=655368, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC70() throws Exception {
 
@@ -1784,6 +1926,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 71: Width=728180, Height=65536, Depth=983048, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC71() throws Exception {
 
@@ -1808,6 +1952,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 72: Width=309476, Height=0, Depth=728185, IC=127431
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC72() throws Exception {
 
@@ -1831,6 +1977,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 73: Width=364090, Height=0, Depth=1456371, IC=291271
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC73() throws Exception {
 
@@ -1854,6 +2002,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 74: Width=728180, Height=0, Depth=655368, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC74() throws Exception {
 
@@ -1877,6 +2027,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 75: Width=990325, Height=65536, Depth=983048, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC75() throws Exception {
 
@@ -1901,6 +2053,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 76: Width=728180, Height=0, Depth=655368, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC76() throws Exception {
 
@@ -1924,6 +2078,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 77: Width=990325, Height=65536, Depth=983048, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC77() throws Exception {
 
@@ -1948,6 +2104,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 78: Width=728180, Height=0, Depth=655368, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC78() throws Exception {
 
@@ -1971,6 +2129,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 79: Width=990325, Height=65536, Depth=983048, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC79() throws Exception {
 
@@ -1995,6 +2155,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 80: Width=691771, Height=0, Depth=655368, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC80() throws Exception {
 
@@ -2018,6 +2180,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 81: Width=618953, Height=0, Depth=655368, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC81() throws Exception {
 
@@ -2041,6 +2205,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 82: Width=309476, Height=0, Depth=728185, IC=127431
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC82() throws Exception {
 
@@ -2064,6 +2230,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 83: Width=546135, Height=0, Depth=655368, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC83() throws Exception {
 
@@ -2087,6 +2255,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 84: Width=546135, Height=0, Depth=655368, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC84() throws Exception {
 
@@ -2110,6 +2280,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 85: Width=546135, Height=0, Depth=655368, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC85() throws Exception {
 
@@ -2133,6 +2305,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 86: Width=546135, Height=0, Depth=655368, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC86() throws Exception {
 
@@ -2156,6 +2330,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 87: Width=546135, Height=0, Depth=655368, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC87() throws Exception {
 
@@ -2179,6 +2355,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 88: Width=946633, Height=65536, Depth=983048, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC88() throws Exception {
 
@@ -2203,6 +2381,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 89: Width=837406, Height=65536, Depth=983048, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC89() throws Exception {
 
@@ -2227,6 +2407,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 90: Width=364090, Height=0, Depth=1456371, IC=291271
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC90() throws Exception {
 
@@ -2250,6 +2432,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 91: Width=728180, Height=65536, Depth=983048, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC91() throws Exception {
 
@@ -2274,6 +2458,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 92: Width=728180, Height=65536, Depth=983048, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC92() throws Exception {
 
@@ -2298,6 +2484,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 93: Width=728180, Height=65536, Depth=983048, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC93() throws Exception {
 
@@ -2322,6 +2510,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 94: Width=728180, Height=65536, Depth=983048, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC94() throws Exception {
 
@@ -2346,6 +2536,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 95: Width=728180, Height=65536, Depth=983048, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC95() throws Exception {
 
@@ -2370,6 +2562,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 96: Width=618953, Height=0, Depth=655368, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC96() throws Exception {
 
@@ -2393,6 +2587,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 97: Width=837406, Height=65536, Depth=983048, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC97() throws Exception {
 
@@ -2417,6 +2613,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 98: Width=364090, Height=473316, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC98() throws Exception {
 
@@ -2440,6 +2638,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 99: Width=655361, Height=491520, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC99() throws Exception {
 
@@ -2463,6 +2663,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 100: Width=946633, Height=491520, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC100() throws Exception {
 
@@ -2486,6 +2688,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 101: Width=364090, Height=473316, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC101() throws Exception {
 
@@ -2509,6 +2713,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 102: Width=655361, Height=491520, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC102() throws Exception {
 
@@ -2532,6 +2738,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 103: Width=946633, Height=491520, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC103() throws Exception {
 
@@ -2555,6 +2763,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 104: Width=309476, Height=26213, Depth=1153446, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC104() throws Exception {
 
@@ -2579,6 +2789,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 105: Width=309476, Height=26213, Depth=1153446, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC105() throws Exception {
 
@@ -2603,6 +2815,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 106: Width=345886, Height=26213, Depth=1153446, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC106() throws Exception {
 
@@ -2627,6 +2841,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 107: Width=345886, Height=26213, Depth=1153446, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC107() throws Exception {
 
@@ -2651,6 +2867,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 108: Width=345886, Height=26213, Depth=1153446, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC108() throws Exception {
 
@@ -2675,6 +2893,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 109: Width=345886, Height=26213, Depth=1153446, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC109() throws Exception {
 
@@ -2699,6 +2919,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 110: Width=436908, Height=26213, Depth=1153446, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC110() throws Exception {
 
@@ -2723,6 +2945,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 111: Width=436908, Height=26213, Depth=1153446, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC111() throws Exception {
 
@@ -2747,6 +2971,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 112: Width=655361, Height=26213, Depth=760226, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC112() throws Exception {
 
@@ -2771,6 +2997,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 113: Width=655361, Height=26213, Depth=1153446, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC113() throws Exception {
 
@@ -2795,6 +3023,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 114: Width=655361, Height=26213, Depth=1546666, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC114() throws Exception {
 
@@ -2819,6 +3049,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 115: Width=655361, Height=26213, Depth=1939886, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC115() throws Exception {
 
@@ -2843,6 +3075,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 116: Width=691771, Height=0, Depth=1179660, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC116() throws Exception {
 
@@ -2866,6 +3100,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 117: Width=691771, Height=0, Depth=393220, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC117() throws Exception {
 
@@ -2889,6 +3125,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 118: Width=691771, Height=26213, Depth=367006, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC118() throws Exception {
 
@@ -2913,6 +3151,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 119: Width=509726, Height=0, Depth=393220, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC119() throws Exception {
 
@@ -2936,6 +3176,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 120: Width=436908, Height=0, Depth=393220, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC120() throws Exception {
 
@@ -2959,6 +3201,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 121: Width=436908, Height=0, Depth=393220, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC121() throws Exception {
 
@@ -2982,6 +3226,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 122: Width=294915, Height=78641, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC122() throws Exception {
 
@@ -3005,6 +3251,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 123: Width=294915, Height=78641, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC123() throws Exception {
 
@@ -3028,6 +3276,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 124: Width=294915, Height=78641, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC124() throws Exception {
 
@@ -3051,6 +3301,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 125: Width=294915, Height=78641, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC125() throws Exception {
 
@@ -3074,6 +3326,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 126: Width=509726, Height=0, Depth=393220, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC126() throws Exception {
 
@@ -3097,6 +3351,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 127: Width=509726, Height=0, Depth=393220, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC127() throws Exception {
 
@@ -3120,6 +3376,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 128: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC128() throws Exception {
 
@@ -3129,6 +3387,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 129: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC129() throws Exception {
 
@@ -3138,6 +3398,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 130: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC130() throws Exception {
 
@@ -3147,6 +3409,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 131: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC131() throws Exception {
 
@@ -3156,6 +3420,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 132: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC132() throws Exception {
 
@@ -3165,6 +3431,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 133: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC133() throws Exception {
 
@@ -3174,6 +3442,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 134: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC134() throws Exception {
 
@@ -3183,6 +3453,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 135: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC135() throws Exception {
 
@@ -3192,6 +3464,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 136: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC136() throws Exception {
 
@@ -3201,6 +3475,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 137: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC137() throws Exception {
 
@@ -3210,6 +3486,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 138: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC138() throws Exception {
 
@@ -3219,6 +3497,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 139: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC139() throws Exception {
 
@@ -3228,6 +3508,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 140: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC140() throws Exception {
 
@@ -3237,6 +3519,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 141: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC141() throws Exception {
 
@@ -3246,6 +3530,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 142: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC142() throws Exception {
 
@@ -3255,6 +3541,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 143: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC143() throws Exception {
 
@@ -3264,6 +3552,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 144: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC144() throws Exception {
 
@@ -3273,6 +3563,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 145: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC145() throws Exception {
 
@@ -3282,6 +3574,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 146: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC146() throws Exception {
 
@@ -3291,6 +3585,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 147: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC147() throws Exception {
 
@@ -3300,6 +3596,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 148: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC148() throws Exception {
 
@@ -3309,6 +3607,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 149: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC149() throws Exception {
 
@@ -3318,6 +3618,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 150: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC150() throws Exception {
 
@@ -3327,6 +3629,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 151: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC151() throws Exception {
 
@@ -3336,6 +3640,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 152: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC152() throws Exception {
 
@@ -3345,6 +3651,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 153: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC153() throws Exception {
 
@@ -3354,6 +3662,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 154: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC154() throws Exception {
 
@@ -3363,6 +3673,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 155: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC155() throws Exception {
 
@@ -3372,6 +3684,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 156: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC156() throws Exception {
 
@@ -3381,6 +3695,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 157: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC157() throws Exception {
 
@@ -3390,6 +3706,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 158: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC158() throws Exception {
 
@@ -3399,6 +3717,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 159: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC159() throws Exception {
 
@@ -3408,6 +3728,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 160: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC160() throws Exception {
 
@@ -3417,6 +3739,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 161: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC161() throws Exception {
 
@@ -3426,6 +3750,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 162: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC162() throws Exception {
 
@@ -3435,6 +3761,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 163: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC163() throws Exception {
 
@@ -3444,6 +3772,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 164: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC164() throws Exception {
 
@@ -3453,6 +3783,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 165: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC165() throws Exception {
 
@@ -3462,6 +3794,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 166: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC166() throws Exception {
 
@@ -3471,6 +3805,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 167: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC167() throws Exception {
 
@@ -3480,6 +3816,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 168: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC168() throws Exception {
 
@@ -3489,6 +3827,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 169: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC169() throws Exception {
 
@@ -3498,6 +3838,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 170: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC170() throws Exception {
 
@@ -3507,6 +3849,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 171: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC171() throws Exception {
 
@@ -3516,6 +3860,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 172: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC172() throws Exception {
 
@@ -3525,6 +3871,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 173: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC173() throws Exception {
 
@@ -3534,6 +3882,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 174: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC174() throws Exception {
 
@@ -3543,6 +3893,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 175: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC175() throws Exception {
 
@@ -3552,6 +3904,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 176: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC176() throws Exception {
 
@@ -3561,6 +3915,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 177: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC177() throws Exception {
 
@@ -3570,6 +3926,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 178: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC178() throws Exception {
 
@@ -3579,6 +3937,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 179: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC179() throws Exception {
 
@@ -3588,6 +3948,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 180: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC180() throws Exception {
 
@@ -3597,6 +3959,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 181: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC181() throws Exception {
 
@@ -3606,6 +3970,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 182: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC182() throws Exception {
 
@@ -3615,6 +3981,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 183: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC183() throws Exception {
 
@@ -3624,6 +3992,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 184: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC184() throws Exception {
 
@@ -3633,6 +4003,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 185: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC185() throws Exception {
 
@@ -3642,6 +4014,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 186: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC186() throws Exception {
 
@@ -3651,6 +4025,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 187: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC187() throws Exception {
 
@@ -3660,6 +4036,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 188: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC188() throws Exception {
 
@@ -3669,6 +4047,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 189: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC189() throws Exception {
 
@@ -3678,6 +4058,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 190: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC190() throws Exception {
 
@@ -3687,6 +4069,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 191: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC191() throws Exception {
 
@@ -3696,6 +4080,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 192: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC192() throws Exception {
 
@@ -3705,6 +4091,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 193: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC193() throws Exception {
 
@@ -3714,6 +4102,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 194: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC194() throws Exception {
 
@@ -3723,6 +4113,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 195: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC195() throws Exception {
 
@@ -3732,6 +4124,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 196: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC196() throws Exception {
 
@@ -3741,6 +4135,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 197: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC197() throws Exception {
 
@@ -3750,6 +4146,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 198: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC198() throws Exception {
 
@@ -3759,6 +4157,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 199: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC199() throws Exception {
 
@@ -3768,6 +4168,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 200: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC200() throws Exception {
 
@@ -3777,6 +4179,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 201: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC201() throws Exception {
 
@@ -3786,6 +4190,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 202: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC202() throws Exception {
 
@@ -3795,6 +4201,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 203: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC203() throws Exception {
 
@@ -3804,6 +4212,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 204: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC204() throws Exception {
 
@@ -3813,6 +4223,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 205: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC205() throws Exception {
 
@@ -3822,6 +4234,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 206: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC206() throws Exception {
 
@@ -3831,6 +4245,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 207: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC207() throws Exception {
 
@@ -3840,6 +4256,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 208: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC208() throws Exception {
 
@@ -3849,6 +4267,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 209: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC209() throws Exception {
 
@@ -3858,6 +4278,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 210: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC210() throws Exception {
 
@@ -3867,6 +4289,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 211: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC211() throws Exception {
 
@@ -3876,6 +4300,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 212: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC212() throws Exception {
 
@@ -3885,6 +4311,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 213: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC213() throws Exception {
 
@@ -3894,6 +4322,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 214: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC214() throws Exception {
 
@@ -3903,6 +4333,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 215: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC215() throws Exception {
 
@@ -3912,6 +4344,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 216: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC216() throws Exception {
 
@@ -3921,6 +4355,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 217: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC217() throws Exception {
 
@@ -3930,6 +4366,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 218: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC218() throws Exception {
 
@@ -3939,6 +4377,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 219: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC219() throws Exception {
 
@@ -3948,6 +4388,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 220: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC220() throws Exception {
 
@@ -3957,6 +4399,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 221: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC221() throws Exception {
 
@@ -3966,6 +4410,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 222: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC222() throws Exception {
 
@@ -3975,6 +4421,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 223: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC223() throws Exception {
 
@@ -3984,6 +4432,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 224: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC224() throws Exception {
 
@@ -3993,6 +4443,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 225: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC225() throws Exception {
 
@@ -4002,6 +4454,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 226: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC226() throws Exception {
 
@@ -4011,6 +4465,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 227: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC227() throws Exception {
 
@@ -4020,6 +4476,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 228: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC228() throws Exception {
 
@@ -4029,6 +4487,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 229: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC229() throws Exception {
 
@@ -4038,6 +4498,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 230: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC230() throws Exception {
 
@@ -4047,6 +4509,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 231: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC231() throws Exception {
 
@@ -4056,6 +4520,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 232: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC232() throws Exception {
 
@@ -4065,6 +4531,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 233: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC233() throws Exception {
 
@@ -4074,6 +4542,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 234: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC234() throws Exception {
 
@@ -4083,6 +4553,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 235: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC235() throws Exception {
 
@@ -4092,6 +4564,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 236: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC236() throws Exception {
 
@@ -4101,6 +4575,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 237: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC237() throws Exception {
 
@@ -4110,6 +4586,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 238: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC238() throws Exception {
 
@@ -4119,6 +4597,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 239: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC239() throws Exception {
 
@@ -4128,6 +4608,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 240: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC240() throws Exception {
 
@@ -4137,6 +4619,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 241: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC241() throws Exception {
 
@@ -4146,6 +4630,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 242: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC242() throws Exception {
 
@@ -4155,6 +4641,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 243: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC243() throws Exception {
 
@@ -4164,6 +4652,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 244: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC244() throws Exception {
 
@@ -4173,6 +4663,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 245: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC245() throws Exception {
 
@@ -4182,6 +4674,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 246: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC246() throws Exception {
 
@@ -4191,6 +4685,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 247: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC247() throws Exception {
 
@@ -4200,6 +4696,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 248: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC248() throws Exception {
 
@@ -4209,6 +4707,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 249: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC249() throws Exception {
 
@@ -4218,6 +4718,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 250: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC250() throws Exception {
 
@@ -4227,6 +4729,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 251: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC251() throws Exception {
 
@@ -4236,6 +4740,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 252: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC252() throws Exception {
 
@@ -4245,6 +4751,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 253: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC253() throws Exception {
 
@@ -4254,6 +4762,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 254: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC254() throws Exception {
 
@@ -4263,6 +4773,8 @@ public class FontFactoryImplCmex10UndefTest extends AbstractFontFactoryTester {
     /**
      * test cmex10_undef
      * Char 255: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testcmex10_undefC255() throws Exception {
 

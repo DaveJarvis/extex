@@ -76,6 +76,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 0: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C0() throws Exception {
 
@@ -85,6 +87,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 1: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C1() throws Exception {
 
@@ -94,6 +98,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 2: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C2() throws Exception {
 
@@ -103,6 +109,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 3: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C3() throws Exception {
 
@@ -112,6 +120,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 4: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C4() throws Exception {
 
@@ -121,6 +131,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 5: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C5() throws Exception {
 
@@ -130,6 +142,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 6: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C6() throws Exception {
 
@@ -139,6 +153,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 7: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C7() throws Exception {
 
@@ -148,6 +164,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 8: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C8() throws Exception {
 
@@ -157,6 +175,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 9: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C9() throws Exception {
 
@@ -166,6 +186,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 10: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C10() throws Exception {
 
@@ -175,6 +197,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 11: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C11() throws Exception {
 
@@ -184,6 +208,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 12: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C12() throws Exception {
 
@@ -193,6 +219,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 13: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C13() throws Exception {
 
@@ -202,6 +230,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 14: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C14() throws Exception {
 
@@ -211,6 +241,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 15: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C15() throws Exception {
 
@@ -220,6 +252,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 16: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C16() throws Exception {
 
@@ -229,6 +263,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 17: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C17() throws Exception {
 
@@ -238,6 +274,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 18: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C18() throws Exception {
 
@@ -247,6 +285,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 19: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C19() throws Exception {
 
@@ -256,6 +296,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 20: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C20() throws Exception {
 
@@ -265,6 +307,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 21: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C21() throws Exception {
 
@@ -274,6 +318,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 22: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C22() throws Exception {
 
@@ -283,6 +329,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 23: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C23() throws Exception {
 
@@ -292,6 +340,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 24: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C24() throws Exception {
 
@@ -301,6 +351,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 25: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C25() throws Exception {
 
@@ -310,6 +362,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 26: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C26() throws Exception {
 
@@ -319,6 +373,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 27: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C27() throws Exception {
 
@@ -328,6 +384,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 28: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C28() throws Exception {
 
@@ -337,6 +395,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 29: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C29() throws Exception {
 
@@ -346,6 +406,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 30: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C30() throws Exception {
 
@@ -355,6 +417,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 31: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C31() throws Exception {
 
@@ -364,6 +428,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 32: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C32() throws Exception {
 
@@ -373,6 +439,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 33: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C33() throws Exception {
 
@@ -382,6 +450,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 34: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C34() throws Exception {
 
@@ -391,6 +461,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 35: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C35() throws Exception {
 
@@ -400,6 +472,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 36: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C36() throws Exception {
 
@@ -409,6 +483,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 37: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C37() throws Exception {
 
@@ -418,6 +494,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 38: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C38() throws Exception {
 
@@ -427,6 +505,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 39: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C39() throws Exception {
 
@@ -436,6 +516,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 40: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C40() throws Exception {
 
@@ -445,6 +527,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 41: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C41() throws Exception {
 
@@ -454,6 +538,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 42: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C42() throws Exception {
 
@@ -463,6 +549,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 43: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C43() throws Exception {
 
@@ -472,6 +560,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 44: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C44() throws Exception {
 
@@ -481,6 +571,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 45: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C45() throws Exception {
 
@@ -490,6 +582,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 46: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C46() throws Exception {
 
@@ -499,6 +593,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 47: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C47() throws Exception {
 
@@ -508,6 +604,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 48: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C48() throws Exception {
 
@@ -517,6 +615,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 49: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C49() throws Exception {
 
@@ -526,6 +626,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 50: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C50() throws Exception {
 
@@ -535,6 +637,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 51: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C51() throws Exception {
 
@@ -544,6 +648,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 52: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C52() throws Exception {
 
@@ -553,6 +659,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 53: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C53() throws Exception {
 
@@ -562,6 +670,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 54: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C54() throws Exception {
 
@@ -571,6 +681,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 55: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C55() throws Exception {
 
@@ -580,6 +692,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 56: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C56() throws Exception {
 
@@ -589,6 +703,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 57: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C57() throws Exception {
 
@@ -598,6 +714,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 58: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C58() throws Exception {
 
@@ -607,6 +725,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 59: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C59() throws Exception {
 
@@ -616,6 +736,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 60: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C60() throws Exception {
 
@@ -625,6 +747,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 61: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C61() throws Exception {
 
@@ -634,6 +758,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 62: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C62() throws Exception {
 
@@ -643,6 +769,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 63: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C63() throws Exception {
 
@@ -652,6 +780,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 64: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C64() throws Exception {
 
@@ -661,6 +791,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 65: Width=408075, Height=353891, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C65() throws Exception {
 
@@ -684,6 +816,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 66: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C66() throws Exception {
 
@@ -693,6 +827,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 67: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C67() throws Exception {
 
@@ -702,6 +838,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 68: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C68() throws Exception {
 
@@ -711,6 +849,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 69: Width=381570, Height=353891, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C69() throws Exception {
 
@@ -734,6 +874,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 70: Width=381570, Height=353891, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C70() throws Exception {
 
@@ -757,6 +899,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 71: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C71() throws Exception {
 
@@ -766,6 +910,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 72: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C72() throws Exception {
 
@@ -775,6 +921,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 73: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C73() throws Exception {
 
@@ -784,6 +932,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 74: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C74() throws Exception {
 
@@ -793,6 +943,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 75: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C75() throws Exception {
 
@@ -802,6 +954,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 76: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C76() throws Exception {
 
@@ -811,6 +965,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 77: Width=487594, Height=353891, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C77() throws Exception {
 
@@ -834,6 +990,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 78: Width=408075, Height=353891, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C78() throws Exception {
 
@@ -857,6 +1015,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 79: Width=408075, Height=353891, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C79() throws Exception {
 
@@ -880,6 +1040,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 80: Width=381570, Height=353891, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C80() throws Exception {
 
@@ -903,6 +1065,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 81: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C81() throws Exception {
 
@@ -912,6 +1076,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 82: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C82() throws Exception {
 
@@ -921,6 +1087,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 83: Width=381570, Height=353891, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C83() throws Exception {
 
@@ -944,6 +1112,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 84: Width=355064, Height=353891, Depth=0, IC=101725
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C84() throws Exception {
 
@@ -967,6 +1137,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 85: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C85() throws Exception {
 
@@ -976,6 +1148,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 86: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C86() throws Exception {
 
@@ -985,6 +1159,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 87: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C87() throws Exception {
 
@@ -994,6 +1170,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 88: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C88() throws Exception {
 
@@ -1003,6 +1181,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 89: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C89() throws Exception {
 
@@ -1012,6 +1192,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 90: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C90() throws Exception {
 
@@ -1021,6 +1203,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 91: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C91() throws Exception {
 
@@ -1030,6 +1214,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 92: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C92() throws Exception {
 
@@ -1039,6 +1225,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 93: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C93() throws Exception {
 
@@ -1048,6 +1236,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 94: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C94() throws Exception {
 
@@ -1057,6 +1247,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 95: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C95() throws Exception {
 
@@ -1066,6 +1258,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 96: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C96() throws Exception {
 
@@ -1075,6 +1269,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 97: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C97() throws Exception {
 
@@ -1084,6 +1280,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 98: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C98() throws Exception {
 
@@ -1093,6 +1291,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 99: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C99() throws Exception {
 
@@ -1102,6 +1302,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 100: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C100() throws Exception {
 
@@ -1111,6 +1313,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 101: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C101() throws Exception {
 
@@ -1120,6 +1324,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 102: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C102() throws Exception {
 
@@ -1129,6 +1335,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 103: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C103() throws Exception {
 
@@ -1138,6 +1346,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 104: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C104() throws Exception {
 
@@ -1147,6 +1357,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 105: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C105() throws Exception {
 
@@ -1156,6 +1368,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 106: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C106() throws Exception {
 
@@ -1165,6 +1379,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 107: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C107() throws Exception {
 
@@ -1174,6 +1390,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 108: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C108() throws Exception {
 
@@ -1183,6 +1401,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 109: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C109() throws Exception {
 
@@ -1192,6 +1412,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 110: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C110() throws Exception {
 
@@ -1201,6 +1423,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 111: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C111() throws Exception {
 
@@ -1210,6 +1434,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 112: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C112() throws Exception {
 
@@ -1219,6 +1445,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 113: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C113() throws Exception {
 
@@ -1228,6 +1456,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 114: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C114() throws Exception {
 
@@ -1237,6 +1467,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 115: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C115() throws Exception {
 
@@ -1246,6 +1478,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 116: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C116() throws Exception {
 
@@ -1255,6 +1489,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 117: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C117() throws Exception {
 
@@ -1264,6 +1500,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 118: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C118() throws Exception {
 
@@ -1273,6 +1511,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 119: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C119() throws Exception {
 
@@ -1282,6 +1522,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 120: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C120() throws Exception {
 
@@ -1291,6 +1533,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 121: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C121() throws Exception {
 
@@ -1300,6 +1544,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 122: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C122() throws Exception {
 
@@ -1309,6 +1555,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 123: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C123() throws Exception {
 
@@ -1318,6 +1566,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 124: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C124() throws Exception {
 
@@ -1327,6 +1577,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 125: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C125() throws Exception {
 
@@ -1336,6 +1588,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 126: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C126() throws Exception {
 
@@ -1345,6 +1599,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 127: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C127() throws Exception {
 
@@ -1354,6 +1610,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 128: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C128() throws Exception {
 
@@ -1363,6 +1621,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 129: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C129() throws Exception {
 
@@ -1372,6 +1632,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 130: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C130() throws Exception {
 
@@ -1381,6 +1643,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 131: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C131() throws Exception {
 
@@ -1390,6 +1654,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 132: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C132() throws Exception {
 
@@ -1399,6 +1665,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 133: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C133() throws Exception {
 
@@ -1408,6 +1676,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 134: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C134() throws Exception {
 
@@ -1417,6 +1687,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 135: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C135() throws Exception {
 
@@ -1426,6 +1698,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 136: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C136() throws Exception {
 
@@ -1435,6 +1709,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 137: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C137() throws Exception {
 
@@ -1444,6 +1720,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 138: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C138() throws Exception {
 
@@ -1453,6 +1731,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 139: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C139() throws Exception {
 
@@ -1462,6 +1742,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 140: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C140() throws Exception {
 
@@ -1471,6 +1753,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 141: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C141() throws Exception {
 
@@ -1480,6 +1764,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 142: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C142() throws Exception {
 
@@ -1489,6 +1775,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 143: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C143() throws Exception {
 
@@ -1498,6 +1786,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 144: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C144() throws Exception {
 
@@ -1507,6 +1797,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 145: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C145() throws Exception {
 
@@ -1516,6 +1808,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 146: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C146() throws Exception {
 
@@ -1525,6 +1819,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 147: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C147() throws Exception {
 
@@ -1534,6 +1830,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 148: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C148() throws Exception {
 
@@ -1543,6 +1841,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 149: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C149() throws Exception {
 
@@ -1552,6 +1852,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 150: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C150() throws Exception {
 
@@ -1561,6 +1863,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 151: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C151() throws Exception {
 
@@ -1570,6 +1874,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 152: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C152() throws Exception {
 
@@ -1579,6 +1885,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 153: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C153() throws Exception {
 
@@ -1588,6 +1896,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 154: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C154() throws Exception {
 
@@ -1597,6 +1907,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 155: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C155() throws Exception {
 
@@ -1606,6 +1918,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 156: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C156() throws Exception {
 
@@ -1615,6 +1929,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 157: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C157() throws Exception {
 
@@ -1624,6 +1940,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 158: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C158() throws Exception {
 
@@ -1633,6 +1951,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 159: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C159() throws Exception {
 
@@ -1642,6 +1962,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 160: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C160() throws Exception {
 
@@ -1651,6 +1973,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 161: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C161() throws Exception {
 
@@ -1660,6 +1984,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 162: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C162() throws Exception {
 
@@ -1669,6 +1995,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 163: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C163() throws Exception {
 
@@ -1678,6 +2006,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 164: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C164() throws Exception {
 
@@ -1687,6 +2017,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 165: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C165() throws Exception {
 
@@ -1696,6 +2028,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 166: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C166() throws Exception {
 
@@ -1705,6 +2039,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 167: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C167() throws Exception {
 
@@ -1714,6 +2050,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 168: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C168() throws Exception {
 
@@ -1723,6 +2061,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 169: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C169() throws Exception {
 
@@ -1732,6 +2072,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 170: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C170() throws Exception {
 
@@ -1741,6 +2083,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 171: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C171() throws Exception {
 
@@ -1750,6 +2094,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 172: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C172() throws Exception {
 
@@ -1759,6 +2105,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 173: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C173() throws Exception {
 
@@ -1768,6 +2116,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 174: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C174() throws Exception {
 
@@ -1777,6 +2127,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 175: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C175() throws Exception {
 
@@ -1786,6 +2138,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 176: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C176() throws Exception {
 
@@ -1795,6 +2149,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 177: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C177() throws Exception {
 
@@ -1804,6 +2160,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 178: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C178() throws Exception {
 
@@ -1813,6 +2171,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 179: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C179() throws Exception {
 
@@ -1822,6 +2182,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 180: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C180() throws Exception {
 
@@ -1831,6 +2193,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 181: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C181() throws Exception {
 
@@ -1840,6 +2204,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 182: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C182() throws Exception {
 
@@ -1849,6 +2215,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 183: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C183() throws Exception {
 
@@ -1858,6 +2226,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 184: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C184() throws Exception {
 
@@ -1867,6 +2237,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 185: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C185() throws Exception {
 
@@ -1876,6 +2248,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 186: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C186() throws Exception {
 
@@ -1885,6 +2259,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 187: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C187() throws Exception {
 
@@ -1894,6 +2270,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 188: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C188() throws Exception {
 
@@ -1903,6 +2281,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 189: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C189() throws Exception {
 
@@ -1912,6 +2292,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 190: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C190() throws Exception {
 
@@ -1921,6 +2303,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 191: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C191() throws Exception {
 
@@ -1930,6 +2314,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 192: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C192() throws Exception {
 
@@ -1939,6 +2325,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 193: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C193() throws Exception {
 
@@ -1948,6 +2336,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 194: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C194() throws Exception {
 
@@ -1957,6 +2347,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 195: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C195() throws Exception {
 
@@ -1966,6 +2358,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 196: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C196() throws Exception {
 
@@ -1975,6 +2369,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 197: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C197() throws Exception {
 
@@ -1984,6 +2380,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 198: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C198() throws Exception {
 
@@ -1993,6 +2391,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 199: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C199() throws Exception {
 
@@ -2002,6 +2402,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 200: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C200() throws Exception {
 
@@ -2011,6 +2413,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 201: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C201() throws Exception {
 
@@ -2020,6 +2424,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 202: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C202() throws Exception {
 
@@ -2029,6 +2435,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 203: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C203() throws Exception {
 
@@ -2038,6 +2446,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 204: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C204() throws Exception {
 
@@ -2047,6 +2457,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 205: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C205() throws Exception {
 
@@ -2056,6 +2468,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 206: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C206() throws Exception {
 
@@ -2065,6 +2479,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 207: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C207() throws Exception {
 
@@ -2074,6 +2490,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 208: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C208() throws Exception {
 
@@ -2083,6 +2501,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 209: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C209() throws Exception {
 
@@ -2092,6 +2512,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 210: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C210() throws Exception {
 
@@ -2101,6 +2523,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 211: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C211() throws Exception {
 
@@ -2110,6 +2534,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 212: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C212() throws Exception {
 
@@ -2119,6 +2545,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 213: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C213() throws Exception {
 
@@ -2128,6 +2556,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 214: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C214() throws Exception {
 
@@ -2137,6 +2567,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 215: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C215() throws Exception {
 
@@ -2146,6 +2578,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 216: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C216() throws Exception {
 
@@ -2155,6 +2589,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 217: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C217() throws Exception {
 
@@ -2164,6 +2600,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 218: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C218() throws Exception {
 
@@ -2173,6 +2611,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 219: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C219() throws Exception {
 
@@ -2182,6 +2622,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 220: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C220() throws Exception {
 
@@ -2191,6 +2633,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 221: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C221() throws Exception {
 
@@ -2200,6 +2644,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 222: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C222() throws Exception {
 
@@ -2209,6 +2655,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 223: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C223() throws Exception {
 
@@ -2218,6 +2666,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 224: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C224() throws Exception {
 
@@ -2227,6 +2677,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 225: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C225() throws Exception {
 
@@ -2236,6 +2688,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 226: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C226() throws Exception {
 
@@ -2245,6 +2699,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 227: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C227() throws Exception {
 
@@ -2254,6 +2710,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 228: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C228() throws Exception {
 
@@ -2263,6 +2721,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 229: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C229() throws Exception {
 
@@ -2272,6 +2732,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 230: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C230() throws Exception {
 
@@ -2281,6 +2743,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 231: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C231() throws Exception {
 
@@ -2290,6 +2754,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 232: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C232() throws Exception {
 
@@ -2299,6 +2765,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 233: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C233() throws Exception {
 
@@ -2308,6 +2776,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 234: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C234() throws Exception {
 
@@ -2317,6 +2787,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 235: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C235() throws Exception {
 
@@ -2326,6 +2798,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 236: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C236() throws Exception {
 
@@ -2335,6 +2809,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 237: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C237() throws Exception {
 
@@ -2344,6 +2820,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 238: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C238() throws Exception {
 
@@ -2353,6 +2831,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 239: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C239() throws Exception {
 
@@ -2362,6 +2842,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 240: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C240() throws Exception {
 
@@ -2371,6 +2853,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 241: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C241() throws Exception {
 
@@ -2380,6 +2864,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 242: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C242() throws Exception {
 
@@ -2389,6 +2875,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 243: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C243() throws Exception {
 
@@ -2398,6 +2886,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 244: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C244() throws Exception {
 
@@ -2407,6 +2897,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 245: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C245() throws Exception {
 
@@ -2416,6 +2908,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 246: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C246() throws Exception {
 
@@ -2425,6 +2919,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 247: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C247() throws Exception {
 
@@ -2434,6 +2930,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 248: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C248() throws Exception {
 
@@ -2443,6 +2941,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 249: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C249() throws Exception {
 
@@ -2452,6 +2952,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 250: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C250() throws Exception {
 
@@ -2461,6 +2963,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 251: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C251() throws Exception {
 
@@ -2470,6 +2974,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 252: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C252() throws Exception {
 
@@ -2479,6 +2985,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 253: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C253() throws Exception {
 
@@ -2488,6 +2996,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 254: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C254() throws Exception {
 
@@ -2497,6 +3007,8 @@ public class FontFactoryImplGenLogosl9Test extends AbstractFontFactoryTester {
     /**
      * test logosl9
      * Char 255: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlogosl9C255() throws Exception {
 

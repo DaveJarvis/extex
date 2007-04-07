@@ -70,6 +70,7 @@ public class FontFactoryImplCmmanTest extends AbstractFontFactoryTester {
     /**
      * test cmman
      * Char T defined
+     * @throws Exception TODO mgn
      */
     public void testcmmanT() throws Exception {
 
@@ -79,6 +80,7 @@ public class FontFactoryImplCmmanTest extends AbstractFontFactoryTester {
     /**
      * test cmman
      * Char h defined
+     * @throws Exception TODO mgn
      */
     public void testcmmanh() throws Exception {
 
@@ -88,6 +90,7 @@ public class FontFactoryImplCmmanTest extends AbstractFontFactoryTester {
     /**
      * test cmman
      * ligature
+     * @throws Exception TODO mgn
      */
     public void testcmmanLig() throws Exception {
 

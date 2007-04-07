@@ -194,7 +194,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
         assertFalse("nothing recognized yet", manager.isNewRecongnizedFont());
         assertNull("no char recognized yet", manager.getRecognizedCharId());
         assertNull("no font recognized yet", manager.getRecognizedFont());
-        Iterator it = manager.iterate();
+        Iterator<BackendFont> it = manager.iterate();
         assertNotNull(it);
         assertTrue("no font enlisted", it.hasNext());
     }
@@ -219,7 +219,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
         BackendCharacter cid = manager.getRecognizedCharId();
         assertEquals('A', cid.getId());
         assertEquals("65", cid.getName());
-        Iterator it = manager.iterate();
+        Iterator<BackendFont> it = manager.iterate();
         assertTrue(it.hasNext());
         Object fnt = it.next();
         assertNotNull(fnt);
@@ -253,7 +253,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
         BackendCharacter cid = manager.getRecognizedCharId();
         assertEquals('B', cid.getId());
         assertEquals("66", cid.getName());
-        Iterator it = manager.iterate();
+        Iterator<BackendFont> it = manager.iterate();
         assertNotNull(it);
         assertTrue(it.hasNext());
         Object fnt = it.next();
@@ -289,7 +289,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
         BackendCharacter cid = manager.getRecognizedCharId();
         assertEquals('B', cid.getId());
         assertEquals("66", cid.getName());
-        Iterator it = manager.iterate();
+        Iterator<BackendFont> it = manager.iterate();
         assertNotNull(it);
 
         assertTrue(it.hasNext());
@@ -335,7 +335,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
             .isNewRecongnizedFont());
         assertNull("no char recognized any more", manager.getRecognizedCharId());
         assertNull("no font recognized any more", manager.getRecognizedFont());
-        Iterator it = manager.iterate();
+        Iterator<BackendFont> it = manager.iterate();
         assertNotNull(it);
         assertTrue("no font enlisted", it.hasNext());
     }

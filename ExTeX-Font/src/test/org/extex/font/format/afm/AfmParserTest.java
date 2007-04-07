@@ -33,6 +33,7 @@ public class AfmParserTest extends TestCase {
 
     /**
      * test01
+     * @throws Exception TODO mgn
      */
     public void test01() throws Exception {
 
@@ -58,6 +59,7 @@ public class AfmParserTest extends TestCase {
 
     /**
      * test02
+     * @throws Exception TODO mgn
      */
     public void test02() throws Exception {
 

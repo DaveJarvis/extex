@@ -185,13 +185,13 @@ public class RandomAccessTest extends TestCase {
                 new FileInputStream(SRC_FONT));
         RandomAccessFile raf = new RandomAccessFile(SRC_FONT, "r");
 
-        //System.out.println("length " + rar.length() + " : " + raf.length());
+        //System. out.println("length " + rar.length() + " : " + raf.length());
         assertEquals(rar.length(), raf.length());
 
         for (int i = 0; i < 1000; i++) {
             int i1 = rar.readInt();
             int i2 = raf.readInt();
-            //  System.out.println(i1 + "  : " + i2);
+            //  System. out.println(i1 + "  : " + i2);
             assertEquals(i1, i2);
         }
     }

@@ -40,10 +40,10 @@ import org.xml.sax.helpers.DefaultHandler;
 
 /**
  * Transform a xhtml file to LaTeX.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
- *
+ * 
  */
 public class Xhtml2LaTeX {
 
@@ -53,21 +53,24 @@ public class Xhtml2LaTeX {
     private static final XhtmlCommand EMPTY = new XhtmlCommand() {
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.xml.XhtmlCommand#startElement(
          *      java.io.PrintWriter, org.xml.sax.Attributes)
          */
-        public void startElement(PrintWriter out,
-                Attributes attributes) {
+        public void startElement(PrintWriter o, Attributes attributes) {
 
             // do nothing
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.xml.XhtmlCommand#endElement(java.io.PrintWriter)
          */
-        public void endElement(PrintWriter out) {
+        public void endElement(PrintWriter o) {
 
-            //          do nothing
+            // do nothing
 
         }
     };
@@ -75,21 +78,23 @@ public class Xhtml2LaTeX {
     /**
      * The xhtml commands.
      */
-    private static final XhtmlCommand[] CMDS = {
-    /* 0: html  */
+    private static final XhtmlCommand[] CMDS = {/* 0: html */
     new XhtmlCommand() {
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.xml.XhtmlCommand#startElement(
          *      java.io.PrintWriter, org.xml.sax.Attributes)
          */
-        public void startElement(PrintWriter out,
-                Attributes attributes) {
+        public void startElement(PrintWriter out, Attributes a) {
 
             out.println("\\documentclass{scrartcl}");
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.xml.XhtmlCommand#endElement(java.io.PrintWriter)
          */
         public void endElement(PrintWriter out) {
@@ -97,20 +102,23 @@ public class Xhtml2LaTeX {
             out.println();
         }
     },
-    /* 1: body  */
+    /* 1: body */
     new XhtmlCommand() {
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.xml.XhtmlCommand#startElement(
          *      java.io.PrintWriter, org.xml.sax.Attributes)
          */
-        public void startElement(PrintWriter out,
-                Attributes attributes) {
+        public void startElement(PrintWriter out, Attributes attributes) {
 
             out.println("\\begin{document}");
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.xml.XhtmlCommand#endElement(java.io.PrintWriter)
          */
         public void endElement(PrintWriter out) {
@@ -118,20 +126,23 @@ public class Xhtml2LaTeX {
             out.println("\\end{document}");
         }
     },
-    /* 2: h1  */
+    /* 2: h1 */
     new XhtmlCommand() {
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.xml.XhtmlCommand#startElement(
          *      java.io.PrintWriter, org.xml.sax.Attributes)
          */
-        public void startElement(PrintWriter out,
-                Attributes attributes) {
+        public void startElement(PrintWriter out, Attributes attributes) {
 
             out.print("\\section{");
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.util.xml.XhtmlCommand#endElement(java.io.PrintWriter)
          */
         public void endElement(PrintWriter out) {
@@ -139,15 +150,13 @@ public class Xhtml2LaTeX {
             out.println("}");
         }
     }
-    
-    
 
     };
 
     /**
      * The map for the commands.
      */
-    private static Map commands = null;
+    private static Map<String, XhtmlCommand> commands = null;
 
     /**
      * the buffer size.
@@ -161,15 +170,16 @@ public class Xhtml2LaTeX {
 
     /**
      * Create a new object.
-     *
-     * @param pout  The Output.
+     * 
+     * @param pout The Output.
      */
     public Xhtml2LaTeX(OutputStream pout) {
 
         createCommands();
 
-        out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(pout),
-                BUFFERSIZE));
+        out =
+                new PrintWriter(new BufferedWriter(
+                    new OutputStreamWriter(pout), BUFFERSIZE));
     }
 
     /**
@@ -178,7 +188,7 @@ public class Xhtml2LaTeX {
     private void createCommands() {
 
         if (commands == null) {
-            commands = new HashMap();
+            commands = new HashMap<String, XhtmlCommand>();
 
             commands.put("html", CMDS[0]);
             commands.put("head", EMPTY);
@@ -192,15 +202,16 @@ public class Xhtml2LaTeX {
 
     /**
      * Transform a xhtml file to latex command.
-     * @param xhtmlin     The xhtml input.
+     * 
+     * @param xhtmlin The xhtml input.
      * @throws IOException if an error occurs.
      */
     public void transform(InputStream xhtmlin) throws IOException {
 
         try {
 
-            BufferedInputStream input = new BufferedInputStream(xhtmlin,
-                    BUFFERSIZE);
+            BufferedInputStream input =
+                    new BufferedInputStream(xhtmlin, BUFFERSIZE);
 
             SAXParserFactory factory = SAXParserFactory.newInstance();
 
@@ -234,17 +245,18 @@ public class Xhtml2LaTeX {
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.xml.sax.helpers.DefaultHandler#startElement(
          *      java.lang.String, java.lang.String, java.lang.String,
          *      org.xml.sax.Attributes)
          */
-        public void startElement(String uri, String localName,
-                String qName, Attributes attributes)
-                throws SAXException {
+        public void startElement(String uri, String localName, String qName,
+                Attributes attributes) throws SAXException {
 
             super.startElement(uri, localName, qName, attributes);
 
-            XhtmlCommand cmd = (XhtmlCommand) commands.get(qName);
+            XhtmlCommand cmd = commands.get(qName);
             if (cmd != null) {
                 cmd.startElement(out, attributes);
             } else {
@@ -254,15 +266,17 @@ public class Xhtml2LaTeX {
         }
 
         /**
-         * @see org.xml.sax.helpers.DefaultHandler#endElement(
-         *      java.lang.String, java.lang.String, java.lang.String)
+         * {@inheritDoc}
+         * 
+         * @see org.xml.sax.helpers.DefaultHandler#endElement( java.lang.String,
+         *      java.lang.String, java.lang.String)
          */
-        public void endElement(String uri, String localName,
-                String qName) throws SAXException {
+        public void endElement(String uri, String localName, String qName)
+                throws SAXException {
 
             super.endElement(uri, localName, qName);
 
-            XhtmlCommand cmd = (XhtmlCommand) commands.get(qName);
+            XhtmlCommand cmd = commands.get(qName);
             if (cmd != null) {
                 cmd.endElement(out);
             } else {
@@ -282,15 +296,15 @@ public class Xhtml2LaTeX {
 
     /**
      * The main method.
-     *
-     * @param args  The command line arguments.
+     * 
+     * @param args The command line arguments.
      * @throws IOException if an error occurs.
      */
     public static void main(String[] args) throws IOException {
 
         if (args.length != 2) {
             System.err
-                    .println("java de.dante.util.xml.Xhtml2LaTeX <xhtml> <out>");
+                .println("java de.dante.util.xml.Xhtml2LaTeX <xhtml> <out>");
         }
 
         InputStream xhtmlin = new FileInputStream(args[0]);

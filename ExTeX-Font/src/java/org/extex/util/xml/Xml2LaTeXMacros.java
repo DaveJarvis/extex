@@ -35,7 +35,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 /**
  * Create LaTeX-Macros from the XML file (only structure).
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -55,13 +55,15 @@ public class Xml2LaTeXMacros {
     /**
      * Array with spaces
      */
-    private static final String[] INSERT = {"", "  ", "    ", "      ",
-            "        ", "          ", "            ", "              ",
-            "                ", "                  ", "                    "};
+    private static final String[] INSERT =
+            {"", "  ", "    ", "      ", "        ", "          ",
+                    "            ", "              ", "                ",
+                    "                  ", "                    "};
 
     /**
      * Create a new object.
-     * @param output   The Output
+     * 
+     * @param output The Output
      */
     public Xml2LaTeXMacros(PrintStream output) {
 
@@ -70,7 +72,8 @@ public class Xml2LaTeXMacros {
 
     /**
      * Print the LaTeX-Macros
-     * @param in    The input.
+     * 
+     * @param in The input.
      * @throws IOException if an IO-error occurs.
      */
     public void printLaTeXMacros(InputStream in) throws IOException {
@@ -124,6 +127,7 @@ public class Xml2LaTeXMacros {
 
         /**
          * Returns spaces for inserting.
+         * 
          * @return Returns spaces for inserting.
          */
         private String insertSpace() {
@@ -139,13 +143,14 @@ public class Xml2LaTeXMacros {
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.xml.sax.helpers.DefaultHandler#startElement(
          *      java.lang.String, java.lang.String, java.lang.String,
          *      org.xml.sax.Attributes)
          */
-        public void startElement(String uri, String localName,
-                String qName, Attributes attributes)
-                throws SAXException {
+        public void startElement(String uri, String localName, String qName,
+                Attributes attributes) throws SAXException {
 
             super.startElement(uri, localName, qName, attributes);
             out.print(insertSpace());
@@ -160,11 +165,13 @@ public class Xml2LaTeXMacros {
         }
 
         /**
-         * @see org.xml.sax.helpers.DefaultHandler#endElement(
-         *      java.lang.String, java.lang.String, java.lang.String)
+         * {@inheritDoc}
+         * 
+         * @see org.xml.sax.helpers.DefaultHandler#endElement( java.lang.String,
+         *      java.lang.String, java.lang.String)
          */
-        public void endElement(String uri, String localName,
-                String qName) throws SAXException {
+        public void endElement(String uri, String localName, String qName)
+                throws SAXException {
 
             super.endElement(uri, localName, qName);
             level--;
@@ -175,25 +182,26 @@ public class Xml2LaTeXMacros {
 
         /**
          * Prints the Attributes
-         * @param attributes    The attributes
+         * 
+         * @param attributes The attributes
          */
         private void printAttributes(Attributes attributes) {
 
-            if (attributes.getLength() > 0) {
-                for (int i = 0, n = attributes.getLength(); i < n; i++) {
-                    String name = attributes.getQName(i);
-                    String value = attributes.getValue(i);
-                    out.print(insertSpace());
-                    out.print("\\attribut{");
-                    out.print(name);
-                    out.print("}{");
-                    out.print(value);
-                    out.println("}%");
-                }
+            for (int i = 0, n = attributes.getLength(); i < n; i++) {
+                String name = attributes.getQName(i);
+                String value = attributes.getValue(i);
+                out.print(insertSpace());
+                out.print("\\attribut{");
+                out.print(name);
+                out.print("}{");
+                out.print(value);
+                out.println("}%");
             }
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.xml.sax.helpers.DefaultHandler#endDocument()
          */
         public void endDocument() throws SAXException {
@@ -205,6 +213,8 @@ public class Xml2LaTeXMacros {
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.xml.sax.helpers.DefaultHandler#startDocument()
          */
         public void startDocument() throws SAXException {
@@ -218,15 +228,15 @@ public class Xml2LaTeXMacros {
 
     /**
      * main.
-     *
-     * @param args  The command line
+     * 
+     * @param args The command line
      * @throws IOException if an IO-error occurs.
      */
     public static void main(String[] args) throws IOException {
 
         if (args.length != 1) {
             System.err
-                    .println("java de.dante.util.xml.Xml2LaTeXMacros <file.xml>");
+                .println("java de.dante.util.xml.Xml2LaTeXMacros <file.xml>");
             System.exit(1);
         }
         Xml2LaTeXMacros x = new Xml2LaTeXMacros(System.out);

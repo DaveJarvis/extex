@@ -76,6 +76,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C0
      * Char 0: Width=262143, Height=157286, Depth=104858, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C0() throws Exception {
 
@@ -100,6 +102,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C1
      * Char 1: Width=262143, Height=157286, Depth=104858, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C1() throws Exception {
 
@@ -124,6 +128,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C2
      * Char 2: Width=262143, Height=157286, Depth=104858, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C2() throws Exception {
 
@@ -148,6 +154,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C3
      * Char 3: Width=262143, Height=157286, Depth=104858, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C3() throws Exception {
 
@@ -172,6 +180,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C4
      * Char 4: Width=524288, Height=288358, Depth=235930, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C4() throws Exception {
 
@@ -196,6 +206,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C5
      * Char 5: Width=524288, Height=288358, Depth=235930, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C5() throws Exception {
 
@@ -220,6 +232,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C6
      * Char 6: Width=524288, Height=288358, Depth=235930, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C6() throws Exception {
 
@@ -244,6 +258,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C7
      * Char 7: Width=524288, Height=288358, Depth=235930, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C7() throws Exception {
 
@@ -268,6 +284,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C8
      * Char 8: Width=786431, Height=419431, Depth=367001, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C8() throws Exception {
 
@@ -292,6 +310,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C9
      * Char 9: Width=786431, Height=419431, Depth=367001, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C9() throws Exception {
 
@@ -316,6 +336,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C10
      * Char 10: Width=786431, Height=419431, Depth=367001, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C10() throws Exception {
 
@@ -340,6 +362,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C11
      * Char 11: Width=786431, Height=419431, Depth=367001, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C11() throws Exception {
 
@@ -364,6 +388,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C12
      * Char 12: Width=1048576, Height=550503, Depth=498073, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C12() throws Exception {
 
@@ -388,6 +414,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C13
      * Char 13: Width=1048576, Height=550503, Depth=498073, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C13() throws Exception {
 
@@ -412,6 +440,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C14
      * Char 14: Width=1048576, Height=550503, Depth=498073, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C14() throws Exception {
 
@@ -436,6 +466,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C15
      * Char 15: Width=1048576, Height=550503, Depth=498073, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C15() throws Exception {
 
@@ -460,6 +492,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C16
      * Char 16: Width=1310720, Height=681575, Depth=629146, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C16() throws Exception {
 
@@ -484,6 +518,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C17
      * Char 17: Width=1310720, Height=681575, Depth=629146, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C17() throws Exception {
 
@@ -508,6 +544,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C18
      * Char 18: Width=1310720, Height=681575, Depth=629146, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C18() throws Exception {
 
@@ -532,6 +570,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C19
      * Char 19: Width=1310720, Height=681575, Depth=629146, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C19() throws Exception {
 
@@ -556,6 +596,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C20
      * Char 20: Width=1572863, Height=812646, Depth=760218, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C20() throws Exception {
 
@@ -580,6 +622,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C21
      * Char 21: Width=1572863, Height=812646, Depth=760218, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C21() throws Exception {
 
@@ -604,6 +648,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C22
      * Char 22: Width=1572863, Height=812646, Depth=760218, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C22() throws Exception {
 
@@ -628,6 +674,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C23
      * Char 23: Width=1572863, Height=812646, Depth=760218, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C23() throws Exception {
 
@@ -652,6 +700,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C24
      * Char 24: Width=1835008, Height=943718, Depth=891290, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C24() throws Exception {
 
@@ -676,6 +726,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C25
      * Char 25: Width=1835008, Height=943718, Depth=891290, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C25() throws Exception {
 
@@ -700,6 +752,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C26
      * Char 26: Width=1835008, Height=943718, Depth=891290, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C26() throws Exception {
 
@@ -724,6 +778,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C27
      * Char 27: Width=1835008, Height=943718, Depth=891290, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C27() throws Exception {
 
@@ -748,6 +804,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C28
      * Char 28: Width=2097151, Height=1074791, Depth=1022361, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C28() throws Exception {
 
@@ -772,6 +830,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C29
      * Char 29: Width=2097151, Height=1074791, Depth=1022361, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C29() throws Exception {
 
@@ -796,6 +856,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C30
      * Char 30: Width=2097151, Height=1074791, Depth=1022361, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C30() throws Exception {
 
@@ -820,6 +882,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C31
      * Char 31: Width=2097151, Height=1074791, Depth=1022361, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C31() throws Exception {
 
@@ -844,6 +908,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C32
      * Char 32: Width=2359296, Height=1205863, Depth=1153433, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C32() throws Exception {
 
@@ -868,6 +934,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C33
      * Char 33: Width=2359296, Height=1205863, Depth=1153433, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C33() throws Exception {
 
@@ -892,6 +960,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C34
      * Char 34: Width=2359296, Height=1205863, Depth=1153433, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C34() throws Exception {
 
@@ -916,6 +986,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C35
      * Char 35: Width=2359296, Height=1205863, Depth=1153433, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C35() throws Exception {
 
@@ -940,6 +1012,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C36
      * Char 36: Width=2621440, Height=1336935, Depth=1284506, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C36() throws Exception {
 
@@ -964,6 +1038,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C37
      * Char 37: Width=2621440, Height=1336935, Depth=1284506, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C37() throws Exception {
 
@@ -988,6 +1064,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C38
      * Char 38: Width=2621440, Height=1336935, Depth=1284506, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C38() throws Exception {
 
@@ -1012,6 +1090,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C39
      * Char 39: Width=2621440, Height=1336935, Depth=1284506, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C39() throws Exception {
 
@@ -1036,6 +1116,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C40
      * Char 40: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C40() throws Exception {
 
@@ -1045,6 +1127,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C41
      * Char 41: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C41() throws Exception {
 
@@ -1054,6 +1138,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C42
      * Char 42: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C42() throws Exception {
 
@@ -1063,6 +1149,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C43
      * Char 43: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C43() throws Exception {
 
@@ -1072,6 +1160,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C44
      * Char 44: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C44() throws Exception {
 
@@ -1081,6 +1171,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C45
      * Char 45: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C45() throws Exception {
 
@@ -1090,6 +1182,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C46
      * Char 46: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C46() throws Exception {
 
@@ -1099,6 +1193,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C47
      * Char 47: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C47() throws Exception {
 
@@ -1108,6 +1204,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C48
      * Char 48: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C48() throws Exception {
 
@@ -1117,6 +1215,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C49
      * Char 49: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C49() throws Exception {
 
@@ -1126,6 +1226,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C50
      * Char 50: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C50() throws Exception {
 
@@ -1135,6 +1237,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C51
      * Char 51: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C51() throws Exception {
 
@@ -1144,6 +1248,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C52
      * Char 52: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C52() throws Exception {
 
@@ -1153,6 +1259,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C53
      * Char 53: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C53() throws Exception {
 
@@ -1162,6 +1270,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C54
      * Char 54: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C54() throws Exception {
 
@@ -1171,6 +1281,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C55
      * Char 55: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C55() throws Exception {
 
@@ -1180,6 +1292,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C56
      * Char 56: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C56() throws Exception {
 
@@ -1189,6 +1303,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C57
      * Char 57: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C57() throws Exception {
 
@@ -1198,6 +1314,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C58
      * Char 58: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C58() throws Exception {
 
@@ -1207,6 +1325,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C59
      * Char 59: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C59() throws Exception {
 
@@ -1216,6 +1336,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C60
      * Char 60: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C60() throws Exception {
 
@@ -1225,6 +1347,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C61
      * Char 61: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C61() throws Exception {
 
@@ -1234,6 +1358,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C62
      * Char 62: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C62() throws Exception {
 
@@ -1243,6 +1369,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C63
      * Char 63: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C63() throws Exception {
 
@@ -1252,6 +1380,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C64
      * Char 64: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C64() throws Exception {
 
@@ -1261,6 +1391,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C65
      * Char 65: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C65() throws Exception {
 
@@ -1270,6 +1402,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C66
      * Char 66: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C66() throws Exception {
 
@@ -1279,6 +1413,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C67
      * Char 67: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C67() throws Exception {
 
@@ -1288,6 +1424,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C68
      * Char 68: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C68() throws Exception {
 
@@ -1297,6 +1435,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C69
      * Char 69: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C69() throws Exception {
 
@@ -1306,6 +1446,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C70
      * Char 70: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C70() throws Exception {
 
@@ -1315,6 +1457,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C71
      * Char 71: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C71() throws Exception {
 
@@ -1324,6 +1468,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C72
      * Char 72: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C72() throws Exception {
 
@@ -1333,6 +1479,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C73
      * Char 73: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C73() throws Exception {
 
@@ -1342,6 +1490,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C74
      * Char 74: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C74() throws Exception {
 
@@ -1351,6 +1501,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C75
      * Char 75: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C75() throws Exception {
 
@@ -1360,6 +1512,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C76
      * Char 76: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C76() throws Exception {
 
@@ -1369,6 +1523,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C77
      * Char 77: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C77() throws Exception {
 
@@ -1378,6 +1534,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C78
      * Char 78: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C78() throws Exception {
 
@@ -1387,6 +1545,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C79
      * Char 79: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C79() throws Exception {
 
@@ -1396,6 +1556,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C80
      * Char 80: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C80() throws Exception {
 
@@ -1405,6 +1567,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C81
      * Char 81: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C81() throws Exception {
 
@@ -1414,6 +1578,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C82
      * Char 82: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C82() throws Exception {
 
@@ -1423,6 +1589,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C83
      * Char 83: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C83() throws Exception {
 
@@ -1432,6 +1600,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C84
      * Char 84: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C84() throws Exception {
 
@@ -1441,6 +1611,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C85
      * Char 85: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C85() throws Exception {
 
@@ -1450,6 +1622,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C86
      * Char 86: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C86() throws Exception {
 
@@ -1459,6 +1633,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C87
      * Char 87: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C87() throws Exception {
 
@@ -1468,6 +1644,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C88
      * Char 88: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C88() throws Exception {
 
@@ -1477,6 +1655,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C89
      * Char 89: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C89() throws Exception {
 
@@ -1486,6 +1666,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C90
      * Char 90: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C90() throws Exception {
 
@@ -1495,6 +1677,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C91
      * Char 91: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C91() throws Exception {
 
@@ -1504,6 +1688,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C92
      * Char 92: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C92() throws Exception {
 
@@ -1513,6 +1699,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C93
      * Char 93: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C93() throws Exception {
 
@@ -1522,6 +1710,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C94
      * Char 94: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C94() throws Exception {
 
@@ -1531,6 +1721,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C95
      * Char 95: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C95() throws Exception {
 
@@ -1540,6 +1732,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C96
      * Char 96: Width=65536, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C96() throws Exception {
 
@@ -1562,6 +1756,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C97
      * Char 97: Width=131071, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C97() throws Exception {
 
@@ -1584,6 +1780,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C98
      * Char 98: Width=196608, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C98() throws Exception {
 
@@ -1606,6 +1804,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C99
      * Char 99: Width=262143, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C99() throws Exception {
 
@@ -1628,6 +1828,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C100
      * Char 100: Width=327680, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C100() throws Exception {
 
@@ -1650,6 +1852,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C101
      * Char 101: Width=393216, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C101() throws Exception {
 
@@ -1672,6 +1876,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C102
      * Char 102: Width=458751, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C102() throws Exception {
 
@@ -1694,6 +1900,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C103
      * Char 103: Width=524288, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C103() throws Exception {
 
@@ -1716,6 +1924,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C104
      * Char 104: Width=589823, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C104() throws Exception {
 
@@ -1738,6 +1948,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C105
      * Char 105: Width=655360, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C105() throws Exception {
 
@@ -1760,6 +1972,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C106
      * Char 106: Width=720896, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C106() throws Exception {
 
@@ -1782,6 +1996,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C107
      * Char 107: Width=786431, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C107() throws Exception {
 
@@ -1804,6 +2020,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C108
      * Char 108: Width=851968, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C108() throws Exception {
 
@@ -1826,6 +2044,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C109
      * Char 109: Width=917503, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C109() throws Exception {
 
@@ -1848,6 +2068,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C110
      * Char 110: Width=983040, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C110() throws Exception {
 
@@ -1870,6 +2092,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C111
      * Char 111: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C111() throws Exception {
 
@@ -1879,6 +2103,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C112
      * Char 112: Width=65536, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C112() throws Exception {
 
@@ -1901,6 +2127,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C113
      * Char 113: Width=131071, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C113() throws Exception {
 
@@ -1923,6 +2151,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C114
      * Char 114: Width=196608, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C114() throws Exception {
 
@@ -1945,6 +2175,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C115
      * Char 115: Width=262143, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C115() throws Exception {
 
@@ -1967,6 +2199,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C116
      * Char 116: Width=327680, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C116() throws Exception {
 
@@ -1989,6 +2223,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C117
      * Char 117: Width=393216, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C117() throws Exception {
 
@@ -2011,6 +2247,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C118
      * Char 118: Width=458751, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C118() throws Exception {
 
@@ -2033,6 +2271,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C119
      * Char 119: Width=524288, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C119() throws Exception {
 
@@ -2055,6 +2295,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C120
      * Char 120: Width=589823, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C120() throws Exception {
 
@@ -2077,6 +2319,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C121
      * Char 121: Width=655360, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C121() throws Exception {
 
@@ -2099,6 +2343,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C122
      * Char 122: Width=720896, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C122() throws Exception {
 
@@ -2121,6 +2367,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C123
      * Char 123: Width=786431, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C123() throws Exception {
 
@@ -2143,6 +2391,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C124
      * Char 124: Width=851968, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C124() throws Exception {
 
@@ -2165,6 +2415,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C125
      * Char 125: Width=917503, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C125() throws Exception {
 
@@ -2187,6 +2439,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C126
      * Char 126: Width=983040, Height=0, Depth=0, IC=0
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C126() throws Exception {
 
@@ -2209,6 +2463,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C127
      * Char 127: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C127() throws Exception {
 
@@ -2218,6 +2474,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C128
      * Char 128: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C128() throws Exception {
 
@@ -2227,6 +2485,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C129
      * Char 129: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C129() throws Exception {
 
@@ -2236,6 +2496,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C130
      * Char 130: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C130() throws Exception {
 
@@ -2245,6 +2507,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C131
      * Char 131: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C131() throws Exception {
 
@@ -2254,6 +2518,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C132
      * Char 132: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C132() throws Exception {
 
@@ -2263,6 +2529,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C133
      * Char 133: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C133() throws Exception {
 
@@ -2272,6 +2540,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C134
      * Char 134: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C134() throws Exception {
 
@@ -2281,6 +2551,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C135
      * Char 135: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C135() throws Exception {
 
@@ -2290,6 +2562,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C136
      * Char 136: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C136() throws Exception {
 
@@ -2299,6 +2573,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C137
      * Char 137: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C137() throws Exception {
 
@@ -2308,6 +2584,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C138
      * Char 138: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C138() throws Exception {
 
@@ -2317,6 +2595,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C139
      * Char 139: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C139() throws Exception {
 
@@ -2326,6 +2606,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C140
      * Char 140: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C140() throws Exception {
 
@@ -2335,6 +2617,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C141
      * Char 141: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C141() throws Exception {
 
@@ -2344,6 +2628,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C142
      * Char 142: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C142() throws Exception {
 
@@ -2353,6 +2639,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C143
      * Char 143: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C143() throws Exception {
 
@@ -2362,6 +2650,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C144
      * Char 144: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C144() throws Exception {
 
@@ -2371,6 +2661,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C145
      * Char 145: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C145() throws Exception {
 
@@ -2380,6 +2672,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C146
      * Char 146: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C146() throws Exception {
 
@@ -2389,6 +2683,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C147
      * Char 147: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C147() throws Exception {
 
@@ -2398,6 +2694,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C148
      * Char 148: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C148() throws Exception {
 
@@ -2407,6 +2705,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C149
      * Char 149: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C149() throws Exception {
 
@@ -2416,6 +2716,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C150
      * Char 150: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C150() throws Exception {
 
@@ -2425,6 +2727,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C151
      * Char 151: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C151() throws Exception {
 
@@ -2434,6 +2738,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C152
      * Char 152: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C152() throws Exception {
 
@@ -2443,6 +2749,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C153
      * Char 153: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C153() throws Exception {
 
@@ -2452,6 +2760,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C154
      * Char 154: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C154() throws Exception {
 
@@ -2461,6 +2771,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C155
      * Char 155: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C155() throws Exception {
 
@@ -2470,6 +2782,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C156
      * Char 156: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C156() throws Exception {
 
@@ -2479,6 +2793,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C157
      * Char 157: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C157() throws Exception {
 
@@ -2488,6 +2804,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C158
      * Char 158: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C158() throws Exception {
 
@@ -2497,6 +2815,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C159
      * Char 159: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C159() throws Exception {
 
@@ -2506,6 +2826,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C160
      * Char 160: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C160() throws Exception {
 
@@ -2515,6 +2837,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C161
      * Char 161: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C161() throws Exception {
 
@@ -2524,6 +2848,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C162
      * Char 162: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C162() throws Exception {
 
@@ -2533,6 +2859,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C163
      * Char 163: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C163() throws Exception {
 
@@ -2542,6 +2870,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C164
      * Char 164: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C164() throws Exception {
 
@@ -2551,6 +2881,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C165
      * Char 165: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C165() throws Exception {
 
@@ -2560,6 +2892,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C166
      * Char 166: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C166() throws Exception {
 
@@ -2569,6 +2903,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C167
      * Char 167: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C167() throws Exception {
 
@@ -2578,6 +2914,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C168
      * Char 168: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C168() throws Exception {
 
@@ -2587,6 +2925,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C169
      * Char 169: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C169() throws Exception {
 
@@ -2596,6 +2936,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C170
      * Char 170: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C170() throws Exception {
 
@@ -2605,6 +2947,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C171
      * Char 171: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C171() throws Exception {
 
@@ -2614,6 +2958,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C172
      * Char 172: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C172() throws Exception {
 
@@ -2623,6 +2969,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C173
      * Char 173: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C173() throws Exception {
 
@@ -2632,6 +2980,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C174
      * Char 174: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C174() throws Exception {
 
@@ -2641,6 +2991,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C175
      * Char 175: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C175() throws Exception {
 
@@ -2650,6 +3002,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C176
      * Char 176: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C176() throws Exception {
 
@@ -2659,6 +3013,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C177
      * Char 177: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C177() throws Exception {
 
@@ -2668,6 +3024,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C178
      * Char 178: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C178() throws Exception {
 
@@ -2677,6 +3035,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C179
      * Char 179: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C179() throws Exception {
 
@@ -2686,6 +3046,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C180
      * Char 180: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C180() throws Exception {
 
@@ -2695,6 +3057,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C181
      * Char 181: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C181() throws Exception {
 
@@ -2704,6 +3068,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C182
      * Char 182: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C182() throws Exception {
 
@@ -2713,6 +3079,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C183
      * Char 183: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C183() throws Exception {
 
@@ -2722,6 +3090,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C184
      * Char 184: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C184() throws Exception {
 
@@ -2731,6 +3101,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C185
      * Char 185: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C185() throws Exception {
 
@@ -2740,6 +3112,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C186
      * Char 186: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C186() throws Exception {
 
@@ -2749,6 +3123,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C187
      * Char 187: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C187() throws Exception {
 
@@ -2758,6 +3134,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C188
      * Char 188: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C188() throws Exception {
 
@@ -2767,6 +3145,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C189
      * Char 189: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C189() throws Exception {
 
@@ -2776,6 +3156,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C190
      * Char 190: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C190() throws Exception {
 
@@ -2785,6 +3167,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C191
      * Char 191: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C191() throws Exception {
 
@@ -2794,6 +3178,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C192
      * Char 192: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C192() throws Exception {
 
@@ -2803,6 +3189,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C193
      * Char 193: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C193() throws Exception {
 
@@ -2812,6 +3200,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C194
      * Char 194: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C194() throws Exception {
 
@@ -2821,6 +3211,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C195
      * Char 195: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C195() throws Exception {
 
@@ -2830,6 +3222,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C196
      * Char 196: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C196() throws Exception {
 
@@ -2839,6 +3233,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C197
      * Char 197: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C197() throws Exception {
 
@@ -2848,6 +3244,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C198
      * Char 198: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C198() throws Exception {
 
@@ -2857,6 +3255,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C199
      * Char 199: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C199() throws Exception {
 
@@ -2866,6 +3266,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C200
      * Char 200: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C200() throws Exception {
 
@@ -2875,6 +3277,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C201
      * Char 201: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C201() throws Exception {
 
@@ -2884,6 +3288,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C202
      * Char 202: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C202() throws Exception {
 
@@ -2893,6 +3299,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C203
      * Char 203: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C203() throws Exception {
 
@@ -2902,6 +3310,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C204
      * Char 204: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C204() throws Exception {
 
@@ -2911,6 +3321,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C205
      * Char 205: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C205() throws Exception {
 
@@ -2920,6 +3332,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C206
      * Char 206: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C206() throws Exception {
 
@@ -2929,6 +3343,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C207
      * Char 207: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C207() throws Exception {
 
@@ -2938,6 +3354,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C208
      * Char 208: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C208() throws Exception {
 
@@ -2947,6 +3365,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C209
      * Char 209: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C209() throws Exception {
 
@@ -2956,6 +3376,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C210
      * Char 210: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C210() throws Exception {
 
@@ -2965,6 +3387,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C211
      * Char 211: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C211() throws Exception {
 
@@ -2974,6 +3398,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C212
      * Char 212: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C212() throws Exception {
 
@@ -2983,6 +3409,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C213
      * Char 213: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C213() throws Exception {
 
@@ -2992,6 +3420,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C214
      * Char 214: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C214() throws Exception {
 
@@ -3001,6 +3431,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C215
      * Char 215: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C215() throws Exception {
 
@@ -3010,6 +3442,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C216
      * Char 216: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C216() throws Exception {
 
@@ -3019,6 +3453,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C217
      * Char 217: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C217() throws Exception {
 
@@ -3028,6 +3464,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C218
      * Char 218: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C218() throws Exception {
 
@@ -3037,6 +3475,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C219
      * Char 219: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C219() throws Exception {
 
@@ -3046,6 +3486,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C220
      * Char 220: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C220() throws Exception {
 
@@ -3055,6 +3497,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C221
      * Char 221: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C221() throws Exception {
 
@@ -3064,6 +3508,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C222
      * Char 222: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C222() throws Exception {
 
@@ -3073,6 +3519,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C223
      * Char 223: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C223() throws Exception {
 
@@ -3082,6 +3530,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C224
      * Char 224: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C224() throws Exception {
 
@@ -3091,6 +3541,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C225
      * Char 225: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C225() throws Exception {
 
@@ -3100,6 +3552,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C226
      * Char 226: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C226() throws Exception {
 
@@ -3109,6 +3563,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C227
      * Char 227: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C227() throws Exception {
 
@@ -3118,6 +3574,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C228
      * Char 228: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C228() throws Exception {
 
@@ -3127,6 +3585,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C229
      * Char 229: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C229() throws Exception {
 
@@ -3136,6 +3596,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C230
      * Char 230: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C230() throws Exception {
 
@@ -3145,6 +3607,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C231
      * Char 231: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C231() throws Exception {
 
@@ -3154,6 +3618,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C232
      * Char 232: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C232() throws Exception {
 
@@ -3163,6 +3629,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C233
      * Char 233: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C233() throws Exception {
 
@@ -3172,6 +3640,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C234
      * Char 234: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C234() throws Exception {
 
@@ -3181,6 +3651,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C235
      * Char 235: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C235() throws Exception {
 
@@ -3190,6 +3662,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C236
      * Char 236: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C236() throws Exception {
 
@@ -3199,6 +3673,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C237
      * Char 237: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C237() throws Exception {
 
@@ -3208,6 +3684,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C238
      * Char 238: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C238() throws Exception {
 
@@ -3217,6 +3695,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C239
      * Char 239: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C239() throws Exception {
 
@@ -3226,6 +3706,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C240
      * Char 240: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C240() throws Exception {
 
@@ -3235,6 +3717,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C241
      * Char 241: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C241() throws Exception {
 
@@ -3244,6 +3728,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C242
      * Char 242: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C242() throws Exception {
 
@@ -3253,6 +3739,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C243
      * Char 243: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C243() throws Exception {
 
@@ -3262,6 +3750,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C244
      * Char 244: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C244() throws Exception {
 
@@ -3271,6 +3761,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C245
      * Char 245: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C245() throws Exception {
 
@@ -3280,6 +3772,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C246
      * Char 246: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C246() throws Exception {
 
@@ -3289,6 +3783,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C247
      * Char 247: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C247() throws Exception {
 
@@ -3298,6 +3794,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C248
      * Char 248: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C248() throws Exception {
 
@@ -3307,6 +3805,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C249
      * Char 249: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C249() throws Exception {
 
@@ -3316,6 +3816,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C250
      * Char 250: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C250() throws Exception {
 
@@ -3325,6 +3827,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C251
      * Char 251: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C251() throws Exception {
 
@@ -3334,6 +3838,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C252
      * Char 252: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C252() throws Exception {
 
@@ -3343,6 +3849,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C253
      * Char 253: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C253() throws Exception {
 
@@ -3352,6 +3860,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C254
      * Char 254: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C254() throws Exception {
 
@@ -3361,6 +3871,8 @@ public class FontFactoryImplGenLcirclew10Test extends AbstractFontFactoryTester 
     /**
      * testlcirclew10C255
      * Char 255: not defined
+     *
+     * @throws Exception in case of an error
      */
     public void testlcirclew10C255() throws Exception {
 
