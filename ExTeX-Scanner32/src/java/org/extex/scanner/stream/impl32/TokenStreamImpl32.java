@@ -38,13 +38,12 @@ import org.extex.scanner.type.Catcode;
  * Reader.
  * <p>
  * <ul>
- *  <li>'^^^UnicodeName;' use the Unicode name for the character</li>
- *  <li>'^^^^ab07' a la Omega<br/>
- *  It use 4 hex digit or less, if a non hex digit are found.
- *  </li>
+ * <li>'^^^UnicodeName;' use the Unicode name for the character</li>
+ * <li>'^^^^ab07' a la Omega<br/> It use 4 hex digit or less, if a non hex
+ * digit are found. </li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.extex.scanner.base.TokenStreamImpl
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision:4725 $
@@ -74,21 +73,20 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param config the configuration object for this instance; This
      *        configuration is ignored in this implementation.
      * @param options ignored here
-     * @param theSource the description of the information source; e.g. the
-     *        file name
+     * @param theSource the description of the information source; e.g. the file
+     *        name
      * @param encoding the encoding to use
      * @param stream the input stream to read
-     *
+     * 
      * @throws ConfigurationException in case of an error in the configuration
      * @throws IOException in case of an IO error
      */
-    public TokenStreamImpl32(Configuration config,
-            TokenStreamOptions options, InputStream stream,
-            String theSource, String encoding)
+    public TokenStreamImpl32(Configuration config, TokenStreamOptions options,
+            InputStream stream, String theSource, String encoding)
             throws IOException,
                 ConfigurationException {
 
@@ -97,7 +95,7 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param config the configuration object for this instance; This
      *        configuration is ignored in this implementation.
      * @param options ignored here
@@ -106,16 +104,15 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
      * @param theSource the description of the input source
      * @throws IOException in case of an IO error
      */
-    public TokenStreamImpl32(Configuration config,
-            TokenStreamOptions options, Reader reader,
-            Boolean isFile, String theSource) throws IOException {
+    public TokenStreamImpl32(Configuration config, TokenStreamOptions options,
+            Reader reader, Boolean isFile, String theSource) throws IOException {
 
         super(config, options, reader, isFile, theSource);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param config the configuration object for this instance; This
      *        configuration is ignored in this implementation.
      * @param options ignored here
@@ -123,19 +120,19 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
      * @param theSource the description of the input source
      * @throws IOException in case of an IO error
      */
-    public TokenStreamImpl32(Configuration config,
-            TokenStreamOptions options, String theLine,
-            String theSource) throws IOException {
+    public TokenStreamImpl32(Configuration config, TokenStreamOptions options,
+            String theLine, String theSource) throws IOException {
 
         super(config, options, theLine, theSource);
     }
 
     /**
-     * @see org.extex.scanner.base.TokenStreamImpl#getChar(
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.stream.impl32.TokenStreamImpl#getChar(
      *      org.extex.scanner.Tokenizer)
      */
-    protected UnicodeChar getChar(Tokenizer tokenizer)
-            throws ScannerException {
+    protected UnicodeChar getChar(Tokenizer tokenizer) throws ScannerException {
 
         if (saveChar != null) {
             UnicodeChar uc = saveChar;
@@ -221,10 +218,10 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
 
     /**
      * Analyze a character and return its hex value as char.
-     *
-     * @param c     The character code to analyze.
-     * @return Returns the char value of a hex digit
-     *         or 0 if no hex digit is given.
+     * 
+     * @param c The character code to analyze.
+     * @return Returns the char value of a hex digit or 0 if no hex digit is
+     *         given.
      */
     private char hex2char(int c) {
 
@@ -239,7 +236,8 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
 
     /**
      * scan a hex number (max. n digits)
-     * @param n         number of digits
+     * 
+     * @param n number of digits
      * @param tokenizer the tokenizer
      * @return UnicodeChar of a hex number
      * @throws ScannerException if no hex digit is found
@@ -273,10 +271,11 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
 
     /**
      * Scan a Unicode name.
+     * 
      * <pre>
      * ^^^^NAME;
      * </pre>
-     *
+     * 
      * @return Returns Unicode name as <code>String</code>.
      * @throws ScannerException if an error occurs
      */

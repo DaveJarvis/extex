@@ -52,7 +52,7 @@ import org.extex.scanner.type.token.Token;
 
 /**
  * Load a format file and print it in a reasonable form.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4603 $
  */
@@ -60,7 +60,7 @@ public final class FormatPrinter {
 
     /**
      * This interface describes a function object for printing a data type.
-     *
+     * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision:4603 $
      */
@@ -68,7 +68,7 @@ public final class FormatPrinter {
 
         /**
          * Printing method.
-         *
+         * 
          * @param out the output stream
          * @param obj the object to print
          */
@@ -81,8 +81,8 @@ public final class FormatPrinter {
     private static boolean deep = true;
 
     /**
-     * The field <tt>listLimit</tt> contains the limit to restrict the printing
-     * of lists.
+     * The field <tt>listLimit</tt> contains the limit to restrict the
+     * printing of lists.
      */
     private static int listLimit = Integer.MAX_VALUE;
 
@@ -295,7 +295,7 @@ public final class FormatPrinter {
 
     /**
      * command line interface.
-     *
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -392,13 +392,12 @@ public final class FormatPrinter {
 
     /**
      * Print an object.
-     *
+     * 
      * @param out the target stream
      * @param prefix the prefix to print after any new line
      * @param obj the object to print
      */
-    private static void print(PrintStream out, String prefix,
-            Object obj) {
+    private static void print(PrintStream out, String prefix, Object obj) {
 
         if (obj == null) {
             out.print(" nil");
@@ -421,14 +420,14 @@ public final class FormatPrinter {
             // TODO
             return;
         } else if (obj instanceof Map) {
-            Map m = (Map) obj;
+            Map<Object, Object> m = (Map<Object, Object>) obj;
             int size = m.size();
             if (size == 0) {
                 out.print(" (map)");
             } else {
                 out.print(" (map ");
                 int limit = mapLimit;
-                Iterator iterator = m.keySet().iterator();
+                Iterator<Object> iterator = m.keySet().iterator();
                 while (limit-- > 0 && iterator.hasNext()) {
                     Object key = iterator.next();
                     out.print(pre);
@@ -447,7 +446,7 @@ public final class FormatPrinter {
             }
             return;
         } else if (obj instanceof List) {
-            List l = (List) obj;
+            List<Object> l = (List) obj;
             int size = l.size();
             if (size == 0) {
                 out.print("(list)");
@@ -455,7 +454,7 @@ public final class FormatPrinter {
                 out.print(pre);
                 out.print("(list ");
                 int limit = listLimit;
-                Iterator iterator = l.iterator();
+                Iterator<Object> iterator = l.iterator();
                 while (limit-- > 0 && iterator.hasNext()) {
                     print(out, pre2, iterator.next());
                 }
@@ -521,7 +520,7 @@ public final class FormatPrinter {
 
     /**
      * Creates a new object.
-     *
+     * 
      */
     private FormatPrinter() {
 

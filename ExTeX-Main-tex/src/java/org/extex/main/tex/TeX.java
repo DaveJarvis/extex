@@ -579,7 +579,7 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
 public class TeX extends ExTeX {
 
     /**
-     * TODO gene: missing JavaDoc.
+     * This inner class contains the open file observer.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
@@ -589,10 +589,10 @@ public class TeX extends ExTeX {
         /**
          * The field <tt>first</tt> contains the indicator of the first visit.
          */
-        boolean first = true;
+        private boolean first = true;
 
         /**
-         * The field <tt>finder</tt> contains the ...
+         * The field <tt>finder</tt> contains the resource finder.
          */
         private ResourceFinder finder;
 

@@ -104,6 +104,7 @@ public class ResourceFinderImpl
      */
     public void enableTracing(boolean flag) {
 
+        // not supported
     }
 
     /**

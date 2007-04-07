@@ -44,11 +44,11 @@ import org.extex.scanner.type.token.Token;
  * user on the command line like <logo>TeX</logo> does.
  * <p>
  * The {@link HelpingException HelpingException} is capable of carrying a name
- * and two arguments for the error message. This class can be queried to
- * provide additional help concerning the error at hand.
- * See {@link HelpingException HelpingException} for details.
+ * and two arguments for the error message. This class can be queried to provide
+ * additional help concerning the error at hand. See
+ * {@link HelpingException HelpingException} for details.
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -61,14 +61,14 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
     private static final boolean ENABLE_DEBUG = false;
 
     /**
-     * The constant <tt>NL</tt> contains the String with the newline character,
-     * since it is needed several times.
+     * The constant <tt>NL</tt> contains the String with the newline
+     * character, since it is needed several times.
      */
     protected static final String NL = "\n";
 
     /**
-     * The field <tt>editHandler</tt> contains the handler to be invoked upon a
-     * request to edit a file.
+     * The field <tt>editHandler</tt> contains the handler to be invoked upon
+     * a request to edit a file.
      */
     private EditHandler editHandler = null;
 
@@ -80,25 +80,24 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.interpreter.interaction.InteractionVisitor#visitBatchmode(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public boolean visitBatchmode(Object arg1, Object arg2,
-                Object arg3) throws GeneralException {
+        public boolean visitBatchmode(Object arg1, Object arg2, Object arg3)
+                throws GeneralException {
 
             return true;
         }
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.interpreter.interaction.InteractionVisitor#visitErrorstopmode(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public boolean visitErrorstopmode(Object oSource,
-                Object oContext, Object oException)
-                throws GeneralException {
+        public boolean visitErrorstopmode(Object oSource, Object oContext,
+                Object oException) throws GeneralException {
 
             TokenSource source = (TokenSource) oSource;
             Context context = (Context) oContext;
@@ -178,12 +177,15 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
 
                             String help;
 
-                            if (!firstHelp) {
-                                help =
-                                        localizer
-                                            .format("ErrorHandler.noMoreHelp");
-                            } else if ((help = ex.getHelp()) == null) {
-                                help = localizer.format("ErrorHandler.noHelp");
+                            if (firstHelp) {
+                                help = ex.getHelp();
+                                if (help == null) {
+                                    help = localizer.format(//
+                                        "ErrorHandler.noHelp");
+                                }
+                            } else {
+                                help = localizer.format(//
+                                    "ErrorHandler.noMoreHelp");
                             }
 
                             firstHelp = false;
@@ -226,25 +228,24 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.interpreter.interaction.InteractionVisitor#visitNonstopmode(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public boolean visitNonstopmode(Object arg1, Object arg2,
-                Object arg3) throws GeneralException {
+        public boolean visitNonstopmode(Object arg1, Object arg2, Object arg3)
+                throws GeneralException {
 
             return true;
         }
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.interpreter.interaction.InteractionVisitor#visitScrollmode(
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public boolean visitScrollmode(Object oSource,
-                Object oContext, Object oException)
-                throws GeneralException {
+        public boolean visitScrollmode(Object oSource, Object oContext,
+                Object oException) throws GeneralException {
 
             return false;
         }
@@ -258,8 +259,8 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
 
     /**
      * The field <tt>logger</tt> contains the logger to write a protocol of
-     * the interaction to. Note that the error has already been logged when
-     * this handler is invoked. Thus only additional logging output should be
+     * the interaction to. Note that the error has already been logged when this
+     * handler is invoked. Thus only additional logging output should be
      * produced in this class.
      */
     private Logger logger = null;
@@ -274,7 +275,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.framework.i18n.Localizable#enableLocalization(
      *      org.extex.framework.i18n.Localizer)
      */
@@ -285,7 +286,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
@@ -297,9 +298,9 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
     /**
      * Special treatment of the debug case. This method is meant to be redefined
      * to provide additional functionality.
-     *
+     * 
      * @throws HelpingException in case of EOF on terminal
-     *
+     * 
      * @see "TTP[1338]"
      */
     protected void handleDebug() throws HelpingException {
@@ -314,22 +315,14 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
                 return;
                 // TODO gene: handleDebug unimplemented
                 /*
-                 } else if ("1".equals(line)) {
-                 } else if ("2".equals(line)) {
-                 } else if ("3".equals(line)) {
-                 } else if ("4".equals(line)) {
-                 } else if ("5".equals(line)) {
-                 } else if ("6".equals(line)) {
-                 } else if ("7".equals(line)) {
-                 } else if ("8".equals(line)) {
-                 } else if ("9".equals(line)) {
-                 } else if ("10".equals(line)) {
-                 } else if ("11".equals(line)) {
-                 } else if ("12".equals(line)) {
-                 } else if ("13".equals(line)) {
-                 } else if ("14".equals(line)) {
-                 } else if ("15".equals(line)) {
-                 } else if ("16".equals(line)) {
+                 * } else if ("1".equals(line)) { } else if ("2".equals(line)) { }
+                 * else if ("3".equals(line)) { } else if ("4".equals(line)) { }
+                 * else if ("5".equals(line)) { } else if ("6".equals(line)) { }
+                 * else if ("7".equals(line)) { } else if ("8".equals(line)) { }
+                 * else if ("9".equals(line)) { } else if ("10".equals(line)) { }
+                 * else if ("11".equals(line)) { } else if ("12".equals(line)) { }
+                 * else if ("13".equals(line)) { } else if ("14".equals(line)) { }
+                 * else if ("15".equals(line)) { } else if ("16".equals(line)) {
                  */
             }
 
@@ -345,8 +338,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
      *      org.extex.interpreter.context.Context)
      */
     public boolean handleError(GeneralException exception, Token t,
-            TokenSource source, Context context)
-            throws InterpreterException {
+            TokenSource source, Context context) throws InterpreterException {
 
         try {
             return context.getInteraction().visit(iv, source, context,
@@ -360,17 +352,16 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
 
     /**
      * Read a line of characters from the standard input stream after a prompt
-     * has been shown.
-     * Leading spaces are ignored. At end of file an exception is thrown.
-     *
+     * has been shown. Leading spaces are ignored. At end of file an exception
+     * is thrown.
+     * 
      * @param prompt the prompt to display
-     *
+     * 
      * @return the line read or <code>null</code> to signal EOF
-     *
+     * 
      * @throws HelpingException in case of EOF on terminal
      */
-    protected String promptAndReadLine(String prompt)
-            throws HelpingException {
+    protected String promptAndReadLine(String prompt) throws HelpingException {
 
         logger.severe(prompt);
 
@@ -409,13 +400,12 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
 
     /**
      * This method is invoked to present the current line causing the error.
-     *
+     * 
      * @param logger the logger to use for output
      * @param message the error message
      * @param locator the locator for the error position
      */
-    protected void showErrorLine(Logger logger, String message,
-            Locator locator) {
+    protected void showErrorLine(Logger logger, String message, Locator locator) {
 
         if (locator == null) {
             return;

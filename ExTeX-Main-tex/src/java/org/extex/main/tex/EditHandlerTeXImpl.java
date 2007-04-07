@@ -19,6 +19,8 @@
 
 package org.extex.main.tex;
 
+import java.io.PrintStream;
+
 import org.extex.core.Locator;
 import org.extex.framework.i18n.Localizer;
 import org.extex.main.errorHandler.editHandler.EditHandler;
@@ -26,7 +28,7 @@ import org.extex.main.errorHandler.editHandler.EditHandler;
 /**
  * This is a dummy implementation for an EditHandler which just prints the
  * location to the error stream.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4445 $
  */
@@ -42,19 +44,19 @@ public class EditHandlerTeXImpl implements EditHandler {
 
     /**
      * Edit a file at a given location.
-     *
+     * 
      * @param localizer the localizer to acquire texts from
      * @param locator the locator for the place to edit
-     *
+     * 
      * @return <code>true</code> iff the job can be continued
-     *
+     * 
      * @see org.extex.main.errorHandler.editHandler.EditHandler#edit(
-     *      org.extex.framework.i18n.Localizer,
-     *      org.extex.core.Locator)
+     *      org.extex.framework.i18n.Localizer, org.extex.core.Locator)
      */
     public boolean edit(Localizer localizer, Locator locator) {
 
-        System.err.println(localizer.format("EditHandler.edit", locator
+        PrintStream stream = System.err;
+        stream.println(localizer.format("EditHandler.edit", locator
             .getResourceName(), Integer.toString(locator.getLineNumber())));
         return false;
     }
