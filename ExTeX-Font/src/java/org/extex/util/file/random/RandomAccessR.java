@@ -31,16 +31,27 @@ import java.io.IOException;
 public interface RandomAccessR extends DataInput {
 
     /**
+     * TODO mgn
+     * @throws IOException ...
+     * 
      * @see java.io.RandomAccessFile#close()
      */
     void close() throws IOException;
 
     /**
+     * TODO mgn
+     * @return ...
+     * @throws IOException ... 
+     * 
      * @see java.io.RandomAccessFile#length()
      */
     long length() throws IOException;
 
     /**
+     * TODO mgn
+     * @param arg0 ...
+     * @throws IOException ... 
+     * 
      * @see java.io.RandomAccessFile#seek(long)
      */
     void seek(long arg0) throws IOException;
@@ -48,7 +59,7 @@ public interface RandomAccessR extends DataInput {
     /**
      * Returns the pointer in the buffer.
      *
-     * @throws IOException if an IO-error occurs
+     * @throws IOException if an IO error occurs
      * @return Returns the pointer in the buffer
      */
     long getPointer() throws IOException;
@@ -56,7 +67,7 @@ public interface RandomAccessR extends DataInput {
     /**
      * Reads a byte of data from this file. The byte is returned as an
      * integer in the range 0 to 255 (<code>0x00-0x0ff</code>).
-     * @throws IOException if an IO-error occurs.
+     * @throws IOException if an IO error occurs.
      * @return     the next byte of data.
      */
     int readByteAsInt() throws IOException;
@@ -64,7 +75,7 @@ public interface RandomAccessR extends DataInput {
     /**
      * Reads a int with 24 bit (3x8).
      * @return  Returns a int value.
-     * @throws IOException if an IO-error occurs.
+     * @throws IOException if an IO error occurs.
      */
     int readInt24() throws IOException;
 
@@ -74,36 +85,37 @@ public interface RandomAccessR extends DataInput {
     int X24 = 0x800000;
 
     /**
-     * kill the higest 8 bit (by a 32 bit int)
+     * kill the highest 8 bit (by a 32 bit int)
      */
     int KILL32 = 0xff000000;
 
     /**
      * Reads a sign int with 24 bit (3x8).
-     * The sign is calculated with the b-komplement.
+     * The sign is calculated with the b-complement.
      * @return  Returns a int value.
-     * @throws IOException if an IO-error occurs.
+     * @throws IOException if an IO error occurs.
      */
     int readSignInt24() throws IOException;
 
     /**
      * Reads a int with 16 bit (2x8).
      * @return  Returns a int value.
-     * @throws IOException if an IO-error occurs.
+     * @throws IOException if an IO error occurs.
      */
     int readInt16() throws IOException;
 
     /**
      * Reads a int with 8 bit (1x8).
      * @return  Returns a int value.
-     * @throws IOException if an IO-error occurs.
+     * @throws IOException if an IO error occurs.
      */
     int readInt8() throws IOException;
 
     /**
-     * Check, if EOF is reaged.
-     * @return Returns <code>true</code>, if EOF is reaged.
-     * @throws IOException if an IO-erorr occurs.
+     * Check, if EOF is reached.
+     * @return Returns <code>true</code>, if EOF is reached.
+     * @throws IOException if an IO error occurs.
      */
     boolean isEOF() throws IOException;
+
 }

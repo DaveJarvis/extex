@@ -26,10 +26,9 @@ import org.extex.format.dvi.exception.DviException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.util.file.random.RandomAccessR;
 
-
 /**
  * Interface for a DVI interpreter.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4728 $
  */
@@ -37,13 +36,17 @@ public interface DviInterpreter {
 
     /**
      * Interpreter for DVI
-     * @param rar   the input
+     * 
+     * @param rar the input
      * @throws IOException in case of a IO-error.
-     * @throws DVIException in case of a DVI-error.
+     * @throws DviException in case of a DVI-error.
      * @throws FontException in case of a font-error.
-     * @throws ConfigurationException from the config-system.
+     * @throws ConfigurationException from the config system.
      */
-    void interpret(RandomAccessR rar) throws IOException, DviException,
-            FontException, ConfigurationException;
+    void interpret(RandomAccessR rar)
+            throws IOException,
+                DviException,
+                FontException,
+                ConfigurationException;
 
 }

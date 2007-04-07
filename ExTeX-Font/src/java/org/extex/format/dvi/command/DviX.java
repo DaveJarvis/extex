@@ -87,6 +87,8 @@ public class DviX extends DviCommand {
     private static final int X0 = 152;
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviCommand#getName()
      */
     public String getName() {

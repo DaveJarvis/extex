@@ -54,13 +54,13 @@ import org.extex.util.file.random.RandomAccessR;
 
 /**
  * DVI to PL converter.
- *
+ * 
  * <p>
  * Commands are taken from DVItype 3.4.
  * </p>
- *
+ * 
  * @see <a href="package-summary.html#DVIformat">DVI-Format</a>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4728 $
  */
@@ -80,7 +80,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
     /**
      * the map for all sub fonts.
      */
-    private Map fontmap;
+    private Map<?, ?> fontmap;
 
     /**
      * the dvi stack
@@ -93,20 +93,21 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
     private DviValues val;
 
     /**
-     * the weriter for pl
+     * the writer for pl
      */
     private PlWriter out;
 
     /**
      * Create a new object.
-     *
-     * @param ff        the fontfactroy
+     * 
+     * @param plout TODO mgn
+     * @param ff the font factory
      */
     public DviPl(PlWriter plout, FontFactory ff) {
 
         out = plout;
         fontfactory = ff;
-        fontmap = new HashMap();
+        fontmap = new HashMap<Object, Object>();
         val = new DviValues();
         stack = new DviStack();
     }
@@ -118,7 +119,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.format.dvi.DviInterpreter#interpret(
      *      org.extex.util.file.random.RandomAccessR)
      */
@@ -209,16 +210,17 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
 
     /**
      * Set the font map.
+     * 
      * @param fontm The font map to set.
      */
-    public void setFontmap(Map fontm) {
+    public void setFontmap(Map<?, ?> fontm) {
 
         fontmap = fontm;
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviBOP)
      */
@@ -232,7 +234,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviChar)
      */
@@ -246,7 +248,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviDown)
      */
@@ -260,7 +262,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviEOP)
      */
@@ -274,7 +276,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviFntDef)
      */
@@ -288,7 +290,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviFntNum)
      */
@@ -304,7 +306,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviPOP)
      */
@@ -320,7 +322,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviNOP)
      */
@@ -333,7 +335,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviPost)
      */
@@ -347,7 +349,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviPostPost)
      */
@@ -361,7 +363,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviPre)
      */
@@ -375,7 +377,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviPush)
      */
@@ -390,7 +392,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviRight)
      */
@@ -404,7 +406,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviRule)
      */
@@ -427,7 +429,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviW)
      */
@@ -453,7 +455,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviX)
      */
@@ -479,7 +481,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviXXX)
      */
@@ -493,7 +495,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviY)
      */
@@ -519,7 +521,7 @@ public class DviPl implements DviInterpreter, DviExecuteCommand {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviZ)
      */

@@ -60,6 +60,8 @@ public class DviFntNum extends DviCommand {
     private static final int FNT1 = 235;
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviCommand#getName()
      */
     public String getName() {

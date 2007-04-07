@@ -61,13 +61,13 @@ public final class GlyphName {
      */
     private GlyphName() throws IOException {
 
-        glyphmap = new HashMap(INITSIZE);
-        unicodemap = new HashMap(INITSIZE);
+        glyphmap = new HashMap<String, UnicodeChar>(INITSIZE);
+        unicodemap = new HashMap<UnicodeChar, String>(INITSIZE);
 
         Properties prop = new Properties();
         prop.load(getClass().getResourceAsStream(FILE));
 
-        Enumeration keyenum = prop.keys();
+        Enumeration<Object> keyenum = prop.keys();
 
         while (keyenum.hasMoreElements()) {
             String key = (String) keyenum.nextElement();
@@ -91,12 +91,12 @@ public final class GlyphName {
     /**
      * The glyph name map.
      */
-    private Map glyphmap;
+    private Map<String, UnicodeChar> glyphmap;
 
     /**
      * The Unicode map.
      */
-    private Map unicodemap;
+    private Map<UnicodeChar, String> unicodemap;
 
     /**
      * The singleton instance.
@@ -127,7 +127,7 @@ public final class GlyphName {
      */
     public UnicodeChar getUnicode(String name) {
 
-        return (UnicodeChar) glyphmap.get(name);
+        return glyphmap.get(name);
     }
 
     /**
@@ -139,7 +139,7 @@ public final class GlyphName {
      */
     public String getGlyphname(UnicodeChar uc) {
 
-        return (String) unicodemap.get(uc);
+        return unicodemap.get(uc);
     }
 
 }

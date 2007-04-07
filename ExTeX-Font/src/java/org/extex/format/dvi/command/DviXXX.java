@@ -86,11 +86,13 @@ public class DviXXX extends DviCommand {
         return buf.toString();
     }
 
-    /**
+    /*
      * xxx1
      */
     // private static final int XXX1 = 239;
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviCommand#getName()
      */
     public String getName() {

@@ -83,7 +83,7 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
     /**
      * the map for all sub fonts.
      */
-    private Map fontmap;
+    private Map<Integer, Font> fontmap;
 
     /**
      * the dvi stack
@@ -125,7 +125,7 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
 
         w = wout;
         fontfactory = ff;
-        fontmap = new HashMap();
+        fontmap = new HashMap<Integer, Font>();
         val = new DviValues();
         stack = new DviStack();
     }
@@ -141,7 +141,7 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
             ConfigurationException {
 
         for (int i = 0; i < fntdefs.size(); i++) {
-            DviFntDef command = (DviFntDef) fntdefs.get(i);
+            DviFntDef command = fntdefs.get(i);
 
             Integer key = new Integer(command.getFont());
             Dimen designsize = command.getScaleAsDimen();
@@ -173,7 +173,7 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
     /**
      * the fnt_def commands
      */
-    private List fntdefs;
+    private List<DviFntDef> fntdefs;
 
     /**
      * format to 8 digit
@@ -342,7 +342,7 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
     private void printFont() {
 
         for (int i = 0; i < fntdefs.size(); i++) {
-            DviFntDef f = (DviFntDef) fntdefs.get(i);
+            DviFntDef f = fntdefs.get(i);
 
             w.print("BaseFont ");
             w.print(f.getFont());
@@ -437,6 +437,8 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
     //------------------------------------------------
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviBOP)
      */
@@ -452,6 +454,8 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviChar)
      */
@@ -459,7 +463,7 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
             FontException, ConfigurationException {
 
         Integer key = new Integer(val.getF());
-        Font f = (Font) fontmap.get(key);
+        Font f = fontmap.get(key);
         if (f == null) {
             throw new DviFontNotFoundException(command.getName());
         }
@@ -491,6 +495,8 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviDown)
      */
@@ -515,6 +521,8 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviEOP)
      */
@@ -528,6 +536,8 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviFntDef)
      */
@@ -546,6 +556,8 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviFntNum)
      */
@@ -558,7 +570,7 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
         w.print(" current font is ");
         val.setF(command.getFont());
         Integer key = new Integer(val.getF());
-        Font f = (Font) fontmap.get(key);
+        Font f = fontmap.get(key);
         if (f == null) {
             throw new DviFontNotFoundException(command.getName());
         }
@@ -566,6 +578,8 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviPOP)
      */
@@ -643,6 +657,8 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviRight)
      */
@@ -667,6 +683,8 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviRule)
      */
@@ -691,6 +709,8 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviExecuteCommand#execute(
      *      org.extex.format.dvi.command.DviW)
      */

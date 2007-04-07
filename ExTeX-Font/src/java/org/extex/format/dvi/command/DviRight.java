@@ -60,6 +60,8 @@ public class DviRight extends DviCommand {
     private static final int RIGHT1 = 143;
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviCommand#getName()
      */
     public String getName() {

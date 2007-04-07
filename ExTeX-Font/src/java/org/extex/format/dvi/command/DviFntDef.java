@@ -179,6 +179,8 @@ public class DviFntDef extends DviCommand {
     private static final int FNT_DEF1 = 243;
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviCommand#getName()
      */
     public String getName() {

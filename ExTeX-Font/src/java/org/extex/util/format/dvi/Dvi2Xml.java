@@ -57,6 +57,7 @@ public final class Dvi2Xml {
      */
     private Dvi2Xml() {
 
+        //
     }
 
     /**
@@ -76,7 +77,7 @@ public final class Dvi2Xml {
 
     /**
      * main
-     * @param args      the comandlinearguments
+     * @param args      the comandline arguments
      * @throws Exception  in case of an error
      */
     public static void main(String[] args) throws Exception {
@@ -115,11 +116,11 @@ public final class Dvi2Xml {
     }
 
     /**
-     * This will print the stattag without attributes or the endtag.
+     * This will print the start tag without attributes or the end tag.
      *
      * @param element   <code>Element</code> to output.
      * @param out       <code>BufferedWriter</code> to use.
-     * @param start     <code>boolean</code> print the starttag or the enttag
+     * @param start     <code>boolean</code> print the start tag or the ent tag
      * @throws IOException if an IO-error occurs
      */
     private static void printElement(Element element,

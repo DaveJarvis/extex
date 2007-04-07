@@ -60,6 +60,8 @@ public class DviDown extends DviCommand {
     private static final int DOWN1 = 157;
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviCommand#getName()
      */
     public String getName() {

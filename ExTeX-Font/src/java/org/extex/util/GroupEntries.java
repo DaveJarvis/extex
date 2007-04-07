@@ -33,14 +33,14 @@ public class GroupEntries {
     /**
      * The list for the entries.
      */
-    private List list;
+    private List<Object> list;
 
     /**
      * Create a new object.
      */
     public GroupEntries() {
 
-        list = new ArrayList();
+        list = new ArrayList<Object>();
     }
 
     /**
@@ -50,7 +50,7 @@ public class GroupEntries {
      */
     public GroupEntries(int size) {
 
-        list = new ArrayList(size);
+        list = new ArrayList<Object>(size);
     }
 
     /**

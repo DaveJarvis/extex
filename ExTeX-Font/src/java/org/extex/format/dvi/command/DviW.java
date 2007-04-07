@@ -87,6 +87,8 @@ public class DviW extends DviCommand {
     private static final int W0 = 147;
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviCommand#getName()
      */
     public String getName() {

@@ -90,6 +90,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.file.random.RandomAccessR#close()
      */
     public void close() throws IOException {
@@ -98,6 +100,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.file.random.RandomAccessR#length()
      */
     public long length() throws IOException {
@@ -106,6 +110,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.file.random.RandomAccessR#seek(long)
      */
     public void seek(long arg0) throws IOException {
@@ -114,6 +120,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see java.io.DataInput#readBoolean()
      */
     public boolean readBoolean() throws IOException {
@@ -122,6 +130,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see java.io.DataInput#readByte()
      */
     public byte readByte() throws IOException {
@@ -132,6 +142,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.file.random.RandomAccessR#readByteAsInt()
      */
     public int readByteAsInt() throws IOException {
@@ -155,6 +167,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
      * </pre></blockquote>
      * <p>
      *
+     * {@inheritDoc}
+     * 
      * @see java.io.DataInput#readChar()
      */
     public char readChar() throws IOException {
@@ -165,6 +179,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
     /**
      * Reads a <code>double</code> from the input.
      *
+     * {@inheritDoc}
+     * 
      * @see java.io.DataInput#readDouble()
      */
     public double readDouble() throws IOException {
@@ -175,6 +191,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
     /**
      * Reads a <code>float</code> from the input.
      *
+     * {@inheritDoc}
+     * 
      * @see java.io.DataInput#readFloat()
      */
     public float readFloat() throws IOException {
@@ -183,6 +201,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see java.io.DataInput#readFully(byte[], int, int)
      */
     public void readFully(byte[] b, int off, int len)
@@ -192,6 +212,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see java.io.DataInput#readFully(byte[])
      */
     public void readFully(byte[] b) throws IOException {
@@ -210,6 +232,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
      *     (b1 &lt;&lt; 24) | (b2 &lt;&lt; 16) + (b3 &lt;&lt; 8) + b4
      * </pre></blockquote>
      * <p>
+     * {@inheritDoc}
+     * 
      * @see java.io.DataInput#readInt()
      */
     public int readInt() throws IOException {
@@ -230,6 +254,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
      *     (b1 &lt;&lt; 16) + (b2 &lt;&lt; 8) + b3
      * </pre></blockquote>
      * <p>
+     * {@inheritDoc}
+     * 
      * @see java.io.DataInput#readInt()
      */
     public int readInt24() throws IOException {
@@ -246,6 +272,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
     /**
      * Reads the next line of text from the input.
      *
+     * {@inheritDoc}
+     * 
      * @see java.io.DataInput#readLine()
      */
     public String readLine() throws IOException {
@@ -272,6 +300,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
      *     + ((long)b7 &lt;&lt; 8) + b8
      * </pre></blockquote>
      * <p>
+     * {@inheritDoc}
+     * 
      * @see java.io.DataInput#readLong()
      */
     public long readLong() throws IOException {
@@ -291,6 +321,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
      * </pre></blockquote>
      * <p>
      *
+     * {@inheritDoc}
+     * 
      * @see java.io.DataInput#readShort()
      */
     public short readShort() throws IOException {
@@ -303,6 +335,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
     /**
      * Reads an unsigned eight-bit number from the input.
      *
+     * {@inheritDoc}
+     * 
      * @see java.io.DataInput#readUnsignedByte()
      */
     public int readUnsignedByte() throws IOException {
@@ -321,6 +355,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
      *     (b1 &lt;&lt; 8) | b2
      * </pre></blockquote>
      * <p>
+     * {@inheritDoc}
+     * 
      * @see java.io.DataInput#readUnsignedShort()
      */
     public int readUnsignedShort() throws IOException {
@@ -332,6 +368,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
      * Reads in a string from this file. The string has been encoded
      * using a modified UTF-8 format.
      *
+     * {@inheritDoc}
+     * 
      * @see java.io.DataInput#readUTF()
      */
     public String readUTF() throws IOException {
@@ -343,6 +381,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
      * Attempts to skip over <code>n</code> bytes of input discarding the
      * skipped bytes.
      *
+     * {@inheritDoc}
+     * 
      * @see java.io.DataInput#skipBytes(int)
      */
     public int skipBytes(int n) throws IOException {
@@ -351,6 +391,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.file.random.RandomAccessR#getPointer()
      */
     public long getPointer() throws IOException {
@@ -359,6 +401,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.file.random.RandomAccessR#isEOF()
      */
     public boolean isEOF() throws IOException {
@@ -367,6 +411,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.file.random.RandomAccessR#readInt16()
      */
     public int readInt16() throws IOException {
@@ -380,6 +426,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.file.random.RandomAccessR#readInt8()
      */
     public int readInt8() throws IOException {
@@ -388,6 +436,8 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.file.random.RandomAccessR#readSignInt24()
      */
     public int readSignInt24() throws IOException {

@@ -95,7 +95,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * ans postpost calls pop before execute.
      * </p>
      */
-    private Stack parentstack;
+    private Stack<Element> parentstack;
 
     /**
      * page counter
@@ -110,7 +110,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
     /**
      * the map for all sub fonts.
      */
-    private Map fontmap;
+    private Map<Integer, Font> fontmap;
 
     /**
      * the dvi stack
@@ -136,8 +136,8 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
 
         parent = element;
         fontfactory = ff;
-        parentstack = new Stack();
-        fontmap = new HashMap();
+        parentstack = new Stack<Element>();
+        fontmap = new HashMap<Integer, Font>();
         val = new DviValues();
         stack = new DviStack();
     }
@@ -297,8 +297,8 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * Read the next command as element.
      * All commands of a 'bop' are collected in one element.
      * <p>
-     * This method ist for large dvi-files, to read each page in
-     * bop-element separretly.
+     * This method is for large dvi files, to read each page in
+     * bop-element separately.
      * </p>
      *
      * @param rar           the input
@@ -306,7 +306,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * @throws IOException   if an IO-error occurs.
      * @throws DviException  if a DVI-error occurs.
      * @throws FontException if a font-error occurs.
-     * @throws ConfigurationException from the config systen.
+     * @throws ConfigurationException from the config system.
      */
     public Element readNextElement(RandomAccessR rar) throws IOException,
             DviException, FontException, ConfigurationException {
@@ -399,8 +399,8 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
-     * Returns the font from the fontmap.
-     * @return Returns the font from the fontmap.
+     * Returns the font from the font map.
+     * @return Returns the font from the font map.
      * @throws DviMissingFontException if the font is not found.
      */
     private Font getFont() throws DviMissingFontException {
@@ -408,7 +408,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
         if (val.getF() == -1) {
             return null;
         }
-        Font font = (Font) fontmap.get(new Integer(val.getF()));
+        Font font = fontmap.get(new Integer(val.getF()));
         if (font == null) {
             throw new DviMissingFontException(String.valueOf(val.getF()));
         }
@@ -447,7 +447,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
      * Set the BaseFont and Glyph-Info.
      * @param opcode    the opcode (char-id)
      * @param element   the element
-     * @throws DviMissingFontException  if the font is missinbg.
+     * @throws DviMissingFontException  if the font is missing.
      */
     private void setFontGlyphInfo(int opcode, Element element)
             throws DviMissingFontException {
@@ -481,10 +481,10 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
-     * Set the fontmap.
-     * @param fontm The fontmap to set.
+     * Set the font map.
+     * @param fontm The font map to set.
      */
-    public void setFontmap(Map fontm) {
+    public void setFontmap(Map<Integer, Font> fontm) {
 
         fontmap = fontm;
     }
@@ -526,7 +526,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
             FontException, ConfigurationException {
 
         Integer key = new Integer(val.getF());
-        Font f = (Font) fontmap.get(key);
+        Font f = fontmap.get(key);
         if (f == null) {
             throw new DviFontNotFoundException(command.getName());
         }
@@ -587,7 +587,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
         if (parentstack.empty()) {
             throw new DviBopEopException();
         }
-        parent = (Element) parentstack.pop();
+        parent = parentstack.pop();
 
     }
 
@@ -701,7 +701,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
         if (parentstack.empty()) {
             throw new DviBopEopException();
         }
-        parent = (Element) parentstack.pop();
+        parent = parentstack.pop();
 
         Element element = createElement(command);
         element.setAttribute("q", String.valueOf(command.getPointer()));
@@ -907,7 +907,7 @@ public class DviXml implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
-     * Create the element from a dvicommand.
+     * Create the element from a dvi command.
      * @param command   the command
      * @return Returns the element.
      */

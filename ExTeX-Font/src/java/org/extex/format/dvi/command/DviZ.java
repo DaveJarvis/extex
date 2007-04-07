@@ -87,6 +87,8 @@ public class DviZ extends DviCommand {
     private static final int Z0 = 166;
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviCommand#getName()
      */
     public String getName() {

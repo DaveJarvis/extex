@@ -128,6 +128,8 @@ public class DviChar extends DviCommand {
     private static final int MAX_PUT = 136;
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.format.dvi.command.DviCommand#getName()
      */
     public String getName() {

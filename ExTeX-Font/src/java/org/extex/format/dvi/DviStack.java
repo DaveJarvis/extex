@@ -33,14 +33,14 @@ public class DviStack {
     /**
      * the stack
      */
-    private Stack stack;
+    private Stack<DviValues> stack;
 
     /**
      * Create a new object
      */
     public DviStack() {
 
-        stack = new Stack();
+        stack = new Stack<DviValues>();
 
     }
 
@@ -60,7 +60,7 @@ public class DviStack {
      */
     public DviValues pop() {
 
-        return (DviValues) stack.pop();
+        return stack.pop();
     }
 
     /**
@@ -70,7 +70,7 @@ public class DviStack {
      */
     public DviValues push(DviValues item) {
 
-        return (DviValues) stack.push(new DviValues(item));
+        return stack.push(new DviValues(item));
     }
 
     /**

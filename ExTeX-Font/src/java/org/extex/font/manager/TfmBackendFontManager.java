@@ -33,7 +33,7 @@ import org.extex.font.FontKey;
 
 /**
  * Backend font manager for a tfm font.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -42,10 +42,10 @@ public class TfmBackendFontManager implements BackendFontManager {
     /**
      * The font list.
      */
-    private SortedMap fontList;
+    private SortedMap<FontKey, Info> fontList;
 
     /**
-     * The backend character.
+     * The back-end character.
      */
     private BackendCharacter recognizedCharcterId;
 
@@ -65,10 +65,12 @@ public class TfmBackendFontManager implements BackendFontManager {
     public TfmBackendFontManager() {
 
         super();
-        fontList = new TreeMap();
+        fontList = new TreeMap<FontKey, Info>();
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.BackendFontManager#getRecognizedCharId()
      */
     public BackendCharacter getRecognizedCharId() {
@@ -77,6 +79,8 @@ public class TfmBackendFontManager implements BackendFontManager {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.BackendFontManager#getRecognizedFont()
      */
     public BackendFont getRecognizedFont() {
@@ -85,6 +89,8 @@ public class TfmBackendFontManager implements BackendFontManager {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.BackendFontManager#isNewRecongnizedFont()
      */
     public boolean isNewRecongnizedFont() {
@@ -93,16 +99,21 @@ public class TfmBackendFontManager implements BackendFontManager {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.BackendFontManager#iterate()
      */
-    public Iterator iterate() {
+    public Iterator<BackendFont> iterate() {
 
         // TODO mgn: iterate unimplemented
         return null;
     }
 
     /**
-     * @see org.extex.font.BackendFontManager#recognize(org.extex.font.FontKey, org.extex.core.UnicodeChar)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFontManager#recognize(org.extex.font.FontKey,
+     *      org.extex.core.UnicodeChar)
      */
     public boolean recognize(FontKey fontKey, UnicodeChar uc) {
 
@@ -112,7 +123,7 @@ public class TfmBackendFontManager implements BackendFontManager {
         if (uc == null) {
             throw new IllegalArgumentException("unicodechar");
         }
-        Info info = (Info) fontList.get(fontKey);
+        Info info = fontList.get(fontKey);
 
         if (info != null) {
             newRecongnizedFont = false;
@@ -127,7 +138,7 @@ public class TfmBackendFontManager implements BackendFontManager {
     }
 
     /**
-     * Class for a backend character.
+     * Class for a back-end character.
      */
     private class BackendCharacterImpl implements BackendCharacter {
 
@@ -138,8 +149,8 @@ public class TfmBackendFontManager implements BackendFontManager {
 
         /**
          * Creates a new object.
-         *
-         * @param uc    the Unicode char.
+         * 
+         * @param uc the Unicode char.
          */
         public BackendCharacterImpl(UnicodeChar uc) {
 
@@ -147,6 +158,8 @@ public class TfmBackendFontManager implements BackendFontManager {
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.font.BackendCharacter#getId()
          */
         public int getId() {
@@ -165,6 +178,8 @@ public class TfmBackendFontManager implements BackendFontManager {
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.font.BackendCharacter#getName()
          */
         public String getName() {
@@ -180,9 +195,9 @@ public class TfmBackendFontManager implements BackendFontManager {
     private class Info {
 
         /**
-         * Returns the backend font.
-         *
-         * @return the backend font.
+         * Returns the back-end font.
+         * 
+         * @return the back-end font.
          */
         public BackendFont getFont() {
 
@@ -193,6 +208,8 @@ public class TfmBackendFontManager implements BackendFontManager {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.BackendFontManager#reset()
      */
     public void reset() {
@@ -202,16 +219,18 @@ public class TfmBackendFontManager implements BackendFontManager {
     }
 
     /**
-     * The backend font factory.
+     * The back-end font factory.
      */
     private BackendFontFactory factory;
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.BackendFontManager#setBackendFontFactory(org.extex.font.BackendFontFactory)
      */
-    public void setBackendFontFactory(BackendFontFactory factory) {
+    public void setBackendFontFactory(BackendFontFactory f) {
 
-        this.factory = factory;
+        this.factory = f;
 
     }
 

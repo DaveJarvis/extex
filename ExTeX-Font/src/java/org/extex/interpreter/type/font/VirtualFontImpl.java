@@ -49,6 +49,8 @@ public class VirtualFontImpl implements VirtualFount {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.type.VirtualFount#getVirtualCharNode(
      *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
@@ -116,7 +118,7 @@ public class VirtualFontImpl implements VirtualFount {
 //        cnode.setDepth(vglyph.getDepth());
 //        cnode.setWidth(vglyph.getWidth());
 // mgn: umbauen
-        return null;// cnode;
+        return null; // cnode;
     }
 
 //    /**
