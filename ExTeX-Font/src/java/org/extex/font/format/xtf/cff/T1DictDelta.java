@@ -26,18 +26,17 @@ import org.extex.util.xml.XMLStreamWriter;
 
 /**
  * Type 1 dict delta.
- *
+ * 
  * <p>
- * The length of array or delta types is determined by counting
- * the operands preceding the operator. The second and subsequent
- * numbers in a delta are encoded as the difference between
- * successive values. For example, an array a0, a1, ...,
- * an would be encoded as: a0 (a1-a0) (a2-a1) ..., (an-a(n-1)).
+ * The length of array or delta types is determined by counting the operands
+ * preceding the operator. The second and subsequent numbers in a delta are
+ * encoded as the difference between successive values. For example, an array
+ * a0, a1, ..., an would be encoded as: a0 (a1-a0) (a2-a1) ..., (an-a(n-1)).
  * </p>
  * <p>
  * For calculation, you must use a0 (a1+a0) (a2+a1) ..., (an+a(n-1))
  * </p>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -55,12 +54,13 @@ public abstract class T1DictDelta extends T1DictKey {
 
     /**
      * Create a new object.
-     *
+     * 
      * @param stack the stack
-     * @param id    the operator-id for the value
+     * @param id the operator-id for the value
      * @throws IOException if an IO.error occurs.
      */
-    protected T1DictDelta(List stack, short[] id) throws IOException {
+    protected T1DictDelta(List<T2Number> stack, short[] id)
+            throws IOException {
 
         super();
         if (stack.size() < 1) {
@@ -73,7 +73,7 @@ public abstract class T1DictDelta extends T1DictKey {
         // a0 (a1-a0) (a2-a1) ..., (an-a(n-1))
         int old = 0;
         for (int i = 0; i < stack.size(); i++) {
-            T2Number number = (T2Number) stack.get(i);
+            T2Number number = stack.get(i);
             int act = number.getInteger();
             old = act + old;
             value[i] = new Integer(old);
@@ -81,6 +81,8 @@ public abstract class T1DictDelta extends T1DictKey {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
      */
     public short[] getBytes() {
@@ -89,6 +91,8 @@ public abstract class T1DictDelta extends T1DictKey {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.cff.T2Operator#getValue()
      */
     public Object getValue() {
@@ -97,7 +101,8 @@ public abstract class T1DictDelta extends T1DictKey {
     }
 
     /**
-     * Check, if the objekt is a array.
+     * Check, if the object is a array.
+     * 
      * @return Returns <code>true</code>, if the object is a array.
      */
     public boolean isArray() {
@@ -106,6 +111,8 @@ public abstract class T1DictDelta extends T1DictKey {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see java.lang.Object#toString()
      */
     public String toString() {
@@ -118,6 +125,8 @@ public abstract class T1DictDelta extends T1DictKey {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */

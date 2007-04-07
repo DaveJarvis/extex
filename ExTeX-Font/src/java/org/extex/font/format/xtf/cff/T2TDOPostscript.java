@@ -37,12 +37,14 @@ public class T2TDOPostscript extends T2TDOSID {
      * @param stack the stack
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOPostscript(List stack) throws IOException {
+    public T2TDOPostscript(List<T2Number> stack) throws IOException {
 
         super(stack, new short[]{ESCAPE_BYTE, POSTSCRIPT});
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T2Operator#getName()
      */
     public String getName() {

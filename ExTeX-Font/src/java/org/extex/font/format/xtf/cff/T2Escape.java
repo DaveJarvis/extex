@@ -42,6 +42,8 @@ public class T2Escape extends T2CharString {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T2CharString#isEscape()
      */
     public boolean isEscape() {
@@ -50,6 +52,8 @@ public class T2Escape extends T2CharString {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
      */
     public short[] getBytes() {
@@ -58,6 +62,8 @@ public class T2Escape extends T2CharString {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T2CharString#init(
      *      org.extex.util.file.random.RandomAccessR,
      *      org.extex.font.format.xtf.OtfTableCFF, int)
@@ -65,5 +71,7 @@ public class T2Escape extends T2CharString {
     public void init(RandomAccessR rar, OtfTableCFF cff,
             int baseoffset) throws IOException {
 
+        //
     }
+
 }

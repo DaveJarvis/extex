@@ -37,12 +37,14 @@ public class T2TDOFontBBox extends T2TDOArray {
      * @param stack the stack
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOFontBBox(List stack) throws IOException {
+    public T2TDOFontBBox(List<T2Number> stack) throws IOException {
 
         super(stack, new short[]{FONTBBOX});
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T2Operator#getName()
      */
     public String getName() {

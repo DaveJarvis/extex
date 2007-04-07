@@ -38,6 +38,7 @@ public final class T2StandardStrings {
      */
     private T2StandardStrings() {
 
+        //
     }
 
     /**
@@ -461,7 +462,7 @@ public final class T2StandardStrings {
     /**
      * The map for the names.
      */
-    private static Map names = null;
+    private static Map<String, Integer> names = null;
 
     /**
      * Returns the SID for a StandardString or -1 if not found.
@@ -477,7 +478,7 @@ public final class T2StandardStrings {
             }
         }
 
-        Integer ii = (Integer) names.get(name);
+        Integer ii = names.get(name);
         if (ii != null) {
             return ii.intValue();
         }

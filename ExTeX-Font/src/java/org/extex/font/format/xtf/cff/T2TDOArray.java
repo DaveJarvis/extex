@@ -50,7 +50,7 @@ public abstract class T2TDOArray extends T2TopDICTOperator {
      * @param id    the operator-id for the value
      * @throws IOException if an IO.error occurs.
      */
-    protected T2TDOArray(List stack, short[] id) throws IOException {
+    protected T2TDOArray(List<T2Number> stack, short[] id) throws IOException {
 
         super();
         if (stack.size() < 1) {
@@ -61,11 +61,13 @@ public abstract class T2TDOArray extends T2TopDICTOperator {
 
         value = new T2Number[stack.size()];
         for (int i = 0; i < stack.size(); i++) {
-            value[i] = (T2Number) stack.get(i);
+            value[i] = stack.get(i);
         }
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
      */
     public short[] getBytes() {
@@ -74,6 +76,8 @@ public abstract class T2TDOArray extends T2TopDICTOperator {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T2Operator#getValue()
      */
     public Object getValue() {
@@ -91,6 +95,8 @@ public abstract class T2TDOArray extends T2TopDICTOperator {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {
@@ -103,6 +109,8 @@ public abstract class T2TDOArray extends T2TopDICTOperator {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */

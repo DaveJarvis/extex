@@ -37,12 +37,14 @@ public class T2TDOXUID extends T2TDOArray {
      * @param stack the stack
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOXUID(List stack) throws IOException {
+    public T2TDOXUID(List<T2Number> stack) throws IOException {
 
         super(stack, new short[]{XUID});
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T2Operator#getName()
      */
     public String getName() {

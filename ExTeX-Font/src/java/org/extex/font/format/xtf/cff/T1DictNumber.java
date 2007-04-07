@@ -39,14 +39,14 @@ public abstract class T1DictNumber extends T1DictKey {
      * @param id    the operator-id for the value
      * @throws IOException if an IO-error occurs.
      */
-    protected T1DictNumber(List stack, short[] id)
+    protected T1DictNumber(List<T2Number> stack, short[] id)
             throws IOException {
 
         super();
         if (stack.size() < 1) {
             throw new T2MissingNumberException();
         }
-        value = ((T2Number) stack.get(0));
+        value = stack.get(0);
 
         bytes = convertStackaddID(stack, id);
 
@@ -63,6 +63,8 @@ public abstract class T1DictNumber extends T1DictKey {
     private T2Number value;
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
      */
     public short[] getBytes() {
@@ -71,7 +73,7 @@ public abstract class T1DictNumber extends T1DictKey {
     }
 
     /**
-     * Check, if the objekt is a integer.
+     * Check, if the object is a integer.
      * @return Returns <code>true</code>, if the object is a integer.
      */
     public boolean isInteger() {
@@ -80,7 +82,7 @@ public abstract class T1DictNumber extends T1DictKey {
     }
 
     /**
-     * Check, if the objekt is a double.
+     * Check, if the object is a double.
      * @return Returns <code>true</code>, if the object is a double.
      */
     public boolean isDouble() {
@@ -89,7 +91,8 @@ public abstract class T1DictNumber extends T1DictKey {
     }
 
     /**
-     * @see org.extex.font.type.ttf.cff.T2Number#getDouble()
+     * TODO mgn
+     * @return ...
      */
     public double getDouble() {
 
@@ -97,7 +100,8 @@ public abstract class T1DictNumber extends T1DictKey {
     }
 
     /**
-     * @see org.extex.font.type.ttf.cff.T2Number#getInteger()
+     * TODO mgn
+     * @return ...
      */
     public int getInteger() {
 
@@ -105,6 +109,8 @@ public abstract class T1DictNumber extends T1DictKey {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {
@@ -113,7 +119,9 @@ public abstract class T1DictNumber extends T1DictKey {
     }
 
     /**
-     * @see org.extex.font.format.xtf.cff.T2Operator#getValue()
+     * {@inheritDoc}
+     *
+     * @see org.extex.font.format.xtf.cff.T1DictKey#getValue()
      */
     public Object getValue() {
 
@@ -121,6 +129,8 @@ public abstract class T1DictNumber extends T1DictKey {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */

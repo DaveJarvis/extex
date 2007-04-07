@@ -36,12 +36,14 @@ public class T1BlueShift extends T1DictNumber {
      * @param stack the stack
      * @throws IOException if an IO.error occurs.
      */
-    public T1BlueShift(List stack) throws IOException {
+    public T1BlueShift(List<T2Number> stack) throws IOException {
 
         super(stack, new short[]{BlueShift});
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T1DictKey#getName()
      */
     public String getName() {

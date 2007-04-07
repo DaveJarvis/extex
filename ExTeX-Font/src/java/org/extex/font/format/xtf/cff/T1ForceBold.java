@@ -36,12 +36,14 @@ public class T1ForceBold extends T1DictBoolean {
      * @param stack the stack
      * @throws IOException if an IO.error occurs.
      */
-    public T1ForceBold(List stack) throws IOException {
+    public T1ForceBold(List<T2Number> stack) throws IOException {
 
         super(stack, new short[]{ForceBold});
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T1DictKey#getName()
      */
     public String getName() {

@@ -25,26 +25,20 @@ import org.extex.util.file.random.RandomAccessR;
 
 /**
  * Double.
- *
+ * 
  * <p>
- * A real number operand is provided in addition to integer operands.
- * This operand begins with a byte value of 30 followed by a variable-length
- * sequence of bytes. Each byte is composed of two 4-bit nibbles
- * as defined in Table. The first nibble of a pair is stored in the
- * most significant 4 bits of a byte and the second nibble of a 
- * pair is stored in the least significant 4 bits of a byte.
+ * A real number operand is provided in addition to integer operands. This
+ * operand begins with a byte value of 30 followed by a variable-length sequence
+ * of bytes. Each byte is composed of two 4-bit nibbles as defined in Table. The
+ * first nibble of a pair is stored in the most significant 4 bits of a byte and
+ * the second nibble of a pair is stored in the least significant 4 bits of a
+ * byte.
  * </p>
  * <p>
- * Nibble    Represents
- * 0 - 9     0 - 9
- * a         . (decimal point)
- * b         E
- * c         E-
- * d         reserved
- * e         - (minus)
- * f         end of number
+ * Nibble Represents 0 - 9 0 - 9 a . (decimal point) b E c E- d reserved e -
+ * (minus) f end of number
  * </p>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -58,9 +52,9 @@ public class T2Double extends T2Number {
 
     /**
      * Create a new object.
-     *
-     * @param rar   the input
-     * @param b0    the b0
+     * 
+     * @param rar the input
+     * @param b0 the b0
      * @throws IOException if an IO-error occurs.
      */
     T2Double(RandomAccessR rar, int b0) throws IOException {
@@ -75,23 +69,23 @@ public class T2Double extends T2Number {
                 buf.append(String.valueOf(data[i]));
             } else {
                 switch (data[i]) {
-                    case 10 :
+                    case 10:
                         buf.append(".");
                         break;
-                    case 11 :
+                    case 11:
                         buf.append("E");
                         break;
-                    case 12 :
+                    case 12:
                         buf.append("E-");
                         break;
-                    case 13 :
+                    case 13:
                         break;
-                    case 14 :
+                    case 14:
                         buf.append("-");
                         break;
-                    case 15 :
+                    case 15:
                         break;
-                    default :
+                    default:
                         break;
                 }
             }
@@ -127,8 +121,8 @@ public class T2Double extends T2Number {
 
     /**
      * Read all nibbles until 0xf.
-     *
-     * @param rar       the input
+     * 
+     * @param rar the input
      * @return Return the nibbles
      * @throws IOException if an IO-error occurs.
      */
@@ -163,6 +157,8 @@ public class T2Double extends T2Number {
     private short[] bytes;
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
      */
     public short[] getBytes() {
@@ -176,6 +172,8 @@ public class T2Double extends T2Number {
     private double value;
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.cff.T2CharString#isDouble()
      */
     public boolean isDouble() {
@@ -184,7 +182,9 @@ public class T2Double extends T2Number {
     }
 
     /**
-     * @see org.extex.font.type.ttf.cff.T2Number#getDouble()
+     * {@inheritDoc}
+     *
+     * @see org.extex.font.format.xtf.cff.T2Number#getDouble()
      */
     public double getDouble() {
 
@@ -192,7 +192,9 @@ public class T2Double extends T2Number {
     }
 
     /**
-     * @see org.extex.font.type.ttf.cff.T2Number#getInteger()
+     * {@inheritDoc}
+     *
+     * @see org.extex.font.format.xtf.cff.T2Number#getInteger()
      */
     public int getInteger() {
 
@@ -200,6 +202,8 @@ public class T2Double extends T2Number {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see java.lang.Object#toString()
      */
     public String toString() {

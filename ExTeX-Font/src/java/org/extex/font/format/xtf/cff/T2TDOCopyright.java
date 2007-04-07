@@ -37,12 +37,14 @@ public class T2TDOCopyright extends T2TDOSID {
      * @param stack the stack
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOCopyright(List stack) throws IOException {
+    public T2TDOCopyright(List<T2Number> stack) throws IOException {
 
         super(stack, new short[]{ESCAPE_BYTE, COPYRIGHT});
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T2Operator#getName()
      */
     public String getName() {

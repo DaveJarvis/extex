@@ -37,12 +37,14 @@ public class T2TDOPaintType extends T2TDONumber {
      * @param stack the stack
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOPaintType(List stack) throws IOException {
+    public T2TDOPaintType(List<T2Number> stack) throws IOException {
 
         super(stack, new short[]{ESCAPE_BYTE, PAINTTYPE});
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T2Operator#getName()
      */
     public String getName() {

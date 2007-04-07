@@ -28,7 +28,7 @@ import org.extex.util.xml.XMLStreamWriter;
 
 /**
  * Abstract class for all SID-values.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -52,23 +52,25 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
 
     /**
      * Create a new object.
-     *
+     * 
      * @param stack the stack
-     * @param id    the operator-id for the value
+     * @param id the operator-id for the value
      * @throws IOException if an IO-error occurs.
      */
-    protected T2TDOSID(List stack, short[] id) throws IOException {
+    protected T2TDOSID(List<T2Number> stack, short[] id) throws IOException {
 
         super();
 
         if (stack.size() < 1) {
             throw new T2MissingNumberException();
         }
-        value = ((T2Number) stack.get(0)).getInteger();
+        value = stack.get(0).getInteger();
         bytes = convertStackaddID(stack, id);
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
      */
     public short[] getBytes() {
@@ -78,6 +80,7 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
 
     /**
      * Returns the SID.
+     * 
      * @return Returns the SID.
      */
     public int getSID() {
@@ -86,6 +89,8 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.cff.T2Operator#getValue()
      */
     public Object getValue() {
@@ -94,17 +99,21 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.cff.T2Operator#init(
      *      org.extex.util.file.random.RandomAccessR,
      *      org.extex.font.format.xtf.OtfTableCFF, int)
      */
-    public void init(RandomAccessR rar, OtfTableCFF cff,
-            int baseoffset) throws IOException {
+    public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset)
+            throws IOException {
 
         sidstring = cff.getStringIndex(getSID());
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see java.lang.Object#toString()
      */
     public String toString() {
@@ -113,6 +122,8 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */

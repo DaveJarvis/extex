@@ -37,12 +37,14 @@ public class T2TDOItalicAngle extends T2TDONumber {
      * @param stack the stack
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOItalicAngle(List stack) throws IOException {
+    public T2TDOItalicAngle(List<T2Number> stack) throws IOException {
 
         super(stack, new short[]{ESCAPE_BYTE, ITALICANGLE});
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T2Operator#getName()
      */
     public String getName() {

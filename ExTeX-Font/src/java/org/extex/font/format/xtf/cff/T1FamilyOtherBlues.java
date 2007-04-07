@@ -36,12 +36,14 @@ public class T1FamilyOtherBlues extends T1DictDelta {
      * @param stack the stack
      * @throws IOException if an IO.error occurs.
      */
-    public T1FamilyOtherBlues(List stack) throws IOException {
+    public T1FamilyOtherBlues(List<T2Number> stack) throws IOException {
 
         super(stack, new short[]{FamilyOtherBlues});
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T1DictKey#getName()
      */
     public String getName() {

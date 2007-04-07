@@ -79,6 +79,8 @@ public abstract class T2TopDICTOperator extends T2Operator {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T2CharString#isTopDICTOperator()
      */
     public boolean isTopDICTOperator() {
@@ -211,7 +213,7 @@ public abstract class T2TopDICTOperator extends T2Operator {
     public static T2Operator newInstance(RandomAccessR rar)
             throws IOException {
 
-        List stack = new ArrayList();
+        List<T2Number> stack = new ArrayList<T2Number>();
 
         while (true) {
 

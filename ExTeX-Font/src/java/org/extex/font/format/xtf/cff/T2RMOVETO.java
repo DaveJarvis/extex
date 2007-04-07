@@ -25,19 +25,17 @@ import org.extex.util.xml.XMLStreamWriter;
 
 /**
  * rmoveto |- dx1 dy1 rmoveto (21) |
- *
+ * 
  * <p>
- * moves the current point to a position at the
- * relative coordinates (dx1, dy1).
+ * moves the current point to a position at the relative coordinates (dx1, dy1).
  * </p>
  * <p>
- * Note: The first stack-clearing operator, which must be one of hstem,
- * hstemhm, vstem, vstemhm, cntrmask, hintmask, hmoveto, vmoveto,
- * rmoveto, or endchar, takes an additional argument the width
- * (as described earlier), which may be expressed as zero or one
- * numeric argument.
+ * Note: The first stack-clearing operator, which must be one of hstem, hstemhm,
+ * vstem, vstemhm, cntrmask, hintmask, hmoveto, vmoveto, rmoveto, or endchar,
+ * takes an additional argument the width (as described earlier), which may be
+ * expressed as zero or one numeric argument.
  * </p>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -45,7 +43,7 @@ import org.extex.util.xml.XMLStreamWriter;
 public class T2RMOVETO extends T2PathConstruction {
 
     /**
-     * Create a new obejct.
+     * Create a new object.
      */
     public T2RMOVETO() {
 
@@ -53,6 +51,8 @@ public class T2RMOVETO extends T2PathConstruction {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
      */
     public short[] getBytes() {
@@ -61,6 +61,8 @@ public class T2RMOVETO extends T2PathConstruction {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.cff.T2Operator#getName()
      */
     public String getName() {
@@ -69,6 +71,8 @@ public class T2RMOVETO extends T2PathConstruction {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.cff.T2Operator#getValue()
      */
     public Object getValue() {
@@ -78,11 +82,14 @@ public class T2RMOVETO extends T2PathConstruction {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
-        // MGN incomplete
+        // TODO mgn incomplete
     }
+
 }

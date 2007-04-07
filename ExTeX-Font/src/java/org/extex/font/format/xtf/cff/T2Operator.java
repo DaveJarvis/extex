@@ -28,7 +28,7 @@ import org.extex.util.file.random.RandomAccessR;
 
 /**
  * Operator.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -52,90 +52,91 @@ public abstract class T2Operator extends T2CharString
 
     /**
      * Create a new instance.
-     *
-     * @param rar       the input
+     * 
+     * @param rar the input
      * @return Returns the new T2Operatorr object.
      * @throws IOException if an IO-error occurs.
      */
-    public static T2Operator newInstance(RandomAccessR rar)
-            throws IOException {
+    public static T2Operator newInstance(RandomAccessR rar) throws IOException {
 
         int b0 = rar.readUnsignedByte();
 
         if (b0 >= 0 && b0 <= 31) {
 
             switch (b0) {
-                case 0 :
+                case 0:
                     break;
-                case 1 :
+                case 1:
                     break;
-                case 2 :
+                case 2:
                     break;
-                case 3 :
+                case 3:
                     break;
-                case 4 :
+                case 4:
                     break;
-                case 5 :
+                case 5:
                     break;
-                case 6 :
+                case 6:
                     break;
-                case 7 :
+                case 7:
                     break;
-                case 8 :
+                case 8:
                     break;
-                case 9 :
+                case 9:
                     break;
-                case 10 :
+                case 10:
                     break;
-                case 11 :
+                case 11:
                     break;
-                case 12 :
+                case 12:
                     break;
-                case 13 :
+                case 13:
                     break;
-                case 14 :
+                case 14:
                     break;
-                case 15 :
+                case 15:
                     break;
-                case 16 :
+                case 16:
                     break;
-                case 17 :
+                case 17:
                     break;
-                case 18 :
+                case 18:
                     break;
-                case 19 :
+                case 19:
                     break;
-                case 20 :
+                case 20:
                     break;
-                case RMOVETO :
+                case RMOVETO:
                     return new T2RMOVETO();
-                case 22 :
+                case 22:
                     break;
-                case 23 :
+                case 23:
                     break;
-                case 24 :
+                case 24:
                     break;
-                case 25 :
+                case 25:
                     break;
-                case 26 :
+                case 26:
                     break;
-                case 27 :
+                case 27:
                     break;
-                case 29 :
+                case 29:
                     break;
-                case 30 :
+                case 30:
                     break;
-                case 31 :
+                case 31:
                     break;
-
+                default:
+                    // fall through
             }
-
         }
 
         throw new T2NotAOperatorException();
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T2CharString#isOperator()
      */
     public boolean isOperator() {
@@ -145,29 +146,33 @@ public abstract class T2Operator extends T2CharString
 
     /**
      * Return the name of the operator.
+     * 
      * @return Return the name of the operator.
      */
     public abstract String getName();
 
     /**
      * Returns the value of the operator.
+     * 
      * @return Returns the value of the operator.
      */
     public abstract Object getValue();
 
     /**
      * Convert a stack (a List) into an array and add at the top the id-array.
-     * @param stack     the stack
-     * @param id        the id-array
+     * 
+     * @param stack the stack
+     * @param id the id-array
      * @return Return the byte-array
      */
-    protected short[] convertStackaddID(List stack, short[] id) {
+    protected short[] convertStackaddID(List<? extends T2CharString> stack,
+            short[] id) {
 
         // calculate size
         int size = id.length;
 
         for (int i = 0; i < stack.size(); i++) {
-            T2CharString obj = (T2CharString) stack.get(i);
+            T2CharString obj = stack.get(i);
             short[] tmp = obj.getBytes();
             if (tmp != null) {
                 size += tmp.length;
@@ -180,7 +185,7 @@ public abstract class T2Operator extends T2CharString
 
         int pos = id.length;
         for (int i = 0; i < stack.size(); i++) {
-            T2CharString obj = (T2CharString) stack.get(i);
+            T2CharString obj = stack.get(i);
             short[] tmp = obj.getBytes();
             if (tmp != null) {
                 System.arraycopy(obj.getBytes(), 0, bytes, pos, tmp.length);
@@ -191,12 +196,16 @@ public abstract class T2Operator extends T2CharString
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.cff.T2CharString#init(
      *      org.extex.util.file.random.RandomAccessR,
-     *      org.extex.font.format.xtf.OtfTableCFF)
+     *      org.extex.font.format.xtf.OtfTableCFF, int)
      */
-    public void init(RandomAccessR rar, OtfTableCFF cff,
-            int baseoffset) throws IOException {
+    public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset)
+            throws IOException {
 
+        //
     }
+
 }

@@ -26,7 +26,7 @@ import org.extex.util.xml.XMLStreamWriter;
 
 /**
  * Abstract class for all boolean-values.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -35,20 +35,19 @@ public abstract class T2TDOBoolean extends T2TopDICTOperator {
 
     /**
      * Create a new object.
-     *
+     * 
      * @param stack the stack
-     * @param id    the operator-id for the value
+     * @param id the operator-id for the value
      * @throws IOException if an IO-error occurs.
      */
-    protected T2TDOBoolean(List stack, short[] id)
-            throws IOException {
+    protected T2TDOBoolean(List<T2Number> stack, short[] id) throws IOException {
 
         super();
 
         if (stack.size() < 1) {
             throw new T2MissingNumberException();
         }
-        int v = ((T2Number) stack.get(0)).getInteger();
+        int v = stack.get(0).getInteger();
         bytes = convertStackaddID(stack, id);
 
         if (v == 0) {
@@ -64,7 +63,8 @@ public abstract class T2TDOBoolean extends T2TopDICTOperator {
     private short[] bytes;
 
     /**
-     * Check, if the objekt is a boolean.
+     * Check, if the object is a boolean.
+     * 
      * @return Returns <code>true</code>, if the object is a boolean.
      */
     public boolean isBoolean() {
@@ -78,6 +78,8 @@ public abstract class T2TDOBoolean extends T2TopDICTOperator {
     private boolean value;
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
      */
     public short[] getBytes() {
@@ -86,6 +88,8 @@ public abstract class T2TDOBoolean extends T2TopDICTOperator {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {
@@ -95,6 +99,7 @@ public abstract class T2TDOBoolean extends T2TopDICTOperator {
 
     /**
      * Returns the value.
+     * 
      * @return Returns the value.
      */
     public boolean isValue() {
@@ -103,6 +108,8 @@ public abstract class T2TDOBoolean extends T2TopDICTOperator {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.cff.T2Operator#getValue()
      */
     public Object getValue() {
@@ -111,6 +118,8 @@ public abstract class T2TDOBoolean extends T2TopDICTOperator {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */

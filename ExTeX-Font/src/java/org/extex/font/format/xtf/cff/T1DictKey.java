@@ -29,7 +29,7 @@ import org.extex.util.file.random.RandomAccessR;
 
 /**
  * Type 1 dict keys.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -129,65 +129,64 @@ public abstract class T1DictKey extends T2CharString
 
     /**
      * Create a new instance.
-     *
-     * @param rar       the input
+     * 
+     * @param rar the input
      * @return Returns the new T2Operatorr object.
      * @throws IOException if an IO-error occurs.
      */
-    public static T1DictKey newInstance(RandomAccessR rar)
-            throws IOException {
+    public static T1DictKey newInstance(RandomAccessR rar) throws IOException {
 
-        List stack = new ArrayList();
+        List<T2Number> stack = new ArrayList<T2Number>();
 
         while (true) {
 
             int b = rar.readUnsignedByte();
 
             switch (b) {
-                case BlueValues :
+                case BlueValues:
                     return new T1BlueValues(stack);
-                case OtherBlues :
+                case OtherBlues:
                     return new T1OtherBlues(stack);
-                case FamilyBlues :
+                case FamilyBlues:
                     return new T1FamilyBlues(stack);
-                case FamilyOtherBlues :
+                case FamilyOtherBlues:
                     return new T1FamilyOtherBlues(stack);
-                case StdHW :
+                case StdHW:
                     return new T1StdHW(stack);
-                case StdVW :
+                case StdVW:
                     return new T1StdVW(stack);
-                case ESCAPE_BYTE :
+                case ESCAPE_BYTE:
                     int b1 = rar.readUnsignedByte();
                     switch (b1) {
-                        case BlueScale :
+                        case BlueScale:
                             return new T1BlueScale(stack);
-                        case BlueShift :
+                        case BlueShift:
                             return new T1BlueShift(stack);
-                        case BlueFuzz :
+                        case BlueFuzz:
                             return new T1BlueFuzz(stack);
-                        case StemSnapH :
+                        case StemSnapH:
                             return new T1StemSnapH(stack);
-                        case StemSnapV :
+                        case StemSnapV:
                             return new T1StemSnapV(stack);
-                        case ForceBold :
+                        case ForceBold:
                             return new T1ForceBold(stack);
-                        case LanguageGroup :
+                        case LanguageGroup:
                             return new T1LanguageGroup(stack);
-                        case ExpansionFactor :
+                        case ExpansionFactor:
                             return new T1ExpansionFactor(stack);
-                        case initialRandomSeed :
+                        case initialRandomSeed:
                             return new T1initialRandomSeed(stack);
-                        default :
+                        default:
                             throw new T2NotAOperatorException();
 
                     }
-                case Subrs :
+                case Subrs:
                     return new T1Subrs(stack);
-                case defaultWidthX :
+                case defaultWidthX:
                     return new T1defaultWidthX(stack);
-                case nominalWidthX :
+                case nominalWidthX:
                     return new T1nominalWidthX(stack);
-                default :
+                default:
                     // number
                     T2Number number = T2CharString.readNumber(rar, b);
                     stack.add(number);
@@ -198,17 +197,19 @@ public abstract class T1DictKey extends T2CharString
 
     /**
      * Convert a stack (a List) into an array and add at the top the id-array.
-     * @param stack     the stack
-     * @param id        the id-array
+     * 
+     * @param stack the stack
+     * @param id the id-array
      * @return Return the byte-array
      */
-    protected short[] convertStackaddID(List stack, short[] id) {
+    protected short[] convertStackaddID(List<? extends T2CharString> stack,
+            short[] id) {
 
         // calculate size
         int size = id.length;
 
         for (int i = 0; i < stack.size(); i++) {
-            T2CharString obj = (T2CharString) stack.get(i);
+            T2CharString obj = stack.get(i);
             short[] tmp = obj.getBytes();
             if (tmp != null) {
                 size += tmp.length;
@@ -221,7 +222,7 @@ public abstract class T1DictKey extends T2CharString
 
         int pos = id.length;
         for (int i = 0; i < stack.size(); i++) {
-            T2CharString obj = (T2CharString) stack.get(i);
+            T2CharString obj = stack.get(i);
             short[] tmp = obj.getBytes();
             if (tmp != null) {
                 System.arraycopy(obj.getBytes(), 0, bytes, pos, tmp.length);
@@ -233,23 +234,27 @@ public abstract class T1DictKey extends T2CharString
 
     /**
      * Return the name of the operator.
+     * 
      * @return Return the name of the operator.
      */
     public abstract String getName();
 
     /**
      * Returns the value of the operator.
+     * 
      * @return Returns the value of the operator.
      */
     public abstract Object getValue();
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.cff.T2CharString#init(
      *      org.extex.util.file.random.RandomAccessR,
      *      org.extex.font.format.xtf.OtfTableCFF, int)
      */
-    public void init(RandomAccessR rar, OtfTableCFF cff,
-            int baseoffset) throws IOException {
+    public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset)
+            throws IOException {
 
         // do nothing
 

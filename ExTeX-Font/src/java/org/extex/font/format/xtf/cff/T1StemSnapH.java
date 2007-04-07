@@ -36,12 +36,14 @@ public class T1StemSnapH extends T1DictDelta {
      * @param stack the stack
      * @throws IOException if an IO.error occurs.
      */
-    public T1StemSnapH(List stack) throws IOException {
+    public T1StemSnapH(List<T2Number> stack) throws IOException {
 
         super(stack, new short[]{StemSnapH});
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T1DictKey#getName()
      */
     public String getName() {

@@ -37,12 +37,14 @@ public class T2TDOStrokeWidth extends T2TDONumber {
      * @param stack the stack
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOStrokeWidth(List stack) throws IOException {
+    public T2TDOStrokeWidth(List<T2Number> stack) throws IOException {
 
         super(stack, new short[]{ESCAPE_BYTE, STROKEWIDTH});
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T2Operator#getName()
      */
     public String getName() {

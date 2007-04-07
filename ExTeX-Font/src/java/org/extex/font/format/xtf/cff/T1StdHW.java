@@ -36,12 +36,14 @@ public class T1StdHW extends T1DictNumber {
      * @param stack the stack
      * @throws IOException if an IO.error occurs.
      */
-    public T1StdHW(List stack) throws IOException {
+    public T1StdHW(List<T2Number> stack) throws IOException {
 
         super(stack, new short[]{StdHW});
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T1DictKey#getName()
      */
     public String getName() {

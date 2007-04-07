@@ -34,7 +34,7 @@ public final class T2StandardEncoding {
     /**
      * Standard Encoding
      */
-    public static final String DATA[][] = {{".notdef", "0"}, // 0
+    public static final String[][] DATA = {{".notdef", "0"}, // 0
             {".notdef", "0"}, // 1
             {".notdef", "0"}, // 2
             {".notdef", "0"}, // 3
@@ -333,6 +333,7 @@ public final class T2StandardEncoding {
      */
     private T2StandardEncoding() {
 
+        //
     }
 
     /**

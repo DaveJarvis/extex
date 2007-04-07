@@ -133,6 +133,8 @@ public class T2Integer extends T2Number {
     private short[] bytes;
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
      */
     public short[] getBytes() {
@@ -141,6 +143,8 @@ public class T2Integer extends T2Number {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T2CharString#isInteger()
      */
     public boolean isInteger() {
@@ -149,7 +153,9 @@ public class T2Integer extends T2Number {
     }
 
     /**
-     * @see org.extex.font.type.ttf.cff.T2Number#getDouble()
+     * {@inheritDoc}
+     *
+     * @see org.extex.font.format.xtf.cff.T2Number#getDouble()
      */
     public double getDouble() {
 
@@ -157,7 +163,9 @@ public class T2Integer extends T2Number {
     }
 
     /**
-     * @see org.extex.font.type.ttf.cff.T2Number#getInteger()
+     * {@inheritDoc}
+     *
+     * @see org.extex.font.format.xtf.cff.T2Number#getInteger()
      */
     public int getInteger() {
 
@@ -165,10 +173,13 @@ public class T2Integer extends T2Number {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {
 
         return String.valueOf(value);
     }
+
 }

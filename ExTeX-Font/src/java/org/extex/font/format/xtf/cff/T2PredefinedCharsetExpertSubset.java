@@ -40,7 +40,7 @@ public final class T2PredefinedCharsetExpertSubset {
     /**
      * Predefined Charset (expert subset)
      */
-    public static final String DATA[] = {".notdef", // 0
+    public static final String[] DATA = {".notdef", // 0
             "space", // 1
             "exclam", // 2
             "quotedbl", // 3
@@ -424,7 +424,7 @@ public final class T2PredefinedCharsetExpertSubset {
     /**
      * The map for the names.
      */
-    private static Map names = null;
+    private static Map<String, Integer> names = null;
 
     /**
      * Returns the name or '.notdef' if number out of range.
@@ -447,13 +447,13 @@ public final class T2PredefinedCharsetExpertSubset {
     public static int getSID(String name) {
 
         if (names == null) {
-            names = new HashMap(DATA.length);
+            names = new HashMap<String, Integer>(DATA.length);
             for (int i = 0; i < DATA.length; i++) {
                 String key = DATA[i];
                 names.put(key, new Integer(i));
             }
         }
-        Integer ii = (Integer) names.get(name);
+        Integer ii = names.get(name);
         if (ii != null) {
             return ii.intValue();
         }
@@ -466,6 +466,7 @@ public final class T2PredefinedCharsetExpertSubset {
      */
     private T2PredefinedCharsetExpertSubset() {
 
+        //
     }
 
 }

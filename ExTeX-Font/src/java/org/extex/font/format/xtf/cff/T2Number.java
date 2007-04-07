@@ -131,6 +131,8 @@ public abstract class T2Number extends T2CharString {
     public abstract double getDouble();
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.format.xtf.cff.T2CharString#init(
      *      org.extex.util.file.random.RandomAccessR,
      *      org.extex.font.format.xtf.OtfTableCFF, int)
@@ -138,5 +140,7 @@ public abstract class T2Number extends T2CharString {
     public void init(RandomAccessR rar, OtfTableCFF cff,
             int baseoffset) throws IOException {
 
+        //
     }
+
 }

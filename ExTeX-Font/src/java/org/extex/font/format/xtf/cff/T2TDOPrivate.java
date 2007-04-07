@@ -32,28 +32,16 @@ import org.extex.util.xml.XMLStreamWriter;
 
 /**
  * Private.
- *
- * Private DICT Operators
- * Name              Value      Operand(s)  Default, notes
- * BlueValues        6          delta       -
- * OtherBlues        7          delta       -
- * FamilyBlues       8          delta       -
- * FamilyOtherBlues  9          delta       -
- * BlueScale         12 9       number      - 0.039625
- * BlueShift         12 10      number      7
- * BlueFuzz          12 11      number      1
- * StdHW             10         number      -
- * StdVW             11         number      -
- * StemSnapH         12 12      delta       -
- * StemSnapV         12 13      delta       -
- * ForceBold         12 14      boolean     false
- * LanguageGroup     12 17      number      0
- * ExpansionFactor   12 18      number      0.06
- * initialRandomSeed 12 19      number      0
- * Subrs             19         number      -, Offset (self) to local subrs
- * defaultWidthX     20         number      0, see below
- * nominalWidthX     21         number      0, see below
- *
+ * 
+ * Private DICT Operators Name Value Operand(s) Default, notes BlueValues 6
+ * delta - OtherBlues 7 delta - FamilyBlues 8 delta - FamilyOtherBlues 9 delta -
+ * BlueScale 12 9 number - 0.039625 BlueShift 12 10 number 7 BlueFuzz 12 11
+ * number 1 StdHW 10 number - StdVW 11 number - StemSnapH 12 12 delta -
+ * StemSnapV 12 13 delta - ForceBold 12 14 boolean false LanguageGroup 12 17
+ * number 0 ExpansionFactor 12 18 number 0.06 initialRandomSeed 12 19 number 0
+ * Subrs 19 number -, Offset (self) to local subrs defaultWidthX 20 number 0,
+ * see below nominalWidthX 21 number 0, see below
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -68,7 +56,7 @@ public class T2TDOPrivate extends T2TDOArray {
     /**
      * The hash map.
      */
-    private Map hashValues;
+    private Map<String, T1DictKey> hashValues;
 
     /**
      * The offset.
@@ -82,16 +70,18 @@ public class T2TDOPrivate extends T2TDOArray {
 
     /**
      * Create a new object.
-     *
+     * 
      * @param stack the stack
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOPrivate(List stack) throws IOException {
+    public T2TDOPrivate(List<T2Number> stack) throws IOException {
 
         super(stack, new short[]{PRIVATE});
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.cff.T2Operator#getName()
      */
     public String getName() {
@@ -101,16 +91,18 @@ public class T2TDOPrivate extends T2TDOArray {
 
     /**
      * Returns the dict key for the name.
-     *
-     * @param name  The name of the key.
+     * 
+     * @param name The name of the key.
      * @return Returns the dict key for the name.
      */
     public T1DictKey getT1DictKey(String name) {
 
-        return (T1DictKey) hashValues.get(name.toLowerCase());
+        return hashValues.get(name.toLowerCase());
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.format.xtf.cff.T2Operator#init(
      *      org.extex.util.file.random.RandomAccessR,
      *      org.extex.font.format.xtf.OtfTableCFF, int)
@@ -118,7 +110,7 @@ public class T2TDOPrivate extends T2TDOArray {
     public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset)
             throws IOException {
 
-        hashValues = new HashMap();
+        hashValues = new HashMap<String, T1DictKey>();
 
         T2Number[] val = (T2Number[]) getValue();
         if (val.length >= 1) {
@@ -135,7 +127,7 @@ public class T2TDOPrivate extends T2TDOArray {
             rar.readFully(data);
             RandomAccessInputArray arar = new RandomAccessInputArray(data);
 
-            ArrayList list = new ArrayList();
+            ArrayList<T1DictKey> list = new ArrayList<T1DictKey>();
             try {
                 // read until end of input -> IOException
                 while (true) {
@@ -146,7 +138,7 @@ public class T2TDOPrivate extends T2TDOArray {
             } catch (IOException e) {
                 dictkeys = new T1DictKey[list.size()];
                 for (int i = 0; i < list.size(); i++) {
-                    dictkeys[i] = (T1DictKey) list.get(i);
+                    dictkeys[i] = list.get(i);
                 }
             }
 
@@ -154,6 +146,8 @@ public class T2TDOPrivate extends T2TDOArray {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
