@@ -31,7 +31,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -52,7 +51,7 @@ import de.dante.util.font.AbstractFontUtil;
 
 /**
  * Abstract class for utilities for a afm file.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -103,7 +102,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
     /**
      * The list for the encoding vectors.
      */
-    private ArrayList enclist = new ArrayList();
+    private List<String> enclist = new ArrayList<String>();
 
     /**
      * Create encoding vectors.
@@ -133,19 +132,19 @@ public abstract class AfmUtil extends AbstractFontUtil {
     /**
      * A map for the glyphs.
      */
-    private Map glyphmap;
+    private Map<String, EncGlpyh> glyphmap;
 
     /**
      * Create a new object.
-     *
+     * 
      * @param c The class for the logger.
      * @throws ConfigurationException from the configuration system.
      */
-    protected AfmUtil(Class c) throws ConfigurationException {
+    protected AfmUtil(Class<?> c) throws ConfigurationException {
 
         super(c);
 
-        glyphmap = new TreeMap();
+        glyphmap = new TreeMap<String, EncGlpyh>();
     }
 
     /**
@@ -160,8 +159,8 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * do it.
-     *
-     * @param file  The afm file name.
+     * 
+     * @param file The afm file name.
      * @throws Exception if an error occurs.
      */
     private void doIt(String file) throws Exception {
@@ -201,8 +200,9 @@ public abstract class AfmUtil extends AbstractFontUtil {
         }
 
         if (tomap) {
-            mapout = new BufferedWriter(new FileWriter(outdir + File.separator
-                    + encname + ".map"));
+            mapout =
+                    new BufferedWriter(new FileWriter(outdir + File.separator
+                            + encname + ".map"));
         }
         if (toenc) {
             toEnc();
@@ -214,7 +214,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Print missing glyphs.
-     *
+     * 
      * @throws IOException if an IO-error occurred.
      */
     private void missingGlyph() throws IOException {
@@ -222,9 +222,10 @@ public abstract class AfmUtil extends AbstractFontUtil {
         try {
             AfmEncCheck check = new AfmEncCheck(parser, getFinder());
 
-            BufferedOutputStream out = new BufferedOutputStream(
-                    new FileOutputStream(outdir + File.separator
-                            + parser.getHeader().getFontname() + ".missing"));
+            BufferedOutputStream out =
+                    new BufferedOutputStream(new FileOutputStream(outdir
+                            + File.separator + parser.getHeader().getFontname()
+                            + ".missing"));
             check.printMissingGlyphs(out, enclist);
 
             out.close();
@@ -237,7 +238,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Check the encoding.
-     *
+     * 
      * @throws IOException if an IO-error occurred.
      */
     private void enccheck() throws IOException {
@@ -245,9 +246,10 @@ public abstract class AfmUtil extends AbstractFontUtil {
         try {
             AfmEncCheck check = new AfmEncCheck(parser, getFinder());
 
-            BufferedOutputStream out = new BufferedOutputStream(
-                    new FileOutputStream(outdir + File.separator
-                            + parser.getHeader().getFontname() + ".pdf"));
+            BufferedOutputStream out =
+                    new BufferedOutputStream(new FileOutputStream(outdir
+                            + File.separator + parser.getHeader().getFontname()
+                            + ".pdf"));
             check.createPdfTable(out, enclist);
 
             out.close();
@@ -259,19 +261,22 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Create encoding vectors.
+     * 
      * @throws IOException if an IO-error occurred.
      * @throws ConfigurationException from the configuration system.
      * @throws FontException if a font error occurred.
      */
-    private void toEnc() throws IOException, ConfigurationException,
-            FontException {
+    private void toEnc()
+            throws IOException,
+                ConfigurationException,
+                FontException {
 
         // read all glyphs from the encoding vectors
-        ArrayList readenc = new ArrayList();
+        List<String> readenc = new ArrayList<String>();
         readAllGlyphName(readenc);
 
-        // get the glpyh names form the afm file.
-        ArrayList names = readGlyphNames();
+        // get the glyph names form the afm file.
+        List<String> names = readGlyphNames();
         Collections.sort(names);
 
         // remove all names from readenc in names
@@ -285,17 +290,19 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Create the include file for the package.
+     * 
      * @throws IOException if an IO-error occurred.
      */
     private void createIncSty() throws IOException {
 
-        BufferedWriter out = new BufferedWriter(new FileWriter(outdir
-                + File.separator + removeExtensions(afmfile) + ".inc"));
+        BufferedWriter out =
+                new BufferedWriter(new FileWriter(outdir + File.separator
+                        + removeExtensions(afmfile) + ".inc"));
 
-        Iterator it = glyphmap.keySet().iterator();
+        Iterator<String> it = glyphmap.keySet().iterator();
         while (it.hasNext()) {
-            String key = (String) it.next();
-            EncGlpyh eg = (EncGlpyh) glyphmap.get(key);
+            String key = it.next();
+            EncGlpyh eg = glyphmap.get(key);
             out.write(eg.toString());
             out.newLine();
         }
@@ -304,10 +311,11 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Create the encoding files.
-     * @param names     The names for the files.
+     * 
+     * @param names The names for the files.
      * @throws IOException if a IO-error occurred.
      */
-    private void createEncFiles(ArrayList names) throws IOException {
+    private void createEncFiles(List<String> names) throws IOException {
 
         int cnt = 0;
         int filecnt = 0;
@@ -336,13 +344,13 @@ public abstract class AfmUtil extends AbstractFontUtil {
                     mapout.write(" ");
                     mapout.write("<");
                     mapout.write(afmfile.getName().replaceAll(
-                            "\\.[aA][fF][mM]", ".pfb"));
+                        "\\.[aA][fF][mM]", ".pfb"));
                     mapout.write("\n");
                 }
 
             }
-            EncGlpyh eg = new EncGlpyh(afm, afm + na, names.get(i).toString(),
-                    cnt);
+            EncGlpyh eg =
+                    new EncGlpyh(afm, afm + na, names.get(i).toString(), cnt);
             glyphmap.put(eg.getGlyphname(), eg);
 
             out.write("% " + cnt++ + "\n");
@@ -364,36 +372,35 @@ public abstract class AfmUtil extends AbstractFontUtil {
             out.close();
         }
         getLogger().severe(
-                getLocalizer().format("AfmUtil.EncCreate",
-                        String.valueOf(names.size()), String.valueOf(filecnt)));
+            getLocalizer().format("AfmUtil.EncCreate",
+                String.valueOf(names.size()), String.valueOf(filecnt)));
 
     }
 
     /**
      * Remove existing glyph name from the list.
-     * @param readenc   The existing glyph names.
-     * @param names     The glyph names from the afm file.
+     * 
+     * @param readenc The existing glyph names.
+     * @param names The glyph names from the afm file.
      */
-    private void removeExistingNames(ArrayList readenc,
-            ArrayList names) {
+    private void removeExistingNames(List<String> readenc, List<String> names) {
 
-        for (int i = 0, n = readenc.size(); i < n; i++) {
-            String name = (String) readenc.get(i);
+        for (String name : readenc) {
             names.remove(name);
         }
     }
 
     /**
      * Read the glyph names.
+     * 
      * @return Returns the glyph name list.
      */
-    private ArrayList readGlyphNames() {
+    private List<String> readGlyphNames() {
 
-        ArrayList cmlist = parser.getAfmCharMetrics();
-        ArrayList names = new ArrayList(cmlist.size());
+        List<AfmCharMetric> cmlist = parser.getAfmCharMetrics();
+        List<String> names = new ArrayList<String>(cmlist.size());
 
-        for (int i = 0, n = cmlist.size(); i < n; i++) {
-            AfmCharMetric cm = (AfmCharMetric) cmlist.get(i);
+        for (AfmCharMetric cm : cmlist) {
             names.add(cm.getN());
         }
         return names;
@@ -401,21 +408,22 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Create a pl file.
-     * @param enc   The encdoing vector
-     * @param name  The name of the pl file.
+     * 
+     * @param enc The encoding vector
+     * @param name The name of the pl file.
      * @throws IOException if an IO-error occurred.
      */
-    private void createPl(EncReader enc, String name)
-            throws IOException {
+    private void createPl(EncReader enc, String name) throws IOException {
 
-        PlWriter pl = new PlWriter(new FileOutputStream(outdir + File.separator
-                + name + ".pl"));
+        PlWriter pl =
+                new PlWriter(new FileOutputStream(outdir + File.separator
+                        + name + ".pl"));
 
         pl.addComment(createVersion());
         pl.plopen("FAMILY").addStr(
-                parser.getHeader().getFontname().toUpperCase()).plclose();
+            parser.getHeader().getFontname().toUpperCase()).plclose();
         pl.plopen("CODINGSCHEME").addStr(enc.getEncname().toUpperCase())
-                .plclose();
+            .plclose();
         pl.plopen("DESIGNSIZE").addReal(10.0f).plclose();
         pl.addComment("DESIGNSIZE IS IN POINTS");
         pl.addComment("OTHER SIZES ARE MULTIPLES OF DESIGNSIZE");
@@ -433,8 +441,9 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Print Character.
-     * @param enc   The encoding table.
-     * @param pl    The pl writer.
+     * 
+     * @param enc The encoding table.
+     * @param pl The pl writer.
      */
     private void printCharacter(EncReader enc, PlWriter pl) {
 
@@ -452,7 +461,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
                 pl.addCharMetric(scale(-(long) cm.getBlly()), "CHARDP");
                 if (cm.getBurx() > cm.getWx()) {
                     pl.addCharMetric(scale((long) (cm.getBurx() - cm.getWx())),
-                            "CHARIC");
+                        "CHARIC");
                 }
                 pl.plclose();
             }
@@ -461,8 +470,9 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Print LigTable.
-     * @param enc   The encoding vector.
-     * @param pl    The pl writer.
+     * 
+     * @param enc The encoding vector.
+     * @param pl The pl writer.
      */
     private void printLigTable(EncReader enc, PlWriter pl) {
 
@@ -478,23 +488,23 @@ public abstract class AfmUtil extends AbstractFontUtil {
                 pl.plopen("LABEL").addChar((short) i).plclose();
                 pl.addComment(cm.getN());
                 if (cm.isLigatur()) {
-                    HashMap ligmap = cm.getL();
-                    Iterator it = ligmap.keySet().iterator();
+                    Map<String, String> ligmap = cm.getL();
+                    Iterator<String> it = ligmap.keySet().iterator();
                     while (it.hasNext()) {
-                        String letter = (String) it.next();
-                        String lig = (String) ligmap.get(letter);
+                        String letter = it.next();
+                        String lig = ligmap.get(letter);
                         short posletter = (short) enc.getPosition(letter);
                         short poslig = (short) enc.getPosition(lig);
                         if (posletter >= 0 && poslig >= 0) {
                             pl.plopen("LIG").addChar(posletter).addChar(poslig)
-                                    .plclose();
+                                .plclose();
                         }
                     }
                 }
                 if (cm.isKerning()) {
-                    List kernlist = cm.getK();
+                    List<AfmKernPairs> kernlist = cm.getK();
                     for (int k = 0, n = kernlist.size(); k < n; k++) {
-                        AfmKernPairs kp = (AfmKernPairs) kernlist.get(k);
+                        AfmKernPairs kp = kernlist.get(k);
                         String pre = kp.getCharpre();
                         String post = kp.getCharpost();
                         float size = kp.getKerningsize();
@@ -502,7 +512,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
                         short pospost = (short) enc.getPosition(post);
                         if (pospre >= 0 && pospost >= 0) {
                             pl.plopen("KRN").addChar(pospost).addReal(
-                                    scale((long) size)).plclose();
+                                scale((long) size)).plclose();
                         }
                     }
                 }
@@ -515,19 +525,21 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Print the FONTDIMEN.
-     * @param pl    The pl writer.
+     * 
+     * @param pl The pl writer.
      */
     private void printFontDimen(PlWriter pl) {
 
         pl.plopen("FONTDIMEN");
 
         // slant
-        double newslant = slant
-                - efactor
-                * Math.tan(parser.getHeader().getItalicangle()
-                        * (Math.PI / 180.0));
+        double newslant =
+                slant
+                        - efactor
+                        * Math.tan(parser.getHeader().getItalicangle()
+                                * (Math.PI / 180.0));
         pl.plopen("SLANT").addReal((long) (FIXFACTOR * newslant + 0.5))
-                .plclose();
+            .plclose();
 
         // space
         int fontspace = 0;
@@ -546,22 +558,22 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
         // stretch
         pl.plopen("STRETCH").addReal(
-                (parser.getHeader().isFixedpitch()
-                        ? 0
-                        : scale((long) (300 * efactor + 0.5)))).plclose();
+            (parser.getHeader().isFixedpitch()
+                    ? 0
+                    : scale((long) (300 * efactor + 0.5)))).plclose();
         // shrink
         pl.plopen("SHRINK").addReal(
-                (parser.getHeader().isFixedpitch()
-                        ? 0
-                        : scale((long) (100 * efactor + 0.5)))).plclose();
+            (parser.getHeader().isFixedpitch()
+                    ? 0
+                    : scale((long) (100 * efactor + 0.5)))).plclose();
 
         // xheight
         pl.plopen("XHEIGHT").addReal(
-                scale((long) parser.getHeader().getXheight())).plclose();
+            scale((long) parser.getHeader().getXheight())).plclose();
 
         // quad
         pl.plopen("QUAD").addReal(scale((long) (1000 * efactor + 0.5)))
-                .plclose();
+            .plclose();
         pl.plclose();
     }
 
@@ -578,21 +590,25 @@ public abstract class AfmUtil extends AbstractFontUtil {
     /**
      * fixfactor.
      */
-    private static final long FIXFACTOR = 0x100000L; // 2^{20}, the unit fixnum
+    private static final long FIXFACTOR = 0x100000L; // 2^{20}, the unit
+
+    // fixnum
 
     /**
      * scale (from afm2tfm.c).
-     * @param value  The value to scale
+     * 
+     * @param value The value to scale
      * @return Scale the value.
      */
     private double scale(long value) {
 
-        //      (((what / 1000) << 20) + (((what % 1000) << 20) + 500) / 1000);
+        // (((what / 1000) << 20) + (((what % 1000) << 20) + 500) / 1000);
         return value / 1000d;
     }
 
     /**
      * transform (from afm2tfm.c).
+     * 
      * @param x x
      * @param y y
      * @return The transform value.
@@ -605,18 +621,18 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Read all glyph names from the encoding vectors.
-     *
-     * @param readenc   The list for the names.
+     * 
+     * @param readenc The list for the names.
      * @throws IOException if an IO-error occurred.
      * @throws ConfigurationException from the configuration system.
      * @throws FontException if a font error occurred.
      */
-    private void readAllGlyphName(ArrayList readenc) throws IOException,
-            ConfigurationException, FontException {
+    private void readAllGlyphName(List<String> readenc)
+            throws IOException,
+                ConfigurationException,
+                FontException {
 
-        for (int i = 0, n = enclist.size(); i < n; i++) {
-
-            String encv = (String) enclist.get(i);
+        for (String encv : enclist) {
 
             InputStream encin = null;
             File encfile = new File(encv);
@@ -639,9 +655,10 @@ public abstract class AfmUtil extends AbstractFontUtil {
                 String name = table[k].replaceAll("/", "");
                 readenc.add(name);
 
-                EncGlpyh eg = new EncGlpyh(removeExtensions(afmfile),
-                        removeExtensions(afmfile) + removeExtensions(encv),
-                        name, k);
+                EncGlpyh eg =
+                        new EncGlpyh(removeExtensions(afmfile),
+                            removeExtensions(afmfile) + removeExtensions(encv),
+                            name, k);
 
                 glyphmap.put(eg.getGlyphname(), eg);
 
@@ -661,7 +678,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
                 mapout.write(" ");
                 mapout.write("<");
                 mapout.write(afmfile.getName().replaceAll("\\.[aA][fF][mM]",
-                        ".pfb"));
+                    ".pfb"));
                 mapout.write("\n");
             }
 
@@ -673,6 +690,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Returns only the name of a file.
+     * 
      * @param n The name.
      * @return Returns only the name of a file.
      */
@@ -690,9 +708,8 @@ public abstract class AfmUtil extends AbstractFontUtil {
             if (dotfound) {
                 if (c == '/' || c == '\\') {
                     break;
-                } else {
-                    buf.insert(0, c);
                 }
+                buf.insert(0, c);
             }
         }
 
@@ -701,6 +718,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Returns only the name of a file.
+     * 
      * @param f The file.
      * @return Returns only the name of a file.
      */
@@ -711,15 +729,16 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Export to xml.
-     * @throws IOException  if a IO-error occurred.
+     * 
+     * @throws IOException if a IO-error occurred.
      */
     private void toXml() throws IOException {
 
         File xmlfile = new File(outdir + File.separator + xmlname);
 
         // write to xml-file
-        XMLStreamWriter writer = new XMLStreamWriter(new FileOutputStream(
-                xmlfile), "ISO-8859-1");
+        XMLStreamWriter writer =
+                new XMLStreamWriter(new FileOutputStream(xmlfile), "ISO-8859-1");
         writer.setBeauty(true);
         writer.writeStartDocument();
         writer.writeComment(createVersion());
@@ -732,15 +751,16 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Export to efm.
-     * @throws IOException  if a IO-error occurred.
+     * 
+     * @throws IOException if a IO-error occurred.
      */
     private void toEfm() throws IOException {
 
         File efmfile = new File(outdir + File.separator + efmname);
 
         // write to efm-file
-        XMLStreamWriter writer = new XMLStreamWriter(new FileOutputStream(
-                efmfile), "ISO-8859-1");
+        XMLStreamWriter writer =
+                new XMLStreamWriter(new FileOutputStream(efmfile), "ISO-8859-1");
         writer.setBeauty(true);
         writer.writeStartDocument();
         writer.writeComment(createVersion());
@@ -753,106 +773,108 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Create the comment with ExTeX-version and date.
+     * 
      * @return Returns the comment with the ExTeX-Version and the date.
      */
     private String createVersion() {
 
         Calendar cal = Calendar.getInstance();
         return getLocalizer().format("AfmUtil.Version", ExTeX.getVersion(),
-                cal.getTime().toString());
+            cal.getTime().toString());
     }
 
-    //    /**
-    //     * parameter.
-    //     */
-    //    private static final int PARAMETER = 1;
+    // /**
+    // * parameter.
+    // */
+    // private static final int PARAMETER = 1;
 
-    //    /**
-    //     * main.
-    //     * @param args the command line arguments.
-    //     * @throws Exception if a error occurs.
-    //     */
-    //    public static void main(String[] args) throws Exception {
+    // /**
+    // * main.
+    // * @param args the command line arguments.
+    // * @throws Exception if a error occurs.
+    // */
+    // public static void main(String[] args) throws Exception {
     //
-    //        AfmUtil afm = new AfmUtil();
+    // AfmUtil afm = new AfmUtil();
     //
-    //        if (args.length < PARAMETER) {
-    //            afm.getLogger().severe(afm.getLocalizer().format("AfmUtil.Call"));
-    //            System.exit(1);
-    //        }
+    // if (args.length < PARAMETER) {
+    // afm.getLogger().severe(afm.getLocalizer().format("AfmUtil.Call"));
+    // System.exit(1);
+    // }
     //
-    //        boolean toxml = false;
-    //        String xmlname = "";
-    //        boolean toefm = false;
-    //        String efmname = "";
-    //        ArrayList enclist = new ArrayList();
-    //        boolean toenc = false;
-    //        String encname = "";
-    //        boolean tomap = false;
-    //        boolean topl = false;
-    //        boolean enccheck = false;
-    //        boolean missingGlyph = false;
-    //        String outdir = ".";
-    //        String file = "";
+    // boolean toxml = false;
+    // String xmlname = "";
+    // boolean toefm = false;
+    // String efmname = "";
+    // ArrayList enclist = new ArrayList();
+    // boolean toenc = false;
+    // String encname = "";
+    // boolean tomap = false;
+    // boolean topl = false;
+    // boolean enccheck = false;
+    // boolean missingGlyph = false;
+    // String outdir = ".";
+    // String file = "";
     //
-    //        int i = 0;
-    //        do {
-    //            if ("-x".equals(args[i]) || "--xml".equals(args[i])) {
-    //                if (i + 1 < args.length) {
-    //                    toxml = true;
-    //                    xmlname = args[++i];
-    //                }
-    //            } else if ("-e".equals(args[i]) || "--efm".equals(args[i])) {
-    //                if (i + 1 < args.length) {
-    //                    toefm = true;
-    //                    efmname = args[++i];
-    //                }
+    // int i = 0;
+    // do {
+    // if ("-x".equals(args[i]) || "--xml".equals(args[i])) {
+    // if (i + 1 < args.length) {
+    // toxml = true;
+    // xmlname = args[++i];
+    // }
+    // } else if ("-e".equals(args[i]) || "--efm".equals(args[i])) {
+    // if (i + 1 < args.length) {
+    // toefm = true;
+    // efmname = args[++i];
+    // }
     //
-    //            } else if ("-c".equals(args[i]) || "--createenc".equals(args[i])) {
-    //                if (i + 1 < args.length) {
-    //                    toenc = true;
-    //                    encname = args[++i];
-    //                }
-    //            } else if ("--enccheck".equals(args[i])) {
-    //                enccheck = true;
-    //            } else if ("--missingglyph".equals(args[i])) {
-    //                missingGlyph = true;
-    //            } else if ("-v".equals(args[i]) || "--encvector".equals(args[i])) {
-    //                if (i + 1 < args.length) {
-    //                    enclist.add(args[++i]);
-    //                }
-    //            } else if ("-o".equals(args[i]) || "--outdir".equals(args[i])) {
-    //                if (i + 1 < args.length) {
-    //                    outdir = args[++i];
-    //                }
-    //            } else if ("-m".equals(args[i]) || "--map".equals(args[i])) {
-    //                tomap = true;
-    //            } else if ("-p".equals(args[i]) || "--pl".equals(args[i])) {
-    //                topl = true;
-    //            } else {
-    //                file = args[i];
-    //            }
-    //            i++;
-    //        } while (i < args.length);
+    // } else if ("-c".equals(args[i]) || "--createenc".equals(args[i])) {
+    // if (i + 1 < args.length) {
+    // toenc = true;
+    // encname = args[++i];
+    // }
+    // } else if ("--enccheck".equals(args[i])) {
+    // enccheck = true;
+    // } else if ("--missingglyph".equals(args[i])) {
+    // missingGlyph = true;
+    // } else if ("-v".equals(args[i]) || "--encvector".equals(args[i])) {
+    // if (i + 1 < args.length) {
+    // enclist.add(args[++i]);
+    // }
+    // } else if ("-o".equals(args[i]) || "--outdir".equals(args[i])) {
+    // if (i + 1 < args.length) {
+    // outdir = args[++i];
+    // }
+    // } else if ("-m".equals(args[i]) || "--map".equals(args[i])) {
+    // tomap = true;
+    // } else if ("-p".equals(args[i]) || "--pl".equals(args[i])) {
+    // topl = true;
+    // } else {
+    // file = args[i];
+    // }
+    // i++;
+    // } while (i < args.length);
     //
-    //        afm.setToxml(toxml);
-    //        afm.setXmlname(xmlname);
-    //        afm.setToefm(toefm);
-    //        afm.setEfmname(efmname);
-    //        afm.setEnclist(enclist);
-    //        afm.setToenc(toenc);
-    //        afm.setEncname(encname);
-    //        afm.setOutdir(outdir);
-    //        afm.setTomap(tomap);
-    //        afm.setTopl(topl);
-    //        afm.setEnccheck(enccheck);
-    //        afm.setMissingGlyph(missingGlyph);
+    // afm.setToxml(toxml);
+    // afm.setXmlname(xmlname);
+    // afm.setToefm(toefm);
+    // afm.setEfmname(efmname);
+    // afm.setEnclist(enclist);
+    // afm.setToenc(toenc);
+    // afm.setEncname(encname);
+    // afm.setOutdir(outdir);
+    // afm.setTomap(tomap);
+    // afm.setTopl(topl);
+    // afm.setEnccheck(enccheck);
+    // afm.setMissingGlyph(missingGlyph);
     //
-    //        afm.doIt(file);
-    //    }
+    // afm.doIt(file);
+    // }
 
     /**
      * Returns the toxml.
+     * 
      * @return Returns the toxml.
      */
     public boolean isToxml() {
@@ -862,6 +884,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * The toxml to set.
+     * 
      * @param xml The toxml to set.
      */
     public void setToxml(boolean xml) {
@@ -871,6 +894,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Returns the xmlname.
+     * 
      * @return Returns the xmlname.
      */
     public String getXmlname() {
@@ -880,6 +904,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * The xmlname to set.
+     * 
      * @param name The xmlname to set.
      */
     public void setXmlname(String name) {
@@ -889,6 +914,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Returns the efmname.
+     * 
      * @return Returns the efmname.
      */
     public String getEfmname() {
@@ -898,6 +924,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * The efmname to set.
+     * 
      * @param name The efmname to set.
      */
     public void setEfmname(String name) {
@@ -907,6 +934,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Returns the toefm.
+     * 
      * @return Returns the toefm.
      */
     public boolean isToefm() {
@@ -916,6 +944,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * The toefm to set.
+     * 
      * @param efm The toefm to set.
      */
     public void setToefm(boolean efm) {
@@ -925,24 +954,27 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Returns the enclist.
+     * 
      * @return Returns the enclist.
      */
-    public ArrayList getEnclist() {
+    public List<String> getEnclist() {
 
         return enclist;
     }
 
     /**
      * The enclist to set.
+     * 
      * @param list The enclist to set.
      */
-    public void setEnclist(ArrayList list) {
+    public void setEnclist(List<String> list) {
 
         enclist = list;
     }
 
     /**
      * Returns the encname.
+     * 
      * @return Returns the encname.
      */
     public String getEncname() {
@@ -952,6 +984,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * The encname to set.
+     * 
      * @param name The encname to set.
      */
     public void setEncname(String name) {
@@ -961,6 +994,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Returns the toenc.
+     * 
      * @return Returns the toenc.
      */
     public boolean isToenc() {
@@ -970,6 +1004,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * The toenc to set.
+     * 
      * @param enc The toenc to set.
      */
     public void setToenc(boolean enc) {
@@ -979,6 +1014,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Returns the tomap.
+     * 
      * @return Returns the tomap.
      */
     public boolean isTomap() {
@@ -988,6 +1024,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * The tomap to set.
+     * 
      * @param map The tomap to set.
      */
     public void setTomap(boolean map) {
@@ -997,6 +1034,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Returns the topl.
+     * 
      * @return Returns the topl.
      */
     public boolean isTopl() {
@@ -1006,6 +1044,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * The topl to set.
+     * 
      * @param pl The topl to set.
      */
     public void setTopl(boolean pl) {
@@ -1040,14 +1079,13 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
         /**
          * Create a new object.
-         *
-         * @param basefont      The font
-         * @param fontencname   The fontname (with encoding vector)
-         * @param gn            The glyph name.
-         * @param n             The number.
+         * 
+         * @param basefont The font
+         * @param fontencname The fontname (with encoding vector)
+         * @param gn The glyph name.
+         * @param n The number.
          */
-        public EncGlpyh(String basefont, String fontencname,
-                String gn, int n) {
+        public EncGlpyh(String basefont, String fontencname, String gn, int n) {
 
             font = basefont;
             fonte = fontencname;
@@ -1057,6 +1095,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
         /**
          * Returns the fonte.
+         * 
          * @return Returns the fonte.
          */
         public String getFonte() {
@@ -1066,6 +1105,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
         /**
          * Returns the glyphname.
+         * 
          * @return Returns the glyphname.
          */
         public String getGlyphname() {
@@ -1075,6 +1115,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
         /**
          * Returns the number.
+         * 
          * @return Returns the number.
          */
         public int getNumber() {
@@ -1084,6 +1125,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
         /**
          * Returns the info from the class.
+         * 
          * @return Returns the info from the class.
          */
         public String toString() {
@@ -1105,6 +1147,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
         /**
          * Returns the font.
+         * 
          * @return Returns the font.
          */
         public String getFont() {
@@ -1115,6 +1158,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Returns the enccheck.
+     * 
      * @return Returns the enccheck.
      */
     public boolean isEnccheck() {
@@ -1124,6 +1168,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Set the enccheck.
+     * 
      * @param check The enccheck to set.
      */
     public void setEnccheck(boolean check) {
@@ -1133,6 +1178,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Returns the missingGlyph.
+     * 
      * @return Returns the missingGlyph.
      */
     public boolean isMissingGlyph() {
@@ -1142,7 +1188,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Set the missingGlyph.
-     *
+     * 
      * @param missingglyph The missingGlyph to set.
      */
     public void setMissingGlyph(boolean missingglyph) {
@@ -1156,7 +1202,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Getter for outdir.
-     *
+     * 
      * @return Returns the outdir.
      */
     public String getOutdir() {
@@ -1166,7 +1212,7 @@ public abstract class AfmUtil extends AbstractFontUtil {
 
     /**
      * Setter for outdir.
-     *
+     * 
      * @param out The outdir to set.
      */
     public void setOutdir(String out) {

@@ -54,7 +54,7 @@ import de.dante.util.font.AbstractFontUtil;
 
 /**
  * Convert a tfm font to a xml file.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -72,8 +72,8 @@ public class Tfm2Xml extends AbstractFontUtil {
 
         /**
          * Creates a new object.
-         *
-         * @param writer    The xml writer.
+         * 
+         * @param writer The xml writer.
          */
         public XmlVisitor(XMLStreamWriter writer) {
 
@@ -81,6 +81,8 @@ public class Tfm2Xml extends AbstractFontUtil {
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.font.format.tfm.TfmVisitor#end()
          */
         public void end() throws IOException {
@@ -91,6 +93,8 @@ public class Tfm2Xml extends AbstractFontUtil {
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.font.format.tfm.TfmVisitor#start()
          */
         public void start() throws IOException {
@@ -101,7 +105,10 @@ public class Tfm2Xml extends AbstractFontUtil {
         }
 
         /**
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmCharInfoArray(org.extex.font.format.tfm.TfmCharInfoArray)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmCharInfoArray(
+         *      org.extex.font.format.tfm.TfmCharInfoArray)
          */
         public void visitTfmCharInfoArray(TfmCharInfoArray charinfo)
                 throws IOException {
@@ -114,14 +121,15 @@ public class Tfm2Xml extends AbstractFontUtil {
                 writer.writeStartElement("char");
                 writer.writeAttribute("id", ciw.getCharid() + ciw.getBc());
 
-                String c = Character.toString((char) (ciw.getCharid() + ciw
-                        .getBc()));
+                String c =
+                        Character.toString((char) (ciw.getCharid() + ciw
+                            .getBc()));
                 if (c != null && c.trim().length() > 0) {
                     writer.writeAttribute("char", c);
                 }
                 if (ciw.getGlyphname() != null) {
                     writer.writeAttribute("glyph-name", ciw.getGlyphname()
-                            .replaceAll("/", ""));
+                        .replaceAll("/", ""));
                 }
                 writer.writeAttribute("width_fw", ciw.getWidth().getValue());
                 writer.writeAttribute("height_fw", ciw.getHeight().getValue());
@@ -133,8 +141,8 @@ public class Tfm2Xml extends AbstractFontUtil {
                 if (ligstart != TfmCharInfoWord.NOINDEX
                         && ciw.getLigKernTable() != null) {
 
-                    for (int k = ligstart; k != TfmCharInfoWord.NOINDEX; k = ciw
-                            .getLigKernTable()[k].nextIndex(k)) {
+                    for (int k = ligstart; k != TfmCharInfoWord.NOINDEX; k =
+                            ciw.getLigKernTable()[k].nextIndex(k)) {
                         TfmLigKern lk = ciw.getLigKernTable()[k];
 
                         if (lk instanceof TfmLigature) {
@@ -142,17 +150,19 @@ public class Tfm2Xml extends AbstractFontUtil {
 
                             writer.writeStartElement("ligature");
                             writer.writeAttribute("letter-id", String
-                                    .valueOf(lig.getNextChar()));
-                            String sl = Character.toString((char) lig
-                                    .getNextChar());
+                                .valueOf(lig.getNextChar()));
+                            String sl =
+                                    Character
+                                        .toString((char) lig.getNextChar());
                             if (sl != null && sl.trim().length() > 0) {
                                 writer.writeAttribute("letter", sl.trim());
                             }
 
                             writer.writeAttribute("lig-id", String.valueOf(lig
-                                    .getAddingChar()));
-                            String slig = Character.toString((char) lig
-                                    .getAddingChar());
+                                .getAddingChar()));
+                            String slig =
+                                    Character.toString((char) lig
+                                        .getAddingChar());
                             if (slig != null && slig.trim().length() > 0) {
                                 writer.writeAttribute("lig", slig.trim());
                             }
@@ -162,14 +172,15 @@ public class Tfm2Xml extends AbstractFontUtil {
 
                             writer.writeStartElement("kerning");
                             writer.writeAttribute("id", String.valueOf(kern
-                                    .getNextChar()));
-                            String sk = Character.toString((char) kern
-                                    .getNextChar());
+                                .getNextChar()));
+                            String sk =
+                                    Character.toString((char) kern
+                                        .getNextChar());
                             if (sk != null && sk.trim().length() > 0) {
                                 writer.writeAttribute("char", sk.trim());
                             }
                             writer.writeAttribute("size_fw", String
-                                    .valueOf(kern.getKern().getValue()));
+                                .valueOf(kern.getKern().getValue()));
                             writer.writeEndElement();
                         }
                     }
@@ -182,23 +193,30 @@ public class Tfm2Xml extends AbstractFontUtil {
         }
 
         /**
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmDepthArray(org.extex.font.format.tfm.TfmDepthArray)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmDepthArray(
+         *      org.extex.font.format.tfm.TfmDepthArray)
          */
-        public void visitTfmDepthArray(TfmDepthArray depth)
-                throws IOException {
+        public void visitTfmDepthArray(TfmDepthArray depth) throws IOException {
 
         }
 
         /**
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmExtenArray(org.extex.font.format.tfm.TfmExtenArray)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmExtenArray(
+         *      org.extex.font.format.tfm.TfmExtenArray)
          */
-        public void visitTfmExtenArray(TfmExtenArray exten)
-                throws IOException {
+        public void visitTfmExtenArray(TfmExtenArray exten) throws IOException {
 
         }
 
         /**
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmHeaderArray(org.extex.font.format.tfm.TfmHeaderArray)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmHeaderArray(
+         *      org.extex.font.format.tfm.TfmHeaderArray)
          */
         public void visitTfmHeaderArray(TfmHeaderArray header)
                 throws IOException {
@@ -212,7 +230,7 @@ public class Tfm2Xml extends AbstractFontUtil {
             }
             if (header.getFontType() != null) {
                 writer.writeAttribute("fonttype", header.getFontType()
-                        .toString());
+                    .toString());
             }
             if (header.getFontfamily() != null) {
                 writer.writeAttribute("fontfamily", header.getFontfamily());
@@ -233,7 +251,10 @@ public class Tfm2Xml extends AbstractFontUtil {
         }
 
         /**
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmHeaderLengths(org.extex.font.format.tfm.TfmHeaderLengths)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmHeaderLengths(
+         *      org.extex.font.format.tfm.TfmHeaderLengths)
          */
         public void visitTfmHeaderLengths(TfmHeaderLengths lengths)
                 throws IOException {
@@ -241,7 +262,10 @@ public class Tfm2Xml extends AbstractFontUtil {
         }
 
         /**
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmHeightArray(org.extex.font.format.tfm.TfmHeightArray)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmHeightArray(
+         *      org.extex.font.format.tfm.TfmHeightArray)
          */
         public void visitTfmHeightArray(TfmHeightArray height)
                 throws IOException {
@@ -249,7 +273,10 @@ public class Tfm2Xml extends AbstractFontUtil {
         }
 
         /**
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmItalicArray(org.extex.font.format.tfm.TfmItalicArray)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmItalicArray(
+         *      org.extex.font.format.tfm.TfmItalicArray)
          */
         public void visitTfmItalicArray(TfmItalicArray italic)
                 throws IOException {
@@ -257,15 +284,20 @@ public class Tfm2Xml extends AbstractFontUtil {
         }
 
         /**
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmKernArray(org.extex.font.format.tfm.TfmKernArray)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmKernArray(
+         *      org.extex.font.format.tfm.TfmKernArray)
          */
-        public void visitTfmKernArray(TfmKernArray kern)
-                throws IOException {
+        public void visitTfmKernArray(TfmKernArray kern) throws IOException {
 
         }
 
         /**
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmLigKernArray(org.extex.font.format.tfm.TfmLigKernArray)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmLigKernArray(
+         *      org.extex.font.format.tfm.TfmLigKernArray)
          */
         public void visitTfmLigKernArray(TfmLigKernArray ligkern)
                 throws IOException {
@@ -273,19 +305,21 @@ public class Tfm2Xml extends AbstractFontUtil {
         }
 
         /**
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmParamArray(org.extex.font.format.tfm.TfmParamArray)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmParamArray(
+         *      org.extex.font.format.tfm.TfmParamArray)
          */
-        public void visitTfmParamArray(TfmParamArray param)
-                throws IOException {
+        public void visitTfmParamArray(TfmParamArray param) throws IOException {
 
             writer.writeStartElement("params");
-            Map p = param.getParam();
+            Map<String, TfmFixWord> p = param.getParam();
 
-            Iterator it = p.keySet().iterator();
+            Iterator<String> it = p.keySet().iterator();
 
             while (it.hasNext()) {
 
-                String key = (String) it.next();
+                String key = it.next();
                 TfmFixWord value = param.getParam(key);
 
                 writer.writeStartElement("param");
@@ -298,20 +332,24 @@ public class Tfm2Xml extends AbstractFontUtil {
         }
 
         /**
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmReader(org.extex.font.format.tfm.TfmReader)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmReader(
+         *      org.extex.font.format.tfm.TfmReader)
          */
-        public void visitTfmReader(TfmReader tfmReader)
-                throws IOException {
+        public void visitTfmReader(TfmReader tfmReader) throws IOException {
 
             writer.writeAttribute("name", tfmReader.getFontname());
 
         }
 
         /**
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmWidthArray(org.extex.font.format.tfm.TfmWidthArray)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmWidthArray(
+         *      org.extex.font.format.tfm.TfmWidthArray)
          */
-        public void visitTfmWidthArray(TfmWidthArray width)
-                throws IOException {
+        public void visitTfmWidthArray(TfmWidthArray width) throws IOException {
 
         }
 
@@ -329,8 +367,8 @@ public class Tfm2Xml extends AbstractFontUtil {
 
     /**
      * main.
-     *
-     * @param args  The command line
+     * 
+     * @param args The command line
      * @throws Exception if an error occurred.
      */
     public static void main(String[] args) throws Exception {
@@ -368,8 +406,8 @@ public class Tfm2Xml extends AbstractFontUtil {
 
     /**
      * Creates a new object.
-     *
-     * @throws ConfigurationException   from the configuration system.
+     * 
+     * @throws ConfigurationException from the configuration system.
      */
     public Tfm2Xml() throws ConfigurationException {
 
@@ -378,13 +416,12 @@ public class Tfm2Xml extends AbstractFontUtil {
 
     /**
      * doIt.
-     *
-     * @param tfmfile   The tfm file.
+     * 
+     * @param tfmfile The tfm file.
      * @throws IOException if a io error occurred.
      * @throws ConfigurationException from the configuration system.
      */
-    public void doIt(String tfmfile) throws IOException,
-            ConfigurationException {
+    public void doIt(String tfmfile) throws IOException, ConfigurationException {
 
         getLogger().severe(getLocalizer().format("Tfm2Xml.start", tfmfile));
 
@@ -407,8 +444,8 @@ public class Tfm2Xml extends AbstractFontUtil {
         String fontname = tfm.getName().replaceAll(".[tT][fF][mM]", "");
         TfmReader reader = new TfmReader(tfmin, fontname);
         String xmlfile = outdir + File.separator + fontname + ".xml";
-        XMLStreamWriter writer = new XMLStreamWriter(new FileOutputStream(
-                xmlfile), ENCODING);
+        XMLStreamWriter writer =
+                new XMLStreamWriter(new FileOutputStream(xmlfile), ENCODING);
         writer.setBeauty(true);
         XmlVisitor visitor = new XmlVisitor(writer);
         visitor.start();
@@ -422,7 +459,7 @@ public class Tfm2Xml extends AbstractFontUtil {
 
     /**
      * Getter for outdir.
-     *
+     * 
      * @return Returns the outdir.
      */
     public String getOutdir() {
@@ -432,7 +469,7 @@ public class Tfm2Xml extends AbstractFontUtil {
 
     /**
      * Setter for outdir.
-     *
+     * 
      * @param outdir The outdir to set.
      */
     public void setOutdir(String outdir) {

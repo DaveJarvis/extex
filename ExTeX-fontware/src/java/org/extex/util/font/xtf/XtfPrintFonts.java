@@ -102,7 +102,7 @@ public class XtfPrintFonts extends XtfInfo {
     /**
      * The list for the xtf files.
      */
-    private List xtflist = new ArrayList();
+    private List<String> xtflist = new ArrayList<String>();
 
     /**
      * Creates a new object.
@@ -146,7 +146,7 @@ public class XtfPrintFonts extends XtfInfo {
 
         for (int i = 0; i < reader.length; i++) {
 
-            xtffiles[i] = (String) xtflist.get(i);
+            xtffiles[i] = xtflist.get(i);
             File xtffile = new File(xtffiles[i]);
             InputStream xtfin = null;
 

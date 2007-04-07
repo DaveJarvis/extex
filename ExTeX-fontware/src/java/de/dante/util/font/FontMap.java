@@ -54,15 +54,17 @@ import de.dante.extex.unicodeFont.format.tex.psfontmap.enc.EncFactory;
 
 /**
  * This class manage the font map files.
- *
- * <p>Parameter:</p>
+ * 
+ * <p>
+ * Parameter:
+ * </p>
  * <ul>
- *  <li>-fontmap &lt;file&gt;   : the fontmap file   </li>
- *  <li>-efmoutput  &lt>dir&ft; : the output directory for the efm file.</li>
- *  <li>-encoutput  &lt>dir&ft; : the output directory for the enc file.</li>
- *  <li>-add &lt;psfont.map&gt; : add the entries from the psfonts.map</li>
+ * <li>-fontmap &lt;file&gt; : the fontmap file </li>
+ * <li>-efmoutput &lt>dir&ft; : the output directory for the efm file.</li>
+ * <li>-encoutput &lt>dir&ft; : the output directory for the enc file.</li>
+ * <li>-add &lt;psfont.map&gt; : add the entries from the psfonts.map</li>
  * </ul>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -101,7 +103,7 @@ public class FontMap extends AbstractFontUtil {
 
     /**
      * Create a new object.
-     *
+     * 
      * @throws ConfigurationException from the configuration system.
      * @throws FontException if an font error occurred.
      */
@@ -109,7 +111,7 @@ public class FontMap extends AbstractFontUtil {
 
         super(FontMap.class);
 
-        fontmap = new HashMap();
+        fontmap = new HashMap<String, MapEntry>();
         try {
             glyphName = GlyphName.getInstance();
         } catch (IOException e) {
@@ -120,8 +122,8 @@ public class FontMap extends AbstractFontUtil {
 
     /**
      * main.
-     *
-     * @param args  The command line.
+     * 
+     * @param args The command line.
      * @throws Exception if an error occurred.
      */
     public static void main(String[] args) throws Exception {
@@ -165,7 +167,7 @@ public class FontMap extends AbstractFontUtil {
 
     /**
      * Close the font map and save the map in the xml file.
-     *
+     * 
      * @throws FontException if an font-error occurred.
      */
     public void close() throws FontException {
@@ -173,25 +175,26 @@ public class FontMap extends AbstractFontUtil {
         if (addEntries) {
             // save
             getLogger().info(
-                    getLocalizer().format("FontMap.Close", fontMapFile));
+                getLocalizer().format("FontMap.Close", fontMapFile));
 
             try {
-                XMLStreamWriter out = new XMLStreamWriter(new FileOutputStream(
-                        fontMapFile), DEFAULTENCODING);
+                XMLStreamWriter out =
+                        new XMLStreamWriter(new FileOutputStream(fontMapFile),
+                            DEFAULTENCODING);
                 out.setBeauty(true);
 
                 out.writeStartDocument();
                 out.writeComment(getLocalizer().format(
-                        "FontMap.CommentFontMapFile"));
+                    "FontMap.CommentFontMapFile"));
                 out.writeStartElement(TAG_MAP);
 
                 // sort the keys
                 String[] keys = new String[fontmap.size()];
-                keys = (String[]) fontmap.keySet().toArray(keys);
+                keys = fontmap.keySet().toArray(keys);
                 Arrays.sort(keys);
 
                 for (int i = 0; i < keys.length; i++) {
-                    MapEntry entry = (MapEntry) fontmap.get(keys[i]);
+                    MapEntry entry = fontmap.get(keys[i]);
                     out.writeStartElement(TAG_ENTRY);
                     out.writeAttribute(ATT_TEXFONT, entry.getTexFont());
                     if (entry.getEncVec().length() > 0) {
@@ -220,29 +223,30 @@ public class FontMap extends AbstractFontUtil {
 
     /**
      * Add the entries from the psfont.map file to the map.
-     *
-     * @param psfontfile    The psfont.map file.
+     * 
+     * @param psfontfile The psfont.map file.
      * @throws FontException if an error occurred.
      */
     public void addPsFontMap(String psfontfile) throws FontException {
 
         try {
             getLogger().info(
-                    getLocalizer()
-                            .format("FontMap.Read.psfont.map", psfontfile));
+                getLocalizer().format("FontMap.Read.psfont.map", psfontfile));
 
-            BufferedInputStream input = new BufferedInputStream(
-                    new FileInputStream(psfontfile), BUFFERSIZE);
+            BufferedInputStream input =
+                    new BufferedInputStream(new FileInputStream(psfontfile),
+                        BUFFERSIZE);
 
             psFontMapReader = new PsFontsMapReader(input);
 
             addEntries = true;
 
-            Map encmap = psFontMapReader.getPsFontEncodingMap();
-            Iterator it = encmap.keySet().iterator();
+            Map<String, PsFontEncoding> encmap =
+                    psFontMapReader.getPsFontEncodingMap();
+            Iterator<String> it = encmap.keySet().iterator();
             while (it.hasNext()) {
-                String key = (String) it.next();
-                PsFontEncoding fe = (PsFontEncoding) encmap.get(key);
+                String key = it.next();
+                PsFontEncoding fe = encmap.get(key);
                 addEntries(fe);
             }
 
@@ -256,12 +260,14 @@ public class FontMap extends AbstractFontUtil {
 
     /**
      * Adds the entries.
-     * @param fe    The PsFontEncoding.
+     * 
+     * @param fe The PsFontEncoding.
      * @throws ConfigurationException from the configuration system.
      * @throws FontException if an font error occurred.
      */
     private void addEntries(PsFontEncoding fe)
-            throws ConfigurationException, FontException {
+            throws ConfigurationException,
+                FontException {
 
         String texfontname = fe.getFilename();
         getLogger().info(getLocalizer().format("FontMap.Add", texfontname));
@@ -274,7 +280,7 @@ public class FontMap extends AbstractFontUtil {
             encfactory = new EncFactory(getFinder());
         }
 
-        // encoding file:   file.enc.xml
+        // encoding file: file.enc.xml
         if (texencfile != null && texencfile.length() > 0) {
             encfile = texencfile + ".xml";
             InputStream texenc = getFinder().findResource(encfile, "");
@@ -291,10 +297,11 @@ public class FontMap extends AbstractFontUtil {
             createEfmFile(texfontname, efmfile, exfontfile, texencfile, encfile);
         }
 
-        MapEntry entry = new MapEntry(texfontname, encfile, efmfile, exfontfile);
+        MapEntry entry =
+                new MapEntry(texfontname, encfile, efmfile, exfontfile);
         if (fontmap.containsKey(texfontname)) {
             getLogger().info(
-                    getLocalizer().format("FontMap.EntryExists", texfontname));
+                getLocalizer().format("FontMap.EntryExists", texfontname));
         }
         fontmap.put(texfontname, entry);
 
@@ -312,53 +319,54 @@ public class FontMap extends AbstractFontUtil {
 
     /**
      * Create a efm file from a tfm file.
-     * @param texfontname   The tex font name.
-     * @param efmfile       The efm file.
-     * @param exfontfile    The font file e.g. cmr12.pfb.
-     * @param texencfile    The tex encoding file.
-     * @param encfile       The new encoding file.
+     * 
+     * @param texfontname The tex font name.
+     * @param efmfile The efm file.
+     * @param exfontfile The font file e.g. cmr12.pfb.
+     * @param texencfile The tex encoding file.
+     * @param encfile The new encoding file.
      * @throws ConfigurationException from the configuration system.
      * @throws FontException if an font error occurred.
      */
     private void createEfmFile(String texfontname, String efmfile,
-            String exfontfile, String texencfile,
-            String encfile) throws ConfigurationException, FontException {
+            String exfontfile, String texencfile, String encfile)
+            throws ConfigurationException,
+                FontException {
 
         try {
             // vf ?
             InputStream in = getFinder().findResource(texfontname, VF);
             if (in != null) {
                 getLogger().info(
-                        getLocalizer().format("FontMap.VfFont", texfontname));
+                    getLocalizer().format("FontMap.VfFont", texfontname));
             } else {
 
                 InputStream tfmin = getFinder().findResource(texfontname, TFM);
 
                 if (tfmin == null) {
                     getLogger().info(
-                            getLocalizer().format("FontMap.TfmFileNotFound",
-                                    texfontname));
+                        getLocalizer().format("FontMap.TfmFileNotFound",
+                            texfontname));
                 } else {
 
                     getLogger().info(
-                            getLocalizer().format("FontMap.CreateEfm",
-                                    efmoutput + File.separator + efmfile));
+                        getLocalizer().format("FontMap.CreateEfm",
+                            efmoutput + File.separator + efmfile));
 
                     TfmReader tfmReader = new TfmReader(tfmin, texfontname);
 
                     // pfb exists
                     if (exfontfile != null && exfontfile.endsWith(".pfb")) {
-                        InputStream pfbin = getFinder().findResource(
-                                exfontfile, "");
+                        InputStream pfbin =
+                                getFinder().findResource(exfontfile, "");
                         if (pfbin == null) {
                             getLogger().info(
-                                    getLocalizer().format(
-                                            "FontMap.ExFontFileNotFound",
-                                            exfontfile));
+                                getLocalizer().format(
+                                    "FontMap.ExFontFileNotFound", exfontfile));
                         } else {
                             getLogger().info(
-                                    getLocalizer().format("FontMap.ReadEfm",
-                                            exfontfile));
+                                getLocalizer().format("FontMap.ReadEfm",
+                                    exfontfile));
                             PfbParser pfbParser = new PfbParser(pfbin);
                             if (pfbin != null) {
                                 tfmReader.setPfbParser(pfbParser);
@@ -369,11 +377,11 @@ public class FontMap extends AbstractFontUtil {
                     tfmReader.setFontMapEncoding(psFontMapReader, encfactory);
 
                     // mgn: umbauen
-//                    EfmFont efmFont = new EfmFont(tfmReader);
-//                    efmFont.setEncoding(encfile);
-//
-//                    efmFont.write(new FileOutputStream(efmoutput
-//                            + File.separator + efmfile), DEFAULTENCODING);
+                    // EfmFont efmFont = new EfmFont(tfmReader);
+                    // efmFont.setEncoding(encfile);
+                    //
+                    // efmFont.write(new FileOutputStream(efmoutput
+                    // + File.separator + efmfile), DEFAULTENCODING);
 
                 }
             }
@@ -389,28 +397,31 @@ public class FontMap extends AbstractFontUtil {
 
     /**
      * Create a encoding vector file.
-     * @param texencfile    The tex encoding vector file.
-     * @param encfile       The new file.
+     * 
+     * @param texencfile The tex encoding vector file.
+     * @param encfile The new file.
      * @throws ConfigurationException from the configuration system.
      * @throws FontException if an font error occurred.
      */
     private void createEncVector(String texencfile, String encfile)
-            throws ConfigurationException, FontException {
+            throws ConfigurationException,
+                FontException {
 
         try {
             getLogger().info(
-                    getLocalizer().format("FontMap.CreateEnc",
-                            encoutput + File.separator + encfile));
+                getLocalizer().format("FontMap.CreateEnc",
+                    encoutput + File.separator + encfile));
 
             String[] encv = encfactory.getEncodingTableWithoutSlash(texencfile);
 
-            XMLStreamWriter out = new XMLStreamWriter(new FileOutputStream(
-                    encoutput + File.separator + encfile), DEFAULTENCODING);
+            XMLStreamWriter out =
+                    new XMLStreamWriter(new FileOutputStream(encoutput
+                            + File.separator + encfile), DEFAULTENCODING);
             out.setBeauty(true);
 
             out.writeStartDocument();
             out.writeComment(getLocalizer().format(
-                    "FontMap.CommentEncodingFile", texencfile));
+                "FontMap.CommentEncodingFile", texencfile));
             out.writeStartElement(TAG_ENCODING);
 
             for (int i = 0; i < encv.length; i++) {
@@ -450,6 +461,7 @@ public class FontMap extends AbstractFontUtil {
 
     /**
      * Returns the fontMapFile.
+     * 
      * @return Returns the fontMapFile.
      */
     public String getFontMapFile() {
@@ -459,7 +471,7 @@ public class FontMap extends AbstractFontUtil {
 
     /**
      * Set the fontMapFile.
-     *
+     * 
      * @param file The fontMapFile to set.
      * @throws IOException if an IO-error occurred.
      */
@@ -472,7 +484,7 @@ public class FontMap extends AbstractFontUtil {
     /**
      * The map for the fontmap entries.
      */
-    private Map fontmap;
+    private Map<String, MapEntry> fontmap;
 
     /**
      * the buffer size.
@@ -481,7 +493,7 @@ public class FontMap extends AbstractFontUtil {
 
     /**
      * Read the file.
-     *
+     * 
      * @throws IOException if an IO-error occurred.
      */
     private void read() throws IOException {
@@ -490,10 +502,11 @@ public class FontMap extends AbstractFontUtil {
             File f = new File(fontMapFile);
             if (f.exists()) {
                 getLogger().info(
-                        getLocalizer().format("FontMap.Read", fontMapFile));
+                    getLocalizer().format("FontMap.Read", fontMapFile));
 
-                BufferedInputStream input = new BufferedInputStream(
-                        new FileInputStream(f), BUFFERSIZE);
+                BufferedInputStream input =
+                        new BufferedInputStream(new FileInputStream(f),
+                            BUFFERSIZE);
 
                 SAXParserFactory factory = SAXParserFactory.newInstance();
                 SAXParser parser = factory.newSAXParser();
@@ -578,12 +591,11 @@ public class FontMap extends AbstractFontUtil {
 
         /**
          * @see org.xml.sax.helpers.DefaultHandler#startElement(
-         *      java.lang.String, java.lang.String,
-         *      java.lang.String, org.xml.sax.Attributes)
+         *      java.lang.String, java.lang.String, java.lang.String,
+         *      org.xml.sax.Attributes)
          */
-        public void startElement(String uri, String localName,
-                String qName, Attributes attributes)
-                throws SAXException {
+        public void startElement(String uri, String localName, String qName,
+                Attributes attributes) throws SAXException {
 
             super.startElement(uri, localName, qName, attributes);
 
@@ -596,7 +608,7 @@ public class FontMap extends AbstractFontUtil {
 
     /**
      * Class for the map entry.
-     *
+     * 
      */
     public static class MapEntry {
 
@@ -622,8 +634,8 @@ public class FontMap extends AbstractFontUtil {
 
         /**
          * Create a new Object.
-         *
-         * @param attributes    The xml attributes.
+         * 
+         * @param attributes The xml attributes.
          */
         public MapEntry(Attributes attributes) {
 
@@ -634,14 +646,14 @@ public class FontMap extends AbstractFontUtil {
 
         /**
          * Create a new object.
-         *
-         * @param atexfontname  The tex font name.
-         * @param aencfile      The encoding vector
-         * @param aefmfile      The efm file.
-         * @param aexfontfile   The font file e.g. cmr12.pfb.
+         * 
+         * @param atexfontname The tex font name.
+         * @param aencfile The encoding vector
+         * @param aefmfile The efm file.
+         * @param aexfontfile The font file e.g. cmr12.pfb.
          */
-        public MapEntry(String atexfontname, String aencfile,
-                String aefmfile, String aexfontfile) {
+        public MapEntry(String atexfontname, String aencfile, String aefmfile,
+                String aexfontfile) {
 
             texFont = atexfontname;
             encVec = aencfile;
@@ -651,6 +663,7 @@ public class FontMap extends AbstractFontUtil {
 
         /**
          * Returns the efmFile.
+         * 
          * @return Returns the efmFile.
          */
         public String getEfmFile() {
@@ -660,6 +673,7 @@ public class FontMap extends AbstractFontUtil {
 
         /**
          * Set the efmFile.
+         * 
          * @param aefmFile The efmFile to set.
          */
         public void setEfmFile(String aefmFile) {
@@ -671,6 +685,7 @@ public class FontMap extends AbstractFontUtil {
 
         /**
          * Returns the encVec.
+         * 
          * @return Returns the encVec.
          */
         public String getEncVec() {
@@ -680,6 +695,7 @@ public class FontMap extends AbstractFontUtil {
 
         /**
          * Set the encVec.
+         * 
          * @param aencVec The encVec to set.
          */
         public void setEncVec(String aencVec) {
@@ -691,6 +707,7 @@ public class FontMap extends AbstractFontUtil {
 
         /**
          * Returns the texFont.
+         * 
          * @return Returns the texFont.
          */
         public String getTexFont() {
@@ -700,6 +717,7 @@ public class FontMap extends AbstractFontUtil {
 
         /**
          * Set the texFont.
+         * 
          * @param atexFont The texFont to set.
          */
         public void setTexFont(String atexFont) {
@@ -711,6 +729,7 @@ public class FontMap extends AbstractFontUtil {
 
         /**
          * Print the values.
+         * 
          * @return Returns the <code>String</code> for the entry.
          */
         public String toString() {
@@ -721,6 +740,7 @@ public class FontMap extends AbstractFontUtil {
 
         /**
          * Returns the exFontFile.
+         * 
          * @return Returns the exFontFile.
          */
         public String getExFontFile() {
@@ -730,6 +750,7 @@ public class FontMap extends AbstractFontUtil {
 
         /**
          * Set the exFontFile.
+         * 
          * @param file The exFontFile to set.
          */
         public void setExFontFile(String file) {
@@ -742,6 +763,7 @@ public class FontMap extends AbstractFontUtil {
 
     /**
      * Set the efm output directory.
+     * 
      * @param dir The efm output directory to set.
      */
     public void setEfmoutput(String dir) {
@@ -751,6 +773,7 @@ public class FontMap extends AbstractFontUtil {
 
     /**
      * Set the encoding output.
+     * 
      * @param dir The encoding output to set.
      */
     public void setEncoutput(String dir) {

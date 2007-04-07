@@ -37,10 +37,9 @@ import org.extex.framework.configuration.exception.ConfigurationNoSuchMethodExce
 import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
 
-
 /**
  * Convert a VF-file to a XML-file
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -51,6 +50,7 @@ public final class VF2XML {
      */
     private VF2XML() {
 
+        //
     }
 
     /**
@@ -60,22 +60,23 @@ public final class VF2XML {
 
     /**
      * main
-     * @param args      the comandlinearguments
-     * @throws Exception  in case of an error
+     * 
+     * @param args the comandlinearguments
+     * @throws Exception in case of an error
      */
     public static void main(String[] args) throws Exception {
 
         if (args.length != PARAMETER) {
             System.err
-                    .println("java de.dante.util.font.VF2XML <vf-file> <xml-file>");
+                .println("java de.dante.util.font.VF2XML <vf-file> <xml-file>");
             System.exit(1);
         }
 
         File xmlfile = new File(args[1]);
         String fontname = args[0].replaceAll("\\.vf|\\.VF", "");
 
-        Configuration config = new ConfigurationFactory()
-                .newInstance("config/extex.xml");
+        Configuration config =
+                new ConfigurationFactory().newInstance("config/extex.xml");
 
         // Configuration cfgfonts = config.getConfiguration("Fonts");
 
@@ -87,9 +88,9 @@ public final class VF2XML {
             prop.setProperty("extex.fonts", "src/font");
         }
 
-        ResourceFinder finder = (new ResourceFinderFactory())
-                .createResourceFinder(config.getConfiguration("Resource"),
-                        null, prop, null);
+        ResourceFinder finder =
+                (new ResourceFinderFactory()).createResourceFinder(config
+                    .getConfiguration("Resource"), null, prop, null);
 
         // EncFactory ef = new EncFactory(finder);
 
@@ -110,51 +111,53 @@ public final class VF2XML {
         }
         // PSFontsMapReader psfm = new PSFontsMapReader(psin);
 
-        // RandomAccessInputFileDebug rar = new RandomAccessInputFileDebug("src/font/aer12.vf");
+        // RandomAccessInputFileDebug rar = new
+        // RandomAccessInputFileDebug("src/font/aer12.vf");
 
         // mgn: umbauen
-//        VFFont font = new VFFont(new RandomAccessInputStream(vfin), fontname,
-//                makeFontFactory());
-//        //        VFFont font = new VFFont(rar, fontname);
-//
-//        //font.setFontMapEncoding(psfm, ef);
-//
-//        // write to xml-file
-//        XMLStreamWriter writer = new XMLStreamWriter(new FileOutputStream(
-//                xmlfile), "ISO-8859-1");
-//        writer.setBeauty(true);
-//        writer.writeStartDocument();
-//        font.writeXML(writer);
-//        writer.writeEndDocument();
-//        writer.close();
+        // VFFont font = new VFFont(new RandomAccessInputStream(vfin), fontname,
+        // makeFontFactory());
+        // // VFFont font = new VFFont(rar, fontname);
+        //
+        // //font.setFontMapEncoding(psfm, ef);
+        //
+        // // write to xml-file
+        // XMLStreamWriter writer = new XMLStreamWriter(new FileOutputStream(
+        // xmlfile), "ISO-8859-1");
+        // writer.setBeauty(true);
+        // writer.writeStartDocument();
+        // font.writeXML(writer);
+        // writer.writeEndDocument();
+        // writer.close();
     }
 
     /**
      * make a font factroy
-     * @return  Return the fontfactory
+     * 
+     * @return Return the fontfactory
      * @throws Exception if an error occurs.
      */
 
     private static FontFactory makeFontFactory() throws Exception {
 
-        Configuration config = new ConfigurationFactory()
-                .newInstance("config/extex.xml");
+        Configuration config =
+                new ConfigurationFactory().newInstance("config/extex.xml");
 
-        FontFactory fontFactory = makeFontFactory(config
-                .getConfiguration("Fonts"));
+        FontFactory fontFactory =
+                makeFontFactory(config.getConfiguration("Fonts"));
 
         return fontFactory;
     }
 
     /**
      * Create a new font factory.
-     *
+     * 
      * @param config the configuration object for the font factory
-     *
+     * 
      * @return the new font factory
-     *
+     * 
      * @throws ConfigurationException in case that some kind of problems have
-     * been detected in the configuration
+     *         been detected in the configuration
      */
     protected static FontFactory makeFontFactory(Configuration config)
             throws ConfigurationException {
@@ -166,20 +169,19 @@ public final class VF2XML {
             throw new ConfigurationMissingAttributeException("class", config);
         }
 
-        ResourceFinder fontFinder = (new ResourceFinderFactory())
-                .createResourceFinder(config.getConfiguration("Resource"),
-                        null, getProps(), null);
+        ResourceFinder fontFinder =
+                (new ResourceFinderFactory()).createResourceFinder(config
+                    .getConfiguration("Resource"), null, getProps(), null);
         if (Boolean.valueOf(getProps().getProperty("extex.trace.font.files"))
-                .booleanValue()) {
+            .booleanValue()) {
             fontFinder.enableTracing(true);
         }
 
         try {
-            fontFactory = (FontFactory) (Class.forName(fontClass)
-                    .getConstructor(
-                            new Class[]{Configuration.class,
-                                    ResourceFinder.class})
-                    .newInstance(new Object[]{config, fontFinder}));
+            fontFactory =
+                    (FontFactory) (Class.forName(fontClass).getConstructor(
+                        new Class[]{Configuration.class, ResourceFinder.class})
+                        .newInstance(new Object[]{config, fontFinder}));
         } catch (IllegalArgumentException e) {
             throw new ConfigurationInstantiationException(e);
         } catch (SecurityException e) {
@@ -201,7 +203,7 @@ public final class VF2XML {
 
     /**
      * Getter for props.
-     *
+     * 
      * @return the props
      */
     private static Properties getProps() {
@@ -224,8 +226,8 @@ public final class VF2XML {
     }
 
     /**
-     * The field <tt>props</tt> contains the merged properties from the
-     * system properties and the properties loaded from <tt>.extex-test</tt>.
+     * The field <tt>props</tt> contains the merged properties from the system
+     * properties and the properties loaded from <tt>.extex-test</tt>.
      */
     private static Properties props = null;
 

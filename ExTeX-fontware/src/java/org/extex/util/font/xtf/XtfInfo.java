@@ -44,7 +44,7 @@ public abstract class XtfInfo extends AbstractFontUtil {
      * @param c The class for the logging.
      * @throws ConfigurationException if a configuration error occurs.
      */
-    protected XtfInfo(Class c) throws ConfigurationException {
+    protected XtfInfo(Class<?> c) throws ConfigurationException {
 
         super(c);
 
