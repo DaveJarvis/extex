@@ -91,7 +91,7 @@ import org.extex.typesetter.Typesetter;
  *  The formal description of this primitive is the following:
  *  <pre class="syntax">
  *    <tt>\dp</tt> {@linkplain
- *      org.extex.interpreter.TokenSource#scanNumber(Context)
+ *      org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *      &lang;8-bit&nbsp;number&rang;} </pre>
  * </p>
  *

@@ -47,6 +47,7 @@ public final class OcpUtil {
      */
     private OcpUtil() {
 
+        //
     }
 
     /**

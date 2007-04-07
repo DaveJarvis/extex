@@ -52,11 +52,6 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
     private String prepare = "";
 
     /**
-     * The field <tt>max</tt> contains the ...
-     */
-    private String max = "32767";
-
-    /**
      * Creates a new object.
      *
      * @param arg the name of the test suite
@@ -72,7 +67,7 @@ public abstract class AbstractCharMapTester extends ExTeXLauncher {
         this.primitive = primitive;
         this.invocation = primitive + args;
         this.init = init;
-        this.max = max;
+//        this.max = max;
     }
 
     /**

@@ -137,14 +137,9 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
     private static final class Second implements BinOp {
 
         /**
-         * Apply the operation on the arguments.
+         * {@inheritDoc}
          *
-         * @param arg1 the first argument
-         * @param arg2 the second argument
-         *
-         * @return the result
-         *
-         * @see org.extex.unit.tex.register.count.Numexpr.BinOp#apply(long, long)
+         * @see org.extex.unit.etex.register.count.Numexpr.BinOp#apply(long, long)
          */
         public long apply(long arg1, long arg2) {
 
@@ -158,14 +153,9 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
     private static final class Plus implements BinOp {
 
         /**
-         * Apply the operation on the arguments.
+         * {@inheritDoc}
          *
-         * @param arg1 the first argument
-         * @param arg2 the second argument
-         *
-         * @return the result
-         *
-         * @see org.extex.unit.tex.register.count.Numexpr.BinOp#apply(long, long)
+         * @see org.extex.unit.etex.register.count.Numexpr.BinOp#apply(long, long)
          */
         public long apply(long arg1, long arg2) {
 
@@ -179,14 +169,9 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
     private static final class Minus implements BinOp {
 
         /**
-         * Apply the operation on the arguments.
+         * {@inheritDoc}
          *
-         * @param arg1 the first argument
-         * @param arg2 the second argument
-         *
-         * @return the result
-         *
-         * @see org.extex.unit.tex.register.count.Numexpr.BinOp#apply(long, long)
+         * @see org.extex.unit.etex.register.count.Numexpr.BinOp#apply(long, long)
          */
         public long apply(long arg1, long arg2) {
 

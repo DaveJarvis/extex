@@ -140,7 +140,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
     /**
      * The field <tt>preamble</tt> contains the preamble for this halign.
      */
-    private List preamble;
+    private List<PreambleItem> preamble;
 
     /**
      * The field <tt>rows</tt> contains the rows of this alignment.
@@ -178,7 +178,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      * @throws InterpreterException in case of an error
      */
     public HAlignListMaker(ListManager manager, Context context,
-            TokenSource source, List thePreamble,
+            TokenSource source, List<PreambleItem> thePreamble,
             FixedDimen theWidth, boolean theSpread)
             throws InterpreterException {
 
@@ -389,7 +389,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
     private void startCell(Context context, TokenSource source)
             throws TypesetterException {
 
-        format = (PreambleItem) preamble.get(col);
+        format = preamble.get(col);
 
         try {
             Token t = source.scanNonSpace(context);

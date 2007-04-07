@@ -60,7 +60,7 @@ import org.extex.typesetter.Typesetter;
  *
  *   &lang;advancable&rang;
  *     &rarr; &lang;integer variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
- *      org.extex.interpreter.TokenSource#scanNumber(Context)
+ *      org.extex.core.count.CountParser#scanInteger(Context,TokenSource,Typesetter)
  *      &lang;number&rang;}
  *      |  &lang;dimen variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
  *        org.extex.core.dimen#Dimen(Context,TokenSource)

@@ -32,6 +32,7 @@ import org.extex.interpreter.exception.helping.MissingLeftBraceException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.unit.tex.table.util.PreambleItem;
 
 /**
  * This class provides an implementation for the primitive <code>\valign</code>.
@@ -86,7 +87,7 @@ public class Valign extends AbstractAlign {
      *
      * @throws InterpreterException in case of an error
      */
-    private void applyPreamble(List preamble, Dimen height,
+    private void applyPreamble(List<PreambleItem> preamble, Dimen height,
             Context context, TokenSource source,
             Typesetter typesetter) throws InterpreterException {
 
@@ -125,7 +126,7 @@ public class Valign extends AbstractAlign {
         if (t == null) {
             throw new EofException(printableControlSequence(context));
         } else if (t.isa(Catcode.LEFTBRACE)) {
-            List preamble = getPreamble(context, source);
+            List<PreambleItem> preamble = getPreamble(context, source);
             applyPreamble(preamble, height, context, source, typesetter);
         } else {
             throw new MissingLeftBraceException(

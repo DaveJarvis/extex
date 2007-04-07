@@ -25,7 +25,6 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
-import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.node.pdftex.PdfRefXImage;
 
@@ -43,7 +42,7 @@ import org.extex.typesetter.type.node.pdftex.PdfRefXImage;
  *  <pre class="syntax">
  *    &lang;pdfrefximage&rang;
  *       &rarr; <tt>\pdfrefximage</tt> {@linkplain
- *          org.extex.interpreter.TokenSource#scanNumber(Context, Token)
+ *          org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *          &lang;number&rang;} </pre>
  *
  * <h4>Examples</h4>

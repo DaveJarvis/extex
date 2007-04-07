@@ -57,7 +57,7 @@ import org.extex.unit.base.conditional.Fi;
  *  <pre class="syntax">
  *    &lang;ifcase&rang;
  *     &rarr; <tt>\ifcase</tt> {@linkplain
- *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.core.count.CountParser#scanInteger(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  &lang;cases&rang; <tt>\fi</tt>
  *
  *    &lang;cases&rang;
@@ -262,6 +262,7 @@ public class Ifcase extends AbstractIf {
      */
     protected static final class Tag {
 
+        //
     }
 
 }

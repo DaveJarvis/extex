@@ -55,7 +55,7 @@ import org.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;gluestretchorder&rang;
  *      &rarr; <tt>\gluestretchorder</tt> {@linkplain
- *        org.extex.core.glue.Glue#parse(TokenSource,Context,Typesetter)
+ *        org.extex.core.glue.GlueParser#parse(TokenSource,Context,Typesetter)
  *        &lang;glue&rang;} </pre>
  *
  * <h4>Examples</h4>
@@ -133,7 +133,7 @@ public class Gluestretchorder extends AbstractCode
             throws InterpreterException,
                 CatcodeException {
 
-        return context.getTokenFactory().toTokens( //
+        return context.getTokenFactory().toTokens(//
             convertCount(context, source, typesetter));
     }
 

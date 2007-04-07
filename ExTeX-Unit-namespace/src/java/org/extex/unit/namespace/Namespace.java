@@ -83,6 +83,7 @@ public class Namespace extends AbstractAssignment
     }
 
     /**
+     * {@inheritDoc}
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -103,6 +104,7 @@ public class Namespace extends AbstractAssignment
     }
 
     /**
+     * {@inheritDoc}
      * @see org.extex.interpreter.type.ExpandableCode#expand(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,

@@ -59,7 +59,7 @@ import org.extex.typesetter.Typesetter;
  *        &lang;register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.core.glue.Glue#parse(TokenSource,Context,Typesetter)
+ *        org.extex.core.glue.GlueParser#parse(TokenSource,Context,Typesetter)
  *        &lang;glue&rang;}
  *
  *   &lang;optional prefix&rang;

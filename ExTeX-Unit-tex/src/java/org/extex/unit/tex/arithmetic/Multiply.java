@@ -52,16 +52,16 @@ import org.extex.typesetter.Typesetter;
  *
  *   &lang;multiplyable&rang;
  *     &rarr; &lang;integer variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
- *      org.extex.interpreter.TokenSource#scanNumber(Context)
+ *      org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *      &lang;8-bit&nbsp;number&rang;}
  *      |  &lang;dimen variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
- *      org.extex.interpreter.TokenSource#scanNumber(Context)
+ *      org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *      &lang;8-bit&nbsp;number&rang;}
  *      |  &lang;glue variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
- *      org.extex.interpreter.TokenSource#scanNumber(Context)
+ *      org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *      &lang;8-bit&nbsp;number&rang;}
  *      |  &lang;muglue variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
- *      org.extex.interpreter.TokenSource#scanNumber(Context)
+ *      org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *      &lang;8-bit&nbsp;number&rang;}
  *
  *   &lang;optional prefix&rang;

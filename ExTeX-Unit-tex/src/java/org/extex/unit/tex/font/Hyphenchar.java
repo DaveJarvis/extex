@@ -61,7 +61,7 @@ import org.extex.typesetter.Typesetter;
  *  &amp;langfont&amp;rang {@linkplain
  *         org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *         &amp;langequals&amp;rang} {@linkplain
- *         org.extex.interpreter.TokenSource#scanNumber(Context)
+ *         org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *         &amp;lang8-bit number&amp;rang}
  * </pre>
  *

@@ -192,6 +192,7 @@ public class OmegaMode implements Serializable {
      */
     protected OmegaMode() {
 
+        //
     }
 
 }

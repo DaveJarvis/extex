@@ -40,6 +40,7 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.listMaker.HAlignListMaker;
 import org.extex.typesetter.type.NodeList;
+import org.extex.unit.tex.table.util.PreambleItem;
 
 /**
  * This class provides an implementation for the primitive <code>\halign</code>.
@@ -181,7 +182,7 @@ public class Halign extends AbstractAlign implements Boxable {
         if (t == null) {
             throw new EofException(printableControlSequence(context));
         } else if (t.isa(Catcode.LEFTBRACE)) {
-            List preamble = getPreamble(context, source);
+            List<PreambleItem> preamble = getPreamble(context, source);
             typesetter.push(new HAlignListMaker(typesetter.getManager(),
                 context, source, preamble, width, spread));
         } else {

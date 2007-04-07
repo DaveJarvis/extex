@@ -88,7 +88,7 @@ public class MagicInputFilter extends InputStream {
         Matcher m = p.matcher(sb);
         if (m.lookingAt()) {
             String format = sb.substring(m.start(1), m.end(1));
-            System.err.println(format);
+//            System. err.println(format);
         }
 
         return stream.read();

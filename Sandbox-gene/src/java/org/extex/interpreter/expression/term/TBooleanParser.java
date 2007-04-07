@@ -31,9 +31,9 @@ import org.extex.typesetter.Typesetter;
 
 /**
  * This class implements the supporting functions for the date type
- * {@linkplain org.extex.interpreter.expression.term.TBoolean TBoolean}
- * for the expression evaluator.
- *
+ * {@linkplain org.extex.interpreter.expression.term.TBoolean TBoolean} for the
+ * expression evaluator.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4787 $
  */
@@ -49,43 +49,41 @@ public final class TBooleanParser implements ETypeParser {
 
     /**
      * Try to convert some code into a proper data type.
-     *
+     * 
      * @param code the code to convert
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the converted value or <code>null</code> if the conversion
-     *  could not be performed
-     *
+     *         could not be performed
+     * 
      * @see org.extex.interpreter.expression.ETypeParser#convert(
      *      org.extex.interpreter.type.Code,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public EType convert(Code code, Context context,
-            TokenSource source, Typesetter typesetter) {
+    public EType convert(Code code, Context context, TokenSource source,
+            Typesetter typesetter) {
 
         return null;
     }
 
     /**
      * Try to parse a proper value from the token source.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the element inquired or <code>null</code> if none could be
-     *  parsed
-     *
+     *         parsed
+     * 
      * @throws InterpreterException in case of an error
-     *
+     * 
      * @see org.extex.interpreter.expression.ETypeParser#parse(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public EType parse(Context context, TokenSource source,
             Typesetter typesetter) throws InterpreterException {
@@ -100,11 +98,11 @@ public final class TBooleanParser implements ETypeParser {
     }
 
     /**
-     * Inform the parser that it has been registered in an evaluator.
-     * In this case the parser can register some functions in the evaluator.
-     *
+     * Inform the parser that it has been registered in an evaluator. In this
+     * case the parser can register some functions in the evaluator.
+     * 
      * @param evaluator the evaluator where the parser has been registered
-     *
+     * 
      * @see org.extex.interpreter.expression.ETypeParser#registered(
      *      org.extex.interpreter.expression.Evaluator)
      */
@@ -113,11 +111,12 @@ public final class TBooleanParser implements ETypeParser {
         evaluator.register("boolean", new UnaryFunction() {
 
             /**
-             * @see org.extex.interpreter.expression.Function1#apply(
+             * {@inheritDoc}
+             * 
+             * @see org.extex.interpreter.expression.UnaryFunction#apply(
              *      org.extex.interpreter.expression.EType)
              */
-            public EType apply(EType accumulator)
-                    throws InterpreterException {
+            public EType apply(EType accumulator) throws InterpreterException {
 
                 return new TBoolean().set(accumulator);
             }

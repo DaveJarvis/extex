@@ -50,7 +50,7 @@ import org.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;romannumeral&rang;
  *        &rarr; <tt>\romannumeral</tt> {@linkplain
- *           org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
+ *           org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *           &lang;number&rang;} </pre>
  *
  * <h4>Examples</h4>

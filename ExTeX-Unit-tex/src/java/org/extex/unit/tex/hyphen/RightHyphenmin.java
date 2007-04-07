@@ -55,7 +55,7 @@ import org.extex.typesetter.Typesetter;
  *      &rarr; <tt>\righthyphenmin</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.core.count.Count#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  *
  * <h4>Example:</h4>

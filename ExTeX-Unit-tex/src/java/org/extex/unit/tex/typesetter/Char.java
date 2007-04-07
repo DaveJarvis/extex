@@ -48,7 +48,7 @@ import org.extex.typesetter.exception.TypesetterException;
  *  <pre class="syntax">
  *    &lang;char&rang;
  *        &rarr; <tt>\char</tt> {@linkplain
- *        org.extex.interpreter.TokenSource#scanNumber(Context)
+ *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} </pre>
  *
  * <h4>Examples</h4>

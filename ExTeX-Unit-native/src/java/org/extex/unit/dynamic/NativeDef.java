@@ -256,9 +256,9 @@ public class NativeDef extends AbstractAssignment
     public void configure(Configuration config)
             throws ConfigurationException {
 
-        Iterator iterator = config.iterator("load");
+        Iterator<Configuration> iterator = config.iterator("load");
         while (iterator.hasNext()) {
-            Configuration cfg = (Configuration) iterator.next();
+            Configuration cfg = iterator.next();
             map.put(cfg.getAttribute("name"), cfg);
         }
     }

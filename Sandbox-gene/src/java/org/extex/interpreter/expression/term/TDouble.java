@@ -217,19 +217,19 @@ public class TDouble implements EType {
         throw new UnsupportedException("||", toString());
     }
 
-    /**
-     * @see org.extex.interpreter.expression.EType#parse(
-     *      java.lang.CharSequence)
-     */
-    public EType parse(CharSequence sequence) {
-
-        try {
-            this.value = Double.parseDouble(sequence.toString());
-            return this;
-        } catch (NumberFormatException e) {
-            return null;
-        }
-    }
+//    /**
+//     * @see org.extex.interpreter.expression.EType#parse(
+//     *      java.lang.CharSequence)
+//     */
+//    public EType parse(CharSequence sequence) {
+//
+//        try {
+//            this.value = Double.parseDouble(sequence.toString());
+//            return this;
+//        } catch (NumberFormatException e) {
+//            return null;
+//        }
+//    }
 
     /**
      * @see org.extex.interpreter.expression.EType#set(

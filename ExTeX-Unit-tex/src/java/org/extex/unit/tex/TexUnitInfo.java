@@ -100,7 +100,7 @@ public class TexUnitInfo extends UnitInfo
         /**
          * Creates a new object.
          * 
-         * @param source
+         * @param source the source for more tokens
          */
         public Observer(TokenSource source) {
 
@@ -108,6 +108,7 @@ public class TexUnitInfo extends UnitInfo
         }
 
         /**
+         * {@inheritDoc}
          * @see org.extex.interpreter.context.observer.count.CountObserver#receiveCountChange(
          *      org.extex.interpreter.context.ContextInternals,
          *      java.lang.String, org.extex.core.count.Count)

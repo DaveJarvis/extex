@@ -52,9 +52,9 @@ public final class Finder {
         PrintStream printStream = System.out;
         ClassLoader classLoader = Finder.class.getClassLoader();
         try {
-            Enumeration r = classLoader.getResources("toc.index");
+            Enumeration<URL> r = classLoader.getResources("toc.index");
             while (r.hasMoreElements()) {
-                URL el = (URL) r.nextElement();
+                URL el = r.nextElement();
                 printStream.println(el.getPath());
                 Properties properties = new Properties();
                 InputStream s = el.openStream();

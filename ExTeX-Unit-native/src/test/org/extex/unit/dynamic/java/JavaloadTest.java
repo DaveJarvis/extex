@@ -23,41 +23,41 @@ import org.extex.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\javaload</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class JavaloadTest extends NoFlagsPrimitiveTester {
 
     /**
+     * The constant <tt>SENSOR</tt> contains the name of te sensor class.
+     */
+    private static final String SENSOR = JavaloadSensor.class.getName();
+
+    /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public JavaloadTest(String arg) {
 
-        super(arg, "javaload",
-                "{org.extex.interpreter.primitives.dynamic.java.JavaloadSensor}");
+        super(arg, "javaload", "{" + SENSOR + "}");
         setConfig("native-test");
     }
 
     /**
-     * <testcase primitive="\javaload">
-     *  Test case checking that <tt>\javaload</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\javaload"> Test case checking that
+     * <tt>\javaload</tt> ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
         assertSuccess(
-                //--- input code ---
-                DEFINE_BRACES
-                        + "\\javaload"
-                        + "{org.extex.interpreter.primitives.dynamic.java.JavaloadSensor}"
-                        + " \\end",
-                //--- log message ---
-                "");
+        // --- input code ---
+            DEFINE_BRACES + "\\javaload" + "{" + SENSOR + "}" + " \\end",
+            // --- log message ---
+            "");
         assertTrue(JavaloadSensor.isSensed());
     }
 

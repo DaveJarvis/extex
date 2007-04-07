@@ -60,7 +60,7 @@ import org.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;fontdimen&rang;
  *       &rarr; <tt>\fontdimen</tt> {@linkplain
- *          org.extex.interpreter.TokenSource#scanNumber(Context)
+ *          org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#getFont(Context,String)
  *          &lang;font&rang;} {@linkplain

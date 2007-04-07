@@ -517,6 +517,8 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
+                 * {@inheritDoc}
+                 *
                  * @see org.extex.interpreter.context.Context#setGlue(java.lang.String, org.extex.core.glue.Glue, boolean)
                  */
                 public void setGlue(String name, Glue value,
@@ -526,6 +528,8 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
+                 * {@inheritDoc}
+                 *
                  * @see org.extex.interpreter.context.Context#setId(java.lang.String)
                  */
                 public void setId(String id) {
@@ -534,6 +538,8 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
+                 * {@inheritDoc}
+                 *
                  * @see org.extex.interpreter.context.Context#setLanguageManager(org.extex.language.LanguageManager)
                  */
                 public void setLanguageManager(LanguageManager manager) {
@@ -542,6 +548,8 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
+                 * {@inheritDoc}
+                 *
                  * @see org.extex.interpreter.context.Context#setLccode(org.extex.core.UnicodeChar, org.extex.core.UnicodeChar, boolean)
                  */
                 public void setLccode(UnicodeChar uc,
@@ -551,6 +559,8 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
+                 * {@inheritDoc}
+                 *
                  * @see org.extex.interpreter.context.Context#setMagnification(long, boolean)
                  */
                 public void setMagnification(long mag, boolean lock) {
@@ -559,6 +569,8 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
+                 * {@inheritDoc}
+                 *
                  * @see org.extex.interpreter.context.Context#setMathcode(org.extex.core.UnicodeChar, org.extex.interpreter.type.math.MathCode, boolean)
                  */
                 public void setMathcode(UnicodeChar uc,
@@ -568,6 +580,8 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
+                 * {@inheritDoc}
+                 *
                  * @see org.extex.interpreter.context.Context#setMuskip(java.lang.String, org.extex.core.muskip.Muskip, boolean)
                  */
                 public void setMuskip(String name, Muskip value,
@@ -577,6 +591,8 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
+                 * {@inheritDoc}
+                 *
                  * @see org.extex.interpreter.context.Context#setNamespace(java.lang.String, boolean)
                  */
                 public void setNamespace(String namespace,
@@ -586,6 +602,8 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
+                 * {@inheritDoc}
+                 *
                  * @see org.extex.interpreter.context.Context#setParshape(org.extex.typesetter.paragraphBuilder.ParagraphShape)
                  */
                 public void setParshape(ParagraphShape shape) {
@@ -594,6 +612,8 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
+                 * {@inheritDoc}
+                 *
                  * @see org.extex.interpreter.context.Context#setSfcode(org.extex.core.UnicodeChar, org.extex.core.count.Count, boolean)
                  */
                 public void setSfcode(UnicodeChar uc, Count code,
@@ -603,6 +623,8 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
+                 * {@inheritDoc}
+                 *
                  * @see org.extex.interpreter.context.Context#setStandardTokenStream(org.extex.scanner.TokenStream)
                  */
                 public void setStandardTokenStream(
@@ -612,6 +634,8 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
+                 * {@inheritDoc}
+                 *
                  * @see org.extex.interpreter.context.Context#setTokenFactory(org.extex.scanner.type.token.TokenFactory)
                  */
                 public void setTokenFactory(TokenFactory factory) {
@@ -620,6 +644,8 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
+                 * {@inheritDoc}
+                 *
                  * @see org.extex.interpreter.context.Context#setUccode(org.extex.core.UnicodeChar, org.extex.core.UnicodeChar, boolean)
                  */
                 public void setUccode(UnicodeChar lc,
@@ -629,14 +655,18 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
+                 * {@inheritDoc}
+                 *
                  * @see org.extex.interpreter.context.Context#unitIterator()
                  */
-                public Iterator unitIterator() {
+                public Iterator<UnitInfo> unitIterator() {
 
                     return null;
                 }
 
                 /**
+                 * {@inheritDoc}
+                 *
                  * @see org.extex.interpreter.context.ContextCode#getCode(org.extex.scanner.type.token.CodeToken)
                  */
                 public Code getCode(CodeToken t) {
@@ -645,6 +675,8 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
+                 * {@inheritDoc}
+                 *
                  * @see org.extex.interpreter.context.ContextCode#setCode(org.extex.scanner.type.token.CodeToken, org.extex.interpreter.type.Code, boolean)
                  */
                 public void setCode(CodeToken t, Code code,
@@ -1460,7 +1492,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 /**
                  * @see org.extex.interpreter.context.Context#unitIterator()
                  */
-                public Iterator unitIterator() {
+                public Iterator<UnitInfo> unitIterator() {
 
                     return null;
                 }

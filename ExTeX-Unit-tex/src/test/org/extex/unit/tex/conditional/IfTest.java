@@ -587,29 +587,6 @@ public class IfTest extends ExTeXLauncher {
         }
 
         /**
-         * @deprecated use CountParser.scanNumber() instead
-         * @see org.extex.interpreter.TokenSource#scanNumber(
-         *      org.extex.interpreter.context.Context)
-         */
-        public long scanNumber(Context context)
-                throws InterpreterException {
-
-            return 0;
-        }
-
-        /**
-         * @deprecated use CountParser.scanNumber() instead
-         * @see org.extex.interpreter.TokenSource#scanNumber(
-         *       org.extex.interpreter.context.Context,
-         *       org.extex.scanner.type.token.Token)
-         */
-        public long scanNumber(Context context, Token token)
-                throws InterpreterException {
-
-            return 0;
-        }
-
-        /**
          * Scan the input streams for an entity to denote a register name. Upon EOF
          * <code>null</code> is returned.
          *

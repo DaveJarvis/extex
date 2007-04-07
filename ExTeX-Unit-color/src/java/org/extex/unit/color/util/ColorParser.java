@@ -311,6 +311,7 @@ public final class ColorParser {
      */
     private ColorParser() {
 
+        // never used
     }
 
 }

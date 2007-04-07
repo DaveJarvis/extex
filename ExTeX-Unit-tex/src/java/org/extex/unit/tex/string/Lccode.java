@@ -54,11 +54,11 @@ import org.extex.typesetter.Typesetter;
  *  <pre class="syntax">
  *    &lang;lccode&rang;
  *        &rarr; <tt>\lccode</tt> {@linkplain
- *          org.extex.interpreter.TokenSource#scanNumber(Context)
+ *          org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *          &lang;equals&rang;} {@linkplain
- *          org.extex.interpreter.TokenSource#scanNumber(Context)
+ *          org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} </pre>
  *
  * <h4>Examples</h4>

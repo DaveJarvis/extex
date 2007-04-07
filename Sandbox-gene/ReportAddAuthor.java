@@ -112,6 +112,8 @@ public final class ReportAddAuthor {
             }
 
             /**
+             * {@inheritDoc}
+             *
              * @see org.xml.sax.helpers.DefaultHandler#startDocument()
              */
             public void startDocument() throws SAXException {

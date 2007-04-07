@@ -46,7 +46,7 @@ import org.extex.unit.tex.register.box.Setbox;
  *  <pre class="syntax">
  *    &lang;unvcopy&rang;
  *       &rarr; <tt>&#x5c;unvcopy</tt> {@linkplain
- *          org.extex.interpreter.TokenSource#scanNumber(Context)
+ *          org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} </pre>
  *
  * <h4>Examples</h4>
