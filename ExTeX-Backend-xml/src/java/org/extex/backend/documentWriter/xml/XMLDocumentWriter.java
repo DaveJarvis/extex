@@ -352,9 +352,9 @@ public class XMLDocumentWriter
 
         StringBuffer buf = new StringBuffer();
         buf.append("\n");
-        Iterator it = param.keySet().iterator();
+        Iterator<String> it = param.keySet().iterator();
         while (it.hasNext()) {
-            String name = (String) it.next();
+            String name = it.next();
             buf.append(name);
             buf.append("=");
             buf.append(param.get(name));
@@ -370,9 +370,9 @@ public class XMLDocumentWriter
     private void printParameterElement() throws IOException {
 
         writer.writeStartElement("parameter");
-        Iterator it = param.keySet().iterator();
+        Iterator<String> it = param.keySet().iterator();
         while (it.hasNext()) {
-            String name = (String) it.next();
+            String name = it.next();
             writer.writeStartElement(name);
             writer.writeCharacters(param.get(name));
             writer.writeEndElement();
