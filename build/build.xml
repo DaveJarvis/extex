@@ -114,7 +114,10 @@
   <target name="compile" description="Compile the production Java files">
 
     <mkdir dir="${classes}" />
-    <javac destdir="${classes}" debug="on" deprecation="${javac.deprecation}">
+    <javac destdir="${classes}"
+           debug="on"
+           encoding="ISO8859-1"
+           deprecation="${javac.deprecation}">
       <classpath refid="application.class.path" />
       <src refid="application.source.path" />
     </javac>
@@ -253,6 +256,7 @@
     <mkdir dir="${test.classes}" />
     <javac destdir="${test.classes}"
            debug="on"
+           encoding="ISO8859-1"
            deprecation="${javac.deprecation}">
       <classpath>
         <pathelement path="${target}/${application}/${extex.jar.file}.jar" />

@@ -50,13 +50,10 @@
   </path>
 
   <!-- ==================================================================== -->
-  <target name="all"
-          description="Build nearly everything"
-          depends="compile" />
+  <target name="all" description="Build nearly everything" depends="compile" />
 
   <!-- ==================================================================== -->
-  <target name="clean"
-          description="Remove unneccesary files and directories.">
+  <target name="clean" description="Remove unneccesary files and directories.">
     <delete dir="${classes}" />
     <delete dir="${deploy}" />
     <delete dir="${target.tests}" />
@@ -70,12 +67,13 @@
 
     <mkdir dir="${classes}" />
     <ant target="_dependencies_">
-      <property name="target" value="compile"/>
+      <property name="target" value="compile" />
     </ant>
     <!-- <echo message="compiling ${ant.project.name}"/> -->
     <javac srcdir="${src}"
            destdir="${classes}"
            debug="on"
+           encoding="ISO8859-1"
            deprecation="${javac.deprecation}">
       <classpath refid="main.class.path" />
     </javac>
@@ -93,8 +91,7 @@
   </target>
 
   <!-- ==================================================================== -->
-  <target name="javadoc"
-          description="Create JavaDoc HTML pages.">
+  <target name="javadoc" description="Create JavaDoc HTML pages.">
     <mkdir dir="${javadoc}" />
     <javadoc destdir="${javadoc}"
              overview="${src}/overview.html"
@@ -139,7 +136,7 @@
         </patternset>
       </fileset>
       <manifest>
-      <attribute name="Built-By" value="${user.name}" />
+        <attribute name="Built-By" value="${user.name}" />
         <attribute name="Main-Class" value="${main.class}" />
       </manifest>
     </jar>
@@ -149,11 +146,14 @@
   <target name="compile.tests"
           description="Compile the Java files (with tests)">
     <mkdir dir="${classes}" />
-    <javac srcdir="${src.tests}" destdir="${classes}" debug="on">
+    <javac srcdir="${src.tests}"
+           destdir="${classes}"
+           debug="on"
+           encoding="ISO8859-1">
       <classpath refid="main.class.path" />
       <!-- <classpath refid="develop.class.path" /> -->
       <classpath>
-        <pathelement path="${classes}"/>
+        <pathelement path="${classes}" />
       </classpath>
     </javac>
     <copy todir="${classes}">
@@ -170,10 +170,9 @@
           description="Run JUnit tests and produce a HTML test report">
     <delete dir="${target.tests}" />
     <mkdir dir="${target.tests}" />
-    <junit printsummary="on"
-           haltonfailure="no">
-      <jvmarg value="-Xms128m"/>
-      <jvmarg value="-Xmx512m"/>
+    <junit printsummary="on" haltonfailure="no">
+      <jvmarg value="-Xms128m" />
+      <jvmarg value="-Xmx512m" />
       <classpath>
         <pathelement path="${classes}" />
         <fileset dir="${ant.library.dir}">
@@ -181,7 +180,7 @@
         </fileset>
       </classpath>
       <classpath refid="test.class.path" />
-      <formatter type="xml"/>
+      <formatter type="xml" />
       <batchtest fork="yes" todir="${target.tests}">
         <fileset dir="${src.tests}">
           <include name="${cases}" />
@@ -190,11 +189,11 @@
     </junit>
     <junitreport todir="${target.tests}">
       <fileset dir="${target.tests}">
-        <include name="TEST-*.xml"/>
+        <include name="TEST-*.xml" />
       </fileset>
       <report format="frames"
               styledir="develop/reports"
-              todir="${target}/reports/tests"/>
+              todir="${target}/reports/tests" />
     </junitreport>
   </target>
 
@@ -204,7 +203,7 @@
     <sequential>
       <ant antfile="../@{project}/build.xml"
            dir="../@{project}"
-           target="${target}"/>
+           target="${target}" />
     </sequential>
   </macrodef>
 
