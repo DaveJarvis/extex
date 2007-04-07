@@ -57,7 +57,7 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
      */
-    private class ConfigIterator implements Iterator {
+    private class ConfigIterator implements Iterator<Configuration> {
 
         /**
          * The field <tt>node</tt> contains the current node.
@@ -106,7 +106,7 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
          * 
          * @see java.util.Iterator#next()
          */
-        public Object next() {
+        public Configuration next() {
 
             if (node == null) {
                 return null;
@@ -694,7 +694,7 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
      * 
      * @see org.extex.framework.configuration.Configuration#iterator()
      */
-    public Iterator iterator() {
+    public Iterator<Configuration> iterator() {
 
         return new ConfigIterator(root.getFirstChild());
     }
@@ -717,7 +717,7 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
      * 
      * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
      */
-    public Iterator iterator(String key)
+    public Iterator<Configuration> iterator(String key)
             throws ConfigurationInvalidResourceException,
                 ConfigurationNotFoundException,
                 ConfigurationSyntaxException,

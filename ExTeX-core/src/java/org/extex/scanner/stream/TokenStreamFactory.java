@@ -150,7 +150,7 @@ public class TokenStreamFactory extends AbstractFactory
      * The field <tt>decorators</tt> contains the list of decorators for
      * input streams acquired from a resource.
      */
-    private List decorators = null;
+    private List<StreamDecorator> decorators = null;
 
     /**
      * The field <tt>openFileObservers</tt> contains the observers registered
@@ -179,7 +179,7 @@ public class TokenStreamFactory extends AbstractFactory
      * The field <tt>readerConstructor</tt> contains the constructor for the
      * reader variant.
      */
-    private Constructor readerConstructor;
+    private Constructor<?> readerConstructor;
 
     /**
      * The field <tt>resourceFinder</tt> contains the file finder used when
@@ -191,13 +191,13 @@ public class TokenStreamFactory extends AbstractFactory
      * The field <tt>streamConstructor</tt> contains the constructor for the
      * file variant.
      */
-    private Constructor streamConstructor;
+    private Constructor<?> streamConstructor;
 
     /**
      * The field <tt>stringConstructor</tt> contains the constructor for the
      * string variant.
      */
-    private Constructor stringConstructor;
+    private Constructor<?> stringConstructor;
 
     /**
      * Creates a new object.
@@ -370,7 +370,7 @@ public class TokenStreamFactory extends AbstractFactory
 
         if (decorators != null) {
             for (int i = 0; i < decorators.size(); i++) {
-                stream = ((StreamDecorator) decorators.get(i)).pipe(stream);
+                stream = decorators.get(i).pipe(stream);
             }
         }
 
@@ -408,7 +408,7 @@ public class TokenStreamFactory extends AbstractFactory
     public void register(StreamDecorator decorator) {
 
         if (decorators == null) {
-            decorators = new ArrayList();
+            decorators = new ArrayList<StreamDecorator>();
         }
         decorators.add(decorator);
     }

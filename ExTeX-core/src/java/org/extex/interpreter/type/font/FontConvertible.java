@@ -27,31 +27,33 @@ import org.extex.typesetter.Typesetter;
 /**
  * This is an interface which describes the feature to be convertible into a
  * font.
- *
+ * 
  * <doc type="interface" name="font">
  * <p>
- *  TODO missing documentation
+ * TODO missing documentation
  * </p>
  * <p>
- *  The formal description is the following:
- *  <pre class="syntax">
+ * The formal description is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;font&rang;
  *        &rarr;  &lang;loaded font&rang;
  *         |   <tt>\textfont</tt> {@linkplain
- *             org.extex.interpreter.TokenSource#scanNumber(Context)
+ *             org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *             &lang;8-bit&nbsp;number&rang;}
  *         |   <tt>\scriptfont</tt> {@linkplain
- *             org.extex.interpreter.TokenSource#scanNumber(Context)
+ *             org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *             &lang;8-bit&nbsp;number&rang;}
  *         |   <tt>\scriptscriptfont</tt> {@linkplain
- *             org.extex.interpreter.TokenSource#scanNumber(Context)
+ *             org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *             &lang;8-bit&nbsp;number&rang;}
  *         |   <tt>\font</tt>
  *  </pre>
+ * 
  * </p>
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4399 $
  */
@@ -59,13 +61,13 @@ public interface FontConvertible {
 
     /**
      * Convert some primitive value into a font.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the converted value
-     *
+     * 
      * @throws InterpreterException In case of an error
      */
     Font convertFont(Context context, TokenSource source, Typesetter typesetter)

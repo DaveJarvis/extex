@@ -85,8 +85,9 @@ public class ScaledNumber {
     private static final BinOp MINUS = new BinOp() {
 
         /**
-         * @see org.extex.interpreter.primitives.register.count.Numexpr.BinOp#apply(
-         *      long, long)
+         * {@inheritDoc}
+         *
+         * @see org.extex.core.scaled.ScaledNumber.BinOp#apply(long, long)
          */
         public long apply(long arg1, long arg2) {
 

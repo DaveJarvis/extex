@@ -58,12 +58,12 @@ public class NullFont implements Font, Serializable {
     /**
      * The field <tt>efCode</tt> contains the ef code.
      */
-    private Map efCode = null;
+    private Map<UnicodeChar, Long> efCode = null;
 
     /**
      * The field <tt>fontDimens</tt> contains the map for font dimens.
      */
-    private Map fontDimens = null;
+    private Map<String, Dimen> fontDimens = null;
 
     /**
      * The field <tt>hyphen</tt> contains the hyphen char for this font.
@@ -132,7 +132,7 @@ public class NullFont implements Font, Serializable {
      */
     public FixedGlue getDepth(UnicodeChar uc) {
 
-        return Glue.ZERO;
+        return FixedGlue.ZERO;
     }
 
     /**
@@ -162,7 +162,7 @@ public class NullFont implements Font, Serializable {
         if (efCode == null) {
             return DEFAULT_EF_CODE;
         }
-        Long code = (Long) efCode.get(uc);
+        Long code = efCode.get(uc);
         return (code == null ? DEFAULT_EF_CODE : code.longValue());
     }
 
@@ -379,7 +379,7 @@ public class NullFont implements Font, Serializable {
     public void setEfCode(UnicodeChar uc, long code) {
 
         if (efCode == null) {
-            efCode = new HashMap();
+            efCode = new HashMap<UnicodeChar, Long>();
         }
         efCode.put(uc, new Long(code));
     }
@@ -396,7 +396,7 @@ public class NullFont implements Font, Serializable {
     public void setFontDimen(String name, Dimen value) {
 
         if (fontDimens == null) {
-            fontDimens = new HashMap();
+            fontDimens = new HashMap<String, Dimen>();
         }
         fontDimens.put(name, value);
     }

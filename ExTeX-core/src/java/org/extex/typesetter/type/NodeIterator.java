@@ -34,14 +34,14 @@ public class NodeIterator {
     /**
      * The field <tt>iterator</tt> contains the wrapped iterator.
      */
-    private Iterator iterator;
+    private Iterator<Node> iterator;
 
     /**
      * Creates a new object.
      *
      * @param list the list to iterate through
      */
-    public NodeIterator(List list) {
+    public NodeIterator(List<Node> list) {
 
         super();
         iterator = list.iterator();
@@ -65,7 +65,7 @@ public class NodeIterator {
      */
     public Node next() {
 
-        return ((Node) iterator.next());
+        return iterator.next();
     }
 
 }

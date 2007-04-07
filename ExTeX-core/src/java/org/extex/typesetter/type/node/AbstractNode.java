@@ -443,6 +443,7 @@ public abstract class AbstractNode implements Node {
      */
     public void spreadHeight(FixedDimen h, FixedGlueComponent sum) {
 
+        //noop
     }
 
     /**
@@ -458,6 +459,7 @@ public abstract class AbstractNode implements Node {
      */
     public void spreadWidth(FixedDimen w, FixedGlueComponent sum) {
 
+        //noop
     }
 
     /**

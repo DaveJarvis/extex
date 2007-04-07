@@ -38,6 +38,7 @@ public final class Unit {
      */
     private Unit() {
 
+        // never used
     }
 
     /**

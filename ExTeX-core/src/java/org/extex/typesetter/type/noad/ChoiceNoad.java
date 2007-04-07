@@ -128,6 +128,7 @@ public class ChoiceNoad implements Noad {
      */
     public void setSubscript(Noad subscript) {
 
+        throw new UnsupportedOperationException("setSubscript()");
     }
 
     /**
@@ -140,6 +141,7 @@ public class ChoiceNoad implements Noad {
      */
     public void setSuperscript(Noad superscript) {
 
+        throw new UnsupportedOperationException("setSuperscript()");
     }
 
     /**

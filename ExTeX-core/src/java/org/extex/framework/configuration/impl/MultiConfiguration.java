@@ -32,9 +32,9 @@ import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
 
 /**
  * Container for several
- * {@link org.extex.framework.configuration.Configuration Configuration} objects.
- * They can be treated as if they where contained in one configuration.
- *
+ * {@link org.extex.framework.configuration.Configuration Configuration}
+ * objects. They can be treated as if they where contained in one configuration.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -47,9 +47,9 @@ public class MultiConfiguration implements Configuration {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param parts the configs to treat jointly
-     *
+     * 
      * @throws ConfigurationException in case that the configuration is invalid
      */
     public MultiConfiguration(Configuration[] parts)
@@ -61,20 +61,20 @@ public class MultiConfiguration implements Configuration {
 
     /**
      * Extract a sub-configuration with a given name.
-     *
+     * 
      * @param key the tag name of the sub-configuration
-     *
+     * 
      * @return the sub-configuration or <code>null</code> if none is found
-     *
+     * 
      * @throws ConfigurationInvalidResourceException in case that the given
-     *  resource name is <code>null</code> or empty
+     *         resource name is <code>null</code> or empty
      * @throws ConfigurationNotFoundException in case that the named path does
-     *  not lead to a resource
+     *         not lead to a resource
      * @throws ConfigurationSyntaxException in case that the resource contains
-     *  syntax errors
-     * @throws ConfigurationIOException in case of an IO exception while
-     *  reading the resource
-     *
+     *         syntax errors
+     * @throws ConfigurationIOException in case of an IO exception while reading
+     *         the resource
+     * 
      * @see org.extex.framework.configuration.Configuration#findConfiguration(
      *      java.lang.String)
      */
@@ -109,11 +109,10 @@ public class MultiConfiguration implements Configuration {
 
     /**
      * @see org.extex.framework.configuration.Configuration#findConfiguration(
-     *      java.lang.String,
-     *      java.lang.String)
+     *      java.lang.String, java.lang.String)
      */
-    public Configuration findConfiguration(String key,
-            String attribute) throws ConfigurationException {
+    public Configuration findConfiguration(String key, String attribute)
+            throws ConfigurationException {
 
         List<Configuration> v = new ArrayList<Configuration>();
 
@@ -138,12 +137,12 @@ public class MultiConfiguration implements Configuration {
     /**
      * Getter for an attribute with a given name. The first attribute in a
      * sub-configuration is returned.
-     *
+     * 
      * @param name the tag name of the attribute
-     *
+     * 
      * @return the value of the attribute or <code>null</code> if such an
-     *  attribute is not present
-     *
+     *         attribute is not present
+     * 
      * @see org.extex.framework.configuration.Configuration#getAttribute(
      *      java.lang.String)
      */
@@ -188,8 +187,8 @@ public class MultiConfiguration implements Configuration {
      * @see org.extex.framework.configuration.Configuration#getConfiguration(
      *      java.lang.String, java.lang.String)
      */
-    public Configuration getConfiguration(String key,
-            String attribute) throws ConfigurationException {
+    public Configuration getConfiguration(String key, String attribute)
+            throws ConfigurationException {
 
         List<Configuration> v = new ArrayList<Configuration>();
 
@@ -213,11 +212,11 @@ public class MultiConfiguration implements Configuration {
 
     /**
      * Getter for the textual value of this configuration.
-     *
+     * 
      * @return the text stored directly in this configuration
-     *
+     * 
      * @throws ConfigurationException in case that something went wrong
-     *
+     * 
      * @see org.extex.framework.configuration.Configuration#getValue()
      */
     public String getValue() throws ConfigurationException {
@@ -279,15 +278,10 @@ public class MultiConfiguration implements Configuration {
     }
 
     /**
-     * Get the list of all values with the given tag name in the current
-     * configuration and append them to a given StringList.
-     *
-     * @param key the name of the tags
-     * @param list the list to append the values to
-     *
+     * {@inheritDoc}
+     * 
      * @see org.extex.framework.configuration.Configuration#getValues(
-     *      org.extex.core.StringList,
-     *      java.lang.String)
+     *      java.util.List, java.lang.String)
      */
     public void getValues(List<String> list, String key) {
 
@@ -298,16 +292,17 @@ public class MultiConfiguration implements Configuration {
 
     /**
      * Retrieve an iterator over all items of a sub-configuration.
-     *
+     * 
      * @param key the name of the sub-configuration
-     *
+     * 
      * @return the iterator
-     *
+     * 
      * @throws ConfigurationException in case that something went wrong
-     *
+     * 
      * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
      */
-    public Iterator iterator(String key) throws ConfigurationException {
+    public Iterator<Configuration> iterator(String key)
+            throws ConfigurationException {
 
         return new MultiConfigurationIterator(configs, key);
     }
@@ -315,7 +310,7 @@ public class MultiConfiguration implements Configuration {
     /**
      * @see org.extex.framework.configuration.Configuration#iterator()
      */
-    public Iterator iterator() throws ConfigurationException {
+    public Iterator<Configuration> iterator() throws ConfigurationException {
 
         return new MultiConfigurationIterator(configs, null);
     }

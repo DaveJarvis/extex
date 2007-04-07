@@ -46,7 +46,7 @@ import org.extex.scanner.type.token.TokenVisitor;
 import org.extex.scanner.type.tokens.Tokens;
 
 /**
- * This class holds an output file onto which tokens can be wrtitten.
+ * This class holds an output file onto which tokens can be written.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4388 $
@@ -65,8 +65,10 @@ public class OutFile implements Serializable {
     private static final TokenVisitor VISITOR = new TokenVisitor() {
 
         /**
+         * {@inheritDoc}
+         *
          * @see org.extex.scanner.type.token.TokenVisitor#visitActive(
-         *      org.extex.scanner.type.ActiveCharacterToken,
+         *      org.extex.scanner.type.token.ActiveCharacterToken,
          *      java.lang.Object)
          */
         public Object visitActive(ActiveCharacterToken token,
@@ -78,7 +80,7 @@ public class OutFile implements Serializable {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitCr(
-         *      org.extex.scanner.type.CrToken, java.lang.Object)
+         *      org.extex.scanner.type.token.CrToken, java.lang.Object)
          */
         public Object visitCr(CrToken token, Object w)
                 throws Exception {
@@ -89,7 +91,7 @@ public class OutFile implements Serializable {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitEscape(
-         *      org.extex.scanner.type.ControlSequenceToken,
+         *      org.extex.scanner.type.token.ControlSequenceToken,
          *      java.lang.Object)
          */
         public Object visitEscape(ControlSequenceToken token,
@@ -105,7 +107,7 @@ public class OutFile implements Serializable {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitLeftBrace(
-         *      org.extex.scanner.type.LeftBraceToken,
+         *      org.extex.scanner.type.token.LeftBraceToken,
          *      java.lang.Object)
          */
         public Object visitLeftBrace(LeftBraceToken token, Object w)
@@ -117,7 +119,7 @@ public class OutFile implements Serializable {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitLetter(
-         *      org.extex.scanner.type.LetterToken,
+         *      org.extex.scanner.type.token.LetterToken,
          *      java.lang.Object)
          */
         public Object visitLetter(LetterToken token, Object w)
@@ -129,7 +131,7 @@ public class OutFile implements Serializable {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitMacroParam(
-         *      org.extex.scanner.type.MacroParamToken,
+         *      org.extex.scanner.type.token.MacroParamToken,
          *      java.lang.Object)
          */
         public Object visitMacroParam(MacroParamToken token,
@@ -141,7 +143,7 @@ public class OutFile implements Serializable {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitMathShift(
-         *      org.extex.scanner.type.MathShiftToken,
+         *      org.extex.scanner.type.token.MathShiftToken,
          *      java.lang.Object)
          */
         public Object visitMathShift(MathShiftToken token, Object w)
@@ -153,7 +155,7 @@ public class OutFile implements Serializable {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitOther(
-         *      org.extex.scanner.type.OtherToken,
+         *      org.extex.scanner.type.token.OtherToken,
          *      java.lang.Object)
          */
         public Object visitOther(OtherToken token, Object w)
@@ -165,7 +167,7 @@ public class OutFile implements Serializable {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitRightBrace(
-         *      org.extex.scanner.type.RightBraceToken,
+         *      org.extex.scanner.type.token.RightBraceToken,
          *      java.lang.Object)
          */
         public Object visitRightBrace(RightBraceToken token,
@@ -177,7 +179,7 @@ public class OutFile implements Serializable {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitSpace(
-         *      org.extex.scanner.type.SpaceToken,
+         *      org.extex.scanner.type.token.SpaceToken,
          *      java.lang.Object)
          */
         public Object visitSpace(SpaceToken token, Object w)
@@ -189,7 +191,7 @@ public class OutFile implements Serializable {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitSubMark(
-         *      org.extex.scanner.type.SubMarkToken,
+         *      org.extex.scanner.type.token.SubMarkToken,
          *      java.lang.Object)
          */
         public Object visitSubMark(SubMarkToken token, Object w)
@@ -201,7 +203,7 @@ public class OutFile implements Serializable {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitSupMark(
-         *      org.extex.scanner.type.SupMarkToken,
+         *      org.extex.scanner.type.token.SupMarkToken,
          *      java.lang.Object)
          */
         public Object visitSupMark(SupMarkToken token, Object w)
@@ -213,7 +215,7 @@ public class OutFile implements Serializable {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitTabMark(
-         *      org.extex.scanner.type.TabMarkToken,
+         *      org.extex.scanner.type.token.TabMarkToken,
          *      java.lang.Object)
          */
         public Object visitTabMark(TabMarkToken token, Object w)

@@ -220,6 +220,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      *
      * @see org.extex.typesetter.type.NodeList#copy()
      */
+    @SuppressWarnings("unchecked")
     public NodeList copy() {
 
         try {

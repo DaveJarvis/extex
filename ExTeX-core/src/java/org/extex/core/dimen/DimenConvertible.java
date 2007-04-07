@@ -19,6 +19,7 @@
 
 package org.extex.core.dimen;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
@@ -52,6 +53,6 @@ public interface DimenConvertible {
      * @throws ConfigurationException in case of an configuration error
      */
     long convertDimen(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+            throws InterpreterException, ConfigurationException;
 
 }

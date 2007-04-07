@@ -359,7 +359,7 @@ public class MathListMaker extends HorizontalListMaker
     /**
      * The field <tt>stack</tt> contains the stack for parsing sub-formulae.
      */
-    private Stack stack = new Stack();
+    private Stack<MathMemento> stack = new Stack<MathMemento>();
 
     /**
      * Creates a new object.
@@ -522,6 +522,7 @@ public class MathListMaker extends HorizontalListMaker
             throws TypesetterException,
                 ConfigurationException {
 
+        //noop
     }
 
     /**
@@ -543,7 +544,7 @@ public class MathListMaker extends HorizontalListMaker
                 ConfigurationException {
 
         if (!stack.empty()) {
-            MathMemento mm = (MathMemento) stack.pop();
+            MathMemento mm = stack.pop();
             throw new TypesetterException(new HelpingException(getLocalizer(),
                 "TTP.MissingInserted", //
                 (mm.isBlock() ? "}" : "\\right.")));
@@ -591,6 +592,7 @@ public class MathListMaker extends HorizontalListMaker
     public void cr(Context context, TypesettingContext tc,
             UnicodeChar uc) throws TypesetterException {
 
+        //noop
     }
 
     /**
@@ -699,7 +701,7 @@ public class MathListMaker extends HorizontalListMaker
     /**
      * Open the group for a \left-\right construction.
      *
-     * @param delimiter the delimiter to typeset on theleft side
+     * @param delimiter the delimiter to typeset on the left side
      *
      * @throws TypesetterException in case of an error
      *
@@ -828,7 +830,7 @@ public class MathListMaker extends HorizontalListMaker
             throw new TypesetterHelpingException(getLocalizer(),
                 "TTP.ExtraOrForgotten", "$");
         }
-        MathMemento memento = (MathMemento) stack.peek();
+        MathMemento memento = stack.peek();
         if (memento.isBlock()) {
             throw new TypesetterHelpingException(getLocalizer(),
                 "TTP.ExtraOrForgotten", "\\right.");
@@ -881,7 +883,7 @@ public class MathListMaker extends HorizontalListMaker
             throw new TypesetterHelpingException(getLocalizer(),
                 "TTP.ExtraOrForgotten", "$");
         }
-        MathMemento memento = (MathMemento) stack.pop();
+        MathMemento memento = stack.pop();
         if (memento.isBlock()) {
             throw new TypesetterHelpingException(getLocalizer(),
                 "TTP.ExtraRigt", "\\right.");
@@ -907,7 +909,7 @@ public class MathListMaker extends HorizontalListMaker
             throw new TypesetterHelpingException(getLocalizer(),
                 "TTP.ExtraOrForgotten", "$");
         }
-        MathMemento memento = (MathMemento) stack.pop();
+        MathMemento memento = stack.pop();
         if (!memento.isBlock()) {
             throw new TypesetterHelpingException(getLocalizer(),
                 "TTP.ExtraOrForgotten", "\\right.");

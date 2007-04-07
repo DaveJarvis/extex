@@ -31,7 +31,7 @@ import org.extex.framework.configuration.exception.ConfigurationMissingException
 
 /**
  * TODO gene: missing JavaDoc.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5417 $
  */
@@ -42,17 +42,33 @@ public class ClasspathArchiveFinderTest extends TestCase {
      */
     private static final Configuration CFG = new Configuration() {
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
+         */
         public Configuration findConfiguration(String key) {
 
             return null;
         }
 
-        public Configuration findConfiguration(String key,
-                String attribute) throws ConfigurationException {
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String,
+         *      java.lang.String)
+         */
+        public Configuration findConfiguration(String key, String attribute)
+                throws ConfigurationException {
 
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
+         */
         public String getAttribute(String name) {
 
             if ("default".equals(name)) {
@@ -62,34 +78,66 @@ public class ClasspathArchiveFinderTest extends TestCase {
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String)
+         */
         public Configuration getConfiguration(String key)
                 throws ConfigurationException {
 
             return this;
         }
 
-        public Configuration getConfiguration(String key,
-                String attribute) throws ConfigurationException {
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String,
+         *      java.lang.String)
+         */
+        public Configuration getConfiguration(String key, String attribute)
+                throws ConfigurationException {
 
             return this;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getValue()
+         */
         public String getValue() throws ConfigurationException {
 
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getValue(java.lang.String)
+         */
         public String getValue(String key) throws ConfigurationException {
 
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String,
+         *      int)
+         */
         public int getValueAsInteger(String key, int defaultValue)
                 throws ConfigurationException {
 
             return defaultValue;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
+         */
         public List<String> getValues(String key) {
 
             if ("extension".equals(key)) {
@@ -101,17 +149,33 @@ public class ClasspathArchiveFinderTest extends TestCase {
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getValues(java.util.List,
+         *      java.lang.String)
+         */
         public void getValues(List<String> list, String key) {
 
             // not needed
         }
 
-        public Iterator iterator() throws ConfigurationException {
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#iterator()
+         */
+        public Iterator<Configuration> iterator() throws ConfigurationException {
 
             return null;
         }
 
-        public Iterator iterator(String key)
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
+         */
+        public Iterator<Configuration> iterator(String key)
                 throws ConfigurationException {
 
             return null;
@@ -121,7 +185,7 @@ public class ClasspathArchiveFinderTest extends TestCase {
 
     /**
      * Test that a null configuration leads to an exception.
-     *
+     * 
      * @throws Exception in case of an error
      */
     public final void test1() throws Exception {
@@ -135,8 +199,9 @@ public class ClasspathArchiveFinderTest extends TestCase {
     }
 
     /**
-     * Test method for {@link org.extex.resource.ClasspathArchiveFinder#findResource(java.lang.String, java.lang.String)}.
-     *
+     * Test method for
+     * {@link org.extex.resource.ClasspathArchiveFinder#findResource(java.lang.String, java.lang.String)}.
+     * 
      * @throws Exception in case of an error
      */
     public final void testFindResource0() throws Exception {
@@ -147,8 +212,9 @@ public class ClasspathArchiveFinderTest extends TestCase {
     }
 
     /**
-     * Test method for {@link org.extex.resource.ClasspathArchiveFinder#findResource(java.lang.String, java.lang.String)}.
-     *
+     * Test method for
+     * {@link org.extex.resource.ClasspathArchiveFinder#findResource(java.lang.String, java.lang.String)}.
+     * 
      * @throws Exception in case of an error
      */
     public final void testFindResource1() throws Exception {
@@ -159,8 +225,9 @@ public class ClasspathArchiveFinderTest extends TestCase {
     }
 
     /**
-     * Test method for {@link org.extex.resource.ClasspathArchiveFinder#findResource(java.lang.String, java.lang.String)}.
-     *
+     * Test method for
+     * {@link org.extex.resource.ClasspathArchiveFinder#findResource(java.lang.String, java.lang.String)}.
+     * 
      * @throws Exception in case of an error
      */
     public final void testFindResource2() throws Exception {
@@ -171,8 +238,9 @@ public class ClasspathArchiveFinderTest extends TestCase {
     }
 
     /**
-     * Test method for {@link org.extex.resource.ClasspathArchiveFinder#findResource(java.lang.String, java.lang.String)}.
-     *
+     * Test method for
+     * {@link org.extex.resource.ClasspathArchiveFinder#findResource(java.lang.String, java.lang.String)}.
+     * 
      * @throws Exception in case of an error
      */
     public final void testFindResource3() throws Exception {
@@ -183,8 +251,9 @@ public class ClasspathArchiveFinderTest extends TestCase {
     }
 
     /**
-     * Test method for {@link org.extex.resource.ClasspathArchiveFinder#findResource(java.lang.String, java.lang.String)}.
-     *
+     * Test method for
+     * {@link org.extex.resource.ClasspathArchiveFinder#findResource(java.lang.String, java.lang.String)}.
+     * 
      * @throws Exception in case of an error
      */
     public final void testFindResource4() throws Exception {
@@ -195,8 +264,9 @@ public class ClasspathArchiveFinderTest extends TestCase {
     }
 
     /**
-     * Test method for {@link org.extex.resource.ClasspathArchiveFinder#findResource(java.lang.String, java.lang.String)}.
-     *
+     * Test method for
+     * {@link org.extex.resource.ClasspathArchiveFinder#findResource(java.lang.String, java.lang.String)}.
+     * 
      * @throws Exception in case of an error
      */
     public final void testFindResource5() throws Exception {

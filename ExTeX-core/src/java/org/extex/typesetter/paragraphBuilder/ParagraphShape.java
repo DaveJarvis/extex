@@ -45,7 +45,7 @@ public class ParagraphShape implements Serializable {
      * the parshape. There are always two consecutive points for the left and
      * the right margin.
      */
-    private List points = new ArrayList();
+    private List<FixedDimen> points = new ArrayList<FixedDimen>();
 
     /**
      * Creates a new object.
@@ -83,7 +83,7 @@ public class ParagraphShape implements Serializable {
             return Dimen.ZERO_PT;
         }
         int i = (points.size() - 1) / 2;
-        return (FixedDimen) points.get((index > i ? i : index) * 2);
+        return points.get((index > i ? i : index) * 2);
     }
 
     /**
@@ -102,7 +102,7 @@ public class ParagraphShape implements Serializable {
             return Dimen.ZERO_PT;
         }
         int i = (points.size() - 1) / 2;
-        return (FixedDimen) points.get((index > i ? i : index) * 2 + 1);
+        return points.get((index > i ? i : index) * 2 + 1);
     }
 
     /**

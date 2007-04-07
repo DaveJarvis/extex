@@ -74,9 +74,9 @@ public class ResourceFinderFactory {
 
         ResourceFinderList list = new ResourceFinderList();
 
-        Iterator iterator = config.iterator("Finder");
+        Iterator<Configuration> iterator = config.iterator("Finder");
         while (iterator.hasNext()) {
-            Configuration cfg = (Configuration) iterator.next();
+            Configuration cfg = iterator.next();
             String classname = cfg.getAttribute(CLASS_ATTRIBUTE);
             if (classname == null) {
                 throw new ConfigurationMissingAttributeException(

@@ -111,7 +111,7 @@ public class ConfigurationFactoryTest extends TestCase {
 
         try {
             new ConfigurationFactory()
-                    .newInstance("org/extex/util/framework/configuration/EmptyConfiguration.xml");
+                    .newInstance("org/extex/framework/configuration/EmptyConfiguration.xml");
             assertFalse("Exception expected", true);
         } catch (ConfigurationException e) {
             assertTrue(true);
@@ -120,7 +120,7 @@ public class ConfigurationFactoryTest extends TestCase {
 
     /**
      * <testcase>
-     *  Test that a valid configuration leads is loaded.
+     *  Test that a valid configuration is loaded.
      * </testcase>
      *
      * @throws ConfigurationException in case of an error
@@ -128,7 +128,7 @@ public class ConfigurationFactoryTest extends TestCase {
     public void testNewInstance10() throws ConfigurationException {
 
         Configuration cfg = new ConfigurationFactory()
-                .newInstance("org/extex/util/framework/configuration/Configuration.xml");
+                .newInstance("org/extex/framework/configuration/Configuration.xml");
         assertNotNull(cfg);
     }
 

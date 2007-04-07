@@ -22,7 +22,7 @@ package org.extex.typesetter.type.node;
 import junit.framework.TestCase;
 
 import org.extex.core.dimen.Dimen;
-import org.extex.core.glue.Glue;
+import org.extex.core.glue.FixedGlue;
 
 /**
  * This file contains test cases for the vertical list node.
@@ -97,10 +97,10 @@ public class VerticalListNodeTest extends TestCase {
     public void testVpack2() {
 
         VerticalListNode vlist = new VerticalListNode();
-        vlist.addSkip(Glue.S_S);
+        vlist.addSkip(FixedGlue.S_S);
         vlist.add(new RuleNode(Dimen.ONE_INCH, Dimen.ONE_INCH, Dimen.ONE_INCH,
                 null, true));
-        vlist.addSkip(Glue.S_S);
+        vlist.addSkip(FixedGlue.S_S);
         Dimen h = new Dimen(Dimen.ONE_INCH);
         h.multiply(2);
         assertEquals(0, vlist.vpack(h));

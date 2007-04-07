@@ -365,6 +365,7 @@ public class GlueComponentParser {
      * Creates a new object.
      */
     private GlueComponentParser() {
+        // never used
     }
 
 }

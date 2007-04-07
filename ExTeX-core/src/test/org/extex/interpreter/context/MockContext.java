@@ -71,14 +71,15 @@ import org.extex.typesetter.paragraphBuilder.ParagraphShape;
  * This mock implementation of a context does nothing useful but provide dummy
  * methods. It is meant as a base for derived mock implementations in test
  * classes.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4491 $
  */
 public class MockContext implements Context, TypesetterOptions {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
@@ -103,23 +104,23 @@ public class MockContext implements Context, TypesetterOptions {
     /**
      * Add a unit to the list of loaded units. The units can be notified when
      * the context is loaded from a format.
-     *
+     * 
      * @param info the info of the unit loaded
-     *
+     * 
      * @see org.extex.interpreter.context.Context#addUnit(
      *      org.extex.interpreter.unit.UnitInfo)
      */
     public void addUnit(UnitInfo info) {
 
-        //not needed
+        // not needed
     }
 
     /**
      * Register a observer to be called at the end of the group. The end of the
      * group is reached when the group is closed.
-     *
+     * 
      * @param observer the observer to register
-     *
+     * 
      * @see org.extex.interpreter.context.ContextGroup#afterGroup(
      *      org.extex.interpreter.context.observer.group.AfterGroupObserver)
      */
@@ -130,11 +131,11 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * Add a token to the tokens inserted after the group has been closed.
-     *
+     * 
      * @param t the token to add
-     *
+     * 
      * @throws InterpreterException in case of an error
-     *
+     * 
      * @see org.extex.interpreter.context.ContextGroup#afterGroup(
      *      org.extex.scanner.type.token.Token)
      */
@@ -145,18 +146,17 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * This method clears all split marks.
-     *
+     * 
      * @see org.extex.interpreter.context.ContextMark#clearSplitMarks()
      */
     public void clearSplitMarks() {
 
-        //not needed
+        // not needed
     }
 
     /**
      * @see org.extex.interpreter.context.ContextGroup#closeGroup(
-     *      org.extex.typesetter.Typesetter,
-     *      org.extex.interpreter.TokenSource)
+     *      org.extex.typesetter.Typesetter, org.extex.interpreter.TokenSource)
      */
     public void closeGroup(Typesetter typesetter, TokenSource source)
             throws InterpreterException {
@@ -191,14 +191,13 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * Getter for a value from an extended section of the context.
-     *
+     * 
      * @param extension the name of the extension
      * @param key the key for the value
-     *
+     * 
      * @return the value stored
-     *
-     * @see org.extex.interpreter.context.Context#get(
-     *      java.lang.Object,
+     * 
+     * @see org.extex.interpreter.context.Context#get( java.lang.Object,
      *      java.lang.Object)
      */
     public Object get(Object extension, Object key) {
@@ -232,8 +231,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.scanner.Tokenizer#getCatcode(
-     *      org.extex.core.UnicodeChar)
+     * @see org.extex.scanner.Tokenizer#getCatcode( org.extex.core.UnicodeChar)
      */
     public Catcode getCatcode(UnicodeChar c) {
 
@@ -333,8 +331,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.ContextFont#getFont(
-     *      java.lang.String)
+     * @see org.extex.interpreter.context.ContextFont#getFont( java.lang.String)
      */
     public Font getFont(String name) {
 
@@ -425,8 +422,7 @@ public class MockContext implements Context, TypesetterOptions {
     /**
      * @see org.extex.interpreter.context.Context#getLanguage(java.lang.String)
      */
-    public Language getLanguage(String language)
-            throws InterpreterException {
+    public Language getLanguage(String language) throws InterpreterException {
 
         throw new RuntimeException("unimplemented");
     }
@@ -611,8 +607,7 @@ public class MockContext implements Context, TypesetterOptions {
     /**
      * @see org.extex.interpreter.context.ContextGroup#openGroup(
      *      org.extex.interpreter.context.group.GroupType,
-     *      org.extex.core.Locator,
-     *      org.extex.scanner.type.token.Token)
+     *      org.extex.core.Locator, org.extex.scanner.type.token.Token)
      */
     public void openGroup(GroupType id, Locator locator, Token start)
             throws ConfigurationException,
@@ -639,14 +634,11 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see org.extex.interpreter.context.Context#pushConditional(
-     *      org.extex.core.Locator,
-     *      boolean,
-     *      org.extex.interpreter.type.Code,
-     *      long,
-     *      boolean)
+     *      org.extex.core.Locator, boolean, org.extex.interpreter.type.Code,
+     *      long, boolean)
      */
-    public void pushConditional(Locator locator, boolean value,
-            Code primitive, long branch, boolean neg) {
+    public void pushConditional(Locator locator, boolean value, Code primitive,
+            long branch, boolean neg) {
 
         throw new RuntimeException("unimplemented");
     }
@@ -661,19 +653,16 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see org.extex.interpreter.context.Context#set(
-     *      org.extex.interpreter.context.Color,
-     *      boolean)
+     *      org.extex.interpreter.context.Color, boolean)
      */
-    public void set(Color color, boolean global)
-            throws ConfigurationException {
+    public void set(Color color, boolean global) throws ConfigurationException {
 
         throw new RuntimeException("unimplemented");
     }
 
     /**
      * @see org.extex.interpreter.context.Context#set(
-     *      org.extex.interpreter.context.tc.Direction,
-     *      boolean)
+     *      org.extex.interpreter.context.tc.Direction, boolean)
      */
     public void set(Direction direction, boolean global) {
 
@@ -682,8 +671,7 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see org.extex.interpreter.context.Context#set(
-     *      org.extex.interpreter.type.font.Font,
-     *      boolean)
+     *      org.extex.interpreter.type.font.Font, boolean)
      */
     public void set(Font font, boolean global) {
 
@@ -692,8 +680,7 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see org.extex.interpreter.context.Context#set(
-     *      org.extex.language.Language,
-     *      boolean)
+     *      org.extex.language.Language, boolean)
      */
     public void set(Language language, boolean global) {
 
@@ -701,20 +688,17 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#set(
-     *      java.lang.Object,
-     *      java.lang.Object,
-     *      java.lang.Object,
-     *      boolean)
+     * @see org.extex.interpreter.context.Context#set( java.lang.Object,
+     *      java.lang.Object, java.lang.Object, boolean)
      */
-    public void set(Object extension, Object key,
-            Object value, boolean global) {
+    public void set(Object extension, Object key, Object value, boolean global) {
 
         throw new RuntimeException("unimplemented");
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.context.tc.TypesettingContext, boolean)
+     * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.context.tc.TypesettingContext,
+     *      boolean)
      */
     public void set(TypesettingContext context, boolean global) {
 
@@ -730,7 +714,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#setBox(java.lang.String, org.extex.interpreter.type.box.Box, boolean)
+     * @see org.extex.interpreter.context.Context#setBox(java.lang.String,
+     *      org.extex.interpreter.type.box.Box, boolean)
      */
     public void setBox(String name, Box value, boolean global) {
 
@@ -738,19 +723,22 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#setCatcode(org.extex.core.UnicodeChar, org.extex.scanner.type.Catcode, boolean)
+     * {@inheritDoc}
+     *
+     * @see org.extex.interpreter.context.Context#setCatcode(org.extex.core.UnicodeChar,
+     *      org.extex.scanner.type.Catcode, boolean)
      */
-    public void setCatcode(UnicodeChar c, Catcode cc,
-            boolean global) {
+    public void setCatcode(UnicodeChar c, Catcode cc, boolean global) {
 
         throw new RuntimeException("unimplemented");
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.ContextCode#setCode(
      *      org.extex.scanner.type.token.CodeToken,
-     *      org.extex.interpreter.type.Code,
-     *      boolean)
+     *      org.extex.interpreter.type.Code, boolean)
      */
     public void setCode(CodeToken t, Code code, boolean global) {
 
@@ -758,26 +746,32 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.ContextCount#setCount(java.lang.String, long, boolean)
+     * {@inheritDoc}
+     *
+     * @see org.extex.interpreter.context.ContextCount#setCount(java.lang.String,
+     *      long, boolean)
      */
-    public void setCount(String name, long value,
-            boolean global) {
+    public void setCount(String name, long value, boolean global) {
 
         throw new RuntimeException("unimplemented");
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.TypesetterOptions#setCountOption(
-     *      java.lang.String,
-     *      long)
+     *      java.lang.String, long)
      */
     public void setCountOption(String name, long value) {
 
-        //not needed
+        // not needed
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#setDelcode(org.extex.core.UnicodeChar, MathDelimiter, boolean)
+     * {@inheritDoc}
+     *
+     * @see org.extex.interpreter.context.Context#setDelcode(org.extex.core.UnicodeChar,
+     *      MathDelimiter, boolean)
      */
     public void setDelcode(UnicodeChar c, MathDelimiter delimiter,
             boolean global) {
@@ -786,25 +780,33 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.ContextDimen#setDimen(java.lang.String, org.extex.core.dimen.Dimen, boolean)
+     * {@inheritDoc}
+     *
+     * @see org.extex.interpreter.context.ContextDimen#setDimen(java.lang.String,
+     *      org.extex.core.dimen.Dimen, boolean)
      */
-    public void setDimen(String name, Dimen value,
-            boolean global) throws InterpreterException {
+    public void setDimen(String name, Dimen value, boolean global)
+            throws InterpreterException {
 
         throw new RuntimeException("unimplemented");
     }
 
     /**
-     * @see org.extex.interpreter.context.ContextDimen#setDimen(java.lang.String, long, boolean)
+     * {@inheritDoc}
+     *
+     * @see org.extex.interpreter.context.ContextDimen#setDimen(java.lang.String,
+     *      long, boolean)
      */
-    public void setDimen(String name, long value,
-            boolean global) {
+    public void setDimen(String name, long value, boolean global) {
 
         throw new RuntimeException("unimplemented");
     }
 
     /**
-     * @see org.extex.interpreter.context.ContextFont#setFont(java.lang.String, org.extex.interpreter.type.font.Font, boolean)
+     * {@inheritDoc}
+     *
+     * @see org.extex.interpreter.context.ContextFont#setFont(java.lang.String,
+     *      org.extex.interpreter.type.font.Font, boolean)
      */
     public void setFont(String name, Font font, boolean global) {
 
@@ -812,6 +814,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.ContextFont#setFontFactory(
      *      org.extex.font.CoreFontFactory)
      */
@@ -821,15 +825,20 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#setGlue(java.lang.String, org.extex.core.glue.Glue, boolean)
+     * {@inheritDoc}
+     *
+     * @see org.extex.interpreter.context.Context#setGlue(java.lang.String,
+     *      org.extex.core.glue.Glue, boolean)
      */
-    public void setGlue(String name, Glue value,
-            boolean global) throws InterpreterException {
+    public void setGlue(String name, Glue value, boolean global)
+            throws InterpreterException {
 
         throw new RuntimeException("unimplemented");
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#setId(java.lang.String)
      */
     public void setId(String id) {
@@ -838,15 +847,19 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.ContextFile#setInFile(java.lang.String, org.extex.interpreter.type.file.InFile, boolean)
+     * {@inheritDoc}
+     *
+     * @see org.extex.interpreter.context.ContextFile#setInFile(java.lang.String,
+     *      org.extex.interpreter.type.file.InFile, boolean)
      */
-    public void setInFile(String name, InFile file,
-            boolean global) {
+    public void setInFile(String name, InFile file, boolean global) {
 
         throw new RuntimeException("unimplemented");
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.ContextInteraction#setInteraction(
      *      org.extex.interpreter.interaction.Interaction)
      */
@@ -857,6 +870,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#setLanguageManager(
      *      org.extex.language.LanguageManager)
      */
@@ -866,19 +881,21 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#setLccode(
-     *      org.extex.core.UnicodeChar,
-     *      org.extex.core.UnicodeChar,
-     *      boolean)
+     *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar, boolean)
      */
-    public void setLccode(UnicodeChar uc, UnicodeChar lc,
-            boolean global) {
+    public void setLccode(UnicodeChar uc, UnicodeChar lc, boolean global) {
 
         throw new RuntimeException("unimplemented");
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#setMagnification(long, boolean)
+     * {@inheritDoc}
+     *
+     * @see org.extex.interpreter.context.Context#setMagnification(long,
+     *      boolean)
      */
     public void setMagnification(long mag, boolean lock)
             throws HelpingException {
@@ -887,8 +904,9 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.ContextMark#setMark(
-     *      java.lang.Object,
+     * {@inheritDoc}
+     *
+     * @see org.extex.interpreter.context.ContextMark#setMark( java.lang.Object,
      *      org.extex.scanner.type.tokens.Tokens)
      */
     public void setMark(Object name, Tokens mark) {
@@ -897,28 +915,32 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#setMathcode(
-     *      org.extex.core.UnicodeChar,
-     *      MathCode,
+     *      org.extex.core.UnicodeChar, MathCode, boolean)
+     */
+    public void setMathcode(UnicodeChar uc, MathCode code, boolean global) {
+
+        throw new RuntimeException("unimplemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.extex.interpreter.context.Context#setMuskip(java.lang.String,
+     *      org.extex.core.muskip.Muskip, boolean)
+     */
+    public void setMuskip(String name, Muskip value, boolean global) {
+
+        throw new RuntimeException("unimplemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.extex.interpreter.context.Context#setNamespace(java.lang.String,
      *      boolean)
-     */
-    public void setMathcode(UnicodeChar uc, MathCode code,
-            boolean global) {
-
-        throw new RuntimeException("unimplemented");
-    }
-
-    /**
-     * @see org.extex.interpreter.context.Context#setMuskip(java.lang.String, org.extex.core.muskip.Muskip, boolean)
-     */
-    public void setMuskip(String name, Muskip value,
-            boolean global) {
-
-        throw new RuntimeException("unimplemented");
-    }
-
-    /**
-     * @see org.extex.interpreter.context.Context#setNamespace(java.lang.String, boolean)
      */
     public void setNamespace(String namespace, boolean global) {
 
@@ -926,15 +948,19 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.ContextFile#setOutFile(java.lang.String, org.extex.interpreter.type.file.OutFile, boolean)
+     * {@inheritDoc}
+     *
+     * @see org.extex.interpreter.context.ContextFile#setOutFile(java.lang.String,
+     *      org.extex.interpreter.type.file.OutFile, boolean)
      */
-    public void setOutFile(String name, OutFile file,
-            boolean global) {
+    public void setOutFile(String name, OutFile file, boolean global) {
 
         throw new RuntimeException("unimplemented");
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#setParshape(org.extex.typesetter.paragraphBuilder.ParagraphShape)
      */
     public void setParshape(ParagraphShape shape) {
@@ -943,25 +969,30 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#setSfcode(org.extex.core.UnicodeChar, org.extex.core.count.Count, boolean)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.context.Context#setSfcode(org.extex.core.UnicodeChar,
+     *      org.extex.core.count.Count, boolean)
      */
-    public void setSfcode(UnicodeChar uc, Count code,
-            boolean global) {
+    public void setSfcode(UnicodeChar uc, Count code, boolean global) {
 
         throw new RuntimeException("unimplemented");
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.ContextMark#setSplitMark(
-     *      java.lang.Object,
-     *      org.extex.scanner.type.tokens.Tokens)
+     *      java.lang.Object, org.extex.scanner.type.tokens.Tokens)
      */
     public void setSplitMark(Object name, Tokens mark) {
 
-        //not needed
+        // not needed
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.Context#setStandardTokenStream(org.extex.scanner.TokenStream)
      */
     public void setStandardTokenStream(TokenStream standardTokenStream) {
@@ -970,6 +1001,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.Context#setTokenFactory(
      *      org.extex.scanner.type.token.TokenFactory)
      */
@@ -980,30 +1013,28 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see org.extex.interpreter.context.ContextTokens#setToks(
-     *      java.lang.String,
-     *      org.extex.scanner.type.tokens.Tokens, boolean)
+     *      java.lang.String, org.extex.scanner.type.tokens.Tokens, boolean)
      */
-    public void setToks(String name, Tokens toks,
-            boolean global) throws InterpreterException {
+    public void setToks(String name, Tokens toks, boolean global)
+            throws InterpreterException {
 
         throw new RuntimeException("unimplemented");
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.interpreter.context.Context#setUccode(
-     *      org.extex.core.UnicodeChar,
-     *      org.extex.core.UnicodeChar,
-     *      boolean)
+     *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar, boolean)
      */
-    public void setUccode(UnicodeChar lc, UnicodeChar uc,
-            boolean global) {
+    public void setUccode(UnicodeChar lc, UnicodeChar uc, boolean global) {
 
         throw new RuntimeException("unimplemented");
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.Context#startMarks()
      */
     public void startMarks() {
@@ -1012,9 +1043,11 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.Context#unitIterator()
      */
-    public Iterator unitIterator() {
+    public Iterator<UnitInfo> unitIterator() {
 
         return null;
     }

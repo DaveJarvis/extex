@@ -53,7 +53,7 @@ public class FontKeyFactory extends AbstractFactory {
      * @param theMap    The map with key value entries.
      * @return Returns a new font key instance.
      */
-    public FontKey newInstance(FontKey fk, Map theMap) {
+    public FontKey newInstance(FontKey fk, Map<String, ?> theMap) {
 
         FontKey newfk = new FontKey(fk);
         newfk.put(theMap);

@@ -179,6 +179,7 @@ public class CreateClasspathArchive {
      *
      * @param jarname   The name of the jar archive,
      * @param tocindex  The toc index file.
+     * @throws FileNotFoundException TODO mgn
      * @throws IOException if a IO-error occurred.
      */
     private void createJarFile(String jarname, File tocindex)
@@ -191,9 +192,9 @@ public class CreateClasspathArchive {
         addFile(out, tocindex, "toc.index");
 
         // files
-        Enumeration e = tocIndexProps.keys();
+        Enumeration<Object> e = tocIndexProps.keys();
         while (e.hasMoreElements()) {
-            String key = (String) e.nextElement();
+            String key = e.nextElement().toString();
             String value = tocIndexProps.getProperty(key);
             File f = new File(basedir + File.separator + value);
             addFile(out, f, value);

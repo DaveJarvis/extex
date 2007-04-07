@@ -220,9 +220,9 @@ public class FileFinder extends AbstractFinder implements PropertyConfigurable {
             trace("ConfigurationNotFound", type, t);
         }
 
-        Iterator iterator = cfg.iterator(PATH_TAG);
+        Iterator<Configuration> iterator = cfg.iterator(PATH_TAG);
         while (stream == null && iterator.hasNext()) {
-            Configuration c = (Configuration) iterator.next();
+            Configuration c = iterator.next();
             String prop = c.getAttribute("property");
             if (prop != null) {
                 String path = properties.getProperty(prop, null);

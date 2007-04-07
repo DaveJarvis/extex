@@ -34,7 +34,7 @@ import org.extex.framework.logger.LogEnabled;
 
 /**
  * This file finder search recursively in a directory.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -51,14 +51,15 @@ public class FileFinderRPathImpl
     private Logger logger = null;
 
     /**
-     * The field <tt>trace</tt> contains the indicator that tracing is required.
-     * This field is set to <code>true</code> according to the configuration.
+     * The field <tt>trace</tt> contains the indicator that tracing is
+     * required. This field is set to <code>true</code> according to the
+     * configuration.
      */
     private boolean trace = false;
 
     /**
-     * The field <tt>config</tt> contains the configuration object on which this
-     * file finder is based.
+     * The field <tt>config</tt> contains the configuration object on which
+     * this file finder is based.
      */
     private Configuration config;
 
@@ -69,7 +70,7 @@ public class FileFinderRPathImpl
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param configuration the encapsulated configuration object
      */
     public FileFinderRPathImpl(Configuration configuration) {
@@ -84,7 +85,7 @@ public class FileFinderRPathImpl
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
      *      java.lang.String)
      */
@@ -111,9 +112,9 @@ public class FileFinderRPathImpl
             logger.fine("FileFinder: Searching " + name + " [" + type + "]\n");
         }
 
-        Iterator iterator = cfg.iterator("path");
+        Iterator<Configuration> iterator = cfg.iterator("path");
         while (iterator.hasNext()) {
-            Configuration c = (Configuration) iterator.next();
+            Configuration c = iterator.next();
             String prop = c.getAttribute("property");
             String path = null;
             if (prop != null) {
@@ -142,14 +143,13 @@ public class FileFinderRPathImpl
 
     /**
      * Find a file recursively.
-     *
+     * 
      * @param fpath path for searching
-     * @param name  the file name
-     * @param cfg   the configuration
+     * @param name the file name
+     * @param cfg the configuration
      * @return Returns the input stream
      */
-    private InputStream findFile(File fpath, String name,
-            Configuration cfg) {
+    private InputStream findFile(File fpath, String name, Configuration cfg) {
 
         File file;
         for (String ext : cfg.getValues("extension")) {
@@ -190,7 +190,7 @@ public class FileFinderRPathImpl
 
     /**
      * Getter for logger.
-     *
+     * 
      * @return the logger.
      */
     public Logger getLogger() {
@@ -200,7 +200,7 @@ public class FileFinderRPathImpl
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
      */
     public void enableTracing(boolean flag) {
@@ -210,7 +210,7 @@ public class FileFinderRPathImpl
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.resource.PropertyConfigurable#setProperties(java.util.Properties)
      */
     public void setProperties(Properties prop) {
@@ -220,7 +220,7 @@ public class FileFinderRPathImpl
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
     public void enableLogging(Logger alogger) {

@@ -21,23 +21,29 @@ package org.extex.scanner.stream.observer.reader;
 
 import java.io.Reader;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This class provides a type-safe list of observers for the open reader event.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4738 $
  */
-public final class OpenReaderObserverList implements OpenReaderObserver {
+public final class OpenReaderObserverList extends ArrayList<OpenReaderObserver>
+        implements
+            OpenReaderObserver {
+
+    /**
+     * The field <tt>serialVersionUID</tt> contains the ...
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * Take a list and add an observer. If the list is <code>null</code> then
      * a new one is created.
-     *
+     * 
      * @param list the input list or <code>null</code>
      * @param observer the observer to add
-     *
+     * 
      * @return the input list or a new one with the observer added
      */
     public static OpenReaderObserver register(OpenReaderObserver list,
@@ -59,33 +65,18 @@ public final class OpenReaderObserverList implements OpenReaderObserver {
     }
 
     /**
-     * The field <tt>list</tt> contains the encapsulated list.
-     */
-    private List list = new ArrayList();
-
-    /**
-     * Add an observer to the list.
-     *
-     * @param observer the observer to add to the list
-     */
-    public void add(OpenReaderObserver observer) {
-
-        list.add(observer);
-    }
-
-    /**
      * Invoke all observers on the list to inform them of the reader which has
      * been opened.
-     *
+     * 
      * @param reader the reader to be processed
-     *
+     * 
      * @see org.extex.scanner.stream.observer.reader.OpenReaderObserver#update(
      *      java.io.Reader)
      */
     public void update(Reader reader) {
 
-        for (int i = 0; i < list.size(); i++) {
-            ((OpenReaderObserver) list.get(i)).update(reader);
+        for (OpenReaderObserver obs : this) {
+            obs.update(reader);
         }
     }
 

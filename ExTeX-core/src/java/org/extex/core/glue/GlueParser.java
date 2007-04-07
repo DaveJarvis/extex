@@ -121,6 +121,7 @@ public final class GlueParser {
      * Creates a new object.
      */
     private GlueParser() {
+        // never used
     }
 
 }

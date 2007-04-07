@@ -34,6 +34,7 @@ public final class ColorUtil {
      */
     private ColorUtil() {
 
+        // never used
     }
 
     /**

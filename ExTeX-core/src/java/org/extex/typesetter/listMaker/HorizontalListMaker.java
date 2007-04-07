@@ -54,8 +54,8 @@ import org.extex.typesetter.type.node.SpaceNode;
  * <p>
  * After <code>par()</code>, the line breaking and hyphenation are applied.
  * </p>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4739 $
@@ -63,8 +63,8 @@ import org.extex.typesetter.type.node.SpaceNode;
 public class HorizontalListMaker extends AbstractListMaker {
 
     /**
-     * The constant <tt>DEFAULT_SPACEFACTOR</tt> contains the default value for
-     * the space factor. It is 1000 according to <logo>TeX</logo>.
+     * The constant <tt>DEFAULT_SPACEFACTOR</tt> contains the default value
+     * for the space factor. It is 1000 according to <logo>TeX</logo>.
      */
     private static final int DEFAULT_SPACEFACTOR = 1000;
 
@@ -78,7 +78,8 @@ public class HorizontalListMaker extends AbstractListMaker {
      * The field <tt>afterParagraphObservers</tt> contains the observers to be
      * invoked after the paragraph has been completed.
      */
-    private List afterParagraphObservers = new ArrayList();
+    private List<ParagraphObserver> afterParagraphObservers =
+            new ArrayList<ParagraphObserver>();
 
     /**
      * The field <tt>nodes</tt> contains the node list encapsulated by this
@@ -88,14 +89,14 @@ public class HorizontalListMaker extends AbstractListMaker {
 
     /**
      * The field <tt>spaceFactor</tt> contains the current space factor.
-     *
+     * 
      * @see "<logo>TeX</logo> &ndash; The Program [212]"
      */
     private long spaceFactor = DEFAULT_SPACEFACTOR;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param manager the manager to ask for global changes
      * @param locator the locator
      */
@@ -106,13 +107,10 @@ public class HorizontalListMaker extends AbstractListMaker {
 
     /**
      * {@inheritDoc}
-     *
-     * @see org.extex.typesetter.ListMaker#add(
-     *      org.extex.typesetter.type.Node)
+     * 
+     * @see org.extex.typesetter.ListMaker#add( org.extex.typesetter.type.Node)
      */
-    public void add(Node c)
-            throws TypesetterException,
-                ConfigurationException {
+    public void add(Node c) throws TypesetterException, ConfigurationException {
 
         nodes.add(c);
         spaceFactor = DEFAULT_SPACEFACTOR;
@@ -120,22 +118,21 @@ public class HorizontalListMaker extends AbstractListMaker {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.ListMaker#addAndAdjust(
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.TypesetterOptions)
      */
-    public void addAndAdjust(NodeList list,
-            TypesetterOptions options) throws TypesetterException {
+    public void addAndAdjust(NodeList list, TypesetterOptions options)
+            throws TypesetterException {
 
         nodes.add(list); // TODO gene: correct?
     }
 
     /**
      * {@inheritDoc}
-     *
-     * @see org.extex.typesetter.ListMaker#add(
-     *      org.extex.core.glue.FixedGlue)
+     * 
+     * @see org.extex.typesetter.ListMaker#add( org.extex.core.glue.FixedGlue)
      */
     public void add(FixedGlue g) throws TypesetterException {
 
@@ -145,7 +142,7 @@ public class HorizontalListMaker extends AbstractListMaker {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.ListMaker#addSpace(
      *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.core.count.Count)
@@ -189,7 +186,7 @@ public class HorizontalListMaker extends AbstractListMaker {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.ListMaker#afterParagraph(
      *      org.extex.typesetter.ParagraphObserver)
      */
@@ -200,7 +197,7 @@ public class HorizontalListMaker extends AbstractListMaker {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.ListMaker#complete(TypesetterOptions)
      */
     public NodeList complete(TypesetterOptions context)
@@ -212,20 +209,21 @@ public class HorizontalListMaker extends AbstractListMaker {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.ListMaker#cr(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
-    public void cr(Context context, TypesettingContext tc,
-            UnicodeChar uc) throws TypesetterException {
+    public void cr(Context context, TypesettingContext tc, UnicodeChar uc)
+            throws TypesetterException {
 
+        //TODO gene
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.ListMaker#getLastNode()
      */
     public Node getLastNode() {
@@ -235,7 +233,7 @@ public class HorizontalListMaker extends AbstractListMaker {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.ListMaker#getMode()
      */
     public Mode getMode() {
@@ -245,7 +243,7 @@ public class HorizontalListMaker extends AbstractListMaker {
 
     /**
      * Getter for nodes.
-     *
+     * 
      * @return the nodes.
      */
     protected HorizontalListNode getNodes() {
@@ -255,7 +253,7 @@ public class HorizontalListMaker extends AbstractListMaker {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.ListMaker#getSpacefactor()
      */
     public long getSpacefactor() {
@@ -265,18 +263,15 @@ public class HorizontalListMaker extends AbstractListMaker {
 
     /**
      * {@inheritDoc}
-     *
-     * @see org.extex.typesetter.ListMaker#letter(
-     *      org.extex.core.UnicodeChar,
+     * 
+     * @see org.extex.typesetter.ListMaker#letter( org.extex.core.UnicodeChar,
      *      org.extex.interpreter.context.tc.TypesettingContext,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.core.Locator)
+     *      org.extex.interpreter.TokenSource, org.extex.core.Locator)
      * @see "The TeXbook [p.76]"
      */
-    public boolean letter(UnicodeChar symbol,
-            TypesettingContext tc, Context context,
-            TokenSource source, Locator locator)
+    public boolean letter(UnicodeChar symbol, TypesettingContext tc,
+            Context context, TokenSource source, Locator locator)
             throws TypesetterException {
 
         UnicodeChar c = symbol;
@@ -289,8 +284,8 @@ public class HorizontalListMaker extends AbstractListMaker {
                 Font f = tc.getFont();
                 if (cn.getTypesettingContext().getFont().equals(f)) {
                     UnicodeChar cnc = cn.getCharacter();
-                    UnicodeChar lig = tc.getLanguage().getLigature(cnc, symbol,
-                            f);
+                    UnicodeChar lig =
+                            tc.getLanguage().getLigature(cnc, symbol, f);
                     if (lig != null) {
                         nodes.remove(size - 1);
                         c = lig;
@@ -314,9 +309,10 @@ public class HorizontalListMaker extends AbstractListMaker {
             int f = ((CharNode) node).getSpaceFactor();
 
             if (f != 0) {
-                spaceFactor = (spaceFactor < DEFAULT_SPACEFACTOR
-                        && f > DEFAULT_SPACEFACTOR //
-                ? DEFAULT_SPACEFACTOR : f);
+                spaceFactor =
+                        (spaceFactor < DEFAULT_SPACEFACTOR
+                                && f > DEFAULT_SPACEFACTOR //
+                        ? DEFAULT_SPACEFACTOR : f);
             }
         }
         return false;
@@ -324,7 +320,7 @@ public class HorizontalListMaker extends AbstractListMaker {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.ListMaker#par()
      */
     public void par() throws TypesetterException, ConfigurationException {
@@ -333,8 +329,7 @@ public class HorizontalListMaker extends AbstractListMaker {
             // Note: the observers have to be run in reverse order to restore
             // the language properly.
             for (int i = afterParagraphObservers.size() - 1; i >= 0; i--) {
-                ((ParagraphObserver) afterParagraphObservers.get(i))
-                        .atParagraph(nodes);
+                afterParagraphObservers.get(i).atParagraph(nodes);
             }
         } catch (InterpreterException e) {
             throw new TypesetterException(e);
@@ -344,7 +339,7 @@ public class HorizontalListMaker extends AbstractListMaker {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.ListMaker#removeLastNode()
      */
     public void removeLastNode() {
@@ -354,7 +349,7 @@ public class HorizontalListMaker extends AbstractListMaker {
 
     /**
      * Setter for nodes.
-     *
+     * 
      * @param nodes the nodes to set.
      */
     protected void setNodes(HorizontalListNode nodes) {
@@ -364,7 +359,7 @@ public class HorizontalListMaker extends AbstractListMaker {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.ListMaker#setSpacefactor(
      *      org.extex.core.count.FixedCount)
      */
@@ -381,9 +376,9 @@ public class HorizontalListMaker extends AbstractListMaker {
 
     /**
      * {@inheritDoc}
-     *
-     * @see org.extex.typesetter.ListMaker#showlist(
-     *      java.lang.StringBuffer, long, long)
+     * 
+     * @see org.extex.typesetter.ListMaker#showlist( java.lang.StringBuffer,
+     *      long, long)
      */
     public void showlist(StringBuffer sb, long l, long m) {
 
@@ -394,7 +389,7 @@ public class HorizontalListMaker extends AbstractListMaker {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     public String toString() {

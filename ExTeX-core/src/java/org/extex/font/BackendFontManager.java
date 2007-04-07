@@ -96,7 +96,7 @@ public interface BackendFontManager {
      *
      * @return the iterator for all recognized back-end font
      */
-    Iterator iterate();
+    Iterator<BackendFont> iterate();
 
     /**
      * Rest the internal state to the initial state. Afterwards the instance

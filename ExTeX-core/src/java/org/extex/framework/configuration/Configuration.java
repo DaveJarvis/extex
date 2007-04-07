@@ -318,7 +318,7 @@ public interface Configuration {
      *
      * @throws ConfigurationException in case that something went wrong
      */
-    Iterator iterator() throws ConfigurationException;
+    Iterator<Configuration> iterator() throws ConfigurationException;
 
     /**
      * Retrieve an iterator over all items of a sub-configuration.
@@ -329,6 +329,6 @@ public interface Configuration {
      *
      * @throws ConfigurationException in case that something went wrong
      */
-    Iterator iterator(String key) throws ConfigurationException;
+    Iterator<Configuration> iterator(String key) throws ConfigurationException;
 
 }

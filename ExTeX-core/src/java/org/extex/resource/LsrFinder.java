@@ -275,7 +275,7 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
     private void initialize() throws ConfigurationException {
 
         Configuration config = getConfiguration();
-        Iterator it = config.iterator(TAG_PATH);
+        Iterator<Configuration> it = config.iterator(TAG_PATH);
         if (!it.hasNext()) {
             throw new ConfigurationMissingException(TAG_PATH, config.toString());
         }
@@ -285,7 +285,7 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
                     initialCapacity) : new HashMap<String, Object>());
 
         while (it.hasNext()) {
-            Configuration cfg = (Configuration) it.next();
+            Configuration cfg = it.next();
             String pathProperty = cfg.getAttribute(ATTR_PROPERTY);
             String name;
             if (pathProperty != null) {
@@ -361,7 +361,7 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
                                 list.add(cc);
                                 list.add(value);
                             } else {
-                                List<File> list = (List) cc;
+                                List<File> list = (List<File>) cc;
                                 list.add(value);
                             }
                         }

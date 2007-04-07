@@ -39,7 +39,7 @@ public final class FontUtil {
      * Create a new Object
      */
     private FontUtil() {
-
+        // never used
     }
 
     /**

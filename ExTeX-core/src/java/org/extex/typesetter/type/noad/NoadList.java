@@ -20,25 +20,23 @@
 package org.extex.typesetter.type.noad;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This class provides a container for a list of Noads.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4399 $
  */
-public class NoadList {
+public class NoadList extends ArrayList<Noad> {
 
     /**
-     * The field <tt>list</tt> is the container for the elements of this node
-     * list.
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    private List list = new ArrayList(16);
+    private static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object containing no elements.
-     *
      */
     public NoadList() {
 
@@ -46,70 +44,14 @@ public class NoadList {
     }
 
     /**
-     * Add an arbitrary noad to the list.
-     *
-     * @param noad the noad to add
-     */
-    public void add(Noad noad) {
-
-        list.add(noad);
-    }
-
-    /**
-     * Test whether the node list is empty.
-     *
-     * @return <code>true</code>, if the list ist emtpy,
-     * otherwise <code>false</code>.
-     */
-    public boolean empty() {
-
-        return list.size() == 0;
-    }
-
-    /**
-     * Getter for a node at a given position.
-     *
-     * @param index the position
-     *
-     * @return the node at position <i>index</i> of <code>null</code> if index
-     * is out of bounds
-     */
-    public Noad get(int index) {
-
-        return (Noad) list.get(index);
-    }
-
-    /**
      * Getter for the last noad previously stored.
-     *
+     * 
      * @return the last noad or <code>null</code> if none is available
      */
     Noad getLastNoad() {
 
-        int i = list.size();
-        return (i > 0 ? (Noad) list.get(i - 1) : null);
-    }
-
-    /**
-     * Remove an element at a given position.
-     *
-     * @param index the position
-     *
-     * @return the element previously located at position <i>index</i>
-     */
-    public Noad remove(int index) {
-
-        return (Noad) list.remove(index);
-    }
-
-    /**
-     * Return the size of the <code>MathList</code>.
-     *
-     * @return the size of the <code>MathList</code>
-     */
-    public int size() {
-
-        return list.size();
+        int i = size();
+        return (i > 0 ? get(i - 1) : null);
     }
 
 }

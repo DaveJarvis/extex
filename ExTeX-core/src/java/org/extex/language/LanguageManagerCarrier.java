@@ -33,6 +33,8 @@ public interface LanguageManagerCarrier {
      * Setter for the language manager.
      *
      * @param manager the language manager to carry
+     *
+     * @throws ConfigurationException in case of a configuration problem
      */
     void setLanguageManager(LanguageManager manager)
             throws ConfigurationException;

@@ -43,28 +43,29 @@ import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 
 /**
- * This class provides a skip value with a variable length of order 0.
- * The actual length is a multiple of math units (mu).
- *
+ * This class provides a skip value with a variable length of order 0. The
+ * actual length is a multiple of math units (mu).
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4399 $
  */
 public class Muskip extends Mudimen implements Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object and fills it from a token stream.
-     *
+     * 
      * @param context the processor context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the value parsed
-     *
+     * 
      * @throws InterpreterException in case of an error
      */
     public static Muskip parse(Context context, TokenSource source,
@@ -96,9 +97,6 @@ public class Muskip extends Mudimen implements Serializable {
             }
         }
 
-        if (t == null) {
-            throw new EofException("mu");
-        }
         long value = ScaledNumber.scanFloat(context, source, typesetter, t);
         if (!source.getKeyword(context, "mu")) {
             throw new HelpingException(LocalizerFactory
@@ -119,13 +117,13 @@ public class Muskip extends Mudimen implements Serializable {
 
     /**
      * Scan a math unit.
-     *
+     * 
      * @param context the processor context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the number of scaled points for the mu
-     *
+     * 
      * @throws InterpreterException in case of an error
      */
     private static GlueComponent scanMuOrFill(Context context,
@@ -172,8 +170,7 @@ public class Muskip extends Mudimen implements Serializable {
     private GlueComponent stretch = new GlueComponent(0);
 
     /**
-     * Creates a new object.
-     * All components are 0.
+     * Creates a new object. All components are 0.
      */
     public Muskip() {
 
@@ -182,9 +179,8 @@ public class Muskip extends Mudimen implements Serializable {
     }
 
     /**
-     * Creates a new object.
-     * All components are 0.
-     *
+     * Creates a new object. All components are 0.
+     * 
      * @param kill the kill indicator
      */
     public Muskip(boolean kill) {
@@ -194,9 +190,8 @@ public class Muskip extends Mudimen implements Serializable {
     }
 
     /**
-     * Creates a new object.
-     * Strechablity and shrinkability are 0.
-     *
+     * Creates a new object. Strechablity and shrinkability are 0.
+     * 
      * @param theLength the natural length
      */
     public Muskip(FixedDimen theLength) {
@@ -206,9 +201,8 @@ public class Muskip extends Mudimen implements Serializable {
     }
 
     /**
-     * Creates a new object.
-     * Strechablity and shrinkability are 0.
-     *
+     * Creates a new object. Strechablity and shrinkability are 0.
+     * 
      * @param theLength the natural length
      */
     public Muskip(long theLength) {
@@ -219,13 +213,12 @@ public class Muskip extends Mudimen implements Serializable {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param theLength the natural length
      * @param theStretch the stretchability
      * @param theShrink the shrinkability
      */
-    public Muskip(FixedGlueComponent theLength,
-            FixedGlueComponent theStretch,
+    public Muskip(FixedGlueComponent theLength, FixedGlueComponent theStretch,
             FixedGlueComponent theShrink) {
 
         super(theLength.getValue());
@@ -236,7 +229,7 @@ public class Muskip extends Mudimen implements Serializable {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param x the other muskip
      */
     public Muskip(Muskip x) {
@@ -248,9 +241,9 @@ public class Muskip extends Mudimen implements Serializable {
     }
 
     /**
-     * Add another muglue to this one.
-     * The addition is performed independently on the components.
-     *
+     * Add another muglue to this one. The addition is performed independently
+     * on the components.
+     * 
      * @param ms the muglue to add
      */
     public void add(Muskip ms) {
@@ -262,7 +255,7 @@ public class Muskip extends Mudimen implements Serializable {
 
     /**
      * Getter for shrink.
-     *
+     * 
      * @return the shrink
      */
     public GlueComponent getShrink() {
@@ -272,7 +265,7 @@ public class Muskip extends Mudimen implements Serializable {
 
     /**
      * Getter for stretch.
-     *
+     * 
      * @return the stretch
      */
     public GlueComponent getStretch() {
@@ -282,7 +275,7 @@ public class Muskip extends Mudimen implements Serializable {
 
     /**
      * Getter for kill.
-     *
+     * 
      * @return the kill
      */
     public boolean isKill() {
@@ -291,9 +284,9 @@ public class Muskip extends Mudimen implements Serializable {
     }
 
     /**
-     * Check that the muskip has natural length zero and no stretch and
-     * shrink component.
-     *
+     * Check that the muskip has natural length zero and no stretch and shrink
+     * component.
+     * 
      * @return <code>true</code> iff the register is zero
      */
     public boolean isZero() {
@@ -304,7 +297,7 @@ public class Muskip extends Mudimen implements Serializable {
 
     /**
      * Multiply all components by an integer fraction.
-     *
+     * 
      * @param nom nominator
      * @param denom denominator
      */
@@ -317,7 +310,7 @@ public class Muskip extends Mudimen implements Serializable {
 
     /**
      * Setter for kill.
-     *
+     * 
      * @param kill the kill to set
      */
     public void setKill(boolean kill) {
@@ -327,7 +320,7 @@ public class Muskip extends Mudimen implements Serializable {
 
     /**
      * Return the string representation of the instance.
-     *
+     * 
      * @return the string representation of this glue
      * @see "<logo>TeX</logo> &ndash; The Program [???]"
      */
@@ -340,7 +333,7 @@ public class Muskip extends Mudimen implements Serializable {
 
     /**
      * Append the string representation of the instance to a string buffer.
-     *
+     * 
      * @param sb the target string buffer
      */
     public void toString(StringBuffer sb) {
@@ -357,16 +350,16 @@ public class Muskip extends Mudimen implements Serializable {
     }
 
     /**
-     * Determine the printable representation of the object.
-     * The value returned is exactly the string which would be produced by
-     * <logo>TeX</logo> to print the muskip register.
-     *
+     * Determine the printable representation of the object. The value returned
+     * is exactly the string which would be produced by <logo>TeX</logo> to
+     * print the muskip register.
+     * 
      * @param factory the factory to get the tokens from
-     *
+     * 
      * @return the string representation of this glue
-     *
+     * 
      * @throws GeneralException in case of an error
-     *
+     * 
      * @see "<logo>TeX</logo> &ndash; The Program [178,177]"
      */
     public Tokens toToks(TokenFactory factory) throws GeneralException {

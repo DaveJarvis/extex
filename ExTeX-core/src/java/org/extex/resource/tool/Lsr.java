@@ -31,19 +31,19 @@ import java.util.List;
 
 /**
  * This class creates the output of 'ls -R'.
- *
+ * 
  * <p>
- * With the method addexcludeDir() it is possible, to add directories, which
- * are excluded from the ls-R list.
+ * With the method addexcludeDir() it is possible, to add directories, which are
+ * excluded from the ls-R list.
  * </p>
  * <p>
- * With the method addexcludeRegExp() it is possible, to add a RegExp, which
- * are excluded an entry in each directory.
+ * With the method addexcludeRegExp() it is possible, to add a RegExp, which are
+ * excluded an entry in each directory.
  * </p>
  * <p>
  * Files starting with a '.' are ignored!
  * </p>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
  * @version $Revision$
@@ -62,14 +62,16 @@ public class Lsr {
 
     /**
      * A list of directories, which are excluded from the ls-R.
-     * <p>Only in the top directory!</p>
+     * <p>
+     * Only in the top directory!
+     * </p>
      */
-    private List excludeDir;
+    private List<String> excludeDir;
 
     /**
      * A list of RegExp, which are excluded in each directory.
      */
-    private List excludeRegExp;
+    private List<String> excludeRegExp;
 
     /**
      * The level for the directory depth.
@@ -78,20 +80,23 @@ public class Lsr {
 
     /**
      * Creates a new object.
-     * @param theBasedirectory  The base directory for searching
+     * 
+     * @param theBasedirectory The base directory for searching
      */
     public Lsr(File theBasedirectory) {
 
         basedirectory = theBasedirectory;
-        excludeDir = new ArrayList();
-        excludeRegExp = new ArrayList();
+        excludeDir = new ArrayList<String>();
+        excludeRegExp = new ArrayList<String>();
     }
 
     /**
      * Add a directory in the exclude list.
-     * <p>Only in the top directory!</p>
-     *
-     * @param name  The name of the directory.
+     * <p>
+     * Only in the top directory!
+     * </p>
+     * 
+     * @param name The name of the directory.
      */
     public void addExcludeDir(String name) {
 
@@ -100,8 +105,8 @@ public class Lsr {
 
     /**
      * Add a RegExp in the exclude list.
-     *
-     * @param name  The name of the directory.
+     * 
+     * @param name The name of the directory.
      */
     public void addExcludeRegExp(String name) {
 
@@ -110,10 +115,9 @@ public class Lsr {
 
     /**
      * Print the ls-R-information to the printStream.
-     *
-     * @param printStream   The result is written to
-     *                      the <code>PrintStream</code>.
-     * @param directory     The base directory for output.
+     * 
+     * @param printStream The result is written to the <code>PrintStream</code>.
+     * @param directory The base directory for output.
      * @throws IOException if an io-error occurs.
      */
     private void printLsr(PrintStream printStream, File directory)
@@ -141,12 +145,11 @@ public class Lsr {
                             && excludeDir.size() > 0
                             && pathname.isDirectory()
                             && Collections.binarySearch(excludeDir, pathname
-                                    .getName()) >= 0) {
+                                .getName()) >= 0) {
                         return false;
                     }
                     // exclude regexp
-                    for (int i = 0, n = excludeRegExp.size(); i < n; i++) {
-                        String regexp = (String) excludeRegExp.get(i);
+                    for (String regexp : excludeRegExp) {
                         if (regexp != null
                                 && pathname.getName().matches(regexp)) {
                             return false;
@@ -160,7 +163,7 @@ public class Lsr {
                 Arrays.sort(files);
                 // replace base dir name with a '.'
                 printStream.println(directory.toString().replaceFirst(
-                        basedirectory.toString(), ".")
+                    basedirectory.toString(), ".")
                         + ":");
                 for (int i = 0; i < files.length; i++) {
                     printStream.println(files[i].getName());
@@ -178,9 +181,8 @@ public class Lsr {
 
     /**
      * Print the ls-R-information to the printStream.
-     *
-     * @param printStream   The result is written to
-     *                      the <code>PrintStream</code>.
+     * 
+     * @param printStream The result is written to the <code>PrintStream</code>.
      * @throws IOException if an io-error occurs.
      */
     public void printLsr(PrintStream printStream) throws IOException {
@@ -188,9 +190,10 @@ public class Lsr {
         Collections.sort(excludeDir);
         PrintStream out = printStream;
         if (out == null) {
-            out = new PrintStream(new FileOutputStream(basedirectory
-                    .getAbsolutePath()
-                    + File.separator + LS_R));
+            out =
+                    new PrintStream(new FileOutputStream(basedirectory
+                        .getAbsolutePath()
+                            + File.separator + LS_R));
         }
 
         printLsr(out, basedirectory);
@@ -200,10 +203,8 @@ public class Lsr {
 
     /**
      * main.
-     *
-     * @param args      The command line.
-     *                  -excludeDir xxx
-     *                  -excludeRegExp xxx
+     * 
+     * @param args The command line. -excludeDir xxx -excludeRegExp xxx
      * @throws IOException if an io-error occurs.
      */
     public static void main(String[] args) throws IOException {
@@ -217,32 +218,37 @@ public class Lsr {
                         lsr.addExcludeDir(args[++p]);
                         p++;
                     } else {
-                        printCommandLine();
+                        System.exit(printCommandLine(System.err));
                     }
                 } else if (args[p].equalsIgnoreCase("-excludeRegExp")) {
                     if (p + 1 < args.length) {
                         lsr.addExcludeRegExp(args[++p]);
                         p++;
                     } else {
-                        printCommandLine();
+                        System.exit(printCommandLine(System.err));
                     }
                 } else {
-                    printCommandLine();
+                    System.exit(printCommandLine(System.err));
                 }
             }
             lsr.printLsr(null);
         } else {
-            printCommandLine();
+            System.exit(printCommandLine(System.err));
         }
+        System.exit(0);
     }
 
     /**
      * print the command line
+     *
+     * @param err  the output stream
+     *
+     * @return the exit code
      */
-    private static void printCommandLine() {
+    private static int printCommandLine(PrintStream err) {
 
-        System.err.println("java de.dante.util.resource.Lsr <directory> "
+        err.println("java de.dante.util.resource.Lsr <directory> "
                 + "[-excludeDir xxx] [-excludeRegExp xxx] [...]");
-        System.exit(1);
+        return 1;
     }
 }

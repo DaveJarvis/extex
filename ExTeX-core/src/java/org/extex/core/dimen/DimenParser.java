@@ -75,6 +75,7 @@ public final class DimenParser {
      * Creates a new object.
      */
     private DimenParser() {
+        // never used
     }
 
 }

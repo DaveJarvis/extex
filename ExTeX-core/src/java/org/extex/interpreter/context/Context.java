@@ -29,6 +29,7 @@ import org.extex.core.glue.Glue;
 import org.extex.core.muskip.Muskip;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Conditional;
+import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.tc.Direction;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.exception.InterpreterException;
@@ -46,12 +47,13 @@ import org.extex.scanner.Tokenizer;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
+import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
 
 /**
  * This interface describes the container for all data of an interpreter
  * context.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4388 $
@@ -74,9 +76,9 @@ public interface Context
     /**
      * Add a unit to the list of loaded units. The units can be notified when
      * the context is loaded from a format.
-     *
+     * 
      * @param info the info of the unit loaded
-     *
+     * 
      * @see #unitIterator()
      */
     void addUnit(UnitInfo info);
@@ -86,22 +88,22 @@ public interface Context
      * result. If the escape character is not set then the argument is returned
      * unchanged.
      * <p>
-     * This method is meant to produce a printable version of a control
-     * sequence for error messages.
+     * This method is meant to produce a printable version of a control sequence
+     * for error messages.
      * </p>
-     *
+     * 
      * @param name the name of the macro
-     *
+     * 
      * @return the control sequence including the escape character
      */
     String esc(String name);
 
     /**
-     * This method is meant to produce a printable version of a control
-     * sequence for error messages.
-     *
+     * This method is meant to produce a printable version of a control sequence
+     * for error messages.
+     * 
      * @param token the token
-     *
+     * 
      * @return the control sequence including the escape character
      */
     String esc(Token token);
@@ -139,7 +141,7 @@ public interface Context
      *     &rarr; <tt>\escapechar</tt> {@linkplain
      *       org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *       &lang;equals&rang;} {@linkplain
-     *       org.extex.interpreter.TokenSource#scanNumber(Context)
+     *       org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
      *       &lang;number&rang;} </pre>
      *
      * <h4>Examples</h4>
@@ -154,45 +156,44 @@ public interface Context
 
     /**
      * Getter for a value from an extended section of the context.
-     *
+     * 
      * @param extension the name of the extension
      * @param key the key for the value
-     *
+     * 
      * @return the value stored
-     *
+     * 
      * @see #set(Object, Object, Object, boolean)
      */
     Object get(Object extension, Object key);
 
     /**
      * Getter for the afterassignment token.
-     *
+     * 
      * @return the afterassignment token.
-     *
+     * 
      * @see #setAfterassignment(Token)
      */
     Token getAfterassignment();
 
     /**
-     * Getter for the {@link org.extex.interpreter.type.box.Box box}
-     * register. Box registers are named, either with a number or an
-     * arbitrary string. The numbered registers where limited to 256 in
-     * <logo>TeX</logo>.
-     * This restriction does no longer hold for <logo>ExTeX</logo>.
-     *
+     * Getter for the {@link org.extex.interpreter.type.box.Box box} register.
+     * Box registers are named, either with a number or an arbitrary string. The
+     * numbered registers where limited to 256 in <logo>TeX</logo>. This
+     * restriction does no longer hold for <logo>ExTeX</logo>.
+     * 
      * @param name the name or number of the count register
-     *
+     * 
      * @return the count register or <code>null</code> if it is void
-     *
+     * 
      * @see #setBox(String, Box, boolean)
      */
     Box getBox(String name);
 
     /**
      * Getter for the currently active conditional.
-     *
+     * 
      * @return the currently active conditional or <code>null</code> if none
-     *
+     * 
      * @see #popConditional()
      * @see #pushConditional(Locator, boolean, Code, long, boolean)
      * @see #getIfLevel()
@@ -201,23 +202,23 @@ public interface Context
 
     /**
      * Getter for the delimiter code mapping.
-     *
+     * 
      * @param c the character to which the delcode is assigned
-     *
+     * 
      * @return the delcode for the given character
-     *
+     * 
      * @see #setDelcode(UnicodeChar, MathDelimiter, boolean)
      */
     MathDelimiter getDelcode(UnicodeChar c);
 
     /**
      * Getter for a glue register.
-     *
+     * 
      * @param name the name of the glue register to acquire.
-     *
-     * @return the value of the named glue register or <code>null</code>
-     *  if none is set
-     *
+     * 
+     * @return the value of the named glue register or <code>null</code> if
+     *         none is set
+     * 
      * @see #setGlue(String, Glue, boolean)
      */
     Glue getGlue(String name);
@@ -226,18 +227,18 @@ public interface Context
      * Getter for the id string. The id string is the classification of the
      * original source like given in the format file. The id string can be
      * <code>null</code> if not known yet.
-     *
+     * 
      * @return the id string
-     *
+     * 
      * @see #setId(String)
      */
     String getId();
 
     /**
      * Getter for the current if level.
-     *
+     * 
      * @return the current if level
-     *
+     * 
      * @see #getConditional()
      * @see #popConditional()
      * @see #pushConditional(Locator, boolean, Code, long, boolean)
@@ -249,34 +250,34 @@ public interface Context
      * used to find the hyphenation table. If the language is not known an
      * attempt is made to create it. Otherwise the default hyphenation table is
      * returned.
-     *
+     * 
      * @param language the name of the language to use
-     *
+     * 
      * @return the hyphenation table for the requested language
-     *
+     * 
      * @throws InterpreterException in case of an error
-     *
+     * 
      * @see #set(Language, boolean)
      */
     Language getLanguage(String language) throws InterpreterException;
 
     /**
      * Getter for the language manager.
-     *
+     * 
      * @return the language manager
-     *
+     * 
      * @see #setLanguageManager(LanguageManager)
      */
     LanguageManager getLanguageManager();
 
     /**
-     * Getter for the lccode mapping of upper case characters to their
-     * lower case equivalent.
-     *
+     * Getter for the lccode mapping of upper case characters to their lower
+     * case equivalent.
+     * 
      * @param uc the upper case character
-     *
+     * 
      * @return the lower case equivalent or null if none exists
-     *
+     * 
      * @see #setLccode(UnicodeChar, UnicodeChar, boolean)
      * @see #getUccode(UnicodeChar)
      * @see #setUccode(UnicodeChar, UnicodeChar, boolean)
@@ -286,68 +287,68 @@ public interface Context
     /**
      * Getter for the magnification factor in per mille. The default value is
      * 1000. It can only take positive numbers as values.
-     *
+     * 
      * @return the magnification factor
      */
     long getMagnification();
 
     /**
      * Getter for the math code of a character.
-     *
+     * 
      * @param uc the character index
-     *
+     * 
      * @return the math code
-     *
+     * 
      * @see #setMathcode(UnicodeChar, MathCode, boolean)
      */
     MathCode getMathcode(UnicodeChar uc);
 
     /**
      * Getter for a muskip register.
-     *
+     * 
      * @param name the name or the number of the register
-     *
+     * 
      * @return the named muskip or <code>null</code> if none is set
-     *
+     * 
      * @see #setMuskip(String, Muskip, boolean)
      */
     Muskip getMuskip(String name);
 
     /**
      * Getter for the current name space.
-     *
+     * 
      * @return the current name space
-     *
+     * 
      * @see #setNamespace(String, boolean)
      */
     String getNamespace();
 
     /**
      * Getter for the paragraph shape.
-     *
-     * @return the paragraph shape or <code>null</code> if no special shape
-     *   is present
-     *
+     * 
+     * @return the paragraph shape or <code>null</code> if no special shape is
+     *         present
+     * 
      * @see #setParshape(ParagraphShape)
      */
     ParagraphShape getParshape();
 
     /**
      * Getter for the space factor code of a character.
-     *
+     * 
      * @param uc the Unicode character
-     *
+     * 
      * @return the space factor code.
-     *
+     * 
      * @see #setSfcode(UnicodeChar, Count, boolean)
      */
     Count getSfcode(UnicodeChar uc);
 
     /**
      * Getter for standardTokenStream.
-     *
+     * 
      * @return the standardTokenStream
-     *
+     * 
      * @see #setStandardTokenStream(TokenStream)
      */
     TokenStream getStandardTokenStream();
@@ -355,9 +356,9 @@ public interface Context
     /**
      * Getter for the token factory. The token factory can be used to get new
      * tokens of some kind.
-     *
+     * 
      * @return the token factory
-     *
+     * 
      * @see #setTokenFactory(TokenFactory)
      */
     TokenFactory getTokenFactory();
@@ -365,18 +366,18 @@ public interface Context
     /**
      * Getter for the tokenizer. The tokenizer provides a way to evaluate the
      * settings of the category codes.
-     *
+     * 
      * @return the tokenizer
-     *
+     * 
      * @see #setCatcode(UnicodeChar, Catcode, boolean)
      */
     Tokenizer getTokenizer();
 
     /**
      * Getter for the typesetting context.
-     *
+     * 
      * @return the typesetting context
-     *
+     * 
      * @see #set(Color, boolean)
      * @see #set(Direction, boolean)
      * @see #set(Font, boolean)
@@ -386,13 +387,13 @@ public interface Context
     TypesettingContext getTypesettingContext();
 
     /**
-     * Getter for the uccode mapping of lower case characters to their
-     * upper case equivalent.
-     *
+     * Getter for the uccode mapping of lower case characters to their upper
+     * case equivalent.
+     * 
      * @param lc the upper case character
-     *
+     * 
      * @return the upper case equivalent or null if none exists
-     *
+     * 
      * @see #setUccode(UnicodeChar, UnicodeChar, boolean)
      * @see #getLccode(UnicodeChar)
      * @see #setLccode(UnicodeChar, UnicodeChar, boolean)
@@ -402,11 +403,11 @@ public interface Context
     /**
      * Pop the management information for a conditional from the stack and
      * return it. If the stack is empty then <code>null</code> is returned.
-     *
+     * 
      * @return the formerly topmost element from the conditional stack
-     *
+     * 
      * @throws InterpreterException in case of an error
-     *
+     * 
      * @see #pushConditional(Locator, boolean, Code, long, boolean)
      * @see #getConditional()
      * @see #getIfLevel()
@@ -415,24 +416,23 @@ public interface Context
 
     /**
      * Pop a direction from the direction stack.
-     *
+     * 
      * @return the topmost direction on the stack or <code>null</code> if the
-     *   stack is empty
-     *
+     *         stack is empty
+     * 
      * @see #pushDirection(Direction)
      */
     Direction popDirection();
 
     /**
      * Put a value onto the conditional stack.
-     *
+     * 
      * @param locator the locator for the start of the if statement
      * @param value the value to push
-     * @param primitive the name of the primitive which triggered this
-     *  operation
+     * @param primitive the name of the primitive which triggered this operation
      * @param branch the branch number
      * @param neg negation indicator
-     *
+     * 
      * @see #popConditional()
      * @see #getConditional()
      * @see #getIfLevel()
@@ -442,124 +442,123 @@ public interface Context
 
     /**
      * Push a direction onto the direction stack.
-     *
+     * 
      * @param dir the direction
-     *
+     * 
      * @see #popDirection()
      */
     void pushDirection(Direction dir);
 
     /**
      * Setter for the color in the current typesetting context.
-     *
+     * 
      * @param color the new color
      * @param global the indicator for the scope; <code>true</code> means all
-     *  groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @throws ConfigurationException in case of an error in the configuration.
-     *
+     * 
      * @see #getTypesettingContext()
      */
     void set(Color color, boolean global);
 
     /**
      * Setter for the direction in the current typesetting context.
-     *
+     * 
      * @param direction the new direction
      * @param global the indicator for the scope; <code>true</code> means all
-     *            groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @throws ConfigurationException in case of an error in the configuration.
-     *
+     * 
      * @see #getTypesettingContext()
      */
     void set(Direction direction, boolean global);
 
     /**
      * Setter for the font in the current typesetting context.
-     *
+     * 
      * @param font the new font
      * @param global the indicator for the scope; <code>true</code> means all
-     *            groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @throws ConfigurationException in case of an error in the configuration.
-     *
+     * 
      * @see #getTypesettingContext()
      */
     void set(Font font, boolean global);
 
     /**
      * Setter for the language in the current typesetting context.
-     *
+     * 
      * @param language the new language
      * @param global the indicator for the scope; <code>true</code> means all
-     *            groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @throws ConfigurationException in case of an error in the configuration.
-     *
+     * 
      * @see #getTypesettingContext()
      */
     void set(Language language, boolean global);
 
     /**
      * Setter for a value from an extended section of the context.
-     *
+     * 
      * @param extension the name of the extension
      * @param key the key for the value
      * @param value the value to store
      * @param global the indicator for the scope; <code>true</code> means all
-     *   groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @see #get(Object, Object)
      */
     void set(Object extension, Object key, Object value, boolean global);
 
     /**
      * Setter for the typesetting context in the specified groups.
-     *
+     * 
      * @param context the processor context
      * @param global the indicator for the scope; <code>true</code> means all
-     *            groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @see #getTypesettingContext()
      */
     void set(TypesettingContext context, boolean global);
 
     /**
      * Setter for the afterassignment token.
-     *
+     * 
      * @param token the afterassignment token.
-     *
+     * 
      * @see #getAfterassignment()
      */
     void setAfterassignment(Token token);
 
     /**
-     * Setter for the {@link org.extex.interpreter.type.box.Box box}
-     * register in the current group. Count registers are named, either with a
-     * number or an arbitrary string. The numbered registers where limited to
-     * 256 in <logo>TeX</logo>. This restriction does no longer hold for
-     * <logo>ExTeX</logo>.
-     *
+     * Setter for the {@link org.extex.interpreter.type.box.Box box} register in
+     * the current group. Count registers are named, either with a number or an
+     * arbitrary string. The numbered registers where limited to 256 in
+     * <logo>TeX</logo>. This restriction does no longer hold for <logo>ExTeX</logo>.
+     * 
      * @param name the name or the number of the register
      * @param value the new value of the register
      * @param global the indicator for the scope; <code>true</code> means all
-     *            groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @see #getBox(String)
      */
     void setBox(String name, Box value, boolean global);
 
     /**
      * Setter for the catcode of a character in the specified groups.
-     *
+     * 
      * @param c the character to assign a catcode for
      * @param catcode the catcode of the character
      * @param global the indicator for the scope; <code>true</code> means all
-     *            groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @throws HelpingException in case of an error
-     *
+     * 
      * @see #getTokenizer()
      */
     void setCatcode(UnicodeChar c, Catcode catcode, boolean global)
@@ -567,26 +566,26 @@ public interface Context
 
     /**
      * Setter for the delimiter code mapping.
-     *
+     * 
      * @param c the character to which the delcode is assigned
      * @param delimiter the delimiter code
      * @param global the indicator for the scope; <code>true</code> means all
-     *            groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @see #getDelcode(UnicodeChar)
      */
     void setDelcode(UnicodeChar c, MathDelimiter delimiter, boolean global);
 
     /**
      * Setter for a glue register.
-     *
+     * 
      * @param name the name of the glue register
      * @param value the glue value to set
      * @param global the indicator for the scope; <code>true</code> means all
-     *  groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @throws InterpreterException in case of an error
-     *
+     * 
      * @see #getGlue(String)
      */
     void setGlue(String name, Glue value, boolean global)
@@ -595,20 +594,20 @@ public interface Context
     /**
      * Setter for the id string. The id string is the classification of the
      * original source like given in the format file.
-     *
+     * 
      * @param id the id string
-     *
+     * 
      * @see #getId()
      */
     void setId(String id);
 
     /**
      * Setter for the language manager.
-     *
+     * 
      * @param manager the language manager
-     *
+     * 
      * @throws ConfigurationException in case of an configuration error
-     *
+     * 
      * @see #getLanguageManager()
      */
     void setLanguageManager(LanguageManager manager);
@@ -616,12 +615,12 @@ public interface Context
     /**
      * Declare the translation from an upper case character to a lower case
      * character.
-     *
+     * 
      * @param uc upper case character
      * @param lc lower case equivalent
      * @param global the indicator for the scope; <code>true</code> means all
-     *  groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @see #getLccode(UnicodeChar)
      * @see #getUccode(UnicodeChar)
      * @see #setUccode(UnicodeChar, UnicodeChar, boolean)
@@ -630,93 +629,93 @@ public interface Context
 
     /**
      * Setter for the magnification. The magnification is a global value which
-     * can be assigned at most once. It contains the magnification factor in
-     * per mille. The default value is 1000. It can only take positive numbers
-     * as values. A maximal value can be enforced by an implementation.
-     *
+     * can be assigned at most once. It contains the magnification factor in per
+     * mille. The default value is 1000. It can only take positive numbers as
+     * values. A maximal value can be enforced by an implementation.
+     * 
      * @param mag the new magnification factor
      * @param lock lock the new value. Thus it can not be alterd afterwards.
-     *
-     * @throws HelpingException in case that the magnification factor is
-     *  not in the allowed range or that the magnification has been
-     *  set to a different value earlier.
-     *
+     * 
+     * @throws HelpingException in case that the magnification factor is not in
+     *         the allowed range or that the magnification has been set to a
+     *         different value earlier.
+     * 
      * @see #getMagnification()
      */
     void setMagnification(long mag, boolean lock) throws HelpingException;
 
     /**
      * Setter for the math code of a character
-     *
+     * 
      * @param uc the character index
      * @param code the new math code
      * @param global the indicator for the scope; <code>true</code> means all
-     *  groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @see #getMathcode(UnicodeChar)
      */
     void setMathcode(UnicodeChar uc, MathCode code, boolean global);
 
     /**
      * Setter for a muskip register.
-     *
+     * 
      * @param name the name or the number of the register
      * @param value the new value
      * @param global the indicator for the scope; <code>true</code> means all
-     *  groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @see #getMuskip(String)
      */
     void setMuskip(String name, Muskip value, boolean global);
 
     /**
      * Setter for the name space.
-     *
+     * 
      * @param namespace the new name space
      * @param global the indicator for the scope; <code>true</code> means all
-     *  groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @see #getNamespace()
      */
     void setNamespace(String namespace, boolean global);
 
     /**
      * Setter for the paragraph shape.
-     *
+     * 
      * @param shape the new paragraph shape
-     *
+     * 
      * @see #getParshape()
      */
     void setParshape(ParagraphShape shape);
 
     /**
-     * Setter for the space factor code in the specified groups.
-     * Any character has an associated space factor. This value can be set
-     * with the current method.
-     *
+     * Setter for the space factor code in the specified groups. Any character
+     * has an associated space factor. This value can be set with the current
+     * method.
+     * 
      * @param uc the Unicode character to assign the sfcode to
      * @param code the new sfcode
      * @param global the indicator for the scope; <code>true</code> means all
-     *            groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @see #getSfcode(UnicodeChar)
      */
     void setSfcode(UnicodeChar uc, Count code, boolean global);
 
     /**
      * Setter for standardTokenStream.
-     *
+     * 
      * @param standardTokenStream the standardTokenStream to set.
-     *
+     * 
      * @see #getStandardTokenStream()
      */
     void setStandardTokenStream(TokenStream standardTokenStream);
 
     /**
      * Setter for the token factory.
-     *
+     * 
      * @param factory the new token factory
-     *
+     * 
      * @see #getTokenFactory()
      */
     void setTokenFactory(TokenFactory factory);
@@ -724,12 +723,12 @@ public interface Context
     /**
      * Declare the translation from a lower case character to an upper case
      * character.
-     *
-     * @param lc lower  case character
+     * 
+     * @param lc lower case character
      * @param uc uppercase equivalent
      * @param global the indicator for the scope; <code>true</code> means all
-     *   groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @see #getUccode(UnicodeChar)
      * @see #getLccode(UnicodeChar)
      * @see #setLccode(UnicodeChar, UnicodeChar, boolean)
@@ -738,11 +737,11 @@ public interface Context
 
     /**
      * Get an iterator to enumerate all unit infos.
-     *
+     * 
      * @return the iterator for unit infos
-     *
+     * 
      * @see #addUnit(UnitInfo)
      */
-    Iterator unitIterator();
+    Iterator<UnitInfo> unitIterator();
 
 }

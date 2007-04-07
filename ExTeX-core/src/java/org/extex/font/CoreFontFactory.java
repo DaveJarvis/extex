@@ -29,7 +29,7 @@ import org.extex.resource.ResourceFinder;
 
 /**
  * This interface describes the features of a font factory needed by the core.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -37,16 +37,16 @@ public interface CoreFontFactory extends ResourceFinder {
 
     /**
      * Return a new instance.
-     *
+     * 
      * If the name is empty or null, then the <code>NullFont</code> are
      * returned.
-     *
+     * 
      * If no font is found, then <code>null</code> is returned.
-     *
+     * 
      * @param key the fount key
-     *
+     * 
      * @return Returns the new font instance.
-     *
+     * 
      * @throws ConfigurationException from the resource finder.
      * @throws FontException if a font error occurred.
      */
@@ -54,7 +54,7 @@ public interface CoreFontFactory extends ResourceFinder {
 
     /**
      * Returns a font key for the font.
-     *
+     * 
      * @param fontName the name of the font.
      * @return the key for the font.
      */
@@ -62,35 +62,35 @@ public interface CoreFontFactory extends ResourceFinder {
 
     /**
      * Returns a font key for the font.
-     *
-     * @param fontName  the name of the font.
-     * @param size      the size of the font.
+     * 
+     * @param fontName the name of the font.
+     * @param size the size of the font.
      * @return the key for the font.
      */
     FontKey getFontKey(String fontName, FixedDimen size);
 
     /**
      * Returns a font key for the font.
-     *
-     * @param fontName  the name of the font.
-     * @param size      the size of the font.
-     * @param map       the map for the key.
+     * 
+     * @param fontName the name of the font.
+     * @param size the size of the font.
+     * @param map the map for the key.
      * @return the key for the font.
      */
-    FontKey getFontKey(String fontName, FixedDimen size, Map map);
+    FontKey getFontKey(String fontName, FixedDimen size, Map<String,?> map);
 
     /**
      * Returns a font key for the font.
-     *
-     * @param fontKey   the key of the font.
-     * @param size      the size of the font.
+     * 
+     * @param fontKey the key of the font.
+     * @param size the size of the font.
      * @return the key for the font.
      */
     FontKey getFontKey(FontKey fontKey, FixedDimen size);
 
     /**
      * Create a manager for the back-end font.
-     *
+     * 
      * @param fontTypes the font types, which the back-end can use.
      * @return the new manager.
      * @throws ConfigurationException from the configuration system.

@@ -31,12 +31,12 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MultiConfigurationIterator implements Iterator {
+public class MultiConfigurationIterator implements Iterator<Configuration> {
 
     /**
      * The field <tt>iter</tt> contains the internal iterator in config[ptr].
      */
-    private Iterator iter = null;
+    private Iterator<Configuration> iter = null;
 
     /**
      * The field <tt>key</tt> contains the symbolic key for this Iterator.
@@ -114,7 +114,7 @@ public class MultiConfigurationIterator implements Iterator {
      *
      * @see java.util.Iterator#next()
      */
-    public Object next() {
+    public Configuration next() {
 
         if (iter == null) {
             return null;

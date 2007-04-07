@@ -89,22 +89,22 @@ public class FontKey implements Serializable {
     /**
      * Map for boolean values.
      */
-    private Map booleanMap;
+    private Map<String, Boolean> booleanMap;
 
     /**
      * Map for count values.
      */
-    private Map countMap;
+    private Map<String, FixedCount> countMap;
 
     /**
      * Map for dimen values.
      */
-    private Map dimenMap;
+    private Map<String, FixedDimen> dimenMap;
 
     /**
      * Map for glue values.
      */
-    private Map glueMap;
+    private Map<String, FixedGlue> glueMap;
 
     /**
      * The name of the font.
@@ -114,7 +114,7 @@ public class FontKey implements Serializable {
     /**
      * Map for string values.
      */
-    private Map stringMap;
+    private Map<String, String> stringMap;
 
     /**
      * Create a new object (only in the same name space!).
@@ -124,11 +124,11 @@ public class FontKey implements Serializable {
     protected FontKey(FontKey fk) {
 
         name = fk.getName();
-        stringMap = new HashMap(fk.getStringMap());
-        dimenMap = new HashMap(fk.getDimenMap());
-        glueMap = new HashMap(fk.getGlueMap());
-        countMap = new HashMap(fk.getCountMap());
-        booleanMap = new HashMap(fk.getBooleanMap());
+        stringMap = new HashMap<String, String>(fk.getStringMap());
+        dimenMap = new HashMap<String, FixedDimen>(fk.getDimenMap());
+        glueMap = new HashMap<String, FixedGlue>(fk.getGlueMap());
+        countMap = new HashMap<String, FixedCount>(fk.getCountMap());
+        booleanMap = new HashMap<String, Boolean>(fk.getBooleanMap());
     }
 
     /**
@@ -143,11 +143,11 @@ public class FontKey implements Serializable {
 
         name = "".equals(theName) ? null : theName;
 
-        stringMap = new HashMap();
-        dimenMap = new HashMap();
-        glueMap = new HashMap();
-        countMap = new HashMap();
-        booleanMap = new HashMap();
+        stringMap = new HashMap<String, String>();
+        dimenMap = new HashMap<String, FixedDimen>();
+        glueMap = new HashMap<String, FixedGlue>();
+        countMap = new HashMap<String, FixedCount>();
+        booleanMap = new HashMap<String, Boolean>();
 
     }
 
@@ -159,7 +159,7 @@ public class FontKey implements Serializable {
      */
     public boolean getBoolean(String key) {
 
-        Boolean b = (Boolean) booleanMap.get(key);
+        Boolean b = booleanMap.get(key);
         if (b == null) {
             return false;
         }
@@ -170,7 +170,7 @@ public class FontKey implements Serializable {
      * Returns the booleanMap.
      * @return Returns the booleanMap.
      */
-    protected Map getBooleanMap() {
+    protected Map<String, Boolean> getBooleanMap() {
 
         return booleanMap;
     }
@@ -183,14 +183,14 @@ public class FontKey implements Serializable {
      */
     public FixedCount getCount(String key) {
 
-        return (FixedCount) countMap.get(key);
+        return countMap.get(key);
     }
 
     /**
      * Returns the countMap.
      * @return Returns the countMap.
      */
-    protected Map getCountMap() {
+    protected Map<String, FixedCount> getCountMap() {
 
         return countMap;
     }
@@ -203,14 +203,14 @@ public class FontKey implements Serializable {
      */
     public FixedDimen getDimen(String key) {
 
-        return (FixedDimen) dimenMap.get(key);
+        return dimenMap.get(key);
     }
 
     /**
      * Returns the dimenMap.
      * @return Returns the dimenMap.
      */
-    protected Map getDimenMap() {
+    protected Map<String, FixedDimen> getDimenMap() {
 
         return dimenMap;
     }
@@ -223,14 +223,14 @@ public class FontKey implements Serializable {
      */
     public FixedGlue getGlue(String key) {
 
-        return (FixedGlue) glueMap.get(key);
+        return glueMap.get(key);
     }
 
     /**
      * Returns the glueMap.
      * @return Returns the glueMap.
      */
-    protected Map getGlueMap() {
+    protected Map<String, FixedGlue> getGlueMap() {
 
         return glueMap;
     }
@@ -252,14 +252,14 @@ public class FontKey implements Serializable {
      */
     public String getString(String key) {
 
-        return (String) stringMap.get(key);
+        return stringMap.get(key);
     }
 
     /**
      * Returns the stringMap.
      * @return Returns the stringMap.
      */
-    protected Map getStringMap() {
+    protected Map<String, String> getStringMap() {
 
         return stringMap;
     }
@@ -268,12 +268,12 @@ public class FontKey implements Serializable {
      * Put an key values pair on the map.
      * @param theMap    The map.
      */
-    public void put(Map theMap) {
+    public void put(Map<String, ?> theMap) {
 
-        Iterator it = theMap.keySet().iterator();
+        Iterator<String> it = theMap.keySet().iterator();
 
         while (it.hasNext()) {
-            String key = (String) it.next();
+            String key = it.next();
             Object obj = theMap.get(key);
             if (obj instanceof String) {
                 put(key, (String) obj);
@@ -351,9 +351,9 @@ public class FontKey implements Serializable {
 
         StringBuffer buf = new StringBuffer(getName());
 
-        Iterator it = dimenMap.keySet().iterator();
+        Iterator<String> it = dimenMap.keySet().iterator();
         while (it.hasNext()) {
-            String key = (String) it.next();
+            String key = it.next();
             FixedDimen d = getDimen(key);
 
             buf.append(" ").append(key).append("=");
@@ -366,7 +366,7 @@ public class FontKey implements Serializable {
 
         it = countMap.keySet().iterator();
         while (it.hasNext()) {
-            String key = (String) it.next();
+            String key = it.next();
             FixedCount c = getCount(key);
 
             buf.append(" ").append(key).append("=");
@@ -379,7 +379,7 @@ public class FontKey implements Serializable {
 
         it = glueMap.keySet().iterator();
         while (it.hasNext()) {
-            String key = (String) it.next();
+            String key = it.next();
             FixedGlue g = getGlue(key);
 
             buf.append(" ").append(key).append("=");
@@ -392,7 +392,7 @@ public class FontKey implements Serializable {
 
         it = stringMap.keySet().iterator();
         while (it.hasNext()) {
-            String key = (String) it.next();
+            String key = it.next();
             String s = getString(key);
 
             buf.append(" ").append(key).append("=");
@@ -405,7 +405,7 @@ public class FontKey implements Serializable {
 
         it = booleanMap.keySet().iterator();
         while (it.hasNext()) {
-            String key = (String) it.next();
+            String key = it.next();
             boolean b = getBoolean(key);
 
             buf.append(" ").append(key).append("=").append(b);

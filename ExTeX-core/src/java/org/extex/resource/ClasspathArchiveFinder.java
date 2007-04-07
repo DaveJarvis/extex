@@ -145,7 +145,7 @@ public class ClasspathArchiveFinder extends AbstractFinder {
     /**
      * The field <tt>index</tt> contains the mapping from file names to.
      */
-    private Map index = null;
+    private Map<String, URL> index = null;
 
     /**
      * Creates a new object.
@@ -214,7 +214,7 @@ public class ClasspathArchiveFinder extends AbstractFinder {
             String fullName = prefix + name + ext;
             fullName = fullName.replaceAll("\\{type\\}", type);
             trace("Try", fullName, null);
-            URL url = (URL) index.get(fullName);
+            URL url = index.get(fullName);
             if (url != null) {
                 InputStream stream;
                 try {
@@ -243,7 +243,7 @@ public class ClasspathArchiveFinder extends AbstractFinder {
      *
      * @throws ConfigurationWrapperException in case of a configuration problem
      */
-    protected Map initialize(String tocName)
+    protected Map<String, URL> initialize(String tocName)
             throws ConfigurationWrapperException {
 
         long start = System.currentTimeMillis();
@@ -252,9 +252,9 @@ public class ClasspathArchiveFinder extends AbstractFinder {
         ClassLoader classLoader = getClass().getClassLoader();
 
         try {
-            Enumeration toc = classLoader.getResources(tocName);
+            Enumeration<URL> toc = classLoader.getResources(tocName);
             while (toc.hasMoreElements()) {
-                URL url = (URL) toc.nextElement();
+                URL url = toc.nextElement();
                 trace("IndexFound", url.toString(), "");
                 String protocol = url.getProtocol();
                 String host = url.getHost();
@@ -271,9 +271,9 @@ public class ClasspathArchiveFinder extends AbstractFinder {
                 properties.load(stream);
                 stream.close();
 
-                Enumeration keys = properties.keys();
+                Enumeration<Object> keys = properties.keys();
                 while (keys.hasMoreElements()) {
-                    String k = (String) keys.nextElement();
+                    String k = keys.nextElement().toString();
                     cache.put(k, new URL(protocol, host, port, //
                         p + properties.getProperty(k)));
                 }

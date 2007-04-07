@@ -28,7 +28,7 @@ import org.extex.core.exception.GeneralException;
  * This class provides a type-save enumeration of the interactions styles of
  * <logo>ExTeX</logo>. It defined constants for the supported interaction
  * modes. In addition it supports the visitor pattern to react on them.
- *
+ * 
  * @see "<logo>TeX</logo> &ndash; The Program [73]"
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4726 $
@@ -41,12 +41,15 @@ public abstract class Interaction implements Serializable {
     public static final Interaction BATCHMODE = new Interaction() {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         * The constant <tt>serialVersionUID</tt> contains the id for
+         * serialization.
          */
         protected static final long serialVersionUID = 1L;
 
         /**
-         * @see org.extex.interpreter.Interaction#getIndex()
+         * {@inheritDoc}
+         * 
+         * @see org.extex.interpreter.interaction.Interaction#getIndex()
          */
         public String getIndex() {
 
@@ -56,9 +59,9 @@ public abstract class Interaction implements Serializable {
         /**
          * Return the singleton constant object after the serialized instance
          * has been read back in.
-         *
+         * 
          * @return the one and only instance of this object
-         *
+         * 
          * @throws ObjectStreamException never
          */
         protected Object readResolve() throws ObjectStreamException {
@@ -75,21 +78,22 @@ public abstract class Interaction implements Serializable {
         }
 
         /**
-         * @see org.extex.interpreter.Interaction#visit(
-         *      org.extex.interpreter.InteractionVisitor,
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.interaction.Interaction#visit(
+         *      org.extex.interpreter.interaction.InteractionVisitor,
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public boolean visit(InteractionVisitor visitor,
-                Object arg1, Object arg2, Object arg3)
-                throws GeneralException {
+        public boolean visit(InteractionVisitor visitor, Object arg1,
+                Object arg2, Object arg3) throws GeneralException {
 
             return visitor.visitBatchmode(arg1, arg2, arg3);
         }
     };
 
     /**
-     * The constant <tt>ERRORSTOPMODE</tt> contains the constant for error stop
-     * mode.
+     * The constant <tt>ERRORSTOPMODE</tt> contains the constant for error
+     * stop mode.
      */
     public static final Interaction ERRORSTOPMODE = new Interaction() {
 
@@ -100,7 +104,9 @@ public abstract class Interaction implements Serializable {
         protected static final long serialVersionUID = 1L;
 
         /**
-         * @see org.extex.interpreter.Interaction#getIndex()
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.interaction.Interaction#getIndex()
          */
         public String getIndex() {
 
@@ -110,9 +116,9 @@ public abstract class Interaction implements Serializable {
         /**
          * Return the singleton constant object after the serialized instance
          * has been read back in.
-         *
+         * 
          * @return the one and only instance of this object
-         *
+         * 
          * @throws ObjectStreamException never
          */
         protected Object readResolve() throws ObjectStreamException {
@@ -129,13 +135,14 @@ public abstract class Interaction implements Serializable {
         }
 
         /**
-         * @see org.extex.interpreter.Interaction#visit(
-         *      org.extex.interpreter.InteractionVisitor,
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.interaction.Interaction#visit(
+         *      org.extex.interpreter.interaction.InteractionVisitor,
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public boolean visit(InteractionVisitor visitor,
-                Object arg1, Object arg2, Object arg3)
-                throws GeneralException {
+        public boolean visit(InteractionVisitor visitor, Object arg1,
+                Object arg2, Object arg3) throws GeneralException {
 
             return visitor.visitErrorstopmode(arg1, arg2, arg3);
         }
@@ -149,12 +156,15 @@ public abstract class Interaction implements Serializable {
     public static final Interaction NONSTOPMODE = new Interaction() {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         * The constant <tt>serialVersionUID</tt> contains the id for
+         * serialization.
          */
         protected static final long serialVersionUID = 1L;
 
         /**
-         * @see org.extex.interpreter.Interaction#getIndex()
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.interaction.Interaction#getIndex()
          */
         public String getIndex() {
 
@@ -164,9 +174,9 @@ public abstract class Interaction implements Serializable {
         /**
          * Return the singleton constant object after the serialized instance
          * has been read back in.
-         *
+         * 
          * @return the one and only instance of this object
-         *
+         * 
          * @throws ObjectStreamException never
          */
         protected Object readResolve() throws ObjectStreamException {
@@ -183,13 +193,14 @@ public abstract class Interaction implements Serializable {
         }
 
         /**
-         * @see org.extex.interpreter.Interaction#visit(
-         *      org.extex.interpreter.InteractionVisitor,
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.interaction.Interaction#visit(
+         *      org.extex.interpreter.interaction.InteractionVisitor,
+         *       java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public boolean visit(InteractionVisitor visitor,
-                Object arg1, Object arg2, Object arg3)
-                throws GeneralException {
+        public boolean visit(InteractionVisitor visitor, Object arg1,
+                Object arg2, Object arg3) throws GeneralException {
 
             return visitor.visitNonstopmode(arg1, arg2, arg3);
         }
@@ -202,12 +213,15 @@ public abstract class Interaction implements Serializable {
     public static final Interaction SCROLLMODE = new Interaction() {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         * The constant <tt>serialVersionUID</tt> contains the id for
+         * serialization.
          */
         protected static final long serialVersionUID = 1L;
 
         /**
-         * @see org.extex.interpreter.Interaction#getIndex()
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.interaction.Interaction#getIndex()
          */
         public String getIndex() {
 
@@ -217,9 +231,9 @@ public abstract class Interaction implements Serializable {
         /**
          * Return the singleton constant object after the serialized instance
          * has been read back in.
-         *
+         * 
          * @return the one and only instance of this object
-         *
+         * 
          * @throws ObjectStreamException never
          */
         protected Object readResolve() throws ObjectStreamException {
@@ -236,13 +250,14 @@ public abstract class Interaction implements Serializable {
         }
 
         /**
-         * @see org.extex.interpreter.Interaction#visit(
-         *      org.extex.interpreter.InteractionVisitor,
+         * {@inheritDoc}
+         *
+         * @see org.extex.interpreter.interaction.Interaction#visit(
+         *      org.extex.interpreter.interaction.InteractionVisitor,
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
-        public boolean visit(InteractionVisitor visitor,
-                Object arg1, Object arg2, Object arg3)
-                throws GeneralException {
+        public boolean visit(InteractionVisitor visitor, Object arg1,
+                Object arg2, Object arg3) throws GeneralException {
 
             return visitor.visitScrollmode(arg1, arg2, arg3);
         }
@@ -250,28 +265,27 @@ public abstract class Interaction implements Serializable {
     };
 
     /**
-     * The constant <tt>MODE_MAP</tt> contains the list for mapping integers to
-     * modes.
-     *
+     * The constant <tt>MODE_MAP</tt> contains the list for mapping integers
+     * to modes.
+     * 
      * @see "<logo>TeX</logo> &ndash; The Program [73]"
      */
     private static final Interaction[] MODE_MAP = //
             {BATCHMODE, NONSTOPMODE, SCROLLMODE, ERRORSTOPMODE};
 
     /**
-     * This is a factory method for interaction modes. It maps numerical
-     * values to interaction mode instances. The instances are reused and may
-     * be compared with ==.
-     *
+     * This is a factory method for interaction modes. It maps numerical values
+     * to interaction mode instances. The instances are reused and may be
+     * compared with ==.
+     * 
      * @param mode the integer value for the interaction mode
-     *
+     * 
      * @return the appropriate interaction mode constant
-     *
-     * @throws InteractionUnknownException in case that the numerical value
-     *   is out of range and does not correspond to an interaction mode
+     * 
+     * @throws InteractionUnknownException in case that the numerical value is
+     *         out of range and does not correspond to an interaction mode
      */
-    public static Interaction get(int mode)
-            throws InteractionUnknownException {
+    public static Interaction get(int mode) throws InteractionUnknownException {
 
         if (mode < 0 || mode >= MODE_MAP.length) {
             throw new InteractionUnknownException(Integer.toString(mode));
@@ -282,15 +296,14 @@ public abstract class Interaction implements Serializable {
 
     /**
      * Find the integer number corresponding to an interaction
-     *
+     * 
      * @param mode the mode to identify
-     *
+     * 
      * @return the number of the mode
-     *
+     * 
      * @throws InteractionUnknownException in case of an error
      */
-    public static int get(Interaction mode)
-            throws InteractionUnknownException {
+    public static int get(Interaction mode) throws InteractionUnknownException {
 
         for (int i = 0; i < MODE_MAP.length; i++) {
             if (mode == MODE_MAP[i]) {
@@ -304,21 +317,21 @@ public abstract class Interaction implements Serializable {
     }
 
     /**
-     * This is a factory method for interaction modes. It maps numerical
-     * values to interaction mode instances. The instances are reused and may
-     * be compared with ==.
-     *
+     * This is a factory method for interaction modes. It maps numerical values
+     * to interaction mode instances. The instances are reused and may be
+     * compared with ==.
+     * 
      * Allowed values are the numbers 0 to 3 or the symbolic names batchmode
-     * (0), nonstopmode (1), scrollmode (2), and errorstopmode (3). The
-     * symbolic names can be abbreviated up to the least unique prefix, i.e. up
-     * to one character.
-     *
+     * (0), nonstopmode (1), scrollmode (2), and errorstopmode (3). The symbolic
+     * names can be abbreviated up to the least unique prefix, i.e. up to one
+     * character.
+     * 
      * @param mode the string representation for the mode
-     *
+     * 
      * @return the appropriate interaction mode constant
-     *
-     * @throws InteractionUnknownException in case that something is passed
-     *             in which can not be interpreted as interaction mode
+     * 
+     * @throws InteractionUnknownException in case that something is passed in
+     *         which can not be interpreted as interaction mode
      */
     public static Interaction get(String mode)
             throws InteractionUnknownException {
@@ -348,45 +361,46 @@ public abstract class Interaction implements Serializable {
     }
 
     /**
-     * Get the numeric index of the interaction mode.
-     * According to the definition of <logo>TeX</logo> the following mapping
-     * holds:
-     * <table>
-     *  <tr>
-     *   <td>BatchMode</td><td>0</td>
-     *  </tr>
-     *  <tr>
-     *   <td>NonstopMode</td><td>1</td>
-     *  </tr>
-     *  <tr>
-     *   <td>ScrollMode</td><td>2</td>
-     *  </tr>
-     *  <tr>
-     *   <td>ErrorstopMode</td><td>3</td>
-     *  </tr>
+     * Get the numeric index of the interaction mode. According to the
+     * definition of <logo>TeX</logo> the following mapping holds: <table>
+     * <tr>
+     * <td>BatchMode</td>
+     * <td>0</td>
+     * </tr>
+     * <tr>
+     * <td>NonstopMode</td>
+     * <td>1</td>
+     * </tr>
+     * <tr>
+     * <td>ScrollMode</td>
+     * <td>2</td>
+     * </tr>
+     * <tr>
+     * <td>ErrorstopMode</td>
+     * <td>3</td>
+     * </tr>
      * </table>
-     *
+     * 
      * @return the numeric index
      */
     public abstract String getIndex();
 
     /**
      * This method provides an entry point for the visitor pattern.
-     *
-     * @param visitor this argument contains the visitor which has initiated
-     * the request.
+     * 
+     * @param visitor this argument contains the visitor which has initiated the
+     *        request.
      * @param arg1 the first argument
      * @param arg2 the second argument
      * @param arg3 the third argument
-     *
+     * 
      * @return a boolean indicator
-     *
+     * 
      * @throws GeneralException in case of an error
-     *
+     * 
      * @see InteractionVisitor
      */
-    public abstract boolean visit(InteractionVisitor visitor,
-            Object arg1, Object arg2, Object arg3)
-            throws GeneralException;
+    public abstract boolean visit(InteractionVisitor visitor, Object arg1,
+            Object arg2, Object arg3) throws GeneralException;
 
 }

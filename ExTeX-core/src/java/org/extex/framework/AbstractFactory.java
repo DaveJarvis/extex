@@ -286,7 +286,7 @@ public abstract class AbstractFactory
             Constructor[] constructors = theClass.getConstructors();
 
             for (int i = 0; i < constructors.length; i++) {
-                Constructor constructor = constructors[i];
+                Constructor<?> constructor = constructors[i];
                 Class[] args = constructor.getParameterTypes();
                 switch (args.length) {
                     case 0:
@@ -549,7 +549,7 @@ public abstract class AbstractFactory
      */
     private Object createInstanceForConfiguration1(Configuration config,
             Class<?> target, String className,
-            Constructor constructor, Class<?> arg0)
+            Constructor<?> constructor, Class<?> arg0)
             throws InstantiationException,
                 IllegalAccessException,
                 InvocationTargetException,
@@ -591,7 +591,7 @@ public abstract class AbstractFactory
      */
     private Object createInstanceForConfiguration2(Configuration config,
             Class<?> target, String className,
-            Constructor constructor, Class<?> arg0,
+            Constructor<?> constructor, Class<?> arg0,
             Class<?> arg1)
             throws InstantiationException,
                 IllegalAccessException,

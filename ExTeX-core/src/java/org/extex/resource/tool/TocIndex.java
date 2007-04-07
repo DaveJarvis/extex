@@ -30,7 +30,7 @@ import java.util.List;
 
 /**
  * Traverse a directory tree and collect the files in an index.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -38,7 +38,7 @@ public class TocIndex {
 
     /**
      * Command line interface.
-     *
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -95,15 +95,15 @@ public class TocIndex {
     /**
      * The field <tt>omit</tt> contains the omit patterns.
      */
-    private List omit = new ArrayList();
+    private List<String> omit = new ArrayList<String>();
 
     /**
-     * Recursive procedure to traverse a directory tree and collect the
-     * files for the index.
-     *
+     * Recursive procedure to traverse a directory tree and collect the files
+     * for the index.
+     * 
      * @param file the current file to consider
      * @param out the output stream
-     *
+     * 
      * @throws MalformedURLException just in case
      */
     private void collect(File file, PrintStream out)
@@ -114,7 +114,7 @@ public class TocIndex {
 
         int n = omit.size();
         for (int i = 0; i < n; i++) {
-            if (f.matches((String) omit.get(i))) {
+            if (f.matches(omit.get(i))) {
                 return;
             }
         }
@@ -133,7 +133,7 @@ public class TocIndex {
 
     /**
      * Add a pattern to the omit patterns.
-     *
+     * 
      * @param arg the pattern to omit
      */
     private void omit(String arg) {

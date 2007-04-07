@@ -40,13 +40,13 @@ import org.extex.typesetter.Typesetter;
  * {@link org.extex.scanner.type.token.Token Token}s from. Beside the pure
  * getter for the next token some higher-level parsing methods are provided here
  * as well.
- *
+ * 
  * <p>
  * There are two classes of methods for reading something from a token stream.
  * The methods starting with <tt>get</tt> perform the raw reading, whereas the
  * methods starting with <tt>scan</tt> perform expansion as well.
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4388 $
@@ -56,7 +56,7 @@ public interface TokenSource {
     /**
      * Put a given stream on top of the stream stack. The reading occurs on this
      * new stream before resorting to the previous streams.
-     *
+     * 
      * @param stream the new stream to read from
      */
     void addStream(TokenStream stream);
@@ -65,9 +65,9 @@ public interface TokenSource {
      * All input streams are closed and not further Token is available for
      * processing. This normally means that the interpreter is forced to
      * terminate more or less gracefully.
-     *
+     * 
      * @param context the interpreter context
-     *
+     * 
      * @throws InterpreterException in case of an error
      */
     void closeAllStreams(Context context) throws InterpreterException;
@@ -76,46 +76,44 @@ public interface TokenSource {
      * Close all streams on the stack until a file stream is found. This file
      * stream is closed as last one. The other streams are left unchanged. If no
      * file stream is found the all streams are closed and none is left.
-     *
+     * 
      * @param context the interpreter context
-     *
+     * 
      * @throws InterpreterException in case of an error
      */
     void closeNextFileStream(Context context) throws InterpreterException;
 
     /**
      * Tries to execute a token.
-     *
+     * 
      * @param token the Token to execute
      * @param context the interpreter context
      * @param typesetter the typesetter
-     *
+     * 
      * @throws InterpreterException in case of an error<br>
-     *             especially<br>
-     *             ErrorLimitException in case that the error limit has been
-     *             reached
+     *         especially<br>
+     *         ErrorLimitException in case that the error limit has been reached
      */
     void execute(Token token, Context context, Typesetter typesetter)
             throws InterpreterException;
 
     /**
      * Scan and execute tokens until the group ends.
-     *
+     * 
      * @throws InterpreterException in case of an error<br>
-     *             especially<br>
-     *             ErrorLimitException in case that the error limit has been
-     *             reached
+     *         especially<br>
+     *         ErrorLimitException in case that the error limit has been reached
      */
     void executeGroup() throws InterpreterException;
 
     /**
      * Expand some tokens.
-     *
+     * 
      * @param tokens the tokens to expand
      * @param typesetter the typesetter to use
-     *
+     * 
      * @return the expanded tokens
-     *
+     * 
      * @throws GeneralException in case of an error
      * @throws ConfigurationException in case of an configuration problem
      */
@@ -125,32 +123,32 @@ public interface TokenSource {
 
     /**
      * Parse the specification of a box.
-     *
+     * 
      * <p>
      * This method parses the following syntactic entity:
      * </p>
-     *
+     * 
      * <doc type="syntax" name="box">
      * <h3>A Box</h3>
-     *
+     * 
      * <pre class="syntax">
      *    &lang;box&rang;
      * </pre>
-     *
+     * 
      * </doc>
-     *
+     * 
      * During the parsing the flags should be reset to something uncritical and
      * restored at the end.
-     *
+     * 
      * @param flags the flags to be restored
      * @param context the interpreter context
      * @param typesetter the typesetter to use
      * @param insert the token to insert either at the beginning of the box or
-     *   after the box has been gathered. If it is <code>null</code> then
-     *   nothing is inserted
-     *
+     *        after the box has been gathered. If it is <code>null</code> then
+     *        nothing is inserted
+     * 
      * @return the box gathered
-     *
+     * 
      * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
      */
@@ -163,14 +161,14 @@ public interface TokenSource {
      * sequence or active character. At the end of all input streams the control
      * sequence "inaccessible" is inserted and an exception is thrown. Thus this
      * method will never return <code>null</code>.
-     *
+     * 
      * <p>
      * This method parses the following syntactic entity:
      * </p>
-     *
+     * 
      * <doc type="syntax" name="control sequence">
      * <h3>A Control Sequence</h3>
-     *
+     * 
      * <p>
      * A control sequence is either a active character or an escape sequence.
      * Macros can be assigned to control sequences only.
@@ -183,67 +181,67 @@ public interface TokenSource {
      * &ndash; category code 11 &ndash; or a single character with any other
      * category code.
      * </p>
-     *
+     * 
      * <h4>Syntax</h4>
      * The formal description of this syntactic entity is the following:
-     *
+     * 
      * <pre class="syntax">
      *    &lang;control sequence&rang;
      *      &rarr; &lt;i&gt;?&lt;sub&gt;13&lt;/sub&gt;&lt;/i&gt;
      *       |  &lt;i&gt;?&lt;sub&gt;0&lt;/sub&gt;&lt;/i&gt;&lt;i&gt;?&lt;/i&gt;
      *       |  &lt;i&gt;?&lt;sub&gt;0&lt;/sub&gt;&lt;/i&gt;&lt;i&gt;?&lt;sub&gt;11&lt;/sub&gt;&lt;/i&gt;*
      * </pre>
-     *
+     * 
      * <h4>Examples</h4>
-     *
+     * 
      * <pre class="TeXSample">
      *     &tilde;
      * </pre>
-     *
+     * 
      * <p>
      * </p>
-     *
+     * 
      * <pre class="TeXSample">
      *     \abc
      * </pre>
-     *
+     * 
      * <p>
      * </p>
      * </doc>
-     *
+     * 
      * @param context the interpreter context
      * @param typesetter the typesetter
-     *
+     * 
      * @return the token read
-     *
+     * 
      * @throws InterpreterException in case that the token stream is at its end
-     *             or that the token read is not a control sequence token
+     *         or that the token read is not a control sequence token
      */
     CodeToken getControlSequence(Context context, Typesetter typesetter)
             throws InterpreterException;
 
     /**
      * Parse the specification of a font.
-     *
+     * 
      * <p>
      * This method parses the following syntactic entity:
      * </p>
-     *
+     * 
      * <doc type="syntax" name="font">
      * <h3>A Font</h3>
-     *
+     * 
      * <pre class="syntax">
      *    &lang;font&rang;
      * </pre>
-     *
+     * 
      * </doc>
-     *
-     *
+     * 
+     * 
      * @param context the interpreter context
      * @param primitive the name of the primitive for error messages
-     *
+     * 
      * @return a font specification
-     *
+     * 
      * @throws InterpreterException in case of an error
      */
     Font getFont(Context context, String primitive) throws InterpreterException;
@@ -260,13 +258,13 @@ public interface TokenSource {
      * <p>
      * Space tokens after the keyword are removed from the input stream.
      * </p>
-     *
+     * 
      * @param context the interpreter context
      * @param keyword the tokens to scan
-     *
+     * 
      * @return <code>true</code> iff the tokens could have been successfully
      *         removed from the input stream
-     *
+     * 
      * @throws InterpreterException in case of an error
      */
     boolean getKeyword(Context context, String keyword)
@@ -275,7 +273,7 @@ public interface TokenSource {
     /**
      * Getter for the token just previously read from the token source. This is
      * something like a look-back function.
-     *
+     * 
      * @return the last token or <code>null</code> if not available
      */
     Token getLastToken();
@@ -284,7 +282,7 @@ public interface TokenSource {
      * Getter for the locator. The locator provides a means to get the
      * information where something is coming from. Usually it points to a line
      * in a file.
-     *
+     * 
      * @return the current locator
      */
     Locator getLocator();
@@ -292,11 +290,11 @@ public interface TokenSource {
     /**
      * Get the next token which has not the category code
      * {@link org.extex.scanner.type.Catcode#SPACE SPACE}.
-     *
+     * 
      * @param context the interpreter context
-     *
+     * 
      * @return the next non-space token or <code>null</code> at EOF
-     *
+     * 
      * @throws InterpreterException in case of an error
      */
     Token getNonSpace(Context context) throws InterpreterException;
@@ -304,21 +302,21 @@ public interface TokenSource {
     /**
      * Skip spaces and if the next non-space character is an equal sign skip it
      * as well and all spaces afterwards.
-     *
+     * 
      * <p>
      * This method parses the following syntactic entity:
      * </p>
-     *
+     * 
      * <doc type="syntax" name="equals">
-     *
+     * 
      * <h3>The Optional Equals</h3>
-     *
+     * 
      * <p>
      * The syntactic entity &lang;equals&rang; skips initial spaces and an
      * equals sign of category 12 if one is found. In the latter case the
      * following spaces are skipped as well.
      * </p>
-     *
+     * 
      * <pre class="syntax">
      *    &lang;equals&rang;
      *      &rarr; {@linkplain org.extex.interpreter.TokenSource#skipSpace()
@@ -332,12 +330,12 @@ public interface TokenSource {
      *             org.extex.interpreter.TokenSource#skipSpace()
      *             &lang;optional spaces&rang;}
      * </pre>
-     *
+     * 
      * </doc>
-     *
-     *
+     * 
+     * 
      * @param context the interpreter context
-     *
+     * 
      * @throws InterpreterException in case of an error
      */
     void getOptionalEquals(Context context) throws InterpreterException;
@@ -347,31 +345,31 @@ public interface TokenSource {
      * at its end then the next one on the streamStack is used until a token
      * could be read. If all stream are at the end then <code>null</code> is
      * returned.
-     *
+     * 
      * <p>
      * This method corresponds to the following syntax specification:
      * </p>
-     *
+     * 
      * <doc type="syntax" name="token">
      * <h3>A Token</h3>
-     *
+     * 
      * <pre class="syntax">
      *    &lang;token&rang;
      * </pre>
-     *
+     * 
      * <p>
      * A single token depends on the category code of the characters.
      * </p>
-     *
+     * 
      * </doc>
-     *
-     *
+     * 
+     * 
      * @param context the interpreter context
-     *
+     * 
      * @return the next token or <code>null</code>
-     *
+     * 
      * @throws InterpreterException in case of an error
-     *
+     * 
      * @see "<logo>TeX</logo> &ndash; The Program [332]"
      */
     Token getToken(Context context) throws InterpreterException;
@@ -381,30 +379,30 @@ public interface TokenSource {
      * <code>}</code>. If the current input stream is at its end then the
      * next one on the streamStack is used until a token could be read. If all
      * streams are at the end then an exception is thrown.
-     *
+     * 
      * <p>
      * This method parses the following syntactic entity:
      * </p>
-     *
+     * 
      * <doc type="syntax" name="replacement text">
      * <h3>A Replacement Text</h3>
-     *
+     * 
      * <p>
      * </p>
-     *
+     * 
      * <pre class="syntax">
      *     &lang;replacement text&rang;
      * </pre>
-     *
+     * 
      * </doc>
-     *
-     *
+     * 
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the next tokens or <code>null</code>
-     *
+     * 
      * @throws InterpreterException in case of an error
      */
     Tokens getTokens(Context context, TokenSource source, Typesetter typesetter)
@@ -413,25 +411,25 @@ public interface TokenSource {
     /**
      * Getter for the token stream factory. The token stream factory can be used
      * to acquire a new token stream.
-     *
+     * 
      * @return the token stream factory
      */
     TokenStreamFactory getTokenStreamFactory();
 
     /**
      * Push back a token onto the input stream for subsequent reading.
-     *
+     * 
      * @param token the token to push
-     *
+     * 
      * @throws InterpreterException in case of an error
      */
     void push(Token token) throws InterpreterException;
 
     /**
      * Push back a list of tokens onto the input stream for subsequent reading.
-     *
+     * 
      * @param tokens the tokens to push
-     *
+     * 
      * @throws InterpreterException in case of an error
      */
     void push(Token[] tokens) throws InterpreterException;
@@ -440,9 +438,9 @@ public interface TokenSource {
      * Push back a list of tokens onto the input stream for subsequent reading.
      * In case that the argument is <code>null</code> then it is silently
      * ignored.
-     *
+     * 
      * @param tokens the tokens to push
-     *
+     * 
      * @throws InterpreterException in case of an error
      */
     void push(Tokens tokens) throws InterpreterException;
@@ -452,113 +450,60 @@ public interface TokenSource {
      * sequence of digits with category code <tt>OTHER</tt>. The number can
      * be preceded by optional white space. Alternate representations for an
      * character code exist.
-     *
+     * 
      * <p>
      * This method parses the following syntactic entity:
      * </p>
-     *
+     * 
      * <doc type="syntax" name="character">
      * <h3>A Character Code</h3>
-     *
+     * 
      * <pre class="syntax">
      *    &lang;character code&rang;
      * </pre>
-     *
+     * 
      * <p>
      * A character is a positive number.
      * </p>
      * <p>
      * Tokens are expanded while gathering the requested values.
      * </p>
-     *
+     * 
      * </doc>
-     *
-     *
+     * 
+     * 
      * @param context the interpreter context
      * @param typesetter the typesetter
      * @param primitive the name of the invoking primitive for error handling
-     *
+     * 
      * @return the value of the integer scanned
-     *
+     * 
      * @throws InterpreterException in case of an error<br>
-     *             especially<br>
-     *             InvalidCharacterException in case that no number is found or
-     *             if it is out of the allowed range<br>
-     *             EofException in case that an end of file has been encountered
-     *             before the character code was complete
+     *         especially<br>
+     *         InvalidCharacterException in case that no number is found or if
+     *         it is out of the allowed range<br>
+     *         EofException in case that an end of file has been encountered
+     *         before the character code was complete
      */
     UnicodeChar scanCharacterCode(Context context, Typesetter typesetter,
             String primitive) throws InterpreterException;
 
     /**
      * Scan the input for the next token which has not the category code SPACE.
-     *
+     * 
      * @param context the interpreter context
-     *
+     * 
      * @return the next non-space token or <code>null</code> at EOF
-     *
+     * 
      * @throws InterpreterException in case of an error in
-     *             {@link #scanToken(Context) scanToken()}
+     *         {@link #scanToken(Context) scanToken()}
      */
     Token scanNonSpace(Context context) throws InterpreterException;
 
     /**
-     * Scan the input stream for tokens making up a number, this is a sequence
-     * of digits with category code <tt>OTHER</tt>. The number can be
-     * preceded by optional white space. Alternate representations for an
-     * integer exist.
-     *
-     * @param context the interpreter context
-     *
-     * @return the value of the integer scanned
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @deprecated use CountParser.scanNumber() instead
-     */
-    long scanNumber(Context context) throws InterpreterException;
-
-    /**
-     * Scan the input stream for tokens making up a number, this is a sequence of
-     * digits with category code OTHER. The number can be preceded by optional
-     * white space.
-     * <p>
-     * This method implements the generalization of several syntactic
-     * definitions from <logo>TeX</logo>:
-     * </p>
-     *
-     * <doc type="syntax" name="number">
-     * <h3>A Number</h3>
-     *
-     * <pre class="syntax">
-     *    &lang;number&rang;
-     * </pre>
-     *
-     * <p>
-     * A number consists of a non-empty sequence of digits with category code
-     * {@link org.extex.scanner.type.Catcode#OTHER OTHER}.
-     * </p>
-     *
-     * </doc>
-     *
-     *
-     * @param context the interpreter context
-     * @param token the first token to consider
-     *
-     * @return the value of the integer scanned
-     *
-     * @throws InterpreterException in case of an error in an observer<br>
-     *             especially<br>
-     *             MissingNumberException in case that no number could be read
-     *
-     * @deprecated use CountParser.scanNumber() instead
-     */
-    long scanNumber(Context context, Token token) throws InterpreterException;
-
-    /**
      * Scan the input streams for an entity to denote a register name. Upon EOF
      * <code>null</code> is returned.
-     *
+     * 
      * <doc type="syntax" name="register name">
      * <h3>A Register Name</h3>
      * <p>
@@ -593,35 +538,36 @@ public interface TokenSource {
      * Te integer register <tt>\maxRegister</tt> is defined in the name space
      * <tt>system</tt>. Thus special actions have to be used to access it.
      * </p>
-     *
+     * 
      * <h4>Syntax</h4>
-     *
+     * 
      * <pre class="syntax">
      *    &lang;register name&rang;
      *        &rarr; {@linkplain
      *         org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
      *         &lang;tokens&rang;}
-     *         | {@linkplain org.extex.interpreter.TokenSource#scanNumber(Context)
+     *         | {@linkplain
+     *             org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
      *         &lang;number&rang;}
      * </pre>
-     *
+     * 
      * <h4>Examples</h4>
-     *
+     * 
      * <pre class="TeXSample">
      *   123
      *   {abc}
      * </pre>
-     *
+     * 
      * </doc>
-     *
-     *
+     * 
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param primitive the name of the invoking primitive for error handling
-     *
+     * 
      * @return the register name encountered
-     *
+     * 
      * @throws InterpreterException in case of an error
      */
     String scanRegisterName(Context context, TokenSource source,
@@ -633,11 +579,11 @@ public interface TokenSource {
      * stream is at its end then the next one on the streamStack is used until a
      * token could be read. If all streams are at the end then <code>null</code>
      * is returned.
-     *
+     * 
      * @param context the interpreter context
-     *
+     * 
      * @return the next token or <code>null</code>
-     *
+     * 
      * @throws InterpreterException in case of an error
      */
     Token scanToken(Context context) throws InterpreterException;
@@ -649,36 +595,36 @@ public interface TokenSource {
      * stream are at the end then <code>null</code> is returned. Nevertheless
      * if some tokens could have been read before the end of file occurred then
      * those tokens are returned &ndash; even if no matching brace is found.
-     *
+     * 
      * <p>
      * This method parses the following syntactic entity:
      * </p>
-     *
+     * 
      * <doc type="syntax" name="general text">
      * <h3>A General text</h3>
-     *
+     * 
      * <p>
-     *
+     * 
      * <pre class="syntax">
      *     &lang;general text&rang;
      * </pre>
-     *
+     * 
      * </p>
-     *
+     * 
      * </doc>
-     *
-     *
+     * 
+     * 
      * @param context the interpreter context
      * @param primitive the name of the invoking primitive for error handling
      * @param reportUndefined indicator that an undefined control sequence leads
-     *            to an exception. This parameter is effective only if
-     *            ignoreUndefined is <code>false</code>
+     *        to an exception. This parameter is effective only if
+     *        ignoreUndefined is <code>false</code>
      * @param ignoreUndefined indicator that an undefined control sequence
-     *            should be treated as <tt>\relax</tt>
-     *
+     *        should be treated as <tt>\relax</tt>
+     * 
      * @return the next tokens read so far. The return value is guaranteed not
-     *   to be <code>null</code> under any circumstances
-     *
+     *         to be <code>null</code> under any circumstances
+     * 
      * @throws InterpreterException in case of an error
      */
     Tokens scanTokens(Context context, boolean reportUndefined,
@@ -692,12 +638,12 @@ public interface TokenSource {
      * If the current input stream is at its end then the next one on the
      * streamStack is used until a token could be read. If all stream are at the
      * end then <code>null</code> is returned.
-     *
+     * 
      * @param context the interpreter context
      * @param primitive the name of the invoking primitive for error handling
-     *
+     * 
      * @return the next tokens as <code>String</code> or <code>null</code>
-     *
+     * 
      * @throws InterpreterException in case of an error
      */
     String scanTokensAsString(Context context, String primitive)
@@ -712,17 +658,17 @@ public interface TokenSource {
      * Normally all expandable tokens are expanded. This method honors the
      * protected mark and does not try to expand protected code.
      * </p>
-     *
+     * 
      * @param context the interpreter context
      * @param primitive the name of the invoking primitive for error handling
      * @param reportUndefined indicator that an undefined control sequence leads
-     *            to an exception. This parameter is effective only if
-     *            ignoreUndefined is <code>false</code>
+     *        to an exception. This parameter is effective only if
+     *        ignoreUndefined is <code>false</code>
      * @param ignoreUndefined indicator that an undefined control sequence
-     *            should be treated as <tt>\relax</tt>
-     *
+     *        should be treated as <tt>\relax</tt>
+     * 
      * @return the next tokens or <code>null</code>
-     *
+     * 
      * @throws InterpreterException in case of an error
      */
     Tokens scanUnprotectedTokens(Context context, boolean reportUndefined,
@@ -731,40 +677,40 @@ public interface TokenSource {
 
     /**
      * Skip spaces and check whether any tokens are left.
-     *
+     * 
      * <p>
      * This method corresponds to the following specification:
      * </p>
-     *
+     * 
      * <doc type="syntax" name="optional spaces">
      * <h3>Optional Spaces</h3>
-     *
+     * 
      * <p>
      * This syntactic entity corresponds to an arbitrary number of white-space
      * characters. White-space characters include space, ta and newline
      * characters.
      * </p>
-     *
+     * 
      * <pre class="syntax">
      *    &lang;optional spaces&rang;
      *      &rarr; [ \t\n]*
      * </pre>
-     *
+     * 
      * </doc>
-     *
+     * 
      */
     void skipSpace();
 
     /**
      * Send the string to the named observer. The observer must be capable to
      * deal with a string argument.
-     *
+     * 
      * @param name name of the observer
      * @param text the text to send to the observer
-     *
+     * 
      * @throws InterpreterException in case of an error
      * @throws NotObservableException in case that the named observer is not
-     *   accessible
+     *         accessible
      */
     void update(String name, String text)
             throws InterpreterException,
