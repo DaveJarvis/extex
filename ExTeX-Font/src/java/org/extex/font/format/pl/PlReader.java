@@ -33,12 +33,12 @@ import java.util.TreeMap;
 
 /**
  * Reader for a PL file.
- *
+ * 
  * TODO: incomplete
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
- *
+ * 
  */
 public class PlReader {
 
@@ -49,14 +49,14 @@ public class PlReader {
 
     /**
      * Create a new object.
-     *
-     * @param in    The input stream.
+     * 
+     * @param in The input stream.
      * @throws IOException if an IO-error occurred.
      */
     public PlReader(InputStream in) throws IOException {
 
         commands = new HashMap<String, PlCommand>();
-        plcommands = new HashMap();
+        plcommands = new HashMap<Object, Object>();
         characters = new TreeMap<Integer, Chars>();
 
         commands.put("VTITLE", new PlVtitle());
@@ -69,8 +69,8 @@ public class PlReader {
 
     /**
      * Create a new object.
-     *
-     * @param file  The file.
+     * 
+     * @param file The file.
      * @throws IOException if an IO-error occurred.
      */
     public PlReader(File file) throws IOException {
@@ -80,8 +80,8 @@ public class PlReader {
 
     /**
      * Create a new object.
-     *
-     * @param file  The file.
+     * 
+     * @param file The file.
      * @throws IOException if an IO-error occurred.
      */
     public PlReader(String file) throws IOException {
@@ -97,7 +97,7 @@ public class PlReader {
     /**
      * The pl commands.
      */
-    private Map plcommands;
+    private Map<Object, Object> plcommands;
 
     /**
      * The characters.
@@ -106,8 +106,8 @@ public class PlReader {
 
     /**
      * Read the file.
-     *
-     * @param in    The input.
+     * 
+     * @param in The input.
      * @throws IOException if an IO-error occurred.
      */
     private void read(InputStream in) throws IOException {
@@ -122,8 +122,8 @@ public class PlReader {
 
     /**
      * Loop to read the commands.
-     *
-     * @param reader    The reader.
+     * 
+     * @param reader The reader.
      * @throws IOException if an IO-error occurred.
      */
     private void commandLoop(Reader reader) throws IOException {
@@ -142,8 +142,8 @@ public class PlReader {
 
     /**
      * Read the command.
-     *
-     * @param reader    The reader.
+     * 
+     * @param reader The reader.
      * @return Returns the command.
      * @throws IOException if an IO-error occurred.
      */
@@ -157,9 +157,8 @@ public class PlReader {
             if (start && c == ' ') {
                 // ignore space before the command
                 continue;
-            } else {
-                start = false;
             }
+            start = false;
             if (c == '(') {
                 start = false;
                 continue;
@@ -178,8 +177,8 @@ public class PlReader {
 
     /**
      * Read a number.
-     *
-     * @param reader    The reader.
+     * 
+     * @param reader The reader.
      * @return Returns the number of -1 if not found.
      * @throws IOException if an IO-error occurred.s
      */
@@ -194,8 +193,7 @@ public class PlReader {
             f = Integer.parseInt(value, 8);
         } else if (type.equals("C")) {
             // char
-            char c = value.charAt(0);
-            f = (int) c;
+            f = value.charAt(0);
         } else if (type.equals("R")) {
             // real
             f = Float.parseFloat(value);
@@ -206,10 +204,10 @@ public class PlReader {
 
     /**
      * Read the parameter.
-     *
+     * 
      * Read until ')' and brace level is zero.
-     *
-     * @param reader    The reader.
+     * 
+     * @param reader The reader.
      * @return Returns the parameter.
      * @throws IOException if an IO-error occurred.
      */
@@ -234,10 +232,10 @@ public class PlReader {
 
     /**
      * Read a character from the reader (ignore cr and newline).
-     *
-     * @param reader    The reader.
-     * @return  Returns the character.
-     * @throws IOException  if an IO-error occurred.
+     * 
+     * @param reader The reader.
+     * @return Returns the character.
+     * @throws IOException if an IO-error occurred.
      */
     private int readChar(Reader reader) throws IOException {
 
@@ -259,7 +257,7 @@ public class PlReader {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.font.format.pl.PlCommand#execute(java.io.Reader)
          */
         public void execute(Reader reader) throws IOException {
@@ -275,7 +273,7 @@ public class PlReader {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.font.format.pl.PlCommand#execute(java.io.Reader)
          */
         public void execute(Reader reader) throws IOException {
@@ -296,7 +294,7 @@ public class PlReader {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.font.format.pl.PlCommand#execute(java.io.Reader)
          */
         public void execute(Reader reader) throws IOException {
@@ -320,7 +318,7 @@ public class PlReader {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.font.format.pl.PlCommand#execute(java.io.Reader)
          */
         public void execute(Reader reader) throws IOException {
@@ -343,7 +341,7 @@ public class PlReader {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.font.format.pl.PlCommand#execute(java.io.Reader)
          */
         public void execute(Reader reader) throws IOException {
@@ -358,6 +356,7 @@ public class PlReader {
 
         /**
          * Returns the ch.
+         * 
          * @return Returns the ch.
          */
         public int getCh() {
@@ -369,18 +368,20 @@ public class PlReader {
 
     /**
      * Returns the characters.
+     * 
      * @return Returns the characters.
      */
-    public SortedMap getCharacters() {
+    public SortedMap<Integer, Chars> getCharacters() {
 
         return characters;
     }
 
     /**
      * Returns the plcommands.
+     * 
      * @return Returns the plcommands.
      */
-    public Map getPlcommands() {
+    public Map<Object, Object> getPlcommands() {
 
         return plcommands;
     }
@@ -402,6 +403,7 @@ public class PlReader {
 
         /**
          * Returns the ch.
+         * 
          * @return Returns the ch.
          */
         public int getCh() {
@@ -411,6 +413,7 @@ public class PlReader {
 
         /**
          * The ch to set.
+         * 
          * @param c The ch to set.
          */
         public void setCh(int c) {
@@ -420,6 +423,7 @@ public class PlReader {
 
         /**
          * Returns the mapch.
+         * 
          * @return Returns the mapch.
          */
         public int getMapch() {
@@ -429,6 +433,7 @@ public class PlReader {
 
         /**
          * The mapch to set.
+         * 
          * @param c The mapch to set.
          */
         public void setMapch(int c) {

@@ -412,6 +412,11 @@ public class TfmReader implements Serializable {
     }
 
     /**
+     * TODO mgn: missing JavaDoc
+     *
+     * @param cp1 ...
+     * @param cp2 ...
+     * @return ...
      * @see org.extex.font.format.tfm.TfmLigKernArray#getKerning(int, int)
      */
     public TfmFixWord getKerning(int cp1, int cp2) {
@@ -429,6 +434,11 @@ public class TfmReader implements Serializable {
     }
 
     /**
+     * TODO mgn: missing JavaDoc
+     *
+     * @param cp1 ...
+     * @param cp2 ...
+     * @return ...
      * @see org.extex.font.format.tfm.TfmLigKernArray#getLigature(int, int)
      */
     public int getLigature(int cp1, int cp2) {
@@ -477,8 +487,8 @@ public class TfmReader implements Serializable {
     }
 
     /**
-     * Returns the pfbfilename.
-     * @return Returns the pfbfilename.
+     * Returns the pfb file name.
+     * @return Returns the pfb file name.
      */
     public String getPfbfilename() {
 
@@ -538,10 +548,12 @@ public class TfmReader implements Serializable {
 
     /**
      * Set the fontmap reader and the encoding factory.
+     *
      * @param apsfontmap    the psfonts.map reader
      * @param encf          the encoding factory
-     * @throws FontException if a font-erorr occured
-     * @throws ConfigurationException from the resourcefinder
+     *
+     * @throws FontException if a font-error occurred
+     * @throws ConfigurationException from the resource finder
      */
     public void setFontMapEncoding(PsFontsMapReader apsfontmap,
             EncFactory encf) throws FontException, ConfigurationException {
@@ -571,8 +583,8 @@ public class TfmReader implements Serializable {
     }
 
     /**
-     * The pfbparser to set.
-     * @param parser The pfbparser to set.
+     * The pfb parser to set.
+     * @param parser The pfb parser to set.
      */
     public void setPfbParser(PfbParser parser) {
 

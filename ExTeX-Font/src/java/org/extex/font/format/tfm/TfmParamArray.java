@@ -78,7 +78,7 @@ public class TfmParamArray implements Serializable {
     /**
      * Map for the parameters.
      */
-    private Map param;
+    private Map<String, TfmFixWord> param;
 
     /**
      * Create a new object.
@@ -93,7 +93,7 @@ public class TfmParamArray implements Serializable {
 
         fonttpye = ft;
 
-        param = new HashMap();
+        param = new HashMap<String, TfmFixWord>();
 
         String[] labels = null;
         if (fonttpye.getType() == TfmFontType.MATHEX) {
@@ -144,7 +144,7 @@ public class TfmParamArray implements Serializable {
      *
      * @return Returns the param.
      */
-    public Map getParam() {
+    public Map<String, TfmFixWord> getParam() {
 
         return param;
     }
@@ -156,7 +156,7 @@ public class TfmParamArray implements Serializable {
      */
     public TfmFixWord getParam(String name) {
 
-        TfmFixWord value = (TfmFixWord) param.get(name);
+        TfmFixWord value = param.get(name);
         return value == null ? TfmFixWord.ZERO : value;
     }
 

@@ -23,11 +23,11 @@ import java.io.Serializable;
 
 /**
  * BaseFont type.
- *
+ * 
  * <p>
  * VANILLA, MATHSY, MATHEX
  * </p>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -89,12 +89,14 @@ public class TfmFontType implements Serializable {
 
     /**
      * Create a new object.
-     *
-     * @param codingscheme  the coding scheme
+     * 
+     * @param codingscheme the coding scheme
      */
     public TfmFontType(String codingscheme) {
 
-        if (codingscheme != null && codingscheme.startsWith("TEX MATH SY")) {
+        if (codingscheme == null) {
+            type = OTHER;
+        } else if (codingscheme.startsWith("TEX MATH SY")) {
             type = MATHSY;
         } else if (codingscheme.startsWith("TEX MATH EX")) {
             type = MATHEX;
@@ -105,11 +107,11 @@ public class TfmFontType implements Serializable {
         } else {
             type = OTHER;
         }
-
     }
 
     /**
      * Returns the type.
+     * 
      * @return Returns the type.
      */
     public Type getType() {
@@ -118,6 +120,8 @@ public class TfmFontType implements Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {
@@ -134,8 +138,9 @@ public class TfmFontType implements Serializable {
     }
 
     /**
-     * Returns the font type name for fontmetric-file.
-     * @return Returns the font type name for fontmetric-file.
+     * Returns the font type name for font metric file.
+     * 
+     * @return Returns the font type name for font metric file.
      */
     public String toTFMString() {
 

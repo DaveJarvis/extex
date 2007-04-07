@@ -39,8 +39,9 @@ public interface FontFactory {
      *
      * @param key   The font key.
      * @return Returns a new Instance of the font.
+     *
      * @throws ConfigurationException From the configuration system.
-     * @throws FontException if an font-error occurred.
+     * @throws FontException if a font error occurred.
      */
     TexFont newInstance(FontKey key) throws ConfigurationException,
             FontException;

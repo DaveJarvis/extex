@@ -41,21 +41,11 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * Class to load tfm fonts.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public class LoadableTfmFont implements LoadableFont {
-
-    /**
-     * The code point map.
-     */
-    private Map codepointmap;
-
-    /**
-     * The font key.
-     */
-    private FontKey fontKey;
 
     /**
      * The actual font key.
@@ -63,11 +53,52 @@ public class LoadableTfmFont implements LoadableFont {
     private FontKey actualFontKey;
 
     /**
+     * The code point map.
+     */
+    private Map<UnicodeChar, Integer> codepointmap;
+
+    /**
+     * The font key.
+     */
+    private FontKey fontKey;
+
+    /**
      * The tfm reader.
      */
     private TfmReader reader;
 
     /**
+     * Returns the char position of a Unicode char.
+     * 
+     * If the Unicode char is not defined then a negative value is returned.
+     * 
+     * @param uc the Unicode char.
+     * @return the char position of a Unicode char.
+     */
+    private int charPos(UnicodeChar uc) {
+
+        if (uc == null) {
+            return -1;
+        }
+
+        int cp = uc.getCodePoint();
+        if (cp >= Unicode.OFFSET && cp <= Unicode.OFFSET + 0xff) {
+            cp = cp & 0xff;
+        } else {
+            // font: map code point to char position
+            Integer ipos = codepointmap.get(uc);
+            if (ipos != null) {
+                cp = ipos.intValue();
+            } else {
+                cp = -1;
+            }
+        }
+        return cp;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.BaseFont#getActualFontKey()
      */
     public FontKey getActualFontKey() {
@@ -76,6 +107,8 @@ public class LoadableTfmFont implements LoadableFont {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getActualSize()
      */
     public FixedDimen getActualSize() {
@@ -84,6 +117,10 @@ public class LoadableTfmFont implements LoadableFont {
     }
 
     /**
+     * TODO missing JavaDoc
+     *
+     * @return TODO
+     * 
      * @see org.extex.interpreter.type.font.Font#getCheckSum()
      */
     public int getCheckSum() {
@@ -92,6 +129,8 @@ public class LoadableTfmFont implements LoadableFont {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getDepth(org.extex.core.UnicodeChar)
      */
     public FixedGlue getDepth(UnicodeChar uc) {
@@ -99,12 +138,14 @@ public class LoadableTfmFont implements LoadableFont {
         int cp = charPos(uc);
         if (cp >= 0 && reader.getDepth(cp) != null) {
             return new Glue((getActualSize().getValue() * reader.getDepth(cp)
-                    .getValue()) >> 20);
+                .getValue()) >> 20);
         }
-        return Glue.ZERO;
+        return FixedGlue.ZERO;
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getDesignSize()
      */
     public FixedDimen getDesignSize() {
@@ -113,6 +154,8 @@ public class LoadableTfmFont implements LoadableFont {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getEm()
      */
     public FixedDimen getEm() {
@@ -121,6 +164,8 @@ public class LoadableTfmFont implements LoadableFont {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getEx()
      */
     public FixedDimen getEx() {
@@ -129,6 +174,8 @@ public class LoadableTfmFont implements LoadableFont {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getFontDimen(java.lang.String)
      */
     public FixedDimen getFontDimen(String name) {
@@ -136,10 +183,12 @@ public class LoadableTfmFont implements LoadableFont {
         TfmFixWord param = reader.getParamAsFixWord(name);
 
         return new Dimen(
-                ((getActualSize().getValue() * param.getValue()) >> 20));
+            ((getActualSize().getValue() * param.getValue()) >> 20));
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.BaseFont#getFontKey()
      */
     public FontKey getFontKey() {
@@ -148,6 +197,8 @@ public class LoadableTfmFont implements LoadableFont {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getFontName()
      */
     public String getFontName() {
@@ -156,6 +207,8 @@ public class LoadableTfmFont implements LoadableFont {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getHeight(org.extex.core.UnicodeChar)
      */
     public FixedGlue getHeight(UnicodeChar uc) {
@@ -163,12 +216,14 @@ public class LoadableTfmFont implements LoadableFont {
         int cp = charPos(uc);
         if (cp >= 0 && reader.getHeight(cp) != null) {
             return new Glue((getActualSize().getValue() * reader.getHeight(cp)
-                    .getValue()) >> 20);
+                .getValue()) >> 20);
         }
-        return Glue.ZERO;
+        return FixedGlue.ZERO;
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getItalicCorrection(org.extex.core.UnicodeChar)
      */
     public FixedDimen getItalicCorrection(UnicodeChar uc) {
@@ -176,13 +231,16 @@ public class LoadableTfmFont implements LoadableFont {
         int cp = charPos(uc);
         if (cp >= 0 && reader.getItalicCorrection(cp) != null) {
             return new Dimen((getActualSize().getValue() * reader
-                    .getItalicCorrection(cp).getValue()) >> 20);
+                .getItalicCorrection(cp).getValue()) >> 20);
         }
         return Dimen.ZERO_PT;
     }
 
     /**
-     * @see org.extex.font.ExtexFont#getKerning(org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.ExtexFont#getKerning(org.extex.core.UnicodeChar,
+     *      org.extex.core.UnicodeChar)
      */
     public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
 
@@ -196,7 +254,10 @@ public class LoadableTfmFont implements LoadableFont {
     }
 
     /**
-     * @see org.extex.font.ExtexFont#getLigature(org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.ExtexFont#getLigature(org.extex.core.UnicodeChar,
+     *      org.extex.core.UnicodeChar)
      */
     public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
 
@@ -214,6 +275,8 @@ public class LoadableTfmFont implements LoadableFont {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getScaleFactor()
      */
     public FixedCount getScaleFactor() {
@@ -227,15 +290,19 @@ public class LoadableTfmFont implements LoadableFont {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getSpace()
      */
     public FixedGlue getSpace() {
 
         return new Glue(getFontDimen("SPACE"), getFontDimen("STRETCH"),
-                getFontDimen("SHRINK"));
+            getFontDimen("SHRINK"));
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getWidth(org.extex.core.UnicodeChar)
      */
     public FixedGlue getWidth(UnicodeChar uc) {
@@ -243,42 +310,15 @@ public class LoadableTfmFont implements LoadableFont {
         int cp = charPos(uc);
         if (cp >= 0 && reader.getWidth(cp) != null) {
             return new Glue((getActualSize().getValue() * reader.getWidth(cp)
-                    .getValue()) >> 20);
+                .getValue()) >> 20);
         }
-        return Glue.ZERO;
+        return FixedGlue.ZERO;
 
     }
 
     /**
-     * Returns the char position of a Unicode char.
-     *
-     * If the Unicode char is not defined then a negative value is returned.
-     *
-     * @param uc    the Unicode char.
-     * @return the char position of a Unicode char.
-     */
-    private int charPos(UnicodeChar uc) {
-
-        if (uc == null) {
-            return -1;
-        }
-
-        int cp = uc.getCodePoint();
-        if (cp >= Unicode.OFFSET && cp <= Unicode.OFFSET + 0xff) {
-            cp = cp & 0xff;
-        } else {
-            // font: map code point to char position
-            Integer ipos = (Integer) codepointmap.get(uc);
-            if (ipos != null) {
-                cp = ipos.intValue();
-            } else {
-                cp = -1;
-            }
-        }
-        return cp;
-    }
-
-    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.type.font.Font#hasGlyph(org.extex.core.UnicodeChar)
      */
     public boolean hasGlyph(UnicodeChar uc) {
@@ -292,16 +332,18 @@ public class LoadableTfmFont implements LoadableFont {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.LoadableFont#loadFont(java.io.InputStream,
      *      org.extex.font.CoreFontFactory, org.extex.font.FontKey)
      */
-    public void loadFont(InputStream in, CoreFontFactory factory,
-            FontKey fontKey) throws CorruptFontException,
-            ConfigurationException {
+    public void loadFont(InputStream in, CoreFontFactory factory, FontKey key)
+            throws CorruptFontException,
+                ConfigurationException {
 
-        this.fontKey = fontKey;
+        this.fontKey = key;
 
-        if (fontKey == null) {
+        if (key == null) {
             throw new IllegalArgumentException("fontkey");
         }
         if (factory == null) {
@@ -309,38 +351,40 @@ public class LoadableTfmFont implements LoadableFont {
         }
 
         try {
-            reader = new TfmReader(in, fontKey.getName());
+            reader = new TfmReader(in, key.getName());
         } catch (IOException e) {
-            throw new CorruptFontException(fontKey, e.getLocalizedMessage());
+            throw new CorruptFontException(key, e.getLocalizedMessage());
         }
 
-        if (fontKey.getDimen(FontKey.SIZE) == null
-                && fontKey.getCount(FontKey.SCALE) == null) {
-            actualFontKey = factory.getFontKey(fontKey, reader.getDesignSize());
-        } else if (fontKey.getCount(FontKey.SCALE) != null) {
+        if (key.getDimen(FontKey.SIZE) == null
+                && key.getCount(FontKey.SCALE) == null) {
+            actualFontKey = factory.getFontKey(key, reader.getDesignSize());
+        } else if (key.getCount(FontKey.SCALE) != null) {
             // design size * scale / 1000
-            actualFontKey = factory.getFontKey(fontKey, new Dimen(reader
-                    .getDesignSize().getValue()
-                    * fontKey.getCount(FontKey.SCALE).getValue() / 1000));
+            actualFontKey =
+                    factory.getFontKey(key, new Dimen(reader.getDesignSize()
+                        .getValue()
+                            * key.getCount(FontKey.SCALE).getValue() / 1000));
         } else {
-            actualFontKey = fontKey;
+            actualFontKey = key;
         }
 
-        String cs = reader.getCodingscheme().replaceAll("[^A-Za-z0-9]", "")
-                .toLowerCase();
+        String cs =
+                reader.getCodingscheme().replaceAll("[^A-Za-z0-9]", "")
+                    .toLowerCase();
 
         try {
             codepointmap = U2tFactory.getInstance().loadU2t(cs, factory);
         } catch (IOException e) {
-            throw new CorruptedTfmFontMappingException(fontKey, e
-                    .getLocalizedMessage());
+            throw new CorruptedTfmFontMappingException(key, e
+                .getLocalizedMessage());
         } catch (NumberFormatException e) {
-            throw new CorruptedTfmFontMappingException(fontKey, e
-                    .getLocalizedMessage());
+            throw new CorruptedTfmFontMappingException(key, e
+                .getLocalizedMessage());
         }
 
         if (codepointmap == null) {
-            codepointmap = new HashMap();
+            codepointmap = new HashMap<UnicodeChar, Integer>();
             // use default map
             for (int i = 0; i <= 255; i++) {
                 codepointmap.put(UnicodeChar.get(i), new Integer(i));

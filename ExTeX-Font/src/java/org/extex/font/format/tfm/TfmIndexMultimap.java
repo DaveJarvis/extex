@@ -101,7 +101,7 @@ public class TfmIndexMultimap implements Serializable {
     /**
      * Internal storage of (key, value) pairs.
      */
-    private ArrayList data = new ArrayList();
+    private ArrayList<TfmKeyInt> data = new ArrayList<TfmKeyInt>();
 
     /**
      * Create a new object.
@@ -136,7 +136,7 @@ public class TfmIndexMultimap implements Serializable {
      */
     public TfmKeyInt at(int i) {
 
-        return (TfmKeyInt) data.get(i);
+        return data.get(i);
     }
 
     /**

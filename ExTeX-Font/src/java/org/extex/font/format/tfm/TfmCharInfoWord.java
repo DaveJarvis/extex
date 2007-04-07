@@ -29,53 +29,74 @@ import org.jdom.Element;
 
 /**
  * Class for TFM char info word.
- *
- * <p>Each char_info_word contains six fields packed
- *    into four bytes as follows.</p>
- *
- * <table border="1">
- *   <thead>
- *     <tr><td>byte</td><td>description</td></tr>
- *   </thead>
- *   <tr><td>first  </td><td>width_index (8 bits)</td></tr>
- *   <tr><td>second </td><td>height_index (4 bits) times 16,
- *                           plus depth_index (4 bits)</td></tr>
- *   <tr><td>third  </td><td>italic_index (6 bits) times 4,
- *                           plus tag (2 bits)</td></tr>
- *   <tr><td>fourth </td><td>remainder (8 bits)</td></tr>
- * </table>
- *
+ * 
  * <p>
- * The tag field has four values that explain how to
- * interpret the remainder field.
+ * Each char_info_word contains six fields packed into four bytes as follows.
  * </p>
- *
- * <table border="1">
- *   <thead>
- *     <tr><td>tag</td><td>description</td></tr>
- *   </thead>
- *   <tr><td>0  </td><td>no_tag: means that remainder is unused.</td></tr>
- *   <tr><td>1  </td><td>lig_tag: means that this character has a
- *                       ligature/kerning program starting at
- *                       lig_kern[remainder].</td></tr>
- *   <tr><td>2  </td><td>list_tag: means that this character is
- *                       part of a chain of characters of ascending sizes,
- *                       and not the largest in the chain.
- *                       The remainder field gives the character code of
- *                       the next larger character.</td></tr>
- *   <tr><td>3  </td><td>ext_tag: means that this character code
- *                       represents an extensible character, i.e.,
- *                       a character that is built up of smaller pieces
- *                       so that it can be made arbitrarily large.
- *                       The pieces are specified in exten[remainder].</td></tr>
+ * 
+ * <table border="1"> <thead>
+ * <tr>
+ * <td>byte</td>
+ * <td>description</td>
+ * </tr>
+ * </thead>
+ * <tr>
+ * <td>first </td>
+ * <td>width_index (8 bits)</td>
+ * </tr>
+ * <tr>
+ * <td>second </td>
+ * <td>height_index (4 bits) times 16, plus depth_index (4 bits)</td>
+ * </tr>
+ * <tr>
+ * <td>third </td>
+ * <td>italic_index (6 bits) times 4, plus tag (2 bits)</td>
+ * </tr>
+ * <tr>
+ * <td>fourth </td>
+ * <td>remainder (8 bits)</td>
+ * </tr>
  * </table>
- *
+ * 
  * <p>
- * Information from:
- * The DVI Driver Standard, Level 0
- * The TUG DVI Driver Standards Committee
+ * The tag field has four values that explain how to interpret the remainder
+ * field.
  * </p>
- *
+ * 
+ * <table border="1"> <thead>
+ * <tr>
+ * <td>tag</td>
+ * <td>description</td>
+ * </tr>
+ * </thead>
+ * <tr>
+ * <td>0 </td>
+ * <td>no_tag: means that remainder is unused.</td>
+ * </tr>
+ * <tr>
+ * <td>1 </td>
+ * <td>lig_tag: means that this character has a ligature/kerning program
+ * starting at lig_kern[remainder].</td>
+ * </tr>
+ * <tr>
+ * <td>2 </td>
+ * <td>list_tag: means that this character is part of a chain of characters of
+ * ascending sizes, and not the largest in the chain. The remainder field gives
+ * the character code of the next larger character.</td>
+ * </tr>
+ * <tr>
+ * <td>3 </td>
+ * <td>ext_tag: means that this character code represents an extensible
+ * character, i.e., a character that is built up of smaller pieces so that it
+ * can be made arbitrarily large. The pieces are specified in exten[remainder].</td>
+ * </tr>
+ * </table>
+ * 
+ * <p>
+ * Information from: The DVI Driver Standard, Level 0 The TUG DVI Driver
+ * Standards Committee
+ * </p>
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -209,12 +230,11 @@ public class TfmCharInfoWord implements Serializable {
     /**
      * The kerning map.
      */
-    private Map kernmap;
+    private Map<Integer, TfmFixWord> kernmap;
 
     /**
-     * Index to newly created ligKernTable which is set
-     * during translation of the original raw lig/kern table
-     * in the tfm file.
+     * Index to newly created ligKernTable which is set during translation of
+     * the original raw lig/kern table in the tfm file.
      */
     private int ligkernstart = NOINDEX;
 
@@ -226,7 +246,7 @@ public class TfmCharInfoWord implements Serializable {
     /**
      * The ligature map.
      */
-    private Map ligmap;
+    private Map<Integer, Integer> ligmap;
 
     /**
      * middle part chracter code.
@@ -244,7 +264,7 @@ public class TfmCharInfoWord implements Serializable {
     private short remainder;
 
     /**
-     * repeatable part chracter code.
+     * repeatable part character code.
      */
     private short rep = NOCHARCODE;
 
@@ -259,7 +279,7 @@ public class TfmCharInfoWord implements Serializable {
     private Tag tagT;
 
     /**
-     * top part chracter code.
+     * top part character code.
      */
     private short top = NOCHARCODE;
 
@@ -275,17 +295,18 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Create a new object.
-     * @param rar   the input
-     * @param id    the id
+     * 
+     * @param rar the input
+     * @param id the id
      * @throws IOException if an IO-error occurs.
      */
-    public TfmCharInfoWord(RandomAccessR rar, int id)
-            throws IOException {
+    public TfmCharInfoWord(RandomAccessR rar, int id) throws IOException {
 
         charid = id;
         widthindex = (short) rar.readByteAsInt();
         short heightdepthindex = (short) rar.readByteAsInt();
-        heightindex = (short) (heightdepthindex >> TfmConstants.CONST_4 & TfmConstants.CONST_X0F);
+        heightindex =
+                (short) (heightdepthindex >> TfmConstants.CONST_4 & TfmConstants.CONST_X0F);
         depthindex = (short) (heightdepthindex & TfmConstants.CONST_X0F);
         short italicindextag = (short) rar.readByteAsInt();
         italicindex = (short) (italicindextag >> 2 & TfmConstants.CONST_X3F);
@@ -293,19 +314,19 @@ public class TfmCharInfoWord implements Serializable {
         remainder = (short) rar.readByteAsInt();
 
         switch (tag) {
-            case TAG0 :
+            case TAG0:
                 tagT = NO_TAG;
                 break;
-            case TAG1 :
+            case TAG1:
                 tagT = LIG_TAG;
                 break;
-            case TAG2 :
+            case TAG2:
                 tagT = LIST_TAG;
                 break;
-            case TAG3 :
+            case TAG3:
                 tagT = EXT_TAG;
                 break;
-            default :
+            default:
                 // not defined: use no_tag
                 tagT = NO_TAG;
         }
@@ -314,7 +335,8 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Add glyph to the element.
-     * @param glyph   the element
+     * 
+     * @param glyph the element
      */
     public void addGlyph(Element glyph) {
 
@@ -331,8 +353,8 @@ public class TfmCharInfoWord implements Serializable {
         int ligstart = getLigkernstart();
         if (ligstart != TfmCharInfoWord.NOINDEX) {
 
-            for (int k = ligstart; k != TfmCharInfoWord.NOINDEX; k = ligKernTable[k]
-                    .nextIndex(k)) {
+            for (int k = ligstart; k != TfmCharInfoWord.NOINDEX; k =
+                    ligKernTable[k].nextIndex(k)) {
                 TfmLigKern lk = ligKernTable[k];
 
                 if (lk instanceof TfmLigature) {
@@ -341,16 +363,16 @@ public class TfmCharInfoWord implements Serializable {
                     Element ligature = new Element("ligature");
 
                     ligature.setAttribute("letter-id", String.valueOf(lig
-                            .getNextChar()));
+                        .getNextChar()));
                     String sl = Character.toString((char) lig.getNextChar());
                     if (sl != null && sl.trim().length() > 0) {
                         ligature.setAttribute("letter", sl.trim());
                     }
 
                     ligature.setAttribute("lig-id", String.valueOf(lig
-                            .getAddingChar()));
-                    String slig = Character
-                            .toString((char) lig.getAddingChar());
+                        .getAddingChar()));
+                    String slig =
+                            Character.toString((char) lig.getAddingChar());
                     if (slig != null && slig.trim().length() > 0) {
                         ligature.setAttribute("lig", slig.trim());
                     }
@@ -361,14 +383,13 @@ public class TfmCharInfoWord implements Serializable {
                     Element kerning = new Element("kerning");
 
                     kerning.setAttribute("glyph-id", String.valueOf(kern
-                            .getNextChar()));
+                        .getNextChar()));
                     String sk = Character.toString((char) kern.getNextChar());
                     if (sk != null && sk.trim().length() > 0) {
                         kerning.setAttribute("char", sk.trim());
                     }
                     kerning
-                            .setAttribute("size", kern.getKern()
-                                    .toStringComma());
+                        .setAttribute("size", kern.getKern().toStringComma());
 
                     glyph.addContent(kerning);
                 }
@@ -381,38 +402,37 @@ public class TfmCharInfoWord implements Serializable {
      */
     public void createLigKernMap() {
 
-        kernmap = new HashMap();
-        ligmap = new HashMap();
+        kernmap = new HashMap<Integer, TfmFixWord>();
+        ligmap = new HashMap<Integer, Integer>();
 
         // ligature
         int ligstart = getLigkernstart();
         if (ligstart != NOINDEX && ligKernTable != null) {
 
-            for (int k = ligstart; k != NOINDEX; k = ligKernTable[k]
-                    .nextIndex(k)) {
+            for (int k = ligstart; k != NOINDEX; k =
+                    ligKernTable[k].nextIndex(k)) {
                 TfmLigKern lk = ligKernTable[k];
 
                 if (lk instanceof TfmLigature) {
                     TfmLigature lig = (TfmLigature) lk;
 
                     ligmap.put(new Integer(lig.getNextChar()), new Integer(lig
-                            .getAddingChar()));
+                        .getAddingChar()));
 
                 } else if (lk instanceof TfmKerning) {
                     TfmKerning kern = (TfmKerning) lk;
 
                     kernmap
-                            .put(new Integer(kern.getNextChar()), kern
-                                    .getKern());
+                        .put(new Integer(kern.getNextChar()), kern.getKern());
                 }
             }
         }
     }
 
     /**
-     * Test, if the character exists in the font.
-     * (a character exists, if it have a width)
-     *
+     * Test, if the character exists in the font. (a character exists, if it
+     * have a width)
+     * 
      * @return Returns <code>true</code> if the character exists.
      */
     public boolean exists() {
@@ -421,7 +441,9 @@ public class TfmCharInfoWord implements Serializable {
     }
 
     /**
-     * Check, if char has a entry (glyphname, top, mid, bot, rep, ligature or kern.
+     * Check, if char has a entry (glyph name, top, mid, bot, rep, ligature or
+     * kern.
+     * 
      * @return Returns true, if the char has an entry.
      */
     public boolean foundEntry() {
@@ -441,8 +463,8 @@ public class TfmCharInfoWord implements Serializable {
             int ligstart = getLigkernstart();
             if (ligstart != TfmCharInfoWord.NOINDEX && ligKernTable != null) {
 
-                for (int k = ligstart; k != TfmCharInfoWord.NOINDEX; k = ligKernTable[k]
-                        .nextIndex(k)) {
+                for (int k = ligstart; k != TfmCharInfoWord.NOINDEX; k =
+                        ligKernTable[k].nextIndex(k)) {
                     TfmLigKern lk = ligKernTable[k];
 
                     if (lk instanceof TfmLigature || lk instanceof TfmKerning) {
@@ -457,6 +479,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Returns the bc.
+     * 
      * @return Returns the bc.
      */
     public short getBc() {
@@ -466,6 +489,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Returns the bot.
+     * 
      * @return Returns the bot.
      */
     public short getBot() {
@@ -475,6 +499,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Returns the charid.
+     * 
      * @return Returns the charid.
      */
     public int getCharid() {
@@ -484,6 +509,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Returns the depth.
+     * 
      * @return Returns the depth.
      */
     public TfmFixWord getDepth() {
@@ -492,8 +518,9 @@ public class TfmCharInfoWord implements Serializable {
     }
 
     /**
-     * Returns the depthindex.
-     * @return Returns the depthindex.
+     * Returns the depth index.
+     * 
+     * @return Returns the depth index.
      */
     public short getDepthindex() {
 
@@ -501,8 +528,9 @@ public class TfmCharInfoWord implements Serializable {
     }
 
     /**
-     * Returns the glyphname.
-     * @return Returns the glyphname.
+     * Returns the glyph name.
+     * 
+     * @return Returns the glyph name.
      */
     public String getGlyphname() {
 
@@ -511,6 +539,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Returns the height.
+     * 
      * @return Returns the height.
      */
     public TfmFixWord getHeight() {
@@ -519,8 +548,9 @@ public class TfmCharInfoWord implements Serializable {
     }
 
     /**
-     * Returns the heightindex.
-     * @return Returns the heightindex.
+     * Returns the height index.
+     * 
+     * @return Returns the height index.
      */
     public short getHeightindex() {
 
@@ -529,6 +559,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Returns the italic.
+     * 
      * @return Returns the italic.
      */
     public TfmFixWord getItalic() {
@@ -537,8 +568,9 @@ public class TfmCharInfoWord implements Serializable {
     }
 
     /**
-     * Returns the italicindex.
-     * @return Returns the italicindex.
+     * Returns the italic index.
+     * 
+     * @return Returns the italic index.
      */
     public short getItalicindex() {
 
@@ -547,7 +579,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Return the kerning.
-     *
+     * 
      * @param cp2 the right char. This character has to exist.
      * @return the kerning.
      */
@@ -556,7 +588,7 @@ public class TfmCharInfoWord implements Serializable {
         if (kernmap == null) {
             return TfmFixWord.ZERO;
         }
-        TfmFixWord kern = (TfmFixWord) kernmap.get(new Integer(cp2));
+        TfmFixWord kern = kernmap.get(new Integer(cp2));
         if (kern != null) {
             return kern;
         }
@@ -566,9 +598,9 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Return the ligature.
-     *
+     * 
      * If no ligature exists, the -1 is returned.
-     *
+     * 
      * @param cp2 the right char. This character has to exist.
      * @return the ligature.
      */
@@ -577,7 +609,7 @@ public class TfmCharInfoWord implements Serializable {
         if (ligmap == null) {
             return -1;
         }
-        Integer lig = (Integer) ligmap.get(new Integer(cp2));
+        Integer lig = ligmap.get(new Integer(cp2));
         if (lig != null) {
             return lig.intValue();
         }
@@ -585,8 +617,9 @@ public class TfmCharInfoWord implements Serializable {
     }
 
     /**
-     * Returns the ligkernstart.
-     * @return Returns the ligkernstart.
+     * Returns the ligkern start.
+     * 
+     * @return Returns the ligkern start.
      */
     public int getLigkernstart() {
 
@@ -595,7 +628,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Getter for ligKernTable.
-     *
+     * 
      * @return Returns the ligKernTable.
      */
     public TfmLigKern[] getLigKernTable() {
@@ -605,6 +638,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Returns the mid.
+     * 
      * @return Returns the mid.
      */
     public short getMid() {
@@ -613,8 +647,9 @@ public class TfmCharInfoWord implements Serializable {
     }
 
     /**
-     * Returns the nextchar.
-     * @return Returns the nextchar.
+     * Returns the next char.
+     * 
+     * @return Returns the next char.
      */
     public short getNextchar() {
 
@@ -623,6 +658,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Returns the remainder.
+     * 
      * @return Returns the remainder.
      */
     public short getRemainder() {
@@ -632,6 +668,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Returns the rep.
+     * 
      * @return Returns the rep.
      */
     public short getRep() {
@@ -641,6 +678,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Returns the tag.
+     * 
      * @return Returns the tag.
      */
     public Tag getTag() {
@@ -650,6 +688,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Returns the tag as number.
+     * 
      * @return Returns the tag as number.
      */
     public short getTagNumber() {
@@ -659,6 +698,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Returns the top.
+     * 
      * @return Returns the top.
      */
     public short getTop() {
@@ -668,6 +708,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Returns the width.
+     * 
      * @return Returns the width.
      */
     public TfmFixWord getWidth() {
@@ -676,8 +717,9 @@ public class TfmCharInfoWord implements Serializable {
     }
 
     /**
-     * Returns the widthindex.
-     * @return Returns the widthindex.
+     * Returns the width index.
+     * 
+     * @return Returns the width index.
      */
     public short getWidthindex() {
 
@@ -695,6 +737,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Set bc.
+     * 
      * @param abc The bc to set.
      */
     public void setBc(short abc) {
@@ -704,6 +747,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Set the bot.
+     * 
      * @param abot The bot to set.
      */
     public void setBot(short abot) {
@@ -713,6 +757,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Det the depth.
+     * 
      * @param adepth The depth to set.
      */
     public void setDepth(TfmFixWord adepth) {
@@ -721,8 +766,9 @@ public class TfmCharInfoWord implements Serializable {
     }
 
     /**
-     * Set the glyphname.
-     * @param gn The glyphname to set.
+     * Set the glyph name.
+     * 
+     * @param gn The glyph name to set.
      */
     public void setGlyphname(String gn) {
 
@@ -731,6 +777,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Set the height.
+     * 
      * @param aheight The height to set.
      */
     public void setHeight(TfmFixWord aheight) {
@@ -740,6 +787,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Set the italic.
+     * 
      * @param aitalic The italic to set.
      */
     public void setItalic(TfmFixWord aitalic) {
@@ -748,8 +796,9 @@ public class TfmCharInfoWord implements Serializable {
     }
 
     /**
-     * Set the ligkernstart.
-     * @param ligkerns  The ligkernstart to set.
+     * Set the ligkern start.
+     * 
+     * @param ligkerns The ligkern start to set.
      */
     public void setLigkernstart(int ligkerns) {
 
@@ -758,7 +807,8 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Set the ligKernTable.
-     * @param lk    The ligKernTable to set.
+     * 
+     * @param lk The ligKernTable to set.
      */
     public void setLigKernTable(TfmLigKern[] lk) {
 
@@ -767,6 +817,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Set the mid.
+     * 
      * @param amid The mid to set.
      */
     public void setMid(short amid) {
@@ -775,8 +826,9 @@ public class TfmCharInfoWord implements Serializable {
     }
 
     /**
-     * Set the nextchar.
-     * @param anextchar The nextchar to set.
+     * Set the next char.
+     * 
+     * @param anextchar The next char to set.
      */
     public void setNextchar(short anextchar) {
 
@@ -785,6 +837,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Set the rep.
+     * 
      * @param arep The rep to set.
      */
     public void setRep(short arep) {
@@ -794,6 +847,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Set the top.
+     * 
      * @param atop The top to set.
      */
     public void setTop(short atop) {
@@ -803,6 +857,7 @@ public class TfmCharInfoWord implements Serializable {
 
     /**
      * Set the width.
+     * 
      * @param awidth The width to set.
      */
     public void setWidth(TfmFixWord awidth) {

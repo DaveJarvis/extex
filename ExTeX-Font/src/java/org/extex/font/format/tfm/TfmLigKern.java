@@ -91,6 +91,8 @@ public abstract class TfmLigKern implements Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {

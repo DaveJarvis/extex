@@ -125,6 +125,8 @@ public class TfmLigature extends TfmLigKern implements Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {

@@ -57,7 +57,9 @@ public class TfmKerning extends TfmLigKern implements Serializable {
     }
 
     /**
-     * @see org.extex.font.type.tfm.TFMLigKern#getKern()
+     * {@inheritDoc}
+     *
+     * @see org.extex.font.format.tfm.TfmLigKern#getKern()
      */
     public TfmFixWord getKern() {
 
@@ -65,6 +67,8 @@ public class TfmKerning extends TfmLigKern implements Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {
