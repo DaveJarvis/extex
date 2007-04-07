@@ -51,6 +51,9 @@ public class BoolRegisterTest extends TestCase {
         junit.textui.TestRunner.run(BoolRegisterTest.class);
     }
 
+    /**
+     * @throws Exception in case of an error
+     */
     public void test00000000() throws Exception {
 
         //gene: just to silence JUnit. Remove it when real tests are present

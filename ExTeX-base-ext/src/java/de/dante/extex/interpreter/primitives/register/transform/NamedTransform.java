@@ -79,9 +79,9 @@ public class NamedTransform extends AbstractAssignment implements Theable {
 
             ContextExtension contextextex = (ContextExtension) context;
 
-            String key = getKey(context, source);
+            String key = getKey(context, source, typesetter);
             source.getOptionalEquals(context);
-            Transform value = new Transform(context, source);
+            Transform value = new Transform(context, source, typesetter);
             contextextex.setTransform(key, value, prefix.isGlobal());
             prefix.clearGlobal();
 
@@ -151,7 +151,7 @@ public class NamedTransform extends AbstractAssignment implements Theable {
 
         if (context instanceof ContextExtension) {
             ContextExtension contextextex = (ContextExtension) context;
-            String key = getKey(context, source);
+            String key = getKey(context, source, typesetter);
             String s = contextextex.getTransform(key).toString();
             return context.getTokenFactory().toTokens(s);
         }
@@ -163,10 +163,11 @@ public class NamedTransform extends AbstractAssignment implements Theable {
      *
      * @param context   the context
      * @param source    the source
+     * @param typesetter TODO
      * @return the key
      * @throws InterpreterException if an error occured.
      */
-    protected String getKey(Context context, TokenSource source)
+    protected String getKey(Context context, TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         return getName();

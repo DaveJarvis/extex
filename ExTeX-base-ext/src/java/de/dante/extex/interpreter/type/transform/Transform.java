@@ -27,12 +27,13 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.InterpreterNumberFormatException;
+import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.interpreter.type.real.Real;
 
 /**
  * Transform (transformation with six values)
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -96,16 +97,15 @@ public class Transform implements Serializable {
 
     /**
      * Creates a new object.
-     *
-     * @param v1    the value 1
-     * @param v2    the value 2
-     * @param v3    the value 3
-     * @param v4    the value 4
-     * @param v5    the value 5
-     * @param v6    the value 6
+     * 
+     * @param v1 the value 1
+     * @param v2 the value 2
+     * @param v3 the value 3
+     * @param v4 the value 4
+     * @param v5 the value 5
+     * @param v6 the value 6
      */
-    public Transform(Real v1, Real v2, Real v3,
-            Real v4, Real v5, Real v6) {
+    public Transform(Real v1, Real v2, Real v3, Real v4, Real v5, Real v6) {
 
         super();
         val[T1] = v1;
@@ -118,16 +118,16 @@ public class Transform implements Serializable {
 
     /**
      * Creates a new object.
-     *
-     * @param v1    the value 1
-     * @param v2    the value 2
-     * @param v3    the value 3
-     * @param v4    the value 4
-     * @param v5    the value 5
-     * @param v6    the value 6
+     * 
+     * @param v1 the value 1
+     * @param v2 the value 2
+     * @param v3 the value 3
+     * @param v4 the value 4
+     * @param v5 the value 5
+     * @param v6 the value 6
      */
-    public Transform(double v1, double v2, double v3,
-            double v4, double v5, double v6) {
+    public Transform(double v1, double v2, double v3, double v4, double v5,
+            double v6) {
 
         super();
         val[T1] = new Real(v1);
@@ -139,28 +139,32 @@ public class Transform implements Serializable {
     }
 
     /**
-     * Creates a new object.
-     * Scan the <code>TokenSource</code> for a <code>Transform</code>.
-     *
-     * @param context   the context
-     * @param source    the token source
+     * Creates a new object. Scan the <code>TokenSource</code> for a
+     * <code>Transform</code>.
+     * 
+     * @param context the context
+     * @param source the token source
+     * @param typesetter TODO
      * @throws InterpreterException ...
      * @throws ConfigurationException in case of an configuration error
      */
-    public Transform(Context context, TokenSource source)
+    public Transform(Context context, TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
         super();
         for (int i = 0; i < MAXVAL; i++) {
-            val[i] = new Real(context, source);
+            val[i] = new Real(context, source, typesetter);
         }
     }
 
     /**
-     * Creates a new object.<p>
-     * If the string equlas <code>null</code> or empty, the value is set to zero
-     * @param s     the value as String
+     * Creates a new object.
+     * <p>
+     * If the string equlas <code>null</code> or empty, the value is set to
+     * zero
+     * 
+     * @param s the value as String
      * @throws InterpreterException if a NumberFormatException is thrown
      */
     public Transform(String s) throws InterpreterException {
@@ -188,6 +192,7 @@ public class Transform implements Serializable {
 
     /**
      * Setter for the value.
+     * 
      * @param value the new value
      */
     public void set(Transform value) {
@@ -199,7 +204,8 @@ public class Transform implements Serializable {
 
     /**
      * Setter for the value with index idx
-     * @param idx   the index
+     * 
+     * @param idx the index
      * @param value the value with index
      */
     public void set(int idx, Real value) {
@@ -212,8 +218,9 @@ public class Transform implements Serializable {
 
     /**
      * Return the idx-value for the transfomation
-     * @param idx   the number of the value
-     * @return  the value on index idx
+     * 
+     * @param idx the number of the value
+     * @return the value on index idx
      */
     public Real get(int idx) {
 
@@ -225,6 +232,7 @@ public class Transform implements Serializable {
 
     /**
      * Return the value as <code>String</code>
+     * 
      * @return the value as <code>String</code>
      */
     public String toString() {

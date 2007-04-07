@@ -26,22 +26,26 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.Theable;
+import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
- * Math. The value of the first argument raised
- * to the power of the second argument.
- *
- * <p>Example</p>
+ * Math. The value of the first argument raised to the power of the second
+ * argument.
+ * 
+ * <p>
+ * Example
+ * </p>
+ * 
  * <pre>
  * \the\mathpow 0.234 0.34
  * \real7=\mathpow 0.56 0.34
  * \real8=\mathpow\real7\real8
  * \count99=\mathpow 1.34 0.34
  * </pre>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -58,32 +62,33 @@ public class MathPow extends AbstractMath
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      * @throws GeneralException ...
      */
     public MathPow(String name) throws GeneralException {
 
         super(name);
-
     }
 
     /**
      * Calculate
-     * @param context   the context
-     * @param source    the token source
-     *
-     * @return  the real value
-     *
+     * 
+     * @param context the context
+     * @param source the token source
+     * @param typesetter ...
+     * @return the real value
+     * 
      * @throws InterpreterException if a error occurred
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Real calculate(Context context, TokenSource source)
+    protected Real calculate(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
-        Real real1 = new Real(context, source);
-        Real real2 = new Real(context, source);
+        Real real1 = new Real(context, source, typesetter);
+        Real real2 = new Real(context, source, typesetter);
         return new Real(Math.pow(real1.getValue(), real2.getValue()));
     }
 }

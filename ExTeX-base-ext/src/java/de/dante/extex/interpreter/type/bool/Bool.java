@@ -30,6 +30,7 @@ import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
+import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.interpreter.type.bool.exception.InterpreterNoBoolValueException;
 import de.dante.extex.interpreter.type.real.RealConvertible;
@@ -76,14 +77,16 @@ public class Bool implements Serializable {
      * Scan the <code>TokenSource</code> for a <code>Bool</code>.
      * @param context   the context
      * @param source    the token source
+     * @param typesetter TODO
      * @throws InterpreterException in case of an error.
+     * @throws ConfigurationException in case if a configuration error
      */
-    public Bool(Context context, TokenSource source)
+    public Bool(Context context, TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
         super();
-        value = scanBool(context, source);
+        value = scanBool(context, source, typesetter);
     }
 
     /**
@@ -91,10 +94,12 @@ public class Bool implements Serializable {
      *
      * @param context   the context
      * @param source    the token source
+     * @param typesetter TODO
      * @return the boolean value
      * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case if a configuration error
      */
-    private boolean scanBool(Context context, TokenSource source)
+    private boolean scanBool(Context context, TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
@@ -109,7 +114,7 @@ public class Bool implements Serializable {
                     context, source, null))).getValue();
             } else if (code instanceof RealConvertible) {
                 return (new Bool(((((RealConvertible) code).convertReal(
-                    context, source)).getLong()))).getValue();
+                    context, source, typesetter)).getLong()))).getValue();
             }
             throw new InterpreterNoBoolValueException();
         }

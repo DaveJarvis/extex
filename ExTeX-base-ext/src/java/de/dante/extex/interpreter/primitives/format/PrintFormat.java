@@ -121,7 +121,7 @@ public class PrintFormat extends AbstractCode implements Theable {
             throw new UndefinedControlSequenceException(printable(context, cs));
 
         } else if (code instanceof RealConvertible) {
-            Real val = ((RealConvertible) code).convertReal(context, source);
+            Real val = ((RealConvertible) code).convertReal(context, source, typesetter);
             DecimalFormat form = new DecimalFormat(pattern);
             try {
                 return context.getTokenFactory().toTokens( //

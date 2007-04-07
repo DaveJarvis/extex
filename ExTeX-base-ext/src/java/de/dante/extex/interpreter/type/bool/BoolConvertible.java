@@ -22,6 +22,7 @@ package de.dante.extex.interpreter.type.bool;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.typesetter.Typesetter;
 
 /**
  * This is an interface which describes the feature to be convertibe into a bool.
@@ -36,9 +37,10 @@ public interface BoolConvertible {
      *
      * @param context   the interpreter context
      * @param source    the source for new tokens
+     * @param typesetter TODO
      * @return the converted value
      * @throws InterpreterException in case of an error
      */
-    Bool convertBool(Context context, TokenSource source)
+    Bool convertBool(Context context, TokenSource source, Typesetter typesetter)
             throws InterpreterException;
 }

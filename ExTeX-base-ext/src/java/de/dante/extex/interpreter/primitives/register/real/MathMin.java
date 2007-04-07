@@ -26,21 +26,25 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.Theable;
+import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
  * Math. The smaller of two real values.
- *
- * <p>Example</p>
+ * 
+ * <p>
+ * Example
+ * </p>
+ * 
  * <pre>
  * \the\mathmin 0.234 0.34
  * \real7=\mathmin 0.56 0.34
  * \real8=\mathmin\real7\real8
  * \count99=\mathmin 1.34 0.34
  * </pre>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -57,7 +61,7 @@ public class MathMin extends AbstractMath
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      * @throws GeneralException ...
      */
@@ -69,20 +73,22 @@ public class MathMin extends AbstractMath
 
     /**
      * Calculate
-     * @param context   the context
-     * @param source    the token source
-     *
-     * @return  the real-value
-     *
+     * 
+     * @param context the context
+     * @param source the token source
+     * @param typesetter ...
+     * @return the real value
+     * 
      * @throws InterpreterException if a error occurred
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Real calculate(Context context, TokenSource source)
+    protected Real calculate(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
-        Real real1 = new Real(context, source);
-        Real real2 = new Real(context, source);
+        Real real1 = new Real(context, source, typesetter);
+        Real real2 = new Real(context, source, typesetter);
         return new Real(Math.min(real1.getValue(), real2.getValue()));
     }
 }

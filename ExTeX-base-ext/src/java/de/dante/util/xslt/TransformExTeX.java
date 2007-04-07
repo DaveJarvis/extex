@@ -62,6 +62,7 @@ public final class TransformExTeX {
      */
     private TransformExTeX() {
 
+        //
     }
 
     /**
@@ -170,6 +171,8 @@ public final class TransformExTeX {
 
         /**
          * Create the configuration.
+         *
+         * @throws ConfigurationException in case of an error
          */
         private void makeConfig() throws ConfigurationException {
 

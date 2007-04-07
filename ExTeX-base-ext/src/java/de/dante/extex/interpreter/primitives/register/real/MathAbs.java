@@ -26,6 +26,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.Theable;
+import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
@@ -71,17 +72,17 @@ public class MathAbs extends AbstractMath
      * Calculate
      * @param context   the context
      * @param source    the token source
-     *
+     * @param typesetter ...
      * @return  the real-value
      *
-     * @throws GeneralException if a error occurred
+     * @throws InterpreterException if a error occurred
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Real calculate(Context context, TokenSource source)
+    protected Real calculate(Context context, TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
-        Real real = new Real(context, source);
+        Real real = new Real(context, source, typesetter);
         return new Real(Math.abs(real.getValue()));
     }
 }

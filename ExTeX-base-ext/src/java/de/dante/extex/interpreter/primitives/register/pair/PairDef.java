@@ -57,6 +57,7 @@ public class PairDef extends AbstractAssignment {
     }
 
     /**
+     * {@inheritDoc}
      * @see org.extex.interpreter.type.Code#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,

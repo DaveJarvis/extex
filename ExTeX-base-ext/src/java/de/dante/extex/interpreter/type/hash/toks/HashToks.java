@@ -38,7 +38,7 @@ import de.dante.extex.interpreter.type.hash.toks.exception.InterpreterMissingRig
 
 /**
  * A Hash for Tokens.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -52,7 +52,7 @@ public class HashToks implements Serializable {
     /**
      * The hash
      */
-    private HashMap map = null;
+    private HashMap<String, Tokens> map = null;
 
     /**
      * Creates a new object.
@@ -60,21 +60,23 @@ public class HashToks implements Serializable {
     public HashToks() {
 
         super();
-        map = new HashMap();
+        map = new HashMap<String, Tokens>();
     }
 
     /**
-     * Creates a new object.
-     * get the <code>TokenSource</code> for a <code>HashToks</code> (noexpand).
-     * @param context   the context
-     * @param source    the token source
+     * Creates a new object. get the <code>TokenSource</code> for a
+     * <code>HashToks</code> (noexpand).
+     * 
+     * @param context the context
+     * @param source the token source
+     * @param typesetter ...
      * @throws InterpreterException if an error occurs.
      */
-    public HashToks(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+    public HashToks(Context context, TokenSource source, Typesetter typesetter)
+            throws InterpreterException {
 
         super();
-        map = new HashMap();
+        map = new HashMap<String, Tokens>();
 
         // { {key1}{value1} {key2}{value2} }
         Token token = source.getNonSpace(context);
@@ -109,8 +111,9 @@ public class HashToks implements Serializable {
 
     /**
      * Put the tokens on the hash with the key.
-     * @param key       the key
-     * @param toks      the tokens
+     * 
+     * @param key the key
+     * @param toks the tokens
      */
     public void put(String key, Tokens toks) {
 
@@ -119,12 +122,13 @@ public class HashToks implements Serializable {
 
     /**
      * Return the tokens for a key.
-     * @param key   the key
-     * @return  the token for this key
+     * 
+     * @param key the key
+     * @return the token for this key
      */
     public Tokens get(String key) {
 
-        Tokens toks = (Tokens) map.get(key);
+        Tokens toks = map.get(key);
         if (toks == null) {
             toks = new Tokens();
         }
@@ -133,7 +137,8 @@ public class HashToks implements Serializable {
 
     /**
      * Return the size of the hash.
-     * @return  the size of the hash
+     * 
+     * @return the size of the hash
      */
     public int size() {
 
@@ -142,8 +147,10 @@ public class HashToks implements Serializable {
 
     /**
      * Contains the key
-     * @param key   the key
-     * @return  <code>true</code> if the key exists, otherwise <code>false</code>
+     * 
+     * @param key the key
+     * @return <code>true</code> if the key exists, otherwise
+     *         <code>false</code>
      */
     public boolean containsKey(String key) {
 
@@ -152,15 +159,16 @@ public class HashToks implements Serializable {
 
     /**
      * Return the value as <code>String</code>
+     * 
      * @return the value as <code>String</code>
      */
     public String toString() {
 
         StringBuffer buf = new StringBuffer();
-        Iterator it = map.keySet().iterator();
+        Iterator<String> it = map.keySet().iterator();
         buf.append("{\n");
         while (it.hasNext()) {
-            String key = (String) it.next();
+            String key = it.next();
             buf.append('{' + key + '}');
             buf.append('{' + get(key).toText() + "}\n");
         }

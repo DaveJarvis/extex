@@ -19,28 +19,32 @@
 
 package de.dante.extex.interpreter.primitives.register.transform;
 
+import org.extex.core.count.CountParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.typesetter.Typesetter;
 
 /**
- * This class provides an implementation for the primitive <code>\transform</code>.
- * It sets the named pair register to the value given,
- * and as a side effect all prefixes are zeroed.
- *
+ * This class provides an implementation for the primitive
+ * <code>\transform</code>. It sets the named pair register to the value
+ * given, and as a side effect all prefixes are zeroed.
+ * 
  * <p>
  * All features are inherited from
  * {@link de.dante.extex.interpreter.primitives.register.transform.NamedTransform transform}.
- * Just the key
- * has to be provided under which this Transform has to be stored. This key is
- * constructed from the name, a hash mark and the running number.
+ * Just the key has to be provided under which this Transform has to be stored.
+ * This key is constructed from the name, a hash mark and the running number.
  * </p>
- *
- * <p>Example</p>
+ * 
+ * <p>
+ * Example
+ * </p>
+ * 
  * <pre>
  * \transform12=1.1 2.2 3.3 4.4 5.5 6.6
  * </pre>
- *
+ * 
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -53,6 +57,7 @@ public class NumberedTransform extends NamedTransform {
 
     /**
      * Creates a new object.
+     * 
      * @param name the name for debugging
      */
     public NumberedTransform(String name) {
@@ -62,15 +67,19 @@ public class NumberedTransform extends NamedTransform {
 
     /**
      * Return the key (the number) for the register.
-     *
-     * @param context   the context
-     * @param source    the tokensource
+     * 
+     * @param context the context
+     * @param source the token source
+     * @param typesetter the typesetter
      * @return Return the key
-     * @throws InterpreterException if an ecxeption was occured
+     * @throws InterpreterException if an exception has occurred
      */
-    protected String getKey(Context context, TokenSource source)
-            throws InterpreterException {
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
-        return getName() + "#" + Long.toString(source.scanNumber(context));
+        return getName()
+                + "#"
+                + Long.toString(CountParser.scanNumber(context, source,
+                    typesetter));
     }
 }

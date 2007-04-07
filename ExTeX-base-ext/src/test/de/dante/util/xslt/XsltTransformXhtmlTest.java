@@ -392,7 +392,7 @@ public class XsltTransformXhtmlTest extends ExTeXLauncher {
      */
     public void testTable01() throws Exception {
 
-        String text = "Dies ist der Text mit der Nummer ";
+//        String text = "Dies ist der Text mit der Nummer ";
         StringBuffer buf = new StringBuffer();
         StringBuffer result = new StringBuffer();
 
@@ -624,6 +624,8 @@ public class XsltTransformXhtmlTest extends ExTeXLauncher {
 
         /**
          * create the config
+         *
+         * @throws ConfigurationException in case of an error
          */
         private void makeConfig() throws ConfigurationException {
 

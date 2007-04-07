@@ -26,22 +26,26 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.Theable;
+import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
- * Math. The largest (closest to positive infinity) double value
- * that is not greater than the argument and is equal to a mathematical integer.
- *
- * <p>Example</p>
+ * Math. The largest (closest to positive infinity) double value that is not
+ * greater than the argument and is equal to a mathematical integer.
+ * 
+ * <p>
+ * Example
+ * </p>
+ * 
  * <pre>
  * \the\mathfloor 0.234
  * \real7=\mathfloor 0.56
  * \real8=\mathfloor\real7
  * \count99=\mathfloor 1.34
  * </pre>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -58,7 +62,7 @@ public class MathFloor extends AbstractMath
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      * @throws GeneralException ...
      */
@@ -70,19 +74,21 @@ public class MathFloor extends AbstractMath
 
     /**
      * Calculate
-     * @param context   the context
-     * @param source    the token source
-     *
-     * @return  the real-value
-     *
+     * 
+     * @param context the context
+     * @param source the token source
+     * @param typesetter ...
+     * @return the real value
+     * 
      * @throws InterpreterException if a error occurred
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Real calculate(Context context, TokenSource source)
+    protected Real calculate(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
-        Real real = new Real(context, source);
+        Real real = new Real(context, source, typesetter);
         return new Real(Math.floor(real.getValue()));
     }
 }

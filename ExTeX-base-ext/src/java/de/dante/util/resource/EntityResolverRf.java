@@ -37,16 +37,17 @@ import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-
 /**
  * EntityResolver, which get the stream from a ResourceFinder.
- * <p>Used for the DOM-Parser</p>
- *
  * <p>
- * In the first try, the resolver try to find a file name with the public-id
- * of the DTD.
+ * Used for the DOM-Parser
  * </p>
- *
+ * 
+ * <p>
+ * In the first try, the resolver try to find a file name with the public-id of
+ * the DTD.
+ * </p>
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -60,7 +61,8 @@ public class EntityResolverRf implements EntityResolver {
 
     /**
      * Create a new object.
-     * @param rf    The resource finder to use.
+     * 
+     * @param rf The resource finder to use.
      */
     public EntityResolverRf(ResourceFinder rf) {
 
@@ -70,20 +72,21 @@ public class EntityResolverRf implements EntityResolver {
     /**
      * dtd: map public id to file name.
      */
-    private Map dtd = null;
+    private Map<String, String> dtd = null;
 
     /**
-     * @see org.xml.sax.EntityResolver#resolveEntity(
-     *      java.lang.String, java.lang.String)
+     * @see org.xml.sax.EntityResolver#resolveEntity( java.lang.String,
+     *      java.lang.String)
      */
-    public InputSource resolveEntity(String publicId,
-            String systemId) throws SAXException, IOException {
+    public InputSource resolveEntity(String publicId, String systemId)
+            throws SAXException,
+                IOException {
 
         InputSource source = null;
 
         loadDtdMap();
 
-        String file = (String) dtd.get(publicId);
+        String file = dtd.get(publicId);
         if (file != null) {
             try {
                 InputStream in = finder.findResource(file, "");
@@ -117,13 +120,11 @@ public class EntityResolverRf implements EntityResolver {
             } else {
                 try {
                     URI uri = new URI(systemId);
-                    if (uri != null) {
-                        URL url = uri.toURL();
-                        if (url != null) {
-                            InputStream in = url.openStream();
-                            if (in != null) {
-                                source = new InputSource(in);
-                            }
+                    URL url = uri.toURL();
+                    if (url != null) {
+                        InputStream in = url.openStream();
+                        if (in != null) {
+                            source = new InputSource(in);
                         }
                     }
 
@@ -142,20 +143,26 @@ public class EntityResolverRf implements EntityResolver {
 
     /**
      * Load the map for the dtd.
-     * <p>1. load from the user.home-dir</p>
-     * <p>2. load from the class-dir</p>
+     * <p>
+     * 1. load from the user.home-dir
+     * </p>
+     * <p>
+     * 2. load from the class-dir
+     * </p>
+     * 
      * @throws IOException if an error occurs.
      */
     private void loadDtdMap() throws IOException {
 
         if (dtd == null) {
-            dtd = new HashMap();
+            dtd = new HashMap<String, String>();
 
             InputStream mapin = null;
 
             // first, try in user.home
-            File file = new File(System.getProperty("user.home")
-                    + File.separator + DTD_FILE);
+            File file =
+                    new File(System.getProperty("user.home") + File.separator
+                            + DTD_FILE);
             if (file.canRead()) {
                 mapin = new FileInputStream(file);
             } else {
@@ -164,8 +171,8 @@ public class EntityResolverRf implements EntityResolver {
 
             }
             if (mapin != null) {
-                BufferedReader in = new BufferedReader(new InputStreamReader(
-                        mapin));
+                BufferedReader in =
+                        new BufferedReader(new InputStreamReader(mapin));
 
                 String line;
                 while ((line = in.readLine()) != null) {

@@ -25,20 +25,24 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.Theable;
+import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
- * Math. A real value with a positive sign, greater
- * than or equal to 0.0 and less than 1.0.
- *
- * <p>Example</p>
+ * Math. A real value with a positive sign, greater than or equal to 0.0 and
+ * less than 1.0.
+ * 
+ * <p>
+ * Example
+ * </p>
+ * 
  * <pre>
  * \the\mathrandom
  * \real7=\mathrandom
  * </pre>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -55,7 +59,7 @@ public class MathRandom extends AbstractMath
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      * @throws GeneralException ...
      */
@@ -67,13 +71,15 @@ public class MathRandom extends AbstractMath
 
     /**
      * Calculate
-     * @param context   the context
-     * @param source    the tokensource
-     * @return  the real value
-     * @throws InterpreterException if a error occoured
+     * 
+     * @param context the context
+     * @param source the token source
+     * @param typesetter ...
+     * @return the real value
+     * @throws InterpreterException if a error occurred
      */
-    protected Real calculate(Context context, TokenSource source)
-            throws InterpreterException {
+    protected Real calculate(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         return new Real(Math.random());
     }

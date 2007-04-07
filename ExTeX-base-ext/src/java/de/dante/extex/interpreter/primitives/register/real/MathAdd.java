@@ -26,6 +26,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.Theable;
+import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
@@ -70,19 +71,19 @@ public class MathAdd extends AbstractMath
     /**
      * Calculate
      * @param context   the context
-     * @param source    the tokensource
-     *
+     * @param source    the token source
+     * @param typesetter ...
      * @return  the real value
      *
      * @throws InterpreterException if a error occurred
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Real calculate(Context context, TokenSource source)
+    protected Real calculate(Context context, TokenSource source, Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
-        Real real1 = new Real(context, source);
-        Real real2 = new Real(context, source);
+        Real real1 = new Real(context, source, typesetter);
+        Real real2 = new Real(context, source, typesetter);
         real1.add(real2);
         return real1;
     }

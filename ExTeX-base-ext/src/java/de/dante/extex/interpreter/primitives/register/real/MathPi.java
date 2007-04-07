@@ -25,19 +25,23 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.Theable;
+import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
  * Math. The value of pi (3.1415...).
- *
- * <p>Example</p>
+ * 
+ * <p>
+ * Example
+ * </p>
+ * 
  * <pre>
  * \the\mathpi
  * \real7=\mathpi
  * </pre>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -54,7 +58,7 @@ public class MathPi extends AbstractMath
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      * @throws GeneralException ...
      */
@@ -66,13 +70,15 @@ public class MathPi extends AbstractMath
 
     /**
      * Calculate
-     * @param context   the context
-     * @param source    the tokensource
-     * @return  the real value
-     * @throws InterpreterException if a error occoured
+     * 
+     * @param context the context
+     * @param source the token source
+     * @param typesetter ...
+     * @return the real value
+     * @throws InterpreterException if a error occurred
      */
-    protected Real calculate(Context context, TokenSource source)
-            throws InterpreterException {
+    protected Real calculate(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         return new Real(Math.PI);
     }

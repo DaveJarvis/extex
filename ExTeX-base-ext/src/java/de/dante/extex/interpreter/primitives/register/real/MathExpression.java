@@ -31,20 +31,24 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Theable;
+import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
  * Math. Expressions to get a real-value.
- *
- * <p>Example</p>
+ * 
+ * <p>
+ * Example
+ * </p>
+ * 
  * <pre>
  * \mathexpr{2*7}
  * \real7=\mathexpr{7+4-2*3}
  * \count99=\mathexpr{7+4-2*3}
  * </pre>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -61,7 +65,7 @@ public class MathExpression extends AbstractMath
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      * @throws GeneralException ...
      */
@@ -93,13 +97,15 @@ public class MathExpression extends AbstractMath
 
     /**
      * Calculate
-     * @param context   the context
-     * @param source    the tokensource
-     * @return  the real value
-     * @throws InterpreterException if a error occoured
+     * 
+     * @param context the context
+     * @param source the token source
+     * @param typesetter ...
+     * @return the real value
+     * @throws InterpreterException if a error occurred
      */
-    protected Real calculate(Context context, TokenSource source)
-            throws InterpreterException {
+    protected Real calculate(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         Real real = new Real(0);
 
@@ -119,9 +125,9 @@ public class MathExpression extends AbstractMath
             buf.append('^');
 
             throw new HelpingException(getLocalizer(), "TTP.MathExpr", ce
-                    .getMessage()
+                .getMessage()
                     + " (at column " + String.valueOf(col) + ")", expr, buf
-                    .toString());
+                .toString());
         }
 
         if (compileexpr != null) {
@@ -131,7 +137,7 @@ public class MathExpression extends AbstractMath
                 result = compileexpr.evaluate(null);
             } catch (Throwable e) {
                 throw new HelpingException(getLocalizer(), "TTP.MathExprError",
-                        e.getMessage());
+                    e.getMessage());
             }
 
             System.err.println("\nresult = " + result);

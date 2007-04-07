@@ -37,7 +37,7 @@ import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
  * Abstract class for math primitives. E.g. sin, cos, ...
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -49,7 +49,7 @@ public abstract class AbstractMath extends AbstractCode
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      * @throws GeneralException ...
      */
@@ -61,19 +61,19 @@ public abstract class AbstractMath extends AbstractCode
 
     /**
      * execute
-     *
+     * 
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
-        Real real = calculate(context, source);
+        Real real = calculate(context, source, typesetter);
         try {
-            source.push(context.getTokenFactory().toTokens( real.toString()));
+            source.push(context.getTokenFactory().toTokens(real.toString()));
         } catch (CatcodeException e) {
             throw new InterpreterException(e);
         }
@@ -81,70 +81,70 @@ public abstract class AbstractMath extends AbstractCode
 
     /**
      * This method is the getter for the description of the primitive.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for further tokens to qualify the request
      * @param typesetter the typesetter to use
-     *
+     * 
      * @return the description of the primitive as list of Tokens
-     *
+     * 
      * @throws InterpreterException in case of an error
      * @throws CatcodeException in case of an error in token creation
      * @throws ConfigurationException in case of an configuration error
-     *
+     * 
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public Tokens the(Context context, TokenSource source,
-            Typesetter typesetter)
+    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws InterpreterException,
-                ConfigurationException, CatcodeException {
+                ConfigurationException,
+                CatcodeException {
 
-        Real real = calculate(context, source);
-        return context.getTokenFactory().toTokens( real.toString());
+        Real real = calculate(context, source, typesetter);
+        return context.getTokenFactory().toTokens(real.toString());
     }
 
     /**
      * @see de.dante.extex.interpreter.type.real.RealConvertible#convertReal(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource)
+     *      org.extex.interpreter.TokenSource, Typesetter)
      */
-    public Real convertReal(Context context, TokenSource source)
+    public Real convertReal(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
-        return calculate(context, source);
+        return calculate(context, source, typesetter);
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.core.count.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *       org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
             Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException {
 
-        return calculate(context, source).getLong();
+        return calculate(context, source, typesetter).getLong();
     }
 
     /**
      * Calculate
-     *
+     * 
      * @param context the context
      * @param source the token source
+     * @param typesetter TODO
      * @return the real value
      * @throws InterpreterException if a error occurred
      * @throws ConfigurationException in case of an configuration error
      */
-    protected abstract Real calculate(Context context,
-            TokenSource source)
+    protected abstract Real calculate(Context context, TokenSource source,
+            Typesetter typesetter)
             throws InterpreterException,
                 ConfigurationException;
 

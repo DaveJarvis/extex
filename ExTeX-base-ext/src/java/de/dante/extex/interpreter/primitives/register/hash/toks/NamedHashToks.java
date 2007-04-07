@@ -79,7 +79,7 @@ public class NamedHashToks extends AbstractAssignment implements Theable {
 
             ContextExtension contextextex = (ContextExtension) context;
 
-            String key = getKey(context, source);
+            String key = getKey(context, source, typesetter);
             source.getOptionalEquals(context);
 
             HashToks value = new HashToks(context, source, typesetter);
@@ -116,7 +116,7 @@ public class NamedHashToks extends AbstractAssignment implements Theable {
 
         if (context instanceof ContextExtension) {
             ContextExtension contextextex = (ContextExtension) context;
-            String key = getKey(context, source);
+            String key = getKey(context, source, typesetter);
             String s = contextextex.getHashToks(key).toString();
             return context.getTokenFactory().toTokens(s);
         }
@@ -128,10 +128,11 @@ public class NamedHashToks extends AbstractAssignment implements Theable {
      *
      * @param context   the context
      * @param source    the source
+     * @param typesetter TODO
      * @return the key
      * @throws InterpreterException in case of an error.
      */
-    protected String getKey(Context context, TokenSource source)
+    protected String getKey(Context context, TokenSource source, Typesetter typesetter)
             throws InterpreterException {
 
         return getName();

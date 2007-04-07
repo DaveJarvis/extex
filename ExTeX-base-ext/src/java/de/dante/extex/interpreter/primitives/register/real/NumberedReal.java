@@ -19,28 +19,32 @@
 
 package de.dante.extex.interpreter.primitives.register.real;
 
+import org.extex.core.count.CountParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.typesetter.Typesetter;
 
 /**
  * This class provides an implementation for the primitive <code>\real</code>.
- * It sets the named real register to the value given,
- * and as a side effect all prefixes are zeroed.
- *
+ * It sets the named real register to the value given, and as a side effect all
+ * prefixes are zeroed.
+ * 
  * <p>
  * All features are inherited from
  * {@link de.dante.extex.interpreter.primitives.register.real.NamedReal Real}.
- * Just the key
- * has to be provided under which this Real has to be stored. This key is
- * constructed from the name, a hash mark and the running number.
+ * Just the key has to be provided under which this Real has to be stored. This
+ * key is constructed from the name, a hash mark and the running number.
  * </p>
- *
- * <p>Example</p>
+ * 
+ * <p>
+ * Example
+ * </p>
+ * 
  * <pre>
  * \real12=345.67
  * </pre>
- *
+ * 
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -53,7 +57,7 @@ public class NumberedReal extends NamedReal {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public NumberedReal(String name) {
@@ -63,13 +67,19 @@ public class NumberedReal extends NamedReal {
 
     /**
      * Return the key (the number) for the register.
+     * 
+     * {@inheritDoc}
+     * 
      * @see de.dante.extex.interpreter.primitives.register.real.NamedReal#getKey(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    protected String getKey(Context context, TokenSource source)
-            throws InterpreterException {
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
-        return getName() + "#" + Long.toString(source.scanNumber(context));
+        return getName()
+                + "#"
+                + Long.toString(CountParser.scanNumber(context, source,
+                    typesetter));
     }
 }

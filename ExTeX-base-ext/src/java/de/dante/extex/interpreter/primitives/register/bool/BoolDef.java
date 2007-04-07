@@ -58,6 +58,7 @@ public class BoolDef extends AbstractAssignment {
     }
 
     /**
+     * {@inheritDoc}
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -75,4 +76,5 @@ public class BoolDef extends AbstractAssignment {
                 + Long.toString(CountParser.scanInteger(context, source, typesetter));
         context.setCode(token, new NamedBool(key), prefix.isGlobal());
     }
+
 }
