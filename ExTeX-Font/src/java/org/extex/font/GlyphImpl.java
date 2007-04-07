@@ -27,7 +27,7 @@ import org.extex.core.dimen.Dimen;
 
 /**
  * GlyphImplementation
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4728 $
  */
@@ -71,15 +71,15 @@ public class GlyphImpl implements Glyph, Serializable {
     /**
      * The kerning for the glyph
      */
-    private HashMap kerning = null;
+    private HashMap<String, Kerning> kerning = null;
 
     /**
      * The ligature for the glyph
      */
-    private HashMap ligature = null;
+    private HashMap<String, Ligature> ligature = null;
 
     /**
-     * The external fontfile or null, if no exists
+     * The external font file or null, if no exists
      */
     private transient FontByteArray externalfile = null;
 
@@ -89,7 +89,7 @@ public class GlyphImpl implements Glyph, Serializable {
     private Dimen leftSpace = new Dimen(0);
 
     /**
-     * The rigtht space in a glyph
+     * The right space in a glyph
      */
     private Dimen rightSpace = new Dimen(0);
 
@@ -103,10 +103,11 @@ public class GlyphImpl implements Glyph, Serializable {
 
     /**
      * Create a new object.
-     * @param h  the hight
-     * @param d  the depth
-     * @param w  the width
-     * @param i  the italic
+     * 
+     * @param h the height
+     * @param d the depth
+     * @param w the width
+     * @param i the italic
      */
     public GlyphImpl(Dimen h, Dimen d, Dimen w, Dimen i) {
 
@@ -133,22 +134,22 @@ public class GlyphImpl implements Glyph, Serializable {
         depth = d;
     }
 
-    //    /**
-    //     * @param gsize         The size to set as <code>String</code>.
-    //     * @param em            The em-size.
-    //     * @param unitsperem    The unit per em.
-    //     */
-    //    public void setDepth(String gsize, Dimen em,
-    //            int unitsperem) {
+    // /**
+    // * @param gsize The size to set as <code>String</code>.
+    // * @param em The em-size.
+    // * @param unitsperem The unit per em.
+    // */
+    // public void setDepth(String gsize, Dimen em,
+    // int unitsperem) {
     //
-    //        try {
-    //            float fsize = Float.parseFloat(gsize);
-    //            depth = new Dimen(Math.round(fsize * em.getValue() / unitsperem));
-    //        } catch (Exception e) {
-    //            // use default
-    //            depth = new Dimen(0);
-    //        }
-    //    }
+    // try {
+    // float fsize = Float.parseFloat(gsize);
+    // depth = new Dimen(Math.round(fsize * em.getValue() / unitsperem));
+    // } catch (Exception e) {
+    // // use default
+    // depth = new Dimen(0);
+    // }
+    // }
 
     /**
      * @return Returns the height.
@@ -166,22 +167,22 @@ public class GlyphImpl implements Glyph, Serializable {
         height = h;
     }
 
-    //    /**
-    //     * @param gsize         The size to set as <code>String</code>.
-    //     * @param em            The em-size.
-    //     * @param unitsperem    The unit per em.
-    //     */
-    //    public void setHeight(String gsize, Dimen em,
-    //            int unitsperem) {
+    // /**
+    // * @param gsize The size to set as <code>String</code>.
+    // * @param em The em-size.
+    // * @param unitsperem The unit per em.
+    // */
+    // public void setHeight(String gsize, Dimen em,
+    // int unitsperem) {
     //
-    //        try {
-    //            float fsize = Float.parseFloat(gsize);
-    //            height = new Dimen(Math.round(fsize * em.getValue() / unitsperem));
-    //        } catch (Exception e) {
-    //            // use default
-    //            height = new Dimen(0);
-    //        }
-    //    }
+    // try {
+    // float fsize = Float.parseFloat(gsize);
+    // height = new Dimen(Math.round(fsize * em.getValue() / unitsperem));
+    // } catch (Exception e) {
+    // // use default
+    // height = new Dimen(0);
+    // }
+    // }
 
     /**
      * @return Returns the italic.
@@ -199,22 +200,22 @@ public class GlyphImpl implements Glyph, Serializable {
         italic = d;
     }
 
-    //    /**
-    //     * @param gsize         The size to set as <code>String</code>.
-    //     * @param em            The em-size.
-    //     * @param unitsperem    The unit per em.
-    //     */
-    //    public void setItalicCorrection(String gsize, Dimen em,
-    //            int unitsperem) {
+    // /**
+    // * @param gsize The size to set as <code>String</code>.
+    // * @param em The em-size.
+    // * @param unitsperem The unit per em.
+    // */
+    // public void setItalicCorrection(String gsize, Dimen em,
+    // int unitsperem) {
     //
-    //        try {
-    //            float fsize = Float.parseFloat(gsize);
-    //            italic = new Dimen(Math.round(fsize * em.getValue() / unitsperem));
-    //        } catch (Exception e) {
-    //            // use default
-    //            italic = new Dimen(0);
-    //        }
-    //    }
+    // try {
+    // float fsize = Float.parseFloat(gsize);
+    // italic = new Dimen(Math.round(fsize * em.getValue() / unitsperem));
+    // } catch (Exception e) {
+    // // use default
+    // italic = new Dimen(0);
+    // }
+    // }
 
     /**
      * @return Returns the width.
@@ -232,93 +233,93 @@ public class GlyphImpl implements Glyph, Serializable {
         width = w;
     }
 
-    //    /**
-    //     * @param gsize         The size to set as <code>String</code>.
-    //     * @param em            The em-size.
-    //     * @param unitsperem    The unit per em. (default 1000)
-    //     */
-    //    public void setWidth(String gsize, Dimen em,
-    //            int unitsperem) {
+    // /**
+    // * @param gsize The size to set as <code>String</code>.
+    // * @param em The em-size.
+    // * @param unitsperem The unit per em. (default 1000)
+    // */
+    // public void setWidth(String gsize, Dimen em,
+    // int unitsperem) {
     //
-    //        try {
-    //            double fsize = Double.parseDouble(gsize);
-    //            width = new Dimen((long) (fsize * em.getValue() / unitsperem));
-    //        } catch (Exception e) {
-    //            // use default
-    //            width = new Dimen(0);
-    //        }
-    //    }
+    // try {
+    // double fsize = Double.parseDouble(gsize);
+    // width = new Dimen((long) (fsize * em.getValue() / unitsperem));
+    // } catch (Exception e) {
+    // // use default
+    // width = new Dimen(0);
+    // }
+    // }
 
-    //    /**
-    //     * @see de.dante.extex.font.Glyph#setWidth(
-    //     *      de.dante.extex.font.type.tfm.TFMFixWord,
-    //     *      de.dante.extex.interpreter.type.dimen.Dimen)
-    //     */
-    //    public void setWidth(TFMFixWord size, Dimen em) {
+    // /**
+    // * @see de.dante.extex.font.Glyph#setWidth(
+    // * de.dante.extex.font.type.tfm.TFMFixWord,
+    // * de.dante.extex.interpreter.type.dimen.Dimen)
+    // */
+    // public void setWidth(TFMFixWord size, Dimen em) {
     //
-    //        try {
-    //            long l = size.getValue() * em.getValue()
-    //                    / TFMFixWord.FIXWORDDENOMINATOR;
-    //            width = new Dimen(l);
-    //        } catch (Exception e) {
-    //            // use default
-    //            width = new Dimen(0);
-    //        }
-    //    }
+    // try {
+    // long l = size.getValue() * em.getValue()
+    // / TFMFixWord.FIXWORDDENOMINATOR;
+    // width = new Dimen(l);
+    // } catch (Exception e) {
+    // // use default
+    // width = new Dimen(0);
+    // }
+    // }
 
-    //    /**
-    //     * @see de.dante.extex.font.Glyph#setDepth(
-    //     *      de.dante.extex.font.type.tfm.TFMFixWord,
-    //     *      de.dante.extex.interpreter.type.dimen.Dimen)
-    //     */
-    //    public void setDepth(TFMFixWord size, Dimen em) {
+    // /**
+    // * @see de.dante.extex.font.Glyph#setDepth(
+    // * de.dante.extex.font.type.tfm.TFMFixWord,
+    // * de.dante.extex.interpreter.type.dimen.Dimen)
+    // */
+    // public void setDepth(TFMFixWord size, Dimen em) {
     //
-    //        try {
-    //            long l = size.getValue() * em.getValue()
-    //                    / TFMFixWord.FIXWORDDENOMINATOR;
-    //            depth = new Dimen(l);
-    //        } catch (Exception e) {
-    //            // use default
-    //            depth = new Dimen(0);
-    //        }
+    // try {
+    // long l = size.getValue() * em.getValue()
+    // / TFMFixWord.FIXWORDDENOMINATOR;
+    // depth = new Dimen(l);
+    // } catch (Exception e) {
+    // // use default
+    // depth = new Dimen(0);
+    // }
     //
-    //    }
+    // }
 
-    //    /**
-    //     * @see de.dante.extex.font.Glyph#setHeight(
-    //     *      de.dante.extex.font.type.tfm.TFMFixWord,
-    //     *      de.dante.extex.interpreter.type.dimen.Dimen)
-    //     */
-    //    public void setHeight(TFMFixWord size, Dimen em) {
+    // /**
+    // * @see de.dante.extex.font.Glyph#setHeight(
+    // * de.dante.extex.font.type.tfm.TFMFixWord,
+    // * de.dante.extex.interpreter.type.dimen.Dimen)
+    // */
+    // public void setHeight(TFMFixWord size, Dimen em) {
     //
-    //        try {
-    //            long l = size.getValue() * em.getValue()
-    //                    / TFMFixWord.FIXWORDDENOMINATOR;
-    //            height = new Dimen(l);
-    //        } catch (Exception e) {
-    //            // use default
-    //            height = new Dimen(0);
-    //        }
+    // try {
+    // long l = size.getValue() * em.getValue()
+    // / TFMFixWord.FIXWORDDENOMINATOR;
+    // height = new Dimen(l);
+    // } catch (Exception e) {
+    // // use default
+    // height = new Dimen(0);
+    // }
     //
-    //    }
+    // }
 
-    //    /**
-    //     * @see de.dante.extex.font.Glyph#setItalicCorrection(
-    //     *      de.dante.extex.font.type.tfm.TFMFixWord,
-    //     *      de.dante.extex.interpreter.type.dimen.Dimen)
-    //     */
-    //    public void setItalicCorrection(TFMFixWord size, Dimen em) {
+    // /**
+    // * @see de.dante.extex.font.Glyph#setItalicCorrection(
+    // * de.dante.extex.font.type.tfm.TFMFixWord,
+    // * de.dante.extex.interpreter.type.dimen.Dimen)
+    // */
+    // public void setItalicCorrection(TFMFixWord size, Dimen em) {
     //
-    //        try {
-    //            long l = size.getValue() * em.getValue()
-    //                    / TFMFixWord.FIXWORDDENOMINATOR;
-    //            italic = new Dimen(l);
-    //        } catch (Exception e) {
-    //            // use default
-    //            italic = new Dimen(0);
-    //        }
+    // try {
+    // long l = size.getValue() * em.getValue()
+    // / TFMFixWord.FIXWORDDENOMINATOR;
+    // italic = new Dimen(l);
+    // } catch (Exception e) {
+    // // use default
+    // italic = new Dimen(0);
+    // }
     //
-    //    }
+    // }
 
     /**
      * @return Returns the name.
@@ -354,26 +355,27 @@ public class GlyphImpl implements Glyph, Serializable {
 
     /**
      * Add kerning for the glyph.
-     * @param kern  the kerning
+     * 
+     * @param kern the kerning
      */
     public void addKerning(Kerning kern) {
 
         if (kerning == null) {
-            kerning = new HashMap();
+            kerning = new HashMap<String, Kerning>();
         }
         kerning.put(kern.getId(), kern);
     }
 
     /**
      * Return the kerning for the glyph.
-     * @param uc    the following character
-     * @return  the kerning-size as <code>Dimen</code>
+     * 
+     * @param uc the following character
+     * @return the kerning-size as <code>Dimen</code>
      */
     public Dimen getKerning(UnicodeChar uc) {
 
         if (kerning != null) {
-            Kerning kv = (Kerning) kerning.get(String
-                    .valueOf(uc.getCodePoint()));
+            Kerning kv = kerning.get(String.valueOf(uc.getCodePoint()));
             if (kv != null) {
                 return kv.getSize();
             }
@@ -383,34 +385,36 @@ public class GlyphImpl implements Glyph, Serializable {
 
     /**
      * Add ligature for the glyph.
-     * @param lig  the ligature
+     * 
+     * @param lig the ligature
      */
     public void addLigature(Ligature lig) {
 
         if (ligature == null) {
-            ligature = new HashMap();
+            ligature = new HashMap<String, Ligature>();
         }
         ligature.put(lig.getLetterid(), lig);
     }
 
     /**
-     * Return the ligature as <code>UnicodeChar</code>,
-     * or <code>null</code>, if no ligature exists.
-     *
-     * If you get a ligature-character, then you MUST call the
-     * method <code>getligature()</code> twice, if a ligature with
-     * more then two characters exist.
-     * (e.g. f - ff - ffl)
-     * @param uc    the following character
-     * @return  the ligature
+     * Return the ligature as <code>UnicodeChar</code>, or <code>null</code>,
+     * if no ligature exists.
+     * 
+     * If you get a ligature-character, then you MUST call the method
+     * <code>getLigature()</code> twice, if a ligature with more then two
+     * characters exist. (e.g. f - ff - ffl)
+     * 
+     * @param uc the following character
+     * @return the ligature
      */
     public UnicodeChar getLigature(UnicodeChar uc) {
 
         UnicodeChar liguc = null;
         if (ligature != null) {
             try {
-                Ligature lig = (Ligature) ligature.get(String.valueOf(uc
-                        .getCodePoint()));
+                Ligature lig =
+                        ligature.get(String.valueOf(uc
+                    .getCodePoint()));
                 if (lig != null) {
                     int i = Integer.parseInt(lig.getLigid());
                     liguc = UnicodeChar.get(i);
@@ -424,7 +428,7 @@ public class GlyphImpl implements Glyph, Serializable {
     }
 
     /**
-     * @return Returns the externalfile.
+     * @return Returns the external file.
      */
     public FontByteArray getExternalFile() {
 
@@ -432,7 +436,7 @@ public class GlyphImpl implements Glyph, Serializable {
     }
 
     /**
-     * @param file The externalfile to set.
+     * @param file The external file to set.
      */
     public void setExternalFile(FontByteArray file) {
 

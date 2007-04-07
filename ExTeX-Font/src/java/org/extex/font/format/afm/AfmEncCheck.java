@@ -27,7 +27,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.font.exception.FontException;
@@ -68,6 +67,7 @@ public class AfmEncCheck {
      * Create a new object.
      *
      * @param afm   The afm parser.
+     * @param afinder ...
      */
     public AfmEncCheck(AfmParser afm, ResourceFinder afinder) {
 
@@ -93,7 +93,7 @@ public class AfmEncCheck {
      * @throws FontException if a font-error occurred.
      * @throws ConfigurationException from the configuration system.
      */
-    public void createPdfTable(OutputStream out, List enclist)
+    public void createPdfTable(OutputStream out, List<String> enclist)
             throws IOException, DocumentException, FontException,
             ConfigurationException {
 
@@ -123,10 +123,10 @@ public class AfmEncCheck {
             table.addCell(new CellCenter(encv[i].getEncname()));
         }
 
-        ArrayList cmlist = parser.getAfmCharMetrics();
+        List<AfmCharMetric> cmlist = parser.getAfmCharMetrics();
 
         for (int g = 0, n = cmlist.size(); g < n; g++) {
-            AfmCharMetric cm = (AfmCharMetric) cmlist.get(g);
+            AfmCharMetric cm = cmlist.get(g);
             String glyph = cm.getN();
             PdfPCell cell = new PdfPCell(new Phrase(glyph));
             cell.setHorizontalAlignment(Element.ALIGN_LEFT);
@@ -192,7 +192,7 @@ public class AfmEncCheck {
      * @throws ConfigurationException from the configuration system.
      * @throws IOException if an IO_error occurred.
      */
-    private EncReader[] getEncodingVectors(List enclist)
+    private EncReader[] getEncodingVectors(List<String> enclist)
             throws FontException, IOException, ConfigurationException {
 
         EncReader[] encv = new EncReader[enclist.size()];
@@ -200,7 +200,7 @@ public class AfmEncCheck {
         for (int i = 0, n = enclist.size(); i < n; i++) {
 
             InputStream encin = null;
-            File encfile = new File((String) enclist.get(i));
+            File encfile = new File(enclist.get(i));
             if (encfile.canRead()) {
                 encin = new FileInputStream(encfile);
             } else {
@@ -219,7 +219,17 @@ public class AfmEncCheck {
         return encv;
     }
 
-    public void printMissingGlyphs(OutputStream out, List enclist)
+    /**
+     * TODO missing JavaDoc
+     *
+     * @param out TODO
+     * @param enclist TODO
+     *
+     * @throws IOException TODO
+     * @throws FontException TODO
+     * @throws ConfigurationException TOD
+     */
+    public void printMissingGlyphs(OutputStream out, List<String> enclist)
             throws IOException, FontException, ConfigurationException {
 
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out,

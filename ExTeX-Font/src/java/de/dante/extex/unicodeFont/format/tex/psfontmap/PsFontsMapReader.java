@@ -28,12 +28,11 @@ import java.util.Map;
 
 import org.extex.font.exception.FontException;
 
-
 /**
  * Reader for a psfonts.map-file.
- *
+ * 
  * @see <a href="package-summary.html#psfontsmap">psfonts.map</a>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -47,28 +46,28 @@ public class PsFontsMapReader implements Serializable {
 
     /**
      * Create a new object.
-     *
-     * @param in    The input for reading.
+     * 
+     * @param in The input for reading.
      * @throws FontException if an font-error occurred.
      */
     public PsFontsMapReader(InputStream in) throws FontException {
 
         try {
-            data = new HashMap();
+            data = new HashMap<String, PsFontEncoding>();
 
             if (in != null) {
-                BufferedReader reader = new BufferedReader(
-                        new InputStreamReader(in));
+                BufferedReader reader =
+                        new BufferedReader(new InputStreamReader(in));
 
                 // samples:
-                //  antpb AntykwaPoltawskiego-Bold "encantp ReEncodeFont"
-                //      <antp.enc <antpb.pfb
-                //  antpbi AntykwaPoltawskiego-BoldItalic "encantp ReEncodeFont"
-                //      <antp.enc <antpbi.pfb
-                //  antpr AntykwaPoltawskiego-Regular "encantp ReEncodeFont"
-                //      <antp.enc <antpr.pfb
-                //  cmr10 CMR10 <cmr10.pfb
-                //  cmr12 CMR12 <cmr12.pfb
+                // antpb AntykwaPoltawskiego-Bold "encantp ReEncodeFont"
+                // <antp.enc <antpb.pfb
+                // antpbi AntykwaPoltawskiego-BoldItalic "encantp ReEncodeFont"
+                // <antp.enc <antpbi.pfb
+                // antpr AntykwaPoltawskiego-Regular "encantp ReEncodeFont"
+                // <antp.enc <antpr.pfb
+                // cmr10 CMR10 <cmr10.pfb
+                // cmr12 CMR12 <cmr12.pfb
 
                 String line;
                 while ((line = reader.readLine()) != null) {
@@ -141,24 +140,25 @@ public class PsFontsMapReader implements Serializable {
     /**
      * Map for the font-data.
      */
-    private Map data;
+    private Map<String, PsFontEncoding> data;
 
     /**
      * Returns the encoding object for a font.
-     * @param filename      The font-filename.
+     * 
+     * @param filename The font file name.
      * @return Returns the encoding for a font.
      */
     public PsFontEncoding getPSFontEncoding(String filename) {
 
-        return (PsFontEncoding) data.get(filename);
+        return data.get(filename);
     }
 
     /**
      * Returns the map with all PSFontEncodings.
-     *
+     * 
      * @return Returns the map with all PSFontEncodings.
      */
-    public Map getPsFontEncodingMap() {
+    public Map<String, PsFontEncoding> getPsFontEncodingMap() {
 
         return data;
     }

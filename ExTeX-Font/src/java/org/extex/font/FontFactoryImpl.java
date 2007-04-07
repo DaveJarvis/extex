@@ -39,9 +39,9 @@ import org.extex.resource.ResourceFinder;
 
 /**
  * Factory to load a font.
- *
- * The factory use a cache (a weakmap) to increase the speed.
- *
+ * 
+ * The factory uses a cache (a weak map) to increase the speed.
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4728 $
@@ -95,20 +95,20 @@ public class FontFactoryImpl
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
-    public void configure(Configuration config)
+    public void configure(Configuration configuration)
             throws ConfigurationException {
 
-        this.config = config;
+        this.config = configuration;
 
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.CoreFontFactory#getFontKey(java.lang.String)
      */
     public FontKey getFontKey(String fontName) {
@@ -118,7 +118,7 @@ public class FontFactoryImpl
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.CoreFontFactory#getFontKey(java.lang.String,
      *      org.extex.core.dimen.FixedDimen)
      */
@@ -130,12 +130,12 @@ public class FontFactoryImpl
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.CoreFontFactory#getFontKey(java.lang.String,
      *      org.extex.core.dimen.FixedDimen, java.util.Map)
      */
     public FontKey getFontKey(String fontName, FixedDimen size,
-            Map map) {
+            Map<String, ?> map) {
 
         FontKey key = keyFactory.newInstance(fontName);
         key = keyFactory.newInstance(key, map);
@@ -144,17 +144,17 @@ public class FontFactoryImpl
 
     /**
      * Return a new instance.
-     *
-     * If the name is empty or null, then the <code>NullFont</code>
-     * are returned.
-     *
+     * 
+     * If the name is empty or null, then the <code>NullFont</code> are
+     * returned.
+     * 
      * If the font is found in the cache, the cached object is returned,
      * otherwise, the font is loaded from a file.
-     *
+     * 
      * @param key the fount key
-     *
+     * 
      * @return the new font instance.
-     *
+     * 
      * @throws ConfigurationException from the resource finder.
      * @throws FontException if a font-error occurred.
      */
@@ -172,9 +172,9 @@ public class FontFactoryImpl
             return font;
         }
 
-        Iterator it = config.iterator("Font");
+        Iterator<Configuration> it = config.iterator("Font");
         while (it.hasNext()) {
-            Configuration subcfg = (Configuration) it.next();
+            Configuration subcfg = it.next();
 
             String attType = subcfg.getAttribute("type");
 
@@ -203,8 +203,8 @@ public class FontFactoryImpl
 
         /**
          * Returns the loadable font.
-         *
-         * @param subcfg    the configuration.
+         * 
+         * @param subcfg the configuration.
          * @return the loadable font.
          * @throws ConfigurationException from the configuration system.
          */
@@ -217,10 +217,10 @@ public class FontFactoryImpl
 
         /**
          * Returns the backend font manager.
-         *
-         * @param subcfg    the configuration.
-         * @param finder    the resource finder.
-         * @param factory   the backend font factory.
+         * 
+         * @param subcfg the configuration.
+         * @param finder the resource finder.
+         * @param factory the backend font factory.
          * @return the backend font manager.
          * @throws ConfigurationException from the configuration system.
          */
@@ -288,7 +288,7 @@ public class FontFactoryImpl
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.CoreFontFactory#createManager(java.util.List)
      */
     public BackendFontManager createManager(List<String> fontTypes)

@@ -50,7 +50,7 @@ public class EncFactory implements Serializable {
     public EncFactory(ResourceFinder afinder) {
 
         finder = afinder;
-        data = new HashMap();
+        data = new HashMap<String, EncReader>();
     }
 
     /**
@@ -61,7 +61,7 @@ public class EncFactory implements Serializable {
     /**
      * Map.
      */
-    private Map data;
+    private Map<String, EncReader> data;
 
     /**
      * The field <tt>localizer</tt> contains the localizer. It is initiated
@@ -94,7 +94,7 @@ public class EncFactory implements Serializable {
     public EncReader getEncReader(String filename) throws FontException,
             ConfigurationException {
 
-        EncReader encreader = (EncReader) data.get(filename);
+        EncReader encreader = data.get(filename);
 
         if (encreader == null) {
             InputStream in = finder.findResource(filename, "enc");

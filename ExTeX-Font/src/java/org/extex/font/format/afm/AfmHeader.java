@@ -511,6 +511,8 @@ public class AfmHeader implements XMLWriterConvertible {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */

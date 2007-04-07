@@ -27,6 +27,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 import org.extex.font.exception.FontException;
@@ -40,7 +42,7 @@ import org.extex.util.xml.XMLStreamWriter;
 
 /**
  * Parse a afm file.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -58,15 +60,17 @@ public class AfmParser
 
     /**
      * Create a new object.
-     * @param in    The input.
-     * @throws IOException TODO
+     * 
+     * @param in The input.
+     * 
+     * @throws FontException TODO
      */
     public AfmParser(InputStream in) throws FontException {
 
         try {
             // create a Reader (AFM use US_ASCII)
-            BufferedReader reader = new BufferedReader(new InputStreamReader(
-                    in, "US-ASCII"));
+            BufferedReader reader =
+                    new BufferedReader(new InputStreamReader(in, "US-ASCII"));
             header = new AfmHeader();
             readAFMFile(reader);
             reader.close();
@@ -89,17 +93,20 @@ public class AfmParser
     /**
      * Represents the section CharMetrics in the AFM file.
      */
-    private ArrayList afmCharMetrics = new ArrayList(ARRAYLISTINITSIZE);
+    private ArrayList<AfmCharMetric> afmCharMetrics =
+            new ArrayList<AfmCharMetric>(ARRAYLISTINITSIZE);
 
     /**
      * Represents the section KerningPairs in the AFM file.
      */
-    private ArrayList afmKerningPairs = new ArrayList(ARRAYLISTINITSIZE);
+    private List<AfmKernPairs> afmKerningPairs =
+            new ArrayList<AfmKernPairs>(ARRAYLISTINITSIZE);
 
     /**
      * Map for Char-Name - Char-Number.
      */
-    private HashMap afmCharNameNumber = new HashMap(ARRAYLISTINITSIZE);
+    private Map<String, Integer> afmCharNameNumber =
+            new HashMap<String, Integer>(ARRAYLISTINITSIZE);
 
     /**
      * base 16.
@@ -108,17 +115,19 @@ public class AfmParser
 
     /**
      * Read the AFM-File.
-     * @param reader          The Reader fore the file input
-     * @throws IOException    if a io error occurred.
-     * @throws FontException  if a font error occurred.
+     * 
+     * @param reader The Reader fore the file input
+     * @throws IOException if a io error occurred.
+     * @throws FontException if a font error occurred.
      */
-    private void readAFMFile(BufferedReader reader) throws IOException,
-            FontException {
+    private void readAFMFile(BufferedReader reader)
+            throws IOException,
+                FontException {
 
         // line
         String line;
 
-        //read the AFM-header first and then the metrics
+        // read the AFM-header first and then the metrics
         boolean isMetrics = false;
 
         while ((line = reader.readLine()) != null) {
@@ -149,40 +158,38 @@ public class AfmParser
                 header.setWeight(tok.nextToken("\u00ff").substring(1));
             } else if (command.equals("ItalicAngle")) {
                 header.setItalicangle(Float.valueOf(tok.nextToken())
-                        .floatValue());
+                    .floatValue());
             } else if (command.equals("IsFixedPitch")) {
                 header.setFixedpitch(tok.nextToken().equals("true"));
             } else if (command.equals("CharacterSet")) {
                 header.setCharacterset(tok.nextToken("\u00ff").substring(1));
             } else if (command.equals("FontBBox")) {
                 header.setLlx(Float.valueOf(removeComma(tok.nextToken()))
-                        .floatValue());
+                    .floatValue());
                 header.setLly(Float.valueOf(removeComma(tok.nextToken()))
-                        .floatValue());
+                    .floatValue());
                 header.setUrx(Float.valueOf(removeComma(tok.nextToken()))
-                        .floatValue());
+                    .floatValue());
                 header.setUry(Float.valueOf(removeComma(tok.nextToken()))
-                        .floatValue());
+                    .floatValue());
             } else if (command.equals("UnderlinePosition")) {
                 header.setUnderlineposition(Float.valueOf(tok.nextToken())
-                        .floatValue());
+                    .floatValue());
             } else if (command.equals("UnderlineThickness")) {
                 header.setUnderlinethickness(Float.valueOf(tok.nextToken())
-                        .floatValue());
+                    .floatValue());
             } else if (command.equals("EncodingScheme")) {
                 header.setEncodingscheme(tok.nextToken("\u00ff").substring(1));
             } else if (command.equals("CapHeight")) {
                 header
-                        .setCapheight(Float.valueOf(tok.nextToken())
-                                .floatValue());
+                    .setCapheight(Float.valueOf(tok.nextToken()).floatValue());
             } else if (command.equals("XHeight")) {
                 header.setXheight(Float.valueOf(tok.nextToken()).floatValue());
             } else if (command.equals("Ascender")) {
                 header.setAscender(Float.valueOf(tok.nextToken()).floatValue());
             } else if (command.equals("Descender")) {
                 header
-                        .setDescender(Float.valueOf(tok.nextToken())
-                                .floatValue());
+                    .setDescender(Float.valueOf(tok.nextToken()).floatValue());
             } else if (command.equals("StdHW")) {
                 header.setStdhw(Float.valueOf(tok.nextToken()).floatValue());
             } else if (command.equals("StdVW")) {
@@ -200,7 +207,7 @@ public class AfmParser
         // create metric
         isMetrics = createMetric(reader, isMetrics);
 
-        // read  next command
+        // read next command
         while ((line = reader.readLine()) != null) {
             StringTokenizer tok = new StringTokenizer(line);
             if (!tok.hasMoreTokens()) {
@@ -252,14 +259,16 @@ public class AfmParser
 
     /**
      * Create the Metric.
-     * @param reader        The reader
-     * @param ism           is metric
-     * @return  is metric
+     * 
+     * @param reader The reader
+     * @param ism is metric
+     * @return is metric
      * @throws IOException if an IO-error occurs
      * @throws FontException if a font-error occurs.
      */
     private boolean createMetric(BufferedReader reader, boolean ism)
-            throws IOException, FontException {
+            throws IOException,
+                FontException {
 
         boolean isMetrics = ism;
 
@@ -332,11 +341,10 @@ public class AfmParser
     }
 
     /**
-     * Remove all ',' in the string,
-     * if the string is <code>null</code>,
-     * a empty string is returned.
-     *
-     * @param   s   the string
+     * Remove all ',' in the string, if the string is <code>null</code>, a
+     * empty string is returned.
+     * 
+     * @param s the string
      * @return the string without a ','
      */
     private String removeComma(String s) {
@@ -349,7 +357,8 @@ public class AfmParser
 
     /**
      * Returns the id for a char name.
-     * @param   name    The name of char.
+     * 
+     * @param name The name of char.
      * @return Returns the id for a char name.
      */
     public String getIDforName(String name) {
@@ -359,7 +368,7 @@ public class AfmParser
         String n = name;
 
         if (name != null) {
-            Integer i = (Integer) afmCharNameNumber.get(name);
+            Integer i = afmCharNameNumber.get(name);
             if (i != null) {
                 id = i.intValue();
             }
@@ -375,33 +384,37 @@ public class AfmParser
 
     /**
      * Returns the afmCharMetrics.
+     * 
      * @return Returns the afmCharMetrics.
      */
-    public ArrayList getAfmCharMetrics() {
+    public List<AfmCharMetric> getAfmCharMetrics() {
 
         return afmCharMetrics;
     }
 
     /**
      * Returns the afmCharNameNumber.
+     * 
      * @return Returns the afmCharNameNumber.
      */
-    public HashMap getAfmCharNameNumber() {
+    public Map<String, Integer> getAfmCharNameNumber() {
 
         return afmCharNameNumber;
     }
 
     /**
      * Returns the afmKerningPairs.
+     * 
      * @return Returns the afmKerningPairs.
      */
-    public ArrayList getAfmKerningPairs() {
+    public List<AfmKernPairs> getAfmKerningPairs() {
 
         return afmKerningPairs;
     }
 
     /**
      * Returns the header.
+     * 
      * @return Returns the header.
      */
     public AfmHeader getHeader() {
@@ -411,14 +424,15 @@ public class AfmParser
 
     /**
      * Returns the char metric of a char.
-     * @param c     The char (number)
+     * 
+     * @param c The char (number)
      * @return Returns the char metric of a char.
      */
     public AfmCharMetric getAfmCharMetric(int c) {
 
         AfmCharMetric cm = null;
         for (int i = 0, n = afmCharMetrics.size(); i < n; i++) {
-            cm = (AfmCharMetric) afmCharMetrics.get(i);
+            cm = afmCharMetrics.get(i);
             if (cm.getC() == c) {
                 return cm;
             }
@@ -428,14 +442,15 @@ public class AfmParser
 
     /**
      * Returns the char metric of a char.
-     * @param name   The char (name)
+     * 
+     * @param name The char (name)
      * @return Returns the char metric of a char.
      */
     public AfmCharMetric getAfmCharMetric(String name) {
 
         AfmCharMetric cm = null;
         for (int i = 0, n = afmCharMetrics.size(); i < n; i++) {
-            cm = (AfmCharMetric) afmCharMetrics.get(i);
+            cm = afmCharMetrics.get(i);
             if (cm.getN().equals(name)) {
                 return cm;
             }
@@ -457,8 +472,8 @@ public class AfmParser
             // glyph
             writer.writeStartElement("glyph");
 
-            // get the AFMCharMertic-object
-            AfmCharMetric cm = (AfmCharMetric) afmCharMetrics.get(i);
+            // get the AFMCharMertic object
+            AfmCharMetric cm = afmCharMetrics.get(i);
 
             // create attributes
             writer.writeAttribute("ID", i);
@@ -494,7 +509,7 @@ public class AfmParser
             AfmKernPairs kp;
 
             for (int k = 0; k < afmKerningPairs.size(); k++) {
-                kp = (AfmKernPairs) afmKerningPairs.get(k);
+                kp = afmKerningPairs.get(k);
                 if (kp.getCharpre().equals(glyphname)) {
                     writer.writeStartElement("kerning");
                     writer.writeAttribute("name", kp.getCharpost());
@@ -505,12 +520,12 @@ public class AfmParser
 
             // ligature
             if (cm.getL() != null) {
-                Iterator iterator = cm.getL().keySet().iterator();
+                Iterator<String> iterator = cm.getL().keySet().iterator();
                 while (iterator.hasNext()) {
-                    String key = (String) iterator.next();
+                    String key = iterator.next();
                     writer.writeStartElement("ligature");
                     writer.writeAttribute("letter", key);
-                    String value = (String) cm.getL().get(key);
+                    String value = cm.getL().get(key);
                     writer.writeAttribute("lig", value);
                     writer.writeEndElement();
                 }
@@ -523,6 +538,8 @@ public class AfmParser
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.util.EFMWriterConvertible#writeEFM(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeEFM(XMLStreamWriter writer) throws IOException {
@@ -541,21 +558,21 @@ public class AfmParser
                 + String.valueOf(header.getUry()));
         if (header.getUnderlinethickness() != 0) {
             writer.writeAttribute("underline-position", String.valueOf(header
-                    .getUnderlineposition()));
+                .getUnderlineposition()));
             writer.writeAttribute("underline-thickness", String.valueOf(header
-                    .getUnderlinethickness()));
+                .getUnderlinethickness()));
         }
         writer.writeAttribute("xheight", String.valueOf(header.getXheight()));
         writer.writeAttribute("capheight", String
-                .valueOf(header.getCapheight()));
+            .valueOf(header.getCapheight()));
 
         for (int i = 0; i < afmCharMetrics.size(); i++) {
 
-            // create  glyph
+            // create glyph
             writer.writeStartElement("glyph");
 
             // get the AFMCharMertix-object
-            AfmCharMetric cm = (AfmCharMetric) afmCharMetrics.get(i);
+            AfmCharMetric cm = afmCharMetrics.get(i);
 
             // create attributes
             if (cm.getC() >= 0) {
@@ -579,36 +596,36 @@ public class AfmParser
             if (cm.getBllx() != AfmHeader.NOTINIT) {
                 if (cm.getBlly() < 0) {
                     writer.writeAttribute("depth", String
-                            .valueOf(-cm.getBlly()));
+                        .valueOf(-cm.getBlly()));
                 } else {
                     writer.writeAttribute("depth", "0");
                 }
                 if (cm.getBury() > 0) {
                     writer.writeAttribute("height", String
-                            .valueOf(cm.getBury()));
+                        .valueOf(cm.getBury()));
                 } else {
                     writer.writeAttribute("height", "0");
                 }
             } else {
                 throw new IOException("no bounding box found");
                 // ...
-                //                throw new AfmNoBoundingBoxFoundException(String.valueOf(cm
-                //                        .getC()));
+                // throw new AfmNoBoundingBoxFoundException(String.valueOf(cm
+                // .getC()));
             }
             writer.writeAttribute("italic", String.valueOf(header
-                    .getItalicangle()));
+                .getItalicangle()));
 
             // kerning
             String glyphname = cm.getN();
             AfmKernPairs kp;
 
             for (int k = 0; k < afmKerningPairs.size(); k++) {
-                kp = (AfmKernPairs) afmKerningPairs.get(k);
+                kp = afmKerningPairs.get(k);
                 if (kp.getCharpre().equals(glyphname)) {
                     writer.writeStartElement("kerning");
                     writer.writeAttribute("glyph-name", kp.getCharpost());
                     writer.writeAttribute("glyph-id", getIDforName(kp
-                            .getCharpost()));
+                        .getCharpost()));
                     writer.writeAttribute("size", kp.getKerningsize());
                     writer.writeEndElement();
                 }
@@ -616,13 +633,13 @@ public class AfmParser
 
             // ligature
             if (cm.getL() != null) {
-                Iterator iterator = cm.getL().keySet().iterator();
+                Iterator<String> iterator = cm.getL().keySet().iterator();
                 while (iterator.hasNext()) {
-                    String key = (String) iterator.next();
+                    String key = iterator.next();
                     writer.writeStartElement("ligature");
                     writer.writeAttribute("letter", key);
                     writer.writeAttribute("letter-id", getIDforName(key));
-                    String value = (String) cm.getL().get(key);
+                    String value = cm.getL().get(key);
                     writer.writeAttribute("lig", value);
                     writer.writeAttribute("lig-id", getIDforName(value));
                     writer.writeEndElement();

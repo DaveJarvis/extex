@@ -31,6 +31,11 @@ import org.extex.font.FontKey;
 public class CorruptedTfmFontMappingException extends CorruptFontException {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
      * Creates a new object.
      *
      * @param key the font key.

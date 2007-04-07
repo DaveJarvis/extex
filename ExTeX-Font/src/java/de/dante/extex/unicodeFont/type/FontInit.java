@@ -32,6 +32,9 @@ public interface FontInit {
 
     /**
      * Initialize the font.
+     *
+     * @throws FontException TODO mgn
      */
     void init() throws FontException;
+
 }

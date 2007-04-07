@@ -38,16 +38,17 @@ import org.extex.font.unicode.GlyphName;
 
 /**
  * Class to load afm fonts.
- *
+ * 
  * <ul>
  * <li>The font has no design size; this is set to the size of the font key.</li>
  * <li>The EM size is set to the size of the font.</li>
  * <li>The font has no font dimen values. (mgn: überdenken)</li>
- * <li>If the font has no glyph 'space', then ex is used for getSpace(). (mgn: überprüfen)</li>
+ * <li>If the font has no glyph 'space', then ex is used for getSpace(). (mgn:
+ * überprüfen)</li>
  * </ul>
- *
+ * 
  * mgn: glyphname - unicode mapping (zusätzlich) einfügen
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -85,8 +86,8 @@ public class LoadableAfmFont implements LoadableFont {
 
     /**
      * Convert a float value to a <code>Dimen</code>.
-     *
-     * @param val   the value
+     * 
+     * @param val the value
      * @return the <code>Dimen</code> value of the float value.
      */
     private FixedDimen floatToDimen(float val) {
@@ -97,6 +98,8 @@ public class LoadableAfmFont implements LoadableFont {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.BaseFont#getActualFontKey()
      */
     public FontKey getActualFontKey() {
@@ -105,6 +108,8 @@ public class LoadableAfmFont implements LoadableFont {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.ExtexFont#getActualSize()
      */
     public FixedDimen getActualSize() {
@@ -113,12 +118,12 @@ public class LoadableAfmFont implements LoadableFont {
     }
 
     /**
-     * Returns the char metric for a Unicode char,
-     * or <code>null</code>, if not found.
-     *
-     * @param uc    the Unicode char.
-     * @return the char metric for a Unicode char,
-     *         or <code>null</code>, if not found.
+     * Returns the char metric for a Unicode char, or <code>null</code>, if
+     * not found.
+     * 
+     * @param uc the Unicode char.
+     * @return the char metric for a Unicode char, or <code>null</code>, if
+     *         not found.
      */
     private AfmCharMetric getCharMetric(UnicodeChar uc) {
 
@@ -141,6 +146,8 @@ public class LoadableAfmFont implements LoadableFont {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getDepth(org.extex.core.UnicodeChar)
      */
     public FixedGlue getDepth(UnicodeChar uc) {
@@ -149,10 +156,12 @@ public class LoadableAfmFont implements LoadableFont {
         if (cm != null) {
             return new Glue(floatToDimen(cm.getDepth()));
         }
-        return Glue.ZERO;
+        return FixedGlue.ZERO;
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getDesignSize()
      */
     public FixedDimen getDesignSize() {
@@ -161,6 +170,8 @@ public class LoadableAfmFont implements LoadableFont {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getEm()
      */
     public FixedDimen getEm() {
@@ -169,6 +180,8 @@ public class LoadableAfmFont implements LoadableFont {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getEx()
      */
     public FixedDimen getEx() {
@@ -178,6 +191,8 @@ public class LoadableAfmFont implements LoadableFont {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getFontDimen(java.lang.String)
      */
     public FixedDimen getFontDimen(String name) {
@@ -186,6 +201,8 @@ public class LoadableAfmFont implements LoadableFont {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.BaseFont#getFontKey()
      */
     public FontKey getFontKey() {
@@ -194,6 +211,8 @@ public class LoadableAfmFont implements LoadableFont {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getFontName()
      */
     public String getFontName() {
@@ -202,6 +221,8 @@ public class LoadableAfmFont implements LoadableFont {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getHeight(org.extex.core.UnicodeChar)
      */
     public FixedGlue getHeight(UnicodeChar uc) {
@@ -210,10 +231,12 @@ public class LoadableAfmFont implements LoadableFont {
         if (cm != null) {
             return new Glue(floatToDimen(cm.getHeight()));
         }
-        return Glue.ZERO;
+        return FixedGlue.ZERO;
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getItalicCorrection(org.extex.core.UnicodeChar)
      */
     public FixedDimen getItalicCorrection(UnicodeChar uc) {
@@ -223,7 +246,10 @@ public class LoadableAfmFont implements LoadableFont {
     }
 
     /**
-     * @see org.extex.font.ExtexFont#getKerning(org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.ExtexFont#getKerning(org.extex.core.UnicodeChar,
+     *      org.extex.core.UnicodeChar)
      */
     public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
 
@@ -245,7 +271,10 @@ public class LoadableAfmFont implements LoadableFont {
     }
 
     /**
-     * @see org.extex.font.ExtexFont#getLigature(org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
+     * {@inheritDoc}
+     *
+     * @see org.extex.font.ExtexFont#getLigature(org.extex.core.UnicodeChar,
+     *      org.extex.core.UnicodeChar)
      */
     public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
 
@@ -269,6 +298,8 @@ public class LoadableAfmFont implements LoadableFont {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.ExtexFont#getScaleFactor()
      */
     public FixedCount getScaleFactor() {
@@ -277,6 +308,8 @@ public class LoadableAfmFont implements LoadableFont {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.ExtexFont#getSpace()
      */
     public FixedGlue getSpace() {
@@ -290,6 +323,8 @@ public class LoadableAfmFont implements LoadableFont {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.ExtexFont#getWidth(org.extex.core.UnicodeChar)
      */
     public FixedGlue getWidth(UnicodeChar uc) {
@@ -298,10 +333,12 @@ public class LoadableAfmFont implements LoadableFont {
         if (cm != null) {
             return new Glue(floatToDimen(cm.getWidth()));
         }
-        return Glue.ZERO;
+        return FixedGlue.ZERO;
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.ExtexFont#hasGlyph(org.extex.core.UnicodeChar)
      */
     public boolean hasGlyph(UnicodeChar uc) {
@@ -310,14 +347,17 @@ public class LoadableAfmFont implements LoadableFont {
     }
 
     /**
-     * @see org.extex.font.LoadableFont#loadFont(java.io.InputStream, org.extex.font.CoreFontFactory, org.extex.font.FontKey)
+     * {@inheritDoc}
+     *
+     * @see org.extex.font.LoadableFont#loadFont(java.io.InputStream,
+     *      org.extex.font.CoreFontFactory, org.extex.font.FontKey)
      */
-    public void loadFont(InputStream in, CoreFontFactory factory,
-            FontKey fontKey) throws CorruptFontException {
+    public void loadFont(InputStream in, CoreFontFactory factory, FontKey key)
+            throws CorruptFontException {
 
-        this.fontKey = fontKey;
+        this.fontKey = key;
 
-        if (fontKey == null) {
+        if (key == null) {
             throw new IllegalArgumentException("fontkey");
         }
 
@@ -328,17 +368,16 @@ public class LoadableAfmFont implements LoadableFont {
             parser = new AfmParser(in);
 
         } catch (FontException e) {
-            throw new CorruptFontException(fontKey, e.getLocalizedMessage());
+            throw new CorruptFontException(key, e.getLocalizedMessage());
         } catch (IOException e) {
-            throw new CorruptFontException(fontKey, e.getLocalizedMessage());
+            throw new CorruptFontException(key, e.getLocalizedMessage());
         }
 
-        if (fontKey.getDimen("size") == null) {
+        if (key.getDimen("size") == null) {
             // use 10pt as default
-            actualFontKey = factory.getFontKey(fontKey, new Dimen(
-                    Dimen.ONE * 10));
+            actualFontKey = factory.getFontKey(key, new Dimen(Dimen.ONE * 10));
         } else {
-            actualFontKey = fontKey;
+            actualFontKey = key;
         }
 
     }

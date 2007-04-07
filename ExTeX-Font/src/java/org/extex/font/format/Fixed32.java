@@ -56,7 +56,7 @@ public class Fixed32 {
     /**
      * Convert a double in a fixed point format
      *
-     * @param dvalue    the doube value
+     * @param dvalue    the double value
      * @return Returns the fixed point format
      */
     private int convert(double dvalue) {
@@ -76,7 +76,7 @@ public class Fixed32 {
     private static final double FRACTION = 65536.0;
 
     /**
-     * Convert a fiex point value in a double
+     * Convert a fixed point value into a double
      *
      * @param fpvalue   the fixed point value
      * @return Returns the double value
@@ -105,6 +105,8 @@ public class Fixed32 {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {

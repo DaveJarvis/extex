@@ -43,6 +43,8 @@ public abstract class AbstractFontByteArray implements FontByteArray {
     private byte[] data;
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.font.FontByteArray#getBytes()
      */
     public byte[] getBytes() {
