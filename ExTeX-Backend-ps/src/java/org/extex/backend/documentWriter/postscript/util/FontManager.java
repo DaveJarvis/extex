@@ -119,10 +119,10 @@ public class FontManager {
     public Font[] listFonts() {
 
         Font[] f = new Font[fonts.size()];
-        Iterator iter = fonts.keySet().iterator();
+        Iterator<Font> iter = fonts.keySet().iterator();
         int i = 0;
         while (iter.hasNext()) {
-            f[i++] = (Font) iter.next();
+            f[i++] = iter.next();
         }
         return f;
     }

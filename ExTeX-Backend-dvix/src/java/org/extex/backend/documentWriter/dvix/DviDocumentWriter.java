@@ -253,7 +253,7 @@ public class DviDocumentWriter
          * 
          * @param list the list with DVI instructions.
          */
-        private void pop(List<DviCode> list) {
+        protected void pop(List<DviCode> list) {
 
             int size = list.size();
             while (size > 0) {
@@ -278,7 +278,7 @@ public class DviDocumentWriter
          * 
          * @param list the list with DVI instructions.
          */
-        private void push(List<DviCode> list) {
+        protected void push(List<DviCode> list) {
 
             list.add(DviCode.PUSH);
             dviStack.push(new int[]{dviW, dviX, dviY, dviZ});
@@ -343,8 +343,8 @@ public class DviDocumentWriter
          * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(
          *      org.extex.typesetter.type.node.AfterMathNode, java.lang.Object)
          */
-        public Object visitAfterMath(AfterMathNode node,
-                Object value) throws GeneralException {
+        public Object visitAfterMath(AfterMathNode node, Object value)
+                throws GeneralException {
 
             return null;
         }
@@ -354,8 +354,8 @@ public class DviDocumentWriter
          *      org.extex.typesetter.type.node.AlignedLeadersNode,
          *      java.lang.Object)
          */
-        public Object visitAlignedLeaders(AlignedLeadersNode node,
-                Object value) throws GeneralException {
+        public Object visitAlignedLeaders(AlignedLeadersNode node, Object value)
+                throws GeneralException {
 
             return null;
         }
@@ -364,8 +364,8 @@ public class DviDocumentWriter
          * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(
          *      org.extex.typesetter.type.node.BeforeMathNode, java.lang.Object)
          */
-        public Object visitBeforeMath(BeforeMathNode node,
-                Object value) throws GeneralException {
+        public Object visitBeforeMath(BeforeMathNode node, Object value)
+                throws GeneralException {
 
             return null;
         }
@@ -414,8 +414,8 @@ public class DviDocumentWriter
          *      org.extex.typesetter.type.node.DiscretionaryNode,
          *      java.lang.Object)
          */
-        public Object visitDiscretionary(DiscretionaryNode node,
-                Object value) throws GeneralException {
+        public Object visitDiscretionary(DiscretionaryNode node, Object value)
+                throws GeneralException {
 
             NodeList n = node.getNoBreak();
             if (n != null) {
@@ -451,8 +451,8 @@ public class DviDocumentWriter
          *      org.extex.typesetter.type.node.HorizontalListNode,
          *      java.lang.Object)
          */
-        public Object visitHorizontalList(HorizontalListNode node,
-                Object value) throws GeneralException {
+        public Object visitHorizontalList(HorizontalListNode node, Object value)
+                throws GeneralException {
 
             Node n;
             boolean save = horizontal;
@@ -478,8 +478,8 @@ public class DviDocumentWriter
          * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(
          *      org.extex.typesetter.type.node.InsertionNode, java.lang.Object)
          */
-        public Object visitInsertion(InsertionNode node,
-                Object value) throws GeneralException {
+        public Object visitInsertion(InsertionNode node, Object value)
+                throws GeneralException {
 
             // silently ignored
             return Boolean.TRUE;
@@ -563,10 +563,9 @@ public class DviDocumentWriter
          *      org.extex.typesetter.type.node.VerticalListNode,
          *      java.lang.Object)
          */
-        public Object visitVerticalList(VerticalListNode node,
-                Object value) throws GeneralException {
+        public Object visitVerticalList(VerticalListNode node, Object value)
+                throws GeneralException {
 
-            Node n;
             List<DviCode> list = (List<DviCode>) value;
             boolean save = horizontal;
             horizontal = false;
@@ -578,7 +577,7 @@ public class DviDocumentWriter
             int h0 = dviH;
 
             for (int i = 0; i < size; i++) {
-                n = node.get(i);
+                Node n = node.get(i);
                 down(list, n.getHeight().getValue());
                 if (n.visit(this, value) == null) {
                     down(list, n.getDepth().getValue());
@@ -596,8 +595,8 @@ public class DviDocumentWriter
          *      org.extex.typesetter.type.node.VirtualCharNode,
          *      java.lang.Object)
          */
-        public Object visitVirtualChar(VirtualCharNode node,
-                Object value) throws GeneralException {
+        public Object visitVirtualChar(VirtualCharNode node, Object value)
+                throws GeneralException {
 
             return visitChar(node, value);
         }
@@ -706,8 +705,7 @@ public class DviDocumentWriter
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
-    public void configure(Configuration config)
-            throws ConfigurationException {
+    public void configure(Configuration config) throws ConfigurationException {
 
         String col = config.getAttribute("color");
         if (col != null) {
@@ -734,7 +732,7 @@ public class DviDocumentWriter
      * 
      * @param list the list of codes for the page
      */
-    protected void optimize(List list) {
+    protected void optimize(List<DviXxx> list) {
 
         // not yet
     }

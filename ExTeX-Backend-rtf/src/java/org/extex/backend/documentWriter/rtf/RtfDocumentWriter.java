@@ -21,7 +21,6 @@ package org.extex.backend.documentWriter.rtf;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.List;
 import java.util.Stack;
 
 import org.extex.backend.documentWriter.DocumentWriter;
@@ -708,16 +707,6 @@ public class RtfDocumentWriter extends RtfDocument
     public String getExtension() {
 
         return "rtf";
-    }
-
-    /**
-     * Optimize the description of a single page.
-     * 
-     * @param list the list of codes for the page
-     */
-    protected void optimize(List list) {
-
-        // not yet
     }
 
     /**

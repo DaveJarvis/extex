@@ -53,7 +53,7 @@ public class PdfBoxType1Font extends PDType1Font {
             throws IOException {
 
         FontKey key = font.getFontKey();
-        PDFont pdfont = (PDFont) map.get(key);
+        PDFont pdfont = map.get(key);
         if (pdfont == null) {
             pdfont = new PdfBoxType1Font(doc, font);
             map.put(key, pdfont);
@@ -65,13 +65,15 @@ public class PdfBoxType1Font extends PDType1Font {
     /**
      * the map for the fonts.
      */
-    private static Map map = new HashMap();
+    private static Map<FontKey, PDFont> map = new HashMap<FontKey, PDFont>();
 
     /**
      * Create a new object.
      *
      * @param doc   the PDDocument.
      * @param font  the extex font
+     *
+     * @throws IOException TODO
      */
     private PdfBoxType1Font(PDDocument doc, Font font)
             throws IOException {
@@ -181,10 +183,13 @@ public class PdfBoxType1Font extends PDType1Font {
     private FontMetric metric;
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.pdfbox.pdmodel.font.PDSimpleFont#getFontDescriptor()
      */
     public PDFontDescriptor getFontDescriptor() throws IOException {
 
         return fd;
     }
+
 }

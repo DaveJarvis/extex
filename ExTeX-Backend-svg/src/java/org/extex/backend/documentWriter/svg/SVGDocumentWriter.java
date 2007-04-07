@@ -291,9 +291,9 @@ public class SVGDocumentWriter
 
         StringBuffer buf = new StringBuffer();
         buf.append("\n");
-        Iterator it = param.keySet().iterator();
+        Iterator<String> it = param.keySet().iterator();
         while (it.hasNext()) {
-            String name = (String) it.next();
+            String name = it.next();
             buf.append(name);
             buf.append("=");
             buf.append(param.get(name));

@@ -87,7 +87,7 @@ public class DviDocumentWriterTest extends TestCase {
      * @param exception a <code>Class</code> value
      * @throws Exception if an error occurs
      */
-    private void checkException(Node node, Class exception)
+    private void checkException(Node node, Class<?> exception)
             throws Exception {
 
         boolean gotException = false;
