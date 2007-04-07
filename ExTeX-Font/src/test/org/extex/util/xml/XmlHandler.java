@@ -42,12 +42,17 @@ public class XmlHandler extends DefaultHandler {
     /**
      * The list for the current element.
      */
-    private LinkedList<String> list = new LinkedList<String>();
+    private LinkedList<String> listElement = new LinkedList<String>();
+
+    /**
+     * The list for the current text value.
+     */
+    private LinkedList<String> listTextValue = new LinkedList<String>();
 
     /**
      * The {@link XMLStreamWriter} for the output.
      */
-    private XMLStreamWriter writer = null;
+    protected XMLStreamWriter writer = null;
 
     /**
      * Creates a new object.
@@ -76,6 +81,8 @@ public class XmlHandler extends DefaultHandler {
             throws SAXException {
 
         checkWriter();
+        listTextValue.addLast(listTextValue.removeLast()
+                + new String(ch, start, length).trim());
         try {
             writer.writeCharacters(ch, start, length);
         } catch (IOException e) {
@@ -123,7 +130,8 @@ public class XmlHandler extends DefaultHandler {
             throw new SAXException(e);
         }
         level--;
-        list.removeLast();
+        listElement.removeLast();
+        listTextValue.removeLast();
     }
 
     /**
@@ -134,8 +142,22 @@ public class XmlHandler extends DefaultHandler {
      */
     public String getCurrentElementName() {
 
-        if (list.size() > 0) {
-            return list.getLast();
+        if (listElement.size() > 0) {
+            return listElement.getLast();
+        }
+        return "";
+    }
+
+    /**
+     * Returns the text of the current element. If no text in the list, a empty
+     * string is returned.
+     * 
+     * @return Returns the name of the current element.
+     */
+    public String getCurrentTextValue() {
+
+        if (listTextValue.size() > 0) {
+            return listTextValue.getLast();
         }
         return "";
     }
@@ -149,9 +171,9 @@ public class XmlHandler extends DefaultHandler {
 
         StringBuffer buf = new StringBuffer();
 
-        for (int i = 0, n = list.size(); i < n; i++) {
+        for (int i = 0, n = listElement.size(); i < n; i++) {
             buf.append("/");
-            buf.append(list.get(i));
+            buf.append(listElement.get(i));
         }
 
         return buf.toString();
@@ -212,7 +234,8 @@ public class XmlHandler extends DefaultHandler {
 
         checkWriter();
         level++;
-        list.addLast(qName);
+        listElement.addLast(qName);
+        listTextValue.addLast("");
         try {
             writer.writeStartElement(qName);
             writeAttr(attributes);
