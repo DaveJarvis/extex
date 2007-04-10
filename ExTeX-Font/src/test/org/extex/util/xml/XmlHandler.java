@@ -190,6 +190,23 @@ public class XmlHandler extends DefaultHandler {
     }
 
     /**
+     * Check, if the element is parent of the current entry.
+     * 
+     * @param name The name of the parent.
+     * @return Returns <code>true</code>, if the element is parent of the
+     *         current element, otherwise <code>false</code>.
+     */
+    public boolean hasParentElement(String name) {
+
+        for (int i = listElement.size() - 1; i >= 0; i--) {
+            if (listElement.get(i).equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Check, if the parser is in the element.
      * 
      * @param name The name of the element.
@@ -253,11 +270,9 @@ public class XmlHandler extends DefaultHandler {
     private void writeAttr(Attributes attributes) throws IOException {
 
         if (attributes != null) {
-            int cnt = attributes.getLength();
-            for (int i = 0; i < cnt; i++) {
-                String name = attributes.getQName(i);
-                String value = attributes.getValue(i);
-                writer.writeAttribute(name, value);
+            for (int i = 0, cnt = attributes.getLength(); i < cnt; i++) {
+                writer.writeAttribute(attributes.getQName(i), attributes
+                    .getValue(i));
             }
         }
 
