@@ -81,8 +81,8 @@ public class XmlHandler extends DefaultHandler {
             throws SAXException {
 
         checkWriter();
-        listTextValue.addLast(listTextValue.removeLast()
-                + new String(ch, start, length).trim());
+        listTextValue.addLast(listTextValue.size() > 0 ? listTextValue
+            .removeLast() : "" + new String(ch, start, length).trim());
         try {
             writer.writeCharacters(ch, start, length);
         } catch (IOException e) {
@@ -267,7 +267,7 @@ public class XmlHandler extends DefaultHandler {
      * @param attributes The attributes.
      * @throws IOException if a io-error occurred.
      */
-    private void writeAttr(Attributes attributes) throws IOException {
+    protected void writeAttr(Attributes attributes) throws IOException {
 
         if (attributes != null) {
             for (int i = 0, cnt = attributes.getLength(); i < cnt; i++) {
