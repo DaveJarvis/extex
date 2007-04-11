@@ -40,7 +40,7 @@ import org.extex.util.file.random.RandomAccessR;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 0001 $
+ * @version $Revision$
  */
 public class ScriptTag extends Tag {
 

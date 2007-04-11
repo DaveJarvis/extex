@@ -27,7 +27,7 @@ import org.extex.font.type.other.NullFont;
  * Test for the font factory (xtf).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 5464 $
+ * @version $Revision$
  */
 public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
 

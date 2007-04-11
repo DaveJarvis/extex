@@ -23,7 +23,7 @@ package org.extex.font.format.xtf.cff;
  * Dummy number.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 2429 $
+ * @version $Revision$
  */
 public class T2DummyNumber extends T2Number {
 

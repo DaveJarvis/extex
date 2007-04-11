@@ -29,7 +29,7 @@ import org.extex.core.dimen.Dimen;
  * GlyphImplementation
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4728 $
+ * @version $Revision$
  */
 public class GlyphImpl implements Glyph, Serializable {
 

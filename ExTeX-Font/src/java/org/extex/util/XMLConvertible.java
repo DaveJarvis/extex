@@ -26,7 +26,7 @@ import org.jdom.Element;
  * to be convertibe into a xml element.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4613 $
+ * @version $Revision$
  */
 
 public interface XMLConvertible {

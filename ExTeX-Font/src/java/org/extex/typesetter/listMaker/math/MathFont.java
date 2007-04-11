@@ -35,7 +35,7 @@ import org.extex.interpreter.type.font.Font;
  * @see "TTP [700]"
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4728 $
+ * @version $Revision$
  */
 public class MathFont implements Font {
 

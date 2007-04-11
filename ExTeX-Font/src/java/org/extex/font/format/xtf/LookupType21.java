@@ -28,7 +28,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * PairPosFormat1 subtable: Adjustments for glyph pairs.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 5438 $
+ * @version $Revision$
  */
 public class LookupType21 extends LookupType1 {
 

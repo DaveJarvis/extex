@@ -67,7 +67,7 @@ import org.jdom.Element;
  * @see <a href="package-summary.html#DVIformat">DVI-Format</a>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4728 $
+ * @version $Revision$
  */
 
 public class DviEfm implements DviInterpreter, DviExecuteCommand {

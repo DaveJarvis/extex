@@ -25,7 +25,7 @@ import java.util.Stack;
  * DVI stack.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4684 $
+ * @version $Revision$
  */
 
 public class DviStack {

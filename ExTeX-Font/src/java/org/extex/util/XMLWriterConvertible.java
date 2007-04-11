@@ -29,7 +29,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * to write the data to a XMLStreamWriter.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4613 $
+ * @version $Revision$
  */
 
 public interface XMLWriterConvertible {

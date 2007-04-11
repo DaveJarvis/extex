@@ -29,7 +29,7 @@ import junit.framework.TestCase;
  * The test use the data from the <code>ttx</code> output.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 5430 $
+ * @version $Revision$
  */
 public class XtfReaderLmRoman10Regular02Test extends TestCase {
 

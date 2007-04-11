@@ -42,7 +42,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 1 $
+ * @version $Revision$
  */
 public class LoadableXtfFont implements LoadableFont {
 

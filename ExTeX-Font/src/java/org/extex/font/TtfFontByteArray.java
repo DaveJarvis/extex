@@ -23,7 +23,7 @@ package org.extex.font;
  * Class for a ttf-font-file.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4728 $
+ * @version $Revision$
  */
 public class TtfFontByteArray extends AbstractFontByteArray
         implements

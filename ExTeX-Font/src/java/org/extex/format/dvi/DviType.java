@@ -65,7 +65,7 @@ import org.extex.util.file.random.RandomAccessR;
  * DviType.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4728 $
+ * @version $Revision$
  */
 
 public class DviType implements DviInterpreter, DviExecuteCommand {

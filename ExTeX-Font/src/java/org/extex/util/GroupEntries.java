@@ -25,7 +25,7 @@ import java.util.List;
  * This class group entries in a list.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4444 $
+ * @version $Revision$
  *
  */
 public class GroupEntries {

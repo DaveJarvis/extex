@@ -36,7 +36,7 @@ import java.util.Locale;
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 5438 $
+ * @version $Revision$
  */
 
 public class XMLStreamWriter {

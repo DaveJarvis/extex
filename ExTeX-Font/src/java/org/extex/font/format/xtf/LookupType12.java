@@ -28,7 +28,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * SinglePosFormat2 subtable: Array of positioning values.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 5438 $
+ * @version $Revision$
  */
 public class LookupType12 extends LookupType1 {
 

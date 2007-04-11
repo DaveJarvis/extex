@@ -23,7 +23,7 @@ package org.extex.font;
  * Abstract class for a font byte array.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4728 $
+ * @version $Revision$
  */
 public abstract class AbstractFontByteArray implements FontByteArray {
 

@@ -62,7 +62,7 @@ import org.extex.util.file.random.RandomAccessR;
  * @see <a href="package-summary.html#DVIformat">DVI-Format</a>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4728 $
+ * @version $Revision$
  */
 
 public class DviPl implements DviInterpreter, DviExecuteCommand {

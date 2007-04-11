@@ -28,7 +28,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * Pair Positioning Adjustment: Format 2.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 5438 $
+ * @version $Revision$
  */
 public class LookupType22 extends LookupType1 {
 

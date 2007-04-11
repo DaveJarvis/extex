@@ -28,7 +28,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * SinglePosFormat1 subtable: Single positioning value.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 5438 $
+ * @version $Revision$
  */
 public class LookupType11 extends LookupType1 {
 

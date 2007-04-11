@@ -27,7 +27,7 @@ import java.util.List;
  * Class for a <code>FontFile</code>List.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4728 $
+ * @version $Revision$
  */
 public class FontFileList implements Serializable {
 

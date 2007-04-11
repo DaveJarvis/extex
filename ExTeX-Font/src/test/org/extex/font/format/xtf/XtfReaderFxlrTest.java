@@ -31,7 +31,7 @@ import org.extex.font.format.xtf.TtfTableCMAP.Format;
  * The test use the data from the <code>ttx</code> output. 
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 5426 $
+ * @version $Revision$
  */
 public class XtfReaderFxlrTest extends TestCase {
 

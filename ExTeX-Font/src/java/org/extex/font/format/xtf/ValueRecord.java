@@ -102,7 +102,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 0001 $
+ * @version $Revision$
  */
 public class ValueRecord implements XMLWriterConvertible {
 

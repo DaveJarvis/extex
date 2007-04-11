@@ -56,7 +56,7 @@ package org.extex.format.dvi;
  * <p>
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4684 $
+ * @version $Revision$
  */
 
 public class DviValues {

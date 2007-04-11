@@ -24,7 +24,7 @@ package org.extex.font.format;
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4402 $
+ * @version $Revision$
  */
 public class Fixed32 {
 

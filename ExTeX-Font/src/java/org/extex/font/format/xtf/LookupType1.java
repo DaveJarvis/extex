@@ -115,7 +115,7 @@ import org.extex.util.file.random.RandomAccessR;
  * 
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 5438 $
+ * @version $Revision$
  */
 public abstract class LookupType1 extends LookupType {
 

@@ -48,7 +48,7 @@ import com.lowagie.text.pdf.PdfWriter;
  * Check, if the glyphs of some encoding vectors exists.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 1.1 $
+ * @version $Revision$
  */
 
 public class AfmEncCheck {

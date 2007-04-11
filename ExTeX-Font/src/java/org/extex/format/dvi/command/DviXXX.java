@@ -25,7 +25,7 @@ import org.extex.core.UnicodeChar;
  * DVI: xxx
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4388 $
+ * @version $Revision$
  */
 
 public class DviXXX extends DviCommand {

@@ -54,7 +54,7 @@ import org.extex.util.file.random.RandomAccessR;
  * </ul>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 0001 $
+ * @version $Revision$
  */
 public abstract class Tag {
 
