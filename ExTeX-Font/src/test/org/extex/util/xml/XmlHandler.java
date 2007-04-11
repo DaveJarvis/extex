@@ -50,6 +50,11 @@ public class XmlHandler extends DefaultHandler {
     private LinkedList<String> listTextValue = new LinkedList<String>();
 
     /**
+     * Use the writer for the output.
+     */
+    private boolean useWriter = true;
+
+    /**
      * The {@link XMLStreamWriter} for the output.
      */
     protected XMLStreamWriter writer = null;
@@ -84,7 +89,9 @@ public class XmlHandler extends DefaultHandler {
         listTextValue.addLast(listTextValue.size() > 0 ? listTextValue
             .removeLast() : "" + new String(ch, start, length).trim());
         try {
-            writer.writeCharacters(ch, start, length);
+            if (useWriter) {
+                writer.writeCharacters(ch, start, length);
+            }
         } catch (IOException e) {
             throw new SAXException(e);
         }
@@ -110,7 +117,9 @@ public class XmlHandler extends DefaultHandler {
 
         checkWriter();
         try {
-            writer.writeEndDocument();
+            if (useWriter) {
+                writer.writeEndDocument();
+            }
         } catch (IOException e) {
             throw new SAXException(e);
         }
@@ -125,7 +134,9 @@ public class XmlHandler extends DefaultHandler {
 
         checkWriter();
         try {
-            writer.writeEndElement();
+            if (useWriter) {
+                writer.writeEndElement();
+            }
         } catch (IOException e) {
             throw new SAXException(e);
         }
@@ -219,6 +230,26 @@ public class XmlHandler extends DefaultHandler {
     }
 
     /**
+     * Getter for useWriter.
+     * 
+     * @return the useWriter
+     */
+    public boolean isUseWriter() {
+
+        return useWriter;
+    }
+
+    /**
+     * Setter for useWriter.
+     * 
+     * @param useWriter the useWriter to set
+     */
+    public void setUseWriter(boolean useWriter) {
+
+        this.useWriter = useWriter;
+    }
+
+    /**
      * Setter for writer.
      * 
      * @param writer the writer to set
@@ -235,7 +266,9 @@ public class XmlHandler extends DefaultHandler {
 
         checkWriter();
         try {
-            writer.writeStartDocument();
+            if (useWriter) {
+                writer.writeStartDocument();
+            }
         } catch (IOException e) {
             throw new SAXException(e);
         }
@@ -254,8 +287,10 @@ public class XmlHandler extends DefaultHandler {
         listElement.addLast(qName);
         listTextValue.addLast("");
         try {
-            writer.writeStartElement(qName);
-            writeAttr(attributes);
+            if (useWriter) {
+                writer.writeStartElement(qName);
+                writeAttr(attributes);
+            }
         } catch (IOException e) {
             throw new SAXException(e);
         }
