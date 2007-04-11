@@ -118,8 +118,8 @@ public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
     //
     // FixedDimen ex = font.getEx();
     // assertNotNull(ex);
-    // // afm XHeight 431
-    // assertTrue(ex.toString(), new Dimen(Dimen.ONE * 10 * 431 / 1000).eq(ex));
+    // // XHeight 385 (mit ttf2tfm)
+    // assertTrue(ex.toString(), new Dimen(Dimen.ONE * 10 * 385 / 1000).eq(ex));
     //
     // }
 

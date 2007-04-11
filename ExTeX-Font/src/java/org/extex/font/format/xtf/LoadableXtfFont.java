@@ -62,9 +62,9 @@ public class LoadableXtfFont implements LoadableFont {
     private GlyphName glyphname;
 
     /**
-     * The xtf parser.
+     * The xtf reader.
      */
-    private XtfReader parser;
+    private XtfReader reader;
 
     /**
      * {@inheritDoc}
@@ -86,7 +86,7 @@ public class LoadableXtfFont implements LoadableFont {
 
             glyphname = GlyphName.getInstance();
 
-            parser = new XtfReader(in);
+            reader = new XtfReader(in);
 
         } catch (IOException e) {
             throw new CorruptFontException(key, e.getLocalizedMessage());
@@ -150,6 +150,11 @@ public class LoadableXtfFont implements LoadableFont {
      * @see org.extex.font.ExtexFont#getEx()
      */
     public FixedDimen getEx() {
+
+        // XtfBoundingBox bb = reader.mapCharCodeToBB("x", (short) 3, (short)
+        // 1);
+        // assertNotNull(bb);
+        // assertTrue(bb.eq(28, -1, 911, 789));
 
         // TODO mgn: getEx unimplemented
         return null;
