@@ -52,6 +52,7 @@
     </afm>
     <ttf>
       <extension>.ttf</extension>
+      <path>../ExTeX-Font/src/font</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
@@ -101,12 +102,8 @@
   <Fonts class="org.extex.font.FontFactoryImpl">
 		<Font type="tfm" class="org.extex.font.format.tfm.LoadableTfmFont" />
 		<Font type="afm" class="org.extex.font.format.afm.LoadableAfmFont" />
-<!--      <type1 class="org.extex.font.type.efm.EFMType1AFMFount"/>        
-      <ttf class="org.extex.font.type.efm.EFMTTFFount"/>        
-      <tfm-mathsyml class="org.extex.font.type.efm.EFMType1TFMMathsymlFount"/>        
-      <tfm-mathext class="org.extex.font.type.efm.EFMType1TFMMathextFount"/>
-      <tfm-normal class="org.extex.font.type.efm.EFMType1TFMNOFount"/>
-      -->
+		<Font type="ttf" class="org.extex.font.format.xtf.LoadableXtfFont" />
+
       <FontType name="tfm" class="org.extex.font.manager.TfmBackendFontManager" />
   </Fonts>
   
