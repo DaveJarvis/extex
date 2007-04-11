@@ -30,6 +30,7 @@ import java.io.OutputStreamWriter;
 import java.util.List;
 
 import org.extex.font.exception.FontException;
+import org.extex.font.format.encoding.EncReader;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.resource.ResourceFinder;
 
@@ -42,7 +43,6 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
-import de.dante.extex.unicodeFont.format.tex.psfontmap.enc.EncReader;
 
 /**
  * Check, if the glyphs of some encoding vectors exists.

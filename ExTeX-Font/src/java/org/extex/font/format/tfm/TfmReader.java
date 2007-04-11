@@ -27,6 +27,7 @@ import java.io.Serializable;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.font.exception.FontException;
+import org.extex.font.format.encoding.EncFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.util.file.random.RandomAccessInputStream;
 import org.extex.util.file.random.RandomAccessR;
@@ -34,7 +35,6 @@ import org.extex.util.file.random.RandomAccessR;
 import de.dante.extex.unicodeFont.format.pfb.PfbParser;
 import de.dante.extex.unicodeFont.format.tex.psfontmap.PsFontEncoding;
 import de.dante.extex.unicodeFont.format.tex.psfontmap.PsFontsMapReader;
-import de.dante.extex.unicodeFont.format.tex.psfontmap.enc.EncFactory;
 
 /**
  * This class read a TFM-file.

@@ -78,9 +78,10 @@ public class PairSetTable implements XMLWriterConvertible {
         int pairValueCount = rar.readUnsignedShort();
 
         pairValueRecords = new PairValueRecord[pairValueCount];
-        for (int i = 0; i < pairValueRecords.length; i++) {
-            pairValueRecords[i] = new PairValueRecord(rar);
-        }
+        // TODO mgn: Fehler
+//        for (int i = 0; i < pairValueRecords.length; i++) {
+//            pairValueRecords[i] = new PairValueRecord(rar);
+//        }
     }
 
     /**

@@ -16,7 +16,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  */
 
-package de.dante.extex.unicodeFont.format.tex.psfontmap.enc;
+package org.extex.font.format.encoding;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -25,10 +25,10 @@ import java.io.OutputStreamWriter;
 
 /**
  * Class for a encoding writer.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
- *
+ * 
  */
 public class EncWriter {
 
@@ -38,14 +38,14 @@ public class EncWriter {
     private static final int ENCODINGSIZE = 256;
 
     /**
-     * The encoding vector.
-     */
-    private String[] enc = new String[ENCODINGSIZE];
-
-    /**
      * Use comments?
      */
     private boolean comments = true;
+
+    /**
+     * The encoding vector.
+     */
+    private String[] enc = new String[ENCODINGSIZE];
 
     /**
      * The encoding name.
@@ -63,19 +63,8 @@ public class EncWriter {
     }
 
     /**
-     * Set a encoding value.
-     * @param pos   The position.
-     * @param name  The glyph name.
-     */
-    public void setEncoding(int pos, String name) {
-
-        if (pos >= 0 && pos < ENCODINGSIZE) {
-            enc[pos] = name;
-        }
-    }
-
-    /**
      * Returns the encname.
+     * 
      * @return Returns the encname.
      */
     public String getEncname() {
@@ -84,16 +73,8 @@ public class EncWriter {
     }
 
     /**
-     * The encname to set.
-     * @param name The encname to set.
-     */
-    public void setEncname(String name) {
-
-        encname = name;
-    }
-
-    /**
      * Returns the comments.
+     * 
      * @return Returns the comments.
      */
     public boolean isComments() {
@@ -103,6 +84,7 @@ public class EncWriter {
 
     /**
      * The comments to set.
+     * 
      * @param c The comments to set.
      */
     public void setComments(boolean c) {
@@ -111,14 +93,38 @@ public class EncWriter {
     }
 
     /**
+     * The encname to set.
+     * 
+     * @param name The encname to set.
+     */
+    public void setEncname(String name) {
+
+        encname = name;
+    }
+
+    /**
+     * Set a encoding value.
+     * 
+     * @param pos The position.
+     * @param name The glyph name.
+     */
+    public void setEncoding(int pos, String name) {
+
+        if (pos >= 0 && pos < ENCODINGSIZE) {
+            enc[pos] = name;
+        }
+    }
+
+    /**
      * Write the encoding vector to a output stream.
-     * @param out   The output
+     * 
+     * @param out The output
      * @throws IOException if an IO-error occurred.
      */
     public void write(OutputStream out) throws IOException {
 
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out,
-                "ASCII"));
+        BufferedWriter writer =
+                new BufferedWriter(new OutputStreamWriter(out, "ASCII"));
 
         writer.write("/");
         writer.write(encname);
@@ -126,8 +132,7 @@ public class EncWriter {
         for (int i = 0; i < ENCODINGSIZE; i++) {
             if (comments) {
                 writer
-                        .write("% 0x" + Integer.toHexString(i) + " (" + i
-                                + ")\n");
+                    .write("% 0x" + Integer.toHexString(i) + " (" + i + ")\n");
             }
             writer.write(" ");
             writer.write(enc[i]);

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -16,7 +16,7 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package de.dante.extex.unicodeFont.format.tex.psfontmap.enc;
+package org.extex.font.format.encoding;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -32,9 +32,9 @@ import de.dante.extex.unicodeFont.exception.FontIOException;
 
 /**
  * Reader for encoding-files.
- *
+ * 
  * @see <a href="package-summary.html#font-enc">font encoding file</a>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -47,23 +47,33 @@ public class EncReader implements Serializable {
     private static final long serialVersionUID = 4119582362704393554L;
 
     /**
+     * The encoding name.
+     */
+    private String encname = "";
+
+    /**
      * The field <tt>localizer</tt> contains the localizer. It is initiated
      * with a localizer for the name of this class.
      */
-    private transient Localizer localizer = LocalizerFactory
-            .getLocalizer(EncReader.class);
+    private transient Localizer localizer =
+            LocalizerFactory.getLocalizer(EncReader.class);
+
+    /**
+     * encoding table.
+     */
+    private String[] table;
 
     /**
      * Create a new object.
-     *
-     * @param in    input stream for reading
+     * 
+     * @param in input stream for reading
      * @throws FontException if an IO-error occurred
      */
     public EncReader(InputStream in) throws FontException {
 
         try {
-            BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(in));
+            BufferedReader reader =
+                    new BufferedReader(new InputStreamReader(in));
 
             StringBuffer buf = new StringBuffer();
             String line;
@@ -86,7 +96,7 @@ public class EncReader implements Serializable {
             int last = buf.lastIndexOf("]");
             if (fs < 0 || first < 0 || last < 0) {
                 throw new FontException(localizer
-                        .format("EncReader.WrongRange"));
+                    .format("EncReader.WrongRange"));
 
             }
             String tablestring = buf.substring(first + 1, last).trim();
@@ -99,28 +109,21 @@ public class EncReader implements Serializable {
     }
 
     /**
-     * The encoding name.
+     * Returns the encname.
+     * 
+     * @return Returns the encname.
      */
-    private String encname = "";
+    public String getEncname() {
 
-    /**
-     * encoding table.
-     */
-    private String[] table;
-
-    /**
-     * Returns the encoding table.
-     * @return Returns the encoding table.
-     */
-    public String[] getTable() {
-
-        return table;
+        return encname;
     }
 
     /**
      * Returns the position of the glyph in the table.
-     * @param name  The glyph name.
-     * @return Returns the position of the glyph in the table or -1 if not found.
+     * 
+     * @param name The glyph name.
+     * @return Returns the position of the glyph in the table or -1 if not
+     *         found.
      */
     public int getPosition(String name) {
 
@@ -135,11 +138,12 @@ public class EncReader implements Serializable {
     }
 
     /**
-     * Returns the encname.
-     * @return Returns the encname.
+     * Returns the encoding table.
+     * 
+     * @return Returns the encoding table.
      */
-    public String getEncname() {
+    public String[] getTable() {
 
-        return encname;
+        return table;
     }
 }
