@@ -64,7 +64,8 @@ public class XmlHandler extends DefaultHandler {
      */
     public XmlHandler() {
 
-        super();
+        // add a empty string (for characters for the root-element)
+        listTextValue.add("");
 
     }
 
@@ -75,6 +76,7 @@ public class XmlHandler extends DefaultHandler {
      */
     public XmlHandler(XMLStreamWriter writer) {
 
+        this();
         this.writer = writer;
 
     }
@@ -85,9 +87,9 @@ public class XmlHandler extends DefaultHandler {
     public void characters(char[] ch, int start, int length)
             throws SAXException {
 
-        checkWriter();
-        listTextValue.addLast(listTextValue.size() > 0 ? listTextValue
-            .removeLast() : "" + new String(ch, start, length).trim());
+        listTextValue.addLast(listTextValue.removeLast()
+                + new String(ch, start, length).trim());
+
         try {
             if (useWriter) {
                 writer.writeCharacters(ch, start, length);
@@ -141,8 +143,13 @@ public class XmlHandler extends DefaultHandler {
             throw new SAXException(e);
         }
         level--;
-        listElement.removeLast();
-        listTextValue.removeLast();
+        if (listElement.size() > 0) {
+            listElement.removeLast();
+        }
+        if (listTextValue.size() > 0) {
+            listTextValue.removeLast();
+        }
+
     }
 
     /**
