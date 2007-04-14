@@ -2,9 +2,9 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
-  <artifactId>extex-top</artifactId>
+  <artifactId>extex</artifactId>
   <packaging>pom</packaging>
-  <version>0.1-SNAPSHOT</version>
+  <version>SNAPSHOT</version>
   <name>ExTeX</name>
   <inceptionYear>2003</inceptionYear>
   <url>http://www.extex.org</url>
@@ -23,12 +23,27 @@
    as much as reasonable.
   </description>
 
-<!--
   <organization>
-    <name>The ExTeX Group</name>
+    <name>>The ExTeX Group</name>
     <url>http://www.extex.org</url>
-  <organization>
--->
+  </organization>
+
+  <scm>
+    <url>http://svn.berlios.de/wsvn/extex/trunk/</url>
+  </scm>
+
+  <issueManagement>
+    <system>Berlios Bugs</system>
+    <url>http://developer.berlios.de/bugs/?group_id=1915</url>
+  </issueManagement>
+
+  <licenses>
+    <license>
+      <name>GNU Lesser General Public License</name>
+      <url>http://www.fsf.org/licensing/licenses/lgpl.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
 
   <mailingLists>
     <mailingList>
@@ -75,6 +90,13 @@
     </developer>
   </developers>
 
+  <distributionManagement>
+    <site>
+      <id>www.extex.org</id>
+      <url>file://serv/www/extex</url>
+    </site>
+  </distributionManagement>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -99,7 +121,7 @@
    <!-- <module>ExTeX-Backend-xml</module> -->
    <!-- <module>ExTeX-base</module> -->
    <!-- <module>ExTeX-base-ext</module> -->
-   <!-- <module>ExTeX-core</module> -->
+   <module>ExTeX-core</module>
    <!-- <module>ExTeX-Font</module> -->
    <!-- <module>ExTeX-fontware</module> -->
    <!-- <module>ExTeX-Main-fmt</module> -->
@@ -117,9 +139,9 @@
    <!-- <module>ExTeX-Unit-pdftex</module> -->
    <!-- <module>ExTeX-Unit-tex</module> -->
    <!-- <module>library</module> -->
-   <!-- <module>texmf</module> -->
+   <module>texmf</module>
    <!-- <module>util</module> -->
-   <!-- <module>www</module> -->
+   <module>www</module>
   </modules>
 
   <build>
@@ -132,6 +154,31 @@
           <target>1.5</target>
         </configuration>
       </plugin>
+<!--
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-info-reports-pligin</artifactId>
+        <reportSets>
+          <reportSet>
+            <report>mailing-lists</report>
+            <report>license</report>
+          </reportSet>
+        </reportSets>
+      </plugin>
+-->
     </plugins>
   </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <configuration>
+          <configLocation>develop/eclipse/checkstyle42.cfg</configLocation>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+
 </project>
