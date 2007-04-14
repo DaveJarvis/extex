@@ -40,7 +40,7 @@
   </condition>
 
   <!-- ==================================================================== -->
-  <javac srcdir="src/java" destdir="target/classes" />
+  <javac srcdir="src/main/java" destdir="target/classes" />
   <taskdef name="tuneAntLog"
            classname="org.extex.ant.log.TuneAntLogTask"
            classpath="target/classes" />

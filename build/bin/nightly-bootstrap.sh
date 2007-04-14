@@ -16,7 +16,7 @@ LOCALDIR="/serv/extex-project/build"
 INSTALLDIR=/serv/www/extex
 #--------------------------------------------------------------------
 # Point to the Java SDK
-export JAVA_HOME=/serv/extex-project/lib/j2sdk1.4.2_09/
+export JAVA_HOME=/serv/extex-project/lib/jdk/
 #--------------------------------------------------------------------
 # Point to Ant
 export ANT_HOME=/serv/extex-project/lib/ant/
