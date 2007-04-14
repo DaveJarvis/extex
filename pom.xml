@@ -1,0 +1,137 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.extex</groupId>
+  <artifactId>extex-top</artifactId>
+  <packaging>pom</packaging>
+  <version>0.1-SNAPSHOT</version>
+  <name>ExTeX</name>
+  <inceptionYear>2003</inceptionYear>
+  <url>http://www.extex.org</url>
+  <description>
+   ExTeX aims at the development of a high quality typesetting system.
+   This development is massively based on the experiences with the
+   typesetting system TeX. Despite of its age TeX can still be
+   considered a very good choice. Nevertheless design decisions which
+   where reasonable at the time of the writing of TeX can nowadays no
+   longer be considered as state of the art.
+
+   The stability of TeX is one of its virtues. On the other side it
+   makes it hard to improve the system - even in the few areas which
+   deserve improvements. The new millenium needs a system which is open
+   for further development and at the same time compatible with TeX
+   as much as reasonable.
+  </description>
+
+<!--
+  <organization>
+    <name>The ExTeX Group</name>
+    <url>http://www.extex.org</url>
+  <organization>
+-->
+
+  <mailingLists>
+    <mailingList>
+      <name>extex</name>
+      <subscribe>https://lists.dante.de/mailman/listinfo/extex</subscribe>
+    </mailingList>
+    <mailingList>
+      <name>extex-devel</name>
+      <subscribe>https://lists.dante.de/mailman/listinfo/extex-devel</subscribe>
+    </mailingList>
+  </mailingLists>
+
+  <developers>
+    <developer>
+      <id>gene</id>
+      <name>Gerd Neugebauer</name>
+      <email>gene@gerd-neugebauer.de</email>
+      <roles>
+        <role>developer</role>
+        <role>build manager</role>
+      </roles>
+      <timezone>+1</timezone>
+      <properties/>
+    </developer>
+    <developer>
+      <id>mgn</id>
+      <name>Michael Niedermair</name>
+      <email>m.g.n@gmx.de</email>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>+1</timezone>
+      <properties/>
+    </developer>
+    <developer>
+      <id>plaicy</id>
+      <name>Sebastian Waschik</name>
+      <email>sebastian.waschik@gmx.de</email>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>+1</timezone>
+      <properties/>
+    </developer>
+  </developers>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <modules>
+   <module>build</module>
+   <!-- <module>develop</module> -->
+   <!-- <module>doc</module> -->
+   <!-- <module>ExTeX-Backend-dump</module> -->
+   <!-- <module>ExTeX-Backend-dvi</module> -->
+   <!-- <module>ExTeX-Backend-dvix</module> -->
+   <!-- <module>ExTeX-Backend-pdfbox</module> -->
+   <!-- <module>ExTeX-Backend-ps</module> -->
+   <!-- <module>ExTeX-Backend-rtf</module> -->
+   <!-- <module>ExTeX-Backend-svg</module> -->
+   <!-- <module>ExTeX-Backend-text</module> -->
+   <!-- <module>ExTeX-Backend-xml</module> -->
+   <!-- <module>ExTeX-base</module> -->
+   <!-- <module>ExTeX-base-ext</module> -->
+   <!-- <module>ExTeX-core</module> -->
+   <!-- <module>ExTeX-Font</module> -->
+   <!-- <module>ExTeX-fontware</module> -->
+   <!-- <module>ExTeX-Main-fmt</module> -->
+   <!-- <module>ExTeX-Main-tex</module> -->
+   <!-- <module>ExTeX-Scanner</module> -->
+   <!-- <module>ExTeX-Scanner32</module> -->
+   <!-- <module>ExTeX-Scanner-API</module> -->
+   <!-- <module>ExTeX-Unit-color</module> -->
+   <!-- <module>ExTeX-Unit-etex</module> -->
+   <!-- <module>ExTeX-Unit-extex</module> -->
+   <!-- <module>ExTeX-Unit-image</module> -->
+   <!-- <module>ExTeX-Unit-namespace</module> -->
+   <!-- <module>ExTeX-Unit-native</module> -->
+   <!-- <module>ExTeX-Unit-omega</module> -->
+   <!-- <module>ExTeX-Unit-pdftex</module> -->
+   <!-- <module>ExTeX-Unit-tex</module> -->
+   <!-- <module>library</module> -->
+   <!-- <module>texmf</module> -->
+   <!-- <module>util</module> -->
+   <!-- <module>www</module> -->
+  </modules>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
