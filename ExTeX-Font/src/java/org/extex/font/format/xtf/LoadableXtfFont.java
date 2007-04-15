@@ -129,8 +129,7 @@ public class LoadableXtfFont implements LoadableFont {
      */
     public FixedDimen getDesignSize() {
 
-        // TODO mgn: getDesignSize unimplemented
-        return null;
+        return fontKey.getDimen("size");
     }
 
     /**
@@ -140,8 +139,7 @@ public class LoadableXtfFont implements LoadableFont {
      */
     public FixedDimen getEm() {
 
-        // TODO mgn: getEm unimplemented
-        return null;
+        return getActualSize();
     }
 
     /**
@@ -151,13 +149,29 @@ public class LoadableXtfFont implements LoadableFont {
      */
     public FixedDimen getEx() {
 
-        // XtfBoundingBox bb = reader.mapCharCodeToBB("x", (short) 3, (short)
-        // 1);
-        // assertNotNull(bb);
-        // assertTrue(bb.eq(28, -1, 911, 789));
+        int xh = 0;
 
-        // TODO mgn: getEx unimplemented
-        return null;
+        // TODO encoding
+        XtfBoundingBox bb = reader.mapCharCodeToBB("x", (short) 3, (short) 1);
+        if (bb != null) {
+
+            xh = bb.getHeight();
+        }
+        return intToDimen(xh);
+    }
+
+    /**
+     * Convert a int value to a <code>Dimen</code>.
+     * 
+     * @param val the value
+     * @return the <code>Dimen</code> value of the float value.
+     */
+    private FixedDimen intToDimen(int val) {
+
+        int i = val * 1000 / 2048;
+        long l = getActualSize().getValue() * i / 1000;
+
+        return new Dimen(l);
     }
 
     /**

@@ -109,31 +109,32 @@ public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
         assertTrue(new Dimen(Dimen.ONE * 10).eq(font.getActualSize()));
     }
 
-    // /**
-    // * Test for the font: ex
-    // *
-    // * @throws Exception if an error occurred.
-    // */
-    // public void test05() throws Exception {
-    //
-    // FixedDimen ex = font.getEx();
-    // assertNotNull(ex);
-    // // XHeight 385 (mit ttf2tfm)
-    // assertTrue(ex.toString(), new Dimen(Dimen.ONE * 10 * 385 / 1000).eq(ex));
-    //
-    // }
+    /**
+     * Test for the font: ex
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void test05() throws Exception {
 
-    // /**
-    // * Test for the font: fxlr
-    // * @throws Exception if an error occurred.
-    // */
-    // public void test06() throws Exception {
-    //
-    // FixedDimen em = font.getEm();
-    // assertNotNull(em);
-    // assertTrue(em.toString(), new Dimen(Dimen.ONE * 10).eq(em));
-    // }
-    //
+        FixedDimen ex = font.getEx();
+        assertNotNull(ex);
+        // XHeight 385 (mit ttf2tfm)
+        assertTrue(ex.toString(), new Dimen(Dimen.ONE * 10 * 385 / 1000).eq(ex));
+
+    }
+
+    /**
+     * Test for the font: em
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void test06() throws Exception {
+
+        FixedDimen em = font.getEm();
+        assertNotNull(em);
+        assertTrue(em.toString(), new Dimen(Dimen.ONE * 10).eq(em));
+    }
+
     // /**
     // * Test for the font: fxlr
     // * @throws Exception if an error occurred.

@@ -21,21 +21,11 @@ package org.extex.font.format.xtf;
 
 /**
  * Bounding box.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public class XtfBoundingBox {
-
-    /**
-     * The x-Min.
-     */
-    private short xMin;
-
-    /**
-     * The y-Min.
-     */
-    private short yMin;
 
     /**
      * The x-Max.
@@ -43,20 +33,29 @@ public class XtfBoundingBox {
     private short xMax;
 
     /**
+     * The x-Min.
+     */
+    private short xMin;
+
+    /**
      * The y-Max.
      */
     private short yMax;
 
     /**
-     * Creates a new object.
-     *
-     * @param xmin  The x-min.
-     * @param ymin  The y-min.
-     * @param xmax  The x-max.
-     * @param ymax  The y-max. 
+     * The y-Min.
      */
-    public XtfBoundingBox(short xmin, short ymin, short xmax,
-            short ymax) {
+    private short yMin;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param xmin The x-min.
+     * @param ymin The y-min.
+     * @param xmax The x-max.
+     * @param ymax The y-max.
+     */
+    public XtfBoundingBox(short xmin, short ymin, short xmax, short ymax) {
 
         xMin = xmin;
         yMin = ymin;
@@ -67,15 +66,28 @@ public class XtfBoundingBox {
 
     /**
      * Returns <code>true</code>, if the values are equals.
-     *
-     * @param xmin  The x-min.
-     * @param ymin  The y-min.
-     * @param xmax  The x-max.
-     * @param ymax  The y-max. 
+     * 
+     * @param xmin The x-min.
+     * @param ymin The y-min.
+     * @param xmax The x-max.
+     * @param ymax The y-max.
      * @return <code>true</code>, if the values are equals.
      */
-    public boolean eq(short xmin, short ymin, short xmax,
-            short ymax) {
+    public boolean eq(int xmin, int ymin, int xmax, int ymax) {
+
+        return eq((short) xmin, (short) ymin, (short) xmax, (short) ymax);
+    }
+
+    /**
+     * Returns <code>true</code>, if the values are equals.
+     * 
+     * @param xmin The x-min.
+     * @param ymin The y-min.
+     * @param xmax The x-max.
+     * @param ymax The y-max.
+     * @return <code>true</code>, if the values are equals.
+     */
+    public boolean eq(short xmin, short ymin, short xmax, short ymax) {
 
         if (xMin == xmin && yMin == ymin && xMax == xmax && yMax == ymax) {
             return true;
@@ -84,43 +96,18 @@ public class XtfBoundingBox {
     }
 
     /**
-     * Returns <code>true</code>, if the values are equals.
-     *
-     * @param xmin  The x-min.
-     * @param ymin  The y-min.
-     * @param xmax  The x-max.
-     * @param ymax  The y-max. 
-     * @return <code>true</code>, if the values are equals.
+     * Returns the height of the bounding box.
+     * 
+     * @return Returns the height of the bounding box.
      */
-    public boolean eq(int xmin, int ymin, int xmax,
-            int ymax) {
+    public int getHeight() {
 
-        return eq((short) xmin, (short) ymin, (short) xmax, (short) ymax);
-    }
-
-    /**
-     * Getter for xMin.
-     *
-     * @return Returns the xMin.
-     */
-    public short getXMin() {
-
-        return xMin;
-    }
-
-    /**
-     * Getter for yMin.
-     *
-     * @return Returns the yMin.
-     */
-    public short getYMin() {
-
-        return yMin;
+        return yMax - yMin;
     }
 
     /**
      * Getter for xMax.
-     *
+     * 
      * @return Returns the xMax.
      */
     public short getXMax() {
@@ -129,8 +116,18 @@ public class XtfBoundingBox {
     }
 
     /**
+     * Getter for xMin.
+     * 
+     * @return Returns the xMin.
+     */
+    public short getXMin() {
+
+        return xMin;
+    }
+
+    /**
      * Getter for yMax.
-     *
+     * 
      * @return Returns the yMax.
      */
     public short getYMax() {
@@ -138,4 +135,22 @@ public class XtfBoundingBox {
         return yMax;
     }
 
+    /**
+     * Getter for yMin.
+     * 
+     * @return Returns the yMin.
+     */
+    public short getYMin() {
+
+        return yMin;
+    }
+
+    @Override
+    public String toString() {
+
+        StringBuffer buf = new StringBuffer();
+        buf.append("(").append(xMin).append(" ").append(yMin).append(") ");
+        buf.append("(").append(xMax).append(" ").append(yMax).append(")");
+        return buf.toString();
+    }
 }
