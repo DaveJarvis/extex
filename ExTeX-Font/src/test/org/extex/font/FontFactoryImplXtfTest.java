@@ -19,8 +19,12 @@
 
 package org.extex.font;
 
+import org.extex.core.UnicodeChar;
+import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
+import org.extex.core.glue.Glue;
 import org.extex.font.type.other.NullFont;
 
 /**
@@ -82,7 +86,8 @@ public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
         assertNotNull(font.getFontKey());
         assertEquals(key, font.getFontKey());
         assertNotNull(font.getActualFontKey());
-        assertEquals(key, font.getActualFontKey());
+        assertEquals(key, font.getFontKey());
+        assertEquals("Gara size=10.0pt", font.getActualFontKey().toString());
 
     }
 
@@ -135,72 +140,92 @@ public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
         assertTrue(em.toString(), new Dimen(Dimen.ONE * 10).eq(em));
     }
 
-    // /**
-    // * Test for the font: fxlr
-    // * @throws Exception if an error occurred.
-    // */
-    // public void test07() throws Exception {
-    //
-    // FixedDimen fd0 = font.getFontDimen("0");
-    // assertNotNull(fd0);
-    // assertTrue(fd0.toString(), Dimen.ZERO_PT.eq(fd0));
-    // }
-    //
-    // /**
-    // * Test for the font: fxlr
-    // * @throws Exception if an error occurred.
-    // */
-    // public void test08() throws Exception {
-    //
-    // FixedDimen fd1 = font.getFontDimen("1");
-    // assertNotNull(fd1);
-    // assertTrue(fd1.toString(), Dimen.ZERO_PT.eq(fd1));
-    // }
-    //
-    // /**
-    // * Test for the font: fxlr
-    // * @throws Exception if an error occurred.
-    // */
-    // public void test09() throws Exception {
-    //
-    // FixedCount sf = font.getScaleFactor();
-    // assertNotNull(sf);
-    // assertEquals(1, sf.getValue());
-    //
-    // }
-    //
-    // /**
-    // * Test for the font: fxlr
-    // * @throws Exception if an error occurred.
-    // */
-    // public void test10() throws Exception {
-    //
-    // assertNotNull(font);
-    // assertFalse(font instanceof NullFont);
-    // assertEquals("fxlr", font.getFontName());
-    //
-    // assertTrue(font.hasGlyph(UnicodeChar.get(' ')));
-    // assertFalse(font.hasGlyph(UnicodeChar.get(65535)));
-    //
-    // FixedGlue wx = font.getWidth(UnicodeChar.get(65535));
-    // assertNotNull(wx);
-    // assertTrue(wx.toString(), FixedGlue.ZERO.eq(wx));
-    //
-    // // C 65 ; WX 695 ; N A ; B 2 -1 690 662
-    // FixedGlue w = font.getWidth(UnicodeChar.get('A'));
-    // assertNotNull(w);
-    // assertTrue(w.toString(), new Glue(Dimen.ONE * 10 * 695 / 1000).eq(w));
-    //
-    // FixedGlue h = font.getHeight(UnicodeChar.get('A'));
-    // assertNotNull(h);
-    // assertTrue(h.toString(), new Glue(Dimen.ONE * 10 * 662 / 1000).eq(h));
-    //
-    // FixedGlue d = font.getDepth(UnicodeChar.get('A'));
-    // assertNotNull(d);
-    // assertTrue(d.toString(), new Glue(Dimen.ONE * 10 * 1 / 1000).eq(d));
-    //
-    // }
-    //
+    /**
+     * Test for the font: space
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void test07() throws Exception {
+
+        FixedGlue v = font.getSpace();
+        assertNotNull(v);
+        Glue glue = new Glue(Dimen.ONE * 10 * 250 / 1000);
+        // ttf2tfm (SPACE D 250)
+        assertTrue(v.toString(), glue.eq(v));
+    }
+
+    /**
+     * Test for the font: font dimen 0
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void test08a() throws Exception {
+
+        FixedDimen fd0 = font.getFontDimen("0");
+        assertNull(fd0);
+        // assertTrue(fd0.toString(), Dimen.ZERO_PT.eq(fd0));
+    }
+
+    /**
+     * Test for the font: font dimen 1
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void test08b() throws Exception {
+
+        FixedDimen fd1 = font.getFontDimen("1");
+        assertNull(fd1);
+        // assertTrue(fd1.toString(), Dimen.ZERO_PT.eq(fd1));
+    }
+
+    /**
+     * Test for the font: fxlr
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void test09() throws Exception {
+
+        FixedCount sf = font.getScaleFactor();
+        assertNotNull(sf);
+        assertEquals(1, sf.getValue());
+
+    }
+
+    /**
+     * Test for the font: glyph
+     * 
+     * @throws Exception if an error occurred. //
+     */
+    public void test10() throws Exception {
+
+        assertNotNull(font);
+        assertFalse(font instanceof NullFont);
+        assertEquals("Gara", font.getFontName());
+
+        assertTrue(font.hasGlyph(UnicodeChar.get(' ')));
+        assertFalse(font.hasGlyph(UnicodeChar.get(65535)));
+
+        // FixedGlue wx = font.getWidth(UnicodeChar.get(65535));
+        // assertNotNull(wx);
+        // assertTrue(wx.toString(), FixedGlue.ZERO.eq(wx));
+        //
+        // // C 65 ; WX 695 ; N A ; B 2 -1 690 662
+        // FixedGlue w = font.getWidth(UnicodeChar.get('A'));
+        // assertNotNull(w);
+        // assertTrue(w.toString(), new Glue(Dimen.ONE * 10 * 695 /
+        // 1000).eq(w));
+        //
+        // FixedGlue h = font.getHeight(UnicodeChar.get('A'));
+        // assertNotNull(h);
+        // assertTrue(h.toString(), new Glue(Dimen.ONE * 10 * 662 /
+        // 1000).eq(h));
+        //
+        // FixedGlue d = font.getDepth(UnicodeChar.get('A'));
+        // assertNotNull(d);
+        // assertTrue(d.toString(), new Glue(Dimen.ONE * 10 * 1 / 1000).eq(d));
+
+    }
+
     // /**
     // * Test for the font: fxlr
     // * @throws Exception if an error occurred.
@@ -381,5 +406,4 @@ public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
     // l.getCodePoint());
     //
     // }
-
 }

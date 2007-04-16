@@ -85,7 +85,8 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
         assertNotNull(font.getFontKey());
         assertEquals(key, font.getFontKey());
         assertNotNull(font.getActualFontKey());
-        assertEquals(key, font.getActualFontKey());
+        assertEquals(key, font.getFontKey());
+        assertEquals("fxlr size=10.0pt", font.getActualFontKey().toString());
 
     }
 

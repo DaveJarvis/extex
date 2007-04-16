@@ -65,6 +65,7 @@ public final class AllTests {
         suite.addTestSuite(FontFactoryImplCmex10UndefTest.class);
         suite.addTestSuite(FontFactoryImplGenCmr10Scaled1440Test.class);
         suite.addTestSuite(FontFactoryImplAfmTest.class);
+        suite.addTestSuite(FontFactoryImplXtfTest.class);
         suite.addTestSuite(FontFactoryImplCmr10Test.class);
         suite.addTestSuite(FontFactoryImplCmmanTest.class);
         suite.addTestSuite(XtfReaderGara1Test.class);

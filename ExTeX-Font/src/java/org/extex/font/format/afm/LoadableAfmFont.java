@@ -99,17 +99,17 @@ public class LoadableAfmFont implements LoadableFont {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.BaseFont#getActualFontKey()
      */
     public FontKey getActualFontKey() {
 
-        return fontKey;
+        return actualFontKey;
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.ExtexFont#getActualSize()
      */
     public FixedDimen getActualSize() {
@@ -272,7 +272,7 @@ public class LoadableAfmFont implements LoadableFont {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.ExtexFont#getLigature(org.extex.core.UnicodeChar,
      *      org.extex.core.UnicodeChar)
      */
@@ -299,7 +299,7 @@ public class LoadableAfmFont implements LoadableFont {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.ExtexFont#getScaleFactor()
      */
     public FixedCount getScaleFactor() {
@@ -309,7 +309,7 @@ public class LoadableAfmFont implements LoadableFont {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.ExtexFont#getSpace()
      */
     public FixedGlue getSpace() {
@@ -324,7 +324,7 @@ public class LoadableAfmFont implements LoadableFont {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.ExtexFont#getWidth(org.extex.core.UnicodeChar)
      */
     public FixedGlue getWidth(UnicodeChar uc) {
@@ -338,7 +338,7 @@ public class LoadableAfmFont implements LoadableFont {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.ExtexFont#hasGlyph(org.extex.core.UnicodeChar)
      */
     public boolean hasGlyph(UnicodeChar uc) {
@@ -348,7 +348,7 @@ public class LoadableAfmFont implements LoadableFont {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.LoadableFont#loadFont(java.io.InputStream,
      *      org.extex.font.CoreFontFactory, org.extex.font.FontKey)
      */

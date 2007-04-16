@@ -23,10 +23,12 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
 import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
+import org.extex.core.glue.Glue;
 import org.extex.font.CoreFontFactory;
 import org.extex.font.FontKey;
 import org.extex.font.LoadableFont;
@@ -209,12 +211,13 @@ public class LoadableXtfFont implements LoadableFont {
     /**
      * {@inheritDoc}
      * 
+     * Returns always 0pt.
+     * 
      * @see org.extex.font.ExtexFont#getItalicCorrection(org.extex.core.UnicodeChar)
      */
     public FixedDimen getItalicCorrection(UnicodeChar uc) {
 
-        // TODO mgn: getItalicCorrection unimplemented
-        return null;
+        return Dimen.ZERO_PT;
     }
 
     /**
@@ -244,12 +247,13 @@ public class LoadableXtfFont implements LoadableFont {
     /**
      * {@inheritDoc}
      * 
+     * Returns allways 0.
+     * 
      * @see org.extex.font.ExtexFont#getScaleFactor()
      */
     public FixedCount getScaleFactor() {
 
-        // TODO mgn: getScaleFactor unimplemented
-        return null;
+        return Count.ONE;
     }
 
     /**
@@ -259,8 +263,12 @@ public class LoadableXtfFont implements LoadableFont {
      */
     public FixedGlue getSpace() {
 
-        // TODO mgn: getSpace unimplemented
-        return null;
+        // TODO mgn: encoding!
+        int width = reader.mapCharCodeToWidth("space", (short) 3, (short) 1);
+        if (width > 0) {
+            return new Glue(intToDimen(width));
+        }
+        return new Glue(getEx());
     }
 
     /**
@@ -281,8 +289,11 @@ public class LoadableXtfFont implements LoadableFont {
      */
     public boolean hasGlyph(UnicodeChar uc) {
 
-        // TODO mgn: hasGlyph unimplemented
-        return false;
+        String glyphname =
+                reader.mapCharCodeToGlyphname(uc.getCodePoint(), (short) 3,
+                    (short) 1);
+
+        return reader.hasGlyph(glyphname);
     }
 
     /**
@@ -292,7 +303,7 @@ public class LoadableXtfFont implements LoadableFont {
      */
     public FontKey getActualFontKey() {
 
-        return fontKey;
+        return actualFontKey;
     }
 
     /**

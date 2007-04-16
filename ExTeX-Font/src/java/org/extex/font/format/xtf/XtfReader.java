@@ -969,6 +969,30 @@ public class XtfReader implements XMLWriterConvertible {
     }
 
     /**
+     * Check, if the font has the glpyh.
+     * 
+     * @param glyphname The glyph name.
+     * @return Returns <code>true</code>, if the font has the glyph.
+     */
+    public boolean hasGlyph(String glyphname) {
+
+        int pos = post.getGlyphNamePosition(glyphname);
+        if (pos < 0) {
+            // search in cff
+            XtfTable cff = getTable(CFF);
+            if (cff != null && cff instanceof OtfTableCFF) {
+                OtfTableCFF cfftab = (OtfTableCFF) cff;
+                pos = cfftab.mapGlyphNameToGlyphPos(glyphname);
+            }
+            if (pos < 0) {
+                return false;
+            }
+        }
+        return true;
+
+    }
+
+    /**
      * Returns the glyph bounding box for the char by using the platform and
      * encoding. If no char is found, <code>null</code> be returned.
      * 
