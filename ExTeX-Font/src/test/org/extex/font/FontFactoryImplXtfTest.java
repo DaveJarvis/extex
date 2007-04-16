@@ -205,16 +205,15 @@ public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
         assertTrue(font.hasGlyph(UnicodeChar.get(' ')));
         assertFalse(font.hasGlyph(UnicodeChar.get(65535)));
 
-        // FixedGlue wx = font.getWidth(UnicodeChar.get(65535));
-        // assertNotNull(wx);
-        // assertTrue(wx.toString(), FixedGlue.ZERO.eq(wx));
-        //
-        // // C 65 ; WX 695 ; N A ; B 2 -1 690 662
-        // FixedGlue w = font.getWidth(UnicodeChar.get('A'));
-        // assertNotNull(w);
-        // assertTrue(w.toString(), new Glue(Dimen.ONE * 10 * 695 /
-        // 1000).eq(w));
-        //
+        FixedGlue wx = font.getWidth(UnicodeChar.get(65535));
+        assertNotNull(wx);
+        assertTrue(wx.toString(), FixedGlue.ZERO.eq(wx));
+
+        // (CHARACTER C A  (CHARWD R 677)
+        FixedGlue w = font.getWidth(UnicodeChar.get('A'));
+        assertNotNull(w);
+        assertTrue(w.toString(), new Glue(Dimen.ONE * 10 * 677 / 1000).eq(w));
+
         // FixedGlue h = font.getHeight(UnicodeChar.get('A'));
         // assertNotNull(h);
         // assertTrue(h.toString(), new Glue(Dimen.ONE * 10 * 662 /

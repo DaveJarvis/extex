@@ -36,6 +36,8 @@ import org.extex.font.exception.CorruptFontException;
 import org.extex.font.unicode.GlyphName;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
+import sun.awt.geom.AreaOp.IntOp;
+
 /**
  * Class to load xtf fonts.
  * 
@@ -170,7 +172,7 @@ public class LoadableXtfFont implements LoadableFont {
      */
     private FixedDimen intToDimen(int val) {
 
-        int i = val * 1000 / 2048;
+        int i = val * 1000 / reader.getUnitsPerEm();
         long l = getActualSize().getValue() * i / 1000;
 
         return new Dimen(l);
@@ -278,8 +280,10 @@ public class LoadableXtfFont implements LoadableFont {
      */
     public FixedGlue getWidth(UnicodeChar uc) {
 
-        // TODO mgn: getWidth unimplemented
-        return null;
+        int w =
+                reader.mapCharCodeToWidth(uc.getCodePoint(), (short) 3,
+                    (short) 1);
+        return new Glue(intToDimen(w));
     }
 
     /**

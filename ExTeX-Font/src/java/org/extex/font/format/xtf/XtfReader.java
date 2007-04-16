@@ -963,7 +963,7 @@ public class XtfReader implements XMLWriterConvertible {
      * 
      * @return Returns the units per em.
      */
-    public int getUntisPerEm() {
+    public int getUnitsPerEm() {
 
         return head.getUnitsPerEm();
     }
@@ -1200,4 +1200,5 @@ public class XtfReader implements XMLWriterConvertible {
         }
         writer.writeEndElement();
     }
+
 }
