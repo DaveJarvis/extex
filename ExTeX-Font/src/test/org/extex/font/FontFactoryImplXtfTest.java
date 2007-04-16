@@ -209,37 +209,37 @@ public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
         assertNotNull(wx);
         assertTrue(wx.toString(), FixedGlue.ZERO.eq(wx));
 
-        // (CHARACTER C A  (CHARWD R 677)
+        // CHARACTER C A (CHARWD R 677) (CHARHT R 655)
         FixedGlue w = font.getWidth(UnicodeChar.get('A'));
         assertNotNull(w);
         assertTrue(w.toString(), new Glue(Dimen.ONE * 10 * 677 / 1000).eq(w));
 
-        // FixedGlue h = font.getHeight(UnicodeChar.get('A'));
-        // assertNotNull(h);
-        // assertTrue(h.toString(), new Glue(Dimen.ONE * 10 * 662 /
-        // 1000).eq(h));
-        //
-        // FixedGlue d = font.getDepth(UnicodeChar.get('A'));
-        // assertNotNull(d);
-        // assertTrue(d.toString(), new Glue(Dimen.ONE * 10 * 1 / 1000).eq(d));
+        FixedGlue h = font.getHeight(UnicodeChar.get('A'));
+        assertNotNull(h);
+        assertTrue(h.toString(), new Glue(Dimen.ONE * 10 * 655 / 1000).eq(h));
+
+        FixedGlue d = font.getDepth(UnicodeChar.get('A'));
+        assertNotNull(d);
+        assertTrue(d.toString(), new Glue(0).eq(d));
 
     }
 
-    // /**
-    // * Test for the font: fxlr
-    // * @throws Exception if an error occurred.
-    // */
-    // public void testKerning01() throws Exception {
-    //
-    // assertNotNull(font);
-    // assertFalse(font instanceof NullFont);
-    //
-    // FixedDimen k = font.getKerning(null, null);
-    // assertNotNull(k);
-    // assertTrue(k.toString(), Dimen.ZERO_PT.eq(k));
-    //
-    // }
-    //
+    /**
+     * Test for the font: kerning 1
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void testKerning01() throws Exception {
+
+        assertNotNull(font);
+        assertFalse(font instanceof NullFont);
+
+        FixedDimen k = font.getKerning(null, null);
+        assertNotNull(k);
+        assertTrue(k.toString(), Dimen.ZERO_PT.eq(k));
+
+    }
+
     // /**
     // * Test for the font: fxlr
     // * @throws Exception if an error occurred.

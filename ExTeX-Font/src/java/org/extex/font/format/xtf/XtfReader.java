@@ -993,6 +993,61 @@ public class XtfReader implements XMLWriterConvertible {
     }
 
     /**
+     * Returns the bounding box for the char by using the platform and encoding.
+     * If no char is found, <code>null</code> be returned.
+     * 
+     * @param charCode The charCode.
+     * @param platformId The platform id.
+     * @param encodingId The encoding id.
+     * @return Returns the glyph bounding box for the char.
+     */
+    public XtfBoundingBox mapCharCodeToBB(int charCode, short platformId,
+            short encodingId) {
+
+        // get format
+        Format format = getCmapTable().getFormat(platformId, encodingId);
+        if (format != null) {
+            int glyphpos = format.mapCharCode(charCode);
+
+            if (glyf != null) {
+                Descript desc = glyf.getDescription(glyphpos);
+                if (desc != null) {
+                    return new XtfBoundingBox(desc.getXMin(), desc.getYMin(),
+                        desc.getXMax(), desc.getYMax());
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Returns the kerning for the two chars.
+     *
+     * @param charcodeLeft      The left char code.
+     * @param charcodeRigth     The right char code.
+     * @param platformId The platform id.
+     * @param encodingId The encoding id.
+     * @return Returns the kerning for the two chars or 0, if no char is found.
+     */
+    public int mapCharCodetoKerning(int charcodeLeft, int charcodeRigth,
+            short platformId, short encodingId) {
+
+        TtfTableKERN kern = (TtfTableKERN) getTable(XtfReader.KERN);
+        if (kern != null) {
+
+            // get format
+            Format format = getCmapTable().getFormat(platformId, encodingId);
+            if (format != null) {
+                int glyphposLeft = format.mapCharCode(charcodeLeft);
+                int glyphcodeRight = format.mapCharCode(charcodeRigth);
+
+                return kern.getKerning(glyphposLeft, glyphcodeRight);
+            }
+        }
+        return 0;
+    }
+
+    /**
      * Returns the glyph bounding box for the char by using the platform and
      * encoding. If no char is found, <code>null</code> be returned.
      * 
@@ -1012,10 +1067,12 @@ public class XtfReader implements XMLWriterConvertible {
         Format format = getCmapTable().getFormat(platformId, encodingId);
         if (format != null) {
 
-            Descript desc = glyf.getDescription(pos);
-            if (desc != null) {
-                return new XtfBoundingBox(desc.getXMin(), desc.getYMin(), desc
-                    .getXMax(), desc.getYMax());
+            if (glyf != null) {
+                Descript desc = glyf.getDescription(pos);
+                if (desc != null) {
+                    return new XtfBoundingBox(desc.getXMin(), desc.getYMin(),
+                        desc.getXMax(), desc.getYMax());
+                }
             }
         }
         return null;

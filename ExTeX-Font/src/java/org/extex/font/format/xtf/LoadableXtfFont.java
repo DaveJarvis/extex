@@ -122,8 +122,16 @@ public class LoadableXtfFont implements LoadableFont {
      */
     public FixedGlue getDepth(UnicodeChar uc) {
 
-        // TODO mgn: getDepth unimplemented
-        return null;
+        int d = 0;
+
+        // TODO encoding
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB(uc.getCodePoint(), (short) 3, (short) 1);
+        if (bb != null) {
+
+            d = bb.getDepth();
+        }
+        return new Glue(intToDimen(d));
     }
 
     /**
@@ -206,8 +214,16 @@ public class LoadableXtfFont implements LoadableFont {
      */
     public FixedGlue getHeight(UnicodeChar uc) {
 
-        // TODO mgn: getHeight unimplemented
-        return null;
+        int h = 0;
+
+        // TODO encoding
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB(uc.getCodePoint(), (short) 3, (short) 1);
+        if (bb != null) {
+
+            h = bb.getHeight();
+        }
+        return new Glue(intToDimen(h));
     }
 
     /**
@@ -230,8 +246,17 @@ public class LoadableXtfFont implements LoadableFont {
      */
     public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
 
-        // TODO mgn: getKerning unimplemented
-        return null;
+        // TODO mgn: nokerning beachten
+
+        int size = 0;
+
+        if (uc1 != null && uc2 != null) {
+            size =
+                    reader.mapCharCodetoKerning(uc1.getCodePoint(), uc2
+                        .getCodePoint(), (short) 3, (short) 1);
+        }
+
+        return intToDimen(size);
     }
 
     /**

@@ -20,6 +20,8 @@
 package org.extex.font.format.xtf;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
@@ -59,124 +61,88 @@ public class TtfTableKERN extends AbstractXtfTable
             XMLWriterConvertible {
 
     /**
-     * version
+     * KerningPair
      */
-    private int version;
+    public static class KerningPair implements XMLWriterConvertible {
 
-    /**
-     * number of tables
-     */
-    private int nTables;
+        /**
+         * left
+         */
+        private int left;
 
-    /**
-     * kerntables
-     */
-    private KernSubtable[] tables;
+        /**
+         * right
+         */
+        private int right;
 
-    /**
-     * Create a new object
-     * 
-     * @param tablemap the tablemap
-     * @param de entry
-     * @param rar input
-     * @throws IOException if an IO-error occurs
-     */
-    TtfTableKERN(XtfTableMap tablemap, XtfTableDirectory.Entry de,
-            RandomAccessR rar) throws IOException {
+        /**
+         * value
+         */
+        private short value;
 
-        super(tablemap);
-        rar.seek(de.getOffset());
-        version = rar.readUnsignedShort();
-        nTables = rar.readUnsignedShort();
-        tables = new KernSubtable[nTables];
-        // read tables
-        for (int i = 0; i < nTables; i++) {
-            tables[i] = KernSubtable.read(rar);
+        /**
+         * Create a new object.
+         * 
+         * @param rar the input
+         * @throws IOException if an IO-error occurs
+         */
+        KerningPair(RandomAccessR rar) throws IOException {
+
+            left = rar.readUnsignedShort();
+            right = rar.readUnsignedShort();
+            value = rar.readShort();
+        }
+
+        /**
+         * Returns the left char.
+         * 
+         * @return Returns the left char.
+         */
+        public int getLeft() {
+
+            return left;
+        }
+
+        /**
+         * Returns the right char.
+         * 
+         * @return Returns the right char.
+         */
+        public int getRight() {
+
+            return right;
+        }
+
+        /**
+         * Returns the value.
+         * 
+         * @return Returns the value.
+         */
+        public short getValue() {
+
+            return value;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.util.XMLWriterConvertible#writeXML(
+         *      org.extex.util.xml.XMLStreamWriter)
+         */
+        public void writeXML(XMLStreamWriter writer) throws IOException {
+
+            writer.writeStartElement("kerningpair");
+            writer.writeAttribute("left", String.valueOf(left));
+            writer.writeAttribute("right", String.valueOf(right));
+            writer.writeAttribute("value", String.valueOf(value));
+            writer.writeEndElement();
         }
     }
-
-    /**
-     * Returns the number of tables.
-     * 
-     * @return Returns the number of tables.
-     */
-    public int getNTables() {
-
-        return nTables;
-    }
-
-    /**
-     * Returns the table
-     * 
-     * @param i index
-     * @return Returns the table
-     */
-    public KernSubtable getTable(int i) {
-
-        return tables[i];
-    }
-
-    /**
-     * Get the table type, as a table directory value.
-     * 
-     * @return The table type
-     */
-    public int getType() {
-
-        return XtfReader.KERN;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
-
-        return "kern";
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.util.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writeStartElement(writer);
-        writer.writeAttribute("version", String.valueOf(version));
-        writer.writeAttribute("numberoftables", String.valueOf(nTables));
-        for (int i = 0; i < tables.length; i++) {
-            tables[i].writeXML(writer);
-        }
-        writer.writeEndElement();
-    }
-
-    // -----------------------------------------
-    // -----------------------------------------
-    // -----------------------------------------
-    // -----------------------------------------
 
     /**
      * Abstract class for all kerntables
      */
     public abstract static class KernSubtable implements XMLWriterConvertible {
-
-        /**
-         * Returns the number of kerning pairs.
-         * 
-         * @return Returns the number of kerning pairs.
-         */
-        public abstract int getKerningCount();
-
-        /**
-         * Returns the kerning
-         * 
-         * @param i index
-         * @return Returns the kerning
-         */
-        public abstract KerningPair getKerning(int i);
 
         /**
          * format 0
@@ -215,6 +181,21 @@ public class TtfTableKERN extends AbstractXtfTable
             }
             return table;
         }
+
+        /**
+         * Returns the kerning
+         * 
+         * @param i index
+         * @return Returns the kerning
+         */
+        public abstract KerningPair getKerning(int i);
+
+        /**
+         * Returns the number of kerning pairs.
+         * 
+         * @return Returns the number of kerning pairs.
+         */
+        public abstract int getKerningCount();
     }
 
     /**
@@ -293,19 +274,19 @@ public class TtfTableKERN extends AbstractXtfTable
     public static class KernSubtableFormat0 extends KernSubtable {
 
         /**
-         * number of pairs
-         */
-        private int nPairs;
-
-        /**
-         * search range
-         */
-        private int searchRange;
-
-        /**
          * entry selector
          */
         private int entrySelector;
+
+        /**
+         * kerning pairs
+         */
+        private KerningPair[] kerningPairs;
+
+        /**
+         * number of pairs
+         */
+        private int nPairs;
 
         /**
          * range shift
@@ -313,9 +294,9 @@ public class TtfTableKERN extends AbstractXtfTable
         private int rangeShift;
 
         /**
-         * kerning pairs
+         * search range
          */
-        private KerningPair[] kerningPairs;
+        private int searchRange;
 
         /**
          * Create a new object
@@ -338,13 +319,13 @@ public class TtfTableKERN extends AbstractXtfTable
         }
 
         /**
-         * {@inheritDoc}
+         * Returns the entrySelector.
          * 
-         * @see org.extex.font.format.xtf.TtfTableKERN.KernSubtable#getKerningCount()
+         * @return Returns the entrySelector.
          */
-        public int getKerningCount() {
+        public int getEntrySelector() {
 
-            return nPairs;
+            return entrySelector;
         }
 
         /**
@@ -358,23 +339,13 @@ public class TtfTableKERN extends AbstractXtfTable
         }
 
         /**
-         * Returns the searchRange.
+         * {@inheritDoc}
          * 
-         * @return Returns the searchRange.
+         * @see org.extex.font.format.xtf.TtfTableKERN.KernSubtable#getKerningCount()
          */
-        public int getSearchRange() {
+        public int getKerningCount() {
 
-            return searchRange;
-        }
-
-        /**
-         * Returns the entrySelector.
-         * 
-         * @return Returns the entrySelector.
-         */
-        public int getEntrySelector() {
-
-            return entrySelector;
+            return nPairs;
         }
 
         /**
@@ -385,6 +356,16 @@ public class TtfTableKERN extends AbstractXtfTable
         public int getRangeShift() {
 
             return rangeShift;
+        }
+
+        /**
+         * Returns the searchRange.
+         * 
+         * @return Returns the searchRange.
+         */
+        public int getSearchRange() {
+
+            return searchRange;
         }
 
         /**
@@ -470,9 +451,9 @@ public class TtfTableKERN extends AbstractXtfTable
     public static class KernSubtableFormat2 extends KernSubtable {
 
         /**
-         * row width
+         * array
          */
-        private int rowWidth;
+        private int array;
 
         /**
          * left class table
@@ -485,9 +466,9 @@ public class TtfTableKERN extends AbstractXtfTable
         private int rightClassTable;
 
         /**
-         * array
+         * row width
          */
-        private int array;
+        private int rowWidth;
 
         /**
          * Create a new object.
@@ -504,13 +485,13 @@ public class TtfTableKERN extends AbstractXtfTable
         }
 
         /**
-         * {@inheritDoc}
+         * Returns the array.
          * 
-         * @see org.extex.font.format.xtf.TtfTableKERN.KernSubtable#getKerningCount()
+         * @return Returns the array.
          */
-        public int getKerningCount() {
+        public int getArray() {
 
-            return 0;
+            return array;
         }
 
         /**
@@ -524,13 +505,13 @@ public class TtfTableKERN extends AbstractXtfTable
         }
 
         /**
-         * Returns the array.
+         * {@inheritDoc}
          * 
-         * @return Returns the array.
+         * @see org.extex.font.format.xtf.TtfTableKERN.KernSubtable#getKerningCount()
          */
-        public int getArray() {
+        public int getKerningCount() {
 
-            return array;
+            return 0;
         }
 
         /**
@@ -581,82 +562,177 @@ public class TtfTableKERN extends AbstractXtfTable
     }
 
     /**
-     * KerningPair
+     * Class for a key.
      */
-    public static class KerningPair implements XMLWriterConvertible {
+    private class Key {
 
         /**
-         * left
+         * The left one.
          */
         private int left;
 
         /**
-         * right
+         * The right one.
          */
         private int right;
 
         /**
-         * value
-         */
-        private short value;
-
-        /**
-         * Create a new object.
+         * Creates a new object.
          * 
-         * @param rar the input
-         * @throws IOException if an IO-error occurs
+         * @param l The left one.
+         * @param r The right one.
          */
-        KerningPair(RandomAccessR rar) throws IOException {
+        public Key(int l, int r) {
 
-            left = rar.readUnsignedShort();
-            right = rar.readUnsignedShort();
-            value = rar.readShort();
+            left = l;
+            right = r;
         }
 
         /**
-         * Returns the left char.
+         * Creates a new object.
          * 
-         * @return Returns the left char.
+         * @param kp The kerning pair.
          */
-        public int getLeft() {
+        public Key(KerningPair kp) {
 
-            return left;
+            left = kp.getLeft();
+            right = kp.getRight();
         }
 
-        /**
-         * Returns the right char.
-         * 
-         * @return Returns the right char.
-         */
-        public int getRight() {
+        @Override
+        public String toString() {
 
-            return right;
+            return left + " " + right;
+        }
+    }
+
+    /**
+     * The map for the entries.
+     */
+    private Map<Key, Integer> kernmap = new HashMap<Key, Integer>();
+
+    /**
+     * number of tables
+     */
+    private int nTables;
+
+    /**
+     * kerntables
+     */
+    private KernSubtable[] tables;
+
+    /**
+     * version
+     */
+    private int version;
+
+    /**
+     * Create a new object
+     * 
+     * @param tablemap the tablemap
+     * @param de entry
+     * @param rar input
+     * @throws IOException if an IO-error occurs
+     */
+    TtfTableKERN(XtfTableMap tablemap, XtfTableDirectory.Entry de,
+            RandomAccessR rar) throws IOException {
+
+        super(tablemap);
+        rar.seek(de.getOffset());
+        version = rar.readUnsignedShort();
+        nTables = rar.readUnsignedShort();
+        tables = new KernSubtable[nTables];
+        // read tables
+        for (int i = 0; i < nTables; i++) {
+            tables[i] = KernSubtable.read(rar);
+            for (int ks = 0, n = tables[i].getKerningCount(); ks < n; ks++) {
+                KerningPair kp = tables[i].getKerning(ks);
+                if (kp != null) {
+                    kernmap.put(new Key(kp), (int) kp.getValue());
+                }
+            }
+        }
+    }
+
+    /**
+     * Returns the kerning size.
+     * 
+     * @param l The left value (glyph position).
+     * @param r The rigth value (glyph position).
+     * @return Returns the kerning size.
+     */
+    public int getKerning(int l, int r) {
+
+        Integer val = kernmap.get(new Key(l, r));
+        if (val != null) {
+            return val.intValue();
         }
 
-        /**
-         * Returns the value.
-         * 
-         * @return Returns the value.
-         */
-        public short getValue() {
+        return 0;
+    }
 
-            return value;
+    /**
+     * Returns the number of tables.
+     * 
+     * @return Returns the number of tables.
+     */
+    public int getNumberOfTables() {
+
+        return nTables;
+    }
+
+    // -----------------------------------------
+    // -----------------------------------------
+    // -----------------------------------------
+    // -----------------------------------------
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.XtfTable#getShortcut()
+     */
+    public String getShortcut() {
+
+        return "kern";
+    }
+
+    /**
+     * Returns the table
+     * 
+     * @param i index
+     * @return Returns the table
+     */
+    public KernSubtable getTable(int i) {
+
+        return tables[i];
+    }
+
+    /**
+     * Get the table type, as a table directory value.
+     * 
+     * @return The table type
+     */
+    public int getType() {
+
+        return XtfReader.KERN;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     *      org.extex.util.xml.XMLStreamWriter)
+     */
+    public void writeXML(XMLStreamWriter writer) throws IOException {
+
+        writeStartElement(writer);
+        writer.writeAttribute("version", String.valueOf(version));
+        writer.writeAttribute("numberoftables", String.valueOf(nTables));
+        for (int i = 0; i < tables.length; i++) {
+            tables[i].writeXML(writer);
         }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.util.XMLWriterConvertible#writeXML(
-         *      org.extex.util.xml.XMLStreamWriter)
-         */
-        public void writeXML(XMLStreamWriter writer) throws IOException {
-
-            writer.writeStartElement("kerningpair");
-            writer.writeAttribute("left", String.valueOf(left));
-            writer.writeAttribute("right", String.valueOf(right));
-            writer.writeAttribute("value", String.valueOf(value));
-            writer.writeEndElement();
-        }
+        writer.writeComment("incomplete");
+        writer.writeEndElement();
     }
 
 }

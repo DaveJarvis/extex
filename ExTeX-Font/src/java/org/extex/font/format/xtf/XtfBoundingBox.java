@@ -96,13 +96,26 @@ public class XtfBoundingBox {
     }
 
     /**
+     * Returns the depth of the bounding box.
+     * 
+     * @return Returns the depth of the bounding box.
+     */
+    public int getDepth() {
+
+        if (yMin < 0) {
+            return -yMin;
+        }
+        return 0;
+    }
+
+    /**
      * Returns the height of the bounding box.
      * 
      * @return Returns the height of the bounding box.
      */
     public int getHeight() {
 
-        return yMax - yMin;
+        return yMax;
     }
 
     /**
