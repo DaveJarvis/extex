@@ -169,10 +169,10 @@ public class TestSummary extends Task {
     /**
      * TODO gene: missing JavaDoc
      *
-     * @param sb
-     * @param m
-     * @param i
-     * @return
+     * @param sb ...
+     * @param m ...
+     * @param i ...
+     * @return ...
      */
     private static String get(StringBuffer sb, Matcher m,
             int i) {

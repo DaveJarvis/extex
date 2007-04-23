@@ -78,8 +78,8 @@ public class RssCollector extends Task {
     /**
      * TODO gene: missing JavaDoc
      *
-     * @param in
-     * @param out
+     * @param in ...
+     * @param out ...
      *
      * @throws IOException in case of an error
      */
