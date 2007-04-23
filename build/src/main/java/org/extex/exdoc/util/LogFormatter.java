@@ -19,44 +19,53 @@
 
 package org.extex.exdoc.util;
 
-import java.util.ArrayList;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintWriter;
+import java.util.logging.Formatter;
+import java.util.logging.LogRecord;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class provides a means to format the log entries.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5413 $
+ * @version $Revision$
  */
-public class UnitInfo extends ArrayList<PrimitiveInfo> {
-
-    /**
-     * The field <tt>serialVersionUID</tt> contains the ...
-     */
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * The field <tt>name</tt> contains the name of the unit.
-     */
-    private String name;
+public class LogFormatter extends Formatter {
 
     /**
      * Creates a new object.
-     * 
-     * @param name the name of the unit
      */
-    public UnitInfo(String name) {
+    public LogFormatter() {
 
         super();
-        this.name = name;
     }
-    /**
-     * Getter for name.
-     * 
-     * @return the name
-     */
-    public String getName() {
 
-        return name;
+    /**
+     * Format the given log record and return the formatted string.
+     * 
+     * @param record the log record to be formatted
+     * 
+     * @return the formatted log record
+     * 
+     * @see java.util.logging.Formatter#format(java.util.logging.LogRecord)
+     */
+    public String format(LogRecord record) {
+
+        String message = record.getMessage();
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        PrintWriter writer = new PrintWriter(out);
+        writer.print(message == null ? "" : message);
+
+        Throwable t = record.getThrown();
+
+        if (t != null) {
+            writer.write("\n");
+            t.printStackTrace(writer);
+        }
+        writer.write("\n");
+        writer.flush();
+
+        return out.toString();
     }
 
 }

@@ -19,28 +19,39 @@
 
 package org.extex.exdoc;
 
+import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.extex.exdoc.util.ExdocEntityResolver;
+import org.extex.exdoc.util.Author;
 import org.extex.exdoc.util.Key;
+import org.extex.exdoc.util.PrimitiveInfo;
 import org.extex.exdoc.util.Traverser;
+import org.extex.exdoc.util.UnitInfo;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 /**
  * Collect the doc snippets from Java code and store them in XML files.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5413 $
  */
@@ -48,34 +59,32 @@ public class ExDocXml extends Traverser {
 
     /**
      * The main program for this class.
-     *
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
+        Logger logger = Traverser.createLogger();
+
         try {
-            new ExDocXml().run(args);
+            new ExDocXml(logger).run(args);
         } catch (Exception e) {
-            System.err.println(e.toString());
+            logger.severe(e.toString());
+            System.exit(1);
         }
+        System.exit(0);
     }
 
     /**
-     * The field <tt>builder</tt> contains the document builder for parsing the
-     * XML file.
+     * The field <tt>authorsFile</tt> contains the file for the primitives.
      */
-    private DocumentBuilder builder;
+    private String authorsFile = "authors";
 
     /**
      * The field <tt>collecting</tt> contains the indicator that the first
      * phase is currently active.
      */
     private boolean collecting;
-
-    /**
-     * The field <tt>defaultOutputDirectory</tt> contains the ...
-     */
-    private String defaultOutputDirectory = "target/xxx";
 
     /**
      * The field <tt>keys</tt> contains the mapping from short form
@@ -85,33 +94,68 @@ public class ExDocXml extends Traverser {
     private Map<String, Key> keys = new HashMap<String, Key>();
 
     /**
+     * The field <tt>primitives</tt> contains the ...
+     */
+    private List<PrimitiveInfo> primitives = new ArrayList<PrimitiveInfo>();
+
+    /**
+     * The field <tt>primitivesFile</tt> contains the file for the primitives.
+     */
+    private String primitivesFile = "primitives";
+
+    /**
+     * The field <tt>units</tt> contains the ...
+     */
+    private List<UnitInfo> units = new ArrayList<UnitInfo>();
+
+    /**
      * Creates a new object.
-     *
-     * @throws ParserConfigurationException  ...
-     *
+     * 
+     * @throws ParserConfigurationException in case of an error
      */
     public ExDocXml() throws ParserConfigurationException {
 
         super();
-        builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-        builder.setEntityResolver(new ExdocEntityResolver());
     }
 
     /**
-     * Getter for defaultOutputDirectory.
-     *
-     * @return the defaultOutputDirectory
+     * Creates a new object.
+     * 
+     * @param logger the logger
+     * 
+     * @throws ParserConfigurationException in case of an error
      */
-    protected String getDefaultOutputDirectory() {
+    public ExDocXml(Logger logger) throws ParserConfigurationException {
 
-        return defaultOutputDirectory;
+        this();
+        setLogger(logger);
+    }
+
+    /**
+     * Getter for authorsFile.
+     * 
+     * @return the authorsFile
+     */
+    public String getAuthorsFile() {
+
+        return authorsFile;
+    }
+
+    /**
+     * Getter for primitivesFile.
+     * 
+     * @return the primitivesFile
+     */
+    public String getPrimitivesFile() {
+
+        return primitivesFile;
     }
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @param a the map of attributes
-     *
+     * 
      * @return ...
      */
     private Key makeKey(Map<String, String> a) {
@@ -126,15 +170,15 @@ public class ExDocXml extends Traverser {
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @param key ...
      * @param content ...
-     * @throws Exception ...
-     *
+     * 
+     * @throws Exception in case of an error
+     * 
      * @see org.extex.exdoc.util.Traverser#out(java.lang.String, StringBuffer)
      */
-    protected void out(String key, StringBuffer content)
-            throws Exception {
+    protected void out(String key, StringBuffer content) throws Exception {
 
         Map<String, String> a = new HashMap<String, String>();
         try {
@@ -156,19 +200,56 @@ public class ExDocXml extends Traverser {
         Key k = makeKey(a); // don't refactor: this has side effects
 
         if (!collecting) {
-            resolveLink(content, "{@linkplain", "<tt>", "</tt>", k);
-            resolveLink(content, "{@link", "", "", k);
+            return;
+        }
 
-            shipout(k, content);
+        resolveLink(content, "{@linkplain", "<tt>", "</tt>", k);
+        resolveLink(content, "{@link", "", "", k);
+
+        shipout(k, content);
+
+    }
+
+    /**
+     * Process an XML file.
+     * 
+     * @param file the file
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    protected void processXml(File file) throws IOException {
+
+        if (!collecting) {
+            return;
+        }
+        InputStream stream = new FileInputStream(file);
+        Element root;
+        try {
+            root = getBuilder().parse(stream).getDocumentElement();
+        } catch (SAXException e) {
+            warning(file.toString() + ": " + e.getMessage());
+            return;
+        } finally {
+            stream.close();
+        }
+
+        String name = root.getNodeName();
+
+        if ("ExTeX".equals(name)) {
+            scanConfig(file, root);
+        } else if ("unit".equals(name)) {
+            scanUnit(file, root);
+        } else {
+            info("Ignoring unknown XML: " + name);
         }
     }
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @param content the content to resolve the links in
-     * @param start the name of the link, i.e. <tt>{@link</tt> or
-     *   <tt>{@linkplain</tt>
+     * @param start the name of the link, i.e. <tt>{&#64;link</tt> or
+     *        <tt>{&#64;linkplain</tt>
      * @param startTag the additional tag to insert at the start
      * @param endTag the additional tag to insert at the end
      * @param k the name of resource where the original text came from
@@ -192,8 +273,9 @@ public class ExDocXml extends Traverser {
                 text = s.substring(is + 1);
             }
             String x = tuneKey(ref.replaceAll("\\(.*", "").replace('#', '_'));
-            String href = keys.get(x).toString();
-            if (href != null) {
+            Key key = keys.get(x);
+            if (key != null) {
+                String href = key.toString();
                 content.replace(i, j + 1, startTag + "<a href=\"" + href
                         + "\">" + text + "</a>" + endTag);
             } else {
@@ -205,11 +287,11 @@ public class ExDocXml extends Traverser {
 
     /**
      * Run with the command line arguments.
-     *
+     * 
      * @param args the command line arguments
-     *
+     * 
      * @throws Exception in case of an error
-     *
+     * 
      * @see org.extex.exdoc.util.Traverser#run(java.lang.String[])
      */
     public void run(String[] args) throws Exception {
@@ -218,21 +300,53 @@ public class ExDocXml extends Traverser {
         super.run(args);
         collecting = false;
         super.run(args);
+        shipoutAuthors(authorsFile, getAuthors());
+
+        Collections.sort(primitives, new Comparator<PrimitiveInfo>() {
+
+            public int compare(PrimitiveInfo o1, PrimitiveInfo o2) {
+
+                int ct = o1.getName().compareTo(o2.getName());
+                if (ct != 0) {
+                    return ct;
+                }
+                return o1.getImplementer().compareTo(o2.getImplementer());
+            }
+
+        });
+        shipoutPrimitives(primitivesFile, primitives);
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exdoc.util.Traverser#runOption(java.lang.String,
+     *      java.lang.String[], int)
+     */
+    protected int runOption(String arg, String[] args, int i) throws Exception {
+
+        int idx = i;
+        if ("-authors".startsWith(arg)) {
+            authorsFile = args[++idx];
+        } else if ("-primitives".startsWith(arg)) {
+            primitivesFile = args[++idx];
+        }
+
+        return super.runOption(arg, args, i);
     }
 
     /**
      * TODO gene: missing JavaDoc
-     *
-     * @param cs ...
-     *
-     * @return ...
-     *
+     * 
+     * @param cs the input to parse
+     * 
+     * @return the root element of the DOM
+     * 
      * @throws IOException in case of an I/O error
      * @throws SAXException in case of a parse error
      */
-    protected Element scan(CharSequence cs)
-            throws SAXException,
-                IOException {
+    protected Element scan(CharSequence cs) throws SAXException, IOException {
 
         StringBuffer sb =
                 new StringBuffer(
@@ -240,33 +354,85 @@ public class ExDocXml extends Traverser {
                             + "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\""
                             + " \"http://www.w3.org/TR/html4/loose.dtd\">");
         sb.append(cs.toString());
-        Element root =
-                builder.parse(
-                    new ByteArrayInputStream(sb.toString().getBytes()))
-                    .getDocumentElement();
-        return root;
+        return getBuilder().parse(
+            new ByteArrayInputStream(sb.toString().getBytes()))
+            .getDocumentElement();
     }
 
     /**
-     * Setter for defaultOutputDirectory.
-     *
-     * @param defaultOutputDirectory the defaultOutputDirectory to set
+     * TODO gene: missing JavaDoc
+     * 
+     * @param file the file read
+     * @param root the root element
      */
-    protected void setDefaultOutputDirectory(String defaultOutputDirectory) {
+    private void scanConfig(File file, Element root) {
 
-        this.defaultOutputDirectory = defaultOutputDirectory;
+        root.getElementsByTagName("unit");
+
+        // TODO gene: scanConfig unimplemented
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param file the file read
+     * @param root the root element
+     */
+    private void scanUnit(File file, Element root) {
+
+        UnitInfo unitInfo = new UnitInfo(root.getAttribute("name"));
+        units.add(unitInfo);
+        NodeList defs = root.getElementsByTagName("define");
+
+        int len = defs.getLength();
+        for (int i = 0; i < len; i++) {
+            Node item = defs.item(i);
+            NamedNodeMap attributes = item.getAttributes();
+            Node nameNode = attributes.getNamedItem("name");
+            Node classNode = attributes.getNamedItem("class");
+            Node namespaceNode = attributes.getNamedItem("namespace");
+
+            PrimitiveInfo pi =
+                    new PrimitiveInfo(nameNode.getNodeValue(),
+                        namespaceNode == null ? null : namespaceNode
+                            .getNodeValue(), classNode.getNodeValue());
+            unitInfo.add(pi);
+            primitives.add(pi);
+        }
+    }
+
+    /**
+     * Setter for authorsFile.
+     * 
+     * @param authorsFile the authorsFile to set
+     */
+    public void setAuthorsFile(String authorsFile) {
+
+        this.authorsFile = authorsFile;
+    }
+
+    /**
+     * Setter for primitivesFile.
+     * 
+     * @param primitivesFile the primitivesFile to set
+     */
+    public void setPrimitivesFile(String primitivesFile) {
+
+        this.primitivesFile = primitivesFile;
     }
 
     /**
      * Ship the given content to the appropriate file.
-     *
+     * 
      * @param key the name of the resource
      * @param content the output stream in form of a string buffer
-     *
+     * 
      * @throws IOException in case of an I/O error
+     * @throws SAXException in case of a transformation error
      */
     protected void shipout(Key key, StringBuffer content)
-            throws IOException {
+            throws IOException,
+                SAXException {
 
         content.insert(0, "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" ?>\n");
         String s =
@@ -274,9 +440,6 @@ public class ExDocXml extends Traverser {
                     "<img src=\"unimplemented.png\">");
 
         String outDir = getOutput();
-        if (outDir == null) {
-            outDir = defaultOutputDirectory;
-        }
 
         File file = new File(outDir, key + ".xml");
         FileWriter os = new FileWriter(file);
@@ -285,10 +448,94 @@ public class ExDocXml extends Traverser {
     }
 
     /**
+     * Process the list of resources and authors.
+     * 
+     * @param file the target file base name or <code>null</code>
+     * @param authors the list of authors
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    protected void shipoutAuthors(String file, Map<String, Author> authors)
+            throws IOException {
+
+        if (file == null) {
+            return;
+        }
+
+        File f = new File(getOutput(), file + ".xml");
+        PrintStream out =
+                new PrintStream(new BufferedOutputStream(
+                    new FileOutputStream(f)));
+
+        out.print("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
+        out.print("<authors>\n");
+        for (String x : authors.keySet()) {
+            out.print("  <resource name=\"");
+            out.print(x);
+            out.print("\">\n    <author email=\"");
+            Author author = authors.get(x);
+            out.print(author.getEmail()//
+                .replaceAll("&", "&amp;")//
+                .replaceAll("<", "&lt;")//
+                .replaceAll(">", "&gt;"));
+            out.print("\">");
+            out.print(author.getName()//
+                .replaceAll("&", "&amp;")//
+                .replaceAll("<", "&lt;")//
+                .replaceAll(">", "&gt;"));
+            out.print("</author>\n  </resource>\n");
+        }
+        out.print("</authors>\n");
+        out.close();
+    }
+
+    /**
      * TODO gene: missing JavaDoc
-     *
+     * 
+     * @param file the target file base name or <code>null</code>
+     * @param list the list of primitives
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    protected void shipoutPrimitives(String file, List<PrimitiveInfo> list)
+            throws IOException {
+
+        if (file == null) {
+            return;
+        }
+        File f = new File(getOutput(), file + ".xml");
+        PrintStream out =
+                new PrintStream(new BufferedOutputStream(
+                    new FileOutputStream(f)));
+        out.print("<primitives>\n");
+        PrimitiveInfo po = null;
+
+        for (PrimitiveInfo pi : list) {
+            if (pi.equals(po)) {
+                continue;
+            }
+            po = pi;
+            out.print("  <primitive name=\"\\");
+            out.print(pi.getName());
+            String namespace = pi.getNamespace();
+            if (namespace != null) {
+                out.print("\" namespace=\"");
+                out.print(namespace);
+            }
+            out.print("\" class=\"");
+            out.print(pi.getImplementer());
+            out.print("\" />\n");
+        }
+
+        out.print("</primitives>\n");
+        out.close();
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
      * @param p ...
-     *
+     * 
      * @return ...
      */
     protected String tuneKey(String p) {

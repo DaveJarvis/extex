@@ -19,9 +19,14 @@
 
 package org.extex.exdoc;
 
+import java.io.FileNotFoundException;
+import java.util.logging.Logger;
+
+import org.extex.exdoc.util.Traverser;
+
 /**
  * Collect the doc snippets from Java code and store them in XML files.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5413 $
  */
@@ -29,37 +34,97 @@ public final class Exdoc {
 
     /**
      * The main program for this class.
-     *
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
-        try {
-            if (args.length == 0) {
-                new ExDocXml().run(args);
-            } else if ("-xml".equals(args[0])) {
-                args[0] = null;
-                new ExDocXml().run(args);
-            } else if ("-html".equals(args[0])) {
-                args[0] = null;
-                new ExDocHtml().run(args);
-            } else if ("-tex".equals(args[0])) {
-                args[0] = null;
-                new ExDocTeX().run(args);
-            } else {
-                new ExDocXml().run(args);
-            }
-        } catch (Exception e) {
-            System.err.println(e.toString());
-        }
+        new Exdoc(Traverser.createLogger()).run(args);
     }
 
     /**
-     * Creates a new object.
+     * The field <tt>logger</tt> contains the logger.
      */
-    private Exdoc() {
+    private Logger logger;
 
-        // not used
+    /**
+     * Creates a new object.
+     *
+     * @param logger the logger
+     */
+    private Exdoc(Logger logger) {
+
+        super();
+        setLogger(logger);
+    }
+
+    /**
+     * Getter for logger.
+     * 
+     * @return the logger
+     */
+    public Logger getLogger() {
+
+        return logger;
+    }
+
+    /**
+     * Run the program with some command line arguments.
+     * 
+     * @param args the command line arguments
+     * 
+     * @return the exit code; 0 means that no error occurred
+     */
+    public int run(String[] args) {
+
+        try {
+            if (args.length == 0) {
+                new ExDocXml(logger).run(args);
+            } else if ("-xml".equals(args[0])) {
+                new ExDocXml(logger).run(shift(args));
+            } else if ("-html".equals(args[0])) {
+                new ExDocHtml(logger).run(shift(args));
+            } else if ("-tex".equals(args[0])) {
+                new ExDocTeX(logger).run(shift(args));
+            } else {
+                new ExDocXml(logger).run(args);
+            }
+        } catch (FileNotFoundException e) {
+            logger.severe(e.getMessage() + ": File not found");
+            return 1;
+        } catch (Exception e) {
+//            e.printStackTrace();
+            logger.severe(e.getMessage());
+            return 1;
+        }
+        return 0;
+    }
+
+    /**
+     * Setter for logger.
+     * 
+     * @param logger the logger to set
+     */
+    public void setLogger(Logger logger) {
+
+        this.logger = logger;
+    }
+
+    /**
+     * Shift a string array by one position to the left;
+     *
+     * @param a the array to shift
+     *
+     * @return the shifted array
+     */
+    private String[] shift(String[] a) {
+
+        int len = a.length;
+        String[] b = new String[len - 1];
+        for (int i = 1; i < len; i++) {
+            b[i - 1] = a[i];
+        }
+        return b;
     }
 
 }

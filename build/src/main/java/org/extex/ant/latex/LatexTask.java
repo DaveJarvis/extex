@@ -68,7 +68,7 @@ public class LatexTask extends Task {
     /**
      * The field <tt>filesets</tt> contains the ...
      */
-    private List filesets = new ArrayList();
+    private List<FileSet> filesets = new ArrayList<FileSet>();
 
     /**
      * The field <tt>keepAux</tt> contains the ...
@@ -257,7 +257,7 @@ public class LatexTask extends Task {
             return false;
         }
         for (int i = 0; i < filesets.size(); i++) {
-            System.err.println(((FileSet) filesets.get(i)).toString());
+            System.err.println(filesets.get(i).toString());
         }
         return true;
     }

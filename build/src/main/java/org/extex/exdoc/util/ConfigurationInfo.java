@@ -48,8 +48,8 @@ public class ConfigurationInfo {
     /**
      * Creates a new object.
      *
-     * @param name ...
-     * @param banner ...
+     * @param name the name of the configuration
+     * @param banner the text of the banner
      */
     public ConfigurationInfo(String name, String banner) {
 
@@ -65,7 +65,7 @@ public class ConfigurationInfo {
      */
     public void addUnit(String src) {
 
-        System.err.println(src);
+        //System. err.println(src);
         units.add(src);
     }
 

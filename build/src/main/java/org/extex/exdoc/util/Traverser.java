@@ -26,11 +26,19 @@ import java.io.LineNumberReader;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
 /**
- * Traverse a set of directories and extract comment marked with the XML tag
+ * Traverse a set of directories and extract comments marked with the XML tag
  * <tt>doc</tt>.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -75,24 +83,76 @@ public class Traverser {
             Pattern.compile("^package[ ]*([^;]*);");
 
     /**
+     * Add an attribute to a StringBuffer if the attribute value is not
+     * <code>null</code>.
+     * 
+     * @param sb the target string buffer
+     * @param attribute the name of the attribute
+     * @param value the value of the attribute of <code>null</code>
+     */
+    private static void addAttribute(StringBuffer sb, String attribute,
+            String value) {
+
+        if (value != null) {
+            sb.append(" ");
+            sb.append(attribute);
+            sb.append("=\"");
+            sb.append(value);
+            sb.append("\"");
+        }
+    }
+
+    /**
+     * Create an appropriate logger.
+     * 
+     * @return the logger
+     */
+    public static Logger createLogger() {
+
+        Logger logger = Logger.getLogger(Traverser.class.getName());
+        logger.setUseParentHandlers(false);
+        logger.setLevel(Level.WARNING);
+
+        Handler consoleHandler = new ConsoleHandler();
+        consoleHandler.setLevel(Level.ALL);
+        consoleHandler.setFormatter(new LogFormatter());
+        logger.addHandler(consoleHandler);
+        return logger;
+    }
+
+    /**
      * The main program for this class.
      * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
+        Logger logger = createLogger();
         try {
-            new Traverser().run(args);
+            new Traverser(logger).run(args);
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            logger.severe(e.getMessage());
+            System.exit(1);
         }
+        System.exit(0);
     }
 
     /**
      * The field <tt>authors</tt> contains the mapping from classes to
      * authors.
      */
-    private Map authors = new HashMap();
+    private Map<String, Author> authors = new HashMap<String, Author>();
+
+    /**
+     * The field <tt>builder</tt> contains the document builder for parsing
+     * the XML files.
+     */
+    private DocumentBuilder builder;
+
+    /**
+     * The field <tt>logger</tt> contains the logger.
+     */
+    private Logger logger = null;
 
     /**
      * The field <tt>output</tt> contains the output directory.
@@ -105,21 +165,58 @@ public class Traverser {
     private boolean verbose = false;
 
     /**
-     * TODO gene: missing JavaDoc
+     * Creates a new object.
      * 
-     * @param sb the target string buffer
-     * @param attribute the name of the attribute
-     * @param value the value of the attribute
+     * @throws ParserConfigurationException in case of a parser error
      */
-    private void addAttribute(StringBuffer sb, String attribute, String value) {
+    public Traverser() throws ParserConfigurationException {
 
-        if (value != null) {
-            sb.append(" ");
-            sb.append(attribute);
-            sb.append("=\"");
-            sb.append(value);
-            sb.append("\"");
-        }
+        super();
+        builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+        builder.setEntityResolver(new ExdocEntityResolver());
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param logger the logger
+     * 
+     * @throws ParserConfigurationException in case of a parser error
+     */
+    public Traverser(Logger logger) throws ParserConfigurationException {
+
+        this();
+        setLogger(logger);
+    }
+
+    /**
+     * Getter for authors.
+     * 
+     * @return the authors
+     */
+    public Map<String, Author> getAuthors() {
+
+        return authors;
+    }
+
+    /**
+     * Getter for builder.
+     * 
+     * @return the builder
+     */
+    protected DocumentBuilder getBuilder() {
+
+        return builder;
+    }
+
+    /**
+     * Getter for logger.
+     * 
+     * @return the logger
+     */
+    public Logger getLogger() {
+
+        return logger;
     }
 
     /**
@@ -129,6 +226,9 @@ public class Traverser {
      */
     protected String getOutput() {
 
+        if (output == null) {
+            output = "target/exdoc";
+        }
         return output;
     }
 
@@ -139,8 +239,8 @@ public class Traverser {
      */
     protected void info(String msg) {
 
-        if (verbose) {
-            System.err.println(msg);
+        if (verbose && logger != null) {
+            logger.info(msg);
         }
     }
 
@@ -155,9 +255,9 @@ public class Traverser {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Register an author for a file.
      * 
-     * @param key ...
+     * @param key the name of the file
      * @param author the author
      */
     protected void out(String key, Author author) {
@@ -166,19 +266,20 @@ public class Traverser {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Register a doc entry.
      * 
-     * @param key ...
-     * @param cs ...
+     * @param key the key
+     * @param cs the doc entry
      * 
      * @throws Exception in case of an error
      */
     protected void out(String key, StringBuffer cs) throws Exception {
 
+        // to be overwritten in derived classes
     }
 
     /**
-     * Process a HTML file.
+     * Process a HTML file. Most probably this is a file <tt>package.html</tt>.
      * 
      * @param f the HTML file
      * 
@@ -186,9 +287,7 @@ public class Traverser {
      */
     private void processHtml(File f) throws Exception {
 
-        if (verbose) {
-            info(f.toString());
-        }
+        trace("html: " + f.toString());
 
         LineNumberReader in = new LineNumberReader(new FileReader(f));
         Stack<CharSequence> stack = new Stack<CharSequence>();
@@ -213,8 +312,9 @@ public class Traverser {
         }
 
         in.close();
-        treatDocs(stack, author, f.getParent().toString().replace('\\', '/')
-            .replaceFirst(".*/src/(java|main/java)/", "").replace('/', '.'));
+        treatDocs(stack, author, f.getParent().replace('\\', '/').replaceFirst(
+            ".*/src/(java|main/java)/", "").replace('/', '.'));
+        trace("html: done");
     }
 
     /**
@@ -226,9 +326,7 @@ public class Traverser {
      */
     private void processJava(File f) throws Exception {
 
-        if (verbose) {
-            info(f.toString());
-        }
+        trace("java: " + f.toString());
 
         LineNumberReader in = new LineNumberReader(new FileReader(f));
         Stack<CharSequence> stack = new Stack<CharSequence>();
@@ -236,7 +334,7 @@ public class Traverser {
         String className = "";
         Matcher m;
         String line;
-        Pattern p = null;
+        Pattern p = PATTERN_METHOD;
         Author author = null;
 
         while ((line = in.readLine()) != null) {
@@ -290,9 +388,19 @@ public class Traverser {
             }
         }
         in.close();
-        if (verbose) {
-            info("");
-        }
+        trace("java: done");
+    }
+
+    /**
+     * Process an XML file.
+     * 
+     * @param file the file
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    protected void processXml(File file) throws IOException {
+
+        // to be overwritten in derived classes
     }
 
     /**
@@ -317,12 +425,11 @@ public class Traverser {
                     opt = false;
                 } else {
                     i = runOption(arg, args, i);
+                    opt = true;
                 }
             } else {
                 File file = new File(arg);
-                if (verbose) {
-                    info("Scanning " + file.toString());
-                }
+                info("Scanning " + file.toString());
                 if (!file.exists()) {
                     throw new Exception(file + ": no such directory\n");
                 }
@@ -331,38 +438,45 @@ public class Traverser {
                 } catch (IOException e) {
                     throw new Exception(file + ": " + e.getLocalizedMessage());
                 }
+                opt = true;
             }
         }
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Process an option starting with a minus in an argument list and return
+     * the index of the last argument processed.
      * 
      * @param arg the current argument
      * @param args the list of all arguments
-     * @param i the index of arg
+     * @param i the index of the current argument
      * 
-     * @return the index of the last arg processed
+     * @return the index of the last argument processed
      * 
-     * @throws Exception in case of an error
+     * @throws Exception in case of an unknown option
      */
     protected int runOption(String arg, String[] args, int i) throws Exception {
 
         int idx = i;
         if ("-quiet".startsWith(arg)) {
             verbose = false;
+            logger.setLevel(Level.SEVERE);
         } else if ("-verbose".startsWith(arg)) {
             verbose = true;
+            logger.setLevel(Level.INFO);
+        } else if ("-debug".startsWith(arg)) {
+            verbose = true;
+            logger.setLevel(Level.FINE);
         } else if ("-output".startsWith(arg)) {
             output = args[++idx];
         } else {
-            throw new Exception("*** Unknown option: " + arg);
+            throw new Exception("Unknown option: " + arg);
         }
         return idx;
     }
 
     /**
-     * Scan the input stream for until </doc> is found.
+     * Scan the input stream until &lt;/doc&gt; is found.
      * 
      * @param in the stream to read from
      * @param startLine the line already read
@@ -391,6 +505,16 @@ public class Traverser {
     }
 
     /**
+     * Setter for logger.
+     * 
+     * @param logger the logger to set
+     */
+    public void setLogger(Logger logger) {
+
+        this.logger = logger;
+    }
+
+    /**
      * Setter for output.
      * 
      * @param output the output to set
@@ -408,6 +532,18 @@ public class Traverser {
     public void setVerbose(boolean verbose) {
 
         this.verbose = verbose;
+    }
+
+    /**
+     * Log an informative message.
+     * 
+     * @param msg the message
+     */
+    protected void trace(String msg) {
+
+        if (verbose && logger != null) {
+            logger.fine(msg);
+        }
     }
 
     /**
@@ -439,6 +575,8 @@ public class Traverser {
             processJava(file);
         } else if (name.endsWith(".html")) {
             processHtml(file);
+        } else if (name.endsWith(".xml")) {
+            processXml(file);
         }
     }
 
@@ -451,11 +589,11 @@ public class Traverser {
      * 
      * @throws Exception in case of an error
      */
-    private void treatDocs(Stack stack, Author author, String packageName)
-            throws Exception {
+    private void treatDocs(Stack<? extends CharSequence> stack, Author author,
+            String packageName) throws Exception {
 
         while (!stack.isEmpty()) {
-            CharSequence cs = (CharSequence) stack.pop();
+            CharSequence cs = stack.pop();
             StringBuffer sb = new StringBuffer("<doc");
             addAttribute(sb, "package", packageName);
             if (author != null) {
@@ -464,6 +602,35 @@ public class Traverser {
             }
             sb.append(cs.subSequence(4, cs.length()));
             out(packageName, sb);
+        }
+    }
+
+    /**
+     * Process a list of class level docs.
+     * 
+     * @param stack the list of docs
+     * @param author the author
+     * @param packageName the name of the package
+     * @param className the name of the class level docs
+     * 
+     * @throws Exception in case of an error
+     */
+    private void treatDocs(Stack<? extends CharSequence> stack, Author author,
+            String packageName, String className) throws Exception {
+
+        String name = packageName + "." + className;
+
+        while (!stack.isEmpty()) {
+            CharSequence cs = stack.pop();
+            StringBuffer sb = new StringBuffer("<doc");
+            addAttribute(sb, "package", packageName);
+            addAttribute(sb, "class", className);
+            if (author != null) {
+                addAttribute(sb, "authorName", author.getName());
+                addAttribute(sb, "authorEmail", author.getEmail());
+            }
+            sb.append(cs.subSequence(4, cs.length()));
+            out(name, sb);
         }
     }
 
@@ -478,13 +645,14 @@ public class Traverser {
      *        level docs
      * @throws Exception in case of an error
      */
-    private void treatDocs(Stack stack, Author author, String packageName,
-            String className, String methodName) throws Exception {
+    private void treatDocs(Stack<? extends CharSequence> stack, Author author,
+            String packageName, String className, String methodName)
+            throws Exception {
 
         String name = packageName + "." + className + "#" + methodName;
 
         while (!stack.isEmpty()) {
-            CharSequence cs = (CharSequence) stack.pop();
+            CharSequence cs = stack.pop();
             StringBuffer sb = new StringBuffer("<doc");
             addAttribute(sb, "package", packageName);
             addAttribute(sb, "class", className);
@@ -499,41 +667,15 @@ public class Traverser {
     }
 
     /**
-     * Process a list of class level docs.
-     * 
-     * @param stack the list of docs
-     * @param author the author
-     * @param packageName the name of the package
-     * @param className the name of the class class level docs
-     * 
-     * @throws Exception in case of an error
-     */
-    private void treatDocs(Stack stack, Author author, String packageName,
-            String className) throws Exception {
-
-        String name = packageName + "." + className;
-
-        while (!stack.isEmpty()) {
-            CharSequence cs = (CharSequence) stack.pop();
-            StringBuffer sb = new StringBuffer("<doc");
-            addAttribute(sb, "package", packageName);
-            addAttribute(sb, "class", className);
-            if (author != null) {
-                addAttribute(sb, "authorName", author.getName());
-                addAttribute(sb, "authorEmail", author.getEmail());
-            }
-            sb.append(cs.subSequence(4, cs.length()));
-            out(name, sb);
-        }
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
+     * Issue a warning.
      * 
      * @param msg the message
      */
     protected void warning(String msg) {
 
-        System.err.println(msg);
+        if (logger != null) {
+            logger.warning(msg);
+        }
     }
+
 }

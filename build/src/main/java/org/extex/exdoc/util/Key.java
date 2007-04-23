@@ -64,13 +64,53 @@ public class Key {
      * 
      * @param a the attributes
      */
-    public Key(Map a) {
+    public Key(Map<String, String> a) {
 
-        thePackage = (String) a.get("package");
-        theClass = (String) a.get("class");
-        theMethod = (String) a.get("method");
-        theName = (String) a.get("name");
-        theType = (String) a.get("type");
+        thePackage = a.get("package");
+        theClass = a.get("class");
+        theMethod = a.get("method");
+        theName = a.get("name");
+        theType = a.get("type");
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    public boolean equals(Object obj) {
+
+        if (!(obj instanceof Key)) {
+            return false;
+        }
+        Key pi = (Key) obj;
+        return eq(theName, pi.theName) //
+                && eq(thePackage, pi.thePackage)
+                && eq(theClass, pi.theClass)
+                && eq(theMethod, pi.theMethod);
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param s the first string
+     * @param t the second string
+     * 
+     * @return <code>true</code> iff the arguments disagree
+     */
+    private boolean eq(String s, String t) {
+
+        return (s == null ? t == null : s.equals(t));
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#hashCode()
+     */
+    public int hashCode() {
+
+        return theName.hashCode();
     }
 
     /**

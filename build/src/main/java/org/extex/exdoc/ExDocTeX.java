@@ -19,7 +19,6 @@
 
 package org.extex.exdoc;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -31,6 +30,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
@@ -38,14 +38,18 @@ import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.TransformerFactoryConfigurationError;
+import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
+import org.extex.exdoc.util.Author;
 import org.extex.exdoc.util.Key;
+import org.extex.exdoc.util.Traverser;
+import org.xml.sax.SAXException;
 
 /**
  * Extract doc tags from sources and translate them to LaTeX.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5413 $
  */
@@ -82,7 +86,7 @@ public class ExDocTeX extends ExDocXml {
         ENTITY_MAP.put("Chi", "\\ensuremath{X}");
         ENTITY_MAP.put("Dagger", "\\ddagger{}");
         ENTITY_MAP.put("Delta", "\\ensuremath{\\Delta}");
-        //        ENTITY_MAP.put("ETH", "&amp;ETH;");
+        // ENTITY_MAP.put("ETH", "&amp;ETH;");
         ENTITY_MAP.put("Eacute", "\\'E");
         ENTITY_MAP.put("Ecirc", "\\^E");
         ENTITY_MAP.put("Egrave", "\\`E");
@@ -113,7 +117,7 @@ public class ExDocTeX extends ExDocXml {
         ENTITY_MAP.put("Psi", "\\ensuremath{\\Psi}");
         ENTITY_MAP.put("Rho", "\\ensuremath{\\Rho}");
         ENTITY_MAP.put("Sigma", "\\ensuremath{\\Sigma}");
-        //        ENTITY_MAP.put("THORN", "&amp;THORN;");
+        // ENTITY_MAP.put("THORN", "&amp;THORN;");
         ENTITY_MAP.put("Tau", "\\ensuremath{\\Tau}");
         ENTITY_MAP.put("Theta", "\\ensuremath{\\Theta}");
         ENTITY_MAP.put("Uacute", "\\'U");
@@ -134,12 +138,12 @@ public class ExDocTeX extends ExDocXml {
         ENTITY_MAP.put("and", "\\ensuremath{\\land}");
         ENTITY_MAP.put("ang", "\\ensuremath{\\ang}");
         ENTITY_MAP.put("aring", "\\aa{}");
-        //        ENTITY_MAP.put("asymp", "&amp;asymp;");
+        // ENTITY_MAP.put("asymp", "&amp;asymp;");
         ENTITY_MAP.put("atilde", "\\~a");
         ENTITY_MAP.put("auml", "\\\"a");
-        //        ENTITY_MAP.put("bdquo", "&amp;bdquo;");
+        // ENTITY_MAP.put("bdquo", "&amp;bdquo;");
         ENTITY_MAP.put("beta", "\\ensuremath{\\beta}");
-        //        ENTITY_MAP.put("brvbar", "&amp;brvbar;");
+        // ENTITY_MAP.put("brvbar", "&amp;brvbar;");
         ENTITY_MAP.put("bull", "\\ensuremath{\\bullet}");
         ENTITY_MAP.put("cap", "\\ensuremath{\\cap}");
         ENTITY_MAP.put("ccedil", "\\c c");
@@ -147,9 +151,9 @@ public class ExDocTeX extends ExDocXml {
         ENTITY_MAP.put("cent", "\\textcent{}");
         ENTITY_MAP.put("chi", "\\ensuremath{\\chi}");
         ENTITY_MAP.put("clubs", "\\clubsuit{}");
-        //        ENTITY_MAP.put("cong", "&amp;cong;");
+        // ENTITY_MAP.put("cong", "&amp;cong;");
         ENTITY_MAP.put("copy", "\\copyright{}");
-        //        ENTITY_MAP.put("crarr", "&amp;crarr;");
+        // ENTITY_MAP.put("crarr", "&amp;crarr;");
         ENTITY_MAP.put("cup", "\\ensuremath{\\cup}");
         ENTITY_MAP.put("curren", "\\textcurrency{}");
         ENTITY_MAP.put("dArr", "\\ensuremath{\\Downarrow}");
@@ -168,7 +172,7 @@ public class ExDocTeX extends ExDocXml {
         ENTITY_MAP.put("epsilon", "\\ensuremath{\\epsilon}");
         ENTITY_MAP.put("equiv", "\\ensuremath{\\equiv}");
         ENTITY_MAP.put("eta", "\\ensuremath{\\eta}");
-        //        ENTITY_MAP.put("eth", "&amp;eth;");
+        // ENTITY_MAP.put("eth", "&amp;eth;");
         ENTITY_MAP.put("euml", "\\\"e");
         ENTITY_MAP.put("euro", "\\texteuro{}");
         ENTITY_MAP.put("exist", "\\ensuremath{\\exists}");
@@ -205,10 +209,10 @@ public class ExDocTeX extends ExDocXml {
         ENTITY_MAP.put("le", "\\ensuremath{\\leq}");
         ENTITY_MAP.put("lfloor", "\\ensuremath{\\lfloor}");
         ENTITY_MAP.put("lowast", "\\ensuremath{\\ast}");
-        //        ENTITY_MAP.put("loz", "&amp;loz;");
-        //        ENTITY_MAP.put("lrm", "&amp;lrm;");
-        //        ENTITY_MAP.put("lsaquo", "&amp;lsaquo;");
-        //        ENTITY_MAP.put("lsquo", "&amp;lsquo;");
+        // ENTITY_MAP.put("loz", "&amp;loz;");
+        // ENTITY_MAP.put("lrm", "&amp;lrm;");
+        // ENTITY_MAP.put("lsaquo", "&amp;lsaquo;");
+        // ENTITY_MAP.put("lsquo", "&amp;lsquo;");
         ENTITY_MAP.put("macr", "\\textmacron{}");
         ENTITY_MAP.put("mdash", "---");
         ENTITY_MAP.put("micro", "&amp;micro;");
@@ -242,7 +246,7 @@ public class ExDocTeX extends ExDocXml {
         ENTITY_MAP.put("para", "\\P{}");
         ENTITY_MAP.put("part", "\\ensuremath{\\partial}");
         ENTITY_MAP.put("permil", "\textperthousand{}");
-        //        ENTITY_MAP.put("perp", "&amp;perp;");
+        // ENTITY_MAP.put("perp", "&amp;perp;");
         ENTITY_MAP.put("phi", "\\ensuremath{\\phi}");
         ENTITY_MAP.put("pi", "\\ensuremath{\\pi}");
         ENTITY_MAP.put("piv", "\\ensuremath{\\varpi}");
@@ -250,7 +254,7 @@ public class ExDocTeX extends ExDocXml {
         ENTITY_MAP.put("pound", "\\pounds{}");
         ENTITY_MAP.put("prime", "\\ensuremath{'}");
         ENTITY_MAP.put("prod", "\\ensuremath{prod}");
-        //        ENTITY_MAP.put("prop", "&amp;prop;");
+        // ENTITY_MAP.put("prop", "&amp;prop;");
         ENTITY_MAP.put("psi", "\\ensuremath{\\psi}");
         ENTITY_MAP.put("rArr", "\\ensuremath{\\Rightarrow}");
         ENTITY_MAP.put("radic", "\\ensuremath{\\sqrt{}}");
@@ -263,15 +267,15 @@ public class ExDocTeX extends ExDocXml {
         ENTITY_MAP.put("reg", "\\textregistered{}");
         ENTITY_MAP.put("rfloor", "\\ensuremath{\\rfloor}");
         ENTITY_MAP.put("rho", "\\ensuremath{\\rho}");
-        //        ENTITY_MAP.put("rlm", "&amp;rlm;");
-        //        ENTITY_MAP.put("rsaquo", "&amp;rsaquo;");
-        //        ENTITY_MAP.put("rsquo", "&amp;rsquo;");
-        //        ENTITY_MAP.put("sbquo", "&amp;sbquo;");
+        // ENTITY_MAP.put("rlm", "&amp;rlm;");
+        // ENTITY_MAP.put("rsaquo", "&amp;rsaquo;");
+        // ENTITY_MAP.put("rsquo", "&amp;rsquo;");
+        // ENTITY_MAP.put("sbquo", "&amp;sbquo;");
         ENTITY_MAP.put("sdot", "\\ensuremath{\\cdot}");
         ENTITY_MAP.put("sect", "\\S{}");
         ENTITY_MAP.put("shy", "\\-");
         ENTITY_MAP.put("sigma", "\\ensuremath{\\sigma}");
-        //        ENTITY_MAP.put("sigmaf", "&amp;sigmaf;");
+        // ENTITY_MAP.put("sigmaf", "&amp;sigmaf;");
         ENTITY_MAP.put("sim", "\\ensuremath{\\sim}");
         ENTITY_MAP.put("spades", "\\spadesuit{}");
         ENTITY_MAP.put("sub", "\\ensuremath{\\subset}");
@@ -284,14 +288,14 @@ public class ExDocTeX extends ExDocXml {
         ENTITY_MAP.put("supe", "\\ensuremath{\\supseteq}");
         ENTITY_MAP.put("szlig", "\\ss{}");
         ENTITY_MAP.put("tau", "\\ensuremath{\\tau}");
-        //        ENTITY_MAP.put("there4", "&amp;there4;");
+        // ENTITY_MAP.put("there4", "&amp;there4;");
         ENTITY_MAP.put("theta", "\\ensuremath{\\theta}");
         ENTITY_MAP.put("thetasym", "\\ensuremath{\\vartheta}");
         ENTITY_MAP.put("thinsp", "\\,");
-        //        ENTITY_MAP.put("thorn", "&amp;thorn;");
+        // ENTITY_MAP.put("thorn", "&amp;thorn;");
         ENTITY_MAP.put("times", "\\ensuremath{times}");
         ENTITY_MAP.put("tilde", "\\~{}");
-        ENTITY_MAP.put("trade", "\\texttradenark");
+        ENTITY_MAP.put("trade", "\\texttrademark");
         ENTITY_MAP.put("uArr", "\\ensuremath{\\Uparrow}");
         ENTITY_MAP.put("uacute", "\\'u");
         ENTITY_MAP.put("uarr", "\\ensuremath{\\uparrow}");
@@ -313,27 +317,19 @@ public class ExDocTeX extends ExDocXml {
 
     /**
      * The main program for this class.
-     *
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
+        Logger logger = Traverser.createLogger();
+
         try {
-            new ExDocTeX().run(args);
+            new ExDocTeX(logger).run(args);
         } catch (Exception e) {
-            System.err.println(e.toString());
+            logger.severe(e.toString());
         }
     }
-
-    /**
-     * The field <tt>primitveFile</tt> contains the ...
-     */
-    private String primitveFile = null;
-
-    /**
-     * The field <tt>syntaxFile</tt> contains the ...
-     */
-    private String syntaxFile = null;
 
     /**
      * The field <tt>keys</tt> contains the ...
@@ -341,24 +337,78 @@ public class ExDocTeX extends ExDocXml {
     private List<Key> keys = new ArrayList<Key>();
 
     /**
-     * Creates a new object.
-     *
-     * @throws ParserConfigurationException in case of an error
+     * The field <tt>transformer</tt> contains the xslt engine.
      */
-    public ExDocTeX() throws ParserConfigurationException {
+    private Transformer transformer;
+
+    /**
+     * Creates a new object.
+     * 
+     * @throws ParserConfigurationException in case of an error
+     * @throws TransformerFactoryConfigurationError in case of an error
+     * @throws TransformerConfigurationException in case of an error
+     * @throws IOException in case of an error
+     */
+    public ExDocTeX()
+            throws ParserConfigurationException,
+                TransformerConfigurationException,
+                TransformerFactoryConfigurationError,
+                IOException {
 
         super();
+        InputStream xslt =
+                getClass().getClassLoader().getResourceAsStream(XSLT);
+        if (xslt == null) {
+            throw new FileNotFoundException(XSLT);
+        }
+        transformer =
+                TransformerFactory.newInstance().newTransformer(
+                    new StreamSource(xslt));
+        xslt.close();
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param logger the logger
+     * 
+     * @throws ParserConfigurationException in case of an error
+     * @throws TransformerFactoryConfigurationError in case of an error
+     * @throws TransformerConfigurationException in case of an error
+     * @throws IOException in case of an error
+     */
+    public ExDocTeX(Logger logger)
+            throws ParserConfigurationException,
+                TransformerConfigurationException,
+                TransformerFactoryConfigurationError,
+                IOException {
+
+        this();
+        setLogger(logger);
+    }
+
+    /**
+     * Process the list of resources and authors.
+     * 
+     * @param file the target file or <code>null</code>
+     * @param authors the list of authors
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    protected void shipoutAuthors(String file, Map<String, Author> authors)
+            throws IOException {
+
+        // not for the printed document
     }
 
     /**
      * Replace all strings of a given form into something new.
-     *
+     * 
      * @param content the content to transform
      * @param from the string to be replaced
      * @param to the new string to be inserted
      */
-    private void replace(StringBuffer content, String from,
-            String to) {
+    private void replace(StringBuffer content, String from, String to) {
 
         int length = from.length();
 
@@ -371,7 +421,7 @@ public class ExDocTeX extends ExDocXml {
     /**
      * Replace HTML entities of the form <tt>&amp;&lang;name&rang;;</tt> to
      * appropriate values.
-     *
+     * 
      * @param content the content to transform
      * @param name the name of the resource currently processed
      */
@@ -405,7 +455,7 @@ public class ExDocTeX extends ExDocXml {
 
     /**
      * Replace a text line marked as "to do".
-     *
+     * 
      * @param content the content to transform
      */
     private void replaceTodo(StringBuffer content) {
@@ -420,11 +470,11 @@ public class ExDocTeX extends ExDocXml {
 
     /**
      * Run with the command line arguments.
-     *
+     * 
      * @param args the command line arguments
-     *
+     * 
      * @throws Exception in case of an error
-     *
+     * 
      * @see org.extex.exdoc.Exdoc#run(java.lang.String[])
      */
     public void run(String[] args) throws Exception {
@@ -435,10 +485,10 @@ public class ExDocTeX extends ExDocXml {
 
             /**
              * Compare two objects.
-             *
+             * 
              * @param o1 the first object
              * @param o2 the second object
-             *
+             * 
              * @return -1, 0, 1 depending on the order of the objects
              */
             public int compare(Key o1, Key o2) {
@@ -448,28 +498,29 @@ public class ExDocTeX extends ExDocXml {
         });
 
         for (Key k : keys) {
-            System.err.println(k.toString());
+            // System.err.println(k.toString());
         }
     }
 
     /**
      * Ship the given content to the appropriate file.
-     *
+     * 
      * @param key the name of the resource
      * @param content the output stream in form of a string buffer
-     *
+     * 
      * @throws IOException in case of an I/O error
-     *
-     * @see org.extex.exdoc.ExDocXml#shipout(
-     *      org.extex.exdoc.util.Key,
+     * 
+     * @see org.extex.exdoc.ExDocXml#shipout(org.extex.exdoc.util.Key,
      *      java.lang.StringBuffer)
      */
-    protected void shipout(Key key, StringBuffer content)
-            throws IOException {
+    protected void shipout(Key key, StringBuffer content) throws IOException {
 
-        FileOutputStream out =
-                new FileOutputStream(new File(getOutput(), key + ".tex"));
+        File file = new File(getOutput(), key + ".tex");
+        FileOutputStream out = new FileOutputStream(file);
+        info("-> " + file.toString());
 
+        replace(content, "{", "\\{");
+        replace(content, "}", "\\}");
         replace(content, "\\", "\\textbackslash{}");
         replace(content, "$", "\\$");
         replace(content, "_", "\\_$");
@@ -482,26 +533,16 @@ public class ExDocTeX extends ExDocXml {
         replaceTodo(content);
 
         try {
-            InputStream xslt =
-                    getClass().getClassLoader().getResourceAsStream(XSLT);
-            if (xslt == null) {
-                throw new FileNotFoundException(XSLT);
-            }
-            Transformer t =
-                    TransformerFactory.newInstance().newTransformer(
-                        new StreamSource(xslt));
-            xslt.close();
-
-            InputStream in =
-                    new ByteArrayInputStream(content.toString().getBytes());
-
-            t.transform(new StreamSource(in), new StreamResult(out));
+            transformer.transform(new DOMSource(scan(content)),
+                new StreamResult(out));
 
         } catch (TransformerConfigurationException e) {
             throw new RuntimeException(e);
         } catch (TransformerFactoryConfigurationError e) {
             throw new RuntimeException(e);
         } catch (TransformerException e) {
+            throw new RuntimeException(e);
+        } catch (SAXException e) {
             throw new RuntimeException(e);
         }
 

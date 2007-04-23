@@ -26,7 +26,7 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 /**
- * TODO gene: missing JavaDoc.
+ * Resolve XML entities.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5413 $
@@ -42,15 +42,7 @@ public class ExdocEntityResolver implements EntityResolver {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param publicId ...
-     * @param systemId ...
-     * 
-     * @return ...
-     * 
-     * @throws SAXException ...
-     * @throws IOException ...
+     * {@inheritDoc}
      * 
      * @see org.xml.sax.EntityResolver#resolveEntity(java.lang.String,
      *      java.lang.String)

@@ -25,12 +25,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.extex.exdoc.util.ConfigurationInfo;
+import org.extex.exdoc.util.LogFormatter;
+import org.extex.exdoc.util.PrimitiveInfo;
 import org.extex.exdoc.util.UnitInfo;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -40,7 +46,7 @@ import org.xml.sax.SAXException;
 
 /**
  * TODO gene: missing JavaDoc.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5413 $
  */
@@ -57,23 +63,34 @@ public class ConfigReader {
     private static final String UNIT_EXTENSION = CONFIG_EXTENSION;
 
     /**
-     * TODO gene: missing JavaDoc
-     *
+     * The command line interface.
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
+        Logger logger = Logger.getLogger(ConfigReader.class.getName());
+        logger.setUseParentHandlers(false);
+        logger.setLevel(Level.ALL);
+
+        Handler consoleHandler = new ConsoleHandler();
+        consoleHandler.setLevel(Level.ALL);
+        consoleHandler.setFormatter(new LogFormatter());
+        logger.addHandler(consoleHandler);
+
         try {
-            ConfigReader configReader = new ConfigReader();
+            ConfigReader configReader = new ConfigReader(logger);
             configReader.add(args[0]);
         } catch (Exception e) {
-            System.err.println(e.toString());
+            logger.severe(e.getMessage());
+            System.exit(1);
         }
+        System.exit(0);
     }
 
     /**
-     * The field <tt>builder</tt> contains the document builder for parsing the
-     * XML file.
+     * The field <tt>builder</tt> contains the document builder for parsing
+     * the XML file.
      */
     private DocumentBuilder builder;
 
@@ -89,14 +106,19 @@ public class ConfigReader {
             new ArrayList<ConfigurationInfo>();
 
     /**
+     * The field <tt>logger</tt> contains the logger.
+     */
+    private Logger logger;
+
+    /**
      * The field <tt>units</tt> contains the ...
      */
     private List<UnitInfo> units = new ArrayList<UnitInfo>();
 
     /**
      * Creates a new object.
-     *
-     * @throws ParserConfigurationException ...
+     * 
+     * @throws ParserConfigurationException in case of a parser error
      */
     public ConfigReader() throws ParserConfigurationException {
 
@@ -105,13 +127,26 @@ public class ConfigReader {
     }
 
     /**
+     * Creates a new object.
+     * 
+     * @param logger the logger
+     * 
+     * @throws ParserConfigurationException in case of a parser error
+     */
+    public ConfigReader(Logger logger) throws ParserConfigurationException {
+
+        this();
+        setLogger(logger);
+    }
+
+    /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @param cfg ...
-     *
+     * 
      * @throws ParserConfigurationException ...
-     * @throws IOException ...
-     * @throws SAXException ...
+     * @throws SAXException in case of a parser error
+     * @throws IOException in case of an I/O error
      */
     public void add(String cfg)
             throws ParserConfigurationException,
@@ -129,18 +164,26 @@ public class ConfigReader {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     *
-     * @param file ...
-     *
-     * @return ...
-     *
-     * @throws SAXException ...
-     * @throws IOException ...
+     * Getter for logger.
+     * 
+     * @return the logger
      */
-    private Element readXml(File file)
-            throws SAXException,
-                IOException {
+    public Logger getLogger() {
+
+        return logger;
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param file ...
+     * 
+     * @return ...
+     * 
+     * @throws SAXException in case of a parser error
+     * @throws IOException in case of an I/O error
+     */
+    private Element readXml(File file) throws SAXException, IOException {
 
         InputStream stream = new FileInputStream(file);
         Document doc = builder.parse(stream);
@@ -150,11 +193,11 @@ public class ConfigReader {
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @param name ...
-     *
-     * @throws SAXException ...
-     * @throws IOException ...
+     * 
+     * @throws SAXException in case of a parser error
+     * @throws IOException in case of an I/O error
      */
     private void scan(String name) throws IOException, SAXException {
 
@@ -165,8 +208,7 @@ public class ConfigReader {
                     "resources"), "config");
         String[] list = config.list();
         if (list != null) {
-            for (int i = 0; i < list.length; i++) {
-                String f = list[i];
+            for (String f : list) {
                 if (f.endsWith(CONFIG_EXTENSION)) {
                     scanConfig(config, f);
                 }
@@ -176,8 +218,7 @@ public class ConfigReader {
         File unit = new File(config, "unit");
         list = unit.list();
         if (list != null) {
-            for (int i = 0; i < list.length; i++) {
-                String f = list[i];
+            for (String f : list) {
                 if (f.endsWith(UNIT_EXTENSION)) {
                     scanUnit(unit, f);
                 }
@@ -187,12 +228,12 @@ public class ConfigReader {
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @param base TODO
      * @param f ...
-     *
-     * @throws IOException ...
-     * @throws SAXException ...
+     * 
+     * @throws SAXException in case of a parser error
+     * @throws IOException in case of an I/O error
      */
     private void scanConfig(File base, String f)
             throws IOException,
@@ -200,7 +241,7 @@ public class ConfigReader {
 
         String name = f.substring(0, f.length() - CONFIG_EXTENSION.length());
         ConfigurationInfo info;
-                System.err.println("--> " + f);
+        System.err.println("--> " + f);
 
         Element root = readXml(new File(base, f));
         NodeList bannerElements = root.getElementsByTagName("banner");
@@ -232,16 +273,14 @@ public class ConfigReader {
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @param base ...
      * @param f ...
-     *
-     * @throws IOException ...
-     * @throws SAXException ...
+     * 
+     * @throws SAXException in case of a parser error
+     * @throws IOException in case of an I/O error
      */
-    private void scanUnit(File base, String f)
-            throws SAXException,
-                IOException {
+    private void scanUnit(File base, String f) throws SAXException, IOException {
 
         String unit = f.substring(0, f.length() - UNIT_EXTENSION.length());
         UnitInfo info = new UnitInfo(unit);
@@ -258,11 +297,20 @@ public class ConfigReader {
                 String name = def.getAttribute("name");
                 String c = def.getAttribute("class");
 
-                info.add(name, c);
-//                System.err.println("\t" + name);
+                info.add(new PrimitiveInfo(name, null, c));
             }
         }
 
+    }
+
+    /**
+     * Setter for logger.
+     * 
+     * @param logger the logger to set
+     */
+    public void setLogger(Logger logger) {
+
+        this.logger = logger;
     }
 
 }

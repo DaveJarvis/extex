@@ -30,6 +30,7 @@
 
   <property name="javac.deprecation" value="off" />
   <property name="src" location="src/java" />
+  <property name="resources" location="src/resources" />
   <property name="src.tests" location="src/test" />
   <property name="classes" location="target/classes" />
   <property name="javadoc" location="target/javadoc" />
@@ -78,14 +79,13 @@
       <classpath refid="main.class.path" />
     </javac>
     <copy todir="${classes}">
-      <fileset dir="src/java">
+      <fileset dir="${src}">
         <include name="**/*.properties" />
         <include name="**/*.xml" />
         <include name="**/*.txt" />
       </fileset>
-      <fileset dir="src/resources">
-        <include name="**/*.properties" />
-        <include name="**/*.xml" />
+      <fileset dir="${resources}">
+        <include name="*" />
       </fileset>
     </copy>
   </target>

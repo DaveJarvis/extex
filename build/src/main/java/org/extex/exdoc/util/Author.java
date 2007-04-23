@@ -55,7 +55,7 @@ public class Author {
      *
      * @return the email
      */
-    protected String getEmail() {
+    public String getEmail() {
 
         return email;
     }
@@ -65,7 +65,7 @@ public class Author {
      *
      * @return the name
      */
-    protected String getName() {
+    public String getName() {
 
         return name;
     }

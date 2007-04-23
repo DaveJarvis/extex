@@ -20,10 +20,13 @@
 package org.extex.exdoc.ant;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerFactoryConfigurationError;
 
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.DirectoryScanner;
@@ -36,7 +39,7 @@ import org.extex.exdoc.ExDocXml;
 
 /**
  * Provide an Ant task for the Exdoc functionality.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5413 $
  */
@@ -53,7 +56,8 @@ public class ExdocTask extends Task {
     private String output = "exdoc";
 
     /**
-     * The field <tt>roots</tt> contains the list of root directories to consider.
+     * The field <tt>roots</tt> contains the list of root directories to
+     * consider.
      */
     private List<String> roots = new ArrayList<String>();
 
@@ -64,7 +68,7 @@ public class ExdocTask extends Task {
 
     /**
      * Add an inner dir set named roots.
-     *
+     * 
      * @param dirSet the included dir set
      */
     public void addConfigured(DirSet dirSet) {
@@ -80,24 +84,22 @@ public class ExdocTask extends Task {
 
     /**
      * Add an inner dir set named roots.
-     *
+     * 
      * @param path the included dir set
      */
     public void addConfigured(Path path) {
 
         log("got path");
-        String[] list = path.list();
-
-        for (int i = 0; i < list.length; i++) {
-            roots.add(list[i]);
+        for (String s : path.list()) {
+            roots.add(s);
         }
     }
 
     /**
      * Run the task from within an ant build file.
-     *
+     * 
      * @throws BuildException in case of an error
-     *
+     * 
      * @see org.apache.tools.ant.Task#execute()
      */
     public void execute() throws BuildException {
@@ -133,7 +135,7 @@ public class ExdocTask extends Task {
 
     /**
      * Create an Exdoc object for HTML translation.
-     *
+     * 
      * @return Exdoc object
      */
     private ExDocXml makeExDocHtml() {
@@ -144,9 +146,9 @@ public class ExdocTask extends Task {
 
                 /**
                  * Log an info message.
-                 *
+                 * 
                  * @param msg the message
-                 *
+                 * 
                  * @see org.extex.exdoc.util.Traverser#info(java.lang.String)
                  */
                 protected void info(String msg) {
@@ -158,9 +160,9 @@ public class ExdocTask extends Task {
 
                 /**
                  * Log a message.
-                 *
+                 * 
                  * @param msg the message
-                 *
+                 * 
                  * @see org.extex.exdoc.util.Traverser#warning(java.lang.String)
                  */
                 protected void warning(String msg) {
@@ -170,13 +172,19 @@ public class ExdocTask extends Task {
             };
         } catch (ParserConfigurationException e) {
             throw new BuildException(e);
+        } catch (TransformerConfigurationException e) {
+            throw new BuildException(e);
+        } catch (TransformerFactoryConfigurationError e) {
+            throw new BuildException(e);
+        } catch (IOException e) {
+            throw new BuildException(e);
         }
         return exdoc;
     }
 
     /**
      * Create an Exdoc object for TeX translation.
-     *
+     * 
      * @return Exdoc object
      */
     private ExDocXml makeExDocTeX() {
@@ -186,10 +194,8 @@ public class ExdocTask extends Task {
             exdoc = new ExDocTeX() {
 
                 /**
-                 * Log an info message.
-                 *
-                 * @param msg the message
-                 *
+                 * {@inheritDoc}
+                 * 
                  * @see org.extex.exdoc.util.Traverser#info(java.lang.String)
                  */
                 protected void info(String msg) {
@@ -200,10 +206,8 @@ public class ExdocTask extends Task {
                 }
 
                 /**
-                 * Log a message.
-                 *
-                 * @param msg the message
-                 *
+                 * {@inheritDoc}
+                 * 
                  * @see org.extex.exdoc.util.Traverser#warning(java.lang.String)
                  */
                 protected void warning(String msg) {
@@ -213,13 +217,19 @@ public class ExdocTask extends Task {
             };
         } catch (ParserConfigurationException e) {
             throw new BuildException(e);
+        } catch (TransformerConfigurationException e) {
+            throw new BuildException(e);
+        } catch (TransformerFactoryConfigurationError e) {
+            throw new BuildException(e);
+        } catch (IOException e) {
+            throw new BuildException(e);
         }
         return exdoc;
     }
 
     /**
      * Create an Exdoc object for XML translation.
-     *
+     * 
      * @return Exdoc object
      */
     private ExDocXml makeExDocXml() {
@@ -230,9 +240,9 @@ public class ExdocTask extends Task {
 
                 /**
                  * Log an info message.
-                 *
+                 * 
                  * @param msg the message
-                 *
+                 * 
                  * @see org.extex.exdoc.util.Traverser#info(java.lang.String)
                  */
                 protected void info(String msg) {
@@ -244,9 +254,9 @@ public class ExdocTask extends Task {
 
                 /**
                  * Log a message.
-                 *
+                 * 
                  * @param msg the message
-                 *
+                 * 
                  * @see org.extex.exdoc.util.Traverser#warning(java.lang.String)
                  */
                 protected void warning(String msg) {
@@ -262,7 +272,7 @@ public class ExdocTask extends Task {
 
     /**
      * Setter for format.
-     *
+     * 
      * @param format the format to set
      */
     public void setFormat(String format) {
@@ -272,7 +282,7 @@ public class ExdocTask extends Task {
 
     /**
      * Setter for output.
-     *
+     * 
      * @param output the output to set
      */
     public void setOutput(String output) {
@@ -282,7 +292,7 @@ public class ExdocTask extends Task {
 
     /**
      * Setter for verbose.
-     *
+     * 
      * @param verbose the verbose to set
      */
     public void setVerbose(boolean verbose) {

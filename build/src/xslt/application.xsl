@@ -97,8 +97,7 @@
   <include name="{@name}/src/java/**/*.properties"/>
   <include name="{@name}/src/java/**/*.xml"/>
   <include name="{@name}/src/java/**/*.txt"/>
-  <include name="{@name}/src/resources/**/*.properties"/>
-  <include name="{@name}/src/resources/**/*.xml"/>
+  <include name="{@name}/src/resources/**/*"/>
 </xsl:template>
 
  <!-- ===================================================================== -->
@@ -113,18 +112,18 @@
 
  <!-- ===================================================================== -->
 <xsl:template match="component" mode="test">
-  <include name="{@name}/src/test"/>
+  <include name="{@name}/src/test/java"/>
 </xsl:template>
 
  <!-- ===================================================================== -->
 <xsl:template match="component" mode="testfiles">
-  <include name="{@name}/src/test/**/*Test.java"/>
+  <include name="{@name}/src/test/java/**/*Test.java"/>
 </xsl:template>
 
  <!-- ===================================================================== -->
 <xsl:template match="component" mode="testpath">
   <include name="{@name}/lib/*.jar"/>
-  <include name="{@name}/lib.test/*.jar"/>
+  <include name="{@name}/test/lib/*.jar"/>
 </xsl:template>
 
 </xsl:stylesheet>
