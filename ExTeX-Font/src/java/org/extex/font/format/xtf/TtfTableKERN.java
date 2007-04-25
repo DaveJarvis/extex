@@ -562,54 +562,9 @@ public class TtfTableKERN extends AbstractXtfTable
     }
 
     /**
-     * Class for a key.
-     */
-    private class Key {
-
-        /**
-         * The left one.
-         */
-        private int left;
-
-        /**
-         * The right one.
-         */
-        private int right;
-
-        /**
-         * Creates a new object.
-         * 
-         * @param l The left one.
-         * @param r The right one.
-         */
-        public Key(int l, int r) {
-
-            left = l;
-            right = r;
-        }
-
-        /**
-         * Creates a new object.
-         * 
-         * @param kp The kerning pair.
-         */
-        public Key(KerningPair kp) {
-
-            left = kp.getLeft();
-            right = kp.getRight();
-        }
-
-        @Override
-        public String toString() {
-
-            return left + " " + right;
-        }
-    }
-
-    /**
      * The map for the entries.
      */
-    private Map<Key, Integer> kernmap = new HashMap<Key, Integer>();
+    private Map<String, Integer> kernmap = new HashMap<String, Integer>();
 
     /**
      * number of tables
@@ -648,10 +603,25 @@ public class TtfTableKERN extends AbstractXtfTable
             for (int ks = 0, n = tables[i].getKerningCount(); ks < n; ks++) {
                 KerningPair kp = tables[i].getKerning(ks);
                 if (kp != null) {
-                    kernmap.put(new Key(kp), (int) kp.getValue());
+                    kernmap.put(createKey(kp.getLeft(), kp.getRight()),
+                        (int) kp.getValue());
                 }
             }
         }
+    }
+
+    /**
+     * Create a key.
+     * 
+     * @param l The left value.
+     * @param r The right value.
+     * @return Return the key.
+     */
+    private String createKey(int l, int r) {
+
+        StringBuffer buf = new StringBuffer(l);
+        buf.append(" ").append(r);
+        return buf.toString();
     }
 
     /**
@@ -663,7 +633,7 @@ public class TtfTableKERN extends AbstractXtfTable
      */
     public int getKerning(int l, int r) {
 
-        Integer val = kernmap.get(new Key(l, r));
+        Integer val = kernmap.get(createKey(l, r));
         if (val != null) {
             return val.intValue();
         }
