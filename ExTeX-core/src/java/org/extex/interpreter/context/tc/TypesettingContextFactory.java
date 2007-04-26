@@ -50,7 +50,7 @@ public class TypesettingContextFactory extends AbstractFactory {
     /**
      * The field <tt>languageManager</tt> contains the language manager.
      */
-    private transient LanguageManager languageManager = null;
+    private LanguageManager languageManager = null;
 
     /**
      * The field <tt>theClass</tt> contains the class to instantiate. It is

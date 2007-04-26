@@ -51,7 +51,7 @@ public class InFile implements Serializable {
     /**
      * The field <tt>stream</tt> contains the stream.
      */
-    private TokenStream stream = null;
+    private transient TokenStream stream = null;
 
     /**
      * Creates a new object.

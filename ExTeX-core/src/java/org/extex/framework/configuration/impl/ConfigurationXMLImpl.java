@@ -21,7 +21,6 @@ package org.extex.framework.configuration.impl;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -48,7 +47,7 @@ import org.xml.sax.SAXException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ConfigurationXMLImpl implements Configuration, Serializable {
+public class ConfigurationXMLImpl implements Configuration {
 
     /**
      * This inner class provides an iterator for all sub-configurations of a
@@ -189,7 +188,7 @@ public class ConfigurationXMLImpl implements Configuration, Serializable {
     private Element root;
 
     /**
-     * The field <tt>fullName</tt> contains the url of the resource found.
+     * The field <tt>fullName</tt> contains the URL of the resource found.
      */
     private String fullName;
 

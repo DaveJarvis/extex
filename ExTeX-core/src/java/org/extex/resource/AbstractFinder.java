@@ -64,18 +64,18 @@ public abstract class AbstractFinder implements LogEnabled, ResourceFinder {
     /**
      * The field <tt>bundle</tt> contains the resource bundle for messages.
      */
-    private transient ResourceBundle bundle = null;
+    private ResourceBundle bundle = null;
 
     /**
      * The field <tt>configuration</tt> contains the configuration object on
      * which this resource finder is based.
      */
-    private transient Configuration configuration;
+    private Configuration configuration;
 
     /**
      * The field <tt>logger</tt> contains the logger to be used for tracing.
      */
-    private transient Logger logger = null;
+    private Logger logger = null;
 
     /**
      * The field <tt>trace</tt> contains the indicator that tracing is required.

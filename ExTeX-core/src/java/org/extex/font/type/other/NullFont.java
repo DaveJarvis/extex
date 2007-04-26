@@ -381,7 +381,7 @@ public class NullFont implements Font, Serializable {
         if (efCode == null) {
             efCode = new HashMap<UnicodeChar, Long>();
         }
-        efCode.put(uc, new Long(code));
+        efCode.put(uc, Long.valueOf(code));
     }
 
     /**

@@ -23,6 +23,7 @@ import java.io.Serializable;
 import java.util.logging.Logger;
 
 import org.extex.core.dimen.FixedDimen;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.noad.MathGlyph;
@@ -213,18 +214,7 @@ public class MathDelimiter implements Noad, Serializable {
     }
 
     /**
-     * Translate a Noad into a NodeList.
-     *
-     * @param previousNoad the previous noad
-     * @param noads the list of noads currently processed
-     * @param index the index of the current node in the list
-     * @param list the list to add the nodes to. This list contains the Nodes
-     *  previously typeset. Thus it can be used to look back
-     * @param mathContext the context to consider
-     * @param logger the logger for debugging and tracing information
-     *
-     * @throws TypesetterException in case of a problem
-     * @throws ConfigurationException in case of a configuration problem
+     * {@inheritDoc}
      *
      * @see org.extex.typesetter.type.noad.Noad#typeset(
      *      org.extex.typesetter.type.noad.Noad,
@@ -258,7 +248,7 @@ public class MathDelimiter implements Noad, Serializable {
      */
     public void typeset(NodeList list, MathContext mathContext,
             FixedDimen height, FixedDimen depth)
-            throws TypesetterException {
+            throws TypesetterException, ConfigurationException {
 
         if (mathClass == null && smallChar == null && largeChar == null) {
             return;

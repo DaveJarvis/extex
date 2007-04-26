@@ -19,6 +19,7 @@
 
 package org.extex.interpreter.type;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -27,39 +28,41 @@ import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 
 /**
- * This is the base class for assignments.
- * The assignments are implemented like any Code with the exception that the
- * method <tt>assign</tt> is used instead of the method <tt>execute</tt>.
- *
+ * This is the base class for assignments. The assignments are implemented like
+ * any Code with the exception that the method <tt>assign</tt> is used instead
+ * of the method <tt>execute</tt>.
+ * 
  * <p>
- *  This abstract class takes care of the treatment of the
- *  <tt>\afterassignment</tt> token and the <tt>\globaldefs</tt> declaration.
+ * This abstract class takes care of the treatment of the
+ * <tt>\afterassignment</tt> token and the <tt>\globaldefs</tt> declaration.
  * </p>
- *
- *
+ * 
+ * 
  * <doc name="globaldefs" type="register">
  * <h3>The Count Parameter <tt>\globaldefs</tt></h3>
  * <p>
- *  The count register <tt>\globaldefs</tt> contains the indicator that an
- *  assignment should be performed globally. If its value is greater than zero
- *  then all assignments are global. Otherwise the grouping is honored. In this
- *  sense setting <tt>\globaldefs</tt> to a positive value implicitly
- *  prefixes all assignments with <tt>\global</tt>.
+ * The count register <tt>\globaldefs</tt> contains the indicator that an
+ * assignment should be performed globally. If its value is greater than zero
+ * then all assignments are global. Otherwise the grouping is honored. In this
+ * sense setting <tt>\globaldefs</tt> to a positive value implicitly prefixes
+ * all assignments with <tt>\global</tt>.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;globaldefs&rang;
  *       &rarr; <tt>\globaldefs</tt> ...  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \globaldefs=1  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -67,7 +70,7 @@ public abstract class AbstractAssignment extends AbstractCode {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public AbstractAssignment(String name) {
@@ -81,37 +84,26 @@ public abstract class AbstractAssignment extends AbstractCode {
      * This method is preferable to <tt>execute()</tt> since the
      * <tt>execute()</tt> method provided in this class takes care of
      * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> as well.
-     *
+     * 
      * @param prefix the prefix controlling the execution
      * @param context the interpreter context
      * @param source the token source
      * @param typesetter the typesetter
-     *
+     * 
      * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
      */
     public abstract void assign(Flags prefix, Context context,
             TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+            throws InterpreterException,
+                ConfigurationException;
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     * @throws ConfigurationException in case of an configuration error
-     *
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public final void execute(Flags prefix, Context context,
             TokenSource source, Typesetter typesetter)

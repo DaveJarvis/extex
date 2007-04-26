@@ -23,6 +23,7 @@ import java.io.ObjectStreamException;
 import java.io.Serializable;
 
 import org.extex.framework.Registrar;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.i18n.Localizable;
 import org.extex.framework.i18n.Localizer;
 import org.extex.interpreter.Flags;
@@ -36,9 +37,9 @@ import org.extex.typesetter.Typesetter;
 
 /**
  * This is the abstract base class which can be used for all classes
- * implementing the interface Code. It provides some useful definitions for
- * most of the methods.
- *
+ * implementing the interface Code. It provides some useful definitions for most
+ * of the methods.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -46,16 +47,17 @@ import org.extex.typesetter.Typesetter;
 public abstract class AbstractCode implements Code, Localizable, Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Return the printable version of a token for error messages.
-     *
+     * 
      * @param context the processing context
      * @param token the token to get a printable representation for
-     *
+     * 
      * @return the control sequence including the escape character
      */
     public static String printable(Context context, Token token) {
@@ -67,8 +69,8 @@ public abstract class AbstractCode implements Code, Localizable, Serializable {
     }
 
     /**
-     * The field <tt>localizer</tt> contains the localizer or <code>null</code>
-     * if none has been set yet.
+     * The field <tt>localizer</tt> contains the localizer or
+     * <code>null</code> if none has been set yet.
      */
     private transient Localizer localizer = null;
 
@@ -79,7 +81,7 @@ public abstract class AbstractCode implements Code, Localizable, Serializable {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param codeName the name of the primitive
      */
     public AbstractCode(String codeName) {
@@ -90,9 +92,9 @@ public abstract class AbstractCode implements Code, Localizable, Serializable {
 
     /**
      * Setter for the localizer.
-     *
+     * 
      * @param theLocalizer the new value for the localizer
-     *
+     * 
      * @see org.extex.framework.i18n.Localizable#enableLocalization(
      *      org.extex.framework.i18n.Localizer)
      */
@@ -102,27 +104,16 @@ public abstract class AbstractCode implements Code, Localizable, Serializable {
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     * @throws ConfigurationException in case of an configuration error
-     *
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter)
+            throws InterpreterException,
+                ConfigurationException {
 
         throw new CantUseInException(printableControlSequence(context),
             typesetter.getMode().toString());
@@ -130,7 +121,7 @@ public abstract class AbstractCode implements Code, Localizable, Serializable {
 
     /**
      * Getter for localizer.
-     *
+     * 
      * @return the localizer.
      */
     protected Localizer getLocalizer() {
@@ -169,9 +160,9 @@ public abstract class AbstractCode implements Code, Localizable, Serializable {
      * This method is meant to produce a printable version of the control
      * sequence for error messages.
      * </p>
-     *
+     * 
      * @param context the processing context
-     *
+     * 
      * @return the control sequence including the escape character
      */
     protected String printableControlSequence(Context context) {
@@ -181,9 +172,9 @@ public abstract class AbstractCode implements Code, Localizable, Serializable {
 
     /**
      * Restore the internal state when the instance is loaded from file.
-     *
+     * 
      * @return the object which should be used instead of the one read
-     *
+     * 
      * @throws ObjectStreamException in case of an error
      */
     protected Object readResolve() throws ObjectStreamException {
