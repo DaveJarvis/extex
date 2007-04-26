@@ -59,7 +59,7 @@ import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Configuration {
+public interface Configuration extends Iterable<Configuration> {
 
     /**
      * Extract a sub-configuration with a given name.
