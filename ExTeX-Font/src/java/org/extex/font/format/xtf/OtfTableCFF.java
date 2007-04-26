@@ -202,7 +202,7 @@ public class OtfTableCFF extends AbstractXtfTable
     /**
      * The named index.
      */
-    private List namedIndex;
+    private List<String> namedIndex;
 
     /**
      * offset size
@@ -212,7 +212,7 @@ public class OtfTableCFF extends AbstractXtfTable
     /**
      * The string index.
      */
-    private List stringIndex;
+    private List<String> stringIndex;
 
     /**
      * The map for the string name - sid
@@ -222,7 +222,7 @@ public class OtfTableCFF extends AbstractXtfTable
     /**
      * The top dict index.
      */
-    private Map topDictIndex;
+    private Map<String, T2Operator> topDictIndex;
 
     /**
      * Version major
@@ -253,11 +253,32 @@ public class OtfTableCFF extends AbstractXtfTable
         // header
         readHeader(rar);
 
-        // index
-        readNameIndex(de, rar);
-        readTopDictIndex(rar);
-        readStringIndex(rar);
+        // read the names for the fonts.
+        long nextOffset = readNameIndex(de.getOffset() + hdrSize, rar);
+        fonts = new CffFont[namedIndex.size()];
+        for (int i = 0; i < fonts.length; i++) {
+            fonts[i] = new CffFont(namedIndex.get(i));
+        }
 
+        // TODO for each font read the top dict index
+        
+        // read the top dict index
+        nextOffset = readTopDictIndex(nextOffset, rar);
+
+        // read the string index
+        nextOffset = readStringIndex(nextOffset, rar);
+
+        // read the gsubr index
+        nextOffset = readGSubrIndex(nextOffset, rar);
+
+        // gsubrIndexOffset = stringOffsets[stringOffsets.length - 1];
+        // gsubrOffsets = getIndex(rar, gsubrIndexOffset);
+        //
+        //                
+
+        // // index
+        // readGSubrIndex(rar);
+        //
         // initialize the T2Operators
         Iterator it = topDictIndex.keySet().iterator();
         while (it.hasNext()) {
@@ -268,7 +289,6 @@ public class OtfTableCFF extends AbstractXtfTable
 
         // add default values
         // encoding
-        // exists an encoding?
         addDefaultEncoding();
 
         // Global Subr INDEX
@@ -1045,7 +1065,7 @@ public class OtfTableCFF extends AbstractXtfTable
         if (sid != null) {
 
             // get charset
-            T2Operator op = (T2Operator) topDictIndex.get("charset");
+            T2Operator op = topDictIndex.get("charset");
             if (op != null && op instanceof T2TDOCharset) {
 
                 T2TDOCharset val = (T2TDOCharset) op;
@@ -1066,7 +1086,7 @@ public class OtfTableCFF extends AbstractXtfTable
     public String mapGlyphPosToGlyphName(int glyphpos) {
 
         // get charset
-        T2Operator op = (T2Operator) topDictIndex.get("charset");
+        T2Operator op = topDictIndex.get("charset");
         if (op != null && op instanceof T2TDOCharset) {
 
             T2TDOCharset val = (T2TDOCharset) op;
@@ -1170,6 +1190,11 @@ public class OtfTableCFF extends AbstractXtfTable
     }
 
     /**
+     * The fonts in the cff table.
+     */
+    private CffFont[] fonts;
+
+    /**
      * Read the name index.
      * 
      * This contains the PostScript language names (FontName or CIDFontName) of
@@ -1181,33 +1206,25 @@ public class OtfTableCFF extends AbstractXtfTable
      * must be at least one entry in this INDEX, i.e. the FontSet must contain
      * at least one font.
      * 
-     * @param de The entry.
      * @param rar The Input.
-     * @throws IOException if an io-error occuured.
+     * @return Returns the next offset.
+     * @throws IOException if an io-error occurred.
      */
-    private void readNameIndex(XtfTableDirectory.Entry de, RandomAccessR rar)
+    private long readNameIndex(int offset, RandomAccessR rar)
             throws IOException {
 
-        int offset = de.getOffset() + hdrSize;
-        namedIndex = new ArrayList();
+        namedIndex = new ArrayList<String>();
 
-        if (offset > 0) {
-            rar.seek(offset);
+        rar.seek(offset);
+        int[] offsetarray = readOffsets(rar);
 
-            int count = rar.readUnsignedShort();
-            if (count > 0) {
-                int[] offsetarray = readOffsets(rar, count);
-
-                // get data
-                for (int i = 0; i < count; i++) {
-                    byte[] data =
-                            readDataFromIndex(offsetarray[i],
-                                offsetarray[i + 1], rar);
-                    namedIndex.add(convertArrayToString(data));
-                }
-            }
-
+        // get data
+        for (int i = 0; i < offsetarray.length - 1; i++) {
+            byte[] data =
+                    readDataFromIndex(offsetarray[i], offsetarray[i + 1], rar);
+            namedIndex.add(convertArrayToString(data));
         }
+        return rar.getPointer();
     }
 
     /**
@@ -1234,12 +1251,12 @@ public class OtfTableCFF extends AbstractXtfTable
      * Read the offsets.
      * 
      * @param rar The input.
-     * @param count The count.
      * @return Returns the offsets.
      * @throws IOException if a IO-error occurred.
      */
-    private int[] readOffsets(RandomAccessR rar, int count) throws IOException {
+    private int[] readOffsets(RandomAccessR rar) throws IOException {
 
+        int count = rar.readUnsignedShort();
         int ioffSize = rar.readUnsignedByte();
         int[] offsetarray = new int[count + 1];
 
@@ -1279,58 +1296,74 @@ public class OtfTableCFF extends AbstractXtfTable
      * represented by an empty INDEX.
      * </p>
      * 
+     * @param nextOffset The offset.
      * @param rar The input.
+     * @return Returns the next offset.
      * @throws IOException if an IO-error occurred.
      */
-    private void readStringIndex(RandomAccessR rar) throws IOException {
+    private long readStringIndex(long nextOffset, RandomAccessR rar)
+            throws IOException {
 
-        stringIndex = new ArrayList();
+        stringIndex = new ArrayList<String>();
 
-        int count = rar.readUnsignedShort();
-        if (count > 0) {
-            int[] offsetarray = readOffsets(rar, count);
+        rar.seek(nextOffset);
+        int[] offsetarray = readOffsets(rar);
 
-            // get data
-            for (int i = 0; i < count; i++) {
-                byte[] data =
-                        readDataFromIndex(offsetarray[i], offsetarray[i + 1],
-                            rar);
-                stringIndex.add(convertArrayToString(data));
-            }
+        // get data
+        for (int i = 0; i < offsetarray.length - 1; i++) {
+            byte[] data =
+                    readDataFromIndex(offsetarray[i], offsetarray[i + 1], rar);
+            stringIndex.add(convertArrayToString(data));
         }
+        return rar.getPointer();
+    }
+
+    private long readGSubrIndex(long nextOffset, RandomAccessR rar)
+            throws IOException {
+
+        rar.seek(nextOffset);
+        int[] offsetarray = readOffsets(rar);
+
+        // // get data
+        // for (int i = 0; i < offsetarray.length - 1; i++) {
+        // byte[] data =
+        // readDataFromIndex(offsetarray[i], offsetarray[i + 1], rar);
+        // stringIndex.add(convertArrayToString(data));
+        // }
+        return rar.getPointer();
     }
 
     /**
      * Read the top dict index.
      * 
+     * @param offset The offset.
      * @param rar The input.
+     * @return Returns the next offset.
      * @throws IOException if an IO-error occurred.
      */
-    private void readTopDictIndex(RandomAccessR rar) throws IOException {
+    private long readTopDictIndex(long offset, RandomAccessR rar)
+            throws IOException {
 
-        topDictIndex = new HashMap();
+        topDictIndex = new HashMap<String, T2Operator>();
 
-        int count = rar.readUnsignedShort();
-        if (count > 0) {
-            int[] offsetarray = readOffsets(rar, count);
+        int[] offsetarray = readOffsets(rar);
 
-            // get data
-            for (int i = 0; i < count; i++) {
-                byte[] data =
-                        readDataFromIndex(offsetarray[i], offsetarray[i + 1],
-                            rar);
-                RandomAccessInputArray arar = new RandomAccessInputArray(data);
-                try {
-                    // read until end of input -> IOException
-                    while (true) {
-                        T2Operator op = T2CharString.readTopDICTOperator(arar);
-                        topDictIndex.put(op.getName().toLowerCase(), op);
-                    }
-                } catch (IOException e) {
-                    // EOF
+        // get data
+        for (int i = 0; i < offsetarray.length - 1; i++) {
+            byte[] data =
+                    readDataFromIndex(offsetarray[i], offsetarray[i + 1], rar);
+            RandomAccessInputArray arar = new RandomAccessInputArray(data);
+            try {
+                // read until end of input -> IOException
+                while (true) {
+                    T2Operator op = T2CharString.readTopDICTOperator(arar);
+                    topDictIndex.put(op.getName().toLowerCase(), op);
                 }
+            } catch (IOException e) {
+                // EOF
             }
         }
+        return rar.getPointer();
     }
 
     /**
@@ -1379,6 +1412,96 @@ public class OtfTableCFF extends AbstractXtfTable
         // ------------
         writer.writeComment("incomplete");
         writer.writeEndElement();
+    }
+
+    protected final class CffFont {
+
+        /**
+         * The name of the font.
+         */
+        private String name;
+
+        /**
+         * Creates a new object.
+         * 
+         * @param fontname The name of the font.
+         */
+        public CffFont(String fontname) {
+
+            name = fontname;
+        }
+
+        public String fullName;
+
+        public boolean isCID = false;
+
+        public int privateOffset = -1; // only if not CID
+
+        public int privateLength = -1; // only if not CID
+
+        public int privateSubrs = -1;
+
+        public int charstringsOffset = -1;
+
+        public int encodingOffset = -1;
+
+        public int charsetOffset = -1;
+
+        public int fdarrayOffset = -1; // only if CID
+
+        public int fdselectOffset = -1; // only if CID
+
+        public int[] fdprivateOffsets;
+
+        public int[] fdprivateLengths;
+
+        public int[] fdprivateSubrs;
+
+        public int nglyphs;
+
+        public int nstrings;
+
+        public int CharsetLength;
+
+        public int[] charstringsOffsets;
+
+        public int[] charset;
+
+        public int[] FDSelect;
+
+        public int FDSelectLength;
+
+        public int FDSelectFormat;
+
+        public int CharstringType = 2;
+
+        public int FDArrayCount;
+
+        public int FDArrayOffsize;
+
+        public int[] FDArrayOffsets;
+
+        public int[] PrivateSubrsOffset;
+
+        public int[][] PrivateSubrsOffsetsArray;
+
+        public int[] SubrsOffsets;
+
+        @Override
+        public String toString() {
+
+            return name;
+        }
+
+        /**
+         * Getter for name.
+         * 
+         * @return the name
+         */
+        public String getName() {
+
+            return name;
+        }
     }
 
 }

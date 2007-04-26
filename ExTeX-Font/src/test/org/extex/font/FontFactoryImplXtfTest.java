@@ -26,10 +26,10 @@ import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
 import org.extex.font.type.other.NullFont;
-import org.extex.font.unicode.GlyphName;
 
 /**
  * Test for the font factory (xtf).
+ * (At the moment only ttf!)
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -396,7 +396,7 @@ public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
         UnicodeChar l =
                 font.getLigature(UnicodeChar.get('f'), UnicodeChar.get('f'));
 
-        // Font gara hat keine Ligaturen!
+        // Font gara has no ligatures!
         assertNull(l);
     }
 
