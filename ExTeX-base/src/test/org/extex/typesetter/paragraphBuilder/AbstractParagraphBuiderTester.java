@@ -288,6 +288,11 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
     private TypesettingContextImpl tc = new TypesettingContextImpl(new Font() {
 
         /**
+         * The field <tt>serialVersionUID</tt> contains the ...
+         */
+        private static final long serialVersionUID = 1L;
+
+        /**
          * The field <tt>hyphenChar</tt> contains the hyphen character.
          */
         private UnicodeChar hyphenChar = UnicodeChar.get('-');

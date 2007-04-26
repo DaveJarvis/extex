@@ -1729,7 +1729,7 @@ public class CMR10 implements Font, Serializable {
      */
     public void setEfCode(UnicodeChar uc, long code) {
 
-        efcode.put(uc, new Long(code));
+        efcode.put(uc, Long.valueOf(code));
     }
 
     /**

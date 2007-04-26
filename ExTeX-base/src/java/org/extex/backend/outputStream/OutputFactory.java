@@ -252,7 +252,7 @@ public class OutputFactory extends AbstractFactory
             filename = MessageFormat.format(format, //
                 new Object[]{basename, //
                         (name == null ? "" : name), //
-                        new Long(cnt), //
+                        Long.valueOf(cnt), //
                         (ext == null ? "" : ext)});
         }
 

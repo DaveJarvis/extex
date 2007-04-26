@@ -19,6 +19,8 @@
 
 package org.extex.typesetter.output;
 
+import java.io.Serializable;
+
 import org.extex.backend.BackendDriver;
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
@@ -158,7 +160,12 @@ import org.extex.typesetter.type.page.Page;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4483 $
  */
-public class TeXOutputRoutine implements OutputRoutine {
+public class TeXOutputRoutine implements OutputRoutine, Serializable {
+
+    /**
+     * The field <tt>serialVersionUID</tt> contains the ...
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * The field <tt>OUTPUT_BOX</tt> contains the index of the box register to

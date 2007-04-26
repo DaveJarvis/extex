@@ -385,7 +385,7 @@ public class LauncherFont implements Font, Serializable {
      */
     public void setEfCode(UnicodeChar uc, long code) {
 
-        efCode.put(uc, new Long(code));
+        efCode.put(uc, Long.valueOf(code));
     }
 
     /**
