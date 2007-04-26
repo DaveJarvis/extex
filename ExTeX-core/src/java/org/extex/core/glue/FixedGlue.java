@@ -47,7 +47,7 @@ public interface FixedGlue {
     FixedGlue ZERO = new Glue(0);
 
     /**
-     * The constant <tt>SS</tt> contains the glue to insert for this primitive.
+     * The constant <tt>SS</tt> contains the glue for 0pt plus 1fil minus 1fil.
      */
     FixedGlue S_S =
             new Glue(GlueComponent.ZERO, GlueComponent.ONE_FIL,
