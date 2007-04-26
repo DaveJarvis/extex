@@ -26,7 +26,7 @@ import org.extex.util.xml.XMLStreamWriter;
 
 /**
  * Abstract class for all array-values.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -45,12 +45,13 @@ public abstract class T2TDOArray extends T2TopDICTOperator {
 
     /**
      * Create a new object.
-     *
+     * 
      * @param stack the stack
-     * @param id    the operator-id for the value
+     * @param id the operator-id for the value
      * @throws IOException if an IO.error occurs.
      */
-    protected T2TDOArray(List<T2Number> stack, short[] id) throws IOException {
+    protected T2TDOArray(List<T2CharString> stack, short[] id)
+            throws IOException {
 
         super();
         if (stack.size() < 1) {
@@ -61,13 +62,13 @@ public abstract class T2TDOArray extends T2TopDICTOperator {
 
         value = new T2Number[stack.size()];
         for (int i = 0; i < stack.size(); i++) {
-            value[i] = stack.get(i);
+            value[i] = (T2Number) stack.get(i);
         }
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
      */
     public short[] getBytes() {
@@ -77,7 +78,7 @@ public abstract class T2TDOArray extends T2TopDICTOperator {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.format.xtf.cff.T2Operator#getValue()
      */
     public Object getValue() {
@@ -87,6 +88,7 @@ public abstract class T2TDOArray extends T2TopDICTOperator {
 
     /**
      * Check, if the objekt is a array.
+     * 
      * @return Returns <code>true</code>, if the object is a array.
      */
     public boolean isArray() {
@@ -96,7 +98,7 @@ public abstract class T2TDOArray extends T2TopDICTOperator {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     public String toString() {
@@ -110,7 +112,7 @@ public abstract class T2TDOArray extends T2TopDICTOperator {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.util.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */

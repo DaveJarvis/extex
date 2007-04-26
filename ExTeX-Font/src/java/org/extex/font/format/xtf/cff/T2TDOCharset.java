@@ -74,7 +74,7 @@ public class T2TDOCharset extends T2TDONumber {
      */
     public T2TDOCharset(List stack) throws IOException {
 
-        super(stack, new short[]{CHARSET});
+        super(stack, new short[]{CFF_CHARSET});
     }
 
     /**
@@ -280,6 +280,12 @@ public class T2TDOCharset extends T2TDONumber {
         }
         writer.writeEndElement();
 
+    }
+
+    @Override
+    public int getID() {
+
+        return T2TopDICTOperator.TYPE_CHARSET;
     }
 
 }

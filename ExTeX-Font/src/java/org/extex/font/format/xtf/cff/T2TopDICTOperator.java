@@ -27,43 +27,157 @@ import org.extex.util.file.random.RandomAccessR;
 
 /**
  * Top DICT Operator.
- *
- * <p>Top DICT Operator Entries<p>
- * <table border="1">
- *   <thead>
- *     <tr><td><b>Name</b></td><td><b>Value</b></td>
- *         <td><b>Operand(s)</b></td><td><b>Default, notes</b></td>
- *     </tr>
- *   </thead>
- *   <tr><td>Version</td><td>0</td><td>SID</td><td>- , FontInfo</td></tr>
- *   <tr><td>Notice</td><td>1</td><td>SID</td>- , FontInfo</td></tr>
- *   <tr><td>Copyright</td><td>12 0</td><td>SID</td><td>- , FontInfo</td></tr>
- *   <tr><td>FullName</td><td>2</td><td>SID</td><td>- , FontInfo</td></tr>
- *   <tr><td>FamilyName</td><td>3</td><td>SID</td><td>- , FontInfo</td></tr>
- *   <tr><td>Weight</td><td>4</td><td>SID</td><td>- , FontInfo</td></tr>
- *   <tr><td>isFixedPitch</td><td>12 1</td><td>boolean</td><td>0 (false), FontInfo</td></tr>
- *   <tr><td>ItalicAngle</td><td>12 2</td><td>number</td><td>0, FontInfo</td></tr>
- *   <tr><td>UnderlinePosition</td><td>12 3</td><td>number</td><td>-100, FontInfo</td></tr>
- *   <tr><td>UnderlineThickness</td><td>12 4</td><td>number</td><td>50, FontInfo</td></tr>
- *   <tr><td>PaintType</td><td>12 5</td><td>number</td><td>0</td></tr>
- *   <tr><td>CharstringType</td><td>12 6</td><td>number</td><td>2</td></tr>
- *   <tr><td>FontMatrix</td><td>12 7</td><td>array</td><td>0.001 0 0 0.001 0 0</td></tr>
- *   <tr><td>UniqueID</td><td>13</td><td>number</td><td>-</td></tr>
- *   <tr><td>FontBBox</td><td>5</td><td>array</td><td>0 0 0 0</td></tr>
- *   <tr><td>StrokeWidth</td><td>12 8</td><td>number</td><td>0</td></tr>
- *   <tr><td>XUID</td><td>14</td><td>array</td><td>-</td></tr>
- *   <tr><td>charset</td><td>15</td><td>number</td><td>0, charset offset (0)</td></tr>
- *   <tr><td>Encoding</td><td>16</td><td>number</td><td>0, encoding offset (0)</td></tr>
- *   <tr><td>CharStrings</td><td>17</td><td>number</td><td>
- *      - , CharStrings offset (0)</td></tr>
- *   <tr><td>Private</td><td>18</td><td>number number</td><td>
- *      - , Private DICT size and offset (0)</td></tr>
- *   <tr><td>SyntheticBase</td><td>12 20</td><td>number</td><td>
- *      - , synthetic base font index</td></tr>
- *   <tr><td>PostScript</td><td>12 21</td><td>SID</td><td>
- *      - , embedded PostScript language code</td></tr>
+ * 
+ * <p>
+ * Top DICT Operator Entries
+ * <p>
+ * <table border="1"> <thead>
+ * <tr>
+ * <td><b>Name</b></td>
+ * <td><b>Value</b></td>
+ * <td><b>Operand(s)</b></td>
+ * <td><b>Default, notes</b></td>
+ * </tr>
+ * </thead>
+ * <tr>
+ * <td>Version</td>
+ * <td>0</td>
+ * <td>SID</td>
+ * <td>- , FontInfo</td>
+ * </tr>
+ * <tr>
+ * <td>Notice</td>
+ * <td>1</td>
+ * <td>SID</td>- , FontInfo</td>
+ * </tr>
+ * <tr>
+ * <td>Copyright</td>
+ * <td>12 0</td>
+ * <td>SID</td>
+ * <td>- , FontInfo</td>
+ * </tr>
+ * <tr>
+ * <td>FullName</td>
+ * <td>2</td>
+ * <td>SID</td>
+ * <td>- , FontInfo</td>
+ * </tr>
+ * <tr>
+ * <td>FamilyName</td>
+ * <td>3</td>
+ * <td>SID</td>
+ * <td>- , FontInfo</td>
+ * </tr>
+ * <tr>
+ * <td>Weight</td>
+ * <td>4</td>
+ * <td>SID</td>
+ * <td>- , FontInfo</td>
+ * </tr>
+ * <tr>
+ * <td>isFixedPitch</td>
+ * <td>12 1</td>
+ * <td>boolean</td>
+ * <td>0 (false), FontInfo</td>
+ * </tr>
+ * <tr>
+ * <td>ItalicAngle</td>
+ * <td>12 2</td>
+ * <td>number</td>
+ * <td>0, FontInfo</td>
+ * </tr>
+ * <tr>
+ * <td>UnderlinePosition</td>
+ * <td>12 3</td>
+ * <td>number</td>
+ * <td>-100, FontInfo</td>
+ * </tr>
+ * <tr>
+ * <td>UnderlineThickness</td>
+ * <td>12 4</td>
+ * <td>number</td>
+ * <td>50, FontInfo</td>
+ * </tr>
+ * <tr>
+ * <td>PaintType</td>
+ * <td>12 5</td>
+ * <td>number</td>
+ * <td>0</td>
+ * </tr>
+ * <tr>
+ * <td>CharstringType</td>
+ * <td>12 6</td>
+ * <td>number</td>
+ * <td>2</td>
+ * </tr>
+ * <tr>
+ * <td>FontMatrix</td>
+ * <td>12 7</td>
+ * <td>array</td>
+ * <td>0.001 0 0 0.001 0 0</td>
+ * </tr>
+ * <tr>
+ * <td>UniqueID</td>
+ * <td>13</td>
+ * <td>number</td>
+ * <td>-</td>
+ * </tr>
+ * <tr>
+ * <td>FontBBox</td>
+ * <td>5</td>
+ * <td>array</td>
+ * <td>0 0 0 0</td>
+ * </tr>
+ * <tr>
+ * <td>StrokeWidth</td>
+ * <td>12 8</td>
+ * <td>number</td>
+ * <td>0</td>
+ * </tr>
+ * <tr>
+ * <td>XUID</td>
+ * <td>14</td>
+ * <td>array</td>
+ * <td>-</td>
+ * </tr>
+ * <tr>
+ * <td>charset</td>
+ * <td>15</td>
+ * <td>number</td>
+ * <td>0, charset offset (0)</td>
+ * </tr>
+ * <tr>
+ * <td>Encoding</td>
+ * <td>16</td>
+ * <td>number</td>
+ * <td>0, encoding offset (0)</td>
+ * </tr>
+ * <tr>
+ * <td>CharStrings</td>
+ * <td>17</td>
+ * <td>number</td>
+ * <td> - , CharStrings offset (0)</td>
+ * </tr>
+ * <tr>
+ * <td>Private</td>
+ * <td>18</td>
+ * <td>number number</td>
+ * <td> - , Private DICT size and offset (0)</td>
+ * </tr>
+ * <tr>
+ * <td>SyntheticBase</td>
+ * <td>12 20</td>
+ * <td>number</td>
+ * <td> - , synthetic base font index</td>
+ * </tr>
+ * <tr>
+ * <td>PostScript</td>
+ * <td>12 21</td>
+ * <td>SID</td>
+ * <td> - , embedded PostScript language code</td>
+ * </tr>
  * </table>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -80,7 +194,7 @@ public abstract class T2TopDICTOperator extends T2Operator {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.format.xtf.cff.T2CharString#isTopDICTOperator()
      */
     public boolean isTopDICTOperator() {
@@ -91,189 +205,190 @@ public abstract class T2TopDICTOperator extends T2Operator {
     /**
      * VERSION
      */
-    public static final int VERSION = 0;
+    public static final int CFF_VERSION = 0;
 
     /**
      * NOTICE
      */
-    public static final int NOTICE = 1;
+    public static final int CFF_NOTICE = 1;
 
     /**
      * FULLNAME
      */
-    public static final int FULLNAME = 2;
+    public static final int CFF_FULLNAME = 2;
 
     /**
      * FAMILYNAME
      */
-    public static final int FAMILYNAME = 3;
+    public static final int CFF_FAMILYNAME = 3;
 
     /**
      * WEIGHT
      */
-    public static final int WEIGHT = 4;
+    public static final int CFF_WEIGHT = 4;
 
     /**
      * FONTBBOX
      */
-    public static final int FONTBBOX = 5;
+    public static final int CFF_FONTBBOX = 5;
 
     /**
      * COPYRIGHT
      */
-    public static final int COPYRIGHT = 0;
+    public static final int CFF_COPYRIGHT = 0;
 
     /**
      * ISFIXEDPITCH
      */
-    public static final int ISFIXEDPITCH = 1;
+    public static final int CFF_ISFIXEDPITCH = 1;
 
     /**
      * ITALICANGLE
      */
-    public static final int ITALICANGLE = 2;
+    public static final int CFF_ITALICANGLE = 2;
 
     /**
      * UNDERLINEPOSITION
      */
-    public static final int UNDERLINEPOSITION = 3;
+    public static final int CFF_UNDERLINEPOSITION = 3;
 
     /**
      * UNDELINETHICKNESS
      */
-    public static final int UNDERLINETHICKNESS = 4;
+    public static final int CFF_UNDERLINETHICKNESS = 4;
 
     /**
      * PAINTTYPE
      */
-    public static final int PAINTTYPE = 5;
+    public static final int CFF_PAINTTYPE = 5;
 
     /**
      * CHARSTRINGTYPE
      */
-    public static final int CHARSTRINGTYPE = 6;
+    public static final int CFF_CHARSTRINGTYPE = 6;
 
     /**
      * FONTMATRIX
      */
-    public static final int FONTMATRIX = 7;
+    public static final int CFF_FONTMATRIX = 7;
 
     /**
      * STROKEWIDTH
      */
-    public static final int STROKEWIDTH = 8;
+    public static final int CFF_STROKEWIDTH = 8;
 
     /**
      * SYNTHETICBASE
      */
-    public static final int SYNTHETICBASE = 20;
+    public static final int CFF_SYNTHETICBASE = 20;
 
     /**
      * POSTSCRIPT
      */
-    public static final int POSTSCRIPT = 21;
+    public static final int CFF_POSTSCRIPT = 21;
 
     /**
      * UNIQUEID
      */
-    public static final int UNIQUEID = 13;
+    public static final int CFF_UNIQUEID = 13;
 
     /**
      * XUID
      */
-    public static final int XUID = 14;
+    public static final int CFF_XUID = 14;
 
     /**
      * CHARSET
      */
-    public static final int CHARSET = 15;
+    public static final int CFF_CHARSET = 15;
 
     /**
      * ENCODING
      */
-    public static final int ENCODING = 16;
+    public static final int CFF_ENCODING = 16;
 
     /**
      * CHARSTRINGS
      */
-    public static final int CHARSTRINGS = 17;
+    public static final int CFF_CHARSTRINGS = 17;
 
     /**
      * PRIVATE
      */
-    public static final int PRIVATE = 18;
+    public static final int CFF_PRIVATE = 18;
 
     /**
      * Create a new instance.
-     *
-     * @param rar       the input
+     * 
+     * @param rar the input
      * @return Returns the new T2Operatorr object.
      * @throws IOException if an IO-error occurs.
      */
-    public static T2Operator newInstance(RandomAccessR rar)
-            throws IOException {
+    public static T2Operator newInstance(RandomAccessR rar) throws IOException {
 
-        List<T2Number> stack = new ArrayList<T2Number>();
+        List<T2CharString> stack = new ArrayList<T2CharString>();
+
+        // TODO mgn missing ROS !!!
 
         while (true) {
 
             int b = rar.readUnsignedByte();
 
             switch (b) {
-                case VERSION :
+                case CFF_VERSION:
                     return new T2TDOVersion(stack);
-                case NOTICE :
+                case CFF_NOTICE:
                     return new T2TDONotice(stack);
-                case FULLNAME :
+                case CFF_FULLNAME:
                     return new T2TDOFullName(stack);
-                case FAMILYNAME :
+                case CFF_FAMILYNAME:
                     return new T2TDOFamilyName(stack);
-                case WEIGHT :
+                case CFF_WEIGHT:
                     return new T2TDOWeight(stack);
-                case FONTBBOX :
+                case CFF_FONTBBOX:
                     return new T2TDOFontBBox(stack);
-                case ESCAPE_BYTE :
+                case ESCAPE_BYTE:
                     int b1 = rar.readUnsignedByte();
                     switch (b1) {
-                        case COPYRIGHT :
+                        case CFF_COPYRIGHT:
                             return new T2TDOCopyright(stack);
-                        case ISFIXEDPITCH :
+                        case CFF_ISFIXEDPITCH:
                             return new T2TDOisFixedPitch(stack);
-                        case ITALICANGLE :
+                        case CFF_ITALICANGLE:
                             return new T2TDOItalicAngle(stack);
-                        case UNDERLINEPOSITION :
+                        case CFF_UNDERLINEPOSITION:
                             return new T2TDOUnderlinePosition(stack);
-                        case UNDERLINETHICKNESS :
+                        case CFF_UNDERLINETHICKNESS:
                             return new T2TDOUnderlineThickness(stack);
-                        case PAINTTYPE :
+                        case CFF_PAINTTYPE:
                             return new T2TDOPaintType(stack);
-                        case CHARSTRINGTYPE :
+                        case CFF_CHARSTRINGTYPE:
                             return new T2TDOCharStringType(stack);
-                        case FONTMATRIX :
+                        case CFF_FONTMATRIX:
                             return new T2TDOFontMatrix(stack);
-                        case STROKEWIDTH :
+                        case CFF_STROKEWIDTH:
                             return new T2TDOStrokeWidth(stack);
-                        case SYNTHETICBASE :
+                        case CFF_SYNTHETICBASE:
                             return new T2TDOSyntheticBase(stack);
-                        case POSTSCRIPT :
+                        case CFF_POSTSCRIPT:
                             return new T2TDOPostscript(stack);
-                        default :
+                        default:
                             throw new T2NotAOperatorException();
 
                     }
-                case UNIQUEID :
+                case CFF_UNIQUEID:
                     return new T2TDOUniqueID(stack);
-                case XUID :
+                case CFF_XUID:
                     return new T2TDOXUID(stack);
-                case CHARSET :
+                case CFF_CHARSET:
                     return new T2TDOCharset(stack);
-                case ENCODING :
+                case CFF_ENCODING:
                     return new T2TDOEncoding(stack);
-                case CHARSTRINGS :
+                case CFF_CHARSTRINGS:
                     return new T2TDOCharStrings(stack);
-                case PRIVATE :
+                case CFF_PRIVATE:
                     return new T2TDOPrivate(stack);
-                default :
+                default:
                     // number
                     T2Number number = T2CharString.readNumber(rar, b);
                     stack.add(number);
@@ -281,5 +396,125 @@ public abstract class T2TopDICTOperator extends T2Operator {
             }
         }
     }
+
+    /**
+     * TYPE_NOTDEF
+     */
+    public static final int TYPE_NOTDEF = -1;
+
+    /**
+     * VERSION
+     */
+    public static final int TYPE_VERSION = 0;
+
+    /**
+     * NOTICE
+     */
+    public static final int TYPE_NOTICE = 1;
+
+    /**
+     * FULLNAME
+     */
+    public static final int TYPE_FULLNAME = 2;
+
+    /**
+     * FAMILYNAME
+     */
+    public static final int TYPE_FAMILYNAME = 3;
+
+    /**
+     * WEIGHT
+     */
+    public static final int TYPE_WEIGHT = 4;
+
+    /**
+     * FONTBBOX
+     */
+    public static final int TYPE_FONTBBOX = 5;
+
+    /**
+     * COPYRIGHT
+     */
+    public static final int TYPE_COPYRIGHT = 6;
+
+    /**
+     * ISFIXEDPITCH
+     */
+    public static final int TYPE_ISFIXEDPITCH = 7;
+
+    /**
+     * ITALICANGLE
+     */
+    public static final int TYPE_ITALICANGLE = 8;
+
+    /**
+     * UNDERLINEPOSITION
+     */
+    public static final int TYPE_UNDERLINEPOSITION = 9;
+
+    /**
+     * UNDELINETHICKNESS
+     */
+    public static final int TYPE_UNDERLINETHICKNESS = 10;
+
+    /**
+     * PAINTTYPE
+     */
+    public static final int TYPE_PAINTTYPE = 11;
+
+    /**
+     * CHARSTRINGTYPE
+     */
+    public static final int TYPE_CHARSTRINGTYPE = 12;
+
+    /**
+     * FONTMATRIX
+     */
+    public static final int TYPE_FONTMATRIX = 13;
+
+    /**
+     * STROKEWIDTH
+     */
+    public static final int TYPE_STROKEWIDTH = 14;
+
+    /**
+     * SYNTHETICBASE
+     */
+    public static final int TYPE_SYNTHETICBASE = 15;
+
+    /**
+     * POSTSCRIPT
+     */
+    public static final int TYPE_POSTSCRIPT = 16;
+
+    /**
+     * UNIQUEID
+     */
+    public static final int TYPE_UNIQUEID = 17;
+
+    /**
+     * XUID
+     */
+    public static final int TYPE_XUID = 18;
+
+    /**
+     * CHARSET
+     */
+    public static final int TYPE_CHARSET = 19;
+
+    /**
+     * ENCODING
+     */
+    public static final int TYPE_ENCODING = 20;
+
+    /**
+     * CHARSTRINGS
+     */
+    public static final int TYPE_CHARSTRINGS = 21;
+
+    /**
+     * PRIVATE
+     */
+    public static final int TYPE_PRIVATE = 22;
 
 }

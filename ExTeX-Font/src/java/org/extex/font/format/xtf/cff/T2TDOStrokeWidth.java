@@ -24,7 +24,7 @@ import java.util.List;
 
 /**
  * StrokeWidth.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -33,23 +33,29 @@ public class T2TDOStrokeWidth extends T2TDONumber {
 
     /**
      * Create a new object.
-     *
+     * 
      * @param stack the stack
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOStrokeWidth(List<T2Number> stack) throws IOException {
+    public T2TDOStrokeWidth(List<T2CharString> stack) throws IOException {
 
-        super(stack, new short[]{ESCAPE_BYTE, STROKEWIDTH});
+        super(stack, new short[]{ESCAPE_BYTE, CFF_STROKEWIDTH});
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.format.xtf.cff.T2Operator#getName()
      */
     public String getName() {
 
         return "strokewidth";
+    }
+
+    @Override
+    public int getID() {
+
+        return T2TopDICTOperator.TYPE_STROKEWIDTH;
     }
 
 }

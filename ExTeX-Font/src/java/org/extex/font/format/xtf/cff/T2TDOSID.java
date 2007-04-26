@@ -57,14 +57,14 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
      * @param id the operator-id for the value
      * @throws IOException if an IO-error occurs.
      */
-    protected T2TDOSID(List<T2Number> stack, short[] id) throws IOException {
+    protected T2TDOSID(List<T2CharString> stack, short[] id) throws IOException {
 
         super();
 
         if (stack.size() < 1) {
             throw new T2MissingNumberException();
         }
-        value = stack.get(0).getInteger();
+        value = ((T2Number) stack.get(0)).getInteger();
         bytes = convertStackaddID(stack, id);
     }
 

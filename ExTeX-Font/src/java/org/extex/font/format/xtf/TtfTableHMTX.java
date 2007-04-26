@@ -256,7 +256,8 @@ public class TtfTableHMTX extends AbstractXtfTable
                     XtfTable cff = getTableMap().get(XtfReader.CFF);
                     if (cff != null && cff instanceof OtfTableCFF) {
                         OtfTableCFF cfftab = (OtfTableCFF) cff;
-                        postGylphName = cfftab.mapGlyphPosToGlyphName(i);
+                        // TODO mgn fontnumber 0
+                        postGylphName = cfftab.mapGlyphPosToGlyphName(i,0);
                     }
                 }
                 if (postGylphName == null) {

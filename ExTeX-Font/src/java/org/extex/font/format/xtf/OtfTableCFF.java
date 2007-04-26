@@ -22,26 +22,16 @@ package org.extex.font.format.xtf;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.extex.font.format.xtf.cff.T1DictBoolean;
-import org.extex.font.format.xtf.cff.T1DictKey;
-import org.extex.font.format.xtf.cff.T1DictNumber;
+import org.extex.font.format.xtf.cff.CffFont;
 import org.extex.font.format.xtf.cff.T2CharString;
-import org.extex.font.format.xtf.cff.T2Number;
 import org.extex.font.format.xtf.cff.T2Operator;
 import org.extex.font.format.xtf.cff.T2StandardStrings;
 import org.extex.font.format.xtf.cff.T2TDOBoolean;
-import org.extex.font.format.xtf.cff.T2TDOCharStringType;
 import org.extex.font.format.xtf.cff.T2TDOCharset;
-import org.extex.font.format.xtf.cff.T2TDOEncoding;
-import org.extex.font.format.xtf.cff.T2TDOFontBBox;
-import org.extex.font.format.xtf.cff.T2TDOFontMatrix;
-import org.extex.font.format.xtf.cff.T2TDOItalicAngle;
 import org.extex.font.format.xtf.cff.T2TDOPaintType;
-import org.extex.font.format.xtf.cff.T2TDOPrivate;
 import org.extex.font.format.xtf.cff.T2TDOStrokeWidth;
 import org.extex.font.format.xtf.cff.T2TDOUnderlinePosition;
 import org.extex.font.format.xtf.cff.T2TDOUnderlineThickness;
@@ -170,29 +160,14 @@ public class OtfTableCFF extends AbstractXtfTable
             XMLWriterConvertible {
 
     /**
-     * The default for BlueScale.
-     */
-    private static final double BLUESCALE = 0.039625;
-
-    /**
-     * The default for EXPANSIONSFACTOR.
-     */
-    private static final double EXPANSIONSFACTOR = 0.06;
-
-    /**
-     * Default for the FontBBox.
-     */
-    private static final int[] FONTBBOX = {0, 0, 0, 0};
-
-    /**
-     * Default for the FontMatrix.
-     */
-    private static final double[] FONTMATRIX = {0.001, 0, 0, 0.001, 0, 0};
-
-    /**
      * The instance itself.
      */
     private OtfTableCFF cff;
+
+    /**
+     * The fonts in the cff table.
+     */
+    private CffFont[] fonts;
 
     /**
      * header size
@@ -220,7 +195,7 @@ public class OtfTableCFF extends AbstractXtfTable
     private Map<String, Integer> stringIndexName = null;
 
     /**
-     * The top dict index.
+     * The top dict index. TODO remove
      */
     private Map<String, T2Operator> topDictIndex;
 
@@ -237,7 +212,7 @@ public class OtfTableCFF extends AbstractXtfTable
     /**
      * Create a new object
      * 
-     * @param tablemap the tablemap
+     * @param tablemap the table map
      * @param de entry
      * @param rar input
      * @throws IOException if an IO-error occurs
@@ -257,11 +232,9 @@ public class OtfTableCFF extends AbstractXtfTable
         long nextOffset = readNameIndex(de.getOffset() + hdrSize, rar);
         fonts = new CffFont[namedIndex.size()];
         for (int i = 0; i < fonts.length; i++) {
-            fonts[i] = new CffFont(namedIndex.get(i));
+            fonts[i] = new CffFont(namedIndex.get(i), i);
         }
 
-        // TODO for each font read the top dict index
-        
         // read the top dict index
         nextOffset = readTopDictIndex(nextOffset, rar);
 
@@ -271,50 +244,12 @@ public class OtfTableCFF extends AbstractXtfTable
         // read the gsubr index
         nextOffset = readGSubrIndex(nextOffset, rar);
 
-        // gsubrIndexOffset = stringOffsets[stringOffsets.length - 1];
-        // gsubrOffsets = getIndex(rar, gsubrIndexOffset);
-        //
-        //                
-
-        // // index
-        // readGSubrIndex(rar);
-        //
         // initialize the T2Operators
-        Iterator it = topDictIndex.keySet().iterator();
-        while (it.hasNext()) {
-            String key = (String) it.next();
-            T2Operator op = (T2Operator) topDictIndex.get(key);
-            op.init(rar, cff, baseoffset);
+        for (int i = 0; i < fonts.length; i++) {
+            fonts[i].init(rar, cff, baseoffset);
         }
-
-        // add default values
-        // encoding
-        addDefaultEncoding();
-
-        // Global Subr INDEX
 
         // incomplete
-    }
-
-    /**
-     * Add the default encoding.
-     */
-    private void addDefaultEncoding() {
-
-        T2Operator op = (T2Operator) topDictIndex.get("encoding");
-        if (op == null) {
-            // get charset
-            T2Operator op2 = (T2Operator) topDictIndex.get("charset");
-
-            if (op2 != null && op2 instanceof T2TDOCharset) {
-
-                T2TDOCharset charset = (T2TDOCharset) op2;
-                T2TDOEncoding enc =
-                        new T2TDOEncoding(this, getNumGlyphs(), charset
-                            .getSid());
-                topDictIndex.put("encoding", enc);
-            }
-        }
     }
 
     /**
@@ -335,281 +270,17 @@ public class OtfTableCFF extends AbstractXtfTable
     }
 
     /**
-     * Returns the BlueFuzz. (default: 1)
+     * Returns the font.
      * 
-     * @return Returns the BlueFuzz.
+     * @param number The font numer.
+     * @return Returns the font.
      */
-    public int getBlueFuzz() {
+    public CffFont getFont(int number) {
 
-        T2Operator op = (T2Operator) topDictIndex.get("private");
-        if (op == null) {
-            return 1;
+        if (number >= 0 && number < fonts.length) {
+            return fonts[number];
         }
-        if (op instanceof T2TDOPrivate) {
-            T2TDOPrivate val = (T2TDOPrivate) op;
-
-            T1DictKey dictkey = val.getT1DictKey("BlueFuzz");
-            if (dictkey == null) {
-                return 1;
-            }
-            if (dictkey instanceof T1DictNumber) {
-                T1DictNumber t1 = (T1DictNumber) dictkey;
-                return t1.getInteger();
-            }
-        }
-
-        return 1;
-    }
-
-    /**
-     * Returns the BlueScale. (default: 0.039625)
-     * 
-     * @return Returns the BlueScale.
-     */
-    public double getBlueScale() {
-
-        T2Operator op = (T2Operator) topDictIndex.get("private");
-        if (op == null) {
-            return BLUESCALE;
-        }
-        if (op instanceof T2TDOPrivate) {
-            T2TDOPrivate val = (T2TDOPrivate) op;
-
-            T1DictKey dictkey = val.getT1DictKey("BlueScale");
-            if (dictkey == null) {
-                return BLUESCALE;
-            }
-            if (dictkey instanceof T1DictNumber) {
-                T1DictNumber t1 = (T1DictNumber) dictkey;
-                return t1.getDouble();
-            }
-        }
-
-        return BLUESCALE;
-    }
-
-    /**
-     * Returns the BlueShift. (default: 7)
-     * 
-     * @return Returns the BlueShift.
-     */
-    public int getBlueShift() {
-
-        T2Operator op = (T2Operator) topDictIndex.get("private");
-        if (op == null) {
-            return 7;
-        }
-        if (op instanceof T2TDOPrivate) {
-            T2TDOPrivate val = (T2TDOPrivate) op;
-
-            T1DictKey dictkey = val.getT1DictKey("BlueShift");
-            if (dictkey == null) {
-                return 7;
-            }
-            if (dictkey instanceof T1DictNumber) {
-                T1DictNumber t1 = (T1DictNumber) dictkey;
-                return t1.getInteger();
-            }
-        }
-
-        return 7;
-    }
-
-    /**
-     * Returns the BlueValues. (default: -)
-     * 
-     * @return Returns the BlueValues.
-     */
-    public int[] getBlueValues() {
-
-        T2Operator op = (T2Operator) topDictIndex.get("private");
-        if (op == null) {
-            return null;
-        }
-        if (op instanceof T2TDOPrivate) {
-            T2TDOPrivate val = (T2TDOPrivate) op;
-
-            T1DictKey dictkey = val.getT1DictKey("BlueValues");
-            if (dictkey == null) {
-                return null;
-            }
-            Integer[] iarr = (Integer[]) dictkey.getValue();
-            if (iarr == null) {
-                return null;
-            }
-            int[] ii = new int[iarr.length];
-            for (int i = 0; i < ii.length; i++) {
-                ii[i] = iarr[i].intValue();
-            }
-            return ii;
-        }
-
         return null;
-    }
-
-    /**
-     * Returns the CharstringType. (default: 2)
-     * 
-     * @return Returns the CharstringType.
-     */
-    public int getCharstringType() {
-
-        T2Operator op = (T2Operator) topDictIndex.get("charstringtype");
-        if (op == null) {
-            return 2;
-        }
-        if (op instanceof T2TDOCharStringType) {
-            T2TDOCharStringType val = (T2TDOCharStringType) op;
-            return val.getInteger();
-        }
-
-        return 2;
-
-    }
-
-    /**
-     * Returns the defaultWidthX. (default: 0)
-     * 
-     * @return Returns the defaultWidthX.
-     */
-    public int getDefaultWidthX() {
-
-        T2Operator op = (T2Operator) topDictIndex.get("private");
-        if (op == null) {
-            return 0;
-        }
-        if (op instanceof T2TDOPrivate) {
-            T2TDOPrivate val = (T2TDOPrivate) op;
-
-            T1DictKey dictkey = val.getT1DictKey("defaultWidthX");
-            if (dictkey == null) {
-                return 0;
-            }
-            if (dictkey instanceof T1DictNumber) {
-                T1DictNumber t1 = (T1DictNumber) dictkey;
-                return t1.getInteger();
-            }
-        }
-
-        return 0;
-    }
-
-    /**
-     * Return the name of the encoding.
-     * 
-     * @return Return the name of the encoding.
-     */
-    public String getEncoding() {
-
-        // exists an encoding?
-        T2Operator op = (T2Operator) topDictIndex.get("encoding");
-        if (op != null) {
-            T2TDOEncoding enc = (T2TDOEncoding) op;
-            return enc.getEncodingName();
-        }
-        return "unknown";
-    }
-
-    /**
-     * Returns the ExpansionFactor. (default: 0.06)
-     * 
-     * @return Returns the ExpansionFactor.
-     */
-    public double getExpansionFactor() {
-
-        T2Operator op = (T2Operator) topDictIndex.get("private");
-        if (op == null) {
-            return EXPANSIONSFACTOR;
-        }
-        if (op instanceof T2TDOPrivate) {
-            T2TDOPrivate val = (T2TDOPrivate) op;
-
-            T1DictKey dictkey = val.getT1DictKey("ExpansionFactor");
-            if (dictkey == null) {
-                return EXPANSIONSFACTOR;
-            }
-            if (dictkey instanceof T1DictNumber) {
-                T1DictNumber t1 = (T1DictNumber) dictkey;
-                return t1.getDouble();
-            }
-        }
-
-        return EXPANSIONSFACTOR;
-    }
-
-    /**
-     * Returns the FontBBox. (default: 0, 0, 0, 0)
-     * 
-     * @return Returns the FontBBox.
-     */
-    public int[] getFontBBox() {
-
-        T2Operator op = (T2Operator) topDictIndex.get("fontbbox");
-        if (op == null) {
-            return FONTBBOX;
-        }
-        if (op instanceof T2TDOFontBBox) {
-            T2TDOFontBBox val = (T2TDOFontBBox) op;
-            T2Number[] t2 = (T2Number[]) val.getValue();
-            int[] darr = new int[t2.length];
-            for (int i = 0; i < t2.length; i++) {
-                darr[i] = t2[i].getInteger();
-            }
-            return darr;
-        }
-
-        return FONTBBOX;
-    }
-
-    /**
-     * Returns the FontMatrix. (default: 0.001 0 0 0.001 0 0)
-     * 
-     * @return Returns the FontMatrix.
-     */
-    public double[] getFontMatrix() {
-
-        T2Operator op = (T2Operator) topDictIndex.get("fontmatrix");
-        if (op == null) {
-            return FONTMATRIX;
-        }
-        if (op instanceof T2TDOFontMatrix) {
-            T2TDOFontMatrix val = (T2TDOFontMatrix) op;
-            T2Number[] t2 = (T2Number[]) val.getValue();
-            double[] darr = new double[t2.length];
-            for (int i = 0; i < t2.length; i++) {
-                darr[i] = t2[i].getDouble();
-            }
-            return darr;
-        }
-
-        return FONTMATRIX;
-    }
-
-    /**
-     * Returns the ForceBold. (default: false)
-     * 
-     * @return Returns the ForceBold.
-     */
-    public boolean getForceBold() {
-
-        T2Operator op = (T2Operator) topDictIndex.get("private");
-        if (op == null) {
-            return false;
-        }
-        if (op instanceof T2TDOPrivate) {
-            T2TDOPrivate val = (T2TDOPrivate) op;
-
-            T1DictKey dictkey = val.getT1DictKey("ForceBold");
-            if (dictkey == null) {
-                return false;
-            }
-            if (dictkey instanceof T1DictBoolean) {
-                T1DictBoolean t1 = (T1DictBoolean) dictkey;
-                return t1.isValue();
-            }
-        }
-
-        return false;
     }
 
     /**
@@ -622,115 +293,15 @@ public class OtfTableCFF extends AbstractXtfTable
         return hdrSize;
     }
 
-    /**
-     * Returns the initialRandomSeed. (default: 0)
-     * 
-     * @return Returns the initialRandomSeed.
-     */
-    public int getInitialRandomSeed() {
-
-        T2Operator op = (T2Operator) topDictIndex.get("private");
-        if (op == null) {
-            return 0;
-        }
-        if (op instanceof T2TDOPrivate) {
-            T2TDOPrivate val = (T2TDOPrivate) op;
-
-            T1DictKey dictkey = val.getT1DictKey("initialRandomSeed");
-            if (dictkey == null) {
-                return 0;
-            }
-            if (dictkey instanceof T1DictNumber) {
-                T1DictNumber t1 = (T1DictNumber) dictkey;
-                return t1.getInteger();
-            }
-        }
-
-        return 0;
-    }
-
-    /**
-     * Returns the ItalicAngle. (default: 0)
-     * 
-     * @return Returns the ItalicAngle.
-     */
-    public int getItalicAngle() {
-
-        T2Operator op = (T2Operator) topDictIndex.get("ItalicAngle");
-        if (op == null) {
-            return 0;
-        }
-        if (op instanceof T2TDOItalicAngle) {
-            T2TDOItalicAngle val = (T2TDOItalicAngle) op;
-            return val.getInteger();
-        }
-
-        return 0;
-    }
-
-    /**
-     * Returns the LanguageGroup. (default: 0)
-     * 
-     * @return Returns the LanguageGroup.
-     */
-    public int getLanguageGroup() {
-
-        T2Operator op = (T2Operator) topDictIndex.get("private");
-        if (op == null) {
-            return 0;
-        }
-        if (op instanceof T2TDOPrivate) {
-            T2TDOPrivate val = (T2TDOPrivate) op;
-
-            T1DictKey dictkey = val.getT1DictKey("LanguageGroup");
-            if (dictkey == null) {
-                return 0;
-            }
-            if (dictkey instanceof T1DictNumber) {
-                T1DictNumber t1 = (T1DictNumber) dictkey;
-                return t1.getInteger();
-            }
-        }
-
-        return 0;
-    }
-
-    /**
-     * Getter for namedIndex.
-     * 
-     * @return Returns the namedIndex.
-     */
-    public List getNamedIndex() {
-
-        return namedIndex;
-    }
-
-    /**
-     * Returns the nominalWidthX. (default: 0)
-     * 
-     * @return Returns the nominalWidthX.
-     */
-    public int getNominalWidthX() {
-
-        T2Operator op = (T2Operator) topDictIndex.get("private");
-        if (op == null) {
-            return 0;
-        }
-        if (op instanceof T2TDOPrivate) {
-            T2TDOPrivate val = (T2TDOPrivate) op;
-
-            T1DictKey dictkey = val.getT1DictKey("nominalWidthX");
-            if (dictkey == null) {
-                return 0;
-            }
-            if (dictkey instanceof T1DictNumber) {
-                T1DictNumber t1 = (T1DictNumber) dictkey;
-                return t1.getInteger();
-            }
-        }
-
-        return 0;
-    }
+    // /**
+    // * Getter for namedIndex.
+    // *
+    // * @return Returns the namedIndex.
+    // */
+    // public List getNamedIndex() {
+    //
+    // return namedIndex;
+    // }
 
     /**
      * Returns the number of glyphs
@@ -750,148 +321,11 @@ public class OtfTableCFF extends AbstractXtfTable
     }
 
     /**
-     * Returns the painttype. (default: 0)
-     * 
-     * @return Returns the painttype.
-     */
-    public int getPaintType() {
-
-        T2Operator op = (T2Operator) topDictIndex.get("painttype");
-        if (op == null) {
-            return 0;
-        }
-        if (op instanceof T2TDOPaintType) {
-            T2TDOPaintType val = (T2TDOPaintType) op;
-            return val.getInteger();
-        }
-
-        return 0;
-    }
-
-    /**
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
 
         return "cff";
-    }
-
-    /**
-     * Returns the StdHW. (default: -)
-     * 
-     * @return Returns the StdHW.
-     */
-    public int getStdHW() {
-
-        T2Operator op = (T2Operator) topDictIndex.get("private");
-        if (op == null) {
-            return 0;
-        }
-        if (op instanceof T2TDOPrivate) {
-            T2TDOPrivate val = (T2TDOPrivate) op;
-
-            T1DictKey dictkey = val.getT1DictKey("StdHW");
-            if (dictkey == null) {
-                return 0;
-            }
-            if (dictkey instanceof T1DictNumber) {
-                T1DictNumber t1 = (T1DictNumber) dictkey;
-                return t1.getInteger();
-            }
-        }
-
-        return 0;
-    }
-
-    /**
-     * Returns the StdVW. (default: -)
-     * 
-     * @return Returns the StdVW.
-     */
-    public int getStdVW() {
-
-        T2Operator op = (T2Operator) topDictIndex.get("private");
-        if (op == null) {
-            return 0;
-        }
-        if (op instanceof T2TDOPrivate) {
-            T2TDOPrivate val = (T2TDOPrivate) op;
-
-            T1DictKey dictkey = val.getT1DictKey("StdVW");
-            if (dictkey == null) {
-                return 0;
-            }
-            if (dictkey instanceof T1DictNumber) {
-                T1DictNumber t1 = (T1DictNumber) dictkey;
-                return t1.getInteger();
-            }
-        }
-
-        return 0;
-    }
-
-    /**
-     * Returns the StemSnapH. (default: -)
-     * 
-     * @return Returns the StemSnapH.
-     */
-    public int[] getStemSnapH() {
-
-        T2Operator op = (T2Operator) topDictIndex.get("private");
-        if (op == null) {
-            return null;
-        }
-        if (op instanceof T2TDOPrivate) {
-            T2TDOPrivate val = (T2TDOPrivate) op;
-
-            T1DictKey dictkey = val.getT1DictKey("StemSnapH");
-            if (dictkey == null) {
-                return null;
-            }
-            Integer[] iarr = (Integer[]) dictkey.getValue();
-            if (iarr == null) {
-                return null;
-            }
-            int[] ii = new int[iarr.length];
-            for (int i = 0; i < ii.length; i++) {
-                ii[i] = iarr[i].intValue();
-            }
-            return ii;
-        }
-
-        return null;
-    }
-
-    /**
-     * Returns the StemSnapV. (default: -)
-     * 
-     * @return Returns the StemSnapV.
-     */
-    public int[] getStemSnapV() {
-
-        T2Operator op = (T2Operator) topDictIndex.get("private");
-        if (op == null) {
-            return null;
-        }
-        if (op instanceof T2TDOPrivate) {
-            T2TDOPrivate val = (T2TDOPrivate) op;
-
-            T1DictKey dictkey = val.getT1DictKey("StemSnapV");
-            if (dictkey == null) {
-                return null;
-            }
-            Integer[] iarr = (Integer[]) dictkey.getValue();
-            if (iarr == null) {
-                return null;
-            }
-            int[] ii = new int[iarr.length];
-            for (int i = 0; i < ii.length; i++) {
-                ii[i] = iarr[i].intValue();
-            }
-            return ii;
-        }
-
-        return null;
     }
 
     /**
@@ -911,46 +345,9 @@ public class OtfTableCFF extends AbstractXtfTable
             return T2StandardStrings.getString(sid);
         }
         if (sid - highestSID - 1 < stringIndex.size()) {
-            return (String) stringIndex.get(sid - highestSID - 1);
+            return stringIndex.get(sid - highestSID - 1);
         }
         return null;
-    }
-
-    /**
-     * Returns the StrokeWidth. (default: 0)
-     * 
-     * @return Returns the StrokeWidth.
-     */
-    public int getStrokeWidth() {
-
-        T2Operator op = (T2Operator) topDictIndex.get("strokewidth");
-        if (op == null) {
-            return 0;
-        }
-        if (op instanceof T2TDOStrokeWidth) {
-            T2TDOStrokeWidth val = (T2TDOStrokeWidth) op;
-            return val.getInteger();
-        }
-
-        return 0;
-
-    }
-
-    // ---------------------------------------------------
-    // ---------------------------------------------------
-    // ---------------------------------------------------
-    // ---------------------------------------------------
-    // ---------------------------------------------------
-
-    /**
-     * Returns the type 2 operator for the key.
-     * 
-     * @param key The key.
-     * @return Returns the type 2 operator for the key.
-     */
-    public T2Operator getTopDictIndex(String key) {
-
-        return (T2Operator) topDictIndex.get(key);
     }
 
     /**
@@ -964,47 +361,9 @@ public class OtfTableCFF extends AbstractXtfTable
     }
 
     /**
-     * Returns the UnderlinePosition. (default: -100)
+     * Returns the version major.
      * 
-     * @return Returns the UnderlinePosition.
-     */
-    public int getUnderlinePosition() {
-
-        T2Operator op = (T2Operator) topDictIndex.get("underlineposition");
-        if (op == null) {
-            return -100;
-        }
-        if (op instanceof T2TDOUnderlinePosition) {
-            T2TDOUnderlinePosition val = (T2TDOUnderlinePosition) op;
-            return val.getInteger();
-        }
-
-        return -100;
-    }
-
-    /**
-     * Returns the UnderlineThickness. (deault: 50)
-     * 
-     * @return Returns the UnderlineThickness.
-     */
-    public int getUnderlineThicknessn() {
-
-        T2Operator op = (T2Operator) topDictIndex.get("underlinethickness");
-        if (op == null) {
-            return 50;
-        }
-        if (op instanceof T2TDOUnderlineThickness) {
-            T2TDOUnderlineThickness val = (T2TDOUnderlineThickness) op;
-            return val.getInteger();
-        }
-
-        return 50;
-    }
-
-    /**
-     * Returns the versionmajor.
-     * 
-     * @return Returns the versionmajor.
+     * @return Returns the version major.
      */
     public int getVersionmajor() {
 
@@ -1012,9 +371,9 @@ public class OtfTableCFF extends AbstractXtfTable
     }
 
     /**
-     * Returns the versionminor.
+     * Returns the version minor.
      * 
-     * @return Returns the versionminor.
+     * @return Returns the version minor.
      */
     public int getVersionminor() {
 
@@ -1022,31 +381,14 @@ public class OtfTableCFF extends AbstractXtfTable
     }
 
     /**
-     * Returns the value of fixed pitch. (default: false)
-     * 
-     * @return Returns the value of fixed pitch.
-     */
-    public boolean isFixedPitch() {
-
-        T2Operator op = (T2Operator) topDictIndex.get("isfixedpitch");
-        if (op == null) {
-            return false;
-        }
-        if (op instanceof T2TDOBoolean) {
-            T2TDOBoolean bool = (T2TDOBoolean) op;
-            return bool.isValue();
-        }
-        return false;
-    }
-
-    /**
      * Map the glyph name to the glyph position. If the glyph name not found, -1
      * is returned.
      * 
      * @param glyphname The glyph name
+     * @param fontnumber The fontnumber.
      * @return Returns the position of the glyph name.
      */
-    public int mapGlyphNameToGlyphPos(String glyphname) {
+    public int mapGlyphNameToGlyphPos(String glyphname, int fontnumber) {
 
         // find the sid for the name
         if (stringIndexName == null) {
@@ -1065,12 +407,14 @@ public class OtfTableCFF extends AbstractXtfTable
         if (sid != null) {
 
             // get charset
-            T2Operator op = topDictIndex.get("charset");
-            if (op != null && op instanceof T2TDOCharset) {
+            CffFont fo = getFont(fontnumber);
+            if (fo != null) {
+                T2TDOCharset op = fo.getCharset();
+                if (op != null) {
 
-                T2TDOCharset val = (T2TDOCharset) op;
-                int glyphpossid = val.getSidForStringIndex(sid);
-                return glyphpossid;
+                    int glyphpossid = op.getSidForStringIndex(sid);
+                    return glyphpossid;
+                }
             }
         }
         return -1;
@@ -1080,17 +424,18 @@ public class OtfTableCFF extends AbstractXtfTable
      * Map the glyph position to the name of the glyph.
      * 
      * @param glyphpos The glyph position
+     * @param fontnumber The font number.
      * @return Returns the name of the glpyh or <code>null</code>, if not
      *         found.
      */
-    public String mapGlyphPosToGlyphName(int glyphpos) {
+    public String mapGlyphPosToGlyphName(int glyphpos, int fontnumber) {
 
         // get charset
-        T2Operator op = topDictIndex.get("charset");
-        if (op != null && op instanceof T2TDOCharset) {
+        CffFont fo = getFont(fontnumber);
+        T2TDOCharset op = fo.getCharset();
+        if (op != null) {
 
-            T2TDOCharset val = (T2TDOCharset) op;
-            int sid = val.getSid(glyphpos);
+            int sid = op.getSid(glyphpos);
             // get the name
             String name = getStringIndex(sid);
             return name;
@@ -1172,6 +517,21 @@ public class OtfTableCFF extends AbstractXtfTable
         return data;
     }
 
+    private long readGSubrIndex(long nextOffset, RandomAccessR rar)
+            throws IOException {
+
+        rar.seek(nextOffset);
+        int[] offsetarray = readOffsets(rar);
+
+        // // get data
+        // for (int i = 0; i < offsetarray.length - 1; i++) {
+        // byte[] data =
+        // readDataFromIndex(offsetarray[i], offsetarray[i + 1], rar);
+        // stringIndex.add(convertArrayToString(data));
+        // }
+        return rar.getPointer();
+    }
+
     /**
      * Read the Header. TODO: create html-table Type Name Description Card8
      * major Format major version (starting at 1) Card8 minor Format minor
@@ -1188,11 +548,6 @@ public class OtfTableCFF extends AbstractXtfTable
         hdrSize = rar.readUnsignedByte();
         offSize = rar.readUnsignedByte();
     }
-
-    /**
-     * The fonts in the cff table.
-     */
-    private CffFont[] fonts;
 
     /**
      * Read the name index.
@@ -1318,21 +673,6 @@ public class OtfTableCFF extends AbstractXtfTable
         return rar.getPointer();
     }
 
-    private long readGSubrIndex(long nextOffset, RandomAccessR rar)
-            throws IOException {
-
-        rar.seek(nextOffset);
-        int[] offsetarray = readOffsets(rar);
-
-        // // get data
-        // for (int i = 0; i < offsetarray.length - 1; i++) {
-        // byte[] data =
-        // readDataFromIndex(offsetarray[i], offsetarray[i + 1], rar);
-        // stringIndex.add(convertArrayToString(data));
-        // }
-        return rar.getPointer();
-    }
-
     /**
      * Read the top dict index.
      * 
@@ -1357,10 +697,10 @@ public class OtfTableCFF extends AbstractXtfTable
                 // read until end of input -> IOException
                 while (true) {
                     T2Operator op = T2CharString.readTopDICTOperator(arar);
-                    topDictIndex.put(op.getName().toLowerCase(), op);
+                    fonts[i].addTopDictIndex(op);
                 }
             } catch (IOException e) {
-                // EOF
+                // EOF ignore
             }
         }
         return rar.getPointer();
@@ -1377,26 +717,12 @@ public class OtfTableCFF extends AbstractXtfTable
                 + String.valueOf(versionminor));
         writer.writeAttribute("hdrsize", String.valueOf(hdrSize));
         writer.writeAttribute("offsize", String.valueOf(offSize));
+        writer.writeAttribute("fonts", fonts.length);
 
-        // namedindex
-        writer.writeStartElement("nameindex");
-        for (int i = 0, n = namedIndex.size(); i < n; i++) {
-            writer.writeStartElement("name");
-            writer.writeAttribute("id", i);
-            writer.writeAttribute("value", namedIndex.get(i));
-            writer.writeEndElement();
+        // fonts
+        for (int i = 0; i < fonts.length; i++) {
+            fonts[i].writeXML(writer);
         }
-        writer.writeEndElement();
-
-        // topdict index
-        writer.writeStartElement("topdictindex");
-        Iterator it = topDictIndex.keySet().iterator();
-        while (it.hasNext()) {
-            String key = (String) it.next();
-            T2Operator op = (T2Operator) topDictIndex.get(key);
-            op.writeXML(writer);
-        }
-        writer.writeEndElement();
 
         // stringindex
         writer.writeStartElement("stringindex");
@@ -1413,95 +739,4 @@ public class OtfTableCFF extends AbstractXtfTable
         writer.writeComment("incomplete");
         writer.writeEndElement();
     }
-
-    protected final class CffFont {
-
-        /**
-         * The name of the font.
-         */
-        private String name;
-
-        /**
-         * Creates a new object.
-         * 
-         * @param fontname The name of the font.
-         */
-        public CffFont(String fontname) {
-
-            name = fontname;
-        }
-
-        public String fullName;
-
-        public boolean isCID = false;
-
-        public int privateOffset = -1; // only if not CID
-
-        public int privateLength = -1; // only if not CID
-
-        public int privateSubrs = -1;
-
-        public int charstringsOffset = -1;
-
-        public int encodingOffset = -1;
-
-        public int charsetOffset = -1;
-
-        public int fdarrayOffset = -1; // only if CID
-
-        public int fdselectOffset = -1; // only if CID
-
-        public int[] fdprivateOffsets;
-
-        public int[] fdprivateLengths;
-
-        public int[] fdprivateSubrs;
-
-        public int nglyphs;
-
-        public int nstrings;
-
-        public int CharsetLength;
-
-        public int[] charstringsOffsets;
-
-        public int[] charset;
-
-        public int[] FDSelect;
-
-        public int FDSelectLength;
-
-        public int FDSelectFormat;
-
-        public int CharstringType = 2;
-
-        public int FDArrayCount;
-
-        public int FDArrayOffsize;
-
-        public int[] FDArrayOffsets;
-
-        public int[] PrivateSubrsOffset;
-
-        public int[][] PrivateSubrsOffsetsArray;
-
-        public int[] SubrsOffsets;
-
-        @Override
-        public String toString() {
-
-            return name;
-        }
-
-        /**
-         * Getter for name.
-         * 
-         * @return the name
-         */
-        public String getName() {
-
-            return name;
-        }
-    }
-
 }

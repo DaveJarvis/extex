@@ -24,6 +24,7 @@ import java.io.IOException;
 import junit.framework.TestCase;
 
 import org.extex.font.format.xtf.TtfTableCMAP.Format;
+import org.extex.font.format.xtf.cff.CffFont;
 
 /**
  * Tests for the <code>XtfReader</code> with opentype files.
@@ -98,15 +99,16 @@ public class XtfReaderFxlrTest extends TestCase {
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
         assertNotNull(cff);
 
-        assertEquals("2.4.9", cff.getTopDictIndex("version").getValue());
+        CffFont font = cff.getFont(0);
+        assertNotNull(font);
+
+        assertEquals("2.4.9", font.getVersion());
         assertEquals(
                 "LinuxLibertine by Philipp H. Poll, Free Font under Terms of the GPL (General Public License - http://www.gnu.org/copyleft/gpl.html) and OFL (Open Font Licence). Created with FontForge 1.0 (http://fontforge.sf.net) Sept 2003, 2004, 2005, 2006, 2007",
-                cff.getTopDictIndex("notice").getValue());
-        assertEquals("Linux Libertine", cff.getTopDictIndex("fullname")
-                .getValue());
-        assertEquals("Linux Libertine", cff.getTopDictIndex("familyname")
-                .getValue());
-        assertEquals("Regular", cff.getTopDictIndex("weight").getValue());
+                font.getNotice());
+        assertEquals("Linux Libertine", font.getFullName());
+        assertEquals("Linux Libertine", font.getFamilyName());
+        assertEquals("Regular",font.getWeight());
         //    assertEquals("StandardEncoding", cff.getEncoding());
         //        assertEquals(false, cff.isFixedPitch());
         //        assertEquals(0, cff.getItalicAngle());

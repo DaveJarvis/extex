@@ -74,9 +74,9 @@ public class T2TDOPrivate extends T2TDOArray {
      * @param stack the stack
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOPrivate(List<T2Number> stack) throws IOException {
+    public T2TDOPrivate(List<T2CharString> stack) throws IOException {
 
-        super(stack, new short[]{PRIVATE});
+        super(stack, new short[]{CFF_PRIVATE});
     }
 
     /**
@@ -165,6 +165,12 @@ public class T2TDOPrivate extends T2TDOArray {
         }
         writer.writeEndElement();
 
+    }
+
+    @Override
+    public int getID() {
+
+        return T2TopDICTOperator.TYPE_PRIVATE;
     }
 
 }

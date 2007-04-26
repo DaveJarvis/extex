@@ -92,4 +92,11 @@ public class T2RMOVETO extends T2PathConstruction {
         // TODO mgn incomplete
     }
 
+    @Override
+    public int getID() {
+
+        // TODO mgn incomplete
+        return -1;
+    }
+
 }

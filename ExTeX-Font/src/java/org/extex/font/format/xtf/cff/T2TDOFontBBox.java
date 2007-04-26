@@ -24,7 +24,7 @@ import java.util.List;
 
 /**
  * FontBBox.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -33,23 +33,29 @@ public class T2TDOFontBBox extends T2TDOArray {
 
     /**
      * Create a new object.
-     *
+     * 
      * @param stack the stack
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOFontBBox(List<T2Number> stack) throws IOException {
+    public T2TDOFontBBox(List<T2CharString> stack) throws IOException {
 
-        super(stack, new short[]{FONTBBOX});
+        super(stack, new short[]{CFF_FONTBBOX});
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.format.xtf.cff.T2Operator#getName()
      */
     public String getName() {
 
         return "fontbbox";
+    }
+
+    @Override
+    public int getID() {
+
+        return T2TopDICTOperator.TYPE_FONTBBOX;
     }
 
 }

@@ -71,7 +71,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxA() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("A", (short) 3, (short) 1));
+        assertEquals(750, reader.mapCharCodeToWidth("A", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -81,7 +82,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAE() throws Exception {
 
-        assertEquals(903, reader.mapCharCodeToWidth("AE", (short) 3, (short) 1));
+        assertEquals(903, reader.mapCharCodeToWidth("AE", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -91,7 +93,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAEdup() throws Exception {
 
-        assertEquals(903, reader.mapCharCodeToWidth("AE.dup", (short) 3,
+        assertEquals(903, reader.mapCharCodeToWidth("AE.dup", 0, (short) 3,
             (short) 1));
     }
 
@@ -102,7 +104,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAEacute() throws Exception {
 
-        assertEquals(903, reader.mapCharCodeToWidth("AEacute", (short) 3,
+        assertEquals(903, reader.mapCharCodeToWidth("AEacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -113,7 +115,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAacute() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Aacute", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Aacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -124,7 +126,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAbreve() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Abreve", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Abreve", 0, (short) 3,
             (short) 1));
     }
 
@@ -135,8 +137,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAbreveacute() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Abreveacute", (short) 3,
-            (short) 1));
+        assertEquals(750, reader.mapCharCodeToWidth("Abreveacute", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -146,7 +148,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAbrevedotbelow() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Abrevedotbelow",
+        assertEquals(750, reader.mapCharCodeToWidth("Abrevedotbelow", 0,
             (short) 3, (short) 1));
     }
 
@@ -157,8 +159,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAbrevegrave() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Abrevegrave", (short) 3,
-            (short) 1));
+        assertEquals(750, reader.mapCharCodeToWidth("Abrevegrave", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -168,7 +170,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAbrevehookabove() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Abrevehookabove",
+        assertEquals(750, reader.mapCharCodeToWidth("Abrevehookabove", 0,
             (short) 3, (short) 1));
     }
 
@@ -179,8 +181,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAbrevetilde() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Abrevetilde", (short) 3,
-            (short) 1));
+        assertEquals(750, reader.mapCharCodeToWidth("Abrevetilde", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -190,8 +192,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAcircumflex() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Acircumflex", (short) 3,
-            (short) 1));
+        assertEquals(750, reader.mapCharCodeToWidth("Acircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -201,7 +203,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAcircumflexacute() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Acircumflexacute",
+        assertEquals(750, reader.mapCharCodeToWidth("Acircumflexacute", 0,
             (short) 3, (short) 1));
     }
 
@@ -212,7 +214,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAcircumflexdotbelow() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Acircumflexdotbelow",
+        assertEquals(750, reader.mapCharCodeToWidth("Acircumflexdotbelow", 0,
             (short) 3, (short) 1));
     }
 
@@ -223,7 +225,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAcircumflexgrave() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Acircumflexgrave",
+        assertEquals(750, reader.mapCharCodeToWidth("Acircumflexgrave", 0,
             (short) 3, (short) 1));
     }
 
@@ -234,7 +236,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAcircumflexhookabove() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Acircumflexhookabove",
+        assertEquals(750, reader.mapCharCodeToWidth("Acircumflexhookabove", 0,
             (short) 3, (short) 1));
     }
 
@@ -245,7 +247,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAcircumflextilde() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Acircumflextilde",
+        assertEquals(750, reader.mapCharCodeToWidth("Acircumflextilde", 0,
             (short) 3, (short) 1));
     }
 
@@ -256,7 +258,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAdblgrave() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Adblgrave", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Adblgrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -267,7 +269,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAdieresis() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Adieresis", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Adieresis", 0, (short) 3,
             (short) 1));
     }
 
@@ -278,7 +280,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAdotbelow() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Adotbelow", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Adotbelow", 0, (short) 3,
             (short) 1));
     }
 
@@ -289,7 +291,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAgrave() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Agrave", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Agrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -300,7 +302,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAhookabove() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Ahookabove", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Ahookabove", 0, (short) 3,
             (short) 1));
     }
 
@@ -311,7 +313,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAmacron() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Amacron", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Amacron", 0, (short) 3,
             (short) 1));
     }
 
@@ -322,7 +324,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAogonek() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Aogonek", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Aogonek", 0, (short) 3,
             (short) 1));
     }
 
@@ -333,8 +335,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAogonekacute() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Aogonekacute", (short) 3,
-            (short) 1));
+        assertEquals(750, reader.mapCharCodeToWidth("Aogonekacute", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -344,7 +346,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAring() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Aring", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Aring", 0, (short) 3,
             (short) 1));
     }
 
@@ -355,7 +357,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAringacute() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Aringacute", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Aringacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -366,7 +368,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxAtilde() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Atilde", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Atilde", 0, (short) 3,
             (short) 1));
     }
 
@@ -377,7 +379,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxB() throws Exception {
 
-        assertEquals(708, reader.mapCharCodeToWidth("B", (short) 3, (short) 1));
+        assertEquals(708, reader.mapCharCodeToWidth("B", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -387,7 +390,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxC() throws Exception {
 
-        assertEquals(722, reader.mapCharCodeToWidth("C", (short) 3, (short) 1));
+        assertEquals(722, reader.mapCharCodeToWidth("C", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -397,7 +401,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxCacute() throws Exception {
 
-        assertEquals(722, reader.mapCharCodeToWidth("Cacute", (short) 3,
+        assertEquals(722, reader.mapCharCodeToWidth("Cacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -408,7 +412,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxCcaron() throws Exception {
 
-        assertEquals(722, reader.mapCharCodeToWidth("Ccaron", (short) 3,
+        assertEquals(722, reader.mapCharCodeToWidth("Ccaron", 0, (short) 3,
             (short) 1));
     }
 
@@ -419,7 +423,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxCcedilla() throws Exception {
 
-        assertEquals(722, reader.mapCharCodeToWidth("Ccedilla", (short) 3,
+        assertEquals(722, reader.mapCharCodeToWidth("Ccedilla", 0, (short) 3,
             (short) 1));
     }
 
@@ -430,8 +434,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxCcircumflex() throws Exception {
 
-        assertEquals(722, reader.mapCharCodeToWidth("Ccircumflex", (short) 3,
-            (short) 1));
+        assertEquals(722, reader.mapCharCodeToWidth("Ccircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -441,7 +445,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxCdotaccent() throws Exception {
 
-        assertEquals(722, reader.mapCharCodeToWidth("Cdotaccent", (short) 3,
+        assertEquals(722, reader.mapCharCodeToWidth("Cdotaccent", 0, (short) 3,
             (short) 1));
     }
 
@@ -452,7 +456,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxD() throws Exception {
 
-        assertEquals(764, reader.mapCharCodeToWidth("D", (short) 3, (short) 1));
+        assertEquals(764, reader.mapCharCodeToWidth("D", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -462,7 +467,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxD_uni0323() throws Exception {
 
-        assertEquals(764, reader.mapCharCodeToWidth("D_uni0323", (short) 3,
+        assertEquals(764, reader.mapCharCodeToWidth("D_uni0323", 0, (short) 3,
             (short) 1));
     }
 
@@ -473,7 +478,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxDcaron() throws Exception {
 
-        assertEquals(764, reader.mapCharCodeToWidth("Dcaron", (short) 3,
+        assertEquals(764, reader.mapCharCodeToWidth("Dcaron", 0, (short) 3,
             (short) 1));
     }
 
@@ -484,7 +489,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxDcroat() throws Exception {
 
-        assertEquals(764, reader.mapCharCodeToWidth("Dcroat", (short) 3,
+        assertEquals(764, reader.mapCharCodeToWidth("Dcroat", 0, (short) 3,
             (short) 1));
     }
 
@@ -495,7 +500,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxDelta() throws Exception {
 
-        assertEquals(833, reader.mapCharCodeToWidth("Delta", (short) 3,
+        assertEquals(833, reader.mapCharCodeToWidth("Delta", 0, (short) 3,
             (short) 1));
     }
 
@@ -506,7 +511,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxE() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("E", (short) 3, (short) 1));
+        assertEquals(681, reader.mapCharCodeToWidth("E", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -516,7 +522,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxEreversed() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("E.reversed", (short) 3,
+        assertEquals(681, reader.mapCharCodeToWidth("E.reversed", 0, (short) 3,
             (short) 1));
     }
 
@@ -527,7 +533,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxEacute() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("Eacute", (short) 3,
+        assertEquals(681, reader.mapCharCodeToWidth("Eacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -538,7 +544,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxEbreve() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("Ebreve", (short) 3,
+        assertEquals(681, reader.mapCharCodeToWidth("Ebreve", 0, (short) 3,
             (short) 1));
     }
 
@@ -549,7 +555,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxEcaron() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("Ecaron", (short) 3,
+        assertEquals(681, reader.mapCharCodeToWidth("Ecaron", 0, (short) 3,
             (short) 1));
     }
 
@@ -560,8 +566,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxEcircumflex() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("Ecircumflex", (short) 3,
-            (short) 1));
+        assertEquals(681, reader.mapCharCodeToWidth("Ecircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -571,7 +577,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxEcircumflexacute() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("Ecircumflexacute",
+        assertEquals(681, reader.mapCharCodeToWidth("Ecircumflexacute", 0,
             (short) 3, (short) 1));
     }
 
@@ -582,7 +588,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxEcircumflexdotbelow() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("Ecircumflexdotbelow",
+        assertEquals(681, reader.mapCharCodeToWidth("Ecircumflexdotbelow", 0,
             (short) 3, (short) 1));
     }
 
@@ -593,7 +599,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxEcircumflexgrave() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("Ecircumflexgrave",
+        assertEquals(681, reader.mapCharCodeToWidth("Ecircumflexgrave", 0,
             (short) 3, (short) 1));
     }
 
@@ -604,7 +610,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxEcircumflexhookabove() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("Ecircumflexhookabove",
+        assertEquals(681, reader.mapCharCodeToWidth("Ecircumflexhookabove", 0,
             (short) 3, (short) 1));
     }
 
@@ -615,7 +621,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxEcircumflextilde() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("Ecircumflextilde",
+        assertEquals(681, reader.mapCharCodeToWidth("Ecircumflextilde", 0,
             (short) 3, (short) 1));
     }
 
@@ -626,7 +632,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxEdblgrave() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("Edblgrave", (short) 3,
+        assertEquals(681, reader.mapCharCodeToWidth("Edblgrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -637,7 +643,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxEdieresis() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("Edieresis", (short) 3,
+        assertEquals(681, reader.mapCharCodeToWidth("Edieresis", 0, (short) 3,
             (short) 1));
     }
 
@@ -648,7 +654,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxEdotaccent() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("Edotaccent", (short) 3,
+        assertEquals(681, reader.mapCharCodeToWidth("Edotaccent", 0, (short) 3,
             (short) 1));
     }
 
@@ -659,7 +665,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxEdotbelow() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("Edotbelow", (short) 3,
+        assertEquals(681, reader.mapCharCodeToWidth("Edotbelow", 0, (short) 3,
             (short) 1));
     }
 
@@ -670,7 +676,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxEgrave() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("Egrave", (short) 3,
+        assertEquals(681, reader.mapCharCodeToWidth("Egrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -681,7 +687,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxEhookabove() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("Ehookabove", (short) 3,
+        assertEquals(681, reader.mapCharCodeToWidth("Ehookabove", 0, (short) 3,
             (short) 1));
     }
 
@@ -692,7 +698,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxEmacron() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("Emacron", (short) 3,
+        assertEquals(681, reader.mapCharCodeToWidth("Emacron", 0, (short) 3,
             (short) 1));
     }
 
@@ -703,8 +709,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxEng() throws Exception {
 
-        assertEquals(750, reader
-            .mapCharCodeToWidth("Eng", (short) 3, (short) 1));
+        assertEquals(750, reader.mapCharCodeToWidth("Eng", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -714,7 +720,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxEogonek() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("Eogonek", (short) 3,
+        assertEquals(681, reader.mapCharCodeToWidth("Eogonek", 0, (short) 3,
             (short) 1));
     }
 
@@ -725,8 +731,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxEogonekacute() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("Eogonekacute", (short) 3,
-            (short) 1));
+        assertEquals(681, reader.mapCharCodeToWidth("Eogonekacute", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -736,8 +742,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxEth() throws Exception {
 
-        assertEquals(764, reader
-            .mapCharCodeToWidth("Eth", (short) 3, (short) 1));
+        assertEquals(764, reader.mapCharCodeToWidth("Eth", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -747,7 +753,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxEtilde() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("Etilde", (short) 3,
+        assertEquals(681, reader.mapCharCodeToWidth("Etilde", 0, (short) 3,
             (short) 1));
     }
 
@@ -758,7 +764,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxEuro() throws Exception {
 
-        assertEquals(627, reader.mapCharCodeToWidth("Euro", (short) 3,
+        assertEquals(627, reader.mapCharCodeToWidth("Euro", 0, (short) 3,
             (short) 1));
     }
 
@@ -769,7 +775,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxF() throws Exception {
 
-        assertEquals(653, reader.mapCharCodeToWidth("F", (short) 3, (short) 1));
+        assertEquals(653, reader.mapCharCodeToWidth("F", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -779,7 +786,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxG() throws Exception {
 
-        assertEquals(785, reader.mapCharCodeToWidth("G", (short) 3, (short) 1));
+        assertEquals(785, reader.mapCharCodeToWidth("G", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -789,7 +797,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxGacute() throws Exception {
 
-        assertEquals(785, reader.mapCharCodeToWidth("Gacute", (short) 3,
+        assertEquals(785, reader.mapCharCodeToWidth("Gacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -800,7 +808,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxGamma() throws Exception {
 
-        assertEquals(625, reader.mapCharCodeToWidth("Gamma", (short) 3,
+        assertEquals(625, reader.mapCharCodeToWidth("Gamma", 0, (short) 3,
             (short) 1));
     }
 
@@ -811,7 +819,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxGbreve() throws Exception {
 
-        assertEquals(785, reader.mapCharCodeToWidth("Gbreve", (short) 3,
+        assertEquals(785, reader.mapCharCodeToWidth("Gbreve", 0, (short) 3,
             (short) 1));
     }
 
@@ -822,7 +830,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxGcaron() throws Exception {
 
-        assertEquals(785, reader.mapCharCodeToWidth("Gcaron", (short) 3,
+        assertEquals(785, reader.mapCharCodeToWidth("Gcaron", 0, (short) 3,
             (short) 1));
     }
 
@@ -833,7 +841,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxGcedilla() throws Exception {
 
-        assertEquals(785, reader.mapCharCodeToWidth("Gcedilla", (short) 3,
+        assertEquals(785, reader.mapCharCodeToWidth("Gcedilla", 0, (short) 3,
             (short) 1));
     }
 
@@ -844,8 +852,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxGcircumflex() throws Exception {
 
-        assertEquals(785, reader.mapCharCodeToWidth("Gcircumflex", (short) 3,
-            (short) 1));
+        assertEquals(785, reader.mapCharCodeToWidth("Gcircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -855,8 +863,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxGcommaaccent() throws Exception {
 
-        assertEquals(785, reader.mapCharCodeToWidth("Gcommaaccent", (short) 3,
-            (short) 1));
+        assertEquals(785, reader.mapCharCodeToWidth("Gcommaaccent", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -866,7 +874,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxGdotaccent() throws Exception {
 
-        assertEquals(785, reader.mapCharCodeToWidth("Gdotaccent", (short) 3,
+        assertEquals(785, reader.mapCharCodeToWidth("Gdotaccent", 0, (short) 3,
             (short) 1));
     }
 
@@ -877,7 +885,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxH() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("H", (short) 3, (short) 1));
+        assertEquals(750, reader.mapCharCodeToWidth("H", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -887,7 +896,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxH_uni0323() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("H_uni0323", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("H_uni0323", 0, (short) 3,
             (short) 1));
     }
 
@@ -898,7 +907,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxHbar() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Hbar", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Hbar", 0, (short) 3,
             (short) 1));
     }
 
@@ -909,8 +918,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxHcircumflex() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Hcircumflex", (short) 3,
-            (short) 1));
+        assertEquals(750, reader.mapCharCodeToWidth("Hcircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -920,7 +929,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxI() throws Exception {
 
-        assertEquals(361, reader.mapCharCodeToWidth("I", (short) 3, (short) 1));
+        assertEquals(361, reader.mapCharCodeToWidth("I", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -930,8 +940,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxI_J() throws Exception {
 
-        assertEquals(839, reader
-            .mapCharCodeToWidth("I_J", (short) 3, (short) 1));
+        assertEquals(839, reader.mapCharCodeToWidth("I_J", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -941,7 +951,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxIacute() throws Exception {
 
-        assertEquals(361, reader.mapCharCodeToWidth("Iacute", (short) 3,
+        assertEquals(361, reader.mapCharCodeToWidth("Iacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -952,7 +962,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxIbreve() throws Exception {
 
-        assertEquals(361, reader.mapCharCodeToWidth("Ibreve", (short) 3,
+        assertEquals(361, reader.mapCharCodeToWidth("Ibreve", 0, (short) 3,
             (short) 1));
     }
 
@@ -963,8 +973,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxIcircumflex() throws Exception {
 
-        assertEquals(361, reader.mapCharCodeToWidth("Icircumflex", (short) 3,
-            (short) 1));
+        assertEquals(361, reader.mapCharCodeToWidth("Icircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -974,7 +984,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxIdblgrave() throws Exception {
 
-        assertEquals(361, reader.mapCharCodeToWidth("Idblgrave", (short) 3,
+        assertEquals(361, reader.mapCharCodeToWidth("Idblgrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -985,7 +995,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxIdieresis() throws Exception {
 
-        assertEquals(361, reader.mapCharCodeToWidth("Idieresis", (short) 3,
+        assertEquals(361, reader.mapCharCodeToWidth("Idieresis", 0, (short) 3,
             (short) 1));
     }
 
@@ -996,7 +1006,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxIdotaccent() throws Exception {
 
-        assertEquals(361, reader.mapCharCodeToWidth("Idotaccent", (short) 3,
+        assertEquals(361, reader.mapCharCodeToWidth("Idotaccent", 0, (short) 3,
             (short) 1));
     }
 
@@ -1007,7 +1017,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxIdotbelow() throws Exception {
 
-        assertEquals(361, reader.mapCharCodeToWidth("Idotbelow", (short) 3,
+        assertEquals(361, reader.mapCharCodeToWidth("Idotbelow", 0, (short) 3,
             (short) 1));
     }
 
@@ -1018,7 +1028,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxIgrave() throws Exception {
 
-        assertEquals(361, reader.mapCharCodeToWidth("Igrave", (short) 3,
+        assertEquals(361, reader.mapCharCodeToWidth("Igrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -1029,7 +1039,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxIhookabove() throws Exception {
 
-        assertEquals(361, reader.mapCharCodeToWidth("Ihookabove", (short) 3,
+        assertEquals(361, reader.mapCharCodeToWidth("Ihookabove", 0, (short) 3,
             (short) 1));
     }
 
@@ -1040,7 +1050,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxImacron() throws Exception {
 
-        assertEquals(361, reader.mapCharCodeToWidth("Imacron", (short) 3,
+        assertEquals(361, reader.mapCharCodeToWidth("Imacron", 0, (short) 3,
             (short) 1));
     }
 
@@ -1051,7 +1061,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxIogonek() throws Exception {
 
-        assertEquals(361, reader.mapCharCodeToWidth("Iogonek", (short) 3,
+        assertEquals(361, reader.mapCharCodeToWidth("Iogonek", 0, (short) 3,
             (short) 1));
     }
 
@@ -1062,8 +1072,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxIogonekacute() throws Exception {
 
-        assertEquals(361, reader.mapCharCodeToWidth("Iogonekacute", (short) 3,
-            (short) 1));
+        assertEquals(361, reader.mapCharCodeToWidth("Iogonekacute", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -1073,7 +1083,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxItilde() throws Exception {
 
-        assertEquals(361, reader.mapCharCodeToWidth("Itilde", (short) 3,
+        assertEquals(361, reader.mapCharCodeToWidth("Itilde", 0, (short) 3,
             (short) 1));
     }
 
@@ -1084,7 +1094,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxJ() throws Exception {
 
-        assertEquals(514, reader.mapCharCodeToWidth("J", (short) 3, (short) 1));
+        assertEquals(514, reader.mapCharCodeToWidth("J", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -1094,7 +1105,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxJacute() throws Exception {
 
-        assertEquals(514, reader.mapCharCodeToWidth("Jacute", (short) 3,
+        assertEquals(514, reader.mapCharCodeToWidth("Jacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -1105,8 +1116,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxJcircumflex() throws Exception {
 
-        assertEquals(514, reader.mapCharCodeToWidth("Jcircumflex", (short) 3,
-            (short) 1));
+        assertEquals(514, reader.mapCharCodeToWidth("Jcircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -1116,7 +1127,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxK() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("K", (short) 3, (short) 1));
+        assertEquals(778, reader.mapCharCodeToWidth("K", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -1126,7 +1138,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxKcedilla() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Kcedilla", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("Kcedilla", 0, (short) 3,
             (short) 1));
     }
 
@@ -1137,8 +1149,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxKcommaaccent() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Kcommaaccent", (short) 3,
-            (short) 1));
+        assertEquals(778, reader.mapCharCodeToWidth("Kcommaaccent", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -1148,7 +1160,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxL() throws Exception {
 
-        assertEquals(625, reader.mapCharCodeToWidth("L", (short) 3, (short) 1));
+        assertEquals(625, reader.mapCharCodeToWidth("L", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -1158,7 +1171,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxL_uni0323() throws Exception {
 
-        assertEquals(625, reader.mapCharCodeToWidth("L_uni0323", (short) 3,
+        assertEquals(625, reader.mapCharCodeToWidth("L_uni0323", 0, (short) 3,
             (short) 1));
     }
 
@@ -1169,7 +1182,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxL_uni0323_uni0304cap() throws Exception {
 
-        assertEquals(625, reader.mapCharCodeToWidth("L_uni0323_uni0304.cap",
+        assertEquals(625, reader.mapCharCodeToWidth("L_uni0323_uni0304.cap", 0,
             (short) 3, (short) 1));
     }
 
@@ -1180,7 +1193,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxLacute() throws Exception {
 
-        assertEquals(625, reader.mapCharCodeToWidth("Lacute", (short) 3,
+        assertEquals(625, reader.mapCharCodeToWidth("Lacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -1191,7 +1204,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxLambda() throws Exception {
 
-        assertEquals(694, reader.mapCharCodeToWidth("Lambda", (short) 3,
+        assertEquals(694, reader.mapCharCodeToWidth("Lambda", 0, (short) 3,
             (short) 1));
     }
 
@@ -1202,7 +1215,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxLcaron() throws Exception {
 
-        assertEquals(625, reader.mapCharCodeToWidth("Lcaron", (short) 3,
+        assertEquals(625, reader.mapCharCodeToWidth("Lcaron", 0, (short) 3,
             (short) 1));
     }
 
@@ -1213,7 +1226,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxLcedilla() throws Exception {
 
-        assertEquals(625, reader.mapCharCodeToWidth("Lcedilla", (short) 3,
+        assertEquals(625, reader.mapCharCodeToWidth("Lcedilla", 0, (short) 3,
             (short) 1));
     }
 
@@ -1224,8 +1237,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxLcommaaccent() throws Exception {
 
-        assertEquals(625, reader.mapCharCodeToWidth("Lcommaaccent", (short) 3,
-            (short) 1));
+        assertEquals(625, reader.mapCharCodeToWidth("Lcommaaccent", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -1235,7 +1248,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxLdot() throws Exception {
 
-        assertEquals(625, reader.mapCharCodeToWidth("Ldot", (short) 3,
+        assertEquals(625, reader.mapCharCodeToWidth("Ldot", 0, (short) 3,
             (short) 1));
     }
 
@@ -1246,7 +1259,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxLslash() throws Exception {
 
-        assertEquals(625, reader.mapCharCodeToWidth("Lslash", (short) 3,
+        assertEquals(625, reader.mapCharCodeToWidth("Lslash", 0, (short) 3,
             (short) 1));
     }
 
@@ -1257,7 +1270,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxM() throws Exception {
 
-        assertEquals(917, reader.mapCharCodeToWidth("M", (short) 3, (short) 1));
+        assertEquals(917, reader.mapCharCodeToWidth("M", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -1267,7 +1281,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxM_uni0323() throws Exception {
 
-        assertEquals(917, reader.mapCharCodeToWidth("M_uni0323", (short) 3,
+        assertEquals(917, reader.mapCharCodeToWidth("M_uni0323", 0, (short) 3,
             (short) 1));
     }
 
@@ -1278,7 +1292,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxN() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("N", (short) 3, (short) 1));
+        assertEquals(750, reader.mapCharCodeToWidth("N", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -1288,8 +1303,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxN_uni0307cap() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("N_uni0307.cap", (short) 3,
-            (short) 1));
+        assertEquals(750, reader.mapCharCodeToWidth("N_uni0307.cap", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -1299,7 +1314,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxN_uni0323() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("N_uni0323", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("N_uni0323", 0, (short) 3,
             (short) 1));
     }
 
@@ -1310,7 +1325,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxNacute() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Nacute", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Nacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -1321,7 +1336,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxNcaron() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Ncaron", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Ncaron", 0, (short) 3,
             (short) 1));
     }
 
@@ -1332,7 +1347,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxNcedilla() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Ncedilla", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Ncedilla", 0, (short) 3,
             (short) 1));
     }
 
@@ -1343,8 +1358,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxNcommaaccent() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Ncommaaccent", (short) 3,
-            (short) 1));
+        assertEquals(750, reader.mapCharCodeToWidth("Ncommaaccent", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -1354,7 +1369,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxNtilde() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Ntilde", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Ntilde", 0, (short) 3,
             (short) 1));
     }
 
@@ -1365,7 +1380,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxO() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("O", (short) 3, (short) 1));
+        assertEquals(778, reader.mapCharCodeToWidth("O", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -1375,8 +1391,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOE() throws Exception {
 
-        assertEquals(1014, reader
-            .mapCharCodeToWidth("OE", (short) 3, (short) 1));
+        assertEquals(1014, reader.mapCharCodeToWidth("OE", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -1386,7 +1402,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOEdup() throws Exception {
 
-        assertEquals(1014, reader.mapCharCodeToWidth("OE.dup", (short) 3,
+        assertEquals(1014, reader.mapCharCodeToWidth("OE.dup", 0, (short) 3,
             (short) 1));
     }
 
@@ -1397,7 +1413,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOacute() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Oacute", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("Oacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -1408,7 +1424,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxObreve() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Obreve", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("Obreve", 0, (short) 3,
             (short) 1));
     }
 
@@ -1419,8 +1435,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOcircumflex() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Ocircumflex", (short) 3,
-            (short) 1));
+        assertEquals(778, reader.mapCharCodeToWidth("Ocircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -1430,7 +1446,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOcircumflexacute() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Ocircumflexacute",
+        assertEquals(778, reader.mapCharCodeToWidth("Ocircumflexacute", 0,
             (short) 3, (short) 1));
     }
 
@@ -1441,7 +1457,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOcircumflexdotbelow() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Ocircumflexdotbelow",
+        assertEquals(778, reader.mapCharCodeToWidth("Ocircumflexdotbelow", 0,
             (short) 3, (short) 1));
     }
 
@@ -1452,7 +1468,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOcircumflexgrave() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Ocircumflexgrave",
+        assertEquals(778, reader.mapCharCodeToWidth("Ocircumflexgrave", 0,
             (short) 3, (short) 1));
     }
 
@@ -1463,7 +1479,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOcircumflexhookabove() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Ocircumflexhookabove",
+        assertEquals(778, reader.mapCharCodeToWidth("Ocircumflexhookabove", 0,
             (short) 3, (short) 1));
     }
 
@@ -1474,7 +1490,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOcircumflextilde() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Ocircumflextilde",
+        assertEquals(778, reader.mapCharCodeToWidth("Ocircumflextilde", 0,
             (short) 3, (short) 1));
     }
 
@@ -1485,7 +1501,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOdblgrave() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Odblgrave", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("Odblgrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -1496,7 +1512,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOdieresis() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Odieresis", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("Odieresis", 0, (short) 3,
             (short) 1));
     }
 
@@ -1507,7 +1523,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOdotbelow() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Odotbelow", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("Odotbelow", 0, (short) 3,
             (short) 1));
     }
 
@@ -1518,7 +1534,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOgrave() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Ograve", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("Ograve", 0, (short) 3,
             (short) 1));
     }
 
@@ -1529,7 +1545,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOhookabove() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Ohookabove", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("Ohookabove", 0, (short) 3,
             (short) 1));
     }
 
@@ -1540,7 +1556,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOhorn() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Ohorn", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("Ohorn", 0, (short) 3,
             (short) 1));
     }
 
@@ -1551,7 +1567,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOhornacute() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Ohornacute", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("Ohornacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -1562,8 +1578,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOhorndotbelow() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Ohorndotbelow", (short) 3,
-            (short) 1));
+        assertEquals(778, reader.mapCharCodeToWidth("Ohorndotbelow", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -1573,7 +1589,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOhorngrave() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Ohorngrave", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("Ohorngrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -1584,7 +1600,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOhornhookabove() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Ohornhookabove",
+        assertEquals(778, reader.mapCharCodeToWidth("Ohornhookabove", 0,
             (short) 3, (short) 1));
     }
 
@@ -1595,7 +1611,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOhorntilde() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Ohorntilde", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("Ohorntilde", 0, (short) 3,
             (short) 1));
     }
 
@@ -1606,8 +1622,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOhungarumlaut() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Ohungarumlaut", (short) 3,
-            (short) 1));
+        assertEquals(778, reader.mapCharCodeToWidth("Ohungarumlaut", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -1617,7 +1633,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOmacron() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Omacron", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("Omacron", 0, (short) 3,
             (short) 1));
     }
 
@@ -1628,7 +1644,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOmega() throws Exception {
 
-        assertEquals(722, reader.mapCharCodeToWidth("Omega", (short) 3,
+        assertEquals(722, reader.mapCharCodeToWidth("Omega", 0, (short) 3,
             (short) 1));
     }
 
@@ -1639,7 +1655,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOogonek() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Oogonek", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("Oogonek", 0, (short) 3,
             (short) 1));
     }
 
@@ -1650,8 +1666,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOogonekacute() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Oogonekacute", (short) 3,
-            (short) 1));
+        assertEquals(778, reader.mapCharCodeToWidth("Oogonekacute", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -1661,7 +1677,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOslash() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Oslash", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("Oslash", 0, (short) 3,
             (short) 1));
     }
 
@@ -1672,7 +1688,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOslashdup() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Oslash.dup", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("Oslash.dup", 0, (short) 3,
             (short) 1));
     }
 
@@ -1683,8 +1699,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOslashacute() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Oslashacute", (short) 3,
-            (short) 1));
+        assertEquals(778, reader.mapCharCodeToWidth("Oslashacute", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -1694,7 +1710,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxOtilde() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Otilde", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("Otilde", 0, (short) 3,
             (short) 1));
     }
 
@@ -1705,7 +1721,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxP() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("P", (short) 3, (short) 1));
+        assertEquals(681, reader.mapCharCodeToWidth("P", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -1715,8 +1732,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxPhi() throws Exception {
 
-        assertEquals(722, reader
-            .mapCharCodeToWidth("Phi", (short) 3, (short) 1));
+        assertEquals(722, reader.mapCharCodeToWidth("Phi", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -1726,7 +1743,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxPi() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Pi", (short) 3, (short) 1));
+        assertEquals(750, reader.mapCharCodeToWidth("Pi", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -1736,8 +1754,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxPsi() throws Exception {
 
-        assertEquals(778, reader
-            .mapCharCodeToWidth("Psi", (short) 3, (short) 1));
+        assertEquals(778, reader.mapCharCodeToWidth("Psi", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -1747,7 +1765,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxQ() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Q", (short) 3, (short) 1));
+        assertEquals(778, reader.mapCharCodeToWidth("Q", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -1757,7 +1776,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxR() throws Exception {
 
-        assertEquals(736, reader.mapCharCodeToWidth("R", (short) 3, (short) 1));
+        assertEquals(736, reader.mapCharCodeToWidth("R", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -1767,8 +1787,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxR_uni0307cap() throws Exception {
 
-        assertEquals(736, reader.mapCharCodeToWidth("R_uni0307.cap", (short) 3,
-            (short) 1));
+        assertEquals(736, reader.mapCharCodeToWidth("R_uni0307.cap", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -1778,7 +1798,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxR_uni0323() throws Exception {
 
-        assertEquals(736, reader.mapCharCodeToWidth("R_uni0323", (short) 3,
+        assertEquals(736, reader.mapCharCodeToWidth("R_uni0323", 0, (short) 3,
             (short) 1));
     }
 
@@ -1789,7 +1809,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxR_uni0323_uni0304cap() throws Exception {
 
-        assertEquals(736, reader.mapCharCodeToWidth("R_uni0323_uni0304.cap",
+        assertEquals(736, reader.mapCharCodeToWidth("R_uni0323_uni0304.cap", 0,
             (short) 3, (short) 1));
     }
 
@@ -1800,7 +1820,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxRacute() throws Exception {
 
-        assertEquals(736, reader.mapCharCodeToWidth("Racute", (short) 3,
+        assertEquals(736, reader.mapCharCodeToWidth("Racute", 0, (short) 3,
             (short) 1));
     }
 
@@ -1811,7 +1831,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxRcaron() throws Exception {
 
-        assertEquals(736, reader.mapCharCodeToWidth("Rcaron", (short) 3,
+        assertEquals(736, reader.mapCharCodeToWidth("Rcaron", 0, (short) 3,
             (short) 1));
     }
 
@@ -1822,7 +1842,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxRcedilla() throws Exception {
 
-        assertEquals(736, reader.mapCharCodeToWidth("Rcedilla", (short) 3,
+        assertEquals(736, reader.mapCharCodeToWidth("Rcedilla", 0, (short) 3,
             (short) 1));
     }
 
@@ -1833,8 +1853,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxRcommaaccent() throws Exception {
 
-        assertEquals(736, reader.mapCharCodeToWidth("Rcommaaccent", (short) 3,
-            (short) 1));
+        assertEquals(736, reader.mapCharCodeToWidth("Rcommaaccent", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -1844,7 +1864,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxRdblgrave() throws Exception {
 
-        assertEquals(736, reader.mapCharCodeToWidth("Rdblgrave", (short) 3,
+        assertEquals(736, reader.mapCharCodeToWidth("Rdblgrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -1855,7 +1875,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxS() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("S", (short) 3, (short) 1));
+        assertEquals(556, reader.mapCharCodeToWidth("S", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -1865,7 +1886,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxS_S() throws Exception {
 
-        assertEquals(1111, reader.mapCharCodeToWidth("S_S", (short) 3,
+        assertEquals(1111, reader.mapCharCodeToWidth("S_S", 0, (short) 3,
             (short) 1));
     }
 
@@ -1876,7 +1897,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxSacute() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("Sacute", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("Sacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -1887,7 +1908,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxScaron() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("Scaron", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("Scaron", 0, (short) 3,
             (short) 1));
     }
 
@@ -1898,7 +1919,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxScedilla() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("Scedilla", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("Scedilla", 0, (short) 3,
             (short) 1));
     }
 
@@ -1909,8 +1930,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxScircumflex() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("Scircumflex", (short) 3,
-            (short) 1));
+        assertEquals(556, reader.mapCharCodeToWidth("Scircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -1920,7 +1941,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxSigma() throws Exception {
 
-        assertEquals(722, reader.mapCharCodeToWidth("Sigma", (short) 3,
+        assertEquals(722, reader.mapCharCodeToWidth("Sigma", 0, (short) 3,
             (short) 1));
     }
 
@@ -1931,7 +1952,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxT() throws Exception {
 
-        assertEquals(722, reader.mapCharCodeToWidth("T", (short) 3, (short) 1));
+        assertEquals(722, reader.mapCharCodeToWidth("T", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -1941,7 +1963,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxT_uni0323() throws Exception {
 
-        assertEquals(722, reader.mapCharCodeToWidth("T_uni0323", (short) 3,
+        assertEquals(722, reader.mapCharCodeToWidth("T_uni0323", 0, (short) 3,
             (short) 1));
     }
 
@@ -1952,7 +1974,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxTcaron() throws Exception {
 
-        assertEquals(722, reader.mapCharCodeToWidth("Tcaron", (short) 3,
+        assertEquals(722, reader.mapCharCodeToWidth("Tcaron", 0, (short) 3,
             (short) 1));
     }
 
@@ -1963,7 +1985,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxTcedilla() throws Exception {
 
-        assertEquals(722, reader.mapCharCodeToWidth("Tcedilla", (short) 3,
+        assertEquals(722, reader.mapCharCodeToWidth("Tcedilla", 0, (short) 3,
             (short) 1));
     }
 
@@ -1974,7 +1996,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxTheta() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Theta", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("Theta", 0, (short) 3,
             (short) 1));
     }
 
@@ -1985,7 +2007,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxThorn() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("Thorn", (short) 3,
+        assertEquals(681, reader.mapCharCodeToWidth("Thorn", 0, (short) 3,
             (short) 1));
     }
 
@@ -1996,7 +2018,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxU() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("U", (short) 3, (short) 1));
+        assertEquals(750, reader.mapCharCodeToWidth("U", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -2006,7 +2029,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxUacute() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Uacute", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Uacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -2017,7 +2040,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxUbreve() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Ubreve", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Ubreve", 0, (short) 3,
             (short) 1));
     }
 
@@ -2028,7 +2051,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxUbreveinvertedlow() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Ubreveinvertedlow",
+        assertEquals(750, reader.mapCharCodeToWidth("Ubreveinvertedlow", 0,
             (short) 3, (short) 1));
     }
 
@@ -2039,8 +2062,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxUcircumflex() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Ucircumflex", (short) 3,
-            (short) 1));
+        assertEquals(750, reader.mapCharCodeToWidth("Ucircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -2050,7 +2073,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxUdblgrave() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Udblgrave", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Udblgrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -2061,7 +2084,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxUdieresis() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Udieresis", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Udieresis", 0, (short) 3,
             (short) 1));
     }
 
@@ -2072,7 +2095,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxUdotbelow() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Udotbelow", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Udotbelow", 0, (short) 3,
             (short) 1));
     }
 
@@ -2083,7 +2106,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxUgrave() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Ugrave", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Ugrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -2094,7 +2117,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxUhookabove() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Uhookabove", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Uhookabove", 0, (short) 3,
             (short) 1));
     }
 
@@ -2105,7 +2128,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxUhorn() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Uhorn", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Uhorn", 0, (short) 3,
             (short) 1));
     }
 
@@ -2116,7 +2139,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxUhornacute() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Uhornacute", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Uhornacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -2127,8 +2150,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxUhorndotbelow() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Uhorndotbelow", (short) 3,
-            (short) 1));
+        assertEquals(750, reader.mapCharCodeToWidth("Uhorndotbelow", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -2138,7 +2161,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxUhorngrave() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Uhorngrave", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Uhorngrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -2149,7 +2172,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxUhornhookabove() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Uhornhookabove",
+        assertEquals(750, reader.mapCharCodeToWidth("Uhornhookabove", 0,
             (short) 3, (short) 1));
     }
 
@@ -2160,7 +2183,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxUhorntilde() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Uhorntilde", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Uhorntilde", 0, (short) 3,
             (short) 1));
     }
 
@@ -2171,8 +2194,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxUhungarumlaut() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Uhungarumlaut", (short) 3,
-            (short) 1));
+        assertEquals(750, reader.mapCharCodeToWidth("Uhungarumlaut", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -2182,7 +2205,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxUmacron() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Umacron", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Umacron", 0, (short) 3,
             (short) 1));
     }
 
@@ -2193,7 +2216,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxUogonek() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Uogonek", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Uogonek", 0, (short) 3,
             (short) 1));
     }
 
@@ -2204,7 +2227,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxUpsilon() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("Upsilon", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("Upsilon", 0, (short) 3,
             (short) 1));
     }
 
@@ -2215,7 +2238,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxUring() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Uring", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Uring", 0, (short) 3,
             (short) 1));
     }
 
@@ -2226,7 +2249,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxUtilde() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Utilde", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Utilde", 0, (short) 3,
             (short) 1));
     }
 
@@ -2237,7 +2260,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxV() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("V", (short) 3, (short) 1));
+        assertEquals(750, reader.mapCharCodeToWidth("V", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -2247,7 +2271,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxW() throws Exception {
 
-        assertEquals(1028, reader.mapCharCodeToWidth("W", (short) 3, (short) 1));
+        assertEquals(1028, reader.mapCharCodeToWidth("W", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -2257,7 +2282,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxWacute() throws Exception {
 
-        assertEquals(1028, reader.mapCharCodeToWidth("Wacute", (short) 3,
+        assertEquals(1028, reader.mapCharCodeToWidth("Wacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -2268,8 +2293,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxWcircumflex() throws Exception {
 
-        assertEquals(1028, reader.mapCharCodeToWidth("Wcircumflex", (short) 3,
-            (short) 1));
+        assertEquals(1028, reader.mapCharCodeToWidth("Wcircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -2279,7 +2304,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxWdieresis() throws Exception {
 
-        assertEquals(1028, reader.mapCharCodeToWidth("Wdieresis", (short) 3,
+        assertEquals(1028, reader.mapCharCodeToWidth("Wdieresis", 0, (short) 3,
             (short) 1));
     }
 
@@ -2290,7 +2315,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxWgrave() throws Exception {
 
-        assertEquals(1028, reader.mapCharCodeToWidth("Wgrave", (short) 3,
+        assertEquals(1028, reader.mapCharCodeToWidth("Wgrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -2301,7 +2326,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxX() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("X", (short) 3, (short) 1));
+        assertEquals(750, reader.mapCharCodeToWidth("X", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -2311,7 +2337,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxXi() throws Exception {
 
-        assertEquals(667, reader.mapCharCodeToWidth("Xi", (short) 3, (short) 1));
+        assertEquals(667, reader.mapCharCodeToWidth("Xi", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -2321,7 +2348,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxY() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Y", (short) 3, (short) 1));
+        assertEquals(750, reader.mapCharCodeToWidth("Y", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -2331,7 +2359,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxYacute() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Yacute", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Yacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -2342,8 +2370,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxYcircumflex() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Ycircumflex", (short) 3,
-            (short) 1));
+        assertEquals(750, reader.mapCharCodeToWidth("Ycircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -2353,7 +2381,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxYdieresis() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Ydieresis", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Ydieresis", 0, (short) 3,
             (short) 1));
     }
 
@@ -2364,7 +2392,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxYdotbelow() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Ydotbelow", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Ydotbelow", 0, (short) 3,
             (short) 1));
     }
 
@@ -2375,7 +2403,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxYgrave() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Ygrave", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Ygrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -2386,7 +2414,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxYhookabove() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Yhookabove", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Yhookabove", 0, (short) 3,
             (short) 1));
     }
 
@@ -2397,7 +2425,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxYtilde() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("Ytilde", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("Ytilde", 0, (short) 3,
             (short) 1));
     }
 
@@ -2408,7 +2436,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxZ() throws Exception {
 
-        assertEquals(611, reader.mapCharCodeToWidth("Z", (short) 3, (short) 1));
+        assertEquals(611, reader.mapCharCodeToWidth("Z", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -2418,7 +2447,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxZacute() throws Exception {
 
-        assertEquals(611, reader.mapCharCodeToWidth("Zacute", (short) 3,
+        assertEquals(611, reader.mapCharCodeToWidth("Zacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -2429,7 +2458,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxZcaron() throws Exception {
 
-        assertEquals(611, reader.mapCharCodeToWidth("Zcaron", (short) 3,
+        assertEquals(611, reader.mapCharCodeToWidth("Zcaron", 0, (short) 3,
             (short) 1));
     }
 
@@ -2440,7 +2469,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxZdotaccent() throws Exception {
 
-        assertEquals(611, reader.mapCharCodeToWidth("Zdotaccent", (short) 3,
+        assertEquals(611, reader.mapCharCodeToWidth("Zdotaccent", 0, (short) 3,
             (short) 1));
     }
 
@@ -2451,7 +2480,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxa() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("a", (short) 3, (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("a", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -2461,7 +2491,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxaacute() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("aacute", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("aacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -2472,7 +2502,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxabreve() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("abreve", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("abreve", 0, (short) 3,
             (short) 1));
     }
 
@@ -2483,8 +2513,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxabreveacute() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("abreveacute", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("abreveacute", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -2494,7 +2524,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxabrevedotbelow() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("abrevedotbelow",
+        assertEquals(500, reader.mapCharCodeToWidth("abrevedotbelow", 0,
             (short) 3, (short) 1));
     }
 
@@ -2505,8 +2535,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxabrevegrave() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("abrevegrave", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("abrevegrave", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -2516,7 +2546,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxabrevehookabove() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("abrevehookabove",
+        assertEquals(500, reader.mapCharCodeToWidth("abrevehookabove", 0,
             (short) 3, (short) 1));
     }
 
@@ -2527,8 +2557,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxabrevetilde() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("abrevetilde", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("abrevetilde", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -2538,8 +2568,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxacircumflex() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("acircumflex", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("acircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -2549,7 +2579,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxacircumflexacute() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("acircumflexacute",
+        assertEquals(500, reader.mapCharCodeToWidth("acircumflexacute", 0,
             (short) 3, (short) 1));
     }
 
@@ -2560,7 +2590,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxacircumflexdotbelow() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("acircumflexdotbelow",
+        assertEquals(500, reader.mapCharCodeToWidth("acircumflexdotbelow", 0,
             (short) 3, (short) 1));
     }
 
@@ -2571,7 +2601,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxacircumflexgrave() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("acircumflexgrave",
+        assertEquals(500, reader.mapCharCodeToWidth("acircumflexgrave", 0,
             (short) 3, (short) 1));
     }
 
@@ -2582,7 +2612,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxacircumflexhookabove() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("acircumflexhookabove",
+        assertEquals(500, reader.mapCharCodeToWidth("acircumflexhookabove", 0,
             (short) 3, (short) 1));
     }
 
@@ -2593,7 +2623,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxacircumflextilde() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("acircumflextilde",
+        assertEquals(500, reader.mapCharCodeToWidth("acircumflextilde", 0,
             (short) 3, (short) 1));
     }
 
@@ -2604,7 +2634,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxacute() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("acute", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("acute", 0, (short) 3,
             (short) 1));
     }
 
@@ -2615,7 +2645,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxacutecap() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("acute.cap", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("acute.cap", 0, (short) 3,
             (short) 1));
     }
 
@@ -2626,7 +2656,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxacutedup() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("acute.dup", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("acute.dup", 0, (short) 3,
             (short) 1));
     }
 
@@ -2637,7 +2667,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxacutets1() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("acute.ts1", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("acute.ts1", 0, (short) 3,
             (short) 1));
     }
 
@@ -2648,7 +2678,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxadblgrave() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("adblgrave", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("adblgrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -2659,7 +2689,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxadieresis() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("adieresis", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("adieresis", 0, (short) 3,
             (short) 1));
     }
 
@@ -2670,7 +2700,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxadotbelow() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("adotbelow", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("adotbelow", 0, (short) 3,
             (short) 1));
     }
 
@@ -2681,7 +2711,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxae() throws Exception {
 
-        assertEquals(722, reader.mapCharCodeToWidth("ae", (short) 3, (short) 1));
+        assertEquals(722, reader.mapCharCodeToWidth("ae", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -2691,7 +2722,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxaedup() throws Exception {
 
-        assertEquals(722, reader.mapCharCodeToWidth("ae.dup", (short) 3,
+        assertEquals(722, reader.mapCharCodeToWidth("ae.dup", 0, (short) 3,
             (short) 1));
     }
 
@@ -2702,7 +2733,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxaeacute() throws Exception {
 
-        assertEquals(722, reader.mapCharCodeToWidth("aeacute", (short) 3,
+        assertEquals(722, reader.mapCharCodeToWidth("aeacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -2713,7 +2744,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxafii61352() throws Exception {
 
-        assertEquals(916, reader.mapCharCodeToWidth("afii61352", (short) 3,
+        assertEquals(916, reader.mapCharCodeToWidth("afii61352", 0, (short) 3,
             (short) 1));
     }
 
@@ -2724,7 +2755,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxagrave() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("agrave", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("agrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -2735,7 +2766,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxahookabove() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("ahookabove", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("ahookabove", 0, (short) 3,
             (short) 1));
     }
 
@@ -2746,7 +2777,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxamacron() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("amacron", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("amacron", 0, (short) 3,
             (short) 1));
     }
 
@@ -2757,7 +2788,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxampersand() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("ampersand", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("ampersand", 0, (short) 3,
             (short) 1));
     }
 
@@ -2768,7 +2799,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxanglearc() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("anglearc", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("anglearc", 0, (short) 3,
             (short) 1));
     }
 
@@ -2779,7 +2810,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxangleleft() throws Exception {
 
-        assertEquals(389, reader.mapCharCodeToWidth("angleleft", (short) 3,
+        assertEquals(389, reader.mapCharCodeToWidth("angleleft", 0, (short) 3,
             (short) 1));
     }
 
@@ -2790,7 +2821,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxangleright() throws Exception {
 
-        assertEquals(389, reader.mapCharCodeToWidth("angleright", (short) 3,
+        assertEquals(389, reader.mapCharCodeToWidth("angleright", 0, (short) 3,
             (short) 1));
     }
 
@@ -2801,7 +2832,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxaogonek() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("aogonek", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("aogonek", 0, (short) 3,
             (short) 1));
     }
 
@@ -2812,8 +2843,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxaogonekacute() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("aogonekacute", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("aogonekacute", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -2823,7 +2854,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxaring() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("aring", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("aring", 0, (short) 3,
             (short) 1));
     }
 
@@ -2834,7 +2865,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxaringacute() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("aringacute", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("aringacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -2845,8 +2876,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxasciicircum() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("asciicircum", (short) 3,
-            (short) 1));
+        assertEquals(556, reader.mapCharCodeToWidth("asciicircum", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -2856,7 +2887,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxasciitilde() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("asciitilde", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("asciitilde", 0, (short) 3,
             (short) 1));
     }
 
@@ -2867,7 +2898,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxasterisk() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("asterisk", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("asterisk", 0, (short) 3,
             (short) 1));
     }
 
@@ -2878,8 +2909,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxasteriskmath() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("asterisk.math", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("asterisk.math", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -2889,7 +2920,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxat() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("at", (short) 3, (short) 1));
+        assertEquals(778, reader.mapCharCodeToWidth("at", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -2899,7 +2931,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxatilde() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("atilde", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("atilde", 0, (short) 3,
             (short) 1));
     }
 
@@ -2910,7 +2942,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxb() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("b", (short) 3, (short) 1));
+        assertEquals(556, reader.mapCharCodeToWidth("b", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -2920,7 +2953,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxbackslash() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("backslash", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("backslash", 0, (short) 3,
             (short) 1));
     }
 
@@ -2931,7 +2964,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxbaht() throws Exception {
 
-        assertEquals(708, reader.mapCharCodeToWidth("baht", (short) 3,
+        assertEquals(708, reader.mapCharCodeToWidth("baht", 0, (short) 3,
             (short) 1));
     }
 
@@ -2942,8 +2975,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxbar() throws Exception {
 
-        assertEquals(278, reader
-            .mapCharCodeToWidth("bar", (short) 3, (short) 1));
+        assertEquals(278, reader.mapCharCodeToWidth("bar", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -2953,7 +2986,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxbigcircle() throws Exception {
 
-        assertEquals(683, reader.mapCharCodeToWidth("bigcircle", (short) 3,
+        assertEquals(683, reader.mapCharCodeToWidth("bigcircle", 0, (short) 3,
             (short) 1));
     }
 
@@ -2964,8 +2997,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxblanksymbol() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("blanksymbol", (short) 3,
-            (short) 1));
+        assertEquals(556, reader.mapCharCodeToWidth("blanksymbol", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -2975,7 +3008,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxbraceleft() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("braceleft", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("braceleft", 0, (short) 3,
             (short) 1));
     }
 
@@ -2986,7 +3019,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxbraceright() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("braceright", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("braceright", 0, (short) 3,
             (short) 1));
     }
 
@@ -2997,8 +3030,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxbracketleft() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("bracketleft", (short) 3,
-            (short) 1));
+        assertEquals(278, reader.mapCharCodeToWidth("bracketleft", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -3008,8 +3041,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxbracketright() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("bracketright", (short) 3,
-            (short) 1));
+        assertEquals(278, reader.mapCharCodeToWidth("bracketright", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -3019,7 +3052,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxbreve() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("breve", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("breve", 0, (short) 3,
             (short) 1));
     }
 
@@ -3030,7 +3063,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxbrevecap() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("breve.cap", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("breve.cap", 0, (short) 3,
             (short) 1));
     }
 
@@ -3041,7 +3074,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxbrevets1() throws Exception {
 
-        assertEquals(611, reader.mapCharCodeToWidth("breve.ts1", (short) 3,
+        assertEquals(611, reader.mapCharCodeToWidth("breve.ts1", 0, (short) 3,
             (short) 1));
     }
 
@@ -3052,7 +3085,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxbrevelow() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("brevelow", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("brevelow", 0, (short) 3,
             (short) 1));
     }
 
@@ -3063,7 +3096,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxbrokenbar() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("brokenbar", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("brokenbar", 0, (short) 3,
             (short) 1));
     }
 
@@ -3074,7 +3107,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxbullet() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("bullet", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("bullet", 0, (short) 3,
             (short) 1));
     }
 
@@ -3085,7 +3118,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxc() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("c", (short) 3, (short) 1));
+        assertEquals(444, reader.mapCharCodeToWidth("c", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -3095,7 +3129,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcacute() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("cacute", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("cacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -3106,7 +3140,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcaron() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("caron", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("caron", 0, (short) 3,
             (short) 1));
     }
 
@@ -3117,7 +3151,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcaroncap() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("caron.cap", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("caron.cap", 0, (short) 3,
             (short) 1));
     }
 
@@ -3128,7 +3162,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcaronts1() throws Exception {
 
-        assertEquals(611, reader.mapCharCodeToWidth("caron.ts1", (short) 3,
+        assertEquals(611, reader.mapCharCodeToWidth("caron.ts1", 0, (short) 3,
             (short) 1));
     }
 
@@ -3139,7 +3173,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxccaron() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("ccaron", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("ccaron", 0, (short) 3,
             (short) 1));
     }
 
@@ -3150,7 +3184,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxccedilla() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("ccedilla", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("ccedilla", 0, (short) 3,
             (short) 1));
     }
 
@@ -3161,8 +3195,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxccircumflex() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("ccircumflex", (short) 3,
-            (short) 1));
+        assertEquals(444, reader.mapCharCodeToWidth("ccircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -3172,7 +3206,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcdotaccent() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("cdotaccent", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("cdotaccent", 0, (short) 3,
             (short) 1));
     }
 
@@ -3183,7 +3217,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcedilla() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("cedilla", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("cedilla", 0, (short) 3,
             (short) 1));
     }
 
@@ -3194,8 +3228,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcedilladup() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("cedilla.dup", (short) 3,
-            (short) 1));
+        assertEquals(444, reader.mapCharCodeToWidth("cedilla.dup", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -3205,7 +3239,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcent() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("cent", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("cent", 0, (short) 3,
             (short) 1));
     }
 
@@ -3216,8 +3250,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcentoldstyle() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("cent.oldstyle", (short) 3,
-            (short) 1));
+        assertEquals(444, reader.mapCharCodeToWidth("cent.oldstyle", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -3227,7 +3261,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcentigrade() throws Exception {
 
-        assertEquals(944, reader.mapCharCodeToWidth("centigrade", (short) 3,
+        assertEquals(944, reader.mapCharCodeToWidth("centigrade", 0, (short) 3,
             (short) 1));
     }
 
@@ -3238,7 +3272,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcircumflex() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("circumflex", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("circumflex", 0, (short) 3,
             (short) 1));
     }
 
@@ -3249,7 +3283,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcircumflexcap() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("circumflex.cap",
+        assertEquals(500, reader.mapCharCodeToWidth("circumflex.cap", 0,
             (short) 3, (short) 1));
     }
 
@@ -3260,7 +3294,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcircumflexdup() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("circumflex.dup",
+        assertEquals(500, reader.mapCharCodeToWidth("circumflex.dup", 0,
             (short) 3, (short) 1));
     }
 
@@ -3271,7 +3305,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcolon() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("colon", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("colon", 0, (short) 3,
             (short) 1));
     }
 
@@ -3282,8 +3316,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcolonmonetary() throws Exception {
 
-        assertEquals(722, reader.mapCharCodeToWidth("colonmonetary", (short) 3,
-            (short) 1));
+        assertEquals(722, reader.mapCharCodeToWidth("colonmonetary", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -3293,7 +3327,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcomma() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("comma", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("comma", 0, (short) 3,
             (short) 1));
     }
 
@@ -3304,8 +3338,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcommaaccent() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("commaaccent", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("commaaccent", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -3315,7 +3349,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcopyleft() throws Exception {
 
-        assertEquals(683, reader.mapCharCodeToWidth("copyleft", (short) 3,
+        assertEquals(683, reader.mapCharCodeToWidth("copyleft", 0, (short) 3,
             (short) 1));
     }
 
@@ -3326,7 +3360,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcopyright() throws Exception {
 
-        assertEquals(683, reader.mapCharCodeToWidth("copyright", (short) 3,
+        assertEquals(683, reader.mapCharCodeToWidth("copyright", 0, (short) 3,
             (short) 1));
     }
 
@@ -3337,8 +3371,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcopyrightvar() throws Exception {
 
-        assertEquals(659, reader.mapCharCodeToWidth("copyright.var", (short) 3,
-            (short) 1));
+        assertEquals(659, reader.mapCharCodeToWidth("copyright.var", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -3348,7 +3382,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcurrency() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("currency", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("currency", 0, (short) 3,
             (short) 1));
     }
 
@@ -3359,7 +3393,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcwm() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("cwm", (short) 3, (short) 1));
+        assertEquals(0, reader.mapCharCodeToWidth("cwm", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -3369,7 +3404,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcwmascender() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("cwmascender", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("cwmascender", 0, (short) 3,
             (short) 1));
     }
 
@@ -3380,7 +3415,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxcwmcapital() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("cwmcapital", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("cwmcapital", 0, (short) 3,
             (short) 1));
     }
 
@@ -3391,7 +3426,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxd() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("d", (short) 3, (short) 1));
+        assertEquals(556, reader.mapCharCodeToWidth("d", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -3401,7 +3437,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxd_uni0323() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("d_uni0323", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("d_uni0323", 0, (short) 3,
             (short) 1));
     }
 
@@ -3412,7 +3448,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdagger() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("dagger", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("dagger", 0, (short) 3,
             (short) 1));
     }
 
@@ -3423,7 +3459,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdaggerdbl() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("daggerdbl", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("daggerdbl", 0, (short) 3,
             (short) 1));
     }
 
@@ -3434,7 +3470,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdblbracketleft() throws Exception {
 
-        assertEquals(403, reader.mapCharCodeToWidth("dblbracketleft",
+        assertEquals(403, reader.mapCharCodeToWidth("dblbracketleft", 0,
             (short) 3, (short) 1));
     }
 
@@ -3445,7 +3481,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdblbracketright() throws Exception {
 
-        assertEquals(403, reader.mapCharCodeToWidth("dblbracketright",
+        assertEquals(403, reader.mapCharCodeToWidth("dblbracketright", 0,
             (short) 3, (short) 1));
     }
 
@@ -3456,8 +3492,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdblgravets1() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("dblgrave.ts1", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("dblgrave.ts1", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -3467,7 +3503,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdblverticalbar() throws Exception {
 
-        assertEquals(398, reader.mapCharCodeToWidth("dblverticalbar",
+        assertEquals(398, reader.mapCharCodeToWidth("dblverticalbar", 0,
             (short) 3, (short) 1));
     }
 
@@ -3478,7 +3514,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdcaron() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("dcaron", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("dcaron", 0, (short) 3,
             (short) 1));
     }
 
@@ -3489,7 +3525,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdcroat() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("dcroat", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("dcroat", 0, (short) 3,
             (short) 1));
     }
 
@@ -3500,7 +3536,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdegree() throws Exception {
 
-        assertEquals(375, reader.mapCharCodeToWidth("degree", (short) 3,
+        assertEquals(375, reader.mapCharCodeToWidth("degree", 0, (short) 3,
             (short) 1));
     }
 
@@ -3511,7 +3547,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdiameter() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("diameter", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("diameter", 0, (short) 3,
             (short) 1));
     }
 
@@ -3522,7 +3558,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdied() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("died", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("died", 0, (short) 3,
             (short) 1));
     }
 
@@ -3533,7 +3569,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdieresis() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("dieresis", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("dieresis", 0, (short) 3,
             (short) 1));
     }
 
@@ -3544,8 +3580,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdieresiscap() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("dieresis.cap", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("dieresis.cap", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -3555,8 +3591,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdieresisdup() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("dieresis.dup", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("dieresis.dup", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -3566,8 +3602,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdieresists1() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("dieresis.ts1", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("dieresis.ts1", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -3577,7 +3613,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdiscount() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("discount", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("discount", 0, (short) 3,
             (short) 1));
     }
 
@@ -3588,7 +3624,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdivide() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("divide", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("divide", 0, (short) 3,
             (short) 1));
     }
 
@@ -3599,7 +3635,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdivorced() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("divorced", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("divorced", 0, (short) 3,
             (short) 1));
     }
 
@@ -3610,7 +3646,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdollar() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("dollar", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("dollar", 0, (short) 3,
             (short) 1));
     }
 
@@ -3621,7 +3657,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdollaroldstyle() throws Exception {
 
-        assertEquals(610, reader.mapCharCodeToWidth("dollar.oldstyle",
+        assertEquals(610, reader.mapCharCodeToWidth("dollar.oldstyle", 0,
             (short) 3, (short) 1));
     }
 
@@ -3632,7 +3668,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdong() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("dong", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("dong", 0, (short) 3,
             (short) 1));
     }
 
@@ -3643,7 +3679,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdotaccent() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("dotaccent", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("dotaccent", 0, (short) 3,
             (short) 1));
     }
 
@@ -3654,8 +3690,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdotaccentcap() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("dotaccent.cap", (short) 3,
-            (short) 1));
+        assertEquals(278, reader.mapCharCodeToWidth("dotaccent.cap", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -3665,8 +3701,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdotaccentvar() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("dotaccent.var", (short) 3,
-            (short) 1));
+        assertEquals(278, reader.mapCharCodeToWidth("dotaccent.var", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -3676,7 +3712,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxdotlessi() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("dotlessi", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("dotlessi", 0, (short) 3,
             (short) 1));
     }
 
@@ -3687,7 +3723,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxe() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("e", (short) 3, (short) 1));
+        assertEquals(444, reader.mapCharCodeToWidth("e", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -3697,7 +3734,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxereversed() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("e.reversed", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("e.reversed", 0, (short) 3,
             (short) 1));
     }
 
@@ -3708,7 +3745,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxeacute() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("eacute", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("eacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -3719,7 +3756,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxebreve() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("ebreve", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("ebreve", 0, (short) 3,
             (short) 1));
     }
 
@@ -3730,7 +3767,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxecaron() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("ecaron", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("ecaron", 0, (short) 3,
             (short) 1));
     }
 
@@ -3741,8 +3778,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxecircumflex() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("ecircumflex", (short) 3,
-            (short) 1));
+        assertEquals(444, reader.mapCharCodeToWidth("ecircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -3752,7 +3789,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxecircumflexacute() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("ecircumflexacute",
+        assertEquals(444, reader.mapCharCodeToWidth("ecircumflexacute", 0,
             (short) 3, (short) 1));
     }
 
@@ -3763,7 +3800,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxecircumflexdotbelow() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("ecircumflexdotbelow",
+        assertEquals(444, reader.mapCharCodeToWidth("ecircumflexdotbelow", 0,
             (short) 3, (short) 1));
     }
 
@@ -3774,7 +3811,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxecircumflexgrave() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("ecircumflexgrave",
+        assertEquals(444, reader.mapCharCodeToWidth("ecircumflexgrave", 0,
             (short) 3, (short) 1));
     }
 
@@ -3785,7 +3822,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxecircumflexhookabove() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("ecircumflexhookabove",
+        assertEquals(444, reader.mapCharCodeToWidth("ecircumflexhookabove", 0,
             (short) 3, (short) 1));
     }
 
@@ -3796,7 +3833,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxecircumflextilde() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("ecircumflextilde",
+        assertEquals(444, reader.mapCharCodeToWidth("ecircumflextilde", 0,
             (short) 3, (short) 1));
     }
 
@@ -3807,7 +3844,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxedblgrave() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("edblgrave", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("edblgrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -3818,7 +3855,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxedieresis() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("edieresis", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("edieresis", 0, (short) 3,
             (short) 1));
     }
 
@@ -3829,7 +3866,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxedotaccent() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("edotaccent", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("edotaccent", 0, (short) 3,
             (short) 1));
     }
 
@@ -3840,7 +3877,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxedotbelow() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("edotbelow", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("edotbelow", 0, (short) 3,
             (short) 1));
     }
 
@@ -3851,7 +3888,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxegrave() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("egrave", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("egrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -3862,7 +3899,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxehookabove() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("ehookabove", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("ehookabove", 0, (short) 3,
             (short) 1));
     }
 
@@ -3873,7 +3910,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxeight() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("eight", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("eight", 0, (short) 3,
             (short) 1));
     }
 
@@ -3884,7 +3921,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxeightoldstyle() throws Exception {
 
-        assertEquals(563, reader.mapCharCodeToWidth("eight.oldstyle",
+        assertEquals(563, reader.mapCharCodeToWidth("eight.oldstyle", 0,
             (short) 3, (short) 1));
     }
 
@@ -3895,7 +3932,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxeightprop() throws Exception {
 
-        assertEquals(563, reader.mapCharCodeToWidth("eight.prop", (short) 3,
+        assertEquals(563, reader.mapCharCodeToWidth("eight.prop", 0, (short) 3,
             (short) 1));
     }
 
@@ -3906,7 +3943,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxeighttaboldstyle() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("eight.taboldstyle",
+        assertEquals(500, reader.mapCharCodeToWidth("eight.taboldstyle", 0,
             (short) 3, (short) 1));
     }
 
@@ -3917,7 +3954,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxellipsis() throws Exception {
 
-        assertEquals(670, reader.mapCharCodeToWidth("ellipsis", (short) 3,
+        assertEquals(670, reader.mapCharCodeToWidth("ellipsis", 0, (short) 3,
             (short) 1));
     }
 
@@ -3928,7 +3965,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxemacron() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("emacron", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("emacron", 0, (short) 3,
             (short) 1));
     }
 
@@ -3939,7 +3976,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxemdash() throws Exception {
 
-        assertEquals(1000, reader.mapCharCodeToWidth("emdash", (short) 3,
+        assertEquals(1000, reader.mapCharCodeToWidth("emdash", 0, (short) 3,
             (short) 1));
     }
 
@@ -3950,7 +3987,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxendash() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("endash", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("endash", 0, (short) 3,
             (short) 1));
     }
 
@@ -3961,8 +3998,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxeng() throws Exception {
 
-        assertEquals(506, reader
-            .mapCharCodeToWidth("eng", (short) 3, (short) 1));
+        assertEquals(506, reader.mapCharCodeToWidth("eng", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -3972,7 +4009,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxeogonek() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("eogonek", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("eogonek", 0, (short) 3,
             (short) 1));
     }
 
@@ -3983,8 +4020,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxeogonekacute() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("eogonekacute", (short) 3,
-            (short) 1));
+        assertEquals(444, reader.mapCharCodeToWidth("eogonekacute", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -3994,7 +4031,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxequal() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("equal", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("equal", 0, (short) 3,
             (short) 1));
     }
 
@@ -4005,7 +4042,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxestimated() throws Exception {
 
-        assertEquals(676, reader.mapCharCodeToWidth("estimated", (short) 3,
+        assertEquals(676, reader.mapCharCodeToWidth("estimated", 0, (short) 3,
             (short) 1));
     }
 
@@ -4016,8 +4053,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxeth() throws Exception {
 
-        assertEquals(500, reader
-            .mapCharCodeToWidth("eth", (short) 3, (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("eth", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -4027,7 +4064,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxetilde() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("etilde", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("etilde", 0, (short) 3,
             (short) 1));
     }
 
@@ -4038,7 +4075,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxexclam() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("exclam", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("exclam", 0, (short) 3,
             (short) 1));
     }
 
@@ -4049,7 +4086,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxexclamdown() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("exclamdown", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("exclamdown", 0, (short) 3,
             (short) 1));
     }
 
@@ -4060,7 +4097,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxf() throws Exception {
 
-        assertEquals(306, reader.mapCharCodeToWidth("f", (short) 3, (short) 1));
+        assertEquals(306, reader.mapCharCodeToWidth("f", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -4070,8 +4108,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxf_f() throws Exception {
 
-        assertEquals(583, reader
-            .mapCharCodeToWidth("f_f", (short) 3, (short) 1));
+        assertEquals(583, reader.mapCharCodeToWidth("f_f", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -4081,7 +4119,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxf_f_i() throws Exception {
 
-        assertEquals(833, reader.mapCharCodeToWidth("f_f_i", (short) 3,
+        assertEquals(833, reader.mapCharCodeToWidth("f_f_i", 0, (short) 3,
             (short) 1));
     }
 
@@ -4092,7 +4130,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxf_f_l() throws Exception {
 
-        assertEquals(833, reader.mapCharCodeToWidth("f_f_l", (short) 3,
+        assertEquals(833, reader.mapCharCodeToWidth("f_f_l", 0, (short) 3,
             (short) 1));
     }
 
@@ -4103,8 +4141,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxf_i() throws Exception {
 
-        assertEquals(556, reader
-            .mapCharCodeToWidth("f_i", (short) 3, (short) 1));
+        assertEquals(556, reader.mapCharCodeToWidth("f_i", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -4114,8 +4152,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxf_k() throws Exception {
 
-        assertEquals(816, reader
-            .mapCharCodeToWidth("f_k", (short) 3, (short) 1));
+        assertEquals(816, reader.mapCharCodeToWidth("f_k", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -4125,8 +4163,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxf_l() throws Exception {
 
-        assertEquals(556, reader
-            .mapCharCodeToWidth("f_l", (short) 3, (short) 1));
+        assertEquals(556, reader.mapCharCodeToWidth("f_l", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -4136,7 +4174,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxfive() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("five", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("five", 0, (short) 3,
             (short) 1));
     }
 
@@ -4147,8 +4185,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxfiveoldstyle() throws Exception {
 
-        assertEquals(547, reader.mapCharCodeToWidth("five.oldstyle", (short) 3,
-            (short) 1));
+        assertEquals(547, reader.mapCharCodeToWidth("five.oldstyle", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -4158,7 +4196,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxfiveprop() throws Exception {
 
-        assertEquals(547, reader.mapCharCodeToWidth("five.prop", (short) 3,
+        assertEquals(547, reader.mapCharCodeToWidth("five.prop", 0, (short) 3,
             (short) 1));
     }
 
@@ -4169,7 +4207,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxfivetaboldstyle() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("five.taboldstyle",
+        assertEquals(500, reader.mapCharCodeToWidth("five.taboldstyle", 0,
             (short) 3, (short) 1));
     }
 
@@ -4180,7 +4218,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxflorin() throws Exception {
 
-        assertEquals(306, reader.mapCharCodeToWidth("florin", (short) 3,
+        assertEquals(306, reader.mapCharCodeToWidth("florin", 0, (short) 3,
             (short) 1));
     }
 
@@ -4191,7 +4229,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxfour() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("four", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("four", 0, (short) 3,
             (short) 1));
     }
 
@@ -4202,8 +4240,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxfouroldstyle() throws Exception {
 
-        assertEquals(517, reader.mapCharCodeToWidth("four.oldstyle", (short) 3,
-            (short) 1));
+        assertEquals(517, reader.mapCharCodeToWidth("four.oldstyle", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -4213,7 +4251,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxfourprop() throws Exception {
 
-        assertEquals(517, reader.mapCharCodeToWidth("four.prop", (short) 3,
+        assertEquals(517, reader.mapCharCodeToWidth("four.prop", 0, (short) 3,
             (short) 1));
     }
 
@@ -4224,7 +4262,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxfourtaboldstyle() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("four.taboldstyle",
+        assertEquals(500, reader.mapCharCodeToWidth("four.taboldstyle", 0,
             (short) 3, (short) 1));
     }
 
@@ -4235,7 +4273,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxfraction() throws Exception {
 
-        assertEquals(551, reader.mapCharCodeToWidth("fraction", (short) 3,
+        assertEquals(551, reader.mapCharCodeToWidth("fraction", 0, (short) 3,
             (short) 1));
     }
 
@@ -4246,7 +4284,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxfractionalt() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("fraction.alt", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("fraction.alt", 0, (short) 3,
             (short) 1));
     }
 
@@ -4257,7 +4295,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxg() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("g", (short) 3, (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("g", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -4267,7 +4306,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxgacute() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("gacute", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("gacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -4278,7 +4317,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxgbreve() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("gbreve", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("gbreve", 0, (short) 3,
             (short) 1));
     }
 
@@ -4289,7 +4328,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxgcaron() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("gcaron", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("gcaron", 0, (short) 3,
             (short) 1));
     }
 
@@ -4300,7 +4339,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxgcedilla() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("gcedilla", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("gcedilla", 0, (short) 3,
             (short) 1));
     }
 
@@ -4311,8 +4350,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxgcircumflex() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("gcircumflex", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("gcircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -4322,8 +4361,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxgcommaaccent() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("gcommaaccent", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("gcommaaccent", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -4333,7 +4372,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxgdotaccent() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("gdotaccent", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("gdotaccent", 0, (short) 3,
             (short) 1));
     }
 
@@ -4344,7 +4383,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxgermandbls() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("germandbls", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("germandbls", 0, (short) 3,
             (short) 1));
     }
 
@@ -4355,7 +4394,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxgermandblsdup() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("germandbls.dup",
+        assertEquals(500, reader.mapCharCodeToWidth("germandbls.dup", 0,
             (short) 3, (short) 1));
     }
 
@@ -4366,8 +4405,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxgnaborretni() throws Exception {
 
-        assertEquals(472, reader.mapCharCodeToWidth("gnaborretni", (short) 3,
-            (short) 1));
+        assertEquals(472, reader.mapCharCodeToWidth("gnaborretni", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -4377,7 +4416,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxgrave() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("grave", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("grave", 0, (short) 3,
             (short) 1));
     }
 
@@ -4388,7 +4427,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxgravecap() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("grave.cap", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("grave.cap", 0, (short) 3,
             (short) 1));
     }
 
@@ -4399,7 +4438,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxgravets1() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("grave.ts1", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("grave.ts1", 0, (short) 3,
             (short) 1));
     }
 
@@ -4410,7 +4449,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxgreater() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("greater", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("greater", 0, (short) 3,
             (short) 1));
     }
 
@@ -4421,7 +4460,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxguarani() throws Exception {
 
-        assertEquals(785, reader.mapCharCodeToWidth("guarani", (short) 3,
+        assertEquals(785, reader.mapCharCodeToWidth("guarani", 0, (short) 3,
             (short) 1));
     }
 
@@ -4432,8 +4471,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxguillemotleft() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("guillemotleft", (short) 3,
-            (short) 1));
+        assertEquals(556, reader.mapCharCodeToWidth("guillemotleft", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -4443,7 +4482,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxguillemotright() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("guillemotright",
+        assertEquals(556, reader.mapCharCodeToWidth("guillemotright", 0,
             (short) 3, (short) 1));
     }
 
@@ -4454,8 +4493,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxguilsinglleft() throws Exception {
 
-        assertEquals(389, reader.mapCharCodeToWidth("guilsinglleft", (short) 3,
-            (short) 1));
+        assertEquals(389, reader.mapCharCodeToWidth("guilsinglleft", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -4465,7 +4504,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxguilsinglright() throws Exception {
 
-        assertEquals(389, reader.mapCharCodeToWidth("guilsinglright",
+        assertEquals(389, reader.mapCharCodeToWidth("guilsinglright", 0,
             (short) 3, (short) 1));
     }
 
@@ -4476,7 +4515,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxh() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("h", (short) 3, (short) 1));
+        assertEquals(556, reader.mapCharCodeToWidth("h", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -4486,7 +4526,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxh_uni0323() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("h_uni0323", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("h_uni0323", 0, (short) 3,
             (short) 1));
     }
 
@@ -4497,7 +4537,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxhbar() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("hbar", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("hbar", 0, (short) 3,
             (short) 1));
     }
 
@@ -4508,8 +4548,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxhcircumflex() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("hcircumflex", (short) 3,
-            (short) 1));
+        assertEquals(556, reader.mapCharCodeToWidth("hcircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -4519,8 +4559,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxhungarumlaut() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("hungarumlaut", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("hungarumlaut", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -4530,7 +4570,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxhungarumlautcap() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("hungarumlaut.cap",
+        assertEquals(500, reader.mapCharCodeToWidth("hungarumlaut.cap", 0,
             (short) 3, (short) 1));
     }
 
@@ -4541,7 +4581,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxhungarumlautts1() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("hungarumlaut.ts1",
+        assertEquals(500, reader.mapCharCodeToWidth("hungarumlaut.ts1", 0,
             (short) 3, (short) 1));
     }
 
@@ -4552,7 +4592,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxhyphen() throws Exception {
 
-        assertEquals(333, reader.mapCharCodeToWidth("hyphen", (short) 3,
+        assertEquals(333, reader.mapCharCodeToWidth("hyphen", 0, (short) 3,
             (short) 1));
     }
 
@@ -4563,7 +4603,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxhyphenalt() throws Exception {
 
-        assertEquals(167, reader.mapCharCodeToWidth("hyphen.alt", (short) 3,
+        assertEquals(167, reader.mapCharCodeToWidth("hyphen.alt", 0, (short) 3,
             (short) 1));
     }
 
@@ -4574,7 +4614,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxhyphendup() throws Exception {
 
-        assertEquals(333, reader.mapCharCodeToWidth("hyphen.dup", (short) 3,
+        assertEquals(333, reader.mapCharCodeToWidth("hyphen.dup", 0, (short) 3,
             (short) 1));
     }
 
@@ -4585,8 +4625,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxhyphenprop() throws Exception {
 
-        assertEquals(333, reader.mapCharCodeToWidth("hyphen.prop", (short) 3,
-            (short) 1));
+        assertEquals(333, reader.mapCharCodeToWidth("hyphen.prop", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -4596,7 +4636,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxhyphendbl() throws Exception {
 
-        assertEquals(333, reader.mapCharCodeToWidth("hyphendbl", (short) 3,
+        assertEquals(333, reader.mapCharCodeToWidth("hyphendbl", 0, (short) 3,
             (short) 1));
     }
 
@@ -4607,8 +4647,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxhyphendblalt() throws Exception {
 
-        assertEquals(167, reader.mapCharCodeToWidth("hyphendbl.alt", (short) 3,
-            (short) 1));
+        assertEquals(167, reader.mapCharCodeToWidth("hyphendbl.alt", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -4618,7 +4658,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxi() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("i", (short) 3, (short) 1));
+        assertEquals(278, reader.mapCharCodeToWidth("i", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -4628,7 +4669,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxiTRK() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("i.TRK", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("i.TRK", 0, (short) 3,
             (short) 1));
     }
 
@@ -4639,8 +4680,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxi_j() throws Exception {
 
-        assertEquals(556, reader
-            .mapCharCodeToWidth("i_j", (short) 3, (short) 1));
+        assertEquals(556, reader.mapCharCodeToWidth("i_j", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -4650,7 +4691,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxiacute() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("iacute", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("iacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -4661,7 +4702,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxibreve() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("ibreve", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("ibreve", 0, (short) 3,
             (short) 1));
     }
 
@@ -4672,8 +4713,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxicircumflex() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("icircumflex", (short) 3,
-            (short) 1));
+        assertEquals(278, reader.mapCharCodeToWidth("icircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -4683,7 +4724,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxidblgrave() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("idblgrave", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("idblgrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -4694,7 +4735,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxidieresis() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("idieresis", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("idieresis", 0, (short) 3,
             (short) 1));
     }
 
@@ -4705,7 +4746,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxidotbelow() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("idotbelow", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("idotbelow", 0, (short) 3,
             (short) 1));
     }
 
@@ -4716,7 +4757,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxigrave() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("igrave", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("igrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -4727,7 +4768,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxihookabove() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("ihookabove", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("ihookabove", 0, (short) 3,
             (short) 1));
     }
 
@@ -4738,7 +4779,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtximacron() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("imacron", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("imacron", 0, (short) 3,
             (short) 1));
     }
 
@@ -4749,8 +4790,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxinterrobang() throws Exception {
 
-        assertEquals(472, reader.mapCharCodeToWidth("interrobang", (short) 3,
-            (short) 1));
+        assertEquals(472, reader.mapCharCodeToWidth("interrobang", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -4760,7 +4801,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxiogonek() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("iogonek", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("iogonek", 0, (short) 3,
             (short) 1));
     }
 
@@ -4771,8 +4812,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxiogonekacute() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("iogonekacute", (short) 3,
-            (short) 1));
+        assertEquals(278, reader.mapCharCodeToWidth("iogonekacute", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -4782,7 +4823,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxitilde() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("itilde", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("itilde", 0, (short) 3,
             (short) 1));
     }
 
@@ -4793,7 +4834,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxj() throws Exception {
 
-        assertEquals(306, reader.mapCharCodeToWidth("j", (short) 3, (short) 1));
+        assertEquals(306, reader.mapCharCodeToWidth("j", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -4803,7 +4845,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxjdotless() throws Exception {
 
-        assertEquals(306, reader.mapCharCodeToWidth("j.dotless", (short) 3,
+        assertEquals(306, reader.mapCharCodeToWidth("j.dotless", 0, (short) 3,
             (short) 1));
     }
 
@@ -4814,7 +4856,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxjacute() throws Exception {
 
-        assertEquals(306, reader.mapCharCodeToWidth("jacute", (short) 3,
+        assertEquals(306, reader.mapCharCodeToWidth("jacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -4825,8 +4867,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxjcircumflex() throws Exception {
 
-        assertEquals(306, reader.mapCharCodeToWidth("jcircumflex", (short) 3,
-            (short) 1));
+        assertEquals(306, reader.mapCharCodeToWidth("jcircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -4836,7 +4878,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxk() throws Exception {
 
-        assertEquals(528, reader.mapCharCodeToWidth("k", (short) 3, (short) 1));
+        assertEquals(528, reader.mapCharCodeToWidth("k", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -4846,7 +4889,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxkcedilla() throws Exception {
 
-        assertEquals(528, reader.mapCharCodeToWidth("kcedilla", (short) 3,
+        assertEquals(528, reader.mapCharCodeToWidth("kcedilla", 0, (short) 3,
             (short) 1));
     }
 
@@ -4857,8 +4900,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxkcommaaccent() throws Exception {
 
-        assertEquals(528, reader.mapCharCodeToWidth("kcommaaccent", (short) 3,
-            (short) 1));
+        assertEquals(528, reader.mapCharCodeToWidth("kcommaaccent", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -4868,7 +4911,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxl() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("l", (short) 3, (short) 1));
+        assertEquals(278, reader.mapCharCodeToWidth("l", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -4878,7 +4922,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxl_uni0323() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("l_uni0323", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("l_uni0323", 0, (short) 3,
             (short) 1));
     }
 
@@ -4889,7 +4933,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxl_uni0323_uni0304() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("l_uni0323_uni0304",
+        assertEquals(278, reader.mapCharCodeToWidth("l_uni0323_uni0304", 0,
             (short) 3, (short) 1));
     }
 
@@ -4900,7 +4944,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxlacute() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("lacute", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("lacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -4911,7 +4955,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxlcaron() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("lcaron", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("lcaron", 0, (short) 3,
             (short) 1));
     }
 
@@ -4922,7 +4966,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxlcedilla() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("lcedilla", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("lcedilla", 0, (short) 3,
             (short) 1));
     }
 
@@ -4933,8 +4977,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxlcommaaccent() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("lcommaaccent", (short) 3,
-            (short) 1));
+        assertEquals(278, reader.mapCharCodeToWidth("lcommaaccent", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -4944,7 +4988,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxldot() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("ldot", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("ldot", 0, (short) 3,
             (short) 1));
     }
 
@@ -4955,7 +4999,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxleaf() throws Exception {
 
-        assertEquals(1000, reader.mapCharCodeToWidth("leaf", (short) 3,
+        assertEquals(1000, reader.mapCharCodeToWidth("leaf", 0, (short) 3,
             (short) 1));
     }
 
@@ -4966,7 +5010,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxless() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("less", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("less", 0, (short) 3,
             (short) 1));
     }
 
@@ -4977,7 +5021,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxlira() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("lira", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("lira", 0, (short) 3,
             (short) 1));
     }
 
@@ -4988,7 +5032,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxlogicalnot() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("logicalnot", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("logicalnot", 0, (short) 3,
             (short) 1));
     }
 
@@ -4999,7 +5043,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxlongs() throws Exception {
 
-        assertEquals(306, reader.mapCharCodeToWidth("longs", (short) 3,
+        assertEquals(306, reader.mapCharCodeToWidth("longs", 0, (short) 3,
             (short) 1));
     }
 
@@ -5010,7 +5054,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxlslash() throws Exception {
 
-        assertEquals(336, reader.mapCharCodeToWidth("lslash", (short) 3,
+        assertEquals(336, reader.mapCharCodeToWidth("lslash", 0, (short) 3,
             (short) 1));
     }
 
@@ -5021,7 +5065,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxm() throws Exception {
 
-        assertEquals(833, reader.mapCharCodeToWidth("m", (short) 3, (short) 1));
+        assertEquals(833, reader.mapCharCodeToWidth("m", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -5031,7 +5076,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxm_uni0323() throws Exception {
 
-        assertEquals(833, reader.mapCharCodeToWidth("m_uni0323", (short) 3,
+        assertEquals(833, reader.mapCharCodeToWidth("m_uni0323", 0, (short) 3,
             (short) 1));
     }
 
@@ -5042,7 +5087,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxmacron() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("macron", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("macron", 0, (short) 3,
             (short) 1));
     }
 
@@ -5053,7 +5098,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxmacroncap() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("macron.cap", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("macron.cap", 0, (short) 3,
             (short) 1));
     }
 
@@ -5064,7 +5109,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxmacrondup() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("macron.dup", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("macron.dup", 0, (short) 3,
             (short) 1));
     }
 
@@ -5075,7 +5120,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxmacronts1() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("macron.ts1", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("macron.ts1", 0, (short) 3,
             (short) 1));
     }
 
@@ -5086,7 +5131,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxmarried() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("married", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("married", 0, (short) 3,
             (short) 1));
     }
 
@@ -5097,7 +5142,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxminus() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("minus", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("minus", 0, (short) 3,
             (short) 1));
     }
 
@@ -5108,7 +5153,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxmu() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("mu", (short) 3, (short) 1));
+        assertEquals(556, reader.mapCharCodeToWidth("mu", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -5118,7 +5164,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxmultiply() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("multiply", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("multiply", 0, (short) 3,
             (short) 1));
     }
 
@@ -5129,7 +5175,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxn() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("n", (short) 3, (short) 1));
+        assertEquals(556, reader.mapCharCodeToWidth("n", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -5139,7 +5186,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxn_uni0307() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("n_uni0307", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("n_uni0307", 0, (short) 3,
             (short) 1));
     }
 
@@ -5150,7 +5197,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxn_uni0323() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("n_uni0323", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("n_uni0323", 0, (short) 3,
             (short) 1));
     }
 
@@ -5161,7 +5208,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxnacute() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("nacute", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("nacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -5172,7 +5219,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxnaira() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("naira", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("naira", 0, (short) 3,
             (short) 1));
     }
 
@@ -5183,7 +5230,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxncaron() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("ncaron", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("ncaron", 0, (short) 3,
             (short) 1));
     }
 
@@ -5194,7 +5241,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxncedilla() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("ncedilla", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("ncedilla", 0, (short) 3,
             (short) 1));
     }
 
@@ -5205,8 +5252,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxncommaaccent() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("ncommaaccent", (short) 3,
-            (short) 1));
+        assertEquals(556, reader.mapCharCodeToWidth("ncommaaccent", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -5216,7 +5263,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxnine() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("nine", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("nine", 0, (short) 3,
             (short) 1));
     }
 
@@ -5227,8 +5274,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxnineoldstyle() throws Exception {
 
-        assertEquals(563, reader.mapCharCodeToWidth("nine.oldstyle", (short) 3,
-            (short) 1));
+        assertEquals(563, reader.mapCharCodeToWidth("nine.oldstyle", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -5238,7 +5285,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxnineprop() throws Exception {
 
-        assertEquals(563, reader.mapCharCodeToWidth("nine.prop", (short) 3,
+        assertEquals(563, reader.mapCharCodeToWidth("nine.prop", 0, (short) 3,
             (short) 1));
     }
 
@@ -5249,7 +5296,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxninetaboldstyle() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("nine.taboldstyle",
+        assertEquals(500, reader.mapCharCodeToWidth("nine.taboldstyle", 0,
             (short) 3, (short) 1));
     }
 
@@ -5260,7 +5307,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxntilde() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("ntilde", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("ntilde", 0, (short) 3,
             (short) 1));
     }
 
@@ -5271,7 +5318,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxnumbersign() throws Exception {
 
-        assertEquals(833, reader.mapCharCodeToWidth("numbersign", (short) 3,
+        assertEquals(833, reader.mapCharCodeToWidth("numbersign", 0, (short) 3,
             (short) 1));
     }
 
@@ -5282,7 +5329,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxo() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("o", (short) 3, (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("o", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -5292,7 +5340,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxoacute() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("oacute", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("oacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -5303,7 +5351,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxobreve() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("obreve", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("obreve", 0, (short) 3,
             (short) 1));
     }
 
@@ -5314,8 +5362,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxocircumflex() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("ocircumflex", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("ocircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -5325,7 +5373,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxocircumflexacute() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("ocircumflexacute",
+        assertEquals(500, reader.mapCharCodeToWidth("ocircumflexacute", 0,
             (short) 3, (short) 1));
     }
 
@@ -5336,7 +5384,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxocircumflexdotbelow() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("ocircumflexdotbelow",
+        assertEquals(500, reader.mapCharCodeToWidth("ocircumflexdotbelow", 0,
             (short) 3, (short) 1));
     }
 
@@ -5347,7 +5395,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxocircumflexgrave() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("ocircumflexgrave",
+        assertEquals(500, reader.mapCharCodeToWidth("ocircumflexgrave", 0,
             (short) 3, (short) 1));
     }
 
@@ -5358,7 +5406,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxocircumflexhookabove() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("ocircumflexhookabove",
+        assertEquals(500, reader.mapCharCodeToWidth("ocircumflexhookabove", 0,
             (short) 3, (short) 1));
     }
 
@@ -5369,7 +5417,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxocircumflextilde() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("ocircumflextilde",
+        assertEquals(500, reader.mapCharCodeToWidth("ocircumflextilde", 0,
             (short) 3, (short) 1));
     }
 
@@ -5380,7 +5428,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxodblgrave() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("odblgrave", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("odblgrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -5391,7 +5439,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxodieresis() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("odieresis", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("odieresis", 0, (short) 3,
             (short) 1));
     }
 
@@ -5402,7 +5450,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxodotbelow() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("odotbelow", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("odotbelow", 0, (short) 3,
             (short) 1));
     }
 
@@ -5413,7 +5461,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxoe() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("oe", (short) 3, (short) 1));
+        assertEquals(778, reader.mapCharCodeToWidth("oe", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -5423,7 +5472,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxoedup() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("oe.dup", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("oe.dup", 0, (short) 3,
             (short) 1));
     }
 
@@ -5434,7 +5483,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxogonek() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("ogonek", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("ogonek", 0, (short) 3,
             (short) 1));
     }
 
@@ -5445,7 +5494,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxograve() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("ograve", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("ograve", 0, (short) 3,
             (short) 1));
     }
 
@@ -5456,8 +5505,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxohm() throws Exception {
 
-        assertEquals(722, reader
-            .mapCharCodeToWidth("ohm", (short) 3, (short) 1));
+        assertEquals(722, reader.mapCharCodeToWidth("ohm", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -5467,7 +5516,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxohookabove() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("ohookabove", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("ohookabove", 0, (short) 3,
             (short) 1));
     }
 
@@ -5478,7 +5527,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxohorn() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("ohorn", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("ohorn", 0, (short) 3,
             (short) 1));
     }
 
@@ -5489,7 +5538,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxohornacute() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("ohornacute", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("ohornacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -5500,8 +5549,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxohorndotbelow() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("ohorndotbelow", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("ohorndotbelow", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -5511,7 +5560,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxohorngrave() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("ohorngrave", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("ohorngrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -5522,7 +5571,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxohornhookabove() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("ohornhookabove",
+        assertEquals(500, reader.mapCharCodeToWidth("ohornhookabove", 0,
             (short) 3, (short) 1));
     }
 
@@ -5533,7 +5582,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxohorntilde() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("ohorntilde", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("ohorntilde", 0, (short) 3,
             (short) 1));
     }
 
@@ -5544,8 +5593,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxohungarumlaut() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("ohungarumlaut", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("ohungarumlaut", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -5555,7 +5604,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxomacron() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("omacron", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("omacron", 0, (short) 3,
             (short) 1));
     }
 
@@ -5566,8 +5615,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxone() throws Exception {
 
-        assertEquals(500, reader
-            .mapCharCodeToWidth("one", (short) 3, (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("one", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -5577,8 +5626,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxoneoldstyle() throws Exception {
 
-        assertEquals(404, reader.mapCharCodeToWidth("one.oldstyle", (short) 3,
-            (short) 1));
+        assertEquals(404, reader.mapCharCodeToWidth("one.oldstyle", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -5588,7 +5637,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxoneprop() throws Exception {
 
-        assertEquals(404, reader.mapCharCodeToWidth("one.prop", (short) 3,
+        assertEquals(404, reader.mapCharCodeToWidth("one.prop", 0, (short) 3,
             (short) 1));
     }
 
@@ -5599,8 +5648,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxonesuperior() throws Exception {
 
-        assertEquals(366, reader.mapCharCodeToWidth("one.superior", (short) 3,
-            (short) 1));
+        assertEquals(366, reader.mapCharCodeToWidth("one.superior", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -5610,7 +5659,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxonetaboldstyle() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("one.taboldstyle",
+        assertEquals(500, reader.mapCharCodeToWidth("one.taboldstyle", 0,
             (short) 3, (short) 1));
     }
 
@@ -5621,7 +5670,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxonehalf() throws Exception {
 
-        assertEquals(825, reader.mapCharCodeToWidth("onehalf", (short) 3,
+        assertEquals(825, reader.mapCharCodeToWidth("onehalf", 0, (short) 3,
             (short) 1));
     }
 
@@ -5632,7 +5681,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxonequarter() throws Exception {
 
-        assertEquals(825, reader.mapCharCodeToWidth("onequarter", (short) 3,
+        assertEquals(825, reader.mapCharCodeToWidth("onequarter", 0, (short) 3,
             (short) 1));
     }
 
@@ -5643,7 +5692,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxoogonek() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("oogonek", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("oogonek", 0, (short) 3,
             (short) 1));
     }
 
@@ -5654,8 +5703,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxoogonekacute() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("oogonekacute", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("oogonekacute", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -5665,7 +5714,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxopenbullet() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("openbullet", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("openbullet", 0, (short) 3,
             (short) 1));
     }
 
@@ -5676,8 +5725,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxordfeminine() throws Exception {
 
-        assertEquals(449, reader.mapCharCodeToWidth("ordfeminine", (short) 3,
-            (short) 1));
+        assertEquals(449, reader.mapCharCodeToWidth("ordfeminine", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -5687,8 +5736,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxordmasculine() throws Exception {
 
-        assertEquals(419, reader.mapCharCodeToWidth("ordmasculine", (short) 3,
-            (short) 1));
+        assertEquals(419, reader.mapCharCodeToWidth("ordmasculine", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -5698,7 +5747,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxoslash() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("oslash", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("oslash", 0, (short) 3,
             (short) 1));
     }
 
@@ -5709,7 +5758,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxoslashdup() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("oslash.dup", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("oslash.dup", 0, (short) 3,
             (short) 1));
     }
 
@@ -5720,8 +5769,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxoslashacute() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("oslashacute", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("oslashacute", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -5731,7 +5780,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxotilde() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("otilde", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("otilde", 0, (short) 3,
             (short) 1));
     }
 
@@ -5742,7 +5791,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxp() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("p", (short) 3, (short) 1));
+        assertEquals(556, reader.mapCharCodeToWidth("p", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -5752,7 +5802,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxparagraph() throws Exception {
 
-        assertEquals(611, reader.mapCharCodeToWidth("paragraph", (short) 3,
+        assertEquals(611, reader.mapCharCodeToWidth("paragraph", 0, (short) 3,
             (short) 1));
     }
 
@@ -5763,8 +5813,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxparagraphalt() throws Exception {
 
-        assertEquals(472, reader.mapCharCodeToWidth("paragraph.alt", (short) 3,
-            (short) 1));
+        assertEquals(472, reader.mapCharCodeToWidth("paragraph.alt", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -5774,7 +5824,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxparenleft() throws Exception {
 
-        assertEquals(389, reader.mapCharCodeToWidth("parenleft", (short) 3,
+        assertEquals(389, reader.mapCharCodeToWidth("parenleft", 0, (short) 3,
             (short) 1));
     }
 
@@ -5785,7 +5835,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxparenright() throws Exception {
 
-        assertEquals(389, reader.mapCharCodeToWidth("parenright", (short) 3,
+        assertEquals(389, reader.mapCharCodeToWidth("parenright", 0, (short) 3,
             (short) 1));
     }
 
@@ -5796,7 +5846,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxpercent() throws Exception {
 
-        assertEquals(833, reader.mapCharCodeToWidth("percent", (short) 3,
+        assertEquals(833, reader.mapCharCodeToWidth("percent", 0, (short) 3,
             (short) 1));
     }
 
@@ -5807,7 +5857,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxperiod() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("period", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("period", 0, (short) 3,
             (short) 1));
     }
 
@@ -5818,7 +5868,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxperiodcentered() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("periodcentered",
+        assertEquals(778, reader.mapCharCodeToWidth("periodcentered", 0,
             (short) 3, (short) 1));
     }
 
@@ -5829,7 +5879,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxpermyriad() throws Exception {
 
-        assertEquals(1457, reader.mapCharCodeToWidth("permyriad", (short) 3,
+        assertEquals(1457, reader.mapCharCodeToWidth("permyriad", 0, (short) 3,
             (short) 1));
     }
 
@@ -5840,8 +5890,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxperthousand() throws Exception {
 
-        assertEquals(1140, reader.mapCharCodeToWidth("perthousand", (short) 3,
-            (short) 1));
+        assertEquals(1140, reader.mapCharCodeToWidth("perthousand", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -5851,7 +5901,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxperthousandzero() throws Exception {
 
-        assertEquals(392, reader.mapCharCodeToWidth("perthousandzero",
+        assertEquals(392, reader.mapCharCodeToWidth("perthousandzero", 0,
             (short) 3, (short) 1));
     }
 
@@ -5862,7 +5912,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxpeso() throws Exception {
 
-        assertEquals(681, reader.mapCharCodeToWidth("peso", (short) 3,
+        assertEquals(681, reader.mapCharCodeToWidth("peso", 0, (short) 3,
             (short) 1));
     }
 
@@ -5873,7 +5923,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxplus() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("plus", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("plus", 0, (short) 3,
             (short) 1));
     }
 
@@ -5884,7 +5934,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxplusminus() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("plusminus", (short) 3,
+        assertEquals(778, reader.mapCharCodeToWidth("plusminus", 0, (short) 3,
             (short) 1));
     }
 
@@ -5895,7 +5945,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxpublished() throws Exception {
 
-        assertEquals(683, reader.mapCharCodeToWidth("published", (short) 3,
+        assertEquals(683, reader.mapCharCodeToWidth("published", 0, (short) 3,
             (short) 1));
     }
 
@@ -5906,7 +5956,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxq() throws Exception {
 
-        assertEquals(528, reader.mapCharCodeToWidth("q", (short) 3, (short) 1));
+        assertEquals(528, reader.mapCharCodeToWidth("q", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -5916,7 +5967,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxquestion() throws Exception {
 
-        assertEquals(472, reader.mapCharCodeToWidth("question", (short) 3,
+        assertEquals(472, reader.mapCharCodeToWidth("question", 0, (short) 3,
             (short) 1));
     }
 
@@ -5927,8 +5978,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxquestiondown() throws Exception {
 
-        assertEquals(472, reader.mapCharCodeToWidth("questiondown", (short) 3,
-            (short) 1));
+        assertEquals(472, reader.mapCharCodeToWidth("questiondown", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -5938,7 +5989,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxquillbracketleft() throws Exception {
 
-        assertEquals(361, reader.mapCharCodeToWidth("quillbracketleft",
+        assertEquals(361, reader.mapCharCodeToWidth("quillbracketleft", 0,
             (short) 3, (short) 1));
     }
 
@@ -5949,7 +6000,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxquillbracketright() throws Exception {
 
-        assertEquals(361, reader.mapCharCodeToWidth("quillbracketright",
+        assertEquals(361, reader.mapCharCodeToWidth("quillbracketright", 0,
             (short) 3, (short) 1));
     }
 
@@ -5960,7 +6011,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxquotedbl() throws Exception {
 
-        assertEquals(374, reader.mapCharCodeToWidth("quotedbl", (short) 3,
+        assertEquals(374, reader.mapCharCodeToWidth("quotedbl", 0, (short) 3,
             (short) 1));
     }
 
@@ -5971,8 +6022,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxquotedblbase() throws Exception {
 
-        assertEquals(472, reader.mapCharCodeToWidth("quotedblbase", (short) 3,
-            (short) 1));
+        assertEquals(472, reader.mapCharCodeToWidth("quotedblbase", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -5982,7 +6033,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxquotedblbasecm() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("quotedblbase.cm",
+        assertEquals(500, reader.mapCharCodeToWidth("quotedblbase.cm", 0,
             (short) 3, (short) 1));
     }
 
@@ -5993,7 +6044,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxquotedblbasecs() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("quotedblbase.cs",
+        assertEquals(500, reader.mapCharCodeToWidth("quotedblbase.cs", 0,
             (short) 3, (short) 1));
     }
 
@@ -6004,7 +6055,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxquotedblbasets1() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("quotedblbase.ts1",
+        assertEquals(500, reader.mapCharCodeToWidth("quotedblbase.ts1", 0,
             (short) 3, (short) 1));
     }
 
@@ -6015,8 +6066,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxquotedblleft() throws Exception {
 
-        assertEquals(472, reader.mapCharCodeToWidth("quotedblleft", (short) 3,
-            (short) 1));
+        assertEquals(472, reader.mapCharCodeToWidth("quotedblleft", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -6026,7 +6077,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxquotedblleftcm() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("quotedblleft.cm",
+        assertEquals(500, reader.mapCharCodeToWidth("quotedblleft.cm", 0,
             (short) 3, (short) 1));
     }
 
@@ -6037,8 +6088,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxquotedblright() throws Exception {
 
-        assertEquals(472, reader.mapCharCodeToWidth("quotedblright", (short) 3,
-            (short) 1));
+        assertEquals(472, reader.mapCharCodeToWidth("quotedblright", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -6048,7 +6099,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxquotedblrightcm() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("quotedblright.cm",
+        assertEquals(500, reader.mapCharCodeToWidth("quotedblright.cm", 0,
             (short) 3, (short) 1));
     }
 
@@ -6059,7 +6110,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxquotedblrightcs() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("quotedblright.cs",
+        assertEquals(500, reader.mapCharCodeToWidth("quotedblright.cs", 0,
             (short) 3, (short) 1));
     }
 
@@ -6070,7 +6121,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxquoteleft() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("quoteleft", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("quoteleft", 0, (short) 3,
             (short) 1));
     }
 
@@ -6081,8 +6132,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxquoteleftdup() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("quoteleft.dup", (short) 3,
-            (short) 1));
+        assertEquals(278, reader.mapCharCodeToWidth("quoteleft.dup", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -6092,7 +6143,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxquoteright() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("quoteright", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("quoteright", 0, (short) 3,
             (short) 1));
     }
 
@@ -6103,7 +6154,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxquoterightdup() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("quoteright.dup",
+        assertEquals(278, reader.mapCharCodeToWidth("quoteright.dup", 0,
             (short) 3, (short) 1));
     }
 
@@ -6114,7 +6165,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxquotesinglbase() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("quotesinglbase",
+        assertEquals(278, reader.mapCharCodeToWidth("quotesinglbase", 0,
             (short) 3, (short) 1));
     }
 
@@ -6125,7 +6176,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxquotesinglbasets1() throws Exception {
 
-        assertEquals(389, reader.mapCharCodeToWidth("quotesinglbase.ts1",
+        assertEquals(389, reader.mapCharCodeToWidth("quotesinglbase.ts1", 0,
             (short) 3, (short) 1));
     }
 
@@ -6136,8 +6187,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxquotesingle() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("quotesingle", (short) 3,
-            (short) 1));
+        assertEquals(278, reader.mapCharCodeToWidth("quotesingle", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -6147,7 +6198,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxquotesinglets1() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("quotesingle.ts1",
+        assertEquals(278, reader.mapCharCodeToWidth("quotesingle.ts1", 0,
             (short) 3, (short) 1));
     }
 
@@ -6158,7 +6209,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxr() throws Exception {
 
-        assertEquals(392, reader.mapCharCodeToWidth("r", (short) 3, (short) 1));
+        assertEquals(392, reader.mapCharCodeToWidth("r", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -6168,7 +6220,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxr_uni0307() throws Exception {
 
-        assertEquals(392, reader.mapCharCodeToWidth("r_uni0307", (short) 3,
+        assertEquals(392, reader.mapCharCodeToWidth("r_uni0307", 0, (short) 3,
             (short) 1));
     }
 
@@ -6179,7 +6231,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxr_uni0323() throws Exception {
 
-        assertEquals(392, reader.mapCharCodeToWidth("r_uni0323", (short) 3,
+        assertEquals(392, reader.mapCharCodeToWidth("r_uni0323", 0, (short) 3,
             (short) 1));
     }
 
@@ -6190,7 +6242,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxr_uni0323_uni0304() throws Exception {
 
-        assertEquals(392, reader.mapCharCodeToWidth("r_uni0323_uni0304",
+        assertEquals(392, reader.mapCharCodeToWidth("r_uni0323_uni0304", 0,
             (short) 3, (short) 1));
     }
 
@@ -6201,7 +6253,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxracute() throws Exception {
 
-        assertEquals(392, reader.mapCharCodeToWidth("racute", (short) 3,
+        assertEquals(392, reader.mapCharCodeToWidth("racute", 0, (short) 3,
             (short) 1));
     }
 
@@ -6212,7 +6264,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxradical() throws Exception {
 
-        assertEquals(472, reader.mapCharCodeToWidth("radical", (short) 3,
+        assertEquals(472, reader.mapCharCodeToWidth("radical", 0, (short) 3,
             (short) 1));
     }
 
@@ -6223,7 +6275,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxrcaron() throws Exception {
 
-        assertEquals(392, reader.mapCharCodeToWidth("rcaron", (short) 3,
+        assertEquals(392, reader.mapCharCodeToWidth("rcaron", 0, (short) 3,
             (short) 1));
     }
 
@@ -6234,7 +6286,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxrcedilla() throws Exception {
 
-        assertEquals(392, reader.mapCharCodeToWidth("rcedilla", (short) 3,
+        assertEquals(392, reader.mapCharCodeToWidth("rcedilla", 0, (short) 3,
             (short) 1));
     }
 
@@ -6245,8 +6297,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxrcommaaccent() throws Exception {
 
-        assertEquals(392, reader.mapCharCodeToWidth("rcommaaccent", (short) 3,
-            (short) 1));
+        assertEquals(392, reader.mapCharCodeToWidth("rcommaaccent", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -6256,7 +6308,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxrdblgrave() throws Exception {
 
-        assertEquals(392, reader.mapCharCodeToWidth("rdblgrave", (short) 3,
+        assertEquals(392, reader.mapCharCodeToWidth("rdblgrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -6267,7 +6319,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxrecipe() throws Exception {
 
-        assertEquals(736, reader.mapCharCodeToWidth("recipe", (short) 3,
+        assertEquals(736, reader.mapCharCodeToWidth("recipe", 0, (short) 3,
             (short) 1));
     }
 
@@ -6278,8 +6330,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxreferencemark() throws Exception {
 
-        assertEquals(778, reader.mapCharCodeToWidth("referencemark", (short) 3,
-            (short) 1));
+        assertEquals(778, reader.mapCharCodeToWidth("referencemark", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -6289,7 +6341,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxregistered() throws Exception {
 
-        assertEquals(683, reader.mapCharCodeToWidth("registered", (short) 3,
+        assertEquals(683, reader.mapCharCodeToWidth("registered", 0, (short) 3,
             (short) 1));
     }
 
@@ -6300,7 +6352,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxregisteredalt() throws Exception {
 
-        assertEquals(470, reader.mapCharCodeToWidth("registered.alt",
+        assertEquals(470, reader.mapCharCodeToWidth("registered.alt", 0,
             (short) 3, (short) 1));
     }
 
@@ -6311,7 +6363,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxregisteredvar() throws Exception {
 
-        assertEquals(659, reader.mapCharCodeToWidth("registered.var",
+        assertEquals(659, reader.mapCharCodeToWidth("registered.var", 0,
             (short) 3, (short) 1));
     }
 
@@ -6322,7 +6374,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxring() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("ring", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("ring", 0, (short) 3,
             (short) 1));
     }
 
@@ -6333,7 +6385,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxringcap() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("ring.cap", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("ring.cap", 0, (short) 3,
             (short) 1));
     }
 
@@ -6344,7 +6396,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxs() throws Exception {
 
-        assertEquals(394, reader.mapCharCodeToWidth("s", (short) 3, (short) 1));
+        assertEquals(394, reader.mapCharCodeToWidth("s", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -6354,7 +6407,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxsacute() throws Exception {
 
-        assertEquals(394, reader.mapCharCodeToWidth("sacute", (short) 3,
+        assertEquals(394, reader.mapCharCodeToWidth("sacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -6365,7 +6418,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxscaron() throws Exception {
 
-        assertEquals(394, reader.mapCharCodeToWidth("scaron", (short) 3,
+        assertEquals(394, reader.mapCharCodeToWidth("scaron", 0, (short) 3,
             (short) 1));
     }
 
@@ -6376,7 +6429,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxscedilla() throws Exception {
 
-        assertEquals(394, reader.mapCharCodeToWidth("scedilla", (short) 3,
+        assertEquals(394, reader.mapCharCodeToWidth("scedilla", 0, (short) 3,
             (short) 1));
     }
 
@@ -6387,8 +6440,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxscircumflex() throws Exception {
 
-        assertEquals(394, reader.mapCharCodeToWidth("scircumflex", (short) 3,
-            (short) 1));
+        assertEquals(394, reader.mapCharCodeToWidth("scircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -6398,7 +6451,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxsection() throws Exception {
 
-        assertEquals(484, reader.mapCharCodeToWidth("section", (short) 3,
+        assertEquals(484, reader.mapCharCodeToWidth("section", 0, (short) 3,
             (short) 1));
     }
 
@@ -6409,7 +6462,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxsemicolon() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("semicolon", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("semicolon", 0, (short) 3,
             (short) 1));
     }
 
@@ -6420,8 +6473,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxservicemark() throws Exception {
 
-        assertEquals(883, reader.mapCharCodeToWidth("servicemark", (short) 3,
-            (short) 1));
+        assertEquals(883, reader.mapCharCodeToWidth("servicemark", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -6431,7 +6484,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxseven() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("seven", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("seven", 0, (short) 3,
             (short) 1));
     }
 
@@ -6442,7 +6495,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxsevenoldstyle() throws Exception {
 
-        assertEquals(503, reader.mapCharCodeToWidth("seven.oldstyle",
+        assertEquals(503, reader.mapCharCodeToWidth("seven.oldstyle", 0,
             (short) 3, (short) 1));
     }
 
@@ -6453,7 +6506,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxsevenprop() throws Exception {
 
-        assertEquals(503, reader.mapCharCodeToWidth("seven.prop", (short) 3,
+        assertEquals(503, reader.mapCharCodeToWidth("seven.prop", 0, (short) 3,
             (short) 1));
     }
 
@@ -6464,7 +6517,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxseventaboldstyle() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("seven.taboldstyle",
+        assertEquals(500, reader.mapCharCodeToWidth("seven.taboldstyle", 0,
             (short) 3, (short) 1));
     }
 
@@ -6475,8 +6528,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxsix() throws Exception {
 
-        assertEquals(500, reader
-            .mapCharCodeToWidth("six", (short) 3, (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("six", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -6486,8 +6539,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxsixoldstyle() throws Exception {
 
-        assertEquals(563, reader.mapCharCodeToWidth("six.oldstyle", (short) 3,
-            (short) 1));
+        assertEquals(563, reader.mapCharCodeToWidth("six.oldstyle", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -6497,7 +6550,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxsixprop() throws Exception {
 
-        assertEquals(563, reader.mapCharCodeToWidth("six.prop", (short) 3,
+        assertEquals(563, reader.mapCharCodeToWidth("six.prop", 0, (short) 3,
             (short) 1));
     }
 
@@ -6508,7 +6561,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxsixtaboldstyle() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("six.taboldstyle",
+        assertEquals(500, reader.mapCharCodeToWidth("six.taboldstyle", 0,
             (short) 3, (short) 1));
     }
 
@@ -6519,7 +6572,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxslash() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("slash", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("slash", 0, (short) 3,
             (short) 1));
     }
 
@@ -6530,7 +6583,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxspace() throws Exception {
 
-        assertEquals(333, reader.mapCharCodeToWidth("space", (short) 3,
+        assertEquals(333, reader.mapCharCodeToWidth("space", 0, (short) 3,
             (short) 1));
     }
 
@@ -6541,8 +6594,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxspacevisible() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("space.visible", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("space.visible", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -6552,7 +6605,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxspace_uni0302_uni0300() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("space_uni0302_uni0300",
+        assertEquals(500, reader.mapCharCodeToWidth("space_uni0302_uni0300", 0,
             (short) 3, (short) 1));
     }
 
@@ -6564,7 +6617,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
     public void testMtxspace_uni0302_uni0300cap() throws Exception {
 
         assertEquals(500, reader.mapCharCodeToWidth(
-            "space_uni0302_uni0300.cap", (short) 3, (short) 1));
+            "space_uni0302_uni0300.cap", 0, (short) 3, (short) 1));
     }
 
     /**
@@ -6574,7 +6627,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxspace_uni0302_uni0301() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("space_uni0302_uni0301",
+        assertEquals(500, reader.mapCharCodeToWidth("space_uni0302_uni0301", 0,
             (short) 3, (short) 1));
     }
 
@@ -6586,7 +6639,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
     public void testMtxspace_uni0302_uni0301cap() throws Exception {
 
         assertEquals(500, reader.mapCharCodeToWidth(
-            "space_uni0302_uni0301.cap", (short) 3, (short) 1));
+            "space_uni0302_uni0301.cap", 0, (short) 3, (short) 1));
     }
 
     /**
@@ -6596,7 +6649,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxspace_uni0302_uni0303() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("space_uni0302_uni0303",
+        assertEquals(500, reader.mapCharCodeToWidth("space_uni0302_uni0303", 0,
             (short) 3, (short) 1));
     }
 
@@ -6608,7 +6661,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
     public void testMtxspace_uni0302_uni0303cap() throws Exception {
 
         assertEquals(500, reader.mapCharCodeToWidth(
-            "space_uni0302_uni0303.cap", (short) 3, (short) 1));
+            "space_uni0302_uni0303.cap", 0, (short) 3, (short) 1));
     }
 
     /**
@@ -6618,7 +6671,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxspace_uni0302_uni0309() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("space_uni0302_uni0309",
+        assertEquals(500, reader.mapCharCodeToWidth("space_uni0302_uni0309", 0,
             (short) 3, (short) 1));
     }
 
@@ -6630,7 +6683,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
     public void testMtxspace_uni0302_uni0309cap() throws Exception {
 
         assertEquals(500, reader.mapCharCodeToWidth(
-            "space_uni0302_uni0309.cap", (short) 3, (short) 1));
+            "space_uni0302_uni0309.cap", 0, (short) 3, (short) 1));
     }
 
     /**
@@ -6640,7 +6693,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxspace_uni0306_uni0300() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("space_uni0306_uni0300",
+        assertEquals(500, reader.mapCharCodeToWidth("space_uni0306_uni0300", 0,
             (short) 3, (short) 1));
     }
 
@@ -6652,7 +6705,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
     public void testMtxspace_uni0306_uni0300cap() throws Exception {
 
         assertEquals(500, reader.mapCharCodeToWidth(
-            "space_uni0306_uni0300.cap", (short) 3, (short) 1));
+            "space_uni0306_uni0300.cap", 0, (short) 3, (short) 1));
     }
 
     /**
@@ -6662,7 +6715,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxspace_uni0306_uni0301() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("space_uni0306_uni0301",
+        assertEquals(500, reader.mapCharCodeToWidth("space_uni0306_uni0301", 0,
             (short) 3, (short) 1));
     }
 
@@ -6674,7 +6727,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
     public void testMtxspace_uni0306_uni0301cap() throws Exception {
 
         assertEquals(500, reader.mapCharCodeToWidth(
-            "space_uni0306_uni0301.cap", (short) 3, (short) 1));
+            "space_uni0306_uni0301.cap", 0, (short) 3, (short) 1));
     }
 
     /**
@@ -6684,7 +6737,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxspace_uni0306_uni0303() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("space_uni0306_uni0303",
+        assertEquals(500, reader.mapCharCodeToWidth("space_uni0306_uni0303", 0,
             (short) 3, (short) 1));
     }
 
@@ -6696,7 +6749,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
     public void testMtxspace_uni0306_uni0303cap() throws Exception {
 
         assertEquals(500, reader.mapCharCodeToWidth(
-            "space_uni0306_uni0303.cap", (short) 3, (short) 1));
+            "space_uni0306_uni0303.cap", 0, (short) 3, (short) 1));
     }
 
     /**
@@ -6706,7 +6759,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxspace_uni0306_uni0309() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("space_uni0306_uni0309",
+        assertEquals(500, reader.mapCharCodeToWidth("space_uni0306_uni0309", 0,
             (short) 3, (short) 1));
     }
 
@@ -6718,7 +6771,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
     public void testMtxspace_uni0306_uni0309cap() throws Exception {
 
         assertEquals(500, reader.mapCharCodeToWidth(
-            "space_uni0306_uni0309.cap", (short) 3, (short) 1));
+            "space_uni0306_uni0309.cap", 0, (short) 3, (short) 1));
     }
 
     /**
@@ -6728,8 +6781,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxspace_uni0309() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("space_uni0309", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("space_uni0309", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -6739,7 +6792,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxspace_uni0309cap() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("space_uni0309.cap",
+        assertEquals(500, reader.mapCharCodeToWidth("space_uni0309.cap", 0,
             (short) 3, (short) 1));
     }
 
@@ -6750,7 +6803,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxspace_uni030A_uni0301() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("space_uni030A_uni0301",
+        assertEquals(750, reader.mapCharCodeToWidth("space_uni030A_uni0301", 0,
             (short) 3, (short) 1));
     }
 
@@ -6762,7 +6815,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
     public void testMtxspace_uni030A_uni0301cap() throws Exception {
 
         assertEquals(750, reader.mapCharCodeToWidth(
-            "space_uni030A_uni0301.cap", (short) 3, (short) 1));
+            "space_uni030A_uni0301.cap", 0, (short) 3, (short) 1));
     }
 
     /**
@@ -6772,8 +6825,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxspace_uni030F() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("space_uni030F", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("space_uni030F", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -6783,7 +6836,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxspace_uni030Fcap() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("space_uni030F.cap",
+        assertEquals(500, reader.mapCharCodeToWidth("space_uni030F.cap", 0,
             (short) 3, (short) 1));
     }
 
@@ -6794,8 +6847,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxspace_uni0311() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("space_uni0311", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("space_uni0311", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -6805,7 +6858,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxspace_uni0311cap() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("space_uni0311.cap",
+        assertEquals(500, reader.mapCharCodeToWidth("space_uni0311.cap", 0,
             (short) 3, (short) 1));
     }
 
@@ -6816,8 +6869,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxspace_uni0323() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("space_uni0323", (short) 3,
-            (short) 1));
+        assertEquals(278, reader.mapCharCodeToWidth("space_uni0323", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -6827,8 +6880,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxspace_uni032F() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("space_uni032F", (short) 3,
-            (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("space_uni032F", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -6838,8 +6891,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxspace_uni0330() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("space_uni0330", (short) 3,
-            (short) 1));
+        assertEquals(556, reader.mapCharCodeToWidth("space_uni0330", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -6849,7 +6902,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxstaralt() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("star.alt", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("star.alt", 0, (short) 3,
             (short) 1));
     }
 
@@ -6860,7 +6913,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxsterling() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("sterling", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("sterling", 0, (short) 3,
             (short) 1));
     }
 
@@ -6871,7 +6924,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxsuppress() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("suppress", (short) 3,
+        assertEquals(278, reader.mapCharCodeToWidth("suppress", 0, (short) 3,
             (short) 1));
     }
 
@@ -6882,7 +6935,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxt() throws Exception {
 
-        assertEquals(389, reader.mapCharCodeToWidth("t", (short) 3, (short) 1));
+        assertEquals(389, reader.mapCharCodeToWidth("t", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -6892,7 +6946,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxt_uni0323() throws Exception {
 
-        assertEquals(389, reader.mapCharCodeToWidth("t_uni0323", (short) 3,
+        assertEquals(389, reader.mapCharCodeToWidth("t_uni0323", 0, (short) 3,
             (short) 1));
     }
 
@@ -6903,7 +6957,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxtcaron() throws Exception {
 
-        assertEquals(389, reader.mapCharCodeToWidth("tcaron", (short) 3,
+        assertEquals(389, reader.mapCharCodeToWidth("tcaron", 0, (short) 3,
             (short) 1));
     }
 
@@ -6914,7 +6968,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxtcedilla() throws Exception {
 
-        assertEquals(389, reader.mapCharCodeToWidth("tcedilla", (short) 3,
+        assertEquals(389, reader.mapCharCodeToWidth("tcedilla", 0, (short) 3,
             (short) 1));
     }
 
@@ -6925,7 +6979,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxthorn() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("thorn", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("thorn", 0, (short) 3,
             (short) 1));
     }
 
@@ -6936,7 +6990,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxthree() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("three", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("three", 0, (short) 3,
             (short) 1));
     }
 
@@ -6947,7 +7001,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxthreeoldstyle() throws Exception {
 
-        assertEquals(563, reader.mapCharCodeToWidth("three.oldstyle",
+        assertEquals(563, reader.mapCharCodeToWidth("three.oldstyle", 0,
             (short) 3, (short) 1));
     }
 
@@ -6958,7 +7012,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxthreeprop() throws Exception {
 
-        assertEquals(563, reader.mapCharCodeToWidth("three.prop", (short) 3,
+        assertEquals(563, reader.mapCharCodeToWidth("three.prop", 0, (short) 3,
             (short) 1));
     }
 
@@ -6969,7 +7023,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxthreesuperior() throws Exception {
 
-        assertEquals(359, reader.mapCharCodeToWidth("three.superior",
+        assertEquals(359, reader.mapCharCodeToWidth("three.superior", 0,
             (short) 3, (short) 1));
     }
 
@@ -6980,7 +7034,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxthreetaboldstyle() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("three.taboldstyle",
+        assertEquals(500, reader.mapCharCodeToWidth("three.taboldstyle", 0,
             (short) 3, (short) 1));
     }
 
@@ -6991,8 +7045,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxthreequarters() throws Exception {
 
-        assertEquals(825, reader.mapCharCodeToWidth("threequarters", (short) 3,
-            (short) 1));
+        assertEquals(825, reader.mapCharCodeToWidth("threequarters", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -7002,7 +7056,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxtieaccentcapital() throws Exception {
 
-        assertEquals(333, reader.mapCharCodeToWidth("tieaccentcapital",
+        assertEquals(333, reader.mapCharCodeToWidth("tieaccentcapital", 0,
             (short) 3, (short) 1));
     }
 
@@ -7013,7 +7067,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxtieaccentcapitalnew() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("tieaccentcapital.new",
+        assertEquals(500, reader.mapCharCodeToWidth("tieaccentcapital.new", 0,
             (short) 3, (short) 1));
     }
 
@@ -7024,7 +7078,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxtieaccentlowercase() throws Exception {
 
-        assertEquals(278, reader.mapCharCodeToWidth("tieaccentlowercase",
+        assertEquals(278, reader.mapCharCodeToWidth("tieaccentlowercase", 0,
             (short) 3, (short) 1));
     }
 
@@ -7036,7 +7090,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
     public void testMtxtieaccentlowercasenew() throws Exception {
 
         assertEquals(500, reader.mapCharCodeToWidth("tieaccentlowercase.new",
-            (short) 3, (short) 1));
+            0, (short) 3, (short) 1));
     }
 
     /**
@@ -7046,7 +7100,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxtilde() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("tilde", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("tilde", 0, (short) 3,
             (short) 1));
     }
 
@@ -7057,7 +7111,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxtildecap() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("tilde.cap", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("tilde.cap", 0, (short) 3,
             (short) 1));
     }
 
@@ -7068,7 +7122,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxtildedup() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("tilde.dup", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("tilde.dup", 0, (short) 3,
             (short) 1));
     }
 
@@ -7079,7 +7133,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxtrademark() throws Exception {
 
-        assertEquals(983, reader.mapCharCodeToWidth("trademark", (short) 3,
+        assertEquals(983, reader.mapCharCodeToWidth("trademark", 0, (short) 3,
             (short) 1));
     }
 
@@ -7090,8 +7144,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxtwo() throws Exception {
 
-        assertEquals(500, reader
-            .mapCharCodeToWidth("two", (short) 3, (short) 1));
+        assertEquals(500, reader.mapCharCodeToWidth("two", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -7101,8 +7155,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxtwooldstyle() throws Exception {
 
-        assertEquals(554, reader.mapCharCodeToWidth("two.oldstyle", (short) 3,
-            (short) 1));
+        assertEquals(554, reader.mapCharCodeToWidth("two.oldstyle", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -7112,7 +7166,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxtwoprop() throws Exception {
 
-        assertEquals(547, reader.mapCharCodeToWidth("two.prop", (short) 3,
+        assertEquals(547, reader.mapCharCodeToWidth("two.prop", 0, (short) 3,
             (short) 1));
     }
 
@@ -7123,8 +7177,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxtwosuperior() throws Exception {
 
-        assertEquals(359, reader.mapCharCodeToWidth("two.superior", (short) 3,
-            (short) 1));
+        assertEquals(359, reader.mapCharCodeToWidth("two.superior", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -7134,7 +7188,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxtwotaboldstyle() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("two.taboldstyle",
+        assertEquals(500, reader.mapCharCodeToWidth("two.taboldstyle", 0,
             (short) 3, (short) 1));
     }
 
@@ -7145,7 +7199,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxu() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("u", (short) 3, (short) 1));
+        assertEquals(556, reader.mapCharCodeToWidth("u", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -7155,7 +7210,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuacute() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("uacute", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("uacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -7166,7 +7221,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxubreve() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("ubreve", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("ubreve", 0, (short) 3,
             (short) 1));
     }
 
@@ -7177,7 +7232,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxubreveinvertedlow() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("ubreveinvertedlow",
+        assertEquals(556, reader.mapCharCodeToWidth("ubreveinvertedlow", 0,
             (short) 3, (short) 1));
     }
 
@@ -7188,8 +7243,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxucircumflex() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("ucircumflex", (short) 3,
-            (short) 1));
+        assertEquals(556, reader.mapCharCodeToWidth("ucircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -7199,7 +7254,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxudblgrave() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("udblgrave", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("udblgrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -7210,7 +7265,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxudieresis() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("udieresis", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("udieresis", 0, (short) 3,
             (short) 1));
     }
 
@@ -7221,7 +7276,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxudotbelow() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("udotbelow", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("udotbelow", 0, (short) 3,
             (short) 1));
     }
 
@@ -7232,7 +7287,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxugrave() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("ugrave", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("ugrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -7243,7 +7298,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuhookabove() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("uhookabove", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("uhookabove", 0, (short) 3,
             (short) 1));
     }
 
@@ -7254,7 +7309,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuhorn() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("uhorn", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("uhorn", 0, (short) 3,
             (short) 1));
     }
 
@@ -7265,7 +7320,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuhornacute() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("uhornacute", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("uhornacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -7276,8 +7331,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuhorndotbelow() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("uhorndotbelow", (short) 3,
-            (short) 1));
+        assertEquals(556, reader.mapCharCodeToWidth("uhorndotbelow", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -7287,7 +7342,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuhorngrave() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("uhorngrave", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("uhorngrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -7298,7 +7353,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuhornhookabove() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("uhornhookabove",
+        assertEquals(556, reader.mapCharCodeToWidth("uhornhookabove", 0,
             (short) 3, (short) 1));
     }
 
@@ -7309,7 +7364,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuhorntilde() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("uhorntilde", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("uhorntilde", 0, (short) 3,
             (short) 1));
     }
 
@@ -7320,8 +7375,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuhungarumlaut() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("uhungarumlaut", (short) 3,
-            (short) 1));
+        assertEquals(556, reader.mapCharCodeToWidth("uhungarumlaut", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -7331,7 +7386,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxumacron() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("umacron", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("umacron", 0, (short) 3,
             (short) 1));
     }
 
@@ -7342,7 +7397,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxunderscore() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("underscore", (short) 3,
+        assertEquals(750, reader.mapCharCodeToWidth("underscore", 0, (short) 3,
             (short) 1));
     }
 
@@ -7353,7 +7408,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni00A0() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("uni00A0", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("uni00A0", 0, (short) 3,
             (short) 1));
     }
 
@@ -7364,7 +7419,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni00AD() throws Exception {
 
-        assertEquals(333, reader.mapCharCodeToWidth("uni00AD", (short) 3,
+        assertEquals(333, reader.mapCharCodeToWidth("uni00AD", 0, (short) 3,
             (short) 1));
     }
 
@@ -7375,7 +7430,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0218() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("uni0218", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("uni0218", 0, (short) 3,
             (short) 1));
     }
 
@@ -7386,7 +7441,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0219() throws Exception {
 
-        assertEquals(394, reader.mapCharCodeToWidth("uni0219", (short) 3,
+        assertEquals(394, reader.mapCharCodeToWidth("uni0219", 0, (short) 3,
             (short) 1));
     }
 
@@ -7397,7 +7452,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni021A() throws Exception {
 
-        assertEquals(722, reader.mapCharCodeToWidth("uni021A", (short) 3,
+        assertEquals(722, reader.mapCharCodeToWidth("uni021A", 0, (short) 3,
             (short) 1));
     }
 
@@ -7408,7 +7463,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni021B() throws Exception {
 
-        assertEquals(389, reader.mapCharCodeToWidth("uni021B", (short) 3,
+        assertEquals(389, reader.mapCharCodeToWidth("uni021B", 0, (short) 3,
             (short) 1));
     }
 
@@ -7419,7 +7474,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0300() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni0300", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni0300", 0, (short) 3,
             (short) 1));
     }
 
@@ -7430,7 +7485,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0300cap() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni0300.cap", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni0300.cap", 0, (short) 3,
             (short) 1));
     }
 
@@ -7441,7 +7496,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0301() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni0301", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni0301", 0, (short) 3,
             (short) 1));
     }
 
@@ -7452,7 +7507,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0301cap() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni0301.cap", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni0301.cap", 0, (short) 3,
             (short) 1));
     }
 
@@ -7463,7 +7518,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0302() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni0302", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni0302", 0, (short) 3,
             (short) 1));
     }
 
@@ -7474,7 +7529,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0302cap() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni0302.cap", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni0302.cap", 0, (short) 3,
             (short) 1));
     }
 
@@ -7485,7 +7540,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0303() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni0303", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni0303", 0, (short) 3,
             (short) 1));
     }
 
@@ -7496,7 +7551,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0303cap() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni0303.cap", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni0303.cap", 0, (short) 3,
             (short) 1));
     }
 
@@ -7507,7 +7562,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0304() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni0304", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni0304", 0, (short) 3,
             (short) 1));
     }
 
@@ -7518,7 +7573,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0304cap() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni0304.cap", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni0304.cap", 0, (short) 3,
             (short) 1));
     }
 
@@ -7529,7 +7584,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0306() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni0306", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni0306", 0, (short) 3,
             (short) 1));
     }
 
@@ -7540,7 +7595,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0306cap() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni0306.cap", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni0306.cap", 0, (short) 3,
             (short) 1));
     }
 
@@ -7551,7 +7606,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0307() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni0307", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni0307", 0, (short) 3,
             (short) 1));
     }
 
@@ -7562,7 +7617,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0307cap() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni0307.cap", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni0307.cap", 0, (short) 3,
             (short) 1));
     }
 
@@ -7573,7 +7628,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0308() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni0308", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni0308", 0, (short) 3,
             (short) 1));
     }
 
@@ -7584,7 +7639,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0308cap() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni0308.cap", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni0308.cap", 0, (short) 3,
             (short) 1));
     }
 
@@ -7595,7 +7650,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0309() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni0309", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni0309", 0, (short) 3,
             (short) 1));
     }
 
@@ -7606,7 +7661,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0309cap() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni0309.cap", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni0309.cap", 0, (short) 3,
             (short) 1));
     }
 
@@ -7617,7 +7672,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni030A() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni030A", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni030A", 0, (short) 3,
             (short) 1));
     }
 
@@ -7628,7 +7683,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni030Acap() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni030A.cap", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni030A.cap", 0, (short) 3,
             (short) 1));
     }
 
@@ -7639,7 +7694,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni030B() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni030B", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni030B", 0, (short) 3,
             (short) 1));
     }
 
@@ -7650,7 +7705,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni030Bcap() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni030B.cap", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni030B.cap", 0, (short) 3,
             (short) 1));
     }
 
@@ -7661,7 +7716,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni030C() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni030C", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni030C", 0, (short) 3,
             (short) 1));
     }
 
@@ -7672,7 +7727,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni030Ccap() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni030C.cap", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni030C.cap", 0, (short) 3,
             (short) 1));
     }
 
@@ -7683,7 +7738,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni030F() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni030F", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni030F", 0, (short) 3,
             (short) 1));
     }
 
@@ -7694,7 +7749,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni030Fcap() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni030F.cap", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni030F.cap", 0, (short) 3,
             (short) 1));
     }
 
@@ -7705,7 +7760,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0311() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni0311", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni0311", 0, (short) 3,
             (short) 1));
     }
 
@@ -7716,7 +7771,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0311cap() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni0311.cap", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni0311.cap", 0, (short) 3,
             (short) 1));
     }
 
@@ -7727,7 +7782,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0323() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni0323", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni0323", 0, (short) 3,
             (short) 1));
     }
 
@@ -7738,7 +7793,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni0326() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni0326", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni0326", 0, (short) 3,
             (short) 1));
     }
 
@@ -7749,7 +7804,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni032E() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni032E", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni032E", 0, (short) 3,
             (short) 1));
     }
 
@@ -7760,7 +7815,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni032F() throws Exception {
 
-        assertEquals(0, reader.mapCharCodeToWidth("uni032F", (short) 3,
+        assertEquals(0, reader.mapCharCodeToWidth("uni032F", 0, (short) 3,
             (short) 1));
     }
 
@@ -7771,8 +7826,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni2014alt1() throws Exception {
 
-        assertEquals(750, reader.mapCharCodeToWidth("uni2014.alt1", (short) 3,
-            (short) 1));
+        assertEquals(750, reader.mapCharCodeToWidth("uni2014.alt1", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -7782,8 +7837,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni2014alt2() throws Exception {
 
-        assertEquals(667, reader.mapCharCodeToWidth("uni2014.alt2", (short) 3,
-            (short) 1));
+        assertEquals(667, reader.mapCharCodeToWidth("uni2014.alt2", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -7793,7 +7848,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni2127() throws Exception {
 
-        assertEquals(722, reader.mapCharCodeToWidth("uni2127", (short) 3,
+        assertEquals(722, reader.mapCharCodeToWidth("uni2127", 0, (short) 3,
             (short) 1));
     }
 
@@ -7804,7 +7859,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni2190() throws Exception {
 
-        assertEquals(1000, reader.mapCharCodeToWidth("uni2190", (short) 3,
+        assertEquals(1000, reader.mapCharCodeToWidth("uni2190", 0, (short) 3,
             (short) 1));
     }
 
@@ -7815,7 +7870,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni2191() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("uni2191", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("uni2191", 0, (short) 3,
             (short) 1));
     }
 
@@ -7826,7 +7881,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni2192() throws Exception {
 
-        assertEquals(1000, reader.mapCharCodeToWidth("uni2192", (short) 3,
+        assertEquals(1000, reader.mapCharCodeToWidth("uni2192", 0, (short) 3,
             (short) 1));
     }
 
@@ -7837,7 +7892,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni2193() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("uni2193", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("uni2193", 0, (short) 3,
             (short) 1));
     }
 
@@ -7848,7 +7903,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuni266A() throws Exception {
 
-        assertEquals(611, reader.mapCharCodeToWidth("uni266A", (short) 3,
+        assertEquals(611, reader.mapCharCodeToWidth("uni266A", 0, (short) 3,
             (short) 1));
     }
 
@@ -7859,7 +7914,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuogonek() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("uogonek", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("uogonek", 0, (short) 3,
             (short) 1));
     }
 
@@ -7870,7 +7925,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxuring() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("uring", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("uring", 0, (short) 3,
             (short) 1));
     }
 
@@ -7881,7 +7936,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxutilde() throws Exception {
 
-        assertEquals(556, reader.mapCharCodeToWidth("utilde", (short) 3,
+        assertEquals(556, reader.mapCharCodeToWidth("utilde", 0, (short) 3,
             (short) 1));
     }
 
@@ -7892,7 +7947,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxv() throws Exception {
 
-        assertEquals(528, reader.mapCharCodeToWidth("v", (short) 3, (short) 1));
+        assertEquals(528, reader.mapCharCodeToWidth("v", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -7902,7 +7958,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxw() throws Exception {
 
-        assertEquals(722, reader.mapCharCodeToWidth("w", (short) 3, (short) 1));
+        assertEquals(722, reader.mapCharCodeToWidth("w", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -7912,7 +7969,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxwacute() throws Exception {
 
-        assertEquals(722, reader.mapCharCodeToWidth("wacute", (short) 3,
+        assertEquals(722, reader.mapCharCodeToWidth("wacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -7923,8 +7980,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxwcircumflex() throws Exception {
 
-        assertEquals(722, reader.mapCharCodeToWidth("wcircumflex", (short) 3,
-            (short) 1));
+        assertEquals(722, reader.mapCharCodeToWidth("wcircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -7934,7 +7991,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxwdieresis() throws Exception {
 
-        assertEquals(722, reader.mapCharCodeToWidth("wdieresis", (short) 3,
+        assertEquals(722, reader.mapCharCodeToWidth("wdieresis", 0, (short) 3,
             (short) 1));
     }
 
@@ -7945,7 +8002,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxwgrave() throws Exception {
 
-        assertEquals(722, reader.mapCharCodeToWidth("wgrave", (short) 3,
+        assertEquals(722, reader.mapCharCodeToWidth("wgrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -7956,7 +8013,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxwon() throws Exception {
 
-        assertEquals(1028, reader.mapCharCodeToWidth("won", (short) 3,
+        assertEquals(1028, reader.mapCharCodeToWidth("won", 0, (short) 3,
             (short) 1));
     }
 
@@ -7967,7 +8024,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxx() throws Exception {
 
-        assertEquals(528, reader.mapCharCodeToWidth("x", (short) 3, (short) 1));
+        assertEquals(528, reader.mapCharCodeToWidth("x", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -7977,7 +8035,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxy() throws Exception {
 
-        assertEquals(528, reader.mapCharCodeToWidth("y", (short) 3, (short) 1));
+        assertEquals(528, reader.mapCharCodeToWidth("y", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -7987,7 +8046,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxyacute() throws Exception {
 
-        assertEquals(528, reader.mapCharCodeToWidth("yacute", (short) 3,
+        assertEquals(528, reader.mapCharCodeToWidth("yacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -7998,8 +8057,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxycircumflex() throws Exception {
 
-        assertEquals(528, reader.mapCharCodeToWidth("ycircumflex", (short) 3,
-            (short) 1));
+        assertEquals(528, reader.mapCharCodeToWidth("ycircumflex", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -8009,7 +8068,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxydieresis() throws Exception {
 
-        assertEquals(528, reader.mapCharCodeToWidth("ydieresis", (short) 3,
+        assertEquals(528, reader.mapCharCodeToWidth("ydieresis", 0, (short) 3,
             (short) 1));
     }
 
@@ -8020,7 +8079,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxydotbelow() throws Exception {
 
-        assertEquals(528, reader.mapCharCodeToWidth("ydotbelow", (short) 3,
+        assertEquals(528, reader.mapCharCodeToWidth("ydotbelow", 0, (short) 3,
             (short) 1));
     }
 
@@ -8031,8 +8090,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxyen() throws Exception {
 
-        assertEquals(750, reader
-            .mapCharCodeToWidth("yen", (short) 3, (short) 1));
+        assertEquals(750, reader.mapCharCodeToWidth("yen", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -8042,7 +8101,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxygrave() throws Exception {
 
-        assertEquals(528, reader.mapCharCodeToWidth("ygrave", (short) 3,
+        assertEquals(528, reader.mapCharCodeToWidth("ygrave", 0, (short) 3,
             (short) 1));
     }
 
@@ -8053,7 +8112,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxyhookabove() throws Exception {
 
-        assertEquals(528, reader.mapCharCodeToWidth("yhookabove", (short) 3,
+        assertEquals(528, reader.mapCharCodeToWidth("yhookabove", 0, (short) 3,
             (short) 1));
     }
 
@@ -8064,7 +8123,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxytilde() throws Exception {
 
-        assertEquals(528, reader.mapCharCodeToWidth("ytilde", (short) 3,
+        assertEquals(528, reader.mapCharCodeToWidth("ytilde", 0, (short) 3,
             (short) 1));
     }
 
@@ -8075,7 +8134,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxz() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("z", (short) 3, (short) 1));
+        assertEquals(444, reader.mapCharCodeToWidth("z", 0, (short) 3,
+            (short) 1));
     }
 
     /**
@@ -8085,7 +8145,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxzacute() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("zacute", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("zacute", 0, (short) 3,
             (short) 1));
     }
 
@@ -8096,7 +8156,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxzcaron() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("zcaron", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("zcaron", 0, (short) 3,
             (short) 1));
     }
 
@@ -8107,7 +8167,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxzdotaccent() throws Exception {
 
-        assertEquals(444, reader.mapCharCodeToWidth("zdotaccent", (short) 3,
+        assertEquals(444, reader.mapCharCodeToWidth("zdotaccent", 0, (short) 3,
             (short) 1));
     }
 
@@ -8118,7 +8178,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxzero() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("zero", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("zero", 0, (short) 3,
             (short) 1));
     }
 
@@ -8129,8 +8189,8 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxzerooldstyle() throws Exception {
 
-        assertEquals(570, reader.mapCharCodeToWidth("zero.oldstyle", (short) 3,
-            (short) 1));
+        assertEquals(570, reader.mapCharCodeToWidth("zero.oldstyle", 0,
+            (short) 3, (short) 1));
     }
 
     /**
@@ -8140,7 +8200,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxzeroprop() throws Exception {
 
-        assertEquals(569, reader.mapCharCodeToWidth("zero.prop", (short) 3,
+        assertEquals(569, reader.mapCharCodeToWidth("zero.prop", 0, (short) 3,
             (short) 1));
     }
 
@@ -8151,7 +8211,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxzeroslash() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("zero.slash", (short) 3,
+        assertEquals(500, reader.mapCharCodeToWidth("zero.slash", 0, (short) 3,
             (short) 1));
     }
 
@@ -8162,7 +8222,7 @@ public class XtfReaderLmRoman10Regular03Test extends TestCase {
      */
     public void testMtxzerotaboldstyle() throws Exception {
 
-        assertEquals(500, reader.mapCharCodeToWidth("zero.taboldstyle",
+        assertEquals(500, reader.mapCharCodeToWidth("zero.taboldstyle", 0,
             (short) 3, (short) 1));
     }
 

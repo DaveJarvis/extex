@@ -73,9 +73,9 @@ public class T2TDOEncoding extends T2TDONumber {
      * @param stack the stack
      * @throws IOException if an IO-error occurs.
      */
-    public T2TDOEncoding(List stack) throws IOException {
+    public T2TDOEncoding(List<T2CharString> stack) throws IOException {
 
-        super(stack, new short[]{ENCODING});
+        super(stack, new short[]{CFF_ENCODING});
     }
 
     /**
@@ -193,4 +193,11 @@ public class T2TDOEncoding extends T2TDONumber {
         writer.writeEndElement();
 
     }
+
+    @Override
+    public int getID() {
+
+        return T2TopDICTOperator.TYPE_ENCODING;
+    }
+
 }

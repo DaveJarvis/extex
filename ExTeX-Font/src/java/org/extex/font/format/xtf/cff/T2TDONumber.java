@@ -34,13 +34,33 @@ import org.extex.util.xml.XMLStreamWriter;
 public abstract class T2TDONumber extends T2TopDICTOperator {
 
     /**
+     * bytes
+     */
+    private short[] bytes;
+
+    /**
+     * value
+     */
+    private T2Number value;
+
+    /**
+     * Creates a new object.
+     */
+    protected T2TDONumber() {
+
+        value = new T2DummyNumber();
+        bytes = value.getBytes();
+    }
+
+    /**
      * Create a new object.
      * 
      * @param stack the stack
      * @param id the operator-id for the value
      * @throws IOException if an IO-error occurs.
      */
-    protected T2TDONumber(List stack, short[] id) throws IOException {
+    protected T2TDONumber(List<T2CharString> stack, short[] id)
+            throws IOException {
 
         super();
         if (stack.size() < 1) {
@@ -53,50 +73,11 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     }
 
     /**
-     * Creates a new object.
-     */
-    protected T2TDONumber() {
-
-        value = new T2DummyNumber();
-        bytes = value.getBytes();
-    }
-
-    /**
-     * bytes
-     */
-    private short[] bytes;
-
-    /**
-     * value
-     */
-    private T2Number value;
-
-    /**
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
      */
     public short[] getBytes() {
 
         return bytes;
-    }
-
-    /**
-     * Check, if the objekt is a integer.
-     * 
-     * @return Returns <code>true</code>, if the object is a integer.
-     */
-    public boolean isInteger() {
-
-        return value.isInteger();
-    }
-
-    /**
-     * Check, if the objekt is a double.
-     * 
-     * @return Returns <code>true</code>, if the object is a double.
-     */
-    public boolean isDouble() {
-
-        return value.isDouble();
     }
 
     /**
@@ -116,19 +97,39 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     }
 
     /**
-     * @see java.lang.Object#toString()
-     */
-    public String toString() {
-
-        return value.toString();
-    }
-
-    /**
      * @see org.extex.font.format.xtf.cff.T2Operator#getValue()
      */
     public Object getValue() {
 
         return value;
+    }
+
+    /**
+     * Check, if the objekt is a double.
+     * 
+     * @return Returns <code>true</code>, if the object is a double.
+     */
+    public boolean isDouble() {
+
+        return value.isDouble();
+    }
+
+    /**
+     * Check, if the objekt is a integer.
+     * 
+     * @return Returns <code>true</code>, if the object is a integer.
+     */
+    public boolean isInteger() {
+
+        return value.isInteger();
+    }
+
+    /**
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        return value.toString();
     }
 
     /**

@@ -76,9 +76,9 @@ public class T2TDOCharStrings extends T2TDONumber {
      * @param stack the stack
      * @throws IOException if an IO.error occurs.
      */
-    public T2TDOCharStrings(List<T2Number> stack) throws IOException {
+    public T2TDOCharStrings(List<T2CharString> stack) throws IOException {
 
-        super(stack, new short[]{CHARSTRINGS});
+        super(stack, new short[]{CFF_CHARSTRINGS});
     }
 
     /**
@@ -105,16 +105,23 @@ public class T2TDOCharStrings extends T2TDONumber {
         if (offset > 0) {
             rar.seek(baseoffset + offset);
 
-            int charstringtype = cff.getCharstringType();
-            switch (charstringtype) {
-                case 1: // Type 1
-                    break;
-                case 2: // Type 2
-                    break;
-                default:
-                    break;
-            }
+            // TODO mgn incomplete
+            // int charstringtype = cff.getCharstringType();
+            // switch (charstringtype) {
+            // case 1: // Type 1
+            // break;
+            // case 2: // Type 2
+            // break;
+            // default:
+            // break;
+            // }
         }
+    }
+
+    @Override
+    public int getID() {
+
+        return T2TopDICTOperator.TYPE_CHARSTRINGS;
     }
 
 }

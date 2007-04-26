@@ -25,6 +25,7 @@ import java.io.IOException;
 import junit.framework.TestCase;
 
 import org.extex.font.format.xtf.TtfTableCMAP.Format;
+import org.extex.font.format.xtf.cff.CffFont;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
@@ -101,23 +102,24 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
 
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
         assertNotNull(cff);
+        CffFont font = cff.getFont(0);
+        assertNotNull(font);
 
-        assertEquals("1.010", cff.getTopDictIndex("version").getValue());
+        assertEquals("1.010", font.getVersion());
         assertEquals(
             "Copyright 2003, 2007 B. Jackowski and J. M. Nowacki (on behalf of TeX users groups). This work is released under the GUST Font License --  see http://tug.org/fonts/licenses/GUST-FONT-LICENSE.txt for details.",
-            cff.getTopDictIndex("notice").getValue());
-        assertEquals("LMRoman10-Regular", cff.getTopDictIndex("fullname")
-            .getValue());
-        assertEquals("LMRoman10", cff.getTopDictIndex("familyname").getValue());
-        assertEquals("Normal", cff.getTopDictIndex("weight").getValue());
-        assertEquals("StandardEncoding", cff.getEncoding());
-        assertEquals(false, cff.isFixedPitch());
-        assertEquals(0, cff.getItalicAngle());
-        assertEquals(-146, cff.getUnderlinePosition());
-        assertEquals(40, cff.getUnderlineThicknessn());
-        assertEquals(0, cff.getPaintType());
-        assertEquals(2, cff.getCharstringType());
-        assertEquals(0, cff.getStrokeWidth());
+            font.getNotice());
+        assertEquals("LMRoman10-Regular", font.getFullName());
+        assertEquals("LMRoman10", font.getFamilyName());
+        assertEquals("Normal", font.getWeight());
+        assertEquals("StandardEncoding", font.getEncoding());
+        assertEquals(false, font.isIsFixedPitch());
+        assertEquals(0, font.getItalicAngle());
+        assertEquals(-146, font.getUnderlinePosition());
+        assertEquals(40, font.getUnderlineThickness());
+        assertEquals(0, font.getPaintType());
+        assertEquals(2, font.getCharstringType());
+        assertEquals(0, font.getStrokewidth());
 
     }
 
@@ -131,7 +133,10 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
         assertNotNull(cff);
 
-        double[] fm = cff.getFontMatrix();
+        CffFont font = cff.getFont(0);
+        assertNotNull(font);
+
+        double[] fm = font.getFontMatrix();
         assertNotNull(fm);
         assertEquals(6, fm.length);
         // <FontMatrix value="0.001 0 0 0.001 0 0"/>
@@ -152,7 +157,10 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
         assertNotNull(cff);
 
-        int[] fb = cff.getFontBBox();
+        CffFont font = cff.getFont(0);
+        assertNotNull(font);
+
+        int[] fb = font.getFontBBox();
         assertNotNull(fb);
         assertEquals(4, fb.length);
         // <FontBBox value="-430 -290 1417 1127"/>
@@ -172,7 +180,10 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
         assertNotNull(cff);
 
-        int[] val = cff.getBlueValues();
+        CffFont font = cff.getFont(0);
+        assertNotNull(font);
+
+        int[] val = font.getBlueValues();
         assertNotNull(val);
         assertEquals(8, val.length);
         // <BlueValues value="-22 0 431 448 666 677 683 705"/>
@@ -193,7 +204,10 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
         assertNotNull(cff);
 
-        int[] val = cff.getStemSnapH();
+        CffFont font = cff.getFont(0);
+        assertNotNull(font);
+
+        int[] val = font.getStemSnapH();
         assertNotNull(val);
         assertEquals(12, val.length);
         // <StemSnapH value="21 22 23 25 26 28 30 31 40 42 45 106"/>
@@ -215,7 +229,10 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
         assertNotNull(cff);
 
-        int[] val = cff.getStemSnapV();
+        CffFont font = cff.getFont(0);
+        assertNotNull(font);
+
+        int[] val = font.getStemSnapV();
         assertNotNull(val);
         assertEquals(12, val.length);
         // <StemSnapV value="25 30 40 66 69 77 83 89 92 97 103 107"/>
@@ -237,38 +254,41 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
         assertNotNull(cff);
 
+        CffFont font = cff.getFont(0);
+        assertNotNull(font);
+
         // <BlueScale value="0.04546"/>
-        assertEquals(0.04546, cff.getBlueScale());
+        assertEquals(0.04546, font.getBlueScale());
 
         // <BlueShift value="7"/>
-        assertEquals(7, cff.getBlueShift());
+        assertEquals(7, font.getBlueShift());
 
         // <BlueFuzz value="0"/>
-        assertEquals(0, cff.getBlueFuzz());
+        assertEquals(0, font.getBlueFuzz());
 
         // <StdHW value="31"/>
-        assertEquals(31, cff.getStdHW());
+        assertEquals(31, font.getStdHW());
 
         // <StdVW value="25"/>
-        assertEquals(25, cff.getStdVW());
+        assertEquals(25, font.getStdVW());
 
         // <ForceBold value="0"/>
-        assertEquals(false, cff.getForceBold());
+        assertEquals(false, font.getForceBold());
 
         // <LanguageGroup value="0"/>
-        assertEquals(0, cff.getLanguageGroup());
+        assertEquals(0, font.getLanguageGroup());
 
         // <ExpansionFactor value="0.06"/>
-        assertEquals(0.06, cff.getExpansionFactor());
+        assertEquals(0.06, font.getExpansionFactor());
 
         // <initialRandomSeed value="0"/>
-        assertEquals(0, cff.getInitialRandomSeed());
+        assertEquals(0, font.getInitialRandomSeed());
 
         // <defaultWidthX value="500"/>
-        assertEquals(500, cff.getDefaultWidthX());
+        assertEquals(500, font.getDefaultWidthX());
 
         // <nominalWidthX value="658"/>
-        assertEquals(658, cff.getNominalWidthX());
+        assertEquals(658, font.getNominalWidthX());
 
     }
 
@@ -280,9 +300,9 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
     public void test05() throws Exception {
 
         // plattformid = 3 (Windows) , encodingid = 1 (Unicode)
-        assertEquals("space", reader.mapCharCodeToGlyphname(0x20, (short) 3,
+        assertEquals("space", reader.mapCharCodeToGlyphname(0x20, 0, (short) 3,
             (short) 1));
-        assertEquals("zero", reader.mapCharCodeToGlyphname(0x30, (short) 3,
+        assertEquals("zero", reader.mapCharCodeToGlyphname(0x30, 0, (short) 3,
             (short) 1));
 
     }

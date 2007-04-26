@@ -71,6 +71,11 @@ public class LoadableXtfFont implements LoadableFont {
     private XtfReader reader;
 
     /**
+     * use the first font! TODO MGN incomplete
+     */
+    private int fontnumber = 0;
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.font.LoadableFont#loadFont(java.io.InputStream,
@@ -103,6 +108,9 @@ public class LoadableXtfFont implements LoadableFont {
             actualFontKey = key;
         }
 
+        // TODO mgn check the fontnumber
+        // usse at the moment the first font in cff
+
     }
 
     /**
@@ -126,7 +134,8 @@ public class LoadableXtfFont implements LoadableFont {
 
         // TODO encoding
         XtfBoundingBox bb =
-                reader.mapCharCodeToBB(uc.getCodePoint(), (short) 3, (short) 1);
+                reader.mapCharCodeToBB(uc.getCodePoint(), fontnumber,
+                    (short) 3, (short) 1);
         if (bb != null) {
 
             d = bb.getDepth();
@@ -164,7 +173,8 @@ public class LoadableXtfFont implements LoadableFont {
         int xh = 0;
 
         // TODO encoding
-        XtfBoundingBox bb = reader.mapCharCodeToBB("x", (short) 3, (short) 1);
+        XtfBoundingBox bb =
+                reader.mapCharCodeToBB("x", fontnumber, (short) 3, (short) 1);
         if (bb != null) {
 
             xh = bb.getHeight();
@@ -218,7 +228,8 @@ public class LoadableXtfFont implements LoadableFont {
 
         // TODO encoding
         XtfBoundingBox bb =
-                reader.mapCharCodeToBB(uc.getCodePoint(), (short) 3, (short) 1);
+                reader.mapCharCodeToBB(uc.getCodePoint(), fontnumber,
+                    (short) 3, (short) 1);
         if (bb != null) {
 
             h = bb.getHeight();
@@ -253,7 +264,7 @@ public class LoadableXtfFont implements LoadableFont {
         if (uc1 != null && uc2 != null) {
             size =
                     reader.mapCharCodetoKerning(uc1.getCodePoint(), uc2
-                        .getCodePoint(), (short) 3, (short) 1);
+                        .getCodePoint(), fontnumber, (short) 3, (short) 1);
         }
 
         return intToDimen(size);
@@ -291,7 +302,9 @@ public class LoadableXtfFont implements LoadableFont {
     public FixedGlue getSpace() {
 
         // TODO mgn: encoding!
-        int width = reader.mapCharCodeToWidth("space", (short) 3, (short) 1);
+        int width =
+                reader.mapCharCodeToWidth("space", fontnumber, (short) 3,
+                    (short) 1);
         if (width > 0) {
             return new Glue(intToDimen(width));
         }
@@ -306,8 +319,8 @@ public class LoadableXtfFont implements LoadableFont {
     public FixedGlue getWidth(UnicodeChar uc) {
 
         int w =
-                reader.mapCharCodeToWidth(uc.getCodePoint(), (short) 3,
-                    (short) 1);
+                reader.mapCharCodeToWidth(uc.getCodePoint(), fontnumber,
+                    (short) 3, (short) 1);
         return new Glue(intToDimen(w));
     }
 
@@ -319,10 +332,10 @@ public class LoadableXtfFont implements LoadableFont {
     public boolean hasGlyph(UnicodeChar uc) {
 
         String glyphname =
-                reader.mapCharCodeToGlyphname(uc.getCodePoint(), (short) 3,
-                    (short) 1);
+                reader.mapCharCodeToGlyphname(uc.getCodePoint(), fontnumber,
+                    (short) 3, (short) 1);
 
-        return reader.hasGlyph(glyphname);
+        return reader.hasGlyph(glyphname, fontnumber);
     }
 
     /**

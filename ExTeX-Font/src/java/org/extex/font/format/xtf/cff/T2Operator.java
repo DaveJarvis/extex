@@ -136,7 +136,7 @@ public abstract class T2Operator extends T2CharString
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.format.xtf.cff.T2CharString#isOperator()
      */
     public boolean isOperator() {
@@ -150,6 +150,13 @@ public abstract class T2Operator extends T2CharString
      * @return Return the name of the operator.
      */
     public abstract String getName();
+
+    /**
+     * Returns the id of the operator.
+     * 
+     * @return Returns the id of the operator.
+     */
+    public abstract int getID();
 
     /**
      * Returns the value of the operator.
