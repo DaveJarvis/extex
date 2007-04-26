@@ -213,9 +213,8 @@ public class FontPrimitive extends AbstractAssignment
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void assign(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws InterpreterException {
 
         CodeToken fontId = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
@@ -266,6 +265,8 @@ public class FontPrimitive extends AbstractAssignment
             fontKeyMap.put("letterspaced", letterspaced);
             fontKeyMap.put("ligatures", Boolean.valueOf(ligatures));
             fontKeyMap.put("kerning", Boolean.valueOf(kerning));
+            fontKeyMap.put("language", context.getTypesettingContext()
+                .getLanguage().getName());
             fontKey = factory.getFontKey(fontname, fontSize, fontKeyMap);
             fnt = factory.getInstance(fontKey);
         } catch (FontException e) {
