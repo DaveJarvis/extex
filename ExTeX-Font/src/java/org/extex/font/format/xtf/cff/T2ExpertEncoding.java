@@ -24,7 +24,7 @@ package org.extex.font.format.xtf.cff;
  * <p>
  * (code / SID / name)
  * </p>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -290,11 +290,11 @@ public final class T2ExpertEncoding {
             {"Yacutesmall", "376"}, // 253
             {"Thornsmall", "377"}, // 254
             {"Ydieresissmall", "378"} // 255
-    };
+            };
 
     /**
      * Returns the highest code.
-     *
+     * 
      * @return Returns the highest code.
      */
     public static int getHighestCode() {
@@ -304,7 +304,8 @@ public final class T2ExpertEncoding {
 
     /**
      * Returns the SID for a code or -1 if not found.
-     * @param code  the code
+     * 
+     * @param code the code
      * @return Returns the SID for a code or -1 if not found.
      */
     public static int getSID(int code) {
@@ -317,7 +318,8 @@ public final class T2ExpertEncoding {
 
     /**
      * Returns the name or '.notdef' if number out of range.
-     * @param code   the codefor the string
+     * 
+     * @param code the codefor the string
      * @return Returns the name or '.notdef' if number out of range.
      */
     public static String getString(int code) {
@@ -334,6 +336,20 @@ public final class T2ExpertEncoding {
     private T2ExpertEncoding() {
 
         //
+    }
+
+    /**
+     * Returns the SID array.
+     * 
+     * @return Returns the SID array.
+     */
+    public static int[] getSidArray() {
+
+        int[] arr = new int[DATA.length];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = getSID(i);
+        }
+        return arr;
     }
 
 }

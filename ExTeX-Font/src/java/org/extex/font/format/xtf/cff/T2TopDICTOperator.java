@@ -38,7 +38,7 @@ import org.extex.util.file.random.RandomAccessR;
  * <td><b>Operand(s)</b></td>
  * <td><b>Default, notes</b></td>
  * </tr>
- * </thead>
+ * <thead>
  * <tr>
  * <td>Version</td>
  * <td>0</td>
@@ -185,37 +185,49 @@ import org.extex.util.file.random.RandomAccessR;
 public abstract class T2TopDICTOperator extends T2Operator {
 
     /**
-     * Create a new object
+     * CHARSET
      */
-    protected T2TopDICTOperator() {
-
-        super();
-    }
+    public static final int CFF_CHARSET = 15;
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.cff.T2CharString#isTopDICTOperator()
+     * CHARSTRINGS
      */
-    public boolean isTopDICTOperator() {
-
-        return true;
-    }
+    public static final int CFF_CHARSTRINGS = 17;
 
     /**
-     * VERSION
+     * CHARSTRINGTYPE
      */
-    public static final int CFF_VERSION = 0;
+    public static final int CFF_CHARSTRINGTYPE = 6;
 
     /**
-     * NOTICE
+     * CIDCOUNT
      */
-    public static final int CFF_NOTICE = 1;
+    public static final int CFF_CIDCOUNT = 34;
 
     /**
-     * FULLNAME
+     * CIDFONTREVISION
      */
-    public static final int CFF_FULLNAME = 2;
+    public static final int CFF_CIDFONTREVISION = 32;
+
+    /**
+     * CIDFONTTYPE
+     */
+    public static final int CFF_CIDFONTTYPE = 33;
+
+    /**
+     * CIDFONTVERSION
+     */
+    public static final int CFF_CIDFONTVERSION = 31;
+
+    /**
+     * COPYRIGHT
+     */
+    public static final int CFF_COPYRIGHT = 0;
+
+    /**
+     * ENCODING
+     */
+    public static final int CFF_ENCODING = 16;
 
     /**
      * FAMILYNAME
@@ -223,9 +235,14 @@ public abstract class T2TopDICTOperator extends T2Operator {
     public static final int CFF_FAMILYNAME = 3;
 
     /**
-     * WEIGHT
+     * FDARRAY
      */
-    public static final int CFF_WEIGHT = 4;
+    public static final int CFF_FDARRAY = 36;
+
+    /**
+     * FDSELECT
+     */
+    public static final int CFF_FDSELECT = 37;
 
     /**
      * FONTBBOX
@@ -233,9 +250,19 @@ public abstract class T2TopDICTOperator extends T2Operator {
     public static final int CFF_FONTBBOX = 5;
 
     /**
-     * COPYRIGHT
+     * FONTMATRIX
      */
-    public static final int CFF_COPYRIGHT = 0;
+    public static final int CFF_FONTMATRIX = 7;
+
+    /**
+     * FONTNAME
+     */
+    public static final int CFF_FONTNAME = 38;
+
+    /**
+     * FULLNAME
+     */
+    public static final int CFF_FULLNAME = 2;
 
     /**
      * ISFIXEDPITCH
@@ -248,14 +275,9 @@ public abstract class T2TopDICTOperator extends T2Operator {
     public static final int CFF_ITALICANGLE = 2;
 
     /**
-     * UNDERLINEPOSITION
+     * NOTICE
      */
-    public static final int CFF_UNDERLINEPOSITION = 3;
-
-    /**
-     * UNDELINETHICKNESS
-     */
-    public static final int CFF_UNDERLINETHICKNESS = 4;
+    public static final int CFF_NOTICE = 1;
 
     /**
      * PAINTTYPE
@@ -263,14 +285,19 @@ public abstract class T2TopDICTOperator extends T2Operator {
     public static final int CFF_PAINTTYPE = 5;
 
     /**
-     * CHARSTRINGTYPE
+     * POSTSCRIPT
      */
-    public static final int CFF_CHARSTRINGTYPE = 6;
+    public static final int CFF_POSTSCRIPT = 21;
 
     /**
-     * FONTMATRIX
+     * PRIVATE
      */
-    public static final int CFF_FONTMATRIX = 7;
+    public static final int CFF_PRIVATE = 18;
+
+    /**
+     * ROS
+     */
+    public static final int CFF_ROS = 30;
 
     /**
      * STROKEWIDTH
@@ -283,14 +310,34 @@ public abstract class T2TopDICTOperator extends T2Operator {
     public static final int CFF_SYNTHETICBASE = 20;
 
     /**
-     * POSTSCRIPT
+     * UIDBASE
      */
-    public static final int CFF_POSTSCRIPT = 21;
+    public static final int CFF_UIDBASE = 35;
+
+    /**
+     * UNDERLINEPOSITION
+     */
+    public static final int CFF_UNDERLINEPOSITION = 3;
+
+    /**
+     * UNDELINETHICKNESS
+     */
+    public static final int CFF_UNDERLINETHICKNESS = 4;
 
     /**
      * UNIQUEID
      */
     public static final int CFF_UNIQUEID = 13;
+
+    /**
+     * VERSION
+     */
+    public static final int CFF_VERSION = 0;
+
+    /**
+     * WEIGHT
+     */
+    public static final int CFF_WEIGHT = 4;
 
     /**
      * XUID
@@ -300,22 +347,167 @@ public abstract class T2TopDICTOperator extends T2Operator {
     /**
      * CHARSET
      */
-    public static final int CFF_CHARSET = 15;
-
-    /**
-     * ENCODING
-     */
-    public static final int CFF_ENCODING = 16;
+    public static final int TYPE_CHARSET = 19;
 
     /**
      * CHARSTRINGS
      */
-    public static final int CFF_CHARSTRINGS = 17;
+    public static final int TYPE_CHARSTRINGS = 21;
+
+    /**
+     * CHARSTRINGTYPE
+     */
+    public static final int TYPE_CHARSTRINGTYPE = 12;
+
+    /**
+     * CIDCOUNT
+     */
+    public static final int TYPE_CIDCOUNT = 27;
+
+    /**
+     * CIDFONTREVISION
+     */
+    public static final int TYPE_CIDFONTREVISION = 25;
+
+    /**
+     * CIDFONTTYPE
+     */
+    public static final int TYPE_CIDFONTTYPE = 26;
+
+    /**
+     * CIDFONTVERSION
+     */
+    public static final int TYPE_CIDFONTVERSION = 24;
+
+    /**
+     * COPYRIGHT
+     */
+    public static final int TYPE_COPYRIGHT = 6;
+
+    /**
+     * ENCODING
+     */
+    public static final int TYPE_ENCODING = 20;
+
+    /**
+     * FAMILYNAME
+     */
+    public static final int TYPE_FAMILYNAME = 3;
+
+    /**
+     * FDARRAY
+     */
+    public static final int TYPE_FDARRAY = 29;
+
+    /**
+     * FDSELECT
+     */
+    public static final int TYPE_FDSELECT = 30;
+
+    /**
+     * FONTBBOX
+     */
+    public static final int TYPE_FONTBBOX = 5;
+
+    /**
+     * FONTMATRIX
+     */
+    public static final int TYPE_FONTMATRIX = 13;
+
+    /**
+     * FONTNAME
+     */
+    public static final int TYPE_FONTNAME = 31;
+
+    /**
+     * FULLNAME
+     */
+    public static final int TYPE_FULLNAME = 2;
+
+    /**
+     * ISFIXEDPITCH
+     */
+    public static final int TYPE_ISFIXEDPITCH = 7;
+
+    /**
+     * ITALICANGLE
+     */
+    public static final int TYPE_ITALICANGLE = 8;
+
+    /**
+     * TYPE_NOTDEF
+     */
+    public static final int TYPE_NOTDEF = -1;
+
+    /**
+     * NOTICE
+     */
+    public static final int TYPE_NOTICE = 1;
+
+    /**
+     * PAINTTYPE
+     */
+    public static final int TYPE_PAINTTYPE = 11;
+
+    /**
+     * POSTSCRIPT
+     */
+    public static final int TYPE_POSTSCRIPT = 16;
 
     /**
      * PRIVATE
      */
-    public static final int CFF_PRIVATE = 18;
+    public static final int TYPE_PRIVATE = 22;
+
+    /**
+     * ROS
+     */
+    public static final int TYPE_ROS = 23;
+
+    /**
+     * STROKEWIDTH
+     */
+    public static final int TYPE_STROKEWIDTH = 14;
+
+    /**
+     * SYNTHETICBASE
+     */
+    public static final int TYPE_SYNTHETICBASE = 15;
+
+    /**
+     * UIDBASE
+     */
+    public static final int TYPE_UIDBASE = 28;
+
+    /**
+     * UNDERLINEPOSITION
+     */
+    public static final int TYPE_UNDERLINEPOSITION = 9;
+
+    /**
+     * UNDELINETHICKNESS
+     */
+    public static final int TYPE_UNDERLINETHICKNESS = 10;
+
+    /**
+     * UNIQUEID
+     */
+    public static final int TYPE_UNIQUEID = 17;
+
+    /**
+     * VERSION
+     */
+    public static final int TYPE_VERSION = 0;
+
+    /**
+     * WEIGHT
+     */
+    public static final int TYPE_WEIGHT = 4;
+
+    /**
+     * XUID
+     */
+    public static final int TYPE_XUID = 18;
 
     /**
      * Create a new instance.
@@ -327,8 +519,6 @@ public abstract class T2TopDICTOperator extends T2Operator {
     public static T2Operator newInstance(RandomAccessR rar) throws IOException {
 
         List<T2CharString> stack = new ArrayList<T2CharString>();
-
-        // TODO mgn missing ROS !!!
 
         while (true) {
 
@@ -372,6 +562,24 @@ public abstract class T2TopDICTOperator extends T2Operator {
                             return new T2TDOSyntheticBase(stack);
                         case CFF_POSTSCRIPT:
                             return new T2TDOPostscript(stack);
+                        case CFF_ROS:
+                            return null;
+                        case CFF_CIDFONTVERSION:
+                            return null;
+                        case CFF_CIDFONTREVISION:
+                            return null;
+                        case CFF_CIDFONTTYPE:
+                            return null;
+                        case CFF_CIDCOUNT:
+                            return null;
+                        case CFF_UIDBASE:
+                            return null;
+                        case CFF_FDARRAY:
+                            return null;
+                        case CFF_FDSELECT:
+                            return null;
+                        case CFF_FONTNAME:
+                            return null;
                         default:
                             throw new T2NotAOperatorException();
 
@@ -398,123 +606,21 @@ public abstract class T2TopDICTOperator extends T2Operator {
     }
 
     /**
-     * TYPE_NOTDEF
+     * Create a new object
      */
-    public static final int TYPE_NOTDEF = -1;
+    protected T2TopDICTOperator() {
+
+        super();
+    }
 
     /**
-     * VERSION
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.T2CharString#isTopDICTOperator()
      */
-    public static final int TYPE_VERSION = 0;
+    public boolean isTopDICTOperator() {
 
-    /**
-     * NOTICE
-     */
-    public static final int TYPE_NOTICE = 1;
-
-    /**
-     * FULLNAME
-     */
-    public static final int TYPE_FULLNAME = 2;
-
-    /**
-     * FAMILYNAME
-     */
-    public static final int TYPE_FAMILYNAME = 3;
-
-    /**
-     * WEIGHT
-     */
-    public static final int TYPE_WEIGHT = 4;
-
-    /**
-     * FONTBBOX
-     */
-    public static final int TYPE_FONTBBOX = 5;
-
-    /**
-     * COPYRIGHT
-     */
-    public static final int TYPE_COPYRIGHT = 6;
-
-    /**
-     * ISFIXEDPITCH
-     */
-    public static final int TYPE_ISFIXEDPITCH = 7;
-
-    /**
-     * ITALICANGLE
-     */
-    public static final int TYPE_ITALICANGLE = 8;
-
-    /**
-     * UNDERLINEPOSITION
-     */
-    public static final int TYPE_UNDERLINEPOSITION = 9;
-
-    /**
-     * UNDELINETHICKNESS
-     */
-    public static final int TYPE_UNDERLINETHICKNESS = 10;
-
-    /**
-     * PAINTTYPE
-     */
-    public static final int TYPE_PAINTTYPE = 11;
-
-    /**
-     * CHARSTRINGTYPE
-     */
-    public static final int TYPE_CHARSTRINGTYPE = 12;
-
-    /**
-     * FONTMATRIX
-     */
-    public static final int TYPE_FONTMATRIX = 13;
-
-    /**
-     * STROKEWIDTH
-     */
-    public static final int TYPE_STROKEWIDTH = 14;
-
-    /**
-     * SYNTHETICBASE
-     */
-    public static final int TYPE_SYNTHETICBASE = 15;
-
-    /**
-     * POSTSCRIPT
-     */
-    public static final int TYPE_POSTSCRIPT = 16;
-
-    /**
-     * UNIQUEID
-     */
-    public static final int TYPE_UNIQUEID = 17;
-
-    /**
-     * XUID
-     */
-    public static final int TYPE_XUID = 18;
-
-    /**
-     * CHARSET
-     */
-    public static final int TYPE_CHARSET = 19;
-
-    /**
-     * ENCODING
-     */
-    public static final int TYPE_ENCODING = 20;
-
-    /**
-     * CHARSTRINGS
-     */
-    public static final int TYPE_CHARSTRINGS = 21;
-
-    /**
-     * PRIVATE
-     */
-    public static final int TYPE_PRIVATE = 22;
+        return true;
+    }
 
 }

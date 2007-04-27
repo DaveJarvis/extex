@@ -19,24 +19,25 @@
 
 package org.extex.font.format.xtf.cff;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Predefined Charset.
  * <p>
- * (SID / name)
+ * ISOAdobe 0 - 228
  * </p>
- * <p>ISOAdobe 0 - 228</p>
- * <p>Expert 229 - 378</p>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 
-public final class T2PredefinedCharset {
+public final class T2PredefinedCharsetISOAdobe {
 
     /**
      * no instance
      */
-    private T2PredefinedCharset() {
+    private T2PredefinedCharsetISOAdobe() {
 
         //
     }
@@ -44,7 +45,9 @@ public final class T2PredefinedCharset {
     /**
      * Predefined Charset
      */
-    public static final String[] DATA = {".notdef", // 0
+    public static final String[] DATA = {
+    // ISOAdobe
+            ".notdef", // 0
             "space", // 1
             "exclam", // 2
             "quotedbl", // 3
@@ -272,163 +275,14 @@ public final class T2PredefinedCharset {
             "ugrave", // 225
             "yacute", // 226
             "ydieresis", // 227
-            "zcaron", // 228
-            "exclamsmall", // 229
-            "Hungarumlautsmall", // 230
-            "dollaroldstyle", // 231
-            "dollarsuperior", // 232
-            "ampersandsmall", // 233
-            "Acutesmall", // 234
-            "parenleftsuperior", // 235
-            "parenrightsuperior", // 236
-            "twodotenleader", // 237
-            "onedotenleader", // 238
-            "zerooldstyle", // 239
-            "oneoldstyle", // 240
-            "twooldstyle", // 241
-            "threeoldstyle", // 242
-            "fouroldstyle", // 243
-            "fiveoldstyle", // 244
-            "sixoldstyle", // 245
-            "sevenoldstyle", // 246
-            "eightoldstyle", // 247
-            "semicolon", // 248
-            "commasuperior", // 249
-            "threequartersemdash", // 250
-            "periodsuperior", // 251
-            "questionsmall", // 252
-            "asuperior", // 253
-            "bsuperior", // 254
-            "centsuperior", // 255
-            "dsuperior", // 256
-            "esuperior", // 257
-            "isuperior", // 258
-            "lsuperior", // 259
-            "msuperior", // 260
-            "nsuperior", // 261
-            "osuperior", // 262
-            "rsuperior", // 263
-            "ssuperior", // 264
-            "tsuperior", // 265
-            "ff", // 266
-            "ffi", // 267
-            "ffl", // 268
-            "parenleftinferior", // 269
-            "parenrightinferior", // 270
-            "Circumflexsmall", // 271
-            "hyphensuperior", // 272
-            "Gravesmall", // 273
-            "Asmall", // 274
-            "Bsmall", // 275
-            "Csmall", // 276
-            "Dsmall", // 277
-            "Esmall", // 278
-            "Fsmall", // 279
-            "Gsmall", // 280
-            "Hsmall", // 281
-            "Ismall", // 282
-            "Jsmall", // 283
-            "Ksmall", // 284
-            "Lsmall", // 285
-            "Msmall", // 286
-            "Nsmall", // 287
-            "Osmall", // 288
-            "Psmall", // 289
-            "Qsmall", // 290
-            "Rsmall", // 291
-            "Ssmall", // 292
-            "Tsmall", // 293
-            "Usmall", // 294
-            "Vsmall", // 295
-            "Wsmall", // 296
-            "Xsmall", // 297
-            "Ysmall", // 298
-            "Zsmall", // 299
-            "colonmonetary", // 300
-            "onefitted", // 301
-            "rupiah", // 302
-            "Tildesmall", // 303
-            "exclamdownsmall", // 304
-            "centoldstyle", // 305
-            "Lslashsmall", // 306
-            "Scaronsmall", // 307
-            "Zcaronsmall", // 308
-            "Dieresissmall", // 309
-            "Brevesmall", // 310
-            "Caronsmall", // 311
-            "Dotaccentsmall", // 312
-            "Macronsmall", // 313
-            "figuredash", // 314
-            "hypheninferior", // 315
-            "Ogoneksmall", // 316
-            "Ringsmall", // 317
-            "Cedillasmall", // 318
-            "questiondownsmall", // 319
-            "oneeighth", // 320
-            "threeeighths", // 321
-            "fiveeighths", // 322
-            "seveneighths", // 323
-            "onethird", // 324
-            "twothirds", // 325
-            "zerosuperior", // 326
-            "foursuperior", // 327
-            "fivesuperior", // 328
-            "sixsuperior", // 329
-            "sevensuperior", // 330
-            "eightsuperior", // 331
-            "ninesuperior", // 332
-            "zeroinferior", // 333
-            "oneinferior", // 334
-            "twoinferior", // 335
-            "threeinferior", // 336
-            "fourinferior", // 337
-            "fiveinferior", // 338
-            "sixinferior", // 339
-            "seveninferior", // 340
-            "eightinferior", // 341
-            "nineinferior", // 342
-            "centinferior", // 343
-            "dollarinferior", // 344
-            "periodinferior", // 345
-            "commainferior", // 346
-            "Agravesmall", // 347
-            "Aacutesmall", // 348
-            "Acircumflexsmall", // 349
-            "Atildesmall", // 350
-            "Adieresissmall", // 351
-            "Aringsmall", // 352
-            "AEsmall", // 353
-            "Ccedillasmall", // 354
-            "Egravesmall", // 355
-            "Eacutesmall", // 356
-            "Ecircumflexsmall", // 357
-            "Edieresissmall", // 358
-            "Igravesmall", // 359
-            "Iacutesmall", // 360
-            "Icircumflexsmall", // 361
-            "Idieresissmall", // 362
-            "Ethsmall", // 363
-            "Ntildesmall", // 364
-            "Ogravesmall", // 365
-            "Oacutesmall", // 366
-            "Ocircumflexsmall", // 367
-            "Otildesmall", // 368
-            "Odieresissmall", // 369
-            "OEsmall", // 370
-            "Oslashsmall", // 371
-            "Ugravesmall", // 372
-            "Uacutesmall", // 373
-            "Ucircumflexsmall", // 374
-            "Udieresissmall", // 375
-            "Yacutesmall", // 376
-            "Thornsmall", // 377
-            "Ydieresissmall" // 378
+            "zcaron" // 228
     };
 
     /**
      * Returns the name or '.notdef' if number out of range.
-     * @param sid   the sid for the name
-     * @return Returns the name  or '.notdef' if number out of range.
+     * 
+     * @param sid the sid for the name
+     * @return Returns the name or '.notdef' if number out of range.
      */
     public static String getName(int sid) {
 
@@ -440,17 +294,30 @@ public final class T2PredefinedCharset {
 
     /**
      * Returns the SID for a name or -1 if not found.
-     * @param name  the name
+     * 
+     * @param name the name
      * @return Returns the SID for a name or -1 if not found.
      */
     public static int getSID(String name) {
 
-        for (int i = 0; i < DATA.length; i++) {
-            if (DATA[i].equals(name)) {
-                return i;
+        if (names == null) {
+            names = new HashMap<String, Integer>(DATA.length);
+            for (int i = 0; i < DATA.length; i++) {
+                String key = DATA[i];
+                names.put(key, new Integer(i));
             }
         }
+        Integer ii = names.get(name);
+        if (ii != null) {
+            return ii.intValue();
+        }
+
         return -1;
-    }
+    };
+
+    /**
+     * The map for the names.
+     */
+    private static Map<String, Integer> names = null;
 
 }

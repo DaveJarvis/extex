@@ -48,24 +48,39 @@ import org.extex.util.xml.XMLStreamWriter;
 public class T2TDOEncoding extends T2TDONumber {
 
     /**
+     * ExpertEncoding
+     */
+    public static final int ExpertEncoding = 1;
+
+    /**
+     * FontDefined
+     */
+    public static final int FontDefined = 2;
+
+    /**
+     * StandardEncoding
+     */
+    public static final int StandardEncoding = 0;
+
+    /**
      * The cff table.
      */
     private OtfTableCFF cff;
 
     /**
-     * The encoding code.
+     * The encoding vector.
      */
-    private int encodingCode[];
+    private String[] enc = new String[256];
+
+    /**
+     * The encoding of the font.
+     */
+    private int encoding = StandardEncoding;
 
     /**
      * The name of the encoding.
      */
     private String encodingName = "StandardEncoding";
-
-    /**
-     * The encoding sids.
-     */
-    private int encodingSid[];
 
     /**
      * Create a new object.
@@ -87,55 +102,41 @@ public class T2TDOEncoding extends T2TDONumber {
      * 
      * @param cff The cff table.
      * @param numberOfGlyphs The number of glyphs.
-     * @param charsetSid The charset sids.
+     * @param charset The charset.
      */
-    public T2TDOEncoding(OtfTableCFF cff, int numberOfGlyphs, int[] charsetSid) {
+    public T2TDOEncoding(OtfTableCFF cff, int numberOfGlyphs,
+            T2TDOCharset charset) {
 
         this.cff = cff;
-        createDefaultEncodingTable(numberOfGlyphs, charsetSid);
+        createDefaultEncodingTable(numberOfGlyphs, charset);
     }
 
     /**
      * Crete the default encoding.
      * 
      * @param numberOfGlyphs The number of glyphs.
-     * @param charsetSid The charset sid.
+     * @param charset The charset.
      */
-    private void createDefaultEncodingTable(int numberOfGlyphs, int[] charsetSid) {
+    private void createDefaultEncodingTable(int numberOfGlyphs,
+            T2TDOCharset charset) {
 
         // We take into account the fact a CFF font can use a predefined
         // encoding without containing all of the glyphs encoded by this
         // encoding (see the note at the end of section 12 in the CFF
         // specification).
 
-        encodingSid = T2StandardEncoding.getSidArray();
-        encodingCode = new int[encodingSid.length];
+        for (int i = 0; i < enc.length; i++) {
 
-        int count = 0;
-        int i = 0;
-        for (int j = 0; j < 256; j++) {
-            // If j is encoded, find the GID for it.
-            if (encodingSid[j] == 0) {
-                for (i = 1; i < numberOfGlyphs; i++) {
-                    // We matched, so break.
-                    if (charsetSid[i] == encodingSid[j]) {
-                        break;
-                    }
-                }
-                /* i will be equal to num_glyphs if we exited the above */
-                /* loop without a match. In this case, we also have to */
-                /* fix the code to SID mapping. */
-                if (i == numberOfGlyphs) {
-                    encodingCode[j] = 0;
-                    encodingSid[j] = 0;
-                } else {
-                    encodingCode[j] = i;
+            // copy the default encoding
+            if (encoding == StandardEncoding) {
+                enc[i] = T2StandardEncoding.getString(i);
+            } else {
+                enc[i] = T2ExpertEncoding.getString(i);
+            }
 
-                    /* update encoding count */
-                    if (count < j + 1) {
-                        count = j + 1;
-                    }
-                }
+            // if not defined, use the name from the charset
+            if (enc[i].equals(".notdef")) {
+                enc[i] = charset.getNameForPos(i);
             }
         }
     }
@@ -148,6 +149,30 @@ public class T2TDOEncoding extends T2TDONumber {
     public String getEncodingName() {
 
         return encodingName;
+    }
+
+    /**
+     * Returns the name of the glyph.
+     * 
+     * @param pos The position in the encoding.
+     * @return Returns the name of the glyph.
+     */
+    public String getGlyphName(int pos) {
+
+        if (pos >= 0 && pos < enc.length) {
+            String name = enc[pos];
+            if (name != null) {
+                return name;
+            }
+        }
+
+        return ".notdef";
+    }
+
+    @Override
+    public int getID() {
+
+        return T2TopDICTOperator.TYPE_ENCODING;
     }
 
     /**
@@ -165,7 +190,16 @@ public class T2TDOEncoding extends T2TDONumber {
         int offset = getInteger();
         this.cff = cff;
 
-        if (offset > 0) {
+        if (offset == 0) {
+            encoding = StandardEncoding;
+            encodingName = "StandardEncoding";
+        } else if (offset == 1) {
+            encoding = ExpertEncoding;
+            encodingName = "ExpertEncoding";
+        } else {
+            encoding = FontDefined;
+            encodingName = "FontDefined";
+
             rar.seek(baseoffset + offset);
 
             int format = rar.readUnsignedByte();
@@ -179,25 +213,14 @@ public class T2TDOEncoding extends T2TDONumber {
 
         writer.writeStartElement(getName());
         writer.writeAttribute("name", getEncodingName());
-        for (int i = 0; i < encodingSid.length; i++) {
+        for (int i = 0; i < enc.length; i++) {
             writer.writeStartElement("sid");
             writer.writeAttribute("id", i);
-            writer.writeAttribute("sid", encodingSid[i]);
-            writer.writeAttribute("code", encodingCode[i]);
-            if (cff != null) {
-                writer.writeAttribute("name", cff
-                    .getStringIndex(encodingSid[i]));
-            }
+            writer.writeAttribute("name", getGlyphName(i));
             writer.writeEndElement();
         }
         writer.writeEndElement();
 
-    }
-
-    @Override
-    public int getID() {
-
-        return T2TopDICTOperator.TYPE_ENCODING;
     }
 
 }

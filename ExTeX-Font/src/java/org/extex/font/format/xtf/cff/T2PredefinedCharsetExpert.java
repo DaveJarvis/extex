@@ -25,38 +25,44 @@ import java.util.Map;
 /**
  * Predefined Charset (expert subset).
  * <p>
- * Expert subset (changes in 231 - 346)
+ * Expert 229 - 378
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 
-public final class T2PredefinedCharsetExpertSubset {
+public final class T2PredefinedCharsetExpert {
 
     /**
-     * Predefined Charset (expert subset)
+     * Predefined Charset (expert)
      */
-    public static final String[] DATA = new String[347];
+    public static final String[] DATA = new String[379];
 
     /**
      * init the DATA
      */
     static {
-        System.arraycopy(T2PredefinedCharsetExpert.DATA, 0, DATA, 0,
-            T2PredefinedCharsetExpert.DATA.length);
+        System.arraycopy(T2PredefinedCharsetISOAdobe.DATA, 0, DATA, 0,
+            T2PredefinedCharsetISOAdobe.DATA.length);
 
         DATA[1] = "space";
+        DATA[13] = "comma";
+        DATA[14] = "hyphen";
+        DATA[15] = "period";
+        DATA[27] = "colon";
+        DATA[28] = "semicolon";
+        DATA[99] = "fraction";
+        DATA[229] = "exclamsmall";
+        DATA[230] = "Hungarumlautsmall";
         DATA[231] = "dollaroldstyle";
         DATA[232] = "dollarsuperior";
+        DATA[233] = "ampersandsmall";
+        DATA[234] = "Acutesmall";
         DATA[235] = "parenleftsuperior";
         DATA[236] = "parenrightsuperior";
         DATA[237] = "twodotenleader";
         DATA[238] = "onedotenleader";
-        DATA[13] = "comma";
-        DATA[14] = "hyphen";
-        DATA[15] = "period";
-        DATA[99] = "fraction";
         DATA[239] = "zerooldstyle";
         DATA[240] = "oneoldstyle";
         DATA[241] = "twooldstyle";
@@ -67,11 +73,10 @@ public final class T2PredefinedCharsetExpertSubset {
         DATA[246] = "sevenoldstyle";
         DATA[247] = "eightoldstyle";
         DATA[248] = "nineoldstyle";
-        DATA[27] = "colon";
-        DATA[28] = "semicolon";
         DATA[249] = "commasuperior";
         DATA[250] = "threequartersemdash";
         DATA[251] = "periodsuperior";
+        DATA[252] = "questionsmall";
         DATA[253] = "asuperior";
         DATA[254] = "bsuperior";
         DATA[255] = "centsuperior";
@@ -92,16 +97,58 @@ public final class T2PredefinedCharsetExpertSubset {
         DATA[268] = "ffl";
         DATA[269] = "parenleftinferior";
         DATA[270] = "parenrightinferior";
+        DATA[271] = "Circumflexsmall";
         DATA[272] = "hyphensuperior";
+        DATA[273] = "Gravesmall";
+        DATA[274] = "Asmall";
+        DATA[275] = "Bsmall";
+        DATA[276] = "Csmall";
+        DATA[277] = "Dsmall";
+        DATA[278] = "Esmall";
+        DATA[279] = "Fsmall";
+        DATA[280] = "Gsmall";
+        DATA[281] = "Hsmall";
+        DATA[282] = "Ismall";
+        DATA[283] = "Jsmall";
+        DATA[284] = "Ksmall";
+        DATA[285] = "Lsmall";
+        DATA[286] = "Msmall";
+        DATA[287] = "Nsmall";
+        DATA[288] = "Osmall";
+        DATA[289] = "Psmall";
+        DATA[290] = "Qsmall";
+        DATA[291] = "Rsmall";
+        DATA[292] = "Ssmall";
+        DATA[293] = "Tsmall";
+        DATA[294] = "Usmall";
+        DATA[295] = "Vsmall";
+        DATA[296] = "Wsmall";
+        DATA[297] = "Xsmall";
+        DATA[298] = "Ysmall";
+        DATA[299] = "Zsmall";
         DATA[300] = "colonmonetary";
         DATA[301] = "onefitted";
         DATA[302] = "rupiah";
+        DATA[303] = "Tildesmall";
+        DATA[304] = "exclamdownsmall";
         DATA[305] = "centoldstyle";
+        DATA[306] = "Lslashsmall";
+        DATA[307] = "Scaronsmall";
+        DATA[308] = "Zcaronsmall";
+        DATA[309] = "Dieresissmall";
+        DATA[310] = "Brevesmall";
+        DATA[311] = "Caronsmall";
+        DATA[312] = "Dotaccentsmall";
+        DATA[313] = "Macronsmall";
         DATA[314] = "figuredash";
         DATA[315] = "hypheninferior";
+        DATA[316] = "Ogoneksmall";
+        DATA[317] = "Ringsmall";
+        DATA[318] = "Cedillasmall";
         DATA[158] = "onequarter";
         DATA[155] = "onehalf";
         DATA[163] = "threequarters";
+        DATA[319] = "questiondownsmall";
         DATA[320] = "oneeighth";
         DATA[321] = "threeeighths";
         DATA[322] = "fiveeighths";
@@ -132,6 +179,38 @@ public final class T2PredefinedCharsetExpertSubset {
         DATA[344] = "dollarinferior";
         DATA[345] = "periodinferior";
         DATA[346] = "commainferior";
+        DATA[347] = "Agravesmall";
+        DATA[348] = "Aacutesmall";
+        DATA[349] = "Acircumflexsmall";
+        DATA[350] = "Atildesmall";
+        DATA[351] = "Adieresissmall";
+        DATA[352] = "Aringsmall";
+        DATA[353] = "AEsmall";
+        DATA[354] = "Ccedillasmall";
+        DATA[355] = "Egravesmall";
+        DATA[356] = "Eacutesmall";
+        DATA[357] = "Ecircumflexsmall";
+        DATA[358] = "Edieresissmall";
+        DATA[359] = "Igravesmall";
+        DATA[360] = "Iacutesmall";
+        DATA[361] = "Icircumflexsmall";
+        DATA[362] = "Idieresissmall";
+        DATA[363] = "Ethsmall";
+        DATA[364] = "Ntildesmall";
+        DATA[365] = "Ogravesmall";
+        DATA[366] = "Oacutesmall";
+        DATA[367] = "Ocircumflexsmall";
+        DATA[368] = "Otildesmall";
+        DATA[369] = "Odieresissmall";
+        DATA[370] = "OEsmall";
+        DATA[371] = "Oslashsmall";
+        DATA[372] = "Ugravesmall";
+        DATA[373] = "Uacutesmall";
+        DATA[374] = "Ucircumflexsmall";
+        DATA[375] = "Udieresissmall";
+        DATA[376] = "Yacutesmall";
+        DATA[377] = "Thornsmall";
+        DATA[378] = "Ydieresissmall";
 
     }
 
@@ -183,7 +262,7 @@ public final class T2PredefinedCharsetExpertSubset {
     /**
      * no instance
      */
-    private T2PredefinedCharsetExpertSubset() {
+    private T2PredefinedCharsetExpert() {
 
         //
     }

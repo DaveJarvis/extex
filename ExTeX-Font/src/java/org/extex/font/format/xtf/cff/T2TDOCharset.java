@@ -36,13 +36,165 @@ import org.extex.util.xml.XMLStreamWriter;
  * Top DICT. Each charset is described by a format-type identifier byte followed
  * by format-specific data.
  * </p>
+ * 
  * <p>
- * TODO change to HTML table Format 0 Type Name Description Card8 format =0 SID
- * glyph [nGlyphs-1] Glyph name array
+ * Format 0
+ * </p>
+ * <table border="1">
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * <tr>
+ * <td>Card8</td>
+ * <td>format</td>
+ * <td>=0</td>
+ * </tr>
+ * <tr>
+ * <td>SID</td>
+ * <td>glyph<br/>[nGlyphs-1]</td>
+ * <td>Glyph name array</td>
+ * </tr>
+ * </table>
+ * 
+ * <p>
+ * Each element of the glyph array represents the name of the corresponding
+ * glyph. This format should be used when the SIDs are in a fairly random order.
+ * The number of glyphs (nGlyphs) is the value of the count field in the
+ * CharStrings INDEX. (There is one less element in the glyph name array than
+ * nGlyphs because the .notdef glyph name is omitted.)
+ * </p>
+ * 
+ * <p>
+ * Format 1
+ * </p>
+ * <table border="1">
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * <tr>
+ * <td>Card8</td>
+ * <td>format</td>
+ * <td> =1</td>
+ * </tr>
+ * <tr>
+ * <td>struct</td>
+ * <td> Range1<br/>[varies]</td>
+ * <td> Range1 array</td>
+ * </tr>
+ * </table>
+ * 
+ * <p>
+ * Range1 Format (Charset)
+ * </p>
+ * <table border="1">
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * <tr>
+ * <td>SID</td>
+ * <td>first</td>
+ * <td>First glyph in range</td>
+ * </tr>
+ * <tr>
+ * <td>Card8</td>
+ * <td>nLeft</td>
+ * <td>Glyphs left in range (excluding first)</td>
+ * </tr>
+ * </table>
+ * <p>
+ * Each Range1 describes a group of sequential SIDs. The number of ranges is not
+ * explicitly specified in the font. Instead, software utilizing this data
+ * simply processes ranges until all glyphs in the font are covered. This format
+ * is particularly suited to charsets that are well ordered.
+ * </p>
+ * 
+ * <p>
+ * Format 2
+ * </p>
+ * <table broder="1">
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * <tr>
+ * <td>Card8</td>
+ * <td>format</td>
+ * <td> =2</td>
+ * </tr>
+ * <tr>
+ * <td>struct</td>
+ * <td>Range2 <br/>[varies]</td>
+ * <td>Range2 array</td>
+ * </tr>
+ * </table>
+ * 
+ * <p>
+ * Range2 Format
+ * </p>
+ * <table border="1">
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * <tr>
+ * <td>SID</td>
+ * <td>first</td>
+ * <td>First glyph in range</td>
+ * </tr>
+ * <tr>
+ * <td>Card16</td>
+ * <td>nLeft</td>
+ * <td>Glyphs left in range (excluding first)</td>
+ * </tr>
+ * </table>
+ * <p>
+ * Format 2 differs from format 1 only in the size of the nLeft field in each
+ * range. This format is most suitable for fonts with a large well-ordered
+ * charset - for example, for Asian CIDFonts.
  * </p>
  * <p>
- * Format 1 Type Name Description Card8 format =1 struct Range1 [varies] Range1
- * array (see Table 19)
+ * Careful attention to the allocation order of SIDs typically yields very small
+ * font charsets. Still more optimization is possible by observing that many
+ * fonts adopt one of 3 common charsets. In these cases the operand to the
+ * charset operator in the Top DICT specifies a predefined charset id, in place
+ * of an offset, as shown in Table Charset ID.
+ * </p>
+ * <p>
+ * Charset ID
+ * </p>
+ * <table border="1">
+ * <tr>
+ * <td><b>Id</b></td>
+ * <td><b>Name</b></td>
+ * </tr>
+ * <tr>
+ * <td>0</td>
+ * <td>ISOAdobe</td>
+ * </tr>
+ * <tr>
+ * <td>1</td>
+ * <td>Expert</td>
+ * </tr>
+ * <tr>
+ * <td>2</td>
+ * <td>ExpertSubset</td>
+ * </tr>
+ * </table>
+ * <p>
+ * If the font has an ISOAdobe charset, the charset operator can be omitted from
+ * the Top DICT since its default value is 0. Details of predefined charsets can
+ * be found in Appendix C. A font may use a predefined charset if it exactly
+ * matches in the first nGlyphs. CID fonts must not use predefined charsets.<br/>
+ * Two or more fonts may share the same charset by setting the offset operand of
+ * the charset operator to the same value in each font.
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
@@ -50,6 +202,11 @@ import org.extex.util.xml.XMLStreamWriter;
  */
 
 public class T2TDOCharset extends T2TDONumber {
+
+    /**
+     * The cff table.
+     */
+    private OtfTableCFF cff;
 
     /**
      * The format.
@@ -72,9 +229,15 @@ public class T2TDOCharset extends T2TDONumber {
      * @param stack the stack
      * @throws IOException if an IO.error occurs.
      */
-    public T2TDOCharset(List stack) throws IOException {
+    public T2TDOCharset(List<T2CharString> stack) throws IOException {
 
         super(stack, new short[]{CFF_CHARSET});
+    }
+
+    @Override
+    public int getID() {
+
+        return T2TopDICTOperator.TYPE_CHARSET;
     }
 
     /**
@@ -83,16 +246,6 @@ public class T2TDOCharset extends T2TDONumber {
     public String getName() {
 
         return "charset";
-    }
-
-    /**
-     * Getter for sid.
-     * 
-     * @return Returns the sid.
-     */
-    public int[] getSid() {
-
-        return sid;
     }
 
     /**
@@ -110,6 +263,30 @@ public class T2TDOCharset extends T2TDONumber {
             return sid[pos];
         }
         return 0;
+    }
+
+    /**
+     * Returns the name for a position.
+     * 
+     * @param pos The position.
+     * @return Returns the name for a position.
+     */
+    public String getNameForPos(int pos) {
+
+        switch (charSet) {
+            case FontDefine:
+                if (pos >= 0 && pos < sid.length) {
+                    return cff.getStringIndex(sid[pos]);
+                }
+                return ".notdef";
+            case ISOAdobe:
+                return T2PredefinedCharsetISOAdobe.getName(pos);
+            case Expert:
+                return T2PredefinedCharsetExpert.getName(pos);
+            case ExpertSubset:
+                return T2PredefinedCharsetExpertSubset.getName(pos);
+        }
+        return ".notdef";
     }
 
     /**
@@ -136,6 +313,31 @@ public class T2TDOCharset extends T2TDONumber {
     }
 
     /**
+     * The charset of the font
+     */
+    private int charSet = FontDefine;
+
+    /**
+     * ISOAdobe
+     */
+    public static final int ISOAdobe = 0;
+
+    /**
+     * Expert
+     */
+    public static final int Expert = 1;
+
+    /**
+     * ExpertSubset
+     */
+    public static final int ExpertSubset = 2;
+
+    /**
+     * FontDefine
+     */
+    public static final int FontDefine = -1;
+
+    /**
      * Read the charset entry. Charset data is located via the offset operand to
      * the charset operator in the Top DICT. Each charset is described by a
      * format-type identifier byte followed by format-specific data.
@@ -147,8 +349,17 @@ public class T2TDOCharset extends T2TDONumber {
     public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset)
             throws IOException {
 
+        this.cff = cff;
+
         int offset = getInteger();
-        if (offset > 0) {
+        if (offset == 0) {
+            charSet = ISOAdobe;
+        } else if (offset == 1) {
+            charSet = Expert;
+        } else if (offset == 2) {
+            charSet = ExpertSubset;
+        } else {
+            charSet = FontDefine;
             rar.seek(baseoffset + offset);
 
             format = rar.readUnsignedByte();
@@ -231,22 +442,7 @@ public class T2TDOCharset extends T2TDONumber {
                 }
             }
 
-        } else {
-            sid = new int[0];
         }
-    }
-
-    /**
-     * Returns the value as hex string.
-     * 
-     * @param i The int value.
-     * @return Returns the value as hex string.
-     */
-    private String toHex(int i) {
-
-        String hex = "0000" + Integer.toHexString(i);
-        hex = "0x" + hex.substring(hex.length() - 4);
-        return hex;
     }
 
     /**
@@ -256,36 +452,59 @@ public class T2TDOCharset extends T2TDONumber {
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());
-        // writer.writeAttribute("value", getValue());
         writer.writeAttribute("format", format);
-        switch (format) {
-            case 0:
 
-                break;
-            case 1:
+        switch (charSet) {
+            case FontDefine:
+                writer.writeAttribute("charset", "FontDefine");
+
                 for (int i = 0; i < sid.length; i++) {
-                    writer.writeStartElement("entry");
-                    writer.writeAttribute("sid", i);
-                    writer.writeAttribute("char", toHex(sid[i]));
-                    writer.writeAttribute("value", sid[i]);
+                    writer.writeStartElement("sid");
+                    writer.writeAttribute("id", i);
+                    writer.writeAttribute("name", cff.getStringIndex(sid[i]));
                     writer.writeEndElement();
                 }
-                break;
-            case 2:
 
                 break;
+            case ISOAdobe:
+                writer.writeAttribute("charset", "ISOAdobe");
 
-            default:
+                for (int i = 0; i < T2PredefinedCharsetISOAdobe.DATA.length; i++) {
+                    writer.writeStartElement("sid");
+                    writer.writeAttribute("id", i);
+                    writer.writeAttribute("name", T2PredefinedCharsetISOAdobe
+                        .getName(i));
+                    writer.writeEndElement();
+                }
+
+                break;
+            case Expert:
+                writer.writeAttribute("charset", "Expert");
+
+                for (int i = 0; i < T2PredefinedCharsetExpert.DATA.length; i++) {
+                    writer.writeStartElement("sid");
+                    writer.writeAttribute("id", i);
+                    writer.writeAttribute("name", T2PredefinedCharsetExpert
+                        .getName(i));
+                    writer.writeEndElement();
+                }
+
+                break;
+            case ExpertSubset:
+                writer.writeAttribute("charset", "ExpertSubset");
+
+                for (int i = 0; i < T2PredefinedCharsetExpertSubset.DATA.length; i++) {
+                    writer.writeStartElement("sid");
+                    writer.writeAttribute("id", i);
+                    writer.writeAttribute("name",
+                        T2PredefinedCharsetExpertSubset.getName(i));
+                    writer.writeEndElement();
+                }
+
                 break;
         }
+
         writer.writeEndElement();
-
-    }
-
-    @Override
-    public int getID() {
-
-        return T2TopDICTOperator.TYPE_CHARSET;
     }
 
 }

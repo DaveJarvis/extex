@@ -184,7 +184,7 @@ public class CffFont implements XMLWriterConvertible {
 
                 T2TDOCharset charset = (T2TDOCharset) op2;
                 T2TDOEncoding enc =
-                        new T2TDOEncoding(cff, numberOfGlyphs, charset.getSid());
+                        new T2TDOEncoding(cff, numberOfGlyphs, charset);
                 topDictIndex.put("encoding", enc);
             }
         }
@@ -941,7 +941,33 @@ public class CffFont implements XMLWriterConvertible {
                     break;
                 case T2TopDICTOperator.TYPE_PRIVATE:
                     break;
-
+                case T2TopDICTOperator.TYPE_ROS:
+                    isCID = true;
+                    break;
+                case T2TopDICTOperator.TYPE_CIDFONTVERSION:
+                    isCID = true;
+                    break;
+                case T2TopDICTOperator.TYPE_CIDFONTREVISION:
+                    isCID = true;
+                    break;
+                case T2TopDICTOperator.TYPE_CIDFONTTYPE:
+                    isCID = true;
+                    break;
+                case T2TopDICTOperator.TYPE_CIDCOUNT:
+                    isCID = true;
+                    break;
+                case T2TopDICTOperator.TYPE_UIDBASE:
+                    isCID = true;
+                    break;
+                case T2TopDICTOperator.TYPE_FDARRAY:
+                    isCID = true;
+                    break;
+                case T2TopDICTOperator.TYPE_FDSELECT:
+                    isCID = true;
+                    break;
+                case T2TopDICTOperator.TYPE_FONTNAME:
+                    isCID = true;
+                    break;
                 default:
                     break;
             }
@@ -987,6 +1013,7 @@ public class CffFont implements XMLWriterConvertible {
         writer.writeStartElement("font");
         writer.writeAttribute("number", fontnumber);
         writer.writeAttribute("name", name);
+        writer.writeAttribute("CID", isCID);
 
         // topdict index
         writer.writeStartElement("topdictindex");
