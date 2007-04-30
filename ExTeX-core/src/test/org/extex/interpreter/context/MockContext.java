@@ -84,14 +84,14 @@ public class MockContext implements Context, TypesetterOptions {
     protected static final long serialVersionUID = 2006L;
 
     /**
-     * The field <tt>tc</tt> contains the ...
+     * The field <tt>tc</tt> contains the typesetting context.
      */
     private transient TypesettingContext tc = new TypesettingContextImpl();
 
     /**
      * The field <tt>tokenFactory</tt> contains the token factory.
      */
-    private transient TokenFactory tokenFactory = new TokenFactoryImpl();
+    private TokenFactory tokenFactory = new TokenFactoryImpl();
 
     /**
      * Creates a new object.
