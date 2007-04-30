@@ -55,12 +55,12 @@ public class WhatsItWriteNode extends WhatsItNode {
      * The field <tt>writer</tt> contains the writer used as target when the
      * node is shipped out.
      */
-    private TokensWriter writer;
+    private transient TokensWriter writer;
 
     /**
-     * The field <tt>interpreter</tt> contains the token source for expansion.
+     * The field <tt>source</tt> contains the token source for expansion.
      */
-    private TokenSource source;
+    private transient TokenSource source;
 
     /**
      * Creates a new object.
