@@ -34,7 +34,7 @@ public class InteractionTest extends TestCase {
     /**
      * Sensor for the interaction mode.
      */
-    private class Sensor implements InteractionVisitor {
+    private static class Sensor implements InteractionVisitor {
 
         /**
          * The field <tt>mode</tt> contains the interaction mode encountered
