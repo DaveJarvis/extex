@@ -163,7 +163,7 @@ public class TeXParagraphBuilder
      *
      * <p>
      *  The parameter <tt>\brokenpenalty</tt> contains the penalty which is
-     *  added is a line ends within a hyphenation point.
+     *  added if a line ends within an hyphenation point.
      * </p>
      *
      * </doc>
