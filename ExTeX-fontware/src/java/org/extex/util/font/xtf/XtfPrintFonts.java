@@ -266,14 +266,15 @@ public class XtfPrintFonts extends XtfInfo {
         for (int b = 0; b < basefonts.length; b++) {
             if (basefonts[b].charExists((char) idx)) {
 
-                String n = reader[b].mapCharCodeToGlyphname(idx,
-                        TtfTableCMAP.PLATFORM_MICROSOFT,
-                        TtfTableCMAP.ENCODING_ISO_ISO10646);
-
-                if (n != null) {
-                    name = n;
-                    break;
-                }
+// commented out to fix a compiler error
+//                String n = reader[b].mapCharCodeToGlyphname(idx,
+//                        TtfTableCMAP.PLATFORM_MICROSOFT,
+//                        TtfTableCMAP.ENCODING_ISO_ISO10646);
+//
+//                if (n != null) {
+//                    name = n;
+//                    break;
+//                }
             }
         }
         return name;
