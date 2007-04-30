@@ -38,6 +38,7 @@ import javax.xml.parsers.SAXParserFactory;
 import org.extex.core.UnicodeChar;
 import org.extex.font.FontKeyFactory;
 import org.extex.font.exception.FontException;
+import org.extex.font.format.encoding.EncFactory;
 import org.extex.font.format.tfm.TfmReader;
 import org.extex.font.unicode.GlyphName;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -50,7 +51,6 @@ import de.dante.extex.unicodeFont.exception.FontIOException;
 import de.dante.extex.unicodeFont.format.pfb.PfbParser;
 import de.dante.extex.unicodeFont.format.tex.psfontmap.PsFontEncoding;
 import de.dante.extex.unicodeFont.format.tex.psfontmap.PsFontsMapReader;
-import de.dante.extex.unicodeFont.format.tex.psfontmap.enc.EncFactory;
 
 /**
  * This class manage the font map files.

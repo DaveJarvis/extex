@@ -24,8 +24,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -35,10 +33,9 @@ import org.extex.font.exception.FontException;
 import org.extex.font.format.afm.AfmCharMetric;
 import org.extex.font.format.afm.AfmKernPairs;
 import org.extex.font.format.afm.AfmParser;
+import org.extex.font.format.encoding.EncReader;
 import org.extex.font.unicode.GlyphName;
 import org.extex.framework.configuration.exception.ConfigurationException;
-
-import de.dante.extex.unicodeFont.format.tex.psfontmap.enc.EncReader;
 
 /**
  * Print information about a afm file.
