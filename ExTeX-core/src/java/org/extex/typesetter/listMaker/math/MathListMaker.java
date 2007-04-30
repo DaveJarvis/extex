@@ -172,7 +172,7 @@ public class MathListMaker extends HorizontalListMaker
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision:4496 $
      */
-    private class MathMemento {
+    private static class MathMemento {
 
         /**
          * The field <tt>block</tt> contains the indicator that this memento
