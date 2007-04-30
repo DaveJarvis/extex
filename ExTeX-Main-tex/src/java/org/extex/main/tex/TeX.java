@@ -22,6 +22,7 @@ package org.extex.main.tex;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -45,6 +46,7 @@ import org.extex.backend.BackendDriver;
 import org.extex.backend.documentWriter.DocumentWriterOptions;
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.outputStream.NamedOutputStream;
+import org.extex.backend.outputStream.OutputFactory;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.backend.outputStream.OutputStreamObserver;
 import org.extex.core.exception.GeneralException;
@@ -77,6 +79,7 @@ import org.extex.main.tex.exception.MainUnknownDebugOptionException;
 import org.extex.main.tex.exception.MainUnknownOptionException;
 import org.extex.resource.ResourceFinder;
 import org.extex.scanner.stream.TokenStreamFactory;
+import org.extex.scanner.stream.observer.file.OpenFileObservable;
 import org.extex.scanner.stream.observer.file.OpenFileObserver;
 
 /**
@@ -244,7 +247,7 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * 
  * <dt><a name="-ini"><tt>-ini</tt></a></dt>
  * <dd> If set to <code>true</code> then the attempt to load a format with the
- * name derived from the prog name is omitted. </dd>
+ * name derived from the program name is omitted. </dd>
  * <dd>Property: <tt><a href="#extex.ini">extex.ini</a></tt> </dd>
  * 
  * <dt><a name="-interaction"><tt>-interaction &lang;mode&rang;</tt> <br />
@@ -297,6 +300,15 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * <dd> This parameter can be used to overrule the name of the program shown in
  * the banner and the version information. </dd>
  * <dd>Property: <tt><a href="#extex.progname">extex.progname</a></tt></dd>
+ * 
+ * <dt><a name="-recorder"/><tt>-recorder</tt><br />
+ * <tt>-recorder=&lang;file name&rang;</tt> </a></dt>
+ * <dd> This parameter can be used to activate the file name recorder. If the
+ * file name recorder is active then all files opened during the run are
+ * collected and written to a file. The file name used is the jobname with the
+ * extension <tt>.fls</tt> appended. If the second form of invocation is used
+ * then the file name can be given.</dd>
+ * <dd>Property: <tt><a href="#tex.recorder">tex.recorder</a></tt></dd>
  * 
  * <dt><a name="-texinputs"/><tt>-texinputs &lang;path&rang;</tt><br />
  * <tt>-texinputs=&lang;path&rang;</tt> </a></dt>
@@ -501,6 +513,16 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * <dd>Command line: <a href="#-progname"><tt>-progname</tt></a></dd>
  * <dd>Default: <tt>ExTeX</tt></dd>
  * 
+ * <dt><a name="tex.recorder"/><tt>tex.recorder</tt></dt>
+ * <dd> This parameter can be used to activate the file name recorder. If the
+ * file name recorder is active then all files opened during the run are
+ * collected and written to a file. The file name is stored in this parameter.
+ * If the file name is <code>null</code> the no file is written. If the file
+ * name is empty then the output is written to the standard output stream.
+ * Otherwise the file name is opened fro writing. </dd>
+ * <dd>Command line: <a href="#-recorder"><tt>-recorder</tt></a></dd>
+ * <dd>Default: none</dd>
+ * 
  * <dt><a name="extex.texinputs"/><tt>extex.texinputs</tt></dt>
  * <dd> This parameter contains the additional directories for searching TeX
  * input files. </dd>
@@ -587,14 +609,14 @@ public class TeX extends ExTeX {
     private final class Observer implements OpenFileObserver {
 
         /**
-         * The field <tt>first</tt> contains the indicator of the first visit.
-         */
-        private boolean first = true;
-
-        /**
          * The field <tt>finder</tt> contains the resource finder.
          */
         private ResourceFinder finder;
+
+        /**
+         * The field <tt>first</tt> contains the indicator of the first visit.
+         */
+        private boolean first = true;
 
         /**
          * Creates a new object.
@@ -718,6 +740,12 @@ public class TeX extends ExTeX {
             "extex.parse.first.line";
 
     /**
+     * The field <tt>PROP_RECORDER</tt> contains the name of the property to
+     * control the recorder.
+     */
+    private static final String PROP_RECORDER = "tex.recorder";
+
+    /**
      * The constant <tt>TRACE_MAP</tt> contains the mapping from single
      * characters to tracing property names.
      */
@@ -797,11 +825,17 @@ public class TeX extends ExTeX {
     }
 
     /**
+     * The field <tt>fileRecorder</tt> contains the observer used to record
+     * all opened files.
+     */
+    private FileRecorder fileRecorder = null;;
+
+    /**
      * The field <tt>interpreter</tt> contains the interpreter. This is an
      * intermediate variable used to transport the interpreter to places where
      * it is needed.
      */
-    private Interpreter interpreter;;
+    private Interpreter interpreter;
 
     /**
      * The field <tt>localizer</tt> contains the localizer.
@@ -1075,6 +1109,10 @@ public class TeX extends ExTeX {
             interpreter.getTokenStreamFactory().newInstance(
                 new InputStreamReader(System.in)));
 
+        if (fileRecorder != null && interpreter instanceof OpenFileObservable) {
+            ((OpenFileObservable) interpreter).registerObserver(fileRecorder);
+        }
+
         if (interpreter instanceof StreamCloseObservable) {
             StreamCloseObserver observer = new FileCloseObserver(logger);
             ((StreamCloseObservable) interpreter).registerObserver(observer);
@@ -1098,6 +1136,25 @@ public class TeX extends ExTeX {
         }
 
         return interpreter;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.ExTeX#makeOutputFactory(java.lang.String,
+     *      org.extex.framework.configuration.Configuration)
+     */
+    protected OutputFactory makeOutputFactory(String jobname,
+            Configuration config) {
+
+        OutputFactory outputFactory = super.makeOutputFactory(jobname, config);
+
+        if (getProperty(PROP_RECORDER) != null) {
+            fileRecorder = new FileRecorder();
+            outputFactory.register(fileRecorder);
+            fileRecorder.setOutputFactory(outputFactory);
+        }
+        return outputFactory;
     }
 
     /**
@@ -1160,6 +1217,29 @@ public class TeX extends ExTeX {
     }
 
     /**
+     * Call the recorder at the end of the run to write out its collected list.
+     */
+    private void recorderStop() {
+
+        String recorder = getProperty(PROP_RECORDER);
+        if (fileRecorder == null) {
+            return;
+        }
+        try {
+            if ("-".equals(recorder)) {
+                recorder = null;
+            } else if ("".equals(recorder)) {
+                recorder = getProperty(PROP_JOBNAME);
+            }
+            fileRecorder.print(recorder);
+        } catch (IOException e) {
+            // ignored on purpose
+        } catch (DocumentWriterException e) {
+            // ignored on purpose
+        }
+    }
+
+    /**
      * This method provides access to the whole functionality of <logo>ExTeX</logo>
      * on the command line. The exception is that this method does not call
      * <code>{@link System#exit(int) System.exit()}</code> but returns the
@@ -1172,8 +1252,9 @@ public class TeX extends ExTeX {
     public int run(String[] args) {
 
         try {
-
-            return runCommandLine(args);
+            int exitStatus = runCommandLine(args);
+            recorderStop();
+            return exitStatus;
 
         } catch (MainException e) {
             showBanner(null, Level.INFO);
@@ -1297,7 +1378,6 @@ public class TeX extends ExTeX {
                             throw new MainMissingArgumentException("-" + arg);
                         }
                         break;
-
                     case 'c':
                         if (set("configuration", PROP_CONFIG, args, i)) {
                             // extex -configuration <configuration>
@@ -1446,6 +1526,16 @@ public class TeX extends ExTeX {
                         } else if ("parse-first-line".startsWith(arg)) {
                             // extex -parse-first-line
                             setProperty(PROP_PARSE_FIRST_LINE, "true");
+                        } else if (!mergeProperties(arg)) {
+                            throw new MainUnknownOptionException(arg);
+                        }
+                        break;
+                    case 'r':
+                        if (set("recorder", PROP_RECORDER, arg)) {
+                            // extex -recorder=<name>
+                        } else if ("recorder".startsWith(arg)) {
+                            // extex -recorder
+                            setProperty(PROP_RECORDER, "");
                         } else if (!mergeProperties(arg)) {
                             throw new MainUnknownOptionException(arg);
                         }
