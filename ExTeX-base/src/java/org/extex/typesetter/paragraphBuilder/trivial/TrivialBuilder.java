@@ -39,7 +39,6 @@ import org.extex.typesetter.paragraphBuilder.HangingParagraphShape;
 import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
 import org.extex.typesetter.type.Node;
-import org.extex.typesetter.type.NodeIterator;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.AfterMathNode;
 import org.extex.typesetter.type.node.BeforeMathNode;
@@ -54,8 +53,8 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
 
 /**
  * This class implements a trivial paragraph builder.
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4728 $
  */
@@ -68,8 +67,8 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
     private static final boolean DEVELOP = false;
 
     /**
-     * The constant <tt>EJECT_PENALTY</tt> contains the penalty which forces
-     * a line break. This is an equivalent to -&infin;.
+     * The constant <tt>EJECT_PENALTY</tt> contains the penalty which forces a
+     * line break. This is an equivalent to -&infin;.
      */
     private static final int EJECT_PENALTY = -10000;
 
@@ -91,21 +90,21 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
     /**
      * The field <tt>hangingParshape</tt> contains the data object used to
      * transport the hanging paragraph shape to the appropriate places. The
-     * values stored in it will be overwritten whenever this object will be
-     * used for the current paragraph.
+     * values stored in it will be overwritten whenever this object will be used
+     * for the current paragraph.
      */
     private HangingParagraphShape hangingParshape =
             new HangingParagraphShape(0, Dimen.ZERO_PT, Dimen.ZERO_PT);
 
     /**
-     * The field <tt>logger</tt> contains the logger to be used.
-     * This field is initialized from the framework by invoking the appropriate
-     * setter.
+     * The field <tt>logger</tt> contains the logger to be used. This field is
+     * initialized from the framework by invoking the appropriate setter.
      */
     private Logger logger = null;
 
     /**
-     * The field <tt>options</tt> contains the reference to the options object.
+     * The field <tt>options</tt> contains the reference to the options
+     * object.
      */
     private TypesetterOptions options = null;
 
@@ -141,23 +140,21 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
     }
 
     /**
-     * Add a new line to a vlist.
-     * Ensure that a minimum distance between the lines exists. Usually the
-     * distance <tt>\baselineskip</tt> between the lines is desirable. For this
-     * purpose the depth of the previous line and the height of the current line
-     * is subtracted. If the remaining distance is less than
-     * <tt>\lineskiplimit</tt> then the value of <tt>\lineskip</tt> is used
-     * instead.
-     *
+     * Add a new line to a vlist. Ensure that a minimum distance between the
+     * lines exists. Usually the distance <tt>\baselineskip</tt> between the
+     * lines is desirable. For this purpose the depth of the previous line and
+     * the height of the current line is subtracted. If the remaining distance
+     * is less than <tt>\lineskiplimit</tt> then the value of
+     * <tt>\lineskip</tt> is used instead.
+     * 
      * @param vlist the target list
      * @param hlist the line to add
      * @param baselineskip the parameter \baselineskip
      * @param lineskip the parameter \lineskip
      * @param lineskiplimit the parameter \lineskiplimit
      */
-    private void addLine(VerticalListNode vlist,
-            HorizontalListNode hlist, FixedGlue baselineskip,
-            FixedGlue lineskip, FixedDimen lineskiplimit) {
+    private void addLine(VerticalListNode vlist, HorizontalListNode hlist,
+            FixedGlue baselineskip, FixedGlue lineskip, FixedDimen lineskiplimit) {
 
         int end = vlist.size() - 1;
 
@@ -173,7 +170,7 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
 
     /**
      * Analyze a node list and cut off the first line.
-     *
+     * 
      * @param start the index of the first node to consider
      * @param len the length of nodes
      * @param nodes the node list to take the nodes from
@@ -182,12 +179,11 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      * @param accumulator an accumulator for the glue
      * @param height the accumulator for the height
      * @param depth the accumulator for the depth
-     *
+     * 
      * @return the index of the first node after the ones already processed
      */
-    private int breakLine(int start, int len,
-            HorizontalListNode nodes, HorizontalListNode hlist,
-            Dimen width, WideGlue accumulator,
+    private int breakLine(int start, int len, HorizontalListNode nodes,
+            HorizontalListNode hlist, Dimen width, WideGlue accumulator,
             FixedDimen height, FixedDimen depth) {
 
         Node node = nodes.get(start);
@@ -201,7 +197,7 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
             int point = findNextBreakPoint(nodes, i, w);
             if (w.getLength().gt(width)) {
                 if (i == start + 1) {
-                    //avoid infinite loop and accept overful box
+                    // avoid infinite loop and accept overful box
                     i =
                             saveNodes(nodes, i, point, hlist, accumulator,
                                 height, depth);
@@ -216,16 +212,15 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
     }
 
     /**
-     * Break a horizontal list into lines.
-     * The horizontal list passed in might be modified under way.
-     *
+     * Break a horizontal list into lines. The horizontal list passed in might
+     * be modified under way.
+     * 
      * @param nodes the horizontal node list containing all nodes for the
-     *   paragraph
-     *
-     * @return the
-     *   {@link org.extex.typesetter.type.node.VerticalListNode
-     *   VerticalListNode} containing the hboxes of the lines
-     *
+     *        paragraph
+     * 
+     * @return the {@link org.extex.typesetter.type.node.VerticalListNode
+     *         VerticalListNode} containing the hboxes of the lines
+     * 
      * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#build(
      *      org.extex.typesetter.type.node.HorizontalListNode)
      */
@@ -299,15 +294,14 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
     /**
      * Skip over any discardable nodes and return the index of the next
      * non-discardable node.
-     *
+     * 
      * @param start the index to start at
      * @param len the length of the node list
      * @param nodes the node list to take into account
-     *
+     * 
      * @return the index of the next non-discardable node
      */
-    private int discardNodes(int start, int len,
-            NodeList nodes) {
+    private int discardNodes(int start, int len, NodeList nodes) {
 
         int i = start;
         while (i < len && nodes.get(i) instanceof Discardable) {
@@ -318,9 +312,9 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
 
     /**
      * Setter for the logger.
-     *
+     * 
      * @param log the logger to use
-     *
+     * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
@@ -331,16 +325,15 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
 
     /**
      * Determine the index of the next break point.
-     *
+     * 
      * @param nodes the list of nodes to consider
      * @param start the initial index
      * @param width an accumulator for the width
-     *
+     * 
      * @return the index of the next break point or the index of the element
-     *  past the end of the list if none is found
+     *         past the end of the list if none is found
      */
-    private int findNextBreakPoint(NodeList nodes, int start,
-            WideGlue width) {
+    private int findNextBreakPoint(NodeList nodes, int start, WideGlue width) {
 
         Node node;
         boolean math = false;
@@ -356,8 +349,8 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
             node = nodes.get(i);
 
             if (node instanceof CharNode) {
-                //node.addWidthTo(width);
-                //continue;
+                // node.addWidthTo(width);
+                // continue;
             } else if (node instanceof GlueNode
                     && !(nodes.get(i - 1) instanceof Discardable)) {
 
@@ -385,11 +378,11 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
 
             } else if (node instanceof DiscretionaryNode) {
 
-                //breakList.add(new BreakPoint(i, w, wd,
-                //        (((DiscretionaryNode) node).getPreBreak().length() != 0
-                //                ? hyphenpenalty
-                //                : exhyphenpenalty)));
-                //node.addWidthTo(width);
+                // breakList.add(new BreakPoint(i, w, wd,
+                // (((DiscretionaryNode) node).getPreBreak().length() != 0
+                // ? hyphenpenalty
+                // : exhyphenpenalty)));
+                // node.addWidthTo(width);
                 return i;
             }
             node.addWidthTo(width);
@@ -398,8 +391,8 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
     }
 
     /**
-     * Initializes the field <tt>parshape</tt> if not set already.
-     * For this purpose the options are considered.
+     * Initializes the field <tt>parshape</tt> if not set already. For this
+     * purpose the options are considered.
      */
     private void prepareParshape() {
 
@@ -424,7 +417,7 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
 
     /**
      * Copy nodes from one list into another.
-     *
+     * 
      * @param nodes the list of nodes to consider
      * @param start the initial index
      * @param end the index of the element after the ones to save
@@ -432,12 +425,11 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      * @param accumulator the accumulator for the glue of the saved nodes
      * @param height the accumulator for the height
      * @param depth the accumulator for the depth
-     *
+     * 
      * @return the index of the first node which has not been copied
      */
-    private int saveNodes(HorizontalListNode nodes, int start,
-            int end, HorizontalListNode hlist,
-            WideGlue accumulator, FixedDimen height,
+    private int saveNodes(HorizontalListNode nodes, int start, int end,
+            HorizontalListNode hlist, WideGlue accumulator, FixedDimen height,
             FixedDimen depth) {
 
         Node node;
@@ -459,9 +451,9 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
 
     /**
      * Setter for the node factory.
-     *
+     * 
      * @param nodeFactory the node factory
-     *
+     * 
      * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#setNodefactory(
      *      org.extex.typesetter.type.node.factory.NodeFactory)
      */
@@ -472,9 +464,9 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
 
     /**
      * Setter for options.
-     *
+     * 
      * @param options the options to set.
-     *
+     * 
      * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#setOptions(
      *      org.extex.typesetter.TypesetterOptions)
      */
@@ -485,23 +477,22 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
 
     /**
      * Adjust the width of the current line.
-     *
+     * 
      * @param hlist the target list to put the nodes into
-     * @param targetWidth the target width to which the hlist should be
-     *  adjusted
+     * @param targetWidth the target width to which the hlist should be adjusted
      * @param w the accumulated width of the hlist
      */
-    private void spread(HorizontalListNode hlist,
-            FixedDimen targetWidth, WideGlue w) {
+    private void spread(HorizontalListNode hlist, FixedDimen targetWidth,
+            WideGlue w) {
 
         FixedDimen width = w.getLength();
         FixedGlueComponent component =
                 (width.lt(targetWidth) ? w.getStretch() : w.getShrink());
 
         Dimen wd = new Dimen(targetWidth.getValue() - width.getValue());
-        NodeIterator it = hlist.iterator();
-        while (it.hasNext()) {
-            it.next().spreadWidth(wd, component);
+
+        for (Node n : hlist) {
+            n.spreadWidth(wd, component);
         }
 
         hlist.setWidth(targetWidth);
