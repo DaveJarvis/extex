@@ -189,9 +189,8 @@ public class OutputFactory extends AbstractFactory
         OutputStream stream = makeOutputStream(name, type);
 
         if (stream != null && observers != null) {
-            int size = observers.size();
-            for (int i = 0; i < size; i++) {
-                observers.get(i).update(name, type, stream);
+            for (OutputStreamObserver observer : observers) {
+                observer.update(name, type, stream);
             }
         }
         return stream;
@@ -253,14 +252,12 @@ public class OutputFactory extends AbstractFactory
                 new Object[]{basename, //
                         (name == null ? "" : name), //
                         Long.valueOf(cnt), //
-                        (ext == null ? "" : ext)});
+                        (ext == null ? "" : "." + ext)});
         }
 
         if (outputDirectories != null) {
-            for (int i = 0; i < outputDirectories.length; i++) {
-                OutputStream os =
-                        openOutputStream(outputDirectories[i], filename,
-                            isDefault);
+            for (String dir : outputDirectories) {
+                OutputStream os = openOutputStream(dir, filename, isDefault);
                 if (os != null) {
                     return os;
                 }
