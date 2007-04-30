@@ -2,32 +2,42 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
-  <artifactId>build</artifactId>
-  <packaging>pom</packaging>
+  <artifactId>extex-backend-pdfbox</artifactId>
+  <packaging>jar</packaging>
   <version>1.0</version>
-  <name>ExTeX build system</name>
+  <name>ExTeX backend pdfbox</name>
   <inceptionYear>2003</inceptionYear>
   <url>http://www.extex.org</url>
+
   <description>
-    This is the ExTeX build system -- at least those parts not yet migrated to maven.
+    This ia the ExTeX backend component based on PDFbox.
   </description>
+
   <parent>
     <groupId>org.extex</groupId>
     <artifactId>extex</artifactId>
     <version>SNAPSHOT</version>
   </parent>
+
+  <dependencies>
+    <dependency>
+      <groupId>pdfbox</groupId>
+      <artifactId>pdfbox</artifactId>
+      <version>0.7.1</version>
+    </dependency>
+  </dependencies>
+
   <developers>
     <developer>
-      <id>gene</id>
-      <name>Gerd Neugebauer</name>
-      <email>gene@gerd-neugebauer.de</email>
+      <id>mgn</id>
+      <name>Michael Niedermair</name>
+      <email>m.g.n@gmx.de</email>
       <roles>
         <role>developer</role>
-        <role>build manager</role>
       </roles>
       <timezone>+1</timezone>
       <properties/>
     </developer>
-  </developers>
+ </developers>
 
 </project>

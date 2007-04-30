@@ -5,7 +5,7 @@
   <artifactId>extex-core</artifactId>
   <packaging>jar</packaging>
   <version>1.0</version>
-  <name>ExTeX core system</name>
+  <name>ExTeX core components</name>
   <inceptionYear>2003</inceptionYear>
   <url>http://www.extex.org</url>
   <description>

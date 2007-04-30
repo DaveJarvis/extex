@@ -24,11 +24,13 @@
   </description>
 
   <organization>
-    <name>>The ExTeX Group</name>
+    <name>The ExTeX Group</name>
     <url>http://www.extex.org</url>
   </organization>
 
   <scm>
+    <connection>scm:svn:http://svn.berlios.de/svnroot/repos/extex/trunk/</connection>
+    <developerConnection>scm:svn:https://svn.berlios.de/svnroot/repos/extex/trunk</developerConnection>
     <url>http://svn.berlios.de/wsvn/extex/trunk/</url>
   </scm>
 
@@ -90,6 +92,18 @@
     </developer>
   </developers>
 
+<!--
+  <ciManagement>
+    <system>continuum</system>
+    <notifier>
+      <type>mail</type>
+      <configuration>
+        <address>dev@maven.apache.org</address>
+      </configuration>
+    <notifier>
+  </ciManagement>
+-->
+
   <distributionManagement>
     <site>
       <id>www.extex.org</id>
@@ -110,25 +124,25 @@
    <module>build</module>
    <!-- <module>develop</module> -->
    <!-- <module>doc</module> -->
-   <!-- <module>ExTeX-Backend-dump</module> -->
+   <module>ExTeX-Backend-dump</module>
    <!-- <module>ExTeX-Backend-dvi</module> -->
-   <!-- <module>ExTeX-Backend-dvix</module> -->
-   <!-- <module>ExTeX-Backend-pdfbox</module> -->
+   <module>ExTeX-Backend-dvix</module>
+   <module>ExTeX-Backend-pdfbox</module>
    <!-- <module>ExTeX-Backend-ps</module> -->
    <!-- <module>ExTeX-Backend-rtf</module> -->
    <!-- <module>ExTeX-Backend-svg</module> -->
    <!-- <module>ExTeX-Backend-text</module> -->
    <!-- <module>ExTeX-Backend-xml</module> -->
-   <!-- <module>ExTeX-base</module> -->
+   <module>ExTeX-base</module>
    <!-- <module>ExTeX-base-ext</module> -->
    <module>ExTeX-core</module>
-   <!-- <module>ExTeX-Font</module> -->
+   <module>ExTeX-Font</module>
    <!-- <module>ExTeX-fontware</module> -->
    <!-- <module>ExTeX-Main-fmt</module> -->
    <!-- <module>ExTeX-Main-tex</module> -->
-   <!-- <module>ExTeX-Scanner</module> -->
+   <module>ExTeX-Scanner</module>
    <!-- <module>ExTeX-Scanner32</module> -->
-   <!-- <module>ExTeX-Scanner-API</module> -->
+   <module>ExTeX-Scanner-API</module>
    <!-- <module>ExTeX-Unit-color</module> -->
    <!-- <module>ExTeX-Unit-etex</module> -->
    <!-- <module>ExTeX-Unit-extex</module> -->
@@ -137,7 +151,7 @@
    <!-- <module>ExTeX-Unit-native</module> -->
    <!-- <module>ExTeX-Unit-omega</module> -->
    <!-- <module>ExTeX-Unit-pdftex</module> -->
-   <!-- <module>ExTeX-Unit-tex</module> -->
+   <module>ExTeX-Unit-tex</module>
    <!-- <module>library</module> -->
    <module>texmf</module>
    <!-- <module>util</module> -->
@@ -154,18 +168,6 @@
           <target>1.5</target>
         </configuration>
       </plugin>
-<!--
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-info-reports-pligin</artifactId>
-        <reportSets>
-          <reportSet>
-            <report>mailing-lists</report>
-            <report>license</report>
-          </reportSet>
-        </reportSets>
-      </plugin>
--->
     </plugins>
   </build>
 
@@ -173,12 +175,71 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <aggregate>true</aggregate>
+        </configuration>
+      </plugin>
+
+<!--
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <configuration>
+          <outputDirectory>${project.build.directory}/surefire-reports</outputDirectory>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>test</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+-->
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <configuration>
           <configLocation>develop/eclipse/checkstyle42.cfg</configLocation>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>taglist-maven-plugin</artifactId>
+        <configuration>
+          <tags>
+            <tag>TODO</tag>
+            <tag>@todo</tag>
+            <tag>FIXME</tag>
+          </tags>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changelog-plugin</artifactId>
+        <configuration>
+          <type>range</type>
+          <range>90</range>
+        </configuration>
+      </plugin>
+
     </plugins>
+
   </reporting>
 
 </project>
