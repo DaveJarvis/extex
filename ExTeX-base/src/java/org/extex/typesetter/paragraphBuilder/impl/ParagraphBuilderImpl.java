@@ -272,7 +272,7 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
         prepareParshape();
 
         // remove final node if it is glue; [TTB p99--100]
-        if (!nodes.empty() && nodes.get(nodes.size() - 1) instanceof GlueNode) {
+        if (!nodes.isEmpty() && nodes.get(nodes.size() - 1) instanceof GlueNode) {
             nodes.remove(nodes.size() - 1);
         }
 

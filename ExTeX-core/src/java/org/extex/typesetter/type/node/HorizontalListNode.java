@@ -33,9 +33,9 @@ import org.extex.typesetter.type.NodeVisitor;
 /**
  * This class provides a container for nodes which is interpreted as horizontal
  * list.
- *
+ * 
  * @see "<logo>TeX</logo> &ndash; The Program [135]"
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4739 $
@@ -43,13 +43,14 @@ import org.extex.typesetter.type.NodeVisitor;
 public class HorizontalListNode extends GenericNodeList {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 20060426L;
 
     /**
      * Creates a new object. The list is empty initially.
-     *
+     * 
      * @see "<logo>TeX</logo> &ndash; The Program [136]"
      */
     public HorizontalListNode() {
@@ -59,7 +60,7 @@ public class HorizontalListNode extends GenericNodeList {
 
     /**
      * Creates a new object. The list is filled with the node given.
-     *
+     * 
      * @param width the width of the box
      */
     public HorizontalListNode(FixedDimen width) {
@@ -70,9 +71,8 @@ public class HorizontalListNode extends GenericNodeList {
     }
 
     /**
-     * Creates a new object.
-     * The hlist is filled with the node given.
-     *
+     * Creates a new object. The hlist is filled with the node given.
+     * 
      * @param node the initial node to add
      */
     public HorizontalListNode(Node node) {
@@ -81,9 +81,8 @@ public class HorizontalListNode extends GenericNodeList {
     }
 
     /**
-     * Creates a new object.
-     * The hlist is initially filled with two nodes.
-     *
+     * Creates a new object. The hlist is initially filled with two nodes.
+     * 
      * @param node1 the initial node
      * @param node2 the node to add after node1
      */
@@ -94,48 +93,65 @@ public class HorizontalListNode extends GenericNodeList {
     }
 
     /**
-     * Add a node to the node list at a given position.
-     *
+     * Add a node to the node list at a given position. The position starts with
+     * a value of 0 to insert the node before the first existing node and goes
+     * up to the length of the list to insert the new node at the end.
+     * <p>
+     * If the node is <code>null</code> then it is silently ignored. This
+     * means that a horizontal list will never contain <code>null</code>
+     * values.
+     * </p>
+     * 
      * @param index the position of insertion
      * @param node the node to add
-     *
-     * @see org.extex.typesetter.type.node.GenericNodeList#add(
-     *     int,
-     *     org.extex.typesetter.type.Node)
+     * 
+     * @throws IndexOutOfBoundsException in case that the index is negative or
+     *         greater than the length of the list
+     * 
+     * @see org.extex.typesetter.type.node.GenericNodeList#add( int,
+     *      org.extex.typesetter.type.Node)
      */
-    public void add(int index, Node node) {
+    public void add(int index, Node node) throws IndexOutOfBoundsException {
 
-        super.add(index, node);
-        advanceWidth(node.getWidth());
-        maxHeight(node.getHeight());
-        maxDepth(node.getDepth());
+        if (node != null) {
+            super.add(index, node);
+            advanceWidth(node.getWidth());
+            maxHeight(node.getHeight());
+            maxDepth(node.getDepth());
+        }
     }
 
     /**
-     * Add a node to the node list.
-     * The other attributes (width, height, depth) are not modified.
-     *
+     * Add a node to the node list. The other attributes (width, height, depth)
+     * are not modified.
+     * <p>
+     * If the node is <code>null</code> then it is silently ignored. This
+     * means that a horizontal list will never contain <code>null</code>
+     * values.
+     * </p>
+     * 
      * @param node the node to add
-     *
+     * 
      * @see org.extex.typesetter.type.node.GenericNodeList#add(
      *      org.extex.typesetter.type.Node)
      */
     public void add(Node node) {
 
-        super.add(node);
-        advanceWidth(node.getWidth());
-        maxHeight(node.getHeight());
-        maxDepth(node.getDepth());
+        if (node != null) {
+            super.add(node);
+            advanceWidth(node.getWidth());
+            maxHeight(node.getHeight());
+            maxDepth(node.getDepth());
+        }
     }
 
     /**
-     * Add some glue to the node list.
-     * The other attributes (width, height, depth) are not modified.
-     *
+     * Add some glue to the node list. The other attributes (width, height,
+     * depth) are not modified.
+     * 
      * @param glue the glue to add
-     *
-     * @see org.extex.typesetter.type.NodeList#addSkip(
-     *      FixedGlue)
+     * 
+     * @see org.extex.typesetter.type.NodeList#addSkip( FixedGlue)
      */
     public void addSkip(FixedGlue glue) {
 
@@ -147,30 +163,28 @@ public class HorizontalListNode extends GenericNodeList {
     /**
      * This method performs any action which are required to executed at the
      * time of shipping the node to the DocumentWriter.
-     *
+     * 
      * @param context the interpreter context
      * @param typesetter the typesetter
      * @param visitor the node visitor to be invoked when the node is hit. Note
-     *  that each node in the output page is visited this way. Thus there is no
-     *  need to implement a node traversal for the NodeList types
-     * @param inHMode <code>true</code> iff the container is a horizontal list.
-     *  Otherwise the container is a vertical list
-     *
+     *        that each node in the output page is visited this way. Thus there
+     *        is no need to implement a node traversal for the NodeList types
+     * @param inHMode <code>true</code> iff the container is a horizontal
+     *        list. Otherwise the container is a vertical list
+     * 
      * @return the node to be used instead of the current one in the output
-     *  list. If the value is <code>null</code> then the node is deleted. If
-     *  the value is the node itself then it is preserved.
-     *
+     *         list. If the value is <code>null</code> then the node is
+     *         deleted. If the value is the node itself then it is preserved.
+     * 
      * @throws GeneralException in case of an error
-     *
+     * 
      * @see org.extex.typesetter.type.node.GenericNodeList#atShipping(
      *      org.extex.interpreter.context.Context,
      *      org.extex.typesetter.Typesetter,
-     *      org.extex.typesetter.type.NodeVisitor,
-     *      boolean)
+     *      org.extex.typesetter.type.NodeVisitor, boolean)
      */
     public Node atShipping(Context context, Typesetter typesetter,
-            NodeVisitor visitor, boolean inHMode)
-            throws GeneralException {
+            NodeVisitor visitor, boolean inHMode) throws GeneralException {
 
         return super.atShipping(context, typesetter, visitor, true);
     }
@@ -207,7 +221,7 @@ public class HorizontalListNode extends GenericNodeList {
 
     /**
      * Adjust the variable nodes to achieve a given target width.
-     *
+     * 
      * @param width the new target width
      */
     public void hpack(FixedDimen width) {
@@ -218,35 +232,35 @@ public class HorizontalListNode extends GenericNodeList {
 
     /**
      * The <logo>TeX</logo> definition of a hlist states that a box is not
-     * variable neither in width nor in height.
-     *
+     * variable neither in width nor in height. Thus this method is simply a
+     * noop.
+     * 
      * @param w the desired width
      * @param sum the total sum of the glues
-     *
+     * 
      * @see org.extex.typesetter.type.node.AbstractNode#spreadWidth(
      *      org.extex.core.dimen.FixedDimen,
      *      org.extex.core.glue.FixedGlueComponent)
      */
     public void spreadWidth(FixedDimen w, FixedGlueComponent sum) {
 
+        // noop
     }
 
     /**
      * This method puts the printable representation into the string buffer.
      * This is meant to produce a exhaustive form as it is used in tracing
      * output to the log file.
-     *
+     * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      * @param breadth the breadth of the nodes to display
      * @param depth the depth of the nodes to display
-     *
-     * @see org.extex.typesetter.type.Node#toString(
-     *      java.lang.StringBuffer,
+     * 
+     * @see org.extex.typesetter.type.Node#toString( java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
-    public void toString(StringBuffer sb, String prefix,
-            int breadth, int depth) {
+    public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
 
         sb.append("\\hbox");
         super.toString(sb, prefix, breadth, depth);
@@ -256,12 +270,11 @@ public class HorizontalListNode extends GenericNodeList {
      * This method puts the printable representation into the string buffer.
      * This is meant to produce a short form only as it is used in error
      * messages to the user.
-     *
+     * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
-     *
-     * @see org.extex.typesetter.type.Node#toText(
-     *      java.lang.StringBuffer,
+     * 
+     * @see org.extex.typesetter.type.Node#toText( java.lang.StringBuffer,
      *      java.lang.String)
      */
     public void toText(StringBuffer sb, String prefix) {
@@ -274,17 +287,16 @@ public class HorizontalListNode extends GenericNodeList {
 
     /**
      * This method provides an entry point for the visitor pattern.
-     *
+     * 
      * @param visitor the visitor to apply
      * @param value the argument for the visitor
-     *
+     * 
      * @return the result of the method invocation of the visitor
-     *
+     * 
      * @throws GeneralException in case of an error
-     *
+     * 
      * @see org.extex.typesetter.type.Node#visit(
-     *      org.extex.typesetter.type.NodeVisitor,
-     *      java.lang.Object)
+     *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
      */
     public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {

@@ -228,7 +228,7 @@ public class HorizontalListMaker extends AbstractListMaker {
      */
     public Node getLastNode() {
 
-        return (nodes.empty() ? null : nodes.get(nodes.size() - 1));
+        return (nodes.isEmpty() ? null : nodes.get(nodes.size() - 1));
     }
 
     /**

@@ -154,6 +154,7 @@ public abstract class AbstractListMaker implements ListMaker {
      */
     public void leftBrace() {
 
+        // noop
     }
 
     /**

@@ -31,7 +31,6 @@ import org.extex.backend.documentWriter.exception.DocumentWriterIOException;
 import org.extex.core.exception.GeneralException;
 import org.extex.framework.configuration.Configuration;
 import org.extex.typesetter.type.Node;
-import org.extex.typesetter.type.NodeIterator;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.typesetter.type.node.AdjustNode;
@@ -117,16 +116,15 @@ public class TextDocumentWriter
 
     /**
      * process Node.
-     * @param nodes the nodelist
+     * 
+     * @param nodes the node list
      * @throws DocumentWriterException if an error occurred.
      */
     private void processNodes(NodeList nodes)
             throws DocumentWriterException {
 
-        NodeIterator it = nodes.iterator();
         showNode(nodes);
-        while (it.hasNext()) {
-            Node n = it.next();
+        for(Node n : nodes) {
             if (n instanceof NodeList) {
                 processNodes((NodeList) n);
             } else {

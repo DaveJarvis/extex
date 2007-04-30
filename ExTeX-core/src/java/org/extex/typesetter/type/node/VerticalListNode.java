@@ -36,9 +36,9 @@ import org.extex.typesetter.type.NodeVisitor;
 
 /**
  * This class provides an implementation for a vertical list.
- *
+ * 
  * @see "<logo>TeX</logo> &ndash; The Program [137]"
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4739 $
@@ -46,7 +46,8 @@ import org.extex.typesetter.type.NodeVisitor;
 public class VerticalListNode extends GenericNodeList implements NodeList {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 20060930L;
 
@@ -59,8 +60,8 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
     private boolean top = false;
 
     /**
-     * Creates a new object.
-     *
+     * Creates a new empty list.
+     * 
      * @see "<logo>TeX</logo> &ndash; The Program [136]"
      */
     public VerticalListNode() {
@@ -69,17 +70,30 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
     }
 
     /**
+     * Creates a new list ith node node in it.
+     * 
+     * @param node the initial node
+     */
+    public VerticalListNode(Node node) {
+
+        super();
+        add(node);
+    }
+
+    /**
      * Add a node to the node list at a given position.
-     *
+     * 
      * @param index the position of insertion
      * @param node the node to add
-     *
-     * @see org.extex.typesetter.type.node.GenericNodeList#add(
-     *      int,
+     * 
+     * @see org.extex.typesetter.type.node.GenericNodeList#add( int,
      *      org.extex.typesetter.type.Node)
      */
     public void add(int index, Node node) {
 
+        if (node == null) {
+            return;
+        }
         super.add(index, node);
         maxWidth(node.getWidth());
 
@@ -107,16 +121,19 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
     }
 
     /**
-     * Add a node to the node list.
-     * The other attributes (width, height, depth) are not modified.
-     *
+     * Add a node to the node list. The other attributes (width, height, depth)
+     * are not modified.
+     * 
      * @param node the node to add
-     *
+     * 
      * @see org.extex.typesetter.type.node.GenericNodeList#add(
      *      org.extex.typesetter.type.Node)
      */
     public void add(Node node) {
 
+        if (node == null) {
+            return;
+        }
         super.add(node);
         maxWidth(node.getWidth());
 
@@ -134,11 +151,11 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
     }
 
     /**
-     * Add some glue to the node list.
-     * The other attributes (width, height, depth) are not modified.
-     *
+     * Add some glue to the node list. The other attributes (width, height,
+     * depth) are not modified.
+     * 
      * @param glue the glue to add
-     *
+     * 
      * @see org.extex.typesetter.type.NodeList#addSkip(
      *      org.extex.core.glue.FixedGlue)
      */
@@ -150,37 +167,35 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
     /**
      * This method performs any action which are required to executed at the
      * time of shipping the node to the DocumentWriter.
-     *
+     * 
      * @param context the interpreter context
      * @param typesetter the typesetter
      * @param visitor the node visitor to be invoked when the node is hit. Note
-     *  that each node in the output page is visited this way. Thus there is no
-     *  need to implement a node traversal for the NodeList types
-     * @param inHMode <code>true</code> iff the container is a horizontal list.
-     *  Otherwise the container is a vertical list
-     *
+     *        that each node in the output page is visited this way. Thus there
+     *        is no need to implement a node traversal for the NodeList types
+     * @param inHMode <code>true</code> iff the container is a horizontal
+     *        list. Otherwise the container is a vertical list
+     * 
      * @return the node to be used instead of the current one in the output
-     *  list. If the value is <code>null</code> then the node is deleted. If
-     *  the value is the node itself then it is preserved.
-     *
+     *         list. If the value is <code>null</code> then the node is
+     *         deleted. If the value is the node itself then it is preserved.
+     * 
      * @throws GeneralException in case of an error
-     *
+     * 
      * @see org.extex.typesetter.type.node.GenericNodeList#atShipping(
      *      org.extex.interpreter.context.Context,
      *      org.extex.typesetter.Typesetter,
-     *      org.extex.typesetter.type.NodeVisitor,
-     *      boolean)
+     *      org.extex.typesetter.type.NodeVisitor, boolean)
      */
     public Node atShipping(Context context, Typesetter typesetter,
-            NodeVisitor visitor, boolean inHMode)
-            throws GeneralException {
+            NodeVisitor visitor, boolean inHMode) throws GeneralException {
 
         return super.atShipping(context, typesetter, visitor, false);
     }
 
     /**
      * Getter for top.
-     *
+     * 
      * @return the top
      */
     public boolean isTop() {
@@ -190,7 +205,7 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
 
     /**
      * Setter for top.
-     *
+     * 
      * @param top the top to set
      */
     public void setTop(boolean top) {
@@ -202,11 +217,11 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
      * Split-off material from a vertical list of a desired height. The
      * splitting is performed at a position with minimal penalty. The list is
      * stretched to the desired height.
-     *
+     * 
      * @param height the target height
      * @param logger the logger for normal logging output
      * @param traceLogger the logger for tracing
-     *
+     * 
      * @return the split off material
      */
     public VerticalListNode split(FixedDimen height, Logger logger,
@@ -250,18 +265,17 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
 
     /**
      * Compute the penalty for the split at a given position.
-     *
+     * 
      * @param penalty the base penalty optionally coming from a penalty node
      * @param ht the actual height
      * @param height the desired height
-     *
+     * 
      * @return the penalty in the range 0 to 10000, including
      */
-    private long splitPenalty(long penalty, WideGlue ht,
-            FixedDimen height) {
+    private long splitPenalty(long penalty, WideGlue ht, FixedDimen height) {
 
-        //        long badness = Badness.badness(height.getValue(), //
-        //                ht.getLength().getValue());
+        // long badness = Badness.badness(height.getValue(), //
+        // ht.getLength().getValue());
         long p = penalty;
         // TODO gene: splitPenalty() unimplemented
         return p;
@@ -270,9 +284,9 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
     /**
      * Spread the list vertically to a desired size by distributing the
      * differences to the glues contained.
-     *
+     * 
      * @param height the target size
-     *
+     * 
      * @return the badness of the spread
      */
     public long spread(FixedDimen height) {
@@ -297,16 +311,15 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
     /**
      * Adjust the height of a flexible node. This method is a noop for any but
      * the flexible nodes.
-     *
+     * 
      * @param height the desired height
      * @param sum the total sum of the glues
-     *
+     * 
      * @see org.extex.typesetter.type.Node#spreadHeight(
      *      org.extex.core.dimen.FixedDimen,
      *      org.extex.core.glue.FixedGlueComponent)
      */
-    public void spreadHeight(FixedDimen height,
-            FixedGlueComponent sum) {
+    public void spreadHeight(FixedDimen height, FixedGlueComponent sum) {
 
     }
 
@@ -314,18 +327,16 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
      * This method puts the printable representation into the string buffer.
      * This is meant to produce a exhaustive form as it is used in tracing
      * output to the log file.
-     *
+     * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      * @param breadth the breadth of the nodes to display
      * @param depth the depth of the nodes to display
-     *
-     * @see org.extex.typesetter.type.Node#toString(
-     *      java.lang.StringBuffer,
+     * 
+     * @see org.extex.typesetter.type.Node#toString( java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
-    public void toString(StringBuffer sb, String prefix,
-            int breadth, int depth) {
+    public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
 
         sb.append("\\vbox");
         super.toString(sb, prefix, breadth, depth);
@@ -335,12 +346,11 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
      * This method puts the printable representation into the string buffer.
      * This is meant to produce a short form only as it is used in error
      * messages to the user.
-     *
+     * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
-     *
-     * @see org.extex.typesetter.type.Node#toText(
-     *      java.lang.StringBuffer,
+     * 
+     * @see org.extex.typesetter.type.Node#toText( java.lang.StringBuffer,
      *      java.lang.String)
      */
     public void toText(StringBuffer sb, String prefix) {
@@ -351,17 +361,16 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
 
     /**
      * This method provides an entry point for the visitor pattern.
-     *
+     * 
      * @param visitor the visitor to apply
      * @param value the argument for the visitor
-     *
+     * 
      * @return the result of the method invocation of the visitor
-     *
+     * 
      * @throws GeneralException in case of an error
-     *
+     * 
      * @see org.extex.typesetter.type.Node#visit(
-     *      org.extex.typesetter.type.NodeVisitor,
-     *      java.lang.Object)
+     *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
      */
     public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {
@@ -371,9 +380,9 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
 
     /**
      * Adjust the variable nodes to achieve a given target height.
-     *
+     * 
      * @param targetHeight the target height
-     *
+     * 
      * @return the badness
      */
     public long vpack(FixedDimen targetHeight) {

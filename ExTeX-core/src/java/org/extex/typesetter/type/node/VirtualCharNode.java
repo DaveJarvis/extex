@@ -19,6 +19,8 @@
 
 package org.extex.typesetter.type.node;
 
+import java.util.Iterator;
+
 import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
@@ -31,7 +33,6 @@ import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.exception.ImpossibleException;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.Node;
-import org.extex.typesetter.type.NodeIterator;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
 
@@ -376,6 +377,16 @@ public class VirtualCharNode extends CharNode implements NodeList {
     }
 
     /**
+     * {@inheritDoc}
+     *
+     * @see org.extex.typesetter.type.NodeList#isEmpty()
+     */
+    public boolean isEmpty() {
+
+        return this.nodes.isEmpty();
+    }
+
+    /**
      * Get a new iterator for all nodes in the list.
      * This method is just provided for completeness. Consider a conventional
      * loop because of performance issues.
@@ -384,7 +395,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      *
      * @see org.extex.typesetter.type.NodeList#iterator()
      */
-    public NodeIterator iterator() {
+    public Iterator<Node> iterator() {
 
         return this.nodes.iterator();
     }
@@ -500,6 +511,18 @@ public class VirtualCharNode extends CharNode implements NodeList {
     public void spreadWidth(FixedDimen width, FixedGlueComponent sum) {
 
         this.nodes.spreadWidth(width, sum);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.extex.typesetter.type.NodeList#toText()
+     */
+    public String toText() {
+
+        StringBuffer sb = new StringBuffer();
+        toText(sb, "");
+        return sb.toString();
     }
 
     /**

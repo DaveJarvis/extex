@@ -32,7 +32,6 @@ import org.extex.core.exception.GeneralException;
 import org.extex.font.FontKey;
 import org.extex.interpreter.type.font.Font;
 import org.extex.typesetter.type.Node;
-import org.extex.typesetter.type.NodeIterator;
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.typesetter.type.node.AdjustNode;
 import org.extex.typesetter.type.node.AfterMathNode;
@@ -61,10 +60,9 @@ import org.pdfbox.pdmodel.font.PDFont;
 import org.pdfbox.pdmodel.font.PDType1Font;
 import org.pdfbox.pdmodel.graphics.path.BasePath;
 
-
 /**
  * PDF NodeVisitor.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -108,14 +106,14 @@ public class PdfNodeVisitor implements NodeVisitor {
 
     /**
      * Create a new object.
-     *
-     * @param doc    the pdf document
-     * @param cs     the pdf content stream
-     * @param cx     the current x
-     * @param cy     the current y
+     * 
+     * @param doc the pdf document
+     * @param cs the pdf content stream
+     * @param cx the current x
+     * @param cy the current y
      */
-    public PdfNodeVisitor(PDDocument doc, PDPageContentStream cs,
-            Dimen cx, Dimen cy) {
+    public PdfNodeVisitor(PDDocument doc, PDPageContentStream cs, Dimen cx,
+            Dimen cy) {
 
         document = doc;
         contentStream = cs;
@@ -126,8 +124,8 @@ public class PdfNodeVisitor implements NodeVisitor {
 
     /**
      * Draw a box around the node (only for test).
-     *
-     * @param node  the node
+     * 
+     * @param node the node
      * @throws DocumentWriterException if an error occurred.
      */
     private void drawNode(Node node) throws DocumentWriterException {
@@ -178,6 +176,7 @@ public class PdfNodeVisitor implements NodeVisitor {
 
     /**
      * Set the paper height.
+     * 
      * @param ph The paper height to set.
      */
     public void setPaperheight(Dimen ph) {
@@ -192,7 +191,7 @@ public class PdfNodeVisitor implements NodeVisitor {
     // -----------------------------------------
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(AdjustNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitAdjust(AdjustNode node, Object value2) {
 
@@ -201,7 +200,7 @@ public class PdfNodeVisitor implements NodeVisitor {
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(AfterMathNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitAfterMath(AfterMathNode node, Object value2) {
 
@@ -210,17 +209,16 @@ public class PdfNodeVisitor implements NodeVisitor {
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(AlignedLeadersNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
-    public Object visitAlignedLeaders(AlignedLeadersNode node,
-            Object value2) {
+    public Object visitAlignedLeaders(AlignedLeadersNode node, Object value2) {
 
         return null;
     }
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(BeforeMathNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitBeforeMath(BeforeMathNode node, Object value2) {
 
@@ -229,10 +227,9 @@ public class PdfNodeVisitor implements NodeVisitor {
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(CenteredLeadersNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
-    public Object visitCenteredLeaders(CenteredLeadersNode node,
-            Object value) {
+    public Object visitCenteredLeaders(CenteredLeadersNode node, Object value) {
 
         return null;
     }
@@ -254,7 +251,7 @@ public class PdfNodeVisitor implements NodeVisitor {
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitChar(CharNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitChar(CharNode node, Object value)
             throws GeneralException {
@@ -263,8 +260,8 @@ public class PdfNodeVisitor implements NodeVisitor {
             UnicodeChar uc = node.getCharacter();
             Font newfont = node.getTypesettingContext().getFont();
             FontKey newfountkey = newfont.getFontKey();
-            org.extex.interpreter.context.Color newcolor = node
-                    .getTypesettingContext().getColor();
+            org.extex.interpreter.context.Color newcolor =
+                    node.getTypesettingContext().getColor();
 
             if (!newfountkey.equals(oldfountkey)) {
                 pdfont = PdfBoxType1Font.getInstance(document, newfont);
@@ -278,50 +275,48 @@ public class PdfNodeVisitor implements NodeVisitor {
             }
             contentStream.beginText();
             contentStream.setFont(pdfont, (float) Unit.getDimenAsPT(newfont
-                    .getActualSize()));
+                .getActualSize()));
             contentStream.moveTextPositionByAmount(Unit.getDimenAsBP(currentX),
-                    phBP - Unit.getDimenAsBP(currentY));
+                phBP - Unit.getDimenAsBP(currentY));
             contentStream.drawString(uc.toString());
             contentStream.endText();
 
             drawNode(node);
 
             currentX.add(node.getWidth());
-            //        } catch (DocumentException e) {
-            //            throw new DocumentWriterException(e);
+            // } catch (DocumentException e) {
+            // throw new DocumentWriterException(e);
         } catch (IOException e) {
             throw new DocumentWriterIOException(e);
-            //        } catch (FontException e) {
-            //            throw new DocumentWriterFontException(e);
-            //        } catch (PdfException e) {
-            //            throw new DocumentWriterPdfDocumentException(e);
+            // } catch (FontException e) {
+            // throw new DocumentWriterFontException(e);
+            // } catch (PdfException e) {
+            // throw new DocumentWriterPdfDocumentException(e);
         }
         return null;
     }
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(DiscretionaryNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
-    public Object visitDiscretionary(DiscretionaryNode node,
-            Object value) {
+    public Object visitDiscretionary(DiscretionaryNode node, Object value) {
 
         return null;
     }
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(ExpandedLeadersNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
-    public Object visitExpandedLeaders(ExpandedLeadersNode node,
-            Object value) {
+    public Object visitExpandedLeaders(ExpandedLeadersNode node, Object value) {
 
         return null;
     }
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitGlue(GlueNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitGlue(GlueNode node, Object value) {
 
@@ -333,19 +328,17 @@ public class PdfNodeVisitor implements NodeVisitor {
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(HorizontalListNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
-    public Object visitHorizontalList(HorizontalListNode node,
-            Object value) throws GeneralException {
+    public Object visitHorizontalList(HorizontalListNode node, Object value)
+            throws GeneralException {
 
-        //        try {
+        // try {
         Dimen saveX = new Dimen(currentX);
         Dimen saveY = new Dimen(currentY);
 
-        NodeIterator it = node.iterator();
-        while (it.hasNext()) {
-            Node newnode = it.next();
-            newnode.visit(this, node);
+        for (Node n : node) {
+            n.visit(this, node);
         }
         currentX.set(saveX);
         currentY.set(saveY);
@@ -353,15 +346,15 @@ public class PdfNodeVisitor implements NodeVisitor {
         drawNode(node);
 
         currentX.add(node.getWidth());
-        //        } catch (PdfException e) {
-        //            throw new DocumentWriterPdfDocumentException(e);
-        //        }
+        // } catch (PdfException e) {
+        // throw new DocumentWriterPdfDocumentException(e);
+        // }
         return null;
     }
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(InsertionNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitInsertion(InsertionNode node, Object value) {
 
@@ -370,7 +363,7 @@ public class PdfNodeVisitor implements NodeVisitor {
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitKern(KernNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitKern(KernNode node, Object value) {
 
@@ -379,33 +372,33 @@ public class PdfNodeVisitor implements NodeVisitor {
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitLigature(LigatureNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitLigature(LigatureNode node, Object value) {
 
-        //        Element element = new Element("ligature");
-        //        addNodeAttributes(node, element);
-        //        Node first = node.getLeft();
-        //        Node second = node.getRight();
-        //        if (first != null) {
-        //            Element e = getNodeElement(first);
-        //            if (e != null) {
-        //                element.addContent(e);
-        //            }
-        //        }
-        //        if (second != null) {
-        //            Element e = getNodeElement(second);
-        //            if (e != null) {
-        //                element.addContent(e);
-        //            }
-        //        }
-        //        return element;
+        // Element element = new Element("ligature");
+        // addNodeAttributes(node, element);
+        // Node first = node.getLeft();
+        // Node second = node.getRight();
+        // if (first != null) {
+        // Element e = getNodeElement(first);
+        // if (e != null) {
+        // element.addContent(e);
+        // }
+        // }
+        // if (second != null) {
+        // Element e = getNodeElement(second);
+        // if (e != null) {
+        // element.addContent(e);
+        // }
+        // }
+        // return element;
         return null;
     }
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitMark(MarkNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitMark(MarkNode node, Object value) {
 
@@ -414,7 +407,7 @@ public class PdfNodeVisitor implements NodeVisitor {
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(PenaltyNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitPenalty(PenaltyNode node, Object value) {
 
@@ -423,7 +416,7 @@ public class PdfNodeVisitor implements NodeVisitor {
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitRule(RuleNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitRule(RuleNode node, Object value) {
 
@@ -432,7 +425,7 @@ public class PdfNodeVisitor implements NodeVisitor {
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitSpace(SpaceNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitSpace(SpaceNode node, Object value) {
 
@@ -441,19 +434,17 @@ public class PdfNodeVisitor implements NodeVisitor {
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(VerticalListNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
-    public Object visitVerticalList(VerticalListNode node,
-            Object value) throws GeneralException {
+    public Object visitVerticalList(VerticalListNode node, Object value)
+            throws GeneralException {
 
-        //        try {
+        // try {
         Dimen saveX = new Dimen(currentX);
         Dimen saveY = new Dimen(currentY);
 
-        NodeIterator it = node.iterator();
-        while (it.hasNext()) {
-            Node newnode = it.next();
-            newnode.visit(this, node);
+        for(Node n : node) {
+            n.visit(this, node);
         }
         currentX.set(saveX);
         currentY.set(saveY);
@@ -462,19 +453,18 @@ public class PdfNodeVisitor implements NodeVisitor {
 
         currentY.add(node.getDepth());
         currentY.add(node.getHeight());
-        //        } catch (PdfException e) {
-        //            throw new DocumentWriterPdfDocumentException(e);
-        //        }
+        // } catch (PdfException e) {
+        // throw new DocumentWriterPdfDocumentException(e);
+        // }
         return null;
     }
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(
-     *      org.extex.typesetter.type.node.VirtualCharNode,
-     *      java.lang.Object)
+     *      org.extex.typesetter.type.node.VirtualCharNode, java.lang.Object)
      */
-    public Object visitVirtualChar(VirtualCharNode node,
-            Object value) throws GeneralException {
+    public Object visitVirtualChar(VirtualCharNode node, Object value)
+            throws GeneralException {
 
         // TODO visitVirtualChar unimplemented
         return null;
@@ -482,7 +472,7 @@ public class PdfNodeVisitor implements NodeVisitor {
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(WhatsItNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitWhatsIt(WhatsItNode node, Object value) {
 

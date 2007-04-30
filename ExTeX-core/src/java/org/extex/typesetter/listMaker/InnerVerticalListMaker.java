@@ -134,6 +134,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
     public void addSpace(TypesettingContext typesettingContext,
             Count spacefactor) {
 
+        // spaces are ignored in vertical mode
     }
 
     /**
@@ -176,7 +177,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
      */
     public Node getLastNode() {
 
-        return (nodes.empty() ? null : nodes.get(nodes.size() - 1));
+        return (nodes.isEmpty() ? null : nodes.get(nodes.size() - 1));
     }
 
     /**

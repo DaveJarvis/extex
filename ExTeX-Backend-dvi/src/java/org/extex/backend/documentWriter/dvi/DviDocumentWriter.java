@@ -34,7 +34,6 @@ import org.extex.interpreter.type.font.Font;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.type.InspectableNodeVisitor;
 import org.extex.typesetter.type.Node;
-import org.extex.typesetter.type.NodeIterator;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.typesetter.type.node.AdjustNode;
@@ -505,14 +504,13 @@ public class DviDocumentWriter
          */
         private void writeNodes(NodeList nodes) throws GeneralException {
 
-            NodeIterator iterator = nodes.iterator();
 
             dviWriter.saveCurrentPositions();
 
             dviWriter.writeHorizontalSpace(nodes.getMove());
             dviWriter.writeVerticalSpace(nodes.getShift());
-            while (iterator.hasNext()) {
-                Node node = iterator.next();
+
+            for(Node node : nodes) {
                 node.visit(visitor, null);
 
                 // write next Nodes after this node in vertical list
