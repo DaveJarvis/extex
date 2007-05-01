@@ -125,11 +125,11 @@
    <!-- <module>develop</module> -->
    <!-- <module>doc</module> -->
    <module>ExTeX-Backend-dump</module>
-   <!-- <module>ExTeX-Backend-dvi</module> -->
+   <module>ExTeX-Backend-dvi</module>
    <module>ExTeX-Backend-dvix</module>
    <module>ExTeX-Backend-pdfbox</module>
-   <!-- <module>ExTeX-Backend-ps</module> -->
-   <!-- <module>ExTeX-Backend-rtf</module> -->
+   <module>ExTeX-Backend-ps</module>
+   <module>ExTeX-Backend-rtf</module>
    <!-- <module>ExTeX-Backend-svg</module> -->
    <!-- <module>ExTeX-Backend-text</module> -->
    <!-- <module>ExTeX-Backend-xml</module> -->
@@ -138,19 +138,19 @@
    <module>ExTeX-core</module>
    <module>ExTeX-Font</module>
    <!-- <module>ExTeX-fontware</module> -->
-   <!-- <module>ExTeX-Main-fmt</module> -->
-   <!-- <module>ExTeX-Main-tex</module> -->
+   <module>ExTeX-Main-fmt</module>
+   <module>ExTeX-Main-tex</module>
    <module>ExTeX-Scanner</module>
    <!-- <module>ExTeX-Scanner32</module> -->
    <module>ExTeX-Scanner-API</module>
-   <!-- <module>ExTeX-Unit-color</module> -->
-   <!-- <module>ExTeX-Unit-etex</module> -->
-   <!-- <module>ExTeX-Unit-extex</module> -->
+   <module>ExTeX-Unit-color</module>
+   <module>ExTeX-Unit-etex</module>
+   <module>ExTeX-Unit-extex</module>
    <!-- <module>ExTeX-Unit-image</module> -->
-   <!-- <module>ExTeX-Unit-namespace</module> -->
-   <!-- <module>ExTeX-Unit-native</module> -->
-   <!-- <module>ExTeX-Unit-omega</module> -->
-   <!-- <module>ExTeX-Unit-pdftex</module> -->
+   <module>ExTeX-Unit-namespace</module>
+   <module>ExTeX-Unit-native</module>
+   <module>ExTeX-Unit-omega</module>
+   <module>ExTeX-Unit-pdftex</module>
    <module>ExTeX-Unit-tex</module>
    <!-- <module>library</module> -->
    <module>texmf</module>
