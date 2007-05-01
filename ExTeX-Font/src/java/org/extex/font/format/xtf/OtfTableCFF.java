@@ -518,12 +518,12 @@ public class OtfTableCFF extends AbstractXtfTable
         rar.seek(nextOffset);
         int[] offsetarray = readOffsets(rar);
 
-         // get data
+        // get data
         for (int i = 0; i < offsetarray.length - 1; i++) {
             byte[] data =
                     readDataFromIndex(offsetarray[i], offsetarray[i + 1], rar);
-//            stringIndex.add(convertArrayToString(data));
-            int x=0;
+            // stringIndex.add(convertArrayToString(data));
+            int x = 0;
         }
         return rar.getPointer();
     }

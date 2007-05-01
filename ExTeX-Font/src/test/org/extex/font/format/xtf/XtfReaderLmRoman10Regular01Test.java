@@ -19,14 +19,12 @@
 
 package org.extex.font.format.xtf;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 import junit.framework.TestCase;
 
 import org.extex.font.format.xtf.TtfTableCMAP.Format;
 import org.extex.font.format.xtf.cff.CffFont;
-import org.extex.util.xml.XMLStreamWriter;
 
 /**
  * Tests for the <code>XtfReader</code> with opentype files.
@@ -314,16 +312,16 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
      */
     public void test99() throws Exception {
 
-        XMLStreamWriter writer =
-                new XMLStreamWriter(
-                    new FileOutputStream(
-                        "/home/mgn/extex/Sandbox-mgn/src/xml/lmroman10-regular.xml"),
-                    "ISO8859-1");
-        writer.setBeauty(true);
-        writer.writeStartDocument();
-        reader.writeXML(writer);
-        writer.writeEndDocument();
-        writer.close();
+        // XMLStreamWriter writer =
+        // new XMLStreamWriter(
+        // new FileOutputStream(
+        // "/home/mgn/extex/Sandbox-mgn/src/xml/lmroman10-regular.xml"),
+        // "ISO8859-1");
+        // writer.setBeauty(true);
+        // writer.writeStartDocument();
+        // reader.writeXML(writer);
+        // writer.writeEndDocument();
+        // writer.close();
 
     }
 

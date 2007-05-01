@@ -1027,5 +1027,4 @@ public class CffFont implements XMLWriterConvertible {
 
         writer.writeEndElement();
     }
-
 }
