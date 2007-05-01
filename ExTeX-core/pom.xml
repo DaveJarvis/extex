@@ -2,20 +2,32 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
-  <artifactId>extex-core</artifactId>
+  <artifactId>ExTeX-core</artifactId>
   <packaging>jar</packaging>
-  <version>1.0</version>
+  <version>1.0-SNAPSHOT</version>
   <name>ExTeX core components</name>
   <inceptionYear>2003</inceptionYear>
   <url>http://www.extex.org</url>
+
   <description>
     This are the ExTeX core components.
   </description>
+
   <parent>
     <groupId>org.extex</groupId>
     <artifactId>extex</artifactId>
     <version>SNAPSHOT</version>
   </parent>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.ibm.icu</groupId>
+      <artifactId>icu4j</artifactId>
+      <version>3.4.4</version>
+    </dependency>
+  </dependencies>
+
+
   <developers>
     <developer>
       <id>gene</id>

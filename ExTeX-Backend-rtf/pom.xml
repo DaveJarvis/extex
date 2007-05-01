@@ -2,15 +2,15 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
-  <artifactId>ExTeX-Backend-dvix</artifactId>
+  <artifactId>ExTeX-Backend-rtf</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>ExTeX Backend DVIx</name>
+  <name>ExTeX Backend RTF</name>
   <inceptionYear>2003</inceptionYear>
   <url>http://www.extex.org</url>
 
   <description>
-    This is a ExTeX dvi backend component.
+    This is a ExTeX RTF backend component.
   </description>
 
   <parent>

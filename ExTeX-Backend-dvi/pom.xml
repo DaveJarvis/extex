@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
-  <artifactId>ExTeX-Backend-dvix</artifactId>
+  <artifactId>ExTeX-Backend-dvi</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>ExTeX Backend DVIx</name>
+  <name>ExTeX Backend DVI</name>
   <inceptionYear>2003</inceptionYear>
   <url>http://www.extex.org</url>
 
@@ -30,18 +30,13 @@
       <artifactId>ExTeX-base</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
-    <dependency>
-      <groupId>org.extex</groupId>
-      <artifactId>ExTeX-Font</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
   </dependencies>
 
   <developers>
     <developer>
-      <id>gene</id>
-      <name>Gerd Neugebauer</name>
-      <email>gene@gerd-neugebauer.de</email>
+      <id>plaicy</id>
+      <name>Sebastian Waschik</name>
+      <email>sebastian.waschik@gmx.de</email>
       <roles>
         <role>developer</role>
       </roles>

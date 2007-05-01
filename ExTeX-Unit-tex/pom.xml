@@ -2,15 +2,15 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
-  <artifactId>extex-unit-tex</artifactId>
+  <artifactId>ExTeX-Unit-tex</artifactId>
   <packaging>jar</packaging>
-  <version>1.0</version>
+  <version>1.0-SNAPSHOT</version>
   <name>ExTeX Unit TeX</name>
   <inceptionYear>2003</inceptionYear>
   <url>http://www.extex.org</url>
 
   <description>
-    This ia the ExTeX unit TeX.
+    This is the ExTeX unit TeX.
   </description>
 
   <parent>
@@ -18,6 +18,24 @@
     <artifactId>extex</artifactId>
     <version>SNAPSHOT</version>
   </parent>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-core</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-base</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Font</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
 
   <developers>
     <developer>

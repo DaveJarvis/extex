@@ -2,15 +2,15 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
-  <artifactId>extex-scanner-api</artifactId>
+  <artifactId>ExTeX-Scanner-API</artifactId>
   <packaging>jar</packaging>
-  <version>1.0</version>
+  <version>1.0-SNAPSHOT</version>
   <name>ExTeX scanner</name>
   <inceptionYear>2003</inceptionYear>
   <url>http://www.extex.org</url>
 
   <description>
-    This ia the ExTeX scanner API component.
+    This is the ExTeX scanner API component.
   </description>
 
   <parent>
@@ -18,6 +18,14 @@
     <artifactId>extex</artifactId>
     <version>SNAPSHOT</version>
   </parent>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-core</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
 
   <developers>
     <developer>

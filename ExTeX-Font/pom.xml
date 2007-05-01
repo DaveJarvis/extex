@@ -2,15 +2,15 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
-  <artifactId>extex-Font</artifactId>
+  <artifactId>ExTeX-Font</artifactId>
   <packaging>jar</packaging>
-  <version>1.0</version>
+  <version>1.0-SNAPSHOT</version>
   <name>ExTeX Font System</name>
   <inceptionYear>2003</inceptionYear>
   <url>http://www.extex.org</url>
 
   <description>
-    This ia the ExTeX font system.
+    This is the ExTeX font system.
   </description>
 
   <parent>
@@ -18,6 +18,38 @@
     <artifactId>extex</artifactId>
     <version>SNAPSHOT</version>
   </parent>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-core</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>itext</groupId>
+      <artifactId>itext</artifactId>
+      <version>1.3.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>jdom</groupId>
+      <artifactId>jdom</artifactId>
+      <version>1.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>jaxen</groupId>
+      <artifactId>jaxen</artifactId>
+      <version>1.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>saxpath</groupId>
+      <artifactId>saxpath</artifactId>
+      <version>1.0-FCS</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
   <developers>
     <developer>
