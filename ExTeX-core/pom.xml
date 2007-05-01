@@ -40,6 +40,16 @@
       <timezone>+1</timezone>
       <properties/>
     </developer>
+    <developer>
+      <id>mgn</id>
+      <name>Michael Niedermair</name>
+      <email>m.g.n@gmx.de</email>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>+1</timezone>
+      <properties/>
+    </developer>
   </developers>
 
 </project>

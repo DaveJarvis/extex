@@ -2,15 +2,15 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
-  <artifactId>ExTeX-base</artifactId>
+  <artifactId>ExTeX-Backend-svg</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>ExTeX base</name>
+  <name>ExTeX Backend SVG</name>
   <inceptionYear>2003</inceptionYear>
   <url>http://www.extex.org</url>
 
   <description>
-    This is the ExTeX base component.
+    This is a ExTeX SVG backend component.
   </description>
 
   <parent>
@@ -27,27 +27,17 @@
     </dependency>
     <dependency>
       <groupId>org.extex</groupId>
-      <artifactId>ExTeX-Font</artifactId>
+      <artifactId>ExTeX-base</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.extex</groupId>
-      <artifactId>ExTeX-Scanner</artifactId>
+      <artifactId>ExTeX-Font</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
 
   <developers>
-    <developer>
-      <id>gene</id>
-      <name>Gerd Neugebauer</name>
-      <email>gene@gerd-neugebauer.de</email>
-      <roles>
-        <role>developer</role>
-      </roles>
-      <timezone>+1</timezone>
-      <properties/>
-    </developer>
     <developer>
       <id>mgn</id>
       <name>Michael Niedermair</name>
