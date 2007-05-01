@@ -46,9 +46,71 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 public final class AfmInfo extends AbstractFontUtil {
 
     /**
-     * List the glyphnames.
+     * parameter.
      */
-    private boolean listglyphs = false;
+    private static final int PARAMETER = 1;
+
+    /**
+     * main.
+     * 
+     * @param args The command line arguments.
+     * @throws Exception if a error occurs.
+     */
+    public static void main(String[] args) throws Exception {
+
+        AfmInfo info = new AfmInfo();
+
+        if (args.length < PARAMETER) {
+            info.getLogger().severe(info.getLocalizer().format("AfmInfo.Call"));
+            System.exit(1);
+        }
+
+        boolean listglyphs = false;
+        boolean glyphinfo = false;
+        String glyphname = "";
+        boolean encoding = false;
+        String encname = "";
+        String file = "";
+
+        int i = 0;
+        do {
+            if ("-l".equals(args[i]) || "--listglyphs".equals(args[i])) {
+                listglyphs = true;
+            } else if ("-g".equals(args[i]) || "--glyphinfo".equals(args[i])) {
+                if (i + 1 < args.length) {
+                    glyphinfo = true;
+                    glyphname = args[++i];
+                }
+            } else if ("-e".equals(args[i])
+                    || "--encodingcheck".equals(args[i])) {
+                if (i + 1 < args.length) {
+                    encoding = true;
+                    encname = args[++i];
+                }
+            } else {
+                file = args[i];
+            }
+            i++;
+        } while (i < args.length);
+
+        info.setGlyphinfo(glyphinfo);
+        info.setGlyphname(glyphname);
+        info.setListglyphs(listglyphs);
+        info.setEncoding(encoding);
+        info.setEncname(encname);
+
+        info.doIt(file);
+    }
+
+    /**
+     * The name of the encoding file.
+     */
+    private String encname = "";
+
+    /**
+     * Check if the glyphs in the encoding are exists.
+     */
+    private boolean encoding = false;
 
     /**
      * Print a glyphinfo.
@@ -61,14 +123,9 @@ public final class AfmInfo extends AbstractFontUtil {
     private String glyphname = "";
 
     /**
-     * Check if the glyphs in the encoding are exists.
+     * List the glyphnames.
      */
-    private boolean encoding = false;
-
-    /**
-     * The name of the encoding file.
-     */
-    private String encname = "";
+    private boolean listglyphs = false;
 
     /**
      * Create a new object.
@@ -78,6 +135,73 @@ public final class AfmInfo extends AbstractFontUtil {
     private AfmInfo() throws ConfigurationException {
 
         super(AfmInfo.class);
+    }
+
+    /**
+     * Head information.
+     * 
+     * @param file The file name.
+     * @param parser The afm parser.
+     */
+    private void doHead(String file, AfmParser parser) {
+
+        getLogger().severe(getLocalizer().format("AfmInfo.Head"));
+        getLogger().severe(getLocalizer().format("AfmInfo.Filename", file));
+        getLogger().severe(
+            getLocalizer().format("AfmInfo.Fontname",
+                parser.getHeader().getFontname()));
+        getLogger().severe(
+            getLocalizer().format("AfmInfo.Fullname",
+                parser.getHeader().getFullname()));
+        getLogger().severe(
+            getLocalizer().format("AfmInfo.Family",
+                parser.getHeader().getFamilyname()));
+        getLogger().severe(
+            getLocalizer().format("AfmInfo.Weight",
+                parser.getHeader().getWeight()));
+        getLogger().severe(
+            getLocalizer().format("AfmInfo.Encoding",
+                parser.getHeader().getEncodingscheme()));
+        getLogger().severe(
+            getLocalizer().format("AfmInfo.NumGlyphs",
+                String.valueOf(parser.getAfmCharMetrics().size())));
+
+        getLogger().severe(
+            getLocalizer().format("AfmInfo.FontBBoxllx",
+                String.valueOf(parser.getHeader().getLlx())));
+        getLogger().severe(
+            getLocalizer().format("AfmInfo.FontBBoxlly",
+                String.valueOf(parser.getHeader().getLly())));
+        getLogger().severe(
+            getLocalizer().format("AfmInfo.FontBBoxurx",
+                String.valueOf(parser.getHeader().getUrx())));
+        getLogger().severe(
+            getLocalizer().format("AfmInfo.FontBBoxury",
+                String.valueOf(parser.getHeader().getUry())));
+        getLogger().severe(
+            getLocalizer().format("AfmInfo.IsFixedPitch",
+                String.valueOf(parser.getHeader().isFixedpitch())));
+        getLogger().severe(
+            getLocalizer().format("AfmInfo.ItalicAngle",
+                String.valueOf(parser.getHeader().getItalicangle())));
+        getLogger().severe(
+            getLocalizer().format("AfmInfo.UnderlinePosition",
+                String.valueOf(parser.getHeader().getUnderlineposition())));
+        getLogger().severe(
+            getLocalizer().format("AfmInfo.UnderlineThickness",
+                String.valueOf(parser.getHeader().getUnderlinethickness())));
+        getLogger().severe(
+            getLocalizer().format("AfmInfo.CapHeight",
+                String.valueOf(parser.getHeader().getCapheight())));
+        getLogger().severe(
+            getLocalizer().format("AfmInfo.XHeight",
+                String.valueOf(parser.getHeader().getXheight())));
+        getLogger().severe(
+            getLocalizer().format("AfmInfo.Ascender",
+                String.valueOf(parser.getHeader().getAscender())));
+        getLogger().severe(
+            getLocalizer().format("AfmInfo.Descender",
+                String.valueOf(parser.getHeader().getDescender())));
     }
 
     /**
@@ -196,6 +320,26 @@ public final class AfmInfo extends AbstractFontUtil {
     }
 
     /**
+     * Returns the encname.
+     * 
+     * @return Returns the encname.
+     */
+    public String getEncname() {
+
+        return encname;
+    }
+
+    /**
+     * Returns the glyphname.
+     * 
+     * @return Returns the glyphname.
+     */
+    public String getGlyphname() {
+
+        return glyphname;
+    }
+
+    /**
      * GlyphInfo.
      * 
      * @param parser The afm parser.
@@ -256,140 +400,13 @@ public final class AfmInfo extends AbstractFontUtil {
     }
 
     /**
-     * The glyph list.
+     * Returns the encoding.
      * 
-     * @param parser The afm parser
+     * @return Returns the encoding.
      */
-    private void listGlyphs(AfmParser parser) {
+    public boolean isEncoding() {
 
-        for (AfmCharMetric metric : parser.getAfmCharMetrics()) {
-            getLogger().severe(
-                getLocalizer().format("AfmInfo.ListGlyph", metric.getN()));
-        }
-    }
-
-    /**
-     * Head information.
-     * 
-     * @param file The file name.
-     * @param parser The afm parser.
-     */
-    private void doHead(String file, AfmParser parser) {
-
-        getLogger().severe(getLocalizer().format("AfmInfo.Head"));
-        getLogger().severe(getLocalizer().format("AfmInfo.Filename", file));
-        getLogger().severe(
-            getLocalizer().format("AfmInfo.Fontname",
-                parser.getHeader().getFontname()));
-        getLogger().severe(
-            getLocalizer().format("AfmInfo.Fullname",
-                parser.getHeader().getFullname()));
-        getLogger().severe(
-            getLocalizer().format("AfmInfo.Family",
-                parser.getHeader().getFamilyname()));
-        getLogger().severe(
-            getLocalizer().format("AfmInfo.Weight",
-                parser.getHeader().getWeight()));
-        getLogger().severe(
-            getLocalizer().format("AfmInfo.Encoding",
-                parser.getHeader().getEncodingscheme()));
-        getLogger().severe(
-            getLocalizer().format("AfmInfo.NumGlyphs",
-                String.valueOf(parser.getAfmCharMetrics().size())));
-
-        getLogger().severe(
-            getLocalizer().format("AfmInfo.FontBBoxllx",
-                String.valueOf(parser.getHeader().getLlx())));
-        getLogger().severe(
-            getLocalizer().format("AfmInfo.FontBBoxlly",
-                String.valueOf(parser.getHeader().getLly())));
-        getLogger().severe(
-            getLocalizer().format("AfmInfo.FontBBoxurx",
-                String.valueOf(parser.getHeader().getUrx())));
-        getLogger().severe(
-            getLocalizer().format("AfmInfo.FontBBoxury",
-                String.valueOf(parser.getHeader().getUry())));
-        getLogger().severe(
-            getLocalizer().format("AfmInfo.IsFixedPitch",
-                String.valueOf(parser.getHeader().isFixedpitch())));
-        getLogger().severe(
-            getLocalizer().format("AfmInfo.ItalicAngle",
-                String.valueOf(parser.getHeader().getItalicangle())));
-        getLogger().severe(
-            getLocalizer().format("AfmInfo.UnderlinePosition",
-                String.valueOf(parser.getHeader().getUnderlineposition())));
-        getLogger().severe(
-            getLocalizer().format("AfmInfo.UnderlineThickness",
-                String.valueOf(parser.getHeader().getUnderlinethickness())));
-        getLogger().severe(
-            getLocalizer().format("AfmInfo.CapHeight",
-                String.valueOf(parser.getHeader().getCapheight())));
-        getLogger().severe(
-            getLocalizer().format("AfmInfo.XHeight",
-                String.valueOf(parser.getHeader().getXheight())));
-        getLogger().severe(
-            getLocalizer().format("AfmInfo.Ascender",
-                String.valueOf(parser.getHeader().getAscender())));
-        getLogger().severe(
-            getLocalizer().format("AfmInfo.Descender",
-                String.valueOf(parser.getHeader().getDescender())));
-    }
-
-    /**
-     * parameter.
-     */
-    private static final int PARAMETER = 1;
-
-    /**
-     * main.
-     * 
-     * @param args The command line arguments.
-     * @throws Exception if a error occurs.
-     */
-    public static void main(String[] args) throws Exception {
-
-        AfmInfo info = new AfmInfo();
-
-        if (args.length < PARAMETER) {
-            info.getLogger().severe(info.getLocalizer().format("AfmInfo.Call"));
-            System.exit(1);
-        }
-
-        boolean listglyphs = false;
-        boolean glyphinfo = false;
-        String glyphname = "";
-        boolean encoding = false;
-        String encname = "";
-        String file = "";
-
-        int i = 0;
-        do {
-            if ("-l".equals(args[i]) || "--listglyphs".equals(args[i])) {
-                listglyphs = true;
-            } else if ("-g".equals(args[i]) || "--glyphinfo".equals(args[i])) {
-                if (i + 1 < args.length) {
-                    glyphinfo = true;
-                    glyphname = args[++i];
-                }
-            } else if ("-e".equals(args[i])
-                    || "--encodingcheck".equals(args[i])) {
-                if (i + 1 < args.length) {
-                    encoding = true;
-                    encname = args[++i];
-                }
-            } else {
-                file = args[i];
-            }
-            i++;
-        } while (i < args.length);
-
-        info.setGlyphinfo(glyphinfo);
-        info.setGlyphname(glyphname);
-        info.setListglyphs(listglyphs);
-        info.setEncoding(encoding);
-        info.setEncname(encname);
-
-        info.doIt(file);
+        return encoding;
     }
 
     /**
@@ -403,36 +420,6 @@ public final class AfmInfo extends AbstractFontUtil {
     }
 
     /**
-     * The glyphinfo to set.
-     * 
-     * @param aglyphinfo The glyphinfo to set.
-     */
-    public void setGlyphinfo(boolean aglyphinfo) {
-
-        glyphinfo = aglyphinfo;
-    }
-
-    /**
-     * Returns the glyphname.
-     * 
-     * @return Returns the glyphname.
-     */
-    public String getGlyphname() {
-
-        return glyphname;
-    }
-
-    /**
-     * The glyphname to set.
-     * 
-     * @param aglyphname The glyphname to set.
-     */
-    public void setGlyphname(String aglyphname) {
-
-        glyphname = aglyphname;
-    }
-
-    /**
      * Returns the listglyphs.
      * 
      * @return Returns the listglyphs.
@@ -443,23 +430,26 @@ public final class AfmInfo extends AbstractFontUtil {
     }
 
     /**
-     * The listglyphs to set.
+     * The glyph list.
      * 
-     * @param alistglyphs The listglyphs to set.
+     * @param parser The afm parser
      */
-    public void setListglyphs(boolean alistglyphs) {
+    private void listGlyphs(AfmParser parser) {
 
-        listglyphs = alistglyphs;
+        for (AfmCharMetric metric : parser.getAfmCharMetrics()) {
+            getLogger().severe(
+                getLocalizer().format("AfmInfo.ListGlyph", metric.getN()));
+        }
     }
 
     /**
-     * Returns the encoding.
+     * The encname to set.
      * 
-     * @return Returns the encoding.
+     * @param aencname The encname to set.
      */
-    public boolean isEncoding() {
+    public void setEncname(String aencname) {
 
-        return encoding;
+        encname = aencname;
     }
 
     /**
@@ -473,22 +463,32 @@ public final class AfmInfo extends AbstractFontUtil {
     }
 
     /**
-     * Returns the encname.
+     * The glyphinfo to set.
      * 
-     * @return Returns the encname.
+     * @param aglyphinfo The glyphinfo to set.
      */
-    public String getEncname() {
+    public void setGlyphinfo(boolean aglyphinfo) {
 
-        return encname;
+        glyphinfo = aglyphinfo;
     }
 
     /**
-     * The encname to set.
+     * The glyphname to set.
      * 
-     * @param aencname The encname to set.
+     * @param aglyphname The glyphname to set.
      */
-    public void setEncname(String aencname) {
+    public void setGlyphname(String aglyphname) {
 
-        encname = aencname;
+        glyphname = aglyphname;
+    }
+
+    /**
+     * The listglyphs to set.
+     * 
+     * @param alistglyphs The listglyphs to set.
+     */
+    public void setListglyphs(boolean alistglyphs) {
+
+        listglyphs = alistglyphs;
     }
 }

@@ -29,10 +29,9 @@ import org.extex.font.format.afm.AfmParser;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.util.xml.XMLStreamWriter;
 
-
 /**
  * Convert a afm file to a xml file.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -44,66 +43,14 @@ public class Afm2Xml extends AfmUtil {
     private static final String ENCODING = "ISO8859-1";
 
     /**
-     * Creates a new object.
-     * @throws ConfigurationException from the configuration system.
-     */
-    public Afm2Xml() throws ConfigurationException {
-
-        super(Afm2Xml.class);
-    }
-
-    /**
-     * do it.
-     *
-     * @param file  The afm file name.
-     * @throws Exception if an error occurs.
-     */
-    private void doIt(String file) throws Exception {
-
-        getLogger().severe(getLocalizer().format("Afm2Xml.start", file));
-
-        InputStream afmin = null;
-
-        // find directly the afm file.
-        File afmfile = new File(file);
-
-        if (afmfile.canRead()) {
-            afmin = new FileInputStream(afmfile);
-        } else {
-            // use the file finder
-            afmin = getFinder().findResource(afmfile.getName(), "");
-        }
-
-        if (afmin == null) {
-            throw new FileNotFoundException(file);
-        }
-
-        AfmParser parser = new AfmParser(afmin);
-
-        String xmlfile = getOutdir() + File.separator
-                + afmfile.getName().replaceAll("\\.[aA][fF][mM]", ".xml");
-
-        XMLStreamWriter writer = new XMLStreamWriter(new FileOutputStream(
-                xmlfile), ENCODING);
-        writer.setBeauty(true);
-        writer.writeStartDocument();
-        parser.writeXML(writer);
-        writer.writeEndDocument();
-        writer.close();
-
-        getLogger().severe(getLocalizer().format("Afm2Xml.end", xmlfile));
-
-    }
-
-    /**
      * parameter.
      */
     private static final int PARAMETER = 1;
 
     /**
      * main.
-     *
-     * @param args  The command line.
+     * 
+     * @param args The command line.
      * @throws Exception if an error occurred.
      */
     public static void main(String[] args) throws Exception {
@@ -131,6 +78,62 @@ public class Afm2Xml extends AfmUtil {
         } while (i < args.length);
 
         afm.doIt(afmfile);
+
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @throws ConfigurationException from the configuration system.
+     */
+    public Afm2Xml() throws ConfigurationException {
+
+        super(Afm2Xml.class);
+    }
+
+    /**
+     * do it.
+     * 
+     * @param file The afm file name.
+     * @throws Exception if an error occurs.
+     */
+    private void doIt(String file) throws Exception {
+
+        getLogger().severe(getLocalizer().format("Afm2Xml.start", file));
+
+        InputStream afmin = null;
+
+        // find directly the afm file.
+        File afmfile = new File(file);
+
+        if (afmfile.canRead()) {
+            afmin = new FileInputStream(afmfile);
+        } else {
+            // use the file finder
+            afmin = getFinder().findResource(afmfile.getName(), "");
+        }
+
+        if (afmin == null) {
+            throw new FileNotFoundException(file);
+        }
+
+        AfmParser parser = new AfmParser(afmin);
+
+        String xmlfile =
+                getOutdir()
+                        + File.separator
+                        + afmfile.getName().replaceAll("\\.[aA][fF][mM]",
+                            ".xml");
+
+        XMLStreamWriter writer =
+                new XMLStreamWriter(new FileOutputStream(xmlfile), ENCODING);
+        writer.setBeauty(true);
+        writer.writeStartDocument();
+        parser.writeXML(writer);
+        writer.writeEndDocument();
+        writer.close();
+
+        getLogger().severe(getLocalizer().format("Afm2Xml.end", xmlfile));
 
     }
 

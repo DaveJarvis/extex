@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -36,10 +36,9 @@ import org.extex.logging.LogFormatter;
 import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
 
-
 /**
  * Abstract class for all font utilities.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -52,9 +51,9 @@ public abstract class AbstractFontUtil {
     private Configuration config;
 
     /**
-     * the properties.
+     * The console handler.
      */
-    private Properties prop;
+    private Handler consoleHandler;
 
     /**
      * the resource finder.
@@ -62,30 +61,39 @@ public abstract class AbstractFontUtil {
     private ResourceFinder finder;
 
     /**
+     * The field <tt>localizer</tt> contains the localizer. It is initiated
+     * with a localizer for the name of this class.
+     */
+    private Localizer localizer =
+            LocalizerFactory.getLocalizer(AbstractFontUtil.class);
+
+    /**
      * The field <tt>logger</tt> contains the logger currently in use.
      */
     private Logger logger;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated
-     * with a localizer for the name of this class.
+     * the properties.
      */
-    private Localizer localizer = LocalizerFactory
-            .getLocalizer(AbstractFontUtil.class);
-
-    /**
-     * The console handler.
-     */
-    private Handler consoleHandler;
+    private Properties prop;
 
     /**
      * Create a new object.
-     *
+     * 
+     * @throws ConfigurationException if a config error occurs.
+     */
+    public AbstractFontUtil() throws ConfigurationException {
+
+        this(AbstractFontUtil.class);
+    }
+
+    /**
+     * Create a new object.
+     * 
      * @param loggerclass The class for the logger
      * @throws ConfigurationException if a config error occurs.
      */
-    public AbstractFontUtil(Class<?> loggerclass)
-            throws ConfigurationException {
+    public AbstractFontUtil(Class<?> loggerclass) throws ConfigurationException {
 
         super();
 
@@ -113,54 +121,26 @@ public abstract class AbstractFontUtil {
         }
 
         try {
-            InputStream in = new FileInputStream(System
-                    .getProperty("user.home")
-                    + "/.extex");
+            InputStream in =
+                    new FileInputStream(System.getProperty("user.home")
+                            + "/.extex");
             Properties prop2 = new Properties();
             prop2.load(in);
             prop.putAll(prop2);
         } catch (Exception e) {
             // do nothing
-            e.printStackTrace();
+            // e.printStackTrace();
         }
 
-        finder = (new ResourceFinderFactory()).createResourceFinder(config
-                .getConfiguration("Resource"), null, prop, null);
+        finder =
+                (new ResourceFinderFactory()).createResourceFinder(config
+                    .getConfiguration("Resource"), null, prop, null);
 
-    }
-
-    /**
-     * Create a new object.
-     *
-     * @throws ConfigurationException if a config error occurs.
-     */
-    public AbstractFontUtil() throws ConfigurationException {
-
-        this(AbstractFontUtil.class);
-    }
-
-    /**
-     * Returns the logger.
-     *
-     * @return Returns the logger.
-     */
-    public Logger getLogger() {
-
-        return logger;
-    }
-
-    /**
-     * Returns the localizer.
-     *
-     * @return Returns the localizer.
-     */
-    public Localizer getLocalizer() {
-
-        return localizer;
     }
 
     /**
      * Returns the configuration.
+     * 
      * @return Returns the configuration.
      */
     public Configuration getConfig() {
@@ -169,7 +149,18 @@ public abstract class AbstractFontUtil {
     }
 
     /**
+     * Returns the consoleHandler.
+     * 
+     * @return Returns the consoleHandler.
+     */
+    public Handler getConsoleHandler() {
+
+        return consoleHandler;
+    }
+
+    /**
      * Returns the finder.
+     * 
      * @return Returns the finder.
      */
     public ResourceFinder getFinder() {
@@ -178,21 +169,33 @@ public abstract class AbstractFontUtil {
     }
 
     /**
+     * Returns the localizer.
+     * 
+     * @return Returns the localizer.
+     */
+    public Localizer getLocalizer() {
+
+        return localizer;
+    }
+
+    /**
+     * Returns the logger.
+     * 
+     * @return Returns the logger.
+     */
+    public Logger getLogger() {
+
+        return logger;
+    }
+
+    /**
      * Returns the prop.
+     * 
      * @return Returns the prop.
      */
     public Properties getProp() {
 
         return prop;
-    }
-
-    /**
-     * Returns the consoleHandler.
-     * @return Returns the consoleHandler.
-     */
-    public Handler getConsoleHandler() {
-
-        return consoleHandler;
     }
 
 }
