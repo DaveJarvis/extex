@@ -9,48 +9,61 @@
 \subsection{Downloading the Sources}
 
 
-The sources of \ExTeX\ are stored in a RCS repository. To access this
-repository you need access to the internet and RCS installed in some
-way.
+The sources of \ExTeX\ are stored in a Subversion repository. To
+access this repository you need access to the internet and Subversion
+installed and configured in some way\footnote{For instance if you are
+  behind a firewall you might have to configure the proxy settings in
+  \texttt{servers.xml}}.
 
-The coordinates of the repository are:\medskip
+The coordinates of the repository are:
 
-\begin{tabular}{ll}\toprule
-  Connection type: & \texttt{pserver}			\\
-  User:		   & \texttt{anonymous}			\\
-  Host:		   & \texttt{cvs.extex.berlios.de}	\\
-  Location:	   & \texttt{/cvsroot/extex}		\\
-  Module:	   & \texttt{ExTeX}			\\\bottomrule
-\end{tabular}\medskip
+\begin{quotation}
+  http://svn.berlios.de/svnroot/repos/extex/trunk
+\end{quotation}
 
-These coordinates allow you anonymous access to the sources with
-reading permissions only.
+These coordinates provide anonymous access to the sources with reading
+permissions only. You are not allowed to commit changes when you are
+using this URL.
+
+Developers with commit permissions need to have an account at Berlios
+and be registered as committers. They can use one of the following
+URLs instead:
+
+\begin{quotation}
+  https://svn.berlios.de/svnroot/repos/extex/trunk
+  svn+ssh://svn.berlios.de/svnroot/repos/extex/trunk
+\end{quotation}
 
 You need to download the sources of \ExTeX. On the command line this
 can be done with the following commands:
 
 \begin{lstlisting}{}
-# cvs -d:pserver:anonymous@cvs.extex.berlios.de:/cvsroot/extex login
-# cvs -z3 -d:pserver:anonymous@cvs.extex.berlios.de:/cvsroot/extex co ExTeX
+# svn co http://svn.berlios.de/svnroot/repos/extex/trunk
 \end{lstlisting}{}
 
-If you want to participate in the development and are enlisted at
-Berlios you should use your account and password instead of the
-anonymous account.
+After some time you should have a working copy of the files on your
+computer.
+
+\subsection{Maven}\label{sec:Maven}
+
+Maven (\url{http://maven.apache.org}) is a build tool which comes with a
+set of conventions and plugins which are very useful. The primary
+features of Maven are the dependency management and the automatic
+downloading of missing dependencies.
 
 
-\subsection{Checkstyle}
-
-Checkstyle is a source code checker.
-\ExTeX\ should show a homogeneous appearance of the sources. Thus
-certain rules should be followed. Some of the rules are checked by the
-following command:
-
-\begin{lstlisting}{}
-# build checkstyle
-\end{lstlisting}{}
-
-The result can be found in the file \File{target/checkstyle.txt}.
+%\subsection{Checkstyle}
+%
+%Checkstyle is a source code checker.
+%\ExTeX\ should show a homogeneous appearance of the sources. Thus
+%certain rules should be followed. Some of the rules are checked by the
+%following command:
+%
+%\begin{lstlisting}{}
+%# ant checkstyle
+%\end{lstlisting}{}
+%
+%The result can be found in the file \File{target/checkstyle.txt}.
 
 \subsection{Ant}\label{sec:Ant}
 
@@ -90,7 +103,8 @@ These steps are performed by the shell script \File{build} in the
 preparations except setting \verb|JAVA_HOME| -- with the following command:
 
 \begin{lstlisting}{}
-#  build compile
+# cd build
+# ant compile
 Buildfile: build.xml
 
 compile:
@@ -131,7 +145,8 @@ help of the build script. The build script is a wrapper around Ant. It
 can be invoked with the following command:
 
 \begin{lstlisting}{}
-#  build compile
+# cd build
+# ant compile
 Buildfile: build.xml
 
 compile:
@@ -153,7 +168,7 @@ directory or by a direct invocation of Java. The start script is
 provided for Unix under the name \File{extex} and for Windows under
 the name \File{extex.bat}.
 \begin{lstlisting}{}
-#  extex work/empty.tex
+# extex work/empty.tex
 This is ExTeX, Version 0.0 (ExTeX mode)
 (work/empty)
 No pages of output.
@@ -193,7 +208,8 @@ classes.
 All test can be run from the command line with the build script:
 
 \begin{lstlisting}{}
-#  build tests
+# cd build
+# ant tests
 Buildfile: build.xml
 
 compile:
@@ -231,7 +247,8 @@ The pattern \verb|**| denotes an arbitrary deep directory hierarchy.
 pattern should end in \verb|Test.java|.
 
 \begin{lstlisting}{}
-#  build tests -Dcases=**/RelaxTest.java
+# cd build
+# ant tests -Dcases=**/RelaxTest.java
 Buildfile: build.xml
 
 compile:
@@ -264,7 +281,8 @@ of the build script. Here the target \texttt{javadoc} does everythign
 necessary:
 
 \begin{lstlisting}{}
-#  build javadoc
+# cd build
+# ant javadoc
 Buildfile: build.xml
 
 javadoc:
@@ -290,7 +308,8 @@ The installer can be build with the help of the build script. The
 invocation looks as follows:
 
 \begin{lstlisting}{}
-#  build installer
+# cd build
+# ant installer
 Buildfile: build.xml
 
 compile:
