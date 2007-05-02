@@ -2,15 +2,15 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
-  <artifactId>ExTeX-Backend-text</artifactId>
+  <artifactId>ExTeX-Scanner32</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>ExTeX Backend Text</name>
+  <name>ExTeX Scanner 32</name>
   <inceptionYear>2003</inceptionYear>
   <url>http://www.extex.org</url>
 
   <description>
-    This is a ExTeX text backend component.
+    This is the ExTeX scanner 32 component.
   </description>
 
   <parent>
@@ -20,29 +20,11 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.extex</groupId>
-      <artifactId>ExTeX-core</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>org.extex</groupId>
-      <artifactId>ExTeX-base</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>org.extex</groupId>
-      <artifactId>ExTeX-Font</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
-  </dependencies>
-
   <developers>
     <developer>
-      <id>mgn</id>
-      <name>Michael Niedermair</name>
-      <email>m.g.n@gmx.de</email>
+      <id>gene</id>
+      <name>Gerd Neugebauer</name>
+      <email>gene@gerd-neugebauer.de</email>
       <roles>
         <role>developer</role>
       </roles>

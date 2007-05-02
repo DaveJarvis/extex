@@ -17,6 +17,7 @@
     <groupId>org.extex</groupId>
     <artifactId>extex</artifactId>
     <version>SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
   <developers>
