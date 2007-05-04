@@ -22,10 +22,10 @@ package org.extex.typesetter.dump;
 import org.extex.core.count.Count;
 import org.extex.core.glue.FixedGlue;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.impl.TypesetterImpl;
+import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 
@@ -74,7 +74,7 @@ public class DumpTypesetter extends TypesetterImpl {
      * {@inheritDoc}
      *
      * @see org.extex.typesetter.ListMaker#addSpace(
-     *      org.extex.interpreter.context.tc.TypesettingContext,
+     *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.count.Count)
      */
     public void addSpace(TypesettingContext typesettingContext,
