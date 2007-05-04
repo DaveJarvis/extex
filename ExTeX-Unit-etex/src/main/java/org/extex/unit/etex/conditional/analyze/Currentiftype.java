@@ -23,17 +23,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.extex.core.count.Count;
-import org.extex.core.count.CountConvertible;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Conditional;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
+import org.extex.scanner.CountConvertible;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.etex.conditional.Ifcsname;
 import org.extex.unit.etex.conditional.Ifdefined;
 import org.extex.unit.etex.conditional.Iffontchar;
@@ -58,55 +59,118 @@ import org.extex.unit.tex.conditional.Ifx;
 /**
  * This class provides an implementation for the primitive
  * <code>\currentiftype</code>.
- *
+ * 
  * <doc name="currentiftype">
  * <h3>The Primitive <tt>\currentiftype</tt></h3>
  * <p>
- *  The primitive <tt>\currentiftype</tt> is an internal count register.
- *  It returns an indication of the conditional currently in use.
- *  If no conditional is active then <tt>0</tt> is returned.
- *  The following table lists the return values for the different types of
- *  conditionals:
+ * The primitive <tt>\currentiftype</tt> is an internal count register. It
+ * returns an indication of the conditional currently in use. If no conditional
+ * is active then <tt>0</tt> is returned. The following table lists the return
+ * values for the different types of conditionals:
  * </p>
  * <table format="ll">
- *  <tr><td><tt>/if</tt></td><td>1</td></tr>
- *  <tr><td><tt>/ifcat</tt></td><td>2</td></tr>
- *  <tr><td><tt>/ifnum</tt></td><td>3</td></tr>
- *  <tr><td><tt>/ifdim</tt></td><td>4</td></tr>
- *  <tr><td><tt>/ifodd</tt></td><td>5</td></tr>
- *  <tr><td><tt>/ifvmode</tt></td><td>6</td></tr>
- *  <tr><td><tt>/ifhmode</tt></td><td>7</td></tr>
- *  <tr><td><tt>/ifmmode</tt></td><td>8</td></tr>
- *  <tr><td><tt>/ifinner</tt></td><td>9</td></tr>
- *  <tr><td><tt>/ifvoid</tt></td><td>10</td></tr>
- *  <tr><td><tt>/ifhbox</tt></td><td>11</td></tr>
- *  <tr><td><tt>/ifvbox</tt></td><td>12</td></tr>
- *  <tr><td><tt>/ifx</tt></td><td>13</td></tr>
- *  <tr><td><tt>/ifeof</tt></td><td>14</td></tr>
- *  <tr><td><tt>/iftrue</tt></td><td>15</td></tr>
- *  <tr><td><tt>/iffalse</tt></td><td>16</td></tr>
- *  <tr><td><tt>/ifcase</tt></td><td>17</td></tr>
- *  <tr><td><tt>/ifdefined</tt></td><td>18</td></tr>
- *  <tr><td><tt>/ifcsname</tt></td><td>19</td></tr>
- *  <tr><td><tt>/iffontchar</tt></td><td>20</td></tr>
+ * <tr>
+ * <td><tt>/if</tt></td>
+ * <td>1</td>
+ * </tr>
+ * <tr>
+ * <td><tt>/ifcat</tt></td>
+ * <td>2</td>
+ * </tr>
+ * <tr>
+ * <td><tt>/ifnum</tt></td>
+ * <td>3</td>
+ * </tr>
+ * <tr>
+ * <td><tt>/ifdim</tt></td>
+ * <td>4</td>
+ * </tr>
+ * <tr>
+ * <td><tt>/ifodd</tt></td>
+ * <td>5</td>
+ * </tr>
+ * <tr>
+ * <td><tt>/ifvmode</tt></td>
+ * <td>6</td>
+ * </tr>
+ * <tr>
+ * <td><tt>/ifhmode</tt></td>
+ * <td>7</td>
+ * </tr>
+ * <tr>
+ * <td><tt>/ifmmode</tt></td>
+ * <td>8</td>
+ * </tr>
+ * <tr>
+ * <td><tt>/ifinner</tt></td>
+ * <td>9</td>
+ * </tr>
+ * <tr>
+ * <td><tt>/ifvoid</tt></td>
+ * <td>10</td>
+ * </tr>
+ * <tr>
+ * <td><tt>/ifhbox</tt></td>
+ * <td>11</td>
+ * </tr>
+ * <tr>
+ * <td><tt>/ifvbox</tt></td>
+ * <td>12</td>
+ * </tr>
+ * <tr>
+ * <td><tt>/ifx</tt></td>
+ * <td>13</td>
+ * </tr>
+ * <tr>
+ * <td><tt>/ifeof</tt></td>
+ * <td>14</td>
+ * </tr>
+ * <tr>
+ * <td><tt>/iftrue</tt></td>
+ * <td>15</td>
+ * </tr>
+ * <tr>
+ * <td><tt>/iffalse</tt></td>
+ * <td>16</td>
+ * </tr>
+ * <tr>
+ * <td><tt>/ifcase</tt></td>
+ * <td>17</td>
+ * </tr>
+ * <tr>
+ * <td><tt>/ifdefined</tt></td>
+ * <td>18</td>
+ * </tr>
+ * <tr>
+ * <td><tt>/ifcsname</tt></td>
+ * <td>19</td>
+ * </tr>
+ * <tr>
+ * <td><tt>/iffontchar</tt></td>
+ * <td>20</td>
+ * </tr>
  * </table>
  * <p>
- *  The value returned by the primitive is negated if the expansion appears
- *  in the else branch.
+ * The value returned by the primitive is negated if the expansion appears in
+ * the else branch.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;currentiftype&rang;
  *     &rarr; <tt>\currentiftype</tt> </pre>
+ * 
  * </p>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \count0=\currentiftype  </pre>
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4435 $
  */
@@ -123,7 +187,8 @@ public class Currentiftype extends AbstractCode
             new HashMap<Class<?>, Count>();
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
@@ -152,7 +217,7 @@ public class Currentiftype extends AbstractCode
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Currentiftype(String name) {
@@ -161,26 +226,13 @@ public class Currentiftype extends AbstractCode
     }
 
     /**
-     * This method converts a register into a count. It might be necessary to
-     * read further tokens to determine which value to use. For instance an
-     * additional register number might be required. In this case the additional
-     * arguments Context and TokenSource can be used.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use for conversion
-     *
-     * @return the converted value
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.core.count.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Conditional conditional = context.getConditional();
         if (conditional == null) {
@@ -193,26 +245,21 @@ public class Currentiftype extends AbstractCode
 
     /**
      * This method is the getter for the description of the primitive.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for further tokens to qualify the request
      * @param typesetter the typesetter to use
-     *
+     * 
      * @return the description of the primitive as list of Tokens
-     *
-     * @throws InterpreterException in case of an error
      * @throws CatcodeException in case of an error in token creation
      * @throws ConfigurationException in case of an configuration error
-     *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public Tokens the(Context context, TokenSource source,
-            Typesetter typesetter)
-            throws InterpreterException,
-                CatcodeException {
+    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
+            throws CatcodeException,
+                HelpingException, TypesetterException {
 
         return context.getTokenFactory().toTokens( //
             convertCount(context, source, typesetter));

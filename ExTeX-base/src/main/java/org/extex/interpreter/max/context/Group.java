@@ -30,20 +30,20 @@ import org.extex.core.muskip.Muskip;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.context.observer.group.AfterGroupObserver;
 import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.box.Box;
-import org.extex.interpreter.type.file.InFile;
-import org.extex.interpreter.type.file.OutFile;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.math.MathCode;
-import org.extex.interpreter.type.math.MathDelimiter;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.Tokenizer;
 import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.file.InFile;
+import org.extex.scanner.type.file.OutFile;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
+import org.extex.typesetter.type.math.MathCode;
+import org.extex.typesetter.type.math.MathDelimiter;
 
 /**
  * This is the implementation of a group object. A group is the container for
@@ -369,9 +369,9 @@ public interface Group extends Tokenizer, Serializable {
     /**
      * Invoke all registered observers for the end-of-group event.
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      */
-    void runAfterGroup() throws InterpreterException;
+    void runAfterGroup() throws HelpingException;
 
     /**
      * Setter for the {@link org.extex.interpreter.type.box.Box box}

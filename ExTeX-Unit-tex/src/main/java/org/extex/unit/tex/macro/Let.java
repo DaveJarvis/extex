@@ -22,13 +22,14 @@ package org.extex.unit.tex.macro;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.macro.LetCode;
 
 /**
@@ -93,9 +94,7 @@ public class Let extends AbstractAssignment {
      * @param context the interpreter context
      * @param source the token source
      * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
+     * @throws HelpingException in case of an error
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -104,7 +103,7 @@ public class Let extends AbstractAssignment {
      */
     public void assign(Flags prefix, Context context,
             TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException {
 
         CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
@@ -127,10 +126,10 @@ public class Let extends AbstractAssignment {
      * @param t the new meaning of the control sequence token. If this
      *  parameter is <code>null</code> then an exception is thrown.
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      */
     public static void let(Flags prefix, Context context,
-            CodeToken cs, Token t) throws InterpreterException {
+            CodeToken cs, Token t) throws HelpingException {
 
         Code code =
                 (t instanceof CodeToken

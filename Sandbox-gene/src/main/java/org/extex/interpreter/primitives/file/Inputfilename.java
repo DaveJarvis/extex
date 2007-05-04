@@ -22,13 +22,15 @@ package org.extex.interpreter.primitives.file;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.NoHelpException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
@@ -83,12 +85,12 @@ public class Inputfilename extends AbstractCode
      */
     public void execute(Flags prefix, Context context,
             TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException {
 
         try {
             source.push(the(context, source, typesetter));
         } catch (CatcodeException e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
     }
 
@@ -103,12 +105,12 @@ public class Inputfilename extends AbstractCode
      */
     public void expand(Flags prefix, Context context,
             TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException {
 
         try {
             source.push(the(context, source, typesetter));
         } catch (CatcodeException e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
     }
 
@@ -122,8 +124,7 @@ public class Inputfilename extends AbstractCode
      */
     public Tokens the(Context context, TokenSource source,
             Typesetter typesetter)
-            throws InterpreterException,
-                CatcodeException {
+            throws CatcodeException, HelpingException, TypesetterException {
 
         String filename = source.getLocator().getResourceName();
         return context.getTokenFactory().toTokens(//

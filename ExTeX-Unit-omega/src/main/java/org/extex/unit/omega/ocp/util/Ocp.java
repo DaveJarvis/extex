@@ -27,14 +27,15 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Code;
 import org.extex.resource.ResourceFinder;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * TODO gene: missing JavaDoc.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4411 $
  */
@@ -48,17 +49,18 @@ public class Ocp implements Code, OcpConvertible, Serializable {
 
     /**
      * This is a factory method for OCPs.
-     *
+     * 
      * @param resource the name of the resource
      * @param finder the resource finder
-     *
+     * 
      * @return the OCP encountered
-     *
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
      * @throws ConfigurationException in case of an configuration error
      */
     public static Ocp load(String resource, ResourceFinder finder)
-            throws InterpreterException, ConfigurationException {
+            throws HelpingException,
+                ConfigurationException {
 
         InputStream stream = null;
         try {
@@ -87,7 +89,7 @@ public class Ocp implements Code, OcpConvertible, Serializable {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param resource the name of the resource
      * @param stream the stream to read the resource from
      */
@@ -98,58 +100,36 @@ public class Ocp implements Code, OcpConvertible, Serializable {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @return the Ocp encountered
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.unit.omega.ocp.util.OcpConvertible#convertOcp(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.unit.omega.ocp.util.OcpConvertible#convertOcp(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Ocp convertOcp(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) {
 
         return ocp;
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.Code#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        //TODO gene: unimplemented
+        // TODO gene: unimplemented
         throw new RuntimeException("unimplemented");
     }
 
     /**
      * Getter for the name.
-     *
+     * 
      * @return the name
-     *
+     * 
      * @see org.extex.interpreter.type.Code#getName()
      */
     public String getName() {
@@ -160,9 +140,9 @@ public class Ocp implements Code, OcpConvertible, Serializable {
     /**
      * This simple little method distinguishes the conditionals from the other
      * primitives. This is necessary for the processing of all \if* primitives.
-     *
+     * 
      * @return <code>true</code> iff this is some sort if <tt>\if</tt>.
-     *
+     * 
      * @see org.extex.interpreter.type.Code#isIf()
      */
     public boolean isIf() {
@@ -172,9 +152,9 @@ public class Ocp implements Code, OcpConvertible, Serializable {
 
     /**
      * Getter for the outer flag.
-     *
+     * 
      * @return <code>true</code> iff the code is defined outer.
-     *
+     * 
      * @see org.extex.interpreter.type.Code#isOuter()
      */
     public boolean isOuter() {
@@ -184,7 +164,7 @@ public class Ocp implements Code, OcpConvertible, Serializable {
 
     /**
      * Setter for the name.
-     *
+     * 
      * @param name the name to set
      */
     public void setName(String name) {

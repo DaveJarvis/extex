@@ -26,16 +26,17 @@ import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Color;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.color.ColorConvertible;
+import org.extex.scanner.ScaledNumberParser;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.LeftBraceToken;
 import org.extex.scanner.type.token.RightBraceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides a parser for color specifications.
@@ -65,11 +66,12 @@ public final class ColorParser {
          * @param name the name of the primitive
          *
          * @return the color found
-         *
-         * @throws InterpreterException in case of an error
+         * 
+         * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
          */
         Color parse(Context context, TokenSource source, Typesetter typesetter,
-                int alpha, String name) throws InterpreterException;
+                int alpha, String name) throws HelpingException, TypesetterException;
     }
 
     /**
@@ -87,7 +89,7 @@ public final class ColorParser {
          */
         public Color parse(Context context, TokenSource source,
                 Typesetter typesetter, int alpha, String name)
-                throws InterpreterException {
+                throws HelpingException, TypesetterException {
 
             int c = scanColorComponent(context, source, typesetter, name);
             int m = scanColorComponent(context, source, typesetter, name);
@@ -113,7 +115,7 @@ public final class ColorParser {
          */
         public Color parse(Context context, TokenSource source,
                 Typesetter typesetter, int alpha, String name)
-                throws InterpreterException {
+                throws HelpingException, TypesetterException {
 
             int gray = scanColorComponent(context, source, typesetter, name);
             return ColorFactory.getGray(gray, alpha);
@@ -136,7 +138,7 @@ public final class ColorParser {
          */
         public Color parse(Context context, TokenSource source,
                 Typesetter typesetter, int alpha, String name)
-                throws InterpreterException {
+                throws HelpingException, TypesetterException {
 
             int h = scanColorComponent(context, source, typesetter, name);
             int s = scanColorComponent(context, source, typesetter, name);
@@ -168,7 +170,7 @@ public final class ColorParser {
          */
         public Color parse(Context context, TokenSource source,
                 Typesetter typesetter, int alpha, String name)
-                throws InterpreterException {
+                throws HelpingException, TypesetterException {
 
             int r = scanColorComponent(context, source, typesetter, name);
             int g = scanColorComponent(context, source, typesetter, name);
@@ -193,13 +195,14 @@ public final class ColorParser {
      * @param typesetter the typesetter
      * @param name the name of the invoking primitive
      *
-     * @return th color found
+     * @return the color found
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     public static Color parseColor(Context context,
             TokenSource source, Typesetter typesetter,
-            String name) throws InterpreterException {
+            String name) throws HelpingException, TypesetterException {
 
         Token t = source.getNonSpace(context);
         Color color = null;
@@ -207,7 +210,7 @@ public final class ColorParser {
             Code code = context.getCode((CodeToken) t);
             if (code instanceof ColorConvertible) {
                 color =
-                        ((ColorConvertible) code).convertColor(context, source,
+                    ((ColorConvertible) code).convertColor(context, source,
                             typesetter);
             }
         } else {
@@ -235,11 +238,12 @@ public final class ColorParser {
      *
      * @return the color found
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     public static Color parseColorConstant(Context context,
             TokenSource source, Typesetter typesetter,
-            String name) throws InterpreterException {
+            String name) throws HelpingException, TypesetterException {
 
         int alpha = 0;
         ColorMode mode = RGB_MODE;
@@ -286,15 +290,16 @@ public final class ColorParser {
      *
      * @return the color component in units of Color.MAX_VALUE
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     private static int scanColorComponent(Context context,
             TokenSource source, Typesetter typesetter,
-            String name) throws InterpreterException {
+            String name) throws HelpingException, TypesetterException {
 
         long cc;
         try {
-            cc = ScaledNumber.parse(context, source, typesetter);
+            cc = ScaledNumberParser.parse(context, source, typesetter);
         } catch (EofException e) {
             throw new EofException(name);
         }

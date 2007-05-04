@@ -23,10 +23,11 @@ import org.extex.core.UnicodeChar;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.register.CharCode;
 
 /**
@@ -64,7 +65,7 @@ import org.extex.unit.base.register.CharCode;
  *        &lang;control sequence&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -107,9 +108,6 @@ public class Chardef extends AbstractAssignment {
      * @param context the interpreter context
      * @param source the token source
      * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -118,7 +116,7 @@ public class Chardef extends AbstractAssignment {
      */
     public void assign(Flags prefix, Context context,
             TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException {
 
         CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);

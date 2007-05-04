@@ -20,13 +20,14 @@
 package org.extex.unit.tex.typesetter.displace;
 
 import org.extex.core.dimen.Dimen;
-import org.extex.core.dimen.DimenParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.box.Box;
+import org.extex.scanner.DimenParser;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.typesetter.box.AbstractBoxPrimitive;
 
 /**
@@ -97,8 +98,6 @@ public class Raise extends AbstractBoxPrimitive {
      *
      * @return an appropriate Box
      *
-     * @throws InterpreterException in case of an error
-     *
      * @see org.extex.unit.tex.register.box.BoxPrimitive#getBox(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
@@ -107,7 +106,7 @@ public class Raise extends AbstractBoxPrimitive {
      */
     public Box getBox(Context context, TokenSource source,
             Typesetter typesetter, Token insert)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException {
 
         Dimen amount = DimenParser.parse(context, source, typesetter);
         Box box = source.getBox(null, context, typesetter, insert);

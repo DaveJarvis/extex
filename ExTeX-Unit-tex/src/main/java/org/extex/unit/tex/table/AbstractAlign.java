@@ -26,7 +26,6 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
@@ -78,10 +77,10 @@ public abstract class AbstractAlign extends AbstractCode {
      *
      * @return the preamble as list of PreambleItems
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      */
     protected List<PreambleItem> getPreamble(Context context,
-            TokenSource source) throws InterpreterException {
+            TokenSource source) throws HelpingException {
 
         List<PreambleItem> preamble = new ArrayList<PreambleItem>();
 
@@ -103,11 +102,11 @@ public abstract class AbstractAlign extends AbstractCode {
      *
      * @return <code>true</code> iff the item has been ended by <tt>&</tt>.
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      */
     private boolean addPreambleItem(Context context,
             TokenSource source, List<PreambleItem> preamble)
-            throws InterpreterException {
+            throws HelpingException {
 
         Tokens pre = new Tokens();
         Tokens post = new Tokens();

@@ -20,9 +20,6 @@
 package org.extex.interpreter.exception.helping;
 
 import org.extex.framework.i18n.LocalizerFactory;
-import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
-import org.extex.scanner.type.token.Token;
 
 /**
  * This exception is raised when direction is needed but has not been found.
@@ -31,36 +28,22 @@ import org.extex.scanner.type.token.Token;
  * @version $Revision:4408 $
  */
 
-public class MissingOcplistException extends InterpreterException {
+public class MissingOcplistException extends HelpingException {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2006L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      *
-     * @param context the interpreter context
      * @param t the token encountered
      */
-    public MissingOcplistException(Context context, Token t) {
+    public MissingOcplistException(String t) {
 
-        super(LocalizerFactory.getLocalizer(MissingOcplistException.class)
-            .format("Omega.MissingOcplist"));
-    }
-
-    /**
-     * Returns the detail message string of this throwable.
-     *
-     * @return  the detail message string of this <tt>Throwable</tt> instance
-     *          (which may be <tt>null</tt>).
-     *
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    public String getLocalizedMessage() {
-
-        return super.getMessage();
+        super(LocalizerFactory.getLocalizer(MissingOcplistException.class),
+            "Omega.MissingOcplist", t);
     }
 
 }

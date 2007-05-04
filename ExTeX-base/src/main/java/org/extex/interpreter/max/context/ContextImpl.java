@@ -82,15 +82,12 @@ import org.extex.interpreter.context.tc.Direction;
 import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.context.tc.TypesettingContextFactory;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.NoHelpException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.box.Box;
-import org.extex.interpreter.type.file.InFile;
-import org.extex.interpreter.type.file.OutFile;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.math.MathCode;
-import org.extex.interpreter.type.math.MathDelimiter;
 import org.extex.interpreter.unit.UnitInfo;
 import org.extex.language.Language;
 import org.extex.language.LanguageManager;
@@ -98,6 +95,8 @@ import org.extex.scanner.TokenStream;
 import org.extex.scanner.Tokenizer;
 import org.extex.scanner.stream.TokenStreamOptions;
 import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.file.InFile;
+import org.extex.scanner.type.file.OutFile;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
@@ -106,6 +105,8 @@ import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
+import org.extex.typesetter.type.math.MathCode;
+import org.extex.typesetter.type.math.MathDelimiter;
 
 /**
  * This is a reference implementation for an interpreter context.
@@ -466,13 +467,13 @@ public class ContextImpl
      * @param typesetter the typesetter to invoke if needed
      * @param source the source to get Tokens from if needed
      * 
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      * 
      * @see org.extex.interpreter.context.Context#closeGroup(
      *      org.extex.typesetter.Typesetter, org.extex.interpreter.TokenSource)
      */
     public void closeGroup(Typesetter typesetter, TokenSource source)
-            throws InterpreterException {
+            throws HelpingException {
 
         Group next = group.getNext();
 
@@ -494,10 +495,10 @@ public class ContextImpl
                 for (GroupObserver obs : groupObservers) {
                     obs.receiveCloseGroup(this);
                 }
-            } catch (InterpreterException e) {
+            } catch (HelpingException e) {
                 throw e;
             } catch (Exception e) {
-                throw new InterpreterException(e);
+                throw new NoHelpException(e);
             }
         }
     }
@@ -523,7 +524,7 @@ public class ContextImpl
         if (group == null) {
             try {
                 openGroup(GroupType.BOTTOM_LEVEL_GROUP, null, null);
-            } catch (InterpreterException e) {
+            } catch (HelpingException e) {
                 throw new ConfigurationWrapperException(e);
             }
         }
@@ -722,7 +723,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.ContextCode#getCode(
      *      org.extex.scanner.type.token.CodeToken)
      */
-    public Code getCode(CodeToken t) throws InterpreterException {
+    public Code getCode(CodeToken t) throws HelpingException {
 
         return group.getCode(t);
     }
@@ -1000,11 +1001,11 @@ public class ContextImpl
      * 
      * @return the hyphenation table for the requested language
      * 
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      * 
      * @see org.extex.interpreter.context.Context#getLanguage(String)
      */
-    public Language getLanguage(String language) throws InterpreterException {
+    public Language getLanguage(String language) throws HelpingException {
 
         return languageManager.getLanguage(language);
     }
@@ -1306,10 +1307,8 @@ public class ContextImpl
      * @param type the type of the group
      * @param locator the locator for the start
      * @param start the token which started the group
-     * 
      * @throws ConfigurationException in case of an error in the configuration,
      *         e.g. the class for the group can not be determined.
-     * @throws InterpreterException in case of an error
      * 
      * @see #closeGroup(Typesetter, TokenSource)
      * 
@@ -1318,7 +1317,7 @@ public class ContextImpl
      *      org.extex.core.Locator, org.extex.scanner.type.token.Token)
      */
     public void openGroup(GroupType type, Locator locator, Token start)
-            throws InterpreterException {
+            throws HelpingException {
 
         group = groupFactory.newInstance(group, locator, start, type);
         group.setStandardTokenStream(standardTokenStream);
@@ -1327,10 +1326,10 @@ public class ContextImpl
                 for (GroupObserver obs : groupObservers) {
                     obs.receiveOpenGroup(this);
                 }
-            } catch (InterpreterException e) {
+            } catch (HelpingException e) {
                 throw e;
             } catch (Exception e) {
-                throw new InterpreterException(e);
+                throw new NoHelpException(e);
             }
         }
     }
@@ -1343,7 +1342,7 @@ public class ContextImpl
      * 
      * @see org.extex.interpreter.context.Context#popConditional()
      */
-    public Conditional popConditional() {
+    public Conditional popConditional() throws HelpingException {
 
         int len = conditionalStack.size();
         if (len <= 0) {
@@ -1443,12 +1442,10 @@ public class ContextImpl
      * 
      * @param source the token source
      * 
-     * @throws InterpreterException in case of an error
-     * 
      * @see org.extex.interpreter.context.observer.load.LoadedObservable#receiveLoad(
      *      org.extex.interpreter.TokenSource)
      */
-    public void receiveLoad(TokenSource source) throws InterpreterException {
+    public void receiveLoad(TokenSource source) throws HelpingException {
 
         if (loadObservers != null) {
             for (LoadedObserver obs : loadObservers) {
@@ -1676,19 +1673,19 @@ public class ContextImpl
      * @param code the new code binding
      * @param observerList the list of observers
      * 
-     * @throws InterpreterException in case of a problem in an observer
+     * @throws HelpingException in case of a problem in an observer
      */
     private void runCodeObservers(CodeToken t, Code code,
-            List<CodeObserver> observerList) throws InterpreterException {
+            List<CodeObserver> observerList) throws HelpingException {
 
         try {
             for (CodeObserver obs : observerList) {
                 obs.receiveCodeChange(this, t, code);
             }
-        } catch (InterpreterException e) {
+        } catch (HelpingException e) {
             throw e;
         } catch (Exception e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
     }
 
@@ -1699,19 +1696,19 @@ public class ContextImpl
      * @param count the new value
      * @param observerList the list of observers
      * 
-     * @throws InterpreterException in case of a problem in an observer
+     * @throws HelpingException in case of a problem in an observer
      */
     private void runCountObservers(String name, Count count,
-            List<CountObserver> observerList) throws InterpreterException {
+            List<CountObserver> observerList) throws HelpingException {
 
         try {
             for (CountObserver obs : observerList) {
                 obs.receiveCountChange(this, name, count);
             }
-        } catch (InterpreterException e) {
+        } catch (HelpingException e) {
             throw e;
         } catch (Exception e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
     }
 
@@ -1722,19 +1719,19 @@ public class ContextImpl
      * @param dimen the new value
      * @param observerList the list of observers
      * 
-     * @throws InterpreterException in case of a problem in an observer
+     * @throws HelpingException in case of a problem in an observer
      */
     private void runDimenObservers(String name, Dimen dimen,
-            List<DimenObserver> observerList) throws InterpreterException {
+            List<DimenObserver> observerList) throws HelpingException {
 
         try {
             for (DimenObserver obs : observerList) {
                 obs.receiveDimenChange(this, name, dimen);
             }
-        } catch (InterpreterException e) {
+        } catch (HelpingException e) {
             throw e;
         } catch (Exception e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
     }
 
@@ -1745,19 +1742,19 @@ public class ContextImpl
      * @param glue the new value
      * @param observerList the list of observers
      * 
-     * @throws InterpreterException in case of a problem in an observer
+     * @throws HelpingException in case of a problem in an observer
      */
     private void runGlueObservers(String name, Glue glue,
-            List<GlueObserver> observerList) throws InterpreterException {
+            List<GlueObserver> observerList) throws HelpingException {
 
         try {
             for (GlueObserver obs : observerList) {
                 obs.receiveGlueChange(this, name, glue);
             }
-        } catch (InterpreterException e) {
+        } catch (HelpingException e) {
             throw e;
         } catch (Exception e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
     }
 
@@ -1768,19 +1765,19 @@ public class ContextImpl
      * @param toks the new value
      * @param observerList the list of observers
      * 
-     * @throws InterpreterException in case of a problem in an observer
+     * @throws HelpingException in case of a problem in an observer
      */
     private void runTokensObservers(String name, Tokens toks,
-            List<TokensObserver> observerList) throws InterpreterException {
+            List<TokensObserver> observerList) throws HelpingException {
 
         try {
             for (TokensObserver obs : observerList) {
                 obs.receiveTokensChange(this, name, toks);
             }
-        } catch (InterpreterException e) {
+        } catch (HelpingException e) {
             throw e;
         } catch (Exception e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
     }
 
@@ -1953,7 +1950,7 @@ public class ContextImpl
      *      org.extex.interpreter.type.Code, boolean)
      */
     public void setCode(CodeToken t, Code code, boolean global)
-            throws InterpreterException {
+            throws HelpingException {
 
         group.setCode(t, code, global);
 
@@ -1978,14 +1975,11 @@ public class ContextImpl
      * @param global the indicator for the scope; <code>true</code> means all
      *        groups; otherwise the current group is affected only
      * 
-     * @throws InterpreterException in case if an exception in a registered
-     *         observer
-     * 
      * @see org.extex.interpreter.context.Context#setCount( java.lang.String,
      *      long, boolean)
      */
     public void setCount(String name, long value, boolean global)
-            throws InterpreterException {
+            throws HelpingException {
 
         Count count = new Count(value);
         group.setCount(name, count, global);
@@ -2024,7 +2018,7 @@ public class ContextImpl
      * 
      * @see org.extex.interpreter.context.Context#setDelcode(
      *      org.extex.core.UnicodeChar,
-     *      org.extex.interpreter.type.math.MathDelimiter, boolean)
+     *      org.extex.typesetter.type.math.MathDelimiter, boolean)
      */
     public void setDelcode(UnicodeChar c, MathDelimiter delimiter,
             boolean global) {
@@ -2049,7 +2043,7 @@ public class ContextImpl
      *      org.extex.core.dimen.Dimen, boolean)
      */
     public void setDimen(String name, Dimen value, boolean global)
-            throws InterpreterException {
+            throws HelpingException {
 
         group.setDimen(name, value, global);
 
@@ -2074,13 +2068,13 @@ public class ContextImpl
      * @param global the indicator for the scope; <code>true</code> means all
      *        groups; otherwise the current group is affected only
      * 
-     * @throws InterpreterException in case of problems in an observer
+     * @throws HelpingException in case of problems in an observer
      * 
      * @see org.extex.interpreter.context.ContextDimen#setDimen(
      *      java.lang.String, long, boolean)
      */
     public void setDimen(String name, long value, boolean global)
-            throws InterpreterException {
+            throws HelpingException {
 
         setDimen(name, new Dimen(value), global);
     }
@@ -2128,7 +2122,7 @@ public class ContextImpl
      *      org.extex.core.glue.Glue, boolean)
      */
     public void setGlue(String name, Glue value, boolean global)
-            throws InterpreterException {
+            throws HelpingException {
 
         group.setSkip(name, value, global);
 
@@ -2156,7 +2150,7 @@ public class ContextImpl
     }
 
     /**
-     * Setter for the {@link org.extex.interpreter.type.file.InFile InFile}
+     * Setter for the {@link org.extex.scanner.type.file.InFile InFile}
      * register in all requested groups. InFile registers are named, either with
      * a number or an arbitrary string. The numbered registers where limited to
      * 16 in <logo>TeX</logo>. This restriction does no longer hold for
@@ -2168,7 +2162,7 @@ public class ContextImpl
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.context.Context#setInFile( java.lang.String,
-     *      org.extex.interpreter.type.file.InFile, boolean)
+     *      org.extex.scanner.type.file.InFile, boolean)
      */
     public void setInFile(String name, InFile file, boolean global) {
 
@@ -2182,13 +2176,13 @@ public class ContextImpl
      * 
      * @param interaction the new value of the interaction
      * 
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      * 
      * @see org.extex.interpreter.context.ContextInteraction#setInteraction(
      *      org.extex.interpreter.interaction.Interaction)
      */
     public void setInteraction(Interaction interaction)
-            throws InterpreterException {
+            throws HelpingException {
 
         if (this.interaction != interaction) {
             this.interaction = interaction;
@@ -2196,8 +2190,10 @@ public class ContextImpl
                 for (InteractionObserver obs : changeInteractionObservers) {
                     obs.receiveInteractionChange(this, interaction);
                 }
+            } catch (HelpingException e) {
+                throw e;
             } catch (Exception e) {
-                throw new InterpreterException(e);
+                throw new NoHelpException(e);
             }
         }
     }
@@ -2340,7 +2336,7 @@ public class ContextImpl
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.context.Context#setOutFile( java.lang.String,
-     *      org.extex.interpreter.type.file.OutFile, boolean)
+     *      org.extex.scanner.type.file.OutFile, boolean)
      */
     public void setOutFile(String name, OutFile file, boolean global) {
 
@@ -2441,7 +2437,7 @@ public class ContextImpl
      *      org.extex.scanner.type.tokens.Tokens, boolean)
      */
     public void setToks(String name, Tokens toks, boolean global)
-            throws InterpreterException {
+            throws HelpingException {
 
         group.setToks(name, toks, global);
 

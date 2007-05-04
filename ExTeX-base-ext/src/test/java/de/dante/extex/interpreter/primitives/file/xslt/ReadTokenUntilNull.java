@@ -22,7 +22,8 @@ package de.dante.extex.interpreter.primitives.file.xslt;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.NoHelpException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.type.token.ActiveCharacterToken;
@@ -41,13 +42,15 @@ import org.extex.scanner.type.token.TabMarkToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenVisitor;
 import org.extex.typesetter.Typesetter;
-
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class reads token until a null token
- * and return the text (toString()) for each token.
- * <p>For test cases only</p>
- *
+ * This class reads token until a null token and return the text (toString())
+ * for each token.
+ * <p>
+ * For test cases only
+ * </p>
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -61,7 +64,8 @@ public class ReadTokenUntilNull extends AbstractCode {
 
     /**
      * Create a new object.
-     * @param codeName  the CodeName
+     * 
+     * @param codeName the CodeName
      */
     public ReadTokenUntilNull(String codeName) {
 
@@ -75,35 +79,32 @@ public class ReadTokenUntilNull extends AbstractCode {
 
     /**
      * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        try {
-            StringBuffer buf = new StringBuffer(INITSIZE);
+        StringBuffer buf = new StringBuffer(INITSIZE);
 
-            TokenVisitor visitor = new MyTokenVisitor();
+        TokenVisitor visitor = new MyTokenVisitor();
 
-            Token t = null;
-            do {
-                t = source.getToken(context);
-                if (t != null) {
+        Token t = null;
+        do {
+            t = source.getToken(context);
+            if (t != null) {
+                try {
                     buf.append(t.visit(visitor, null));
+                } catch (Exception e) {
+                    throw new NoHelpException(e);
                 }
+            }
 
-            } while (t != null);
+        } while (t != null);
 
-            TokenStreamFactory factory = source.getTokenStreamFactory();
+        TokenStreamFactory factory = source.getTokenStreamFactory();
 
-            source.addStream(factory.newInstance(buf.toString()));
-        } catch (Exception e) {
-            throw new InterpreterException(e);
-        }
+        source.addStream(factory.newInstance(buf.toString()));
     }
 
     /**
@@ -119,19 +120,17 @@ public class ReadTokenUntilNull extends AbstractCode {
          *      org.extex.scanner.type.token.ActiveCharacterToken,
          *      java.lang.Object)
          */
-        public Object visitActive(ActiveCharacterToken token,
-                Object arg) throws Exception {
+        public Object visitActive(ActiveCharacterToken token, Object arg)
+                throws Exception {
 
             return "[A:" + token.toText() + "]";
         }
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitCr(
-         *      org.extex.scanner.type.token.CrToken,
-         *      java.lang.Object)
+         *      org.extex.scanner.type.token.CrToken, java.lang.Object)
          */
-        public Object visitCr(CrToken token, Object arg)
-                throws Exception {
+        public Object visitCr(CrToken token, Object arg) throws Exception {
 
             return "[CR]";
         }
@@ -141,27 +140,25 @@ public class ReadTokenUntilNull extends AbstractCode {
          *      org.extex.scanner.type.token.ControlSequenceToken,
          *      java.lang.Object)
          */
-        public Object visitEscape(ControlSequenceToken token,
-                Object arg) throws Exception {
+        public Object visitEscape(ControlSequenceToken token, Object arg)
+                throws Exception {
 
             return "/" + token.getName() + " ";
         }
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitLeftBrace(
-         *      org.extex.scanner.type.token.LeftBraceToken,
-         *      java.lang.Object)
+         *      org.extex.scanner.type.token.LeftBraceToken, java.lang.Object)
          */
-        public Object visitLeftBrace(LeftBraceToken token,
-                Object arg) throws Exception {
+        public Object visitLeftBrace(LeftBraceToken token, Object arg)
+                throws Exception {
 
             return "(";
         }
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitLetter(
-         *      org.extex.scanner.type.token.LetterToken,
-         *      java.lang.Object)
+         *      org.extex.scanner.type.token.LetterToken, java.lang.Object)
          */
         public Object visitLetter(LetterToken token, Object arg)
                 throws Exception {
@@ -171,63 +168,55 @@ public class ReadTokenUntilNull extends AbstractCode {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitMacroParam(
-         *      org.extex.scanner.type.token.MacroParamToken,
-         *      java.lang.Object)
+         *      org.extex.scanner.type.token.MacroParamToken, java.lang.Object)
          */
-        public Object visitMacroParam(MacroParamToken token,
-                Object arg) throws Exception {
+        public Object visitMacroParam(MacroParamToken token, Object arg)
+                throws Exception {
 
             return "[M:" + token.toText() + "]";
         }
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitMathShift(
-         *      org.extex.scanner.type.token.MathShiftToken,
-         *      java.lang.Object)
+         *      org.extex.scanner.type.token.MathShiftToken, java.lang.Object)
          */
-        public Object visitMathShift(MathShiftToken token,
-                Object arg) throws Exception {
+        public Object visitMathShift(MathShiftToken token, Object arg)
+                throws Exception {
 
             return token.toText();
         }
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitOther(
-         *      org.extex.scanner.type.token.OtherToken,
-         *      java.lang.Object)
+         *      org.extex.scanner.type.token.OtherToken, java.lang.Object)
          */
-        public Object visitOther(OtherToken token, Object arg)
-                throws Exception {
+        public Object visitOther(OtherToken token, Object arg) throws Exception {
 
             return token.toText();
         }
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitRightBrace(
-         *      org.extex.scanner.type.token.RightBraceToken,
-         *      java.lang.Object)
+         *      org.extex.scanner.type.token.RightBraceToken, java.lang.Object)
          */
-        public Object visitRightBrace(RightBraceToken token,
-                Object arg) throws Exception {
+        public Object visitRightBrace(RightBraceToken token, Object arg)
+                throws Exception {
 
             return ")";
         }
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitSpace(
-         *      org.extex.scanner.type.token.SpaceToken,
-         *      java.lang.Object)
+         *      org.extex.scanner.type.token.SpaceToken, java.lang.Object)
          */
-        public Object visitSpace(SpaceToken token, Object arg)
-                throws Exception {
+        public Object visitSpace(SpaceToken token, Object arg) throws Exception {
 
             return " ";
         }
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitSubMark(
-         *      org.extex.scanner.type.token.SubMarkToken,
-         *      java.lang.Object)
+         *      org.extex.scanner.type.token.SubMarkToken, java.lang.Object)
          */
         public Object visitSubMark(SubMarkToken token, Object arg)
                 throws Exception {
@@ -237,8 +226,7 @@ public class ReadTokenUntilNull extends AbstractCode {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitSupMark(
-         *      org.extex.scanner.type.token.SupMarkToken,
-         *      java.lang.Object)
+         *      org.extex.scanner.type.token.SupMarkToken, java.lang.Object)
          */
         public Object visitSupMark(SupMarkToken token, Object arg)
                 throws Exception {
@@ -248,8 +236,7 @@ public class ReadTokenUntilNull extends AbstractCode {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitTabMark(
-         *      org.extex.scanner.type.token.TabMarkToken,
-         *      java.lang.Object)
+         *      org.extex.scanner.type.token.TabMarkToken, java.lang.Object)
          */
         public Object visitTabMark(TabMarkToken token, Object arg)
                 throws Exception {

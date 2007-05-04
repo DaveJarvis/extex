@@ -22,8 +22,9 @@ package org.extex.unit.omega.translation;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.omega.OmegaExtension;
 import org.extex.unit.omega.mode.AbstractModeCode;
 import org.extex.unit.omega.mode.OmegaMode;
@@ -31,15 +32,16 @@ import org.extex.unit.omega.mode.OmegaMode;
 /**
  * This class provides an implementation for the primitive
  * <code>\noDefaultInputTranslation</code>.
- *
+ * 
  * <doc name="noDefaultInputTranslation">
  * <h3>The Primitive <tt>\noDefaultInputTranslation</tt></h3>
  * <p>
- *  TODO missing documentation
+ * TODO missing documentation
  * </p>
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;noDefaultInputTranslation&rang;
  *      &rarr; <tt>\noDefaultInputTranslation</tt> &lang;mode&rang;
  *
@@ -48,13 +50,15 @@ import org.extex.unit.omega.mode.OmegaMode;
  *        |  <tt>ebcdic</tt>
  *        |  <tt>twobyte</tt>
  *        |  <tt>twobyteLE</tt>    </pre>
- *
+ * 
  * <h4>Examples</h4>
+ * 
  * <pre class="TeXSample">
  *   \noDefaultInputTranslation onebyte </pre>
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4411 $
  */
@@ -68,7 +72,7 @@ public class NoDefaultInputTranslation extends AbstractModeCode {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public NoDefaultInputTranslation(String name) {
@@ -77,26 +81,14 @@ public class NoDefaultInputTranslation extends AbstractModeCode {
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws TypesetterException, HelpingException {
 
         OmegaMode mode = scanInputMode(context, source);
 

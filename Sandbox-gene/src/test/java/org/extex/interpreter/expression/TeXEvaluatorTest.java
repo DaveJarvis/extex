@@ -24,16 +24,17 @@ import junit.framework.TestCase;
 import org.extex.core.count.Count;
 import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.exception.helping.MissingNumberException;
 import org.extex.interpreter.expression.term.Accumulator;
 import org.extex.interpreter.max.StringSource;
 import org.extex.interpreter.max.context.ContextImpl;
 import org.extex.scanner.type.token.TokenFactoryImpl;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class is a test suite for the expression evaluator.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4787 $
  */
@@ -41,7 +42,7 @@ public class TeXEvaluatorTest extends TestCase {
 
     /**
      * Main program.
-     *
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -51,13 +52,16 @@ public class TeXEvaluatorTest extends TestCase {
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @param s ...
      * @return ...
-     *
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
-    protected Accumulator apply(String s) throws InterpreterException {
+    protected Accumulator apply(String s)
+            throws HelpingException,
+                TypesetterException {
 
         Evaluator ev = getInstanceForTest();
         Accumulator accumulator = new Accumulator();
@@ -79,7 +83,7 @@ public class TeXEvaluatorTest extends TestCase {
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @return ...
      */
     Evaluator getInstanceForTest() {
@@ -88,10 +92,8 @@ public class TeXEvaluatorTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
@@ -99,16 +101,14 @@ public class TeXEvaluatorTest extends TestCase {
         try {
             apply("");
             assertFalse(true);
-        } catch (InterpreterException e) {
+        } catch (HelpingException e) {
             assertTrue(e instanceof MissingNumberException);
         }
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCount1() throws Exception {
@@ -121,10 +121,8 @@ public class TeXEvaluatorTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCount2() throws Exception {
@@ -137,10 +135,8 @@ public class TeXEvaluatorTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCount3() throws Exception {
@@ -153,10 +149,8 @@ public class TeXEvaluatorTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCount4() throws Exception {
@@ -169,10 +163,8 @@ public class TeXEvaluatorTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCountPlus1() throws Exception {

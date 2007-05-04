@@ -19,8 +19,8 @@
 
 package org.extex.interpreter.exception.helping;
 
+import org.extex.core.exception.GeneralException;
 import org.extex.framework.i18n.Localizer;
-import org.extex.interpreter.exception.InterpreterException;
 
 /**
  * This class provides an Exception with the possibility to provide additional
@@ -28,64 +28,74 @@ import org.extex.interpreter.exception.InterpreterException;
  * first level is the message and the second level is the additional help.
  * <p>
  * Both information strings are mapped via the
- * {@link org.extex.framework.i18n.Localizer Localizer} apparatus.
- * The key provided to this Exception is used as a key to find the format in
- * the resource bundle. For the localized message of the exception it is used
- * plain and for the help the string ".help" is appended.
+ * {@link org.extex.framework.i18n.Localizer Localizer} apparatus. The key
+ * provided to this Exception is used as a key to find the format in the
+ * resource bundle. For the localized message of the exception it is used plain
+ * and for the help the string ".help" is appended.
  * </p>
  * <h3>Example</h3>
  * <p>
  * Consider the following lines in the resource (properties) file for the
  * localizer:
  * </p>
+ * 
  * <pre>
  * abc.def = This is the message
  * abc.def.help = This is the help text. \
  *               It can even span several lines.
  * </pre>
+ * 
  * Then the following instruction can be used save:
+ * 
  * <pre>
  *     throw new HelpingException(localizer, "abc.def");
  * </pre>
+ * 
  * <p>
  * With this exception up to three arguments can be used. The String value of
  * those arguments are inserted into the message string for the placeholders
  * {0}, {1}, and {2}. Consider the following format definition in the resource
  * of the localizer:
  * </p>
+ * 
  * <pre>
  * ghi = This is the {0} message: {2}
  * </pre>
+ * 
  * Then the instruction
+ * 
  * <pre>
  *     new HelpingException(localizer, "ghi", "first", "second", "third");
  * </pre>
+ * 
  * will produce an exception with the following localized message:
+ * 
  * <pre>
  * This is the first message: third
  * </pre>
+ * 
  * </p>
  * <p>
  * Note that some special rules hold for strings in resource bundles:
  * <ul>
  * <li>The character <tt>\</tt> acts as escape character. In the combination
- *  <tt>\n</tt> it produces a newline.</li>
+ * <tt>\n</tt> it produces a newline.</li>
  * <li>If the character <tt>\</tt> is the last character of a line then the
- *  format is continued in the next line. The leading whitespace in the
- *  continuing line is silently removed.</li>
- * <li>The character <tt>'</tt> also has a special meaning. Thi usually means
- *  that you have to double a single quote in your format.</li>
+ * format is continued in the next line. The leading white-space in the
+ * continuing line is silently removed.</li>
+ * <li>The character <tt>'</tt> also has a special meaning. This usually
+ * means that you have to double a single quote in your format.</li>
  * </ul>
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4726 $
  */
-public class HelpingException extends InterpreterException {
+public class HelpingException extends GeneralException {
 
     /**
-     * The constant <tt>DEFAULT_ARGUMENT</tt> contains the argument if none
-     * is given.
+     * The constant <tt>DEFAULT_ARGUMENT</tt> contains the argument if none is
+     * given.
      */
     private static final String DEFAULT_ARGUMENT = "?";
 
@@ -96,7 +106,8 @@ public class HelpingException extends InterpreterException {
     private static final String DEFAULT_TAG = "GeneralDetailedException.help";
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 1L;
 
@@ -121,6 +132,12 @@ public class HelpingException extends InterpreterException {
     private Localizer localizer;
 
     /**
+     * The field <tt>processed</tt> contains the indicator that the exception
+     * has been processed.
+     */
+    private boolean processed = false;
+
+    /**
      * The field <tt>tag</tt> contains the name of the message to show.
      */
     private String tag;
@@ -140,12 +157,11 @@ public class HelpingException extends InterpreterException {
 
     /**
      * Creates a new object without variable arguments.
-     *
+     * 
      * @param messageTag the message
      * @param theLocalizer the localizer to use
      */
-    public HelpingException(Localizer theLocalizer,
-            String messageTag) {
+    public HelpingException(Localizer theLocalizer, String messageTag) {
 
         super();
         this.tag = messageTag;
@@ -157,13 +173,12 @@ public class HelpingException extends InterpreterException {
 
     /**
      * Creates a new object with one variable argument.
-     *
+     * 
      * @param messageTag the message
      * @param a1 the first argument
      * @param theLocalizer the localizer to use
      */
-    public HelpingException(Localizer theLocalizer,
-            String messageTag, String a1) {
+    public HelpingException(Localizer theLocalizer, String messageTag, String a1) {
 
         super();
         this.tag = messageTag;
@@ -175,14 +190,14 @@ public class HelpingException extends InterpreterException {
 
     /**
      * Creates a new object with two variable arguments.
-     *
+     * 
      * @param messageTag the message
      * @param a1 the first argument
      * @param a2 the second argument
      * @param theLocalizer the localizer to use
      */
-    public HelpingException(Localizer theLocalizer,
-            String messageTag, String a1, String a2) {
+    public HelpingException(Localizer theLocalizer, String messageTag,
+            String a1, String a2) {
 
         super();
         this.tag = messageTag;
@@ -194,16 +209,15 @@ public class HelpingException extends InterpreterException {
 
     /**
      * Creates a new object with three variable arguments.
-     *
+     * 
      * @param messageTag the message
      * @param a1 the first argument
      * @param a2 the second argument
      * @param a3 the third argument
      * @param theLocalizer the localizer to use
      */
-    public HelpingException(Localizer theLocalizer,
-            String messageTag, String a1, String a2,
-            String a3) {
+    public HelpingException(Localizer theLocalizer, String messageTag,
+            String a1, String a2, String a3) {
 
         super();
         this.tag = messageTag;
@@ -215,7 +229,7 @@ public class HelpingException extends InterpreterException {
 
     /**
      * Getter for further help information.
-     *
+     * 
      * @return the help information
      */
     public String getHelp() {
@@ -225,7 +239,7 @@ public class HelpingException extends InterpreterException {
 
     /**
      * Getter for further help information.
-     *
+     * 
      * @return the help information
      */
     public String getLocalizedMessage() {
@@ -234,6 +248,28 @@ public class HelpingException extends InterpreterException {
             return "???";
         }
         return localizer.format(tag, arg1, arg2, arg3);
+    }
+
+    
+    /**
+     * Getter for processed.
+     *
+     * @return the processed
+     */
+    public boolean isProcessed() {
+    
+        return processed;
+    }
+
+    
+    /**
+     * Setter for processed.
+     *
+     * @param processed the processed to set
+     */
+    public void setProcessed(boolean processed) {
+    
+        this.processed = processed;
     }
 
 }

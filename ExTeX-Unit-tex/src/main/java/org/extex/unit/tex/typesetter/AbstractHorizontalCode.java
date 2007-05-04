@@ -20,15 +20,14 @@
 package org.extex.unit.tex.typesetter;
 
 import org.extex.framework.i18n.LocalizerFactory;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.typesetter.ListMaker;
+import org.extex.typesetter.ListManager;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.listMaker.HorizontalListMaker;
-import org.extex.typesetter.listMaker.ListManager;
 
 /**
  * This an abstract base class for primitives in horizontal mode.
@@ -79,21 +78,18 @@ public abstract class AbstractHorizontalCode extends AbstractCode {
      *
      * @param typesetter the typesetter to ask for the mode
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     protected void switchToHorizontalMode(Typesetter typesetter)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException {
 
         Mode mode = typesetter.getMode();
         if (mode == Mode.VERTICAL || mode == Mode.INNER_VERTICAL) {
             ListManager man = typesetter.getManager();
             ListMaker hlist = new HorizontalListMaker(man, typesetter
                     .getLocator());
-            try {
-                man.push(hlist);
-            } catch (TypesetterException e) {
-                throw new InterpreterException(e);
-            }
+            man.push(hlist);
         }
     }
 

@@ -25,7 +25,6 @@ import org.extex.core.glue.FixedGlueComponent;
 import org.extex.core.glue.GlueComponent;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
-import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
 
 /**
  * This class implements the dimen value. This is a length with fixed point
@@ -164,13 +163,13 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      *
      * @param denom denominator to divide by
      *
-     * @throws ArithmeticOverflowException in case of a division by 0, i.e. if
+     * @throws ArithmeticException in case of a division by 0, i.e. if
      *  denom is 0.
      */
-    public void divide(long denom) throws ArithmeticOverflowException {
+    public void divide(long denom) throws ArithmeticException {
 
         if (denom == 0) {
-            throw new ArithmeticOverflowException("");
+            throw new ArithmeticException();
         }
         setValue(getValue() / denom);
     }

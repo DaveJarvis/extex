@@ -25,7 +25,7 @@ import java.util.List;
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.Tokenizer;
 import org.extex.scanner.exception.ScannerException;
@@ -234,9 +234,9 @@ public class StringSource extends Moritz {
      *
      * @param cs the character sequence to read from
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      */
-    public void reset(CharSequence cs) throws InterpreterException {
+    public void reset(CharSequence cs) throws HelpingException {
 
         closeAllStreams(getContext());
         addStream(new TStream(cs));

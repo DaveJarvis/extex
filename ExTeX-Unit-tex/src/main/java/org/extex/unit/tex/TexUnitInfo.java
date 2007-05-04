@@ -29,7 +29,7 @@ import org.extex.interpreter.context.ContextInternals;
 import org.extex.interpreter.context.observer.count.CountObservable;
 import org.extex.interpreter.context.observer.count.CountObserver;
 import org.extex.interpreter.context.observer.load.LoadedObserver;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.observer.command.CommandObservable;
 import org.extex.interpreter.unit.Loader;
 import org.extex.interpreter.unit.UnitInfo;
@@ -177,15 +177,12 @@ public class TexUnitInfo extends UnitInfo
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     * 
-     * @throws InterpreterException in case of an error
-     * 
      * @see org.extex.interpreter.unit.Loader#load(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void load(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+            throws HelpingException {
 
         receiveLoaded(context, source);
     }
@@ -208,7 +205,7 @@ public class TexUnitInfo extends UnitInfo
      *      org.extex.interpreter.TokenSource)
      */
     public void receiveLoaded(Context context, TokenSource source)
-            throws InterpreterException {
+            throws HelpingException {
 
         if (context.getCount(TRACING_COMMANDS).gt(Count.ZERO)) {
             if (notRegistered && source instanceof CommandObservable) {

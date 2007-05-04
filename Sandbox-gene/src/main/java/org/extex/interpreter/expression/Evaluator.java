@@ -28,7 +28,7 @@ import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.NoHelpException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.exception.helping.MissingNumberException;
@@ -44,11 +44,12 @@ import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides some static methods to parse an expression and return its
  * value.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4787 $
  */
@@ -62,9 +63,8 @@ public class Evaluator {
 
         /**
          * {@inheritDoc}
-         *
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(
-         *      org.extex.interpreter.expression.EType,
+         * 
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
         public EType apply(EType arg1, EType arg2) {
@@ -74,7 +74,7 @@ public class Evaluator {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -92,9 +92,8 @@ public class Evaluator {
 
         /**
          * {@inheritDoc}
-         *
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(
-         *      org.extex.interpreter.expression.EType,
+         * 
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
         public EType apply(EType arg1, EType arg2)
@@ -106,7 +105,7 @@ public class Evaluator {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -124,9 +123,8 @@ public class Evaluator {
 
         /**
          * {@inheritDoc}
-         *
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(
-         *      org.extex.interpreter.expression.EType,
+         * 
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
         public EType apply(EType arg1, EType arg2)
@@ -138,7 +136,7 @@ public class Evaluator {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -156,9 +154,8 @@ public class Evaluator {
 
         /**
          * {@inheritDoc}
-         *
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(
-         *      org.extex.interpreter.expression.EType,
+         * 
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
         public EType apply(EType arg1, EType arg2)
@@ -170,7 +167,7 @@ public class Evaluator {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -188,9 +185,8 @@ public class Evaluator {
 
         /**
          * {@inheritDoc}
-         *
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(
-         *      org.extex.interpreter.expression.EType,
+         * 
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
         public EType apply(EType arg1, EType arg2)
@@ -202,7 +198,7 @@ public class Evaluator {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -220,9 +216,8 @@ public class Evaluator {
 
         /**
          * {@inheritDoc}
-         *
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(
-         *      org.extex.interpreter.expression.EType,
+         * 
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
         public EType apply(EType arg1, EType arg2)
@@ -234,7 +229,7 @@ public class Evaluator {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -252,9 +247,8 @@ public class Evaluator {
 
         /**
          * {@inheritDoc}
-         *
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(
-         *      org.extex.interpreter.expression.EType,
+         * 
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
         public EType apply(EType arg1, EType arg2)
@@ -266,7 +260,7 @@ public class Evaluator {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -284,9 +278,8 @@ public class Evaluator {
 
         /**
          * {@inheritDoc}
-         *
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(
-         *      org.extex.interpreter.expression.EType,
+         * 
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
         public EType apply(EType arg1, EType arg2)
@@ -298,7 +291,7 @@ public class Evaluator {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -315,20 +308,18 @@ public class Evaluator {
 
         /**
          * {@inheritDoc}
-         *
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(
-         *      org.extex.interpreter.expression.EType,
+         * 
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
-        public EType apply(EType arg1, EType arg2)
-                throws HelpingException {
+        public EType apply(EType arg1, EType arg2) throws HelpingException {
 
             return arg1.subtract(arg2);
         }
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -346,9 +337,8 @@ public class Evaluator {
 
         /**
          * {@inheritDoc}
-         *
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(
-         *      org.extex.interpreter.expression.EType,
+         * 
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
         public EType apply(EType arg1, EType arg2)
@@ -360,7 +350,7 @@ public class Evaluator {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -377,20 +367,18 @@ public class Evaluator {
 
         /**
          * {@inheritDoc}
-         *
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(
-         *      org.extex.interpreter.expression.EType,
+         * 
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
-        public EType apply(EType arg1, EType arg2)
-                throws HelpingException {
+        public EType apply(EType arg1, EType arg2) throws HelpingException {
 
             return arg1.add(arg2);
         }
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -401,14 +389,14 @@ public class Evaluator {
     };
 
     /**
-     * The field <tt>UC_AND</tt> contains the Unicode code point for the logical
-     * and.
+     * The field <tt>UC_AND</tt> contains the Unicode code point for the
+     * logical and.
      */
     private static final int UC_AND = 0x2227;
 
     /**
-     * The field <tt>UC_GE</tt> contains the Unicode code point for the greater
-     * or equal sign.
+     * The field <tt>UC_GE</tt> contains the Unicode code point for the
+     * greater or equal sign.
      */
     private static final int UC_GE = 0x2265;
 
@@ -431,22 +419,22 @@ public class Evaluator {
     private static final int UC_NOT = 0xac;
 
     /**
-     * The field <tt>UC_OR</tt> contains the Unicode code point for the logical
-     * or.
+     * The field <tt>UC_OR</tt> contains the Unicode code point for the
+     * logical or.
      */
     private static final int UC_OR = 0x2228;
 
     /**
      * Find the next comma after any white-space and discard it and the
      * white-space afterwards.
-     *
-     * @param context the interpreter context
+     * 
+     * @param context the Helping context
      * @param source the source for new tokens
-     *
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
      */
-    protected static void skipComma(Context context,
-            TokenSource source) throws InterpreterException {
+    protected static void skipComma(Context context, TokenSource source)
+            throws HelpingException {
 
         Token t = source.getNonSpace(context);
         if (t == null) {
@@ -479,17 +467,17 @@ public class Evaluator {
 
     /**
      * Creates a new object from a token stream.
-     *
+     * 
      * @param term the terminal to store the result in
-     * @param context the interpreter context
+     * @param context the Helping context
      * @param source the source for next tokens
      * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
-    public void eval(EType term, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void eval(EType term, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         term.set(evalLogicExpressionOrFunctionalExpression(context, source,
             typesetter));
@@ -499,18 +487,18 @@ public class Evaluator {
 
     /**
      * Evaluate an expression.
-     *
-     * @param context the interpreter context
+     * 
+     * @param context the Helping context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the result
-     *
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
-    private EType evalExpression(Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    private EType evalExpression(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         return evalExpression(evalTerm(context, source, typesetter), //
             context, source, typesetter);
@@ -518,19 +506,19 @@ public class Evaluator {
 
     /**
      * Evaluate an expression.
-     *
+     * 
      * @param start ...
-     * @param context the interpreter context
+     * @param context the Helping context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the result
-     *
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     private EType evalExpression(EType start, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+            TokenSource source, Typesetter typesetter) throws HelpingException, TypesetterException {
 
         EType accumulator = null;
         EType savedValue = start;
@@ -575,17 +563,18 @@ public class Evaluator {
 
     /**
      * Evaluate some expression in parentheses.
-     *
-     * @param context the interpreter context
+     * 
+     * @param context the Helping context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the result
-     *
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     private EType evalGroup(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         EType a = evalTerm(context, source, typesetter);
         Token t = source.getNonSpace(context);
@@ -629,20 +618,21 @@ public class Evaluator {
 
     /**
      * Evaluate a logical junction expression.
-     *
+     * 
      * @param start the value of the first junction element
      * @param junctor the junctor, i.e. && or ||
-     * @param context the interpreter context
+     * @param context the Helping context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the result
-     *
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     private EType evalJunction(EType start, BinaryFunction junctor,
-            Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Context context, TokenSource source, Typesetter typesetter)
+            throws HelpingException, TypesetterException {
 
         EType a = start;
 
@@ -656,18 +646,18 @@ public class Evaluator {
 
     /**
      * Evaluate a logical expression.
-     *
-     * @param context the interpreter context
+     * 
+     * @param context the Helping context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the result
-     *
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
-    private EType evalLogicTerm(Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    private EType evalLogicTerm(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Token t = source.getNonSpace(context);
         if (t == null) {
@@ -676,7 +666,7 @@ public class Evaluator {
         } else if (t instanceof OtherToken) {
             switch (t.getChar().getCodePoint()) {
                 case '(':
-                    //TODO gene: unimplemented
+                    // TODO gene: unimplemented
                     throw new RuntimeException("unimplemented");
                 case '!':
                 case UC_NOT:
@@ -697,24 +687,24 @@ public class Evaluator {
         if (op != null) {
             return op.apply(accumulator, evalTerm(context, source, typesetter));
         }
-        //TODO gene: unimplemented
+        // TODO gene: unimplemented
         throw new RuntimeException("unimplemented");
     }
 
     /**
      * Evaluate a logical expression.
-     *
-     * @param context the interpreter context
+     * 
+     * @param context the Helping context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the result
-     *
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
-    private EType evalLogicExpressionOrFunctionalExpression(
-            Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+    private EType evalLogicExpressionOrFunctionalExpression(Context context,
+            TokenSource source, Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Token t = source.getNonSpace(context);
         if (t == null) {
@@ -752,17 +742,18 @@ public class Evaluator {
 
     /**
      * Evaluate a terminal.
-     *
-     * @param context the interpreter context
+     * 
+     * @param context the Helping context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the result
-     *
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     private EType evalTerm(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         for (Token t = source.getNonSpace(context); t != null; t =
                 source.getNonSpace(context)) {
@@ -806,8 +797,12 @@ public class Evaluator {
                 }
 
                 if (code instanceof ExpandableCode) {
-                    ((ExpandableCode) code).expand(Flags.NONE, context, source,
-                        typesetter);
+                    try {
+                        ((ExpandableCode) code).expand(Flags.NONE, context,
+                            source, typesetter);
+                    } catch (TypesetterException e) {
+                        throw new NoHelpException(e);
+                    }
                 } else {
                     break;
                 }
@@ -876,17 +871,17 @@ public class Evaluator {
 
     /**
      * Get an logical junction operator.
-     *
-     * @param context the interpreter context
+     * 
+     * @param context the Helping context
      * @param source the source for new tokens
-     *
+     * 
      * @return the function constant associated to the operator found or
-     *  <code>null</code> if none was found
-     *
-     * @throws InterpreterException in case of an error
+     *         <code>null</code> if none was found
+     * 
+     * @throws HelpingException in case of an error
      */
-    private BinaryFunction getJunctor(Context context,
-            TokenSource source) throws InterpreterException {
+    private BinaryFunction getJunctor(Context context, TokenSource source)
+            throws HelpingException {
 
         Token t = source.getNonSpace(context);
         Token t2;
@@ -921,18 +916,17 @@ public class Evaluator {
 
     /**
      * Get a certain junctor from the token stream.
-     *
+     * 
      * @param junctor the junctor to look for
-     * @param context the interpreter context
+     * @param context the Helping context
      * @param source the source for new tokens
-     *
+     * 
      * @return <code>true</code> iff the junctor has been found
-     *
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
      */
-    private boolean getJunctor(BinaryFunction junctor,
-            Context context, TokenSource source)
-            throws InterpreterException {
+    private boolean getJunctor(BinaryFunction junctor, Context context,
+            TokenSource source) throws HelpingException {
 
         Token t = source.getNonSpace(context);
 
@@ -975,7 +969,7 @@ public class Evaluator {
             source.push(t);
 
         } else {
-            //TODO gene: unimplemented
+            // TODO gene: unimplemented
             throw new RuntimeException("unimplemented");
         }
 
@@ -984,17 +978,17 @@ public class Evaluator {
 
     /**
      * Get an comparison operator.
-     *
-     * @param context the interpreter context
+     * 
+     * @param context the Helping context
      * @param source the source for new tokens
-     *
+     * 
      * @return the function constant associated to the operator found or
-     *  <code>null</code> if none was found
-     *
-     * @throws InterpreterException in case of an error
+     *         <code>null</code> if none was found
+     * 
+     * @throws HelpingException in case of an error
      */
     private BinaryFunction getOp(Context context, TokenSource source)
-            throws InterpreterException {
+            throws HelpingException {
 
         Token t = source.getNonSpace(context);
 
@@ -1041,10 +1035,9 @@ public class Evaluator {
     }
 
     /**
-     * Register a Terminal for usage.
-     * the registered instance is used to access the parser and converter
-     * methods.
-     *
+     * Register a Terminal for usage. the registered instance is used to access
+     * the parser and converter methods.
+     * 
      * @param parser the terminal parser instance
      */
     public void register(ETypeParser parser) {
@@ -1055,7 +1048,7 @@ public class Evaluator {
 
     /**
      * Register a function in the evaluator.
-     *
+     * 
      * @param name the name of the function in the expression
      * @param function the function object
      */
@@ -1066,7 +1059,7 @@ public class Evaluator {
 
     /**
      * Register a constant in the evaluator.
-     *
+     * 
      * @param name the name of the function in the expression
      * @param function the function object
      */
@@ -1077,7 +1070,7 @@ public class Evaluator {
 
     /**
      * Register a unary function in the evaluator.
-     *
+     * 
      * @param name the name of the function in the expression
      * @param function the function object
      */
@@ -1088,7 +1081,7 @@ public class Evaluator {
 
     /**
      * Register a binary function in the evaluator.
-     *
+     * 
      * @param name the name of the function in the expression
      * @param function the function object
      */

@@ -19,11 +19,12 @@
 
 package org.extex.unit.tex.macro;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.NoHelpException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.exception.helping.UndefinedControlSequenceException;
@@ -37,87 +38,96 @@ import org.extex.scanner.type.token.SpaceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.Relax;
 
 /**
  * This class provides an implementation for the primitive <code>\csname</code>.
- *
+ * 
  * <doc name="csname">
  * <h3>The Primitive <tt>\csname</tt></h3>
  * <p>
- *  The primitive <tt>\csname</tt> absorbs further tokens until a matching
- *  {@link org.extex.unit.tex.macro.Endcsname <tt>\endcsname</tt>}
- *  is found. The tokens found are expanded. Spaces are ignored. The expansion
- *  should lead to character tokens only. A new token is constructed from the
- *  characters. The escape character is the current escape character.
+ * The primitive <tt>\csname</tt> absorbs further tokens until a matching
+ * {@link org.extex.unit.tex.macro.Endcsname <tt>\endcsname</tt>} is found. The
+ * tokens found are expanded. Spaces are ignored. The expansion should lead to
+ * character tokens only. A new token is constructed from the characters. The
+ * escape character is the current escape character.
  * </p>
  * <p>
- *  If the meaning of the new token is currently not defined then it is defined
- *  to be equivalent to the original meaning of
- *  {@link org.extex.unit.tex.Relax \relax}.
+ * If the meaning of the new token is currently not defined then it is defined
+ * to be equivalent to the original meaning of
+ * {@link org.extex.unit.tex.Relax \relax}.
  * </p>
  * <p>
- *  If a non-expandable token is encountered then an error is raised.
+ * If a non-expandable token is encountered then an error is raised.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;csname&rang;
  *      &rarr; <tt>\csname</tt> &lang;...&rang; <tt>\endcsname</tt>  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \csname abc\endcsname  </pre>
- *  <p>
- *   This results in the control sequence <tt>\abc</tt>.
- *  </p>
- *
- *  <pre class="TeXSample">
+ * 
+ * <p>
+ * This results in the control sequence <tt>\abc</tt>.
+ * </p>
+ * 
+ * <pre class="TeXSample">
  *    \csname ab#de\endcsname  </pre>
- *  <p>
- *   The example is valid. It shows that even non-character tokens might be
- *   contained.
- *  </p>
- *
- *  <pre class="TeXSample">
+ * 
+ * <p>
+ * The example is valid. It shows that even non-character tokens might be
+ * contained.
+ * </p>
+ * 
+ * <pre class="TeXSample">
  *    \csname \TeX\endcsname  </pre>
- *  <p>
- *   This is usually illegal since <tt>\TeX</tt> is defined in plain to contain
- *   some non-expandable primitives.
- *  </p>
- *
+ * 
+ * <p>
+ * This is usually illegal since <tt>\TeX</tt> is defined in plain to contain
+ * some non-expandable primitives.
+ * </p>
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
 public class Csname extends AbstractCode implements ExpandableCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 04022007L;
 
     /**
-     * Expand tokens and collect the result until <tt>\endcsname</tt> is found.
-     * In fact the termination condition is that a Token is found which is
-     * assigned to {@link Endcsname Endcsname}.
-     *
+     * Expand tokens and collect the result until <tt>\endcsname</tt> is
+     * found. In fact the termination condition is that a Token is found which
+     * is assigned to {@link Endcsname Endcsname}.
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param loc the localizer
-     *
+     * 
      * @return the Tokens found while scanning the input tokens
-     *
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      * @throws ConfigurationException in case of an configuration error
      */
-    public static Tokens scanToEndCsname(Context context,
-            TokenSource source, Typesetter typesetter,
-            Localizer loc)
-            throws InterpreterException {
+    public static Tokens scanToEndCsname(Context context, TokenSource source,
+            Typesetter typesetter, Localizer loc)
+            throws HelpingException,
+                ConfigurationException,
+                TypesetterException {
 
         Tokens toks = new Tokens();
         for (Token t = source.getToken(context); t != null; t =
@@ -156,7 +166,7 @@ public class Csname extends AbstractCode implements ExpandableCode {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Csname(String name) {
@@ -166,16 +176,13 @@ public class Csname extends AbstractCode implements ExpandableCode {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Tokens toks =
                 scanToEndCsname(context, source, typesetter, getLocalizer());
@@ -192,22 +199,22 @@ public class Csname extends AbstractCode implements ExpandableCode {
             }
             source.push(t);
         } catch (CatcodeException e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void expand(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void expand(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter)
+            throws HelpingException,
+                ConfigurationException,
+                TypesetterException {
 
         Tokens toks =
                 scanToEndCsname(context, source, typesetter, getLocalizer());
@@ -224,7 +231,7 @@ public class Csname extends AbstractCode implements ExpandableCode {
             }
             source.push(t);
         } catch (CatcodeException e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
     }
 

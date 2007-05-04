@@ -30,6 +30,7 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.macro.Let;
 
 /**
@@ -99,7 +100,7 @@ public class Import extends Let {
      */
     public void assign(Flags prefix, Context context,
             TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException {
 
         String ns;
         try {

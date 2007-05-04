@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,15 +22,15 @@ package org.extex.unit.dynamic;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This interface describes the capabilities needed for the NativeDef to
- * work on the class.
- * This interface is meant to enable to integration of macro definitions
- * implemented in arbitrary programming languages.
- *
+ * This interface describes the capabilities needed for the NativeDef to work on
+ * the class. This interface is meant to enable to integration of macro
+ * definitions implemented in arbitrary programming languages.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -38,15 +38,16 @@ public interface Definer {
 
     /**
      * Perform a define operation
-     *
+     * 
      * @param prefix the flags
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     void define(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException;
+            Typesetter typesetter) throws HelpingException, TypesetterException;
 
 }

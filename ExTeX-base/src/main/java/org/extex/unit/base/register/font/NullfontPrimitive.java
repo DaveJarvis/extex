@@ -23,7 +23,7 @@ import org.extex.font.type.other.NullFont;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ComparableCode;
 import org.extex.interpreter.type.font.Font;
@@ -31,6 +31,7 @@ import org.extex.interpreter.type.font.FontConvertible;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
@@ -90,7 +91,7 @@ public class NullfontPrimitive extends AbstractCode
      *      org.extex.interpreter.context.Context)
      */
     public boolean compare(Token token, Context context)
-            throws InterpreterException {
+            throws HelpingException {
 
         return (token instanceof CodeToken)
                 && context.getCode((CodeToken) token) == this;
@@ -105,7 +106,7 @@ public class NullfontPrimitive extends AbstractCode
      *      org.extex.typesetter.Typesetter)
      */
     public Font convertFont(Context context, TokenSource source,
-            Typesetter typesetter) {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         return nullFont;
     }
@@ -120,7 +121,7 @@ public class NullfontPrimitive extends AbstractCode
      *      org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter) {
+            TokenSource source, Typesetter typesetter) throws HelpingException, TypesetterException {
 
         context.set(nullFont, prefix.clearGlobal());
     }

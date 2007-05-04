@@ -19,64 +19,117 @@
 
 package org.extex.unit.etex.group;
 
-import org.extex.core.count.CountConvertible;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupTypeVisitor;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
+import org.extex.scanner.CountConvertible;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
  * <code>\currentgrouptype</code>.
- *
+ * 
  * <doc name="currentgrouptype">
  * <h3>The Count Primitive <tt>\currentgrouptype</tt></h3>
  * <p>
- *  The count primitive <tt>\currentgrouptype</tt> is a read-only count register.
- *  It provides access to the current group type. This group type is
- *  characterized according to the following list:
+ * The count primitive <tt>\currentgrouptype</tt> is a read-only count
+ * register. It provides access to the current group type. This group type is
+ * characterized according to the following list:
  * </p>
  * <table format="rl">
- *  <tr><td> 0</td><td>bottom level (no group)</td></tr>
- *  <tr><td> 1</td><td>simple group</td></tr>
- *  <tr><td> 2</td><td>hbox group</td></tr>
- *  <tr><td> 3</td><td>adjusted hbox group</td></tr>
- *  <tr><td> 4</td><td>vbox group</td></tr>
- *  <tr><td> 5</td><td>vtop group</td></tr>
- *  <tr><td> 6</td><td>align group</td></tr>
- *  <tr><td> 7</td><td>no align group</td></tr>
- *  <tr><td> 8</td><td>output group</td></tr>
- *  <tr><td> 9</td><td>math group</td></tr>
- *  <tr><td>10</td><td>disc group</td></tr>
- *  <tr><td>11</td><td>insert group</td></tr>
- *  <tr><td>12</td><td>vcenter group</td></tr>
- *  <tr><td>13</td><td>math choice group</td></tr>
- *  <tr><td>14</td><td>semi simple group</td></tr>
- *  <tr><td>15</td><td>math shift group</td></tr>
- *  <tr><td>16</td><td>math left group</td></tr>
+ * <tr>
+ * <td> 0</td>
+ * <td>bottom level (no group)</td>
+ * </tr>
+ * <tr>
+ * <td> 1</td>
+ * <td>simple group</td>
+ * </tr>
+ * <tr>
+ * <td> 2</td>
+ * <td>hbox group</td>
+ * </tr>
+ * <tr>
+ * <td> 3</td>
+ * <td>adjusted hbox group</td>
+ * </tr>
+ * <tr>
+ * <td> 4</td>
+ * <td>vbox group</td>
+ * </tr>
+ * <tr>
+ * <td> 5</td>
+ * <td>vtop group</td>
+ * </tr>
+ * <tr>
+ * <td> 6</td>
+ * <td>align group</td>
+ * </tr>
+ * <tr>
+ * <td> 7</td>
+ * <td>no align group</td>
+ * </tr>
+ * <tr>
+ * <td> 8</td>
+ * <td>output group</td>
+ * </tr>
+ * <tr>
+ * <td> 9</td>
+ * <td>math group</td>
+ * </tr>
+ * <tr>
+ * <td>10</td>
+ * <td>disc group</td>
+ * </tr>
+ * <tr>
+ * <td>11</td>
+ * <td>insert group</td>
+ * </tr>
+ * <tr>
+ * <td>12</td>
+ * <td>vcenter group</td>
+ * </tr>
+ * <tr>
+ * <td>13</td>
+ * <td>math choice group</td>
+ * </tr>
+ * <tr>
+ * <td>14</td>
+ * <td>semi simple group</td>
+ * </tr>
+ * <tr>
+ * <td>15</td>
+ * <td>math shift group</td>
+ * </tr>
+ * <tr>
+ * <td>16</td>
+ * <td>math left group</td>
+ * </tr>
  * </table>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;currentgrouptype&rang;
  *      &rarr; <tt>\currentgrouptype</tt>  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \count0=\currentgrouptype  </pre>
  *  <pre class="TeXSample">
  *    \showthe\currentgrouptype  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4435 $
  */
@@ -89,161 +142,162 @@ public class Currentgrouptype extends AbstractCode
      * The constant <tt>GTV</tt> contains the group visitor to map the group
      * type to the integer representation of <logo>eTeX</logo>.
      */
-    private static final GroupTypeVisitor GTV = new GroupTypeVisitor() {
+    private static final GroupTypeVisitor GTV =
+            new GroupTypeVisitor<Long, Object>() {
 
-        /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitAdjustedHboxGroup(
-         *     java.lang.Object)
-         */
-        public Object visitAdjustedHboxGroup(Object arg) {
+                /**
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitAdjustedHboxGroup(
+                 *      java.lang.Object)
+                 */
+                public Long visitAdjustedHboxGroup(Object arg) {
 
-            return ADJUSTED_HBOX;
-        }
+                    return ADJUSTED_HBOX;
+                }
 
-        /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitAlignGroup(
-         *     java.lang.Object)
-         */
-        public Object visitAlignGroup(Object arg) {
+                /**
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitAlignGroup(
+                 *      java.lang.Object)
+                 */
+                public Long visitAlignGroup(Object arg) {
 
-            return ALIGNMENT;
-        }
+                    return ALIGNMENT;
+                }
 
-        /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitBottomLevelGroup(
-         *     java.lang.Object)
-         */
-        public Object visitBottomLevelGroup(Object arg) {
+                /**
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitBottomLevelGroup(
+                 *      java.lang.Object)
+                 */
+                public Long visitBottomLevelGroup(Object arg) {
 
-            return BOTTOM_LEVEL;
-        }
+                    return BOTTOM_LEVEL;
+                }
 
-        /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitDiscGroup(
-         *     java.lang.Object)
-         */
-        public Object visitDiscGroup(Object arg) {
+                /**
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitDiscGroup(
+                 *      java.lang.Object)
+                 */
+                public Long visitDiscGroup(Object arg) {
 
-            return DISCRETIONARY;
-        }
+                    return DISCRETIONARY;
+                }
 
-        /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitHboxGroup(
-         *     java.lang.Object)
-         */
-        public Object visitHboxGroup(Object arg) {
+                /**
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitHboxGroup(
+                 *      java.lang.Object)
+                 */
+                public Long visitHboxGroup(Object arg) {
 
-            return HBOX;
-        }
+                    return HBOX;
+                }
 
-        /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitInsertGroup(
-         *     java.lang.Object)
-         */
-        public Object visitInsertGroup(Object arg) {
+                /**
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitInsertGroup(
+                 *      java.lang.Object)
+                 */
+                public Long visitInsertGroup(Object arg) {
 
-            return INSERT;
-        }
+                    return INSERT;
+                }
 
-        /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathChoiceGroup(
-         *     java.lang.Object)
-         */
-        public Object visitMathChoiceGroup(Object arg) {
+                /**
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathChoiceGroup(
+                 *      java.lang.Object)
+                 */
+                public Long visitMathChoiceGroup(Object arg) {
 
-            return MATH_CHOICE;
-        }
+                    return MATH_CHOICE;
+                }
 
-        /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathGroup(
-         *     java.lang.Object)
-         */
-        public Object visitMathGroup(Object arg) {
+                /**
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathGroup(
+                 *      java.lang.Object)
+                 */
+                public Long visitMathGroup(Object arg) {
 
-            return MATH;
-        }
+                    return MATH;
+                }
 
-        /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathLeftGroup(
-         *     java.lang.Object)
-         */
-        public Object visitMathLeftGroup(Object arg) {
+                /**
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathLeftGroup(
+                 *      java.lang.Object)
+                 */
+                public Long visitMathLeftGroup(Object arg) {
 
-            return MATH_LEFT;
-        }
+                    return MATH_LEFT;
+                }
 
-        /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathShiftGroup(
-         *     java.lang.Object)
-         */
-        public Object visitMathShiftGroup(Object arg) {
+                /**
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathShiftGroup(
+                 *      java.lang.Object)
+                 */
+                public Long visitMathShiftGroup(Object arg) {
 
-            return MATH_SHIFT;
-        }
+                    return MATH_SHIFT;
+                }
 
-        /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitNoAlignGroup(
-         *     java.lang.Object)
-         */
-        public Object visitNoAlignGroup(Object arg) {
+                /**
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitNoAlignGroup(
+                 *      java.lang.Object)
+                 */
+                public Long visitNoAlignGroup(Object arg) {
 
-            return NO_ALIGN;
-        }
+                    return NO_ALIGN;
+                }
 
-        /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitOutputGroup(
-         *     java.lang.Object)
-         */
-        public Object visitOutputGroup(Object arg) {
+                /**
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitOutputGroup(
+                 *      java.lang.Object)
+                 */
+                public Long visitOutputGroup(Object arg) {
 
-            return OUTPUT;
-        }
+                    return OUTPUT;
+                }
 
-        /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitSemiSimpleGroup(
-         *     java.lang.Object)
-         */
-        public Object visitSemiSimpleGroup(Object arg) {
+                /**
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitSemiSimpleGroup(
+                 *      java.lang.Object)
+                 */
+                public Long visitSemiSimpleGroup(Object arg) {
 
-            return SEMI_SIMPLE;
-        }
+                    return SEMI_SIMPLE;
+                }
 
-        /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitSimpleGroup(
-         *     java.lang.Object)
-         */
-        public Object visitSimpleGroup(Object arg) {
+                /**
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitSimpleGroup(
+                 *      java.lang.Object)
+                 */
+                public Long visitSimpleGroup(Object arg) {
 
-            return SIMPLE;
-        }
+                    return SIMPLE;
+                }
 
-        /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVboxGroup(
-         *     java.lang.Object)
-         */
-        public Object visitVboxGroup(Object arg) {
+                /**
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVboxGroup(
+                 *      java.lang.Object)
+                 */
+                public Long visitVboxGroup(Object arg) {
 
-            return VBOX;
-        }
+                    return VBOX;
+                }
 
-        /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVcenterGroup(
-         *     java.lang.Object)
-         */
-        public Object visitVcenterGroup(Object arg) {
+                /**
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVcenterGroup(
+                 *      java.lang.Object)
+                 */
+                public Long visitVcenterGroup(Object arg) {
 
-            return VCENTER;
-        }
+                    return VCENTER;
+                }
 
-        /**
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVtopGroup(
-         *     java.lang.Object)
-         */
-        public Object visitVtopGroup(Object arg) {
+                /**
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVtopGroup(
+                 *      java.lang.Object)
+                 */
+                public Long visitVtopGroup(Object arg) {
 
-            return VTOP;
-        }
-    };
+                    return VTOP;
+                }
+            };
 
     /**
      * The field <tt>BOTTOM_LEVEL</tt> contains the return value for a bottom
@@ -263,12 +317,14 @@ public class Currentgrouptype extends AbstractCode
     private static final Long DISCRETIONARY = new Long(10);
 
     /**
-     * The field <tt>INSERT</tt> contains the return value for an insert group.
+     * The field <tt>INSERT</tt> contains the return value for an insert
+     * group.
      */
     private static final Long INSERT = new Long(11);
 
     /**
-     * The field <tt>VCENTER</tt> contains the return value for a vcenter group.
+     * The field <tt>VCENTER</tt> contains the return value for a vcenter
+     * group.
      */
     private static final Long VCENTER = new Long(12);
 
@@ -285,8 +341,8 @@ public class Currentgrouptype extends AbstractCode
     private static final Long SEMI_SIMPLE = new Long(14);
 
     /**
-     * The field <tt>MATH_SHIFT</tt> contains the return value for a math shift
-     * group.
+     * The field <tt>MATH_SHIFT</tt> contains the return value for a math
+     * shift group.
      */
     private static final Long MATH_SHIFT = new Long(15);
 
@@ -347,7 +403,7 @@ public class Currentgrouptype extends AbstractCode
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Currentgrouptype(String name) {
@@ -356,52 +412,26 @@ public class Currentgrouptype extends AbstractCode
     }
 
     /**
-     * This method converts a register into a count. It might be necessary to
-     * read further tokens to determine which value to use. For instance an
-     * additional register number might be required. In this case the additional
-     * arguments Context and TokenSource can be used.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use for conversion
-     *
-     * @return the converted value
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.core.count.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         return ((Long) context.getGroupType().visit(GTV, null)).longValue();
     }
 
     /**
-     * This method is the getter for the description of the primitive.
-     *
-     * @param context the interpreter context
-     * @param source the source for further tokens to qualify the request
-     * @param typesetter the typesetter to use
-     *
-     * @return the description of the primitive as list of Tokens
-     *
-     * @throws InterpreterException in case of an error
-     * @throws CatcodeException in case of an error in token creation
-     * @throws ConfigurationException in case of an configuration error
-     *
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public Tokens the(Context context, TokenSource source,
-            Typesetter typesetter)
-            throws InterpreterException,
-                CatcodeException {
+    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
+            throws CatcodeException,
+                HelpingException, TypesetterException {
 
         return context.getTokenFactory().toTokens( //
             convertCount(context, source, typesetter));

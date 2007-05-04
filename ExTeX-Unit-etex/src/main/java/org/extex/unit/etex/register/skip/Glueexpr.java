@@ -20,12 +20,13 @@
 package org.extex.unit.etex.register.skip;
 
 import org.extex.core.muskip.Muskip;
-import org.extex.core.muskip.MuskipConvertible;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.scanner.MuskipConvertible;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
@@ -84,7 +85,7 @@ public class Glueexpr extends AbstractCode implements MuskipConvertible {
      */
     public Muskip convertMuskip(Context context,
             TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException {
 
         //TODO gene: unimplemented
         throw new RuntimeException("unimplemented");

@@ -19,16 +19,17 @@
 
 package org.extex.unit.tex.register.count;
 
-import org.extex.core.count.CountParser;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.InitializableCode;
+import org.extex.scanner.CountParser;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the count valued primitives like
@@ -120,15 +121,13 @@ public class IntegerParameter extends CountPrimitive
      * @param source the source of information for the initialization
      * @param typesetter the typesetter
      *
-     * @throws InterpreterException in case of an error
-     *
      * @see org.extex.interpreter.type.InitializableCode#init(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
     public void init(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         if (source != null) {
             Token t = source.getToken(context);

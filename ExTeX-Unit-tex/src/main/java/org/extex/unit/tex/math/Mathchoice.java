@@ -23,8 +23,9 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.listMaker.math.NoadConsumer;
 import org.extex.typesetter.type.noad.ChoiceNoad;
 import org.extex.typesetter.type.noad.Noad;
@@ -32,56 +33,59 @@ import org.extex.typesetter.type.noad.Noad;
 /**
  * This class provides an implementation for the primitive
  * <code>\mathchoice</code>.
- *
+ * 
  * <doc name="mathchoice">
  * <h3>The Math Primitive <tt>\mathchoice</tt></h3>
  * <p>
- *  The math primitive <tt>\mathchoice</tt> provides a switch on the current
- *  style of math processing. The math processing is in one of the styles
- *  <i>display</i>, <i>text</i>, <i>script</i>, and <i>scriptscript</i>. The
- *  math styles influence the size of the typeset material and the spacing. The
- *  primitive can be used to insert some material depending on the current
- *  math style.
+ * The math primitive <tt>\mathchoice</tt> provides a switch on the current
+ * style of math processing. The math processing is in one of the styles
+ * <i>display</i>, <i>text</i>, <i>script</i>, and <i>scriptscript</i>. The
+ * math styles influence the size of the typeset material and the spacing. The
+ * primitive can be used to insert some material depending on the current math
+ * style.
  * </p>
  * <p>
- *  For each of the styles the material to be used must be given. The current
- *  style determines which material should be expanded. The material for the
- *  other styles is discarded.
+ * For each of the styles the material to be used must be given. The current
+ * style determines which material should be expanded. The material for the
+ * other styles is discarded.
  * </p>
  * <p>
- *  The material is enclosed in braces &ndash; or to be precise in tokens with
- *  the catcodes 1 (left brace) and 2 (right brace). The four cases lead to four
- *  groups.
+ * The material is enclosed in braces &ndash; or to be precise in tokens with
+ * the catcodes 1 (left brace) and 2 (right brace). The four cases lead to four
+ * groups.
  * </p>
  * <p>
- *  Outside the math mode the primitive raises an error.
+ * Outside the math mode the primitive raises an error.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;mathchoice&rang;
  *       &rarr; <tt>\mathchoice</tt> {&lang;display material&rang;}{&lang;text material&rang;}{&lang;script material&rang;}{&lang;scriptscript material&rang;} </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \mathchoice{d}{t}{s}{ss}  </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
 public class Mathchoice extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for tracing and debugging
      */
     public Mathchoice(String name) {
@@ -90,26 +94,14 @@ public class Mathchoice extends AbstractMathCode {
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws TypesetterException, HelpingException {
 
         Flags f = prefix.copy();
         prefix.clear();

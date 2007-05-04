@@ -23,7 +23,7 @@ import de.dante.tex.TestTeX;
 import junit.framework.TestCase;
 
 /**
- * Test for the primivite \currentgrouplevel.
+ * Test for the primitive \currentgrouplevel.
  *
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
  * @version $Revision$

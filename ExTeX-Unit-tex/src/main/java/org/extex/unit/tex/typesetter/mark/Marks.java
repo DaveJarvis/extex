@@ -22,9 +22,10 @@ package org.extex.unit.tex.typesetter.mark;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.MarkNode;
 
 /**
@@ -95,7 +96,7 @@ public class Marks extends AbstractMarkCode {
      */
     public void execute(Flags prefix, Context context,
             TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException {
 
         String index = getKey(context, source, typesetter);
         Tokens toks =

@@ -24,9 +24,9 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.EofInToksException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.scanner.TokenStream;
@@ -37,39 +37,42 @@ import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
  * <code>\scantokens</code>.
- *
+ * 
  * <doc name="scantokens">
  * <h3>The Primitive <tt>\scantokens</tt></h3>
  * <p>
- *  The primitive <tt>\scantokens</tt> takes an unexpanded list of tokens and
- *  uses them as a new source for an input stream. For this purpose the tokens
- *  are translated into a string which is used as if it where written to a file
- *  and read back in.
+ * The primitive <tt>\scantokens</tt> takes an unexpanded list of tokens and
+ * uses them as a new source for an input stream. For this purpose the tokens
+ * are translated into a string which is used as if it where written to a file
+ * and read back in.
  * </p>
  * <p>
- *  The tokens from the tokens register <tt>\everyeof</tt> are inserted when the
- *  stream has no more tokens to read.
+ * The tokens from the tokens register <tt>\everyeof</tt> are inserted when
+ * the stream has no more tokens to read.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;scantokens&rang;
  *      &rarr; <tt>\scantokens</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *        &lang;tokens&rang;}  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \scantokens{abc}  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4435 $
  */
@@ -78,7 +81,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
     /**
      * This class encapsulates a Token stream pretending that it is a file
      * stream.
-     *
+     * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision:4435 $
      */
@@ -91,7 +94,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
 
         /**
          * Creates a new object.
-         *
+         * 
          * @param stream the stream
          */
         public TokenStreamProxy(TokenStream stream) {
@@ -102,9 +105,9 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
 
         /**
          * Close this stream if it is a file stream.
-         *
+         * 
          * @return <code>true</code> if the closing was successful
-         *
+         * 
          * @see org.extex.scanner.TokenStream#closeFileStream()
          */
         public boolean closeFileStream() {
@@ -114,19 +117,18 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
         }
 
         /**
-         * Get the next token from the token stream.
-         * If tokens are on the push-back stack then those are delivered otherwise
-         * new tokens might be extracted utilizing the token factory and the
-         * tokenizer.
-         *
+         * Get the next token from the token stream. If tokens are on the
+         * push-back stack then those are delivered otherwise new tokens might
+         * be extracted utilizing the token factory and the tokenizer.
+         * 
          * @param factory the token factory
          * @param tokenizer the tokenizer
-         *
+         * 
          * @return the next Token or <code>null</code> if no more tokens are
-         * available
-         *
+         *         available
+         * 
          * @throws ScannerException in case of an error
-         *
+         * 
          * @see org.extex.scanner.TokenStream#get(
          *      org.extex.scanner.type.token.TokenFactory,
          *      org.extex.scanner.Tokenizer)
@@ -187,7 +189,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param codeName the name of the primitive for debugging
      */
     public Scantokens(String codeName) {
@@ -196,28 +198,14 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     * @throws ConfigurationException in case of an configuration error
-     *
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Tokens tokens;
         try {
@@ -231,30 +219,17 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
     }
 
     /**
-     * This method takes the first token and expands it. The result is placed
-     * on the stack.
-     * This means that expandable code does one step of expansion and puts the
-     * result on the stack. To expand a token it might be necessary to consume
-     * further tokens.
-     *
-     * @param prefix the prefix flags controlling the expansion
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     * @throws ConfigurationException in case of an configuration error
-     *
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void expand(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+    public void expand(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter)
+            throws ConfigurationException,
+                HelpingException,
+                TypesetterException {
 
         execute(prefix, context, source, typesetter);
     }

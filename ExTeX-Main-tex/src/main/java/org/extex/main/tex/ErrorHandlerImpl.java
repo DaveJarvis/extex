@@ -24,6 +24,7 @@ import java.util.logging.Logger;
 
 import org.extex.core.Locator;
 import org.extex.core.exception.GeneralException;
+import org.extex.core.exception.ImpossibleException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.i18n.Localizable;
 import org.extex.framework.i18n.Localizer;
@@ -31,8 +32,6 @@ import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.ErrorHandler;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.ImpossibleException;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.interaction.InteractionVisitor;
@@ -76,181 +75,192 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
      * The field <tt>iv</tt> contains the interaction visitor with the
      * different behavior for the different interaction modes.
      */
-    private InteractionVisitor iv = new InteractionVisitor() {
+    private InteractionVisitor<TokenSource, Context, GeneralException> iv =
+            new InteractionVisitor<TokenSource, Context, GeneralException>() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.interaction.InteractionVisitor#visitBatchmode(
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
-         */
-        public boolean visitBatchmode(Object arg1, Object arg2, Object arg3)
-                throws GeneralException {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.interpreter.interaction.InteractionVisitor#visitBatchmode(
+                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 */
+                public boolean visitBatchmode(TokenSource source,
+                        Context context, GeneralException ex)
+                        throws GeneralException {
 
-            return true;
-        }
+                    return true;
+                }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.interaction.InteractionVisitor#visitErrorstopmode(
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
-         */
-        public boolean visitErrorstopmode(Object oSource, Object oContext,
-                Object oException) throws GeneralException {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.interpreter.interaction.InteractionVisitor#visitErrorstopmode(
+                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 */
+                public boolean visitErrorstopmode(TokenSource source,
+                        Context context, GeneralException ex)
+                        throws GeneralException {
 
-            TokenSource source = (TokenSource) oSource;
-            Context context = (Context) oContext;
-            GeneralException ex = (GeneralException) oException;
-            if (ex.getCause() instanceof ConfigurationException) {
-                showErrorLine(logger, ex.getCause().getLocalizedMessage(),
-                    source.getLocator());
-            } else {
-                showErrorLine(logger, ex.getLocalizedMessage(), source
-                    .getLocator());
-            }
-
-            try {
-                boolean firstHelp = true;
-
-                for (;;) {
-                    String line =
-                            promptAndReadLine(localizer
-                                .format("ErrorHandler.Prompt"));
-                    logger.config(line);
-
-                    if (line.equals("") || line.equals(NL)) {
-                        return true;
+                    if (ex.getCause() instanceof ConfigurationException) {
+                        showErrorLine(logger, ex.getCause()
+                            .getLocalizedMessage(), source.getLocator());
+                    } else {
+                        showErrorLine(logger, ex.getLocalizedMessage(), source
+                            .getLocator());
                     }
-                    switch (line.charAt(0)) {
-                        case '0':
-                        case '9':
-                        case '8':
-                        case '7':
-                        case '6':
-                        case '5':
-                        case '4':
-                        case '3':
-                        case '2':
-                        case '1':
-                            int count = line.charAt(0) - '0';
-                            if (line.length() > 1
-                                    && Character.isDigit(line.charAt(1))) {
-                                count = count * 10 + line.charAt(1) - '0';
-                            }
-                            while (count-- > 0) {
-                                source.getToken(context);
-                            }
-                            firstHelp = false;
-                            break;
-                        case 'd':
-                        case 'D':
-                            if (ENABLE_DEBUG) {
-                                // TTP[84] TTP[1338]
-                                handleDebug();
-                            } else {
-                                logger.severe(localizer
-                                    .format("ErrorHandler.help")
-                                        + NL);
-                            }
-                            break;
-                        case 'e':
-                        case 'E':
-                            // TTP[84]
-                            if (editHandler != null
-                                    && editHandler.edit(localizer, //
-                                        source.getLocator())) {
 
-                                context.setInteraction(Interaction.SCROLLMODE);
-                                logger.info(localizer
-                                    .format("ErrorHandler.scrollmode")
-                                        + NL);
+                    try {
+                        boolean firstHelp = true;
+
+                        for (;;) {
+                            String line =
+                                    promptAndReadLine(localizer
+                                        .format("ErrorHandler.Prompt"));
+                            logger.config(line);
+
+                            if (line.equals("") || line.equals(NL)) {
+                                return true;
                             }
-                            return true;
-                        case 'i':
-                        case 'I':
-                            source.addStream(source.getTokenStreamFactory()
-                                .newInstance(line.substring(1)));
-                            break;
-                        case 'h':
-                        case 'H':
+                            switch (line.charAt(0)) {
+                                case '0':
+                                case '9':
+                                case '8':
+                                case '7':
+                                case '6':
+                                case '5':
+                                case '4':
+                                case '3':
+                                case '2':
+                                case '1':
+                                    int count = line.charAt(0) - '0';
+                                    if (line.length() > 1
+                                            && Character
+                                                .isDigit(line.charAt(1))) {
+                                        count =
+                                                count * 10 + line.charAt(1)
+                                                        - '0';
+                                    }
+                                    while (count-- > 0) {
+                                        source.getToken(context);
+                                    }
+                                    firstHelp = false;
+                                    break;
+                                case 'd':
+                                case 'D':
+                                    if (ENABLE_DEBUG) {
+                                        // TTP[84] TTP[1338]
+                                        handleDebug();
+                                    } else {
+                                        logger.severe(localizer
+                                            .format("ErrorHandler.help")
+                                                + NL);
+                                    }
+                                    break;
+                                case 'e':
+                                case 'E':
+                                    // TTP[84]
+                                    if (editHandler != null
+                                            && editHandler.edit(localizer, //
+                                                source.getLocator())) {
 
-                            String help;
+                                        context
+                                            .setInteraction(Interaction.SCROLLMODE);
+                                        logger.info(localizer
+                                            .format("ErrorHandler.scrollmode")
+                                                + NL);
+                                    }
+                                    return true;
+                                case 'i':
+                                case 'I':
+                                    source.addStream(source
+                                        .getTokenStreamFactory().newInstance(
+                                            line.substring(1)));
+                                    break;
+                                case 'h':
+                                case 'H':
 
-                            if (firstHelp) {
-                                help = ex.getHelp();
-                                if (help == null) {
-                                    help = localizer.format(//
-                                        "ErrorHandler.noHelp");
-                                }
-                            } else {
-                                help = localizer.format(//
-                                    "ErrorHandler.noMoreHelp");
+                                    String help;
+
+                                    if (firstHelp) {
+                                        help = ex.getHelp();
+                                        if (help == null) {
+                                            help = localizer.format(//
+                                                "ErrorHandler.noHelp");
+                                        }
+                                    } else {
+                                        help = localizer.format(//
+                                            "ErrorHandler.noMoreHelp");
+                                    }
+
+                                    firstHelp = false;
+                                    logger.severe(help + NL);
+                                    break;
+                                case 'q':
+                                case 'Q':
+                                    context
+                                        .setInteraction(Interaction.BATCHMODE);
+                                    logger.info(localizer
+                                        .format("ErrorHandler.batchmode")
+                                            + NL);
+                                    return true;
+                                case 'r':
+                                case 'R':
+                                    context
+                                        .setInteraction(Interaction.NONSTOPMODE);
+                                    logger.info(localizer
+                                        .format("ErrorHandler.nonstopmode")
+                                            + NL);
+                                    return true;
+                                case 's':
+                                case 'S':
+                                    context
+                                        .setInteraction(Interaction.SCROLLMODE);
+                                    logger.info(localizer
+                                        .format("ErrorHandler.scrollmode")
+                                            + NL);
+                                    return true;
+                                case 'x':
+                                case 'X':
+                                    return false;
+                                default:
+                                    logger.severe(localizer
+                                        .format("ErrorHandler.help")
+                                            + NL);
                             }
+                        }
 
-                            firstHelp = false;
-                            logger.severe(help + NL);
-                            break;
-                        case 'q':
-                        case 'Q':
-                            context.setInteraction(Interaction.BATCHMODE);
-                            logger.info(localizer
-                                .format("ErrorHandler.batchmode")
-                                    + NL);
-                            return true;
-                        case 'r':
-                        case 'R':
-                            context.setInteraction(Interaction.NONSTOPMODE);
-                            logger.info(localizer
-                                .format("ErrorHandler.nonstopmode")
-                                    + NL);
-                            return true;
-                        case 's':
-                        case 'S':
-                            context.setInteraction(Interaction.SCROLLMODE);
-                            logger.info(localizer
-                                .format("ErrorHandler.scrollmode")
-                                    + NL);
-                            return true;
-                        case 'x':
-                        case 'X':
-                            return false;
-                        default:
-                            logger.severe(localizer.format("ErrorHandler.help")
-                                    + NL);
+                    } catch (ConfigurationException e) {
+                        throw new GeneralException(e);
                     }
                 }
 
-            } catch (ConfigurationException e) {
-                throw new GeneralException(e);
-            }
-        }
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.interpreter.interaction.InteractionVisitor#visitNonstopmode(
+                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 */
+                public boolean visitNonstopmode(TokenSource source,
+                        Context context, GeneralException ex)
+                        throws GeneralException {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.interaction.InteractionVisitor#visitNonstopmode(
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
-         */
-        public boolean visitNonstopmode(Object arg1, Object arg2, Object arg3)
-                throws GeneralException {
+                    return true;
+                }
 
-            return true;
-        }
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.interpreter.interaction.InteractionVisitor#visitScrollmode(
+                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 */
+                public boolean visitScrollmode(TokenSource source,
+                        Context context, GeneralException ex)
+                        throws GeneralException {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.interaction.InteractionVisitor#visitScrollmode(
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
-         */
-        public boolean visitScrollmode(Object oSource, Object oContext,
-                Object oException) throws GeneralException {
+                    return false;
+                }
 
-            return false;
-        }
-
-    };
+            };
 
     /**
      * The field <tt>localizer</tt> contains the localizer.
@@ -331,19 +341,20 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
     }
 
     /**
-     * @see org.extex.interpreter.ErrorHandler#handleError(
-     *      org.extex.core.exception.GeneralException,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.ErrorHandler#handleError(org.extex.core.exception.GeneralException,
      *      org.extex.scanner.type.token.Token,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.interpreter.context.Context)
      */
     public boolean handleError(GeneralException exception, Token t,
-            TokenSource source, Context context) throws InterpreterException {
+            TokenSource source, Context context) throws HelpingException {
 
         try {
             return context.getInteraction().visit(iv, source, context,
                 exception);
-        } catch (InterpreterException e) {
+        } catch (HelpingException e) {
             throw e;
         } catch (GeneralException e) {
             throw new ImpossibleException(e);
@@ -390,6 +401,8 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.ErrorHandler#setEditHandler(
      *      org.extex.main.errorHandler.editHandler.EditHandler)
      */
@@ -444,4 +457,5 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
 
         logger.severe(sb.toString());
     }
+
 }

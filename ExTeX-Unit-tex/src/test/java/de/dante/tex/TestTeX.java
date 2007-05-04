@@ -38,6 +38,7 @@ import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.InterpreterFactory;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.main.errorHandler.editHandler.EditHandler;
 import org.extex.scanner.type.token.Token;
 
@@ -72,7 +73,7 @@ public final class TestTeX {
          *      org.extex.interpreter.context.Context)
          */
         public boolean handleError(GeneralException e, Token token,
-                TokenSource source, Context context) {
+                TokenSource source, Context context) throws HelpingException {
 
             Assert.fail("error in tex document");
             return false; // not reached

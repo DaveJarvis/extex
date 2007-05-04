@@ -19,9 +19,6 @@
 
 package org.extex.core.glue;
 
-import org.extex.core.exception.GeneralException;
-import org.extex.scanner.type.token.TokenFactory;
-import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This interface describes the features of a
@@ -132,48 +129,49 @@ public interface FixedGlueComponent {
      */
     void toString(StringBuffer sb);
 
-    /**
-     * Determine the printable representation of the object and return it as a
-     * list of Tokens.
-     * The value returned is exactly the string which would be produced by
-     * <logo>TeX</logo> to print the Dimen. This means the result is expressed
-     * in pt and properly rounded to be read back in again without loss of
-     * information.
-     *
-     * @param factory the token factory to get the required tokens from
-     *
-     * @return the printable representation
-     *
-     * @throws GeneralException in case of an error
-     *
-     * @see "<logo>TeX</logo> &ndash; The Program [103]"
-     * @see #toToks(org.extex.scanner.type.tokens.Tokens,
-     *              org.extex.scanner.type.token.TokenFactory, char, char)
-     * @see #toString()
-     */
-    Tokens toToks(TokenFactory factory) throws GeneralException;
-
-    /**
-     * Determine the printable representation of the object and return it as a
-     * list of Tokens.
-     * The value returned is exactly the string which would be produced by
-     * <logo>TeX</logo> to print the Dimen. This means the result is expressed
-     * in pt and properly rounded to be read back in again without loss of
-     * information.
-     *
-     * @param toks the tokens to append to
-     * @param factory the token factory to get the required tokens from
-     * @param c1 the first character for the order 0 value
-     * @param c2 the second character for the order 0 value
-     *
-     * @throws GeneralException in case of an error
-     *
-     * @see "<logo>TeX</logo> &ndash; The Program [103]"
-     * @see #toToks(TokenFactory)
-     * @see #toString()
-     * @see #toString(StringBuffer)
-     */
-    void toToks(Tokens toks, TokenFactory factory, char c1, char c2)
-            throws GeneralException;
+    //TODO gene: remove?
+//    /**
+//     * Determine the printable representation of the object and return it as a
+//     * list of Tokens.
+//     * The value returned is exactly the string which would be produced by
+//     * <logo>TeX</logo> to print the Dimen. This means the result is expressed
+//     * in pt and properly rounded to be read back in again without loss of
+//     * information.
+//     *
+//     * @param factory the token factory to get the required tokens from
+//     *
+//     * @return the printable representation
+//     *
+//     * @throws GeneralException in case of an error
+//     *
+//     * @see "<logo>TeX</logo> &ndash; The Program [103]"
+//     * @see #toToks(org.extex.scanner.type.tokens.Tokens,
+//     *              org.extex.scanner.type.token.TokenFactory, char, char)
+//     * @see #toString()
+//     */
+//    Tokens toToks(TokenFactory factory) throws GeneralException;
+//
+//    /**
+//     * Determine the printable representation of the object and return it as a
+//     * list of Tokens.
+//     * The value returned is exactly the string which would be produced by
+//     * <logo>TeX</logo> to print the Dimen. This means the result is expressed
+//     * in pt and properly rounded to be read back in again without loss of
+//     * information.
+//     *
+//     * @param toks the tokens to append to
+//     * @param factory the token factory to get the required tokens from
+//     * @param c1 the first character for the order 0 value
+//     * @param c2 the second character for the order 0 value
+//     *
+//     * @throws GeneralException in case of an error
+//     *
+//     * @see "<logo>TeX</logo> &ndash; The Program [103]"
+//     * @see #toToks(TokenFactory)
+//     * @see #toString()
+//     * @see #toString(StringBuffer)
+//     */
+//    void toToks(Tokens toks, TokenFactory factory, char c1, char c2)
+//            throws GeneralException;
 
 }

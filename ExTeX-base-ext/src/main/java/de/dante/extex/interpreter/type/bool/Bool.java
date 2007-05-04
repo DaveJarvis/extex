@@ -21,23 +21,24 @@ package de.dante.extex.interpreter.type.bool;
 
 import java.io.Serializable;
 
-import org.extex.core.count.CountConvertible;
-import org.extex.core.count.CountParser;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Code;
+import org.extex.scanner.CountConvertible;
+import org.extex.scanner.CountParser;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 import de.dante.extex.interpreter.type.bool.exception.InterpreterNoBoolValueException;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
  * Bool
- *
+ * 
  * @author <a href="mailto:m.g.sn@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -63,8 +64,8 @@ public class Bool implements Serializable {
 
     /**
      * Creates a new object.
-     *
-     * @param val init with a boolean-value
+     * 
+     * @param val initial boolean value
      */
     public Bool(boolean val) {
 
@@ -73,17 +74,21 @@ public class Bool implements Serializable {
     }
 
     /**
-     * Creates a new object.
-     * Scan the <code>TokenSource</code> for a <code>Bool</code>.
-     * @param context   the context
-     * @param source    the token source
-     * @param typesetter TODO
-     * @throws InterpreterException in case of an error.
+     * Creates a new object. Scan the <code>TokenSource</code> for a
+     * <code>Bool</code>.
+     * 
+     * @param context the context
+     * @param source the token source
+     * @param typesetter the typesetter
+     * 
+     * @throws HelpingException in case of an error.
      * @throws ConfigurationException in case if a configuration error
+     * @throws TypesetterException in case of an error
      */
     public Bool(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+            throws HelpingException,
+                ConfigurationException,
+                TypesetterException {
 
         super();
         value = scanBool(context, source, typesetter);
@@ -91,17 +96,22 @@ public class Bool implements Serializable {
 
     /**
      * Scan the input stream for tokens making up a <code>Bool</code>.
-     *
-     * @param context   the context
-     * @param source    the token source
-     * @param typesetter TODO
+     * 
+     * @param context the context
+     * @param source the token source
+     * @param typesetter the typesetter
+     * 
      * @return the boolean value
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
      * @throws ConfigurationException in case if a configuration error
+     * @throws TypesetterException in case of an error in the typesetter
      */
-    private boolean scanBool(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+    private boolean scanBool(Context context, TokenSource source,
+            Typesetter typesetter)
+            throws HelpingException,
+                ConfigurationException,
+                TypesetterException {
 
         Token tok = source.scanNonSpace(context);
 
@@ -139,8 +149,12 @@ public class Bool implements Serializable {
 
     /**
      * Creates a new object.
-     * <p>0  -> false</p>
-     * <p>!= -> true</p>
+     * <p>
+     * 0 -> false
+     * </p>
+     * <p>!= -> true
+     * </p>
+     * 
      * @param l the value as long
      */
     public Bool(long l) {
@@ -153,15 +167,14 @@ public class Bool implements Serializable {
     }
 
     /**
-     * Creates a new object.
-     * Possible values are
-     * <tt>true</tt>, <tt>false</tt> or
-     * <tt>on</tt>, <tt>off</tt> or
-     * <tt>!0</tt>, <tt>0</tt>
-     * @param s     the value as String
-     * @throws InterpreterException if no boolean-value are found
+     * Creates a new object. Possible values are <tt>true</tt>,
+     * <tt>false</tt> or <tt>on</tt>, <tt>off</tt> or <tt>!0</tt>,
+     * <tt>0</tt>
+     * 
+     * @param s the value as String
+     * @throws HelpingException if no boolean-value are found
      */
-    public Bool(String s) throws InterpreterException {
+    public Bool(String s) throws HelpingException {
 
         if ("true".equalsIgnoreCase(s)) {
             value = true;
@@ -184,6 +197,7 @@ public class Bool implements Serializable {
 
     /**
      * Setter for the value.
+     * 
      * @param b the new value
      */
     public void setValue(boolean b) {
@@ -193,7 +207,7 @@ public class Bool implements Serializable {
 
     /**
      * Getter for the value
-     *
+     * 
      * @return the value
      */
     public boolean getValue() {
@@ -211,6 +225,7 @@ public class Bool implements Serializable {
 
     /**
      * Return the value as <code>String</code>
+     * 
      * @return the value as <code>String</code>
      */
     public String toString() {

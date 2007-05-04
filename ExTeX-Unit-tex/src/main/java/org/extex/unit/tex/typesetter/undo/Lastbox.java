@@ -22,7 +22,6 @@ package org.extex.unit.tex.typesetter.undo;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
@@ -30,46 +29,50 @@ import org.extex.interpreter.type.box.Boxable;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 
 /**
  * This class provides an implementation for the primitive <code>\lastbox</code>.
- *
+ * 
  * <doc name="lastbox">
  * <h3>The Primitive <tt>\lastbox</tt></h3>
  * <p>
- *  TODO missing documentation
+ * TODO missing documentation
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;lastbox&rang;
  *    &rarr; <tt>\lastbox</tt>  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \lastbox  </pre>
  *  <pre class="TeXSample">
  *    \box1=\lastbox  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
 public class Lastbox extends AbstractCode implements Boxable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Lastbox(String name) {
@@ -78,26 +81,14 @@ public class Lastbox extends AbstractCode implements Boxable {
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Mode mode = typesetter.getMode();
         if (mode.isMath() || mode == Mode.VERTICAL) {
@@ -105,38 +96,25 @@ public class Lastbox extends AbstractCode implements Boxable {
                 context.esc(getName()), mode.toString());
         }
 
-        //TODO gene: what's to do?
-        //throw new RuntimeException("unimplemented");
+        // TODO gene: what's to do?
+        // throw new RuntimeException("unimplemented");
     }
 
     /**
-     * Getter for the content as Box.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use
-     * @param insert the token to insert either at the beginning of the box or
-     *   after the box has been gathered. If it is <code>null</code> then
-     *   nothing is inserted
-     *
-     * @return an appropriate Box
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.box.Boxable#getBox(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter, Token)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.box.Boxable#getBox(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
+     *      org.extex.scanner.type.token.Token)
      */
     public Box getBox(Context context, TokenSource source,
-            Typesetter typesetter, Token insert)
-            throws InterpreterException {
+            Typesetter typesetter, Token insert) throws HelpingException, TypesetterException {
 
-//        Mode mode = typesetter.getMode();
-//        if (mode.isMath() || mode == Mode.VERTICAL) {
-//            throw new HelpingException(getLocalizer(), "TTP.LastBoxIn", //
-//                context.esc(getName()), mode.toString());
-//        }
+        // Mode mode = typesetter.getMode();
+        // if (mode.isMath() || mode == Mode.VERTICAL) {
+        // throw new HelpingException(getLocalizer(), "TTP.LastBoxIn", //
+        // context.esc(getName()), mode.toString());
+        // }
 
         Node nodes = typesetter.getLastNode();
         Box box = null;

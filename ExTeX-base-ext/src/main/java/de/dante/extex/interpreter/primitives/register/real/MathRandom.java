@@ -19,12 +19,12 @@
 
 package de.dante.extex.interpreter.primitives.register.real;
 
-import org.extex.core.count.CountConvertible;
 import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Theable;
+import org.extex.scanner.CountConvertible;
 import org.extex.typesetter.Typesetter;
 
 import de.dante.extex.interpreter.type.real.Real;
@@ -76,10 +76,9 @@ public class MathRandom extends AbstractMath
      * @param source the token source
      * @param typesetter ...
      * @return the real value
-     * @throws InterpreterException if a error occurred
      */
     protected Real calculate(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException {
 
         return new Real(Math.random());
     }

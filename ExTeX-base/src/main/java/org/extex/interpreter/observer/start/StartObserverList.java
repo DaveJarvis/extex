@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.interpreter.Interpreter;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 
 /**
  * This class provides a type-safe list of observers for the start event.
@@ -84,7 +84,7 @@ public final class StartObserverList implements StartObserver {
      *      org.extex.interpreter.Interpreter)
      */
     public void update(Interpreter interpreter)
-            throws InterpreterException {
+            throws HelpingException {
 
         for (StartObserver obs : list) {
             obs.update(interpreter);

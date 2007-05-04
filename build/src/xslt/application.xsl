@@ -94,20 +94,20 @@
 
  <!-- ===================================================================== -->
 <xsl:template match="component" mode="resource">
-  <include name="{@name}/src/java/**/*.properties"/>
-  <include name="{@name}/src/java/**/*.xml"/>
-  <include name="{@name}/src/java/**/*.txt"/>
-  <include name="{@name}/src/resources/**/*"/>
+  <include name="{@name}/src/main/java/**/*.properties"/>
+  <include name="{@name}/src/main/java/**/*.xml"/>
+  <include name="{@name}/src/main/java/**/*.txt"/>
+  <include name="{@name}/src/main/resources/**/*"/>
 </xsl:template>
 
  <!-- ===================================================================== -->
 <xsl:template match="component" mode="source">
-  <include name="{@name}/src/java"/>
+  <include name="{@name}/src/main/java"/>
 </xsl:template>
 
  <!-- ===================================================================== -->
 <xsl:template match="component" mode="sourceFiles">
-  <include name="{@name}/src/java/**/*.java"/>
+  <include name="{@name}/src/main/java/**/*.java"/>
 </xsl:template>
 
  <!-- ===================================================================== -->

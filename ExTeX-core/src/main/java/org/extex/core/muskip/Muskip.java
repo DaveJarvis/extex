@@ -21,26 +21,9 @@ package org.extex.core.muskip;
 
 import java.io.Serializable;
 
-import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
-import org.extex.core.exception.GeneralException;
 import org.extex.core.glue.FixedGlueComponent;
 import org.extex.core.glue.GlueComponent;
-import org.extex.core.scaled.ScaledNumber;
-import org.extex.framework.i18n.LocalizerFactory;
-import org.extex.interpreter.Flags;
-import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.exception.helping.EofException;
-import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.type.Code;
-import org.extex.interpreter.type.ExpandableCode;
-import org.extex.scanner.type.token.CodeToken;
-import org.extex.scanner.type.token.Token;
-import org.extex.scanner.type.token.TokenFactory;
-import org.extex.scanner.type.tokens.Tokens;
-import org.extex.typesetter.Typesetter;
 
 /**
  * This class provides a skip value with a variable length of order 0. The
@@ -56,102 +39,6 @@ public class Muskip extends Mudimen implements Serializable {
      * serialization.
      */
     protected static final long serialVersionUID = 2005L;
-
-    /**
-     * Creates a new object and fills it from a token stream.
-     * 
-     * @param context the processor context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return the value parsed
-     * 
-     * @throws InterpreterException in case of an error
-     */
-    public static Muskip parse(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
-
-        Token t;
-        for (;;) {
-            t = source.getNonSpace(context);
-            if (t == null) {
-                throw new EofException("mu");
-            } else if (t instanceof CodeToken) {
-                Code code = context.getCode((CodeToken) t);
-                if (code instanceof MuskipConvertible) {
-                    return new Muskip(((MuskipConvertible) code).convertMuskip(
-                        context, source, typesetter));
-                } else if (code instanceof MudimenConvertible) {
-                    long md =
-                            ((MudimenConvertible) code).convertMudimen(context,
-                                source, typesetter);
-                    return new Muskip(md);
-                } else if (code instanceof ExpandableCode) {
-                    ((ExpandableCode) code).expand(Flags.NONE, context, source,
-                        typesetter);
-                } else {
-                    break;
-                }
-            } else {
-                break;
-            }
-        }
-
-        long value = ScaledNumber.scanFloat(context, source, typesetter, t);
-        if (!source.getKeyword(context, "mu")) {
-            throw new HelpingException(LocalizerFactory
-                .getLocalizer(Muskip.class), "TTP.IllegalMu");
-        }
-        Muskip ms = new Muskip(new Dimen(value));
-
-        if (source.getKeyword(context, "plus")) {
-            ms.stretch = scanMuOrFill(context, source, typesetter);
-        }
-        if (source.getKeyword(context, "minus")) {
-            ms.shrink = scanMuOrFill(context, source, typesetter);
-        }
-        source.skipSpace();
-        ms.kill = false;
-        return ms;
-    }
-
-    /**
-     * Scan a math unit.
-     * 
-     * @param context the processor context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return the number of scaled points for the mu
-     * 
-     * @throws InterpreterException in case of an error
-     */
-    private static GlueComponent scanMuOrFill(Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
-
-        Token t = source.getToken(context);
-        if (t == null) {
-            throw new EofException("mu");
-        }
-        long value = ScaledNumber.scanFloat(context, source, typesetter, t);
-        if (source.getKeyword(context, "mu")) {
-            return new GlueComponent(value);
-        } else if (source.getKeyword(context, "fillll")) {
-            return new GlueComponent(value, 5);
-        } else if (source.getKeyword(context, "filll")) {
-            return new GlueComponent(value, 4);
-        } else if (source.getKeyword(context, "fill")) {
-            return new GlueComponent(value, 3);
-        } else if (source.getKeyword(context, "fil")) {
-            return new GlueComponent(value, 2);
-        } else if (source.getKeyword(context, "fi")) {
-            return new GlueComponent(value, 1);
-        }
-        throw new HelpingException(LocalizerFactory.getLocalizer(Muskip.class),
-            "TTP.IllegalMu");
-
-    }
 
     /**
      * The field <tt>kill</tt> contains the indicator that the following glue
@@ -222,9 +109,30 @@ public class Muskip extends Mudimen implements Serializable {
             FixedGlueComponent theShrink) {
 
         super(theLength.getValue());
+        if (theStretch != null) {
+            this.stretch = theStretch.copy();
+        }
+        if (theShrink != null) {
+            this.shrink = theShrink.copy();
+        }
+        this.kill = false;
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param theLength the natural length
+     * @param theStretch the stretchability
+     * @param theShrink the shrinkability
+     * @param kill the indicator for the killing behavior
+     */
+    public Muskip(FixedGlueComponent theLength, FixedGlueComponent theStretch,
+            FixedGlueComponent theShrink, boolean kill) {
+
+        super(theLength.getValue());
         this.stretch = theStretch.copy();
         this.shrink = theShrink.copy();
-        this.kill = false;
+        this.kill = kill;
     }
 
     /**
@@ -349,33 +257,35 @@ public class Muskip extends Mudimen implements Serializable {
         }
     }
 
-    /**
-     * Determine the printable representation of the object. The value returned
-     * is exactly the string which would be produced by <logo>TeX</logo> to
-     * print the muskip register.
-     * 
-     * @param factory the factory to get the tokens from
-     * 
-     * @return the string representation of this glue
-     * 
-     * @throws GeneralException in case of an error
-     * 
-     * @see "<logo>TeX</logo> &ndash; The Program [178,177]"
-     */
-    public Tokens toToks(TokenFactory factory) throws GeneralException {
-
-        Tokens toks = new Tokens();
-        super.toToks(toks, factory, 'm', 'u');
-
-        if (stretch.getValue() != 0) {
-            toks.add(factory.toTokens(" plus "));
-            stretch.toToks(toks, factory, 'm', 'u');
-        }
-        if (shrink.getValue() != 0) {
-            toks.add(factory.toTokens(" minus "));
-            shrink.toToks(toks, factory, 'm', 'u');
-        }
-        return toks;
-    }
+    // TODO gene: remove?
+    // /**
+    // * Determine the printable representation of the object. The value
+    // returned
+    // * is exactly the string which would be produced by <logo>TeX</logo> to
+    // * print the muskip register.
+    // *
+    // * @param factory the factory to get the tokens from
+    // *
+    // * @return the string representation of this glue
+    // *
+    // * @throws GeneralException in case of an error
+    // *
+    // * @see "<logo>TeX</logo> &ndash; The Program [178,177]"
+    // */
+    // public Tokens toToks(TokenFactory factory) throws GeneralException {
+    //
+    // Tokens toks = new Tokens();
+    // super.toToks(toks, factory, 'm', 'u');
+    //
+    // if (stretch.getValue() != 0) {
+    // toks.add(factory.toTokens(" plus "));
+    // stretch.toToks(toks, factory, 'm', 'u');
+    // }
+    // if (shrink.getValue() != 0) {
+    // toks.add(factory.toTokens(" minus "));
+    // shrink.toToks(toks, factory, 'm', 'u');
+    // }
+    // return toks;
+    // }
 
 }

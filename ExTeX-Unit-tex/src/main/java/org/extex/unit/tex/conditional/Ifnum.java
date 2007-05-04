@@ -19,68 +19,71 @@
 
 package org.extex.unit.tex.conditional;
 
-import org.extex.core.count.CountParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.scanner.CountParser;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.conditional.AbstractIf;
 
 /**
  * This class provides an implementation for the primitive <code>\ifnum</code>.
- *
+ * 
  * <doc name="ifnum">
  * <h3>The Primitive <tt>\ifnum</tt></h3>
  * <p>
- *  The primitive <tt>\ifnum</tt> provides a conditional which compares two
- *  numerical values. The comparison for equality, greater, and less are
- *  possible.
+ * The primitive <tt>\ifnum</tt> provides a conditional which compares two
+ * numerical values. The comparison for equality, greater, and less are
+ * possible.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;ifnum&rang;
  *      &rarr; <tt>\ifnum</tt> {@linkplain
- *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;op&rang; {@linkplain
- *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\fi</tt>
  *      | <tt>\ifnum</tt> {@linkplain
- *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;op&rang; {@linkplain
- *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt>
  *
  *    &lang;op&rang;
  *      &rarr; [&lt;]
  *      | [=]
  *      | [&gt;]  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \ifnum\count0&gt;42 abc \fi  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4439 $
  */
 public class Ifnum extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Ifnum(String name) {
@@ -89,26 +92,13 @@ public class Ifnum extends AbstractIf {
     }
 
     /**
-     * This method computes the boolean value of the conditional.
-     * If the result is <code>true</code> then the then branch is expanded and
-     * the else branch is skipped. Otherwise the then branch is skipped and the
-     * else branch is expanded.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @return the boolean value
-     *
-     * @throws InterpreterException in case of en error
-     *
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.unit.base.conditional.AbstractIf#conditional(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public boolean conditional(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         long value = CountParser.scanInteger(context, source, typesetter);
         Token rel = source.getToken(context);

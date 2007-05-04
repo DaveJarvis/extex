@@ -19,36 +19,40 @@
 
 package de.dante.extex.interpreter.primitives.register.real;
 
-import org.extex.core.count.CountConvertible;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.InterpreterExtensionException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.arithmetic.Advanceable;
 import org.extex.interpreter.type.arithmetic.Divideable;
 import org.extex.interpreter.type.arithmetic.Multiplyable;
+import org.extex.scanner.CountConvertible;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 import de.dante.extex.interpreter.context.ContextExtension;
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
- * This class provides an implementation for the real valued primitives.
- * It sets the named real register to the value given,
- * and as a side effect all prefixes are zeroed.
- *
- * <p>Example</p>
+ * This class provides an implementation for the real valued primitives. It sets
+ * the named real register to the value given, and as a side effect all prefixes
+ * are zeroed.
+ * 
+ * <p>
+ * Example
+ * </p>
+ * 
  * <pre>
  * \pi=3.1415
  * </pre>
- *
+ * 
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -68,7 +72,7 @@ public class NamedReal extends AbstractAssignment
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public NamedReal(String name) {
@@ -78,15 +82,14 @@ public class NamedReal extends AbstractAssignment
 
     /**
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+    public void assign(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter)
+            throws ConfigurationException,
+                HelpingException,
+                TypesetterException {
 
         if (context instanceof ContextExtension) {
 
@@ -105,13 +108,13 @@ public class NamedReal extends AbstractAssignment
 
     /**
      * set the value
-     *
-     * @param context    the interpreter context
-     * @param value      the new value as Real
-     * @throws InterpreterException if no extension is configured
+     * 
+     * @param context the interpreter context
+     * @param value the new value as Real
+     * 
+     * @throws HelpingException if no extension is configured
      */
-    public void set(Context context, Real value)
-            throws InterpreterException {
+    public void set(Context context, Real value) throws HelpingException {
 
         if (context instanceof ContextExtension) {
             ContextExtension contextextex = (ContextExtension) context;
@@ -123,13 +126,13 @@ public class NamedReal extends AbstractAssignment
 
     /**
      * Set the value
-     *
-     * @param context    the interpreter context
-     * @param value      the new value as String
-     * @throws InterpreterException if no extension is configured
+     * 
+     * @param context the interpreter context
+     * @param value the new value as String
+     * 
+     * @throws HelpingException if no extension is configured
      */
-    public void set(Context context, String value)
-            throws InterpreterException {
+    public void set(Context context, String value) throws HelpingException {
 
         if (context instanceof ContextExtension) {
             ContextExtension contextextex = (ContextExtension) context;
@@ -140,27 +143,15 @@ public class NamedReal extends AbstractAssignment
     }
 
     /**
-     * This method is the getter for the description of the primitive.
-     *
-     * @param context the interpreter context
-     * @param source the source for further tokens to qualify the request
-     * @param typesetter the typesetter to use
-     *
-     * @return the description of the primitive as list of Tokens
-     *
-     * @throws InterpreterException in case of an error
-     * @throws CatcodeException in case of an error in token creation
-     * @throws ConfigurationException in case of an configuration error
-     *
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public Tokens the(Context context, TokenSource source,
-            Typesetter typesetter)
-            throws InterpreterException,
-                CatcodeException {
+    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
+            throws CatcodeException,
+                HelpingException,
+                TypesetterException {
 
         if (context instanceof ContextExtension) {
             ContextExtension contextextex = (ContextExtension) context;
@@ -173,30 +164,32 @@ public class NamedReal extends AbstractAssignment
 
     /**
      * Return the key (the name of the primitive) for the register.
-     *
-     * @param context   the context
-     * @param source    the token source
+     * 
+     * @param context the context
+     * @param source the token source
      * @param typesetter TODO
+     * 
      * @return the key
-     * @throws InterpreterException in case of an error.
+     *
+     * @throws HelpingException in case of an error.
+     * @throws TypesetterException in case of an error in the typesetter
      */
-    protected String getKey(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         return getName();
     }
 
     /**
      * @see org.extex.interpreter.type.arithmetic.Advanceable#advance(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void advance(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+    public void advance(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter)
+            throws ConfigurationException,
+                HelpingException,
+                TypesetterException {
 
         if (context instanceof ContextExtension) {
 
@@ -215,16 +208,14 @@ public class NamedReal extends AbstractAssignment
     }
 
     /**
-     * @see org.extex.interpreter.type.arithmetic.Multiplyable#multiply(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.arithmetic.Multiplyable#multiply(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void multiply(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+    public void multiply(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         if (context instanceof ContextExtension) {
             ContextExtension contextextex = (ContextExtension) context;
@@ -243,16 +234,14 @@ public class NamedReal extends AbstractAssignment
     }
 
     /**
-     * @see org.extex.interpreter.type.arithmetic.Divideable#divide(
-     *       org.extex.interpreter.Flags,
-     *       org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.arithmetic.Divideable#divide(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void divide(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+    public void divide(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         if (context instanceof ContextExtension) {
             ContextExtension contextextex = (ContextExtension) context;
@@ -274,8 +263,8 @@ public class NamedReal extends AbstractAssignment
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
-    public Real convertReal(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public Real convertReal(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         if (context instanceof ContextExtension) {
             ContextExtension contextextex = (ContextExtension) context;
@@ -287,13 +276,13 @@ public class NamedReal extends AbstractAssignment
     }
 
     /**
-     * @see org.extex.core.count.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         if (context instanceof ContextExtension) {
             ContextExtension contextextex = (ContextExtension) context;

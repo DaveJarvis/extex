@@ -23,13 +23,14 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.InterpreterExtensionException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 import de.dante.extex.interpreter.context.ContextExtension;
 import de.dante.extex.interpreter.type.bool.Bool;
@@ -83,8 +84,7 @@ public class NamedBool extends AbstractAssignment
      */
     public void assign(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+            throws ConfigurationException, HelpingException, TypesetterException {
 
         if (context instanceof ContextExtension) {
 
@@ -106,9 +106,9 @@ public class NamedBool extends AbstractAssignment
      * 
      * @param context the interpreter context
      * @param value the new value
-     * @throws InterpreterException if the extension is not configured
+     * @throws HelpingException if the extension is not configured
      */
-    public void set(Context context, Bool value) throws InterpreterException {
+    public void set(Context context, Bool value) throws HelpingException {
 
         if (context instanceof ContextExtension) {
             ContextExtension contextextex = (ContextExtension) context;
@@ -123,9 +123,9 @@ public class NamedBool extends AbstractAssignment
      * 
      * @param context the interpreter context
      * @param value the new value as String
-     * @throws InterpreterException if the extension is not configured
+     * @throws HelpingException if the extension is not configured
      */
-    public void set(Context context, String value) throws InterpreterException {
+    public void set(Context context, String value) throws HelpingException {
 
         if (context instanceof ContextExtension) {
             ContextExtension contextextex = (ContextExtension) context;
@@ -143,18 +143,14 @@ public class NamedBool extends AbstractAssignment
      * @param typesetter the typesetter to use
      * 
      * @return the description of the primitive as list of Tokens
-     * 
-     * @throws InterpreterException in case of an error
      * @throws CatcodeException in case of an error in token creation
      * @throws ConfigurationException in case of an configuration error
-     * 
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException,
-                CatcodeException {
+            throws CatcodeException, HelpingException, TypesetterException {
 
         if (context instanceof ContextExtension) {
             ContextExtension contextextex = (ContextExtension) context;
@@ -171,11 +167,13 @@ public class NamedBool extends AbstractAssignment
      * @param context the context
      * @param source the token source
      * @param typesetter TODO
+     * 
      * @return the key
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException TODO
      */
     protected String getKey(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         return getName();
     }
@@ -186,7 +184,7 @@ public class NamedBool extends AbstractAssignment
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Bool convertBool(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         if (context instanceof ContextExtension) {
             ContextExtension contextextex = (ContextExtension) context;

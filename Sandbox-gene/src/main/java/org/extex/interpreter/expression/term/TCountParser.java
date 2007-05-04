@@ -19,17 +19,17 @@
 
 package org.extex.interpreter.expression.term;
 
-import org.extex.core.count.CountConvertible;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.expression.EType;
 import org.extex.interpreter.expression.ETypeParser;
 import org.extex.interpreter.expression.Evaluator;
 import org.extex.interpreter.expression.UnaryFunction;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ExpandableCode;
+import org.extex.scanner.CountConvertible;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.LetterToken;
@@ -38,6 +38,7 @@ import org.extex.scanner.type.token.SpaceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class implements the supporting functions for the date type
@@ -68,7 +69,7 @@ public final class TCountParser implements ETypeParser {
      */
     public EType convert(Code code, Context context,
             TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException {
 
         if (code instanceof CountConvertible) {
             return new TCount(((CountConvertible) code).convertCount(context,
@@ -86,7 +87,7 @@ public final class TCountParser implements ETypeParser {
      *      org.extex.typesetter.Typesetter)
      */
     public EType parse(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         long n = 0;
         Token t = source.getNonSpace(context);
@@ -260,7 +261,7 @@ public final class TCountParser implements ETypeParser {
              *      org.extex.interpreter.expression.EType)
              */
             public EType apply(EType accumulator)
-                    throws InterpreterException {
+                    throws HelpingException {
 
                 return new TCount().set(accumulator);
             }

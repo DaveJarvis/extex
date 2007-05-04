@@ -24,33 +24,36 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.tc.Direction;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive
- * <code>\textdir</code>.
- *
+ * This class provides an implementation for the primitive <code>\textdir</code>.
+ * 
  * <doc name="textdir">
  * <h3>The Primitive <tt>\textdir</tt></h3>
  * <p>
- *  TODO missing documentation
+ * TODO missing documentation
  * </p>
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;textdir&rang;
  *      &rarr; <tt>\textdir</tt> &lang;direction&rang;
  *
  *    &lang;direction&rang;
  *      &rarr; [TLRB][TLRB][TLRB]  </pre>
- *
+ * 
  * <h4>Examples</h4>
+ * 
  * <pre class="TeXSample">
  * \textdir TRT  </pre>
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4411 $
  */
@@ -64,7 +67,7 @@ public class Textdir extends AbstractDirCode {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Textdir(String name) {
@@ -73,27 +76,16 @@ public class Textdir extends AbstractDirCode {
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     * @throws ConfigurationException in case of an configuration error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException, ConfigurationException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter)
+            throws HelpingException,
+                ConfigurationException, TypesetterException {
 
         Direction dir = scanDir(source, context);
 

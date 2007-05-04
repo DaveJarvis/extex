@@ -21,7 +21,7 @@ package org.extex.unit.etex.conditional;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
@@ -88,15 +88,13 @@ public class Ifdefined extends AbstractIf {
      *
      * @return the boolean value
      *
-     * @throws InterpreterException in case of en error
-     *
      * @see org.extex.unit.base.conditional.AbstractIf#conditional(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
     public boolean conditional(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException {
 
         Token token = source.getToken(context);
 

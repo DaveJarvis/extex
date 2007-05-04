@@ -20,7 +20,7 @@
 package org.extex.interpreter.observer.start;
 
 import org.extex.interpreter.Interpreter;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 
 /**
  * This interface describes the ability to receive a notification just after
@@ -35,9 +35,8 @@ public interface StartObserver {
      * This method is meant to be invoked just after the start has occurred.
      *
      * @param interpreter the interpreter to be started
-     *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException TODO
      */
-    void update(Interpreter interpreter) throws InterpreterException;
+    void update(Interpreter interpreter) throws HelpingException;
 
 }

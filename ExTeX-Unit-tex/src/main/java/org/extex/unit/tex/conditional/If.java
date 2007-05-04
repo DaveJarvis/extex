@@ -22,26 +22,28 @@ package org.extex.unit.tex.conditional;
 import org.extex.core.UnicodeChar;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.conditional.AbstractIf;
 
 /**
  * This class provides an implementation for the primitive <code>\if</code>.
- *
+ * 
  * <doc name="if">
  * <h3>The Primitive <tt>\if</tt></h3>
  * <p>
- *  The primitive expands the tokens following it until two non-expandable tokens
- *  are found. The conditional is true iff the character codes of the two tokens
- *  agree.
+ * The primitive expands the tokens following it until two non-expandable tokens
+ * are found. The conditional is true iff the character codes of the two tokens
+ * agree.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;if&rang;
  *     &rarr; <tt>\if</tt> {@linkplain
  *       org.extex.interpreter.TokenSource#getToken(Context)
@@ -53,26 +55,28 @@ import org.extex.unit.base.conditional.AbstractIf;
  *       &lang;token<sub>1</sub>&rang;} {@linkplain
  *       org.extex.interpreter.TokenSource#getToken(Context)
  *       &lang;token<sub>2</sub>&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \if\a\x ok \fi  </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4439 $
  */
 public class If extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public If(String name) {
@@ -81,27 +85,13 @@ public class If extends AbstractIf {
     }
 
     /**
-     * This method computes the boolean value of the conditional.
-     * If the result is <code>true</code> then the then branch is expanded and
-     * the else branch is skipped. Otherwise the then branch is skipped and the
-     * else branch is expanded.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @return the boolean value
-     *
-     * @throws InterpreterException in case of en error
-     *
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.unit.base.conditional.AbstractIf#conditional(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public boolean conditional(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Token t1 = source.scanToken(context);
         Token t2 = source.scanToken(context);

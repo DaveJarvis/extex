@@ -19,29 +19,6 @@
 
 package org.extex.core.scaled;
 
-import org.extex.core.count.CountConvertible;
-import org.extex.core.count.CountParser;
-import org.extex.framework.i18n.LocalizerFactory;
-import org.extex.interpreter.Flags;
-import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
-import org.extex.interpreter.exception.helping.EofException;
-import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.exception.helping.MissingNumberException;
-import org.extex.interpreter.type.Code;
-import org.extex.interpreter.type.ExpandableCode;
-import org.extex.scanner.type.Catcode;
-import org.extex.scanner.type.CatcodeException;
-import org.extex.scanner.type.Namespace;
-import org.extex.scanner.type.token.CodeToken;
-import org.extex.scanner.type.token.LetterToken;
-import org.extex.scanner.type.token.OtherToken;
-import org.extex.scanner.type.token.Token;
-import org.extex.scanner.type.token.TokenFactory;
-import org.extex.scanner.type.tokens.Tokens;
-import org.extex.typesetter.Typesetter;
 
 /**
  * This class provides a fixed point number.
@@ -50,25 +27,6 @@ import org.extex.typesetter.Typesetter;
  * @version $Revision: 4404 $
  */
 public class ScaledNumber {
-
-    /**
-     * This interface describes a binary operation on two longs.
-     *
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision: 4404 $
-     */
-    private interface BinOp {
-
-        /**
-         * Apply the operation on the arguments.
-         *
-         * @param arg1 the first argument
-         * @param arg2 the second argument
-         *
-         * @return the result
-         */
-        long apply(long arg1, long arg2);
-    }
 
     /**
      * The constant <tt>FLOAT_DIGITS</tt> contains the number of digits to
@@ -80,281 +38,10 @@ public class ScaledNumber {
     private static final int FLOAT_DIGITS = 17;
 
     /**
-     * The field <tt>MINUS</tt> contains the subtractor.
-     */
-    private static final BinOp MINUS = new BinOp() {
-
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.core.scaled.ScaledNumber.BinOp#apply(long, long)
-         */
-        public long apply(long arg1, long arg2) {
-
-            return arg1 - arg2;
-        }
-    };
-
-    /**
      * The constant <tt>ONE</tt> contains the internal representation for 1pt.
      * @see "<logo>TeX</logo> &ndash; The Program [101]"
      */
     public static final long ONE = 1 << 16;
-
-    /**
-     * The field <tt>PLUS</tt> contains the adder.
-     */
-    private static final BinOp PLUS = new BinOp() {
-
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.core.scaled.ScaledNumber.BinOp#apply(long, long)
-         */
-        public long apply(long arg1, long arg2) {
-
-            return arg1 + arg2;
-        }
-    };
-
-    /**
-     * The field <tt>SECOND</tt> contains the operation to select the second
-     * argument.
-     */
-    private static final BinOp SECOND = new BinOp() {
-
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.core.scaled.ScaledNumber.BinOp#apply(long, long)
-         */
-        public long apply(long arg1, long arg2) {
-
-            return arg2;
-        }
-
-    };
-
-    /**
-     * Evaluate an expression.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @return the result
-     *
-     * @throws InterpreterException in case of an error
-     */
-    private static long evalExpr(Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
-
-        long saveVal = 0;
-        BinOp op = SECOND;
-        long val = parse(context, source, typesetter);
-
-        for (;;) {
-
-            Token t = source.getNonSpace(context);
-            if (t == null) {
-                throw new EofException();
-
-            } else if (t.equals(Catcode.OTHER, '*')) {
-                val *= parse(context, source, typesetter);
-                val /= ONE;
-
-            } else if (t.equals(Catcode.OTHER, '/')) {
-                long x = parse(context, source, typesetter);
-                if (x == 0) {
-                    throw new ArithmeticOverflowException("");
-                }
-                val *= ONE;
-                val /= x;
-
-            } else if (t.equals(Catcode.OTHER, '+')) {
-                saveVal = op.apply(saveVal, val);
-                val = parse(context, source, typesetter);
-                op = PLUS;
-
-            } else if (t.equals(Catcode.OTHER, '-')) {
-                saveVal = op.apply(saveVal, val);
-                val = parse(context, source, typesetter);
-                op = MINUS;
-
-            } else {
-                source.push(t);
-                return op.apply(saveVal, val);
-            }
-        }
-    }
-
-    /**
-     * Evaluate an expression.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @return the result
-     *
-     * @throws InterpreterException in case of an error
-     */
-    public static long parse(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
-
-        for (;;) {
-            Token t = source.getNonSpace(context);
-            if (t == null) {
-                throw new EofException();
-
-            } else if (t instanceof OtherToken) {
-                if (t.equals(Catcode.OTHER, '(')) {
-                    long val = evalExpr(context, source, typesetter);
-                    t = source.getToken(context);
-                    if (t != null && t.equals(Catcode.OTHER, ')')) {
-                        source.skipSpace();
-                        return val;
-                    }
-
-                    throw new HelpingException(LocalizerFactory
-                        .getLocalizer(ScaledNumber.class),
-                        "MissingParenthesis", (t == null ? "null" : t
-                            .toString()));
-
-                } else if (t.equals(Catcode.OTHER, '-')) {
-                    return -parse(context, source, typesetter);
-                } else {
-                    return scanFloat(context, source, typesetter, t);
-                }
-
-            } else if (t instanceof CodeToken) {
-                Code code = context.getCode((CodeToken) t);
-                if (code instanceof ScaledConvertible) {
-                    long val =
-                            ((ScaledConvertible) code).convertScaled(context,
-                                source, typesetter);
-                    source.skipSpace();
-                    return val;
-
-                } else if (code instanceof CountConvertible) {
-                    long val =
-                            ((CountConvertible) code).convertCount(context,
-                                source, typesetter)
-                                    * ONE;
-                    source.skipSpace();
-                    return val;
-
-                } else if (code instanceof ExpandableCode) {
-                    ((ExpandableCode) code).expand(Flags.NONE, context, source,
-                        typesetter);
-                } else {
-                    source.push(t);
-                    break;
-                }
-            } else if (t instanceof LetterToken) {
-                source.push(t);
-                if (source.getKeyword(context, "min")) {
-                    // TODO
-
-                } else if (source.getKeyword(context, "max")) {
-                    // TODO
-
-                } else if (source.getKeyword(context, "sin")) {
-                    // TODO
-
-                }
-
-                break;
-
-            } else {
-                break;
-            }
-        }
-
-        throw new MissingNumberException();
-    }
-
-    /**
-     * Parses a token stream for a float and returns it as fixed point number.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * @param start the initial token to start with
-     *
-     * @return the fixed point representation of the floating number in units
-     * of 2<sup>-16</sup>.
-     * @throws InterpreterException in case of an error
-     */
-    public static long scanFloat(Context context,
-            TokenSource source, Typesetter typesetter,
-            Token start) throws InterpreterException {
-
-        boolean neg = false;
-        long val = 0;
-        int post = 0;
-        Token t = start;
-        if (t == null) {
-            t = source.scanNonSpace(context);
-        }
-
-        while (t != null) {
-            if (t.equals(Catcode.OTHER, '-')) {
-                neg = !neg;
-            } else if (!t.equals(Catcode.OTHER, '+')) {
-                break;
-            }
-            t = source.scanNonSpace(context);
-        }
-        if (t != null && !t.equals(Catcode.OTHER, ".")
-                && !t.equals(Catcode.OTHER, ",")) {
-            val = CountParser.scanNumber(context, source, typesetter, t);
-            t = source.getToken(context);
-        }
-        if (t != null
-                && (t.equals(Catcode.OTHER, '.') || t
-                    .equals(Catcode.OTHER, ','))) {
-            // @see "TeX -- The Program [102]"
-            int[] dig = new int[FLOAT_DIGITS];
-            int k = 0;
-            for (t = source.getToken(context); t instanceof OtherToken
-                    && t.getChar().isDigit(); t = source.getToken(context)) {
-                if (k < FLOAT_DIGITS) {
-                    dig[k++] = t.getChar().getCodePoint() - '0';
-                }
-            }
-            if (k < FLOAT_DIGITS) {
-                k = FLOAT_DIGITS;
-            }
-            post = 0;
-            while (k-- > 0) {
-                post = (post + dig[k] * (1 << FLOAT_DIGITS)) / 10;
-            }
-            post = (post + 1) / 2;
-        }
-        source.push(t);
-        source.skipSpace();
-        val = val << 16 | post;
-        return (neg ? -val : val);
-    }
-
-    /**
-     * Parses a token stream for a float and returns it as fixed point number.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @return the fixed point representation of the floating point number
-     * @throws InterpreterException in case of an error
-     */
-    public static ScaledNumber scanScaledNumber(Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
-
-        return new ScaledNumber(parse(context, source, typesetter));
-    }
 
     /**
      * Determine the printable representation of the object and append it to
@@ -423,7 +110,7 @@ public class ScaledNumber {
      *
      * @param value the initial value
      */
-    private ScaledNumber(long value) {
+    public ScaledNumber(long value) {
 
         super();
         this.value = value;
@@ -592,65 +279,66 @@ public class ScaledNumber {
         return sb.toString();
     }
 
-    /**
-     * Determine the printable representation of the object and return it as a
-     * list of Tokens.
-     * The value returned is exactly the string which would be produced by
-     * <logo>TeX</logo> to print the Dimen. This means the result is expressed
-     * in pt and properly rounded to be read back in again without loss of
-     * information.
-     *
-     * @param toks the tokens to append to
-     * @param factory the token factory to get the required tokens from
-     *
-     * @throws CatcodeException in case of an error
-     *
-     * @see "<logo>TeX</logo> &ndash; The Program [103]"
-     */
-    public void toToks(Tokens toks, TokenFactory factory)
-            throws CatcodeException {
-
-        long val = this.value;
-
-        if (val < 0) {
-            toks.add(factory.createToken(Catcode.OTHER, '-',
-                Namespace.DEFAULT_NAMESPACE));
-            val = -val;
-        }
-
-        long v = val / ONE;
-        if (v == 0) {
-            toks.add(factory.createToken(Catcode.OTHER, '0',
-                Namespace.DEFAULT_NAMESPACE));
-        } else {
-            long m = 1;
-            while (m <= v) {
-                m *= 10;
-            }
-            m /= 10;
-            while (m > 0) {
-                toks.add(factory.createToken(Catcode.OTHER,
-                    (char) ('0' + (v / m)), Namespace.DEFAULT_NAMESPACE));
-                v = v % m;
-                m /= 10;
-            }
-        }
-
-        toks.add(factory.createToken(Catcode.OTHER, '.',
-            Namespace.DEFAULT_NAMESPACE));
-
-        val = 10 * (val % ONE) + 5;
-        long delta = 10;
-        do {
-            if (delta > ONE) {
-                val = val + 0100000 - 50000; // round the last digit
-            }
-            int i = (int) (val / ONE);
-            toks.add(factory.createToken(Catcode.OTHER, (char) ('0' + i),
-                Namespace.DEFAULT_NAMESPACE));
-            val = 10 * (val % ONE);
-            delta *= 10;
-        } while (val > delta);
-    }
+    //TODO gene: remove?
+//    /**
+//     * Determine the printable representation of the object and return it as a
+//     * list of Tokens.
+//     * The value returned is exactly the string which would be produced by
+//     * <logo>TeX</logo> to print the Dimen. This means the result is expressed
+//     * in pt and properly rounded to be read back in again without loss of
+//     * information.
+//     *
+//     * @param toks the tokens to append to
+//     * @param factory the token factory to get the required tokens from
+//     *
+//     * @throws CatcodeException in case of an error
+//     *
+//     * @see "<logo>TeX</logo> &ndash; The Program [103]"
+//     */
+//    public void toToks(Tokens toks, TokenFactory factory)
+//            throws CatcodeException {
+//
+//        long val = this.value;
+//
+//        if (val < 0) {
+//            toks.add(factory.createToken(Catcode.OTHER, '-',
+//                Namespace.DEFAULT_NAMESPACE));
+//            val = -val;
+//        }
+//
+//        long v = val / ONE;
+//        if (v == 0) {
+//            toks.add(factory.createToken(Catcode.OTHER, '0',
+//                Namespace.DEFAULT_NAMESPACE));
+//        } else {
+//            long m = 1;
+//            while (m <= v) {
+//                m *= 10;
+//            }
+//            m /= 10;
+//            while (m > 0) {
+//                toks.add(factory.createToken(Catcode.OTHER,
+//                    (char) ('0' + (v / m)), Namespace.DEFAULT_NAMESPACE));
+//                v = v % m;
+//                m /= 10;
+//            }
+//        }
+//
+//        toks.add(factory.createToken(Catcode.OTHER, '.',
+//            Namespace.DEFAULT_NAMESPACE));
+//
+//        val = 10 * (val % ONE) + 5;
+//        long delta = 10;
+//        do {
+//            if (delta > ONE) {
+//                val = val + 0100000 - 50000; // round the last digit
+//            }
+//            int i = (int) (val / ONE);
+//            toks.add(factory.createToken(Catcode.OTHER, (char) ('0' + i),
+//                Namespace.DEFAULT_NAMESPACE));
+//            val = 10 * (val % ONE);
+//            delta *= 10;
+//        } while (val > delta);
+//    }
 
 }

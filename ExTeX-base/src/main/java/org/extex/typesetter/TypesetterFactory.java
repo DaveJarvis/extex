@@ -34,19 +34,20 @@ import org.extex.typesetter.type.page.PageFactoryImpl;
 
 /**
  * This is the factory for instances of
- * {@link org.extex.typesetter.Typesetter Typesetter}.
- * This factory inherits its properties from the
- * {@link org.extex.framework.AbstractFactory AbstractFactory}. Among them
- * the support for configuration and logging.
- *
+ * {@link org.extex.typesetter.Typesetter Typesetter}. This factory inherits
+ * its properties from the
+ * {@link org.extex.framework.AbstractFactory AbstractFactory}. Among them the
+ * support for configuration and logging.
+ * 
  * <h3>Configuration</h3>
- *
+ * 
  * <p>
- *  Mainly the configuration needs to specify which class to use for the
- *  Typesetter. The configuration provides a mapping from a type name to the
- *  sub-configuration to be used. The name of the class is given as the argument
- *  <tt>class</tt> of the sub-configuration as shown below.
- *  <pre>
+ * Mainly the configuration needs to specify which class to use for the
+ * Typesetter. The configuration provides a mapping from a type name to the
+ * sub-configuration to be used. The name of the class is given as the argument
+ * <tt>class</tt> of the sub-configuration as shown below.
+ * 
+ * <pre>
  *   &lt;Typesetter default="TeX"&gt;
  *     &lt;TeX class="org.extex.typesetter.impl.TypesetterImpl"
  *          direction="lr"&gt;
@@ -64,24 +65,25 @@ import org.extex.typesetter.type.page.PageFactoryImpl;
  *     &lt;/develop&gt;
  *   &lt;/Typesetter&gt;
  *  </pre>
+ * 
  * </p>
  * <p>
- *  The named class need to implement the interface
- *  {@link org.extex.typesetter.Typesetter Typesetter}. If
- *  this interface is not implemented an error is raised.
+ * The named class need to implement the interface
+ * {@link org.extex.typesetter.Typesetter Typesetter}. If this interface is not
+ * implemented an error is raised.
  * </p>
  * <p>
- *  The configuration is passed down to the new instance if it implements the
- *  interface {@link org.extex.framework.configuration.Configurable Configurable}.
+ * The configuration is passed down to the new instance if it implements the
+ * interface {@link org.extex.framework.configuration.Configurable Configurable}.
  * </p>
  * <p>
- *  If the class implements the interface
- *  {@link org.extex.framework.logger.LogEnabled LogEnabled} then a logger
- *  is passed to the new instance. For this purpose the factory itself is
- *  log enabled to receive the logger.
+ * If the class implements the interface
+ * {@link org.extex.framework.logger.LogEnabled LogEnabled} then a logger is
+ * passed to the new instance. For this purpose the factory itself is log
+ * enabled to receive the logger.
  * </p>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4404 $
  */
@@ -97,11 +99,11 @@ public class TypesetterFactory extends AbstractFactory {
 
     /**
      * Make the node factory according to the specification
-     *
+     * 
      * @param config the configuration to use
-     *
+     * 
      * @return the node factory
-     *
+     * 
      * @throws ConfigurationException in case of an configuration error
      */
     private NodeFactory makeNodeFactory(Configuration config)
@@ -124,19 +126,18 @@ public class TypesetterFactory extends AbstractFactory {
      * Make a new page builder according to the specification in the
      * configuration. The sub-configuration <code>PageBuilder</code> is used
      * to determine the requested properties.
-     *
+     * 
      * @param config the configuration to use
      * @param context the interpreter context
      * @param typesetter the typesetter associated with it
-     *
+     * 
      * @return a new instance
-     *
+     * 
      * @throws ConfigurationException in case of an configuration error
      * @throws TypesetterException in case of an error
      */
-    private PageBuilder makePageBuilder(Configuration config,
-            Context context, Typesetter typesetter)
-            throws TypesetterException {
+    private PageBuilder makePageBuilder(Configuration config, Context context,
+            Typesetter typesetter) throws TypesetterException {
 
         Configuration cfg = config.getConfiguration("PageBuilder");
         PageBuilder pageBuilder =
@@ -151,15 +152,15 @@ public class TypesetterFactory extends AbstractFactory {
 
     /**
      * Make a new paragraph builder according to the specification in the
-     * configuration. The sub-configuration <code>ParagraphBuilder</code> is used
-     * to determine the requested properties.
-     *
+     * configuration. The sub-configuration <code>ParagraphBuilder</code> is
+     * used to determine the requested properties.
+     * 
      * @param config the configuration to use
      * @param options the typesetter options
      * @param nodeFactory the node factory
-     *
+     * 
      * @return the new instance
-     *
+     * 
      * @throws ConfigurationException in case of an configuration error
      */
     private ParagraphBuilder makeParagraphBuilder(Configuration config,
@@ -170,12 +171,10 @@ public class TypesetterFactory extends AbstractFactory {
                 (ParagraphBuilder) createInstanceForConfiguration(cfg,
                     ParagraphBuilder.class);
         /*
-         if (builder instanceof HyphenationEnabled) {
-         cfg = cfg.getConfiguration("Hyphenator");
-         Hyphenator hyphenator = (Hyphenator) createInstanceForConfiguration(
-         cfg, Hyphenator.class);
-         ((HyphenationEnabled) builder).enableHyphenation(hyphenator);
-         }
+         * if (builder instanceof HyphenationEnabled) { cfg =
+         * cfg.getConfiguration("Hyphenator"); Hyphenator hyphenator =
+         * (Hyphenator) createInstanceForConfiguration( cfg, Hyphenator.class);
+         * ((HyphenationEnabled) builder).enableHyphenation(hyphenator); }
          */
         builder.setOptions(options);
         builder.setNodefactory(nodeFactory);
@@ -184,13 +183,13 @@ public class TypesetterFactory extends AbstractFactory {
 
     /**
      * Get an instance of a typesetter.
-     *
+     * 
      * @param type the symbolic name of the configuration to use
      * @param context the interpreter context
      * @param backend the back-end driver
-     *
+     * 
      * @return a new typesetter
-     *
+     * 
      * @throws ConfigurationException in case of an configuration error
      * @throws TypesetterException in case of another error
      */

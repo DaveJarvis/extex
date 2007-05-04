@@ -20,73 +20,44 @@
 package org.extex.interpreter.exception;
 
 import org.extex.framework.i18n.Localizer;
+import org.extex.interpreter.exception.helping.HelpingException;
 
 /**
  * This exception signals the error handler that a continuation is not
  * desirable.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4728 $
  */
-public class InterpreterPanicException extends InterpreterException {
+public class InterpreterPanicException extends HelpingException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 1L;
 
     /**
-     * The field <tt>arg</tt> contains the additional argument for printing.
-     */
-    private String arg;
-
-    /**
-     * The field <tt>tag</tt> contains the tag for the localizer.
-     */
-    private String tag;
-
-    /**
      * Creates a new object.
-     *
+     * 
      * @param localizer the localizer
      * @param tag the name of the format for the localizer
      */
     public InterpreterPanicException(Localizer localizer, String tag) {
 
-        super(localizer);
-        this.tag = tag;
-        this.arg = "?";
+        super(localizer, tag, "?");
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param localizer the localizer
      * @param tag the name of the format for the localizer
      * @param arg the argument
      */
-    public InterpreterPanicException(Localizer localizer,
-            String tag, String arg) {
+    public InterpreterPanicException(Localizer localizer, String tag, String arg) {
 
-        super(localizer);
-        this.tag = tag;
-        this.arg = arg;
-    }
-
-    /**
-     * Creates a localized description of this throwable.
-     * Subclasses may override this method in order to produce a
-     * locale-specific message.  For subclasses that do not override this
-     * method, the default implementation returns the same result as
-     * <code>getMessage()</code>.
-     *
-     * @return  The localized description of this throwable.
-     *
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    public String getLocalizedMessage() {
-
-        return getLocalizer().format(tag, arg);
+        super(localizer, tag, arg);
     }
 
 }

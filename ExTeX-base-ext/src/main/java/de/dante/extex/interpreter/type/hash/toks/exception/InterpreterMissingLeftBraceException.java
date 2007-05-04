@@ -19,19 +19,21 @@
 
 package de.dante.extex.interpreter.type.hash.toks.exception;
 
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.framework.i18n.LocalizerFactory;
+import org.extex.interpreter.exception.helping.HelpingException;
 
 /**
  * Exception, if left brace is missing.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 
-public class InterpreterMissingLeftBraceException extends InterpreterException {
+public class InterpreterMissingLeftBraceException extends HelpingException {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 1L;
 
@@ -40,15 +42,20 @@ public class InterpreterMissingLeftBraceException extends InterpreterException {
      */
     public InterpreterMissingLeftBraceException() {
 
-        super();
+        super(LocalizerFactory
+            .getLocalizer(InterpreterMissingLeftBraceException.class),
+            "Message0");
     }
 
     /**
      * Create a new object.
-     * @param message   the message
+     * 
+     * @param message the message
      */
     public InterpreterMissingLeftBraceException(String message) {
 
-        super(message);
+        super(LocalizerFactory
+            .getLocalizer(InterpreterMissingLeftBraceException.class),
+            "Message1", message);
     }
 }

@@ -25,11 +25,12 @@ import java.util.Iterator;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 import de.dante.extex.interpreter.type.hash.toks.exception.InterpreterMissingHashKeyException;
 import de.dante.extex.interpreter.type.hash.toks.exception.InterpreterMissingHashValueException;
@@ -69,11 +70,13 @@ public class HashToks implements Serializable {
      * 
      * @param context the context
      * @param source the token source
-     * @param typesetter ...
-     * @throws InterpreterException if an error occurs.
+     * @param typesetter the typesetter
+     * 
+     * @throws HelpingException if an error occurs.
+     * @throws TypesetterException in case of an error in the typesetter
      */
     public HashToks(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException {
 
         super();
         map = new HashMap<String, Tokens>();

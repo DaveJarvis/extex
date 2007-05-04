@@ -20,6 +20,7 @@ package org.extex.unit.tex.conditional;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.Typesetter;
 import org.extex.unit.base.conditional.AbstractIf;
 
@@ -83,7 +84,7 @@ public class Iftrue extends AbstractIf {
      *      org.extex.typesetter.Typesetter)
      */
     public boolean conditional(Context context,
-        TokenSource source, Typesetter typesetter) {
+        TokenSource source, Typesetter typesetter) throws HelpingException {
         return true;
     }
 

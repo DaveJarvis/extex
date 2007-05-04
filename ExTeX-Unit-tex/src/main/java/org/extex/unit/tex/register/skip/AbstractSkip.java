@@ -21,15 +21,16 @@ package org.extex.unit.tex.register.skip;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.scanner.type.Namespace;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This abstract base class provides the methods to compute the keys for
  * numbered skip registers.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
@@ -37,7 +38,7 @@ public abstract class AbstractSkip extends AbstractAssignment {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public AbstractSkip(String name) {
@@ -48,18 +49,18 @@ public abstract class AbstractSkip extends AbstractAssignment {
     /**
      * Return the key (the name of the primitive) for the numbered skip
      * register.
-     *
+     * 
      * @param source the source for new tokens
      * @param context the interpreter context to use
      * @param typesetter the typesetter
-     *
+     * 
      * @return the key for the current register
-     *
-     * @throws InterpreterException in case that a derived class needs to
-     *  throw an Exception this one is declared.
+     * @throws HelpingException in case that a derived class needs to throw an
+     *         Exception this one is declared.
+     * @throws TypesetterException in case of an error in the typesetter
      */
     protected String getKey(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         String name =
                 source.scanRegisterName(context, source, typesetter, getName());

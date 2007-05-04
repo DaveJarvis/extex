@@ -21,13 +21,14 @@ package org.extex.unit.pdftex.util.destination;
 
 import java.io.Serializable;
 
-import org.extex.core.count.CountParser;
 import org.extex.core.dimen.Dimen;
-import org.extex.core.dimen.DimenParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.scanner.CountParser;
+import org.extex.scanner.DimenParser;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.RuleNode;
 import org.extex.unit.pdftex.exception.InterpreterPdftexDestinationTypeException;
 
@@ -196,7 +197,7 @@ public abstract class DestType implements Serializable {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.unit.pdftex.util.destination.DestType#visit(
          *      org.extex.unit.pdftex.util.destination.DestinationVisitor)
          */
@@ -207,7 +208,7 @@ public abstract class DestType implements Serializable {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -232,7 +233,7 @@ public abstract class DestType implements Serializable {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.unit.pdftex.util.destination.DestType#visit(
          *      org.extex.unit.pdftex.util.destination.DestinationVisitor)
          */
@@ -243,7 +244,7 @@ public abstract class DestType implements Serializable {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -268,7 +269,7 @@ public abstract class DestType implements Serializable {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.unit.pdftex.util.destination.DestType#visit(
          *      org.extex.unit.pdftex.util.destination.DestinationVisitor)
          */
@@ -279,7 +280,7 @@ public abstract class DestType implements Serializable {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -301,10 +302,13 @@ public abstract class DestType implements Serializable {
      * 
      * @return the destination type
      * 
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     public static DestType parseDestType(Context context, TokenSource source,
-            Typesetter typesetter, String name) throws InterpreterException {
+            Typesetter typesetter, String name)
+            throws HelpingException,
+                TypesetterException {
 
         if (source.getKeyword(context, "xyz")) {
             return XYZ;

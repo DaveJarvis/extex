@@ -20,55 +20,58 @@
 package org.extex.unit.tex.font;
 
 import org.extex.core.UnicodeChar;
-import org.extex.core.count.CountConvertible;
-import org.extex.core.count.CountParser;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.NoHelpException;
 import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.font.Font;
+import org.extex.scanner.CountConvertible;
+import org.extex.scanner.CountParser;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
  * <code>\skewchar</code>.
- *
+ * 
  * <doc name="skewchar">
  * <h3>The Primitive <tt>\skewchar</tt></h3>
  * <p>
- *  TODO missing documentation
+ * TODO missing documentation
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;skewchar&rang;
  *       &rarr; <tt>\skewchar</tt> &lang;font&rang; {@linkplain
  *          org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *          &lang;equals&rang;} {@linkplain
- *          org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *          org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \skewchar\font=123  </pre>
- *
+ * 
  * <h4>Incompatibility</h4>
  * <p>
- *  The TeXbook gives no indication ow the primitive should react for negative
- *  values &ndash; except -1. The implementation of <logo>TeX</logo> allows to
- *  store and retrieve arbitrary negative values. This behavior of
- *  <logo>TeX</logo> is not preserved in <logo>ExTeX</logo>.
+ * The TeXbook gives no indication ow the primitive should react for negative
+ * values &ndash; except -1. The implementation of <logo>TeX</logo> allows to
+ * store and retrieve arbitrary negative values. This behavior of <logo>TeX</logo>
+ * is not preserved in <logo>ExTeX</logo>.
  * </p>
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
@@ -79,13 +82,14 @@ public class Skewchar extends AbstractAssignment
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Skewchar(String name) {
@@ -99,23 +103,17 @@ public class Skewchar extends AbstractAssignment
      * This method is preferable to <tt>execute()</tt> since the
      * <tt>execute()</tt> method provided in this class takes care of
      * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> as well.
-     *
+     * 
      * @param prefix the prefix controlling the execution
      * @param context the interpreter context
      * @param source the token source
      * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *       org.extex.interpreter.Flags,
-     *       org.extex.interpreter.context.Context,
-     *       org.extex.interpreter.TokenSource,
-     *       org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void assign(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Font font = source.getFont(context, getName());
         source.getOptionalEquals(context);
@@ -124,26 +122,13 @@ public class Skewchar extends AbstractAssignment
     }
 
     /**
-     * This method converts a register into a count. It might be necessary to
-     * read further tokens to determine which value to use. For instance an
-     * additional register number might be required. In this case the additional
-     * arguments Context and TokenSource can be used.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use for conversion
-     *
-     * @return the converted value
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.core.count.CountConvertible#convertCount(
-     *       org.extex.interpreter.context.Context,
-     *       org.extex.interpreter.TokenSource,
-     *       org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         try {
             Font font = source.getFont(context, getName());
@@ -155,58 +140,32 @@ public class Skewchar extends AbstractAssignment
     }
 
     /**
-     * This method takes the first token and expands it. The result is placed
-     * on the stack.
-     * This means that expandable code does one step of expansion and puts the
-     * result on the stack. To expand a token it might be necessary to consume
-     * further tokens.
-     *
-     * @param prefix the prefix flags controlling the expansion
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void expand(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void expand(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         try {
             source.push(the(context, source, typesetter));
         } catch (CatcodeException e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
     }
 
     /**
-     * This method is the getter for the description of the primitive.
-     *
-     * @param context the interpreter context
-     * @param source the source for further tokens to qualify the request
-     * @param typesetter the typesetter to use
-     *
-     * @return the description of the primitive as list of Tokens
-     *
-     * @throws InterpreterException in case of an error
-     * @throws CatcodeException in case of an error in token creation
-     * @throws ConfigurationException in case of an configuration error
-     *
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public Tokens the(Context context, TokenSource source,
-            Typesetter typesetter)
-            throws InterpreterException,
-                CatcodeException {
+    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
+            throws CatcodeException,
+                HelpingException,
+                TypesetterException {
 
         Font font = source.getFont(context, getName());
         UnicodeChar uc = font.getSkewChar();

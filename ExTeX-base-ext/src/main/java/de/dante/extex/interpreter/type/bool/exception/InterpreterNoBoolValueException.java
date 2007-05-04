@@ -19,37 +19,42 @@
 
 package de.dante.extex.interpreter.type.bool.exception;
 
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.framework.i18n.LocalizerFactory;
+import org.extex.interpreter.exception.helping.HelpingException;
 
 /**
  * InterpreterException: no boolean value fond in the input.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 
-public class InterpreterNoBoolValueException extends InterpreterException {
+public class InterpreterNoBoolValueException extends HelpingException {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2007L;
 
     /**
      * Create a new object.
      */
     public InterpreterNoBoolValueException() {
 
-        super();
+        super(LocalizerFactory
+            .getLocalizer(InterpreterNoBoolValueException.class), "Message", "");
     }
 
     /**
      * Create a new object.
-     *
-     * @param message   the message
+     * 
+     * @param message the message
      */
     public InterpreterNoBoolValueException(String message) {
 
-        super(message);
+        super(LocalizerFactory
+            .getLocalizer(InterpreterNoBoolValueException.class), "Message",
+            message);
     }
 }

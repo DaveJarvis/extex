@@ -21,13 +21,13 @@ package org.extex.unit.tex.info;
 
 import java.util.logging.Logger;
 
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.NoHelpException;
 import org.extex.interpreter.exception.helping.CantUseAfterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.Theable;
@@ -36,18 +36,18 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive
- * <code>\showthe</code>.
- *
+ * This class provides an implementation for the primitive <code>\showthe</code>.
+ * 
  * <doc name="showthe">
  * <h3>The Primitive <tt>\showthe</tt></h3>
  * <p>
- *  TODO missing documentation
+ * TODO missing documentation
  * </p>
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4770 $
@@ -55,7 +55,8 @@ import org.extex.typesetter.Typesetter;
 public class Showthe extends AbstractCode implements LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
@@ -66,7 +67,7 @@ public class Showthe extends AbstractCode implements LogEnabled {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for tracing and debugging
      */
     public Showthe(String name) {
@@ -76,9 +77,9 @@ public class Showthe extends AbstractCode implements LogEnabled {
 
     /**
      * Setter for the logger.
-     *
+     * 
      * @param log the logger to use
-     *
+     * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
@@ -88,27 +89,14 @@ public class Showthe extends AbstractCode implements LogEnabled {
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     * @throws ConfigurationException in case of an configuration error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Token cs = source.getToken(context);
 
@@ -121,9 +109,7 @@ public class Showthe extends AbstractCode implements LogEnabled {
                 try {
                     toks = ((Theable) code).the(context, source, typesetter);
                 } catch (CatcodeException e) {
-                    throw new InterpreterException(e);
-                } catch (ConfigurationException e) {
-                    throw new InterpreterException(e);
+                    throw new NoHelpException(e);
                 }
                 logger.info(getLocalizer().format("TTP.Format", toks.toText()));
                 return;

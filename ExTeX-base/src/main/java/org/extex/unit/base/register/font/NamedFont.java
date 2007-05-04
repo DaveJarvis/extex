@@ -23,7 +23,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.font.Font;
@@ -32,6 +32,7 @@ import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for a font stored under a name in the
@@ -71,7 +72,7 @@ public class NamedFont extends AbstractAssignment
      */
     public void assign(Flags prefix, Context context,
             TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException {
 
         String key = getKey(context, source, typesetter);
         source.getOptionalEquals(context);
@@ -89,7 +90,7 @@ public class NamedFont extends AbstractAssignment
      *      org.extex.typesetter.Typesetter)
      */
     public Font convertFont(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         return context.getFont(getKey(context, source, typesetter));
     }
@@ -102,11 +103,11 @@ public class NamedFont extends AbstractAssignment
      * @param typesetter the typesetter
      *
      * @return the key for the font register
-     *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException TODO
      */
     protected String getKey(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         if (Namespace.SUPPORT_NAMESPACE_FONT) {
             return context.getNamespace() + "\b" + getName();
@@ -122,11 +123,8 @@ public class NamedFont extends AbstractAssignment
      * @param typesetter the typesetter to use
      *
      * @return the description of the primitive as list of Tokens
-     *
-     * @throws InterpreterException in case of an error
      * @throws CatcodeException in case of an error in token creation
      * @throws ConfigurationException in case of an configuration error
-     *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
@@ -134,8 +132,7 @@ public class NamedFont extends AbstractAssignment
      */
     public Tokens the(Context context, TokenSource source,
             Typesetter typesetter)
-            throws InterpreterException,
-                CatcodeException {
+            throws CatcodeException, HelpingException, TypesetterException {
 
         String key = getKey(context, source, typesetter);
         Font font = context.getFont(key);

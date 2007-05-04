@@ -23,6 +23,7 @@ import org.extex.backend.BackendDriver;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.context.Context;
+import org.extex.typesetter.PageContext;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.TypesetterException;
@@ -35,15 +36,14 @@ import org.extex.typesetter.type.page.PageFactory;
 
 /**
  * This is a first reference implementation of a page builder.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4483 $
  */
 public class TrivialPageBuilder implements PageBuilder {
 
     /**
-     * The field <tt>backend</tt> contains the target to receive
-     * the pages.
+     * The field <tt>backend</tt> contains the target to receive the pages.
      */
     private BackendDriver backend = null;
 
@@ -53,7 +53,8 @@ public class TrivialPageBuilder implements PageBuilder {
     private Context context = null;
 
     /**
-     * The field <tt>options</tt> contains the options to control the behaviour.
+     * The field <tt>options</tt> contains the options to control the
+     * behaviour.
      */
     private TypesetterOptions options = null;
 
@@ -72,7 +73,7 @@ public class TrivialPageBuilder implements PageBuilder {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.pageBuilder.PageBuilder#close()
      */
     public void close() throws TypesetterException {
@@ -87,10 +88,9 @@ public class TrivialPageBuilder implements PageBuilder {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.pageBuilder.PageBuilder#flush(
-     *      org.extex.typesetter.type.NodeList,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.type.NodeList, org.extex.typesetter.Typesetter)
      */
     public void flush(NodeList nodes, Typesetter typesetter)
             throws TypesetterException {
@@ -103,7 +103,7 @@ public class TrivialPageBuilder implements PageBuilder {
             if (page != null) {
                 backend.shipout(page);
             }
-//            nodes.clear();
+            // nodes.clear();
         } catch (GeneralException e) {
             throw new TypesetterException(e);
         }
@@ -111,22 +111,22 @@ public class TrivialPageBuilder implements PageBuilder {
     }
 
     /**
-     * This is the entry point for the page builder. Here it receives a
-     * complete node list to be sent to the output writer. It can be assumed
-     * that all values for width, height, and depth of the node lists are
-     * properly filled.
-     *
+     * This is the entry point for the page builder. Here it receives a complete
+     * node list to be sent to the output writer. It can be assumed that all
+     * values for width, height, and depth of the node lists are properly
+     * filled.
+     * 
      * @param nodes the nodes to send
      * @param typesetter the typesetter
-     *
+     * 
      * @throws TypesetterException in case of an error
-     *
+     * 
      * @see org.extex.typesetter.pageBuilder.PageBuilder#inspectAndBuild(
      *      org.extex.typesetter.type.node.VerticalListNode,
      *      org.extex.typesetter.Typesetter)
      */
-    public void inspectAndBuild(VerticalListNode nodes,
-            Typesetter typesetter) throws TypesetterException {
+    public void inspectAndBuild(VerticalListNode nodes, Typesetter typesetter)
+            throws TypesetterException {
 
         FixedDimen d = nodes.getVerticalSize();
         if (d.ge(options.getDimenOption("vsize"))) {
@@ -136,11 +136,11 @@ public class TrivialPageBuilder implements PageBuilder {
     }
 
     /**
-     * Setter for the back-end driver.
-     * This has to be provided before the page builder can be active.
-     *
+     * Setter for the back-end driver. This has to be provided before the page
+     * builder can be active.
+     * 
      * @param backend the new document writer to use
-     *
+     * 
      * @see org.extex.typesetter.Typesetter#setBackend(
      *      org.extex.backend.BackendDriver)
      */
@@ -151,20 +151,21 @@ public class TrivialPageBuilder implements PageBuilder {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.pageBuilder.PageBuilder#setContext(
-     *      org.extex.interpreter.context.Context)
+     *      org.extex.typesetter.PageContext)
      */
-    public void setContext(Context context) {
+    public void setContext(PageContext context) {
 
-        this.context = context;
+        //TODO gene: beware of ClassCastException
+        this.context = (Context) context;
     }
 
     /**
      * Setter for options.
-     *
+     * 
      * @param options the options to set
-     *
+     * 
      * @see org.extex.typesetter.pageBuilder.PageBuilder#setOptions(
      *      org.extex.typesetter.TypesetterOptions)
      */
@@ -193,8 +194,7 @@ public class TrivialPageBuilder implements PageBuilder {
 
     /**
      * @see org.extex.typesetter.pageBuilder.PageBuilder#shipout(
-     *      org.extex.typesetter.type.NodeList,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.type.NodeList, org.extex.typesetter.Typesetter)
      */
     public void shipout(NodeList nodes, Typesetter typesetter)
             throws TypesetterException {
@@ -207,7 +207,7 @@ public class TrivialPageBuilder implements PageBuilder {
             if (page != null) {
                 backend.shipout(page);
             }
-//            nodes.clear();
+            // nodes.clear();
         } catch (GeneralException e) {
             throw new TypesetterException(e);
         }

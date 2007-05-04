@@ -22,11 +22,12 @@ package org.extex.unit.tex.typesetter.box;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.box.Boxable;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an abstract base class for the displacement primitives.
@@ -64,7 +65,7 @@ public abstract class AbstractBoxPrimitive extends AbstractCode
      */
     public void execute(Flags prefix, Context context,
             TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException {
 
         Flags flags = prefix.copy();
         prefix.clear();

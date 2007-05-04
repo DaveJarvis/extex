@@ -24,71 +24,73 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Color;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.color.util.ColorParser;
 
 /**
  * This class provides an implementation for the primitive <code>\color</code>.
- *
+ * 
  * <doc name="color">
  * <h3>The Primitive <tt>\color</tt></h3>
  * <p>
- *  The primitive <tt>\color</tt> sets the current color value to the value
- *  given. The value can be any color specification for one of the supported
- *  color models.
+ * The primitive <tt>\color</tt> sets the current color value to the value
+ * given. The value can be any color specification for one of the supported
+ * color models.
  * </p>
  * <p>
- *  The color models of <logo>ExTeX</logo> use components of two bytes. This
- *  means that values from 0 to 65535 can be stored in each component. The
- *  external representation is a floating point number in the range from 0.0 to
- *  1.0.
+ * The color models of <logo>ExTeX</logo> use components of two bytes. This
+ * means that values from 0 to 65535 can be stored in each component. The
+ * external representation is a floating point number in the range from 0.0 to
+ * 1.0.
  * </p>
  * <p>
- *  The color models of <logo>ExTeX</logo> support aa alpha channel.
+ * The color models of <logo>ExTeX</logo> support aa alpha channel.
  * </p>
- *
+ * 
  * <h4>The RGB Color Model</h4>
  * <p>
- *  The RGB color model provides three values for the red, green, and blue
- *  channel. Each is given as floating point number from 0.0 to 1.0.
+ * The RGB color model provides three values for the red, green, and blue
+ * channel. Each is given as floating point number from 0.0 to 1.0.
  * </p>
- *
+ * 
  * <h4>The CMYK Color Model</h4>
  * <p>
- *  The CMYK color model provides four values for cyan, magenta, yellow, and
- *  black channel. Each is given as floating point number from 0.0 to 1.0.
+ * The CMYK color model provides four values for cyan, magenta, yellow, and
+ * black channel. Each is given as floating point number from 0.0 to 1.0.
  * </p>
- *
+ * 
  * <h4>The Grayscale Model</h4>
  * <p>
- *  The gray-scale color model provides one value for the gray channel.
- *  It is given as floating point number from 0.0 to 1.0.
+ * The gray-scale color model provides one value for the gray channel. It is
+ * given as floating point number from 0.0 to 1.0.
  * </p>
- *
+ * 
  * <h4>The HSV Color Model</h4>
  * <p>
- *  The HSV color model provides three values for the hue, saturation, and value
- *  channel. Each is given as floating point number from 0.0 to 1.0.
+ * The HSV color model provides three values for the hue, saturation, and value
+ * channel. Each is given as floating point number from 0.0 to 1.0.
  * </p>
- *
+ * 
  * <h4>The Alpha Channel</h4>
  * <p>
- *  The alpha channel determines the opactness of the color. A value of 0 means
- *  that the given color completely overwrites the underlying texture. A value
- *  of 1.0 is the maximal admissible alpha value. In this case the color is
- *  in fact invisible. In between the background shines through to the degree
- *  of the alpha value.
+ * The alpha channel determines the opactness of the color. A value of 0 means
+ * that the given color completely overwrites the underlying texture. A value of
+ * 1.0 is the maximal admissible alpha value. In this case the color is in fact
+ * invisible. In between the background shines through to the degree of the
+ * alpha value.
  * </p>
  * <p>
- *  Note that the alpha channel may not be supported by any output device. In
- *  such a case it is up to the back-end driver to make best use of the alpha
- *  value or ignore it at all.
+ * Note that the alpha channel may not be supported by any output device. In
+ * such a case it is up to the back-end driver to make best use of the alpha
+ * value or ignore it at all.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;color&rang;
  *      &rarr; &lang;prefix&rang; <tt>\color</tt> &lang;alpha&rang; &lang;color&rang;
  *
@@ -110,48 +112,61 @@ import org.extex.unit.color.util.ColorParser;
  *
  *    &lang;color value&rang;
  *      &rarr; &lang;number&rang;  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \color{\r \b \g}  </pre>
- *  <p>
- *  </p>
- *  <pre class="TeXSample">
+ * 
+ * <p>
+ * </p>
+ * 
+ * <pre class="TeXSample">
  *    \color gray {\gray}  </pre>
- *  <p>
- *  </p>
- *  <pre class="TeXSample">
+ * 
+ * <p>
+ * </p>
+ * 
+ * <pre class="TeXSample">
  *    \color rgb {\r \b \g}  </pre>
- *  <p>
- *  </p>
- *  </p>
- *  <pre class="TeXSample">
+ * 
+ * <p>
+ * </p>
+ * </p>
+ * 
+ * <pre class="TeXSample">
  *    \color rgb {1 .2 .3333}  </pre>
- *  <p>
- *  </p>
- *  <pre class="TeXSample">
+ * 
+ * <p>
+ * </p>
+ * 
+ * <pre class="TeXSample">
  *    \color hsv {\h \s \v}  </pre>
- *  <p>
- *  </p>
- *  <pre class="TeXSample">
+ * 
+ * <p>
+ * </p>
+ * 
+ * <pre class="TeXSample">
  *    \color alpha 500 rgb {\r \b \g} </pre>
- *  <p>
- *
+ * 
+ * <p>
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class ColorPrimitive extends AbstractColor {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 20060528L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public ColorPrimitive(String name) {
@@ -160,30 +175,17 @@ public class ColorPrimitive extends AbstractColor {
     }
 
     /**
-     * The method <tt>assign</tt> is the core of the functionality of
-     * {@link #execute(Flags, Context, TokenSource, Typesetter) execute()}.
-     * This method is preferable to <tt>execute()</tt> since the
-     * <tt>execute()</tt> method provided in this class takes care of
-     * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> as well.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     * @throws ConfigurationException in case of an configuration error
-     *
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+    public void assign(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter)
+            throws ConfigurationException,
+                HelpingException,
+                TypesetterException {
 
         Color color =
                 ColorParser.parseColor(context, source, typesetter, getName());
@@ -191,24 +193,23 @@ public class ColorPrimitive extends AbstractColor {
     }
 
     /**
-     * This method converts something into a color.
-     * It might be necessary to read further tokens to determine which value to
-     * use. For instance an additional register number might be required. In
-     * this case the additional arguments Context and TokenSource can be used.
-     *
+     * This method converts something into a color. It might be necessary to
+     * read further tokens to determine which value to use. For instance an
+     * additional register number might be required. In this case the additional
+     * arguments Context and TokenSource can be used.
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter to use for conversion
-     *
+     * 
      * @return the converted value
-     *
+     * 
      * @see org.extex.interpreter.type.color.ColorConvertible#convertColor(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Color convertColor(Context context, TokenSource source,
-            Typesetter typesetter) {
+            Typesetter typesetter) throws HelpingException {
 
         return context.getTypesettingContext().getColor();
     }

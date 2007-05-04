@@ -21,8 +21,8 @@ package org.extex.unit.omega.mode;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.scanner.type.token.Token;
 
@@ -97,10 +97,10 @@ public abstract class AbstractModeCode extends AbstractCode {
      *
      * @return mode
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      */
     protected OmegaMode scanInputMode(Context context,
-            TokenSource source) throws InterpreterException {
+            TokenSource source) throws HelpingException {
 
         OmegaMode mode = scanMode(context, source);
 
@@ -125,10 +125,10 @@ public abstract class AbstractModeCode extends AbstractCode {
      *
      * @return the mode or <code>null</code> if none is found
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      */
     private OmegaMode scanMode(Context context, TokenSource source)
-            throws InterpreterException {
+            throws HelpingException {
 
         if (source.getKeyword(context, "onebyte")) {
             return OmegaMode.ONEBYTE;
@@ -149,12 +149,12 @@ public abstract class AbstractModeCode extends AbstractCode {
      * @param context the interpreter context
      * @param source the source for new tokens
      *
-     * @return mode
+     * @return the mode
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      */
     protected OmegaMode scanOutputMode(Context context,
-            TokenSource source) throws InterpreterException {
+            TokenSource source) throws HelpingException {
 
         OmegaMode mode = scanMode(context, source);
 

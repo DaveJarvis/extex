@@ -9,5 +9,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-base"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-core"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font-API"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Typesetter-API"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

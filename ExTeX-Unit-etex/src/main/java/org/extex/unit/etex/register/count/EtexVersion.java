@@ -21,14 +21,14 @@ package org.extex.unit.etex.register.count;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.register.count.AbstractReadonlyCount;
 
 /**
- * This abstract base class provides the methods an read only count
- * primitive.
- *
+ * This abstract base class provides the methods an read only count primitive.
+ * 
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
  * @version $Revision: 4732 $
  */
@@ -44,13 +44,13 @@ public class EtexVersion extends AbstractReadonlyCount {
 
     /**
      * The eTeX version this class returns.
-     *
+     * 
      */
     private static final long ETEX_VERSION = 2;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public EtexVersion(String name) {
@@ -60,13 +60,12 @@ public class EtexVersion extends AbstractReadonlyCount {
 
     /**
      * {@inheritDoc}
-     *
-     * @see org.extex.core.count.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, Typesetter)
+     * 
+     * @see org.extex.scanner.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         return ETEX_VERSION;
     }

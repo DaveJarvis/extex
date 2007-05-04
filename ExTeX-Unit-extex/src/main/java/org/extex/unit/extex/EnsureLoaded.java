@@ -21,56 +21,58 @@ package org.extex.unit.extex;
 
 import java.util.logging.Logger;
 
+import org.extex.backend.outputStream.OutputStreamConsumer;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.core.exception.GeneralException;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.NoHelpException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
-import org.extex.interpreter.type.OutputStreamConsumer;
 import org.extex.interpreter.unit.LoadUnit;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This primitive initiates the loading of native code and implements the
  * primitive <tt>\ensureloaded</tt>.
- *
+ * 
  * <doc name="ensureloaded">
  * <h3>The Primitive <tt>\ensureloaded</tt></h3>
  * <p>
- *  The primitive <tt>\ensureloaded</tt> dynamically requests that a unit of
- *  <logo>ExTeX</logo> is loaded.
+ * The primitive <tt>\ensureloaded</tt> dynamically requests that a unit of
+ * <logo>ExTeX</logo> is loaded.
  * </p>
  * <p>
- *  A unit consists of primitives and some initializing actions.
+ * A unit consists of primitives and some initializing actions.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The general form of this primitive is
+ * The general form of this primitive is
+ * 
  * <pre class="syntax">
  *   &lang;ensureloaded&rang;
  *       &rarr; <tt>\ensureloaded</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *        &lang;tokens&rang;} </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \ensureloaded{etex}  </pre>
  *  <pre class="TeXSample">
  *    \ensureloaded\toks0  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -80,13 +82,14 @@ public class EnsureLoaded extends AbstractCode
             LogEnabled {
 
     /**
-     * The constant <tt>CONFIG_UNIT</tt> contains the prefix for the
-     * path of the configuration.
+     * The constant <tt>CONFIG_UNIT</tt> contains the prefix for the path of
+     * the configuration.
      */
     private static final String CONFIG_UNIT = "config/unit/";
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
@@ -102,7 +105,7 @@ public class EnsureLoaded extends AbstractCode
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param codeName the name of the primitive
      */
     public EnsureLoaded(String codeName) {
@@ -112,9 +115,9 @@ public class EnsureLoaded extends AbstractCode
 
     /**
      * Setter for the logger.
-     *
+     * 
      * @param log the logger to use
-     *
+     * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
@@ -124,27 +127,14 @@ public class EnsureLoaded extends AbstractCode
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     * @throws ConfigurationException in case of an configuration error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *       org.extex.interpreter.Flags,
-     *       org.extex.interpreter.context.Context,
-     *       org.extex.interpreter.TokenSource,
-     *       org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         String cs = printableControlSequence(context);
         Tokens tokens = source.scanTokens(context, false, false, cs);
@@ -155,26 +145,27 @@ public class EnsureLoaded extends AbstractCode
         }
         String configName = tokens.toText();
         try {
-            Configuration configuration = new ConfigurationFactory()
-                    .newInstance(CONFIG_UNIT + configName);
+            Configuration configuration =
+                    new ConfigurationFactory().newInstance(CONFIG_UNIT
+                            + configName);
             LoadUnit.loadUnit(configuration, context, source, typesetter,
-                    logger, outFactory);
-        } catch (InterpreterException e) {
+                logger, outFactory);
+        } catch (HelpingException e) {
             throw e;
         } catch (GeneralException e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         } catch (ConfigurationNotFoundException e) {
             throw new HelpingException(getLocalizer(), "UnknownUnit",
-                    configName);
+                configName);
         }
     }
 
     /**
      * This method takes an output stream factory for further use.
-     *
+     * 
      * @param factory the output stream factory to use
-     *
-     * @see org.extex.interpreter.type.OutputStreamConsumer#setOutputStreamFactory(
+     * 
+     * @see org.extex.backend.outputStream.OutputStreamConsumer#setOutputStreamFactory(
      *      org.extex.backend.outputStream.OutputStreamFactory)
      */
     public void setOutputStreamFactory(OutputStreamFactory factory) {

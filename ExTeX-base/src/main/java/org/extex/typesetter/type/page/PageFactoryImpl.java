@@ -27,14 +27,16 @@ import java.util.regex.Pattern;
 import org.extex.core.count.FixedCount;
 import org.extex.core.count.ImmutableCount;
 import org.extex.core.dimen.Dimen;
-import org.extex.core.dimen.DimenParser;
 import org.extex.core.exception.GeneralException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.max.StringSource;
+import org.extex.scanner.DimenParser;
+import org.extex.typesetter.PageContext;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.AdjustNode;
 import org.extex.typesetter.type.node.AfterMathNode;
@@ -317,7 +319,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          * has been encountered.
          *
          * @param node the first parameter for the visitor is the node visited
-         * @param value the second parameter for the visitor
+         * @param isHMode the second parameter for the visitor
          *
          * @return the visitor specific value
          *
@@ -327,7 +329,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.AdjustNode,
          *      java.lang.Object)
          */
-        public Object visitAdjust(AdjustNode node, Object value)
+        public Node visitAdjust(AdjustNode node, Boolean isHMode)
                 throws GeneralException {
 
             return node;
@@ -339,7 +341,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          * has been encountered.
          *
          * @param node the first parameter for the visitor is the node visited
-         * @param value the second parameter for the visitor
+         * @param isHMode the second parameter for the visitor
          *
          * @return the visitor specific value
          *
@@ -347,10 +349,10 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.AfterMathNode,
          *      java.lang.Object)
          */
-        public Object visitAfterMath(AfterMathNode node,
-                Object value) {
+        public Node visitAfterMath(AfterMathNode node,
+                Boolean isHMode) {
 
-            if (((Boolean) value).booleanValue()) {
+            if (isHMode.booleanValue()) {
                 if (node.getWidth().eq(Dimen.ZERO_PT)) {
                     return null;
                 }
@@ -366,7 +368,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          * has been encountered.
          *
          * @param node the first parameter for the visitor is the node visited
-         * @param value the second parameter for the visitor
+         * @param isHMode the second parameter for the visitor
          *
          * @return the visitor specific value
          *
@@ -374,8 +376,8 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.AlignedLeadersNode,
          *      java.lang.Object)
          */
-        public Object visitAlignedLeaders(AlignedLeadersNode node,
-                Object value) {
+        public Node visitAlignedLeaders(AlignedLeadersNode node,
+                Boolean isHMode) {
 
             return node;
         }
@@ -386,7 +388,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          * has been encountered.
          *
          * @param node the first parameter for the visitor is the node visited
-         * @param value the second parameter for the visitor
+         * @param isHMode the second parameter for the visitor
          *
          * @return the visitor specific value
          *
@@ -394,10 +396,10 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.BeforeMathNode,
          *      java.lang.Object)
          */
-        public Object visitBeforeMath(BeforeMathNode node,
-                Object value) {
+        public Node visitBeforeMath(BeforeMathNode node,
+                Boolean isHMode) {
 
-            if (((Boolean) value).booleanValue()) {
+            if (isHMode.booleanValue()) {
                 if (node.getWidth().eq(Dimen.ZERO_PT)) {
                     return null;
                 }
@@ -413,7 +415,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          * has been encountered.
          *
          * @param node the first parameter for the visitor is the node visited
-         * @param value the second parameter for the visitor
+         * @param isHMode the second parameter for the visitor
          *
          * @return the visitor specific value
          *
@@ -421,8 +423,8 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.CenteredLeadersNode,
          *      java.lang.Object)
          */
-        public Object visitCenteredLeaders(CenteredLeadersNode node,
-                Object value) {
+        public Node visitCenteredLeaders(CenteredLeadersNode node,
+                Boolean isHMode) {
 
             return node;
         }
@@ -433,7 +435,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          * has been encountered.
          *
          * @param node the first parameter for the visitor is the node visited
-         * @param value the second parameter for the visitor
+         * @param isHMode the second parameter for the visitor
          *
          * @return the visitor specific value
          *
@@ -441,7 +443,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.CharNode,
          *      java.lang.Object)
          */
-        public Object visitChar(CharNode node, Object value) {
+        public Node visitChar(CharNode node, Boolean isHMode) {
 
             return node;
         }
@@ -452,7 +454,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          * has been encountered.
          *
          * @param node the first parameter for the visitor is the node visited
-         * @param value the second parameter for the visitor
+         * @param isHMode the second parameter for the visitor
          *
          * @return the visitor specific value
          *
@@ -460,8 +462,8 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.DiscretionaryNode,
          *      java.lang.Object)
          */
-        public Object visitDiscretionary(DiscretionaryNode node,
-                Object value) {
+        public Node visitDiscretionary(DiscretionaryNode node,
+                Boolean isHMode) {
 
             return node;
         }
@@ -472,7 +474,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          * has been encountered.
          *
          * @param node the first parameter for the visitor is the node visited
-         * @param value the second parameter for the visitor
+         * @param isHMode the second parameter for the visitor
          *
          * @return the visitor specific value
          *
@@ -480,8 +482,8 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.ExpandedLeadersNode,
          *      java.lang.Object)
          */
-        public Object visitExpandedLeaders(ExpandedLeadersNode node,
-                Object value) {
+        public Node visitExpandedLeaders(ExpandedLeadersNode node,
+                Boolean isHMode) {
 
             return node;
         }
@@ -492,7 +494,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          * has been encountered.
          *
          * @param node the first parameter for the visitor is the node visited
-         * @param hMode the second parameter for the visitor
+         * @param isHMode the second parameter for the visitor
          *
          * @return the visitor specific value
          *
@@ -500,9 +502,9 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.GlueNode,
          *      java.lang.Object)
          */
-        public Object visitGlue(GlueNode node, Object hMode) {
+        public Node visitGlue(GlueNode node, Boolean isHMode) {
 
-            if (((Boolean) hMode).booleanValue()) {
+            if (isHMode.booleanValue()) {
                 if (node.getWidth().eq(Dimen.ZERO_PT)) {
                     return null;
                 }
@@ -519,7 +521,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          * has been encountered.
          *
          * @param node the first parameter for the visitor is the node visited
-         * @param value the second parameter for the visitor
+         * @param isHMode the second parameter for the visitor
          *
          * @return the visitor specific value
          *
@@ -527,8 +529,8 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.HorizontalListNode,
          *      java.lang.Object)
          */
-        public Object visitHorizontalList(HorizontalListNode node,
-                Object value) {
+        public Node visitHorizontalList(HorizontalListNode node,
+                Boolean isHMode) {
 
             return (node.size() == 0 ? null : node);
         }
@@ -539,7 +541,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          * has been encountered.
          *
          * @param node the first parameter for the visitor is the node visited
-         * @param value the second parameter for the visitor
+         * @param isHMode the second parameter for the visitor
          *
          * @return the visitor specific value
          *
@@ -547,8 +549,8 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.InsertionNode,
          *      java.lang.Object)
          */
-        public Object visitInsertion(InsertionNode node,
-                Object value) {
+        public Node visitInsertion(InsertionNode node,
+                Boolean isHMode) {
 
             return null;
         }
@@ -559,7 +561,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          * has been encountered.
          *
          * @param node the first parameter for the visitor is the node visited
-         * @param value the second parameter for the visitor
+         * @param isHMode the second parameter for the visitor
          *
          * @return the visitor specific value
          *
@@ -567,9 +569,9 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.KernNode,
          *      java.lang.Object)
          */
-        public Object visitKern(KernNode node, Object value) {
+        public Node visitKern(KernNode node, Boolean isHMode) {
 
-            if (((Boolean) value).booleanValue()) {
+            if (isHMode.booleanValue()) {
                 if (node.getWidth().eq(Dimen.ZERO_PT)) {
                     return null;
                 }
@@ -585,7 +587,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          * has been encountered.
          *
          * @param node the first parameter for the visitor is the node visited
-         * @param value the second parameter for the visitor
+         * @param isHMode the second parameter for the visitor
          *
          * @return the visitor specific value
          *
@@ -593,7 +595,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.LigatureNode,
          *      java.lang.Object)
          */
-        public Object visitLigature(LigatureNode node, Object value) {
+        public Node visitLigature(LigatureNode node, Boolean isHMode) {
 
             return node;
         }
@@ -604,7 +606,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          * has been encountered.
          *
          * @param node the first parameter for the visitor is the node visited
-         * @param value the second parameter for the visitor
+         * @param isHMode the second parameter for the visitor
          *
          * @return the visitor specific value
          *
@@ -612,7 +614,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.MarkNode,
          *      java.lang.Object)
          */
-        public Object visitMark(MarkNode node, Object value) {
+        public Node visitMark(MarkNode node, Boolean isHMode) {
 
             return null;
         }
@@ -623,7 +625,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          * has been encountered.
          *
          * @param node the first parameter for the visitor is the node visited
-         * @param value the second parameter for the visitor
+         * @param isHMode the second parameter for the visitor
          *
          * @return the visitor specific value
          *
@@ -631,7 +633,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.PenaltyNode,
          *      java.lang.Object)
          */
-        public Object visitPenalty(PenaltyNode node, Object value) {
+        public Node visitPenalty(PenaltyNode node, Boolean isHMode) {
 
             return null;
         }
@@ -642,7 +644,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          * has been encountered.
          *
          * @param node the first parameter for the visitor is the node visited
-         * @param value the second parameter for the visitor
+         * @param isHMode the second parameter for the visitor
          *
          * @return the visitor specific value
          *
@@ -650,7 +652,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.RuleNode,
          *      java.lang.Object)
          */
-        public Object visitRule(RuleNode node, Object value) {
+        public Node visitRule(RuleNode node, Boolean isHMode) {
 
             return node;
         }
@@ -661,7 +663,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          * has been encountered.
          *
          * @param node the first parameter for the visitor is the node visited
-         * @param value the second parameter for the visitor
+         * @param isHMode the second parameter for the visitor
          *
          * @return the visitor specific value
          *
@@ -669,7 +671,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.SpaceNode,
          *      java.lang.Object)
          */
-        public Object visitSpace(SpaceNode node, Object value) {
+        public Node visitSpace(SpaceNode node, Boolean isHMode) {
 
             return node;
         }
@@ -680,7 +682,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          * has been encountered.
          *
          * @param node the first parameter for the visitor is the node visited
-         * @param value the second parameter for the visitor
+         * @param isHMode the second parameter for the visitor
          *
          * @return the visitor specific value
          *
@@ -688,8 +690,8 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.VerticalListNode,
          *      java.lang.Object)
          */
-        public Object visitVerticalList(VerticalListNode node,
-                Object value) {
+        public Node visitVerticalList(VerticalListNode node,
+                Boolean isHMode) {
 
             return (node.size() == 0 ? null : node);
         }
@@ -700,7 +702,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          * has been encountered.
          *
          * @param node the first parameter for the visitor is the node visited
-         * @param value the second parameter for the visitor
+         * @param isHMode the second parameter for the visitor
          *
          * @return the visitor specific value
          *
@@ -708,8 +710,8 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.VirtualCharNode,
          *      java.lang.Object)
          */
-        public Object visitVirtualChar(VirtualCharNode node,
-                Object value) {
+        public Node visitVirtualChar(VirtualCharNode node,
+                Boolean isHMode) {
 
             return node.getNodes();
         }
@@ -720,7 +722,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          * has been encountered.
          *
          * @param node the first parameter for the visitor is the node visited
-         * @param value the second parameter for the visitor
+         * @param isHMode the second parameter for the visitor
          *
          * @return the visitor specific value
          *
@@ -730,7 +732,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
          *      org.extex.typesetter.type.node.WhatsItNode,
          *      java.lang.Object)
          */
-        public Object visitWhatsIt(WhatsItNode node, Object value)
+        public Node visitWhatsIt(WhatsItNode node, Boolean isHMode)
                 throws GeneralException {
 
             if (node instanceof SpecialNode) {
@@ -792,16 +794,18 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
      * Get a new instance of a page.
      *
      * @param nodes the nodes contained
-     * @param context the interpreter context
+     * @param pageContext the interpreter context
      * @param typesetter the typesetter
      *
      * @return the new instance or <code>null</code> if the page would be empty
      *
      * @throws GeneralException in case of an error
      */
-    public Page newInstance(NodeList nodes, Context context,
+    public Page newInstance(NodeList nodes, PageContext pageContext,
             Typesetter typesetter) throws GeneralException {
 
+        //TODO gene: beware of ClassCastException
+        Context context = (Context) pageContext;
         FixedCount[] pageNo = new FixedCount[10];
         for (int i = 0; i < 10; i++) {
             pageNo[i] = new ImmutableCount(context.getCount(NO[i]));

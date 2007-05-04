@@ -23,7 +23,6 @@ import java.io.Serializable;
 
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
-import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
 
 /**
  * This class represents a long integer value. It is used for instance as count
@@ -111,12 +110,12 @@ public class Count implements Serializable, FixedCount {
      *
      * @param denom the denominator to divide by
      *
-     * @throws ArithmeticOverflowException in case of a division by zero
+     * @throws ArithmeticException in case of a division by zero
      */
-    public void divide(long denom) throws ArithmeticOverflowException {
+    public void divide(long denom) throws ArithmeticException {
 
         if (denom == 0) {
-            throw new ArithmeticOverflowException(null);
+            throw new ArithmeticException();
         }
 
         value /= denom;
@@ -127,13 +126,13 @@ public class Count implements Serializable, FixedCount {
      *
      * @param denom the denominator to divide by
      *
-     * @throws ArithmeticOverflowException in case of a division by zero
+     * @throws ArithmeticException in case of a division by zero
      */
-    public void divide(Count denom) throws ArithmeticOverflowException {
+    public void divide(Count denom) throws ArithmeticException {
 
         long d = denom.getValue();
         if (d == 0) {
-            throw new ArithmeticOverflowException(null);
+            throw new ArithmeticException(null);
         }
 
         value /= d;

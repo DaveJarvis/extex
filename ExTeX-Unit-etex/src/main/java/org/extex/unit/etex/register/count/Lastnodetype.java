@@ -22,8 +22,10 @@ package org.extex.unit.etex.register.count;
 import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.NoHelpException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.typesetter.type.node.AdjustNode;
@@ -51,28 +53,30 @@ import org.extex.unit.tex.register.count.AbstractReadonlyCount;
 /**
  * This class provides an implementation for the primitive
  * <code>\lastnodetype</code>.
- *
+ * 
  * <doc name="lastnodetype">
  * <h3>The Primitive <tt>\lastnodetype</tt></h3>
  * <p>
- *  TODO missing documentation
+ * TODO missing documentation
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;lastnodetype&rang;
  *       &rarr; <tt>\lastnodetype</tt>  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \count42=\lastnodetype  </pre>
  *  <pre class="TeXSample">
  *    Test\the\lastnodetype  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
  * @version $Revision: 4732 $
@@ -105,7 +109,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * Type number for aligned leaders nodes.
          */
         // TODO
-        //private static final int NODETYPE_ALIGNEDLEADERS = 4444;
+        // private static final int NODETYPE_ALIGNEDLEADERS = 4444;
         /**
          * Type number for before math nodes.
          */
@@ -116,7 +120,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * Type number for centered leaders nodes.
          */
         // TODO
-        //private static final int NODETYPE_CENTEREDLEADERS = 4444;
+        // private static final int NODETYPE_CENTEREDLEADERS = 4444;
         /**
          * Type number for char nodes.
          */
@@ -131,7 +135,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * Type number for expanded leaders nodes.
          */
         // TODO
-        //private static final int NODETYPE_EXPANDEDLEADERS = 4444;
+        // private static final int NODETYPE_EXPANDEDLEADERS = 4444;
         /**
          * Type number for glue nodes.
          */
@@ -176,7 +180,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * Type number for space nodes.
          */
         // TODO
-        //private static final int NODETYPE_SPACE = 4444;
+        // private static final int NODETYPE_SPACE = 4444;
         /**
          * Type number for vertical list nodes.
          */
@@ -189,31 +193,38 @@ public class Lastnodetype extends AbstractReadonlyCount {
 
         /**
          * Returns the Node for an specified node.
-         *
+         * 
          * @param node a <code>Node</code> value
+         * 
          * @return the type of the node
-         * @exception GeneralException if an error occurs
+         *
+         * @exception HelpingException if an error occurs
          */
-        public int getNodetype(Node node) throws GeneralException {
+        public int getNodetype(Node node) throws HelpingException {
 
             if (node == null) {
                 return NODE_TYPE_EMPTY_LIST;
             }
 
-            return ((Integer) node.visit(this, null)).intValue();
+            try {
+                return ((Integer) node.visit(this, null)).intValue();
+            } catch (HelpingException e) {
+                throw e;
+            } catch (GeneralException e) {
+                throw new NoHelpException(e);
+            }
         }
 
         /**
-         * Return type number for adjust nodes.  Both arguments are
-         * not used.
-         *
+         * Return type number for adjust nodes. Both arguments are not used.
+         * 
          * @param node the visited node
          * @param arg null
-         *
+         * 
          * @return type number of node as <code>Integer</code>
-         *
+         * 
          * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(AdjustNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
         public Object visitAdjust(AdjustNode node, Object arg) {
 
@@ -221,16 +232,15 @@ public class Lastnodetype extends AbstractReadonlyCount {
         }
 
         /**
-         * Return type number for aftermath nodes.  Both arguments are
-         * not used.
-         *
+         * Return type number for aftermath nodes. Both arguments are not used.
+         * 
          * @param node the visited node
          * @param arg null
-         *
+         * 
          * @return type number of node as <code>Integer</code>
-         *
+         * 
          * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(AfterMathNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
         public Object visitAfterMath(AfterMathNode node, Object arg) {
 
@@ -238,74 +248,70 @@ public class Lastnodetype extends AbstractReadonlyCount {
         }
 
         /**
-         * Return type number for aligned leaders nodes.  Both arguments are
-         * not used.
-         *
+         * Return type number for aligned leaders nodes. Both arguments are not
+         * used.
+         * 
          * @param node the visited node
          * @param arg null
-         *
+         * 
          * @return type number of node as <code>Integer</code>
-         *
+         * 
          * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(AlignedLeadersNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitAlignedLeaders(AlignedLeadersNode node,
-                Object arg) {
+        public Object visitAlignedLeaders(AlignedLeadersNode node, Object arg) {
 
-            //TODO unimplemented
+            // TODO unimplemented
             throw new RuntimeException("unimplemented");
             // return new Integer(NODETYPE_ALIGNEDLEADERS);
         }
 
         /**
-         * Return type number for before math nodes.  Both arguments are
-         * not used.
-         *
+         * Return type number for before math nodes. Both arguments are not
+         * used.
+         * 
          * @param node the visited node
          * @param arg null
-         *
+         * 
          * @return type number of node as <code>Integer</code>
-         *
+         * 
          * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(BeforeMathNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitBeforeMath(BeforeMathNode node,
-                Object arg) {
+        public Object visitBeforeMath(BeforeMathNode node, Object arg) {
 
             return NODETYPE_BEFOREMATH;
         }
 
         /**
-         * Return type number for centered leaders nodes.  Both arguments are
-         * not used.
-         *
+         * Return type number for centered leaders nodes. Both arguments are not
+         * used.
+         * 
          * @param node the visited node
          * @param arg null
-         *
+         * 
          * @return type number of node as <code>Integer</code>
-         *
+         * 
          * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(CenteredLeadersNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitCenteredLeaders(CenteredLeadersNode node,
-                Object arg) {
+        public Object visitCenteredLeaders(CenteredLeadersNode node, Object arg) {
 
-            //TODO unimplemented
+            // TODO unimplemented
             throw new RuntimeException("unimplemented");
             // return new Integer(NODETYPE_CENTEREDLEADERS);
         }
 
         /**
-         * Return type number for char nodes.  Both arguments are
-         * not used.
-         *
+         * Return type number for char nodes. Both arguments are not used.
+         * 
          * @param node the visited node
          * @param arg null
-         *
+         * 
          * @return type number of node as <code>Integer</code>
-         *
+         * 
          * @see org.extex.typesetter.type.NodeVisitor#visitChar(CharNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
         public Object visitChar(CharNode node, Object arg) {
 
@@ -313,54 +319,51 @@ public class Lastnodetype extends AbstractReadonlyCount {
         }
 
         /**
-         * Return type number for discretionary nodes.  Both arguments are
-         * not used.
-         *
+         * Return type number for discretionary nodes. Both arguments are not
+         * used.
+         * 
          * @param node the visited node
          * @param arg null
-         *
+         * 
          * @return type number of node as <code>Integer</code>
-         *
+         * 
          * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(DiscretionaryNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitDiscretionary(DiscretionaryNode node,
-                Object arg) {
+        public Object visitDiscretionary(DiscretionaryNode node, Object arg) {
 
             return NODETYPE_DISCRETIONARY;
         }
 
         /**
-         * Return type number for expanded leaders nodes.  Both arguments are
-         * not used.
-         *
+         * Return type number for expanded leaders nodes. Both arguments are not
+         * used.
+         * 
          * @param node the visited node
          * @param arg null
-         *
+         * 
          * @return type number of node as <code>Integer</code>
-         *
+         * 
          * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(ExpandedLeadersNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitExpandedLeaders(ExpandedLeadersNode node,
-                Object arg) {
+        public Object visitExpandedLeaders(ExpandedLeadersNode node, Object arg) {
 
-            //TODO unimplemented
+            // TODO unimplemented
             throw new RuntimeException("unimplemented");
-            //return new Integer(NODETYPE_EXPANDEDLEADERS);
+            // return new Integer(NODETYPE_EXPANDEDLEADERS);
         }
 
         /**
-         * Return type number for glue nodes.  Both arguments are
-         * not used.
-         *
+         * Return type number for glue nodes. Both arguments are not used.
+         * 
          * @param node the visited node
          * @param arg null
-         *
+         * 
          * @return type number of node as <code>Integer</code>
-         *
+         * 
          * @see org.extex.typesetter.type.NodeVisitor#visitGlue(GlueNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
         public Object visitGlue(GlueNode node, Object arg) {
 
@@ -368,34 +371,32 @@ public class Lastnodetype extends AbstractReadonlyCount {
         }
 
         /**
-         * Return type number for horizontallist nodes.  Both arguments are
-         * not used.
-         *
+         * Return type number for horizontallist nodes. Both arguments are not
+         * used.
+         * 
          * @param node the visited node
          * @param arg null
-         *
+         * 
          * @return type number of node as <code>Integer</code>
-         *
+         * 
          * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(HorizontalListNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
-        public Object visitHorizontalList(HorizontalListNode node,
-                Object arg) {
+        public Object visitHorizontalList(HorizontalListNode node, Object arg) {
 
             return NODETYPE_HORIZONTALLIST;
         }
 
         /**
-         * Return type number for insertion nodes.  Both arguments are
-         * not used.
-         *
+         * Return type number for insertion nodes. Both arguments are not used.
+         * 
          * @param node the visited node
          * @param arg null
-         *
+         * 
          * @return type number of node as <code>Integer</code>
-         *
+         * 
          * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(InsertionNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
         public Object visitInsertion(InsertionNode node, Object arg) {
 
@@ -403,16 +404,15 @@ public class Lastnodetype extends AbstractReadonlyCount {
         }
 
         /**
-         * Return type number for kern nodes.  Both arguments are
-         * not used.
-         *
+         * Return type number for kern nodes. Both arguments are not used.
+         * 
          * @param node the visited node
          * @param arg null
-         *
+         * 
          * @return type number of node as <code>Integer</code>
-         *
+         * 
          * @see org.extex.typesetter.type.NodeVisitor#visitKern(KernNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
         public Object visitKern(KernNode node, Object arg) {
 
@@ -420,16 +420,15 @@ public class Lastnodetype extends AbstractReadonlyCount {
         }
 
         /**
-         * Return type number for ligature nodes.  Both arguments are
-         * not used.
-         *
+         * Return type number for ligature nodes. Both arguments are not used.
+         * 
          * @param node the visited node
          * @param arg null
-         *
+         * 
          * @return type number of node as <code>Integer</code>
-         *
+         * 
          * @see org.extex.typesetter.type.NodeVisitor#visitLigature(LigatureNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
         public Object visitLigature(LigatureNode node, Object arg) {
 
@@ -437,16 +436,15 @@ public class Lastnodetype extends AbstractReadonlyCount {
         }
 
         /**
-         * Return type number for mark nodes.  Both arguments are
-         * not used.
-         *
+         * Return type number for mark nodes. Both arguments are not used.
+         * 
          * @param node the visited node
          * @param arg null
-         *
+         * 
          * @return type number of node as <code>Integer</code>
-         *
+         * 
          * @see org.extex.typesetter.type.NodeVisitor#visitMark(MarkNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
         public Object visitMark(MarkNode node, Object arg) {
 
@@ -454,16 +452,15 @@ public class Lastnodetype extends AbstractReadonlyCount {
         }
 
         /**
-         * Return type number for penalty nodes.  Both arguments are
-         * not used.
-         *
+         * Return type number for penalty nodes. Both arguments are not used.
+         * 
          * @param node the visited node
          * @param arg null
-         *
+         * 
          * @return type number of node as <code>Integer</code>
-         *
+         * 
          * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(PenaltyNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
         public Object visitPenalty(PenaltyNode node, Object arg) {
 
@@ -471,16 +468,15 @@ public class Lastnodetype extends AbstractReadonlyCount {
         }
 
         /**
-         * Return type number for rule nodes.  Both arguments are
-         * not used.
-         *
+         * Return type number for rule nodes. Both arguments are not used.
+         * 
          * @param node the visited node
          * @param arg null
-         *
+         * 
          * @return type number of node as <code>Integer</code>
-         *
+         * 
          * @see org.extex.typesetter.type.NodeVisitor#visitRule(RuleNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
         public Object visitRule(RuleNode node, Object arg) {
 
@@ -488,63 +484,59 @@ public class Lastnodetype extends AbstractReadonlyCount {
         }
 
         /**
-         * Return type number for SPACE nodes.  Both arguments are
-         * not used.
-         *
+         * Return type number for SPACE nodes. Both arguments are not used.
+         * 
          * @param node the visited node
          * @param arg null
-         *
+         * 
          * @return type number of node as <code>Integer</code>
-         *
+         * 
          * @see org.extex.typesetter.type.NodeVisitor#visitSpace(SpaceNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
         public Object visitSpace(SpaceNode node, Object arg) {
 
-            //TODO unimplemented
+            // TODO unimplemented
             throw new RuntimeException("unimplemented");
             // return new Integer(NODETYPE_SPACE);
         }
 
         /**
-         * Return type number for vertical list nodes.  Both arguments are
-         * not used.
-         *
+         * Return type number for vertical list nodes. Both arguments are not
+         * used.
+         * 
          * @param node the visited node
          * @param arg null
-         *
+         * 
          * @return type number of node as <code>Integer</code>
-         *
+         * 
          * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(
-         *     VerticalListNode,
-         *     java.lang.Object)
+         *      VerticalListNode, java.lang.Object)
          */
-        public Object visitVerticalList(VerticalListNode node,
-                Object arg) {
+        public Object visitVerticalList(VerticalListNode node, Object arg) {
 
             return NODETYPE_VERTICALLIST;
         }
 
         /**
-         * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(org.extex.typesetter.type.node.VirtualCharNode, java.lang.Object)
+         * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(org.extex.typesetter.type.node.VirtualCharNode,
+         *      java.lang.Object)
          */
-        public Object visitVirtualChar(VirtualCharNode node,
-                Object value) {
+        public Object visitVirtualChar(VirtualCharNode node, Object value) {
 
             return NODETYPE_CHAR;
         }
 
         /**
-         * Return type number for whatsit nodes.  Both arguments are
-         * not used.
-         *
+         * Return type number for whatsit nodes. Both arguments are not used.
+         * 
          * @param node the visited node
          * @param arg null
-         *
+         * 
          * @return type number of node as <code>Integer</code>
-         *
+         * 
          * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(WhatsItNode,
-         *     java.lang.Object)
+         *      java.lang.Object)
          */
         public Object visitWhatsIt(WhatsItNode node, Object arg) {
 
@@ -560,13 +552,14 @@ public class Lastnodetype extends AbstractReadonlyCount {
     // TODO: type 14 (unset) is missing (TE)
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     private static final long serialVersionUID = 1L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Lastnodetype(String name) {
@@ -575,35 +568,17 @@ public class Lastnodetype extends AbstractReadonlyCount {
     }
 
     /**
-     * This method converts a register into a count. It might be necessary to
-     * read further tokens to determine which value to use. For instance an
-     * additional register number might be required. In this case the additional
-     * arguments Context and TokenSource can be used.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use for conversion
-     *
-     * @return the converted value
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.core.count.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Node lastNode = typesetter.getLastNode();
 
-        try {
-            return NODETYPE_READER.getNodetype(lastNode);
-        } catch (InterpreterException e) {
-            throw e;
-        } catch (GeneralException e) {
-            throw new InterpreterException(e);
-        }
+        return NODETYPE_READER.getNodetype(lastNode);
     }
 
 }

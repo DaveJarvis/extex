@@ -19,43 +19,44 @@
 
 package org.extex.unit.tex.file;
 
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.interaction.Interaction;
-import org.extex.interpreter.type.file.InFile;
+import org.extex.interpreter.type.file.InputFile;
 import org.extex.scanner.TokenStream;
+import org.extex.scanner.type.file.InFile;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.file.AbstractFileCode;
 
 /**
  * This class provides an implementation for the primitive <code>\openin</code>.
- *
+ * 
  * <doc name="openin">
  * <h3>The Primitive <tt>\openin</tt></h3>
  * <p>
- *  The primitive <tt>\openin</tt> tries to open a file or other named resource
- *  for reading. The reference is stored in a read register to be used with
- *  {@link org.extex.unit.tex.file.Read <tt>\read</tt>}.
- *  If the opening fails then the read register is void. This
- *  can be checked with the primitive
- *  {@link org.extex.unit.tex.conditional.Ifeof <tt>\ifeof</tt>}.
+ * The primitive <tt>\openin</tt> tries to open a file or other named resource
+ * for reading. The reference is stored in a read register to be used with
+ * {@link org.extex.unit.tex.file.Read <tt>\read</tt>}. If the opening fails
+ * then the read register is void. This can be checked with the primitive
+ * {@link org.extex.unit.tex.conditional.Ifeof <tt>\ifeof</tt>}.
  * </p>
  * <p>
- *  The assignment to a read register is always global. The opening is always
- *  performed immediately. Thus no prefix is allowed.
+ * The assignment to a read register is always global. The opening is always
+ * performed immediately. Thus no prefix is allowed.
  * </p>
  * <p>
- *  The stream should be closed with
- *  {@link org.extex.unit.tex.file.Closein <tt>\closein</tt>}
- *  when not needed any more.
+ * The stream should be closed with
+ * {@link org.extex.unit.tex.file.Closein <tt>\closein</tt>} when not needed any
+ * more.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;openin&rang;
  *      &rarr; <tt>\openin</tt>  {@linkplain
  *        org.extex.unit.base.file.AbstractFileCode#scanInFileKey(Context,TokenSource,Typesetter)
@@ -64,28 +65,31 @@ import org.extex.unit.base.file.AbstractFileCode;
  *        &lang;equals&rang;} {@linkplain
  *        org.extex.unit.base.file.AbstractFileCode#scanFileName(Context,TokenSource)
  *        &lang;file name&rang;}   </pre>
- *
+ * 
  * <h4>Examples</h4>
+ * 
  * <pre class="TeXSample">
  *  \openin3= abc.def
  *  \read3 to \line
  *  \closein3 </pre>
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4441 $
  */
 public class Openin extends AbstractFileCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 20060819L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Openin(String name) {
@@ -94,30 +98,17 @@ public class Openin extends AbstractFileCode {
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     * @throws ConfigurationException in case of an configuration error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException,ConfigurationException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        String key = AbstractFileCode
-                .scanInFileKey(context, source, typesetter);
+        String key =
+                AbstractFileCode.scanInFileKey(context, source, typesetter);
         source.getOptionalEquals(context);
         String name = scanFileName(context, source);
 
@@ -125,10 +116,11 @@ public class Openin extends AbstractFileCode {
         Interaction interaction = context.getInteraction();
         try {
             context.setInteraction(Interaction.BATCHMODE);
-            TokenStream stream = source.getTokenStreamFactory().newInstance(
-                    name, "tex", getEncoding(context));
+            TokenStream stream =
+                    source.getTokenStreamFactory().newInstance(name, "tex",
+                        getEncoding(context));
             if (stream != null) {
-                file = new InFile(stream, false);
+                file = new InputFile(stream, false);
             } else {
                 file = null;
             }

@@ -24,10 +24,11 @@ import org.extex.core.dimen.FixedDimen;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.box.Box;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.node.VerticalListNode;
 
@@ -97,7 +98,8 @@ public class Vtop extends Vbox {
      *
      * @return the complete Box
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      *
      * @see org.extex.unit.tex.typesetter.box.Vbox#constructBox(
      *      org.extex.interpreter.context.Context,
@@ -108,7 +110,7 @@ public class Vtop extends Vbox {
      */
     protected Box constructBox(Context context, TokenSource source,
             Typesetter typesetter, Token startToken,
-            Token insert) throws InterpreterException {
+            Token insert) throws HelpingException, TypesetterException {
 
         Box box =
                 acquireBox(context, source, typesetter, GroupType.VTOP_GROUP,

@@ -23,7 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.observer.command.CommandObserver;
 import org.extex.interpreter.type.PrefixCode;
 import org.extex.scanner.type.token.CodeToken;
@@ -94,7 +94,7 @@ public class TraceCommandObserver implements CommandObserver {
             prefix = (tracing > 2 && //
                     token instanceof CodeToken && //
             context.getCode((CodeToken) token) instanceof PrefixCode);
-        } catch (InterpreterException e) {
+        } catch (HelpingException e) {
             logger.warning(e.getMessage());
         }
     }

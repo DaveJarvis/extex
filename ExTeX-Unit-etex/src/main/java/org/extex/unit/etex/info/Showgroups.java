@@ -32,43 +32,47 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupInfo;
 import org.extex.interpreter.context.group.GroupTypeVisitor;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\showgroups</code>.
- *
+ * This class provides an implementation for the primitive
+ * <code>\showgroups</code>.
+ * 
  * <doc name="showgroups">
  * <h3>The Primitive <tt>\showgroups</tt></h3>
  * <p>
- *  The primitive <tt>\showgroups</tt> prints the list of group descriptions
- *  to the log file. The list consists of descriptions of the currently open
- *  groups in descending order.
+ * The primitive <tt>\showgroups</tt> prints the list of group descriptions to
+ * the log file. The list consists of descriptions of the currently open groups
+ * in descending order.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;showgroups&rang;
  *       &rarr; <tt>\showgroups</tt>  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \showgroups  </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * <h4>Configuration</h4>
- *
+ * 
  * <p>
- *  The primitive takes an optional attribute named <tt>format</tt>. If this
- *  attribute is present and has the value <tt>short</tt> then only the line
- *  number is logged instead of the complete locator.
+ * The primitive takes an optional attribute named <tt>format</tt>. If this
+ * attribute is present and has the value <tt>short</tt> then only the line
+ * number is logged instead of the complete locator.
  * </p>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
@@ -78,7 +82,8 @@ public class Showgroups extends AbstractCode
             Configurable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 20060616L;
 
@@ -89,12 +94,13 @@ public class Showgroups extends AbstractCode
     private static final GroupTypeVisitor GTV = new GroupTypeVisitor() {
 
         /**
-         * This method is invoked when an adjusted hbox group has been encountered.
-         *
+         * This method is invoked when an adjusted hbox group has been
+         * encountered.
+         * 
          * @param arg the argument
-         *
+         * 
          * @return some object
-         *
+         * 
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitAdjustedHboxGroup(
          *      java.lang.Object)
          */
@@ -105,11 +111,11 @@ public class Showgroups extends AbstractCode
 
         /**
          * This method is invoked when an align group has been encountered.
-         *
+         * 
          * @param arg the argument
-         *
+         * 
          * @return some object
-         *
+         * 
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitAlignGroup(
          *      java.lang.Object)
          */
@@ -119,12 +125,13 @@ public class Showgroups extends AbstractCode
         }
 
         /**
-         * This method is invoked when a bottom level group has been encountered.
-         *
+         * This method is invoked when a bottom level group has been
+         * encountered.
+         * 
          * @param arg the argument
-         *
+         * 
          * @return some object
-         *
+         * 
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitBottomLevelGroup(
          *      java.lang.Object)
          */
@@ -135,11 +142,11 @@ public class Showgroups extends AbstractCode
 
         /**
          * This method is invoked when a disc group has been encountered.
-         *
+         * 
          * @param arg the argument
-         *
+         * 
          * @return some object
-         *
+         * 
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitDiscGroup(
          *      java.lang.Object)
          */
@@ -150,11 +157,11 @@ public class Showgroups extends AbstractCode
 
         /**
          * This method is invoked when a hbox group has been encountered.
-         *
+         * 
          * @param arg the argument
-         *
+         * 
          * @return some object
-         *
+         * 
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitHboxGroup(
          *      java.lang.Object)
          */
@@ -165,11 +172,11 @@ public class Showgroups extends AbstractCode
 
         /**
          * This method is invoked when an insert group has been encountered.
-         *
+         * 
          * @param arg the argument
-         *
+         * 
          * @return some object
-         *
+         * 
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitInsertGroup(
          *      java.lang.Object)
          */
@@ -180,11 +187,11 @@ public class Showgroups extends AbstractCode
 
         /**
          * This method is invoked when a math choice group has been encountered.
-         *
+         * 
          * @param arg the argument
-         *
+         * 
          * @return some object
-         *
+         * 
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathChoiceGroup(
          *      java.lang.Object)
          */
@@ -195,11 +202,11 @@ public class Showgroups extends AbstractCode
 
         /**
          * This method is invoked when a math group has been encountered.
-         *
+         * 
          * @param arg the argument
-         *
+         * 
          * @return some object
-         *
+         * 
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathGroup(
          *      java.lang.Object)
          */
@@ -210,11 +217,11 @@ public class Showgroups extends AbstractCode
 
         /**
          * This method is invoked when a math left group has been encountered.
-         *
+         * 
          * @param arg the argument
-         *
+         * 
          * @return some object
-         *
+         * 
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathLeftGroup(
          *      java.lang.Object)
          */
@@ -225,11 +232,11 @@ public class Showgroups extends AbstractCode
 
         /**
          * This method is invoked when a math shift group has been encountered.
-         *
+         * 
          * @param arg the argument
-         *
+         * 
          * @return some object
-         *
+         * 
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathShiftGroup(
          *      java.lang.Object)
          */
@@ -240,11 +247,11 @@ public class Showgroups extends AbstractCode
 
         /**
          * This method is invoked when a no align group has been encountered.
-         *
+         * 
          * @param arg the argument
-         *
+         * 
          * @return some object
-         *
+         * 
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitNoAlignGroup(
          *      java.lang.Object)
          */
@@ -255,11 +262,11 @@ public class Showgroups extends AbstractCode
 
         /**
          * This method is invoked when a output group has been encountered.
-         *
+         * 
          * @param arg the argument
-         *
+         * 
          * @return some object
-         *
+         * 
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitOutputGroup(
          *      java.lang.Object)
          */
@@ -270,11 +277,11 @@ public class Showgroups extends AbstractCode
 
         /**
          * This method is invoked when a semi simple group has been encountered.
-         *
+         * 
          * @param arg the argument
-         *
+         * 
          * @return some object
-         *
+         * 
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitSemiSimpleGroup(
          *      java.lang.Object)
          */
@@ -285,11 +292,11 @@ public class Showgroups extends AbstractCode
 
         /**
          * This method is invoked when a simple group has been encountered.
-         *
+         * 
          * @param arg the argument
-         *
+         * 
          * @return some object
-         *
+         * 
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitSimpleGroup(
          *      java.lang.Object)
          */
@@ -300,11 +307,11 @@ public class Showgroups extends AbstractCode
 
         /**
          * This method is invoked when a vbox group has been encountered.
-         *
+         * 
          * @param arg the argument
-         *
+         * 
          * @return some object
-         *
+         * 
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVboxGroup(
          *      java.lang.Object)
          */
@@ -315,11 +322,11 @@ public class Showgroups extends AbstractCode
 
         /**
          * This method is invoked when a vcenter group has been encountered.
-         *
+         * 
          * @param arg the argument
-         *
+         * 
          * @return some object
-         *
+         * 
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVcenterGroup(
          *      java.lang.Object)
          */
@@ -330,11 +337,11 @@ public class Showgroups extends AbstractCode
 
         /**
          * This method is invoked when a vtop group has been encountered.
-         *
+         * 
          * @param arg the argument
-         *
+         * 
          * @return some object
-         *
+         * 
          * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVtopGroup(
          *      java.lang.Object)
          */
@@ -358,7 +365,7 @@ public class Showgroups extends AbstractCode
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for tracing and debugging
      */
     public Showgroups(String name) {
@@ -368,16 +375,15 @@ public class Showgroups extends AbstractCode
 
     /**
      * Configure an object according to a given Configuration.
-     *
+     * 
      * @param config the configuration object to consider
-     *
+     * 
      * @throws ConfigurationException in case that something went wrong
-     *
+     * 
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
-    public void configure(Configuration config)
-            throws ConfigurationException {
+    public void configure(Configuration config) throws ConfigurationException {
 
         String format = config.getAttribute("format");
         if ("short".equals(format)) {
@@ -387,9 +393,9 @@ public class Showgroups extends AbstractCode
 
     /**
      * Setter for the logger.
-     *
+     * 
      * @param log the logger to use
-     *
+     * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
@@ -399,26 +405,14 @@ public class Showgroups extends AbstractCode
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Localizer loc = getLocalizer();
         GroupInfo[] gi = context.getGroupInfos();

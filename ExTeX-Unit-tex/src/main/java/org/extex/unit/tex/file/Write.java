@@ -29,50 +29,53 @@ import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.NoHelpException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.EofInToksException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.TokensWriter;
 import org.extex.interpreter.type.file.ExecuteFile;
 import org.extex.interpreter.type.file.LogFile;
-import org.extex.interpreter.type.file.OutFile;
 import org.extex.interpreter.type.file.UserAndLogFile;
+import org.extex.scanner.type.file.OutFile;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
-import org.extex.typesetter.type.node.WhatsItWriteNode;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.file.AbstractFileCode;
+import org.extex.unit.tex.file.nodes.WhatsItWriteNode;
 
 /**
  * This class provides an implementation for the primitive <code>\write</code>.
- *
+ * 
  * <doc name="write">
  * <h3>The Primitive <tt>\write</tt></h3>
  * <p>
- *  The primitive <tt>\write</tt> can be used to write some text to an output
- *  stream. There are two modes of operation: Either the writing is delayed
- *  until the page is shipped or the writing is performed immediately. The
- *  default mode of operation is the delayed writing. The prefix
- *  <tt>\immediate</tt> can be used to switch to the immediate writing.
+ * The primitive <tt>\write</tt> can be used to write some text to an output
+ * stream. There are two modes of operation: Either the writing is delayed until
+ * the page is shipped or the writing is performed immediately. The default mode
+ * of operation is the delayed writing. The prefix <tt>\immediate</tt> can be
+ * used to switch to the immediate writing.
  * </p>
  * <p>
- *  The first argument to <tt>\write</tt> is the stream. It is usually opened
- *  with <tt>\openin</tt>. If the stream has not been opened this way or has
- *  been closed in the mean time then the result is written to the console and
- *  the log file.
+ * The first argument to <tt>\write</tt> is the stream. It is usually opened
+ * with <tt>\openin</tt>. If the stream has not been opened this way or has
+ * been closed in the mean time then the result is written to the console and
+ * the log file.
  * </p>
  * <p>
- *  The second argument is a block of text. It is stored away and expanded just
- *  before the writing occurs. This means that the values of control sequences
- *  or registers are in fact used with their meaning when the page is shipped
- *  in the case of delayed writing.
+ * The second argument is a block of text. It is stored away and expanded just
+ * before the writing occurs. This means that the values of control sequences or
+ * registers are in fact used with their meaning when the page is shipped in the
+ * case of delayed writing.
  * </p>
  * <p>
- *  TODO missing documentation
+ * TODO missing documentation
  * </p>
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;write&rang;
  *      &rarr; &lang;modifier&rang; <tt>\write</tt> {@linkplain
  *        org.extex.unit.base.file.AbstractFileCode#scanOutFileKey(Context,TokenSource,Typesetter)
@@ -81,15 +84,17 @@ import org.extex.unit.base.file.AbstractFileCode;
  *    &lang;modifier&rang;
  *      &rarr;
  *       |  <tt>\immediate</tt> &lang;modifier&rang;  </pre>
- *
+ * 
  * <h4>Examples</h4>
+ * 
  * <pre class="TeXSample">
  * \immediate\openout3= abc.def
  * \write3{Hi there!}
  * \closeout3 </pre>
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4441 $
  */
@@ -105,7 +110,8 @@ public class Write extends AbstractCode
     private static final String LOG_FILE = "-1";
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 04022007L;
 
@@ -122,8 +128,8 @@ public class Write extends AbstractCode
     private static final String USER_AND_LOG = "17";
 
     /**
-     * The field <tt>init</tt> contains the indicator that the standard streams
-     * are initialized.
+     * The field <tt>init</tt> contains the indicator that the standard
+     * streams are initialized.
      */
     private transient boolean init = false;
 
@@ -140,7 +146,7 @@ public class Write extends AbstractCode
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Write(String name) {
@@ -150,16 +156,15 @@ public class Write extends AbstractCode
 
     /**
      * Configure an object according to a given Configuration.
-     *
+     * 
      * @param config the configuration object to consider
-     *
+     * 
      * @throws ConfigurationException in case that something went wrong
-     *
+     * 
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
-    public void configure(Configuration config)
-            throws ConfigurationException {
+    public void configure(Configuration config) throws ConfigurationException {
 
         write18 =
                 Boolean.valueOf(config.getAttribute("write18")).booleanValue();
@@ -167,9 +172,9 @@ public class Write extends AbstractCode
 
     /**
      * Setter for the logger.
-     *
+     * 
      * @param log the logger to use
-     *
+     * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
@@ -179,28 +184,14 @@ public class Write extends AbstractCode
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     * @throws ConfigurationException in case of an configuration error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         String key =
                 AbstractFileCode.scanOutFileKey(context, source, typesetter);
@@ -226,16 +217,14 @@ public class Write extends AbstractCode
     }
 
     /**
-     * Write some tokens to a write register.
-     *
-     * @param key the name (number) of the write register
-     * @param toks the tokens to write
-     * @param context the processing context
-     *
-     * @throws InterpreterException in case of an error
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.TokensWriter#write(java.lang.String,
+     *      org.extex.scanner.type.tokens.Tokens,
+     *      org.extex.interpreter.context.Context)
      */
     public void write(String key, Tokens toks, Context context)
-            throws InterpreterException {
+            throws HelpingException {
 
         OutFile file = context.getOutFile(key);
 
@@ -261,7 +250,7 @@ public class Write extends AbstractCode
         try {
             file.write(toks);
         } catch (IOException e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
     }
 

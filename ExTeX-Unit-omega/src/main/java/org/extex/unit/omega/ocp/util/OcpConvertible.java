@@ -21,7 +21,7 @@ package org.extex.unit.omega.ocp.util;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -41,9 +41,9 @@ public interface OcpConvertible {
      *
      * @return the Ocp encountered
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      */
     Ocp convertOcp(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+            throws HelpingException;
 
 }

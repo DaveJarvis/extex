@@ -20,49 +20,52 @@
 package org.extex.unit.pdftex;
 
 import org.extex.core.UnicodeChar;
-import org.extex.core.count.CountConvertible;
-import org.extex.core.count.CountParser;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.NoHelpException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.font.Font;
+import org.extex.scanner.CountConvertible;
+import org.extex.scanner.CountParser;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive <code>\efcode</code>.
- *
+ * 
  * <doc name="efcode">
  * <h3>The PDF Primitive <tt>\efcode</tt></h3>
  * <p>
- *  The PDF primitive <tt>\efcode</tt> ...
+ * The PDF primitive <tt>\efcode</tt> ...
  * </p>
  * <p>
- *  TODO missing documentation
+ * TODO missing documentation
  * </p>
  * <p>
- *  The default value is 1000.
+ * The default value is 1000.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;efcode&rang;
  *       &rarr; <tt>\efcode</tt> ... </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \efcode\f`A 1200  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4791 $
  */
@@ -79,7 +82,7 @@ public class Efcode extends AbstractCode
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param codeName the name of the primitive
      */
     public Efcode(String codeName) {
@@ -88,26 +91,14 @@ public class Efcode extends AbstractCode
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Font font = source.getFont(context, getName());
         UnicodeChar uc =
@@ -118,26 +109,13 @@ public class Efcode extends AbstractCode
     }
 
     /**
-     * This method converts a register into a count. It might be necessary to
-     * read further tokens to determine which value to use. For instance an
-     * additional register number might be required. In this case the additional
-     * arguments Context and TokenSource can be used.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use for conversion
-     *
-     * @return the converted value
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.core.count.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Font font = source.getFont(context, getName());
         UnicodeChar uc =
@@ -147,59 +125,33 @@ public class Efcode extends AbstractCode
     }
 
     /**
-     * This method takes the first token and expands it. The result is placed
-     * on the stack.
-     * This means that expandable code does one step of expansion and puts the
-     * result on the stack. To expand a token it might be necessary to consume
-     * further tokens.
-     *
-     * @param prefix the prefix flags controlling the expansion
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void expand(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void expand(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         long value = convertCount(context, source, typesetter);
         try {
             source.push(context.getTokenFactory().toTokens(value));
         } catch (CatcodeException e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
     }
 
     /**
-     * This method is the getter for the description of the primitive.
-     *
-     * @param context the interpreter context
-     * @param source the source for further tokens to qualify the request
-     * @param typesetter the typesetter to use
-     *
-     * @return the description of the primitive as list of Tokens
-     *
-     * @throws InterpreterException in case of an error
-     * @throws CatcodeException in case of an error in token creation
-     * @throws ConfigurationException in case of an configuration error
-     *
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public Tokens the(Context context, TokenSource source,
-            Typesetter typesetter)
-            throws InterpreterException,
-                CatcodeException {
+    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
+            throws CatcodeException,
+                HelpingException,
+                TypesetterException {
 
         long value = convertCount(context, source, typesetter);
         return context.getTokenFactory().toTokens(value);

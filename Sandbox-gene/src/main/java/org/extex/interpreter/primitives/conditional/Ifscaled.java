@@ -19,15 +19,15 @@
 
 package org.extex.interpreter.primitives.conditional;
 
-import org.extex.core.scaled.ScaledNumber;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.scanner.ScaledNumberParser;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.conditional.AbstractIf;
 
 /**
@@ -46,14 +46,14 @@ import org.extex.unit.base.conditional.AbstractIf;
  *  <pre class="syntax">
  *    &lang;ifscaled&rang;
  *      &rarr; <tt>\ifscaled</tt> {@linkplain
- *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;op&rang; {@linkplain
- *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\fi</tt>
  *      | <tt>\ifscaled</tt> {@linkplain
- *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;op&rang; {@linkplain
- *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt>
  *
  *    &lang;op&rang;
@@ -98,9 +98,9 @@ public class Ifscaled extends AbstractIf {
      */
     public boolean conditional(Context context,
             TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException {
 
-        long value = ScaledNumber.parse(context, source, typesetter);
+        long value = ScaledNumberParser.parse(context, source, typesetter);
         Token rel = source.getToken(context);
         if (rel == null) {
             throw new EofException(printableControlSequence(context));
@@ -108,13 +108,13 @@ public class Ifscaled extends AbstractIf {
         if (rel.getCatcode() == Catcode.OTHER) {
             switch (rel.getChar().getCodePoint()) {
                 case '<':
-                    return (value < ScaledNumber.parse(context, source,
+                    return (value < ScaledNumberParser.parse(context, source,
                             typesetter));
                 case '=':
-                    return (value == ScaledNumber.parse(context, source,
+                    return (value == ScaledNumberParser.parse(context, source,
                             typesetter));
                 case '>':
-                    return (value > ScaledNumber.parse(context, source,
+                    return (value > ScaledNumberParser.parse(context, source,
                             typesetter));
                 default:
             // fall-through

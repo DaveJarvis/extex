@@ -32,18 +32,19 @@ import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.scanner.TokenStream;
-import org.extex.scanner.base.TokenStreamImpl;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.ListMaker;
+import org.extex.typesetter.ListMakerType;
+import org.extex.typesetter.ListManager;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.ParagraphObserver;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.InvalidSpacefactorException;
 import org.extex.typesetter.exception.TypesetterException;
-import org.extex.typesetter.listMaker.ListManager;
 import org.extex.typesetter.output.OutputRoutine;
 import org.extex.typesetter.pageBuilder.PageBuilder;
 import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
@@ -68,7 +69,7 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.ListMaker#add(org.extex.core.glue.FixedGlue)
          */
         public void add(FixedGlue g) {
@@ -78,7 +79,7 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.ListMaker#add(org.extex.typesetter.type.Node)
          */
         public void add(Node c) {
@@ -88,20 +89,20 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.ListMaker#addAndAdjust(
          *      org.extex.typesetter.type.NodeList,
          *      org.extex.typesetter.TypesetterOptions)
          */
-        public void addAndAdjust(NodeList list,
-                TypesetterOptions options) throws TypesetterException {
+        public void addAndAdjust(NodeList list, TypesetterOptions options)
+                throws TypesetterException {
 
-            //not needed
+            // not needed
         }
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.ListMaker#addSpace(
          *      org.extex.interpreter.context.tc.TypesettingContext,
          *      org.extex.core.count.Count)
@@ -114,27 +115,27 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.ListMaker#afterParagraph(ParagraphObserver)
          */
         public void afterParagraph(ParagraphObserver observer) {
 
-            //not needed
+            // not needed
         }
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.Typesetter#clearShipoutMark()
          */
         public void clearShipoutMark() {
 
-            //not needed
+            // not needed
         }
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.Typesetter#complete(TypesetterOptions)
          */
         public NodeList complete(TypesetterOptions context) {
@@ -144,21 +145,18 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
-         * @see org.extex.typesetter.ListMaker#cr(
-         *      org.extex.interpreter.context.Context,
-         *      org.extex.interpreter.context.tc.TypesettingContext,
-         *      org.extex.core.UnicodeChar)
+         * 
+         * @see org.extex.typesetter.ListMaker#cr(Context, TypesettingContext,
+         *      UnicodeChar)
          */
-        public void cr(Context context, TypesettingContext tc,
-                UnicodeChar uc) {
+        public void cr(Context context, TypesettingContext tc, UnicodeChar uc) {
 
-            //not needed
+            // not needed
         }
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.Typesetter#ensureHorizontalMode(
          *      org.extex.core.Locator)
          */
@@ -169,7 +167,7 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.Typesetter#finish()
          */
         public void finish() {
@@ -179,7 +177,7 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.Typesetter#getBackendDriver()
          */
         public BackendDriver getBackendDriver() {
@@ -189,7 +187,7 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.ListMaker#getLastNode()
          */
         public Node getLastNode() {
@@ -199,7 +197,7 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.Typesetter#getListMaker()
          */
         public ListMaker getListMaker() {
@@ -209,7 +207,7 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.ListMaker#getLocator()
          */
         public Locator getLocator() {
@@ -219,7 +217,7 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.Typesetter#getManager()
          */
         public ListManager getManager() {
@@ -229,7 +227,7 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.Typesetter#getMode()
          */
         public Mode getMode() {
@@ -239,7 +237,7 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.Typesetter#getNodeFactory()
          */
         public NodeFactory getNodeFactory() {
@@ -249,7 +247,7 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.ListMaker#getPrevDepth()
          */
         public FixedDimen getPrevDepth() {
@@ -259,7 +257,7 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.ListMaker#getSpacefactor()
          */
         public long getSpacefactor() {
@@ -269,7 +267,7 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.Typesetter#isShipoutMark()
          */
         public boolean isShipoutMark() {
@@ -279,48 +277,46 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.ListMaker#leftBrace()
          */
         public void leftBrace() {
 
-            //not needed
+            // not needed
         }
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.ListMaker#letter(
          *      org.extex.core.UnicodeChar,
          *      org.extex.interpreter.context.tc.TypesettingContext,
          *      org.extex.interpreter.context.Context,
-         *      org.extex.interpreter.TokenSource,
-         *      org.extex.core.Locator)
+         *      org.extex.interpreter.TokenSource, org.extex.core.Locator)
          */
-        public boolean letter(UnicodeChar uc,
-                TypesettingContext tc, Context context,
-                TokenSource source, Locator locator) {
+        public boolean letter(UnicodeChar uc, TypesettingContext tc,
+                Context context, TokenSource source, Locator locator) {
 
             return false;
         }
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.ListMaker#mathShift(
          *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
          *      org.extex.scanner.type.token.Token)
          */
-        public void mathShift(Context context, TokenSource source,
-                Token t) {
+        public void mathShift(Context context, TokenSource source, Token t)
+                throws HelpingException {
 
-            //not needed
+            // not needed
         }
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.ListMaker#par()
          */
         public void par() {
@@ -330,18 +326,18 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.Typesetter#push(
          *      org.extex.typesetter.ListMaker)
          */
         public void push(ListMaker listMaker) {
 
-            //not needed
+            // not needed
         }
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.ListMaker#removeLastNode()
          */
         public void removeLastNode() {
@@ -351,17 +347,17 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.ListMaker#rightBrace()
          */
         public void rightBrace() throws TypesetterException {
 
-            //not needed
+            // not needed
         }
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.Typesetter#setBackend(
          *      org.extex.backend.BackendDriver)
          */
@@ -372,40 +368,40 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.Typesetter#setNodeFactory(
          *      org.extex.typesetter.type.node.factory.NodeFactory)
          */
         public void setNodeFactory(NodeFactory nodeFactory) {
 
-            //not needed
+            // not needed
         }
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.Typesetter#setOptions(
          *      org.extex.typesetter.TypesetterOptions)
          */
         public void setOptions(TypesetterOptions options) {
 
-            //not needed
+            // not needed
         }
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.Typesetter#setOutputRoutine(
          *      org.extex.typesetter.output.OutputRoutine)
          */
         public void setOutputRoutine(OutputRoutine output) {
 
-            //not needed
+            // not needed
         }
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.Typesetter#setPageBuilder(
          *      org.extex.typesetter.pageBuilder.PageBuilder)
          */
@@ -416,7 +412,7 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.Typesetter#setParagraphBuilder(
          *      org.extex.typesetter.paragraphBuilder.ParagraphBuilder)
          */
@@ -427,7 +423,7 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.ListMaker#setPrevDepth(
          *      org.extex.core.dimen.Dimen)
          */
@@ -438,7 +434,7 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.ListMaker#setSpacefactor(
          *      org.extex.core.count.FixedCount)
          */
@@ -450,7 +446,7 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.Typesetter#shipout(
          *      org.extex.typesetter.type.NodeList)
          */
@@ -461,70 +457,64 @@ public class Max1 extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
-         * @see org.extex.typesetter.ListMaker#showlist(
-         *      java.lang.StringBuffer, long, long)
+         * 
+         * @see org.extex.typesetter.ListMaker#showlist( java.lang.StringBuffer,
+         *      long, long)
          */
         public void showlist(StringBuffer s, long l, long m) {
 
-            //not needed
+            // not needed
         }
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.Typesetter#showlists(
          *      java.lang.StringBuffer, long, long)
          */
         public void showlists(StringBuffer s, long l, long m) {
 
-            //not needed
+            // not needed
         }
 
         /**
          * {@inheritDoc}
-         *
-         * @see org.extex.typesetter.Typesetter#subscriptMark(
-         *      Context,
+         * 
+         * @see org.extex.typesetter.Typesetter#subscriptMark( Context,
          *      TokenSource, Typesetter, org.extex.scanner.type.token.Token)
          */
-        public void subscriptMark(Context context,
-                TokenSource source, Typesetter typesetter,
-                Token t) {
+        public void subscriptMark(Context context, TokenSource source,
+                Typesetter typesetter, Token t) throws HelpingException {
 
-            //not needed
+            // not needed
         }
 
         /**
          * {@inheritDoc}
-         *
-         * @see org.extex.typesetter.Typesetter#superscriptMark(
-         *      Context,
+         * 
+         * @see org.extex.typesetter.Typesetter#superscriptMark( Context,
          *      TokenSource, Typesetter, org.extex.scanner.type.token.Token)
          */
-        public void superscriptMark(Context context,
-                TokenSource source, Typesetter typesetter,
-                Token t) {
+        public void superscriptMark(Context context, TokenSource source,
+                Typesetter typesetter, Token t) throws HelpingException {
 
-            //not needed
+            // not needed
         }
 
         /**
          * {@inheritDoc}
-         *
-         * @see org.extex.typesetter.Typesetter#tab(
-         *      Context,
-         *      TokenSource, org.extex.scanner.type.token.Token)
+         * 
+         * @see org.extex.typesetter.Typesetter#tab( Context, TokenSource,
+         *      org.extex.scanner.type.token.Token)
          */
-        public void tab(Context context, TokenSource source,
-                Token t) {
+        public void tab(Context context, TokenSource source, Token t) {
 
-            //not needed
+            // not needed
         }
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see java.lang.Object#toString()
          */
         public String toString() {
@@ -532,10 +522,25 @@ public class Max1 extends TestCase {
             return sb.toString();
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.Typesetter#pushListMaker(
+         *      org.extex.typesetter.ListMakerType, org.extex.core.Locator)
+         */
+        public ListMaker pushListMaker(ListMakerType type, Locator locator)
+                throws UnsupportedOperationException,
+                    TypesetterException {
+
+            // TODO gene: pushListMaker unimplemented
+            return null;
+        }
+
     }
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
@@ -545,7 +550,7 @@ public class Max1 extends TestCase {
 
     /**
      * Constructor for Max1.
-     *
+     * 
      * @param arg0 the name
      */
     public Max1(String arg0) {
@@ -555,11 +560,11 @@ public class Max1 extends TestCase {
 
     /**
      * Perform a test.
-     *
+     * 
      * @param in the input string
-     *
+     * 
      * @return the result captured by the typesetter
-     *
+     * 
      * @throws Exception in case of an error
      */
     private String doTest(String in) throws Exception {
@@ -578,14 +583,16 @@ public class Max1 extends TestCase {
         TestTypesetter typesetter = new TestTypesetter();
         interpreter.setTypesetter(typesetter);
 
-        TokenStream stream = new TokenStreamImpl(null, null, in, "");
-        interpreter.run(stream);
+        //TODO gene provide a stream
+//        TokenStream stream = new TokenStreamImpl(null, null, in, "");
+//        interpreter.run(stream);
 
         return typesetter.toString();
     }
 
     /**
      * Trivial case: nothing in and nothing out
+     * 
      * @throws Exception in case of an error
      */
     public void testEmpty() throws Exception {

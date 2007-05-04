@@ -24,7 +24,7 @@ import java.lang.reflect.InvocationTargetException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.NoHelpException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.EofInToksException;
 import org.extex.interpreter.exception.helping.HelpingException;
@@ -32,54 +32,58 @@ import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.dynamic.Definer;
 
 /**
- * This primitive provides a binding of a macro or active character to
- * Java code. This code implements the primitive <tt>\javadef</tt>.
- *
+ * This primitive provides a binding of a macro or active character to Java
+ * code. This code implements the primitive <tt>\javadef</tt>.
+ * 
  * <doc name="javadef">
  * <h3>The Primitive <tt>\javadef</tt></h3>
  * <p>
- * The primitive <tt>\javadef</tt> attaches a definition to a macro or
- * active character. This is done in a similar way as <tt>\def</tt>
- * works. The difference is that the definition has to be provided in
- * form of a Java class.
+ * The primitive <tt>\javadef</tt> attaches a definition to a macro or active
+ * character. This is done in a similar way as <tt>\def</tt> works. The
+ * difference is that the definition has to be provided in form of a Java class.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
  * The general form of this primitive is
+ * 
  * <pre class="syntax">
  *   &lang;javadef&rang;
  *       &rarr; <tt>\javadef</tt> {@linkplain
  *       org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  *       &lang;control sequence&rang;} <i>&lang;tokens&rang;</i> </pre>
+ * 
  * <p>
- * The <i>&lang;control sequence&rang;</i> is any macro or active
- * character. If this token is missing or of the wrong type then an
- * error is raised.
+ * The <i>&lang;control sequence&rang;</i> is any macro or active character. If
+ * this token is missing or of the wrong type then an error is raised.
  * </p>
  * <p>
- * The <i>&lang;tokens&rang;</i> is any specification of a list of
- * tokens like a constant list enclosed in braces or a tokens register.
- * The value of these tokens are taken and interpreted as the name of
- * a Java class. This class is loaded if needed and instantiated. The
- * instance is bound as code to the <i>&lang;control sequence&rang;</i>.
+ * The <i>&lang;tokens&rang;</i> is any specification of a list of tokens like
+ * a constant list enclosed in braces or a tokens register. The value of these
+ * tokens are taken and interpreted as the name of a Java class. This class is
+ * loaded if needed and instantiated. The instance is bound as code to the
+ * <i>&lang;control sequence&rang;</i>.
  * </p>
  * <p>
  * The following example illustrates the use of this primitive:
+ * 
  * <pre class="TeXSample">
  *   \javadef\abc{org.extex.interpreter.primitive.Relax} </pre>
+ * 
  * </p>
  * <p>
- * The primitive <tt>\javadef</tt> is local to the enclosing group as
- * is <tt>\def</tt>. And similar to <tt>\def</tt> the modifier
- * <tt>\global</tt> can be used to make the definition in all groups
- * instead of the current group only. This is shown in the following
- * example:
+ * The primitive <tt>\javadef</tt> is local to the enclosing group as is
+ * <tt>\def</tt>. And similar to <tt>\def</tt> the modifier
+ * <tt>\global</tt> can be used to make the definition in all groups instead
+ * of the current group only. This is shown in the following example:
+ * 
  * <pre class="TeXSample">
  *   \global\javadef\abc{org.extex.interpreter.primitive.Relax}
  * </pre>
+ * 
  * </p>
  * <p>
  * The primitive <tt>\javadef</tt> also respects the count register
@@ -89,14 +93,15 @@ import org.extex.unit.dynamic.Definer;
  * Since the primitive is classified as assignment the value of
  * <tt>\afterassignment</tt> is applied.
  * </p>
- *
+ * 
  * <h4>Java Implementation</h4>
  * <p>
  * Now we come to the Java side of the definition. The class given as
  * <i>&lang;tokens&rang;</i> must implement the interface {@link
- * org.extex.interpreter.type.Code Code}. The easiest way to achieve
- * this is by declaring a class derived from
+ * org.extex.interpreter.type.Code Code}. The easiest way to achieve this is by
+ * declaring a class derived from
  * {@link org.extex.interpreter.type.AbstractCode AbstractCode}.
+ * 
  * <pre class="JavaSample">
  *   <b>package</b> my.package;
  *
@@ -123,27 +128,28 @@ import org.extex.unit.dynamic.Definer;
  *       <b>return</b> <b>true</b>;
  *     }
  *   } </pre>
+ * 
  * </p>
  * <p>
- * There is more to say about primitives like how to write expandable
- * primitives or ifs. Those details can be found in section
+ * There is more to say about primitives like how to write expandable primitives
+ * or ifs. Those details can be found in section
  * {@linkplain org.extex.interpreter.primitives Primitives}.
  * </p>
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class JavaDef extends AbstractAssignment implements Definer {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 04022007L;
 
     /**
-     * Creates a new object.
-     * This method is needed for the nativedef wrapper.
+     * Creates a new object. This method is needed for the nativedef wrapper.
      */
     public JavaDef() {
 
@@ -152,7 +158,7 @@ public class JavaDef extends AbstractAssignment implements Definer {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param codeName the name for debugging
      */
     public JavaDef(String codeName) {
@@ -166,46 +172,31 @@ public class JavaDef extends AbstractAssignment implements Definer {
      * This method is preferable to <tt>execute()</tt> since the
      * <tt>execute()</tt> method provided in this class takes care of
      * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> as well.
-     *
+     * 
      * @param prefix the prefix controlling the execution
      * @param context the interpreter context
      * @param source the token source
      * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void assign(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter)
+            throws HelpingException, TypesetterException {
 
         define(prefix, context, source, typesetter);
     }
 
     /**
-     * Perform a define operation
-     *
-     * @param prefix the flags
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.unit.dynamic.Definer#define(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.unit.dynamic.Definer#define(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void define(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void define(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         CodeToken cs = source.getControlSequence(context, typesetter);
         String classname;
@@ -227,17 +218,17 @@ public class JavaDef extends AbstractAssignment implements Definer {
             context.setCode(cs, code, prefix.clearGlobal());
 
         } catch (IllegalArgumentException e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         } catch (SecurityException e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         } catch (InstantiationException e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         } catch (IllegalAccessException e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         } catch (InvocationTargetException e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         } catch (NoSuchMethodException e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         } catch (ClassNotFoundException e) {
             throw new HelpingException(getLocalizer(), "ClassNotFound",
                 classname);

@@ -22,7 +22,6 @@ package org.extex.unit.etex.prefix;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.PrefixCode;
 import org.extex.typesetter.Typesetter;
@@ -66,7 +65,7 @@ public class Protected extends AbstractCode implements PrefixCode {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -88,8 +87,7 @@ public class Protected extends AbstractCode implements PrefixCode {
      *      org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+            TokenSource source, Typesetter typesetter) {
 
         prefix.setProtected();
     }

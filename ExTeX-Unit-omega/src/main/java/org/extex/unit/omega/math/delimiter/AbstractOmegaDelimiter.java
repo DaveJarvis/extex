@@ -20,43 +20,43 @@
 package org.extex.unit.omega.math.delimiter;
 
 import org.extex.core.UnicodeChar;
-import org.extex.core.count.CountParser;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.exception.helping.MissingNumberException;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ExpandableCode;
-import org.extex.interpreter.type.math.MathClass;
-import org.extex.interpreter.type.math.MathClassVisitor;
-import org.extex.interpreter.type.math.MathDelimiter;
+import org.extex.scanner.CountParser;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
+import org.extex.typesetter.type.math.MathClass;
+import org.extex.typesetter.type.math.MathClassVisitor;
+import org.extex.typesetter.type.math.MathDelimiter;
 import org.extex.typesetter.type.noad.MathGlyph;
 import org.extex.unit.tex.math.AbstractMathCode;
 import org.extex.unit.tex.math.delimiter.Delimiter;
 
 /**
  * This abstract class adds the ability to translate
- * {@link org.extex.interpreter.type.math.MathDelimiter MathDelimiter}s
- * to and from their <logo>Omega</logo> encoding as numbers to abstract math
- * code.
- *
+ * {@link org.extex.typesetter.type.math.MathDelimiter MathDelimiter}s to and
+ * from their <logo>Omega</logo> encoding as numbers to abstract math code.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
 public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
@@ -66,12 +66,14 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
     private static final int CHAR_MASK = 0xffff;
 
     /**
-     * The field <tt>CHAR_MAX</tt> contains the maximal number for a character.
+     * The field <tt>CHAR_MAX</tt> contains the maximal number for a
+     * character.
      */
     private static final int CHAR_MAX = 0xffff;
 
     /**
-     * The field <tt>CHAR_MIN</tt> contains the minimal number for a character.
+     * The field <tt>CHAR_MIN</tt> contains the minimal number for a
+     * character.
      */
     private static final int CHAR_MIN = 0;
 
@@ -82,8 +84,8 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
     private static final int CLASS_MASK = 0xf;
 
     /**
-     * The constant <tt>CLASS_MAX</tt> contains the maximum number for a
-     * math class.
+     * The constant <tt>CLASS_MAX</tt> contains the maximum number for a math
+     * class.
      */
     private static final int CLASS_MAX = CLASS_MASK;
 
@@ -113,104 +115,97 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
      * The field <tt>MCV</tt> contains the visitor to map a math class to
      * numbers.
      */
-    private static final MathClassVisitor MCV = new MathClassVisitor() {
+    private static final MathClassVisitor<Integer, Object, Object> MCV =
+            new MathClassVisitor<Integer, Object, Object>() {
 
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitBinary(
-         *      java.lang.Object,
-         *      java.lang.Object)
-         */
-        public Object visitBinary(Object ignore, Object ignore2) {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitBinary(
+                 *      java.lang.Object, java.lang.Object)
+                 */
+                public Integer visitBinary(Object ignore, Object ignore2) {
 
-            return new Integer(2);
-        }
+                    return new Integer(2);
+                }
 
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitClosing(
-         *      java.lang.Object,
-         *      java.lang.Object)
-         */
-        public Object visitClosing(Object ignore, Object ignore2) {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitClosing(
+                 *      java.lang.Object, java.lang.Object)
+                 */
+                public Integer visitClosing(Object ignore, Object ignore2) {
 
-            return new Integer(5);
-        }
+                    return new Integer(5);
+                }
 
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitLarge(
-         *      java.lang.Object,
-         *      java.lang.Object)
-         */
-        public Object visitLarge(Object ignore, Object ignore2) {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitLarge(
+                 *      java.lang.Object, java.lang.Object)
+                 */
+                public Integer visitLarge(Object ignore, Object ignore2) {
 
-            return new Integer(1);
-        }
+                    return new Integer(1);
+                }
 
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitOpening(
-         *      java.lang.Object,
-         *      java.lang.Object)
-         */
-        public Object visitOpening(Object ignore, Object ignore2) {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOpening(
+                 *      java.lang.Object, java.lang.Object)
+                 */
+                public Integer visitOpening(Object ignore, Object ignore2) {
 
-            return new Integer(4);
-        }
+                    return new Integer(4);
+                }
 
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitOrdinary(
-         *      java.lang.Object,
-         *      java.lang.Object)
-         */
-        public Object visitOrdinary(Object ignore, Object ignore2) {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOrdinary(
+                 *      java.lang.Object, java.lang.Object)
+                 */
+                public Integer visitOrdinary(Object ignore, Object ignore2) {
 
-            return new Integer(0);
-        }
+                    return new Integer(0);
+                }
 
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitPunctation(
-         *      java.lang.Object,
-         *      java.lang.Object)
-         */
-        public Object visitPunctation(Object ignore, Object ignore2) {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitPunctation(
+                 *      java.lang.Object, java.lang.Object)
+                 */
+                public Integer visitPunctation(Object ignore, Object ignore2) {
 
-            return new Integer(6);
-        }
+                    return new Integer(6);
+                }
 
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitRelation(
-         *      java.lang.Object,
-         *      java.lang.Object)
-         */
-        public Object visitRelation(Object ignore, Object ignore2) {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitRelation(
+                 *      java.lang.Object, java.lang.Object)
+                 */
+                public Integer visitRelation(Object ignore, Object ignore2) {
 
-            return new Integer(3);
-        }
+                    return new Integer(3);
+                }
 
-        /**
-         * {@inheritDoc}
-         *
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitVariable(
-         *      java.lang.Object,
-         *      java.lang.Object)
-         */
-        public Object visitVariable(Object ignore, Object ignore2) {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitVariable(
+                 *      java.lang.Object, java.lang.Object)
+                 */
+                public Integer visitVariable(Object ignore, Object ignore2) {
 
-            return new Integer(7);
-        }
-    };
+                    return new Integer(7);
+                }
+            };
 
     /**
      * The field <tt>SMALL_CHAR_OFFSET</tt> contains the offset for the small
@@ -226,7 +221,7 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
 
     /**
      * Create a localizer for this class.
-     *
+     * 
      * @return the localizer
      */
     protected static Localizer getMyLocalizer() {
@@ -237,30 +232,31 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
     /**
      * Creates a new MathDelimiter object from the <logo>Omega</logo> encoding.
      * <p>
-     * The <logo>TeX</logo> encoding interprets the number as 27 bit hex number:
-     * <tt>"cssyyyyllxxxx</tt>. Here the digits have the following meaning:
+     * The <logo>TeX</logo> encoding interprets the number as 27 bit hex
+     * number: <tt>"cssyyyyllxxxx</tt>. Here the digits have the following
+     * meaning:
      * <dl>
-     *  <dt>c</dt>
-     *  <dd>the math class of this delimiter. It has a range from 0 to 7.</dd>
-     *  <dt>ll</dt>
-     *  <dd>the family for the large character. It has a range from 0 to 255.</dd>
-     *  <dt>xxxx</dt>
-     *  <dd>the character code of the large character.</dd>
-     *  <dt>ss</dt>
-     *  <dd>the family for the small character. It has a range from 0 to 255.</dd>
-     *  <dt>yyyy</dt>
-     *  <dd>the character code of the small character.</dd>
+     * <dt>c</dt>
+     * <dd>the math class of this delimiter. It has a range from 0 to 7.</dd>
+     * <dt>ll</dt>
+     * <dd>the family for the large character. It has a range from 0 to 255.</dd>
+     * <dt>xxxx</dt>
+     * <dd>the character code of the large character.</dd>
+     * <dt>ss</dt>
+     * <dd>the family for the small character. It has a range from 0 to 255.</dd>
+     * <dt>yyyy</dt>
+     * <dd>the character code of the small character.</dd>
      * </dl>
      * </p>
-     *
+     * 
      * @param delcode the <logo>Omega</logo> encoding for the delimiter
-     *
+     * 
      * @return a new MathDelimiter
-     *
-     * @throws InterpreterException in case of a parameter out of range
+     * 
+     * @throws HelpingException in case of a parameter out of range
      */
     public static MathDelimiter newMathDelimiter(long delcode)
-            throws InterpreterException {
+            throws HelpingException {
 
         int classCode = (int) ((delcode >> CLASS_SHIFT));
 
@@ -283,26 +279,29 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
 
     /**
      * Parse an extended <logo>ExTeX</logo> delimiter from a token source.
-     *
+     * 
      * @param context the interpreter context
      * @param source the token source to read from
      * @param typesetter the typesetter
      * @param mClass the math class
      * @param primitive the name of the primitive for error handling
-     *
+     * 
      * @return the MathDelimiter found
-     *
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
-    private static MathDelimiter parse(Context context,
-            TokenSource source, Typesetter typesetter,
-            MathClass mClass, String primitive)
-            throws InterpreterException {
+    private static MathDelimiter parse(Context context, TokenSource source,
+            Typesetter typesetter, MathClass mClass, String primitive)
+            throws HelpingException,
+                TypesetterException {
 
-        int smallFam = (int) CountParser.scanNumber(context, source, typesetter);
+        int smallFam =
+                (int) CountParser.scanNumber(context, source, typesetter);
         UnicodeChar smallChar =
                 source.scanCharacterCode(context, typesetter, primitive);
-        int largeFam = (int) CountParser.scanNumber(context, source, typesetter);
+        int largeFam =
+                (int) CountParser.scanNumber(context, source, typesetter);
         UnicodeChar largeChar =
                 source.scanCharacterCode(context, typesetter, primitive);
 
@@ -312,27 +311,28 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
 
     /**
      * Parse a math delimiter.
-     *
+     * 
      * <pre>
      *  \delimiter"1234567
      *  \delimiter open 22 `[ 1 `(
      * </pre>
-     *
+     * 
      * @param context the interpreter context
      * @param source the token source to read from
      * @param typesetter the typesetter
      * @param primitive the name of the primitive for error handling
-     *
+     * 
      * @return the MathDelimiter acquired
-     *
-     * @throws InterpreterException in case of an error
+     * 
      * @throws ConfigurationException in case of an configuration error
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     public static MathDelimiter parseDelimiter(Context context,
-            TokenSource source, Typesetter typesetter,
-            String primitive)
-            throws InterpreterException,
-                ConfigurationException {
+            TokenSource source, Typesetter typesetter, String primitive)
+            throws ConfigurationException,
+                HelpingException,
+                TypesetterException {
 
         for (Token t = source.getToken(context); t != null; t =
                 source.getToken(context)) {
@@ -340,8 +340,8 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
             if (t instanceof CodeToken) {
                 Code code = context.getCode((CodeToken) t);
                 if (code instanceof Delimiter) {
-                    return newMathDelimiter(CountParser.scanNumber(context, source,
-                        typesetter));
+                    return newMathDelimiter(CountParser.scanNumber(context,
+                        source, typesetter));
                 } else if (code instanceof ExpandableCode) {
                     ((ExpandableCode) code).expand(Flags.NONE, context, source,
                         typesetter);
@@ -422,13 +422,13 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
     }
 
     /**
-     * Translate the delimiter into a <logo>Omega</logo> encoded number or throw
-     * an exception if this is not possible.
-     *
+     * Translate the delimiter into a <logo>Omega</logo> encoded number or
+     * throw an exception if this is not possible.
+     * 
      * @param del the delimiter to encode
-     *
+     * 
      * @return the <logo>Omega</logo> encoded delimiter
-     *
+     * 
      * @throws HelpingException in case of an error
      */
     public static long delimiterToLong(MathDelimiter del)
@@ -467,7 +467,7 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for tracing and debugging
      */
     public AbstractOmegaDelimiter(String name) {

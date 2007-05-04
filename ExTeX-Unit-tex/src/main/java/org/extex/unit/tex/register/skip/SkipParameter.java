@@ -23,6 +23,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.scanner.type.Namespace;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive <code>\skip</code>.
@@ -76,7 +77,7 @@ public class SkipParameter extends SkipPrimitive {
      *      org.extex.typesetter.Typesetter)
      */
     protected String getKey(Context context, TokenSource source,
-            Typesetter typesetter) {
+            Typesetter typesetter) throws TypesetterException {
 
         if (Namespace.SUPPORT_NAMESPACE_SKIP) {
             return context.getNamespace() + "\b" + getName();

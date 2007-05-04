@@ -24,24 +24,25 @@ import java.io.FileNotFoundException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.NoHelpException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the
- * primitive <code>\inputfileencoding</code>.
- * It use the given encoding for opening and not the
- * encoding in <code>\inputencoding</code>.
- * The filename can have space in his name.
- *
+ * This class provides an implementation for the primitive
+ * <code>\inputfileencoding</code>. It use the given encoding for opening and
+ * not the encoding in <code>\inputencoding</code>. The filename can have
+ * space in his name.
+ * 
  * Example:
- *
+ * 
  * <pre>
  * \inputfileencoding{encoding}{file.name}
  * </pre>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -55,7 +56,7 @@ public class InputFileEncoding extends InputFile {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public InputFileEncoding(String name) {
@@ -66,16 +67,13 @@ public class InputFileEncoding extends InputFile {
     /**
      * Scan the encoding and file name and open the file in the tokenizer
      * stream.
-     *
+     * 
      * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         String encoding = source.scanTokensAsString(context, getName());
         String name = scanFileName(context, source);
@@ -85,7 +83,7 @@ public class InputFileEncoding extends InputFile {
         if (stream != null) {
             source.addStream(stream);
         } else {
-            throw new InterpreterException(new FileNotFoundException(name));
+            throw new NoHelpException(new FileNotFoundException(name));
         }
     }
 }

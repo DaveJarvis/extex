@@ -20,55 +20,59 @@
 package org.extex.unit.etex.register.muskip;
 
 import org.extex.core.glue.Glue;
-import org.extex.core.glue.GlueParser;
 import org.extex.core.muskip.Muskip;
-import org.extex.core.muskip.MuskipConvertible;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.CantUseInException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.scanner.GlueParser;
+import org.extex.scanner.MuskipConvertible;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
  * <code>\gluetomu</code>.
- *
+ * 
  * <doc name="gluetomu">
  * <h3>The Primitive <tt>\gluetomu</tt></h3>
  * <p>
- *  The primitive <tt>\gluetomu</tt> converts a glue specification to a muglue
- *  specification. For this conversion 1mu=1pt is assumed. This primitive can be
- *  used wherever a muskip is expected.
+ * The primitive <tt>\gluetomu</tt> converts a glue specification to a muglue
+ * specification. For this conversion 1mu=1pt is assumed. This primitive can be
+ * used wherever a muskip is expected.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;gluetomu&rang;
  *      &rarr; <tt>\gluetomu</tt> &lang;glue&rang;  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \muskip0=\gluetomu1pt  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
 public class Gluetomu extends AbstractCode implements MuskipConvertible {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 20060513L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for tracing and debugging
      */
     public Gluetomu(String name) {
@@ -78,15 +82,12 @@ public class Gluetomu extends AbstractCode implements MuskipConvertible {
 
     /**
      * {@inheritDoc}
-     *
-     * @see org.extex.core.muskip.MuskipConvertible#convertMuskip(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * 
+     * @see org.extex.scanner.MuskipConvertible#convertMuskip(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public Muskip convertMuskip(Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public Muskip convertMuskip(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Glue glue = GlueParser.parse(source, context, typesetter);
 
@@ -95,19 +96,16 @@ public class Gluetomu extends AbstractCode implements MuskipConvertible {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         throw new CantUseInException(printableControlSequence(context),
-                typesetter.getMode().toString());
+            typesetter.getMode().toString());
     }
 
 }

@@ -19,11 +19,12 @@
 
 package de.dante.extex.interpreter.primitives.register.transform;
 
-import org.extex.core.count.CountParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.scanner.CountParser;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
@@ -68,14 +69,13 @@ public class NumberedTransform extends NamedTransform {
     /**
      * Return the key (the number) for the register.
      * 
-     * @param context the context
-     * @param source the token source
-     * @param typesetter the typesetter
-     * @return Return the key
-     * @throws InterpreterException if an exception has occurred
+     * {@inheritDoc}
+     * 
+     * @see de.dante.extex.interpreter.primitives.register.transform.NamedTransform#getKey(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     protected String getKey(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         return getName()
                 + "#"

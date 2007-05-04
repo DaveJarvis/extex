@@ -19,11 +19,12 @@
 
 package de.dante.extex.interpreter.primitives.register.real;
 
-import org.extex.core.count.CountParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.scanner.CountParser;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive <code>\real</code>.
@@ -51,7 +52,8 @@ import org.extex.typesetter.Typesetter;
 public class NumberedReal extends NamedReal {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 1L;
 
@@ -75,7 +77,7 @@ public class NumberedReal extends NamedReal {
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     protected String getKey(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         return getName()
                 + "#"

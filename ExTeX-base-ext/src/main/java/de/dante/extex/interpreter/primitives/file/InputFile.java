@@ -21,7 +21,8 @@ package de.dante.extex.interpreter.primitives.file;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.file.Input;
 
 /**
@@ -40,7 +41,7 @@ import org.extex.unit.tex.file.Input;
 public class InputFile extends Input {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt> the version number for serialization.
      */
     private static final long serialVersionUID = 1L;
 
@@ -55,20 +56,19 @@ public class InputFile extends Input {
     }
 
     /**
-     * scan the filename between <code>{</code> and <code>}</code>.
+     * Scan the file name between <code>{</code> and <code>}</code>.
      * @param context   the context
      * @param source    the source for new tokens
      *
      * @return the file name as string
-     *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      *
      * @see org.extex.unit.base.file.AbstractFileCode#scanFileName(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
      */
     protected String scanFileName(Context context,
-            TokenSource source) throws InterpreterException {
+            TokenSource source) throws HelpingException, TypesetterException {
 
         return source.scanTokensAsString(context, getName());
     }

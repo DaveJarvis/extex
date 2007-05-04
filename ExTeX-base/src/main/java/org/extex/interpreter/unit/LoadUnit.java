@@ -22,6 +22,7 @@ package org.extex.interpreter.unit;
 import java.util.Iterator;
 import java.util.logging.Logger;
 
+import org.extex.backend.outputStream.OutputStreamConsumer;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.core.UnicodeChar;
 import org.extex.core.exception.GeneralException;
@@ -35,7 +36,6 @@ import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.max.StringSource;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.InitializableCode;
-import org.extex.interpreter.type.OutputStreamConsumer;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.CodeToken;

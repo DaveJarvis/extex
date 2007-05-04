@@ -20,7 +20,6 @@
 package org.extex.unit.dynamic;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -32,11 +31,12 @@ import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.EofInToksException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This primitive provides a binding of a macro or active character to code in
@@ -215,18 +215,16 @@ public class NativeDef extends AbstractAssignment
      * @param context the interpreter context
      * @param source the token source
      * @param typesetter the typesetter
-     * 
-     * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
-     * 
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void assign(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+            throws ConfigurationException,
+                HelpingException,
+                TypesetterException {
 
         String name;
         try {
@@ -236,8 +234,8 @@ public class NativeDef extends AbstractAssignment
         }
         Configuration cfg = map.get(name);
         if (cfg == null) {
-            throw new InterpreterException(getLocalizer().format("UnknownType",
-                name, getName()));
+            throw new HelpingException(getLocalizer(), "UnknownType", name,
+                getName());
         }
 
         Factory factory = new Factory();

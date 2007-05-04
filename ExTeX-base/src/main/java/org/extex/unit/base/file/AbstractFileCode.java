@@ -19,20 +19,21 @@
 
 package org.extex.unit.base.file;
 
-import org.extex.core.count.CountParser;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.BadFileNumberException;
 import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.scanner.CountParser;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.SpaceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This abstract class provides some common methods for primitives dealing with
@@ -80,7 +81,7 @@ public abstract class AbstractFileCode extends AbstractCode
      *  <pre class="syntax">
      *    &lang;infile&nbsp;name&rang;
      *      &rarr; {@linkplain
-     *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
+     *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;} </pre>
      * </doc>
      *
@@ -91,11 +92,12 @@ public abstract class AbstractFileCode extends AbstractCode
      *
      * @return the key read in the form of a String
      *
-     * @throws InterpreterException in case of a failure
+     * @throws HelpingException in case of a failure
+     * @throws TypesetterException in case of an error in the typesetter
      */
     public static String scanInFileKey(Context context,
             TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+            throws HelpingException,TypesetterException {
 
         long no = CountParser.scanNumber(context, source, typesetter);
         String key = Long.toString(no);
@@ -124,7 +126,7 @@ public abstract class AbstractFileCode extends AbstractCode
      *  <pre class="syntax">
      *    &lang;infile&nbsp;name&rang;
      *      &rarr; {@linkplain
-     *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
+     *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;} </pre>
      * </doc>
      *
@@ -135,11 +137,12 @@ public abstract class AbstractFileCode extends AbstractCode
      *
      * @return the key read in the form of a String
      *
-     * @throws InterpreterException in case of a failure
+     * @throws HelpingException in case of a failure
+     * @throws TypesetterException in case of an error in the typesetter
      */
     public static String scanOutFileKey(Context context,
             TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+            throws HelpingException,TypesetterException {
 
         long no = CountParser.scanNumber(context, source, typesetter);
         return Long.toString(no);
@@ -224,11 +227,11 @@ public abstract class AbstractFileCode extends AbstractCode
      * @param source the source for new tokens
      *
      * @return the file name as string
-     *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     protected String scanFileName(Context context,
-            TokenSource source) throws InterpreterException {
+            TokenSource source) throws HelpingException, TypesetterException {
 
         Token t = source.scanNonSpace(context);
 

@@ -24,16 +24,16 @@ import java.util.List;
 
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
+import org.extex.core.exception.ImpossibleException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.ImpossibleException;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
+import org.extex.typesetter.ListManager;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.TypesetterException;
@@ -175,12 +175,13 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      *  width should be used
      * @param theSpread indicator that the width should be interpreted relative
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     public HAlignListMaker(ListManager manager, Context context,
             TokenSource source, List<PreambleItem> thePreamble,
             FixedDimen theWidth, boolean theSpread)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException {
 
         super(manager, source.getLocator());
         preamble = thePreamble;
@@ -336,7 +337,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
             } else {
                 source.push(token);
             }
-        } catch (InterpreterException e) {
+        } catch (HelpingException e) {
             throw new TypesetterException(e);
         }
         cr(context, source, noalign);
@@ -404,7 +405,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
                 source.push(t);
             }
             source.push(format.getPre());
-        } catch (InterpreterException e) {
+        } catch (HelpingException e) {
             throw new TypesetterException(e);
         }
     }
@@ -453,7 +454,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
 
         try {
             source.push(format.getPost()); //TODO gene: wrong! process the tokens before closing
-        } catch (InterpreterException e) {
+        } catch (HelpingException e) {
             throw new TypesetterException(e);
         }
 

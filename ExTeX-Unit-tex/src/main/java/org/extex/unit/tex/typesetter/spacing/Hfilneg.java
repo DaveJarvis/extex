@@ -25,46 +25,51 @@ import org.extex.core.glue.GlueComponent;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.typesetter.AbstractHorizontalCode;
 
 /**
  * This class provides an implementation for the primitive <code>\hfilneg</code>.
- *
+ * 
  * <doc name="hfilneg">
  * <h3>The Primitive <tt>\hfilneg</tt></h3>
  * <p>
- *  The primitive <tt>\hfilneg</tt> inserts glue at the current position which
- *  is stretchable horizontally wit the value of -1fil.
- *  The order of the glue is 1.
+ * The primitive <tt>\hfilneg</tt> inserts glue at the current position which
+ * is stretchable horizontally wit the value of -1fil. The order of the glue is
+ * 1.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;hfilneg&rang;
  *        &rarr; <tt>\hfilneg</tt>  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \hfilneg  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
 public class Hfilneg extends AbstractHorizontalCode implements HorizontalSkip {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
-     * The field <tt>FIL_NEG</tt> contains the glue to insert for this primitive.
+     * The field <tt>FIL_NEG</tt> contains the glue to insert for this
+     * primitive.
      */
     private static final Glue FIL_NEG =
             new Glue(GlueComponent.ZERO, GlueComponent.MINUS_ONE_FIL,
@@ -72,7 +77,7 @@ public class Hfilneg extends AbstractHorizontalCode implements HorizontalSkip {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Hfilneg(String name) {
@@ -81,26 +86,14 @@ public class Hfilneg extends AbstractHorizontalCode implements HorizontalSkip {
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         switchToHorizontalMode(typesetter);
         typesetter.add(FIL_NEG);
@@ -108,20 +101,19 @@ public class Hfilneg extends AbstractHorizontalCode implements HorizontalSkip {
 
     /**
      * This method acquires a vertical glue.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the amount of vertical skip
-     *
+     * 
      * @see org.extex.unit.tex.typesetter.spacing.HorizontalSkip#getGlue(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public FixedGlue getGlue(Context context, TokenSource source,
-            Typesetter typesetter) {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         return FIL_NEG;
     }

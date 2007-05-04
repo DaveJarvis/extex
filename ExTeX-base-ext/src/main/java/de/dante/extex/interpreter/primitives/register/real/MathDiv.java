@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,29 +19,33 @@
 
 package de.dante.extex.interpreter.primitives.register.real;
 
-import org.extex.core.count.CountConvertible;
 import org.extex.core.exception.GeneralException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Theable;
+import org.extex.scanner.CountConvertible;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
- * Math.  divide
- *
- * <p>Example</p>
+ * Math. divide
+ * 
+ * <p>
+ * Example
+ * </p>
+ * 
  * <pre>
  * \the\mathdiv 0.234 0.34
  * \real7=\mathdiv 0.56 0.34
  * \real8=\mathdiv\real7\real8
  * \count99=\mathdiv 1.34 0.34
  * </pre>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -52,17 +56,19 @@ public class MathDiv extends AbstractMath
             CountConvertible {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
-     * @throws GeneralException ...
+     *
+     * @throws HelpingException in case of an error
      */
-    public MathDiv(String name) throws GeneralException {
+    public MathDiv(String name) throws HelpingException {
 
         super(name);
 
@@ -70,17 +76,21 @@ public class MathDiv extends AbstractMath
 
     /**
      * Calculate
-     * @param context   the context
-     * @param source    the token source
-     * @param typesetter ...
-     * @return  the real value
-     *
-     * @throws InterpreterException if a error occurred
+     * 
+     * @param context the context
+     * @param source the token source
+     * @param typesetter the typesetter
+     * 
+     * @return the real value
+     * 
+     * @throws HelpingException in case of an error
      * @throws ConfigurationException in case of an configuration error
+     * @throws TypesetterException in case of an error in the typesetter
      */
-    protected Real calculate(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+    protected Real calculate(Context context, TokenSource source,
+            Typesetter typesetter)
+            throws ConfigurationException,
+                HelpingException, TypesetterException {
 
         Real real1 = new Real(context, source, typesetter);
         Real real2 = new Real(context, source, typesetter);

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,18 +19,20 @@
 
 package de.dante.extex.interpreter.type.hash.toks.exception;
 
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.framework.i18n.LocalizerFactory;
+import org.extex.interpreter.exception.helping.HelpingException;
 
 /**
- * Exception, if the hash valuey is missing.
- *
+ * Exception, if the hash value is missing.
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class InterpreterMissingHashValueException extends InterpreterException {
+public class InterpreterMissingHashValueException extends HelpingException {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 1L;
 
@@ -39,15 +41,20 @@ public class InterpreterMissingHashValueException extends InterpreterException {
      */
     public InterpreterMissingHashValueException() {
 
-        super();
+        super(LocalizerFactory
+            .getLocalizer(InterpreterMissingHashValueException.class),
+            "Message0");
     }
 
     /**
      * Create a new object.
-     * @param message   the message
+     * 
+     * @param message the message
      */
     public InterpreterMissingHashValueException(String message) {
 
-        super(message);
+        super(LocalizerFactory
+            .getLocalizer(InterpreterMissingHashValueException.class),
+            "Message1", message);
     }
 }

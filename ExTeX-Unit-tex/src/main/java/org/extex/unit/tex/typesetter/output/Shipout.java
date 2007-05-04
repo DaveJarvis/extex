@@ -22,55 +22,59 @@ package org.extex.unit.tex.typesetter.output;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive <code>\shipout</code>.
- *
+ * 
  * <doc name="shipout">
  * <h3>The Primitive <tt>\shipout</tt></h3>
  * <p>
- *  The primitive <tt>\shipout</tt> takes a box and send the contents of the
- *  box to the back-end. If the box is void then this primitives ignores
- *  it and does not contact the back-end.
+ * The primitive <tt>\shipout</tt> takes a box and send the contents of the
+ * box to the back-end. If the box is void then this primitives ignores it and
+ * does not contact the back-end.
  * </p>
  * <p>
- *  In addition the count register <tt>\deadcyles</tt> is reset to 0.
- *  This count register is used to break out of infinite loops when no material
- *  is shipped out in the output routine.
+ * In addition the count register <tt>\deadcyles</tt> is reset to 0. This
+ * count register is used to break out of infinite loops when no material is
+ * shipped out in the output routine.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;shipout&rang;
  *      &rarr; <tt>\shipout</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getBox(Flags,Context,Typesetter, Token)
  *        &lang;box&rang;}  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \shipout\box255  </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
 public class Shipout extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Shipout(String name) {
@@ -79,26 +83,14 @@ public class Shipout extends AbstractCode {
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Box box = source.getBox(prefix, context, typesetter, null);
 

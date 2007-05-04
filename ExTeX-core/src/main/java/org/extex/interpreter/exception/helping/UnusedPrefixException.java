@@ -20,35 +20,35 @@
 package org.extex.interpreter.exception.helping;
 
 import org.extex.framework.i18n.LocalizerFactory;
-import org.extex.scanner.type.token.Token;
 
 /**
  * This exception is raised when an unused prefix flag has been encountered.
  * <p>
- *  The localization format is taken from the Localizer under the key
- *  <tt>UnusedPrefix</tt>.
+ * The localization format is taken from the Localizer under the key
+ * <tt>UnusedPrefix</tt>.
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class UnusedPrefixException extends HelpingException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param flag the name of the flag which has been used
      * @param token the command on which this has happened
      */
-    public UnusedPrefixException(String flag, Token token) {
+    public UnusedPrefixException(String flag, String token) {
 
         super(LocalizerFactory.getLocalizer(UnusedPrefixException.class),
-            "UnusedPrefix", flag, token.toString());
+            "UnusedPrefix", flag, token);
     }
 
 }

@@ -21,12 +21,13 @@ package org.extex.interpreter.expression.term;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.expression.EType;
 import org.extex.interpreter.expression.ETypeParser;
 import org.extex.interpreter.expression.Evaluator;
 import org.extex.interpreter.type.Code;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class implements the supporting functions for the date type
@@ -56,7 +57,7 @@ public final class TGlueParser implements ETypeParser {
      *      org.extex.typesetter.Typesetter)
      */
     public EType convert(Code code, Context context,
-            TokenSource source, Typesetter typesetter) {
+            TokenSource source, Typesetter typesetter) throws HelpingException, TypesetterException {
 
         // TODO gene: convert unimplemented
         return null;
@@ -71,7 +72,7 @@ public final class TGlueParser implements ETypeParser {
      *      org.extex.typesetter.Typesetter)
      */
     public EType parse(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         return null;
     }

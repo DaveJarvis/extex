@@ -22,8 +22,9 @@ package de.dante.extex.interpreter.type.real;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This is an interface which describes the feature to be convertibe into a real.
@@ -39,12 +40,12 @@ public interface RealConvertible {
      * @param context   the interpreter context
      * @param source    the source for new tokens
      * @param typesetter TODO
-     * @return the converted value
      *
-     * @throws InterpreterException in case of an error
+     * @return the converted value
      * @throws ConfigurationException in case of an configuration error
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException TODO
      */
     Real convertReal(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException;
+            throws ConfigurationException, HelpingException, TypesetterException;
 }

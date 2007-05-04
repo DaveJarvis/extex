@@ -19,14 +19,16 @@
 
 package org.extex.interpreter.exception;
 
+import org.extex.framework.i18n.LocalizerFactory;
+import org.extex.interpreter.exception.helping.HelpingException;
+
 /**
  * InterprerterException, if a number format is wrong.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4728 $
  */
-
-public class InterpreterNumberFormatException extends InterpreterException {
+public class InterpreterNumberFormatException extends HelpingException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -39,17 +41,21 @@ public class InterpreterNumberFormatException extends InterpreterException {
      */
     public InterpreterNumberFormatException() {
 
-        super();
+        super(LocalizerFactory
+            .getLocalizer(InterpreterNumberFormatException.class), "Message0",
+            "");
     }
 
     /**
      * Create a new object.
-     *
-     * @param message   the message
+     * 
+     * @param message the message
      */
     public InterpreterNumberFormatException(String message) {
 
-        super(message);
+        super(LocalizerFactory
+            .getLocalizer(InterpreterNumberFormatException.class), "Message1",
+            message);
     }
 
 }

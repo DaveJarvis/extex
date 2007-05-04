@@ -19,31 +19,31 @@
 
 package org.extex.unit.tex.conditional;
 
-import org.extex.core.dimen.DimenParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.scanner.DimenParser;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.conditional.AbstractIf;
 
 /**
  * This class provides an implementation for the primitive <code>\ifdim</code>.
- *
+ * 
  * <doc name="ifdim">
  * <h3>The Primitive <tt>\ifdim</tt></h3>
  * <p>
- *  The primitive <tt>\ifdim</tt> provides a conditional which compares two
- *  dimen values. The comparison for equality, greater, and less are
- *  possible.
+ * The primitive <tt>\ifdim</tt> provides a conditional which compares two
+ * dimen values. The comparison for equality, greater, and less are possible.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;ifdim&rang;
  *      &rarr; <tt>\ifdim</tt> {@linkplain
  *        org.extex.core.dimen#Dimen(Context,TokenSource)
@@ -60,22 +60,23 @@ import org.extex.unit.base.conditional.AbstractIf;
  *      &rarr; [&lt;]
  *      | [=]
  *      | [&gt;]  </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4439 $
  */
 public class Ifdim extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Ifdim(String name) {
@@ -84,27 +85,13 @@ public class Ifdim extends AbstractIf {
     }
 
     /**
-     * This method computes the boolean value of the conditional.
-     * If the result is <code>true</code> then the then branch is expanded and
-     * the else branch is skipped. Otherwise the then branch is skipped and the
-     * else branch is expanded.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @return the boolean value
-     *
-     * @throws InterpreterException in case of en error
-     *
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.unit.base.conditional.AbstractIf#conditional(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public boolean conditional(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         long x = DimenParser.parse(context, source, typesetter).getValue();
         Token rel = source.getToken(context);
@@ -115,20 +102,20 @@ public class Ifdim extends AbstractIf {
             switch (rel.getChar().getCodePoint()) {
                 case '<':
                     return (x < DimenParser.parse(context, source, typesetter)
-                            .getValue());
+                        .getValue());
                 case '=':
                     return (x == DimenParser.parse(context, source, typesetter)
-                            .getValue());
+                        .getValue());
                 case '>':
                     return (x > DimenParser.parse(context, source, typesetter)
-                            .getValue());
+                        .getValue());
                 default:
-            // Fall through to error handling
+                    // Fall through to error handling
             }
         }
 
         throw new HelpingException(getLocalizer(), "TTP.IllegalIfnumOp",
-                printableControlSequence(context));
+            printableControlSequence(context));
     }
 
 }

@@ -26,7 +26,6 @@ import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
@@ -34,30 +33,32 @@ import org.extex.interpreter.type.ExpandableCode;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This is the abstract base class for all ifs.
  * <p>
- *  If you want to implement an if-like primitive you should derive it from
- *  this class. All you have to do is to implement the method
- *  {@link #conditional(org.extex.interpreter.context.Context,org.extex.interpreter.TokenSource,org.extex.typesetter.Typesetter) conditional()}. Here
- *  you define the expression evaluated to determine whether the if or the else
- *  branch should be taken.
+ * If you want to implement an if-like primitive you should derive it from this
+ * class. All you have to do is to implement the method
+ * {@link #conditional(org.extex.interpreter.context.Context,org.extex.interpreter.TokenSource,org.extex.typesetter.Typesetter) conditional()}.
+ * Here you define the expression evaluated to determine whether the if or the
+ * else branch should be taken.
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4045 $
  */
 public abstract class AbstractIf extends AbstractCode implements ExpandableCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 24012007L;
 
     /**
      * Getter for the localizer.
-     *
+     * 
      * @return the localizer
      */
     protected static Localizer getMyLocalizer() {
@@ -68,24 +69,23 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
     /**
      * Skip to the next matching <tt>\fi</tt> or <tt>\else</tt> Token
      * counting the intermediate <tt>\if</tt>s and <tt>\fi</tt>s.
-     *
+     * 
      * <p>
-     *  This method implements the absorption of tokens at high speed.
+     * This method implements the absorption of tokens at high speed.
      * </p>
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param name the name of the invoking primitive
-     *
-     * @return <code>true</code> if a matching <tt>\else</tt> has been found;
-     *         otherwise return <code>false</code> if a matching <tt>\fi</tt>
-     *         has been found
-     *
-     * @throws InterpreterException in case of en error
+     * 
+     * @return <code>true</code> if a matching <tt>\else</tt> has been
+     *         found; otherwise return <code>false</code> if a matching
+     *         <tt>\fi</tt> has been found
+     * 
+     * @throws HelpingException in case of en error
      */
-    public static boolean skipToElseOrFi(Context context,
-            TokenSource source, String name)
-            throws InterpreterException {
+    public static boolean skipToElseOrFi(Context context, TokenSource source,
+            String name) throws HelpingException {
 
         Code code;
         int n = 0;
@@ -122,7 +122,7 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public AbstractIf(String name) {
@@ -131,46 +131,33 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
     }
 
     /**
-     * This method computes the boolean value of the conditional.
-     * If the result is <code>true</code> then the then branch is expanded and
-     * the else branch is skipped. Otherwise the then branch is skipped and the
-     * else branch is expanded.
-     *
+     * This method computes the boolean value of the conditional. If the result
+     * is <code>true</code> then the then branch is expanded and the else
+     * branch is skipped. Otherwise the then branch is skipped and the else
+     * branch is expanded.
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the boolean value
-     *
-     * @throws InterpreterException in case of en error
+     * 
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      * @throws ConfigurationException in case of an configuration error
      */
-    public abstract boolean conditional(Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+    public abstract boolean conditional(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException;
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     * @throws ConfigurationException in case of an configuration error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         if (conditional(context, source, typesetter)) {
             context.pushConditional(source.getLocator(), true, this, 1, false);
@@ -181,15 +168,14 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
     }
 
     /**
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void expand(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void expand(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         if (conditional(context, source, typesetter)) {
             context.pushConditional(source.getLocator(), true, this, 1, false);
@@ -201,9 +187,9 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
 
     /**
      * The ifs are characterized by the return value <code>true</code> of this
-     * method. Thus the overwritten method returning the constant is provided
-     * in this abstract base class.
-     *
+     * method. Thus the overwritten method returning the constant is provided in
+     * this abstract base class.
+     * 
      * @see org.extex.interpreter.type.Code#isIf()
      */
     public boolean isIf() {

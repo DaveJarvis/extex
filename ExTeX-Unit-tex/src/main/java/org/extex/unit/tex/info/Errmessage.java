@@ -22,67 +22,71 @@ package org.extex.unit.tex.info;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.info.util.FixedHelpingException;
 
 /**
  * This class provides an implementation for the primitive
  * <code>\errmessage</code>.
- *
+ * 
  * <doc name="errmessage">
  * <h3>The Primitive <tt>\errmessage</tt></h3>
  * <p>
- *  The primitive <tt>\errmessage</tt> takes one argument. This argument is an
- *  expanded list of tokens. Those tokens are presented as error message. The
- *  help text is taken from the token register <tt>\errhelp</tt>
+ * The primitive <tt>\errmessage</tt> takes one argument. This argument is an
+ * expanded list of tokens. Those tokens are presented as error message. The
+ * help text is taken from the token register <tt>\errhelp</tt>
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;errmessage&rang;
  *       &rarr; <tt>\errmessage</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
  *        &lang;tokens&rang;}  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \errhelp={Too bad}
  *    \errmessage{I found an error}  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * <doc name="errhelp" type="register">
  * <h3>The Token Register <tt>\errhelp</tt></h3>
  * <p>
- *  The token register <tt>\errhelp</tt> contains the help text for the
- *  primitive
- *  {@link org.extex.unit.tex.info.Errmessage <tt>\errmessage</tt>}.
- *  Nevertheless this register can be used in any place where a token register
- *  is needed.
+ * The token register <tt>\errhelp</tt> contains the help text for the
+ * primitive {@link org.extex.unit.tex.info.Errmessage <tt>\errmessage</tt>}.
+ * Nevertheless this register can be used in any place where a token register is
+ * needed.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;errhelp&rang;
  *      &rarr; <tt>\errhelp</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *        &lang;tokens&rang;}  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \errhelp={Too bad}
  *    \errmessage{I found an error}  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4732 $
@@ -90,13 +94,14 @@ import org.extex.unit.tex.info.util.FixedHelpingException;
 public class Errmessage extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for tracing and debugging
      */
     public Errmessage(String name) {
@@ -105,26 +110,14 @@ public class Errmessage extends AbstractCode {
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         String message =
                 source.scanUnprotectedTokens(context, false, false, getName())

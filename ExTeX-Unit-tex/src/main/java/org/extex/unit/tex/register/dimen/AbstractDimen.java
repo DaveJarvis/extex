@@ -21,15 +21,16 @@ package org.extex.unit.tex.register.dimen;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.scanner.type.Namespace;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This abstract base class provides the methods to compute the keys for
  * numbered dimen registers.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
@@ -37,7 +38,7 @@ public abstract class AbstractDimen extends AbstractAssignment {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public AbstractDimen(String name) {
@@ -48,26 +49,22 @@ public abstract class AbstractDimen extends AbstractAssignment {
     /**
      * Return the key (the name of the primitive) for the numbered dimen
      * register.
-     *
+     * 
      * @param context the interpreter context to use
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the key for the current register
-     *
-     * @throws InterpreterException in case that a derived class need to throw
-     *  an Exception this on e is declared.
+     * 
+     * @throws HelpingException in case that a derived class need to throw an
+     *         Exception this on e is declared.
+     * @throws TypesetterException in case of an error in the typesetter
      */
     protected String getKey(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        String name;
-        try {
-            name = source.scanRegisterName(context, source, typesetter,
-                    getName());
-        } catch (InterpreterException e) {
-            throw e;
-        }
+        String name =
+                source.scanRegisterName(context, source, typesetter, getName());
 
         if (Namespace.SUPPORT_NAMESPACE_DIMEN) {
             return context.getNamespace() + "dimen#" + name;

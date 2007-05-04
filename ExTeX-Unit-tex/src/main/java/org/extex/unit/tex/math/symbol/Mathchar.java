@@ -22,42 +22,45 @@ package org.extex.unit.tex.math.symbol;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.math.MathCode;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.listMaker.math.NoadConsumer;
+import org.extex.typesetter.type.math.MathCode;
 import org.extex.unit.tex.math.AbstractTeXMathCode;
 import org.extex.unit.tex.math.util.MathCodeConvertible;
 
 /**
  * This class provides an implementation for the primitive
  * <code>\mathchar</code>.
- *
+ * 
  * <doc name="mathchar">
  * <h3>The Math Primitive <tt>\mathchar</tt></h3>
  * <p>
- *  The primitive <tt>\mathchar</tt> inserts a mathematical character consisting
- *  of a math class and a character code into the current math list. This is
- *  supposed to work in math mode only.
+ * The primitive <tt>\mathchar</tt> inserts a mathematical character
+ * consisting of a math class and a character code into the current math list.
+ * This is supposed to work in math mode only.
  * </p>
  * <p>
- *  TODO missing documentation
+ * TODO missing documentation
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;mathchar&rang;
  *       &rarr; <tt>\mathchar ...</tt>  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \mathchar"041  </pre>
  *  <pre class="TeXSample">
  *    \mathchar{ordinary 0 `A}  </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
@@ -66,13 +69,14 @@ public class Mathchar extends AbstractTeXMathCode
             MathCodeConvertible {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Mathchar(String name) {
@@ -81,58 +85,32 @@ public class Mathchar extends AbstractTeXMathCode
     }
 
     /**
-     * This method converts an implementing class into a MathCode.
-     * It might be necessary to read further tokens to determine which value to
-     * use. For instance an additional register number might be required. In
-     * this case the additional arguments Context and TokenSource can be used.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use for conversion
-     *
-     * @return the converted value
-     *
-     * @throws InterpreterException in case of an error
-     *
+     * {@inheritDoc}
+     * 
      * @see org.extex.unit.tex.math.util.MathCodeConvertible#convertMathCode(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public MathCode convertMathCode(Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public MathCode convertMathCode(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         return parseMathCode(context, source, typesetter,
             printableControlSequence(context));
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        MathCode mc =
-                parseMathCode(context, source, typesetter,
-                    printableControlSequence(context));
+        MathCode mc = parseMathCode(context, source, typesetter, //
+            printableControlSequence(context));
 
         nc.add(mc, context.getTypesettingContext());
     }

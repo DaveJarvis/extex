@@ -19,18 +19,19 @@
 
 package de.dante.extex.interpreter.primitives.register.real;
 
-import org.extex.core.count.CountConvertible;
-import org.extex.core.exception.GeneralException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.NoHelpException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
+import org.extex.scanner.CountConvertible;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
@@ -51,9 +52,10 @@ public abstract class AbstractMath extends AbstractCode
      * Creates a new object.
      * 
      * @param name the name for debugging
-     * @throws GeneralException ...
+     *
+     * @throws HelpingException in case of an error
      */
-    public AbstractMath(String name) throws GeneralException {
+    public AbstractMath(String name) throws HelpingException {
 
         super(name);
 
@@ -67,15 +69,13 @@ public abstract class AbstractMath extends AbstractCode
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Real real = calculate(context, source, typesetter);
         try {
             source.push(context.getTokenFactory().toTokens(real.toString()));
         } catch (CatcodeException e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
     }
 
@@ -87,19 +87,16 @@ public abstract class AbstractMath extends AbstractCode
      * @param typesetter the typesetter to use
      * 
      * @return the description of the primitive as list of Tokens
-     * 
-     * @throws InterpreterException in case of an error
      * @throws CatcodeException in case of an error in token creation
      * @throws ConfigurationException in case of an configuration error
-     * 
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException,
-                CatcodeException {
+            throws ConfigurationException,
+                CatcodeException,
+                HelpingException, TypesetterException {
 
         Real real = calculate(context, source, typesetter);
         return context.getTokenFactory().toTokens(real.toString());
@@ -112,8 +109,8 @@ public abstract class AbstractMath extends AbstractCode
      */
     public Real convertReal(Context context, TokenSource source,
             Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+            throws ConfigurationException,
+                HelpingException, TypesetterException {
 
         return calculate(context, source, typesetter);
     }
@@ -121,14 +118,13 @@ public abstract class AbstractMath extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.core.count.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.scanner.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
             Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+            throws ConfigurationException,
+                HelpingException, TypesetterException {
 
         return calculate(context, source, typesetter).getLong();
     }
@@ -139,13 +135,16 @@ public abstract class AbstractMath extends AbstractCode
      * @param context the context
      * @param source the token source
      * @param typesetter TODO
+     * 
      * @return the real value
-     * @throws InterpreterException if a error occurred
+     * 
+     * @throws HelpingException in case of an error
      * @throws ConfigurationException in case of an configuration error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     protected abstract Real calculate(Context context, TokenSource source,
             Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException;
+            throws ConfigurationException,
+                HelpingException, TypesetterException;
 
 }

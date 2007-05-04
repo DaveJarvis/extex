@@ -22,9 +22,10 @@ package org.extex.unit.tex.typesetter.paragraph;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive <code>\par</code>.
@@ -74,7 +75,7 @@ import org.extex.typesetter.Typesetter;
  *      &rarr; <tt>\parindent</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.core.dimen.DimenParser#parse(Context,TokenSource,Typesetter)
+ *        org.extex.scanner.DimenParser#parse(Context,TokenSource,Typesetter)
  *        &lang;dimen&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -116,7 +117,7 @@ public class Par extends AbstractCode {
      */
     public void execute(Flags prefix, Context context,
             TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException {
 
         typesetter.par();
     }

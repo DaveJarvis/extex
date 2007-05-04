@@ -21,9 +21,10 @@ package org.extex.interpreter.expression;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Code;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This interface describes a parser which can be registered in the evaluator.
@@ -43,11 +44,11 @@ public interface ETypeParser {
      *
      * @return the converted value or <code>null</code> if the conversion
      *  could not be performed
-     *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     EType convert(Code code, Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException;
+            Typesetter typesetter) throws HelpingException, TypesetterException;
 
     /**
      * Try to parse a proper value from the token source.
@@ -59,10 +60,11 @@ public interface ETypeParser {
      * @return the element inquired or <code>null</code> if none could be
      *  parsed
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     EType parse(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+            throws HelpingException, TypesetterException;
 
     /**
      * Inform the parser that it has been registered in an evaluator.

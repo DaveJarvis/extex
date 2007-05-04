@@ -23,11 +23,12 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.tc.Direction;
 import org.extex.interpreter.context.tc.Direction.Dir;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This is the abstract base class for primitives acquiring a direction.
@@ -60,10 +61,11 @@ public class AbstractDirCode extends AbstractCode {
      *
      * @return the direction or null
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     protected Direction scanDir(TokenSource source, Context context)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException {
 
         Dir a = scan(source, context);
         if (a == null) {
@@ -89,10 +91,11 @@ public class AbstractDirCode extends AbstractCode {
      *
      * @return the direction found
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     private Dir scan(TokenSource source, Context context)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException {
 
         Token t = source.scanToken(context);
 

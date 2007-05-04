@@ -23,7 +23,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.NoHelpException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.exception.helping.UndefinedControlSequenceException;
@@ -37,35 +37,38 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive <code>\the</code>.
- *
+ * 
  * <doc name="the">
  * <h3>The Primitive <tt>\the</tt></h3>
  * <p>
- *  The primitive <tt>\the</tt> inserts the definition of certain primitives
- *  into the input stream. If the token following <tt>\the</tt> is not theable
- *  then an error is raised.
+ * The primitive <tt>\the</tt> inserts the definition of certain primitives
+ * into the input stream. If the token following <tt>\the</tt> is not theable
+ * then an error is raised.
  * </p>
  * <p>
- *  During the expansion of arguments of macros like <tt>\edef</tt>,
- *  <tt>\xdef</tt>, <tt>\message</tt>, and others the further expansion of the
- *  tokens is inhibited.
+ * During the expansion of arguments of macros like <tt>\edef</tt>,
+ * <tt>\xdef</tt>, <tt>\message</tt>, and others the further expansion of
+ * the tokens is inhibited.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;the&rang;
  *      &rarr; <tt>\the</tt> &lang;internal quantity&rang; </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \the\count123  </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4770 $
@@ -73,13 +76,14 @@ import org.extex.typesetter.Typesetter;
 public class The extends AbstractCode implements ExpandableCode, CodeExpander {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 20060408L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for tracing and debugging
      */
     public The(String name) {
@@ -88,32 +92,14 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * <p>
-     * Get the next token (not expand) and if it is <code>Theable</code>, then
-     * call <code>the()</code> and put the result on the stack.
-     * </p>
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     * @throws ConfigurationException in case of an configuration error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Token cs = source.getToken(context);
 
@@ -129,9 +115,7 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
                 try {
                     toks = ((Theable) code).the(context, source, typesetter);
                 } catch (CatcodeException e) {
-                    throw new InterpreterException(e);
-                } catch (ConfigurationException e) {
-                    throw new InterpreterException(e);
+                    throw new NoHelpException(e);
                 }
                 source.push(toks);
                 return;
@@ -146,54 +130,34 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
     }
 
     /**
-     * This method takes the first token and expands it. The result is placed
-     * on the stack.
-     * This means that expandable code does one step of expansion and puts the
-     * result on the stack. To expand a token it might be necessary to consume
-     * further tokens.
-     *
-     * @param prefix the prefix flags controlling the expansion
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     * @throws ConfigurationException in case of an configuration error
-     *
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void expand(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void expand(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         execute(prefix, context, source, typesetter);
     }
 
     /**
-     * Expand the first token and place the result in a token list. During
-     * the expansion additional tokens might be used.
-     *
+     * Expand the first token and place the result in a token list. During the
+     * expansion additional tokens might be used.
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param tokens the target token list
-     *
-     * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
-     *
      * @see org.extex.interpreter.type.CodeExpander#expandCode(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.tokens.Tokens)
      */
     public void expandCode(Context context, TokenSource source,
-            Typesetter typesetter, Tokens tokens)
-            throws InterpreterException {
+            Typesetter typesetter, Tokens tokens) throws HelpingException, TypesetterException {
 
         Token cs = source.getToken(context);
 
@@ -209,9 +173,7 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
                     tokens.add(((Theable) code)
                         .the(context, source, typesetter));
                 } catch (CatcodeException e) {
-                    throw new InterpreterException(e);
-                } catch (ConfigurationException e) {
-                    throw new InterpreterException(e);
+                    throw new NoHelpException(e);
                 }
                 return;
             }

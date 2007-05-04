@@ -19,33 +19,39 @@
 
 package de.dante.extex.interpreter.primitives.hyphen;
 
-import org.extex.core.count.CountParser;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.NoHelpException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Theable;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
+import org.extex.scanner.CountParser;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.hyphen.AbstractHyphenationCode;
 
 /**
- * This class provides an implementation for the primitive <code>\hyphenactive</code>.
+ * This class provides an implementation for the primitive
+ * <code>\hyphenactive</code>.
  * <p>
- * The value are stored in the <code>HyphernationTable</code>.
- * Each <code>HyphernationTable</code> are based on <code>\language</code>
- * and have its own <code>\hyphenactive</code>-value.
- *
- * <p>Example:</p>
+ * The value are stored in the <code>HyphernationTable</code>. Each
+ * <code>HyphernationTable</code> are based on <code>\language</code> and
+ * have its own <code>\hyphenactive</code>-value.
+ * 
+ * <p>
+ * Example:
+ * </p>
+ * 
  * <pre>
  * \hyphenactive=0  % yes
  * \hyphenactive=1  % no
  * </pre>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -53,13 +59,14 @@ import org.extex.unit.tex.hyphen.AbstractHyphenationCode;
 public class HyphenActive extends AbstractHyphenationCode implements Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public HyphenActive(String name) {
@@ -68,17 +75,17 @@ public class HyphenActive extends AbstractHyphenationCode implements Theable {
     }
 
     /**
-     * Scan for hyphenactive-value and stored it in the
+     * Scan for hyphenactive value and stored it in the
      * <code>HyphernationTable</code> with the language-number.
-     *
+     * 
+     * @throws HelpingException
+     * 
      * @see org.extex.interpreter.type.Code#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Language table = getHyphenationTable(context);
         source.getOptionalEquals(context);
@@ -88,34 +95,30 @@ public class HyphenActive extends AbstractHyphenationCode implements Theable {
             table.setHyphenActive(active);
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
-                throw new InterpreterException(e.getCause());
+                throw (ConfigurationException) e.getCause();
             }
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
     }
 
     /**
      * This method is the getter for the description of the primitive.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for further tokens to qualify the request
      * @param typesetter the typesetter to use
-     *
+     * 
      * @return the description of the primitive as list of Tokens
-     *
-     * @throws InterpreterException in case of an error
      * @throws CatcodeException in case of an error in token creation
      * @throws ConfigurationException in case of an configuration error
-     *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public Tokens the(Context context, TokenSource source,
-            Typesetter typesetter)
-            throws InterpreterException,
-                CatcodeException {
+    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
+            throws CatcodeException,
+                HelpingException,
+                TypesetterException {
 
         Language table = getHyphenationTable(context);
         try {
@@ -123,9 +126,9 @@ public class HyphenActive extends AbstractHyphenationCode implements Theable {
                 (table.isHyphenActive() ? "0" : "1"));
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
-                throw new InterpreterException(e.getCause());
+                throw (ConfigurationException) e.getCause();
             }
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
     }
 

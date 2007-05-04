@@ -20,32 +20,34 @@
 package org.extex.unit.tex.typesetter.box;
 
 import org.extex.core.dimen.Dimen;
-import org.extex.core.dimen.DimenParser;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.RuleConvertible;
+import org.extex.scanner.DimenParser;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.RuleNode;
 
 /**
  * This class provides an implementation for the primitive <code>\hrule</code>.
- *
+ * 
  * <doc name="hrule">
  * <h3>The Primitive <tt>\hrule</tt></h3>
  * <p>
- *  This primitive produces a horizontal rule. This is a rectangular area of
- *  specified dimensions. If not overwritten the width and depth are 0pt and
- *  the height is 0.4&nbsp;pt (26214&nbsp;sp).
+ * This primitive produces a horizontal rule. This is a rectangular area of
+ * specified dimensions. If not overwritten the width and depth are 0pt and the
+ * height is 0.4&nbsp;pt (26214&nbsp;sp).
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;hrule&rang;
  *        &rarr; <tt>\hrule</tt> &lang;rule specification&rang;
  *
@@ -65,29 +67,31 @@ import org.extex.typesetter.type.node.RuleNode;
  *         |  <tt>depth</tt> {@linkplain
  *        org.extex.core.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;}   </pre>
- *
+ * 
  * <p>
- *  The color from the typographic context is taken as foreground color for the
- *  rule. The default color is black.
+ * The color from the typographic context is taken as foreground color for the
+ * rule. The default color is black.
  * </p>
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \hrule  </pre>
  *  <pre class="TeXSample">
  *    \hrule width 2pt  </pre>
  *  <pre class="TeXSample">
  *    \hrule width 2pt depth 3mm height \dimen4  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
 public class Hrule extends AbstractCode implements RuleConvertible {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 15022007L;
 
@@ -98,7 +102,7 @@ public class Hrule extends AbstractCode implements RuleConvertible {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Hrule(String name) {
@@ -107,58 +111,39 @@ public class Hrule extends AbstractCode implements RuleConvertible {
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     * @throws ConfigurationException in case of an configuration error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
-     * @see "<logo>TeX</logo> &ndash; The Program [463]"
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         typesetter.add(getRule(context, source, typesetter));
     }
 
     /**
      * Getter for the content as Rule.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter to use
-     *
+     * 
      * @return an appropriate Box
-     *
-     * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
-     *
      * @see org.extex.interpreter.type.box.RuleConvertible#getRule(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public RuleNode getRule(Context context, TokenSource source,
-            Typesetter typesetter)
-            throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Mode mode = typesetter.getMode();
         if (mode.isHmode()) {
             typesetter.par();
-            //            throw new HelpingException(getLocalizer(), "TTP.CantUseHrule",
-            //                    printableControlSequence(context));
+            // throw new HelpingException(getLocalizer(), "TTP.CantUseHrule",
+            // printableControlSequence(context));
         }
         Dimen width = new Dimen(0);
         Dimen height = new Dimen(DEFAULT_RULE);

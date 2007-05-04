@@ -21,9 +21,10 @@ package org.extex.unit.tex.math.util;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.type.math.MathCode;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
+import org.extex.typesetter.type.math.MathCode;
 
 /**
  * This interface describes a primitive which can deliver a MathCode.
@@ -44,10 +45,10 @@ public interface MathCodeConvertible {
      * @param typesetter the typesetter to use for conversion
      *
      * @return the converted value
-     *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException TODO
      */
     MathCode convertMathCode(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException;
+            Typesetter typesetter) throws HelpingException, TypesetterException;
 
 }

@@ -21,55 +21,58 @@ package org.extex.unit.tex.conditional;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.box.Box;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.conditional.AbstractIf;
 import org.extex.unit.tex.register.box.Setbox;
 
 /**
  * This class provides an implementation for the primitive <code>\ifhbox</code>.
- *
+ * 
  * <doc name="ifhbox">
  * <h3>The Primitive <tt>\ifhbox</tt></h3>
  * <p>
- *  The primitive takes one expanded integer argument.
- *  The conditional is true iff the box denoted by the argument is a horizontal
- *  box.
+ * The primitive takes one expanded integer argument. The conditional is true
+ * iff the box denoted by the argument is a horizontal box.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;ifhbox&rang;
  *      &rarr; <tt>\ifhbox</tt> {@linkplain
- *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\fi</tt>
  *      | <tt>\ifhbox</tt> {@linkplain
- *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \ifhbox255 abc \fi  </pre>
  *  <pre class="TeXSample">
  *    \ifhbox\count120 abc \fi  </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4439 $
  */
 public class Ifhbox extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Ifhbox(String name) {
@@ -78,26 +81,13 @@ public class Ifhbox extends AbstractIf {
     }
 
     /**
-     * This method computes the boolean value of the conditional.
-     * If the result is <code>true</code> then the then branch is expanded and
-     * the else branch is skipped. Otherwise the then branch is skipped and the
-     * else branch is expanded.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @return the boolean value
-     *
-     * @throws InterpreterException in case of en error
-     *
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.unit.base.conditional.AbstractIf#conditional(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public boolean conditional(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         String key = Setbox.getKey(context, source, typesetter, getName());
         Box box = context.getBox(key);

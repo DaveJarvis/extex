@@ -24,6 +24,7 @@ import java.util.Map;
 
 import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.FixedDimen;
+import org.extex.font.ExtexFont;
 import org.extex.font.FontFactory;
 import org.extex.font.exception.FontException;
 import org.extex.font.format.tfm.TfmFixWord;
@@ -52,7 +53,6 @@ import org.extex.format.dvi.exception.DviException;
 import org.extex.format.dvi.exception.DviGlyphNotFoundException;
 import org.extex.format.dvi.exception.DviMissingFontException;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.interpreter.type.font.Font;
 import org.extex.util.Unit;
 import org.extex.util.file.random.RandomAccessR;
 import org.jdom.Element;
@@ -100,7 +100,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
     /**
      * the map for all sub fonts.
      */
-    private Map<Integer, Font> fontmap;
+    private Map<Integer, ExtexFont> fontmap;
 
     /**
      * Create a new object.
@@ -109,7 +109,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @param ff the font factory
      * @param fm the font map
      */
-    public DviEfm(Element element, FontFactory ff, Map<Integer, Font> fm) {
+    public DviEfm(Element element, FontFactory ff, Map<Integer, ExtexFont> fm) {
 
         dvi = element;
         // fontfactory = ff;
@@ -124,12 +124,12 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
      * @return Returns the font from the font map.
      * @throws DviMissingFontException if the font is not found.
      */
-    private Font getFont() throws DviMissingFontException {
+    private ExtexFont getFont() throws DviMissingFontException {
 
         if (val.getF() == -1) {
             return null;
         }
-        Font font = fontmap.get(new Integer(val.getF()));
+        ExtexFont font = fontmap.get(new Integer(val.getF()));
         if (font == null) {
             throw new DviMissingFontException(String.valueOf(val.getF()));
         }
@@ -285,7 +285,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
 
         Element element = new Element("char");
         element.setAttribute("id", String.valueOf(command.getCh()));
-        Font font = getFont();
+        ExtexFont font = getFont();
         if (font != null) {
             element.setAttribute("font", font.getFontName());
             element.setAttribute("fontsize", Unit.getDimenAsPTString(font
@@ -369,7 +369,7 @@ public class DviEfm implements DviInterpreter, DviExecuteCommand {
         if (SHOWALL) {
             Element element = new Element("font");
             element.setAttribute("id", String.valueOf(command.getFont()));
-            Font font = getFont();
+            ExtexFont font = getFont();
             if (font != null) {
                 element.setAttribute("font", font.getFontName());
             }

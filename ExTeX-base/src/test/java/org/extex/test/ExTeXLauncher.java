@@ -48,6 +48,7 @@ import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.logging.LogFormatter;
 import org.extex.main.errorHandler.editHandler.EditHandler;
 import org.extex.resource.ResourceFinder;
@@ -104,7 +105,7 @@ public class ExTeXLauncher extends TestCase {
          *      org.extex.interpreter.context.Context)
          */
         public boolean handleError(GeneralException e, Token token,
-                TokenSource source, Context context) {
+                TokenSource source, Context context) throws HelpingException {
 
             logger.log(Level.SEVERE, e.getLocalizedMessage());
             return false;
@@ -301,11 +302,11 @@ public class ExTeXLauncher extends TestCase {
      *         used for the test run. This object can be inspected in additional
      *         asserts.
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      */
     public Interpreter assertOutput(Properties properties,
             String code, String log, String expect)
-            throws InterpreterException {
+            throws HelpingException {
 
         boolean errorP = false;
 

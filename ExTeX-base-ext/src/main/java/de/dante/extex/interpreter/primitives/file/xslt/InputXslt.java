@@ -33,46 +33,52 @@ import javax.xml.transform.stream.StreamSource;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.NoHelpException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.resource.ResourceFinder;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.file.AbstractFileCode;
 
 import de.dante.util.xslt.Transform;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\inputXSLT</code>. It transform a XML file with a
- * XSLT transformation.
- * <p>It use <code>\javadef</code>.</p>
- *
+ * <code>\inputXSLT</code>. It transform a XML file with a XSLT
+ * transformation.
+ * <p>
+ * It use <code>\javadef</code>.
+ * </p>
+ * 
  * <doc name="inputXSLT">
  * <h3>The Primitive <tt>\inputXSLT</tt></h3>
  * <p>
- *  The primitive <tt>\inputXSLT</tt> takes as argument two file names.
- *  The first one is a XML file, the second one is a XSLT file.
- *  After the transformation the result is taken as input stream for
- *  the tokenizer.
+ * The primitive <tt>\inputXSLT</tt> takes as argument two file names. The
+ * first one is a XML file, the second one is a XSLT file. After the
+ * transformation the result is taken as input stream for the tokenizer.
  * </p>
  * <p>
- *  If the file can not be opened for reading then an error is raised.
+ * If the file can not be opened for reading then an error is raised.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;inputXSLT&rang;
  *       &rarr; <tt>\inputXSLT</tt> &lang;xml-file name&rang;
  *                                  &lang;xsl-file name&rang;</pre>
- *
+ * 
  * <h4>Examples</h4>
  * <p>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \inputXSLT{file.name.xml}{file.name.xsl}  </pre>
+ * 
  * </p>
  * </doc>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -86,7 +92,8 @@ public class InputXslt extends AbstractFileCode {
 
     /**
      * Create a new object.
-     * @param codeName  the CodeName
+     * 
+     * @param codeName the CodeName
      */
     public InputXslt(String codeName) {
 
@@ -94,15 +101,14 @@ public class InputXslt extends AbstractFileCode {
     }
 
     /**
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         // MGN incomplete
         try {
@@ -121,39 +127,34 @@ public class InputXslt extends AbstractFileCode {
             ByteArrayOutputStream out = new ByteArrayOutputStream();
 
             Transform.transform(new StreamSource(xmlin),
-                    new StreamSource(xslin), null, out);
+                new StreamSource(xslin), null, out);
 
-            Reader reader = new InputStreamReader(new ByteArrayInputStream(out
-                    .toByteArray()));
+            Reader reader =
+                    new InputStreamReader(new ByteArrayInputStream(out
+                        .toByteArray()));
 
             source.addStream(factory.newInstance(reader));
 
         } catch (TransformerException e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         } catch (TransformerFactoryConfigurationError e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         } catch (IOException e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
 
         System.out.println("execute");
     }
 
     /**
-     * scan the filename between <code>{</code> and <code>}</code>.
-     * @param context   the context
-     * @param source    the source for new tokens
-     *
-     * @return the file name as string
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.unit.base.file.AbstractFileCode#scanFileName(
-     *      org.extex.interpreter.context.Context,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.unit.base.file.AbstractFileCode#scanFileName(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
      */
-    protected String scanFileName(Context context,
-            TokenSource source) throws InterpreterException {
+    protected String scanFileName(Context context, TokenSource source)
+            throws HelpingException,
+                TypesetterException {
 
         return source.scanTokensAsString(context, getName());
     }

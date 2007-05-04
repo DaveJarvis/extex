@@ -20,16 +20,17 @@
 package org.extex.unit.tex.register.dimen;
 
 import org.extex.core.dimen.Dimen;
-import org.extex.core.dimen.DimenParser;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.InitializableCode;
+import org.extex.scanner.DimenParser;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive <code>\dimen</code>.
@@ -115,13 +116,11 @@ public class DimenParameter extends DimenPrimitive
      * @param source the source of information for the initialization
      * @param typesetter the typesetter
      *
-     * @throws InterpreterException in case of an error
-     *
      * @see org.extex.interpreter.type.InitializableCode#init(
      *      org.extex.interpreter.context.Context, TokenSource, Typesetter)
      */
     public void init(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         if (source == null) {
             return;

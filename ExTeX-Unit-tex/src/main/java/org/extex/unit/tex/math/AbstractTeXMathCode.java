@@ -20,36 +20,38 @@
 package org.extex.unit.tex.math;
 
 import org.extex.core.UnicodeChar;
-import org.extex.core.count.CountParser;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Code;
-import org.extex.interpreter.type.math.MathClass;
-import org.extex.interpreter.type.math.MathClassVisitor;
-import org.extex.interpreter.type.math.MathCode;
+import org.extex.scanner.CountParser;
+import org.extex.scanner.MathClassParser;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.LeftBraceToken;
 import org.extex.scanner.type.token.RightBraceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
+import org.extex.typesetter.type.math.MathClass;
+import org.extex.typesetter.type.math.MathClassVisitor;
+import org.extex.typesetter.type.math.MathCode;
 import org.extex.typesetter.type.noad.MathGlyph;
 import org.extex.unit.tex.math.util.MathCodeConvertible;
 
 /**
- * This is the base class for all math primitives using the TeX encoding.
- * It tries to ensure that the primitive is invoked in math mode only.
- *
+ * This is the base class for all math primitives using the TeX encoding. It
+ * tries to ensure that the primitive is invoked in math mode only.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
 public abstract class AbstractTeXMathCode extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 24012007L;
 
@@ -65,105 +67,113 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
     private static final int SPECIAL_MATH_CODE = 0x8000;
 
     /**
-     * The constant <tt>CHARACTER_MASK</tt> contains the mask for the character
-     * value in the <logo>TeX</logo> encoding.
+     * The constant <tt>CHARACTER_MASK</tt> contains the mask for the
+     * character value in the <logo>TeX</logo> encoding.
      */
     private static final int CHARACTER_MASK = 0xff;
 
     /**
-     * The constant <tt>FAMILY_MASK</tt> contains the mask for the family in the
-     * <logo>TeX</logo> encoding.
+     * The constant <tt>FAMILY_MASK</tt> contains the mask for the family in
+     * the <logo>TeX</logo> encoding.
      */
     private static final int FAMILY_MASK = 0xf;
 
     /**
-     * The constant <tt>FAMILY_OFFSET</tt> contains the offset for the family in
-     * the <logo>TeX</logo> encoding.
+     * The constant <tt>FAMILY_OFFSET</tt> contains the offset for the family
+     * in the <logo>TeX</logo> encoding.
      */
     private static final int FAMILY_OFFSET = 8;
 
     /**
-     * The field <tt>VISITOR</tt> contains the visitor for mapping a math class
-     * to the integer representation used by TeX..
+     * The field <tt>VISITOR</tt> contains the visitor for mapping a math
+     * class to the integer representation used by TeX..
      */
-    private static final MathClassVisitor VISITOR = new MathClassVisitor() {
+    private static final MathClassVisitor<Integer, Object, Object> VISITOR =
+            new MathClassVisitor<Integer, Object, Object>() {
 
-        /**
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitBinary(java.lang.Object, java.lang.Object)
-         */
-        public Object visitBinary(Object arg, Object arg2) {
+                /**
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitBinary(java.lang.Object,
+                 *      java.lang.Object)
+                 */
+                public Integer visitBinary(Object arg, Object arg2) {
 
-            return new Integer(2);
-        }
+                    return new Integer(2);
+                }
 
-        /**
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitClosing(java.lang.Object, java.lang.Object)
-         */
-        public Object visitClosing(Object arg, Object arg2) {
+                /**
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitClosing(java.lang.Object,
+                 *      java.lang.Object)
+                 */
+                public Integer visitClosing(Object arg, Object arg2) {
 
-            return new Integer(5);
-        }
+                    return new Integer(5);
+                }
 
-        /**
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitLarge(java.lang.Object, java.lang.Object)
-         */
-        public Object visitLarge(Object arg, Object arg2) {
+                /**
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitLarge(java.lang.Object,
+                 *      java.lang.Object)
+                 */
+                public Integer visitLarge(Object arg, Object arg2) {
 
-            return new Integer(1);
-        }
+                    return new Integer(1);
+                }
 
-        /**
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitOpening(java.lang.Object, java.lang.Object)
-         */
-        public Object visitOpening(Object arg, Object arg2) {
+                /**
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOpening(java.lang.Object,
+                 *      java.lang.Object)
+                 */
+                public Integer visitOpening(Object arg, Object arg2) {
 
-            return new Integer(4);
-        }
+                    return new Integer(4);
+                }
 
-        /**
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitOrdinary(java.lang.Object, java.lang.Object)
-         */
-        public Object visitOrdinary(Object arg, Object arg2) {
+                /**
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOrdinary(java.lang.Object,
+                 *      java.lang.Object)
+                 */
+                public Integer visitOrdinary(Object arg, Object arg2) {
 
-            return new Integer(0);
-        }
+                    return new Integer(0);
+                }
 
-        /**
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitPunctation(java.lang.Object, java.lang.Object)
-         */
-        public Object visitPunctation(Object arg, Object arg2) {
+                /**
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitPunctation(java.lang.Object,
+                 *      java.lang.Object)
+                 */
+                public Integer visitPunctation(Object arg, Object arg2) {
 
-            return new Integer(6);
-        }
+                    return new Integer(6);
+                }
 
-        /**
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitRelation(java.lang.Object, java.lang.Object)
-         */
-        public Object visitRelation(Object arg, Object arg2) {
+                /**
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitRelation(java.lang.Object,
+                 *      java.lang.Object)
+                 */
+                public Integer visitRelation(Object arg, Object arg2) {
 
-            return new Integer(3);
-        }
+                    return new Integer(3);
+                }
 
-        /**
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitVariable(java.lang.Object, java.lang.Object)
-         */
-        public Object visitVariable(Object arg, Object arg2) {
+                /**
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitVariable(java.lang.Object,
+                 *      java.lang.Object)
+                 */
+                public Integer visitVariable(Object arg, Object arg2) {
 
-            return new Integer(7);
-        }
-    };
+                    return new Integer(7);
+                }
+            };
 
     /**
      * Convert a {@link MathCode MathCode} to a number using the TeX encoding.
-     *
+     * 
      * @param mc the math code
-     *
+     * 
      * @return a TeX-encoded math code
-     *
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
      */
-    public static long mathCodeToLong(MathCode mc)
-            throws InterpreterException {
+    public static long mathCodeToLong(MathCode mc) throws HelpingException {
 
         MathClass mathClass = mc.getMathClass();
         if (mathClass == null) {
@@ -188,25 +198,29 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
 
     /**
      * Parse Math code according to TeX rules and extensions.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param primitive the name of the invoking primitive
-     *
+     * 
      * @return the MathCode
-     *
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
-    public static MathCode parseMathCode(Context context,
-            TokenSource source, Typesetter typesetter,
-            String primitive) throws InterpreterException {
+    public static MathCode parseMathCode(Context context, TokenSource source,
+            Typesetter typesetter, String primitive)
+            throws HelpingException,
+                TypesetterException {
 
         Token t = source.getToken(context);
         if (t instanceof LeftBraceToken) {
             MathClass mc =
-                    MathClass.parse(context, source, typesetter, primitive);
-            long family = CountParser.parse(context, source, typesetter).getValue();
+                    MathClassParser.parse(context, source, typesetter,
+                        primitive);
+            long family =
+                    CountParser.parse(context, source, typesetter).getValue();
             UnicodeChar c =
                     source.scanCharacterCode(context, typesetter, primitive);
 
@@ -248,7 +262,7 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for tracing and debugging
      */
     public AbstractTeXMathCode(String name) {

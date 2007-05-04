@@ -22,8 +22,9 @@ package org.extex.interpreter.type.arithmetic;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This is a interface to mark those Classes which are able to advance
@@ -61,13 +62,13 @@ public interface Advanceable {
      * @param context the processor context
      * @param source the token source to parse
      * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException TODO
+     * @throws TypesetterException TODO
      * @throws org.extex.framework.configuration.exception.ConfigurationException
      *   in case of an configuration error
      */
     void advance(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter)
-            throws InterpreterException;
+            throws HelpingException, TypesetterException;
 
 }

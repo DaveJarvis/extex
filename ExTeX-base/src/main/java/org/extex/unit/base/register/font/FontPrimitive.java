@@ -26,11 +26,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.extex.core.count.Count;
-import org.extex.core.count.CountParser;
 import org.extex.core.dimen.Dimen;
-import org.extex.core.dimen.DimenParser;
 import org.extex.core.glue.Glue;
-import org.extex.core.glue.GlueParser;
 import org.extex.font.CoreFontFactory;
 import org.extex.font.ExtexFont;
 import org.extex.font.FontKey;
@@ -41,17 +38,20 @@ import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.type.font.FontConvertible;
 import org.extex.interpreter.type.font.FontImpl;
+import org.extex.scanner.CountParser;
+import org.extex.scanner.DimenParser;
+import org.extex.scanner.GlueParser;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.SpaceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive <code>\font</code>.
@@ -99,7 +99,7 @@ import org.extex.typesetter.Typesetter;
  *
  *    &lang;option&rang;
  *      &rarr; [scaled] {@linkplain
- *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}
  *       | [at] {@linkplain
  *           org.extex.core.dimen#Dimen(org.extex.interpreter.context.Context,org.extex.interpreter.TokenSource)
@@ -205,16 +205,13 @@ public class FontPrimitive extends AbstractAssignment
      * @param context the interpreter context
      * @param source the token source
      * @param typesetter the typesetter
-     * 
-     * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
-     * 
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         CodeToken fontId = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
@@ -302,14 +299,12 @@ public class FontPrimitive extends AbstractAssignment
      * 
      * @return the converted value
      * 
-     * @throws InterpreterException In case of an error
-     * 
      * @see org.extex.interpreter.type.font.FontConvertible#convertFont(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Font convertFont(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         return context.getTypesettingContext().getFont();
     }
@@ -337,10 +332,11 @@ public class FontPrimitive extends AbstractAssignment
      * 
      * @return the file name as string
      * 
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     private String scanFontName(Context context, TokenSource source)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException {
 
         Token t = source.scanNonSpace(context);
 

@@ -22,50 +22,54 @@ package org.extex.unit.etex.conditional;
 import org.extex.core.UnicodeChar;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.font.Font;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.conditional.AbstractIf;
 
 /**
  * This class provides an implementation for the primitive
  * <code>\iffontchar</code>.
- *
+ * 
  * <doc name="iffontchar">
  * <h3>The Primitive <tt>\iffontchar</tt></h3>
  * <p>
- *  The primitive <tt>\iffontchar</tt> can be used to check whether a certain
- *  glyph exists in a font. For this purpose it takes a font and the code of a
- *  character and performs the test. If the character exists the then branch is
- *  expanded otherwise the else branch.
+ * The primitive <tt>\iffontchar</tt> can be used to check whether a certain
+ * glyph exists in a font. For this purpose it takes a font and the code of a
+ * character and performs the test. If the character exists the then branch is
+ * expanded otherwise the else branch.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;iffontchar&rang;
  *      &rarr; <tt>\iffontchar</tt> ... &lang;true text&rang; <tt>\fi</tt>
  *      | <tt>\iffontchar</tt> ... &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \iffontchar abc \fi  </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
 public class Iffontchar extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Iffontchar(String name) {
@@ -74,26 +78,13 @@ public class Iffontchar extends AbstractIf {
     }
 
     /**
-     * This method computes the boolean value of the conditional.
-     * If the result is <code>true</code> then the then branch is expanded and
-     * the else branch is skipped. Otherwise the then branch is skipped and the
-     * else branch is expanded.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @return the boolean value
-     *
-     * @throws InterpreterException in case of en error
-     *
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.unit.base.conditional.AbstractIf#conditional(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public boolean conditional(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Font font = source.getFont(context, getName());
         UnicodeChar uc =

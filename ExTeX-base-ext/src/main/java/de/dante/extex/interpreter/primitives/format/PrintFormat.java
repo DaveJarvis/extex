@@ -25,8 +25,9 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.NoHelpException;
 import org.extex.interpreter.exception.helping.CantUseAfterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.exception.helping.UndefinedControlSequenceException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
@@ -37,21 +38,23 @@ import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
 
 /**
- * This class provides an implementation for the primitive <code>\printformat</code>.
- * It format the next primitive for the output with the given pattern and
- * the default <code>Locale</code>.
- *
+ * This class provides an implementation for the primitive
+ * <code>\printformat</code>. It format the next primitive for the output
+ * with the given pattern and the default <code>Locale</code>.
+ * 
  * <p>
  * Example:
+ * 
  * <pre>
  * \the\printformat{pattern}\real7
  * </pre>
- *
+ * 
  * @see java.text.DecimalFormat
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -65,7 +68,7 @@ public class PrintFormat extends AbstractCode implements Theable {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for tracing and debugging
      */
     public PrintFormat(String name) {
@@ -74,18 +77,14 @@ public class PrintFormat extends AbstractCode implements Theable {
     }
 
     /**
-     * Get the next token (not expand) and print it with some format.
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         source.push(the(context, source, typesetter));
     }
@@ -95,10 +94,9 @@ public class PrintFormat extends AbstractCode implements Theable {
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
-    public Tokens the(Context context, TokenSource source,
-            Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
+            throws ConfigurationException,
+                HelpingException, TypesetterException {
 
         // \the\printformat{pattern}\real7
 
@@ -121,13 +119,15 @@ public class PrintFormat extends AbstractCode implements Theable {
             throw new UndefinedControlSequenceException(printable(context, cs));
 
         } else if (code instanceof RealConvertible) {
-            Real val = ((RealConvertible) code).convertReal(context, source, typesetter);
+            Real val =
+                    ((RealConvertible) code).convertReal(context, source,
+                        typesetter);
             DecimalFormat form = new DecimalFormat(pattern);
             try {
                 return context.getTokenFactory().toTokens( //
                     form.format(val.getValue()));
             } catch (CatcodeException e) {
-                throw new InterpreterException(e);
+                throw new NoHelpException(e);
             }
         } else {
             throw new CantUseAfterException(cs.toText(),

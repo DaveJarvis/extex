@@ -23,53 +23,57 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
  * <code>\begingroup</code>.
- *
+ * 
  * <doc name="begingroup">
  * <h3>The Primitive <tt>\begingroup</tt></h3>
  * <p>
- *  The primitive <tt>\begingroup</tt> starts a new group. The new group
- *  inherits all properties from the previous group.
+ * The primitive <tt>\begingroup</tt> starts a new group. The new group
+ * inherits all properties from the previous group.
  * </p>
  * <p>
- *  The group is usually ended by a corresponding
- *  {@link org.extex.unit.tex.group.Endgroup <tt>\endgroup</tt>}.
- *  If the job is completed without encountering a proper
- *  {@link org.extex.unit.tex.group.Endgroup <tt>\endgroup</tt>}.
- *  then an error is raised.
+ * The group is usually ended by a corresponding
+ * {@link org.extex.unit.tex.group.Endgroup <tt>\endgroup</tt>}. If the job is
+ * completed without encountering a proper
+ * {@link org.extex.unit.tex.group.Endgroup <tt>\endgroup</tt>}. then an error
+ * is raised.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;begingroup&rang;
  *      &rarr; <tt>\begingroup</tt>  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \begingroup 123 \endgroup  </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
 public class Begingroup extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Begingroup(String name) {
@@ -78,26 +82,14 @@ public class Begingroup extends AbstractCode {
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         context.openGroup(GroupType.SEMI_SIMPLE_GROUP, source.getLocator(),
             source.getLastToken());

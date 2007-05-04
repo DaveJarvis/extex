@@ -20,65 +20,68 @@
 package org.extex.unit.tex.conditional;
 
 import org.extex.core.Locator;
-import org.extex.core.count.CountParser;
+import org.extex.core.exception.ImpossibleException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.ImpossibleException;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Code;
+import org.extex.scanner.CountParser;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.conditional.AbstractIf;
 import org.extex.unit.base.conditional.Else;
 import org.extex.unit.base.conditional.Fi;
 
 /**
  * This class provides an implementation for the primitive <code>\ifcase</code>.
- *
+ * 
  * <doc name="ifcase">
  * <h3>The Primitive <tt>\ifcase</tt></h3>
  * <p>
- *  The primitive <tt>\ifcase</tt> provides a conditional switch on a numeric
- *  value. The next tokens are used as a number. This number determines which
- *  branch to expand. The first branch follows the number immediately. This
- *  branch is associated to the number 0.
+ * The primitive <tt>\ifcase</tt> provides a conditional switch on a numeric
+ * value. The next tokens are used as a number. This number determines which
+ * branch to expand. The first branch follows the number immediately. This
+ * branch is associated to the number 0.
  * </p>
  * <p>
- *  The primitive <tt>\or</tt> advances to the next branch.
- *  The primitive <tt>\else</tt> starts the else branch. The else branch is used
- *  if no other branch fits.
+ * The primitive <tt>\or</tt> advances to the next branch. The primitive
+ * <tt>\else</tt> starts the else branch. The else branch is used if no other
+ * branch fits.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;ifcase&rang;
  *     &rarr; <tt>\ifcase</tt> {@linkplain
- *        org.extex.core.count.CountParser#scanInteger(Context,TokenSource,Typesetter)
+ *        org.extex.scanner.CountParser#scanInteger(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  &lang;cases&rang; <tt>\fi</tt>
  *
  *    &lang;cases&rang;
  *     &rarr;
  *      |  &lang;branch text&rang; <tt>\else</tt> &lang;else text&rang;
  *      |  &lang;branch text&rang; <tt>\or</tt> &lang;cases&rang;  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \ifcase\count0 a\or b\or c\else x\fi  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4439 $
  */
 public class Ifcase extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
@@ -99,7 +102,7 @@ public class Ifcase extends AbstractIf {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Ifcase(String name) {
@@ -108,26 +111,14 @@ public class Ifcase extends AbstractIf {
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.unit.base.conditional.AbstractIf#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         long branch = CountParser.scanInteger(context, source, typesetter);
         if (branch < 0) {
@@ -157,47 +148,33 @@ public class Ifcase extends AbstractIf {
     }
 
     /**
-     * This method takes the first token and expands it. The result is placed
-     * on the stack.
-     * This means that expandable code does one step of expansion and puts the
-     * result on the stack. To expand a token it might be necessary to consume
-     * further tokens.
-     *
-     * @param prefix the prefix flags controlling the expansion
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.unit.base.conditional.AbstractIf#expand(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void expand(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void expand(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         execute(prefix, context, source, typesetter);
     }
 
     /**
-     * Skip to the next matching <tt>\fi</tt> or <tt>\or</tt> Token
-     * counting the intermediate <tt>\if</tt> s and <tt>\fi</tt>s.
-     *
+     * Skip to the next matching <tt>\fi</tt> or <tt>\or</tt> Token counting
+     * the intermediate <tt>\if</tt> s and <tt>\fi</tt>s.
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
-     *
+     * 
      * @return <code>true</code> if a matching <tt>\or</tt> has been found;
-     *  otherwise return <code>false</code> if a matching <tt>\fi</tt> has been
-     *  found.
-     *
-     * @throws InterpreterException in case of an error
+     *         otherwise return <code>false</code> if a matching <tt>\fi</tt>
+     *         has been found.
+     * 
+     * @throws HelpingException in case of an error
      */
-    private Tag skipToOrOrElseOrFi(Context context,
-            TokenSource source) throws InterpreterException {
+    private Tag skipToOrOrElseOrFi(Context context, TokenSource source)
+            throws HelpingException {
 
         Code code;
         int n = 0;
@@ -232,31 +209,30 @@ public class Ifcase extends AbstractIf {
     }
 
     /**
-     * This method computes the boolean value of the conditional.
-     * If the result is <code>true</code> then the then branch is expanded and
-     * the else branch is skipped. Otherwise the then branch is skipped and the
-     * else branch is expanded.
-     *
+     * This method computes the boolean value of the conditional. If the result
+     * is <code>true</code> then the then branch is expanded and the else
+     * branch is skipped. Otherwise the then branch is skipped and the else
+     * branch is expanded.
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the boolean value
-     *
+     * 
      * @see org.extex.unit.base.conditional.AbstractIf#conditional(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public boolean conditional(Context context, TokenSource source,
-            Typesetter typesetter) {
+            Typesetter typesetter) throws HelpingException {
 
         throw new ImpossibleException("\\ifcase conditional");
     }
 
     /**
      * This is an internal class for type-safe values.
-     *
+     * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision: 4439 $
      */

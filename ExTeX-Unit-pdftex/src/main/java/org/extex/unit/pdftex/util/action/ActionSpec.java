@@ -23,8 +23,9 @@ import java.io.Serializable;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.pdftex.exception.InterpreterPdftexActionTypeException;
 
 /**
@@ -45,11 +46,12 @@ public abstract class ActionSpec implements Serializable {
      *
      * @return the action spec found
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     public static ActionSpec parseActionSpec(Context context,
             TokenSource source, Typesetter typesetter,
-            String name) throws InterpreterException {
+            String name) throws HelpingException, TypesetterException {
 
         if (source.getKeyword(context, "user")) {
             return UserActionSpec.parseActionSpec(context, source, typesetter,

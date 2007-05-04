@@ -22,52 +22,57 @@ package org.extex.unit.dynamic.java;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.NoHelpException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.EofInToksException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.unit.Loader;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This primitive initiates the loading of Java code and implements the
  * primitive <tt>\javaload</tt>.
- *
+ * 
  * <doc name="javaload">
  * <h3>The Primitive <tt>\javaload</tt></h3>
  * <p>
- *  The primitive <tt>\javaload</tt> loads a java class and invokes its
- *  <tt>init()</tt> method. With this method it is possible to load
- *  larger extensions of <logo>ExTeX</logo> in one junk. There is no need to
- *  declare each single macro with <tt>\javadef</tt>.
+ * The primitive <tt>\javaload</tt> loads a java class and invokes its
+ * <tt>init()</tt> method. With this method it is possible to load larger
+ * extensions of <logo>ExTeX</logo> in one junk. There is no need to declare
+ * each single macro with <tt>\javadef</tt>.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The general form of this primitive is
+ * The general form of this primitive is
+ * 
  * <pre class="syntax">
  *   &lang;javaload&rang;
  *       &rarr; <tt>\javaload</tt> &lang;tokens&rang;  </pre>
+ * 
  * <p>
- *  The <i>&lang;tokens&rang;</i> is any specification of a list of
- *  tokens like a constant list enclosed in braces or a token register.
- *  The value of these tokens are taken and interpreted as the name of
- *  a Java class. This class is loaded if needed, instantiated, and its
- *  method
- *  {@link org.extex.unit.dynamic.java.Loadable#init(org.extex.interpreter.context.Context,org.extex.typesetter.Typesetter) init()}
- *  is invoked. The instantiation requires the empty constructor to be visible.
+ * The <i>&lang;tokens&rang;</i> is any specification of a list of tokens like
+ * a constant list enclosed in braces or a token register. The value of these
+ * tokens are taken and interpreted as the name of a Java class. This class is
+ * loaded if needed, instantiated, and its method
+ * {@link org.extex.unit.dynamic.java.Loadable#init(org.extex.interpreter.context.Context,org.extex.typesetter.Typesetter) init()}
+ * is invoked. The instantiation requires the empty constructor to be visible.
  * </p>
- *
+ * 
  * <h4>Examples</h4>
  * <p>
- *  The following example illustrates the use of this primitive:
+ * The following example illustrates the use of this primitive:
+ * 
  * <pre class="TeXSample">
  *   \javaload{org.extex.extensions.Basic} </pre>
+ * 
  * </p>
  * <p>
- *  For the loading of the Java class it is necessary that this Java
- *  class implements the interface
- *  {@link org.extex.unit.dynamic.java.Loadable Loadable}.
+ * For the loading of the Java class it is necessary that this Java class
+ * implements the interface
+ * {@link org.extex.unit.dynamic.java.Loadable Loadable}.
+ * 
  * <pre class="JavaSample">
  *   <b>package</b> my.package;
  *
@@ -89,23 +94,24 @@ import org.extex.typesetter.Typesetter;
  *       <i>// implement the initialization code here</i>
  *     }
  *   } </pre>
+ * 
  * </p>
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class JavaLoad extends AbstractCode implements Loader {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
-     * Creates a new object.
-     * This method is needed for the nativeload wrapper.
-     *
+     * Creates a new object. This method is needed for the nativeload wrapper.
+     * 
      */
     public JavaLoad() {
 
@@ -114,7 +120,7 @@ public class JavaLoad extends AbstractCode implements Loader {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param codeName the name for debugging
      */
     public JavaLoad(String codeName) {
@@ -123,46 +129,26 @@ public class JavaLoad extends AbstractCode implements Loader {
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         load(context, source, typesetter);
     }
 
     /**
-     * Perform a load operation.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.unit.Loader#load(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.unit.Loader#load(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void load(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+    public void load(Context context, TokenSource source, Typesetter typesetter)
+            throws HelpingException, TypesetterException {
 
         String classname;
         try {
@@ -172,7 +158,7 @@ public class JavaLoad extends AbstractCode implements Loader {
         }
         if ("".equals(classname)) {
             throw new HelpingException(getLocalizer(), "ClassNotFound",
-                    classname);
+                classname);
         }
         Loadable component;
 
@@ -181,14 +167,14 @@ public class JavaLoad extends AbstractCode implements Loader {
             component.init(context, typesetter);
         } catch (ClassNotFoundException e) {
             throw new HelpingException(getLocalizer(), "ClassNotFound",
-                    classname);
-        } catch (InterpreterException e) {
+                classname);
+        } catch (HelpingException e) {
             throw e;
         } catch (ClassCastException e) {
             throw new HelpingException(getLocalizer(), "ClassCast", classname,
-                    Loadable.class.getName(), getName());
+                Loadable.class.getName(), getName());
         } catch (Exception e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
     }
 

@@ -23,7 +23,6 @@ import org.extex.core.glue.FixedGlue;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.exception.helping.UndefinedControlSequenceException;
 import org.extex.interpreter.type.AbstractCode;
@@ -33,6 +32,7 @@ import org.extex.interpreter.type.box.Boxable;
 import org.extex.interpreter.type.box.RuleConvertible;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.node.ExpandedLeadersNode;
 import org.extex.typesetter.type.node.RuleNode;
@@ -92,7 +92,7 @@ public class Xleaders extends AbstractCode {
      */
     public void execute(Flags prefix, Context context,
             TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException {
 
         CodeToken cs = source.getControlSequence(context, typesetter);
         Code code = context.getCode(cs);

@@ -22,8 +22,9 @@ package org.extex.unit.tex.typesetter.spacing;
 import org.extex.core.glue.FixedGlue;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This interface describes macros which produces a horizontal glue.
@@ -41,10 +42,10 @@ public interface HorizontalSkip {
      * @param typesetter the typesetter
      *
      * @return the amount of skip
-     *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     FixedGlue getGlue(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException;
+            throws HelpingException, TypesetterException;
 
 }

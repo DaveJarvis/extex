@@ -19,36 +19,38 @@
 
 package org.extex.interpreter.type.arithmetic;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This is a interface to mark those classes which are able to multiply
  * something.
- *
- *
+ * 
+ * 
  * <doc type="howto" name="multiply">
  * <h3>Extending <tt>\multiply</tt></h3>
  * <p>
- *  The primitive <tt>\multiply</tt> is designed to be expanded. It is fairly
- *  simple to write a multiplyable primitive. The associated code simply has to
- *  implement the interface <tt>Multiplyable</tt>. Whenever <tt>\multiply</tt>
- *  is encountered immediately followed by a token which has the proper code
- *  associated, the method <tt>multiply</tt> is invoked. It is up to this
- *  method to gather further arguments and perform the multiplication.
+ * The primitive <tt>\multiply</tt> is designed to be expanded. It is fairly
+ * simple to write a multiplyable primitive. The associated code simply has to
+ * implement the interface <tt>Multiplyable</tt>. Whenever <tt>\multiply</tt>
+ * is encountered immediately followed by a token which has the proper code
+ * associated, the method <tt>multiply</tt> is invoked. It is up to this
+ * method to gather further arguments and perform the multiplication.
  * </p>
  * <p>
- *  With this interface the multiplication is in fact tied to the implementing
- *  code and not to the primitive <tt>\multiply</tt>. Each primitive can be
- *  made aware for multiplication without touching the code for
- *  <tt>\multiply</tt>.
+ * With this interface the multiplication is in fact tied to the implementing
+ * code and not to the primitive <tt>\multiply</tt>. Each primitive can be
+ * made aware for multiplication without touching the code for
+ * <tt>\multiply</tt>.
  * </p>
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4399 $
  */
@@ -57,18 +59,19 @@ public interface Multiplyable {
     /**
      * This method is called when the macro <tt>\multiply</tt> has been seen.
      * It performs the remaining tasks for the expansion.
-     *
+     * 
      * @param prefix the prefix for the command
      * @param context the processor context
      * @param source the token source to parse
      * @param typesetter the typesetter
      *
-     * @throws InterpreterException in case of an error
-     * @throws org.extex.framework.configuration.exception.ConfigurationException
-     *   in case of an configuration error
+     * @throws HelpingException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     void multiply(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter)
-            throws InterpreterException;
+            throws HelpingException,
+                ConfigurationException, TypesetterException;
 
 }

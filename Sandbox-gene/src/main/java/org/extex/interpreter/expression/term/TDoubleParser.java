@@ -21,7 +21,7 @@ package org.extex.interpreter.expression.term;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.expression.ConstantFunction;
 import org.extex.interpreter.expression.EType;
 import org.extex.interpreter.expression.ETypeParser;
@@ -31,6 +31,7 @@ import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class implements the supporting functions for the date type
@@ -68,7 +69,7 @@ public final class TDoubleParser implements ETypeParser {
      *      org.extex.typesetter.Typesetter)
      */
     public EType convert(Code code, Context context,
-            TokenSource source, Typesetter typesetter) {
+            TokenSource source, Typesetter typesetter) throws HelpingException, TypesetterException {
 
         return null;
     }
@@ -82,7 +83,7 @@ public final class TDoubleParser implements ETypeParser {
      *      org.extex.typesetter.Typesetter)
      */
     public EType parse(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         boolean period = false;
         StringBuffer sb = new StringBuffer();
@@ -204,7 +205,7 @@ public final class TDoubleParser implements ETypeParser {
             /**
              * Compute the value of pi.
              */
-            public EType apply() {
+            public EType apply() throws HelpingException {
 
                 return new TDouble(Math.PI);
             }
@@ -219,7 +220,7 @@ public final class TDoubleParser implements ETypeParser {
              *      org.extex.interpreter.expression.EType)
              */
             public EType apply(EType accumulator)
-                    throws InterpreterException {
+                    throws HelpingException {
 
                 return new TDouble().set(accumulator);
             }

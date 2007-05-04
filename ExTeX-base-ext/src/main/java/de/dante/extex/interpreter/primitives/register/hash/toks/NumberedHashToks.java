@@ -19,11 +19,12 @@
 
 package de.dante.extex.interpreter.primitives.register.hash.toks;
 
-import org.extex.core.count.CountParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.scanner.CountParser;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
@@ -52,9 +53,10 @@ import org.extex.typesetter.Typesetter;
 public class NumberedHashToks extends NamedHashToks {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -74,7 +76,7 @@ public class NumberedHashToks extends NamedHashToks {
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     protected String getKey(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         return getName()
                 + "#"

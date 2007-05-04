@@ -20,9 +20,6 @@
 package org.extex.core.glue;
 
 import org.extex.core.dimen.FixedDimen;
-import org.extex.core.exception.GeneralException;
-import org.extex.scanner.type.token.TokenFactory;
-import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This interface describes the features of a
@@ -97,7 +94,7 @@ public interface FixedGlue {
     FixedGlueComponent getStretch();
 
     /**
-     * Test that the given Glue is differnt from a given one.
+     * Test that the given Glue is different from a given one.
      *
      * @param glue the glue to compare with
      *
@@ -113,17 +110,19 @@ public interface FixedGlue {
      */
     String toString();
 
-    /**
-     * Determine the printable representation of the object and return it as a
-     * list of Tokens.
-     *
-     * @param factory the token factory ton get new tokens from
-     *
-     * @return the string representation of this glue
-     *
-     * @throws GeneralException in case of an error
-     *
-     * @see "<logo>TeX</logo> &ndash; The Program [178,177]"
-     */
-    Tokens toToks(TokenFactory factory) throws GeneralException;
+    //TODO gene: remove?
+//    /**
+//     * Determine the printable representation of the object and return it as a
+//     * list of Tokens.
+//     *
+//     * @param factory the token factory ton get new tokens from
+//     *
+//     * @return the string representation of this glue
+//     *
+//     * @throws GeneralException in case of an error
+//     *
+//     * @see "<logo>TeX</logo> &ndash; The Program [178,177]"
+//     */
+//    Tokens toToks(TokenFactory factory) throws GeneralException;
+
 }

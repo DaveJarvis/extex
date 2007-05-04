@@ -22,10 +22,11 @@ package org.extex.unit.tex.interaction;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
@@ -88,9 +89,6 @@ public class Errorstopmode extends AbstractAssignment {
      * @param context the interpreter context
      * @param source the token source
      * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -99,7 +97,7 @@ public class Errorstopmode extends AbstractAssignment {
      */
     public void assign(Flags prefix, Context context,
             TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException {
 
         context.setInteraction(Interaction.ERRORSTOPMODE);
     }

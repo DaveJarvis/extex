@@ -22,7 +22,6 @@ package org.extex.main.tex;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -61,6 +60,7 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.interaction.InteractionUnknownException;
 import org.extex.interpreter.observer.pop.PopObservable;
@@ -873,14 +873,14 @@ public class TeX extends ExTeX {
      *        this value is <code>null</code> no user properties will be
      *        considered.
      * 
-     * @throws InterpreterException in case of an invalid interaction mode
+     * @throws HelpingException in case of an invalid interaction mode
      * @throws IOException in case of an IO Error during the reading of the
      *         properties file
      * 
      * @see org.extex.ExTeX#ExTeX(java.util.Properties, java.lang.String)
      */
     public TeX(Properties theProperties, String dotFile)
-            throws InterpreterException,
+            throws HelpingException,
                 IOException {
 
         super(theProperties, dotFile);

@@ -22,10 +22,10 @@ package org.extex.interpreter.exception.helping;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This exception is raised when an arithmetic overflow has been encoutered.
+ * This exception is raised when a number should be read but none is found.
  * <p>
  *  The localization format is taken from the Localizer under the key
- *  <tt>TTP.ArithmeticOverflow</tt>.
+ *  <tt>TTP.MissingNumber</tt>.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

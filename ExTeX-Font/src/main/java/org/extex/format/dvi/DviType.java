@@ -31,6 +31,7 @@ import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
+import org.extex.font.ExtexFont;
 import org.extex.font.FontFactory;
 import org.extex.font.exception.FontException;
 import org.extex.format.dvi.command.DviBOP;
@@ -58,7 +59,6 @@ import org.extex.format.dvi.exception.DviException;
 import org.extex.format.dvi.exception.DviFontNotFoundException;
 import org.extex.format.dvi.exception.DviGlyphNotFoundException;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.interpreter.type.font.Font;
 import org.extex.util.file.random.RandomAccessR;
 
 /**
@@ -83,7 +83,7 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
     /**
      * the map for all sub fonts.
      */
-    private Map<Integer, Font> fontmap;
+    private Map<Integer, ExtexFont> fontmap;
 
     /**
      * the dvi stack
@@ -125,7 +125,7 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
 
         w = wout;
         fontfactory = ff;
-        fontmap = new HashMap<Integer, Font>();
+        fontmap = new HashMap<Integer, ExtexFont>();
         val = new DviValues();
         stack = new DviStack();
     }
@@ -151,7 +151,7 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
             //            BaseFont f = fontfactory.getInstance(name, design size, scale, new Glue(
             //                    0), true, true);
             // mgn: umbauen
-            Font f = null;//fontfactory.getInstance(new FontKey(name, designsize, 
+            ExtexFont f = null;//fontfactory.getInstance(new FontKey(name, designsize, 
             //scale, new Glue(0), true, true));
             if (f == null) {
                 throw new DviFontNotFoundException(name);
@@ -463,7 +463,7 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
             FontException, ConfigurationException {
 
         Integer key = new Integer(val.getF());
-        Font f = fontmap.get(key);
+        ExtexFont f = fontmap.get(key);
         if (f == null) {
             throw new DviFontNotFoundException(command.getName());
         }
@@ -570,7 +570,7 @@ public class DviType implements DviInterpreter, DviExecuteCommand {
         w.print(" current font is ");
         val.setF(command.getFont());
         Integer key = new Integer(val.getF());
-        Font f = fontmap.get(key);
+        ExtexFont f = fontmap.get(key);
         if (f == null) {
             throw new DviFontNotFoundException(command.getName());
         }

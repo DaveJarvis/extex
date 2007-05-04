@@ -35,10 +35,10 @@ import java.util.zip.GZIPOutputStream;
 
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.outputStream.NamedOutputStream;
+import org.extex.backend.outputStream.OutputStreamConsumer;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.framework.Registrar;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.interpreter.type.OutputStreamConsumer;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.resource.ResourceConsumer;
@@ -306,7 +306,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * 
      * @param factory the output stream factory to use
      * 
-     * @see org.extex.interpreter.type.OutputStreamConsumer#setOutputStreamFactory(
+     * @see org.extex.backend.outputStream.OutputStreamConsumer#setOutputStreamFactory(
      *      org.extex.backend.outputStream.OutputStreamFactory)
      */
     public void setOutputStreamFactory(OutputStreamFactory factory) {

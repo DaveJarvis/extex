@@ -19,14 +19,15 @@
 
 package de.dante.extex.interpreter.primitives.register.real;
 
-import org.extex.core.count.CountParser;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractAssignment;
+import org.extex.scanner.CountParser;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 
 /**
@@ -67,7 +68,7 @@ public class RealDef extends AbstractAssignment {
      */
     public void assign(Flags prefix, Context context,
             TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException {
 
         //  \realdef\hugo=7
         CodeToken tok = source.getControlSequence(context, typesetter);

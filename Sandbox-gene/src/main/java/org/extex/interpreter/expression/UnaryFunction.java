@@ -19,7 +19,7 @@
 
 package org.extex.interpreter.expression;
 
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 
 /**
  * This interface describes an operation object with a single argument.
@@ -36,9 +36,8 @@ public interface UnaryFunction {
      * @param accumulator the accumulator to receive the result
      *
      * @return the operation result
-     *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException TODO
      */
-    EType apply(EType accumulator) throws InterpreterException;
+    EType apply(EType accumulator) throws HelpingException;
 
 }

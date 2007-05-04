@@ -22,56 +22,60 @@ package org.extex.unit.tex.macro;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
  * <code>\endcsname</code>.
- *
+ * 
  * <doc name="endcsname">
  * <h3>The Primitive <tt>\endcsname</tt></h3>
  * <p>
- *  The macro <tt>\endcsname</tt> is used in combination with the macro
- *  {@link org.extex.unit.tex.macro.Csname <tt>\csname</tt>}
- *  only. Whenever a <tt>\endcsname</tt> is seen alone it must be an error.
- *  Thus thus primitive produces an error message in any case.
+ * The macro <tt>\endcsname</tt> is used in combination with the macro
+ * {@link org.extex.unit.tex.macro.Csname <tt>\csname</tt>} only. Whenever a
+ * <tt>\endcsname</tt> is seen alone it must be an error. Thus thus primitive
+ * produces an error message in any case.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;endcsname&rang;
  *      &rarr; <tt>\endscsname</tt>  </pre>
- *
+ * 
  * <h4>Examples</h4>
  * <p>
- *  The following example shows a complicated way to invoke the macro
- *  <tt>abc</tt>. Here the primitive <tt>\endcsname</tt> is legal. It is
- *  consumed by the primitive <tt>\csname</tt> and not expanded on its own.
+ * The following example shows a complicated way to invoke the macro
+ * <tt>abc</tt>. Here the primitive <tt>\endcsname</tt> is legal. It is
+ * consumed by the primitive <tt>\csname</tt> and not expanded on its own.
  * </p>
+ * 
  * <pre class="TeXSample">
  *   \csname abc\endcsname  </pre>
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @see "TTP [1134]"
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
 public class Endcsname extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Endcsname(String name) {
@@ -80,29 +84,17 @@ public class Endcsname extends AbstractCode {
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         throw new HelpingException(getLocalizer(), "TTP.ExtraEndcsname",
-                printableControlSequence(context));
+            printableControlSequence(context));
     }
 
 }

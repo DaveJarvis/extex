@@ -25,24 +25,28 @@ import java.util.StringTokenizer;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.InterpreterNumberFormatException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 import de.dante.extex.interpreter.type.real.Real;
 
 /**
  * Pair (tow real-values).
- *
- * <p>[x-real] [y-real]</p>
- *
- * @author <a href="mailto:m.g.sn@gmx.de">Michael Niedermair</a>
+ * 
+ * <p>
+ * [x-real] [y-real]
+ * </p>
+ * 
+ * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public class Pair implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 1L;
 
@@ -68,9 +72,9 @@ public class Pair implements Serializable {
 
     /**
      * Creates a new object.
-     *
-     * @param x    the x-value
-     * @param y    the y-value
+     * 
+     * @param x the x-value
+     * @param y the y-value
      */
     public Pair(Real x, Real y) {
 
@@ -81,9 +85,9 @@ public class Pair implements Serializable {
 
     /**
      * Creates a new object.
-     *
-     * @param x    the x-value
-     * @param y    the y-value
+     * 
+     * @param x the x-value
+     * @param y the y-value
      */
     public Pair(double x, double y) {
 
@@ -93,17 +97,21 @@ public class Pair implements Serializable {
     }
 
     /**
-     * Creates a new object.
-     * Scan the <code>TokenSource</code> for a <code>Pair</code>.
-     *
-     * @param context   the context
-     * @param source    the token source
-     * @param typesetter TODO
-     * @throws InterpreterException ...
+     * Creates a new object. Scan the <code>TokenSource</code> for a
+     * <code>Pair</code>.
+     * 
+     * @param context the context
+     * @param source the token source
+     * @param typesetter the typesetter
+     * 
+     * @throws HelpingException in case of an error
      * @throws ConfigurationException in case of an configuration error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     public Pair(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException, ConfigurationException {
+            throws HelpingException,
+                ConfigurationException,
+                TypesetterException {
 
         super();
         xval = new Real(context, source, typesetter);
@@ -111,12 +119,15 @@ public class Pair implements Serializable {
     }
 
     /**
-     * Creates a new object.<p>
-     * If the string equlas <code>null</code> or empty, the value is set to zero
-     * @param s     the value as String
-     * @throws InterpreterException if a NumberFormatException is throws
+     * Creates a new object.
+     * <p>
+     * If the string equals <code>null</code> or empty, the value is set to
+     * zero
+     * 
+     * @param s the value as String
+     * @throws HelpingException if a NumberFormatException is throws
      */
-    public Pair(String s) throws InterpreterException {
+    public Pair(String s) throws HelpingException {
 
         if (s == null || s.trim().length() == 0) {
             xval = new Real(0);
@@ -143,6 +154,7 @@ public class Pair implements Serializable {
 
     /**
      * Setter for the x-value.
+     * 
      * @param x the new x-value
      */
     public void setX(Real x) {
@@ -152,6 +164,7 @@ public class Pair implements Serializable {
 
     /**
      * Setter for the y-value.
+     * 
      * @param y the new y-value
      */
     public void setY(Real y) {
@@ -161,6 +174,7 @@ public class Pair implements Serializable {
 
     /**
      * Setter for the x-value.
+     * 
      * @param x the new x-value
      */
     public void setX(double x) {
@@ -170,6 +184,7 @@ public class Pair implements Serializable {
 
     /**
      * Setter for the y-value.
+     * 
      * @param y the new y-value
      */
     public void setY(double y) {
@@ -179,6 +194,7 @@ public class Pair implements Serializable {
 
     /**
      * Getter for the x-value
+     * 
      * @return the x-value
      */
     public Real getX() {
@@ -188,6 +204,7 @@ public class Pair implements Serializable {
 
     /**
      * Getter for the y-value
+     * 
      * @return the y-value
      */
     public Real getY() {
@@ -197,6 +214,7 @@ public class Pair implements Serializable {
 
     /**
      * add
+     * 
      * @param val the value to add
      */
     public void add(Pair val) {
@@ -207,6 +225,7 @@ public class Pair implements Serializable {
 
     /**
      * add
+     * 
      * @param x the x-value to add
      * @param y the x-value to add
      */
@@ -218,6 +237,7 @@ public class Pair implements Serializable {
 
     /**
      * add
+     * 
      * @param x the x-value to add
      * @param y the x-value to add
      */
@@ -229,6 +249,7 @@ public class Pair implements Serializable {
 
     /**
      * Return the value as <code>String</code>
+     * 
      * @return the value as <code>String</code>
      */
     public String toString() {

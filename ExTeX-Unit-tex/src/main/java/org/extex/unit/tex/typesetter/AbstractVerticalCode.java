@@ -19,12 +19,13 @@
 
 package org.extex.unit.tex.typesetter;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.i18n.LocalizerFactory;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This an abstract base class for primitives in vertical mode.
@@ -55,11 +56,12 @@ public abstract class AbstractVerticalCode extends AbstractCode {
      *
      * @param typesetter the typesetter to ask for the mode
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      * @throws ConfigurationException in case of an configuration error
      */
     protected void ensureVerticalMode(Typesetter typesetter)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException, ConfigurationException {
 
         Mode mode = typesetter.getMode();
         if (typesetter.getMode() == Mode.HORIZONTAL) { // see TTP[1094]

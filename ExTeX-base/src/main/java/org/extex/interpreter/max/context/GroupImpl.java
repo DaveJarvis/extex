@@ -34,21 +34,22 @@ import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.context.observer.group.AfterGroupObserver;
 import org.extex.interpreter.context.observer.group.AfterGroupObserverList;
 import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.box.Box;
-import org.extex.interpreter.type.file.InFile;
-import org.extex.interpreter.type.file.OutFile;
+import org.extex.interpreter.type.file.InputFile;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.math.MathClass;
-import org.extex.interpreter.type.math.MathCode;
-import org.extex.interpreter.type.math.MathDelimiter;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.Namespace;
+import org.extex.scanner.type.file.InFile;
+import org.extex.scanner.type.file.OutFile;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
+import org.extex.typesetter.type.math.MathClass;
+import org.extex.typesetter.type.math.MathCode;
+import org.extex.typesetter.type.math.MathDelimiter;
 import org.extex.typesetter.type.noad.MathGlyph;
 
 /**
@@ -611,7 +612,7 @@ public class GroupImpl implements Group {
     public InFile getInFile(String name) {
 
         if (name == null) {
-            return new InFile(standardTokenStream, true);
+            return new InputFile(standardTokenStream, true);
         }
 
         if (inFileMap != null) {
@@ -1002,13 +1003,11 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * Invoke all registered observers for the end-of-group event.
-     * 
-     * @throws InterpreterException in case of an error
-     * 
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.max.context.Group#runAfterGroup()
      */
-    public void runAfterGroup() throws InterpreterException {
+    public void runAfterGroup() throws HelpingException {
 
         if (afterGroupObservers != null) {
             afterGroupObservers.update();
@@ -1242,7 +1241,7 @@ public class GroupImpl implements Group {
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.max.context.Group#setInFile( java.lang.String,
-     *      org.extex.interpreter.type.file.InFile, boolean)
+     *      org.extex.scanner.type.file.InFile, boolean)
      */
     public void setInFile(String name, InFile file, boolean global) {
 
@@ -1367,7 +1366,7 @@ public class GroupImpl implements Group {
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.max.context.Group#setOutFile(
-     *      java.lang.String, org.extex.interpreter.type.file.OutFile, boolean)
+     *      java.lang.String, org.extex.scanner.type.file.OutFile, boolean)
      */
     public void setOutFile(String name, OutFile file, boolean global) {
 

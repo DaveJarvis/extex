@@ -22,8 +22,10 @@ package org.extex.unit.tex;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive <code>\relax</code>.
@@ -93,7 +95,7 @@ public class Relax extends AbstractCode {
      *      org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter) {
+            TokenSource source, Typesetter typesetter) throws HelpingException, TypesetterException {
 
         // relax
     }

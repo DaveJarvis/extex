@@ -22,9 +22,9 @@ package org.extex.unit.tex.arithmetic;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.CantUseAfterException;
 import org.extex.interpreter.exception.helping.EofException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.exception.helping.UndefinedControlSequenceException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Code;
@@ -32,6 +32,7 @@ import org.extex.interpreter.type.arithmetic.Advanceable;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
@@ -60,7 +61,7 @@ import org.extex.typesetter.Typesetter;
  *
  *   &lang;advancable&rang;
  *     &rarr; &lang;integer variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
- *      org.extex.core.count.CountParser#scanInteger(Context,TokenSource,Typesetter)
+ *      org.extex.scanner.CountParser#scanInteger(Context,TokenSource,Typesetter)
  *      &lang;number&rang;}
  *      |  &lang;dimen variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
  *        org.extex.core.dimen#Dimen(Context,TokenSource)
@@ -115,9 +116,6 @@ public class Advance extends AbstractAssignment {
      * @param context the interpreter context
      * @param source the token source
      * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
      *      org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -126,7 +124,7 @@ public class Advance extends AbstractAssignment {
      */
     public void assign(Flags prefix, Context context,
             TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+            throws HelpingException, TypesetterException {
 
         Token cs = source.getToken(context);
 

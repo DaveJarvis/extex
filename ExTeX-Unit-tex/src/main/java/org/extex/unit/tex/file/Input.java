@@ -19,58 +19,61 @@
 
 package org.extex.unit.tex.file;
 
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.file.AbstractFileCode;
 
 /**
  * This class provides an implementation for the primitive <tt>\input</tt>.
- * It uses the standard encoding (see token register <tt>\fileencoding</tt> and
- * <code>extex.encoding</code>.
- *
+ * It uses the standard encoding (see token register <tt>\fileencoding</tt>
+ * and <code>extex.encoding</code>.
+ * 
  * <doc name="input">
  * <h3>The Primitive <tt>\input</tt></h3>
  * <p>
- *  The primitive <tt>\input</tt> takes as argument one file name and opens this
- *  file for reading. The following tokens are taken from this input stream.
- *  Thus the effect is as if the file contents where copied at the place of the
- *  primitive.
+ * The primitive <tt>\input</tt> takes as argument one file name and opens
+ * this file for reading. The following tokens are taken from this input stream.
+ * Thus the effect is as if the file contents where copied at the place of the
+ * primitive.
  * </p>
  * <p>
- *  If the file can not be opened for reading then an error is raised.
+ * If the file can not be opened for reading then an error is raised.
  * </p>
  * <p>
- *  The primitive also makes provisions that the information in
- *  <tt>\inputfilename</tt> and <tt>\inputlineno</tt> are set properly.
+ * The primitive also makes provisions that the information in
+ * <tt>\inputfilename</tt> and <tt>\inputlineno</tt> are set properly.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;input&rang;
  *       &rarr; <tt>\input</tt> &lang;file name&rang; </pre>
- *
+ * 
  * <h4>Examples</h4>
  * <p>
- *  The traditional version of the file name parsing allows the following
- *  syntax:
- *  <pre class="TeXSample">
+ * The traditional version of the file name parsing allows the following syntax:
+ * 
+ * <pre class="TeXSample">
  *    \input file.name  </pre>
- *  If the parsing is not configured to be strict then the following syntax
- *  is allowed as well:
- *  <pre class="TeXSample">
+ * 
+ * If the parsing is not configured to be strict then the following syntax is
+ * allowed as well:
+ * 
+ * <pre class="TeXSample">
  *    \input{file.name}  </pre>
+ * 
  * </p>
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4441 $
@@ -84,13 +87,14 @@ public class Input extends AbstractFileCode {
     private static final String FILE_TYPE = "tex";
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 13022007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Input(String name) {
@@ -99,27 +103,14 @@ public class Input extends AbstractFileCode {
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     * @throws ConfigurationException in case of an configuration error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         String name = scanFileName(context, source);
         String encoding = getEncoding(context);

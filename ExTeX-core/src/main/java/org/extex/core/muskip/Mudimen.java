@@ -22,20 +22,6 @@ package org.extex.core.muskip;
 import java.io.Serializable;
 
 import org.extex.core.glue.GlueComponent;
-import org.extex.core.scaled.ScaledNumber;
-import org.extex.framework.i18n.LocalizerFactory;
-import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.exception.helping.EofException;
-import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.type.Code;
-import org.extex.scanner.type.CatcodeException;
-import org.extex.scanner.type.token.CodeToken;
-import org.extex.scanner.type.token.Token;
-import org.extex.scanner.type.token.TokenFactory;
-import org.extex.scanner.type.tokens.Tokens;
-import org.extex.typesetter.Typesetter;
 
 /**
  * This class provides a dimen value with a length which is a multiple of
@@ -52,39 +38,6 @@ public class Mudimen implements Serializable {
     protected static final long serialVersionUID = 20060605L;
 
     /**
-     * Scan a math unit.
-     *
-     * @param context the processor context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @return the number of scaled points for the mu
-     *
-     * @throws InterpreterException in case of an error
-     */
-    protected static long scanMu(Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
-
-        Token t = source.getToken(context);
-        if (t == null) {
-            throw new EofException("mu");
-        } else if (t instanceof CodeToken) {
-            Code code = context.getCode((CodeToken) t);
-            if (code instanceof MudimenConvertible) {
-                return ((MudimenConvertible) code).convertMudimen(context,
-                    source, null);
-            }
-        }
-        long value = ScaledNumber.scanFloat(context, source, typesetter, t);
-        if (!source.getKeyword(context, "mu")) {
-            throw new HelpingException(//
-                LocalizerFactory.getLocalizer(Mudimen.class), "TTP.IllegalMu");
-        }
-        return value;
-    }
-
-    /**
      * The field <tt>length</tt> contains the the natural length.
      */
     private GlueComponent length = new GlueComponent(0);
@@ -96,37 +49,6 @@ public class Mudimen implements Serializable {
     public Mudimen() {
 
         super();
-    }
-
-    /**
-     * Creates a new object and fills it from a token stream.
-     *
-     * <doc type="syntax" name="mudimen">
-     * This method parses the following syntactic entity:
-     *
-     *  <pre class="syntax">
-     *    &lang;mudimen&rang;
-     *      &rarr; &lang;float&rang; <tt>mu</tt>
-     *       |  &lang;mudimen variable&rang;
-     * </pre>
-     *  The value of &lang;mudimen&rang; is either a floating point number
-     *  followed by the unit <tt>mu</tt> or a variable value resulting in a
-     *  mudimen value.
-     * </doc>
-     *
-     * @param context the processor context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @return the new object
-     *
-     * @throws InterpreterException in case of an error
-     */
-    public static Mudimen parseMudimen(Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
-
-        return new Mudimen(scanMu(context, source, typesetter));
     }
 
     /**
@@ -207,25 +129,26 @@ public class Mudimen implements Serializable {
         length.toString(sb, 'm', 'u');
     }
 
-    /**
-     * Determine the printable representation of the object and return it as a
-     * list of Tokens.
-     * The value returned is exactly the string which would be produced by
-     * <logo>TeX</logo> to print the Mudimen. This means the result is expressed
-     * in mu and properly rounded to be read back in again without loss of
-     * information.
-     *
-     * @param toks the tokens to append to
-     * @param factory the token factory to get the required tokens from
-     * @param c1 the first character of the unit
-     * @param c2 the second character of the unit
-     *
-     * @throws CatcodeException in case of an error
-     */
-    public void toToks(Tokens toks, TokenFactory factory,
-            char c1, char c2) throws CatcodeException {
-
-        length.toToks(toks, factory, c1, c2);
-    }
+    //TODO gene: remove?
+//    /**
+//     * Determine the printable representation of the object and return it as a
+//     * list of Tokens.
+//     * The value returned is exactly the string which would be produced by
+//     * <logo>TeX</logo> to print the Mudimen. This means the result is expressed
+//     * in mu and properly rounded to be read back in again without loss of
+//     * information.
+//     *
+//     * @param toks the tokens to append to
+//     * @param factory the token factory to get the required tokens from
+//     * @param c1 the first character of the unit
+//     * @param c2 the second character of the unit
+//     *
+//     * @throws CatcodeException in case of an error
+//     */
+//    public void toToks(Tokens toks, TokenFactory factory,
+//            char c1, char c2) throws CatcodeException {
+//
+//        length.toToks(toks, factory, c1, c2);
+//    }
 
 }

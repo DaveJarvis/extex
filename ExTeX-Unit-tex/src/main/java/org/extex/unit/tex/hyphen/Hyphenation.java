@@ -23,7 +23,7 @@ import org.extex.core.UnicodeChar;
 import org.extex.core.UnicodeCharList;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeException;
@@ -109,13 +109,12 @@ public class Hyphenation extends HyphenationPrimitive {
      *
      * @return the first character not included into the word
      *
-     * @throws InterpreterException in case of an error
      * @throws CatcodeException in case of an exception in token creation
+     * @throws HelpingException in case of an error
      */
     protected UnicodeCharList collectWord(Context context,
             TokenSource source, Token token)
-            throws InterpreterException,
-                CatcodeException {
+            throws CatcodeException, HelpingException {
 
         UnicodeCharList word = new UnicodeCharList();
         UnicodeChar uc, lc;

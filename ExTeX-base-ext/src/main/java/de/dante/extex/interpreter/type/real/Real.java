@@ -21,21 +21,21 @@ package de.dante.extex.interpreter.type.real;
 
 import java.io.Serializable;
 
-import org.extex.core.count.CountConvertible;
-import org.extex.core.count.CountParser;
-import org.extex.core.dimen.DimenConvertible;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterArithmeticException;
-import org.extex.interpreter.exception.InterpreterException;
-import org.extex.interpreter.exception.InterpreterMissingNumberException;
-import org.extex.interpreter.exception.InterpreterNumberFormatException;
+import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.interpreter.exception.helping.MissingNumberException;
 import org.extex.interpreter.type.Code;
+import org.extex.scanner.CountConvertible;
+import org.extex.scanner.CountParser;
+import org.extex.scanner.DimenConvertible;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * Real (with a double value)
@@ -68,7 +68,7 @@ public class Real implements Serializable {
     /**
      * Creates a new object.
      * 
-     * @param val init with double-value
+     * @param val initialize with double value
      */
     public Real(double val) {
 
@@ -81,15 +81,17 @@ public class Real implements Serializable {
      * 
      * Scan the <code>TokenSource</code> for a <code>Real</code>.
      * 
-     * @param context ...
+     * @param context the interpreter context
      * @param source the token source
-     * @param typesetter TODO
-     * @throws InterpreterException ...
+     * @param typesetter the typesetter
+     * 
+     * @throws HelpingException in case of an error
      * @throws ConfigurationException in case of an configuration error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     public Real(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+            throws HelpingException,
+                ConfigurationException, TypesetterException {
 
         super();
         value = scanReal(context, source, typesetter);
@@ -98,18 +100,20 @@ public class Real implements Serializable {
     /**
      * Scan the input stream for tokens making up a <code>Real</code>.
      * 
-     * @param context ...
-     * @param source ...
-     * @param typesetter TODO
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     *
      * @return the <code>Real</code>-value
      * 
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      * @throws ConfigurationException in case of an configuration error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     private double scanReal(Context context, TokenSource source,
             Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+            throws HelpingException,
+                ConfigurationException, TypesetterException {
 
         long val = 0;
         boolean neg = false;
@@ -117,7 +121,7 @@ public class Real implements Serializable {
         // get number
         Token t = source.scanNonSpace(context);
         if (t == null) {
-            throw new InterpreterMissingNumberException();
+            throw new MissingNumberException();
         } else if (t.equals(Catcode.OTHER, "-")) {
             neg = true;
             t = source.scanNonSpace(context);
@@ -126,8 +130,8 @@ public class Real implements Serializable {
         } else if (t instanceof ControlSequenceToken) {
             Code code = context.getCode((ControlSequenceToken) t);
             if (code instanceof RealConvertible) {
-                return (((RealConvertible) code).convertReal(context, source, typesetter))
-                    .getValue();
+                return (((RealConvertible) code).convertReal(context, source,
+                    typesetter)).getValue();
             } else if (code instanceof CountConvertible) {
                 return (new Real(((CountConvertible) code).convertCount(
                     context, source, null))).getValue();
@@ -208,13 +212,14 @@ public class Real implements Serializable {
     /**
      * Creates a new object.
      * <p>
-     * If the string equlas <code>null</code> or empty, the value is set to
+     * If the string equals <code>null</code> or empty, the value is set to
      * zero
      * 
      * @param s the value as String
-     * @throws InterpreterException if a NumberFormatException is throws
+     * 
+     * @throws HelpingException if a NumberFormatException is throws
      */
-    public Real(String s) throws InterpreterException {
+    public Real(String s) throws HelpingException {
 
         if (s == null || s.trim().length() == 0) {
             value = 0.0d;
@@ -223,7 +228,7 @@ public class Real implements Serializable {
             try {
                 value = Double.valueOf(s).doubleValue();
             } catch (NumberFormatException e) {
-                throw new InterpreterNumberFormatException(s);
+                throw new MissingNumberException();
             }
         }
     }
@@ -273,12 +278,12 @@ public class Real implements Serializable {
      * 
      * @param val the value to divide
      * 
-     * @throws InterpreterException in case of a division by zero
+     * @throws HelpingException in case of a division by zero
      */
-    public void divide(double val) throws InterpreterException {
+    public void divide(double val) throws HelpingException {
 
         if (val == 0.0d) {
-            throw new InterpreterArithmeticException();
+            throw new ArithmeticOverflowException("");
         }
 
         value /= val;
@@ -289,9 +294,9 @@ public class Real implements Serializable {
      * 
      * @param val the value to divide
      * 
-     * @throws InterpreterException in case of a division by zero
+     * @throws HelpingException in case of a division by zero
      */
-    public void divide(Real val) throws InterpreterException {
+    public void divide(Real val) throws HelpingException {
 
         divide(val.getValue());
     }

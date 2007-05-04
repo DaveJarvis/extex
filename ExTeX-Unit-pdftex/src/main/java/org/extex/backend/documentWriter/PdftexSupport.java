@@ -19,7 +19,7 @@
 
 package org.extex.backend.documentWriter;
 
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.font.Font;
 import org.extex.typesetter.type.node.RuleNode;
@@ -47,10 +47,10 @@ public interface PdftexSupport {
      *
      * @return a PdfAnnotation node
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      */
     PdfAnnotation getAnnotation(RuleNode node, String annotation)
-            throws InterpreterException;
+            throws HelpingException;
 
     /**
      * Factory method to construct a PdfObject node.
@@ -62,10 +62,10 @@ public interface PdftexSupport {
      *
      * @return a PdfObject node
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      */
     PdfObject getObject(String attr, boolean isStream, String text)
-            throws InterpreterException;
+            throws HelpingException;
 
     /**
      * Factory method to construct a PdfXForm node.
@@ -76,10 +76,10 @@ public interface PdftexSupport {
      *
      * @return a PdfXForm node
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      */
     PdfXForm getXForm(String attr, String resources, Box box)
-            throws InterpreterException;
+            throws HelpingException;
 
     /**
      * Factory method to construct a PdfXImage node.
@@ -93,11 +93,11 @@ public interface PdftexSupport {
      *  PDF output without waiting for a reference
      *
      * @return a PdfXImage node
-     *
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
      */
     PdfRefXImage getXImage(String resource, RuleNode rule, String attr,
-            long page, boolean immediate) throws InterpreterException;
+            long page, boolean immediate) throws HelpingException;
 
     /**
      * Add some material to the PDF catalog.

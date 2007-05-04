@@ -30,7 +30,11 @@ import org.extex.backend.outputStream.OutputStreamObserver;
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
+import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.exception.GeneralException;
+import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
 import org.extex.core.muskip.Muskip;
 import org.extex.font.CoreFontFactory;
@@ -45,16 +49,14 @@ import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.context.observer.group.AfterGroupObserver;
 import org.extex.interpreter.context.tc.Direction;
 import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.interpreter.context.tc.TypesettingContextFactory;
 import org.extex.interpreter.exception.InterpreterPanicException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.loader.SerialLoader;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.box.Box;
-import org.extex.interpreter.type.file.InFile;
-import org.extex.interpreter.type.file.OutFile;
 import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.math.MathCode;
-import org.extex.interpreter.type.math.MathDelimiter;
 import org.extex.interpreter.unit.UnitInfo;
 import org.extex.language.Language;
 import org.extex.language.LanguageManager;
@@ -62,6 +64,8 @@ import org.extex.scanner.TokenStream;
 import org.extex.scanner.Tokenizer;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.Namespace;
+import org.extex.scanner.type.file.InFile;
+import org.extex.scanner.type.file.OutFile;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
@@ -70,6 +74,8 @@ import org.extex.scanner.type.tokens.Tokens;
 import org.extex.test.NoFlagsPrimitiveTester;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
+import org.extex.typesetter.type.math.MathCode;
+import org.extex.typesetter.type.math.MathDelimiter;
 
 /**
  * This is a test suite for the primitive <tt>\dump</tt>.
@@ -400,7 +406,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 /**
                  * @see org.extex.interpreter.context.Context#popConditional()
                  */
-                public Conditional popConditional() {
+                public Conditional popConditional() throws HelpingException {
 
                     return null;
                 }
@@ -508,7 +514,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#setDelcode(org.extex.core.UnicodeChar, org.extex.interpreter.type.math.MathDelimiter, boolean)
+                 * @see org.extex.interpreter.context.Context#setDelcode(org.extex.core.UnicodeChar, org.extex.typesetter.type.math.MathDelimiter, boolean)
                  */
                 public void setDelcode(UnicodeChar c,
                         MathDelimiter delimiter, boolean global) {
@@ -571,7 +577,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 /**
                  * {@inheritDoc}
                  *
-                 * @see org.extex.interpreter.context.Context#setMathcode(org.extex.core.UnicodeChar, org.extex.interpreter.type.math.MathCode, boolean)
+                 * @see org.extex.interpreter.context.Context#setMathcode(org.extex.core.UnicodeChar, org.extex.typesetter.type.math.MathCode, boolean)
                  */
                 public void setMathcode(UnicodeChar uc,
                         MathCode code, boolean global) {
@@ -697,7 +703,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  * @see org.extex.interpreter.context.ContextCount#setCount(java.lang.String, long, boolean)
                  */
                 public void setCount(String name, long value,
-                        boolean global) {
+                        boolean global) throws HelpingException {
 
                     //not needed
                 }
@@ -745,7 +751,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextFile#setInFile(java.lang.String, org.extex.interpreter.type.file.InFile, boolean)
+                 * @see org.extex.interpreter.context.ContextFile#setInFile(java.lang.String, org.extex.scanner.type.file.InFile, boolean)
                  */
                 public void setInFile(String name, InFile file,
                         boolean global) {
@@ -754,7 +760,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextFile#setOutFile(java.lang.String, org.extex.interpreter.type.file.OutFile, boolean)
+                 * @see org.extex.interpreter.context.ContextFile#setOutFile(java.lang.String, org.extex.scanner.type.file.OutFile, boolean)
                  */
                 public void setOutFile(String name, OutFile file,
                         boolean global) {
@@ -856,7 +862,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  * @see org.extex.interpreter.context.ContextGroup#openGroup(org.extex.interpreter.context.group.GroupType, org.extex.core.Locator, org.extex.scanner.type.token.Token)
                  */
                 public void openGroup(GroupType id,
-                        Locator locator, Token start) {
+                        Locator locator, Token start) throws HelpingException {
 
                     //not needed
                 }
@@ -996,6 +1002,42 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 public Catcode getCatcode(UnicodeChar c) {
 
                     return null;
+                }
+
+                public FixedCount getCountOption(String name) {
+
+                    // TODO gene: getCountOption unimplemented
+                    return null;
+                }
+
+                public FixedDimen getDimenOption(String name) {
+
+                    // TODO gene: getDimenOption unimplemented
+                    return null;
+                }
+
+                public FixedGlue getGlueOption(String name) {
+
+                    // TODO gene: getGlueOption unimplemented
+                    return null;
+                }
+
+                public TypesettingContextFactory getTypesettingContextFactory() {
+
+                    // TODO gene: getTypesettingContextFactory unimplemented
+                    return null;
+                }
+
+                public void setCountOption(String name, long value) throws GeneralException {
+
+                    // TODO gene: setCountOption unimplemented
+                    
+                }
+
+                public void setMark(String index, Tokens mark) {
+
+                    // TODO gene: setMark unimplemented
+                    
                 }
             }, null, null);
             assertFalse(true);
@@ -1261,7 +1303,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 /**
                  * @see org.extex.interpreter.context.Context#popConditional()
                  */
-                public Conditional popConditional() {
+                public Conditional popConditional() throws HelpingException {
 
                     return null;
                 }
@@ -1369,7 +1411,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#setDelcode(org.extex.core.UnicodeChar, org.extex.interpreter.type.math.MathDelimiter, boolean)
+                 * @see org.extex.interpreter.context.Context#setDelcode(org.extex.core.UnicodeChar, org.extex.typesetter.type.math.MathDelimiter, boolean)
                  */
                 public void setDelcode(UnicodeChar c,
                         MathDelimiter delimiter, boolean global) {
@@ -1420,7 +1462,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#setMathcode(org.extex.core.UnicodeChar, org.extex.interpreter.type.math.MathCode, boolean)
+                 * @see org.extex.interpreter.context.Context#setMathcode(org.extex.core.UnicodeChar, org.extex.typesetter.type.math.MathCode, boolean)
                  */
                 public void setMathcode(UnicodeChar uc,
                         MathCode code, boolean global) {
@@ -1526,7 +1568,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  * @see org.extex.interpreter.context.ContextCount#setCount(java.lang.String, long, boolean)
                  */
                 public void setCount(String name, long value,
-                        boolean global) {
+                        boolean global) throws HelpingException {
 
                     //not needed
                 }
@@ -1574,7 +1616,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextFile#setInFile(java.lang.String, org.extex.interpreter.type.file.InFile, boolean)
+                 * @see org.extex.interpreter.context.ContextFile#setInFile(java.lang.String, org.extex.scanner.type.file.InFile, boolean)
                  */
                 public void setInFile(String name, InFile file,
                         boolean global) {
@@ -1583,7 +1625,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextFile#setOutFile(java.lang.String, org.extex.interpreter.type.file.OutFile, boolean)
+                 * @see org.extex.interpreter.context.ContextFile#setOutFile(java.lang.String, org.extex.scanner.type.file.OutFile, boolean)
                  */
                 public void setOutFile(String name, OutFile file,
                         boolean global) {
@@ -1685,7 +1727,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  * @see org.extex.interpreter.context.ContextGroup#openGroup(org.extex.interpreter.context.group.GroupType, org.extex.core.Locator, org.extex.scanner.type.token.Token)
                  */
                 public void openGroup(GroupType id,
-                        Locator locator, Token start) {
+                        Locator locator, Token start) throws HelpingException {
 
                     //not needed
                 }
@@ -1825,6 +1867,42 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 public Catcode getCatcode(UnicodeChar c) {
 
                     return null;
+                }
+
+                public FixedCount getCountOption(String name) {
+
+                    // TODO gene: getCountOption unimplemented
+                    return null;
+                }
+
+                public FixedDimen getDimenOption(String name) {
+
+                    // TODO gene: getDimenOption unimplemented
+                    return null;
+                }
+
+                public FixedGlue getGlueOption(String name) {
+
+                    // TODO gene: getGlueOption unimplemented
+                    return null;
+                }
+
+                public TypesettingContextFactory getTypesettingContextFactory() {
+
+                    // TODO gene: getTypesettingContextFactory unimplemented
+                    return null;
+                }
+
+                public void setCountOption(String name, long value) throws GeneralException {
+
+                    // TODO gene: setCountOption unimplemented
+                    
+                }
+
+                public void setMark(String index, Tokens mark) {
+
+                    // TODO gene: setMark unimplemented
+                    
                 }
             }, null, null);
             assertFalse(true);

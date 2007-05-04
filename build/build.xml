@@ -124,7 +124,7 @@
 
     <copy todir="${classes}">
       <mapper type="regexp"
-              from="^[^/\\]*\${file.separator}src\${file.separator}[a-z]*\${file.separator}(.*)$$"
+              from="^[^/\\]*\${file.separator}src\${file.separator}[a-z]*\${file.separator}[a-z]*\${file.separator}(.*)$$"
               to="\1" />
       <fileset refid="application.resource.files" />
     </copy>
@@ -260,6 +260,7 @@
            deprecation="${javac.deprecation}">
       <classpath>
         <pathelement path="${target}/${application}/${extex.jar.file}.jar" />
+        <pathelement path="lib/junit-4.1.jar" />
       </classpath>
       <classpath refid="test.class.path" />
       <src refid="test.source.path" />

@@ -25,94 +25,102 @@ import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.register.box.Setbox;
 
 /**
  * This class provides an implementation for the primitive <code>\showbox</code>.
- *
+ * 
  * <doc name="showbox">
  * <h3>The Primitive <tt>\showbox</tt></h3>
  * <p>
- *  The primitive <tt>\showbox</tt> produces a listing of the box register
- *  given as parameter. The listing is restricted in breadth and depth by the
- *  count registers <tt>\showboxbreadth</tt> and <tt>\showboxdepth</tt>
- *  respectively.
+ * The primitive <tt>\showbox</tt> produces a listing of the box register
+ * given as parameter. The listing is restricted in breadth and depth by the
+ * count registers <tt>\showboxbreadth</tt> and <tt>\showboxdepth</tt>
+ * respectively.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;showbox&rang;
  *      &rarr; <tt>\showbox</tt> {@linkplain
  *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,String)
  *        &lang;box&nbsp;register&nbsp;name&rang;}  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \showbox 1  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * <doc name="showboxbreadth" type="register">
  * <h3>The Count Parameter <tt>\showboxbreadth</tt></h3>
  * <p>
- *  The count register <tt>\showboxbreadth</tt> contains the breadth to which
- *  the box produced by <tt>\showbox</tt> should be presented.
+ * The count register <tt>\showboxbreadth</tt> contains the breadth to which
+ * the box produced by <tt>\showbox</tt> should be presented.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;showboxbreadth&rang;
  *      &rarr; <tt>\showboxbreadth</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \showboxbreadth=16  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * <doc name="showboxdepth" type="register">
  * <h3>The Count Parameter <tt>\showboxdepth</tt></h3>
  * <p>
- *  The count register <tt>\showboxdepth</tt> contains the depth to which
- *  the box produced by <tt>\showbox</tt> should be presented.
+ * The count register <tt>\showboxdepth</tt> contains the depth to which the
+ * box produced by <tt>\showbox</tt> should be presented.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;showboxdepth&rang;
  *      &rarr; <tt>\showboxdepth</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \showboxdepth=16  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
 public class Showbox extends AbstractCode implements LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
@@ -123,7 +131,7 @@ public class Showbox extends AbstractCode implements LogEnabled {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for tracing and debugging
      */
     public Showbox(String name) {
@@ -133,9 +141,9 @@ public class Showbox extends AbstractCode implements LogEnabled {
 
     /**
      * Setter for the logger.
-     *
+     * 
      * @param log the logger to use
-     *
+     * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
@@ -145,26 +153,14 @@ public class Showbox extends AbstractCode implements LogEnabled {
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         String key = Setbox.getKey(context, source, typesetter, getName());
         Box b = context.getBox(key);

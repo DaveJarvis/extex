@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,14 +19,15 @@
 
 package de.dante.extex.interpreter.primitives.register.real;
 
-import org.extex.core.count.CountConvertible;
 import org.extex.core.exception.GeneralException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Theable;
+import org.extex.scanner.CountConvertible;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
@@ -56,7 +57,8 @@ public class MathRint extends AbstractMath
             CountConvertible {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 1L;
 
@@ -73,20 +75,16 @@ public class MathRint extends AbstractMath
     }
 
     /**
-     * Calculate
+     * {@inheritDoc}
      * 
-     * @param context the context
-     * @param source the token source
-     * @param typesetter ...
-     * @return the real value
-     * 
-     * @throws InterpreterException if a error occurred
-     * @throws ConfigurationException in case of an configuration error
+     * @see de.dante.extex.interpreter.primitives.register.real.AbstractMath#calculate(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     protected Real calculate(Context context, TokenSource source,
             Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+            throws ConfigurationException,
+                HelpingException,
+                TypesetterException {
 
         Real real = new Real(context, source, typesetter);
         return new Real(Math.rint(real.getValue()));

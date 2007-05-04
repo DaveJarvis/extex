@@ -20,34 +20,34 @@
 package org.extex.unit.tex.math.delimiter;
 
 import org.extex.core.UnicodeChar;
-import org.extex.core.count.CountParser;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.exception.helping.MissingNumberException;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ExpandableCode;
-import org.extex.interpreter.type.math.MathClass;
-import org.extex.interpreter.type.math.MathClassVisitor;
-import org.extex.interpreter.type.math.MathDelimiter;
+import org.extex.scanner.CountParser;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
+import org.extex.typesetter.type.math.MathClass;
+import org.extex.typesetter.type.math.MathClassVisitor;
+import org.extex.typesetter.type.math.MathDelimiter;
 import org.extex.typesetter.type.noad.MathGlyph;
 import org.extex.unit.tex.math.AbstractMathCode;
 
 /**
  * This abstract class adds the ability to translate
- * {@link org.extex.interpreter.type.math.MathDelimiter MathDelimiter}s
- * to and from their <logo>TeX</logo> encoding as numbers to abstract math code.
- *
+ * {@link org.extex.typesetter.type.math.MathDelimiter MathDelimiter}s to and
+ * from their <logo>TeX</logo> encoding as numbers to abstract math code.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
@@ -59,12 +59,14 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
     private static final int CHAR_MASK = 0xff;
 
     /**
-     * The field <tt>CHAR_MAX</tt> contains the maximal number for a character.
+     * The field <tt>CHAR_MAX</tt> contains the maximal number for a
+     * character.
      */
     private static final int CHAR_MAX = 255;
 
     /**
-     * The field <tt>CHAR_MIN</tt> contains the minimal number for a character.
+     * The field <tt>CHAR_MIN</tt> contains the minimal number for a
+     * character.
      */
     private static final int CHAR_MIN = 0;
 
@@ -75,8 +77,8 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
     private static final int CLASS_MASK = 0xf;
 
     /**
-     * The constant <tt>CLASS_MAX</tt> contains the maximum number for a
-     * math class.
+     * The constant <tt>CLASS_MAX</tt> contains the maximum number for a math
+     * class.
      */
     private static final int CLASS_MAX = CLASS_MASK;
 
@@ -107,22 +109,26 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
     private static final Integer DEL_OPENING = new Integer(4);
 
     /**
-     * The field <tt>DEL_ORDINARY</tt> contains the delimiter code for ordinary.
+     * The field <tt>DEL_ORDINARY</tt> contains the delimiter code for
+     * ordinary.
      */
     private static final Integer DEL_ORDINARY = new Integer(0);
 
     /**
-     * The field <tt>DEL_PUNCTATION</tt> contains the delimiter code for punctation.
+     * The field <tt>DEL_PUNCTATION</tt> contains the delimiter code for
+     * punctation.
      */
     private static final Integer DEL_PUNCTATION = new Integer(6);
 
     /**
-     * The field <tt>DEL_RELATION</tt> contains the delimiter code for relation.
+     * The field <tt>DEL_RELATION</tt> contains the delimiter code for
+     * relation.
      */
     private static final Integer DEL_RELATION = new Integer(3);
 
     /**
-     * The field <tt>DEL_VARIABLE</tt> contains the delimiter code for variable.
+     * The field <tt>DEL_VARIABLE</tt> contains the delimiter code for
+     * variable.
      */
     private static final Integer DEL_VARIABLE = new Integer(7);
 
@@ -146,139 +152,141 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
      * The field <tt>MCV</tt> contains the visitor to map a math class to
      * numbers.
      */
-    private static final MathClassVisitor MCV = new MathClassVisitor() {
+    private static final MathClassVisitor<Integer, Object, Object> MCV =
+            new MathClassVisitor<Integer, Object, Object>() {
 
-        /**
-         * Invoke the visitor method for a binary operator.
-         *
-         * @param ignore the argument
-         * @param ignore2 the second argument
-         *
-         * @return the result
-         *
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitBinary(
-         *      java.lang.Object, java.lang.Object)
-         */
-        public Object visitBinary(Object ignore, Object ignore2) {
+                /**
+                 * Invoke the visitor method for a binary operator.
+                 * 
+                 * @param ignore the argument
+                 * @param ignore2 the second argument
+                 * 
+                 * @return the result
+                 * 
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitBinary(
+                 *      java.lang.Object, java.lang.Object)
+                 */
+                public Integer visitBinary(Object ignore, Object ignore2) {
 
-            return DEL_BINARY;
-        }
+                    return DEL_BINARY;
+                }
 
-        /**
-         * Invoke the visitor method for a closing delimiter.
-         *
-         * @param ignore the argument
-         * @param ignore2 the second argument
-         *
-         * @return the result
-         *
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitClosing(
-         *      java.lang.Object, java.lang.Object)
-         */
-        public Object visitClosing(Object ignore, Object ignore2) {
+                /**
+                 * Invoke the visitor method for a closing delimiter.
+                 * 
+                 * @param ignore the argument
+                 * @param ignore2 the second argument
+                 * 
+                 * @return the result
+                 * 
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitClosing(
+                 *      java.lang.Object, java.lang.Object)
+                 */
+                public Integer visitClosing(Object ignore, Object ignore2) {
 
-            return DEL_CLOSING;
-        }
+                    return DEL_CLOSING;
+                }
 
-        /**
-         * Invoke the visitor method for a large operator.
-         *
-         * @param ignore the argument
-         * @param ignore2 the second argument
-         *
-         * @return the result
-         *
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitLarge(
-         *      java.lang.Object, java.lang.Object)
-         */
-        public Object visitLarge(Object ignore, Object ignore2) {
+                /**
+                 * Invoke the visitor method for a large operator.
+                 * 
+                 * @param ignore the argument
+                 * @param ignore2 the second argument
+                 * 
+                 * @return the result
+                 * 
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitLarge(
+                 *      java.lang.Object, java.lang.Object)
+                 */
+                public Integer visitLarge(Object ignore, Object ignore2) {
 
-            return DEL_LARGE;
-        }
+                    return DEL_LARGE;
+                }
 
-        /**
-         * Invoke the visitor method for a opening delimiter.
-         *
-         * @param ignore the argument
-         * @param ignore2 the second argument
-         *
-         * @return the result
-         *
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitOpening(
-         *      java.lang.Object, java.lang.Object)
-         */
-        public Object visitOpening(Object ignore, Object ignore2) {
+                /**
+                 * Invoke the visitor method for a opening delimiter.
+                 * 
+                 * @param ignore the argument
+                 * @param ignore2 the second argument
+                 * 
+                 * @return the result
+                 * 
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOpening(
+                 *      java.lang.Object, java.lang.Object)
+                 */
+                public Integer visitOpening(Object ignore, Object ignore2) {
 
-            return DEL_OPENING;
-        }
+                    return DEL_OPENING;
+                }
 
-        /**
-         * Invoke the visitor method for an ordinary symbol .
-         *
-         * @param ignore the argument
-         * @param ignore2 the second argument
-         *
-         * @return the result
-         *
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitOrdinary(
-         *      java.lang.Object, java.lang.Object)
-         */
-        public Object visitOrdinary(Object ignore, Object ignore2) {
+                /**
+                 * Invoke the visitor method for an ordinary symbol .
+                 * 
+                 * @param ignore the argument
+                 * @param ignore2 the second argument
+                 * 
+                 * @return the result
+                 * 
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOrdinary(
+                 *      java.lang.Object, java.lang.Object)
+                 */
+                public Integer visitOrdinary(Object ignore, Object ignore2) {
 
-            return DEL_ORDINARY;
-        }
+                    return DEL_ORDINARY;
+                }
 
-        /**
-         * Invoke the visitor method for a punctation symbol.
-         *
-         * @param ignore the argument
-         * @param ignore2 the second argument
-         *
-         * @return the result
-         *
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitPunctation(
-         *      java.lang.Object, java.lang.Object)
-         */
-        public Object visitPunctation(Object ignore, Object ignore2) {
+                /**
+                 * Invoke the visitor method for a punctation symbol.
+                 * 
+                 * @param ignore the argument
+                 * @param ignore2 the second argument
+                 * 
+                 * @return the result
+                 * 
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitPunctation(
+                 *      java.lang.Object, java.lang.Object)
+                 */
+                public Integer visitPunctation(Object ignore, Object ignore2) {
 
-            return DEL_PUNCTATION;
-        }
+                    return DEL_PUNCTATION;
+                }
 
-        /**
-         * Invoke the visitor method for a relation operator.
-         *
-         * @param ignore the argument
-         * @param ignore2 the second argument
-         *
-         * @return the result
-         *
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitRelation(
-         *      java.lang.Object, java.lang.Object)
-         */
-        public Object visitRelation(Object ignore, Object ignore2) {
+                /**
+                 * Invoke the visitor method for a relation operator.
+                 * 
+                 * @param ignore the argument
+                 * @param ignore2 the second argument
+                 * 
+                 * @return the result
+                 * 
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitRelation(
+                 *      java.lang.Object, java.lang.Object)
+                 */
+                public Integer visitRelation(Object ignore, Object ignore2) {
 
-            return DEL_RELATION;
-        }
+                    return DEL_RELATION;
+                }
 
-        /**
-         * Invoke the visitor method for a variable width symbol.
-         *
-         * @param ignore the argument
-         * @param ignore2 the second argument
-         *
-         * @return the result
-         *
-         * @see org.extex.interpreter.type.math.MathClassVisitor#visitVariable(
-         *      java.lang.Object, java.lang.Object)
-         */
-        public Object visitVariable(Object ignore, Object ignore2) {
+                /**
+                 * Invoke the visitor method for a variable width symbol.
+                 * 
+                 * @param ignore the argument
+                 * @param ignore2 the second argument
+                 * 
+                 * @return the result
+                 * 
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitVariable(
+                 *      java.lang.Object, java.lang.Object)
+                 */
+                public Integer visitVariable(Object ignore, Object ignore2) {
 
-            return DEL_VARIABLE;
-        }
-    };
+                    return DEL_VARIABLE;
+                }
+            };
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
@@ -297,11 +305,11 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
     /**
      * Translate the delimiter into a <logo>TeX</logo> encoded number or throw
      * an exception if this is not possible.
-     *
+     * 
      * @param del the delimiter to encode
-     *
+     * 
      * @return the <logo>TeX</logo> encoded delimiter
-     *
+     * 
      * @throws HelpingException in case of an error
      */
     public static long delimiterToLong(MathDelimiter del)
@@ -340,7 +348,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
 
     /**
      * Create a localizer for this class.
-     *
+     * 
      * @return the localizer
      */
     protected static Localizer getMyLocalizer() {
@@ -351,30 +359,30 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
     /**
      * Creates a new MathDelimiter object from the <logo>TeX</logo> encoding.
      * <p>
-     * The <logo>TeX</logo> encoding interprets the number as 27 bit hex number:
-     * <tt>"csyylxx</tt>. Here the digits have the following meaning:
+     * The <logo>TeX</logo> encoding interprets the number as 27 bit hex
+     * number: <tt>"csyylxx</tt>. Here the digits have the following meaning:
      * <dl>
-     *  <dt>c</dt>
-     *  <dd>the math class of this delimiter. It has a range from 0 to 7.</dd>
-     *  <dt>l</dt>
-     *  <dd>the family for the large character. It has a range from 0 to 15.</dd>
-     *  <dt>xx</dt>
-     *  <dd>the character code of the large character.</dd>
-     *  <dt>s</dt>
-     *  <dd>the family for the small character. It has a range from 0 to 15.</dd>
-     *  <dt>yy</dt>
-     *  <dd>the character code of the small character.</dd>
+     * <dt>c</dt>
+     * <dd>the math class of this delimiter. It has a range from 0 to 7.</dd>
+     * <dt>l</dt>
+     * <dd>the family for the large character. It has a range from 0 to 15.</dd>
+     * <dt>xx</dt>
+     * <dd>the character code of the large character.</dd>
+     * <dt>s</dt>
+     * <dd>the family for the small character. It has a range from 0 to 15.</dd>
+     * <dt>yy</dt>
+     * <dd>the character code of the small character.</dd>
      * </dl>
      * </p>
-     *
+     * 
      * @param delcode the <logo>TeX</logo> encoding for the delimiter
-     *
+     * 
      * @return a new MathDelimiter
-     *
-     * @throws InterpreterException in case of a parameter out of range
+     * 
+     * @throws HelpingException in case of a parameter out of range
      */
     public static MathDelimiter newMathDelimiter(long delcode)
-            throws InterpreterException {
+            throws HelpingException {
 
         int classCode = (int) ((delcode >> CLASS_SHIFT));
 
@@ -397,26 +405,29 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
 
     /**
      * Parse an extended <logo>ExTeX</logo> delimiter from a token source.
-     *
+     * 
      * @param context the interpreter context
      * @param source the token source to read from
      * @param typesetter the typesetter
      * @param mClass the math class
      * @param primitive the name of the primitive for error handling
-     *
+     * 
      * @return the MathDelimiter found
-     *
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
-    private static MathDelimiter parse(Context context,
-            TokenSource source, Typesetter typesetter,
-            MathClass mClass, String primitive)
-            throws InterpreterException {
+    private static MathDelimiter parse(Context context, TokenSource source,
+            Typesetter typesetter, MathClass mClass, String primitive)
+            throws HelpingException,
+                TypesetterException {
 
-        int smallFam = (int) CountParser.scanNumber(context, source, typesetter);
+        int smallFam =
+                (int) CountParser.scanNumber(context, source, typesetter);
         UnicodeChar smallChar =
                 source.scanCharacterCode(context, typesetter, primitive);
-        int largeFam = (int) CountParser.scanNumber(context, source, typesetter);
+        int largeFam =
+                (int) CountParser.scanNumber(context, source, typesetter);
         UnicodeChar largeChar =
                 source.scanCharacterCode(context, typesetter, primitive);
 
@@ -426,27 +437,28 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
 
     /**
      * Parse a math delimiter.
-     *
+     * 
      * <pre>
      *  \delimiter"1234567
      *  \delimiter open 22 `[ 1 `(
      * </pre>
-     *
+     * 
      * @param context the interpreter context
      * @param source the token source to read from
      * @param typesetter the typesetter
      * @param primitive the name of the primitive for error handling
-     *
+     * 
      * @return the MathDelimiter acquired
-     *
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
      * @throws ConfigurationException in case of an configuration error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     public static MathDelimiter parseDelimiter(Context context,
-            TokenSource source, Typesetter typesetter,
-            String primitive)
-            throws InterpreterException,
-                ConfigurationException {
+            TokenSource source, Typesetter typesetter, String primitive)
+            throws HelpingException,
+                ConfigurationException,
+                TypesetterException {
 
         for (Token t = source.getToken(context); t != null; t =
                 source.getToken(context)) {
@@ -454,8 +466,8 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
             if (t instanceof CodeToken) {
                 Code code = context.getCode((CodeToken) t);
                 if (code instanceof Delimiter) {
-                    return newMathDelimiter(CountParser.scanNumber(context, source,
-                        typesetter));
+                    return newMathDelimiter(CountParser.scanNumber(context,
+                        source, typesetter));
                 } else if (code instanceof ExpandableCode) {
                     ((ExpandableCode) code).expand(Flags.NONE, context, source,
                         typesetter);
@@ -537,7 +549,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for tracing and debugging
      */
     public AbstractTeXDelimiter(String name) {

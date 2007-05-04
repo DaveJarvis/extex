@@ -29,13 +29,15 @@ import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Color;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.NoHelpException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Showable;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.color.ColorConvertible;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class is a abstract base class for color primitives.
@@ -157,16 +159,16 @@ public abstract class AbstractColor extends AbstractAssignment
      * @see org.extex.interpreter.type.Showable#show(
      *      org.extex.interpreter.context.Context)
      */
-    public Tokens show(Context context) throws InterpreterException {
+    public Tokens show(Context context) throws HelpingException {
 
         Color color = convertColor(context, null, null);
         try {
             return context.getTokenFactory().toTokens(//
                 (String) color.visit(theVisitor, null));
-        } catch (InterpreterException e) {
+        } catch (HelpingException e) {
             throw e;
         } catch (GeneralException e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
     }
 
@@ -179,16 +181,16 @@ public abstract class AbstractColor extends AbstractAssignment
      *      org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Color color = convertColor(context, source, typesetter);
         try {
             return context.getTokenFactory().toTokens(//
                 (String) color.visit(theVisitor, null));
-        } catch (InterpreterException e) {
+        } catch (HelpingException e) {
             throw e;
         } catch (GeneralException e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
     }
 

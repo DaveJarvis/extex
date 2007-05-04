@@ -19,52 +19,97 @@
 
 package org.extex.unit.pdftex.exception;
 
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
+import org.extex.interpreter.exception.helping.HelpingException;
 
 /**
  * This exception is raised when a <logo>pdfTeX</logo> primitive is used
  * without being in PDF mode.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
-public class InterpreterPdftexException extends InterpreterException {
+public class InterpreterPdftexException extends HelpingException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      */
     public InterpreterPdftexException() {
 
-        super();
+        this(LocalizerFactory.getLocalizer(InterpreterPdftexException.class),
+            "Text", "?");
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param primitive the name of the primitive in action
      */
     public InterpreterPdftexException(String primitive) {
 
-        super(primitive);
+        this(LocalizerFactory.getLocalizer(InterpreterPdftexException.class),
+            "Text", primitive); // TODO
     }
 
     /**
-     * Returns the detail message string of this throwable.
+     * Creates a new object with three variable arguments.
      *
-     * @return  the detail message string of this <tt>Throwable</tt> instance
-     *          (which may be <tt>null</tt>).
-     *
-     * @see java.lang.Throwable#getMessage()
+     * @param messageTag the message
+     * @param a1 the first argument
+     * @param a2 the second argument
+     * @param a3 the third argument
+     * @param theLocalizer the localizer to use
      */
-    public String getMessage() {
+    protected InterpreterPdftexException(Localizer theLocalizer,
+            String messageTag, String a1, String a2, String a3) {
 
-        return getLocalizer().format("Text", super.getMessage());
+        super(theLocalizer, messageTag, a1, a2, a3);
+    }
+
+    /**
+     * Creates a new object with two variable arguments.
+     *
+     * @param messageTag the message
+     * @param a1 the first argument
+     * @param a2 the second argument
+     * @param theLocalizer the localizer to use
+     */
+    protected InterpreterPdftexException(Localizer theLocalizer,
+            String messageTag, String a1, String a2) {
+
+        super(theLocalizer, messageTag, a1, a2);
+    }
+
+    /**
+     * Creates a new object with two variable arguments.
+     *
+     * @param messageTag the message
+     * @param a1 the first argument
+     * @param theLocalizer the localizer to use
+     */
+    protected InterpreterPdftexException(Localizer theLocalizer,
+            String messageTag, String a1) {
+
+        super(theLocalizer, messageTag, a1);
+    }
+
+    /**
+     * Creates a new object with two variable arguments.
+     *
+     * @param messageTag the message
+     * @param theLocalizer the localizer to use
+     */
+    protected InterpreterPdftexException(Localizer theLocalizer,
+            String messageTag) {
+
+        super(theLocalizer, messageTag);
     }
 
 }

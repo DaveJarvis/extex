@@ -21,13 +21,14 @@ package org.extex.interpreter.expression.term;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.expression.EType;
 import org.extex.interpreter.expression.ETypeParser;
 import org.extex.interpreter.expression.Evaluator;
 import org.extex.interpreter.expression.UnaryFunction;
 import org.extex.interpreter.type.Code;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class implements the supporting functions for the date type
@@ -64,7 +65,7 @@ public final class TBooleanParser implements ETypeParser {
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public EType convert(Code code, Context context, TokenSource source,
-            Typesetter typesetter) {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         return null;
     }
@@ -79,14 +80,12 @@ public final class TBooleanParser implements ETypeParser {
      * @return the element inquired or <code>null</code> if none could be
      *         parsed
      * 
-     * @throws InterpreterException in case of an error
-     * 
      * @see org.extex.interpreter.expression.ETypeParser#parse(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public EType parse(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         if (source.getKeyword(context, "true")) {
             return new TBoolean(true);
@@ -116,7 +115,7 @@ public final class TBooleanParser implements ETypeParser {
              * @see org.extex.interpreter.expression.UnaryFunction#apply(
              *      org.extex.interpreter.expression.EType)
              */
-            public EType apply(EType accumulator) throws InterpreterException {
+            public EType apply(EType accumulator) throws HelpingException {
 
                 return new TBoolean().set(accumulator);
             }

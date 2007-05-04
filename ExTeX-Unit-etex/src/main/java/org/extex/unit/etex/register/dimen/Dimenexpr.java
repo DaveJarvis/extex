@@ -19,16 +19,12 @@
 
 package org.extex.unit.etex.register.dimen;
 
-import org.extex.core.count.CountConvertible;
-import org.extex.core.count.CountParser;
 import org.extex.core.dimen.Dimen;
-import org.extex.core.dimen.DimenConvertible;
-import org.extex.core.dimen.DimenParser;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.NoHelpException;
 import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
@@ -37,6 +33,10 @@ import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
+import org.extex.scanner.CountConvertible;
+import org.extex.scanner.CountParser;
+import org.extex.scanner.DimenConvertible;
+import org.extex.scanner.DimenParser;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.token.CodeToken;
@@ -45,45 +45,48 @@ import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.Relax;
 
 /**
- * This class provides an implementation for the primitive <code>\dimenexpr</code>.
- *
+ * This class provides an implementation for the primitive
+ * <code>\dimenexpr</code>.
+ * 
  * <doc name="dimenexpr">
  * <h3>The Primitive <tt>\dimenexpr</tt></h3>
  * <p>
- *  The primitive <tt>\dimenexpr</tt> provides a means to use a inline way of
- *  writing mathematical expressions to be evaluated. Mathematical expressions
- *  can be evaluated in <logo>ExTeX</logo> using <tt>\advance</tt>,
- *  <tt>\multiply</tt>, and <tt>\divide</tt>. Nevertheless those primitives
- *  result in an assignment. This is not the case for <tt>\dimenexpr</tt>. Here
- *  the intermediate results are not stored in dimen registers but kept
- *  internally. Also the application of <tt>\afterassignment</tt> and
- *  <tt>\tracingassigns</tt> is suppressed.
+ * The primitive <tt>\dimenexpr</tt> provides a means to use a inline way of
+ * writing mathematical expressions to be evaluated. Mathematical expressions
+ * can be evaluated in <logo>ExTeX</logo> using <tt>\advance</tt>,
+ * <tt>\multiply</tt>, and <tt>\divide</tt>. Nevertheless those primitives
+ * result in an assignment. This is not the case for <tt>\dimenexpr</tt>.
+ * Here the intermediate results are not stored in dimen registers but kept
+ * internally. Also the application of <tt>\afterassignment</tt> and
+ * <tt>\tracingassigns</tt> is suppressed.
  * </p>
  * <p>
- *  The mathematical expression to be evaluated can be made up of the basic
- *  operations addition (+), subtraction (-), multiplication (*) with numbers,
- *  and division(/) by numbers. The unary minus can be used. Parentheses can be
- *  used for grouping. Anything which looks like a length can be used as
- *  argument. White-space can be used freely without any harm.
+ * The mathematical expression to be evaluated can be made up of the basic
+ * operations addition (+), subtraction (-), multiplication (*) with numbers,
+ * and division(/) by numbers. The unary minus can be used. Parentheses can be
+ * used for grouping. Anything which looks like a length can be used as
+ * argument. White-space can be used freely without any harm.
  * </p>
  * <p>
- *  The expression is terminated at the first token which can not be part of
- *  an expression. For instance a letter may signal the end of the expression.
- *  If the expression should terminate without a proper token following it,
- *  the token <tt>\relax</tt> can be used to signal the end of the expression.
- *  This <tt>\relax</tt> token is silently consumed by <tt>\dimenexpr</tt>.
+ * The expression is terminated at the first token which can not be part of an
+ * expression. For instance a letter may signal the end of the expression. If
+ * the expression should terminate without a proper token following it, the
+ * token <tt>\relax</tt> can be used to signal the end of the expression. This
+ * <tt>\relax</tt> token is silently consumed by <tt>\dimenexpr</tt>.
  * </p>
  * <p>
- *  The primitive <tt>\dimenexpr</tt> can be used in any place where a dimen is
- *  required. This includes assignments to dimen registers and comparisons.
+ * The primitive <tt>\dimenexpr</tt> can be used in any place where a dimen is
+ * required. This includes assignments to dimen registers and comparisons.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;dimenexpr&rang;
  *      &rarr; <tt>\dimenexpr</tt> &lang;expr&rang; <tt>\relax</tt>
  *      |   <tt>\dimenexpr</tt> &lang;expr&rang;
@@ -100,8 +103,9 @@ import org.extex.unit.tex.Relax;
  *      |   &lang;operand&rang; <tt>/</tt> &lang;number&rang;
  *      |   <tt>-</tt> &lang;expr&rang;
  *      |   <tt>(</tt> &lang;expr&rang; <tt>)</tt>   </pre>
- *
+ * 
  * <h4>Examples</h4>
+ * 
  * <pre class="TeXSample">
  *   \count1=\dimenexpr 23pt \relax </pre>
  * <pre class="TeXSample">
@@ -112,9 +116,10 @@ import org.extex.unit.tex.Relax;
  *   \count1=\dimenexpr 2*(1pt+3em)  </pre>
  * <pre class="TeXSample">
  *   \count1=\dimenexpr 2*-\dimen0  </pre>
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
@@ -125,13 +130,14 @@ public class Dimenexpr extends AbstractCode
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Dimenexpr(String name) {
@@ -140,27 +146,13 @@ public class Dimenexpr extends AbstractCode
     }
 
     /**
-     * This method converts a register into a count. It might be necessary to
-     * read further tokens to determine which value to use. For instance an
-     * additional register number might be required. In this case the additional
-     * arguments Context and TokenSource can be used.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use for conversion
-     *
-     * @return the converted value
-     *
-     * @throws InterpreterException in case of an error
-     * @throws ConfigurationException in case of an configuration error
-     *
-     * @see org.extex.core.count.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         long result = evalExpr(context, source, typesetter);
         Token t = source.getToken(context);
@@ -172,29 +164,13 @@ public class Dimenexpr extends AbstractCode
     }
 
     /**
-     * This method converts a register into a dimen.
-     * It might be necessary to read further tokens to determine which value to
-     * use. For instance an additional register number might be required. In
-     * this case the additional arguments Context and TokenSource can be used.
-     *
-     * The return value is the length in scaled points.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use for conversion
-     *
-     * @return the converted value in sp
-     *
-     * @throws InterpreterException in case of an error
-     * @throws ConfigurationException in case of an configuration error
-     *
-     * @see org.extex.core.dimen.DimenConvertible#convertDimen(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         long result = evalExpr(context, source, typesetter);
         Token t = source.getToken(context);
@@ -207,18 +183,22 @@ public class Dimenexpr extends AbstractCode
 
     /**
      * Evaluate an expression.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the result
-     *
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      * @throws ConfigurationException in case of an configuration error
      */
     private long evalExpr(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter)
+            throws HelpingException,
+                ConfigurationException,
+                TypesetterException {
 
         long val = evalOperand(context, source, typesetter);
 
@@ -242,18 +222,22 @@ public class Dimenexpr extends AbstractCode
 
     /**
      * Evaluate an operand.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the result
-     *
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      * @throws ConfigurationException in case of an configuration error
      */
     private long evalOperand(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter)
+            throws HelpingException,
+                ConfigurationException,
+                TypesetterException {
 
         long val =
                 evalTerminal(context, source, typesetter, source
@@ -280,20 +264,23 @@ public class Dimenexpr extends AbstractCode
 
     /**
      * Evaluate a terminal symbol.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param start the first token to start with
-     *
+     * 
      * @return the value
-     *
-     * @throws InterpreterException in case of an error
+     * 
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      * @throws ConfigurationException in case of an configuration error
      */
     private long evalTerminal(Context context, TokenSource source,
             Typesetter typesetter, Token start)
-            throws InterpreterException {
+            throws HelpingException,
+                ConfigurationException,
+                TypesetterException {
 
         Token t = start;
         for (;;) {
@@ -326,7 +313,7 @@ public class Dimenexpr extends AbstractCode
                     try {
                         source.push(context.getTokenFactory().toTokens(pre));
                     } catch (CatcodeException e) {
-                        throw new InterpreterException(e);
+                        throw new NoHelpException(e);
                     }
                     return DimenParser.parse(context, source, typesetter)
                         .getValue();
@@ -341,7 +328,7 @@ public class Dimenexpr extends AbstractCode
                     try {
                         source.push(context.getTokenFactory().toTokens(pre));
                     } catch (CatcodeException e) {
-                        throw new InterpreterException(e);
+                        throw new NoHelpException(e);
                     }
                     return DimenParser.parse(context, source, typesetter)
                         .getValue();
@@ -350,7 +337,7 @@ public class Dimenexpr extends AbstractCode
                     try {
                         source.push(context.getTokenFactory().toTokens(pre));
                     } catch (CatcodeException e) {
-                        throw new InterpreterException(e);
+                        throw new NoHelpException(e);
                     }
                     return CountParser.scanNumber(context, source, typesetter);
                 }
@@ -377,31 +364,18 @@ public class Dimenexpr extends AbstractCode
     }
 
     /**
-     * This method is the getter for the description of the primitive.
-     *
-     * @param context the interpreter context
-     * @param source the source for further tokens to qualify the request
-     * @param typesetter the typesetter to use
-     *
-     * @return the description of the primitive as list of Tokens
-     *
-     * @throws InterpreterException in case of an error
-     * @throws ConfigurationException in case of an configuration error
-     *
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public Tokens the(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
+            throws HelpingException,
+                TypesetterException,
+                CatcodeException {
 
-        try {
-            Dimen d = new Dimen(convertDimen(context, source, typesetter));
-            return d.toToks(context.getTokenFactory());
-        } catch (CatcodeException e) {
-            throw new InterpreterException(e);
-        }
+        Dimen d = new Dimen(convertDimen(context, source, typesetter));
+        return context.getTokenFactory().toTokens(d.toString());
     }
 
 }

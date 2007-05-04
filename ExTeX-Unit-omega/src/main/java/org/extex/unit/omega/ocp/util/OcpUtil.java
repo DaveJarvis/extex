@@ -24,7 +24,6 @@ import java.io.InputStream;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.exception.helping.UndefinedControlSequenceException;
@@ -58,10 +57,10 @@ public final class OcpUtil {
      *
      * @return the ocp file name
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      */
     public static String scanOcpFileName(TokenSource source,
-            Context context) throws InterpreterException {
+            Context context) throws HelpingException {
 
         StringBuffer sb = new StringBuffer();
 
@@ -83,10 +82,10 @@ public final class OcpUtil {
      *
      * @return the ocp file name
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      */
     public static Ocp scanOcp(TokenSource source, Context context,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException {
 
         Token t = source.getToken(context);
         if (t == null) {

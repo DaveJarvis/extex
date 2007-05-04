@@ -23,36 +23,38 @@ import org.extex.core.scaled.ScaledNumber;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.primitives.register.scaled.util.ScaledCode;
 import org.extex.interpreter.type.AbstractAssignment;
+import org.extex.scanner.ScaledNumberParser;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive
- * <code>\scaled</code>.
- *
+ * This class provides an implementation for the primitive <code>\scaled</code>.
+ * 
  * <doc name="scaled">
  * <h3>The Primitive <tt>\scaled</tt></h3>
  * <p>
- *  The primitive <tt>\scaled</tt> can be used to define a control sequence as
- *  alias for a scaled register. The control sequence can be used wherever a
- *  scaled is expected afterwards.
+ * The primitive <tt>\scaled</tt> can be used to define a control sequence as
+ * alias for a scaled register. The control sequence can be used wherever a
+ * scaled is expected afterwards.
  * </p>
  * <p>
- *  The primitive <tt>\scaled</tt>  is an assignment. Thus the settings of
- *  <tt>\afterassignment</tt> and <tt>\globaldefs</tt> are applied.
+ * The primitive <tt>\scaled</tt> is an assignment. Thus the settings of
+ * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> are applied.
  * </p>
  * <p>
- *  The prefix <tt>\global</tt> can be used to make the assignment to the new
- *  control sequence global instead of the group-local assignment which is the
- *  default.
+ * The prefix <tt>\global</tt> can be used to make the assignment to the new
+ * control sequence global instead of the group-local assignment which is the
+ * default.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
  * The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * 
+ * <pre class="syntax">
  *    &lang;scaled&rang;
  *      &rarr; &lang;optional prefix&rang; <tt>\scaled</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
@@ -63,32 +65,34 @@ import org.extex.typesetter.Typesetter;
  *    &lang;optional prefix&rang;
  *      &rarr;
  *       |  <tt>\global</tt> &lang;optional prefix&rang;  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \scaled\abc=45  </pre>
  *  <pre class="TeXSample">
  *    \scaled\abc 33  </pre>
  *  <pre class="TeXSample">
  *    \scaled\abc=-1.2  </pre>
- *
+ * 
  * </doc>
- *
- *
- *
+ * 
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4787 $
  */
 public class Scaled extends AbstractAssignment {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 20060606L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Scaled(String name) {
@@ -98,23 +102,22 @@ public class Scaled extends AbstractAssignment {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void assign(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter)
+            throws HelpingException, TypesetterException {
 
         CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
-        ScaledNumber scaled = ScaledNumber.scanScaledNumber(context, source,
-                typesetter);
+        ScaledNumber scaled =
+                ScaledNumberParser
+                    .scanScaledNumber(context, source, typesetter);
         context.setCode(cs, new ScaledCode(getName(), scaled), prefix
-                .clearGlobal());
+            .clearGlobal());
     }
 
 }

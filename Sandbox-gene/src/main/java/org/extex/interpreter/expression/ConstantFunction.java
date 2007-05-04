@@ -1,7 +1,7 @@
 
 package org.extex.interpreter.expression;
 
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 
 /**
  * This interface describes an operation object without any arguments.
@@ -15,9 +15,8 @@ public interface ConstantFunction {
      * Return the value in the accumulator overwriting the value stored therein.
      *
      * @return the operation result, i.e. the constant
-     *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException TODO
      */
-    EType apply() throws InterpreterException;
+    EType apply() throws HelpingException;
 
 }

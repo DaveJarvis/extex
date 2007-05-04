@@ -21,7 +21,7 @@ package org.extex.unit.tex.hyphen;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.language.Language;
 import org.extex.scanner.type.tokens.Tokens;
@@ -86,7 +86,7 @@ import org.extex.typesetter.Typesetter;
  *      &rarr; <tt>\language</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  *
  * <h4>Examples</h4>
@@ -131,10 +131,10 @@ public abstract class AbstractHyphenationCode extends AbstractCode {
      *
      * @return the current hyphenation table
      *
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      */
     protected Language getHyphenationTable(Context context)
-            throws InterpreterException {
+            throws HelpingException {
 
         Tokens lang = context.getToksOrNull(LANGUAGE_TOKS);
         String name = (lang != null //

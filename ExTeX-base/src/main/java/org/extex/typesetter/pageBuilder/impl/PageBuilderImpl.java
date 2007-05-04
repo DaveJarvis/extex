@@ -23,6 +23,7 @@ import org.extex.backend.BackendDriver;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.context.Context;
+import org.extex.typesetter.PageContext;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.TypesetterException;
@@ -35,7 +36,7 @@ import org.extex.typesetter.type.page.PageFactory;
 
 /**
  * This is a first reference implementation of a page builder.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4483 $
  */
@@ -47,13 +48,14 @@ public class PageBuilderImpl implements PageBuilder {
     private Context context = null;
 
     /**
-     * The field <tt>documentWriter</tt> contains the document writer to receive
-     * the pages.
+     * The field <tt>documentWriter</tt> contains the document writer to
+     * receive the pages.
      */
     private BackendDriver backendDriver = null;
 
     /**
-     * The field <tt>options</tt> contains the options to control the behaviour.
+     * The field <tt>options</tt> contains the options to control the
+     * behavior.
      */
     private TypesetterOptions options = null;
 
@@ -77,7 +79,7 @@ public class PageBuilderImpl implements PageBuilder {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.pageBuilder.PageBuilder#close()
      */
     public void close() throws TypesetterException {
@@ -92,10 +94,9 @@ public class PageBuilderImpl implements PageBuilder {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.pageBuilder.PageBuilder#flush(
-     *     org.extex.typesetter.type.NodeList,
-     *     org.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.type.NodeList, org.extex.typesetter.Typesetter)
      */
     public void flush(NodeList nodes, Typesetter typesetter)
             throws TypesetterException {
@@ -121,36 +122,38 @@ public class PageBuilderImpl implements PageBuilder {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.pageBuilder.PageBuilder#inspectAndBuild(
      *      org.extex.typesetter.type.node.VerticalListNode,
      *      org.extex.typesetter.Typesetter)
      */
-    public void inspectAndBuild(VerticalListNode nodes,
-            Typesetter typesetter) throws TypesetterException {
+    public void inspectAndBuild(VerticalListNode nodes, Typesetter typesetter)
+            throws TypesetterException {
 
         FixedDimen d = nodes.getVerticalSize();
         if (d.ge(options.getDimenOption("vsize"))) {
 
             flush(nodes, typesetter);
-            nodes.clear(); // TODO gene: split off the appropriate amount and leave the rest
+            nodes.clear(); // TODO gene: split off the appropriate amount and
+                            // leave the rest
         }
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.pageBuilder.PageBuilder#setContext(
      *      org.extex.interpreter.context.Context)
      */
-    public void setContext(Context context) {
+    public void setContext(PageContext context) {
 
-        this.context = context;
+        // TODO gene: beware of ClassCastException
+        this.context = (Context) context;
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.Typesetter#setBackend(
      *      org.extex.backend.BackendDriver)
      */
@@ -161,7 +164,7 @@ public class PageBuilderImpl implements PageBuilder {
 
     /**
      * Setter for options.
-     *
+     * 
      * @param options the options to set
      */
     public void setOptions(TypesetterOptions options) {
@@ -171,7 +174,7 @@ public class PageBuilderImpl implements PageBuilder {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.pageBuilder.PageBuilder#setOutputRoutine(
      *      org.extex.typesetter.output.OutputRoutine)
      */
@@ -182,7 +185,7 @@ public class PageBuilderImpl implements PageBuilder {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.pageBuilder.PageBuilder#setPageFactory(
      *      org.extex.typesetter.type.page.PageFactory)
      */
@@ -193,10 +196,9 @@ public class PageBuilderImpl implements PageBuilder {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.pageBuilder.PageBuilder#shipout(
-     *      org.extex.typesetter.type.NodeList,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.typesetter.type.NodeList, org.extex.typesetter.Typesetter)
      */
     public void shipout(NodeList nodes, Typesetter typesetter)
             throws TypesetterException {

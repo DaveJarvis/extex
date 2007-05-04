@@ -21,9 +21,9 @@ package org.extex.unit.tex.math;
 
 import org.extex.core.UnicodeChar;
 import org.extex.interpreter.Interpreter;
-import org.extex.interpreter.type.math.MathClass;
-import org.extex.interpreter.type.math.MathCode;
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
+import org.extex.typesetter.type.math.MathClass;
+import org.extex.typesetter.type.math.MathCode;
 
 /**
  * This is a test suite for the primitive <tt>\mathcode</tt>.

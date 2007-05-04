@@ -19,40 +19,33 @@
 
 package org.extex.interpreter.exception;
 
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.framework.i18n.LocalizerFactory;
+import org.extex.interpreter.exception.helping.HelpingException;
 
 /**
- * This exception is thrown when the main program use an
- * ExTeX extension witch is not available.
- *
+ * This exception is thrown when the main program use an ExTeX extension witch
+ * is not available.
+ * 
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class InterpreterExtensionException extends InterpreterException {
+public class InterpreterExtensionException extends HelpingException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      */
     public InterpreterExtensionException() {
 
-        super("");
+        super(LocalizerFactory
+            .getLocalizer(InterpreterExtensionException.class),
+            "MainExTeXExtensionException.Message");
     }
-
-    /**
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    public String getLocalizedMessage() {
-
-        return getLocalizer().format("MainExTeXExtensionException.Message",
-            super.getMessage());
-    }
-
 }

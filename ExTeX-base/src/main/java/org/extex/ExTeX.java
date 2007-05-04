@@ -48,7 +48,6 @@ import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.color.ColorConverter;
 import org.extex.color.ColorConverterFacory;
 import org.extex.core.dimen.Dimen;
-import org.extex.core.dimen.DimenParser;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.NotObservableException;
 import org.extex.font.CoreFontFactory;
@@ -93,6 +92,7 @@ import org.extex.resource.PropertyConfigurable;
 import org.extex.resource.ResourceConsumer;
 import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
+import org.extex.scanner.DimenParser;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.stream.TokenStreamOptions;
@@ -724,9 +724,9 @@ public class ExTeX {
      *        and modified. The caller should provide a new instance if this is
      *        not desirable.
      * 
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      */
-    public ExTeX(Properties theProperties) throws InterpreterException {
+    public ExTeX(Properties theProperties) throws HelpingException {
 
         super();
 
@@ -788,15 +788,14 @@ public class ExTeX {
      *        this value is <code>null</code> no user properties will be
      *        considered.
      * 
-     * @throws InterpreterException in case of an invalid interaction mode
+     * @throws HelpingException in case of an invalid interaction mode
      * @throws IOException in case of an IO Error during the reading of the
      *         properties file
      * 
      * @see #ExTeX(java.util.Properties)
      */
     public ExTeX(Properties theProperties, String dotFile)
-            throws InterpreterException,
-                IOException {
+            throws IOException, HelpingException {
 
         this(theProperties);
 

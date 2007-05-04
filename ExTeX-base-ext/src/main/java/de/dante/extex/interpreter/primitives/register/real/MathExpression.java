@@ -24,14 +24,14 @@ import gnu.jel.CompiledExpression;
 import gnu.jel.Evaluator;
 import gnu.jel.Library;
 
-import org.extex.core.count.CountConvertible;
 import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Theable;
+import org.extex.scanner.CountConvertible;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 import de.dante.extex.interpreter.type.real.Real;
 import de.dante.extex.interpreter.type.real.RealConvertible;
@@ -96,16 +96,13 @@ public class MathExpression extends AbstractMath
     private Library lib = null;
 
     /**
-     * Calculate
+     * {@inheritDoc}
      * 
-     * @param context the context
-     * @param source the token source
-     * @param typesetter ...
-     * @return the real value
-     * @throws InterpreterException if a error occurred
+     * @see de.dante.extex.interpreter.primitives.register.real.AbstractMath#calculate(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     protected Real calculate(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Real real = new Real(0);
 

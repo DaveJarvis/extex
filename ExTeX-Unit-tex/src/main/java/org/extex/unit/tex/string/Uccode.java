@@ -20,57 +20,60 @@
 package org.extex.unit.tex.string;
 
 import org.extex.core.UnicodeChar;
-import org.extex.core.count.CountConvertible;
-import org.extex.core.dimen.DimenConvertible;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.NoHelpException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.exception.helping.InvalidCharacterException;
 import org.extex.interpreter.exception.helping.InvalidCodeException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
+import org.extex.scanner.CountConvertible;
+import org.extex.scanner.DimenConvertible;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
  * <code>&#x5c;uccode</code>.
- *
+ * 
  * <doc name="uccode">
  * <h3>The Primitive <tt>&#x5c;uccode</tt></h3>
  * <p>
- *  The primitive <tt>&#x5c;uccode</tt> provides access to the mapping from
- *  characters to their upper case counterpart. This information is used by the
- *  primitive <tt>&#x5c;uppercase</tt>
+ * The primitive <tt>&#x5c;uccode</tt> provides access to the mapping from
+ * characters to their upper case counterpart. This information is used by the
+ * primitive <tt>&#x5c;uppercase</tt>
  * </p>
  * <p>
- *  TODO missing documentation
+ * TODO missing documentation
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;uccode&rang;
  *        &rarr; <tt>&#x5c;uccode</tt> {@linkplain
- *          org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *          org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *          &lang;equals&rang;} {@linkplain
- *          org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *          org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} </pre>
- *
+ * 
  * <h4>Examples</h4>
- *
+ * 
  * <pre class="TeXSample">
  *      &#x5c;uccode 65=65
  * </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
@@ -89,7 +92,7 @@ public class Uccode extends AbstractAssignment
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for tracing and debugging
      */
     public Uccode(String name) {
@@ -98,26 +101,14 @@ public class Uccode extends AbstractAssignment
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void assign(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         UnicodeChar ucCode =
                 source.scanCharacterCode(context, typesetter, getName());
@@ -133,25 +124,13 @@ public class Uccode extends AbstractAssignment
     }
 
     /**
-     * This method converts a register into a count. It might be necessary to
-     * read further tokens to determine which value to use. For instance an
-     * additional register number might be required. In this case the additional
-     * arguments Context and TokenSource can be used.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use for conversion
-     *
-     * @return the converted value
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.core.count.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         UnicodeChar ucCode =
                 source.scanCharacterCode(context, typesetter, getName());
@@ -159,82 +138,50 @@ public class Uccode extends AbstractAssignment
     }
 
     /**
-     * This method converts a register into a dimen.
-     * It might be necessary to read further tokens to determine which value to
-     * use. For instance an additional register number might be required. In
-     * this case the additional arguments Context and TokenSource can be used.
-     *
-     * The return value is the length in scaled points.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use for conversion
-     *
-     * @return the converted value in sp
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.core.dimen.DimenConvertible#convertDimen(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         return convertCount(context, source, typesetter);
     }
 
     /**
-     * This method takes the first token and expands it. The result is placed
-     * on the stack.
-     * This means that expandable code does one step of expansion and puts the
-     * result on the stack. To expand a token it might be necessary to consume
-     * further tokens.
-     *
-     * @param prefix the prefix flags controlling the expansion
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void expand(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void expand(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         try {
             source.push(the(context, source, typesetter));
         } catch (CatcodeException e) {
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
     }
 
     /**
      * This method is the getter for the description of the primitive.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for further tokens to qualify the request
      * @param typesetter the typesetter to use
-     *
+     * 
      * @return the description of the primitive as list of Tokens
-     *
-     * @throws InterpreterException in case of an error
      * @throws CatcodeException in case of an error in token creation
-     *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
-    public Tokens the(Context context, TokenSource source,
-            Typesetter typesetter)
-            throws InterpreterException,
-                CatcodeException {
+    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
+            throws CatcodeException,
+                HelpingException, TypesetterException {
 
         return context.getTokenFactory().toTokens( //
             convertCount(context, source, typesetter));

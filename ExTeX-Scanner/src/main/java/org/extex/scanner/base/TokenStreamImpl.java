@@ -33,9 +33,9 @@ import org.extex.core.exception.GeneralException;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
-import org.extex.interpreter.exception.helping.InvalidCharacterException;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.Tokenizer;
+import org.extex.scanner.exception.InvalidCharacterScannerException;
 import org.extex.scanner.exception.ScannerException;
 import org.extex.scanner.stream.TokenStreamOptions;
 import org.extex.scanner.type.Catcode;
@@ -354,7 +354,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
             state = MID_LINE;
 
-            throw new InvalidCharacterException((UnicodeChar) uc);
+            throw new InvalidCharacterScannerException((UnicodeChar) uc);
         }
 
         /**

@@ -19,58 +19,62 @@
 
 package org.extex.unit.tex.hyphen;
 
-import org.extex.core.count.CountConvertible;
-import org.extex.core.count.CountParser;
-import org.extex.core.dimen.DimenConvertible;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.NoHelpException;
 import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.arithmetic.Advanceable;
 import org.extex.interpreter.type.arithmetic.Divideable;
 import org.extex.interpreter.type.arithmetic.Multiplyable;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
+import org.extex.scanner.CountConvertible;
+import org.extex.scanner.CountParser;
+import org.extex.scanner.DimenConvertible;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
  * <code>\righthyphenmin</code>.
- *
+ * 
  * <doc name="righthyphenmin">
  * <h3>The Primitive <tt>\righthyphenmin</tt></h3>
  * <p>
- *  TODO missing documentation
+ * TODO missing documentation
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  <pre class="syntax">
+ * 
+ * <pre class="syntax">
  *    &lang;righthyphenmin&rang;
  *      &rarr; <tt>\righthyphenmin</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
- *
+ * 
  * <h4>Example:</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *   \righthyphenmin=3 </pre>
- *
+ * 
  * </doc>
- *
- *
- * The value is stored in the <code>HyphernationTable</code>.
- * Each <code>HyphernationTable</code> is based on <code>\language</code>
- * and has its own <code>\righthyphenmin</code> value (other than the original
+ * 
+ * 
+ * The value is stored in the <code>HyphernationTable</code>. Each
+ * <code>HyphernationTable</code> is based on <code>\language</code> and has
+ * its own <code>\righthyphenmin</code> value (other than the original
  * <logo>TeX</logo>).
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4770 $
@@ -85,13 +89,14 @@ public class RightHyphenmin extends AbstractHyphenationCode
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public RightHyphenmin(String name) {
@@ -102,23 +107,18 @@ public class RightHyphenmin extends AbstractHyphenationCode
     /**
      * This method is called when the macro <tt>\advance</tt> has been seen.
      * It performs the remaining tasks for the expansion.
-     *
+     * 
      * @param prefix the prefix for the command
      * @param context the processor context
      * @param source the token source to parse
      * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
+     * 
      * @see org.extex.interpreter.type.arithmetic.Advanceable#advance(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void advance(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void advance(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         long globaldef = context.getCount("globaldefs").getValue();
         if (globaldef != 0) {
@@ -127,16 +127,21 @@ public class RightHyphenmin extends AbstractHyphenationCode
 
         Language table = getHyphenationTable(context);
         source.getKeyword(context, "by");
-        long righthyphenmin = table.getRightHyphenmin();
+        long righthyphenmin;
+        try {
+            righthyphenmin = table.getRightHyphenmin();
+        } catch (HyphenationException e) {
+            throw new NoHelpException(e);
+        }
         righthyphenmin += CountParser.scanInteger(context, source, typesetter);
 
         try {
             table.setRightHyphenmin(righthyphenmin);
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
-                throw new InterpreterException(e.getCause());
+                throw (ConfigurationException) e.getCause();
             }
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
 
         Token afterassignment = context.getAfterassignment();
@@ -144,81 +149,51 @@ public class RightHyphenmin extends AbstractHyphenationCode
             context.setAfterassignment(null);
             source.push(afterassignment);
         }
-        prefix.clearGlobal(); //gene: not really useful but a little bit of compatibility
+        prefix.clearGlobal(); // gene: not really useful but a little bit of
+        // compatibility
     }
 
     /**
-     * This method converts a register into a count. It might be necessary to
-     * read further tokens to determine which value to use. For instance an
-     * additional register number might be required. In this case the additional
-     * arguments Context and TokenSource can be used.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use for conversion
-     *
-     * @return the converted value
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.core.count.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        return getHyphenationTable(context).getRightHyphenmin();
+        try {
+            return getHyphenationTable(context).getRightHyphenmin();
+        } catch (HyphenationException e) {
+            throw new NoHelpException(e);
+        }
     }
 
     /**
-     * This method converts a register into a dimen.
-     * It might be necessary to read further tokens to determine which value to
-     * use. For instance an additional register number might be required. In
-     * this case the additional arguments Context and TokenSource can be used.
-     *
-     * The return value is the length in scaled points.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use for conversion
-     *
-     * @return the converted value in sp
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.core.dimen.DimenConvertible#convertDimen(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        return getHyphenationTable(context).getRightHyphenmin();
+        try {
+            return getHyphenationTable(context).getRightHyphenmin();
+        } catch (HyphenationException e) {
+            throw new NoHelpException(e);
+        }
     }
 
     /**
-     * This method is called when the macro <tt>\divide</tt> has been seen.
-     * It performs the remaining tasks for the expansion.
-     *
-     * @param prefix the prefix for the command
-     * @param context the processor context
-     * @param source the token source to parse
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.arithmetic.Divideable#divide(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.arithmetic.Divideable#divide(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void divide(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void divide(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         long globaldef = context.getCount("globaldefs").getValue();
         if (globaldef != 0) {
@@ -227,7 +202,12 @@ public class RightHyphenmin extends AbstractHyphenationCode
 
         Language table = getHyphenationTable(context);
         source.getKeyword(context, "by");
-        long righthyphenmin = table.getRightHyphenmin();
+        long righthyphenmin;
+        try {
+            righthyphenmin = table.getRightHyphenmin();
+        } catch (HyphenationException e) {
+            throw new NoHelpException(e);
+        }
         long arg = CountParser.scanInteger(context, source, typesetter);
         if (arg == 0) {
             throw new ArithmeticOverflowException(
@@ -239,9 +219,9 @@ public class RightHyphenmin extends AbstractHyphenationCode
             table.setRightHyphenmin(righthyphenmin);
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
-                throw new InterpreterException(e.getCause());
+                throw (ConfigurationException) e.getCause();
             }
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
 
         Token afterassignment = context.getAfterassignment();
@@ -249,30 +229,19 @@ public class RightHyphenmin extends AbstractHyphenationCode
             context.setAfterassignment(null);
             source.push(afterassignment);
         }
-        prefix.clearGlobal(); //gene: not really useful but a little bit of compatibility
+        prefix.clearGlobal(); // gene: not really useful but a little bit of
+        // compatibility
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         long globaldef = context.getCount("globaldefs").getValue();
         if (globaldef != 0) {
@@ -288,9 +257,9 @@ public class RightHyphenmin extends AbstractHyphenationCode
             table.setRightHyphenmin(righthyphenmin);
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
-                throw new InterpreterException(e.getCause());
+                throw (ConfigurationException) e.getCause();
             }
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
 
         Token afterassignment = context.getAfterassignment();
@@ -298,29 +267,19 @@ public class RightHyphenmin extends AbstractHyphenationCode
             context.setAfterassignment(null);
             source.push(afterassignment);
         }
-        prefix.clearGlobal(); //gene: not really useful but a little bit of compatibility
+        prefix.clearGlobal(); // gene: not really useful but a little bit of
+        // compatibility
     }
 
     /**
-     * This method is called when the macro <tt>\multiply</tt> has been seen.
-     * It performs the remaining tasks for the expansion.
-     *
-     * @param prefix the prefix for the command
-     * @param context the processor context
-     * @param source the token source to parse
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.arithmetic.Multiplyable#multiply(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.arithmetic.Multiplyable#multiply(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void multiply(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void multiply(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         long globaldef = context.getCount("globaldefs").getValue();
         if (globaldef != 0) {
@@ -329,16 +288,21 @@ public class RightHyphenmin extends AbstractHyphenationCode
 
         Language table = getHyphenationTable(context);
         source.getKeyword(context, "by");
-        long righthyphenmin = table.getRightHyphenmin();
+        long righthyphenmin;
+        try {
+            righthyphenmin = table.getRightHyphenmin();
+        } catch (HyphenationException e) {
+            throw new NoHelpException(e);
+        }
         righthyphenmin *= CountParser.scanInteger(context, source, typesetter);
 
         try {
             table.setRightHyphenmin(righthyphenmin);
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
-                throw new InterpreterException(e.getCause());
+                throw (ConfigurationException) e.getCause();
             }
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
 
         Token afterassignment = context.getAfterassignment();
@@ -346,29 +310,27 @@ public class RightHyphenmin extends AbstractHyphenationCode
             context.setAfterassignment(null);
             source.push(afterassignment);
         }
-        prefix.clearGlobal(); //gene: not really useful but a little bit of compatibility
+        prefix.clearGlobal(); // gene: not really useful but a little bit of
+        // compatibility
     }
 
     /**
      * This method is the getter for the description of the primitive.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for further tokens to qualify the request
      * @param typesetter the typesetter to use
-     *
+     * 
      * @return the description of the primitive as list of Tokens
-     *
-     * @throws InterpreterException in case of an error
      * @throws CatcodeException in case of an error in token creation
-     *
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
-    public Tokens the(Context context, TokenSource source,
-            Typesetter typesetter)
-            throws InterpreterException,
-                CatcodeException {
+    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
+            throws CatcodeException,
+                HelpingException,
+                TypesetterException {
 
         Language table = getHyphenationTable(context);
         try {
@@ -376,9 +338,9 @@ public class RightHyphenmin extends AbstractHyphenationCode
                 String.valueOf(table.getRightHyphenmin()));
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
-                throw new InterpreterException(e.getCause());
+                throw (ConfigurationException) e.getCause();
             }
-            throw new InterpreterException(e);
+            throw new NoHelpException(e);
         }
     }
 

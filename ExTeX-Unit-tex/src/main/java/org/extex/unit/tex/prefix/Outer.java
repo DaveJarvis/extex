@@ -22,7 +22,6 @@ package org.extex.unit.tex.prefix;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.PrefixCode;
 import org.extex.typesetter.Typesetter;
@@ -31,46 +30,50 @@ import org.extex.typesetter.Typesetter;
  * This class provides an implementation for the primitive <code>\outer</code>.
  * It does simply nothing, but as a side effect the prefix <i>OUTER</i> is
  * added to the prefixes.
- *
+ * 
  * <doc name="outer">
  * <h3>The Prefix Primitive <tt>\outer</tt></h3>
  * <p>
- *  The primitive <tt>\outer</tt> is a prefix modifying the operation of a
- *  following primitive. If the immediately following token denotes another
- *  prefix primitives then the functionality is accumulated. This means that
- *  the next non-prefix primitive is modified by any directly preceding prefix
- *  primitives.
+ * The primitive <tt>\outer</tt> is a prefix modifying the operation of a
+ * following primitive. If the immediately following token denotes another
+ * prefix primitives then the functionality is accumulated. This means that the
+ * next non-prefix primitive is modified by any directly preceding prefix
+ * primitives.
  * </p>
  * <p>
- *  Multiple <tt>\outer</tt> prefixes act identical to a single one.
+ * Multiple <tt>\outer</tt> prefixes act identical to a single one.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;outer&rang;
  *      &rarr; <tt>\outer</tt>  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \outer\def#1{--#1--}  </pre>
  *  <pre class="TeXSample">
  *    \outer\outer\def#1{--#1--}  </pre>
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
 public class Outer extends AbstractCode implements PrefixCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Outer(String name) {
@@ -79,26 +82,14 @@ public class Outer extends AbstractCode implements PrefixCode {
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) {
 
         prefix.setOuter();
     }

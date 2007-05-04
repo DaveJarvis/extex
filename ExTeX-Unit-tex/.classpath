@@ -9,5 +9,10 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font-API"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Interpreter-API"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Typesetter-API"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Scanner-API"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Typesetter-tex"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

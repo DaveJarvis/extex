@@ -25,9 +25,10 @@ import java.util.StringTokenizer;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.InterpreterNumberFormatException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 import de.dante.extex.interpreter.type.real.Real;
 
@@ -144,13 +145,15 @@ public class Transform implements Serializable {
      * 
      * @param context the context
      * @param source the token source
-     * @param typesetter TODO
-     * @throws InterpreterException ...
+     * @param typesetter the typesetter
+     * 
+     * @throws HelpingException in case of an error
      * @throws ConfigurationException in case of an configuration error
+     * @throws TypesetterException in case of an error in the typsesetter
      */
     public Transform(Context context, TokenSource source, Typesetter typesetter)
-            throws InterpreterException,
-                ConfigurationException {
+            throws HelpingException,
+                ConfigurationException, TypesetterException {
 
         super();
         for (int i = 0; i < MAXVAL; i++) {
@@ -161,13 +164,14 @@ public class Transform implements Serializable {
     /**
      * Creates a new object.
      * <p>
-     * If the string equlas <code>null</code> or empty, the value is set to
+     * If the string equals <code>null</code> or empty, the value is set to
      * zero
      * 
      * @param s the value as String
-     * @throws InterpreterException if a NumberFormatException is thrown
+     * 
+     * @throws HelpingException if a NumberFormatException is thrown
      */
-    public Transform(String s) throws InterpreterException {
+    public Transform(String s) throws HelpingException {
 
         if (s == null || s.trim().length() == 0) {
             for (int i = 0; i < MAXVAL; i++) {

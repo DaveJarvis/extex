@@ -19,30 +19,32 @@
 
 package org.extex.unit.base.register.font;
 
-import org.extex.core.count.CountParser;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.scanner.CountParser;
+import org.extex.scanner.type.Namespace;
 import org.extex.typesetter.Typesetter;
-import org.extex.typesetter.type.noad.util.MathFontParameter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for a font stored under a name and a
  * number in the context.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
 public class NumberedFont extends NamedFont {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public NumberedFont(String name) {
@@ -52,17 +54,36 @@ public class NumberedFont extends NamedFont {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.unit.base.register.font.NamedFont#getKey(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     protected String getKey(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        return MathFontParameter.key(context, getName(), //
-            Long.toString(CountParser.scanNumber(context, source, typesetter)));
+        String theName = getName();
+        String theNumber =
+                Long.toString(CountParser.scanNumber(context, source,
+                    typesetter));
+        return key(context, theName, theNumber);
+    }
+
+    /**
+     * Construct the reference key for a numbered font.
+     * 
+     * @param context the interpreter context
+     * @param theName the base name of the font
+     * @param theNumber the number of the font
+     * 
+     * @return the key
+     */
+    public static String key(Context context, String theName, String theNumber) {
+
+        if (Namespace.SUPPORT_NAMESPACE_FONT) {
+            return context.getNamespace() + "\b" + theName + "#" + theNumber;
+        }
+        return theName + "#" + theNumber;
     }
 
 }

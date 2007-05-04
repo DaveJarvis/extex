@@ -26,9 +26,9 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.EofInToksException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.InitializableCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.tokens.TokensConvertible;
@@ -36,18 +36,19 @@ import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive <code>\toks</code>.
  * It sets the numbered toks register to the value given, and as a side effect
  * all prefixes are zeroed.
- *
+ * 
  * Example:
- *
+ * 
  * <pre>
  *     \toks12{123}
  * </pre>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
  * @version $Revision:4431 $
@@ -67,10 +68,10 @@ public class ToksParameter extends AbstractToks
 
     /**
      * Return the key for a named toks register.
-     *
+     * 
      * @param name the name of the register
      * @param context the interpreter context to use
-     *
+     * 
      * @return the key for the toks register
      */
     public static String getKey(String name, Context context) {
@@ -88,7 +89,7 @@ public class ToksParameter extends AbstractToks
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public ToksParameter(String name) {
@@ -99,7 +100,7 @@ public class ToksParameter extends AbstractToks
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      * @param key the key
      */
@@ -111,11 +112,11 @@ public class ToksParameter extends AbstractToks
 
     /**
      * Configure an object according to a given Configuration.
-     *
+     * 
      * @param config the configuration object to consider
-     *
+     * 
      * @throws ConfigurationException in case that something went wrong
-     *
+     * 
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
@@ -129,20 +130,19 @@ public class ToksParameter extends AbstractToks
 
     /**
      * Return the key (the number) for the tokens register.
-     *
+     * 
      * @param source the source for the next tokens &ndash; if required
      * @param context the interpreter context to use
      * @param typesetter the typesetter
-     *
+     * 
      * @return the key for the tokens register
-     *
+     * 
      * @see org.extex.unit.base.register.toks.AbstractToks#getKey(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     protected String getKey(Context context, TokenSource source,
-            Typesetter typesetter) {
+            Typesetter typesetter) throws TypesetterException {
 
         if (Namespace.SUPPORT_NAMESPACE_TOKS) {
             return context.getNamespace() + "\b" + key;
@@ -152,18 +152,16 @@ public class ToksParameter extends AbstractToks
 
     /**
      * Initialize the Code with some value coming from a String.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source of information for the initialization
      * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     *
+     * 
      * @see org.extex.interpreter.type.InitializableCode#init(
      *      org.extex.interpreter.context.Context, TokenSource, Typesetter)
      */
-    public void init(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+    public void init(Context context, TokenSource source, Typesetter typesetter)
+            throws HelpingException, TypesetterException {
 
         if (source != null) {
             Tokens toks = new Tokens();
@@ -177,27 +175,14 @@ public class ToksParameter extends AbstractToks
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws InterpreterException in case of an error
-     * @throws ConfigurationException in case of an configuration error
-     *
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public void assign(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         String key = getKey(context, source, typesetter);
         source.getOptionalEquals(context);
@@ -211,27 +196,12 @@ public class ToksParameter extends AbstractToks
     }
 
     /**
-     * This method converts a register into tokens.
-     * It might be necessary to read further tokens to determine which value to
-     * use. For instance an additional register number might be required. In
-     * this case the additional arguments Context and TokenSource can be used.
+     * {@inheritDoc}
      *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use for conversion
-     *
-     * @return the converted value
-     *
-     * @throws InterpreterException in case of an error
-     *
-     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(org.extex.interpreter.context.Context, org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public Tokens convertTokens(Context context,
-            TokenSource source, Typesetter typesetter)
-            throws InterpreterException {
+    public Tokens convertTokens(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         String key = getKey(context, source, typesetter);
         return context.getToks(key);
@@ -240,18 +210,17 @@ public class ToksParameter extends AbstractToks
     /**
      * Scan the tokens between <code>{</code> and <code>}</code> and store
      * them in the named tokens register.
-     *
+     * 
      * @param prefix the prefix flags
      * @param context the interpreter context
      * @param source the token source
      * @param typesetter the typesetter
      * @param key the key
-     *
+     * 
      * @throws GeneralException in case of an error
      */
-    protected void expand(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter,
-            String key) throws GeneralException {
+    protected void expand(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter, String key) throws GeneralException {
 
         Tokens toks = source.getTokens(context, source, typesetter);
         context.setToks(key, toks, prefix.clearGlobal());
@@ -259,13 +228,13 @@ public class ToksParameter extends AbstractToks
 
     /**
      * Return the register value as <code>Tokens</code> for <code>\the</code>.
-     *
+     * 
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
-    public Tokens the(Context context, TokenSource source,
-            Typesetter typesetter) throws InterpreterException {
+    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
+            throws HelpingException, TypesetterException {
 
         return context.getToks(getKey(context, source, typesetter));
     }

@@ -32,6 +32,7 @@ import junit.framework.TestCase;
 
 import org.extex.ExTeX;
 import org.extex.interpreter.exception.InterpreterException;
+import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.interaction.InteractionUnknownException;
 
 /**
@@ -125,11 +126,11 @@ public class TeXTest extends TestCase {
      *
      * @return the result on the error stream
      *
-     * @throws InterpreterException in case of an interpreter error
+     * @throws HelpingException in case of an interpreter error
      * @throws IOException in case of an io error
      */
     public static String runFailure(String[] args, String expect)
-            throws InterpreterException,
+            throws HelpingException,
                 IOException {
 
         return runTest(args, makeProperties(), expect, EXIT_ERROR);
@@ -149,7 +150,7 @@ public class TeXTest extends TestCase {
      * @throws IOException in case of an io error
      */
     public static String runSuccess(String[] args, String expect)
-            throws InterpreterException,
+            throws HelpingException,
                 IOException {
 
         return runTest(args, makeProperties(), expect, EXIT_OK);
@@ -166,12 +167,12 @@ public class TeXTest extends TestCase {
      *
      * @return the result on the error stream
      *
-     * @throws InterpreterException in case of an interpreter error
+     * @throws HelpingException in case of an interpreter error
      * @throws IOException in case of an io error
      */
     public static String runTest(String[] args,
             Properties properties, String expect, int exit)
-            throws InterpreterException,
+            throws HelpingException,
                 IOException {
 
         Locale.setDefault(new Locale("en"));
@@ -220,7 +221,7 @@ public class TeXTest extends TestCase {
      * @throws IOException in case of an io error
      */
     public static String runTest(String[] args, String expect,
-            int exit) throws InterpreterException, IOException {
+            int exit) throws HelpingException, IOException {
 
         return runTest(args, makeProperties(), expect, exit);
     }
