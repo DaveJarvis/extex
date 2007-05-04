@@ -32,7 +32,7 @@ import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
 import org.extex.font.FontKey;
 import org.extex.font.FontKeyFactory;
-import org.extex.interpreter.type.font.Font;
+import org.extex.typesetter.tc.font.Font;
 
 /**
  * This class encapsulates cmr10.tfm for testing purposes.
@@ -1538,7 +1538,7 @@ public class CMR10 implements Font, Serializable {
      * 
      * @return the design size of the font
      * 
-     * @see org.extex.interpreter.type.font.Font#getDesignSize()
+     * @see org.extex.typesetter.tc.font.Font#getDesignSize()
      */
     public FixedDimen getDesignSize() {
 
@@ -1587,7 +1587,7 @@ public class CMR10 implements Font, Serializable {
      * 
      * @return the FontKey for this font
      * 
-     * @see org.extex.interpreter.type.font.Font#getFontKey()
+     * @see org.extex.typesetter.tc.font.Font#getFontKey()
      */
     public FontKey getFontKey() {
 
@@ -1599,7 +1599,7 @@ public class CMR10 implements Font, Serializable {
      * 
      * @return the font name
      * 
-     * @see org.extex.interpreter.type.font.Font#getFontName()
+     * @see org.extex.typesetter.tc.font.Font#getFontName()
      */
     public String getFontName() {
 
@@ -1611,7 +1611,7 @@ public class CMR10 implements Font, Serializable {
      * 
      * @return the hyphen character
      * 
-     * @see org.extex.interpreter.type.font.Font#getHyphenChar()
+     * @see org.extex.typesetter.tc.font.Font#getHyphenChar()
      */
     public UnicodeChar getHyphenChar() {
 
@@ -1623,7 +1623,7 @@ public class CMR10 implements Font, Serializable {
      * 
      * @return the skew char
      * 
-     * @see org.extex.interpreter.type.font.Font#getSkewChar()
+     * @see org.extex.typesetter.tc.font.Font#getSkewChar()
      */
     public UnicodeChar getSkewChar() {
 
@@ -1635,7 +1635,7 @@ public class CMR10 implements Font, Serializable {
      * 
      * @return the size of the 'space'.
      * 
-     * @see org.extex.interpreter.type.font.Font#getSpace()
+     * @see org.extex.typesetter.tc.font.Font#getSpace()
      */
     public FixedGlue getSpace() {
 
@@ -1683,7 +1683,7 @@ public class CMR10 implements Font, Serializable {
      * @param key the name of the parameter
      * @param value the value to set
      * 
-     * @see org.extex.interpreter.type.font.Font#setFontDimen( java.lang.String,
+     * @see org.extex.typesetter.tc.font.Font#setFontDimen( java.lang.String,
      *      org.extex.core.dimen.Dimen)
      */
     public void setFontDimen(String key, Dimen value) {
@@ -1696,7 +1696,7 @@ public class CMR10 implements Font, Serializable {
      * 
      * @param hyphen the hyphen character
      * 
-     * @see org.extex.interpreter.type.font.Font#setHyphenChar(
+     * @see org.extex.typesetter.tc.font.Font#setHyphenChar(
      *      org.extex.core.UnicodeChar)
      */
     public void setHyphenChar(UnicodeChar hyphen) {
@@ -1709,7 +1709,7 @@ public class CMR10 implements Font, Serializable {
      * 
      * @param skew the skew character
      * 
-     * @see org.extex.interpreter.type.font.Font#setSkewChar(
+     * @see org.extex.typesetter.tc.font.Font#setSkewChar(
      *      org.extex.core.UnicodeChar)
      */
     public void setSkewChar(UnicodeChar skew) {
@@ -1724,7 +1724,7 @@ public class CMR10 implements Font, Serializable {
      * @param uc the character
      * @param code the associated code
      * 
-     * @see org.extex.interpreter.type.font.Font#setEfCode(
+     * @see org.extex.typesetter.tc.font.Font#setEfCode(
      *      org.extex.core.UnicodeChar, long)
      */
     public void setEfCode(UnicodeChar uc, long code) {
@@ -1744,7 +1744,7 @@ public class CMR10 implements Font, Serializable {
      * 
      * @return the ef code
      * 
-     * @see org.extex.interpreter.type.font.Font#getEfCode(
+     * @see org.extex.typesetter.tc.font.Font#getEfCode(
      *      org.extex.core.UnicodeChar)
      */
     public long getEfCode(UnicodeChar uc) {
@@ -1760,7 +1760,7 @@ public class CMR10 implements Font, Serializable {
      * 
      * @return the depth of the character
      * 
-     * @see org.extex.interpreter.type.font.Font#getDepth(org.extex.core.UnicodeChar)
+     * @see org.extex.typesetter.tc.font.Font#getDepth(org.extex.core.UnicodeChar)
      */
     public FixedGlue getDepth(UnicodeChar uc) {
 
@@ -1775,7 +1775,7 @@ public class CMR10 implements Font, Serializable {
      * 
      * @return the height of the character
      * 
-     * @see org.extex.interpreter.type.font.Font#getHeight(org.extex.core.UnicodeChar)
+     * @see org.extex.typesetter.tc.font.Font#getHeight(org.extex.core.UnicodeChar)
      */
     public FixedGlue getHeight(UnicodeChar uc) {
 
@@ -1790,7 +1790,7 @@ public class CMR10 implements Font, Serializable {
      * 
      * @return the italic correction of the character
      * 
-     * @see org.extex.interpreter.type.font.Font#getItalicCorrection(org.extex.core.UnicodeChar)
+     * @see org.extex.typesetter.tc.font.Font#getItalicCorrection(org.extex.core.UnicodeChar)
      */
     public FixedDimen getItalicCorrection(UnicodeChar uc) {
 
@@ -1806,7 +1806,7 @@ public class CMR10 implements Font, Serializable {
      * 
      * @return the kerning between two characters
      * 
-     * @see org.extex.interpreter.type.font.Font#getKerning(
+     * @see org.extex.typesetter.tc.font.Font#getKerning(
      *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
      */
     public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
@@ -1823,7 +1823,7 @@ public class CMR10 implements Font, Serializable {
      * 
      * @return Returns the ligature for two characters
      * 
-     * @see org.extex.interpreter.type.font.Font#getLigature(
+     * @see org.extex.typesetter.tc.font.Font#getLigature(
      *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
      */
     public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
@@ -1839,7 +1839,7 @@ public class CMR10 implements Font, Serializable {
      * 
      * @return the width of the character
      * 
-     * @see org.extex.interpreter.type.font.Font#getWidth(
+     * @see org.extex.typesetter.tc.font.Font#getWidth(
      *      org.extex.core.UnicodeChar)
      */
     public FixedGlue getWidth(UnicodeChar uc) {
@@ -1856,7 +1856,7 @@ public class CMR10 implements Font, Serializable {
      * 
      * @return <code>true</code> iff the glyph is present
      * 
-     * @see org.extex.interpreter.type.font.Font#hasGlyph(
+     * @see org.extex.typesetter.tc.font.Font#hasGlyph(
      *      org.extex.core.UnicodeChar)
      */
     public boolean hasGlyph(UnicodeChar uc) {
@@ -1869,7 +1869,7 @@ public class CMR10 implements Font, Serializable {
      * 
      * @return the scale factor of the font
      * 
-     * @see org.extex.interpreter.type.font.Font#getScaleFactor()
+     * @see org.extex.typesetter.tc.font.Font#getScaleFactor()
      */
     public FixedCount getScaleFactor() {
 
@@ -1881,7 +1881,7 @@ public class CMR10 implements Font, Serializable {
      * 
      * @return the actual FontKey for this font.
      * 
-     * @see org.extex.interpreter.type.font.Font#getActualFontKey()
+     * @see org.extex.typesetter.tc.font.Font#getActualFontKey()
      */
     public FontKey getActualFontKey() {
 

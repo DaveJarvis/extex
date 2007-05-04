@@ -40,16 +40,16 @@ import org.extex.core.glue.Glue;
 import org.extex.core.muskip.Muskip;
 import org.extex.font.FontKey;
 import org.extex.framework.logger.LogEnabled;
-import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.context.tc.TypesettingContextFactory;
-import org.extex.interpreter.context.tc.TypesettingContextImpl;
-import org.extex.interpreter.type.font.Font;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.logging.LogFormatter;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.TypesetterOptions;
+import org.extex.typesetter.tc.TypesettingContext;
+import org.extex.typesetter.tc.TypesettingContextFactory;
+import org.extex.typesetter.tc.TypesettingContextImpl;
+import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.CharNode;
@@ -307,7 +307,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          *
          * @return the actual size
          *
-         * @see org.extex.interpreter.type.font.Font#getActualSize()
+         * @see org.extex.typesetter.tc.font.Font#getActualSize()
          */
         public FixedDimen getActualSize() {
 
@@ -319,7 +319,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          *
          * @return the check sum of the font
          *
-         * @see org.extex.interpreter.type.font.Font#getCheckSum()
+         * @see org.extex.typesetter.tc.font.Font#getCheckSum()
          */
         public int getCheckSum() {
 
@@ -333,7 +333,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          *
          * @return the depth of the character
          *
-         * @see org.extex.interpreter.type.font.Font#getDepth(org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.Font#getDepth(org.extex.core.UnicodeChar)
          */
         public FixedGlue getDepth(UnicodeChar uc) {
 
@@ -345,7 +345,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          *
          * @return the design size of the font
          *
-         * @see org.extex.interpreter.type.font.Font#getDesignSize()
+         * @see org.extex.typesetter.tc.font.Font#getDesignSize()
          */
         public FixedDimen getDesignSize() {
 
@@ -359,7 +359,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          *
          * @return the ef code
          *
-         * @see org.extex.interpreter.type.font.Font#getEfCode(org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.Font#getEfCode(org.extex.core.UnicodeChar)
          */
         public long getEfCode(UnicodeChar uc) {
 
@@ -371,7 +371,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          *
          * @return the size of 1em.
          *
-         * @see org.extex.interpreter.type.font.Font#getEm()
+         * @see org.extex.typesetter.tc.font.Font#getEm()
          */
         public FixedDimen getEm() {
 
@@ -383,7 +383,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          *
          * @return the size of 1ex.
          *
-         * @see org.extex.interpreter.type.font.Font#getEx()
+         * @see org.extex.typesetter.tc.font.Font#getEx()
          */
         public FixedDimen getEx() {
 
@@ -397,7 +397,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          *
          * @return the size of the parameter with the name 'name'.
          *
-         * @see org.extex.interpreter.type.font.Font#getFontDimen(java.lang.String)
+         * @see org.extex.typesetter.tc.font.Font#getFontDimen(java.lang.String)
          */
         public FixedDimen getFontDimen(String key) {
 
@@ -409,7 +409,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          *
          * @return the FontKey for this font
          *
-         * @see org.extex.interpreter.type.font.Font#getFontKey()
+         * @see org.extex.typesetter.tc.font.Font#getFontKey()
          */
         public FontKey getFontKey() {
 
@@ -421,7 +421,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          *
          * @return the name of the font
          *
-         * @see org.extex.interpreter.type.font.Font#getFontName()
+         * @see org.extex.typesetter.tc.font.Font#getFontName()
          */
         public String getFontName() {
 
@@ -435,7 +435,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          *
          * @return the height of the character
          *
-         * @see org.extex.interpreter.type.font.Font#getHeight(org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.Font#getHeight(org.extex.core.UnicodeChar)
          */
         public FixedGlue getHeight(UnicodeChar uc) {
 
@@ -447,7 +447,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          *
          * @return the hyphen character
          *
-         * @see org.extex.interpreter.type.font.Font#getHyphenChar()
+         * @see org.extex.typesetter.tc.font.Font#getHyphenChar()
          */
         public UnicodeChar getHyphenChar() {
 
@@ -461,7 +461,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          *
          * @return the italic correction of the character
          *
-         * @see org.extex.interpreter.type.font.Font#getItalicCorrection(org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.Font#getItalicCorrection(org.extex.core.UnicodeChar)
          */
         public FixedDimen getItalicCorrection(UnicodeChar uc) {
 
@@ -476,7 +476,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          *
          * @return the kerning between two characters
          *
-         * @see org.extex.interpreter.type.font.Font#getKerning(
+         * @see org.extex.typesetter.tc.font.Font#getKerning(
          *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
          */
         public FixedDimen getKerning(UnicodeChar uc1,
@@ -493,7 +493,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          *
          * @return Returns the ligature for two characters
          *
-         * @see org.extex.interpreter.type.font.Font#getLigature(
+         * @see org.extex.typesetter.tc.font.Font#getLigature(
          *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
          */
         public UnicodeChar getLigature(UnicodeChar uc1,
@@ -507,7 +507,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          *
          * @return the skew char
          *
-         * @see org.extex.interpreter.type.font.Font#getSkewChar()
+         * @see org.extex.typesetter.tc.font.Font#getSkewChar()
          */
         public UnicodeChar getSkewChar() {
 
@@ -519,7 +519,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          *
          * @return the size of the 'space'.
          *
-         * @see org.extex.interpreter.type.font.Font#getSpace()
+         * @see org.extex.typesetter.tc.font.Font#getSpace()
          */
         public FixedGlue getSpace() {
 
@@ -533,7 +533,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          *
          * @return the width of the character
          *
-         * @see org.extex.interpreter.type.font.Font#getWidth(org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.Font#getWidth(org.extex.core.UnicodeChar)
          */
         public FixedGlue getWidth(UnicodeChar uc) {
 
@@ -548,7 +548,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          *
          * @return <code>true</code> iff the glyph is present
          *
-         * @see org.extex.interpreter.type.font.Font#hasGlyph(org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.Font#hasGlyph(org.extex.core.UnicodeChar)
          */
         public boolean hasGlyph(UnicodeChar uc) {
 
@@ -563,7 +563,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          * @param uc the character
          * @param code the associated code
          *
-         * @see org.extex.interpreter.type.font.Font#setEfCode(
+         * @see org.extex.typesetter.tc.font.Font#setEfCode(
          *      org.extex.core.UnicodeChar, long)
          */
         public void setEfCode(UnicodeChar uc, long code) {
@@ -578,7 +578,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          * @param key the name of the parameter
          * @param value the value to set
          *
-         * @see org.extex.interpreter.type.font.Font#setFontDimen(
+         * @see org.extex.typesetter.tc.font.Font#setFontDimen(
          *      java.lang.String, org.extex.core.dimen.Dimen)
          */
         public void setFontDimen(String key, Dimen value) {
@@ -590,7 +590,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          *
          * @param hyphen the hyphen character
          *
-         * @see org.extex.interpreter.type.font.Font#setHyphenChar(
+         * @see org.extex.typesetter.tc.font.Font#setHyphenChar(
          *      org.extex.core.UnicodeChar)
          */
         public void setHyphenChar(UnicodeChar hyphen) {
@@ -603,7 +603,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          *
          * @param skew the skew character
          *
-         * @see org.extex.interpreter.type.font.Font#setSkewChar(org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.Font#setSkewChar(org.extex.core.UnicodeChar)
          */
         public void setSkewChar(UnicodeChar skew) {
 
@@ -615,7 +615,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          *
          * @return the scale factor of the font
          *
-         * @see org.extex.interpreter.type.font.Font#getScaleFactor()
+         * @see org.extex.typesetter.tc.font.Font#getScaleFactor()
          */
         public FixedCount getScaleFactor() {
 
@@ -628,7 +628,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          *
          * @return the actual FontKey for this font.
          *
-         * @see org.extex.interpreter.type.font.Font#getActualFontKey()
+         * @see org.extex.typesetter.tc.font.Font#getActualFontKey()
          */
         public FontKey getActualFontKey() {
 

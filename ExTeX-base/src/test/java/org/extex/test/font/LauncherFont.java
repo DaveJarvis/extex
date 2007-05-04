@@ -32,7 +32,7 @@ import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
 import org.extex.font.FontKey;
 import org.extex.font.FontKeyFactory;
-import org.extex.interpreter.type.font.Font;
+import org.extex.typesetter.tc.font.Font;
 
 /**
  * This class provides a memory-only font for test cases. Since no external file
@@ -74,7 +74,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @return the actual FontKey for this font.
      *
-     * @see org.extex.interpreter.type.font.Font#getActualFontKey()
+     * @see org.extex.typesetter.tc.font.Font#getActualFontKey()
      */
     public FontKey getActualFontKey() {
 
@@ -86,7 +86,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @return the actual size of the font
      *
-     * @see org.extex.interpreter.type.font.Font#getActualSize()
+     * @see org.extex.typesetter.tc.font.Font#getActualSize()
      */
     public FixedDimen getActualSize() {
 
@@ -98,7 +98,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @return the check sum of the font.
      *
-     * @see org.extex.interpreter.type.font.Font#getCheckSum()
+     * @see org.extex.typesetter.tc.font.Font#getCheckSum()
      */
     public int getCheckSum() {
 
@@ -112,7 +112,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @return the depth of the character
      *
-     * @see org.extex.interpreter.type.font.Font#getDepth(
+     * @see org.extex.typesetter.tc.font.Font#getDepth(
      *      org.extex.core.UnicodeChar)
      */
     public FixedGlue getDepth(UnicodeChar uc) {
@@ -140,7 +140,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @return the design size of the font
      *
-     * @see org.extex.interpreter.type.font.Font#getDesignSize()
+     * @see org.extex.typesetter.tc.font.Font#getDesignSize()
      */
     public FixedDimen getDesignSize() {
 
@@ -154,7 +154,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @return the ef code
      *
-     * @see org.extex.interpreter.type.font.Font#getEfCode(
+     * @see org.extex.typesetter.tc.font.Font#getEfCode(
      *      org.extex.core.UnicodeChar)
      */
     public long getEfCode(UnicodeChar uc) {
@@ -168,7 +168,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @return the size of 1em.
      *
-     * @see org.extex.interpreter.type.font.Font#getEm()
+     * @see org.extex.typesetter.tc.font.Font#getEm()
      */
     public FixedDimen getEm() {
 
@@ -180,7 +180,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @return Returns the size of 1ex.
      *
-     * @see org.extex.interpreter.type.font.Font#getEx()
+     * @see org.extex.typesetter.tc.font.Font#getEx()
      */
     public FixedDimen getEx() {
 
@@ -194,7 +194,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @return the size of the parameter with the name 'name'.
      *
-     * @see org.extex.interpreter.type.font.Font#getFontDimen(java.lang.String)
+     * @see org.extex.typesetter.tc.font.Font#getFontDimen(java.lang.String)
      */
     public FixedDimen getFontDimen(String name) {
 
@@ -207,7 +207,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @return the FontKey for this font
      *
-     * @see org.extex.interpreter.type.font.Font#getFontKey()
+     * @see org.extex.typesetter.tc.font.Font#getFontKey()
      */
     public FontKey getFontKey() {
 
@@ -219,7 +219,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @return the name of the font
      *
-     * @see org.extex.interpreter.type.font.Font#getFontName()
+     * @see org.extex.typesetter.tc.font.Font#getFontName()
      */
     public String getFontName() {
 
@@ -233,7 +233,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @return the height of the character
      *
-     * @see org.extex.interpreter.type.font.Font#getHeight(
+     * @see org.extex.typesetter.tc.font.Font#getHeight(
      *      org.extex.core.UnicodeChar)
      */
     public FixedGlue getHeight(UnicodeChar uc) {
@@ -246,7 +246,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @return the hyphen character
      *
-     * @see org.extex.interpreter.type.font.Font#getHyphenChar()
+     * @see org.extex.typesetter.tc.font.Font#getHyphenChar()
      */
     public UnicodeChar getHyphenChar() {
 
@@ -260,7 +260,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @return the italic correction of the character
      *
-     * @see org.extex.interpreter.type.font.Font#getItalicCorrection(
+     * @see org.extex.typesetter.tc.font.Font#getItalicCorrection(
      *      org.extex.core.UnicodeChar)
      */
     public FixedDimen getItalicCorrection(UnicodeChar uc) {
@@ -276,7 +276,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @return the kerning between two characters
      *
-     * @see org.extex.interpreter.type.font.Font#getKerning(
+     * @see org.extex.typesetter.tc.font.Font#getKerning(
      *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
      */
     public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
@@ -292,7 +292,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @return Returns the ligature for two characters
      *
-     * @see org.extex.interpreter.type.font.Font#getLigature(
+     * @see org.extex.typesetter.tc.font.Font#getLigature(
      *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
      */
     public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
@@ -310,7 +310,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @return the scale factor of the font
      *
-     * @see org.extex.interpreter.type.font.Font#getScaleFactor()
+     * @see org.extex.typesetter.tc.font.Font#getScaleFactor()
      */
     public FixedCount getScaleFactor() {
 
@@ -322,7 +322,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @return the skew char
      *
-     * @see org.extex.interpreter.type.font.Font#getSkewChar()
+     * @see org.extex.typesetter.tc.font.Font#getSkewChar()
      */
     public UnicodeChar getSkewChar() {
 
@@ -334,7 +334,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @return Returns the size of the 'space'.
      *
-     * @see org.extex.interpreter.type.font.Font#getSpace()
+     * @see org.extex.typesetter.tc.font.Font#getSpace()
      */
     public FixedGlue getSpace() {
 
@@ -348,7 +348,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @return Returns the width of the character
      *
-     * @see org.extex.interpreter.type.font.Font#getWidth(
+     * @see org.extex.typesetter.tc.font.Font#getWidth(
      *      org.extex.core.UnicodeChar)
      */
     public FixedGlue getWidth(UnicodeChar uc) {
@@ -363,7 +363,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @return <code>true</code> iff the glyph is present
      *
-     * @see org.extex.interpreter.type.font.Font#hasGlyph(
+     * @see org.extex.typesetter.tc.font.Font#hasGlyph(
      *      org.extex.core.UnicodeChar)
      */
     public boolean hasGlyph(UnicodeChar uc) {
@@ -379,7 +379,7 @@ public class LauncherFont implements Font, Serializable {
      * @param uc the character
      * @param code the associated code
      *
-     * @see org.extex.interpreter.type.font.Font#setEfCode(
+     * @see org.extex.typesetter.tc.font.Font#setEfCode(
      *      org.extex.core.UnicodeChar,
      *      long)
      */
@@ -394,7 +394,7 @@ public class LauncherFont implements Font, Serializable {
      * @param name the name of the parameter
      * @param value the value to set
      *
-     * @see org.extex.interpreter.type.font.Font#setFontDimen(
+     * @see org.extex.typesetter.tc.font.Font#setFontDimen(
      *      java.lang.String,
      *      org.extex.core.dimen.Dimen)
      */
@@ -408,7 +408,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @param h the hyphen character
      *
-     * @see org.extex.interpreter.type.font.Font#setHyphenChar(
+     * @see org.extex.typesetter.tc.font.Font#setHyphenChar(
      *      org.extex.core.UnicodeChar)
      */
     public void setHyphenChar(UnicodeChar h) {
@@ -421,7 +421,7 @@ public class LauncherFont implements Font, Serializable {
      *
      * @param s the skew character
      *
-     * @see org.extex.interpreter.type.font.Font#setSkewChar(
+     * @see org.extex.typesetter.tc.font.Font#setSkewChar(
      *      org.extex.core.UnicodeChar)
      */
     public void setSkewChar(UnicodeChar s) {

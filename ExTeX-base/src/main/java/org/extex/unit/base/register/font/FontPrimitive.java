@@ -40,9 +40,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractAssignment;
-import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.type.font.FontConvertible;
-import org.extex.interpreter.type.font.FontImpl;
 import org.extex.scanner.CountParser;
 import org.extex.scanner.DimenParser;
 import org.extex.scanner.GlueParser;
@@ -52,6 +50,8 @@ import org.extex.scanner.type.token.SpaceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.typesetter.tc.font.Font;
+import org.extex.typesetter.tc.font.impl.FontImpl;
 
 /**
  * This class provides an implementation for the primitive <code>\font</code>.

@@ -87,7 +87,7 @@ public class ReadTokenUntilNull extends AbstractCode {
 
         StringBuffer buf = new StringBuffer(INITSIZE);
 
-        TokenVisitor visitor = new MyTokenVisitor();
+        MyTokenVisitor visitor = new MyTokenVisitor();
 
         Token t = null;
         do {
@@ -113,14 +113,14 @@ public class ReadTokenUntilNull extends AbstractCode {
      * Returns the content of a token as special String.
      * </p>
      */
-    private class MyTokenVisitor implements TokenVisitor {
+    private class MyTokenVisitor implements TokenVisitor<String,Object> {
 
         /**
          * @see org.extex.scanner.type.token.TokenVisitor#visitActive(
          *      org.extex.scanner.type.token.ActiveCharacterToken,
          *      java.lang.Object)
          */
-        public Object visitActive(ActiveCharacterToken token, Object arg)
+        public String visitActive(ActiveCharacterToken token, Object arg)
                 throws Exception {
 
             return "[A:" + token.toText() + "]";
@@ -130,7 +130,7 @@ public class ReadTokenUntilNull extends AbstractCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitCr(
          *      org.extex.scanner.type.token.CrToken, java.lang.Object)
          */
-        public Object visitCr(CrToken token, Object arg) throws Exception {
+        public String visitCr(CrToken token, Object arg) throws Exception {
 
             return "[CR]";
         }
@@ -140,7 +140,7 @@ public class ReadTokenUntilNull extends AbstractCode {
          *      org.extex.scanner.type.token.ControlSequenceToken,
          *      java.lang.Object)
          */
-        public Object visitEscape(ControlSequenceToken token, Object arg)
+        public String visitEscape(ControlSequenceToken token, Object arg)
                 throws Exception {
 
             return "/" + token.getName() + " ";
@@ -150,7 +150,7 @@ public class ReadTokenUntilNull extends AbstractCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitLeftBrace(
          *      org.extex.scanner.type.token.LeftBraceToken, java.lang.Object)
          */
-        public Object visitLeftBrace(LeftBraceToken token, Object arg)
+        public String visitLeftBrace(LeftBraceToken token, Object arg)
                 throws Exception {
 
             return "(";
@@ -160,7 +160,7 @@ public class ReadTokenUntilNull extends AbstractCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitLetter(
          *      org.extex.scanner.type.token.LetterToken, java.lang.Object)
          */
-        public Object visitLetter(LetterToken token, Object arg)
+        public String visitLetter(LetterToken token, Object arg)
                 throws Exception {
 
             return token.toText();
@@ -170,7 +170,7 @@ public class ReadTokenUntilNull extends AbstractCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitMacroParam(
          *      org.extex.scanner.type.token.MacroParamToken, java.lang.Object)
          */
-        public Object visitMacroParam(MacroParamToken token, Object arg)
+        public String visitMacroParam(MacroParamToken token, Object arg)
                 throws Exception {
 
             return "[M:" + token.toText() + "]";
@@ -180,7 +180,7 @@ public class ReadTokenUntilNull extends AbstractCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitMathShift(
          *      org.extex.scanner.type.token.MathShiftToken, java.lang.Object)
          */
-        public Object visitMathShift(MathShiftToken token, Object arg)
+        public String visitMathShift(MathShiftToken token, Object arg)
                 throws Exception {
 
             return token.toText();
@@ -190,7 +190,7 @@ public class ReadTokenUntilNull extends AbstractCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitOther(
          *      org.extex.scanner.type.token.OtherToken, java.lang.Object)
          */
-        public Object visitOther(OtherToken token, Object arg) throws Exception {
+        public String visitOther(OtherToken token, Object arg) throws Exception {
 
             return token.toText();
         }
@@ -199,7 +199,7 @@ public class ReadTokenUntilNull extends AbstractCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitRightBrace(
          *      org.extex.scanner.type.token.RightBraceToken, java.lang.Object)
          */
-        public Object visitRightBrace(RightBraceToken token, Object arg)
+        public String visitRightBrace(RightBraceToken token, Object arg)
                 throws Exception {
 
             return ")";
@@ -209,7 +209,7 @@ public class ReadTokenUntilNull extends AbstractCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitSpace(
          *      org.extex.scanner.type.token.SpaceToken, java.lang.Object)
          */
-        public Object visitSpace(SpaceToken token, Object arg) throws Exception {
+        public String visitSpace(SpaceToken token, Object arg) throws Exception {
 
             return " ";
         }
@@ -218,7 +218,7 @@ public class ReadTokenUntilNull extends AbstractCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitSubMark(
          *      org.extex.scanner.type.token.SubMarkToken, java.lang.Object)
          */
-        public Object visitSubMark(SubMarkToken token, Object arg)
+        public String visitSubMark(SubMarkToken token, Object arg)
                 throws Exception {
 
             return token.toText();
@@ -228,7 +228,7 @@ public class ReadTokenUntilNull extends AbstractCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitSupMark(
          *      org.extex.scanner.type.token.SupMarkToken, java.lang.Object)
          */
-        public Object visitSupMark(SupMarkToken token, Object arg)
+        public String visitSupMark(SupMarkToken token, Object arg)
                 throws Exception {
 
             return token.toText();
@@ -238,7 +238,7 @@ public class ReadTokenUntilNull extends AbstractCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitTabMark(
          *      org.extex.scanner.type.token.TabMarkToken, java.lang.Object)
          */
-        public Object visitTabMark(TabMarkToken token, Object arg)
+        public String visitTabMark(TabMarkToken token, Object arg)
                 throws Exception {
 
             return token.toText();

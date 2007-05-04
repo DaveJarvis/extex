@@ -29,16 +29,13 @@ import org.extex.core.count.ImmutableCount;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.glue.Glue;
 import org.extex.core.muskip.Muskip;
-import org.extex.font.type.other.NullFont;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.context.observer.group.AfterGroupObserver;
 import org.extex.interpreter.context.observer.group.AfterGroupObserverList;
-import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.file.InputFile;
-import org.extex.interpreter.type.font.Font;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.Namespace;
@@ -47,6 +44,8 @@ import org.extex.scanner.type.file.OutFile;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
+import org.extex.typesetter.tc.TypesettingContext;
+import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.math.MathClass;
 import org.extex.typesetter.type.math.MathCode;
 import org.extex.typesetter.type.math.MathDelimiter;
@@ -575,7 +574,7 @@ public class GroupImpl implements Group {
                 return font;
             }
         }
-        return next != null ? next.getFont(name) : new NullFont();
+        return next != null ? next.getFont(name) : null;
     }
 
     /**
@@ -1015,6 +1014,8 @@ public class GroupImpl implements Group {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.max.context.Group#set( java.lang.Object,
      *      java.lang.Object, java.lang.Object, boolean)
      */
@@ -1037,15 +1038,8 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * Setter for the {@link org.extex.interpreter.type.box.Box box} register in
-     * all requested groups. Count registers are named, either with a number or
-     * an arbitrary string.
-     * 
-     * @param name the name or the number of the register
-     * @param value the new value of the register
-     * @param global the indicator for the scope; <code>true</code> means all
-     *        groups; otherwise the current group is affected only
-     * 
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.max.context.Group#setBox( java.lang.String,
      *      org.extex.interpreter.type.box.Box, boolean)
      */
@@ -1063,13 +1057,8 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * Setter for the catcode of a character in the specified groups.
-     * 
-     * @param uc the character
-     * @param code the catcode
-     * @param global the indicator for the scope; <code>true</code> means all
-     *        groups; otherwise the current group is affected only
-     * 
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.max.context.Group#setCatcode(
      *      org.extex.core.UnicodeChar, org.extex.scanner.type.Catcode, boolean)
      */
@@ -1193,7 +1182,7 @@ public class GroupImpl implements Group {
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.max.context.Group#setFont( java.lang.String,
-     *      org.extex.interpreter.type.font.Font, boolean)
+     *      org.extex.typesetter.tc.font.Font, boolean)
      */
     public void setFont(String name, Font font, boolean global) {
 
@@ -1316,13 +1305,8 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * Setter for the muskip register in the requested groups.
-     * 
-     * @param name the name of the register
-     * @param value the value of the register
-     * @param global the indicator for the scope; <code>true</code> means all
-     *        groups; otherwise the current group is affected only
-     * 
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.max.context.Group#setMuskip( java.lang.String,
      *      org.extex.core.muskip.Muskip, boolean)
      */
@@ -1340,11 +1324,8 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * Setter for the name space.
-     * 
-     * @param theNamespace the new value for the name space
-     * @param global the scoping of the assignment
-     * 
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.max.context.Group#setNamespace(
      *      java.lang.String, boolean)
      */
@@ -1358,13 +1339,8 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * Setter for the output file for a given name.
-     * 
-     * @param name the name of the output file
-     * @param file the output file specification
-     * @param global the indicator for the scope; <code>true</code> means all
-     *        groups; otherwise the current group is affected only
-     * 
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.max.context.Group#setOutFile(
      *      java.lang.String, org.extex.scanner.type.file.OutFile, boolean)
      */
@@ -1453,13 +1429,8 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * Setter for a toks register in all groups.
-     * 
-     * @param name the name of the toks register
-     * @param value the value of the toks register
-     * @param global the indicator for the scope; <code>true</code> means all
-     *        groups; otherwise the current group is affected only
-     * 
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.max.context.Group#setToks( java.lang.String,
      *      org.extex.scanner.type.tokens.Tokens, boolean)
      */
@@ -1477,10 +1448,8 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * Setter for the type.
-     * 
-     * @param type the type of the group
-     * 
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.max.context.Group#setType(
      *      org.extex.interpreter.context.group.GroupType)
      */
@@ -1490,14 +1459,10 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * Setter for the typesetting context in the specified groups.
-     * 
-     * @param context the new typesetting context
-     * @param global the indicator for the scope; <code>true</code> means all
-     *        groups; otherwise the current group is affected only
-     * 
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.max.context.Group#setTypesettingContext(
-     *      org.extex.interpreter.context.tc.TypesettingContext, boolean)
+     *      org.extex.typesetter.tc.TypesettingContext, boolean)
      */
     public void setTypesettingContext(TypesettingContext context, boolean global) {
 
@@ -1509,14 +1474,8 @@ public class GroupImpl implements Group {
     }
 
     /**
-     * Declare the translation from a lower case character to an upper case
-     * character.
-     * 
-     * @param lc lower case character
-     * @param uc uppercase equivalent
-     * @param global the indicator for the scope; <code>true</code> means all
-     *        groups; otherwise the current group is affected only
-     * 
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.max.context.Group#setUccode(
      *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar, boolean)
      */

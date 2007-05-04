@@ -29,13 +29,13 @@ import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
 import org.extex.core.muskip.Muskip;
-import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.context.tc.TypesettingContextFactory;
-import org.extex.interpreter.type.font.Font;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
+import org.extex.typesetter.tc.TypesettingContext;
+import org.extex.typesetter.tc.TypesettingContextFactory;
+import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.HorizontalListNode;
 

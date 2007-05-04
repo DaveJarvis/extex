@@ -25,11 +25,11 @@ import java.io.Serializable;
 import org.extex.core.UnicodeChar;
 import org.extex.core.UnicodeCharList;
 import org.extex.framework.Registrar;
-import org.extex.interpreter.type.font.Font;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.TypesetterOptions;
+import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.factory.NodeFactory;
@@ -147,7 +147,7 @@ public class FutureLanguage implements ManagedLanguage, Serializable {
      * @see org.extex.language.ligature.LigatureBuilder#getLigature(
      *      org.extex.core.UnicodeChar,
      *      org.extex.core.UnicodeChar,
-     *      org.extex.interpreter.type.font.Font)
+     *      org.extex.typesetter.tc.font.Font)
      */
     public UnicodeChar getLigature(UnicodeChar c1, UnicodeChar c2,
             Font f) throws HyphenationException {

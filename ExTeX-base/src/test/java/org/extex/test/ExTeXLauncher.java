@@ -47,7 +47,6 @@ import org.extex.interpreter.ErrorHandler;
 import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.logging.LogFormatter;
 import org.extex.main.errorHandler.editHandler.EditHandler;
@@ -607,9 +606,9 @@ public class ExTeXLauncher extends TestCase {
     }
 
     /**
-     * Setter for config.
+     * Setter for configuration.
      *
-     * @param config the config to set
+     * @param config the configuration to set
      */
     public void setConfig(String config) {
 

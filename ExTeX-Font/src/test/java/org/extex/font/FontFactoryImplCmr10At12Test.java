@@ -23,8 +23,8 @@ import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.font.exception.FontException;
-import org.extex.font.type.other.NullFont;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.typesetter.tc.font.impl.NullFont;
 
 /**
  * Test for the font factory.

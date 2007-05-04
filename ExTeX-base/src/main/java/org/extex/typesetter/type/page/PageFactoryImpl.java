@@ -109,7 +109,7 @@ import org.extex.typesetter.type.node.WhatsItNode;
  *      &rarr; &lang;optional prefix&rang; <tt>\mediawidth</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@link
- *        org.extex.core.dimen.DimenParser#parse(Context,TokenSource,Typesetter)
+ *        org.extex.scanner.DimenParser#parse(Context,TokenSource,Typesetter)
  *        &lang;dimen value&rang;}
  *
  *    &lang;optional prefix&rang;
@@ -141,7 +141,7 @@ import org.extex.typesetter.type.node.WhatsItNode;
  *      &rarr; &lang;optional prefix&rang; <tt>\mediaheight</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@link
- *        org.extex.core.dimen.DimenParser#parse(Context,TokenSource,Typesetter)
+ *        org.extex.scanner.DimenParser#parse(Context,TokenSource,Typesetter)
  *        &lang;dimen value&rang;}
  *
  *    &lang;optional prefix&rang;
@@ -179,7 +179,7 @@ import org.extex.typesetter.type.node.WhatsItNode;
  *      &rarr; &lang;optional prefix&rang; <tt>\hoffset</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@link
- *        org.extex.core.dimen.DimenParser#parse(Context,TokenSource,Typesetter)
+ *        org.extex.scanner.DimenParser#parse(Context,TokenSource,Typesetter)
  *        &lang;dimen value&rang;}
  *
  *    &lang;optional prefix&rang;
@@ -217,7 +217,7 @@ import org.extex.typesetter.type.node.WhatsItNode;
  *      &rarr; &lang;optional prefix&rang; <tt>\voffset</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@link
- *        org.extex.core.dimen.DimenParser#parse(Context,TokenSource,Typesetter)
+ *        org.extex.scanner.DimenParser#parse(Context,TokenSource,Typesetter)
  *        &lang;dimen value&rang;}
  *
  *    &lang;optional prefix&rang;

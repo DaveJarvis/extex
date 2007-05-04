@@ -363,7 +363,6 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      * @return the printable representation
      *
      * @see #toString(StringBuffer)
-     * @see #toToks(TokenFactory)
      */
     public String toString() {
 

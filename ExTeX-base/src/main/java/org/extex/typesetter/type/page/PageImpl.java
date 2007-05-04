@@ -19,9 +19,9 @@
 
 package org.extex.typesetter.type.page;
 
+import org.extex.color.Color;
 import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.Dimen;
-import org.extex.interpreter.context.Color;
 import org.extex.typesetter.type.NodeList;
 
 /**
@@ -176,7 +176,7 @@ public class PageImpl implements Page {
      * @param bg the background color
      *
      * @see org.extex.typesetter.type.page.Page#setColor(
-     *      org.extex.interpreter.context.Color)
+     *      org.extex.color.Color)
      */
     public void setColor(Color bg) {
 

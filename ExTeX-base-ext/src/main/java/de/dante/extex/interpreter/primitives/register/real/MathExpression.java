@@ -69,6 +69,7 @@ public class MathExpression extends AbstractMath
      * @param name the name for debugging
      * @throws GeneralException ...
      */
+    @SuppressWarnings("unchecked")
     public MathExpression(String name) throws GeneralException {
 
         super(name);

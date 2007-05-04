@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.register.real;
 
-import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.helping.HelpingException;
@@ -60,21 +59,19 @@ public class MathPi extends AbstractMath
      * Creates a new object.
      * 
      * @param name the name for debugging
-     * @throws GeneralException ...
+     * @throws HelpingException ...
      */
-    public MathPi(String name) throws GeneralException {
+    public MathPi(String name) throws HelpingException {
 
         super(name);
-
     }
 
     /**
-     * Calculate
+     * {@inheritDoc}
      * 
-     * @param context the context
-     * @param source the token source
-     * @param typesetter ...
-     * @return the real value
+     * @see de.dante.extex.interpreter.primitives.register.real.AbstractMath#calculate(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     protected Real calculate(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException {

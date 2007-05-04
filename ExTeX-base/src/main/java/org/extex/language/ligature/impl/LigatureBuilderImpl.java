@@ -22,10 +22,10 @@ package org.extex.language.ligature.impl;
 import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
-import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.type.font.Font;
 import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.language.ligature.LigatureBuilder;
+import org.extex.typesetter.tc.TypesettingContext;
+import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.CharNode;
@@ -67,7 +67,7 @@ public class LigatureBuilderImpl implements LigatureBuilder {
      * @see org.extex.language.ligature.LigatureBuilder#getLigature(
      *      org.extex.core.UnicodeChar,
      *      org.extex.core.UnicodeChar,
-     *      org.extex.interpreter.type.font.Font)
+     *      org.extex.typesetter.tc.font.Font)
      */
     public UnicodeChar getLigature(UnicodeChar c1, UnicodeChar c2,
             Font f) {

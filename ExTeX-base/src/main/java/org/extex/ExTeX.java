@@ -80,9 +80,6 @@ import org.extex.interpreter.interaction.InteractionUnknownException;
 import org.extex.interpreter.loader.LoaderException;
 import org.extex.interpreter.max.StringSource;
 import org.extex.interpreter.max.TokenFactoryFactory;
-import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.font.FontImpl;
-import org.extex.interpreter.type.font.ModifiableFont;
 import org.extex.interpreter.unit.LoadUnit;
 import org.extex.language.LanguageManager;
 import org.extex.language.LanguageManagerFactory;
@@ -102,6 +99,9 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterFactory;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.output.OutputRoutineFactory;
+import org.extex.typesetter.tc.font.Font;
+import org.extex.typesetter.tc.font.ModifiableFont;
+import org.extex.typesetter.tc.font.impl.FontImpl;
 
 /**
  * This is the programmatic interface to the <logo>ExTeX</logo> functionality.

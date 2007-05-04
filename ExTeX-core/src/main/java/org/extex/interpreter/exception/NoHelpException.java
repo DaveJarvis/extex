@@ -34,12 +34,7 @@ public class NoHelpException extends HelpingException {
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * The field <tt>cause</tt> contains the cause.
-     */
-    private Throwable cause = null;
+    private static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -48,13 +43,14 @@ public class NoHelpException extends HelpingException {
      */
     public NoHelpException(Throwable cause) {
 
-        super();
-        this.cause = cause;
+        super(cause);
     }
 
     /**
      * Creates a new object.
      * 
+     * @param message the parameter to be inserted into the test template of
+     *        this exception
      */
     public NoHelpException(String message) {
 

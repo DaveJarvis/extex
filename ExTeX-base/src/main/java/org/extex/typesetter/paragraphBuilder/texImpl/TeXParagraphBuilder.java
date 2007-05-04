@@ -37,7 +37,6 @@ import org.extex.core.glue.WideGlue;
 import org.extex.framework.i18n.Localizable;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.logger.LogEnabled;
-import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
@@ -49,6 +48,7 @@ import org.extex.typesetter.paragraphBuilder.FixedParagraphShape;
 import org.extex.typesetter.paragraphBuilder.HangingParagraphShape;
 import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
+import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
@@ -2788,14 +2788,14 @@ public class TeXParagraphBuilder
      * The field <tt>visitor</tt> contains the node visitor for the inner switch
      * on the node types.
      */
-    private NodeVisitor visitor = new NodeVisitor() {
+    private NodeVisitor<Object, NodeList> visitor = new NodeVisitor<Object, NodeList>() {
 
         /**
          * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(
          *      org.extex.typesetter.type.node.AdjustNode,
          *      java.lang.Object)
          */
-        public Object visitAdjust(AdjustNode node, Object value) {
+        public Object visitAdjust(AdjustNode node, NodeList value) {
 
             return null;
         }
@@ -2806,10 +2806,10 @@ public class TeXParagraphBuilder
          *      java.lang.Object)
          */
         public Object visitAfterMath(AfterMathNode node,
-                Object value) throws GeneralException {
+                NodeList value) throws GeneralException {
 
             autoBreaking = true;
-            kernBreak((NodeList) value);
+            kernBreak(value);
             return null;
         }
 
@@ -2819,7 +2819,7 @@ public class TeXParagraphBuilder
          *      java.lang.Object)
          */
         public Object visitAlignedLeaders(AlignedLeadersNode node,
-                Object value) throws GeneralException {
+                NodeList value) throws GeneralException {
 
             // confusion("paragraph")
             throw new HelpingException(localizer, "Panic.Paragraph");
@@ -2831,10 +2831,10 @@ public class TeXParagraphBuilder
          *      java.lang.Object)
          */
         public Object visitBeforeMath(BeforeMathNode node,
-                Object value) throws GeneralException {
+                NodeList value) throws GeneralException {
 
             autoBreaking = false;
-            kernBreak((HorizontalListNode) value);
+            kernBreak(value);
             return null;
         }
 
@@ -2844,7 +2844,7 @@ public class TeXParagraphBuilder
          *      java.lang.Object)
          */
         public Object visitCenteredLeaders(CenteredLeadersNode node,
-                Object value) throws GeneralException {
+                NodeList value) throws GeneralException {
 
             // confusion("paragraph")
             throw new HelpingException(localizer, "Panic.Paragraph");
@@ -2855,13 +2855,13 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.CharNode,
          *      java.lang.Object)
          */
-        public Object visitChar(CharNode node, Object value)
+        public Object visitChar(CharNode node, NodeList value)
                 throws GeneralException {
 
             // begin if is_char_node(cur_p) then
             // «Advance (c)cur_p to the node following the present string of
             // characters 867»;
-            Node n = advanceToNonChar((HorizontalListNode) value);
+            Node n = advanceToNonChar(value);
             return n.visit(this, value);
         }
 
@@ -2871,11 +2871,10 @@ public class TeXParagraphBuilder
          *      java.lang.Object)
          */
         public Object visitDiscretionary(DiscretionaryNode node,
-                Object value) throws GeneralException {
+                NodeList nodes) throws GeneralException {
 
             // disc_node: «Try to break after a discretionary fragment, then
             // goto done5 869»;
-            NodeList nodes = (NodeList) value;
             /** 869.
 
              The following code knows that discretionary texts contain
@@ -2936,7 +2935,7 @@ public class TeXParagraphBuilder
          *      java.lang.Object)
          */
         public Object visitExpandedLeaders(ExpandedLeadersNode node,
-                Object value) throws GeneralException {
+                NodeList value) throws GeneralException {
 
             // confusion("paragraph")
             throw new HelpingException(localizer, "Panic.Paragraph");
@@ -2947,13 +2946,12 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.GlueNode,
          *      java.lang.Object)
          */
-        public Object visitGlue(GlueNode glue, Object value)
+        public Object visitGlue(GlueNode glue, NodeList nodes)
                 throws GeneralException {
 
             // glue_node: begin «If node cur_p is a legal breakpoint,
             // call try_break; then update the active widths by
             // including the glue in glue_ptr(cur_p) 868»;
-            NodeList nodes = (NodeList) value;
             /** 868.
              *
              * When node cur_p is a glue node, we look at prev_p to
@@ -3011,7 +3009,7 @@ public class TeXParagraphBuilder
          *      java.lang.Object)
          */
         public Object visitHorizontalList(HorizontalListNode node,
-                Object value) throws GeneralException {
+                NodeList value) throws GeneralException {
 
             activeWidth.add(node.getWidth());
             return null;
@@ -3023,7 +3021,7 @@ public class TeXParagraphBuilder
          *      java.lang.Object)
          */
         public Object visitInsertion(InsertionNode node,
-                Object value) throws GeneralException {
+                NodeList value) throws GeneralException {
 
             return null;
         }
@@ -3033,13 +3031,13 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.KernNode,
          *      java.lang.Object)
          */
-        public Object visitKern(KernNode node, Object value)
+        public Object visitKern(KernNode node, NodeList value)
                 throws GeneralException {
 
             // kern_node: if subtype(cur_p)=explicit then
             if (node instanceof ExplicitKernNode) {
                 // kern_break
-                kernBreak((HorizontalListNode) value);
+                kernBreak(value);
                 // else act_width <-- act_width+width(cur_p);
             } else {
                 activeWidth.add(node.getWidth());
@@ -3052,7 +3050,7 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.LigatureNode,
          *      java.lang.Object)
          */
-        public Object visitLigature(LigatureNode node, Object value)
+        public Object visitLigature(LigatureNode node, NodeList value)
                 throws GeneralException {
 
             // ligature_node: begin f <-- font(lig_char(cur_p));
@@ -3070,7 +3068,7 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.MarkNode,
          *      java.lang.Object)
          */
-        public Object visitMark(MarkNode node, Object value)
+        public Object visitMark(MarkNode node, NodeList value)
                 throws GeneralException {
 
             return null;
@@ -3081,10 +3079,10 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.PenaltyNode,
          *      java.lang.Object)
          */
-        public Object visitPenalty(PenaltyNode node, Object value)
+        public Object visitPenalty(PenaltyNode node, NodeList value)
                 throws GeneralException {
 
-            tryBreak((HorizontalListNode) value, (int) node.getPenalty(), false);
+            tryBreak(value, (int) node.getPenalty(), false);
             return null;
         }
 
@@ -3093,7 +3091,7 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.RuleNode,
          *      java.lang.Object)
          */
-        public Object visitRule(RuleNode node, Object value)
+        public Object visitRule(RuleNode node, NodeList value)
                 throws GeneralException {
 
             activeWidth.add(node.getWidth());
@@ -3105,7 +3103,7 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.SpaceNode,
          *      java.lang.Object)
          */
-        public Object visitSpace(SpaceNode node, Object value)
+        public Object visitSpace(SpaceNode node, NodeList value)
                 throws GeneralException {
 
             return visitGlue(node, value);
@@ -3117,7 +3115,7 @@ public class TeXParagraphBuilder
          *      java.lang.Object)
          */
         public Object visitVerticalList(VerticalListNode node,
-                Object value) throws GeneralException {
+                NodeList value) throws GeneralException {
 
             activeWidth.add(node.getWidth());
             return null;
@@ -3129,7 +3127,7 @@ public class TeXParagraphBuilder
          *      java.lang.Object)
          */
         public Object visitVirtualChar(VirtualCharNode node,
-                Object value) throws GeneralException {
+                NodeList value) throws GeneralException {
 
             return visitChar(node, value);
         }
@@ -3139,7 +3137,7 @@ public class TeXParagraphBuilder
          *      org.extex.typesetter.type.node.WhatsItNode,
          *      java.lang.Object)
          */
-        public Object visitWhatsIt(WhatsItNode node, Object value)
+        public Object visitWhatsIt(WhatsItNode node, NodeList value)
                 throws GeneralException {
 
             // whatsit_node: «Advance (p)past a whatsit node in the (l)

@@ -31,4 +31,5 @@ import org.extex.core.glue.FixedGlueComponent;
  */
 public interface FixedDimen extends FixedGlueComponent {
 
+    // no methods
 }

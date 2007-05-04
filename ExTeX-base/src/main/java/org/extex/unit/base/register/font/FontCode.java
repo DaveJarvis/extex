@@ -28,7 +28,6 @@ import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ComparableCode;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.type.font.FontConvertible;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.token.CodeToken;
@@ -36,6 +35,7 @@ import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.typesetter.tc.font.Font;
 
 /**
  * This class provides an implementation for a font primitive.

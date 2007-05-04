@@ -238,6 +238,16 @@ public class HelpingException extends GeneralException {
     }
 
     /**
+     * Creates a new object.
+     *
+     * @param cause the cause
+     */
+    protected HelpingException(Throwable cause) {
+
+        super(cause);
+    }
+
+    /**
      * Getter for further help information.
      * 
      * @return the help information

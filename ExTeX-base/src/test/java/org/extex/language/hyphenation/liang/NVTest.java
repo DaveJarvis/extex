@@ -30,11 +30,6 @@ import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
 import org.extex.font.FontKey;
 import org.extex.font.FontKeyFactory;
-import org.extex.font.type.other.NullFont;
-import org.extex.interpreter.context.tc.ModifiableTypesettingContext;
-import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.context.tc.TypesettingContextImpl;
-import org.extex.interpreter.type.font.Font;
 import org.extex.language.ModifiableLanguage;
 import org.extex.language.hyphenation.base.BaseHyphenationTable;
 import org.extex.language.ligature.impl.LigatureBuilderImpl;
@@ -43,6 +38,11 @@ import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.token.TokenFactoryImpl;
+import org.extex.typesetter.tc.ModifiableTypesettingContext;
+import org.extex.typesetter.tc.TypesettingContext;
+import org.extex.typesetter.tc.TypesettingContextImpl;
+import org.extex.typesetter.tc.font.Font;
+import org.extex.typesetter.tc.font.impl.NullFont;
 
 /**
  * This is the test class for NV.
@@ -207,7 +207,7 @@ public class NVTest extends TestCase {
          *
          * @return the hyphen char
          *
-         * @see org.extex.interpreter.type.font.Font#getHyphenChar()
+         * @see org.extex.typesetter.tc.font.Font#getHyphenChar()
          */
         public UnicodeChar getHyphenChar() {
 
@@ -231,7 +231,7 @@ public class NVTest extends TestCase {
          *
          * @return the skew char
          *
-         * @see org.extex.interpreter.type.font.Font#getSkewChar()
+         * @see org.extex.typesetter.tc.font.Font#getSkewChar()
          */
         public UnicodeChar getSkewChar() {
 
@@ -256,7 +256,7 @@ public class NVTest extends TestCase {
          * @param name the name of the parameter
          * @param value the value to set
          *
-         * @see org.extex.interpreter.type.font.Font#setFontDimen(
+         * @see org.extex.typesetter.tc.font.Font#setFontDimen(
          *      java.lang.String, org.extex.core.dimen.Dimen)
          */
         public void setFontDimen(String name, Dimen value) {
@@ -269,7 +269,7 @@ public class NVTest extends TestCase {
          *
          * @param h The hyphen character
          *
-         * @see org.extex.interpreter.type.font.Font#setHyphenChar(org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.Font#setHyphenChar(org.extex.core.UnicodeChar)
          */
         public void setHyphenChar(UnicodeChar h) {
 
@@ -281,7 +281,7 @@ public class NVTest extends TestCase {
          *
          * @param skew the skew character
          *
-         * @see org.extex.interpreter.type.font.Font#setSkewChar(org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.Font#setSkewChar(org.extex.core.UnicodeChar)
          */
         public void setSkewChar(UnicodeChar skew) {
 
@@ -296,7 +296,7 @@ public class NVTest extends TestCase {
          * @param uc the character
          * @param code the associated code
          *
-         * @see org.extex.interpreter.type.font.Font#setEfCode(org.extex.core.UnicodeChar, long)
+         * @see org.extex.typesetter.tc.font.Font#setEfCode(org.extex.core.UnicodeChar, long)
          */
         public void setEfCode(UnicodeChar uc, long code) {
 
@@ -310,7 +310,7 @@ public class NVTest extends TestCase {
          *
          * @return the ef code
          *
-         * @see org.extex.font.type.other.NullFont#getEfCode(org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getEfCode(org.extex.core.UnicodeChar)
          */
         public long getEfCode(UnicodeChar uc) {
 

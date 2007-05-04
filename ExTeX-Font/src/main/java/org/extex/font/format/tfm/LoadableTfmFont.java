@@ -121,7 +121,7 @@ public class LoadableTfmFont implements LoadableFont {
      *
      * @return TODO
      * 
-     * @see org.extex.interpreter.type.font.Font#getCheckSum()
+     * @see org.extex.typesetter.tc.font.Font#getCheckSum()
      */
     public int getCheckSum() {
 
@@ -319,7 +319,7 @@ public class LoadableTfmFont implements LoadableFont {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.font.Font#hasGlyph(org.extex.core.UnicodeChar)
+     * @see org.extex.typesetter.tc.font.Font#hasGlyph(org.extex.core.UnicodeChar)
      */
     public boolean hasGlyph(UnicodeChar uc) {
 

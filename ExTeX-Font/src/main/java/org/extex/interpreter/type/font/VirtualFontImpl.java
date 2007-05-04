@@ -22,7 +22,7 @@ package org.extex.interpreter.type.font;
 import org.extex.core.UnicodeChar;
 import org.extex.font.type.ModifiableFount;
 import org.extex.font.type.VirtualFount;
-import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.type.node.VirtualCharNode;
 
 
@@ -52,7 +52,7 @@ public class VirtualFontImpl implements VirtualFount {
      * {@inheritDoc}
      *
      * @see org.extex.font.type.VirtualFount#getVirtualCharNode(
-     *      org.extex.interpreter.context.tc.TypesettingContext,
+     *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
     public VirtualCharNode getVirtualCharNode(TypesettingContext context,

@@ -25,7 +25,7 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
-import org.extex.font.type.other.NullFont;
+import org.extex.typesetter.tc.font.impl.NullFont;
 
 /**
  * Test for the font factory (xtf).

@@ -59,7 +59,6 @@ import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.CsConvertible;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.box.Boxable;
-import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.type.font.FontConvertible;
 import org.extex.interpreter.type.tokens.TokensConvertible;
 import org.extex.scanner.CountParser;
@@ -88,6 +87,7 @@ import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.typesetter.tc.font.Font;
 import org.extex.unit.base.register.count.util.IntegerCode;
 import org.extex.unit.base.register.toks.ToksParameter;
 

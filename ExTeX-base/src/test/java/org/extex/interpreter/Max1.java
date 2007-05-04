@@ -31,9 +31,7 @@ import org.extex.core.glue.FixedGlue;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.scanner.TokenStream;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.ListMaker;
@@ -45,9 +43,11 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.InvalidSpacefactorException;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.typesetter.listMaker.TokenDelegateListMaker;
 import org.extex.typesetter.output.OutputRoutine;
 import org.extex.typesetter.pageBuilder.PageBuilder;
 import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
+import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.factory.NodeFactory;
@@ -61,7 +61,10 @@ public class Max1 extends TestCase {
     /**
      * Inner class to collect the things the typesetter sees.
      */
-    private static class TestTypesetter implements Typesetter {
+    private static class TestTypesetter
+            implements
+                Typesetter,
+                TokenDelegateListMaker {
 
         /**
          */
@@ -104,7 +107,7 @@ public class Max1 extends TestCase {
          * {@inheritDoc}
          * 
          * @see org.extex.typesetter.ListMaker#addSpace(
-         *      org.extex.interpreter.context.tc.TypesettingContext,
+         *      org.extex.typesetter.tc.TypesettingContext,
          *      org.extex.core.count.Count)
          */
         public void addSpace(TypesettingContext typesettingContext,
@@ -146,8 +149,10 @@ public class Max1 extends TestCase {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.ListMaker#cr(Context, TypesettingContext,
-         *      UnicodeChar)
+         * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#cr(
+         *      org.extex.interpreter.context.Context,
+         *      org.extex.typesetter.tc.TypesettingContext,
+         *      org.extex.core.UnicodeChar)
          */
         public void cr(Context context, TypesettingContext tc, UnicodeChar uc) {
 
@@ -288,9 +293,9 @@ public class Max1 extends TestCase {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.ListMaker#letter(
+         * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#letter(
          *      org.extex.core.UnicodeChar,
-         *      org.extex.interpreter.context.tc.TypesettingContext,
+         *      org.extex.typesetter.tc.TypesettingContext,
          *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource, org.extex.core.Locator)
          */
@@ -303,7 +308,7 @@ public class Max1 extends TestCase {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.ListMaker#mathShift(
+         * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#mathShift(
          *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
          *      org.extex.scanner.type.token.Token)
@@ -480,8 +485,11 @@ public class Max1 extends TestCase {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.Typesetter#subscriptMark( Context,
-         *      TokenSource, Typesetter, org.extex.scanner.type.token.Token)
+         * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#subscriptMark(
+         *      org.extex.interpreter.context.Context,
+         *      org.extex.interpreter.TokenSource,
+         *      org.extex.typesetter.Typesetter,
+         *      org.extex.scanner.type.token.Token)
          */
         public void subscriptMark(Context context, TokenSource source,
                 Typesetter typesetter, Token t) throws HelpingException {
@@ -492,8 +500,11 @@ public class Max1 extends TestCase {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.Typesetter#superscriptMark( Context,
-         *      TokenSource, Typesetter, org.extex.scanner.type.token.Token)
+         * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#superscriptMark(
+         *      org.extex.interpreter.context.Context,
+         *      org.extex.interpreter.TokenSource,
+         *      org.extex.typesetter.Typesetter,
+         *      org.extex.scanner.type.token.Token)
          */
         public void superscriptMark(Context context, TokenSource source,
                 Typesetter typesetter, Token t) throws HelpingException {
@@ -504,7 +515,9 @@ public class Max1 extends TestCase {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.Typesetter#tab( Context, TokenSource,
+         * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#tab(
+         *      org.extex.interpreter.context.Context,
+         *      org.extex.interpreter.TokenSource,
          *      org.extex.scanner.type.token.Token)
          */
         public void tab(Context context, TokenSource source, Token t) {
@@ -583,9 +596,9 @@ public class Max1 extends TestCase {
         TestTypesetter typesetter = new TestTypesetter();
         interpreter.setTypesetter(typesetter);
 
-        //TODO gene provide a stream
-//        TokenStream stream = new TokenStreamImpl(null, null, in, "");
-//        interpreter.run(stream);
+        // TODO gene provide a stream
+        // TokenStream stream = new TokenStreamImpl(null, null, in, "");
+        // interpreter.run(stream);
 
         return typesetter.toString();
     }

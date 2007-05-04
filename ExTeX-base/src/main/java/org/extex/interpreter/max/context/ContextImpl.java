@@ -32,6 +32,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.extex.backend.documentWriter.DocumentWriterOptions;
+import org.extex.color.Color;
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
@@ -43,6 +44,7 @@ import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
 import org.extex.core.muskip.Muskip;
 import org.extex.font.CoreFontFactory;
+import org.extex.font.exception.FontException;
 import org.extex.framework.Registrar;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
@@ -55,7 +57,6 @@ import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Conditional;
 import org.extex.interpreter.ConditionalSwitch;
 import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Color;
 import org.extex.interpreter.context.ContextInternals;
 import org.extex.interpreter.context.group.GroupInfo;
 import org.extex.interpreter.context.group.GroupType;
@@ -78,16 +79,11 @@ import org.extex.interpreter.context.observer.load.LoadedObservable;
 import org.extex.interpreter.context.observer.load.LoadedObserver;
 import org.extex.interpreter.context.observer.tokens.TokensObservable;
 import org.extex.interpreter.context.observer.tokens.TokensObserver;
-import org.extex.interpreter.context.tc.Direction;
-import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.context.tc.TypesettingContextFactory;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.NoHelpException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.box.Box;
-import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.unit.UnitInfo;
 import org.extex.language.Language;
 import org.extex.language.LanguageManager;
@@ -105,6 +101,11 @@ import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
+import org.extex.typesetter.tc.Direction;
+import org.extex.typesetter.tc.TypesettingContext;
+import org.extex.typesetter.tc.TypesettingContextFactory;
+import org.extex.typesetter.tc.font.Font;
+import org.extex.typesetter.tc.font.impl.FontImpl;
 import org.extex.typesetter.type.math.MathCode;
 import org.extex.typesetter.type.math.MathDelimiter;
 
@@ -718,7 +719,7 @@ public class ContextImpl
      * 
      * @return the code for the token
      * 
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      * 
      * @see org.extex.interpreter.context.ContextCode#getCode(
      *      org.extex.scanner.type.token.CodeToken)
@@ -848,7 +849,16 @@ public class ContextImpl
      */
     public Font getFont(String name) {
 
-        return this.group.getFont(name);
+        Font font = this.group.getFont(name);
+        if (font == null) {
+            try {
+                font = new FontImpl(fontFactory.getInstance(null));
+            } catch (FontException e) {
+                // TODO gene: error handling unimplemented
+                throw new RuntimeException("unimplemented");
+            }
+        }
+        return font;
     }
 
     /**
@@ -1415,7 +1425,7 @@ public class ContextImpl
      * @param dir the direction
      * 
      * @see org.extex.interpreter.context.Context#pushDirection(
-     *      org.extex.interpreter.context.tc.Direction)
+     *      org.extex.typesetter.tc.Direction)
      */
     public void pushDirection(Direction dir) {
 
@@ -1791,7 +1801,7 @@ public class ContextImpl
      * @throws ConfigurationException in case of an error in the configuration.
      * 
      * @see org.extex.interpreter.context.Context#set(
-     *      org.extex.interpreter.context.Color, boolean)
+     *      org.extex.color.Color, boolean)
      */
     public void set(Color color, boolean global) throws ConfigurationException {
 
@@ -1809,7 +1819,7 @@ public class ContextImpl
      * @throws ConfigurationException in case of an error in the configuration.
      * 
      * @see org.extex.interpreter.context.Context#set(
-     *      org.extex.interpreter.context.tc.Direction, boolean)
+     *      org.extex.typesetter.tc.Direction, boolean)
      */
     public void set(Direction direction, boolean global)
             throws ConfigurationException {
@@ -1828,7 +1838,7 @@ public class ContextImpl
      * @throws ConfigurationException in case of an error in the configuration.
      * 
      * @see org.extex.interpreter.context.Context#set(
-     *      org.extex.interpreter.type.font.Font, boolean)
+     *      org.extex.typesetter.tc.font.Font, boolean)
      */
     public void set(Font font, boolean global) throws ConfigurationException {
 
@@ -1943,7 +1953,7 @@ public class ContextImpl
      * @param global the indicator for the scope; <code>true</code> means all
      *        groups; otherwise the current group is affected only
      * 
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      * 
      * @see org.extex.interpreter.context.ContextCode#setCode(
      *      org.extex.scanner.type.token.CodeToken,
@@ -2037,7 +2047,7 @@ public class ContextImpl
      * @param global the indicator for the scope; <code>true</code> means all
      *        groups; otherwise the current group is affected only
      * 
-     * @throws InterpreterException in case of problems in an observer
+     * @throws HelpingException in case of problems in an observer
      * 
      * @see org.extex.interpreter.context.Context#setDimen( java.lang.String,
      *      org.extex.core.dimen.Dimen, boolean)
@@ -2088,7 +2098,7 @@ public class ContextImpl
      *        groups; otherwise the current group is affected only
      * 
      * @see org.extex.interpreter.context.Context#setFont( java.lang.String,
-     *      org.extex.interpreter.type.font.Font, boolean)
+     *      org.extex.typesetter.tc.font.Font, boolean)
      */
     public void setFont(String name, Font font, boolean global) {
 
@@ -2116,7 +2126,7 @@ public class ContextImpl
      * @param global the indicator for the scope; <code>true</code> means all
      *        groups; otherwise the current group is affected only
      * 
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      * 
      * @see org.extex.interpreter.context.Context#setGlue( java.lang.String,
      *      org.extex.core.glue.Glue, boolean)
@@ -2150,11 +2160,10 @@ public class ContextImpl
     }
 
     /**
-     * Setter for the {@link org.extex.scanner.type.file.InFile InFile}
-     * register in all requested groups. InFile registers are named, either with
-     * a number or an arbitrary string. The numbered registers where limited to
-     * 16 in <logo>TeX</logo>. This restriction does no longer hold for
-     * <logo>ExTeX</logo>.
+     * Setter for the {@link org.extex.scanner.type.file.InFile InFile} register
+     * in all requested groups. InFile registers are named, either with a number
+     * or an arbitrary string. The numbered registers where limited to 16 in
+     * <logo>TeX</logo>. This restriction does no longer hold for <logo>ExTeX</logo>.
      * 
      * @param name the name or the number of the file register
      * @param file the input file descriptor
@@ -2181,8 +2190,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.ContextInteraction#setInteraction(
      *      org.extex.interpreter.interaction.Interaction)
      */
-    public void setInteraction(Interaction interaction)
-            throws HelpingException {
+    public void setInteraction(Interaction interaction) throws HelpingException {
 
         if (this.interaction != interaction) {
             this.interaction = interaction;
@@ -2431,7 +2439,7 @@ public class ContextImpl
      * @param global the indicator for the scope; <code>true</code> means all
      *        groups; otherwise the current group is affected only
      * 
-     * @throws InterpreterException in case of a problem in an observer
+     * @throws HelpingException in case of a problem in an observer
      * 
      * @see org.extex.interpreter.context.Context#setToks(java.lang.String,
      *      org.extex.scanner.type.tokens.Tokens, boolean)

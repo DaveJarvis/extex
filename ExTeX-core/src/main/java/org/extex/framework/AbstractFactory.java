@@ -256,6 +256,7 @@ public abstract class AbstractFactory
      *
      * @throws ConfigurationException in case of an configuration error
      */
+    @SuppressWarnings("unchecked")
     protected Object createInstanceForConfiguration(Configuration config,
             Class<?> target) throws ConfigurationException {
 
@@ -342,6 +343,7 @@ public abstract class AbstractFactory
      *
      * @throws ConfigurationException in case of an configuration error
      */
+    @SuppressWarnings("unchecked")
     protected Object createInstanceForConfiguration(Configuration config,
             Class<?> target, Class<?> argClass, Object arg)
             throws ConfigurationException {
@@ -441,6 +443,7 @@ public abstract class AbstractFactory
      *
      * @throws ConfigurationException in case of an configuration error
      */
+    @SuppressWarnings("unchecked")
     protected Object createInstanceForConfiguration(Configuration config,
             Class<?> target, String arg1)
             throws ConfigurationException {

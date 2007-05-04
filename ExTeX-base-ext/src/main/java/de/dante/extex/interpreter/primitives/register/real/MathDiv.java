@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.register.real;
 
-import org.extex.core.exception.GeneralException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;

@@ -20,7 +20,7 @@
 package org.extex.font.type;
 
 import org.extex.core.UnicodeChar;
-import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.type.node.VirtualCharNode;
 
 /**

@@ -27,7 +27,7 @@ import org.extex.framework.RegistrarException;
 import org.extex.framework.RegistrarObserver;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.exception.RegistrarFontNotFoundException;
-import org.extex.interpreter.type.font.ModifiableFont;
+import org.extex.typesetter.tc.font.ModifiableFont;
 
 /**
  * This class is used to inject a resource finder when a class is loaded

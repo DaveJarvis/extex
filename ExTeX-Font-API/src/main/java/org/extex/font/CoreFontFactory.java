@@ -38,7 +38,7 @@ public interface CoreFontFactory extends ResourceFinder {
     /**
      * Return a new instance.
      * 
-     * If the name is empty or null, then the <code>NullFont</code> are
+     * If the name is empty or null, then the <code>NullFont</code> is
      * returned.
      * 
      * If no font is found, then <code>null</code> is returned.

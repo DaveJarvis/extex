@@ -29,12 +29,12 @@ import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
 import org.extex.font.FontKey;
 import org.extex.font.FontKeyFactory;
-import org.extex.font.type.other.NullFont;
 import org.extex.interpreter.context.MockContext;
-import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.context.tc.TypesettingContextImpl;
 import org.extex.language.Language;
 import org.extex.language.word.impl.TeXWords;
+import org.extex.typesetter.tc.TypesettingContext;
+import org.extex.typesetter.tc.TypesettingContextImpl;
+import org.extex.typesetter.tc.font.impl.NullFont;
 import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.DiscretionaryNode;
 import org.extex.typesetter.type.node.HorizontalListNode;
@@ -167,7 +167,7 @@ public class BaseHyphenationTableTest extends TestCase {
          *
          * @return the hyphen char
          *
-         * @see org.extex.interpreter.type.font.Font#getHyphenChar()
+         * @see org.extex.typesetter.tc.font.Font#getHyphenChar()
          */
         public UnicodeChar getHyphenChar() {
 
@@ -190,7 +190,7 @@ public class BaseHyphenationTableTest extends TestCase {
          *
          * @return the skew char
          *
-         * @see org.extex.interpreter.type.font.Font#getSkewChar()
+         * @see org.extex.typesetter.tc.font.Font#getSkewChar()
          */
         public UnicodeChar getSkewChar() {
 
@@ -216,7 +216,7 @@ public class BaseHyphenationTableTest extends TestCase {
          *
          * @return <code>true</code> iff the glyph is present
          *
-         * @see org.extex.interpreter.type.font.Font#hasGlyph(
+         * @see org.extex.typesetter.tc.font.Font#hasGlyph(
          *      org.extex.core.UnicodeChar)
          */
         public boolean hasGlyph(UnicodeChar uc) {
@@ -232,7 +232,7 @@ public class BaseHyphenationTableTest extends TestCase {
          * @param uc the character
          * @param code the associated code
          *
-         * @see org.extex.interpreter.type.font.Font#setEfCode(org.extex.core.UnicodeChar,
+         * @see org.extex.typesetter.tc.font.Font#setEfCode(org.extex.core.UnicodeChar,
          *      long)
          */
         public void setEfCode(UnicodeChar uc, long code) {
@@ -246,7 +246,7 @@ public class BaseHyphenationTableTest extends TestCase {
          * @param name  The name of the parameter.
          * @param value The value to set.
          *
-         * @see org.extex.interpreter.type.font.Font#setFontDimen(
+         * @see org.extex.typesetter.tc.font.Font#setFontDimen(
          *      java.lang.String, org.extex.core.dimen.Dimen)
          */
         public void setFontDimen(String name, Dimen value) {
@@ -259,7 +259,7 @@ public class BaseHyphenationTableTest extends TestCase {
          *
          * @param h the hyphen char
          *
-         * @see org.extex.interpreter.type.font.Font#setHyphenChar(
+         * @see org.extex.typesetter.tc.font.Font#setHyphenChar(
          *      org.extex.core.UnicodeChar)
          */
         public void setHyphenChar(UnicodeChar h) {
@@ -272,7 +272,7 @@ public class BaseHyphenationTableTest extends TestCase {
          *
          * @param s the skew char
          *
-         * @see org.extex.interpreter.type.font.Font#setSkewChar(
+         * @see org.extex.typesetter.tc.font.Font#setSkewChar(
          *      org.extex.core.UnicodeChar)
          */
         public void setSkewChar(UnicodeChar s) {

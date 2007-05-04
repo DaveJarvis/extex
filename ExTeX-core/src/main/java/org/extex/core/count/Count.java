@@ -139,6 +139,8 @@ public class Count implements Serializable, FixedCount {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.core.count.FixedCount#eq(
      *      org.extex.core.count.FixedCount)
      */
@@ -148,6 +150,8 @@ public class Count implements Serializable, FixedCount {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.core.count.FixedCount#ge(
      *      org.extex.core.count.FixedCount)
      */
@@ -178,6 +182,8 @@ public class Count implements Serializable, FixedCount {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.core.count.FixedCount#gt(
      *      org.extex.core.count.FixedCount)
      */
@@ -187,6 +193,8 @@ public class Count implements Serializable, FixedCount {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.core.count.FixedCount#le(
      *      org.extex.core.count.FixedCount)
      */
@@ -196,6 +204,8 @@ public class Count implements Serializable, FixedCount {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.core.count.FixedCount#lt(
      *      org.extex.core.count.FixedCount)
      */
@@ -225,6 +235,8 @@ public class Count implements Serializable, FixedCount {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.core.count.FixedCount#ne(
      *      org.extex.core.count.FixedCount)
      */
