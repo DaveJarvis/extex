@@ -141,6 +141,7 @@ public interface Token {
      *
      * @throws Exception in case of an error
      */
+    @SuppressWarnings("unchecked")
     Object visit(TokenVisitor visitor, Object arg1) throws Exception;
 
 }

@@ -206,6 +206,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
      *      org.extex.scanner.type.token.TokenVisitor,
      *      java.lang.Object)
      */
+    @SuppressWarnings("unchecked")
     public Object visit(TokenVisitor visitor, Object arg1)
             throws Exception {
 
