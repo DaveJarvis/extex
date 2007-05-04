@@ -86,8 +86,8 @@ public class Copy extends AbstractCode implements Boxable {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,
@@ -101,16 +101,7 @@ public class Copy extends AbstractCode implements Boxable {
     }
 
     /**
-     * Getter for the content as Box.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use
-     * @param insert the token to insert either at the beginning of the box or
-     *        after the box has been gathered. If it is <code>null</code> then
-     *        nothing is inserted
-     * 
-     * @return an appropriate Box
+     * {@inheritDoc}
      * 
      * @see org.extex.unit.tex.register.box.BoxPrimitive#getBox(
      *      org.extex.interpreter.context.Context,
@@ -118,7 +109,9 @@ public class Copy extends AbstractCode implements Boxable {
      *      org.extex.scanner.type.token.Token)
      */
     public Box getBox(Context context, TokenSource source,
-            Typesetter typesetter, Token insert) throws HelpingException, TypesetterException {
+            Typesetter typesetter, Token insert)
+            throws HelpingException,
+                TypesetterException {
 
         String key = Setbox.getKey(context, source, typesetter, getName());
         Box b = context.getBox(key);

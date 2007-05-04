@@ -19,8 +19,8 @@
 
 package org.extex.interpreter.context;
 
-import org.extex.interpreter.context.tc.TypesettingContextFactory;
 import org.extex.language.LanguageManagerCarrier;
+import org.extex.typesetter.tc.TypesettingContextFactory;
 
 /**
  * This interface describes the abilities of a Context together with some

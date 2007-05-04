@@ -74,6 +74,7 @@ public class WhatsItCloseNode extends WhatsItNode implements LogEnabled {
      *      org.extex.typesetter.type.NodeVisitor,
      *      boolean)
      */
+    @SuppressWarnings("unchecked")
     public Node atShipping(PageContext context, Typesetter typesetter,
             NodeVisitor visitor, boolean inHMode)
             throws GeneralException {

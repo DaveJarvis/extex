@@ -20,18 +20,19 @@
 package org.extex.typesetter.type;
 
 /**
- * This is an interface of a debugable NodeVisitor for inspecting
- * NodeVisitors.  Thie can be used for debugging.
+ * This is an interface of a debuggable NodeVisitor for inspecting
+ * NodeVisitors.  This can be used for debugging.
  *
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
  * @version $Revision: 4399 $
  */
-public interface InspectableNodeVisitor extends NodeVisitor {
+public interface InspectableNodeVisitor extends NodeVisitor<Object, Object> {
 
     /**
      * Set visitor for nested nodes.
      *
      * @param visitor to use
      */
-    void setVisitor(NodeVisitor visitor);
+    void setVisitor(NodeVisitor<Object, Object> visitor);
+
 }

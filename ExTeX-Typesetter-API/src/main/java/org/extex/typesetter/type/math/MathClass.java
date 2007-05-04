@@ -88,6 +88,7 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
+        @SuppressWarnings("unchecked")
         public Object visit(MathClassVisitor visitor, Object arg,
                 Object arg2) {
 
@@ -144,6 +145,7 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
+        @SuppressWarnings("unchecked")
         public Object visit(MathClassVisitor visitor, Object arg,
                 Object arg2) {
 
@@ -203,6 +205,7 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
+        @SuppressWarnings("unchecked")
         public Object visit(MathClassVisitor visitor, Object arg,
                 Object arg2) {
 
@@ -262,6 +265,7 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
+        @SuppressWarnings("unchecked")
         public Object visit(MathClassVisitor visitor, Object arg,
                 Object arg2) {
 
@@ -321,6 +325,7 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
+        @SuppressWarnings("unchecked")
         public Object visit(MathClassVisitor visitor, Object arg,
                 Object arg2) {
 
@@ -380,6 +385,7 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
+        @SuppressWarnings("unchecked")
         public Object visit(MathClassVisitor visitor, Object arg,
                 Object arg2) {
 
@@ -439,6 +445,7 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
+        @SuppressWarnings("unchecked")
         public Object visit(MathClassVisitor visitor, Object arg,
                 Object arg2) {
 
@@ -498,6 +505,7 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
+        @SuppressWarnings("unchecked")
         public Object visit(MathClassVisitor visitor, Object arg,
                 Object arg2) {
 
@@ -651,6 +659,7 @@ public abstract class MathClass implements Serializable {
      *
      * @return an arbitrary return value
      */
+    @SuppressWarnings("unchecked")
     public abstract Object visit(MathClassVisitor visitor,
             Object arg, Object arg2);
 

@@ -125,7 +125,7 @@ public class Setbox extends AbstractAssignment {
      *       &rarr; {@linkplain
      *        org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
      *        &lang;tokens&rang;}
-     *        | {@linkplain org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
+     *        | {@linkplain org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      *
      * <h4>Examples</h4>

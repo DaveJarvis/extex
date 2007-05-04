@@ -24,8 +24,9 @@ package org.extex.interpreter.type;
  * space in parsing.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
 public interface SpaceCode {
 
+    // no methods
 }

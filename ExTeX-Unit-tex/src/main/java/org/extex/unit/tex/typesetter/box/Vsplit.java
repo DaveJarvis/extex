@@ -119,16 +119,7 @@ public class Vsplit extends AbstractCode implements Boxable, LogEnabled {
     }
 
     /**
-     * Getter for the content as Box.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use
-     * @param insert the token to insert either at the beginning of the box or
-     *        after the box has been gathered. If it is <code>null</code> then
-     *        nothing is inserted
-     * 
-     * @return an appropriate Box
+     * {@inheritDoc}
      * 
      * @see org.extex.unit.tex.register.box.BoxPrimitive#getBox(
      *      org.extex.interpreter.context.Context,
@@ -136,7 +127,9 @@ public class Vsplit extends AbstractCode implements Boxable, LogEnabled {
      *      org.extex.scanner.type.token.Token)
      */
     public Box getBox(Context context, TokenSource source,
-            Typesetter typesetter, Token insert) throws HelpingException, TypesetterException {
+            Typesetter typesetter, Token insert)
+            throws HelpingException,
+                TypesetterException {
 
         // TODO gene: treat insert
         return new Box(vsplit(context, source, typesetter));

@@ -178,7 +178,7 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.ListMaker#mathShift(
+     * @see org.extex.typesetter.listMaker.math.MathListMaker#mathShift(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)

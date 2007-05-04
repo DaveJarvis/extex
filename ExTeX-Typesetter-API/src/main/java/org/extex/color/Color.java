@@ -17,11 +17,10 @@
  *
  */
 
-package org.extex.interpreter.context;
+package org.extex.color;
 
 import java.io.Serializable;
 
-import org.extex.color.ColorVisitor;
 import org.extex.core.exception.GeneralException;
 
 /**

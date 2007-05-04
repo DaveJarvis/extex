@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.interpreter.context.tc;
+package org.extex.typesetter.tc;
 
 import java.io.ObjectStreamException;
 import java.io.Serializable;

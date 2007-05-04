@@ -20,7 +20,7 @@
 package org.extex.typesetter.type.node.factory;
 
 import org.extex.core.UnicodeChar;
-import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.node.DiscretionaryNode;
 import org.extex.typesetter.type.node.HorizontalListNode;
@@ -54,7 +54,7 @@ public class SimpleUnicodeNodeFactory extends SimpleNodeFactory {
      * @return the new character node
      *
      * @see org.extex.typesetter.type.node.factory.NodeFactory#getNode(
-     *      org.extex.interpreter.context.tc.TypesettingContext,
+     *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
     public Node getNode(TypesettingContext typesettingContext,

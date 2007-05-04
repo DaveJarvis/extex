@@ -23,6 +23,7 @@ import java.util.Iterator;
 
 import junit.framework.TestCase;
 
+import org.extex.color.Color;
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.Dimen;
@@ -31,12 +32,11 @@ import org.extex.core.exception.GeneralException;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
 import org.extex.font.FontKey;
-import org.extex.interpreter.context.Color;
-import org.extex.interpreter.context.tc.Direction;
-import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.core.exception.ImpossibleException;
-import org.extex.interpreter.type.font.Font;
 import org.extex.language.Language;
+import org.extex.typesetter.tc.Direction;
+import org.extex.typesetter.tc.TypesettingContext;
+import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
@@ -45,7 +45,7 @@ import org.extex.typesetter.type.NodeVisitor;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
 public abstract class AbstractNodeListTester extends TestCase {
 

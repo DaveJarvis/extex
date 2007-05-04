@@ -89,7 +89,7 @@ public class Patterns extends AbstractHyphenationCode {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * This class provides the token visitor which processes all tokens in the
@@ -98,7 +98,7 @@ public class Patterns extends AbstractHyphenationCode {
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision: 4770 $
      */
-    private class TV implements TokenVisitor {
+    private class TV implements TokenVisitor<Object, Object> {
 
         /**
          * The field <tt>table</tt> contains the associated table.

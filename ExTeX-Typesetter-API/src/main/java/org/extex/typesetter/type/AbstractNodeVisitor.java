@@ -47,6 +47,7 @@ import org.extex.typesetter.type.node.WhatsItNode;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4739 $
  */
+@SuppressWarnings("unchecked")
 public abstract class AbstractNodeVisitor implements NodeVisitor {
 
     /**

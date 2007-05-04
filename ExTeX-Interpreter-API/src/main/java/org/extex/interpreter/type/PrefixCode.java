@@ -24,8 +24,9 @@ package org.extex.interpreter.type;
  * For those primitives it is legal to leave the prefix flags uncleared.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
 public interface PrefixCode {
 
+    // no methods
 }

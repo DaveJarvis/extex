@@ -102,6 +102,7 @@ public class CenteredLeadersNode extends AbstractExpandableNode
      *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
+    @SuppressWarnings("unchecked")
     public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {
 

@@ -19,11 +19,11 @@
 
 package org.extex.unit.tex.conditional;
 
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Conditional;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.typesetter.Typesetter;
@@ -115,7 +115,8 @@ public class Or extends AbstractCode {
      * @param source the token source
      * @param typesetter the typesetter
      * 
-     * @throws InterpreterException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     * @throws HelpingException in case of an error
      * 
      * @see org.extex.interpreter.type.ExpandableCode#expand(
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,

@@ -19,10 +19,10 @@
 
 package org.extex.unit.color;
 
+import org.extex.color.Color;
 import org.extex.color.model.GrayscaleColor;
 import org.extex.color.model.RgbColor;
 import org.extex.interpreter.Interpreter;
-import org.extex.interpreter.context.Color;
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 
 /**

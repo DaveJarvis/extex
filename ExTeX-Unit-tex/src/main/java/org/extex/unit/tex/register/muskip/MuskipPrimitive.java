@@ -55,7 +55,7 @@ import org.extex.typesetter.exception.TypesetterException;
  *        &lang;register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.core.muskip.Muskip#parse(Context,TokenSource,Typesetter)
+ *        org.extex.scanner.MuskipParser#parse(Context,TokenSource,Typesetter)
  *        &lang;muglue&rang;}
  *
  *   &lang;optional prefix&rang;

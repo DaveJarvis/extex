@@ -25,13 +25,13 @@ import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.muskip.Muskip;
-import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.context.tc.TypesettingContextFactory;
-import org.extex.interpreter.type.font.Font;
 import org.extex.scanner.type.file.OutFile;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
+import org.extex.typesetter.tc.TypesettingContext;
+import org.extex.typesetter.tc.TypesettingContextFactory;
+import org.extex.typesetter.tc.font.Font;
 
 /**
  * This interface describes the possibilities of the typesetter to access its
@@ -154,16 +154,17 @@ public interface PageContext {
     /**
      * TODO gene: missing JavaDoc
      *
-     * @param key
-     * @return
+     * @param key the key for the output file
+     *
+     * @return the output file
      */
     OutFile getOutFile(String key);
 
     /**
      * TODO gene: missing JavaDoc
      *
-     * @param index
-     * @param mark
+     * @param index the index of the mark
+     * @param mark the value of the mark
      */
     void setMark(Object index, Tokens mark);
 

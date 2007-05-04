@@ -24,11 +24,9 @@ import org.extex.core.UnicodeChar;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.NoHelpException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.box.Box;
-import org.extex.interpreter.type.font.Font;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.type.Catcode;
@@ -40,6 +38,7 @@ import org.extex.scanner.type.tokens.Tokens;
 import org.extex.test.ExTeXLauncher;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.typesetter.tc.font.Font;
 
 /**
  * This is a test suite for the primitive <tt>\if</tt>.
@@ -355,7 +354,8 @@ public class IfTest extends ExTeXLauncher {
          * @see org.extex.interpreter.TokenSource#getFont(org.extex.interpreter.context.Context,
          *      java.lang.String)
          */
-        public Font getFont(Context context, String primitive) throws TypesetterException {
+        public Font getFont(Context context, String primitive)
+                throws TypesetterException {
 
             return null;
         }
@@ -428,13 +428,7 @@ public class IfTest extends ExTeXLauncher {
         }
 
         /**
-         * Get the next token form the input streams.
-         * 
-         * @param context the interpreter context
-         * 
-         * @return the next token or <code>null</code>
-         * 
-         * @throws InterpreterException in case of an error
+         * {@inheritDoc}
          * 
          * @see org.extex.interpreter.TokenSource#getToken(
          *      org.extex.interpreter.context.Context)
@@ -535,7 +529,8 @@ public class IfTest extends ExTeXLauncher {
          *      org.extex.typesetter.Typesetter, java.lang.String)
          */
         public UnicodeChar scanCharacterCode(Context context,
-                Typesetter typesetter, String primitive) throws TypesetterException {
+                Typesetter typesetter, String primitive)
+                throws TypesetterException {
 
             return null;
         }
@@ -574,7 +569,8 @@ public class IfTest extends ExTeXLauncher {
          *      org.extex.typesetter.Typesetter, java.lang.String)
          */
         public String scanRegisterName(Context context, TokenSource source,
-                Typesetter typesetter, String primitive) throws TypesetterException {
+                Typesetter typesetter, String primitive)
+                throws TypesetterException {
 
             return null;
         }
@@ -584,7 +580,9 @@ public class IfTest extends ExTeXLauncher {
          * 
          * @see org.extex.interpreter.TokenSource#scanToken(org.extex.interpreter.context.Context)
          */
-        public Token scanToken(Context context) throws HelpingException, TypesetterException {
+        public Token scanToken(Context context)
+                throws HelpingException,
+                    TypesetterException {
 
             return getToken(context);
         }
@@ -609,7 +607,8 @@ public class IfTest extends ExTeXLauncher {
          *      java.lang.String)
          */
         public Tokens scanTokens(Context context, boolean reportUndefined,
-                boolean ignoreUndefined, String primitive) throws TypesetterException {
+                boolean ignoreUndefined, String primitive)
+                throws TypesetterException {
 
             return null;
         }
@@ -629,7 +628,8 @@ public class IfTest extends ExTeXLauncher {
          * @see org.extex.interpreter.TokenSource#scanTokensAsString(
          *      org.extex.interpreter.context.Context, java.lang.String)
          */
-        public String scanTokensAsString(Context context, String primitive) throws TypesetterException {
+        public String scanTokensAsString(Context context, String primitive)
+                throws TypesetterException {
 
             return null;
         }

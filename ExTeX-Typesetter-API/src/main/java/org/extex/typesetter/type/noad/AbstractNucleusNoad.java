@@ -19,8 +19,8 @@
 
 package org.extex.typesetter.type.noad;
 
-import org.extex.interpreter.context.Color;
-import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.color.Color;
+import org.extex.typesetter.tc.TypesettingContext;
 
 /**
  * This abstract noad represents a Noad with a nucleus.

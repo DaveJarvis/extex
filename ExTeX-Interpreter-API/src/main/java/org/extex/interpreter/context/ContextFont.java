@@ -20,7 +20,7 @@
 package org.extex.interpreter.context;
 
 import org.extex.font.CoreFontFactory;
-import org.extex.interpreter.type.font.Font;
+import org.extex.typesetter.tc.font.Font;
 
 /**
  * This interface describes the container for all data of an interpreter

@@ -19,10 +19,10 @@
 
 package org.extex.color.model;
 
+import org.extex.color.Color;
 import org.extex.color.ColorUtil;
 import org.extex.color.ColorVisitor;
 import org.extex.core.exception.GeneralException;
-import org.extex.interpreter.context.Color;
 
 /**
  * This class implements a color specification in HSV mode with an alpha
@@ -144,7 +144,7 @@ public class HsvColor implements Color {
      *
      * @return the alpha channel
      *
-     * @see org.extex.interpreter.context.Color#getAlpha()
+     * @see org.extex.color.Color#getAlpha()
      */
     public int getAlpha() {
 
@@ -187,7 +187,7 @@ public class HsvColor implements Color {
     /**
      * {@inheritDoc}
      *
-     * @see org.extex.interpreter.context.Color#visit(
+     * @see org.extex.color.Color#visit(
      *      org.extex.color.ColorVisitor,
      *      java.lang.Object)
      */

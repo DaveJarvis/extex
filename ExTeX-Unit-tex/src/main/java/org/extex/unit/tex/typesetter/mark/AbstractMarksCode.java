@@ -149,7 +149,7 @@ public abstract class AbstractMarksCode extends AbstractCode
      *       &rarr; {@linkplain
      *        org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
      *        &lang;tokens&rang;}
-     *        | {@linkplain org.extex.core.count.CountParser#scanNumber(Context,TokenSource,Typesetter)
+     *        | {@linkplain org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      * 
      * <h4>Examples</h4>
@@ -169,6 +169,7 @@ public abstract class AbstractMarksCode extends AbstractCode
      * @return the key for the mark primitive
      * 
      * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     protected String getKey(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {

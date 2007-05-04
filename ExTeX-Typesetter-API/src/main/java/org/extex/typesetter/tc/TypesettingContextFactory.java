@@ -17,23 +17,23 @@
  *
  */
 
-package org.extex.interpreter.context.tc;
+package org.extex.typesetter.tc;
 
-import org.extex.font.type.other.NullFont;
+import org.extex.color.Color;
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationClassNotFoundException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationInstantiationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
-import org.extex.interpreter.context.Color;
-import org.extex.interpreter.type.font.Font;
 import org.extex.language.Language;
 import org.extex.language.LanguageManager;
+import org.extex.typesetter.tc.font.Font;
+import org.extex.typesetter.tc.font.impl.NullFont;
 
 /**
  * This class provides a factory for a
- * {@link org.extex.interpreter.context.tc.TypesettingContext
+ * {@link org.extex.typesetter.tc.TypesettingContext
  *  TypesettingContext}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

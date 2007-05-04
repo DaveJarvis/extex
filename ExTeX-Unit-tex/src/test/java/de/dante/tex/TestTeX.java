@@ -44,7 +44,7 @@ import org.extex.scanner.type.token.Token;
 
 /**
  * Test for ExTeX.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
  * @version $Revision$
@@ -53,19 +53,13 @@ public final class TestTeX {
 
     /**
      * TODO missing JavaDoc.
-     *
+     * 
      */
     private static class AssertFailErrorHandler implements ErrorHandler {
 
         /**
-         * TODO missing JavaDoc
-         *
-         * @param e ...
-         * @param token ...
-         * @param source ...
-         * @param context ...
-         * @return ...
-         *
+         * {@inheritDoc}
+         * 
          * @see org.extex.interpreter.ErrorHandler#handleError(
          *      org.extex.core.exception.GeneralException,
          *      org.extex.scanner.type.token.Token,
@@ -80,15 +74,14 @@ public final class TestTeX {
         }
 
         /**
-         * TODO missing JavaDoc
-         *
-         * @param editHandler ...
-         *
+         * {@inheritDoc}
+         * 
          * @see org.extex.interpreter.ErrorHandler#setEditHandler(
          *      org.extex.main.errorHandler.editHandler.EditHandler)
          */
         public void setEditHandler(EditHandler editHandler) {
 
+            // noop
         }
     }
 
@@ -102,21 +95,22 @@ public final class TestTeX {
      */
     private TestTeX() {
 
+        // noop
     }
 
     /**
      * Run ExTeX with a special file and compare the output with a output test
      * file.
-     *
+     * 
      * @param texfile the tex file
      * @param outfile the output test file
      * @param project ...
-     *
+     * 
      * @exception Exception iff an error occurs; iff the two files are not
-     *                equals AssertionFailedError
+     *            equals AssertionFailedError
      */
-    public static void testRun(String texfile, String outfile,
-            String project) throws Exception {
+    public static void testRun(String texfile, String outfile, String project)
+            throws Exception {
 
         // run ExTeX
         ByteArrayOutputStream output = new ByteArrayOutputStream();
@@ -126,7 +120,7 @@ public final class TestTeX {
         pro.setProperty("extex.output", "test-plain"); // gene
         pro.setProperty("extex.config", "tex.xml"); // gene
         pro.setProperty("extex.texinputs", //
-                        "../" + project + "src/test/data"); // gene
+            "../" + project + "src/test/data"); // gene
         pro.setProperty("extex.file", texfile);
         pro.setProperty("extex.jobname", texfile);
         // BATCHMODE
@@ -167,9 +161,9 @@ public final class TestTeX {
 
     /**
      * TODO missing JavaDoc
-     *
+     * 
      * @param basename ...
-     *
+     * 
      * @throws Exception ...
      */
     public static void test(String basename) throws Exception {
@@ -180,24 +174,23 @@ public final class TestTeX {
 
     /**
      * TODO missing JavaDoc.
-     *
+     * 
      * @param basename ...
      * @param project ...
-     *
+     * 
      * @throws Exception ...
      */
-    public static void test(String basename, String project)
-            throws Exception {
+    public static void test(String basename, String project) throws Exception {
 
         testRun(
-                basename, //
-                "../" + project + "/src/test/data/" + basename + ".testtxt",
-                project);
+            basename, //
+            "../" + project + "/src/test/data/" + basename + ".testtxt",
+            project);
     }
 
     /**
      * Make an <code>Interpreter</code>.
-     *
+     * 
      * @param configurationFile configuration file for ExTeX
      * @return an <code>Interpreter</code>
      * @exception Exception if an error occurs
@@ -205,17 +198,19 @@ public final class TestTeX {
     public static Interpreter makeInterpreter(String configurationFile)
             throws Exception {
 
-        Configuration config = new ConfigurationFactory()
-                .newInstance("config/" + configurationFile);
-        InterpreterFactory intf = new InterpreterFactory(config
-                .getConfiguration("Interpreter"), null);
+        Configuration config =
+                new ConfigurationFactory().newInstance("config/"
+                        + configurationFile);
+        InterpreterFactory intf =
+                new InterpreterFactory(config.getConfiguration("Interpreter"),
+                    null);
 
         return intf.newInstance(null, null);
     }
 
     /**
      * Make an <code>Interpreter</code>.
-     *
+     * 
      * @return an <code>Interpreter</code>
      * @exception Exception if an error occurs
      */

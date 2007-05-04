@@ -31,54 +31,58 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.typesetter.box.AbstractBoxPrimitive;
 
 /**
- * This class provides an implementation for the primitive <code>\moveleft</code>.
- *
+ * This class provides an implementation for the primitive
+ * <code>\moveleft</code>.
+ * 
  * <doc name="moveleft">
  * <h3>The Primitive <tt>\moveleft</tt></h3>
  * <p>
- *  The primitive <tt>\moveleft</tt> takes a box and a length and moves it
- *  leftwards by the amount specified by the length.
- *  If the length is negative then the move is done rightwards.
+ * The primitive <tt>\moveleft</tt> takes a box and a length and moves it
+ * leftwards by the amount specified by the length. If the length is negative
+ * then the move is done rightwards.
  * </p>
  * <p>
- *  The primitive <tt>\moveleft</tt> is the counterpart to
- *  {@link org.extex.unit.tex.typesetter.displace.Moveright <tt>\moveright</tt>}.
+ * The primitive <tt>\moveleft</tt> is the counterpart to
+ * {@link org.extex.unit.tex.typesetter.displace.Moveright <tt>\moveright</tt>}.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;moveleft&rang;
  *      &rarr; <tt>\moveleft</tt> {@linkplain
  *        org.extex.core.dimen#Dimen(Context,TokenSource)
  *        &lang;dimen&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getBox(org.extex.interpreter.Flags,Context,Typesetter,Token)
  *        &lang;box&rang;}  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \moveleft 2em \hbox{abc}  </pre>
  *  <pre class="TeXSample">
  *    \moveleft -1pt \hbox to 120pt {abc}  </pre>
  *  <pre class="TeXSample">
  *    \moveleft 2mm \hbox spread 12pt {abc}  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
 public class Moveleft extends AbstractBoxPrimitive {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Moveleft(String name) {
@@ -87,26 +91,17 @@ public class Moveleft extends AbstractBoxPrimitive {
     }
 
     /**
-     * Getter for the content as Box.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use
-     * @param insert the token to insert either at the beginning of the box or
-     *   after the box has been gathered. If it is <code>null</code> then
-     *   nothing is inserted
-     *
-     * @return an appropriate Box
-     *
+     * {@inheritDoc}
+     * 
      * @see org.extex.unit.tex.register.box.BoxPrimitive#getBox(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
     public Box getBox(Context context, TokenSource source,
             Typesetter typesetter, Token insert)
-            throws HelpingException, TypesetterException {
+            throws HelpingException,
+                TypesetterException {
 
         Dimen move = DimenParser.parse(context, source, typesetter);
         Box box = source.getBox(null, context, typesetter, insert);

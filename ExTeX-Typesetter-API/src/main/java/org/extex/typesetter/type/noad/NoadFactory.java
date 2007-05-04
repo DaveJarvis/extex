@@ -19,7 +19,7 @@
 
 package org.extex.typesetter.type.noad;
 
-import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.type.math.MathClass;
 import org.extex.typesetter.type.math.MathClassVisitor;
 import org.extex.typesetter.type.math.MathCode;

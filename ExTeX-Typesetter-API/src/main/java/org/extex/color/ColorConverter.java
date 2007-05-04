@@ -24,7 +24,6 @@ import org.extex.color.model.CmykColor;
 import org.extex.color.model.GrayscaleColor;
 import org.extex.color.model.HsvColor;
 import org.extex.color.model.RgbColor;
-import org.extex.interpreter.context.Color;
 
 /**
  * This interface describes the possibilities of a color conversion.
@@ -42,7 +41,7 @@ import org.extex.interpreter.context.Color;
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
 public interface ColorConverter {
 

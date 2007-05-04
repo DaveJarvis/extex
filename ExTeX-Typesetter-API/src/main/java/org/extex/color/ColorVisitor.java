@@ -33,7 +33,7 @@ import org.extex.core.exception.GeneralException;
  * react on the type of some object. Consider different color models represented
  * in color objects of different types. All share a common base interface. This
  * is the situation for
- * {@link org.extex.interpreter.context.Color Color}s for which several
+ * {@link org.extex.color.Color Color}s for which several
  * types exist.
  * </p>
  * <p>
@@ -160,7 +160,7 @@ import org.extex.core.exception.GeneralException;
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
 public interface ColorVisitor {
 

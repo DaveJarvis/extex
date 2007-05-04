@@ -19,7 +19,6 @@
 
 package org.extex.interpreter.context;
 
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.interaction.Interaction;
 

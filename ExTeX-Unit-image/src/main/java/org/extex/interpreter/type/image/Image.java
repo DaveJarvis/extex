@@ -29,4 +29,5 @@ import java.io.Serializable;
  */
 public interface Image extends Serializable {
 
+    // not yet
 }

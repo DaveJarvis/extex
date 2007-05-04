@@ -23,8 +23,8 @@ import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.glue.FixedGlue;
-import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.type.font.Font;
+import org.extex.typesetter.tc.TypesettingContext;
+import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.NodeVisitor;
 
 /**

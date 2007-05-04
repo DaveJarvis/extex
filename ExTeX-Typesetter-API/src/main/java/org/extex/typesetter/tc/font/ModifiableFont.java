@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.interpreter.type.font;
+package org.extex.typesetter.tc.font;
 
 import org.extex.font.ExtexFont;
 

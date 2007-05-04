@@ -19,9 +19,9 @@
 
 package org.extex.typesetter.type.page;
 
+import org.extex.color.Color;
 import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.Dimen;
-import org.extex.interpreter.context.Color;
 import org.extex.typesetter.type.NodeList;
 
 /**

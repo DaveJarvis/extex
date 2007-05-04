@@ -22,8 +22,8 @@ package org.extex.typesetter.type.noad;
 import java.util.logging.Logger;
 
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.math.MathCode;
 import org.extex.typesetter.type.noad.util.MathContext;

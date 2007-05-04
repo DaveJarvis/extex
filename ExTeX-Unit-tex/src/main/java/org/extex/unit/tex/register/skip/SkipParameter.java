@@ -63,14 +63,8 @@ public class SkipParameter extends SkipPrimitive {
     }
 
     /**
-     * Return the key (the number) for the skip register.
-     *
-     * @param source the source for the next tokens &ndash; if required
-     * @param context the interpreter context to use
-     * @param typesetter the typesetter
-     *
-     * @return the key for the skip register
-     *
+     * {@inheritDoc}
+     * 
      * @see org.extex.unit.tex.register.skip.AbstractSkip#getKey(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,

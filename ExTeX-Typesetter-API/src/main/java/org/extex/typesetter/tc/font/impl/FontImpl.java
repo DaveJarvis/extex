@@ -16,7 +16,7 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.interpreter.type.font;
+package org.extex.typesetter.tc.font.impl;
 
 import java.io.ObjectStreamException;
 
@@ -25,8 +25,8 @@ import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
 import org.extex.font.ExtexFont;
 import org.extex.font.FontKey;
-import org.extex.font.type.other.NullFont;
 import org.extex.framework.Registrar;
+import org.extex.typesetter.tc.font.ModifiableFont;
 
 /**
  * This class constitutes a wrapper for a font. Here all information is stored
@@ -86,11 +86,9 @@ public class FontImpl extends NullFont implements ModifiableFont {
     }
 
     /**
-     * Returns the actual size.
+     * {@inheritDoc}
      *
-     * @return the actual size
-     *
-     * @see org.extex.font.type.Fount#getActualSize()
+     * @see org.extex.typesetter.tc.font.Font#getActualSize()
      */
     public FixedDimen getActualSize() {
 
@@ -102,7 +100,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @return the check sum
      *
-     * @see org.extex.font.type.Fount#getCheckSum()
+     * @see org.extex.typesetter.tc.font.Font#getCheckSum()
      */
     public int getCheckSum() {
 
@@ -117,7 +115,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @return the depth of the char
      *
-     * @see org.extex.interpreter.type.font.Font#getDepth(
+     * @see org.extex.typesetter.tc.font.Font#getDepth(
      *      org.extex.core.UnicodeChar)
      */
     public FixedGlue getDepth(UnicodeChar uc) {
@@ -130,7 +128,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @return the design size
      *
-     * @see org.extex.font.type.Fount#getDesignSize()
+     * @see org.extex.typesetter.tc.font.Font#getDesignSize()
      */
     public FixedDimen getDesignSize() {
 
@@ -142,7 +140,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @return the size of 1em.
      *
-     * @see org.extex.interpreter.type.font.Font#getEm()
+     * @see org.extex.typesetter.tc.font.Font#getEm()
      */
     public FixedDimen getEm() {
 
@@ -154,7 +152,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @return the size of 1ex.
      *
-     * @see org.extex.interpreter.type.font.Font#getEx()
+     * @see org.extex.typesetter.tc.font.Font#getEx()
      */
     public FixedDimen getEx() {
 
@@ -167,7 +165,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      * @param k the key
      * @return the value for the key
      *
-     * @see org.extex.font.type.Fount#getFontDimen(java.lang.String)
+     * @see org.extex.typesetter.tc.font.Font#getFontDimen(java.lang.String)
      */
     public FixedDimen getFontDimen(String k) {
 
@@ -183,7 +181,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @return the key for the font
      *
-     * @see org.extex.interpreter.type.font.Font#getFontKey()
+     * @see org.extex.typesetter.tc.font.Font#getFontKey()
      */
     public FontKey getFontKey() {
 
@@ -195,7 +193,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @return Returns the name of the font.
      *
-     * @see org.extex.interpreter.type.font.Font#getFontName()
+     * @see org.extex.typesetter.tc.font.Font#getFontName()
      */
     public String getFontName() {
 
@@ -218,7 +216,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      * @param uc the Unicode char
      * @return the height of the char
      *
-     * @see org.extex.interpreter.type.font.Font#getHeight(
+     * @see org.extex.typesetter.tc.font.Font#getHeight(
      *      org.extex.core.UnicodeChar)
      */
     public FixedGlue getHeight(UnicodeChar uc) {
@@ -233,7 +231,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @return the italic correction of the char
      *
-     * @see org.extex.interpreter.type.font.Font#getItalicCorrection(
+     * @see org.extex.typesetter.tc.font.Font#getItalicCorrection(
      *      org.extex.core.UnicodeChar)
      */
     public FixedDimen getItalicCorrection(UnicodeChar uc) {
@@ -249,7 +247,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @return the kerning between two characters
      *
-     * @see org.extex.interpreter.type.font.Font#getKerning(
+     * @see org.extex.typesetter.tc.font.Font#getKerning(
      *      org.extex.core.UnicodeChar,
      *      org.extex.core.UnicodeChar)
      */
@@ -266,7 +264,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @return Returns the ligature for two characters
      *
-     * @see org.extex.interpreter.type.font.Font#getLigature(
+     * @see org.extex.typesetter.tc.font.Font#getLigature(
      *      org.extex.core.UnicodeChar,
      *      org.extex.core.UnicodeChar)
      */
@@ -280,7 +278,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @return the size of the 'space'
      *
-     * @see org.extex.interpreter.type.font.Font#getSpace()
+     * @see org.extex.typesetter.tc.font.Font#getSpace()
      */
     public FixedGlue getSpace() {
 
@@ -294,7 +292,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @return the width of the character
      *
-     * @see org.extex.interpreter.type.font.Font#getWidth(
+     * @see org.extex.typesetter.tc.font.Font#getWidth(
      *      org.extex.core.UnicodeChar)
      */
     public FixedGlue getWidth(UnicodeChar uc) {
@@ -309,7 +307,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @return <code>true</code> iff the glyph is present
      *
-     * @see org.extex.interpreter.type.font.Font#hasGlyph(
+     * @see org.extex.typesetter.tc.font.Font#hasGlyph(
      *      org.extex.core.UnicodeChar)
      */
     public boolean hasGlyph(UnicodeChar uc) {
@@ -334,7 +332,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @param font the font to set
      *
-     * @see org.extex.interpreter.type.font.ModifiableFont#setFont(org.extex.font.ExtexFont)
+     * @see org.extex.typesetter.tc.font.ModifiableFont#setFont(org.extex.font.ExtexFont)
      */
     public void setFont(ExtexFont font) {
 

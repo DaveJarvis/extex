@@ -31,29 +31,31 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive
  * <code>\glueexpr</code>.
- *
+ * 
  * <doc name="glueexpr">
  * <h3>The Primitive <tt>\glueexpr</tt></h3>
  * <p>
- *  The primitive <tt>\glueexpr</tt> ...
+ * The primitive <tt>\glueexpr</tt> ...
  * </p>
  * <p>
- *  TODO missing documentation
+ * TODO missing documentation
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;glueexpr&rang;
  *      &rarr; <tt>\glueexpr</tt> </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \glueexpr\skip0\relax  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
@@ -63,11 +65,11 @@ public class Glueexpr extends AbstractCode implements MuskipConvertible {
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    private static final long serialVersionUID = 2006L;
+    private static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param codeName the name
      */
     public Glueexpr(String codeName) {
@@ -77,17 +79,15 @@ public class Glueexpr extends AbstractCode implements MuskipConvertible {
 
     /**
      * {@inheritDoc}
-     *
-     * @see org.extex.core.muskip.MuskipConvertible#convertMuskip(
+     * 
+     * @see org.extex.scanner.MuskipConvertible#convertMuskip(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public Muskip convertMuskip(Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+    public Muskip convertMuskip(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        //TODO gene: unimplemented
+        // TODO gene: unimplemented
         throw new RuntimeException("unimplemented");
     }
 

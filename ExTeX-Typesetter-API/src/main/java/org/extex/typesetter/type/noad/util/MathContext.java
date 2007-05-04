@@ -27,9 +27,9 @@ import org.extex.core.muskip.Mudimen;
 import org.extex.core.muskip.Muskip;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.type.font.Font;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.noad.StyleNoad;
 
 /**

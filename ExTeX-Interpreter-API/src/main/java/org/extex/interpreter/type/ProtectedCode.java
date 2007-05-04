@@ -24,8 +24,9 @@ package org.extex.interpreter.type;
  * expansion.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
 public interface ProtectedCode {
 
+    // no methods
 }

@@ -84,27 +84,14 @@ public class WhatsItWriteNode extends WhatsItNode {
     }
 
     /**
-     * This method performs any actions which are required to be executed at the
-     * time of shipping the node to the Page. In the case of this node this
-     * means that the tokens are expanded and written to an output writer.
-     * 
-     * @param context the interpreter context
-     * @param typesetter the typesetter
-     * @param visitor the node visitor to be invoked when the node is hit. Note
-     *        that each node in the output page is visited this way. Thus there
-     *        is no need to implement a node traversal for the NodeList types
-     * @param inHMode <code>true</code> iff the container is a horizontal
-     *        list. Otherwise the container is a vertical list
-     * 
-     * @return <code>null</code> since the node should be deleted
-     * 
-     * @throws GeneralException in case of an IO error
-     * 
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.type.Node#atShipping(
      *      org.extex.interpreter.context.Context,
      *      org.extex.typesetter.Typesetter,
      *      org.extex.typesetter.type.NodeVisitor, boolean)
      */
+    @SuppressWarnings("unchecked")
     public Node atShipping(PageContext context, Typesetter typesetter,
             NodeVisitor visitor, boolean inHMode) throws GeneralException {
 

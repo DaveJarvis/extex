@@ -27,6 +27,7 @@ import java.util.Iterator;
 
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.backend.outputStream.OutputStreamObserver;
+import org.extex.color.Color;
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
@@ -42,21 +43,16 @@ import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Conditional;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Color;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupInfo;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.context.observer.group.AfterGroupObserver;
-import org.extex.interpreter.context.tc.Direction;
-import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.context.tc.TypesettingContextFactory;
 import org.extex.interpreter.exception.InterpreterPanicException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.loader.SerialLoader;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.box.Box;
-import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.unit.UnitInfo;
 import org.extex.language.Language;
 import org.extex.language.LanguageManager;
@@ -74,6 +70,10 @@ import org.extex.scanner.type.tokens.Tokens;
 import org.extex.test.NoFlagsPrimitiveTester;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
+import org.extex.typesetter.tc.Direction;
+import org.extex.typesetter.tc.TypesettingContext;
+import org.extex.typesetter.tc.TypesettingContextFactory;
+import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.math.MathCode;
 import org.extex.typesetter.type.math.MathDelimiter;
 
@@ -430,7 +430,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#pushDirection(org.extex.interpreter.context.tc.Direction)
+                 * @see org.extex.interpreter.context.Context#pushDirection(org.extex.typesetter.tc.Direction)
                  */
                 public void pushDirection(Direction dir) {
 
@@ -438,7 +438,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.context.Color, boolean)
+                 * @see org.extex.interpreter.context.Context#set(org.extex.color.Color, boolean)
                  */
                 public void set(Color color, boolean global) {
 
@@ -446,7 +446,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.context.tc.Direction, boolean)
+                 * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.Direction, boolean)
                  */
                 public void set(Direction direction, boolean global) {
 
@@ -454,7 +454,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.type.font.Font, boolean)
+                 * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.font.Font, boolean)
                  */
                 public void set(Font font, boolean global) {
 
@@ -479,7 +479,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.context.tc.TypesettingContext, boolean)
+                 * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.TypesettingContext, boolean)
                  */
                 public void set(TypesettingContext context,
                         boolean global) {
@@ -785,7 +785,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextFont#setFont(java.lang.String, org.extex.interpreter.type.font.Font, boolean)
+                 * @see org.extex.interpreter.context.ContextFont#setFont(java.lang.String, org.extex.typesetter.tc.font.Font, boolean)
                  */
                 public void setFont(String name, Font font,
                         boolean global) {
@@ -1034,11 +1034,6 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                     
                 }
 
-                public void setMark(String index, Tokens mark) {
-
-                    // TODO gene: setMark unimplemented
-                    
-                }
             }, null, null);
             assertFalse(true);
         } catch (RuntimeException e) {
@@ -1327,7 +1322,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#pushDirection(org.extex.interpreter.context.tc.Direction)
+                 * @see org.extex.interpreter.context.Context#pushDirection(org.extex.typesetter.tc.Direction)
                  */
                 public void pushDirection(Direction dir) {
 
@@ -1335,7 +1330,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.context.Color, boolean)
+                 * @see org.extex.interpreter.context.Context#set(org.extex.color.Color, boolean)
                  */
                 public void set(Color color, boolean global) {
 
@@ -1343,7 +1338,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.context.tc.Direction, boolean)
+                 * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.Direction, boolean)
                  */
                 public void set(Direction direction, boolean global) {
 
@@ -1351,7 +1346,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.type.font.Font, boolean)
+                 * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.font.Font, boolean)
                  */
                 public void set(Font font, boolean global) {
 
@@ -1376,7 +1371,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.context.tc.TypesettingContext, boolean)
+                 * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.TypesettingContext, boolean)
                  */
                 public void set(TypesettingContext context,
                         boolean global) {
@@ -1650,7 +1645,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextFont#setFont(java.lang.String, org.extex.interpreter.type.font.Font, boolean)
+                 * @see org.extex.interpreter.context.ContextFont#setFont(java.lang.String, org.extex.typesetter.tc.font.Font, boolean)
                  */
                 public void setFont(String name, Font font,
                         boolean global) {
@@ -1899,11 +1894,6 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                     
                 }
 
-                public void setMark(String index, Tokens mark) {
-
-                    // TODO gene: setMark unimplemented
-                    
-                }
             }, null, null);
             assertFalse(true);
         } catch (InterpreterPanicException e) {

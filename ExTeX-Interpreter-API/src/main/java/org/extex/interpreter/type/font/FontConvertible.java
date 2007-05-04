@@ -24,6 +24,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.typesetter.tc.font.Font;
 
 /**
  * This is an interface which describes the feature to be convertible into a

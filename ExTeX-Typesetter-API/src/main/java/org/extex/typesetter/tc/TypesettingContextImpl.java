@@ -17,12 +17,12 @@
  *
  */
 
-package org.extex.interpreter.context.tc;
+package org.extex.typesetter.tc;
 
+import org.extex.color.Color;
 import org.extex.color.model.ColorFactory;
-import org.extex.interpreter.context.Color;
-import org.extex.interpreter.type.font.Font;
 import org.extex.language.Language;
+import org.extex.typesetter.tc.font.Font;
 
 /**
  * This implementation of a typesetting context provides the required
@@ -110,7 +110,7 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
      *
      * @return the current color
      *
-     * @see org.extex.interpreter.context.tc.TypesettingContext#getColor()
+     * @see org.extex.typesetter.tc.TypesettingContext#getColor()
      */
     public Color getColor() {
 
@@ -122,7 +122,7 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
      *
      * @return the current direction
      *
-     * @see org.extex.interpreter.context.tc.TypesettingContext#getDirection()
+     * @see org.extex.typesetter.tc.TypesettingContext#getDirection()
      */
     public Direction getDirection() {
 
@@ -134,7 +134,7 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
      *
      * @return the font
      *
-     * @see org.extex.interpreter.context.tc.TypesettingContext#getFont()
+     * @see org.extex.typesetter.tc.TypesettingContext#getFont()
      */
     public Font getFont() {
 
@@ -149,7 +149,7 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
      *
      * @return the hyphenation table
      *
-     * @see org.extex.interpreter.context.tc.TypesettingContext#getLanguage()
+     * @see org.extex.typesetter.tc.TypesettingContext#getLanguage()
      */
     public Language getLanguage() {
 
@@ -162,8 +162,8 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
      *
      * @param context the context to clone
      *
-     * @see org.extex.interpreter.context.tc.ModifiableTypesettingContext#set(
-     *      org.extex.interpreter.context.tc.TypesettingContext)
+     * @see org.extex.typesetter.tc.ModifiableTypesettingContext#set(
+     *      org.extex.typesetter.tc.TypesettingContext)
      */
     public void set(TypesettingContext context) {
 
@@ -180,8 +180,8 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
      *
      * @param color the new color
      *
-     * @see org.extex.interpreter.context.tc.ModifiableTypesettingContext#setColor(
-     *      org.extex.interpreter.context.Color)
+     * @see org.extex.typesetter.tc.ModifiableTypesettingContext#setColor(
+     *      org.extex.color.Color)
      */
     public void setColor(Color color) {
 
@@ -193,8 +193,8 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
      *
      * @param direction the new direction
      *
-     * @see org.extex.interpreter.context.tc.ModifiableTypesettingContext#setDirection(
-     *      org.extex.interpreter.context.tc.Direction)
+     * @see org.extex.typesetter.tc.ModifiableTypesettingContext#setDirection(
+     *      org.extex.typesetter.tc.Direction)
      */
     public void setDirection(Direction direction) {
 
@@ -206,8 +206,8 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
      *
      * @param font the font to store
      *
-     * @see org.extex.interpreter.context.tc.ModifiableTypesettingContext#setFont(
-     *      org.extex.interpreter.type.font.Font)
+     * @see org.extex.typesetter.tc.ModifiableTypesettingContext#setFont(
+     *      org.extex.typesetter.tc.font.Font)
      */
     public void setFont(Font font) {
 
@@ -219,7 +219,7 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
      *
      * @param language the hyphenation table
      *
-     * @see org.extex.interpreter.context.tc.ModifiableTypesettingContext#setLanguage(
+     * @see org.extex.typesetter.tc.ModifiableTypesettingContext#setLanguage(
      *      org.extex.language.Language)
      */
     public void setLanguage(Language language) {

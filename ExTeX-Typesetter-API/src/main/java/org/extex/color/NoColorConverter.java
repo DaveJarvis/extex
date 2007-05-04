@@ -24,14 +24,13 @@ import org.extex.color.model.CmykColor;
 import org.extex.color.model.GrayscaleColor;
 import org.extex.color.model.HsvColor;
 import org.extex.color.model.RgbColor;
-import org.extex.interpreter.context.Color;
 
 /**
  * This implementation of a color converter does no conversions at all. It is a
  * dummy which forces that colors are always given in the target color space.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
 public class NoColorConverter implements ColorConverter {
 
@@ -53,7 +52,7 @@ public class NoColorConverter implements ColorConverter {
      *  if a conversion is not supported.
      *
      * @see org.extex.color.ColorConverter#toCmyk(
-     *      org.extex.interpreter.context.Color)
+     *      org.extex.color.Color)
      */
     public CmykColor toCmyk(Color color) {
 
@@ -75,7 +74,7 @@ public class NoColorConverter implements ColorConverter {
      *  a conversion is not supported.
      *
      * @see org.extex.color.ColorConverter#toGrayscale(
-     *      org.extex.interpreter.context.Color)
+     *      org.extex.color.Color)
      */
     public GrayscaleColor toGrayscale(Color color) {
 
@@ -97,7 +96,7 @@ public class NoColorConverter implements ColorConverter {
      *  a conversion is not supported.
      *
      * @see org.extex.color.ColorConverter#toHsv(
-     *      org.extex.interpreter.context.Color)
+     *      org.extex.color.Color)
      */
     public HsvColor toHsv(Color color) {
 
@@ -119,7 +118,7 @@ public class NoColorConverter implements ColorConverter {
      *  a conversion is not supported.
      *
      * @see org.extex.color.ColorConverter#toRgb(
-     *      org.extex.interpreter.context.Color)
+     *      org.extex.color.Color)
      */
     public RgbColor toRgb(Color color) {
 

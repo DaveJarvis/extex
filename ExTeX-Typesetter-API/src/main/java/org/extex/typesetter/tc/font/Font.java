@@ -16,7 +16,7 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.interpreter.type.font;
+package org.extex.typesetter.tc.font;
 
 import java.io.Serializable;
 

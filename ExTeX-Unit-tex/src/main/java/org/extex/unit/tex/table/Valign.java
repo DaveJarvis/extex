@@ -25,7 +25,6 @@ import org.extex.core.dimen.Dimen;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.exception.helping.MissingLeftBraceException;
@@ -90,7 +89,7 @@ public class Valign extends AbstractAlign {
      * @param source the source for new tokens
      * @param typesetter the typesetter to use
      * 
-     * @throws InterpreterException in case of an error
+     * @throws HelpingException in case of an error
      */
     private void applyPreamble(List<PreambleItem> preamble, Dimen height,
             Context context, TokenSource source, Typesetter typesetter)
@@ -103,8 +102,8 @@ public class Valign extends AbstractAlign {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,

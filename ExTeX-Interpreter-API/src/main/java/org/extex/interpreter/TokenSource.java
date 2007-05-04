@@ -27,7 +27,6 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.box.Box;
-import org.extex.interpreter.type.font.Font;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.type.token.CodeToken;
@@ -35,6 +34,7 @@ import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.typesetter.tc.font.Font;
 
 /**
  * This interface describes a class to acquire
@@ -322,15 +322,15 @@ public interface TokenSource {
      * 
      * <pre class="syntax">
      *    &lang;equals&rang;
-     *      &rarr; {@linkplain org.extex.Helping.TokenSource#skipSpace()
+     *      &rarr; {@linkplain org.extex.interpreter.TokenSource#skipSpace()
      *             &lang;optional spaces&rang;}
-     *       |  {@linkplain org.extex.Helping.TokenSource#skipSpace()
+     *       |  {@linkplain org.extex.interpreter.TokenSource#skipSpace()
      *             &lang;optional spaces&rang;}
      * <tt>
      * =
      * </tt>
      * &lt;sub&gt;12&lt;/sub&gt; {@linkplain
-     *             org.extex.Helping.TokenSource#skipSpace()
+     *             org.extex.interpreter.TokenSource#skipSpace()
      *             &lang;optional spaces&rang;}
      * </pre>
      * 
@@ -553,7 +553,7 @@ public interface TokenSource {
      * <pre class="syntax">
      *    &lang;register name&rang;
      *        &rarr; {@linkplain
-     *         org.extex.Helping.TokenSource#scanTokens(Context,boolean,boolean,String)
+     *         org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
      *         &lang;tokens&rang;}
      *         | {@linkplain
      *             org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)

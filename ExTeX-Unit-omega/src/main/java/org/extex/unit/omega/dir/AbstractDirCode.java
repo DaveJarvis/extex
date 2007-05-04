@@ -21,14 +21,14 @@ package org.extex.unit.omega.dir;
 
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.context.tc.Direction;
-import org.extex.interpreter.context.tc.Direction.Dir;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.typesetter.tc.Direction;
+import org.extex.typesetter.tc.Direction.Dir;
 
 /**
  * This is the abstract base class for primitives acquiring a direction.

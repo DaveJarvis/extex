@@ -142,7 +142,7 @@ public class Currentgrouptype extends AbstractCode
      * The constant <tt>GTV</tt> contains the group visitor to map the group
      * type to the integer representation of <logo>eTeX</logo>.
      */
-    private static final GroupTypeVisitor GTV =
+    private static final GroupTypeVisitor<Long, Object> GTV =
             new GroupTypeVisitor<Long, Object>() {
 
                 /**

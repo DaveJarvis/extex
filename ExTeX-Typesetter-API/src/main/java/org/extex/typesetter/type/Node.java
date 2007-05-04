@@ -222,6 +222,7 @@ public interface Node extends Serializable {
      * 
      * @throws GeneralException in case of an error
      */
+    @SuppressWarnings("unchecked")
     Object visit(NodeVisitor visitor, Object value) throws GeneralException;
 
 }

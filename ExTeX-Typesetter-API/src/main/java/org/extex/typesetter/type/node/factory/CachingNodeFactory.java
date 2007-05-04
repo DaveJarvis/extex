@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.extex.core.UnicodeChar;
-import org.extex.interpreter.context.tc.TypesettingContext;
+import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.type.Node;
 
 /**
@@ -62,7 +62,7 @@ public class CachingNodeFactory extends SimpleNodeFactory {
      * @return the new character node
      *
      * @see org.extex.typesetter.type.node.factory.NodeFactory#getNode(
-     *      org.extex.interpreter.context.tc.TypesettingContext,
+     *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
     public Node getNode(TypesettingContext typesettingContext,

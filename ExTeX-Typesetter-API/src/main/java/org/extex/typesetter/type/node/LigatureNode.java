@@ -21,8 +21,8 @@ package org.extex.typesetter.type.node;
 
 import org.extex.core.UnicodeChar;
 import org.extex.core.exception.GeneralException;
-import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.type.font.Font;
+import org.extex.typesetter.tc.TypesettingContext;
+import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
 

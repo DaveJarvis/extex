@@ -19,6 +19,7 @@
 
 package org.extex.unit.color;
 
+import org.extex.color.Color;
 import org.extex.color.ColorUtil;
 import org.extex.color.ColorVisitor;
 import org.extex.color.model.CmykColor;
@@ -27,7 +28,6 @@ import org.extex.color.model.HsvColor;
 import org.extex.color.model.RgbColor;
 import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Color;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.NoHelpException;
 import org.extex.interpreter.exception.helping.HelpingException;

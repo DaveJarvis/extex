@@ -21,18 +21,18 @@ package org.extex.typesetter.type.noad;
 
 import java.util.logging.Logger;
 
+import org.extex.color.Color;
 import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.interpreter.context.Color;
-import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.context.tc.TypesettingContextFactory;
 import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.type.font.Font;
-import org.extex.interpreter.type.font.FontUtil;
 import org.extex.typesetter.TypesetterOptions;
+import org.extex.typesetter.common.FontUtil;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.typesetter.tc.TypesettingContext;
+import org.extex.typesetter.tc.TypesettingContextFactory;
+import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.noad.util.MathContext;

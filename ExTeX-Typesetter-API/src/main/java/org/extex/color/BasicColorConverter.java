@@ -26,7 +26,6 @@ import org.extex.color.model.HsvColor;
 import org.extex.color.model.RgbColor;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.ImpossibleException;
-import org.extex.interpreter.context.Color;
 
 /**
  * This implementation of a color converter is based on the formulas in the
@@ -289,7 +288,7 @@ public class BasicColorConverter implements ColorConverter {
      *  if a conversion is not supported.
      *
      * @see org.extex.color.ColorConverter#toCmyk(
-     *      org.extex.interpreter.context.Color)
+     *      org.extex.color.Color)
      */
     public CmykColor toCmyk(Color color) {
 
@@ -310,7 +309,7 @@ public class BasicColorConverter implements ColorConverter {
      *  a conversion is not supported.
      *
      * @see org.extex.color.ColorConverter#toGrayscale(
-     *      org.extex.interpreter.context.Color)
+     *      org.extex.color.Color)
      */
     public GrayscaleColor toGrayscale(Color color) {
 
@@ -331,7 +330,7 @@ public class BasicColorConverter implements ColorConverter {
      *  a conversion is not supported.
      *
      * @see org.extex.color.ColorConverter#toHsv(
-     *      org.extex.interpreter.context.Color)
+     *      org.extex.color.Color)
      */
     public HsvColor toHsv(Color color) {
 
@@ -352,7 +351,7 @@ public class BasicColorConverter implements ColorConverter {
      *  a conversion is not supported.
      *
      * @see org.extex.color.ColorConverter#toRgb(
-     *      org.extex.interpreter.context.Color)
+     *      org.extex.color.Color)
      */
     public RgbColor toRgb(Color color) {
 

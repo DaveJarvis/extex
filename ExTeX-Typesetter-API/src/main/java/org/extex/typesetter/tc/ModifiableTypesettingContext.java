@@ -17,53 +17,63 @@
  *
  */
 
-package org.extex.interpreter.context.tc;
+package org.extex.typesetter.tc;
 
-import java.io.Serializable;
-
-import org.extex.interpreter.context.Color;
-import org.extex.interpreter.type.font.Font;
+import org.extex.color.Color;
 import org.extex.language.Language;
+import org.extex.typesetter.tc.font.Font;
 
 /**
  * The typesetting context is a container for attributes describing the
- * appearance of glyphs or other nodes. This interface provides reading
- * methods only. Thus the client can rely on an immutable object only.
- *
- *
- * @see org.extex.interpreter.context.tc.ModifiableTypesettingContext
+ * appearance of glyphs or other nodes.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4399 $
  */
-public interface TypesettingContext extends Serializable {
+public interface ModifiableTypesettingContext extends TypesettingContext {
 
     /**
-     * Getter for the color.
+     * Setter for all components. The components color, direction, font,
+     * language, etc are copied from the instance given.
      *
-     * @return the current color
+     * @param context the context to clone
      */
-    Color getColor();
+    void set(TypesettingContext context);
 
     /**
-     * Getter for the writing direction.
+     * Setter for the color.
      *
-     * @return the current direction
+     * @param color the new color
+     *
+     * @see TypesettingContext#getColor()
      */
-    Direction getDirection();
+    void setColor(Color color);
 
     /**
-     * Getter for the font component.
+     * Setter for the writing direction.
      *
-     * @return the font
+     * @param direction the new direction
+     *
+     * @see TypesettingContext#getDirection()
      */
-    Font getFont();
+    void setDirection(Direction direction);
 
     /**
-     * Getter for the hyphenation table.
+     * Setter for the font component.
      *
-     * @return the hyphenation table
+     * @param font the font to store
+     *
+     * @see TypesettingContext#getFont()
      */
-    Language getLanguage();
+    void setFont(Font font);
+
+    /**
+     * Setter for the hyphenation table.
+     *
+     * @param language the hyphenation table
+     *
+     * @see TypesettingContext#getLanguage()
+     */
+    void setLanguage(Language language);
 
 }

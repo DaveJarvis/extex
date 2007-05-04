@@ -29,32 +29,36 @@ import org.extex.unit.base.conditional.AbstractIf;
 
 /**
  * This class provides an implementation for the primitive <code>\if</code>.
- *
+ * 
  * <doc name="ifdefined">
  * <h3>The Primitive <tt>&#x005c;unless</tt></h3>
- *
- * <p><strong>Copied from the <logo>eTeX</logo> reference</strong>:
+ * 
+ * <p>
+ * <strong>Copied from the <logo>eTeX</logo> reference</strong>:
  * </p>
- * <p><i>
- *  similar in effect to <tt>&#x005c;unless</tt> <tt>\ifx</tt>
- *  <tt>&#x005c;undefined</tt>, but does not require <tt>&#x005c;undefined</tt>
- *  to actually be undefined, since no explicit comparison is made with any
- *  particular control sequence.
- * </i></p>
- *
+ * <p>
+ * <i> similar in effect to <tt>&#x005c;unless</tt> <tt>\ifx</tt>
+ *  <tt>&#x005c;undefined</tt>,
+ * but does not require <tt>&#x005c;undefined</tt> to actually be undefined,
+ * since no explicit comparison is made with any particular control sequence.
+ * </i>
+ * </p>
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;ifdefined&rang;
  *      &rarr; <tt>\ifdefined</tt> ...<tt>\else</tt>...<tt>\fi</tt>
  *       |  <tt>\ifdefined</tt> ...<tt>\else</tt>...<tt>\fi</tt>  </pre>
- *
+ * 
  * <h4>Examples</h4>
+ * 
  * <pre class="TeXSample">
  *   &#x005c;ifdefined\TESTNAME\else not\fi defined  </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
  * @version $Revision: 4770 $
@@ -62,13 +66,14 @@ import org.extex.unit.base.conditional.AbstractIf;
 public class Ifdefined extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Ifdefined(String name) {
@@ -77,21 +82,11 @@ public class Ifdefined extends AbstractIf {
     }
 
     /**
-     * This method computes the boolean value of the conditional.
-     * If the result is <code>true</code> then the then branch is expanded and
-     * the else branch is skipped. Otherwise the then branch is skipped and the
-     * else branch is expanded.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @return the boolean value
-     *
+     * {@inheritDoc}
+     * 
      * @see org.extex.unit.base.conditional.AbstractIf#conditional(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public boolean conditional(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException {

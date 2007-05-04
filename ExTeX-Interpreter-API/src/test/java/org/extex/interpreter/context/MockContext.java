@@ -21,6 +21,7 @@ package org.extex.interpreter.context;
 
 import java.util.Iterator;
 
+import org.extex.color.Color;
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
@@ -37,15 +38,10 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.group.GroupInfo;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.context.observer.group.AfterGroupObserver;
-import org.extex.interpreter.context.tc.Direction;
-import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.context.tc.TypesettingContextFactory;
-import org.extex.interpreter.context.tc.TypesettingContextImpl;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.box.Box;
-import org.extex.interpreter.type.font.Font;
 import org.extex.interpreter.unit.UnitInfo;
 import org.extex.language.Language;
 import org.extex.language.LanguageManager;
@@ -63,6 +59,11 @@ import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
+import org.extex.typesetter.tc.Direction;
+import org.extex.typesetter.tc.TypesettingContext;
+import org.extex.typesetter.tc.TypesettingContextFactory;
+import org.extex.typesetter.tc.TypesettingContextImpl;
+import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.math.MathCode;
 import org.extex.typesetter.type.math.MathDelimiter;
 
@@ -85,7 +86,7 @@ public class MockContext implements Context, TypesetterOptions {
     /**
      * The field <tt>tc</tt> contains the typesetting context.
      */
-    private transient TypesettingContext tc = new TypesettingContextImpl();
+    private TypesettingContext tc = new TypesettingContextImpl();
 
     /**
      * The field <tt>tokenFactory</tt> contains the token factory.
@@ -149,6 +150,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.ContextGroup#closeGroup(
      *      org.extex.typesetter.Typesetter, org.extex.interpreter.TokenSource)
      */
@@ -158,6 +161,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.Context#esc(java.lang.String)
      */
     public String esc(String name) {
@@ -166,6 +171,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.Context#esc(
      *      org.extex.scanner.type.token.Token)
      */
@@ -175,6 +182,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.Context#escapechar()
      */
     public UnicodeChar escapechar() {
@@ -183,14 +192,9 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * Getter for a value from an extended section of the context.
+     * {@inheritDoc}
      * 
-     * @param extension the name of the extension
-     * @param key the key for the value
-     * 
-     * @return the value stored
-     * 
-     * @see org.extex.interpreter.context.Context#get( java.lang.Object,
+     * @see org.extex.interpreter.context.Context#get(java.lang.Object,
      *      java.lang.Object)
      */
     public Object get(Object extension, Object key) {
@@ -199,6 +203,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.Context#getAfterassignment()
      */
     public Token getAfterassignment() {
@@ -207,6 +213,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.ContextMark#getBottomMark(
      *      java.lang.Object)
      */
@@ -216,6 +224,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.Context#getBox(java.lang.String)
      */
     public Box getBox(String name) {
@@ -224,7 +234,9 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.scanner.Tokenizer#getCatcode( org.extex.core.UnicodeChar)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.Tokenizer#getCatcode(org.extex.core.UnicodeChar)
      */
     public Catcode getCatcode(UnicodeChar c) {
 
@@ -246,6 +258,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.ContextCode#getCode(
      *      org.extex.scanner.type.token.CodeToken)
      */
@@ -255,6 +269,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#getConditional()
      */
     public Conditional getConditional() {
@@ -263,6 +279,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.ContextCount#getCount(
      *      java.lang.String)
      */
@@ -272,6 +290,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.TypesetterOptions#getCountOption(
      *      java.lang.String)
      */
@@ -281,6 +301,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#getDelcode(
      *      org.extex.core.UnicodeChar)
      */
@@ -290,6 +312,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.ContextDimen#getDimen(
      *      java.lang.String)
      */
@@ -299,6 +323,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.TypesetterOptions#getDimenOption(
      *      java.lang.String)
      */
@@ -308,6 +334,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.ContextErrorCount#getErrorCount()
      */
     public int getErrorCount() {
@@ -316,6 +344,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.ContextMark#getFirstMark(java.lang.Object)
      */
     public Tokens getFirstMark(Object name) {
@@ -324,6 +354,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.ContextFont#getFont(java.lang.String)
      */
     public Font getFont(String name) {
@@ -332,6 +364,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.ContextFont#getFontFactory()
      */
     public CoreFontFactory getFontFactory() {
@@ -340,6 +374,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#getGlue(java.lang.String)
      */
     public Glue getGlue(String name) {
@@ -348,6 +384,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.TypesetterOptions#getGlueOption(
      *      java.lang.String)
      */
@@ -357,6 +395,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.ContextGroup#getGroupInfos()
      */
     public GroupInfo[] getGroupInfos() {
@@ -365,6 +405,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.ContextGroup#getGroupLevel()
      */
     public long getGroupLevel() {
@@ -373,6 +415,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.ContextGroup#getGroupType()
      */
     public GroupType getGroupType() {
@@ -381,6 +425,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#getId()
      */
     public String getId() {
@@ -389,6 +435,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#getIfLevel()
      */
     public long getIfLevel() {
@@ -397,6 +445,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.ContextFile#getInFile(java.lang.String)
      */
     public InFile getInFile(String name) {
@@ -405,6 +455,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#getInteraction()
      */
     public Interaction getInteraction() {
@@ -413,6 +465,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#getLanguage(java.lang.String)
      */
     public Language getLanguage(String language) throws HelpingException {
@@ -421,6 +475,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#getLanguageManager()
      */
     public LanguageManager getLanguageManager() {
@@ -429,6 +485,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#getLccode(org.extex.core.UnicodeChar)
      */
     public UnicodeChar getLccode(UnicodeChar uc) {
@@ -437,6 +495,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#getMagnification()
      */
     public long getMagnification() {
@@ -445,6 +505,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#getMathcode(
      *      org.extex.core.UnicodeChar)
      */
@@ -454,6 +516,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#getMuskip(java.lang.String)
      */
     public Muskip getMuskip(String name) {
@@ -462,6 +526,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.scanner.Tokenizer#getNamespace()
      */
     public String getNamespace() {
@@ -470,6 +536,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.ContextFile#getOutFile(java.lang.String)
      */
     public OutFile getOutFile(String name) {
@@ -478,6 +546,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#getParshape()
      */
     public ParagraphShape getParshape() {
@@ -486,6 +556,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#getSfcode(org.extex.core.UnicodeChar)
      */
     public Count getSfcode(UnicodeChar uc) {
@@ -494,6 +566,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.ContextMark#getSplitBottomMark(java.lang.Object)
      */
     public Tokens getSplitBottomMark(Object name) {
@@ -502,6 +576,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.ContextMark#getSplitFirstMark(java.lang.Object)
      */
     public Tokens getSplitFirstMark(Object name) {
@@ -510,6 +586,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#getStandardTokenStream()
      */
     public TokenStream getStandardTokenStream() {
@@ -518,6 +596,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#getTokenFactory()
      */
     public TokenFactory getTokenFactory() {
@@ -526,6 +606,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#getTokenizer()
      */
     public Tokenizer getTokenizer() {
@@ -534,6 +616,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.ContextTokens#getToks(java.lang.String)
      */
     public Tokens getToks(String name) {
@@ -542,6 +626,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.ContextTokens#getToksOrNull(java.lang.String)
      */
     public Tokens getToksOrNull(String name) {
@@ -550,6 +636,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.ContextMark#getTopMark(java.lang.Object)
      */
     public Tokens getTopMark(Object name) {
@@ -558,6 +646,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#getTypesettingContext()
      */
     public TypesettingContext getTypesettingContext() {
@@ -566,6 +656,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.TypesetterOptions#getTypesettingContextFactory()
      */
     public TypesettingContextFactory getTypesettingContextFactory() {
@@ -574,6 +666,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.Context#getUccode(org.extex.core.UnicodeChar)
      */
     public UnicodeChar getUccode(UnicodeChar lc) {
@@ -582,6 +676,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.ContextErrorCount#incrementErrorCount()
      */
     public int incrementErrorCount() {
@@ -590,6 +686,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.ContextGroup#isGlobalGroup()
      */
     public boolean isGlobalGroup() {
@@ -598,6 +696,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @see org.extex.interpreter.context.ContextGroup#openGroup(
      *      org.extex.interpreter.context.group.GroupType,
      *      org.extex.core.Locator, org.extex.scanner.type.token.Token)
@@ -637,7 +737,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#pushDirection(org.extex.interpreter.context.tc.Direction)
+     * @see org.extex.interpreter.context.Context#pushDirection(org.extex.typesetter.tc.Direction)
      */
     public void pushDirection(Direction dir) {
 
@@ -645,8 +745,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#set(
-     *      org.extex.interpreter.context.Color, boolean)
+     * @see org.extex.interpreter.context.Context#set( org.extex.color.Color,
+     *      boolean)
      */
     public void set(Color color, boolean global) throws ConfigurationException {
 
@@ -655,7 +755,7 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see org.extex.interpreter.context.Context#set(
-     *      org.extex.interpreter.context.tc.Direction, boolean)
+     *      org.extex.typesetter.tc.Direction, boolean)
      */
     public void set(Direction direction, boolean global) {
 
@@ -664,7 +764,7 @@ public class MockContext implements Context, TypesetterOptions {
 
     /**
      * @see org.extex.interpreter.context.Context#set(
-     *      org.extex.interpreter.type.font.Font, boolean)
+     *      org.extex.typesetter.tc.font.Font, boolean)
      */
     public void set(Font font, boolean global) {
 
@@ -690,7 +790,7 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
-     * @see org.extex.interpreter.context.Context#set(org.extex.interpreter.context.tc.TypesettingContext,
+     * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.TypesettingContext,
      *      boolean)
      */
     public void set(TypesettingContext context, boolean global) {
@@ -744,7 +844,8 @@ public class MockContext implements Context, TypesetterOptions {
      * @see org.extex.interpreter.context.ContextCount#setCount(java.lang.String,
      *      long, boolean)
      */
-    public void setCount(String name, long value, boolean global) throws HelpingException {
+    public void setCount(String name, long value, boolean global)
+            throws HelpingException {
 
         throw new RuntimeException("unimplemented");
     }
@@ -799,7 +900,7 @@ public class MockContext implements Context, TypesetterOptions {
      * {@inheritDoc}
      * 
      * @see org.extex.interpreter.context.ContextFont#setFont(java.lang.String,
-     *      org.extex.interpreter.type.font.Font, boolean)
+     *      org.extex.typesetter.tc.font.Font, boolean)
      */
     public void setFont(String name, Font font, boolean global) {
 
@@ -842,8 +943,8 @@ public class MockContext implements Context, TypesetterOptions {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.context.ContextFile#setInFile(java.lang.String,
-     *      org.extex.interpreter.type.file.InFile, boolean)
+     * @see org.extex.interpreter.context.ContextFile#setInFile(
+     *      java.lang.String, org.extex.scanner.type.file.InFile, boolean)
      */
     public void setInFile(String name, InFile file, boolean global) {
 
@@ -856,8 +957,7 @@ public class MockContext implements Context, TypesetterOptions {
      * @see org.extex.interpreter.context.ContextInteraction#setInteraction(
      *      org.extex.interpreter.interaction.Interaction)
      */
-    public void setInteraction(Interaction interaction)
-            throws HelpingException {
+    public void setInteraction(Interaction interaction) throws HelpingException {
 
         throw new RuntimeException("unimplemented");
     }
@@ -943,8 +1043,8 @@ public class MockContext implements Context, TypesetterOptions {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.context.ContextFile#setOutFile(java.lang.String,
-     *      org.extex.interpreter.type.file.OutFile, boolean)
+     * @see org.extex.interpreter.context.ContextFile#setOutFile(
+     *      java.lang.String, org.extex.scanner.type.file.OutFile, boolean)
      */
     public void setOutFile(String name, OutFile file, boolean global) {
 
@@ -1043,17 +1143,6 @@ public class MockContext implements Context, TypesetterOptions {
     public Iterator<UnitInfo> unitIterator() {
 
         return null;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.typesetter.PageContext#setMark(java.lang.String, org.extex.scanner.type.tokens.Tokens)
-     */
-    public void setMark(String index, Tokens mark) {
-
-        // TODO gene: setMark unimplemented
-        
     }
 
 }

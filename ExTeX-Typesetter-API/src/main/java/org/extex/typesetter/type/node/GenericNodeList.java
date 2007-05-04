@@ -455,6 +455,8 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see java.lang.Object#toString()
      */
     public String toString() {
@@ -465,7 +467,9 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.type.node.AbstractNode#toString(java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
     public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
@@ -514,6 +518,8 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
@@ -541,6 +547,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * @see org.extex.typesetter.type.Node#visit(
      *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
      */
+    @SuppressWarnings("unchecked")
     public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {
 

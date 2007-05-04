@@ -38,7 +38,6 @@ import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.ListMakers;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.ListMaker;
@@ -56,6 +55,7 @@ import org.extex.typesetter.listMaker.TokenDelegateListMaker;
 import org.extex.typesetter.output.OutputRoutine;
 import org.extex.typesetter.pageBuilder.PageBuilder;
 import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
+import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.HorizontalListNode;
@@ -234,7 +234,7 @@ public class TypesetterImpl extends ListMakerFactory
      * @throws ConfigurationException in case of a configuration error
      * 
      * @see org.extex.typesetter.ListMaker#addSpace(
-     *      org.extex.interpreter.context.tc.TypesettingContext,
+     *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.count.Count)
      */
     public void addSpace(TypesettingContext typesettingContext,
@@ -318,7 +318,7 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#cr(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.context.tc.TypesettingContext,
+     *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
     public void cr(Context context, TypesettingContext tc, UnicodeChar uc)
@@ -576,7 +576,7 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#letter(
      *      org.extex.core.UnicodeChar,
-     *      org.extex.interpreter.context.tc.TypesettingContext,
+     *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.core.Locator)
      */

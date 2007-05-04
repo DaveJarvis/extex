@@ -84,6 +84,7 @@ public abstract class Interaction implements Serializable {
          *      org.extex.interpreter.interaction.InteractionVisitor,
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
+        @SuppressWarnings("unchecked")
         public boolean visit(InteractionVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws GeneralException {
 
@@ -141,6 +142,7 @@ public abstract class Interaction implements Serializable {
          *      org.extex.interpreter.interaction.InteractionVisitor,
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
+        @SuppressWarnings("unchecked")
         public boolean visit(InteractionVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws GeneralException {
 
@@ -199,6 +201,7 @@ public abstract class Interaction implements Serializable {
          *      org.extex.interpreter.interaction.InteractionVisitor,
          *       java.lang.Object, java.lang.Object, java.lang.Object)
          */
+        @SuppressWarnings("unchecked")
         public boolean visit(InteractionVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws GeneralException {
 
@@ -256,6 +259,7 @@ public abstract class Interaction implements Serializable {
          *      org.extex.interpreter.interaction.InteractionVisitor,
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
+        @SuppressWarnings("unchecked")
         public boolean visit(InteractionVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws GeneralException {
 
@@ -400,6 +404,7 @@ public abstract class Interaction implements Serializable {
      * 
      * @see InteractionVisitor
      */
+    @SuppressWarnings("unchecked")
     public abstract boolean visit(InteractionVisitor visitor, Object arg1,
             Object arg2, Object arg3) throws GeneralException;
 

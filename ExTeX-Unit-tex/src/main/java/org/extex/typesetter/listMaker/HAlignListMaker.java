@@ -46,9 +46,9 @@ import org.extex.unit.tex.table.util.PreambleItem;
 
 /**
  * This class provides a list maker for horizontal alignments.
- *
+ * 
  * @see "TTP [770]"
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
@@ -58,7 +58,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
 
     /**
      * This inner class is a container for the cell information in an alignment.
-     *
+     * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision: 4770 $
      */
@@ -70,14 +70,14 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
         private NodeList list = null;
 
         /**
-         * The field <tt>span</tt> contains the indicator that this cell should
-         * be joined with the next cell when generating boxes.
+         * The field <tt>span</tt> contains the indicator that this cell
+         * should be joined with the next cell when generating boxes.
          */
         private boolean span = false;
 
         /**
          * Creates a new object.
-         *
+         * 
          * @param nodes the nodes of this cell
          */
         public Cell(NodeList nodes) {
@@ -88,7 +88,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
 
         /**
          * Getter for list.
-         *
+         * 
          * @return the list.
          */
         public NodeList getList() {
@@ -98,7 +98,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
 
         /**
          * Getter for span.
-         *
+         * 
          * @return the span.
          */
         public boolean isSpan() {
@@ -166,22 +166,23 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param manager the manager
      * @param context the interpreter context
      * @param source the token source
      * @param thePreamble the list of preamble items
      * @param theWidth the target width or <code>null</code> if the natural
-     *  width should be used
+     *        width should be used
      * @param theSpread indicator that the width should be interpreted relative
-     *
+     * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
     public HAlignListMaker(ListManager manager, Context context,
             TokenSource source, List<PreambleItem> thePreamble,
             FixedDimen theWidth, boolean theSpread)
-            throws HelpingException, TypesetterException {
+            throws HelpingException,
+                TypesetterException {
 
         super(manager, source.getLocator());
         preamble = thePreamble;
@@ -198,10 +199,10 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
 
     /**
      * Clear all entries of the current line.
-     *
+     * 
      * @param context the interpreter context
      * @param source the token source
-     *
+     * 
      * @throws TypesetterException in case of an error
      */
     private void clearLine(Context context, TokenSource source)
@@ -216,18 +217,18 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      * Close the node list. This means that everything is done to ship the
      * closed node list to the document writer. Nevertheless the invoking
      * application might decide not to modify the node list and continue
-     * processing. In the other case some  nodes might be taken from the node
+     * processing. In the other case some nodes might be taken from the node
      * list returned by this method. Then the processing has to continue with
      * the reduced node list.
-     *
+     * 
      * @param context the typesetter options mapping a fragment of the
-     *  interpreter context
-     *
+     *        interpreter context
+     * 
      * @return the node list enclosed in this instance
-     *
+     * 
      * @throws TypesetterException in case of an error
      * @throws ConfigurationException in case of a configuration error
-     *
+     * 
      * @see org.extex.typesetter.listMaker.RestrictedHorizontalListMaker#complete(
      *      org.extex.typesetter.TypesetterOptions)
      */
@@ -247,9 +248,11 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
                 if (cell != null) {
                     nl = cell.getList();
                     if (nl instanceof HorizontalListNode) {
-                        ((HorizontalListNode) nl).hpack(new Dimen(maxWidth[i])); //TODO gene: check
+                        ((HorizontalListNode) nl).hpack(new Dimen(maxWidth[i])); // TODO
+                                                                                    // gene:
+                                                                                    // check
                     } else {
-                        //TODO gene: unimplemented
+                        // TODO gene: unimplemented
                         throw new RuntimeException("unimplemented");
                     }
                     row.add(nl);
@@ -275,51 +278,49 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
 
     /**
      * This method is invoked when a row in the alignment is complete and the
-     * cells can be integrated. If some cells are not filled jet then they
-     * are treated as empty.
-     *
+     * cells can be integrated. If some cells are not filled jet then they are
+     * treated as empty.
+     * 
      * @param context the interpreter context
      * @param source the token source
      * @param noalign the tokens to be inserted or <code>null</code>
-     *
+     * 
      * @throws TypesetterException in case of an error
-     *
+     * 
      * @see org.extex.typesetter.listMaker.AlignmentList#cr(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.type.NodeList)
      */
-    public void cr(Context context, TokenSource source,
-            NodeList noalign) throws TypesetterException {
+    public void cr(Context context, TokenSource source, NodeList noalign)
+            throws TypesetterException {
 
         rows.add(line);
         if (noalign != null) {
-            //TODO gene: insert noalign
+            // TODO gene: insert noalign
         }
         clearLine(context, source);
     }
 
     /**
      * This method is invoked when a row in the alignment is complete and the
-     * cells can be integrated. If some cells are not filled jet then they
-     * are treated as empty.
-     * In contrast to the method
-     * {@link #cr(Context, TokenSource, NodeList) cr()}
-     * this method is a noop when the alignment is at the beginning of a row.
-     *
+     * cells can be integrated. If some cells are not filled jet then they are
+     * treated as empty. In contrast to the method
+     * {@link #cr(Context, TokenSource, NodeList) cr()} this method is a noop
+     * when the alignment is at the beginning of a row.
+     * 
      * @param context the interpreter context
      * @param source the token source
      * @param typesetter the typesetter
-     *
+     * 
      * @throws TypesetterException in case of an error
-     *
+     * 
      * @see org.extex.typesetter.listMaker.AlignmentList#crcr(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void crcr(Context context, TokenSource source,
-            Typesetter typesetter) throws TypesetterException {
+    public void crcr(Context context, TokenSource source, Typesetter typesetter)
+            throws TypesetterException {
 
         if (col <= 0) {
             return;
@@ -347,25 +348,25 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      * The invocation of this method indicates that the pattern for the current
      * cell should not be taken from the preamble but the default should be used
      * instead.
-     *
+     * 
      * @throws TypesetterException in case of an error
-     *
+     * 
      * @see org.extex.typesetter.listMaker.AlignmentList#omit()
      */
     public void omit() throws TypesetterException {
 
-        //TODO gene: respect protected macros
+        // TODO gene: respect protected macros
     }
 
     /**
-     * This method is invoked when a cell is complete which should be
-     * continued in the next cell.
-     *
+     * This method is invoked when a cell is complete which should be continued
+     * in the next cell.
+     * 
      * @param context the interpreter context
      * @param source the token source
-     *
+     * 
      * @throws TypesetterException in case of an error
-     *
+     * 
      * @see org.extex.typesetter.listMaker.AlignmentList#span(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
@@ -381,10 +382,10 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
 
     /**
      * Start a new cell.
-     *
+     * 
      * @param context the interpreter context
      * @param source the token source
-     *
+     * 
      * @throws TypesetterException in case of an error
      */
     private void startCell(Context context, TokenSource source)
@@ -412,9 +413,9 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
 
     /**
      * Compute the sum of an array of dimens.
-     *
+     * 
      * @param d the dimen array
-     *
+     * 
      * @return the sum in a new Dimen
      */
     public static Dimen sum(Dimen[] d) {
@@ -428,22 +429,14 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
     }
 
     /**
-     * Treat a alignment tab character.
-     *
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param token the actual tab token
-     *
-     * @throws TypesetterException in case of an error
-     * @throws ConfigurationException in case of a configuration error
-     *
-     * @see org.extex.typesetter.ListMaker#tab(
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.listMaker.AbstractListMaker#tab(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
-    public void tab(Context context, TokenSource source,
-            Token token)
+    public void tab(Context context, TokenSource source, Token token)
             throws TypesetterException,
                 ConfigurationException {
 
@@ -453,7 +446,8 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
         }
 
         try {
-            source.push(format.getPost()); //TODO gene: wrong! process the tokens before closing
+            source.push(format.getPost()); // TODO gene: wrong! process the
+                                            // tokens before closing
         } catch (HelpingException e) {
             throw new TypesetterException(e);
         }

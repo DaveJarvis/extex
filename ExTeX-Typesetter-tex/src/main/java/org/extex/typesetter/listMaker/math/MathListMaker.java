@@ -34,11 +34,9 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
-import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.exception.helping.MissingMathException;
-import org.extex.interpreter.type.font.Font;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.Namespace;
@@ -52,6 +50,8 @@ import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.exception.TypesetterHelpingException;
 import org.extex.typesetter.listMaker.HorizontalListMaker;
+import org.extex.typesetter.tc.TypesettingContext;
+import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.math.MathCode;
@@ -394,7 +394,7 @@ public class MathListMaker extends HorizontalListMaker
      * 
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(
      *      org.extex.typesetter.type.math.MathCode,
-     *      org.extex.interpreter.context.tc.TypesettingContext)
+     *      org.extex.typesetter.tc.TypesettingContext)
      */
     public void add(MathCode mc, TypesettingContext tc)
             throws TypesetterException {
@@ -412,7 +412,7 @@ public class MathListMaker extends HorizontalListMaker
      * 
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(
      *      org.extex.typesetter.type.math.MathDelimiter,
-     *      org.extex.interpreter.context.tc.TypesettingContext)
+     *      org.extex.typesetter.tc.TypesettingContext)
      */
     public void add(MathDelimiter delimiter, TypesettingContext tc)
             throws TypesetterException {
@@ -508,7 +508,7 @@ public class MathListMaker extends HorizontalListMaker
      * @throws ConfigurationException in case of a configuration error
      * 
      * @see org.extex.typesetter.ListMaker#addSpace(
-     *      org.extex.interpreter.context.tc.TypesettingContext,
+     *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.count.Count)
      */
     public void addSpace(TypesettingContext typesettingContext,
@@ -570,17 +570,11 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
-     * Process a carriage return.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * @param tc the typesetting context
-     * @param uc the character
-     * 
-     * @throws TypesetterException in case of an error
-     * 
-     * @see org.extex.typesetter.ListMaker#cr(
+     * @see org.extex.typesetter.listMaker.HorizontalListMaker#cr(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.context.tc.TypesettingContext,
+     *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
     public void cr(Context context, TypesettingContext tc, UnicodeChar uc)
@@ -723,22 +717,11 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
-     * Add a letter to the current list or treat it in some other appropriate
-     * way.
+     * {@inheritDoc}
      * 
-     * @param symbol the character
-     * @param tc the typesetting context
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param locator the locator
-     * 
-     * @return <code>true</code> iff the character has been discarded because
-     *         it is not defined in the current font.
-     * 
-     * @throws TypesetterException in case of an error
-     * 
-     * @see org.extex.typesetter.ListMaker#letter( org.extex.core.UnicodeChar,
-     *      org.extex.interpreter.context.tc.TypesettingContext,
+     * @see org.extex.typesetter.listMaker.HorizontalListMaker#letter(
+     *      org.extex.core.UnicodeChar,
+     *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.core.Locator)
      */
@@ -770,23 +753,17 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
-     * Treat a math shift character. Usually this leads to entering or leaving
-     * math mode &ndash; maybe after inspection of a following token.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param t the actual math shift character token
-     * @throws TypesetterException in case of an error
-     * @throws ConfigurationException in case of a configuration error
-     * 
-     * @see org.extex.typesetter.ListMaker#mathShift(
+     * @see org.extex.typesetter.listMaker.AbstractListMaker#mathShift(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
     public void mathShift(Context context, TokenSource source, Token t)
             throws TypesetterException,
-                ConfigurationException, HelpingException {
+                ConfigurationException,
+                HelpingException {
 
         if (!closing) {
             Tokens toks = context.getToks("everymathend");
@@ -989,21 +966,17 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
-     * Treat a subscript mark. This might be meaningful in math mode only.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * @param token the actual sub mark token
-     * @throws TypesetterException in case of an error
-     * 
-     * @see org.extex.typesetter.ListMaker#subscriptMark(
+     * @see org.extex.typesetter.listMaker.AbstractListMaker#subscriptMark(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, Typesetter,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
     public void subscriptMark(Context context, TokenSource source,
-            Typesetter typesetter, Token token) throws TypesetterException, HelpingException {
+            Typesetter typesetter, Token token)
+            throws TypesetterException,
+                HelpingException {
 
         Noad sub =
                 scanNoad(null, context, source, typesetter, token.toString(),
@@ -1021,21 +994,17 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
-     * Treat a superscript mark. This might be meaningful in math mode only.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * @param token the actual super mark token
-     * @throws TypesetterException in case of an error
-     * 
-     * @see org.extex.typesetter.ListMaker#superscriptMark(
+     * @see org.extex.typesetter.listMaker.AbstractListMaker#superscriptMark(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, Typesetter,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
     public void superscriptMark(Context context, TokenSource source,
-            Typesetter typesetter, Token token) throws TypesetterException, HelpingException {
+            Typesetter typesetter, Token token)
+            throws TypesetterException,
+                HelpingException {
 
         Noad sup =
                 scanNoad(null, context, source, typesetter, token.toString(),
@@ -1070,7 +1039,7 @@ public class MathListMaker extends HorizontalListMaker
      *      org.extex.typesetter.type.math.MathDelimiter,
      *      org.extex.typesetter.type.math.MathDelimiter,
      *      org.extex.core.dimen.FixedDimen,
-     *      org.extex.interpreter.context.tc.TypesettingContext)
+     *      org.extex.typesetter.tc.TypesettingContext)
      */
     public void switchToFraction(MathDelimiter leftDelimiter,
             MathDelimiter rightDelimiter, FixedDimen ruleWidth,

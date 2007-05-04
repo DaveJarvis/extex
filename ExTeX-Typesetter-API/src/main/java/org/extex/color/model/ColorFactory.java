@@ -19,7 +19,7 @@
 
 package org.extex.color.model;
 
-import org.extex.interpreter.context.Color;
+import org.extex.color.Color;
 
 /**
  * This factory can be used to acquire Color objects.

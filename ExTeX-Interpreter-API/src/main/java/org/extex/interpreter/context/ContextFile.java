@@ -56,7 +56,7 @@ public interface ContextFile {
     OutFile getOutFile(String name);
 
     /**
-     * Setter for the {@link org.extex.interpreter.type.file.InFile InFile}
+     * Setter for the {@link org.extex.scanner.type.file.InFile InFile}
      * register in all requested groups. InFile registers are named, either with
      * a number or an arbitrary string. The numbered registers where limited to
      * 16 in <logo>TeX</logo>. This restriction does no longer hold for

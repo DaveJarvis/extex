@@ -127,16 +127,7 @@ public class Vbox extends AbstractBoxPrimitive {
     }
 
     /**
-     * Getter for the content as Box.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use
-     * @param insert the token to insert either at the beginning of the box or
-     *        after the box has been gathered. If it is <code>null</code> then
-     *        nothing is inserted
-     * 
-     * @return an appropriate Box
+     * {@inheritDoc}
      * 
      * @see org.extex.unit.tex.register.box.BoxPrimitive#getBox(
      *      org.extex.interpreter.context.Context,
@@ -232,7 +223,7 @@ public class Vbox extends AbstractBoxPrimitive {
      * @return the complete Box
      * 
      * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the tpesetter
+     * @throws TypesetterException in case of an error in the typesetter
      */
     protected Box acquireBox(Context context, TokenSource source,
             Typesetter typesetter, GroupType groupType, Token startToken,

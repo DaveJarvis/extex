@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.interpreter.type.font;
+package org.extex.typesetter.common;
 
 import java.util.logging.Logger;
 
@@ -26,6 +26,7 @@ import org.extex.core.count.Count;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.typesetter.TypesetterOptions;
+import org.extex.typesetter.tc.font.Font;
 
 /**
  * Font utility methods.

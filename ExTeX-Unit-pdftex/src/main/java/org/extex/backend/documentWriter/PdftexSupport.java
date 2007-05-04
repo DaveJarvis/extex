@@ -21,7 +21,7 @@ package org.extex.backend.documentWriter;
 
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.box.Box;
-import org.extex.interpreter.type.font.Font;
+import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.node.RuleNode;
 import org.extex.typesetter.type.node.pdftex.PdfAnnotation;
 import org.extex.typesetter.type.node.pdftex.PdfObject;

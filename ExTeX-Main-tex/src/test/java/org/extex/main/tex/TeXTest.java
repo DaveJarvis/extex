@@ -31,7 +31,6 @@ import java.util.Properties;
 import junit.framework.TestCase;
 
 import org.extex.ExTeX;
-import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.interaction.InteractionUnknownException;
 
@@ -146,7 +145,7 @@ public class TeXTest extends TestCase {
      *
      * @return the result on the error stream
      *
-     * @throws InterpreterException in case of an interpreter error
+     * @throws HelpingException in case of an interpreter error
      * @throws IOException in case of an io error
      */
     public static String runSuccess(String[] args, String expect)
@@ -217,7 +216,7 @@ public class TeXTest extends TestCase {
      *
      * @return the result on the error stream
      *
-     * @throws InterpreterException in case of an interpreter error
+     * @throws HelpingException in case of an interpreter error
      * @throws IOException in case of an io error
      */
     public static String runTest(String[] args, String expect,

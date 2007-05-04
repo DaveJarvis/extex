@@ -28,7 +28,6 @@ import org.extex.typesetter.ListMaker;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.listMaker.AlignmentList;
-import org.extex.typesetter.listMaker.TokenDelegateListMaker;
 
 /**
  * This class provides an implementation for the primitive <code>\span</code>.

@@ -19,12 +19,12 @@
 
 package org.extex.unit.color.util;
 
+import org.extex.color.Color;
 import org.extex.color.model.ColorFactory;
 import org.extex.core.glue.GlueComponent;
 import org.extex.core.scaled.ScaledNumber;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Color;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.helping.EofException;
 import org.extex.interpreter.exception.helping.HelpingException;

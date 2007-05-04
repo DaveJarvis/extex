@@ -37,7 +37,7 @@ import org.extex.typesetter.listMaker.math.MathListMaker;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
 public abstract class ListMakerFactory {
 
@@ -58,14 +58,14 @@ public abstract class ListMakerFactory {
     }
 
     /**
-     * The field <tt>map</tt> contains the mapping from symbolic names to the
-     * creator function.
+     * The field <tt>CREATORS</tt> contains the mapping from symbolic names to
+     * the creator function.
      */
-    private static final Map<ListMakerType, CC> map =
+    private static final Map<ListMakerType, CC> CREATORS =
             new HashMap<ListMakerType, CC>();
 
     static {
-        map.put(ListMakers.HORIZONTAL, new CC() {
+        CREATORS.put(ListMakers.HORIZONTAL, new CC() {
 
             public TokenDelegateListMaker create(ListManager manager,
                     Locator locator) {
@@ -73,7 +73,7 @@ public abstract class ListMakerFactory {
                 return new HorizontalListMaker(manager, locator);
             }
         });
-        map.put(ListMakers.VERTICAL, new CC() {
+        CREATORS.put(ListMakers.VERTICAL, new CC() {
 
             public TokenDelegateListMaker create(ListManager manager,
                     Locator locator) {
@@ -81,7 +81,7 @@ public abstract class ListMakerFactory {
                 return new VerticalListMaker(manager, locator);
             }
         });
-        map.put(ListMakers.RESTRICTED_HORIZONTAL, new CC() {
+        CREATORS.put(ListMakers.RESTRICTED_HORIZONTAL, new CC() {
 
             public TokenDelegateListMaker create(ListManager manager,
                     Locator locator) {
@@ -89,7 +89,7 @@ public abstract class ListMakerFactory {
                 return new RestrictedHorizontalListMaker(manager, locator);
             }
         });
-        map.put(ListMakers.INNER_VERTICAL, new CC() {
+        CREATORS.put(ListMakers.INNER_VERTICAL, new CC() {
 
             public TokenDelegateListMaker create(ListManager manager,
                     Locator locator) {
@@ -97,7 +97,7 @@ public abstract class ListMakerFactory {
                 return new InnerVerticalListMaker(manager, locator);
             }
         });
-        map.put(ListMakers.MATH, new CC() {
+        CREATORS.put(ListMakers.MATH, new CC() {
 
             public TokenDelegateListMaker create(ListManager manager,
                     Locator locator) {
@@ -116,18 +116,19 @@ public abstract class ListMakerFactory {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Create a new list maker according to the specified type. If the requested
+     * type is not known then an UnsupportedOperationException is thrown.
      * 
      * @param manager the typesetter
      * @param type the type
      * @param locator the locator
      * 
-     * @return
+     * @return the new instance
      */
     protected TokenDelegateListMaker createListMaker(ListManager manager,
             ListMakerType type, Locator locator) {
 
-        CC cc = map.get(type);
+        CC cc = CREATORS.get(type);
         if (cc == null) {
             throw new UnsupportedOperationException(type.toString());
         }

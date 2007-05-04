@@ -31,7 +31,6 @@ import org.extex.core.glue.FixedGlue;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.context.tc.TypesettingContext;
 import org.extex.typesetter.ListMaker;
 import org.extex.typesetter.ListManager;
 import org.extex.typesetter.Mode;
@@ -39,6 +38,7 @@ import org.extex.typesetter.ParagraphObserver;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.exception.TypesetterUnsupportedException;
+import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.VerticalListNode;
@@ -125,7 +125,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
      * {@inheritDoc}
      * 
      * @see org.extex.typesetter.ListMaker#addSpace(
-     *      org.extex.interpreter.context.tc.TypesettingContext,
+     *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.count.Count)
      */
     public void addSpace(TypesettingContext typesettingContext,
@@ -159,7 +159,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
      * 
      * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#cr(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.context.tc.TypesettingContext,
+     *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
     public void cr(Context context, TypesettingContext tc, UnicodeChar uc)
@@ -203,7 +203,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
      * 
      * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#letter(
      *      org.extex.core.UnicodeChar,
-     *      org.extex.interpreter.context.tc.TypesettingContext,
+     *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.core.Locator)
      */
