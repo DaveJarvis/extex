@@ -30,8 +30,8 @@ import org.extex.core.exception.GeneralException;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.i18n.Localizable;
 import org.extex.framework.i18n.Localizer;
-import org.extex.interpreter.type.font.Font;
 import org.extex.typesetter.Mode;
+import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.InspectableNodeVisitor;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
@@ -76,7 +76,7 @@ public class DviDocumentWriter
      */
     private final class DviVisitor
             implements
-                NodeVisitor,
+                NodeVisitor<Object, Object>,
                 InspectableNodeVisitor {
 
         /**
@@ -90,7 +90,7 @@ public class DviDocumentWriter
          * changes during debugging.
          * 
          */
-        private NodeVisitor visitor = this;
+        private NodeVisitor<Object, Object> visitor = this;
 
         /**
          * Creates a new instance.
@@ -131,7 +131,7 @@ public class DviDocumentWriter
          * 
          * @param theVisitor the new <code>NodeVisitor</code>
          */
-        public void setVisitor(NodeVisitor theVisitor) {
+        public void setVisitor(NodeVisitor<Object, Object> theVisitor) {
 
             // this method is needed for debugging
 

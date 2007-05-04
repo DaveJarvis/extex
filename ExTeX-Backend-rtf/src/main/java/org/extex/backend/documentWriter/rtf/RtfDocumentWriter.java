@@ -26,14 +26,14 @@ import java.util.Stack;
 import org.extex.backend.documentWriter.DocumentWriter;
 import org.extex.backend.documentWriter.DocumentWriterOptions;
 import org.extex.backend.documentWriter.SingleDocumentStream;
+import org.extex.color.Color;
 import org.extex.color.ColorAware;
 import org.extex.color.ColorConverter;
 import org.extex.color.model.RgbColor;
 import org.extex.core.exception.GeneralException;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
-import org.extex.interpreter.context.Color;
-import org.extex.interpreter.type.font.Font;
+import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
@@ -120,7 +120,7 @@ public class RtfDocumentWriter extends RtfDocument
      * The field <tt>visitor</tt> contains the visitor carrying the methods
      * for translating nodes to RTF instructions.
      */
-    private NodeVisitor visitor = new NodeVisitor() {
+    private NodeVisitor<Boolean, Object> visitor = new NodeVisitor<Boolean, Object>() {
 
         /**
          * The state is a container for state information to be preserved by RTF
@@ -294,7 +294,7 @@ public class RtfDocumentWriter extends RtfDocument
          * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(
          *      org.extex.typesetter.type.node.AdjustNode, java.lang.Object)
          */
-        public Object visitAdjust(AdjustNode node, Object value)
+        public Boolean visitAdjust(AdjustNode node, Object value)
                 throws GeneralException {
 
             // silently ignored
@@ -305,7 +305,7 @@ public class RtfDocumentWriter extends RtfDocument
          * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(
          *      org.extex.typesetter.type.node.AfterMathNode, java.lang.Object)
          */
-        public Object visitAfterMath(AfterMathNode node, Object value)
+        public Boolean visitAfterMath(AfterMathNode node, Object value)
                 throws GeneralException {
 
             return null;
@@ -316,7 +316,7 @@ public class RtfDocumentWriter extends RtfDocument
          *      org.extex.typesetter.type.node.AlignedLeadersNode,
          *      java.lang.Object)
          */
-        public Object visitAlignedLeaders(AlignedLeadersNode node, Object value)
+        public Boolean visitAlignedLeaders(AlignedLeadersNode node, Object value)
                 throws GeneralException {
 
             return null;
@@ -326,7 +326,7 @@ public class RtfDocumentWriter extends RtfDocument
          * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(
          *      org.extex.typesetter.type.node.BeforeMathNode, java.lang.Object)
          */
-        public Object visitBeforeMath(BeforeMathNode node, Object value)
+        public Boolean visitBeforeMath(BeforeMathNode node, Object value)
                 throws GeneralException {
 
             return null;
@@ -337,7 +337,7 @@ public class RtfDocumentWriter extends RtfDocument
          *      org.extex.typesetter.type.node.CenteredLeadersNode,
          *      java.lang.Object)
          */
-        public Object visitCenteredLeaders(CenteredLeadersNode node,
+        public Boolean visitCenteredLeaders(CenteredLeadersNode node,
                 Object value) throws GeneralException {
 
             return null;
@@ -347,7 +347,7 @@ public class RtfDocumentWriter extends RtfDocument
          * @see org.extex.typesetter.type.NodeVisitor#visitChar(
          *      org.extex.typesetter.type.node.CharNode, java.lang.Object)
          */
-        public Object visitChar(CharNode node, Object code)
+        public Boolean visitChar(CharNode node, Object code)
                 throws GeneralException {
 
             try {
@@ -403,12 +403,12 @@ public class RtfDocumentWriter extends RtfDocument
          *      org.extex.typesetter.type.node.DiscretionaryNode,
          *      java.lang.Object)
          */
-        public Object visitDiscretionary(DiscretionaryNode node, Object value)
+        public Boolean visitDiscretionary(DiscretionaryNode node, Object value)
                 throws GeneralException {
 
             NodeList n = node.getNoBreak();
             if (n != null) {
-                return n.visit(this, value);
+                return (Boolean) n.visit(this, value);
             }
             return null;
         }
@@ -418,7 +418,7 @@ public class RtfDocumentWriter extends RtfDocument
          *      org.extex.typesetter.type.node.ExpandedLeadersNode,
          *      java.lang.Object)
          */
-        public Object visitExpandedLeaders(ExpandedLeadersNode node,
+        public Boolean visitExpandedLeaders(ExpandedLeadersNode node,
                 Object value) throws GeneralException {
 
             return null;
@@ -428,7 +428,7 @@ public class RtfDocumentWriter extends RtfDocument
          * @see org.extex.typesetter.type.NodeVisitor#visitGlue(
          *      org.extex.typesetter.type.node.GlueNode, java.lang.Object)
          */
-        public Object visitGlue(GlueNode node, Object value)
+        public Boolean visitGlue(GlueNode node, Object value)
                 throws GeneralException {
 
             return null;
@@ -440,7 +440,7 @@ public class RtfDocumentWriter extends RtfDocument
          *      org.extex.typesetter.type.node.HorizontalListNode,
          *      java.lang.Object)
          */
-        public Object visitHorizontalList(HorizontalListNode node, Object value)
+        public Boolean visitHorizontalList(HorizontalListNode node, Object value)
                 throws GeneralException {
 
             boolean save = horizontal;
@@ -474,7 +474,7 @@ public class RtfDocumentWriter extends RtfDocument
          * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(
          *      org.extex.typesetter.type.node.InsertionNode, java.lang.Object)
          */
-        public Object visitInsertion(InsertionNode node, Object value)
+        public Boolean visitInsertion(InsertionNode node, Object value)
                 throws GeneralException {
 
             // silently ignored
@@ -485,7 +485,7 @@ public class RtfDocumentWriter extends RtfDocument
          * @see org.extex.typesetter.type.NodeVisitor#visitKern(
          *      org.extex.typesetter.type.node.KernNode, java.lang.Object)
          */
-        public Object visitKern(KernNode node, Object value)
+        public Boolean visitKern(KernNode node, Object value)
                 throws GeneralException {
 
             return null;
@@ -495,7 +495,7 @@ public class RtfDocumentWriter extends RtfDocument
          * @see org.extex.typesetter.type.NodeVisitor#visitLigature(
          *      org.extex.typesetter.type.node.LigatureNode, java.lang.Object)
          */
-        public Object visitLigature(LigatureNode node, Object value)
+        public Boolean visitLigature(LigatureNode node, Object value)
                 throws GeneralException {
 
             return visitChar(node, value);
@@ -505,7 +505,7 @@ public class RtfDocumentWriter extends RtfDocument
          * @see org.extex.typesetter.type.NodeVisitor#visitMark(
          *      org.extex.typesetter.type.node.MarkNode, java.lang.Object)
          */
-        public Object visitMark(MarkNode node, Object value)
+        public Boolean visitMark(MarkNode node, Object value)
                 throws GeneralException {
 
             // silently ignored
@@ -516,7 +516,7 @@ public class RtfDocumentWriter extends RtfDocument
          * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(
          *      org.extex.typesetter.type.node.PenaltyNode, java.lang.Object)
          */
-        public Object visitPenalty(PenaltyNode node, Object value)
+        public Boolean visitPenalty(PenaltyNode node, Object value)
                 throws GeneralException {
 
             // silently ignored
@@ -527,7 +527,7 @@ public class RtfDocumentWriter extends RtfDocument
          * @see org.extex.typesetter.type.NodeVisitor#visitRule(
          *      org.extex.typesetter.type.node.RuleNode, java.lang.Object)
          */
-        public Object visitRule(RuleNode node, Object code)
+        public Boolean visitRule(RuleNode node, Object code)
                 throws GeneralException {
 
             // TODO gene: correct the rectangle drawing
@@ -573,7 +573,7 @@ public class RtfDocumentWriter extends RtfDocument
          * @see org.extex.typesetter.type.NodeVisitor#visitSpace(
          *      org.extex.typesetter.type.node.SpaceNode, java.lang.Object)
          */
-        public Object visitSpace(SpaceNode node, Object value)
+        public Boolean visitSpace(SpaceNode node, Object value)
                 throws GeneralException {
 
             // TODO gene: wrong; just for development
@@ -595,7 +595,7 @@ public class RtfDocumentWriter extends RtfDocument
          *      org.extex.typesetter.type.node.VerticalListNode,
          *      java.lang.Object)
          */
-        public Object visitVerticalList(VerticalListNode node, Object value)
+        public Boolean visitVerticalList(VerticalListNode node, Object value)
                 throws GeneralException {
 
             Node n;
@@ -631,7 +631,7 @@ public class RtfDocumentWriter extends RtfDocument
          *      org.extex.typesetter.type.node.VirtualCharNode,
          *      java.lang.Object)
          */
-        public Object visitVirtualChar(VirtualCharNode node, Object value)
+        public Boolean visitVirtualChar(VirtualCharNode node, Object value)
                 throws GeneralException {
 
             return visitChar(node, value);
@@ -643,7 +643,7 @@ public class RtfDocumentWriter extends RtfDocument
          * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(
          *      org.extex.typesetter.type.node.WhatsItNode, java.lang.Object)
          */
-        public Object visitWhatsIt(WhatsItNode node, Object value)
+        public Boolean visitWhatsIt(WhatsItNode node, Object value)
                 throws GeneralException {
 
             if (node instanceof SpecialNode) {

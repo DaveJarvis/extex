@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.extex.font.FontKey;
-import org.extex.interpreter.type.font.Font;
+import org.extex.typesetter.tc.font.Font;
 import org.pdfbox.afmtypes.FontMetric;
 import org.pdfbox.pdmodel.PDDocument;
 import org.pdfbox.pdmodel.font.PDFont;
@@ -39,7 +39,7 @@ import org.pdfbox.pdmodel.font.PDType1Font;
  * @version $Revision:4704 $
  */
 
-public class PdfBoxType1Font extends PDType1Font {
+public final class PdfBoxType1Font extends PDType1Font {
 
     /**
      * Returns a instance for the font.

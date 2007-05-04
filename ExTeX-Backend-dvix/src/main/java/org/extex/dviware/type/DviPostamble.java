@@ -29,7 +29,7 @@ import java.util.Map;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.dviware.Dvi;
-import org.extex.interpreter.type.font.Font;
+import org.extex.typesetter.tc.font.Font;
 
 /**
  * This class represents the DVI instruction <tt>post</tt> and the contents

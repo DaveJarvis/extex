@@ -37,7 +37,7 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.framework.configuration.Configuration;
-import org.extex.interpreter.type.font.Font;
+import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
@@ -77,7 +77,7 @@ public class SVGDocumentWriter
         implements
             DocumentWriter,
             MultipleDocumentStream,
-            NodeVisitor {
+            NodeVisitor<Object, Object> {
 
     /**
      * DIN-A4 height.

@@ -29,8 +29,8 @@ import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
-import org.extex.interpreter.context.tc.TypesettingContext;
-import org.extex.interpreter.type.font.Font;
+import org.extex.typesetter.tc.TypesettingContext;
+import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.typesetter.type.node.AdjustNode;
@@ -63,7 +63,7 @@ import org.extex.typesetter.type.page.Page;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class PsBoxConverter implements PsConverter, NodeVisitor {
+public class PsBoxConverter implements PsConverter, NodeVisitor<Object, StringBuffer> {
 
     /**
      * The field <tt>fm</tt> contains the font manager.
@@ -216,10 +216,10 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      *      org.extex.typesetter.type.node.AdjustNode,
      *      java.lang.Object)
      */
-    public Object visitAdjust(AdjustNode node, Object oOut)
+    public Object visitAdjust(AdjustNode node, StringBuffer oOut)
             throws GeneralException {
 
-        drawBox(node, (StringBuffer) oOut, "box");
+        drawBox(node, oOut, "box");
         return null;
     }
 
@@ -230,7 +230,7 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      *      org.extex.typesetter.type.node.AfterMathNode,
      *      java.lang.Object)
      */
-    public Object visitAfterMath(AfterMathNode node, Object oOut)
+    public Object visitAfterMath(AfterMathNode node, StringBuffer oOut)
             throws GeneralException {
 
         return null;
@@ -244,9 +244,9 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      *      java.lang.Object)
      */
     public Object visitAlignedLeaders(AlignedLeadersNode node,
-            Object oOut) throws GeneralException {
+            StringBuffer oOut) throws GeneralException {
 
-        drawBox(node, (StringBuffer) oOut, "box");
+        drawBox(node, oOut, "box");
         return null;
     }
 
@@ -257,7 +257,7 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      *      org.extex.typesetter.type.node.BeforeMathNode,
      *      java.lang.Object)
      */
-    public Object visitBeforeMath(BeforeMathNode node, Object oOut)
+    public Object visitBeforeMath(BeforeMathNode node, StringBuffer oOut)
             throws GeneralException {
 
         return null;
@@ -271,9 +271,9 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      *      java.lang.Object)
      */
     public Object visitCenteredLeaders(CenteredLeadersNode node,
-            Object oOut) throws GeneralException {
+            StringBuffer oOut) throws GeneralException {
 
-        drawBox(node, (StringBuffer) oOut, "box");
+        drawBox(node, oOut, "box");
         return null;
     }
 
@@ -284,10 +284,10 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      *      org.extex.typesetter.type.node.CharNode,
      *      java.lang.Object)
      */
-    public Object visitChar(CharNode node, Object oOut)
+    public Object visitChar(CharNode node, StringBuffer oOut)
             throws GeneralException {
 
-        StringBuffer out = (StringBuffer) oOut;
+        StringBuffer out = oOut;
         drawBox(node, out, "box");
 
         TypesettingContext tc = node.getTypesettingContext();
@@ -327,10 +327,10 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      *      java.lang.Object)
      */
     public Object visitDiscretionary(DiscretionaryNode node,
-            Object oOut) throws GeneralException {
+            StringBuffer oOut) throws GeneralException {
 
         if (trace) {
-            StringBuffer out = (StringBuffer) oOut;
+            StringBuffer out = oOut;
             out.append("% ");
             String name = node.getClass().getName();
             out.append(name.substring(name.lastIndexOf('.') + 1));
@@ -347,9 +347,9 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      *      java.lang.Object)
      */
     public Object visitExpandedLeaders(ExpandedLeadersNode node,
-            Object oOut) throws GeneralException {
+            StringBuffer oOut) throws GeneralException {
 
-        drawBox(node, (StringBuffer) oOut, "box");
+        drawBox(node, oOut, "box");
         return null;
     }
 
@@ -360,10 +360,10 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      *      org.extex.typesetter.type.node.GlueNode,
      *      java.lang.Object)
      */
-    public Object visitGlue(GlueNode node, Object oOut)
+    public Object visitGlue(GlueNode node, StringBuffer oOut)
             throws GeneralException {
 
-        drawBox(node, (StringBuffer) oOut, "box");
+        drawBox(node, oOut, "box");
         return null;
     }
 
@@ -375,14 +375,14 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      *      java.lang.Object)
      */
     public Object visitHorizontalList(HorizontalListNode node,
-            Object oOut) throws GeneralException {
+            StringBuffer oOut) throws GeneralException {
 
         Dimen saveX = new Dimen(x);
         Dimen saveY = new Dimen(y);
         x.add(node.getMove());
         y.add(node.getShift());
 
-        drawBox(node, (StringBuffer) oOut, "Box");
+        drawBox(node, oOut, "Box");
         Node n;
         int len = node.size();
 
@@ -405,10 +405,10 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      *      org.extex.typesetter.type.node.InsertionNode,
      *      java.lang.Object)
      */
-    public Object visitInsertion(InsertionNode node, Object oOut)
+    public Object visitInsertion(InsertionNode node, StringBuffer oOut)
             throws GeneralException {
 
-        drawBox(node, (StringBuffer) oOut, "box");
+        drawBox(node, oOut, "box");
         return null;
     }
 
@@ -419,11 +419,10 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      *      org.extex.typesetter.type.node.KernNode,
      *      java.lang.Object)
      */
-    public Object visitKern(KernNode node, Object oOut)
+    public Object visitKern(KernNode node, StringBuffer out)
             throws GeneralException {
 
         if (trace) {
-            StringBuffer out = (StringBuffer) oOut;
             out.append("% ");
             String name = node.getClass().getName();
             out.append(name.substring(name.lastIndexOf('.') + 1));
@@ -439,7 +438,7 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      *      org.extex.typesetter.type.node.LigatureNode,
      *      java.lang.Object)
      */
-    public Object visitLigature(LigatureNode node, Object oOut)
+    public Object visitLigature(LigatureNode node, StringBuffer oOut)
             throws GeneralException {
 
         return visitChar(node, oOut);
@@ -452,11 +451,10 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      *      org.extex.typesetter.type.node.MarkNode,
      *      java.lang.Object)
      */
-    public Object visitMark(MarkNode node, Object oOut)
+    public Object visitMark(MarkNode node, StringBuffer out)
             throws GeneralException {
 
         if (trace) {
-            StringBuffer out = (StringBuffer) oOut;
             out.append("% ");
             String name = node.getClass().getName();
             out.append(name.substring(name.lastIndexOf('.') + 1));
@@ -472,11 +470,10 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      *      org.extex.typesetter.type.node.PenaltyNode,
      *      java.lang.Object)
      */
-    public Object visitPenalty(PenaltyNode node, Object oOut)
+    public Object visitPenalty(PenaltyNode node, StringBuffer out)
             throws GeneralException {
 
         if (trace) {
-            StringBuffer out = (StringBuffer) oOut;
             out.append("% ");
             String name = node.getClass().getName();
             out.append(name.substring(name.lastIndexOf('.') + 1));
@@ -492,10 +489,10 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      *      org.extex.typesetter.type.node.RuleNode,
      *      java.lang.Object)
      */
-    public Object visitRule(RuleNode node, Object oOut)
+    public Object visitRule(RuleNode node, StringBuffer oOut)
             throws GeneralException {
 
-        drawBox(node, (StringBuffer) oOut, "box");
+        drawBox(node, oOut, "box");
         return null;
     }
 
@@ -506,11 +503,10 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      *      org.extex.typesetter.type.node.SpaceNode,
      *      java.lang.Object)
      */
-    public Object visitSpace(SpaceNode node, Object oOut)
+    public Object visitSpace(SpaceNode node, StringBuffer out)
             throws GeneralException {
 
         if (trace) {
-            StringBuffer out = (StringBuffer) oOut;
             out.append("% ");
             String name = node.getClass().getName();
             out.append(name.substring(name.lastIndexOf('.') + 1));
@@ -527,14 +523,14 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      *      java.lang.Object)
      */
     public Object visitVerticalList(VerticalListNode node,
-            Object oOut) throws GeneralException {
+            StringBuffer oOut) throws GeneralException {
 
         Dimen saveX = new Dimen(x);
         Dimen saveY = new Dimen(y);
         x.add(node.getMove());
         y.add(node.getShift());
 
-        drawBox(node, (StringBuffer) oOut, "Box");
+        drawBox(node, oOut, "Box");
         Node n;
         int len = node.size();
 
@@ -558,7 +554,7 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      *      org.extex.typesetter.type.node.VirtualCharNode,
      *      java.lang.Object)
      */
-    public Object visitVirtualChar(VirtualCharNode node, Object oOut)
+    public Object visitVirtualChar(VirtualCharNode node, StringBuffer oOut)
             throws GeneralException {
 
         return visitChar(node, oOut);
@@ -571,16 +567,15 @@ public class PsBoxConverter implements PsConverter, NodeVisitor {
      *      org.extex.typesetter.type.node.WhatsItNode,
      *      java.lang.Object)
      */
-    public Object visitWhatsIt(WhatsItNode node, Object oOut)
+    public Object visitWhatsIt(WhatsItNode node, StringBuffer oOut)
             throws GeneralException {
 
-        StringBuffer out = (StringBuffer) oOut;
-        drawBox(node, (StringBuffer) oOut, "box");
+        drawBox(node, oOut, "box");
 
         if (node instanceof SpecialNode) {
             String text = ((SpecialNode) node).getText();
             if (text.startsWith("ps:")) {
-                out.append(text.substring(3));
+                oOut.append(text.substring(3));
             } else {
                 // unknown specials are ignored on purpose
             }

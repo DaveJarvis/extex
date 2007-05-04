@@ -76,7 +76,7 @@ public class XMLDocumentWriter
         implements
             DocumentWriter,
             SingleDocumentStream,
-            NodeVisitor,
+            NodeVisitor<Object, Object>,
             Configurable {
 
     /**

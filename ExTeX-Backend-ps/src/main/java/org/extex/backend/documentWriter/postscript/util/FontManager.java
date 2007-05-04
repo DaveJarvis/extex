@@ -26,7 +26,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.extex.core.UnicodeChar;
-import org.extex.interpreter.type.font.Font;
+import org.extex.typesetter.tc.font.Font;
 
 /**
  * The font manager keeps track of the fonts and characters used.

@@ -30,7 +30,7 @@ import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.font.FontKey;
-import org.extex.interpreter.type.font.Font;
+import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.typesetter.type.node.AdjustNode;
@@ -67,7 +67,7 @@ import org.pdfbox.pdmodel.graphics.path.BasePath;
  * @version $Revision$
  */
 
-public class PdfNodeVisitor implements NodeVisitor {
+public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
 
     /**
      * linewidth.
@@ -237,7 +237,7 @@ public class PdfNodeVisitor implements NodeVisitor {
     /**
      * the color from the character before.
      */
-    private org.extex.interpreter.context.Color oldcolor = null;
+    private org.extex.color.Color oldcolor = null;
 
     /**
      * the fount key from the character before.
@@ -260,7 +260,7 @@ public class PdfNodeVisitor implements NodeVisitor {
             UnicodeChar uc = node.getCharacter();
             Font newfont = node.getTypesettingContext().getFont();
             FontKey newfountkey = newfont.getFontKey();
-            org.extex.interpreter.context.Color newcolor =
+            org.extex.color.Color newcolor =
                     node.getTypesettingContext().getColor();
 
             if (!newfountkey.equals(oldfountkey)) {

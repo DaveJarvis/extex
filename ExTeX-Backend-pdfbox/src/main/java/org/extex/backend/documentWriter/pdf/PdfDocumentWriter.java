@@ -36,7 +36,6 @@ import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.framework.configuration.Configuration;
 import org.extex.typesetter.type.NodeList;
-import org.extex.typesetter.type.NodeVisitor;
 import org.extex.typesetter.type.page.Page;
 import org.extex.util.Unit;
 import org.pdfbox.exceptions.COSVisitorException;
@@ -47,7 +46,7 @@ import org.pdfbox.pdmodel.edit.PDPageContentStream;
 
 /**
  * Implementation of a pdf document writer.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:Rolf.Niepraschk@ptb.de">Rolf Niepraschk</a>
  * @version $Revision$
@@ -81,21 +80,21 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
 
     /**
      * Creates a new object.
-     * @param cfg       the configuration
-     * @param options   the options
+     * 
+     * @param cfg the configuration
+     * @param options the options
      */
-    public PdfDocumentWriter(Configuration cfg,
-            DocumentWriterOptions options) {
+    public PdfDocumentWriter(Configuration cfg, DocumentWriterOptions options) {
 
         super();
         docoptions = options;
 
-        //        if (cfg != null) {
-        //            String tmp = cfg.getAttribute("encoding");
-        //            if (tmp != null && !tmp.equals("")) {
-        //                encoding = tmp;
-        //            }
-        //        }
+        // if (cfg != null) {
+        // String tmp = cfg.getAttribute("encoding");
+        // if (tmp != null && !tmp.equals("")) {
+        // encoding = tmp;
+        // }
+        // }
     }
 
     /**
@@ -105,7 +104,7 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.backend.documentWriter.DocumentWriter#close()
      */
     public void close() throws DocumentWriterException {
@@ -131,7 +130,7 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
      */
     public String getExtension() {
@@ -141,7 +140,7 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(
      *      java.io.OutputStream)
      */
@@ -157,10 +156,9 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(
-     *      java.lang.String,
-     *      java.lang.String)
+     *      java.lang.String, java.lang.String)
      */
     public void setParameter(String name, String value) {
 
@@ -195,11 +193,11 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
     /**
      * the pdf node visitor.
      */
-    private NodeVisitor nodeVisitor;
+    private PdfNodeVisitor nodeVisitor;
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
      *      org.extex.typesetter.type.page.Page)
      */
@@ -221,12 +219,12 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
                         currentY);
 
             shippedPages++;
-            //            System.err.print("[" + shippedPages + "]");
+            // System.err.print("[" + shippedPages + "]");
 
             // TeX primitives should set the papersize in any way:
-            // o \paperwidth   / \paperheight,
+            // o \paperwidth / \paperheight,
             // o \pdfpagewidth / \pdfpageheight <-- pdfTeX
-            // o \mediawidth   / \mediaheight   <-- VTeX
+            // o \mediawidth / \mediaheight <-- VTeX
             Unit.setDimenFromCM(paperwidth, WIDTH_A4_BP);
             Unit.setDimenFromCM(paperheight, HEIGHT_A4_BP);
             if (docoptions != null) {
@@ -236,9 +234,8 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
                     paperheight.set(h);
                     paperwidth.set(w);
                     phBP = Unit.getDimenAsBP(paperheight);
-                    if (nodeVisitor instanceof PdfNodeVisitor) {
-                        ((PdfNodeVisitor) nodeVisitor)
-                            .setPaperheight(paperheight);
+                    if (nodeVisitor != null) {
+                        nodeVisitor.setPaperheight(paperheight);
                     }
                 }
             }
@@ -254,22 +251,22 @@ public class PdfDocumentWriter implements DocumentWriter, SingleDocumentStream {
             currentY.set(Dimen.ONE_INCH);
 
             // -------------------------------------
-            //            cb.setColorStroke(Color.RED);
-            //            cb.moveTo(0, phBP);
-            //            cb.lineTo(0, 0);
-            //            cb.stroke();
-            //            cb.setColorStroke(Color.GREEN);
-            //            cb.moveTo(0, phBP);
-            //            cb.lineTo(pagesize.width(), phBP);
-            //            cb.stroke();
-            //            cb.setColorStroke(Color.BLUE);
-            //            cb.moveTo(pagesize.width(), phBP);
-            //            cb.lineTo(pagesize.width(), 0);
-            //            cb.stroke();
-            //            cb.setColorStroke(Color.YELLOW);
-            //            cb.moveTo(0, 0);
-            //            cb.lineTo(pagesize.width(), 0);
-            //            cb.stroke();
+            // cb.setColorStroke(Color.RED);
+            // cb.moveTo(0, phBP);
+            // cb.lineTo(0, 0);
+            // cb.stroke();
+            // cb.setColorStroke(Color.GREEN);
+            // cb.moveTo(0, phBP);
+            // cb.lineTo(pagesize.width(), phBP);
+            // cb.stroke();
+            // cb.setColorStroke(Color.BLUE);
+            // cb.moveTo(pagesize.width(), phBP);
+            // cb.lineTo(pagesize.width(), 0);
+            // cb.stroke();
+            // cb.setColorStroke(Color.YELLOW);
+            // cb.moveTo(0, 0);
+            // cb.lineTo(pagesize.width(), 0);
+            // cb.stroke();
             // --------------------------------------
 
             nodes.visit(nodeVisitor, nodes);

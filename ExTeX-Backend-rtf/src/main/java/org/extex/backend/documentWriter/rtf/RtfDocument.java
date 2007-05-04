@@ -29,9 +29,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.extex.color.Color;
 import org.extex.color.model.RgbColor;
-import org.extex.interpreter.context.Color;
-import org.extex.interpreter.type.font.Font;
+import org.extex.typesetter.tc.font.Font;
 
 /**
  * This class provides a container for an RTF document.

@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.extex.dviware.Dvi;
-import org.extex.interpreter.type.font.Font;
+import org.extex.typesetter.tc.font.Font;
 
 /**
  * This class represents the DVI instruction <tt>fnt_def</tt>.

@@ -28,6 +28,7 @@ import java.util.Stack;
 import org.extex.backend.documentWriter.DocumentWriter;
 import org.extex.backend.documentWriter.DocumentWriterOptions;
 import org.extex.backend.documentWriter.SingleDocumentStream;
+import org.extex.color.Color;
 import org.extex.color.ColorAware;
 import org.extex.color.ColorConverter;
 import org.extex.color.model.CmykColor;
@@ -51,8 +52,7 @@ import org.extex.dviware.type.DviXxx;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.interpreter.context.Color;
-import org.extex.interpreter.type.font.Font;
+import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
@@ -213,417 +213,431 @@ public class DviDocumentWriter
      * performed successfully. Otherwise the node should be ignored.
      * </p>
      */
-    private NodeVisitor visitor = new NodeVisitor() {
+    private NodeVisitor<Boolean, List<DviCode>> visitor =
+            new NodeVisitor<Boolean, List<DviCode>>() {
 
-        /**
-         * The field <tt>horizontal</tt> contains the indicator that the
-         * processing is in horizontal mode. Otherwise it is in vertical mode.
-         */
-        private boolean horizontal = true;
+                /**
+                 * The field <tt>horizontal</tt> contains the indicator that
+                 * the processing is in horizontal mode. Otherwise it is in
+                 * vertical mode.
+                 */
+                private boolean horizontal = true;
 
-        /**
-         * Move the reference point to vertically. This means move it downwards
-         * or upwards if the argument is negative.
-         * 
-         * @param dist the distance to move down
-         * @param list the list with DVI instructions.
-         */
-        private void down(List<DviCode> list, long dist) {
+                /**
+                 * Move the reference point to vertically. This means move it
+                 * downwards or upwards if the argument is negative.
+                 * 
+                 * @param dist the distance to move down
+                 * @param list the list with DVI instructions.
+                 */
+                private void down(List<DviCode> list, long dist) {
 
-            if (dist != 0) {
+                    if (dist != 0) {
 
-                dviV += dist;
+                        dviV += dist;
 
-                for (int i = list.size() - 1; i >= 0; i--) {
-                    DviCode n = list.get(i);
-                    if (n instanceof DviDown) {
-                        ((DviDown) n).add((int) dist);
-                        return;
-                    } else if (!(n instanceof DviRight)) {
-                        break;
+                        for (int i = list.size() - 1; i >= 0; i--) {
+                            DviCode n = list.get(i);
+                            if (n instanceof DviDown) {
+                                ((DviDown) n).add((int) dist);
+                                return;
+                            } else if (!(n instanceof DviRight)) {
+                                break;
+                            }
+                        }
+
+                        list.add(new DviDown((int) dist));
                     }
                 }
 
-                list.add(new DviDown((int) dist));
-            }
-        }
+                /**
+                 * Pop the state from the DVI stack.
+                 * 
+                 * @param list the list with DVI instructions.
+                 */
+                protected void pop(List<DviCode> list) {
 
-        /**
-         * Pop the state from the DVI stack.
-         * 
-         * @param list the list with DVI instructions.
-         */
-        protected void pop(List<DviCode> list) {
+                    int size = list.size();
+                    while (size > 0) {
+                        DviCode code = list.get(size - 1);
+                        if (code instanceof DviRight || code instanceof DviDown) {
+                            list.remove(--size);
+                        } else {
+                            break;
+                        }
+                    }
 
-            int size = list.size();
-            while (size > 0) {
-                DviCode code = list.get(size - 1);
-                if (code instanceof DviRight || code instanceof DviDown) {
-                    list.remove(--size);
-                } else {
-                    break;
+                    list.add(DviCode.POP);
+                    int[] frame = dviStack.pop();
+                    dviW = frame[0];
+                    dviX = frame[1];
+                    dviY = frame[2];
+                    dviZ = frame[3];
                 }
-            }
 
-            list.add(DviCode.POP);
-            int[] frame = dviStack.pop();
-            dviW = frame[0];
-            dviX = frame[1];
-            dviY = frame[2];
-            dviZ = frame[3];
-        }
+                /**
+                 * Push the state to the DVI stack.
+                 * 
+                 * @param list the list with DVI instructions.
+                 */
+                protected void push(List<DviCode> list) {
 
-        /**
-         * Push the state to the DVI stack.
-         * 
-         * @param list the list with DVI instructions.
-         */
-        protected void push(List<DviCode> list) {
+                    list.add(DviCode.PUSH);
+                    dviStack.push(new int[]{dviW, dviX, dviY, dviZ});
+                }
 
-            list.add(DviCode.PUSH);
-            dviStack.push(new int[]{dviW, dviX, dviY, dviZ});
-        }
+                /**
+                 * Move the reference point to horizontally. This means move it
+                 * rightwards or leftwards if the argument is negative.
+                 * 
+                 * @param dist the distance to move right
+                 * @param list the list with DVI instructions.
+                 */
+                private void right(List<DviCode> list, long dist) {
 
-        /**
-         * Move the reference point to horizontally. This means move it
-         * rightwards or leftwards if the argument is negative.
-         * 
-         * @param dist the distance to move right
-         * @param list the list with DVI instructions.
-         */
-        private void right(List<DviCode> list, long dist) {
+                    if (dist != 0) {
+                        dviH += dist;
 
-            if (dist != 0) {
-                dviH += dist;
+                        for (int i = list.size() - 1; i >= 0; i--) {
+                            Object n = list.get(i);
+                            if (n instanceof DviRight) {
+                                ((DviRight) n).add((int) dist);
+                                return;
+                            } else if (!(n instanceof DviDown)) {
+                                break;
+                            }
+                        }
 
-                for (int i = list.size() - 1; i >= 0; i--) {
-                    Object n = list.get(i);
-                    if (n instanceof DviRight) {
-                        ((DviRight) n).add((int) dist);
-                        return;
-                    } else if (!(n instanceof DviDown)) {
-                        break;
+                        list.add(new DviRight((int) dist));
                     }
                 }
 
-                list.add(new DviRight((int) dist));
-            }
-        }
+                /**
+                 * Insert a color switching special if the current color is not
+                 * set to the expected value and remember the current color.
+                 * 
+                 * @param dviCode list of DVI instructions to add the special to
+                 * @param color the new color
+                 */
+                private void switchColors(List<DviCode> dviCode, Color color) {
 
-        /**
-         * Insert a color switching special if the current color is not set to
-         * the expected value and remember the current color.
-         * 
-         * @param dviCode list of DVI instructions to add the special to
-         * @param color the new color
-         */
-        private void switchColors(List<DviCode> dviCode, Color color) {
-
-            if (!color.equals(textColor)) {
-                textColor = color;
-                String cc = color(textColor);
-                if (cc != null) {
-                    dviCode.add(new DviXxx("color " + cc));
+                    if (!color.equals(textColor)) {
+                        textColor = color;
+                        String cc = color(textColor);
+                        if (cc != null) {
+                            dviCode.add(new DviXxx("color " + cc));
+                        }
+                    }
                 }
-            }
-        }
 
-        /**
-         * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(
-         *      org.extex.typesetter.type.node.AdjustNode, java.lang.Object)
-         */
-        public Object visitAdjust(AdjustNode node, Object value)
-                throws GeneralException {
+                /**
+                 * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(
+                 *      org.extex.typesetter.type.node.AdjustNode,
+                 *      java.lang.Object)
+                 */
+                public Boolean visitAdjust(AdjustNode node, List<DviCode> value)
+                        throws GeneralException {
 
-            // silently ignored
-            return Boolean.TRUE;
-        }
-
-        /**
-         * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(
-         *      org.extex.typesetter.type.node.AfterMathNode, java.lang.Object)
-         */
-        public Object visitAfterMath(AfterMathNode node, Object value)
-                throws GeneralException {
-
-            return null;
-        }
-
-        /**
-         * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(
-         *      org.extex.typesetter.type.node.AlignedLeadersNode,
-         *      java.lang.Object)
-         */
-        public Object visitAlignedLeaders(AlignedLeadersNode node, Object value)
-                throws GeneralException {
-
-            return null;
-        }
-
-        /**
-         * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(
-         *      org.extex.typesetter.type.node.BeforeMathNode, java.lang.Object)
-         */
-        public Object visitBeforeMath(BeforeMathNode node, Object value)
-                throws GeneralException {
-
-            return null;
-        }
-
-        /**
-         * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(
-         *      org.extex.typesetter.type.node.CenteredLeadersNode,
-         *      java.lang.Object)
-         */
-        public Object visitCenteredLeaders(CenteredLeadersNode node,
-                Object value) throws GeneralException {
-
-            return null;
-        }
-
-        /**
-         * @see org.extex.typesetter.type.NodeVisitor#visitChar(
-         *      org.extex.typesetter.type.node.CharNode, java.lang.Object)
-         */
-        public Object visitChar(CharNode node, Object code)
-                throws GeneralException {
-
-            List<DviCode> dviCode = (List<DviCode>) code;
-            Font font = node.getTypesettingContext().getFont();
-            int f = postamble.mapFont(font, dviCode);
-            if (f != fontIndex) {
-                dviCode.add(new DviFnt(f));
-                fontIndex = f;
-            }
-            if (colorSpecials) {
-                switchColors(dviCode, node.getTypesettingContext().getColor());
-            }
-
-            if (horizontal) {
-                dviH += node.getWidth().getValue();
-                dviCode.add(new DviSetChar(node.getCharacter().getCodePoint()));
-                return Boolean.TRUE; // do not move any more
-            }
-
-            dviCode.add(new DviPutChar(node.getCharacter().getCodePoint()));
-            return null;
-        }
-
-        /**
-         * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(
-         *      org.extex.typesetter.type.node.DiscretionaryNode,
-         *      java.lang.Object)
-         */
-        public Object visitDiscretionary(DiscretionaryNode node, Object value)
-                throws GeneralException {
-
-            NodeList n = node.getNoBreak();
-            if (n != null) {
-                return n.visit(this, value);
-            }
-            return null;
-        }
-
-        /**
-         * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(
-         *      org.extex.typesetter.type.node.ExpandedLeadersNode,
-         *      java.lang.Object)
-         */
-        public Object visitExpandedLeaders(ExpandedLeadersNode node,
-                Object value) throws GeneralException {
-
-            return null;
-        }
-
-        /**
-         * @see org.extex.typesetter.type.NodeVisitor#visitGlue(
-         *      org.extex.typesetter.type.node.GlueNode, java.lang.Object)
-         */
-        public Object visitGlue(GlueNode node, Object value)
-                throws GeneralException {
-
-            return null;
-        }
-
-        /**
-         * @see "TTP [619]"
-         * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(
-         *      org.extex.typesetter.type.node.HorizontalListNode,
-         *      java.lang.Object)
-         */
-        public Object visitHorizontalList(HorizontalListNode node, Object value)
-                throws GeneralException {
-
-            Node n;
-            boolean save = horizontal;
-            horizontal = true;
-            List<DviCode> list = (List<DviCode>) value;
-            down(list, node.getShift().getValue());
-            right(list, node.getMove().getValue());
-            int v0 = dviV;
-            int size = node.size();
-
-            for (int i = 0; i < size; i++) {
-                n = node.get(i);
-                if (n.visit(this, value) == null) {
-                    right(list, n.getWidth().getValue());
+                    // silently ignored
+                    return Boolean.TRUE;
                 }
-                down(list, dviV - v0);
-            }
-            horizontal = save;
-            return null;
-        }
 
-        /**
-         * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(
-         *      org.extex.typesetter.type.node.InsertionNode, java.lang.Object)
-         */
-        public Object visitInsertion(InsertionNode node, Object value)
-                throws GeneralException {
+                /**
+                 * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(
+                 *      org.extex.typesetter.type.node.AfterMathNode,
+                 *      java.lang.Object)
+                 */
+                public Boolean visitAfterMath(AfterMathNode node,
+                        List<DviCode> value) throws GeneralException {
 
-            // silently ignored
-            return Boolean.TRUE;
-        }
-
-        /**
-         * @see org.extex.typesetter.type.NodeVisitor#visitKern(
-         *      org.extex.typesetter.type.node.KernNode, java.lang.Object)
-         */
-        public Object visitKern(KernNode node, Object value)
-                throws GeneralException {
-
-            return null;
-        }
-
-        /**
-         * @see org.extex.typesetter.type.NodeVisitor#visitLigature(
-         *      org.extex.typesetter.type.node.LigatureNode, java.lang.Object)
-         */
-        public Object visitLigature(LigatureNode node, Object value)
-                throws GeneralException {
-
-            return visitChar(node, value);
-        }
-
-        /**
-         * @see org.extex.typesetter.type.NodeVisitor#visitMark(
-         *      org.extex.typesetter.type.node.MarkNode, java.lang.Object)
-         */
-        public Object visitMark(MarkNode node, Object value)
-                throws GeneralException {
-
-            // silently ignored
-            return Boolean.TRUE;
-        }
-
-        /**
-         * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(
-         *      org.extex.typesetter.type.node.PenaltyNode, java.lang.Object)
-         */
-        public Object visitPenalty(PenaltyNode node, Object value)
-                throws GeneralException {
-
-            // silently ignored
-            return Boolean.TRUE;
-        }
-
-        /**
-         * @see org.extex.typesetter.type.NodeVisitor#visitRule(
-         *      org.extex.typesetter.type.node.RuleNode, java.lang.Object)
-         */
-        public Object visitRule(RuleNode node, Object code)
-                throws GeneralException {
-
-            List<DviCode> dviCode = (List<DviCode>) code;
-            int width = (int) node.getWidth().getValue();
-            int height = (int) node.getHeight().getValue();
-
-            if (colorSpecials) {
-                switchColors(dviCode, node.getTypesettingContext().getColor());
-            }
-
-            dviCode.add(new DviSetRule(height, width));
-            dviH += width;
-            return null;
-        }
-
-        /**
-         * @see org.extex.typesetter.type.NodeVisitor#visitSpace(
-         *      org.extex.typesetter.type.node.SpaceNode, java.lang.Object)
-         */
-        public Object visitSpace(SpaceNode node, Object value)
-                throws GeneralException {
-
-            return null;
-        }
-
-        /**
-         * @see "TTP [618]"
-         * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(
-         *      org.extex.typesetter.type.node.VerticalListNode,
-         *      java.lang.Object)
-         */
-        public Object visitVerticalList(VerticalListNode node, Object value)
-                throws GeneralException {
-
-            List<DviCode> list = (List<DviCode>) value;
-            boolean save = horizontal;
-            horizontal = false;
-            int v0 = dviV;
-            down(list, -node.getHeight().getValue());
-            down(list, node.getShift().getValue());
-            right(list, node.getMove().getValue());
-            int size = node.size();
-            int h0 = dviH;
-
-            for (int i = 0; i < size; i++) {
-                Node n = node.get(i);
-                down(list, n.getHeight().getValue());
-                if (n.visit(this, value) == null) {
-                    down(list, n.getDepth().getValue());
+                    return null;
                 }
-                right(list, h0 - dviH);
-            }
 
-            down(list, v0 - dviV); // ???
-            horizontal = save;
-            return null;
-        }
+                /**
+                 * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(
+                 *      org.extex.typesetter.type.node.AlignedLeadersNode,
+                 *      java.lang.Object)
+                 */
+                public Boolean visitAlignedLeaders(AlignedLeadersNode node,
+                        List<DviCode> value) throws GeneralException {
 
-        /**
-         * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(
-         *      org.extex.typesetter.type.node.VirtualCharNode,
-         *      java.lang.Object)
-         */
-        public Object visitVirtualChar(VirtualCharNode node, Object value)
-                throws GeneralException {
-
-            return visitChar(node, value);
-        }
-
-        /**
-         * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(
-         *      org.extex.typesetter.type.node.WhatsItNode, java.lang.Object)
-         */
-        @SuppressWarnings("unchecked")
-        public Object visitWhatsIt(WhatsItNode node, Object value)
-                throws GeneralException {
-
-            if (node instanceof SpecialNode) {
-                List<DviCode> list = (List<DviCode>) value;
-                String text = ((SpecialNode) node).getText();
-                int length = text.length();
-                byte[] content = new byte[length];
-                for (int i = 0; i < length; i++) {
-                    content[i] = (byte) text.charAt(i);
+                    return null;
                 }
-                list.add(new DviXxx(content));
-                return null;
-            }
-            return null;
-        }
 
-    };
+                /**
+                 * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(
+                 *      org.extex.typesetter.type.node.BeforeMathNode,
+                 *      java.lang.Object)
+                 */
+                public Boolean visitBeforeMath(BeforeMathNode node,
+                        List<DviCode> value) throws GeneralException {
+
+                    return null;
+                }
+
+                /**
+                 * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(
+                 *      org.extex.typesetter.type.node.CenteredLeadersNode,
+                 *      java.lang.Object)
+                 */
+                public Boolean visitCenteredLeaders(CenteredLeadersNode node,
+                        List<DviCode> value) throws GeneralException {
+
+                    return null;
+                }
+
+                /**
+                 * @see org.extex.typesetter.type.NodeVisitor#visitChar(
+                 *      org.extex.typesetter.type.node.CharNode,
+                 *      java.lang.Object)
+                 */
+                public Boolean visitChar(CharNode node, List<DviCode> dviCode)
+                        throws GeneralException {
+
+                    Font font = node.getTypesettingContext().getFont();
+                    int f = postamble.mapFont(font, dviCode);
+                    if (f != fontIndex) {
+                        dviCode.add(new DviFnt(f));
+                        fontIndex = f;
+                    }
+                    if (colorSpecials) {
+                        switchColors(dviCode, node.getTypesettingContext()
+                            .getColor());
+                    }
+
+                    if (horizontal) {
+                        dviH += node.getWidth().getValue();
+                        dviCode.add(new DviSetChar(node.getCharacter()
+                            .getCodePoint()));
+                        return Boolean.TRUE; // do not move any more
+                    }
+
+                    dviCode.add(new DviPutChar(node.getCharacter()
+                        .getCodePoint()));
+                    return null;
+                }
+
+                /**
+                 * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(
+                 *      org.extex.typesetter.type.node.DiscretionaryNode,
+                 *      java.lang.Object)
+                 */
+                public Boolean visitDiscretionary(DiscretionaryNode node,
+                        List<DviCode> value) throws GeneralException {
+
+                    NodeList n = node.getNoBreak();
+                    if (n != null) {
+                        return (Boolean) n.visit(this, value);
+                    }
+                    return null;
+                }
+
+                /**
+                 * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(
+                 *      org.extex.typesetter.type.node.ExpandedLeadersNode,
+                 *      java.lang.Object)
+                 */
+                public Boolean visitExpandedLeaders(ExpandedLeadersNode node,
+                        List<DviCode> value) throws GeneralException {
+
+                    return null;
+                }
+
+                /**
+                 * @see org.extex.typesetter.type.NodeVisitor#visitGlue(
+                 *      org.extex.typesetter.type.node.GlueNode,
+                 *      java.lang.Object)
+                 */
+                public Boolean visitGlue(GlueNode node, List<DviCode> value)
+                        throws GeneralException {
+
+                    return null;
+                }
+
+                /**
+                 * @see "TTP [619]"
+                 * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(
+                 *      org.extex.typesetter.type.node.HorizontalListNode,
+                 *      java.lang.Object)
+                 */
+                public Boolean visitHorizontalList(HorizontalListNode node,
+                        List<DviCode> list) throws GeneralException {
+
+                    Node n;
+                    boolean save = horizontal;
+                    horizontal = true;
+                    down(list, node.getShift().getValue());
+                    right(list, node.getMove().getValue());
+                    int v0 = dviV;
+                    int size = node.size();
+
+                    for (int i = 0; i < size; i++) {
+                        n = node.get(i);
+                        if (n.visit(this, list) == null) {
+                            right(list, n.getWidth().getValue());
+                        }
+                        down(list, dviV - v0);
+                    }
+                    horizontal = save;
+                    return null;
+                }
+
+                /**
+                 * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(
+                 *      org.extex.typesetter.type.node.InsertionNode,
+                 *      java.lang.Object)
+                 */
+                public Boolean visitInsertion(InsertionNode node,
+                        List<DviCode> value) throws GeneralException {
+
+                    // silently ignored
+                    return Boolean.TRUE;
+                }
+
+                /**
+                 * @see org.extex.typesetter.type.NodeVisitor#visitKern(
+                 *      org.extex.typesetter.type.node.KernNode,
+                 *      java.lang.Object)
+                 */
+                public Boolean visitKern(KernNode node, List<DviCode> value)
+                        throws GeneralException {
+
+                    return null;
+                }
+
+                /**
+                 * @see org.extex.typesetter.type.NodeVisitor#visitLigature(
+                 *      org.extex.typesetter.type.node.LigatureNode,
+                 *      java.lang.Object)
+                 */
+                public Boolean visitLigature(LigatureNode node,
+                        List<DviCode> value) throws GeneralException {
+
+                    return visitChar(node, value);
+                }
+
+                /**
+                 * @see org.extex.typesetter.type.NodeVisitor#visitMark(
+                 *      org.extex.typesetter.type.node.MarkNode,
+                 *      java.lang.Object)
+                 */
+                public Boolean visitMark(MarkNode node, List<DviCode> value)
+                        throws GeneralException {
+
+                    // silently ignored
+                    return Boolean.TRUE;
+                }
+
+                /**
+                 * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(
+                 *      org.extex.typesetter.type.node.PenaltyNode,
+                 *      java.lang.Object)
+                 */
+                public Boolean visitPenalty(PenaltyNode node,
+                        List<DviCode> value) throws GeneralException {
+
+                    // silently ignored
+                    return Boolean.TRUE;
+                }
+
+                /**
+                 * @see org.extex.typesetter.type.NodeVisitor#visitRule(
+                 *      org.extex.typesetter.type.node.RuleNode,
+                 *      java.lang.Object)
+                 */
+                public Boolean visitRule(RuleNode node, List<DviCode> dviCode)
+                        throws GeneralException {
+
+                    int width = (int) node.getWidth().getValue();
+                    int height = (int) node.getHeight().getValue();
+
+                    if (colorSpecials) {
+                        switchColors(dviCode, node.getTypesettingContext()
+                            .getColor());
+                    }
+
+                    dviCode.add(new DviSetRule(height, width));
+                    dviH += width;
+                    return null;
+                }
+
+                /**
+                 * @see org.extex.typesetter.type.NodeVisitor#visitSpace(
+                 *      org.extex.typesetter.type.node.SpaceNode,
+                 *      java.lang.Object)
+                 */
+                public Boolean visitSpace(SpaceNode node, List<DviCode> value)
+                        throws GeneralException {
+
+                    return null;
+                }
+
+                /**
+                 * @see "TTP [618]"
+                 * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(
+                 *      org.extex.typesetter.type.node.VerticalListNode,
+                 *      java.lang.Object)
+                 */
+                public Boolean visitVerticalList(VerticalListNode node,
+                        List<DviCode> list) throws GeneralException {
+
+                    boolean save = horizontal;
+                    horizontal = false;
+                    int v0 = dviV;
+                    down(list, -node.getHeight().getValue());
+                    down(list, node.getShift().getValue());
+                    right(list, node.getMove().getValue());
+                    int size = node.size();
+                    int h0 = dviH;
+
+                    for (int i = 0; i < size; i++) {
+                        Node n = node.get(i);
+                        down(list, n.getHeight().getValue());
+                        if (n.visit(this, list) == null) {
+                            down(list, n.getDepth().getValue());
+                        }
+                        right(list, h0 - dviH);
+                    }
+
+                    down(list, v0 - dviV); // ???
+                    horizontal = save;
+                    return null;
+                }
+
+                /**
+                 * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(
+                 *      org.extex.typesetter.type.node.VirtualCharNode,
+                 *      java.lang.Object)
+                 */
+                public Boolean visitVirtualChar(VirtualCharNode node,
+                        List<DviCode> value) throws GeneralException {
+
+                    return visitChar(node, value);
+                }
+
+                /**
+                 * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(
+                 *      org.extex.typesetter.type.node.WhatsItNode,
+                 *      java.lang.Object)
+                 */
+                @SuppressWarnings("unchecked")
+                public Boolean visitWhatsIt(WhatsItNode node, List<DviCode> list)
+                        throws GeneralException {
+
+                    if (node instanceof SpecialNode) {
+                        String text = ((SpecialNode) node).getText();
+                        int length = text.length();
+                        byte[] content = new byte[length];
+                        for (int i = 0; i < length; i++) {
+                            content[i] = (byte) text.charAt(i);
+                        }
+                        list.add(new DviXxx(content));
+                        return null;
+                    }
+                    return null;
+                }
+
+            };
 
     /**
      * Creates a new object.

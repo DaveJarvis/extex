@@ -141,7 +141,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @see
      *   InspectableNodeVisitor#setVisitor(org.extex.typesetter.type.NodeVisitor)
      */
-    public void setVisitor(NodeVisitor visitor) {
+    public void setVisitor(NodeVisitor<Object, Object> visitor) {
 
         nodeVisitor.setVisitor(visitor);
     }

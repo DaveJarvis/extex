@@ -38,9 +38,9 @@ import org.extex.color.ColorConverter;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.interpreter.type.font.Font;
 import org.extex.resource.ResourceConsumer;
 import org.extex.resource.ResourceFinder;
+import org.extex.typesetter.tc.font.Font;
 
 /**
  * This is the abstract base class for document writers producing PostScript

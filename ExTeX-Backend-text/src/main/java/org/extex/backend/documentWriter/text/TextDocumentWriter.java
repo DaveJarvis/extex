@@ -66,7 +66,7 @@ public class TextDocumentWriter
         implements
             DocumentWriter,
             SingleDocumentStream,
-            NodeVisitor {
+            NodeVisitor<Object, Object> {
 
     /**
      * The field <tt>out</tt> ...
