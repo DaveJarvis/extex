@@ -29,10 +29,10 @@ import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
+import org.extex.core.exception.ImpossibleException;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
 import org.extex.font.FontKey;
-import org.extex.core.exception.ImpossibleException;
 import org.extex.language.Language;
 import org.extex.typesetter.tc.Direction;
 import org.extex.typesetter.tc.TypesettingContext;
@@ -256,7 +256,7 @@ public abstract class AbstractNodeListTester extends TestCase {
      * 
      * @return the visitor
      */
-    protected abstract NodeVisitor makeVisitor();
+    protected abstract NodeVisitor<Node, Boolean> makeVisitor();
 
     /**
      * <testcase> Adding a <code>null</code> node is silently ignored.
@@ -404,20 +404,20 @@ public abstract class AbstractNodeListTester extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#atShipping(org.extex.interpreter.context.Context, org.extex.typesetter.Typesetter, org.extex.typesetter.type.NodeVisitor, boolean)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#atShipping(org.extex.interpreter.context.Context, org.extex.typesetter.Typesetter, org.extex.typesetter.type.NodeVisitor, Boolean)}.
      * 
      * @throws GeneralException in case of an error
      */
     public final void testAtShipping0() throws GeneralException {
 
         NodeList list = makeList();
-        NodeVisitor v = makeVisitor();
+        NodeVisitor<Node, Boolean> v = makeVisitor();
         if (v != null) {
-            list.atShipping(null, null, v, true);
+            list.atShipping(null, null, v, Boolean.TRUE);
             assertEquals(0, list.size());
         } else {
             try {
-                list.atShipping(null, null, v, true);
+                list.atShipping(null, null, v, Boolean.TRUE);
                 assertFalse(true);
             } catch (ImpossibleException e) {
                 assertTrue(true);
@@ -427,16 +427,16 @@ public abstract class AbstractNodeListTester extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#atShipping(org.extex.interpreter.context.Context, org.extex.typesetter.Typesetter, org.extex.typesetter.type.NodeVisitor, boolean)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#atShipping(org.extex.interpreter.context.Context, org.extex.typesetter.Typesetter, org.extex.typesetter.type.NodeVisitor, Boolean)}.
      * 
      * @throws GeneralException in case of an error
      */
     public final void testAtShipping1() throws GeneralException {
 
         NodeList list = makeList(new PenaltyNode(123));
-        NodeVisitor v = makeVisitor();
+        NodeVisitor<Node, Boolean> v = makeVisitor();
         if (v != null) {
-            list.atShipping(null, null, v, true);
+            list.atShipping(null, null, v, Boolean.TRUE);
             assertEquals(0, list.size());
         } else {
             // try {

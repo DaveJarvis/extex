@@ -22,8 +22,8 @@ package org.extex.typesetter.type.node;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.typesetter.tc.TypesettingContext;
-import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
+import org.extex.typesetter.type.OrientedNode;
 
 /**
  * The rule node represents a rectangular area on the page filled with some
@@ -34,7 +34,7 @@ import org.extex.typesetter.type.NodeVisitor;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4739 $
  */
-public class RuleNode extends AbstractNode implements Node {
+public class RuleNode extends AbstractNode implements OrientedNode {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.

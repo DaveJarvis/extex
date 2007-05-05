@@ -21,10 +21,9 @@ package org.extex.typesetter.type.node;
 
 import org.extex.core.exception.GeneralException;
 import org.extex.core.glue.FixedGlue;
-import org.extex.typesetter.PageContext;
-import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
+import org.extex.typesetter.type.OrientedNode;
 
 /**
  * This node represents an aligned leaders node as used by the primitive
@@ -35,9 +34,7 @@ import org.extex.typesetter.type.NodeVisitor;
  * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4739 $
  */
-public class AlignedLeadersNode extends AbstractExpandableNode
-        implements
-            SkipNode {
+public class AlignedLeadersNode extends AbstractLeadersNode {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
@@ -46,75 +43,14 @@ public class AlignedLeadersNode extends AbstractExpandableNode
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>node</tt> contains the node to repeat or expand.
-     */
-    private Node node;
-
-    /**
      * Creates a new object.
      * 
      * @param node the node or node list to stretch or repeat
      * @param glue the desired size
-     * @param horizontal the indicator for the stretchability mode
      */
-    public AlignedLeadersNode(Node node, FixedGlue glue, boolean horizontal) {
+    public AlignedLeadersNode(OrientedNode node, FixedGlue glue) {
 
-        super(glue, horizontal);
-        this.node = node;
-    }
-
-    /**
-     * Getter for the repeated construction.
-     * 
-     * @return the repeated node
-     */
-    public Node getRepeat() {
-
-        return node;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractNode#atShipping(org.extex.typesetter.PageContext,
-     *      org.extex.typesetter.Typesetter,
-     *      org.extex.typesetter.type.NodeVisitor, boolean)
-     */
-    @SuppressWarnings("unchecked")
-    public Node atShipping(PageContext context, Typesetter typesetter,
-            NodeVisitor visitor, boolean inHMode) throws GeneralException {
-
-        if (node instanceof RuleNode) {
-            node.setWidth(getWidth());
-            node.setHeight(getHeight());
-            node.setDepth(getDepth());
-            return (Node) node.visit(visitor, inHMode
-                    ? Boolean.TRUE
-                    : Boolean.FALSE);
-        }
-
-        // TODO gene: unimplemented
-        throw new RuntimeException("unimplemented");
-    }
-
-    /**
-     * This method puts the printable representation into the string buffer.
-     * This is meant to produce a short form only as it is used in error
-     * messages to the user.
-     * 
-     * @param sb the output string buffer
-     * @param prefix the prefix string inserted at the beginning of each line
-     * @param breadth the breadth
-     * @param depth the depth
-     * 
-     * @see "<logo>TeX</logo> &ndash; The Program [190]"
-     * @see org.extex.typesetter.type.Node#toString( java.lang.StringBuffer,
-     *      java.lang.String, int, int)
-     */
-    public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
-
-        sb.append(getLocalizer().format("String.Format", getSize().toString()));
-        node.toString(sb, prefix, Integer.MAX_VALUE, Integer.MAX_VALUE);
+        super(node, glue);
     }
 
     /**
@@ -128,6 +64,30 @@ public class AlignedLeadersNode extends AbstractExpandableNode
             throws GeneralException {
 
         return visitor.visitAlignedLeaders(this, value);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillHorizontally(
+     *      long, org.extex.typesetter.type.Node)
+     */
+    protected Node fillHorizontally(long total, Node n) {
+
+        // TODO gene: fillHorizontally unimplemented
+        throw new RuntimeException("unimplemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillVertically(
+     *      long, org.extex.typesetter.type.Node)
+     */
+    protected Node fillVertically(long total, Node n) {
+
+        // TODO gene: fillVertically unimplemented
+        throw new RuntimeException("unimplemented");
     }
 
 }

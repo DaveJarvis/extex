@@ -72,11 +72,10 @@ public class WhatsItCloseNode extends WhatsItNode implements LogEnabled {
      *      org.extex.interpreter.context.Context,
      *      org.extex.typesetter.Typesetter,
      *      org.extex.typesetter.type.NodeVisitor,
-     *      boolean)
+     *      Boolean)
      */
-    @SuppressWarnings("unchecked")
     public Node atShipping(PageContext context, Typesetter typesetter,
-            NodeVisitor visitor, boolean inHMode)
+            NodeVisitor<Node, Boolean> visitor, Boolean inHMode)
             throws GeneralException {
 
         OutFile file = context.getOutFile(key);

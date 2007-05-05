@@ -70,11 +70,10 @@ public class WhatsItOpenNode extends WhatsItNode {
      *      org.extex.interpreter.context.Context,
      *      org.extex.typesetter.Typesetter,
      *      org.extex.typesetter.type.NodeVisitor,
-     *      boolean)
+     *      Boolean)
      */
-    @SuppressWarnings("unchecked")
     public Node atShipping(PageContext context, Typesetter typesetter,
-            NodeVisitor visitor, boolean inHMode)
+            NodeVisitor<Node, Boolean> visitor, Boolean inHMode)
             throws GeneralException {
 
         file.open();

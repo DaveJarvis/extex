@@ -19,88 +19,109 @@
 
 package org.extex.typesetter.type.node;
 
+import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.glue.FixedGlue;
 import org.extex.typesetter.type.Node;
+import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
+import org.extex.typesetter.type.OrientedNode;
 
 /**
  * This node represents an centered leaders node as used by the primitive
  * <tt>\cleaders</tt>.
- *
+ * 
  * @see "<logo>TeX</logo> &ndash; The Program [149]"
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4739 $
  */
-public class CenteredLeadersNode extends AbstractExpandableNode
-        implements
-            SkipNode {
+public class CenteredLeadersNode extends AbstractLeadersNode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>node</tt> contains the node to repeat or expand.
-     */
-    private Node node;
-
-    /**
      * Creates a new object.
-     *
+     * 
      * @param node the node or node list to stretch or repeat
      * @param glue the desired size
-     * @param horizontal the indicator for the stretchability mode
      */
-    public CenteredLeadersNode(Node node, FixedGlue glue,
-            boolean horizontal) {
+    public CenteredLeadersNode(OrientedNode node, FixedGlue glue) {
 
-        super(glue, horizontal);
-        this.node = node;
-    }
-
-    /**
-     * Getter for the repeated construction.
-     *
-     * @return the repeated node
-     */
-    public Node getRepeat() {
-
-        return node;
-    }
-
-    /**
-     * This method puts the printable representation into the string buffer.
-     * This is meant to produce a short form only as it is used in error
-     * messages to the user.
-     *
-     * @param sb the output string buffer
-     * @param prefix the prefix string inserted at the beginning of each line
-     * @param breadth the breadth
-     * @param depth the depth
-     *
-     * @see "<logo>TeX</logo> &ndash; The Program [190]"
-     * @see org.extex.typesetter.type.Node#toString(
-     *      java.lang.StringBuffer,
-     *      java.lang.String,
-     *      int,
-     *      int)
-     */
-    public void toString(StringBuffer sb, String prefix,
-            int breadth, int depth) {
-
-        sb.append(getLocalizer().format("String.Format", getSize().toString()));
-        node.toString(sb, prefix, Integer.MAX_VALUE, Integer.MAX_VALUE);
+        super(node, glue);
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
+     * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillHorizontally(
+     *      long, org.extex.typesetter.type.Node)
+     */
+    protected Node fillHorizontally(long total, Node node) {
+
+        long w = node.getWidth().getValue();
+        if (total < w || w == 0) {
+            return this;
+        }
+
+        NodeList nl = new HorizontalListNode();
+        nl.setDepth(getDepth());
+        nl.setHeight(getHeight());
+        nl.setWidth(getWidth());
+
+        long n = total / w;
+        // the rounding error appears at the right side
+        long offset = (total - n * w) / 2;
+        if (offset > 0) {
+            nl.add(new ImplicitKernNode(new Dimen(offset), true));
+        }
+
+        while (n-- >= 0) {
+            nl.add(node);
+        }
+        return nl;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillVertically(
+     *      long, org.extex.typesetter.type.Node)
+     */
+    protected Node fillVertically(long total, Node node) {
+
+        long h = node.getHeight().getValue() + node.getDepth().getValue();
+        if (total < h || h == 0) {
+            return this;
+        }
+
+        NodeList nl = new HorizontalListNode();
+        nl.setDepth(getDepth());
+        nl.setHeight(getHeight());
+        nl.setWidth(getWidth());
+
+        long n = total / h;
+        // the rounding error appears at the bottom
+        long offset = (total - n * h) / 2;
+        if (offset > 0) {
+            nl.add(new ImplicitKernNode(new Dimen(offset), false));
+        }
+
+        while (n-- >= 0) {
+            nl.add(node);
+        }
+        return nl;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.typesetter.type.Node#visit(
-     *      org.extex.typesetter.type.NodeVisitor,
-     *      java.lang.Object)
+     *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
      */
     @SuppressWarnings("unchecked")
     public Object visit(NodeVisitor visitor, Object value)

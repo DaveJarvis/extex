@@ -31,8 +31,8 @@ import org.extex.typesetter.Badness;
 import org.extex.typesetter.PageContext;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.Node;
-import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
+import org.extex.typesetter.type.OrientedNodeList;
 
 /**
  * This class provides an implementation for a vertical list.
@@ -43,7 +43,9 @@ import org.extex.typesetter.type.NodeVisitor;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4739 $
  */
-public class VerticalListNode extends GenericNodeList implements NodeList {
+public class VerticalListNode extends GenericNodeList
+        implements
+            OrientedNodeList {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
@@ -70,7 +72,7 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
     }
 
     /**
-     * Creates a new list ith node node in it.
+     * Creates a new list with a node in it.
      * 
      * @param node the initial node
      */
@@ -167,15 +169,25 @@ public class VerticalListNode extends GenericNodeList implements NodeList {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.node.AbstractNode#atShipping(org.extex.typesetter.PageContext,
-     *      org.extex.typesetter.Typesetter,
-     *      org.extex.typesetter.type.NodeVisitor, boolean)
+     * @see org.extex.typesetter.type.node.AbstractNode#atShipping(
+     *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
+     *      org.extex.typesetter.type.NodeVisitor, Boolean)
      */
-    @SuppressWarnings("unchecked")
     public Node atShipping(PageContext context, Typesetter typesetter,
-            NodeVisitor visitor, boolean inHMode) throws GeneralException {
+            NodeVisitor<Node, Boolean> visitor, Boolean inHMode)
+            throws GeneralException {
 
-        return super.atShipping(context, typesetter, visitor, false);
+        return super.atShipping(context, typesetter, visitor, Boolean.FALSE);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.type.OrientedNode#isHorizontal()
+     */
+    public boolean isHorizontal() {
+
+        return false;
     }
 
     /**

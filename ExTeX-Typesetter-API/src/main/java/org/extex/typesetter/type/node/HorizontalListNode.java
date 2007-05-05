@@ -29,6 +29,7 @@ import org.extex.typesetter.PageContext;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
+import org.extex.typesetter.type.OrientedNodeList;
 
 /**
  * This class provides a container for nodes which is interpreted as horizontal
@@ -40,7 +41,9 @@ import org.extex.typesetter.type.NodeVisitor;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4739 $
  */
-public class HorizontalListNode extends GenericNodeList {
+public class HorizontalListNode extends GenericNodeList
+        implements
+            OrientedNodeList {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
@@ -163,15 +166,15 @@ public class HorizontalListNode extends GenericNodeList {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.node.AbstractNode#atShipping(org.extex.typesetter.PageContext,
-     *      org.extex.typesetter.Typesetter,
-     *      org.extex.typesetter.type.NodeVisitor, boolean)
+     * @see org.extex.typesetter.type.node.AbstractNode#atShipping(
+     *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
+     *      org.extex.typesetter.type.NodeVisitor, Boolean)
      */
-    @SuppressWarnings("unchecked")
     public Node atShipping(PageContext context, Typesetter typesetter,
-            NodeVisitor visitor, boolean inHMode) throws GeneralException {
+            NodeVisitor<Node, Boolean> visitor, Boolean inHMode)
+            throws GeneralException {
 
-        return super.atShipping(context, typesetter, visitor, true);
+        return super.atShipping(context, typesetter, visitor, Boolean.TRUE);
     }
 
     /**
@@ -213,6 +216,16 @@ public class HorizontalListNode extends GenericNodeList {
 
         setTargetWidth(width);
         hpack();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.type.OrientedNode#isHorizontal()
+     */
+    public boolean isHorizontal() {
+
+        return true;
     }
 
     /**

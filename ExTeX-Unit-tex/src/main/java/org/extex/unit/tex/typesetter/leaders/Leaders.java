@@ -33,49 +33,52 @@ import org.extex.interpreter.type.box.RuleConvertible;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
-import org.extex.typesetter.type.Node;
+import org.extex.typesetter.type.NodeList;
+import org.extex.typesetter.type.OrientedNode;
 import org.extex.typesetter.type.node.AlignedLeadersNode;
 import org.extex.typesetter.type.node.RuleNode;
 import org.extex.unit.tex.typesetter.spacing.HorizontalSkip;
 import org.extex.unit.tex.typesetter.spacing.VerticalSkip;
 
 /**
- * This class provides an implementation for the primitive
- * <code>\leaders</code>.
- *
+ * This class provides an implementation for the primitive <code>\leaders</code>.
+ * 
  * <doc name="leaders">
  * <h3>The Primitive <tt>\leaders</tt></h3>
  * <p>
- *  TODO missing documentation
+ * TODO missing documentation
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;leaders&rang;
  *      &rarr; <tt>\leaders</tt> ...  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \leaders\hrule\hfill  </pre>
  *  <pre class="TeXSample">
  *    \leaders\hbox{ . }\hfill  </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
 public class Leaders extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Leaders(String name) {
@@ -85,16 +88,13 @@ public class Leaders extends AbstractCode {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         CodeToken cs = source.getControlSequence(context, typesetter);
         Code code = context.getCode(cs);
@@ -105,10 +105,15 @@ public class Leaders extends AbstractCode {
 
         boolean horizontal;
 
-        Node node = null;
+        OrientedNode node = null;
         if (code instanceof Boxable) {
             Box b = ((Boxable) code).getBox(context, source, typesetter, null);
-            node = b.getNodes();
+            NodeList nl = b.getNodes();
+            if (!(nl instanceof OrientedNode)) {
+                // TODO gene: execute unimplemented
+                throw new RuntimeException("unimplemented");
+            }
+            node = (OrientedNode) nl;
             horizontal = b.isHbox();
         } else if (code instanceof RuleConvertible) {
             node =
@@ -143,7 +148,21 @@ public class Leaders extends AbstractCode {
             skip = ((VerticalSkip) code).getGlue(context, source, typesetter);
         }
 
-        typesetter.add(new AlignedLeadersNode(node, skip, horizontal));
+        addNode(typesetter, node, skip);
+    }
+
+    /**
+     * Finally make an appropriate node and add it to the typesetter.
+     * 
+     * @param typesetter the typesetter
+     * @param node the node
+     * @param skip the skip amount
+     * @throws TypesetterException in case of an error
+     */
+    protected void addNode(Typesetter typesetter, OrientedNode node,
+            FixedGlue skip) throws TypesetterException {
+
+        typesetter.add(new AlignedLeadersNode(node, skip));
     }
 
 }

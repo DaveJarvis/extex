@@ -86,7 +86,7 @@ public interface Node extends Serializable {
      * @throws GeneralException in case of an error
      */
     Node atShipping(PageContext context, Typesetter typesetter,
-            NodeVisitor<Node, Boolean> visitor, boolean inHMode)
+            NodeVisitor<Node, Boolean> visitor, Boolean inHMode)
             throws GeneralException;
 
     /**

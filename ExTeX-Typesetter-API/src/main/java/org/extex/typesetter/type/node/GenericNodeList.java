@@ -153,13 +153,13 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.node.AbstractNode#atShipping(org.extex.typesetter.PageContext,
-     *      org.extex.typesetter.Typesetter,
-     *      org.extex.typesetter.type.NodeVisitor, boolean)
+     * @see org.extex.typesetter.type.node.AbstractNode#atShipping(
+     *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
+     *      org.extex.typesetter.type.NodeVisitor, Boolean)
      */
-    @SuppressWarnings("unchecked")
     public Node atShipping(PageContext context, Typesetter typesetter,
-            NodeVisitor visitor, boolean inHMode) throws GeneralException {
+            NodeVisitor<Node, Boolean> visitor, Boolean inHMode)
+            throws GeneralException {
 
         Node node;
         Node n;
@@ -178,9 +178,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
             }
         }
 
-        return (Node) this.visit(visitor, inHMode
-                ? Boolean.TRUE
-                : Boolean.FALSE);
+        return (Node) this.visit(visitor, inHMode);
     }
 
     /**

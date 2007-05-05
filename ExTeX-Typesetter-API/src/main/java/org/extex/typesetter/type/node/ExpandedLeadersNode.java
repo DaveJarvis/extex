@@ -23,90 +23,73 @@ import org.extex.core.exception.GeneralException;
 import org.extex.core.glue.FixedGlue;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
+import org.extex.typesetter.type.OrientedNode;
 
 /**
  * This node represents an expandable leaders node as used by the primitive
  * <tt>\xleaders</tt>.
- *
+ * 
  * @see "<logo>TeX</logo> &ndash; The Program [149]"
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4739 $
  */
-public class ExpandedLeadersNode extends AbstractExpandableNode
+public class ExpandedLeadersNode extends AbstractLeadersNode
         implements
             SkipNode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>node</tt> contains the node to repeat or expand.
-     */
-    private Node node;
-
-    /**
      * Creates a new object.
-     *
+     * 
      * @param node the node or node list to stretch or repeat
      * @param glue the desired size
-     * @param horizontal the indicator for the stretchability mode
      */
-    public ExpandedLeadersNode(Node node, FixedGlue glue,
-            boolean horizontal) {
+    public ExpandedLeadersNode(OrientedNode node, FixedGlue glue) {
 
-        super(glue, horizontal);
-        this.node = node;
-    }
-
-    /**
-     * Getter for the repeated construction.
-     *
-     * @return the repeated node
-     */
-    public Node getRepeat() {
-
-        return node;
-    }
-
-    /**
-     * This method puts the printable representation into the string buffer.
-     * This is meant to produce a short form only as it is used in error
-     * messages to the user.
-     *
-     * @param sb the output string buffer
-     * @param prefix the prefix string inserted at the beginning of each line
-     * @param breadth the breadth
-     * @param depth the depth
-     *
-     * @see "<logo>TeX</logo> &ndash; The Program [190]"
-     * @see org.extex.typesetter.type.Node#toString(
-     *      java.lang.StringBuffer,
-     *      java.lang.String,
-     *      int,
-     *      int)
-     */
-    public void toString(StringBuffer sb, String prefix,
-            int breadth, int depth) {
-
-        sb.append(getLocalizer().format("String.Format", getSize().toString()));
-        node.toString(sb, prefix, Integer.MAX_VALUE, Integer.MAX_VALUE);
+        super(node, glue);
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.type.Node#visit(
-     *      org.extex.typesetter.type.NodeVisitor,
-     *      java.lang.Object)
+     *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
      */
     @SuppressWarnings("unchecked")
     public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {
 
         return visitor.visitExpandedLeaders(this, value);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillHorizontally(
+     *      long, org.extex.typesetter.type.Node)
+     */
+    protected Node fillHorizontally(long total, Node n) {
+
+        //TODO gene: fillHorizontally unimplemented
+        throw new RuntimeException("unimplemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillVertically(
+     *      long, org.extex.typesetter.type.Node)
+     */
+    protected Node fillVertically(long total, Node n) {
+
+        //TODO gene: fillVertically unimplemented
+        throw new RuntimeException("unimplemented");
     }
 
 }

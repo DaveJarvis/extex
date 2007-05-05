@@ -25,26 +25,30 @@ import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.FixedGlueComponent;
 import org.extex.core.glue.Glue;
 import org.extex.core.glue.WideGlue;
+import org.extex.typesetter.type.OrientedNode;
 
 /**
  * This node represents a <logo>TeX</logo> "glue" node.
  * <p>
- * For the document writer it acts like a kerning node. The width contains
- * the distance to add.
+ * For the document writer it acts like a kerning node. The width contains the
+ * distance to add.
  * </p>
  * <p>
  * The stretchability is adjusted by the typesetter and the width is adjusted
  * accordingly.
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4739 $
  */
-public abstract class AbstractExpandableNode extends AbstractNode {
+public abstract class AbstractExpandableNode extends AbstractNode
+        implements
+            OrientedNode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 20060320L;
 
@@ -62,16 +66,13 @@ public abstract class AbstractExpandableNode extends AbstractNode {
     private Glue size;
 
     /**
-     * Creates a new object.
-     * The size is used to determine the width in horizontal mode and the height
-     * in vertical mode.
-     *
+     * Creates a new object. The size is used to determine the width in
+     * horizontal mode and the height in vertical mode.
+     * 
      * @param size the actual size
-     * @param horizontal indicator that the glue is used in horizontal
-     *  mode
+     * @param horizontal indicator that the glue is used in horizontal mode
      */
-    public AbstractExpandableNode(FixedDimen size,
-            boolean horizontal) {
+    public AbstractExpandableNode(FixedDimen size, boolean horizontal) {
 
         super(Dimen.ZERO_PT);
         this.size = new Glue(size);
@@ -85,13 +86,11 @@ public abstract class AbstractExpandableNode extends AbstractNode {
     }
 
     /**
-     * Creates a new object.
-     * The size is used to determine the width in horizontal mode and the height
-     * in vertical mode.
-     *
+     * Creates a new object. The size is used to determine the width in
+     * horizontal mode and the height in vertical mode.
+     * 
      * @param size the actual size
-     * @param horizontal indicator that the glue is used in horizontal
-     *  mode
+     * @param horizontal indicator that the glue is used in horizontal mode
      */
     public AbstractExpandableNode(FixedGlue size, boolean horizontal) {
 
@@ -108,9 +107,9 @@ public abstract class AbstractExpandableNode extends AbstractNode {
 
     /**
      * Add the flexible depth of the current node to the given glue.
-     *
+     * 
      * @param glue the glue to add to.
-     *
+     * 
      * @see org.extex.typesetter.type.Node#addDepthTo(
      *      org.extex.core.glue.WideGlue)
      */
@@ -125,9 +124,9 @@ public abstract class AbstractExpandableNode extends AbstractNode {
 
     /**
      * Add the flexible height of the current node to the given glue.
-     *
+     * 
      * @param glue the glue to add to.
-     *
+     * 
      * @see org.extex.typesetter.type.Node#addHeightTo(
      *      org.extex.core.glue.WideGlue)
      */
@@ -142,9 +141,9 @@ public abstract class AbstractExpandableNode extends AbstractNode {
 
     /**
      * Add the flexible width of the current node to the given glue.
-     *
+     * 
      * @param glue the glue to add to.
-     *
+     * 
      * @see org.extex.typesetter.type.Node#addWidthTo(
      *      org.extex.core.glue.WideGlue)
      */
@@ -159,7 +158,7 @@ public abstract class AbstractExpandableNode extends AbstractNode {
 
     /**
      * Getter for size.
-     *
+     * 
      * @return the size
      */
     public FixedGlue getSize() {
@@ -168,8 +167,18 @@ public abstract class AbstractExpandableNode extends AbstractNode {
     }
 
     /**
+     * Getter for horizontal.
+     * 
+     * @return the horizontal
+     */
+    public boolean isHorizontal() {
+
+        return horizontal;
+    }
+
+    /**
      * Setter for the size
-     *
+     * 
      * @param skip the new value
      */
     public void setSize(FixedGlue skip) {
@@ -180,16 +189,15 @@ public abstract class AbstractExpandableNode extends AbstractNode {
     /**
      * Adjust the height of a flexible node. This method is a noop for any but
      * the flexible nodes.
-     *
+     * 
      * @param height the desired height
      * @param sum the total sum of the glues
-     *
+     * 
      * @see org.extex.typesetter.type.node.AbstractNode#spreadHeight(
      *      org.extex.core.dimen.FixedDimen,
      *      org.extex.core.glue.FixedGlueComponent)
      */
-    public void spreadHeight(FixedDimen height,
-            FixedGlueComponent sum) {
+    public void spreadHeight(FixedDimen height, FixedGlueComponent sum) {
 
         if (horizontal) {
             return;
@@ -203,10 +211,10 @@ public abstract class AbstractExpandableNode extends AbstractNode {
 
     /**
      * Adjust the width of the flexible node.
-     *
+     * 
      * @param width the desired with
      * @param sum the total sum of the glues
-     *
+     * 
      * @see org.extex.typesetter.type.Node#spreadWidth(
      *      org.extex.core.dimen.FixedDimen,
      *      org.extex.core.glue.FixedGlueComponent)

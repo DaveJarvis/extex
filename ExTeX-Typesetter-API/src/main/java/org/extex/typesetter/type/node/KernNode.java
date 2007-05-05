@@ -44,4 +44,5 @@ import org.extex.typesetter.type.Node;
  */
 public interface KernNode extends Node {
 
+    // nothing else
 }
