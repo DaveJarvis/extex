@@ -463,16 +463,13 @@ public class DviDocumentWriter
                 public Boolean visitHorizontalList(HorizontalListNode node,
                         List<DviCode> list) throws GeneralException {
 
-                    Node n;
                     boolean save = horizontal;
                     horizontal = true;
                     down(list, node.getShift().getValue());
                     right(list, node.getMove().getValue());
                     int v0 = dviV;
-                    int size = node.size();
 
-                    for (int i = 0; i < size; i++) {
-                        n = node.get(i);
+                    for (Node n : node) {
                         if (n.visit(this, list) == null) {
                             right(list, n.getWidth().getValue());
                         }
@@ -587,11 +584,9 @@ public class DviDocumentWriter
                     down(list, -node.getHeight().getValue());
                     down(list, node.getShift().getValue());
                     right(list, node.getMove().getValue());
-                    int size = node.size();
                     int h0 = dviH;
 
-                    for (int i = 0; i < size; i++) {
-                        Node n = node.get(i);
+                    for (Node n : node) {
                         down(list, n.getHeight().getValue());
                         if (n.visit(this, list) == null) {
                             down(list, n.getDepth().getValue());
