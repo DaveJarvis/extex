@@ -19,12 +19,12 @@
 
 package org.extex.typesetter.type.node;
 
+import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.glue.FixedGlue;
 import org.extex.typesetter.PageContext;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.Node;
-import org.extex.typesetter.type.NodeVisitor;
 import org.extex.typesetter.type.OrientedNode;
 
 /**
@@ -63,10 +63,10 @@ public abstract class AbstractLeadersNode extends AbstractExpandableNode
         this.node = node;
         if (node.isHorizontal()) {
             setHeight(node.getHeight());
+            setDepth(node.getDepth());
         } else {
             setWidth(node.getWidth());
         }
-        setDepth(node.getDepth());
     }
 
     /**
@@ -74,11 +74,10 @@ public abstract class AbstractLeadersNode extends AbstractExpandableNode
      * 
      * @see org.extex.typesetter.type.node.AbstractNode#atShipping(
      *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
-     *      org.extex.typesetter.type.NodeVisitor, Boolean)
+     *      FixedDimen, FixedDimen)
      */
     public Node atShipping(PageContext context, Typesetter typesetter,
-            NodeVisitor<Node, Boolean> visitor, Boolean inHMode)
-            throws GeneralException {
+            FixedDimen posX, FixedDimen posY) throws GeneralException {
 
         Node result;
         if (node instanceof RuleNode) {
@@ -87,14 +86,14 @@ public abstract class AbstractLeadersNode extends AbstractExpandableNode
             node.setDepth(getDepth());
             result = node;
         } else if (isHorizontal()) {
-            result = fillHorizontally(getWidth().getValue(), node);
+            result = fillHorizontally(getWidth().getValue(), node, posX, posY);
         } else {
             result =
                     fillVertically(getHeight().getValue()
-                            + getDepth().getValue(), node);
+                            + getDepth().getValue(), node, posX, posY);
         }
 
-        return (Node) result.visit(visitor, inHMode);
+        return result;
     }
 
     /**
@@ -104,10 +103,14 @@ public abstract class AbstractLeadersNode extends AbstractExpandableNode
      * 
      * @param total the width in scaled points
      * @param n the repeated node
-     * 
+     * @param posX the x coordinate of the absolute position of the element on
+     *        the page
+     * @param posY the y coordinate of the absolute position of the element on
+     *        the page
      * @return the appropriate node
      */
-    protected abstract Node fillHorizontally(long total, Node n);
+    protected abstract Node fillHorizontally(long total, Node n,
+            FixedDimen posX, FixedDimen posY);
 
     /**
      * Compute the vertical list with appropriately many instances of the repeat
@@ -116,10 +119,14 @@ public abstract class AbstractLeadersNode extends AbstractExpandableNode
      * 
      * @param total the total height; i.e. height plus depth
      * @param n the repeated node
-     * 
+     * @param posX the x coordinate of the absolute position of the element on
+     *        the page
+     * @param posY the y coordinate of the absolute position of the element on
+     *        the page
      * @return the appropriate node
      */
-    protected abstract Node fillVertically(long total, Node n);
+    protected abstract Node fillVertically(long total, Node n, FixedDimen posX,
+            FixedDimen posY);
 
     /**
      * Getter for the repeated construction.

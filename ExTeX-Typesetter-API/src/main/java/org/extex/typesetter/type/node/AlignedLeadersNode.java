@@ -19,9 +19,12 @@
 
 package org.extex.typesetter.type.node;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.glue.FixedGlue;
 import org.extex.typesetter.type.Node;
+import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.typesetter.type.OrientedNode;
 
@@ -31,7 +34,6 @@ import org.extex.typesetter.type.OrientedNode;
  * 
  * @see "<logo>TeX</logo> &ndash; The Program [149]"
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4739 $
  */
 public class AlignedLeadersNode extends AbstractLeadersNode {
@@ -56,6 +58,83 @@ public class AlignedLeadersNode extends AbstractLeadersNode {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillHorizontally(
+     *      long, org.extex.typesetter.type.Node, FixedDimen, FixedDimen)
+     * @see "<logo>TeX</logo> &ndash; The Program [626]"
+     */
+    protected Node fillHorizontally(long total, Node node, FixedDimen posX,
+            FixedDimen posY) {
+
+        // TODO: check with TeX how it works there
+
+        long w = node.getWidth().getValue();
+        if (w <= 0) {
+            return this;
+        }
+        long offset = posX.getValue() % w;
+        if (w + offset > total) {
+            return this;
+        }
+
+        long n = (total - offset) / w;
+        // Possible improvement: If n==1 && offset == 0 return node?
+        NodeList nl = new HorizontalListNode();
+
+        if (offset > 0) {
+            nl.add(new ImplicitKernNode(new Dimen(offset), true));
+        }
+
+        while (n-- > 0) {
+            nl.add(node);
+        }
+
+        nl.setDepth(getDepth());
+        nl.setHeight(getHeight());
+        nl.setWidth(getWidth());
+        return nl;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillVertically(
+     *      long, org.extex.typesetter.type.Node, FixedDimen, FixedDimen)
+     */
+    protected Node fillVertically(long total, Node node, FixedDimen posX,
+            FixedDimen posY) {
+
+        // TODO: check with TeX how it works there
+
+        long h = node.getHeight().getValue() + node.getDepth().getValue();
+        if (h <= 0) {
+            return this;
+        }
+        long offset = posX.getValue() % h;
+        if (h + offset > total) {
+            return this;
+        }
+
+        long n = (total - offset) / h;
+        // Possible improvement: If n==1 && offset == 0 return node?
+        NodeList nl = new VerticalListNode();
+
+        if (offset > 0) {
+            nl.add(new ImplicitKernNode(new Dimen(offset), false));
+        }
+
+        while (n-- > 0) {
+            nl.add(node);
+        }
+
+        nl.setDepth(getDepth());
+        nl.setHeight(getHeight());
+        nl.setWidth(getWidth());
+        return nl;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.typesetter.type.Node#visit(
      *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
      */
@@ -64,30 +143,6 @@ public class AlignedLeadersNode extends AbstractLeadersNode {
             throws GeneralException {
 
         return visitor.visitAlignedLeaders(this, value);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillHorizontally(
-     *      long, org.extex.typesetter.type.Node)
-     */
-    protected Node fillHorizontally(long total, Node n) {
-
-        // TODO gene: fillHorizontally unimplemented
-        throw new RuntimeException("unimplemented");
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillVertically(
-     *      long, org.extex.typesetter.type.Node)
-     */
-    protected Node fillVertically(long total, Node n) {
-
-        // TODO gene: fillVertically unimplemented
-        throw new RuntimeException("unimplemented");
     }
 
 }

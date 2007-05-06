@@ -169,20 +169,6 @@ public class VerticalListNode extends GenericNodeList
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.node.AbstractNode#atShipping(
-     *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
-     *      org.extex.typesetter.type.NodeVisitor, Boolean)
-     */
-    public Node atShipping(PageContext context, Typesetter typesetter,
-            NodeVisitor<Node, Boolean> visitor, Boolean inHMode)
-            throws GeneralException {
-
-        return super.atShipping(context, typesetter, visitor, Boolean.FALSE);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.extex.typesetter.type.OrientedNode#isHorizontal()
      */
     public boolean isHorizontal() {

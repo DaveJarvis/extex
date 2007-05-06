@@ -151,37 +151,6 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractNode#atShipping(
-     *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
-     *      org.extex.typesetter.type.NodeVisitor, Boolean)
-     */
-    public Node atShipping(PageContext context, Typesetter typesetter,
-            NodeVisitor<Node, Boolean> visitor, Boolean inHMode)
-            throws GeneralException {
-
-        Node node;
-        Node n;
-        int size = list.size();
-
-        for (int i = 0; i < size; i++) {
-            node = list.get(i);
-            n = node.atShipping(context, typesetter, visitor, inHMode);
-
-            if (n == null) {
-                list.remove(i--);
-                size--;
-            } else if (n != this) {
-                list.remove(i);
-                list.add(i, n);
-            }
-        }
-
-        return (Node) this.visit(visitor, inHMode);
-    }
-
-    /**
      * Remove all nodes from the list. The list is empty afterwards. The
      * dimensions are reset to zero unless target sizes are specified. In this
      * case the target sizes are used.

@@ -20,6 +20,7 @@
 package org.extex.typesetter.type.node;
 
 import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.glue.FixedGlue;
 import org.extex.typesetter.type.Node;
@@ -33,7 +34,6 @@ import org.extex.typesetter.type.OrientedNode;
  * 
  * @see "<logo>TeX</logo> &ndash; The Program [149]"
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4739 $
  */
 public class CenteredLeadersNode extends AbstractLeadersNode {
@@ -56,64 +56,98 @@ public class CenteredLeadersNode extends AbstractLeadersNode {
     }
 
     /**
+     * The method determines how much horizontal space is left and distributes
+     * it if necessary.
+     * <p>
+     * If there is not enough space for at least one instance then the current
+     * instance is returned. In this case it acts as placeholder to contribute
+     * the dimensions for the update of the current position in the document
+     * writer.
+     * </p>
+     * <p>
+     * Otherwise a hlist is created and filled with appropriately many
+     * references to the repeat material. Optionally this is preceded by a kern
+     * node to achieve the centering.
+     * </p>
+     * 
      * {@inheritDoc}
      * 
      * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillHorizontally(
-     *      long, org.extex.typesetter.type.Node)
+     *      long, org.extex.typesetter.type.Node, FixedDimen, FixedDimen)
      */
-    protected Node fillHorizontally(long total, Node node) {
+    protected Node fillHorizontally(long total, Node node, FixedDimen posX,
+            FixedDimen posY) {
 
         long w = node.getWidth().getValue();
-        if (total < w || w == 0) {
+        if (total < w || w <= 0) {
             return this;
         }
-
-        NodeList nl = new HorizontalListNode();
-        nl.setDepth(getDepth());
-        nl.setHeight(getHeight());
-        nl.setWidth(getWidth());
 
         long n = total / w;
         // the rounding error appears at the right side
         long offset = (total - n * w) / 2;
+        // Possible improvement: If n==1 && offset == 0 return node?
+        NodeList nl = new HorizontalListNode();
+
         if (offset > 0) {
             nl.add(new ImplicitKernNode(new Dimen(offset), true));
         }
 
-        while (n-- >= 0) {
+        while (n-- > 0) {
             nl.add(node);
         }
+
+        nl.setDepth(getDepth());
+        nl.setHeight(getHeight());
+        nl.setWidth(getWidth());
         return nl;
     }
 
     /**
+     * The method determines how much vertical space is left and distributes it
+     * if necessary.
+     * <p>
+     * If there is not enough space for at least one instance then the current
+     * instance is returned. In this case it acts as placeholder to contribute
+     * the dimensions for the update of the current position in the document
+     * writer.
+     * </p>
+     * <p>
+     * Otherwise a vlist is created and filled with appropriately many
+     * references to the repeat material. Optionally this is preceded by a kern
+     * node to achieve the centering.
+     * </p>
+     * 
      * {@inheritDoc}
      * 
      * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillVertically(
-     *      long, org.extex.typesetter.type.Node)
+     *      long, org.extex.typesetter.type.Node, FixedDimen, FixedDimen)
      */
-    protected Node fillVertically(long total, Node node) {
+    protected Node fillVertically(long total, Node node, FixedDimen posX,
+            FixedDimen posY) {
 
         long h = node.getHeight().getValue() + node.getDepth().getValue();
-        if (total < h || h == 0) {
+        if (total < h || h <= 0) {
             return this;
         }
-
-        NodeList nl = new HorizontalListNode();
-        nl.setDepth(getDepth());
-        nl.setHeight(getHeight());
-        nl.setWidth(getWidth());
 
         long n = total / h;
         // the rounding error appears at the bottom
         long offset = (total - n * h) / 2;
+        // Possible improvement: If n==1 && offset == 0 return node?
+        NodeList nl = new VerticalListNode();
+
         if (offset > 0) {
             nl.add(new ImplicitKernNode(new Dimen(offset), false));
         }
 
-        while (n-- >= 0) {
+        while (n-- > 0) {
             nl.add(node);
         }
+
+        nl.setDepth(getDepth());
+        nl.setHeight(getHeight());
+        nl.setWidth(getWidth());
         return nl;
     }
 

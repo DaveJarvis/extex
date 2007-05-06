@@ -190,20 +190,6 @@ public class VirtualCharNode extends CharNode implements NodeList {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractNode#atShipping(
-     *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
-     *      org.extex.typesetter.type.NodeVisitor, Boolean)
-     */
-    public Node atShipping(PageContext context, Typesetter typesetter,
-            NodeVisitor<Node, Boolean> visitor, Boolean inHMode)
-            throws GeneralException {
-
-        return this.nodes.atShipping(context, typesetter, visitor, inHMode);
-    }
-
-    /**
      * Remove all nodes from the list. The list is empty afterwards. The
      * dimensions are reset to zero unless target sizes are specified. In this
      * case the target sizes are used.

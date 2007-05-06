@@ -19,9 +19,12 @@
 
 package org.extex.typesetter.type.node;
 
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.glue.FixedGlue;
 import org.extex.typesetter.type.Node;
+import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.typesetter.type.OrientedNode;
 
@@ -31,12 +34,9 @@ import org.extex.typesetter.type.OrientedNode;
  * 
  * @see "<logo>TeX</logo> &ndash; The Program [149]"
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4739 $
  */
-public class ExpandedLeadersNode extends AbstractLeadersNode
-        implements
-            SkipNode {
+public class ExpandedLeadersNode extends AbstractLeadersNode {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
@@ -56,6 +56,108 @@ public class ExpandedLeadersNode extends AbstractLeadersNode
     }
 
     /**
+     * The method determines how much horizontal space is left and distributes
+     * it if necessary.
+     * <p>
+     * If there is not enough space for at least one instance then the current
+     * instance is returned. In this case it acts as placeholder to contribute
+     * the dimensions for the update of the current position in the document
+     * writer.
+     * </p>
+     * <p>
+     * Otherwise a hlist is created and filled with appropriately many
+     * references to the repeat material. Optionally each elemnt is preceded by
+     * a kern node to achieve the proper distribution.
+     * </p>
+     * 
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillHorizontally(
+     *      long, org.extex.typesetter.type.Node, FixedDimen, FixedDimen)
+     */
+    protected Node fillHorizontally(long total, Node node, FixedDimen posX,
+            FixedDimen posY) {
+
+        long w = node.getWidth().getValue();
+        if (total < w || w <= 0) {
+            return this;
+        }
+
+        long n = total / w;
+        long extra = total - n * w;
+        // Possible improvement: If n==1 && extra == 0 return node?
+
+        NodeList nl = new HorizontalListNode();
+        long x = 0; // keep track of the current position
+
+        for (long i = 0; i < n; i++) {
+            long pos = i * w + extra * (i + 1) / (n + 1);
+            if (x != pos) {
+                nl.add(new ImplicitKernNode(new Dimen(pos - x), true));
+                x = pos;
+            }
+            nl.add(node);
+            x += w;
+        }
+
+        nl.setDepth(getDepth());
+        nl.setHeight(getHeight());
+        nl.setWidth(getWidth());
+        return nl;
+    }
+
+    /**
+     * The method determines how much vertical space is left and distributes it
+     * if necessary.
+     * <p>
+     * If there is not enough space for at least one instance then the current
+     * instance is returned. In this case it acts as placeholder to contribute
+     * the dimensions for the update of the current position in the document
+     * writer.
+     * </p>
+     * <p>
+     * Otherwise a vlist is created and filled with appropriately many
+     * references to the repeat material. Optionally each elemnt is preceded by
+     * a kern node to achieve the proper distribution.
+     * </p>
+     * 
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillVertically(
+     *      long, org.extex.typesetter.type.Node, FixedDimen, FixedDimen)
+     */
+    protected Node fillVertically(long total, Node node, FixedDimen posX,
+            FixedDimen posY) {
+
+        long h = node.getHeight().getValue() + node.getDepth().getValue();
+        if (total < h || h <= 0) {
+            return this;
+        }
+
+        long n = total / h;
+        long extra = total - n * h;
+        // Possible improvement: If n==1 && extra == 0 return node?
+
+        NodeList nl = new VerticalListNode();
+        long x = 0; // keep track of the current position
+
+        for (long i = 0; i < n; i++) {
+            long pos = i * h + extra * (i + 1) / (n + 1);
+            if (x != pos) {
+                nl.add(new ImplicitKernNode(new Dimen(pos - x), false));
+                x = pos;
+            }
+            nl.add(node);
+            x += h;
+        }
+
+        nl.setDepth(getDepth());
+        nl.setHeight(getHeight());
+        nl.setWidth(getWidth());
+        return nl;
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.typesetter.type.Node#visit(
@@ -66,30 +168,6 @@ public class ExpandedLeadersNode extends AbstractLeadersNode
             throws GeneralException {
 
         return visitor.visitExpandedLeaders(this, value);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillHorizontally(
-     *      long, org.extex.typesetter.type.Node)
-     */
-    protected Node fillHorizontally(long total, Node n) {
-
-        //TODO gene: fillHorizontally unimplemented
-        throw new RuntimeException("unimplemented");
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillVertically(
-     *      long, org.extex.typesetter.type.Node)
-     */
-    protected Node fillVertically(long total, Node n) {
-
-        //TODO gene: fillVertically unimplemented
-        throw new RuntimeException("unimplemented");
     }
 
 }

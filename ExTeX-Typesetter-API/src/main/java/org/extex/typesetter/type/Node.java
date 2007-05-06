@@ -73,20 +73,15 @@ public interface Node extends Serializable {
      * 
      * @param context the interpreter context encapsulated as page context
      * @param typesetter the typesetter
-     * @param visitor the node visitor to be invoked when the node is hit. Note
-     *        that each node in the output page is visited this way. Thus there
-     *        is no need to implement a node traversal for the NodeList types
-     * @param inHMode <code>true</code> iff the container is a horizontal
-     *        list. Otherwise the container is a vertical list
-     * 
+     * @param posX TODO
+     * @param posY TODO
      * @return the node to be used instead of the current one in the output
      *         list. If the value is <code>null</code> then the node is
      *         deleted. If the value is the node itself then it is preserved.
      * 
      * @throws GeneralException in case of an error
      */
-    Node atShipping(PageContext context, Typesetter typesetter,
-            NodeVisitor<Node, Boolean> visitor, Boolean inHMode)
+    Node atShipping(PageContext context, Typesetter typesetter, FixedDimen posX, FixedDimen posY)
             throws GeneralException;
 
     /**

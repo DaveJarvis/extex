@@ -31,7 +31,6 @@ import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.typesetter.PageContext;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.Node;
-import org.extex.typesetter.type.NodeVisitor;
 
 /**
  * This abstract class provides some methods common to all Nodes.
@@ -182,14 +181,12 @@ public abstract class AbstractNode implements Node {
      * {@inheritDoc}
      * 
      * @see org.extex.typesetter.type.Node#atShipping(
-     *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
-     *      org.extex.typesetter.type.NodeVisitor, Boolean)
+     *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter, FixedDimen, FixedDimen)
      */
-    public Node atShipping(PageContext context, Typesetter typesetter,
-            NodeVisitor<Node, Boolean> visitor, Boolean inHMode)
+    public Node atShipping(PageContext context, Typesetter typesetter, FixedDimen posX, FixedDimen posY)
             throws GeneralException {
 
-        return (Node) this.visit(visitor, inHMode);
+        return this;
     }
 
     /**

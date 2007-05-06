@@ -22,13 +22,13 @@ package org.extex.unit.tex.file.nodes;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.scanner.type.file.OutFile;
 import org.extex.typesetter.PageContext;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.Node;
-import org.extex.typesetter.type.NodeVisitor;
 import org.extex.typesetter.type.node.WhatsItNode;
 
 /**
@@ -70,12 +70,9 @@ public class WhatsItCloseNode extends WhatsItNode implements LogEnabled {
      *
      * @see org.extex.typesetter.type.Node#atShipping(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.typesetter.Typesetter,
-     *      org.extex.typesetter.type.NodeVisitor,
-     *      Boolean)
+     *      org.extex.typesetter.Typesetter, FixedDimen, FixedDimen)
      */
-    public Node atShipping(PageContext context, Typesetter typesetter,
-            NodeVisitor<Node, Boolean> visitor, Boolean inHMode)
+    public Node atShipping(PageContext context, Typesetter typesetter, FixedDimen posX, FixedDimen posY)
             throws GeneralException {
 
         OutFile file = context.getOutFile(key);

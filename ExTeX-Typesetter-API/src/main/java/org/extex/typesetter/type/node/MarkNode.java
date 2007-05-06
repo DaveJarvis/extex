@@ -19,6 +19,7 @@
 
 package org.extex.typesetter.type.node;
 
+import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.PageContext;
@@ -75,15 +76,13 @@ public class MarkNode extends AbstractNode implements Node {
      * {@inheritDoc}
      * 
      * @see org.extex.typesetter.type.node.AbstractNode#atShipping(
-     *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
-     *      org.extex.typesetter.type.NodeVisitor, Boolean)
+     *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter, FixedDimen, FixedDimen)
      */
-    public Node atShipping(PageContext context, Typesetter typesetter,
-            NodeVisitor<Node, Boolean> visitor, Boolean inHMode)
+    public Node atShipping(PageContext context, Typesetter typesetter, FixedDimen posX, FixedDimen posY)
             throws GeneralException {
 
         context.setMark(index, mark);
-        return (Node) this.visit(visitor, inHMode);
+        return this;
     }
 
     /**

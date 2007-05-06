@@ -404,7 +404,7 @@ public abstract class AbstractNodeListTester extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#atShipping(org.extex.interpreter.context.Context, org.extex.typesetter.Typesetter, org.extex.typesetter.type.NodeVisitor, Boolean)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#atShipping(org.extex.interpreter.context.Context, org.extex.typesetter.Typesetter, FixedDimen, FixedDimen)}.
      * 
      * @throws GeneralException in case of an error
      */
@@ -413,11 +413,11 @@ public abstract class AbstractNodeListTester extends TestCase {
         NodeList list = makeList();
         NodeVisitor<Node, Boolean> v = makeVisitor();
         if (v != null) {
-            list.atShipping(null, null, v, Boolean.TRUE);
+            list.atShipping(null, null, null, null);
             assertEquals(0, list.size());
         } else {
             try {
-                list.atShipping(null, null, v, Boolean.TRUE);
+                list.atShipping(null, null, null, null);
                 assertFalse(true);
             } catch (ImpossibleException e) {
                 assertTrue(true);
@@ -427,7 +427,7 @@ public abstract class AbstractNodeListTester extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#atShipping(org.extex.interpreter.context.Context, org.extex.typesetter.Typesetter, org.extex.typesetter.type.NodeVisitor, Boolean)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#atShipping(org.extex.interpreter.context.Context, org.extex.typesetter.Typesetter, FixedDimen, FixedDimen)}.
      * 
      * @throws GeneralException in case of an error
      */
@@ -436,7 +436,7 @@ public abstract class AbstractNodeListTester extends TestCase {
         NodeList list = makeList(new PenaltyNode(123));
         NodeVisitor<Node, Boolean> v = makeVisitor();
         if (v != null) {
-            list.atShipping(null, null, v, Boolean.TRUE);
+            list.atShipping(null, null, null, null);
             assertEquals(0, list.size());
         } else {
             // try {
