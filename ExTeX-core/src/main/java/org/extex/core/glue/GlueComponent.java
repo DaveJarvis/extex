@@ -320,7 +320,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      * Setter for the value in terms of the internal representation. The order
      * is reset to 0.
      *
-     * @param theValue the new value
+     * @param theValue the new value in units of scaled points
      */
     public void set(long theValue) {
 
@@ -331,7 +331,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
     /**
      * Setter for the value.
      *
-     * @param val the new value
+     * @param val the new value in units of scaled points
      */
     public void setValue(long val) {
 
