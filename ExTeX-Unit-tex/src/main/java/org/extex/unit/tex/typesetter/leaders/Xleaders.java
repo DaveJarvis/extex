@@ -32,10 +32,11 @@ import org.extex.typesetter.type.node.ExpandedLeadersNode;
  * <doc name="xleaders">
  * <h3>The Primitive <tt>\xleaders</tt></h3>
  * The primitive <tt>\xleaders</tt> is a leaders construction which
- * distributes the material evenly if it does not fit perfectly. The primitive
- * takes as the first argument a box or rule. The second argument is a
- * horizontal or vertical skip specification. The two arguments have to agree on
- * the orientation; either both are horizontal or both are vertical.
+ * distributes the material evenly in its surrounding box if it does not fit
+ * perfectly. The primitive takes as the first argument a box or rule. The
+ * second argument is a horizontal or vertical skip specification. The two
+ * arguments have to agree on the orientation; either both are horizontal or
+ * both are vertical.
  * </p>
  * <p>
  * The primitive behaves like a glue node with the given skip characteristics.
@@ -51,10 +52,11 @@ import org.extex.typesetter.type.node.ExpandedLeadersNode;
  * <p>
  * If a box is given then the contents of the box is repeated within the free
  * space until it is filled. If the space can not be filled exactly then the
- * remaining space is distributed evenly between the elements inserted. This
- * means that the box material is replicated and adjusted within the given
- * rectangle. As a consequence nothing will appear on the page if the available
- * space is smaller than the natural width of the box.
+ * remaining space is distributed evenly between the elements inserted and at
+ * both ends. This means that the box material is replicated and adjusted within
+ * the given rectangle. As a consequence nothing will appear on the page if the
+ * available space is smaller than the natural width of the box. If only one
+ * element is inserted then this element is centered.
  * </p>
  * <p>
  * Note that there are also the primitives <tt>\cleaders</tt> and
@@ -102,7 +104,7 @@ import org.extex.typesetter.type.node.ExpandedLeadersNode;
  * The contents of the box is repeated until it fills the space available. If
  * the final width is a multiple of 2em then then this space is filled up. If
  * the available space leaves some freedom then this extra space is distributed
- * equally between the boxes inserted.
+ * equally between the boxes inserted and the left and right margin.
  * </p>
  * </doc>
  * 
