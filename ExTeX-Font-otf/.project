@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>ExTeX-Font-ofm</name>
+	<name>ExTeX-Font-otf</name>
 	<comment></comment>
 	<projects>
 		<project>ExTeX</project>
