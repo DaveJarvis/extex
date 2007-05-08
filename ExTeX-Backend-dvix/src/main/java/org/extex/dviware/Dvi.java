@@ -25,7 +25,7 @@ import java.io.InputStream;
 
 /**
  * This class provides a DVI parser.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -37,7 +37,8 @@ public class Dvi {
     public static final int BOP = 139;
 
     /**
-     * The field <tt>DOWN1</tt> contains the op-code for the DOWN1 instruction.
+     * The field <tt>DOWN1</tt> contains the op-code for the DOWN1
+     * instruction.
      */
     public static final int DOWN1 = 157;
 
@@ -47,12 +48,13 @@ public class Dvi {
     public static final int DVI_ID = 2;
 
     /**
-     * The field <tt>DVI_DEN</tt> contains the ...
+     * The field <tt>DVI_DEN</tt> contains the denominator for the dvi
+     * command.
      */
     public static final int DVI_UNIT_DENOMINATOR = 473628672;
 
     /**
-     * The field <tt>DVI_NUM</tt> contains the ...
+     * The field <tt>DVI_NUM</tt> contains the numerator for the dvi command.
      */
     public static final int DVI_UNIT_NUMERATOR = 25400000;
 
@@ -68,22 +70,26 @@ public class Dvi {
     public static final int FNT_DEF1 = 243;
 
     /**
-     * The field <tt>FNT_DEF2</tt> contains the ...
+     * The field <tt>FNT_DEF2</tt> contains the op-code for the FNT_DEF2
+     * instruction.
      */
     public static final int FNT_DEF2 = 244;
 
     /**
-     * The field <tt>FNT_DEF3</tt> contains the ...
+     * The field <tt>FNT_DEF3</tt> contains the op-code for the FNT_DEF3
+     * instruction.
      */
     public static final int FNT_DEF3 = 245;
 
     /**
-     * The field <tt>FNT_DEF4</tt> contains the ...
+     * The field <tt>FNT_DEF4</tt> contains the op-code for the FNT_DEF4
+     * instruction.
      */
     public static final int FNT_DEF4 = 246;
 
     /**
-     * The field <tt>FNT_NUM_0</tt> contains the ...
+     * The field <tt>FNT_NUM_0</tt> contains the op-code for the lowest FNT
+     * instruction.
      */
     public static final int FNT_NUM_0 = 171;
 
@@ -113,8 +119,8 @@ public class Dvi {
     public static final int NOP = 138;
 
     /**
-     * The field <tt>PADDING_BYTE</tt> contains the byte added at the end of the
-     * stream to align the length to a multiple of four.
+     * The field <tt>PADDING_BYTE</tt> contains the byte added at the end of
+     * the stream to align the length to a multiple of four.
      */
     public static final int PADDING_BYTE = 223;
 
@@ -217,26 +223,22 @@ public class Dvi {
     public static final int SET_RULE = 132;
 
     /**
-     * The field <tt>SET1</tt> contains the op-code for the SET1
-     * instruction.
+     * The field <tt>SET1</tt> contains the op-code for the SET1 instruction.
      */
     public static final int SET1 = 128;
 
     /**
-     * The field <tt>SET2</tt> contains the op-code for the SET2
-     * instruction.
+     * The field <tt>SET2</tt> contains the op-code for the SET2 instruction.
      */
     public static final int SET2 = 129;
 
     /**
-     * The field <tt>SET3</tt> contains the op-code for the SET3
-     * instruction.
+     * The field <tt>SET3</tt> contains the op-code for the SET3 instruction.
      */
     public static final int SET3 = 130;
 
     /**
-     * The field <tt>SET4</tt> contains the op-code for the SET4
-     * instruction.
+     * The field <tt>SET4</tt> contains the op-code for the SET4 instruction.
      */
     public static final int SET4 = 131;
 
@@ -327,7 +329,7 @@ public class Dvi {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param dvi the input stream
      */
     public Dvi(InputStream dvi) {
@@ -338,10 +340,10 @@ public class Dvi {
 
     /**
      * Parse the input stream and invoke the callbacks on each code found.
-     *
-     * @param proc the processor which defines the callback methods invoked
-     *  when a matching DVI instruction has been read
-     *
+     * 
+     * @param proc the processor which defines the callback methods invoked when
+     *        a matching DVI instruction has been read
+     * 
      * @throws IOException in case of an error
      */
     public void parse(DviProcessor proc) throws IOException {
@@ -792,9 +794,9 @@ public class Dvi {
 
     /**
      * Read a one byte length and that number of bytes.
-     *
+     * 
      * @return the bytes read
-     *
+     * 
      * @throws IOException in case of an error
      */
     private String read() throws IOException {
@@ -805,11 +807,11 @@ public class Dvi {
 
     /**
      * Read a number of bytes.
-     *
+     * 
      * @param len the number of bytes to read
-     *
+     * 
      * @return the bytes read
-     *
+     * 
      * @throws IOException in case of an error
      */
     private String read(int len) throws IOException {
@@ -829,9 +831,9 @@ public class Dvi {
 
     /**
      * Read one byte into an int.
-     *
+     * 
      * @return the number read
-     *
+     * 
      * @throws IOException in case of an error
      */
     private int read1() throws IOException {
@@ -842,9 +844,9 @@ public class Dvi {
 
     /**
      * Read one byte into an int.
-     *
+     * 
      * @return the number read
-     *
+     * 
      * @throws IOException in case of an error
      */
     private int read1signed() throws IOException {
@@ -856,9 +858,9 @@ public class Dvi {
 
     /**
      * Read two bytes into an int.
-     *
+     * 
      * @return the number read
-     *
+     * 
      * @throws IOException in case of an error
      */
     private int read2() throws IOException {
@@ -875,9 +877,9 @@ public class Dvi {
 
     /**
      * Read two bytes into an int.
-     *
+     * 
      * @return the number read
-     *
+     * 
      * @throws IOException in case of an error
      */
     private int read2signed() throws IOException {
@@ -894,9 +896,9 @@ public class Dvi {
 
     /**
      * Read three bytes into an int.
-     *
+     * 
      * @return the number read
-     *
+     * 
      * @throws IOException in case of an error
      */
     private int read3() throws IOException {
@@ -910,9 +912,9 @@ public class Dvi {
 
     /**
      * Read three bytes into an int.
-     *
+     * 
      * @return the number read
-     *
+     * 
      * @throws IOException in case of an error
      */
     private int read3signed() throws IOException {
@@ -926,9 +928,9 @@ public class Dvi {
 
     /**
      * Read four bytes into an int.
-     *
+     * 
      * @return the number read
-     *
+     * 
      * @throws IOException in case of an error
      */
     private int read4() throws IOException {
@@ -943,9 +945,9 @@ public class Dvi {
 
     /**
      * Read four bytes into an int.
-     *
+     * 
      * @return the number read
-     *
+     * 
      * @throws IOException in case of an error
      */
     private int read4signed() throws IOException {
@@ -960,11 +962,11 @@ public class Dvi {
 
     /**
      * Read a number of bytes.
-     *
+     * 
      * @param len the number of bytes to read
-     *
+     * 
      * @return the bytes read
-     *
+     * 
      * @throws IOException in case of an error
      */
     private byte[] readBytes(int len) throws IOException {

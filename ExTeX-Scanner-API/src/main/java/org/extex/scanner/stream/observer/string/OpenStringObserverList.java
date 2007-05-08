@@ -32,7 +32,8 @@ public final class OpenStringObserverList extends ArrayList<OpenStringObserver>
             OpenStringObserver {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the ...
+     * The field <tt>serialVersionUID</tt> contains th version number for
+     * serialization
      */
     private static final long serialVersionUID = 1L;
 

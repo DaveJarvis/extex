@@ -29,13 +29,13 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.i18n.Localizable;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.logger.LogEnabled;
+import org.extex.interpreter.EditHandler;
 import org.extex.interpreter.ErrorHandler;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.interaction.InteractionVisitor;
-import org.extex.main.errorHandler.editHandler.EditHandler;
 import org.extex.scanner.type.token.Token;
 
 /**
@@ -404,7 +404,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
      * {@inheritDoc}
      * 
      * @see org.extex.interpreter.ErrorHandler#setEditHandler(
-     *      org.extex.main.errorHandler.editHandler.EditHandler)
+     *      org.extex.interpreter.EditHandler)
      */
     public void setEditHandler(EditHandler editHandler) {
 

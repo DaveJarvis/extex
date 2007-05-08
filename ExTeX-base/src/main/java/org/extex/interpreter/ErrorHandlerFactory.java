@@ -22,7 +22,6 @@ package org.extex.interpreter;
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.main.errorHandler.editHandler.EditHandler;
 
 /**
  * This is the factory for instances of

@@ -167,7 +167,7 @@ public class PdfSinglePageDocumentWriter
     /**
      * the pdf node visitor.
      */
-    private NodeVisitor nodeVisitor;
+    private NodeVisitor<Object, Object> nodeVisitor;
 
     /**
      * {@inheritDoc}

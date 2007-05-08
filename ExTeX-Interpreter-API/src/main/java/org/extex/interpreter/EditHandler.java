@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.main.errorHandler.editHandler;
+package org.extex.interpreter;
 
 import org.extex.core.Locator;
 import org.extex.framework.i18n.Localizer;

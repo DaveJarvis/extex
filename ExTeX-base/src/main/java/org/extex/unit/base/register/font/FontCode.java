@@ -74,13 +74,7 @@ public class FontCode extends AbstractCode
     }
 
     /**
-     * Compare the code with some other code.
-     * 
-     * @param token the token to compare to
-     * @param context the interpreter context
-     * 
-     * @return <code>true</code> iff the code is equivalent according to the
-     *         semantics of <code>\ifx</code>
+     * {@inheritDoc}
      * 
      * @see org.extex.interpreter.type.ComparableCode#compare(
      *      org.extex.scanner.type.token.Token,
@@ -102,13 +96,7 @@ public class FontCode extends AbstractCode
     }
 
     /**
-     * Convert some primitive value into a font.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return the converted value
+     * {@inheritDoc}
      * 
      * @see org.extex.interpreter.type.font.FontConvertible#convertFont(
      *      org.extex.interpreter.context.Context,

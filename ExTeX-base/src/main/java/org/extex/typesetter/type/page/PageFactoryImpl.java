@@ -223,7 +223,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
     /**
      * The field <tt>logger</tt> contains the logger.
      */
-    Logger logger = null;
+    private Logger logger = null;
 
     /**
      * The field <tt>visitor</tt> contains the node visitor to determine which

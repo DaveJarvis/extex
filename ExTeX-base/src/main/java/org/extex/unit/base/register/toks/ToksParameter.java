@@ -129,13 +129,7 @@ public class ToksParameter extends AbstractToks
     }
 
     /**
-     * Return the key (the number) for the tokens register.
-     * 
-     * @param source the source for the next tokens &ndash; if required
-     * @param context the interpreter context to use
-     * @param typesetter the typesetter
-     * 
-     * @return the key for the tokens register
+     * {@inheritDoc}
      * 
      * @see org.extex.unit.base.register.toks.AbstractToks#getKey(
      *      org.extex.interpreter.context.Context,
@@ -151,17 +145,14 @@ public class ToksParameter extends AbstractToks
     }
 
     /**
-     * Initialize the Code with some value coming from a String.
-     * 
-     * @param context the interpreter context
-     * @param source the source of information for the initialization
-     * @param typesetter the typesetter
+     * {@inheritDoc}
      * 
      * @see org.extex.interpreter.type.InitializableCode#init(
      *      org.extex.interpreter.context.Context, TokenSource, Typesetter)
      */
     public void init(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+            throws HelpingException,
+                TypesetterException {
 
         if (source != null) {
             Tokens toks = new Tokens();
@@ -197,8 +188,9 @@ public class ToksParameter extends AbstractToks
 
     /**
      * {@inheritDoc}
-     *
-     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(org.extex.interpreter.context.Context, org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     * 
+     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens convertTokens(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
@@ -234,7 +226,8 @@ public class ToksParameter extends AbstractToks
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+            throws HelpingException,
+                TypesetterException {
 
         return context.getToks(getKey(context, source, typesetter));
     }

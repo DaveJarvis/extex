@@ -31,7 +31,8 @@ import org.extex.scanner.exception.ScannerException;
 public class ScannerNoHexDigitFoundException extends ScannerException {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt> contains th version number for
+     * serialization
      */
     private static final long serialVersionUID = 1L;
 

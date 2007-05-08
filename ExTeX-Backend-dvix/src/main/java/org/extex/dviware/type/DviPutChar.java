@@ -33,14 +33,14 @@ import org.extex.dviware.Dvi;
 public class DviPutChar extends AbstractDviCode {
 
     /**
-     * The field <tt>codePoint</tt> contains the ...
+     * The field <tt>codePoint</tt> contains the code point of the character.
      */
     private int codePoint;
 
     /**
      * Creates a new object.
      *
-     * @param codePoint ...
+     * @param codePoint the code point of the character
      */
     public DviPutChar(int codePoint) {
 

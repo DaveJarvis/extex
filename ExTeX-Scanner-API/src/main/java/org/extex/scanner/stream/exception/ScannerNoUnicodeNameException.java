@@ -23,7 +23,7 @@ import org.extex.scanner.exception.ScannerException;
 
 /**
  * ScannerException, if a wrong Unicode name is given.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -31,7 +31,8 @@ import org.extex.scanner.exception.ScannerException;
 public class ScannerNoUnicodeNameException extends ScannerException {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt> contains th version number for
+     * serialization
      */
     private static final long serialVersionUID = 1L;
 
@@ -45,7 +46,8 @@ public class ScannerNoUnicodeNameException extends ScannerException {
 
     /**
      * Create a new Object.
-     * @param wrongUnicodeName   The wrong name.
+     * 
+     * @param wrongUnicodeName The wrong name.
      */
     public ScannerNoUnicodeNameException(String wrongUnicodeName) {
 

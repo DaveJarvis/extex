@@ -33,13 +33,13 @@ import org.extex.ExTeX;
 import org.extex.core.exception.GeneralException;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
+import org.extex.interpreter.EditHandler;
 import org.extex.interpreter.ErrorHandler;
 import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.InterpreterFactory;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.main.errorHandler.editHandler.EditHandler;
 import org.extex.scanner.type.token.Token;
 
 /**
@@ -77,7 +77,7 @@ public final class TestTeX {
          * {@inheritDoc}
          * 
          * @see org.extex.interpreter.ErrorHandler#setEditHandler(
-         *      org.extex.main.errorHandler.editHandler.EditHandler)
+         *      org.extex.interpreter.EditHandler)
          */
         public void setEditHandler(EditHandler editHandler) {
 

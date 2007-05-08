@@ -22,10 +22,10 @@ package org.extex.scanner.exception;
 import org.extex.core.UnicodeChar;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This exception signals that an invalid character has been encountered.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
 public class InvalidCharacterScannerException extends ScannerException {
 
