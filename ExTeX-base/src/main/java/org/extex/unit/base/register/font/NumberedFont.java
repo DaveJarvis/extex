@@ -19,9 +19,9 @@
 
 package org.extex.unit.base.register.font;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.scanner.CountParser;
 import org.extex.scanner.type.Namespace;
 import org.extex.typesetter.Typesetter;

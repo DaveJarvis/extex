@@ -23,9 +23,9 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Logger;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
-import org.extex.interpreter.exception.helping.HelpingException;
 
 /**
  * This class implements the <logo>TeX</logo> version of a query file handler.

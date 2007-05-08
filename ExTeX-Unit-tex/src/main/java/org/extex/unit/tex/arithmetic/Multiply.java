@@ -19,13 +19,13 @@
 
 package org.extex.unit.tex.arithmetic;
 
+import org.extex.core.exception.helping.CantUseAfterException;
+import org.extex.core.exception.helping.EofException;
+import org.extex.core.exception.helping.HelpingException;
+import org.extex.core.exception.helping.UndefinedControlSequenceException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.CantUseAfterException;
-import org.extex.interpreter.exception.helping.EofException;
-import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.exception.helping.UndefinedControlSequenceException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.arithmetic.Multiplyable;

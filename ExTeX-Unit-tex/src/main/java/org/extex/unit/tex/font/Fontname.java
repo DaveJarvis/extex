@@ -21,12 +21,12 @@ package org.extex.unit.tex.font;
 
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
+import org.extex.core.exception.helping.EofException;
+import org.extex.core.exception.helping.HelpingException;
+import org.extex.core.exception.helping.NoHelpException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.NoHelpException;
-import org.extex.interpreter.exception.helping.EofException;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.scanner.type.CatcodeException;

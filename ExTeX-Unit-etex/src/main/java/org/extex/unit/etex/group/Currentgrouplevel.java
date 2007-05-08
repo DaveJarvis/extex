@@ -19,9 +19,9 @@
 
 package org.extex.unit.etex.group;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.CountConvertible;

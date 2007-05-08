@@ -21,9 +21,9 @@ package org.extex.unit.tex.hyphen;
 
 import org.extex.core.UnicodeChar;
 import org.extex.core.UnicodeCharList;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeException;

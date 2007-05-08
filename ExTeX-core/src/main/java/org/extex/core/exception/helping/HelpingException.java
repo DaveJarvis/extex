@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.interpreter.exception.helping;
+package org.extex.core.exception.helping;
 
 import org.extex.core.exception.GeneralException;
 import org.extex.framework.i18n.Localizer;

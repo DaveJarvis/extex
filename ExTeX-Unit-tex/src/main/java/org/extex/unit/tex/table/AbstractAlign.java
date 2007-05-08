@@ -22,11 +22,11 @@ package org.extex.unit.tex.table;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.Catcode;

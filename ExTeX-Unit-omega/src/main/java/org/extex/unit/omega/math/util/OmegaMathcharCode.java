@@ -19,13 +19,13 @@
 
 package org.extex.unit.omega.math.util;
 
+import org.extex.core.exception.helping.HelpingException;
+import org.extex.core.exception.helping.MissingMathException;
+import org.extex.core.exception.helping.NoHelpException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.NoHelpException;
-import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.exception.helping.MissingMathException;
 import org.extex.interpreter.type.Showable;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.CountConvertible;

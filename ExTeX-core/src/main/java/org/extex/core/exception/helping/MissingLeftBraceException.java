@@ -17,18 +17,21 @@
  *
  */
 
-package org.extex.interpreter.exception.helping;
+package org.extex.core.exception.helping;
 
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This exception signals that an undefined control sequence has been
- * encountered.
+ * This exception is raised when an arithmetic overflow has been encountered.
+ * <p>
+ *  The localization format is taken from the Localizer under the key
+ *  <tt>TTP.ArithmeticOverflow</tt>.
+ * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class UndefinedControlSequenceException extends HelpingException {
+public class MissingLeftBraceException extends HelpingException {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -38,13 +41,12 @@ public class UndefinedControlSequenceException extends HelpingException {
     /**
      * Creates a new object.
      *
-     * @param macro the name of the macro which is undefined
+     * @param macro the name of the macro in which the eof has been encoutered
      */
-    public UndefinedControlSequenceException(String macro) {
+    public MissingLeftBraceException(String macro) {
 
-        super(LocalizerFactory
-                .getLocalizer(UndefinedControlSequenceException.class),
-                "TTP.UndefinedToken", macro);
+        super(LocalizerFactory.getLocalizer(//
+                MissingLeftBraceException.class), "TTP.MissingLeftBrace");
     }
 
 }

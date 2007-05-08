@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,33 +17,38 @@
  *
  */
 
-package org.extex.interpreter.exception.helping;
+package org.extex.core.exception.helping;
 
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This exception is raised when an <logo>eTeX</logo> extension is used which
- * has been disabled.
+ * This exception is raised when an unexpected end of file is encountered when
+ * reading tokens in braces.
+ * <p>
+ *  The localization format is taken from the Localizer under the key
+ *  <tt>TTP.EOFinToks</tt>.
+ * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ExtensionDisabledException extends HelpingException {
+public class EofInToksException extends EofException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    protected static final long serialVersionUID = 2006L;
+    protected static final long serialVersionUID = 20060505L;
 
     /**
      * Creates a new object.
      *
-     * @param macro the name of the macro which is disabled
+     * @param macro the name of the macro
      */
-    public ExtensionDisabledException(String macro) {
+    public EofInToksException(String macro) {
 
-        super(LocalizerFactory.getLocalizer(ExtensionDisabledException.class),
-                "ExtensionDisabled");
+        super(LocalizerFactory.getLocalizer(EofInToksException.class),
+                "TTP.EOFinToks", macro);
     }
 
 }

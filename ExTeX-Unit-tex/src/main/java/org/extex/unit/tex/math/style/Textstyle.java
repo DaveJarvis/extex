@@ -19,10 +19,10 @@
 
 package org.extex.unit.tex.math.style;
 
+import org.extex.core.exception.helping.MissingMathException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.MissingMathException;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.listMaker.math.NoadConsumer;

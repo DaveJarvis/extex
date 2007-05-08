@@ -20,11 +20,11 @@
 package org.extex.unit.tex.typesetter;
 
 import org.extex.core.count.Count;
+import org.extex.core.exception.helping.CantUseInException;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.CantUseInException;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.CountConvertible;

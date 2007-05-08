@@ -19,7 +19,7 @@
 
 package org.extex.interpreter.expression;
 
-import org.extex.interpreter.exception.helping.MissingNumberException;
+import org.extex.core.exception.helping.MissingNumberException;
 import org.extex.interpreter.expression.term.Accumulator;
 import org.extex.interpreter.expression.term.TBoolean;
 import org.extex.interpreter.expression.term.TCount;

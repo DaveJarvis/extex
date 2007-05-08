@@ -19,8 +19,8 @@
 
 package org.extex.interpreter.interaction;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.i18n.LocalizerFactory;
-import org.extex.interpreter.exception.helping.HelpingException;
 
 /**
  * This exception is thrown when the user attempts to set the interaction mode

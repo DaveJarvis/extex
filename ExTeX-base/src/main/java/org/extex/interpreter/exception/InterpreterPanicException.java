@@ -19,8 +19,8 @@
 
 package org.extex.interpreter.exception;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.i18n.Localizer;
-import org.extex.interpreter.exception.helping.HelpingException;
 
 /**
  * This exception signals the error handler that a continuation is not

@@ -19,10 +19,10 @@
 
 package org.extex.unit.base.register.font;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ComparableCode;
 import org.extex.interpreter.type.font.FontConvertible;

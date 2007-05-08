@@ -20,12 +20,12 @@
 package org.extex.interpreter.context;
 
 import org.extex.core.Locator;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.group.GroupInfo;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.context.observer.group.AfterGroupObserver;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 

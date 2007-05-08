@@ -17,21 +17,21 @@
  *
  */
 
-package org.extex.interpreter.exception.helping;
+package org.extex.core.exception.helping;
 
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This exception is raised when an arithmetic overflow has been encountered.
+ * This exception is raised when an illegal code has been encoutered.
  * <p>
  *  The localization format is taken from the Localizer under the key
- *  <tt>TTP.ArithmeticOverflow</tt>.
+ *  <tt>UnusedPrefix</tt>.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MissingLeftBraceException extends HelpingException {
+public class InvalidCodeException extends HelpingException {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -41,12 +41,13 @@ public class MissingLeftBraceException extends HelpingException {
     /**
      * Creates a new object.
      *
-     * @param macro the name of the macro in which the eof has been encoutered
+     * @param code the code actually found
+     * @param max the maximal allowed value
      */
-    public MissingLeftBraceException(String macro) {
+    public InvalidCodeException(String code, String max) {
 
         super(LocalizerFactory.getLocalizer(//
-                MissingLeftBraceException.class), "TTP.MissingLeftBrace");
+                InvalidCodeException.class), "TTP.InvalidCode", code, max);
     }
 
 }

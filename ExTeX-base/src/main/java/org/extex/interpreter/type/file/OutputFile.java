@@ -27,8 +27,8 @@ import java.io.IOException;
 import java.io.Writer;
 
 import org.extex.core.UnicodeChar;
-import org.extex.interpreter.exception.NoHelpException;
-import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.core.exception.helping.HelpingException;
+import org.extex.core.exception.helping.NoHelpException;
 import org.extex.scanner.type.file.OutFile;
 import org.extex.scanner.type.token.ActiveCharacterToken;
 import org.extex.scanner.type.token.ControlSequenceToken;
@@ -50,7 +50,7 @@ import org.extex.scanner.type.tokens.Tokens;
  * This class holds an output file onto which tokens can be written.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
 public class OutputFile implements OutFile {
 

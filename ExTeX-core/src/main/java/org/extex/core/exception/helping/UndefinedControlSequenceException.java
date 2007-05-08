@@ -17,22 +17,18 @@
  *
  */
 
-package org.extex.interpreter.exception.helping;
+package org.extex.core.exception.helping;
 
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This exception is raised when a math macro is encountered outside a math
- * mode.
- * <p>
- *  The localization format is taken from the Localizer under the key
- *  <tt>TTP.MissingDollar</tt>.
- * </p>
+ * This exception signals that an undefined control sequence has been
+ * encountered.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MissingMathException extends HelpingException {
+public class UndefinedControlSequenceException extends HelpingException {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -42,12 +38,13 @@ public class MissingMathException extends HelpingException {
     /**
      * Creates a new object.
      *
-     * @param macro the name of the macro in which the eof has been encountered
+     * @param macro the name of the macro which is undefined
      */
-    public MissingMathException(String macro) {
+    public UndefinedControlSequenceException(String macro) {
 
-        super(LocalizerFactory.getLocalizer(MissingMathException.class),
-                "TTP.MissingDollar", macro);
+        super(LocalizerFactory
+                .getLocalizer(UndefinedControlSequenceException.class),
+                "TTP.UndefinedToken", macro);
     }
 
 }

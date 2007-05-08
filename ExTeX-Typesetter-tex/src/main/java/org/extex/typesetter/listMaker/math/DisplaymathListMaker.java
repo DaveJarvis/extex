@@ -21,11 +21,11 @@ package org.extex.typesetter.listMaker.math;
 
 import org.extex.core.Locator;
 import org.extex.core.count.Count;
+import org.extex.core.exception.helping.CantUseInException;
+import org.extex.core.exception.helping.EofException;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.CantUseInException;
-import org.extex.interpreter.exception.helping.EofException;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.ListManager;

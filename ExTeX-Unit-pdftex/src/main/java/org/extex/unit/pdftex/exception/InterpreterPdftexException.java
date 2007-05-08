@@ -19,9 +19,9 @@
 
 package org.extex.unit.pdftex.exception;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
-import org.extex.interpreter.exception.helping.HelpingException;
 
 /**
  * This exception is raised when a <logo>pdfTeX</logo> primitive is used

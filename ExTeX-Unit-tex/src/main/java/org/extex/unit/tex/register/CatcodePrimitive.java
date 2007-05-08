@@ -20,11 +20,11 @@
 package org.extex.unit.tex.register;
 
 import org.extex.core.UnicodeChar;
+import org.extex.core.exception.helping.HelpingException;
+import org.extex.core.exception.helping.InvalidCodeException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.exception.helping.InvalidCodeException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.CountConvertible;

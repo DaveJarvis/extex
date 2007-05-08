@@ -22,10 +22,10 @@ package org.extex.interpreter.expression;
 import junit.framework.TestCase;
 
 import org.extex.core.count.Count;
+import org.extex.core.exception.helping.HelpingException;
+import org.extex.core.exception.helping.MissingNumberException;
 import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.exception.helping.MissingNumberException;
 import org.extex.interpreter.expression.term.Accumulator;
 import org.extex.interpreter.max.StringSource;
 import org.extex.interpreter.max.context.ContextImpl;

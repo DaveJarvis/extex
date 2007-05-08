@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,34 +17,44 @@
  *
  */
 
-package org.extex.interpreter.exception.helping;
+package org.extex.core.exception.helping;
 
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This exception is raised when a number should be read but none is found.
- * <p>
- *  The localization format is taken from the Localizer under the key
- *  <tt>TTP.MissingNumber</tt>.
- * </p>
- *
+ * TODO gene: missing JavaDoc.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4726 $
+ * @version $Revision$
  */
-public class MissingNumberException extends HelpingException {
+public class NoHelpException extends HelpingException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    protected static final long serialVersionUID = 2006L;
+    private static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
+     * 
+     * @param cause the cause
      */
-    public MissingNumberException() {
+    public NoHelpException(Throwable cause) {
 
-        super(LocalizerFactory.getLocalizer(//
-                MissingNumberException.class), "TTP.MissingNumber");
+        super(cause);
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param message the parameter to be inserted into the test template of
+     *        this exception
+     */
+    public NoHelpException(String message) {
+
+        super(LocalizerFactory.getLocalizer(NoHelpException.class), "Text",
+            message);
     }
 
 }

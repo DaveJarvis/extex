@@ -22,8 +22,8 @@ package org.extex.interpreter.observer.start;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Interpreter;
-import org.extex.interpreter.exception.helping.HelpingException;
 
 /**
  * This class provides a type-safe list of observers for the start event.

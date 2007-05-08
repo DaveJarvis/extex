@@ -22,12 +22,12 @@ package org.extex.unit.tex.table;
 import java.util.List;
 
 import org.extex.core.dimen.Dimen;
+import org.extex.core.exception.helping.EofException;
+import org.extex.core.exception.helping.HelpingException;
+import org.extex.core.exception.helping.MissingLeftBraceException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.EofException;
-import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.exception.helping.MissingLeftBraceException;
 import org.extex.scanner.DimenParser;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;

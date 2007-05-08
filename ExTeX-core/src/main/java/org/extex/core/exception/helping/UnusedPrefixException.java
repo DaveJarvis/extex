@@ -17,39 +17,38 @@
  *
  */
 
-package org.extex.interpreter.exception.helping;
+package org.extex.core.exception.helping;
 
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This exception is raised when a illegal file reference has been encountered.
+ * This exception is raised when an unused prefix flag has been encountered.
  * <p>
- *  The localization format is taken from the Localizer under the key
- *  <tt>TTP.BadFileNumber</tt>.
+ * The localization format is taken from the Localizer under the key
+ * <tt>UnusedPrefix</tt>.
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class BadFileNumberException extends HelpingException {
+public class UnusedPrefixException extends HelpingException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
     /**
      * Creates a new object.
-     *
-     * @param value the illegal file reference
-     * @param min the minimum for numerical values
-     * @param max the maximum for numerical values
+     * 
+     * @param flag the name of the flag which has been used
+     * @param token the command on which this has happened
      */
-    public BadFileNumberException(String value, String min,
-            String max) {
+    public UnusedPrefixException(String flag, String token) {
 
-        super(LocalizerFactory.getLocalizer(BadFileNumberException.class),
-                "TTP.BadFileNumber", value, min, max);
+        super(LocalizerFactory.getLocalizer(UnusedPrefixException.class),
+            "UnusedPrefix", flag, token);
     }
 
 }

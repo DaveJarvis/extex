@@ -22,11 +22,11 @@ package org.extex.unit.tex.file;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.scanner.type.file.OutFile;
 import org.extex.typesetter.Typesetter;

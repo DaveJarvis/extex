@@ -19,7 +19,7 @@
 
 package org.extex.unit.tex.info.util;
 
-import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.core.exception.helping.HelpingException;
 
 /**
  * This class provides an Exception with the possibility to provide additional
@@ -27,7 +27,7 @@ import org.extex.interpreter.exception.helping.HelpingException;
  * first level is the message and the second level is the additional help.
  * <p>
  * In contrast to
- * {@link org.extex.interpreter.exception.helping.HelpingException HelpingException}
+ * {@link org.extex.core.exception.helping.HelpingException HelpingException}
  * the messages are not mapped. Thus they are not subject to
  * internationalization.
  * </p>

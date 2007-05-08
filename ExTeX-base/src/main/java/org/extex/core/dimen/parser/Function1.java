@@ -19,7 +19,7 @@
 
 package org.extex.core.dimen.parser;
 
-import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.core.exception.helping.HelpingException;
 
 /**
  * This interface describes a function object with a single argument.

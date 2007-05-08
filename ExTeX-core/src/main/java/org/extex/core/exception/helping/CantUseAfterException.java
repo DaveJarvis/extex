@@ -17,41 +17,39 @@
  *
  */
 
-package org.extex.interpreter.exception.helping;
+package org.extex.core.exception.helping;
 
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This exception is raised when an arithmetic overflow has been encountered.
+ * This exception is raised when a situation is detected where the continuation
+ * is illegal.
  * <p>
  *  The localization format is taken from the Localizer under the key
- *  <tt>TTP.ArithmeticOverflow</tt>.
- * </p>
- * <p>
- *  The format takes one argument which is the empty sting or the name of the
- *  macro the problem occurs in.
+ *  <tt>TTP.CantUseAfter</tt>.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4726 $
+ * @version $Revision$
  */
-public class ArithmeticOverflowException extends HelpingException {
+public class CantUseAfterException extends HelpingException {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2006L;
 
     /**
      * Creates a new object.
      *
-     * @param macro the name of the macro in which the eof has been encountered
+     * @param cause the name of the macro in which the condition has been
+     *  encountered
+     * @param predecessor the preceding token
      */
-    public ArithmeticOverflowException(String macro) {
+    public CantUseAfterException(String cause, String predecessor) {
 
-        super(LocalizerFactory.getLocalizer(//
-            ArithmeticOverflowException.class), //
-            "TTP.ArithmeticOverflow", macro == null ? "" : macro);
+        super(LocalizerFactory.getLocalizer(CantUseAfterException.class),
+                "TTP.CantUseAfter", cause, predecessor);
     }
 
 }

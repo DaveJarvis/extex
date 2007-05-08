@@ -17,21 +17,22 @@
  *
  */
 
-package org.extex.interpreter.exception.helping;
+package org.extex.core.exception.helping;
 
+import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This exception is raised when an unexpected character code is encountered.
+ * This exception is raised when an unexpected end of file is encountered.
  * <p>
  *  The localization format is taken from the Localizer under the key
  *  <tt>UnexpectedEofIn</tt>.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4726 $
  */
-public class InvalidCharacterNameException extends InvalidCharacterException {
+public class EofException extends HelpingException {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -41,12 +42,37 @@ public class InvalidCharacterNameException extends InvalidCharacterException {
     /**
      * Creates a new object.
      *
-     * @param uc the invalid character
      */
-    public InvalidCharacterNameException(String uc) {
+    public EofException() {
 
-        super(LocalizerFactory.getLocalizer(//
-                InvalidCharacterNameException.class), "InvalidChar", uc);
+        super(LocalizerFactory.getLocalizer(EofException.class),
+                "UnexpectedEof");
+    }
+
+    /**
+     * Creates a new object.
+     *
+     * @param localizer the localizer to use
+     * @param messageTag the name of the message
+     * @param a the argument
+     */
+    public EofException(Localizer localizer, String messageTag,
+            String a) {
+
+        super(localizer, messageTag, a);
+    }
+
+    /**
+     * Creates a new object.
+     *
+     * @param macro the name of the macro in which the eof has been encountered.
+     *  If the value is <code>null</code> then a shortened error message is
+     *  used.
+     */
+    public EofException(String macro) {
+
+        super(LocalizerFactory.getLocalizer(EofException.class), //
+                (macro != null ? "UnexpectedEofIn" : "UnexpectedEof"), macro);
     }
 
 }

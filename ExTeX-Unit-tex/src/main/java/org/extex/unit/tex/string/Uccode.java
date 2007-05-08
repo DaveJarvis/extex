@@ -20,13 +20,13 @@
 package org.extex.unit.tex.string;
 
 import org.extex.core.UnicodeChar;
+import org.extex.core.exception.helping.HelpingException;
+import org.extex.core.exception.helping.InvalidCharacterException;
+import org.extex.core.exception.helping.InvalidCodeException;
+import org.extex.core.exception.helping.NoHelpException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.NoHelpException;
-import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.exception.helping.InvalidCharacterException;
-import org.extex.interpreter.exception.helping.InvalidCodeException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;

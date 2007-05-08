@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,45 +17,38 @@
  *
  */
 
-package org.extex.interpreter.exception;
+package org.extex.core.exception.helping;
 
 import org.extex.framework.i18n.LocalizerFactory;
-import org.extex.interpreter.exception.helping.HelpingException;
 
 /**
- * TODO gene: missing JavaDoc.
- * 
+ * This exception is raised when a macro is encountered in a mode for which it
+ * is not meant.
+ * <p>
+ *  The localization format is taken from the Localizer under the key
+ *  <tt>TTP.CantUseIn</tt>.
+ * </p>
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4726 $
  */
-public class NoHelpException extends HelpingException {
+public class CantUseInException extends HelpingException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 2007L;
-
-    /**
-     * Creates a new object.
-     * 
-     * @param cause the cause
-     */
-    public NoHelpException(Throwable cause) {
-
-        super(cause);
-    }
+    protected static final long serialVersionUID = 2006L;
 
     /**
      * Creates a new object.
-     * 
-     * @param message the parameter to be inserted into the test template of
-     *        this exception
+     *
+     * @param macro the name of the macro in which the eof has been encountered
+     * @param mode the current mode
      */
-    public NoHelpException(String message) {
+    public CantUseInException(String macro, String mode) {
 
-        super(LocalizerFactory.getLocalizer(NoHelpException.class), "Text",
-            message);
+        super(LocalizerFactory.getLocalizer(CantUseInException.class),
+                "TTP.CantUseIn", macro, mode);
     }
 
 }

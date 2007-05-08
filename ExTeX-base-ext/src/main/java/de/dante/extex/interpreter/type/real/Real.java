@@ -21,12 +21,12 @@ package de.dante.extex.interpreter.type.real;
 
 import java.io.Serializable;
 
+import org.extex.core.exception.helping.ArithmeticOverflowException;
+import org.extex.core.exception.helping.HelpingException;
+import org.extex.core.exception.helping.MissingNumberException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
-import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.exception.helping.MissingNumberException;
 import org.extex.interpreter.type.Code;
 import org.extex.scanner.CountConvertible;
 import org.extex.scanner.CountParser;

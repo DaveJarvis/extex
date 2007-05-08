@@ -20,7 +20,7 @@
 package org.extex.interpreter.context;
 
 import org.extex.core.dimen.Dimen;
-import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.core.exception.helping.HelpingException;
 
 /**
  * This interface describes the container for all data of an interpreter

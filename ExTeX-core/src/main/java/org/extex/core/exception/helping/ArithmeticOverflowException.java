@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,38 +17,41 @@
  *
  */
 
-package org.extex.interpreter.exception.helping;
+package org.extex.core.exception.helping;
 
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This exception is raised when an unexpected end of file is encountered when
- * reading tokens in braces.
+ * This exception is raised when an arithmetic overflow has been encountered.
  * <p>
  *  The localization format is taken from the Localizer under the key
- *  <tt>TTP.EOFinToks</tt>.
+ *  <tt>TTP.ArithmeticOverflow</tt>.
+ * </p>
+ * <p>
+ *  The format takes one argument which is the empty sting or the name of the
+ *  macro the problem occurs in.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4726 $
  */
-public class EofInToksException extends EofException {
+public class ArithmeticOverflowException extends HelpingException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 20060505L;
+    protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
      *
-     * @param macro the name of the macro
+     * @param macro the name of the macro in which the eof has been encountered
      */
-    public EofInToksException(String macro) {
+    public ArithmeticOverflowException(String macro) {
 
-        super(LocalizerFactory.getLocalizer(EofInToksException.class),
-                "TTP.EOFinToks", macro);
+        super(LocalizerFactory.getLocalizer(//
+            ArithmeticOverflowException.class), //
+            "TTP.ArithmeticOverflow", macro == null ? "" : macro);
     }
 
 }

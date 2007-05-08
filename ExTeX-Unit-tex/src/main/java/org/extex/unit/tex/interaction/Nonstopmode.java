@@ -19,10 +19,10 @@
 
 package org.extex.unit.tex.interaction;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.typesetter.Typesetter;

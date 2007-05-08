@@ -24,8 +24,8 @@ import java.util.List;
 
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.Tokenizer;
 import org.extex.scanner.exception.ScannerException;

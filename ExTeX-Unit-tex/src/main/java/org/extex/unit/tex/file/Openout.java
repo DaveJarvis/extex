@@ -21,10 +21,10 @@ package org.extex.unit.tex.file;
 
 import java.io.File;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.file.OutputFile;
 import org.extex.scanner.type.file.OutFile;
 import org.extex.typesetter.Typesetter;

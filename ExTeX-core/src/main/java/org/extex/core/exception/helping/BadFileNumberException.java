@@ -17,21 +17,21 @@
  *
  */
 
-package org.extex.interpreter.exception.helping;
+package org.extex.core.exception.helping;
 
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This exception is raised when an illegal code has been encoutered.
+ * This exception is raised when a illegal file reference has been encountered.
  * <p>
  *  The localization format is taken from the Localizer under the key
- *  <tt>UnusedPrefix</tt>.
+ *  <tt>TTP.BadFileNumber</tt>.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class InvalidCodeException extends HelpingException {
+public class BadFileNumberException extends HelpingException {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -41,13 +41,15 @@ public class InvalidCodeException extends HelpingException {
     /**
      * Creates a new object.
      *
-     * @param code the code actually found
-     * @param max the maximal allowed value
+     * @param value the illegal file reference
+     * @param min the minimum for numerical values
+     * @param max the maximum for numerical values
      */
-    public InvalidCodeException(String code, String max) {
+    public BadFileNumberException(String value, String min,
+            String max) {
 
-        super(LocalizerFactory.getLocalizer(//
-                InvalidCodeException.class), "TTP.InvalidCode", code, max);
+        super(LocalizerFactory.getLocalizer(BadFileNumberException.class),
+                "TTP.BadFileNumber", value, min, max);
     }
 
 }

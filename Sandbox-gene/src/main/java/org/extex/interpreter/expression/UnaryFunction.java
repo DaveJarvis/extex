@@ -19,7 +19,7 @@
 
 package org.extex.interpreter.expression;
 
-import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.core.exception.helping.HelpingException;
 
 /**
  * This interface describes an operation object with a single argument.

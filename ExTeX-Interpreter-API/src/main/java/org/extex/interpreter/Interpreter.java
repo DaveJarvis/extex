@@ -23,11 +23,11 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.extex.core.exception.GeneralException;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.font.CoreFontFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.ErrorLimitException;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.loader.LoaderException;
 import org.extex.scanner.TokenStream;

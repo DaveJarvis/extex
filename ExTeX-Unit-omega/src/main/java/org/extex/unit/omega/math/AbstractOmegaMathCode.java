@@ -20,11 +20,11 @@
 package org.extex.unit.omega.math;
 
 import org.extex.core.UnicodeChar;
+import org.extex.core.exception.helping.EofException;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.EofException;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.Code;
 import org.extex.scanner.CountParser;
 import org.extex.scanner.MathClassParser;

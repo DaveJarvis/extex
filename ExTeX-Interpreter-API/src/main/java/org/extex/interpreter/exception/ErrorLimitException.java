@@ -19,7 +19,7 @@
 
 package org.extex.interpreter.exception;
 
-import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.core.exception.helping.HelpingException;
 
 /**
  * This exception s thrown when the error count exceeds the given limit.

@@ -22,8 +22,8 @@ package org.extex.unit.tex;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.observer.command.CommandObserver;
 import org.extex.interpreter.type.PrefixCode;
 import org.extex.scanner.type.token.CodeToken;

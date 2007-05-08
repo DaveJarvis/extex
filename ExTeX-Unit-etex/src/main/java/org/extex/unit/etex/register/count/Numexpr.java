@@ -19,12 +19,12 @@
 
 package org.extex.unit.etex.register.count;
 
+import org.extex.core.exception.helping.ArithmeticOverflowException;
+import org.extex.core.exception.helping.EofException;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
-import org.extex.interpreter.exception.helping.EofException;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.CountConvertible;

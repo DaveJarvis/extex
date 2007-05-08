@@ -20,10 +20,10 @@
 package org.extex.unit.etex.register.count;
 
 import org.extex.core.exception.GeneralException;
+import org.extex.core.exception.helping.HelpingException;
+import org.extex.core.exception.helping.NoHelpException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.NoHelpException;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.Node;

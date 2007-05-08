@@ -22,6 +22,7 @@ package org.extex.unit.tex;
 import java.util.logging.Logger;
 
 import org.extex.core.count.Count;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -29,7 +30,6 @@ import org.extex.interpreter.context.ContextInternals;
 import org.extex.interpreter.context.observer.count.CountObservable;
 import org.extex.interpreter.context.observer.count.CountObserver;
 import org.extex.interpreter.context.observer.load.LoadedObserver;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.observer.command.CommandObservable;
 import org.extex.interpreter.unit.Loader;
 import org.extex.interpreter.unit.UnitInfo;

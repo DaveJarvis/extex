@@ -19,7 +19,7 @@
 
 package org.extex.interpreter.type.file;
 
-import org.extex.interpreter.exception.NoHelpException;
+import org.extex.core.exception.helping.NoHelpException;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.Tokenizer;
 import org.extex.scanner.exception.ScannerException;

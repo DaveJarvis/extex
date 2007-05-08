@@ -22,14 +22,14 @@ package org.extex.interpreter.type;
 import java.io.ObjectStreamException;
 import java.io.Serializable;
 
+import org.extex.core.exception.helping.CantUseInException;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.Registrar;
 import org.extex.framework.i18n.Localizable;
 import org.extex.framework.i18n.Localizer;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.CantUseInException;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;

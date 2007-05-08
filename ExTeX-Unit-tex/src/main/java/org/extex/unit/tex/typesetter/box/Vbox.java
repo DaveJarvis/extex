@@ -21,12 +21,12 @@ package org.extex.unit.tex.typesetter.box;
 
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
+import org.extex.core.exception.helping.EofException;
+import org.extex.core.exception.helping.HelpingException;
+import org.extex.core.exception.helping.MissingLeftBraceException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
-import org.extex.interpreter.exception.helping.EofException;
-import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.exception.helping.MissingLeftBraceException;
 import org.extex.interpreter.type.box.Box;
 import org.extex.scanner.DimenParser;
 import org.extex.scanner.type.token.Token;

@@ -19,7 +19,7 @@
 
 package org.extex.interpreter.expression;
 
-import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
+import org.extex.core.exception.helping.ArithmeticOverflowException;
 import org.extex.interpreter.expression.exception.CastException;
 import org.extex.interpreter.expression.exception.UnsupportedException;
 import org.extex.interpreter.expression.term.TBoolean;

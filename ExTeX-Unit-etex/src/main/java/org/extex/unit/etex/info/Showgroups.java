@@ -22,6 +22,7 @@ package org.extex.unit.etex.info;
 import java.util.logging.Logger;
 
 import org.extex.core.Locator;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -32,7 +33,6 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupInfo;
 import org.extex.interpreter.context.group.GroupTypeVisitor;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;

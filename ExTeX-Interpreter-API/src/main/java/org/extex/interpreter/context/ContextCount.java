@@ -20,7 +20,7 @@
 package org.extex.interpreter.context;
 
 import org.extex.core.count.Count;
-import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.core.exception.helping.HelpingException;
 
 /**
  * This interface describes the container for count registers of an interpreter

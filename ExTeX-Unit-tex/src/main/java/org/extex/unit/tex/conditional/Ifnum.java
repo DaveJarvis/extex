@@ -19,10 +19,10 @@
 
 package org.extex.unit.tex.conditional;
 
+import org.extex.core.exception.helping.EofException;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.EofException;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.scanner.CountParser;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;

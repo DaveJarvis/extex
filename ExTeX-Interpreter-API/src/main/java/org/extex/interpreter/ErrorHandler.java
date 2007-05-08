@@ -20,8 +20,8 @@
 package org.extex.interpreter;
 
 import org.extex.core.exception.GeneralException;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.scanner.type.token.Token;
 
 /**

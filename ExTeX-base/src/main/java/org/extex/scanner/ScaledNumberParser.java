@@ -19,15 +19,15 @@
 
 package org.extex.scanner;
 
+import org.extex.core.exception.helping.ArithmeticOverflowException;
+import org.extex.core.exception.helping.EofException;
+import org.extex.core.exception.helping.HelpingException;
+import org.extex.core.exception.helping.MissingNumberException;
 import org.extex.core.scaled.ScaledNumber;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
-import org.extex.interpreter.exception.helping.EofException;
-import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.exception.helping.MissingNumberException;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.scanner.type.Catcode;

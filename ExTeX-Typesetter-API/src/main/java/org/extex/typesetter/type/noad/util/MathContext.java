@@ -21,12 +21,12 @@ package org.extex.typesetter.type.noad.util;
 
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.glue.Glue;
 import org.extex.core.glue.GlueComponent;
 import org.extex.core.muskip.Mudimen;
 import org.extex.core.muskip.Muskip;
 import org.extex.framework.i18n.LocalizerFactory;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.tc.font.Font;

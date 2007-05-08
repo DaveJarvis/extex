@@ -19,9 +19,9 @@
 
 package org.extex.unit.tex.register.count;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.InitializableCode;
 import org.extex.scanner.CountParser;

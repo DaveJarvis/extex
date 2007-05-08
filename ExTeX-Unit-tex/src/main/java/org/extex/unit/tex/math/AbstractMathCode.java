@@ -19,8 +19,8 @@
 
 package org.extex.unit.tex.math;
 
+import org.extex.core.exception.helping.MissingMathException;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.MissingMathException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.typesetter.ListMaker;
 import org.extex.typesetter.Typesetter;

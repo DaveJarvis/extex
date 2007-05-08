@@ -17,22 +17,21 @@
  *
  */
 
-package org.extex.interpreter.exception.helping;
+package org.extex.core.exception.helping;
 
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This exception is raised when a situation is detected where the continuation
- * is illegal.
+ * This exception is raised when a number should be read but none is found.
  * <p>
  *  The localization format is taken from the Localizer under the key
- *  <tt>TTP.CantUseAfter</tt>.
+ *  <tt>TTP.MissingNumber</tt>.
  * </p>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4726 $
  */
-public class CantUseAfterException extends HelpingException {
+public class MissingNumberException extends HelpingException {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
@@ -41,15 +40,11 @@ public class CantUseAfterException extends HelpingException {
 
     /**
      * Creates a new object.
-     *
-     * @param cause the name of the macro in which the condition has been
-     *  encountered
-     * @param predecessor the preceding token
      */
-    public CantUseAfterException(String cause, String predecessor) {
+    public MissingNumberException() {
 
-        super(LocalizerFactory.getLocalizer(CantUseAfterException.class),
-                "TTP.CantUseAfter", cause, predecessor);
+        super(LocalizerFactory.getLocalizer(//
+                MissingNumberException.class), "TTP.MissingNumber");
     }
 
 }

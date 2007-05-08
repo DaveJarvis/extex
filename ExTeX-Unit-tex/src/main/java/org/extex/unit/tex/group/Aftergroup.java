@@ -19,11 +19,11 @@
 
 package org.extex.unit.tex.group;
 
+import org.extex.core.exception.helping.EofException;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.EofException;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;

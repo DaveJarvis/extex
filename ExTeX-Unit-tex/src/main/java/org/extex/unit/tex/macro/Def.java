@@ -19,12 +19,12 @@
 
 package org.extex.unit.tex.macro;
 
+import org.extex.core.exception.helping.EofException;
+import org.extex.core.exception.helping.EofInToksException;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.EofException;
-import org.extex.interpreter.exception.helping.EofInToksException;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.token.CodeToken;

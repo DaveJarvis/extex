@@ -19,8 +19,8 @@
 
 package de.dante.extex.interpreter.type.hash.toks.exception;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.i18n.LocalizerFactory;
-import org.extex.interpreter.exception.helping.HelpingException;
 
 /**
  * Exception, if left brace is missing.

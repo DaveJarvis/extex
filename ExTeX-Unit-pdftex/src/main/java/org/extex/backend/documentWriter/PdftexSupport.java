@@ -19,7 +19,7 @@
 
 package org.extex.backend.documentWriter;
 
-import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.type.box.Box;
 import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.node.RuleNode;

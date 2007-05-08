@@ -21,10 +21,10 @@ package org.extex.unit.pdftex;
 
 import org.extex.backend.documentWriter.PdftexSupport;
 import org.extex.core.dimen.Dimen;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.scanner.CountParser;
 import org.extex.scanner.DimenParser;
 import org.extex.typesetter.Typesetter;

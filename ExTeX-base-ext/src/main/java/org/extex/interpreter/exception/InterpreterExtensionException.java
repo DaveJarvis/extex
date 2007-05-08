@@ -19,8 +19,8 @@
 
 package org.extex.interpreter.exception;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.i18n.LocalizerFactory;
-import org.extex.interpreter.exception.helping.HelpingException;
 
 /**
  * This exception is thrown when the main program use an ExTeX extension witch

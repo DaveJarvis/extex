@@ -19,9 +19,9 @@
 
 package org.extex.unit.tex.register.muskip;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.scanner.type.Namespace;
 import org.extex.typesetter.Typesetter;

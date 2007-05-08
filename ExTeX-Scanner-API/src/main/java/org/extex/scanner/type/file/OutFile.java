@@ -22,7 +22,7 @@ package org.extex.scanner.type.file;
 import java.io.IOException;
 import java.io.Serializable;
 
-import org.extex.interpreter.exception.helping.HelpingException;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.scanner.type.tokens.Tokens;
 
 /**

@@ -20,13 +20,13 @@
 package org.extex.unit.etex.scan;
 
 import org.extex.core.Locator;
+import org.extex.core.exception.helping.EofException;
+import org.extex.core.exception.helping.EofInToksException;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.EofException;
-import org.extex.interpreter.exception.helping.EofInToksException;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.scanner.TokenStream;

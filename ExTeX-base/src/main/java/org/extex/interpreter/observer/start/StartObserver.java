@@ -19,8 +19,8 @@
 
 package org.extex.interpreter.observer.start;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Interpreter;
-import org.extex.interpreter.exception.helping.HelpingException;
 
 /**
  * This interface describes the ability to receive a notification just after

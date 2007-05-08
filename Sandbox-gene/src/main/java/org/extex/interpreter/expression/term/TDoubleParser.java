@@ -19,9 +19,9 @@
 
 package org.extex.interpreter.expression.term;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.expression.ConstantFunction;
 import org.extex.interpreter.expression.EType;
 import org.extex.interpreter.expression.ETypeParser;

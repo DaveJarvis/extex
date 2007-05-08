@@ -20,15 +20,15 @@
 package org.extex.unit.base.register.toks;
 
 import org.extex.core.exception.GeneralException;
+import org.extex.core.exception.helping.EofException;
+import org.extex.core.exception.helping.EofInToksException;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.EofException;
-import org.extex.interpreter.exception.helping.EofInToksException;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.InitializableCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.tokens.TokensConvertible;

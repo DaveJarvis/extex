@@ -19,12 +19,12 @@
 
 package org.extex.unit.tex.register.count;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.InitializableCode;
 import org.extex.scanner.CountParser;
 import org.extex.scanner.type.token.Token;

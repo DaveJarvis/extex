@@ -19,8 +19,8 @@
 
 package org.extex.interpreter.expression.term;
 
+import org.extex.core.exception.helping.ArithmeticOverflowException;
 import org.extex.framework.i18n.LocalizerFactory;
-import org.extex.interpreter.exception.helping.ArithmeticOverflowException;
 import org.extex.interpreter.expression.EType;
 import org.extex.interpreter.expression.exception.CastException;
 import org.extex.interpreter.expression.exception.UnsupportedException;

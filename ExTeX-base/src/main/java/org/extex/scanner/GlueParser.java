@@ -19,12 +19,12 @@
 
 package org.extex.scanner;
 
+import org.extex.core.exception.helping.HelpingException;
+import org.extex.core.exception.helping.UndefinedControlSequenceException;
 import org.extex.core.glue.Glue;
 import org.extex.core.glue.GlueComponent;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.HelpingException;
-import org.extex.interpreter.exception.helping.UndefinedControlSequenceException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.token.CodeToken;

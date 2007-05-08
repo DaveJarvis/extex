@@ -19,9 +19,9 @@
 
 package org.extex.unit.tex.typesetter;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.i18n.LocalizerFactory;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;

@@ -22,11 +22,11 @@ package de.dante.extex.interpreter.type.transform;
 import java.io.Serializable;
 import java.util.StringTokenizer;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterNumberFormatException;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 

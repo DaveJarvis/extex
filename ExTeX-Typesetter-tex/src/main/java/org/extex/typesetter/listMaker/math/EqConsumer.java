@@ -19,7 +19,7 @@
 
 package org.extex.typesetter.listMaker.math;
 
-import org.extex.interpreter.exception.helping.CantUseInException;
+import org.extex.core.exception.helping.CantUseInException;
 
 /**
  * This interface describes the functionality to activate the typesetting of an

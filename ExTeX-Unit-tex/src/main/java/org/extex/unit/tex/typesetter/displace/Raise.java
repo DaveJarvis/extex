@@ -20,9 +20,9 @@
 package org.extex.unit.tex.typesetter.displace;
 
 import org.extex.core.dimen.Dimen;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.interpreter.type.box.Box;
 import org.extex.scanner.DimenParser;
 import org.extex.scanner.type.token.Token;

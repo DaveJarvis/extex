@@ -22,8 +22,8 @@ package org.extex.typesetter.type.math;
 import java.io.Serializable;
 
 import org.extex.core.UnicodeChar;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.i18n.LocalizerFactory;
-import org.extex.interpreter.exception.helping.HelpingException;
 import org.extex.typesetter.type.noad.MathGlyph;
 
 /**
