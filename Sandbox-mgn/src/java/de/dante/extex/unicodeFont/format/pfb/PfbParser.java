@@ -1,0 +1,358 @@
+/*
+ * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ *
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ *
+ */
+
+package de.dante.extex.unicodeFont.format.pfb;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.Serializable;
+
+import org.extex.font.exception.FontException;
+import org.extex.util.file.random.RandomAccessInputFile;
+import org.extex.util.file.random.RandomAccessInputStream;
+import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.xml.XMLStreamWriter;
+import org.extex.util.xml.XMLWriterConvertible;
+
+import de.dante.extex.unicodeFont.exception.FontIOException;
+import de.dante.extex.unicodeFont.format.pfb.exception.PfbIncorrectRecordTypeException;
+import de.dante.extex.unicodeFont.format.pfb.exception.PfbStartMarkerMissingException;
+
+/**
+ * Parser for a pfb-file.
+ *
+ * <p>Adobe Type 1 BaseFont Format</p>
+ * <p>see 2.2 BaseFont Dictionary</p>
+ * <p>Type 1 BaseFont Programm [ASCII - eexec encryption (Binary only) - ASCII]<p>
+ *
+ * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
+ * @version $Revision$
+ */
+public class PfbParser implements XMLWriterConvertible, Serializable {
+
+    /**
+     * The field <tt>serialVersionUID</tt> ...
+     */
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * Create a new object.
+     * @param filename  the file name
+     * @throws FontException if an font error occurs.
+     */
+    public PfbParser(String filename) throws FontException {
+
+        try {
+            parsePfb(new RandomAccessInputFile(filename));
+        } catch (IOException e) {
+            throw new de.dante.extex.unicodeFont.exception.FontIOException(e
+                    .getMessage());
+        }
+    }
+
+    /**
+     * Create a new object.
+     * @param in   The input.
+     * @throws FontException if an IO-error occurs.
+     */
+    public PfbParser(InputStream in) throws FontException {
+
+        try {
+            parsePfb(new RandomAccessInputStream(in));
+        } catch (IOException e) {
+            throw new FontIOException(e.getMessage());
+        }
+    }
+
+    /**
+     * the pdf header length.
+     * (start-marker (1 byte), ascii-/binary-marker (1 byte), size (4 byte))
+     * 3*6 == 18
+     */
+    private static final int PFB_HEADER_LENGTH = 18;
+
+    /**
+     * the start marker.
+     */
+    private static final int START_MARKER = 0x80;
+
+    /**
+     * the ascii marker.
+     */
+    private static final int ASCII_MARKER = 0x01;
+
+    /**
+     * the binary marker.
+     */
+    private static final int BINARY_MARKER = 0x02;
+
+    /**
+     * The record types in the pfb-file.
+     */
+    private static final int[] PFB_RECORDS = {ASCII_MARKER, BINARY_MARKER,
+            ASCII_MARKER};
+
+    /**
+     * the parsed pfb-data.
+     */
+    private byte[] pfbdata;
+
+    /**
+     * the lengths of the records.
+     */
+    private int[] lengths;
+
+    /**
+     * the starts of the records.
+     */
+    private int[] starts;
+
+    // sample (pfb-file)
+    // 00000000 80 01 8b 15  00 00 25 21  50 53 2d 41  64 6f 62 65
+
+    /**
+     * Parse the pfb-array.
+     * @param rar   The input.
+     * @throws IOException in an IO-error occurs.
+     * @throws FontException if a font error occurs.
+     */
+    private void parsePfb(RandomAccessR rar) throws IOException,
+            FontException {
+
+        pfbdata = new byte[(int) (rar.length() - PFB_HEADER_LENGTH)];
+        lengths = new int[PFB_RECORDS.length];
+        starts = new int[PFB_RECORDS.length];
+        int pointer = 0;
+        for (int records = 0; records < PFB_RECORDS.length; records++) {
+
+            if (rar.readByteAsInt() != START_MARKER) {
+                throw new PfbStartMarkerMissingException();
+            }
+
+            if (rar.readByteAsInt() != PFB_RECORDS[records]) {
+                throw new PfbIncorrectRecordTypeException();
+            }
+
+            starts[records] = pointer;
+            int size = rar.readByteAsInt();
+            size += rar.readByteAsInt() << 8;
+            size += rar.readByteAsInt() << 16;
+            size += rar.readByteAsInt() << 24;
+            lengths[records] = size;
+            rar.readFully(pfbdata, pointer, size);
+            pointer += size;
+        }
+    }
+
+    /**
+     * Returns the part of the array.
+     * @param  idx the part index.
+     * @return Returns the part of the array
+     */
+    public byte[] getPart(int idx) {
+
+        byte[] tmp = new byte[lengths[idx]];
+        System.arraycopy(pfbdata, starts[idx], tmp, 0, lengths[idx]);
+        return tmp;
+    }
+
+    /**
+     * Returns the lengths.
+     * @return Returns the lengths.
+     */
+    public int[] getLengths() {
+
+        return lengths;
+    }
+
+    /**
+     * Returns the pfbdata.
+     * @return Returns the pfbdata.
+     */
+    public byte[] getPfbdata() {
+
+        return pfbdata;
+    }
+
+    /**
+     * Returns the pfb data as stream.
+     * @return Returns the pfb data as stream.
+     */
+    public InputStream getInputStream() {
+
+        return new ByteArrayInputStream(pfbdata);
+    }
+
+    /**
+     * Returns the size of the pfb-data.
+     * @return Returns the size of the pfb-data.
+     */
+    public int size() {
+
+        return pfbdata.length;
+    }
+
+    /**
+     * the encoding string.
+     */
+    private static final String ENCODING = "/Encoding ";
+
+    /**
+     * the dup string.
+     */
+    private static final String DUP = "dup ";
+
+    /**
+     * the put string.
+     */
+    private static final String PUT = "put";
+
+    /**
+     * Returns the encoding (id - glyphanme).
+     * @return Returns the encoding (id - glyphanme).
+     */
+    public String[] getEncoding() {
+
+        String s = new String(getPart(0));
+
+        // read '/Encoding 256 array'
+        int pos = s.indexOf(ENCODING);
+        int size = 0;
+        if (pos >= 0) {
+            pos += ENCODING.length();
+            StringBuffer b = new StringBuffer();
+            char c;
+            do {
+                c = s.charAt(pos++);
+                b.append(c);
+            } while (c != ' ');
+            try {
+                size = Integer.parseInt(b.toString().trim());
+            } catch (Exception e) {
+                // use zero
+                size = 0;
+            }
+        }
+        String[] enc = new String[size];
+
+        // search 'dup 32/space put'
+        while (pos < s.length()) {
+            int start = -1;
+            pos = s.indexOf(DUP, pos);
+            if (pos >= 0) {
+                pos += DUP.length();
+                start = pos;
+            }
+            int stop = -1;
+            pos = s.indexOf(PUT, pos);
+            if (pos >= 0) {
+                stop = pos;
+                pos += PUT.length();
+            }
+            if (start >= 0 && stop >= 0) {
+                insert(enc, s.substring(start, stop));
+            } else {
+                break;
+            }
+        }
+
+        return enc;
+    }
+
+    /**
+     * Insert the values 'dup 32/space put' into the string array.
+     * @param enc  the string array
+     * @param s    the string
+     */
+    private void insert(String[] enc, String s) {
+
+        String[] split = s.split("/");
+        try {
+            int nr = Integer.parseInt(split[0].trim());
+            enc[nr] = split[1].trim();
+        } catch (Exception e) {
+            // ignore
+        }
+    }
+
+    /**
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+     */
+    public void writeXML(XMLStreamWriter writer) throws IOException {
+
+        writer.writeStartElement("pfb");
+        writer.writeStartElement("encoding");
+        String[] enc = getEncoding();
+        for (int i = 0; i < enc.length; i++) {
+            writer.writeStartElement("enc");
+            writer.writeAttribute("id", String.valueOf(i));
+            writer.writeAttribute("name", enc[i] == null ? "" : enc[i]);
+            writer.writeEndElement();
+        }
+        writer.writeEndElement();
+        for (int i = 0; i < lengths.length; i++) {
+            writer.writeStartElement("part");
+            writer.writeAttribute("number", String.valueOf(i));
+            // write binary as Base64 data in a CDATA
+            if (PFB_RECORDS[i] == ASCII_MARKER) {
+                writer.writeCDATA(getPart(i));
+            } else {
+                //           writer.writeCDATA(Base64.encode(getPart(i)));
+            }
+            writer.writeEndElement();
+        }
+        writer.writeEndElement();
+    }
+
+    /**
+     * How many hex values per line?
+     */
+    private static final int HEX_PER_LINE = 30;
+
+    /**
+     * Write the data as <b>pfa</b> to the output stream.
+     * @param out   The output.
+     * @throws IOException if an IO-error occurs.
+     */
+    public void toPfa(OutputStream out) throws IOException {
+
+        // write part 1 - idx 0   ASCII
+        byte[] tmp = getPart(0);
+        out.write(tmp);
+
+        // write part 2 - idx 1   BINARY
+        tmp = getPart(1);
+        for (int i = 0; i < tmp.length; i++) {
+            String hex = "00" + Integer.toHexString(tmp[i]);
+            out.write(hex.charAt(hex.length()-2));
+            out.write(hex.charAt(hex.length()-1));
+            if ((i + 1) % HEX_PER_LINE == 0) {
+                out.write('\n');
+            }
+        }
+        out.write('\n');
+
+        // write part 3 - idx 2   ASCII
+        tmp = getPart(2);
+        out.write(tmp);
+
+    }
+}
