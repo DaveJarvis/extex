@@ -22,10 +22,6 @@ package org.extex.font;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-import org.extex.font.format.afm.AfmParserTest;
-import org.extex.font.format.tfm.TfmFixWordTest;
-import org.extex.font.format.tfm.TfmReaderTest;
-import org.extex.font.format.tfm.U2tFactoryTest;
 import org.extex.font.format.xtf.XtfReaderFxlrTest;
 import org.extex.font.format.xtf.XtfReaderGara1Test;
 import org.extex.font.format.xtf.XtfReaderGara2Test;
@@ -72,10 +68,10 @@ public final class AllTests {
         suite.addTestSuite(XtfReaderGara2Test.class);
         suite.addTestSuite(XtfReaderGara3Test.class);
         suite.addTestSuite(XtfReaderGara4Test.class);
-        suite.addTestSuite(TfmReaderTest.class);
-        suite.addTestSuite(TfmFixWordTest.class);
-        suite.addTestSuite(U2tFactoryTest.class);
-        suite.addTestSuite(AfmParserTest.class);
+        // suite.addTestSuite(TfmReaderTest.class);
+        // suite.addTestSuite(TfmFixWordTest.class);
+        // suite.addTestSuite(U2tFactoryTest.class);
+        // suite.addTestSuite(AfmParserTest.class);
         suite.addTestSuite(XtfReaderLmRoman10Regular01Test.class);
         suite.addTestSuite(XtfReaderLmRoman10Regular02Test.class);
         suite.addTestSuite(XtfReaderLmRoman10Regular03Test.class);

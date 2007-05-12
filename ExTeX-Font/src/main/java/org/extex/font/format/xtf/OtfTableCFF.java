@@ -30,10 +30,10 @@ import org.extex.font.format.xtf.cff.T2CharString;
 import org.extex.font.format.xtf.cff.T2Operator;
 import org.extex.font.format.xtf.cff.T2StandardStrings;
 import org.extex.font.format.xtf.cff.T2TDOCharset;
-import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessInputArray;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
+import org.extex.util.xml.XMLWriterConvertible;
 
 /**
  * The 'CFF' - PostScript font program.
@@ -703,7 +703,7 @@ public class OtfTableCFF extends AbstractXtfTable
     }
 
     /**
-     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {

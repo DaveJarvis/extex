@@ -84,7 +84,7 @@ public class T2RMOVETO extends T2PathConstruction {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {

@@ -113,7 +113,7 @@ public abstract class T2TDOArray extends T2TopDICTOperator {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {

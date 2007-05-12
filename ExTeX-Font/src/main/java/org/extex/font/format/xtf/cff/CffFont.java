@@ -25,9 +25,9 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.extex.font.format.xtf.OtfTableCFF;
-import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
+import org.extex.util.xml.XMLWriterConvertible;
 
 /**
  * Class for a CffFont.
@@ -1005,7 +1005,7 @@ public class CffFont implements XMLWriterConvertible {
     }
 
     /**
-     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {

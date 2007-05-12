@@ -133,7 +133,7 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     }
 
     /**
-     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {

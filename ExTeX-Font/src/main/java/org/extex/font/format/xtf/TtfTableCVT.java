@@ -21,9 +21,9 @@ package org.extex.font.format.xtf;
 
 import java.io.IOException;
 
-import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
+import org.extex.util.xml.XMLWriterConvertible;
 
 /**
  * The 'cvt ' table is optional.
@@ -114,7 +114,7 @@ public class TtfTableCVT extends AbstractXtfTable
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {

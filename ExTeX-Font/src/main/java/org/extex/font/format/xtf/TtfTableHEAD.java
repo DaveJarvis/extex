@@ -23,9 +23,9 @@ import java.io.IOException;
 import java.text.DateFormat;
 
 import org.extex.font.format.Fixed32;
-import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
+import org.extex.util.xml.XMLWriterConvertible;
 
 /**
  * The 'head' table contains global information about the font. It records such
@@ -475,7 +475,7 @@ public class TtfTableHEAD extends AbstractXtfTable
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {

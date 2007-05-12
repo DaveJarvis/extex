@@ -21,8 +21,8 @@ package org.extex.font.format.xtf;
 
 import java.io.IOException;
 
-import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.xml.XMLWriterConvertible;
 
 /**
  * Class for a Coverage Table.

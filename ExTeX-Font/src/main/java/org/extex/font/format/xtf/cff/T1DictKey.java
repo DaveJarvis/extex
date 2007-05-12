@@ -24,8 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.font.format.xtf.OtfTableCFF;
-import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.xml.XMLWriterConvertible;
 
 /**
  * Type 1 dict keys.

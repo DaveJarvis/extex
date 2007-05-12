@@ -28,11 +28,11 @@ import java.util.Date;
 
 import org.extex.font.format.xtf.TtfTableCMAP.Format;
 import org.extex.font.format.xtf.TtfTableGLYF.Descript;
-import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessInputFile;
 import org.extex.util.file.random.RandomAccessInputStream;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
+import org.extex.util.xml.XMLWriterConvertible;
 
 /**
  * Reader for a TrueType / OpenType font.
@@ -1234,7 +1234,7 @@ public class XtfReader implements XMLWriterConvertible {
     }
 
     /**
-     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {

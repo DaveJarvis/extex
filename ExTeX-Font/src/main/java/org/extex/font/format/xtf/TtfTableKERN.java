@@ -23,9 +23,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
+import org.extex.util.xml.XMLWriterConvertible;
 
 /**
  * The 'kern' table contains the values that adjust the intercharacter spacing
@@ -126,7 +126,7 @@ public class TtfTableKERN extends AbstractXtfTable
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.util.XMLWriterConvertible#writeXML(
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
         public void writeXML(XMLStreamWriter writer) throws IOException {
@@ -371,7 +371,7 @@ public class TtfTableKERN extends AbstractXtfTable
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.util.XMLWriterConvertible#writeXML(
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
         public void writeXML(XMLStreamWriter writer) throws IOException {
@@ -547,7 +547,7 @@ public class TtfTableKERN extends AbstractXtfTable
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.util.XMLWriterConvertible#writeXML(
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
         public void writeXML(XMLStreamWriter writer) throws IOException {
@@ -690,7 +690,7 @@ public class TtfTableKERN extends AbstractXtfTable
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {

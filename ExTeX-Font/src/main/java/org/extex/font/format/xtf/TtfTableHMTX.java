@@ -22,9 +22,9 @@ package org.extex.font.format.xtf;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
-import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
+import org.extex.util.xml.XMLWriterConvertible;
 
 /**
  * The 'hmtx' table contains metric information for the horizontal layout each
@@ -212,7 +212,7 @@ public class TtfTableHMTX extends AbstractXtfTable
     }
 
     /**
-     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {

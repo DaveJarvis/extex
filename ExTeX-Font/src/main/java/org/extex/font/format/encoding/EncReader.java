@@ -28,8 +28,6 @@ import org.extex.font.exception.FontException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
-import de.dante.extex.unicodeFont.exception.FontIOException;
-
 /**
  * Reader for encoding-files.
  * 
@@ -104,7 +102,7 @@ public class EncReader implements Serializable {
             encname = buf.substring(fs + 1, first).trim();
 
         } catch (IOException e) {
-            throw new FontIOException(e.getMessage());
+            throw new FontException(e.getMessage());
         }
     }
 

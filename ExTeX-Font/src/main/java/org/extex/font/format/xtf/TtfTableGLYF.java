@@ -23,9 +23,9 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Vector;
 
-import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
+import org.extex.util.xml.XMLWriterConvertible;
 
 /**
  * The 'glyf' table contains the data that defines the appearance of the glyphs
@@ -202,7 +202,7 @@ public class TtfTableGLYF extends AbstractXtfTable
     /**
      * {@inheritDoc}
      *
-     * @see org.extex.util.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
@@ -570,7 +570,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         /**
          * {@inheritDoc}
          *
-         * @see org.extex.util.XMLWriterConvertible#writeXML(
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
         public void writeXML(XMLStreamWriter writer) throws IOException {

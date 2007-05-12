@@ -21,9 +21,9 @@ package org.extex.font.format.xtf;
 
 import java.io.IOException;
 
-import org.extex.util.XMLWriterConvertible;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
+import org.extex.util.xml.XMLWriterConvertible;
 import org.jdom.Comment;
 import org.jdom.Element;
 
@@ -253,7 +253,7 @@ public class OtfTableBASE extends AbstractXtfTable
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.util.XMLWriterConvertible#writeXML(
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
         public void writeXML(XMLStreamWriter writer) throws IOException {
@@ -327,7 +327,7 @@ public class OtfTableBASE extends AbstractXtfTable
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.util.XMLWriterConvertible#writeXML(
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
         public void writeXML(XMLStreamWriter writer) throws IOException {
@@ -343,7 +343,7 @@ public class OtfTableBASE extends AbstractXtfTable
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.util.XMLWriterConvertible#writeXML(
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
