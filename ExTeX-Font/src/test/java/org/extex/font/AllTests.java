@@ -22,15 +22,6 @@ package org.extex.font;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-import org.extex.font.format.xtf.XtfReaderFxlrTest;
-import org.extex.font.format.xtf.XtfReaderGara1Test;
-import org.extex.font.format.xtf.XtfReaderGara2Test;
-import org.extex.font.format.xtf.XtfReaderGara3Test;
-import org.extex.font.format.xtf.XtfReaderGara4Test;
-import org.extex.font.format.xtf.XtfReaderLmRoman10Regular01Test;
-import org.extex.font.format.xtf.XtfReaderLmRoman10Regular02Test;
-import org.extex.font.format.xtf.XtfReaderLmRoman10Regular03Test;
-
 /**
  * Test suite for the fonts.
  * 
@@ -64,18 +55,18 @@ public final class AllTests {
         suite.addTestSuite(FontFactoryImplXtfTest.class);
         suite.addTestSuite(FontFactoryImplCmr10Test.class);
         suite.addTestSuite(FontFactoryImplCmmanTest.class);
-        suite.addTestSuite(XtfReaderGara1Test.class);
-        suite.addTestSuite(XtfReaderGara2Test.class);
-        suite.addTestSuite(XtfReaderGara3Test.class);
-        suite.addTestSuite(XtfReaderGara4Test.class);
+//        suite.addTestSuite(XtfReaderGara1Test.class);
+//        suite.addTestSuite(XtfReaderGara2Test.class);
+//        suite.addTestSuite(XtfReaderGara3Test.class);
+//        suite.addTestSuite(XtfReaderGara4Test.class);
         // suite.addTestSuite(TfmReaderTest.class);
         // suite.addTestSuite(TfmFixWordTest.class);
         // suite.addTestSuite(U2tFactoryTest.class);
         // suite.addTestSuite(AfmParserTest.class);
-        suite.addTestSuite(XtfReaderLmRoman10Regular01Test.class);
-        suite.addTestSuite(XtfReaderLmRoman10Regular02Test.class);
-        suite.addTestSuite(XtfReaderLmRoman10Regular03Test.class);
-        suite.addTestSuite(XtfReaderFxlrTest.class);
+        // suite.addTestSuite(XtfReaderLmRoman10Regular01Test.class);
+        // suite.addTestSuite(XtfReaderLmRoman10Regular02Test.class);
+        // suite.addTestSuite(XtfReaderLmRoman10Regular03Test.class);
+        // suite.addTestSuite(XtfReaderFxlrTest.class);
         // $JUnit-END$
         return suite;
     }
