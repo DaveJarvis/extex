@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.font;
+package org.extex.font.format.afm;
 
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.FixedCount;
@@ -25,6 +25,10 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
+import org.extex.font.AbstractFontFactoryTester;
+import org.extex.font.CoreFontFactory;
+import org.extex.font.ExtexFont;
+import org.extex.font.FontKey;
 import org.extex.font.unicode.GlyphName;
 
 /**

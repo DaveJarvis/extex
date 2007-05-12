@@ -47,7 +47,7 @@ import org.extex.util.xml.XMLWriterConvertible;
 public class AfmParser implements Serializable, XMLWriterConvertible {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt>.
      */
     private static final long serialVersionUID = 1L;
 
@@ -63,7 +63,7 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
      * 
      * @param in The input.
      * 
-     * @throws FontException TODO
+     * @throws FontException if a font error occurred.
      */
     public AfmParser(InputStream in) throws FontException {
 

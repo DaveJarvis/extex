@@ -52,7 +52,7 @@ public abstract class AbstractFontFactoryTester extends TestCase {
         CoreFontFactory factory = new FontFactoryImpl();
 
         Configuration config = new ConfigurationFactory()
-                .newInstance(FontFactoryImplTest.class.getName().replaceAll(
+                .newInstance(AbstractFontFactoryTester.class.getName().replaceAll(
                         "\\.", "/"));
 
         if (factory instanceof Configurable) {
