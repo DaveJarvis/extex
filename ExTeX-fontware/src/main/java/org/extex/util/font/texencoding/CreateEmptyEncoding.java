@@ -29,7 +29,7 @@ import org.extex.util.font.AbstractFontUtil;
  * Create a empty tex font encoding vector.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:5594 $
+ * @version $Revision: 5594 $
  */
 public class CreateEmptyEncoding extends AbstractFontUtil {
 
@@ -80,9 +80,7 @@ public class CreateEmptyEncoding extends AbstractFontUtil {
 
         writer.setEncname("EmptyEncoding");
         writer.setComments(true);
-        // TODO version missing
-        writer.setHeaderComment(getLocalizer().format(
-            "CreateEmptyEncoding.created", "0.0"));
+        writer.setHeaderComment(createVersion("CreateEmptyEncoding.created"));
 
         writer.write(new FileOutputStream(outfile));
 
@@ -90,5 +88,4 @@ public class CreateEmptyEncoding extends AbstractFontUtil {
             getLocalizer().format("CreateEmptyEncoding.end", outfile));
 
     }
-
 }

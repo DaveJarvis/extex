@@ -19,11 +19,14 @@
 
 package org.extex.util.font;
 
+import java.io.File;
+import java.util.Calendar;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.ExTeX;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.logging.LogFormatter;
@@ -52,6 +55,11 @@ public class AbstractFontUtil {
      * The field <tt>logger</tt> contains the logger currently in use.
      */
     private Logger logger;
+
+    /**
+     * The directory for the output.
+     */
+    private String outdir = ".";
 
     /**
      * Create a new object.
@@ -85,6 +93,19 @@ public class AbstractFontUtil {
     }
 
     /**
+     * Create the comment with ExTeX-version and date.
+     * 
+     * @param key The key for the property.
+     * @return Returns the comment with the ExTeX-Version and the date.
+     */
+    protected String createVersion(String key) {
+
+        Calendar cal = Calendar.getInstance();
+        return getLocalizer().format(key, ExTeX.getVersion(),
+            cal.getTime().toString());
+    }
+
+    /**
      * Getter for consoleHandler.
      * 
      * @return the consoleHandler
@@ -115,11 +136,6 @@ public class AbstractFontUtil {
     }
 
     /**
-     * The directory for the output.
-     */
-    private String outdir = ".";
-
-    /**
      * Getter for outdir.
      * 
      * @return the outdir
@@ -127,6 +143,45 @@ public class AbstractFontUtil {
     public String getOutdir() {
 
         return outdir;
+    }
+
+    /**
+     * Returns only the name of a file.
+     * 
+     * @param f The file.
+     * @return Returns only the name of a file.
+     */
+    protected String removeExtensions(File f) {
+
+        return removeExtensions(f.getName());
+    }
+
+    /**
+     * Returns only the name of a file.
+     * 
+     * @param n The name.
+     * @return Returns only the name of a file.
+     */
+    protected String removeExtensions(String n) {
+
+        StringBuffer buf = new StringBuffer();
+
+        boolean dotfound = false;
+        for (int i = n.length() - 1; i >= 0; i--) {
+            char c = n.charAt(i);
+            if (!dotfound && c == '.') {
+                dotfound = true;
+                continue;
+            }
+            if (dotfound) {
+                if (c == '/' || c == '\\') {
+                    break;
+                }
+                buf.insert(0, c);
+            }
+        }
+
+        return buf.toString();
     }
 
     /**
