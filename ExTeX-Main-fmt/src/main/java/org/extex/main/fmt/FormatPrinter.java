@@ -397,6 +397,7 @@ public final class FormatPrinter {
      * @param prefix the prefix to print after any new line
      * @param obj the object to print
      */
+    @SuppressWarnings("unchecked")
     private static void print(PrintStream out, String prefix, Object obj) {
 
         if (obj == null) {
