@@ -89,8 +89,8 @@ public interface Interpreter extends TokenSource {
      * 
      * @param stream stream to read from
      * @param fmt the name of the format to be loaded
-     * @param contextType ...
-     * @param languageType ...
+     * @param contextType name of the context from the configuration to use
+     * @param languageType name of the language from the configuration to use
      * 
      * @throws IOException in case of an IO error
      * @throws LoaderException in case of an error during loading
