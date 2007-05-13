@@ -38,6 +38,26 @@
     </dependency>
     <dependency>
       <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Scanner-API</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Typesetter-API</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Interpreter-API</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Font-API</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.extex</groupId>
       <artifactId>ExTeX-Backend-dvix</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
@@ -58,12 +78,7 @@
     </dependency>
     <dependency>
       <groupId>org.extex</groupId>
-      <artifactId>ExTeX-Unit-pdftex</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>org.extex</groupId>
-      <artifactId>ExTeX-Unit-omega</artifactId>
+      <artifactId>ExTeX-Unit-namespace</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
     <dependency>
@@ -73,12 +88,22 @@
     </dependency>
     <dependency>
       <groupId>org.extex</groupId>
-      <artifactId>ExTeX-Unit-namespace</artifactId>
+      <artifactId>ExTeX-Unit-omega</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Unit-pdftex</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Unit-color</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>color</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
