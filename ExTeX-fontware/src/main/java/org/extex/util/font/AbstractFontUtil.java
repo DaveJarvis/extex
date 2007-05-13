@@ -1,0 +1,142 @@
+/*
+ * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ *
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ *
+ */
+
+package org.extex.util.font;
+
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
+import org.extex.logging.LogFormatter;
+
+/**
+ * Abstract class for all font utilities.
+ * 
+ * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
+ * @version $Revision: 0001 $
+ */
+public class AbstractFontUtil {
+
+    /**
+     * The console handler.
+     */
+    private Handler consoleHandler;
+
+    /**
+     * The field <tt>localizer</tt> contains the localizer. It is initiated
+     * with a localizer for the name of this class.
+     */
+    private Localizer localizer =
+            LocalizerFactory.getLocalizer(AbstractFontUtil.class);
+
+    /**
+     * The field <tt>logger</tt> contains the logger currently in use.
+     */
+    private Logger logger;
+
+    /**
+     * Create a new object.
+     */
+    public AbstractFontUtil() {
+
+        this(AbstractFontUtil.class);
+    }
+
+    /**
+     * Create a new object.
+     * 
+     * @param loggerclass The class for the logger
+     */
+    public AbstractFontUtil(Class<?> loggerclass) {
+
+        super();
+
+        // logger
+        logger = Logger.getLogger(loggerclass.getName());
+        logger.setUseParentHandlers(false);
+        logger.setLevel(Level.ALL);
+
+        consoleHandler = new ConsoleHandler();
+        consoleHandler.setFormatter(new LogFormatter());
+        consoleHandler.setLevel(Level.WARNING);
+        logger.addHandler(consoleHandler);
+
+        localizer = LocalizerFactory.getLocalizer(loggerclass);
+
+    }
+
+    /**
+     * Getter for consoleHandler.
+     * 
+     * @return the consoleHandler
+     */
+    public Handler getConsoleHandler() {
+
+        return consoleHandler;
+    }
+
+    /**
+     * Getter for localizer.
+     * 
+     * @return the localizer
+     */
+    public Localizer getLocalizer() {
+
+        return localizer;
+    }
+
+    /**
+     * Getter for logger.
+     * 
+     * @return the logger
+     */
+    public Logger getLogger() {
+
+        return logger;
+    }
+
+    /**
+     * The directory for the output.
+     */
+    private String outdir = ".";
+
+    /**
+     * Getter for outdir.
+     * 
+     * @return the outdir
+     */
+    public String getOutdir() {
+
+        return outdir;
+    }
+
+    /**
+     * Setter for outdir.
+     * 
+     * @param outdir the outdir to set
+     */
+    public void setOutdir(String outdir) {
+
+        this.outdir = outdir;
+    }
+
+}
