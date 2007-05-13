@@ -32,7 +32,7 @@ import org.extex.logging.LogFormatter;
  * Abstract class for all font utilities.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 0001 $
+ * @version $Revision:5594 $
  */
 public class AbstractFontUtil {
 

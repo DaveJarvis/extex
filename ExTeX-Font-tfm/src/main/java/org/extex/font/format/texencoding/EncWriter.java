@@ -16,7 +16,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  */
 
-package org.extex.font.format.encoding;
+package org.extex.font.format.texencoding;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -51,6 +51,11 @@ public class EncWriter {
      * The encoding name.
      */
     private String encname = "";
+
+    /**
+     * The header comment.
+     */
+    private String headerComment = null;
 
     /**
      * Create a new object.
@@ -116,6 +121,16 @@ public class EncWriter {
     }
 
     /**
+     * Setter for headerComment.
+     * 
+     * @param headerComment the headerComment to set
+     */
+    public void setHeaderComment(String headerComment) {
+
+        this.headerComment = headerComment;
+    }
+
+    /**
      * Write the encoding vector to a output stream.
      * 
      * @param out The output
@@ -125,6 +140,10 @@ public class EncWriter {
 
         BufferedWriter writer =
                 new BufferedWriter(new OutputStreamWriter(out, "ASCII"));
+
+        if (headerComment != null) {
+            writer.write(headerComment);
+        }
 
         writer.write("/");
         writer.write(encname);

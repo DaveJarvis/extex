@@ -38,7 +38,7 @@ import javax.xml.parsers.SAXParserFactory;
 import org.extex.core.UnicodeChar;
 import org.extex.font.FontKeyFactory;
 import org.extex.font.exception.FontException;
-import org.extex.font.format.encoding.EncFactory;
+import org.extex.font.format.texencoding.EncFactory;
 import org.extex.font.format.tfm.TfmReader;
 import org.extex.font.unicode.GlyphName;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -66,7 +66,7 @@ import de.dante.extex.unicodeFont.format.tex.psfontmap.PsFontsMapReader;
  * </ul>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision:5594 $
  */
 
 public class FontMap extends AbstractFontUtil {

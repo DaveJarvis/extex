@@ -30,7 +30,7 @@ import java.util.Properties;
 import junit.framework.TestCase;
 
 import org.extex.font.exception.FontMapNotFoundException;
-import org.extex.font.format.encoding.EncFactory;
+import org.extex.font.format.texencoding.EncFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.resource.ResourceFinder;

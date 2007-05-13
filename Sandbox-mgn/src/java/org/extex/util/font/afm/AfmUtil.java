@@ -35,7 +35,7 @@ import java.util.TreeMap;
 
 import org.extex.ExTeX;
 import org.extex.font.format.afm.AfmParser;
-import org.extex.font.format.encoding.EncReader;
+import org.extex.font.format.texencoding.EncReader;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.util.xml.XMLStreamWriter;
 
@@ -45,7 +45,7 @@ import de.dante.util.font.AbstractFontUtil;
  * Abstract class for utilities for a afm file.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision:5594 $
  */
 public class AfmUtil extends AbstractFontUtil {
 

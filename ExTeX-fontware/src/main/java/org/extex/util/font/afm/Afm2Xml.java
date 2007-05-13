@@ -33,7 +33,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * Convert a afm file to a xml file.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 0001 $
+ * @version $Revision:5594 $
  */
 public class Afm2Xml extends AbstractFontUtil {
 

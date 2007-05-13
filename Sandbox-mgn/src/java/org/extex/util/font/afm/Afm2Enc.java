@@ -35,7 +35,7 @@ import java.util.Map;
 import org.extex.font.exception.FontException;
 import org.extex.font.format.afm.AfmCharMetric;
 import org.extex.font.format.afm.AfmParser;
-import org.extex.font.format.encoding.EncReader;
+import org.extex.font.format.texencoding.EncReader;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 

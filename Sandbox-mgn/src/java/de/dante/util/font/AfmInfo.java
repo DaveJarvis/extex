@@ -33,7 +33,7 @@ import org.extex.font.exception.FontException;
 import org.extex.font.format.afm.AfmCharMetric;
 import org.extex.font.format.afm.AfmKernPairs;
 import org.extex.font.format.afm.AfmParser;
-import org.extex.font.format.encoding.EncReader;
+import org.extex.font.format.texencoding.EncReader;
 import org.extex.font.unicode.GlyphName;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
@@ -41,7 +41,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * Print information about a afm file.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision:5594 $
  */
 public final class AfmInfo extends AbstractFontUtil {
 
