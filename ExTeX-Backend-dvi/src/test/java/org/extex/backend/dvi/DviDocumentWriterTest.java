@@ -55,27 +55,28 @@ import org.extex.typesetter.type.page.PageImpl;
 public class DviDocumentWriterTest extends TestCase {
 
     /**
-     * The field <tt>documentWriter</tt> contains the ...
+     * The field <tt>documentWriter</tt> contains the document writer.
      */
     private DocumentWriter documentWriter = null;
 
     /**
-     * The field <tt>nodeList</tt> contains the ...
+     * The field <tt>nodeList</tt> contains the node list.
      */
     private NodeList nodeList = null;
 
     /**
-     * The field <tt>documentWriterOptions</tt> contains the ...
+     * The field <tt>documentWriterOptions</tt> contains the document writer
+     * options.
      */
     private MockDocumentWriterOptions documentWriterOptions = null;
 
     /**
-     * The field <tt>configuration</tt> contains the ...
+     * The field <tt>configuration</tt> contains the configuration.
      */
     private Configuration configuration = null;
 
     /**
-     * The field <tt>outputStream</tt> contains the ...
+     * The field <tt>outputStream</tt> contains the output stream.
      */
     private OutputStream outputStream = null;
 
@@ -87,8 +88,7 @@ public class DviDocumentWriterTest extends TestCase {
      * @param exception a <code>Class</code> value
      * @throws Exception if an error occurs
      */
-    private void checkException(Node node, Class<?> exception)
-            throws Exception {
+    private void checkException(Node node, Class<?> exception) throws Exception {
 
         boolean gotException = false;
 

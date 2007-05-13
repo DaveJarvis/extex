@@ -4,12 +4,11 @@
 	<classpathentry kind="src" path="src/test/resources"/>
 	<classpathentry kind="src" path="src/main/resources"/>
 	<classpathentry kind="src" path="src/main/java"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-core"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-base"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="lib/PDFBox.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-core"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-base"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Typesetter-API"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font-API"/>
 	<classpathentry kind="output" path="target/classes"/>

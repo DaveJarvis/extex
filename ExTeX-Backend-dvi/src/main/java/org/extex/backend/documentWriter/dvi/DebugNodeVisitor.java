@@ -63,7 +63,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     private InspectableNodeVisitor nodeVisitor = null;
 
     /**
-     * The field <tt>printStream</tt> contains the ...
+     * The field <tt>printStream</tt> contains the print stream.
      */
     private PrintStream printStream = System.out;
 
