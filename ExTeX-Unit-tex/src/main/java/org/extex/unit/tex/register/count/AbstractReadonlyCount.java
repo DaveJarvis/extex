@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.register.count;
 
+import org.extex.base.parser.CountConvertible;
 import org.extex.core.exception.helping.CantUseInException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
@@ -26,7 +27,6 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
-import org.extex.scanner.CountConvertible;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;

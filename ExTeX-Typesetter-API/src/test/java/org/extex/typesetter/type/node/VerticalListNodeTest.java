@@ -29,7 +29,7 @@ import org.junit.Test;
 
 /**
  * This file contains test cases for the vertical list node.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4756 $
  */
@@ -38,132 +38,133 @@ public class VerticalListNodeTest extends AbstractNodeListTester {
     /**
      * The field <tt>visitor</tt> contains the ...
      */
-    private static final NodeVisitor VISITOR = new NodeVisitor() {
-    
-                public Object visitAdjust(AdjustNode node, Object value)
+    private static final NodeVisitor<Node, Boolean> VISITOR =
+            new NodeVisitor<Node, Boolean>() {
+
+                public Node visitAdjust(AdjustNode node, Boolean value)
                         throws GeneralException {
-    
+
                     return null;
                 }
-    
-                public Object visitAfterMath(AfterMathNode node, Object value)
+
+                public Node visitAfterMath(AfterMathNode node, Boolean value)
                         throws GeneralException {
-    
+
                     return null;
                 }
-    
-                public Object visitAlignedLeaders(AlignedLeadersNode node,
-                        Object value) throws GeneralException {
-    
+
+                public Node visitAlignedLeaders(AlignedLeadersNode node,
+                        Boolean value) throws GeneralException {
+
                     return null;
                 }
-    
-                public Object visitBeforeMath(BeforeMathNode node, Object value)
+
+                public Node visitBeforeMath(BeforeMathNode node, Boolean value)
                         throws GeneralException {
-    
+
                     return null;
                 }
-    
-                public Object visitCenteredLeaders(CenteredLeadersNode node,
-                        Object value) throws GeneralException {
-    
+
+                public Node visitCenteredLeaders(CenteredLeadersNode node,
+                        Boolean value) throws GeneralException {
+
                     return null;
                 }
-    
-                public Object visitChar(CharNode node, Object value)
+
+                public Node visitChar(CharNode node, Boolean value)
                         throws GeneralException {
-    
+
                     return null;
                 }
-    
-                public Object visitDiscretionary(DiscretionaryNode node,
-                        Object value) throws GeneralException {
-    
+
+                public Node visitDiscretionary(DiscretionaryNode node,
+                        Boolean value) throws GeneralException {
+
                     return null;
                 }
-    
-                public Object visitExpandedLeaders(ExpandedLeadersNode node,
-                        Object value) throws GeneralException {
-    
+
+                public Node visitExpandedLeaders(ExpandedLeadersNode node,
+                        Boolean value) throws GeneralException {
+
                     return null;
                 }
-    
-                public Object visitGlue(GlueNode node, Object value)
+
+                public Node visitGlue(GlueNode node, Boolean value)
                         throws GeneralException {
-    
+
                     return null;
                 }
-    
-                public Object visitHorizontalList(HorizontalListNode node,
-                        Object value) throws GeneralException {
-    
+
+                public Node visitHorizontalList(HorizontalListNode node,
+                        Boolean value) throws GeneralException {
+
                     return null;
                 }
-    
-                public Object visitInsertion(InsertionNode node, Object value)
+
+                public Node visitInsertion(InsertionNode node, Boolean value)
                         throws GeneralException {
-    
+
                     return null;
                 }
-    
-                public Object visitKern(KernNode node, Object value)
+
+                public Node visitKern(KernNode node, Boolean value)
                         throws GeneralException {
-    
+
                     return null;
                 }
-    
-                public Object visitLigature(LigatureNode node, Object value)
+
+                public Node visitLigature(LigatureNode node, Boolean value)
                         throws GeneralException {
-    
+
                     return null;
                 }
-    
-                public Object visitMark(MarkNode node, Object value)
+
+                public Node visitMark(MarkNode node, Boolean value)
                         throws GeneralException {
-    
+
                     return null;
                 }
-    
-                public Object visitPenalty(PenaltyNode node, Object value)
+
+                public Node visitPenalty(PenaltyNode node, Boolean value)
                         throws GeneralException {
-    
+
                     return null;
                 }
-    
-                public Object visitRule(RuleNode node, Object value)
+
+                public Node visitRule(RuleNode node, Boolean value)
                         throws GeneralException {
-    
+
                     return null;
                 }
-    
-                public Object visitSpace(SpaceNode node, Object value)
+
+                public Node visitSpace(SpaceNode node, Boolean value)
                         throws GeneralException {
-    
+
                     return null;
                 }
-    
-                public Object visitVerticalList(VerticalListNode node, Object value)
-                        throws GeneralException {
-    
+
+                public Node visitVerticalList(VerticalListNode node,
+                        Boolean value) throws GeneralException {
+
                     return node;
                 }
-    
-                public Object visitVirtualChar(VirtualCharNode node, Object value)
+
+                public Node visitVirtualChar(VirtualCharNode node, Boolean value)
                         throws GeneralException {
-    
+
                     return null;
                 }
-    
-                public Object visitWhatsIt(WhatsItNode node, Object value)
+
+                public Node visitWhatsIt(WhatsItNode node, Boolean value)
                         throws GeneralException {
-    
+
                     return null;
                 }
             };
 
     /**
      * Command line interface.
-     *
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -173,7 +174,7 @@ public class VerticalListNodeTest extends AbstractNodeListTester {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.type.node.AbstractNodeListTester#makeList()
      */
     protected NodeList makeList() {
@@ -183,7 +184,7 @@ public class VerticalListNodeTest extends AbstractNodeListTester {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.type.node.AbstractNodeListTester#makeList(org.extex.typesetter.type.Node)
      */
     protected NodeList makeList(Node node) {
@@ -193,10 +194,10 @@ public class VerticalListNodeTest extends AbstractNodeListTester {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.type.node.AbstractNodeListTester#makeVisitor()
      */
-    protected NodeVisitor makeVisitor() {
+    protected NodeVisitor<Node, Boolean> makeVisitor() {
 
         return VISITOR;
     }
@@ -245,7 +246,7 @@ public class VerticalListNodeTest extends AbstractNodeListTester {
 
         VerticalListNode vlist = new VerticalListNode();
         vlist.add(new RuleNode(Dimen.ONE_INCH, Dimen.ONE_INCH, Dimen.ONE_INCH,
-                null, true));
+            null, true));
         Dimen h = new Dimen(Dimen.ONE_INCH);
         h.multiply(2);
         vlist.vpack(h);
@@ -263,7 +264,7 @@ public class VerticalListNodeTest extends AbstractNodeListTester {
         VerticalListNode vlist = new VerticalListNode();
         vlist.addSkip(FixedGlue.S_S);
         vlist.add(new RuleNode(Dimen.ONE_INCH, Dimen.ONE_INCH, Dimen.ONE_INCH,
-                null, true));
+            null, true));
         vlist.addSkip(FixedGlue.S_S);
         Dimen h = new Dimen(Dimen.ONE_INCH);
         h.multiply(2);

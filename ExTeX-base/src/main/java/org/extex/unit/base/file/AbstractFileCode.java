@@ -19,6 +19,7 @@
 
 package org.extex.unit.base.file;
 
+import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.BadFileNumberException;
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
@@ -28,7 +29,6 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
-import org.extex.scanner.CountParser;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.SpaceToken;
 import org.extex.scanner.type.token.Token;
@@ -81,7 +81,7 @@ public abstract class AbstractFileCode extends AbstractCode
      *  <pre class="syntax">
      *    &lang;infile&nbsp;name&rang;
      *      &rarr; {@linkplain
-     *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
+     *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;} </pre>
      * </doc>
      *
@@ -126,7 +126,7 @@ public abstract class AbstractFileCode extends AbstractCode
      *  <pre class="syntax">
      *    &lang;infile&nbsp;name&rang;
      *      &rarr; {@linkplain
-     *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
+     *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;} </pre>
      * </doc>
      *

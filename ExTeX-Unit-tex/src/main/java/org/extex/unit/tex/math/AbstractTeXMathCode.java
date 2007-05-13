@@ -19,6 +19,8 @@
 
 package org.extex.unit.tex.math;
 
+import org.extex.base.parser.CountParser;
+import org.extex.base.parser.MathClassParser;
 import org.extex.core.UnicodeChar;
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
@@ -26,8 +28,6 @@ import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.Code;
-import org.extex.scanner.CountParser;
-import org.extex.scanner.MathClassParser;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.LeftBraceToken;
 import org.extex.scanner.type.token.RightBraceToken;

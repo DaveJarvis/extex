@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.string;
 
+import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
 import org.extex.interpreter.Flags;
@@ -26,7 +27,6 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
-import org.extex.scanner.CountParser;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.Namespace;
@@ -53,7 +53,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * <pre class="syntax">
  *    &lang;romannumeral&rang;
  *        &rarr; <tt>\romannumeral</tt> {@linkplain
- *           org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *           org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *           &lang;number&rang;} </pre>
  * 
  * <h4>Examples</h4>

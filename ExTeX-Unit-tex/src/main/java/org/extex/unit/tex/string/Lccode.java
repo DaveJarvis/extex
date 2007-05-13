@@ -19,6 +19,8 @@
 
 package org.extex.unit.tex.string;
 
+import org.extex.base.parser.CountConvertible;
+import org.extex.base.parser.DimenConvertible;
 import org.extex.core.UnicodeChar;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.InvalidCharacterException;
@@ -30,8 +32,6 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
-import org.extex.scanner.CountConvertible;
-import org.extex.scanner.DimenConvertible;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
@@ -57,11 +57,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * <pre class="syntax">
  *    &lang;lccode&rang;
  *        &rarr; <tt>\lccode</tt> {@linkplain
- *          org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *          &lang;equals&rang;} {@linkplain
- *          org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} </pre>
  * 
  * <h4>Examples</h4>
@@ -124,7 +124,7 @@ public class Lccode extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.scanner.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.base.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -138,7 +138,7 @@ public class Lccode extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.scanner.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
+     * @see org.extex.base.parser.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,

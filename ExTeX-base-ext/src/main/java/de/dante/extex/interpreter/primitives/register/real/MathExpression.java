@@ -24,12 +24,12 @@ import gnu.jel.CompiledExpression;
 import gnu.jel.Evaluator;
 import gnu.jel.Library;
 
+import org.extex.base.parser.CountConvertible;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.Theable;
-import org.extex.scanner.CountConvertible;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 

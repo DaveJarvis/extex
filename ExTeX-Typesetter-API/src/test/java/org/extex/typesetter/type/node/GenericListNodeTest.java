@@ -39,130 +39,131 @@ import org.junit.Test;
 public class GenericListNodeTest extends AbstractNodeListTester {
 
     /**
-     * The field <tt>visitor</tt> contains the ...
+     * The field <tt>VISITOR</tt> contains the ...
      */
-    private static final NodeVisitor VISITOR = new NodeVisitor() {
+    private static final NodeVisitor<Object, Object> VISITOR =
+            new NodeVisitor<Object, Object>() {
 
-        public Object visitAdjust(AdjustNode node, Object value)
-                throws GeneralException {
+                public Object visitAdjust(AdjustNode node, Object value)
+                        throws GeneralException {
 
-            return null;
-        }
+                    return null;
+                }
 
-        public Object visitAfterMath(AfterMathNode node, Object value)
-                throws GeneralException {
+                public Object visitAfterMath(AfterMathNode node, Object value)
+                        throws GeneralException {
 
-            return null;
-        }
+                    return null;
+                }
 
-        public Object visitAlignedLeaders(AlignedLeadersNode node, Object value)
-                throws GeneralException {
+                public Object visitAlignedLeaders(AlignedLeadersNode node,
+                        Object value) throws GeneralException {
 
-            return null;
-        }
+                    return null;
+                }
 
-        public Object visitBeforeMath(BeforeMathNode node, Object value)
-                throws GeneralException {
+                public Object visitBeforeMath(BeforeMathNode node, Object value)
+                        throws GeneralException {
 
-            return null;
-        }
+                    return null;
+                }
 
-        public Object visitCenteredLeaders(CenteredLeadersNode node,
-                Object value) throws GeneralException {
+                public Object visitCenteredLeaders(CenteredLeadersNode node,
+                        Object value) throws GeneralException {
 
-            return null;
-        }
+                    return null;
+                }
 
-        public Object visitChar(CharNode node, Object value)
-                throws GeneralException {
+                public Object visitChar(CharNode node, Object value)
+                        throws GeneralException {
 
-            return null;
-        }
+                    return null;
+                }
 
-        public Object visitDiscretionary(DiscretionaryNode node, Object value)
-                throws GeneralException {
+                public Object visitDiscretionary(DiscretionaryNode node,
+                        Object value) throws GeneralException {
 
-            return null;
-        }
+                    return null;
+                }
 
-        public Object visitExpandedLeaders(ExpandedLeadersNode node,
-                Object value) throws GeneralException {
+                public Object visitExpandedLeaders(ExpandedLeadersNode node,
+                        Object value) throws GeneralException {
 
-            return null;
-        }
+                    return null;
+                }
 
-        public Object visitGlue(GlueNode node, Object value)
-                throws GeneralException {
+                public Object visitGlue(GlueNode node, Object value)
+                        throws GeneralException {
 
-            return null;
-        }
+                    return null;
+                }
 
-        public Object visitHorizontalList(HorizontalListNode node, Object value)
-                throws GeneralException {
+                public Object visitHorizontalList(HorizontalListNode node,
+                        Object value) throws GeneralException {
 
-            return node;
-        }
+                    return node;
+                }
 
-        public Object visitInsertion(InsertionNode node, Object value)
-                throws GeneralException {
+                public Object visitInsertion(InsertionNode node, Object value)
+                        throws GeneralException {
 
-            return null;
-        }
+                    return null;
+                }
 
-        public Object visitKern(KernNode node, Object value)
-                throws GeneralException {
+                public Object visitKern(KernNode node, Object value)
+                        throws GeneralException {
 
-            return null;
-        }
+                    return null;
+                }
 
-        public Object visitLigature(LigatureNode node, Object value)
-                throws GeneralException {
+                public Object visitLigature(LigatureNode node, Object value)
+                        throws GeneralException {
 
-            return null;
-        }
+                    return null;
+                }
 
-        public Object visitMark(MarkNode node, Object value)
-                throws GeneralException {
+                public Object visitMark(MarkNode node, Object value)
+                        throws GeneralException {
 
-            return null;
-        }
+                    return null;
+                }
 
-        public Object visitPenalty(PenaltyNode node, Object value)
-                throws GeneralException {
+                public Object visitPenalty(PenaltyNode node, Object value)
+                        throws GeneralException {
 
-            return null;
-        }
+                    return null;
+                }
 
-        public Object visitRule(RuleNode node, Object value)
-                throws GeneralException {
+                public Object visitRule(RuleNode node, Object value)
+                        throws GeneralException {
 
-            return null;
-        }
+                    return null;
+                }
 
-        public Object visitSpace(SpaceNode node, Object value)
-                throws GeneralException {
+                public Object visitSpace(SpaceNode node, Object value)
+                        throws GeneralException {
 
-            return null;
-        }
+                    return null;
+                }
 
-        public Object visitVerticalList(VerticalListNode node, Object value)
-                throws GeneralException {
+                public Object visitVerticalList(VerticalListNode node,
+                        Object value) throws GeneralException {
 
-            return null;
-        }
+                    return null;
+                }
 
-        public Object visitVirtualChar(VirtualCharNode node, Object value)
-                throws GeneralException {
+                public Object visitVirtualChar(VirtualCharNode node,
+                        Object value) throws GeneralException {
 
-            return null;
-        }
+                    return null;
+                }
 
-        public Object visitWhatsIt(WhatsItNode node, Object value)
-                throws GeneralException {
+                public Object visitWhatsIt(WhatsItNode node, Object value)
+                        throws GeneralException {
 
-            return null;
-        }
-    };
+                    return null;
+                }
+            };
 
     /**
      * Command line interface.
@@ -208,7 +209,7 @@ public class GenericListNodeTest extends AbstractNodeListTester {
      * 
      * @see org.extex.typesetter.type.node.AbstractNodeListTester#makeVisitor()
      */
-    protected NodeVisitor makeVisitor() {
+    protected NodeVisitor<Node, Boolean> makeVisitor() {
 
         return null;
     }
@@ -464,8 +465,7 @@ public class GenericListNodeTest extends AbstractNodeListTester {
 
         NodeList list = makeList(new CharNode(TC, UnicodeChar.get('A')));
         list.setMove(Dimen.ONE_PT);
-        assertEquals("(0.0pt+0.0pt)x0.0pt, moved 1.0pt\n.A", list
-            .toString());
+        assertEquals("(0.0pt+0.0pt)x0.0pt, moved 1.0pt\n.A", list.toString());
     }
 
     /**

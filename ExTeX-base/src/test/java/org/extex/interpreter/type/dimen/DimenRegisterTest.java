@@ -21,6 +21,7 @@ package org.extex.interpreter.type.dimen;
 
 import junit.framework.TestCase;
 
+import org.extex.base.parser.DimenParser;
 import org.extex.core.exception.GeneralException;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
@@ -28,7 +29,6 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.InterpreterFactory;
 import org.extex.interpreter.context.MockContext;
-import org.extex.scanner.DimenParser;
 import org.extex.scanner.stream.TokenStreamFactory;
 
 /**

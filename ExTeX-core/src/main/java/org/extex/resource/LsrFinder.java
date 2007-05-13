@@ -314,6 +314,7 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
      *
      * @throws ConfigurationException if an error occurred
      */
+    @SuppressWarnings("unchecked")
     private void load(String path) throws ConfigurationException {
 
         long start = System.currentTimeMillis();

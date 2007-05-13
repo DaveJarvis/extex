@@ -19,12 +19,12 @@
 
 package org.extex.unit.tex.register.count;
 
+import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractAssignment;
-import org.extex.scanner.CountParser;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -60,7 +60,7 @@ import org.extex.unit.base.register.count.util.IntegerCode;
  *        &lang;control sequence&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}
  *
  *    &lang;optional prefix&rang;

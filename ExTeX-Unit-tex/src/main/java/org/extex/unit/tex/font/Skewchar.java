@@ -19,6 +19,8 @@
 
 package org.extex.unit.tex.font;
 
+import org.extex.base.parser.CountConvertible;
+import org.extex.base.parser.CountParser;
 import org.extex.core.UnicodeChar;
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
@@ -29,8 +31,6 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
-import org.extex.scanner.CountConvertible;
-import org.extex.scanner.CountParser;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
@@ -55,7 +55,7 @@ import org.extex.typesetter.tc.font.Font;
  *       &rarr; <tt>\skewchar</tt> &lang;font&rang; {@linkplain
  *          org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *          &lang;equals&rang;} {@linkplain
- *          org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} </pre>
  * 
  * <h4>Examples</h4>
@@ -124,7 +124,7 @@ public class Skewchar extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.scanner.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.base.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,

@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.typesetter.insert;
 
+import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
@@ -26,7 +27,6 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
-import org.extex.scanner.CountParser;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;

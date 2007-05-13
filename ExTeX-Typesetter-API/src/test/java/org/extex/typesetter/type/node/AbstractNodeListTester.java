@@ -702,7 +702,7 @@ public abstract class AbstractNodeListTester extends TestCase {
     public final void testVisit() throws GeneralException {
 
         NodeList list = makeList();
-        NodeVisitor nv = makeVisitor();
+        NodeVisitor<Node, Boolean> nv = makeVisitor();
         try {
             list.visit(nv, Long.valueOf(1));
             assertFalse(true);

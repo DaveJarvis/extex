@@ -23,7 +23,7 @@ import junit.framework.TestCase;
 
 /**
  * This is the test suite for the class Switch.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -87,4 +87,31 @@ public class SwitchTest extends TestCase {
         assertEquals(true, s.isOn());
     }
 
+    /**
+     * Test method for {@link org.extex.core.Switch#toString()}.
+     */
+    public final void testToString1() {
+
+        Switch s = new Switch(false);
+        assertEquals("off", s.toString());
+    }
+
+    /**
+     * Test method for {@link org.extex.core.Switch#toString()}.
+     */
+    public final void testToString2() {
+
+        Switch s = new Switch(true);
+        assertEquals("on", s.toString());
+    }
+
+    /**
+     * Test method for {@link org.extex.core.Switch#toString()}.
+     */
+    public final void testToString3() {
+
+        Switch s = new Switch(true);
+        s.set(false);
+        assertEquals("off", s.toString());
+    }
 }

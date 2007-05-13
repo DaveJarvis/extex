@@ -19,12 +19,12 @@
 
 package org.extex.unit.tex.typesetter;
 
+import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
-import org.extex.scanner.CountParser;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.PenaltyNode;
@@ -49,7 +49,7 @@ import org.extex.typesetter.type.node.PenaltyNode;
  * <pre class="syntax">
  *    &lang;penalty&rang;
  *        &rarr; <tt>\penalty</tt> {@linkplain
- *          org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;}  </pre>
  * 
  * <h4>Examples</h4>

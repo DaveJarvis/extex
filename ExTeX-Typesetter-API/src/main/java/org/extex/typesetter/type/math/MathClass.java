@@ -640,6 +640,8 @@ public abstract class MathClass implements Serializable {
     public abstract void toString(StringBuffer sb);
 
     /**
+     * {@inheritDoc}
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {

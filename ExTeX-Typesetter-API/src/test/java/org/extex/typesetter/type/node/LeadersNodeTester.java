@@ -25,7 +25,6 @@ import static org.junit.Assert.assertTrue;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.glue.FixedGlue;
-import org.extex.core.glue.Glue;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.typesetter.type.OrientedNode;
@@ -235,7 +234,7 @@ public abstract class LeadersNodeTester {
 
         AbstractLeadersNode node =
                 makeNode(new RuleNode(Dimen.ONE_PT, Dimen.ONE_PT, Dimen.ONE_PT,
-                    null, true), Glue.S_S);
+                    null, true), FixedGlue.S_S);
         assertNotNull(node);
         node.setWidth(new Dimen(Dimen.ONE * 12));
         Node n = node.atShipping(null, null, null, null);
@@ -257,7 +256,7 @@ public abstract class LeadersNodeTester {
 
         AbstractLeadersNode node =
                 makeNode(new RuleNode(Dimen.ONE_PT, Dimen.ONE_PT, Dimen.ONE_PT,
-                    null, false), Glue.S_S);
+                    null, false), FixedGlue.S_S);
         assertNotNull(node);
         node.setHeight(new Dimen(Dimen.ONE * 12));
         Node n = node.atShipping(null, null, null, null);
@@ -279,7 +278,7 @@ public abstract class LeadersNodeTester {
 
         AbstractLeadersNode node =
                 makeNode(new RuleNode(Dimen.ONE_PT, Dimen.ONE_PT, Dimen.ONE_PT,
-                    null, true), Glue.S_S);
+                    null, true), FixedGlue.S_S);
         assertNotNull(node);
         node.setWidth(Dimen.ZERO_PT);
         Node n = node.atShipping(null, null, null, null);
@@ -301,7 +300,7 @@ public abstract class LeadersNodeTester {
 
         AbstractLeadersNode node =
                 makeNode(new RuleNode(Dimen.ONE_PT, Dimen.ONE_PT, Dimen.ONE_PT,
-                    null, false), Glue.S_S);
+                    null, false), FixedGlue.S_S);
         assertNotNull(node);
         node.setHeight(Dimen.ZERO_PT);
         Node n = node.atShipping(null, null, null, null);

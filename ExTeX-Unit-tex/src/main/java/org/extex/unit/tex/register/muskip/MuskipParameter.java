@@ -19,6 +19,9 @@
 
 package org.extex.unit.tex.register.muskip;
 
+import org.extex.base.parser.CountParser;
+import org.extex.base.parser.MuskipConvertible;
+import org.extex.base.parser.MuskipParser;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.helping.ArithmeticOverflowException;
 import org.extex.core.exception.helping.HelpingException;
@@ -32,9 +35,6 @@ import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.arithmetic.Advanceable;
 import org.extex.interpreter.type.arithmetic.Divideable;
 import org.extex.interpreter.type.arithmetic.Multiplyable;
-import org.extex.scanner.CountParser;
-import org.extex.scanner.MuskipConvertible;
-import org.extex.scanner.MuskipParser;
 import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
@@ -117,7 +117,7 @@ public class MuskipParameter extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.scanner.MuskipConvertible#convertMuskip(org.extex.interpreter.context.Context,
+     * @see org.extex.base.parser.MuskipConvertible#convertMuskip(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Muskip convertMuskip(Context context, TokenSource source,

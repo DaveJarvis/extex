@@ -19,11 +19,11 @@
 
 package org.extex.unit.tex.conditional;
 
+import org.extex.base.parser.DimenParser;
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.scanner.DimenParser;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;

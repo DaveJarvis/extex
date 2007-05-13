@@ -19,6 +19,8 @@
 
 package org.extex.unit.etex.register.muskip;
 
+import org.extex.base.parser.GlueParser;
+import org.extex.base.parser.MuskipConvertible;
 import org.extex.core.exception.helping.CantUseInException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.glue.Glue;
@@ -27,8 +29,6 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
-import org.extex.scanner.GlueParser;
-import org.extex.scanner.MuskipConvertible;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -83,7 +83,7 @@ public class Gluetomu extends AbstractCode implements MuskipConvertible {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.scanner.MuskipConvertible#convertMuskip(org.extex.interpreter.context.Context,
+     * @see org.extex.base.parser.MuskipConvertible#convertMuskip(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Muskip convertMuskip(Context context, TokenSource source,

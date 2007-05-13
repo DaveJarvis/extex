@@ -19,12 +19,12 @@
 
 package org.extex.unit.tex.register.count;
 
+import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.ArithmeticOverflowException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.scanner.CountParser;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 

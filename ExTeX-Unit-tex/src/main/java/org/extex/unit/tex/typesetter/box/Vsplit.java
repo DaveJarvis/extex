@@ -23,6 +23,7 @@ import java.util.logging.Logger;
 
 import javax.naming.OperationNotSupportedException;
 
+import org.extex.base.parser.DimenParser;
 import org.extex.core.count.Count;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
@@ -33,7 +34,6 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.box.Boxable;
-import org.extex.scanner.DimenParser;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;

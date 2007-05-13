@@ -19,6 +19,7 @@
 
 package org.extex;
 
+import org.extex.base.exception.RegistrarFontNotFoundException;
 import org.extex.font.CoreFontFactory;
 import org.extex.font.ExtexFont;
 import org.extex.font.FontKey;
@@ -26,7 +27,6 @@ import org.extex.font.exception.FontException;
 import org.extex.framework.RegistrarException;
 import org.extex.framework.RegistrarObserver;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.interpreter.exception.RegistrarFontNotFoundException;
 import org.extex.typesetter.tc.font.ModifiableFont;
 
 /**

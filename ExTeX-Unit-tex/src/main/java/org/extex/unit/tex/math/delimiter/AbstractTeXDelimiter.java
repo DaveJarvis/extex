@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.math.delimiter;
 
+import org.extex.base.parser.CountParser;
 import org.extex.core.UnicodeChar;
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
@@ -31,7 +32,6 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ExpandableCode;
-import org.extex.scanner.CountParser;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;

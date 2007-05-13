@@ -75,7 +75,7 @@ import org.extex.typesetter.exception.TypesetterException;
  *      &rarr; <tt>\parindent</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.scanner.DimenParser#parse(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.DimenParser#parse(Context,TokenSource,Typesetter)
  *        &lang;dimen&rang;}  </pre>
  *
  * <h4>Examples</h4>

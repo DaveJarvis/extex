@@ -19,6 +19,8 @@
 
 package org.extex.unit.tex.register.count;
 
+import org.extex.base.parser.CountConvertible;
+import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.ArithmeticOverflowException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
@@ -30,8 +32,6 @@ import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.arithmetic.Advanceable;
 import org.extex.interpreter.type.arithmetic.Divideable;
 import org.extex.interpreter.type.arithmetic.Multiplyable;
-import org.extex.scanner.CountConvertible;
-import org.extex.scanner.CountParser;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
@@ -74,7 +74,7 @@ import org.extex.typesetter.exception.TypesetterException;
  *      &rarr; &lang;optional prefix&rang; <tt>\mag</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}
  *
  *    &lang;optional prefix&rang;
@@ -165,7 +165,7 @@ public class Mag extends AbstractCount
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.scanner.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.base.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,

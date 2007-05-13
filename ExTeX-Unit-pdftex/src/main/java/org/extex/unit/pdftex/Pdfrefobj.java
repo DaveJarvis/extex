@@ -19,11 +19,11 @@
 
 package org.extex.unit.pdftex;
 
+import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.scanner.CountParser;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.pdftex.PdfRefObj;
@@ -44,7 +44,7 @@ import org.extex.typesetter.type.node.pdftex.PdfRefObj;
  * <pre class="syntax">
  *    &lang;pdfrefobj&rang;
  *       &rarr; <tt>\pdfrefobj</tt> {@linkplain
- *          org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *          &lang;number&rang;} </pre>
  * 
  * <h4>Examples</h4>

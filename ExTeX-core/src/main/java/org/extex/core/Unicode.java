@@ -25,20 +25,12 @@ package org.extex.core;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4388 $
  */
-public final class Unicode {
+public interface Unicode {
 
     /**
      * The constant <tt>OFFSET</tt> contains the offset for shifting code points
      * to a private Unicode area.
      */
-    public static final int OFFSET = 0xEE00;
-
-    /**
-     * Creates a new object.
-     */
-    private Unicode() {
-
-        super();
-    }
+    int OFFSET = 0xEE00;
 
 }

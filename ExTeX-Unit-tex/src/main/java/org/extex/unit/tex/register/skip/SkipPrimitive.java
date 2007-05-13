@@ -19,6 +19,9 @@
 
 package org.extex.unit.tex.register.skip;
 
+import org.extex.base.parser.CountParser;
+import org.extex.base.parser.GlueConvertible;
+import org.extex.base.parser.GlueParser;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.helping.ArithmeticOverflowException;
 import org.extex.core.exception.helping.HelpingException;
@@ -31,9 +34,6 @@ import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.arithmetic.Advanceable;
 import org.extex.interpreter.type.arithmetic.Divideable;
 import org.extex.interpreter.type.arithmetic.Multiplyable;
-import org.extex.scanner.CountParser;
-import org.extex.scanner.GlueConvertible;
-import org.extex.scanner.GlueParser;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -61,7 +61,7 @@ import org.extex.typesetter.exception.TypesetterException;
  *        &lang;register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.scanner.GlueParser#parse(TokenSource,Context,Typesetter)
+ *        org.extex.base.parser.GlueParser#parse(TokenSource,Context,Typesetter)
  *        &lang;glue&rang;}
  *
  *   &lang;optional prefix&rang;
@@ -145,7 +145,7 @@ public class SkipPrimitive extends AbstractSkip
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.scanner.GlueConvertible#convertGlue(org.extex.interpreter.context.Context,
+     * @see org.extex.base.parser.GlueConvertible#convertGlue(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Glue convertGlue(Context context, TokenSource source,

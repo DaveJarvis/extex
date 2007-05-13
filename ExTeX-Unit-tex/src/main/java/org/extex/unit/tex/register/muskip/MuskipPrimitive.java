@@ -19,10 +19,10 @@
 
 package org.extex.unit.tex.register.muskip;
 
+import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.scanner.CountParser;
 import org.extex.scanner.type.Namespace;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -55,7 +55,7 @@ import org.extex.typesetter.exception.TypesetterException;
  *        &lang;register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.scanner.MuskipParser#parse(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.MuskipParser#parse(Context,TokenSource,Typesetter)
  *        &lang;muglue&rang;}
  *
  *   &lang;optional prefix&rang;

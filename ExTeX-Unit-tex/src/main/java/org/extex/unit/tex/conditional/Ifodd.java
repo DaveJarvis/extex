@@ -19,10 +19,10 @@
 
 package org.extex.unit.tex.conditional;
 
+import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.scanner.CountParser;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.conditional.AbstractIf;
@@ -43,10 +43,10 @@ import org.extex.unit.base.conditional.AbstractIf;
  * <pre class="syntax">
  *    &lang;ifodd&rang;
  *      &rarr; <tt>\ifodd</tt> {@linkplain
- *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\fi</tt>
  *      | <tt>\ifodd</tt> {@linkplain
- *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
  * 
  * <h4>Examples</h4>

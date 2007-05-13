@@ -19,6 +19,9 @@
 
 package org.extex.unit.tex.hyphen;
 
+import org.extex.base.parser.CountConvertible;
+import org.extex.base.parser.CountParser;
+import org.extex.base.parser.DimenConvertible;
 import org.extex.core.exception.helping.ArithmeticOverflowException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
@@ -32,9 +35,6 @@ import org.extex.interpreter.type.arithmetic.Divideable;
 import org.extex.interpreter.type.arithmetic.Multiplyable;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
-import org.extex.scanner.CountConvertible;
-import org.extex.scanner.CountParser;
-import org.extex.scanner.DimenConvertible;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
@@ -58,7 +58,7 @@ import org.extex.typesetter.exception.TypesetterException;
  *      &rarr; <tt>\lefthyphenmin</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  * 
  * <h4>Example:</h4>
@@ -156,7 +156,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.scanner.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.base.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -172,7 +172,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.scanner.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
+     * @see org.extex.base.parser.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,

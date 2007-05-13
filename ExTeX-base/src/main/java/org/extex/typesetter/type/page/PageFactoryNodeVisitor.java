@@ -24,6 +24,7 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.extex.base.parser.DimenParser;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
@@ -31,7 +32,6 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.max.StringSource;
-import org.extex.scanner.DimenParser;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;

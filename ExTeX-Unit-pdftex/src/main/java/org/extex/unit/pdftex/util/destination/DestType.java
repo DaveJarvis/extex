@@ -21,12 +21,12 @@ package org.extex.unit.pdftex.util.destination;
 
 import java.io.Serializable;
 
+import org.extex.base.parser.CountParser;
+import org.extex.base.parser.DimenParser;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.scanner.CountParser;
-import org.extex.scanner.DimenParser;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.RuleNode;

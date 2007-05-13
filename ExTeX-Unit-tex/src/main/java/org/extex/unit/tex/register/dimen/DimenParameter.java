@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.register.dimen;
 
+import org.extex.base.parser.DimenParser;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.Configurable;
@@ -27,7 +28,6 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.InitializableCode;
-import org.extex.scanner.DimenParser;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;

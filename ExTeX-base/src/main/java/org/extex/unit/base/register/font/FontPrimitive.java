@@ -25,6 +25,9 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.base.parser.CountParser;
+import org.extex.base.parser.DimenParser;
+import org.extex.base.parser.GlueParser;
 import org.extex.core.count.Count;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
@@ -41,9 +44,6 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.font.FontConvertible;
-import org.extex.scanner.CountParser;
-import org.extex.scanner.DimenParser;
-import org.extex.scanner.GlueParser;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.SpaceToken;
@@ -99,7 +99,7 @@ import org.extex.typesetter.tc.font.impl.FontImpl;
  *
  *    &lang;option&rang;
  *      &rarr; [scaled] {@linkplain
- *        org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}
  *       | [at] {@linkplain
  *           org.extex.core.dimen#Dimen(org.extex.interpreter.context.Context,org.extex.interpreter.TokenSource)

@@ -21,13 +21,13 @@ package de.dante.extex.interpreter.type.bool;
 
 import java.io.Serializable;
 
+import org.extex.base.parser.CountConvertible;
+import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.Code;
-import org.extex.scanner.CountConvertible;
-import org.extex.scanner.CountParser;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;

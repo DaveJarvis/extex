@@ -570,7 +570,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.scanner.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.base.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,

@@ -21,6 +21,7 @@ package org.extex.unit.tex.table;
 
 import java.util.List;
 
+import org.extex.base.parser.DimenParser;
 import org.extex.core.Locator;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.helping.EofException;
@@ -34,7 +35,6 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.box.Boxable;
-import org.extex.scanner.DimenParser;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;

@@ -29,8 +29,6 @@ import org.extex.core.exception.ImpossibleException;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.FixedGlueComponent;
 import org.extex.core.glue.WideGlue;
-import org.extex.typesetter.PageContext;
-import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;

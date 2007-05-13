@@ -24,83 +24,35 @@ import java.io.Serializable;
 
 /**
  * This interface provides a limited set of writing directions. The writing
- * directions are defined as constants. The constructor is private to avoid
- * that additional directions are defined.
- *
+ * directions are defined as constants. The constructor is private to avoid that
+ * additional directions are defined.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class Direction implements Serializable {
 
     /**
-     * This interface restricts the values which can be used as components of a
-     * direction.
-     *
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
+     * This enumeration restricts the values which can be used as components of
+     * a direction.
      */
-    public static interface Dir extends Serializable {
-
-    }
-
-    /**
-     * The constant <tt>B</tt> contains the direction component <i>bottom</i>.
-     */
-    public static final Dir B = new Dir() {
-
+    public enum Dir {
         /**
-         * The field <tt>serialVersionUID</tt> contains the version number for
-         * serialization.
+         * The field <tt>B</tt> contains the direction component for <i>bottom</i>.
          */
-        protected static final long serialVersionUID = 2006L;
-
+        B,
         /**
-         * Magic method used during de-serialization to remap the object read.
-         *
-         * @return the constant
+         * The field <tt>L</tt> contains the direction component for <i>left</i>.
          */
-        Object readResolve() {
-
-            return B;
-        }
-
+        L,
         /**
-         * @see java.lang.Object#toString()
+         * The field <tt>R</tt> contains the direction component for <i>right</i>.
          */
-        public String toString() {
-
-            return "B";
-        }
-    };
-
-    /**
-     * The constant <tt>L</tt> contains the direction component <i>left</i>.
-     */
-    public static final Dir L = new Dir() {
-
+        R,
         /**
-         * The field <tt>serialVersionUID</tt> contains the version number for
-         * serialization.
+         * The field <tt>T</tt> contains the direction component for <i>top</i>.
          */
-        protected static final long serialVersionUID = 2006L;
-
-        /**
-         * Magic method used during de-serialization to remap the object read.
-         *
-         * @return the constant
-         */
-        Object readResolve() {
-
-            return L;
-        }
-
-        /**
-         * @see java.lang.Object#toString()
-         */
-        public String toString() {
-
-            return "L";
-        }
+        T
     };
 
     /**
@@ -110,16 +62,17 @@ public class Direction implements Serializable {
     public static final Direction LR = new Direction() {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         * The constant <tt>serialVersionUID</tt> contains the id for
+         * serialization.
          */
         protected static final long serialVersionUID = 2006L;
 
         /**
          * Return the singleton constant object after the serialized instance
          * has been read back in.
-         *
+         * 
          * @return the one and only instance of this object
-         *
+         * 
          * @throws ObjectStreamException never
          */
         protected Object readResolve() throws ObjectStreamException {
@@ -138,52 +91,23 @@ public class Direction implements Serializable {
     };
 
     /**
-     * The constant <tt>R</tt> contains the direction component <i>right</i>.
-     */
-    public static final Dir R = new Dir() {
-
-        /**
-         * The field <tt>serialVersionUID</tt> contains the version number for
-         * serialization.
-         */
-        protected static final long serialVersionUID = 2006L;
-
-        /**
-         * Magic method used during de-serialization to remap the object read.
-         *
-         * @return the constant
-         */
-        Object readResolve() {
-
-            return R;
-        }
-
-        /**
-         * @see java.lang.Object#toString()
-         */
-        public String toString() {
-
-            return "R";
-        }
-    };
-
-    /**
      * The constant <tt>RL</tt> contains the direction for right-to-left
      * languages.
      */
     public static final Direction RL = new Direction() {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+         * The constant <tt>serialVersionUID</tt> contains the id for
+         * serialization.
          */
         protected static final long serialVersionUID = 2006L;
 
         /**
          * Return the singleton constant object after the serialized instance
          * has been read back in.
-         *
+         * 
          * @return the one and only instance of this object
-         *
+         * 
          * @throws ObjectStreamException never
          */
         protected Object readResolve() throws ObjectStreamException {
@@ -202,39 +126,10 @@ public class Direction implements Serializable {
     };
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2006L;
-
-    /**
-     * The constant <tt>T</tt> contains the direction component <i>top</i>.
-     */
-    public static final Dir T = new Dir() {
-
-        /**
-         * The field <tt>serialVersionUID</tt> contains the version number for
-         * serialization.
-         */
-        protected static final long serialVersionUID = 2006L;
-
-        /**
-         * Magic method used during de-serialization to remap the object read.
-         *
-         * @return the constant
-         */
-        Object readResolve() {
-
-            return T;
-        }
-
-        /**
-         * @see java.lang.Object#toString()
-         */
-        public String toString() {
-
-            return "T";
-        }
-    };
 
     /**
      * The field <tt>beginningOfLine</tt> contains the direction at the
@@ -256,7 +151,7 @@ public class Direction implements Serializable {
 
     /**
      * Creates a new object.
-     *
+     * 
      */
     private Direction() {
 
@@ -265,13 +160,12 @@ public class Direction implements Serializable {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param beginningOfPage the beginning of the page
      * @param beginningOfLine the beginning of the line
      * @param topOfLine the top of the line
      */
-    public Direction(Dir beginningOfPage, Dir beginningOfLine,
-            Dir topOfLine) {
+    public Direction(Dir beginningOfPage, Dir beginningOfLine, Dir topOfLine) {
 
         super();
         this.beginningOfPage = beginningOfPage;
@@ -282,9 +176,9 @@ public class Direction implements Serializable {
 
     /**
      * Returns a string representation of the object.
-     *
-     * @return  a string representation of the object.
-     *
+     * 
+     * @return a string representation of the object.
+     * 
      * @see java.lang.Object#toString()
      */
     public String toString() {

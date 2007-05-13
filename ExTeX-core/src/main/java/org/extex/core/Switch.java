@@ -20,14 +20,14 @@
 package org.extex.core;
 
 /**
- * This class provides a modifiable boolean object.
- * In contrast to the class {@link java.lang.Boolean Boolean} this class has
- * also a setter for the encapsulated boolean value.
+ * This class provides a modifiable boolean object. In contrast to the class
+ * {@link java.lang.Boolean Boolean} this class has also a setter for the
+ * encapsulated boolean value.
  * <p>
- *  This class cures the deficiency of Java to provide booleans as first-class
- *  objects.
+ * This class cures the deficiency of Java to provide booleans as first-class
+ * objects.
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5417 $
  */
@@ -40,7 +40,7 @@ public class Switch {
 
     /**
      * Creates a new object with a given boolean value.
-     *
+     * 
      * @param on the initial value
      */
     public Switch(boolean on) {
@@ -51,7 +51,7 @@ public class Switch {
 
     /**
      * Getter for value.
-     *
+     * 
      * @return the value.
      */
     public boolean isOn() {
@@ -61,12 +61,22 @@ public class Switch {
 
     /**
      * Setter for value.
-     *
+     * 
      * @param on the value to set.
      */
     public void set(boolean on) {
 
         this.value = on;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+
+        return this.value ? "on" : "off";
     }
 
 }

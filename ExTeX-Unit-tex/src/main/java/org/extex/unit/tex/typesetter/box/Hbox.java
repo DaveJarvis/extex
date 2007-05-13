@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.typesetter.box;
 
+import org.extex.base.parser.DimenParser;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
@@ -27,7 +28,6 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.type.box.Box;
-import org.extex.scanner.DimenParser;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;

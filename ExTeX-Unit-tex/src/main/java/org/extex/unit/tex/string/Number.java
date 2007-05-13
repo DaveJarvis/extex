@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.string;
 
+import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
 import org.extex.interpreter.Flags;
@@ -26,7 +27,6 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
-import org.extex.scanner.CountParser;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;

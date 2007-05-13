@@ -19,6 +19,7 @@
 
 package org.extex.unit.base.register;
 
+import org.extex.base.parser.CountConvertible;
 import org.extex.core.UnicodeChar;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
@@ -30,7 +31,6 @@ import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Showable;
 import org.extex.interpreter.type.Theable;
-import org.extex.scanner.CountConvertible;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.token.Token;
@@ -80,7 +80,7 @@ public class CharCode extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.scanner.CountConvertible#convertCount(
+     * @see org.extex.base.parser.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */

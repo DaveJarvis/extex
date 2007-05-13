@@ -19,6 +19,8 @@
 
 package org.extex.unit.tex.font;
 
+import org.extex.base.parser.CountParser;
+import org.extex.base.parser.DimenParser;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
@@ -31,8 +33,6 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
-import org.extex.scanner.CountParser;
-import org.extex.scanner.DimenParser;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
@@ -63,7 +63,7 @@ import org.extex.typesetter.tc.font.Font;
  * <pre class="syntax">
  *    &lang;fontdimen&rang;
  *       &rarr; <tt>\fontdimen</tt> {@linkplain
- *          org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#getFont(Context,String)
  *          &lang;font&rang;} {@linkplain

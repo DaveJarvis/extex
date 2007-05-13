@@ -36,7 +36,7 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
     private String primitive;
 
     /**
-     * The field <tt>cs</tt> contains the ...
+     * The field <tt>cs</tt> contains the control sequence.
      */
     private String cs;
 

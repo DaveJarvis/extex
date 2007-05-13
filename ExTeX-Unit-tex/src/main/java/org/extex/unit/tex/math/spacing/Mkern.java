@@ -19,13 +19,13 @@
 
 package org.extex.unit.tex.math.spacing;
 
+import org.extex.base.parser.MudimenParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.muskip.Mudimen;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.scanner.MudimenParser;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.listMaker.math.NoadConsumer;
@@ -47,7 +47,7 @@ import org.extex.unit.tex.math.AbstractMathCode;
  * <pre class="syntax">
  *    &lang;mkern&rang;
  *       &rarr; <tt>\mkern</tt> {@linkplain
- *          org.extex.scanner.MudimenParser#parseMudimen(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.MudimenParser#parseMudimen(Context,TokenSource,Typesetter)
  *          &lang;mudimen&rang;} </pre>
  * 
  * <h4>Examples</h4>

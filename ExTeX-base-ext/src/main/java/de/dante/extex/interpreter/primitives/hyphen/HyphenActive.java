@@ -19,6 +19,7 @@
 
 package de.dante.extex.interpreter.primitives.hyphen;
 
+import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -28,7 +29,6 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.Theable;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
-import org.extex.scanner.CountParser;
 import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
