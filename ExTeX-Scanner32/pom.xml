@@ -20,7 +20,36 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
+  <dependencies>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-core</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Scanner-API</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Scanner</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+
   <developers>
+    <developer>
+      <id>mgn</id>
+      <name>Michael Niedermair</name>
+      <email>m.g.n@gmx.de</email>
+      <roles>
+        <role>developer</role>
+        <role>maintaner</role>
+      </roles>
+      <timezone>+1</timezone>
+      <properties/>
+    </developer>
     <developer>
       <id>gene</id>
       <name>Gerd Neugebauer</name>
