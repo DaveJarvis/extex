@@ -29,12 +29,13 @@
   </description>
 
   <property name="javac.deprecation" value="off" />
-  <property name="src" location="src/java" />
-  <property name="resources" location="src/resources" />
-  <property name="src.tests" location="src/test" />
+  <property name="src" location="src/main/java" />
+  <property name="resources" location="src/main/resources" />
+  <property name="src.tests" location="src/test/java" />
   <property name="classes" location="target/classes" />
   <property name="javadoc" location="target/javadoc" />
   <property name="target" location="target" />
+  <property name="target.tests" location="target/tests" />
   <property name="main.class" value="org.extex.main.tex.TeX" />
 
   <!-- classpath for the project -->
@@ -157,9 +158,12 @@
       </classpath>
     </javac>
     <copy todir="${classes}">
-      <fileset dir="src/test">
+      <fileset dir="${src.tests}">
         <include name="**/*.properties" />
         <include name="**/*.xml" />
+      </fileset>
+      <fileset dir="src/test/resources">
+        <include name="**/*" />
       </fileset>
     </copy>
   </target>
@@ -192,7 +196,7 @@
         <include name="TEST-*.xml" />
       </fileset>
       <report format="frames"
-              styledir="develop/reports"
+              styledir="../build/src/xslt"
               todir="${target}/reports/tests" />
     </junitreport>
   </target>
