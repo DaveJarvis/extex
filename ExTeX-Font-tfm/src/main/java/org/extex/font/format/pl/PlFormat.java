@@ -17,7 +17,7 @@
  *
  */
 
-package unsorted.pl;
+package org.extex.font.format.pl;
 
 import java.io.IOException;
 
@@ -25,11 +25,11 @@ import org.extex.font.exception.FontException;
 
 /**
  * Interface for the PL-Format.
- *
+ * 
  * <p>
  * Convert a BaseFont (e.g. tfm) to a PL-file (property-list).
  * </p>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -37,8 +37,8 @@ public interface PlFormat {
 
     /**
      * Print all information (jn PL-format) to the writer.
-     *
-     * @param out  the plwriter
+     * 
+     * @param out the plwriter
      * @throws IOException if an IO-error occurs.
      * @throws FontException if a font-error occurs.
      */

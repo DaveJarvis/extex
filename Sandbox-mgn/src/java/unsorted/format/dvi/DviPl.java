@@ -25,6 +25,7 @@ import java.util.Map;
 
 import org.extex.font.FontFactory;
 import org.extex.font.exception.FontException;
+import org.extex.font.format.pl.PlWriter;
 import org.extex.font.format.tfm.TfmFixWord;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.util.file.random.RandomAccessR;
@@ -51,7 +52,6 @@ import unsorted.format.dvi.command.DviXXX;
 import unsorted.format.dvi.command.DviY;
 import unsorted.format.dvi.command.DviZ;
 import unsorted.format.dvi.exception.DviException;
-import unsorted.pl.PlWriter;
 
 /**
  * DVI to PL converter.

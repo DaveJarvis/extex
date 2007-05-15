@@ -26,11 +26,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
-import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
+import org.extex.font.format.pl.PlWriter;
 import org.extex.font.format.tfm.TfmCharInfoArray;
 import org.extex.font.format.tfm.TfmCharInfoWord;
-import org.extex.font.format.tfm.TfmConstants;
 import org.extex.font.format.tfm.TfmDepthArray;
 import org.extex.font.format.tfm.TfmExtenArray;
 import org.extex.font.format.tfm.TfmFixWord;
@@ -48,34 +49,32 @@ import org.extex.font.format.tfm.TfmReader;
 import org.extex.font.format.tfm.TfmVisitor;
 import org.extex.font.format.tfm.TfmWidthArray;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.util.xml.XMLStreamWriter;
-
-import de.dante.util.font.AbstractFontUtil;
+import org.extex.util.font.AbstractFontUtil;
 
 /**
- * Convert a tfm font to a xml file.
+ * Convert a tfm font to a pl file.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class Tfm2Xml extends AbstractFontUtil {
+public class Tfm2Pl extends AbstractFontUtil {
 
     /**
-     * The xml visitor.
+     * The pl visitor.
      */
-    private class XmlVisitor implements TfmVisitor {
+    private class PlVisitor implements TfmVisitor {
 
         /**
-         * The xml writer.
+         * The pl writer.
          */
-        private XMLStreamWriter writer;
+        private PlWriter writer;
 
         /**
          * Creates a new object.
          * 
-         * @param writer The xml writer.
+         * @param writer The pl writer.
          */
-        public XmlVisitor(XMLStreamWriter writer) {
+        public PlVisitor(PlWriter writer) {
 
             this.writer = writer;
         }
@@ -87,9 +86,6 @@ public class Tfm2Xml extends AbstractFontUtil {
          */
         public void end() throws IOException {
 
-            writer.writeEndElement();
-            writer.writeEndDocument();
-
         }
 
         /**
@@ -99,104 +95,83 @@ public class Tfm2Xml extends AbstractFontUtil {
          */
         public void start() throws IOException {
 
-            writer.writeStartDocument();
-            writer.writeStartElement("tfm");
-
         }
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmCharInfoArray(
-         *      org.extex.font.format.tfm.TfmCharInfoArray)
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmCharInfoArray(org.extex.font.format.tfm.TfmCharInfoArray)
          */
         public void visitTfmCharInfoArray(TfmCharInfoArray charinfo)
                 throws IOException {
 
-            writer.writeStartElement("charinfo");
-            TfmCharInfoWord[] ciwarray = charinfo.getCharinfoword();
-            for (int i = 0; i < ciwarray.length; i++) {
-                TfmCharInfoWord ciw = ciwarray[i];
+            for (int i = 0; i < charinfo.getCharinfoword().length; i++) {
 
-                writer.writeStartElement("char");
-                writer.writeAttribute("id", ciw.getCharid() + ciw.getBc());
+                TfmCharInfoWord ciw = charinfo.getCharinfoword()[i];
+                if (ciw != null) {
+                    writer.plopen("CHARACTER").addChar(
+                        (short) (i + charinfo.getBc()));
 
-                String c =
-                        Character.toString((char) (ciw.getCharid() + ciw
-                            .getBc()));
-                if (c != null && c.trim().length() > 0) {
-                    writer.writeAttribute("char", c);
-                }
-                if (ciw.getGlyphname() != null) {
-                    writer.writeAttribute("glyph-name", ciw.getGlyphname()
-                        .replaceAll("/", ""));
-                }
-                writer.writeAttribute("width_fw", ciw.getWidth().getValue());
-                writer.writeAttribute("height_fw", ciw.getHeight().getValue());
-                writer.writeAttribute("depth_fw", ciw.getDepth().getValue());
-                writer.writeAttribute("italic_fw", ciw.getItalic().getValue());
+                    writer.addFixWord(ciw.getWidth(), "CHARWD");
+                    writer.addFixWord(ciw.getHeight(), "CHARHT");
+                    writer.addFixWord(ciw.getDepth(), "CHARDP");
+                    writer.addFixWord(ciw.getItalic(), "CHARIC");
 
-                // ligature
-                int ligstart = ciw.getLigkernstart();
-                if (ligstart != TfmCharInfoWord.NOINDEX
-                        && ciw.getLigKernTable() != null) {
-
-                    for (int k = ligstart; k != TfmCharInfoWord.NOINDEX; k =
-                            ciw.getLigKernTable()[k].nextIndex(k)) {
-                        TfmLigKern lk = ciw.getLigKernTable()[k];
-
-                        if (lk instanceof TfmLigature) {
-                            TfmLigature lig = (TfmLigature) lk;
-
-                            writer.writeStartElement("ligature");
-                            writer.writeAttribute("letter-id", String
-                                .valueOf(lig.getNextChar()));
-                            String sl =
-                                    Character
-                                        .toString((char) lig.getNextChar());
-                            if (sl != null && sl.trim().length() > 0) {
-                                writer.writeAttribute("letter", sl.trim());
-                            }
-
-                            writer.writeAttribute("lig-id", String.valueOf(lig
-                                .getAddingChar()));
-                            String slig =
-                                    Character.toString((char) lig
-                                        .getAddingChar());
-                            if (slig != null && slig.trim().length() > 0) {
-                                writer.writeAttribute("lig", slig.trim());
-                            }
-                            writer.writeEndElement();
-                        } else if (lk instanceof TfmKerning) {
-                            TfmKerning kern = (TfmKerning) lk;
-
-                            writer.writeStartElement("kerning");
-                            writer.writeAttribute("id", String.valueOf(kern
-                                .getNextChar()));
-                            String sk =
-                                    Character.toString((char) kern
-                                        .getNextChar());
-                            if (sk != null && sk.trim().length() > 0) {
-                                writer.writeAttribute("char", sk.trim());
-                            }
-                            writer.writeAttribute("size_fw", String
-                                .valueOf(kern.getKern().getValue()));
-                            writer.writeEndElement();
+                    if (ciw.foundEntry()) {
+                        writer.plopen("COMMENT");
+                        if (ciw.getGlyphname() != null) {
+                            writer.plopen("NAME").addStr(ciw.getGlyphname())
+                                .plclose();
                         }
-                    }
-                }
-                writer.writeEndElement();
+                        if (ciw.getTop() != TfmCharInfoWord.NOCHARCODE) {
+                            writer.plopen("TOP").addDec(ciw.getTop()).plclose();
+                        }
+                        if (ciw.getMid() != TfmCharInfoWord.NOCHARCODE) {
+                            writer.plopen("MID").addDec(ciw.getMid()).plclose();
+                        }
+                        if (ciw.getBot() != TfmCharInfoWord.NOCHARCODE) {
+                            writer.plopen("BOT").addDec(ciw.getBot()).plclose();
+                        }
+                        if (ciw.getRep() != TfmCharInfoWord.NOCHARCODE) {
+                            writer.plopen("REP").addDec(ciw.getRep()).plclose();
+                        }
+                        // ligature
+                        int ligstart = ciw.getLigkernstart();
+                        if (ligstart != TfmCharInfoWord.NOINDEX
+                                && ciw.getLigKernTable() != null) {
 
+                            for (int k = ligstart; k != TfmCharInfoWord.NOINDEX; k =
+                                    ciw.getLigKernTable()[k].nextIndex(k)) {
+                                TfmLigKern lk = ciw.getLigKernTable()[k];
+
+                                if (lk instanceof TfmLigature) {
+                                    TfmLigature lig = (TfmLigature) lk;
+
+                                    writer.plopen("LIG").addChar(
+                                        lig.getNextChar()).addChar(
+                                        lig.getAddingChar()).plclose();
+                                } else if (lk instanceof TfmKerning) {
+                                    TfmKerning kern = (TfmKerning) lk;
+
+                                    writer.plopen("KRN").addChar(
+                                        kern.getNextChar()).addReal(
+                                        kern.getKern()).plclose();
+                                }
+                            }
+                        }
+                        writer.plclose();
+                    }
+
+                    writer.plclose();
+                }
             }
-            writer.writeEndElement();
 
         }
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmDepthArray(
-         *      org.extex.font.format.tfm.TfmDepthArray)
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmDepthArray(org.extex.font.format.tfm.TfmDepthArray)
          */
         public void visitTfmDepthArray(TfmDepthArray depth) throws IOException {
 
@@ -205,8 +180,7 @@ public class Tfm2Xml extends AbstractFontUtil {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmExtenArray(
-         *      org.extex.font.format.tfm.TfmExtenArray)
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmExtenArray(org.extex.font.format.tfm.TfmExtenArray)
          */
         public void visitTfmExtenArray(TfmExtenArray exten) throws IOException {
 
@@ -221,33 +195,35 @@ public class Tfm2Xml extends AbstractFontUtil {
         public void visitTfmHeaderArray(TfmHeaderArray header)
                 throws IOException {
 
-            writer.writeStartElement("header");
-            writer.writeAttribute("checksum", header.getChecksum());
-            writer.writeAttribute("desingsize", header.getDesignsize());
-            writer.writeAttribute("units", TfmConstants.CONST_1000);
-            if (header.getCodingscheme() != null) {
-                writer.writeAttribute("codingscheme", header.getCodingscheme());
-            }
-            if (header.getFontType() != null) {
-                writer.writeAttribute("fonttype", header.getFontType()
-                    .toString());
-            }
             if (header.getFontfamily() != null) {
-                writer.writeAttribute("fontfamily", header.getFontfamily());
+                writer.plopen("FAMILY").addStr(header.getFontfamily())
+                    .plclose();
             }
-            writer.writeAttribute("sevenbitsafe", header.isSevenBitSafe());
-            writer.writeAttribute("xeroxfacecode", header.getXeroxfacecode());
+            if (header.getXeroxfacecode() >= 0) {
+                writer.plopen("FACE").addFace(header.getXeroxfacecode())
+                    .plclose();
+            }
+
             if (header.getHeaderrest() != null) {
                 for (int i = 0; i < header.getHeaderrest().length; i++) {
-                    writer.writeStartElement("header");
-                    writer.writeAttribute("id", i
-                            + TfmHeaderArray.HEADER_REST_SIZE);
-                    writer.writeAttribute("value", header.getHeaderrest()[i]);
-                    writer.writeEndElement();
+                    writer.plopen("HEADER").addDec(
+                        i + TfmHeaderArray.HEADER_REST_SIZE).addOct(
+                        header.getHeaderrest()[i]).plclose();
                 }
             }
-            writer.writeEndElement();
-
+            if (header.getCodingscheme() != null) {
+                writer.plopen("CODINGSCHEME").addStr(header.getCodingscheme())
+                    .plclose();
+            }
+            writer.plopen("DESIGNSIZE").addReal(header.getDesignsize())
+                .plclose();
+            writer.addComment("DESIGNSIZE IS IN POINTS");
+            writer.addComment("OTHER SIZES ARE MULTIPLES OF DESIGNSIZE");
+            writer.plopen("CHECKSUM").addOct(header.getChecksum()).plclose();
+            if (header.isSevenBitSafe()) {
+                writer.plopen("SEVENBITSAFEFLAG").addBool(
+                    header.isSevenBitSafe()).plclose();
+            }
         }
 
         /**
@@ -302,6 +278,54 @@ public class Tfm2Xml extends AbstractFontUtil {
         public void visitTfmLigKernArray(TfmLigKernArray ligkern)
                 throws IOException {
 
+            if (ligkern.getBoundaryChar() != TfmCharInfoWord.NOCHARCODE) {
+                writer.plopen("BOUNDARYCHAR")
+                    .addChar(ligkern.getBoundaryChar()).plclose();
+            }
+            if (ligkern.getLigKernTable().length > 0) {
+                writer.plopen("LIGTABLE");
+                for (int i = 0; i < ligkern.getCharinfo().getCharinfoword().length; i++) {
+                    TfmCharInfoWord ciw =
+                            ligkern.getCharinfo().getCharinfoword()[i];
+                    if (ciw != null) {
+                        if (ligkern.foundLigKern(ciw)) {
+                            writer.plopen("LABEL").addChar(
+                                (short) (i + ligkern.getBc()));
+                            writer.plclose();
+
+                            // ligature
+                            int ligstart = ciw.getLigkernstart();
+                            if (ligstart != TfmCharInfoWord.NOINDEX
+                                    && ligkern.getLigKernTable() != null) {
+
+                                for (int k = ligstart; k != TfmCharInfoWord.NOINDEX; k =
+                                        ligkern.getLigKernTable()[k]
+                                            .nextIndex(k)) {
+                                    TfmLigKern lk =
+                                            ligkern.getLigKernTable()[k];
+
+                                    if (lk instanceof TfmLigature) {
+                                        TfmLigature lig = (TfmLigature) lk;
+
+                                        writer.plopen("LIG").addChar(
+                                            lig.getNextChar()).addChar(
+                                            lig.getAddingChar()).plclose();
+                                    } else if (lk instanceof TfmKerning) {
+                                        TfmKerning kerning = (TfmKerning) lk;
+
+                                        writer.plopen("KRN").addChar(
+                                            kerning.getNextChar()).addReal(
+                                            kerning.getKern()).plclose();
+                                    }
+                                }
+                            }
+                            writer.plopen("STOP").plclose();
+                        }
+                    }
+                }
+                writer.plclose();
+            }
+
         }
 
         /**
@@ -312,22 +336,20 @@ public class Tfm2Xml extends AbstractFontUtil {
          */
         public void visitTfmParamArray(TfmParamArray param) throws IOException {
 
-            writer.writeStartElement("params");
-            Map<String, TfmFixWord> p = param.getParam();
+            writer.plopen("FONTDIMEN");
 
+            SortedMap<String, TfmFixWord> p =
+                    new TreeMap<String, TfmFixWord>(param.getParam());
             Iterator<String> it = p.keySet().iterator();
 
             while (it.hasNext()) {
-
                 String key = it.next();
                 TfmFixWord value = param.getParam(key);
 
-                writer.writeStartElement("param");
-                writer.writeAttribute("name", key);
-                writer.writeAttribute("value_fw", value.getValue());
-                writer.writeEndElement();
+                writer.plopen(key);
+                writer.addReal(value).plclose();
             }
-            writer.writeEndElement();
+            writer.plclose();
 
         }
 
@@ -338,8 +360,6 @@ public class Tfm2Xml extends AbstractFontUtil {
          *      org.extex.font.format.tfm.TfmReader)
          */
         public void visitTfmReader(TfmReader tfmReader) throws IOException {
-
-            writer.writeAttribute("name", tfmReader.getFontname());
 
         }
 
@@ -356,11 +376,6 @@ public class Tfm2Xml extends AbstractFontUtil {
     }
 
     /**
-     * The encoding for the xml output.
-     */
-    private static final String ENCODING = "ISO8859-1";
-
-    /**
      * parameter.
      */
     private static final int PARAMETER = 1;
@@ -373,10 +388,10 @@ public class Tfm2Xml extends AbstractFontUtil {
      */
     public static void main(String[] args) throws Exception {
 
-        Tfm2Xml tfm = new Tfm2Xml();
+        Tfm2Pl tfm = new Tfm2Pl();
 
         if (args.length < PARAMETER) {
-            tfm.getLogger().severe(tfm.getLocalizer().format("Tfm2Xml.Call"));
+            tfm.getLogger().severe(tfm.getLocalizer().format("Tfm2Pl.Call"));
             System.exit(1);
         }
 
@@ -400,18 +415,13 @@ public class Tfm2Xml extends AbstractFontUtil {
     }
 
     /**
-     * The directory for the output.
-     */
-    private String outdir = ".";
-
-    /**
      * Creates a new object.
      * 
      * @throws ConfigurationException from the configuration system.
      */
-    public Tfm2Xml() throws ConfigurationException {
+    public Tfm2Pl() throws ConfigurationException {
 
-        super(Tfm2Xml.class);
+        super(Tfm2Pl.class);
     }
 
     /**
@@ -423,7 +433,7 @@ public class Tfm2Xml extends AbstractFontUtil {
      */
     public void doIt(String tfmfile) throws IOException, ConfigurationException {
 
-        getLogger().severe(getLocalizer().format("Tfm2Xml.start", tfmfile));
+        getLogger().severe(getLocalizer().format("Tfm2Pl.start", tfmfile));
 
         InputStream tfmin = null;
 
@@ -432,9 +442,6 @@ public class Tfm2Xml extends AbstractFontUtil {
 
         if (tfm.canRead()) {
             tfmin = new FileInputStream(tfm);
-        } else {
-            // use the file finder
-            tfmin = getFinder().findResource(tfm.getName(), "");
         }
 
         if (tfmin == null) {
@@ -443,38 +450,17 @@ public class Tfm2Xml extends AbstractFontUtil {
 
         String fontname = tfm.getName().replaceAll(".[tT][fF][mM]", "");
         TfmReader reader = new TfmReader(tfmin, fontname);
-        String xmlfile = outdir + File.separator + fontname + ".xml";
-        XMLStreamWriter writer =
-                new XMLStreamWriter(new FileOutputStream(xmlfile), ENCODING);
-        writer.setBeauty(true);
-        XmlVisitor visitor = new XmlVisitor(writer);
+        String plfile = getOutdir() + File.separator + fontname + ".pl";
+
+        PlWriter writer = new PlWriter(new FileOutputStream(plfile));
+        PlVisitor visitor = new PlVisitor(writer);
         visitor.start();
         reader.visit(visitor);
         visitor.end();
         writer.close();
 
-        getLogger().severe(getLocalizer().format("Tfm2Xml.XmlCreate", xmlfile));
+        getLogger().severe(getLocalizer().format("Tfm2Pl.PlCreate", plfile));
 
-    }
-
-    /**
-     * Getter for outdir.
-     * 
-     * @return Returns the outdir.
-     */
-    public String getOutdir() {
-
-        return outdir;
-    }
-
-    /**
-     * Setter for outdir.
-     * 
-     * @param outdir The outdir to set.
-     */
-    public void setOutdir(String outdir) {
-
-        this.outdir = outdir;
     }
 
 }

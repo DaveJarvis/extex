@@ -16,36 +16,38 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  */
 
-package unsorted.pl;
+package org.extex.font.format.pl;
 
 import java.io.IOException;
 import java.io.Reader;
 
 /**
  * Interface for a PL command.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
- *
+ * 
  */
 public interface PlCommand {
 
     /**
      * Execute the PL command.
-     *
-     * @param reader    The reader.
+     * 
+     * @param reader The reader.
      * @throws IOException if an IO-error occurred.
      */
     void execute(Reader reader) throws IOException;
 
     /**
      * Returns the parameter.
+     * 
      * @return Returns the parameter.
      */
     String getParameter();
 
     /**
      * Set the parameter.
+     * 
      * @param p The parameter.
      */
     void setParameter(String p);

@@ -16,14 +16,14 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  */
 
-package unsorted.pl;
+package org.extex.font.format.pl;
 
 /**
  * Abstract class for a pl command.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
- *
+ * 
  */
 public abstract class AbstractPlCommand implements PlCommand {
 
@@ -34,8 +34,8 @@ public abstract class AbstractPlCommand implements PlCommand {
 
     /**
      * {@inheritDoc}
-     *
-     * @see unsorted.pl.PlCommand#getParameter()
+     * 
+     * @see org.extex.font.format.pl.PlCommand#getParameter()
      */
     public String getParameter() {
 
@@ -44,8 +44,8 @@ public abstract class AbstractPlCommand implements PlCommand {
 
     /**
      * {@inheritDoc}
-     *
-     * @see unsorted.pl.PlCommand#setParameter(java.lang.String)
+     * 
+     * @see org.extex.font.format.pl.PlCommand#setParameter(java.lang.String)
      */
     public void setParameter(String p) {
 

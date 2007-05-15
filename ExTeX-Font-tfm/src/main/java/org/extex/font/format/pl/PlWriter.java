@@ -17,7 +17,7 @@
  *
  */
 
-package unsorted.pl;
+package org.extex.font.format.pl;
 
 import java.io.BufferedWriter;
 import java.io.OutputStream;
@@ -27,14 +27,13 @@ import java.io.Writer;
 
 import org.extex.font.format.tfm.TfmFixWord;
 
-
 /**
  * Writer for the PL-Format.
- *
+ * 
  * <p>
  * see TFtoPL
  * </p>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -66,8 +65,8 @@ public class PlWriter extends PrintWriter {
     private boolean newLine = true;
 
     /**
-     * If set, the character codes are printed in octal even if they
-     * represent a printable character.
+     * If set, the character codes are printed in octal even if they represent a
+     * printable character.
      */
     private boolean octChars = false;
 
@@ -77,12 +76,12 @@ public class PlWriter extends PrintWriter {
     private boolean printZeroWidth = false;
 
     /**
-     * Create a new PlWriter, without automatic line flushing, from an
-     * existing OutputStream.  This convenience constructor creates the
-     * necessary intermediate OutputStreamWriter, which will convert characters
-     * into bytes using the default character encoding.
-     *
-     * @param  out        An output stream
+     * Create a new PlWriter, without automatic line flushing, from an existing
+     * OutputStream. This convenience constructor creates the necessary
+     * intermediate OutputStreamWriter, which will convert characters into bytes
+     * using the default character encoding.
+     * 
+     * @param out An output stream
      * @see java.io.OutputStreamWriter#OutputStreamWriter(java.io.OutputStream)
      */
     public PlWriter(OutputStream out) {
@@ -91,15 +90,14 @@ public class PlWriter extends PrintWriter {
     }
 
     /**
-     * Create a new PlWriter from an existing OutputStream.  This
-     * convenience constructor creates the necessary intermediate
-     * OutputStreamWriter, which will convert characters into bytes using the
-     * default character encoding.
-     *
-     * @param  out        An output stream
-     * @param  autoFlush  A boolean; if true, the println() methods will flush
-     *                    the output buffer
-     *
+     * Create a new PlWriter from an existing OutputStream. This convenience
+     * constructor creates the necessary intermediate OutputStreamWriter, which
+     * will convert characters into bytes using the default character encoding.
+     * 
+     * @param out An output stream
+     * @param autoFlush A boolean; if true, the println() methods will flush the
+     *        output buffer
+     * 
      * @see java.io.OutputStreamWriter#OutputStreamWriter(java.io.OutputStream)
      */
     public PlWriter(OutputStream out, boolean autoFlush) {
@@ -109,10 +107,10 @@ public class PlWriter extends PrintWriter {
 
     /**
      * Create a new PlWriter.
-     *
-     * @param  out        A character-output stream
-     * @param  autoFlush  A boolean; if true, the println() methods will flush
-     *                    the output buffer
+     * 
+     * @param out A character-output stream
+     * @param autoFlush A boolean; if true, the println() methods will flush the
+     *        output buffer
      */
     public PlWriter(Writer out, boolean autoFlush) {
 
@@ -121,7 +119,8 @@ public class PlWriter extends PrintWriter {
 
     /**
      * Prints a symbolic form of boolean value.
-     * @param   b the boolean value to be printed.
+     * 
+     * @param b the boolean value to be printed.
      * @return Return this, reference for subsequent printing.
      */
     public PlWriter addBool(boolean b) {
@@ -130,14 +129,13 @@ public class PlWriter extends PrintWriter {
     }
 
     /**
-     * Prints symbolic representation of character code.
-     * If the character code represents printable character and the member
-     * <code>octChars</code> is <code>false</code> then
-     * it prints <code>C</code> prefix folowed by the
-     * character.
-     * Otherwise it prints the octal representation
-     * (with <code>O</code> prefix).
-     * @param   c the character code to be printed.
+     * Prints symbolic representation of character code. If the character code
+     * represents printable character and the member <code>octChars</code> is
+     * <code>false</code> then it prints <code>C</code> prefix folowed by
+     * the character. Otherwise it prints the octal representation (with
+     * <code>O</code> prefix).
+     * 
+     * @param c the character code to be printed.
      * @return Return this, reference for subsequent printing.
      */
     public PlWriter addChar(short c) {
@@ -148,8 +146,9 @@ public class PlWriter extends PrintWriter {
 
     /**
      * Add a char metric.
-     * @param val   the double value.
-     * @param name  the name
+     * 
+     * @param val the double value.
+     * @param name the name
      * @return Return this, reference for subsequent printing.
      */
     public PlWriter addCharMetric(double val, String name) {
@@ -166,6 +165,7 @@ public class PlWriter extends PrintWriter {
 
     /**
      * Add a comment.
+     * 
      * @param s the string
      * @return Return this, reference for subsequent printing.
      */
@@ -176,7 +176,8 @@ public class PlWriter extends PrintWriter {
 
     /**
      * Prints <code>D</code> prefix and decimal number.
-     * @param   i the number to be printed.
+     * 
+     * @param i the number to be printed.
      * @return Return this, reference for subsequent printing.
      */
     public PlWriter addDec(int i) {
@@ -185,10 +186,11 @@ public class PlWriter extends PrintWriter {
     }
 
     /**
-     * Prints <code>F</code> prefix and Xerox face code.
-     * The code is printed in the three character slope/weight/expansion form
-     * or in octal if the symbolic form cannot be found.
-     * @param   face the Xerox face code to be printed.
+     * Prints <code>F</code> prefix and Xerox face code. The code is printed
+     * in the three character slope/weight/expansion form or in octal if the
+     * symbolic form cannot be found.
+     * 
+     * @param face the Xerox face code to be printed.
      * @return Return this, reference for subsequent printing.
      */
     public PlWriter addFace(int face) {
@@ -201,13 +203,14 @@ public class PlWriter extends PrintWriter {
         int rce = f % RCE.length;
         f /= RCE.length;
         return (f != 0) ? addOct(face) : out(" F ").out(MBL[mbl]).out(RI[ri])
-                .out(RCE[rce]);
+            .out(RCE[rce]);
     }
 
     /**
      * Add a Fixword.
-     * @param fw    the TFmFixWord
-     * @param name  the name
+     * 
+     * @param fw the TFmFixWord
+     * @param name the name
      * @return Return this, reference for subsequent printing.
      */
     public PlWriter addFixWord(TfmFixWord fw, String name) {
@@ -224,7 +227,8 @@ public class PlWriter extends PrintWriter {
 
     /**
      * Prints <code>O</code> prefix and octal number.
-     * @param   i the number to be printed.
+     * 
+     * @param i the number to be printed.
      * @return Return this, reference for subsequent printing.
      */
     public PlWriter addOct(int i) {
@@ -234,7 +238,8 @@ public class PlWriter extends PrintWriter {
 
     /**
      * Prints <code>R</code> prefix and real number.
-     * @param   d    the real number.
+     * 
+     * @param d the real number.
      * @return Return this, reference for subsequent printing.
      */
     public PlWriter addReal(double d) {
@@ -244,7 +249,8 @@ public class PlWriter extends PrintWriter {
 
     /**
      * Prints <code>R</code> prefix and real number.
-     * @param   o the object which represents the real number.
+     * 
+     * @param o the object which represents the real number.
      * @return Return this, reference for subsequent printing.
      */
     public PlWriter addReal(Object o) {
@@ -254,7 +260,8 @@ public class PlWriter extends PrintWriter {
 
     /**
      * Prints a character string after one space.
-     * @param   s the string to be printed.
+     * 
+     * @param s the string to be printed.
      * @return Return this, reference for subsequent printing.
      */
     public PlWriter addStr(String s) {
@@ -283,6 +290,7 @@ public class PlWriter extends PrintWriter {
 
     /**
      * Write a character.
+     * 
      * @param c the char
      * @return Return this, reference for subsequent printing.
      */
@@ -295,6 +303,7 @@ public class PlWriter extends PrintWriter {
 
     /**
      * Write a String.
+     * 
      * @param s the string
      * @return Return this, reference for subsequent printing.
      */
@@ -307,6 +316,7 @@ public class PlWriter extends PrintWriter {
 
     /**
      * Prints new line and the apropriate amount of indentation.
+     * 
      * @return Return this, reference for subsequent printing.
      */
     private PlWriter outLn() {
@@ -321,6 +331,7 @@ public class PlWriter extends PrintWriter {
 
     /**
      * Decreases nesting level and prints right parenthesis.
+     * 
      * @return Return this, reference for subsequent printing.
      */
     public PlWriter plclose() {
@@ -330,9 +341,10 @@ public class PlWriter extends PrintWriter {
     }
 
     /**
-     * Increases nesting level and prints left parenthesis
-     * followed by the property name.
-     * @param   s the property name.
+     * Increases nesting level and prints left parenthesis followed by the
+     * property name.
+     * 
+     * @param s the property name.
      * @return Return this, reference for subsequent printing.
      */
     public PlWriter plopen(String s) {
@@ -346,7 +358,8 @@ public class PlWriter extends PrintWriter {
 
     /**
      * Print a zero fixpointwidth.
-     * @param pzw   print or not
+     * 
+     * @param pzw print or not
      */
     public void printZeroWidth(boolean pzw) {
 
