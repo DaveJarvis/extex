@@ -54,7 +54,8 @@
   <property name="snapshot" location="${target}/${application}/html/snapshot" />
   <property name="classes" location="target/${application}/classes" />
   <property name="javac.deprecation" value="off" />
-  <property name="extex.jar.file" value="extex" />
+  <property name="jar.file" value="extex" />
+  <property name="main.class" value="org.extex.main.tex.TeX" />
 
   <property name="javadoc" location="${snapshot}/javadoc" />
 
@@ -179,7 +180,7 @@
                        except test cases.">
 
     <mkdir dir="${target}/${application}" />
-    <jar jarfile="${target}/${application}/${extex.jar.file}.jar">
+    <jar jarfile="${target}/${application}/${jar.file}.jar">
       <fileset dir="${classes}">
         <patternset>
           <exclude name="**/*Test.class" />
@@ -193,7 +194,7 @@
       </fileset>
       <manifest>
         <attribute name="Built-By" value="${user.name}" />
-        <attribute name="Main-Class" value="org.extex.main.tex.TeX" />
+        <attribute name="Main-Class" value="${main.class}" />
       </manifest>
     </jar>
   </target>
@@ -259,7 +260,7 @@
            encoding="ISO8859-1"
            deprecation="${javac.deprecation}">
       <classpath>
-        <pathelement path="${target}/${application}/${extex.jar.file}.jar" />
+        <pathelement path="${target}/${application}/${jar.file}.jar" />
         <pathelement path="lib/junit-4.1.jar" />
       </classpath>
       <classpath refid="test.class.path" />
@@ -283,7 +284,7 @@
       <jvmarg value="-Xmx512m" />
       <classpath>
         <pathelement path="${test.classes}" />
-        <pathelement path="${target}/${application}/${extex.jar.file}.jar" />
+        <pathelement path="${target}/${application}/${jar.file}.jar" />
       </classpath>
       <classpath refid="test.class.path" />
       <formatter type="xml" />
@@ -325,7 +326,7 @@
     <java fork="true"
           classname="org.extex.checkstyle.ReportAddAuthor" 
           classpath="${target}/test/classes">
-      <classpath path="${target}/lib/${extex.jar.file}.jar"/>
+      <classpath path="${target}/lib/${jar.file}.jar"/>
       <classpath refid="application.class.path" />
       <classpath refid="develop.class.path" />
       <arg value="${target}/checkstyle.xml"/>
