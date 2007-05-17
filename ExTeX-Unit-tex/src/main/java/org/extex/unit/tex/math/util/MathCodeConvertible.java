@@ -46,7 +46,7 @@ public interface MathCodeConvertible {
      *
      * @return the converted value
      * @throws HelpingException in case of an error
-     * @throws TypesetterException TODO
+     * @throws TypesetterException in case of an error in the typesetter
      */
     MathCode convertMathCode(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException;

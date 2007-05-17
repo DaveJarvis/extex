@@ -104,7 +104,7 @@ public class NamedFont extends AbstractAssignment
      *
      * @return the key for the font register
      * @throws HelpingException in case of an error
-     * @throws TypesetterException TODO
+     * @throws TypesetterException in case of an error in the typesetter
      */
     protected String getKey(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {

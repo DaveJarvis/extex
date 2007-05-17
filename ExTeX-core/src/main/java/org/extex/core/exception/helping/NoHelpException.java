@@ -22,10 +22,11 @@ package org.extex.core.exception.helping;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This exception is thrown when a helping exception is required and no help is
+ * available. It simply acts as a wrapper for other exceptions.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5586 $
  */
 public class NoHelpException extends HelpingException {
 

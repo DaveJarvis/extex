@@ -36,31 +36,41 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\namespace</code>.
- *
+ * This class provides an implementation for the primitive
+ * <code>\namespace</code>.
+ * 
  * <doc name="namespace">
  * <h3>The Primitive <tt>\namespace</tt></h3>
  * <p>
- *  TODO missing documentation
+ * The primitive <tt>\namespace</tt> witches the name space. For this purpose
+ * it takes one parameter which is a group. The contents is expanded and should
+ * result in a list of characters. Those characters are taken as the name of the
+ * new name space to switch to.
  * </p>
- *
+ * <p>
+ * The name space corresponding to the empty list of characters is the default
+ * name space.
+ * </p>
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;namespace&rang;
  *      &rarr; <tt>\namespace</tt> {@linkplain
  *      org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
  *      &lang;replacement text&rang;}  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \namespace{org.dante.dtk}  </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @see org.extex.unit.namespace.Export
  * @see org.extex.unit.namespace.Import
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
@@ -70,13 +80,14 @@ public class Namespace extends AbstractAssignment
             ExpandableCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Namespace(String name) {
@@ -86,15 +97,13 @@ public class Namespace extends AbstractAssignment
 
     /**
      * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+    public void assign(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Tokens toks;
         try {
@@ -107,15 +116,13 @@ public class Namespace extends AbstractAssignment
 
     /**
      * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void expand(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException {
+    public void expand(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException {
 
         try {
             source.push(context.getTokenFactory().toTokens( //
@@ -127,22 +134,22 @@ public class Namespace extends AbstractAssignment
 
     /**
      * This method is the getter for the description of the primitive.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for further tokens to qualify the request
      * @param typesetter the typesetter to use
-     *
+     * 
      * @return the description of the primitive as list of Tokens
      * @throws CatcodeException in case of an error in token creation
      * @throws ConfigurationException in case of an configuration error
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public Tokens the(Context context, TokenSource source,
-            Typesetter typesetter)
-            throws CatcodeException, HelpingException, TypesetterException {
+    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
+            throws CatcodeException,
+                HelpingException,
+                TypesetterException {
 
         return context.getTokenFactory().toTokens(context.getNamespace());
     }

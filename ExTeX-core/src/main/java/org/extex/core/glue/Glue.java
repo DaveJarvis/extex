@@ -446,33 +446,4 @@ public class Glue implements Serializable, FixedGlue {
         return sb.toString();
     }
 
-    //TODO gene: remove?
-//    /**
-//     * Determine the printable representation of the object.
-//     * The value returned is exactly the string which would be produced by
-//     * <logo>TeX</logo> to print the skip register.
-//     *
-//     * @param factory the factory to get the tokens from
-//     *
-//     * @return the string representation of this glue
-//     *
-//     * @throws GeneralException in case of an error
-//     *
-//     * @see "<logo>TeX</logo> &ndash; The Program [178,177]"
-//     */
-//    public Tokens toToks(TokenFactory factory) throws GeneralException {
-//
-//        Tokens toks = length.toToks(factory);
-//
-//        if (stretch.getValue() != 0) {
-//            toks.add(factory.toTokens(" plus "));
-//            stretch.toToks(toks, factory, 'p', 't');
-//        }
-//        if (shrink.getValue() != 0) {
-//            toks.add(factory.toTokens(" minus "));
-//            shrink.toToks(toks, factory, 'p', 't');
-//        }
-//        return toks;
-//    }
-
 }

@@ -40,8 +40,9 @@ public interface InitializableCode {
      * @param context the interpreter context
      * @param source the source of information for the initialization
      * @param typesetter the typesetter
-     * @throws HelpingException TODO
-     * @throws TypesetterException TODO
+     *
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     void init(Context context, TokenSource source, Typesetter typesetter)
             throws HelpingException, TypesetterException;

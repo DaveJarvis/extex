@@ -30,7 +30,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingException;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a test suite for the classpath archive finder.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5417 $
@@ -234,7 +234,7 @@ public class ClasspathArchiveFinderTest extends TestCase {
 
         ClasspathArchiveFinder finder = new ClasspathArchiveFinder(CFG);
 
-        assertNotNull("a not found", finder.findResource("a", "tex"));
+        assertNull("a found", finder.findResource("a", "tex"));
     }
 
     /**
@@ -247,7 +247,7 @@ public class ClasspathArchiveFinderTest extends TestCase {
 
         ClasspathArchiveFinder finder = new ClasspathArchiveFinder(CFG);
 
-        assertNotNull("a not found", finder.findResource("a.tex", ""));
+        assertNull("a found", finder.findResource("a.tex", ""));
     }
 
     /**

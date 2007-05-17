@@ -25,7 +25,7 @@ import org.extex.core.exception.helping.HelpingException;
 /**
  * This interface describes the container for count registers of an interpreter
  * context.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -33,39 +33,38 @@ import org.extex.core.exception.helping.HelpingException;
 public interface ContextCount {
 
     /**
-     * Getter for the {@link org.extex.core.count.Count count}
-     * register. Count registers are named, either with a number or an
-     * arbitrary string.
+     * Getter for the {@link org.extex.core.count.Count count} register. Count
+     * registers are named, either with a number or an arbitrary string.
      * <p>
-     *  The numbered registers where limited to 256 in <logo>TeX</logo>.
-     *  This restriction does not longer hold for <logo>ExTeX</logo>.
+     * The numbered registers where limited to 256 in <logo>TeX</logo>. This
+     * restriction does not longer hold for <logo>ExTeX</logo>.
      * </p>
      * <p>
-     *  The return value is guaranteed to be a valid object. <code>null</code>
-     *  will never be returned.
+     * The return value is guaranteed to be a valid object. <code>null</code>
+     * will never be returned.
      * </p>
-     *
+     * 
      * @param name the name or number of the count register
-     *
+     * 
      * @return the count register or <code>null</code> if it is not defined
-     *
+     * 
      * @see #setCount(String, long, boolean)
      */
     Count getCount(String name);
 
     /**
-     * Setter for the {@link org.extex.core.count.Count count}
-     * register in all requested groups. Count registers are named, either with
-     * a number or an arbitrary string. The numbered registers where limited to
-     * 256 in <logo>TeX</logo>. This restriction does no longer hold for
-     * <logo>ExTeX</logo>.
-     *
+     * Setter for the {@link org.extex.core.count.Count count} register in all
+     * requested groups. Count registers are named, either with a number or an
+     * arbitrary string. The numbered registers where limited to 256 in
+     * <logo>TeX</logo>. This restriction does no longer hold for <logo>ExTeX</logo>.
+     * 
      * @param name the name or the number of the register
      * @param value the new value of the register
      * @param global the indicator for the scope; <code>true</code> means all
-     *            groups; otherwise the current group is affected only
-     * @throws HelpingException TODO
-     *
+     *        groups; otherwise the current group is affected only
+     * 
+     * @throws HelpingException in case of an error
+     * 
      * @see #getCount(String)
      */
     void setCount(String name, long value, boolean global)

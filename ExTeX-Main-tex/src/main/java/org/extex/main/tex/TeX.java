@@ -852,7 +852,8 @@ public class TeX extends ExTeX {
     private List<Object> observers = new ArrayList<Object>();
 
     /**
-     * The field <tt>primaryFile</tt> contains the ...
+     * The field <tt>primaryFile</tt> contains the name of the first file read.
+     * This name determines he name of the log file etc.
      */
     private String primaryFile = null;
 

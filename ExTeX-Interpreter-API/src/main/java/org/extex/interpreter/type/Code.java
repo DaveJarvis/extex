@@ -77,7 +77,7 @@ public interface Code {
      * @param typesetter the typesetter
      *
      * @throws HelpingException in case of an error
-     * @throws TypesetterException TODO
+     * @throws TypesetterException in case of an error in the typesetter
      * @throws ConfigurationException in case of an configuration error
      */
     void execute(Flags prefix, Context context, TokenSource source,

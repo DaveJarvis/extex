@@ -62,8 +62,9 @@ public interface Advanceable {
      * @param context the processor context
      * @param source the token source to parse
      * @param typesetter the typesetter
-     * @throws HelpingException TODO
-     * @throws TypesetterException TODO
+     *
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      * @throws org.extex.framework.configuration.exception.ConfigurationException
      *   in case of an configuration error
      */

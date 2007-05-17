@@ -2120,7 +2120,7 @@ public class TeXParagraphBuilder
      *
      * @param badness the badness
      *
-     * @return ...
+     * @return the indicator for the continuation
      */
     private boolean prepareToDeactivate(long badness) {
 

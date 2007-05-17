@@ -45,9 +45,10 @@ public interface RuleConvertible extends BoxOrRule {
      * @param typesetter the typesetter to use
      *
      * @return an appropriate Box
+     *
      * @throws ConfigurationException in case of an configuration error
-     * @throws HelpingException TODO
-     * @throws TypesetterException TODO
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     RuleNode getRule(Context context, TokenSource source, Typesetter typesetter)
             throws ConfigurationException, HelpingException, TypesetterException;

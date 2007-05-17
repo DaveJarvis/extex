@@ -40,8 +40,8 @@ public interface BoolConvertible {
      * @param source    the source for new tokens
      * @param typesetter TODO
      * @return the converted value
-     * @throws HelpingException TODO
-     * @throws TypesetterException TODO
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     Bool convertBool(Context context, TokenSource source, Typesetter typesetter)
             throws HelpingException, TypesetterException;

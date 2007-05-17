@@ -24,12 +24,10 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.typesetter.Typesetter;
 
-
-
 /**
  * This interface describes a unit which needs to be started. The start method
  * should be invoked at the end of the loading process.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -37,11 +35,11 @@ public interface StartableUnit {
 
     /**
      * Perform a start operation.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @throws InterpreterException in case of an error
      */
     void start(Context context, TokenSource source, Typesetter typesetter)

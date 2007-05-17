@@ -41,38 +41,39 @@ import org.extex.typesetter.type.node.ImplicitKernNode;
 import org.extex.typesetter.type.node.VerticalListNode;
 
 /**
- * This is the abstract base class for Noads.
- * A {@link org.extex.typesetter.type.noad.Noad Noad} is the intermediate
- * data structure which is used for processing mathematical material. Finally
- * Noads are translated into {@link org.extex.typesetter.type.Node Node}s.
- * Thus Noad will never arrive at the DocumentWriter.
- *
- *
+ * This is the abstract base class for Noads. A
+ * {@link org.extex.typesetter.type.noad.Noad Noad} is the intermediate data
+ * structure which is used for processing mathematical material. Finally Noads
+ * are translated into {@link org.extex.typesetter.type.Node Node}s. Thus Noad
+ * will never arrive at the DocumentWriter.
+ * 
+ * 
  * <doc name="scriptspace" type="register">
  * <h3>The Dimen Parameter <tt>\scriptspace</tt></h3>
  * <p>
- *  The dimen parameter <tt>\scriptspace</tt> contains the amount of spacing
- *  added to the width of subscripts.
+ * The dimen parameter <tt>\scriptspace</tt> contains the amount of spacing
+ * added to the width of subscripts.
  * </p>
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4739 $
  */
 public abstract class AbstractNoad implements Noad {
 
     /**
-     * Arrange that the node has exactly the width given and the old content
-     * is centered in it. If the node is a box then this can be achieved by
+     * Arrange that the node has exactly the width given and the old content is
+     * centered in it. If the node is a box then this can be achieved by
      * inserting the appropriate glue. Otherwise a new box has to be
      * constructed.
-     *
+     * 
      * @param node the node to rebox
      * @param width the target width
-     *
-     * @return ...
-     *
+     * 
+     * @return the argument box if it is a horizontal list or a new horizontal
+     *         list
+     * 
      * @see "TTP [715]"
      */
     protected static Node rebox(Node node, Dimen width) {
@@ -90,18 +91,18 @@ public abstract class AbstractNoad implements Noad {
     }
 
     /**
-     * Print a noad to the string buffer preceded by some prefix if the noad
-     * is not <code>null</code>.
-     *
+     * Print a noad to the string buffer preceded by some prefix if the noad is
+     * not <code>null</code>.
+     * 
      * @param sb the target buffer
      * @param noad the noad to print
      * @param depth the recursion depth
      * @param prefix the prefix to print before the noad
-     *
+     * 
      * @see "TTP [692]"
      */
-    protected static void toStringSubsidiaray(StringBuffer sb,
-            Noad noad, int depth, String prefix) {
+    protected static void toStringSubsidiaray(StringBuffer sb, Noad noad,
+            int depth, String prefix) {
 
         if (noad != null) {
             sb.append(prefix);
@@ -126,7 +127,7 @@ public abstract class AbstractNoad implements Noad {
 
     /**
      * Creates a new object.
-     *
+     * 
      */
     public AbstractNoad() {
 
@@ -135,7 +136,7 @@ public abstract class AbstractNoad implements Noad {
 
     /**
      * Getter for the localizer.
-     *
+     * 
      * @return the localizer
      */
     public Localizer getLocalizer() {
@@ -145,7 +146,7 @@ public abstract class AbstractNoad implements Noad {
 
     /**
      * Getter for spacingClass.
-     *
+     * 
      * @return the spacingClass
      */
     public MathSpacing getSpacingClass() {
@@ -155,7 +156,7 @@ public abstract class AbstractNoad implements Noad {
 
     /**
      * Getter for the subscript.
-     *
+     * 
      * @return the subscript.
      */
     public Noad getSubscript() {
@@ -165,7 +166,7 @@ public abstract class AbstractNoad implements Noad {
 
     /**
      * Getter for the superscript.
-     *
+     * 
      * @return the superscript.
      */
     public Noad getSuperscript() {
@@ -175,26 +176,24 @@ public abstract class AbstractNoad implements Noad {
 
     /**
      * Attach the subscripts and superscripts to the current hlist.
-     *
+     * 
      * @param node the current node
      * @param mc the math context
      * @param delta superscript is delta to the right of the subscript if both
-     *  are present
+     *        are present
      * @param logger the logger
-     *
+     * 
      * @return a node containing the node and the subscripts and superscripts.
-     *  If no subscripts and superscripts are present then <code>null</code> is
-     *  returned instead.
-     *
+     *         If no subscripts and superscripts are present then
+     *         <code>null</code> is returned instead.
+     * 
      * @throws TypesetterException in case of an error
      * @throws ConfigurationException in case of an configuration error
-     *
+     * 
      * @see "TTP [756,757]"
      */
-    protected Node makeScripts(Node node, MathContext mc,
-            FixedDimen delta, Logger logger)
-            throws TypesetterException,
-                ConfigurationException {
+    protected Node makeScripts(Node node, MathContext mc, FixedDimen delta,
+            Logger logger) throws TypesetterException, ConfigurationException {
 
         if (superscript == null && subscript == null) {
             return null;
@@ -308,11 +307,12 @@ public abstract class AbstractNoad implements Noad {
             }
         }
 
-        //          shift_amount(x) ? delta;  {superscript is delta to the right of the subscript}
+        // shift_amount(x) ? delta; {superscript is delta to the right of the
+        // subscript}
         sup.setMove(delta);
         VerticalListNode vlist = new VerticalListNode();
         vlist.add(sup);
-        //            p ? new_kern((shift_up-depth(x))-(height(y)-shift _down));
+        // p ? new_kern((shift_up-depth(x))-(height(y)-shift _down));
         clr.set(shiftUp);
         clr.subtract(sup.getDepth());
         if (sub != null) {
@@ -321,10 +321,10 @@ public abstract class AbstractNoad implements Noad {
         clr.add(shiftDown);
         vlist.add(new ImplicitKernNode(clr, false));
         vlist.add(sub);
-        //            link(x) ? p;
-        //            link(p) ? y;
-        //            x ? vpack(x,natural);
-        //            shift_amount(x) ? shift_down;
+        // link(x) ? p;
+        // link(p) ? y;
+        // x ? vpack(x,natural);
+        // shift_amount(x) ? shift_down;
         vlist.setShift(shiftDown);
         hlist.add(vlist);
         return hlist;
@@ -332,7 +332,7 @@ public abstract class AbstractNoad implements Noad {
 
     /**
      * Setter for spacingClass.
-     *
+     * 
      * @param spacingClass the spacingClass to set
      */
     protected void setSpacingClass(MathSpacing spacingClass) {
@@ -342,7 +342,7 @@ public abstract class AbstractNoad implements Noad {
 
     /**
      * Setter for the subscript.
-     *
+     * 
      * @param subscript the subscript to set.
      */
     public void setSubscript(Noad subscript) {
@@ -352,7 +352,7 @@ public abstract class AbstractNoad implements Noad {
 
     /**
      * Setter for the superscript.
-     *
+     * 
      * @param superscript the superscript to set.
      */
     public void setSuperscript(Noad superscript) {
@@ -398,7 +398,7 @@ public abstract class AbstractNoad implements Noad {
 
     /**
      * Add some information in the middle of the default toString method.
-     *
+     * 
      * @param sb the target string buffer
      * @param depth the recursion depth
      */

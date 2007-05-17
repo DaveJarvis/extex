@@ -66,7 +66,7 @@ public class TeXTest extends TestCase {
                     + " (TeX compatibility mode)\n";
 
     /**
-     * The constant <tt>EMPTY_TEX</tt> contains the ...
+     * The constant <tt>EMPTY_TEX</tt> contains the name of an empty ex file.
      */
     private static final String EMPTY_TEX =
             "../ExTeX-Unit-tex/src/test/tex/empty.tex";

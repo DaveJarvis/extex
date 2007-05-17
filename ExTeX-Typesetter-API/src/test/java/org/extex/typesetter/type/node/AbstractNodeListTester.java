@@ -50,12 +50,13 @@ import org.extex.typesetter.type.NodeVisitor;
 public abstract class AbstractNodeListTester extends TestCase {
 
     /**
-     * The field <tt>tc</tt> contains the ...
+     * The field <tt>tc</tt> contains the mock typesetting context.
      */
     protected static final TypesettingContext TC = new TypesettingContext() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the ...
+         * The field <tt>serialVersionUID</tt> contains the version number for
+         * serialization.
          */
         private static final long serialVersionUID = 1L;
 
@@ -65,7 +66,8 @@ public abstract class AbstractNodeListTester extends TestCase {
         private Font f = new Font() {
 
             /**
-             * The field <tt>serialVersionUID</tt> contains the ...
+             * The field <tt>serialVersionUID</tt> contains the version number
+             * for serialization.
              */
             private static final long serialVersionUID = 1L;
 

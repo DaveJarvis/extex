@@ -197,7 +197,7 @@ public interface Typesetter extends ListMaker {
      * @return the new list maker
      *
      * @throws UnsupportedOperationException in case that the type is now known
-     * @throws TypesetterException TODO
+     * @throws TypesetterException in case of an error in the typesetter
      */
     ListMaker pushListMaker(ListMakerType type, Locator locator)
             throws UnsupportedOperationException, TypesetterException;

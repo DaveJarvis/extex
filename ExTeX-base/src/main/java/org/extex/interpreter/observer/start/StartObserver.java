@@ -35,7 +35,7 @@ public interface StartObserver {
      * This method is meant to be invoked just after the start has occurred.
      *
      * @param interpreter the interpreter to be started
-     * @throws HelpingException TODO
+     * @throws HelpingException in case of an error
      */
     void update(Interpreter interpreter) throws HelpingException;
 

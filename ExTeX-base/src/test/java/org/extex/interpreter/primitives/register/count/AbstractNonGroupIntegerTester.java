@@ -47,7 +47,8 @@ public abstract class AbstractNonGroupIntegerTester extends ExTeXLauncher {
     private String init;
 
     /**
-     * The field <tt>prepare</tt> contains the ...
+     * The field <tt>prepare</tt> contains the prefix to be prepended before
+     * the code for the primitive.
      */
     private String prepare;
 
@@ -56,7 +57,7 @@ public abstract class AbstractNonGroupIntegerTester extends ExTeXLauncher {
      *
      * @param arg the name of the test suite
      * @param primitive the name of the integer register to test
-     * @param args ...
+     * @param args the arguments
      * @param init the default value
      */
     public AbstractNonGroupIntegerTester(String arg,
@@ -74,9 +75,9 @@ public abstract class AbstractNonGroupIntegerTester extends ExTeXLauncher {
      *
      * @param arg the name of the test suite
      * @param primitive the name of the integer register to test
-     * @param args ...
+     * @param args the arguments
      * @param init the default value
-     * @param prepare ...
+     * @param prepare the prepartion code
      */
     public AbstractNonGroupIntegerTester(String arg,
             String primitive, String args, String init,

@@ -31,12 +31,12 @@ import org.extex.typesetter.type.OrientedNode;
 public class AlignedLeadersNodeTest extends LeadersNodeTester {
 
 //    /**
-//     * The field <tt>H_LIST</tt> contains the ...
+//     * The field <tt>H_LIST</tt> contains the reference hlist.
 //     */
 //    private static final HorizontalListNode H_LIST = new HorizontalListNode();
 //
 //    /**
-//     * The field <tt>V_LIST</tt> contains the ...
+//     * The field <tt>V_LIST</tt> contains the reference vlist.
 //     */
 //    private static final VerticalListNode V_LIST = new VerticalListNode();
 //

@@ -244,11 +244,13 @@ public interface TokenSource {
      * @param primitive the name of the primitive for error messages
      * 
      * @return a font specification
-     *
+     * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
-    Font getFont(Context context, String primitive) throws HelpingException, TypesetterException;
+    Font getFont(Context context, String primitive)
+            throws HelpingException,
+                TypesetterException;
 
     /**
      * Get tokens from the token stream searching for a sequence of letter
@@ -576,8 +578,9 @@ public interface TokenSource {
      * @param primitive the name of the invoking primitive for error handling
      * 
      * @return the register name encountered
+     * 
      * @throws HelpingException in case of an error
-     * @throws TypesetterException TODO
+     * @throws TypesetterException in case of an error in the typesetter
      */
     String scanRegisterName(Context context, TokenSource source,
             Typesetter typesetter, String primitive)
@@ -594,7 +597,7 @@ public interface TokenSource {
      * 
      * @return the next token or <code>null</code>
      * @throws HelpingException in case of an error
-     * @throws TypesetterException TODO
+     * @throws TypesetterException in case of an error in the typesetter
      */
     Token scanToken(Context context)
             throws HelpingException,
@@ -636,8 +639,9 @@ public interface TokenSource {
      * 
      * @return the next tokens read so far. The return value is guaranteed not
      *         to be <code>null</code> under any circumstances
+     * 
      * @throws HelpingException in case of an error
-     * @throws TypesetterException TODO
+     * @throws TypesetterException in case of an error in the typesetter
      */
     Tokens scanTokens(Context context, boolean reportUndefined,
             boolean ignoreUndefined, String primitive)
@@ -657,7 +661,7 @@ public interface TokenSource {
      * 
      * @return the next tokens as <code>String</code> or <code>null</code>
      * @throws HelpingException in case of an error
-     * @throws TypesetterException TODO
+     * @throws TypesetterException in case of an error in the typesetter
      */
     String scanTokensAsString(Context context, String primitive)
             throws HelpingException,
@@ -683,7 +687,7 @@ public interface TokenSource {
      * 
      * @return the next tokens or <code>null</code>
      * @throws HelpingException in case of an error
-     * @throws TypesetterException TODO
+     * @throws TypesetterException in case of an error in the typesetter
      */
     Tokens scanUnprotectedTokens(Context context, boolean reportUndefined,
             boolean ignoreUndefined, String primitive)

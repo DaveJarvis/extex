@@ -41,8 +41,9 @@ public interface Function {
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     * @throws HelpingException TODO
-     * @throws TypesetterException TODO
+     *
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
      */
     void apply(Accumulator accumulator, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException;

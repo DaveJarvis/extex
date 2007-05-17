@@ -34,7 +34,8 @@ import org.extex.typesetter.exception.TypesetterException;
  * <doc name="muexpr">
  * <h3>The Primitive <tt>\muexpr</tt></h3>
  * <p>
- * The primitive <tt>\muexpr</tt> ...
+ * The primitive <tt>\muexpr</tt> evaluates an expression which results in a
+ * mu value.
  * </p>
  * <p>
  * TODO missing documentation
@@ -61,7 +62,8 @@ import org.extex.typesetter.exception.TypesetterException;
 public class Muexpr extends AbstractCode implements MuskipConvertible {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 2007L;
 

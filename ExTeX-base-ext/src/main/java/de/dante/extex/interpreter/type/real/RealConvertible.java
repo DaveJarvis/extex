@@ -44,7 +44,7 @@ public interface RealConvertible {
      * @return the converted value
      * @throws ConfigurationException in case of an configuration error
      * @throws HelpingException in case of an error
-     * @throws TypesetterException TODO
+     * @throws TypesetterException in case of an error in the typesetter
      */
     Real convertReal(Context context, TokenSource source, Typesetter typesetter)
             throws ConfigurationException, HelpingException, TypesetterException;

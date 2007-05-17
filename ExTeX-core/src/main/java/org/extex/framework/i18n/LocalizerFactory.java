@@ -293,7 +293,7 @@ public final class LocalizerFactory {
             new HashMap<String, Localizer>();
 
     /**
-     * The field <tt>locale</tt> contains the ...
+     * The field <tt>locale</tt> contains the locale to use.
      */
     private static Locale locale = Locale.getDefault();
 

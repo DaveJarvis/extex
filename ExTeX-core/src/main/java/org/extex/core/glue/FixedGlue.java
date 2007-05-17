@@ -110,19 +110,4 @@ public interface FixedGlue {
      */
     String toString();
 
-    //TODO gene: remove?
-//    /**
-//     * Determine the printable representation of the object and return it as a
-//     * list of Tokens.
-//     *
-//     * @param factory the token factory ton get new tokens from
-//     *
-//     * @return the string representation of this glue
-//     *
-//     * @throws GeneralException in case of an error
-//     *
-//     * @see "<logo>TeX</logo> &ndash; The Program [178,177]"
-//     */
-//    Tokens toToks(TokenFactory factory) throws GeneralException;
-
 }

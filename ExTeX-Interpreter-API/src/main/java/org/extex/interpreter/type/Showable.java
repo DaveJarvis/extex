@@ -39,7 +39,7 @@ public interface Showable {
      * @param context the interpreter context
      *
      * @return the description of the primitive as list of Tokens
-     * @throws HelpingException TODO
+     * @throws HelpingException in case of an error
      */
     Tokens show(Context context) throws HelpingException;
 

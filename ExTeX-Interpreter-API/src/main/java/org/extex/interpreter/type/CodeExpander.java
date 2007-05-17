@@ -47,9 +47,10 @@ public interface CodeExpander {
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param tokens the target token list
+     *
      * @throws ConfigurationException in case of an configuration error
      * @throws HelpingException in case of an error
-     * @throws TypesetterException TODO
+     * @throws TypesetterException in case of an error in the typesetter
      */
     void expandCode(Context context, TokenSource source, Typesetter typesetter,
             Tokens tokens)

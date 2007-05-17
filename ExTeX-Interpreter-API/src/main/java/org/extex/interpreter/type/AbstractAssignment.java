@@ -90,9 +90,10 @@ public abstract class AbstractAssignment extends AbstractCode {
      * @param context the interpreter context
      * @param source the token source
      * @param typesetter the typesetter
+     *
      * @throws ConfigurationException in case of an configuration error
      * @throws HelpingException in case of an error
-     * @throws TypesetterException TODO
+     * @throws TypesetterException in case of an error in the typesetter
      */
     public abstract void assign(Flags prefix, Context context,
             TokenSource source, Typesetter typesetter)

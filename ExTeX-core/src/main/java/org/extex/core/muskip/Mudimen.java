@@ -129,26 +129,4 @@ public class Mudimen implements Serializable {
         length.toString(sb, 'm', 'u');
     }
 
-    //TODO gene: remove?
-//    /**
-//     * Determine the printable representation of the object and return it as a
-//     * list of Tokens.
-//     * The value returned is exactly the string which would be produced by
-//     * <logo>TeX</logo> to print the Mudimen. This means the result is expressed
-//     * in mu and properly rounded to be read back in again without loss of
-//     * information.
-//     *
-//     * @param toks the tokens to append to
-//     * @param factory the token factory to get the required tokens from
-//     * @param c1 the first character of the unit
-//     * @param c2 the second character of the unit
-//     *
-//     * @throws CatcodeException in case of an error
-//     */
-//    public void toToks(Tokens toks, TokenFactory factory,
-//            char c1, char c2) throws CatcodeException {
-//
-//        length.toToks(toks, factory, c1, c2);
-//    }
-
 }

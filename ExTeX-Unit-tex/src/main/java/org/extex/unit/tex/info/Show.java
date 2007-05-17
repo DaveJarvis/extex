@@ -160,7 +160,8 @@ public class Show extends AbstractCode implements LogEnabled {
      * @param context the interpreter context
      * 
      * @return the token list describing the token
-     * @throws HelpingException TODO
+     *
+     * @throws HelpingException in case of an error
      */
     protected Tokens meaning(Token t, Context context)
             throws HelpingException {

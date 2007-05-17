@@ -47,7 +47,7 @@ public interface GlueConvertible {
      *
      * @return the converted value
      * @throws HelpingException in case of an error
-     * @throws TypesetterException TODO
+     * @throws TypesetterException in case of an error in the typesetter
      */
     Glue convertGlue(Context context, TokenSource source, Typesetter typesetter)
             throws HelpingException, TypesetterException;

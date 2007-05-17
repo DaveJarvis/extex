@@ -142,7 +142,7 @@ public interface NoadConsumer extends ListMaker {
      *
      * @return the Noad read or <code>null</code> if none could be gathered
      * @throws TypesetterException in case of an error
-     * @throws HelpingException TODO
+     * @throws HelpingException in case of an error
      */
     Noad scanNoad(Flags flags, Context context, TokenSource source,
             Typesetter typesetter, String primitive, GroupType groupType)

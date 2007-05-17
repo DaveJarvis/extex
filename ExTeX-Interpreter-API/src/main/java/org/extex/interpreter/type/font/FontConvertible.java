@@ -32,7 +32,8 @@ import org.extex.typesetter.tc.font.Font;
  * 
  * <doc type="interface" name="font">
  * <p>
- * TODO missing documentation
+ * A font specification can either be a font stored in a font register or one of
+ * the fonts used for math typesetting.
  * </p>
  * <p>
  * The formal description is the following:
@@ -69,11 +70,12 @@ public interface FontConvertible {
      * @param typesetter the typesetter
      * 
      * @return the converted value
-     *
+     * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
     Font convertFont(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException;
+            throws HelpingException,
+                TypesetterException;
 
 }
