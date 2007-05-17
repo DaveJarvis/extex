@@ -22,6 +22,7 @@ package org.extex.interpreter.interaction;
 import junit.framework.TestCase;
 
 import org.extex.core.exception.GeneralException;
+import org.extex.interpreter.exception.InteractionUnknownException;
 
 /**
  * Test suite for the interaction constants.
