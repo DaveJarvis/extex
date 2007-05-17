@@ -94,9 +94,6 @@
 
  <!-- ===================================================================== -->
 <xsl:template match="component" mode="resource">
-  <include name="{@name}/src/main/java/**/*.properties"/>
-  <include name="{@name}/src/main/java/**/*.xml"/>
-  <include name="{@name}/src/main/java/**/*.txt"/>
   <include name="{@name}/src/main/resources/**/*"/>
 </xsl:template>
 
