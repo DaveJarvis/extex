@@ -32,7 +32,7 @@ import junit.framework.TestCase;
 
 import org.extex.ExTeX;
 import org.extex.core.exception.helping.HelpingException;
-import org.extex.interpreter.interaction.InteractionUnknownException;
+import org.extex.interpreter.exception.InteractionUnknownException;
 
 /**
  * This class contains test cases for the command line interface of

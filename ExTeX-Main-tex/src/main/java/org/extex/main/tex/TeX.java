@@ -60,9 +60,9 @@ import org.extex.framework.configuration.exception.ConfigurationUnsupportedEncod
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Interpreter;
+import org.extex.interpreter.exception.InteractionUnknownException;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.interaction.Interaction;
-import org.extex.interpreter.interaction.InteractionUnknownException;
 import org.extex.interpreter.observer.pop.PopObservable;
 import org.extex.interpreter.observer.pop.PopObserver;
 import org.extex.interpreter.observer.push.PushObservable;

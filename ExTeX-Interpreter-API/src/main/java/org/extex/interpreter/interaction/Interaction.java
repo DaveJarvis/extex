@@ -23,6 +23,7 @@ import java.io.ObjectStreamException;
 import java.io.Serializable;
 
 import org.extex.core.exception.GeneralException;
+import org.extex.interpreter.exception.InteractionUnknownException;
 
 /**
  * This class provides a type-save enumeration of the interactions styles of

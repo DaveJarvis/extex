@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.interpreter.interaction;
+package org.extex.interpreter.exception;
 
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.i18n.LocalizerFactory;
