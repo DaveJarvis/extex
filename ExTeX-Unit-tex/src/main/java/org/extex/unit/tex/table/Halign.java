@@ -40,8 +40,8 @@ import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.TypesetterException;
-import org.extex.typesetter.listMaker.HAlignListMaker;
 import org.extex.typesetter.type.NodeList;
+import org.extex.unit.tex.table.util.HAlignListMaker;
 import org.extex.unit.tex.table.util.PreambleItem;
 
 /**

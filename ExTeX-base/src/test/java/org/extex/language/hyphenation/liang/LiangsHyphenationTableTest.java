@@ -21,8 +21,8 @@ package org.extex.language.hyphenation.liang;
 
 import junit.framework.TestCase;
 
+import org.extex.scanner.exception.CatcodeException;
 import org.extex.scanner.type.Catcode;
-import org.extex.scanner.type.CatcodeException;
 import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.token.TokenFactoryImpl;

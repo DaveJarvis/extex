@@ -21,6 +21,9 @@ package org.extex.unit.tex.register.count;
 
 import org.extex.base.parser.CountConvertible;
 import org.extex.base.parser.CountParser;
+import org.extex.base.type.arithmetic.Advanceable;
+import org.extex.base.type.arithmetic.Divideable;
+import org.extex.base.type.arithmetic.Multiplyable;
 import org.extex.core.count.Count;
 import org.extex.core.exception.helping.ArithmeticOverflowException;
 import org.extex.core.exception.helping.HelpingException;
@@ -30,10 +33,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.arithmetic.Advanceable;
-import org.extex.interpreter.type.arithmetic.Divideable;
-import org.extex.interpreter.type.arithmetic.Multiplyable;
-import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.exception.CatcodeException;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -74,9 +74,9 @@ import org.extex.typesetter.exception.TypesetterException;
  * </doc>
  * 
  * 
- * @see org.extex.interpreter.type.arithmetic.Advanceable
- * @see org.extex.interpreter.type.arithmetic.Divideable
- * @see org.extex.interpreter.type.arithmetic.Multiplyable
+ * @see org.extex.base.type.arithmetic.Advanceable
+ * @see org.extex.base.type.arithmetic.Divideable
+ * @see org.extex.base.type.arithmetic.Multiplyable
  * @see org.extex.interpreter.type.Theable
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -117,7 +117,7 @@ public class CountPrimitive extends AbstractCount
      * @param source the token source to parse
      * @param typesetter the typesetter
      * 
-     * @see org.extex.interpreter.type.arithmetic.Advanceable#advance(
+     * @see org.extex.base.type.arithmetic.Advanceable#advance(
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
@@ -167,7 +167,7 @@ public class CountPrimitive extends AbstractCount
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.arithmetic.Divideable#divide(org.extex.interpreter.Flags,
+     * @see org.extex.base.type.arithmetic.Divideable#divide(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
@@ -210,7 +210,7 @@ public class CountPrimitive extends AbstractCount
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.arithmetic.Multiplyable#multiply(org.extex.interpreter.Flags,
+     * @see org.extex.base.type.arithmetic.Multiplyable#multiply(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */

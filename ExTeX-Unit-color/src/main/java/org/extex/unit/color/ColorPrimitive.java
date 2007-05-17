@@ -27,7 +27,6 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
-import org.extex.unit.color.util.ColorParser;
 
 /**
  * This class provides an implementation for the primitive <code>\color</code>.

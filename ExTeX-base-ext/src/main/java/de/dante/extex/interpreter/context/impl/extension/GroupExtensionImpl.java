@@ -23,8 +23,8 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.baseext.exception.InterpreterExtensionException;
 import org.extex.core.exception.GeneralException;
-import org.extex.interpreter.exception.InterpreterExtensionException;
 import org.extex.interpreter.max.context.Group;
 import org.extex.interpreter.max.context.GroupImpl;
 import org.extex.scanner.Tokenizer;

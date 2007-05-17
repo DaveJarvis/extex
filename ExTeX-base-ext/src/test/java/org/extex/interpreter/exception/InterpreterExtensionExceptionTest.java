@@ -19,6 +19,8 @@
 
 package org.extex.interpreter.exception;
 
+import org.extex.baseext.exception.InterpreterExtensionException;
+
 import junit.framework.TestCase;
 
 /**
@@ -30,7 +32,7 @@ import junit.framework.TestCase;
 public class InterpreterExtensionExceptionTest extends TestCase {
 
     /**
-     * Test method for {@link org.extex.interpreter.exception.InterpreterExtensionException#getLocalizedMessage()}.
+     * Test method for {@link org.extex.baseext.exception.InterpreterExtensionException#getLocalizedMessage()}.
      */
     public final void testGetLocalizedMessage() {
 

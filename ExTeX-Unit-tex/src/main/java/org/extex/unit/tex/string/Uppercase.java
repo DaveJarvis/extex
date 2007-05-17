@@ -28,7 +28,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
-import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.exception.CatcodeException;
 import org.extex.scanner.type.token.LetterToken;
 import org.extex.scanner.type.token.OtherToken;
 import org.extex.scanner.type.token.Token;

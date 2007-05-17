@@ -19,13 +19,15 @@
 
 package org.extex.scanner.type;
 
+import org.extex.scanner.exception.CatcodeException;
+
 import junit.framework.TestCase;
 
 /**
  * Test cases for Catcodes
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
 public class CatcodeTest extends TestCase implements CatcodeVisitor {
 

@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.arithmetic;
 
+import org.extex.base.type.arithmetic.Advanceable;
 import org.extex.core.exception.helping.CantUseAfterException;
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
@@ -28,7 +29,6 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Code;
-import org.extex.interpreter.type.arithmetic.Advanceable;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
@@ -84,7 +84,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * </doc>
  *
  *
- * @see org.extex.interpreter.type.arithmetic.Advanceable
+ * @see org.extex.base.type.arithmetic.Advanceable
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4408 $
  */

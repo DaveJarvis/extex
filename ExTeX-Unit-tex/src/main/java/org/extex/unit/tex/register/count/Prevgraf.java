@@ -104,7 +104,7 @@ public class Prevgraf extends CountPrimitive {
      * @param source the token source to parse
      * @param typesetter the typesetter
      * 
-     * @see org.extex.interpreter.type.arithmetic.Advanceable#advance(
+     * @see org.extex.base.type.arithmetic.Advanceable#advance(
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */

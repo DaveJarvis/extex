@@ -22,6 +22,7 @@ package org.extex.interpreter.max.context;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.base.type.file.InputFile;
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
@@ -35,7 +36,6 @@ import org.extex.interpreter.context.observer.group.AfterGroupObserver;
 import org.extex.interpreter.context.observer.group.AfterGroupObserverList;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.box.Box;
-import org.extex.interpreter.type.file.InputFile;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.Namespace;

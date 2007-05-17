@@ -21,6 +21,9 @@ package org.extex.unit.omega.math.delimiter;
 
 import org.extex.base.parser.CountConvertible;
 import org.extex.base.parser.CountParser;
+import org.extex.base.type.arithmetic.Advanceable;
+import org.extex.base.type.arithmetic.Divideable;
+import org.extex.base.type.arithmetic.Multiplyable;
 import org.extex.core.UnicodeChar;
 import org.extex.core.exception.helping.ArithmeticOverflowException;
 import org.extex.core.exception.helping.HelpingException;
@@ -30,10 +33,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
-import org.extex.interpreter.type.arithmetic.Advanceable;
-import org.extex.interpreter.type.arithmetic.Divideable;
-import org.extex.interpreter.type.arithmetic.Multiplyable;
-import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.exception.CatcodeException;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
@@ -146,7 +146,7 @@ public class Odelcode extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.arithmetic.Advanceable#advance(org.extex.interpreter.Flags,
+     * @see org.extex.base.type.arithmetic.Advanceable#advance(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
@@ -244,7 +244,7 @@ public class Odelcode extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.arithmetic.Divideable#divide(org.extex.interpreter.Flags,
+     * @see org.extex.base.type.arithmetic.Divideable#divide(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
@@ -269,7 +269,7 @@ public class Odelcode extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.arithmetic.Multiplyable#multiply(org.extex.interpreter.Flags,
+     * @see org.extex.base.type.arithmetic.Multiplyable#multiply(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */

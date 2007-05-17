@@ -22,6 +22,8 @@ package org.extex.scanner.type;
 import java.io.ObjectStreamException;
 import java.io.Serializable;
 
+import org.extex.scanner.exception.CatcodeException;
+
 /**
  * This class provides a type-save enumeration of the category codes for
  * characters.
@@ -35,7 +37,7 @@ import java.io.Serializable;
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
 public abstract class Catcode implements Serializable {
 

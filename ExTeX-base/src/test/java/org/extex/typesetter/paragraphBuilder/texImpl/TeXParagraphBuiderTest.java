@@ -21,6 +21,7 @@ package org.extex.typesetter.paragraphBuilder.texImpl;
 
 import org.extex.typesetter.paragraphBuilder.AbstractParagraphBuiderTester;
 import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
+import org.extex.typesetter.tex.paragraph.TeXParagraphBuilder;
 
 /**
  * This is the test class for the TeX paragraph builder.

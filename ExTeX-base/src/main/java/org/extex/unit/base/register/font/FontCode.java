@@ -29,7 +29,7 @@ import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ComparableCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.font.FontConvertible;
-import org.extex.scanner.type.CatcodeException;
+import org.extex.scanner.exception.CatcodeException;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;

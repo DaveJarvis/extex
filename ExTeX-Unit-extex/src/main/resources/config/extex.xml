@@ -106,7 +106,7 @@
     -  Currently only the TeX output routine is present. In the future this might
     -  be a nice place to experiment with.
     -->
-  <OutputRoutine class="org.extex.typesetter.output.TeXOutputRoutine"/>
+  <OutputRoutine class="org.extex.typesetter.tex.TeXOutputRoutine"/>
 
   <!-- 
     -  The section "Typesetter" contains the specification for the typesetter.
@@ -117,8 +117,8 @@
     <TeX class="org.extex.typesetter.impl.TypesetterImpl"
          direction="lr">
       <PageBuilder class="org.extex.typesetter.pageBuilder.impl.PageBuilderImpl"/>
-      <ParagraphBuilder class="org.extex.typesetter.paragraphBuilder.texImpl.TeXParagraphBuilder">
-        <Hyphenator class="org.extex.typesetter.paragraphBuilder.texImpl.TeXParagraphBuilder"/>
+      <ParagraphBuilder class="org.extex.typesetter.tex.paragraph.TeXParagraphBuilder">
+        <Hyphenator class="org.extex.typesetter.tex.paragraph.TeXParagraphBuilder"/>
       </ParagraphBuilder>
       <NodeFactory class="org.extex.typesetter.type.node.factory.CachingNodeFactory"/>
     </TeX>

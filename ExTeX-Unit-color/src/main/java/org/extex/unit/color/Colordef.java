@@ -28,7 +28,6 @@ import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
-import org.extex.unit.color.util.ColorParser;
 
 /**
  * This class provides an implementation for the primitive

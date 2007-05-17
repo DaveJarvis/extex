@@ -21,18 +21,20 @@ package org.extex.scanner.type;
 
 import java.util.Locale;
 
+import org.extex.scanner.exception.CatcodeWrongLengthException;
+
 import junit.framework.TestCase;
 
 /**
  * Test suite for the exception.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
 public class CatcodeWrongLengthExceptionTest extends TestCase {
 
     /**
-     * Test method for {@link org.extex.scanner.type.CatcodeWrongLengthException#getLocalizedMessage()}.
+     * Test method for {@link org.extex.scanner.exception.CatcodeWrongLengthException#getLocalizedMessage()}.
      */
     public final void testGetLocalizedMessage1() {
 
@@ -42,7 +44,7 @@ public class CatcodeWrongLengthExceptionTest extends TestCase {
     }
 
     /**
-     * Test method for {@link org.extex.scanner.type.CatcodeWrongLengthException#getLocalizedMessage()}.
+     * Test method for {@link org.extex.scanner.exception.CatcodeWrongLengthException#getLocalizedMessage()}.
      */
     public final void testGetLocalizedMessage2() {
 
