@@ -19,6 +19,7 @@
 
 package org.extex.util.font.afm;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,6 +28,7 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -50,6 +52,86 @@ import org.extex.util.font.AbstractFontUtil;
 public class Afm2Enc extends AbstractFontUtil {
 
     /**
+     * Container for the encoding data.
+     */
+    private class Enc {
+
+        /**
+         * The encoding. (U)
+         */
+        private String encoding;
+
+        /**
+         * The name of the encoding vector. (8r.enc)
+         */
+        private String encvector;
+
+        /**
+         * The family name. (fxle0)
+         */
+        private String family;
+
+        /**
+         * The name of the font. (fxl)
+         */
+        private String font;
+
+        /**
+         * Creates a new object.
+         * 
+         * @param values The values.
+         */
+        public Enc(String[] values) {
+
+            encvector = values[0].trim();
+            encoding = values[1].trim();
+            family = values[2].trim();
+            font = values[3].trim();
+        }
+
+        /**
+         * Getter for encoding.
+         * 
+         * @return the encoding
+         */
+        public String getEncoding() {
+
+            return encoding;
+        }
+
+        /**
+         * Getter for encvector.
+         * 
+         * @return the encvector
+         */
+        public String getEncvector() {
+
+            return encvector;
+        }
+
+        /**
+         * Getter for family.
+         * 
+         * @return the family
+         */
+        public String getFamily() {
+
+            return family;
+        }
+
+        /**
+         * Getter for font.
+         * 
+         * @return the font
+         */
+        public String getFont() {
+
+            return font;
+        }
+
+    }
+
+    /**
      * Container for the data: font name + encoding vector - glyph name -
      * number.
      * 
@@ -59,19 +141,24 @@ public class Afm2Enc extends AbstractFontUtil {
     public class EncGlpyh {
 
         /**
+         * The encoding.
+         */
+        private String encoding = "U";
+
+        /**
+         * The font family.
+         */
+        private String family;
+
+        /**
          * The font.
          */
         private String font;
 
         /**
-         * The font name (with the name of the encoding vector).
-         */
-        private String fonte = "";
-
-        /**
          * The name of the glyph.
          */
-        private String glyphname = "";
+        private String glyphname;
 
         /**
          * The number (Position in the encoding vector).
@@ -81,23 +168,46 @@ public class Afm2Enc extends AbstractFontUtil {
         /**
          * Create a new object.
          * 
-         * @param basefont The font
-         * @param fontencname The fontname (with encoding vector)
+         * @param font The font.
+         * @param fontfamily The font family.
+         * @param enc The encoding.
          * @param gn The glyph name.
          * @param n The number.
          */
-        public EncGlpyh(String basefont, String fontencname, String gn, int n) {
+        public EncGlpyh(String fontname, String fontfamily, String enc,
+                String gn, int n) {
 
-            font = basefont;
-            fonte = fontencname;
+            font = fontname;
+            family = fontfamily;
+            encoding = enc;
             glyphname = gn;
             number = n;
         }
 
         /**
-         * Returns the font.
+         * Getter for encoding.
          * 
-         * @return Returns the font.
+         * @return the encoding
+         */
+        public String getEncoding() {
+
+            return encoding;
+        }
+
+        /**
+         * Getter for family.
+         * 
+         * @return the family
+         */
+        public String getFamily() {
+
+            return family;
+        }
+
+        /**
+         * Getter for font.
+         * 
+         * @return the font
          */
         public String getFont() {
 
@@ -105,19 +215,9 @@ public class Afm2Enc extends AbstractFontUtil {
         }
 
         /**
-         * Returns the fonte.
+         * Getter for glyphname.
          * 
-         * @return Returns the fonte.
-         */
-        public String getFonte() {
-
-            return fonte;
-        }
-
-        /**
-         * Returns the glyphname.
-         * 
-         * @return Returns the glyphname.
+         * @return the glyphname
          */
         public String getGlyphname() {
 
@@ -125,9 +225,9 @@ public class Afm2Enc extends AbstractFontUtil {
         }
 
         /**
-         * Returns the number.
+         * Getter for number.
          * 
-         * @return Returns the number.
+         * @return the number
          */
         public int getNumber() {
 
@@ -142,19 +242,22 @@ public class Afm2Enc extends AbstractFontUtil {
         public String toString() {
 
             StringBuffer buf = new StringBuffer();
-            // \DeclareTextGlyphX{fltr}{AEacute}{fltrla}{0}
+            // \DeclareTextGlyphX{fxl}{U}{fxle0}{AEacute}{0}
             buf.append("\\DeclareTextGlyphX{");
             buf.append(font);
             buf.append("}{");
-            buf.append(glyphname);
+            buf.append(encoding);
             buf.append("}{");
-            buf.append(fonte);
+            buf.append(family);
+            buf.append("}{");
+            buf.append(glyphname);
             buf.append("}{");
             buf.append(number);
             buf.append("}");
 
             return buf.toString();
         }
+
     }
 
     /**
@@ -183,7 +286,7 @@ public class Afm2Enc extends AbstractFontUtil {
         }
 
         String afmfile = "null";
-        List<String> enclist = new ArrayList<String>();
+        String encfile = "null";
 
         int i = 0;
         do {
@@ -192,9 +295,9 @@ public class Afm2Enc extends AbstractFontUtil {
                     afm.setOutdir(args[++i]);
                 }
 
-            } else if ("-e".equals(args[i]) || "--encvector".equals(args[i])) {
+            } else if ("-e".equals(args[i]) || "--encfile".equals(args[i])) {
                 if (i + 1 < args.length) {
-                    enclist.add(args[++i]);
+                    encfile = args[++i];
                 }
 
             } else if ("-n".equals(args[i]) || "--encname".equals(args[i])) {
@@ -207,7 +310,7 @@ public class Afm2Enc extends AbstractFontUtil {
             i++;
         } while (i < args.length);
 
-        afm.doIt(afmfile, enclist);
+        afm.doIt(afmfile, encfile);
 
     }
 
@@ -219,7 +322,7 @@ public class Afm2Enc extends AbstractFontUtil {
     /**
      * The list for the encoding vectors.
      */
-    private List<String> enclist = new ArrayList<String>();
+    private List<Enc> enclist = new ArrayList<Enc>();
 
     /**
      * The name for the encoding vectors.
@@ -262,11 +365,11 @@ public class Afm2Enc extends AbstractFontUtil {
         char filechar = 'a';
         String na = "";
         encw = new EncWriter();
-        String afm = removeExtensions(afmfile);
+        // String afm = removeExtensions(afmfile);
         for (int i = 0, n = names.size(); i < n; i++) {
-            EncGlpyh eg =
-                    new EncGlpyh(afm, afm + na, names.get(i).toString(), cnt);
-            glyphmap.put(eg.getGlyphname(), eg);
+            // EncGlpyh eg = new EncGlpyh(afm, afm + na,
+            // names.get(i).toString(), cnt);
+            // glyphmap.put(eg.getGlyphname(), eg);
 
             encw.setEncoding(cnt++, "/" + names.get(i));
             if (cnt == NUMBEROFGLYPHS) {
@@ -290,6 +393,39 @@ public class Afm2Enc extends AbstractFontUtil {
     }
 
     /**
+     * Create the encoding list.
+     * 
+     * @param encfile The file.
+     * @throws IOException if an IO-error occurred.
+     */
+    private void createEnclist(String encfile) throws IOException {
+
+        File efile = new File(encfile);
+        InputStream ein = null;
+        if (efile.canRead()) {
+            ein = new FileInputStream(efile);
+        }
+
+        if (ein == null) {
+            throw new FileNotFoundException(encfile);
+        }
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(ein));
+
+        String line;
+        while ((line = reader.readLine()) != null) {
+            if (line.trim().length() > 0 && !line.trim().startsWith("%")) {
+                // xl-e0.enc; U; fxle0; fxl
+                String[] split = line.split(";", 4);
+                Enc enc = new Enc(split);
+                enclist.add(enc);
+            }
+        }
+
+        reader.close();
+    }
+
+    /**
      * Create the include file for the package.
      * 
      * @throws IOException if an IO-error occurred.
@@ -298,7 +434,7 @@ public class Afm2Enc extends AbstractFontUtil {
 
         BufferedWriter out =
                 new BufferedWriter(new FileWriter(getOutdir() + File.separator
-                        + removeExtensions(afmfile) + ".inc"));
+                        + encname + ".inc"));
 
         Iterator<String> it = glyphmap.keySet().iterator();
         while (it.hasNext()) {
@@ -314,14 +450,12 @@ public class Afm2Enc extends AbstractFontUtil {
      * do it.
      * 
      * @param file The afm file name.
-     * @param enc The lsit with the encoding vectors.
+     * @param encfile The name of the encoding file.
      * @throws Exception if an error occurs.
      */
-    private void doIt(String file, List<String> enc) throws Exception {
+    private void doIt(String file, String encfile) throws Exception {
 
         getLogger().severe(getLocalizer().format("Afm2Enc.start", file));
-
-        enclist = enc;
 
         InputStream afmin = null;
 
@@ -333,6 +467,8 @@ public class Afm2Enc extends AbstractFontUtil {
         if (afmin == null) {
             throw new FileNotFoundException(file);
         }
+
+        createEnclist(encfile);
 
         parser = new AfmParser(afmin);
         toEnc();
@@ -352,16 +488,16 @@ public class Afm2Enc extends AbstractFontUtil {
             throws IOException,
                 FontException {
 
-        for (String encv : enclist) {
+        for (Enc encv : enclist) {
 
             InputStream encin = null;
-            File encfile = new File(encv);
+            File encfile = new File(encv.getEncvector());
             if (encfile.canRead()) {
                 encin = new FileInputStream(encfile);
             }
 
             if (encin == null) {
-                throw new FileNotFoundException(encv);
+                throw new FileNotFoundException(encv.getEncvector());
             }
 
             EncReader enc = new EncReader(encin);
@@ -373,9 +509,8 @@ public class Afm2Enc extends AbstractFontUtil {
                 readenc.add(name);
 
                 EncGlpyh eg =
-                        new EncGlpyh(removeExtensions(afmfile),
-                            removeExtensions(afmfile) + removeExtensions(encv),
-                            name, k);
+                        new EncGlpyh(encv.getFont(), encv.getFamily(), encv
+                            .getEncoding(), name, k);
 
                 glyphmap.put(eg.getGlyphname(), eg);
 
@@ -426,12 +561,9 @@ public class Afm2Enc extends AbstractFontUtil {
      * Create encoding vectors.
      * 
      * @throws IOException if an IO-error occurred.
-     * @throws ConfigurationException from the configuration system.
      * @throws FontException if a font error occurred.
      */
-    private void toEnc() throws IOException,
-
-    FontException {
+    private void toEnc() throws IOException, FontException {
 
         // read all glyphs from the encoding vectors
         List<String> readenc = new ArrayList<String>();

@@ -78,9 +78,9 @@ public class AfmParserTest extends TestCase {
         assertEquals(1004, cm.getWx(), 0);
         assertEquals(64, cm.getC(), 0);
 
-        AfmKernPairs kp = cm.getAfmKernPair("a.sc");
+        AfmKernPairs kp = cm.getAfmKernPair("Delta");
         assertNotNull(kp);
-        assertEquals(-20, kp.getKerningsize(), 0);
+        assertEquals(-29, kp.getKerningsize(), 0);
 
     }
 
