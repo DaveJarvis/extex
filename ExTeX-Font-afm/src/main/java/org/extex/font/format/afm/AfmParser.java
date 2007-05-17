@@ -47,9 +47,42 @@ import org.extex.util.xml.XMLWriterConvertible;
 public class AfmParser implements Serializable, XMLWriterConvertible {
 
     /**
+     * The initialize size for the ArrayList.
+     */
+    private static final int ARRAYLISTINITSIZE = 256;
+
+    /**
+     * base 16.
+     */
+    private static final int BASEHEX = 16;
+
+    /**
      * The field <tt>serialVersionUID</tt>.
      */
     private static final long serialVersionUID = 1L;
+
+    /**
+     * Represents the section CharMetrics in the AFM file.
+     */
+    private ArrayList<AfmCharMetric> afmCharMetrics =
+            new ArrayList<AfmCharMetric>(ARRAYLISTINITSIZE);
+
+    /**
+     * Map for Char-Name - Char-Number.
+     */
+    private Map<String, Integer> afmCharNameNumber =
+            new HashMap<String, Integer>(ARRAYLISTINITSIZE);
+
+    /**
+     * Represents the section KerningPairs in the AFM file.
+     */
+    private List<AfmKernPairs> afmKerningPairs =
+            new ArrayList<AfmKernPairs>(ARRAYLISTINITSIZE);
+
+    /**
+     * The header container.
+     */
+    private AfmHeader header;
 
     /**
      * The field <tt>localizer</tt> contains the localizer. It is initiated
@@ -81,37 +114,388 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * The header container.
+     * Create the Metric.
+     * 
+     * @param reader The reader
+     * @param ism is metric
+     * @return is metric
+     * @throws IOException if an IO-error occurs
+     * @throws FontException if a font-error occurs.
      */
-    private AfmHeader header;
+    private boolean createMetric(BufferedReader reader, boolean ism)
+            throws IOException,
+                FontException {
+
+        boolean isMetrics = ism;
+
+        String line;
+        // read the metric
+        while ((line = reader.readLine()) != null) {
+
+            // get the token from the line
+            StringTokenizer tok = new StringTokenizer(line);
+
+            // no more tokens
+            if (!tok.hasMoreTokens()) {
+                continue;
+            }
+
+            // get the command
+            String command = tok.nextToken();
+            if (command.equals("EndCharMetrics")) {
+                isMetrics = false;
+                break;
+            }
+
+            // default values
+            AfmCharMetric cm = new AfmCharMetric();
+
+            // get the token separate by ';'
+            tok = new StringTokenizer(line, ";");
+            while (tok.hasMoreTokens()) {
+                StringTokenizer tokc = new StringTokenizer(tok.nextToken());
+                if (!tokc.hasMoreTokens()) {
+                    continue;
+                }
+                command = tokc.nextToken();
+
+                // command ?
+                if (command.equals("C")) {
+                    cm.setC(Integer.parseInt(tokc.nextToken()));
+                } else if (command.equals("CH")) {
+                    cm.setC(Integer.parseInt(tokc.nextToken(), BASEHEX));
+                } else if (command.equals("WX")) {
+                    cm.setWx(Float.valueOf(tokc.nextToken()).floatValue());
+                } else if (command.equals("N")) {
+                    cm.setN(tokc.nextToken());
+                } else if (command.equals("B")) {
+                    cm.setBllx(Float.valueOf(tokc.nextToken()).floatValue());
+                    cm.setBlly(Float.valueOf(tokc.nextToken()).floatValue());
+                    cm.setBurx(Float.valueOf(tokc.nextToken()).floatValue());
+                    cm.setBury(Float.valueOf(tokc.nextToken()).floatValue());
+                } else if (command.equals("L")) {
+                    cm.addL(tokc.nextToken().trim(), tokc.nextToken().trim());
+                }
+            }
+            afmCharMetrics.add(cm);
+
+            // store name and number
+            if (afmCharNameNumber.containsKey(cm.getN())) {
+                if (cm.getC() != -1) {
+                    afmCharNameNumber.put(cm.getN(), new Integer(cm.getC()));
+                }
+            } else {
+                afmCharNameNumber.put(cm.getN(), new Integer(cm.getC()));
+            }
+        }
+
+        // metric close?
+        if (isMetrics) {
+            throw new FontException(localizer
+                .format("AfmParser.MissingEndCharMetrics"));
+        }
+        return isMetrics;
+    }
 
     /**
-     * The initialize size for the ArrayList.
+     * Returns the char metric of a char.
+     * 
+     * @param c The char (number)
+     * @return Returns the char metric of a char.
      */
-    private static final int ARRAYLISTINITSIZE = 256;
+    public AfmCharMetric getAfmCharMetric(int c) {
+
+        AfmCharMetric cm = null;
+        for (int i = 0, n = afmCharMetrics.size(); i < n; i++) {
+            cm = afmCharMetrics.get(i);
+            if (cm.getC() == c) {
+                return cm;
+            }
+        }
+        return null;
+    }
 
     /**
-     * Represents the section CharMetrics in the AFM file.
+     * Returns the char metric of a char.
+     * 
+     * @param name The char (name)
+     * @return Returns the char metric of a char.
      */
-    private ArrayList<AfmCharMetric> afmCharMetrics =
-            new ArrayList<AfmCharMetric>(ARRAYLISTINITSIZE);
+    public AfmCharMetric getAfmCharMetric(String name) {
+
+        AfmCharMetric cm = null;
+        for (int i = 0, n = afmCharMetrics.size(); i < n; i++) {
+            cm = afmCharMetrics.get(i);
+            if (cm.getN().equals(name)) {
+                return cm;
+            }
+        }
+        return null;
+    }
 
     /**
-     * Represents the section KerningPairs in the AFM file.
+     * Returns the afmCharMetrics.
+     * 
+     * @return Returns the afmCharMetrics.
      */
-    private List<AfmKernPairs> afmKerningPairs =
-            new ArrayList<AfmKernPairs>(ARRAYLISTINITSIZE);
+    public List<AfmCharMetric> getAfmCharMetrics() {
+
+        return afmCharMetrics;
+    }
 
     /**
-     * Map for Char-Name - Char-Number.
+     * Returns the afmCharNameNumber.
+     * 
+     * @return Returns the afmCharNameNumber.
      */
-    private Map<String, Integer> afmCharNameNumber =
-            new HashMap<String, Integer>(ARRAYLISTINITSIZE);
+    public Map<String, Integer> getAfmCharNameNumber() {
+
+        return afmCharNameNumber;
+    }
 
     /**
-     * base 16.
+     * Returns the afmKerningPairs.
+     * 
+     * @return Returns the afmKerningPairs.
      */
-    private static final int BASEHEX = 16;
+    public List<AfmKernPairs> getAfmKerningPairs() {
+
+        return afmKerningPairs;
+    }
+
+    /**
+     * @see org.extex.font.format.afm.AfmHeader#getAscender()
+     */
+    public float getAscender() {
+
+        return header.getAscender();
+    }
+
+    /**
+     * @see org.extex.font.format.afm.AfmHeader#getCapheight()
+     */
+    public float getCapheight() {
+
+        return header.getCapheight();
+    }
+
+    /**
+     * @see org.extex.font.format.afm.AfmHeader#getCharacterset()
+     */
+    public String getCharacterset() {
+
+        return header.getCharacterset();
+    }
+
+    /**
+     * @return
+     * @see org.extex.font.format.afm.AfmHeader#getComment()
+     */
+    public String getComment() {
+
+        return header.getComment();
+    }
+
+    /**
+     * @see org.extex.font.format.afm.AfmHeader#getDescender()
+     */
+    public float getDescender() {
+
+        return header.getDescender();
+    }
+
+    /**
+     * @see org.extex.font.format.afm.AfmHeader#getEncodingscheme()
+     */
+    public String getEncodingscheme() {
+
+        return header.getEncodingscheme();
+    }
+
+    /**
+     * @see org.extex.font.format.afm.AfmHeader#getFamilyname()
+     */
+    public String getFamilyname() {
+
+        return header.getFamilyname();
+    }
+
+    /**
+     * @see org.extex.font.format.afm.AfmHeader#getFontname()
+     */
+    public String getFontname() {
+
+        return header.getFontname();
+    }
+
+    /**
+     * @see org.extex.font.format.afm.AfmHeader#getFullname()
+     */
+    public String getFullname() {
+
+        return header.getFullname();
+    }
+
+    /**
+     * Returns the header.
+     * 
+     * @return Returns the header.
+     */
+    public AfmHeader getHeader() {
+
+        return header;
+    }
+
+    /**
+     * Returns the id for a char name.
+     * 
+     * @param name The name of char.
+     * @return Returns the id for a char name.
+     */
+    public String getIDforName(String name) {
+
+        int id = -1;
+
+        String n = name;
+
+        if (name != null) {
+            Integer i = afmCharNameNumber.get(name);
+            if (i != null) {
+                id = i.intValue();
+            }
+        } else {
+            n = "null";
+        }
+
+        if (id >= 0) {
+            return String.valueOf(id);
+        }
+        return n;
+    }
+
+    /**
+     * @see org.extex.font.format.afm.AfmHeader#getItalicangle()
+     */
+    public float getItalicangle() {
+
+        return header.getItalicangle();
+    }
+
+    /**
+     * @see org.extex.font.format.afm.AfmHeader#getLlx()
+     */
+    public float getLlx() {
+
+        return header.getLlx();
+    }
+
+    /**
+     * @see org.extex.font.format.afm.AfmHeader#getLly()
+     */
+    public float getLly() {
+
+        return header.getLly();
+    }
+
+    /**
+     * @return
+     * @see org.extex.font.format.afm.AfmHeader#getNotice()
+     */
+    public String getNotice() {
+
+        return header.getNotice();
+    }
+
+    /**
+     * Returns the number of glyphs.
+     * 
+     * @return Returns the number of glyphs.
+     */
+    public int getNumberOfGlyphs() {
+
+        return afmCharMetrics.size();
+    }
+
+    /**
+     * @see org.extex.font.format.afm.AfmHeader#getStdhw()
+     */
+    public float getStdhw() {
+
+        return header.getStdhw();
+    }
+
+    /**
+     * @see org.extex.font.format.afm.AfmHeader#getStdvw()
+     */
+    public float getStdvw() {
+
+        return header.getStdvw();
+    }
+
+    /**
+     * @see org.extex.font.format.afm.AfmHeader#getUnderlineposition()
+     */
+    public float getUnderlineposition() {
+
+        return header.getUnderlineposition();
+    }
+
+    /**
+     * @see org.extex.font.format.afm.AfmHeader#getUnderlinethickness()
+     */
+    public float getUnderlinethickness() {
+
+        return header.getUnderlinethickness();
+    }
+
+    /**
+     * @see org.extex.font.format.afm.AfmHeader#getUrx()
+     */
+    public float getUrx() {
+
+        return header.getUrx();
+    }
+
+    /**
+     * @see org.extex.font.format.afm.AfmHeader#getUry()
+     */
+    public float getUry() {
+
+        return header.getUry();
+    }
+
+    /**
+     * @see org.extex.font.format.afm.AfmHeader#getWeight()
+     */
+    public String getWeight() {
+
+        return header.getWeight();
+    }
+
+    /**
+     * @see org.extex.font.format.afm.AfmHeader#getXheight()
+     */
+    public float getXheight() {
+
+        return header.getXheight();
+    }
+
+    /**
+     * @see org.extex.font.format.afm.AfmHeader#isFixedpitch()
+     */
+    public boolean isFixedpitch() {
+
+        return header.isFixedpitch();
+    }
+
+    /**
+     * @return
+     * @see org.extex.font.format.afm.AfmHeader#isIsfixedpitch()
+     */
+    public boolean isIsfixedpitch() {
+
+        return header.isIsfixedpitch();
+    }
 
     /**
      * Read the AFM-File.
@@ -145,9 +529,9 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
 
             // check the command
             if (command.equals("Comment")) {
-                continue;
+                header.addComment(tok.nextToken("\u00ff").trim());
             } else if (command.equals("Notice")) {
-                continue;
+                header.addNotice(tok.nextToken("\u00ff").substring(1));
             } else if (command.equals("FontName")) {
                 header.setFontname(tok.nextToken("\u00ff").substring(1));
             } else if (command.equals("FullName")) {
@@ -261,90 +645,6 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * Create the Metric.
-     * 
-     * @param reader The reader
-     * @param ism is metric
-     * @return is metric
-     * @throws IOException if an IO-error occurs
-     * @throws FontException if a font-error occurs.
-     */
-    private boolean createMetric(BufferedReader reader, boolean ism)
-            throws IOException,
-                FontException {
-
-        boolean isMetrics = ism;
-
-        String line;
-        // read the metric
-        while ((line = reader.readLine()) != null) {
-
-            // get the token from the line
-            StringTokenizer tok = new StringTokenizer(line);
-
-            // no more tokens
-            if (!tok.hasMoreTokens()) {
-                continue;
-            }
-
-            // get the command
-            String command = tok.nextToken();
-            if (command.equals("EndCharMetrics")) {
-                isMetrics = false;
-                break;
-            }
-
-            // default values
-            AfmCharMetric cm = new AfmCharMetric();
-
-            // get the token separate by ';'
-            tok = new StringTokenizer(line, ";");
-            while (tok.hasMoreTokens()) {
-                StringTokenizer tokc = new StringTokenizer(tok.nextToken());
-                if (!tokc.hasMoreTokens()) {
-                    continue;
-                }
-                command = tokc.nextToken();
-
-                // command ?
-                if (command.equals("C")) {
-                    cm.setC(Integer.parseInt(tokc.nextToken()));
-                } else if (command.equals("CH")) {
-                    cm.setC(Integer.parseInt(tokc.nextToken(), BASEHEX));
-                } else if (command.equals("WX")) {
-                    cm.setWx(Float.valueOf(tokc.nextToken()).floatValue());
-                } else if (command.equals("N")) {
-                    cm.setN(tokc.nextToken());
-                } else if (command.equals("B")) {
-                    cm.setBllx(Float.valueOf(tokc.nextToken()).floatValue());
-                    cm.setBlly(Float.valueOf(tokc.nextToken()).floatValue());
-                    cm.setBurx(Float.valueOf(tokc.nextToken()).floatValue());
-                    cm.setBury(Float.valueOf(tokc.nextToken()).floatValue());
-                } else if (command.equals("L")) {
-                    cm.addL(tokc.nextToken().trim(), tokc.nextToken().trim());
-                }
-            }
-            afmCharMetrics.add(cm);
-
-            // store name and number
-            if (afmCharNameNumber.containsKey(cm.getN())) {
-                if (cm.getC() != -1) {
-                    afmCharNameNumber.put(cm.getN(), new Integer(cm.getC()));
-                }
-            } else {
-                afmCharNameNumber.put(cm.getN(), new Integer(cm.getC()));
-            }
-        }
-
-        // metric close?
-        if (isMetrics) {
-            throw new FontException(localizer
-                .format("AfmParser.MissingEndCharMetrics"));
-        }
-        return isMetrics;
-    }
-
-    /**
      * Remove all ',' in the string, if the string is <code>null</code>, a
      * empty string is returned.
      * 
@@ -357,109 +657,6 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
             return s.replaceAll(",", "");
         }
         return "";
-    }
-
-    /**
-     * Returns the id for a char name.
-     * 
-     * @param name The name of char.
-     * @return Returns the id for a char name.
-     */
-    public String getIDforName(String name) {
-
-        int id = -1;
-
-        String n = name;
-
-        if (name != null) {
-            Integer i = afmCharNameNumber.get(name);
-            if (i != null) {
-                id = i.intValue();
-            }
-        } else {
-            n = "null";
-        }
-
-        if (id >= 0) {
-            return String.valueOf(id);
-        }
-        return n;
-    }
-
-    /**
-     * Returns the afmCharMetrics.
-     * 
-     * @return Returns the afmCharMetrics.
-     */
-    public List<AfmCharMetric> getAfmCharMetrics() {
-
-        return afmCharMetrics;
-    }
-
-    /**
-     * Returns the afmCharNameNumber.
-     * 
-     * @return Returns the afmCharNameNumber.
-     */
-    public Map<String, Integer> getAfmCharNameNumber() {
-
-        return afmCharNameNumber;
-    }
-
-    /**
-     * Returns the afmKerningPairs.
-     * 
-     * @return Returns the afmKerningPairs.
-     */
-    public List<AfmKernPairs> getAfmKerningPairs() {
-
-        return afmKerningPairs;
-    }
-
-    /**
-     * Returns the header.
-     * 
-     * @return Returns the header.
-     */
-    public AfmHeader getHeader() {
-
-        return header;
-    }
-
-    /**
-     * Returns the char metric of a char.
-     * 
-     * @param c The char (number)
-     * @return Returns the char metric of a char.
-     */
-    public AfmCharMetric getAfmCharMetric(int c) {
-
-        AfmCharMetric cm = null;
-        for (int i = 0, n = afmCharMetrics.size(); i < n; i++) {
-            cm = afmCharMetrics.get(i);
-            if (cm.getC() == c) {
-                return cm;
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Returns the char metric of a char.
-     * 
-     * @param name The char (name)
-     * @return Returns the char metric of a char.
-     */
-    public AfmCharMetric getAfmCharMetric(String name) {
-
-        AfmCharMetric cm = null;
-        for (int i = 0, n = afmCharMetrics.size(); i < n; i++) {
-            cm = afmCharMetrics.get(i);
-            if (cm.getN().equals(name)) {
-                return cm;
-            }
-        }
-        return null;
     }
 
     /**

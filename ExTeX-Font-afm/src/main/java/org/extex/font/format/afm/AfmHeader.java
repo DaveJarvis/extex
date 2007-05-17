@@ -54,6 +54,11 @@ public class AfmHeader implements XMLWriterConvertible {
     private String characterset = "";
 
     /**
+     * The comment.
+     */
+    private String comment = "";
+
+    /**
      * Descender.
      */
     private float descender;
@@ -99,6 +104,11 @@ public class AfmHeader implements XMLWriterConvertible {
      * The lly of the FontBox.
      */
     private float lly = NOTINIT;
+
+    /**
+     * The notice.
+     */
+    private String notice = "";
 
     /**
      * StdHW.
@@ -149,6 +159,32 @@ public class AfmHeader implements XMLWriterConvertible {
     }
 
     /**
+     * Add a comment to the string.
+     * 
+     * @param com The comment to add.
+     */
+    public void addComment(String com) {
+
+        if (comment.length() != 0) {
+            comment += " ";
+        }
+        comment += com;
+    }
+
+    /**
+     * Add a notice to the string.
+     * 
+     * @param not The notice to add.
+     */
+    public void addNotice(String not) {
+
+        if (notice.length() != 0) {
+            notice += " ";
+        }
+        notice += not;
+    }
+
+    /**
      * Returns the ascender.
      * 
      * @return Returns the ascender.
@@ -176,6 +212,16 @@ public class AfmHeader implements XMLWriterConvertible {
     public String getCharacterset() {
 
         return characterset;
+    }
+
+    /**
+     * Getter for comment.
+     * 
+     * @return the comment
+     */
+    public String getComment() {
+
+        return comment;
     }
 
     /**
@@ -256,6 +302,16 @@ public class AfmHeader implements XMLWriterConvertible {
     public float getLly() {
 
         return lly;
+    }
+
+    /**
+     * Getter for notice.
+     * 
+     * @return the notice
+     */
+    public String getNotice() {
+
+        return notice;
     }
 
     /**
@@ -349,6 +405,16 @@ public class AfmHeader implements XMLWriterConvertible {
     }
 
     /**
+     * Getter for isfixedpitch.
+     * 
+     * @return the isfixedpitch
+     */
+    public boolean isIsfixedpitch() {
+
+        return isfixedpitch;
+    }
+
+    /**
      * Set the ascender.
      * 
      * @param a The ascender to set.
@@ -376,6 +442,16 @@ public class AfmHeader implements XMLWriterConvertible {
     public void setCharacterset(String cs) {
 
         characterset = cs;
+    }
+
+    /**
+     * Setter for comment.
+     * 
+     * @param comment the comment to set
+     */
+    public void setComment(String comment) {
+
+        this.comment = comment;
     }
 
     /**
@@ -439,6 +515,16 @@ public class AfmHeader implements XMLWriterConvertible {
     }
 
     /**
+     * Setter for isfixedpitch.
+     * 
+     * @param isfixedpitch the isfixedpitch to set
+     */
+    public void setIsfixedpitch(boolean isfixedpitch) {
+
+        this.isfixedpitch = isfixedpitch;
+    }
+
+    /**
      * Set the italicangle.
      * 
      * @param i The italicangle to set.
@@ -466,6 +552,16 @@ public class AfmHeader implements XMLWriterConvertible {
     public void setLly(float y) {
 
         lly = y;
+    }
+
+    /**
+     * Setter for notice.
+     * 
+     * @param notice the notice to set
+     */
+    public void setNotice(String notice) {
+
+        this.notice = notice;
     }
 
     /**
@@ -560,6 +656,8 @@ public class AfmHeader implements XMLWriterConvertible {
         writer.writeAttribute("name", fontname);
         writer.writeAttribute("fullname", fullname);
         writer.writeAttribute("familyname", familyname);
+        writer.writeAttribute("comment", comment);
+        writer.writeAttribute("notice", notice);
         writer.writeAttribute("weight", weight);
         writer.writeFormatAttribute("italicangle", italicangle);
         writer.writeAttribute("isfixedpitch", isfixedpitch);
