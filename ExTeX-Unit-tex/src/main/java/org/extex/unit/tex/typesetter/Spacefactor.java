@@ -75,7 +75,7 @@ public class Spacefactor extends AbstractCode
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -90,7 +90,8 @@ public class Spacefactor extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,

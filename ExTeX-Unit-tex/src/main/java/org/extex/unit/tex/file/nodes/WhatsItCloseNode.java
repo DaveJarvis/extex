@@ -33,14 +33,15 @@ import org.extex.typesetter.type.node.WhatsItNode;
 
 /**
  * This WhatsIt node closes an out file on shipping.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class WhatsItCloseNode extends WhatsItNode implements LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -56,7 +57,7 @@ public class WhatsItCloseNode extends WhatsItNode implements LogEnabled {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param theKey the key of the file to open
      */
     public WhatsItCloseNode(String theKey) {
@@ -67,13 +68,14 @@ public class WhatsItCloseNode extends WhatsItNode implements LogEnabled {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.type.Node#atShipping(
      *      org.extex.interpreter.context.Context,
      *      org.extex.typesetter.Typesetter, FixedDimen, FixedDimen)
      */
-    public Node atShipping(PageContext context, Typesetter typesetter, FixedDimen posX, FixedDimen posY)
-            throws GeneralException {
+    @Override
+    public Node atShipping(PageContext context, Typesetter typesetter,
+            FixedDimen posX, FixedDimen posY) throws GeneralException {
 
         OutFile file = context.getOutFile(key);
         if (file != null) {
@@ -89,9 +91,9 @@ public class WhatsItCloseNode extends WhatsItNode implements LogEnabled {
 
     /**
      * Setter for the logger.
-     *
+     * 
      * @param theLogger the new logger
-     *
+     * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */

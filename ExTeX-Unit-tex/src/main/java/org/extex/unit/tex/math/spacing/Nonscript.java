@@ -33,39 +33,42 @@ import org.extex.unit.tex.math.AbstractMathCode;
 /**
  * This class provides an implementation for the primitive
  * <code>\nonscript</code>.
- *
+ * 
  * <doc name="nonscript">
  * <h3>The Math Primitive <tt>\nonscript</tt></h3>
  * <p>
- *  The primitive can be used in math modes only. It cancels following glue if
- *  the current style is script style or scriptscript style.
+ * The primitive can be used in math modes only. It cancels following glue if
+ * the current style is script style or scriptscript style.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;nonscript&rang;
  *       &rarr; <tt>\nonscript</tt>  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \nonscript  </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
 public class Nonscript extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for tracing and debugging
      */
     public Nonscript(String name) {
@@ -76,10 +79,11 @@ public class Nonscript extends AbstractMathCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter)
             throws HelpingException,

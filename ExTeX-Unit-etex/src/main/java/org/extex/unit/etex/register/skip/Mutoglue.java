@@ -19,7 +19,6 @@
 
 package org.extex.unit.etex.register.skip;
 
-import org.extex.base.parser.MuskipParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.glue.Glue;
 import org.extex.core.muskip.Muskip;
@@ -68,7 +67,7 @@ public class Mutoglue extends AbstractCode implements GlueConvertible {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 20060513L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -83,13 +82,16 @@ public class Mutoglue extends AbstractCode implements GlueConvertible {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.GlueConvertible#convertGlue(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.GlueConvertible#convertGlue(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Glue convertGlue(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        Muskip muskip = MuskipParser.parse(context, source, typesetter);
+        Muskip muskip =
+                (Muskip) source
+                    .parse(Muskip.class, context, source, typesetter);
 
         return new Glue(muskip.getLength(), muskip.getStretch(), muskip
             .getShrink());

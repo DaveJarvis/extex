@@ -32,44 +32,48 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\localrightbox</code>.
- *
+ * This class provides an implementation for the primitive
+ * <code>\localrightbox</code>.
+ * 
  * <doc name="localrightbox">
  * <h3>The Primitive <tt>\localrightbox</tt></h3>
  * <p>
- *  The primitive <tt>\localrightbox</tt> takes an argument enclosed in braces
- *  and typesets this contents in horizontal mode.
+ * The primitive <tt>\localrightbox</tt> takes an argument enclosed in braces
+ * and typesets this contents in horizontal mode.
  * </p>
  * <p>
- *  TODO missing documentation
+ * TODO missing documentation
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;localrightbox&rang;
  *      &rarr; <tt>\localrightbox</tt> <tt>{</tt> &lang;horizontal material&rang; <tt>}</tt> </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \localrightbox{abc}  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
 public class Localrightbox extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Localrightbox(String name) {
@@ -79,12 +83,14 @@ public class Localrightbox extends AbstractCode {
 
     /**
      * {@inheritDoc}
-     *
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags, org.extex.interpreter.context.Context, org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+    @Override
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Token startToken = source.getLastToken();
         Flags flags = prefix.copy();
@@ -97,13 +103,14 @@ public class Localrightbox extends AbstractCode {
         } else {
             insert = new Tokens(t);
         }
-        Box box = new Box(context, source, typesetter, true, insert,
-                GroupType.HBOX_GROUP, startToken);
+        Box box =
+                new Box(context, source, typesetter, true, insert,
+                    GroupType.HBOX_GROUP, startToken);
 
-        //TODO gene: unimplemented
+        // TODO gene: unimplemented
         throw new RuntimeException("unimplemented");
 
-        //prefix.set(flags);
+        // prefix.set(flags);
     }
 
 }

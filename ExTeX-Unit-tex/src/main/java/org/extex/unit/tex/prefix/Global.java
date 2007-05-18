@@ -94,7 +94,7 @@ public class Global extends AbstractCode implements PrefixCode {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -109,10 +109,11 @@ public class Global extends AbstractCode implements PrefixCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) {
 

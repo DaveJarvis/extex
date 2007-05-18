@@ -25,8 +25,6 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
 import org.extex.core.glue.Glue;
-import org.extex.core.muskip.Mudimen;
-import org.extex.core.muskip.Muskip;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -715,18 +713,6 @@ public class IfTest extends ExTeXLauncher {
             return null;
         }
 
-        public Mudimen parseMudimen(Context context, TokenSource source,
-                Typesetter typesetter) {
-
-            return null;
-        }
-
-        public Muskip parseMuskip(Context context, TokenSource source,
-                Typesetter typesetter) {
-
-            return null;
-        }
-
         @SuppressWarnings("unchecked")
         public Object parse(Class c, Context context, TokenSource source,
                 Typesetter typesetter)
@@ -737,8 +723,9 @@ public class IfTest extends ExTeXLauncher {
         }
 
         @SuppressWarnings("unchecked")
-        public void register(Class c, Parser p) {
+        public Parser register(Class c, Parser p) {
 
+            return null;
         }
     };
 

@@ -74,6 +74,7 @@ public class RegistrarFontNotFoundException extends RegistrarException {
      *
      * @see java.lang.Throwable#getLocalizedMessage()
      */
+    @Override
     public String getLocalizedMessage() {
 
         return LocalizerFactory.getLocalizer(

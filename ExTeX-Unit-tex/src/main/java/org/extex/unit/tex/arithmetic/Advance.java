@@ -35,23 +35,23 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive
- * <code>\advance</code>.
- *
+ * This class provides an implementation for the primitive <code>\advance</code>.
+ * 
  * <doc name="advance">
  * <h3>The Primitive <tt>\advance</tt></h3>
  * <p>
- *  This primitive implements an assignment. The variable given as next tokens
- *  is incremented by the quantity given after the optional <tt>by</tt>.
+ * This primitive implements an assignment. The variable given as next tokens is
+ * incremented by the quantity given after the optional <tt>by</tt>.
  * </p>
  * <p>
- *  The exact operation of <tt>\advance</tt> is determined by the quantity
- *  following the <tt>\advance</tt> keyword.
+ * The exact operation of <tt>\advance</tt> is determined by the quantity
+ * following the <tt>\advance</tt> keyword.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *   &lang;advance&rang;
  *     &rarr; &lang;optional prefix&rang; <tt>\advance</tt> &lang;advancable&rang;
  *
@@ -74,16 +74,17 @@ import org.extex.typesetter.exception.TypesetterException;
  *      |  {@linkplain org.extex.interpreter.TokenSource#skipSpace()
  *            &lang;optional spaces&rang;}
  *   </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \advance\count12 345  </pre>
  *  <pre class="TeXSample">
  *    \advance\count12 by -345  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @see org.extex.base.type.arithmetic.Advanceable
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4408 $
@@ -91,13 +92,14 @@ import org.extex.typesetter.exception.TypesetterException;
 public class Advance extends AbstractAssignment {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Advance(String name) {
@@ -106,25 +108,15 @@ public class Advance extends AbstractAssignment {
     }
 
     /**
-     * The method <tt>assign</tt> is the core of the functionality of
-     * {@link #execute(Flags, Context, TokenSource, Typesetter) execute()}.
-     * This method is preferable to <tt>execute()</tt> since the
-     * <tt>execute()</tt> method provided in this class takes care of
-     * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> as well.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+    @Override
+    public void assign(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Token cs = source.getToken(context);
 

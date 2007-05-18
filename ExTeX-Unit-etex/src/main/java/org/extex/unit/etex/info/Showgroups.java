@@ -91,266 +91,282 @@ public class Showgroups extends AbstractCode
      * The field <tt>GTV</tt> contains the group type visitor to map the group
      * types to keys for the localizer.
      */
-    private static final GroupTypeVisitor<String, Object> GTV = new GroupTypeVisitor<String, Object>() {
+    private static final GroupTypeVisitor<String, Object> GTV =
+            new GroupTypeVisitor<String, Object>() {
 
-        /**
-         * This method is invoked when an adjusted hbox group has been
-         * encountered.
-         * 
-         * @param arg the argument
-         * 
-         * @return some object
-         * 
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitAdjustedHboxGroup(
-         *      java.lang.Object)
-         */
-        public String visitAdjustedHboxGroup(Object arg) {
+                /**
+                 * This method is invoked when an adjusted hbox group has been
+                 * encountered.
+                 * 
+                 * @param arg the argument
+                 * 
+                 * @return some object
+                 * 
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitAdjustedHboxGroup(
+                 *      java.lang.Object)
+                 */
+                public String visitAdjustedHboxGroup(Object arg) {
 
-            return "adjusted.hbox.group";
-        }
+                    return "adjusted.hbox.group";
+                }
 
-        /**
-         * This method is invoked when an align group has been encountered.
-         * 
-         * @param arg the argument
-         * 
-         * @return some object
-         * 
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitAlignGroup(
-         *      java.lang.Object)
-         */
-        public String visitAlignGroup(Object arg) {
+                /**
+                 * This method is invoked when an align group has been
+                 * encountered.
+                 * 
+                 * @param arg the argument
+                 * 
+                 * @return some object
+                 * 
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitAlignGroup(
+                 *      java.lang.Object)
+                 */
+                public String visitAlignGroup(Object arg) {
 
-            return "align.group";
-        }
+                    return "align.group";
+                }
 
-        /**
-         * This method is invoked when a bottom level group has been
-         * encountered.
-         * 
-         * @param arg the argument
-         * 
-         * @return some object
-         * 
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitBottomLevelGroup(
-         *      java.lang.Object)
-         */
-        public String visitBottomLevelGroup(Object arg) {
+                /**
+                 * This method is invoked when a bottom level group has been
+                 * encountered.
+                 * 
+                 * @param arg the argument
+                 * 
+                 * @return some object
+                 * 
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitBottomLevelGroup(
+                 *      java.lang.Object)
+                 */
+                public String visitBottomLevelGroup(Object arg) {
 
-            return "bottom.level.group";
-        }
+                    return "bottom.level.group";
+                }
 
-        /**
-         * This method is invoked when a disc group has been encountered.
-         * 
-         * @param arg the argument
-         * 
-         * @return some object
-         * 
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitDiscGroup(
-         *      java.lang.Object)
-         */
-        public String visitDiscGroup(Object arg) {
+                /**
+                 * This method is invoked when a disc group has been
+                 * encountered.
+                 * 
+                 * @param arg the argument
+                 * 
+                 * @return some object
+                 * 
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitDiscGroup(
+                 *      java.lang.Object)
+                 */
+                public String visitDiscGroup(Object arg) {
 
-            return "disc.group";
-        }
+                    return "disc.group";
+                }
 
-        /**
-         * This method is invoked when a hbox group has been encountered.
-         * 
-         * @param arg the argument
-         * 
-         * @return some object
-         * 
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitHboxGroup(
-         *      java.lang.Object)
-         */
-        public String visitHboxGroup(Object arg) {
+                /**
+                 * This method is invoked when a hbox group has been
+                 * encountered.
+                 * 
+                 * @param arg the argument
+                 * 
+                 * @return some object
+                 * 
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitHboxGroup(
+                 *      java.lang.Object)
+                 */
+                public String visitHboxGroup(Object arg) {
 
-            return "hbox.group";
-        }
+                    return "hbox.group";
+                }
 
-        /**
-         * This method is invoked when an insert group has been encountered.
-         * 
-         * @param arg the argument
-         * 
-         * @return some object
-         * 
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitInsertGroup(
-         *      java.lang.Object)
-         */
-        public String visitInsertGroup(Object arg) {
+                /**
+                 * This method is invoked when an insert group has been
+                 * encountered.
+                 * 
+                 * @param arg the argument
+                 * 
+                 * @return some object
+                 * 
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitInsertGroup(
+                 *      java.lang.Object)
+                 */
+                public String visitInsertGroup(Object arg) {
 
-            return "insert.group";
-        }
+                    return "insert.group";
+                }
 
-        /**
-         * This method is invoked when a math choice group has been encountered.
-         * 
-         * @param arg the argument
-         * 
-         * @return some object
-         * 
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathChoiceGroup(
-         *      java.lang.Object)
-         */
-        public String visitMathChoiceGroup(Object arg) {
+                /**
+                 * This method is invoked when a math choice group has been
+                 * encountered.
+                 * 
+                 * @param arg the argument
+                 * 
+                 * @return some object
+                 * 
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathChoiceGroup(
+                 *      java.lang.Object)
+                 */
+                public String visitMathChoiceGroup(Object arg) {
 
-            return "math.choice.group";
-        }
+                    return "math.choice.group";
+                }
 
-        /**
-         * This method is invoked when a math group has been encountered.
-         * 
-         * @param arg the argument
-         * 
-         * @return some object
-         * 
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathGroup(
-         *      java.lang.Object)
-         */
-        public String visitMathGroup(Object arg) {
+                /**
+                 * This method is invoked when a math group has been
+                 * encountered.
+                 * 
+                 * @param arg the argument
+                 * 
+                 * @return some object
+                 * 
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathGroup(
+                 *      java.lang.Object)
+                 */
+                public String visitMathGroup(Object arg) {
 
-            return "math.group";
-        }
+                    return "math.group";
+                }
 
-        /**
-         * This method is invoked when a math left group has been encountered.
-         * 
-         * @param arg the argument
-         * 
-         * @return some object
-         * 
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathLeftGroup(
-         *      java.lang.Object)
-         */
-        public String visitMathLeftGroup(Object arg) {
+                /**
+                 * This method is invoked when a math left group has been
+                 * encountered.
+                 * 
+                 * @param arg the argument
+                 * 
+                 * @return some object
+                 * 
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathLeftGroup(
+                 *      java.lang.Object)
+                 */
+                public String visitMathLeftGroup(Object arg) {
 
-            return "math.left.group";
-        }
+                    return "math.left.group";
+                }
 
-        /**
-         * This method is invoked when a math shift group has been encountered.
-         * 
-         * @param arg the argument
-         * 
-         * @return some object
-         * 
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathShiftGroup(
-         *      java.lang.Object)
-         */
-        public String visitMathShiftGroup(Object arg) {
+                /**
+                 * This method is invoked when a math shift group has been
+                 * encountered.
+                 * 
+                 * @param arg the argument
+                 * 
+                 * @return some object
+                 * 
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitMathShiftGroup(
+                 *      java.lang.Object)
+                 */
+                public String visitMathShiftGroup(Object arg) {
 
-            return "math.shift.group";
-        }
+                    return "math.shift.group";
+                }
 
-        /**
-         * This method is invoked when a no align group has been encountered.
-         * 
-         * @param arg the argument
-         * 
-         * @return some object
-         * 
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitNoAlignGroup(
-         *      java.lang.Object)
-         */
-        public String visitNoAlignGroup(Object arg) {
+                /**
+                 * This method is invoked when a no align group has been
+                 * encountered.
+                 * 
+                 * @param arg the argument
+                 * 
+                 * @return some object
+                 * 
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitNoAlignGroup(
+                 *      java.lang.Object)
+                 */
+                public String visitNoAlignGroup(Object arg) {
 
-            return "no.align.group";
-        }
+                    return "no.align.group";
+                }
 
-        /**
-         * This method is invoked when a output group has been encountered.
-         * 
-         * @param arg the argument
-         * 
-         * @return some object
-         * 
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitOutputGroup(
-         *      java.lang.Object)
-         */
-        public String visitOutputGroup(Object arg) {
+                /**
+                 * This method is invoked when a output group has been
+                 * encountered.
+                 * 
+                 * @param arg the argument
+                 * 
+                 * @return some object
+                 * 
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitOutputGroup(
+                 *      java.lang.Object)
+                 */
+                public String visitOutputGroup(Object arg) {
 
-            return "output.group";
-        }
+                    return "output.group";
+                }
 
-        /**
-         * This method is invoked when a semi simple group has been encountered.
-         * 
-         * @param arg the argument
-         * 
-         * @return some object
-         * 
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitSemiSimpleGroup(
-         *      java.lang.Object)
-         */
-        public String visitSemiSimpleGroup(Object arg) {
+                /**
+                 * This method is invoked when a semi simple group has been
+                 * encountered.
+                 * 
+                 * @param arg the argument
+                 * 
+                 * @return some object
+                 * 
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitSemiSimpleGroup(
+                 *      java.lang.Object)
+                 */
+                public String visitSemiSimpleGroup(Object arg) {
 
-            return "semi.simple.group";
-        }
+                    return "semi.simple.group";
+                }
 
-        /**
-         * This method is invoked when a simple group has been encountered.
-         * 
-         * @param arg the argument
-         * 
-         * @return some object
-         * 
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitSimpleGroup(
-         *      java.lang.Object)
-         */
-        public String visitSimpleGroup(Object arg) {
+                /**
+                 * This method is invoked when a simple group has been
+                 * encountered.
+                 * 
+                 * @param arg the argument
+                 * 
+                 * @return some object
+                 * 
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitSimpleGroup(
+                 *      java.lang.Object)
+                 */
+                public String visitSimpleGroup(Object arg) {
 
-            return "simple.group";
-        }
+                    return "simple.group";
+                }
 
-        /**
-         * This method is invoked when a vbox group has been encountered.
-         * 
-         * @param arg the argument
-         * 
-         * @return some object
-         * 
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVboxGroup(
-         *      java.lang.Object)
-         */
-        public String visitVboxGroup(Object arg) {
+                /**
+                 * This method is invoked when a vbox group has been
+                 * encountered.
+                 * 
+                 * @param arg the argument
+                 * 
+                 * @return some object
+                 * 
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVboxGroup(
+                 *      java.lang.Object)
+                 */
+                public String visitVboxGroup(Object arg) {
 
-            return "vbox.group";
-        }
+                    return "vbox.group";
+                }
 
-        /**
-         * This method is invoked when a vcenter group has been encountered.
-         * 
-         * @param arg the argument
-         * 
-         * @return some object
-         * 
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVcenterGroup(
-         *      java.lang.Object)
-         */
-        public String visitVcenterGroup(Object arg) {
+                /**
+                 * This method is invoked when a vcenter group has been
+                 * encountered.
+                 * 
+                 * @param arg the argument
+                 * 
+                 * @return some object
+                 * 
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVcenterGroup(
+                 *      java.lang.Object)
+                 */
+                public String visitVcenterGroup(Object arg) {
 
-            return "vcenter.group";
-        }
+                    return "vcenter.group";
+                }
 
-        /**
-         * This method is invoked when a vtop group has been encountered.
-         * 
-         * @param arg the argument
-         * 
-         * @return some object
-         * 
-         * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVtopGroup(
-         *      java.lang.Object)
-         */
-        public String visitVtopGroup(Object arg) {
+                /**
+                 * This method is invoked when a vtop group has been
+                 * encountered.
+                 * 
+                 * @param arg the argument
+                 * 
+                 * @return some object
+                 * 
+                 * @see org.extex.interpreter.context.group.GroupTypeVisitor#visitVtopGroup(
+                 *      java.lang.Object)
+                 */
+                public String visitVtopGroup(Object arg) {
 
-            return "vtop.group";
-        }
+                    return "vtop.group";
+                }
 
-    };
+            };
 
     /**
      * The field <tt>key</tt> contains the key to be appended to the format
@@ -407,10 +423,11 @@ public class Showgroups extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -442,4 +459,5 @@ public class Showgroups extends AbstractCode
                 token));
         }
     }
+
 }

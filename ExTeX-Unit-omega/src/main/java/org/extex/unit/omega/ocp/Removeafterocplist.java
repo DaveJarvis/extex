@@ -28,25 +28,29 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\removeafterocplist</code>.
- *
+ * This class provides an implementation for the primitive
+ * <code>\removeafterocplist</code>.
+ * 
  * <doc name="removeafterocplist">
  * <h3>The Primitive <tt>\removeafterocplist</tt></h3>
  * <p>
- *  TODO missing documentation
+ * TODO missing documentation
  * </p>
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;removeafterocplist&rang;
  *      &rarr; ...  </pre>
- *
+ * 
  * <h4>Examples</h4>
+ * 
  * <pre class="TeXSample">
  * \removeafterocplist ... </pre>
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
@@ -56,11 +60,11 @@ public class Removeafterocplist extends AbstractCode {
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    private static final long serialVersionUID = 2006L;
+    private static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Removeafterocplist(String name) {
@@ -70,14 +74,16 @@ public class Removeafterocplist extends AbstractCode {
 
     /**
      * {@inheritDoc}
-     *
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags, org.extex.interpreter.context.Context, org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+    @Override
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        //TODO gene: unimplemented
+        // TODO gene: unimplemented
         throw new RuntimeException("unimplemented");
     }
 

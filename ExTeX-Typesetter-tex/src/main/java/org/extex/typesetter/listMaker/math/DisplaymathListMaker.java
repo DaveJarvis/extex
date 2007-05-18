@@ -129,6 +129,7 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
      * 
      * @see org.extex.typesetter.ListMaker#complete(TypesetterOptions)
      */
+    @Override
     public NodeList complete(TypesetterOptions context)
             throws TypesetterException {
 
@@ -170,6 +171,7 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
      * 
      * @see org.extex.typesetter.ListMaker#getMode()
      */
+    @Override
     public Mode getMode() {
 
         return Mode.DISPLAYMATH;
@@ -183,6 +185,7 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
+    @Override
     public void mathShift(Context context, TokenSource source, Token t)
             throws TypesetterException,
                 HelpingException {

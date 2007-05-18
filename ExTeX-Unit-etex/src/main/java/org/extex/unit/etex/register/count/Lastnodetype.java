@@ -197,7 +197,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * @param node a <code>Node</code> value
          * 
          * @return the type of the node
-         *
+         * 
          * @exception HelpingException if an error occurs
          */
         public int getNodetype(Node node) throws HelpingException {
@@ -570,7 +570,8 @@ public class Lastnodetype extends AbstractReadonlyCount {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,

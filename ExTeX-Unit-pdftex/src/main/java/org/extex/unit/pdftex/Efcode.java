@@ -77,7 +77,7 @@ public class Efcode extends AbstractCode
     /**
      * The field <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -96,6 +96,7 @@ public class Efcode extends AbstractCode
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -127,8 +128,8 @@ public class Efcode extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.ExpandableCode#expand(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,
@@ -145,7 +146,8 @@ public class Efcode extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

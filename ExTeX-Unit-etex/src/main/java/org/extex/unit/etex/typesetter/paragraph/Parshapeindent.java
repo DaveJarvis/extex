@@ -94,7 +94,8 @@ public class Parshapeindent extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,

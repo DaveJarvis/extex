@@ -31,7 +31,7 @@ public class NotObservableException extends GeneralException {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2007L;
 
     /**
      * Create a new object.
@@ -85,6 +85,7 @@ public class NotObservableException extends GeneralException {
      *
      * @see java.lang.Throwable#getMessage()
      */
+    @Override
     public String getMessage() {
 
         return getLocalizedMessage();

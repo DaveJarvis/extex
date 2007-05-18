@@ -56,11 +56,7 @@ import org.extex.typesetter.tc.font.Font;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4388 $
  */
-public interface TokenSource
-        extends
-            CountParser,
-            DimenParser,
-            GlueParser {
+public interface TokenSource extends CountParser, DimenParser, GlueParser {
 
     /**
      * Put a given stream on top of the stream stack. The reading occurs on this
@@ -432,6 +428,23 @@ public interface TokenSource
     TokenStreamFactory getTokenStreamFactory();
 
     /**
+     * Parse some data type.
+     * 
+     * @param c the class
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     * 
+     * @return the object obtained or <code>null</code> if at end of file
+     * 
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException
+     */
+    @SuppressWarnings("unchecked")
+    Object parse(Class c, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException;
+
+    /**
      * Push back a token onto the input stream for subsequent reading.
      * 
      * @param token the token to push
@@ -459,6 +472,18 @@ public interface TokenSource
      * @throws HelpingException in case of an error
      */
     void push(Tokens tokens) throws HelpingException;
+
+    /**
+     * Register a new parser for some data type.
+     * 
+     * @param c the class
+     * @param p the parser for the class
+     * 
+     * @return the old parser for this class or <code>null</code> if none has
+     *         been registered
+     */
+    @SuppressWarnings("unchecked")
+    Parser register(Class c, Parser p);
 
     /**
      * Scan the input stream for tokens making up a character code, this is a
@@ -742,30 +767,5 @@ public interface TokenSource
     void update(String name, String text)
             throws HelpingException,
                 NotObservableException;
-
-    /**
-     * Register a new parser for some data type.
-     * 
-     * @param c the class
-     * @param p the parser for the class
-     */
-    @SuppressWarnings("unchecked")
-    void register(Class c, Parser p);
-
-    /**
-     * TODO gene: missing JavaDoc
-     *
-     * @param c the class
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     *
-     * @return
-     *
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException
-     */
-    Object parse(Class c, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException;
 
 }

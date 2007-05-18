@@ -39,30 +39,31 @@ import org.extex.unit.tex.macro.util.MacroPattern;
 
 /**
  * This class provides an implementation for the primitive <code>\read</code>.
- *
+ * 
  * <doc name="read">
  * <h3>The Primitive <tt>\read</tt></h3>
  * <p>
- *  The primitive <tt>\read</tt> read a line of text from the given input stream
- *  into a control sequence. The input stream should be opened with
- *  {@linkplain org.extex.unit.tex.file.Openin <tt>\openin</tt>}.
- *  If a stream name is used which has not been opened or
- *  has already been closed then the default input stream is used instead.
+ * The primitive <tt>\read</tt> read a line of text from the given input
+ * stream into a control sequence. The input stream should be opened with
+ * {@linkplain org.extex.unit.tex.file.Openin <tt>\openin</tt>}. If a stream
+ * name is used which has not been opened or has already been closed then the
+ * default input stream is used instead.
  * </p>
  * <p>
- *  The primitive can be prefixed with
- *  {@linkplain org.extex.unit.tex.prefix.Global <tt>\global</tt>}.
- *  In this case the assignment to the control sequence is global instead of
- *  the default of assigning it locally to the current group.
+ * The primitive can be prefixed with
+ * {@linkplain org.extex.unit.tex.prefix.Global <tt>\global</tt>}. In this case
+ * the assignment to the control sequence is global instead of the default of
+ * assigning it locally to the current group.
  * </p>
  * <p>
- *  The primitive implements an assignment. Thus the definition of
- *  <tt>\afterassignment</tt> and <tt>\globaldefs</tt> are honored.
+ * The primitive implements an assignment. Thus the definition of
+ * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> are honored.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;read&rang;
  *      &rarr; &lang;optional prefix&rang;<tt>\read</tt> {@linkplain
  *        org.extex.unit.base.file.AbstractFileCode#scanInFileKey(Context,TokenSource,Typesetter)
@@ -73,24 +74,27 @@ import org.extex.unit.tex.macro.util.MacroPattern;
  *    &lang;optional prefix&rang;
  *      &rarr;
  *       |  <tt>\global</tt> &lang;optional prefix&rang;  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *   \openin3= abc.def
  *   \read3 to \line
  *   \closein3 </pre>
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4441 $
  */
 public class Read extends AbstractAssignment implements LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 20061001L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>logger</tt> contains the target channel for the message.
@@ -99,7 +103,7 @@ public class Read extends AbstractAssignment implements LogEnabled {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Read(String name) {
@@ -108,25 +112,15 @@ public class Read extends AbstractAssignment implements LogEnabled {
     }
 
     /**
-     * The method <tt>assign</tt> is the core of the functionality of
-     * {@link #execute(Flags, Context, TokenSource, Typesetter) execute()}.
-     * This method is preferable to <tt>execute()</tt> since the
-     * <tt>execute()</tt> method provided in this class takes care of
-     * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> as well.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+    @Override
+    public void assign(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         String key =
                 AbstractFileCode.scanInFileKey(context, source, typesetter);
@@ -172,9 +166,9 @@ public class Read extends AbstractAssignment implements LogEnabled {
 
     /**
      * Setter for the logger.
-     *
+     * 
      * @param log the logger to use
-     *
+     * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */

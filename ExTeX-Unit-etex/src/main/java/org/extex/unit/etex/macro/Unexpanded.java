@@ -75,10 +75,11 @@ public class Unexpanded extends AbstractCode implements ExpandableCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -89,15 +90,15 @@ public class Unexpanded extends AbstractCode implements ExpandableCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.ExpandableCode#expand(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException {
 
         // TODO gene: expand unimplemented
-
+        throw new RuntimeException("unimplemneted");
     }
 
 }

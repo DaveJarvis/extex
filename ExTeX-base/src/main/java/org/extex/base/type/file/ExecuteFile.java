@@ -30,14 +30,15 @@ import org.extex.scanner.type.tokens.Tokens;
  * This is a class presenting itself as an OutFile which sends the tokens
  * written to it to the underlying operating system for the execution in a
  * shell.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4726 $
  */
 public class ExecuteFile extends OutputFile {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
@@ -49,7 +50,7 @@ public class ExecuteFile extends OutputFile {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param logger the target Logger
      */
     public ExecuteFile(Logger logger) {
@@ -60,11 +61,12 @@ public class ExecuteFile extends OutputFile {
 
     /**
      * Close the current file.
-     *
+     * 
      * @throws IOException in case of an error
-     *
+     * 
      * @see org.extex.scanner.type.file.OutFile#close()
      */
+    @Override
     public void close() throws IOException {
 
         // nothing to do
@@ -72,11 +74,12 @@ public class ExecuteFile extends OutputFile {
 
     /**
      * Check whether the output file is open.
-     *
+     * 
      * @return <code>true</code> iff the instance is open
-     *
+     * 
      * @see org.extex.scanner.type.file.OutFile#isOpen()
      */
+    @Override
     public boolean isOpen() {
 
         return true;
@@ -84,9 +87,10 @@ public class ExecuteFile extends OutputFile {
 
     /**
      * Open the current file.
-     *
+     * 
      * @see org.extex.scanner.type.file.OutFile#open()
      */
+    @Override
     public void open() {
 
         // nothing to do
@@ -94,14 +98,15 @@ public class ExecuteFile extends OutputFile {
 
     /**
      * Write some tokens to the output writer.
-     *
+     * 
      * @param toks tokens to write
-     *
+     * 
      * @throws IOException in case of an IO error
-     *
+     * 
      * @see org.extex.scanner.type.file.OutFile#write(
      *      org.extex.scanner.type.tokens.Tokens)
      */
+    @Override
     public void write(Tokens toks) throws IOException {
 
         Localizer localizer = LocalizerFactory.getLocalizer(ExecuteFile.class);

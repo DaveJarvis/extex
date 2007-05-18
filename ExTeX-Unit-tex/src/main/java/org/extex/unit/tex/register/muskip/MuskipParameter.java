@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.register.muskip;
 
-import org.extex.base.parser.MuskipParser;
 import org.extex.base.type.arithmetic.Advanceable;
 import org.extex.base.type.arithmetic.Divideable;
 import org.extex.base.type.arithmetic.Multiplyable;
@@ -67,7 +66,7 @@ public class MuskipParameter extends AbstractAssignment
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -91,9 +90,11 @@ public class MuskipParameter extends AbstractAssignment
 
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
-        Muskip ms = MuskipParser.parse(context, source, typesetter);
-        ms.add(context.getMuskip(key));
-        context.setMuskip(key, ms, prefix.clearGlobal());
+        Muskip muskip =
+            (Muskip) source
+                .parse(Muskip.class, context, source, typesetter);
+        muskip.add(context.getMuskip(key));
+        context.setMuskip(key, muskip, prefix.clearGlobal());
     }
 
     /**
@@ -103,13 +104,16 @@ public class MuskipParameter extends AbstractAssignment
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void assign(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         String key = getKey(context, source, typesetter);
         source.getOptionalEquals(context);
-        Muskip skip = MuskipParser.parse(context, source, typesetter);
-        context.setMuskip(key, skip, prefix.clearGlobal());
+        Muskip muskip =
+            (Muskip) source
+                .parse(Muskip.class, context, source, typesetter);
+        context.setMuskip(key, muskip, prefix.clearGlobal());
     }
 
     /**

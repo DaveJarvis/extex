@@ -33,7 +33,7 @@ public class NoTypesetterException extends ConfigurationException {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>message</tt> contains the message of this exception.
@@ -52,10 +52,11 @@ public class NoTypesetterException extends ConfigurationException {
     }
 
     /**
-     * Getter for the text prefix of this Exception.
+     * {@inheritDoc}
      *
-     * @return the text
+     * @see org.extex.framework.configuration.exception.ConfigurationException#getLocalizedMessage()
      */
+    @Override
     public String getLocalizedMessage() {
 
         return getLocalizer().format("ConfigurationNoTypesetterException.Text",

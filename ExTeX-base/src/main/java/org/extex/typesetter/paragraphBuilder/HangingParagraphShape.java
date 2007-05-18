@@ -80,6 +80,7 @@ public class HangingParagraphShape extends ParagraphShape {
      *
      * @see org.extex.typesetter.paragraphBuilder.ParagraphShape#getIndent(int)
      */
+    @Override
     public FixedDimen getIndent(int index) {
 
         if (hangafter > 0) {
@@ -105,6 +106,7 @@ public class HangingParagraphShape extends ParagraphShape {
      *
      * @see org.extex.typesetter.paragraphBuilder.ParagraphShape#getLength(int)
      */
+    @Override
     public FixedDimen getLength(int index) {
 
         return hsize;

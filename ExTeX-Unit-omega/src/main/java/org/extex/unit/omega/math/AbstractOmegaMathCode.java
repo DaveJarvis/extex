@@ -41,9 +41,9 @@ import org.extex.unit.tex.math.AbstractMathCode;
 import org.extex.unit.tex.math.util.MathCodeConvertible;
 
 /**
- * This is the base class for all math primitives using the Omega encoding.
- * It tries to ensure that the primitive is invoked in math mode only.
- *
+ * This is the base class for all math primitives using the Omega encoding. It
+ * tries to ensure that the primitive is invoked in math mode only.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -61,105 +61,113 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
     private static final int SPECIAL_MATH_CODE = 0x8000000;
 
     /**
-     * The constant <tt>CHARACTER_MASK</tt> contains the mask for the character
-     * value in the <logo>TeX</logo> encoding.
+     * The constant <tt>CHARACTER_MASK</tt> contains the mask for the
+     * character value in the <logo>TeX</logo> encoding.
      */
     private static final int CHARACTER_MASK = 0xffff;
 
     /**
-     * The constant <tt>FAMILY_MASK</tt> contains the mask for the family in the
-     * <logo>TeX</logo> encoding.
+     * The constant <tt>FAMILY_MASK</tt> contains the mask for the family in
+     * the <logo>TeX</logo> encoding.
      */
     private static final int FAMILY_MASK = 0xff;
 
     /**
-     * The constant <tt>FAMILY_OFFSET</tt> contains the offset for the family in
-     * the <logo>TeX</logo> encoding.
+     * The constant <tt>FAMILY_OFFSET</tt> contains the offset for the family
+     * in the <logo>TeX</logo> encoding.
      */
     private static final int FAMILY_OFFSET = 16;
 
     /**
-     * The field <tt>VISITOR</tt> contains the visitor for mapping a math class
-     * to the integer representation used by Omega.
+     * The field <tt>VISITOR</tt> contains the visitor for mapping a math
+     * class to the integer representation used by Omega.
      */
-    private static final MathClassVisitor<Long, Object, Object> VISITOR = new MathClassVisitor<Long, Object, Object>() {
+    private static final MathClassVisitor<Long, Object, Object> VISITOR =
+            new MathClassVisitor<Long, Object, Object>() {
 
-        /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitBinary(java.lang.Object, java.lang.Object)
-         */
-        public Long visitBinary(Object arg, Object arg2) {
+                /**
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitBinary(java.lang.Object,
+                 *      java.lang.Object)
+                 */
+                public Long visitBinary(Object arg, Object arg2) {
 
-            return new Long(2);
-        }
+                    return new Long(2);
+                }
 
-        /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitClosing(java.lang.Object, java.lang.Object)
-         */
-        public Long visitClosing(Object arg, Object arg2) {
+                /**
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitClosing(java.lang.Object,
+                 *      java.lang.Object)
+                 */
+                public Long visitClosing(Object arg, Object arg2) {
 
-            return new Long(5);
-        }
+                    return new Long(5);
+                }
 
-        /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitLarge(java.lang.Object, java.lang.Object)
-         */
-        public Long visitLarge(Object arg, Object arg2) {
+                /**
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitLarge(java.lang.Object,
+                 *      java.lang.Object)
+                 */
+                public Long visitLarge(Object arg, Object arg2) {
 
-            return new Long(1);
-        }
+                    return new Long(1);
+                }
 
-        /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitOpening(java.lang.Object, java.lang.Object)
-         */
-        public Long visitOpening(Object arg, Object arg2) {
+                /**
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOpening(java.lang.Object,
+                 *      java.lang.Object)
+                 */
+                public Long visitOpening(Object arg, Object arg2) {
 
-            return new Long(4);
-        }
+                    return new Long(4);
+                }
 
-        /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitOrdinary(java.lang.Object, java.lang.Object)
-         */
-        public Long visitOrdinary(Object arg, Object arg2) {
+                /**
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOrdinary(java.lang.Object,
+                 *      java.lang.Object)
+                 */
+                public Long visitOrdinary(Object arg, Object arg2) {
 
-            return new Long(0);
-        }
+                    return new Long(0);
+                }
 
-        /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitPunctation(java.lang.Object, java.lang.Object)
-         */
-        public Long visitPunctation(Object arg, Object arg2) {
+                /**
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitPunctation(java.lang.Object,
+                 *      java.lang.Object)
+                 */
+                public Long visitPunctation(Object arg, Object arg2) {
 
-            return new Long(6);
-        }
+                    return new Long(6);
+                }
 
-        /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitRelation(java.lang.Object, java.lang.Object)
-         */
-        public Long visitRelation(Object arg, Object arg2) {
+                /**
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitRelation(java.lang.Object,
+                 *      java.lang.Object)
+                 */
+                public Long visitRelation(Object arg, Object arg2) {
 
-            return new Long(3);
-        }
+                    return new Long(3);
+                }
 
-        /**
-         * @see org.extex.typesetter.type.math.MathClassVisitor#visitVariable(java.lang.Object, java.lang.Object)
-         */
-        public Long visitVariable(Object arg, Object arg2) {
+                /**
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitVariable(java.lang.Object,
+                 *      java.lang.Object)
+                 */
+                public Long visitVariable(Object arg, Object arg2) {
 
-            return new Long(7);
-        }
-    };
+                    return new Long(7);
+                }
+            };
 
     /**
      * Convert a {@link MathCode MathCode} to a number using the TeX encoding.
-     *
+     * 
      * @param mc the math code
-     *
+     * 
      * @return a TeX-encoded math code
-     *
+     * 
      * @throws HelpingException in case of an error
      */
-    public static long mathCodeToLong(MathCode mc)
-            throws HelpingException {
+    public static long mathCodeToLong(MathCode mc) throws HelpingException {
 
         MathClass mathClass = mc.getMathClass();
         if (mathClass == null) {
@@ -185,25 +193,27 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
 
     /**
      * Parse Math code according to TeX rules and extensions.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param primitive the name of the invoking primitive
-     *
+     * 
      * @return the MathCode
-     *
+     * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
-    public static MathCode parseMathCode(Context context,
-            TokenSource source, Typesetter typesetter,
-            String primitive) throws HelpingException, TypesetterException {
+    public static MathCode parseMathCode(Context context, TokenSource source,
+            Typesetter typesetter, String primitive)
+            throws HelpingException,
+                TypesetterException {
 
         Token t = source.getToken(context);
         if (t instanceof LeftBraceToken) {
             MathClass mc =
-                    MathClassParser.parse(context, source, typesetter, primitive);
+                    MathClassParser.parse(context, source, typesetter,
+                        primitive);
             long family = source.parseNumber(context, source, typesetter);
             UnicodeChar c =
                     source.scanCharacterCode(context, typesetter, primitive);
@@ -246,7 +256,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for tracing and debugging
      */
     public AbstractOmegaMathCode(String name) {

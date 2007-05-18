@@ -62,6 +62,7 @@ public class UserAndLogFile extends OutputFile {
      * 
      * @see org.extex.scanner.type.file.OutFile#close()
      */
+    @Override
     public void close() throws IOException {
 
         this.logger = null;
@@ -74,6 +75,7 @@ public class UserAndLogFile extends OutputFile {
      * 
      * @see org.extex.scanner.type.file.OutFile#isOpen()
      */
+    @Override
     public boolean isOpen() {
 
         return logger != null;
@@ -84,6 +86,7 @@ public class UserAndLogFile extends OutputFile {
      * 
      * @see org.extex.scanner.type.file.OutFile#open()
      */
+    @Override
     public void open() {
 
         // nothing to do
@@ -92,8 +95,10 @@ public class UserAndLogFile extends OutputFile {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.type.file.OutputFile#write(org.extex.scanner.type.tokens.Tokens)
+     * @see org.extex.base.type.file.OutputFile#write(
+     *      org.extex.scanner.type.tokens.Tokens)
      */
+    @Override
     public void write(Tokens toks) throws IOException {
 
         if (logger != null) {

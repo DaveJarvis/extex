@@ -19,13 +19,10 @@
 
 package org.extex.base.parser;
 
-import java.io.Serializable;
-
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.glue.GlueComponent;
-import org.extex.core.muskip.Mudimen;
 import org.extex.core.muskip.Muskip;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Flags;
@@ -33,6 +30,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.parser.MudimenConvertible;
 import org.extex.interpreter.parser.MuskipConvertible;
+import org.extex.interpreter.parser.Parser;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.scanner.type.token.CodeToken;
@@ -47,7 +45,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4399 $
  */
-public class MuskipParser extends Mudimen implements Serializable {
+public class MuskipParser implements Parser<Muskip> {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
@@ -67,7 +65,7 @@ public class MuskipParser extends Mudimen implements Serializable {
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
-    public static Muskip parse(Context context, TokenSource source,
+    public Muskip parse(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Token t;

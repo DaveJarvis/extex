@@ -24,48 +24,50 @@ import org.extex.interpreter.context.Context;
 import org.extex.typesetter.Typesetter;
 
 /**
- * This class provides an implementation for the primitive
- * <code>\botmark</code>.
- *
+ * This class provides an implementation for the primitive <code>\botmark</code>.
+ * 
  * <doc name="botmark">
  * <h3>The Primitive <tt>\botmark</tt></h3>
  * <p>
- *  The primitive <tt>\botmark</tt> expands to the last mark on the current
- *  page. If no mark has been encountered on the current page then it
- *  expands to the last mark on the previous page. If no mark has been
- *  placed ever then the primitive expands to the empty token list.
+ * The primitive <tt>\botmark</tt> expands to the last mark on the current
+ * page. If no mark has been encountered on the current page then it expands to
+ * the last mark on the previous page. If no mark has been placed ever then the
+ * primitive expands to the empty token list.
  * </p>
  * <p>
- *  See the documentation of the primitive
- *  {@link org.extex.unit.tex.typesetter.mark.Mark <tt>\mark</tt>}
- *  for further explanation of marks.
+ * See the documentation of the primitive
+ * {@link org.extex.unit.tex.typesetter.mark.Mark <tt>\mark</tt>} for further
+ * explanation of marks.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;botmark&rang;
  *      &rarr; <tt>\botmark</tt>  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \botmark  </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
 public class Botmark extends Botmarks {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Botmark(String name) {
@@ -75,18 +77,18 @@ public class Botmark extends Botmarks {
 
     /**
      * Get the key for this mark.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the key for the mark primitive
-     *
+     * 
      * @see org.extex.unit.tex.typesetter.mark.AbstractMarkCode#getKey(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     protected String getKey(Context context, TokenSource source,
             Typesetter typesetter) {
 

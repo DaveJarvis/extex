@@ -32,27 +32,28 @@ import org.extex.unit.base.conditional.AbstractIf;
 
 /**
  * This class provides an implementation for the primitive <code>\ifx</code>.
- *
+ * 
  * <doc name="ifx">
  * <h3>The Primitive <tt>\ifx</tt></h3>
  * <p>
- *  The primitive <tt>\ifx</tt> compares the following two tokens. If the
- *  following tokens are no macros then the comparison succeeds if they agree
- *  in category code and character.
+ * The primitive <tt>\ifx</tt> compares the following two tokens. If the
+ * following tokens are no macros then the comparison succeeds if they agree in
+ * category code and character.
  * </p>
  * <p>
- *  If the argument tokens are control sequences or active characters then the
- *  assigned values are compared. If the arguments are bound to macros then
- *  the comparison succeeds if the status of <i>outer</i> and <i>long</i> are
- *  the same, the patterns are the same and the body texts are equivalent
+ * If the argument tokens are control sequences or active characters then the
+ * assigned values are compared. If the arguments are bound to macros then the
+ * comparison succeeds if the status of <i>outer</i> and <i>long</i> are the
+ * same, the patterns are the same and the body texts are equivalent
  * </p>
  * <p>
- *  TODO missing documentation
+ * TODO missing documentation
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;ifx&rang;
  *      &rarr; <tt>\ifx</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getToken(Context)
@@ -64,26 +65,28 @@ import org.extex.unit.base.conditional.AbstractIf;
  *        &lang;token<sub>1</sub>&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getToken(Context)
  *        &lang;token<sub>2</sub>&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \ifx\a\x ok \fi  </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4439 $
  */
 public class Ifx extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Ifx(String name) {
@@ -96,12 +99,11 @@ public class Ifx extends AbstractIf {
      * 
      * @see org.extex.unit.base.conditional.AbstractIf#conditional(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public boolean conditional(Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException {
+    @Override
+    public boolean conditional(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException {
 
         Token t1 = source.getToken(context);
         Token t2 = source.getToken(context);

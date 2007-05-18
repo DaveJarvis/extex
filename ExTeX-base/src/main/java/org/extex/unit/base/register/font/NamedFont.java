@@ -20,7 +20,6 @@
 package org.extex.unit.base.register.font;
 
 import org.extex.core.exception.helping.HelpingException;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -49,7 +48,7 @@ public class NamedFont extends AbstractAssignment
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -70,6 +69,7 @@ public class NamedFont extends AbstractAssignment
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
+    @Override
     public void assign(Flags prefix, Context context,
             TokenSource source, Typesetter typesetter)
             throws HelpingException, TypesetterException {
@@ -116,15 +116,8 @@ public class NamedFont extends AbstractAssignment
     }
 
     /**
-     * This method is the getter for the description of the primitive.
+     * {@inheritDoc}
      *
-     * @param context the interpreter context
-     * @param source the source for further tokens to qualify the request
-     * @param typesetter the typesetter to use
-     *
-     * @return the description of the primitive as list of Tokens
-     * @throws CatcodeException in case of an error in token creation
-     * @throws ConfigurationException in case of an configuration error
      * @see org.extex.interpreter.type.Theable#the(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,

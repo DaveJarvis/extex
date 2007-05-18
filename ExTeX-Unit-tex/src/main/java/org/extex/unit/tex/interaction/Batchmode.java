@@ -30,48 +30,49 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\batchmode</code>. It does simply nothing, but as a side
- * effect all prefixes are zeroed and the interaction mode is set to
- * <tt>batchmode</tt>.
- *
+ * <code>\batchmode</code>. It does simply nothing, but as a side effect all
+ * prefixes are zeroed and the interaction mode is set to <tt>batchmode</tt>.
+ * 
  * <doc name="batchmode">
  * <h3>The Primitive <tt>\batchmode</tt></h3>
  * <p>
- *  This primitive sets the interaction mode to batch mode.
- *  In batch mode the processing is terminated if the program needs input from
- *  the terminal or an error occurs. The output to the terminal is reduced to a
- *  minimum.
+ * This primitive sets the interaction mode to batch mode. In batch mode the
+ * processing is terminated if the program needs input from the terminal or an
+ * error occurs. The output to the terminal is reduced to a minimum.
  * </p>
  * <p>
- *  The setting of the interaction mode is an assignment. The mode is always
- *  processed globally. This means it does not interact with the group concept.
+ * The setting of the interaction mode is an assignment. The mode is always
+ * processed globally. This means it does not interact with the group concept.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;batchmode&rang;
  *      &rarr; <tt>\batchmode</tt>  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \batchmode  </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4408 $
  */
 public class Batchmode extends AbstractAssignment {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Batchmode(String name) {
@@ -80,25 +81,15 @@ public class Batchmode extends AbstractAssignment {
     }
 
     /**
-     * The method <tt>assign</tt> is the core of the functionality of
-     * {@link #execute(Flags, Context, TokenSource, Typesetter) execute()}.
-     * This method is preferable to <tt>execute()</tt> since the
-     * <tt>execute()</tt> method provided in this class takes care of
-     * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> as well.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+    @Override
+    public void assign(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         context.setInteraction(Interaction.BATCHMODE);
     }

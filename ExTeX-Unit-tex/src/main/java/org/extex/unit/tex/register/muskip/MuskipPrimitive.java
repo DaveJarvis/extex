@@ -80,7 +80,7 @@ public class MuskipPrimitive extends MuskipParameter {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -99,6 +99,7 @@ public class MuskipPrimitive extends MuskipParameter {
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     protected String getKey(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 

@@ -35,7 +35,7 @@ public class ImmutableDimen extends Dimen implements Serializable {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 20060502L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -66,7 +66,8 @@ public class ImmutableDimen extends Dimen implements Serializable {
      * @see org.extex.core.dimen.Dimen#add(
      *      org.extex.core.dimen.FixedDimen)
      */
-    public void add(Dimen d) {
+    @Override
+    public void add(FixedDimen d) {
 
         throw new UnsupportedOperationException(
             "Unable to add to an immutable object");
@@ -80,6 +81,7 @@ public class ImmutableDimen extends Dimen implements Serializable {
      *
      * @see org.extex.core.dimen.Dimen#divide(long)
      */
+    @Override
     public void divide(long denom) {
 
         throw new UnsupportedOperationException(
@@ -96,7 +98,8 @@ public class ImmutableDimen extends Dimen implements Serializable {
      * @see org.extex.core.dimen.Dimen#max(
      *      org.extex.core.dimen.FixedDimen)
      */
-    public void max(Dimen d) {
+    @Override
+    public void max(FixedDimen d) {
 
         throw new UnsupportedOperationException(
             "Unable to add to an immutable object");
@@ -110,6 +113,7 @@ public class ImmutableDimen extends Dimen implements Serializable {
      *
      * @see org.extex.core.dimen.Dimen#multiply(long)
      */
+    @Override
     public void multiply(long factor) {
 
         throw new UnsupportedOperationException(
@@ -125,6 +129,7 @@ public class ImmutableDimen extends Dimen implements Serializable {
      * @see org.extex.core.dimen.Dimen#subtract(
      *      org.extex.core.dimen.FixedDimen)
      */
+    @Override
     public void subtract(FixedDimen d) {
 
         throw new UnsupportedOperationException(

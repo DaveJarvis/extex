@@ -43,16 +43,17 @@ import org.extex.unit.tex.macro.util.ProtectedMacroCode;
 
 /**
  * This class provides an implementation for the primitive <code>\def</code>.
- *
+ * 
  * <doc name="def">
  * <h3>The Primitive <tt>\def</tt></h3>
  * <p>
- *  TODO missing documentation
+ * TODO missing documentation
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;def&rang;
  *       &rarr; &lang;prefix&rang; <tt>\def</tt> {@linkplain
  *       org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
@@ -64,9 +65,10 @@ import org.extex.unit.tex.macro.util.ProtectedMacroCode;
  *       | <tt>\long</tt> &lang;prefix&rang;
  *       | <tt>\outer</tt> &lang;prefix&rang;
  *       | <tt>\protected</tt> &lang;prefix&rang;</pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \def\a#1{--#1--}  </pre>
  *  <pre class="TeXSample">
  *    \def\a#1#{--#1--}  </pre>
@@ -74,22 +76,23 @@ import org.extex.unit.tex.macro.util.ProtectedMacroCode;
  *    \def\a#1#2{--#2--#1--}  </pre>
  *  <pre class="TeXSample">
  *    \def\a#1:#2.{--#2--#1--}  </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
 public class Def extends AbstractAssignment {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Def(String name) {
@@ -101,14 +104,12 @@ public class Def extends AbstractAssignment {
      * {@inheritDoc}
      * 
      * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+    @Override
+    public void assign(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         CodeToken cs = source.getControlSequence(context, typesetter);
         MacroPattern pattern = getPattern(context, source);
@@ -120,7 +121,7 @@ public class Def extends AbstractAssignment {
                             ? source.scanUnprotectedTokens(context, false,
                                 false, getName())//
                             : source.getTokens(context, source, typesetter);
-            //TODO gene: maybe the treatment of # is incorrect
+            // TODO gene: maybe the treatment of # is incorrect
         } catch (EofException e) {
             throw new EofInToksException(csName);
         }
@@ -134,16 +135,16 @@ public class Def extends AbstractAssignment {
 
     /**
      * Parse the pattern.
-     *
+     * 
      * @param context the processor context
      * @param source the source for new tokens
-     *
+     * 
      * @return the tokens read
-     *
+     * 
      * @throws HelpingException in case of an error
      */
-    protected MacroPattern getPattern(Context context,
-            TokenSource source) throws HelpingException {
+    protected MacroPattern getPattern(Context context, TokenSource source)
+            throws HelpingException {
 
         MacroPattern pattern = new MacroPattern();
         int no = 1;

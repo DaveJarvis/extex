@@ -30,45 +30,48 @@ import org.extex.unit.tex.math.AbstractMathCode;
 
 /**
  * This class provides an implementation for the primitive <code>\eqno</code>.
- *
+ * 
  * <doc name="eqno">
  * <h3>The Math Primitive <tt>\eqno</tt></h3>
  * <p>
- *  The math primitive <tt>\eqno</tt> arranges that the following material is
- *  typeset in math mode and placed on the right side of the preceding material.
+ * The math primitive <tt>\eqno</tt> arranges that the following material is
+ * typeset in math mode and placed on the right side of the preceding material.
  * </p>
  * <p>
- *  The primitive can be used in display math mode only. If used in another mode
- *  an error is raised. An error is also raised when more than one invocations
- *  appear in one display math list or <tt>\eqno</tt> appears together with
- *  <tt>\leqno</tt> in a display math list.
+ * The primitive can be used in display math mode only. If used in another mode
+ * an error is raised. An error is also raised when more than one invocations
+ * appear in one display math list or <tt>\eqno</tt> appears together with
+ * <tt>\leqno</tt> in a display math list.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;eqno&rang;
  *       &rarr; <tt>\eqno</tt>  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    $$ 12 \eqno 34 $$ </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
 public class Eqno extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for tracing and debugging
      */
     public Eqno(String name) {
@@ -77,26 +80,15 @@ public class Eqno extends AbstractMathCode {
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
-     * @throws CantUseInException in case of an error
-     *
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws CantUseInException {
+    @Override
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws CantUseInException {
 
         ListMaker lm = typesetter.getListMaker();
 

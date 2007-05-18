@@ -94,10 +94,11 @@ public class Sfcode extends AbstractAssignment implements
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.Code#execute(
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void assign(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -106,7 +107,7 @@ public class Sfcode extends AbstractAssignment implements
         source.getOptionalEquals(context);
         long sfCode = source.parseNumber(context, source, typesetter);
 
-        if (sfCode<0 || sfCode > MAX_SF_CODE) {
+        if (sfCode < 0 || sfCode > MAX_SF_CODE) {
             throw new InvalidCodeException(Long.toString(sfCode), //
                 Integer.toString(MAX_SF_CODE));
         }

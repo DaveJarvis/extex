@@ -228,7 +228,8 @@ public class Currentiftype extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -259,7 +260,8 @@ public class Currentiftype extends AbstractCode
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws CatcodeException,
-                HelpingException, TypesetterException {
+                HelpingException,
+                TypesetterException {
 
         return context.getTokenFactory().toTokens( //
             convertCount(context, source, typesetter));

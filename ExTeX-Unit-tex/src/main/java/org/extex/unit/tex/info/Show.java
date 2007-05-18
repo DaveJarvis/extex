@@ -106,7 +106,7 @@ public class Show extends AbstractCode implements LogEnabled {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>logger</tt> contains the target channel for the message.
@@ -139,10 +139,11 @@ public class Show extends AbstractCode implements LogEnabled {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -160,11 +161,10 @@ public class Show extends AbstractCode implements LogEnabled {
      * @param context the interpreter context
      * 
      * @return the token list describing the token
-     *
+     * 
      * @throws HelpingException in case of an error
      */
-    protected Tokens meaning(Token t, Context context)
-            throws HelpingException {
+    protected Tokens meaning(Token t, Context context) throws HelpingException {
 
         Tokens toks;
         try {

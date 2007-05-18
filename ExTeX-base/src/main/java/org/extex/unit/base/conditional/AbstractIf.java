@@ -152,10 +152,11 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -170,8 +171,8 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.ExpandableCode#expand(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,
@@ -192,6 +193,7 @@ public abstract class AbstractIf extends AbstractCode implements ExpandableCode 
      * 
      * @see org.extex.interpreter.type.Code#isIf()
      */
+    @Override
     public boolean isIf() {
 
         return true;

@@ -31,7 +31,7 @@ public class ImmutableCount extends Count {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -60,6 +60,7 @@ public class ImmutableCount extends Count {
      *
      * @see org.extex.core.count.Count#add(long)
      */
+    @Override
     public void add(long val) {
 
         throw new UnsupportedOperationException(
@@ -73,6 +74,7 @@ public class ImmutableCount extends Count {
      *
      * @see org.extex.core.count.Count#divide(long)
      */
+    @Override
     public void divide(long val) {
 
         throw new UnsupportedOperationException(
@@ -86,6 +88,7 @@ public class ImmutableCount extends Count {
      *
      * @see org.extex.core.count.Count#multiply(long)
      */
+    @Override
     public void multiply(long val) {
 
         throw new UnsupportedOperationException(

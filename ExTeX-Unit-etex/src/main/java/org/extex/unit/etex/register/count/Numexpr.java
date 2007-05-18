@@ -214,7 +214,8 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -342,4 +343,5 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
         return context.getTokenFactory().toTokens( //
             convertCount(context, source, typesetter));
     }
+
 }

@@ -35,7 +35,7 @@ public class PdfLiteral extends WhatsItNode {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>direct</tt> contains the direct indicator.
@@ -98,6 +98,7 @@ public class PdfLiteral extends WhatsItNode {
      *      int,
      *      int)
      */
+    @Override
     public void toString(StringBuffer sb, String prefix,
             int breadth, int depth) {
 

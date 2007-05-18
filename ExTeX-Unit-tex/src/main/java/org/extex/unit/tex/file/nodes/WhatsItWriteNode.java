@@ -90,8 +90,9 @@ public class WhatsItWriteNode extends WhatsItNode {
      *      org.extex.interpreter.context.Context,
      *      org.extex.typesetter.Typesetter, FixedDimen, FixedDimen)
      */
-    public Node atShipping(PageContext context, Typesetter typesetter, FixedDimen posX, FixedDimen posY)
-            throws GeneralException {
+    @Override
+    public Node atShipping(PageContext context, Typesetter typesetter,
+            FixedDimen posX, FixedDimen posY) throws GeneralException {
 
         Tokens toks = source.expand(tokens, typesetter);
         if (!(context instanceof Context)) {

@@ -138,6 +138,7 @@ public class Cleaders extends Leaders {
      * @param skip the skip amount
      * @throws TypesetterException in case of an error
      */
+    @Override
     protected void addNode(Typesetter typesetter, OrientedNode node,
             FixedGlue skip) throws TypesetterException {
 

@@ -66,7 +66,7 @@ public class Errorstopmode extends AbstractAssignment {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -79,22 +79,13 @@ public class Errorstopmode extends AbstractAssignment {
     }
 
     /**
-     * The method <tt>assign</tt> is the core of the functionality of
-     * {@link #execute(Flags, Context, TokenSource, Typesetter) execute()}.
-     * This method is preferable to <tt>execute()</tt> since the
-     * <tt>execute()</tt> method provided in this class takes care of
-     * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> as well.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void assign(Flags prefix, Context context,
             TokenSource source, Typesetter typesetter)
             throws HelpingException, TypesetterException {

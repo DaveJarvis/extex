@@ -54,7 +54,7 @@ public class TeXMathcharCode extends AbstractTeXMathCode
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2006L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>mathchar</tt> contains the actual character in the form
@@ -77,7 +77,8 @@ public class TeXMathcharCode extends AbstractTeXMathCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -89,7 +90,8 @@ public class TeXMathcharCode extends AbstractTeXMathCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.tex.math.util.MathCodeConvertible#convertMathCode(org.extex.interpreter.context.Context,
+     * @see org.extex.unit.tex.math.util.MathCodeConvertible#convertMathCode(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public MathCode convertMathCode(Context context, TokenSource source,
@@ -101,10 +103,11 @@ public class TeXMathcharCode extends AbstractTeXMathCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter)
             throws TypesetterException,
@@ -152,7 +155,8 @@ public class TeXMathcharCode extends AbstractTeXMathCode
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws CatcodeException,
-                HelpingException, TypesetterException {
+                HelpingException,
+                TypesetterException {
 
         return context.getTokenFactory().toTokens(mathCodeToLong(mathchar));
     }

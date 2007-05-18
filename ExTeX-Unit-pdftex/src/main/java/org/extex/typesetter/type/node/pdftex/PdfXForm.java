@@ -36,7 +36,7 @@ public class PdfXForm extends WhatsItNode {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>nodes</tt> contains the nodes of the xform.
@@ -80,6 +80,7 @@ public class PdfXForm extends WhatsItNode {
      *      int,
      *      int)
      */
+    @Override
     public void toString(StringBuffer sb, String prefix,
             int breadth, int depth) {
 

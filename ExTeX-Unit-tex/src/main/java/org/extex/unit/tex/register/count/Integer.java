@@ -30,29 +30,29 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.register.count.util.IntegerCode;
 
 /**
- * This class provides an implementation for the primitive
- * <code>\integer</code>.
- *
+ * This class provides an implementation for the primitive <code>\integer</code>.
+ * 
  * <doc name="scaled">
  * <h3>The Primitive <tt>\integer</tt></h3>
  * <p>
- *  The primitive <tt>\integer</tt> can be used to define a control sequence as
- *  alias for an integer register. The control sequence can be used wherever a
- *  count is expected afterwards.
+ * The primitive <tt>\integer</tt> can be used to define a control sequence as
+ * alias for an integer register. The control sequence can be used wherever a
+ * count is expected afterwards.
  * </p>
  * <p>
- *  The primitive <tt>\integer</tt>  is an assignment. Thus the settings of
- *  <tt>\afterassignment</tt> and <tt>\globaldefs</tt> are applied.
+ * The primitive <tt>\integer</tt> is an assignment. Thus the settings of
+ * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> are applied.
  * </p>
  * <p>
- *  The prefix <tt>\global</tt> can be used to make the assignment to the new
- *  control sequence global instead of the group-local assignment which is the
- *  default.
+ * The prefix <tt>\global</tt> can be used to make the assignment to the new
+ * control sequence global instead of the group-local assignment which is the
+ * default.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
  * The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * 
+ * <pre class="syntax">
  *    &lang;integer&rang;
  *      &rarr; &lang;optional prefix&rang; <tt>\integer</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
@@ -65,32 +65,34 @@ import org.extex.unit.base.register.count.util.IntegerCode;
  *    &lang;optional prefix&rang;
  *      &rarr;
  *       |  <tt>\global</tt> &lang;optional prefix&rang;  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \integer\abc=45  </pre>
  *  <pre class="TeXSample">
  *    \integer\abc 33  </pre>
  *  <pre class="TeXSample">
  *    \integer\abc=-12  </pre>
- *
+ * 
  * </doc>
- *
- *
- *
+ * 
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
 public class Integer extends AbstractAssignment {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 20060607L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Integer(String name) {
@@ -99,31 +101,21 @@ public class Integer extends AbstractAssignment {
     }
 
     /**
-     * The method <tt>assign</tt> is the core of the functionality of
-     * {@link #execute(Flags, Context, TokenSource, Typesetter) execute()}.
-     * This method is preferable to <tt>execute()</tt> since the
-     * <tt>execute()</tt> method provided in this class takes care of
-     * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> as well.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+    @Override
+    public void assign(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         long value = source.parseInteger(context, source, typesetter);
         context.setCode(cs, new IntegerCode(getName(), value), prefix
-                .clearGlobal());
+            .clearGlobal());
     }
 
 }

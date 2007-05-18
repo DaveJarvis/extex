@@ -68,7 +68,7 @@ public class Pdflastximage extends AbstractPdftexCode
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -83,7 +83,8 @@ public class Pdflastximage extends AbstractPdftexCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -107,7 +108,7 @@ public class Pdflastximage extends AbstractPdftexCode
      * @return the converted value
      * 
      * @throws HelpingException in case of an error
-     * @throws TypesetterException 
+     * @throws TypesetterException
      * 
      * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(
      *      org.extex.interpreter.context.Context,
@@ -137,7 +138,8 @@ public class Pdflastximage extends AbstractPdftexCode
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+            throws HelpingException,
+                TypesetterException {
 
         return convertTokens(context, source, typesetter);
 

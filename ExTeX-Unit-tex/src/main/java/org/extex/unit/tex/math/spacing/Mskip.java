@@ -19,8 +19,8 @@
 
 package org.extex.unit.tex.math.spacing;
 
-import org.extex.base.parser.MuskipParser;
 import org.extex.core.exception.helping.HelpingException;
+import org.extex.core.muskip.Muskip;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
@@ -32,39 +32,42 @@ import org.extex.unit.tex.math.AbstractMathCode;
 
 /**
  * This class provides an implementation for the primitive <code>\mskip</code>.
- *
+ * 
  * <doc name="mskip">
  * <h3>The Math Primitive <tt>\mskip</tt></h3>
  * <p>
- *  The math primitive <tt>\mskip</tt> inserts some glue in math mode. The
- *  amount of space to be inserted is measured in math units.
+ * The math primitive <tt>\mskip</tt> inserts some glue in math mode. The
+ * amount of space to be inserted is measured in math units.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;mskip&rang;
  *       &rarr; <tt>\mskip</tt>  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \mskip 12mu plus 3mu minus 4 mu </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
 public class Mskip extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for tracing and debugging
      */
     public Mskip(String name) {
@@ -75,10 +78,11 @@ public class Mskip extends AbstractMathCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter)
             throws HelpingException,
@@ -86,7 +90,11 @@ public class Mskip extends AbstractMathCode {
                 TypesetterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        nc.add(MuskipParser.parse(context, source, typesetter));
+        Muskip muskip =
+                (Muskip) source
+                    .parse(Muskip.class, context, source, typesetter);
+
+        nc.add(muskip);
     }
 
 }

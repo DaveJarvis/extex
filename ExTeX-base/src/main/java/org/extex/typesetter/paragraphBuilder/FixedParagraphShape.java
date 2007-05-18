@@ -82,6 +82,7 @@ public class FixedParagraphShape extends ParagraphShape {
      *
      * @see org.extex.typesetter.paragraphBuilder.ParagraphShape#getLength(int)
      */
+    @Override
     public FixedDimen getLength(int index) {
 
         return hsize;

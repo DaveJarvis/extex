@@ -63,6 +63,7 @@ public class NamedOutputStream extends OutputStream {
      *
      * @see java.io.OutputStream#close()
      */
+    @Override
     public void close() throws IOException {
 
         this.stream.close();
@@ -78,6 +79,7 @@ public class NamedOutputStream extends OutputStream {
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
+    @Override
     public boolean equals(Object obj) {
 
         return this.stream.equals(obj);
@@ -95,6 +97,7 @@ public class NamedOutputStream extends OutputStream {
      *
      * @see java.io.OutputStream#flush()
      */
+    @Override
     public void flush() throws IOException {
 
         this.stream.flush();
@@ -119,6 +122,7 @@ public class NamedOutputStream extends OutputStream {
      *
      * @see java.lang.Object#hashCode()
      */
+    @Override
     public int hashCode() {
 
         return this.stream.hashCode();
@@ -131,6 +135,7 @@ public class NamedOutputStream extends OutputStream {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return this.stream.toString();
@@ -147,6 +152,7 @@ public class NamedOutputStream extends OutputStream {
      *
      * @see java.io.OutputStream#write(byte[])
      */
+    @Override
     public void write(byte[] b) throws IOException {
 
         this.stream.write(b);
@@ -165,6 +171,7 @@ public class NamedOutputStream extends OutputStream {
      *
      * @see java.io.OutputStream#write(byte[], int, int)
      */
+    @Override
     public void write(byte[] b, int off, int len)
             throws IOException {
 
@@ -181,6 +188,7 @@ public class NamedOutputStream extends OutputStream {
      *
      * @see java.io.OutputStream#write(int)
      */
+    @Override
     public void write(int b) throws IOException {
 
         this.stream.write(b);

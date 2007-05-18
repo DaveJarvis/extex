@@ -35,7 +35,7 @@ public class PdfEndLink extends WhatsItNode {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -61,6 +61,7 @@ public class PdfEndLink extends WhatsItNode {
      *      int,
      *      int)
      */
+    @Override
     public void toString(StringBuffer sb, String prefix,
             int breadth, int depth) {
 

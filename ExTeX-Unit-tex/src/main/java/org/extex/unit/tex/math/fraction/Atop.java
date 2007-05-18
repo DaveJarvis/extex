@@ -32,49 +32,52 @@ import org.extex.unit.tex.math.AbstractMathCode;
 
 /**
  * This class provides an implementation for the primitive <code>\atop</code>.
- *
+ * 
  * <doc name="atop">
  * <h3>The Math Primitive <tt>\atop</tt></h3>
  * <p>
- *  The math primitive <tt>\atop</tt> arranges that the material in the math
- *  group before it is typeset above the material after the primitive.
- *  The two parts are not separated by a line.
+ * The math primitive <tt>\atop</tt> arranges that the material in the math
+ * group before it is typeset above the material after the primitive. The two
+ * parts are not separated by a line.
  * </p>
  * <p>
- *  If several primitives of type <tt>\above</tt>, <tt>\abovewithdelims</tt>,
- *  <tt>\atop</tt>, <tt>\atopwithdelims</tt>, <tt>\over</tt>, or
- *  <tt>\overwithdelims</tt> are encountered in the same math group then the
- *  result is ambiguous and an error is raised.
+ * If several primitives of type <tt>\above</tt>, <tt>\abovewithdelims</tt>,
+ * <tt>\atop</tt>, <tt>\atopwithdelims</tt>, <tt>\over</tt>, or
+ * <tt>\overwithdelims</tt> are encountered in the same math group then the
+ * result is ambiguous and an error is raised.
  * </p>
  * <p>
- *  If the primitive is used outside of math mode then an error is raised.
+ * If the primitive is used outside of math mode then an error is raised.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;atop&rang;
  *       &rarr; &lang;math material&rang; <tt>\atop</tt> &lang;math material&rang;  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    { a \atop b}  </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
 public class Atop extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 20060417L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for tracing and debugging
      */
     public Atop(String name) {
@@ -85,10 +88,11 @@ public class Atop extends AbstractMathCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter)
             throws HelpingException,

@@ -27,34 +27,38 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive <code>\skip</code>.
- * It sets the named skip register to the value given,
- * and as a side effect all prefixes are zeroed.
- *
+ * It sets the named skip register to the value given, and as a side effect all
+ * prefixes are zeroed.
+ * 
  * <p>
  * All features are inherited from
- * {@link org.extex.unit.tex.register.skip.SkipParameter SkipParameter}.
- * Just the key has to be provided under which this Glue has to be stored.
- * This key is constructed from the name, a hash mark and the running number.
+ * {@link org.extex.unit.tex.register.skip.SkipParameter SkipParameter}. Just
+ * the key has to be provided under which this Glue has to be stored. This key
+ * is constructed from the name, a hash mark and the running number.
  * </p>
- *
- * <p>Example</p>
+ * 
+ * <p>
+ * Example
+ * </p>
+ * 
  * <pre>
  * \skip12=345pt plus 12em
  * </pre>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
 public class SkipParameter extends SkipPrimitive {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public SkipParameter(String name) {
@@ -67,9 +71,9 @@ public class SkipParameter extends SkipPrimitive {
      * 
      * @see org.extex.unit.tex.register.skip.AbstractSkip#getKey(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     protected String getKey(Context context, TokenSource source,
             Typesetter typesetter) throws TypesetterException {
 

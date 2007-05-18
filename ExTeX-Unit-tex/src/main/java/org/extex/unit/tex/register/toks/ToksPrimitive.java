@@ -102,7 +102,7 @@ public class ToksPrimitive extends AbstractToks
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 04022007L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -117,10 +117,11 @@ public class ToksPrimitive extends AbstractToks
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void assign(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -138,7 +139,8 @@ public class ToksPrimitive extends AbstractToks
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens convertTokens(Context context, TokenSource source,
@@ -151,7 +153,8 @@ public class ToksPrimitive extends AbstractToks
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

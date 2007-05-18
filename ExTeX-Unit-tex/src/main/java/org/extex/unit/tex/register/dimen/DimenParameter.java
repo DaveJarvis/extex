@@ -52,7 +52,7 @@ public class DimenParameter extends DimenPrimitive
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>key</tt> contains the key.
@@ -102,6 +102,7 @@ public class DimenParameter extends DimenPrimitive
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
+    @Override
     protected String getKey(Context context, TokenSource source,
             Typesetter typesetter) {
 

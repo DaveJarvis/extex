@@ -135,6 +135,7 @@ public class ToksParameter extends AbstractToks
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     protected String getKey(Context context, TokenSource source,
             Typesetter typesetter) throws TypesetterException {
 
@@ -168,10 +169,11 @@ public class ToksParameter extends AbstractToks
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void assign(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -189,7 +191,8 @@ public class ToksParameter extends AbstractToks
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens convertTokens(Context context, TokenSource source,

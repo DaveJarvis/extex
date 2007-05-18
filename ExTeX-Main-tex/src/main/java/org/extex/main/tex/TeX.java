@@ -1038,6 +1038,7 @@ public class TeX extends ExTeX {
      *      org.extex.framework.configuration.Configuration,
      *      org.extex.resource.ResourceFinder, CoreFontFactory)
      */
+    @Override
     protected BackendDriver makeBackend(Configuration config,
             OutputStreamFactory outFactory, DocumentWriterOptions options,
             Configuration colorConfig, ResourceFinder finder,
@@ -1094,6 +1095,7 @@ public class TeX extends ExTeX {
      *      org.extex.backend.outputStream.OutputStreamFactory,
      *      org.extex.resource.ResourceFinder, java.lang.String)
      */
+    @Override
     protected Interpreter makeInterpreter(Configuration config,
             OutputStreamFactory outFactory, ResourceFinder finder,
             String jobname)
@@ -1145,6 +1147,7 @@ public class TeX extends ExTeX {
      * @see org.extex.ExTeX#makeOutputFactory(java.lang.String,
      *      org.extex.framework.configuration.Configuration)
      */
+    @Override
     protected OutputFactory makeOutputFactory(String jobname,
             Configuration config) {
 
@@ -1171,6 +1174,7 @@ public class TeX extends ExTeX {
      * @throws NotObservableException in case that the observer for file events
      *         could not be registered
      */
+    @Override
     protected TokenStreamFactory makeTokenStreamFactory(Configuration config,
             ResourceFinder finder)
             throws ConfigurationException,

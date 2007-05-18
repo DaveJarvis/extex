@@ -65,7 +65,7 @@ public class Cr extends AbstractCode {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 20060306L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -80,10 +80,11 @@ public class Cr extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -91,7 +92,7 @@ public class Cr extends AbstractCode {
         ListMaker maker = typesetter.getListMaker();
         if (maker instanceof AlignmentList) {
             Token token = source.getToken(context); // TODO gene: respect
-                                                    // protected
+            // protected
             if (token instanceof CodeToken) {
                 Code code = context.getCode((CodeToken) token);
                 if (code instanceof Noalign) {

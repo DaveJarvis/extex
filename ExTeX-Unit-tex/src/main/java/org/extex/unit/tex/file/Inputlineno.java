@@ -73,7 +73,7 @@ public class Inputlineno extends AbstractCode
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -88,7 +88,8 @@ public class Inputlineno extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -113,7 +114,8 @@ public class Inputlineno extends AbstractCode
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws CatcodeException,
-                HelpingException, TypesetterException {
+                HelpingException,
+                TypesetterException {
 
         long line = convertCount(context, source, typesetter);
         return context.getTokenFactory().toTokens(line);

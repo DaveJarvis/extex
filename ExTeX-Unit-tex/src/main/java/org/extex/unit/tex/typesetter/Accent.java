@@ -72,7 +72,7 @@ public class Accent extends AbstractCode {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The constant <tt>UNIT</tt> contains the unit amount.
@@ -97,6 +97,7 @@ public class Accent extends AbstractCode {
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      * @see "TTP [1123,1124,1125]"
      */
+    @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 

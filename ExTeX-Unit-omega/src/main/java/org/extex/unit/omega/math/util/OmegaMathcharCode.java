@@ -79,7 +79,8 @@ public class OmegaMathcharCode extends AbstractOmegaMathCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -91,7 +92,8 @@ public class OmegaMathcharCode extends AbstractOmegaMathCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.tex.math.util.MathCodeConvertible#convertMathCode(org.extex.interpreter.context.Context,
+     * @see org.extex.unit.tex.math.util.MathCodeConvertible#convertMathCode(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public MathCode convertMathCode(Context context, TokenSource source,
@@ -103,10 +105,11 @@ public class OmegaMathcharCode extends AbstractOmegaMathCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter)
             throws TypesetterException,
@@ -119,7 +122,8 @@ public class OmegaMathcharCode extends AbstractOmegaMathCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.Showable#show(org.extex.interpreter.context.Context)
+     * @see org.extex.interpreter.type.Showable#show(
+     *      org.extex.interpreter.context.Context)
      */
     public Tokens show(Context context) throws HelpingException {
 
@@ -150,7 +154,8 @@ public class OmegaMathcharCode extends AbstractOmegaMathCode
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws CatcodeException,
-                HelpingException, TypesetterException {
+                HelpingException,
+                TypesetterException {
 
         return context.getTokenFactory().toTokens(mathCodeToLong(mathchar));
     }

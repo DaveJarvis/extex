@@ -113,7 +113,7 @@ public class Vbox extends AbstractBoxPrimitive {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.

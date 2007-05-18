@@ -27,42 +27,45 @@ import org.extex.typesetter.Typesetter;
 /**
  * This class provides an implementation for the primitive
  * <code>\splitfirstmarks</code>.
- *
+ * 
  * <doc name="splitfirstmarks">
  * <h3>The Primitive <tt>\splitfirstmarks</tt></h3>
  * <p>
- *  TODO missing documentation
+ * TODO missing documentation
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;splitfirstmarks&rang;
  *      &rarr; <tt>\splitfirstmarks</tt> {@linkplain
  *        org.extex.unit.tex.typesetter.mark.AbstractMarksCode#getKey(Context,TokenSource,Typesetter)
  *        &lang;mark name&rang;}  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \splitfirstmarks42  </pre>
  *  <pre class="TeXSample">
  *    \splitfirstmarks\count0  </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
 public class Splitfirstmarks extends AbstractMarksCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Splitfirstmarks(String name) {
@@ -72,15 +75,16 @@ public class Splitfirstmarks extends AbstractMarksCode {
 
     /**
      * Get the value for this mark.
-     *
+     * 
      * @param context the interpreter context
      * @param key the key
-     *
+     * 
      * @return the value
-     *
+     * 
      * @see org.extex.unit.tex.typesetter.mark.AbstractMarksCode#getValue(
      *      org.extex.interpreter.context.Context, java.lang.String)
      */
+    @Override
     protected Tokens getValue(Context context, String key) {
 
         return context.getSplitBottomMark(key);

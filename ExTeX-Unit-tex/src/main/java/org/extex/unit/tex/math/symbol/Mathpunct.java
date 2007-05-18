@@ -33,51 +33,55 @@ import org.extex.typesetter.type.noad.PunctationNoad;
 import org.extex.unit.tex.math.AbstractMathCode;
 
 /**
- * This class provides an implementation for the primitive <code>\mathpunct</code>.
- *
+ * This class provides an implementation for the primitive
+ * <code>\mathpunct</code>.
+ * 
  * <doc name="mathpunct">
  * <h3>The Math Primitive <tt>\mathpunct</tt></h3>
  * <p>
- *  The primitive <tt>\mathpunc</tt> takes an argument and treats it as
- *  a punctation symbol. It works in math mode only. The argument can either
- *  be a single letter of a math expression enclosed in braces.
+ * The primitive <tt>\mathpunc</tt> takes an argument and treats it as a
+ * punctation symbol. It works in math mode only. The argument can either be a
+ * single letter of a math expression enclosed in braces.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;mathpunct&rang;
  *       &rarr; <tt>\mathpunct</tt> &lang;formula&rang;
  *
  *    &lang;formula&rang;
  *       &rarr;  &lang;letter&rang;
  *         |  <tt>{</tt> &lang;math material&rang; <tt>}</tt>  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \mathpunct x </pre>
- *
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \mathpunct\mathchar"1234  </pre>
- *
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \mathpunct {abc} </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
 public class Mathpunct extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for tracing and debugging
      */
     public Mathpunct(String name) {
@@ -88,10 +92,11 @@ public class Mathpunct extends AbstractMathCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter)
             throws HelpingException,

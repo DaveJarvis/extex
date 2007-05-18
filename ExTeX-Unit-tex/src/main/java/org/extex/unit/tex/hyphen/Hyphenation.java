@@ -88,7 +88,7 @@ public class Hyphenation extends HyphenationPrimitive {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 20060307L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.

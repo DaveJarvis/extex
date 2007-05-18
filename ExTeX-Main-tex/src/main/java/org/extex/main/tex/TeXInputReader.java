@@ -86,6 +86,7 @@ public class TeXInputReader extends Reader {
      *
      * @see java.io.Reader#close()
      */
+    @Override
     public void close() throws IOException {
 
         reader.close();
@@ -96,6 +97,7 @@ public class TeXInputReader extends Reader {
      *
      * @see java.io.Reader#markSupported()
      */
+    @Override
     public boolean markSupported() {
 
         return this.reader.markSupported();
@@ -106,6 +108,7 @@ public class TeXInputReader extends Reader {
      *
      * @see java.io.Reader#read()
      */
+    @Override
     public int read() throws IOException {
 
         return this.reader.read();
@@ -116,6 +119,7 @@ public class TeXInputReader extends Reader {
      *
      * @see java.io.Reader#read(char[])
      */
+    @Override
     public int read(char[] buffer) throws IOException {
 
         return this.reader.read(buffer);
@@ -126,6 +130,7 @@ public class TeXInputReader extends Reader {
      *
      * @see java.io.Reader#read(char[], int, int)
      */
+    @Override
     public int read(char[] buffer, int startIndex, int len) throws IOException {
 
         /*
@@ -153,6 +158,7 @@ public class TeXInputReader extends Reader {
      *
      * @see java.io.Reader#ready()
      */
+    @Override
     public boolean ready() throws IOException {
 
         return this.reader.ready();
@@ -163,6 +169,7 @@ public class TeXInputReader extends Reader {
      *
      * @see java.io.Reader#reset()
      */
+    @Override
     public void reset() throws IOException {
 
         this.reader.reset();
@@ -173,6 +180,7 @@ public class TeXInputReader extends Reader {
      *
      * @see java.io.Reader#skip(long)
      */
+    @Override
     public long skip(long n) throws IOException {
 
         return this.reader.skip(n);

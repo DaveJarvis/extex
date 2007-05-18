@@ -29,48 +29,52 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive <code>\relax</code>.
- *
+ * 
  * <doc name="relax">
  * <h3>The Primitive <tt>\relax</tt></h3>
  * <p>
- *  This primitive simply does nothing. It acts as a no-op for the
- *  <logo>TeX</logo> macro language. <tt>\relax</tt> is not even expandable.
- *  in certain circumstances it might be treated as if it where expandable and
- *  the expansion is empty.
+ * This primitive simply does nothing. It acts as a no-op for the <logo>TeX</logo>
+ * macro language. <tt>\relax</tt> is not even expandable. in certain
+ * circumstances it might be treated as if it where expandable and the expansion
+ * is empty.
  * </p>
  * <p>
- *  <tt>\relax</tt> sometimes acts as terminating token. For instance when a
- *  number is parsed <tt>\relax</tt> terminates the parsing even if the
- *  following token is a digit.
+ * <tt>\relax</tt> sometimes acts as terminating token. For instance when a
+ * number is parsed <tt>\relax</tt> terminates the parsing even if the
+ * following token is a digit.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;relax&rang;
  *      &rarr; <tt>\relax</tt>  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \relax  </pre>
  *  <pre class="TeXSample">
  *    \the\count123\relax456  </pre>
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
 public class Relax extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for tracing and debugging
      */
     public Relax(String name) {
@@ -79,23 +83,15 @@ public class Relax extends AbstractCode {
     }
 
     /**
-     * This method takes the first token and executes it. The result is placed
-     * on the stack. This operation might have side effects. To execute a token
-     * it might be necessary to consume further tokens.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     *
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter) throws HelpingException, TypesetterException {
+    @Override
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         // relax
     }

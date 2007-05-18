@@ -97,6 +97,7 @@ public class CharCode extends AbstractCode
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -139,6 +140,7 @@ public class CharCode extends AbstractCode
      * @param context the interpreter context
      * 
      * @return the description of the primitive as list of Tokens
+     *
      * @see org.extex.interpreter.type.Showable#show(
      *      org.extex.interpreter.context.Context)
      */
@@ -171,7 +173,8 @@ public class CharCode extends AbstractCode
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws CatcodeException,
-                HelpingException, TypesetterException {
+                HelpingException,
+                TypesetterException {
 
         return context.getTokenFactory().toTokens( //
             Integer.toString(character.getCodePoint()));
@@ -180,6 +183,7 @@ public class CharCode extends AbstractCode
     /**
      * @see org.extex.interpreter.type.AbstractCode#toString()
      */
+    @Override
     public String toString() {
 
         return character.toString();

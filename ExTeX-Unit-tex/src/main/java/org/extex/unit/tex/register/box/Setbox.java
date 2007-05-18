@@ -31,26 +31,27 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive <code>\setbox</code>.
- *
+ * 
  * <doc name="setbox">
  * <h3>The Primitive <tt>\setbox</tt></h3>
  * <p>
- *  The primitive <tt>\setbox</tt> takes a key for a box register and assigns
- *  the following box to this register.
+ * The primitive <tt>\setbox</tt> takes a key for a box register and assigns
+ * the following box to this register.
  * </p>
  * <p>
- *  TODO missing documentation
+ * TODO missing documentation
  * </p>
  * <p>
- *  The primitive is an assignment. This means that it respects
- *  <tt>\globaldefs</tt>. The treatment of <tt>\afterassignment</tt> is special
- *  The token stored for after assignment are inserted just after the box as
- *  been opened.
+ * The primitive is an assignment. This means that it respects
+ * <tt>\globaldefs</tt>. The treatment of <tt>\afterassignment</tt> is
+ * special The token stored for after assignment are inserted just after the box
+ * as been opened.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;setbox&rang;
  *      &rarr; &lang;optional prefix&rang; <tt>\setbox</tt> {@linkplain
  *        org.extex.unit.tex.register.box.Setbox#getKey(Context,TokenSource,Typesetter,String)
@@ -59,67 +60,70 @@ import org.extex.typesetter.exception.TypesetterException;
  *    &lang;optional prefix&rang;
  *      &rarr;
  *       |  <tt>\global</tt> &lang;optional prefix&rang;  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \setbox0\hbox{abc}  </pre>
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
 public class Setbox extends AbstractAssignment {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 16022007L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Return the key (the number) for the box register.
-     *
+     * 
      * <doc type="syntax" name="box register name">
      * <h3>A Box Register Name</h3>
      * <p>
-     *  A box register name determines under which key a box register can be
-     *  addressed. In <logo>TeX</logo> this used to be a positive number only.
-     *  This has been extended to allow also a token list in braces.
+     * A box register name determines under which key a box register can be
+     * addressed. In <logo>TeX</logo> this used to be a positive number only.
+     * This has been extended to allow also a token list in braces.
      * </p>
      * <p>
-     *  The alternative is controlled by the count register
-     *  <tt>\register.max</tt>. The following interpretation of the value of this
-     *   count is used:
-     *  <ul>
-     *   <li>If the value of this count register is negative
-     *    then a arbitrary non-negative number is allowed as register name
-     *    as well as any list of tokens enclosed in braces.</li>
-     *   <li>If the value of this count register is not-negative
-     *    then a only a non-negative number is allowed as register name
-     *    which does not exceed the value of the count register.</li>
-     *  </ul>
+     * The alternative is controlled by the count register
+     * <tt>\register.max</tt>. The following interpretation of the value of
+     * this count is used:
+     * <ul>
+     * <li>If the value of this count register is negative then a arbitrary
+     * non-negative number is allowed as register name as well as any list of
+     * tokens enclosed in braces.</li>
+     * <li>If the value of this count register is not-negative then a only a
+     * non-negative number is allowed as register name which does not exceed the
+     * value of the count register.</li>
+     * </ul>
      * </p>
      * <p>
-     *  The value of the count register <tt>\register.max</tt> is set differently
-     *  for various configurations of <logo>ExTeX</logo>:
-     *  <ul>
-     *   <li><logo>TeX</logo> uses the value 255.</li>
-     *   <li><logo>eTeX</logo> uses the value 32767.</li>
-     *   <li><logo>Omega</logo> uses the value 65536.</li>
-     *   <li><logo>ExTeX</logo> uses the value -1.</li>
-     *  </ul>
+     * The value of the count register <tt>\register.max</tt> is set
+     * differently for various configurations of <logo>ExTeX</logo>:
+     * <ul>
+     * <li><logo>TeX</logo> uses the value 255.</li>
+     * <li><logo>eTeX</logo> uses the value 32767.</li>
+     * <li><logo>Omega</logo> uses the value 65536.</li>
+     * <li><logo>ExTeX</logo> uses the value -1.</li>
+     * </ul>
      * </p>
      * <p>
-     *  Note that the register name <tt>\register.max</tt> contains a period.
-     *  Thus it can normally not be entered easily since the catcode of the
-     *  period is OTHER but needs to be LETTER. Thus you have to use a
-     *  temporarily reassigned category code (see
-     *  {@link org.extex.unit.tex.register.CatcodePrimitive <tt>\catcode}</tt>)
-     *   or use
-     *  {@link org.extex.unit.tex.macro.Csname <tt>\csname</tt>}.
+     * Note that the register name <tt>\register.max</tt> contains a period.
+     * Thus it can normally not be entered easily since the catcode of the
+     * period is OTHER but needs to be LETTER. Thus you have to use a
+     * temporarily reassigned category code (see
+     * {@link org.extex.unit.tex.register.CatcodePrimitive <tt>\catcode}</tt>)
+     * or use {@link org.extex.unit.tex.macro.Csname <tt>\csname</tt>}.
      * </p>
-     *
+     * 
      * <h4>Syntax</h4>
+     * 
      * <pre class="syntax">
      *   &lang;box register name&rang;
      *       &rarr; {@linkplain
@@ -127,28 +131,31 @@ public class Setbox extends AbstractAssignment {
      *        &lang;tokens&rang;}
      *        | {@linkplain org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
-     *
+     * 
      * <h4>Examples</h4>
+     * 
      * <pre class="TeXSample">
      *  123
      *  {abc}
      * </pre>
+     * 
      * </doc>
-     *
-     *
+     * 
+     * 
      * @param context the interpreter context to use
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param name the name of the primitive for error messages
-     *
+     * 
      * @return the key for the box register
-     *
+     * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
-    public static String getKey(Context context,
-            TokenSource source, Typesetter typesetter,
-            String name) throws HelpingException, TypesetterException {
+    public static String getKey(Context context, TokenSource source,
+            Typesetter typesetter, String name)
+            throws HelpingException,
+                TypesetterException {
 
         String key = source.scanRegisterName(context, source, typesetter, name);
 
@@ -161,7 +168,7 @@ public class Setbox extends AbstractAssignment {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Setbox(String name) {
@@ -170,25 +177,15 @@ public class Setbox extends AbstractAssignment {
     }
 
     /**
-     * The method <tt>assign</tt> is the core of the functionality of
-     * {@link #execute(Flags, Context, TokenSource, Typesetter) execute()}.
-     * This method is preferable to <tt>execute()</tt> since the
-     * <tt>execute()</tt> method provided in this class takes care of
-     * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> as well.
-     *
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+    @Override
+    public void assign(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         String key = Setbox.getKey(context, source, typesetter, getName());
         source.getOptionalEquals(context);

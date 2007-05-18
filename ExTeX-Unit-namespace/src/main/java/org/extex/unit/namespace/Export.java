@@ -32,36 +32,37 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive <code>\export</code>.
- *
+ * 
  * <doc name="export">
  * <h3>The Primitive <tt>\export</tt></h3>
  * <p>
- *  The primitive <tt>\export</tt> takes a list of tokens and saves them away
- *  for an associated <tt>\import</tt>. The tokens in the list are either
- *  control sequence tokens or active characters. All other tokens are ignored.
+ * The primitive <tt>\export</tt> takes a list of tokens and saves them away
+ * for an associated <tt>\import</tt>. The tokens in the list are either
+ * control sequence tokens or active characters. All other tokens are ignored.
  * </p>
  * <p>
- *  The expansion text is empty. The primitive is an assignment. Thus
- *  <tt>\afterassignment</tt> interacts with the primitive in the expected way.
+ * The expansion text is empty. The primitive is an assignment. Thus
+ * <tt>\afterassignment</tt> interacts with the primitive in the expected way.
  * </p>
  * <p>
- *  The definitions are usually performed local to the current group. If the
- *  prefix <tt>\global</tt> is given or the count register <tt>\globaldefs</tt>
- *  has a positive value then the definition is made globally.
- *  Usually you want to define the export as global. This is the case if the
- *  <tt>\export</tt> primitive is invoked at group level 0. Interesting special
- *  effects can be achieved when using the export statement in groups and
- *  together with a local scope definition.
+ * The definitions are usually performed local to the current group. If the
+ * prefix <tt>\global</tt> is given or the count register <tt>\globaldefs</tt>
+ * has a positive value then the definition is made globally. Usually you want
+ * to define the export as global. This is the case if the <tt>\export</tt>
+ * primitive is invoked at group level 0. Interesting special effects can be
+ * achieved when using the export statement in groups and together with a local
+ * scope definition.
  * </p>
  * <p>
- *  This primitive is one building block for the use of name spaces in
- *  <logo>ExTeX</logo>. The central primitive for this purpose is
- *  <tt>\namespace</tt>.
+ * This primitive is one building block for the use of name spaces in
+ * <logo>ExTeX</logo>. The central primitive for this purpose is
+ * <tt>\namespace</tt>.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;export&rang;
  *      &rarr; &lang;prefix&rang; <tt>\export</tt> {@linkplain
  *      org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
@@ -70,30 +71,32 @@ import org.extex.typesetter.exception.TypesetterException;
  *    &lang;prefix&rang;
  *      &rarr;
  *       |  <tt>\global</tt>  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \export{\a\b}  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @see org.extex.unit.namespace.Namespace
  * @see org.extex.unit.namespace.Import
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
 public class Export extends AbstractAssignment {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 04022007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Export(String name) {
@@ -103,15 +106,14 @@ public class Export extends AbstractAssignment {
 
     /**
      * {@inheritDoc}
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     * 
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+    @Override
+    public void assign(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Tokens export;
         try {

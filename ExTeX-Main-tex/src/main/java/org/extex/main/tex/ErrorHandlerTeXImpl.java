@@ -51,6 +51,7 @@ public class ErrorHandlerTeXImpl extends ErrorHandlerImpl {
      * @see org.extex.main.tex.ErrorHandlerImpl#showErrorLine(
      *      java.util.logging.Logger, java.lang.String, org.extex.core.Locator)
      */
+    @Override
     protected void showErrorLine(Logger logger, String message,
             Locator locator) {
 

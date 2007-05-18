@@ -233,6 +233,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      * @see org.extex.typesetter.listMaker.RestrictedHorizontalListMaker#complete(
      *      org.extex.typesetter.TypesetterOptions)
      */
+    @Override
     public NodeList complete(TypesetterOptions context)
             throws TypesetterException,
                 ConfigurationException {
@@ -249,9 +250,8 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
                 if (cell != null) {
                     nl = cell.getList();
                     if (nl instanceof HorizontalListNode) {
-                        ((HorizontalListNode) nl).hpack(new Dimen(maxWidth[i])); // TODO
-                                                                                    // gene:
-                                                                                    // check
+                        ((HorizontalListNode) nl).hpack(new Dimen(maxWidth[i]));
+                        // TODO gene: check
                     } else {
                         // TODO gene: unimplemented
                         throw new RuntimeException("unimplemented");
@@ -448,7 +448,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
 
         try {
             source.push(format.getPost()); // TODO gene: wrong! process the
-                                            // tokens before closing
+            // tokens before closing
         } catch (HelpingException e) {
             throw new TypesetterException(e);
         }

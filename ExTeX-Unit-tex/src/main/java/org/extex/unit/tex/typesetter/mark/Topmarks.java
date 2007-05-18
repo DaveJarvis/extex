@@ -79,7 +79,7 @@ public class Topmarks extends AbstractMarksCode {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 20060416L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -102,6 +102,7 @@ public class Topmarks extends AbstractMarksCode {
      * @see org.extex.unit.tex.typesetter.mark.AbstractMarksCode#getValue(
      *      org.extex.interpreter.context.Context, java.lang.String)
      */
+    @Override
     protected Tokens getValue(Context context, String key) {
 
         return context.getTopMark(key);

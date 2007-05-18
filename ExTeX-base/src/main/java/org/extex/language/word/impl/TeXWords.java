@@ -132,6 +132,7 @@ public class TeXWords extends ExTeXWords implements WordTokenizer {
      *      int,
      *      org.extex.core.UnicodeCharList)
      */
+    @Override
     public int findWord(NodeList nodes, int start,
             UnicodeCharList word) throws HyphenationException {
 
@@ -158,6 +159,7 @@ public class TeXWords extends ExTeXWords implements WordTokenizer {
      *      org.extex.core.UnicodeCharList,
      *      org.extex.typesetter.TypesetterOptions)
      */
+    @Override
     public UnicodeCharList normalize(UnicodeCharList word,
             TypesetterOptions options) throws HyphenationException {
 

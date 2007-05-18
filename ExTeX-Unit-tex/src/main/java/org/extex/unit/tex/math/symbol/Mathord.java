@@ -34,50 +34,53 @@ import org.extex.unit.tex.math.AbstractMathCode;
 
 /**
  * This class provides an implementation for the primitive <code>\mathord</code>.
- *
+ * 
  * <doc name="mathord">
  * <h3>The Math Primitive <tt>\mathord</tt></h3>
  * <p>
- *  The primitive <tt>\mathord</tt> takes an argument and treats it as
- *  an ordinary symbol. It works in math mode only. The argument can either
- *  be a single letter of a math expression enclosed in braces.
+ * The primitive <tt>\mathord</tt> takes an argument and treats it as an
+ * ordinary symbol. It works in math mode only. The argument can either be a
+ * single letter of a math expression enclosed in braces.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;mathord&rang;
  *       &rarr; <tt>\mathord</tt> &lang;formula&rang;
  *
  *    &lang;formula&rang;
  *       &rarr;  &lang;letter&rang;
  *         |  <tt>{</tt> &lang;math material&rang; <tt>}</tt>  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \mathord x </pre>
- *
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \mathord\mathchar"1234  </pre>
- *
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \mathord {abc} </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
 public class Mathord extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for tracing and debugging
      */
     public Mathord(String name) {
@@ -88,10 +91,11 @@ public class Mathord extends AbstractMathCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter)
             throws HelpingException,

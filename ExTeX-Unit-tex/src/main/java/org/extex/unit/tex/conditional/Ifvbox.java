@@ -30,18 +30,18 @@ import org.extex.unit.tex.register.box.Setbox;
 
 /**
  * This class provides an implementation for the primitive <code>\ifvbox</code>.
- *
+ * 
  * <doc name="ifvbox">
  * <h3>The Primitive <tt>\ifvbox</tt></h3>
  * <p>
- *  The primitive takes one expanded integer argument.
- *  The conditional is true iff the box denoted by the argument is a vertical
- *  box.
+ * The primitive takes one expanded integer argument. The conditional is true
+ * iff the box denoted by the argument is a vertical box.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;ifvbox&rang;
  *      &rarr; <tt>\ifvbox</tt> {@linkplain
  *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
@@ -49,28 +49,30 @@ import org.extex.unit.tex.register.box.Setbox;
  *      | <tt>\ifvbox</tt> {@linkplain
  *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt> </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \ifvbox255 abc \fi  </pre>
  *  <pre class="TeXSample">
  *    \ifvbox\count120 abc \fi  </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4439 $
  */
 public class Ifvbox extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Ifvbox(String name) {
@@ -81,9 +83,11 @@ public class Ifvbox extends AbstractIf {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(org.extex.interpreter.context.Context,
+     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public boolean conditional(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 

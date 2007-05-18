@@ -91,8 +91,8 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
             new MathClassVisitor<Integer, Object, Object>() {
 
                 /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitBinary(java.lang.Object,
-                 *      java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitBinary(
+                 *      java.lang.Object, java.lang.Object)
                  */
                 public Integer visitBinary(Object arg, Object arg2) {
 
@@ -100,8 +100,8 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitClosing(java.lang.Object,
-                 *      java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitClosing(
+                 *      java.lang.Object, java.lang.Object)
                  */
                 public Integer visitClosing(Object arg, Object arg2) {
 
@@ -109,8 +109,8 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitLarge(java.lang.Object,
-                 *      java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitLarge(
+                 *      java.lang.Object, java.lang.Object)
                  */
                 public Integer visitLarge(Object arg, Object arg2) {
 
@@ -118,8 +118,8 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOpening(java.lang.Object,
-                 *      java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOpening(
+                 *      java.lang.Object, java.lang.Object)
                  */
                 public Integer visitOpening(Object arg, Object arg2) {
 
@@ -127,8 +127,8 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOrdinary(java.lang.Object,
-                 *      java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOrdinary(
+                 *      java.lang.Object, java.lang.Object)
                  */
                 public Integer visitOrdinary(Object arg, Object arg2) {
 
@@ -136,8 +136,8 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitPunctation(java.lang.Object,
-                 *      java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitPunctation(
+                 *      java.lang.Object, java.lang.Object)
                  */
                 public Integer visitPunctation(Object arg, Object arg2) {
 
@@ -145,8 +145,8 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitRelation(java.lang.Object,
-                 *      java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitRelation(
+                 *      java.lang.Object, java.lang.Object)
                  */
                 public Integer visitRelation(Object arg, Object arg2) {
 
@@ -154,8 +154,8 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitVariable(java.lang.Object,
-                 *      java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitVariable(
+                 *      java.lang.Object, java.lang.Object)
                  */
                 public Integer visitVariable(Object arg, Object arg2) {
 

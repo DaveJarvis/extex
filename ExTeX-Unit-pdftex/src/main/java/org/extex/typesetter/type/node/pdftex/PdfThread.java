@@ -37,7 +37,7 @@ public class PdfThread extends WhatsItNode {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>attr</tt> contains the attribute string.
@@ -115,6 +115,7 @@ public class PdfThread extends WhatsItNode {
      *      int,
      *      int)
      */
+    @Override
     public void toString(StringBuffer sb, String prefix,
             int breadth, int depth) {
 

@@ -86,6 +86,7 @@ public class Protected extends AbstractCode implements PrefixCode {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
+    @Override
     public void execute(Flags prefix, Context context,
             TokenSource source, Typesetter typesetter) {
 

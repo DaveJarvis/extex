@@ -68,7 +68,7 @@ public class Ifhbox extends AbstractIf {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -83,9 +83,11 @@ public class Ifhbox extends AbstractIf {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(org.extex.interpreter.context.Context,
+     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public boolean conditional(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 

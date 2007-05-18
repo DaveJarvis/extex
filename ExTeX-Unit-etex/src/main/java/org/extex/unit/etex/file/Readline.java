@@ -85,7 +85,7 @@ public class Readline extends AbstractAssignment implements LogEnabled {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 20060411L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>TOKENIZER</tt> contains the tokenizer to use for this
@@ -154,6 +154,7 @@ public class Readline extends AbstractAssignment implements LogEnabled {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
+    @Override
     public void assign(Flags prefix, Context context,
             TokenSource source, Typesetter typesetter)
             throws HelpingException, TypesetterException {

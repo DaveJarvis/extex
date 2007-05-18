@@ -100,7 +100,8 @@ public class Fontcharwd extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -112,7 +113,8 @@ public class Fontcharwd extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,
@@ -124,8 +126,8 @@ public class Fontcharwd extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.ExpandableCode#expand(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,
@@ -165,11 +167,13 @@ public class Fontcharwd extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+            throws HelpingException,
+                TypesetterException {
 
         try {
             FixedDimen width = get(context, source, typesetter);

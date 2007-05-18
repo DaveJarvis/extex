@@ -165,6 +165,7 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
      * @see org.extex.language.Language#addPattern(
      *      Tokens)
      */
+    @Override
     public void addPattern(Tokens pattern)
             throws IllegalValueHyphenationException,
                 IllegalTokenHyphenationException,
@@ -243,6 +244,7 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
      *      boolean,
      *      org.extex.typesetter.type.node.factory.NodeFactory)
      */
+    @Override
     public boolean hyphenate(NodeList nodelist,
             TypesetterOptions context, UnicodeChar hyphen,
             int start, boolean forall, NodeFactory nodeFactory)
@@ -284,6 +286,7 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
      *      org.extex.core.UnicodeCharList,
      *      org.extex.typesetter.type.node.CharNode)
      */
+    @Override
     public boolean hyphenateOne(NodeList nodelist,
             TypesetterOptions context, int start,
             UnicodeCharList word, CharNode hyphenNode)

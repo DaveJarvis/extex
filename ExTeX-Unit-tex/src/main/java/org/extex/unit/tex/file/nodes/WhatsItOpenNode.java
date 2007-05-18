@@ -29,14 +29,15 @@ import org.extex.typesetter.type.node.WhatsItNode;
 
 /**
  * This WhatsIt node which opens an out file at shipping.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class WhatsItOpenNode extends WhatsItNode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -52,7 +53,7 @@ public class WhatsItOpenNode extends WhatsItNode {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param theKey the key of the file to open
      * @param outFile the out file to open
      */
@@ -65,13 +66,14 @@ public class WhatsItOpenNode extends WhatsItNode {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.type.Node#atShipping(
      *      org.extex.interpreter.context.Context,
      *      org.extex.typesetter.Typesetter, FixedDimen, FixedDimen)
      */
-    public Node atShipping(PageContext context, Typesetter typesetter, FixedDimen posX, FixedDimen posY)
-            throws GeneralException {
+    @Override
+    public Node atShipping(PageContext context, Typesetter typesetter,
+            FixedDimen posX, FixedDimen posY) throws GeneralException {
 
         file.open();
         context.setOutFile(key, file, true);

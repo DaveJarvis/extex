@@ -26,37 +26,40 @@ import org.extex.typesetter.Typesetter;
 /**
  * This class provides an implementation for the primitive
  * <code>\splitbotmark</code>.
- *
+ * 
  * <doc name="splitbotmark">
  * <h3>The Primitive <tt>\splitbotmark</tt></h3>
  * <p>
- *  TODO missing documentation
+ * TODO missing documentation
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    <tt>\splitbotmark</tt>  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \splitbotmark </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
 public class Splitbotmark extends Splitbotmarks {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Splitbotmark(String name) {
@@ -66,18 +69,18 @@ public class Splitbotmark extends Splitbotmarks {
 
     /**
      * Get the key for this mark.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the key for the mark primitive
-     *
+     * 
      * @see org.extex.unit.tex.typesetter.mark.AbstractMarkCode#getKey(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     protected String getKey(Context context, TokenSource source,
             Typesetter typesetter) {
 
