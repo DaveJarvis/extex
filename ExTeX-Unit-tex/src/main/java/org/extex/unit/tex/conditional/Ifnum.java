@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.conditional;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
@@ -47,14 +46,14 @@ import org.extex.unit.base.conditional.AbstractIf;
  * <pre class="syntax">
  *    &lang;ifnum&rang;
  *      &rarr; <tt>\ifnum</tt> {@linkplain
- *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;op&rang; {@linkplain
- *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\fi</tt>
  *      | <tt>\ifnum</tt> {@linkplain
- *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;op&rang; {@linkplain
- *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt>
  *
  *    &lang;op&rang;
@@ -94,13 +93,14 @@ public class Ifnum extends AbstractIf {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(org.extex.interpreter.context.Context,
+     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public boolean conditional(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        long value = CountParser.scanInteger(context, source, typesetter);
+        long value = source.parseInteger(context, source, typesetter);
         Token rel = source.getToken(context);
         if (rel == null) {
             throw new EofException(printableControlSequence(context));
@@ -108,13 +108,13 @@ public class Ifnum extends AbstractIf {
         if (rel.getCatcode() == Catcode.OTHER) {
             switch (rel.getChar().getCodePoint()) {
                 case '<':
-                    return (value < CountParser.scanInteger(context, source,
+                    return (value < source.parseInteger(context, source,
                         typesetter));
                 case '=':
-                    return (value == CountParser.scanInteger(context, source,
+                    return (value == source.parseInteger(context, source,
                         typesetter));
                 case '>':
-                    return (value > CountParser.scanInteger(context, source,
+                    return (value > source.parseInteger(context, source,
                         typesetter));
                 default:
                     // fall-through

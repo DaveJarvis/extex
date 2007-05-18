@@ -20,7 +20,6 @@
 package org.extex.unit.pdftex;
 
 import org.extex.backend.documentWriter.PdftexSupport;
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
@@ -78,14 +77,12 @@ public class Pdfxform extends AbstractPdftexCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws TypesetterException,
-                HelpingException {
+            Typesetter typesetter) throws TypesetterException, HelpingException {
 
         PdftexSupport writer = ensurePdftex(context, typesetter);
 
@@ -102,7 +99,7 @@ public class Pdfxform extends AbstractPdftexCode {
             }
         }
 
-        long b = CountParser.scanInteger(context, source, typesetter);
+        long b = source.parseInteger(context, source, typesetter);
         Box box = context.getBox(Long.toString(b));
         PdfXForm form = writer.getXForm(attr, resources, box);
 

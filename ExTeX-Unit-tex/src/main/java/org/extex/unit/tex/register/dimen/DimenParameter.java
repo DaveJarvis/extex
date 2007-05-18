@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.register.dimen;
 
-import org.extex.base.parser.DimenParser;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.Configurable;
@@ -130,7 +129,7 @@ public class DimenParameter extends DimenPrimitive
             return;
         }
         source.push(t);
-        Dimen d = DimenParser.parse(context, source, typesetter);
+        Dimen d = source.parseDimen(context, source, typesetter);
         context.setDimen(getKey(context, null, typesetter), d, true);
     }
 

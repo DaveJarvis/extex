@@ -21,7 +21,6 @@ package org.extex.interpreter.type.dimen;
 
 import junit.framework.TestCase;
 
-import org.extex.base.parser.DimenParser;
 import org.extex.core.exception.GeneralException;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
@@ -80,7 +79,7 @@ public class DimenRegisterTest extends TestCase {
         source.addStream(fac.newInstance(spec));
         source.setTokenStreamFactory(fac);
 
-        return DimenParser.parse(new MockContext(), source, null).getValue();
+        return source.parseDimen(new MockContext(), source, null).getValue();
     }
 
     /**

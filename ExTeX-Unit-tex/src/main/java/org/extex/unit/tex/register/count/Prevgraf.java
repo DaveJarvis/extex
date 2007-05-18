@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.register.count;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.ArithmeticOverflowException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
@@ -115,7 +114,7 @@ public class Prevgraf extends CountPrimitive {
         source.getKeyword(context, "by");
 
         long value =
-                CountParser.scanInteger(context, source, null)
+                source.parseInteger(context, source, null)
                         + context.getCount(key).getValue();
 
         if (value < 0) {
@@ -138,7 +137,7 @@ public class Prevgraf extends CountPrimitive {
         String key = getKey(context, source, typesetter);
         source.getOptionalEquals(context);
 
-        long value = CountParser.scanInteger(context, source, typesetter);
+        long value = source.parseInteger(context, source, typesetter);
         if (value < 0) {
             throw new HelpingException(getLocalizer(), "TTP.BadPrevGraf",
                 printableControlSequence(context), Long.toString(value));
@@ -149,8 +148,8 @@ public class Prevgraf extends CountPrimitive {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.tex.register.count.CountPrimitive#divide(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.unit.tex.register.count.CountPrimitive#divide(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void divide(Flags prefix, Context context, TokenSource source,
@@ -159,7 +158,7 @@ public class Prevgraf extends CountPrimitive {
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
 
-        long value = CountParser.scanInteger(context, source, null);
+        long value = source.parseInteger(context, source, null);
 
         if (value == 0) {
             throw new ArithmeticOverflowException(
@@ -177,8 +176,8 @@ public class Prevgraf extends CountPrimitive {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.tex.register.count.CountPrimitive#multiply(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.unit.tex.register.count.CountPrimitive#multiply(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void multiply(Flags prefix, Context context, TokenSource source,
@@ -187,7 +186,7 @@ public class Prevgraf extends CountPrimitive {
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
 
-        long value = CountParser.scanInteger(context, source, null);
+        long value = source.parseInteger(context, source, null);
         value *= context.getCount(key).getValue();
         if (value < 0) {
             throw new HelpingException(getLocalizer(), "TTP.BadPrevGraf",

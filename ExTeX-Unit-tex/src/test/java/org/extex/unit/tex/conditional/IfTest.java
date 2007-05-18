@@ -21,11 +21,16 @@ package org.extex.unit.tex.conditional;
 
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
+import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
+import org.extex.core.glue.Glue;
+import org.extex.core.muskip.Mudimen;
+import org.extex.core.muskip.Muskip;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.Parser;
 import org.extex.interpreter.type.box.Box;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.exception.CatcodeException;
@@ -216,7 +221,7 @@ public class IfTest extends ExTeXLauncher {
     }
 
     /**
-     * The field <tt>X_SOURCE</tt> contains the ...
+     * The field <tt>X_SOURCE</tt> contains the mock token source.
      */
     private static final TokenSource X_SOURCE = new TokenSource() {
 
@@ -683,6 +688,56 @@ public class IfTest extends ExTeXLauncher {
          *      java.lang.String)
          */
         public void update(String name, String text) {
+
+        }
+
+        public long parseInteger(Context context, TokenSource source,
+                Typesetter typesetter) {
+
+            return 0;
+        }
+
+        public long parseNumber(Context context, TokenSource source,
+                Typesetter typesetter) {
+
+            return 0;
+        }
+
+        public Dimen parseDimen(Context context, TokenSource source,
+                Typesetter typesetter) {
+
+            return null;
+        }
+
+        public Glue parseGlue(Context context, TokenSource source,
+                Typesetter typesetter) {
+
+            return null;
+        }
+
+        public Mudimen parseMudimen(Context context, TokenSource source,
+                Typesetter typesetter) {
+
+            return null;
+        }
+
+        public Muskip parseMuskip(Context context, TokenSource source,
+                Typesetter typesetter) {
+
+            return null;
+        }
+
+        @SuppressWarnings("unchecked")
+        public Object parse(Class c, Context context, TokenSource source,
+                Typesetter typesetter)
+                throws HelpingException,
+                    TypesetterException {
+
+            return null;
+        }
+
+        @SuppressWarnings("unchecked")
+        public void register(Class c, Parser p) {
 
         }
     };

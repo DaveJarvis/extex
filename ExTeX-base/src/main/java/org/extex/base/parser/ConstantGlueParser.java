@@ -25,6 +25,9 @@ import org.extex.core.glue.Glue;
 import org.extex.core.glue.GlueComponent;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.GlueConvertible;
+import org.extex.interpreter.parser.GlueParser;
+import org.extex.interpreter.parser.Parser;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.token.CodeToken;
@@ -33,24 +36,25 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides ...
- *
+ * This class provides a parser for constant glue entities.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision:4399 $
  */
-public final class GlueParser {
+public class ConstantGlueParser implements Parser<Glue>, GlueParser {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object by parsing a token source.
-     *
+     * 
      * <doc type="syntax" name="glue">
-     *
+     * 
      * <pre class="syntax">
      *   &lang;glue&rang;
      *     &rarr; &lang;component&rang;
@@ -64,23 +68,24 @@ public final class GlueParser {
      *
      *   &lang;unit&rang;
      *     &rarr; fi | fil | fill | filll    </pre>
+     * 
      * <p>
-     *  TODO gene: documentation incomplete
+     * TODO gene: documentation incomplete
      * </p>
-     *
+     * 
      * </doc>
-     *
-     *
+     * 
+     * 
      * @param source the source to read new tokens from
      * @param context the processing context
      * @param typesetter the typesetter
-     *
+     * 
      * @return a new instance of a Glue
-     *
+     * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
-    public static Glue parse(TokenSource source, Context context,
+    public static Glue scan(TokenSource source, Context context,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         GlueComponent length;
@@ -124,8 +129,36 @@ public final class GlueParser {
     /**
      * Creates a new object.
      */
-    private GlueParser() {
-        // never used
+    public ConstantGlueParser() {
+
+        super();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.parser.Parser#parse(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     */
+    public Glue parse(Context context, TokenSource source, Typesetter typesetter)
+            throws HelpingException,
+                TypesetterException {
+
+        return scan(source, context, typesetter);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.parser.GlueParser#parseGlue(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     */
+    public Glue parseGlue(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
+
+        return scan(source, context, typesetter);
     }
 
 }

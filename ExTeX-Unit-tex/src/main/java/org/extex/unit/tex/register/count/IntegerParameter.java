@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.register.count;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
@@ -35,15 +34,15 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class provides an implementation for the count valued primitives like
  * <code>\day</code>. It sets the named count register to the value given,
  * and as a side effect all prefixes are zeroed.
- *
+ * 
  * <p>
  * Example
  * </p>
- *
+ * 
  * <pre>
  *  \day=345
  * </pre>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4770 $
@@ -54,7 +53,8 @@ public class IntegerParameter extends CountPrimitive
             Configurable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
@@ -65,7 +65,7 @@ public class IntegerParameter extends CountPrimitive
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public IntegerParameter(String name) {
@@ -76,16 +76,15 @@ public class IntegerParameter extends CountPrimitive
 
     /**
      * Configure an object according to a given Configuration.
-     *
+     * 
      * @param config the configuration object to consider
-     *
+     * 
      * @throws ConfigurationException in case that something went wrong
-     *
+     * 
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
-    public void configure(Configuration config)
-            throws ConfigurationException {
+    public void configure(Configuration config) throws ConfigurationException {
 
         String k = config.getAttribute("key");
         if (k != null) {
@@ -96,17 +95,16 @@ public class IntegerParameter extends CountPrimitive
     /**
      * Return the key (the name of the primitive) for the numbered count
      * register.
-     *
+     * 
      * @param context the interpreter context to use
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the key for the current register
-     *
+     * 
      * @see org.extex.unit.tex.register.count.AbstractCount#getKey(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     protected String getKey(Context context, TokenSource source,
             Typesetter typesetter) {
@@ -116,26 +114,26 @@ public class IntegerParameter extends CountPrimitive
 
     /**
      * Initialize the Code with some value coming from a String.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source of information for the initialization
      * @param typesetter the typesetter
-     *
+     * 
      * @see org.extex.interpreter.type.InitializableCode#init(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void init(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    public void init(Context context, TokenSource source, Typesetter typesetter)
+            throws HelpingException,
+                TypesetterException {
 
         if (source != null) {
             Token t = source.getToken(context);
             if (t != null) {
                 source.push(t);
-                long value = CountParser.scanInteger(context, source, typesetter);
+                long value = source.parseInteger(context, source, typesetter);
                 context.setCount(getKey(context, source, typesetter), value,
-                        true);
+                    true);
             }
         }
     }

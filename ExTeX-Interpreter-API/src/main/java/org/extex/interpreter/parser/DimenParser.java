@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,45 +17,37 @@
  *
  */
 
-package org.extex.base.parser;
+package org.extex.interpreter.parser;
 
+import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This is an interface which describes the feature to be convertible into a
- * dimen.
+ * This interface describes a method to acquire a length value.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 4399 $
+ * @version $Revision$
  */
-public interface DimenConvertible {
+public interface DimenParser {
 
     /**
-     * This method converts a register into a dimen. It might be necessary to
-     * read further tokens to determine which value to use. For instance an
-     * additional register number might be required. In this case the additional
-     * arguments Context and TokenSource can be used.
-     * 
-     * The return value is the length in scaled points.
+     * Acquire a length value and return it in multiples of scaled points.
      * 
      * @param context the interpreter context
      * @param source the source for new tokens
-     * @param typesetter the typesetter to use for conversion
+     * @param typesetter the typesetter
      * 
-     * @return the converted value in sp
-     * @throws ConfigurationException in case of an configuration error
+     * @return the length value
+     *
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
-    long convertDimen(Context context, TokenSource source, Typesetter typesetter)
-            throws ConfigurationException,
-                HelpingException,
+    Dimen parseDimen(Context context, TokenSource source, Typesetter typesetter)
+            throws HelpingException,
                 TypesetterException;
 
 }

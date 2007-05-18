@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.register.bool;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
@@ -29,28 +28,31 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
-
 /**
  * This class provides an implementation for the primitive <code>\booldef</code>.
- *
- * <p>Example</p>
+ * 
+ * <p>
+ * Example
+ * </p>
+ * 
  * <pre>
  * \booldef\hugo=7
  * </pre>
- *
+ * 
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public class BoolDef extends AbstractAssignment {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 1L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public BoolDef(String name) {
@@ -60,21 +62,21 @@ public class BoolDef extends AbstractAssignment {
 
     /**
      * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+    public void assign(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        //  \booldef\hugo=7
+        // \booldef\hugo=7
         CodeToken token = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
-        String key = "bool#"
-                + Long.toString(CountParser.scanInteger(context, source, typesetter));
+        String key =
+                "bool#"
+                        + Long.toString(source.parseInteger(context, source,
+                            typesetter));
         context.setCode(token, new NamedBool(key), prefix.isGlobal());
     }
 

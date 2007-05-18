@@ -19,9 +19,6 @@
 
 package org.extex.unit.etex.typesetter.paragraph;
 
-import org.extex.base.parser.CountConvertible;
-import org.extex.base.parser.CountParser;
-import org.extex.base.parser.DimenConvertible;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
@@ -29,6 +26,8 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.CountConvertible;
+import org.extex.interpreter.parser.DimenConvertible;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.type.tokens.Tokens;
@@ -55,7 +54,7 @@ import org.extex.typesetter.paragraphBuilder.ParagraphShape;
  * <pre class="syntax">
  *    &lang;parshapelength&rang;
  *        &rarr; <tt>\parshapelength</tt> {@linkplain
- *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;8-bit&nbsp;number&rang;} </pre>
  * 
  * <h4>Examples</h4>
@@ -95,7 +94,8 @@ public class Parshapelength extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -107,13 +107,15 @@ public class Parshapelength extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.parser.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        int n = (int) CountParser.scanInteger(context, source, typesetter);
+        long l = source.parseInteger(context, source, typesetter);
+        int n = (l < Integer.MAX_VALUE ? (int) l : Integer.MAX_VALUE);
         ParagraphShape parshape = context.getParshape();
         return (parshape == null || n < 0 ? 0 : parshape.getLength(n)
             .getValue());
@@ -132,9 +134,11 @@ public class Parshapelength extends AbstractCode
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+            throws HelpingException,
+                TypesetterException {
 
-        int n = (int) CountParser.scanInteger(context, source, typesetter);
+        long l = source.parseInteger(context, source, typesetter);
+        int n = (l < Integer.MAX_VALUE ? (int) l : Integer.MAX_VALUE);
         ParagraphShape parshape = context.getParshape();
         FixedDimen d = (parshape == null || n < 0) //
                 ? Dimen.ZERO_PT

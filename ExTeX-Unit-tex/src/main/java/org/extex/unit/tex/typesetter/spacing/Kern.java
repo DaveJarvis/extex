@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.typesetter.spacing;
 
-import org.extex.base.parser.DimenParser;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
@@ -76,7 +75,7 @@ public class Kern extends AbstractCode {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -91,14 +90,14 @@ public class Kern extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        Dimen kern = DimenParser.parse(context, source, typesetter);
+        Dimen kern = source.parseDimen(context, source, typesetter);
         typesetter.add(new ExplicitKernNode(kern, true));
     }
 

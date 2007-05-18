@@ -19,9 +19,6 @@
 
 package org.extex.unit.tex.hyphen;
 
-import org.extex.base.parser.CountConvertible;
-import org.extex.base.parser.CountParser;
-import org.extex.base.parser.DimenConvertible;
 import org.extex.base.type.arithmetic.Advanceable;
 import org.extex.base.type.arithmetic.Divideable;
 import org.extex.base.type.arithmetic.Multiplyable;
@@ -32,6 +29,8 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.CountConvertible;
+import org.extex.interpreter.parser.DimenConvertible;
 import org.extex.interpreter.type.Theable;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
@@ -58,7 +57,7 @@ import org.extex.typesetter.exception.TypesetterException;
  *      &rarr; <tt>\righthyphenmin</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  * 
  * <h4>Example:</h4>
@@ -133,7 +132,7 @@ public class RightHyphenmin extends AbstractHyphenationCode
         } catch (HyphenationException e) {
             throw new NoHelpException(e);
         }
-        righthyphenmin += CountParser.scanInteger(context, source, typesetter);
+        righthyphenmin += source.parseInteger(context, source, typesetter);
 
         try {
             table.setRightHyphenmin(righthyphenmin);
@@ -156,7 +155,8 @@ public class RightHyphenmin extends AbstractHyphenationCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -172,7 +172,8 @@ public class RightHyphenmin extends AbstractHyphenationCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.parser.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,
@@ -188,8 +189,8 @@ public class RightHyphenmin extends AbstractHyphenationCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.type.arithmetic.Divideable#divide(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.base.type.arithmetic.Divideable#divide(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void divide(Flags prefix, Context context, TokenSource source,
@@ -208,7 +209,7 @@ public class RightHyphenmin extends AbstractHyphenationCode
         } catch (HyphenationException e) {
             throw new NoHelpException(e);
         }
-        long arg = CountParser.scanInteger(context, source, typesetter);
+        long arg = source.parseInteger(context, source, typesetter);
         if (arg == 0) {
             throw new ArithmeticOverflowException(
                 printableControlSequence(context));
@@ -236,8 +237,8 @@ public class RightHyphenmin extends AbstractHyphenationCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,
@@ -250,8 +251,7 @@ public class RightHyphenmin extends AbstractHyphenationCode
 
         Language table = getHyphenationTable(context);
         source.getOptionalEquals(context);
-        long righthyphenmin =
-                CountParser.scanInteger(context, source, typesetter);
+        long righthyphenmin = source.parseInteger(context, source, typesetter);
 
         try {
             table.setRightHyphenmin(righthyphenmin);
@@ -274,8 +274,8 @@ public class RightHyphenmin extends AbstractHyphenationCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.type.arithmetic.Multiplyable#multiply(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.base.type.arithmetic.Multiplyable#multiply(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void multiply(Flags prefix, Context context, TokenSource source,
@@ -294,7 +294,7 @@ public class RightHyphenmin extends AbstractHyphenationCode
         } catch (HyphenationException e) {
             throw new NoHelpException(e);
         }
-        righthyphenmin *= CountParser.scanInteger(context, source, typesetter);
+        righthyphenmin *= source.parseInteger(context, source, typesetter);
 
         try {
             table.setRightHyphenmin(righthyphenmin);

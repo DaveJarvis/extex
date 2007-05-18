@@ -252,7 +252,7 @@ public class Muskip extends Mudimen implements Serializable {
             stretch.toString(sb, 'm', 'u');
         }
         if (shrink.ne(GlueComponent.ZERO)) {
-            sb.append(" plus ");
+            sb.append(" minus ");
             shrink.toString(sb, 'm', 'u');
         }
     }

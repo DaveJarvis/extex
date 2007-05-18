@@ -21,15 +21,14 @@ package de.dante.extex.interpreter.type.real;
 
 import java.io.Serializable;
 
-import org.extex.base.parser.CountConvertible;
-import org.extex.base.parser.CountParser;
-import org.extex.base.parser.DimenConvertible;
 import org.extex.core.exception.helping.ArithmeticOverflowException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.MissingNumberException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.CountConvertible;
+import org.extex.interpreter.parser.DimenConvertible;
 import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.ControlSequenceToken;
@@ -149,7 +148,7 @@ public class Real implements Serializable {
         if (t != null && !t.equals(Catcode.OTHER, ".")
                 && !t.equals(Catcode.OTHER, ",")) {
             source.push(t);
-            val = CountParser.scanNumber(context, source, typesetter);
+            val = source.parseNumber(context, source, typesetter);
             t = source.getToken(context);
         }
 
@@ -160,7 +159,7 @@ public class Real implements Serializable {
         if (t != null
                 && (t.equals(Catcode.OTHER, ".") || t
                     .equals(Catcode.OTHER, ","))) {
-            val = CountParser.scanNumber(context, source, typesetter);
+            val = source.parseNumber(context, source, typesetter);
         } else {
             source.push(t);
         }

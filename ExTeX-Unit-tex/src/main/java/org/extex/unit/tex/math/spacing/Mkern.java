@@ -19,7 +19,7 @@
 
 package org.extex.unit.tex.math.spacing;
 
-import org.extex.base.parser.MudimenParser;
+import org.extex.base.parser.ConstantMudimenParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.muskip.Mudimen;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -47,7 +47,7 @@ import org.extex.unit.tex.math.AbstractMathCode;
  * <pre class="syntax">
  *    &lang;mkern&rang;
  *       &rarr; <tt>\mkern</tt> {@linkplain
- *          org.extex.base.parser.MudimenParser#parseMudimen(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.ConstantMudimenParser#parseMudimen(Context,TokenSource,Typesetter)
  *          &lang;mudimen&rang;} </pre>
  * 
  * <h4>Examples</h4>
@@ -66,7 +66,7 @@ public class Mkern extends AbstractMathCode {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -81,8 +81,8 @@ public class Mkern extends AbstractMathCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,
@@ -92,8 +92,8 @@ public class Mkern extends AbstractMathCode {
                 TypesetterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        Mudimen mdimen =
-                MudimenParser.parseMudimen(context, source, typesetter);
+        Mudimen mdimen = (Mudimen) source.parse(Mudimen.class, //
+            context, source, typesetter);
         nc.add(mdimen);
     }
 

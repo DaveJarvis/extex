@@ -19,7 +19,6 @@
 
 package org.extex.unit.base.register;
 
-import org.extex.base.parser.CountConvertible;
 import org.extex.core.UnicodeChar;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
@@ -27,6 +26,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.CountConvertible;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Showable;
@@ -80,7 +80,7 @@ public class CharCode extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.parser.CountConvertible#convertCount(
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */

@@ -21,9 +21,6 @@ package org.extex.unit.tex.register.box;
 
 import java.io.Serializable;
 
-import org.extex.base.parser.CountConvertible;
-import org.extex.base.parser.DimenConvertible;
-import org.extex.base.parser.DimenParser;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
@@ -32,6 +29,8 @@ import org.extex.core.exception.helping.NoHelpException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.CountConvertible;
+import org.extex.interpreter.parser.DimenConvertible;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
@@ -98,7 +97,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <pre class="syntax">
  *    <tt>\dp</tt> {@linkplain
- *      org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *      org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *      &lang;8-bit&nbsp;number&rang;} </pre>
  * 
  * </p>
@@ -171,12 +170,11 @@ public class Dp extends AbstractAssignment
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         String key = Setbox.getKey(context, source, typesetter, getName());
         source.getOptionalEquals(context);
-        Dimen d = DimenParser.parse(context, source, typesetter);
+        Dimen d = source.parseDimen(context, source, typesetter);
 
         Box box = context.getBox(key);
         if (box != null) {
@@ -189,7 +187,8 @@ public class Dp extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -201,7 +200,8 @@ public class Dp extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.parser.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,
@@ -215,8 +215,8 @@ public class Dp extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.ExpandableCode#expand(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,
@@ -238,7 +238,8 @@ public class Dp extends AbstractAssignment
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+            throws HelpingException,
+                TypesetterException {
 
         Box box = context.getBox(//
             Setbox.getKey(context, source, typesetter, getName()));

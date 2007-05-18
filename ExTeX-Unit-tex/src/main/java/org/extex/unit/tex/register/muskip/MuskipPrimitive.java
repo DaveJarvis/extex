@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.register.muskip;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -96,15 +95,15 @@ public class MuskipPrimitive extends MuskipParameter {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.tex.register.muskip.MuskipParameter#getKey(org.extex.interpreter.context.Context,
+     * @see org.extex.unit.tex.register.muskip.MuskipParameter#getKey(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     protected String getKey(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         String number =
-                Long.toString(CountParser.scanNumber(context, source,
-                    typesetter));
+                Long.toString(source.parseInteger(context, source, typesetter));
 
         if (Namespace.SUPPORT_NAMESPACE_MUSKIP) {
             return context.getNamespace() + "\b" + getName() + "#" + number;

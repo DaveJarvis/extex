@@ -19,7 +19,6 @@
 
 package org.extex.unit.pdftex.util.action;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -56,7 +55,7 @@ public abstract class GotoActionSpec extends ActionSpec {
             String name) throws HelpingException, TypesetterException {
 
         if (source.getKeyword(context, "num")) {
-            long num = CountParser.scanNumber(context, source, typesetter);
+            long num = source.parseNumber(context, source, typesetter);
             return new GotoIdActionSpec(null, new NumIdSpec(num), null);
 
         } else if (source.getKeyword(context, "name")) {
@@ -64,7 +63,7 @@ public abstract class GotoActionSpec extends ActionSpec {
             return new GotoIdActionSpec(null, new NameIdSpec(id), null);
 
         } else if (source.getKeyword(context, "page")) {
-            long page = CountParser.scanNumber(context, source, typesetter);
+            long page = source.parseNumber(context, source, typesetter);
             String text = source.scanTokensAsString(context, name);
             return new GotoPageActionSpec(null, page, text, null);
 
@@ -84,7 +83,7 @@ public abstract class GotoActionSpec extends ActionSpec {
             return new GotoIdActionSpec(file, new NameIdSpec(id), newWindow);
 
         } else if (source.getKeyword(context, "page")) {
-            long page = CountParser.scanNumber(context, source, typesetter);
+            long page = source.parseNumber(context, source, typesetter);
             String text = source.scanTokensAsString(context, name);
             Boolean newWindow = null;
             if (source.getKeyword(context, "newwindow")) {

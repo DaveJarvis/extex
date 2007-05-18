@@ -19,7 +19,6 @@
 
 package org.extex.unit.omega.math;
 
-import org.extex.base.parser.CountParser;
 import org.extex.base.parser.MathClassParser;
 import org.extex.core.UnicodeChar;
 import org.extex.core.exception.helping.EofException;
@@ -205,7 +204,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
         if (t instanceof LeftBraceToken) {
             MathClass mc =
                     MathClassParser.parse(context, source, typesetter, primitive);
-            long family = CountParser.parse(context, source, typesetter).getValue();
+            long family = source.parseNumber(context, source, typesetter);
             UnicodeChar c =
                     source.scanCharacterCode(context, typesetter, primitive);
 
@@ -228,7 +227,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
         }
 
         source.push(t);
-        long code = CountParser.parse(context, source, typesetter).getValue();
+        long code = source.parseNumber(context, source, typesetter);
 
         if (code < 0 || code > SPECIAL_MATH_CODE) {
             throw new HelpingException(LocalizerFactory

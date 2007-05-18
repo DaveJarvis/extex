@@ -12,5 +12,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Typesetter-API"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Scanner-API"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Typesetter-tex"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Scanner"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

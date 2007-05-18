@@ -24,7 +24,7 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.extex.base.parser.DimenParser;
+import org.extex.base.parser.ConstantDimenParser;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
@@ -485,9 +485,9 @@ public class PageFactoryNodeVisitor
                 Matcher m = sizePattern.matcher(text);
                 if (m.matches()) {
                     try {
-                        Dimen width = DimenParser.parse(context, //
+                        Dimen width = ConstantDimenParser.scan(context, //
                             new StringSource(m.group(1)), typesetter);
-                        Dimen height = DimenParser.parse(context, //
+                        Dimen height = ConstantDimenParser.scan(context, //
                             new StringSource(m.group(2)), typesetter);
                         page.setMediaWidth(width);
                         page.setMediaHeight(height);

@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.register.real;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -81,7 +80,7 @@ public class NumberedReal extends NamedReal {
 
         return getName()
                 + "#"
-                + Long.toString(CountParser.scanNumber(context, source,
-                    typesetter));
+                + Long.toString(source
+                    .parseInteger(context, source, typesetter));
     }
 }

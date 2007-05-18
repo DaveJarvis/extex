@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.hyphen;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -78,7 +77,7 @@ public class HyphenActive extends AbstractHyphenationCode implements Theable {
      * Scan for hyphenactive value and stored it in the
      * <code>HyphernationTable</code> with the language-number.
      * 
-     * @throws HelpingException
+     * @throws HelpingException in case of an error
      * 
      * @see org.extex.interpreter.type.Code#execute(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -90,7 +89,7 @@ public class HyphenActive extends AbstractHyphenationCode implements Theable {
         Language table = getHyphenationTable(context);
         source.getOptionalEquals(context);
         boolean active =
-                (CountParser.scanInteger(context, source, typesetter) == 0);
+                (source.parseInteger(context, source, typesetter) == 0);
         try {
             table.setHyphenActive(active);
         } catch (HyphenationException e) {

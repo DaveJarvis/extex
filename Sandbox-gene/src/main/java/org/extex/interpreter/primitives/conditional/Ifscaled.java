@@ -46,14 +46,14 @@ import org.extex.unit.base.conditional.AbstractIf;
  *  <pre class="syntax">
  *    &lang;ifscaled&rang;
  *      &rarr; <tt>\ifscaled</tt> {@linkplain
- *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;op&rang; {@linkplain
- *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\fi</tt>
  *      | <tt>\ifscaled</tt> {@linkplain
- *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;op&rang; {@linkplain
- *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} &lang;true text&rang; <tt>\else</tt> &lang;false text&rang; <tt>\fi</tt>
  *
  *    &lang;op&rang;

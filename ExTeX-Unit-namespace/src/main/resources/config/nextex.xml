@@ -69,14 +69,14 @@
     <!-- The configuration of the context implementation to use.
       -->
     <Context default="ExTeX">
-	  <ExTeX class="org.extex.interpreter.max.context.ContextImpl">
+      <ExTeX class="org.extex.interpreter.max.context.ContextImpl">
         <!-- The implementation of the group to use.
           -->
         <Group class="org.extex.interpreter.max.context.GroupImpl"/>
 
         <!-- The implementation of the typesetting context to use.
           -->
-        <TypesettingContext class="org.extex.interpreter.context.tc.TypesettingContextImpl"/>
+        <TypesettingContext class="org.extex.typesetter.tc.TypesettingContextImpl"/>
       </ExTeX>
     </Context>
 

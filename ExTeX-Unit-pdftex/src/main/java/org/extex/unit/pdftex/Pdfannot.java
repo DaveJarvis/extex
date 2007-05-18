@@ -20,7 +20,6 @@
 package org.extex.unit.pdftex;
 
 import org.extex.backend.documentWriter.PdftexSupport;
-import org.extex.base.parser.DimenParser;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
@@ -79,8 +78,8 @@ public class Pdfannot extends AbstractPdftexCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,
@@ -94,11 +93,11 @@ public class Pdfannot extends AbstractPdftexCode {
 
         for (;;) {
             if (source.getKeyword(context, "width")) {
-                width = DimenParser.parse(context, source, typesetter);
+                width = source.parseDimen(context, source, typesetter);
             } else if (source.getKeyword(context, "height")) {
-                height = DimenParser.parse(context, source, typesetter);
+                height = source.parseDimen(context, source, typesetter);
             } else if (source.getKeyword(context, "depth")) {
-                depth = DimenParser.parse(context, source, typesetter);
+                depth = source.parseDimen(context, source, typesetter);
             } else {
                 break;
             }

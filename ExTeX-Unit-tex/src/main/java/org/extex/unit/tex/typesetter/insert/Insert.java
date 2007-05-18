@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.typesetter.insert;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
@@ -79,8 +78,8 @@ public class Insert extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,
@@ -88,7 +87,7 @@ public class Insert extends AbstractCode {
 
         Flags f = prefix.copy();
         prefix.clear();
-        long index = CountParser.scanNumber(context, source, typesetter);
+        long index = source.parseNumber(context, source, typesetter);
         Box box = new Box(context, source, typesetter, false, null, //
             GroupType.INSERT_GROUP, source.getLastToken());
 

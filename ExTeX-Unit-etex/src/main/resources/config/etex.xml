@@ -76,7 +76,7 @@
 
         <!-- The implementation of the typesetting context to use.
           -->
-        <TypesettingContext class="org.extex.interpreter.context.tc.TypesettingContextImpl"/>
+        <TypesettingContext class="org.extex.typesetter.tc.TypesettingContextImpl"/>
       </ExTeX>
     </Context>
 

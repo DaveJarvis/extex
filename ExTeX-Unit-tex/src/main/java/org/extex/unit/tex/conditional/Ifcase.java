@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.conditional;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.Locator;
 import org.extex.core.exception.ImpossibleException;
 import org.extex.core.exception.helping.HelpingException;
@@ -58,7 +57,7 @@ import org.extex.unit.base.conditional.Fi;
  * <pre class="syntax">
  *    &lang;ifcase&rang;
  *     &rarr; <tt>\ifcase</tt> {@linkplain
- *        org.extex.base.parser.CountParser#scanInteger(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#scanInteger(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  &lang;cases&rang; <tt>\fi</tt>
  *
  *    &lang;cases&rang;
@@ -113,14 +112,14 @@ public class Ifcase extends AbstractIf {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.base.conditional.AbstractIf#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.unit.base.conditional.AbstractIf#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        long branch = CountParser.scanInteger(context, source, typesetter);
+        long branch = source.parseInteger(context, source, typesetter);
         if (branch < 0) {
             if (skipToElseOrFi(context, source,
                 printableControlSequence(context))) {
@@ -150,8 +149,8 @@ public class Ifcase extends AbstractIf {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.base.conditional.AbstractIf#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.unit.base.conditional.AbstractIf#expand(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,

@@ -23,7 +23,6 @@ import java.io.Serializable;
 
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
-import org.extex.core.exception.helping.MissingNumberException;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -74,8 +73,8 @@ public class MathClassParser implements Serializable {
 
         if (t instanceof OtherToken) {
             source.push(t);
-            try {
-                long n = CountParser.scanNumber(context, source, typesetter);
+//            try {
+                long n = source.parseNumber(context, source, typesetter);
                 try {
                     return MathClass.getMathClass((int) n);
                 } catch (ArrayIndexOutOfBoundsException e) {
@@ -83,10 +82,10 @@ public class MathClassParser implements Serializable {
                     throw new RuntimeException("unimplemented");
                 }
 
-            } catch (MissingNumberException e) {
-                throw new HelpingException(LocalizerFactory
-                    .getLocalizer(MathClassParser.class), "TTP.MissingDelim");
-            }
+//            } catch (MissingNumberException e) {
+//                throw new HelpingException(LocalizerFactory
+//                    .getLocalizer(MathClassParser.class), "TTP.MissingDelim");
+//            }
         } else if (t instanceof LetterToken) {
             source.push(t);
             switch (t.getChar().getCodePoint()) {

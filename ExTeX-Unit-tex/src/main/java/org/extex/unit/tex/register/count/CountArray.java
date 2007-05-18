@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.register.count;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -38,7 +37,7 @@ public class CountArray extends CountPrimitive {
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    protected static final long serialVersionUID = 20060512L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -53,13 +52,14 @@ public class CountArray extends CountPrimitive {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.tex.register.count.AbstractCount#getKey(org.extex.interpreter.context.Context,
+     * @see org.extex.unit.tex.register.count.AbstractCount#getKey(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     protected String getKey(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        long no = CountParser.scanInteger(context, source, typesetter);
+        long no = source.parseInteger(context, source, typesetter);
         return getName() + Long.toString(no);
     }
 

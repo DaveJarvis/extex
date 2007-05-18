@@ -19,8 +19,6 @@
 
 package org.extex.unit.tex.register.count;
 
-import org.extex.base.parser.CountConvertible;
-import org.extex.base.parser.CountParser;
 import org.extex.base.type.arithmetic.Advanceable;
 import org.extex.base.type.arithmetic.Divideable;
 import org.extex.base.type.arithmetic.Multiplyable;
@@ -31,6 +29,7 @@ import org.extex.core.exception.helping.NoHelpException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.CountConvertible;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.exception.CatcodeException;
@@ -59,7 +58,7 @@ import org.extex.typesetter.exception.TypesetterException;
  *        &lang;register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}
  *
  *   &lang;optional prefix&rang;
@@ -127,7 +126,7 @@ public class CountPrimitive extends AbstractCount
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
 
-        long value = CountParser.scanInteger(context, source, typesetter);
+        long value = source.parseInteger(context, source, typesetter);
         value += context.getCount(key).getValue();
 
         context.setCount(key, value, prefix.clearGlobal());
@@ -136,8 +135,8 @@ public class CountPrimitive extends AbstractCount
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void assign(Flags prefix, Context context, TokenSource source,
@@ -146,14 +145,15 @@ public class CountPrimitive extends AbstractCount
         String key = getKey(context, source, typesetter);
         source.getOptionalEquals(context);
 
-        long value = CountParser.scanInteger(context, source, typesetter);
+        long value = source.parseInteger(context, source, typesetter);
         context.setCount(key, value, prefix.clearGlobal());
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -167,8 +167,8 @@ public class CountPrimitive extends AbstractCount
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.type.arithmetic.Divideable#divide(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.base.type.arithmetic.Divideable#divide(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void divide(Flags prefix, Context context, TokenSource source,
@@ -177,7 +177,7 @@ public class CountPrimitive extends AbstractCount
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
 
-        long value = CountParser.scanInteger(context, source, typesetter);
+        long value = source.parseInteger(context, source, typesetter);
 
         if (value == 0) {
             throw new ArithmeticOverflowException(
@@ -191,8 +191,8 @@ public class CountPrimitive extends AbstractCount
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.ExpandableCode#expand(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,
@@ -210,8 +210,8 @@ public class CountPrimitive extends AbstractCount
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.type.arithmetic.Multiplyable#multiply(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.base.type.arithmetic.Multiplyable#multiply(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void multiply(Flags prefix, Context context, TokenSource source,
@@ -220,7 +220,7 @@ public class CountPrimitive extends AbstractCount
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
 
-        long value = CountParser.scanInteger(context, source, typesetter);
+        long value = source.parseInteger(context, source, typesetter);
         value *= context.getCount(key).getValue();
         context.setCount(key, value, prefix.clearGlobal());
     }

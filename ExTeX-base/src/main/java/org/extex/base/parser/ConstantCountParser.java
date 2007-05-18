@@ -27,6 +27,9 @@ import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.CountConvertible;
+import org.extex.interpreter.parser.CountParser;
+import org.extex.interpreter.parser.Parser;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.scanner.type.Catcode;
@@ -47,12 +50,12 @@ import org.extex.typesetter.exception.TypesetterException;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision:4399 $
  */
-public final class CountParser {
+public final class ConstantCountParser implements Parser<Count>, CountParser {
 
     /**
      * Creates a new object.
      */
-    private CountParser() {
+    public ConstantCountParser() {
 
         super();
     }
@@ -92,7 +95,8 @@ public final class CountParser {
          * 
          * @return the result
          * 
-         * @see org.extex.base.parser.CountParser.BinOp#apply(long, long)
+         * @see org.extex.base.parser.ConstantCountParser.BinOp#apply(long,
+         *      long)
          */
         public long apply(long arg1, long arg2) {
 
@@ -116,7 +120,8 @@ public final class CountParser {
          * 
          * @return the result
          * 
-         * @see org.extex.base.parser.CountParser.BinOp#apply(long, long)
+         * @see org.extex.base.parser.ConstantCountParser.BinOp#apply(long,
+         *      long)
          */
         public long apply(long arg1, long arg2) {
 
@@ -140,7 +145,8 @@ public final class CountParser {
          * 
          * @return the result
          * 
-         * @see org.extex.base.parser.CountParser.BinOp#apply(long, long)
+         * @see org.extex.base.parser.ConstantCountParser.BinOp#apply(long,
+         *      long)
          */
         public long apply(long arg1, long arg2) {
 
@@ -271,8 +277,8 @@ public final class CountParser {
                 }
 
                 throw new HelpingException(LocalizerFactory
-                    .getLocalizer(CountParser.class), "MissingParenthesis",
-                    (t == null ? "null" : t.toString()));
+                    .getLocalizer(ConstantCountParser.class),
+                    "MissingParenthesis", (t == null ? "null" : t.toString()));
 
             } else if (t.equals(Catcode.OTHER, '-')) {
                 return -scanInteger(context, source, typesetter);
@@ -525,21 +531,42 @@ public final class CountParser {
     }
 
     /**
-     * Parse a token stream for a count value.
+     * {@inheritDoc}
      * 
-     * @param context the processor context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return a new Count instance with the value acquired
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
+     * @see org.extex.interpreter.parser.Parser#parse(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public static Count parse(Context context, TokenSource source,
+    public Count parse(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         return new Count(scanInteger(context, source, typesetter));
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.parser.CountParser#parseInteger(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     */
+    public long parseInteger(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
+
+        return scanInteger(context, source, typesetter);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.parser.CountParser#parseNumber(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     */
+    public long parseNumber(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
+
+        return scanNumber(context, source, typesetter);
     }
 
 }

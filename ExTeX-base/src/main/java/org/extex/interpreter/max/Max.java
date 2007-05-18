@@ -148,7 +148,7 @@ import org.extex.unit.base.register.count.util.IntegerCode;
  *      &rarr; <tt>\ignorevoid</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}  </pre>
  * 
  * <h4>Examples</h4>
@@ -1012,7 +1012,7 @@ public abstract class Max
      *      &rarr; <tt>\day</tt> {@linkplain
      *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
-     *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+     *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      * 
      * <h4>Examples</h4>
@@ -1047,7 +1047,7 @@ public abstract class Max
      *      &rarr; <tt>\month</tt> {@linkplain
      *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
-     *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+     *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      * 
      * <h4>Examples</h4>
@@ -1081,7 +1081,7 @@ public abstract class Max
      *      &rarr; <tt>\year</tt> {@linkplain
      *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
-     *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+     *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      * 
      * <h4>Examples</h4>
@@ -1117,7 +1117,7 @@ public abstract class Max
      *      &rarr; <tt>\time</tt> {@linkplain
      *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
-     *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+     *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;}  </pre>
      * 
      * <h4>Examples</h4>

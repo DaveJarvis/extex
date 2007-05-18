@@ -19,8 +19,6 @@
 
 package org.extex.unit.tex.register.muskip;
 
-import org.extex.base.parser.CountParser;
-import org.extex.base.parser.MuskipConvertible;
 import org.extex.base.parser.MuskipParser;
 import org.extex.base.type.arithmetic.Advanceable;
 import org.extex.base.type.arithmetic.Divideable;
@@ -33,6 +31,7 @@ import org.extex.core.muskip.Muskip;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.MuskipConvertible;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.type.Namespace;
@@ -83,8 +82,8 @@ public class MuskipParameter extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.type.arithmetic.Advanceable#advance(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.base.type.arithmetic.Advanceable#advance(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void advance(Flags prefix, Context context, TokenSource source,
@@ -100,13 +99,12 @@ public class MuskipParameter extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         String key = getKey(context, source, typesetter);
         source.getOptionalEquals(context);
@@ -117,7 +115,8 @@ public class MuskipParameter extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.parser.MuskipConvertible#convertMuskip(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.MuskipConvertible#convertMuskip(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Muskip convertMuskip(Context context, TokenSource source,
@@ -130,8 +129,8 @@ public class MuskipParameter extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.type.arithmetic.Divideable#divide(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.base.type.arithmetic.Divideable#divide(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void divide(Flags prefix, Context context, TokenSource source,
@@ -139,7 +138,7 @@ public class MuskipParameter extends AbstractAssignment
 
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
-        long value = CountParser.scanInteger(context, source, null);
+        long value = source.parseInteger(context, source, null);
 
         if (value == 0) {
             throw new ArithmeticOverflowException(
@@ -159,7 +158,7 @@ public class MuskipParameter extends AbstractAssignment
      * @param typesetter the typesetter
      * 
      * @return the key for the skip register
-     *
+     * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
@@ -175,8 +174,8 @@ public class MuskipParameter extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.type.arithmetic.Multiplyable#multiply(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.base.type.arithmetic.Multiplyable#multiply(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void multiply(Flags prefix, Context context, TokenSource source,
@@ -184,7 +183,7 @@ public class MuskipParameter extends AbstractAssignment
 
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
-        long value = CountParser.scanInteger(context, source, null);
+        long value = source.parseInteger(context, source, null);
 
         Muskip ms = new Muskip(context.getMuskip(key));
         ms.multiply(value, 1);
@@ -194,11 +193,13 @@ public class MuskipParameter extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+            throws HelpingException,
+                TypesetterException {
 
         String key = getKey(context, source, typesetter);
         try {

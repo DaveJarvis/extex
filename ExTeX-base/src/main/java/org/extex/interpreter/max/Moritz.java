@@ -20,10 +20,17 @@
 package org.extex.interpreter.max;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.extex.base.parser.CountParser;
+import org.extex.base.parser.ConstantCountParser;
+import org.extex.base.parser.ConstantDimenParser;
+import org.extex.base.parser.ConstantGlueParser;
+import org.extex.base.parser.ConstantMudimenParser;
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
+import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.NotObservableException;
 import org.extex.core.exception.helping.BadCharacterException;
@@ -36,6 +43,8 @@ import org.extex.core.exception.helping.MissingLeftBraceException;
 import org.extex.core.exception.helping.MissingNumberException;
 import org.extex.core.exception.helping.NoHelpException;
 import org.extex.core.exception.helping.UndefinedControlSequenceException;
+import org.extex.core.glue.Glue;
+import org.extex.core.muskip.Mudimen;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
@@ -55,6 +64,10 @@ import org.extex.interpreter.observer.start.StartObserver;
 import org.extex.interpreter.observer.streamClose.StreamCloseObservable;
 import org.extex.interpreter.observer.streamClose.StreamCloseObserver;
 import org.extex.interpreter.observer.streamClose.StreamCloseObserverList;
+import org.extex.interpreter.parser.CountParser;
+import org.extex.interpreter.parser.DimenParser;
+import org.extex.interpreter.parser.GlueParser;
+import org.extex.interpreter.parser.Parser;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.CsConvertible;
@@ -233,6 +246,10 @@ public class Moritz extends Max
     public Moritz() {
 
         super();
+        register(Count.class, new ConstantCountParser());
+        register(Dimen.class, new ConstantDimenParser());
+        register(Glue.class, new ConstantGlueParser());
+        register(Mudimen.class, new ConstantMudimenParser());
         registerObserver(new StartObserver() {
 
             /**
@@ -320,7 +337,7 @@ public class Moritz extends Max
      * The formal description of this primitive is the following:
      * 
      * <pre class="syntax">
-     *    &lang;everyveof&rang;
+     *    &lang;everyeof&rang;
      *      &rarr; <tt>\everyeof</tt> {@linkplain
      *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *        &lang;equals&rang;} {@linkplain
@@ -410,7 +427,8 @@ public class Moritz extends Max
      * @throws HelpingException in case that the token stream is at its end or
      *         that the token read is not a control sequence token
      * 
-     * @see org.extex.interpreter.TokenSource#getControlSequence(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.TokenSource#getControlSequence(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.typesetter.Typesetter)
      */
     public CodeToken getControlSequence(Context context, Typesetter typesetter)
@@ -443,7 +461,8 @@ public class Moritz extends Max
      *      org.extex.interpreter.context.Context, java.lang.String)
      */
     public Font getFont(Context context, String primitive)
-            throws HelpingException, TypesetterException {
+            throws HelpingException,
+                TypesetterException {
 
         Token t = getToken(context);
 
@@ -542,7 +561,8 @@ public class Moritz extends Max
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.TokenSource#getNonSpace(org.extex.interpreter.context.Context)
+     * @see org.extex.interpreter.TokenSource#getNonSpace(
+     *      org.extex.interpreter.context.Context)
      */
     public Token getNonSpace(Context context) throws HelpingException {
 
@@ -760,7 +780,8 @@ public class Moritz extends Max
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.TokenSource#getTokens(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.TokenSource#getTokens(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens getTokens(Context context, TokenSource source,
@@ -813,7 +834,8 @@ public class Moritz extends Max
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.TokenSource#push(org.extex.scanner.type.token.Token)
+     * @see org.extex.interpreter.TokenSource#push(
+     *      org.extex.scanner.type.token.Token)
      */
     public void push(Token token) throws HelpingException {
 
@@ -833,7 +855,8 @@ public class Moritz extends Max
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.TokenSource#push(org.extex.scanner.type.token.Token[])
+     * @see org.extex.interpreter.TokenSource#push(
+     *      org.extex.scanner.type.token.Token[])
      */
     public void push(Token[] tokens) throws HelpingException {
 
@@ -854,7 +877,8 @@ public class Moritz extends Max
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.TokenSource#push(org.extex.scanner.type.tokens.Tokens)
+     * @see org.extex.interpreter.TokenSource#push(
+     *      org.extex.scanner.type.tokens.Tokens)
      */
     public void push(Tokens tokens) throws HelpingException {
 
@@ -987,7 +1011,8 @@ public class Moritz extends Max
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.TokenSource#scanCharacterCode(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.TokenSource#scanCharacterCode(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.typesetter.Typesetter, java.lang.String)
      */
     public UnicodeChar scanCharacterCode(Context context,
@@ -1015,7 +1040,7 @@ public class Moritz extends Max
         }
 
         push(t);
-        cc = CountParser.scanInteger(context, this, typesetter);
+        cc = countParser.parseInteger(context, this, typesetter);
 
         if (cc < 0 || cc > MAX_CHAR_CODE) {
             throw new BadCharacterException(cc);
@@ -1026,7 +1051,8 @@ public class Moritz extends Max
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.TokenSource#scanNonSpace(org.extex.interpreter.context.Context)
+     * @see org.extex.interpreter.TokenSource#scanNonSpace(
+     *      org.extex.interpreter.context.Context)
      */
     public Token scanNonSpace(Context context)
             throws HelpingException,
@@ -1068,7 +1094,7 @@ public class Moritz extends Max
 
         source.push(token);
         long registerNumber =
-                CountParser.scanInteger(context, source, typesetter);
+                countParser.parseInteger(context, source, typesetter);
         if (registerNumber < 0 || maxRegisterValue >= 0
                 && registerNumber > maxRegisterValue) {
             throw new IllegalRegisterException(Long.toString(registerNumber));
@@ -1079,7 +1105,8 @@ public class Moritz extends Max
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.TokenSource#scanToken(org.extex.interpreter.context.Context)
+     * @see org.extex.interpreter.TokenSource#scanToken(
+     *      org.extex.interpreter.context.Context)
      */
     public Token scanToken(Context context)
             throws HelpingException,
@@ -1091,8 +1118,9 @@ public class Moritz extends Max
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.TokenSource#scanTokens(org.extex.interpreter.context.Context,
-     *      boolean, boolean, java.lang.String)
+     * @see org.extex.interpreter.TokenSource#scanTokens(
+     *      org.extex.interpreter.context.Context, boolean, boolean,
+     *      java.lang.String)
      */
     public Tokens scanTokens(Context context, boolean reportUndefined,
             boolean ignoreUndefined, String primitive)
@@ -1146,8 +1174,8 @@ public class Moritz extends Max
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.TokenSource#scanTokensAsString(org.extex.interpreter.context.Context,
-     *      java.lang.String)
+     * @see org.extex.interpreter.TokenSource#scanTokensAsString(
+     *      org.extex.interpreter.context.Context, java.lang.String)
      */
     public String scanTokensAsString(Context context, String primitive)
             throws HelpingException,
@@ -1250,4 +1278,129 @@ public class Moritz extends Max
 
         throw new NotObservableException(name);
     }
+
+    /**
+     * The field <tt>countParser</tt> contains the parser for number
+     * quantities.
+     */
+    private CountParser countParser;
+
+    /**
+     * The field <tt>dimenParser</tt> contains the parser for length
+     * quantities.
+     */
+    private DimenParser dimenParser;
+
+    /**
+     * The field <tt>glueParser</tt> contains the parser for glue quantities.
+     */
+    private GlueParser glueParser;
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.parser.CountParser#parseInteger(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     */
+    public long parseInteger(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
+
+        return countParser.parseInteger(context, source, typesetter);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.parser.CountParser#parseNumber(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     */
+    public long parseNumber(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
+
+        return countParser.parseNumber(context, source, typesetter);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.parser.DimenParser#parseDimen(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     */
+    public Dimen parseDimen(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
+
+        return dimenParser.parseDimen(context, source, typesetter);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.parser.GlueParser#parseGlue(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     */
+    public Glue parseGlue(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
+
+        return glueParser.parseGlue(context, source, typesetter);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.TokenSource#parse(java.lang.Class,
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     */
+    @SuppressWarnings("unchecked")
+    public Object parse(Class c, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
+
+        Parser parser = parsers.get(c);
+        return parser.parse(context, source, typesetter);
+    }
+
+    /**
+     * The field <tt>parsers</tt> contains the list of registered parsers.
+     */
+    @SuppressWarnings("unchecked")
+    private Map<Class, Parser> parsers = new HashMap<Class, Parser>();
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.TokenSource#register(java.lang.Class,
+     *      org.extex.interpreter.parser.Parser)
+     */
+    @SuppressWarnings("unchecked")
+    public void register(Class c, Parser p) {
+
+        parsers.put(c, p);
+        if (c == Count.class) {
+            if (p instanceof CountParser) {
+                countParser = (CountParser) p;
+            } else {
+                // TODO gene: unimplemented
+                throw new RuntimeException("unimplemented");
+            }
+        } else if (c == Dimen.class) {
+            if (p instanceof DimenParser) {
+                dimenParser = (DimenParser) p;
+            } else {
+                // TODO gene: unimplemented
+                throw new RuntimeException("unimplemented");
+            }
+        } else if (c == Glue.class) {
+            if (p instanceof GlueParser) {
+                glueParser = (GlueParser) p;
+            } else {
+                // TODO gene: unimplemented
+                throw new RuntimeException("unimplemented");
+            }
+        }
+    }
+
 }

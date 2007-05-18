@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.string;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
 import org.extex.interpreter.Flags;
@@ -78,14 +77,14 @@ public class Number extends AbstractCode implements ExpandableCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        long number = CountParser.scanInteger(context, source, typesetter);
+        long number = source.parseInteger(context, source, typesetter);
         try {
             source.push(context.getTokenFactory().toTokens(number));
         } catch (CatcodeException e) {
@@ -96,14 +95,14 @@ public class Number extends AbstractCode implements ExpandableCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.ExpandableCode#expand(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        long number = CountParser.scanInteger(context, source, typesetter);
+        long number = source.parseInteger(context, source, typesetter);
         try {
             source.push(context.getTokenFactory().toTokens(number));
         } catch (CatcodeException e) {

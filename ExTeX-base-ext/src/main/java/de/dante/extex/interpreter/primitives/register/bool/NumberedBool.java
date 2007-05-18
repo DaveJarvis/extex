@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.register.bool;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -52,7 +51,8 @@ import org.extex.typesetter.exception.TypesetterException;
 public class NumberedBool extends NamedBool {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 1L;
 
@@ -78,7 +78,7 @@ public class NumberedBool extends NamedBool {
 
         return getName()
                 + "#"
-                + Long.toString(CountParser.scanNumber(context, source,
-                    typesetter));
+                + Long.toString(source
+                    .parseInteger(context, source, typesetter));
     }
 }

@@ -28,6 +28,8 @@ import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.CountConvertible;
+import org.extex.interpreter.parser.ScaledConvertible;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.scanner.type.Catcode;
@@ -302,7 +304,8 @@ public class ScaledNumberParser {
         }
         if (t != null && !t.equals(Catcode.OTHER, ".")
                 && !t.equals(Catcode.OTHER, ",")) {
-            val = CountParser.scanNumber(context, source, typesetter, t);
+            source.push(t);
+            val = ConstantCountParser.scanNumber(context, source, typesetter);
             t = source.getToken(context);
         }
         if (t != null

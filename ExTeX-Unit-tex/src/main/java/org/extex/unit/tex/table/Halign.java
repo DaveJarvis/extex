@@ -21,7 +21,6 @@ package org.extex.unit.tex.table;
 
 import java.util.List;
 
-import org.extex.base.parser.DimenParser;
 import org.extex.core.Locator;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.helping.EofException;
@@ -88,7 +87,7 @@ public class Halign extends AbstractAlign implements Boxable {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -103,8 +102,8 @@ public class Halign extends AbstractAlign implements Boxable {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,
@@ -160,9 +159,9 @@ public class Halign extends AbstractAlign implements Boxable {
         boolean spread = false;
 
         if (source.getKeyword(context, "to")) {
-            width = DimenParser.parse(context, source, typesetter);
+            width = source.parseDimen(context, source, typesetter);
         } else if (source.getKeyword(context, "spread")) {
-            width = DimenParser.parse(context, source, typesetter);
+            width = source.parseDimen(context, source, typesetter);
             spread = true;
         }
         Token t = source.getToken(context);

@@ -19,14 +19,13 @@
 
 package org.extex.unit.etex.register.count;
 
-import org.extex.base.parser.CountConvertible;
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.ArithmeticOverflowException;
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.CountConvertible;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.exception.CatcodeException;
@@ -215,7 +214,7 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -243,7 +242,7 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
      * @throws TypesetterException in case of an error in the typesetter
      */
     private long evalExpr(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException,TypesetterException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         long saveVal = 0;
         BinOp op = SECOND;
@@ -318,7 +317,7 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
         }
 
         source.push(t);
-        return CountParser.scanNumber(context, source, typesetter);
+        return source.parseNumber(context, source, typesetter);
     }
 
     /**

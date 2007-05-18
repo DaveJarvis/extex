@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.typesetter.spacing;
 
-import org.extex.base.parser.GlueParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
@@ -65,7 +64,7 @@ public class Hskip extends AbstractHorizontalCode implements HorizontalSkip {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -80,7 +79,8 @@ public class Hskip extends AbstractHorizontalCode implements HorizontalSkip {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     * org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
@@ -88,8 +88,8 @@ public class Hskip extends AbstractHorizontalCode implements HorizontalSkip {
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         switchToHorizontalMode(typesetter);
-        Glue g = GlueParser.parse(source, context, typesetter);
-        typesetter.add(g);
+        Glue glue = source.parseGlue(context, source, typesetter);
+        typesetter.add(glue);
     }
 
     /**
@@ -108,7 +108,7 @@ public class Hskip extends AbstractHorizontalCode implements HorizontalSkip {
     public FixedGlue getGlue(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        return GlueParser.parse(source, context, typesetter);
+        return source.parseGlue(context, source, typesetter);
     }
 
 }

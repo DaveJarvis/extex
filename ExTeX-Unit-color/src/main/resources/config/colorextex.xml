@@ -76,21 +76,21 @@
 
         <!-- The implementation of the typesetting context to use.
           -->
-        <TypesettingContext class="org.extex.interpreter.context.tc.TypesettingContextImpl"/>
+        <TypesettingContext class="org.extex.typesetter.tc.TypesettingContextImpl"/>
       </ExTeX>
     </Context>
 
     <!-- The implementation of the error handler to use.
       -->
     <ErrorHandler default="ExTeX">
-     <ExTeX class="org.extex.main.tex.ErrorHandlerImpl">
-       <EditHandler class="org.extex.main.tex.EditHandlerTeXImpl"/>
-     </ExTeX>
-     <TeX class="org.extex.main.tex.ErrorHandlerTeXImpl">
-       <EditHandler class="org.extex.main.tex.EditHandlerTeXImpl"/>
-     </TeX>
-     <extex class="org.extex.main.tex.ErrorHandlerImpl"/>
-     <tex class="org.extex.main.tex.ErrorHandlerTeXImpl"/>
+      <ExTeX class="org.extex.main.tex.ErrorHandlerImpl">
+        <EditHandler class="org.extex.main.tex.EditHandlerTeXImpl"/>
+      </ExTeX>
+      <TeX class="org.extex.main.tex.ErrorHandlerTeXImpl">
+        <EditHandler class="org.extex.main.tex.EditHandlerTeXImpl"/>
+      </TeX>
+      <extex class="org.extex.main.tex.ErrorHandlerImpl"/>
+      <tex class="org.extex.main.tex.ErrorHandlerTeXImpl"/>
     </ErrorHandler>
 
     <unit src="unit/tex.xml"/>

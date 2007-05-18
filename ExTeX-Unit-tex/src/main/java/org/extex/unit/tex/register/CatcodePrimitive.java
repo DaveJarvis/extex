@@ -19,14 +19,13 @@
 
 package org.extex.unit.tex.register;
 
-import org.extex.base.parser.CountConvertible;
-import org.extex.base.parser.CountParser;
 import org.extex.core.UnicodeChar;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.InvalidCodeException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.CountConvertible;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.exception.CatcodeException;
@@ -160,11 +159,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * <pre class="syntax">
  *    &lang;catcode&rang;
  *      &rarr; &lang;optional prefix&rang; <tt>\catcode</tt> {@linkplain
- *          org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *          &lang;equals&rang;} {@linkplain
- *          org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *          &lang;4-bit&nbsp;number&rang;}
  *
  *    &lang;optional prefix&rang;
@@ -226,7 +225,7 @@ public class CatcodePrimitive extends AbstractAssignment
         UnicodeChar charCode =
                 source.scanCharacterCode(context, typesetter, getName());
         source.getOptionalEquals(context);
-        long ccNumber = CountParser.scanInteger(context, source, typesetter);
+        long ccNumber = source.parseInteger(context, source, typesetter);
 
         try {
             context.setCatcode(charCode, Catcode.toCatcode((int) ccNumber),
@@ -241,7 +240,7 @@ public class CatcodePrimitive extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.parser.CountConvertible#convertCount(
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */

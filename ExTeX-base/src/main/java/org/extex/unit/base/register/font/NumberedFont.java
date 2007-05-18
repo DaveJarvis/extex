@@ -19,7 +19,6 @@
 
 package org.extex.unit.base.register.font;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -64,8 +63,7 @@ public class NumberedFont extends NamedFont {
 
         String theName = getName();
         String theNumber =
-                Long.toString(CountParser.scanNumber(context, source,
-                    typesetter));
+                Long.toString(source.parseInteger(context, source, typesetter));
         return key(context, theName, theNumber);
     }
 

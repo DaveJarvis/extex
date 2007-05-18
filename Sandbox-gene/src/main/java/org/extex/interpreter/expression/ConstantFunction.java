@@ -15,7 +15,7 @@ public interface ConstantFunction {
      * Return the value in the accumulator overwriting the value stored therein.
      *
      * @return the operation result, i.e. the constant
-     * @throws HelpingException TODO
+     * @throws HelpingException in case of an error
      */
     EType apply() throws HelpingException;
 

@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.register.real;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
@@ -29,28 +28,31 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
-
 /**
  * This class provides an implementation for the primitive <code>\realdef</code>.
- *
- * <p>Example</p>
+ * 
+ * <p>
+ * Example
+ * </p>
+ * 
  * <pre>
  * \realdef\hugo=7
  * </pre>
- *
+ * 
  * @author <a href="mailto:mgn@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public class RealDef extends AbstractAssignment {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 1L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public RealDef(String name) {
@@ -60,21 +62,21 @@ public class RealDef extends AbstractAssignment {
 
     /**
      * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void assign(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+    public void assign(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        //  \realdef\hugo=7
+        // \realdef\hugo=7
         CodeToken tok = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
-        String key = "real#"
-                + Long.toString(CountParser.scanInteger(context, source, typesetter));
+        String key =
+                "real#"
+                        + Long.toString(source.parseInteger(context, source,
+                            typesetter));
         context.setCode(tok, new NamedReal(key), prefix.isGlobal());
         prefix.clearGlobal();
     }

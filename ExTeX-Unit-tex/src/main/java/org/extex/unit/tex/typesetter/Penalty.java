@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.typesetter;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
@@ -49,7 +48,7 @@ import org.extex.typesetter.type.node.PenaltyNode;
  * <pre class="syntax">
  *    &lang;penalty&rang;
  *        &rarr; <tt>\penalty</tt> {@linkplain
- *          org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;}  </pre>
  * 
  * <h4>Examples</h4>
@@ -73,7 +72,7 @@ public class Penalty extends AbstractCode {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -88,14 +87,14 @@ public class Penalty extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        long penalty = CountParser.scanInteger(context, source, typesetter);
+        long penalty = source.parseInteger(context, source, typesetter);
         typesetter.add(new PenaltyNode(penalty));
     }
 

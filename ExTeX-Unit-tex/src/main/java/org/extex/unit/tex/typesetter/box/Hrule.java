@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.typesetter.box;
 
-import org.extex.base.parser.DimenParser;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -151,11 +150,11 @@ public class Hrule extends AbstractCode implements RuleConvertible {
 
         for (;;) {
             if (source.getKeyword(context, "width")) {
-                width = DimenParser.parse(context, source, typesetter);
+                width = source.parseDimen(context, source, typesetter);
             } else if (source.getKeyword(context, "height")) {
-                height = DimenParser.parse(context, source, typesetter);
+                height = source.parseDimen(context, source, typesetter);
             } else if (source.getKeyword(context, "depth")) {
-                depth = DimenParser.parse(context, source, typesetter);
+                depth = source.parseDimen(context, source, typesetter);
             } else {
                 break;
             }

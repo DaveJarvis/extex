@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.typesetter.box;
 
-import org.extex.base.parser.DimenParser;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.helping.EofException;
@@ -62,10 +61,10 @@ import org.extex.typesetter.type.NodeList;
  *    &lang;box specification&rang;
  *      &rarr;
  *         | <tt>to</tt> {@linkplain
- *           org.extex.base.parser.DimenParser#parse(Context,TokenSource,Typesetter)
+ *           org.extex.base.parser.ConstantDimenParser#parse(Context,TokenSource,Typesetter)
  *           &lang;rule dimension&rang;}
  *         | <tt>spread</tt> {@linkplain
- *           org.extex.base.parser.DimenParser#parse(Context,TokenSource,Typesetter)
+ *           org.extex.base.parser.ConstantDimenParser#parse(Context,TokenSource,Typesetter)
  *           &lang;rule dimension&rang;}  </pre>
  * 
  * <h4>Examples</h4>
@@ -143,16 +142,14 @@ public class Vbox extends AbstractBoxPrimitive {
         Box box;
         try {
             if (source.getKeyword(context, "to")) {
-                Dimen d = DimenParser.parse(context, source, typesetter);
-                box =
-                        constructBox(context, source, typesetter, startToken,
-                            insert);
+                Dimen d = source.parseDimen(context, source, typesetter);
+                box = constructBox(context, source, typesetter, startToken, //
+                    insert);
                 box.setHeight(d);
             } else if (source.getKeyword(context, "spread")) {
-                Dimen d = DimenParser.parse(context, source, typesetter);
-                box =
-                        constructBox(context, source, typesetter, startToken,
-                            insert);
+                Dimen d = source.parseDimen(context, source, typesetter);
+                box = constructBox(context, source, typesetter, startToken, //
+                    insert);
                 box.spreadHeight(d);
             } else {
                 box =

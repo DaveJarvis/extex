@@ -25,9 +25,6 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.extex.base.parser.CountParser;
-import org.extex.base.parser.DimenParser;
-import org.extex.base.parser.GlueParser;
 import org.extex.core.count.Count;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
@@ -99,7 +96,7 @@ import org.extex.typesetter.tc.font.impl.FontImpl;
  *
  *    &lang;option&rang;
  *      &rarr; [scaled] {@linkplain
- *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}
  *       | [at] {@linkplain
  *           org.extex.core.dimen#Dimen(org.extex.interpreter.context.Context,org.extex.interpreter.TokenSource)
@@ -220,14 +217,15 @@ public class FontPrimitive extends AbstractAssignment
         Count scale = null;
 
         if (source.getKeyword(context, "at")) {
-            fontSize = DimenParser.parse(context, source, typesetter);
+            fontSize =
+                    new Dimen(source.parseDimen(context, source, typesetter));
             if (fontSize.lt(Dimen.ZERO_PT)) {
                 throw new HelpingException(getLocalizer(), "TTP.ImproperAt",
                     fontSize.toString());
             }
 
         } else if (source.getKeyword(context, "scaled")) {
-            long s = CountParser.scanInteger(context, source, typesetter);
+            long s = source.parseInteger(context, source, typesetter);
             if (s <= 0) {
                 throw new HelpingException(getLocalizer(), "TTP.IllegalMag",
                     Long.toString(s), "32768"); // TODO gene: max ok?
@@ -242,7 +240,7 @@ public class FontPrimitive extends AbstractAssignment
         for (;;) {
 
             if (source.getKeyword(context, "letterspaced")) {
-                letterspaced = GlueParser.parse(source, context, typesetter);
+                letterspaced = source.parseGlue(context, source, typesetter);
             } else if (source.getKeyword(context, "noligatures")) {
                 ligatures = false;
             } else if (source.getKeyword(context, "nokerning")) {
@@ -336,7 +334,8 @@ public class FontPrimitive extends AbstractAssignment
      * @throws TypesetterException in case of an error in the typesetter
      */
     private String scanFontName(Context context, TokenSource source)
-            throws HelpingException, TypesetterException {
+            throws HelpingException,
+                TypesetterException {
 
         Token t = source.scanNonSpace(context);
 

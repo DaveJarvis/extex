@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.typesetter.box;
 
-import org.extex.base.parser.DimenParser;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
@@ -123,7 +122,8 @@ public class Hbox extends AbstractBoxPrimitive {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.box.Boxable#getBox(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.box.Boxable#getBox(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
@@ -136,13 +136,13 @@ public class Hbox extends AbstractBoxPrimitive {
         Box box;
         try {
             if (source.getKeyword(context, "to")) {
-                Dimen d = DimenParser.parse(context, source, typesetter);
+                Dimen d = source.parseDimen(context, source, typesetter);
                 box =
                         acquireBox(context, source, typesetter, startToken,
                             GroupType.ADJUSTED_HBOX_GROUP, insert);
                 box.setWidth(d);
             } else if (source.getKeyword(context, "spread")) {
-                Dimen d = DimenParser.parse(context, source, typesetter);
+                Dimen d = source.parseDimen(context, source, typesetter);
                 box =
                         acquireBox(context, source, typesetter, startToken,
                             GroupType.ADJUSTED_HBOX_GROUP, insert);

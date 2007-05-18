@@ -19,9 +19,6 @@
 
 package org.extex.unit.tex.typesetter;
 
-import org.extex.base.parser.CountConvertible;
-import org.extex.base.parser.CountParser;
-import org.extex.base.parser.DimenConvertible;
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
 import org.extex.core.exception.helping.HelpingException;
@@ -31,6 +28,8 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.CountConvertible;
+import org.extex.interpreter.parser.DimenConvertible;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.exception.CatcodeException;
@@ -105,20 +104,20 @@ public class Sfcode extends AbstractAssignment implements
         UnicodeChar charCode =
                 source.scanCharacterCode(context, typesetter, getName());
         source.getOptionalEquals(context);
-        Count sfCode = CountParser.parse(context, source, typesetter);
+        long sfCode = source.parseNumber(context, source, typesetter);
 
-        if (sfCode.lt(Count.ZERO) || sfCode.getValue() > MAX_SF_CODE) {
-            throw new InvalidCodeException(sfCode.toString(), //
+        if (sfCode<0 || sfCode > MAX_SF_CODE) {
+            throw new InvalidCodeException(Long.toString(sfCode), //
                 Integer.toString(MAX_SF_CODE));
         }
 
-        context.setSfcode(charCode, sfCode, prefix.clearGlobal());
+        context.setSfcode(charCode, new Count(sfCode), prefix.clearGlobal());
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.parser.CountConvertible#convertCount(
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
@@ -133,7 +132,7 @@ public class Sfcode extends AbstractAssignment implements
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.parser.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,

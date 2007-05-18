@@ -23,7 +23,6 @@ import java.util.logging.Logger;
 
 import javax.naming.OperationNotSupportedException;
 
-import org.extex.base.parser.DimenParser;
 import org.extex.core.count.Count;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
@@ -74,7 +73,7 @@ public class Vsplit extends AbstractCode implements Boxable, LogEnabled {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>logger</tt> contains the target channel for the message.
@@ -107,8 +106,8 @@ public class Vsplit extends AbstractCode implements Boxable, LogEnabled {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,
@@ -155,7 +154,7 @@ public class Vsplit extends AbstractCode implements Boxable, LogEnabled {
         if (!source.getKeyword(context, "to")) {
             throw new HelpingException(getLocalizer(), "TTP.MissingToForVsplit");
         }
-        Dimen ht = DimenParser.parse(context, source, typesetter);
+        Dimen ht = source.parseDimen(context, source, typesetter);
         Box b = context.getBox(key);
         if (b == null || !b.isVbox()) {
             throw new HelpingException(getLocalizer(), "TTP.SplittingNonVbox",

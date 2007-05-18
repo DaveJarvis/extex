@@ -21,7 +21,6 @@ package org.extex.unit.tex.table;
 
 import java.util.List;
 
-import org.extex.base.parser.DimenParser;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
@@ -67,7 +66,7 @@ public class Valign extends AbstractAlign {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -112,7 +111,7 @@ public class Valign extends AbstractAlign {
         Dimen height = null;
 
         if (source.getKeyword(context, "to")) {
-            height = DimenParser.parse(context, source, typesetter);
+            height = source.parseDimen(context, source, typesetter);
         }
         Token t = source.getToken(context);
         if (t == null) {

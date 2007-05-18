@@ -19,9 +19,9 @@
 
 package org.extex.unit.tex.typesetter.spacing;
 
-import org.extex.base.parser.GlueParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.glue.FixedGlue;
+import org.extex.core.glue.Glue;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -64,7 +64,7 @@ public class Vskip extends AbstractVerticalCode implements VerticalSkip {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -79,15 +79,17 @@ public class Vskip extends AbstractVerticalCode implements VerticalSkip {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         ensureVerticalMode(typesetter);
-        typesetter.add(GlueParser.parse(source, context, typesetter));
+        Glue glue = source.parseGlue(context, source, typesetter);
+
+        typesetter.add(glue);
     }
 
     /**
@@ -106,7 +108,7 @@ public class Vskip extends AbstractVerticalCode implements VerticalSkip {
     public FixedGlue getGlue(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        return GlueParser.parse(source, context, typesetter);
+        return source.parseGlue(context, source, typesetter);
     }
 
 }

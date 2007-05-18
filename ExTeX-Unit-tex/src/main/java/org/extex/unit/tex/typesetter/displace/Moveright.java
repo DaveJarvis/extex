@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.typesetter.displace;
 
-import org.extex.base.parser.DimenParser;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
@@ -82,7 +81,7 @@ public class Moveright extends AbstractBoxPrimitive {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -107,7 +106,7 @@ public class Moveright extends AbstractBoxPrimitive {
             throws HelpingException,
                 TypesetterException {
 
-        Dimen move = DimenParser.parse(context, source, typesetter);
+        Dimen move = source.parseDimen(context, source, typesetter);
         Box box = source.getBox(null, context, typesetter, insert);
         if (box != null && !box.isVoid()) {
             move.add(box.getMove());

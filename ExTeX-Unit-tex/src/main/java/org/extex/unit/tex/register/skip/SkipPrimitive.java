@@ -19,9 +19,6 @@
 
 package org.extex.unit.tex.register.skip;
 
-import org.extex.base.parser.CountParser;
-import org.extex.base.parser.GlueConvertible;
-import org.extex.base.parser.GlueParser;
 import org.extex.base.type.arithmetic.Advanceable;
 import org.extex.base.type.arithmetic.Divideable;
 import org.extex.base.type.arithmetic.Multiplyable;
@@ -33,6 +30,7 @@ import org.extex.core.glue.Glue;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.GlueConvertible;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
@@ -61,7 +59,7 @@ import org.extex.typesetter.exception.TypesetterException;
  *        &lang;register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.base.parser.GlueParser#parse(TokenSource,Context,Typesetter)
+ *        org.extex.base.parser.ConstantGlueParser#parse(TokenSource,Context,Typesetter)
  *        &lang;glue&rang;}
  *
  *   &lang;optional prefix&rang;
@@ -91,7 +89,7 @@ public class SkipPrimitive extends AbstractSkip
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -121,16 +119,16 @@ public class SkipPrimitive extends AbstractSkip
 
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
-        Glue g = GlueParser.parse(source, context, typesetter);
-        g.add(context.getGlue(key));
-        context.setGlue(key, g, prefix.clearGlobal());
+        Glue glue = source.parseGlue(context, source, typesetter);
+        glue.add(context.getGlue(key));
+        context.setGlue(key, glue, prefix.clearGlobal());
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void assign(Flags prefix, Context context, TokenSource source,
@@ -138,14 +136,15 @@ public class SkipPrimitive extends AbstractSkip
 
         String key = getKey(context, source, typesetter);
         source.getOptionalEquals(context);
-        Glue g = GlueParser.parse(source, context, typesetter);
-        context.setGlue(key, g, prefix.clearGlobal());
+        Glue glue = source.parseGlue(context, source, typesetter);
+        context.setGlue(key, glue, prefix.clearGlobal());
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.parser.GlueConvertible#convertGlue(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.GlueConvertible#convertGlue(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Glue convertGlue(Context context, TokenSource source,
@@ -158,8 +157,8 @@ public class SkipPrimitive extends AbstractSkip
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.type.arithmetic.Divideable#divide(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.base.type.arithmetic.Divideable#divide(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void divide(Flags prefix, Context context, TokenSource source,
@@ -167,7 +166,7 @@ public class SkipPrimitive extends AbstractSkip
 
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
-        long value = CountParser.scanInteger(context, source, null);
+        long value = source.parseInteger(context, source, null);
 
         if (value == 0) {
             throw new ArithmeticOverflowException(
@@ -182,8 +181,8 @@ public class SkipPrimitive extends AbstractSkip
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.type.arithmetic.Multiplyable#multiply(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.base.type.arithmetic.Multiplyable#multiply(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void multiply(Flags prefix, Context context, TokenSource source,
@@ -191,7 +190,7 @@ public class SkipPrimitive extends AbstractSkip
 
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
-        long value = CountParser.scanInteger(context, source, null);
+        long value = source.parseInteger(context, source, null);
 
         Glue g = new Glue(context.getGlue(key));
         g.multiplyAll(value, 1);
@@ -211,7 +210,8 @@ public class SkipPrimitive extends AbstractSkip
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+            throws HelpingException,
+                TypesetterException {
 
         String key = getKey(context, source, typesetter);
         try {

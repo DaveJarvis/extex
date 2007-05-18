@@ -19,8 +19,6 @@
 
 package org.extex.unit.tex.font;
 
-import org.extex.base.parser.CountParser;
-import org.extex.base.parser.DimenParser;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
@@ -63,7 +61,7 @@ import org.extex.typesetter.tc.font.Font;
  * <pre class="syntax">
  *    &lang;fontdimen&rang;
  *       &rarr; <tt>\fontdimen</tt> {@linkplain
- *          org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} {@linkplain
  *          org.extex.interpreter.TokenSource#getFont(Context,String)
  *          &lang;font&rang;} {@linkplain
@@ -114,8 +112,8 @@ public class Fontdimen extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void assign(Flags prefix, Context context, TokenSource source,
@@ -125,7 +123,7 @@ public class Fontdimen extends AbstractAssignment
         source.skipSpace();
         Font font = source.getFont(context, getName());
         source.getOptionalEquals(context);
-        Dimen size = DimenParser.parse(context, source, typesetter);
+        Dimen size = source.parseDimen(context, source, typesetter);
         font.setFontDimen(key, size);
     }
 
@@ -170,8 +168,7 @@ public class Fontdimen extends AbstractAssignment
             return key;
         }
         source.push(t);
-        return Long.toString(CountParser.scanInteger(context, source,
-            typesetter));
+        return Long.toString(source.parseInteger(context, source, typesetter));
     }
 
     /**

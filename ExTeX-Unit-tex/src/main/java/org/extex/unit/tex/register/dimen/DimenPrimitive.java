@@ -19,10 +19,6 @@
 
 package org.extex.unit.tex.register.dimen;
 
-import org.extex.base.parser.CountConvertible;
-import org.extex.base.parser.CountParser;
-import org.extex.base.parser.DimenConvertible;
-import org.extex.base.parser.DimenParser;
 import org.extex.base.type.arithmetic.Advanceable;
 import org.extex.base.type.arithmetic.Divideable;
 import org.extex.base.type.arithmetic.Multiplyable;
@@ -33,6 +29,8 @@ import org.extex.core.exception.helping.NoHelpException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.CountConvertible;
+import org.extex.interpreter.parser.DimenConvertible;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.exception.CatcodeException;
@@ -65,7 +63,7 @@ import org.extex.typesetter.exception.TypesetterException;
  *        &lang;register name&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.base.parser.DimenParser#parse(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantDimenParser#parse(Context,TokenSource,Typesetter)
  *        &lang;dimen value&rang;}
  *
  *   &lang;optional prefix&rang;
@@ -111,8 +109,8 @@ public class DimenPrimitive extends AbstractDimen
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.type.arithmetic.Advanceable#advance(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.base.type.arithmetic.Advanceable#advance(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void advance(Flags prefix, Context context, TokenSource source,
@@ -121,7 +119,7 @@ public class DimenPrimitive extends AbstractDimen
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
 
-        Dimen d = DimenParser.parse(context, source, typesetter);
+        Dimen d = source.parseDimen(context, source, typesetter);
         d.add(context.getDimen(key));
         context.setDimen(key, d, prefix.clearGlobal());
     }
@@ -129,8 +127,8 @@ public class DimenPrimitive extends AbstractDimen
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void assign(Flags prefix, Context context, TokenSource source,
@@ -139,14 +137,15 @@ public class DimenPrimitive extends AbstractDimen
         String key = getKey(context, source, typesetter);
         source.getOptionalEquals(context);
 
-        Dimen dimen = DimenParser.parse(context, source, typesetter);
+        Dimen dimen = source.parseDimen(context, source, typesetter);
         context.setDimen(key, dimen, prefix.clearGlobal());
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -160,7 +159,8 @@ public class DimenPrimitive extends AbstractDimen
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.parser.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,
@@ -172,8 +172,8 @@ public class DimenPrimitive extends AbstractDimen
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.type.arithmetic.Divideable#divide(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.base.type.arithmetic.Divideable#divide(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void divide(Flags prefix, Context context, TokenSource source,
@@ -181,7 +181,7 @@ public class DimenPrimitive extends AbstractDimen
 
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
-        long value = CountParser.scanInteger(context, source, null);
+        long value = source.parseInteger(context, source, null);
 
         if (value == 0) {
             throw new ArithmeticOverflowException(
@@ -195,8 +195,8 @@ public class DimenPrimitive extends AbstractDimen
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.ExpandableCode#expand(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,
@@ -216,8 +216,8 @@ public class DimenPrimitive extends AbstractDimen
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.type.arithmetic.Multiplyable#multiply(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.base.type.arithmetic.Multiplyable#multiply(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void multiply(Flags prefix, Context context, TokenSource source,
@@ -225,7 +225,7 @@ public class DimenPrimitive extends AbstractDimen
 
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
-        long value = CountParser.scanInteger(context, source, null);
+        long value = source.parseInteger(context, source, null);
         Dimen d = new Dimen(context.getDimen(key).getValue() * value);
         context.setDimen(key, d, prefix.clearGlobal());
     }
@@ -233,7 +233,8 @@ public class DimenPrimitive extends AbstractDimen
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

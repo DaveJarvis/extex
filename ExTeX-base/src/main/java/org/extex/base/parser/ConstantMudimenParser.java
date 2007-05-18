@@ -19,14 +19,14 @@
 
 package org.extex.base.parser;
 
-import java.io.Serializable;
-
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.muskip.Mudimen;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.MudimenConvertible;
+import org.extex.interpreter.parser.Parser;
 import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
@@ -39,13 +39,13 @@ import org.extex.typesetter.exception.TypesetterException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4399 $
  */
-public class MudimenParser implements Serializable {
+public class ConstantMudimenParser implements Parser<Mudimen> {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 20060605L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Scan a math unit.
@@ -77,7 +77,7 @@ public class MudimenParser implements Serializable {
         if (!source.getKeyword(context, "mu")) {
             throw new HelpingException(
                 //
-                LocalizerFactory.getLocalizer(MudimenParser.class),
+                LocalizerFactory.getLocalizer(ConstantMudimenParser.class),
                 "TTP.IllegalMu");
         }
         return value;
@@ -107,8 +107,15 @@ public class MudimenParser implements Serializable {
      * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
+     * 
+     * 
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.parser.Parser#parse(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public static Mudimen parseMudimen(Context context, TokenSource source,
+    public Mudimen parse(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         return new Mudimen(scanMu(context, source, typesetter));

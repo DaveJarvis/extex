@@ -19,7 +19,6 @@
 
 package org.extex.unit.pdftex;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
@@ -44,7 +43,7 @@ import org.extex.typesetter.type.node.pdftex.PdfRefXForm;
  * <pre class="syntax">
  *    &lang;pdfrefxform&rang;
  *       &rarr; <tt>\pdfrefxform</tt> {@linkplain
- *          org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *          &lang;number&rang;} </pre>
  * 
  * <h4>Examples</h4>
@@ -78,18 +77,16 @@ public class Pdfrefxform extends AbstractPdftexCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws TypesetterException,
-                HelpingException {
+            Typesetter typesetter) throws TypesetterException, HelpingException {
 
         ensurePdftex(context, typesetter);
 
-        long no = CountParser.scanNumber(context, source, typesetter);
+        long no = source.parseNumber(context, source, typesetter);
 
         typesetter.add(new PdfRefXForm(no));
     }

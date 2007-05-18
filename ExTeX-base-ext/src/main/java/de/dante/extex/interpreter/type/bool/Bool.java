@@ -21,12 +21,11 @@ package de.dante.extex.interpreter.type.bool;
 
 import java.io.Serializable;
 
-import org.extex.base.parser.CountConvertible;
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.CountConvertible;
 import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
@@ -45,7 +44,8 @@ import de.dante.extex.interpreter.type.real.RealConvertible;
 public class Bool implements Serializable {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 1L;
 
@@ -131,7 +131,7 @@ public class Bool implements Serializable {
 
         source.push(tok);
         if (tok.getChar().isDigit()) {
-            return (new Bool(CountParser.scanInteger(context, source, null)))
+            return (new Bool(source.parseInteger(context, source, null)))
                 .getValue();
         }
 

@@ -24,25 +24,35 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.DimenParser;
+import org.extex.interpreter.parser.Parser;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class implements a parser for a dimen value.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision:5417 $
  */
-public final class DimenParser {
+public final class ConstantDimenParser implements Parser<Dimen>, DimenParser {
+
+    /**
+     * Creates a new object.
+     */
+    public ConstantDimenParser() {
+
+        super();
+    }
 
     /**
      * Creates a new object from a token stream.
-     *
-     * <doc type="syntax" name="dimen">
-     * This method parses the following syntactic entity:
-     *
-     *  <pre class="syntax">
+     * 
+     * <doc type="syntax" name="dimen"> This method parses the following
+     * syntactic entity:
+     * 
+     * <pre class="syntax">
      *    &lang;dimen&rang;
      *      &rarr; &lang;float&rang; &lang;dimen unit&rang;
      *       |  &lang;float&rang; <tt>true</tt> &lang;dimen unit&rang;
@@ -57,28 +67,48 @@ public final class DimenParser {
      *      &rarr; pt | in | sp
      *      |  mm | cm | dm | km
      *      |  dd | cc | bp  </pre>
+     * 
      * </doc>
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for next tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return a new instance with the value acquired
-     *
+     * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
-    public static Dimen parse(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException,TypesetterException {
+    public static Dimen scan(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         return LengthParser.parse(context, source, typesetter);
     }
 
     /**
-     * Creates a new object.
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.parser.Parser#parse(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    private DimenParser() {
-        // never used
+    public Dimen parse(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
+
+        return LengthParser.parse(context, source, typesetter);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.parser.DimenParser#parseDimen(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     */
+    public Dimen parseDimen(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
+
+        return LengthParser.parse(context, source, typesetter);
     }
 
 }

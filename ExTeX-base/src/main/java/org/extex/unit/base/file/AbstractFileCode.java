@@ -19,7 +19,6 @@
 
 package org.extex.unit.base.file;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.BadFileNumberException;
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
@@ -81,7 +80,7 @@ public abstract class AbstractFileCode extends AbstractCode
      *  <pre class="syntax">
      *    &lang;infile&nbsp;name&rang;
      *      &rarr; {@linkplain
-     *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+     *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;} </pre>
      * </doc>
      *
@@ -99,7 +98,7 @@ public abstract class AbstractFileCode extends AbstractCode
             TokenSource source, Typesetter typesetter)
             throws HelpingException,TypesetterException {
 
-        long no = CountParser.scanNumber(context, source, typesetter);
+        long no = source.parseNumber(context, source, typesetter);
         String key = Long.toString(no);
 
         if (no < 0 || no > MAX_IN_FILE_NO) {
@@ -126,7 +125,7 @@ public abstract class AbstractFileCode extends AbstractCode
      *  <pre class="syntax">
      *    &lang;infile&nbsp;name&rang;
      *      &rarr; {@linkplain
-     *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+     *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;} </pre>
      * </doc>
      *
@@ -144,7 +143,7 @@ public abstract class AbstractFileCode extends AbstractCode
             TokenSource source, Typesetter typesetter)
             throws HelpingException,TypesetterException {
 
-        long no = CountParser.scanNumber(context, source, typesetter);
+        long no = source.parseNumber(context, source, typesetter);
         return Long.toString(no);
     }
 

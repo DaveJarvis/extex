@@ -19,7 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.register.transform;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -52,7 +51,8 @@ import org.extex.typesetter.exception.TypesetterException;
 public class NumberedTransform extends NamedTransform {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 1L;
 
@@ -71,7 +71,8 @@ public class NumberedTransform extends NamedTransform {
      * 
      * {@inheritDoc}
      * 
-     * @see de.dante.extex.interpreter.primitives.register.transform.NamedTransform#getKey(org.extex.interpreter.context.Context,
+     * @see de.dante.extex.interpreter.primitives.register.transform.NamedTransform#getKey(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     protected String getKey(Context context, TokenSource source,
@@ -79,7 +80,7 @@ public class NumberedTransform extends NamedTransform {
 
         return getName()
                 + "#"
-                + Long.toString(CountParser.scanNumber(context, source,
-                    typesetter));
+                + Long.toString(source
+                    .parseInteger(context, source, typesetter));
     }
 }

@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.conditional;
 
-import org.extex.base.parser.DimenParser;
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
@@ -87,13 +86,14 @@ public class Ifdim extends AbstractIf {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(org.extex.interpreter.context.Context,
+     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public boolean conditional(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        long x = DimenParser.parse(context, source, typesetter).getValue();
+        long x = source.parseDimen(context, source, typesetter).getValue();
         Token rel = source.getToken(context);
         if (rel == null) {
             throw new EofException(printableControlSequence(context));
@@ -101,13 +101,13 @@ public class Ifdim extends AbstractIf {
         if (rel.getCatcode() == Catcode.OTHER) {
             switch (rel.getChar().getCodePoint()) {
                 case '<':
-                    return (x < DimenParser.parse(context, source, typesetter)
+                    return (x < source.parseDimen(context, source, typesetter)
                         .getValue());
                 case '=':
-                    return (x == DimenParser.parse(context, source, typesetter)
+                    return (x == source.parseDimen(context, source, typesetter)
                         .getValue());
                 case '>':
-                    return (x > DimenParser.parse(context, source, typesetter)
+                    return (x > source.parseDimen(context, source, typesetter)
                         .getValue());
                 default:
                     // Fall through to error handling

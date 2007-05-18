@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.typesetter;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.EofInToksException;
 import org.extex.core.exception.helping.HelpingException;
@@ -135,8 +134,8 @@ public class Setlanguage extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,
@@ -156,7 +155,7 @@ public class Setlanguage extends AbstractCode {
             }
             context.setToks("lang", tokens, false);
         } else {
-            long no = CountParser.scanInteger(context, source, typesetter);
+            long no = source.parseInteger(context, source, typesetter);
             context.setCount("language", no, false);
             context.setToks("lang", Tokens.EMPTY, false);
         }

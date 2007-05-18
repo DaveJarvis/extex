@@ -19,14 +19,12 @@
 
 package org.extex.unit.tex.typesetter.paragraph;
 
-import org.extex.base.parser.CountConvertible;
-import org.extex.base.parser.CountParser;
-import org.extex.base.parser.DimenParser;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.CountConvertible;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.exception.CatcodeException;
@@ -69,7 +67,7 @@ import org.extex.typesetter.paragraphBuilder.ParagraphShape;
  * <pre class="syntax">
  *    &lang;parshape&rang;
  *        &rarr; <tt>\parshape</tt> {@linkplain
- *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;8-bit&nbsp;number&rang;} ... </pre>
  * 
  * <h4>Examples</h4>
@@ -104,7 +102,7 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -119,7 +117,8 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -132,21 +131,21 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        long n = CountParser.scanInteger(context, source, typesetter);
+        long n = source.parseInteger(context, source, typesetter);
         if (n <= 0) {
             context.setParshape(null);
         } else {
             ParagraphShape parshape = new ParagraphShape();
             while (n-- > 0) {
-                Dimen left = DimenParser.parse(context, source, typesetter);
-                Dimen right = DimenParser.parse(context, source, typesetter);
+                Dimen left = source.parseDimen(context, source, typesetter);
+                Dimen right = source.parseDimen(context, source, typesetter);
                 parshape.add(left, right);
             }
             context.setParshape(parshape);
@@ -168,7 +167,8 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws CatcodeException,
-                HelpingException, TypesetterException {
+                HelpingException,
+                TypesetterException {
 
         ParagraphShape parshape = context.getParshape();
         return context.getTokenFactory().toTokens( //

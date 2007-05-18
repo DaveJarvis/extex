@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.typesetter.mark;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -32,7 +31,7 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This abstract base class for mark primitives provides the common features.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
@@ -40,7 +39,7 @@ public abstract class AbstractMarkCode extends AbstractCode {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name of the primitive
      */
     public AbstractMarkCode(String name) {
@@ -50,13 +49,13 @@ public abstract class AbstractMarkCode extends AbstractCode {
 
     /**
      * Get the key for this mark.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the key for the mark primitive
-     *
+     * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
@@ -70,7 +69,7 @@ public abstract class AbstractMarkCode extends AbstractCode {
             return (tokens == null ? "" : tokens.toText());
         }
 
-        return Long.toString(CountParser.scanInteger(context, source, typesetter));
+        return Long.toString(source.parseInteger(context, source, typesetter));
     }
 
 }

@@ -36,7 +36,7 @@ public interface UnaryFunction {
      * @param accumulator the accumulator to receive the result
      *
      * @return the operation result
-     * @throws HelpingException TODO
+     * @throws HelpingException in case of an error
      */
     EType apply(EType accumulator) throws HelpingException;
 

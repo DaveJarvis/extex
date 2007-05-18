@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.string;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
 import org.extex.interpreter.Flags;
@@ -53,7 +52,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * <pre class="syntax">
  *    &lang;romannumeral&rang;
  *        &rarr; <tt>\romannumeral</tt> {@linkplain
- *           org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *           org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *           &lang;number&rang;} </pre>
  * 
  * <h4>Examples</h4>
@@ -112,14 +111,14 @@ public class Romannumeral extends AbstractCode implements ExpandableCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.ExpandableCode#expand(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        long n = CountParser.scanInteger(context, source, typesetter);
+        long n = source.parseInteger(context, source, typesetter);
         Tokens toks = new Tokens();
         TokenFactory factory = context.getTokenFactory();
         int j = 0;

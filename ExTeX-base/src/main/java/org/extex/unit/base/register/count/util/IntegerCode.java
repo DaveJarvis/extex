@@ -19,18 +19,16 @@
 
 package org.extex.unit.base.register.count.util;
 
-import org.extex.base.parser.CountConvertible;
-import org.extex.base.parser.CountParser;
 import org.extex.base.type.arithmetic.Advanceable;
 import org.extex.base.type.arithmetic.Divideable;
 import org.extex.base.type.arithmetic.Multiplyable;
-import org.extex.core.count.Count;
 import org.extex.core.exception.helping.ArithmeticOverflowException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.CountConvertible;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.InitializableCode;
@@ -101,8 +99,8 @@ public class IntegerCode extends AbstractAssignment
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         source.getKeyword(context, "by");
-        Count v = CountParser.parse(context, source, typesetter);
-        value += v.getValue();
+        long v = source.parseInteger(context, source, typesetter);
+        value += v;
     }
 
     /**
@@ -116,14 +114,14 @@ public class IntegerCode extends AbstractAssignment
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         source.getOptionalEquals(context);
-        Count v = CountParser.parse(context, source, typesetter);
-        value = v.getValue();
+        long v = source.parseInteger(context, source, typesetter);
+        value = v;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.parser.CountConvertible#convertCount(
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
@@ -144,12 +142,12 @@ public class IntegerCode extends AbstractAssignment
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         source.getKeyword(context, "by");
-        Count v = CountParser.parse(context, source, typesetter);
-        if (v.eq(Count.ZERO)) {
+        long v = source.parseInteger(context, source, typesetter);
+        if (v == 0) {
             throw new ArithmeticOverflowException(
                 printableControlSequence(context));
         }
-        value /= v.getValue();
+        value /= v;
     }
 
     /**
@@ -193,7 +191,7 @@ public class IntegerCode extends AbstractAssignment
         if (source == null) {
             return;
         }
-        value = CountParser.scanInteger(context, source, typesetter);
+        value = source.parseInteger(context, source, typesetter);
     }
 
     /**
@@ -207,8 +205,8 @@ public class IntegerCode extends AbstractAssignment
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         source.getKeyword(context, "by");
-        Count v = CountParser.parse(context, source, typesetter);
-        value *= v.getValue();
+        long v = source.parseInteger(context, source, typesetter);
+        value *= v;
     }
 
     /**

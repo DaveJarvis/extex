@@ -19,14 +19,13 @@
 
 package org.extex.unit.etex.register.skip;
 
-import org.extex.base.parser.CountConvertible;
-import org.extex.base.parser.DimenConvertible;
-import org.extex.base.parser.GlueParser;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.glue.Glue;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.CountConvertible;
+import org.extex.interpreter.parser.DimenConvertible;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.exception.CatcodeException;
@@ -57,7 +56,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * <pre class="syntax">
  *    &lang;gluestretch&rang;
  *      &rarr; <tt>\gluestretch</tt> {@linkplain
- *        org.extex.base.parser.GlueParser#parse(TokenSource,Context,Typesetter)
+ *        org.extex.base.parser.ConstantGlueParser#parse(TokenSource,Context,Typesetter)
  *        &lang;glue&rang;} </pre>
  * 
  * <h4>Examples</h4>
@@ -81,7 +80,7 @@ public class Gluestretch extends AbstractCode
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -96,26 +95,28 @@ public class Gluestretch extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        Glue glue = GlueParser.parse(source, context, typesetter);
+        Glue glue = source.parseGlue(context, source, typesetter);
         return glue.getShrink().getValue();
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.parser.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        Glue glue = GlueParser.parse(source, context, typesetter);
+        Glue glue = source.parseGlue(context, source, typesetter);
         return glue.getStretch().getValue();
     }
 
@@ -128,7 +129,8 @@ public class Gluestretch extends AbstractCode
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws CatcodeException,
-                HelpingException, TypesetterException {
+                HelpingException,
+                TypesetterException {
 
         return context.getTokenFactory().toTokens(//
             (new Dimen(convertDimen(context, source, typesetter))).toString());

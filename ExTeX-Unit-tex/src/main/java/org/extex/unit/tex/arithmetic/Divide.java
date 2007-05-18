@@ -52,16 +52,16 @@ import org.extex.typesetter.exception.TypesetterException;
  *
  *   &lang;dividable&rang;
  *     &rarr; &lang;integer variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
- *      org.extex.base.parser.CountParser#scanInteger(Context,TokenSource,Typesetter)
+ *      org.extex.base.parser.ConstantCountParser#scanInteger(Context,TokenSource,Typesetter)
  *      &lang;8-bit&nbsp;number&rang;}
  *      |  &lang;dimen variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
- *      org.extex.base.parser.CountParser#scanInteger(Context,TokenSource,Typesetter)
+ *      org.extex.base.parser.ConstantCountParser#scanInteger(Context,TokenSource,Typesetter)
  *      &lang;8-bit&nbsp;number&rang;}
  *      |  &lang;glue variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
- *      org.extex.base.parser.CountParser#scanInteger(Context,TokenSource,Typesetter)
+ *      org.extex.base.parser.ConstantCountParser#scanInteger(Context,TokenSource,Typesetter)
  *      &lang;8-bit&nbsp;number&rang;}
  *      |  &lang;muglue variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
- *      org.extex.base.parser.CountParser#scanInteger(Context,TokenSource,Typesetter)
+ *      org.extex.base.parser.ConstantCountParser#scanInteger(Context,TokenSource,Typesetter)
  *      &lang;8-bit&nbsp;number&rang;}
  *
  *   &lang;optional prefix&rang;

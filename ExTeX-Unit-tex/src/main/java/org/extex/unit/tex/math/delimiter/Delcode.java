@@ -19,8 +19,6 @@
 
 package org.extex.unit.tex.math.delimiter;
 
-import org.extex.base.parser.CountConvertible;
-import org.extex.base.parser.CountParser;
 import org.extex.base.type.arithmetic.Advanceable;
 import org.extex.base.type.arithmetic.Divideable;
 import org.extex.base.type.arithmetic.Multiplyable;
@@ -31,6 +29,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.CountConvertible;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
 import org.extex.scanner.exception.CatcodeException;
@@ -79,11 +78,11 @@ import org.extex.typesetter.type.math.MathDelimiter;
  * <pre class="syntax">
  *    &lang;delcode&rang;
  *      &rarr; &lang;prefix&rang; <tt>\delcode</tt> {@linkplain
- *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;8-bit&nbsp;number&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;8-bit&nbsp;number&rang;}
  *
  *    &lang;prefix&rang;
@@ -162,7 +161,7 @@ public class Delcode extends AbstractAssignment
                 source.scanCharacterCode(context, typesetter, getName());
         source.getKeyword(context, "by");
 
-        long value = CountParser.scanInteger(context, source, null);
+        long value = source.parseInteger(context, source, null);
         MathDelimiter delcode = context.getDelcode(charCode);
         value += AbstractTeXDelimiter.delimiterToLong(delcode);
 
@@ -233,7 +232,8 @@ public class Delcode extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -248,8 +248,8 @@ public class Delcode extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.type.arithmetic.Divideable#divide(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.base.type.arithmetic.Divideable#divide(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void divide(Flags prefix, Context context, TokenSource source,
@@ -259,7 +259,7 @@ public class Delcode extends AbstractAssignment
                 source.scanCharacterCode(context, typesetter, getName());
         source.getKeyword(context, "by");
 
-        long value = CountParser.scanInteger(context, source, null);
+        long value = source.parseInteger(context, source, null);
         MathDelimiter delcode = context.getDelcode(charCode);
         if (value == 0) {
             throw new ArithmeticOverflowException(
@@ -273,8 +273,8 @@ public class Delcode extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.type.arithmetic.Multiplyable#multiply(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.base.type.arithmetic.Multiplyable#multiply(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void multiply(Flags prefix, Context context, TokenSource source,
@@ -284,7 +284,7 @@ public class Delcode extends AbstractAssignment
                 source.scanCharacterCode(context, typesetter, getName());
         source.getKeyword(context, "by");
 
-        long value = CountParser.scanInteger(context, source, null);
+        long value = source.parseInteger(context, source, null);
         MathDelimiter delcode = context.getDelcode(charCode);
         value *= AbstractTeXDelimiter.delimiterToLong(delcode);
         assign(prefix, context, source, charCode, value);
@@ -305,7 +305,8 @@ public class Delcode extends AbstractAssignment
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws CatcodeException,
-                HelpingException, TypesetterException {
+                HelpingException,
+                TypesetterException {
 
         UnicodeChar charCode =
                 source.scanCharacterCode(context, typesetter, getName());

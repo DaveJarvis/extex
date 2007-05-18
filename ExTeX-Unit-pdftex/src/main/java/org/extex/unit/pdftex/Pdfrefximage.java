@@ -19,7 +19,6 @@
 
 package org.extex.unit.pdftex;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
@@ -44,7 +43,7 @@ import org.extex.typesetter.type.node.pdftex.PdfRefXImage;
  * <pre class="syntax">
  *    &lang;pdfrefximage&rang;
  *       &rarr; <tt>\pdfrefximage</tt> {@linkplain
- *          org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *          &lang;number&rang;} </pre>
  * 
  * <h4>Examples</h4>
@@ -63,7 +62,7 @@ public class Pdfrefximage extends AbstractPdftexCode {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -78,18 +77,16 @@ public class Pdfrefximage extends AbstractPdftexCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws TypesetterException,
-                HelpingException {
+            Typesetter typesetter) throws TypesetterException, HelpingException {
 
         ensurePdftex(context, typesetter);
 
-        long no = CountParser.scanNumber(context, source, typesetter);
+        long no = source.parseNumber(context, source, typesetter);
 
         typesetter.add(new PdfRefXImage(no));
     }

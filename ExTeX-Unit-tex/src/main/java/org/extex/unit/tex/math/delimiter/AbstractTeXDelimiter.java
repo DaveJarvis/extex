@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.math.delimiter;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.UnicodeChar;
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
@@ -422,12 +421,10 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
             throws HelpingException,
                 TypesetterException {
 
-        int smallFam =
-                (int) CountParser.scanNumber(context, source, typesetter);
+        int smallFam = (int) source.parseNumber(context, source, typesetter);
         UnicodeChar smallChar =
                 source.scanCharacterCode(context, typesetter, primitive);
-        int largeFam =
-                (int) CountParser.scanNumber(context, source, typesetter);
+        int largeFam = (int) source.parseNumber(context, source, typesetter);
         UnicodeChar largeChar =
                 source.scanCharacterCode(context, typesetter, primitive);
 
@@ -466,8 +463,8 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
             if (t instanceof CodeToken) {
                 Code code = context.getCode((CodeToken) t);
                 if (code instanceof Delimiter) {
-                    return newMathDelimiter(CountParser.scanNumber(context,
-                        source, typesetter));
+                    return newMathDelimiter(source.parseNumber(context, source,
+                        typesetter));
                 } else if (code instanceof ExpandableCode) {
                     ((ExpandableCode) code).expand(Flags.NONE, context, source,
                         typesetter);
@@ -483,7 +480,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
                 } else if (t instanceof OtherToken) {
                     source.push(t);
                     try {
-                        return newMathDelimiter(CountParser.scanNumber(context,
+                        return newMathDelimiter(source.parseNumber(context,
                             source, typesetter));
                     } catch (MissingNumberException e) {
                         throw new HelpingException(getMyLocalizer(),

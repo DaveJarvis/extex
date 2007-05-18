@@ -47,7 +47,7 @@ import org.extex.backend.outputStream.OutputFactory;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.base.InteractionModeObserver;
 import org.extex.base.exception.RegistrarFontNotFoundException;
-import org.extex.base.parser.DimenParser;
+import org.extex.base.parser.ConstantDimenParser;
 import org.extex.color.ColorConverter;
 import org.extex.color.ColorConverterFacory;
 import org.extex.core.dimen.Dimen;
@@ -795,7 +795,8 @@ public class ExTeX {
      * @see #ExTeX(java.util.Properties)
      */
     public ExTeX(Properties theProperties, String dotFile)
-            throws IOException, HelpingException {
+            throws IOException,
+                HelpingException {
 
         this(theProperties);
 
@@ -1584,9 +1585,12 @@ public class ExTeX {
                 "ExTeX.InvalidPageSize", page));
         }
         try {
-            Dimen width = DimenParser.parse(context, new StringSource(w), null);
+            Dimen width =
+                    ConstantDimenParser.scan(context, new StringSource(w),
+                        null);
             Dimen height =
-                    DimenParser.parse(context, new StringSource(h), null);
+                    ConstantDimenParser.scan(context, new StringSource(h),
+                        null);
 
             context.setDimen("mediawidth", width, true);
             context.setDimen("mediaheight", height, true);
@@ -1795,6 +1799,18 @@ public class ExTeX {
                 logger.severe("\n" + e.getLocalizedMessage() + "\n");
             }
             throw e;
+        } catch (HelpingException e) {
+
+            while (!e.isProcessed()
+                    && e.getCause() instanceof InterpreterException) {
+                e = (HelpingException) e.getCause();
+            }
+
+            if (!e.isProcessed()) {
+                e.setProcessed(true);
+                logger.severe("\n" + e.getLocalizedMessage() + "\n");
+            }
+            throw new InterpreterException(e);
         } catch (ConfigurationException e) {
             logger.throwing(this.getClass().getName(), "run", e);
             throw e;

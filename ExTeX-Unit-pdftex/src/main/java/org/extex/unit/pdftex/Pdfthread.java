@@ -19,7 +19,6 @@
 
 package org.extex.unit.pdftex;
 
-import org.extex.base.parser.DimenParser;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
@@ -79,14 +78,12 @@ public class Pdfthread extends AbstractPdftexCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter)
-            throws TypesetterException,
-                HelpingException {
+            Typesetter typesetter) throws TypesetterException, HelpingException {
 
         ensurePdftex(context, typesetter);
         String attr = null;
@@ -96,11 +93,11 @@ public class Pdfthread extends AbstractPdftexCode {
 
         for (;;) {
             if (source.getKeyword(context, "width")) {
-                width = DimenParser.parse(context, source, typesetter);
+                width = source.parseDimen(context, source, typesetter);
             } else if (source.getKeyword(context, "height")) {
-                height = DimenParser.parse(context, source, typesetter);
+                height = source.parseDimen(context, source, typesetter);
             } else if (source.getKeyword(context, "depth")) {
-                depth = DimenParser.parse(context, source, typesetter);
+                depth = source.parseDimen(context, source, typesetter);
             } else if (source.getKeyword(context, "attr")) {
                 attr = source.scanTokensAsString(context, getName());
             } else {

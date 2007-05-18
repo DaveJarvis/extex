@@ -26,6 +26,10 @@ import org.extex.core.exception.NotObservableException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.CountParser;
+import org.extex.interpreter.parser.DimenParser;
+import org.extex.interpreter.parser.GlueParser;
+import org.extex.interpreter.parser.Parser;
 import org.extex.interpreter.type.box.Box;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.stream.TokenStreamFactory;
@@ -52,7 +56,11 @@ import org.extex.typesetter.tc.font.Font;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4388 $
  */
-public interface TokenSource {
+public interface TokenSource
+        extends
+            CountParser,
+            DimenParser,
+            GlueParser {
 
     /**
      * Put a given stream on top of the stream stack. The reading occurs on this
@@ -734,5 +742,30 @@ public interface TokenSource {
     void update(String name, String text)
             throws HelpingException,
                 NotObservableException;
+
+    /**
+     * Register a new parser for some data type.
+     * 
+     * @param c the class
+     * @param p the parser for the class
+     */
+    @SuppressWarnings("unchecked")
+    void register(Class c, Parser p);
+
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param c the class
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     *
+     * @return
+     *
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException
+     */
+    Object parse(Class c, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException;
 
 }

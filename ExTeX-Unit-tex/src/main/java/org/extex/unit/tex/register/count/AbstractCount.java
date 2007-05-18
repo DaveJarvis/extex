@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.register.count;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -100,7 +99,7 @@ public abstract class AbstractCount extends AbstractAssignment
             return;
         }
         source.push(t);
-        long value = CountParser.scanInteger(context, source, typesetter);
+        long value = source.parseInteger(context, source, typesetter);
         context.setCount(getKey(context, source, typesetter), value, true);
     }
 

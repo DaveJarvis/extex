@@ -19,11 +19,11 @@
 
 package org.extex.unit.etex.register.muskip;
 
-import org.extex.base.parser.MuskipConvertible;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.muskip.Muskip;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.MuskipConvertible;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -80,7 +80,7 @@ public class Muexpr extends AbstractCode implements MuskipConvertible {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.parser.MuskipConvertible#convertMuskip(
+     * @see org.extex.interpreter.parser.MuskipConvertible#convertMuskip(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,38 +17,42 @@
  *
  */
 
-package org.extex.base.parser;
+package org.extex.interpreter.parser;
 
 import org.extex.core.exception.helping.HelpingException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This is an interface which describes the feature to be convertible into a
- * mudimen.
- *
+ * count.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4399 $
  */
-public interface MudimenConvertible {
+public interface CountConvertible {
 
     /**
-     * This method converts a register into a mudimen.
-     * It might be necessary to read further tokens to determine which value to
-     * use. For instance an additional register number might be required. In
-     * this case the additional arguments Context and TokenSource can be used.
-     *
-     * The return value is the length in scaled points.
+     * This method converts a register into a count. It might be necessary to
+     * read further tokens to determine which value to use. For instance an
+     * additional register number might be required. In this case the additional
+     * arguments Context and TokenSource can be used.
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter to use for conversion
-     *
-     * @return the converted value in mu
+     * 
+     * @return the converted value
      * 
      * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
+     * @throws ConfigurationException in case of an configuration error
      */
-    long convertMudimen(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException;
+    long convertCount(Context context, TokenSource source, Typesetter typesetter)
+            throws HelpingException,
+                TypesetterException;
 
 }

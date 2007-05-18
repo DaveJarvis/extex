@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.register.count;
 
-import org.extex.base.parser.CountParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
@@ -60,7 +59,7 @@ import org.extex.unit.base.register.count.util.IntegerCode;
  *        &lang;control sequence&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}
  *
  *    &lang;optional prefix&rang;
@@ -122,7 +121,7 @@ public class Integer extends AbstractAssignment {
 
         CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
-        long value = CountParser.scanInteger(context, source, typesetter);
+        long value = source.parseInteger(context, source, typesetter);
         context.setCode(cs, new IntegerCode(getName(), value), prefix
                 .clearGlobal());
     }

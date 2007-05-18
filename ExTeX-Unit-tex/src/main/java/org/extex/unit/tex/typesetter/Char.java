@@ -51,7 +51,7 @@ import org.extex.typesetter.listMaker.TokenDelegateListMaker;
  * <pre class="syntax">
  *    &lang;char&rang;
  *        &rarr; <tt>\char</tt> {@linkplain
- *        org.extex.base.parser.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;} </pre>
  * 
  * <h4>Examples</h4>

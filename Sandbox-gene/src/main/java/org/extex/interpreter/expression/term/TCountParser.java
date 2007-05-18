@@ -19,7 +19,6 @@
 
 package org.extex.interpreter.expression.term;
 
-import org.extex.base.parser.CountConvertible;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
@@ -28,6 +27,7 @@ import org.extex.interpreter.expression.EType;
 import org.extex.interpreter.expression.ETypeParser;
 import org.extex.interpreter.expression.Evaluator;
 import org.extex.interpreter.expression.UnaryFunction;
+import org.extex.interpreter.parser.CountConvertible;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.scanner.type.token.CodeToken;
