@@ -61,7 +61,6 @@
     <fileset dir="..">
       <!-- for testing -->
       <include name="ExTeX-Backend-dump/lib/*.jar"/>
-      <include name="ExTeX-Backend-dump/lib.test/*.jar"/>
       <xsl:apply-templates select="component" mode="testpath"/>
     </fileset>
   </path>
