@@ -15,5 +15,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Typesetter-API"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-tex"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-native"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
