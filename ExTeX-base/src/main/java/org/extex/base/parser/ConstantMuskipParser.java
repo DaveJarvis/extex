@@ -45,7 +45,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4399 $
  */
-public class MuskipParser implements Parser<Muskip> {
+public class ConstantMuskipParser implements Parser<Muskip> {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
@@ -98,7 +98,7 @@ public class MuskipParser implements Parser<Muskip> {
                 ScaledNumberParser.scanFloat(context, source, typesetter, t);
         if (!source.getKeyword(context, "mu")) {
             throw new HelpingException(LocalizerFactory
-                .getLocalizer(MuskipParser.class), "TTP.IllegalMu");
+                .getLocalizer(ConstantMuskipParser.class), "TTP.IllegalMu");
         }
         Dimen len = new Dimen(value);
         GlueComponent stretch = null;
@@ -152,7 +152,7 @@ public class MuskipParser implements Parser<Muskip> {
             return new GlueComponent(value, 1);
         }
         throw new HelpingException(LocalizerFactory
-            .getLocalizer(MuskipParser.class), "TTP.IllegalMu");
+            .getLocalizer(ConstantMuskipParser.class), "TTP.IllegalMu");
 
     }
 
