@@ -269,10 +269,10 @@
 
     <copy todir="${test.classes}">
       <mapper type="regexp"
-              from="^[^/\\]*\${file.separator}src\${file.separator}[a-z]*\${file.separator}(.*)$$"
+              from="^[^/\\]*\${file.separator}src\${file.separator}test\${file.separator}[a-z]*\${file.separator}(.*)$$"
               to="\1" />
       <fileset dir="..">
-        <include name="ExTeX-*/**/test/**/*" />
+        <include name="ExTeX-*/src/test/**/*" />
         <exclude name="**/*.java" />
         <exclude name="**/*.class" />
         <exclude name="**/*.html" />
