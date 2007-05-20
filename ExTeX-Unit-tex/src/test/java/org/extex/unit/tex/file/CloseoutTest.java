@@ -62,7 +62,7 @@ public class CloseoutTest extends NoFlagsButImmediatePrimitiveTester {
         assertSuccess(//--- input code ---
                 "\\closeout1\\end",
                 //--- output channel ---
-                "");
+                "\n");
     }
 
     /**

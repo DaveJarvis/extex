@@ -19,6 +19,8 @@
 
 package org.extex.interpreter.interaction;
 
+import java.util.Locale;
+
 import junit.framework.TestCase;
 
 import org.extex.core.exception.GeneralException;
@@ -132,6 +134,17 @@ public class InteractionTest extends TestCase {
     };
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see junit.framework.TestCase#setUp()
+     */
+    protected void setUp() throws Exception {
+
+        super.setUp();
+        Locale.setDefault(Locale.ENGLISH);
+    }
+
+    /**
      * Test method for {@link
      * org.extex.interpreter.interaction.Interaction#get(int)}.
      */
@@ -213,8 +226,9 @@ public class InteractionTest extends TestCase {
             Interaction.get((Interaction) null);
             assertTrue(false);
         } catch (InteractionUnknownException e) {
-            assertEquals("", e.getMessage());
-            assertEquals("Interaction  is unknown\n", e.getLocalizedMessage());
+            assertEquals("message", "", e.getMessage());
+            assertEquals("localized message", "Interaction  is unknown\n", //
+                e.getLocalizedMessage());
         }
     }
 
@@ -300,7 +314,7 @@ public class InteractionTest extends TestCase {
             Interaction.get("abc");
             assertTrue(false);
         } catch (InteractionUnknownException e) {
-            assertEquals("abc", e.getMessage());
+            assertEquals("", e.getMessage());
             assertEquals("Interaction abc is unknown\n", e
                 .getLocalizedMessage());
         }
@@ -316,7 +330,7 @@ public class InteractionTest extends TestCase {
             Interaction.get("Batchmode");
             assertTrue(false);
         } catch (InteractionUnknownException e) {
-            assertEquals("Batchmode", e.getMessage());
+            assertEquals("", e.getMessage());
             assertEquals("Interaction Batchmode is unknown\n", e
                 .getLocalizedMessage());
         }

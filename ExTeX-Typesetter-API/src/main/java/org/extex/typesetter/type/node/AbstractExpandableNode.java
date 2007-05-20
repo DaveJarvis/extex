@@ -99,9 +99,9 @@ public abstract class AbstractExpandableNode extends AbstractNode
         this.horizontal = horizontal;
 
         if (horizontal) {
-            setWidth(size.getLength());
+            setWidth(this.size.getLength());
         } else {
-            setHeight(size.getLength());
+            setHeight(this.size.getLength());
         }
     }
 

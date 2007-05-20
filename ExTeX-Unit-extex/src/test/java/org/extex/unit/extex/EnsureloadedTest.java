@@ -23,7 +23,7 @@ import org.extex.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\ensureloaded</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,7 +31,7 @@ public class EnsureloadedTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public EnsureloadedTest(String arg) {
@@ -41,69 +41,67 @@ public class EnsureloadedTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\ensureloaded">
-     *  Test case checking that <tt>\ensureloaded</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\ensureloaded"> Test case checking that
+     * <tt>\ensureloaded</tt> needs an argument; i.e. the end of file is
+     * reported as error. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testError1() throws Exception {
 
         assertFailure(
-        //--- input code ---
-                DEFINE_BRACES + "\\ensureloaded",
-                //--- log message ---
-                "Unexpected end of file while processing \\ensureloaded");
+        // --- input code ---
+            DEFINE_BRACES + "\\ensureloaded",
+            // --- log message ---
+            "Unexpected end of file while processing \\ensureloaded");
     }
 
     /**
-     * <testcase primitive="\ensureloaded">
-     *  Test case checking that <tt>\ensureloaded</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\ensureloaded"> Test case checking that
+     * <tt>\ensureloaded</tt> can report the named unit as missing when it
+     * does not exist. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testError2() throws Exception {
 
         assertFailure(
-        //--- input code ---
-                DEFINE_BRACES + "\\ensureloaded{xxx}",
-                //--- log message ---
-                "I don't know the unit `xxx'");
+        // --- input code ---
+            DEFINE_BRACES + "\\ensureloaded{xxx}",
+            // --- log message ---
+            "I don't know the unit `xxx'");
     }
 
     /**
-     * <testcase primitive="\ensureloaded">
-     *  Test case checking that <tt>\ensureloaded</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\ensureloaded"> Test case checking that
+     * <tt>\ensureloaded</tt> can load a named unit if it exists. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
         assertSuccess(
-        //--- input code ---
-                DEFINE_BRACES + "\\ensureloaded{extex}"
-                        + "\\the\\ignorevoid" + " \\end",
-                //--- log message ---
-                "0" + TERM);
+        // --- input code ---
+            DEFINE_BRACES + "\\ensureloaded{extex}" + "\\the\\ignorevoid"
+                    + " \\end",
+            // --- log message ---
+            "0" + TERM);
     }
 
     /**
-     * <testcase primitive="\ensureloaded">
-     *  Test case checking that <tt>\ensureloaded</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\ensureloaded"> Test case checking that
+     * <tt>\ensureloaded</tt> can load a named unit if it exists. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
         assertSuccess(
-        //--- input code ---
-                DEFINE_BRACES + "\\ensureloaded{extex}"
-                        + "\\ifx\\relax\\everymathend\\else ok\\fi" + " \\end",
-                //--- log message ---
-                "ok" + TERM);
+        // --- input code ---
+            DEFINE_BRACES + "\\ensureloaded{extex}"
+                    + "\\ifx\\relax\\everymathend\\else ok\\fi" + " \\end",
+            // --- log message ---
+            "ok" + TERM);
     }
 
 }

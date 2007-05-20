@@ -43,11 +43,11 @@ public class CurrentgrouplevelTest extends TestCase {
     /**
      * Test the primitive \currengrouplevel.
      *
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     public void testCurrentgrouplevel() throws Exception {
 
-        TestTeX.test("jucurrentgrouplevel", "ExTeX-Unit-etex");
+        TestTeX.test("jucurrentgrouplevel", "ExTeX-Unit-etex", "etex");
     }
 
 }

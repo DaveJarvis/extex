@@ -156,7 +156,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
                     + "$\\ifmmode \\showthe\\currentiftype \\fi$\\end",
             "> 8.\n",
             //--- log message ---
-            "");
+            "" + TERM);
     }
 
     /**
@@ -400,7 +400,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
                     + DEFINE_CATCODES
                     + "$\\unless\\ifmmode \\else\\showthe\\currentiftype \\fi$\\end",
             //--- log message ---
-            "> -8.\n", "");
+            "> -8.\n", "" + TERM);
     }
 
     /**

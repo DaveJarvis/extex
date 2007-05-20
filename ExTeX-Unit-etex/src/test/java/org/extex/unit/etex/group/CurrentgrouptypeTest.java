@@ -165,7 +165,7 @@ public class CurrentgrouptypeTest extends AbstractReadonlyCountRegisterTester {
                     + "\\hbox{$\\vcenter{\\global\\count0=\\currentgrouptype}$}"
                     + "\\the\\count0\\end",
             //--- log message ---
-            "12" + TERM);
+            "\n12" + TERM);
     }
 
     /**

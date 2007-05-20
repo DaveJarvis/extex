@@ -58,4 +58,18 @@ public class NoHelpException extends HelpingException {
             message);
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.core.exception.helping.HelpingException#getLocalizedMessage()
+     */
+    public String getLocalizedMessage() {
+
+        Throwable e = getCause();
+        if (e != null) {
+            return e.getLocalizedMessage();
+        }
+        return super.getLocalizedMessage();
+    }
+
 }

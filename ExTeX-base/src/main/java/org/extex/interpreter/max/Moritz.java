@@ -27,6 +27,7 @@ import org.extex.base.parser.ConstantCountParser;
 import org.extex.base.parser.ConstantDimenParser;
 import org.extex.base.parser.ConstantGlueParser;
 import org.extex.base.parser.ConstantMudimenParser;
+import org.extex.base.parser.ConstantMuskipParser;
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
@@ -45,6 +46,7 @@ import org.extex.core.exception.helping.NoHelpException;
 import org.extex.core.exception.helping.UndefinedControlSequenceException;
 import org.extex.core.glue.Glue;
 import org.extex.core.muskip.Mudimen;
+import org.extex.core.muskip.Muskip;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
@@ -273,6 +275,7 @@ public class Moritz extends Max
         register(Dimen.class, new ConstantDimenParser());
         register(Glue.class, new ConstantGlueParser());
         register(Mudimen.class, new ConstantMudimenParser());
+        register(Muskip.class, new ConstantMuskipParser());
         registerObserver(new StartObserver() {
 
             /**

@@ -42,12 +42,12 @@ public class UnlessTest extends TestCase {
     /**
      * Test the primitive <tt>&#5c;unless</tt>.
      *
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     public void testUnless()
         throws Exception {
 
-        TestTeX.test("juunless", "ExTeX-Unit-etex");
+        TestTeX.test("juunless", "ExTeX-Unit-etex", "etex");
     }
 
 }

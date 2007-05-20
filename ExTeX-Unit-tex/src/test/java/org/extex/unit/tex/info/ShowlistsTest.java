@@ -81,7 +81,7 @@ public class ShowlistsTest extends NoFlagsPrimitiveTester {
                 + "Transcript written on ."
                 + System.getProperty("file.separator") + "texput.log.\n",
                 //
-                "");
+                "" + TERM);
     }
 
     /**

@@ -19,7 +19,7 @@
 
 package org.extex.core;
 
-import static org.junit.Assert.*;
+import junit.framework.TestCase;
 
 import org.junit.Test;
 
@@ -29,7 +29,7 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class UnicodeCharTest {
+public class UnicodeCharTest extends TestCase {
 
     /**
      * Test method for {@link org.extex.core.UnicodeChar#get(int)}.

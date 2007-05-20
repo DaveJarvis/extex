@@ -36,7 +36,7 @@ public class InterpreterExtensionExceptionTest extends TestCase {
      */
     public final void testGetLocalizedMessage() {
 
-        assertEquals("ExTeX extension not available:\n\t\n",
+        assertEquals("ExTeX extension not available:\n\t?\n",
             new InterpreterExtensionException().getLocalizedMessage());
     }
 

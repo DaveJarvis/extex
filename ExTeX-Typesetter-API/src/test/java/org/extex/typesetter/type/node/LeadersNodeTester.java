@@ -19,8 +19,7 @@
 
 package org.extex.typesetter.type.node;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import junit.framework.TestCase;
 
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
@@ -36,7 +35,7 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public abstract class LeadersNodeTester {
+public abstract class LeadersNodeTester extends TestCase {
 
     
     /**

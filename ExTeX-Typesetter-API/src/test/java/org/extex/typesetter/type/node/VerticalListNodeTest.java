@@ -36,7 +36,7 @@ import org.junit.Test;
 public class VerticalListNodeTest extends AbstractNodeListTester {
 
     /**
-     * The field <tt>visitor</tt> contains the ...
+     * The field <tt>visitor</tt> contains the visitor to use.
      */
     private static final NodeVisitor<Node, Boolean> VISITOR =
             new NodeVisitor<Node, Boolean>() {
@@ -185,7 +185,8 @@ public class VerticalListNodeTest extends AbstractNodeListTester {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.node.AbstractNodeListTester#makeList(org.extex.typesetter.type.Node)
+     * @see org.extex.typesetter.type.node.AbstractNodeListTester#makeList(
+     *      org.extex.typesetter.type.Node)
      */
     protected NodeList makeList(Node node) {
 

@@ -27,7 +27,7 @@ import org.extex.core.dimen.FixedDimen;
 /**
  * This class provides the basic data type of a stretchable and shrinkable
  * quantity of length.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision:4399 $
@@ -35,7 +35,8 @@ import org.extex.core.dimen.FixedDimen;
 public class Glue implements Serializable, FixedGlue {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
@@ -67,7 +68,7 @@ public class Glue implements Serializable, FixedGlue {
 
     /**
      * Creates a new object with a fixed length.
-     *
+     * 
      * @param theLength the natural length
      */
     public Glue(FixedDimen theLength) {
@@ -79,27 +80,34 @@ public class Glue implements Serializable, FixedGlue {
     }
 
     /**
-     * Creates a new object as copy of another glue.
-     *
+     * Creates a new object as copy of another glue. if the given glue is
+     * <code>null</code> then the new glue is initialized to the glue with
+     * length 0 and no strechability and shrinkability.
+     * 
      * @param glue the glue to clone
      */
     public Glue(FixedGlue glue) {
 
         super();
-        this.length = new Dimen(glue.getLength());
-        this.stretch = glue.getStretch().copy();
-        this.shrink = glue.getShrink().copy();
+        if (glue != null) {
+            this.length = new Dimen(glue.getLength());
+            this.stretch = glue.getStretch().copy();
+            this.shrink = glue.getShrink().copy();
+        } else {
+            this.length = new GlueComponent(0);
+            this.stretch = new GlueComponent(0);
+            this.shrink = new GlueComponent(0);
+        }
     }
 
     /**
      * Creates a new object from the three components.
-     *
+     * 
      * @param theLength the natural length
      * @param theStretch the stretch specification
      * @param theShrink the shrink specification
      */
-    public Glue(FixedGlueComponent theLength,
-            FixedGlueComponent theStretch,
+    public Glue(FixedGlueComponent theLength, FixedGlueComponent theStretch,
             FixedGlueComponent theShrink) {
 
         super();
@@ -110,7 +118,7 @@ public class Glue implements Serializable, FixedGlue {
 
     /**
      * Creates a new object from a fixed length.
-     *
+     * 
      * @param theLength the natural length in scaled point
      */
     public Glue(long theLength) {
@@ -122,9 +130,9 @@ public class Glue implements Serializable, FixedGlue {
     }
 
     /**
-     * Add another glue to this one.
-     * The addition is performed independently on the components.
-     *
+     * Add another glue to this one. The addition is performed independently on
+     * the components.
+     * 
      * @param g the glue to add
      */
     public void add(FixedGlue g) {
@@ -135,9 +143,9 @@ public class Glue implements Serializable, FixedGlue {
     }
 
     /**
-     * Add a dimen to this one glue.
-     * The addition is performed independently on the components.
-     *
+     * Add a dimen to this one glue. The addition is performed independently on
+     * the components.
+     * 
      * @param g the glue to add
      */
     public void add(FixedGlueComponent g) {
@@ -147,7 +155,7 @@ public class Glue implements Serializable, FixedGlue {
 
     /**
      * Make a copy of this object.
-     *
+     * 
      * @return a new instance with the same internal values
      */
     public Glue copy() {
@@ -157,15 +165,14 @@ public class Glue implements Serializable, FixedGlue {
 
     /**
      * Test that the given Glue is equal to a given one. This comparison
-     * involves the comparisons of the length, the stretch component, and
-     * the shrink component.
-     *
+     * involves the comparisons of the length, the stretch component, and the
+     * shrink component.
+     * 
      * @param glue the glue to compare with
-     *
+     * 
      * @return <code>true</code> iff they are the same
-     *
-     * @see org.extex.core.glue.FixedGlue#eq(
-     *      org.extex.core.glue.FixedGlue)
+     * 
+     * @see org.extex.core.glue.FixedGlue#eq( org.extex.core.glue.FixedGlue)
      */
     public boolean eq(FixedGlue glue) {
 
@@ -176,11 +183,11 @@ public class Glue implements Serializable, FixedGlue {
     /**
      * Compare this value with a given glue and return <code>true</code> iff
      * the current length is greater or equal than the given length.
-     *
+     * 
      * @param x the value to compare to
-     *
+     * 
      * @return <code>true</code> iff the current length is greater or equal
-     *  than the given one
+     *         than the given one
      */
     public boolean ge(FixedGlueComponent x) {
 
@@ -188,12 +195,12 @@ public class Glue implements Serializable, FixedGlue {
     }
 
     /**
-     * Getter for the length.
-     * Note that the value returned is independent from the original object.
-     * Changing its value does not affect the length of the glue.
-     *
+     * Getter for the length. Note that the value returned is independent from
+     * the original object. Changing its value does not affect the length of the
+     * glue.
+     * 
      * @return the natural length
-     *
+     * 
      * @see org.extex.core.glue.FixedGlue#getLength()
      */
     public FixedDimen getLength() {
@@ -202,12 +209,12 @@ public class Glue implements Serializable, FixedGlue {
     }
 
     /**
-     * Getter for shrink.
-     * Note that the value returned is independent from the original object.
-     * Changing its value does not affect the shrink of the glue.
-     *
+     * Getter for shrink. Note that the value returned is independent from the
+     * original object. Changing its value does not affect the shrink of the
+     * glue.
+     * 
      * @return the shrink.
-     *
+     * 
      * @see org.extex.core.glue.FixedGlue#getShrink()
      */
     public FixedGlueComponent getShrink() {
@@ -216,12 +223,12 @@ public class Glue implements Serializable, FixedGlue {
     }
 
     /**
-     * Getter for stretch.
-     * Note that the value returned is independent from the original object.
-     * Changing its value does not affect the stretch of the glue.
-     *
+     * Getter for stretch. Note that the value returned is independent from the
+     * original object. Changing its value does not affect the stretch of the
+     * glue.
+     * 
      * @return the stretch.
-     *
+     * 
      * @see org.extex.core.glue.FixedGlue#getStretch()
      */
     public FixedGlueComponent getStretch() {
@@ -232,11 +239,11 @@ public class Glue implements Serializable, FixedGlue {
     /**
      * Compare this value with a given glue and return <code>true</code> iff
      * the current length is greater than the given length.
-     *
+     * 
      * @param x the value to compare to
-     *
+     * 
      * @return <code>true</code> iff the current length is greater than the
-     *  given one
+     *         given one
      */
     public boolean gt(FixedGlueComponent x) {
 
@@ -246,11 +253,11 @@ public class Glue implements Serializable, FixedGlue {
     /**
      * Compare this value with a given glue and return <code>true</code> iff
      * the current length is less or equal than the given length.
-     *
+     * 
      * @param x the value to compare to
-     *
-     * @return <code>true</code> iff the current length is less or equal
-     *  than the given one
+     * 
+     * @return <code>true</code> iff the current length is less or equal than
+     *         the given one
      */
     public boolean le(FixedGlueComponent x) {
 
@@ -260,11 +267,11 @@ public class Glue implements Serializable, FixedGlue {
     /**
      * Compare this value with a given glue and return <code>true</code> iff
      * the current length is less than the given length.
-     *
+     * 
      * @param x the value to compare to
-     *
-     * @return <code>true</code> iff the current length is less than the
-     *  given one
+     * 
+     * @return <code>true</code> iff the current length is less than the given
+     *         one
      */
     public boolean lt(FixedGlueComponent x) {
 
@@ -274,9 +281,9 @@ public class Glue implements Serializable, FixedGlue {
     /**
      * Multiply the normal size by an integer fraction.
      * <p>
-     *  <i>length</i> = <i>length</i> * <i>nom</i> / <i>denom</i>
+     * <i>length</i> = <i>length</i> * <i>nom</i> / <i>denom</i>
      * </p>
-     *
+     * 
      * @param nom nominator
      * @param denom denominator
      */
@@ -287,7 +294,7 @@ public class Glue implements Serializable, FixedGlue {
 
     /**
      * Multiply all components by an integer fraction.
-     *
+     * 
      * @param nom nominator
      * @param denom denominator
      */
@@ -301,9 +308,9 @@ public class Glue implements Serializable, FixedGlue {
     /**
      * Multiply the shrink component by an integer fraction.
      * <p>
-     *  <i>shrink</i> = <i>shrink</i> * <i>nom</i> / <i>denom</i>
+     * <i>shrink</i> = <i>shrink</i> * <i>nom</i> / <i>denom</i>
      * </p>
-     *
+     * 
      * @param nom nominator
      * @param denom denominator
      */
@@ -315,9 +322,9 @@ public class Glue implements Serializable, FixedGlue {
     /**
      * Multiply the stretch component by an integer fraction.
      * <p>
-     *  <i>stretch</i> = <i>stretch</i> * <i>nom</i> / <i>denom</i>
+     * <i>stretch</i> = <i>stretch</i> * <i>nom</i> / <i>denom</i>
      * </p>
-     *
+     * 
      * @param nom nominator
      * @param denom denominator
      */
@@ -328,8 +335,8 @@ public class Glue implements Serializable, FixedGlue {
 
     /**
      * {@inheritDoc}
-     * @see org.extex.core.glue.FixedGlue#ne(
-     *      org.extex.core.glue.FixedGlue)
+     * 
+     * @see org.extex.core.glue.FixedGlue#ne( org.extex.core.glue.FixedGlue)
      */
     public boolean ne(FixedGlue glue) {
 
@@ -339,7 +346,7 @@ public class Glue implements Serializable, FixedGlue {
 
     /**
      * Negate the value. This is the same as multiplying with -1.
-     *
+     * 
      */
     public void negateLength() {
 
@@ -348,7 +355,7 @@ public class Glue implements Serializable, FixedGlue {
 
     /**
      * Set the glue value to a non-stretchable and non-shrinkable length.
-     *
+     * 
      * @param theLength the new length
      */
     public void set(FixedDimen theLength) {
@@ -360,7 +367,7 @@ public class Glue implements Serializable, FixedGlue {
 
     /**
      * Set the glue value.
-     *
+     * 
      * @param theLength the new length
      */
     public void set(FixedGlue theLength) {
@@ -372,7 +379,7 @@ public class Glue implements Serializable, FixedGlue {
 
     /**
      * Setter for the length component
-     *
+     * 
      * @param x the new length component
      */
     public void setLength(FixedDimen x) {
@@ -382,7 +389,7 @@ public class Glue implements Serializable, FixedGlue {
 
     /**
      * Setter for the shrink component
-     *
+     * 
      * @param x the new shrink component
      */
     public void setShrink(FixedDimen x) {
@@ -392,7 +399,7 @@ public class Glue implements Serializable, FixedGlue {
 
     /**
      * Setter for the stretch component
-     *
+     * 
      * @param x the new stretch component
      */
     public void setStretch(FixedDimen x) {
@@ -401,9 +408,9 @@ public class Glue implements Serializable, FixedGlue {
     }
 
     /**
-     * Subtract another glue to this one.
-     * The subtraction is performed independently on the components.
-     *
+     * Subtract another glue to this one. The subtraction is performed
+     * independently on the components.
+     * 
      * @param g the glue to add
      */
     public void subtract(FixedGlue g) {
@@ -414,9 +421,9 @@ public class Glue implements Serializable, FixedGlue {
     }
 
     /**
-     * Subtract a Glue component from this glue.
-     * The subtraction is performed on the length only.
-     *
+     * Subtract a Glue component from this glue. The subtraction is performed on
+     * the length only.
+     * 
      * @param g the glue to subtract
      */
     public void subtract(FixedGlueComponent g) {
@@ -425,10 +432,10 @@ public class Glue implements Serializable, FixedGlue {
     }
 
     /**
-     * Determine the printable representation of the object.
-     * The value returned is exactly the string which would be produced by
-     * <logo>TeX</logo> to print the skip register.
-     *
+     * Determine the printable representation of the object. The value returned
+     * is exactly the string which would be produced by <logo>TeX</logo> to
+     * print the skip register.
+     * 
      * @return the string representation of this glue
      * @see "<logo>TeX</logo> &ndash; The Program [178,177]"
      */

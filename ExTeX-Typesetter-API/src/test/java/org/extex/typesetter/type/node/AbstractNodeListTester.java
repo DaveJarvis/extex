@@ -42,7 +42,7 @@ import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a base class for node list test suites.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5563 $
@@ -414,17 +414,8 @@ public abstract class AbstractNodeListTester extends TestCase {
 
         NodeList list = makeList();
         NodeVisitor<Node, Boolean> v = makeVisitor();
-        if (v != null) {
-            list.atShipping(null, null, null, null);
-            assertEquals(0, list.size());
-        } else {
-            try {
-                list.atShipping(null, null, null, null);
-                assertFalse(true);
-            } catch (ImpossibleException e) {
-                assertTrue(true);
-            }
-        }
+        list.atShipping(null, null, null, null);
+        assertEquals(0, list.size());
     }
 
     /**
@@ -437,17 +428,8 @@ public abstract class AbstractNodeListTester extends TestCase {
 
         NodeList list = makeList(new PenaltyNode(123));
         NodeVisitor<Node, Boolean> v = makeVisitor();
-        if (v != null) {
-            list.atShipping(null, null, null, null);
-            assertEquals(0, list.size());
-        } else {
-            // try {
-            // list.atShipping(null, null, v, true);
-            // assertFalse(true);
-            // } catch (ImpossibleException e) {
-            // assertTrue(true);
-            // }
-        }
+        list.atShipping(null, null, null, null);
+        assertEquals(1, list.size());
     }
 
     /**
@@ -705,11 +687,15 @@ public abstract class AbstractNodeListTester extends TestCase {
 
         NodeList list = makeList();
         NodeVisitor<Node, Boolean> nv = makeVisitor();
-        try {
-            list.visit(nv, Long.valueOf(1));
-            assertFalse(true);
-        } catch (ImpossibleException e) {
-            assertTrue(true);
+        if (nv != null) {
+            list.visit(nv, Boolean.TRUE);
+        } else {
+            try {
+                list.visit(nv, Boolean.TRUE);
+                assertFalse(true);
+            } catch (ImpossibleException e) {
+                assertTrue(true);
+            }
         }
     }
 

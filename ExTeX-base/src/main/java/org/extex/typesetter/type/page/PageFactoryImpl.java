@@ -285,7 +285,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
 
         visitor.reset(page, context, typesetter);
 
-        if (nodes.atShipping(context, typesetter, null, null) == null) {
+        if (nodes.visit(visitor, Boolean.FALSE) == null) {
             return null;
         }
         return page;

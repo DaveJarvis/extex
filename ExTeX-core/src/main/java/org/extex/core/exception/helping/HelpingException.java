@@ -109,7 +109,7 @@ public class HelpingException extends GeneralException {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>arg1</tt> contains the first argument.
@@ -163,7 +163,7 @@ public class HelpingException extends GeneralException {
      */
     public HelpingException(Localizer theLocalizer, String messageTag) {
 
-        super();
+        super("");
         this.tag = messageTag;
         this.localizer = theLocalizer;
         this.arg1 = DEFAULT_ARGUMENT;
@@ -180,7 +180,7 @@ public class HelpingException extends GeneralException {
      */
     public HelpingException(Localizer theLocalizer, String messageTag, String a1) {
 
-        super();
+        super("");
         this.tag = messageTag;
         this.localizer = theLocalizer;
         this.arg1 = a1;
@@ -199,7 +199,7 @@ public class HelpingException extends GeneralException {
     public HelpingException(Localizer theLocalizer, String messageTag,
             String a1, String a2) {
 
-        super();
+        super("");
         this.tag = messageTag;
         this.localizer = theLocalizer;
         this.arg1 = a1;
@@ -219,7 +219,7 @@ public class HelpingException extends GeneralException {
     public HelpingException(Localizer theLocalizer, String messageTag,
             String a1, String a2, String a3) {
 
-        super();
+        super("");
         this.tag = messageTag;
         this.localizer = theLocalizer;
         this.arg1 = a1;

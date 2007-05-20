@@ -52,8 +52,12 @@ import org.extex.scanner.type.token.Token;
 public final class TestTeX {
 
     /**
+     * The field <tt>DATA_DIR</tt> contains the locatio  of the data directory.
+     */
+    private static final String DATA_DIR = "/src/test/resources/data/";
+
+    /**
      * TODO missing JavaDoc.
-     * 
      */
     private static class AssertFailErrorHandler implements ErrorHandler {
 
@@ -69,6 +73,7 @@ public final class TestTeX {
         public boolean handleError(GeneralException e, Token token,
                 TokenSource source, Context context) throws HelpingException {
 
+            e.printStackTrace();
             Assert.fail("error in tex document");
             return false; // not reached
         }
@@ -104,13 +109,14 @@ public final class TestTeX {
      * 
      * @param texfile the tex file
      * @param outfile the output test file
-     * @param project ...
+     * @param project the name of the project
+     * @param units the additional units (colon separated)
      * 
      * @exception Exception iff an error occurs; iff the two files are not
      *            equals AssertionFailedError
      */
-    public static void testRun(String texfile, String outfile, String project)
-            throws Exception {
+    public static void testRun(String texfile, String outfile, String project,
+            String units) throws Exception {
 
         // run ExTeX
         ByteArrayOutputStream output = new ByteArrayOutputStream();
@@ -120,9 +126,12 @@ public final class TestTeX {
         pro.setProperty("extex.output", "test-plain"); // gene
         pro.setProperty("extex.config", "tex.xml"); // gene
         pro.setProperty("extex.texinputs", //
-            "../" + project + "src/test/data"); // gene
+            "../" + project + "/src/test/resources/data"); // gene
         pro.setProperty("extex.file", texfile);
         pro.setProperty("extex.jobname", texfile);
+        if (units != null) {
+            pro.setProperty("extex.units", units); // gene
+        }
         // BATCHMODE
         // TODO: handle errors??? (TE)
         pro.setProperty("extex.interaction", "0");
@@ -160,32 +169,31 @@ public final class TestTeX {
     }
 
     /**
-     * TODO missing JavaDoc
+     * Perform the test.
      * 
-     * @param basename ...
+     * @param basename the name of the test
+     * @param project the name of the project
      * 
-     * @throws Exception ...
-     */
-    public static void test(String basename) throws Exception {
-
-        throw new RuntimeException("died");
-        // testRun(basename, "develop/test/data/" + basename + ".testtxt");
-    }
-
-    /**
-     * TODO missing JavaDoc.
-     * 
-     * @param basename ...
-     * @param project ...
-     * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     public static void test(String basename, String project) throws Exception {
 
-        testRun(
-            basename, //
-            "../" + project + "/src/test/data/" + basename + ".testtxt",
-            project);
+        test(basename, project, null);
+    }
+
+    /**
+     * Perform the test.
+     * 
+     * @param basename the name of the test
+     * @param project the name of the project
+     * 
+     * @throws Exception in case of an error
+     */
+    public static void test(String basename, String project, String units)
+            throws Exception {
+
+        testRun(basename, "../" + project + DATA_DIR + basename + ".testtxt",
+            project, units);
     }
 
     /**

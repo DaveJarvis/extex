@@ -42,12 +42,12 @@ public class IfdefinedTest extends TestCase {
     /**
      * Test the primitive \ifdefined.
      *
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     public void testIfdefined()
         throws Exception {
 
-        TestTeX.test("juifdefined", "ExTeX-Unit-etex");
+        TestTeX.test("juifdefined", "ExTeX-Unit-etex", "etex");
     }
 
 }

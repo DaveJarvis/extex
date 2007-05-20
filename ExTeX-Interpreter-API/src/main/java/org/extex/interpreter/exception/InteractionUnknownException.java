@@ -35,7 +35,7 @@ public class InteractionUnknownException extends HelpingException {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -45,7 +45,7 @@ public class InteractionUnknownException extends HelpingException {
     public InteractionUnknownException(String message) {
 
         super(LocalizerFactory.getLocalizer(InteractionUnknownException.class),
-            "InteractionUnknownException.Message");
+            "InteractionUnknownException.Message", message);
     }
 
 }

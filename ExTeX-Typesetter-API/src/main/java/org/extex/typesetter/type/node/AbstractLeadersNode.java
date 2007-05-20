@@ -59,9 +59,11 @@ public abstract class AbstractLeadersNode extends AbstractExpandableNode
      */
     public AbstractLeadersNode(OrientedNode node, FixedGlue glue) {
 
-        super(glue, node.isHorizontal());
+        super(glue, node != null && node.isHorizontal());
         this.node = node;
-        if (node.isHorizontal()) {
+        if (node == null) {
+            // ignore
+        } else if (node.isHorizontal()) {
             setHeight(node.getHeight());
             setDepth(node.getDepth());
         } else {
