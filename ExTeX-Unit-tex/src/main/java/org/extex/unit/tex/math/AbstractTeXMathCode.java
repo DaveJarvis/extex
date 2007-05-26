@@ -241,7 +241,7 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
         }
 
         source.push(t);
-        long code = source.parseNumber(context, source, typesetter);
+        long code = source.parseInteger(context, source, typesetter);
 
         if (code < 0 || code > SPECIAL_MATH_CODE) {
             throw new HelpingException(LocalizerFactory
