@@ -693,27 +693,8 @@ public abstract class Max
 
                 token.visit(this, null);
 
-            } catch (HelpingException e) {
-                Throwable x = e;
-                while (x.getCause() instanceof HelpingException) {
-                    x = e.getCause();
-                }
-
-                handleException(token, context, (HelpingException) x,
-                    typesetter);
-                e.setProcessed(true);
-
-            } catch (RuntimeException e) {
-                if (observersError != null) {
-                    observersError.update(e);
-                }
-                throw e;
-
             } catch (Exception e) {
-                if (observersError != null) {
-                    observersError.update(e);
-                }
-                throw new NoHelpException(e);
+                handleException(token, context, e, typesetter);
             }
 
             if (!onceMore.isOn()) {
@@ -736,22 +717,8 @@ public abstract class Max
 
             token.visit(this, null);
 
-        } catch (HelpingException e) {
-
-            handleException(token, theContext, e, theTypesetter);
-            e.setProcessed(true);
-
-        } catch (RuntimeException e) {
-            if (observersError != null) {
-                observersError.update(e);
-            }
-            throw e;
-
         } catch (Exception e) {
-            if (observersError != null) {
-                observersError.update(e);
-            }
-            throw new NoHelpException(e);
+            handleException(token, theContext, e, theTypesetter);
         }
     }
 
@@ -963,25 +930,52 @@ public abstract class Max
      *         ErrorLimitException in case that the error limit has been
      *         exceeded.
      */
-    private void handleException(Token token, Context cx, HelpingException e,
+    private void handleException(Token token, Context cx, Exception e,
             Typesetter ts) throws HelpingException {
-
-        if (e.isProcessed()) {
-            return;
-        }
-        e.setProcessed(true);
 
         if (observersError != null) {
             observersError.update(e);
         }
 
+        if (e instanceof RuntimeException) {
+            throw (RuntimeException) e;
+        } else if (!(e instanceof GeneralException)) {
+            throw new NoHelpException(e);
+        }
+
+        GeneralException t;
+        Throwable cause = e;
+
+        do {
+            t = (GeneralException) cause;
+
+            if (t.isProcessed()) {
+                throw (e instanceof HelpingException
+                        ? (HelpingException) e
+                        : new NoHelpException(e));
+            }
+            t.setProcessed(true);
+            cause = t.getCause();
+        } while (cause instanceof GeneralException);
+
+        if (observersError != null) {
+            observersError.update(t);
+        }
+
         if (cx.incrementErrorCount() > maxErrors.getValue()) { // cf. TTP[82]
             throw new ErrorLimitException(maxErrors.getValue());
         } else if (errorHandler != null && //
-                errorHandler.handleError(e, token, this, cx)) {
+                errorHandler.handleError(t, token, this, cx)) {
             return;
         }
-        throw e;
+
+        if (t instanceof InterpreterException) {
+            ((InterpreterException) t).setProcessed(true);
+        }
+
+        throw (e instanceof HelpingException
+                ? (HelpingException) e
+                : new NoHelpException(e));
     }
 
     /**
@@ -1400,11 +1394,7 @@ public abstract class Max
 
         execute(new Switch(true));
 
-        try {
-            typesetter.finish();
-        } catch (TypesetterException e) {
-            throw new NoHelpException(e);
-        }
+        typesetter.finish();
 
         // TTP [1335]
         long groupLevel = context.getGroupLevel();
@@ -1423,16 +1413,10 @@ public abstract class Max
         if (cond != null) {
             Localizer loc = getLocalizer();
             String endPrimitive = loc.format("TTP.EndPrimitive");
-            String message =
-                    loc.format("TTP.EndIf", context.esc(endPrimitive), context
-                        .esc(cond.getPrimitiveName()), cond.getLocator()
-                        .toString());
-            logger.warning(message);
-            HelpingException e =
-                    new HelpingException(loc, "TTP.EndIf", context
-                        .esc(endPrimitive), context
-                        .esc(cond.getPrimitiveName()), cond.getLocator()
-                        .toString());
+            HelpingException e = new HelpingException(loc, "TTP.EndIf", //
+                context.esc(endPrimitive), //
+                context.esc(cond.getPrimitiveName()), //
+                cond.getLocator().toString());
             if (observersError != null) {
                 observersError.update(e);
             }

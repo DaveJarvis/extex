@@ -818,15 +818,16 @@ public class ExTeX {
      */
     protected void applyInteraction() throws InteractionUnknownException {
 
+        String interaction = properties.getProperty(PROP_INTERACTION);
         try {
             interactionObserver.receiveInteractionChange(null, Interaction
-                .get(properties.getProperty(PROP_INTERACTION)));
+                .get(interaction));
         } catch (InteractionUnknownException e) {
             throw e;
         } catch (RuntimeException e) {
             throw e;
         } catch (Exception e) {
-            throw new InteractionUnknownException("");
+            throw new InteractionUnknownException(interaction);
         }
     }
 
@@ -1141,6 +1142,45 @@ public class ExTeX {
         }
 
         logException(logger, localizer.format("ExTeX.InternalError", msg), e);
+    }
+
+    /**
+     * Remap an exception into an InterpreterException.
+     * 
+     * @param t the throwable to be remapped
+     * 
+     * @return an appropriate exception
+     */
+    protected InterpreterException logError(Throwable t) {
+
+        Throwable e = t;
+        Throwable cause = e.getCause();
+
+        while (cause instanceof GeneralException) {
+
+            e = cause;
+            cause = e.getCause();
+        }
+
+        if (e instanceof HelpingException) {
+            HelpingException he = (HelpingException) e;
+            if (!he.isProcessed()) {
+                he.setProcessed(true);
+                logger.severe("\n" + he.getLocalizedMessage() + "\n");
+            }
+            InterpreterException ie = new InterpreterException(he);
+            ie.setProcessed(true);
+            return ie;
+        } else if (e instanceof InterpreterException) {
+            InterpreterException ie = (InterpreterException) e;
+            if (!ie.isProcessed()) {
+                ie.setProcessed(true);
+                logger.severe("\n" + e.getLocalizedMessage() + "\n");
+            }
+
+            return ie;
+        }
+        return new InterpreterException(e);
     }
 
     /**
@@ -1586,11 +1626,11 @@ public class ExTeX {
         }
         try {
             Dimen width =
-                    ConstantDimenParser.scan(context, new StringSource(w),
-                        null);
+                    ConstantDimenParser
+                        .scan(context, new StringSource(w), null);
             Dimen height =
-                    ConstantDimenParser.scan(context, new StringSource(h),
-                        null);
+                    ConstantDimenParser
+                        .scan(context, new StringSource(h), null);
 
             context.setDimen("mediawidth", width, true);
             context.setDimen("mediaheight", height, true);
@@ -1787,30 +1827,6 @@ public class ExTeX {
 
             return interpreter;
 
-        } catch (InterpreterException e) {
-
-            while (!e.isProcessed()
-                    && e.getCause() instanceof InterpreterException) {
-                e = (InterpreterException) e.getCause();
-            }
-
-            if (!e.isProcessed()) {
-                e.setProcessed(true);
-                logger.severe("\n" + e.getLocalizedMessage() + "\n");
-            }
-            throw e;
-        } catch (HelpingException e) {
-
-            while (!e.isProcessed()
-                    && e.getCause() instanceof InterpreterException) {
-                e = (HelpingException) e.getCause();
-            }
-
-            if (!e.isProcessed()) {
-                e.setProcessed(true);
-                logger.severe("\n" + e.getLocalizedMessage() + "\n");
-            }
-            throw new InterpreterException(e);
         } catch (ConfigurationException e) {
             logger.throwing(this.getClass().getName(), "run", e);
             throw e;
@@ -1820,6 +1836,8 @@ public class ExTeX {
         } catch (IOException e) {
             logger.throwing(this.getClass().getName(), "run", e);
             throw e;
+        } catch (Exception e) {
+            throw logError(e);
         } catch (Throwable e) {
             logInternalError(e);
             if (getBooleanProperty(PROP_INTERNAL_STACKTRACE)) {
