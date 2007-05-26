@@ -17,14 +17,13 @@
  *
  */
 
-package org.extex.unit.tex.typesetter;
+package org.extex.unit.tex.typesetter.parameter;
 
-import org.extex.core.UnicodeChar;
-import org.extex.core.count.Count;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.exception.helping.CantUseInException;
 import org.extex.core.exception.helping.HelpingException;
-import org.extex.core.exception.helping.InvalidCodeException;
 import org.extex.core.exception.helping.NoHelpException;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -36,12 +35,14 @@ import org.extex.scanner.exception.CatcodeException;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.typesetter.exception.TypesetterUnsupportedException;
 
 /**
- * This class provides an implementation for the primitive <code>\sfcode</code>.
+ * This class provides an implementation for the primitive
+ * <code>\prevdepth</code>.
  * 
- * <doc name="sfcode">
- * <h3>The Primitive <tt>\sfcode</tt></h3>
+ * <doc name="prevdepth">
+ * <h3>The Primitive <tt>\prevdepth</tt></h3>
  * <p>
  * TODO missing documentation
  * </p>
@@ -50,43 +51,53 @@ import org.extex.typesetter.exception.TypesetterException;
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
- *    &lang;sfcode&rang;
- *      &rarr; <tt>\sfcode ...</tt>  </pre>
+ *    &lang;prevdepth&rang;
+ *      &rarr; <tt>\prevdepth</tt> {@linkplain
+ *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
+ *        &lang;equals&rang;} &lang;dimen value&rang;  </pre>
  * 
  * <h4>Examples</h4>
  * 
  * <pre class="TeXSample">
- *    \sfcode ...  </pre>
+ *    \prevdepth=123pt  </pre>
+ *  <pre class="TeXSample">
+ *    \dimen0=\prevdepth  </pre>
  * 
  * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
+ * @version $Revision: 4770 $
  */
-public class Sfcode extends AbstractAssignment implements
-// ExpandableCode,
+public class Prevdepth extends AbstractAssignment
+        implements
             CountConvertible,
             DimenConvertible,
             Theable {
 
     /**
-     * The field <tt>MAX_SF_CODE</tt> contains the maximal value for a space
-     * factor code.
+     * The field <tt>IGNORE</tt> contains the numerical value which represents
+     * the ignored value. This will be mapped to null.
      */
-    private static final int MAX_SF_CODE = 32767;
+    private static final long IGNORE = -65536000;
+
+    /**
+     * The field <tt>IGNORE_DIMEN</tt> contains the value which represents the
+     * ignored value. This will be mapped to null.
+     */
+    private static final Dimen IGNORE_DIMEN = new Dimen(IGNORE);
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
      * @param name the name for debugging
      */
-    public Sfcode(String name) {
+    public Prevdepth(String name) {
 
         super(name);
     }
@@ -102,17 +113,17 @@ public class Sfcode extends AbstractAssignment implements
     public void assign(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        UnicodeChar charCode =
-                source.scanCharacterCode(context, typesetter, getName());
         source.getOptionalEquals(context);
-        long sfCode = source.parseNumber(context, source, typesetter);
-
-        if (sfCode < 0 || sfCode > MAX_SF_CODE) {
-            throw new InvalidCodeException(Long.toString(sfCode), //
-                Integer.toString(MAX_SF_CODE));
+        Dimen pd = source.parseDimen(context, source, typesetter);
+        if (pd.getValue() < IGNORE) {
+            pd = null;
         }
-
-        context.setSfcode(charCode, new Count(sfCode), prefix.clearGlobal());
+        try {
+            typesetter.setPrevDepth(pd);
+        } catch (TypesetterUnsupportedException e) {
+            throw new CantUseInException(printableControlSequence(context),
+                typesetter.getMode().toString());
+        }
     }
 
     /**
@@ -125,9 +136,15 @@ public class Sfcode extends AbstractAssignment implements
     public long convertCount(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        UnicodeChar ucCode =
-                source.scanCharacterCode(context, typesetter, getName());
-        return context.getSfcode(ucCode).getValue();
+        FixedDimen prevDepth;
+        try {
+            prevDepth = typesetter.getListMaker().getPrevDepth();
+        } catch (TypesetterUnsupportedException e) {
+            throw new HelpingException(getLocalizer(), "TTP.ImproperSForPD",
+                printableControlSequence(context));
+        }
+
+        return prevDepth != null ? prevDepth.getValue() : IGNORE;
     }
 
     /**
@@ -139,58 +156,44 @@ public class Sfcode extends AbstractAssignment implements
     public long convertDimen(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        return convertCount(context, source, typesetter);
+        FixedDimen prevDepth;
+        try {
+            prevDepth = typesetter.getListMaker().getPrevDepth();
+        } catch (TypesetterUnsupportedException e) {
+            throw new HelpingException(getLocalizer(), "TTP.ImproperSForPD",
+                printableControlSequence(context));
+        }
+
+        return prevDepth != null ? prevDepth.getValue() : IGNORE;
     }
 
     /**
-     * This method takes the first token and expands it. The result is placed on
-     * the stack. This means that expandable code does one step of expansion and
-     * puts the result on the stack. To expand a token it might be necessary to
-     * consume further tokens.
+     * {@inheritDoc}
      * 
-     * @param prefix the prefix flags controlling the expansion
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     * 
-     * @throws ConfigurationException in case of an configuration error
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
+            throws HelpingException,
+                TypesetterException {
+
+        FixedDimen prevDepth;
+        try {
+            prevDepth = typesetter.getListMaker().getPrevDepth();
+        } catch (TypesetterUnsupportedException e) {
+            throw new HelpingException(getLocalizer(), "TTP.ImproperSForPD",
+                printableControlSequence(context));
+        }
+
+        if (prevDepth == null) {
+            prevDepth = IGNORE_DIMEN;
+        }
 
         try {
-            source.push(the(context, source, typesetter));
+            return context.getTokenFactory().toTokens(prevDepth.toString());
         } catch (CatcodeException e) {
             throw new NoHelpException(e);
         }
-    }
-
-    /**
-     * This method is the getter for the description of the primitive.
-     * 
-     * @param context the interpreter context
-     * @param source the source for further tokens to qualify the request
-     * @param typesetter the typesetter to use
-     * 
-     * @return the description of the primitive as list of Tokens
-     * @throws CatcodeException in case of an error in token creation
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, Typesetter)
-     */
-    public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws CatcodeException,
-                HelpingException,
-                TypesetterException {
-
-        return context.getTokenFactory().toTokens( //
-            convertCount(context, source, typesetter));
     }
 
 }

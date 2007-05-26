@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.unit.tex.typesetter;
+package org.extex.unit.tex.typesetter.parameter;
 
 import org.extex.core.count.Count;
 import org.extex.core.exception.helping.CantUseInException;

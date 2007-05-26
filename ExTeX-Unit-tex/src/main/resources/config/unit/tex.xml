@@ -494,7 +494,7 @@
     <define name="pretolerance"
             class="org.extex.unit.tex.register.count.IntegerParameter"/>
     <define name="prevdepth"
-            class="org.extex.unit.tex.typesetter.Prevdepth"/>
+            class="org.extex.unit.tex.typesetter.parameter.Prevdepth"/>
     <define name="prevgraf"
             class="org.extex.unit.tex.register.count.Prevgraf"/>
     <define name="radical"
@@ -532,7 +532,7 @@
     <define name="setlanguage"
             class="org.extex.unit.tex.typesetter.Setlanguage"/>
     <define name="sfcode"
-            class="org.extex.unit.tex.typesetter.Sfcode"/>
+            class="org.extex.unit.tex.typesetter.parameter.Sfcode"/>
     <define name="shipout"
             class="org.extex.unit.tex.typesetter.output.Shipout"/>
     <define name="show"
@@ -554,7 +554,7 @@
     <define name="skipdef"
             class="org.extex.unit.tex.register.skip.Skipdef"/>
     <define name="spacefactor"
-            class="org.extex.unit.tex.typesetter.Spacefactor"/>
+            class="org.extex.unit.tex.typesetter.parameter.Spacefactor"/>
     <define name="spaceskip"
             class="org.extex.unit.tex.register.skip.SkipParameter"/>
     <define name="span"
