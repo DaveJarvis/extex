@@ -19,19 +19,17 @@
 
 package org.extex.unit.tex.conditional;
 
-import org.extex.test.ExTeXLauncher;
-
 /**
  * This is a test suite for the primitive <tt>\ifodd</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
-public class IfoddTest extends ExTeXLauncher {
+public class IfoddTest extends ConditionalTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
@@ -41,108 +39,99 @@ public class IfoddTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public IfoddTest(String arg) {
 
-        super(arg);
+        super(arg, "ifodd", "3");
     }
 
     /**
-     * <testcase primitive="\ifodd">
-     *  Test case checking that <tt>\ifodd</tt> with a constant 1
-     *  selects the then branch.
-     * </testcase>
-     *
+     * <testcase primitive="\ifodd"> Test case checking that <tt>\ifodd</tt>
+     * with a constant 1 selects the then branch. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\ifodd 1 a\\else b\\fi\\end",
-                //--- output channel ---
-                "a" + TERM);
+        assertSuccess(// --- input code ---
+            "\\ifodd 1 a\\else b\\fi\\end",
+            // --- output channel ---
+            "a" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifodd">
-     *  Test case checking that <tt>\ifodd</tt> with a constant 1
-     *  selects nothing if the else branch is missing.
+     * <testcase primitive="\ifodd"> Test case checking that <tt>\ifodd</tt>
+     * with a constant 1 selects nothing if the else branch is missing.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "x\\ifodd 1 a\\fi x\\end",
-                //--- output channel ---
-                "xax" + TERM);
+        assertSuccess(// --- input code ---
+            "x\\ifodd 1 a\\fi x\\end",
+            // --- output channel ---
+            "xax" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifodd">
-     *  Test case checking that <tt>\ifodd</tt> with a constant -1
-     *  selects the then branch.
-     * </testcase>
-     *
+     * <testcase primitive="\ifodd"> Test case checking that <tt>\ifodd</tt>
+     * with a constant -1 selects the then branch. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test3() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\ifodd -1 a\\else b\\fi\\end",
-                //--- output channel ---
-                "a" + TERM);
+        assertSuccess(// --- input code ---
+            "\\ifodd -1 a\\else b\\fi\\end",
+            // --- output channel ---
+            "a" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifodd">
-     *  Test case checking that <tt>\ifodd</tt> with a constant 1
-     *  selects nothing if the else branch is missing.
+     * <testcase primitive="\ifodd"> Test case checking that <tt>\ifodd</tt>
+     * with a constant 1 selects nothing if the else branch is missing.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test4() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "x\\ifodd -1 a\\fi x\\end",
-                //--- output channel ---
-                "xax" + TERM);
+        assertSuccess(// --- input code ---
+            "x\\ifodd -1 a\\fi x\\end",
+            // --- output channel ---
+            "xax" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifodd">
-     *  Test case checking that <tt>\ifodd</tt> with a constant 0
-     *  selects the else branch.
-     * </testcase>
-     *
+     * <testcase primitive="\ifodd"> Test case checking that <tt>\ifodd</tt>
+     * with a constant 0 selects the else branch. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test5() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\ifodd 0 a\\else b\\fi\\end",
-                //--- output channel ---
-                "b" + TERM);
+        assertSuccess(// --- input code ---
+            "\\ifodd 0 a\\else b\\fi\\end",
+            // --- output channel ---
+            "b" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifodd">
-     *  Test case checking that <tt>\ifodd</tt> with a constant 0
-     *  selects nothing if the else branch is missing.
+     * <testcase primitive="\ifodd"> Test case checking that <tt>\ifodd</tt>
+     * with a constant 0 selects nothing if the else branch is missing.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test6() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "x\\ifodd 0 a\\fi x\\end",
-                //--- output channel ---
-                "xx" + TERM);
+        assertSuccess(// --- input code ---
+            "x\\ifodd 0 a\\fi x\\end",
+            // --- output channel ---
+            "xx" + TERM);
     }
 
 }

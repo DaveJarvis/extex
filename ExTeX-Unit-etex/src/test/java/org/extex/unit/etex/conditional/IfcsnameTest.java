@@ -19,19 +19,19 @@
 
 package org.extex.unit.etex.conditional;
 
-import org.extex.test.ExTeXLauncher;
+import org.extex.unit.tex.conditional.ConditionalTester;
 
 /**
  * This is a test suite for the primitive <tt>\ifcsname</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
-public class IfcsnameTest extends ExTeXLauncher {
+public class IfcsnameTest extends ConditionalTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
@@ -41,60 +41,57 @@ public class IfcsnameTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public IfcsnameTest(String arg) {
 
-        super(arg);
+        super(arg, "ifcsname", " relax\\endcsname");
         setConfig("etex-test");
     }
 
     /**
-     * <testcase primitive="\ifcsname">
-     *  Test case checking that <tt>\ifcsname</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\ifcsname"> Test case checking that
+     * <tt>\ifcsname</tt> ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testError1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\ifcsname ",
-                //--- output channel ---
-                "Unexpected end of file");
+        assertFailure(// --- input code ---
+            "\\ifcsname ",
+            // --- output channel ---
+            "Unexpected end of file");
     }
 
     /**
-     * <testcase primitive="\ifcsname">
-     *  Test case checking that <tt>\ifcsname</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\ifcsname"> Test case checking that
+     * <tt>\ifcsname</tt> ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\ifcsname relax\\endcsname a\\else b\\fi \\end",
-                //--- output channel ---
-                "a" + TERM);
+        assertSuccess(// --- input code ---
+            "\\ifcsname relax\\endcsname a\\else b\\fi \\end",
+            // --- output channel ---
+            "a" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifcsname">
-     *  Test case checking that <tt>\ifcsname</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\ifcsname"> Test case checking that
+     * <tt>\ifcsname</tt> ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testLetter2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\ifcsname abc\\endcsname a\\else b\\fi \\end",
-                //--- output channel ---
-                "b" + TERM);
+        assertSuccess(// --- input code ---
+            "\\ifcsname abc\\endcsname a\\else b\\fi \\end",
+            // --- output channel ---
+            "b" + TERM);
     }
 
-    //TODO implement the primitive specific test cases
+    // TODO implement the primitive specific test cases
 
 }

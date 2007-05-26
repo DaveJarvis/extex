@@ -19,19 +19,17 @@
 
 package org.extex.unit.tex.conditional;
 
-import org.extex.test.ExTeXLauncher;
-
 /**
  * This is a test suite for the primitive <tt>\iffalse</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
-public class IffalseTest extends ExTeXLauncher {
+public class IffalseTest extends ConditionalTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
@@ -41,58 +39,54 @@ public class IffalseTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public IffalseTest(String arg) {
 
-        super(arg);
+        super(arg, "iffalse", "\\else");
     }
 
     /**
-     * <testcase primitive="\iffalse">
-     *  Test case checking that <tt>\iffalse</tt> selects the else branch.
-     * </testcase>
-     *
+     * <testcase primitive="\iffalse"> Test case checking that <tt>\iffalse</tt>
+     * selects the else branch. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\iffalse a\\else b\\fi\\end",
-                //--- output channel ---
-                "b" + TERM);
+        assertSuccess(// --- input code ---
+            "\\iffalse a\\else b\\fi\\end",
+            // --- output channel ---
+            "b" + TERM);
     }
 
     /**
-     * <testcase primitive="\iffalse">
-     *  Test case checking that <tt>\iffalse</tt> selects nothing if the else
-     *  branch is missing.
-     * </testcase>
-     *
+     * <testcase primitive="\iffalse"> Test case checking that <tt>\iffalse</tt>
+     * selects nothing if the else branch is missing. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "x\\iffalse a\\fi x\\end",
-                //--- output channel ---
-                "xx" + TERM);
+        assertSuccess(// --- input code ---
+            "x\\iffalse a\\fi x\\end",
+            // --- output channel ---
+            "xx" + TERM);
     }
 
     /**
-     * <testcase primitive="\iffalse">
-     *  Test case checking that <tt>\iffalse</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\iffalse"> Test case checking that <tt>\iffalse</tt>
+     * ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test3() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "x\\iffalse \\iffalse \\iffalse a\\fi\\fi\\fi x\\end",
-                //--- output channel ---
-                "xx" + TERM);
+        assertSuccess(// --- input code ---
+            "x\\iffalse \\iffalse \\iffalse a\\fi\\fi\\fi x\\end",
+            // --- output channel ---
+            "xx" + TERM);
     }
 
 }

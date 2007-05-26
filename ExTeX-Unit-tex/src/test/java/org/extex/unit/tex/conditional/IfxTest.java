@@ -19,19 +19,17 @@
 
 package org.extex.unit.tex.conditional;
 
-import org.extex.test.ExTeXLauncher;
-
 /**
  * This is a test suite for the primitive <tt>\ifx</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
-public class IfxTest extends ExTeXLauncher {
+public class IfxTest extends ConditionalTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
@@ -41,144 +39,134 @@ public class IfxTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public IfxTest(String arg) {
 
-        super(arg);
+        super(arg, "ifx", " aa");
     }
 
     /**
-     * <testcase primitive="\ifx">
-     *  Test case checking that <tt>\ifx</tt> ...
+     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt> ...
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testErr1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\ifx ",
-            //--- output channel ---
+            // --- output channel ---
             "Unexpected end of file while processing \\ifx");
     }
 
     /**
-     * <testcase primitive="\ifx">
-     *  Test case checking that <tt>\ifx</tt> ...
+     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt> ...
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\ifx aa true\\else false\\fi",
-            //--- output channel ---
+            // --- output channel ---
             "true" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifx">
-     *  Test case checking that <tt>\ifx</tt> ...
+     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt> ...
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\ifx ab true\\else false\\fi",
-            //--- output channel ---
+            // --- output channel ---
             "false" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifx">
-     *  Test case checking that <tt>\ifx</tt> classifies different undefined
-     *  control sequences as identical.
+     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
+     * classifies different undefined control sequences as identical.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testMacro1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\ifx \\xx\\yy true\\else false\\fi",
-            //--- output channel ---
+            // --- output channel ---
             "true" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifx">
-     *  Test case checking that <tt>\ifx</tt> classifies an undefined
-     *  control sequences as identical to itself.
+     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
+     * classifies an undefined control sequences as identical to itself.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testMacro2() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\ifx \\xx\\xx true\\else false\\fi",
-            //--- output channel ---
+            // --- output channel ---
             "true" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifx">
-     *  Test case checking that <tt>\ifx</tt> classifies an undefined
-     *  control sequences as different to <tt>\relax</tt>.
+     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
+     * classifies an undefined control sequences as different to <tt>\relax</tt>.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testMacro3() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\ifx \\relax\\yy true\\else false\\fi",
-            //--- output channel ---
+            // --- output channel ---
             "false" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifx">
-     *  Test case checking that <tt>\ifx</tt> classifies an undefined
-     *  control sequences as identical to one let to an undefined control
-     *  sequence.
-     * </testcase>
-     *
+     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
+     * classifies an undefined control sequences as identical to one let to an
+     * undefined control sequence. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testMacro4() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\let\\xx\\undefined\\ifx \\xx\\undefined true\\else false\\fi",
-            //--- output channel ---
+            // --- output channel ---
             "true" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifx">
-     *  Test case checking that <tt>\ifx</tt> reproduces the example from the
-     *  TeXbook.
-     * </testcase>
-     *
+     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
+     * reproduces the example from the TeXbook. </testcase>
+     * 
      * <p>
-     *  For example, after `<tt>\def\a{\c}</tt> <tt>\def\b{\d}</tt>
-     *  <tt>\def\c{\e}</tt> <tt>\def\d{\e}</tt> <tt>\def\e{A}</tt>', an
-     *  <tt>\ifx</tt> test will find <tt>\c</tt> and <tt>\d</tt> equal,
-     *  but not <tt>\a</tt> and <tt>\b</tt>, nor <tt>\d</tt> and <tt>\e</tt>,
-     *  nor any other combinations of <tt>\a</tt>, <tt>\b</tt>, <tt>\c</tt>,
-     *  <tt>\d</tt>, <tt>\e</tt>.
+     * For example, after `<tt>\def\a{\c}</tt> <tt>\def\b{\d}</tt>
+     *  <tt>\def\c{\e}</tt> <tt>\def\d{\e}</tt> <tt>\def\e{A}</tt>',
+     * an <tt>\ifx</tt> test will find <tt>\c</tt> and <tt>\d</tt> equal,
+     * but not <tt>\a</tt> and <tt>\b</tt>, nor <tt>\d</tt> and
+     * <tt>\e</tt>, nor any other combinations of <tt>\a</tt>, <tt>\b</tt>,
+     * <tt>\c</tt>, <tt>\d</tt>, <tt>\e</tt>.
      * <p>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testTeXbook() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             DEFINE_BRACES + "\\def\\a{\\c}" + "\\def\\b{\\d}" + "\\def\\c{\\e}"
                     + "\\def\\d{\\e}" + "\\def\\e{A}"
                     + "\\ifx\\c\\d t \\else f \\fi "
@@ -191,133 +179,125 @@ public class IfxTest extends ExTeXLauncher {
                     + "\\ifx\\b\\e t \\else f \\fi "
                     + "\\ifx\\c\\e t \\else f \\fi "
                     + "\\ifx\\d\\e t \\else f \\fi " + "\\end",
-            //--- output channel ---
+            // --- output channel ---
             "t f f f f f f f f f" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifx">
-     *  Test case checking that <tt>\ifx</tt> ...
+     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt> ...
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testFont1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\font\\f cmr10 " + "\\ifx\\f\\f t\\else f\\fi" + "\\end",
-            //--- output channel ---
+            // --- output channel ---
             "t" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifx">
-     *  Test case checking that <tt>\ifx</tt> ...
+     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt> ...
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testFont2() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\font\\f cmr10 " + "\\ifx\\f\\g t\\else f\\fi" + "\\end",
-            //--- output channel ---
+            // --- output channel ---
             "f" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifx">
-     *  Test case checking that <tt>\ifx</tt> ...
+     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt> ...
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testFont3() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\font\\f cmr10 " + "\\font\\g cmr10 "
                     + "\\ifx\\f\\g t\\else f\\fi" + "\\end",
-            //--- output channel ---
+            // --- output channel ---
             "f" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifx">
-     *  Test case checking that <tt>\ifx</tt> ...
+     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt> ...
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testFont4() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\font\\f cmr10 " + "\\let\\g\\f " + "\\ifx\\f\\g t\\else f\\fi"
                     + "\\end",
-            //--- output channel ---
+            // --- output channel ---
             "t" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifx">
-     *  Test case checking that <tt>\ifx</tt> ...
+     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt> ...
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test10() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\ifx a\\relax true\\else false\\fi",
-            //--- output channel ---
+            // --- output channel ---
             "false" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifx">
-     *  Test case checking that <tt>\ifx</tt> ...
+     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt> ...
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test11() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             DEFINE_BRACES + "\\def\\x{a}" + "\\ifx a\\x true\\else false\\fi",
-            //--- output channel ---
+            // --- output channel ---
             "false" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifx">
-     *  Test case checking that <tt>\ifx</tt> ...
+     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt> ...
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test12() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             DEFINE_BRACES + "\\def\\x{a}"
                     + "\\ifx \\relax\\x true\\else false\\fi",
-            //--- output channel ---
+            // --- output channel ---
             "false" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifx">
-     *  Test case checking that <tt>\ifx</tt> ...
+     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt> ...
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test13() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             DEFINE_BRACES + "\\ifx \\a\\b true\\else false\\fi",
-            //--- output channel ---
+            // --- output channel ---
             "true" + TERM);
     }
 
-    //TODO implement more primitive specific test cases
+    // TODO implement more primitive specific test cases
 
 }

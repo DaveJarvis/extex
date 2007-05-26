@@ -19,24 +19,23 @@
 
 package org.extex.unit.tex.conditional;
 
-import org.extex.test.ExTeXLauncher;
-
 /**
  * This is a test suite for the primitive <tt>\ifeof</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
-public class IfeofTest extends ExTeXLauncher {
+public class IfeofTest extends ConditionalTester {
 
     /**
      * The field <tt>EMPTY_TEX</tt> contains the location of an empty file.
      */
-    private static final String EMPTY_TEX = "../ExTeX-Unit-tex/src/test/tex/empty.tex";
+    private static final String EMPTY_TEX =
+            "../ExTeX-Unit-tex/src/test/tex/empty.tex";
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
@@ -46,75 +45,71 @@ public class IfeofTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public IfeofTest(String arg) {
 
-        super(arg);
+        super(arg, "ifeof", " 11");
     }
 
     /**
-     * <testcase primitive="\ifeof">
-     *  Test case checking that <tt>\ifeof</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\ifeof"> Test case checking that <tt>\ifeof</tt>
+     * ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testErr0() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\ifeof ",
-            //--- output channel ---
+            // --- output channel ---
             "Missing number, treated as zero");
     }
 
     /**
-     * <testcase primitive="\ifeof">
-     *  Test case checking that <tt>\ifeof</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\ifeof"> Test case checking that <tt>\ifeof</tt>
+     * ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testErr1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\ifeof x true\\else false\\fi \\end",
-            //--- output channel ---
+            // --- output channel ---
             "Missing number, treated as zero");
     }
 
     /**
-     * <testcase primitive="\ifeof">
-     *  Test case checking that <tt>\ifeof</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\ifeof"> Test case checking that <tt>\ifeof</tt>
+     * ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\ifeof8 true\\else false\\fi \\end",
-            //--- output channel ---
+            // --- output channel ---
             "true" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifeof">
-     *  Test case checking that <tt>\ifeof</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\ifeof"> Test case checking that <tt>\ifeof</tt>
+     * ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\openin8 " + EMPTY_TEX + " "
-            + "\\ifeof8 true\\else false\\fi \\end",
-            //--- output channel ---
+                    + "\\ifeof8 true\\else false\\fi \\end",
+            // --- output channel ---
             "true" + TERM);
     }
 
-    //TODO implement the primitive specific test cases
+    // TODO implement the primitive specific test cases
 
 }

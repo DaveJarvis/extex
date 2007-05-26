@@ -19,19 +19,17 @@
 
 package org.extex.unit.tex.conditional;
 
-import org.extex.test.ExTeXLauncher;
-
 /**
  * This is a test suite for the primitive <tt>\ifhmode</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
-public class IfhmodeTest extends ExTeXLauncher {
+public class IfhmodeTest extends ConditionalTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
@@ -41,74 +39,70 @@ public class IfhmodeTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public IfhmodeTest(String arg) {
 
-        super(arg);
+        super(arg, "ifhmode", "\\else");
     }
 
     /**
-     * <testcase primitive="\ifhmode">
-     *  Test case checking that <tt>\ifhmode</tt> is false initially.
-     * </testcase>
-     *
+     * <testcase primitive="\ifhmode"> Test case checking that <tt>\ifhmode</tt>
+     * is false initially. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\ifhmode a\\else b\\fi\\end",
-                //--- output channel ---
-                "b" + TERM);
+        assertSuccess(// --- input code ---
+            "\\ifhmode a\\else b\\fi\\end",
+            // --- output channel ---
+            "b" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifhmode">
-     *  Test case checking that <tt>\ifhmode</tt> is true when in a paragraph.
-     * </testcase>
-     *
+     * <testcase primitive="\ifhmode"> Test case checking that <tt>\ifhmode</tt>
+     * is true when in a paragraph. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "x\\ifhmode a\\else b\\fi x\\end",
-                //--- output channel ---
-                "xax" + TERM);
+        assertSuccess(// --- input code ---
+            "x\\ifhmode a\\else b\\fi x\\end",
+            // --- output channel ---
+            "xax" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifhmode">
-     *  Test case checking that <tt>\ifhmode</tt> is false in a vbox.
-     * </testcase>
-     *
+     * <testcase primitive="\ifhmode"> Test case checking that <tt>\ifhmode</tt>
+     * is false in a vbox. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test3() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\catcode`{=1 " + "\\catcode`}=2 "
-                        + "\\vbox{\\ifhmode a\\else b\\fi}\\end",
-                //--- output channel ---
-                "b\n\n" + TERM);
+        assertSuccess(// --- input code ---
+            "\\catcode`{=1 " + "\\catcode`}=2 "
+                    + "\\vbox{\\ifhmode a\\else b\\fi}\\end",
+            // --- output channel ---
+            "b\n\n" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifhmode">
-     *  Test case checking that <tt>\ifhmode</tt> is true in an hbox.
-     * </testcase>
-     *
+     * <testcase primitive="\ifhmode"> Test case checking that <tt>\ifhmode</tt>
+     * is true in an hbox. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test4() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\catcode`{=1 " + "\\catcode`}=2 "
-                        + "\\hbox{\\ifhmode a\\else b\\fi}\\end",
-                //--- output channel ---
-                "a" + TERM);
+        assertSuccess(// --- input code ---
+            "\\catcode`{=1 " + "\\catcode`}=2 "
+                    + "\\hbox{\\ifhmode a\\else b\\fi}\\end",
+            // --- output channel ---
+            "a" + TERM);
     }
 
 }

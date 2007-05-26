@@ -19,20 +19,19 @@
 
 package org.extex.unit.tex.conditional;
 
-import org.extex.test.ExTeXLauncher;
 import org.extex.unit.tex.math.AbstractMathTester;
 
 /**
  * This is a test suite for the primitive <tt>\ifmmode</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
-public class IfmmodeTest extends ExTeXLauncher {
+public class IfmmodeTest extends ConditionalTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
@@ -42,105 +41,98 @@ public class IfmmodeTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public IfmmodeTest(String arg) {
 
-        super(arg);
+        super(arg, "ifmmode", "\\else");
     }
 
     /**
-     * <testcase primitive="\ifmmode">
-     *  Test case checking that <tt>\ifmmode</tt> is false in vertical mode.
-     * </testcase>
-     *
+     * <testcase primitive="\ifmmode"> Test case checking that <tt>\ifmmode</tt>
+     * is false in vertical mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\ifmmode a\\else b\\fi\\end",
-                //--- output channel ---
-                "b" + TERM);
+        assertSuccess(// --- input code ---
+            "\\ifmmode a\\else b\\fi\\end",
+            // --- output channel ---
+            "b" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifmmode">
-     *  Test case checking that <tt>\ifmmode</tt> is false in horizontal mode.
-     * </testcase>
-     *
+     * <testcase primitive="\ifmmode"> Test case checking that <tt>\ifmmode</tt>
+     * is false in horizontal mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "x\\ifmmode a\\else b\\fi\\end",
-                //--- output channel ---
-                "xb" + TERM);
+        assertSuccess(// --- input code ---
+            "x\\ifmmode a\\else b\\fi\\end",
+            // --- output channel ---
+            "xb" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifmmode">
-     *  Test case checking that <tt>\ifmmode</tt> is false in displaymath mode.
-     * </testcase>
-     *
+     * <testcase primitive="\ifmmode"> Test case checking that <tt>\ifmmode</tt>
+     * is false in displaymath mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test3() throws Exception {
 
-        assertSuccess(//--- input code ---
-                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
-                + "$$\\ifmmode a\\else b\\fi$$\\end",
-                //--- output channel ---
-                "a" + TERM);
+        assertSuccess(// --- input code ---
+            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
+                    + "$$\\ifmmode a\\else b\\fi$$\\end",
+            // --- output channel ---
+            "a" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifmmode">
-     *  Test case checking that <tt>\ifmmode</tt> is true in inner vertical mode.
-     * </testcase>
-     *
+     * <testcase primitive="\ifmmode"> Test case checking that <tt>\ifmmode</tt>
+     * is true in inner vertical mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test4() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES  + "\\vbox{\\ifmmode a\\else b\\fi}\\end",
-                //--- output channel ---
-                "b\n\n" + TERM);
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\vbox{\\ifmmode a\\else b\\fi}\\end",
+            // --- output channel ---
+            "b\n\n" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifmmode">
-     *  Test case checking that <tt>\ifmmode</tt> is true in restricted
-     *  horizontal mode.
-     * </testcase>
-     *
+     * <testcase primitive="\ifmmode"> Test case checking that <tt>\ifmmode</tt>
+     * is true in restricted horizontal mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test5() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_BRACES  + "\\hbox{\\ifmmode a\\else b\\fi}\\end",
-                //--- output channel ---
-                "b" + TERM);
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\hbox{\\ifmmode a\\else b\\fi}\\end",
+            // --- output channel ---
+            "b" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifmmode">
-     *  Test case checking that <tt>\ifmmode</tt> is true in math mode.
-     * </testcase>
-     *
+     * <testcase primitive="\ifmmode"> Test case checking that <tt>\ifmmode</tt>
+     * is true in math mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test6() throws Exception {
 
-        assertSuccess(//--- input code ---
-                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
-                + "$\\ifmmode a\\else b\\fi$\\end",
-                //--- output channel ---
-                "a" + TERM);
+        assertSuccess(// --- input code ---
+            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
+                    + "$\\ifmmode a\\else b\\fi$\\end",
+            // --- output channel ---
+            "a" + TERM);
     }
 
 }

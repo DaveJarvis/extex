@@ -19,19 +19,17 @@
 
 package org.extex.unit.tex.conditional;
 
-import org.extex.test.ExTeXLauncher;
-
 /**
  * This is a test suite for the primitive <tt>\ifnum</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
-public class IfnumTest extends ExTeXLauncher {
+public class IfnumTest extends ConditionalTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
@@ -41,245 +39,221 @@ public class IfnumTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public IfnumTest(String arg) {
 
-        super(arg);
+        super(arg, "ifnum", " 1=1");
     }
 
     /**
-     * <testcase primitive="\ifnum">
-     *  Test case checking that <tt>\ifnum</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
+     * ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testEof1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "x\\ifnum 0",
-            //--- output channel ---
+            // --- output channel ---
             "Unexpected end of file while processing \\ifnum");
     }
 
     /**
-     * <testcase primitive="\ifnum">
-     *  Test case checking that <tt>\ifnum</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
+     * ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testErr1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "x\\ifnum 0!1",
-            //--- output channel ---
+            // --- output channel ---
             "Missing = inserted for \\ifnum");
     }
 
     /**
-     * <testcase primitive="\ifnum">
-     *  Test case checking that <tt>\ifnum</tt> on \verb|0<1|
-     *  selects the then branch.
-     * </testcase>
-     *
+     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
+     * on \verb|0<1| selects the then branch. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testLess1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "x\\ifnum 0<1 a\\else b\\fi x\\end",
-            //--- output channel ---
+            // --- output channel ---
             "xax" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifnum">
-     *  Test case checking that <tt>\ifnum</tt> on \verb|1<1|
-     *  selects the else branch.
-     * </testcase>
-     *
+     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
+     * on \verb|1<1| selects the else branch. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testLess2() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "x\\ifnum 1<1 a\\else b\\fi x\\end",
-            //--- output channel ---
+            // --- output channel ---
             "xbx" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifnum">
-     *  Test case checking that <tt>\ifnum</tt> on \verb|2<1|
-     *  selects the else branch.
-     * </testcase>
-     *
+     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
+     * on \verb|2<1| selects the else branch. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testLess3() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "x\\ifnum 2<1 a\\else b\\fi x\\end",
-            //--- output channel ---
+            // --- output channel ---
             "xbx" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifnum">
-     *  Test case checking that <tt>\ifnum</tt> on \verb|0=1|
-     *  selects the else branch.
-     * </testcase>
-     *
+     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
+     * on \verb|0=1| selects the else branch. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testEquals1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "x\\ifnum 0=1 a\\else b\\fi x\\end",
-            //--- output channel ---
+            // --- output channel ---
             "xbx" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifnum">
-     *  Test case checking that <tt>\ifnum</tt> on \verb|1=1|
-     *  selects the then branch.
-     * </testcase>
-     *
+     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
+     * on \verb|1=1| selects the then branch. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testEquals2() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "x\\ifnum 1=1 a\\else b\\fi x\\end",
-            //--- output channel ---
+            // --- output channel ---
             "xax" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifnum">
-     *  Test case checking that <tt>\ifnum</tt> on \verb|2=1|
-     *  selects the else branch.
-     * </testcase>
-     *
+     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
+     * on \verb|2=1| selects the else branch. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testEquals3() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "x\\ifnum 2=1 a\\else b\\fi x\\end",
-            //--- output channel ---
+            // --- output channel ---
             "xbx" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifnum">
-     *  Test case checking that <tt>\ifnum</tt> on \verb|0>1|
-     *  selects the else branch.
-     * </testcase>
-     *
+     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
+     * on \verb|0>1| selects the else branch. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testGreater1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "x\\ifnum 0>1 a\\else b\\fi x\\end",
-            //--- output channel ---
+            // --- output channel ---
             "xbx" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifnum">
-     *  Test case checking that <tt>\ifnum</tt> on \verb|1>1|
-     *  selects the else branch.
-     * </testcase>
-     *
+     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
+     * on \verb|1>1| selects the else branch. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testGreater2() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "x\\ifnum 1>1 a\\else b\\fi x\\end",
-            //--- output channel ---
+            // --- output channel ---
             "xbx" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifnum">
-     *  Test case checking that <tt>\ifnum</tt> on \verb|2>1|
-     *  selects the then branch.
-     * </testcase>
-     *
+     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
+     * on \verb|2>1| selects the then branch. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testGreater3() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "x\\ifnum 2>1 a\\else b\\fi x\\end",
-            //--- output channel ---
+            // --- output channel ---
             "xax" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifnum">
-     *  Test case checking that <tt>\ifnum</tt> works in an expand context
-     * </testcase>
-     *
+     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
+     * works in an expand context </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testExpand1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\count0=\\ifnum 2>1 123\\else 456\\fi \\the\\count0\\end",
-            //--- output channel ---
+            // --- output channel ---
             "123" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifnum">
-     *  Test case checking that <tt>\ifnum</tt> works in an expand context
-     * </testcase>
-     *
+     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
+     * works in an expand context </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testExpand2() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\count0=\\ifnum 2<1 123 \\else 456 \\fi \\the\\count0\\end",
-            //--- output channel ---
+            // --- output channel ---
             "456" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifnum">
-     *  Test case checking that <tt>\ifnum</tt> works in an expand context
-     * </testcase>
-     *
+     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
+     * works in an expand context </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testExpand3() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\count0=\\fi \\the\\count0\\end",
-            //--- output channel ---
+            // --- output channel ---
             "Extra \\fi");
     }
 
     /**
-     * <testcase primitive="\ifnum">
-     *  Test case checking that <tt>\ifnum</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\ifnum"> Test case checking that <tt>\ifnum</tt>
+     * ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testOuter1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             DEFINE_BRACES + "\\outer\\def\\x{}\\iffalse\\x\\fi\\end",
-            //--- output channel ---
+            // --- output channel ---
             "Incomplete \\iffalse; all text was ignored after line 1");
     }
 

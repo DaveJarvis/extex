@@ -38,7 +38,6 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactoryImpl;
 import org.extex.scanner.type.tokens.Tokens;
-import org.extex.test.ExTeXLauncher;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.tc.font.Font;
@@ -49,7 +48,7 @@ import org.extex.typesetter.tc.font.Font;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
-public class IfTest extends ExTeXLauncher {
+public class IfTest extends ConditionalTester {
 
     /**
      * Method for running the tests standalone.
@@ -68,7 +67,7 @@ public class IfTest extends ExTeXLauncher {
      */
     public IfTest(String arg) {
 
-        super(arg);
+        super(arg, "if", " xx");
     }
 
     /**

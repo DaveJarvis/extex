@@ -19,19 +19,17 @@
 
 package org.extex.unit.tex.conditional;
 
-import org.extex.test.ExTeXLauncher;
-
 /**
  * This is a test suite for the primitive <tt>\iftrue</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
-public class IftrueTest extends ExTeXLauncher {
+public class IftrueTest extends ConditionalTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
@@ -41,43 +39,40 @@ public class IftrueTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public IftrueTest(String arg) {
 
-        super(arg);
+        super(arg, "iftrue", "");
     }
 
     /**
-     * <testcase primitive="\iftrue">
-     *  Test case checking that <tt>\iftrue</tt> selects the then branch.
-     * </testcase>
-     *
+     * <testcase primitive="\iftrue"> Test case checking that <tt>\iftrue</tt>
+     * selects the then branch. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\iftrue a\\else b\\fi\\end",
-                //--- output channel ---
-                "a" + TERM);
+        assertSuccess(// --- input code ---
+            "\\iftrue a\\else b\\fi\\end",
+            // --- output channel ---
+            "a" + TERM);
     }
 
     /**
-     * <testcase primitive="\iftrue">
-     *  Test case checking that <tt>\iftrue</tt> selects nothing if the else
-     *  branch is missing.
-     * </testcase>
-     *
+     * <testcase primitive="\iftrue"> Test case checking that <tt>\iftrue</tt>
+     * selects nothing if the else branch is missing. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "x\\iftrue a\\fi x\\end",
-                //--- output channel ---
-                "xax" + TERM);
+        assertSuccess(// --- input code ---
+            "x\\iftrue a\\fi x\\end",
+            // --- output channel ---
+            "xax" + TERM);
     }
 
 }

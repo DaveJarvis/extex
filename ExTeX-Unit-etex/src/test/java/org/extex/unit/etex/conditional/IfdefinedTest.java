@@ -19,19 +19,19 @@
 
 package org.extex.unit.etex.conditional;
 
-import org.extex.test.ExTeXLauncher;
+import org.extex.unit.tex.conditional.ConditionalTester;
 
 /**
  * This is a test suite for the primitive <tt>\ifdefined</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
-public class IfdefinedTest extends ExTeXLauncher {
+public class IfdefinedTest extends ConditionalTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
@@ -41,61 +41,58 @@ public class IfdefinedTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public IfdefinedTest(String arg) {
 
-        super(arg);
+        super(arg, "ifdefined", "\\relax");
         setConfig("etex-test");
     }
 
     /**
-     * <testcase primitive="\ifdefined">
-     *  Test case checking that <tt>\ifdefined</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\ifdefined"> Test case checking that
+     * <tt>\ifdefined</tt> ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\ifdefined \\relax a\\else b\\fi \\end",
-                //--- output channel ---
-                "a" + TERM);
+        assertSuccess(// --- input code ---
+            "\\ifdefined \\relax a\\else b\\fi \\end",
+            // --- output channel ---
+            "a" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifdefined">
-     *  Test case checking that <tt>\ifdefined</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\ifdefined"> Test case checking that
+     * <tt>\ifdefined</tt> ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\ifdefined \\x a\\else b\\fi \\end",
-                //--- output channel ---
-                "b" + TERM);
+        assertSuccess(// --- input code ---
+            "\\ifdefined \\x a\\else b\\fi \\end",
+            // --- output channel ---
+            "b" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifdefined">
-     *  Test case checking that <tt>\ifdefined</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\ifdefined"> Test case checking that
+     * <tt>\ifdefined</tt> ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test3() throws Exception {
 
         assertSuccess(
-                //--- input code ---
-                DEFINE_BRACES + "\\def\\x{}\\ifdefined \\x a\\else b\\fi \\end",
-                //--- output channel ---
-                "a" + TERM);
+        // --- input code ---
+            DEFINE_BRACES + "\\def\\x{}\\ifdefined \\x a\\else b\\fi \\end",
+            // --- output channel ---
+            "a" + TERM);
     }
 
-    //TODO implement the primitive specific test cases
+    // TODO implement the primitive specific test cases
 
 }

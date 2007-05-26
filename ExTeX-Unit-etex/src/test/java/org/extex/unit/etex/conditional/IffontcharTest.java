@@ -19,19 +19,19 @@
 
 package org.extex.unit.etex.conditional;
 
-import org.extex.test.ExTeXLauncher;
+import org.extex.unit.tex.conditional.ConditionalTester;
 
 /**
  * This is a test suite for the primitive <tt>\iffontchar</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
-public class IffontcharTest extends ExTeXLauncher {
+public class IffontcharTest extends ConditionalTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
@@ -41,45 +41,43 @@ public class IffontcharTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public IffontcharTest(String arg) {
 
-        super(arg);
+        super(arg, "iffontchar", "\\nullfont `x\\else");
         setConfig("etex-test");
     }
 
     /**
-     * <testcase primitive="\iffontchar">
-     *  Test case checking that <tt>\iffontchar</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\iffontchar"> Test case checking that
+     * <tt>\iffontchar</tt> ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testErr1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\iffontchar x true\\else false\\fi \\end",
-                //--- output channel ---
-                "Missing font identifier");
+        assertFailure(// --- input code ---
+            "\\iffontchar x true\\else false\\fi \\end",
+            // --- output channel ---
+            "Missing font identifier");
     }
 
     /**
-     * <testcase primitive="\iffontchar">
-     *  Test case checking that <tt>\iffontchar</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\iffontchar"> Test case checking that
+     * <tt>\iffontchar</tt> ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testErr2() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\iffontchar \\nullfont x true\\else false\\fi \\end",
-                //--- output channel ---
-                "Missing number, treated as zero");
+        assertFailure(// --- input code ---
+            "\\iffontchar \\nullfont x true\\else false\\fi \\end",
+            // --- output channel ---
+            "Missing number, treated as zero");
     }
 
-    //TODO implement the primitive specific test cases
+    // TODO implement the primitive specific test cases
 
 }
