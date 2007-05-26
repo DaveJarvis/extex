@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004  Michael Niedermair
+ * Copyright (C) 2004  The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,35 +17,36 @@
  *
  */
 
-package de.dante.tex;
+package org.extex.unit.tex;
 
+import de.dante.tex.TestTeX;
 import junit.framework.TestCase;
 
 /**
- * Test for the primitive <tt>jobname</tt>.
+ * Test for the register <tt>count</tt>.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class JobnameTest extends TestCase {
+public class CountTest extends TestCase {
 
     /**
      * main
-     * @param args commandlineparams
+     * @param  args commandlineargs
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(JobnameTest.class);
+        junit.textui.TestRunner.run(CountTest.class);
     }
 
     /**
-     * Test 01 for jobname
+     * count01
      * @exception Exception iff test failed
      */
-    public void testJobname01()
+    public void testCount01()
         throws Exception {
 
-        TestTeX.test("jujobnametest", "ExTeX-Unit-tex");
+        TestTeX.test("jucount01", "ExTeX-Unit-tex");
     }
 
 }

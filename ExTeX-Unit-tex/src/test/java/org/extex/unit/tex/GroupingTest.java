@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004  The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004  Michael Niedermair
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,35 +17,35 @@
  *
  */
 
-package de.dante.tex;
+package org.extex.unit.tex;
 
+import de.dante.tex.TestTeX;
 import junit.framework.TestCase;
 
 /**
- * Test for the register <tt>count</tt>.
+ * Test for grouping.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class CountTest extends TestCase {
+public class GroupingTest extends TestCase {
 
     /**
-     * main
-     * @param  args commandlineargs
+     * Main entry function for running alone.
+     * @param  args command line args
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(CountTest.class);
+        junit.textui.TestRunner.run(GroupingTest.class);
     }
 
     /**
-     * count01
+     * Test the primitive <tt>&#x5c;unless</tt>.
      * @exception Exception iff test failed
      */
-    public void testCount01()
-        throws Exception {
+    public void testGroup() throws Exception {
 
-        TestTeX.test("jucount01", "ExTeX-Unit-tex");
+        TestTeX.test("jugrouping", "ExTeX-Unit-tex");
     }
 
 }

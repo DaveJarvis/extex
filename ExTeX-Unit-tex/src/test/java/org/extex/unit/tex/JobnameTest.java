@@ -17,34 +17,36 @@
  *
  */
 
-package de.dante.tex;
+package org.extex.unit.tex;
 
+import de.dante.tex.TestTeX;
 import junit.framework.TestCase;
 
 /**
- * Test for grouping.
+ * Test for the primitive <tt>jobname</tt>.
  *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class GroupingTest extends TestCase {
+public class JobnameTest extends TestCase {
 
     /**
-     * Main entry function for running alone.
-     * @param  args command line args
+     * main
+     * @param args commandlineparams
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(GroupingTest.class);
+        junit.textui.TestRunner.run(JobnameTest.class);
     }
 
     /**
-     * Test the primitive <tt>&#x5c;unless</tt>.
+     * Test 01 for jobname
      * @exception Exception iff test failed
      */
-    public void testGroup() throws Exception {
+    public void testJobname01()
+        throws Exception {
 
-        TestTeX.test("jugrouping", "ExTeX-Unit-tex");
+        TestTeX.test("jujobnametest", "ExTeX-Unit-tex");
     }
 
 }
