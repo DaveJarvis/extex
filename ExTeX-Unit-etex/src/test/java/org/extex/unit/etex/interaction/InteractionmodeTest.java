@@ -157,7 +157,7 @@ public class InteractionmodeTest extends ExTeXLauncher {
         assertFailure(//--- input code ---
             "\\interactionmode=4 ",
             //--- log message ---
-            "Interaction 4 is unknown\n");
+            "Bad interaction mode (4)");
     }
 
     /**
@@ -172,7 +172,7 @@ public class InteractionmodeTest extends ExTeXLauncher {
         assertFailure(//--- input code ---
             "\\interactionmode=-1 ",
             //--- log message ---
-            "Missing number, treated as zero");
+            "Bad interaction mode (-1)");
     }
 
 }
