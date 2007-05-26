@@ -378,12 +378,12 @@ public class ExTeXLauncher extends TestCase {
         handler.close();
         logger.removeHandler(handler);
         if (log != null) {
-            assertEquals(log, byteStream.toString());
+            assertEquals("log", log, byteStream.toString());
         } else {
             assertFalse("No error expected", errorP);
         }
         if (expect != null) {
-            assertEquals(expect, stream.toString());
+            assertEquals("output stream", expect, stream.toString());
         }
         return interpreter;
     }
