@@ -52,6 +52,21 @@ public class PdfdestTest extends NoFlagsButProtectedPrimitiveTester {
         assertFailure(//--- input code ---
                 DEFINE_BRACES + "a \\pdfdest num 23 A",
                 //--- output message ---
+                "pdfTeX error (ext1): pdfdest used while pdfoutput is not set");
+    }
+
+    /**
+     * <testcase primitive="\pdfdest">
+     *  Test case checking that ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testError2() throws Exception {
+
+        assertFailure(//--- input code ---
+                DEFINE_BRACES + "\\pdfoutput=1 a \\pdfdest num 23 A",
+                //--- output message ---
                 "pdfTeX error (ext1): destination type missing");
     }
 
