@@ -152,6 +152,10 @@
    <!-- <module>ExTeX-base-ext</module> -->
    <module>ExTeX-core</module>
    <module>ExTeX-Font</module>
+   <module>ExTeX-Font-API</module>
+   <module>ExTeX-Font-tfm</module>
+   <module>ExTeX-Font-afm</module>
+   <module>ExTeX-Font-otf</module>
    <!-- <module>ExTeX-fontware</module> -->
    <module>ExTeX-Main-fmt</module>
    <module>ExTeX-Main-tex</module>
