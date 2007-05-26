@@ -73,7 +73,7 @@ public class MaxTest extends ExTeXLauncher {
         assertFailure(//--- input code ---
                 "\\catcode`&=4\\relax" + "&" + "\\end ",
                 //--- log message ---
-                "Misplaced alignment tab character &");
+                "Misplaced alignment tab character & ");
     }
 
     /**
