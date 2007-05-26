@@ -227,7 +227,7 @@ public class InteractionTest extends TestCase {
             assertTrue(false);
         } catch (InteractionUnknownException e) {
             assertEquals("message", "", e.getMessage());
-            assertEquals("localized message", "Interaction  is unknown\n", //
+            assertEquals("localized message", "Bad interaction mode ()", //
                 e.getLocalizedMessage());
         }
     }
@@ -315,7 +315,7 @@ public class InteractionTest extends TestCase {
             assertTrue(false);
         } catch (InteractionUnknownException e) {
             assertEquals("", e.getMessage());
-            assertEquals("Interaction abc is unknown\n", e
+            assertEquals("Bad interaction mode (abc)", e
                 .getLocalizedMessage());
         }
     }
@@ -331,7 +331,7 @@ public class InteractionTest extends TestCase {
             assertTrue(false);
         } catch (InteractionUnknownException e) {
             assertEquals("", e.getMessage());
-            assertEquals("Interaction Batchmode is unknown\n", e
+            assertEquals("Bad interaction mode (Batchmode)", e
                 .getLocalizedMessage());
         }
     }
