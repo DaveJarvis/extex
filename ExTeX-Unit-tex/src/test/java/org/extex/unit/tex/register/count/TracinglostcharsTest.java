@@ -62,7 +62,7 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
             //--- log message ---
             "Missing character: There is no a in font nullfont!\n",
             //--- output stream ---
-            "");
+            TERM);
     }
 
     /**
@@ -96,7 +96,7 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
             //--- log message ---
             "Missing character: There is no a in font nullfont!\n",
             //--- output stream ---
-            "");
+            TERM);
     }
 
     /**
