@@ -130,4 +130,33 @@ public class BegingroupTest extends NoFlagsPrimitiveTester {
                 "456-789-456-123" + TERM);
     }
 
+    /**
+     * Test case checking that an open block leads to an error.
+     *
+     * @throws Exception in case of an error
+     */
+    public void testOpenBlock() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\begingroup"
+                + "\\end ",
+                //--- log message ---
+                "(\\end occurred inside a group at level 1)\n");
+    }
+
+    /**
+     * Test case checking that two open blocks leads to an error.
+     *
+     * @throws Exception in case of an error
+     */
+    public void testOpenBlock2() throws Exception {
+
+        assertFailure(//--- input code ---
+                "\\begingroup"
+                + "\\begingroup"
+                + "\\end ",
+                //--- log message ---
+                "(\\end occurred inside a group at level 2)\n");
+    }
+
 }
