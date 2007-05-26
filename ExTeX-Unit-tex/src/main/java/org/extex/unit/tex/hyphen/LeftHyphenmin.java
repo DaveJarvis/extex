@@ -124,18 +124,18 @@ public class LeftHyphenmin extends AbstractHyphenationCode
             prefix.setGlobal((globaldef > 0));
         }
 
-        Language table = getHyphenationTable(context);
+        Language language = getHyphenationTable(context);
         source.getKeyword(context, "by");
         long lefthyphenmin;
         try {
-            lefthyphenmin = table.getLeftHyphenmin();
+            lefthyphenmin = language.getLeftHyphenmin();
         } catch (HyphenationException e) {
             throw new NoHelpException(e);
         }
         lefthyphenmin += source.parseInteger(context, source, typesetter);
 
         try {
-            table.setLeftHyphenmin(lefthyphenmin);
+            language.setLeftHyphenmin(lefthyphenmin);
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
                 throw (ConfigurationException) e.getCause();
@@ -201,11 +201,11 @@ public class LeftHyphenmin extends AbstractHyphenationCode
             prefix.setGlobal((globaldef > 0));
         }
 
-        Language table = getHyphenationTable(context);
+        Language language = getHyphenationTable(context);
         source.getKeyword(context, "by");
         long lefthyphenmin;
         try {
-            lefthyphenmin = table.getLeftHyphenmin();
+            lefthyphenmin = language.getLeftHyphenmin();
         } catch (HyphenationException e) {
             throw new NoHelpException(e);
         }
@@ -217,7 +217,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
         lefthyphenmin /= arg;
 
         try {
-            table.setLeftHyphenmin(lefthyphenmin);
+            language.setLeftHyphenmin(lefthyphenmin);
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
                 throw (ConfigurationException) e.getCause();
@@ -250,12 +250,12 @@ public class LeftHyphenmin extends AbstractHyphenationCode
             prefix.setGlobal((globaldef > 0));
         }
 
-        Language table = getHyphenationTable(context);
+        Language language = getHyphenationTable(context);
         source.getOptionalEquals(context);
         long lefthyphenmin = source.parseInteger(context, source, typesetter);
 
         try {
-            table.setLeftHyphenmin(lefthyphenmin);
+            language.setLeftHyphenmin(lefthyphenmin);
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
                 throw (ConfigurationException) e.getCause();
@@ -287,18 +287,12 @@ public class LeftHyphenmin extends AbstractHyphenationCode
             prefix.setGlobal((globaldef > 0));
         }
 
-        Language table = getHyphenationTable(context);
+        Language language = getHyphenationTable(context);
         source.getKeyword(context, "by");
-        long lefthyphenmin;
         try {
-            lefthyphenmin = table.getLeftHyphenmin();
-        } catch (HyphenationException e) {
-            throw new NoHelpException(e);
-        }
-        lefthyphenmin *= source.parseInteger(context, source, typesetter);
-
-        try {
-            table.setLeftHyphenmin(lefthyphenmin);
+            long lefthyphenmin = language.getLeftHyphenmin();
+            lefthyphenmin *= source.parseInteger(context, source, typesetter);
+            language.setLeftHyphenmin(lefthyphenmin);
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
                 throw (ConfigurationException) e.getCause();
@@ -333,10 +327,10 @@ public class LeftHyphenmin extends AbstractHyphenationCode
                 HelpingException,
                 TypesetterException {
 
-        Language table = getHyphenationTable(context);
+        Language language = getHyphenationTable(context);
         try {
             return context.getTokenFactory().toTokens( //
-                table.getLeftHyphenmin());
+                language.getLeftHyphenmin());
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {
                 throw (ConfigurationException) e.getCause();
