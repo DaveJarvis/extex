@@ -45,7 +45,7 @@ public class InteractionUnknownException extends HelpingException {
     public InteractionUnknownException(String message) {
 
         super(LocalizerFactory.getLocalizer(InteractionUnknownException.class),
-            "InteractionUnknownException.Message", message);
+            "InteractionUnknownException", message);
     }
 
 }
