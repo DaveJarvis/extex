@@ -34,7 +34,7 @@ import org.extex.typesetter.exception.TypesetterException;
 public interface CountParser {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Parse a non-negative number. 
      * 
      * @param context the interpreter context
      * @param source the source for new tokens
@@ -50,7 +50,7 @@ public interface CountParser {
                 TypesetterException;
 
     /**
-     * TODO gene: missing JavaDoc
+     * Parse an integer. This number can either be positive or negative. 
      * 
      * @param context the interpreter context
      * @param source the source for new tokens
