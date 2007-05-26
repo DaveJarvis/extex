@@ -95,7 +95,7 @@ public class Interactionmode extends AbstractAssignment
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         source.getOptionalEquals(context);
-        long mode = source.parseNumber(context, source, typesetter);
+        long mode = source.parseInteger(context, source, typesetter);
         context.setInteraction(Interaction.get((int) mode));
     }
 
