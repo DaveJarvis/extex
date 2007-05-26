@@ -33,7 +33,7 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This code encapsulated a token which is used to trigger an expansion in the
  * interpreter at execution time. This can be used to access the code pieces for
- * special tokens which are not stores in the context.
+ * special tokens which are not stored in the context.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5023 $
@@ -65,8 +65,8 @@ public class LetCode extends AbstractCode implements ExpandableCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,
@@ -78,8 +78,8 @@ public class LetCode extends AbstractCode implements ExpandableCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.ExpandableCode#expand(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,
