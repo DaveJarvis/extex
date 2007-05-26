@@ -19,7 +19,7 @@
 
 package org.extex.unit.tex.file;
 
-import org.extex.test.ExTeXLauncher;
+import org.extex.interpreter.primitives.register.count.AbstractReadonlyCountRegisterTester;
 
 /**
  * This is a test suite for the primitive <tt>\inputlineno</tt>.
@@ -27,7 +27,7 @@ import org.extex.test.ExTeXLauncher;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class InputlinenoTest extends ExTeXLauncher {
+public class InputlinenoTest extends AbstractReadonlyCountRegisterTester  {
 
     /**
      * Command line interface.
@@ -45,7 +45,7 @@ public class InputlinenoTest extends ExTeXLauncher {
      */
     public InputlinenoTest(String arg) {
 
-        super(arg);
+        super(arg, "inputlineno", "1");
     }
 
     /**
