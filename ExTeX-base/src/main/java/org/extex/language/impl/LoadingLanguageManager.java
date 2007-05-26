@@ -134,7 +134,9 @@ public class LoadingLanguageManager extends BaseLanguageManager
      */
     protected Language createLanguage(String name) {
 
-        return new FutureLanguage(name, this);
+        FutureLanguage language = new FutureLanguage(name, this);
+        getTables().put(name, language);
+        return language;
     }
 
     /**
