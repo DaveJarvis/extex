@@ -25,41 +25,47 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This is a base class for exceptions which carry an additional helping text
  * and a return code.
- *
+ * 
  * <h2>Exception-related rules</h2>
- *
+ * 
  * <ul>
- *  <li>Each component should define an exception hierarchy of its own.</li>
- *  <li>No method should declare <tt>throws Exception</tt>. The exceptions
- *    declared should be as specific as possible to allow a fine grained error
- *    handling.</li>
- *  <li>The outside interface of a component should only throw exceptions of
- *    the component. Exceptions of underlying components should not be passed
- *    through.</li>
- *  <li>Exceptions should not carry text. Design exceptions for
- *    internationalization. Sooner or later it will pay off.</li>
- *  <li>Exceptions should be used for exceptional cases only. In the normal
- *    course of a program execution no exception should be thrown. Exceptions
- *    should not be abused for control flow in a program.</li>
- *  <li>Exceptions need not to be optimized for speed. Since exceptions are
- *    rarely used they can be slow.</li>
+ * <li>Each component should define an exception hierarchy of its own.</li>
+ * <li>No method should declare <tt>throws Exception</tt>. The exceptions
+ * declared should be as specific as possible to allow a fine grained error
+ * handling.</li>
+ * <li>The outside interface of a component should only throw exceptions of the
+ * component. Exceptions of underlying components should not be passed through.</li>
+ * <li>Exceptions should not carry text. Design exceptions for
+ * internationalization. Sooner or later it will pay off.</li>
+ * <li>Exceptions should be used for exceptional cases only. In the normal
+ * course of a program execution no exception should be thrown. Exceptions
+ * should not be abused for control flow in a program.</li>
+ * <li>Exceptions need not to be optimized for speed. Since exceptions are
+ * rarely used they can be slow.</li>
  * </ul>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5417 $
  */
 public class GeneralException extends Exception {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    private static final long serialVersionUID = 2006L;
+    private static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>exitCode</tt> contains the exit code.
      */
     private int exitCode = -1;
+
+    /**
+     * The field <tt>processed</tt> contains the indicator that the exception
+     * has been processed by an error handler already.
+     */
+    private boolean processed = false;
 
     /**
      * Creates a new object with the default exit code of -1.
@@ -71,7 +77,7 @@ public class GeneralException extends Exception {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param code the exit code
      */
     public GeneralException(int code) {
@@ -82,7 +88,7 @@ public class GeneralException extends Exception {
 
     /**
      * Creates a new object with the default exit code of -1.
-     *
+     * 
      * @param message the message
      */
     public GeneralException(String message) {
@@ -92,7 +98,7 @@ public class GeneralException extends Exception {
 
     /**
      * Creates a new object with the default exit code of -1.
-     *
+     * 
      * @param message the message
      * @param cause the cause for a chained exception
      */
@@ -103,7 +109,7 @@ public class GeneralException extends Exception {
 
     /**
      * Creates a new object with the default exit code of -1.
-     *
+     * 
      * @param cause the cause for a chained exception
      */
     public GeneralException(Throwable cause) {
@@ -113,7 +119,7 @@ public class GeneralException extends Exception {
 
     /**
      * Getter for the exit code.
-     *
+     * 
      * @return the exit code
      */
     public int getExitCode() {
@@ -123,7 +129,7 @@ public class GeneralException extends Exception {
 
     /**
      * Getter for further help information.
-     *
+     * 
      * @return the help information
      */
     public String getHelp() {
@@ -133,12 +139,33 @@ public class GeneralException extends Exception {
 
     /**
      * Getter for localizer.
-     *
+     * 
      * @return the localizer.
      */
     protected Localizer getLocalizer() {
 
         return LocalizerFactory.getLocalizer(this.getClass());
+    }
+
+
+    /**
+     * Getter for processed.
+     *
+     * @return the processed
+     */
+    public boolean isProcessed() {
+
+        return this.processed;
+    }
+
+    /**
+     * Setter for processed.
+     *
+     * @param processed the processed to set
+     */
+    public void setProcessed(boolean processed) {
+
+        this.processed = processed;
     }
 
 }
