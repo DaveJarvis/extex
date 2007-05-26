@@ -852,8 +852,8 @@ public class TeX extends ExTeX {
     private List<Object> observers = new ArrayList<Object>();
 
     /**
-     * The field <tt>primaryFile</tt> contains the name of the first file read.
-     * This name determines he name of the log file etc.
+     * The field <tt>primaryFile</tt> contains the name of the first file
+     * read. This name determines he name of the log file etc.
      */
     private String primaryFile = null;
 
@@ -1204,7 +1204,9 @@ public class TeX extends ExTeX {
      */
     protected boolean mergeProperties(String arg) throws IOException {
 
-        InputStream in = getClass().getResourceAsStream("/config/extex/" + arg);
+        InputStream in =
+                getClass().getResourceAsStream(
+                    "/config/extex/" + arg + ".properties");
         if (in == null) {
             File file = new File(".extex-" + arg);
             if (!file.canRead()) {
