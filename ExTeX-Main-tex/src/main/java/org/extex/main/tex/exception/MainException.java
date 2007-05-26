@@ -34,12 +34,7 @@ public class MainException extends GeneralException {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
-
-    /**
-     * The field <tt>code</tt> contains the exit code.
-     */
-    private int code;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>message</tt> contains the message for this exception.
@@ -49,47 +44,22 @@ public class MainException extends GeneralException {
     /**
      * Creates a new object.
      *
-     * @param cause the cause for this Exception
-     */
-    public MainException(GeneralException cause) {
-
-        super(cause);
-        this.code = cause.getExitCode();
-    }
-
-    /**
-     * Creates a new object.
-     *
-     * @param theCode the exit code
      * @param theMessage the message
      */
-    public MainException(int theCode, String theMessage) {
+    public MainException(String theMessage) {
 
         super(theMessage);
         this.message = theMessage;
-        this.code = theCode;
     }
 
     /**
      * Creates a new object.
      *
-     * @param theCode the exit code
      * @param cause the cause for this Exception
      */
-    public MainException(int theCode, Throwable cause) {
+    public MainException(Throwable cause) {
 
         super(cause);
-        this.code = theCode;
-    }
-
-    /**
-     * Getter for the exit code
-     *
-     * @return the exit code
-     */
-    public int getCode() {
-
-        return code;
     }
 
     /**

@@ -29,14 +29,9 @@ package org.extex.main.tex.exception;
 public class MainOutputFileNotFoundException extends MainException {
 
     /**
-     * The constant <tt>ERROR_CODE</tt> contains the return code.
-     */
-    private static final int ERROR_CODE = -15;
-
-    /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -45,7 +40,7 @@ public class MainOutputFileNotFoundException extends MainException {
      */
     public MainOutputFileNotFoundException(String filename) {
 
-        super(ERROR_CODE, filename);
+        super(filename);
     }
 
     /**

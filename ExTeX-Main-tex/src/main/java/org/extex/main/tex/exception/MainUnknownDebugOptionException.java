@@ -29,11 +29,6 @@ package org.extex.main.tex.exception;
 public class MainUnknownDebugOptionException extends MainException {
 
     /**
-     * The constant <tt>ERROR_CODE</tt> contains the return code.
-     */
-    private static final int ERROR_CODE = -13;
-
-    /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
@@ -45,7 +40,7 @@ public class MainUnknownDebugOptionException extends MainException {
      */
     public MainUnknownDebugOptionException(String message) {
 
-        super(ERROR_CODE, message);
+        super(message);
     }
 
     /**
