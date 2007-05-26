@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.etex;
+package org.extex.unit.etex;
 
 import de.dante.tex.TestTeX;
 import junit.framework.TestCase;

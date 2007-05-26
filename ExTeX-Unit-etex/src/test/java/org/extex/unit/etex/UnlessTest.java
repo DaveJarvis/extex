@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007  The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,37 +17,37 @@
  *
  */
 
-package de.dante.etex;
+package org.extex.unit.etex;
 
 import de.dante.tex.TestTeX;
 import junit.framework.TestCase;
 
 /**
- * Test for the primitive \currentgrouplevel.
+ * Test for the primitive &#5c;unless.
  *
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
  * @version $Revision$
  */
-public class CurrentgrouplevelTest extends TestCase {
+public class UnlessTest extends TestCase {
 
     /**
-     * main.
-     *
-     * @param  args command line args
+     * Main entry function for running alone.
+     * @param args command line args
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(CurrentgrouplevelTest.class);
+        junit.textui.TestRunner.run(UnlessTest.class);
     }
 
     /**
-     * Test the primitive \currengrouplevel.
+     * Test the primitive <tt>&#5c;unless</tt>.
      *
      * @throws Exception in case of an error
      */
-    public void testCurrentgrouplevel() throws Exception {
+    public void testUnless()
+        throws Exception {
 
-        TestTeX.test("jucurrentgrouplevel", "ExTeX-Unit-etex", "etex");
+        TestTeX.test("juunless", "ExTeX-Unit-etex", "etex");
     }
 
 }
