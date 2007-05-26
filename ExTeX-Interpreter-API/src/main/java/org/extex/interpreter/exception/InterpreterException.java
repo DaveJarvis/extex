@@ -26,7 +26,7 @@ import org.extex.framework.i18n.Localizer;
  * This is the base class for all exceptions of the interpreter.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
 public class InterpreterException extends GeneralException {
 
@@ -39,12 +39,6 @@ public class InterpreterException extends GeneralException {
      * The field <tt>localizer</tt> contains the localizer.
      */
     private Localizer localizer = null;
-
-    /**
-     * The field <tt>processed</tt> contains the indicator that the exception
-     * has been processed by an error handler already.
-     */
-    private boolean processed = false;
 
     /**
      * Creates a new object.
@@ -106,26 +100,6 @@ public class InterpreterException extends GeneralException {
     public Localizer getLocalizer() {
 
         return (this.localizer != null ? this.localizer : super.getLocalizer());
-    }
-
-    /**
-     * Getter for processed.
-     *
-     * @return the processed
-     */
-    public boolean isProcessed() {
-
-        return this.processed;
-    }
-
-    /**
-     * Setter for processed.
-     *
-     * @param processed the processed to set
-     */
-    public void setProcessed(boolean processed) {
-
-        this.processed = processed;
     }
 
 }
