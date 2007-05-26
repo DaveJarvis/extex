@@ -17,17 +17,17 @@
  *
  */
 
-package org.extex.unit.tex.typesetter;
+package org.extex.unit.tex.parameter;
 
-import org.extex.test.NoFlagsButGlobalPrimitiveTester;
+import org.extex.test.NoFlagsPrimitiveTester;
 
 /**
- * This is a test suite for the primitive <tt>\sfcode</tt>.
+ * This is a test suite for the primitive <tt>\prevdepth</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
+ * @version $Revision$
  */
-public class SfcodeTest extends NoFlagsButGlobalPrimitiveTester {
+public class Prevdepth2Test extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
@@ -35,19 +35,17 @@ public class SfcodeTest extends NoFlagsButGlobalPrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(SfcodeTest.class);
+        junit.textui.TestRunner.run(Prevdepth2Test.class);
     }
 
     /**
-     * Creates a new object.
+     * Constructor for PenaltyTest.
      *
      * @param arg the name
      */
-    public SfcodeTest(String arg) {
+    public Prevdepth2Test(String arg) {
 
-        super(arg, "sfcode", "1 1000");
+        super(arg, "prevdepth", "12pt");
     }
-
-    //TODO implement the primitive specific test cases
 
 }

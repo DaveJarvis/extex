@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.unit.tex.typesetter;
+package org.extex.unit.tex.parameter;
 
 import org.extex.test.NoFlagsPrimitiveTester;
 
@@ -25,9 +25,9 @@ import org.extex.test.NoFlagsPrimitiveTester;
  * This is a test suite for the primitive <tt>\spacefactor</tt>.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4808 $
+ * @version $Revision$
  */
-public class SpacefactorTest extends NoFlagsPrimitiveTester {
+public class Spacefactor2Test extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
@@ -35,15 +35,15 @@ public class SpacefactorTest extends NoFlagsPrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(SpacefactorTest.class);
+        junit.textui.TestRunner.run(Spacefactor2Test.class);
     }
 
     /**
-     * Constructor for SpacefactorTest.
+     * Constructor for Spacefactor2Test.
      *
      * @param arg the name
      */
-    public SpacefactorTest(String arg) {
+    public Spacefactor2Test(String arg) {
 
         super(arg, "spacefactor", "42", "a");
     }
