@@ -87,7 +87,7 @@ public class Pdfrefximage extends AbstractPdftexCode {
 
         ensurePdftex(context, typesetter);
 
-        long no = source.parseNumber(context, source, typesetter);
+        long no = source.parseInteger(context, source, typesetter);
 
         typesetter.add(new PdfRefXImage(no));
     }
