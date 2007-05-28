@@ -55,13 +55,14 @@ public class HskipTest extends NoFlagsPrimitiveTester {
      *
      * @throws Exception in case of an error
      */
-    public void test1() throws Exception {
+    public void testIgnore1() throws Exception {
 
         assertSuccess(showNodesProperties(),
         //--- input code ---
                 "\\hskip 123pt\\end ",
                 //--- output channel ---
-                "");
+                "\\vbox(0.0pt+0.0pt)x3000.0pt\n" //
+                + ".\\hbox(0.0pt+0.0pt)x3000.0pt\n");
     }
 
     /**
@@ -105,5 +106,7 @@ public class HskipTest extends NoFlagsPrimitiveTester {
                 "..\\glue123.0pt plus 1.2fil\n" + //
                 "..x\n");
     }
+
+    //TODO implement more primitive specific test cases
 
 }

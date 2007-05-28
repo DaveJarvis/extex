@@ -59,7 +59,7 @@ public class HboxTest extends NoFlagsPrimitiveTester {
 
         assertSuccess(DEFINE_BRACES + "\\hbox{}\\end",
         //
-            "");
+            "" + TERM);
     }
 
     /**
@@ -154,7 +154,7 @@ public class HboxTest extends NoFlagsPrimitiveTester {
         assertSuccess(//--- input code ---
             DEFINE_BRACES + "\\hbox{}",
             //--- output channel ---
-            "");
+            "" + TERM);
     }
 
     /**

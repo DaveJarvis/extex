@@ -72,8 +72,7 @@ public class AbstractOperatorTester extends AbstractMathTester {
                 DEFINE_MATH_FONTS + DEFINE_MATH
                 + "$\\" + getPrimitive() + "\\undef$\\end",
                 //--- output message ---
-                "Undefined control sequence \\undef\n"
-                + "Missing $ inserted\n");
+                "Undefined control sequence \\undef");
     }
 
     /**

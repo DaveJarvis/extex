@@ -23,7 +23,7 @@ import org.extex.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\vbox</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,6 +31,7 @@ public class VboxTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
@@ -40,7 +41,7 @@ public class VboxTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for VboxTest.
-     *
+     * 
      * @param arg the name
      */
     public VboxTest(String arg) {
@@ -49,101 +50,104 @@ public class VboxTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\vbox">
-     *   Test case checking that a vbox ...
+     * <testcase primitive="\vbox"> Test case checking that a vbox ...
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testError1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             DEFINE_BRACES + "\\vbox ",
-            //--- output channel ---
+            // --- output channel ---
             "Unexpected end of file while processing \\vbox");
     }
 
     /**
-     * <testcase primitive="\vbox">
-     *   Test case checking that a vbox ...
+     * <testcase primitive="\vbox"> Test case checking that a vbox ...
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testError2() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertOutput(// --- input code ---
             DEFINE_BRACES + "\\vbox { ",
-            //--- output channel ---
-            "(\\end occurred inside a group at level 1)\n");
+            // --- output channel ---
+            "(\\end occurred inside a group at level 1)\n", TERM);
     }
 
     /**
-     * <testcase primitive="\vbox">
-     *   Test case checking that a vbox ...
+     * <testcase primitive="\vbox"> Test case checking that a vbox ...
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testError3() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             DEFINE_BRACES + "\\vbox x ",
-            //--- output channel ---
+            // --- output channel ---
             "Missing `{' inserted");
     }
 
     /**
-     * <testcase primitive="\vbox">
-     *   Test case checking that a vbox containing "abc" ...
-     * </testcase>
-     *
+     * <testcase primitive="\vbox"> Test case checking that a vbox containing
+     * "abc" ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHboxTo1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             DEFINE_BRACES + "\\font\\fnt cmtt12 \\fnt"
                     + "\\setbox1=\\vbox to 20pt{abc} "
                     + "\\the\\ht1 : \\the\\dp1" + "\\end",
-            //--- output channel ---
+            // --- output channel ---
             "20.0pt: 0.0pt" + TERM); // checked with TeX
     }
 
     /**
-     * <testcase primitive="\vbox">
-     *   Test case checking that a vbox containing "abc" ...
-     * </testcase>
-     *
+     * <testcase primitive="\vbox"> Test case checking that a vbox containing
+     * "abc" ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testVboxSpread1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             DEFINE_BRACES + "\\font\\fnt cmtt12 \\fnt"
                     + "\\setbox1=\\vbox spread 2pt{abc} "
                     + "\\the\\ht1 : \\the\\dp1" + "\\end",
-            //--- output channel ---
+            // --- output channel ---
             "9.33333pt: 0.0pt" + TERM); // checked with TeX
     }
 
     /**
-     * <testcase primitive="\vbox">
-     *   Test case checking that a vbox containing "abc" ...
-     * </testcase>
-     *
+     * <testcase primitive="\vbox"> Test case checking that a vbox containing
+     * "abc" ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
         assertSuccess(showNodesProperties(),
-        //--- input code ---
-            DEFINE_BRACES + "\\font\\fnt cmtt12 \\fnt "
-                    + "x\\vbox {abcd} " + "\\end",
-            //--- output channel ---
-            "...");
+        // --- input code ---
+            DEFINE_BRACES + "\\font\\fnt cmtt12 \\fnt " + "x\\vbox {abcd} "
+                    + "\\end",
+            // --- output channel ---
+            "\\vbox(7.33333pt+0.0pt)x3000.0pt\n" //
+                    + ".\\hbox(7.33333pt+0.0pt)x3000.0pt\n" //
+                    + "..x\n" //
+                    + "..\\vbox(7.33333pt+0.0pt)x3000.0pt\n" //
+                    + "...\\vbox(7.33333pt+0.0pt)x3000.0pt\n" //
+                    + "....\\hbox(7.33333pt+0.0pt)x3000.0pt\n" //
+                    + ".....a\n" //
+                    + ".....b\n" //
+                    + ".....c\n" //
+                    + ".....d\n");
     }
 
-    //TODO implement primitive specific test cases
+    // TODO implement primitive specific test cases
 
 }

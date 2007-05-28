@@ -19,16 +19,19 @@
 
 package org.extex.unit.tex.typesetter.spacing;
 
+import org.extex.test.NoFlagsPrimitiveTester;
+
 /**
  * This is a test suite for the primitive <tt>\hss</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class HssTest extends AbstractHfillTester {
+public class HssTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
@@ -38,7 +41,7 @@ public class HssTest extends AbstractHfillTester {
 
     /**
      * Constructor for HssTest.
-     *
+     * 
      * @param arg the name
      */
     public HssTest(String arg) {
@@ -47,20 +50,66 @@ public class HssTest extends AbstractHfillTester {
     }
 
     /**
-     * <testcase primitive="\hss">
-     *  Test case checking that <tt>\hss</tt> is ignored at the beginning
-     *  of a paragraph.
-     * </testcase>
-     *
+     * <testcase> Test case showing that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
-    public void test1() throws Exception {
+    public void testVbox1() throws Exception {
+
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\vbox to 12pt{a\\hss b} \\end",
+            // --- error channel ---
+            "a b\n\n" + TERM);
+    }
+
+    /**
+     * <testcase> Test case showing that ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testHbox1() throws Exception {
+
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\hbox{a\\hss b} \\end",
+            // --- error channel ---
+            "ab" + TERM);
+    }
+
+    // TODO implement primitive specific test cases
+
+    /**
+     * <testcase> Test case checking that <tt>\hfi*</tt> is ignored at the
+     * beginning of a paragraph. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testIgnore1() throws Exception {
 
         assertSuccess(showNodesProperties(),
-        //--- input code ---
-                "\\hss\\end ",
-                //--- output channel ---
-                "");
+        // --- input code ---
+            "\\hss\\end ",
+            // --- output channel ---
+            "\\vbox(0.0pt+0.0pt)x3000.0pt\n" //
+                    + ".\\hbox(0.0pt+0.0pt)x3000.0pt\n");
     }
+
+    /**
+     * <testcase> Test case checking that <tt>\hfi*</tt> is ignored at the
+     * beginning of a paragraph. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testIgnore2() throws Exception {
+
+        assertSuccess(showNodesProperties(),
+        // --- input code ---
+            "\\font\\f cmr10 \\f\\hsize=100pt \\hss x\\end ",
+            // --- output channel ---
+            "\\vbox(4.30554pt+0.0pt)x100.0pt\n" + //
+                    ".\\hbox(4.30554pt+0.0pt)x100.0pt\n" + //
+                    "..x\n");
+    }
+
+    // TODO implement more primitive specific test cases
 
 }

@@ -46,21 +46,6 @@ public class HfilTest extends AbstractHfillTester {
         super(arg, "hfil", "");
     }
 
-    /**
-     * <testcase primitive="\hfil">
-     *  Test case checking that <tt>\hfil</tt> is ignored at the beginning
-     *  of a paragraph.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void test1() throws Exception {
-
-        assertSuccess(showNodesProperties(),
-                //--- input code ---
-                "\\hfil\\end ",
-                //--- output channel ---
-                "");
-    }
+    //TODO implement more primitive specific test cases
 
 }

@@ -48,23 +48,6 @@ public class HfillTest extends AbstractHfillTester {
 
     /**
      * <testcase primitive="\hfill">
-     *  Test case checking that <tt>\hfill</tt> is ignored at the beginning of
-     *  a paragraph.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void test1() throws Exception {
-
-        assertSuccess(showNodesProperties(),
-        //--- input code ---
-                "\\hfill\\end ",
-                //--- output channel ---
-                "");
-    }
-
-    /**
-     * <testcase primitive="\hfill">
      *  Test case checking that <tt>\hfill</tt> switches to vertical mode and
      *  inserts a glue node with 1fill.
      * </testcase>
@@ -83,5 +66,7 @@ public class HfillTest extends AbstractHfillTester {
                 "..\\glue0.0pt plus 1.0fill\n" + //
                 "..x\n");
     }
+
+    //TODO implement more primitive specific test cases
 
 }

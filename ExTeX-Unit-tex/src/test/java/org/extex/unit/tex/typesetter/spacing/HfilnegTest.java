@@ -46,21 +46,6 @@ public class HfilnegTest extends AbstractHfillTester {
         super(arg, "hfilneg", "");
     }
 
-    /**
-     * <testcase primitive="\hfilneg">
-     *  Test case checking that <tt>\hfilneg</tt> is ignored at the beginning
-     *  of a paragraph.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void test1() throws Exception {
-
-        assertSuccess(showNodesProperties(),
-        //--- input code ---
-            "\\hfilneg\\end ",
-            //--- output channel ---
-            "");
-    }
+    //TODO implement more primitive specific test cases
 
 }
