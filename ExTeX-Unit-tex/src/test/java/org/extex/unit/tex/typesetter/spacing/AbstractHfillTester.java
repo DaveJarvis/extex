@@ -86,4 +86,41 @@ public abstract class AbstractHfillTester extends NoFlagsPrimitiveTester {
 
     //TODO implement primitive specific test cases
 
+    /**
+     * <testcase>
+     *  Test case checking that <tt>\hfi*</tt> is ignored at the beginning of
+     *  a paragraph.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testIgnore1() throws Exception {
+
+        assertSuccess(showNodesProperties(),
+        //--- input code ---
+                "\\" + invocation + "\\end ",
+                //--- output channel ---
+                "\\vbox(0.0pt+0.0pt)x3000.0pt\n" //
+                + ".\\hbox(0.0pt+0.0pt)x3000.0pt\n");
+    }
+
+    /**
+     * <testcase>
+     *  Test case checking that <tt>\hfi*</tt> is ignored at the beginning of
+     *  a paragraph.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testIgnore2() throws Exception {
+
+        assertSuccess(showNodesProperties(),
+        //--- input code ---
+                "\\font\\f cmr10 \\f\\hsize=100pt \\" + invocation + " x\\end ",
+                //--- output channel ---
+                "\\vbox(4.30554pt+0.0pt)x100.0pt\n" + //
+                ".\\hbox(4.30554pt+0.0pt)x100.0pt\n" + //
+                "..x\n");
+    }
+
 }
