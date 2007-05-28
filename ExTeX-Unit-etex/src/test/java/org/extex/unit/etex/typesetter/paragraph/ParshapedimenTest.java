@@ -59,12 +59,10 @@ public class ParshapedimenTest extends NonExecuteTester {
      */
     public void testInnerVerticalMode1() throws Exception {
 
-        assertOutput(//--- input code ---
+        assertFailure(//--- input code ---
             DEFINE_BRACES + "\\vbox{\\parshapedimen0}\\end",
             //--- error channel ---
-            "You can't use `\\parshapedimen' in inner vertical mode",
-            //
-            "0" + TERM);
+            "You can't use `\\parshapedimen' in inner vertical mode");
     }
 
     /**
@@ -77,13 +75,11 @@ public class ParshapedimenTest extends NonExecuteTester {
      */
     public void testRestrictedHorizontalMode1() throws Exception {
 
-        assertOutput(//--- input code ---
+        assertFailure(//--- input code ---
             DEFINE_BRACES + "\\hbox{\\parshapedimen0}\\end",
             //--- error channel ---
             "You can't use `\\parshapedimen"
-                    + "' in restricted horizontal mode",
-            //
-            "0" + TERM);
+                    + "' in restricted horizontal mode");
     }
 
     /**
