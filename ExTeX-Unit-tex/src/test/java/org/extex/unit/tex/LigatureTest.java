@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.interpreter;
+package org.extex.unit.tex;
 
 import java.util.Properties;
 
@@ -70,7 +70,7 @@ public class LigatureTest extends ExTeXLauncher {
             "\\vbox(6.94444pt+0.0pt)x3000.0pt\n" //
                     + ".\\hbox(6.94444pt+0.0pt)x3000.0pt\n" //
                     + "..A\n" //
-                    + "..\n" //
+                    + "..?\n" //
                     + "..e\n");
     }
 

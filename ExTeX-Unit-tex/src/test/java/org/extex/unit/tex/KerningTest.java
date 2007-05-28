@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.interpreter;
+package org.extex.unit.tex;
 
 import org.extex.test.ExTeXLauncher;
 
