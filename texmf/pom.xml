@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
-  <artifactId>texmf</artifactId>
+  <artifactId>extex-texmf</artifactId>
   <packaging>pom</packaging>
   <version>1.0</version>
   <name>ExTeX texmf tree</name>
@@ -14,7 +14,7 @@
   <parent>
     <groupId>org.extex</groupId>
     <artifactId>extex</artifactId>
-    <version>SNAPSHOT</version>
+    <version>0.1-SNAPSHOT</version>
   </parent>
 
   <developers>
