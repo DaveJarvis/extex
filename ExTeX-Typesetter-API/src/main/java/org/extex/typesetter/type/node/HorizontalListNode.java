@@ -32,6 +32,17 @@ import org.extex.typesetter.type.OrientedNodeList;
 /**
  * This class provides a container for nodes which is interpreted as horizontal
  * list.
+ * <p>
+ * The horizontal list maintains its natural dimensions (width height and depth)
+ * as well as the target dimensions. Whenever a node is added or removed the
+ * natural width is adjusted accordingly. If a target width is set then this
+ * width is the width reported as the width of the list. Otherwise the natural
+ * width is reported.
+ * </p>
+ * <p>
+ * 
+ * </p>
+ * 
  * 
  * @see "<logo>TeX</logo> &ndash; The Program [135]"
  * 
@@ -60,14 +71,14 @@ public class HorizontalListNode extends GenericNodeList
     }
 
     /**
-     * Creates a new object. The list is filled with the node given.
+     * Creates a new object. The list receives a natural width and no contents
+     * yet.
      * 
      * @param width the width of the box
      */
     public HorizontalListNode(FixedDimen width) {
 
         super();
-        setWidth(width);
         setTargetWidth(width);
     }
 
@@ -78,7 +89,8 @@ public class HorizontalListNode extends GenericNodeList
      */
     public HorizontalListNode(Node node) {
 
-        super(node);
+        super();
+        add(node);
     }
 
     /**
@@ -89,7 +101,8 @@ public class HorizontalListNode extends GenericNodeList
      */
     public HorizontalListNode(Node node1, Node node2) {
 
-        super(node1);
+        super();
+        add(node1);
         add(node2);
     }
 
@@ -156,9 +169,9 @@ public class HorizontalListNode extends GenericNodeList
      */
     public void addSkip(FixedGlue glue) {
 
-        Node gNode = new GlueNode(glue, true);
-        gNode.setWidth(glue.getLength());
-        add(gNode);
+        Node node = new GlueNode(glue, true);
+        node.setWidth(glue.getLength());
+        add(node);
     }
 
     /**

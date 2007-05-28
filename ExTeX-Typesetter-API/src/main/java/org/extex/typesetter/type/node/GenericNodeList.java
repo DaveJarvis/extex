@@ -91,17 +91,6 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * Creates a new object. The list is filled with the node given.
-     * 
-     * @param node the node to add initially
-     */
-    public GenericNodeList(Node node) {
-
-        super();
-        add(node);
-    }
-
-    /**
      * Add a node to the node list at a given position.
      * 
      * @param index the position of insertion
@@ -133,6 +122,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
         }
     }
 
+    
     /**
      * Add some glue to the node list. The other attributes (width, height,
      * depth) are not modified.
@@ -199,17 +189,6 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
-     * Test whether the node list is empty.
-     * 
-     * @return <code>true</code>, if the <code>NodeList</code> is empty,
-     *         otherwise <code>false</code>.
-     */
-    public boolean isEmpty() {
-
-        return (list.size() == 0);
-    }
-
-    /**
      * Getter for a node at a given position.
      * 
      * @param index the position
@@ -250,6 +229,32 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     }
 
     /**
+     * Getter for the depth of the node. If a target depth has been set then
+     * this target depth is returned. Otherwise the natural depth is returned.
+     * 
+     * @return the depth
+     * 
+     * @see org.extex.typesetter.type.node.AbstractNode#getDepth()
+     */
+    public FixedDimen getDepth() {
+
+        return targetDepth == null ? super.getDepth() : targetDepth;
+    }
+
+    /**
+     * Getter for the height of the node. If a target height has been set then
+     * this target height is returned. Otherwise the natural height is returned.
+     * 
+     * @return the height
+     * 
+     * @see org.extex.typesetter.type.node.AbstractNode#getHeight()
+     */
+    public FixedDimen getHeight() {
+
+        return targetHeight == null ? super.getHeight() : targetHeight;
+    }
+
+    /**
      * Getter for the move value of the node list. The move parameter describes
      * how far from its original position the box is moved leftwards or
      * rightwards. Positive values indicate a move rightwards.
@@ -261,6 +266,36 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     public Dimen getMove() {
 
         return move;
+    }
+
+    /**
+     * Getter for the natural depth.
+     * 
+     * @return the natural depth
+     */
+    public FixedDimen getNaturalDepth() {
+
+        return super.getDepth();
+    }
+
+    /**
+     * Getter for the natural height.
+     * 
+     * @return the natural height
+     */
+    public FixedDimen getNaturalHeight() {
+
+        return super.getHeight();
+    }
+
+    /**
+     * Getter for the natural width.
+     * 
+     * @return the natural width
+     */
+    public FixedDimen getNaturalWidth() {
+
+        return super.getWidth();
     }
 
     /**
@@ -306,6 +341,30 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     public Dimen getTargetWidth() {
 
         return targetWidth;
+    }
+
+    /**
+     * Getter for the width of the node. If a target width has been set then
+     * this target width is returned. Otherwise the natural width is returned.
+     * 
+     * @return the width
+     * 
+     * @see org.extex.typesetter.type.node.AbstractNode#getWidth()
+     */
+    public FixedDimen getWidth() {
+
+        return targetWidth == null ? super.getWidth() : targetWidth;
+    }
+
+    /**
+     * Test whether the node list is empty.
+     * 
+     * @return <code>true</code>, if the <code>NodeList</code> is empty,
+     *         otherwise <code>false</code>.
+     */
+    public boolean isEmpty() {
+
+        return (list.size() == 0);
     }
 
     /**
@@ -374,7 +433,9 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      */
     public void setTargetDepth(FixedDimen depth) {
 
-        if (this.targetDepth == null) {
+        if (depth == null) {
+            this.targetDepth = null;
+        } else if (this.targetDepth == null) {
             this.targetDepth = new Dimen(depth);
         } else {
             this.targetDepth.set(depth);
@@ -388,7 +449,9 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      */
     public void setTargetHeight(FixedDimen height) {
 
-        if (this.targetHeight == null) {
+        if (height == null) {
+            this.targetHeight = null;
+        } else if (this.targetHeight == null) {
             this.targetHeight = new Dimen(height);
         } else {
             this.targetHeight.set(height);
@@ -402,7 +465,9 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      */
     public void setTargetWidth(FixedDimen width) {
 
-        if (this.targetWidth == null) {
+        if (width == null) {
+            this.targetWidth = null;
+        } else if (this.targetWidth == null) {
             this.targetWidth = new Dimen(width);
         } else {
             this.targetWidth.set(width);
@@ -518,5 +583,4 @@ public class GenericNodeList extends AbstractNode implements NodeList {
 
         throw new ImpossibleException(getClass().getName() + "#visit()");
     }
-
 }

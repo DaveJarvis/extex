@@ -175,9 +175,13 @@ public class VerticalListNode extends GenericNodeList
     }
 
     /**
-     * Getter for top.
+     * Getter for <tt>top</tt>.
+     * The field <tt>top</tt> contains the indicator that the adjustment
+     * should use the reference point of the fist box. This is the mode for
+     * <tt>\vtop</tt>. In contrast the last box is used. This is the mode for
+     * <tt>\vbox</tt>.
      * 
-     * @return the top
+     * @return the top indicator
      */
     public boolean isTop() {
 
@@ -188,6 +192,8 @@ public class VerticalListNode extends GenericNodeList
      * Setter for top.
      * 
      * @param top the top to set
+     * 
+     * @see #isTop()
      */
     public void setTop(boolean top) {
 
