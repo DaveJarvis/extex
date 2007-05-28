@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex;
+package org.extex.engine;
 
 import org.extex.base.exception.RegistrarFontNotFoundException;
 import org.extex.font.CoreFontFactory;

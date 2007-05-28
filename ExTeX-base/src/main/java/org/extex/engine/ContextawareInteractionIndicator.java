@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex;
+package org.extex.engine;
 
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.interaction.Interaction;
