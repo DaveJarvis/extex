@@ -17,7 +17,9 @@
   -  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
   -
   -->
-<unit name="pdftex">
+<unit name="pdftex"
+      class="org.extex.unit.pdftex.PdftexUnitInfo">
+
   <primitives>
     <define name="efcode"
             class="org.extex.unit.pdftex.Efcode"/><!-- (integer) -->
