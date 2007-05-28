@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.interpreter.max;
+package org.extex.interpreter;
 
 import org.extex.scanner.type.Catcode;
 import org.extex.test.ExTeXLauncher;
@@ -73,7 +73,7 @@ public class MaxTest extends ExTeXLauncher {
         assertFailure(//--- input code ---
                 "\\catcode`&=4\\relax" + "&" + "\\end ",
                 //--- log message ---
-                "Misplaced alignment tab character & ");
+                "Misplaced alignment tab character &");
     }
 
     /**
