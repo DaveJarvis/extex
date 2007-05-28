@@ -92,6 +92,7 @@ public class XsltTransformXhtmlTest extends ExTeXLauncher {
         prop.setProperty("extex.launcher.verbose", "false");
         // prop.setProperty("extex.launcher.verbose", "true");
         prop.setProperty("extex.trace.input.files", "true");
+        prop.setProperty("extex.texinputs", "../ExTeX-base-ext/src/test/resources");  // gene: added
         extex = new MyExTeX(prop, ".extex-test");
         finder = extex.getResourceFinder();
 
@@ -646,7 +647,7 @@ public class XsltTransformXhtmlTest extends ExTeXLauncher {
         public ResourceFinder getResourceFinder() throws ConfigurationException {
 
             if (finder == null) {
-                finder = makeResourceFinder(config);
+                finder = makeResourceFinder(config.getConfiguration("Resource")); // gene: fixed
             }
             return finder;
         }
