@@ -31,12 +31,12 @@ import org.extex.framework.configuration.impl.ConfigurationXMLImpl;
  * This is the factory for configurations.
  * <p>
  * The class to be used for the configuration can be set with the
- * <tt>System.property</tt> named <tt>Util.Configuration.class</tt>.
- * If this property is not set then the fallback class
+ * <tt>System.property</tt> named <tt>Util.Configuration.class</tt>. If
+ * this property is not set then the fallback class
  * {@link org.extex.framework.configuration.impl.ConfigurationXMLImpl ConfigurationXMLImpl}
  * is used instead.
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -53,25 +53,36 @@ public class ConfigurationFactory {
     /**
      * Delivers a new
      * {@link org.extex.framework.configuration.Configuration Configuration}
-     * object which is initialized from a named source. This source is usually
-     * a file name but can be anything else, like a URL or a reference to a
+     * object which is initialized from a named source. This source is usually a
+     * file name but can be anything else, like a URL or a reference to a
      * database &ndash; depending on the underlying implementation.
-     *
+     * <p>
+     * The implementation can be specified in the system property
+     * <tt>Util.Configuration.class</tt>. The content is expected to be a
+     * fully qualified class name. This class has to implement the interface
+     * {@link Configuration Configuration}.
+     * </p>
+     * <p>
+     * The default implementation is
+     * {@link org.extex.framework.configuration.impl.ConfigurationXMLImpl ConfigurationXMLImpl}
+     * which uses an XML file located on the classpath.
+     * </p>
+     * 
      * @param source the source of the configuration
-     *
+     * 
      * @return a new Configuration object
-     *
+     * 
      * @throws ConfigurationException in case of an error. Especially
-     * <ul>
-     *  <li>ConfigurationInvalidNameException in case that the source is
-     *             <code>null</code></li>
-     *  <li>ConfigurationInstantiationException in case of some kind of
-     *             error during instantiation</li>
-     *  <li>ConfigurationClassNotFoundException in case that the class could
-     *             not be found</li>
-     *  <li>ConfigurationException in case that the creation of the
-     *             Configuration fails</li>
-     * </ul>
+     *         <ul>
+     *         <li>ConfigurationInvalidNameException in case that the source is
+     *         <code>null</code></li>
+     *         <li>ConfigurationInstantiationException in case of some kind of
+     *         error during instantiation</li>
+     *         <li>ConfigurationClassNotFoundException in case that the class
+     *         could not be found</li>
+     *         <li>ConfigurationException in case that the creation of the
+     *         Configuration fails</li>
+     *         </ul>
      */
     public Configuration newInstance(String source)
             throws ConfigurationException {
@@ -89,9 +100,10 @@ public class ConfigurationFactory {
         Configuration config = null;
 
         try {
-            config = (Configuration) (Class.forName(classname).getConstructor(
-                    new Class[]{String.class})
-                    .newInstance(new Object[]{source}));
+            config =
+                    (Configuration) (Class.forName(classname).getConstructor(
+                        new Class[]{String.class})
+                        .newInstance(new Object[]{source}));
         } catch (IllegalArgumentException e) {
             throw new ConfigurationInstantiationException(e);
         } catch (SecurityException e) {
