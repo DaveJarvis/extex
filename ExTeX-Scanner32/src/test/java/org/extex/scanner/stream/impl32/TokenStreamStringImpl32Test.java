@@ -35,10 +35,9 @@ import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.token.TokenFactoryImpl;
 
-
 /**
  * Test cases for the string implementation of a token stream.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
@@ -63,6 +62,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
@@ -72,6 +72,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
      * Creates a new object.
+     * 
      * @param name the name
      */
     public TokenStreamStringImpl32Test(String name) {
@@ -81,7 +82,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
      * Create a stream of tokens fed from a string.
-     *
+     * 
      * @param line the input string
      * @return the new token stream
      * @throws IOException in case of an error
@@ -89,7 +90,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
     private TokenStream makeStream(String line) throws IOException {
 
         return new TokenStreamImpl32(null, null, new StringReader(line),
-                Boolean.FALSE, "");
+            Boolean.FALSE, "");
     }
 
     /**
@@ -102,39 +103,41 @@ public class TokenStreamStringImpl32Test extends TestCase {
         tokenizer = new Tokenizer() {
 
             public Catcode getCatcode(UnicodeChar c) {
+
                 if (c.isLetter()) {
                     return Catcode.LETTER;
                 }
                 switch (c.getCodePoint()) {
-                case '$':
-                    return Catcode.MATHSHIFT;
-                case '^':
-                    return Catcode.SUPMARK;
-                case '_':
-                    return Catcode.SUBMARK;
-                case '%':
-                    return Catcode.COMMENT;
-                case '&':
-                    return Catcode.TABMARK;
-                case '#':
-                    return Catcode.MACROPARAM;
-                case '{':
-                    return Catcode.LEFTBRACE;
-                case '}':
-                    return Catcode.RIGHTBRACE;
-                case '\t':
-                case '\r':
-                case '\n':
-                case ' ':
-                    return Catcode.SPACE;
-                case '\0':
-                case '\f':
-                    return Catcode.IGNORE;
+                    case '$':
+                        return Catcode.MATHSHIFT;
+                    case '^':
+                        return Catcode.SUPMARK;
+                    case '_':
+                        return Catcode.SUBMARK;
+                    case '%':
+                        return Catcode.COMMENT;
+                    case '&':
+                        return Catcode.TABMARK;
+                    case '#':
+                        return Catcode.MACROPARAM;
+                    case '{':
+                        return Catcode.LEFTBRACE;
+                    case '}':
+                        return Catcode.RIGHTBRACE;
+                    case '\t':
+                    case '\r':
+                    case '\n':
+                    case ' ':
+                        return Catcode.SPACE;
+                    case '\0':
+                    case '\f':
+                        return Catcode.IGNORE;
                 }
                 return Catcode.OTHER;
             }
 
             public String getNamespace() {
+
                 return "";
             }
 
@@ -151,6 +154,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
      * Test hex notation with '^^^^'
+     * 
      * @throws Exception in case of an error
      */
     public void testHex1() throws Exception {
@@ -166,6 +170,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
      * Test hex notation with '^^^^'
+     * 
      * @throws Exception in case of an error
      */
     public void testHex2() throws Exception {
@@ -185,6 +190,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
      * Test one Unicode name 'a'
+     * 
      * @throws Exception in case of an error
      */
     public void testUnicodeName1() throws Exception {
@@ -200,6 +206,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
      * Test one Unicode name 'A'
+     * 
      * @throws Exception in case of an error
      */
     public void testUnicodeName2() throws Exception {
@@ -215,6 +222,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
      * Test one Unicode name 'error'
+     * 
      * @throws Exception in case of an error
      */
     public void testUnicodeName3() throws Exception {
@@ -230,6 +238,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
      * The digit 1 is parsed as other character and nothing more.
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
@@ -244,6 +253,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
      * The digits 1 and 2 are parsed as other character and nothing more.
+     * 
      * @throws Exception in case of an error
      */
     public void test12() throws Exception {
@@ -259,13 +269,14 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
      * ...
+     * 
      * @throws Exception in case of an error
      */
     public void testCaret1() throws Exception {
 
         TokenStream stream = makeStream("^1");
         assertEquals("superscript character ^", stream.get(fac, tokenizer)
-                .toString());
+            .toString());
         assertEquals("the character 1", stream.get(fac, tokenizer).toString());
         Token token = stream.get(fac, tokenizer);
         assertNotNull(token);
@@ -275,6 +286,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
      * ...
+     * 
      * @throws Exception in case of an error
      */
     public void testCaretA() throws Exception {
@@ -289,6 +301,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
      * ...
+     * 
      * @throws Exception in case of an error
      */
     public void testCaretA2() throws Exception {
@@ -303,6 +316,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
      * ...
+     * 
      * @throws Exception in case of an error
      */
     public void testCaretA3() throws Exception {
@@ -318,13 +332,14 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
      * ...
+     * 
      * @throws Exception in case of an error
      */
     public void testCaretEnd() throws Exception {
 
         TokenStream stream = makeStream("^");
         assertEquals("superscript character ^", stream.get(fac, tokenizer)
-                .toString());
+            .toString());
         Token token = stream.get(fac, tokenizer);
         assertNotNull(token);
         assertEquals(C32, token.getChar().getCodePoint());
@@ -333,6 +348,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
      * Test cr1
+     * 
      * @throws Exception in case of an error
      */
     public void testCr1() throws Exception {
@@ -349,6 +365,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
      * Test cr2
+     * 
      * @throws Exception in case of an error
      */
     public void ___testCr2() throws Exception {
@@ -367,33 +384,36 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
      * Test Cr3
+     * 
      * @throws Exception in case of an error
      */
     public void ___testCr3() throws Exception {
 
         TokenStream stream = makeStream("\naaa\n  x");
         assertEquals("the control sequence \\par", stream.get(fac, tokenizer)
-                .toString());
+            .toString());
         assertEquals("the letter x", stream.get(fac, tokenizer).toString());
         assertNull(stream.get(fac, tokenizer));
     }
 
     /**
      * Test cr4
+     * 
      * @throws Exception in case of an error
      */
     public void ___testCr4() throws Exception {
 
         TokenStream stream = makeStream("\n\nx");
         assertEquals("the control sequence \\par", stream.get(fac, tokenizer)
-                .toString());
+            .toString());
         assertEquals("the control sequence \\par", stream.get(fac, tokenizer)
-                .toString());
+            .toString());
         assertNull(stream.get(fac, tokenizer));
     }
 
     /**
      * The empty string does not contain any characters
+     * 
      * @throws Exception in case of an error
      */
     public void testEmpty() throws Exception {
@@ -404,6 +424,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
      * ...
+     * 
      * @throws Exception in case of an error
      */
     public void testIgnore() throws Exception {
@@ -411,14 +432,14 @@ public class TokenStreamStringImpl32Test extends TestCase {
         TokenStream stream = makeStream("\f.");
         Token token = stream.get(fac, tokenizer);
         assertNotNull(token);
-        assertEquals("the character .", stream.get(fac, tokenizer)
-            .toString());
+        assertEquals("the character .", token.toString());
         assertEquals("blank space  ", stream.get(fac, tokenizer).toString());
         assertNull(stream.get(fac, tokenizer));
     }
 
     /**
      * ...
+     * 
      * @throws Exception in case of an error
      */
     public void testLetter() throws Exception {
@@ -433,6 +454,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
      * ...
+     * 
      * @throws Exception in case of an error
      */
     public void testMixed() throws Exception {
@@ -451,6 +473,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
      * A single space at the beginning of the processing is skipped
+     * 
      * @throws Exception in case of an error
      */
     public void ___testSpace() throws Exception {
@@ -462,6 +485,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
     /**
      * The character period and space in sequence are parsed into appropriate
      * tokens.
+     * 
      * @throws Exception in case of an error
      */
     public void testSpace2() throws Exception {
@@ -475,6 +499,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
     /**
      * The character period and two spaces in sequence are parsed into
      * appropriate tokens. The two spaces are collapsed into one.
+     * 
      * @throws Exception in case of an error
      */
     public void testSpace3() throws Exception {
@@ -487,6 +512,7 @@ public class TokenStreamStringImpl32Test extends TestCase {
 
     /**
      * Two spaces at the beginning are ignored.
+     * 
      * @throws Exception in case of an error
      */
     public void ___testSpaces() throws Exception {
