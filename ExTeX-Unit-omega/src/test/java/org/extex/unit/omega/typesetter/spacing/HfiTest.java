@@ -23,7 +23,7 @@ import org.extex.unit.tex.typesetter.spacing.AbstractHfillTester;
 
 /**
  * This is a test suite for the primitive <tt>\hfi</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,6 +31,7 @@ public class HfiTest extends AbstractHfillTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
@@ -40,7 +41,7 @@ public class HfiTest extends AbstractHfillTester {
 
     /**
      * Constructor for HfiTest.
-     *
+     * 
      * @param arg the name
      */
     public HfiTest(String arg) {
@@ -49,21 +50,6 @@ public class HfiTest extends AbstractHfillTester {
         setConfig("omega-test");
     }
 
-    /**
-     * <testcase primitive="\hfi">
-     *  Test case checking that <tt>\hfi</tt> is ignored at the beginning
-     *  of a paragraph.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void test1() throws Exception {
-
-        assertSuccess(showNodesProperties(),
-        //--- input code ---
-                "\\hfi\\end ",
-                //--- output channel ---
-                "");
-    }
+    //TODO implement more primitive specific test cases
 
 }
