@@ -67,7 +67,7 @@ public class U2tFactoryTest extends TestCase {
 
         Configuration config =
                 new ConfigurationFactory()
-                    .newInstance("../ExTeX-Font-tfm/src/test/resources/U2tFactoryTest.xml");
+                    .newInstance("U2tFactoryTest.xml"); // gene: fixed;
 
         Logger logger = Logger.getLogger("Test");
         finder =
