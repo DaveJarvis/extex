@@ -42,52 +42,40 @@ import org.extex.resource.ResourceFinder;
 
 /**
  * This class provides a factory for the back-end.
- *
- *
+ * 
+ * 
  * <p>
- *  The class to be instantiated can implements one or more interfaces which
- *  trigger special actions:
+ * The class to be instantiated can implements one or more interfaces which
+ * trigger special actions:
  * </p>
  * <dl>
- *  <dt>{@link org.extex.framework.configuration.Configurable Configurable}</dt>
- *  <dd>
- *   If this interface is implemented then a
- *   {@link org.extex.framework.configuration.Configuration Configuration}
- *   is passed in with the interface method.
- *  </dd>
- *  <dt>{@link org.extex.framework.logger.LogEnabled LogEnabled}</dt>
- *  <dd>
- *   If this interface is implemented then a
- *   {@link java.util.logging.Logger Logger}
- *   is passed in with the interface method.
- *  </dd>
- *  <dt>{@link org.extex.framework.i18n.Localizable Localizable}</dt>
- *  <dd>
- *   If this interface is implemented then a
- *   {@link org.extex.framework.i18n.Localizer Localizer}
- *   is passed in with the interface method.
- *  </dd>
- *  <dt>{@link org.extex.resource.ResourceConsumer ResourceConsumer}</dt>
- *  <dd>
- *   If this interface is implemented then a
- *   {@link org.extex.resource.ResourceFinder ResourceFinder}
- *   is passed in with the interface method.
- *  </dd>
- *  <dt>{@link org.extex.resource.PropertyConfigurable PropertyConfigurable}</dt>
- *  <dd>
- *   If this interface is implemented then a
- *   {@link java.util.Properties Properties} instance
- *   is passed in with the interface method.
- *  </dd>
- *  <dt>{@link org.extex.color.ColorAware ColorAware}</dt>
- *  <dd>
- *   If this interface is implemented then a
- *   {@link org.extex.color.ColorConverter ColorConverter} instance
- *   is passed in with the interface method.
- *  </dd>
+ * <dt>{@link org.extex.framework.configuration.Configurable Configurable}</dt>
+ * <dd> If this interface is implemented then a
+ * {@link org.extex.framework.configuration.Configuration Configuration} is
+ * passed in with the interface method. </dd>
+ * <dt>{@link org.extex.framework.logger.LogEnabled LogEnabled}</dt>
+ * <dd> If this interface is implemented then a
+ * {@link java.util.logging.Logger Logger} is passed in with the interface
+ * method. </dd>
+ * <dt>{@link org.extex.framework.i18n.Localizable Localizable}</dt>
+ * <dd> If this interface is implemented then a
+ * {@link org.extex.framework.i18n.Localizer Localizer} is passed in with the
+ * interface method. </dd>
+ * <dt>{@link org.extex.resource.ResourceConsumer ResourceConsumer}</dt>
+ * <dd> If this interface is implemented then a
+ * {@link org.extex.resource.ResourceFinder ResourceFinder} is passed in with
+ * the interface method. </dd>
+ * <dt>{@link org.extex.resource.PropertyConfigurable PropertyConfigurable}</dt>
+ * <dd> If this interface is implemented then a
+ * {@link java.util.Properties Properties} instance is passed in with the
+ * interface method. </dd>
+ * <dt>{@link org.extex.color.ColorAware ColorAware}</dt>
+ * <dd> If this interface is implemented then a
+ * {@link org.extex.color.ColorConverter ColorConverter} instance is passed in
+ * with the interface method. </dd>
  * </dl>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4728 $
  */
@@ -95,10 +83,10 @@ public class BackendFactory extends AbstractFactory {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param config the configuration
      * @param logger the logger
-     *
+     * 
      * @throws ConfigurationException in case of an configuration error
      */
     public BackendFactory(Configuration config, Logger logger) {
@@ -109,10 +97,14 @@ public class BackendFactory extends AbstractFactory {
     }
 
     /**
+     * The field <tt>options</tt> contains the document writer options.
+     */
+    private DocumentWriterOptions options;
+
+    /**
      * Acquire an instance of a back-end driver.
-     *
+     * 
      * @param type the type of the document writer
-     * @param options the options
      * @param outFactory the output stream factory
      * @param finder the resource finder
      * @param properties the properties
@@ -121,16 +113,15 @@ public class BackendFactory extends AbstractFactory {
      * @param colorConverter the color converter
      *
      * @return the new instance
-     *
+     * 
      * @throws DocumentWriterException in case of an error
      * @throws ConfigurationException in case of an error in the configuration
      */
     public BackendDriver newInstance(String type,
-            DocumentWriterOptions options,
             OutputStreamFactory outFactory, ResourceFinder finder,
-            Properties properties, String creator,
-            CoreFontFactory fontFactory,
-            ColorConverter colorConverter) throws DocumentWriterException {
+            Properties properties, String creator, CoreFontFactory fontFactory,
+            ColorConverter colorConverter)
+            throws DocumentWriterException {
 
         BackendDriver backend =
                 (BackendDriver) createInstance(BackendDriver.class);
@@ -157,7 +148,8 @@ public class BackendFactory extends AbstractFactory {
         }
         docWriter.setParameter("Creator", creator);
 
-        Iterator<Configuration> iterator = getConfiguration().iterator("parameter");
+        Iterator<Configuration> iterator =
+                getConfiguration().iterator("parameter");
         while (iterator.hasNext()) {
             Configuration p = iterator.next();
             String name = p.getAttribute("name");
@@ -182,6 +174,17 @@ public class BackendFactory extends AbstractFactory {
         }
 
         return backend;
+    }
+
+    
+    /**
+     * Setter for options.
+     *
+     * @param options the options to set
+     */
+    public void setOptions(DocumentWriterOptions options) {
+    
+        this.options = options;
     }
 
 }

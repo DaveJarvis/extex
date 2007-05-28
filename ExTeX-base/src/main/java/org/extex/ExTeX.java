@@ -54,6 +54,9 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.NotObservableException;
 import org.extex.core.exception.helping.HelpingException;
+import org.extex.engine.ContextawareInteractionIndicator;
+import org.extex.engine.FontInjector;
+import org.extex.engine.ResourceFinderInjector;
 import org.extex.font.CoreFontFactory;
 import org.extex.font.exception.FontException;
 import org.extex.framework.Registrar;
@@ -83,6 +86,7 @@ import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.loader.LoaderException;
 import org.extex.interpreter.max.StringSource;
 import org.extex.interpreter.max.TokenFactoryFactory;
+import org.extex.interpreter.unit.UnitInfo;
 import org.extex.language.LanguageManager;
 import org.extex.language.LanguageManagerFactory;
 import org.extex.logging.LogFormatter;
@@ -1128,18 +1132,22 @@ public class ExTeX {
             e.printStackTrace();
         }
 
-        String msg = e.getLocalizedMessage();
-        for (Throwable t = e; t != null && msg == null; t = t.getCause()) {
-            msg = t.getLocalizedMessage();
-            if ("".equals(msg)) {
-                msg = null;
-            }
-        }
+        logException(logger, e.toString(), e);
 
-        if (msg == null) {
-            msg = e.getClass().getName();
-            msg = msg.substring(msg.lastIndexOf('.') + 1);
-        }
+        Throwable t = e;
+        String msg;
+        do {
+            msg = t.getLocalizedMessage();
+            if (msg != null && !"".equals(msg)) {
+                logException(logger, localizer.format("ExTeX.InternalError",
+                    msg), e);
+                return;
+            }
+            t = t.getCause();
+        } while (t != null);
+
+        msg = e.getClass().getName();
+        msg = msg.substring(msg.lastIndexOf('.') + 1);
 
         logException(logger, localizer.format("ExTeX.InternalError", msg), e);
     }
@@ -1197,12 +1205,18 @@ public class ExTeX {
     /**
      * Create a new document writer.
      * 
+     * <pre>
+     *   {@link #makeColorConverter(Configuration) makeColorConverter()}
+     * </pre>
+     * 
+     * 
      * @param config the configuration object for the document writer
      * @param outFactory the output factory
      * @param options the options to be passed to the document writer
      * @param colorConfig the configuration for the color converter
-     * @param finder the resource finder if one is requested
-     * @param fontFactory the font factory
+     * @param finder the resource finder if one is requested by the document
+     *        writer
+     * @param fontFactory the font factory for the document writer
      * 
      * @return the new document writer
      * 
@@ -1215,9 +1229,10 @@ public class ExTeX {
             CoreFontFactory fontFactory) throws DocumentWriterException {
 
         String outputType = properties.getProperty(PROP_OUTPUT_TYPE);
-        return new BackendFactory(config, logger).newInstance(//
+        BackendFactory backendFactory = new BackendFactory(config, logger);
+        backendFactory.setOptions(options);
+        return backendFactory.newInstance(//
             outputType, //
-            options, //
             outFactory, //
             finder, //
             properties, //
@@ -1243,6 +1258,14 @@ public class ExTeX {
 
     /**
      * Prepare the context according to its configuration.
+     * 
+     * <pre>
+     *   {@link #makeDefaultFont(Configuration, CoreFontFactory) makeDefaultFont()}
+     *   {@link #makeLanguageManager(Configuration, OutputStreamFactory, ResourceFinder) makeLanguageManager()}
+     *   {@link #loadFormat(String, Interpreter, ResourceFinder, String, Configuration, OutputStreamFactory, TokenFactory) loadFormat()}
+     *   {@link #makePageSize(Context) makePageSize()}
+     * </pre>
+     * 
      * 
      * @param config the configuration of the interpreter
      * @param tokenFactory the token factory to inject
@@ -1410,6 +1433,12 @@ public class ExTeX {
     /**
      * Create a new interpreter.
      * 
+     * <pre>
+     *   {@link #makeFontFactory(Configuration, ResourceFinder) makeFontFactory()}
+     *   {@link #makeTokenStreamFactory(Configuration, ResourceFinder) makeTokenStreamFactory()}
+     *   {@link #makeTokenFactory(Configuration) makeTokenFactory()}
+     * </pre>
+     * 
      * @param config the configuration object for the interpreter
      * @param outFactory the factory for new output streams
      * @param finder the resource finder
@@ -1466,13 +1495,21 @@ public class ExTeX {
         interpreter.setErrorHandler(errHandler);
 
         interpreter.setTokenStreamFactory(tokenStreamFactory);
-        tokenStreamFactory.setOptions((TokenStreamOptions) interpreter
-            .getContext());
+        Context context = interpreter.getContext();
+        tokenStreamFactory.setOptions((TokenStreamOptions) context);
 
         initializeStreams(interpreter, properties);
 
-        interpreter.setTypesetter(makeTypesetter(interpreter, config,
-            outFactory, finder, fontFactory));
+        Typesetter typesetter =
+                makeTypesetter(interpreter, config, outFactory, finder,
+                    fontFactory);
+        interpreter.setTypesetter(typesetter);
+
+        Iterator<UnitInfo> unitIterator = context.unitIterator();
+        while (unitIterator.hasNext()) {
+            UnitInfo unit = unitIterator.next();
+            unit.setTypesetter(typesetter);
+        }
 
         return interpreter;
     }
@@ -1727,6 +1764,12 @@ public class ExTeX {
      * the super-class to do its job.
      * </p>
      * 
+     * <pre>
+     *   {@link #makeBackend(Configuration, OutputStreamFactory, DocumentWriterOptions, Configuration, ResourceFinder, CoreFontFactory) makeBackend()}
+     *     {@link #makeColorConverter(Configuration) makeColorConverter()}
+     * </pre>
+     * 
+     * 
      * @param interpreter the interpreter
      * @param config the global configuration object
      * @param outFactory the output stream factory
@@ -1786,6 +1829,33 @@ public class ExTeX {
 
     /**
      * Run the program with the parameters already stored in the properties.
+     * <p>
+     * The whole work is performed in several steps. Those steps are represented
+     * as protected methods. Thus a derived class can intercept the process by
+     * overwriting some of these methods. The follow steps are performed in the
+     * sequence given:
+     * </p>
+     * 
+     * <pre>
+     * {@link #makeLogFile(String) makeLogFile()}
+     * {@link #makeLogHandler(File) makeLogHandler()}
+     * {@link #showBanner(Configuration, Level) showBanner()}
+     * {@link #makeOutputFactory(String, Configuration) makeOutputFactory()}
+     * {@link #makeResourceFinder(Configuration) makeResourceFinder()}
+     * {@link #makeInterpreter(Configuration, OutputStreamFactory, ResourceFinder, String) makeInterpreter()}
+     *   {@link #makeFontFactory(Configuration, ResourceFinder) makeFontFactory()}
+     *   {@link #makeTokenStreamFactory(Configuration, ResourceFinder) makeTokenStreamFactory()}
+     *   {@link #makeTokenFactory(Configuration) makeTokenFactory()}
+     *   {@link #makeContext(Configuration, TokenFactory, CoreFontFactory, Interpreter, ResourceFinder, String, OutputStreamFactory) makeContext()}
+     *     {@link #makeDefaultFont(Configuration, CoreFontFactory) makeDefaultFont()}
+     *     {@link #makeLanguageManager(Configuration, OutputStreamFactory, ResourceFinder) makeLanguageManager()}
+     *     {@link #loadFormat(String, Interpreter, ResourceFinder, String, Configuration, OutputStreamFactory, TokenFactory) loadFormat()}
+     *     {@link #makePageSize(Context) makePageSize()}
+     *   {@link #initializeStreams(Interpreter, Properties) initializeStreams()}
+     *   {@link #makeTypesetter(Interpreter, Configuration, OutputStreamFactory, ResourceFinder, CoreFontFactory) makeTypesetter()}
+     *     {@link #makeBackend(Configuration, OutputStreamFactory, DocumentWriterOptions, Configuration, ResourceFinder, CoreFontFactory) makeBackend()}
+     *       {@link #makeColorConverter(Configuration) makeColorConverter()}
+     * </pre>
      * 
      * @return the interpreter used for running
      * 
