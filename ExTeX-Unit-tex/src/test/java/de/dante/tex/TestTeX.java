@@ -52,7 +52,7 @@ import org.extex.scanner.type.token.Token;
 public final class TestTeX {
 
     /**
-     * The field <tt>DATA_DIR</tt> contains the locatio  of the data directory.
+     * The field <tt>DATA_DIR</tt> contains the locatio of the data directory.
      */
     private static final String DATA_DIR = "/src/test/resources/data/";
 
@@ -121,10 +121,10 @@ public final class TestTeX {
         // run ExTeX
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         Properties pro = (Properties) System.getProperties().clone();
-        ExTeX extex = new ExTeX(pro, ".extex-test");
-        // pro.setProperty("extex.output", "dump");
         pro.setProperty("extex.output", "test-plain"); // gene
+//        pro.setProperty("extex.output", "dump");
         pro.setProperty("extex.config", "tex.xml"); // gene
+        pro.setProperty("extex.nobanner", "true"); // gene
         pro.setProperty("extex.texinputs", //
             "../" + project + "/src/test/resources/data"); // gene
         pro.setProperty("extex.file", texfile);
@@ -136,6 +136,7 @@ public final class TestTeX {
         // TODO: handle errors??? (TE)
         pro.setProperty("extex.interaction", "0");
 
+        ExTeX extex = new ExTeX(pro, ".extex-test");
         extex.setErrorHandler(errorHandler);
         extex.setOutStream(output);
 
