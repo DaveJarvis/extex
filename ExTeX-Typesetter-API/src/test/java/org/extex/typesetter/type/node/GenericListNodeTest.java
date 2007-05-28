@@ -201,7 +201,9 @@ public class GenericListNodeTest extends AbstractNodeListTester {
      */
     protected NodeList makeList(Node node) {
 
-        return new GenericNodeList(node);
+        GenericNodeList list = new GenericNodeList();
+        list.add(node);
+        return list;
     }
 
     /**

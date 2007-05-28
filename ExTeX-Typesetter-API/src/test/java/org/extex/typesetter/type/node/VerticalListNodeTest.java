@@ -204,6 +204,32 @@ public class VerticalListNodeTest extends AbstractNodeListTester {
     }
 
     /**
+     * Test method for
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#isHorizontal()}.
+     */
+    @Test
+    public final void testIsHorizontal1() {
+
+        VerticalListNode vlist = new VerticalListNode();
+        assertFalse(vlist.isHorizontal());
+    }
+
+    @Test
+    public final void testIsTop1() {
+
+        VerticalListNode vlist = new VerticalListNode();
+        assertFalse(vlist.isTop());
+    }
+
+    @Test
+    public final void testIsTop2() {
+
+        VerticalListNode vlist = new VerticalListNode();
+        vlist.setTop(true);
+        assertTrue(vlist.isTop());
+    }
+
+    /**
      * Test that splitting an empty list works for a positive target height.
      */
     @Test

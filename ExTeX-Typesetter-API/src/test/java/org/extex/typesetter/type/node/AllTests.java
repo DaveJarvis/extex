@@ -58,9 +58,12 @@ public class AllTests {
         TestSuite suite =
                 new TestSuite("Test for org.extex.typesetter.type.node");
         //$JUnit-BEGIN$
+        suite.addTestSuite(CenteredLeadersNodeTest.class);
+        suite.addTestSuite(AlignedLeadersNodeTest.class);
         suite.addTestSuite(VerticalListNodeTest.class);
-        suite.addTestSuite(HorizontalListNodeTest.class);
+        suite.addTestSuite(ExpandedLeadersNodeTest.class);
         suite.addTestSuite(GenericListNodeTest.class);
+        suite.addTestSuite(HorizontalListNodeTest.class);
         //$JUnit-END$
         return suite;
     }

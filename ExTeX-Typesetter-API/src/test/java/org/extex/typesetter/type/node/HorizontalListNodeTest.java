@@ -382,6 +382,17 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#isHorizontal()}.
+     */
+    @Test
+    public final void testIsHorizontal1() {
+
+        HorizontalListNode list = new HorizontalListNode();
+        assertTrue(list.isHorizontal());
+    }
+
+    /**
+     * Test method for
      * {@link org.extex.typesetter.type.node.HorizontalListNode#hpack(org.extex.core.dimen.FixedDimen)}.
      */
     @Test
