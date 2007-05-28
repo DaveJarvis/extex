@@ -33,6 +33,10 @@
   <target name="_dependencies_"
           description="Resolve the dependencies">
     <dependency project="ExTeX-base"/>
+    <dependency project="ExTeX-core"/>
+    <dependency project="ExTeX-Typesetter-API"/>
+    <dependency project="ExTeX-Unit-dynamic"/>
+    <dependency project="ExTeX-Unit-tex"/>
   </target>
 
 </project>

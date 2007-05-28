@@ -1,40 +1,30 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.extex</groupId>
-  <artifactId>ExTeX-Scanner32</artifactId>
-  <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <name>ExTeX Scanner 32</name>
-  <inceptionYear>2003</inceptionYear>
-  <url>http://www.extex.org</url>
 
+  <artifactId>ExTeX-Scanner32</artifactId>
+  <name>ExTeX Scanner 32</name>
   <description>
     This is the ExTeX scanner 32 component.
   </description>
 
+  <packaging>jar</packaging>
+  <inceptionYear>2003</inceptionYear>
+  <url>http://www.extex.org</url>
+
   <parent>
     <groupId>org.extex</groupId>
     <artifactId>extex</artifactId>
-    <version>SNAPSHOT</version>
+    <version>0.1-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
   <dependencies>
     <dependency>
       <groupId>org.extex</groupId>
-      <artifactId>ExTeX-core</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>org.extex</groupId>
-      <artifactId>ExTeX-Scanner-API</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>org.extex</groupId>
       <artifactId>ExTeX-Scanner</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
 
@@ -44,8 +34,8 @@
       <name>Michael Niedermair</name>
       <email>m.g.n@gmx.de</email>
       <roles>
-        <role>developer</role>
         <role>maintaner</role>
+        <role>developer</role>
       </roles>
       <timezone>+1</timezone>
       <properties/>

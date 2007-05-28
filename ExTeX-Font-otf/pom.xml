@@ -1,22 +1,22 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.extex</groupId>
-  <artifactId>ExTeX-Font-ofm</artifactId>
+
+  <artifactId>ExTeX-Font-otf</artifactId>
+  <name>ExTeX OTF Font System</name>
+  <description>
+    This is the ExTeX OTF font system.
+  </description>
+
   <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <name>ExTeX OFM Font System</name>
   <inceptionYear>2003</inceptionYear>
   <url>http://www.extex.org</url>
-
-  <description>
-    This is the ExTeX OFM font system.
-  </description>
 
   <parent>
     <groupId>org.extex</groupId>
     <artifactId>extex</artifactId>
-    <version>SNAPSHOT</version>
+    <version>0.1-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
@@ -24,12 +24,12 @@
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-core</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Font-API</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
 
@@ -39,6 +39,7 @@
       <name>Michael Niedermair</name>
       <email>m.g.n@gmx.de</email>
       <roles>
+        <role>maintainer</role>
         <role>developer</role>
       </roles>
       <timezone>+1</timezone>

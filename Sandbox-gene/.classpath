@@ -37,5 +37,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-fontware"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Main-fmt"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Typesetter-tex"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Interpreter-max"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

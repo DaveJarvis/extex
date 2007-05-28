@@ -1,22 +1,23 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.extex</groupId>
+
   <artifactId>ExTeX-base</artifactId>
-  <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
   <name>ExTeX base</name>
+  <description>
+    This is the ExTeX base component. It contains the interpreter and
+    surrounding support.
+  </description>
+
+  <packaging>jar</packaging>
   <inceptionYear>2003</inceptionYear>
   <url>http://www.extex.org</url>
-
-  <description>
-    This is the ExTeX base component.
-  </description>
 
   <parent>
     <groupId>org.extex</groupId>
     <artifactId>extex</artifactId>
-    <version>SNAPSHOT</version>
+    <version>0.1-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
@@ -24,33 +25,39 @@
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-core</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Font-API</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Scanner-API</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Typesetter-API</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Interpreter-API</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>0.1-SNAPSHOT</version>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Scanner</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>0.1-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Typesetter-tex</artifactId>
+      <version>0.1-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -61,7 +68,9 @@
       <name>Gerd Neugebauer</name>
       <email>gene@gerd-neugebauer.de</email>
       <roles>
+        <role>maintainer</role>
         <role>developer</role>
+        <role>build manager</role>
       </roles>
       <timezone>+1</timezone>
       <properties/>
