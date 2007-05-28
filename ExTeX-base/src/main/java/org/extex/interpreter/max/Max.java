@@ -322,9 +322,9 @@ public abstract class Max
     private Flags prefix;
 
     /**
-     * The field <tt>tv</tt> contains the token visitor for expansion.
+     * The field <tt>tokenExpander</tt> contains the token visitor for expansion.
      */
-    private TokenVisitor<Token, TokenSource> tv =
+    private TokenVisitor<Token, TokenSource> tokenExpander =
             new TokenVisitor<Token, TokenSource>() {
 
                 /**
@@ -779,6 +779,7 @@ public abstract class Max
      * 
      * @return the expanded tokens
      * 
+     * @throws HelpingException in case of an error
      * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration problem
      * 
@@ -787,31 +788,32 @@ public abstract class Max
      *      org.extex.typesetter.Typesetter)
      */
     public Tokens expand(Tokens tokens, Typesetter typesetter)
-            throws InterpreterException {
+            throws InterpreterException,
+            HelpingException {
 
         Tokens result = new Tokens();
-        TokenStream stream;
-        stream = getTokenStreamFactory().newInstance("");
+        StringSource source = new StringSource();
+        source.setTokenStreamFactory(getTokenStreamFactory());
 
-        for (int i = tokens.length() - 1; i >= 0; i--) {
-            stream.put(tokens.get(i));
-        }
+        source.push(tokens);
 
-        try {
-            for (Token t = stream.get(null, null); t != null; t =
-                    stream.get(null, null)) {
-
-                t = (Token) t.visit(tv, stream);
-                if (t != null) {
-                    result.add(t);
-                }
+        for (Token t = source.getToken(context); t != null; t =
+                source.getToken(context)) {
+            try {
+                t = (Token) t.visit(tokenExpander, source);
+            } catch (HelpingException e) {
+                throw e;
+            } catch (InterpreterException e) {
+                throw e;
+            } catch (Exception e) {
+                throw new InterpreterException(e);
             }
-            return result;
-        } catch (InterpreterException e) {
-            throw e;
-        } catch (Exception e) {
-            throw new InterpreterException(e);
+
+            if (t != null) {
+                result.add(t);
+            }
         }
+        return result;
     }
 
     /**
@@ -1233,12 +1235,13 @@ public abstract class Max
             while (unitIterator.hasNext()) {
                 UnitInfo ui = unitIterator.next();
                 if (ui instanceof LoadedObserver) {
-                    ((LoadedObserver) ui).receiveLoaded(context, this);
+                    ((LoadedObserver) ui).receiveLoaded(context, this,
+                        typesetter);
                 }
             }
 
             if (context instanceof LoadedObservable) {
-                ((LoadedObservable) context).receiveLoad(this);
+                ((LoadedObservable) context).receiveLoad(this, typesetter);
             }
 
             if (observersLoad != null) {
