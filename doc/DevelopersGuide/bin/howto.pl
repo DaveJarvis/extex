@@ -99,7 +99,7 @@ sub collect {
 #
 sub analyze {
 
-  if ( $_ eq 'CVS' ) {
+  if ( $_ eq 'CVS' || $_ eq '.svn') {
     $File::Find::prune = 1;
   } elsif (m/package\.html$/) {
     analyzeHTML($_);
