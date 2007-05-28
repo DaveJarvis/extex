@@ -79,7 +79,7 @@ import org.extex.typesetter.type.math.MathDelimiter;
 
 /**
  * This is a test suite for the primitive <tt>\dump</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -87,7 +87,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
@@ -97,7 +97,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public DumpTest(String arg) {
@@ -108,10 +108,8 @@ public class DumpTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\dump">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\dump"> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testGroupError1() throws Exception {
@@ -121,36 +119,32 @@ public class DumpTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\dump">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\dump"> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        assertOutput(//--- input code ---
+        assertOutput(// --- input code ---
             "\\dump \\end",
-            //--- log message ---
+            // --- log message ---
             "Beginning to dump on file ."
                     + System.getProperty("file.separator") + "texput.fmt\n", "");
     }
 
     /**
-     * <testcase primitive="\dump">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\dump"> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
         int count1 = 128;
 
-        assertOutput(//--- input code ---
+        assertOutput(// --- input code ---
             "\\font\\x= cmr10 \\count1=" + Integer.toString(count1)
                     + " \\dump \\end",
-            //--- log message ---
+            // --- log message ---
             "Beginning to dump on file ."
                     + System.getProperty("file.separator") + "texput.fmt\n", "");
 
@@ -179,10 +173,8 @@ public class DumpTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\dump">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\dump"> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test100() throws Exception {
@@ -200,7 +192,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void addUnit(UnitInfo info) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -228,7 +220,8 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#get(java.lang.Object, java.lang.Object)
+                 * @see org.extex.interpreter.context.Context#get(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Object get(Object extension, Object key) {
 
@@ -420,13 +413,13 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#pushConditional(org.extex.core.Locator, boolean, org.extex.interpreter.type.Code, long, boolean)
+                 * @see org.extex.interpreter.context.Context#pushConditional(org.extex.core.Locator,
+                 *      boolean, org.extex.interpreter.type.Code, long, boolean)
                  */
-                public void pushConditional(Locator locator,
-                        boolean value, Code primitive,
-                        long branch, boolean neg) {
+                public void pushConditional(Locator locator, boolean value,
+                        Code primitive, long branch, boolean neg) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -434,57 +427,62 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void pushDirection(Direction dir) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#set(org.extex.color.Color, boolean)
+                 * @see org.extex.interpreter.context.Context#set(org.extex.color.Color,
+                 *      boolean)
                  */
                 public void set(Color color, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.Direction, boolean)
+                 * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.Direction,
+                 *      boolean)
                  */
                 public void set(Direction direction, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.font.Font, boolean)
+                 * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.font.Font,
+                 *      boolean)
                  */
                 public void set(Font font, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#set(org.extex.language.Language, boolean)
+                 * @see org.extex.interpreter.context.Context#set(org.extex.language.Language,
+                 *      boolean)
                  */
                 public void set(Language language, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#set(java.lang.Object, java.lang.Object, java.lang.Object, boolean)
+                 * @see org.extex.interpreter.context.Context#set(java.lang.Object,
+                 *      java.lang.Object, java.lang.Object, boolean)
                  */
-                public void set(Object extension, Object key,
-                        Object value, boolean global) {
-
-                    //not needed
-                }
-
-                /**
-                 * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.TypesettingContext, boolean)
-                 */
-                public void set(TypesettingContext context,
+                public void set(Object extension, Object key, Object value,
                         boolean global) {
 
-                    //not needed
+                    // not needed
+                }
+
+                /**
+                 * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.TypesettingContext,
+                 *      boolean)
+                 */
+                public void set(TypesettingContext context, boolean global) {
+
+                    // not needed
                 }
 
                 /**
@@ -492,177 +490,183 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void setAfterassignment(Token token) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#setBox(java.lang.String, org.extex.interpreter.type.box.Box, boolean)
+                 * @see org.extex.interpreter.context.Context#setBox(java.lang.String,
+                 *      org.extex.interpreter.type.box.Box, boolean)
                  */
-                public void setBox(String name, Box value,
+                public void setBox(String name, Box value, boolean global) {
+
+                    // not needed
+                }
+
+                /**
+                 * @see org.extex.interpreter.context.Context#setCatcode(org.extex.core.UnicodeChar,
+                 *      org.extex.scanner.type.Catcode, boolean)
+                 */
+                public void setCatcode(UnicodeChar c, Catcode catcode,
                         boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#setCatcode(org.extex.core.UnicodeChar, org.extex.scanner.type.Catcode, boolean)
+                 * @see org.extex.interpreter.context.Context#setDelcode(org.extex.core.UnicodeChar,
+                 *      org.extex.typesetter.type.math.MathDelimiter, boolean)
                  */
-                public void setCatcode(UnicodeChar c,
-                        Catcode catcode, boolean global) {
+                public void setDelcode(UnicodeChar c, MathDelimiter delimiter,
+                        boolean global) {
 
-                    //not needed
-                }
-
-                /**
-                 * @see org.extex.interpreter.context.Context#setDelcode(org.extex.core.UnicodeChar, org.extex.typesetter.type.math.MathDelimiter, boolean)
-                 */
-                public void setDelcode(UnicodeChar c,
-                        MathDelimiter delimiter, boolean global) {
-
-                    //not needed
+                    // not needed
                 }
 
                 /**
                  * {@inheritDoc}
-                 *
-                 * @see org.extex.interpreter.context.Context#setGlue(java.lang.String, org.extex.core.glue.Glue, boolean)
+                 * 
+                 * @see org.extex.interpreter.context.Context#setGlue(java.lang.String,
+                 *      org.extex.core.glue.Glue, boolean)
                  */
-                public void setGlue(String name, Glue value,
-                        boolean global) {
+                public void setGlue(String name, Glue value, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
                  * {@inheritDoc}
-                 *
+                 * 
                  * @see org.extex.interpreter.context.Context#setId(java.lang.String)
                  */
                 public void setId(String id) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
                  * {@inheritDoc}
-                 *
+                 * 
                  * @see org.extex.interpreter.context.Context#setLanguageManager(org.extex.language.LanguageManager)
                  */
                 public void setLanguageManager(LanguageManager manager) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
                  * {@inheritDoc}
-                 *
-                 * @see org.extex.interpreter.context.Context#setLccode(org.extex.core.UnicodeChar, org.extex.core.UnicodeChar, boolean)
+                 * 
+                 * @see org.extex.interpreter.context.Context#setLccode(org.extex.core.UnicodeChar,
+                 *      org.extex.core.UnicodeChar, boolean)
                  */
-                public void setLccode(UnicodeChar uc,
-                        UnicodeChar lc, boolean global) {
+                public void setLccode(UnicodeChar uc, UnicodeChar lc,
+                        boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
                  * {@inheritDoc}
-                 *
-                 * @see org.extex.interpreter.context.Context#setMagnification(long, boolean)
+                 * 
+                 * @see org.extex.interpreter.context.Context#setMagnification(long,
+                 *      boolean)
                  */
                 public void setMagnification(long mag, boolean lock) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
                  * {@inheritDoc}
-                 *
-                 * @see org.extex.interpreter.context.Context#setMathcode(org.extex.core.UnicodeChar, org.extex.typesetter.type.math.MathCode, boolean)
+                 * 
+                 * @see org.extex.interpreter.context.Context#setMathcode(org.extex.core.UnicodeChar,
+                 *      org.extex.typesetter.type.math.MathCode, boolean)
                  */
-                public void setMathcode(UnicodeChar uc,
-                        MathCode code, boolean global) {
-
-                    //not needed
-                }
-
-                /**
-                 * {@inheritDoc}
-                 *
-                 * @see org.extex.interpreter.context.Context#setMuskip(java.lang.String, org.extex.core.muskip.Muskip, boolean)
-                 */
-                public void setMuskip(String name, Muskip value,
+                public void setMathcode(UnicodeChar uc, MathCode code,
                         boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
                  * {@inheritDoc}
-                 *
-                 * @see org.extex.interpreter.context.Context#setNamespace(java.lang.String, boolean)
+                 * 
+                 * @see org.extex.interpreter.context.Context#setMuskip(java.lang.String,
+                 *      org.extex.core.muskip.Muskip, boolean)
                  */
-                public void setNamespace(String namespace,
-                        boolean global) {
+                public void setMuskip(String name, Muskip value, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
                  * {@inheritDoc}
-                 *
+                 * 
+                 * @see org.extex.interpreter.context.Context#setNamespace(java.lang.String,
+                 *      boolean)
+                 */
+                public void setNamespace(String namespace, boolean global) {
+
+                    // not needed
+                }
+
+                /**
+                 * {@inheritDoc}
+                 * 
                  * @see org.extex.interpreter.context.Context#setParshape(org.extex.typesetter.paragraphBuilder.ParagraphShape)
                  */
                 public void setParshape(ParagraphShape shape) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
                  * {@inheritDoc}
-                 *
-                 * @see org.extex.interpreter.context.Context#setSfcode(org.extex.core.UnicodeChar, org.extex.core.count.Count, boolean)
+                 * 
+                 * @see org.extex.interpreter.context.Context#setSfcode(org.extex.core.UnicodeChar,
+                 *      org.extex.core.count.Count, boolean)
                  */
-                public void setSfcode(UnicodeChar uc, Count code,
-                        boolean global) {
+                public void setSfcode(UnicodeChar uc, Count code, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
                  * {@inheritDoc}
-                 *
+                 * 
                  * @see org.extex.interpreter.context.Context#setStandardTokenStream(org.extex.scanner.TokenStream)
                  */
                 public void setStandardTokenStream(
                         TokenStream standardTokenStream) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
                  * {@inheritDoc}
-                 *
+                 * 
                  * @see org.extex.interpreter.context.Context#setTokenFactory(org.extex.scanner.type.token.TokenFactory)
                  */
                 public void setTokenFactory(TokenFactory factory) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
                  * {@inheritDoc}
-                 *
-                 * @see org.extex.interpreter.context.Context#setUccode(org.extex.core.UnicodeChar, org.extex.core.UnicodeChar, boolean)
+                 * 
+                 * @see org.extex.interpreter.context.Context#setUccode(org.extex.core.UnicodeChar,
+                 *      org.extex.core.UnicodeChar, boolean)
                  */
-                public void setUccode(UnicodeChar lc,
-                        UnicodeChar uc, boolean global) {
+                public void setUccode(UnicodeChar lc, UnicodeChar uc,
+                        boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
                  * {@inheritDoc}
-                 *
+                 * 
                  * @see org.extex.interpreter.context.Context#unitIterator()
                  */
                 public Iterator<UnitInfo> unitIterator() {
@@ -672,7 +676,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
 
                 /**
                  * {@inheritDoc}
-                 *
+                 * 
                  * @see org.extex.interpreter.context.ContextCode#getCode(org.extex.scanner.type.token.CodeToken)
                  */
                 public Code getCode(CodeToken t) {
@@ -682,13 +686,13 @@ public class DumpTest extends NoFlagsPrimitiveTester {
 
                 /**
                  * {@inheritDoc}
-                 *
-                 * @see org.extex.interpreter.context.ContextCode#setCode(org.extex.scanner.type.token.CodeToken, org.extex.interpreter.type.Code, boolean)
+                 * 
+                 * @see org.extex.interpreter.context.ContextCode#setCode(org.extex.scanner.type.token.CodeToken,
+                 *      org.extex.interpreter.type.Code, boolean)
                  */
-                public void setCode(CodeToken t, Code code,
-                        boolean global) {
+                public void setCode(CodeToken t, Code code, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -700,12 +704,13 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextCount#setCount(java.lang.String, long, boolean)
+                 * @see org.extex.interpreter.context.ContextCount#setCount(java.lang.String,
+                 *      long, boolean)
                  */
-                public void setCount(String name, long value,
-                        boolean global) throws HelpingException {
+                public void setCount(String name, long value, boolean global)
+                        throws HelpingException {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -717,21 +722,21 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextDimen#setDimen(java.lang.String, org.extex.core.dimen.Dimen, boolean)
+                 * @see org.extex.interpreter.context.ContextDimen#setDimen(java.lang.String,
+                 *      org.extex.core.dimen.Dimen, boolean)
                  */
-                public void setDimen(String name, Dimen value,
-                        boolean global) {
+                public void setDimen(String name, Dimen value, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextDimen#setDimen(java.lang.String, long, boolean)
+                 * @see org.extex.interpreter.context.ContextDimen#setDimen(java.lang.String,
+                 *      long, boolean)
                  */
-                public void setDimen(String name, long value,
-                        boolean global) {
+                public void setDimen(String name, long value, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -751,21 +756,21 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextFile#setInFile(java.lang.String, org.extex.scanner.type.file.InFile, boolean)
+                 * @see org.extex.interpreter.context.ContextFile#setInFile(java.lang.String,
+                 *      org.extex.scanner.type.file.InFile, boolean)
                  */
-                public void setInFile(String name, InFile file,
-                        boolean global) {
+                public void setInFile(String name, InFile file, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextFile#setOutFile(java.lang.String, org.extex.scanner.type.file.OutFile, boolean)
+                 * @see org.extex.interpreter.context.ContextFile#setOutFile(java.lang.String,
+                 *      org.extex.scanner.type.file.OutFile, boolean)
                  */
-                public void setOutFile(String name, OutFile file,
-                        boolean global) {
+                public void setOutFile(String name, OutFile file, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -785,12 +790,12 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextFont#setFont(java.lang.String, org.extex.typesetter.tc.font.Font, boolean)
+                 * @see org.extex.interpreter.context.ContextFont#setFont(java.lang.String,
+                 *      org.extex.typesetter.tc.font.Font, boolean)
                  */
-                public void setFont(String name, Font font,
-                        boolean global) {
+                public void setFont(String name, Font font, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -798,7 +803,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void setFontFactory(CoreFontFactory fontFactory) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -806,7 +811,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void afterGroup(AfterGroupObserver observer) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -814,16 +819,16 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void afterGroup(Token t) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextGroup#closeGroup(org.extex.typesetter.Typesetter, org.extex.interpreter.TokenSource)
+                 * @see org.extex.interpreter.context.ContextGroup#closeGroup(org.extex.typesetter.Typesetter,
+                 *      org.extex.interpreter.TokenSource)
                  */
-                public void closeGroup(Typesetter typesetter,
-                        TokenSource source) {
+                public void closeGroup(Typesetter typesetter, TokenSource source) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -859,12 +864,14 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextGroup#openGroup(org.extex.interpreter.context.group.GroupType, org.extex.core.Locator, org.extex.scanner.type.token.Token)
+                 * @see org.extex.interpreter.context.ContextGroup#openGroup(org.extex.interpreter.context.group.GroupType,
+                 *      org.extex.core.Locator,
+                 *      org.extex.scanner.type.token.Token)
                  */
-                public void openGroup(GroupType id,
-                        Locator locator, Token start) throws HelpingException {
+                public void openGroup(GroupType id, Locator locator, Token start)
+                        throws HelpingException {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -896,7 +903,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void setInteraction(Interaction interaction) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -916,12 +923,12 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextTokens#setToks(java.lang.String, org.extex.scanner.type.tokens.Tokens, boolean)
+                 * @see org.extex.interpreter.context.ContextTokens#setToks(java.lang.String,
+                 *      org.extex.scanner.type.tokens.Tokens, boolean)
                  */
-                public void setToks(String name, Tokens toks,
-                        boolean global) {
+                public void setToks(String name, Tokens toks, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -929,7 +936,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void clearSplitMarks() {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -973,19 +980,21 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextMark#setMark(java.lang.Object, org.extex.scanner.type.tokens.Tokens)
+                 * @see org.extex.interpreter.context.ContextMark#setMark(java.lang.Object,
+                 *      org.extex.scanner.type.tokens.Tokens)
                  */
                 public void setMark(Object name, Tokens mark) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextMark#setSplitMark(java.lang.Object, org.extex.scanner.type.tokens.Tokens)
+                 * @see org.extex.interpreter.context.ContextMark#setSplitMark(java.lang.Object,
+                 *      org.extex.scanner.type.tokens.Tokens)
                  */
                 public void setSplitMark(Object name, Tokens mark) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -993,7 +1002,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void startMarks() {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -1025,13 +1034,14 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 public TypesettingContextFactory getTypesettingContextFactory() {
 
                     // TODO gene: getTypesettingContextFactory unimplemented
-                    return null;
+                    throw new RuntimeException("unimplemented");
                 }
 
-                public void setCountOption(String name, long value) throws GeneralException {
+                public void setCountOption(String name, long value)
+                        throws GeneralException {
 
                     // TODO gene: setCountOption unimplemented
-                    
+                    throw new RuntimeException("unimplemented");
                 }
 
             }, null, null);
@@ -1042,10 +1052,8 @@ public class DumpTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\dump">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\dump"> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test101() throws Exception {
@@ -1056,10 +1064,10 @@ public class DumpTest extends NoFlagsPrimitiveTester {
             dump.setOutputStreamFactory(new OutputStreamFactory() {
 
                 /**
-                 * @see org.extex.backend.outputStream.OutputStreamFactory#getOutputStream(java.lang.String, java.lang.String)
+                 * @see org.extex.backend.outputStream.OutputStreamFactory#getOutputStream(java.lang.String,
+                 *      java.lang.String)
                  */
-                public OutputStream getOutputStream(String name,
-                        String type) {
+                public OutputStream getOutputStream(String name, String type) {
 
                     return null;
                 }
@@ -1069,7 +1077,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void register(OutputStreamObserver observer) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -1077,7 +1085,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void setExtension(String extension) {
 
-                    //not needed
+                    // not needed
                 }
             });
             dump.execute(Flags.NONE, new Context() {
@@ -1092,7 +1100,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void addUnit(UnitInfo info) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -1120,7 +1128,8 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#get(java.lang.Object, java.lang.Object)
+                 * @see org.extex.interpreter.context.Context#get(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Object get(Object extension, Object key) {
 
@@ -1312,13 +1321,13 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#pushConditional(org.extex.core.Locator, boolean, org.extex.interpreter.type.Code, long, boolean)
+                 * @see org.extex.interpreter.context.Context#pushConditional(org.extex.core.Locator,
+                 *      boolean, org.extex.interpreter.type.Code, long, boolean)
                  */
-                public void pushConditional(Locator locator,
-                        boolean value, Code primitive,
-                        long branch, boolean neg) {
+                public void pushConditional(Locator locator, boolean value,
+                        Code primitive, long branch, boolean neg) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -1326,57 +1335,62 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void pushDirection(Direction dir) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#set(org.extex.color.Color, boolean)
+                 * @see org.extex.interpreter.context.Context#set(org.extex.color.Color,
+                 *      boolean)
                  */
                 public void set(Color color, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.Direction, boolean)
+                 * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.Direction,
+                 *      boolean)
                  */
                 public void set(Direction direction, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.font.Font, boolean)
+                 * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.font.Font,
+                 *      boolean)
                  */
                 public void set(Font font, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#set(org.extex.language.Language, boolean)
+                 * @see org.extex.interpreter.context.Context#set(org.extex.language.Language,
+                 *      boolean)
                  */
                 public void set(Language language, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#set(java.lang.Object, java.lang.Object, java.lang.Object, boolean)
+                 * @see org.extex.interpreter.context.Context#set(java.lang.Object,
+                 *      java.lang.Object, java.lang.Object, boolean)
                  */
-                public void set(Object extension, Object key,
-                        Object value, boolean global) {
-
-                    //not needed
-                }
-
-                /**
-                 * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.TypesettingContext, boolean)
-                 */
-                public void set(TypesettingContext context,
+                public void set(Object extension, Object key, Object value,
                         boolean global) {
 
-                    //not needed
+                    // not needed
+                }
+
+                /**
+                 * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.TypesettingContext,
+                 *      boolean)
+                 */
+                public void set(TypesettingContext context, boolean global) {
+
+                    // not needed
                 }
 
                 /**
@@ -1384,43 +1398,45 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void setAfterassignment(Token token) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#setBox(java.lang.String, org.extex.interpreter.type.box.Box, boolean)
+                 * @see org.extex.interpreter.context.Context#setBox(java.lang.String,
+                 *      org.extex.interpreter.type.box.Box, boolean)
                  */
-                public void setBox(String name, Box value,
+                public void setBox(String name, Box value, boolean global) {
+
+                    // not needed
+                }
+
+                /**
+                 * @see org.extex.interpreter.context.Context#setCatcode(org.extex.core.UnicodeChar,
+                 *      org.extex.scanner.type.Catcode, boolean)
+                 */
+                public void setCatcode(UnicodeChar c, Catcode catcode,
                         boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#setCatcode(org.extex.core.UnicodeChar, org.extex.scanner.type.Catcode, boolean)
+                 * @see org.extex.interpreter.context.Context#setDelcode(org.extex.core.UnicodeChar,
+                 *      org.extex.typesetter.type.math.MathDelimiter, boolean)
                  */
-                public void setCatcode(UnicodeChar c,
-                        Catcode catcode, boolean global) {
-
-                    //not needed
-                }
-
-                /**
-                 * @see org.extex.interpreter.context.Context#setDelcode(org.extex.core.UnicodeChar, org.extex.typesetter.type.math.MathDelimiter, boolean)
-                 */
-                public void setDelcode(UnicodeChar c,
-                        MathDelimiter delimiter, boolean global) {
-
-                    //not needed
-                }
-
-                /**
-                 * @see org.extex.interpreter.context.Context#setGlue(java.lang.String, org.extex.core.glue.Glue, boolean)
-                 */
-                public void setGlue(String name, Glue value,
+                public void setDelcode(UnicodeChar c, MathDelimiter delimiter,
                         boolean global) {
 
-                    //not needed
+                    // not needed
+                }
+
+                /**
+                 * @see org.extex.interpreter.context.Context#setGlue(java.lang.String,
+                 *      org.extex.core.glue.Glue, boolean)
+                 */
+                public void setGlue(String name, Glue value, boolean global) {
+
+                    // not needed
                 }
 
                 /**
@@ -1428,7 +1444,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void setId(String id) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -1436,51 +1452,54 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void setLanguageManager(LanguageManager manager) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#setLccode(org.extex.core.UnicodeChar, org.extex.core.UnicodeChar, boolean)
+                 * @see org.extex.interpreter.context.Context#setLccode(org.extex.core.UnicodeChar,
+                 *      org.extex.core.UnicodeChar, boolean)
                  */
-                public void setLccode(UnicodeChar uc,
-                        UnicodeChar lc, boolean global) {
+                public void setLccode(UnicodeChar uc, UnicodeChar lc,
+                        boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#setMagnification(long, boolean)
+                 * @see org.extex.interpreter.context.Context#setMagnification(long,
+                 *      boolean)
                  */
                 public void setMagnification(long mag, boolean lock) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#setMathcode(org.extex.core.UnicodeChar, org.extex.typesetter.type.math.MathCode, boolean)
+                 * @see org.extex.interpreter.context.Context#setMathcode(org.extex.core.UnicodeChar,
+                 *      org.extex.typesetter.type.math.MathCode, boolean)
                  */
-                public void setMathcode(UnicodeChar uc,
-                        MathCode code, boolean global) {
-
-                    //not needed
-                }
-
-                /**
-                 * @see org.extex.interpreter.context.Context#setMuskip(java.lang.String, org.extex.core.muskip.Muskip, boolean)
-                 */
-                public void setMuskip(String name, Muskip value,
+                public void setMathcode(UnicodeChar uc, MathCode code,
                         boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#setNamespace(java.lang.String, boolean)
+                 * @see org.extex.interpreter.context.Context#setMuskip(java.lang.String,
+                 *      org.extex.core.muskip.Muskip, boolean)
                  */
-                public void setNamespace(String namespace,
-                        boolean global) {
+                public void setMuskip(String name, Muskip value, boolean global) {
 
-                    //not needed
+                    // not needed
+                }
+
+                /**
+                 * @see org.extex.interpreter.context.Context#setNamespace(java.lang.String,
+                 *      boolean)
+                 */
+                public void setNamespace(String namespace, boolean global) {
+
+                    // not needed
                 }
 
                 /**
@@ -1488,16 +1507,16 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void setParshape(ParagraphShape shape) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#setSfcode(org.extex.core.UnicodeChar, org.extex.core.count.Count, boolean)
+                 * @see org.extex.interpreter.context.Context#setSfcode(org.extex.core.UnicodeChar,
+                 *      org.extex.core.count.Count, boolean)
                  */
-                public void setSfcode(UnicodeChar uc, Count code,
-                        boolean global) {
+                public void setSfcode(UnicodeChar uc, Count code, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -1506,7 +1525,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 public void setStandardTokenStream(
                         TokenStream standardTokenStream) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -1514,16 +1533,17 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void setTokenFactory(TokenFactory factory) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.Context#setUccode(org.extex.core.UnicodeChar, org.extex.core.UnicodeChar, boolean)
+                 * @see org.extex.interpreter.context.Context#setUccode(org.extex.core.UnicodeChar,
+                 *      org.extex.core.UnicodeChar, boolean)
                  */
-                public void setUccode(UnicodeChar lc,
-                        UnicodeChar uc, boolean global) {
+                public void setUccode(UnicodeChar lc, UnicodeChar uc,
+                        boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -1543,12 +1563,12 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextCode#setCode(org.extex.scanner.type.token.CodeToken, org.extex.interpreter.type.Code, boolean)
+                 * @see org.extex.interpreter.context.ContextCode#setCode(org.extex.scanner.type.token.CodeToken,
+                 *      org.extex.interpreter.type.Code, boolean)
                  */
-                public void setCode(CodeToken t, Code code,
-                        boolean global) {
+                public void setCode(CodeToken t, Code code, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -1560,12 +1580,13 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextCount#setCount(java.lang.String, long, boolean)
+                 * @see org.extex.interpreter.context.ContextCount#setCount(java.lang.String,
+                 *      long, boolean)
                  */
-                public void setCount(String name, long value,
-                        boolean global) throws HelpingException {
+                public void setCount(String name, long value, boolean global)
+                        throws HelpingException {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -1577,21 +1598,21 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextDimen#setDimen(java.lang.String, org.extex.core.dimen.Dimen, boolean)
+                 * @see org.extex.interpreter.context.ContextDimen#setDimen(java.lang.String,
+                 *      org.extex.core.dimen.Dimen, boolean)
                  */
-                public void setDimen(String name, Dimen value,
-                        boolean global) {
+                public void setDimen(String name, Dimen value, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextDimen#setDimen(java.lang.String, long, boolean)
+                 * @see org.extex.interpreter.context.ContextDimen#setDimen(java.lang.String,
+                 *      long, boolean)
                  */
-                public void setDimen(String name, long value,
-                        boolean global) {
+                public void setDimen(String name, long value, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -1611,21 +1632,21 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextFile#setInFile(java.lang.String, org.extex.scanner.type.file.InFile, boolean)
+                 * @see org.extex.interpreter.context.ContextFile#setInFile(java.lang.String,
+                 *      org.extex.scanner.type.file.InFile, boolean)
                  */
-                public void setInFile(String name, InFile file,
-                        boolean global) {
+                public void setInFile(String name, InFile file, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextFile#setOutFile(java.lang.String, org.extex.scanner.type.file.OutFile, boolean)
+                 * @see org.extex.interpreter.context.ContextFile#setOutFile(java.lang.String,
+                 *      org.extex.scanner.type.file.OutFile, boolean)
                  */
-                public void setOutFile(String name, OutFile file,
-                        boolean global) {
+                public void setOutFile(String name, OutFile file, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -1645,12 +1666,12 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextFont#setFont(java.lang.String, org.extex.typesetter.tc.font.Font, boolean)
+                 * @see org.extex.interpreter.context.ContextFont#setFont(java.lang.String,
+                 *      org.extex.typesetter.tc.font.Font, boolean)
                  */
-                public void setFont(String name, Font font,
-                        boolean global) {
+                public void setFont(String name, Font font, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -1658,7 +1679,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void setFontFactory(CoreFontFactory fontFactory) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -1666,7 +1687,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void afterGroup(AfterGroupObserver observer) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -1674,16 +1695,16 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void afterGroup(Token t) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextGroup#closeGroup(org.extex.typesetter.Typesetter, org.extex.interpreter.TokenSource)
+                 * @see org.extex.interpreter.context.ContextGroup#closeGroup(org.extex.typesetter.Typesetter,
+                 *      org.extex.interpreter.TokenSource)
                  */
-                public void closeGroup(Typesetter typesetter,
-                        TokenSource source) {
+                public void closeGroup(Typesetter typesetter, TokenSource source) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -1719,12 +1740,14 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextGroup#openGroup(org.extex.interpreter.context.group.GroupType, org.extex.core.Locator, org.extex.scanner.type.token.Token)
+                 * @see org.extex.interpreter.context.ContextGroup#openGroup(org.extex.interpreter.context.group.GroupType,
+                 *      org.extex.core.Locator,
+                 *      org.extex.scanner.type.token.Token)
                  */
-                public void openGroup(GroupType id,
-                        Locator locator, Token start) throws HelpingException {
+                public void openGroup(GroupType id, Locator locator, Token start)
+                        throws HelpingException {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -1756,7 +1779,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void setInteraction(Interaction interaction) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -1776,12 +1799,12 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextTokens#setToks(java.lang.String, org.extex.scanner.type.tokens.Tokens, boolean)
+                 * @see org.extex.interpreter.context.ContextTokens#setToks(java.lang.String,
+                 *      org.extex.scanner.type.tokens.Tokens, boolean)
                  */
-                public void setToks(String name, Tokens toks,
-                        boolean global) {
+                public void setToks(String name, Tokens toks, boolean global) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -1789,7 +1812,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void clearSplitMarks() {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -1833,19 +1856,21 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextMark#setMark(java.lang.Object, org.extex.scanner.type.tokens.Tokens)
+                 * @see org.extex.interpreter.context.ContextMark#setMark(java.lang.Object,
+                 *      org.extex.scanner.type.tokens.Tokens)
                  */
                 public void setMark(Object name, Tokens mark) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
-                 * @see org.extex.interpreter.context.ContextMark#setSplitMark(java.lang.Object, org.extex.scanner.type.tokens.Tokens)
+                 * @see org.extex.interpreter.context.ContextMark#setSplitMark(java.lang.Object,
+                 *      org.extex.scanner.type.tokens.Tokens)
                  */
                 public void setSplitMark(Object name, Tokens mark) {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -1853,7 +1878,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                  */
                 public void startMarks() {
 
-                    //not needed
+                    // not needed
                 }
 
                 /**
@@ -1888,10 +1913,11 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                     return null;
                 }
 
-                public void setCountOption(String name, long value) throws GeneralException {
+                public void setCountOption(String name, long value)
+                        throws GeneralException {
 
                     // TODO gene: setCountOption unimplemented
-                    
+
                 }
 
             }, null, null);
