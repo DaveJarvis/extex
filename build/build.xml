@@ -65,9 +65,9 @@
 
   <property name="tests.haltonfailure" value="no" />
   <property name="test.classes"
-            location="${target}/${application}/test/classes" />
+            location="${target}/${application}/test-classes" />
   <property name="test.results"
-            location="${target}/${application}/test/results" />
+            location="${target}/${application}/test-results" />
   <property name="test.results.html" location="${snapshot}/tests" />
 
   <!-- ==================================================================== -->
@@ -279,7 +279,9 @@
       </fileset>
     </copy>
 
-    <junit printsummary="on" haltonfailure="no">
+    <junit printsummary="on"
+           haltonfailure="no"
+           tempdir="target">
       <jvmarg value="-Xms128m" />
       <jvmarg value="-Xmx512m" />
       <classpath>
@@ -325,7 +327,7 @@
           description="Run Checkstyle and create a HTML report">
     <java fork="true"
           classname="org.extex.checkstyle.ReportAddAuthor" 
-          classpath="${target}/test/classes">
+          classpath="${target}/test-classes">
       <classpath path="${target}/lib/${jar.file}.jar"/>
       <classpath refid="application.class.path" />
       <classpath refid="develop.class.path" />
@@ -342,7 +344,7 @@
   <target name="*** site ***" depends="compile-develop"
           description="">
     <java classname="org.extex.site.report.Summary"
-          classpath="${target}/test/classes"
+          classpath="${target}/test-classes"
           output="target/tests/index.xml">
       <arg value="-dir"/>
       <arg value="target/tests"/>
