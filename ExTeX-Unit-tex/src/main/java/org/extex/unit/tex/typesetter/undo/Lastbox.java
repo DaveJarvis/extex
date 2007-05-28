@@ -114,11 +114,11 @@ public class Lastbox extends AbstractCode implements Boxable {
             throws HelpingException,
                 TypesetterException {
 
-        // Mode mode = typesetter.getMode();
-        // if (mode.isMath() || mode == Mode.VERTICAL) {
-        // throw new HelpingException(getLocalizer(), "TTP.LastBoxIn", //
-        // context.esc(getName()), mode.toString());
-        // }
+        Mode mode = typesetter.getMode();
+        if (mode.isMath() /* || mode == Mode.VERTICAL */) {
+            throw new HelpingException(getLocalizer(), "TTP.LastBoxIn", //
+                context.esc(getName()), mode.toString());
+        }
 
         Node nodes = typesetter.getLastNode();
         Box box = null;
