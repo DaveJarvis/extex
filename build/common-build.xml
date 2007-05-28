@@ -34,17 +34,27 @@
   <property name="src.tests" location="src/test/java" />
   <property name="classes" location="target/classes" />
   <property name="javadoc" location="target/javadoc" />
-  <property name="target" location="target" />
   <property name="target.tests" location="target/tests" />
+  <property name="tests.classes" location="target/tests/classes" />
   <property name="main.class" value="org.extex.main.tex.TeX" />
 
   <!-- classpath for the project -->
   <path id="main.class.path">
-    <fileset dir="lib">
-      <include name="*.jar" />
-    </fileset>
     <fileset dir="..">
       <include name="ExTeX-*/lib/*.jar" />
+    </fileset>
+    <fileset dir="..">
+      <include name="ExTeX-*/target/classes/**/*.class" />
+    </fileset>
+  </path>
+
+  <!-- classpath for the project -->
+  <path id="test.class.path">
+    <fileset dir="..">
+      <include name="ExTeX-*/lib/*.jar" />
+    </fileset>
+    <fileset dir="..">
+      <include name="ExTeX-*/test/lib/*.jar" />
     </fileset>
     <fileset dir="..">
       <include name="ExTeX-*/target/classes/**/*.class" />
@@ -58,10 +68,10 @@
   <target name="clean" description="Remove unneccesary files and directories.">
     <delete dir="${classes}" />
     <delete dir="${deploy}" />
-    <delete dir="${target.tests}" />
+    <delete dir="target/tests" />
     <delete dir="${javadoc}" />
-    <delete dir="${target}/lib" />
-    <delete file="${target}/${ant.project.name}.jar" />
+    <delete dir="target/lib" />
+    <delete file="target/${ant.project.name}.jar" />
   </target>
 
   <!-- ==================================================================== -->
@@ -71,7 +81,7 @@
     <ant target="_dependencies_">
       <property name="target" value="compile" />
     </ant>
-    <!-- <echo message="compiling ${ant.project.name}"/> -->
+    <echo message="Compiling ${ant.project.name}"/>
     <javac srcdir="${src}"
            destdir="${classes}"
            debug="on"
@@ -80,13 +90,8 @@
       <classpath refid="main.class.path" />
     </javac>
     <copy todir="${classes}">
-      <fileset dir="${src}">
-        <include name="**/*.properties" />
-        <include name="**/*.xml" />
-        <include name="**/*.txt" />
-      </fileset>
-      <fileset dir="${resources}">
-        <include name="*" />
+      <fileset dir="src/main/resources">
+        <include name="**/*" />
       </fileset>
     </copy>
   </target>
@@ -122,9 +127,9 @@
           depends="compile"
           description="Create the jar file containing all compiled classes
                        except test cases.">
-    <mkdir dir="${target}/lib" />
+    <mkdir dir="target/lib" />
     <!-- make a jar from the classes not matching magic testcase identifiers-->
-    <jar jarfile="${target}/${ant.project.name}.jar">
+    <jar jarfile="target/${ant.project.name}.jar">
       <fileset dir="${classes}">
         <patternset>
           <exclude name="**/*Test.class" />
@@ -146,18 +151,19 @@
   <!-- ==================================================================== -->
   <target name="compile.tests"
           description="Compile the Java files (with tests)">
-    <mkdir dir="${classes}" />
+    <echo message="Compiling tests for ${ant.project.name}"/>
+    <mkdir dir="${tests.classes}" />
     <javac srcdir="${src.tests}"
-           destdir="${classes}"
+           destdir="${tests.classes}"
            debug="on"
            encoding="ISO8859-1">
-      <classpath refid="main.class.path" />
+      <classpath refid="test.class.path" />
       <!-- <classpath refid="develop.class.path" /> -->
       <classpath>
         <pathelement path="${classes}" />
       </classpath>
     </javac>
-    <copy todir="${classes}">
+    <copy todir="${tests.classes}">
       <fileset dir="${src.tests}">
         <include name="**/*.properties" />
         <include name="**/*.xml" />
@@ -178,7 +184,7 @@
       <jvmarg value="-Xms128m" />
       <jvmarg value="-Xmx512m" />
       <classpath>
-        <pathelement path="${classes}" />
+        <pathelement path="${tests.classes}" />
         <fileset dir="${ant.library.dir}">
           <include name="*.jar" />
         </fileset>
@@ -197,7 +203,7 @@
       </fileset>
       <report format="frames"
               styledir="../build/src/xslt"
-              todir="${target}/reports/tests" />
+              todir="target/reports/tests" />
     </junitreport>
   </target>
 
