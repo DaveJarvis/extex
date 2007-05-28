@@ -50,7 +50,7 @@ public class PdfstartlinkTest extends NoFlagsButProtectedPrimitiveTester {
     public void testError1() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES + "a \\pdfstartlink A",
+                DEFINE_BRACES + "\\pdfoutput=1 a \\pdfstartlink A",
                 //--- output message ---
                 "pdfTeX error (ext1): action type missing");
     }

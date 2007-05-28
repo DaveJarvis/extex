@@ -50,9 +50,9 @@ public class PdfdestTest extends NoFlagsButProtectedPrimitiveTester {
     public void testError1() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES + "a \\pdfdest num 23 A",
+                DEFINE_BRACES + "\\pdfoutput=0 a \\pdfdest num 23 A",
                 //--- output message ---
-                "pdfTeX error (ext1): pdfdest used while pdfoutput is not set");
+                "pdfTeX error (ext1): \\pdfdest used while pdfoutput is not set");
     }
 
     /**
