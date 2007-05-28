@@ -182,7 +182,7 @@ public class TexUnitInfo extends UnitInfo
     public void load(Context context, TokenSource source, Typesetter typesetter)
             throws HelpingException {
 
-        receiveLoaded(context, source);
+        receiveLoaded(context, source, typesetter);
     }
 
     /**
@@ -202,9 +202,9 @@ public class TexUnitInfo extends UnitInfo
      * 
      * @see org.extex.interpreter.context.observer.load.LoadedObserver#receiveLoaded(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource)
+     *      org.extex.interpreter.TokenSource, Typesetter)
      */
-    public void receiveLoaded(Context context, TokenSource source)
+    public void receiveLoaded(Context context, TokenSource source, Typesetter typesetter)
             throws HelpingException {
 
         if (context.getCount(TRACING_COMMANDS).gt(Count.ZERO)) {

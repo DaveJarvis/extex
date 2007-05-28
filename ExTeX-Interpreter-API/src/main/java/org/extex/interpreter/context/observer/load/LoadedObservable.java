@@ -21,38 +21,41 @@ package org.extex.interpreter.context.observer.load;
 
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
+import org.extex.typesetter.Typesetter;
 
 /**
- * This interface describes the possibility to register an observer for an
- * load event.
- *
+ * This interface describes the possibility to register an observer for an load
+ * event.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4399 $
  */
 public interface LoadedObservable {
 
     /**
-     * Register an observer for load events.
-     * Code change events are triggered when the context is loaded.
-     *
+     * Register an observer for load events. Code change events are triggered
+     * when the context is loaded.
+     * 
      * @param observer the observer to receive the events
      */
     void registerLoadObserver(LoadedObserver observer);
 
     /**
-     * Remove a registered observer for load events.
-     * Code change events are triggered when the context is loaded.
-     *
+     * Remove a registered observer for load events. Code change events are
+     * triggered when the context is loaded.
+     * 
      * @param observer the observer to receive the events
      */
     void unregisterLoadObserver(LoadedObserver observer);
 
     /**
      * Receive a notification about a load event.
-     *
+     * 
      * @param source the token source
+     * @param typesetter the typesetter
      * 
      * @throws HelpingException in case of an error
      */
-    void receiveLoad(TokenSource source) throws HelpingException;
+    void receiveLoad(TokenSource source, Typesetter typesetter)
+            throws HelpingException;
 }

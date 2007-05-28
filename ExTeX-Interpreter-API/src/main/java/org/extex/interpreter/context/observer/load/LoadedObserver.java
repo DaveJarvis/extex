@@ -24,11 +24,12 @@ import java.io.Serializable;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.typesetter.Typesetter;
 
 /**
  * This interface describes the ability to receive a notification about the
  * loading of a context.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4399 $
  */
@@ -36,12 +37,14 @@ public interface LoadedObserver extends Serializable {
 
     /**
      * Receive a notification on the loading of a context.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
+     * @param typesetter the typesetter
+     * 
      * @throws HelpingException in case of an error
      */
-    void receiveLoaded(Context context, TokenSource source)
-            throws HelpingException;
+    void receiveLoaded(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException;
 
 }

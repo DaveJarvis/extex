@@ -21,6 +21,8 @@ package org.extex.interpreter.unit;
 
 import java.io.Serializable;
 
+import org.extex.typesetter.Typesetter;
+
 /**
  * This is the base class for unit infos. Unit infos can be used to specify
  * code to be executing in the course of loading a unit.
@@ -78,6 +80,16 @@ public class UnitInfo implements Serializable {
     public void setName(String name) {
 
         this.name = name;
+    }
+
+    /**
+     * Setter for the typesetter.
+     *
+     * @param typesetter the typesetter
+     */
+    public void setTypesetter(Typesetter typesetter) {
+
+        // noop
     }
 
     /**
