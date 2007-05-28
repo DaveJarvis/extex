@@ -202,7 +202,7 @@ public class Write extends AbstractCode
 
             Tokens toks =
                     source.scanUnprotectedTokens(context, false, false,
-                        getName());
+                        printableControlSequence(context));
             write(key, toks, context);
 
         } else {
