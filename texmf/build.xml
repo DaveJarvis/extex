@@ -105,7 +105,7 @@
 
     <mkdir dir="target/classes" />
 
-    <javac srcdir="../ExTeX-core/src/java"
+    <javac srcdir="../ExTeX-core/src/main/java"
            includes="**/TocIndex.java"
            destdir="target/classes" />
 
