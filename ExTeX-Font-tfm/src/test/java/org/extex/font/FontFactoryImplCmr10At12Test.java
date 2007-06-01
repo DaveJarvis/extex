@@ -24,11 +24,10 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.font.exception.FontException;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.typesetter.tc.font.impl.NullFont;
 
 /**
  * Test for the font factory.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -46,12 +45,13 @@ public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @throws ConfigurationException from the configuration system.
      * @throws FontException if a font error occurred.
      */
-    public FontFactoryImplCmr10At12Test() throws ConfigurationException,
-            FontException {
+    public FontFactoryImplCmr10At12Test()
+            throws ConfigurationException,
+                FontException {
 
         CoreFontFactory factory = makeFontFactory();
 
@@ -62,7 +62,8 @@ public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void test01() throws Exception {
@@ -71,16 +72,8 @@ public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
-     * @throws Exception if an error occurred.
-     */
-    public void test02() throws Exception {
-
-        assertFalse(font instanceof NullFont);
-    }
-
-    /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void test03() throws Exception {
@@ -89,7 +82,8 @@ public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void test04() throws Exception {
@@ -99,7 +93,8 @@ public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void test05() throws Exception {
@@ -109,7 +104,8 @@ public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void test06() throws Exception {
@@ -120,18 +116,20 @@ public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void test07() throws Exception {
 
         assertNotNull(font.getActualSize());
         assertTrue(new Dimen(Dimen.ONE * 12).eq(font.getActualSize()));
-        //assertEquals(1274110073, font.getCheckSum());
+        // assertEquals(1274110073, font.getCheckSum());
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void test08() throws Exception {
@@ -142,19 +140,21 @@ public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void test09() throws Exception {
 
         FixedDimen ex = font.getEx();
         assertNotNull(ex);
-        //assertTrue(ex.toString(), new Dimen(338602).eq(ex));
+        // assertTrue(ex.toString(), new Dimen(338602).eq(ex));
         assertTrue(Long.toString(ex.getValue()), new Dimen(338602).eq(ex));
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void test10() throws Exception {
@@ -166,7 +166,8 @@ public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void test11() throws Exception {
@@ -177,7 +178,8 @@ public class FontFactoryImplCmr10At12Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void test12() throws Exception {

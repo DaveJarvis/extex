@@ -19,21 +19,23 @@
 
 package org.extex.font.unicode;
 
-import org.extex.core.UnicodeChar;
-
 import junit.framework.TestCase;
+
+import org.extex.core.UnicodeChar;
 
 /**
  * Test for the mapping between the glyph name and the Unicode char.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public class GlyphNameTest extends TestCase {
 
     /**
-     * Test method for {@link org.extex.font.unicode.GlyphName#getUnicode(java.lang.String)}.
-     * @throws Exception TODO mgn
+     * Test method for
+     * {@link org.extex.font.unicode.GlyphName#getUnicode(java.lang.String)}.
+     * 
+     * @throws Exception if an error occurred.
      */
     public void testGetUnicode01() throws Exception {
 
@@ -42,19 +44,21 @@ public class GlyphNameTest extends TestCase {
 
         // A;0041
         assertEquals(UnicodeChar.get(Integer.parseInt("0041", 16)), g
-                .getUnicode("A"));
+            .getUnicode("A"));
 
         // zukatakana;30BA
         assertEquals(UnicodeChar.get(Integer.parseInt("30BA", 16)), g
-                .getUnicode("zukatakana"));
+            .getUnicode("zukatakana"));
 
         assertNull(g.getUnicode("notdefined!"));
 
     }
 
     /**
-     * Test method for {@link org.extex.font.unicode.GlyphName#getGlyphname(org.extex.core.UnicodeChar)}.
-     * @throws Exception TODO mgn
+     * Test method for
+     * {@link org.extex.font.unicode.GlyphName#getGlyphname(org.extex.core.UnicodeChar)}.
+     * 
+     * @throws Exception if an error occurred.
      */
     public void testGetGlyphname() throws Exception {
 
@@ -63,13 +67,13 @@ public class GlyphNameTest extends TestCase {
 
         // A;0041
         assertEquals("A", g.getGlyphname(UnicodeChar.get(Integer.parseInt(
-                "0041", 16))));
+            "0041", 16))));
         // zukatakana;30BA
         assertEquals("zukatakana", g.getGlyphname(UnicodeChar.get(Integer
-                .parseInt("30BA", 16))));
+            .parseInt("30BA", 16))));
 
         assertNull(g
-                .getGlyphname(UnicodeChar.get(Integer.parseInt("FFFF", 16))));
+            .getGlyphname(UnicodeChar.get(Integer.parseInt("FFFF", 16))));
 
         assertEquals("space", g.getGlyphname(UnicodeChar.get(32)));
 

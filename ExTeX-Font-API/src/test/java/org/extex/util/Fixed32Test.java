@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,34 +17,47 @@
  *
  */
 
-package org.extex.font;
+package org.extex.util;
+
+import junit.framework.TestCase;
+
+import org.extex.font.format.Fixed32;
 
 /**
- * Class for a ttf-font-file.
- *
+ * Test for a fixed point format.
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class TtfFontByteArray extends AbstractFontByteArray
-        implements
-            FontByteArray {
+public class Fixed32Test extends TestCase {
 
     /**
-     * Create a new object
-     * @param b  the byte array
+     * mains
+     * 
+     * @param args The command line
      */
-    public TtfFontByteArray(byte[] b) {
+    public static void main(String[] args) {
 
-        super(b);
+        junit.textui.TestRunner.run(Fixed32Test.class);
     }
 
     /**
-     * Returns the String for the class
-     * @return Returns the string for the class
+     * test 0x21998
      */
-    public String toString() {
+    public void testA1() {
 
-        return "TTF";
+        Fixed32 fp = new Fixed32(0x21998);
+        assertEquals(2.09997558594, fp.getDoubleValue(), 0.00000000001);
+    }
+
+    /**
+     * test 2.09997558594
+     */
+    public void testB1() {
+
+        Fixed32 fp = new Fixed32(2.09997558594);
+        assertEquals(0x21998, fp.getFixedPoint());
     }
 
 }

@@ -69,7 +69,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font manager.
-     *
+     * 
      * @throws Exception if an error occurred.
      */
     public void test03() throws Exception {
@@ -87,7 +87,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font manager.
-     *
+     * 
      * @throws Exception if an error occurred.
      */
     public void test04() throws Exception {
@@ -104,7 +104,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font manager.
-     *
+     * 
      * @throws Exception if an error occurred.
      */
     public void test05() throws Exception {
@@ -129,7 +129,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font manager.
-     *
+     * 
      * @throws Exception if an error occurred.
      */
     public void test06() throws Exception {
@@ -156,7 +156,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font manager.
-     *
+     * 
      * @throws Exception if an error occurred.
      */
     public void test07() throws Exception {

@@ -27,11 +27,10 @@ import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
 import org.extex.font.exception.FontException;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.typesetter.tc.font.impl.NullFont;
 
 /**
  * Test for the font factory (cmr10).
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -49,12 +48,13 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @throws ConfigurationException from the configuration system.
      * @throws FontException if a font error occurred.
      */
-    public FontFactoryImplCmr10Test() throws ConfigurationException,
-            FontException {
+    public FontFactoryImplCmr10Test()
+            throws ConfigurationException,
+                FontException {
 
         if (key == null) {
             CoreFontFactory factory = makeFontFactory();
@@ -66,7 +66,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void test01() throws Exception {
@@ -75,16 +76,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
-     * @throws Exception if an error occurred.
-     */
-    public void test02() throws Exception {
-
-        assertFalse(font instanceof NullFont);
-    }
-
-    /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void test03() throws Exception {
@@ -93,7 +86,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void test04() throws Exception {
@@ -103,7 +97,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void test05() throws Exception {
@@ -117,7 +112,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void test06() throws Exception {
@@ -128,18 +124,20 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void test07() throws Exception {
 
         assertNotNull(font.getActualSize());
         assertTrue(new Dimen(Dimen.ONE * 10).eq(font.getActualSize()));
-        //assertEquals(1274110073, font.getCheckSum());
+        // assertEquals(1274110073, font.getCheckSum());
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void test08() throws Exception {
@@ -150,7 +148,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void test09() throws Exception {
@@ -161,7 +160,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void test10() throws Exception {
@@ -172,7 +172,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void test11() throws Exception {
@@ -184,7 +185,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font key: cmr10 
+     * Test for the font key: cmr10
+     * 
      * @throws Exception if an error occurred.
      */
     public void testScale01() throws Exception {
@@ -198,7 +200,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     // -----------------------------------------------
 
     /**
-     * Test for the font: cmr10 - width 
+     * Test for the font: cmr10 - width
+     * 
      * @throws Exception if an error occurred.
      */
     public void testWidth01() throws Exception {
@@ -211,7 +214,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font: cmr10 - width 
+     * Test for the font: cmr10 - width
+     * 
      * @throws Exception if an error occurred.
      */
     public void testWidth02() throws Exception {
@@ -220,12 +224,13 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
         assertNotNull(w);
         assertTrue(Long.toString(w.getLength().getValue()), new Glue(409601)
-                .eq(w));
+            .eq(w));
 
     }
 
     /**
-     * Test for the font: cmr10 - width 
+     * Test for the font: cmr10 - width
+     * 
      * @throws Exception if an error occurred.
      */
     public void testWidth03() throws Exception {
@@ -234,12 +239,13 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
         assertNotNull(w);
         assertTrue(Long.toString(w.getLength().getValue()), new Glue(491521)
-                .eq(w));
+            .eq(w));
 
     }
 
     /**
-     * Test for the font: cmr10 - width 
+     * Test for the font: cmr10 - width
+     * 
      * @throws Exception if an error occurred.
      */
     public void testWidth04() throws Exception {
@@ -248,14 +254,15 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
         assertNotNull(w);
         assertTrue(Long.toString(w.getLength().getValue()), new Glue(491521)
-                .eq(w));
+            .eq(w));
 
     }
 
     // -----------------------------------------------
 
     /**
-     * Test for the font: cmr10 - depth 
+     * Test for the font: cmr10 - depth
+     * 
      * @throws Exception if an error occurred.
      */
     public void testDepth01() throws Exception {
@@ -268,7 +275,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font: cmr10 - depth 
+     * Test for the font: cmr10 - depth
+     * 
      * @throws Exception if an error occurred.
      */
     public void testDepth02() throws Exception {
@@ -281,7 +289,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font: cmr10 - depth 
+     * Test for the font: cmr10 - depth
+     * 
      * @throws Exception if an error occurred.
      */
     public void testDepth03() throws Exception {
@@ -294,7 +303,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font: cmr10 - depth 
+     * Test for the font: cmr10 - depth
+     * 
      * @throws Exception if an error occurred.
      */
     public void testDepth04() throws Exception {
@@ -309,7 +319,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     // -----------------------------------------------
 
     /**
-     * Test for the font: cmr10 - height 
+     * Test for the font: cmr10 - height
+     * 
      * @throws Exception if an error occurred.
      */
     public void testHeight01() throws Exception {
@@ -322,7 +333,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font: cmr10 - height 
+     * Test for the font: cmr10 - height
+     * 
      * @throws Exception if an error occurred.
      */
     public void testHeight02() throws Exception {
@@ -331,12 +343,13 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
         assertNotNull(w);
         assertTrue(Long.toString(w.getLength().getValue()), new Glue(447828)
-                .eq(w));
+            .eq(w));
 
     }
 
     /**
-     * Test for the font: cmr10 - height 
+     * Test for the font: cmr10 - height
+     * 
      * @throws Exception if an error occurred.
      */
     public void testHeight03() throws Exception {
@@ -345,12 +358,13 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
         assertNotNull(w);
         assertTrue(Long.toString(w.getLength().getValue()), new Glue(447828)
-                .eq(w));
+            .eq(w));
 
     }
 
     /**
-     * Test for the font: cmr10 - height 
+     * Test for the font: cmr10 - height
+     * 
      * @throws Exception if an error occurred.
      */
     public void testHeight04() throws Exception {
@@ -359,7 +373,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
         assertNotNull(w);
         assertTrue(Long.toString(w.getLength().getValue()), new Glue(447828)
-                .eq(w));
+            .eq(w));
 
     }
 
@@ -367,6 +381,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: cmr10 - italic correction
+     * 
      * @throws Exception if an error occurred.
      */
     public void testItalic01() throws Exception {
@@ -379,7 +394,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font: cmr10 - italic correction 
+     * Test for the font: cmr10 - italic correction
+     * 
      * @throws Exception if an error occurred.
      */
     public void testItalic02() throws Exception {
@@ -392,7 +408,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font: cmr10 - italic correction 
+     * Test for the font: cmr10 - italic correction
+     * 
      * @throws Exception if an error occurred.
      */
     public void testItalic03() throws Exception {
@@ -405,7 +422,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     }
 
     /**
-     * Test for the font: cmr10 - italic correction 
+     * Test for the font: cmr10 - italic correction
+     * 
      * @throws Exception if an error occurred.
      */
     public void testItalic04() throws Exception {
@@ -419,6 +437,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: cmr10 - has glyph
+     * 
      * @throws Exception if an error occurred.
      */
     public void testHasGlyph01() throws Exception {
@@ -428,6 +447,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: cmr10 - has glyph
+     * 
      * @throws Exception if an error occurred.
      */
     public void testHasGlyph02() throws Exception {
@@ -437,6 +457,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: cmr10 - space
+     * 
      * @throws Exception if an error occurred.
      */
     public void testSpace01() throws Exception {
@@ -445,12 +466,13 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
         assertNotNull(g);
         assertTrue(g.toString(), new Glue(new Dimen(218453), new Dimen(109226),
-                new Dimen(72818)).eq(g));
+            new Dimen(72818)).eq(g));
 
     }
 
     /**
      * Test for the font: cmr10 - kerning
+     * 
      * @throws Exception if an error occurred.
      */
     public void testKerning01() throws Exception {
@@ -464,6 +486,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: cmr10 - kerning
+     * 
      * @throws Exception if an error occurred.
      */
     public void testKerning02() throws Exception {
@@ -477,12 +500,13 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: cmr10 - kerning
+     * 
      * @throws Exception if an error occurred.
      */
     public void testKerning03() throws Exception {
 
-        FixedDimen k = font.getKerning(UnicodeChar.get('A'), UnicodeChar
-                .get('A'));
+        FixedDimen k =
+                font.getKerning(UnicodeChar.get('A'), UnicodeChar.get('A'));
 
         assertNotNull(k);
         assertTrue(k.toString(), Dimen.ZERO_PT.eq(k));
@@ -491,6 +515,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: cmr10 - kerning
+     * 
      * @throws Exception if an error occurred.
      */
     public void testKerning04() throws Exception {
@@ -504,12 +529,13 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: cmr10 - kerning
+     * 
      * @throws Exception if an error occurred.
      */
     public void testKerning05() throws Exception {
 
-        FixedDimen k = font.getKerning(UnicodeChar.get('A'), UnicodeChar
-                .get('V'));
+        FixedDimen k =
+                font.getKerning(UnicodeChar.get('A'), UnicodeChar.get('V'));
 
         assertNotNull(k);
         assertTrue(Long.toString(k.getValue()), new Dimen(-72819).eq(k));
@@ -518,12 +544,13 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: cmr10 - kerning
+     * 
      * @throws Exception if an error occurred.
      */
     public void testKerning06() throws Exception {
 
-        FixedDimen k = font.getKerning(UnicodeChar.get(0xee41), UnicodeChar
-                .get('V'));
+        FixedDimen k =
+                font.getKerning(UnicodeChar.get(0xee41), UnicodeChar.get('V'));
 
         assertNotNull(k);
         assertTrue(Long.toString(k.getValue()), new Dimen(-72819).eq(k));
@@ -533,6 +560,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     // ------------------------------------------------------------
     /**
      * Test for the font: cmr10 - Ligature
+     * 
      * @throws Exception if an error occurred.
      */
     public void testLigature01() throws Exception {
@@ -545,6 +573,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: cmr10 - Ligature
+     * 
      * @throws Exception if an error occurred.
      */
     public void testLigature02() throws Exception {
@@ -557,12 +586,13 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: cmr10 - Ligature
+     * 
      * @throws Exception if an error occurred.
      */
     public void testLigature03() throws Exception {
 
-        UnicodeChar uc = font.getLigature(UnicodeChar.get('A'), UnicodeChar
-                .get('A'));
+        UnicodeChar uc =
+                font.getLigature(UnicodeChar.get('A'), UnicodeChar.get('A'));
 
         assertNull(uc);
 
@@ -570,6 +600,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: cmr10 - Ligature
+     * 
      * @throws Exception if an error occurred.
      */
     public void testLigature04() throws Exception {
@@ -582,12 +613,13 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: cmr10 - Ligature
+     * 
      * @throws Exception if an error occurred.
      */
     public void testLigature05() throws Exception {
 
-        UnicodeChar uc = font.getLigature(UnicodeChar.get('f'), UnicodeChar
-                .get('f'));
+        UnicodeChar uc =
+                font.getLigature(UnicodeChar.get('f'), UnicodeChar.get('f'));
 
         assertNotNull(uc);
         assertEquals(0xee0b, uc.getCodePoint());
@@ -596,12 +628,13 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: cmr10 - Ligature
+     * 
      * @throws Exception if an error occurred.
      */
     public void testLigature06() throws Exception {
 
-        UnicodeChar uc = font.getLigature(UnicodeChar.get(0xee0b), UnicodeChar
-                .get('l'));
+        UnicodeChar uc =
+                font.getLigature(UnicodeChar.get(0xee0b), UnicodeChar.get('l'));
 
         assertNotNull(uc);
         assertEquals(0xee0f, uc.getCodePoint());

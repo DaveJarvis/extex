@@ -25,7 +25,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * Test for the font factory (with font logosl9).
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -43,7 +43,7 @@ public class FontFactoryImplCmmanTest extends AbstractFontFactoryTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @throws ConfigurationException from the configuration system.
      * @throws FontException if a font error occurred.
      */
@@ -68,9 +68,9 @@ public class FontFactoryImplCmmanTest extends AbstractFontFactoryTester {
     }
 
     /**
-     * test cmman
-     * Char T defined
-     * @throws Exception TODO mgn
+     * test cmman Char T defined
+     * 
+     * @throws Exception if an error occurred.
      */
     public void testcmmanT() throws Exception {
 
@@ -78,9 +78,9 @@ public class FontFactoryImplCmmanTest extends AbstractFontFactoryTester {
     }
 
     /**
-     * test cmman
-     * Char h defined
-     * @throws Exception TODO mgn
+     * test cmman Char h defined
+     * 
+     * @throws Exception if an error occurred.
      */
     public void testcmmanh() throws Exception {
 
@@ -88,9 +88,9 @@ public class FontFactoryImplCmmanTest extends AbstractFontFactoryTester {
     }
 
     /**
-     * test cmman
-     * ligature
-     * @throws Exception TODO mgn
+     * test cmman ligature
+     * 
+     * @throws Exception if an error occurred.
      */
     public void testcmmanLig() throws Exception {
 

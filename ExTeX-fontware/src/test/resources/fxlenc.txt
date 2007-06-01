@@ -22,4 +22,5 @@
 /var/daten/src/font/libertine/src/enc/xl-23.enc;U;fxl23;fxl
 /var/daten/src/font/libertine/src/enc/xl-26.enc;U;fxl26;fxl
 /var/daten/src/font/libertine/src/enc/xl-e0.enc;U;fxle0;fxl
+/var/daten/src/font/libertine/src/enc/xl-e1.enc;U;fxle1;fxl
 /var/daten/src/font/libertine/src/enc/xl-ff.enc;U;fxlff;fxl

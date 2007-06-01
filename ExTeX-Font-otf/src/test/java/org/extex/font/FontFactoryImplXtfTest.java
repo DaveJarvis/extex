@@ -25,11 +25,9 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
-import org.extex.typesetter.tc.font.impl.NullFont;
 
 /**
- * Test for the font factory (xtf).
- * (At the moment only ttf!)
+ * Test for the font factory (xtf). (At the moment only ttf!)
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -73,7 +71,6 @@ public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
     public void test01() throws Exception {
 
         assertNotNull(font);
-        assertFalse(font instanceof NullFont);
         assertEquals("Gara", font.getFontName());
     }
 
@@ -200,7 +197,6 @@ public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
     public void test10() throws Exception {
 
         assertNotNull(font);
-        assertFalse(font instanceof NullFont);
         assertEquals("Gara", font.getFontName());
 
         assertTrue(font.hasGlyph(UnicodeChar.get(' ')));
@@ -233,7 +229,6 @@ public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
     public void testKerning01() throws Exception {
 
         assertNotNull(font);
-        assertFalse(font instanceof NullFont);
 
         FixedDimen k = font.getKerning(null, null);
         assertNotNull(k);
@@ -249,7 +244,6 @@ public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
     public void testKerning02() throws Exception {
 
         assertNotNull(font);
-        assertFalse(font instanceof NullFont);
 
         FixedDimen k = font.getKerning(UnicodeChar.get('@'), null);
         assertNotNull(k);
@@ -265,7 +259,6 @@ public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
     public void testKerning03() throws Exception {
 
         assertNotNull(font);
-        assertFalse(font instanceof NullFont);
 
         FixedDimen k = font.getKerning(null, UnicodeChar.get('@'));
         assertNotNull(k);
@@ -281,7 +274,6 @@ public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
     public void testKerning04() throws Exception {
 
         assertNotNull(font);
-        assertFalse(font instanceof NullFont);
 
         FixedDimen k =
                 font.getKerning(UnicodeChar.get('@'), UnicodeChar.get('@'));
@@ -298,7 +290,6 @@ public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
     public void testKerning05() throws Exception {
 
         assertNotNull(font);
-        assertFalse(font instanceof NullFont);
 
         // (LABEL C A) (KRN C C R -38)
         FixedDimen k =
@@ -316,7 +307,6 @@ public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
     public void testKerning06() throws Exception {
 
         assertNotNull(font);
-        assertFalse(font instanceof NullFont);
 
         // (LABEL C A) (KRN C u R -19)
         FixedDimen k =
@@ -334,7 +324,6 @@ public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
     public void testLigature01() throws Exception {
 
         assertNotNull(font);
-        assertFalse(font instanceof NullFont);
 
         UnicodeChar l = font.getLigature(null, null);
         assertNull(l);
@@ -348,7 +337,6 @@ public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
     public void testLigature02() throws Exception {
 
         assertNotNull(font);
-        assertFalse(font instanceof NullFont);
 
         UnicodeChar l = font.getLigature(UnicodeChar.get('A'), null);
         assertNull(l);
@@ -362,7 +350,6 @@ public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
     public void testLigature03() throws Exception {
 
         assertNotNull(font);
-        assertFalse(font instanceof NullFont);
 
         UnicodeChar l = font.getLigature(null, UnicodeChar.get('A'));
         assertNull(l);
@@ -376,7 +363,6 @@ public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
     public void testLigature04() throws Exception {
 
         assertNotNull(font);
-        assertFalse(font instanceof NullFont);
 
         UnicodeChar l =
                 font.getLigature(UnicodeChar.get('A'), UnicodeChar.get('A'));
@@ -391,7 +377,6 @@ public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
     public void testLigature05() throws Exception {
 
         assertNotNull(font);
-        assertFalse(font instanceof NullFont);
 
         UnicodeChar l =
                 font.getLigature(UnicodeChar.get('f'), UnicodeChar.get('f'));
