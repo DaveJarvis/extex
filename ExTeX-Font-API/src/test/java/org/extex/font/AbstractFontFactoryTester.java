@@ -35,7 +35,7 @@ import org.extex.resource.ResourceFinderFactory;
 
 /**
  * Test for the font factory.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -43,7 +43,7 @@ public abstract class AbstractFontFactoryTester extends TestCase {
 
     /**
      * Create the font factory.
-     *
+     * 
      * @return the font factory.
      * @throws ConfigurationException from the configuration system.
      */
@@ -51,19 +51,23 @@ public abstract class AbstractFontFactoryTester extends TestCase {
 
         CoreFontFactory factory = new FontFactoryImpl();
 
-        Configuration config = new ConfigurationFactory()
-                .newInstance(AbstractFontFactoryTester.class.getName().replaceAll(
-                        "\\.", "/"));
+        Configuration config =
+                new ConfigurationFactory()
+                    .newInstance(AbstractFontFactoryTester.class.getName()
+                        .replaceAll("\\.", "/"));
 
         if (factory instanceof Configurable) {
             ((Configurable) factory)
-                    .configure(config.getConfiguration("Fonts"));
+                .configure(config.getConfiguration("Fonts"));
         }
         if (factory instanceof ResourceConsumer) {
             Logger logger = Logger.getLogger("Test");
-            ResourceFinder finder = new ResourceFinderFactory()
-                    .createResourceFinder(config.getConfiguration("Resource"),
-                            logger, new Properties(), null /*provider*/);
+            ResourceFinder finder =
+                    new ResourceFinderFactory().createResourceFinder(config
+                        .getConfiguration("Resource"), logger,
+                        new Properties(), null /* provider */);
+
+            finder.enableTracing(true);
 
             ((ResourceConsumer) factory).setResourceFinder(finder);
         }
