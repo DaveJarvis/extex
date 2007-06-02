@@ -8,8 +8,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-core"/>
 	<classpathentry kind="lib" path="lib/iText.jar"/>
-	<classpathentry kind="lib" path="src/test/lib/jaxen-full.jar"/>
-	<classpathentry kind="lib" path="src/test/lib/saxpath.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font-API"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Typesetter-API"/>
 	<classpathentry kind="output" path="target/classes"/>
