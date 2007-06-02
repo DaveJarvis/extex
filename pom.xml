@@ -4,7 +4,7 @@
   <groupId>org.extex</groupId>
   <artifactId>extex</artifactId>
   <packaging>pom</packaging>
-  <version>SNAPSHOT</version>
+  <version>0.1-SNAPSHOT</version>
   <name>ExTeX</name>
   <inceptionYear>2003</inceptionYear>
   <url>http://www.extex.org</url>
@@ -157,6 +157,8 @@
    <module>ExTeX-Font-afm</module>
    <module>ExTeX-Font-otf</module>
    <!-- <module>ExTeX-fontware</module> -->
+   <module>ExTeX-Interpreter-API</module>
+   <module>ExTeX-Interpreter-tex</module>
    <module>ExTeX-Main-fmt</module>
    <module>ExTeX-Main-tex</module>
    <module>ExTeX-Scanner</module>
@@ -165,7 +167,7 @@
    <module>ExTeX-Unit-color</module>
    <module>ExTeX-Unit-etex</module>
    <module>ExTeX-Unit-extex</module>
-   <!-- <module>ExTeX-Unit-image</module> -->
+   <module>ExTeX-Unit-image</module>
    <module>ExTeX-Unit-namespace</module>
    <module>ExTeX-Unit-native</module>
    <module>ExTeX-Unit-omega</module>
