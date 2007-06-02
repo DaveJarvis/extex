@@ -44,7 +44,7 @@ import org.extex.resource.ResourceFinder;
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5592 $
  */
 public class FontFactoryImpl
         implements
@@ -183,6 +183,11 @@ public class FontFactoryImpl
             if (in != null) {
 
                 font = new Loader().getInstance(subcfg);
+                if (font instanceof ResourceConsumer) {
+                    ResourceConsumer consumer = (ResourceConsumer) font;
+                    consumer.setResourceFinder(finder);
+                }
+
                 font.loadFont(in, this, key);
 
                 // store in the cache

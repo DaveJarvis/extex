@@ -19,6 +19,8 @@
 
 package org.extex.font.format.afm;
 
+import java.io.InputStream;
+
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.Dimen;
@@ -29,6 +31,7 @@ import org.extex.font.AbstractFontFactoryTester;
 import org.extex.font.CoreFontFactory;
 import org.extex.font.ExtexFont;
 import org.extex.font.FontKey;
+import org.extex.font.fontparameter.FontParameter;
 import org.extex.font.unicode.GlyphName;
 
 /**
@@ -55,6 +58,11 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
     private static CoreFontFactory factory;
 
     /**
+     * The font parameter. (only one instance for all tests)
+     */
+    private static FontParameter param;
+
+    /**
      * {@inheritDoc}
      * 
      * @see junit.framework.TestCase#setUp()
@@ -65,6 +73,8 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
             factory = makeFontFactory();
             key = factory.getFontKey("fxlr");
             font = factory.getInstance(key);
+            InputStream in = finder.findResource("fxlr", "fontinfo");
+            param = new FontParameter(in);
         }
     }
 
@@ -77,6 +87,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
         assertNotNull(font);
         assertEquals("fxlr", font.getFontName());
+        assertNotNull(param);
     }
 
     /**
@@ -188,7 +199,6 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
     public void test10() throws Exception {
 
         assertNotNull(font);
-        // assertFalse(font instanceof NullFont); // gene: ???
         assertEquals("fxlr", font.getFontName());
 
         assertTrue(font.hasGlyph(UnicodeChar.get(' ')));
@@ -221,7 +231,6 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
     public void testKerning01() throws Exception {
 
         assertNotNull(font);
-        // assertFalse(font instanceof NullFont); // gene: ???
 
         FixedDimen k = font.getKerning(null, null);
         assertNotNull(k);
@@ -237,7 +246,6 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
     public void testKerning02() throws Exception {
 
         assertNotNull(font);
-        // assertFalse(font instanceof NullFont); // gene: ???
 
         FixedDimen k = font.getKerning(UnicodeChar.get('@'), null);
         assertNotNull(k);
@@ -253,7 +261,6 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
     public void testKerning03() throws Exception {
 
         assertNotNull(font);
-        // assertFalse(font instanceof NullFont); // gene: ???
 
         FixedDimen k = font.getKerning(null, UnicodeChar.get('@'));
         assertNotNull(k);
@@ -269,7 +276,6 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
     public void testKerning04() throws Exception {
 
         assertNotNull(font);
-        // assertFalse(font instanceof NullFont); // gene: ???
 
         FixedDimen k =
                 font.getKerning(UnicodeChar.get('@'), UnicodeChar.get('@'));
@@ -286,7 +292,6 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
     public void testKerning05() throws Exception {
 
         assertNotNull(font);
-        // assertFalse(font instanceof NullFont); // gene: ???
 
         // KPX at Alpha -29
         FixedDimen k =
@@ -305,7 +310,6 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
     public void testKerning06() throws Exception {
 
         assertNotNull(font);
-        // assertFalse(font instanceof NullFont); // gene: ???
 
         // KPX A c -12
         FixedDimen k =
@@ -323,7 +327,6 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
     public void testLigature01() throws Exception {
 
         assertNotNull(font);
-        // assertFalse(font instanceof NullFont); // gene: ???
 
         UnicodeChar l = font.getLigature(null, null);
         assertNull(l);
@@ -337,7 +340,6 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
     public void testLigature02() throws Exception {
 
         assertNotNull(font);
-        // assertFalse(font instanceof NullFont); // gene: ???
 
         UnicodeChar l = font.getLigature(UnicodeChar.get('A'), null);
         assertNull(l);
@@ -351,7 +353,6 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
     public void testLigature03() throws Exception {
 
         assertNotNull(font);
-        // assertFalse(font instanceof NullFont); // gene: ???
 
         UnicodeChar l = font.getLigature(null, UnicodeChar.get('A'));
         assertNull(l);
@@ -365,7 +366,6 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
     public void testLigature04() throws Exception {
 
         assertNotNull(font);
-        // assertFalse(font instanceof NullFont); // gene: ???
 
         UnicodeChar l =
                 font.getLigature(UnicodeChar.get('A'), UnicodeChar.get('A'));
@@ -380,13 +380,10 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
     public void testLigature05() throws Exception {
 
         assertNotNull(font);
-        // TODO mgn: problem: glyphname-list has ff but not f_f and so on
-        // UnicodeChar l =
-        // font.getLigature(UnicodeChar.get('f'), UnicodeChar.get('f'));
-        // assertNotNull(l);
-        // assertEquals(GlyphName.getInstance().getUnicode("ff").getCodePoint(),
-        // l
-        // .getCodePoint());
+        UnicodeChar l =
+                font.getLigature(UnicodeChar.get('f'), UnicodeChar.get('f'));
+        assertNotNull(l);
+        assertEquals(param.getUnicode("f_f").getCodePoint(), l.getCodePoint());
     }
 
     /**
@@ -398,12 +395,10 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
         assertNotNull(font);
 
-        // UnicodeChar l =
-        // font.getLigature(GlyphName.getInstance().getUnicode("ff"),
-        // UnicodeChar.get('i'));
-        // assertNotNull(l);
-        // assertEquals(GlyphName.getInstance().getUnicode("ffi").getCodePoint(),
-        // l.getCodePoint());
+        UnicodeChar l =
+                font.getLigature(param.getUnicode("f_f"), UnicodeChar.get('i'));
+        assertNotNull(l);
+        assertEquals(param.getUnicode("f_f_i").getCodePoint(), l.getCodePoint());
 
     }
 

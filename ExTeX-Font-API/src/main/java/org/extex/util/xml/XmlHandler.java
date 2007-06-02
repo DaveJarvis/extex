@@ -107,7 +107,7 @@ public class XmlHandler extends DefaultHandler {
      */
     private void checkWriter() throws SAXException {
 
-        if (writer == null) {
+        if (useWriter && writer == null) {
             throw new SAXException("writer not set!");
         }
     }

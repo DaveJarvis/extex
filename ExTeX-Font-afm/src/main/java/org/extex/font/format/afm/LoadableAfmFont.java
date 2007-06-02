@@ -34,7 +34,10 @@ import org.extex.font.FontKey;
 import org.extex.font.LoadableFont;
 import org.extex.font.exception.CorruptFontException;
 import org.extex.font.exception.FontException;
+import org.extex.font.fontparameter.FontParameter;
 import org.extex.font.unicode.GlyphName;
+import org.extex.resource.ResourceConsumer;
+import org.extex.resource.ResourceFinder;
 
 /**
  * Class to load afm fonts.
@@ -52,7 +55,7 @@ import org.extex.font.unicode.GlyphName;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class LoadableAfmFont implements LoadableFont {
+public class LoadableAfmFont implements LoadableFont, ResourceConsumer {
 
     /**
      * The actual font key.
@@ -83,6 +86,11 @@ public class LoadableAfmFont implements LoadableFont {
      * The afm parser.
      */
     private AfmParser parser;
+
+    /**
+     * The font parameter
+     */
+    private FontParameter param = null;
 
     /**
      * Convert a float value to a <code>Dimen</code>.
@@ -132,7 +140,13 @@ public class LoadableAfmFont implements LoadableFont {
                 return lastUsedCm;
             }
             // get thy glyph name
-            String name = glyphname.getGlyphname(uc);
+            String name = null;
+            if (param != null) {
+                name = param.getGlyphname(uc);
+            }
+            if (name == null) {
+                name = glyphname.getGlyphname(uc);
+            }
             if (name != null) {
                 AfmCharMetric cm = parser.getAfmCharMetric(name);
                 if (cm != null) {
@@ -287,8 +301,14 @@ public class LoadableAfmFont implements LoadableFont {
                 String lig = cm1.getLigature(cm2.getN());
                 if (lig != null) {
                     try {
-                        // TODO mgn: problem with glyphnames like f_f instead of ff
-                        return GlyphName.getInstance().getUnicode(lig);
+                        UnicodeChar uc = null;
+                        if (param != null) {
+                            uc = param.getUnicode(lig);
+                        }
+                        if (uc == null) {
+                            uc = GlyphName.getInstance().getUnicode(lig);
+                        }
+                        return uc;
                     } catch (IOException e) {
                         return null;
                     }
@@ -368,6 +388,12 @@ public class LoadableAfmFont implements LoadableFont {
 
             parser = new AfmParser(in);
 
+            InputStream paramin =
+                    finder.findResource(fontKey.getName(), "fontinfo");
+            if (paramin != null) {
+                param = new FontParameter(paramin);
+            }
+
         } catch (FontException e) {
             throw new CorruptFontException(key, e.getLocalizedMessage());
         } catch (IOException e) {
@@ -381,6 +407,21 @@ public class LoadableAfmFont implements LoadableFont {
             actualFontKey = key;
         }
 
+    }
+
+    /**
+     * The resource finder.
+     */
+    private ResourceFinder finder;
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.resource.ResourceConsumer#setResourceFinder(org.extex.resource.ResourceFinder)
+     */
+    public void setResourceFinder(ResourceFinder finder) {
+
+        this.finder = finder;
     }
 
 }

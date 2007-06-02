@@ -25,12 +25,6 @@
       <path>.</path>
       <extension>.fmt</extension>
     </fmt>
-    <efm>
-      <extension>.efm</extension>
-      <path>.</path>
-      <path property="extex.fonts"/>
-      <path property="texinputs"/>
-    </efm>
     <pfb>
       <extension>.pfb</extension>
       <path>.</path>
@@ -50,6 +44,13 @@
       <path property="extex.fonts"/>
       <path property="texinputs"/>
     </afm>
+    <fontinfo>
+      <extension>.fontinfo</extension>
+      <path>../texmf/src/texmf/fonts/afm</path>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </fontinfo>
     <ttf>
       <extension>.ttf</extension>
       <path>../texmf/src/texmf/fonts/ttf</path>
@@ -69,7 +70,6 @@
       <path>../texmf/src/texmf/fonts/tfm/public/latex</path>
       <path>../texmf/src/texmf/fonts/tfm/public/misc</path>
       <path>../texmf/src/texmf/fonts/tfm/public/mflogo</path>
-      <path>../ExTeX-Font/src/font</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
@@ -82,7 +82,6 @@
     </enc>
     <map>
       <extension>.enc</extension>
-      <path>../ExTeX-Font-API/src</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
@@ -91,7 +90,6 @@
       <path property="extex.texinputs"/>
       <path property="texinputs"/>
       <path property="extex.fonts"/>
-      <path>../ExTeX-Font-API/src</path>
       <path>.</path>
       <extension></extension>
     </default>

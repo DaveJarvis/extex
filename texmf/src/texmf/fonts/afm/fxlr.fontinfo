@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<info name="fxlr">
+	<glyphname>
+		<name id="f_f" value="FB00"/>
+		<name id="f_i" value="FB01"/>
+		<name id="f_f_i" value="FB03"/>
+		<name id="f_f_l" value="FB04"/>
+   </glyphname>
+</info>

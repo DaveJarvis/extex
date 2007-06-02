@@ -450,8 +450,11 @@ public class XMLStreamWriterTest extends TestCase {
             SAXParser parser = factory.newSAXParser();
 
             XmlHandler handler = new XmlHandler(writer);
-            parser.parse(new File("../ExTeX-Font/src/test/xml/xmltest1.xml"),
-                handler);
+            parser
+                .parse(
+                    new File(
+                        "../ExTeX-Font-API/src/main/resources/org/extex/util/xml/xmltest1.xml"),
+                    handler);
 
             writer.close();
             String xml = (new String(out.toByteArray(), ENCODING)).trim();

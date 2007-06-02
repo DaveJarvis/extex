@@ -42,6 +42,11 @@ import org.extex.resource.ResourceFinderFactory;
 public abstract class AbstractFontFactoryTester extends TestCase {
 
     /**
+     * The resource finder.
+     */
+    protected static ResourceFinder finder;
+
+    /**
      * Create the font factory.
      * 
      * @return the font factory.
@@ -74,11 +79,10 @@ public abstract class AbstractFontFactoryTester extends TestCase {
         }
         if (factory instanceof ResourceConsumer) {
             Logger logger = Logger.getLogger("Test");
-            ResourceFinder finder =
+            finder =
                     new ResourceFinderFactory().createResourceFinder(config
                         .getConfiguration("Resource"), logger,
                         new Properties(), null /* provider */);
-
             finder.enableTracing(true);
 
             ((ResourceConsumer) factory).setResourceFinder(finder);
