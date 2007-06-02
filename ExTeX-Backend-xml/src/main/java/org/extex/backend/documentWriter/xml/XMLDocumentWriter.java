@@ -70,7 +70,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * This is a xml implementation of a document writer.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:4704 $
+ * @version $Revision$
  */
 public class XMLDocumentWriter
         implements

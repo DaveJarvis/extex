@@ -814,7 +814,7 @@ public class XMLStreamWriter {
         } else {
             xtext = text;
         }
-        if (xtext.length() > 0) {
+        if (xtext != null && xtext.length() > 0) {
             if (nlset) {
                 printIndent();
             }
