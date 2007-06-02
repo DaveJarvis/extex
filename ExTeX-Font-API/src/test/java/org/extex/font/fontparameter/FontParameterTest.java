@@ -90,4 +90,17 @@ public class FontParameterTest extends TestCase {
         assertEquals(0x0042, param.getUnicode("B").getCodePoint());
 
     }
+
+    /**
+     * Test 04.
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void test04() throws Exception {
+
+        assertNull(param.getFontDimen("NOT_EXISTS"));
+        assertEquals(250, param.getFontDimen("SPACE").intValue());
+        assertEquals(431, param.getFontDimen("XHEIGHT").intValue());
+        assertEquals(111, param.getFontDimen("EXTRASPACE").intValue());
+    }
 }

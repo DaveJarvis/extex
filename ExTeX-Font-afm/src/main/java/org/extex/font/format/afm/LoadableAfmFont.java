@@ -21,6 +21,9 @@ package org.extex.font.format.afm;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
@@ -63,6 +66,17 @@ public class LoadableAfmFont implements LoadableFont, ResourceConsumer {
     private FontKey actualFontKey;
 
     /**
+     * The resource finder.
+     */
+    private ResourceFinder finder;
+
+    /**
+     * The map for the font dimen values.
+     */
+    private Map<String, FixedDimen> fontDimen =
+            new HashMap<String, FixedDimen>();
+
+    /**
      * The font key.
      */
     private FontKey fontKey;
@@ -83,14 +97,14 @@ public class LoadableAfmFont implements LoadableFont, ResourceConsumer {
     private UnicodeChar lastUsedUc = null;
 
     /**
-     * The afm parser.
-     */
-    private AfmParser parser;
-
-    /**
      * The font parameter
      */
     private FontParameter param = null;
+
+    /**
+     * The afm parser.
+     */
+    private AfmParser parser;
 
     /**
      * Convert a float value to a <code>Dimen</code>.
@@ -200,6 +214,10 @@ public class LoadableAfmFont implements LoadableFont, ResourceConsumer {
      */
     public FixedDimen getEx() {
 
+        FixedDimen val = fontDimen.get("XHEIGHT");
+        if (val != null) {
+            return val;
+        }
         float xh = parser.getHeader().getXheight();
         return floatToDimen(xh);
     }
@@ -211,6 +229,10 @@ public class LoadableAfmFont implements LoadableFont, ResourceConsumer {
      */
     public FixedDimen getFontDimen(String name) {
 
+        FixedDimen val = fontDimen.get(name);
+        if (val != null) {
+            return val;
+        }
         return Dimen.ZERO_PT;
     }
 
@@ -268,7 +290,6 @@ public class LoadableAfmFont implements LoadableFont, ResourceConsumer {
     public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
 
         // TODO mgn: nokerning beachten
-
         AfmCharMetric cm1 = getCharMetric(uc1);
 
         if (cm1 != null) {
@@ -335,6 +356,10 @@ public class LoadableAfmFont implements LoadableFont, ResourceConsumer {
      */
     public FixedGlue getSpace() {
 
+        FixedDimen val = fontDimen.get("SPACE");
+        if (val != null) {
+            return new Glue(val);
+        }
         AfmCharMetric space = parser.getAfmCharMetric("space");
         if (space != null) {
             float wx = space.getWx();
@@ -407,12 +432,27 @@ public class LoadableAfmFont implements LoadableFont, ResourceConsumer {
             actualFontKey = key;
         }
 
+        setFontDimenValues();
     }
 
     /**
-     * The resource finder.
+     * Set the font dimen values.
      */
-    private ResourceFinder finder;
+    private void setFontDimenValues() {
+
+        if (param != null) {
+            Map<String, Integer> fd = param.getFontDimen();
+            Iterator<String> it = fd.keySet().iterator();
+            while (it.hasNext()) {
+                String key = it.next();
+                Integer val = fd.get(key);
+                if (val != null) {
+                    int value = val.intValue();
+                    fontDimen.put(key, floatToDimen(value));
+                }
+            }
+        }
+    }
 
     /**
      * {@inheritDoc}

@@ -61,9 +61,27 @@ public class FontParameter {
                     glyphmap.put(id, uc);
                     unicodemap.put(uc, id);
                 }
+            } else if (hasParentElement("parameter")) {
+                if (isInElement("param")) {
+                    String id = attributes.getValue("id");
+                    String val = attributes.getValue("value");
+                    int value = 0;
+                    try {
+                        value = Integer.parseInt(val);
+                    } catch (NumberFormatException e) {
+                        // ignore
+                        value = 0;
+                    }
+                    fontDimen.put(id, value);
+                }
             }
         }
     }
+
+    /**
+     * The map fr the font dimen values.
+     */
+    private Map<String, Integer> fontDimen = new HashMap<String, Integer>();
 
     /**
      * The glyph name map.
@@ -84,6 +102,14 @@ public class FontParameter {
 
     /**
      * Creates a new object.
+     */
+    public FontParameter() {
+
+        super();
+    }
+
+    /**
+     * Creates a new object.
      * 
      * @param in The input.
      * @throws IOException if a io-error occurred.
@@ -94,11 +120,15 @@ public class FontParameter {
     }
 
     /**
-     * Creates a new object.
+     * Returns the font dimen value, or <code>null</code>, if not found.
+     * 
+     * @param name The name of the value.
+     * @return Returns the font dimen value, or <code>null</code>, if not
+     *         found.
      */
-    public FontParameter() {
+    public Integer getFontDimen(String name) {
 
-        super();
+        return fontDimen.get(name);
     }
 
     /**
@@ -185,6 +215,16 @@ public class FontParameter {
     public void setUseGlyphName(boolean useGlyphName) {
 
         this.useGlyphName = useGlyphName;
+    }
+
+    /**
+     * Getter for fontDimen.
+     * 
+     * @return the fontDimen
+     */
+    public Map<String, Integer> getFontDimen() {
+
+        return fontDimen;
     }
 
 }

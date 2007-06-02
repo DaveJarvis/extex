@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <info name="fxlr">
+   <!-- from afm2tfm
+   (SPACE D 250)
+   (STRETCH D 200)
+   (SHRINK D 100)
+   (XHEIGHT D 431)
+   (QUAD D 1000)
+   (EXTRASPACE D 111)
+   -->
+   <parameter>
+   	<param id="SPACE" value="250"/> 
+   	<param id="STRETCH" value="200"/> 
+   	<param id="SHRINK" value="100"/> 
+   	<param id="XHEIGHT" value="431"/> 
+   	<param id="QUAD" value="1000"/> 
+   	<param id="EXTRASPACE" value="111"/> 
+   </parameter>
 	<glyphname>
 		<name id="f_f" value="FB00"/>
 		<name id="f_i" value="FB01"/>
