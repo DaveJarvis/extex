@@ -809,17 +809,20 @@ public class XMLStreamWriter {
         closeElement();
         stack.setAppend();
         String xtext = null;
-        if (removeWhiteSpace) {
-            xtext = text.trim();
-        } else {
-            xtext = text;
-        }
-        if (xtext != null && xtext.length() > 0) {
-            if (nlset) {
-                printIndent();
+        if (text != null) {
+            if (removeWhiteSpace) {
+                xtext = text.trim();
+            } else {
+                xtext = text;
             }
-            out.write(createEntity(xtext));
-            nlset = false;
+
+            if (xtext != null && xtext.length() > 0) {
+                if (nlset) {
+                    printIndent();
+                }
+                out.write(createEntity(xtext));
+                nlset = false;
+            }
         }
     }
 

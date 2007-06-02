@@ -40,14 +40,21 @@ import org.extex.main.tex.TeX;
  */
 public class XmlOutputTest01 extends TestCase {
 
+    /**
+     * Test 01.
+     * 
+     * @throws Exception if an error occurred.
+     */
     public void test01() throws Exception {
 
         String[] args = {"-fmt=../texmf/target/texmf/tex", "-out", "xml"};
-        System.setIn(new ByteArrayInputStream(("\\relax\n hugo\n\\end\n")
-            .getBytes()));
+        System.setIn(new ByteArrayInputStream(("\\relax\n"
+                + "\\catcode`\\{=1 % left brace is begin-group character\n"
+                + "\\catcode`\\}=2 % right brace is end-group character\n"
+                + "\\font\\hugo=fxlr\n" + "\\hugo\n"
+                + "Dieser Text verwendet fxlr!\n" + "\\end\n").getBytes()));
 
-        String result = runTest(args, makeProperties());
-        // System.out.println(result);
+        runTest(args, makeProperties());
 
         // delete log file
         delete("texput.log");
@@ -93,14 +100,13 @@ public class XmlOutputTest01 extends TestCase {
         PrintStream stdout = System.out;
         PrintStream stderr = System.err;
         String result = null;
+        int status = 0;
         try {
             System.setOut(new PrintStream(outBuffer));
             System.setErr(new PrintStream(errBuffer));
 
             tex = new TeX(properties, null);
-            int status = tex.run(args);
-
-            assertEquals(0, status);
+            status = tex.run(args);
             result = errBuffer.toString();
 
         } finally {
@@ -109,6 +115,12 @@ public class XmlOutputTest01 extends TestCase {
             errBuffer.close();
             System.setErr(stderr);
         }
+
+        if (status != 0) {
+            System.out.println(result);
+        }
+        assertEquals(0, status);
+
         return result;
     }
 
@@ -120,7 +132,8 @@ public class XmlOutputTest01 extends TestCase {
     private static Properties makeProperties() {
 
         Properties properties = new Properties();
-        properties.put("extex.fonts", "../texmf/src/texmf/fonts/tfm/public/cm");
+        properties.put("extex.fonts", "../texmf/src/texmf/fonts/tfm/public/cm"
+                + ":../texmf/src/texmf/fonts/afm");
         return properties;
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -161,7 +161,7 @@ public class XMLDocumentWriter
     private boolean showvisible = true;
 
     /**
-     * xml trimallwhitespace TODO incomplete.
+     * xml trim all white space.
      */
     private boolean trimallwhitespace = true;
 
@@ -373,8 +373,13 @@ public class XMLDocumentWriter
         Iterator<String> it = param.keySet().iterator();
         while (it.hasNext()) {
             String name = it.next();
-            writer.writeStartElement(name);
-            writer.writeCharacters(param.get(name));
+            writer.writeStartElement("param");
+            writer.writeAttribute("name", name);
+            String value = param.get(name);
+            if (value == null) {
+                value = "";
+            }
+            writer.writeAttribute("value", value.trim());
             writer.writeEndElement();
         }
         writer.writeEndElement();
@@ -402,6 +407,7 @@ public class XMLDocumentWriter
                 writer = new XMLStreamWriter(out, encoding);
                 writer.setBeauty(newlines);
                 writer.setIndent(indent);
+                writer.setRemoveWhiteSpace(trimallwhitespace);
                 writer.writeStartDocument();
                 printParameterComment();
                 writer.writeStartElement("root");
