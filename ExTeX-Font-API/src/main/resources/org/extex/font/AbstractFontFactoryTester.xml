@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<ExTeX >
+
+<Resource>
+  <Finder class="org.extex.resource.FileFinder"
+          default="default">
+    <u2t>
+      <extension>.u2t</extension>
+      <path>../ExTeX-Font-Api/src/main/resources</path>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </u2t>
+    <tex>
+      <path property="extex.texinputs"/>
+      <path property="texinputs"/>
+      <path>.</path>
+      <path>../texmf/src/texmf/tex/plain/base</path>
+      <extension></extension>
+      <extension>.tex</extension>
+    </tex>
+    <fmt>
+      <path property="extex.texinputs"/>
+      <path property="texinputs"/>
+      <path>.</path>
+      <extension>.fmt</extension>
+    </fmt>
+    <efm>
+      <extension>.efm</extension>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </efm>
+    <pfb>
+      <extension>.pfb</extension>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </pfb>
+    <pfa>
+      <extension>.pfa</extension>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </pfa>
+    <afm>
+      <extension>.afm</extension>
+      <path>../texmf/src/texmf/fonts/afm</path>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </afm>
+    <ttf>
+      <extension>.ttf</extension>
+      <path>../texmf/src/texmf/fonts/ttf</path>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </ttf>
+    <vf>
+      <extension>.vf</extension>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </vf>
+    <tfm>
+      <extension>.tfm</extension>
+      <path>../texmf/src/texmf/fonts/tfm/public/cm</path>
+      <path>../texmf/src/texmf/fonts/tfm/public/latex</path>
+      <path>../texmf/src/texmf/fonts/tfm/public/misc</path>
+      <path>../texmf/src/texmf/fonts/tfm/public/mflogo</path>
+      <path>../ExTeX-Font/src/font</path>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </tfm>
+    <enc>
+      <extension>.enc</extension>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </enc>
+    <map>
+      <extension>.enc</extension>
+      <path>../ExTeX-Font-API/src</path>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </map>
+    <default>
+      <path property="extex.texinputs"/>
+      <path property="texinputs"/>
+      <path property="extex.fonts"/>
+      <path>../ExTeX-Font-API/src</path>
+      <path>.</path>
+      <extension></extension>
+    </default>
+  </Finder>
+
+</Resource>
+
+  <Fonts class="org.extex.font.FontFactoryImpl">
+		<Font type="tfm" class="org.extex.font.format.tfm.LoadableTfmFont" />
+		<Font type="afm" class="org.extex.font.format.afm.LoadableAfmFont" />
+		<Font type="ttf" class="org.extex.font.format.xtf.LoadableXtfFont" />
+
+      <FontType name="tfm" class="org.extex.font.manager.TfmBackendFontManager" />
+  </Fonts>
+  
+</ExTeX>
+  

@@ -287,6 +287,7 @@ public class LoadableAfmFont implements LoadableFont {
                 String lig = cm1.getLigature(cm2.getN());
                 if (lig != null) {
                     try {
+                        // TODO mgn: problem with glyphnames like f_f instead of ff
                         return GlyphName.getInstance().getUnicode(lig);
                     } catch (IOException e) {
                         return null;

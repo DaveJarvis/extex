@@ -49,12 +49,24 @@ public abstract class AbstractFontFactoryTester extends TestCase {
      */
     protected CoreFontFactory makeFontFactory() throws ConfigurationException {
 
+        return makeFontFactory(AbstractFontFactoryTester.class.getName());
+    }
+
+    /**
+     * Create the font factory.
+     * 
+     * @param classname The class name for the configuration file.
+     * @return the font factory.
+     * @throws ConfigurationException from the configuration system.
+     */
+    protected CoreFontFactory makeFontFactory(String classname)
+            throws ConfigurationException {
+
         CoreFontFactory factory = new FontFactoryImpl();
 
         Configuration config =
-                new ConfigurationFactory()
-                    .newInstance(AbstractFontFactoryTester.class.getName()
-                        .replaceAll("\\.", "/"));
+                new ConfigurationFactory().newInstance(classname.replaceAll(
+                    "\\.", "/"));
 
         if (factory instanceof Configurable) {
             ((Configurable) factory)
