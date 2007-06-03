@@ -73,7 +73,8 @@ public class ExpandedLeadersNode extends AbstractLeadersNode {
      * {@inheritDoc}
      * 
      * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillHorizontally(
-     *      long, org.extex.typesetter.type.Node, FixedDimen, FixedDimen)
+     *      long, org.extex.typesetter.type.Node,
+     *      org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
      */
     protected Node fillHorizontally(long total, Node node, FixedDimen posX,
             FixedDimen posY) {
@@ -117,14 +118,15 @@ public class ExpandedLeadersNode extends AbstractLeadersNode {
      * </p>
      * <p>
      * Otherwise a vlist is created and filled with appropriately many
-     * references to the repeat material. Optionally each elemnt is preceded by
+     * references to the repeat material. Optionally each element is preceded by
      * a kern node to achieve the proper distribution.
      * </p>
      * 
      * {@inheritDoc}
      * 
      * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillVertically(
-     *      long, org.extex.typesetter.type.Node, FixedDimen, FixedDimen)
+     *      long, org.extex.typesetter.type.Node,
+     *      org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
      */
     protected Node fillVertically(long total, Node node, FixedDimen posX,
             FixedDimen posY) {
