@@ -73,16 +73,16 @@ public interface Node extends Serializable {
      * 
      * @param context the interpreter context encapsulated as page context
      * @param typesetter the typesetter
-     * @param posX TODO
-     * @param posY TODO
+     * @param posX the horizontal position on the page
+     * @param posY the vertical position on the page
      * @return the node to be used instead of the current one in the output
      *         list. If the value is <code>null</code> then the node is
      *         deleted. If the value is the node itself then it is preserved.
      * 
      * @throws GeneralException in case of an error
      */
-    Node atShipping(PageContext context, Typesetter typesetter, FixedDimen posX, FixedDimen posY)
-            throws GeneralException;
+    Node atShipping(PageContext context, Typesetter typesetter,
+            FixedDimen posX, FixedDimen posY) throws GeneralException;
 
     /**
      * This method determines the number of characters contained in a node.
