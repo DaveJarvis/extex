@@ -7,7 +7,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-base"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-core"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Backend-dump"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Backend-dvix"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Backend-ps"/>
@@ -34,7 +33,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Backend-dvi"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Backend-pdfbox"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Backend-svg"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-fontware"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Main-fmt"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Typesetter-tex"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Interpreter-max"/>
