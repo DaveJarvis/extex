@@ -32,6 +32,7 @@ import org.extex.typesetter.type.OrientedNode;
  * <tt>\leaders</tt>, <tt>\cleaders</tt>, and <tt>\xleaders</tt>.
  * 
  * @see "<logo>TeX</logo> &ndash; The Program [149]"
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -76,7 +77,7 @@ public abstract class AbstractLeadersNode extends AbstractExpandableNode
      * 
      * @see org.extex.typesetter.type.node.AbstractNode#atShipping(
      *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
-     *      FixedDimen, FixedDimen)
+     *      org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
      */
     public Node atShipping(PageContext context, Typesetter typesetter,
             FixedDimen posX, FixedDimen posY) throws GeneralException {
