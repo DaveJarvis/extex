@@ -23,9 +23,9 @@ LOG=$LOCALDIR/logs/build.log
 export PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$HOME/bin:$PATH
 
 cd $LOCALDIR/trunk
-date >$LOG/export.log >>$LOG 2>&1
+date >$LOG 2>&1
 
-svn update >>$LOG/export.log 2>&1
+svn update >>$LOG 2>&1
 
 cd build
 source bin/nightly-build.sh >>$LOG 2>&1
