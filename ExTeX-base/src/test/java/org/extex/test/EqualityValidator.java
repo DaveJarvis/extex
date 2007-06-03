@@ -20,8 +20,9 @@
 package org.extex.test;
 
 /**
- * TODO gene: missing JavaDoc.
- *
+ * Validator which compares for equality against a fixed string. The reference
+ * value is passed in via the constructor.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -34,8 +35,9 @@ public class EqualityValidator implements Validator {
 
     /**
      * Creates a new object.
-     *
-     * @param expected the expected value
+     * 
+     * @param expected the expected value or <code>null</code> to accept
+     *        anything
      */
     public EqualityValidator(String expected) {
 
@@ -43,8 +45,11 @@ public class EqualityValidator implements Validator {
     }
 
     /**
+     * Returns <code>true</code> if the expected result is <code>null</code>
+     * or it is equal to the given string.
+     * 
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.test.Validator#validate(java.lang.String)
      */
     public boolean validate(String s) {
