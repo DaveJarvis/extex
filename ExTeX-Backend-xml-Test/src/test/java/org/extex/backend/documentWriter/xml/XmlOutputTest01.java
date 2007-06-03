@@ -19,6 +19,8 @@
 
 package org.extex.backend.documentWriter.xml;
 
+import java.util.Properties;
+
 import org.extex.test.ExTeXLauncher;
 
 /**
@@ -30,6 +32,18 @@ import org.extex.test.ExTeXLauncher;
 public class XmlOutputTest01 extends ExTeXLauncher {
 
     /**
+     * The properties.
+     */
+    private static Properties prop = null;
+
+    @Override
+    protected void setUp() throws Exception {
+
+        prop = System.getProperties();
+        //prop.setProperty("extex.output", "xml");
+    }
+
+    /**
      * Creates a new object.
      */
     public XmlOutputTest01() {
@@ -39,7 +53,8 @@ public class XmlOutputTest01 extends ExTeXLauncher {
 
     public void test01() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertSuccess(prop,
+        // --- input code ---
             "\\font\\hugo=fxlr " + "\\hugo " + "Hugo " + "\\end",
             // --- output message ---
             "Hugo" + TERM);
