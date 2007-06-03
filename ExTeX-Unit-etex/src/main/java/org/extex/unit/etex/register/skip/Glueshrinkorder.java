@@ -56,7 +56,9 @@ import org.extex.typesetter.exception.TypesetterException;
  * <pre class="syntax">
  *    &lang;glueshrinkorder&rang;
  *      &rarr; <tt>\glueshrinkorder</tt> {@linkplain
- *        org.extex.base.parser.ConstantGlueParser#parse(TokenSource,Context,Typesetter)
+ *        org.extex.interpreter.parser.GlueParser#parseGlue(
+ *        org.extex.interpreter.context.Context,
+ *        org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
  *        &lang;glue&rang;} </pre>
  * 
  * <h4>Examples</h4>
