@@ -73,6 +73,11 @@ public class FontKey implements Serializable {
     public static final String LIGATURES = "ligatures";
 
     /**
+     * The language for the font.
+     */
+    public static final String LANGUAGE = "language";
+
+    /**
      * The scaling factor of the font.
      */
     public static final String SCALE = "scale";
