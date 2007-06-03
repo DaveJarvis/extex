@@ -22,7 +22,7 @@
           default="default">
     <u2t>
       <extension>.u2t</extension>
-      <path>../ExTeX-Font/src/font</path>
+      <path>../texmf/src/texmf/fonts/u2t</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>

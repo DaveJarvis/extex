@@ -22,6 +22,7 @@
           default="default">
     <u2t>
       <extension>.u2t</extension>
+      <path>../texmf/src/texmf/fonts/u2t</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
@@ -30,6 +31,7 @@
       <path property="extex.texinputs"/>
       <path property="texinputs"/>
       <path>.</path>
+      <path>../texmf/src/texmf/tex/plain/base</path>
       <extension></extension>
       <extension>.tex</extension>
     </tex>
@@ -39,12 +41,6 @@
       <path>.</path>
       <extension>.fmt</extension>
     </fmt>
-    <efm>
-      <extension>.efm</extension>
-      <path>.</path>
-      <path property="extex.fonts"/>
-      <path property="texinputs"/>
-    </efm>
     <pfb>
       <extension>.pfb</extension>
       <path>.</path>
@@ -60,12 +56,21 @@
     <afm>
       <extension>.afm</extension>
       <path>.</path>
+      <path>../texmf/src/texmf/fonts/afm</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
     </afm>
+    <fontinfo>
+	    <extension>.fontinfo</extension>
+	    <path>.</path>
+	    <path>../texmf/src/texmf/fonts/afm</path>
+	    <path property="extex.fonts"/>
+	    <path property="texinputs"/>
+    </fontinfo>
     <ttf>
       <extension>.ttf</extension>
       <path>.</path>
+      <path>../texmf/src/texmf/fonts/ttf</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
     </ttf>
@@ -77,6 +82,9 @@
     </vf>
     <tfm>
       <extension>.tfm</extension>
+      <path>../texmf/src/texmf/fonts/tfm/public/cm</path>
+      <path>../texmf/src/texmf/fonts/tfm/public/latex</path>
+      <path>../texmf/src/texmf/fonts/tfm/public/misc</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
@@ -87,51 +95,19 @@
       <path property="extex.fonts"/>
       <path property="texinputs"/>
     </enc>
+    <map>
+      <extension>.enc</extension>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </map>
     <default>
       <path property="extex.texinputs"/>
       <path property="texinputs"/>
       <path property="extex.fonts"/>
       <path>.</path>
-      <extension/>
+      <extension></extension>
     </default>
-  </Finder>
-
-  <Finder class="org.extex.resource.ClasspathArchiveFinder"
-          trace="false"
-          default="default">
-    <default>
-      <extension>.{type}</extension>
-    </default>
-  </Finder>
-
-  <Finder class="org.extex.resource.ClasspathFinder"
-          trace="false"
-          default="default">
-    <fmt prefix="texmf/">
-      <extension>.fmt</extension>
-    </fmt>
-    <default skip="true"/>
-  </Finder>
-
-  <Finder class="org.extex.resource.LsrFinder"
-          trace="false"
-          capacity="88888"
-          default="default">
-    <path property="extex.fonts"/>
-    <path property="extex.texinputs"/>
-    <path property="texinputs"/>
-
-    <vf><extension/><extension>.vf</extension></vf>
-    <tfm><extension/><extension>.tfm</extension></tfm>
-    <efm><extension/><extension>.efm</extension></efm>
-    <afm><extension/><extension>.afm</extension></afm>
-    <pfb><extension/><extension>.pfb</extension></pfb>
-    <pfa><extension/><extension>.pfa</extension></pfa>
-    <map><extension/><extension>.map</extension></map>
-    <ttf><extension/><extension>.ttf</extension></ttf>
-    <tex><extension/><extension>.tex</extension></tex>
-    <fmt skip="true" />
-    <default><extension/></default>
   </Finder>
 
 </Resource>

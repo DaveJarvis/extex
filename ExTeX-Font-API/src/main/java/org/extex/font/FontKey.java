@@ -33,23 +33,24 @@ import org.extex.core.glue.Glue;
 
 /**
  * Class for a font key.
- *
- * Font key is a collection several attributes. The central attribute
- * is the name. If the name is <code>null</code>, then the special null font
- * is meant.
- *
- * <p>properties:</p>TODO mgn: ergänzen
+ * 
+ * Font key is a collection several attributes. The central attribute is the
+ * name. If the name is <code>null</code>, then the special null font is
+ * meant.
+ * 
+ * <p>
+ * properties:
+ * </p>
+ * TODO mgn: ergänzen
  * <ul>
- * <li>size:         The size of the font</li>
- * <li>scale:        The scaling factor of the font.
- *                   If the scale factor is set, then the
- *                   size-parameter is ignored!
- * </li>
+ * <li>size: The size of the font</li>
+ * <li>scale: The scaling factor of the font. If the scale factor is set, then
+ * the size-parameter is ignored! </li>
  * <li>letterspaced: ...</li>
- * <li>ligatures:    If <code>true</code>, the ligature information are used.</li>
- * <li>kerning:      If <code>true</code>, the kerning information are used.</li>
+ * <li>ligatures: If <code>true</code>, the ligature information are used.</li>
+ * <li>kerning: If <code>true</code>, the kerning information are used.</li>
  * </ul>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -118,8 +119,8 @@ public class FontKey implements Serializable {
 
     /**
      * Create a new object (only in the same name space!).
-     *
-     * @param fk   The font key.
+     * 
+     * @param fk The font key.
      */
     protected FontKey(FontKey fk) {
 
@@ -133,11 +134,11 @@ public class FontKey implements Serializable {
 
     /**
      * Create a new object (only in the same name space!).
-     *
-     * If the name is a empty string, then the key for
-     * the null font is returned; i.e. the name is treated as null.
-     *
-     * @param theName   The name of the font.
+     * 
+     * If the name is a empty string, then the key for the null font is
+     * returned; i.e. the name is treated as null.
+     * 
+     * @param theName The name of the font.
      */
     protected FontKey(String theName) {
 
@@ -152,8 +153,9 @@ public class FontKey implements Serializable {
     }
 
     /**
-     * Returns the value for the key or <code>false</code>,
-     * if no key exists in the map.
+     * Returns the value for the key or <code>false</code>, if no key exists
+     * in the map.
+     * 
      * @param key The key.
      * @return Returns the value for the key.
      */
@@ -168,6 +170,7 @@ public class FontKey implements Serializable {
 
     /**
      * Returns the booleanMap.
+     * 
      * @return Returns the booleanMap.
      */
     protected Map<String, Boolean> getBooleanMap() {
@@ -176,8 +179,9 @@ public class FontKey implements Serializable {
     }
 
     /**
-     * Returns the value for the key or <code>null</code>,
-     * if no key exists in the map.
+     * Returns the value for the key or <code>null</code>, if no key exists
+     * in the map.
+     * 
      * @param key The key.
      * @return Returns the value for the key.
      */
@@ -188,6 +192,7 @@ public class FontKey implements Serializable {
 
     /**
      * Returns the countMap.
+     * 
      * @return Returns the countMap.
      */
     protected Map<String, FixedCount> getCountMap() {
@@ -196,8 +201,9 @@ public class FontKey implements Serializable {
     }
 
     /**
-     * Returns the value for the key or <code>null</code>,
-     * if no key exists in the map.
+     * Returns the value for the key or <code>null</code>, if no key exists
+     * in the map.
+     * 
      * @param key The key.
      * @return Returns the value for the key.
      */
@@ -208,6 +214,7 @@ public class FontKey implements Serializable {
 
     /**
      * Returns the dimenMap.
+     * 
      * @return Returns the dimenMap.
      */
     protected Map<String, FixedDimen> getDimenMap() {
@@ -216,8 +223,9 @@ public class FontKey implements Serializable {
     }
 
     /**
-     * Returns the value for the key or <code>null</code>,
-     * if no key exists in the map.
+     * Returns the value for the key or <code>null</code>, if no key exists
+     * in the map.
+     * 
      * @param key The key.
      * @return Returns the value for the key.
      */
@@ -228,6 +236,7 @@ public class FontKey implements Serializable {
 
     /**
      * Returns the glueMap.
+     * 
      * @return Returns the glueMap.
      */
     protected Map<String, FixedGlue> getGlueMap() {
@@ -237,6 +246,7 @@ public class FontKey implements Serializable {
 
     /**
      * Returns the name.
+     * 
      * @return Returns the name.
      */
     public String getName() {
@@ -245,8 +255,9 @@ public class FontKey implements Serializable {
     }
 
     /**
-     * Returns the value for the key or <code>null</code>,
-     * if no key exists in the map.
+     * Returns the value for the key or <code>null</code>, if no key exists
+     * in the map.
+     * 
      * @param key The key.
      * @return Returns the value for the key.
      */
@@ -257,6 +268,7 @@ public class FontKey implements Serializable {
 
     /**
      * Returns the stringMap.
+     * 
      * @return Returns the stringMap.
      */
     protected Map<String, String> getStringMap() {
@@ -265,8 +277,84 @@ public class FontKey implements Serializable {
     }
 
     /**
+     * Check, if the key exists in the map.
+     * 
+     * @param key The key.
+     * @return Returns <code>true</code>, if the key exists.
+     */
+    public boolean hasBoolean(String key) {
+
+        Boolean b = booleanMap.get(key);
+        if (b == null) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Check, if the key exists in the map.
+     * 
+     * @param key The key.
+     * @return Returns <code>true</code>, if the key exists.
+     */
+    public boolean hasCount(String key) {
+
+        FixedCount v = countMap.get(key);
+        if (v == null) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Check, if the key exists in the map.
+     * 
+     * @param key The key.
+     * @return Returns <code>true</code>, if the key exists.
+     */
+    public boolean hasDimen(String key) {
+
+        FixedDimen v = dimenMap.get(key);
+        if (v == null) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Check, if the key exists in the map.
+     * 
+     * @param key The key.
+     * @return Returns <code>true</code>, if the key exists.
+     */
+    public boolean hasGlue(String key) {
+
+        FixedGlue v = glueMap.get(key);
+        if (v == null) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Check, if the key exists in the map.
+     * 
+     * @param key The key.
+     * @return Returns <code>true</code>, if the key exists.
+     */
+    public boolean hasString(String key) {
+
+        String v = stringMap.get(key);
+        if (v == null) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * Put an key values pair on the map.
-     * @param theMap    The map.
+     * 
+     * @param theMap The map.
      */
     public void put(Map<String, ?> theMap) {
 
@@ -291,7 +379,8 @@ public class FontKey implements Serializable {
 
     /**
      * Put an key values pair on the map.
-     * @param key   The key.
+     * 
+     * @param key The key.
      * @param value The value.
      */
     public void put(String key, boolean value) {
@@ -301,7 +390,8 @@ public class FontKey implements Serializable {
 
     /**
      * Put an key values pair on the map.
-     * @param key   The key.
+     * 
+     * @param key The key.
      * @param value The value.
      */
     public void put(String key, FixedCount value) {
@@ -311,7 +401,8 @@ public class FontKey implements Serializable {
 
     /**
      * Put an key values pair on the map.
-     * @param key   The key.
+     * 
+     * @param key The key.
      * @param value The value.
      */
     public void put(String key, FixedDimen value) {
@@ -321,7 +412,8 @@ public class FontKey implements Serializable {
 
     /**
      * Put an key values pair on the map.
-     * @param key   The key.
+     * 
+     * @param key The key.
      * @param value The value.
      */
     public void put(String key, FixedGlue value) {
@@ -331,7 +423,8 @@ public class FontKey implements Serializable {
 
     /**
      * Put an key values pair on the map.
-     * @param key   The key.
+     * 
+     * @param key The key.
      * @param value The value.
      */
     public void put(String key, String value) {
@@ -342,9 +435,9 @@ public class FontKey implements Serializable {
     /**
      * Returns the value of the <code>FontKey</code> as <code>String</code>.
      * If a value is <code>null</code>, then the text 'null' is returned.
-     *
+     * 
      * @return the printable representation for this instance
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     public String toString() {

@@ -48,12 +48,9 @@ import org.extex.resource.ResourceFinder;
  * <ul>
  * <li>The font has no design size; this is set to the size of the font key.</li>
  * <li>The EM size is set to the size of the font.</li>
- * <li>The font has no font dimen values. (mgn: überdenken)</li>
- * <li>If the font has no glyph 'space', then ex is used for getSpace(). (mgn:
- * überprüfen)</li>
+ * <li>The font load the font dimen values over <code>FontParameter</code>.
+ * <li>If the font has no glyph 'space', then ex is used for getSpace().</li>
  * </ul>
- * 
- * mgn: glyphname - unicode mapping (zusätzlich) einfügen
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -282,6 +279,16 @@ public class LoadableAfmFont implements LoadableFont, ResourceConsumer {
     }
 
     /**
+     * Use no kerning information.
+     */
+    private boolean nokerning = false;
+
+    /**
+     * Use no ligature information.
+     */
+    private boolean noligature = false;
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.font.ExtexFont#getKerning(org.extex.core.UnicodeChar,
@@ -289,7 +296,9 @@ public class LoadableAfmFont implements LoadableFont, ResourceConsumer {
      */
     public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
 
-        // TODO mgn: nokerning beachten
+        if (nokerning) {
+            return Dimen.ZERO_PT;
+        }
         AfmCharMetric cm1 = getCharMetric(uc1);
 
         if (cm1 != null) {
@@ -313,7 +322,9 @@ public class LoadableAfmFont implements LoadableFont, ResourceConsumer {
      */
     public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
 
-        // TODO mgn: noligature beachten
+        if (noligature) {
+            return null;
+        }
         AfmCharMetric cm1 = getCharMetric(uc1);
 
         if (cm1 != null) {
@@ -433,6 +444,16 @@ public class LoadableAfmFont implements LoadableFont, ResourceConsumer {
         }
 
         setFontDimenValues();
+
+        // noligature, nokerning
+        if (actualFontKey.hasBoolean(FontKey.KERNING)) {
+            boolean b = actualFontKey.getBoolean(FontKey.KERNING);
+            nokerning = !b;
+        }
+        if (actualFontKey.hasBoolean(FontKey.LIGATURES)) {
+            boolean b = actualFontKey.getBoolean(FontKey.LIGATURES);
+            noligature = !b;
+        }
     }
 
     /**
