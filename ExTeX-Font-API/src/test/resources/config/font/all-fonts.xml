@@ -18,7 +18,7 @@
   -
   -->
 <Fonts class="org.extex.font.FontFactoryImpl">
-   <Font type="tfm" class="org.extex.font.format.tfm.LoadableTfmFont" />
-   <Font type="afm" class="org.extex.font.format.afm.LoadableAfmFont" />
+  <Font type="tfm" class="org.extex.font.format.tfm.LoadableTfmFont"/>
+
+  <FontType name="tfm" class="org.extex.font.manger.TfmBackendFontManager"/>
 </Fonts>
-  
