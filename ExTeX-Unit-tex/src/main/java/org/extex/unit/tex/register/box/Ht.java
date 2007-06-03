@@ -19,8 +19,6 @@
 
 package org.extex.unit.tex.register.box;
 
-import java.io.Serializable;
-
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;

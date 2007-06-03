@@ -19,10 +19,8 @@
 
 package org.extex.unit.tex.typesetter.mark;
 
-import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.scanner.type.tokens.Tokens;
-import org.extex.typesetter.Typesetter;
 
 /**
  * This class provides an implementation for the primitive
@@ -40,7 +38,9 @@ import org.extex.typesetter.Typesetter;
  * <pre class="syntax">
  *    &lang;splibotmarks&rang;
  *      &rarr; <tt>\splitbotmarks</tt> {@linkplain
- *        org.extex.unit.tex.typesetter.mark.AbstractMarksCode#getKey(Context,TokenSource,Typesetter)
+ *        org.extex.unit.tex.typesetter.mark.AbstractMarksCode#getKey(
+ *        org.extex.interpreter.context.Context,
+ *        org.extex.interpreter.TokenSource,org.extex.typesetter.Typesetter)
  *        &lang;mark name&rang;}  </pre>
  * 
  * <h4>Examples</h4>

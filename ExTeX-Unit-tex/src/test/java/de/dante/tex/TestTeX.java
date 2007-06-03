@@ -187,6 +187,7 @@ public final class TestTeX {
      * 
      * @param basename the name of the test
      * @param project the name of the project
+     * @param units the units to load
      * 
      * @throws Exception in case of an error
      */
