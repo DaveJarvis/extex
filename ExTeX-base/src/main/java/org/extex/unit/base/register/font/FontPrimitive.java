@@ -257,10 +257,10 @@ public class FontPrimitive extends AbstractAssignment
         try {
             Map<String, Serializable> fontKeyMap =
                     new HashMap<String, Serializable>();
-            fontKeyMap.put("scale", scale);
-            fontKeyMap.put("letterspaced", letterspaced);
-            fontKeyMap.put("ligatures", Boolean.valueOf(ligatures));
-            fontKeyMap.put("kerning", Boolean.valueOf(kerning));
+            fontKeyMap.put(FontKey.SCALE, scale);
+            fontKeyMap.put(FontKey.LETTERSPACE, letterspaced);
+            fontKeyMap.put(FontKey.LIGATURES, Boolean.valueOf(ligatures));
+            fontKeyMap.put(FontKey.KERNING, Boolean.valueOf(kerning));
             fontKeyMap.put("language", context.getTypesettingContext()
                 .getLanguage().getName());
             fontKey = factory.getFontKey(fontname, fontSize, fontKeyMap);
