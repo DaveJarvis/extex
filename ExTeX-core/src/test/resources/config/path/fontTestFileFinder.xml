@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<!--
+  -  Copyright (C) 2004-2007 The ExTeX Group
+  -
+  -  This library is free software; you can redistribute it and/or modify it
+  -  under the terms of the GNU Lesser General Public License as published by
+  -  the Free Software Foundation; either version 2.1 of the License, or (at
+  -  your option) any later version.
+  -
+  -  This library is distributed in the hope that it will be useful, but
+  -  WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+  -  or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
+  -  License for more details.
+  -
+  -  You should have received a copy of the GNU Lesser General Public License
+  -  along with this library; if not, write to the Free Software Foundation,
+  -  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+  -
+  -->
+<Resource>
+  <Finder class="org.extex.resource.FileFinder"
+          default="default">
+    <u2t>
+      <extension>.u2t</extension>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </u2t>
+    <tex>
+      <path property="extex.texinputs"/>
+      <path property="texinputs"/>
+      <path>.</path>
+      <extension></extension>
+      <extension>.tex</extension>
+    </tex>
+    <fmt>
+      <path property="extex.texinputs"/>
+      <path property="texinputs"/>
+      <path>.</path>
+      <extension>.fmt</extension>
+    </fmt>
+    <efm>
+      <extension>.efm</extension>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </efm>
+    <pfb>
+      <extension>.pfb</extension>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </pfb>
+    <pfa>
+      <extension>.pfa</extension>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </pfa>
+    <afm>
+      <extension>.afm</extension>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </afm>
+    <ttf>
+      <extension>.ttf</extension>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </ttf>
+    <vf>
+      <extension>.vf</extension>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </vf>
+    <tfm>
+      <extension>.tfm</extension>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </tfm>
+    <enc>
+      <extension>.enc</extension>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </enc>
+    <default>
+      <path property="extex.texinputs"/>
+      <path property="texinputs"/>
+      <path property="extex.fonts"/>
+      <path>.</path>
+      <extension/>
+    </default>
+  </Finder>
+
+  <Finder class="org.extex.resource.ClasspathArchiveFinder"
+          trace="false"
+          default="default">
+    <default>
+      <extension>.{type}</extension>
+    </default>
+  </Finder>
+
+  <Finder class="org.extex.resource.ClasspathFinder"
+          trace="false"
+          default="default">
+    <fmt prefix="texmf/">
+      <extension>.fmt</extension>
+    </fmt>
+    <default skip="true"/>
+  </Finder>
+
+  <Finder class="org.extex.resource.LsrFinder"
+          trace="false"
+          capacity="88888"
+          default="default">
+    <path property="extex.fonts"/>
+    <path property="extex.texinputs"/>
+    <path property="texinputs"/>
+
+    <vf><extension/><extension>.vf</extension></vf>
+    <tfm><extension/><extension>.tfm</extension></tfm>
+    <efm><extension/><extension>.efm</extension></efm>
+    <afm><extension/><extension>.afm</extension></afm>
+    <pfb><extension/><extension>.pfb</extension></pfb>
+    <pfa><extension/><extension>.pfa</extension></pfa>
+    <map><extension/><extension>.map</extension></map>
+    <ttf><extension/><extension>.ttf</extension></ttf>
+    <tex><extension/><extension>.tex</extension></tex>
+    <fmt skip="true" />
+    <default><extension/></default>
+  </Finder>
+
+</Resource>
