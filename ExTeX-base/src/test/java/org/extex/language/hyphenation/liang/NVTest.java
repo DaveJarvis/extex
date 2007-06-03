@@ -33,11 +33,6 @@ import org.extex.font.FontKeyFactory;
 import org.extex.language.ModifiableLanguage;
 import org.extex.language.hyphenation.base.BaseHyphenationTable;
 import org.extex.language.ligature.impl.LigatureBuilderImpl;
-import org.extex.scanner.type.Catcode;
-import org.extex.scanner.type.Namespace;
-import org.extex.scanner.type.token.Token;
-import org.extex.scanner.type.token.TokenFactory;
-import org.extex.scanner.type.token.TokenFactoryImpl;
 import org.extex.typesetter.tc.ModifiableTypesettingContext;
 import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.tc.TypesettingContextImpl;
@@ -371,7 +366,7 @@ public class NVTest extends TestCase {
     /**
      * The field <tt>tokenFactory</tt> contains the token factory.
      */
-    private static TokenFactory tokenFactory;
+//    private static TokenFactory tokenFactory;
 
     /**
      * The command line interface.
@@ -401,7 +396,7 @@ public class NVTest extends TestCase {
     /**
      * The field <tt>l</tt> contains the token for l.
      */
-    private Token l;
+//    private Token l;
 
     /**
      * The field <tt>tc</tt> contains the typesetting context.
@@ -420,11 +415,11 @@ public class NVTest extends TestCase {
         super.setUp();
         font = new MockFont();
 //        cnf = new CachingNodeFactory();
-        tokenFactory = new TokenFactoryImpl();
+//        tokenFactory = new TokenFactoryImpl();
 //        f = tokenFactory.createToken(Catcode.LETTER, 'f', //
 //            Namespace.DEFAULT_NAMESPACE);
-        l = tokenFactory.createToken(Catcode.LETTER, 'l', //
-            Namespace.DEFAULT_NAMESPACE);
+//        l = tokenFactory.createToken(Catcode.LETTER, 'l', //
+//            Namespace.DEFAULT_NAMESPACE);
 //        UnicodeChar hyphen = font.getHyphenChar();
         tc = new TypesettingContextImpl(font);
         ModifiableLanguage lang = new BaseHyphenationTable();
@@ -564,4 +559,5 @@ public class NVTest extends TestCase {
     //        assertTrue(list.get(0) instanceof DiscretionaryNode);
     //        assertEquals(list.get(1), ffl);
     //    }
+
 }

@@ -26,7 +26,6 @@ import java.util.regex.Pattern;
 
 import org.extex.base.parser.ConstantDimenParser;
 import org.extex.core.dimen.Dimen;
-import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.logger.LogEnabled;

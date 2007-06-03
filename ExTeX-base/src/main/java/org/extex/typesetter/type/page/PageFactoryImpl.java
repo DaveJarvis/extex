@@ -221,11 +221,6 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
             {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
     /**
-     * The field <tt>logger</tt> contains the logger.
-     */
-    private Logger logger = null;
-
-    /**
      * The field <tt>visitor</tt> contains the node visitor to determine which
      * nodes to keep and to post-process the nodes.
      */
@@ -247,7 +242,6 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
      */
     public void enableLogging(Logger log) {
 
-        logger = log;
         visitor.enableLogging(log);
     }
 
