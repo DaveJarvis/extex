@@ -117,10 +117,9 @@ public class LoadableTfmFont implements LoadableFont {
     }
 
     /**
-     * TODO missing JavaDoc
+     * Returns the checksum.
      * 
-     * @return TODO
-     * 
+     * @return Returns the checksum.
      * @see org.extex.typesetter.tc.font.Font#getCheckSum()
      */
     public int getCheckSum() {

@@ -58,9 +58,7 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
         if (key == null) {
             CoreFontFactory factory = makeFontFactory();
-
             key = factory.getFontKey("cmr10");
-
             font = factory.getInstance(key);
         }
     }
@@ -231,12 +229,11 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     /**
      * Test for the font: cmr10 - width
      * 
-     * TODO mgn: check u2t
-     * 
      * @throws Exception if an error occurred.
      */
     public void testWidth03() throws Exception {
 
+        // u2t: 0x03a0 = 05 491521
         FixedGlue w = font.getWidth(UnicodeChar.get(0x03a0));
 
         assertNotNull(w);
@@ -351,8 +348,6 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: cmr10 - height
-     * 
-     * TODO mgn: check u2t
      * 
      * @throws Exception if an error occurred.
      */

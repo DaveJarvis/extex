@@ -6,7 +6,7 @@
 			default="default">
 			<u2t>
 				<extension>.u2t</extension>
-				<path>../ExTeX-Font/src/font</path>
+				<path>../texmf/src/texmf/fonts/u2t</path>
 				<path>.</path>
 				<path property="extex.fonts" />
 				<path property="texinputs" />
@@ -25,12 +25,6 @@
 				<path>.</path>
 				<extension>.fmt</extension>
 			</fmt>
-			<efm>
-				<extension>.efm</extension>
-				<path>.</path>
-				<path property="extex.fonts" />
-				<path property="texinputs" />
-			</efm>
 			<pfb>
 				<extension>.pfb</extension>
 				<path>.</path>
@@ -45,14 +39,14 @@
 			</pfa>
 			<afm>
 				<extension>.afm</extension>
-				<path>../ExTeX-Font/src/font</path>
+				<path>../texmf/src/texmf/fonts/afm</path>
 				<path>.</path>
 				<path property="extex.fonts" />
 				<path property="texinputs" />
 			</afm>
 			<ttf>
 				<extension>.ttf</extension>
-				<path>../ExTeX-Font/src/font</path>
+				<path>../texmf/src/texmf/fonts/ttf</path>
 				<path>.</path>
 				<path property="extex.fonts" />
 				<path property="texinputs" />
@@ -82,7 +76,6 @@
 			</enc>
 			<map>
 				<extension>.enc</extension>
-				<path>../ExTeX-Font/src/font</path>
 				<path>.</path>
 				<path property="extex.fonts" />
 				<path property="texinputs" />
@@ -91,7 +84,6 @@
 				<path property="extex.texinputs" />
 				<path property="texinputs" />
 				<path property="extex.fonts" />
-				<path>../ExTeX-Font/src/font</path>
 				<path>.</path>
 				<extension></extension>
 			</default>
