@@ -20,7 +20,7 @@
 package org.extex.test;
 
 /**
- * Tis interface describes the capability to perform a validation.
+ * This interface describes the capability to perform a validation.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -28,7 +28,7 @@ package org.extex.test;
 public interface Validator {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Validate that a given value conforms to the expected sting.
      *
      * @param s the sting to be validated
      *
