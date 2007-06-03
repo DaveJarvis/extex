@@ -17,11 +17,13 @@
  *
  */
 
-package org.extex.interpreter;
+package org.extex.engine;
 
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.interpreter.EditHandler;
+import org.extex.interpreter.ErrorHandler;
 
 /**
  * This is the factory for instances of

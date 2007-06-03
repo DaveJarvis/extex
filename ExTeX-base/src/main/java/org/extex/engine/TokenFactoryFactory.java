@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.interpreter.max;
+package org.extex.engine;
 
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;

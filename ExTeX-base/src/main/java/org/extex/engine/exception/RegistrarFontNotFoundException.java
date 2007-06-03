@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.base.exception;
+package org.extex.engine.exception;
 
 import org.extex.font.FontKey;
 import org.extex.framework.RegistrarException;
