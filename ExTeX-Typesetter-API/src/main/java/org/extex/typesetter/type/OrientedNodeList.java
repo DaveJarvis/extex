@@ -20,11 +20,12 @@
 package org.extex.typesetter.type;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface unites the features of a node list and an oriented node.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public interface OrientedNodeList extends NodeList, OrientedNode {
 
+    // nothing more
 }

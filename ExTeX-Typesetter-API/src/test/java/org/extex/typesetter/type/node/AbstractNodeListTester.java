@@ -405,29 +405,27 @@ public abstract class AbstractNodeListTester extends TestCase {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#atShipping(org.extex.interpreter.context.Context, org.extex.typesetter.Typesetter, FixedDimen, FixedDimen)}.
+     * <testcase> Shipping ... </testcase>
      * 
      * @throws GeneralException in case of an error
      */
     public final void testAtShipping0() throws GeneralException {
 
         NodeList list = makeList();
-        NodeVisitor<Node, Boolean> v = makeVisitor();
+        // NodeVisitor<Node, Boolean> v = makeVisitor();
         list.atShipping(null, null, null, null);
         assertEquals(0, list.size());
     }
 
     /**
-     * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#atShipping(org.extex.interpreter.context.Context, org.extex.typesetter.Typesetter, FixedDimen, FixedDimen)}.
+     * <testcase> Shipping ... </testcase>
      * 
      * @throws GeneralException in case of an error
      */
     public final void testAtShipping1() throws GeneralException {
 
         NodeList list = makeList(new PenaltyNode(123));
-        NodeVisitor<Node, Boolean> v = makeVisitor();
+        // NodeVisitor<Node, Boolean> v = makeVisitor();
         list.atShipping(null, null, null, null);
         assertEquals(1, list.size());
     }

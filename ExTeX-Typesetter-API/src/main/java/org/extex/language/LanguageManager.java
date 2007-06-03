@@ -19,6 +19,8 @@
 
 package org.extex.language;
 
+import java.io.Serializable;
+
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
@@ -39,7 +41,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4737 $
  */
-public interface LanguageManager {
+public interface LanguageManager extends Serializable {
 
     /**
      * Return the <code>Language</code> for a given name.

@@ -214,6 +214,9 @@ public class VerticalListNodeTest extends AbstractNodeListTester {
         assertFalse(vlist.isHorizontal());
     }
 
+    /**
+     * Test method
+     */
     @Test
     public final void testIsTop1() {
 
@@ -221,6 +224,9 @@ public class VerticalListNodeTest extends AbstractNodeListTester {
         assertFalse(vlist.isTop());
     }
 
+    /**
+     * Test method
+     */
     @Test
     public final void testIsTop2() {
 

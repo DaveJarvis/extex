@@ -99,9 +99,9 @@ import org.extex.typesetter.type.noad.util.MathSpacing;
  *  <pre class="syntax">
  *    &lang;textfont&rang;
  *       &rarr; <tt>\textfont</tt> &lang;register name&rang; {@linkplain
- *          org.extex.interpreter.TokenSource#getOptionalEquals(Context)
+ *          org.extex.interpreter.TokenSource#getOptionalEquals(org.extex.interpreter.context.Context)
  *          &lang;equals&rang;} {@linkplain
- *          org.extex.interpreter.TokenSource#getFont(Context,String)
+ *          org.extex.interpreter.TokenSource#getFont(org.extex.interpreter.context.Context,String)
  *          &lang;font&rang;}  </pre>
  *
  * <h4>Examples</h4>

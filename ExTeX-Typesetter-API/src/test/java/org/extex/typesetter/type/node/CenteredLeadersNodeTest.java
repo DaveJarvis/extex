@@ -19,10 +19,6 @@
 
 package org.extex.typesetter.type.node;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.glue.FixedGlue;
