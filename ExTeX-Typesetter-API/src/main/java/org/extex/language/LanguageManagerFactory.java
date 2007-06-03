@@ -29,8 +29,8 @@ import org.extex.resource.ResourceFinder;
 /**
  * This class provides a factory for a
  * {@link org.extex.language.LanguageManager LanguageManager}.
- *
- *
+ * 
+ * 
  * <pre>
  * &lt;Language default="ExTeX"&gt;
  *
@@ -58,48 +58,38 @@ import org.extex.resource.ResourceFinder;
  *
  * &lt;/Language&gt;
  * </pre>
- *
+ * 
  * <p>
- *  The class to be instantiated can implements one or more interfaces which
- *  trigger special actions:
+ * The class to be instantiated can implements one or more interfaces which
+ * trigger special actions:
  * </p>
  * <dl>
- *  <dt>{@link org.extex.framework.configuration.Configurable Configurable}</dt>
- *  <dd>
- *   If this interface is implemented then a
- *   {@link org.extex.framework.configuration.Configuration Configuration}
- *   is passed in with the interface method.
- *  </dd>
- *  <dt>{@link org.extex.framework.logger.LogEnabled LogEnabled}</dt>
- *  <dd>
- *   If this interface is implemented then a
- *   {@link java.util.logging.Logger Logger}
- *   is passed in with the interface method.
- *  </dd>
- *  <dt>{@link org.extex.framework.i18n.Localizable Localizable}</dt>
- *  <dd>
- *   If this interface is implemented then a
- *   {@link org.extex.framework.i18n.Localizer Localizer}
- *   is passed in with the interface method.
- *  </dd>
- *  <dt>{@link org.extex.resource.ResourceConsumer ResourceConsumer}</dt>
- *  <dd>
- *   If this interface is implemented then a
- *   {@link org.extex.resource.ResourceFinder ResourceFinder}
- *   is passed in with the interface method.
- *  </dd>
- *  <dt>{@link org.extex.interpreter.type.OutputStreamConsumer OutputStreamConsumer}</dt>
- *  <dd>
- *   If this interface is implemented then a
- *   {@link org.extex.backend.outputStream.OutputStreamFactory OutputStreamFactory}
- *   is passed in with the interface method.
- *  </dd>
+ * <dt>{@link org.extex.framework.configuration.Configurable Configurable}</dt>
+ * <dd> If this interface is implemented then a
+ * {@link org.extex.framework.configuration.Configuration Configuration} is
+ * passed in with the interface method. </dd>
+ * <dt>{@link org.extex.framework.logger.LogEnabled LogEnabled}</dt>
+ * <dd> If this interface is implemented then a
+ * {@link java.util.logging.Logger Logger} is passed in with the interface
+ * method. </dd>
+ * <dt>{@link org.extex.framework.i18n.Localizable Localizable}</dt>
+ * <dd> If this interface is implemented then a
+ * {@link org.extex.framework.i18n.Localizer Localizer} is passed in with the
+ * interface method. </dd>
+ * <dt>{@link org.extex.resource.ResourceConsumer ResourceConsumer}</dt>
+ * <dd> If this interface is implemented then a
+ * {@link org.extex.resource.ResourceFinder ResourceFinder} is passed in with
+ * the interface method. </dd>
+ * <dt>{@link org.extex.backend.outputStream.OutputStreamConsumer OutputStreamConsumer}</dt>
+ * <dd> If this interface is implemented then a
+ * {@link org.extex.backend.outputStream.OutputStreamFactory OutputStreamFactory}
+ * is passed in with the interface method. </dd>
  * </dl>
- *
- *
- *
+ * 
+ * 
+ * 
  * @see org.extex.framework.AbstractFactory
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4737 $
  */
@@ -107,18 +97,17 @@ public class LanguageManagerFactory extends AbstractFactory {
 
     /**
      * Get an instance of a
-     * {@link org.extex.language.LanguageManager LanguageManager}.
-     * This method selects one of the entries in the configuration. The
-     * selection is done with the help of a type String. If the type is
-     * <code>null</code> or the empty string then the default from the
-     * configuration is used.
-     *
+     * {@link org.extex.language.LanguageManager LanguageManager}. This method
+     * selects one of the entries in the configuration. The selection is done
+     * with the help of a type String. If the type is <code>null</code> or the
+     * empty string then the default from the configuration is used.
+     * 
      * @param type the type to use
      * @param outFactory the output stream factory to pass in
      * @param finder the resource finder to pass in
-     *
+     * 
      * @return a new context
-     *
+     * 
      * @throws ConfigurationException in case of an configuration error
      */
     public LanguageManager newInstance(String type,
