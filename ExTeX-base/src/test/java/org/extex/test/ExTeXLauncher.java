@@ -409,9 +409,10 @@ public class ExTeXLauncher extends TestCase {
             String log, String expect) throws HelpingException {
 
         Validator logValidator =
-                (log == null ? null : new EqualityValidator(log));
+                (log == null ? null : new EqualityValidator("log stream", log));
         Validator outputValidator =
-                (expect == null ? null : new EqualityValidator(expect));
+                (expect == null ? null : new EqualityValidator("out stream",
+                    expect));
         return assertOutput(properties, code, logValidator, outputValidator);
     }
 

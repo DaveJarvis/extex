@@ -19,6 +19,9 @@
 
 package org.extex.test;
 
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
+
 /**
  * Validator which compares for equality against a fixed string. The reference
  * value is passed in via the constructor.
@@ -34,19 +37,27 @@ public class EqualityValidator implements Validator {
     private String expected;
 
     /**
+     * The field <tt>comment</tt> contains the comment for the error message.
+     */
+    private String comment;
+
+    /**
      * Creates a new object.
      * 
+     * @param comment the error message coment
      * @param expected the expected value or <code>null</code> to accept
      *        anything
      */
-    public EqualityValidator(String expected) {
+    public EqualityValidator(String comment, String expected) {
 
         this.expected = expected;
+        this.comment = comment;
     }
 
     /**
-     * Returns <code>true</code> if the expected result is <code>null</code>
-     * or it is equal to the given string.
+     * Returns <code>true</code> if the given string is not <code>null</code>
+     * and if it is equal to the given string. Otherwise an JUnit exception is
+     * raised.
      * 
      * {@inheritDoc}
      * 
@@ -54,7 +65,9 @@ public class EqualityValidator implements Validator {
      */
     public boolean validate(String s) {
 
-        return expected == null || expected.equals(s);
+        assertNotNull(comment, s);
+        assertEquals(comment, expected, s);
+        return true;
     }
 
 }
