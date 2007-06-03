@@ -68,8 +68,7 @@
 
   <!-- ==================================================================== -->
   <target name="deploy"
-          description="Create the site and deploy it to the destination"
-          depends="all">
+          description="Create the site and deploy it to the destination">
 
     <mkdir dir="${deploy.dir}" />
     <copy todir="${deploy.dir}">
