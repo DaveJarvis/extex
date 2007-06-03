@@ -46,7 +46,7 @@ public class WhatsItCloseNode extends WhatsItNode implements LogEnabled {
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>key</tt> contains the key of the outfile to close.
+     * The field <tt>key</tt> contains the key of the output file to close.
      */
     private String key;
 
@@ -71,7 +71,8 @@ public class WhatsItCloseNode extends WhatsItNode implements LogEnabled {
      * 
      * @see org.extex.typesetter.type.Node#atShipping(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.typesetter.Typesetter, FixedDimen, FixedDimen)
+     *      org.extex.typesetter.Typesetter,
+     *      org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
      */
     @Override
     public Node atShipping(PageContext context, Typesetter typesetter,
