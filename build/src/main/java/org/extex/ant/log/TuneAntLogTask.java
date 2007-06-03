@@ -24,6 +24,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintStream;
 import java.io.Reader;
 import java.text.DateFormat;
 import java.util.Date;
@@ -41,12 +42,12 @@ import org.apache.tools.ant.Task;
 public class TuneAntLogTask extends Task {
 
     /**
-     * The field <tt>file</tt> contains the ...
+     * The field <tt>file</tt> contains the nae of the file to be processed.
      */
     private String file = null;
 
     /**
-     * TODO gene: missing JavaDoc
+     * Perform the actions.
      *
      * @throws BuildException in case of an error
      *
@@ -80,8 +81,8 @@ public class TuneAntLogTask extends Task {
                             DateFormat.SHORT).format(new Date());
                 sb.insert(i + 7, "date=\"" + time + "\" ");
 
-                OutputStream out = new FileOutputStream(file);
-                out.write(sb.toString().getBytes());
+                PrintStream out = new PrintStream(new FileOutputStream(file));
+                out.print(sb.toString());
                 out.close();
             }
         } catch (IOException e) {
