@@ -76,10 +76,11 @@ public class MarkNode extends AbstractNode implements Node {
      * {@inheritDoc}
      * 
      * @see org.extex.typesetter.type.node.AbstractNode#atShipping(
-     *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter, FixedDimen, FixedDimen)
+     *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
+     *      org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
      */
-    public Node atShipping(PageContext context, Typesetter typesetter, FixedDimen posX, FixedDimen posY)
-            throws GeneralException {
+    public Node atShipping(PageContext context, Typesetter typesetter,
+            FixedDimen posX, FixedDimen posY) throws GeneralException {
 
         context.setMark(index, mark);
         return this;
