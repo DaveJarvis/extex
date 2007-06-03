@@ -124,7 +124,9 @@ public class PageFactoryNodeVisitor
      * check for an otherwise empty node if it contributes to the positioning.
      * If this is not the case then the node is simply optimized away. Otherwise
      * the method
-     * {@link Node#atShipping(org.extex.typesetter.PageContext, Typesetter, FixedDimen, FixedDimen) atShipping()}
+     * {@link Node#atShipping(org.extex.typesetter.PageContext,
+     *  org.extex.typesetter.Typesetter, org.extex.core.dimen.FixedDimen,
+     *  org.extex.core.dimen.FixedDimen) atShipping()}
      * is invoked and the result returned.
      * 
      * @param node the current node
