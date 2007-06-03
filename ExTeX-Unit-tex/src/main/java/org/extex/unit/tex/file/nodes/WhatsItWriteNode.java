@@ -86,9 +86,9 @@ public class WhatsItWriteNode extends WhatsItNode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.Node#atShipping(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.typesetter.Typesetter, FixedDimen, FixedDimen)
+     * @see org.extex.typesetter.type.node.AbstractNode#atShipping(
+     *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
+     *      org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
      */
     @Override
     public Node atShipping(PageContext context, Typesetter typesetter,
