@@ -19,7 +19,6 @@
 
 package org.extex.unit.omega.math.delimiter;
 
-import org.extex.base.parser.ConstantCountParser;
 import org.extex.core.UnicodeChar;
 import org.extex.core.exception.helping.ArithmeticOverflowException;
 import org.extex.core.exception.helping.HelpingException;
