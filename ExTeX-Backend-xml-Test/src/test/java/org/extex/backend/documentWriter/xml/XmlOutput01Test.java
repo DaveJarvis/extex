@@ -21,6 +21,7 @@ package org.extex.backend.documentWriter.xml;
 
 import java.util.Properties;
 
+import org.extex.test.EqualityValidator;
 import org.extex.test.ExTeXLauncher;
 
 /**
@@ -29,7 +30,7 @@ import org.extex.test.ExTeXLauncher;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class XmlOutputTest01 extends ExTeXLauncher {
+public class XmlOutput01Test extends ExTeXLauncher {
 
     /**
      * The properties.
@@ -40,24 +41,31 @@ public class XmlOutputTest01 extends ExTeXLauncher {
     protected void setUp() throws Exception {
 
         prop = System.getProperties();
-        //prop.setProperty("extex.output", "xml");
+        prop.setProperty("extex.output", "xml");
     }
 
     /**
      * Creates a new object.
      */
-    public XmlOutputTest01() {
+    public XmlOutput01Test() {
 
         super("xml backend test 01");
     }
 
-    public void test01() throws Exception {
+    /**
+     * Test: use default output with afm font 'fxlr'.
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void testDefaultOutput() throws Exception {
 
-        assertSuccess(prop,
-        // --- input code ---
+        // use default output
+        prop.remove("extex.output");
+        assertOutput(prop, // --- input code ---
             "\\font\\hugo=fxlr " + "\\hugo " + "Hugo " + "\\end",
-            // --- output message ---
-            "Hugo" + TERM);
+            /* logValidator */null, /* outputValidator */
+            new EqualityValidator("test", "Hugo" + TERM));
+
     }
 
 }
