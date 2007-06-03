@@ -1,0 +1,8 @@
+#
+#
+extex.lang=en
+#
+extex.texinputs=..texmf/src/texmf/tex/plain/base
+extex.fonts=../texmf/src/texmf/fonts/tfm/public/cm:..texmf/src/texmf/fonts/afm
+texinputs=..texmf/src/texmf/fonts/tfm/public/misc
+#
