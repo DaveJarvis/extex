@@ -41,12 +41,12 @@ import org.extex.core.glue.Glue;
  * <p>
  * properties:
  * </p>
- * TODO mgn: ergänzen
  * <ul>
  * <li>size: The size of the font</li>
  * <li>scale: The scaling factor of the font. If the scale factor is set, then
  * the size-parameter is ignored! </li>
  * <li>letterspaced: ...</li>
+ * <li>language: The language for the font (e.g. for OpenType)</li>
  * <li>ligatures: If <code>true</code>, the ligature information are used.</li>
  * <li>kerning: If <code>true</code>, the kerning information are used.</li>
  * </ul>
