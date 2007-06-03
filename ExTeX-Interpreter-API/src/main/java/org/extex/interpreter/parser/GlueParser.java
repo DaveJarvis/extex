@@ -27,7 +27,7 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes a parser for glue values.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -35,7 +35,8 @@ import org.extex.typesetter.exception.TypesetterException;
 public interface GlueParser {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Parse a glue value and return the result. If no glue value can be
+     * obtained an exception is raised.
      * 
      * @param context the interpreter context
      * @param source the source for new tokens
