@@ -91,7 +91,7 @@ public class MockContext implements Context, TypesetterOptions {
     /**
      * The field <tt>tokenFactory</tt> contains the token factory.
      */
-    private TokenFactory tokenFactory = new TokenFactoryImpl();
+    private transient TokenFactory tokenFactory = new TokenFactoryImpl();
 
     /**
      * Creates a new object.
