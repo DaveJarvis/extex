@@ -18,5 +18,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Interpreter-max"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-etex"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-extex"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Backend-dvix"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
