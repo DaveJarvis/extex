@@ -231,6 +231,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
     /**
      * Test for the font: cmr10 - width
      * 
+     * TODO mgn: check u2t
+     * 
      * @throws Exception if an error occurred.
      */
     public void testWidth03() throws Exception {
@@ -349,6 +351,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: cmr10 - height
+     * 
+     * TODO mgn: check u2t
      * 
      * @throws Exception if an error occurred.
      */
