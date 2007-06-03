@@ -205,7 +205,7 @@
     <javadoc destdir="${javadoc}"
              sourcepathref="application.source.path"
              packagenames="org.extex.*"
-             overview="../ExTeX-base/src/main/java/overview.html"
+             overview="../ExTeX-base/src/main/java/org/extex/overview.html"
              stylesheetfile="src/javadoc/stylesheet.css"
              author="true"
              version="true"
