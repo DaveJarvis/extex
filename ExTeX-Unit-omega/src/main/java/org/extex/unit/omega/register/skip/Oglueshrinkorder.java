@@ -36,8 +36,37 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class provides an implementation for the primitive
  * <code>\glueshrinkorder</code>.
  * 
- * return the direct order. take into account the order fi as introduced by
- * Omega.
+ * <doc name="glueshrinkorder">
+ * <h3>The Primitive <tt>\glueshrinkorder</tt></h3>
+ * <p>
+ * The primitive <tt>\glueshrinkorder</tt> determines the order of the glue
+ * shrink component of the following glue specification. A fixed,
+ * non-stretchable glue returns the value 0. Glue with the order fi gives 1, fil
+ * gives 2, fill gives 3, and filll gives 4.
+ * </p>
+ * <p>
+ * Note that the glue specification of 1&nbsp;fi has been introduced by
+ * <logo>Omega</logo>.
+ * </p>
+ * 
+ * <h4>Syntax</h4>
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
+ *    &lang;glueshrinkorder&rang;
+ *      &rarr; <tt>\glueshrinkorder</tt> {@linkplain
+ *        org.extex.interpreter.parser.GlueParser#parseGlue(
+ *        org.extex.interpreter.context.Context,
+ *        org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+ *        &lang;glue&rang;} </pre>
+ * 
+ * <h4>Examples</h4>
+ * 
+ * <pre class="TeXSample">
+ *   \glueshrinkorder\skip1  </pre>
+ * 
+ * </doc>
+ * 
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
