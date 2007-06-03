@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.base.type.arithmetic;
+package org.extex.interpreter.type.code;
 
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.exception.ConfigurationException;

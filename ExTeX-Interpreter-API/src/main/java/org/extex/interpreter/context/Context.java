@@ -143,7 +143,7 @@ public interface Context
      *     &rarr; <tt>\escapechar</tt> {@linkplain
      *       org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *       &lang;equals&rang;} {@linkplain
-     *       org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
+     *       org.extex.interpreter.parser.CountParser#parseNumber(Context,TokenSource,Typesetter)
      *       &lang;number&rang;} </pre>
      *
      * <h4>Examples</h4>

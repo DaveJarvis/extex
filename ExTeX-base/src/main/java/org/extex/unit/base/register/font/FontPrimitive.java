@@ -96,7 +96,7 @@ import org.extex.typesetter.tc.font.impl.FontImpl;
  *
  *    &lang;option&rang;
  *      &rarr; [scaled] {@linkplain
- *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}
  *       | [at] {@linkplain
  *           org.extex.core.dimen#Dimen(org.extex.interpreter.context.Context,org.extex.interpreter.TokenSource)

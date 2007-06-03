@@ -46,7 +46,7 @@ import org.extex.unit.tex.register.box.Setbox;
  * <pre class="syntax">
  *    &lang;unhcopy&rang;
  *       &rarr; <tt>&#x5c;unhcopy</tt> {@linkplain
- *          org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} </pre>
  * 
  * <h4>Examples</h4>

@@ -97,7 +97,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <pre class="syntax">
  *    <tt>\dp</tt> {@linkplain
- *      org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
+ *      org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *      &lang;8-bit&nbsp;number&rang;} </pre>
  * 
  * </p>

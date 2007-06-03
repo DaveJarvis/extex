@@ -54,7 +54,7 @@ import org.extex.typesetter.tc.font.Font;
  *       &rarr; <tt>\skewchar</tt> &lang;font&rang; {@linkplain
  *          org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *          &lang;equals&rang;} {@linkplain
- *          org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;} </pre>
  * 
  * <h4>Examples</h4>

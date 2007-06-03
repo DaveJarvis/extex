@@ -48,7 +48,7 @@ import org.extex.typesetter.exception.TypesetterException;
  *     &rarr; <tt>\badness</tt> {@linkplain
  *       org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *       &lang;equals&rang;} {@linkplain
- *       org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
+ *       org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *       &lang;number&rang;} </pre>
  * 
  * <h4>Examples</h4>

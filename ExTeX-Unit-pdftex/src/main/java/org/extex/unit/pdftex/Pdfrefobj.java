@@ -43,7 +43,7 @@ import org.extex.typesetter.type.node.pdftex.PdfRefObj;
  * <pre class="syntax">
  *    &lang;pdfrefobj&rang;
  *       &rarr; <tt>\pdfrefobj</tt> {@linkplain
- *          org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *          &lang;number&rang;} </pre>
  * 
  * <h4>Examples</h4>

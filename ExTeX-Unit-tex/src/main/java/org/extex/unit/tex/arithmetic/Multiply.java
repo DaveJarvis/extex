@@ -19,7 +19,6 @@
 
 package org.extex.unit.tex.arithmetic;
 
-import org.extex.base.type.arithmetic.Multiplyable;
 import org.extex.core.exception.helping.CantUseAfterException;
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
@@ -29,6 +28,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Code;
+import org.extex.interpreter.type.code.Multiplyable;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
@@ -53,16 +53,16 @@ import org.extex.typesetter.exception.TypesetterException;
  *
  *   &lang;multiplyable&rang;
  *     &rarr; &lang;integer variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
- *      org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
+ *      org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *      &lang;8-bit&nbsp;number&rang;}
  *      |  &lang;dimen variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
- *      org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
+ *      org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *      &lang;8-bit&nbsp;number&rang;}
  *      |  &lang;glue variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
- *      org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
+ *      org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *      &lang;8-bit&nbsp;number&rang;}
  *      |  &lang;muglue variable&rang; &lang;optional <tt>by</tt>&rang; {@linkplain
- *      org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
+ *      org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *      &lang;8-bit&nbsp;number&rang;}
  *
  *   &lang;optional prefix&rang;
@@ -84,7 +84,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * </doc>
  *
  *
- * @see org.extex.base.type.arithmetic.Multiplyable
+ * @see org.extex.interpreter.type.code.Multiplyable
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4408 $
  */

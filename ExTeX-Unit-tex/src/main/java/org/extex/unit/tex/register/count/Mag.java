@@ -19,9 +19,6 @@
 
 package org.extex.unit.tex.register.count;
 
-import org.extex.base.type.arithmetic.Advanceable;
-import org.extex.base.type.arithmetic.Divideable;
-import org.extex.base.type.arithmetic.Multiplyable;
 import org.extex.core.exception.helping.ArithmeticOverflowException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
@@ -31,6 +28,9 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.parser.CountConvertible;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
+import org.extex.interpreter.type.code.Advanceable;
+import org.extex.interpreter.type.code.Divideable;
+import org.extex.interpreter.type.code.Multiplyable;
 import org.extex.scanner.exception.CatcodeException;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
@@ -73,7 +73,7 @@ import org.extex.typesetter.exception.TypesetterException;
  *      &rarr; &lang;optional prefix&rang; <tt>\mag</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *        &lang;number&rang;}
  *
  *    &lang;optional prefix&rang;
@@ -88,9 +88,9 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * </doc>
  * 
- * @see org.extex.base.type.arithmetic.Advanceable
- * @see org.extex.base.type.arithmetic.Divideable
- * @see org.extex.base.type.arithmetic.Multiplyable
+ * @see org.extex.interpreter.type.code.Advanceable
+ * @see org.extex.interpreter.type.code.Divideable
+ * @see org.extex.interpreter.type.code.Multiplyable
  * @see org.extex.interpreter.type.Theable
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -130,7 +130,7 @@ public class Mag extends AbstractCount
      * @param source the token source to parse
      * @param typesetter the typesetter
      * 
-     * @see org.extex.base.type.arithmetic.Advanceable#advance(
+     * @see org.extex.interpreter.type.code.Advanceable#advance(
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
@@ -178,7 +178,7 @@ public class Mag extends AbstractCount
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.type.arithmetic.Divideable#divide(
+     * @see org.extex.interpreter.type.code.Divideable#divide(
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
@@ -246,7 +246,7 @@ public class Mag extends AbstractCount
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.type.arithmetic.Multiplyable#multiply(
+     * @see org.extex.interpreter.type.code.Multiplyable#multiply(
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */

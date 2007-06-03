@@ -19,9 +19,6 @@
 
 package de.dante.extex.interpreter.primitives.register.real;
 
-import org.extex.base.type.arithmetic.Advanceable;
-import org.extex.base.type.arithmetic.Divideable;
-import org.extex.base.type.arithmetic.Multiplyable;
 import org.extex.baseext.exception.InterpreterExtensionException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -31,6 +28,9 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.parser.CountConvertible;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
+import org.extex.interpreter.type.code.Advanceable;
+import org.extex.interpreter.type.code.Divideable;
+import org.extex.interpreter.type.code.Multiplyable;
 import org.extex.scanner.exception.CatcodeException;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
@@ -181,7 +181,7 @@ public class NamedReal extends AbstractAssignment
     }
 
     /**
-     * @see org.extex.base.type.arithmetic.Advanceable#advance(
+     * @see org.extex.interpreter.type.code.Advanceable#advance(
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
@@ -210,7 +210,7 @@ public class NamedReal extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.type.arithmetic.Multiplyable#multiply(org.extex.interpreter.Flags,
+     * @see org.extex.interpreter.type.code.Multiplyable#multiply(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
@@ -236,7 +236,7 @@ public class NamedReal extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.type.arithmetic.Divideable#divide(org.extex.interpreter.Flags,
+     * @see org.extex.interpreter.type.code.Divideable#divide(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */

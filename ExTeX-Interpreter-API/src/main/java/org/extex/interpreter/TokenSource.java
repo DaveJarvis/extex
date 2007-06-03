@@ -591,7 +591,7 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      *         org.extex.interpreter.TokenSource#scanTokens(Context,boolean,boolean,String)
      *         &lang;tokens&rang;}
      *         | {@linkplain
-     *             org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
+     *             org.extex.interpreter.parser.CountParser#parseNumber(Context,TokenSource,Typesetter)
      *         &lang;number&rang;}
      * </pre>
      * 

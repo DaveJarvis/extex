@@ -19,9 +19,6 @@
 
 package org.extex.unit.tex.math.delimiter;
 
-import org.extex.base.type.arithmetic.Advanceable;
-import org.extex.base.type.arithmetic.Divideable;
-import org.extex.base.type.arithmetic.Multiplyable;
 import org.extex.core.UnicodeChar;
 import org.extex.core.exception.helping.ArithmeticOverflowException;
 import org.extex.core.exception.helping.HelpingException;
@@ -32,6 +29,9 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.parser.CountConvertible;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Theable;
+import org.extex.interpreter.type.code.Advanceable;
+import org.extex.interpreter.type.code.Divideable;
+import org.extex.interpreter.type.code.Multiplyable;
 import org.extex.scanner.exception.CatcodeException;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
@@ -78,11 +78,11 @@ import org.extex.typesetter.type.math.MathDelimiter;
  * <pre class="syntax">
  *    &lang;delcode&rang;
  *      &rarr; &lang;prefix&rang; <tt>\delcode</tt> {@linkplain
- *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *        &lang;8-bit&nbsp;number&rang;} {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *        &lang;8-bit&nbsp;number&rang;}
  *
  *    &lang;prefix&rang;
@@ -150,7 +150,7 @@ public class Delcode extends AbstractAssignment
      * @param source the token source to parse
      * @param typesetter the typesetter
      * 
-     * @see org.extex.base.type.arithmetic.Advanceable#advance(
+     * @see org.extex.interpreter.type.code.Advanceable#advance(
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
@@ -248,7 +248,7 @@ public class Delcode extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.type.arithmetic.Divideable#divide(
+     * @see org.extex.interpreter.type.code.Divideable#divide(
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
@@ -273,7 +273,7 @@ public class Delcode extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.type.arithmetic.Multiplyable#multiply(
+     * @see org.extex.interpreter.type.code.Multiplyable#multiply(
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */

@@ -67,7 +67,7 @@ import org.extex.typesetter.paragraphBuilder.ParagraphShape;
  * <pre class="syntax">
  *    &lang;parshape&rang;
  *        &rarr; <tt>\parshape</tt> {@linkplain
- *        org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *        &lang;8-bit&nbsp;number&rang;} ... </pre>
  * 
  * <h4>Examples</h4>

@@ -48,7 +48,7 @@ import org.extex.typesetter.type.node.PenaltyNode;
  * <pre class="syntax">
  *    &lang;penalty&rang;
  *        &rarr; <tt>\penalty</tt> {@linkplain
- *          org.extex.base.parser.ConstantCountParser#scanNumber(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
  *          &lang;8-bit&nbsp;number&rang;}  </pre>
  * 
  * <h4>Examples</h4>

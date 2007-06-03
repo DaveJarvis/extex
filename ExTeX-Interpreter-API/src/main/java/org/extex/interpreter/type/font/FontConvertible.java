@@ -42,13 +42,13 @@ import org.extex.typesetter.tc.font.Font;
  *    &lang;font&rang;
  *        &rarr;  &lang;loaded font&rang;
  *         |   <tt>\textfont</tt> {@linkplain
- *             org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *             org.extex.interpreter.parser.CountParser#parseNumber(Context,TokenSource,Typesetter)
  *             &lang;8-bit&nbsp;number&rang;}
  *         |   <tt>\scriptfont</tt> {@linkplain
- *             org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *             org.extex.interpreter.parser.CountParser#parseNumber(Context,TokenSource,Typesetter)
  *             &lang;8-bit&nbsp;number&rang;}
  *         |   <tt>\scriptscriptfont</tt> {@linkplain
- *             org.extex.scanner.CountParser#scanNumber(Context,TokenSource,Typesetter)
+ *             org.extex.interpreter.parser.CountParser#parseNumber(Context,TokenSource,Typesetter)
  *             &lang;8-bit&nbsp;number&rang;}
  *         |   <tt>\font</tt>
  *  </pre>

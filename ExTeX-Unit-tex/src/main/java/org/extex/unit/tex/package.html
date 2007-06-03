@@ -188,7 +188,7 @@
   <p>
    <logo>ExTeX</logo> provides means for externalzing strings. Thus it should be
    made easy to translate the messages to other languages. For this
-   purpose the class {@link org.extex.util.framework.i18n.Localizer
+   purpose the class {@link org.extex.framework.i18n.Localizer
    Localizer} is provided. See the documentation of this
    class for details.
   </p>
@@ -360,7 +360,7 @@
   <table format="lll">
    <tr>
     <td><tt>\advance</tt></td>
-    <td>{@link org.extex.interpreter.type.arithmetic.Advanceable
+    <td>{@link org.extex.interpreter.code.Advanceable
       Advanceable}</td>
    </tr>
    <tr>
@@ -369,17 +369,17 @@
    </tr>
    <tr>
     <td><tt>\count</tt></td>
-    <td>{@link org.extex.interpreter.type.count.CountConvertible
+    <td>{@link org.extex.interpreter.parser.CountConvertible
       CountConvertible}</td>
    </tr>
    <tr>
     <td><tt>\dimen</tt></td>
-    <td>{@link org.extex.interpreter.type.dimen.DimenConvertible
+    <td>{@link org.extex.interpreter.parser.DimenConvertible
       DimenConvertible}</td>
    </tr>
    <tr>
     <td><tt>\divide</tt></td>
-    <td>{@link org.extex.interpreter.type.arithmetic.Divideable
+    <td>{@link org.extex.interpreter.code.Divideable
       Dividable}</td>
    </tr>
    <tr>
@@ -389,7 +389,7 @@
    </tr>
    <tr>
     <td><tt>\multiply</tt></td>
-    <td>{@link org.extex.interpreter.type.arithmetic.Multiplyable
+    <td>{@link org.extex.interpreter.code.Multiplyable
       Multiplyable}</td>
    </tr>
    <tr>
