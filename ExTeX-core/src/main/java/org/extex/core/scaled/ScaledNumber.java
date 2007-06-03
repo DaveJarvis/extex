@@ -19,7 +19,6 @@
 
 package org.extex.core.scaled;
 
-
 /**
  * This class provides a fixed point number.
  *
@@ -27,15 +26,6 @@ package org.extex.core.scaled;
  * @version $Revision: 4404 $
  */
 public class ScaledNumber {
-
-    /**
-     * The constant <tt>FLOAT_DIGITS</tt> contains the number of digits to
-     * consider when producing a string representation of this type.
-     *
-     * Attention: Do not change this value unless you have read and understood
-     * <logo>TeX</logo> the program!
-     */
-    private static final int FLOAT_DIGITS = 17;
 
     /**
      * The constant <tt>ONE</tt> contains the internal representation for 1pt.

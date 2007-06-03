@@ -39,9 +39,9 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * Create a jar archive with the toc index
- * for the <code>ClasspathArchiveFinder</code>.
- *
+ * Create a jar archive with the toc index for the
+ * <code>ClasspathArchiveFinder</code>.
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -59,8 +59,8 @@ public class CreateClasspathArchive {
 
     /**
      * The main method.
-     *
-     * @param args  the command line
+     * 
+     * @param args the command line
      * @throws Exception if an error occurred.
      */
     public static void main(String[] args) throws Exception {
@@ -69,7 +69,7 @@ public class CreateClasspathArchive {
 
         if (args.length < PARAMETER) {
             cca.getLogger().severe(
-                    cca.getLocalizer().format("CreateClasspathArchive.Call"));
+                cca.getLocalizer().format("CreateClasspathArchive.Call"));
             System.exit(1);
         }
 
@@ -91,8 +91,8 @@ public class CreateClasspathArchive {
      * The field <tt>localizer</tt> contains the localizer. It is initiated
      * with a localizer for the name of this class.
      */
-    private Localizer localizer = LocalizerFactory
-            .getLocalizer(CreateClasspathArchive.class);
+    private Localizer localizer =
+            LocalizerFactory.getLocalizer(CreateClasspathArchive.class);
 
     /**
      * The field <tt>logger</tt> contains the logger currently in use.
@@ -125,18 +125,18 @@ public class CreateClasspathArchive {
 
     /**
      * Add a file to the archive
-     *
-     * @param out   The output.
-     * @param f     The file object.
-     * @param name  The name of the entry.
+     * 
+     * @param out The output.
+     * @param f The file object.
+     * @param name The name of the entry.
      * @throws IOException if an IO-error occurred.
      */
-    private void addFile(JarOutputStream out, File f,
-            String name) throws IOException {
+    private void addFile(JarOutputStream out, File f, String name)
+            throws IOException {
 
         // source
-        BufferedInputStream in = new BufferedInputStream(
-                new FileInputStream(f), BUFFERSIZE);
+        BufferedInputStream in =
+                new BufferedInputStream(new FileInputStream(f), BUFFERSIZE);
 
         out.putNextEntry(new JarEntry(name));
 
@@ -153,16 +153,17 @@ public class CreateClasspathArchive {
     }
 
     /**
-     * Recursive procedure to traverse a directory tree and collect the
-     * files for the index.
-     *
+     * Recursive procedure to traverse a directory tree and collect the files
+     * for the index.
+     * 
      * @param file the current file to consider
      */
     private void collect(File file) {
 
         String f = file.getAbsolutePath();
-        f = f.substring(basedir.getAbsolutePath().length())
-                .replaceAll("^/", "");
+        f =
+                f.substring(basedir.getAbsolutePath().length()).replaceAll(
+                    "^/", "");
 
         if (file.isDirectory()) {
             File[] list = file.listFiles();
@@ -176,17 +177,19 @@ public class CreateClasspathArchive {
 
     /**
      * Create the jar archive.
-     *
-     * @param jarname   The name of the jar archive,
-     * @param tocindex  The toc index file.
+     * 
+     * @param jarname The name of the jar archive,
+     * @param tocindex The toc index file.
      * @throws FileNotFoundException TODO mgn
      * @throws IOException if a IO-error occurred.
      */
     private void createJarFile(String jarname, File tocindex)
-            throws FileNotFoundException, IOException {
+            throws FileNotFoundException,
+                IOException {
 
-        JarOutputStream out = new JarOutputStream(new BufferedOutputStream(
-                new FileOutputStream(jarname), BUFFERSIZE));
+        JarOutputStream out =
+                new JarOutputStream(new BufferedOutputStream(
+                    new FileOutputStream(jarname), BUFFERSIZE));
 
         // tocindex
         addFile(out, tocindex, "toc.index");
@@ -199,8 +202,8 @@ public class CreateClasspathArchive {
             File f = new File(basedir + File.separator + value);
             addFile(out, f, value);
             getLogger().info(
-                    getLocalizer().format("CreateClasspathArchive.adding",
-                            f.getAbsolutePath()));
+                getLocalizer().format("CreateClasspathArchive.adding",
+                    f.getAbsolutePath()));
 
         }
 
@@ -209,8 +212,8 @@ public class CreateClasspathArchive {
 
     /**
      * Create the toc index file.
-     *
-     * @param dir   The directory
+     * 
+     * @param dir The directory
      * @return Returns the file handle for the toc index.
      * @throws IOException if an IO-error occurred.
      */
@@ -223,36 +226,35 @@ public class CreateClasspathArchive {
         basedir = new File(dir);
         collect(basedir);
         tocIndexProps.store(tocIndexOut, getLocalizer().format(
-                "CreateClasspathArchive.created"));
-
+            "CreateClasspathArchive.created"));
+        tocIndexOut.close();
         return tocindex;
     }
 
     /**
      * Do it!
-     * @param dir       The directory to read.
-     * @param jarname   The name of the jar file.
+     * 
+     * @param dir The directory to read.
+     * @param jarname The name of the jar file.
      * @throws IOException if a IO-error occurred.
      */
-    public void doIt(String jarname, String dir)
-            throws IOException {
+    public void doIt(String jarname, String dir) throws IOException {
 
         getLogger().info(
-                getLocalizer().format("CreateClasspathArchive.start", dir));
+            getLocalizer().format("CreateClasspathArchive.start", dir));
         File tocindex = createTocindex(dir);
 
         createJarFile(jarname, tocindex);
 
         tocindex.delete();
         getLogger().info(
-                getLocalizer().format("CreateClasspathArchive.finished",
-                        jarname));
+            getLocalizer().format("CreateClasspathArchive.finished", jarname));
 
     }
 
     /**
      * Getter for localizer.
-     *
+     * 
      * @return Returns the localizer.
      */
     public Localizer getLocalizer() {
@@ -262,7 +264,7 @@ public class CreateClasspathArchive {
 
     /**
      * Getter for logger.
-     *
+     * 
      * @return Returns the logger.
      */
     public Logger getLogger() {
