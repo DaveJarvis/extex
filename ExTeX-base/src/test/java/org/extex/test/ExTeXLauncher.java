@@ -283,8 +283,8 @@ public class ExTeXLauncher extends TestCase {
      * 
      * @param properties the properties to start with
      * @param code the code to expand
-     * @param log the expected output on the log stream
-     * @param expect the expected output on the output stream
+     * @param logValidator the validator for the log stream or <code>null</code>
+     * @param outputValidator the validator for the output stream or <code>null</code>
      * 
      * @return a new instance of the <tt>Interpreter</tt> class which has been
      *         used for the test run. This object can be inspected in additional
