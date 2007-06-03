@@ -30,7 +30,7 @@ $ANT_HOME/bin/ant               \
     -keep-going                 \
     -noinput                    \
     -Ddeploy.dir=$INSTALLDIR    \
-    all
+    all deploy
 
 
 #####################################################################
