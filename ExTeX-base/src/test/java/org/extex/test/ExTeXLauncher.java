@@ -293,7 +293,8 @@ public class ExTeXLauncher extends TestCase {
      * @throws HelpingException in case of an error
      */
     public Interpreter assertOutput(Properties properties, String code,
-            String log, String expect) throws HelpingException {
+            Validator logValidator, Validator outputValidator)
+            throws HelpingException {
 
         boolean errorP = false;
 
@@ -377,15 +378,41 @@ public class ExTeXLauncher extends TestCase {
 
         handler.close();
         logger.removeHandler(handler);
-        if (log != null) {
-            assertEquals("log", log, byteStream.toString());
+        String err = byteStream.toString();
+        if (logValidator != null) {
+            assertTrue("log", logValidator.validate(err));
         } else {
             assertFalse("No error expected", errorP);
         }
-        if (expect != null) {
-            assertEquals("output stream", expect, stream.toString());
+        if (outputValidator != null) {
+            assertTrue("output stream", //
+                outputValidator.validate(stream.toString()));
         }
         return interpreter;
+    }
+
+    /**
+     * Run some code through <logo>ExTeX</logo>.
+     * 
+     * @param properties the properties to start with
+     * @param code the code to expand
+     * @param log the expected output on the log stream
+     * @param expect the expected output on the output stream
+     * 
+     * @return a new instance of the <tt>Interpreter</tt> class which has been
+     *         used for the test run. This object can be inspected in additional
+     *         asserts.
+     * 
+     * @throws HelpingException in case of an error
+     */
+    public Interpreter assertOutput(Properties properties, String code,
+            String log, String expect) throws HelpingException {
+
+        Validator logValidator =
+                (log == null ? null : new EqualityValidator(log));
+        Validator outputValidator =
+                (expect == null ? null : new EqualityValidator(expect));
+        return assertOutput(properties, code, logValidator, outputValidator);
     }
 
     /**
