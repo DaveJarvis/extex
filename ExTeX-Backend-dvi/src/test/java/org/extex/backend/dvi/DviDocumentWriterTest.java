@@ -148,7 +148,8 @@ public class DviDocumentWriterTest extends TestCase {
      * DviDocumentWriter} throws a {@link
      * org.extex.backend.documentWriter.exception.NoOutputStreamException
      * NoOutputStreamException}, if there is no OutputStream set before {@link
-     * org.extex.backend.documentWriter.DocumentWriter#shipout(Page) shipout()}.
+     * org.extex.backend.documentWriter.DocumentWriter#shipout(org.extex.typesetter.type.page.Page)
+     * shipout()}.
      * 
      * @throws Exception if an error occurs
      */
