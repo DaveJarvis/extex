@@ -168,7 +168,7 @@ public class FontPrimitive extends AbstractAssignment
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>DEBUG</tt> contains the indicator that debug output is
@@ -261,7 +261,7 @@ public class FontPrimitive extends AbstractAssignment
             fontKeyMap.put(FontKey.LETTERSPACE, letterspaced);
             fontKeyMap.put(FontKey.LIGATURES, Boolean.valueOf(ligatures));
             fontKeyMap.put(FontKey.KERNING, Boolean.valueOf(kerning));
-            fontKeyMap.put("language", context.getTypesettingContext()
+            fontKeyMap.put(FontKey.LANGUAGE, context.getTypesettingContext()
                 .getLanguage().getName());
             fontKey = factory.getFontKey(fontname, fontSize, fontKeyMap);
             fnt = factory.getInstance(fontKey);
