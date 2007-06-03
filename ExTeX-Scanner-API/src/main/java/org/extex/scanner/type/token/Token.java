@@ -19,6 +19,8 @@
 
 package org.extex.scanner.type.token;
 
+import java.io.Serializable;
+
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
 
@@ -35,7 +37,7 @@ import org.extex.scanner.type.Catcode;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4738 $
  */
-public interface Token {
+public interface Token extends Serializable {
 
     /**
      * Compare the current token with a pair of catcode and character value.
