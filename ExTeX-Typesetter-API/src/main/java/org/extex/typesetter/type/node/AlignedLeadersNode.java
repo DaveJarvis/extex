@@ -58,9 +58,10 @@ public class AlignedLeadersNode extends AbstractLeadersNode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillHorizontally(
-     *      long, org.extex.typesetter.type.Node, FixedDimen, FixedDimen)
      * @see "<logo>TeX</logo> &ndash; The Program [626]"
+     * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillHorizontally(
+     *      long, org.extex.typesetter.type.Node, 
+     *      org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
      */
     protected Node fillHorizontally(long total, Node node, FixedDimen posX,
             FixedDimen posY) {
