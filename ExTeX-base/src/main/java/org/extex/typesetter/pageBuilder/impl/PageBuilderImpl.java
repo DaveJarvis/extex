@@ -135,7 +135,7 @@ public class PageBuilderImpl implements PageBuilder {
 
             flush(nodes, typesetter);
             nodes.clear(); // TODO gene: split off the appropriate amount and
-                            // leave the rest
+            // leave the rest
         }
     }
 
@@ -143,11 +143,14 @@ public class PageBuilderImpl implements PageBuilder {
      * {@inheritDoc}
      * 
      * @see org.extex.typesetter.pageBuilder.PageBuilder#setContext(
-     *      org.extex.interpreter.context.Context)
+     *      org.extex.typesetter.PageContext)
      */
     public void setContext(PageContext context) {
 
-        // TODO gene: beware of ClassCastException
+        if (!(context instanceof Context)) {
+            //TODO gene: setContext unimplemented
+            throw new RuntimeException("unimplemented");
+        }
         this.context = (Context) context;
     }
 
