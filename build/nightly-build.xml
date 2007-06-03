@@ -28,10 +28,11 @@
   <property name="deploy.dir" location="target/site" />
 
   <property name="log.dir" value="target/application/html/snapshot" />
-  <property name="log.file" value="build.log" />
+  <property name="log.file" value="${log.dir}/build.log" />
   <property name="log.style" location="./src/xslt/ant-log.xsl" />
 
-  <property name="report.file" value="target/application/html/snapshot/build.html" />
+  <property name="report.file"
+            value="target/application/html/snapshot/build.html" />
 
   <property name="main.target" value="all" />
 
@@ -47,7 +48,7 @@
 
   <!-- ==================================================================== -->
   <target name="all"
-          description="Build nearly everything and translate the build log into a HTML page">
+          description="Build all and translate the build log into a HTML page">
 
     <mkdir dir="${log.dir}" />
     <delete file="${report.file}" />
@@ -56,12 +57,11 @@
       <arg value="-logger" />
       <arg value="org.apache.tools.ant.XmlLogger" />
       <arg value="-logfile" />
-      <arg value="${log.dir}/${log.file}" />
+      <arg value="${log.file}" />
       <arg value="${main.target}" />
     </exec>
-
-    <tuneAntLog file="${log.dir}/${log.file}" />
-    <xslt in="${log.dir}/${log.file}"
+    <tuneAntLog file="${log.file}" />
+    <xslt in="${log.file}"
           out="${report.file}"
           style="${log.style}" />
   </target>

@@ -29,7 +29,6 @@ $ANT_HOME/bin/ant               \
     -f nightly-build.xml        \
     -keep-going                 \
     -noinput                    \
-    -quiet                      \
     -Ddeploy.dir=$INSTALLDIR    \
     all
 
