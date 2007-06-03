@@ -46,7 +46,9 @@ import org.extex.unit.tex.math.AbstractMathCode;
  * <pre class="syntax">
  *    &lang;mkern&rang;
  *       &rarr; <tt>\mkern</tt> {@linkplain
- *          org.extex.base.parser.ConstantMudimenParser#parseMudimen(Context,TokenSource,Typesetter)
+ *          org.extex.base.parser.ConstantMudimenParser#parse(
+ *          org.extex.interpreter.context.Context, 
+ *          org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
  *          &lang;mudimen&rang;} </pre>
  * 
  * <h4>Examples</h4>
