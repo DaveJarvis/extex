@@ -32,6 +32,7 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
+import org.extex.font.BackendFont;
 import org.extex.font.CoreFontFactory;
 import org.extex.font.FontKey;
 import org.extex.font.LoadableFont;
@@ -44,7 +45,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class LoadableTfmFont implements LoadableFont {
+public class LoadableTfmFont implements LoadableFont, BackendFont {
 
     /**
      * The actual font key.
@@ -386,6 +387,28 @@ public class LoadableTfmFont implements LoadableFont {
                 codepointmap.put(UnicodeChar.get(i), new Integer(i));
             }
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#getFontData()
+     */
+    public byte[] getFontData() {
+
+        // TODO mgn: getFontData unimplemented
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#getName()
+     */
+    public String getName() {
+
+        // TODO mgn: getName unimplemented
+        return null;
     }
 
 }

@@ -306,6 +306,7 @@ public class FontFactoryImpl
             throw new IllegalArgumentException("fonttypes");
         }
         BackendFontManagerList fmlist = new BackendFontManagerList();
+        fmlist.setBackendFontFactory(this);
 
         for (int i = 0, n = fontTypes.size(); i < n; i++) {
 
@@ -322,6 +323,24 @@ public class FontFactoryImpl
         }
 
         return fmlist;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFontFactory#getBackendFont(org.extex.font.FontKey)
+     */
+    public BackendFont getBackendFont(FontKey key) {
+
+        if (key == null || key.getName() == null || key.getName().length() == 0) {
+            return null;
+        }
+
+        LoadableFont font = fontMap.get(key);
+        if (font != null && font instanceof BackendFont) {
+            return (BackendFont) font;
+        }
+        return null;
     }
 
 }

@@ -20,6 +20,7 @@
 package org.extex.font.manager;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -180,8 +181,56 @@ public class TfmBackendFontManager implements BackendFontManager {
      */
     public Iterator<BackendFont> iterate() {
 
-        // TODO mgn: iterate unimplemented
-        return null;
+        return new Iterator<BackendFont>() {
+
+            /**
+             * Iterator for the font key.
+             */
+            private Iterator<FontKey> it;
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see java.util.Iterator#hasNext()
+             */
+            public boolean hasNext() {
+
+                if (fontList != null && it == null) {
+                    it = fontList.keySet().iterator();
+                }
+                if (it != null) {
+                    return it.hasNext();
+                }
+                return false;
+            }
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see java.util.Iterator#next()
+             */
+            public BackendFont next() {
+
+                if (fontList != null && it == null) {
+                    it = fontList.keySet().iterator();
+                }
+                if (it == null) {
+                    throw new NoSuchElementException();
+                }
+                FontKey key = it.next();
+                return factory.getBackendFont(key);
+            }
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see java.util.Iterator#remove()
+             */
+            public void remove() {
+
+                throw new UnsupportedOperationException();
+            }
+        };
     }
 
     /**

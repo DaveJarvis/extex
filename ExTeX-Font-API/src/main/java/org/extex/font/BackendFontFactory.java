@@ -21,10 +21,20 @@ package org.extex.font;
 
 /**
  * Factory for the backend font.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public interface BackendFontFactory {
+
+    /**
+     * Return the font for the backend.
+     * 
+     * If no font is found, then <code>null</code> is returned.
+     * 
+     * @param key the fount key
+     * @return Returns the font instance.
+     */
+    BackendFont getBackendFont(FontKey key);
 
 }
