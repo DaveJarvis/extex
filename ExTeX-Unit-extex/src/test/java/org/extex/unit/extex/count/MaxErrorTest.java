@@ -19,7 +19,7 @@
 
 package org.extex.unit.extex.count;
 
-import org.extex.interpreter.primitives.register.count.AbstractNonGroupIntegerTester;
+import org.extex.test.count.AbstractNonGroupIntegerTester;
 
 /**
  * This is a test suite for the primitive <tt>\maxError</tt>.

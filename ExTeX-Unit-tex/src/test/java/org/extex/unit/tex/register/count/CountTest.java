@@ -19,7 +19,7 @@
 
 package org.extex.unit.tex.register.count;
 
-import org.extex.interpreter.primitives.register.count.AbstractCountArrayTester;
+import org.extex.test.count.AbstractCountArrayTester;
 
 /**
  * This is a test suite for the primitive <tt>\count</tt>.

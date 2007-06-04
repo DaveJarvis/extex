@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.interpreter.primitives.register.count;
+package org.extex.test.count;
 
 import org.extex.test.ExTeXLauncher;
 

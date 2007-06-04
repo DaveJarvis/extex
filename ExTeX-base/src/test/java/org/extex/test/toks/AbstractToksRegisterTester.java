@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.interpreter.primitives.register.toks;
+package org.extex.test.toks;
 
 import org.extex.test.ExTeXLauncher;
 

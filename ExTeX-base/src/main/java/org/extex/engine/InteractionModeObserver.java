@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.base;
+package org.extex.engine;
 
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -29,21 +29,22 @@ import org.extex.interpreter.interaction.Interaction;
 /**
  * This observer is used to transport the interaction mode changes to the
  * logger. Thus it is guaranteed that only the appropriate messages are shown.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4445 $
  */
 public class InteractionModeObserver implements InteractionObserver {
 
     /**
-     * The field <tt>handler</tt> contains the {@link java.util.logging.Handler
-     * Handler} at which the logging should be directed.
+     * The field <tt>handler</tt> contains the
+     * {@link java.util.logging.Handler Handler} at which the logging should be
+     * directed.
      */
     private Handler handler;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param theHandler the target handler
      */
     public InteractionModeObserver(Handler theHandler) {
@@ -53,13 +54,15 @@ public class InteractionModeObserver implements InteractionObserver {
     }
 
     /**
-     * Receive a notification on a count change.
-     *
+     * Receive a notification on a count change. If the interaction mode
+     * received is batchmode then the handler encapsulated is switched to log
+     * level severe.Otherwise it is switched to log level info.
+     * 
      * @param context the interpreter context
      * @param mode the new interaction mode.
-     *
+     * 
      * @throws Exception in case of a problem
-     *
+     * 
      * @see org.extex.interpreter.context.observer.interaction.InteractionObserver#receiveInteractionChange(
      *      org.extex.interpreter.context.ContextInternals,
      *      org.extex.interpreter.interaction.Interaction)
@@ -68,7 +71,8 @@ public class InteractionModeObserver implements InteractionObserver {
             Interaction mode) throws Exception {
 
         handler.setLevel(mode == Interaction.BATCHMODE //
-                ? Level.SEVERE : Level.INFO);
+                ? Level.SEVERE
+                : Level.INFO);
     }
 
 }

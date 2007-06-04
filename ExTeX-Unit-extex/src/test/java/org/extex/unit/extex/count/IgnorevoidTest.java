@@ -19,7 +19,7 @@
 
 package org.extex.unit.extex.count;
 
-import org.extex.interpreter.primitives.register.count.AbstractCountRegisterTester;
+import org.extex.test.count.AbstractCountRegisterTester;
 
 /**
  * This is a test suite for the primitive <tt>\ignorevoid</tt>.

@@ -19,7 +19,7 @@
 
 package org.extex.unit.pdftex;
 
-import org.extex.interpreter.primitives.register.count.AbstractReadonlyCountRegisterTester;
+import org.extex.test.count.AbstractReadonlyCountRegisterTester;
 
 /**
  * This is a test suite for the primitive <tt>\pdflastximage</tt>.

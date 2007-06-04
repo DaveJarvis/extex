@@ -19,7 +19,7 @@
 
 package org.extex.unit.etex.conditional.analyze;
 
-import org.extex.interpreter.primitives.register.count.AbstractReadonlyCountRegisterTester;
+import org.extex.test.count.AbstractReadonlyCountRegisterTester;
 import org.extex.unit.tex.math.AbstractMathTester;
 
 /**

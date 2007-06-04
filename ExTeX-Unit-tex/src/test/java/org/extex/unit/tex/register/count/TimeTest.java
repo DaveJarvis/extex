@@ -21,7 +21,7 @@ package org.extex.unit.tex.register.count;
 
 import java.util.Calendar;
 
-import org.extex.interpreter.primitives.register.count.AbstractCountRegisterTester;
+import org.extex.test.count.AbstractCountRegisterTester;
 
 /**
  * This is a test suite for the primitive <tt>\time</tt>.

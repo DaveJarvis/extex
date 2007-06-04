@@ -19,7 +19,7 @@
 
 package org.extex.unit.tex.register.toks;
 
-import org.extex.interpreter.primitives.register.toks.AbstractToksRegisterTester;
+import org.extex.test.toks.AbstractToksRegisterTester;
 
 /**
  * This is a test suite for the primitive <tt>\everycr</tt>.

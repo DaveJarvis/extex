@@ -19,7 +19,7 @@
 
 package org.extex.unit.tex.hyphen;
 
-import org.extex.interpreter.primitives.register.count.AbstractNonGroupCountRegisterTester;
+import org.extex.test.count.AbstractNonGroupCountRegisterTester;
 
 /**
  * This is a test suite for the primitive <tt>\lefthyphenmin</tt>.
