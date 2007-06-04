@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.typesetter.type.page;
+package org.extex.engine.typesetter.page;
 
 import java.util.logging.Logger;
 
@@ -31,6 +31,8 @@ import org.extex.interpreter.context.Context;
 import org.extex.typesetter.PageContext;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.type.NodeList;
+import org.extex.typesetter.type.page.Page;
+import org.extex.typesetter.type.page.PageFactory;
 
 /**
  * This class provides a factory for page instances.

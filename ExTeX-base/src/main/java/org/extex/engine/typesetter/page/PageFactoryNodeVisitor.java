@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.typesetter.type.page;
+package org.extex.engine.typesetter.page;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -56,6 +56,7 @@ import org.extex.typesetter.type.node.SpecialNode;
 import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.WhatsItNode;
+import org.extex.typesetter.type.page.Page;
 
 /**
  * This interface describes a

@@ -17,12 +17,13 @@
  *
  */
 
-package org.extex.typesetter.type.page;
+package org.extex.engine.typesetter.page;
 
 import org.extex.color.Color;
 import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.Dimen;
 import org.extex.typesetter.type.NodeList;
+import org.extex.typesetter.type.page.Page;
 
 /**
  * This class provides a transport object for pages. Beside the nodes it

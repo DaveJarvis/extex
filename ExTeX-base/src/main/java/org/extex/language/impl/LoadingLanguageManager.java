@@ -34,9 +34,9 @@ import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
-import org.extex.backend.outputStream.NamedOutputStream;
 import org.extex.backend.outputStream.OutputStreamConsumer;
 import org.extex.backend.outputStream.OutputStreamFactory;
+import org.extex.engine.backend.NamedOutputStream;
 import org.extex.framework.Registrar;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.language.Language;

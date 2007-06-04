@@ -17,13 +17,11 @@
  *
  */
 
-package org.extex.typesetter.output;
-
-import java.util.logging.Logger;
+package org.extex.engine.typesetter;
 
 import org.extex.framework.AbstractFactory;
-import org.extex.framework.configuration.Configuration;
 import org.extex.interpreter.Interpreter;
+import org.extex.typesetter.output.OutputRoutine;
 
 /**
  * This class provides a factory for the output routines.
@@ -35,19 +33,10 @@ public class OutputRoutineFactory extends AbstractFactory {
 
     /**
      * Creates a new object.
-     *
-     * @param configuration the configuration for this factory
-     * @param logger the logger
-     *
-     * @throws org.extex.framework.configuration.exception.ConfigurationException
-     *   in case of an error in the configuration.
      */
-    public OutputRoutineFactory(Configuration configuration,
-            Logger logger) {
+    public OutputRoutineFactory() {
 
         super();
-        enableLogging(logger);
-        configure(configuration);
     }
 
     /**

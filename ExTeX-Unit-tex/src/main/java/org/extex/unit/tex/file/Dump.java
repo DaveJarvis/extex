@@ -25,12 +25,12 @@ import java.util.Calendar;
 import java.util.logging.Logger;
 
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
-import org.extex.backend.outputStream.NamedOutputStream;
 import org.extex.backend.outputStream.OutputStreamConsumer;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.InterpreterPanicException;
 import org.extex.core.exception.helping.NoHelpException;
+import org.extex.engine.backend.NamedOutputStream;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;

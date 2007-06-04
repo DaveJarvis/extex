@@ -35,6 +35,7 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.glue.Glue;
+import org.extex.engine.typesetter.page.PageImpl;
 import org.extex.framework.configuration.Configuration;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.type.Node;
@@ -44,7 +45,6 @@ import org.extex.typesetter.type.node.GlueNode;
 import org.extex.typesetter.type.node.InsertionNode;
 import org.extex.typesetter.type.node.MarkNode;
 import org.extex.typesetter.type.node.VerticalListNode;
-import org.extex.typesetter.type.page.PageImpl;
 
 /**
  * JUnit tests for class <code>DviDocumentWriter</code>.

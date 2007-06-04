@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.backend.outputStream;
+package org.extex.engine.backend;
 
 import java.io.IOException;
 import java.io.OutputStream;

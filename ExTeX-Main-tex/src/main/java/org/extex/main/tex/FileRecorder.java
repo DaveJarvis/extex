@@ -29,9 +29,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
-import org.extex.backend.outputStream.NamedOutputStream;
-import org.extex.backend.outputStream.OutputFactory;
 import org.extex.backend.outputStream.OutputStreamObserver;
+import org.extex.engine.backend.NamedOutputStream;
+import org.extex.engine.backend.OutputFactory;
 import org.extex.scanner.stream.observer.file.OpenFileObserver;
 
 /**

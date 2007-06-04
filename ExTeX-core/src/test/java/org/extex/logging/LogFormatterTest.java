@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.main.logging;
+package org.extex.logging;
 
 import java.util.logging.Level;
 import java.util.logging.LogRecord;

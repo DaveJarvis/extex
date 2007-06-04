@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.backend.outputStream;
+package org.extex.engine.backend;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -28,6 +28,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
+import org.extex.backend.outputStream.OutputStreamFactory;
+import org.extex.backend.outputStream.OutputStreamObserver;
 
 /**
  * The trivial output stream factory is not configurable. It just creates files

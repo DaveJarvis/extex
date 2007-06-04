@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.backend.outputStream;
+package org.extex.engine.backend;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -33,6 +33,8 @@ import java.util.Map;
 
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.documentWriter.exception.OutputStreamOpenException;
+import org.extex.backend.outputStream.OutputStreamFactory;
+import org.extex.backend.outputStream.OutputStreamObserver;
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 

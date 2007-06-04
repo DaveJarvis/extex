@@ -17,12 +17,12 @@
  *
  */
 
-package org.extex.backend;
+package org.extex.engine.backend;
 
 import java.util.Iterator;
 import java.util.Properties;
-import java.util.logging.Logger;
 
+import org.extex.backend.BackendDriver;
 import org.extex.backend.documentWriter.DocumentWriter;
 import org.extex.backend.documentWriter.DocumentWriterFactory;
 import org.extex.backend.documentWriter.DocumentWriterOptions;
@@ -32,6 +32,7 @@ import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.color.ColorAware;
 import org.extex.color.ColorConverter;
 import org.extex.font.CoreFontFactory;
+import org.extex.font.FontFactoryConsumer;
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -83,17 +84,10 @@ public class BackendFactory extends AbstractFactory {
 
     /**
      * Creates a new object.
-     * 
-     * @param config the configuration
-     * @param logger the logger
-     * 
-     * @throws ConfigurationException in case of an configuration error
      */
-    public BackendFactory(Configuration config, Logger logger) {
+    public BackendFactory() {
 
         super();
-        enableLogging(logger);
-        configure(config);
     }
 
     /**

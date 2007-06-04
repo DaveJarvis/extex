@@ -17,20 +17,22 @@
  *
  */
 
-package org.extex.typesetter;
+package org.extex.engine.typesetter;
 
 import org.extex.backend.BackendDriver;
+import org.extex.engine.typesetter.page.PageFactoryImpl;
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.context.Context;
+import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.pageBuilder.PageBuilder;
 import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 import org.extex.typesetter.type.node.factory.NodeFactory;
-import org.extex.typesetter.type.page.PageFactoryImpl;
 
 /**
  * This is the factory for instances of

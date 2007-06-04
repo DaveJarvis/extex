@@ -40,10 +40,8 @@ import java.util.logging.Logger;
 import java.util.logging.StreamHandler;
 
 import org.extex.backend.BackendDriver;
-import org.extex.backend.BackendFactory;
 import org.extex.backend.documentWriter.DocumentWriterOptions;
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
-import org.extex.backend.outputStream.OutputFactory;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.base.InteractionModeObserver;
 import org.extex.base.parser.ConstantDimenParser;
@@ -58,7 +56,11 @@ import org.extex.engine.ErrorHandlerFactory;
 import org.extex.engine.FontInjector;
 import org.extex.engine.ResourceFinderInjector;
 import org.extex.engine.TokenFactoryFactory;
+import org.extex.engine.backend.BackendFactory;
+import org.extex.engine.backend.OutputFactory;
 import org.extex.engine.exception.RegistrarFontNotFoundException;
+import org.extex.engine.typesetter.OutputRoutineFactory;
+import org.extex.engine.typesetter.TypesetterFactory;
 import org.extex.font.CoreFontFactory;
 import org.extex.font.exception.FontException;
 import org.extex.framework.Registrar;
@@ -100,9 +102,7 @@ import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.stream.TokenStreamOptions;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.typesetter.Typesetter;
-import org.extex.typesetter.TypesetterFactory;
 import org.extex.typesetter.exception.TypesetterException;
-import org.extex.typesetter.output.OutputRoutineFactory;
 import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.tc.font.ModifiableFont;
 import org.extex.typesetter.tc.font.impl.FontImpl;
@@ -618,7 +618,7 @@ public class ExTeX {
     /**
      * The constant <tt>PROP_TYPESETTER_TYPE</tt> contains the name of the
      * property for the typesetter to use. This value is resolved by the
-     * {@link org.extex.typesetter.TypesetterFactory TypesetterFactory} to find
+     * {@link org.extex.engine.typesetter.TypesetterFactory TypesetterFactory} to find
      * the appropriate class.
      */
     protected static final String PROP_TYPESETTER_TYPE = "extex.typesetter";
@@ -1229,7 +1229,9 @@ public class ExTeX {
             CoreFontFactory fontFactory) throws DocumentWriterException {
 
         String outputType = properties.getProperty(PROP_OUTPUT_TYPE);
-        BackendFactory backendFactory = new BackendFactory(config, logger);
+        BackendFactory backendFactory = new BackendFactory();
+        backendFactory.configure(config);
+        backendFactory.enableLogging(logger);
         backendFactory.setOptions(options);
         return backendFactory.newInstance(//
             outputType, //
@@ -1807,8 +1809,11 @@ public class ExTeX {
                 factory.newInstance(properties
                     .getProperty(PROP_TYPESETTER_TYPE), context, backend);
 
-        typesetter.setOutputRoutine(new OutputRoutineFactory(config
-            .getConfiguration("OutputRoutine"), logger)
+        OutputRoutineFactory outputRoutineFactory = new OutputRoutineFactory();
+        outputRoutineFactory
+            .configure(config.getConfiguration("OutputRoutine"));
+        outputRoutineFactory.enableLogging(logger);
+        typesetter.setOutputRoutine(outputRoutineFactory
             .newInstance(interpreter));
 
         return typesetter;
