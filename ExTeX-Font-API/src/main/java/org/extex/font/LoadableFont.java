@@ -26,7 +26,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * Interface for font which can be loaded from an external resource.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -34,15 +34,16 @@ public interface LoadableFont extends ExtexFont {
 
     /**
      * Load a font from the stream.
-     *
-     * @param in        the stream for reading.
-     * @param factory   the font factory.
-     * @param fontKey   the font key.
-     *
+     * 
+     * @param in The stream for reading.
+     * @param factory Tthe font factory.
+     * @param fontKey The font key.
+     * 
      * @throws CorruptFontException if the font is corrupt.
      * @throws ConfigurationException from the configuration system.
      */
     void loadFont(InputStream in, CoreFontFactory factory, FontKey fontKey)
-            throws CorruptFontException, ConfigurationException;
+            throws CorruptFontException,
+                ConfigurationException;
 
 }

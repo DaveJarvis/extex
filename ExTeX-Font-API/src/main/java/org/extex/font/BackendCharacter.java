@@ -21,7 +21,7 @@ package org.extex.font;
 
 /**
  * Interface for a backend character.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -29,16 +29,16 @@ public interface BackendCharacter {
 
     /**
      * Returns the id of the character.
-     *
+     * 
      * @return the id.
-     * @throws UnsupportedOperationException if no integer id is available
-     *         for this font.
+     * @throws UnsupportedOperationException if no integer id is available for
+     *         this font.
      */
     int getId();
 
     /**
      * Returns the name of the character.
-     *
+     * 
      * @return the name of the character.
      */
     String getName();

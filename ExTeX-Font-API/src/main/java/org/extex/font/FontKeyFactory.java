@@ -26,11 +26,10 @@ import org.extex.framework.AbstractFactory;
 
 /**
  * Factory for the font key.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-
 public class FontKeyFactory extends AbstractFactory {
 
     /**
@@ -48,9 +47,9 @@ public class FontKeyFactory extends AbstractFactory {
 
     /**
      * Returns a new font key instance.
-     *
-     * @param fk        The font key.
-     * @param theMap    The map with key value entries.
+     * 
+     * @param fk The font key.
+     * @param theMap The map with key value entries.
      * @return Returns a new font key instance.
      */
     public FontKey newInstance(FontKey fk, Map<String, ?> theMap) {
@@ -63,14 +62,13 @@ public class FontKeyFactory extends AbstractFactory {
 
     /**
      * Returns a new font key instance.
-     *
-     * @param fk        The font key.
-     * @param key       The key.
-     * @param value     The value.
+     * 
+     * @param fk The font key.
+     * @param key The key.
+     * @param value The value.
      * @return Returns a new font key instance.
      */
-    public FontKey newInstance(FontKey fk, String key,
-            boolean value) {
+    public FontKey newInstance(FontKey fk, String key, boolean value) {
 
         FontKey newfk = new FontKey(fk);
         newfk.put(key, value);
@@ -80,14 +78,13 @@ public class FontKeyFactory extends AbstractFactory {
 
     /**
      * Returns a new font key instance.
-     *
-     * @param fk        The font key.
-     * @param key       The key.
-     * @param value     The value.
+     * 
+     * @param fk The font key.
+     * @param key The key.
+     * @param value The value.
      * @return Returns a new font key instance.
      */
-    public FontKey newInstance(FontKey fk, String key,
-            FixedDimen value) {
+    public FontKey newInstance(FontKey fk, String key, FixedDimen value) {
 
         FontKey newfk = new FontKey(fk);
         newfk.put(key, value);
@@ -97,14 +94,13 @@ public class FontKeyFactory extends AbstractFactory {
 
     /**
      * Returns a new font key instance.
-     *
-     * @param fk        The font key.
-     * @param key       The key.
-     * @param value     The value.
+     * 
+     * @param fk The font key.
+     * @param key The key.
+     * @param value The value.
      * @return Returns a new font key instance.
      */
-    public FontKey newInstance(FontKey fk, String key,
-            String value) {
+    public FontKey newInstance(FontKey fk, String key, String value) {
 
         FontKey newfk = new FontKey(fk);
         newfk.put(key, value);
@@ -114,8 +110,8 @@ public class FontKeyFactory extends AbstractFactory {
 
     /**
      * Returns a new font key instance.
-     *
-     * @param theFontname   The font name.
+     * 
+     * @param theFontname The font name.
      * @return Returns a new font key instance.
      */
     public FontKey newInstance(String theFontname) {

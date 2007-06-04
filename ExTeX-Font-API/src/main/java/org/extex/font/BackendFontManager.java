@@ -28,13 +28,13 @@ import org.extex.core.UnicodeChar;
  * deal with fonts. The procedure assumes that in a first pass all characters of
  * all fonts on a page or in a range of pages are passed to the manager. The
  * manager returns a representation appropriate for the back-end format.
- *
+ * 
  * <p>
- *  In a second pass the manager can be asked to return all fonts. Those fonts
- *  can be embedded into the output file &ndash; either completely or simply as
- *  a list of font names.
+ * In a second pass the manager can be asked to return all fonts. Those fonts
+ * can be embedded into the output file &ndash; either completely or simply as a
+ * list of font names.
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -42,37 +42,24 @@ import org.extex.core.UnicodeChar;
 public interface BackendFontManager {
 
     /**
-     * Take a character and a font and see if they can be managed by this
-     * manager. The internal state is adjusted to report the font and the
-     * character appropriately after the invocation has returned.
-     *
-     * @param fontKey the font key for the character at hand
-     * @param uc the Unicode character at hand
-     *
-     * @return <code>true</code> iff the character is defined in the font given
-     *  and a font of a requested format can be delivered.
+     * Get the char info for the most recently recognized pair of font and
+     * character. If invoked before any character has been recognized
+     * successfully then <code>null</code> is returned.
+     * 
+     * @return the char info for the most recently recognized font/character
+     *         pair
      */
-    boolean recognize(FontKey fontKey, UnicodeChar uc);
+    BackendCharacter getRecognizedCharId();
 
     /**
      * Get the font info for the most recently recognized pair of font and
      * character. If invoked before any character has been recognized
      * successfully then <code>null</code> is returned.
-     *
+     * 
      * @return the font info for the most recently recognized font/character
-     *  pair
+     *         pair
      */
     BackendFont getRecognizedFont();
-
-    /**
-     * Get the char info for the most recently recognized pair of font and
-     * character. If invoked before any character has been recognized
-     * successfully then <code>null</code> is returned.
-     *
-     * @return the char info for the most recently recognized font/character
-     *  pair
-     */
-    BackendCharacter getRecognizedCharId();
 
     /**
      * Get the new font indicator for the most recently recognized pair of font
@@ -82,21 +69,34 @@ public interface BackendFontManager {
      * getRecognizedFont() returns a new font info this method returns
      * <code>true</code>.
      * <p>
-     *  If invoked before any character has been recognized
-     *  successfully then <code>null</code> is returned.
+     * If invoked before any character has been recognized successfully then
+     * <code>null</code> is returned.
      * </p>
-     *
+     * 
      * @return the font info for the most recently recognized font/character
-     *  pair
+     *         pair
      */
     boolean isNewRecongnizedFont();
 
     /**
      * Return the iterator for all recognized back-end fonts.
-     *
+     * 
      * @return the iterator for all recognized back-end font
      */
     Iterator<BackendFont> iterate();
+
+    /**
+     * Take a character and a font and see if they can be managed by this
+     * manager. The internal state is adjusted to report the font and the
+     * character appropriately after the invocation has returned.
+     * 
+     * @param fontKey the font key for the character at hand
+     * @param uc the Unicode character at hand
+     * 
+     * @return <code>true</code> iff the character is defined in the font
+     *         given and a font of a requested format can be delivered.
+     */
+    boolean recognize(FontKey fontKey, UnicodeChar uc);
 
     /**
      * Rest the internal state to the initial state. Afterwards the instance
@@ -107,7 +107,7 @@ public interface BackendFontManager {
 
     /**
      * Setter for the back-end font factory.
-     *
+     * 
      * @param factory the back-end font factory to set
      */
     void setBackendFontFactory(BackendFontFactory factory);

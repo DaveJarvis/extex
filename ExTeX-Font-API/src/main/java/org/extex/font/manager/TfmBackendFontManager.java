@@ -40,9 +40,89 @@ import org.extex.font.FontKey;
 public class TfmBackendFontManager implements BackendFontManager {
 
     /**
+     * Class for a back-end character.
+     */
+    private class BackendCharacterImpl implements BackendCharacter {
+
+        /**
+         * The Unicode char.
+         */
+        private UnicodeChar uc;
+
+        /**
+         * Creates a new object.
+         * 
+         * @param uc the Unicode char.
+         */
+        public BackendCharacterImpl(UnicodeChar uc) {
+
+            this.uc = uc;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.font.BackendCharacter#getId()
+         */
+        public int getId() {
+
+            int cp = uc.getCodePoint();
+
+            if (cp >= Unicode.OFFSET && cp <= Unicode.OFFSET + 0xff) {
+                return cp - Unicode.OFFSET;
+            }
+
+            if (cp <= 255) {
+                // TODO ...
+                return cp;
+            }
+            return 0;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.font.BackendCharacter#getName()
+         */
+        public String getName() {
+
+            return Integer.toString(getId());
+        }
+
+    }
+
+    /**
+     * TODO missing JavaDoc.
+     */
+    private class Info {
+
+        /**
+         * Returns the back-end font.
+         * 
+         * @return the back-end font.
+         */
+        public BackendFont getFont() {
+
+            // TODO mgn: getFont unimplemented
+            return null;
+        }
+
+    }
+
+    /**
+     * The back-end font factory.
+     */
+    private BackendFontFactory factory;
+
+    /**
      * The font list.
      */
     private SortedMap<FontKey, Info> fontList;
+
+    /**
+     * Is it a recognized font?
+     */
+    private boolean newRecongnizedFont;
 
     /**
      * The back-end character.
@@ -53,11 +133,6 @@ public class TfmBackendFontManager implements BackendFontManager {
      * The recognized font.
      */
     private BackendFont recognizedFont;
-
-    /**
-     * Is it a recognized font?
-     */
-    private boolean newRecongnizedFont;
 
     /**
      * Creates a new object.
@@ -138,76 +213,6 @@ public class TfmBackendFontManager implements BackendFontManager {
     }
 
     /**
-     * Class for a back-end character.
-     */
-    private class BackendCharacterImpl implements BackendCharacter {
-
-        /**
-         * The Unicode char.
-         */
-        private UnicodeChar uc;
-
-        /**
-         * Creates a new object.
-         * 
-         * @param uc the Unicode char.
-         */
-        public BackendCharacterImpl(UnicodeChar uc) {
-
-            this.uc = uc;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.BackendCharacter#getId()
-         */
-        public int getId() {
-
-            int cp = uc.getCodePoint();
-
-            if (cp >= Unicode.OFFSET && cp <= Unicode.OFFSET + 0xff) {
-                return cp - Unicode.OFFSET;
-            }
-
-            if (cp <= 255) {
-                // TODO ...
-                return cp;
-            }
-            return 0;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.BackendCharacter#getName()
-         */
-        public String getName() {
-
-            return Integer.toString(getId());
-        }
-
-    }
-
-    /**
-     * TODO missing JavaDoc.
-     */
-    private class Info {
-
-        /**
-         * Returns the back-end font.
-         * 
-         * @return the back-end font.
-         */
-        public BackendFont getFont() {
-
-            // TODO mgn: getFont unimplemented
-            return null;
-        }
-
-    }
-
-    /**
      * {@inheritDoc}
      * 
      * @see org.extex.font.BackendFontManager#reset()
@@ -217,11 +222,6 @@ public class TfmBackendFontManager implements BackendFontManager {
         // TODO mgn: reset unimplemented
 
     }
-
-    /**
-     * The back-end font factory.
-     */
-    private BackendFontFactory factory;
 
     /**
      * {@inheritDoc}

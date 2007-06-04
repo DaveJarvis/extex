@@ -21,7 +21,7 @@ package org.extex.font;
 
 /**
  * Interface for a backend font.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -29,23 +29,23 @@ public interface BackendFont {
 
     /**
      * Returns the checksum of the font.
-     *
+     * 
      * @return the checksum.
      */
     int getCheckSum();
 
     /**
-     * Returns the internal name of the font.
-     *
-     * @return the internal name of the font.
-     */
-    String getName();
-
-    /**
      * Returns the data of the font.
-     *
+     * 
      * @return the data of the font.
      */
     byte[] getFontData();
+
+    /**
+     * Returns the internal name of the font.
+     * 
+     * @return the internal name of the font.
+     */
+    String getName();
 
 }

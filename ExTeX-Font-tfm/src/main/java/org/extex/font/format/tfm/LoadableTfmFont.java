@@ -36,7 +36,6 @@ import org.extex.font.CoreFontFactory;
 import org.extex.font.FontKey;
 import org.extex.font.LoadableFont;
 import org.extex.font.exception.CorruptFontException;
-import org.extex.font.exception.CorruptedTfmFontMappingException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
@@ -375,11 +374,9 @@ public class LoadableTfmFont implements LoadableFont {
         try {
             codepointmap = U2tFactory.getInstance().loadU2t(cs, factory);
         } catch (IOException e) {
-            throw new CorruptedTfmFontMappingException(key, e
-                .getLocalizedMessage());
+            throw new CorruptFontException(key, e.getLocalizedMessage());
         } catch (NumberFormatException e) {
-            throw new CorruptedTfmFontMappingException(key, e
-                .getLocalizedMessage());
+            throw new CorruptFontException(key, e.getLocalizedMessage());
         }
 
         if (codepointmap == null) {

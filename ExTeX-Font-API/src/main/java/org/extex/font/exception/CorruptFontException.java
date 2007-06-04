@@ -32,7 +32,7 @@ import org.extex.framework.i18n.LocalizerFactory;
 public class CorruptFontException extends FontException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the ...
+     * The field <tt>serialVersionUID</tt>.
      */
     private static final long serialVersionUID = 1L;
 
@@ -55,7 +55,7 @@ public class CorruptFontException extends FontException {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see java.lang.Throwable#getLocalizedMessage()
      */
     public String getLocalizedMessage() {

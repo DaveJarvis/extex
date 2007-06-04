@@ -31,26 +31,27 @@ import org.extex.resource.ResourceFinder;
  * This interface describes the features of a font factory needed by the core.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 5563 $
  */
 public interface CoreFontFactory extends ResourceFinder {
 
     /**
-     * Return a new instance.
+     * Create a manager for the back-end font.
      * 
-     * If the name is empty or null, then the <code>NullFont</code> is
-     * returned.
-     * 
-     * If no font is found, then <code>null</code> is returned.
-     * 
-     * @param key the fount key
-     * 
-     * @return Returns the new font instance.
-     * 
-     * @throws ConfigurationException from the resource finder.
-     * @throws FontException if a font error occurred.
+     * @param fontTypes the font types, which the back-end can use.
+     * @return the new manager.
+     * @throws ConfigurationException from the configuration system.
      */
-    ExtexFont getInstance(FontKey key) throws FontException;
+    BackendFontManager createManager(List<String> fontTypes);
+
+    /**
+     * Returns a font key for the font.
+     * 
+     * @param fontKey the key of the font.
+     * @param size the size of the font.
+     * @return the key for the font.
+     */
+    FontKey getFontKey(FontKey fontKey, FixedDimen size);
 
     /**
      * Returns a font key for the font.
@@ -77,24 +78,23 @@ public interface CoreFontFactory extends ResourceFinder {
      * @param map the map for the key.
      * @return the key for the font.
      */
-    FontKey getFontKey(String fontName, FixedDimen size, Map<String,?> map);
+    FontKey getFontKey(String fontName, FixedDimen size, Map<String, ?> map);
 
     /**
-     * Returns a font key for the font.
+     * Return a new instance.
      * 
-     * @param fontKey the key of the font.
-     * @param size the size of the font.
-     * @return the key for the font.
-     */
-    FontKey getFontKey(FontKey fontKey, FixedDimen size);
-
-    /**
-     * Create a manager for the back-end font.
+     * If the name is empty or null, then the <code>NullFont</code> is
+     * returned.
      * 
-     * @param fontTypes the font types, which the back-end can use.
-     * @return the new manager.
-     * @throws ConfigurationException from the configuration system.
+     * If no font is found, then <code>null</code> is returned.
+     * 
+     * @param key the fount key
+     * 
+     * @return Returns the new font instance.
+     * 
+     * @throws ConfigurationException from the resource finder.
+     * @throws FontException if a font error occurred.
      */
-    BackendFontManager createManager(List<String> fontTypes);
+    ExtexFont getInstance(FontKey key) throws FontException;
 
 }
