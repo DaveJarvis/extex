@@ -27,6 +27,6 @@
                 indent="  "
                 newlines="true"
                 trimallwhitespace="true"
-                usesp="false"
+                usesp="true"
                 usebp="false"
                 usemm="true"/>
