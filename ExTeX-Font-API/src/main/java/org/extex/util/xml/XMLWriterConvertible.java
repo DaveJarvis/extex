@@ -21,15 +21,13 @@ package org.extex.util.xml;
 
 import java.io.IOException;
 
-
 /**
  * This is an interface which describes the feature to write the data to a
  * XMLStreamWriter.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision: 5476 $
+ * @version $Revision$
  */
-
 public interface XMLWriterConvertible {
 
     /**
