@@ -407,8 +407,7 @@ public class LoadableTfmFont implements LoadableFont, BackendFont {
      */
     public String getName() {
 
-        // TODO mgn: getName unimplemented
-        return null;
+        return fontKey.getName();
     }
 
 }

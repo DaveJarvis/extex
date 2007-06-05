@@ -340,7 +340,14 @@ public class FontFactoryImpl
         if (font != null && font instanceof BackendFont) {
             return (BackendFont) font;
         }
+        try {
+            ExtexFont f = getInstance(key);
+            if (f != null && f instanceof BackendFont) {
+                return (BackendFont) f;
+            }
+        } catch (Exception e) {
+            // ignore it.
+        }
         return null;
     }
-
 }

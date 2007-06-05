@@ -171,10 +171,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
         BackendFontManager manager = factory.createManager(sl);
 
         assertNotNull(manager);
-
-        boolean b = manager.recognize(key, UnicodeChar.get('A'));
-
-        assertFalse(b); // gene: I assume this is wrong!
+        assertTrue(manager.recognize(key, UnicodeChar.get('A')));
     }
 
     /**
@@ -196,10 +193,8 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
         assertNull("no font recognized yet", manager.getRecognizedFont());
         Iterator<BackendFont> it = manager.iterate();
         assertNotNull(it);
-        // warum sollte der Iterator bei hasNext true liefern?
-        // Es ist noch kein Zeichen verwendet worden, also ist auch
-        // noch kein Font vorhanden.
-        assertTrue("no font enlisted", it.hasNext());
+        boolean next = it.hasNext();
+        assertFalse("no font enlisted", next);
     }
 
     /**

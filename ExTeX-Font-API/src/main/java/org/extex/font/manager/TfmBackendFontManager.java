@@ -19,7 +19,9 @@
 
 package org.extex.font.manager;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -93,19 +95,74 @@ public class TfmBackendFontManager implements BackendFontManager {
     }
 
     /**
-     * TODO missing JavaDoc.
+     * Class for the info of used fonts and characters.
      */
     private class Info {
 
         /**
-         * Returns the back-end font.
-         * 
-         * @return the back-end font.
+         * The List for the characters.
          */
-        public BackendFont getFont() {
+        private List<BackendCharacter> backendCharacterList =
+                new ArrayList<BackendCharacter>();
 
-            // TODO mgn: getFont unimplemented
-            return null;
+        /**
+         * Add the char to the list.
+         * 
+         * @param ch The char to add.
+         */
+        public void add(BackendCharacter ch) {
+
+            backendCharacterList.add(ch);
+        }
+
+        /**
+         * The font key.
+         */
+        private FontKey fontKey;
+
+        /**
+         * Creates a new object.
+         * 
+         * @param fontKey The font key.
+         */
+        public Info(FontKey fontKey) {
+
+            this.fontKey = fontKey;
+        }
+
+        /**
+         * Getter for fontKey.
+         * 
+         * @return the fontKey
+         */
+        public FontKey getFontKey() {
+
+            return fontKey;
+        }
+
+        /**
+         * The backend font.
+         */
+        private BackendFont backendFont;
+
+        /**
+         * Getter for backendFont.
+         * 
+         * @return the backendFont
+         */
+        public BackendFont getBackendFont() {
+
+            return backendFont;
+        }
+
+        /**
+         * Setter for backendFont.
+         * 
+         * @param backendFont the backendFont to set
+         */
+        public void setBackendFont(BackendFont backendFont) {
+
+            this.backendFont = backendFont;
         }
 
     }
@@ -247,18 +304,27 @@ public class TfmBackendFontManager implements BackendFontManager {
         if (uc == null) {
             throw new IllegalArgumentException("unicodechar");
         }
-        Info info = fontList.get(fontKey);
 
+        Info info = fontList.get(fontKey);
         if (info != null) {
             newRecongnizedFont = false;
-            recognizedFont = info.getFont();
+            recognizedFont = info.getBackendFont();
             recognizedCharcterId = new BackendCharacterImpl(uc);
             return true;
         }
-        newRecongnizedFont = true;
 
-        // TODO mgn: recognize unimplemented
-        return false;
+        info = new Info(fontKey);
+        newRecongnizedFont = true;
+        recognizedFont = factory.getBackendFont(fontKey);
+        if (recognizedFont == null) {
+            return false;
+        }
+        info.setBackendFont(recognizedFont);
+        recognizedCharcterId = new BackendCharacterImpl(uc);
+        info.add(recognizedCharcterId);
+        fontList.put(fontKey, info);
+
+        return true;
     }
 
     /**
