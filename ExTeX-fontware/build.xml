@@ -212,11 +212,10 @@
 
 		<java fork="true" classname="de.uni_hamburg.eggink.autojar.Autojar">
 			<classpath refid="onejar.class.path" />
-			<arg value="-c" />
-			<arg value="${target.lib}/fontware.jar" />
 			<arg value="-o" />
 			<arg value="${target.lib}/fontwareone.jar" />
 			<arg value="${target.lib}/extex.jar" />
+			<arg value="${target.lib}/fontware.jar" />
 		</java>
 
 	</target>

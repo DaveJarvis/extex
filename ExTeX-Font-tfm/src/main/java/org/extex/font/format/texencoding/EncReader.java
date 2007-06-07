@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.extex.font.exception.FontException;
 import org.extex.framework.i18n.Localizer;
@@ -117,6 +119,11 @@ public class EncReader implements Serializable {
     }
 
     /**
+     * The list for the glyphs.
+     */
+    private Map<String, Integer> glyphlist = null;
+
+    /**
      * Returns the position of the glyph in the table.
      * 
      * @param name The glyph name.
@@ -125,12 +132,17 @@ public class EncReader implements Serializable {
      */
     public int getPosition(String name) {
 
+        if (glyphlist == null) {
+            glyphlist = new HashMap<String, Integer>(table.length);
+            for (int i = 0; i < table.length; i++) {
+                glyphlist.put(table[i], i);
+            }
+        }
         String n = "/" + name.replaceAll("/", "");
 
-        for (int i = 0; i < table.length; i++) {
-            if (table[i].equals(n)) {
-                return i;
-            }
+        Integer val = glyphlist.get(n);
+        if (val != null) {
+            return val.intValue();
         }
         return -1;
     }
