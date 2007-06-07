@@ -22,7 +22,7 @@ package org.extex.typesetter.type.noad;
 import java.util.logging.Logger;
 
 import org.extex.core.dimen.Dimen;
-import org.extex.core.dimen.ImmutableDimen;
+import org.extex.core.dimen.FixedDimen;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.tc.TypesettingContext;
@@ -108,7 +108,7 @@ public class OrdinaryNoad extends AbstractNucleusNoad implements SimpleNoad {
             n.typeset(previousNoad, noads, index, list, mathContext, logger);
         }
 
-        ImmutableDimen delta = Dimen.ZERO_PT; // TODO gene: determine delta
+        FixedDimen delta = Dimen.ZERO_PT; // TODO gene: determine delta
         Node node =
                 makeScripts(new HorizontalListNode(), mathContext, delta,
                     logger);

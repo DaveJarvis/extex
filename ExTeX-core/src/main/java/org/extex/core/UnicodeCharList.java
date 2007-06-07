@@ -28,9 +28,7 @@ import java.util.List;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision:5417 $
  */
-public class UnicodeCharList extends ArrayList<UnicodeChar>
-        implements
-            List<UnicodeChar> {
+public class UnicodeCharList extends ArrayList<UnicodeChar> {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for

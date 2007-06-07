@@ -23,13 +23,11 @@ import java.io.Serializable;
 
 import org.extex.core.glue.FixedGlueComponent;
 import org.extex.core.glue.GlueComponent;
-import org.extex.framework.i18n.Localizer;
-import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This class implements the dimen value. This is a length with fixed point
  * arithmetic.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4726 $
@@ -44,6 +42,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
 
     /**
      * The constant <tt>ONE</tt> contains the internal representation for 1pt.
+     * 
      * @see "<logo>TeX</logo> &ndash; The Program [101]"
      */
     public static final long ONE = GlueComponent.ONE;
@@ -52,23 +51,24 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      * The constant <tt>ONE_INCH</tt> contains the immutable dimen register
      * representing the length of 1&nbsp;in.
      */
-    public static final ImmutableDimen ONE_INCH =
-            new ImmutableDimen(ONE * 7227 / 100);
+    public static final FixedDimen ONE_INCH =
+            new DimenConstant(ONE * 7227 / 100);
 
     /**
      * The constant <tt>ONE_PT</tt> contains the immutable dimen register
      * representing the length of 1&nbsp;pt.
      */
-    public static final ImmutableDimen ONE_PT = new ImmutableDimen(ONE);
+    public static final FixedDimen ONE_PT = new DimenConstant(ONE);
 
     /**
      * The constant <tt>ONE_SP</tt> contains the immutable dimen register
      * representing the length of 1&nbsp;scaled point.
      */
-    public static final ImmutableDimen ONE_SP = new ImmutableDimen(1);
+    public static final FixedDimen ONE_SP = new DimenConstant(1);
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 20060513L;
 
@@ -76,11 +76,11 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      * The constant <tt>ZERO_PT</tt> contains the immutable dimen register
      * representing the length of 0&nbsp;pt.
      */
-    public static final ImmutableDimen ZERO_PT = new ImmutableDimen(0);
+    public static final FixedDimen ZERO_PT = new DimenConstant(0);
 
     /**
-     * Creates a new object.
-     * The length stored in it is initialized to 0&nbsp;pt.
+     * Creates a new object. The length stored in it is initialized to
+     * 0&nbsp;pt.
      */
     public Dimen() {
 
@@ -88,10 +88,9 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
     }
 
     /**
-     * Creates a new object.
-     * This method makes a new instance of the class with the same value as
-     * the given instance. I.e. it acts like clone().
-     *
+     * Creates a new object. This method makes a new instance of the class with
+     * the same value as the given instance. I.e. it acts like clone().
+     * 
      * @param value the value to imitate
      */
     public Dimen(FixedDimen value) {
@@ -100,9 +99,9 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
     }
 
     /**
-     * Creates a new object.
-     * This method makes a new instance of the class with the given value.
-     *
+     * Creates a new object. This method makes a new instance of the class with
+     * the given value.
+     * 
      * @param value the value to set
      */
     public Dimen(long value) {
@@ -112,7 +111,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
 
     /**
      * Set the value of this dimen to the absolute value of a given value.
-     *
+     * 
      * @param d the given value
      */
     public void abs(FixedDimen d) {
@@ -122,13 +121,12 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
     }
 
     /**
-     * Add the value of the argument to the current value.
-     * This operation modifies the instance.
-     *
-     * <p>
-     * |<i>this</i>| &rarr; |<i>this</i>| + |<i>d</i>|
+     * Add the value of the argument to the current value. This operation
+     * modifies the instance.
+     * 
+     * <p> |<i>this</i>| &rarr; |<i>this</i>| + |<i>d</i>|
      * </p>
-     *
+     * 
      * @param d the Dimen to add
      */
     public void add(FixedDimen d) {
@@ -137,13 +135,12 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
     }
 
     /**
-     * Add the value of the argument to the current value.
-     * This operation modifies the instance.
-     *
-     * <p>
-     * |<i>this</i>| &rarr; |<i>this</i>| + |<i>d</i>|
+     * Add the value of the argument to the current value. This operation
+     * modifies the instance.
+     * 
+     * <p> |<i>this</i>| &rarr; |<i>this</i>| + |<i>d</i>|
      * </p>
-     *
+     * 
      * @param d the value to add in sp
      */
     public void add(long d) {
@@ -154,40 +151,30 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
     }
 
     /**
-     * Divide the current value with a given number.
-     * This operation modifies this instance.
-     *
-     * <p>
-     * |<i>this</i>| &rarr; |<i>this</i>| / <i>denom</i>
+     * Divide the current value with a given number. This operation modifies
+     * this instance.
+     * 
+     * <p> |<i>this</i>| &rarr; |<i>this</i>| / <i>denom</i>
      * </p>
-     *
+     * 
      * @param denom denominator to divide by
-     *
-     * @throws ArithmeticException in case of a division by 0, i.e. if
-     *  denom is 0.
+     * 
+     * @throws ArithmeticException in case of a division by 0, i.e. if denom is
+     *         0.
      */
     public void divide(long denom) throws ArithmeticException {
 
         if (denom == 0) {
             throw new ArithmeticException();
         }
-        setValue(getValue() / denom);
-    }
-
-    /**
-     * Getter for the localizer.
-     * The localizer is initialized from the name of the Dimen class.
-     *
-     * @return the localizer
-     */
-    protected Localizer getLocalizer() {
-
-        return LocalizerFactory.getLocalizer(Dimen.class);
+        if (denom != 1) {
+            setValue(getValue() / denom);
+        }
     }
 
     /**
      * Test for a value of zero.
-     *
+     * 
      * @return <code>true</code> iff the value is 0
      */
     public boolean isZero() {
@@ -198,9 +185,9 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
     /**
      * Sets the value of the dimen to the maximum of the value already stored
      * and a given argument.
-     *
+     * 
      * <i>|this| = max(|this|, |d|)</i>
-     *
+     * 
      * @param d the other dimen
      */
     public void max(FixedDimen d) {
@@ -214,9 +201,9 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
     /**
      * Sets the value of the dimen to the minimum of the value already stored
      * and a given argument.
-     *
+     * 
      * <i>|this| = min(|this|, |d|)</i>
-     *
+     * 
      * @param d the other dimen
      */
     public void min(FixedDimen d) {
@@ -228,26 +215,26 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
     }
 
     /**
-     * Multiply the current value with a given number.
-     * This operation modifies this instance.
-     *
-     * <p>
-     * |<i>this</i>| &rarr; |<i>this</i>| * <i>factor</i>
+     * Multiply the current value with a given number. This operation modifies
+     * this instance.
+     * 
+     * <p> |<i>this</i>| &rarr; |<i>this</i>| * <i>factor</i>
      * </p>
-     *
+     * 
      * @param factor the factor to multiply with
      */
     public void multiply(long factor) {
 
-        setValue(getValue() * factor);
+        if (factor != 1) {
+            setValue(getValue() * factor);
+        }
     }
 
     /**
-     * Negate the value of the argument to the current value.
-     * This operation modifies the instance.
-     *
-     * <p>
-     * |<i>this</i>| &rarr;  - |<i>this</i>|
+     * Negate the value of the argument to the current value. This operation
+     * modifies the instance.
+     * 
+     * <p> |<i>this</i>| &rarr; - |<i>this</i>|
      * </p>
      */
     public void negate() {
@@ -256,9 +243,8 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
     }
 
     /**
-     * Setter for the value.
-     * The order of the argument is ignored.
-     *
+     * Setter for the value. The order of the argument is ignored.
+     * 
      * @param d the new value
      */
     public void set(FixedGlueComponent d) {
@@ -267,13 +253,12 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
     }
 
     /**
-     * Subtract the value of the argument from the current value.
-     * This operation modifies the instance.
-     *
-     * <p>
-     * |<i>this</i>| &rarr; |<i>this</i>| - |<i>d</i>|
+     * Subtract the value of the argument from the current value. This operation
+     * modifies the instance.
+     * 
+     * <p> |<i>this</i>| &rarr; |<i>this</i>| - |<i>d</i>|
      * </p>
-     *
+     * 
      * @param d the Dimen to subtract
      */
     public void subtract(FixedDimen d) {

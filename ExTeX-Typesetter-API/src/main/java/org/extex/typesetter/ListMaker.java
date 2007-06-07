@@ -20,7 +20,6 @@
 package org.extex.typesetter;
 
 import org.extex.core.Locator;
-import org.extex.core.count.Count;
 import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
@@ -88,7 +87,7 @@ public interface ListMaker {
      * @throws TypesetterException in case of an error
      * @throws ConfigurationException in case of a configuration error
      */
-    void addSpace(TypesettingContext typesettingContext, Count spacefactor)
+    void addSpace(TypesettingContext typesettingContext, FixedCount spacefactor)
             throws TypesetterException,
                 ConfigurationException;
 

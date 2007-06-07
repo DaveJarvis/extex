@@ -19,8 +19,8 @@
 
 package org.extex.unit.tex.typesetter.spacing;
 
-import org.extex.core.count.Count;
-import org.extex.core.count.ImmutableCount;
+import org.extex.core.count.CountConstant;
+import org.extex.core.count.FixedCount;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
@@ -72,7 +72,7 @@ public class Space extends AbstractCode {
      * The constant <tt>SPACEFACTOR</tt> contains the spacefactor for the
      * space to add.
      */
-    private static final Count SPACEFACTOR = new ImmutableCount(1000);
+    private static final FixedCount SPACEFACTOR = new CountConstant(1000);
 
     /**
      * Creates a new object.

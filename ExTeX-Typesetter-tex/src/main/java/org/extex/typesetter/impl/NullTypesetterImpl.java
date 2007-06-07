@@ -22,7 +22,6 @@ package org.extex.typesetter.impl;
 import org.extex.backend.BackendDriver;
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
-import org.extex.core.count.Count;
 import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.helping.HelpingException;
@@ -133,10 +132,10 @@ public class NullTypesetterImpl implements Typesetter, TokenDelegateListMaker {
      * 
      * @see org.extex.typesetter.ListMaker#addSpace(
      *      org.extex.typesetter.tc.TypesettingContext,
-     *      org.extex.core.count.Count)
+     *      FixedCount)
      */
     public void addSpace(TypesettingContext typesettingContext,
-            Count spacefactor)
+            FixedCount spacefactor)
             throws TypesetterException,
                 ConfigurationException {
 

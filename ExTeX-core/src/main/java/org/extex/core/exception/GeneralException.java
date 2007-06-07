@@ -24,7 +24,7 @@ import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This is a base class for exceptions which carry an additional helping text
- * and a return code.
+ * and a processed indicator.
  * 
  * <h2>Exception-related rules</h2>
  * 
@@ -57,11 +57,6 @@ public class GeneralException extends Exception {
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>exitCode</tt> contains the exit code.
-     */
-    private int exitCode = -1;
-
-    /**
      * The field <tt>processed</tt> contains the indicator that the exception
      * has been processed by an error handler already.
      */
@@ -73,17 +68,6 @@ public class GeneralException extends Exception {
     public GeneralException() {
 
         super();
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param code the exit code
-     */
-    public GeneralException(int code) {
-
-        super();
-        exitCode = code;
     }
 
     /**
@@ -115,16 +99,6 @@ public class GeneralException extends Exception {
     public GeneralException(Throwable cause) {
 
         super(cause);
-    }
-
-    /**
-     * Getter for the exit code.
-     * 
-     * @return the exit code
-     */
-    public int getExitCode() {
-
-        return exitCode;
     }
 
     /**

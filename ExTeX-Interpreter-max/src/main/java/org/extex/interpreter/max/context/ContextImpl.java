@@ -1137,7 +1137,7 @@ public class ContextImpl
      * @see org.extex.interpreter.context.Context#getSfcode(
      *      org.extex.core.UnicodeChar)
      */
-    public Count getSfcode(UnicodeChar uc) {
+    public FixedCount getSfcode(UnicodeChar uc) {
 
         return group.getSfcode(uc);
     }

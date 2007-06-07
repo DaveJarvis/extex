@@ -21,6 +21,7 @@ package org.extex.unit.pdftex;
 
 import org.extex.backend.documentWriter.PdftexSupport;
 import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
@@ -88,9 +89,9 @@ public class Pdfannot extends AbstractPdftexCode {
 
         PdftexSupport writer = ensurePdftex(context, typesetter);
 
-        Dimen width = Dimen.ONE_PT; // TODO gene:provide correct default;
-        Dimen height = Dimen.ONE_PT; // TODO gene:provide correct default;
-        Dimen depth = Dimen.ONE_PT; // TODO gene:provide correct default;
+        FixedDimen width = Dimen.ONE_PT; // TODO gene:provide correct default;
+        FixedDimen height = Dimen.ONE_PT; // TODO gene:provide correct default;
+        FixedDimen depth = Dimen.ONE_PT; // TODO gene:provide correct default;
 
         for (;;) {
             if (source.getKeyword(context, "width")) {

@@ -25,7 +25,8 @@ import java.util.Map;
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
-import org.extex.core.count.ImmutableCount;
+import org.extex.core.count.CountConstant;
+import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
@@ -81,13 +82,13 @@ public class GroupImpl implements Group {
      * The field <tt>SFCODE_DEFAULT</tt> contains the default space factor
      * code for non-letters.
      */
-    private static final Count SFCODE_DEFAULT = new ImmutableCount(1000);
+    private static final FixedCount SFCODE_DEFAULT = new CountConstant(1000);
 
     /**
      * The field <tt>SFCODE_LETTER</tt> contains the default space factor code
      * for letters.
      */
-    private static final Count SFCODE_LETTER = new ImmutableCount(999);
+    private static final FixedCount SFCODE_LETTER = new CountConstant(999);
 
     /**
      * The field <tt>afterGroup</tt> contains the tokens to be inserted after
@@ -883,7 +884,7 @@ public class GroupImpl implements Group {
      * @see org.extex.interpreter.max.context.Group#getSfcode(
      *      org.extex.core.UnicodeChar)
      */
-    public Count getSfcode(UnicodeChar c) {
+    public FixedCount getSfcode(UnicodeChar c) {
 
         if (sfcodeMap != null) {
             Count sfcode = sfcodeMap.get(c);

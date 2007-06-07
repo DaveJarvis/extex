@@ -24,7 +24,6 @@ import java.util.List;
 
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
-import org.extex.core.count.Count;
 import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
@@ -145,9 +144,9 @@ public class HorizontalListMaker extends AbstractListMaker {
      * 
      * @see org.extex.typesetter.ListMaker#addSpace(
      *      org.extex.typesetter.tc.TypesettingContext,
-     *      org.extex.core.count.Count)
+     *      FixedCount)
      */
-    public void addSpace(TypesettingContext context, Count sfCount)
+    public void addSpace(TypesettingContext context, FixedCount sfCount)
             throws TypesetterException,
                 ConfigurationException {
 

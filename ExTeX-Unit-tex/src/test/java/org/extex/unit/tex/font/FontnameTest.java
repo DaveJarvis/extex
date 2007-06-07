@@ -182,4 +182,22 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
                 "cmtt12 at 24.0pt" + TERM);
     }
 
+    /**
+     * <testcase primitive="\fontname">
+     *  Test case checking that a correct value is produced for a font loaded
+     *  with a scale factor.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testFontname5() throws Exception {
+
+        assertSuccess(//--- input code ---
+                "\\font\\x=cmtt12 scaled 1200 "
+                + "\\fontname\\x "
+                + "\\end ",
+                //--- output channel ---
+                "cmtt12 at 14.4pt" + TERM);
+    }
+
 }

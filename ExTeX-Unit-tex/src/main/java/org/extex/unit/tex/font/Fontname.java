@@ -20,7 +20,6 @@
 package org.extex.unit.tex.font;
 
 import org.extex.core.dimen.FixedDimen;
-import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
@@ -112,10 +111,10 @@ public class Fontname extends AbstractCode implements ExpandableCode {
         source.skipSpace();
         Font font;
         Tokens fontname;
+        TokenFactory tokenFactory = context.getTokenFactory();
         try {
             font = source.getFont(context, getName());
-            fontname = context.getTokenFactory().toTokens( //
-                font.getFontName());
+            fontname = tokenFactory.toTokens(font.getFontName());
         } catch (EofException e) {
             throw new EofException(printableControlSequence(context));
         } catch (CatcodeException e) {
@@ -123,11 +122,10 @@ public class Fontname extends AbstractCode implements ExpandableCode {
         }
         FixedDimen size = font.getActualSize();
         if (font.getDesignSize().ne(size)) {
-            TokenFactory tokenFactory = context.getTokenFactory();
             try {
                 fontname.add(tokenFactory.toTokens(" at "));
                 fontname.add(tokenFactory.toTokens(size.toString()));
-            } catch (GeneralException e) {
+            } catch (CatcodeException e) {
                 throw new NoHelpException(e);
             }
         }

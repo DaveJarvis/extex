@@ -21,7 +21,6 @@ package org.extex.core.glue;
 
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
-import org.extex.core.dimen.ImmutableDimen;
 
 /**
  * This class provides an implementation for glue.
@@ -198,7 +197,7 @@ public class WideGlue {
      *
      * @param len the length
      */
-    public void set(ImmutableDimen len) {
+    public void set(FixedDimen len) {
 
         this.length.set(len);
 

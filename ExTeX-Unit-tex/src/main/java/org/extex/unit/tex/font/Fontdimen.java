@@ -21,7 +21,6 @@ package org.extex.unit.tex.font;
 
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
-import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
@@ -31,6 +30,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
+import org.extex.scanner.exception.CatcodeException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
@@ -190,7 +190,7 @@ public class Fontdimen extends AbstractAssignment
         }
         try {
             return context.getTokenFactory().toTokens(size.toString());
-        } catch (GeneralException e) {
+        } catch (CatcodeException e) {
             throw new NoHelpException(e);
         }
     }

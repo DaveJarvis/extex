@@ -22,7 +22,7 @@ package org.extex.engine.typesetter.page;
 import java.util.logging.Logger;
 
 import org.extex.core.count.FixedCount;
-import org.extex.core.count.ImmutableCount;
+import org.extex.core.count.CountConstant;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.framework.logger.LogEnabled;
@@ -266,7 +266,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
         Context context = (Context) pageContext;
         FixedCount[] pageNo = new FixedCount[10];
         for (int i = 0; i < 10; i++) {
-            pageNo[i] = new ImmutableCount(context.getCount(NO[i]));
+            pageNo[i] = new CountConstant(context.getCount(NO[i]));
         }
         PageImpl page = new PageImpl(nodes, pageNo);
 

@@ -351,7 +351,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 /**
                  * @see org.extex.interpreter.context.Context#getSfcode(org.extex.core.UnicodeChar)
                  */
-                public Count getSfcode(UnicodeChar uc) {
+                public FixedCount getSfcode(UnicodeChar uc) {
 
                     return null;
                 }
@@ -1259,7 +1259,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
                 /**
                  * @see org.extex.interpreter.context.Context#getSfcode(org.extex.core.UnicodeChar)
                  */
-                public Count getSfcode(UnicodeChar uc) {
+                public FixedCount getSfcode(UnicodeChar uc) {
 
                     return null;
                 }

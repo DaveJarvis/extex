@@ -26,6 +26,7 @@ import org.extex.color.Color;
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
+import org.extex.core.count.FixedCount;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.glue.Glue;
 import org.extex.core.muskip.Muskip;
@@ -344,7 +345,7 @@ public interface Context
      * 
      * @see #setSfcode(UnicodeChar, Count, boolean)
      */
-    Count getSfcode(UnicodeChar uc);
+    FixedCount getSfcode(UnicodeChar uc);
 
     /**
      * Getter for standardTokenStream.

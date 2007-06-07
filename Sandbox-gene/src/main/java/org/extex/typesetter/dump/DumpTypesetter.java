@@ -20,6 +20,7 @@
 package org.extex.typesetter.dump;
 
 import org.extex.core.count.Count;
+import org.extex.core.count.FixedCount;
 import org.extex.core.glue.FixedGlue;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.typesetter.TypesetterOptions;
@@ -75,7 +76,7 @@ public class DumpTypesetter extends TypesetterImpl {
      *
      * @see org.extex.typesetter.ListMaker#addSpace(
      *      org.extex.typesetter.tc.TypesettingContext,
-     *      org.extex.core.count.Count)
+     *      FixedCount)
      */
     public void addSpace(TypesettingContext typesettingContext,
             Count spacefactor)

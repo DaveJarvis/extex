@@ -26,7 +26,6 @@ import java.util.logging.Logger;
 import org.extex.backend.BackendDriver;
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
-import org.extex.core.count.Count;
 import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.ImpossibleException;
@@ -235,10 +234,10 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @see org.extex.typesetter.ListMaker#addSpace(
      *      org.extex.typesetter.tc.TypesettingContext,
-     *      org.extex.core.count.Count)
+     *      FixedCount)
      */
     public void addSpace(TypesettingContext typesettingContext,
-            Count spacefactor) throws TypesetterException {
+            FixedCount spacefactor) throws TypesetterException {
 
         listMaker.addSpace(typesettingContext, null);
     }

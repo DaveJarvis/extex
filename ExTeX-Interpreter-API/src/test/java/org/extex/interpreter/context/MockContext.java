@@ -560,7 +560,7 @@ public class MockContext implements Context, TypesetterOptions {
      *
      * @see org.extex.interpreter.context.Context#getSfcode(org.extex.core.UnicodeChar)
      */
-    public Count getSfcode(UnicodeChar uc) {
+    public FixedCount getSfcode(UnicodeChar uc) {
 
         throw new RuntimeException("unimplemented");
     }

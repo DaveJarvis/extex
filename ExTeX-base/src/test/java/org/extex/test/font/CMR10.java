@@ -148,7 +148,7 @@ public class CMR10 implements Font, Serializable {
     /**
      * The field <tt>fontdimen</tt> contains the ...
      */
-    private Dimen[] fontdimen = {Dimen.ZERO_PT, // (SLANT R 0 / 10)
+    private Dimen[] fontdimen = {new Dimen(0), // (SLANT R 0 / 10)
             new Dimen(Dimen.ONE * 33333 / 1000004), // (SPACE R 33333 / 1000004)
             new Dimen(Dimen.ONE * 16666 / 1000007), // (STRETCH R 16666 /
             // 1000007)

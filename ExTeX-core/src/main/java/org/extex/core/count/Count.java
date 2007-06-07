@@ -19,11 +19,6 @@
 
 package org.extex.core.count;
 
-import java.io.Serializable;
-
-import org.extex.framework.i18n.Localizer;
-import org.extex.framework.i18n.LocalizerFactory;
-
 /**
  * This class represents a long integer value. It is used for instance as count
  * register.
@@ -32,36 +27,31 @@ import org.extex.framework.i18n.LocalizerFactory;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision:4399 $
  */
-public class Count implements Serializable, FixedCount {
+public class Count extends CountConstant {
 
     /**
      * The constant <tt>ONE</tt> contains the count register with the value 1.
      * This count register is in fact immutable.
      */
-    public static final FixedCount ONE = new ImmutableCount(1);
+    public static final FixedCount ONE = new CountConstant(1);
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The constant <tt>THOUSAND</tt> contains the count register with the
      * value 1000. This count register is in fact immutable.
      */
-    public static final FixedCount THOUSAND = new ImmutableCount(1000);
+    public static final FixedCount THOUSAND = new CountConstant(1000);
 
     /**
      * The constant <tt>ZERO</tt> contains the count register with the value
      * 0. This count register is in fact immutable.
      */
-    public static final FixedCount ZERO = new ImmutableCount(0);
-
-    /**
-     * The field <tt>value</tt> contains the value of the count register.
-     */
-    private long value = 0;
+    public static final FixedCount ZERO = new CountConstant(0);
 
     /**
      * Creates a new object.
@@ -86,6 +76,14 @@ public class Count implements Serializable, FixedCount {
     }
 
     /**
+     * Creates a new object.
+     */
+    public Count() {
+
+        super();
+    }
+
+    /**
      * Add a long to the value. This operation modifies the value.
      *
      * @param val the value to add to
@@ -100,7 +98,7 @@ public class Count implements Serializable, FixedCount {
      *
      * @param val the value to add to
      */
-    public void add(Count val) {
+    public void add(FixedCount val) {
 
         value += val.getValue();
     }
@@ -128,7 +126,7 @@ public class Count implements Serializable, FixedCount {
      *
      * @throws ArithmeticException in case of a division by zero
      */
-    public void divide(Count denom) throws ArithmeticException {
+    public void divide(FixedCount denom) throws ArithmeticException {
 
         long d = denom.getValue();
         if (d == 0) {
@@ -158,17 +156,6 @@ public class Count implements Serializable, FixedCount {
     public boolean ge(FixedCount count) {
 
         return value >= count.getValue();
-    }
-
-    /**
-     * Getter for the localizer. The localizer is initialized from the name of
-     * the Count class.
-     *
-     * @return the localizer
-     */
-    protected Localizer getLocalizer() {
-
-        return LocalizerFactory.getLocalizer(Count.class);
     }
 
     /**
@@ -229,7 +216,7 @@ public class Count implements Serializable, FixedCount {
      *
      * @param factor the factor to multiply with
      */
-    public void multiply(Count factor) {
+    public void multiply(FixedCount factor) {
 
         value *= factor.getValue();
     }
@@ -250,7 +237,7 @@ public class Count implements Serializable, FixedCount {
      *
      * @param l the new value
      *
-     * @see #set(Count)
+     * @see #set(FixedCount)
      */
     public void set(long l) {
 
@@ -264,7 +251,7 @@ public class Count implements Serializable, FixedCount {
      *
      * @see #set(long)
      */
-    public void set(Count c) {
+    public void set(FixedCount c) {
 
         value = c.getValue();
     }

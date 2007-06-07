@@ -24,6 +24,7 @@ import java.io.Serializable;
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
+import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.glue.Glue;
@@ -273,7 +274,7 @@ public interface Group extends Tokenizer, Serializable {
      *
      * @return the sfcode of the given character
      */
-    Count getSfcode(UnicodeChar uc);
+    FixedCount getSfcode(UnicodeChar uc);
 
     /**
      * Getter for the named skip register in the current group. The name can
