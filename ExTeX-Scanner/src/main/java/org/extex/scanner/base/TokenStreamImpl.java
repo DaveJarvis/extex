@@ -87,6 +87,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
          *
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return name;

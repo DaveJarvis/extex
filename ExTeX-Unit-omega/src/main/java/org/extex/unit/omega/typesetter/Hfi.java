@@ -19,6 +19,7 @@
 
 package org.extex.unit.omega.typesetter;
 
+import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
@@ -71,7 +72,7 @@ public class Hfi extends AbstractHorizontalCode implements HorizontalSkip {
      * The field <tt>FIL</tt> contains the glue to insert for this primitive.
      */
     private static final Glue FI =
-            new Glue(GlueComponent.ZERO, GlueComponent.ONE_FI,
+            new Glue(Dimen.ZERO, GlueComponent.ONE_FI,
                 GlueComponent.ZERO);
 
     /**

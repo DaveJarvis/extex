@@ -183,6 +183,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
      * 
      * @see org.extex.typesetter.ListMaker#getMode()
      */
+    @Override
     public Mode getMode() {
 
         return Mode.INNER_VERTICAL;
@@ -193,6 +194,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
      * 
      * @see org.extex.typesetter.ListMaker#getPrevDepth()
      */
+    @Override
     public FixedDimen getPrevDepth() throws TypesetterUnsupportedException {
 
         return prevDepth;
@@ -257,6 +259,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
      * @see org.extex.typesetter.ListMaker#setPrevDepth(
      *      org.extex.core.dimen.FixedDimen)
      */
+    @Override
     public void setPrevDepth(FixedDimen pd) {
 
         if (prevDepth == null) {
@@ -288,6 +291,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
      * 
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return super.toString() + "\n" + nodes.toString();

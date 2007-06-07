@@ -57,6 +57,7 @@ public class LeftBraceToken extends AbstractToken implements Token {
      *
      * @see org.extex.scanner.type.token.Token#getCatcode()
      */
+    @Override
     public Catcode getCatcode() {
 
         return Catcode.LEFTBRACE;
@@ -69,6 +70,7 @@ public class LeftBraceToken extends AbstractToken implements Token {
      *
      * @see "<logo>TeX</logo> &ndash; The Program [298]"
      */
+    @Override
     public String toString() {
 
         return getLocalizer().format("LeftBraceToken.Text", super.toString());

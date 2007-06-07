@@ -52,6 +52,7 @@ public abstract class Interaction implements Serializable {
          * 
          * @see org.extex.interpreter.interaction.Interaction#getIndex()
          */
+        @Override
         public String getIndex() {
 
             return "0";
@@ -73,6 +74,7 @@ public abstract class Interaction implements Serializable {
         /**
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return "\\batchmode";
@@ -85,6 +87,7 @@ public abstract class Interaction implements Serializable {
          *      org.extex.interpreter.interaction.InteractionVisitor,
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public boolean visit(InteractionVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws GeneralException {
@@ -110,6 +113,7 @@ public abstract class Interaction implements Serializable {
          *
          * @see org.extex.interpreter.interaction.Interaction#getIndex()
          */
+        @Override
         public String getIndex() {
 
             return "3";
@@ -131,6 +135,7 @@ public abstract class Interaction implements Serializable {
         /**
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return "\\errorstopmode";
@@ -143,6 +148,7 @@ public abstract class Interaction implements Serializable {
          *      org.extex.interpreter.interaction.InteractionVisitor,
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public boolean visit(InteractionVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws GeneralException {
@@ -169,6 +175,7 @@ public abstract class Interaction implements Serializable {
          *
          * @see org.extex.interpreter.interaction.Interaction#getIndex()
          */
+        @Override
         public String getIndex() {
 
             return "1";
@@ -190,6 +197,7 @@ public abstract class Interaction implements Serializable {
         /**
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return "\\nonstopmode";
@@ -202,6 +210,7 @@ public abstract class Interaction implements Serializable {
          *      org.extex.interpreter.interaction.InteractionVisitor,
          *       java.lang.Object, java.lang.Object, java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public boolean visit(InteractionVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws GeneralException {
@@ -227,6 +236,7 @@ public abstract class Interaction implements Serializable {
          *
          * @see org.extex.interpreter.interaction.Interaction#getIndex()
          */
+        @Override
         public String getIndex() {
 
             return "2";
@@ -248,6 +258,7 @@ public abstract class Interaction implements Serializable {
         /**
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return "\\scrollmode";
@@ -260,6 +271,7 @@ public abstract class Interaction implements Serializable {
          *      org.extex.interpreter.interaction.InteractionVisitor,
          *      java.lang.Object, java.lang.Object, java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public boolean visit(InteractionVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws GeneralException {

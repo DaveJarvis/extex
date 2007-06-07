@@ -128,6 +128,7 @@ public abstract class AbstractToken implements Token, Serializable {
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
+    @Override
     public boolean equals(Object t) {
 
         return this == t
@@ -174,6 +175,7 @@ public abstract class AbstractToken implements Token, Serializable {
      *
      * @see java.lang.Object#hashCode()
      */
+    @Override
     public int hashCode() {
 
         return getCatcode().hashCode() + HASH_FACTOR * character.hashCode();
@@ -199,6 +201,7 @@ public abstract class AbstractToken implements Token, Serializable {
      *
      * @return the printable representation
      */
+    @Override
     public String toString() {
 
         if (character == null) {

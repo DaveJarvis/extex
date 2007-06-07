@@ -67,6 +67,7 @@ public class ConfigurationInvalidConstructorException
      *
      * @return the text
      */
+    @Override
     protected String getText() {
 
         return getLocalizer().format(

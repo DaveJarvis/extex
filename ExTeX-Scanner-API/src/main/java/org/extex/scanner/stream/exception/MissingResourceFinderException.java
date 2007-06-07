@@ -56,6 +56,7 @@ public class MissingResourceFinderException extends ConfigurationException {
      *
      * @return the text
      */
+    @Override
     public String getLocalizedMessage() {
 
         return getLocalizer().format(

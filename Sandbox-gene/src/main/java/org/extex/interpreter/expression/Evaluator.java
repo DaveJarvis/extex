@@ -64,7 +64,8 @@ public class Evaluator {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(
+         *      org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
         public EType apply(EType arg1, EType arg2) {
@@ -77,6 +78,7 @@ public class Evaluator {
          * 
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return ":=";
@@ -93,7 +95,8 @@ public class Evaluator {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(
+         *      org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
         public EType apply(EType arg1, EType arg2)
@@ -108,6 +111,7 @@ public class Evaluator {
          * 
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return "==";
@@ -124,7 +128,8 @@ public class Evaluator {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(
+         *      org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
         public EType apply(EType arg1, EType arg2)
@@ -139,6 +144,7 @@ public class Evaluator {
          * 
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return ">=";
@@ -155,7 +161,8 @@ public class Evaluator {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(
+         *      org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
         public EType apply(EType arg1, EType arg2)
@@ -170,6 +177,7 @@ public class Evaluator {
          * 
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return ">";
@@ -186,7 +194,8 @@ public class Evaluator {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(
+         *      org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
         public EType apply(EType arg1, EType arg2)
@@ -201,6 +210,7 @@ public class Evaluator {
          * 
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return "&&";
@@ -217,7 +227,8 @@ public class Evaluator {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(
+         *      org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
         public EType apply(EType arg1, EType arg2)
@@ -232,6 +243,7 @@ public class Evaluator {
          * 
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return "<=";
@@ -248,7 +260,8 @@ public class Evaluator {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(
+         *      org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
         public EType apply(EType arg1, EType arg2)
@@ -263,6 +276,7 @@ public class Evaluator {
          * 
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return "||";
@@ -279,7 +293,8 @@ public class Evaluator {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(
+         *      org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
         public EType apply(EType arg1, EType arg2)
@@ -294,6 +309,7 @@ public class Evaluator {
          * 
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return "<";
@@ -309,7 +325,8 @@ public class Evaluator {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(
+         *      org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
         public EType apply(EType arg1, EType arg2) throws HelpingException {
@@ -322,6 +339,7 @@ public class Evaluator {
          * 
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return "-";
@@ -338,7 +356,8 @@ public class Evaluator {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(
+         *      org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
         public EType apply(EType arg1, EType arg2)
@@ -353,6 +372,7 @@ public class Evaluator {
          * 
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return "!=";
@@ -368,7 +388,8 @@ public class Evaluator {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(
+         *      org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
         public EType apply(EType arg1, EType arg2) throws HelpingException {
@@ -381,6 +402,7 @@ public class Evaluator {
          * 
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return "+";
@@ -518,7 +540,9 @@ public class Evaluator {
      * @throws TypesetterException in case of an error in the typesetter
      */
     private EType evalExpression(EType start, Context context,
-            TokenSource source, Typesetter typesetter) throws HelpingException, TypesetterException {
+            TokenSource source, Typesetter typesetter)
+            throws HelpingException,
+                TypesetterException {
 
         EType accumulator = null;
         EType savedValue = start;
@@ -632,7 +656,8 @@ public class Evaluator {
      */
     private EType evalJunction(EType start, BinaryFunction junctor,
             Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+            throws HelpingException,
+                TypesetterException {
 
         EType a = start;
 
@@ -704,7 +729,9 @@ public class Evaluator {
      * @throws TypesetterException in case of an error in the typesetter
      */
     private EType evalLogicExpressionOrFunctionalExpression(Context context,
-            TokenSource source, Typesetter typesetter) throws HelpingException, TypesetterException {
+            TokenSource source, Typesetter typesetter)
+            throws HelpingException,
+                TypesetterException {
 
         Token t = source.getNonSpace(context);
         if (t == null) {

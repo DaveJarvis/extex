@@ -2083,7 +2083,7 @@ public class TeXParagraphBuilder
     private int badnessForShrinking() {
 
         // begin if -shortfall > cur_active_width[6] then
-        Dimen minusShortfall = new Dimen(shortfall);
+        GlueComponent minusShortfall = new GlueComponent(shortfall);
         minusShortfall.negate();
         int badness;
         if (minusShortfall.gt(curActiveWidth.getShrink())) {

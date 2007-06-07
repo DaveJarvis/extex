@@ -26,6 +26,7 @@ import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.FixedGlueComponent;
+import org.extex.core.glue.GlueComponent;
 import org.extex.core.glue.WideGlue;
 import org.extex.typesetter.Badness;
 import org.extex.typesetter.type.Node;
@@ -89,6 +90,7 @@ public class VerticalListNode extends GenericNodeList
      * @see org.extex.typesetter.type.node.GenericNodeList#add( int,
      *      org.extex.typesetter.type.Node)
      */
+    @Override
     public void add(int index, Node node) {
 
         if (node == null) {
@@ -129,6 +131,7 @@ public class VerticalListNode extends GenericNodeList
      * @see org.extex.typesetter.type.node.GenericNodeList#add(
      *      org.extex.typesetter.type.Node)
      */
+    @Override
     public void add(Node node) {
 
         if (node == null) {
@@ -159,6 +162,7 @@ public class VerticalListNode extends GenericNodeList
      * @see org.extex.typesetter.type.NodeList#addSkip(
      *      org.extex.core.glue.FixedGlue)
      */
+    @Override
     public void addSkip(FixedGlue glue) {
 
         add(new GlueNode(glue, false));
@@ -287,7 +291,7 @@ public class VerticalListNode extends GenericNodeList
             get(i).addDepthTo(ht);
         }
 
-        FixedDimen length = ht.getLength();
+        FixedGlueComponent length = new GlueComponent(ht.getLength());
         for (int i = 0; i < size; i++) {
             get(i).spreadHeight(height, length);
         }
@@ -304,8 +308,9 @@ public class VerticalListNode extends GenericNodeList
      * 
      * @see org.extex.typesetter.type.Node#spreadHeight(
      *      org.extex.core.dimen.FixedDimen,
-     *      org.extex.core.glue.FixedGlueComponent)
+     *      FixedGlueComponent)
      */
+    @Override
     public void spreadHeight(FixedDimen height, FixedGlueComponent sum) {
 
     }
@@ -323,6 +328,7 @@ public class VerticalListNode extends GenericNodeList
      * @see org.extex.typesetter.type.Node#toString( java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
+    @Override
     public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
 
         sb.append("\\vbox");
@@ -340,6 +346,7 @@ public class VerticalListNode extends GenericNodeList
      * @see org.extex.typesetter.type.Node#toText( java.lang.StringBuffer,
      *      java.lang.String)
      */
+    @Override
     public void toText(StringBuffer sb, String prefix) {
 
         sb.append("(vlist ");
@@ -359,6 +366,7 @@ public class VerticalListNode extends GenericNodeList
      * @see org.extex.typesetter.type.Node#visit(
      *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
      */
+    @Override
     @SuppressWarnings("unchecked")
     public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {

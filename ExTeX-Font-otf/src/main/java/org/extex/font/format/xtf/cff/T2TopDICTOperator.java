@@ -618,6 +618,7 @@ public abstract class T2TopDICTOperator extends T2Operator {
      * 
      * @see org.extex.font.format.xtf.cff.T2CharString#isTopDICTOperator()
      */
+    @Override
     public boolean isTopDICTOperator() {
 
         return true;

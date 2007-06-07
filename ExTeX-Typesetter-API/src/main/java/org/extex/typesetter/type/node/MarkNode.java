@@ -79,6 +79,7 @@ public class MarkNode extends AbstractNode implements Node {
      *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
      *      org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
      */
+    @Override
     public Node atShipping(PageContext context, Typesetter typesetter,
             FixedDimen posX, FixedDimen posY) throws GeneralException {
 
@@ -120,6 +121,7 @@ public class MarkNode extends AbstractNode implements Node {
      * @see org.extex.typesetter.type.Node#toString( java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
+    @Override
     public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
 
         sb.append(getLocalizer().format("String.Format", mark.toString()));
@@ -131,6 +133,7 @@ public class MarkNode extends AbstractNode implements Node {
      * @see org.extex.typesetter.type.Node#toText( java.lang.StringBuffer,
      *      java.lang.String)
      */
+    @Override
     public void toText(StringBuffer sb, String prefix) {
 
         sb.append(getLocalizer().format("Text.Format", mark.toString()));

@@ -126,7 +126,7 @@ import org.extex.scanner.stream.observer.string.OpenStringObserverList;
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
 public class TokenStreamFactory extends AbstractFactory
         implements
@@ -458,6 +458,7 @@ public class TokenStreamFactory extends AbstractFactory
      *
      * @param finder the new file finder
      */
+    @Override
     public void setResourceFinder(ResourceFinder finder) {
 
         this.resourceFinder = finder;

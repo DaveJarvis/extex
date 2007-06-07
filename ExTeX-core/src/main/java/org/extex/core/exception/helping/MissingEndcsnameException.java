@@ -58,6 +58,7 @@ public class MissingEndcsnameException extends HelpingException {
      * 
      * @see java.lang.Throwable#getLocalizedMessage()
      */
+    @Override
     public String getLocalizedMessage() {
 
         return super.getMessage();

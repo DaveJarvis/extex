@@ -119,6 +119,7 @@ public class FractionNoad extends AbstractNoad {
      *      java.lang.StringBuffer,
      *      int)
      */
+    @Override
     public void toStringAdd(StringBuffer sb, int depth) {
 
         sb.append("fraction, thickness ");

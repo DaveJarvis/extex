@@ -55,6 +55,7 @@ public class RestrictedHorizontalListMaker extends HorizontalListMaker {
      *
      * @see org.extex.typesetter.ListMaker#getMode()
      */
+    @Override
     public Mode getMode() {
 
         return Mode.RESTRICTED_HORIZONTAL;
@@ -78,6 +79,7 @@ public class RestrictedHorizontalListMaker extends HorizontalListMaker {
      *
      * @see org.extex.typesetter.ListMaker#complete(TypesetterOptions)
      */
+    @Override
     public NodeList complete(TypesetterOptions context)
             throws TypesetterException,
                 ConfigurationException {

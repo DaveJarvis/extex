@@ -88,6 +88,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
          * 
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return name;
@@ -651,6 +652,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     /**
      * @see org.extex.scanner.TokenStream#getLocator()
      */
+    @Override
     public Locator getLocator() {
 
         return new Locator(source, (in == null ? 0 : in.getLineNumber()), line,
@@ -671,6 +673,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      *      org.extex.scanner.type.token.TokenFactory,
      *      org.extex.scanner.Tokenizer)
      */
+    @Override
     protected Token getNext(TokenFactory factory, Tokenizer tokenizer)
             throws ScannerException {
 
@@ -742,6 +745,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      * 
      * @see org.extex.scanner.TokenStream#isEof()
      */
+    @Override
     public boolean isEof() throws ScannerException {
 
         if (!super.isEof()) {
@@ -766,6 +770,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      * 
      * @see org.extex.scanner.TokenStream#isEol()
      */
+    @Override
     public boolean isEol() {
 
         return pointer > line.length();
@@ -803,6 +808,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      * 
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return source + ":" + in.getLineNumber() + "[" + pointer + "]:" + line;

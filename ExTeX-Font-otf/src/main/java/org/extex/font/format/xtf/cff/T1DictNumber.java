@@ -67,6 +67,7 @@ public abstract class T1DictNumber extends T1DictKey {
      *
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
      */
+    @Override
     public short[] getBytes() {
 
         return bytes;
@@ -76,6 +77,7 @@ public abstract class T1DictNumber extends T1DictKey {
      * Check, if the object is a integer.
      * @return Returns <code>true</code>, if the object is a integer.
      */
+    @Override
     public boolean isInteger() {
 
         return value.isInteger();
@@ -85,6 +87,7 @@ public abstract class T1DictNumber extends T1DictKey {
      * Check, if the object is a double.
      * @return Returns <code>true</code>, if the object is a double.
      */
+    @Override
     public boolean isDouble() {
 
         return value.isDouble();
@@ -113,6 +116,7 @@ public abstract class T1DictNumber extends T1DictKey {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return value.toString();
@@ -123,6 +127,7 @@ public abstract class T1DictNumber extends T1DictKey {
      *
      * @see org.extex.font.format.xtf.cff.T1DictKey#getValue()
      */
+    @Override
     public Object getValue() {
 
         return value;

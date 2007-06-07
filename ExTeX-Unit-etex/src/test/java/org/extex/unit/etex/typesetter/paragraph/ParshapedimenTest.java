@@ -57,7 +57,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      *
      * @throws Exception in case of an error
      */
-    public void testInnerVerticalMode1() throws Exception {
+    public void testInnerVerticalMode11() throws Exception {
 
         assertFailure(//--- input code ---
             DEFINE_BRACES + "\\vbox{\\parshapedimen0}\\end",
@@ -73,7 +73,7 @@ public class ParshapedimenTest extends NonExecuteTester {
      *
      * @throws Exception in case of an error
      */
-    public void testRestrictedHorizontalMode1() throws Exception {
+    public void testRestrictedHorizontalMode11() throws Exception {
 
         assertFailure(//--- input code ---
             DEFINE_BRACES + "\\hbox{\\parshapedimen0}\\end",

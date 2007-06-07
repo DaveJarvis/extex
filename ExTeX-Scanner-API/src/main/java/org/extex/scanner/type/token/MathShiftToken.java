@@ -57,6 +57,7 @@ public class MathShiftToken extends AbstractToken implements Token {
      *
      * @see org.extex.scanner.type.token.Token#getCatcode()
      */
+    @Override
     public Catcode getCatcode() {
 
         return Catcode.MATHSHIFT;
@@ -69,6 +70,7 @@ public class MathShiftToken extends AbstractToken implements Token {
      *
      * @see "<logo>TeX</logo> &ndash; The Program [298]"
      */
+    @Override
     public String toString() {
 
         return getLocalizer().format("MathShiftToken.Text", super.toString());

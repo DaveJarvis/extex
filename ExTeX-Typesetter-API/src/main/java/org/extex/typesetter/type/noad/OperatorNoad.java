@@ -88,6 +88,7 @@ public class OperatorNoad extends AbstractNucleusNoad implements SimpleNoad {
      *      java.lang.StringBuffer,
      *      int)
      */
+    @Override
     protected void toStringAdd(StringBuffer sb, int depth) {
 
         sb.append("mathop");

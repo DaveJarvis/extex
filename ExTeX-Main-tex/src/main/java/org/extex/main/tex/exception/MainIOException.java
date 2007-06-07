@@ -50,6 +50,7 @@ public class MainIOException extends MainException {
      *
      * @see java.lang.Throwable#getLocalizedMessage()
      */
+    @Override
     public String getLocalizedMessage() {
 
         return getLocalizer().format("MainIOException.Message",

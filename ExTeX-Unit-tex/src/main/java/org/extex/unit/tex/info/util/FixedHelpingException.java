@@ -75,6 +75,7 @@ public class FixedHelpingException extends HelpingException {
      *
      * @see org.extex.core.exception.GeneralException#getHelp()
      */
+    @Override
     public String getHelp() {
 
         return help;
@@ -87,6 +88,7 @@ public class FixedHelpingException extends HelpingException {
      *
      * @see java.lang.Throwable#getLocalizedMessage()
      */
+    @Override
     public String getLocalizedMessage() {
 
         return message;
@@ -99,6 +101,7 @@ public class FixedHelpingException extends HelpingException {
      *
      * @see java.lang.Throwable#getMessage()
      */
+    @Override
     public String getMessage() {
 
         return message;

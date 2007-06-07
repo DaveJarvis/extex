@@ -35,7 +35,7 @@ public interface FixedGlueComponent {
      *
      * @return a new copy of this instance
      */
-    GlueComponent copy();
+    FixedGlueComponent copy();
 
     /**
      * Compares the current instance with another GlueComponent for equality.
@@ -61,7 +61,7 @@ public interface FixedGlueComponent {
      *
      * @return the order.
      */
-    int getOrder();
+    byte getOrder();
 
     /**
      * Getter for the value in scaled points (sp).

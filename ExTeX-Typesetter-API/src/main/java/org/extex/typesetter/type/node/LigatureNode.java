@@ -105,6 +105,7 @@ public class LigatureNode extends CharNode implements Node {
      * 
      * @see org.extex.typesetter.type.Node#countChars()
      */
+    @Override
     public int countChars() {
 
         return chars.length;
@@ -117,6 +118,7 @@ public class LigatureNode extends CharNode implements Node {
      * 
      * @see org.extex.typesetter.type.Node#getChars()
      */
+    @Override
     public CharNode[] getChars() {
 
         return chars;
@@ -156,6 +158,7 @@ public class LigatureNode extends CharNode implements Node {
      * @see org.extex.typesetter.type.Node#toString( java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
+    @Override
     public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
 
         Font font = getTypesettingContext().getFont();
@@ -170,6 +173,7 @@ public class LigatureNode extends CharNode implements Node {
      * @see org.extex.typesetter.type.Node#visit(
      *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
      */
+    @Override
     @SuppressWarnings("unchecked")
     public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {

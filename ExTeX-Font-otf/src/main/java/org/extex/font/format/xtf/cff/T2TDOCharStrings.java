@@ -86,6 +86,7 @@ public class T2TDOCharStrings extends T2TDONumber {
      * 
      * @see org.extex.font.format.xtf.cff.T2Operator#getName()
      */
+    @Override
     public String getName() {
 
         return "charstring";
@@ -97,6 +98,7 @@ public class T2TDOCharStrings extends T2TDONumber {
      * @see org.extex.font.format.xtf.cff.T2Operator#init(org.extex.util.file.random.RandomAccessR,
      *      org.extex.font.format.xtf.OtfTableCFF, int)
      */
+    @Override
     public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset)
             throws IOException {
 

@@ -71,6 +71,7 @@ public class NotObservableException extends GeneralException {
      *
      * @see java.lang.Throwable#getLocalizedMessage()
      */
+    @Override
     public String getLocalizedMessage() {
 
         return getLocalizer().format("NotObservableException.Text",

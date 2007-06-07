@@ -24,6 +24,7 @@ import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.FixedGlueComponent;
 import org.extex.core.glue.Glue;
+import org.extex.core.glue.GlueComponent;
 import org.extex.core.glue.WideGlue;
 import org.extex.typesetter.type.OrientedNode;
 
@@ -113,6 +114,7 @@ public abstract class AbstractExpandableNode extends AbstractNode
      * @see org.extex.typesetter.type.Node#addDepthTo(
      *      org.extex.core.glue.WideGlue)
      */
+    @Override
     public void addDepthTo(WideGlue glue) {
 
         if (horizontal) {
@@ -130,6 +132,7 @@ public abstract class AbstractExpandableNode extends AbstractNode
      * @see org.extex.typesetter.type.Node#addHeightTo(
      *      org.extex.core.glue.WideGlue)
      */
+    @Override
     public void addHeightTo(WideGlue glue) {
 
         if (horizontal) {
@@ -147,6 +150,7 @@ public abstract class AbstractExpandableNode extends AbstractNode
      * @see org.extex.typesetter.type.Node#addWidthTo(
      *      org.extex.core.glue.WideGlue)
      */
+    @Override
     public void addWidthTo(WideGlue glue) {
 
         if (horizontal) {
@@ -194,16 +198,18 @@ public abstract class AbstractExpandableNode extends AbstractNode
      * @param sum the total sum of the glues
      * 
      * @see org.extex.typesetter.type.node.AbstractNode#spreadHeight(
-     *      org.extex.core.dimen.FixedDimen,
-     *      org.extex.core.glue.FixedGlueComponent)
+     *      org.extex.core.dimen.FixedDimen, FixedGlueComponent)
      */
+    @Override
     public void spreadHeight(FixedDimen height, FixedGlueComponent sum) {
 
         if (horizontal) {
             return;
         }
 
-        long adjust = computeAdjustment(height.getValue(), this.size, sum);
+        long adjust =
+                computeAdjustment(height.getValue(), this.size,
+                    new GlueComponent(sum));
         if (adjust != 0) {
             advanceHeight(new Dimen(adjust));
         }
@@ -219,6 +225,7 @@ public abstract class AbstractExpandableNode extends AbstractNode
      *      org.extex.core.dimen.FixedDimen,
      *      org.extex.core.glue.FixedGlueComponent)
      */
+    @Override
     public void spreadWidth(FixedDimen width, FixedGlueComponent sum) {
 
         if (!horizontal) {

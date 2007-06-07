@@ -57,6 +57,7 @@ public class ErrorLimitException extends HelpingException {
      *
      * @see java.lang.Throwable#getLocalizedMessage()
      */
+    @Override
     public String getLocalizedMessage() {
 
         return getLocalizer().format("TTP.ErrorLimitReached",
@@ -71,6 +72,7 @@ public class ErrorLimitException extends HelpingException {
      *
      * @see java.lang.Throwable#getMessage()
      */
+    @Override
     public String getMessage() {
 
         return getLocalizedMessage();

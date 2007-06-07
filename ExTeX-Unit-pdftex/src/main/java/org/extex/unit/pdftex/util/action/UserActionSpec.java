@@ -93,6 +93,7 @@ public class UserActionSpec extends ActionSpec {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return "user " + user;
@@ -108,6 +109,7 @@ public class UserActionSpec extends ActionSpec {
      * @see org.extex.unit.pdftex.util.action.ActionSpec#visit(
      *      org.extex.unit.pdftex.util.action.ActionVisitor)
      */
+    @Override
     public Object visit(ActionVisitor visitor) {
 
         return visitor.visitUser(this);

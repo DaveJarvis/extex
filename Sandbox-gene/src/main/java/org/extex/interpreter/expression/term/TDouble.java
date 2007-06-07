@@ -264,6 +264,7 @@ public class TDouble implements EType {
     /**
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return LocalizerFactory.getLocalizer(TDouble.class).format("Format",

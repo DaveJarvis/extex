@@ -385,6 +385,7 @@ public class AfmCharMetric implements Serializable {
      * 
      * @return Return the name and the number of the glyph.
      */
+    @Override
     public String toString() {
 
         return n + " c=" + c;

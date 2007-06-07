@@ -178,6 +178,7 @@ public class T2TDOEncoding extends T2TDONumber {
     /**
      * @see org.extex.font.format.xtf.cff.T2Operator#getName()
      */
+    @Override
     public String getName() {
 
         return "encoding";

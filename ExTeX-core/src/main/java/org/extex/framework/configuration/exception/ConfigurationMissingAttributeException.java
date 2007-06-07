@@ -82,6 +82,7 @@ public class ConfigurationMissingAttributeException
      *
      * @return the text
      */
+    @Override
     public String getText() {
 
         return getLocalizer().format(

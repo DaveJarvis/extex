@@ -38,12 +38,12 @@ public class Glue implements Serializable, FixedGlue {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>length</tt> contains the natural length of the glue.
      */
-    private GlueComponent length;
+    private Dimen length;
 
     /**
      * The field <tt>shrink</tt> contains the shrink specification.
@@ -61,7 +61,7 @@ public class Glue implements Serializable, FixedGlue {
     public Glue() {
 
         super();
-        this.length = new GlueComponent(0);
+        this.length = new Dimen(0);
         this.stretch = new GlueComponent(0);
         this.shrink = new GlueComponent(0);
     }
@@ -74,7 +74,7 @@ public class Glue implements Serializable, FixedGlue {
     public Glue(FixedDimen theLength) {
 
         super();
-        this.length = theLength.copy();
+        this.length = new Dimen(theLength);
         this.stretch = new GlueComponent(0);
         this.shrink = new GlueComponent(0);
     }
@@ -91,10 +91,10 @@ public class Glue implements Serializable, FixedGlue {
         super();
         if (glue != null) {
             this.length = new Dimen(glue.getLength());
-            this.stretch = glue.getStretch().copy();
-            this.shrink = glue.getShrink().copy();
+            this.stretch = new GlueComponent(glue.getStretch());
+            this.shrink = new GlueComponent(glue.getShrink());
         } else {
-            this.length = new GlueComponent(0);
+            this.length = new Dimen(0);
             this.stretch = new GlueComponent(0);
             this.shrink = new GlueComponent(0);
         }
@@ -107,13 +107,29 @@ public class Glue implements Serializable, FixedGlue {
      * @param theStretch the stretch specification
      * @param theShrink the shrink specification
      */
-    public Glue(FixedGlueComponent theLength, FixedGlueComponent theStretch,
+    public Glue(FixedDimen theLength, FixedGlueComponent theStretch,
             FixedGlueComponent theShrink) {
 
         super();
-        this.length = theLength.copy();
-        this.stretch = theStretch.copy();
-        this.shrink = theShrink.copy();
+        this.length = new Dimen(theLength);
+        this.stretch = new GlueComponent(theStretch);
+        this.shrink = new GlueComponent(theShrink);
+    }
+
+    /**
+     * Creates a new object from the three components.
+     * 
+     * @param theLength the natural length
+     * @param theStretch the stretch specification
+     * @param theShrink the shrink specification
+     */
+    public Glue(FixedDimen theLength, FixedDimen theStretch,
+            FixedDimen theShrink) {
+
+        super();
+        this.length = new Dimen(theLength);
+        this.stretch = new GlueComponent(theStretch.getValue());
+        this.shrink = new GlueComponent(theShrink.getValue());
     }
 
     /**
@@ -124,7 +140,7 @@ public class Glue implements Serializable, FixedGlue {
     public Glue(long theLength) {
 
         super();
-        this.length = new GlueComponent(theLength);
+        this.length = new Dimen(theLength);
         this.stretch = new GlueComponent(0);
         this.shrink = new GlueComponent(0);
     }
@@ -148,7 +164,7 @@ public class Glue implements Serializable, FixedGlue {
      * 
      * @param g the glue to add
      */
-    public void add(FixedGlueComponent g) {
+    public void add(FixedDimen g) {
 
         this.length.add(g);
     }
@@ -189,7 +205,7 @@ public class Glue implements Serializable, FixedGlue {
      * @return <code>true</code> iff the current length is greater or equal
      *         than the given one
      */
-    public boolean ge(FixedGlueComponent x) {
+    public boolean ge(FixedDimen x) {
 
         return this.length.ge(x);
     }
@@ -245,7 +261,7 @@ public class Glue implements Serializable, FixedGlue {
      * @return <code>true</code> iff the current length is greater than the
      *         given one
      */
-    public boolean gt(FixedGlueComponent x) {
+    public boolean gt(FixedDimen x) {
 
         return this.length.gt(x);
     }
@@ -259,7 +275,7 @@ public class Glue implements Serializable, FixedGlue {
      * @return <code>true</code> iff the current length is less or equal than
      *         the given one
      */
-    public boolean le(FixedGlueComponent x) {
+    public boolean le(FixedDimen x) {
 
         return this.length.le(x);
     }
@@ -273,7 +289,7 @@ public class Glue implements Serializable, FixedGlue {
      * @return <code>true</code> iff the current length is less than the given
      *         one
      */
-    public boolean lt(FixedGlueComponent x) {
+    public boolean lt(FixedDimen x) {
 
         return this.length.lt(x);
     }
@@ -426,7 +442,7 @@ public class Glue implements Serializable, FixedGlue {
      * 
      * @param g the glue to subtract
      */
-    public void subtract(FixedGlueComponent g) {
+    public void subtract(FixedDimen g) {
 
         this.length.subtract(g);
     }
@@ -439,6 +455,7 @@ public class Glue implements Serializable, FixedGlue {
      * @return the string representation of this glue
      * @see "<logo>TeX</logo> &ndash; The Program [178,177]"
      */
+    @Override
     public String toString() {
 
         StringBuffer sb = new StringBuffer(length.toString());

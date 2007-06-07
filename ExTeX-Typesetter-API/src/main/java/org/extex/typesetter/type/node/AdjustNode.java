@@ -84,6 +84,7 @@ public class AdjustNode extends AbstractNode implements Node {
      *      int,
      *      int)
      */
+    @Override
     public void toString(StringBuffer sb, String prefix,
             int breadth, int depth) {
 
@@ -103,6 +104,7 @@ public class AdjustNode extends AbstractNode implements Node {
      * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
+    @Override
     public void toText(StringBuffer sb, String prefix) {
 
         sb.append(getLocalizer().format("Text.Format", getWidth().toString()));

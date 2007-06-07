@@ -161,6 +161,7 @@ public class TtfTableLOCA extends AbstractXtfTable
      * 
      * @see org.extex.font.format.xtf.AbstractXtfTable#getInitOrder()
      */
+    @Override
     public int getInitOrder() {
 
         return 1;
@@ -171,6 +172,7 @@ public class TtfTableLOCA extends AbstractXtfTable
      * 
      * @see org.extex.font.format.xtf.AbstractXtfTable#init()
      */
+    @Override
     public void init() {
 
         TtfTableHEAD head = (TtfTableHEAD) getTableMap().get(XtfReader.HEAD);

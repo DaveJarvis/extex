@@ -120,6 +120,7 @@ public class ThreadActionSpec extends ActionSpec {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         StringBuffer sb = new StringBuffer("thread file ");
@@ -139,6 +140,7 @@ public class ThreadActionSpec extends ActionSpec {
      * @see org.extex.unit.pdftex.util.action.ActionSpec#visit(
      *      org.extex.unit.pdftex.util.action.ActionVisitor)
      */
+    @Override
     public Object visit(ActionVisitor visitor) {
 
         return visitor.visitThread(this);

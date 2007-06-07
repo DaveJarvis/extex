@@ -125,6 +125,7 @@ public class HorizontalListNode extends GenericNodeList
      * @see org.extex.typesetter.type.node.GenericNodeList#add( int,
      *      org.extex.typesetter.type.Node)
      */
+    @Override
     public void add(int index, Node node) throws IndexOutOfBoundsException {
 
         if (node != null) {
@@ -149,6 +150,7 @@ public class HorizontalListNode extends GenericNodeList
      * @see org.extex.typesetter.type.node.GenericNodeList#add(
      *      org.extex.typesetter.type.Node)
      */
+    @Override
     public void add(Node node) {
 
         if (node != null) {
@@ -167,6 +169,7 @@ public class HorizontalListNode extends GenericNodeList
      * 
      * @see org.extex.typesetter.type.NodeList#addSkip( FixedGlue)
      */
+    @Override
     public void addSkip(FixedGlue glue) {
 
         Node node = new GlueNode(glue, true);
@@ -237,6 +240,7 @@ public class HorizontalListNode extends GenericNodeList
      *      org.extex.core.dimen.FixedDimen,
      *      org.extex.core.glue.FixedGlueComponent)
      */
+    @Override
     public void spreadWidth(FixedDimen w, FixedGlueComponent sum) {
 
         // noop
@@ -255,6 +259,7 @@ public class HorizontalListNode extends GenericNodeList
      * @see org.extex.typesetter.type.Node#toString( java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
+    @Override
     public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
 
         sb.append("\\hbox");
@@ -272,6 +277,7 @@ public class HorizontalListNode extends GenericNodeList
      * @see org.extex.typesetter.type.Node#toText( java.lang.StringBuffer,
      *      java.lang.String)
      */
+    @Override
     public void toText(StringBuffer sb, String prefix) {
 
         sb.append("\n");
@@ -293,6 +299,7 @@ public class HorizontalListNode extends GenericNodeList
      * @see org.extex.typesetter.type.Node#visit(
      *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
      */
+    @Override
     @SuppressWarnings("unchecked")
     public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {

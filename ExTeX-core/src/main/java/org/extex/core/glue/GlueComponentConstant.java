@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,47 +17,34 @@
  *
  */
 
-package org.extex.core.dimen;
+package org.extex.core.glue;
 
 import java.io.Serializable;
 
+import org.extex.framework.i18n.LocalizerFactory;
+
 /**
- * This class provides objects of type {@link org.extex.core.dimen.Dimen Dimen}
- * where all assignment methods are nit present. Thus the object is in fact
- * immutable.
+ * This class provides a means to store floating numbers with an order.
+ * 
+ * <p>
+ * Examples
+ * </p>
+ * 
+ * <pre>
+ * 123 pt
+ * -123 pt
+ * 123.456 pt
+ * 123.pt
+ * .465 pt
+ * -.456pt
+ * +456pt
+ * </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4399 $
+ * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
+ * @version $Revision:4399 $
  */
-public class DimenConstant implements FixedDimen, Serializable {
-
-    /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
-
-    /**
-     * Creates a new object.
-     * 
-     * @param value the value to be stored
-     */
-    public DimenConstant(FixedDimen value) {
-
-        super();
-        this.value = value.getValue();
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param value the value to be stored
-     */
-    public DimenConstant(long value) {
-
-        super();
-        this.value = value;
-    }
+public class GlueComponentConstant implements Serializable, FixedGlueComponent {
 
     /**
      * The constant <tt>ONE</tt> contains the internal representation for 1pt.
@@ -67,6 +54,19 @@ public class DimenConstant implements FixedDimen, Serializable {
     public static final long ONE = 1 << 16;
 
     /**
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
+     */
+    protected static final long serialVersionUID = 2007L;
+
+    /**
+     * The field <tt>order</tt> contains the order of infinity. In case of an
+     * order 0 the value holds the absolute value; otherwise value holds the
+     * factor of the order.
+     */
+    protected byte order;
+
+    /**
      * The field <tt>value</tt> contains the integer representation of the
      * dimen register in sp if the order is 0. If the order is not 0 then the
      * value holds the factor to the order in units of 2<sup>16</sup>.
@@ -74,13 +74,60 @@ public class DimenConstant implements FixedDimen, Serializable {
     protected long value;
 
     /**
+     * Creates a new object.
+     */
+    public GlueComponentConstant() {
+
+        super();
+        this.value = 0;
+        this.order = 0;
+    }
+
+    /**
+     * Creates a new object with a fixed width.
+     * 
+     * @param component the fixed value
+     */
+    public GlueComponentConstant(FixedGlueComponent component) {
+
+        super();
+        this.value = component.getValue();
+        this.order = component.getOrder();
+    }
+
+    /**
+     * Creates a new object with a fixed width.
+     * 
+     * @param theValue the fixed value
+     */
+    public GlueComponentConstant(long theValue) {
+
+        super();
+        this.value = theValue;
+        this.order = 0;
+    }
+
+    /**
+     * Creates a new object with a width with a possibly higher order.
+     * 
+     * @param theValue the fixed width or the factor
+     * @param theOrder the order
+     */
+    public GlueComponentConstant(long theValue, byte theOrder) {
+
+        super();
+        this.value = theValue;
+        this.order = theOrder;
+    }
+
+    /**
      * Create a copy of this instance with the same order and value.
      * 
      * @return a new copy of this instance
      */
-    public FixedDimen copy() {
+    public FixedGlueComponent copy() {
 
-        return new DimenConstant(value);
+        return new GlueComponentConstant(value, order);
     }
 
     /**
@@ -91,9 +138,10 @@ public class DimenConstant implements FixedDimen, Serializable {
      * 
      * @return <code>true</code> iff <i>|this| == |d| and ord(this) == ord(d)</i>
      */
-    public boolean eq(FixedDimen d) {
+    public boolean eq(FixedGlueComponent d) {
 
-        return (d != null && value == d.getValue());
+        return (d != null && //
+                value == d.getValue() && order == d.getOrder());
     }
 
     /**
@@ -103,9 +151,19 @@ public class DimenConstant implements FixedDimen, Serializable {
      * 
      * @return <code>true</code> iff this is greater or equal to d
      */
-    public boolean ge(FixedDimen d) {
+    public boolean ge(FixedGlueComponent d) {
 
         return (!lt(d));
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.core.glue.FixedGlueComponent#getOrder()
+     */
+    public byte getOrder() {
+
+        return order;
     }
 
     /**
@@ -123,11 +181,13 @@ public class DimenConstant implements FixedDimen, Serializable {
      * 
      * @param d the other GlueComponent to compare to
      * 
-     * @return <code>true</code> iff |this| &gt; |d|</i>
+     * @return <code>true</code> iff <i>ord(this) == ord(d) && |this| &gt; |d|</i>
+     *         or <i>ord(this) &gt; ord(d)</i>
      */
-    public boolean gt(FixedDimen d) {
+    public boolean gt(FixedGlueComponent d) {
 
-        return (value > d.getValue());
+        return ((order == d.getOrder() && value > d.getValue()) || //
+        order > d.getOrder());
     }
 
     /**
@@ -137,9 +197,9 @@ public class DimenConstant implements FixedDimen, Serializable {
      * 
      * @return <code>true</code> iff this is less or equal to d
      */
-    public boolean le(FixedDimen d) {
+    public boolean le(FixedGlueComponent d) {
 
-        return !gt(d);
+        return (!gt(d));
     }
 
     /**
@@ -150,9 +210,10 @@ public class DimenConstant implements FixedDimen, Serializable {
      * @return <code>true</code> iff <i>ord(this) == ord(d) && |this| &lt; |d|</i>
      *         or <i>ord(this) &lt; ord(d)</i>
      */
-    public boolean lt(FixedDimen d) {
+    public boolean lt(FixedGlueComponent d) {
 
-        return (value < d.getValue());
+        return ((order == d.getOrder() && value < d.getValue()) || //
+        order < d.getOrder());
     }
 
     /**
@@ -161,11 +222,11 @@ public class DimenConstant implements FixedDimen, Serializable {
      * @param d the other GlueComponent to compare to. If this parameter is
      *        <code>null</code> then the comparison fails.
      * 
-     * @return <code>false</code> iff <i>|this| == |d| </i>
+     * @return <code>false</code> iff <i>|this| == |d| and ord(this) == ord(d)</i>
      */
-    public boolean ne(FixedDimen d) {
+    public boolean ne(FixedGlueComponent d) {
 
-        return (d != null && (value != d.getValue()));
+        return (d != null && (value != d.getValue() || order != d.getOrder()));
     }
 
     /**
@@ -245,8 +306,20 @@ public class DimenConstant implements FixedDimen, Serializable {
             delta *= 10;
         } while (val > delta);
 
-        sb.append(c1);
-        sb.append(c2);
+        if (order == 0) {
+            sb.append(c1);
+            sb.append(c2);
+        } else if (order > 0) {
+            sb.append('f');
+            sb.append('i');
+            for (int i = order; i > 1; i--) {
+                sb.append('l');
+            }
+        } else {
+            throw new RuntimeException(LocalizerFactory.getLocalizer(
+                GlueComponentConstant.class).format("Illegal.Order",
+                Integer.toString(order)));
+        }
     }
 
 }

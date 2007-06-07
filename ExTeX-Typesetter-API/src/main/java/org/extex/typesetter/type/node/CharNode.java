@@ -82,6 +82,7 @@ public class CharNode extends AbstractNode {
      *
      * @see org.extex.typesetter.type.Node#countChars()
      */
+    @Override
     public int countChars() {
 
         return 1;
@@ -104,6 +105,7 @@ public class CharNode extends AbstractNode {
      *
      * @see org.extex.typesetter.type.Node#getChars()
      */
+    @Override
     public CharNode[] getChars() {
 
         return new CharNode[]{this};
@@ -146,6 +148,7 @@ public class CharNode extends AbstractNode {
      *      int,
      *      int)
      */
+    @Override
     public void toString(StringBuffer sb, String prefix,
             int breadth, int depth) {
 
@@ -175,6 +178,7 @@ public class CharNode extends AbstractNode {
      *      java.lang.StringBuffer,
      *      java.lang.String)
      */
+    @Override
     public void toText(StringBuffer sb, String prefix) {
 
         Font font = typesettingContext.getFont();

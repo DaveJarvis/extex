@@ -46,6 +46,7 @@ public class ExTeXRunner extends TestCase {
      * @throws Exception ...
      * @see junit.framework.TestCase#setUp()
      */
+    @Override
     protected void setUp() throws Exception {
 
         extex = new MyExTeX(System.getProperties(), ".extex-test");

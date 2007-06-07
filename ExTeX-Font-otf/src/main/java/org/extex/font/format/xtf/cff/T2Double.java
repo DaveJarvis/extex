@@ -161,6 +161,7 @@ public class T2Double extends T2Number {
      *
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
      */
+    @Override
     public short[] getBytes() {
 
         return bytes;
@@ -176,6 +177,7 @@ public class T2Double extends T2Number {
      * 
      * @see org.extex.font.format.xtf.cff.T2CharString#isDouble()
      */
+    @Override
     public boolean isDouble() {
 
         return true;
@@ -186,6 +188,7 @@ public class T2Double extends T2Number {
      *
      * @see org.extex.font.format.xtf.cff.T2Number#getDouble()
      */
+    @Override
     public double getDouble() {
 
         return value;
@@ -196,6 +199,7 @@ public class T2Double extends T2Number {
      *
      * @see org.extex.font.format.xtf.cff.T2Number#getInteger()
      */
+    @Override
     public int getInteger() {
 
         return (int) value;
@@ -206,6 +210,7 @@ public class T2Double extends T2Number {
      * 
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return String.valueOf(value);

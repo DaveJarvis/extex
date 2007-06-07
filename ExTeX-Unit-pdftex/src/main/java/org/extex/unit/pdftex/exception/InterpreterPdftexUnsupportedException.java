@@ -62,6 +62,7 @@ public class InterpreterPdftexUnsupportedException extends InterpreterException 
      *
      * @see java.lang.Throwable#getMessage()
      */
+    @Override
     public String getMessage() {
 
         return getLocalizer().format("Text", super.getMessage());

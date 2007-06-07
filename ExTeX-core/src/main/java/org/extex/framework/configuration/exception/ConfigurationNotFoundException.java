@@ -21,14 +21,15 @@ package org.extex.framework.configuration.exception;
 
 /**
  * This Exception is thrown when a configuration could not be found.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class ConfigurationNotFoundException extends ConfigurationException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     private static final long serialVersionUID = 1L;
 
@@ -40,7 +41,7 @@ public class ConfigurationNotFoundException extends ConfigurationException {
 
     /**
      * Create a new object.
-     *
+     * 
      * @param name the name of the missing configuration
      * @param source the the name of the file for which this exception occurred
      */
@@ -54,12 +55,13 @@ public class ConfigurationNotFoundException extends ConfigurationException {
      * Getter for the text prefix of this
      * {@link org.extex.framework.configuration.exception.ConfigurationException ConfigurationException}.
      * The text is taken from the resource bundle <tt>ConfigurationEception</tt>
-     * under the key <tt>ConfigurationNotFoundException.Text</tt>. The argument
-     * {0} is replaced by the name of the missing configuration as passed to the
-     * constructor.
-     *
+     * under the key <tt>ConfigurationNotFoundException.Text</tt>. The
+     * argument {0} is replaced by the name of the missing configuration as
+     * passed to the constructor.
+     * 
      * @return the text
      */
+    @Override
     protected String getText() {
 
         return getLocalizer().format("ConfigurationNotFoundException.Text",

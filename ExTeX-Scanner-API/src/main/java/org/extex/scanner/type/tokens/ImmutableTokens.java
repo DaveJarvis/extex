@@ -55,6 +55,7 @@ public class ImmutableTokens extends Tokens {
      * @see org.extex.scanner.type.tokens.Tokens#add(
      *      org.extex.scanner.type.token.Token)
      */
+    @Override
     public void add(Token t) {
 
         throw new UnsupportedOperationException(
@@ -70,6 +71,7 @@ public class ImmutableTokens extends Tokens {
      * @see org.extex.scanner.type.tokens.Tokens#add(
      *      org.extex.scanner.type.tokens.Tokens)
      */
+    @Override
     public void add(Tokens toks) {
 
         throw new UnsupportedOperationException(

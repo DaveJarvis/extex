@@ -62,6 +62,7 @@ public class ConfigurationInvalidNameException extends ConfigurationException {
      *
      * @return the text
      */
+    @Override
     protected String getText() {
 
         return getLocalizer().format("ConfigurationInvalidNameException.Text");

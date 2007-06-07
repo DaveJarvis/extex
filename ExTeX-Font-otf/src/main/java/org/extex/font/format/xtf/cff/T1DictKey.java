@@ -253,6 +253,7 @@ public abstract class T1DictKey extends T2CharString
      *      org.extex.util.file.random.RandomAccessR,
      *      org.extex.font.format.xtf.OtfTableCFF, int)
      */
+    @Override
     public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset)
             throws IOException {
 

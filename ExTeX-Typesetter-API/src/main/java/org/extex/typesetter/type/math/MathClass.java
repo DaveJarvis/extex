@@ -68,6 +68,7 @@ public abstract class MathClass implements Serializable {
          *
          * @param sb the target string buffer
          */
+        @Override
         public void toString(StringBuffer sb) {
 
             sb.append("bin");
@@ -88,6 +89,7 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(MathClassVisitor visitor, Object arg,
                 Object arg2) {
@@ -125,6 +127,7 @@ public abstract class MathClass implements Serializable {
          *
          * @param sb the target string buffer
          */
+        @Override
         public void toString(StringBuffer sb) {
 
             sb.append("close");
@@ -145,6 +148,7 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(MathClassVisitor visitor, Object arg,
                 Object arg2) {
@@ -185,6 +189,7 @@ public abstract class MathClass implements Serializable {
          *
          * @param sb the target string buffer
          */
+        @Override
         public void toString(StringBuffer sb) {
 
             sb.append("large");
@@ -205,6 +210,7 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(MathClassVisitor visitor, Object arg,
                 Object arg2) {
@@ -245,6 +251,7 @@ public abstract class MathClass implements Serializable {
          *
          * @param sb the target string buffer
          */
+        @Override
         public void toString(StringBuffer sb) {
 
             sb.append("open");
@@ -265,6 +272,7 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(MathClassVisitor visitor, Object arg,
                 Object arg2) {
@@ -305,6 +313,7 @@ public abstract class MathClass implements Serializable {
          *
          * @param sb the target string buffer
          */
+        @Override
         public void toString(StringBuffer sb) {
 
             sb.append("ord");
@@ -325,6 +334,7 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(MathClassVisitor visitor, Object arg,
                 Object arg2) {
@@ -365,6 +375,7 @@ public abstract class MathClass implements Serializable {
          *
          * @param sb the target string buffer
          */
+        @Override
         public void toString(StringBuffer sb) {
 
             sb.append("punct");
@@ -385,6 +396,7 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(MathClassVisitor visitor, Object arg,
                 Object arg2) {
@@ -425,6 +437,7 @@ public abstract class MathClass implements Serializable {
          *
          * @param sb the target string buffer
          */
+        @Override
         public void toString(StringBuffer sb) {
 
             sb.append("rel");
@@ -445,6 +458,7 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(MathClassVisitor visitor, Object arg,
                 Object arg2) {
@@ -485,6 +499,7 @@ public abstract class MathClass implements Serializable {
          *
          * @param sb the target string buffer
          */
+        @Override
         public void toString(StringBuffer sb) {
 
             sb.append("var");
@@ -505,6 +520,7 @@ public abstract class MathClass implements Serializable {
          *      java.lang.Object,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(MathClassVisitor visitor, Object arg,
                 Object arg2) {
@@ -644,6 +660,7 @@ public abstract class MathClass implements Serializable {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         StringBuffer sb = new StringBuffer();

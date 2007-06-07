@@ -74,6 +74,7 @@ public class ConfigurationInvalidClassException extends ConfigurationException {
      *
      * @return the text
      */
+    @Override
     protected String getText() {
 
         return getLocalizer().format(

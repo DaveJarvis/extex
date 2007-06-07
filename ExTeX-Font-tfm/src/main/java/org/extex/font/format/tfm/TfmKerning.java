@@ -61,6 +61,7 @@ public class TfmKerning extends TfmLigKern implements Serializable {
      *
      * @see org.extex.font.format.tfm.TfmLigKern#getKern()
      */
+    @Override
     public TfmFixWord getKern() {
 
         return kern;
@@ -71,6 +72,7 @@ public class TfmKerning extends TfmLigKern implements Serializable {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         StringBuffer buf = new StringBuffer(super.toString());

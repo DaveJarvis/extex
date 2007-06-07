@@ -1567,6 +1567,7 @@ public class GroupImpl implements Group {
      * 
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return locator != null ? "group " + locator.toString() : super

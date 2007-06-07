@@ -81,6 +81,7 @@ public class ConfigurationMissingException extends ConfigurationException {
      *
      * @return the text
      */
+    @Override
     protected String getText() {
 
         return getLocalizer()

@@ -102,6 +102,7 @@ public class ExdocTask extends Task {
      * 
      * @see org.apache.tools.ant.Task#execute()
      */
+    @Override
     public void execute() throws BuildException {
 
         ExDocXml exdoc = null;
@@ -151,6 +152,7 @@ public class ExdocTask extends Task {
                  * 
                  * @see org.extex.exdoc.util.Traverser#info(java.lang.String)
                  */
+                @Override
                 protected void info(String msg) {
 
                     if (verbose) {
@@ -165,6 +167,7 @@ public class ExdocTask extends Task {
                  * 
                  * @see org.extex.exdoc.util.Traverser#warning(java.lang.String)
                  */
+                @Override
                 protected void warning(String msg) {
 
                     log(msg);
@@ -198,6 +201,7 @@ public class ExdocTask extends Task {
                  * 
                  * @see org.extex.exdoc.util.Traverser#info(java.lang.String)
                  */
+                @Override
                 protected void info(String msg) {
 
                     if (verbose) {
@@ -210,6 +214,7 @@ public class ExdocTask extends Task {
                  * 
                  * @see org.extex.exdoc.util.Traverser#warning(java.lang.String)
                  */
+                @Override
                 protected void warning(String msg) {
 
                     log(msg);
@@ -245,6 +250,7 @@ public class ExdocTask extends Task {
                  * 
                  * @see org.extex.exdoc.util.Traverser#info(java.lang.String)
                  */
+                @Override
                 protected void info(String msg) {
 
                     if (verbose) {
@@ -259,6 +265,7 @@ public class ExdocTask extends Task {
                  * 
                  * @see org.extex.exdoc.util.Traverser#warning(java.lang.String)
                  */
+                @Override
                 protected void warning(String msg) {
 
                     log(msg);

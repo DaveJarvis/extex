@@ -437,6 +437,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      *      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
+    @Override
     public void tab(Context context, TokenSource source, Token token)
             throws TypesetterException,
                 ConfigurationException {

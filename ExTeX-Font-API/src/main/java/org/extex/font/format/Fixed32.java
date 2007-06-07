@@ -109,6 +109,7 @@ public class Fixed32 {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         StringBuffer buf = new StringBuffer();

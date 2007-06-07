@@ -154,6 +154,7 @@ public class MathGlyph implements Noad, Serializable {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         StringBuffer sb = new StringBuffer();

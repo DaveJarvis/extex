@@ -123,6 +123,7 @@ public class MathList extends AbstractNoad {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         StringBuffer sb = new StringBuffer();
@@ -138,6 +139,7 @@ public class MathList extends AbstractNoad {
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer)
      */
+    @Override
     public void toString(StringBuffer sb) {
 
         for (int i = 0; i < nucleus.size(); i++) {
@@ -154,6 +156,7 @@ public class MathList extends AbstractNoad {
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer, int)
      */
+    @Override
     public void toString(StringBuffer sb, int depth) {
 
         if (depth < 0) {

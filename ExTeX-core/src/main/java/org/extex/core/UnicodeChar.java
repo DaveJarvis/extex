@@ -187,6 +187,7 @@ public class UnicodeChar implements Serializable {
      * @return <code>true</code> if the characters are equal, otherwise
      *         <code>false</code>
      */
+    @Override
     public boolean equals(Object unicodeChar) {
 
         return ((unicodeChar instanceof UnicodeChar) && //
@@ -230,6 +231,7 @@ public class UnicodeChar implements Serializable {
      * 
      * @return the hash code
      */
+    @Override
     public int hashCode() {
 
         return this.code;
@@ -287,6 +289,7 @@ public class UnicodeChar implements Serializable {
      * 
      * @return String representation of the stored value.
      */
+    @Override
     public String toString() {
 
         return UCharacter.toString(this.code);

@@ -76,6 +76,7 @@ public class GrayscaleColor implements Color {
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
+    @Override
     public boolean equals(Object obj) {
 
         if (!(obj instanceof GrayscaleColor)) {
@@ -116,6 +117,7 @@ public class GrayscaleColor implements Color {
      *
      * @see java.lang.Object#hashCode()
      */
+    @Override
     public int hashCode() {
 
         return (gray << 2) | (alpha << 3);
@@ -128,6 +130,7 @@ public class GrayscaleColor implements Color {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         StringBuffer sb = new StringBuffer();

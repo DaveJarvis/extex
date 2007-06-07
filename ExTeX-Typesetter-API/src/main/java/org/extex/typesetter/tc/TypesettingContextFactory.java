@@ -86,6 +86,7 @@ public class TypesettingContextFactory extends AbstractFactory {
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
+    @Override
     public void configure(Configuration configuration)
             throws ConfigurationException {
 

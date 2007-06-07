@@ -389,6 +389,7 @@ public class MathFont implements Font {
      * 
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return this.font.toString();

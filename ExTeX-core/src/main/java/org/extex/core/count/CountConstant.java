@@ -153,6 +153,7 @@ public class CountConstant implements FixedCount, Serializable {
      * 
      * @see #toString(StringBuffer)
      */
+    @Override
     public String toString() {
 
         return Long.toString(value);

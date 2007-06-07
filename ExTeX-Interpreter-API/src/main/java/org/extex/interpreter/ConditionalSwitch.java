@@ -26,7 +26,7 @@ import org.extex.interpreter.type.Code;
  * This class represents a conditional for an <tt>\ifcase</tt> construct.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
 public class ConditionalSwitch extends Conditional {
 
@@ -56,6 +56,7 @@ public class ConditionalSwitch extends Conditional {
      *
      * @return the value
      */
+    @Override
     public boolean getValue() {
 
         return false;

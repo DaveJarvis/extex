@@ -46,6 +46,7 @@ public class T1BlueScale extends T1DictNumber {
      *
      * @see org.extex.font.format.xtf.cff.T1DictKey#getName()
      */
+    @Override
     public String getName() {
 
         return "BlueScale";

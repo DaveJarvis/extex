@@ -30,7 +30,7 @@ import org.extex.scanner.exception.ScannerException;
 
 /**
  * Test cases for the string implementation of a token stream.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -40,7 +40,7 @@ public class TokenStreamStreamImplBufferedTest
 
     /**
      * Command line interface.
-     *
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
@@ -50,7 +50,7 @@ public class TokenStreamStreamImplBufferedTest
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name
      */
     public TokenStreamStreamImplBufferedTest(String name) {
@@ -65,11 +65,12 @@ public class TokenStreamStreamImplBufferedTest
 
     /**
      * Create a stream of tokens fed from a string.
-     *
+     * 
      * @param line the input string
      * @return the new token stream
      * @throws IOException in case of an error
      */
+    @Override
     protected TokenStream makeStream(String line) throws IOException {
 
         return new TokenStreamImpl(CONF, null, new ByteArrayInputStream(line
@@ -77,10 +78,8 @@ public class TokenStreamStreamImplBufferedTest
     }
 
     /**
-     * <testcase>
-     *  ...
-     * </testcase>
-     *
+     * <testcase> ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testError2() throws Exception {
@@ -95,10 +94,8 @@ public class TokenStreamStreamImplBufferedTest
     }
 
     /**
-     * <testcase>
-     *  ...
-     * </testcase>
-     *
+     * <testcase> ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testException1() throws Exception {
@@ -107,6 +104,7 @@ public class TokenStreamStreamImplBufferedTest
                 new TokenStreamImpl(new MyConfiguration("16"), null,
                     new InputStream() {
 
+                        @Override
                         public int read() throws IOException {
 
                             throw new IOException();

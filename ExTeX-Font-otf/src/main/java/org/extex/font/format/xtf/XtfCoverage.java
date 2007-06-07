@@ -131,6 +131,7 @@ public abstract class XtfCoverage {
          * 
          * @see org.extex.font.format.xtf.XtfCoverage#findGlyph(int)
          */
+        @Override
         public int findGlyph(int glyphId) {
 
             for (int i = 0; i < glyphCount; i++) {
@@ -180,6 +181,7 @@ public abstract class XtfCoverage {
          * 
          * @see org.extex.font.format.xtf.XtfCoverage#findGlyph(int)
          */
+        @Override
         public int findGlyph(int glyphId) {
 
             for (int i = 0; i < rangeCount; i++) {

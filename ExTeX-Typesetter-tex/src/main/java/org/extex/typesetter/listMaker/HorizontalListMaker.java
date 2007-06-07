@@ -235,6 +235,7 @@ public class HorizontalListMaker extends AbstractListMaker {
      * 
      * @see org.extex.typesetter.ListMaker#getMode()
      */
+    @Override
     public Mode getMode() {
 
         return Mode.HORIZONTAL;
@@ -255,6 +256,7 @@ public class HorizontalListMaker extends AbstractListMaker {
      * 
      * @see org.extex.typesetter.ListMaker#getSpacefactor()
      */
+    @Override
     public long getSpacefactor() {
 
         return spaceFactor;
@@ -363,6 +365,7 @@ public class HorizontalListMaker extends AbstractListMaker {
      * @see org.extex.typesetter.ListMaker#setSpacefactor(
      *      org.extex.core.count.FixedCount)
      */
+    @Override
     public void setSpacefactor(FixedCount f)
             throws TypesetterUnsupportedException,
                 InvalidSpacefactorException {
@@ -392,6 +395,7 @@ public class HorizontalListMaker extends AbstractListMaker {
      * 
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return super.toString() + "\n" + nodes.toString();

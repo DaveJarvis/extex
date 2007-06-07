@@ -67,6 +67,7 @@ public class OmegaMode implements Serializable {
          *
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return "onebyte";
@@ -104,6 +105,7 @@ public class OmegaMode implements Serializable {
          *
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return "ebcdic";
@@ -142,6 +144,7 @@ public class OmegaMode implements Serializable {
          *
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return "twobyte";
@@ -180,6 +183,7 @@ public class OmegaMode implements Serializable {
          *
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return "twobyteLE";

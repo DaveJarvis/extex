@@ -66,6 +66,7 @@ public abstract class T1DictBoolean extends T1DictKey {
      * Check, if the object is a boolean.
      * @return Returns <code>true</code>, if the object is a boolean.
      */
+    @Override
     public boolean isBoolean() {
 
         return true;
@@ -81,6 +82,7 @@ public abstract class T1DictBoolean extends T1DictKey {
      *
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
      */
+    @Override
     public short[] getBytes() {
 
         return bytes;
@@ -91,6 +93,7 @@ public abstract class T1DictBoolean extends T1DictKey {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return String.valueOf(value);
@@ -110,6 +113,7 @@ public abstract class T1DictBoolean extends T1DictKey {
      *
      * @see org.extex.font.format.xtf.cff.T2Operator#getValue()
      */
+    @Override
     public Object getValue() {
 
         return new Boolean(value);

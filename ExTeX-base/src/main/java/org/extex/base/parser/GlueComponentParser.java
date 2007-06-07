@@ -263,7 +263,7 @@ public class GlueComponentParser {
                             break;
                         }
                         source.skipSpace();
-                        return new GlueComponent(v, order);
+                        return new GlueComponent(v, (byte) order);
                     }
                     break;
                 case 'i':

@@ -924,6 +924,7 @@ public class TeX extends ExTeX {
      * 
      * @return the localizer
      */
+    @Override
     protected Localizer getLocalizer() {
 
         return this.localizer;
@@ -970,6 +971,7 @@ public class TeX extends ExTeX {
      * @see org.extex.ExTeX#initializeStreams(
      *      org.extex.interpreter.Interpreter, java.util.Properties)
      */
+    @Override
     protected boolean initializeStreams(Interpreter interpreter,
             Properties properties) {
 
@@ -998,6 +1000,7 @@ public class TeX extends ExTeX {
      * 
      * @see org.extex.ExTeX#logPages(org.extex.backend.BackendDriver)
      */
+    @Override
     protected void logPages(BackendDriver backend) {
 
         int pages = backend.getPages();

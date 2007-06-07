@@ -173,7 +173,7 @@ public class MathContext {
 
         long factor =
                 mathParameter(MathFontParameter.MATH_QUAD, style).getValue();
-        GlueComponent length = new GlueComponent(muglue.getLength());
+        Dimen length = new Dimen(muglue.getLength());
         GlueComponent stretch = new GlueComponent(muglue.getStretch());
         GlueComponent shrink = new GlueComponent(muglue.getShrink());
 

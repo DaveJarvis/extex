@@ -95,6 +95,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
@@ -139,6 +140,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
@@ -183,6 +185,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
@@ -227,6 +230,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
@@ -271,6 +275,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
@@ -315,6 +320,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
@@ -359,6 +365,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
@@ -403,6 +410,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
@@ -447,6 +455,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
@@ -491,6 +500,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
@@ -535,6 +545,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
@@ -579,6 +590,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
@@ -623,6 +635,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
@@ -667,6 +680,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
@@ -711,6 +725,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
@@ -755,6 +770,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
@@ -799,6 +815,7 @@ public abstract class GroupType implements Serializable {
          *      org.extex.interpreter.context.group.GroupTypeVisitor,
          *      java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 

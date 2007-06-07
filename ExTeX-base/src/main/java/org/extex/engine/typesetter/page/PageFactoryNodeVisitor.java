@@ -172,8 +172,8 @@ public class PageFactoryNodeVisitor
         this.context = context;
         this.page = page;
         this.typesetter = typesetter;
-        this.posH.set(0);
-        this.posV.set(0);
+        this.posH.set(0L);
+        this.posV.set(0L);
         context.startMarks();
     }
 

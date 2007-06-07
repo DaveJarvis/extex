@@ -445,6 +445,7 @@ public class FontKey implements Serializable {
      * 
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         StringBuffer buf = new StringBuffer(getName());

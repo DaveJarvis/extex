@@ -90,6 +90,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @see org.extex.typesetter.tc.font.Font#getActualSize()
      */
+    @Override
     public FixedDimen getActualSize() {
 
         return font.getActualSize();
@@ -102,6 +103,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @see org.extex.typesetter.tc.font.Font#getCheckSum()
      */
+    @Override
     public int getCheckSum() {
 
         // mgn: umbauen
@@ -118,6 +120,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      * @see org.extex.typesetter.tc.font.Font#getDepth(
      *      org.extex.core.UnicodeChar)
      */
+    @Override
     public FixedGlue getDepth(UnicodeChar uc) {
 
         return font.getDepth(uc);
@@ -130,6 +133,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @see org.extex.typesetter.tc.font.Font#getDesignSize()
      */
+    @Override
     public FixedDimen getDesignSize() {
 
         return font.getDesignSize();
@@ -142,6 +146,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @see org.extex.typesetter.tc.font.Font#getEm()
      */
+    @Override
     public FixedDimen getEm() {
 
         return font.getEm();
@@ -154,6 +159,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @see org.extex.typesetter.tc.font.Font#getEx()
      */
+    @Override
     public FixedDimen getEx() {
 
         return font.getEx();
@@ -167,6 +173,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @see org.extex.typesetter.tc.font.Font#getFontDimen(java.lang.String)
      */
+    @Override
     public FixedDimen getFontDimen(String k) {
 
         FixedDimen fd = super.getFontDimen(k);
@@ -183,6 +190,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @see org.extex.typesetter.tc.font.Font#getFontKey()
      */
+    @Override
     public FontKey getFontKey() {
 
         return key;
@@ -195,6 +203,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @see org.extex.typesetter.tc.font.Font#getFontName()
      */
+    @Override
     public String getFontName() {
 
         return font.getFontName();
@@ -219,6 +228,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      * @see org.extex.typesetter.tc.font.Font#getHeight(
      *      org.extex.core.UnicodeChar)
      */
+    @Override
     public FixedGlue getHeight(UnicodeChar uc) {
 
         return font.getHeight(uc);
@@ -234,6 +244,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      * @see org.extex.typesetter.tc.font.Font#getItalicCorrection(
      *      org.extex.core.UnicodeChar)
      */
+    @Override
     public FixedDimen getItalicCorrection(UnicodeChar uc) {
 
         return font.getItalicCorrection(uc);
@@ -251,6 +262,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *      org.extex.core.UnicodeChar,
      *      org.extex.core.UnicodeChar)
      */
+    @Override
     public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
 
         return font.getKerning(uc1, uc2);
@@ -268,6 +280,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *      org.extex.core.UnicodeChar,
      *      org.extex.core.UnicodeChar)
      */
+    @Override
     public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
 
         return font.getLigature(uc1, uc2);
@@ -280,6 +293,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @see org.extex.typesetter.tc.font.Font#getSpace()
      */
+    @Override
     public FixedGlue getSpace() {
 
         return font.getSpace();
@@ -295,6 +309,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      * @see org.extex.typesetter.tc.font.Font#getWidth(
      *      org.extex.core.UnicodeChar)
      */
+    @Override
     public FixedGlue getWidth(UnicodeChar uc) {
 
         return font.getWidth(uc);
@@ -310,6 +325,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      * @see org.extex.typesetter.tc.font.Font#hasGlyph(
      *      org.extex.core.UnicodeChar)
      */
+    @Override
     public boolean hasGlyph(UnicodeChar uc) {
 
         return font.hasGlyph(uc);
@@ -346,6 +362,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return font.getFontName();

@@ -63,6 +63,7 @@ public class ConfigurationSyntaxException extends ConfigurationException {
      *
      * @return the text
      */
+    @Override
     protected String getText() {
 
         return getLocalizer().format("ConfigurationSyntaxException.Text");

@@ -29,7 +29,95 @@ import org.extex.core.glue.FixedGlueComponent;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4399 $
  */
-public interface FixedDimen extends FixedGlueComponent {
+public interface FixedDimen {
 
-    // no methods
+    /**
+     * Create a copy of this instance with the same order and value.
+     *
+     * @return a new copy of this instance
+     */
+    FixedDimen copy();
+
+    /**
+     * Compares the current instance with another GlueComponent for equality.
+     *
+     * @param d the other GlueComponent to compare to. If this parameter is
+     * <code>null</code> then the comparison fails.
+     *
+     * @return <code>true</code> iff <i>|this| == |d|</i>
+     */
+    boolean eq(FixedDimen d);
+
+    /**
+     * Compares the current instance with another GlueComponent.
+     *
+     * @param d the other GlueComponent to compare to
+     *
+     * @return <code>true</code> iff this is greater or equal to d
+     */
+    boolean ge(FixedDimen d);
+
+    /**
+     * Getter for the value in scaled points (sp).
+     *
+     * @return the value in internal units of scaled points (sp)
+     */
+    long getValue();
+
+    /**
+     * Compares the current instance with another GlueComponent.
+     *
+     * @param d the other GlueComponent to compare to
+     *
+     * @return <code>true</code> iff |this| &gt; |d|</i>
+     */
+    boolean gt(FixedDimen d);
+
+    /**
+     * Compares the current instance with another GlueComponent.
+     *
+     * @param d the other GlueComponent to compare to
+     *
+     * @return <code>true</code> iff this is less or equal to d
+     */
+    boolean le(FixedDimen d);
+
+    /**
+     * Compares the current instance with another GlueComponent.
+     *
+     * @param d the other GlueComponent to compare to
+     *
+     * @return <code>true</code> iff |this| &lt; |d|</i>
+     */
+    boolean lt(FixedDimen d);
+
+    /**
+     * Compares the current instance with another GlueComponent for equality.
+     *
+     * @param d the other GlueComponent to compare to. If this parameter is
+     * <code>null</code> then the comparison fails.
+     *
+     * @return <code>false</code> iff <i>|this| == |d|</i>
+     */
+    boolean ne(FixedDimen d);
+
+    /**
+     * Determine the printable representation of the object.
+     *
+     * @return the printable representation
+     *
+     * @see #toString(StringBuffer)
+     */
+    String toString();
+
+    /**
+     * Determine the printable representation of the object and append it to
+     * the given StringBuffer.
+     *
+     * @param sb the output string buffer
+     *
+     * @see #toString()
+     */
+    void toString(StringBuffer sb);
+
 }

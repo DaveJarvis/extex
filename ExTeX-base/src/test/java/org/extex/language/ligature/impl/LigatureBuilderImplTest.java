@@ -70,6 +70,7 @@ public class LigatureBuilderImplTest extends TestCase {
          * @see org.extex.typesetter.tc.font.Font#hasGlyph(
          *      org.extex.core.UnicodeChar)
          */
+        @Override
         public boolean hasGlyph(UnicodeChar uc) {
 
             switch (uc.getCodePoint()) {
@@ -97,6 +98,7 @@ public class LigatureBuilderImplTest extends TestCase {
          *      org.extex.core.UnicodeChar,
          *      org.extex.core.UnicodeChar)
          */
+        @Override
         public UnicodeChar getLigature(UnicodeChar uc1,
                 UnicodeChar uc2) {
 
@@ -176,6 +178,7 @@ public class LigatureBuilderImplTest extends TestCase {
      *
      * @see junit.framework.TestCase#setUp()
      */
+    @Override
     protected void setUp() throws Exception {
 
         super.setUp();

@@ -187,6 +187,7 @@ public final class PdfBoxType1Font extends PDType1Font {
      *
      * @see org.pdfbox.pdmodel.font.PDSimpleFont#getFontDescriptor()
      */
+    @Override
     public PDFontDescriptor getFontDescriptor() throws IOException {
 
         return fd;

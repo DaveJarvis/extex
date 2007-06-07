@@ -65,6 +65,7 @@ public class OrdinaryNoad extends AbstractNucleusNoad implements SimpleNoad {
      *      java.lang.StringBuffer,
      *      int)
      */
+    @Override
     protected void toStringAdd(StringBuffer sb, int depth) {
 
         sb.append("mathord");

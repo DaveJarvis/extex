@@ -19,9 +19,6 @@
 
 package org.extex.core.dimen;
 
-import java.io.Serializable;
-
-import org.extex.core.glue.FixedGlueComponent;
 import org.extex.core.glue.GlueComponent;
 
 /**
@@ -32,13 +29,13 @@ import org.extex.core.glue.GlueComponent;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4726 $
  */
-public class Dimen extends GlueComponent implements Serializable, FixedDimen {
+public class Dimen extends DimenConstant {
 
     /**
      * The constant <tt>ZERO</tt> contains the non-stretchable and
      * non-shrinkable value of 0&nbsp;pt.
      */
-    public static final FixedGlueComponent ZERO = GlueComponent.ZERO;
+    public static final FixedDimen ZERO = new DimenConstant(0);
 
     /**
      * The constant <tt>ONE</tt> contains the internal representation for 1pt.
@@ -70,7 +67,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 20060513L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The constant <tt>ZERO_PT</tt> contains the immutable dimen register
@@ -84,7 +81,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      */
     public Dimen() {
 
-        super();
+        super(0);
     }
 
     /**
@@ -117,7 +114,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
     public void abs(FixedDimen d) {
 
         long v = d.getValue();
-        setValue(v < 0 ? -v : v);
+        value = (v < 0 ? -v : v);
     }
 
     /**
@@ -131,7 +128,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      */
     public void add(FixedDimen d) {
 
-        setValue(getValue() + d.getValue());
+        value = (getValue() + d.getValue());
     }
 
     /**
@@ -146,7 +143,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
     public void add(long d) {
 
         if (d != 0) {
-            setValue(getValue() + d);
+            value = (getValue() + d);
         }
     }
 
@@ -168,7 +165,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
             throw new ArithmeticException();
         }
         if (denom != 1) {
-            setValue(getValue() / denom);
+            value = (getValue() / denom);
         }
     }
 
@@ -194,7 +191,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
 
         long val = d.getValue();
         if (val > getValue()) {
-            setValue(val);
+            value = (val);
         }
     }
 
@@ -210,8 +207,22 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
 
         long val = d.getValue();
         if (val < getValue()) {
-            setValue(val);
+            value = (val);
         }
+    }
+
+    /**
+     * Multiply the value by an integer fraction.
+     * <p>
+     * <i>length</i> = <i>length</i> * <i>nom</i> / <i>denom</i>
+     * </p>
+     * 
+     * @param nom nominator
+     * @param denom denominator
+     */
+    public void multiply(long nom, long denom) {
+
+        value = value * nom / denom;
     }
 
     /**
@@ -226,7 +237,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
     public void multiply(long factor) {
 
         if (factor != 1) {
-            setValue(getValue() * factor);
+            value = (getValue() * factor);
         }
     }
 
@@ -239,7 +250,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      */
     public void negate() {
 
-        setValue(-getValue());
+        value = (-getValue());
     }
 
     /**
@@ -247,9 +258,19 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      * 
      * @param d the new value
      */
-    public void set(FixedGlueComponent d) {
+    public void set(FixedDimen d) {
 
-        set(d.getValue());
+        value = (d.getValue());
+    }
+
+    /**
+     * Setter for the value. The order of the argument is ignored.
+     * 
+     * @param d the new value
+     */
+    public void set(long d) {
+
+        value = d;
     }
 
     /**
@@ -263,7 +284,7 @@ public class Dimen extends GlueComponent implements Serializable, FixedDimen {
      */
     public void subtract(FixedDimen d) {
 
-        setValue(getValue() - d.getValue());
+        value = (getValue() - d.getValue());
     }
 
 }

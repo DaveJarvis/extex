@@ -130,6 +130,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * @see org.extex.scanner.type.token.AbstractToken#equals(
      *      org.extex.scanner.type.Catcode, char)
      */
+    @Override
     public boolean equals(Catcode cc, char c) {
 
         return getCatcode() == cc && name.length() == 1 && name.charAt(0) == c;
@@ -148,6 +149,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * @see org.extex.scanner.type.token.Token#equals(
      *      org.extex.scanner.type.Catcode, java.lang.String)
      */
+    @Override
     public boolean equals(Catcode cc, String s) {
 
         return getCatcode() == cc && name.equals(s);
@@ -163,6 +165,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      *
      * @see org.extex.scanner.type.token.AbstractToken#equals(char)
      */
+    @Override
     public boolean equals(char c) {
 
         return name.length() == 1 && name.charAt(0) == c;
@@ -177,6 +180,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
+    @Override
     public boolean equals(Object other) {
 
         if (other instanceof ControlSequenceToken) {
@@ -194,6 +198,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      *
      * @see org.extex.scanner.type.token.Token#getCatcode()
      */
+    @Override
     public Catcode getCatcode() {
 
         return Catcode.ESCAPE;
@@ -232,6 +237,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      *
      * @see java.lang.Object#hashCode()
      */
+    @Override
     public int hashCode() {
 
         return name.hashCode() + HASH_FACTOR * namespace.hashCode();
@@ -242,6 +248,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      *
      * @return the string representation
      */
+    @Override
     public String toString() {
 
         UnicodeChar c = getChar();
@@ -269,6 +276,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      *
      * @see org.extex.scanner.type.token.AbstractToken#toText()
      */
+    @Override
     public String toText() {
 
         UnicodeChar c = getChar();
@@ -290,6 +298,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * @see org.extex.scanner.type.token.Token#toText(
      *      org.extex.core.UnicodeChar)
      */
+    @Override
     public String toText(UnicodeChar esc) {
 
         if (esc != null) {

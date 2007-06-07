@@ -262,6 +262,7 @@ public class ScaledNumber {
      *
      * @return the printable representation
      */
+    @Override
     public String toString() {
 
         StringBuffer sb = new StringBuffer();

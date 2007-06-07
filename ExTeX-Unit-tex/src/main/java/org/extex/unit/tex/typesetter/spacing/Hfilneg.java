@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.typesetter.spacing;
 
+import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
@@ -72,7 +73,7 @@ public class Hfilneg extends AbstractHorizontalCode implements HorizontalSkip {
      * primitive.
      */
     private static final Glue FIL_NEG =
-            new Glue(GlueComponent.ZERO, GlueComponent.MINUS_ONE_FIL,
+            new Glue(Dimen.ZERO, GlueComponent.MINUS_ONE_FIL,
                 GlueComponent.ZERO);
 
     /**

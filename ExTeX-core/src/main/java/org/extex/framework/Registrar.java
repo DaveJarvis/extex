@@ -127,6 +127,7 @@ public final class Registrar {
          *
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return this.type.toString() + " " + this.observer.toString();

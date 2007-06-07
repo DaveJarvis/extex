@@ -243,6 +243,7 @@ public class T2TDOCharset extends T2TDONumber {
     /**
      * @see org.extex.font.format.xtf.cff.T2Operator#getName()
      */
+    @Override
     public String getName() {
 
         return "charset";
@@ -346,6 +347,7 @@ public class T2TDOCharset extends T2TDONumber {
      *      org.extex.util.file.random.RandomAccessR,
      *      org.extex.font.format.xtf.OtfTableCFF, int)
      */
+    @Override
     public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset)
             throws IOException {
 
@@ -449,6 +451,7 @@ public class T2TDOCharset extends T2TDONumber {
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());

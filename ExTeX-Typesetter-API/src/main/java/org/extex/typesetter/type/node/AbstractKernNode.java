@@ -61,6 +61,7 @@ public abstract class AbstractKernNode extends AbstractNode implements KernNode 
      * @see org.extex.typesetter.type.Node#toString( java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
+    @Override
     public void toString(StringBuffer sb, String prefix,
             int breadth, int depth) {
 
@@ -79,6 +80,7 @@ public abstract class AbstractKernNode extends AbstractNode implements KernNode 
      * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
+    @Override
     public void toText(StringBuffer sb, String prefix) {
 
         sb.append(getLocalizer().format("Text.Format", getWidth().toString()));

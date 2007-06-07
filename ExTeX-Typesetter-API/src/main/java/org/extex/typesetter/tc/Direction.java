@@ -83,6 +83,7 @@ public class Direction implements Serializable {
         /**
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return "LR";
@@ -118,6 +119,7 @@ public class Direction implements Serializable {
         /**
          * @see java.lang.Object#toString()
          */
+        @Override
         public String toString() {
 
             return "RL";
@@ -181,6 +183,7 @@ public class Direction implements Serializable {
      * 
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return beginningOfPage.toString() + beginningOfLine.toString()

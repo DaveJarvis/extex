@@ -270,6 +270,7 @@ public class TCount extends Count implements EType {
     /**
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return LocalizerFactory.getLocalizer(TCount.class).format("Format",

@@ -107,9 +107,10 @@ public class TtfTableGLYF extends AbstractXtfTable
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.format.xtf.AbstractXtfTable#getInitOrder()
      */
+    @Override
     public int getInitOrder() {
 
         return 2;
@@ -117,9 +118,10 @@ public class TtfTableGLYF extends AbstractXtfTable
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.format.xtf.AbstractXtfTable#init()
      */
+    @Override
     public void init() {
 
         TtfTableLOCA loca = (TtfTableLOCA) getTableMap().get(XtfReader.LOCA);
@@ -191,7 +193,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
      */
     public String getShortcut() {
@@ -201,7 +203,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
@@ -569,7 +571,7 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
          *      org.extex.util.xml.XMLStreamWriter)
          */
@@ -751,9 +753,10 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getEndPtOfContours(int)
          */
+        @Override
         public int getEndPtOfContours(int i) {
 
             CompositeComp c = getCompositeCompEndPt(i);
@@ -767,9 +770,10 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getFlags(int)
          */
+        @Override
         public byte getFlags(int i) {
 
             CompositeComp c = getCompositeComp(i);
@@ -782,9 +786,10 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getXCoordinate(int)
          */
+        @Override
         public short getXCoordinate(int i) {
 
             CompositeComp c = getCompositeComp(i);
@@ -802,9 +807,10 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getYCoordinate(int)
          */
+        @Override
         public short getYCoordinate(int i) {
 
             CompositeComp c = getCompositeComp(i);
@@ -822,9 +828,10 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#isComposite()
          */
+        @Override
         public boolean isComposite() {
 
             return true;
@@ -832,9 +839,10 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getPointCount()
          */
+        @Override
         public int getPointCount() {
 
             CompositeComp c = components.elementAt(components.size() - 1);
@@ -845,9 +853,10 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getContourCount()
          */
+        @Override
         public int getContourCount() {
 
             CompositeComp c = components.elementAt(components.size() - 1);
@@ -1098,9 +1107,10 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getEndPtOfContours(int)
          */
+        @Override
         public int getEndPtOfContours(int i) {
 
             return endPtsOfContours[i];
@@ -1108,9 +1118,10 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getFlags(int)
          */
+        @Override
         public byte getFlags(int i) {
 
             return flags[i];
@@ -1118,9 +1129,10 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getXCoordinate(int)
          */
+        @Override
         public short getXCoordinate(int i) {
 
             return xCoordinates[i];
@@ -1128,9 +1140,10 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getYCoordinate(int)
          */
+        @Override
         public short getYCoordinate(int i) {
 
             return yCoordinates[i];
@@ -1138,9 +1151,10 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#isComposite()
          */
+        @Override
         public boolean isComposite() {
 
             return false;
@@ -1148,9 +1162,10 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getPointCount()
          */
+        @Override
         public int getPointCount() {
 
             return count;
@@ -1158,9 +1173,10 @@ public class TtfTableGLYF extends AbstractXtfTable
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.font.format.xtf.TtfTableGLYF.Descript#getContourCount()
          */
+        @Override
         public int getContourCount() {
 
             return getNumberOfContours();

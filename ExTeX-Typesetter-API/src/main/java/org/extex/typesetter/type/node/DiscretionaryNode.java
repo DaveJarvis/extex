@@ -124,6 +124,7 @@ public class DiscretionaryNode extends AbstractNode implements Node {
      *      int,
      *      int)
      */
+    @Override
     public void toString(StringBuffer sb, String prefix,
             int breadth, int depth) {
 
@@ -156,6 +157,7 @@ public class DiscretionaryNode extends AbstractNode implements Node {
      *      java.lang.StringBuffer,
      *      java.lang.String)
      */
+    @Override
     public void toText(StringBuffer sb, String prefix) {
 
         sb.append(getLocalizer().format("Text.Format"));

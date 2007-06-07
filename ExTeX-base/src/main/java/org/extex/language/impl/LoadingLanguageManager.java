@@ -132,6 +132,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * @see org.extex.language.impl.BaseLanguageManager#createLanguage(
      *      java.lang.String)
      */
+    @Override
     protected Language createLanguage(String name) {
 
         FutureLanguage language = new FutureLanguage(name, this);
@@ -248,6 +249,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * 
      * @throws ObjectStreamException in case of an error
      */
+    @Override
     protected Object readResolve() throws ObjectStreamException {
 
         Iterator<Language> iterator = getTables().values().iterator();
@@ -324,6 +326,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * @see org.extex.resource.ResourceConsumer#setResourceFinder(
      *      org.extex.resource.ResourceFinder)
      */
+    @Override
     public void setResourceFinder(ResourceFinder finder) {
 
         this.finder = finder;

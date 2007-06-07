@@ -85,6 +85,7 @@ public abstract class T1DictDelta extends T1DictKey {
      * 
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
      */
+    @Override
     public short[] getBytes() {
 
         return bytes;
@@ -95,6 +96,7 @@ public abstract class T1DictDelta extends T1DictKey {
      * 
      * @see org.extex.font.format.xtf.cff.T2Operator#getValue()
      */
+    @Override
     public Object getValue() {
 
         return value;
@@ -105,6 +107,7 @@ public abstract class T1DictDelta extends T1DictKey {
      * 
      * @return Returns <code>true</code>, if the object is a array.
      */
+    @Override
     public boolean isArray() {
 
         return true;
@@ -115,6 +118,7 @@ public abstract class T1DictDelta extends T1DictKey {
      * 
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         StringBuffer buf = new StringBuffer();

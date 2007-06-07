@@ -123,6 +123,7 @@ public abstract class XtfSingleTable extends XtfLookupTable {
          * 
          * @see org.extex.font.format.xtf.XtfSingleTable#substitute(int)
          */
+        @Override
         public int substitute(int glyphId) {
 
             int i = coverage.findGlyph(glyphId);
@@ -183,6 +184,7 @@ public abstract class XtfSingleTable extends XtfLookupTable {
          * 
          * @see org.extex.font.format.xtf.XtfSingleTable#substitute(int)
          */
+        @Override
         public int substitute(int glyphId) {
 
             int i = coverage.findGlyph(glyphId);

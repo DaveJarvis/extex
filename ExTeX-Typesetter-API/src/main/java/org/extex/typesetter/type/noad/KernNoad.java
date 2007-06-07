@@ -90,6 +90,7 @@ public class KernNoad extends AbstractNoad {
      * @param sb the target string buffer
      * @param depth the recursion depth
      */
+    @Override
     protected void toStringAdd(StringBuffer sb, int depth) {
 
         sb.append("kern");

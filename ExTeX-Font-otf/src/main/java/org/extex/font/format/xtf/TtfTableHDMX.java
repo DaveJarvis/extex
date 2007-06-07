@@ -141,6 +141,7 @@ public class TtfTableHDMX extends AbstractXtfTable
      * 
      * @see org.extex.font.format.xtf.AbstractXtfTable#init()
      */
+    @Override
     public void init() throws IOException {
 
         if (rarinput != null) {

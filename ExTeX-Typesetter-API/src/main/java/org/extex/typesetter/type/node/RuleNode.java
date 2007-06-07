@@ -110,6 +110,7 @@ public class RuleNode extends AbstractNode implements OrientedNode {
      *      int,
      *      int)
      */
+    @Override
     public void toString(StringBuffer sb, String prefix,
             int breadth, int depth) {
 
@@ -134,6 +135,7 @@ public class RuleNode extends AbstractNode implements OrientedNode {
      *      java.lang.StringBuffer,
      *      java.lang.String)
      */
+    @Override
     public void toText(StringBuffer sb, String prefix) {
 
         FixedDimen x = getHeight();

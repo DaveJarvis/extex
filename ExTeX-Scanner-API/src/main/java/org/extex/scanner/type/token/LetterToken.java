@@ -57,6 +57,7 @@ public class LetterToken extends AbstractToken implements Token {
      *
      * @see org.extex.scanner.type.token.Token#getCatcode()
      */
+    @Override
     public Catcode getCatcode() {
 
         return Catcode.LETTER;
@@ -69,6 +70,7 @@ public class LetterToken extends AbstractToken implements Token {
      *
      * @see "<logo>TeX</logo> &ndash; The Program [298]"
      */
+    @Override
     public String toString() {
 
         return getLocalizer().format("LetterToken.Text", super.toString());

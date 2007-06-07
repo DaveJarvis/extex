@@ -63,6 +63,7 @@ public class AlignedLeadersNode extends AbstractLeadersNode {
      *      long, org.extex.typesetter.type.Node, 
      *      org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
      */
+    @Override
     protected Node fillHorizontally(long total, Node node, FixedDimen posX,
             FixedDimen posY) {
 
@@ -102,6 +103,7 @@ public class AlignedLeadersNode extends AbstractLeadersNode {
      *      long, org.extex.typesetter.type.Node,
      *      org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
      */
+    @Override
     protected Node fillVertically(long total, Node node, FixedDimen posX,
             FixedDimen posY) {
 

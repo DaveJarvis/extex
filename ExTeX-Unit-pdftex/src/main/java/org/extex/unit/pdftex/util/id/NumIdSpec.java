@@ -66,6 +66,7 @@ public class NumIdSpec extends IdSpec {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return "num " + Long.toString(num);

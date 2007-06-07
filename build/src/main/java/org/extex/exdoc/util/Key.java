@@ -78,6 +78,7 @@ public class Key {
      * 
      * @see java.lang.Object#equals(java.lang.Object)
      */
+    @Override
     public boolean equals(Object obj) {
 
         if (!(obj instanceof Key)) {
@@ -108,6 +109,7 @@ public class Key {
      * 
      * @see java.lang.Object#hashCode()
      */
+    @Override
     public int hashCode() {
 
         return theName.hashCode();
@@ -168,6 +170,7 @@ public class Key {
      * 
      * @return ...
      */
+    @Override
     public String toString() {
 
         if (stringCache != null) {

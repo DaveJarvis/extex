@@ -58,6 +58,7 @@ public class CorruptFontException extends FontException {
      * 
      * @see java.lang.Throwable#getLocalizedMessage()
      */
+    @Override
     public String getLocalizedMessage() {
 
         Localizer localizer = LocalizerFactory.getLocalizer(this.getClass());

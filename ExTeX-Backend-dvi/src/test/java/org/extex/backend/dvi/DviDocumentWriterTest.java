@@ -131,6 +131,7 @@ public class DviDocumentWriterTest extends TestCase {
      * 
      * @throws Exception if an error occurs
      */
+    @Override
     public void setUp() throws Exception {
 
         // TODO: do not use null for configuration (TE)

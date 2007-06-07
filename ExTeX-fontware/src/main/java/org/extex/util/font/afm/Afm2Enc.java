@@ -239,6 +239,7 @@ public class Afm2Enc extends AbstractFontUtil {
          * 
          * @return Returns the info from the class.
          */
+        @Override
         public String toString() {
 
             StringBuffer buf = new StringBuffer();

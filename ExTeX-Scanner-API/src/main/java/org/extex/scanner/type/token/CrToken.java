@@ -64,6 +64,7 @@ public class CrToken extends AbstractToken implements Token {
      *      org.extex.scanner.type.Catcode,
      *      char)
      */
+    @Override
     public boolean equals(Catcode cc, char c) {
 
         return cc == getCatcode();
@@ -82,6 +83,7 @@ public class CrToken extends AbstractToken implements Token {
      * @see org.extex.scanner.type.token.AbstractToken#equals(
      *      org.extex.scanner.type.Catcode, java.lang.String)
      */
+    @Override
     public boolean equals(Catcode cc, String s) {
 
         return cc == getCatcode();
@@ -97,6 +99,7 @@ public class CrToken extends AbstractToken implements Token {
      *
      * @see org.extex.scanner.type.token.AbstractToken#equals(char)
      */
+    @Override
     public boolean equals(char c) {
 
         return false;
@@ -109,6 +112,7 @@ public class CrToken extends AbstractToken implements Token {
      *
      * @see org.extex.scanner.type.token.Token#getCatcode()
      */
+    @Override
     public Catcode getCatcode() {
 
         return Catcode.CR;
@@ -121,6 +125,7 @@ public class CrToken extends AbstractToken implements Token {
      *
      * @see "<logo>TeX</logo> &ndash; The Program [298]"
      */
+    @Override
     public String toString() {
 
         return getLocalizer().format("CrToken.Text", super.toString());
@@ -149,6 +154,7 @@ public class CrToken extends AbstractToken implements Token {
      *
      * @see org.extex.scanner.type.token.Token#toText()
      */
+    @Override
     public String toText() {
 
         return "[]";

@@ -415,7 +415,7 @@ public abstract class AbstractNode implements Node {
      * 
      * @see org.extex.typesetter.type.Node#spreadHeight(
      *      org.extex.core.dimen.FixedDimen,
-     *      org.extex.core.glue.FixedGlueComponent)
+     *      FixedGlueComponent)
      */
     public void spreadHeight(FixedDimen h, FixedGlueComponent sum) {
 
@@ -445,6 +445,7 @@ public abstract class AbstractNode implements Node {
      * 
      * @return the printable representation
      */
+    @Override
     public String toString() {
 
         StringBuffer sb = new StringBuffer();

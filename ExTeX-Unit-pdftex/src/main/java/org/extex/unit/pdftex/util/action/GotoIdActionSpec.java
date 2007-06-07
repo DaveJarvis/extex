@@ -106,6 +106,7 @@ public class GotoIdActionSpec extends GotoActionSpec {
      * @see org.extex.unit.pdftex.util.action.ActionSpec#visit(
      *      org.extex.unit.pdftex.util.action.ActionVisitor)
      */
+    @Override
     public Object visit(ActionVisitor visitor) {
 
         return visitor.visitGotoId(this);

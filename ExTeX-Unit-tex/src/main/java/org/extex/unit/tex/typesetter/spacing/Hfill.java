@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.typesetter.spacing;
 
+import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
@@ -70,8 +71,7 @@ public class Hfill extends AbstractHorizontalCode implements HorizontalSkip {
      * The field <tt>FILL</tt> contains the glue to insert for this primitive.
      */
     private static final Glue FILL =
-            new Glue(GlueComponent.ZERO, GlueComponent.ONE_FILL,
-                GlueComponent.ZERO);
+            new Glue(Dimen.ZERO, GlueComponent.ONE_FILL, GlueComponent.ZERO);
 
     /**
      * Creates a new object.

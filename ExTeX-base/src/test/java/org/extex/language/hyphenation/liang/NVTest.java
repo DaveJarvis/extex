@@ -41,7 +41,7 @@ import org.extex.typesetter.tc.font.impl.NullFont;
 
 /**
  * This is the test class for NV.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4527 $
  */
@@ -49,7 +49,7 @@ public class NVTest extends TestCase {
 
     /**
      * This is a mock implementation of a font.
-     *
+     * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision:4527 $
      */
@@ -101,212 +101,178 @@ public class NVTest extends TestCase {
         }
 
         /**
-         * Returns the actual size.
-         *
-         * @return the actual size
-         *
-         * @see org.extex.font.type.Fount#getActualSize()
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getActualSize()
          */
+        @Override
         public FixedDimen getActualSize() {
 
             return Dimen.ONE_INCH;
         }
 
         /**
-         * Returns the check sum.
-         *
-         * @return the check sum
-         *
-         * @see org.extex.font.type.Fount#getCheckSum()
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getCheckSum()
          */
+        @Override
         public int getCheckSum() {
 
             return 0;
         }
 
         /**
-         * Returns the design size.
-         *
-         * @return the design size.
-         *
-         * @see org.extex.font.type.Fount#getDesignSize()
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getDesignSize()
          */
+        @Override
         public FixedDimen getDesignSize() {
 
             return Dimen.ONE_INCH;
         }
 
         /**
-         * Return the em size of the font.
-         *
-         * @return em size
-         *
-         * @see org.extex.font.type.Fount#getEm()
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getEm()
          */
+        @Override
         public FixedDimen getEm() {
 
             return Dimen.ONE_INCH;
         }
 
         /**
-         * Return the ex size of the font.
-         *
-         * @return ex size
-         *
-         * @see org.extex.font.type.Fount#getEx()
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getEx()
          */
+        @Override
         public FixedDimen getEx() {
 
             return Dimen.ONE_INCH;
         }
 
         /**
-         * Return font dimen size with a key.
-         *
-         * @param key the key
-         * @return the value for the key
-         *
-         * @see org.extex.font.type.Fount#getFontDimen(java.lang.String)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getFontDimen(java.lang.String)
          */
+        @Override
         public FixedDimen getFontDimen(String key) {
 
             return Dimen.ONE_INCH;
         }
 
         /**
-         * Returns the key for the font.
-         *
-         * @return the key for the font
-         *
-         * @see org.extex.font.type.Fount#getFontKey()
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getFontKey()
          */
+        @Override
         public FontKey getFontKey() {
 
-            return (new FontKeyFactory()).newInstance("mockfont"); // add by mgn
+            return (new FontKeyFactory()).newInstance("mockfont"); // add by
+            // mgn
         }
 
         /**
-         * Return the font name.
-         *
-         * @return the font name
-         *
-         * @see org.extex.font.type.Fount#getFontName()
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getFontName()
          */
+        @Override
         public String getFontName() {
 
             return "mock";
         }
 
         /**
-         * Returns the hyphen char.
-         *
-         * @return the hyphen char
-         *
-         * @see org.extex.typesetter.tc.font.Font#getHyphenChar()
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getHyphenChar()
          */
+        @Override
         public UnicodeChar getHyphenChar() {
 
             return hyphen;
         }
 
         /**
-         * Return the letter spacing
-         *
-         * @return  the letter spacing
-         *
-         * @see org.extex.font.type.Fount#getLetterSpacing()
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getSkewChar()
          */
-        public FixedGlue getLetterSpacing() {
-
-            return null;
-        }
-
-        /**
-         * Returns the skew char.
-         *
-         * @return the skew char
-         *
-         * @see org.extex.typesetter.tc.font.Font#getSkewChar()
-         */
+        @Override
         public UnicodeChar getSkewChar() {
 
             return null;
         }
 
         /**
-         * Return the width of space character.
-         *
-         * @return the width of the space character
-         *
-         * @see org.extex.font.type.Fount#getSpace()
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getSpace()
          */
+        @Override
         public FixedGlue getSpace() {
 
             return null;
         }
 
         /**
-         * Set the new value for the font parameter.
-         *
-         * @param name the name of the parameter
-         * @param value the value to set
-         *
-         * @see org.extex.typesetter.tc.font.Font#setFontDimen(
-         *      java.lang.String, org.extex.core.dimen.Dimen)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#setFontDimen(java.lang.String,
+         *      org.extex.core.dimen.Dimen)
          */
+        @Override
         public void setFontDimen(String name, Dimen value) {
 
             // not needed
         }
 
         /**
-         * Set the hyphen character.
-         *
-         * @param h The hyphen character
-         *
-         * @see org.extex.typesetter.tc.font.Font#setHyphenChar(org.extex.core.UnicodeChar)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#setHyphenChar(org.extex.core.UnicodeChar)
          */
+        @Override
         public void setHyphenChar(UnicodeChar h) {
 
             this.hyphen = h;
         }
 
         /**
-         * Set the skew character.
+         * {@inheritDoc}
          *
-         * @param skew the skew character
-         *
-         * @see org.extex.typesetter.tc.font.Font#setSkewChar(org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.impl.NullFont#setSkewChar(org.extex.core.UnicodeChar)
          */
+        @Override
         public void setSkewChar(UnicodeChar skew) {
 
             // not needed
         }
 
         /**
-         * Setter for the ef code.
-         * The ef code influences the stretchability of characters. It has a
-         * positive value. 1000 means "normal" stretchability.
+         * {@inheritDoc}
          *
-         * @param uc the character
-         * @param code the associated code
-         *
-         * @see org.extex.typesetter.tc.font.Font#setEfCode(org.extex.core.UnicodeChar, long)
+         * @see org.extex.typesetter.tc.font.impl.NullFont#setEfCode(org.extex.core.UnicodeChar, long)
          */
+        @Override
         public void setEfCode(UnicodeChar uc, long code) {
 
             // TODO gene: setEfcode unimplemented
         }
 
         /**
-         * Getter for the ef code.
-         *
-         * @param uc the character
-         *
-         * @return the ef code
+         * {@inheritDoc}
          *
          * @see org.extex.typesetter.tc.font.impl.NullFont#getEfCode(org.extex.core.UnicodeChar)
          */
+        @Override
         public long getEfCode(UnicodeChar uc) {
 
             // TODO gene: getEfcode unimplemented
@@ -316,7 +282,7 @@ public class NVTest extends TestCase {
 
     /**
      * This is a mock implementation of a glyph.
-     *
+     * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision:4527 $
      */
@@ -329,7 +295,7 @@ public class NVTest extends TestCase {
 
         /**
          * Creates a new object.
-         *
+         * 
          * @param c the character
          */
         public MockGlyph(char c) {
@@ -340,9 +306,9 @@ public class NVTest extends TestCase {
 
         /**
          * Try to build a ligature.
-         *
+         * 
          * @param uc the character
-         *
+         * 
          * @return the ligature
          */
         public UnicodeChar getLigature(UnicodeChar uc) {
@@ -366,11 +332,10 @@ public class NVTest extends TestCase {
     /**
      * The field <tt>tokenFactory</tt> contains the token factory.
      */
-//    private static TokenFactory tokenFactory;
-
+    // private static TokenFactory tokenFactory;
     /**
      * The command line interface.
-     *
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -381,13 +346,11 @@ public class NVTest extends TestCase {
     /**
      * The field <tt>cnf</tt> contains the char node factory.
      */
-//    private NodeFactory cnf;
-
+    // private NodeFactory cnf;
     /**
      * The field <tt>f</tt> contains the token for f.
      */
-//    private Token f;
-
+    // private Token f;
     /**
      * The field <tt>font</tt> contains the font.
      */
@@ -396,8 +359,7 @@ public class NVTest extends TestCase {
     /**
      * The field <tt>l</tt> contains the token for l.
      */
-//    private Token l;
-
+    // private Token l;
     /**
      * The field <tt>tc</tt> contains the typesetting context.
      */
@@ -405,22 +367,23 @@ public class NVTest extends TestCase {
 
     /**
      * Set up the test suite
-     *
+     * 
      * @throws Exception in case of an error
-     *
+     * 
      * @see junit.framework.TestCase#setUp()
      */
+    @Override
     public void setUp() throws Exception {
 
         super.setUp();
         font = new MockFont();
-//        cnf = new CachingNodeFactory();
-//        tokenFactory = new TokenFactoryImpl();
-//        f = tokenFactory.createToken(Catcode.LETTER, 'f', //
-//            Namespace.DEFAULT_NAMESPACE);
-//        l = tokenFactory.createToken(Catcode.LETTER, 'l', //
-//            Namespace.DEFAULT_NAMESPACE);
-//        UnicodeChar hyphen = font.getHyphenChar();
+        // cnf = new CachingNodeFactory();
+        // tokenFactory = new TokenFactoryImpl();
+        // f = tokenFactory.createToken(Catcode.LETTER, 'f', //
+        // Namespace.DEFAULT_NAMESPACE);
+        // l = tokenFactory.createToken(Catcode.LETTER, 'l', //
+        // Namespace.DEFAULT_NAMESPACE);
+        // UnicodeChar hyphen = font.getHyphenChar();
         tc = new TypesettingContextImpl(font);
         ModifiableLanguage lang = new BaseHyphenationTable();
         lang.setLigatureBuilder(new LigatureBuilderImpl());
@@ -429,7 +392,7 @@ public class NVTest extends TestCase {
 
     /**
      * Dummy test case.
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test00000000() throws Exception {
@@ -439,125 +402,124 @@ public class NVTest extends TestCase {
 
     /**
      * f-fl ((f f) l)
-     *
+     * 
      * @throws Exception in case of an error
      */
-    //    public void test1() throws Exception {
+    // public void test1() throws Exception {
     //
-    //        NodeList list = new HorizontalListNode();
-    //        LigatureNode ffl = new LigatureNode(tc, UnicodeChar.get(MockFont.FFL), //
-    //                getCharNode(tc, f.getChar()), //
-    //                new LigatureNode(tc, UnicodeChar.get(MockFont.FF), //
-    //                        getCharNode(tc, f.getChar()), //
-    //                        getCharNode(tc, l.getChar())));
+    // NodeList list = new HorizontalListNode();
+    // LigatureNode ffl = new LigatureNode(tc, UnicodeChar.get(MockFont.FFL), //
+    // getCharNode(tc, f.getChar()), //
+    // new LigatureNode(tc, UnicodeChar.get(MockFont.FF), //
+    // getCharNode(tc, f.getChar()), //
+    // getCharNode(tc, l.getChar())));
     //
-    //        NV nv = new NV(list, hyphen, tc, cnf, //
-    //                new boolean[]{false, true, false, false});
+    // NV nv = new NV(list, hyphen, tc, cnf, //
+    // new boolean[]{false, true, false, false});
     //
-    //        Count idx = new Count(0);
-    //        ffl.visit(nv, idx);
-    //        assertEquals(1, idx.getValue());
-    //        assertEquals(1, list.size());
-    //        assertTrue(list.get(0) instanceof DiscretionaryNode);
-    //        DiscretionaryNode d = (DiscretionaryNode) list.get(0);
-    //        assertEquals(2, d.getPreBreak().size());
-    //        assertEquals(1, d.getPostBreak().size());
-    //    }
+    // Count idx = new Count(0);
+    // ffl.visit(nv, idx);
+    // assertEquals(1, idx.getValue());
+    // assertEquals(1, list.size());
+    // assertTrue(list.get(0) instanceof DiscretionaryNode);
+    // DiscretionaryNode d = (DiscretionaryNode) list.get(0);
+    // assertEquals(2, d.getPreBreak().size());
+    // assertEquals(1, d.getPostBreak().size());
+    // }
     /**
      * f-fl (f (fl))
-     *
+     * 
      * @throws Exception in case of an error
      */
-    //    public void test2() throws Exception {
+    // public void test2() throws Exception {
     //
-    //        NodeList list = new HorizontalListNode();
-    //        LigatureNode ffl = new LigatureNode(tc, UnicodeChar.get(MockFont.FFL), //
-    //                new LigatureNode(tc, UnicodeChar.get(MockFont.FF), //
-    //                        getCharNode(tc, f.getChar()), //
-    //                        getCharNode(tc, f.getChar())), //
-    //                getCharNode(tc, l.getChar()));
+    // NodeList list = new HorizontalListNode();
+    // LigatureNode ffl = new LigatureNode(tc, UnicodeChar.get(MockFont.FFL), //
+    // new LigatureNode(tc, UnicodeChar.get(MockFont.FF), //
+    // getCharNode(tc, f.getChar()), //
+    // getCharNode(tc, f.getChar())), //
+    // getCharNode(tc, l.getChar()));
     //
-    //        NV nv = new NV(list, hyphen, tc, cnf, //
-    //                new boolean[]{false, true, false, false});
+    // NV nv = new NV(list, hyphen, tc, cnf, //
+    // new boolean[]{false, true, false, false});
     //
-    //        Count idx = new Count(0);
-    //        ffl.visit(nv, idx);
-    //        assertEquals(1, idx.getValue());
-    //        assertEquals(1, list.size());
-    //        assertTrue(list.get(0) instanceof DiscretionaryNode);
-    //        DiscretionaryNode d = (DiscretionaryNode) list.get(0);
-    //        assertEquals(2, d.getPreBreak().size());
-    //        assertEquals(1, d.getPostBreak().size());
-    //    }
+    // Count idx = new Count(0);
+    // ffl.visit(nv, idx);
+    // assertEquals(1, idx.getValue());
+    // assertEquals(1, list.size());
+    // assertTrue(list.get(0) instanceof DiscretionaryNode);
+    // DiscretionaryNode d = (DiscretionaryNode) list.get(0);
+    // assertEquals(2, d.getPreBreak().size());
+    // assertEquals(1, d.getPostBreak().size());
+    // }
     /**
      * f-f-l ((f f) l)
-     *
+     * 
      * @throws Exception in case of an error
      */
-    //    public void testDouble() throws Exception {
+    // public void testDouble() throws Exception {
     //
-    //        NodeList list = new HorizontalListNode();
-    //        LigatureNode ffl = new LigatureNode(tc, UnicodeChar.get(MockFont.FFL), //
-    //                getCharNode(tc, f.getChar()), //
-    //                new LigatureNode(tc, UnicodeChar.get(MockFont.FF), //
-    //                        getCharNode(tc, f.getChar()), //
-    //                        getCharNode(tc, l.getChar())));
+    // NodeList list = new HorizontalListNode();
+    // LigatureNode ffl = new LigatureNode(tc, UnicodeChar.get(MockFont.FFL), //
+    // getCharNode(tc, f.getChar()), //
+    // new LigatureNode(tc, UnicodeChar.get(MockFont.FF), //
+    // getCharNode(tc, f.getChar()), //
+    // getCharNode(tc, l.getChar())));
     //
-    //        NV nv = new NV(list, hyphen, tc, cnf, //
-    //                new boolean[]{false, false, false, false});
+    // NV nv = new NV(list, hyphen, tc, cnf, //
+    // new boolean[]{false, false, false, false});
     //
-    //        Count idx = new Count(0);
-    //        ffl.visit(nv, idx);
-    //        assertEquals(0, idx.getValue());
-    //        assertEquals(1, list.size());
-    //        assertEquals(list.get(0), ffl);
-    //    }
+    // Count idx = new Count(0);
+    // ffl.visit(nv, idx);
+    // assertEquals(0, idx.getValue());
+    // assertEquals(1, list.size());
+    // assertEquals(list.get(0), ffl);
+    // }
     /**
      * ffl ((f f) l)
-     *
+     * 
      * @throws Exception in case of an error
      */
-    //    public void testNone() throws Exception {
+    // public void testNone() throws Exception {
     //
-    //        NodeList list = new HorizontalListNode();
-    //        LigatureNode ffl = new LigatureNode(tc, UnicodeChar.get(MockFont.FFL), //
-    //                getCharNode(tc, f.getChar()), //
-    //                new LigatureNode(tc, UnicodeChar.get(MockFont.FF), //
-    //                        getCharNode(tc, f.getChar()), //
-    //                        getCharNode(tc, l.getChar())));
+    // NodeList list = new HorizontalListNode();
+    // LigatureNode ffl = new LigatureNode(tc, UnicodeChar.get(MockFont.FFL), //
+    // getCharNode(tc, f.getChar()), //
+    // new LigatureNode(tc, UnicodeChar.get(MockFont.FF), //
+    // getCharNode(tc, f.getChar()), //
+    // getCharNode(tc, l.getChar())));
     //
-    //        NV nv = new NV(list, hyphen, tc, cnf, //
-    //                new boolean[]{false, false, false, false});
+    // NV nv = new NV(list, hyphen, tc, cnf, //
+    // new boolean[]{false, false, false, false});
     //
-    //        Count idx = new Count(0);
-    //        ffl.visit(nv, idx);
-    //        assertEquals(0, idx.getValue());
-    //        assertEquals(1, list.size());
-    //        assertEquals(list.get(0), ffl);
-    //    }
+    // Count idx = new Count(0);
+    // ffl.visit(nv, idx);
+    // assertEquals(0, idx.getValue());
+    // assertEquals(1, list.size());
+    // assertEquals(list.get(0), ffl);
+    // }
     /**
      * -ffl ((f f) l)
-     *
+     * 
      * @throws Exception in case of an error
      */
-    //    public void testPre() throws Exception {
+    // public void testPre() throws Exception {
     //
-    //        NodeList list = new HorizontalListNode();
-    //        LigatureNode ffl = new LigatureNode(tc, UnicodeChar.get(MockFont.FFL), //
-    //                getCharNode(tc, f.getChar()), //
-    //                new LigatureNode(tc, UnicodeChar.get(MockFont.FF), //
-    //                        getCharNode(tc, f.getChar()), //
-    //                        getCharNode(tc, l.getChar())));
+    // NodeList list = new HorizontalListNode();
+    // LigatureNode ffl = new LigatureNode(tc, UnicodeChar.get(MockFont.FFL), //
+    // getCharNode(tc, f.getChar()), //
+    // new LigatureNode(tc, UnicodeChar.get(MockFont.FF), //
+    // getCharNode(tc, f.getChar()), //
+    // getCharNode(tc, l.getChar())));
     //
-    //        NV nv = new NV(list, hyphen, tc, cnf, //
-    //                new boolean[]{true, false, false, false});
+    // NV nv = new NV(list, hyphen, tc, cnf, //
+    // new boolean[]{true, false, false, false});
     //
-    //        Count idx = new Count(0);
-    //        ffl.visit(nv, idx);
-    //        assertEquals(1, idx.getValue());
-    //        assertEquals(2, list.size());
-    //        assertTrue(list.get(0) instanceof DiscretionaryNode);
-    //        assertEquals(list.get(1), ffl);
-    //    }
-
+    // Count idx = new Count(0);
+    // ffl.visit(nv, idx);
+    // assertEquals(1, idx.getValue());
+    // assertEquals(2, list.size());
+    // assertTrue(list.get(0) instanceof DiscretionaryNode);
+    // assertEquals(list.get(1), ffl);
+    // }
 }

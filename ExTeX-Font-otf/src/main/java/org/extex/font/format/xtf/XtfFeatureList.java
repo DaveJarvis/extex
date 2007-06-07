@@ -123,6 +123,7 @@ public class XtfFeatureList {
      * Returns the info for this class
      * @return Returns the info for this class
      */
+    @Override
     public String toString() {
 
         StringBuffer buf = new StringBuffer();
@@ -195,6 +196,7 @@ public class XtfFeatureList {
          * Returns the info for this class
          * @return Returns the info for this class
          */
+        @Override
         public String toString() {
 
             StringBuffer buf = new StringBuffer();
@@ -256,6 +258,7 @@ public class XtfFeatureList {
          * Returns the info for this class
          * @return Returns the info for this class
          */
+        @Override
         public String toString() {
 
             StringBuffer buf = new StringBuffer();

@@ -98,6 +98,7 @@ public class PenaltyNode extends AbstractNode implements Node, Discardable {
      *      int,
      *      int)
      */
+    @Override
     public void toString(StringBuffer sb, String prefix,
             int breadth, int depth) {
 
@@ -117,6 +118,7 @@ public class PenaltyNode extends AbstractNode implements Node, Discardable {
      *      java.lang.StringBuffer,
      *      java.lang.String)
      */
+    @Override
     public void toText(StringBuffer sb, String prefix) {
 
         sb.append(getLocalizer().format("Text.Format", Long.toString(penalty)));

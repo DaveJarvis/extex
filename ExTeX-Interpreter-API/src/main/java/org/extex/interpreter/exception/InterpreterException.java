@@ -97,6 +97,7 @@ public class InterpreterException extends GeneralException {
      *
      * @return the localizer
      */
+    @Override
     public Localizer getLocalizer() {
 
         return (this.localizer != null ? this.localizer : super.getLocalizer());

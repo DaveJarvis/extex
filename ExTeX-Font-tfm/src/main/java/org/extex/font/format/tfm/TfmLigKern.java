@@ -95,6 +95,7 @@ public abstract class TfmLigKern implements Serializable {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         StringBuffer buf = new StringBuffer();

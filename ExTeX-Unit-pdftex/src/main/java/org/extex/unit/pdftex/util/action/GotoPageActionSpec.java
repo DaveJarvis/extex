@@ -124,6 +124,7 @@ public class GotoPageActionSpec extends GotoActionSpec {
      * @see org.extex.unit.pdftex.util.action.ActionSpec#visit(
      *      org.extex.unit.pdftex.util.action.ActionVisitor)
      */
+    @Override
     public Object visit(ActionVisitor visitor) {
 
         return visitor.visitGotoPage(this);

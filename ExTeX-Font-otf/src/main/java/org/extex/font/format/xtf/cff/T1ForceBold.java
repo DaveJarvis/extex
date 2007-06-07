@@ -46,6 +46,7 @@ public class T1ForceBold extends T1DictBoolean {
      *
      * @see org.extex.font.format.xtf.cff.T1DictKey#getName()
      */
+    @Override
     public String getName() {
 
         return "ForceBold";

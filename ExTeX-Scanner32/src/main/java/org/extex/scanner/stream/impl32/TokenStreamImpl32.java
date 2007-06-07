@@ -132,6 +132,7 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
      * @see org.extex.scanner.stream.impl32.TokenStreamImpl#getChar(
      *      org.extex.scanner.Tokenizer)
      */
+    @Override
     protected UnicodeChar getChar(Tokenizer tokenizer) throws ScannerException {
 
         if (saveChar != null) {

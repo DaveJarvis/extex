@@ -93,6 +93,7 @@ public abstract class AbstractNucleusNoad extends AbstractNoad {
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer, int)
      */
+    @Override
     public void toString(StringBuffer sb, int depth) {
 
         if (depth < 0) {

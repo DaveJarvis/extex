@@ -124,6 +124,7 @@ public class TfmFontType implements Serializable {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         if (type == MATHEX) {

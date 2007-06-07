@@ -198,6 +198,7 @@ public abstract class AbstractListMaker implements TokenDelegateListMaker {
      */
     public void rightBrace() throws TypesetterException {
 
+        // noop
     }
 
     /**
@@ -291,6 +292,7 @@ public abstract class AbstractListMaker implements TokenDelegateListMaker {
      * 
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         String name = getClass().getName();

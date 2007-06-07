@@ -56,6 +56,7 @@ public class AlignedLeadersNodeTest extends LeadersNodeTester {
      *      org.extex.typesetter.type.OrientedNode,
      *      org.extex.core.glue.FixedGlue)
      */
+    @Override
     protected AbstractLeadersNode makeNode(OrientedNode node, FixedGlue glue) {
 
         return new AlignedLeadersNode(node, glue);

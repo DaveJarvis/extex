@@ -79,6 +79,7 @@ public class MiddleNoad extends LeftNoad {
      *      java.lang.StringBuffer,
      *      int)
      */
+    @Override
     public void toStringAdd(StringBuffer sb, int depth) {
 
         sb.append("middle");
@@ -98,6 +99,7 @@ public class MiddleNoad extends LeftNoad {
      *      org.extex.core.dimen.Dimen,
      *      org.extex.core.dimen.Dimen)
      */
+    @Override
     public void typeset(Noad previousNoad, NoadList noads,
             int index, NodeList list,
             MathContext mathContext, Logger logger,

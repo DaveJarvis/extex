@@ -95,6 +95,7 @@ public class HsvColor implements Color {
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
+    @Override
     public boolean equals(Object obj) {
 
         if (!(obj instanceof HsvColor)) {
@@ -158,6 +159,7 @@ public class HsvColor implements Color {
      *
      * @see java.lang.Object#hashCode()
      */
+    @Override
     public int hashCode() {
 
         return (hue >> 1) | (saturation >> 2) | (value >> 3) | (alpha >> 4);
@@ -170,6 +172,7 @@ public class HsvColor implements Color {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         StringBuffer sb = new StringBuffer();

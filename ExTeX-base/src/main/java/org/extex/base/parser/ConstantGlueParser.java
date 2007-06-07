@@ -19,6 +19,7 @@
 
 package org.extex.base.parser;
 
+import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.UndefinedControlSequenceException;
 import org.extex.core.glue.Glue;
@@ -88,7 +89,7 @@ public class ConstantGlueParser implements Parser<Glue>, GlueParser {
     public static Glue scan(TokenSource source, Context context,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        GlueComponent length;
+        Dimen length;
         GlueComponent shrink;
         GlueComponent stretch;
         Token t = source.getToken(context);
@@ -98,9 +99,9 @@ public class ConstantGlueParser implements Parser<Glue>, GlueParser {
                 Glue g =
                         ((GlueConvertible) code).convertGlue(context, source,
                             null);
-                length = g.getLength().copy();
-                shrink = g.getShrink().copy();
-                stretch = g.getStretch().copy();
+                length = new Dimen(g.getLength());
+                shrink = new GlueComponent(g.getShrink());
+                stretch = new GlueComponent(g.getStretch());
                 return new Glue(length, stretch, shrink);
             } else if (code == null) {
                 throw new UndefinedControlSequenceException(AbstractCode
@@ -108,7 +109,7 @@ public class ConstantGlueParser implements Parser<Glue>, GlueParser {
             }
         }
         source.push(t);
-        length = GlueComponentParser.parse(context, source, typesetter, false);
+        length = ConstantDimenParser.scan(context, source, typesetter);
         if (source.getKeyword(context, "plus")) {
             stretch =
                     GlueComponentParser

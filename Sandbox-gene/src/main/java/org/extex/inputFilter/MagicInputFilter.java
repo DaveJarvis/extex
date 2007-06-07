@@ -55,7 +55,7 @@ public class MagicInputFilter extends InputStream {
     /**
      * Creates a new object.
      *
-     * @param stream ...
+     * @param stream the input stream
      * @param context the interpreter context
      */
     public MagicInputFilter(InputStream stream, Context context) {
@@ -70,6 +70,7 @@ public class MagicInputFilter extends InputStream {
      *
      * @see java.io.InputStream#read()
      */
+    @Override
     public int read() throws IOException {
 
         if (!start) {
@@ -99,6 +100,7 @@ public class MagicInputFilter extends InputStream {
      *
      * @see java.io.InputStream#available()
      */
+    @Override
     public int available() throws IOException {
 
         return stream.available();
@@ -109,6 +111,7 @@ public class MagicInputFilter extends InputStream {
      *
      * @see java.io.InputStream#close()
      */
+    @Override
     public void close() throws IOException {
 
         stream.close();
@@ -119,6 +122,7 @@ public class MagicInputFilter extends InputStream {
      *
      * @see java.io.InputStream#mark(int)
      */
+    @Override
     public void mark(int readlimit) {
 
         stream.mark(readlimit);
@@ -129,6 +133,7 @@ public class MagicInputFilter extends InputStream {
      *
      * @see java.io.InputStream#markSupported()
      */
+    @Override
     public boolean markSupported() {
 
         return stream.markSupported();
@@ -139,6 +144,7 @@ public class MagicInputFilter extends InputStream {
      *
      * @see java.io.InputStream#read(byte[], int, int)
      */
+    @Override
     public int read(byte[] b, int off, int len)
             throws IOException {
 
@@ -150,6 +156,7 @@ public class MagicInputFilter extends InputStream {
      *
      * @see java.io.InputStream#read(byte[])
      */
+    @Override
     public int read(byte[] b) throws IOException {
 
         return stream.read(b);
@@ -160,6 +167,7 @@ public class MagicInputFilter extends InputStream {
      *
      * @see java.io.InputStream#reset()
      */
+    @Override
     public void reset() throws IOException {
 
         stream.reset();
@@ -170,6 +178,7 @@ public class MagicInputFilter extends InputStream {
      *
      * @see java.io.InputStream#skip(long)
      */
+    @Override
     public long skip(long n) throws IOException {
 
         return stream.skip(n);

@@ -281,6 +281,7 @@ public class TGlue extends WideGlue implements EType {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return LocalizerFactory.getLocalizer(TGlue.class).format("Format",

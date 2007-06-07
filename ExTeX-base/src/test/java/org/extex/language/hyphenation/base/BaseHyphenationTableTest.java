@@ -44,7 +44,7 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
 
 /**
  * Test suite for the base hyphenation table.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4805 $
  */
@@ -67,201 +67,168 @@ public class BaseHyphenationTableTest extends TestCase {
         private UnicodeChar hyphen = UnicodeChar.get('-');
 
         /**
-         * Returns the actual size.
-         *
-         * @return the actual size
-         *
-         * @see org.extex.font.type.Fount#getActualSize()
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getActualSize()
          */
+        @Override
         public FixedDimen getActualSize() {
 
             return Dimen.ONE_INCH;
         }
 
         /**
-         * Returns the check sum.
-         *
-         * @return the check sum
-         *
-         * @see org.extex.font.type.Fount#getCheckSum()
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getCheckSum()
          */
+        @Override
         public int getCheckSum() {
 
             return 0;
         }
 
         /**
-         * Returns the design size.
-         *
-         * @return the design size.
-         *
-         * @see org.extex.font.type.Fount#getDesignSize()
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getDesignSize()
          */
+        @Override
         public FixedDimen getDesignSize() {
 
             return Dimen.ONE_INCH;
         }
 
         /**
-         * Return the em size of the font.
-         *
-         * @return em size
-         *
-         * @see org.extex.font.type.Fount#getEm()
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getEm()
          */
+        @Override
         public FixedDimen getEm() {
 
             return Dimen.ONE_INCH;
         }
 
         /**
-         * Return the ex size of the font.
-         *
-         * @return ex size
-         *
-         * @see org.extex.font.type.Fount#getEx()
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getEx()
          */
+        @Override
         public FixedDimen getEx() {
 
             return Dimen.ONE_INCH;
         }
 
         /**
-         * Return font dimen size with a key.
-         *
-         * @param key the key
-         * @return the value for the key
-         *
-         * @see org.extex.font.type.Fount#getFontDimen(java.lang.String)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getFontDimen(java.lang.String)
          */
+        @Override
         public FixedDimen getFontDimen(String key) {
 
             return Dimen.ONE_INCH;
         }
 
         /**
-         * Returns the key for the font.
-         * @return the key for the font
-         *
-         * @see org.extex.font.type.Fount#getFontKey()
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getFontKey()
          */
+        @Override
         public FontKey getFontKey() {
 
-            return (new FontKeyFactory()).newInstance("mockfont"); // add by mgn
+            return (new FontKeyFactory()).newInstance("mockfont"); // add by
+            // mgn
         }
 
         /**
-         * Return the font name.
-         *
-         * @return the font name
-         *
-         * @see org.extex.font.type.Fount#getFontName()
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getFontName()
          */
+        @Override
         public String getFontName() {
 
             return "mock";
         }
 
         /**
-         * Returns the hyphen char.
-         *
-         * @return the hyphen char
-         *
-         * @see org.extex.typesetter.tc.font.Font#getHyphenChar()
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getHyphenChar()
          */
+        @Override
         public UnicodeChar getHyphenChar() {
 
             return hyphen;
         }
 
         /**
-         * Return the letter spacing
-         * @return the letter spacing
-         *
-         * @see org.extex.font.type.Fount#getLetterSpacing()
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getSkewChar()
          */
-        public FixedGlue getLetterSpacing() {
-
-            return null;
-        }
-
-        /**
-         * Returns the skew char.
-         *
-         * @return the skew char
-         *
-         * @see org.extex.typesetter.tc.font.Font#getSkewChar()
-         */
+        @Override
         public UnicodeChar getSkewChar() {
 
             return null;
         }
 
         /**
-         * Return the width of space character.
-         *
-         * @return the width of the space character
-         *
-         * @see org.extex.font.type.Fount#getSpace()
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getSpace()
          */
+        @Override
         public FixedGlue getSpace() {
 
             return new Glue(10 * Dimen.ONE);
         }
 
         /**
-         * Determine whether the glyph for a given character is present in this font.
-         *
-         * @param uc the character
-         *
-         * @return <code>true</code> iff the glyph is present
-         *
-         * @see org.extex.typesetter.tc.font.Font#hasGlyph(
-         *      org.extex.core.UnicodeChar)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#hasGlyph(org.extex.core.UnicodeChar)
          */
+        @Override
         public boolean hasGlyph(UnicodeChar uc) {
 
             return true;
         }
 
         /**
-         * Setter for the ef code.
-         * The ef code influences the stretchability of characters. It has a
-         * positive value. 1000 means "normal" stretchability.
-         *
-         * @param uc the character
-         * @param code the associated code
-         *
-         * @see org.extex.typesetter.tc.font.Font#setEfCode(org.extex.core.UnicodeChar,
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#setEfCode(org.extex.core.UnicodeChar,
          *      long)
          */
+        @Override
         public void setEfCode(UnicodeChar uc, long code) {
 
             // TODO gene: setEfcode unimplemented
         }
 
         /**
-         * Set the new value for the font parameter.
-         *
-         * @param name  The name of the parameter.
-         * @param value The value to set.
-         *
-         * @see org.extex.typesetter.tc.font.Font#setFontDimen(
-         *      java.lang.String, org.extex.core.dimen.Dimen)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#setFontDimen(java.lang.String,
+         *      org.extex.core.dimen.Dimen)
          */
+        @Override
         public void setFontDimen(String name, Dimen value) {
 
             // nothing to do
         }
 
         /**
-         * Set the hyphen char.
-         *
-         * @param h the hyphen char
-         *
-         * @see org.extex.typesetter.tc.font.Font#setHyphenChar(
-         *      org.extex.core.UnicodeChar)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.impl.NullFont#setHyphenChar(org.extex.core.UnicodeChar)
          */
+        @Override
         public void setHyphenChar(UnicodeChar h) {
 
             this.hyphen = h;
@@ -269,12 +236,13 @@ public class BaseHyphenationTableTest extends TestCase {
 
         /**
          * Set the skew char.
-         *
+         * 
          * @param s the skew char
-         *
+         * 
          * @see org.extex.typesetter.tc.font.Font#setSkewChar(
          *      org.extex.core.UnicodeChar)
          */
+        @Override
         public void setSkewChar(UnicodeChar s) {
 
             // nothing to do
@@ -303,16 +271,17 @@ public class BaseHyphenationTableTest extends TestCase {
         }
 
         /**
-         * Getter for the lccode mapping of upper case characters to their
-         * lower case equivalent.
-         *
+         * Getter for the lccode mapping of upper case characters to their lower
+         * case equivalent.
+         * 
          * @param uc the upper case character
-         *
+         * 
          * @return the lower case equivalent or null if none exists
-         *
+         * 
          * @see org.extex.interpreter.context.Context#getLccode(
          *      org.extex.core.UnicodeChar)
          */
+        @Override
         public UnicodeChar getLccode(UnicodeChar uc) {
 
             return null;
@@ -326,7 +295,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * The command line interface.
-     *
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -336,9 +305,9 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * Make a list of Unicode characters from a String.
-     *
+     * 
      * @param s the string to translate
-     *
+     * 
      * @return the list
      */
     private static UnicodeCharList makeList(CharSequence s) {
@@ -371,9 +340,9 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * Create a hlist from a string.
-     *
+     * 
      * @param s the string with the characters to encode
-     *
+     * 
      * @return a horizontal list
      */
     private HorizontalListNode hlist(String s) {
@@ -393,7 +362,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * Create a new object to test.
-     *
+     * 
      * @return the object to test
      */
     protected Language makeLanguage() {
@@ -405,11 +374,12 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * Set-up the test suite.
-     *
+     * 
      * @throws Exception in case of an error
-     *
+     * 
      * @see junit.framework.TestCase#setUp()
      */
+    @Override
     protected void setUp() throws Exception {
 
         context = new MyMockContext();
@@ -420,7 +390,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * <testcase> Test case checking that ... </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
@@ -432,7 +402,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * <testcase> Test case checking that ... </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
@@ -444,7 +414,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * <testcase> Test case checking that ... </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test3() throws Exception {
@@ -457,8 +427,8 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * <testcase> Test case checking that ... </testcase>
-     *
-     *
+     * 
+     * 
      * @throws Exception in case of an error
      */
     public void test4() throws Exception {
@@ -470,7 +440,7 @@ public class BaseHyphenationTableTest extends TestCase {
 
     /**
      * <testcase> Test case checking that ... </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test5() throws Exception {

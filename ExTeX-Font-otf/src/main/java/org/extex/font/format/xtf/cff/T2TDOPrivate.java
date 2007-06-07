@@ -84,6 +84,7 @@ public class T2TDOPrivate extends T2TDOArray {
      * 
      * @see org.extex.font.format.xtf.cff.T2Operator#getName()
      */
+    @Override
     public String getName() {
 
         return "private";
@@ -107,6 +108,7 @@ public class T2TDOPrivate extends T2TDOArray {
      *      org.extex.util.file.random.RandomAccessR,
      *      org.extex.font.format.xtf.OtfTableCFF, int)
      */
+    @Override
     public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset)
             throws IOException {
 
@@ -151,6 +153,7 @@ public class T2TDOPrivate extends T2TDOArray {
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());

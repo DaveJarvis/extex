@@ -50,6 +50,7 @@ public class MainMissingArgumentException extends MainException {
      *
      * @see java.lang.Throwable#getLocalizedMessage()
      */
+    @Override
     public String getLocalizedMessage() {
 
         return getLocalizer().format("MainMissingArgumentException.Message",

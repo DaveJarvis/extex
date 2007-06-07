@@ -112,6 +112,7 @@ public class Hyphenation extends HyphenationPrimitive {
      * @throws CatcodeException in case of an exception in token creation
      * @throws HelpingException in case of an error
      */
+    @Override
     protected UnicodeCharList collectWord(Context context,
             TokenSource source, Token token)
             throws CatcodeException, HelpingException {

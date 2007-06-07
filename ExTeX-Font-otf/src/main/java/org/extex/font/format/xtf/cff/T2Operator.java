@@ -139,6 +139,7 @@ public abstract class T2Operator extends T2CharString
      * 
      * @see org.extex.font.format.xtf.cff.T2CharString#isOperator()
      */
+    @Override
     public boolean isOperator() {
 
         return true;
@@ -209,6 +210,7 @@ public abstract class T2Operator extends T2CharString
      *      org.extex.util.file.random.RandomAccessR,
      *      org.extex.font.format.xtf.OtfTableCFF, int)
      */
+    @Override
     public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset)
             throws IOException {
 

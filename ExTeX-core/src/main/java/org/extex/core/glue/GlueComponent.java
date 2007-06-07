@@ -19,12 +19,12 @@
 
 package org.extex.core.glue;
 
-import java.io.Serializable;
-
-import org.extex.framework.i18n.LocalizerFactory;
+import org.extex.core.dimen.FixedDimen;
 
 /**
- * This class provides a means to store floating numbers with an order.
+ * This class provides a means to store floating numbers with an order. If the
+ * order is 0 then the length denotes a length in multiples of scaled points.
+ * If the order is larger then it denotes some order of infinity.
  * 
  * <p>
  * Examples
@@ -44,7 +44,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision:4399 $
  */
-public class GlueComponent implements Serializable, FixedGlueComponent {
+public class GlueComponent extends GlueComponentConstant {
 
     /**
      * The constant <tt>ONE</tt> contains the internal representation for 1pt.
@@ -57,22 +57,25 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      * The constant <tt>MINUS_ONE_FIL</tt> contains the value of -1 fil.
      */
     public static final FixedGlueComponent MINUS_ONE_FIL =
-            new GlueComponent(-ONE, 2);
+            new GlueComponentConstant(-ONE, (byte) 2);
 
     /**
      * The constant <tt>ONE_FI</tt> contains the value of 1 fi.
      */
-    public static final FixedGlueComponent ONE_FI = new GlueComponent(ONE, 1);
+    public static final FixedGlueComponent ONE_FI =
+            new GlueComponentConstant(ONE, (byte) 1);
 
     /**
      * The constant <tt>ONE_FIL</tt> contains the value of 1 fil.
      */
-    public static final FixedGlueComponent ONE_FIL = new GlueComponent(ONE, 2);
+    public static final FixedGlueComponent ONE_FIL =
+            new GlueComponentConstant(ONE, (byte) 2);
 
     /**
      * The constant <tt>ONE_FIL</tt> contains the value of 1 fill.
      */
-    public static final FixedGlueComponent ONE_FILL = new GlueComponent(ONE, 3);
+    public static final FixedGlueComponent ONE_FILL =
+            new GlueComponentConstant(ONE, (byte) 3);
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
@@ -84,21 +87,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      * The constant <tt>ZERO</tt> contains the non-stretchable and
      * non-shrinkable value of 0&nbsp;pt.
      */
-    public static final FixedGlueComponent ZERO = new GlueComponent(0);
-
-    /**
-     * The field <tt>order</tt> contains the order of infinity. In case of an
-     * order 0 the value holds the absolute value; otherwise value holds the
-     * factor of the order.
-     */
-    private int order = 0;
-
-    /**
-     * The field <tt>value</tt> contains the integer representation of the
-     * dimen register in sp if the order is 0. If the order is not 0 then the
-     * value holds the factor to the order in units of 2<sup>16</sup>.
-     */
-    private long value = 0;
+    public static final FixedGlueComponent ZERO = new GlueComponentConstant(0);
 
     /**
      * Creates a new object.
@@ -115,33 +104,38 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      */
     public GlueComponent(FixedGlueComponent component) {
 
-        super();
-        this.value = component.getValue();
-        this.order = component.getOrder();
+        super(component);
     }
 
     /**
      * Creates a new object with a fixed width.
      * 
-     * @param theValue the fixed value
+     * @param component the fixed value
      */
-    public GlueComponent(long theValue) {
+    public GlueComponent(FixedDimen component) {
 
-        super();
-        this.value = theValue;
+        super(component.getValue());
+    }
+
+    /**
+     * Creates a new object with a fixed width.
+     * 
+     * @param value the fixed value
+     */
+    public GlueComponent(long value) {
+
+        super(value);
     }
 
     /**
      * Creates a new object with a width with a possibly higher order.
      * 
-     * @param theValue the fixed width or the factor
-     * @param theOrder the order
+     * @param value the fixed width or the factor
+     * @param order the order
      */
-    public GlueComponent(long theValue, int theOrder) {
+    public GlueComponent(long value, byte order) {
 
-        super();
-        this.value = theValue;
-        this.order = theOrder;
+        super(value, order);
     }
 
     /**
@@ -155,7 +149,7 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      */
     public void add(FixedGlueComponent g) {
 
-        int o = g.getOrder();
+        byte o = g.getOrder();
         if (order == o) {
             value += g.getValue();
         } else if (order < o) {
@@ -169,95 +163,10 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      * 
      * @return a new copy of this instance
      */
-    public GlueComponent copy() {
+    @Override
+    public FixedGlueComponent copy() {
 
         return new GlueComponent(value, order);
-    }
-
-    /**
-     * Compares the current instance with another GlueComponent for equality.
-     * 
-     * @param d the other GlueComponent to compare to. If this parameter is
-     *        <code>null</code> then the comparison fails.
-     * 
-     * @return <code>true</code> iff <i>|this| == |d| and ord(this) == ord(d)</i>
-     */
-    public boolean eq(FixedGlueComponent d) {
-
-        return (d != null && //
-                value == d.getValue() && order == d.getOrder());
-    }
-
-    /**
-     * Compares the current instance with another GlueComponent.
-     * 
-     * @param d the other GlueComponent to compare to
-     * 
-     * @return <code>true</code> iff this is greater or equal to d
-     */
-    public boolean ge(FixedGlueComponent d) {
-
-        return (!lt(d));
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.core.glue.FixedGlueComponent#getOrder()
-     */
-    public int getOrder() {
-
-        return order;
-    }
-
-    /**
-     * Getter for the value in scaled points (sp).
-     * 
-     * @return the value in internal units of scaled points (sp)
-     */
-    public long getValue() {
-
-        return this.value;
-    }
-
-    /**
-     * Compares the current instance with another GlueComponent.
-     * 
-     * @param d the other GlueComponent to compare to
-     * 
-     * @return <code>true</code> iff <i>ord(this) == ord(d) && |this| &gt; |d|</i>
-     *         or <i>ord(this) &gt; ord(d)</i>
-     */
-    public boolean gt(FixedGlueComponent d) {
-
-        return ((order == d.getOrder() && value > d.getValue()) || //
-        order > d.getOrder());
-    }
-
-    /**
-     * Compares the current instance with another GlueComponent.
-     * 
-     * @param d the other GlueComponent to compare to
-     * 
-     * @return <code>true</code> iff this is less or equal to d
-     */
-    public boolean le(FixedGlueComponent d) {
-
-        return (!gt(d));
-    }
-
-    /**
-     * Compares the current instance with another GlueComponent.
-     * 
-     * @param d the other GlueComponent to compare to
-     * 
-     * @return <code>true</code> iff <i>ord(this) == ord(d) && |this| &lt; |d|</i>
-     *         or <i>ord(this) &lt; ord(d)</i>
-     */
-    public boolean lt(FixedGlueComponent d) {
-
-        return ((order == d.getOrder() && value < d.getValue()) || //
-        order < d.getOrder());
     }
 
     /**
@@ -284,16 +193,14 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
     }
 
     /**
-     * Compares the current instance with another GlueComponent for equality.
+     * Setter for the value and order.
      * 
-     * @param d the other GlueComponent to compare to. If this parameter is
-     *        <code>null</code> then the comparison fails.
-     * 
-     * @return <code>false</code> iff <i>|this| == |d| and ord(this) == ord(d)</i>
+     * @param d the new value
      */
-    public boolean ne(FixedGlueComponent d) {
+    public void set(FixedDimen d) {
 
-        return (d != null && (value != d.getValue() || order != d.getOrder()));
+        this.value = d.getValue();
+        this.order = 0;
     }
 
     /**
@@ -338,104 +245,12 @@ public class GlueComponent implements Serializable, FixedGlueComponent {
      */
     public void subtract(FixedGlueComponent g) {
 
-        int o = g.getOrder();
+        byte o = g.getOrder();
         if (order == o) {
             value -= g.getValue();
         } else if (order < o) {
             order = o;
             value = g.getValue();
-        }
-    }
-
-    /**
-     * Determine the printable representation of the object.
-     * 
-     * @return the printable representation
-     * 
-     * @see #toString(StringBuffer)
-     */
-    public String toString() {
-
-        StringBuffer sb = new StringBuffer();
-        toString(sb);
-        return sb.toString();
-    }
-
-    /**
-     * Determine the printable representation of the object and append it to the
-     * given StringBuffer.
-     * 
-     * @param sb the output string buffer
-     * 
-     * @see #toString()
-     */
-    public void toString(StringBuffer sb) {
-
-        toString(sb, 'p', 't');
-    }
-
-    /**
-     * Determine the printable representation of the object and append it to the
-     * given StringBuffer.
-     * 
-     * @param sb the output string buffer
-     * @param c1 the first character for the length of order 0
-     * @param c2 the second character for the length of order 0
-     * 
-     * @see #toString(StringBuffer)
-     */
-    public void toString(StringBuffer sb, char c1, char c2) {
-
-        long val = getValue();
-
-        if (val < 0) {
-            sb.append('-');
-            val = -val;
-        }
-
-        long v = val / ONE;
-        if (v == 0) {
-            sb.append('0');
-        } else {
-            long m = 1;
-            while (m <= v) {
-                m *= 10;
-            }
-            m /= 10;
-            while (m > 0) {
-                sb.append((char) ('0' + (v / m)));
-                v = v % m;
-                m /= 10;
-            }
-        }
-
-        sb.append('.');
-
-        val = 10 * (val % ONE) + 5;
-        long delta = 10;
-        do {
-            if (delta > ONE) {
-                val = val + 0100000 - 50000; // round the last digit
-            }
-            int i = (int) (val / ONE);
-            sb.append((char) ('0' + i));
-            val = 10 * (val % ONE);
-            delta *= 10;
-        } while (val > delta);
-
-        if (order == 0) {
-            sb.append(c1);
-            sb.append(c2);
-        } else if (order > 0) {
-            sb.append('f');
-            sb.append('i');
-            for (int i = order; i > 1; i--) {
-                sb.append('l');
-            }
-        } else {
-            throw new RuntimeException(LocalizerFactory.getLocalizer(
-                GlueComponent.class).format("Illegal.Order",
-                Integer.toString(order)));
         }
     }
 

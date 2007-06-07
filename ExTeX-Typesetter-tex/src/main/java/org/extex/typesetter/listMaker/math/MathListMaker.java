@@ -481,6 +481,7 @@ public class MathListMaker extends HorizontalListMaker
      * 
      * @see org.extex.typesetter.ListMaker#add( org.extex.typesetter.type.Node)
      */
+    @Override
     public void add(Node node)
             throws TypesetterException,
                 ConfigurationException {
@@ -512,6 +513,7 @@ public class MathListMaker extends HorizontalListMaker
      *      org.extex.typesetter.tc.TypesettingContext,
      *      FixedCount)
      */
+    @Override
     public void addSpace(TypesettingContext typesettingContext,
             FixedCount spacefactor)
             throws TypesetterException,

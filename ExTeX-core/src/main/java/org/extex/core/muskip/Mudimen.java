@@ -21,7 +21,7 @@ package org.extex.core.muskip;
 
 import java.io.Serializable;
 
-import org.extex.core.glue.GlueComponent;
+import org.extex.core.dimen.Dimen;
 
 /**
  * This class provides a dimen value with a length which is a multiple of
@@ -35,12 +35,12 @@ public class Mudimen implements Serializable {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 20060605L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>length</tt> contains the the natural length.
      */
-    private GlueComponent length = new GlueComponent(0);
+    private Dimen length = new Dimen(0);
 
     /**
      * Creates a new object.
@@ -69,7 +69,7 @@ public class Mudimen implements Serializable {
      */
     public void add(long value) {
 
-        this.length.add(new GlueComponent(value));
+        this.length.add(value);
     }
 
     /**
@@ -77,7 +77,7 @@ public class Mudimen implements Serializable {
      *
      * @return the length
      */
-    public GlueComponent getLength() {
+    public Dimen getLength() {
 
         return this.length;
     }
@@ -89,7 +89,7 @@ public class Mudimen implements Serializable {
      */
     public boolean isZero() {
 
-        return length.eq(GlueComponent.ZERO);
+        return length.eq(Dimen.ZERO);
     }
 
     /**
@@ -112,6 +112,7 @@ public class Mudimen implements Serializable {
      * @return the string representation of this glue
      * @see "<logo>TeX</logo> &ndash; The Program [???]"
      */
+    @Override
     public String toString() {
 
         StringBuffer sb = new StringBuffer();

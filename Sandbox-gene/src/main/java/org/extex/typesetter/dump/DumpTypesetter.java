@@ -53,6 +53,7 @@ public class DumpTypesetter extends TypesetterImpl {
      * @see org.extex.typesetter.ListMaker#add(
      *      org.extex.typesetter.type.Node)
      */
+    @Override
     public void add(Node node)
             throws TypesetterException,
                 ConfigurationException {
@@ -66,6 +67,7 @@ public class DumpTypesetter extends TypesetterImpl {
      * @see org.extex.typesetter.ListMaker#add(
      *      org.extex.core.glue.FixedGlue)
      */
+    @Override
     public void add(FixedGlue g) throws TypesetterException {
 
         super.add(g);
@@ -92,6 +94,7 @@ public class DumpTypesetter extends TypesetterImpl {
      * @see org.extex.typesetter.ListMaker#complete(
      *      org.extex.typesetter.TypesetterOptions)
      */
+    @Override
     public NodeList complete(TypesetterOptions context)
             throws TypesetterException,
                 ConfigurationException {

@@ -75,6 +75,7 @@ public class ConfigurationClassNotFoundException extends ConfigurationException 
      *
      * @return the text
      */
+    @Override
     protected String getText() {
 
         return getLocalizer().format(

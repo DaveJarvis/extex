@@ -312,6 +312,7 @@ public class ExTeXLauncher extends TestCase {
              *      org.extex.backend.outputStream.OutputStreamFactory,
              *      org.extex.resource.ResourceFinder, java.lang.String)
              */
+            @Override
             protected Interpreter makeInterpreter(Configuration config,
                     OutputStreamFactory outFatory, ResourceFinder finder,
                     String jobname)

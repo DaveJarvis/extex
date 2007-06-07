@@ -116,6 +116,7 @@ public class ComposedUnicodeChar extends UnicodeChar {
      * @return <code>true</code> if the characters are equal, otherwise
      *         <code>false</code>
      */
+    @Override
     public boolean equals(Object unicodeChar) {
 
         if (!(unicodeChar instanceof ComposedUnicodeChar)
@@ -153,6 +154,7 @@ public class ComposedUnicodeChar extends UnicodeChar {
      * 
      * @see org.extex.core.UnicodeChar#hashCode()
      */
+    @Override
     public int hashCode() {
 
         return getCodePoint();

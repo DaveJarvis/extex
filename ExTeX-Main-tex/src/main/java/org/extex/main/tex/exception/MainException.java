@@ -67,6 +67,7 @@ public class MainException extends GeneralException {
      *
      * @return the message
      */
+    @Override
     public String getLocalizedMessage() {
 
         return (message != null ? message : getCause().getMessage());

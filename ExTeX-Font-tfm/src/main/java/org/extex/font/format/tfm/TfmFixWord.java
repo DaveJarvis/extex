@@ -240,6 +240,7 @@ public class TfmFixWord implements Serializable {
      *
      * @return the values as String
      */
+    @Override
     public String toString() {
 
         StringBuffer buf = new StringBuffer();

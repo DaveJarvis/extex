@@ -120,6 +120,7 @@ public class VerticalListMaker extends InnerVerticalListMaker {
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.TypesetterOptions)
      */
+    @Override
     public void addAndAdjust(NodeList nodes,
             TypesetterOptions context)
             throws TypesetterException,
@@ -158,6 +159,7 @@ public class VerticalListMaker extends InnerVerticalListMaker {
      *
      * @see org.extex.typesetter.listMaker.InnerVerticalListMaker#getMode()
      */
+    @Override
     public Mode getMode() {
 
         return Mode.VERTICAL;

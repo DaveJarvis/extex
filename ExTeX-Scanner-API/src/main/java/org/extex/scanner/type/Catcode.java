@@ -56,6 +56,7 @@ public abstract class Catcode implements Serializable {
          *
          * @return the name
          */
+        @Override
         public String getName() {
 
             return "active";
@@ -88,6 +89,7 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case or an error
          */
+        @Override
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -111,6 +113,7 @@ public abstract class Catcode implements Serializable {
          *
          * @return the name
          */
+        @Override
         public String getName() {
 
             return "comment";
@@ -144,6 +147,7 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
+        @Override
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -167,6 +171,7 @@ public abstract class Catcode implements Serializable {
          *
          * @return the name
          */
+        @Override
         public String getName() {
 
             return "cr";
@@ -199,6 +204,7 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
+        @Override
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -222,6 +228,7 @@ public abstract class Catcode implements Serializable {
          *
          * @return the name
          */
+        @Override
         public String getName() {
 
             return "escape";
@@ -254,6 +261,7 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
+        @Override
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -277,6 +285,7 @@ public abstract class Catcode implements Serializable {
          *
          * @return the name
          */
+        @Override
         public String getName() {
 
             return "ignore";
@@ -309,6 +318,7 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
+        @Override
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -332,6 +342,7 @@ public abstract class Catcode implements Serializable {
          *
          * @return the name
          */
+        @Override
         public String getName() {
 
             return "invalid";
@@ -364,6 +375,7 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
+        @Override
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -387,6 +399,7 @@ public abstract class Catcode implements Serializable {
          *
          * @return the name
          */
+        @Override
         public String getName() {
 
             return "leftbrace";
@@ -420,6 +433,7 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
+        @Override
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -443,6 +457,7 @@ public abstract class Catcode implements Serializable {
          *
          * @return the name
          */
+        @Override
         public String getName() {
 
             return "letter";
@@ -475,6 +490,7 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
+        @Override
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -498,6 +514,7 @@ public abstract class Catcode implements Serializable {
          *
          * @return the name
          */
+        @Override
         public String getName() {
 
             return "macroparam";
@@ -531,6 +548,7 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
+        @Override
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -554,6 +572,7 @@ public abstract class Catcode implements Serializable {
          *
          * @return the name
          */
+        @Override
         public String getName() {
 
             return "mathshift";
@@ -587,6 +606,7 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
+        @Override
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -610,6 +630,7 @@ public abstract class Catcode implements Serializable {
          *
          * @return the name
          */
+        @Override
         public String getName() {
 
             return "other";
@@ -642,6 +663,7 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
+        @Override
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -665,6 +687,7 @@ public abstract class Catcode implements Serializable {
          *
          * @return the name
          */
+        @Override
         public String getName() {
 
             return "rightbrace";
@@ -698,6 +721,7 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
+        @Override
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -721,6 +745,7 @@ public abstract class Catcode implements Serializable {
          *
          * @return the name
          */
+        @Override
         public String getName() {
 
             return "space";
@@ -753,6 +778,7 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
+        @Override
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -776,6 +802,7 @@ public abstract class Catcode implements Serializable {
          *
          * @return the name
          */
+        @Override
         public String getName() {
 
             return "submark";
@@ -808,6 +835,7 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
+        @Override
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -831,6 +859,7 @@ public abstract class Catcode implements Serializable {
          *
          * @return the name
          */
+        @Override
         public String getName() {
 
             return "supmark";
@@ -863,6 +892,7 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
+        @Override
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -886,6 +916,7 @@ public abstract class Catcode implements Serializable {
          *
          * @return the name
          */
+        @Override
         public String getName() {
 
             return "tabmark";
@@ -918,6 +949,7 @@ public abstract class Catcode implements Serializable {
          *
          * @throws Exception in case of an error
          */
+        @Override
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -1114,6 +1146,7 @@ public abstract class Catcode implements Serializable {
      *
      * @return the string representation
      */
+    @Override
     public String toString() {
 
         return getName();

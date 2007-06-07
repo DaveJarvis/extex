@@ -47,6 +47,7 @@ public class TeXParagraphBuiderTest extends AbstractParagraphBuiderTester {
      *
      * @see org.extex.typesetter.paragraphBuilder.AbstractParagraphBuiderTester#getParagraphBuilder()
      */
+    @Override
     protected ParagraphBuilder getParagraphBuilder() {
 
         return new TeXParagraphBuilder();
@@ -62,6 +63,7 @@ public class TeXParagraphBuiderTest extends AbstractParagraphBuiderTester {
      *
      * @see org.extex.typesetter.paragraphBuilder.AbstractParagraphBuiderTester#traceonline()
      */
+    @Override
     protected boolean traceonline() {
 
         return true;

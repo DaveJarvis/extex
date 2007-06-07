@@ -158,6 +158,7 @@ public class Locator implements Serializable {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return (resource != null ? resource : "") + ":"

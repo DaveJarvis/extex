@@ -61,6 +61,7 @@ public class ExpandedLeadersNodeTest extends LeadersNodeTester {
      *      org.extex.typesetter.type.OrientedNode,
      *      org.extex.core.glue.FixedGlue)
      */
+    @Override
     protected AbstractLeadersNode makeNode(OrientedNode node, FixedGlue glue) {
 
         return new ExpandedLeadersNode(node, glue);

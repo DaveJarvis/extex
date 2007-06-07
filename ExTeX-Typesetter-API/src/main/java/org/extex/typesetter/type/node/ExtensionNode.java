@@ -34,7 +34,7 @@ public class ExtensionNode extends WhatsItNode implements Node {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>extension</tt> contains the extension object.
@@ -59,6 +59,7 @@ public class ExtensionNode extends WhatsItNode implements Node {
      *
      * @see org.extex.typesetter.type.node.AbstractNode#getDepth()
      */
+    @Override
     public FixedDimen getDepth() {
 
         return this.extension.getDepth();
@@ -71,6 +72,7 @@ public class ExtensionNode extends WhatsItNode implements Node {
      *
      * @see org.extex.typesetter.type.node.AbstractNode#getHeight()
      */
+    @Override
     public FixedDimen getHeight() {
 
         return this.extension.getHeight();
@@ -83,6 +85,7 @@ public class ExtensionNode extends WhatsItNode implements Node {
      *
      * @see org.extex.typesetter.type.node.AbstractNode#getWidth()
      */
+    @Override
     public FixedDimen getWidth() {
 
         return this.extension.getWidth();
@@ -96,6 +99,7 @@ public class ExtensionNode extends WhatsItNode implements Node {
      * @see org.extex.typesetter.type.Node#setDepth(
      *      org.extex.core.dimen.FixedDimen)
      */
+    @Override
     public void setDepth(FixedDimen depth) {
 
         this.extension.setDepth(depth);
@@ -109,6 +113,7 @@ public class ExtensionNode extends WhatsItNode implements Node {
      * @see org.extex.typesetter.type.Node#setHeight(
      *      org.extex.core.dimen.FixedDimen)
      */
+    @Override
     public void setHeight(FixedDimen height) {
 
         this.extension.setHeight(height);
@@ -122,6 +127,7 @@ public class ExtensionNode extends WhatsItNode implements Node {
      * @see org.extex.typesetter.type.Node#setWidth(
      *      org.extex.core.dimen.FixedDimen)
      */
+    @Override
     public void setWidth(FixedDimen width) {
 
         this.extension.setWidth(width);

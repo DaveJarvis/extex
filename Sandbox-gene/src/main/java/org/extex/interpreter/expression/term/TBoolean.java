@@ -271,6 +271,7 @@ public class TBoolean implements EType {
     /**
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return LocalizerFactory.getLocalizer(TBoolean.class).format("Format",

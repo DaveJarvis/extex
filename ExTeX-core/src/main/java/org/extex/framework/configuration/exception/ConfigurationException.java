@@ -121,6 +121,7 @@ public abstract class ConfigurationException extends RuntimeException {
      *
      * @return the message
      */
+    @Override
     public String getLocalizedMessage() {
 
         String message = getMessage();

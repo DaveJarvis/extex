@@ -63,6 +63,7 @@ public class NoHelpException extends HelpingException {
      * 
      * @see org.extex.core.exception.helping.HelpingException#getLocalizedMessage()
      */
+    @Override
     public String getLocalizedMessage() {
 
         Throwable e = getCause();

@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.typesetter.spacing;
 
+import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
@@ -71,8 +72,7 @@ public class Vfil extends AbstractVerticalCode implements VerticalSkip {
      * The field <tt>FIL</tt> contains the amount of 1 fil.
      */
     private static final Glue FIL =
-            new Glue(GlueComponent.ZERO, GlueComponent.ONE_FIL,
-                GlueComponent.ZERO);
+            new Glue(Dimen.ZERO, GlueComponent.ONE_FIL, GlueComponent.ZERO);
 
     /**
      * Creates a new object.

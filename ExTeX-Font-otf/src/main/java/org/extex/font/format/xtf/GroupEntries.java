@@ -129,6 +129,7 @@ public class GroupEntries {
      * @return Returns the entries as a string.
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         StringBuffer buf = new StringBuffer();

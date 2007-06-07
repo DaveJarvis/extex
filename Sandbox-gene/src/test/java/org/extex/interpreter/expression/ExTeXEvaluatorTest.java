@@ -48,6 +48,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
      *
      * @see org.extex.interpreter.expression.TeXEvaluatorTest#getInstanceForTest()
      */
+    @Override
     protected Evaluator getInstanceForTest() {
 
         return new ExTeXEvaluator();
@@ -60,7 +61,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
      *
      * @throws Exception in case of an error
      */
-    public void testCount1() throws Exception {
+    public void testCount111() throws Exception {
 
         Accumulator a = apply("(1+2*3)");
         assertNotNull(a);
@@ -76,7 +77,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
      *
      * @throws Exception in case of an error
      */
-    public void testCount2() throws Exception {
+    public void testCount112() throws Exception {
 
         Accumulator a = apply("((1+2)*3)");
         assertNotNull(a);
@@ -92,7 +93,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
      *
      * @throws Exception in case of an error
      */
-    public void testCount3() throws Exception {
+    public void testCount113() throws Exception {
 
         Accumulator a = apply("((1+2)*(3))");
         assertNotNull(a);
@@ -108,7 +109,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
      *
      * @throws Exception in case of an error
      */
-    public void testCount4() throws Exception {
+    public void testCount114() throws Exception {
 
         Accumulator a = apply("(((1+2))*3)");
         assertNotNull(a);
@@ -268,7 +269,7 @@ public class ExTeXEvaluatorTest extends TeXEvaluatorTest {
      *
      * @throws Exception in case of an error
      */
-    public void testCountPlus1() throws Exception {
+    public void testCountPlus11() throws Exception {
 
         Accumulator a = apply("(1.+2)");
         assertNotNull(a);

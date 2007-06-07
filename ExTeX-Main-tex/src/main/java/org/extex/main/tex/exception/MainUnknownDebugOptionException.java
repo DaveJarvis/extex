@@ -50,6 +50,7 @@ public class MainUnknownDebugOptionException extends MainException {
      *
      * @see java.lang.Throwable#getLocalizedMessage()
      */
+    @Override
     public String getLocalizedMessage() {
 
         return getLocalizer().format("MainUnknownDebugOptionException.Message",

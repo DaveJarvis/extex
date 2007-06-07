@@ -31,7 +31,7 @@ public class CatcodeWrongLengthException extends CatcodeException {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
@@ -50,6 +50,7 @@ public class CatcodeWrongLengthException extends CatcodeException {
      *
      * @see java.lang.Throwable#getLocalizedMessage()
      */
+    @Override
     public String getLocalizedMessage() {
 
         return getLocalizer().format("CatcodeWrongLengthException.Text", //

@@ -71,6 +71,7 @@ public abstract class T2TDOArray extends T2TopDICTOperator {
      * 
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
      */
+    @Override
     public short[] getBytes() {
 
         return bytes;
@@ -81,16 +82,18 @@ public abstract class T2TDOArray extends T2TopDICTOperator {
      * 
      * @see org.extex.font.format.xtf.cff.T2Operator#getValue()
      */
+    @Override
     public Object getValue() {
 
         return value;
     }
 
     /**
-     * Check, if the objekt is a array.
+     * Check, if the object is a array.
      * 
      * @return Returns <code>true</code>, if the object is a array.
      */
+    @Override
     public boolean isArray() {
 
         return true;
@@ -101,6 +104,7 @@ public abstract class T2TDOArray extends T2TopDICTOperator {
      * 
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         StringBuffer buf = new StringBuffer();

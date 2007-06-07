@@ -272,6 +272,7 @@ public class PlWriter extends PrintWriter {
     /**
      * Finishes all possibly unclosed property lists and closes the output.
      */
+    @Override
     public void close() {
 
         while (level-- > 0) {

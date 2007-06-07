@@ -141,15 +141,15 @@ public class ConstantMuskipParser implements Parser<Muskip> {
         if (source.getKeyword(context, "mu")) {
             return new GlueComponent(value);
         } else if (source.getKeyword(context, "fillll")) {
-            return new GlueComponent(value, 5);
+            return new GlueComponent(value, (byte) 5);
         } else if (source.getKeyword(context, "filll")) {
-            return new GlueComponent(value, 4);
+            return new GlueComponent(value, (byte) 4);
         } else if (source.getKeyword(context, "fill")) {
-            return new GlueComponent(value, 3);
+            return new GlueComponent(value, (byte) 3);
         } else if (source.getKeyword(context, "fil")) {
-            return new GlueComponent(value, 2);
+            return new GlueComponent(value, (byte) 2);
         } else if (source.getKeyword(context, "fi")) {
-            return new GlueComponent(value, 1);
+            return new GlueComponent(value, (byte) 1);
         }
         throw new HelpingException(LocalizerFactory
             .getLocalizer(ConstantMuskipParser.class), "TTP.IllegalMu");

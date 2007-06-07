@@ -395,6 +395,7 @@ public class ExDocTeX extends ExDocXml {
      * 
      * @throws IOException in case of an I/O error
      */
+    @Override
     protected void shipoutAuthors(String file, Map<String, Author> authors)
             throws IOException {
 
@@ -477,6 +478,7 @@ public class ExDocTeX extends ExDocXml {
      * 
      * @see org.extex.exdoc.Exdoc#run(java.lang.String[])
      */
+    @Override
     public void run(String[] args) throws Exception {
 
         super.run(args);
@@ -513,6 +515,7 @@ public class ExDocTeX extends ExDocXml {
      * @see org.extex.exdoc.ExDocXml#shipout(org.extex.exdoc.util.Key,
      *      java.lang.StringBuffer)
      */
+    @Override
     protected void shipout(Key key, StringBuffer content) throws IOException {
 
         File file = new File(getOutput(), key + ".tex");

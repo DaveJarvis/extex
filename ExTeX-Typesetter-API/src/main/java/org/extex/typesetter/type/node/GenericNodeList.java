@@ -179,6 +179,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.Node#countChars()
      */
+    @Override
     public int countChars() {
 
         int count = 0;
@@ -210,6 +211,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.Node#getChars()
      */
+    @Override
     public CharNode[] getChars() {
 
         int len = countChars();
@@ -236,6 +238,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.node.AbstractNode#getDepth()
      */
+    @Override
     public FixedDimen getDepth() {
 
         return targetDepth == null ? super.getDepth() : targetDepth;
@@ -249,6 +252,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.node.AbstractNode#getHeight()
      */
+    @Override
     public FixedDimen getHeight() {
 
         return targetHeight == null ? super.getHeight() : targetHeight;
@@ -351,6 +355,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.node.AbstractNode#getWidth()
      */
+    @Override
     public FixedDimen getWidth() {
 
         return targetWidth == null ? super.getWidth() : targetWidth;
@@ -489,6 +494,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         StringBuffer sb = new StringBuffer();
@@ -502,6 +508,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * @see org.extex.typesetter.type.node.AbstractNode#toString(java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
+    @Override
     public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
 
         sb.append("(");
@@ -553,6 +560,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
+    @Override
     public void toText(StringBuffer sb, String prefix) {
 
         String p = prefix + "  ";

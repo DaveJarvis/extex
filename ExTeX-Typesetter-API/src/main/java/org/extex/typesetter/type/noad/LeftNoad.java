@@ -75,6 +75,7 @@ public class LeftNoad extends AbstractNoad {
      *      java.lang.StringBuffer,
      *      int)
      */
+    @Override
     public void toStringAdd(StringBuffer sb, int depth) {
 
         sb.append("left");

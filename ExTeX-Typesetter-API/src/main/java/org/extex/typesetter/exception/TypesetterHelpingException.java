@@ -217,6 +217,7 @@ public class TypesetterHelpingException extends TypesetterException {
      *
      * @return the help information
      */
+    @Override
     public String getHelp() {
 
         return localizer.format(tag + ".help", arg1, arg2, arg3);
@@ -227,6 +228,7 @@ public class TypesetterHelpingException extends TypesetterException {
      *
      * @return the help information
      */
+    @Override
     public String getLocalizedMessage() {
 
         return localizer.format(tag, arg1, arg2, arg3);

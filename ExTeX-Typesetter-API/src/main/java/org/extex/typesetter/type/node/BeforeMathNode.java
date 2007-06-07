@@ -72,6 +72,7 @@ public class BeforeMathNode extends AbstractNode implements Discardable {
      *      int,
      *      int)
      */
+    @Override
     public void toString(StringBuffer sb, String prefix,
             int breadth, int depth) {
 

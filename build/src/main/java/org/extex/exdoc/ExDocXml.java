@@ -178,6 +178,7 @@ public class ExDocXml extends Traverser {
      * 
      * @see org.extex.exdoc.util.Traverser#out(java.lang.String, StringBuffer)
      */
+    @Override
     protected void out(String key, StringBuffer content) throws Exception {
 
         Map<String, String> a = new HashMap<String, String>();
@@ -217,6 +218,7 @@ public class ExDocXml extends Traverser {
      * 
      * @throws IOException in case of an I/O error
      */
+    @Override
     protected void processXml(File file) throws IOException {
 
         if (!collecting) {
@@ -294,6 +296,7 @@ public class ExDocXml extends Traverser {
      * 
      * @see org.extex.exdoc.util.Traverser#run(java.lang.String[])
      */
+    @Override
     public void run(String[] args) throws Exception {
 
         collecting = true;
@@ -324,6 +327,7 @@ public class ExDocXml extends Traverser {
      * @see org.extex.exdoc.util.Traverser#runOption(java.lang.String,
      *      java.lang.String[], int)
      */
+    @Override
     protected int runOption(String arg, String[] args, int i) throws Exception {
 
         int idx = i;

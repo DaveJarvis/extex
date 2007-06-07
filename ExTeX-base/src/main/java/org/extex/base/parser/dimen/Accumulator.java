@@ -39,6 +39,7 @@ public class Accumulator {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         StringBuffer sb = new StringBuffer();
@@ -52,4 +53,5 @@ public class Accumulator {
         }
         return sb.toString();
     }
+
 }

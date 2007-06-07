@@ -47,6 +47,7 @@ public class T2TDOFontName extends T2TDOSID {
      * 
      * @see org.extex.font.format.xtf.cff.T2Operator#getName()
      */
+    @Override
     public String getName() {
 
         return "FontName";

@@ -99,6 +99,7 @@ public class CmykColor implements Color {
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
+    @Override
     public boolean equals(Object obj) {
 
         if (!(obj instanceof CmykColor)) {
@@ -174,6 +175,7 @@ public class CmykColor implements Color {
      *
      * @see java.lang.Object#hashCode()
      */
+    @Override
     public int hashCode() {
 
         return (cyan >> 1) | (magenta >> 2) | (yellow >> 3) | (black >> 4)
@@ -187,6 +189,7 @@ public class CmykColor implements Color {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         StringBuffer sb = new StringBuffer();

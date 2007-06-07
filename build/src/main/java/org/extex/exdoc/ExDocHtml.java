@@ -159,6 +159,7 @@ public class ExDocHtml extends ExDocXml {
      * 
      * @throws IOException in case of an I/O error
      */
+    @Override
     protected void shipoutAuthors(String file, Map<String, Author> authors)
             throws IOException {
 
@@ -203,6 +204,7 @@ public class ExDocHtml extends ExDocXml {
      * 
      * @see org.extex.exdoc.ExDocXml#run(java.lang.String[])
      */
+    @Override
     @SuppressWarnings("unchecked")
     public void run(String[] args) throws Exception {
 
@@ -250,6 +252,7 @@ public class ExDocHtml extends ExDocXml {
      * @see org.extex.exdoc.ExDocXml#shipout( org.extex.exdoc.util.Key,
      *      java.lang.StringBuffer)
      */
+    @Override
     protected void shipout(Key name, StringBuffer content)
             throws IOException,
                 SAXException {

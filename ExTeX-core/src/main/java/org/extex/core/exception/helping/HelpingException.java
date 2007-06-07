@@ -132,12 +132,6 @@ public class HelpingException extends GeneralException {
     private Localizer localizer;
 
     /**
-     * The field <tt>processed</tt> contains the indicator that the exception
-     * has been processed.
-     */
-    private boolean processed = false;
-
-    /**
      * The field <tt>tag</tt> contains the name of the message to show.
      */
     private String tag;
@@ -232,6 +226,7 @@ public class HelpingException extends GeneralException {
      * 
      * @return the help information
      */
+    @Override
     public String getHelp() {
 
         return localizer.format(tag + ".help", arg1, arg2, arg3);
@@ -252,34 +247,13 @@ public class HelpingException extends GeneralException {
      * 
      * @return the help information
      */
+    @Override
     public String getLocalizedMessage() {
 
         if (localizer == null) {
             return "???";
         }
         return localizer.format(tag, arg1, arg2, arg3);
-    }
-
-    
-    /**
-     * Getter for processed.
-     *
-     * @return the processed
-     */
-    public boolean isProcessed() {
-    
-        return processed;
-    }
-
-    
-    /**
-     * Setter for processed.
-     *
-     * @param processed the processed to set
-     */
-    public void setProcessed(boolean processed) {
-    
-        this.processed = processed;
     }
 
 }

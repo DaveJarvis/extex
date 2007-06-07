@@ -66,6 +66,7 @@ public class NameIdSpec extends IdSpec {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return "name " + name;

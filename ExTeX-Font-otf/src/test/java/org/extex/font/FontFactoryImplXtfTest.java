@@ -54,6 +54,7 @@ public class FontFactoryImplXtfTest extends AbstractFontFactoryTester {
      * 
      * @see junit.framework.TestCase#setUp()
      */
+    @Override
     protected void setUp() throws Exception {
 
         if (factory == null) {

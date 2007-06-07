@@ -189,6 +189,7 @@ public class GenericListNodeTest extends AbstractNodeListTester {
      * 
      * @see org.extex.typesetter.type.node.AbstractNodeListTester#makeList()
      */
+    @Override
     protected NodeList makeList() {
 
         return new GenericNodeList();
@@ -199,6 +200,7 @@ public class GenericListNodeTest extends AbstractNodeListTester {
      * 
      * @see org.extex.typesetter.type.node.AbstractNodeListTester#makeList()
      */
+    @Override
     protected NodeList makeList(Node node) {
 
         GenericNodeList list = new GenericNodeList();
@@ -211,6 +213,7 @@ public class GenericListNodeTest extends AbstractNodeListTester {
      * 
      * @see org.extex.typesetter.type.node.AbstractNodeListTester#makeVisitor()
      */
+    @Override
     protected NodeVisitor<Node, Boolean> makeVisitor() {
 
         return null;
@@ -219,7 +222,7 @@ public class GenericListNodeTest extends AbstractNodeListTester {
     /**
      * <testcase> Adding a rule node puts the node into the list. </testcase>
      */
-    public void testAddNode1() {
+    public void testAddNode111() {
 
         NodeList list = makeList();
         list.add(new RuleNode(new Dimen(2 * Dimen.ONE),

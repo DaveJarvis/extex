@@ -77,6 +77,7 @@ public class SpecialNode extends WhatsItNode implements Node {
      *      int,
      *      int)
      */
+    @Override
     public void toString(StringBuffer sb, String prefix,
             int breadth, int depth) {
 

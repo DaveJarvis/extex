@@ -333,6 +333,7 @@ public class TtfTableKERN extends AbstractXtfTable
          * 
          * @see org.extex.font.format.xtf.TtfTableKERN.KernSubtable#getKerning(int)
          */
+        @Override
         public KerningPair getKerning(int i) {
 
             return kerningPairs[i];
@@ -343,6 +344,7 @@ public class TtfTableKERN extends AbstractXtfTable
          * 
          * @see org.extex.font.format.xtf.TtfTableKERN.KernSubtable#getKerningCount()
          */
+        @Override
         public int getKerningCount() {
 
             return nPairs;
@@ -499,6 +501,7 @@ public class TtfTableKERN extends AbstractXtfTable
          * 
          * @see org.extex.font.format.xtf.TtfTableKERN.KernSubtable#getKerning(int)
          */
+        @Override
         public KerningPair getKerning(int i) {
 
             return null;
@@ -509,6 +512,7 @@ public class TtfTableKERN extends AbstractXtfTable
          * 
          * @see org.extex.font.format.xtf.TtfTableKERN.KernSubtable#getKerningCount()
          */
+        @Override
         public int getKerningCount() {
 
             return 0;

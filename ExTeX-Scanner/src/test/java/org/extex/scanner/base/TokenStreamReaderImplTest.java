@@ -58,6 +58,7 @@ public class TokenStreamReaderImplTest extends TokenStreamStringImplTest {
      * @return the new token stream
      * @throws IOException in case of an error
      */
+    @Override
     protected TokenStream makeStream(String line) throws IOException {
 
         return new TokenStreamImpl(null, null, line, "test");

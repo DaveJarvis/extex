@@ -66,6 +66,7 @@ public class OverlinedNoad extends AbstractNucleusNoad {
      *      java.lang.StringBuffer,
      *      int)
      */
+    @Override
     protected void toStringAdd(StringBuffer sb, int depth) {
 
         sb.append("overline");

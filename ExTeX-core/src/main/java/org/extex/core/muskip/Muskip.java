@@ -38,7 +38,7 @@ public class Muskip extends Mudimen implements Serializable {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>kill</tt> contains the indicator that the following glue
@@ -105,15 +105,15 @@ public class Muskip extends Mudimen implements Serializable {
      * @param theStretch the stretchability
      * @param theShrink the shrinkability
      */
-    public Muskip(FixedGlueComponent theLength, FixedGlueComponent theStretch,
+    public Muskip(FixedDimen theLength, FixedGlueComponent theStretch,
             FixedGlueComponent theShrink) {
 
         super(theLength.getValue());
         if (theStretch != null) {
-            this.stretch = theStretch.copy();
+            this.stretch = new GlueComponent(theStretch);
         }
         if (theShrink != null) {
-            this.shrink = theShrink.copy();
+            this.shrink = new GlueComponent(theShrink);
         }
         this.kill = false;
     }
@@ -130,8 +130,8 @@ public class Muskip extends Mudimen implements Serializable {
             FixedGlueComponent theShrink, boolean kill) {
 
         super(theLength.getValue());
-        this.stretch = theStretch.copy();
-        this.shrink = theShrink.copy();
+        this.stretch = new GlueComponent(theStretch);
+        this.shrink = new GlueComponent(theShrink);
         this.kill = kill;
     }
 
@@ -143,8 +143,8 @@ public class Muskip extends Mudimen implements Serializable {
     public Muskip(Muskip x) {
 
         super(x.getLength().getValue());
-        this.stretch = x.stretch.copy();
-        this.shrink = x.shrink.copy();
+        this.stretch = new GlueComponent(x.stretch);
+        this.shrink = new GlueComponent(x.shrink);
         this.kill = false;
     }
 
@@ -197,6 +197,7 @@ public class Muskip extends Mudimen implements Serializable {
      * 
      * @return <code>true</code> iff the register is zero
      */
+    @Override
     public boolean isZero() {
 
         return super.isZero() && stretch.eq(GlueComponent.ZERO)
@@ -209,6 +210,7 @@ public class Muskip extends Mudimen implements Serializable {
      * @param nom nominator
      * @param denom denominator
      */
+    @Override
     public void multiply(long nom, long denom) {
 
         super.multiply(nom, denom);
@@ -232,6 +234,7 @@ public class Muskip extends Mudimen implements Serializable {
      * @return the string representation of this glue
      * @see "<logo>TeX</logo> &ndash; The Program [???]"
      */
+    @Override
     public String toString() {
 
         StringBuffer sb = new StringBuffer();
@@ -244,6 +247,7 @@ public class Muskip extends Mudimen implements Serializable {
      * 
      * @param sb the target string buffer
      */
+    @Override
     public void toString(StringBuffer sb) {
 
         super.toString(sb);

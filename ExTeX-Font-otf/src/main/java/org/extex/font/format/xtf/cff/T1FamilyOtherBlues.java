@@ -46,6 +46,7 @@ public class T1FamilyOtherBlues extends T1DictDelta {
      *
      * @see org.extex.font.format.xtf.cff.T1DictKey#getName()
      */
+    @Override
     public String getName() {
 
         return "FamilyOtherBlues";

@@ -142,6 +142,7 @@ public class Count extends CountConstant {
      * @see org.extex.core.count.FixedCount#eq(
      *      org.extex.core.count.FixedCount)
      */
+    @Override
     public boolean eq(FixedCount count) {
 
         return count.getValue() == value;
@@ -153,6 +154,7 @@ public class Count extends CountConstant {
      * @see org.extex.core.count.FixedCount#ge(
      *      org.extex.core.count.FixedCount)
      */
+    @Override
     public boolean ge(FixedCount count) {
 
         return value >= count.getValue();
@@ -163,6 +165,7 @@ public class Count extends CountConstant {
      *
      * @return the value
      */
+    @Override
     public long getValue() {
 
         return value;
@@ -174,6 +177,7 @@ public class Count extends CountConstant {
      * @see org.extex.core.count.FixedCount#gt(
      *      org.extex.core.count.FixedCount)
      */
+    @Override
     public boolean gt(FixedCount count) {
 
         return value > count.getValue();
@@ -185,6 +189,7 @@ public class Count extends CountConstant {
      * @see org.extex.core.count.FixedCount#le(
      *      org.extex.core.count.FixedCount)
      */
+    @Override
     public boolean le(FixedCount count) {
 
         return value <= count.getValue();
@@ -196,6 +201,7 @@ public class Count extends CountConstant {
      * @see org.extex.core.count.FixedCount#lt(
      *      org.extex.core.count.FixedCount)
      */
+    @Override
     public boolean lt(FixedCount count) {
 
         return value < count.getValue();
@@ -227,6 +233,7 @@ public class Count extends CountConstant {
      * @see org.extex.core.count.FixedCount#ne(
      *      org.extex.core.count.FixedCount)
      */
+    @Override
     public boolean ne(FixedCount count) {
 
         return value != count.getValue();
@@ -265,6 +272,7 @@ public class Count extends CountConstant {
      *
      * @see #toString(StringBuffer)
      */
+    @Override
     public String toString() {
 
         return Long.toString(value);
@@ -279,6 +287,7 @@ public class Count extends CountConstant {
      *
      * @see #toString()
      */
+    @Override
     public void toString(StringBuffer sb) {
 
         sb.append(value);

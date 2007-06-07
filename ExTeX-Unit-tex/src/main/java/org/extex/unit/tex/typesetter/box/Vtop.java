@@ -108,6 +108,7 @@ public class Vtop extends Vbox {
      *      org.extex.scanner.type.token.Token,
      *      org.extex.scanner.type.token.Token)
      */
+    @Override
     protected Box constructBox(Context context, TokenSource source,
             Typesetter typesetter, Token startToken,
             Token insert) throws HelpingException, TypesetterException {

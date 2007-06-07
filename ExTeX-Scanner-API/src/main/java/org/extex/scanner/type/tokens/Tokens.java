@@ -108,6 +108,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
      * {@inheritDoc}
      * @see java.lang.Object#equals(java.lang.Object)
      */
+    @Override
     public boolean equals(Object object) {
 
         if (!(object instanceof Tokens)) {
@@ -147,6 +148,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
      *
      * @see java.lang.Object#hashCode()
      */
+    @Override
     public int hashCode() {
 
         int hash = length();
@@ -233,6 +235,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
      *
      * @return a String, which show all tokens in the list
      */
+    @Override
     public String toString() {
 
         StringBuffer sb = new StringBuffer();

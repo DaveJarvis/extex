@@ -47,6 +47,7 @@ public class T2TDOisFixedPitch extends T2TDOBoolean {
      * 
      * @see org.extex.font.format.xtf.cff.T2Operator#getName()
      */
+    @Override
     public String getName() {
 
         return "isfixedpitch";

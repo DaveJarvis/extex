@@ -227,6 +227,7 @@ public class Mag extends AbstractCount
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void init(Context context, TokenSource source, Typesetter typesetter)
             throws HelpingException,
                 TypesetterException {

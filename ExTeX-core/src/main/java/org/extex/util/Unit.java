@@ -168,7 +168,7 @@ public final class Unit {
      */
     public static void setDimenFromCM(Dimen d, float bp) {
 
-        d.setValue((long) ((bp * (DEN << SHIFT)) / MULBP));
+        d.set((long) ((bp * (DEN << SHIFT)) / MULBP));
     }
 
     /**

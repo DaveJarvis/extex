@@ -47,6 +47,7 @@ public class T2TDOFontMatrix extends T2TDOArray {
      * 
      * @see org.extex.font.format.xtf.cff.T2Operator#getName()
      */
+    @Override
     public String getName() {
 
         return "fontmatrix";

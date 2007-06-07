@@ -79,6 +79,7 @@ public class PdfAnnotation extends WhatsItNode {
      *      int,
      *      int)
      */
+    @Override
     public void toString(StringBuffer sb, String prefix,
             int breadth, int depth) {
 

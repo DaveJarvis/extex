@@ -74,6 +74,7 @@ public class SpaceNode extends GlueNode implements Node {
      * @see org.extex.typesetter.type.Node#toString( java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
+    @Override
     public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
 
         if (!DEVELOP || getWidth().eq(size.getLength())) {
@@ -96,6 +97,7 @@ public class SpaceNode extends GlueNode implements Node {
      * @see org.extex.typesetter.type.Node#toText( java.lang.StringBuffer,
      *      java.lang.String)
      */
+    @Override
     public void toText(StringBuffer sb, String prefix) {
 
         sb.append(getLocalizer().format("Text.Format", size.toString()));
@@ -104,9 +106,10 @@ public class SpaceNode extends GlueNode implements Node {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.node.GlueNode#visit(org.extex.typesetter.type.NodeVisitor,
-     *      java.lang.Object)
+     * @see org.extex.typesetter.type.node.GlueNode#visit(
+     *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
      */
+    @Override
     @SuppressWarnings("unchecked")
     public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {

@@ -65,6 +65,7 @@ public class FixedParagraphShape extends ParagraphShape {
      *
      * @see org.extex.typesetter.paragraphBuilder.ParagraphShape#getIndent(int)
      */
+    @Override
     public FixedDimen getIndent(int index) {
 
         return Dimen.ZERO_PT;

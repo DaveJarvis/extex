@@ -110,6 +110,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
+    @Override
     public boolean equals(Object other) {
 
         if (other == null || !(other instanceof ActiveCharacterToken)) {
@@ -126,6 +127,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
      *
      * @see org.extex.scanner.type.token.Token#getCatcode()
      */
+    @Override
     public Catcode getCatcode() {
 
         return Catcode.ACTIVE;
@@ -164,6 +166,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
      *
      * @see java.lang.Object#hashCode()
      */
+    @Override
     public int hashCode() {
 
         return super.hashCode() + HASH_FACTOR * namespace.hashCode();
@@ -174,6 +177,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
      *
      * @return the string representation
      */
+    @Override
     public String toString() {
 
         return getLocalizer().format("ActiveCharacterToken.Text",

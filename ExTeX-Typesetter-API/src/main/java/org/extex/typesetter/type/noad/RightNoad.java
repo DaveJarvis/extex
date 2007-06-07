@@ -74,6 +74,7 @@ public class RightNoad extends AbstractNoad {
      *      java.lang.StringBuffer,
      *      int)
      */
+    @Override
     public void toStringAdd(StringBuffer sb, int depth) {
 
         sb.append("right");

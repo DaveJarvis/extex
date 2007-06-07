@@ -24,7 +24,7 @@ import java.util.List;
 
 /**
  * LanguageGroup.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -32,7 +32,7 @@ public class T1LanguageGroup extends T1DictNumber {
 
     /**
      * Create a new object.
-     *
+     * 
      * @param stack the stack
      * @throws IOException if an IO.error occurs.
      */
@@ -43,9 +43,10 @@ public class T1LanguageGroup extends T1DictNumber {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.format.xtf.cff.T1DictKey#getName()
      */
+    @Override
     public String getName() {
 
         return "LanguageGroup";

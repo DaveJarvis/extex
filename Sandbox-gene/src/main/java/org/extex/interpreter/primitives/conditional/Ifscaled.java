@@ -96,6 +96,7 @@ public class Ifscaled extends AbstractIf {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.Typesetter)
      */
+    @Override
     public boolean conditional(Context context,
             TokenSource source, Typesetter typesetter)
             throws HelpingException, TypesetterException {

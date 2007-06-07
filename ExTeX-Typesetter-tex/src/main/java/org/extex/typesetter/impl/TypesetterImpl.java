@@ -915,6 +915,7 @@ public class TypesetterImpl extends ListMakerFactory
     /**
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return "stackSize = " + saveStack.size() + "\n" + listMaker.toString();

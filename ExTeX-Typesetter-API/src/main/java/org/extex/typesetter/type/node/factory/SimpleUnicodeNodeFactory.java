@@ -57,6 +57,7 @@ public class SimpleUnicodeNodeFactory extends SimpleNodeFactory {
      *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
+    @Override
     public Node getNode(TypesettingContext typesettingContext,
             UnicodeChar uc) {
 

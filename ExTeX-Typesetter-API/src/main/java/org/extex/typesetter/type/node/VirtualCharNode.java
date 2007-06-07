@@ -66,12 +66,12 @@ public class VirtualCharNode extends CharNode implements NodeList {
         /**
          * Creates a new object.
          * 
-         * @param node the parent node
+         * @param n the parent node
          */
-        public NL(VirtualCharNode node) {
+        public NL(VirtualCharNode n) {
 
             super();
-            this.node = node;
+            this.node = n;
         }
 
         /**
@@ -83,6 +83,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
          * @see org.extex.typesetter.type.NodeList#addSkip(
          *      org.extex.core.glue.FixedGlue)
          */
+        @Override
         public void addSkip(FixedGlue glue) {
 
             // glues are ignored
@@ -101,6 +102,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
          * @see org.extex.typesetter.type.Node#visit(
          *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object visit(NodeVisitor visitor, Object value)
                 throws GeneralException {
@@ -182,6 +184,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @see org.extex.typesetter.type.node.AbstractNode#addWidthTo(
      *      org.extex.core.glue.WideGlue)
      */
+    @Override
     public void addWidthTo(WideGlue glue) {
 
         this.nodes.addWidthTo(glue);
@@ -222,6 +225,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.node.CharNode#countChars()
      */
+    @Override
     public int countChars() {
 
         return this.nodes.countChars();
@@ -249,6 +253,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.node.CharNode#getChars()
      */
+    @Override
     public CharNode[] getChars() {
 
         return this.nodes.getChars();
@@ -261,6 +266,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.Node#getDepth()
      */
+    @Override
     public FixedDimen getDepth() {
 
         return this.nodes.getDepth();
@@ -273,6 +279,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.Node#getHeight()
      */
+    @Override
     public FixedDimen getHeight() {
 
         return this.nodes.getHeight();
@@ -324,6 +331,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.Node#getVerticalSize()
      */
+    @Override
     public FixedDimen getVerticalSize() {
 
         return this.nodes.getVerticalSize();
@@ -336,6 +344,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.Node#getWidth()
      */
+    @Override
     public FixedDimen getWidth() {
 
         return this.nodes.getWidth();
@@ -388,6 +397,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @see org.extex.typesetter.type.Node#setDepth(
      *      org.extex.core.dimen.FixedDimen)
      */
+    @Override
     public void setDepth(FixedDimen depth) {
 
         this.nodes.setDepth(depth);
@@ -401,6 +411,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @see org.extex.typesetter.type.Node#setHeight(
      *      org.extex.core.dimen.FixedDimen)
      */
+    @Override
     public void setHeight(FixedDimen height) {
 
         this.nodes.setHeight(height);
@@ -444,6 +455,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @see org.extex.typesetter.type.Node#setWidth(
      *      org.extex.core.dimen.FixedDimen)
      */
+    @Override
     public void setWidth(FixedDimen width) {
 
         this.nodes.setWidth(width);
@@ -472,6 +484,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      *      org.extex.core.dimen.FixedDimen,
      *      org.extex.core.glue.FixedGlueComponent)
      */
+    @Override
     public void spreadWidth(FixedDimen width, FixedGlueComponent sum) {
 
         this.nodes.spreadWidth(width, sum);
@@ -502,6 +515,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @see org.extex.typesetter.type.Node#visit(
      *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
      */
+    @Override
     @SuppressWarnings("unchecked")
     public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {

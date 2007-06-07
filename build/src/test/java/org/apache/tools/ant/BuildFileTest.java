@@ -430,6 +430,7 @@ public abstract class BuildFileTest extends TestCase {
             this.buffer = buffer;
         }
 
+        @Override
         public void write(int b) {
 
             buffer.append((char) b);

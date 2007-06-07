@@ -172,6 +172,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * 
          * @return Returns the info for this class
          */
+        @Override
         public String toString() {
 
             StringBuffer buf = new StringBuffer();
@@ -250,6 +251,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * 
          * @see org.extex.font.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
+        @Override
         public int mapCharCode(int charCode) {
 
             if (0 <= charCode && charCode < glyphIdArray.length) {
@@ -345,6 +347,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * 
          * @see org.extex.font.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
+        @Override
         public int mapCharCode(int charCode) {
 
             return 0;
@@ -418,6 +421,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * 
          * @see org.extex.font.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
+        @Override
         public int mapCharCode(int charCode) {
 
             return 0;
@@ -576,6 +580,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * 
          * @see org.extex.font.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
+        @Override
         public int mapCharCode(int charCode) {
 
             return 0;
@@ -906,6 +911,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * 
          * @see org.extex.font.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
+        @Override
         public int mapCharCode(int charCode) {
 
             try {
@@ -1053,6 +1059,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * 
          * @see org.extex.font.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
+        @Override
         public int mapCharCode(int charCode) {
 
             return 0;
@@ -1137,6 +1144,7 @@ public class TtfTableCMAP extends AbstractXtfTable
      *
          * @see org.extex.font.format.xtf.TtfTableCMAP.Format#mapCharCode(int)
          */
+        @Override
         public int mapCharCode(int charCode) {
 
             return 0;
@@ -1323,6 +1331,7 @@ public class TtfTableCMAP extends AbstractXtfTable
          * 
          * @return Returns the info for this class
          */
+        @Override
         public String toString() {
 
             String platform;

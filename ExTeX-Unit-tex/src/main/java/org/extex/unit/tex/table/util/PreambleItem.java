@@ -79,6 +79,7 @@ public class PreambleItem {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return "\npre = " + pre.toText() + "\npost = " + post.toText() + "\n";

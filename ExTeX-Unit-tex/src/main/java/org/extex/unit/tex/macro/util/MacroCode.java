@@ -369,6 +369,7 @@ public class MacroCode extends AbstractCode
      * 
      * @see org.extex.interpreter.type.AbstractCode#getLocalizer()
      */
+    @Override
     protected Localizer getLocalizer() {
 
         Localizer localizer = super.getLocalizer();
@@ -418,6 +419,7 @@ public class MacroCode extends AbstractCode
      * 
      * @see org.extex.interpreter.type.Code#isOuter()
      */
+    @Override
     public boolean isOuter() {
 
         return outerP;

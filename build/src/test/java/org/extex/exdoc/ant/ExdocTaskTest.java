@@ -46,6 +46,7 @@ public class ExdocTaskTest extends BuildFileTest {
      *
      * @see junit.framework.TestCase#setUp()
      */
+    @Override
     public void setUp() {
 
         configureProject("src/test/org/extex/exdoc/ant/ExdocTaskTest1.xml");

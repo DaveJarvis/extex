@@ -30,7 +30,7 @@ import org.extex.interpreter.type.Code;
  * happened.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
 public class Conditional implements Serializable {
 
@@ -150,6 +150,7 @@ public class Conditional implements Serializable {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return primitive + "[" + locator.toString() + "]";

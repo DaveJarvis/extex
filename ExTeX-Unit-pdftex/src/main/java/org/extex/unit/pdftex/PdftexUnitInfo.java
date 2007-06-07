@@ -138,6 +138,7 @@ public class PdftexUnitInfo extends UnitInfo implements Loader, LoadedObserver {
      * @see org.extex.interpreter.unit.UnitInfo#setTypesetter(
      *      org.extex.typesetter.Typesetter)
      */
+    @Override
     public void setTypesetter(Typesetter typesetter) {
 
         observePdfoutput(typesetter);

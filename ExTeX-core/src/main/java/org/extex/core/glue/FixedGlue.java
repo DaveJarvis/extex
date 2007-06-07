@@ -19,13 +19,13 @@
 
 package org.extex.core.glue;
 
+import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 
 /**
  * This interface describes the features of a
- * {@link org.extex.core.glue.Glue Glue} which do not modify
- * the value.
- *
+ * {@link org.extex.core.glue.Glue Glue} which do not modify the value.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4726 $
  */
@@ -44,67 +44,67 @@ public interface FixedGlue {
     FixedGlue ZERO = new Glue(0);
 
     /**
-     * The constant <tt>SS</tt> contains the glue for 0pt plus 1fil minus 1fil.
+     * The constant <tt>SS</tt> contains the glue for 0pt plus 1fil minus
+     * 1fil.
      */
     FixedGlue S_S =
-            new Glue(GlueComponent.ZERO, GlueComponent.ONE_FIL,
-                GlueComponent.ONE_FIL);
+            new Glue(Dimen.ZERO, GlueComponent.ONE_FIL, GlueComponent.ONE_FIL);
 
     /**
      * Make a copy of this object.
-     *
+     * 
      * @return a new instance with the same internal values
      */
     Glue copy();
 
     /**
      * Test that the given Glue is equal to a given one.
-     *
+     * 
      * @param glue the glue to compare with
-     *
+     * 
      * @return <code>true</code> iff they are different
      */
     boolean eq(FixedGlue glue);
 
     /**
-     * Getter for the length.
-     * Note that the value returned is independent from the original object.
-     * Changing its value does not affect the length of the glue.
-     *
+     * Getter for the length. Note that the value returned is independent from
+     * the original object. Changing its value does not affect the length of the
+     * glue.
+     * 
      * @return the natural length
      */
     FixedDimen getLength();
 
     /**
-     * Getter for shrink.
-     * Note that the value returned is independent from the original object.
-     * Changing its value does not affect the shrink of the glue.
-     *
+     * Getter for shrink. Note that the value returned is independent from the
+     * original object. Changing its value does not affect the shrink of the
+     * glue.
+     * 
      * @return the shrink.
      */
     FixedGlueComponent getShrink();
 
     /**
-     * Getter for stretch.
-     * Note that the value returned is independent from the original object.
-     * Changing its value does not affect the stretch of the glue.
-     *
+     * Getter for stretch. Note that the value returned is independent from the
+     * original object. Changing its value does not affect the stretch of the
+     * glue.
+     * 
      * @return the stretch.
      */
     FixedGlueComponent getStretch();
 
     /**
      * Test that the given Glue is different from a given one.
-     *
+     * 
      * @param glue the glue to compare with
-     *
+     * 
      * @return <code>true</code> iff they are different
      */
     boolean ne(FixedGlue glue);
 
     /**
      * Provide a string representation of this instance.
-     *
+     * 
      * @return the string representation of this glue
      * @see "<logo>TeX</logo> &ndash; The Program [178,177]"
      */

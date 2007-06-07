@@ -123,7 +123,7 @@ public class WideGlue {
      */
     private FixedGlueComponent getGC(long[] a) {
 
-        for (int i = SIZE - 1; i >= 0; i--) {
+        for (byte i = SIZE - 1; i >= 0; i--) {
             if (a[i] != 0) {
                 return new GlueComponent(a[i], i);
             }
@@ -149,7 +149,7 @@ public class WideGlue {
      */
     public FixedGlueComponent getShrink() {
 
-        for (int i = SIZE - 1; i >= 0; i--) {
+        for (byte i = SIZE - 1; i >= 0; i--) {
             if (shrink[i] != 0) {
                 return new GlueComponent(shrink[i], i);
             }
@@ -165,7 +165,7 @@ public class WideGlue {
      */
     public FixedGlueComponent getStretch() {
 
-        for (int i = SIZE - 1; i >= 0; i--) {
+        for (byte i = SIZE - 1; i >= 0; i--) {
             if (stretch[i] != 0) {
                 return new GlueComponent(stretch[i], i);
             }
@@ -281,6 +281,7 @@ public class WideGlue {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return toGlue().toString();

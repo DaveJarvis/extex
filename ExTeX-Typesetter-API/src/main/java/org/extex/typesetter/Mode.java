@@ -53,6 +53,7 @@ public abstract class Mode {
          *
          * @return <code>true</code> since this is a horizontal modes
          */
+        @Override
         public final boolean isHmode() {
 
             return true;
@@ -82,6 +83,7 @@ public abstract class Mode {
          *
          * @return <code>true</code> since this is one of the math modes
          */
+        @Override
         public final boolean isMath() {
 
             return true;
@@ -111,6 +113,7 @@ public abstract class Mode {
          *
          * @return <code>true</code> since this is one of the vertical modes
          */
+        @Override
         public final boolean isVmode() {
 
             return true;
@@ -229,6 +232,7 @@ public abstract class Mode {
      *
      * @return the string representation
      */
+    @Override
     public String toString() {
 
         if (this.localizer == null) {

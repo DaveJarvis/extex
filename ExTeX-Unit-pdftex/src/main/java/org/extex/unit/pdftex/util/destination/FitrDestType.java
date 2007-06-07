@@ -71,6 +71,7 @@ public class FitrDestType extends DestType {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         StringBuffer sb = new StringBuffer("fitr ");
@@ -102,6 +103,7 @@ public class FitrDestType extends DestType {
      * @see org.extex.unit.pdftex.util.destination.DestType#visit(
      *      org.extex.unit.pdftex.util.destination.DestinationVisitor)
      */
+    @Override
     public Object visit(DestinationVisitor visitor) {
 
         return visitor.visitFitr(this);

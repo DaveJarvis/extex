@@ -50,6 +50,7 @@ public class MainConfigurationException extends MainException {
      *
      * @see java.lang.Throwable#getLocalizedMessage()
      */
+    @Override
     public String getLocalizedMessage() {
 
         Throwable cause = getCause();

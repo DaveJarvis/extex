@@ -189,6 +189,7 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
      * 
      * @see org.extex.typesetter.type.node.AbstractNodeListTester#makeList()
      */
+    @Override
     protected NodeList makeList() {
 
         return new HorizontalListNode();
@@ -199,6 +200,7 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
      * 
      * @see org.extex.typesetter.type.node.AbstractNodeListTester#makeList()
      */
+    @Override
     protected NodeList makeList(Node node) {
 
         return new HorizontalListNode(node);
@@ -209,6 +211,7 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
      * 
      * @see org.extex.typesetter.type.node.AbstractNodeListTester#makeVisitor()
      */
+    @Override
     protected NodeVisitor<Node, Boolean> makeVisitor() {
 
         return VISITOR;

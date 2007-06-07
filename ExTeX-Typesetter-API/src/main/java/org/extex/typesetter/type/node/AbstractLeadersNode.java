@@ -79,6 +79,7 @@ public abstract class AbstractLeadersNode extends AbstractExpandableNode
      *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
      *      org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
      */
+    @Override
     public Node atShipping(PageContext context, Typesetter typesetter,
             FixedDimen posX, FixedDimen posY) throws GeneralException {
 
@@ -155,6 +156,7 @@ public abstract class AbstractLeadersNode extends AbstractExpandableNode
      * @see org.extex.typesetter.type.Node#toString( java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
+    @Override
     public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
 
         sb.append(getLocalizer().format("String.Format", getSize().toString()));

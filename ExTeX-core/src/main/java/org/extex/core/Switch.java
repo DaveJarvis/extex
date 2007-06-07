@@ -74,6 +74,7 @@ public class Switch {
      * 
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return this.value ? "on" : "off";

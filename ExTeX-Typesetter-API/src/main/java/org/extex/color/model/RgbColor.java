@@ -89,6 +89,7 @@ public class RgbColor implements Color {
      *
      * @see java.lang.Object#equals(java.lang.Object)
      */
+    @Override
     public boolean equals(Object obj) {
 
         if (!(obj instanceof RgbColor)) {
@@ -152,6 +153,7 @@ public class RgbColor implements Color {
      *
      * @see java.lang.Object#hashCode()
      */
+    @Override
     public int hashCode() {
 
         return (red >> 1) | (green >> 2) | (blue >> 3) | (alpha >> 4);
@@ -164,6 +166,7 @@ public class RgbColor implements Color {
      *
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         StringBuffer sb = new StringBuffer();

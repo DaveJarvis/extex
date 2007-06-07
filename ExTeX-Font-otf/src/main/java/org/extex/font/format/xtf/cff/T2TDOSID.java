@@ -73,6 +73,7 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
      * 
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
      */
+    @Override
     public short[] getBytes() {
 
         return bytes;
@@ -93,6 +94,7 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
      * 
      * @see org.extex.font.format.xtf.cff.T2Operator#getValue()
      */
+    @Override
     public Object getValue() {
 
         return sidstring;
@@ -105,6 +107,7 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
      *      org.extex.util.file.random.RandomAccessR,
      *      org.extex.font.format.xtf.OtfTableCFF, int)
      */
+    @Override
     public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset)
             throws IOException {
 
@@ -116,6 +119,7 @@ public abstract class T2TDOSID extends T2TopDICTOperator {
      * 
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return String.valueOf(value);

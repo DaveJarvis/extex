@@ -75,6 +75,7 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     /**
      * @see org.extex.font.format.xtf.cff.T2CharString#getBytes()
      */
+    @Override
     public short[] getBytes() {
 
         return bytes;
@@ -99,26 +100,29 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     /**
      * @see org.extex.font.format.xtf.cff.T2Operator#getValue()
      */
+    @Override
     public Object getValue() {
 
         return value;
     }
 
     /**
-     * Check, if the objekt is a double.
+     * Check, if the object is a double.
      * 
      * @return Returns <code>true</code>, if the object is a double.
      */
+    @Override
     public boolean isDouble() {
 
         return value.isDouble();
     }
 
     /**
-     * Check, if the objekt is a integer.
+     * Check, if the object is an integer.
      * 
      * @return Returns <code>true</code>, if the object is a integer.
      */
+    @Override
     public boolean isInteger() {
 
         return value.isInteger();
@@ -127,6 +131,7 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     /**
      * @see java.lang.Object#toString()
      */
+    @Override
     public String toString() {
 
         return value.toString();

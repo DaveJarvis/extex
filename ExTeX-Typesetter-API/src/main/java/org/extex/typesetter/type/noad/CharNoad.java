@@ -89,6 +89,7 @@ public class CharNoad extends AbstractNoad {
      * @see org.extex.typesetter.type.noad.Noad#toString(
      *      java.lang.StringBuffer)
      */
+    @Override
     public void toString(StringBuffer sb) {
 
         glyph.toString(sb);
