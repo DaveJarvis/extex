@@ -177,9 +177,7 @@ public class MathContext {
         GlueComponent stretch = new GlueComponent(muglue.getStretch());
         GlueComponent shrink = new GlueComponent(muglue.getShrink());
 
-        if (length.getOrder() != 0) {
-            length.multiply(factor, MU_UNIT);
-        }
+        length.multiply(factor, MU_UNIT);
         if (stretch.getOrder() != 0) {
             stretch.multiply(factor, MU_UNIT);
         }
