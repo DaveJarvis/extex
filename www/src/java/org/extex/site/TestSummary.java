@@ -213,6 +213,7 @@ public class TestSummary extends Task {
     /**
      * @see org.apache.tools.ant.Task#execute()
      */
+    @Override
     public void execute() {
 
         if (input == null) {
