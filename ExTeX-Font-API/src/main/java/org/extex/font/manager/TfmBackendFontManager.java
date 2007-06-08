@@ -20,11 +20,14 @@
 package org.extex.font.manager;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.Set;
+import java.util.TreeSet;
 
 import org.extex.core.Unicode;
 import org.extex.core.UnicodeChar;
@@ -76,7 +79,6 @@ public class TfmBackendFontManager implements BackendFontManager {
             }
 
             if (cp <= 255) {
-                // TODO ...
                 return cp;
             }
             return 0;
@@ -106,14 +108,9 @@ public class TfmBackendFontManager implements BackendFontManager {
                 new ArrayList<BackendCharacter>();
 
         /**
-         * Add the char to the list.
-         * 
-         * @param ch The char to add.
+         * The backend font.
          */
-        public void add(BackendCharacter ch) {
-
-            backendCharacterList.add(ch);
-        }
+        private BackendFont backendFont;
 
         /**
          * The font key.
@@ -131,19 +128,14 @@ public class TfmBackendFontManager implements BackendFontManager {
         }
 
         /**
-         * Getter for fontKey.
+         * Add the char to the list.
          * 
-         * @return the fontKey
+         * @param ch The char to add.
          */
-        public FontKey getFontKey() {
+        public void add(BackendCharacter ch) {
 
-            return fontKey;
+            backendCharacterList.add(ch);
         }
-
-        /**
-         * The backend font.
-         */
-        private BackendFont backendFont;
 
         /**
          * Getter for backendFont.
@@ -153,6 +145,16 @@ public class TfmBackendFontManager implements BackendFontManager {
         public BackendFont getBackendFont() {
 
             return backendFont;
+        }
+
+        /**
+         * Getter for fontKey.
+         * 
+         * @return the fontKey
+         */
+        public FontKey getFontKey() {
+
+            return fontKey;
         }
 
         /**
@@ -175,7 +177,7 @@ public class TfmBackendFontManager implements BackendFontManager {
     /**
      * The font list.
      */
-    private SortedMap<FontKey, Info> fontList;
+    private Map<FontKey, Info> fontList;
 
     /**
      * Is it a recognized font?
@@ -198,7 +200,7 @@ public class TfmBackendFontManager implements BackendFontManager {
     public TfmBackendFontManager() {
 
         super();
-        fontList = new TreeMap<FontKey, Info>();
+        fontList = new HashMap<FontKey, Info>();
     }
 
     /**
@@ -253,12 +255,35 @@ public class TfmBackendFontManager implements BackendFontManager {
             public boolean hasNext() {
 
                 if (fontList != null && it == null) {
-                    it = fontList.keySet().iterator();
+                    createIterator();
                 }
                 if (it != null) {
                     return it.hasNext();
                 }
                 return false;
+            }
+
+            /**
+             * Create the <code>Iterator</code> and sort it.
+             */
+            private void createIterator() {
+
+                Set<FontKey> keySet = fontList.keySet();
+                TreeSet<FontKey> sort =
+                        new TreeSet<FontKey>(new Comparator<FontKey>() {
+
+                            public int compare(FontKey o1, FontKey o2) {
+
+                                return o1.getName().compareTo(o2.getName());
+                            }
+
+                        });
+                Iterator<FontKey> tmpit = keySet.iterator();
+                while (tmpit.hasNext()) {
+                    sort.add(tmpit.next());
+                }
+
+                it = sort.iterator();
             }
 
             /**
@@ -269,7 +294,7 @@ public class TfmBackendFontManager implements BackendFontManager {
             public BackendFont next() {
 
                 if (fontList != null && it == null) {
-                    it = fontList.keySet().iterator();
+                    createIterator();
                 }
                 if (it == null) {
                     throw new NoSuchElementException();
@@ -334,7 +359,10 @@ public class TfmBackendFontManager implements BackendFontManager {
      */
     public void reset() {
 
-        // TODO mgn: reset unimplemented
+        newRecongnizedFont = false;
+        recognizedCharcterId = null;
+        recognizedFont = null;
+        fontList.clear();
 
     }
 

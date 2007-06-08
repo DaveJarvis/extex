@@ -80,6 +80,7 @@ public interface BackendFontManager {
 
     /**
      * Return the iterator for all recognized back-end fonts.
+     * The fonts are sorted by the name.
      * 
      * @return the iterator for all recognized back-end font
      */

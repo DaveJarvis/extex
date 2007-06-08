@@ -295,15 +295,15 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
         assertNotNull(fnt);
         assertTrue(fnt instanceof BackendFont);
         BackendFont bfnt = (BackendFont) fnt;
-        assertEquals("cmr12", bfnt.getName());
-        assertEquals(1487622411, bfnt.getCheckSum());
+        assertEquals("cmr10", bfnt.getName());
+        assertEquals(1274110073, bfnt.getCheckSum());
         assertTrue(it.hasNext());
         fnt = it.next();
         assertNotNull(fnt);
         assertTrue(fnt instanceof BackendFont);
         bfnt = (BackendFont) fnt;
-        assertEquals("cmr10", bfnt.getName());
-        assertEquals(1274110073, bfnt.getCheckSum());
+        assertEquals("cmr12", bfnt.getName());
+        assertEquals(1487622411, bfnt.getCheckSum());
 
         assertFalse(it.hasNext());
     }
@@ -335,7 +335,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
         assertNull("no font recognized any more", manager.getRecognizedFont());
         Iterator<BackendFont> it = manager.iterate();
         assertNotNull(it);
-        assertTrue("no font enlisted", it.hasNext());
+        assertFalse("no font enlisted", it.hasNext());
     }
 
 }

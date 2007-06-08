@@ -22,22 +22,6 @@ package org.extex.font;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-import org.extex.font.FontFactoryImplCmex10UndefTest;
-import org.extex.font.FontFactoryImplCmmanTest;
-import org.extex.font.FontFactoryImplCmr10At12Test;
-import org.extex.font.FontFactoryImplCmr10Test;
-import org.extex.font.FontFactoryImplGenCmr10At50PtTest;
-import org.extex.font.FontFactoryImplGenCmr10At5PtTest;
-import org.extex.font.FontFactoryImplGenCmr10Scaled1440Test;
-import org.extex.font.FontFactoryImplGenCmr10Test;
-import org.extex.font.FontFactoryImplGenCmtt10Test;
-import org.extex.font.FontFactoryImplGenCmvtti10Test;
-import org.extex.font.FontFactoryImplGenLasy5Test;
-import org.extex.font.FontFactoryImplGenLcirclew10Test;
-import org.extex.font.FontFactoryImplGenLogosl9Test;
-import org.extex.font.FontFactoryImplTest;
-import org.extex.font.FontFactoryImplXtfTest;
-import org.extex.font.FontKeyTest;
 import org.extex.font.fontparameter.FontParameterTest;
 import org.extex.font.format.afm.AfmParserTest;
 import org.extex.font.format.afm.FontFactoryImplAfmTest;
@@ -103,6 +87,7 @@ public class AllTests {
         suite.addTestSuite(XtfReaderLmRoman10Regular01Test.class);
         suite.addTestSuite(XtfReaderGara1Test.class);
         suite.addTestSuite(FontFactoryImplXtfTest.class);
+        suite.addTestSuite(FontFactoryImplManagerTest.class);
 
         // $JUnit-END$
         return suite;
