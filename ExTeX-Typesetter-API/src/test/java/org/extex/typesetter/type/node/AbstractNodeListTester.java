@@ -380,7 +380,12 @@ public abstract class AbstractNodeListTester extends TestCase {
         NodeList list = makeList();
         list.add(new RuleNode(new Dimen(2 * Dimen.ONE),
             new Dimen(3 * Dimen.ONE), new Dimen(4 * Dimen.ONE), null, true));
-        assertList(list, 1, 2 * Dimen.ONE, 3 * Dimen.ONE, 4 * Dimen.ONE, 0, 0);
+        if (list.getClass() == GenericNodeList.class) {
+            assertList(list, 1, 0, 0, 0, 0, 0);
+        } else {
+            assertList(list, 1, 2 * Dimen.ONE, 3 * Dimen.ONE, 4 * Dimen.ONE, 0,
+                0);
+        }
     }
 
     /**

@@ -19,142 +19,276 @@
 
 package org.extex.core.count;
 
+import junit.framework.TestCase;
+
+import org.junit.Test;
+
 /**
  * This is a test suite for the immutable count data type.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class CountConstantTest extends BasicCountTester {
+public class CountConstantTest extends TestCase {
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.core.count.BasicCountTester#newC(long)
+     * Test method for
+     * {@link org.extex.core.count.Count#Count(org.extex.core.count.FixedCount)}.
      */
-    @Override
-    protected Count newC(long value) {
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testCountFixedCount() {
 
-        // return new CountConstant(value);
-        return null;
+        FixedCount count = new CountConstant(1L);
+        assertEquals(1L, new CountConstant(count).getValue());
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.core.count.BasicCountTester#newC(org.extex.core.count.FixedCount)
+     * Test method for {@link org.extex.core.count.Count#Count(long)}.
      */
-    @Override
-    protected Count newC(FixedCount value) {
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testCountLong0() {
 
-        // return new CountConstant(value);
-        return null;
+        FixedCount count = new CountConstant(0L);
+        assertEquals(0L, count.getValue());
     }
 
     /**
-     * Test method for {@link org.extex.core.count.CountConstant#add(long)}.
+     * Test method for {@link org.extex.core.count.Count#Count(long)}.
      */
-    // @Test
-    // @SuppressWarnings("boxing")
-    // public final void testAddLong0() {
-    //
-    // CountConstant ic = new CountConstant(0);
-    // ic.add(0);
-    // assertEquals(0L, ic.getValue());
-    // }
-    /**
-     * Test method for {@link org.extex.core.count.CountConstant#add(long)}.
-     */
-    // @Test(expected = UnsupportedOperationException.class)
-    // public final void testAddLong1() {
-    //
-    // new CountConstant(0).add(1);
-    // }
-    /**
-     * Test method for {@link org.extex.core.count.CountConstant#divide(long)}.
-     */
-    // @Test(expected = UnsupportedOperationException.class)
-    // public final void testDivideLong2() {
-    //
-    // new CountConstant(0).divide(2);
-    // }
-    /**
-     * Test method for {@link org.extex.core.count.CountConstant#multiply(long)}.
-     */
-    // @Test(expected = UnsupportedOperationException.class)
-    // public final void testMultiplyLong3() {
-    //
-    // new CountConstant(1).multiply(2);
-    // }
-    /**
-     * Test method for {@link org.extex.core.count.CountConstant#multiply(long)}.
-     */
-    // @Test
-    // @SuppressWarnings("boxing")
-    // public final void testMultiplyLong2() {
-    //
-    // CountConstant ic = new CountConstant(123);
-    // ic.multiply(1);
-    // assertEquals(123L, ic.getValue());
-    // }
-    /**
-     * Test method for {@link org.extex.core.count.CountConstant#multiply(long)}.
-     */
-    // @Test
-    // @SuppressWarnings("boxing")
-    // public final void testMultiplyLong0() {
-    //
-    // CountConstant ic = new CountConstant(0);
-    // ic.multiply(2);
-    // assertEquals(0L, ic.getValue());
-    // }
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testCountLong1() {
+
+        FixedCount count = new CountConstant(1L);
+        assertEquals(1L, count.getValue());
+    }
+
     /**
      * Test method for
-     * {@link org.extex.core.count.Count#add(org.extex.core.count.Count)}.
+     * {@link org.extex.core.count.Count#eq(org.extex.core.count.FixedCount)}.
      */
-    // @Test(expected = UnsupportedOperationException.class)
-    // public final void testAddCount10() {
-    //
-    // CountConstant ic = new CountConstant(0);
-    // ic.add(new Count(2));
-    // }
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testEq1() {
+
+        assertEquals(true, new Count(0).eq(new Count(0)));
+    }
+
     /**
      * Test method for
-     * {@link org.extex.core.count.Count#divide(org.extex.core.count.FixedCount)}.
+     * {@link org.extex.core.count.Count#eq(org.extex.core.count.FixedCount)}.
      */
-    // @Test(expected = UnsupportedOperationException.class)
-    // public final void testDivideFixedCount10() {
-    //
-    // CountConstant ic = new CountConstant(0);
-    // ic.divide(new Count(2));
-    // }
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testEq2() {
+
+        assertEquals(false, new Count(0).eq(new Count(1)));
+    }
+
     /**
      * Test method for
-     * {@link org.extex.core.count.Count#multiply(org.extex.core.count.FixedCount)}.
+     * {@link org.extex.core.count.Count#ge(org.extex.core.count.FixedCount)}.
      */
-    // @Test(expected = UnsupportedOperationException.class)
-    // public final void testMultiplyFixedCount10() {
-    //
-    // CountConstant ic = new CountConstant(0);
-    // ic.multiply(new Count(2));
-    // }
-    /**
-     * Test method for {@link org.extex.core.count.Count#set(long)}.
-     */
-    // @Test(expected = UnsupportedOperationException.class)
-    // public final void testSetLong() {
-    //
-    // CountConstant ic = new CountConstant(0);
-    // ic.set(2);
-    // }
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testGe1() {
+
+        assertEquals(true, new Count(0).ge(new Count(0)));
+    }
+
     /**
      * Test method for
-     * {@link org.extex.core.count.Count#set(org.extex.core.count.Count)}.
+     * {@link org.extex.core.count.Count#ge(org.extex.core.count.FixedCount)}.
      */
-    // @Test(expected = UnsupportedOperationException.class)
-    // public final void testSetCount() {
-    //
-    // CountConstant ic = new CountConstant(0);
-    // ic.set(Count.ONE);
-    // }
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testGe2() {
+
+        assertEquals(false, new Count(0).ge(new Count(1)));
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.core.count.Count#ge(org.extex.core.count.FixedCount)}.
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testGe3() {
+
+        assertEquals(true, new Count(1).ge(new Count(0)));
+    }
+
+    /**
+     * Test method for {@link org.extex.core.count.Count#getValue()}.
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testGetValue() {
+
+        FixedCount count = new CountConstant(-123L);
+        assertEquals(-123L, count.getValue());
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.core.count.Count#gt(org.extex.core.count.FixedCount)}.
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testGt1() {
+
+        assertEquals(true, new Count(1).gt(new Count(0)));
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.core.count.Count#gt(org.extex.core.count.FixedCount)}.
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testGt2() {
+
+        assertEquals(false, new Count(1).gt(new Count(1)));
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.core.count.Count#le(org.extex.core.count.FixedCount)}.
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testLe1() {
+
+        assertEquals(true, new Count(1).le(new Count(1)));
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.core.count.Count#le(org.extex.core.count.FixedCount)}.
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testLe2() {
+
+        assertEquals(true, new Count(0).le(new Count(1)));
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.core.count.Count#le(org.extex.core.count.FixedCount)}.
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testLe3() {
+
+        assertEquals(false, new Count(1).le(new Count(0)));
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.core.count.Count#lt(org.extex.core.count.FixedCount)}.
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testLt1() {
+
+        assertEquals(false, new Count(1).lt(new Count(0)));
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.core.count.Count#lt(org.extex.core.count.FixedCount)}.
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testLt2() {
+
+        assertEquals(false, new Count(0).lt(new Count(0)));
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.core.count.Count#lt(org.extex.core.count.FixedCount)}.
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testLt3() {
+
+        assertEquals(true, new Count(0).lt(new Count(1)));
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.core.count.Count#ne(org.extex.core.count.FixedCount)}.
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testNe1() {
+
+        assertEquals(false, new Count(0).ne(new Count(0)));
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.core.count.Count#ne(org.extex.core.count.FixedCount)}.
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testNe2() {
+
+        assertEquals(true, new Count(0).ne(new Count(1)));
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.core.count.Count#ne(org.extex.core.count.FixedCount)}.
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testNe3() {
+
+        assertEquals(true, new Count(1).ne(new Count(0)));
+    }
+
+    /**
+     * Test method for {@link org.extex.core.count.Count#toString()}.
+     */
+    @Test
+    public final void testToString0() {
+
+        assertEquals("0", new CountConstant(0).toString());
+    }
+
+    /**
+     * Test method for {@link org.extex.core.count.Count#toString()}.
+     */
+    @Test
+    public final void testToString1() {
+
+        assertEquals("123", new CountConstant(123).toString());
+    }
+
+    /**
+     * Test method for {@link org.extex.core.count.Count#toString()}.
+     */
+    @Test
+    public final void testToString2() {
+
+        assertEquals("-123", new CountConstant(-123).toString());
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.core.count.Count#toString(java.lang.StringBuffer)}.
+     */
+    @Test
+    public final void testToStringStringBuffer() {
+
+        StringBuffer sb = new StringBuffer();
+        new CountConstant(-123).toString(sb);
+        assertEquals("-123", sb.toString());
+    }
+
 }

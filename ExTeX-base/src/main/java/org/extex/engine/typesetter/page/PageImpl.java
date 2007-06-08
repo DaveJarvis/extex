@@ -85,7 +85,7 @@ public class PageImpl implements Page {
     public PageImpl(NodeList nodes, FixedCount[] pageNo) {
 
         super();
-        this.nodes = nodes;
+        this.nodes = nodes.copy();
         this.pageNo = pageNo;
     }
 

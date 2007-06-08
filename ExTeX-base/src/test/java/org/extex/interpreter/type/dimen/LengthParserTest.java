@@ -336,7 +336,7 @@ public class LengthParserTest extends ExTeXLauncher {
                 "\\dimen1=2pt"
                 + "\\dimen0=(1)",
                 //
-                "Missing a valid unit for a length value");
+                "Illegal unit of measure (pt inserted)");
     }
 
     /**

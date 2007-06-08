@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.interpreter.type.dimen;
+package org.extex.core.dimen;
 
 import org.extex.core.dimen.Dimen;
 

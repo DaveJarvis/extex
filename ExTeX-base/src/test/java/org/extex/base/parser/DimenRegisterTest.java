@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.interpreter.type.dimen;
+package org.extex.base.parser;
 
 import junit.framework.TestCase;
 

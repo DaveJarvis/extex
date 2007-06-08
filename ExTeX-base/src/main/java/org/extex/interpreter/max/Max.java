@@ -322,7 +322,8 @@ public abstract class Max
     private Flags prefix;
 
     /**
-     * The field <tt>tokenExpander</tt> contains the token visitor for expansion.
+     * The field <tt>tokenExpander</tt> contains the token visitor for
+     * expansion.
      */
     private TokenVisitor<Token, TokenSource> tokenExpander =
             new TokenVisitor<Token, TokenSource>() {
@@ -683,10 +684,11 @@ public abstract class Max
      */
     private void execute(Switch onceMore) throws HelpingException {
 
-        for (Token token = getToken(context); token != null; token =
-                getToken(context)) {
-
-            if (observersCommand != null) {
+        do {
+            Token token = getToken(context);
+            if (token == null) {
+                return;
+            } else if (observersCommand != null) {
                 observersCommand.update(token);
             }
             try {
@@ -697,10 +699,8 @@ public abstract class Max
                 handleException(token, context, e, typesetter);
             }
 
-            if (!onceMore.isOn()) {
-                return;
-            }
-        }
+        } while (onceMore.isOn());
+
     }
 
     /**
@@ -789,7 +789,7 @@ public abstract class Max
      */
     public Tokens expand(Tokens tokens, Typesetter typesetter)
             throws InterpreterException,
-            HelpingException {
+                HelpingException {
 
         Tokens result = new Tokens();
         StringSource source = new StringSource();
