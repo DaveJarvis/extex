@@ -32,6 +32,7 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
+import org.extex.font.BackendFont;
 import org.extex.font.CoreFontFactory;
 import org.extex.font.FontKey;
 import org.extex.font.LoadableFont;
@@ -55,7 +56,11 @@ import org.extex.resource.ResourceFinder;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class LoadableAfmFont implements LoadableFont, ResourceConsumer {
+public class LoadableAfmFont
+        implements
+            LoadableFont,
+            ResourceConsumer,
+            BackendFont {
 
     /**
      * The actual font key.
@@ -92,6 +97,16 @@ public class LoadableAfmFont implements LoadableFont, ResourceConsumer {
      * The last used Unicode char (for caching).
      */
     private UnicodeChar lastUsedUc = null;
+
+    /**
+     * Use no kerning information.
+     */
+    private boolean nokerning = false;
+
+    /**
+     * Use no ligature information.
+     */
+    private boolean noligature = false;
 
     /**
      * The font parameter
@@ -173,6 +188,16 @@ public class LoadableAfmFont implements LoadableFont, ResourceConsumer {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.BackendFont#getCheckSum()
+     */
+    public int getCheckSum() {
+
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getDepth(org.extex.core.UnicodeChar)
      */
     public FixedGlue getDepth(UnicodeChar uc) {
@@ -217,6 +242,17 @@ public class LoadableAfmFont implements LoadableFont, ResourceConsumer {
         }
         float xh = parser.getHeader().getXheight();
         return floatToDimen(xh);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#getFontData()
+     */
+    public byte[] getFontData() {
+
+        // TODO mgn: getFontData unimplemented
+        return null;
     }
 
     /**
@@ -279,16 +315,6 @@ public class LoadableAfmFont implements LoadableFont, ResourceConsumer {
     }
 
     /**
-     * Use no kerning information.
-     */
-    private boolean nokerning = false;
-
-    /**
-     * Use no ligature information.
-     */
-    private boolean noligature = false;
-
-    /**
      * {@inheritDoc}
      * 
      * @see org.extex.font.ExtexFont#getKerning(org.extex.core.UnicodeChar,
@@ -348,6 +374,16 @@ public class LoadableAfmFont implements LoadableFont, ResourceConsumer {
             }
         }
         return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#getName()
+     */
+    public String getName() {
+
+        return actualFontKey.getName();
     }
 
     /**

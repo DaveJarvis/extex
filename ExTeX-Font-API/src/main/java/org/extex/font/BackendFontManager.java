@@ -22,6 +22,8 @@ package org.extex.font;
 import java.util.Iterator;
 
 import org.extex.core.UnicodeChar;
+import org.extex.font.exception.FontException;
+import org.extex.font.manager.ManagerInfo;
 
 /**
  * The back-end font manager describes the abilities needed by a back-end to
@@ -79,13 +81,21 @@ public interface BackendFontManager {
     boolean isNewRecongnizedFont();
 
     /**
-     * Return the iterator for all recognized back-end fonts.
-     * The fonts are sorted by the name.
+     * Return the iterator for all recognized back-end fonts. The fonts are
+     * sorted by the name.
      * 
      * @return the iterator for all recognized back-end font
      */
     Iterator<BackendFont> iterate();
 
+    
+    /**
+     * Return the iterator for all {@link ManagerInfo}s.
+     * 
+     * @return the iterator for {@link ManagerInfo}s.
+     */
+    Iterator<ManagerInfo> iterateManagerInfo();
+    
     /**
      * Take a character and a font and see if they can be managed by this
      * manager. The internal state is adjusted to report the font and the
@@ -93,11 +103,12 @@ public interface BackendFontManager {
      * 
      * @param fontKey the font key for the character at hand
      * @param uc the Unicode character at hand
+     * @throws FontException if a font error occurred.
      * 
      * @return <code>true</code> iff the character is defined in the font
      *         given and a font of a requested format can be delivered.
      */
-    boolean recognize(FontKey fontKey, UnicodeChar uc);
+    boolean recognize(FontKey fontKey, UnicodeChar uc) throws FontException;
 
     /**
      * Rest the internal state to the initial state. Afterwards the instance

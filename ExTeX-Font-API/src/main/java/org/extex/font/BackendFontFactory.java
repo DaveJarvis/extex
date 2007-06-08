@@ -19,6 +19,8 @@
 
 package org.extex.font;
 
+import org.extex.font.exception.FontException;
+
 /**
  * Factory for the backend font.
  * 
@@ -33,8 +35,9 @@ public interface BackendFontFactory {
      * If no font is found, then <code>null</code> is returned.
      * 
      * @param key the fount key
+     * @throws FontException if a font error occurred.
      * @return Returns the font instance.
      */
-    BackendFont getBackendFont(FontKey key);
+    BackendFont getBackendFont(FontKey key) throws FontException;
 
 }

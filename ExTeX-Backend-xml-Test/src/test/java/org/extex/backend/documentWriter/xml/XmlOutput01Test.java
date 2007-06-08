@@ -99,4 +99,35 @@ public class XmlOutput01Test extends ExTeXLauncher {
 
     }
 
+    /**
+     * Test: page size.
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void testManager() throws Exception {
+
+        String[] comment = new String[]{"pagesize" // 1
+                , "pagesize width" // 2
+                , "Orientation" // 3
+                , "pagesize height" // 4
+        };
+        String[] xpath =
+                new String[]{"/root/parameter/param[@name=\"Paper\"]/@value" // 1
+                        , "/root/page[1]/@paperwidth_mm" // 2
+                        , "/root/parameter/param[@name=\"Orientation\"]/@value" // 3
+                        , "/root/page[1]/@paperheight_mm" // 4
+                };
+        String[] expected = new String[]{"A4" // 1
+                , "210" // 2
+                , "Portrait" // 3
+                , "297" // 4
+        };
+
+        assertOutput(prop, // --- input code ---
+            "\\font\\hugo=fxlr " + "\\hugo " + "Hugo " + "\\end",
+            /* logValidator */null, /* outputValidator */
+            new XmlValidator(comment, xpath, expected));
+
+    }
+
 }

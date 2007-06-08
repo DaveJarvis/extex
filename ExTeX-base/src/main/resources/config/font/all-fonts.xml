@@ -22,4 +22,5 @@
   <Font type="afm" class="org.extex.font.format.afm.LoadableAfmFont"/>
 
   <FontType name="tfm" class="org.extex.font.manger.TfmBackendFontManager"/>
+  <FontType name="afm" class="org.extex.font.manger.AfmBackendFontManager"/>
 </Fonts>

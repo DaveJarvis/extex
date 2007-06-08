@@ -31,6 +31,7 @@ import org.extex.font.BackendFont;
 import org.extex.font.BackendFontFactory;
 import org.extex.font.BackendFontManager;
 import org.extex.font.FontKey;
+import org.extex.font.exception.FontException;
 
 /**
  * A list of back-end managers.
@@ -84,12 +85,10 @@ public class BackendFontManagerList implements BackendFontManager {
     }
 
     /**
-     * TODO missing JavaDoc
+     * Returns the {@link BackendFontManager}.
      * 
-     * @param index TODO
-     * 
-     * @return TODO
-     * 
+     * @param index The index.
+     * @return Returns the {@link BackendFontManager}.
      * @see java.util.List#get(int)
      */
     public BackendFontManager get(int index) {
@@ -205,9 +204,80 @@ public class BackendFontManagerList implements BackendFontManager {
             public void remove() {
 
                 throw new UnsupportedOperationException();
+            }
+        };
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFontManager#iterateManagerInfo()
+     */
+    public Iterator<ManagerInfo> iterateManagerInfo() {
+
+        return new Iterator<ManagerInfo>() {
+
+            /**
+             * The index. -1 : not started yet >=0 : working -2 : ended
+             */
+            private int index = -1;
+
+            /**
+             * The iterator.
+             */
+            private Iterator<ManagerInfo> iterator = null;
+
+            /**
+             * @see java.util.Iterator#hasNext()
+             */
+            public boolean hasNext() {
+
+                switch (index) {
+                    case -1:
+                        // ignore
+                        break;
+                    case -2:
+                        return false;
+
+                    default:
+                        if (iterator.hasNext()) {
+                            return true;
+                        }
+
+                        break;
+                }
+
+                while (++index < managers.size()) {
+                    iterator = managers.get(index).iterateManagerInfo();
+                    if (iterator.hasNext()) {
+                        return true;
+                    }
+                }
+
+                iterator = null;
+                index = -2;
+                return false;
             }
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see java.util.Iterator#next()
+             */
+            public ManagerInfo next() {
+
+                return iterator.next();
+            }
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see java.util.Iterator#remove()
+             */
+            public void remove() {
+
+                throw new UnsupportedOperationException();
+            }
         };
     }
 
@@ -217,7 +287,8 @@ public class BackendFontManagerList implements BackendFontManager {
      * @see org.extex.font.BackendFontManager#recognize(org.extex.font.FontKey,
      *      org.extex.core.UnicodeChar)
      */
-    public boolean recognize(FontKey fontKey, UnicodeChar uc) {
+    public boolean recognize(FontKey fontKey, UnicodeChar uc)
+            throws FontException {
 
         if (fontKey == null) {
             throw new IllegalArgumentException("fontkey");
@@ -263,14 +334,13 @@ public class BackendFontManagerList implements BackendFontManager {
     }
 
     /**
-     * TODO mgn
+     * Returns the size of the manager list.
      * 
-     * @return ...
+     * @return Returns the size of the manager list.
      * @see java.util.List#size()
      */
     public int size() {
 
         return managers.size();
     }
-
 }

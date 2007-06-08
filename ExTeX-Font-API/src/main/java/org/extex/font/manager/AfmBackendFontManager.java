@@ -19,7 +19,6 @@
 
 package org.extex.font.manager;
 
-import org.extex.core.Unicode;
 import org.extex.core.UnicodeChar;
 import org.extex.font.BackendCharacter;
 import org.extex.font.BackendFontManager;
@@ -27,12 +26,12 @@ import org.extex.font.FontKey;
 import org.extex.font.exception.FontException;
 
 /**
- * Backend font manager for a tfm font.
+ * Backend font manager for a afm font.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class TfmBackendFontManager extends AbstractBackendFontManager
+public class AfmBackendFontManager extends AbstractBackendFontManager
         implements
             BackendFontManager {
 
@@ -63,16 +62,7 @@ public class TfmBackendFontManager extends AbstractBackendFontManager
          */
         public int getId() {
 
-            int cp = uc.getCodePoint();
-
-            if (cp >= Unicode.OFFSET && cp <= Unicode.OFFSET + 0xff) {
-                return cp - Unicode.OFFSET;
-            }
-
-            if (cp <= 255) {
-                return cp;
-            }
-            return 0;
+            return uc.getCodePoint();
         }
 
         /**
@@ -90,7 +80,7 @@ public class TfmBackendFontManager extends AbstractBackendFontManager
     /**
      * Creates a new object.
      */
-    public TfmBackendFontManager() {
+    public AfmBackendFontManager() {
 
         super();
     }
@@ -116,6 +106,7 @@ public class TfmBackendFontManager extends AbstractBackendFontManager
             newRecongnizedFont = false;
             recognizedFont = info.getBackendFont();
             recognizedCharcterId = new BackendCharacterImpl(uc);
+            info.add(recognizedCharcterId);
             return true;
         }
 

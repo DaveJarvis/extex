@@ -22,8 +22,10 @@ package org.extex.backend.documentWriter.xml;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -36,9 +38,16 @@ import org.extex.backend.documentWriter.exception.DocumentWriterIOException;
 import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
+import org.extex.font.BackendCharacter;
+import org.extex.font.BackendFontManager;
+import org.extex.font.CoreFontFactory;
+import org.extex.font.FontFactoryConsumer;
+import org.extex.font.exception.FontException;
+import org.extex.font.manager.ManagerInfo;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
@@ -77,7 +86,8 @@ public class XMLDocumentWriter
             DocumentWriter,
             SingleDocumentStream,
             NodeVisitor<Object, Object>,
-            Configurable {
+            Configurable,
+            FontFactoryConsumer {
 
     /**
      * DIN-A4 height.
@@ -99,6 +109,16 @@ public class XMLDocumentWriter
      * max fraction.
      */
     private static final int MAXFRACTION = 4;
+
+    /**
+     * The {@link BackendFontManager}.
+     */
+    private BackendFontManager manager;
+
+    /**
+     * The {@link CoreFontFactory}.
+     */
+    private CoreFontFactory corefactory;
 
     /**
      * current x position.
@@ -151,6 +171,11 @@ public class XMLDocumentWriter
     private Dimen paperwidth;
 
     /**
+     * map for the parameters.
+     */
+    private Map<String, String> param = new HashMap<String, String>();
+
+    /**
      * The number of pages, which are ship out.
      */
     private int shippedPages = 0;
@@ -179,6 +204,11 @@ public class XMLDocumentWriter
      * use sp.
      */
     private boolean usesp = true;
+
+    /**
+     * The XML stream writer.
+     */
+    private XMLStreamWriter writer;
 
     /**
      * Creates a new object.
@@ -271,6 +301,7 @@ public class XMLDocumentWriter
         if (out != null) {
             try {
                 if (writer != null) {
+                    writeManager();
                     writer.writeEndElement();
                     writer.writeEndDocument();
                     writer.close();
@@ -286,60 +317,81 @@ public class XMLDocumentWriter
     }
 
     /**
+     * Write the information from the {@link BackendFontManager}.
+     * 
+     * @throws IOException if an IO-error occurred.
+     */
+    private void writeManager() throws IOException {
+
+        writer.writeStartElement("manager");
+        Iterator<ManagerInfo> it = manager.iterateManagerInfo();
+        while (it.hasNext()) {
+            ManagerInfo info = it.next();
+            writer.writeAttribute("font", info.getFontKey().toString());
+            Iterator<BackendCharacter> chit = info.iterate();
+            while (chit.hasNext()) {
+                writer.writeStartElement("char");
+                BackendCharacter bc = chit.next();
+                writer.writeAttribute("id", bc.getId());
+                writer.writeAttribute("name", bc.getName());
+                writer.writeEndElement();
+            }
+        }
+        writer.writeEndElement();
+    }
+
+    /**
+     * @see org.extex.framework.configuration.Configurable#configure(
+     *      org.extex.framework.configuration.Configuration)
+     */
+    public void configure(Configuration cfg) throws ConfigurationException {
+
+        if (cfg != null) {
+            String tmp = cfg.getAttribute("encoding");
+            if (tmp != null && !tmp.equals("")) {
+                encoding = tmp;
+            }
+            tmp = cfg.getAttribute("debug");
+            if (tmp != null) {
+                debug = Boolean.valueOf(tmp).booleanValue();
+            }
+            tmp = cfg.getAttribute("showvisible");
+            if (tmp != null) {
+                showvisible = Boolean.valueOf(tmp).booleanValue();
+            }
+            tmp = cfg.getAttribute("indent");
+            if (tmp != null) {
+                indent = tmp;
+            }
+            tmp = cfg.getAttribute("newlines");
+            if (tmp != null) {
+                newlines = Boolean.valueOf(tmp).booleanValue();
+            }
+            tmp = cfg.getAttribute("trimallwhitespace");
+            if (tmp != null) {
+                trimallwhitespace = Boolean.valueOf(tmp).booleanValue();
+            }
+            tmp = cfg.getAttribute("usesp");
+            if (tmp != null) {
+                usesp = Boolean.valueOf(tmp).booleanValue();
+            }
+            tmp = cfg.getAttribute("usebp");
+            if (tmp != null) {
+                usebp = Boolean.valueOf(tmp).booleanValue();
+            }
+            tmp = cfg.getAttribute("usemm");
+            if (tmp != null) {
+                usemm = Boolean.valueOf(tmp).booleanValue();
+            }
+        }
+    }
+
+    /**
      * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
      */
     public String getExtension() {
 
         return "xml";
-    }
-
-    /**
-     * Set the Attribute for an element with sp, bp, mm.
-     * 
-     * @param name the attribute-name
-     * @param dimen the dimen
-     * @throws IOException if an error occurs.
-     */
-    private void setDimenLength(String name, Dimen dimen) throws IOException {
-
-        Dimen d = dimen;
-        if (dimen == null) {
-            d = new Dimen();
-        }
-        if (usesp) {
-            writer.writeAttribute(name + "_sp", String.valueOf(d.getValue()));
-        }
-        if (usebp) {
-            writer.writeAttribute(name + "_bp", String.valueOf(Unit
-                .getDimenAsBP(d)));
-        }
-        if (usemm) {
-            String s = FORMAT.format(Unit.getDimenAsMM(d));
-            writer.writeAttribute(name + "_mm", s);
-        }
-    }
-
-    /**
-     * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(
-     *      java.io.OutputStream)
-     */
-    public void setOutputStream(OutputStream outStream) {
-
-        out = outStream;
-    }
-
-    /**
-     * map for the parameters.
-     */
-    private Map<String, String> param = new HashMap<String, String>();
-
-    /**
-     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(
-     *      java.lang.String, java.lang.String)
-     */
-    public void setParameter(String name, String value) {
-
-        param.put(name, value);
     }
 
     /**
@@ -386,9 +438,66 @@ public class XMLDocumentWriter
     }
 
     /**
-     * The XML stream writer.
+     * Set the Attribute for an element with sp, bp, mm.
+     * 
+     * @param name the attribute-name
+     * @param dimen the dimen
+     * @throws IOException if an error occurs.
      */
-    private XMLStreamWriter writer;
+    private void setDimenLength(String name, Dimen dimen) throws IOException {
+
+        Dimen d = dimen;
+        if (dimen == null) {
+            d = new Dimen();
+        }
+        if (usesp) {
+            writer.writeAttribute(name + "_sp", String.valueOf(d.getValue()));
+        }
+        if (usebp) {
+            writer.writeAttribute(name + "_bp", String.valueOf(Unit
+                .getDimenAsBP(d)));
+        }
+        if (usemm) {
+            String s = FORMAT.format(Unit.getDimenAsMM(d));
+            writer.writeAttribute(name + "_mm", s);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.FontFactoryConsumer#setFontFactory(org.extex.font.CoreFontFactory)
+     */
+    public void setFontFactory(CoreFontFactory factory) {
+
+        corefactory = factory;
+        List<String> sl = new ArrayList<String>();
+        sl.add("tfm");
+        manager = corefactory.createManager(sl);
+    }
+
+    // ----------------------------------------------
+    // ----------------------------------------------
+    // ----------------------------------------------
+    // ----------------------------------------------
+
+    /**
+     * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(
+     *      java.io.OutputStream)
+     */
+    public void setOutputStream(OutputStream outStream) {
+
+        out = outStream;
+    }
+
+    /**
+     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(
+     *      java.lang.String, java.lang.String)
+     */
+    public void setParameter(String name, String value) {
+
+        param.put(name, value);
+    }
 
     /**
      * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
@@ -450,57 +559,6 @@ public class XMLDocumentWriter
         }
         return 1;
     }
-
-    /**
-     * @see org.extex.framework.configuration.Configurable#configure(
-     *      org.extex.framework.configuration.Configuration)
-     */
-    public void configure(Configuration cfg) throws ConfigurationException {
-
-        if (cfg != null) {
-            String tmp = cfg.getAttribute("encoding");
-            if (tmp != null && !tmp.equals("")) {
-                encoding = tmp;
-            }
-            tmp = cfg.getAttribute("debug");
-            if (tmp != null) {
-                debug = Boolean.valueOf(tmp).booleanValue();
-            }
-            tmp = cfg.getAttribute("showvisible");
-            if (tmp != null) {
-                showvisible = Boolean.valueOf(tmp).booleanValue();
-            }
-            tmp = cfg.getAttribute("indent");
-            if (tmp != null) {
-                indent = tmp;
-            }
-            tmp = cfg.getAttribute("newlines");
-            if (tmp != null) {
-                newlines = Boolean.valueOf(tmp).booleanValue();
-            }
-            tmp = cfg.getAttribute("trimallwhitespace");
-            if (tmp != null) {
-                trimallwhitespace = Boolean.valueOf(tmp).booleanValue();
-            }
-            tmp = cfg.getAttribute("usesp");
-            if (tmp != null) {
-                usesp = Boolean.valueOf(tmp).booleanValue();
-            }
-            tmp = cfg.getAttribute("usebp");
-            if (tmp != null) {
-                usebp = Boolean.valueOf(tmp).booleanValue();
-            }
-            tmp = cfg.getAttribute("usemm");
-            if (tmp != null) {
-                usemm = Boolean.valueOf(tmp).booleanValue();
-            }
-        }
-    }
-
-    // ----------------------------------------------
-    // ----------------------------------------------
-    // ----------------------------------------------
-    // ----------------------------------------------
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(AdjustNode,
@@ -598,12 +656,12 @@ public class XMLDocumentWriter
             writer.writeStartElement("char");
             UnicodeChar uc = node.getCharacter();
             addNodeAttributes(node);
-            writer.writeAttribute("font", node.getTypesettingContext()
-                .getFont().getFontName());
+            Font font = node.getTypesettingContext().getFont();
+            manager.recognize(font.getFontKey(), uc);
+            writer.writeAttribute("font", font.getFontName());
             writer.writeAttribute("color", node.getTypesettingContext()
                 .getColor().toString());
-            writer.writeAttribute("codepoint", String
-                .valueOf(uc.getCodePoint()));
+            writer.writeAttribute("codepoint", uc.getCodePoint());
             String ucname = uc.getUnicodeName();
             if (ucname != null) {
                 writer.writeAttribute("unicode", ucname);
@@ -618,6 +676,8 @@ public class XMLDocumentWriter
             currentX.add(node.getWidth());
             writer.writeEndElement();
         } catch (IOException e) {
+            throw new DocumentWriterIOException(e);
+        } catch (FontException e) {
             throw new DocumentWriterIOException(e);
         }
         return null;

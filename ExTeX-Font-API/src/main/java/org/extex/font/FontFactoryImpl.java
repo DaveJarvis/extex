@@ -330,7 +330,7 @@ public class FontFactoryImpl
      * 
      * @see org.extex.font.BackendFontFactory#getBackendFont(org.extex.font.FontKey)
      */
-    public BackendFont getBackendFont(FontKey key) {
+    public BackendFont getBackendFont(FontKey key) throws FontException {
 
         if (key == null || key.getName() == null || key.getName().length() == 0) {
             return null;
@@ -340,13 +340,9 @@ public class FontFactoryImpl
         if (font != null && font instanceof BackendFont) {
             return (BackendFont) font;
         }
-        try {
-            ExtexFont f = getInstance(key);
-            if (f != null && f instanceof BackendFont) {
-                return (BackendFont) f;
-            }
-        } catch (Exception e) {
-            // ignore it.
+        ExtexFont f = getInstance(key);
+        if (f != null && f instanceof BackendFont) {
+            return (BackendFont) f;
         }
         return null;
     }

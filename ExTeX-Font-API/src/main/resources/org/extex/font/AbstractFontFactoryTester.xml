@@ -108,6 +108,7 @@
 		<Font type="ttf" class="org.extex.font.format.xtf.LoadableXtfFont" />
 
       <FontType name="tfm" class="org.extex.font.manager.TfmBackendFontManager" />
+      <FontType name="afm" class="org.extex.font.manager.AfmBackendFontManager" />
   </Fonts>
   
 </ExTeX>
