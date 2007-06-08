@@ -23,7 +23,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.Reader;
 import java.text.DateFormat;
@@ -34,7 +33,7 @@ import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
 
 /**
- * TODO gene: missing JavaDoc.
+ * Add the current date to the build tag.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5413 $
@@ -42,7 +41,7 @@ import org.apache.tools.ant.Task;
 public class TuneAntLogTask extends Task {
 
     /**
-     * The field <tt>file</tt> contains the nae of the file to be processed.
+     * The field <tt>file</tt> contains the name of the file to be processed.
      */
     private String file = null;
 
