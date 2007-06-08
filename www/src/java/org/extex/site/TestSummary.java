@@ -31,22 +31,22 @@ import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
 
 /**
- * TODO gene: missing JavaDoc.
- *
+ * Extract the test results from a HTML page and produce a HTML fragment.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class TestSummary extends Task {
 
     /**
-     * The field <tt>verbose</tt> contains the ...
+     * The field <tt>verbose</tt> contains the verbosity indicator.
      */
     private static boolean verbose = false;
 
     /**
-     * TODO gene: missing JavaDoc
-     *
-     * @param args
+     * Command line interface
+     * 
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 
@@ -73,22 +73,21 @@ public class TestSummary extends Task {
         }
 
         try {
-            process(in, out);
+            new TestSummary().process(in, out);
         } catch (IOException e) {
             System.err.println(e.getLocalizedMessage());
         }
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     *
-     * @param in
-     * @param out
-     *
+     * Process the input and produce the output.
+     * 
+     * @param in the input file name
+     * @param out the output file name
+     * 
      * @throws IOException in case of an error
      */
-    private static void process(String in, String out)
-            throws IOException {
+    private void process(String in, String out) throws IOException {
 
         StringBuffer sb = new StringBuffer();
         Reader reader = new FileReader(in);
@@ -98,17 +97,19 @@ public class TestSummary extends Task {
         }
         reader.close();
 
+        int i = sb.indexOf("href=\"all-tests.html\"");
+        if (i >= 0) {
+            sb.delete(0, i - 1);
+        }
         Matcher m =
-                Pattern
-                    .compile(
-                        ".*<td><a href=\"all-tests.html\"[^>]*\">"
-                                + "([0-9]*)"
-                                + "</a></td><td><a href=\"alltests-errors.html\"[^>]*>"
-                                + "([0-9]+)"
-                                + "</a></td><td><a href=\"alltests-fails.html\"[^>]*>"
-                                + "([0-9]+)" + "</a></td><td>" + "([0-9.]+)"
-                                + "%</td><td>" + "([0-9.]+)" + "</td>" + ".*",
-                        Pattern.DOTALL).matcher(sb);
+                Pattern.compile(
+                    ".*href=\"all-tests.html\"[^>]*>" + "([0-9]*)"
+                            + ".*href=\"alltests-errors.html\"[^>]*>"
+                            + "([0-9]+)"
+                            + ".*href=\"alltests-fails.html\"[^>]*>"
+                            + "([0-9]+)" + ".*" + "([0-9.]+)" + "%</td><td>"
+                            + "([0-9.]+)" //
+                            + ".*", Pattern.DOTALL).matcher(sb);
 
         int o = 0;
         int g = 100;
@@ -126,6 +127,8 @@ public class TestSummary extends Task {
             g = (512 * (n - e - f)) / n;
             o = (512 * f) / n;
             r = (512 * e) / n;
+        } else {
+            log("No match");
         }
 
         PrintStream stream = System.out;
@@ -151,11 +154,11 @@ public class TestSummary extends Task {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     *
-     * @param stream
-     * @param value
-     * @param img
+     * Produce HTML code for a bar.
+     * 
+     * @param stream the output stream
+     * @param value the width
+     * @param img the image to use
      */
     private static void bar(PrintStream stream, int value, String img) {
 
@@ -167,32 +170,32 @@ public class TestSummary extends Task {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     *
-     * @param sb ...
-     * @param m ...
-     * @param i ...
-     * @return ...
+     * Get the substring for a certain sub-match.
+     * 
+     * @param sb the data to extract from
+     * @param m the matcher
+     * @param i the index of the sub-match
+     * 
+     * @return the value of the sub-match
      */
-    private static String get(StringBuffer sb, Matcher m,
-            int i) {
+    private static String get(StringBuffer sb, Matcher m, int i) {
 
         return sb.substring(m.start(i), m.end(i));
     }
 
     /**
-     * The field <tt>input</tt> contains the ...
+     * The field <tt>input</tt> contains the input file name.
      */
     private String input = null;
 
     /**
-     * The field <tt>output</tt> contains the ...
+     * The field <tt>output</tt> contains the output file name.
      */
     private String output = null;
 
     /**
      * Setter for input.
-     *
+     * 
      * @param input the input to set
      */
     public void setInput(String input) {
@@ -202,7 +205,7 @@ public class TestSummary extends Task {
 
     /**
      * Setter for output.
-     *
+     * 
      * @param output the output to set
      */
     public void setOutput(String output) {
