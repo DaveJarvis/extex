@@ -34,7 +34,7 @@ import org.extex.backend.outputStream.OutputStreamObserver;
 /**
  * The trivial output stream factory is not configurable. It just creates files
  * in the current directory.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4728 $
  */
@@ -61,7 +61,7 @@ public class TrivialOutputFactory implements OutputStreamFactory {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.backend.outputStream.OutputStreamFactory#getOutputStream(
      *      java.lang.String, java.lang.String)
      */
@@ -79,9 +79,8 @@ public class TrivialOutputFactory implements OutputStreamFactory {
             throw new DocumentWriterException(e);
         }
         if (observers != null) {
-            int size = observers.size();
-            for (int i = 0; i < size; i++) {
-                observers.get(i).update(name, type, stream);
+            for (OutputStreamObserver obs : observers) {
+                obs.update(name, type, stream);
             }
         }
         return stream;
@@ -89,7 +88,7 @@ public class TrivialOutputFactory implements OutputStreamFactory {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.backend.outputStream.OutputStreamFactory#register(
      *      org.extex.backend.outputStream.OutputStreamObserver)
      */
@@ -103,7 +102,7 @@ public class TrivialOutputFactory implements OutputStreamFactory {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.backend.outputStream.OutputStreamFactory#setExtension(
      *      java.lang.String)
      */
