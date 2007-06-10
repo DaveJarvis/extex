@@ -32,6 +32,7 @@ import org.extex.core.exception.GeneralException;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
 import org.extex.typesetter.type.node.AdjustNode;
@@ -349,8 +350,8 @@ public class MultiDumpDocumentWriter
 
                     boolean mode = isVertical;
                     isVertical = false;
-                    for (int i = 0; i < list.size(); i++) {
-                        list.get(i).visit(this, oOut);
+                    for (Node node : list) {
+                        node.visit(this, oOut);
                     }
                     isVertical = mode;
                     nl();
@@ -534,8 +535,8 @@ public class MultiDumpDocumentWriter
 
                     boolean mode = isVertical;
                     isVertical = true;
-                    for (int i = 0; i < list.size(); i++) {
-                        list.get(i).visit(this, oOut);
+                    for (Node node : list) {
+                        node.visit(this, oOut);
                     }
                     isVertical = mode;
                     nl();
