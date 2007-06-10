@@ -147,7 +147,7 @@ public class EnsureLoaded extends AbstractCode
         String configName = tokens.toText();
         try {
             Configuration configuration =
-                    new ConfigurationFactory().newInstance(CONFIG_UNIT
+                    ConfigurationFactory.newInstance(CONFIG_UNIT
                             + configName);
             LoadUnit.loadUnit(configuration, context, source, typesetter,
                 logger, outFactory);

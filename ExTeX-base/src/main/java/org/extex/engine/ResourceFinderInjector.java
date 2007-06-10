@@ -21,7 +21,7 @@ package org.extex.engine;
 
 import org.extex.framework.RegistrarException;
 import org.extex.framework.RegistrarObserver;
-import org.extex.resource.ResourceConsumer;
+import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 
 /**
@@ -67,7 +67,7 @@ public class ResourceFinderInjector implements RegistrarObserver {
      */
     public Object reconnect(Object object) throws RegistrarException {
 
-        ((ResourceConsumer) object).setResourceFinder(finder);
+        ((ResourceAware) object).setResourceFinder(finder);
         return object;
     }
 }

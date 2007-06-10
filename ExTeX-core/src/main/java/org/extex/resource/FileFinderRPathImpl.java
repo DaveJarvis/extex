@@ -43,7 +43,7 @@ public class FileFinderRPathImpl
         implements
             ResourceFinder,
             LogEnabled,
-            PropertyConfigurable {
+            PropertyAware {
 
     /**
      * The field <tt>logger</tt> contains the logger to be used for tracing.
@@ -211,7 +211,7 @@ public class FileFinderRPathImpl
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.resource.PropertyConfigurable#setProperties(java.util.Properties)
+     * @see org.extex.resource.PropertyAware#setProperties(java.util.Properties)
      */
     public void setProperties(Properties prop) {
 

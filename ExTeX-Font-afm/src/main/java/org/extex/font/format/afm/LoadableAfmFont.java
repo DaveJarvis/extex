@@ -40,7 +40,7 @@ import org.extex.font.exception.CorruptFontException;
 import org.extex.font.exception.FontException;
 import org.extex.font.fontparameter.FontParameter;
 import org.extex.font.unicode.GlyphName;
-import org.extex.resource.ResourceConsumer;
+import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 
 /**
@@ -59,7 +59,7 @@ import org.extex.resource.ResourceFinder;
 public class LoadableAfmFont
         implements
             LoadableFont,
-            ResourceConsumer,
+            ResourceAware,
             BackendFont {
 
     /**

@@ -41,7 +41,7 @@ import org.extex.core.exception.GeneralException;
 import org.extex.font.BackendCharacter;
 import org.extex.font.BackendFontManager;
 import org.extex.font.CoreFontFactory;
-import org.extex.font.FontFactoryConsumer;
+import org.extex.font.FontAware;
 import org.extex.font.exception.FontException;
 import org.extex.font.manager.ManagerInfo;
 import org.extex.framework.configuration.Configurable;
@@ -87,7 +87,7 @@ public class XMLDocumentWriter
             SingleDocumentStream,
             NodeVisitor<Object, Object>,
             Configurable,
-            FontFactoryConsumer {
+            FontAware {
 
     /**
      * DIN-A4 height.

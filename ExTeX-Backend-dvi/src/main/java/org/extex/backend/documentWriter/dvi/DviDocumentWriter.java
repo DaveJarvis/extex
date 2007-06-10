@@ -28,8 +28,6 @@ import org.extex.backend.documentWriter.SingleDocumentStream;
 import org.extex.backend.documentWriter.exception.NoOutputStreamException;
 import org.extex.core.exception.GeneralException;
 import org.extex.framework.configuration.Configuration;
-import org.extex.framework.i18n.Localizable;
-import org.extex.framework.i18n.Localizer;
 import org.extex.typesetter.Mode;
 import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.InspectableNodeVisitor;
@@ -67,8 +65,7 @@ import org.extex.typesetter.type.page.Page;
 public class DviDocumentWriter
         implements
             DocumentWriter,
-            SingleDocumentStream,
-            Localizable {
+            SingleDocumentStream {
 
     /**
      * Internal <code>NodeVisitor</code> of this class.
@@ -564,11 +561,6 @@ public class DviDocumentWriter
     private boolean isBeginDviFile = true;
 
     /**
-     * Object for localize strings messages.
-     */
-    //private Localizer localizer = null;
-
-    /**
      * Current mode (<code>{@link
      * org.extex.typesetter.Mode#VERTICAL Mode.VERTICAL}</code>
      * or <code>{@link org.extex.typesetter.Mode#HORIZONTAL
@@ -607,19 +599,6 @@ public class DviDocumentWriter
     public void close() throws GeneralException, IOException {
 
         dviWriter.endDviFile();
-    }
-
-    /**
-     * Set the <code>Localizer</code> method here.
-     * 
-     * @param theLocalizer a <code>Localizer</code> value
-     * 
-     * @see org.extex.framework.i18n.Localizable#enableLocalization(
-     *      org.extex.framework.i18n.Localizer)
-     */
-    public void enableLocalization(Localizer theLocalizer) {
-
-        //localizer = theLocalizer;
     }
 
     /**

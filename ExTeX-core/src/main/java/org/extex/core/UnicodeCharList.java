@@ -19,7 +19,6 @@
 package org.extex.core;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This class provides a list of <code>UnicodeChar</code>s.

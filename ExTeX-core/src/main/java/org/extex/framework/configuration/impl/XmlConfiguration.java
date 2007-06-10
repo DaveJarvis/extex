@@ -31,6 +31,7 @@ import javax.xml.parsers.FactoryConfigurationError;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.ConfigurationLoader;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationIOException;
 import org.extex.framework.configuration.exception.ConfigurationInvalidResourceException;
@@ -47,7 +48,12 @@ import org.xml.sax.SAXException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ConfigurationXMLImpl implements Configuration {
+public class XmlConfiguration implements Configuration {
+
+    /**
+     * The field <tt>loader</tt> contains the optional loader.
+     */
+    private ConfigurationLoader loader = null;
 
     /**
      * This inner class provides an iterator for all sub-configurations of a
@@ -117,7 +123,7 @@ public class ConfigurationXMLImpl implements Configuration {
                 }
             }
 
-            return new ConfigurationXMLImpl((Element) node, base, resource);
+            return new XmlConfiguration((Element) node, base, resource);
         }
 
         /**
@@ -148,7 +154,7 @@ public class ConfigurationXMLImpl implements Configuration {
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 27012007L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Recursively collect the Xpath from the root to the given node.
@@ -177,6 +183,11 @@ public class ConfigurationXMLImpl implements Configuration {
     private String base;
 
     /**
+     * The field <tt>fullName</tt> contains the URL of the resource found.
+     */
+    private String fullName;
+
+    /**
      * The field <tt>resource</tt> contains the name of the resource.
      */
     private String resource;
@@ -188,11 +199,6 @@ public class ConfigurationXMLImpl implements Configuration {
     private Element root;
 
     /**
-     * The field <tt>fullName</tt> contains the URL of the resource found.
-     */
-    private String fullName;
-
-    /**
      * Creates a new object with a given root element. This constructor is
      * private since it is meant for internal purposes only.
      * 
@@ -200,8 +206,7 @@ public class ConfigurationXMLImpl implements Configuration {
      * @param base the base for the resource
      * @param resource the name of the resource
      */
-    private ConfigurationXMLImpl(Element root, String base,
-            String resource) {
+    private XmlConfiguration(Element root, String base, String resource) {
 
         super();
         this.root = root;
@@ -237,7 +242,7 @@ public class ConfigurationXMLImpl implements Configuration {
      * @throws ConfigurationIOException in case of an IO exception while reading
      *         the resource.
      */
-    public ConfigurationXMLImpl(InputStream stream, String resource)
+    public XmlConfiguration(InputStream stream, String resource)
             throws ConfigurationInvalidResourceException,
                 ConfigurationNotFoundException,
                 ConfigurationSyntaxException,
@@ -266,7 +271,7 @@ public class ConfigurationXMLImpl implements Configuration {
      * Consider the following creation of an instance of this class
      * 
      * <pre>
-     *   cfg = new ConfigurationXMLImpl("cfg");
+     *   cfg = new XmlConfiguration("cfg");
      *  </pre>
      * 
      * Then the following files are searched on the classpath until one is
@@ -293,7 +298,7 @@ public class ConfigurationXMLImpl implements Configuration {
      * @throws ConfigurationIOException in case of an IO exception while reading
      *         the resource
      */
-    public ConfigurationXMLImpl(String resource)
+    public XmlConfiguration(String resource)
             throws ConfigurationInvalidResourceException,
                 ConfigurationNotFoundException,
                 ConfigurationSyntaxException,
@@ -372,11 +377,10 @@ public class ConfigurationXMLImpl implements Configuration {
                 String src = ((Element) node).getAttribute("src");
 
                 if (src == null || src.equals("")) {
-                    return new ConfigurationXMLImpl((Element) node, base,
-                        resource);
+                    return new XmlConfiguration((Element) node, base, resource);
                 }
 
-                return new ConfigurationXMLImpl(base + src).src(name, node);
+                return new XmlConfiguration(base + src).src(name, node);
             }
         }
 
@@ -423,8 +427,8 @@ public class ConfigurationXMLImpl implements Configuration {
      * 
      * @throws ConfigurationException in case of other errors.
      */
-    public Configuration findConfiguration(String key,
-            String attribute) throws ConfigurationException {
+    public Configuration findConfiguration(String key, String attribute)
+            throws ConfigurationException {
 
         if (key == null || attribute == null) {
             return null;
@@ -434,7 +438,7 @@ public class ConfigurationXMLImpl implements Configuration {
                 node.getNextSibling()) {
             if (key.equals(node.getNodeName())
                     && attribute.equals(((Element) node).getAttribute("name"))) {
-                return new ConfigurationXMLImpl((Element) node, base, resource);
+                return new XmlConfiguration((Element) node, base, resource);
             }
         }
 
@@ -550,8 +554,7 @@ public class ConfigurationXMLImpl implements Configuration {
      *         not correspond to one of the tags in the current configuration
      * @throws ConfigurationException in case of some other kind of error
      */
-    public Configuration getConfiguration(String key,
-            String attribute)
+    public Configuration getConfiguration(String key, String attribute)
             throws ConfigurationNotFoundException,
                 ConfigurationException {
 
@@ -648,25 +651,8 @@ public class ConfigurationXMLImpl implements Configuration {
 
     /**
      * Get the list of all values with the given tag name in the current
-     * configuration.
-     * 
-     * @param tag the name of the tags
-     * 
-     * @return the list of values
-     * 
-     * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
-     */
-    public List<String> getValues(String tag) {
-
-        List<String> result = new ArrayList<String>();
-        getValues(result, tag);
-        return result;
-    }
-
-    /**
-     * Get the list of all values with the given tag name in the current
      * configuration and append them to a given StringList.
-     *
+     * 
      * {@inheritDoc}
      * 
      * @see org.extex.framework.configuration.Configuration#getValues(java.util.List,
@@ -684,6 +670,23 @@ public class ConfigurationXMLImpl implements Configuration {
                 list.add(getNodeValue(node));
             }
         }
+    }
+
+    /**
+     * Get the list of all values with the given tag name in the current
+     * configuration.
+     * 
+     * @param tag the name of the tags
+     * 
+     * @return the list of values
+     * 
+     * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
+     */
+    public List<String> getValues(String tag) {
+
+        List<String> result = new ArrayList<String>();
+        getValues(result, tag);
+        return result;
     }
 
     /**
@@ -729,11 +732,10 @@ public class ConfigurationXMLImpl implements Configuration {
             if (node.getNodeName().equals(key)) {
                 String src = ((Element) node).getAttribute("src");
                 if (src == null || src.equals("")) {
-                    list.add(new ConfigurationXMLImpl((Element) node, base,
+                    list.add(new XmlConfiguration((Element) node, base,
                         resource));
                 } else {
-                    list.add(new ConfigurationXMLImpl(base + src)
-                        .src(key, node));
+                    list.add(new XmlConfiguration(base + src).src(key, node));
                 }
             }
         }
@@ -752,12 +754,11 @@ public class ConfigurationXMLImpl implements Configuration {
      * @return an input stream to the requested configuration or
      *         <code>null</code> if none could be opened.
      */
-    private InputStream locateConfiguration(String name,
-            ClassLoader classLoader) {
+    private InputStream locateConfiguration(String name, ClassLoader classLoader) {
 
-        for (int pi = 0; pi < PATHS.length; pi++) {
-            for (int ei = 0; ei < EXTENSIONS.length; ei++) {
-                fullName = PATHS[pi] + name + EXTENSIONS[ei];
+        for (String p : PATHS) {
+            for (String ext : EXTENSIONS) {
+                fullName = p + name + ext;
                 InputStream stream = classLoader.getResourceAsStream(fullName);
                 if (stream != null) {
                     return stream;
@@ -781,8 +782,8 @@ public class ConfigurationXMLImpl implements Configuration {
      * @throws ConfigurationSyntaxException in case of a syntax error in the
      *         configuration XML
      */
-    protected void readConfiguration(InputStream stream,
-            String theResource, String theBase)
+    protected void readConfiguration(InputStream stream, String theResource,
+            String theBase)
             throws ConfigurationNotFoundException,
                 ConfigurationIOException,
                 ConfigurationSyntaxException {
@@ -836,9 +837,8 @@ public class ConfigurationXMLImpl implements Configuration {
         if (src == null || src.equals("")) {
             return this;
         }
-        Configuration cfg =
-                new ConfigurationXMLImpl(base + src).src(name, root);
-        if (!((ConfigurationXMLImpl) cfg).root.getNodeName().equals(name)) {
+        Configuration cfg = new XmlConfiguration(base + src).src(name, root);
+        if (!((XmlConfiguration) cfg).root.getNodeName().equals(name)) {
             throw new ConfigurationNotFoundException(name, src);
         }
         return cfg;
@@ -862,6 +862,17 @@ public class ConfigurationXMLImpl implements Configuration {
         }
         toString(sb, root);
         return sb.toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(
+     *      org.extex.framework.configuration.ConfigurationLoader)
+     */
+    public void setConfigurationLoader(ConfigurationLoader loader) {
+
+        this.loader = loader;
     }
 
 }

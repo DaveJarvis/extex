@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,23 +17,28 @@
  *
  */
 
-package org.extex.font;
+package org.extex.framework.configuration;
 
+import java.io.IOException;
 
 /**
- * This interface describes the ability to receive a
- * {@link org.extex.font.FontFactory FontFactory} via a setter method.
- *
+ * This interface describes the ability to load Configuration from an external
+ * source.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4484 $
+ * @version $Revision$
  */
-public interface FontFactoryConsumer {
+public interface ConfigurationLoader {
 
     /**
-     * Setter for the font factory.
+     * Load a resource from an external source.
+     * 
+     * @param resource the resource to load
+     * 
+     * @return the configuration found or null if none could be found
      *
-     * @param factory the font factory
+     * @throws IOException in case of an I/O error 
      */
-    void setFontFactory(CoreFontFactory factory);
+    Configuration loadConfiguration(String resource) throws IOException;
 
 }

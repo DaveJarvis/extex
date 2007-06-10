@@ -209,7 +209,7 @@ public final class TestTeX {
             throws Exception {
 
         Configuration config =
-                new ConfigurationFactory().newInstance("config/"
+                ConfigurationFactory.newInstance("config/"
                         + configurationFile);
         InterpreterFactory intf =
                 new InterpreterFactory(config.getConfiguration("Interpreter"),

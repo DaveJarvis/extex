@@ -112,7 +112,7 @@ public class DviDisassemble implements DviProcessor {
         ResourceFinder finder;
         try {
             config =
-                    new ConfigurationFactory().newInstance(properties
+                    ConfigurationFactory.newInstance(properties
                         .getProperty(PROP_CONFIG));
             finder =
                     new ResourceFinderFactory()

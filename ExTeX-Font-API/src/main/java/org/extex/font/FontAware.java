@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,21 +17,23 @@
  *
  */
 
-package org.extex.framework.i18n;
+package org.extex.font;
+
 
 /**
- * This interface describes the feature to receive a localizer.
+ * This interface describes the ability to receive a
+ * {@link org.extex.font.FontFactory FontFactory} via a setter method.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4484 $
  */
-public interface Localizable {
+public interface FontAware {
 
     /**
-     * Setter for the Localizer.
+     * Setter for the font factory.
      *
-     * @param localizer the localizer to use
+     * @param factory the font factory
      */
-    void enableLocalization(Localizer localizer);
+    void setFontFactory(CoreFontFactory factory);
 
 }

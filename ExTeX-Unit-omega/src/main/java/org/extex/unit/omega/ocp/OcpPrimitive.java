@@ -23,7 +23,7 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.resource.ResourceConsumer;
+import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
@@ -57,7 +57,7 @@ import org.extex.unit.omega.ocp.util.Ocp;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
-public class OcpPrimitive extends AbstractFileCode implements ResourceConsumer {
+public class OcpPrimitive extends AbstractFileCode implements ResourceAware {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -102,7 +102,7 @@ public class OcpPrimitive extends AbstractFileCode implements ResourceConsumer {
      * 
      * @param resourceFinder the resource finder
      * 
-     * @see org.extex.resource.ResourceConsumer#setResourceFinder(
+     * @see org.extex.resource.ResourceAware#setResourceFinder(
      *      org.extex.resource.ResourceFinder)
      */
     public void setResourceFinder(ResourceFinder resourceFinder) {

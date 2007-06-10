@@ -32,13 +32,13 @@ import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.color.ColorAware;
 import org.extex.color.ColorConverter;
 import org.extex.font.CoreFontFactory;
-import org.extex.font.FontFactoryConsumer;
+import org.extex.font.FontAware;
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
-import org.extex.resource.PropertyConfigurable;
-import org.extex.resource.ResourceConsumer;
+import org.extex.resource.PropertyAware;
+import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 
 /**
@@ -62,11 +62,11 @@ import org.extex.resource.ResourceFinder;
  * <dd> If this interface is implemented then a
  * {@link org.extex.framework.i18n.Localizer Localizer} is passed in with the
  * interface method. </dd>
- * <dt>{@link org.extex.resource.ResourceConsumer ResourceConsumer}</dt>
+ * <dt>{@link org.extex.resource.ResourceAware ResourceAware}</dt>
  * <dd> If this interface is implemented then a
  * {@link org.extex.resource.ResourceFinder ResourceFinder} is passed in with
  * the interface method. </dd>
- * <dt>{@link org.extex.resource.PropertyConfigurable PropertyConfigurable}</dt>
+ * <dt>{@link org.extex.resource.PropertyAware PropertyAware}</dt>
  * <dd> If this interface is implemented then a
  * {@link java.util.Properties Properties} instance is passed in with the
  * interface method. </dd>
@@ -128,17 +128,17 @@ public class BackendFactory extends AbstractFactory {
             type, //
             options, //
             outFactory);
-        if (docWriter instanceof PropertyConfigurable) {
-            ((PropertyConfigurable) docWriter).setProperties(properties);
+        if (docWriter instanceof PropertyAware) {
+            ((PropertyAware) docWriter).setProperties(properties);
         }
         if (docWriter instanceof ColorAware) {
             ((ColorAware) docWriter).setColorConverter(colorConverter);
         }
-        if (docWriter instanceof ResourceConsumer) {
-            ((ResourceConsumer) docWriter).setResourceFinder(finder);
+        if (docWriter instanceof ResourceAware) {
+            ((ResourceAware) docWriter).setResourceFinder(finder);
         }
-        if (docWriter instanceof FontFactoryConsumer) {
-            ((FontFactoryConsumer) docWriter).setFontFactory(fontFactory);
+        if (docWriter instanceof FontAware) {
+            ((FontAware) docWriter).setFontFactory(fontFactory);
         }
         docWriter.setParameter("Creator", creator);
 

@@ -66,7 +66,7 @@ public class U2tFactoryTest extends TestCase {
     private void makeResourceFinder() throws ConfigurationException {
 
         Configuration config =
-                new ConfigurationFactory().newInstance("U2tFactoryTest.xml");
+                ConfigurationFactory.newInstance("U2tFactoryTest.xml");
 
         Logger logger = Logger.getLogger("Test");
         finder =

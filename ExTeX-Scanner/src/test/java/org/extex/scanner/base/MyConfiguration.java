@@ -23,6 +23,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.ConfigurationLoader;
 
 /**
  * This class is a dummy configuration which does nothing but deliver a single
@@ -218,6 +219,17 @@ public class MyConfiguration implements Configuration {
     public Iterator<Configuration> iterator(String key) {
 
         return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(
+     *      org.extex.framework.configuration.ConfigurationLoader)
+     */
+    public void setConfigurationLoader(ConfigurationLoader loader) {
+
+        // unused
     }
 
 }

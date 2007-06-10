@@ -53,8 +53,8 @@ import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingException;
 import org.extex.framework.configuration.exception.ConfigurationWrapperException;
-import org.extex.framework.i18n.Localizable;
 import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Conditional;
 import org.extex.interpreter.ConditionalSwitch;
@@ -162,7 +162,6 @@ public class ContextImpl
             DocumentWriterOptions,
             TypesetterOptions,
             TokenStreamOptions,
-            Localizable,
             LogEnabled,
             Configurable,
             Serializable {
@@ -479,7 +478,7 @@ public class ContextImpl
         Group next = group.getNext();
 
         if (next == null) {
-            throw new HelpingException(localizer, "TTP.TooManyRightBraces");
+            throw new HelpingException(getLocalizer(), "TTP.TooManyRightBraces");
         }
 
         group.runAfterGroup();
@@ -557,19 +556,6 @@ public class ContextImpl
             tc = typesettingContextFactory.newInstance(oldTc);
         }
         set(tc, true);
-    }
-
-    /**
-     * Setter for the localizer.
-     * 
-     * @param theLocalizer the localizer to use
-     * 
-     * @see org.extex.framework.i18n.Localizable#enableLocalization(
-     *      org.extex.framework.i18n.Localizer)
-     */
-    public void enableLocalization(Localizer theLocalizer) {
-
-        this.localizer = theLocalizer;
     }
 
     /**
@@ -1046,6 +1032,19 @@ public class ContextImpl
     public UnicodeChar getLccode(UnicodeChar uc) {
 
         return group.getLccode(uc);
+    }
+
+    /**
+     * Getter for localizer.
+     * 
+     * @return the localizer.
+     */
+    protected Localizer getLocalizer() {
+
+        if (localizer == null) {
+            localizer = LocalizerFactory.getLocalizer(getClass().getName());
+        }
+        return localizer;
     }
 
     /**
@@ -2255,14 +2254,14 @@ public class ContextImpl
             throws HelpingException {
 
         if (magnificationLock && this.magnification != mag) {
-            throw new HelpingException(localizer, "TTP.IncompatibleMag", //
+            throw new HelpingException(getLocalizer(), "TTP.IncompatibleMag", //
                 Long.toString(mag), Long.toString(magnification));
         }
 
         magnificationLock |= lock;
 
         if (mag < 1 || mag > magnificationMax) {
-            throw new HelpingException(localizer, "TTP.IllegalMag", //
+            throw new HelpingException(getLocalizer(), "TTP.IllegalMag", //
                 Long.toString(mag));
         }
 

@@ -28,8 +28,8 @@ import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.resource.PropertyConfigurable;
-import org.extex.resource.ResourceConsumer;
+import org.extex.resource.PropertyAware;
+import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
 
@@ -70,14 +70,14 @@ public abstract class AbstractFontFactoryTester extends TestCase {
         CoreFontFactory factory = new FontFactoryImpl();
 
         Configuration config =
-                new ConfigurationFactory().newInstance(classname.replaceAll(
-                    "\\.", "/"));
+                ConfigurationFactory.newInstance(classname.replaceAll("\\.",
+                    "/"));
 
         if (factory instanceof Configurable) {
             ((Configurable) factory)
                 .configure(config.getConfiguration("Fonts"));
         }
-        if (factory instanceof ResourceConsumer) {
+        if (factory instanceof ResourceAware) {
             Logger logger = Logger.getLogger("Test");
             finder =
                     new ResourceFinderFactory().createResourceFinder(config
@@ -85,10 +85,10 @@ public abstract class AbstractFontFactoryTester extends TestCase {
                         new Properties(), null /* provider */);
             finder.enableTracing(true);
 
-            ((ResourceConsumer) factory).setResourceFinder(finder);
+            ((ResourceAware) factory).setResourceFinder(finder);
         }
-        if (factory instanceof PropertyConfigurable) {
-            ((PropertyConfigurable) factory).setProperties(new Properties());
+        if (factory instanceof PropertyAware) {
+            ((PropertyAware) factory).setProperties(new Properties());
         }
         return factory;
     }

@@ -23,7 +23,7 @@ import org.extex.backend.outputStream.OutputStreamConsumer;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.resource.ResourceConsumer;
+import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 
 /**
@@ -76,7 +76,7 @@ import org.extex.resource.ResourceFinder;
  * <dd> If this interface is implemented then a
  * {@link org.extex.framework.i18n.Localizer Localizer} is passed in with the
  * interface method. </dd>
- * <dt>{@link org.extex.resource.ResourceConsumer ResourceConsumer}</dt>
+ * <dt>{@link org.extex.resource.ResourceAware ResourceAware}</dt>
  * <dd> If this interface is implemented then a
  * {@link org.extex.resource.ResourceFinder ResourceFinder} is passed in with
  * the interface method. </dd>
@@ -119,8 +119,8 @@ public class LanguageManagerFactory extends AbstractFactory {
         if (manager instanceof OutputStreamConsumer) {
             ((OutputStreamConsumer) manager).setOutputStreamFactory(outFactory);
         }
-        if (manager instanceof ResourceConsumer) {
-            ((ResourceConsumer) manager).setResourceFinder(finder);
+        if (manager instanceof ResourceAware) {
+            ((ResourceAware) manager).setResourceFinder(finder);
         }
 
         return manager;

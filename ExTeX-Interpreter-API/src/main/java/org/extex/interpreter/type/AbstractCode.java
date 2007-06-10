@@ -25,8 +25,8 @@ import java.io.Serializable;
 import org.extex.core.exception.helping.CantUseInException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.Registrar;
-import org.extex.framework.i18n.Localizable;
 import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -44,7 +44,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public abstract class AbstractCode implements Code, Localizable, Serializable {
+public abstract class AbstractCode implements Code, Serializable {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
@@ -91,19 +91,6 @@ public abstract class AbstractCode implements Code, Localizable, Serializable {
     }
 
     /**
-     * Setter for the localizer.
-     * 
-     * @param theLocalizer the new value for the localizer
-     * 
-     * @see org.extex.framework.i18n.Localizable#enableLocalization(
-     *      org.extex.framework.i18n.Localizer)
-     */
-    public void enableLocalization(Localizer theLocalizer) {
-
-        this.localizer = theLocalizer;
-    }
-
-    /**
      * {@inheritDoc}
      * 
      * @see org.extex.interpreter.type.Code#execute(
@@ -125,7 +112,10 @@ public abstract class AbstractCode implements Code, Localizable, Serializable {
      */
     protected Localizer getLocalizer() {
 
-        return this.localizer;
+        if (localizer == null) {
+            localizer = LocalizerFactory.getLocalizer(getClass().getName());
+        }
+        return localizer;
     }
 
     /**

@@ -22,8 +22,6 @@ package org.extex.logging;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 
-import org.extex.logging.LogFormatter;
-
 import junit.framework.TestCase;
 
 /**

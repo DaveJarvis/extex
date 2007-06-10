@@ -33,8 +33,8 @@ import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.resource.PropertyConfigurable;
-import org.extex.resource.ResourceConsumer;
+import org.extex.resource.PropertyAware;
+import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 
 /**
@@ -49,9 +49,9 @@ import org.extex.resource.ResourceFinder;
 public class FontFactoryImpl
         implements
             CoreFontFactory,
-            ResourceConsumer,
+            ResourceAware,
             Configurable,
-            PropertyConfigurable,
+            PropertyAware,
             BackendFontFactory {
 
     /**
@@ -183,8 +183,8 @@ public class FontFactoryImpl
             if (in != null) {
 
                 font = new Loader().getInstance(subcfg);
-                if (font instanceof ResourceConsumer) {
-                    ResourceConsumer consumer = (ResourceConsumer) font;
+                if (font instanceof ResourceAware) {
+                    ResourceAware consumer = (ResourceAware) font;
                     consumer.setResourceFinder(finder);
                 }
 
@@ -239,15 +239,15 @@ public class FontFactoryImpl
 
             manager.setBackendFontFactory(factory);
 
-            if (manager instanceof ResourceConsumer) {
-                ((ResourceConsumer) manager).setResourceFinder(finder);
+            if (manager instanceof ResourceAware) {
+                ((ResourceAware) manager).setResourceFinder(finder);
             }
             return manager;
         }
     }
 
     /**
-     * @see org.extex.resource.PropertyConfigurable#setProperties(java.util.Properties)
+     * @see org.extex.resource.PropertyAware#setProperties(java.util.Properties)
      */
     public void setProperties(Properties properties) {
 
@@ -255,7 +255,7 @@ public class FontFactoryImpl
     }
 
     /**
-     * @see org.extex.resource.ResourceConsumer#setResourceFinder(
+     * @see org.extex.resource.ResourceAware#setResourceFinder(
      *      org.extex.resource.ResourceFinder)
      */
     public void setResourceFinder(ResourceFinder finder) {

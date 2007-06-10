@@ -1025,10 +1025,8 @@ public class TeX extends ExTeX {
      * @param config the configuration object for the document writer
      * @param outFactory the output factory
      * @param options the options to be passed to the document writer
-     * @param colorConfig the configuration for the color converter
      * @param finder the resource finder if one is requested
      * @param fontFactory the font factory
-     * 
      * @return the new document writer
      * 
      * @throws DocumentWriterException in case of an error
@@ -1038,14 +1036,12 @@ public class TeX extends ExTeX {
      *      org.extex.framework.configuration.Configuration,
      *      org.extex.backend.outputStream.OutputStreamFactory,
      *      org.extex.backend.documentWriter.DocumentWriterOptions,
-     *      org.extex.framework.configuration.Configuration,
      *      org.extex.resource.ResourceFinder, CoreFontFactory)
      */
     @Override
     protected BackendDriver makeBackend(Configuration config,
             OutputStreamFactory outFactory, DocumentWriterOptions options,
-            Configuration colorConfig, ResourceFinder finder,
-            CoreFontFactory fontFactory)
+            ResourceFinder finder, CoreFontFactory fontFactory)
             throws DocumentWriterException,
                 ConfigurationException {
 
@@ -1073,25 +1069,12 @@ public class TeX extends ExTeX {
             }
         });
 
-        return super.makeBackend(config, outFactory, options, colorConfig,
-            finder, fontFactory);
+        return super.makeBackend(config, outFactory, options, finder,
+            fontFactory);
     }
 
     /**
-     * Create a new interpreter.
-     * 
-     * @param config the configuration object for the interpreter
-     * @param outFactory the factory for new output streams
-     * @param finder the resource finder
-     * @param jobname the job name
-     * 
-     * @return the new interpreter
-     * 
-     * @throws ConfigurationException in case that some kind of problems have
-     *         been detected in the configuration
-     * @throws GeneralException in case of an error of some other kind
-     * @throws FontException in case of problems with the font itself
-     * @throws IOException in case of an IO error
+     * {@inheritDoc}
      * 
      * @see org.extex.ExTeX#makeInterpreter(
      *      org.extex.framework.configuration.Configuration,
@@ -1683,7 +1666,7 @@ public class TeX extends ExTeX {
         }
 
         try {
-            showBanner(new ConfigurationFactory()
+            showBanner(ConfigurationFactory
                 .newInstance(getProperty(PROP_CONFIG)), Level.INFO);
         } catch (ConfigurationException e) {
             showBanner(null, Level.INFO);

@@ -27,8 +27,8 @@ import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.ImpossibleException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.i18n.Localizable;
 import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.EditHandler;
 import org.extex.interpreter.ErrorHandler;
@@ -51,7 +51,7 @@ import org.extex.scanner.type.token.Token;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
+public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
 
     /**
      * The field <tt>ENABLE_DEBUG</tt> contains the indicator for turning on
@@ -265,7 +265,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
     /**
      * The field <tt>localizer</tt> contains the localizer.
      */
-    private Localizer localizer;
+    private Localizer localizer = LocalizerFactory.getLocalizer(getClass());
 
     /**
      * The field <tt>logger</tt> contains the logger to write a protocol of
@@ -281,17 +281,6 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled, Localizable {
     public ErrorHandlerImpl() {
 
         super();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.i18n.Localizable#enableLocalization(
-     *      org.extex.framework.i18n.Localizer)
-     */
-    public void enableLocalization(Localizer theLocalizer) {
-
-        this.localizer = theLocalizer;
     }
 
     /**

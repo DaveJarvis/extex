@@ -68,7 +68,7 @@ public class TeXEvaluatorTest extends TestCase {
         ContextImpl context = new ContextImpl();
         context.setTokenFactory(new TokenFactoryImpl());
         try {
-            context.configure(new ConfigurationFactory().newInstance(
+            context.configure(ConfigurationFactory.newInstance(
                 TeXEvaluatorTest.class.getName().replace('.', '/'))
                 .getConfiguration("ExTeX"));
             StringSource source = new StringSource(s);

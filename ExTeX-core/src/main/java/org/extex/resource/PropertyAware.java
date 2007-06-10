@@ -28,7 +28,7 @@ import java.util.Properties;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface PropertyConfigurable {
+public interface PropertyAware {
 
     /**
      * Setter for the properties.

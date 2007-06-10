@@ -120,7 +120,7 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
+public class LsrFinder extends AbstractFinder implements PropertyAware {
 
     /**
      * The field <tt>ATTR_PROPERTY</tt> contains the attribute name for the
@@ -419,7 +419,7 @@ public class LsrFinder extends AbstractFinder implements PropertyConfigurable {
      *
      * @param prop the new properties
      *
-     * @see org.extex.resource.PropertyConfigurable#setProperties(
+     * @see org.extex.resource.PropertyAware#setProperties(
      *      java.util.Properties)
      */
     public void setProperties(Properties prop) {

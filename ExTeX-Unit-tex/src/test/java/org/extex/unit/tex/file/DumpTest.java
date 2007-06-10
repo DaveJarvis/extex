@@ -1060,7 +1060,6 @@ public class DumpTest extends NoFlagsPrimitiveTester {
 
         try {
             Dump dump = new Dump("dump");
-            dump.enableLocalization(LocalizerFactory.getLocalizer(Dump.class));
             dump.setOutputStreamFactory(new OutputStreamFactory() {
 
                 /**

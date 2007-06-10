@@ -19,13 +19,15 @@
 
 package org.extex.framework.configuration;
 
+import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 
 import org.extex.framework.configuration.exception.ConfigurationClassNotFoundException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationInstantiationException;
 import org.extex.framework.configuration.exception.ConfigurationInvalidNameException;
-import org.extex.framework.configuration.impl.ConfigurationXMLImpl;
+import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
+import org.extex.framework.configuration.impl.XmlConfiguration;
 
 /**
  * This is the factory for configurations.
@@ -33,7 +35,7 @@ import org.extex.framework.configuration.impl.ConfigurationXMLImpl;
  * The class to be used for the configuration can be set with the
  * <tt>System.property</tt> named <tt>Util.Configuration.class</tt>. If
  * this property is not set then the fallback class
- * {@link org.extex.framework.configuration.impl.ConfigurationXMLImpl ConfigurationXMLImpl}
+ * {@link org.extex.framework.configuration.impl.XmlConfiguration XmlConfiguration}
  * is used instead.
  * </p>
  * 
@@ -43,12 +45,22 @@ import org.extex.framework.configuration.impl.ConfigurationXMLImpl;
 public class ConfigurationFactory {
 
     /**
-     * Creates a new object.
+     * The field <tt>classloader</tt> contains the class loader.
      */
-    public ConfigurationFactory() {
+    private static ClassLoader classloader =
+            new ConfigurationFactory().getClass().getClassLoader();
 
-        super();
-    }
+    /**
+     * The field <tt>ext</tt> contains extensions to use when searching for
+     * configuration files.
+     */
+    private static final String[] XML_EXTENSIONS = new String[]{"", ".xml"};
+
+    /**
+     * The field <tt>path</tt> contains the path to use when searching for
+     * configuration files.
+     */
+    private static final String[] PATHS = {"config/", ""};
 
     /**
      * Delivers a new
@@ -64,7 +76,7 @@ public class ConfigurationFactory {
      * </p>
      * <p>
      * The default implementation is
-     * {@link org.extex.framework.configuration.impl.ConfigurationXMLImpl ConfigurationXMLImpl}
+     * {@link org.extex.framework.configuration.impl.XmlConfiguration XmlConfiguration}
      * which uses an XML file located on the classpath.
      * </p>
      * 
@@ -84,20 +96,31 @@ public class ConfigurationFactory {
      *         Configuration fails</li>
      *         </ul>
      */
-    public Configuration newInstance(String source)
+    public static Configuration newInstance(String source)
             throws ConfigurationException {
 
         if (source == null) {
             throw new ConfigurationInvalidNameException(null);
         }
+        Configuration config = null;
 
         String classname = System.getProperty("Util.Configuration.class");
 
         if (classname == null) {
-            return new ConfigurationXMLImpl(source);
-        }
 
-        Configuration config = null;
+            for (String p : PATHS) {
+                for (String ext : XML_EXTENSIONS) {
+                    String fullName = p + source + ext;
+                    InputStream stream =
+                            classloader.getResourceAsStream(fullName);
+                    if (stream != null) {
+                        return new XmlConfiguration(stream, source);
+                    }
+                }
+            }
+
+            throw new ConfigurationNotFoundException(source, null);
+        }
 
         try {
             config =
@@ -125,6 +148,14 @@ public class ConfigurationFactory {
         }
 
         return config;
+    }
+
+    /**
+     * Creates a new object. Not used for this utility class.
+     */
+    private ConfigurationFactory() {
+
+        // unused
     }
 
 }

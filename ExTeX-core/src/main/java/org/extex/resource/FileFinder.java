@@ -113,7 +113,7 @@ import org.extex.framework.configuration.exception.ConfigurationMissingException
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class FileFinder extends AbstractFinder implements PropertyConfigurable {
+public class FileFinder extends AbstractFinder implements PropertyAware {
 
     /**
      * The constant <tt>PATH_TAG</tt> contains the name of the tag to get the
@@ -250,7 +250,7 @@ public class FileFinder extends AbstractFinder implements PropertyConfigurable {
     }
 
     /**
-     * @see org.extex.resource.PropertyConfigurable#setProperties(
+     * @see org.extex.resource.PropertyAware#setProperties(
      *      java.util.Properties)
      */
     public void setProperties(Properties properties) {

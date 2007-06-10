@@ -61,7 +61,7 @@ public class ConfigurationFactoryTest extends TestCase {
     public void testNewInstance1() {
 
         try {
-            new ConfigurationFactory().newInstance(null);
+            ConfigurationFactory.newInstance(null);
             assertFalse("Exception expected", true);
         } catch (ConfigurationException e) {
             assertEquals("Invalid configuration name found", //
@@ -77,7 +77,7 @@ public class ConfigurationFactoryTest extends TestCase {
     public void testNewInstance2() {
 
         try {
-            new ConfigurationFactory().newInstance("");
+            ConfigurationFactory.newInstance("");
             assertFalse("Exception expected", true);
         } catch (ConfigurationException e) {
             assertEquals(
@@ -94,7 +94,7 @@ public class ConfigurationFactoryTest extends TestCase {
     public void testNewInstance3() {
 
         try {
-            new ConfigurationFactory().newInstance("undefined");
+            ConfigurationFactory.newInstance("undefined");
             assertFalse("Exception expected", true);
         } catch (ConfigurationException e) {
             assertEquals("Configuration `undefined' not found", //
@@ -110,7 +110,7 @@ public class ConfigurationFactoryTest extends TestCase {
     public void testNewInstance4() {
 
         try {
-            new ConfigurationFactory()
+            ConfigurationFactory
                     .newInstance("org/extex/framework/configuration/EmptyConfiguration.xml");
             assertFalse("Exception expected", true);
         } catch (ConfigurationException e) {
@@ -127,7 +127,7 @@ public class ConfigurationFactoryTest extends TestCase {
      */
     public void testNewInstance10() throws ConfigurationException {
 
-        Configuration cfg = new ConfigurationFactory()
+        Configuration cfg = ConfigurationFactory
                 .newInstance("org/extex/framework/configuration/Configuration.xml");
         assertNotNull(cfg);
     }

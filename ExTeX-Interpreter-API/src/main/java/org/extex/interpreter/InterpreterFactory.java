@@ -27,7 +27,7 @@ import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.resource.PropertyConfigurable;
+import org.extex.resource.PropertyAware;
 
 /**
  * This class provides a factory for
@@ -73,8 +73,8 @@ public class InterpreterFactory extends AbstractFactory {
         Interpreter interpreter =
                 (Interpreter) createInstance(Interpreter.class);
 
-        if (interpreter instanceof PropertyConfigurable) {
-            ((PropertyConfigurable) interpreter).setProperties(properties);
+        if (interpreter instanceof PropertyAware) {
+            ((PropertyAware) interpreter).setProperties(properties);
         }
         if (interpreter instanceof OutputStreamConsumer) {
             ((OutputStreamConsumer) interpreter)

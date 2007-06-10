@@ -24,6 +24,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.ConfigurationLoader;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationIOException;
 import org.extex.framework.configuration.exception.ConfigurationInvalidResourceException;
@@ -46,6 +47,11 @@ public class MultiConfiguration implements Configuration {
     private Configuration[] configs;
 
     /**
+     * The field <tt>loader</tt> contains the optional loader.
+     */
+    private ConfigurationLoader loader = null;
+
+    /**
      * Creates a new object.
      * 
      * @param parts the configs to treat jointly
@@ -56,7 +62,7 @@ public class MultiConfiguration implements Configuration {
             throws ConfigurationException {
 
         super();
-        this.configs = parts;
+        this.configs = parts.clone();
     }
 
     /**
@@ -268,16 +274,6 @@ public class MultiConfiguration implements Configuration {
     }
 
     /**
-     * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
-     */
-    public List<String> getValues(String key) {
-
-        List<String> result = new ArrayList<String>();
-        getValues(result, key);
-        return result;
-    }
-
-    /**
      * {@inheritDoc}
      * 
      * @see org.extex.framework.configuration.Configuration#getValues(
@@ -288,6 +284,24 @@ public class MultiConfiguration implements Configuration {
         for (Configuration cfg : configs) {
             cfg.getValues(list, key);
         }
+    }
+
+    /**
+     * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
+     */
+    public List<String> getValues(String key) {
+
+        List<String> result = new ArrayList<String>();
+        getValues(result, key);
+        return result;
+    }
+
+    /**
+     * @see org.extex.framework.configuration.Configuration#iterator()
+     */
+    public Iterator<Configuration> iterator() throws ConfigurationException {
+
+        return new MultiConfigurationIterator(configs, null);
     }
 
     /**
@@ -308,11 +322,14 @@ public class MultiConfiguration implements Configuration {
     }
 
     /**
-     * @see org.extex.framework.configuration.Configuration#iterator()
+     * {@inheritDoc}
+     * 
+     * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(
+     *      org.extex.framework.configuration.ConfigurationLoader)
      */
-    public Iterator<Configuration> iterator() throws ConfigurationException {
+    public void setConfigurationLoader(ConfigurationLoader loader) {
 
-        return new MultiConfigurationIterator(configs, null);
+        this.loader = loader;
     }
 
 }

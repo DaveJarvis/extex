@@ -26,6 +26,7 @@ import java.util.List;
 import junit.framework.TestCase;
 
 import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.ConfigurationLoader;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingException;
 
@@ -179,6 +180,17 @@ public class ClasspathArchiveFinderTest extends TestCase {
                 throws ConfigurationException {
 
             return null;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(
+         *      org.extex.framework.configuration.ConfigurationLoader)
+         */
+        public void setConfigurationLoader(ConfigurationLoader loader) {
+
+            // noop
         }
 
     };

@@ -331,4 +331,10 @@ public interface Configuration extends Iterable<Configuration> {
      */
     Iterator<Configuration> iterator(String key) throws ConfigurationException;
 
+    /**
+     * Sets a loader for new external sources.
+     *
+     * @param loader the loader
+     */
+    void setConfigurationLoader(ConfigurationLoader loader);
 }

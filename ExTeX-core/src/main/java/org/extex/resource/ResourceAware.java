@@ -25,7 +25,7 @@ package org.extex.resource;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface ResourceConsumer {
+public interface ResourceAware {
 
     /**
      * Setter for the resource finder.

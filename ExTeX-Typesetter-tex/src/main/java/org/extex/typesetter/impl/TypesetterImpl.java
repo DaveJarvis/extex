@@ -32,8 +32,8 @@ import org.extex.core.exception.ImpossibleException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.glue.FixedGlue;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.i18n.Localizable;
 import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.ListMakers;
 import org.extex.interpreter.TokenSource;
@@ -76,7 +76,6 @@ public class TypesetterImpl extends ListMakerFactory
         implements
             Typesetter,
             ListManager,
-            Localizable,
             TokenDelegateListMaker,
             LogEnabled {
 
@@ -324,19 +323,6 @@ public class TypesetterImpl extends ListMakerFactory
             throws TypesetterException {
 
         listMaker.cr(context, tc, uc);
-    }
-
-    /**
-     * Setter for the localizer.
-     * 
-     * @param theLocalizer the new localizer
-     * 
-     * @see org.extex.framework.i18n.Localizable#enableLocalization(
-     *      org.extex.framework.i18n.Localizer)
-     */
-    public void enableLocalization(Localizer theLocalizer) {
-
-        localizer = theLocalizer;
     }
 
     /**
@@ -851,6 +837,8 @@ public class TypesetterImpl extends ListMakerFactory
      *      long, long)
      */
     public void showlists(StringBuffer sb, long depth, long breadth) {
+
+        localizer = LocalizerFactory.getLocalizer(getClass());
 
         sb.append(localizer.format("Showlist.Format", listMaker.getMode()
             .toString(), Integer.toString(listMaker.getLocator()

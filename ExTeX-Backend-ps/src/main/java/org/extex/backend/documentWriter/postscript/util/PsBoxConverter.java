@@ -383,11 +383,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor<Object, StringBu
         y.add(node.getShift());
 
         drawBox(node, oOut, "Box");
-        Node n;
-        int len = node.size();
 
-        for (int i = 0; i < len; i++) {
-            n = node.get(i);
+        for (Node n : node) {
             n.visit(this, oOut);
             x.add(n.getWidth());
         }
@@ -531,11 +528,8 @@ public class PsBoxConverter implements PsConverter, NodeVisitor<Object, StringBu
         y.add(node.getShift());
 
         drawBox(node, oOut, "Box");
-        Node n;
-        int len = node.size();
 
-        for (int i = 0; i < len; i++) {
-            n = node.get(i);
+        for (Node n : node) {
             n.visit(this, oOut);
             y.subtract(n.getHeight());
             y.subtract(n.getDepth());

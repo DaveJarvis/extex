@@ -19,7 +19,6 @@
 
 package org.extex.typesetter.dump;
 
-import org.extex.core.count.Count;
 import org.extex.core.count.FixedCount;
 import org.extex.core.glue.FixedGlue;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -33,7 +32,7 @@ import org.extex.typesetter.type.NodeList;
 /**
  * This class implements the typesetter interface but simply records the events
  * received.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4787 $
  */
@@ -49,9 +48,8 @@ public class DumpTypesetter extends TypesetterImpl {
 
     /**
      * {@inheritDoc}
-     *
-     * @see org.extex.typesetter.ListMaker#add(
-     *      org.extex.typesetter.type.Node)
+     * 
+     * @see org.extex.typesetter.ListMaker#add( org.extex.typesetter.type.Node)
      */
     @Override
     public void add(Node node)
@@ -63,9 +61,8 @@ public class DumpTypesetter extends TypesetterImpl {
 
     /**
      * {@inheritDoc}
-     *
-     * @see org.extex.typesetter.ListMaker#add(
-     *      org.extex.core.glue.FixedGlue)
+     * 
+     * @see org.extex.typesetter.ListMaker#add( org.extex.core.glue.FixedGlue)
      */
     @Override
     public void add(FixedGlue g) throws TypesetterException {
@@ -75,13 +72,14 @@ public class DumpTypesetter extends TypesetterImpl {
 
     /**
      * {@inheritDoc}
-     *
-     * @see org.extex.typesetter.ListMaker#addSpace(
+     * 
+     * @see org.extex.typesetter.impl.TypesetterImpl#addSpace(
      *      org.extex.typesetter.tc.TypesettingContext,
-     *      FixedCount)
+     *      org.extex.core.count.FixedCount)
      */
+    @Override
     public void addSpace(TypesettingContext typesettingContext,
-            Count spacefactor)
+            FixedCount spacefactor)
             throws TypesetterException,
                 ConfigurationException {
 
@@ -90,7 +88,7 @@ public class DumpTypesetter extends TypesetterImpl {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.typesetter.ListMaker#complete(
      *      org.extex.typesetter.TypesetterOptions)
      */
