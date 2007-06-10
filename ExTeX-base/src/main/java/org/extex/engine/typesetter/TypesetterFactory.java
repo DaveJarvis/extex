@@ -26,6 +26,7 @@ import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.logger.LogEnabled;
+import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.context.Context;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
@@ -189,6 +190,7 @@ public class TypesetterFactory extends AbstractFactory {
      * @param type the symbolic name of the configuration to use
      * @param context the interpreter context
      * @param backend the back-end driver
+     * @param interpreter the interpreter
      * 
      * @return a new typesetter
      * 
@@ -196,7 +198,8 @@ public class TypesetterFactory extends AbstractFactory {
      * @throws TypesetterException in case of another error
      */
     public Typesetter newInstance(String type, Context context,
-            BackendDriver backend) throws TypesetterException {
+            BackendDriver backend, Interpreter interpreter)
+            throws TypesetterException {
 
         Configuration cfg = selectConfiguration(type);
 
@@ -212,6 +215,12 @@ public class TypesetterFactory extends AbstractFactory {
 
         typesetter.setOptions((TypesetterOptions) context);
         typesetter.setBackend(backend);
+
+        OutputRoutineFactory outputRoutineFactory = new OutputRoutineFactory();
+        outputRoutineFactory.configure(cfg.getConfiguration("OutputRoutine"));
+        outputRoutineFactory.enableLogging(getLogger());
+        typesetter.setOutputRoutine(//
+            outputRoutineFactory.newInstance(interpreter));
 
         return typesetter;
     }

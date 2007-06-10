@@ -1510,11 +1510,9 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * Returns the actual size.
+     * {@inheritDoc}
      * 
-     * @return the actual size
-     * 
-     * @see org.extex.font.type.Fount#getActualSize()
+     * @see org.extex.typesetter.tc.font.Font#getActualSize()
      */
     public FixedDimen getActualSize() {
 
@@ -1522,11 +1520,9 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * Returns the check sum.
+     * {@inheritDoc}
      * 
-     * @return the check sum
-     * 
-     * @see org.extex.font.type.Fount#getCheckSum()
+     * @see org.extex.typesetter.tc.font.Font#getCheckSum()
      */
     public int getCheckSum() {
 
@@ -1534,9 +1530,7 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * Returns the design size of the font.
-     * 
-     * @return the design size of the font
+     * {@inheritDoc}
      * 
      * @see org.extex.typesetter.tc.font.Font#getDesignSize()
      */
@@ -1546,11 +1540,9 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * Return the em size of the font.
+     * {@inheritDoc}
      * 
-     * @return em size
-     * 
-     * @see org.extex.font.type.Fount#getEm()
+     * @see org.extex.typesetter.tc.font.Font#getEm()
      */
     public FixedDimen getEm() {
 
@@ -1558,11 +1550,9 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * Return the ex size of the font.
+     * {@inheritDoc}
      * 
-     * @return ex size
-     * 
-     * @see org.extex.font.type.Fount#getEx()
+     * @see org.extex.typesetter.tc.font.Font#getEx()
      */
     public FixedDimen getEx() {
 
@@ -1570,12 +1560,9 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * Return font dimen size with a key.
+     * {@inheritDoc}
      * 
-     * @param key the key
-     * @return the value for the key
-     * 
-     * @see org.extex.font.type.Fount#getFontDimen(java.lang.String)
+     * @see org.extex.typesetter.tc.font.Font#getFontDimen(java.lang.String)
      */
     public FixedDimen getFontDimen(String key) {
 
@@ -1642,15 +1629,6 @@ public class CMR10 implements Font, Serializable {
         return space;
     }
 
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param c character code
-     * @param w width
-     * @param h height
-     * 
-     * @return ...
-     */
     // private MyGlyph makeGlyph(char c, Dimen w, Dimen h) {
     //
     // UnicodeChar uc = UnicodeChar.get(c);
@@ -1658,17 +1636,7 @@ public class CMR10 implements Font, Serializable {
     // glyphs.put(uc, g);
     // return g;
     // }
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param c ...
-     * @param w width
-     * @param h height
-     * @param d ...
-     * @param ic ...
-     * 
-     * @return ...
-     */
+
     // private MyGlyph makeGlyph(char c, Dimen w, Dimen h,
     // Dimen d, Dimen ic) {
     //
@@ -1677,6 +1645,7 @@ public class CMR10 implements Font, Serializable {
     // glyphs.put(uc, g);
     // return g;
     // }
+
     /**
      * Set the new value for the font parameter.
      * 
@@ -1775,7 +1744,8 @@ public class CMR10 implements Font, Serializable {
      * 
      * @return the height of the character
      * 
-     * @see org.extex.typesetter.tc.font.Font#getHeight(org.extex.core.UnicodeChar)
+     * @see org.extex.typesetter.tc.font.Font#getHeight(
+     *      org.extex.core.UnicodeChar)
      */
     public FixedGlue getHeight(UnicodeChar uc) {
 
@@ -1784,13 +1754,10 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * Returns the italic correction of a character.
+     * {@inheritDoc}
      * 
-     * @param uc the character
-     * 
-     * @return the italic correction of the character
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getItalicCorrection(org.extex.core.UnicodeChar)
+     * @see org.extex.typesetter.tc.font.Font#getItalicCorrection(
+     *      org.extex.core.UnicodeChar)
      */
     public FixedDimen getItalicCorrection(UnicodeChar uc) {
 
@@ -1799,12 +1766,7 @@ public class CMR10 implements Font, Serializable {
     }
 
     /**
-     * Returns the kerning between two characters.
-     * 
-     * @param uc1 the first character
-     * @param uc2 the second character
-     * 
-     * @return the kerning between two characters
+     * {@inheritDoc}
      * 
      * @see org.extex.typesetter.tc.font.Font#getKerning(
      *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)

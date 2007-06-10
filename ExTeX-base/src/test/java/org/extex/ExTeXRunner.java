@@ -107,7 +107,7 @@ public class ExTeXRunner extends TestCase {
          */
         private void makeConfig() {
 
-            config = new ConfigurationFactory().newInstance("config/extex.xml");
+            config = ConfigurationFactory.newInstance("config/extex.xml");
         }
 
         /**

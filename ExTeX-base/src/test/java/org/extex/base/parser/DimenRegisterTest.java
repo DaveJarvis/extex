@@ -32,7 +32,7 @@ import org.extex.scanner.stream.TokenStreamFactory;
 
 /**
  * Test cases for dimen registers.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4766 $
  */
@@ -40,6 +40,7 @@ public class DimenRegisterTest extends TestCase {
 
     /**
      * Creates a new object.
+     * 
      * @param arg0 the name
      */
     public DimenRegisterTest(String arg0) {
@@ -49,6 +50,7 @@ public class DimenRegisterTest extends TestCase {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
@@ -58,21 +60,20 @@ public class DimenRegisterTest extends TestCase {
 
     /**
      * Performs test on a given String.
-     *
+     * 
      * @param spec the String to parse
-     *
+     * 
      * @return the sp of the Dimen returned
-     *
+     * 
      * @throws ConfigurationException in case of an error in the configuration
      * @throws GeneralException in case of an error during parsing
      */
     private long doTest(String spec) throws GeneralException {
 
         Configuration config =
-                new ConfigurationFactory().newInstance("config/base-test.xml");
-        TokenStreamFactory fac =
-                new TokenStreamFactory(config.getConfiguration("Scanner"),
-                    "base");
+                ConfigurationFactory.newInstance("config/base-test.xml");
+        TokenStreamFactory fac = new TokenStreamFactory("base");
+        fac.configure(config.getConfiguration("Scanner"));
         Interpreter source =
                 new InterpreterFactory(config.getConfiguration("Interpreter"),
                     null).newInstance(null, null);
@@ -83,9 +84,9 @@ public class DimenRegisterTest extends TestCase {
     }
 
     /**
-     * Test that the parsing of scaled points works.
-     * A value in the middle (1234sp) is used.
-     *
+     * Test that the parsing of scaled points works. A value in the middle
+     * (1234sp) is used.
+     * 
      * @throws Exception in case of an error
      */
     public void testSp1() throws Exception {
@@ -94,9 +95,9 @@ public class DimenRegisterTest extends TestCase {
     }
 
     /**
-     * Test that the parsing of points works.
-     * A value in the middle (1.000pt) is used. This results into 65536sp.
-     *
+     * Test that the parsing of points works. A value in the middle (1.000pt) is
+     * used. This results into 65536sp.
+     * 
      * @throws Exception in case of an error
      */
     public void testPt1() throws Exception {
@@ -105,9 +106,9 @@ public class DimenRegisterTest extends TestCase {
     }
 
     /**
-     * Test that the parsing of points works.
-     * A value in the middle (1.000pt) is used. This results into 65536sp.
-     *
+     * Test that the parsing of points works. A value in the middle (1.000pt) is
+     * used. This results into 65536sp.
+     * 
      * @throws Exception in case of an error
      */
     public void testPt1b() throws Exception {
@@ -116,9 +117,9 @@ public class DimenRegisterTest extends TestCase {
     }
 
     /**
-     * Test that the parsing of points works.
-     * A value in the middle (1.000pt) is used. This results into 65536sp.
-     *
+     * Test that the parsing of points works. A value in the middle (1.000pt) is
+     * used. This results into 65536sp.
+     * 
      * @throws Exception in case of an error
      */
     public void testPt1c() throws Exception {
@@ -127,9 +128,9 @@ public class DimenRegisterTest extends TestCase {
     }
 
     /**
-     * Test that the parsing of points works.
-     * A value in the middle (1.5pt) is used. This results into 98304sp.
-     *
+     * Test that the parsing of points works. A value in the middle (1.5pt) is
+     * used. This results into 98304sp.
+     * 
      * @throws Exception in case of an error
      */
     public void testPt2() throws Exception {
@@ -138,9 +139,9 @@ public class DimenRegisterTest extends TestCase {
     }
 
     /**
-     * Test that the parsing of points works.
-     * A value in the middle (1.50pt) is used. This results into 98304sp.
-     *
+     * Test that the parsing of points works. A value in the middle (1.50pt) is
+     * used. This results into 98304sp.
+     * 
      * @throws Exception in case of an error
      */
     public void testPt3() throws Exception {
@@ -149,9 +150,9 @@ public class DimenRegisterTest extends TestCase {
     }
 
     /**
-     * Test that the parsing of points works.
-     * A value in the middle (1.33pt) is used. This results into 87163sp.
-     *
+     * Test that the parsing of points works. A value in the middle (1.33pt) is
+     * used. This results into 87163sp.
+     * 
      * @throws Exception in case of an error
      */
     public void testPt4() throws Exception {
@@ -160,9 +161,9 @@ public class DimenRegisterTest extends TestCase {
     }
 
     /**
-     * Test that the parsing of points works.
-     * A value in the middle (1.333pt) is used. This results into 87359sp.
-     *
+     * Test that the parsing of points works. A value in the middle (1.333pt) is
+     * used. This results into 87359sp.
+     * 
      * @throws Exception in case of an error
      */
     public void testPt5() throws Exception {
@@ -171,9 +172,9 @@ public class DimenRegisterTest extends TestCase {
     }
 
     /**
-     * Test that the parsing of millimeter works.
-     * A value in the middle (1mm) is used. This results into 186467sp.
-     *
+     * Test that the parsing of millimeter works. A value in the middle (1mm) is
+     * used. This results into 186467sp.
+     * 
      * @throws Exception in case of an error
      */
     public void testMm1() throws Exception {
@@ -182,9 +183,9 @@ public class DimenRegisterTest extends TestCase {
     }
 
     /**
-     * Test that the parsing of millimeter works.
-     * A value in the middle (1.33mm) is used. This results into 248002sp.
-     *
+     * Test that the parsing of millimeter works. A value in the middle (1.33mm)
+     * is used. This results into 248002sp.
+     * 
      * @throws Exception in case of an error
      */
     public void testMm2() throws Exception {
@@ -193,9 +194,9 @@ public class DimenRegisterTest extends TestCase {
     }
 
     /**
-     * Test that the parsing of centimeter works.
-     * A value in the middle (1cm) is used. This results into 1864679sp.
-     *
+     * Test that the parsing of centimeter works. A value in the middle (1cm) is
+     * used. This results into 1864679sp.
+     * 
      * @throws Exception in case of an error
      */
     public void testCm1() throws Exception {
@@ -204,9 +205,9 @@ public class DimenRegisterTest extends TestCase {
     }
 
     /**
-     * Test that the parsing of millimeter works.
-     * A value in the middle (1.33mm) is used. This results into 2480027sp.
-     *
+     * Test that the parsing of millimeter works. A value in the middle (1.33mm)
+     * is used. This results into 2480027sp.
+     * 
      * @throws Exception in case of an error
      */
     public void testCm2() throws Exception {
@@ -215,9 +216,9 @@ public class DimenRegisterTest extends TestCase {
     }
 
     /**
-     * Test that the parsing of inch works.
-     * A value in the middle (1in) is used. This results into 4736286sp.
-     *
+     * Test that the parsing of inch works. A value in the middle (1in) is used.
+     * This results into 4736286sp.
+     * 
      * @throws Exception in case of an error
      */
     public void testIn1() throws Exception {
@@ -226,9 +227,9 @@ public class DimenRegisterTest extends TestCase {
     }
 
     /**
-     * Test that the parsing of didot points works.
-     * A value in the middle (1dd) is used. This results into 70124sp.
-     *
+     * Test that the parsing of didot points works. A value in the middle (1dd)
+     * is used. This results into 70124sp.
+     * 
      * @throws Exception in case of an error
      */
     public void testDd1() throws Exception {
@@ -237,9 +238,9 @@ public class DimenRegisterTest extends TestCase {
     }
 
     /**
-     * Test that the parsing of didot points works.
-     * A value in the middle (1.25dd) is used. This results into 87655sp.
-     *
+     * Test that the parsing of didot points works. A value in the middle
+     * (1.25dd) is used. This results into 87655sp.
+     * 
      * @throws Exception in case of an error
      */
     public void testDd2() throws Exception {
@@ -248,9 +249,9 @@ public class DimenRegisterTest extends TestCase {
     }
 
     /**
-     * Test that the parsing of picas works.
-     * A value in the middle (1.25pc) is used. This results into 983040sp.
-     *
+     * Test that the parsing of picas works. A value in the middle (1.25pc) is
+     * used. This results into 983040sp.
+     * 
      * @throws Exception in case of an error
      */
     public void testPc1() throws Exception {
@@ -259,9 +260,9 @@ public class DimenRegisterTest extends TestCase {
     }
 
     /**
-     * Test that the parsing of picas works.
-     * A value in the middle (1.7pc) is used. This results into 1336932sp.
-     *
+     * Test that the parsing of picas works. A value in the middle (1.7pc) is
+     * used. This results into 1336932sp.
+     * 
      * @throws Exception in case of an error
      */
     public void testPc2() throws Exception {
@@ -270,9 +271,9 @@ public class DimenRegisterTest extends TestCase {
     }
 
     /**
-     * Test that the parsing of big points works.
-     * A value in the middle (1.25bp) is used. This results into 82227sp.
-     *
+     * Test that the parsing of big points works. A value in the middle (1.25bp)
+     * is used. This results into 82227sp.
+     * 
      * @throws Exception in case of an error
      */
     public void testBp1() throws Exception {
@@ -281,9 +282,9 @@ public class DimenRegisterTest extends TestCase {
     }
 
     /**
-     * Test that the parsing of ciceros works.
-     * A value in the middle (7,777cc) is used. This results into 6544254sp.
-     *
+     * Test that the parsing of ciceros works. A value in the middle (7,777cc)
+     * is used. This results into 6544254sp.
+     * 
      * @throws Exception in case of an error
      */
     public void testCc1() throws Exception {

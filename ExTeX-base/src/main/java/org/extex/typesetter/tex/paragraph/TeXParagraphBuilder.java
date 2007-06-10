@@ -35,8 +35,8 @@ import org.extex.core.glue.FixedGlueComponent;
 import org.extex.core.glue.Glue;
 import org.extex.core.glue.GlueComponent;
 import org.extex.core.glue.WideGlue;
-import org.extex.framework.i18n.Localizable;
 import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
@@ -124,7 +124,6 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
 public class TeXParagraphBuilder
         implements
             ParagraphBuilder,
-            Localizable,
             LogEnabled {
 
     /**
@@ -136,7 +135,7 @@ public class TeXParagraphBuilder
      * The field <tt>localizer</tt> contains the localizer or <code>null</code>
      * if none has been set yet.
      */
-    private Localizer localizer = null;
+    private Localizer localizer = LocalizerFactory.getLocalizer(getClass());
 
     /**
      * The field <tt>nodeFactory</tt> contains the node factory.
@@ -516,17 +515,6 @@ public class TeXParagraphBuilder
     public void enableLogging(Logger theLogger) {
 
         this.logger = theLogger;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.framework.i18n.Localizable#enableLocalization(
-     *   org.extex.framework.i18n.Localizer)
-     */
-    public void enableLocalization(Localizer theLocalizer) {
-
-        this.localizer = theLocalizer;
     }
 
     /**

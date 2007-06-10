@@ -41,7 +41,7 @@ import org.extex.framework.Registrar;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
-import org.extex.resource.ResourceConsumer;
+import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 
 /**
@@ -75,7 +75,7 @@ import org.extex.resource.ResourceFinder;
 public class LoadingLanguageManager extends BaseLanguageManager
         implements
             LanguageCreator,
-            ResourceConsumer,
+            ResourceAware,
             OutputStreamConsumer {
 
     /**
@@ -323,7 +323,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * 
      * @param finder the resource finder
      * 
-     * @see org.extex.resource.ResourceConsumer#setResourceFinder(
+     * @see org.extex.resource.ResourceAware#setResourceFinder(
      *      org.extex.resource.ResourceFinder)
      */
     @Override

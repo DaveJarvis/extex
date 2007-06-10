@@ -106,8 +106,7 @@ public class Max1 extends TestCase {
          * {@inheritDoc}
          * 
          * @see org.extex.typesetter.ListMaker#addSpace(
-         *      org.extex.typesetter.tc.TypesettingContext,
-         *      FixedCount)
+         *      org.extex.typesetter.tc.TypesettingContext, FixedCount)
          */
         public void addSpace(TypesettingContext typesettingContext,
                 FixedCount spacefactor) {
@@ -583,14 +582,14 @@ public class Max1 extends TestCase {
     private String doTest(String in) throws Exception {
 
         Configuration config =
-                new ConfigurationFactory().newInstance("config/extex.xml");
+                ConfigurationFactory.newInstance("config/extex.xml");
 
         Interpreter interpreter =
                 new InterpreterFactory(config.getConfiguration("Interpreter"),
                     null).newInstance(null, null);
-        TokenStreamFactory factory =
-                new TokenStreamFactory(config.getConfiguration("Scanner"),
-                    "base");
+        TokenStreamFactory factory = new TokenStreamFactory("base");
+        factory.configure(config.getConfiguration("Scanner"));
+//        factory.setResourceFinder(finder);
         interpreter.setTokenStreamFactory(factory);
 
         TestTypesetter typesetter = new TestTypesetter();

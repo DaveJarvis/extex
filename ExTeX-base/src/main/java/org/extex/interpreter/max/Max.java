@@ -46,7 +46,6 @@ import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingException;
 import org.extex.framework.configuration.exception.ConfigurationWrapperException;
-import org.extex.framework.i18n.Localizable;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.framework.logger.LogEnabled;
@@ -189,7 +188,6 @@ import org.extex.unit.base.register.count.util.IntegerCode;
 public abstract class Max
         implements
             Interpreter,
-            Localizable,
             LogEnabled,
             CommandObservable,
             ExpandObservable,
@@ -646,19 +644,6 @@ public abstract class Max
     }
 
     /**
-     * Setter for the getLocalizer().
-     * 
-     * @param theLocalizer the getLocalizer() to use
-     * 
-     * @see org.extex.framework.i18n.Localizable#enableLocalization(
-     *      org.extex.framework.i18n.Localizer)
-     */
-    public void enableLocalization(Localizer theLocalizer) {
-
-        this.localizer = theLocalizer;
-    }
-
-    /**
      * Setter for the logger.
      * 
      * @param theLogger the new logger
@@ -898,7 +883,10 @@ public abstract class Max
      */
     protected Localizer getLocalizer() {
 
-        return this.localizer;
+        if (localizer == null) {
+            localizer = LocalizerFactory.getLocalizer(getClass().getName());
+        }
+        return localizer;
     }
 
     /**
@@ -1177,20 +1165,6 @@ public abstract class Max
             }
 
         }, LogEnabled.class);
-        Object ref2 = Registrar.register(new RegistrarObserver() {
-
-            /**
-             * @see org.extex.framework.RegistrarObserver#reconnect(
-             *      java.lang.Object)
-             */
-            public Object reconnect(Object object) {
-
-                ((Localizable) object).enableLocalization(LocalizerFactory
-                    .getLocalizer(object.getClass()));
-                return object;
-            }
-
-        }, Localizable.class);
 
         try {
 
@@ -1201,7 +1175,6 @@ public abstract class Max
                 "ClassLoaderIncompatibility", fmt, e.getMessage()));
         } finally {
 
-            Registrar.unregister(ref2);
             Registrar.unregister(ref1);
         }
 
@@ -1265,10 +1238,11 @@ public abstract class Max
      */
     public void loadUnit(String name) {
 
-        Configuration cfg = new ConfigurationFactory().newInstance(name);
+        Configuration unitConfig =
+                ConfigurationFactory.newInstance("unit/" + name);
 
         try {
-            LoadUnit.loadUnit(cfg, getContext(), this, getTypesetter(),
+            LoadUnit.loadUnit(unitConfig, getContext(), this, getTypesetter(),
                 getLogger(), outFactory);
         } catch (GeneralException e) {
             Throwable cause = e.getCause();
