@@ -49,81 +49,86 @@ import org.extex.scanner.stream.observer.string.OpenStringObserverList;
 
 /**
  * This is the factory to provide an instance of a
- * {@link org.extex.scanner.TokenStream TokenStream}.
- * Like any good factory it is controlled by its configuration.
- *
+ * {@link org.extex.scanner.TokenStream TokenStream}. Like any good factory it
+ * is controlled by its configuration.
+ * 
  * <h3>Configuration</h3>
- *
+ * 
  * <p>
  * Mainly the configuration needs to specify which class to use for the
  * TokenStream. The name of the class is given as the argument <tt>class</tt>
  * as shown below.
+ * 
  * <pre>
  *   &lt;Scanner class="the.pack.age.TheClass"/&gt;
  * </pre>
+ * 
  * </p>
  * <p>
  * The class given must implement the interface
- * {@link org.extex.scanner.TokenStream TokenStream}. In addition
- * an appropriate constructor is required:
+ * {@link org.extex.scanner.TokenStream TokenStream}. In addition an
+ * appropriate constructor is required:
+ * 
  * <pre>
  *     public TheClass(Configuration config, Reader reader, Boolean isFile,
  *          String theSource) throws IOException
  * </pre>
+ * 
  * </p>
- *
+ * 
  * <p>
  * If the Token stream is fed from a file then the additional parameter
- * <tt>buffersize</tt> is taken into account. This parameter is optional.
- * Its usage can look as follows:
+ * <tt>buffersize</tt> is taken into account. This parameter is optional. Its
+ * usage can look as follows:
+ * 
  * <pre>
  *   &lt;Scanner class="the.pack.age.TheClass"
  *         buffersize="0"/&gt;
  * </pre>
+ * 
  * The value given is a number. If this number is positive then it is
- * interpreted as the size of the buffer for the file reading operation.
- * If it is 0 or empty then no buffer will be used.
- * If it is negative, then the default buffer size will be used.
+ * interpreted as the size of the buffer for the file reading operation. If it
+ * is 0 or empty then no buffer will be used. If it is negative, then the
+ * default buffer size will be used.
  * </p>
- *
+ * 
  * <p>
  * In addition to the class for the Token stream the reader class can be
  * specified for the case that reading from a file is requested. In this case
- * the mapping from bytes to characters according to an encoding.
- * The name is given as the parameter <tt>reader</tt> as shown below:
+ * the mapping from bytes to characters according to an encoding. The name is
+ * given as the parameter <tt>reader</tt> as shown below:
+ * 
  * <pre>
  *   &lt;Scanner class="the.pack.age.TheClass"
  *         reader="another.pack.age.TheReaderClass"/&gt;
  * </pre>
+ * 
  * </p>
  * <p>
- * Note that the attribute <tt>reader</tt> is optional. If none is given or the
- * value is the empty string then <tt>java.io.InputStreamReader</tt> is used
- * instead.
+ * Note that the attribute <tt>reader</tt> is optional. If none is given or
+ * the value is the empty string then <tt>java.io.InputStreamReader</tt> is
+ * used instead.
  * </p>
- *
+ * 
  * <h3>Observable Events</h3>
  * <p>
  * Observers can be registered for several events:
  * </p>
  * <dl>
- *  <dt><tt>file</tt></dt>
- *  <dd>This event is triggered by the request for a TokenStream fed from a
- *   file. It is deferred until the file has been found and opened.
- *   The name of the file is passed as argument to the observer.
- *  </dd>
- *
- *  <dt><tt>reader</tt></dt>
- *  <dd>This event is triggered by the request for a TokenStream fed from an
- *   arbitrary Reader. The reader is passed as argument to the observer.
- *  </dd>
- *
- *  <dt><tt>string</tt></dt>
- *  <dd>This event is triggered by the request for a TokenStream fed from a
- *   String. The string is passed as argument to the observer.
- *  </dd>
+ * <dt><tt>file</tt></dt>
+ * <dd>This event is triggered by the request for a TokenStream fed from a
+ * file. It is deferred until the file has been found and opened. The name of
+ * the file is passed as argument to the observer. </dd>
+ * 
+ * <dt><tt>reader</tt></dt>
+ * <dd>This event is triggered by the request for a TokenStream fed from an
+ * arbitrary Reader. The reader is passed as argument to the observer. </dd>
+ * 
+ * <dt><tt>string</tt></dt>
+ * <dd>This event is triggered by the request for a TokenStream fed from a
+ * String. The string is passed as argument to the observer. </dd>
  * </dl>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision:5563 $
@@ -147,8 +152,8 @@ public class TokenStreamFactory extends AbstractFactory
     private Configuration configuration;
 
     /**
-     * The field <tt>decorators</tt> contains the list of decorators for
-     * input streams acquired from a resource.
+     * The field <tt>decorators</tt> contains the list of decorators for input
+     * streams acquired from a resource.
      */
     private List<StreamDecorator> decorators = null;
 
@@ -159,14 +164,14 @@ public class TokenStreamFactory extends AbstractFactory
     private OpenFileObserver openFileObservers = null;
 
     /**
-     * The field <tt>openReaderObservers</tt> contains the observers registered
-     * for the "reader" event.
+     * The field <tt>openReaderObservers</tt> contains the observers
+     * registered for the "reader" event.
      */
     private OpenReaderObserver openReaderObservers = null;
 
     /**
-     * The field <tt>openStringObservers</tt> contains the observers registered
-     * for the "string" event.
+     * The field <tt>openStringObservers</tt> contains the observers
+     * registered for the "string" event.
      */
     private OpenStringObserver openStringObservers = null;
 
@@ -182,12 +187,6 @@ public class TokenStreamFactory extends AbstractFactory
     private Constructor<?> readerConstructor;
 
     /**
-     * The field <tt>resourceFinder</tt> contains the file finder used when
-     * trying to read from a resource.
-     */
-    private ResourceFinder resourceFinder = null;
-
-    /**
      * The field <tt>streamConstructor</tt> contains the constructor for the
      * file variant.
      */
@@ -200,90 +199,103 @@ public class TokenStreamFactory extends AbstractFactory
     private Constructor<?> stringConstructor;
 
     /**
+     * The field <tt>tag</tt> contains the tag name of the sub-configuration
+     * to use.
+     */
+    private String tag;
+
+    /**
      * Creates a new object.
-     * @param theConfiguration the configuration to use
+     * 
      * @param tag the tag name of the sub-configuration to use
-     *
+     * 
      * @throws ConfigurationException in case of an error in the configuration
      */
-    public TokenStreamFactory(Configuration theConfiguration,
-            String tag) throws ConfigurationException {
+    public TokenStreamFactory(String tag) throws ConfigurationException {
 
         super();
-        configure(theConfiguration);
+
+        this.tag = tag;
+    }
+
+    /**
+     * Initialize.
+     */
+    private void init() {
+
         this.configuration = selectConfiguration(tag);
         String classname = configuration.getAttribute(CLASS_ATTRIBUTE);
         if (classname == null) {
             throw new ConfigurationMissingAttributeException(CLASS_ATTRIBUTE,
-                    configuration);
+                configuration);
         }
         try {
-            readerConstructor = Class.forName(classname).getConstructor(
-                    new Class[]{Configuration.class, TokenStreamOptions.class,
-                            Reader.class, Boolean.class, String.class});
+            readerConstructor =
+                    Class.forName(classname).getConstructor(
+                        new Class[]{Configuration.class,
+                                TokenStreamOptions.class, Reader.class,
+                                Boolean.class, String.class});
         } catch (SecurityException e) {
             throw new ConfigurationInstantiationException(e);
         } catch (NoSuchMethodException e) {
             throw new ConfigurationNoSuchMethodException(e);
         } catch (ClassNotFoundException e) {
             throw new ConfigurationClassNotFoundException(classname,
-                    configuration);
+                configuration);
         }
 
         try {
-            stringConstructor = Class.forName(classname).getConstructor(
-                    new Class[]{Configuration.class, TokenStreamOptions.class,
-                            String.class, String.class});
+            stringConstructor =
+                    Class.forName(classname).getConstructor(
+                        new Class[]{Configuration.class,
+                                TokenStreamOptions.class, String.class,
+                                String.class});
         } catch (SecurityException e) {
             throw new ConfigurationInstantiationException(e);
         } catch (NoSuchMethodException e) {
             throw new ConfigurationNoSuchMethodException(e);
         } catch (ClassNotFoundException e) {
             throw new ConfigurationClassNotFoundException(classname,
-                    configuration);
+                configuration);
         }
 
         try {
-            streamConstructor = Class.forName(classname).getConstructor(
-                    new Class[]{Configuration.class, TokenStreamOptions.class,
-                            InputStream.class, String.class, String.class});
+            streamConstructor =
+                    Class.forName(classname).getConstructor(
+                        new Class[]{Configuration.class,
+                                TokenStreamOptions.class, InputStream.class,
+                                String.class, String.class});
         } catch (SecurityException e) {
             throw new ConfigurationInstantiationException(e);
         } catch (NoSuchMethodException e) {
             throw new ConfigurationNoSuchMethodException(e);
         } catch (ClassNotFoundException e) {
             throw new ConfigurationClassNotFoundException(classname,
-                    configuration);
+                configuration);
         }
-    }
-
-    /**
-     * Returns the file finder.
-     *
-     * @return Returns the file finder.
-     */
-    public ResourceFinder getResourceFinder() {
-
-        return this.resourceFinder;
     }
 
     /**
      * Provide a new instance of a token stream reading from a string.
-     *
+     * 
      * @param line the line of input to read from
-     *
+     * 
      * @return the new instance
-     *
+     * 
      * @throws ConfigurationException in case of an error in the configuration
      */
     public TokenStream newInstance(CharSequence line)
             throws ConfigurationException {
 
+        if (stringConstructor == null) {
+            init();
+        }
+
         TokenStream stream;
         try {
 
             stream = (TokenStream) stringConstructor.newInstance(//
-                    new Object[]{configuration, options, line, ""});
+                new Object[]{configuration, options, line, ""});
 
         } catch (IllegalArgumentException e) {
             throw new ConfigurationInstantiationException(e);
@@ -306,22 +318,26 @@ public class TokenStreamFactory extends AbstractFactory
 
     /**
      * Provide a new instance of a token stream reading from a Reader.
-     *
+     * 
      * @param reader the reader to get new characters from
-     *
+     * 
      * @return the new instance
-     *
+     * 
      * @throws ConfigurationException in case of an error in the configuration
      */
-    public TokenStream newInstance(Reader reader)
-            throws ConfigurationException {
+    public TokenStream newInstance(Reader reader) throws ConfigurationException {
+
+        if (readerConstructor == null) {
+            init();
+        }
 
         TokenStream stream;
         try {
 
-            stream = (TokenStream) readerConstructor.newInstance(//
-                    new Object[]{configuration, options, reader, Boolean.FALSE,
-                            "*"});
+            stream =
+                    (TokenStream) readerConstructor.newInstance(//
+                        new Object[]{configuration, options, reader,
+                                Boolean.FALSE, "*"});
 
         } catch (IllegalArgumentException e) {
             throw new ConfigurationInstantiationException(e);
@@ -345,19 +361,20 @@ public class TokenStreamFactory extends AbstractFactory
     /**
      * Provide a new instance of a token stream reading from a file or other
      * resource.
-     *
+     * 
      * @param name the name of the file to be read
      * @param type the type of the file to be read
      * @param encoding the name of the encoding to use
-     *
+     * 
      * @return the new instance or <code>null</code> if the resource could not
-     *   be located
-     *
+     *         be located
+     * 
      * @throws ConfigurationException in case of an error in the configuration
      */
-    public TokenStream newInstance(String name, String type,
-            String encoding) throws ConfigurationException {
+    public TokenStream newInstance(String name, String type, String encoding)
+            throws ConfigurationException {
 
+        ResourceFinder resourceFinder = getResourceFinder();
         if (resourceFinder == null) {
             throw new MissingResourceFinderException("");
         }
@@ -374,11 +391,14 @@ public class TokenStreamFactory extends AbstractFactory
             }
         }
 
+        if (streamConstructor == null) {
+            init();
+        }
+
         TokenStream tokenStream;
         try {
-            tokenStream = (TokenStream) streamConstructor
-                    .newInstance(//
-                    new Object[]{configuration, options, stream, name, encoding});
+            tokenStream = (TokenStream) streamConstructor.newInstance(//
+                new Object[]{configuration, options, stream, name, encoding});
 
         } catch (IllegalArgumentException e) {
             throw new ConfigurationInstantiationException(e);
@@ -388,7 +408,7 @@ public class TokenStreamFactory extends AbstractFactory
             throw new ConfigurationInstantiationException(e);
         } catch (InvocationTargetException e) {
             throw new ConfigurationInstantiationException(e
-                    .getTargetException());
+                .getTargetException());
         }
 
         if (openFileObservers != null) {
@@ -402,7 +422,7 @@ public class TokenStreamFactory extends AbstractFactory
     /**
      * Register a input stream decorator to be applied for each token stream
      * originated at a resource.
-     *
+     * 
      * @param decorator the additional decorator
      */
     public void register(StreamDecorator decorator) {
@@ -419,8 +439,8 @@ public class TokenStreamFactory extends AbstractFactory
      */
     public void registerObserver(OpenFileObserver observer) {
 
-        openFileObservers = OpenFileObserverList.register(openFileObservers,
-                observer);
+        openFileObservers =
+                OpenFileObserverList.register(openFileObservers, observer);
     }
 
     /**
@@ -429,8 +449,8 @@ public class TokenStreamFactory extends AbstractFactory
      */
     public void registerObserver(OpenReaderObserver observer) {
 
-        openReaderObservers = OpenReaderObserverList.register(
-                openReaderObservers, observer);
+        openReaderObservers =
+                OpenReaderObserverList.register(openReaderObservers, observer);
     }
 
     /**
@@ -439,29 +459,18 @@ public class TokenStreamFactory extends AbstractFactory
      */
     public void registerObserver(OpenStringObserver observer) {
 
-        openStringObservers = OpenStringObserverList.register(
-                openStringObservers, observer);
+        openStringObservers =
+                OpenStringObserverList.register(openStringObservers, observer);
     }
 
     /**
      * Setter for options.
-     *
+     * 
      * @param options the options to set.
      */
     public void setOptions(TokenStreamOptions options) {
 
         this.options = options;
-    }
-
-    /**
-     * Setter for the file finder.
-     *
-     * @param finder the new file finder
-     */
-    @Override
-    public void setResourceFinder(ResourceFinder finder) {
-
-        this.resourceFinder = finder;
     }
 
 }
