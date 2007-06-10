@@ -59,7 +59,6 @@ import org.extex.engine.TokenFactoryFactory;
 import org.extex.engine.backend.BackendFactory;
 import org.extex.engine.backend.OutputFactory;
 import org.extex.engine.exception.RegistrarFontNotFoundException;
-import org.extex.engine.typesetter.OutputRoutineFactory;
 import org.extex.engine.typesetter.TypesetterFactory;
 import org.extex.font.CoreFontFactory;
 import org.extex.font.exception.FontException;
@@ -92,8 +91,8 @@ import org.extex.interpreter.unit.UnitInfo;
 import org.extex.language.LanguageManager;
 import org.extex.language.LanguageManagerFactory;
 import org.extex.logging.LogFormatter;
-import org.extex.resource.PropertyConfigurable;
-import org.extex.resource.ResourceConsumer;
+import org.extex.resource.PropertyAware;
+import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
 import org.extex.scanner.TokenStream;
@@ -151,7 +150,6 @@ import org.extex.typesetter.tc.font.impl.FontImpl;
  * <dt><a name="extex.config"/><tt>extex.config</tt></dt>
  * <dd> This parameter contains the name of the configuration resource to use.
  * This configuration resource is sought on the class path. </dd>
- * <dd>Command line: <a href="#-configuration"><tt>-configuration &lang;resource&rang;</tt></a></dd>
  * <dd>Default: <tt>extex.xml</tt></dd>
  * 
  * <dt><a name="extex.encoding"/><tt>extex.encoding</tt></dt>
@@ -296,7 +294,7 @@ import org.extex.typesetter.tc.font.impl.FontImpl;
  * 
  * 
  * <a name="running"/>
- * <h3>Programmatical Use</h3>
+ * <h3>Programmatically Using <logo>ExTeX</logo></h3>
  * 
  * <p>
  * This class is the central point for using an instance of <logo>ExTeX</logo>
@@ -305,7 +303,8 @@ import org.extex.typesetter.tc.font.impl.FontImpl;
  * <logo>ExTeX</logo>. The configuration via configuration files and properties
  * can be used to influence the behavior of the instance. Nevertheless the fine
  * points in the live cycle can not be accessed this way. This can be achieved
- * via deriving another class from it.
+ * via deriving another class from it and overwriting one of the protected
+ * methods.
  * </p>
  * <p>
  * The class provides several protected methods which are solemnly made
@@ -618,8 +617,8 @@ public class ExTeX {
     /**
      * The constant <tt>PROP_TYPESETTER_TYPE</tt> contains the name of the
      * property for the typesetter to use. This value is resolved by the
-     * {@link org.extex.engine.typesetter.TypesetterFactory TypesetterFactory} to find
-     * the appropriate class.
+     * {@link org.extex.engine.typesetter.TypesetterFactory TypesetterFactory}
+     * to find the appropriate class.
      */
     protected static final String PROP_TYPESETTER_TYPE = "extex.typesetter";
 
@@ -1039,7 +1038,7 @@ public class ExTeX {
             }
             Object ref1 =
                     Registrar.register(new ResourceFinderInjector(finder),
-                        ResourceConsumer.class);
+                        ResourceAware.class);
             Object ref2 =
                     Registrar.register(new FontInjector(context
                         .getFontFactory()), ModifiableFont.class);
@@ -1213,11 +1212,10 @@ public class ExTeX {
      * @param config the configuration object for the document writer
      * @param outFactory the output factory
      * @param options the options to be passed to the document writer
-     * @param colorConfig the configuration for the color converter
      * @param finder the resource finder if one is requested by the document
      *        writer
      * @param fontFactory the font factory for the document writer
-     * 
+     *
      * @return the new document writer
      * 
      * @throws DocumentWriterException in case of an error
@@ -1225,8 +1223,8 @@ public class ExTeX {
      */
     protected BackendDriver makeBackend(Configuration config,
             OutputStreamFactory outFactory, DocumentWriterOptions options,
-            Configuration colorConfig, ResourceFinder finder,
-            CoreFontFactory fontFactory) throws DocumentWriterException {
+            ResourceFinder finder, CoreFontFactory fontFactory)
+            throws DocumentWriterException {
 
         String outputType = properties.getProperty(PROP_OUTPUT_TYPE);
         BackendFactory backendFactory = new BackendFactory();
@@ -1240,7 +1238,7 @@ public class ExTeX {
             properties, //
             properties.getProperty(PROP_NAME) + " " + EXTEX_VERSION, //
             fontFactory, //
-            makeColorConverter(colorConfig));
+            makeColorConverter(config.getConfiguration("ColorConverter")));
     }
 
     /**
@@ -1254,8 +1252,8 @@ public class ExTeX {
      */
     protected ColorConverter makeColorConverter(Configuration config) {
 
-        return new ColorConverterFacory(config, logger).newInstance(properties
-            .getProperty(PROP_COLOR_CONVERTER));
+        return new ColorConverterFacory(config, logger).newInstance(//
+            properties.getProperty(PROP_COLOR_CONVERTER));
     }
 
     /**
@@ -1312,11 +1310,9 @@ public class ExTeX {
 
         String units = properties.getProperty("extex.units");
         if (units != null) {
-            String[] u = units.split(":");
-            for (int i = 0; i < u.length; i++) {
-                String s = u[i];
+            for (String s : units.split(":")) {
                 if (!s.equals("")) {
-                    interpreter.loadUnit("unit/" + s);
+                    interpreter.loadUnit(s);
                 }
             }
         }
@@ -1421,12 +1417,12 @@ public class ExTeX {
         if (fontFactory instanceof Configurable) {
             ((Configurable) fontFactory).configure(config);
         }
-        if (fontFactory instanceof ResourceConsumer) {
+        if (fontFactory instanceof ResourceAware) {
 
-            ((ResourceConsumer) fontFactory).setResourceFinder(finder);
+            ((ResourceAware) fontFactory).setResourceFinder(finder);
         }
-        if (fontFactory instanceof PropertyConfigurable) {
-            ((PropertyConfigurable) fontFactory).setProperties(properties);
+        if (fontFactory instanceof PropertyAware) {
+            ((PropertyAware) fontFactory).setProperties(properties);
         }
 
         return fontFactory;
@@ -1479,8 +1475,8 @@ public class ExTeX {
         interpreter.setContext(makeContext(interpreterConfig, tokenFactory,
             fontFactory, interpreter, finder, jobname, outFactory));
 
-        interpreter.setInteraction(Interaction.get(properties
-            .getProperty(PROP_INTERACTION)));
+        interpreter.setInteraction(Interaction.get(//
+            properties.getProperty(PROP_INTERACTION)));
 
         interpreter.setFontFactory(fontFactory);
 
@@ -1490,9 +1486,8 @@ public class ExTeX {
                     new ErrorHandlerFactory(interpreterConfig
                         .getConfiguration(TAG_ERRORHANDLER));
             errorHandlerFactory.enableLogging(logger);
-            errHandler =
-                    errorHandlerFactory.newInstance(properties
-                        .getProperty(PROP_ERROR_HANDLER));
+            errHandler = errorHandlerFactory.newInstance(//
+                properties.getProperty(PROP_ERROR_HANDLER));
         }
         interpreter.setErrorHandler(errHandler);
 
@@ -1502,15 +1497,13 @@ public class ExTeX {
 
         initializeStreams(interpreter, properties);
 
-        Typesetter typesetter =
-                makeTypesetter(interpreter, config, outFactory, finder,
-                    fontFactory);
+        Typesetter typesetter = makeTypesetter(interpreter, config, //
+            outFactory, finder, fontFactory);
         interpreter.setTypesetter(typesetter);
 
         Iterator<UnitInfo> unitIterator = context.unitIterator();
         while (unitIterator.hasNext()) {
-            UnitInfo unit = unitIterator.next();
-            unit.setTypesetter(typesetter);
+            unitIterator.next().setTypesetter(typesetter);
         }
 
         return interpreter;
@@ -1648,7 +1641,7 @@ public class ExTeX {
 
         String page = (String) properties.get(PROP_PAGE);
         Configuration cfg =
-                new ConfigurationFactory().newInstance("config/paper/paper")
+                ConfigurationFactory.newInstance("config/paper/paper")
                     .findConfiguration(page);
         String w = "210mm";
         String h = "297mm";
@@ -1750,8 +1743,9 @@ public class ExTeX {
     protected TokenStreamFactory makeTokenStreamFactory(Configuration config,
             ResourceFinder finder) throws NotObservableException {
 
-        TokenStreamFactory factory = new TokenStreamFactory(config, //
+        TokenStreamFactory factory = new TokenStreamFactory(//
             properties.getProperty(PROP_TOKEN_STREAM));
+        factory.configure(config);
         factory.enableLogging(logger);
         factory.setResourceFinder(finder);
 
@@ -1767,7 +1761,7 @@ public class ExTeX {
      * </p>
      * 
      * <pre>
-     *   {@link #makeBackend(Configuration, OutputStreamFactory, DocumentWriterOptions, Configuration, ResourceFinder, CoreFontFactory) makeBackend()}
+     *   {@link #makeBackend(Configuration, OutputStreamFactory, DocumentWriterOptions, ResourceFinder, CoreFontFactory) makeBackend()}
      *     {@link #makeColorConverter(Configuration) makeColorConverter()}
      * </pre>
      * 
@@ -1799,22 +1793,16 @@ public class ExTeX {
             config.getConfiguration("Backend"), //
             outFactory, //
             (DocumentWriterOptions) context, //
-            config.getConfiguration("ColorConverter"), //
-            finder, fontFactory);
+            finder, //
+            fontFactory);
 
         TypesetterFactory factory = new TypesetterFactory();
         factory.configure(config.getConfiguration("Typesetter"));
         factory.enableLogging(logger);
         Typesetter typesetter =
                 factory.newInstance(properties
-                    .getProperty(PROP_TYPESETTER_TYPE), context, backend);
-
-        OutputRoutineFactory outputRoutineFactory = new OutputRoutineFactory();
-        outputRoutineFactory
-            .configure(config.getConfiguration("OutputRoutine"));
-        outputRoutineFactory.enableLogging(logger);
-        typesetter.setOutputRoutine(outputRoutineFactory
-            .newInstance(interpreter));
+                    .getProperty(PROP_TYPESETTER_TYPE), context, backend,
+                    interpreter);
 
         return typesetter;
     }
@@ -1858,7 +1846,7 @@ public class ExTeX {
      *     {@link #makePageSize(Context) makePageSize()}
      *   {@link #initializeStreams(Interpreter, Properties) initializeStreams()}
      *   {@link #makeTypesetter(Interpreter, Configuration, OutputStreamFactory, ResourceFinder, CoreFontFactory) makeTypesetter()}
-     *     {@link #makeBackend(Configuration, OutputStreamFactory, DocumentWriterOptions, Configuration, ResourceFinder, CoreFontFactory) makeBackend()}
+     *     {@link #makeBackend(Configuration, OutputStreamFactory, DocumentWriterOptions, ResourceFinder, CoreFontFactory) makeBackend()}
      *       {@link #makeColorConverter(Configuration) makeColorConverter()}
      * </pre>
      * 
@@ -1884,7 +1872,7 @@ public class ExTeX {
             logHandler = makeLogHandler(logFile);
 
             Configuration config =
-                    new ConfigurationFactory().newInstance(properties
+                    ConfigurationFactory.newInstance(properties
                         .getProperty(PROP_CONFIG));
             showBanner(config, (showBanner ? Level.INFO : Level.FINE));
 
