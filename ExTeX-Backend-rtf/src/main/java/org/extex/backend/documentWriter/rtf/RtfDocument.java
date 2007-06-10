@@ -284,7 +284,7 @@ public class RtfDocument {
             stream.write(Integer.toString(x.getBlue()).getBytes());
             stream.write(";".getBytes());
         }
-        stream.write("}".getBytes());
+        stream.write('}');
     }
 
     /**
