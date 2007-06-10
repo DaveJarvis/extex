@@ -63,24 +63,13 @@ public class FileRecorder implements OpenFileObserver, OutputStreamObserver {
     /**
      * Print the recorded files to a file or stream.
      * 
-     * @param name the name of the output file or <code>null</code> for stdout
-     * 
+     * @param out the print stream
+     *
      * @throws IOException in case of an I/O error
-     * @throws DocumentWriterException in case of an error in the output factory
      */
-    public void print(String name) throws IOException, DocumentWriterException {
+    private void print(PrintStream out) throws IOException {
 
-        PrintStream out = null;
-
-        if (name == null) {
-            out = System.out;
-        } else if (outputFactory != null) {
-            out = new PrintStream(outputFactory.getOutputStream(name, "fls"));
-        } else {
-            out = new PrintStream(new FileOutputStream(name + ".fls"));
-        }
-
-        String cwd = new File(".").getCanonicalPath().toString();
+        String cwd = new File(".").getCanonicalPath();
         out.print("PWD ");
         out.print(cwd);
         out.print("\n");
@@ -89,9 +78,28 @@ public class FileRecorder implements OpenFileObserver, OutputStreamObserver {
             out.print(s);
             out.print("\n");
         }
-        if (name != null) {
-            out.close();
+    }
+
+    /**
+     * Print the recorded files to a file or stream.
+     * 
+     * @param name the name of the output file or <code>null</code> for stdout
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws DocumentWriterException in case of an error in the output factory
+     */
+    public void print(String name) throws IOException, DocumentWriterException {
+
+        if (name == null) {
+            print(System.out);
+            return;
         }
+
+        PrintStream out = new PrintStream((outputFactory != null //
+                ? outputFactory.getOutputStream(name, "fls")
+                : new FileOutputStream(name + ".fls")));
+        print(out);
+        out.close();
     }
 
     /**
@@ -126,7 +134,7 @@ public class FileRecorder implements OpenFileObserver, OutputStreamObserver {
     public void update(String name, String type, OutputStream stream) {
 
         if (stream instanceof NamedOutputStream) {
-            String s = ((NamedOutputStream)stream).getName();
+            String s = ((NamedOutputStream) stream).getName();
             if (s != null) {
                 recorded.add("OUTPUT " + s);
                 return;
