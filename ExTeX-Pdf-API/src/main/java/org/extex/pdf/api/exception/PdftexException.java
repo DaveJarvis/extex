@@ -30,7 +30,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
-public class InterpreterPdftexException extends HelpingException {
+public class PdftexException extends HelpingException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the id for serialization.
@@ -41,9 +41,9 @@ public class InterpreterPdftexException extends HelpingException {
      * Creates a new object.
      * 
      */
-    public InterpreterPdftexException() {
+    public PdftexException() {
 
-        this(LocalizerFactory.getLocalizer(InterpreterPdftexException.class),
+        this(LocalizerFactory.getLocalizer(PdftexException.class),
             "Text", "?");
     }
 
@@ -52,9 +52,9 @@ public class InterpreterPdftexException extends HelpingException {
      * 
      * @param primitive the name of the primitive in action
      */
-    public InterpreterPdftexException(String primitive) {
+    public PdftexException(String primitive) {
 
-        this(LocalizerFactory.getLocalizer(InterpreterPdftexException.class),
+        this(LocalizerFactory.getLocalizer(PdftexException.class),
             "Text", primitive); // TODO
     }
 
@@ -67,7 +67,7 @@ public class InterpreterPdftexException extends HelpingException {
      * @param a3 the third argument
      * @param theLocalizer the localizer to use
      */
-    protected InterpreterPdftexException(Localizer theLocalizer,
+    protected PdftexException(Localizer theLocalizer,
             String messageTag, String a1, String a2, String a3) {
 
         super(theLocalizer, messageTag, a1, a2, a3);
@@ -81,7 +81,7 @@ public class InterpreterPdftexException extends HelpingException {
      * @param a2 the second argument
      * @param theLocalizer the localizer to use
      */
-    protected InterpreterPdftexException(Localizer theLocalizer,
+    protected PdftexException(Localizer theLocalizer,
             String messageTag, String a1, String a2) {
 
         super(theLocalizer, messageTag, a1, a2);
@@ -94,7 +94,7 @@ public class InterpreterPdftexException extends HelpingException {
      * @param a1 the first argument
      * @param theLocalizer the localizer to use
      */
-    protected InterpreterPdftexException(Localizer theLocalizer,
+    protected PdftexException(Localizer theLocalizer,
             String messageTag, String a1) {
 
         super(theLocalizer, messageTag, a1);
@@ -106,7 +106,7 @@ public class InterpreterPdftexException extends HelpingException {
      * @param messageTag the message
      * @param theLocalizer the localizer to use
      */
-    protected InterpreterPdftexException(Localizer theLocalizer,
+    protected PdftexException(Localizer theLocalizer,
             String messageTag) {
 
         super(theLocalizer, messageTag);

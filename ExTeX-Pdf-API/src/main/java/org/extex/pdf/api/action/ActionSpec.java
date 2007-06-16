@@ -24,7 +24,7 @@ import java.io.Serializable;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.pdf.api.exception.InterpreterPdftexActionTypeException;
+import org.extex.pdf.api.exception.PdftexActionTypeException;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -64,7 +64,7 @@ public abstract class ActionSpec implements Serializable {
                 typesetter, name);
         }
 
-        throw new InterpreterPdftexActionTypeException(name);
+        throw new PdftexActionTypeException(name);
     }
 
     /**

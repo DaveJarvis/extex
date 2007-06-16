@@ -19,34 +19,53 @@
 
 package org.extex.pdf.api.exception;
 
-import org.extex.framework.i18n.LocalizerFactory;
+import org.extex.interpreter.exception.InterpreterException;
 
 /**
- * This exception is raised when a <logo>pdfTeX</logo> encounters an invalid
- * destination type.
- * 
+ * This exception is raised when a <logo>pdfTeX</logo> primitive is used
+ * without being in PDF mode.
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 4732 $
  */
-public class InterpreterPdftexDestinationTypeException
-        extends
-            InterpreterPdftexException {
+public class PdftexUnsupportedException extends InterpreterException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2007L;
+    protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     * 
+     *
+     */
+    public PdftexUnsupportedException() {
+
+        super();
+    }
+
+    /**
+     * Creates a new object.
+     *
      * @param primitive the name of the primitive in action
      */
-    public InterpreterPdftexDestinationTypeException(String primitive) {
+    public PdftexUnsupportedException(String primitive) {
 
-        super(LocalizerFactory
-            .getLocalizer(InterpreterPdftexDestinationTypeException.class),
-            "Text", primitive);
+        super(primitive);
+    }
+
+    /**
+     * Returns the detail message string of this throwable.
+     *
+     * @return  the detail message string of this <tt>Throwable</tt> instance
+     *          (which may be <tt>null</tt>).
+     *
+     * @see java.lang.Throwable#getMessage()
+     */
+    @Override
+    public String getMessage() {
+
+        return getLocalizer().format("Text", super.getMessage());
     }
 
 }

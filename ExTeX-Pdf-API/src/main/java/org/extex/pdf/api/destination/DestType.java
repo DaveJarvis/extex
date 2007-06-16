@@ -26,7 +26,7 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.pdf.api.exception.InterpreterPdftexDestinationTypeException;
+import org.extex.pdf.api.exception.PdftexDestinationTypeException;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.RuleNode;
@@ -440,7 +440,7 @@ public abstract class DestType implements Serializable {
             return new ZoomDestType(zoom);
         }
 
-        throw new InterpreterPdftexDestinationTypeException(name);
+        throw new PdftexDestinationTypeException(name);
     }
 
     /**

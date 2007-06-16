@@ -23,40 +23,29 @@ import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This exception is raised when a <logo>pdfTeX</logo> encounters an invalid
- * identifier type.
+ * destination type.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class InterpreterPdftexIdentifierTypeException
+public class PdftexDestinationTypeException
         extends
-            InterpreterPdftexException {
+            PdftexException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
-
-    /**
-     * Creates a new object.
-     * 
-     */
-    public InterpreterPdftexIdentifierTypeException() {
-
-        super(LocalizerFactory
-            .getLocalizer(InterpreterPdftexIdentifierTypeException.class),
-            "Text", "?");
-    }
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      * 
      * @param primitive the name of the primitive in action
      */
-    public InterpreterPdftexIdentifierTypeException(String primitive) {
+    public PdftexDestinationTypeException(String primitive) {
 
         super(LocalizerFactory
-            .getLocalizer(InterpreterPdftexIdentifierTypeException.class),
+            .getLocalizer(PdftexDestinationTypeException.class),
             "Text", primitive);
     }
 

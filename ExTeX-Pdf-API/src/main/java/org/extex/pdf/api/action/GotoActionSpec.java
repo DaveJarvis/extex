@@ -22,8 +22,8 @@ package org.extex.pdf.api.action;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.pdf.api.exception.InterpreterPdftexActionTypeException;
-import org.extex.pdf.api.exception.InterpreterPdftexIdentifierTypeException;
+import org.extex.pdf.api.exception.PdftexActionTypeException;
+import org.extex.pdf.api.exception.PdftexIdentifierTypeException;
 import org.extex.pdf.api.id.NameIdSpec;
 import org.extex.pdf.api.id.NumIdSpec;
 import org.extex.typesetter.Typesetter;
@@ -68,7 +68,7 @@ public abstract class GotoActionSpec extends ActionSpec {
             return new GotoPageActionSpec(null, page, text, null);
 
         } else if (!source.getKeyword(context, "file")) {
-            throw new InterpreterPdftexIdentifierTypeException(name);
+            throw new PdftexIdentifierTypeException(name);
         }
         String file = source.scanTokensAsString(context, name);
 
@@ -94,7 +94,7 @@ public abstract class GotoActionSpec extends ActionSpec {
             return new GotoPageActionSpec(file, page, text, newWindow);
         }
 
-        throw new InterpreterPdftexActionTypeException(name);
+        throw new PdftexActionTypeException(name);
     }
 
 }
