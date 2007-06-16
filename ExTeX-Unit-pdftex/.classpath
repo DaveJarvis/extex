@@ -14,5 +14,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Scanner-API"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-tex"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Interpreter-max"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Backend-dvix"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Backend-pdfbox"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

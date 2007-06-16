@@ -19,8 +19,15 @@
 
 package org.extex.unit.pdftex;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 import org.extex.core.count.Count;
 import org.extex.core.exception.helping.HelpingException;
+import org.extex.framework.configuration.Configurable;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.ContextInternals;
@@ -39,10 +46,15 @@ import org.extex.typesetter.Typesetter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
-public class PdftexUnitInfo extends UnitInfo implements Loader, LoadedObserver {
+public class PdftexUnitInfo extends UnitInfo
+        implements
+            Configurable,
+            Loader,
+            LoadedObserver {
 
     /**
-     * TODO gene: missing JavaDoc.
+     * This observer takes care to enable the appropriate document writer when
+     * \pdfoutput is modified.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
@@ -75,15 +87,12 @@ public class PdftexUnitInfo extends UnitInfo implements Loader, LoadedObserver {
         public void receiveCountChange(ContextInternals context, String name,
                 Count value) throws Exception {
 
-            //TODO gene: make use of \pdfoutput
-            
-//            System.err.print("Received ");
-//            System.err.print(name);
-//            System.err.print(" = ");
-//            System.err.print(value.toString());
-//            System.err.print(" ");
-//            System.err.println(typesetter);
-            
+            Long val = Long.valueOf(value.getValue());
+            String writer = modeMap.get(val);
+            if (writer == null) {
+                writer = modeMap.get(Long.valueOf(1));
+            }
+            typesetter.getBackendDriver().setDocumentWriter(writer);
         }
 
         /**
@@ -110,19 +119,24 @@ public class PdftexUnitInfo extends UnitInfo implements Loader, LoadedObserver {
     private static final String TRACING_COMMANDS = "tracingcommands";
 
     /**
+     * The field <tt>context</tt> contains the interpreter context.
+     */
+    private transient Context context;
+
+    /**
+     * The field <tt>modeMap</tt> contains the ...
+     */
+    private Map<Long, String> modeMap = new HashMap<Long, String>();
+
+    /**
      * The field <tt>observer</tt> contains the count observer.
      */
     private transient Observer observer = null;
 
     /**
-     * The field <tt>context</tt> contains the ...
+     * The field <tt>source</tt> contains the source for new tokens.
      */
-    private Context context;
-
-    /**
-     * The field <tt>source</tt> contains the ...
-     */
-    private TokenSource source;
+    private transient TokenSource source;
 
     /**
      * Creates a new object.
@@ -135,14 +149,18 @@ public class PdftexUnitInfo extends UnitInfo implements Loader, LoadedObserver {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.unit.UnitInfo#setTypesetter(
-     *      org.extex.typesetter.Typesetter)
+     * @see org.extex.framework.configuration.Configurable#configure(
+     *      org.extex.framework.configuration.Configuration)
      */
-    @Override
-    public void setTypesetter(Typesetter typesetter) {
+    public void configure(Configuration config) throws ConfigurationException {
 
-        observePdfoutput(typesetter);
-        observer.setTypsetter(typesetter);
+        Iterator<Configuration> iterator = config.iterator("pdfoutput");
+        while (iterator.hasNext()) {
+            Configuration cfg = iterator.next();
+            String value = cfg.getAttribute("value");
+            String writer = cfg.getAttribute("writer");
+            modeMap.put(Long.valueOf(value), writer);
+        }
     }
 
     /**
@@ -158,6 +176,22 @@ public class PdftexUnitInfo extends UnitInfo implements Loader, LoadedObserver {
         this.context = context;
         this.source = source;
         receiveLoaded(context, source, typesetter);
+    }
+
+    /**
+     * If all preconditions are fullfilled then register an observer for
+     * \pdfoutput.
+     * 
+     * @param typesetter the typesetter
+     */
+    private void observePdfoutput(Typesetter typesetter) {
+
+        if (typesetter != null && observer == null
+                && context instanceof CountObservable) {
+            observer = new Observer(source, typesetter);
+            ((CountObservable) context).registerCountObserver("pdfoutput",
+                observer);
+        }
     }
 
     /**
@@ -187,18 +221,16 @@ public class PdftexUnitInfo extends UnitInfo implements Loader, LoadedObserver {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * {@inheritDoc}
      * 
-     * @param typesetter the typesetter
+     * @see org.extex.interpreter.unit.UnitInfo#setTypesetter(
+     *      org.extex.typesetter.Typesetter)
      */
-    private void observePdfoutput(Typesetter typesetter) {
+    @Override
+    public void setTypesetter(Typesetter typesetter) {
 
-        if (typesetter != null && observer == null
-                && context instanceof CountObservable) {
-            observer = new Observer(source, typesetter);
-            ((CountObservable) context).registerCountObserver("pdfoutput",
-                observer);
-        }
+        observePdfoutput(typesetter);
+        observer.setTypsetter(typesetter);
     }
 
 }

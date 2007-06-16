@@ -46,7 +46,7 @@
 
     <ColorConverter base="color/" default="basic"/>
 
-    <DocumentWriter base="backendPdftex/" default="none"/>
+    <DocumentWriter base="backend/" default="test-plain"/>
 
     <parameter name="Title" value=""/>
     <parameter name="Author" property="user.name"/>
