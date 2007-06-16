@@ -45,7 +45,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * 1.0.
  * </p>
  * <p>
- * The color models of <logo>ExTeX</logo> support aa alpha channel.
+ * The color models of <logo>ExTeX</logo> support an alpha channel.
  * </p>
  * 
  * <h4>The RGB Color Model</h4>
@@ -74,7 +74,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <h4>The Alpha Channel</h4>
  * <p>
- * The alpha channel determines the opactness of the color. A value of 0 means
+ * The alpha channel determines the opactivity of the color. A value of 0 means
  * that the given color completely overwrites the underlying texture. A value of
  * 1.0 is the maximal admissible alpha value. In this case the color is in fact
  * invisible. In between the background shines through to the degree of the
@@ -176,8 +176,8 @@ public class ColorPrimitive extends AbstractColor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
