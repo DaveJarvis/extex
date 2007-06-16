@@ -22,7 +22,9 @@ package org.extex.backend;
 import org.extex.backend.documentWriter.DocumentWriter;
 import org.extex.backend.documentWriter.DocumentWriterFactory;
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
+import org.extex.backend.exception.BackendDocumentWriterDefinedException;
 import org.extex.backend.exception.BackendException;
+import org.extex.backend.exception.BackendUnknownDocumentWriterException;
 import org.extex.backend.pageFilter.PagePipe;
 import org.extex.typesetter.type.page.Page;
 
@@ -58,6 +60,13 @@ public interface BackendDriver {
     DocumentWriter getDocumentWriter() throws DocumentWriterException;
 
     /**
+     * Getter for the document writer.
+     * 
+     * @return the document writer type
+     */
+    String getDocumentWriterType();
+
+    /**
      * Getter for the extension associated with this kind of output. For
      * instance <tt>pdf</tt> is the expected value for PDF files and
      * <tt>dvi</tt> is the expected value for DVI files.
@@ -74,22 +83,26 @@ public interface BackendDriver {
     int getPages();
 
     /**
-     * Setter for the document writer.
-     * 
-     * @param type the document writer type
-     * 
-     * @throws BackendException in case that the document writer is already in
-     *         use
-     */
-    void setDocumentWriter(String type) throws BackendException;
-
-    /**
      * Setter for the document writer factory.
      * 
      * @param documentWriterFactory the document writer factory to set
      */
     public void setDocumentWriterFactory(
             DocumentWriterFactory documentWriterFactory);
+
+    /**
+     * Setter for the document writer.
+     * 
+     * @param type the document writer type
+     * 
+     * @throws BackendDocumentWriterDefinedException in case that the document
+     *         writer is already in use
+     * @throws BackendUnknownDocumentWriterException in case that the document
+     *         writer has no associated configuration
+     */
+    void setDocumentWriterType(String type)
+            throws BackendDocumentWriterDefinedException,
+                BackendUnknownDocumentWriterException;
 
     /**
      * Setter for a named parameter. Parameters are a general mechanism to

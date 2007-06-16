@@ -114,18 +114,18 @@ public class BackendFactory extends AbstractFactory {
 
         BackendDriver backend =
                 (BackendDriver) createInstance(BackendDriver.class);
-        try {
-            backend.setDocumentWriter(type);
-        } catch (BackendException e) {
-            throw new DocumentWriterException(e); // this should not happen
-        }
-
         DocumentWriterFactory factory =
                 new DocumentWriterFactory(getConfiguration().getConfiguration(
                     "DocumentWriter"), getLogger());
         factory.setResourceFinder(finder);
         factory.setOptions(options);
 
+        try {
+            backend.setDocumentWriterType(type);
+        } catch (BackendException e) {
+            throw new DocumentWriterException(e); // this should not happen
+        }
+        
         if (backend instanceof MultipleDocumentStream) {
             ((MultipleDocumentStream) backend)
                 .setOutputStreamFactory(outFactory);

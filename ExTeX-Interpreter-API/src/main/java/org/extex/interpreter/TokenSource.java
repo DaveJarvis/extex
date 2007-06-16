@@ -682,17 +682,16 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
                 TypesetterException;
 
     /**
-     * Get the next expanded token form the input streams between a left brace
+     * Get the next expanded tokens from the input streams between a left brace
      * character (usually <code>{</code>) and a right brace character
      * (usually <code>}</code>) and convert it to a <code>String</code>.
-     * If the current input stream is at its end then the next one on the
-     * streamStack is used until a token could be read. If all stream are at the
-     * end then <code>null</code> is returned.
+     * If the end of file is reached then an Exception is raised.
      * 
      * @param context the interpreter context
      * @param primitive the name of the invoking primitive for error handling
      * 
      * @return the next tokens as <code>String</code> or <code>null</code>
+     *
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */

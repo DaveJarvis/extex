@@ -120,7 +120,7 @@ public class ExTeXLauncher extends TestCase {
      * usual category codes for braces { and }.
      */
     public static final String DEFINE_BRACES =
-            "\\catcode`\\{=1 " + "\\catcode`\\}=2 ";
+            "\\catcode`\\{=1 " + "\\catcode`\\}=2\\relax ";
 
     /**
      * The constant <tt>DEFINE_CATCODES</tt> contains the definition of the

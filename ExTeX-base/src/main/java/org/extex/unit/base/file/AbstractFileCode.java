@@ -37,7 +37,7 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This abstract class provides some common methods for primitives dealing with
  * files.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
@@ -66,37 +66,38 @@ public abstract class AbstractFileCode extends AbstractCode
     /**
      * Scan the input source for some tokens making up the key for an infile
      * register. Currently only numbers in a certain range are allowed.
-     *
-     *
+     * 
+     * 
      * <doc name="infile name" type="syntax">
      * <h3>The Infile Name</h3>
      * <p>
-     *  The infile name is a symbolic key to reference an input file.
-     *  This is a number in the range from 0 to 15.
+     * The infile name is a symbolic key to reference an input file. This is a
+     * number in the range from 0 to 15.
      * </p>
-     *
+     * 
      * <h4>Syntax</h4>
-     *  The formal description of this primitive is the following:
-     *  <pre class="syntax">
+     * The formal description of this primitive is the following:
+     * 
+     * <pre class="syntax">
      *    &lang;infile&nbsp;name&rang;
      *      &rarr; {@linkplain
      *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;} </pre>
+     * 
      * </doc>
-     *
-     *
+     * 
+     * 
      * @param context the interpreter context
      * @param source the token source to read from
      * @param typesetter the typesetter
-     *
+     * 
      * @return the key read in the form of a String
-     *
+     * 
      * @throws HelpingException in case of a failure
      * @throws TypesetterException in case of an error in the typesetter
      */
-    public static String scanInFileKey(Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException,TypesetterException {
+    public static String scanInFileKey(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         long no = source.parseNumber(context, source, typesetter);
         String key = Long.toString(no);
@@ -112,36 +113,37 @@ public abstract class AbstractFileCode extends AbstractCode
     /**
      * Scan the input source for some tokens making up the key for an outfile
      * register. Currently only numbers are allowed.
-     *
+     * 
      * <doc name="outfile name" type="syntax">
      * <h3>The Outfile Name</h3>
      * <p>
-     *  The outfile name is a symbolic key to reference an output file.
-     *  This is a number in the range from 0 to 15.
+     * The outfile name is a symbolic key to reference an output file. This is a
+     * number in the range from 0 to 15.
      * </p>
-     *
+     * 
      * <h4>Syntax</h4>
-     *  The formal description of this primitive is the following:
-     *  <pre class="syntax">
+     * The formal description of this primitive is the following:
+     * 
+     * <pre class="syntax">
      *    &lang;infile&nbsp;name&rang;
      *      &rarr; {@linkplain
      *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;} </pre>
+     * 
      * </doc>
-     *
-     *
+     * 
+     * 
      * @param context the interpreter context
      * @param source the token source to read from
      * @param typesetter the typesetter
-     *
+     * 
      * @return the key read in the form of a String
-     *
+     * 
      * @throws HelpingException in case of a failure
      * @throws TypesetterException in case of an error in the typesetter
      */
-    public static String scanOutFileKey(Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException,TypesetterException {
+    public static String scanOutFileKey(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         long no = source.parseNumber(context, source, typesetter);
         return Long.toString(no);
@@ -156,7 +158,7 @@ public abstract class AbstractFileCode extends AbstractCode
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public AbstractFileCode(String name) {
@@ -166,11 +168,11 @@ public abstract class AbstractFileCode extends AbstractCode
 
     /**
      * Configure an object according to a given Configuration.
-     *
+     * 
      * @param config the configuration to use
-     *
+     * 
      * @throws ConfigurationException in case of an error
-     *
+     * 
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
@@ -183,14 +185,12 @@ public abstract class AbstractFileCode extends AbstractCode
     /**
      * Return the encoding for the AbstractFileCode file.
      * <p>
-     * First of all, <code>\fileencoding</code> is used,
-     * if there is no
-     * value, then the property <code>extex.encoding</code> is used,
-     * or <code>ISO8859-1</code>,
-     * if no entry exists.
-     *
+     * First of all, <code>\fileencoding</code> is used, if there is no value,
+     * then the property <code>extex.encoding</code> is used, or
+     * <code>ISO8859-1</code>, if no entry exists.
+     * 
      * @param context the context
-     *
+     * 
      * @return the encoding for the AbstractFileCodefile
      */
     protected String getEncoding(Context context) {
@@ -205,57 +205,55 @@ public abstract class AbstractFileCode extends AbstractCode
 
     /**
      * Scan the file name.
-     *
-     * <doc type="syntax" name="filename">
-     * This method parses the following syntactic entity:
+     * 
+     * <doc type="syntax" name="filename"> This method parses the following
+     * syntactic entity:
+     * 
      * <pre class="syntax">
      *   &lang;file name&rang; </pre>
-     *
+     * 
      * The scanning is performed in one of two ways:
      * <ul>
      * <li>If the first token is a left brace then a block is read until the
-     *   matching right brace is found. On the way the tokens are expanded.
-     * </li>
-     * <li>Otherwise tokens are read until a space token is encountered.
-     * </li>
+     * matching right brace is found. On the way the tokens are expanded. </li>
+     * <li>Otherwise tokens are read until a space token is encountered. </li>
      * </ul>
-     *
+     * 
      * </doc>
-     *
+     * 
      * @param context the processing context
      * @param source the source for new tokens
-     *
+     * 
      * @return the file name as string
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
-    protected String scanFileName(Context context,
-            TokenSource source) throws HelpingException, TypesetterException {
+    protected String scanFileName(Context context, TokenSource source)
+            throws HelpingException,
+                TypesetterException {
 
         Token t = source.scanNonSpace(context);
 
         if (t == null) {
-            // Fall through to error
+            throw new EofException(printableControlSequence(context));
         } else if (strictTeX && t.isa(Catcode.LEFTBRACE)) {
             source.push(t);
-            String name = source.scanTokensAsString(context, getName());
-            if (name != null) {
-                return name;
-            }
+            String name =
+                    source.scanTokensAsString(context,
+                        printableControlSequence(context));
+            return name;
 
-        } else {
-            StringBuffer sb = new StringBuffer(t.toText());
-
-            for (t = source.getToken(context); //
-            t != null && !(t instanceof SpaceToken); //
-            t = source.getToken(context)) {
-                sb.append(t.toText());
-            }
-
-            return sb.toString();
         }
 
-        throw new EofException(printableControlSequence(context));
+        StringBuffer sb = new StringBuffer(t.toText());
+
+        for (t = source.getToken(context); //
+        t != null && !(t instanceof SpaceToken); //
+        t = source.getToken(context)) {
+            sb.append(t.toText());
+        }
+
+        return sb.toString();
     }
 
 }

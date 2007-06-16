@@ -1154,9 +1154,6 @@ public class Moritz extends Max
         if (t instanceof LeftBraceToken) {
             push(t);
             String name = scanTokensAsString(context, primitive);
-            if (name == null) {
-                throw new InvalidCharacterNameException("");
-            }
 
             UnicodeChar uc = UnicodeChar.get(name);
             if (uc == null) {
@@ -1261,6 +1258,13 @@ public class Moritz extends Max
 
         if (token == null) {
             throw new EofException(primitive);
+        } else if (token instanceof CodeToken) {
+            Code code = context.getCode((CodeToken) token);
+            if (code instanceof TokensConvertible) {
+                return ((TokensConvertible) code).convertTokens(context, this,
+                    getTypesetter());
+            }
+            throw new MissingLeftBraceException(primitive);
         } else if (!(token instanceof LeftBraceToken)) {
             throw new MissingLeftBraceException(primitive);
         }
@@ -1309,7 +1313,11 @@ public class Moritz extends Max
             throws HelpingException,
                 TypesetterException {
 
-        return scanTokens(context, false, false, primitive).toText();
+        Tokens tokens = scanTokens(context, false, false, primitive);
+        if (tokens == null) {
+            throw new EofException(primitive);
+        }
+        return tokens.toText();
     }
 
     /**

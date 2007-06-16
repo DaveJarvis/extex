@@ -29,7 +29,9 @@ import org.extex.backend.documentWriter.DocumentWriter;
 import org.extex.backend.documentWriter.DocumentWriterFactory;
 import org.extex.backend.documentWriter.MultipleDocumentStream;
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
+import org.extex.backend.exception.BackendDocumentWriterDefinedException;
 import org.extex.backend.exception.BackendException;
+import org.extex.backend.exception.BackendUnknownDocumentWriterException;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.backend.pageFilter.PagePipe;
 import org.extex.color.ColorAware;
@@ -136,7 +138,7 @@ public class BackendDriverImpl
     private ColorConverter colorConverter;
 
     /**
-     * The field <tt>configuration</tt> contains the ...
+     * The field <tt>configuration</tt> contains the configuration.
      */
     private Configuration configuration;
 
@@ -152,7 +154,8 @@ public class BackendDriverImpl
     private DocumentWriter documentWriter = null;
 
     /**
-     * The field <tt>documentWriterFactory</tt> contains the ...
+     * The field <tt>documentWriterFactory</tt> contains the factory for new
+     * document writers.
      */
     private DocumentWriterFactory documentWriterFactory;
 
@@ -197,7 +200,7 @@ public class BackendDriverImpl
     private PagePipe pipeLast = counter;
 
     /**
-     * The field <tt>properties</tt> contains the ...
+     * The field <tt>properties</tt> contains the properties.
      */
     private Properties properties;
 
@@ -304,6 +307,16 @@ public class BackendDriverImpl
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.backend.BackendDriver#getDocumentWriterType()
+     */
+    public String getDocumentWriterType() {
+
+        return documentWriterType;
+    }
+
+    /**
      * Getter for the extension associated with this kind of output. For
      * instance <tt>pdf</tt> is the expected value for PDF files and
      * <tt>dvi</tt> is the expected value for DVI files.
@@ -342,19 +355,6 @@ public class BackendDriverImpl
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.backend.BackendDriver#setDocumentWriter(java.lang.String)
-     */
-    public void setDocumentWriter(String type) throws BackendException {
-
-        if (documentWriter != null) {
-            throw new BackendException(); // TODO gene: message
-        }
-        documentWriterType = type;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.extex.backend.BackendDriver#setDocumentWriterFactory(
      *      org.extex.backend.documentWriter.DocumentWriterFactory)
      */
@@ -362,6 +362,30 @@ public class BackendDriverImpl
             DocumentWriterFactory documentWriterFactory) {
 
         this.documentWriterFactory = documentWriterFactory;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.backend.BackendDriver#setDocumentWriterType(java.lang.String)
+     */
+    public void setDocumentWriterType(String type)
+            throws BackendDocumentWriterDefinedException,
+                BackendUnknownDocumentWriterException {
+
+        if (documentWriterType.equals(type)) {
+            return;
+        }
+        if (type == null) {
+            throw new IllegalArgumentException("DocumentWriterType");
+        }
+        if (documentWriter != null) {
+            throw new BackendDocumentWriterDefinedException();
+        }
+        if (documentWriterFactory != null && !documentWriterFactory.check(type)) {
+            throw new BackendUnknownDocumentWriterException(type);
+        }
+        documentWriterType = type;
     }
 
     /**
@@ -461,7 +485,7 @@ public class BackendDriverImpl
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
@@ -469,5 +493,5 @@ public class BackendDriverImpl
 
         return documentWriterType;
     }
-    
+
 }

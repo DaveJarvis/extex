@@ -137,18 +137,13 @@ public class EnsureLoaded extends AbstractCode
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        String cs = printableControlSequence(context);
-        Tokens tokens = source.scanTokens(context, false, false, cs);
+        String configName =
+                source.scanTokensAsString(context,
+                    printableControlSequence(context));
 
-        if (tokens == null) {
-            // this can not happen.
-            throw new EofException(cs);
-        }
-        String configName = tokens.toText();
         try {
             Configuration configuration =
-                    ConfigurationFactory.newInstance(CONFIG_UNIT
-                            + configName);
+                    ConfigurationFactory.newInstance(CONFIG_UNIT + configName);
             LoadUnit.loadUnit(configuration, context, source, typesetter,
                 logger, outFactory);
         } catch (HelpingException e) {
