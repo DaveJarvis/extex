@@ -20,13 +20,15 @@
 package org.extex.backend;
 
 import org.extex.backend.documentWriter.DocumentWriter;
+import org.extex.backend.documentWriter.DocumentWriterFactory;
+import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.exception.BackendException;
 import org.extex.backend.pageFilter.PagePipe;
 import org.extex.typesetter.type.page.Page;
 
 /**
  * This interface describes a back-end as extension to a DocumentWriter.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -34,59 +36,82 @@ public interface BackendDriver {
 
     /**
      * Adder for a processor.
-     *
+     * 
      * @param processor the processor to append
      */
     void add(PagePipe processor);
 
     /**
      * This method is invoked upon the end of the processing.
-     *
+     * 
      * @throws BackendException in case of an error
      */
     void close() throws BackendException;
 
     /**
      * Getter for the document writer.
-     *
+     * 
      * @return the document writer
+     * 
+     * @throws DocumentWriterException in case of an error
      */
-    DocumentWriter getDocumentWriter();
+    DocumentWriter getDocumentWriter() throws DocumentWriterException;
 
     /**
      * Getter for the extension associated with this kind of output. For
      * instance <tt>pdf</tt> is the expected value for PDF files and
      * <tt>dvi</tt> is the expected value for DVI files.
-     *
+     * 
      * @return the appropriate extension for file names
      */
     String getExtension();
 
     /**
      * Getter for the number of pages already produced.
-     *
+     * 
      * @return the number of pages already shipped out
      */
     int getPages();
 
     /**
      * Setter for the document writer.
-     *
-     * @param docWriter the document writer
+     * 
+     * @param type the document writer type
+     * 
+     * @throws BackendException in case that the document writer is already in
+     *         use
      */
-    void setDocumentWriter(DocumentWriter docWriter);
+    void setDocumentWriter(String type) throws BackendException;
+
+    /**
+     * Setter for the document writer factory.
+     * 
+     * @param documentWriterFactory the document writer factory to set
+     */
+    public void setDocumentWriterFactory(
+            DocumentWriterFactory documentWriterFactory);
+
+    /**
+     * Setter for a named parameter. Parameters are a general mechanism to
+     * influence the behavior of the document writer. Any parameter not known by
+     * the document writer has to be ignored.
+     * 
+     * @param name the name of the parameter
+     * @param value the value of the parameter
+     */
+    void setParameter(String name, String value);
 
     /**
      * This is the entry point for the document writer. Here it receives a
      * complete node list to be sent to the output writer. It can be assumed
      * that all values for width, height, and depth of the node lists are
-     * properly filled. Thus all information should be present to place the
-     * ink on the paper.
-     *
+     * properly filled. Thus all information should be present to place the ink
+     * on the paper.
+     * 
      * @param page the page to send
-     *
+     * 
      * @return returns the number of pages shipped
-     *
+     * 
      * @throws BackendException in case of an error
      */
     int shipout(Page page) throws BackendException;

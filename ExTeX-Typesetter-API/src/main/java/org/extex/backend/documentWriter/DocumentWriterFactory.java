@@ -45,10 +45,6 @@ import org.extex.framework.configuration.exception.ConfigurationMissingAttribute
  * <dd> If this interface is implemented then a
  * {@link java.util.logging.Logger Logger} is passed in with the interface
  * method. </dd>
- * <dt>{@link org.extex.framework.i18n.Localizable Localizable}</dt>
- * <dd> If this interface is implemented then a
- * {@link org.extex.framework.i18n.Localizer Localizer} is passed in with
- * the interface method. </dd>
  * <dt>{@link org.extex.backend.documentWriter.SingleDocumentStream SingleDocumentStream}</dt>
  * <dd> If this interface is implemented then a
  * {@link java.io.OutputStream OutputStream} is passed in with the interface
@@ -61,7 +57,7 @@ import org.extex.framework.configuration.exception.ConfigurationMissingAttribute
  *
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
 public class DocumentWriterFactory extends AbstractFactory {
 
@@ -70,6 +66,11 @@ public class DocumentWriterFactory extends AbstractFactory {
      * configuration.
      */
     private String defaultType;
+
+    /**
+     * The field <tt>options</tt> contains the options.
+     */
+    private DocumentWriterOptions options;
 
     /**
      * Creates a new object.
@@ -105,7 +106,6 @@ public class DocumentWriterFactory extends AbstractFactory {
      * </p>
      *
      * @param type the type of the document writer
-     * @param options the dynamic access to the readable part of the context
      * @param outFactory the factory for further output streams
      *
      * @return the new instance
@@ -114,7 +114,6 @@ public class DocumentWriterFactory extends AbstractFactory {
      * @throws ConfigurationException in case of a configuration problem
      */
     public DocumentWriter newInstance(String type,
-            DocumentWriterOptions options,
             OutputStreamFactory outFactory)
             throws DocumentWriterException {
 
@@ -140,6 +139,17 @@ public class DocumentWriterFactory extends AbstractFactory {
                     .setOutputStreamFactory(outFactory);
         }
         return documentWriter;
+    }
+
+    
+    /**
+     * Setter for options.
+     *
+     * @param options the dynamic access to the readable part of the context
+     */
+    public void setOptions(DocumentWriterOptions options) {
+    
+        this.options = options;
     }
 
 }
