@@ -45,7 +45,7 @@ public class CountdefTest extends AbstractCountRegisterTester {
      */
     public CountdefTest(String arg) {
 
-        super(arg, "x", "", "0", "\\countdef\\x=42 ");
+        super(arg, "cc", "", "0", "\\countdef\\cc=42 ");
     }
 
     /**
