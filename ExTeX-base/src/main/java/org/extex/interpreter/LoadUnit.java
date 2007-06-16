@@ -126,6 +126,7 @@ public final class LoadUnit extends AbstractFactory {
         } else {
             unitInfo = new UnitInfo(name);
         }
+
         context.addUnit(unitInfo);
 
         if (unitInfo instanceof Loader) {
