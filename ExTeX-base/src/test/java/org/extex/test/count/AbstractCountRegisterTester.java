@@ -139,10 +139,10 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterDefault1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            prepare + "\\the\\" + invocation + "\\end",
+        assertOutput(// --- input code ---
+            prepare + "\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            init + TERM);
+            out(init), "");
     }
 
     /**
@@ -167,10 +167,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterAssign1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            prepare + "\\" + invocation + "=123 \\the\\" + invocation + "\\end",
+        assertOutput(// --- input code ---
+            prepare + "\\" + invocation + "=123 \\showthe\\" + invocation
+                    + "\\end",
             // --- output channel ---
-            "123" + TERM);
+            out("123"), "");
     }
 
     /**
@@ -181,10 +182,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterAssign2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            prepare + "\\" + invocation + " 123 \\the\\" + invocation + "\\end",
+        assertOutput(// --- input code ---
+            prepare + "\\" + invocation + " 123 \\showthe\\" + invocation
+                    + "\\end",
             // --- output channel ---
-            "123" + TERM);
+            out("123"), "");
     }
 
     /**
@@ -195,11 +197,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterAssign3() throws Exception {
 
-        assertSuccess(// --- input code ---
-            prepare + "\\" + invocation + "=-123 \\the\\" + invocation
+        assertOutput(// --- input code ---
+            prepare + "\\" + invocation + "=-123 \\showthe\\" + invocation
                     + "\\end",
             // --- output channel ---
-            "-123" + TERM);
+            out("-123"), "");
     }
 
     /**
@@ -210,10 +212,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterAssign4() throws Exception {
 
-        assertSuccess(// --- input code ---
-            prepare + "\\" + invocation + "-123 \\the\\" + invocation + "\\end",
+        assertOutput(// --- input code ---
+            prepare + "\\" + invocation + "-123 \\showthe\\" + invocation
+                    + "\\end",
             // --- output channel ---
-            "-123" + TERM);
+            out("-123"), "");
     }
 
     /**
@@ -224,11 +227,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterAssign5() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\globaldefs=1 " + "\\begingroup\\" + invocation
-                    + "-123 \\endgroup" + "\\the\\" + invocation + "\\end",
+                    + "-123 \\endgroup" + "\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "-123" + TERM);
+            out("-123"), "");
     }
 
     /**
@@ -239,11 +242,13 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterAfterassignment1() throws Exception {
 
-        assertSuccess(// --- input code ---
-            prepare + "\\afterassignment b a" + "\\" + invocation
-                    + "-123 c\\the\\" + invocation + "\\end",
+        assertOutput(// --- input code ---
+            DEFINE_BRACES + prepare
+                    + "\\def\\x{\\message{b}}\\afterassignment\\x\\message{a}"
+                    + "\\" + invocation + "-123 \\message{c}\\showthe\\"
+                    + invocation + "\\end",
             // --- output channel ---
-            "abc-123" + TERM);
+            "a b c> -123.\n", "");
     }
 
     /**
@@ -254,11 +259,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterConvertible1() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\" + invocation + "-123 \\count0=\\" + invocation
-                    + " \\the\\count0 \\end",
+                    + " \\showthe\\count0 \\end",
             // --- output channel ---
-            "-123" + TERM);
+            out("-123"), "");
     }
 
     /**
@@ -269,11 +274,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterGroup1() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\begingroup\\" + invocation + "=123 \\endgroup"
-                    + " \\the\\" + invocation + "\\end",
+                    + " \\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            init + TERM);
+            out(init), "");
     }
 
     /**
@@ -284,11 +289,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterGlobalAssign1() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\begingroup\\global\\" + invocation + "=123 \\endgroup"
-                    + "\\the\\" + invocation + "\\end",
+                    + "\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "123" + TERM);
+            out("123"), "");
     }
 
     /**
@@ -299,11 +304,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterGlobalAssign2() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\begingroup\\global\\" + invocation + " 123 \\endgroup"
-                    + "\\the\\" + invocation + "\\end",
+                    + "\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "123" + TERM);
+            out("123"), "");
     }
 
     /**
@@ -314,11 +319,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterAdvance1() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\" + invocation + "=23 " + "\\advance\\" + invocation
-                    + " 12 " + "\\the\\" + invocation + "\\end",
+                    + " 12 " + "\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "35" + TERM);
+            out("35"), "");
     }
 
     /**
@@ -329,11 +334,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterAdvance2() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\" + invocation + "=23 " + "\\advance\\" + invocation
-                    + " by 12 " + "\\the\\" + invocation + "\\end",
+                    + " by 12 " + "\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "35" + TERM);
+            out("35"), "");
     }
 
     /**
@@ -344,11 +349,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterAdvance3() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\" + invocation + "=23 " + "\\advance\\" + invocation
-                    + "-12 " + "\\the\\" + invocation + "\\end",
+                    + "-12 " + "\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "11" + TERM);
+            out("11"), "");
     }
 
     /**
@@ -359,11 +364,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterAdvance4() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\" + invocation + "=23 " + "\\advance\\" + invocation
-                    + " by -12 " + "\\the\\" + invocation + "\\end",
+                    + " by -12 " + "\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "11" + TERM);
+            out("11"), "");
     }
 
     /**
@@ -374,11 +379,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterAdvance5() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\globaldefs=1 " + "\\begingroup\\" + invocation
-                    + "-123 \\endgroup" + "\\the\\" + invocation + "\\end",
+                    + "-123 \\endgroup" + "\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "-123" + TERM);
+            out("-123"), "");
     }
 
     /**
@@ -389,12 +394,13 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterAfterassignment2() throws Exception {
 
-        assertSuccess(// --- input code ---
-            prepare + "\\" + invocation + "=0 " + "\\afterassignment b a"
-                    + "\\advance\\" + invocation + "-123 c\\the\\" + invocation
-                    + "\\end",
+        assertOutput(// --- input code ---
+            DEFINE_BRACES + prepare + "\\def\\x{\\message{b}}\\" + invocation
+                    + "=0 " + "\\afterassignment\\x\\message{a}"
+                    + "\\advance\\" + invocation
+                    + "-123 \\message{c}\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "abc-123" + TERM);
+            "a b c> -123.\n", "");
     }
 
     /**
@@ -405,12 +411,12 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterGroup2() throws Exception {
 
-        assertSuccess(
-        // --- input code ---
+        assertOutput(// --- input code ---
+            // --- input code ---
             prepare + "\\begingroup\\advance\\" + invocation
-                    + " 123 \\endgroup" + " \\the\\" + invocation + "\\end",
+                    + " 123 \\endgroup" + " \\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            init + TERM);
+            out(init), "");
     }
 
     /**
@@ -421,12 +427,12 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterMultiply0() throws Exception {
 
-        assertSuccess(
+        assertOutput(
         // --- input code ---
             prepare + "\\" + invocation + "=3 " + "\\multiply\\" + invocation
-                    + " 0 " + "\\the\\" + invocation + "\\end",
+                    + " 0 " + "\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "0" + TERM);
+            "> 0.\n", "");
     }
 
     /**
@@ -437,11 +443,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterMultiply1() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\" + invocation + "=3 " + "\\multiply\\" + invocation
-                    + " 12 " + "\\the\\" + invocation + "\\end",
+                    + " 12 " + "\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "36" + TERM);
+            "> 36.\n", "");
     }
 
     /**
@@ -452,11 +458,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterMultiply2() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\" + invocation + "=3 " + "\\multiply\\" + invocation
-                    + " by 12 " + "\\the\\" + invocation + "\\end",
+                    + " by 12 " + "\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "36" + TERM);
+            "> 36.\n", "");
     }
 
     /**
@@ -467,11 +473,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterMultiply3() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\" + invocation + "=3 " + "\\multiply\\" + invocation
-                    + "-12 " + "\\the\\" + invocation + "\\end",
+                    + "-12 " + "\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "-36" + TERM);
+            "> -36.\n", "");
     }
 
     /**
@@ -482,11 +488,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterMultiply4() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\" + invocation + "=3 " + "\\multiply\\" + invocation
-                    + " by -12 " + "\\the\\" + invocation + "\\end",
+                    + " by -12 " + "\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "-36" + TERM);
+            "> -36.\n", "");
     }
 
     /**
@@ -497,12 +503,12 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterMultiply5() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\globaldefs=1 " + "\\" + invocation + "=12 "
                     + "\\begingroup\\multiply\\" + invocation + " 3 \\endgroup"
-                    + "\\the\\" + invocation + "\\end",
+                    + "\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "36" + TERM);
+            "> 36.\n", "");
     }
 
     /**
@@ -513,12 +519,13 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterAfterassignment3() throws Exception {
 
-        assertSuccess(// --- input code ---
-            prepare + "\\" + invocation + "=0 " + "\\afterassignment b a"
-                    + "\\multiply\\" + invocation + "-123 c\\the\\"
-                    + invocation + "\\end",
+        assertOutput(// --- input code ---
+            DEFINE_BRACES + prepare + "\\def\\x{\\message{b}}\\" + invocation
+                    + "=0 " + "\\afterassignment\\x \\message{a}"
+                    + "\\multiply\\" + invocation
+                    + "-123 \\message{c}\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "abc0" + TERM);
+            "a b c> 0.\n", "");
     }
 
     /**
@@ -529,13 +536,12 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterGroup3() throws Exception {
 
-        assertSuccess(
-        // --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\" + invocation + "=3 " + "\\begingroup\\multiply\\"
-                    + invocation + " 123 \\endgroup" + " \\the\\" + invocation
-                    + "\\end",
+                    + invocation + " 123 \\endgroup" + " \\showthe\\"
+                    + invocation + "\\end",
             // --- output channel ---
-            "3" + TERM);
+            out("3"), "");
     }
 
     /**
@@ -562,11 +568,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterDivide1() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\" + invocation + "=36 " + "\\divide\\" + invocation
-                    + " 12 " + "\\the\\" + invocation + "\\end",
+                    + " 12 " + "\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "3" + TERM);
+            out("3"), "");
     }
 
     /**
@@ -577,11 +583,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterDivide2() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\" + invocation + "=36 " + "\\divide\\" + invocation
-                    + " by 12 " + "\\the\\" + invocation + "\\end",
+                    + " by 12 " + "\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "3" + TERM);
+            out("3"), "");
     }
 
     /**
@@ -592,11 +598,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterDivide3() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\" + invocation + "=36 " + "\\divide\\" + invocation
-                    + "-12 " + "\\the\\" + invocation + "\\end",
+                    + "-12 " + "\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "-3" + TERM);
+            out("-3"), "");
     }
 
     /**
@@ -607,11 +613,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterDivide4() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\" + invocation + "=36 " + "\\divide\\" + invocation
-                    + " by -12 " + "\\the\\" + invocation + "\\end",
+                    + " by -12 " + "\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "-3" + TERM);
+            out("-3"), "");
     }
 
     /**
@@ -622,12 +628,12 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterDivide5() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\globaldefs=1 " + "\\" + invocation + "=-246 "
                     + "\\begingroup\\divide\\" + invocation + "-123 \\endgroup"
-                    + "\\the\\" + invocation + "\\end",
+                    + "\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "2" + TERM);
+            out("2"), "");
     }
 
     /**
@@ -638,11 +644,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterDivide7() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\" + invocation + "=37 " + "\\divide\\" + invocation
-                    + "-12 " + "\\the\\" + invocation + "\\end",
+                    + "-12 " + "\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "-3" + TERM);
+            out("-3"), "");
     }
 
     /**
@@ -653,11 +659,12 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterAfterassignment4() throws Exception {
 
-        assertSuccess(// --- input code ---
-            prepare + "\\afterassignment b a" + "\\divide\\" + invocation
-                    + "-123 c\\end",
+        assertOutput(// --- input code ---
+            DEFINE_BRACES + prepare
+                    + "\\def\\x{\\message{b}}\\afterassignment\\x \\message{a}"
+                    + "\\divide\\" + invocation + "-123 \\message{c}\\end",
             // --- output channel ---
-            "abc" + TERM);
+            "a b c", "");
     }
 
     /**
@@ -668,11 +675,11 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterDivide6() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\" + invocation + "=-36 " + "\\divide\\" + invocation
-                    + " by -12 " + "\\the\\" + invocation + "\\end",
+                    + " by -12 " + "\\showthe\\" + invocation + "\\end",
             // --- output channel ---
-            "3" + TERM);
+            out("3"), "");
     }
 
     /**
@@ -682,12 +689,12 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void testCountRegisterGroup4() throws Exception {
 
-        assertSuccess(// --- input code ---
+        assertOutput(// --- input code ---
             prepare + "\\" + invocation + "=3 " + "\\begingroup\\divide\\"
-                    + invocation + " 123 \\endgroup" + " \\the\\" + invocation
-                    + "\\end",
+                    + invocation + " 123 \\endgroup" + " \\showthe\\"
+                    + invocation + "\\end",
             // --- output channel ---
-            "3" + TERM);
+            out("3"), "");
     }
 
     /**
@@ -697,7 +704,7 @@ public abstract class AbstractCountRegisterTester extends ExTeXLauncher {
      */
     public void ___testCountRegisterExpansion1() throws Exception {
 
-        //TODO gene: test expansion
+        // TODO gene: test expansion
         assertSuccess(// --- input code ---
             prepare + DEFINE_BRACES + "\\toks0={" + "\\" + invocation
                     + "}\\the\\toks0 \\end",
