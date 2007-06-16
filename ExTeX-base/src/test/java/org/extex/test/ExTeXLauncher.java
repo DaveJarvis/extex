@@ -158,6 +158,11 @@ public class ExTeXLauncher extends TestCase {
             new HashMap<String, Level>();
 
     /**
+     * The field <tt>SEP</tt> contains the separator for properties.
+     */
+    private static final String SEP = ":";
+
+    /**
      * The constant <tt>TERM</tt> contains the terminating string for output.
      */
     public static final String TERM = "\n\n";
@@ -189,7 +194,10 @@ public class ExTeXLauncher extends TestCase {
 
         provide(properties, "extex.output", "test-plain");
         provide(properties, "extex.interaction", "batchmode");
-        provide(properties, "extex.fonts", "../ExTeX-BaseFont/src/font");
+        provide(properties, "extex.fonts", //
+            "../texmf/src/texmf/test/texmf" + SEP + //
+                    "../texmf/src/main/texmf" + SEP + //
+                    "../texmf/src/texmf");
         provide(properties, "extex.nobanner", "true");
     }
 
@@ -283,8 +291,34 @@ public class ExTeXLauncher extends TestCase {
      * 
      * @param properties the properties to start with
      * @param code the code to expand
+     * @param log the expected output on the log stream
+     * @param expect the expected output on the output stream
+     * 
+     * @return a new instance of the <tt>Interpreter</tt> class which has been
+     *         used for the test run. This object can be inspected in additional
+     *         asserts.
+     * 
+     * @throws HelpingException in case of an error
+     */
+    public Interpreter assertOutput(Properties properties, String code,
+            String log, String expect) throws HelpingException {
+
+        Validator logValidator =
+                (log == null ? null : new EqualityValidator("log stream", log));
+        Validator outputValidator =
+                (expect == null ? null : new EqualityValidator("out stream",
+                    expect));
+        return assertOutput(properties, code, logValidator, outputValidator);
+    }
+
+    /**
+     * Run some code through <logo>ExTeX</logo>.
+     * 
+     * @param properties the properties to start with
+     * @param code the code to expand
      * @param logValidator the validator for the log stream or <code>null</code>
-     * @param outputValidator the validator for the output stream or <code>null</code>
+     * @param outputValidator the validator for the output stream or
+     *        <code>null</code>
      * 
      * @return a new instance of the <tt>Interpreter</tt> class which has been
      *         used for the test run. This object can be inspected in additional
@@ -374,7 +408,7 @@ public class ExTeXLauncher extends TestCase {
             errorP = true;
         } catch (Throwable e) {
             e.printStackTrace();
-            assertTrue(false);
+            fail();
         }
 
         handler.close();
@@ -390,31 +424,6 @@ public class ExTeXLauncher extends TestCase {
                 outputValidator.validate(stream.toString()));
         }
         return interpreter;
-    }
-
-    /**
-     * Run some code through <logo>ExTeX</logo>.
-     * 
-     * @param properties the properties to start with
-     * @param code the code to expand
-     * @param log the expected output on the log stream
-     * @param expect the expected output on the output stream
-     * 
-     * @return a new instance of the <tt>Interpreter</tt> class which has been
-     *         used for the test run. This object can be inspected in additional
-     *         asserts.
-     * 
-     * @throws HelpingException in case of an error
-     */
-    public Interpreter assertOutput(Properties properties, String code,
-            String log, String expect) throws HelpingException {
-
-        Validator logValidator =
-                (log == null ? null : new EqualityValidator("log stream", log));
-        Validator outputValidator =
-                (expect == null ? null : new EqualityValidator("out stream",
-                    expect));
-        return assertOutput(properties, code, logValidator, outputValidator);
     }
 
     /**
