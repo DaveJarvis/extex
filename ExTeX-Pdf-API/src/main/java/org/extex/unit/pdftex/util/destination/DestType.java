@@ -26,10 +26,10 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.pdf.api.exception.InterpreterPdftexDestinationTypeException;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.RuleNode;
-import org.extex.unit.pdftex.exception.InterpreterPdftexDestinationTypeException;
 
 /**
  * This is the abstract base class for destination types in PDF.

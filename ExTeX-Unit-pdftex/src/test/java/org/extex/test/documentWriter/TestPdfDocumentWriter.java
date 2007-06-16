@@ -33,7 +33,6 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.interpreter.type.box.Box;
 import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
@@ -573,7 +572,7 @@ public class TestPdfDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.backend.documentWriter.PdftexSupport#getAnnotation(org.extex.typesetter.type.node.RuleNode,
+     * @see org.extex.pdf.api.PdftexSupport#getAnnotation(org.extex.typesetter.type.node.RuleNode,
      *      java.lang.String)
      */
     public PdfAnnotation getAnnotation(RuleNode node, String annotation)
@@ -586,8 +585,8 @@ public class TestPdfDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.backend.documentWriter.PdftexSupport#getObject(java.lang.String,
-     *      boolean, java.lang.String)
+     * @see org.extex.pdf.api.PdftexSupport#getObject(
+     *      java.lang.String, boolean, java.lang.String)
      */
     public PdfObject getObject(String attr, boolean isStream, String text)
             throws HelpingException {
@@ -599,10 +598,11 @@ public class TestPdfDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.backend.documentWriter.PdftexSupport#getXForm(java.lang.String,
-     *      java.lang.String, org.extex.interpreter.type.box.Box)
+     * @see org.extex.pdf.api.PdftexSupport#getXForm(
+     *      java.lang.String, java.lang.String,
+     *      org.extex.typesetter.type.NodeList)
      */
-    public PdfXForm getXForm(String attr, String resources, Box box)
+    public PdfXForm getXForm(String attr, String resources, NodeList list)
             throws HelpingException {
 
         // TODO gene: getXForm unimplemented
@@ -612,9 +612,20 @@ public class TestPdfDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.backend.documentWriter.PdftexSupport#getXImage(java.lang.String,
-     *      org.extex.typesetter.type.node.RuleNode, java.lang.String, long,
-     *      boolean)
+     * @see org.extex.pdf.api.PdftexSupport#getXImage(
+     *      java.lang.String, org.extex.typesetter.type.node.RuleNode,
+     *      java.lang.String, long, boolean)
+     */
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param resource
+     * @param rule
+     * @param attr
+     * @param page
+     * @param immediate
+     * @return
+     * @throws HelpingException
      */
     public PdfRefXImage getXImage(String resource, RuleNode rule, String attr,
             long page, boolean immediate) throws HelpingException {
@@ -626,7 +637,7 @@ public class TestPdfDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.backend.documentWriter.PdftexSupport#pdfcatalog(java.lang.String,
+     * @see org.extex.pdf.api.PdftexSupport#pdfcatalog(java.lang.String,
      *      org.extex.unit.pdftex.util.action.ActionSpec)
      */
     public void pdfcatalog(String text, ActionSpec action) {
@@ -638,7 +649,7 @@ public class TestPdfDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.backend.documentWriter.PdftexSupport#pdffontname(org.extex.typesetter.tc.font.Font)
+     * @see org.extex.pdf.api.PdftexSupport#pdffontname(org.extex.typesetter.tc.font.Font)
      */
     public String pdffontname(Font font) {
 
@@ -649,7 +660,7 @@ public class TestPdfDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.backend.documentWriter.PdftexSupport#pdffontobjnum(org.extex.typesetter.tc.font.Font)
+     * @see org.extex.pdf.api.PdftexSupport#pdffontobjnum(org.extex.typesetter.tc.font.Font)
      */
     public long pdffontobjnum(Font font) {
 
@@ -660,7 +671,7 @@ public class TestPdfDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.backend.documentWriter.PdftexSupport#pdfincludechars(org.extex.typesetter.tc.font.Font,
+     * @see org.extex.pdf.api.PdftexSupport#pdfincludechars(org.extex.typesetter.tc.font.Font,
      *      java.lang.String)
      */
     public void pdfincludechars(Font font, String text) {
@@ -672,7 +683,7 @@ public class TestPdfDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.backend.documentWriter.PdftexSupport#pdfinfo(java.lang.String)
+     * @see org.extex.pdf.api.PdftexSupport#pdfinfo(java.lang.String)
      */
     public void pdfinfo(String text) {
 
@@ -683,7 +694,7 @@ public class TestPdfDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.backend.documentWriter.PdftexSupport#pdflastannot()
+     * @see org.extex.pdf.api.PdftexSupport#pdflastannot()
      */
     public long pdflastannot() {
 
@@ -694,7 +705,7 @@ public class TestPdfDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.backend.documentWriter.PdftexSupport#pdflastobj()
+     * @see org.extex.pdf.api.PdftexSupport#pdflastobj()
      */
     public long pdflastobj() {
 
@@ -705,7 +716,7 @@ public class TestPdfDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.backend.documentWriter.PdftexSupport#pdflastxform()
+     * @see org.extex.pdf.api.PdftexSupport#pdflastxform()
      */
     public long pdflastxform() {
 
@@ -716,7 +727,7 @@ public class TestPdfDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.backend.documentWriter.PdftexSupport#pdflastximage()
+     * @see org.extex.pdf.api.PdftexSupport#pdflastximage()
      */
     public long pdflastximage() {
 
@@ -727,7 +738,7 @@ public class TestPdfDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.backend.documentWriter.PdftexSupport#pdfnames(java.lang.String)
+     * @see org.extex.pdf.api.PdftexSupport#pdfnames(java.lang.String)
      */
     public void pdfnames(String text) {
 
@@ -738,7 +749,7 @@ public class TestPdfDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.backend.documentWriter.PdftexSupport#pdfoutline(org.extex.unit.pdftex.util.action.ActionSpec,
+     * @see org.extex.pdf.api.PdftexSupport#pdfoutline(org.extex.unit.pdftex.util.action.ActionSpec,
      *      long, java.lang.String)
      */
     public void pdfoutline(ActionSpec action, long count, String text) {

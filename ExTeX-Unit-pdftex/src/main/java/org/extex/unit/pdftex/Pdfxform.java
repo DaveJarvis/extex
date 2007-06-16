@@ -106,7 +106,7 @@ public class Pdfxform extends AbstractPdftexCode {
 
         long b = source.parseInteger(context, source, typesetter);
         Box box = context.getBox(Long.toString(b));
-        PdfXForm form = writer.getXForm(attr, resources, box);
+        PdfXForm form = writer.getXForm(attr, resources, box.getNodes());
 
         typesetter.add(form);
 

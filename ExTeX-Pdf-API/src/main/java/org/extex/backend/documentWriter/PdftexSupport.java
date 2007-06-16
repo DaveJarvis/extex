@@ -22,6 +22,7 @@ package org.extex.backend.documentWriter;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.type.box.Box;
 import org.extex.typesetter.tc.font.Font;
+import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.RuleNode;
 import org.extex.typesetter.type.node.pdftex.PdfAnnotation;
 import org.extex.typesetter.type.node.pdftex.PdfObject;
@@ -72,13 +73,13 @@ public interface PdftexSupport {
      *
      * @param attr the attribute text. This can be <code>null</code>
      * @param resources the resources specification
-     * @param box the content
+     * @param list the content
      *
      * @return a PdfXForm node
      *
      * @throws HelpingException in case of an error
      */
-    PdfXForm getXForm(String attr, String resources, Box box)
+    PdfXForm getXForm(String attr, String resources, NodeList list)
             throws HelpingException;
 
     /**

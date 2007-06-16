@@ -3,10 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>ExTeX-Unit-pdftex</artifactId>
-  <name>ExTeX Unit Pdftex</name>
+  <artifactId>ExTeX-Pdf-API</artifactId>
+  <name>ExTeX Pdf API</name>
   <description>
-    This is the ExTeX unit pdftex.
+    This is an ExTeX PDF API component.
   </description>
 
   <packaging>jar</packaging>
@@ -23,27 +23,14 @@
   <dependencies>
     <dependency>
       <groupId>org.extex</groupId>
-      <artifactId>ExTeX-Pdf-API</artifactId>
+      <artifactId>ExTeX-core</artifactId>
       <version>0.1-SNAPSHOT</version>
     </dependency>
-
+  </dependencies>
     <dependency>
       <groupId>org.extex</groupId>
-      <artifactId>ExTeX-Interpreter-API</artifactId>
+      <artifactId>ExTeX-Typesetter-API</artifactId>
       <version>0.1-SNAPSHOT</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.extex</groupId>
-      <artifactId>ExTeX-Unit-tex</artifactId>
-      <version>0.1-SNAPSHOT</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.extex</groupId>
-      <artifactId>ExTeX-base</artifactId>
-      <version>0.1-SNAPSHOT</version>
-      <scope>test</scope>
     </dependency>
   </dependencies>
 
