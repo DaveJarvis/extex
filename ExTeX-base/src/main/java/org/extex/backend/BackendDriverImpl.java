@@ -20,21 +20,33 @@
 package org.extex.backend;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Map.Entry;
 
 import org.extex.backend.documentWriter.DocumentWriter;
+import org.extex.backend.documentWriter.DocumentWriterFactory;
 import org.extex.backend.documentWriter.MultipleDocumentStream;
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.exception.BackendException;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.backend.pageFilter.PagePipe;
+import org.extex.color.ColorAware;
+import org.extex.color.ColorConverter;
 import org.extex.core.exception.GeneralException;
+import org.extex.font.CoreFontFactory;
+import org.extex.font.FontAware;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
+import org.extex.resource.PropertyAware;
+import org.extex.resource.ResourceAware;
+import org.extex.resource.ResourceFinder;
 import org.extex.typesetter.type.page.Page;
 
 /**
  * This back-end driver can be used to combine several components.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4728 $
  */
@@ -42,11 +54,16 @@ public class BackendDriverImpl
         implements
             BackendDriver,
             MultipleDocumentStream,
-            Configurable {
+            Configurable,
+            PropertyAware,
+            ColorAware,
+            ResourceAware,
+            FontAware {
 
     /**
-     * This internal class acts as page counter as last element in the node pipe.
-     *
+     * This internal class acts as page counter as last element in the node
+     * pipe.
+     * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision: 4728 $
      */
@@ -54,7 +71,7 @@ public class BackendDriverImpl
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.backend.pageFilter.PagePipe#close()
          */
         public void close() throws BackendException {
@@ -71,7 +88,7 @@ public class BackendDriverImpl
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.backend.pageFilter.PagePipe#setOutput(
          *      org.extex.backend.pageFilter.PagePipe)
          */
@@ -82,7 +99,7 @@ public class BackendDriverImpl
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.backend.pageFilter.PagePipe#setParameter(
          *      java.lang.String, java.lang.String)
          */
@@ -93,7 +110,7 @@ public class BackendDriverImpl
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.backend.pageFilter.PagePipe#shipout(
          *      org.extex.typesetter.type.page.Page)
          */
@@ -114,7 +131,17 @@ public class BackendDriverImpl
     }
 
     /**
-     * The field <tt>counter</tt> contains the counter page pipe  which will
+     * The field <tt>colorConverter</tt> contains the color converter.
+     */
+    private ColorConverter colorConverter;
+
+    /**
+     * The field <tt>configuration</tt> contains the ...
+     */
+    private Configuration configuration;
+
+    /**
+     * The field <tt>counter</tt> contains the counter page pipe which will
      * always be placed at the end of the of the pipe.
      */
     private PagePipe counter = new Counter();
@@ -125,10 +152,37 @@ public class BackendDriverImpl
     private DocumentWriter documentWriter = null;
 
     /**
-     * The field <tt>pages</tt> contains the number of pages already sent to the
-     * document writer.
+     * The field <tt>documentWriterFactory</tt> contains the ...
+     */
+    private DocumentWriterFactory documentWriterFactory;
+
+    /**
+     * The field <tt>documentWriterType</tt> contains the type of the document
+     * writer to use.
+     */
+    private String documentWriterType = "?";
+
+    /**
+     * The field <tt>finder</tt> contains the resource finder.
+     */
+    private ResourceFinder finder;
+
+    /**
+     * The field <tt>fontFactory</tt> contains the font factory.
+     */
+    private CoreFontFactory fontFactory;
+
+    /**
+     * The field <tt>pages</tt> contains the number of pages already sent to
+     * the document writer.
      */
     private int pages = 0;
+
+    /**
+     * The field <tt>params</tt> contains the parameters to be passed to the
+     * document writer.
+     */
+    private Map<String, String> params = new HashMap<String, String>();
 
     /**
      * The field <tt>pipeFirst</tt> contains the elements of the pipe.
@@ -136,11 +190,21 @@ public class BackendDriverImpl
     private PagePipe pipeFirst = counter;
 
     /**
-     * The field <tt>pipeLast</tt> contains the last item in the pipe. Initially
-     * it is the counter. If the pipe is longer this value is the last item
-     * before the counter.
+     * The field <tt>pipeLast</tt> contains the last item in the pipe.
+     * Initially it is the counter. If the pipe is longer this value is the last
+     * item before the counter.
      */
     private PagePipe pipeLast = counter;
+
+    /**
+     * The field <tt>properties</tt> contains the ...
+     */
+    private Properties properties;
+
+    /**
+     * The field <tt>streamFactory</tt> contains the output stream factory.
+     */
+    private OutputStreamFactory streamFactory;
 
     /**
      * Creates a new object.
@@ -152,7 +216,7 @@ public class BackendDriverImpl
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.backend.BackendDriver#add(
      *      org.extex.backend.pageFilter.PagePipe)
      */
@@ -171,7 +235,7 @@ public class BackendDriverImpl
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.backend.BackendDriver#close()
      */
     public void close() throws BackendException {
@@ -192,22 +256,50 @@ public class BackendDriverImpl
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
     public void configure(Configuration config) {
 
-        // nothing to do
+        configuration = config;
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.backend.BackendDriver#getDocumentWriter()
      */
-    public DocumentWriter getDocumentWriter() {
+    public DocumentWriter getDocumentWriter() throws DocumentWriterException {
 
+        if (documentWriter == null) {
+
+            documentWriter = documentWriterFactory.newInstance(//
+                documentWriterType, //
+                streamFactory);
+            if (documentWriter instanceof PropertyAware) {
+                ((PropertyAware) documentWriter).setProperties(properties);
+            }
+            if (documentWriter instanceof ColorAware) {
+                ((ColorAware) documentWriter).setColorConverter(colorConverter);
+            }
+            if (documentWriter instanceof ResourceAware) {
+                ((ResourceAware) documentWriter).setResourceFinder(finder);
+            }
+            if (documentWriter instanceof FontAware) {
+                ((FontAware) documentWriter).setFontFactory(fontFactory);
+            }
+
+            for (Entry<String, String> param : params.entrySet()) {
+                documentWriter.setParameter(param.getKey(), param.getValue());
+            }
+
+            if (documentWriter instanceof MultipleDocumentStream) {
+                ((MultipleDocumentStream) documentWriter)
+                    .setOutputStreamFactory(streamFactory);
+            }
+
+        }
         return documentWriter;
     }
 
@@ -215,9 +307,9 @@ public class BackendDriverImpl
      * Getter for the extension associated with this kind of output. For
      * instance <tt>pdf</tt> is the expected value for PDF files and
      * <tt>dvi</tt> is the expected value for DVI files.
-     *
+     * 
      * @return the appropriate extension for file names
-     *
+     * 
      * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
      */
     public String getExtension() {
@@ -227,9 +319,9 @@ public class BackendDriverImpl
 
     /**
      * Getter for the number of pages already produced.
-     *
+     * 
      * @return the number of pages already shipped out
-     *
+     * 
      * @see org.extex.backend.BackendDriver#getPages()
      */
     public int getPages() {
@@ -238,75 +330,144 @@ public class BackendDriverImpl
     }
 
     /**
-     * Setter for the document writer.
-     *
-     * @param docWriter the document writer
-     *
-     * @see org.extex.backend.BackendDriver#setDocumentWriter(
-     *      org.extex.backend.documentWriter.DocumentWriter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.color.ColorAware#setColorConverter(org.extex.color.ColorConverter)
      */
-    public void setDocumentWriter(DocumentWriter docWriter) {
+    public void setColorConverter(ColorConverter converter) {
 
-        documentWriter = docWriter;
+        this.colorConverter = converter;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.backend.BackendDriver#setDocumentWriter(java.lang.String)
+     */
+    public void setDocumentWriter(String type) throws BackendException {
+
+        if (documentWriter != null) {
+            throw new BackendException(); // TODO gene: message
+        }
+        documentWriterType = type;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.backend.BackendDriver#setDocumentWriterFactory(
+     *      org.extex.backend.documentWriter.DocumentWriterFactory)
+     */
+    public void setDocumentWriterFactory(
+            DocumentWriterFactory documentWriterFactory) {
+
+        this.documentWriterFactory = documentWriterFactory;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.FontAware#setFontFactory(org.extex.font.CoreFontFactory)
+     */
+    public void setFontFactory(CoreFontFactory factory) {
+
+        this.fontFactory = factory;
     }
 
     /**
      * Setter for the output stream.
-     *
+     * 
      * @param factory the output stream
-     *
+     * 
      * @see org.extex.backend.documentWriter.MultipleDocumentStream#setOutputStreamFactory(
      *      org.extex.backend.outputStream.OutputStreamFactory)
      */
     public void setOutputStreamFactory(OutputStreamFactory factory) {
 
-        if (documentWriter instanceof MultipleDocumentStream) {
-            ((MultipleDocumentStream) documentWriter)
-                .setOutputStreamFactory(factory);
-        }
+        this.streamFactory = factory;
     }
 
     /**
-     * Setter for a named parameter.
-     * Parameters are a general mechanism to influence the behavior of the
-     * document writer. Any parameter not known by the document writer has to
-     * be ignored.
-     *
+     * Setter for a named parameter. Parameters are a general mechanism to
+     * influence the behavior of the document writer. Any parameter not known by
+     * the document writer has to be ignored.
+     * <p>
+     * If the document writer is in use already then the parameter is passed to
+     * the document writer. Otherwise the parameter is stored until a document
+     * writer is created. Then the parameter is passed on.
+     * </p>
+     * 
      * @param name the name of the parameter
      * @param value the value of the parameter
-     *
+     * 
      * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(
-     *      java.lang.String,
-     *      java.lang.String)
+     *      java.lang.String, java.lang.String)
      */
     public void setParameter(String name, String value) {
 
         if (documentWriter != null) {
             documentWriter.setParameter(name, value);
+        } else {
+            params.put(name, value);
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.resource.PropertyAware#setProperties(java.util.Properties)
+     */
+    public void setProperties(Properties properties) {
+
+        this.properties = properties;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.resource.ResourceAware#setResourceFinder(
+     *      org.extex.resource.ResourceFinder)
+     */
+    public void setResourceFinder(ResourceFinder f) {
+
+        this.finder = f;
     }
 
     /**
      * This is the entry point for the document writer. Here it receives a
      * complete node list to be sent to the output writer. It can be assumed
      * that all values for width, height, and depth of the node lists are
-     * properly filled. Thus all information should be present to place the
-     * ink on the paper.
-     *
+     * properly filled. Thus all information should be present to place the ink
+     * on the paper.
+     * 
      * @param page the page to send
-     *
+     * 
      * @return returns the number of pages shipped
-     *
+     * 
      * @throws BackendException in case of an error
-     *
+     * 
      * @see org.extex.backend.BackendDriver#shipout(
      *      org.extex.typesetter.type.page.Page)
      */
     public int shipout(Page page) throws BackendException {
 
+        if (documentWriter == null) {
+            getDocumentWriter(); // to force delayed creation;
+        }
         int n = pages;
         pipeFirst.shipout(page);
         return pages - n;
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        return documentWriterType;
+    }
+    
 }
