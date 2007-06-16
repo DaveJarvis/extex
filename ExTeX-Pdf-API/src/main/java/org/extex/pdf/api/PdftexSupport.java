@@ -20,7 +20,6 @@
 package org.extex.pdf.api;
 
 import org.extex.core.exception.helping.HelpingException;
-import org.extex.interpreter.type.box.Box;
 import org.extex.pdf.api.action.ActionSpec;
 import org.extex.pdf.api.node.PdfAnnotation;
 import org.extex.pdf.api.node.PdfObject;
