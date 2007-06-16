@@ -27,7 +27,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * Test suite for the configuration factory.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -44,7 +44,7 @@ public class ConfigurationFactoryTest extends TestCase {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name
      */
     public ConfigurationFactoryTest(String name) {
@@ -54,8 +54,7 @@ public class ConfigurationFactoryTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test that null leads to an appropriate error message.
+     * <testcase> Test that null leads to an appropriate error message.
      * </testcase>
      */
     public void testNewInstance1() {
@@ -64,14 +63,14 @@ public class ConfigurationFactoryTest extends TestCase {
             ConfigurationFactory.newInstance(null);
             assertFalse("Exception expected", true);
         } catch (ConfigurationException e) {
-            assertEquals("Invalid configuration name found", //
-                    e.getLocalizedMessage());
+            assertEquals(
+                "Invalid configuration name found. The name is empty or null ", //
+                e.getLocalizedMessage());
         }
     }
 
     /**
-     * <testcase>
-     *  Test that null leads to an appropriate error message.
+     * <testcase> Test that null leads to an appropriate error message.
      * </testcase>
      */
     public void testNewInstance2() {
@@ -81,15 +80,14 @@ public class ConfigurationFactoryTest extends TestCase {
             assertFalse("Exception expected", true);
         } catch (ConfigurationException e) {
             assertEquals(
-                    "Invalid configuration name found. The name is empty or null ",
-                    e.getLocalizedMessage());
+                "Invalid configuration name found. The name is empty or null ",
+                e.getLocalizedMessage());
         }
     }
 
     /**
-     * <testcase>
-     *  Test that an undefined configuration leads to an appropriate error message.
-     * </testcase>
+     * <testcase> Test that an undefined configuration leads to an appropriate
+     * error message. </testcase>
      */
     public void testNewInstance3() {
 
@@ -98,20 +96,19 @@ public class ConfigurationFactoryTest extends TestCase {
             assertFalse("Exception expected", true);
         } catch (ConfigurationException e) {
             assertEquals("Configuration `undefined' not found", //
-                    e.getLocalizedMessage());
+                e.getLocalizedMessage());
         }
     }
 
     /**
-     * <testcase>
-     *  Test that an invalid configuration leads to an appropriate error message.
-     * </testcase>
+     * <testcase> Test that an invalid configuration leads to an appropriate
+     * error message. </testcase>
      */
     public void testNewInstance4() {
 
         try {
             ConfigurationFactory
-                    .newInstance("org/extex/framework/configuration/EmptyConfiguration.xml");
+                .newInstance("org/extex/framework/configuration/EmptyConfiguration.xml");
             assertFalse("Exception expected", true);
         } catch (ConfigurationException e) {
             assertTrue(true);
@@ -119,16 +116,15 @@ public class ConfigurationFactoryTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test that a valid configuration is loaded.
-     * </testcase>
-     *
+     * <testcase> Test that a valid configuration is loaded. </testcase>
+     * 
      * @throws ConfigurationException in case of an error
      */
     public void testNewInstance10() throws ConfigurationException {
 
-        Configuration cfg = ConfigurationFactory
-                .newInstance("org/extex/framework/configuration/Configuration.xml");
+        Configuration cfg =
+                ConfigurationFactory
+                    .newInstance("org/extex/framework/configuration/Configuration.xml");
         assertNotNull(cfg);
     }
 
