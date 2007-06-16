@@ -25,7 +25,7 @@ import java.lang.reflect.InvocationTargetException;
 import org.extex.framework.configuration.exception.ConfigurationClassNotFoundException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationInstantiationException;
-import org.extex.framework.configuration.exception.ConfigurationInvalidNameException;
+import org.extex.framework.configuration.exception.ConfigurationInvalidResourceException;
 import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
 import org.extex.framework.configuration.impl.XmlConfiguration;
 
@@ -99,8 +99,8 @@ public class ConfigurationFactory {
     public static Configuration newInstance(String source)
             throws ConfigurationException {
 
-        if (source == null) {
-            throw new ConfigurationInvalidNameException(null);
+        if (source == null || "".equals(source)) {
+            throw new ConfigurationInvalidResourceException();
         }
         Configuration config = null;
 
