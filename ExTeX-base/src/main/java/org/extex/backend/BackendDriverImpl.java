@@ -78,6 +78,9 @@ public class BackendDriverImpl
          */
         public void close() throws BackendException {
 
+            if (documentWriter == null) {
+                return;
+            }
             try {
                 documentWriter.close();
             } catch (GeneralException e) {
