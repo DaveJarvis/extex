@@ -25,11 +25,11 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.pdf.api.id.IdSpec;
+import org.extex.pdf.api.node.PdfThread;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.RuleNode;
-import org.extex.typesetter.type.node.pdftex.PdfThread;
-import org.extex.unit.pdftex.util.id.IdSpec;
 
 /**
  * This class provides an implementation for the primitive

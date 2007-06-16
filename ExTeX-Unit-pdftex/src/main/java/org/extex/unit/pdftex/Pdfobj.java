@@ -19,15 +19,15 @@
 
 package org.extex.unit.pdftex;
 
-import org.extex.backend.documentWriter.PdftexSupport;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.pdf.api.PdftexSupport;
+import org.extex.pdf.api.node.PdfObject;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
-import org.extex.typesetter.type.node.pdftex.PdfObject;
 
 /**
  * This class provides an implementation for the primitive <code>\pdfobj</code>.

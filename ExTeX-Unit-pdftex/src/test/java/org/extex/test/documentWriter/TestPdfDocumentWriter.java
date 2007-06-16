@@ -24,7 +24,6 @@ import java.io.OutputStream;
 
 import org.extex.backend.documentWriter.DocumentWriter;
 import org.extex.backend.documentWriter.DocumentWriterOptions;
-import org.extex.backend.documentWriter.PdftexSupport;
 import org.extex.backend.documentWriter.SingleDocumentStream;
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.core.dimen.Dimen;
@@ -33,6 +32,12 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.pdf.api.PdftexSupport;
+import org.extex.pdf.api.action.ActionSpec;
+import org.extex.pdf.api.node.PdfAnnotation;
+import org.extex.pdf.api.node.PdfObject;
+import org.extex.pdf.api.node.PdfRefXImage;
+import org.extex.pdf.api.node.PdfXForm;
 import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
@@ -56,12 +61,7 @@ import org.extex.typesetter.type.node.SpaceNode;
 import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.WhatsItNode;
-import org.extex.typesetter.type.node.pdftex.PdfAnnotation;
-import org.extex.typesetter.type.node.pdftex.PdfObject;
-import org.extex.typesetter.type.node.pdftex.PdfRefXImage;
-import org.extex.typesetter.type.node.pdftex.PdfXForm;
 import org.extex.typesetter.type.page.Page;
-import org.extex.unit.pdftex.util.action.ActionSpec;
 
 /**
  * This is an implementation of a document writer which can act both as sample
@@ -638,7 +638,7 @@ public class TestPdfDocumentWriter
      * {@inheritDoc}
      * 
      * @see org.extex.pdf.api.PdftexSupport#pdfcatalog(java.lang.String,
-     *      org.extex.unit.pdftex.util.action.ActionSpec)
+     *      org.extex.pdf.api.action.ActionSpec)
      */
     public void pdfcatalog(String text, ActionSpec action) {
 
@@ -749,7 +749,7 @@ public class TestPdfDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.pdf.api.PdftexSupport#pdfoutline(org.extex.unit.pdftex.util.action.ActionSpec,
+     * @see org.extex.pdf.api.PdftexSupport#pdfoutline(org.extex.pdf.api.action.ActionSpec,
      *      long, java.lang.String)
      */
     public void pdfoutline(ActionSpec action, long count, String text) {

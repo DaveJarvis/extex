@@ -20,14 +20,14 @@
 package org.extex.unit.pdftex;
 
 import org.extex.backend.documentWriter.DocumentWriter;
-import org.extex.backend.documentWriter.PdftexSupport;
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.core.count.Count;
 import org.extex.core.exception.helping.NoHelpException;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.pdf.api.PdftexSupport;
+import org.extex.pdf.api.exception.InterpreterPdftexException;
 import org.extex.typesetter.Typesetter;
-import org.extex.unit.pdftex.exception.InterpreterPdftexException;
 
 /**
  * This class provides a base class for pdf<logo>TeX</logo> primitives.

@@ -19,17 +19,17 @@
 
 package org.extex.unit.pdftex;
 
-import org.extex.backend.documentWriter.PdftexSupport;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.pdf.api.PdftexSupport;
+import org.extex.pdf.api.node.PdfRefXImage;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.RuleNode;
-import org.extex.typesetter.type.node.pdftex.PdfRefXImage;
 
 /**
  * This class provides an implementation for the primitive

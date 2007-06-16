@@ -19,13 +19,13 @@
 
 package org.extex.unit.pdftex;
 
-import org.extex.backend.documentWriter.PdftexSupport;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.parser.CountConvertible;
 import org.extex.interpreter.type.Theable;
+import org.extex.pdf.api.PdftexSupport;
 import org.extex.scanner.exception.CatcodeException;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
