@@ -162,7 +162,9 @@ public class Fontdimen extends AbstractAssignment
             throw new EofException(printableControlSequence(context));
         } else if (t.isa(Catcode.LEFTBRACE)) {
             source.push(t);
-            String key = source.scanTokensAsString(context, getName());
+            String key =
+                    source.scanTokensAsString(context,
+                        printableControlSequence(context));
             if (key == null) {
                 throw new EofException(printableControlSequence(context));
             }

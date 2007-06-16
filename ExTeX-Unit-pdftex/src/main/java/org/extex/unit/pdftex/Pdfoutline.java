@@ -96,7 +96,9 @@ public class Pdfoutline extends AbstractPdftexCode {
             count = source.parseInteger(context, source, typesetter);
         }
 
-        String text = source.scanTokensAsString(context, getName());
+        String text =
+            source.scanTokensAsString(context,
+                printableControlSequence(context));
 
         writer.pdfoutline(action, count, text);
     }

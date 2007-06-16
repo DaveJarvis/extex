@@ -86,7 +86,9 @@ public class Pdfcatalog extends AbstractPdftexCode {
 
         PdftexSupport writer = ensurePdftex(context, typesetter);
 
-        String text = source.scanTokensAsString(context, getName());
+        String text =
+                source.scanTokensAsString(context,
+                    printableControlSequence(context));
 
         ActionSpec action = null;
         if (source.getKeyword(context, "openaction")) {

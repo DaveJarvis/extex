@@ -85,9 +85,9 @@ public class Pdfinfo extends AbstractPdftexCode {
             Typesetter typesetter) throws TypesetterException, HelpingException {
 
         PdftexSupport writer = ensurePdftex(context, typesetter);
-
         String text =
-                source.scanTokens(context, false, false, getName()).toText();
+            source.scanTokensAsString(context,
+                printableControlSequence(context));
 
         writer.pdfinfo(text);
     }

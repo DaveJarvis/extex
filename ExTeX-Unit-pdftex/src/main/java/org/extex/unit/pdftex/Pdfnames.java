@@ -87,7 +87,9 @@ public class Pdfnames extends AbstractPdftexCode {
 
         PdftexSupport writer = ensurePdftex(context, typesetter);
 
-        String text = source.scanTokensAsString(context, getName());
+        String text =
+            source.scanTokensAsString(context,
+                printableControlSequence(context));
 
         writer.pdfnames(text);
     }

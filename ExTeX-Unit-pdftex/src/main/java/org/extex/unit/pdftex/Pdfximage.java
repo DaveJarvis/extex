@@ -103,7 +103,9 @@ public class Pdfximage extends AbstractPdftexCode {
             } else if (source.getKeyword(context, "depth")) {
                 depth = source.parseDimen(context, source, typesetter);
             } else if (source.getKeyword(context, "attr")) {
-                attr = source.scanTokensAsString(context, getName());
+                attr =
+                        source.scanTokensAsString(context,
+                            printableControlSequence(context));
             } else if (source.getKeyword(context, "page")) {
                 page = source.parseInteger(context, source, typesetter);
             } else {
@@ -111,12 +113,14 @@ public class Pdfximage extends AbstractPdftexCode {
             }
         }
 
-        String resource = source.scanTokensAsString(context, getName());
+        String resource =
+                source.scanTokensAsString(context,
+                    printableControlSequence(context));
 
         PdfRefXImage image =
                 writer.getXImage(resource, new RuleNode(width, height, depth,
-                    context.getTypesettingContext(), true), attr, page, prefix
-                    .isImmediate());
+                    context.getTypesettingContext(), true), attr, page, //
+                    prefix.isImmediate());
 
         typesetter.add(image);
 

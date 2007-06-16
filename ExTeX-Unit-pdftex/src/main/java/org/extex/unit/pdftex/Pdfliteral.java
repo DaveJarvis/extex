@@ -95,7 +95,8 @@ public class Pdfliteral extends AbstractPdftexCode {
 
         boolean direct = source.getKeyword(context, "direct");
         String text =
-                source.scanTokens(context, false, false, getName()).toText();
+            source.scanTokensAsString(context,
+                printableControlSequence(context));
 
         typesetter.add(new PdfLiteral(text, direct));
     }

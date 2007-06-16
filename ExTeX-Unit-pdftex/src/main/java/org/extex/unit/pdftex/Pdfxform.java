@@ -92,9 +92,13 @@ public class Pdfxform extends AbstractPdftexCode {
 
         for (;;) {
             if (source.getKeyword(context, "attr")) {
-                attr = source.scanTokensAsString(context, getName());
+                attr =
+                        source.scanTokensAsString(context,
+                            printableControlSequence(context));
             } else if (source.getKeyword(context, "resources")) {
-                resources = source.scanTokensAsString(context, getName());
+                resources =
+                        source.scanTokensAsString(context,
+                            printableControlSequence(context));
             } else {
                 break;
             }

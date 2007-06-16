@@ -95,7 +95,8 @@ public class Pdfincludechars extends AbstractPdftexCode {
 
         Font font = source.getFont(context, getName());
         String text =
-                source.scanTokens(context, false, false, getName()).toText();
+            source.scanTokensAsString(context,
+                printableControlSequence(context));
 
         writer.pdfincludechars(font, text);
     }

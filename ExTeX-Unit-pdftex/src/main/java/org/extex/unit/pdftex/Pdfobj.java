@@ -106,7 +106,9 @@ public class Pdfobj extends AbstractPdftexCode {
         boolean isStream = false;
 
         if (source.getKeyword(context, "attr")) {
-            attr = source.scanTokensAsString(context, getName());
+            attr =
+                    source.scanTokensAsString(context,
+                        printableControlSequence(context));
         }
         if (source.getKeyword(context, "stream")) {
             isStream = true;
@@ -114,7 +116,9 @@ public class Pdfobj extends AbstractPdftexCode {
             isStream = false;
         }
 
-        String text = source.scanTokensAsString(context, getName());
+        String text =
+            source.scanTokensAsString(context,
+                printableControlSequence(context));
 
         PdfObject a = writer.getObject(attr, isStream, text);
         typesetter.add(a);

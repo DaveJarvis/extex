@@ -92,7 +92,7 @@ public class PdftexUnitInfo extends UnitInfo
             if (writer == null) {
                 writer = modeMap.get(Long.valueOf(1));
             }
-            typesetter.getBackendDriver().setDocumentWriter(writer);
+            typesetter.getBackendDriver().setDocumentWriterType(writer);
         }
 
         /**

@@ -101,7 +101,9 @@ public class Pdfthread extends AbstractPdftexCode {
             } else if (source.getKeyword(context, "depth")) {
                 depth = source.parseDimen(context, source, typesetter);
             } else if (source.getKeyword(context, "attr")) {
-                attr = source.scanTokensAsString(context, getName());
+                attr =
+                        source.scanTokensAsString(context,
+                            printableControlSequence(context));
             } else {
                 break;
             }
