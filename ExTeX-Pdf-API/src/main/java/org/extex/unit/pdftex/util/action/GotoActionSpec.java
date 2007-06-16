@@ -22,10 +22,10 @@ package org.extex.unit.pdftex.util.action;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.pdf.api.exception.InterpreterPdftexActionTypeException;
-import org.extex.pdf.api.exception.InterpreterPdftexIdentifierTypeException;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.unit.pdftex.exception.InterpreterPdftexActionTypeException;
+import org.extex.unit.pdftex.exception.InterpreterPdftexIdentifierTypeException;
 import org.extex.unit.pdftex.util.id.NameIdSpec;
 import org.extex.unit.pdftex.util.id.NumIdSpec;
 
