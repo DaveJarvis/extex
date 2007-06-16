@@ -892,9 +892,9 @@ public class TeXTest extends TestCase {
     public void testOutputError2() throws Exception {
 
         runFailure(
-            new String[]{"-ini", "-out=undefined"}, //
+            new String[]{"-ini", "-out=undefined", "\\relax abc"}, //
             BANNER_TEX
-                    + "**"
+                    + "*"
                     + TRANSCRIPT_TEXPUT
                     + "Configuration problem: Configuration `backend/undefined.xml\' not found");
         new File(".", "texput.log").delete();
@@ -908,9 +908,9 @@ public class TeXTest extends TestCase {
     public void testOutputError3() throws Exception {
 
         runFailure(
-            new String[]{"-ini", "-out", "undefined"}, //
+            new String[]{"-ini", "-out", "undefined", "\\relax abc"}, //
             BANNER_TEX
-                    + "**"
+                    + "*"
                     + TRANSCRIPT_TEXPUT
                     + "Configuration problem: Configuration `backend/undefined.xml\' not found");
         new File(".", "texput.log").delete();
