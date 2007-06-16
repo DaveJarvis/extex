@@ -98,6 +98,7 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
                 DEFINE_BRACES + "\\color {.1 .2 .3}",
                 //--- log message ---
                 "");
+        assertNotNull(interpreter);
         Color color = interpreter.getContext().getTypesettingContext()
                 .getColor();
         assertTrue(color instanceof RgbColor);
@@ -121,6 +122,7 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
                 DEFINE_BRACES + "\\color alpha .5 {.1 .2 .3}",
                 //--- log message ---
                 "");
+        assertNotNull(interpreter);
         Color color = interpreter.getContext().getTypesettingContext()
                 .getColor();
         assertTrue(color instanceof RgbColor);
@@ -144,6 +146,7 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
                 DEFINE_BRACES + "\\color rgb {.1 .2 .3}",
                 //--- log message ---
                 "");
+        assertNotNull(interpreter);
         Color color = interpreter.getContext().getTypesettingContext()
                 .getColor();
         assertTrue(color instanceof RgbColor);
@@ -167,6 +170,7 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
                 DEFINE_BRACES + "\\color rgb alpha .5 {.1 .2 .3}",
                 //--- log message ---
                 "");
+        assertNotNull(interpreter);
         Color color = interpreter.getContext().getTypesettingContext()
                 .getColor();
         assertTrue(color instanceof RgbColor);
@@ -190,6 +194,7 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
                 DEFINE_BRACES + "\\color alpha .5 rgb {.1 .2 .3}",
                 //--- log message ---
                 "");
+        assertNotNull(interpreter);
         Color color = interpreter.getContext().getTypesettingContext()
                 .getColor();
         assertTrue(color instanceof RgbColor);
@@ -213,6 +218,7 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
                 DEFINE_BRACES + "\\color gray {.1}",
                 //--- log message ---
                 "");
+        assertNotNull(interpreter);
         Color color = interpreter.getContext().getTypesettingContext()
                 .getColor();
         assertTrue(color instanceof GrayscaleColor);
@@ -234,6 +240,7 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
                 DEFINE_BRACES + "\\color gray alpha .5 {.1}",
                 //--- log message ---
                 "");
+        assertNotNull(interpreter);
         Color color = interpreter.getContext().getTypesettingContext()
                 .getColor();
         assertTrue(color instanceof GrayscaleColor);
@@ -255,6 +262,7 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
                 DEFINE_BRACES + "\\color alpha .5 gray {.1}",
                 //--- log message ---
                 "");
+        assertNotNull(interpreter);
         Color color = interpreter.getContext().getTypesettingContext()
                 .getColor();
         assertTrue(color instanceof GrayscaleColor);
