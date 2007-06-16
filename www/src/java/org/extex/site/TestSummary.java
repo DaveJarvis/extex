@@ -107,8 +107,8 @@ public class TestSummary extends Task {
                             + ".*href=\"alltests-errors.html\"[^>]*>"
                             + "([0-9]+)"
                             + ".*href=\"alltests-fails.html\"[^>]*>"
-                            + "([0-9]+)" + ".*" + "([0-9.]+)" + "%</td><td>"
-                            + "([0-9.]+)" //
+                            + "([0-9]+)" + ".*[^0-9]" + "([0-9.]+)"
+                            + "%</td><td>" + "([0-9.]+)" //
                             + ".*", Pattern.DOTALL).matcher(sb);
 
         int o = 0;
