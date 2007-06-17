@@ -41,7 +41,6 @@ import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
 import org.extex.core.muskip.Muskip;
 import org.extex.font.CoreFontFactory;
-import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Conditional;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
