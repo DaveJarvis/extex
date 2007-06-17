@@ -23,7 +23,7 @@ import org.extex.test.ExTeXLauncher;
 
 /**
  * This is a test suite for the hyphenation.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,7 +31,7 @@ public class HTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public HTest(String arg) {
@@ -41,36 +41,28 @@ public class HTest extends ExTeXLauncher {
 
     /**
      * Test case checking that ...
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testPattern1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\catcode`{=1"
-                + "\\catcode`}=2"
-                + "\\patterns{a3b ab4c}"
-                + "a xxxabcyyy"
-                + "\\end ",
-                //--- output channel ---
-                "a xxxabcyyy" + TERM);
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\patterns{a3b ab4c}" + "a xxxabcyyy" + "\\end ",
+            // --- output channel ---
+            "a xxxabcyyy" + TERM);
     }
 
     /**
      * Test case checking that ...
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testPattern2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\catcode`{=1"
-                + "\\catcode`}=2"
-                + "\\patterns{ab4c a3b}"
-                + "a xxxabcyyy"
-                + "\\end ",
-                //--- output channel ---
-                "a xxxabcyyy" + TERM);
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\patterns{ab4c a3b}" + "a xxxabcyyy" + "\\end ",
+            // --- output channel ---
+            "a xxxabcyyy" + TERM);
     }
 
 }
