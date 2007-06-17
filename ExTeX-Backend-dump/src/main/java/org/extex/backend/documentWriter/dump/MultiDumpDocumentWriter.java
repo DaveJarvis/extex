@@ -74,6 +74,11 @@ public class MultiDumpDocumentWriter
             Configurable {
 
     /**
+     * The field <tt>extension</tt> contains the default extension.
+     */
+    private String extension = "out";
+
+    /**
      * The field <tt>nodeVisitor</tt> contains the node visitor instance to
      * use in the form of an anonymous inner class.
      */
@@ -675,6 +680,10 @@ public class MultiDumpDocumentWriter
     public void configure(Configuration config) throws ConfigurationException {
 
         tree = Boolean.valueOf(config.getAttribute("tree")).booleanValue();
+        String s = config.getAttribute("extension");
+        if (s != null) {
+            extension = s;
+        }
     }
 
     /**
@@ -688,7 +697,7 @@ public class MultiDumpDocumentWriter
      */
     public String getExtension() {
 
-        return "out";
+        return extension;
     }
 
     /**
@@ -738,6 +747,10 @@ public class MultiDumpDocumentWriter
      */
     public int shipout(Page page) throws DocumentWriterException {
 
+        if (page == null) {
+            return 0;
+        }
+        
         NodeList nodes = page.getNodes();
         out = outputStreamFactory.getOutputStream(null, null);
         try {

@@ -661,6 +661,10 @@ public class DviDocumentWriter
      */
     public int shipout(Page page) throws GeneralException, IOException {
 
+        if (page == null) {
+            return 0;
+        }
+
         NodeList nodes = page.getNodes();
         GeneralException error;
 
