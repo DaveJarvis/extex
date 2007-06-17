@@ -28,7 +28,7 @@ import org.extex.typesetter.type.page.Page;
 /**
  * This class provides a transport object for pages. Beside the nodes it
  * contains additional administrative information.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4728 $
  */
@@ -47,15 +47,15 @@ public class PageImpl implements Page {
 
     /**
      * The field <tt>mediaHOffset</tt> contains the horizontal offset of the
-     * upper left corner of the contents on the page. In <logo>TeX</logo>
-     * this value is defined to be 1 in.
+     * upper left corner of the contents on the page. In <logo>TeX</logo> this
+     * value is defined to be 1 in.
      */
     private Dimen mediaHOffset = new Dimen(Dimen.ONE_INCH);
 
     /**
      * The field <tt>mediaVOffset</tt> contains the vertical offset of the
-     * upper left corner of the contents on the page. In <logo>TeX</logo>
-     * this value is defined to be 1 in.
+     * upper left corner of the contents on the page. In <logo>TeX</logo> this
+     * value is defined to be 1 in.
      */
     private Dimen mediaVOffset = new Dimen(Dimen.ONE_INCH);
 
@@ -78,22 +78,25 @@ public class PageImpl implements Page {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param nodes the nodes to transport
      * @param pageNo the array of page numbers
      */
     public PageImpl(NodeList nodes, FixedCount[] pageNo) {
 
         super();
+        if (nodes == null) {
+            throw new IllegalArgumentException("nodes");
+        }
         this.nodes = nodes.copy();
         this.pageNo = pageNo;
     }
 
     /**
      * Getter for the background color.
-     *
+     * 
      * @return the background color
-     *
+     * 
      * @see org.extex.typesetter.type.page.Page#getColor()
      */
     public Color getColor() {
@@ -103,9 +106,9 @@ public class PageImpl implements Page {
 
     /**
      * Getter for the height of the media.
-     *
+     * 
      * @return the height of the media
-     *
+     * 
      * @see org.extex.typesetter.type.page.Page#getMediaHeight()
      */
     public Dimen getMediaHeight() {
@@ -115,9 +118,9 @@ public class PageImpl implements Page {
 
     /**
      * Getter for the horizontal offset of the media.
-     *
+     * 
      * @return the horizontal offset of the media
-     *
+     * 
      * @see org.extex.typesetter.type.page.Page#getMediaHOffset()
      */
     public Dimen getMediaHOffset() {
@@ -127,9 +130,9 @@ public class PageImpl implements Page {
 
     /**
      * Getter for the vertical offset of the media.
-     *
+     * 
      * @return the vertical offset of the media
-     *
+     * 
      * @see org.extex.typesetter.type.page.Page#getMediaVOffset()
      */
     public Dimen getMediaVOffset() {
@@ -139,9 +142,9 @@ public class PageImpl implements Page {
 
     /**
      * Getter for the width of the media.
-     *
+     * 
      * @return the width of the media
-     *
+     * 
      * @see org.extex.typesetter.type.page.Page#getMediaWidth()
      */
     public Dimen getMediaWidth() {
@@ -151,7 +154,7 @@ public class PageImpl implements Page {
 
     /**
      * Getter for nodes.
-     *
+     * 
      * @return the nodes
      */
     public NodeList getNodes() {
@@ -161,9 +164,9 @@ public class PageImpl implements Page {
 
     /**
      * Getter for the array of page numbers.
-     *
+     * 
      * @return the array of page numbers
-     *
+     * 
      * @see org.extex.typesetter.type.page.Page#getPageNo()
      */
     public FixedCount[] getPageNo() {
@@ -173,11 +176,10 @@ public class PageImpl implements Page {
 
     /**
      * Setter for the background color.
-     *
+     * 
      * @param bg the background color
-     *
-     * @see org.extex.typesetter.type.page.Page#setColor(
-     *      org.extex.color.Color)
+     * 
+     * @see org.extex.typesetter.type.page.Page#setColor( org.extex.color.Color)
      */
     public void setColor(Color bg) {
 
@@ -186,7 +188,7 @@ public class PageImpl implements Page {
 
     /**
      * Setter for mediaHeight.
-     *
+     * 
      * @param mediaHeight the mediaHeight to set
      */
     public void setMediaHeight(Dimen mediaHeight) {
@@ -196,9 +198,9 @@ public class PageImpl implements Page {
 
     /**
      * Setter for the horizontal offset of the media.
-     *
+     * 
      * @param offset the media horizontal offset
-     *
+     * 
      * @see org.extex.typesetter.type.page.Page#setMediaHOffset(
      *      org.extex.core.dimen.Dimen)
      */
@@ -209,9 +211,9 @@ public class PageImpl implements Page {
 
     /**
      * Setter for the vertical offset of the media.
-     *
+     * 
      * @param offset the media vertical offset
-     *
+     * 
      * @see org.extex.typesetter.type.page.Page#setMediaVOffset(
      *      org.extex.core.dimen.Dimen)
      */
@@ -222,9 +224,9 @@ public class PageImpl implements Page {
 
     /**
      * Setter for media width.
-     *
+     * 
      * @param width the mediaWidth to set
-     *
+     * 
      * @see org.extex.typesetter.type.page.Page#setMediaWidth(
      *      org.extex.core.dimen.Dimen)
      */
@@ -235,9 +237,9 @@ public class PageImpl implements Page {
 
     /**
      * Get the string representation of this object for debugging purposes.
-     *
+     * 
      * @return the string representation
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
