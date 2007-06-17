@@ -616,17 +616,6 @@ public class TestPdfDocumentWriter
      *      java.lang.String, org.extex.typesetter.type.node.RuleNode,
      *      java.lang.String, long, boolean)
      */
-    /**
-     * TODO gene: missing JavaDoc
-     *
-     * @param resource
-     * @param rule
-     * @param attr
-     * @param page
-     * @param immediate
-     * @return
-     * @throws HelpingException
-     */
     public PdfRefXImage getXImage(String resource, RuleNode rule, String attr,
             long page, boolean immediate) throws HelpingException {
 

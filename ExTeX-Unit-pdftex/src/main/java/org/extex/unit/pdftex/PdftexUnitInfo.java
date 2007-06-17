@@ -84,7 +84,7 @@ public class PdftexUnitInfo extends UnitInfo
          *      org.extex.interpreter.context.ContextInternals,
          *      java.lang.String, org.extex.core.count.Count)
          */
-        public void receiveCountChange(ContextInternals context, String name,
+        public void receiveCountChange(ContextInternals ctx, String name,
                 Count value) throws Exception {
 
             Long val = Long.valueOf(value.getValue());
@@ -98,11 +98,11 @@ public class PdftexUnitInfo extends UnitInfo
         /**
          * Setter for the typesetter.
          * 
-         * @param typesetter the typesetter
+         * @param t the typesetter
          */
-        public void setTypsetter(Typesetter typesetter) {
+        public void setTypsetter(Typesetter t) {
 
-            this.typesetter = typesetter;
+            this.typesetter = t;
         }
     }
 
@@ -111,12 +111,6 @@ public class PdftexUnitInfo extends UnitInfo
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
-
-    /**
-     * The field <tt>TRACING_COMMANDS</tt> contains the name of the count
-     * register controlling the activation of command tracing.
-     */
-    private static final String TRACING_COMMANDS = "tracingcommands";
 
     /**
      * The field <tt>context</tt> contains the interpreter context.
@@ -170,17 +164,17 @@ public class PdftexUnitInfo extends UnitInfo
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public void load(Context context, TokenSource source, Typesetter typesetter)
+    public void load(Context ctx, TokenSource src, Typesetter typesetter)
             throws HelpingException {
 
-        this.context = context;
-        this.source = source;
-        receiveLoaded(context, source, typesetter);
+        this.context = ctx;
+        this.source = src;
+        receiveLoaded(ctx, src, typesetter);
     }
 
     /**
-     * If all preconditions are fullfilled then register an observer for
-     * \pdfoutput.
+     * If all preconditions are fulfilled then register an observer for
+     * <tt>\pdfoutput</tt>.
      * 
      * @param typesetter the typesetter
      */
@@ -212,11 +206,11 @@ public class PdftexUnitInfo extends UnitInfo
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
-    public void receiveLoaded(Context context, TokenSource source,
+    public void receiveLoaded(Context ctx, TokenSource src,
             Typesetter typesetter) throws HelpingException {
 
-        this.context = context;
-        this.source = source;
+        this.context = ctx;
+        this.source = src;
         observePdfoutput(typesetter);
     }
 
