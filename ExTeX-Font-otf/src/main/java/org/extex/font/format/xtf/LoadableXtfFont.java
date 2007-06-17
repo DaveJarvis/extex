@@ -29,14 +29,14 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
+import org.extex.font.BackendFont;
 import org.extex.font.CoreFontFactory;
 import org.extex.font.FontKey;
 import org.extex.font.LoadableFont;
 import org.extex.font.exception.CorruptFontException;
+import org.extex.font.format.XtfMetricFont;
 import org.extex.font.unicode.GlyphName;
 import org.extex.framework.configuration.exception.ConfigurationException;
-
-import sun.awt.geom.AreaOp.IntOp;
 
 /**
  * Class to load xtf fonts.
@@ -48,7 +48,11 @@ import sun.awt.geom.AreaOp.IntOp;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class LoadableXtfFont implements LoadableFont {
+public class LoadableXtfFont
+        implements
+            LoadableFont,
+            XtfMetricFont,
+            BackendFont {
 
     /**
      * The font key.
@@ -356,6 +360,38 @@ public class LoadableXtfFont implements LoadableFont {
     public FontKey getFontKey() {
 
         return fontKey;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#getCheckSum()
+     */
+    public int getCheckSum() {
+
+        // TODO mgn: getCheckSum unimplemented
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#getFontData()
+     */
+    public byte[] getFontData() {
+
+        // TODO mgn: getFontData unimplemented
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#getName()
+     */
+    public String getName() {
+
+        return getActualFontKey().getName();
     }
 
 }

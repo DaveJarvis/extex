@@ -480,6 +480,7 @@ public class XMLDocumentWriter
         List<String> sl = new ArrayList<String>();
         sl.add("tfm");
         sl.add("afm");
+        sl.add("ttf");
         manager = corefactory.createManager(sl);
     }
 

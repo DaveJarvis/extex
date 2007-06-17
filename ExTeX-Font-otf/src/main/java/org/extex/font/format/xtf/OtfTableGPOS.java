@@ -218,7 +218,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision$
+ * @version $Revision:5595 $
  */
 public class OtfTableGPOS extends AbstractXtfTable
         implements
@@ -294,9 +294,10 @@ public class OtfTableGPOS extends AbstractXtfTable
         featureListOffset = rar.readUnsignedShort();
         lookupListOffset = rar.readUnsignedShort();
 
-        readScriptList(rar);
-        readFeatureList(rar);
-        readLookupList(rar);
+        // TODO mgn: no GPOS at the moment
+        // readScriptList(rar);
+        // readFeatureList(rar);
+        // readLookupList(rar);
     }
 
     /**
