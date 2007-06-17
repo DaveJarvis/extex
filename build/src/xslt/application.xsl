@@ -119,7 +119,7 @@
  <!-- ===================================================================== -->
 <xsl:template match="component" mode="testpath">
   <include name="{@name}/lib/*.jar"/>
-  <include name="{@name}/test/lib/*.jar"/>
+  <include name="{@name}/src/test/lib/*.jar"/>
 </xsl:template>
 
 </xsl:stylesheet>
