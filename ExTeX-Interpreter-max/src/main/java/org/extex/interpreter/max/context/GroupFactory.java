@@ -34,40 +34,47 @@ import org.extex.scanner.type.token.Token;
 /**
  * This class provides a factory for a
  * {@link org.extex.interpreter.max.context.Group Group}.
- *
- *
+ * 
+ * <h3>Configuration</h3>
  * <pre>
  *  &lt;Group class="the.package.TheClass"&gt;
  *  &lt;/Group&gt;
  * </pre>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
 public class GroupFactory {
 
     /**
-     * The constant <tt>CLASS_ATTRIBUTE</tt> contains the name of the attribute
-     * for the class name.
+     * The constant <tt>CLASS_ATTRIBUTE</tt> contains the name of the
+     * attribute for the class name.
      */
     private static final String CLASS_ATTRIBUTE = "class";
 
     /**
      * The field <tt>constructor</tt> contains the constructor of the class to
      * instantiate. It is kept here to speed up the method
-     * {@link #newInstance(Group, Locator, Token, GroupType)
-     *  newInstance}.
+     * {@link #newInstance(Group, Locator, Token, GroupType) newInstance}.
      */
     private Constructor<?> constructor;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param config the configuration for this factory
-     *
-     * @throws ConfigurationException in case of an error in the configuration.
+     * 
+     * @throws ConfigurationMissingAttributeException in case of an error in the
+     *         configuration
+     * @throws ConfigurationInstantiationException in case of an error in the
+     *         configuration
+     * @throws ConfigurationClassNotFoundException in case of an error in the
+     *         configuration
      */
-    public GroupFactory(Configuration config) {
+    public GroupFactory(Configuration config)
+            throws ConfigurationMissingAttributeException,
+                ConfigurationInstantiationException,
+                ConfigurationClassNotFoundException {
 
         super();
 
@@ -91,20 +98,20 @@ public class GroupFactory {
     }
 
     /**
-     * Get a instance of a
-     * {@link org.extex.interpreter.max.context.Group Group}.
-     *
+     * Get a instance of a {@link org.extex.interpreter.max.context.Group Group}.
+     * 
      * @param next the next group
      * @param locator the locator for the start of the group
      * @param start the token which started the group
      * @param type the group type
-     *
+     * 
      * @return a new instance for the interface Group
-     *
-     * @throws ConfigurationInstantiationException in case of an error in the configuration.
+     * 
+     * @throws ConfigurationInstantiationException in case of an error in the
+     *         configuration.
      */
-    public Group newInstance(Group next, Locator locator,
-            Token start, GroupType type) {
+    public Group newInstance(Group next, Locator locator, Token start,
+            GroupType type) throws ConfigurationInstantiationException {
 
         Group group;
 
