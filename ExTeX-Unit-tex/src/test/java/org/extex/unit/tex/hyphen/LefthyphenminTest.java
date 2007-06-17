@@ -19,24 +19,24 @@
 
 package org.extex.unit.tex.hyphen;
 
-import org.extex.test.count.AbstractNonGroupCountRegisterTester;
-
 /**
  * This is a test suite for the primitive <tt>\lefthyphenmin</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
-public class LefthyphenminTest extends AbstractNonGroupCountRegisterTester {
+public class LefthyphenminTest extends AbstractHyphenminTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public LefthyphenminTest(String arg) {
 
         super(arg, "lefthyphenmin", "", "0");
     }
+
+    //TODO: write more primitive specific test cases
 
 }

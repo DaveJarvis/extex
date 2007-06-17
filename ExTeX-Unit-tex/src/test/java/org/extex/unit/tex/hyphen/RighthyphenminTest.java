@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,24 +19,24 @@
 
 package org.extex.unit.tex.hyphen;
 
-import org.extex.test.count.AbstractNonGroupCountRegisterTester;
-
 /**
  * This is a test suite for the primitive <tt>\righthyphenmin</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
-public class RighthyphenminTest extends AbstractNonGroupCountRegisterTester {
+public class RighthyphenminTest extends AbstractHyphenminTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public RighthyphenminTest(String arg) {
 
         super(arg, "righthyphenmin", "", "0");
     }
+
+    //TODO: write more primitive specific test cases
 
 }
