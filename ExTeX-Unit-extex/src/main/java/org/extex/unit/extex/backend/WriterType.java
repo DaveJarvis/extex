@@ -22,7 +22,6 @@ package org.extex.unit.extex.backend;
 import org.extex.backend.BackendDriver;
 import org.extex.backend.exception.BackendDocumentWriterDefinedException;
 import org.extex.backend.exception.BackendUnknownDocumentWriterException;
-import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -46,7 +45,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * <h3>The Primitive <tt>\writerType</tt></h3>
  * <p>
  * The primitive <tt>\writerType</tt> provides access to the type of the
- * document writer.
+ * document writer. 
  * </p>
  * <p>
  * TODO missing documentation
