@@ -35,6 +35,8 @@ import org.extex.backend.documentWriter.postscript.util.PsConverter;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.color.ColorAware;
 import org.extex.color.ColorConverter;
+import org.extex.font.CoreFontFactory;
+import org.extex.font.FontAware;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -55,6 +57,7 @@ public abstract class AbstractPostscriptWriter
             Configurable,
             MultipleDocumentStream,
             ResourceAware,
+            FontAware,
             ColorAware {
 
     /**
@@ -70,10 +73,20 @@ public abstract class AbstractPostscriptWriter
     private ColorConverter colorConverter = null;
 
     /**
+     * The field <tt>converter</tt> contains the cached PostScript converter.
+     */
+    private PsConverter converter = null;
+
+    /**
      * The field <tt>finder</tt> contains the resource finder as set from the
      * managing instance.
      */
     private ResourceFinder finder = null;
+
+    /**
+     * The field <tt>fontFactory</tt> contains the font factory.
+     */
+    private CoreFontFactory fontFactory;
 
     /**
      * The field <tt>parameter</tt> contains the map for parameters.
@@ -113,23 +126,6 @@ public abstract class AbstractPostscriptWriter
     }
 
     /**
-     * Getter for a named parameter.
-     * 
-     * @param name the name of the parameter
-     * 
-     * @return the value of the parameter or <code>null</code> if none exists
-     */
-    protected String getParameter(String name) {
-
-        return parameter.get(name);
-    }
-
-    /**
-     * The field <tt>converter</tt> contains the cached PostScript converter.
-     */
-    private PsConverter converter = null;
-
-    /**
      * Create a PostScript converter.
      * 
      * @param headerManager the header manager
@@ -163,6 +159,28 @@ public abstract class AbstractPostscriptWriter
     }
 
     /**
+     * Getter for fontFactory.
+     *
+     * @return the fontFactory
+     */
+    public CoreFontFactory getFontFactory() {
+    
+        return fontFactory;
+    }
+
+    /**
+     * Getter for a named parameter.
+     * 
+     * @param name the name of the parameter
+     * 
+     * @return the value of the parameter or <code>null</code> if none exists
+     */
+    protected String getParameter(String name) {
+
+        return parameter.get(name);
+    }
+
+    /**
      * Acquire a new output stream.
      * 
      * @param type the type for the reference to the configuration file
@@ -188,6 +206,16 @@ public abstract class AbstractPostscriptWriter
     public void setColorConverter(ColorConverter converter) {
 
         this.colorConverter = converter;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.extex.font.FontAware#setFontFactory(org.extex.font.CoreFontFactory)
+     */
+    public void setFontFactory(CoreFontFactory factory) {
+
+        this.fontFactory = factory;
     }
 
     /**
@@ -271,6 +299,7 @@ public abstract class AbstractPostscriptWriter
 
     }
 
+    
     /**
      * Write a meta comment according to the Document Structuring Conventions
      * containing the <tt>DocumentFonts</tt>.

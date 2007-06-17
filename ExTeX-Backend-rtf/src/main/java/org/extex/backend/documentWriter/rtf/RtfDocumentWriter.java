@@ -770,25 +770,16 @@ public class RtfDocumentWriter extends RtfDocument
     }
 
     /**
-     * This is the entry point for the document writer. Here it receives a
-     * complete node list to be sent to the output writer. It can be assumed
-     * that all values for width, height, and depth of the node lists are
-     * properly filled. Thus all information should be present to place the ink
-     * on the paper.
-     * 
-     * @param page the page to send
-     * 
-     * @return returns the number of pages shipped
-     * 
-     * @throws GeneralException in case of a general exception<br>
-     *         especially<br>
-     *         DocumentWriterException in case of an error
-     * @throws IOException in case of an IO exception
+     * {@inheritDoc}
      * 
      * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
      *      org.extex.typesetter.type.page.Page)
      */
     public int shipout(Page page) throws GeneralException, IOException {
+
+        if (page == null) {
+            return 0;
+        }
 
         newPage(page.getColor());
         page.getNodes().visit(visitor, null);

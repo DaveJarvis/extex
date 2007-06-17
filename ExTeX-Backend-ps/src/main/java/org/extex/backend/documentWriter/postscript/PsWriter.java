@@ -169,6 +169,9 @@ public class PsWriter extends AbstractPostscriptWriter
      */
     public int shipout(Page p) throws GeneralException, IOException {
 
+        if (p == null) {
+            return 0;
+        }
         PsConverter converter = getConverter(headerManager);
         page.add(converter.toPostScript(p, fontManager, headerManager));
         return 1;

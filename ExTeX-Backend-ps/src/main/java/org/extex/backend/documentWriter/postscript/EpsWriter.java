@@ -107,6 +107,10 @@ public class EpsWriter extends AbstractPostscriptWriter {
      */
     public int shipout(Page page) throws GeneralException, IOException {
 
+        if (page == null) {
+            return 0;
+        }
+
         PsConverter converter = getConverter(headerManager);
 
         OutputStream stream = newOutputStream("eps");
