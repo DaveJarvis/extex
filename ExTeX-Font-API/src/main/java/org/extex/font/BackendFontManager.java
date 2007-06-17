@@ -81,21 +81,14 @@ public interface BackendFontManager {
     boolean isNewRecongnizedFont();
 
     /**
-     * Return the iterator for all recognized back-end fonts. The fonts are
-     * sorted by the name.
+     * Return the iterator for all recognized back-end fonts as
+     * {@link ManagerInfo}. The fonts are sorted by the name.
      * 
-     * @return the iterator for all recognized back-end font
+     * @return the iterator for all recognized back-end font as
+     *         {@link ManagerInfo}.
      */
-    Iterator<BackendFont> iterate();
+    Iterator<ManagerInfo> iterate();
 
-    
-    /**
-     * Return the iterator for all {@link ManagerInfo}s.
-     * 
-     * @return the iterator for {@link ManagerInfo}s.
-     */
-    Iterator<ManagerInfo> iterateManagerInfo();
-    
     /**
      * Take a character and a font and see if they can be managed by this
      * manager. The internal state is adjusted to report the font and the

@@ -24,6 +24,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.extex.core.UnicodeChar;
+import org.extex.font.manager.ManagerInfo;
 
 /**
  * Test for the font factory (manager).
@@ -191,7 +192,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
         assertFalse("nothing recognized yet", manager.isNewRecongnizedFont());
         assertNull("no char recognized yet", manager.getRecognizedCharId());
         assertNull("no font recognized yet", manager.getRecognizedFont());
-        Iterator<BackendFont> it = manager.iterate();
+        Iterator<ManagerInfo> it = manager.iterate();
         assertNotNull(it);
         boolean next = it.hasNext();
         assertFalse("no font enlisted", next);
@@ -217,9 +218,11 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
         BackendCharacter cid = manager.getRecognizedCharId();
         assertEquals('A', cid.getId());
         assertEquals("65", cid.getName());
-        Iterator<BackendFont> it = manager.iterate();
+        Iterator<ManagerInfo> it = manager.iterate();
         assertTrue(it.hasNext());
-        Object fnt = it.next();
+        ManagerInfo man = it.next();
+        assertNotNull(man);
+        Object fnt = man.getBackendFont();
         assertNotNull(fnt);
         assertTrue(fnt instanceof BackendFont);
         BackendFont bfnt = (BackendFont) fnt;
@@ -251,10 +254,12 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
         BackendCharacter cid = manager.getRecognizedCharId();
         assertEquals('B', cid.getId());
         assertEquals("66", cid.getName());
-        Iterator<BackendFont> it = manager.iterate();
+        Iterator<ManagerInfo> it = manager.iterate();
         assertNotNull(it);
         assertTrue(it.hasNext());
-        Object fnt = it.next();
+        ManagerInfo man = it.next();
+        assertNotNull(man);
+        Object fnt = man.getBackendFont();
         assertNotNull(fnt);
         assertTrue(fnt instanceof BackendFont);
         BackendFont bfnt = (BackendFont) fnt;
@@ -287,18 +292,21 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
         BackendCharacter cid = manager.getRecognizedCharId();
         assertEquals('B', cid.getId());
         assertEquals("66", cid.getName());
-        Iterator<BackendFont> it = manager.iterate();
+        Iterator<ManagerInfo> it = manager.iterate();
         assertNotNull(it);
 
         assertTrue(it.hasNext());
-        Object fnt = it.next();
+        ManagerInfo man = it.next();
+        assertNotNull(man);
+        Object fnt = man.getBackendFont();
         assertNotNull(fnt);
         assertTrue(fnt instanceof BackendFont);
         BackendFont bfnt = (BackendFont) fnt;
         assertEquals("cmr10", bfnt.getName());
         assertEquals(1274110073, bfnt.getCheckSum());
         assertTrue(it.hasNext());
-        fnt = it.next();
+        man = it.next();
+        fnt = man.getBackendFont();
         assertNotNull(fnt);
         assertTrue(fnt instanceof BackendFont);
         bfnt = (BackendFont) fnt;
@@ -333,7 +341,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
             .isNewRecongnizedFont());
         assertNull("no char recognized any more", manager.getRecognizedCharId());
         assertNull("no font recognized any more", manager.getRecognizedFont());
-        Iterator<BackendFont> it = manager.iterate();
+        Iterator<ManagerInfo> it = manager.iterate();
         assertNotNull(it);
         assertFalse("no font enlisted", it.hasNext());
     }

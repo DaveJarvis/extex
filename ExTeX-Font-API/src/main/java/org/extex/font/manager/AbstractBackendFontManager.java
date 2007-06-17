@@ -110,90 +110,7 @@ public abstract class AbstractBackendFontManager implements BackendFontManager {
      * 
      * @see org.extex.font.BackendFontManager#iterate()
      */
-    public Iterator<BackendFont> iterate() {
-
-        return new Iterator<BackendFont>() {
-
-            /**
-             * Iterator for the font key.
-             */
-            private Iterator<FontKey> it;
-
-            /**
-             * Create the <code>Iterator</code> and sort it.
-             */
-            private void createIterator() {
-
-                Set<FontKey> keySet = fontList.keySet();
-                TreeSet<FontKey> sort =
-                        new TreeSet<FontKey>(new Comparator<FontKey>() {
-
-                            public int compare(FontKey o1, FontKey o2) {
-
-                                return o1.getName().compareTo(o2.getName());
-                            }
-
-                        });
-                Iterator<FontKey> tmpit = keySet.iterator();
-                while (tmpit.hasNext()) {
-                    sort.add(tmpit.next());
-                }
-
-                it = sort.iterator();
-            }
-
-            /**
-             * {@inheritDoc}
-             * 
-             * @see java.util.Iterator#hasNext()
-             */
-            public boolean hasNext() {
-
-                if (fontList != null && it == null) {
-                    createIterator();
-                }
-                if (it != null) {
-                    return it.hasNext();
-                }
-                return false;
-            }
-
-            /**
-             * {@inheritDoc}
-             * 
-             * @see java.util.Iterator#next()
-             */
-            public BackendFont next() {
-
-                if (fontList != null && it == null) {
-                    createIterator();
-                }
-                if (it == null) {
-                    throw new NoSuchElementException();
-                }
-                FontKey key = it.next();
-                ManagerInfo info = fontList.get(key);
-                return info.getBackendFont();
-            }
-
-            /**
-             * {@inheritDoc}
-             * 
-             * @see java.util.Iterator#remove()
-             */
-            public void remove() {
-
-                throw new UnsupportedOperationException();
-            }
-        };
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFontManager#iterateManagerInfo()
-     */
-    public Iterator<ManagerInfo> iterateManagerInfo() {
+    public Iterator<ManagerInfo> iterate() {
 
         return new Iterator<ManagerInfo>() {
 
@@ -233,7 +150,6 @@ public abstract class AbstractBackendFontManager implements BackendFontManager {
             public boolean hasNext() {
 
                 if (fontList != null && it == null) {
-
                     createIterator();
                 }
                 if (it != null) {

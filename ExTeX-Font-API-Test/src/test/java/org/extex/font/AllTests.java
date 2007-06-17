@@ -25,7 +25,6 @@ import junit.framework.TestSuite;
 import org.extex.font.fontparameter.FontParameterTest;
 import org.extex.font.format.afm.AfmParserTest;
 import org.extex.font.format.afm.FontFactoryImplAfmTest;
-import org.extex.font.format.afm.FontFactoryImplManagerAfmTest;
 import org.extex.font.format.tfm.TfmFixWordTest;
 import org.extex.font.format.tfm.TfmReaderTest;
 import org.extex.font.format.tfm.U2tFactoryTest;

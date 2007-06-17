@@ -100,34 +100,106 @@ public class XmlOutput01Test extends ExTeXLauncher {
     }
 
     /**
-     * Test: page size.
+     * Test the manager.
      * 
      * @throws Exception if an error occurred.
      */
-    public void testManager() throws Exception {
+    public void testManager01() throws Exception {
 
-        String[] comment = new String[]{"pagesize" // 1
-                , "pagesize width" // 2
-                , "Orientation" // 3
-                , "pagesize height" // 4
+        String[] comment = new String[]{"manager exists" // 1
+                , "font fxlt" // 2
+                , "count chars" // 3
+                , "test first char" // 4
+                , "test last char" // 5
         };
-        String[] xpath =
-                new String[]{"/root/parameter/param[@name=\"Paper\"]/@value" // 1
-                        , "/root/page[1]/@paperwidth_mm" // 2
-                        , "/root/parameter/param[@name=\"Orientation\"]/@value" // 3
-                        , "/root/page[1]/@paperheight_mm" // 4
-                };
-        String[] expected = new String[]{"A4" // 1
-                , "210" // 2
-                , "Portrait" // 3
-                , "297" // 4
+        String[] xpath = new String[]{"count(/root/managerinfo)" // 1
+                , "/root/managerinfo/manager[1]/@font" // 2
+                , "count(/root/managerinfo/manager[1]/char)" // 3
+                , "/root/managerinfo/manager[1]/char[1]/@id" // 4
+                , "/root/managerinfo/manager[1]/char[4]/@id" // 5
+        };
+        String[] expected = new String[]{"1" // 1
+                , "fxlr" // 2
+                , "4" // 3
+                , "72" // 4
+                , "111" // 4
         };
 
         assertOutput(prop, // --- input code ---
             "\\font\\hugo=fxlr " + "\\hugo " + "Hugo " + "\\end",
             /* logValidator */null, /* outputValidator */
             new XmlValidator(comment, xpath, expected));
-
     }
 
+    /**
+     * Test the manager with identical chars.
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void testManager02() throws Exception {
+
+        String[] comment = new String[]{"manager exists" // 1
+                , "font fxlt" // 2
+                , "count chars" // 3
+                , "test first char" // 4
+                , "test last char" // 5
+        };
+        String[] xpath = new String[]{"count(/root/managerinfo)" // 1
+                , "/root/managerinfo/manager[1]/@font" // 2
+                , "count(/root/managerinfo/manager[1]/char)" // 3
+                , "/root/managerinfo/manager[1]/char[1]/@id" // 4
+                , "/root/managerinfo/manager[1]/char[4]/@id" // 5
+        };
+        String[] expected = new String[]{"1" // 1
+                , "fxlr" // 2
+                , "4" // 3
+                , "72" // 4
+                , "111" // 5
+        };
+
+        assertOutput(prop, // --- input code ---
+            "\\font\\hugo=fxlr " + "\\hugo " + "Hugo Hugo HHHH" + "\\end",
+            /* logValidator */null, /* outputValidator */
+            new XmlValidator(comment, xpath, expected));
+    }
+
+    /**
+     * Test the manager with tow fonts.
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void testManager03() throws Exception {
+
+        String[] comment = new String[]{"manager exists" // 1
+                , "font fxlt" // 2
+                , "count chars" // 3
+                , "test first char" // 4
+                , "test last char" // 5
+                , "font cmr10" // 6
+                , "count chars cmr10" // 7
+        };
+        String[] xpath = new String[]{"count(/root/managerinfo)" // 1
+                , "/root/managerinfo/manager[2]/@font" // 2
+                , "count(/root/managerinfo/manager[2]/char)" // 3
+                , "/root/managerinfo/manager[2]/char[1]/@id" // 4
+                , "/root/managerinfo/manager[2]/char[4]/@id" // 5
+                , "/root/managerinfo/manager[1]/@font" // 6
+                , "count(/root/managerinfo/manager[1]/char)" // 7
+        };
+        String[] expected = new String[]{"1" // 1
+                , "fxlr" // 2
+                , "4" // 3
+                , "72" // 4
+                , "111" // 5
+                , "cmr10" // 6
+                , "8" // 7
+        };
+
+        assertOutput(prop, // --- input code ---
+            "\\font\\hugo=fxlr " + "\\hugo " + "Hugo Hugo HHHH"
+                    + "\\font\\peter=cmr10 " + "\\peter "
+                    + "Peter Peter Hugo HHHH" + "\\end",
+            /* logValidator */null, /* outputValidator */
+            new XmlValidator(comment, xpath, expected));
+    }
 }

@@ -37,6 +37,7 @@ import org.extex.font.CoreFontFactory;
 import org.extex.font.FontKey;
 import org.extex.font.LoadableFont;
 import org.extex.font.exception.CorruptFontException;
+import org.extex.font.format.TfmMetricFont;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
@@ -45,7 +46,11 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class LoadableTfmFont implements LoadableFont, BackendFont {
+public class LoadableTfmFont
+        implements
+            LoadableFont,
+            BackendFont,
+            TfmMetricFont {
 
     /**
      * The actual font key.

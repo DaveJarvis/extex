@@ -47,6 +47,11 @@ public class XmlValidator implements Validator {
     private String[] comment;
 
     /**
+     * The debug value.
+     */
+    private boolean debug = false;
+
+    /**
      * The expected value.
      */
     private String[] expected;
@@ -85,6 +90,21 @@ public class XmlValidator implements Validator {
     }
 
     /**
+     * Creates a new object.
+     * 
+     * @param comment The comment array for the error message.
+     * @param xpath The xpath array.
+     * @param expected The expected value array.
+     * @param debug Show debug info.
+     */
+    public XmlValidator(String[] comment, String[] xpath, String[] expected,
+            boolean debug) {
+
+        this(comment, xpath, expected);
+        this.debug = debug;
+    }
+
+    /**
      * Returns <code>true</code> if the given string is not <code>null</code>
      * and if it is equal to the given result of the xpath result. Otherwise an
      * JUnit exception is raised.
@@ -94,6 +114,10 @@ public class XmlValidator implements Validator {
      * @see org.extex.test.Validator#validate(java.lang.String)
      */
     public boolean validate(String s) {
+
+        if (debug) {
+            System.out.println(s);
+        }
 
         XPathFactory xpathfactory = XPathFactory.newInstance();
         XPath xpath = xpathfactory.newXPath();

@@ -21,9 +21,11 @@ package org.extex.font.manager;
 
 import org.extex.core.UnicodeChar;
 import org.extex.font.BackendCharacter;
+import org.extex.font.BackendFont;
 import org.extex.font.BackendFontManager;
 import org.extex.font.FontKey;
 import org.extex.font.exception.FontException;
+import org.extex.font.format.AfmMetricFont;
 
 /**
  * Backend font manager for a afm font.
@@ -72,9 +74,27 @@ public class AfmBackendFontManager extends AbstractBackendFontManager
          */
         public String getName() {
 
-            return Integer.toString(getId());
+            return uc.toString();
         }
 
+        @Override
+        public int hashCode() {
+
+            return uc.hashCode();
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+
+            if (obj != null && obj instanceof BackendCharacter) {
+                BackendCharacter ch = (BackendCharacter) obj;
+                if (ch.getId() == getId()) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 
     /**
@@ -110,12 +130,19 @@ public class AfmBackendFontManager extends AbstractBackendFontManager
             return true;
         }
 
-        info = new ManagerInfo(fontKey);
-        newRecongnizedFont = true;
-        recognizedFont = factory.getBackendFont(fontKey);
-        if (recognizedFont == null) {
+        BackendFont recognizedFonttmp = factory.getBackendFont(fontKey);
+        if (recognizedFonttmp == null) {
             return false;
         }
+
+        // only afm metric fonts
+        if (!(recognizedFonttmp instanceof AfmMetricFont)) {
+            return false;
+        }
+
+        info = new ManagerInfo(fontKey, this);
+        newRecongnizedFont = true;
+        recognizedFont = recognizedFonttmp;
         info.setBackendFont(recognizedFont);
         recognizedCharcterId = new BackendCharacterImpl(uc);
         info.add(recognizedCharcterId);

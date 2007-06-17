@@ -39,6 +39,7 @@ import org.extex.font.LoadableFont;
 import org.extex.font.exception.CorruptFontException;
 import org.extex.font.exception.FontException;
 import org.extex.font.fontparameter.FontParameter;
+import org.extex.font.format.AfmMetricFont;
 import org.extex.font.unicode.GlyphName;
 import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
@@ -60,7 +61,8 @@ public class LoadableAfmFont
         implements
             LoadableFont,
             ResourceAware,
-            BackendFont {
+            BackendFont,
+            AfmMetricFont {
 
     /**
      * The actual font key.

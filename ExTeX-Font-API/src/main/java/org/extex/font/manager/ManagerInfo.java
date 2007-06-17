@@ -25,6 +25,7 @@ import java.util.List;
 
 import org.extex.font.BackendCharacter;
 import org.extex.font.BackendFont;
+import org.extex.font.BackendFontManager;
 import org.extex.font.FontKey;
 
 /**
@@ -52,13 +53,20 @@ public class ManagerInfo {
     private FontKey fontKey;
 
     /**
+     * The {@link BackendFontManager} for this info.
+     */
+    private BackendFontManager manager;
+
+    /**
      * Creates a new object.
      * 
      * @param fontKey The font key.
+     * @param manager The {@link BackendFontManager}.
      */
-    public ManagerInfo(FontKey fontKey) {
+    public ManagerInfo(FontKey fontKey, BackendFontManager manager) {
 
         this.fontKey = fontKey;
+        this.manager = manager;
     }
 
     /**
@@ -91,6 +99,16 @@ public class ManagerInfo {
     public FontKey getFontKey() {
 
         return fontKey;
+    }
+
+    /**
+     * Getter for manager.
+     * 
+     * @return the manager
+     */
+    public BackendFontManager getManager() {
+
+        return manager;
     }
 
     /**

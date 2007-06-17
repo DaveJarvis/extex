@@ -323,11 +323,16 @@ public class XMLDocumentWriter
      */
     private void writeManager() throws IOException {
 
-        writer.writeStartElement("manager");
-        Iterator<ManagerInfo> it = manager.iterateManagerInfo();
+        writer.writeStartElement("managerinfo");
+        Iterator<ManagerInfo> it = manager.iterate();
         while (it.hasNext()) {
+            writer.writeStartElement("manager");
             ManagerInfo info = it.next();
-            writer.writeAttribute("font", info.getFontKey().toString());
+            writer.writeAttribute("type", info.getManager().getClass()
+                .getName());
+            writer.writeAttribute("font", info.getFontKey().getName());
+            writer
+                .writeAttribute("fontparameter", info.getFontKey().toString());
             Iterator<BackendCharacter> chit = info.iterate();
             while (chit.hasNext()) {
                 writer.writeStartElement("char");
@@ -336,6 +341,7 @@ public class XMLDocumentWriter
                 writer.writeAttribute("name", bc.getName());
                 writer.writeEndElement();
             }
+            writer.writeEndElement();
         }
         writer.writeEndElement();
     }
@@ -473,6 +479,7 @@ public class XMLDocumentWriter
         corefactory = factory;
         List<String> sl = new ArrayList<String>();
         sl.add("tfm");
+        sl.add("afm");
         manager = corefactory.createManager(sl);
     }
 
@@ -655,7 +662,6 @@ public class XMLDocumentWriter
         try {
             writer.writeStartElement("char");
             UnicodeChar uc = node.getCharacter();
-            addNodeAttributes(node);
             Font font = node.getTypesettingContext().getFont();
             manager.recognize(font.getFontKey(), uc);
             writer.writeAttribute("font", font.getFontName());
@@ -674,6 +680,7 @@ public class XMLDocumentWriter
                 writer.writeAttribute("visiblechar", c);
             }
             currentX.add(node.getWidth());
+            addNodeAttributes(node);
             writer.writeEndElement();
         } catch (IOException e) {
             throw new DocumentWriterIOException(e);
