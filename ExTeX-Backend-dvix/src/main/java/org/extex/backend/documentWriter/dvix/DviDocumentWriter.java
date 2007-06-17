@@ -110,15 +110,15 @@ public class DviDocumentWriter
     private int bopPointer = -1;
 
     /**
+     * The field <tt>converter</tt> contains the color converter to use.
+     */
+    private ColorConverter colorConverter = null;
+
+    /**
      * The field <tt>colorSpecials</tt> contains the indicator whether or not
      * to include color specials.
      */
     private boolean colorSpecials = false;
-
-    /**
-     * The field <tt>converter</tt> contains the color converter to use.
-     */
-    private ColorConverter colorConverter = null;
 
     /**
      * The field <tt>dviH</tt> contains the h value of the DVI interpreter.
@@ -154,6 +154,11 @@ public class DviDocumentWriter
      * The field <tt>dviZ</tt> contains the z value of the DVI interpreter.
      */
     private int dviZ;
+
+    /**
+     * The field <tt>extension</tt> contains the extension.
+     */
+    private String extension = "dvi";
 
     /**
      * The field <tt>fontIndex</tt> contains the font number currently active.
@@ -720,6 +725,10 @@ public class DviDocumentWriter
         if (col != null) {
             colorSpecials = Boolean.valueOf(col).booleanValue();
         }
+        String ext = config.getAttribute("extension");
+        if (ext != null) {
+            extension = ext;
+        }
     }
 
     /**
@@ -733,7 +742,7 @@ public class DviDocumentWriter
      */
     public String getExtension() {
 
-        return "dvi";
+        return extension;
     }
 
     /**
