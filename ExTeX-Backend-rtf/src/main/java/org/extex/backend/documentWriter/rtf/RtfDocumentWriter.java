@@ -85,6 +85,11 @@ public class RtfDocumentWriter extends RtfDocument
     private ColorConverter converter;
 
     /**
+     * The field <tt>extension</tt> contains the extension.
+     */
+    private String extension = "rtf";
+
+    /**
      * The field <tt>fontNo</tt> contains the font number currently active.
      */
     private int fontNo = 0;
@@ -704,7 +709,10 @@ public class RtfDocumentWriter extends RtfDocument
      */
     public void configure(Configuration config) {
 
-        // not needed
+        String ext = config.getAttribute("extension");
+        if (ext != null) {
+            extension = ext;
+        }
     }
 
     /**
@@ -718,7 +726,7 @@ public class RtfDocumentWriter extends RtfDocument
      */
     public String getExtension() {
 
-        return "rtf";
+        return extension;
     }
 
     /**
