@@ -26,7 +26,7 @@ import org.extex.core.exception.helping.NoHelpException;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.pdf.api.PdftexSupport;
-import org.extex.pdf.api.exception.InterpreterPdftexException;
+import org.extex.pdf.api.exception.PdftexException;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -61,11 +61,11 @@ public abstract class AbstractPdftexCode extends AbstractCode {
      * 
      * @return the casted document writer with pdf support
      * 
-     * @throws InterpreterPdftexException in case that pdfTeX is not active
+     * @throws PdftexException in case that pdfTeX is not active
      * @throws NoHelpException in case of an exception in the back-end
      */
     protected PdftexSupport ensurePdftex(Context context, Typesetter typesetter)
-            throws InterpreterPdftexException,
+            throws PdftexException,
                 NoHelpException {
 
         DocumentWriter documentWriter;
@@ -79,7 +79,7 @@ public abstract class AbstractPdftexCode extends AbstractCode {
                 && context.getCount("pdfoutput").gt(Count.ZERO)) {
             return (PdftexSupport) documentWriter;
         }
-        throw new InterpreterPdftexException(printableControlSequence(context));
+        throw new PdftexException(printableControlSequence(context));
     }
 
 }
