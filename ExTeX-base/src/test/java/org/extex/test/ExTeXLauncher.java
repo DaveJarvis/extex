@@ -56,7 +56,21 @@ import org.extex.test.font.LauncherFont;
 
 /**
  * This base class for test cases handles all the nifty gritty details of
- * running an instance of <logo>ExTeX</logo>.
+ * running an instance of {@link ExTeX ExTeX}.
+ * <p>
+ * This class provides some properties in addition to those provided by
+ * {@link ExTeX ExTeX} or supporting classes. The following list defines them:
+ * </p>
+ * <dl>
+ * <dt>extex.launcher.loglevel</dt>
+ * <dd>This property sets the log level of the logger in effect. It takes
+ * symbolic (String) names of the log levels: <tt>config</tt>, <tt>info</tt>,
+ * <tt>warning</tt>, <tt>severe</tt>, <tt>fine</tt>, <tt>finer</tt>,
+ * <tt>finest</tt></dd>
+ * <dt>extex.launcher.verbose</dt>
+ * <dd>This property is a boolean value which indicates that the code to be run
+ * should be logged.</dd>
+ * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
