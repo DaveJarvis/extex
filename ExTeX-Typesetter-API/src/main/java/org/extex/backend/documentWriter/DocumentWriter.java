@@ -30,7 +30,7 @@ import org.extex.typesetter.type.page.Page;
  * after the production of the output.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
 public interface DocumentWriter {
 
@@ -49,6 +49,10 @@ public interface DocumentWriter {
      * that all values for width, height, and depth of the node lists are
      * properly filled. Thus all information should be present to place the
      * ink on the paper.
+     * <p>
+     * If the page is <code>null</code> then no page has to be shipped and 0
+     * has to be returned.
+     * </p>
      *
      * @param page the page to send
      *
