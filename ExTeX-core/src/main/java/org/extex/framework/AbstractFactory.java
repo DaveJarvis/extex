@@ -50,12 +50,6 @@ import org.extex.resource.ResourceFinder;
  * <li>If the instantiated class implements the interface
  * {@link org.extex.framework.logger.LogEnabled LogEnabled} then the associated
  * method is used to pass on the logger to the new instance. </li>
- * <li>If the instantiated class implements the interface
- * {@link org.extex.framework.i18n.Localizable Localizable} then the associated
- * method is used to pass on the localizer to the new instance. The localizer is
- * acquired from the
- * {@link org.extex.framework.i18n.LocalizerFactory LocalizerFactory} with the
- * name of the class as key. </li>
  * </ul>
  * </p>
  * 
