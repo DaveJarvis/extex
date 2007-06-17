@@ -120,8 +120,8 @@ public class LeftHyphenmin extends AbstractHyphenationCode
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         long globaldef = context.getCount("globaldefs").getValue();
-        if (globaldef != 0) {
-            prefix.setGlobal((globaldef > 0));
+        if (globaldef > 0) {
+            prefix.setGlobal(true);
         }
 
         Language language = getHyphenationTable(context);
@@ -197,8 +197,8 @@ public class LeftHyphenmin extends AbstractHyphenationCode
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         long globaldef = context.getCount("globaldefs").getValue();
-        if (globaldef != 0) {
-            prefix.setGlobal((globaldef > 0));
+        if (globaldef > 0) {
+            prefix.setGlobal(true);
         }
 
         Language language = getHyphenationTable(context);
@@ -246,8 +246,8 @@ public class LeftHyphenmin extends AbstractHyphenationCode
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         long globaldef = context.getCount("globaldefs").getValue();
-        if (globaldef != 0) {
-            prefix.setGlobal((globaldef > 0));
+        if (globaldef > 0) {
+            prefix.setGlobal(true);
         }
 
         Language language = getHyphenationTable(context);
@@ -283,8 +283,8 @@ public class LeftHyphenmin extends AbstractHyphenationCode
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         long globaldef = context.getCount("globaldefs").getValue();
-        if (globaldef != 0) {
-            prefix.setGlobal((globaldef > 0));
+        if (globaldef > 0) {
+            prefix.setGlobal(true);
         }
 
         Language language = getHyphenationTable(context);
