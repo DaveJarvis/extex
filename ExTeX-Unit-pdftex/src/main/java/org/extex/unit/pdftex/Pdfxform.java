@@ -28,6 +28,7 @@ import org.extex.pdf.api.PdftexSupport;
 import org.extex.pdf.api.node.PdfXForm;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.typesetter.type.NodeList;
 
 /**
  * This class provides an implementation for the primitive
@@ -106,7 +107,8 @@ public class Pdfxform extends AbstractPdftexCode {
 
         long b = source.parseInteger(context, source, typesetter);
         Box box = context.getBox(Long.toString(b));
-        PdfXForm form = writer.getXForm(attr, resources, box.getNodes());
+        NodeList nodes = (box == null? null: box.getNodes());
+        PdfXForm form = writer.getXForm(attr, resources, nodes);
 
         typesetter.add(form);
 
