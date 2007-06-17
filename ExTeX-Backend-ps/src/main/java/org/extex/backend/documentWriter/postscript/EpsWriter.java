@@ -59,6 +59,7 @@ public class EpsWriter extends AbstractPostscriptWriter {
 
         super();
         fontManager = new FontManager();
+        setExtension("eps");
     }
 
     /**
@@ -70,20 +71,6 @@ public class EpsWriter extends AbstractPostscriptWriter {
     public void close() {
 
         // nothing to do
-    }
-
-    /**
-     * Getter for the extension associated with this kind of output. For
-     * instance <tt>pdf</tt> is the expected value for PDF files and
-     * <tt>dvi</tt> is the expected value for DVI files.
-     * 
-     * @return the appropriate extension for file names
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
-     */
-    public String getExtension() {
-
-        return "eps";
     }
 
     /**

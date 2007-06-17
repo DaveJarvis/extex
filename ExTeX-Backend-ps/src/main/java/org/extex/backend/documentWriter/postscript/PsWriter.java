@@ -36,7 +36,6 @@ import org.extex.backend.documentWriter.postscript.util.PsConverter;
 import org.extex.backend.documentWriter.postscript.util.PsUnit;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
-import org.extex.framework.configuration.Configurable;
 import org.extex.typesetter.type.page.Page;
 
 /**
@@ -47,8 +46,7 @@ import org.extex.typesetter.type.page.Page;
  */
 public class PsWriter extends AbstractPostscriptWriter
         implements
-            SingleDocumentStream,
-            Configurable {
+            SingleDocumentStream {
 
     /**
      * The field <tt>DF</tt> contains the formatter for the date.
@@ -94,6 +92,7 @@ public class PsWriter extends AbstractPostscriptWriter
     public PsWriter(DocumentWriterOptions options) {
 
         super();
+        setExtension("ps");
     }
 
     /**
@@ -138,16 +137,6 @@ public class PsWriter extends AbstractPostscriptWriter
         writeDsc(stream, "EOF");
         stream.close();
         stream = null;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
-     */
-    public String getExtension() {
-
-        return "ps";
     }
 
     /**

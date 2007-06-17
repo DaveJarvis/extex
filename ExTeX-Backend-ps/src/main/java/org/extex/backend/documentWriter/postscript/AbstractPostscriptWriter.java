@@ -78,6 +78,11 @@ public abstract class AbstractPostscriptWriter
     private PsConverter converter = null;
 
     /**
+     * The field <tt>extension</tt> contains the extension.
+     */
+    private String extension = "ps";
+
+    /**
      * The field <tt>finder</tt> contains the resource finder as set from the
      * managing instance.
      */
@@ -121,8 +126,13 @@ public abstract class AbstractPostscriptWriter
      */
     public void configure(Configuration config) throws ConfigurationException {
 
-        String b = config.getAttribute("boxed");
-        boxed = (b == null ? false : Boolean.valueOf(b).booleanValue());
+        String s = config.getAttribute("boxed");
+        this.boxed = (s == null ? false : Boolean.valueOf(s).booleanValue());
+
+        s = config.getAttribute("extension");
+        if (s != null) {
+            extension = s;
+        }
     }
 
     /**
@@ -159,12 +169,26 @@ public abstract class AbstractPostscriptWriter
     }
 
     /**
+     * Getter for the extension associated with this kind of output. For
+     * instance <tt>pdf</tt> is the expected value for PDF files and
+     * <tt>dvi</tt> is the expected value for DVI files.
+     * 
+     * @return the appropriate extension for file names
+     * 
+     * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
+     */
+    public String getExtension() {
+
+        return extension;
+    }
+
+    /**
      * Getter for fontFactory.
-     *
+     * 
      * @return the fontFactory
      */
     public CoreFontFactory getFontFactory() {
-    
+
         return fontFactory;
     }
 
@@ -209,8 +233,18 @@ public abstract class AbstractPostscriptWriter
     }
 
     /**
-     * {@inheritDoc}
+     * Setter for extension.
      *
+     * @param extension the extension to set
+     */
+    protected void setExtension(String extension) {
+    
+        this.extension = extension;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.FontAware#setFontFactory(org.extex.font.CoreFontFactory)
      */
     public void setFontFactory(CoreFontFactory factory) {
