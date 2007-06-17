@@ -128,7 +128,7 @@ public class Dimen extends DimenConstant {
      */
     public void add(FixedDimen d) {
 
-        value = (getValue() + d.getValue());
+        value += d.getValue();
     }
 
     /**
@@ -143,7 +143,7 @@ public class Dimen extends DimenConstant {
     public void add(long d) {
 
         if (d != 0) {
-            value = (getValue() + d);
+            value += d;
         }
     }
 
@@ -165,7 +165,7 @@ public class Dimen extends DimenConstant {
             throw new ArithmeticException();
         }
         if (denom != 1) {
-            value = (getValue() / denom);
+            value /= denom;
         }
     }
 
@@ -176,7 +176,7 @@ public class Dimen extends DimenConstant {
      */
     public boolean isZero() {
 
-        return getValue() == 0;
+        return value == 0;
     }
 
     /**
@@ -191,7 +191,7 @@ public class Dimen extends DimenConstant {
 
         long val = d.getValue();
         if (val > getValue()) {
-            value = (val);
+            value = val;
         }
     }
 
@@ -207,7 +207,7 @@ public class Dimen extends DimenConstant {
 
         long val = d.getValue();
         if (val < getValue()) {
-            value = (val);
+            value = val;
         }
     }
 
@@ -237,7 +237,7 @@ public class Dimen extends DimenConstant {
     public void multiply(long factor) {
 
         if (factor != 1) {
-            value = (getValue() * factor);
+            value = getValue() * factor;
         }
     }
 
@@ -250,7 +250,7 @@ public class Dimen extends DimenConstant {
      */
     public void negate() {
 
-        value = (-getValue());
+        value = -getValue();
     }
 
     /**
@@ -260,7 +260,7 @@ public class Dimen extends DimenConstant {
      */
     public void set(FixedDimen d) {
 
-        value = (d.getValue());
+        value = d.getValue();
     }
 
     /**
@@ -284,7 +284,7 @@ public class Dimen extends DimenConstant {
      */
     public void subtract(FixedDimen d) {
 
-        value = (getValue() - d.getValue());
+        value -= d.getValue();
     }
 
 }
