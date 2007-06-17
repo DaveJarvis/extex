@@ -250,7 +250,7 @@ import org.extex.typesetter.tc.font.impl.FontImpl;
  * <dd> This Boolean parameter contains the indicator whether or not to trace
  * the search for input files. </dd>
  * 
- * <dt><a name="extex.trace.font.files"/><tt>extex.trace.font.filess</tt></dt>
+ * <dt><a name="extex.trace.font.files"/><tt>extex.trace.font.files</tt></dt>
  * <dd> This Boolean parameter contains the indicator whether or not to trace
  * the search for font files. </dd>
  * 
