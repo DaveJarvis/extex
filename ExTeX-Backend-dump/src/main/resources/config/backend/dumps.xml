@@ -17,8 +17,6 @@
   -  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
   -
   -->
-<!-- 
-  -  The section "DocumentWriter" contains the specification for the backend.
-  -->
 <DocumentWriter class="org.extex.backend.documentWriter.dump.MultiDumpDocumentWriter"
-                tree="true"/>
+                tree="true"
+                extension="out"/>
