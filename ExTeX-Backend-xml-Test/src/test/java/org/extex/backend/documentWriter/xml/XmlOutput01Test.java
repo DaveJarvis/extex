@@ -202,4 +202,50 @@ public class XmlOutput01Test extends ExTeXLauncher {
             /* logValidator */null, /* outputValidator */
             new XmlValidator(comment, xpath, expected));
     }
+
+    /**
+     * Test the manager with tow fonts.
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void testNodeWidth01() throws Exception {
+
+        String[] comment = new String[]{"only one char" // 1
+                , "font fxlt" // 2
+                , "width char" // 3
+                , "codepoint" // 4
+                , "char" // 5
+                , "height" // 6
+                , "depth" // 7
+                , "width horizontal" // 8
+                , "width vertical" // 9
+        };
+        String[] xpath = new String[]{"count(/root/page/verticallist//char)" // 1
+                , "/root/page/verticallist/horizontallist/char[1]/@font" // 2
+                , "/root/page/verticallist/horizontallist/char[1]/@width_sp" // 3
+                , "/root/page/verticallist/horizontallist/char[1]/@codepoint" // 4
+                , "/root/page/verticallist/horizontallist/char[1]/@visiblechar" // 5
+                , "/root/page/verticallist/horizontallist/char[1]/@height_sp" // 6
+                , "/root/page/verticallist/horizontallist/char[1]/@depth_sp" // 7
+                , "/root/page/verticallist/horizontallist[1]/@width_sp" // 8
+                , "/root/page/verticallist[1]/@width_sp" // 9
+        };
+        String[] expected = new String[]{"1" // 1
+                , "fxlr" // 2
+                , "458752" // 3
+                , "72" // 4
+                , "H" // 5
+                , "423362" // 6
+                , "655" // 7
+                , "458752" // 8
+                , "458752" // 9
+        };
+
+        // H
+        assertOutput(prop, // --- input code ---
+            "\\font\\hugo=fxlr " + "\\hugo " + "H" + "\\end",
+            /* logValidator */null, /* outputValidator */
+            new XmlValidator(comment, xpath, expected));
+    }
+
 }
