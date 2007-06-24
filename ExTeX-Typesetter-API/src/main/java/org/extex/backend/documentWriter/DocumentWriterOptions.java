@@ -16,55 +16,54 @@
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+
 package org.extex.backend.documentWriter;
 
 import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.FixedDimen;
-import org.extex.scanner.type.tokens.Tokens;
-
 
 /**
  * This interface describes the possibilities of the DocumentWriter to access
  * its options. These options are dynamically linked to the Context of the
  * processor. Only read access is provided.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
 public interface DocumentWriterOptions {
 
     /**
      * Getter for a count register.
-     *
+     * 
      * @param name the name of the register
-     *
+     * 
      * @return the content of the count register
      */
     FixedCount getCountOption(String name);
 
     /**
      * Getter for a dimen register.
-     *
+     * 
      * @param name the name of the register
-     *
+     * 
      * @return the content of the dimen register
      */
     FixedDimen getDimenOption(String name);
 
     /**
      * Getter for the magnification of the document.
-     *
+     * 
      * @return the magnification in scaled points.
      */
     long getMagnification();
 
     /**
-     * Getter for a dimen register.
-     *
+     * Getter for a token register.
+     * 
      * @param name the name of the register
-     *
-     * @return the content of the dimen register
+     * 
+     * @return the content of the token register
      */
-    Tokens getTokensOption(String name);
+    String getTokensOption(String name);
 
 }
