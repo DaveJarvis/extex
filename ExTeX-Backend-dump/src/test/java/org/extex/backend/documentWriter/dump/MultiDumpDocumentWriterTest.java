@@ -42,7 +42,7 @@ import org.junit.Test;
 public class MultiDumpDocumentWriterTest extends TestCase {
 
     /**
-     * The field <tt>stream</tt> contains the ...
+     * The field <tt>stream</tt> contains the output stream.
      */
     private static ByteArrayOutputStream stream;
 
@@ -61,12 +61,12 @@ public class MultiDumpDocumentWriterTest extends TestCase {
 
                 public void register(OutputStreamObserver observer) {
 
-                    // TODO gene: register unimplemented
+                    // not needed
                 }
 
                 public void setExtension(String extension) {
 
-                    // TODO gene: setExtension unimplemented
+                    // not needed
                 }
 
             };
