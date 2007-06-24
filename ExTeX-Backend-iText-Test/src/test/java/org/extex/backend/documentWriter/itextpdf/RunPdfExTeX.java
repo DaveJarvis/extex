@@ -47,12 +47,12 @@ public class RunPdfExTeX {
         prop.setProperty("extex.output", "itext");
         File file = new File("test.pdf");
         File filexml = new File("test.xml");
-        run(prop, "\\font\\hugo=fxlr " + "\\hugo " + "Hugo " + "\\end",
+        run(prop, "\\font\\hugo=LinLibertine " + "\\hugo " + "Hugo " + "\\end",
             new FileOutputStream(file));
         System.out.println("create " + file.getPath());
 
         prop.setProperty("extex.output", "xml");
-        run(prop, "\\font\\hugo=fxlr " + "\\hugo " + "Hugo " + "\\end",
+        run(prop, "\\font\\hugo=LinLibertine " + "\\hugo " + "Hugo " + "\\end",
             new FileOutputStream(filexml));
         System.out.println("create " + file.getPath());
 

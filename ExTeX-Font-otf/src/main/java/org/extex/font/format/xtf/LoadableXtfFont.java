@@ -55,14 +55,19 @@ public class LoadableXtfFont
             BackendFont {
 
     /**
+     * The actual font key.
+     */
+    private FontKey actualFontKey;
+
+    /**
      * The font key.
      */
     private FontKey fontKey;
 
     /**
-     * The actual font key.
+     * use the first font! TODO MGN incomplete
      */
-    private FontKey actualFontKey;
+    private int fontnumber = 0;
 
     /**
      * The glyph name Unicode table.
@@ -75,46 +80,13 @@ public class LoadableXtfFont
     private XtfReader reader;
 
     /**
-     * use the first font! TODO MGN incomplete
-     */
-    private int fontnumber = 0;
-
-    /**
      * {@inheritDoc}
      * 
-     * @see org.extex.font.LoadableFont#loadFont(java.io.InputStream,
-     *      org.extex.font.CoreFontFactory, org.extex.font.FontKey)
+     * @see org.extex.font.BaseFont#getActualFontKey()
      */
-    public void loadFont(InputStream in, CoreFontFactory factory, FontKey key)
-            throws CorruptFontException,
-                ConfigurationException {
+    public FontKey getActualFontKey() {
 
-        this.fontKey = key;
-
-        if (key == null) {
-            throw new IllegalArgumentException("fontkey");
-        }
-
-        try {
-
-            glyphname = GlyphName.getInstance();
-
-            reader = new XtfReader(in);
-
-        } catch (IOException e) {
-            throw new CorruptFontException(key, e.getLocalizedMessage());
-        }
-
-        if (key.getDimen("size") == null) {
-            // use 10pt as default
-            actualFontKey = factory.getFontKey(key, new Dimen(Dimen.ONE * 10));
-        } else {
-            actualFontKey = key;
-        }
-
-        // TODO mgn check the fontnumber
-        // usse at the moment the first font in cff
-
+        return actualFontKey;
     }
 
     /**
@@ -125,6 +97,17 @@ public class LoadableXtfFont
     public FixedDimen getActualSize() {
 
         return actualFontKey.getDimen("size");
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#getCheckSum()
+     */
+    public int getCheckSum() {
+
+        // not aviable in ttf/otf.
+        return 0;
     }
 
     /**
@@ -187,17 +170,13 @@ public class LoadableXtfFont
     }
 
     /**
-     * Convert a int value to a <code>Dimen</code>.
+     * {@inheritDoc}
      * 
-     * @param val the value
-     * @return the <code>Dimen</code> value of the float value.
+     * @see org.extex.font.BackendFont#getFontData()
      */
-    private FixedDimen intToDimen(int val) {
+    public byte[] getFontData() {
 
-        int i = val * 1000 / reader.getUnitsPerEm();
-        long l = getActualSize().getValue() * i / 1000;
-
-        return new Dimen(l);
+        return reader.getFontData();
     }
 
     /**
@@ -209,6 +188,16 @@ public class LoadableXtfFont
 
         // TODO mgn: getFontDimen unimplemented
         return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BaseFont#getFontKey()
+     */
+    public FontKey getFontKey() {
+
+        return fontKey;
     }
 
     /**
@@ -289,6 +278,16 @@ public class LoadableXtfFont
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.BackendFont#getName()
+     */
+    public String getName() {
+
+        return getActualFontKey().getName();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * Returns allways 0.
      * 
      * @see org.extex.font.ExtexFont#getScaleFactor()
@@ -343,55 +342,55 @@ public class LoadableXtfFont
     }
 
     /**
-     * {@inheritDoc}
+     * Convert a int value to a <code>Dimen</code>.
      * 
-     * @see org.extex.font.BaseFont#getActualFontKey()
+     * @param val the value
+     * @return the <code>Dimen</code> value of the float value.
      */
-    public FontKey getActualFontKey() {
+    private FixedDimen intToDimen(int val) {
 
-        return actualFontKey;
+        int i = val * 1000 / reader.getUnitsPerEm();
+        long l = getActualSize().getValue() * i / 1000;
+
+        return new Dimen(l);
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.font.BaseFont#getFontKey()
+     * @see org.extex.font.LoadableFont#loadFont(java.io.InputStream,
+     *      org.extex.font.CoreFontFactory, org.extex.font.FontKey)
      */
-    public FontKey getFontKey() {
+    public void loadFont(InputStream in, CoreFontFactory factory, FontKey key)
+            throws CorruptFontException,
+                ConfigurationException {
 
-        return fontKey;
-    }
+        this.fontKey = key;
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getCheckSum()
-     */
-    public int getCheckSum() {
+        if (key == null) {
+            throw new IllegalArgumentException("fontkey");
+        }
 
-        // TODO mgn: getCheckSum unimplemented
-        return 0;
-    }
+        try {
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getFontData()
-     */
-    public byte[] getFontData() {
+            glyphname = GlyphName.getInstance();
 
-        // TODO mgn: getFontData unimplemented
-        return null;
-    }
+            reader = new XtfReader(in);
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getName()
-     */
-    public String getName() {
+        } catch (IOException e) {
+            throw new CorruptFontException(key, e.getLocalizedMessage());
+        }
 
-        return getActualFontKey().getName();
+        if (key.getDimen("size") == null) {
+            // use 10pt as default
+            actualFontKey = factory.getFontKey(key, new Dimen(Dimen.ONE * 10));
+        } else {
+            actualFontKey = key;
+        }
+
+        // TODO mgn check the fontnumber
+        // usse at the moment the first font in cff
+
     }
 
 }

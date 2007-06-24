@@ -20,13 +20,13 @@
 package org.extex.backend.documentWriter.itextpdf;
 
 import java.awt.Color;
-import java.io.IOException;
 
-import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
+import org.extex.font.BackendFont;
+import org.extex.font.BackendFontManager;
 import org.extex.font.FontKey;
 import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.Node;
@@ -69,6 +69,21 @@ import com.lowagie.text.pdf.PdfWriter;
 public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
 
     /**
+     * The line width.
+     */
+    private static final float LINEWIDTH = 0.1f;
+
+    /**
+     * The base font.
+     */
+    private BaseFont bf;
+
+    /**
+     * The direct content of the pdf page.
+     */
+    private PdfContentByte cb;
+
+    /**
      * current x position.
      */
     private Dimen currentX = new Dimen();
@@ -84,26 +99,119 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     private Document document;
 
     /**
+     * The backend font manager.
+     */
+    private BackendFontManager manager;
+
+    /**
+     * the color from the character before.
+     */
+    private org.extex.color.Color oldcolor = null;
+
+    /**
+     * the fount key from the character before.
+     */
+    private FontKey oldfountkey = null;
+
+    /**
+     * The page size.
+     */
+    private Rectangle pageSize;
+
+    /**
      * The pdf writer.
      */
     private PdfWriter writer;
-
-    /**
-     * The direct content of the pdf page.
-     */
-    private PdfContentByte cb;
 
     /**
      * Creates a new object.
      * 
      * @param document The pdf document.
      * @param writer The pdf writer.
+     * @param manager The backend font manager
      */
-    public PdfNodeVisitor(Document document, PdfWriter writer) {
+    public PdfNodeVisitor(Document document, PdfWriter writer,
+            BackendFontManager manager) {
 
         this.document = document;
         this.writer = writer;
+        this.manager = manager;
         cb = writer.getDirectContent();
+    }
+
+    /**
+     * Draw a box around the node (only for test).
+     * 
+     * @param node the node
+     * @param fill fill the box.
+     */
+    private void drawNode(Node node) {
+
+        Color line = Color.GREEN;
+        if (node instanceof VerticalListNode) {
+            line = Color.RED;
+        } else if (node instanceof HorizontalListNode) {
+            line = Color.YELLOW;
+        }
+        cb.setColorStroke(line);
+        cb.setLineWidth(LINEWIDTH);
+        float cx = Unit.getDimenAsBP(currentX);
+        float cy = Unit.getDimenAsBP(currentY);
+        float w = Unit.getDimenAsBP(node.getWidth());
+        float h = Unit.getDimenAsBP(node.getHeight());
+        float d = Unit.getDimenAsBP(node.getDepth());
+
+        cb.moveTo(cx, pageSize.height() - cy);
+        cb.lineTo(cx + w, pageSize.height() - cy);
+        cb.moveTo(cx, pageSize.height() - cy);
+        cb.lineTo(cx, pageSize.height() - cy + h);
+        cb.moveTo(cx + w, pageSize.height() - cy);
+        cb.lineTo(cx + w, pageSize.height() - cy + h);
+        cb.moveTo(cx + w, pageSize.height() - cy + h);
+        cb.lineTo(cx, pageSize.height() - cy + h);
+        cb.stroke();
+        if (node.getDepth().getValue() != 0) {
+            cb.moveTo(cx, pageSize.height() - cy);
+            cb.lineTo(cx, pageSize.height() - cy - d);
+            cb.moveTo(cx, pageSize.height() - cy - d);
+            cb.lineTo(cx + w, pageSize.height() - cy - d);
+            cb.moveTo(cx + w, pageSize.height() - cy - d);
+            cb.lineTo(cx + w, pageSize.height() - cy);
+            cb.stroke();
+        }
+    }
+
+    /**
+     * Set the page size.
+     * 
+     * @param pageSize The size of the page.
+     */
+    public void setPageSize(Rectangle pageSize) {
+
+        this.pageSize = pageSize;
+
+    }
+
+    /**
+     * Set the x position.
+     * 
+     * @param x The x value.
+     */
+    public void setX(FixedDimen x) {
+
+        currentX.set(x);
+
+    }
+
+    /**
+     * Set the y position.
+     * 
+     * @param y The y value.
+     */
+    public void setY(FixedDimen y) {
+
+        currentY.set(y);
+
     }
 
     /**
@@ -172,21 +280,6 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     }
 
     /**
-     * the color from the character before.
-     */
-    private org.extex.color.Color oldcolor = null;
-
-    /**
-     * the fount key from the character before.
-     */
-    private FontKey oldfountkey = null;
-
-    /**
-     * The base font.
-     */
-    private BaseFont bf;
-
-    /**
      * {@inheritDoc}
      * 
      * @see org.extex.typesetter.type.NodeVisitor#visitChar(org.extex.typesetter.type.node.CharNode,
@@ -202,28 +295,30 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
             org.extex.color.Color newcolor =
                     node.getTypesettingContext().getColor();
 
-            if (!newfountkey.equals(oldfountkey)) {
-                bf =
-                        BaseFont.createFont(BaseFont.HELVETICA,
-                            BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                oldfountkey = newfountkey;
-            }
+            boolean aviable = manager.recognize(newfont.getFontKey(), uc);
+            if (!aviable) {
+                // TODO mgn: log ausgeben
+            } else {
 
-            // the same color?
-            if (!newcolor.equals(oldcolor)) {
-                // newcolor.visit(colorVisitor, contentStream);
-                oldcolor = newcolor;
-            }
-            cb.beginText();
-            cb.setFontAndSize(bf, (float) Unit.getDimenAsPT(newfont
-                .getActualSize()));
-            cb.setTextMatrix(Unit.getDimenAsBP(currentX), pageSize.height()
-                    - Unit.getDimenAsBP(currentY));
-            cb.showText(uc.toString());
-            cb.endText();
+                if (!newfountkey.equals(oldfountkey)) {
+                    bf = PdfFontFactory.getFont(manager.getRecognizedFont());
+                    oldfountkey = newfountkey;
+                }
 
+                // the same color?
+                if (!newcolor.equals(oldcolor)) {
+                    // newcolor.visit(colorVisitor, contentStream);
+                    oldcolor = newcolor;
+                }
+                cb.beginText();
+                cb.setFontAndSize(bf, (float) Unit.getDimenAsPT(newfont
+                    .getActualSize()));
+                cb.setTextMatrix(Unit.getDimenAsBP(currentX), pageSize.height()
+                        - Unit.getDimenAsBP(currentY));
+                cb.showText(uc.toString());
+                cb.endText();
+            }
             drawNode(node);
-
             currentX.add(node.getWidth());
         } catch (Exception e) {
             throw new GeneralException(e.getMessage());
@@ -281,15 +376,13 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
 
         Dimen saveX = new Dimen(currentX);
         Dimen saveY = new Dimen(currentY);
-        drawNode(node);
 
         for (Node n : node) {
             n.visit(this, node);
         }
         currentX.set(saveX);
         currentY.set(saveY);
-
-        // drawNode(node);
+        drawNode(node);
         currentX.add(node.getWidth());
 
         return null;
@@ -397,15 +490,13 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
 
         Dimen saveX = new Dimen(currentX);
         Dimen saveY = new Dimen(currentY);
-        drawNode(node);
 
         for (Node n : node) {
             n.visit(this, node);
         }
         currentX.set(saveX);
         currentY.set(saveY);
-
-        // drawNode(node);
+        drawNode(node);
         currentY.add(node.getDepth());
         currentY.add(node.getHeight());
 
@@ -436,92 +527,6 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
 
         // TODO mgn: visitWhatsIt unimplemented
         return null;
-    }
-
-    /**
-     * Set the x position.
-     * 
-     * @param x The x value.
-     */
-    public void setX(FixedDimen x) {
-
-        currentX.set(x);
-
-    }
-
-    /**
-     * Set the y position.
-     * 
-     * @param y The y value.
-     */
-    public void setY(FixedDimen y) {
-
-        currentY.set(y);
-
-    }
-
-    /**
-     * linewidth.
-     */
-    private static final float LINEWIDTH = 0.1f;
-
-    /**
-     * The page size.
-     */
-    private Rectangle pageSize;
-
-    /**
-     * Draw a box around the node (only for test).
-     * 
-     * @param node the node
-     * @throws DocumentWriterException if an error occurred.
-     */
-    private void drawNode(Node node) throws DocumentWriterException {
-
-        if (node instanceof VerticalListNode) {
-            cb.setColorStroke(Color.RED);
-        } else if (node instanceof HorizontalListNode) {
-            cb.setColorStroke(Color.YELLOW);
-        } else {
-            cb.setColorStroke(Color.GREEN);
-        }
-        cb.setLineWidth(LINEWIDTH);
-        float cx = Unit.getDimenAsBP(currentX);
-        float cy = Unit.getDimenAsBP(currentY);
-        float w = Unit.getDimenAsBP(node.getWidth());
-        float h = Unit.getDimenAsBP(node.getHeight());
-        float d = Unit.getDimenAsBP(node.getDepth());
-
-        cb.moveTo(cx, pageSize.height() - cy);
-        cb.lineTo(cx + w, pageSize.height() - cy);
-        cb.moveTo(cx, pageSize.height() - cy);
-        cb.lineTo(cx, pageSize.height() - cy + h);
-        cb.moveTo(cx + w, pageSize.height() - cy);
-        cb.lineTo(cx + w, pageSize.height() - cy + h);
-        cb.moveTo(cx + w, pageSize.height() - cy + h);
-        cb.lineTo(cx, pageSize.height() - cy + h);
-        if (node.getDepth().getValue() != 0) {
-            cb.moveTo(cx, pageSize.height() - cy);
-            cb.lineTo(cx, pageSize.height() - cy - d);
-            cb.stroke();
-            cb.moveTo(cx, pageSize.height() - cy - d);
-            cb.lineTo(cx + w, pageSize.height() - cy - d);
-            cb.stroke();
-            cb.moveTo(cx + w, pageSize.height() - cy - d);
-            cb.lineTo(cx + w, pageSize.height() - cy);
-            cb.stroke();
-        }
-    }
-
-    /**
-     * Set the page size.
-     * 
-     * @param pageSize The size of the page.
-     */
-    public void setPageSize(Rectangle pageSize) {
-
-        this.pageSize = pageSize;
-
     }
 
 }

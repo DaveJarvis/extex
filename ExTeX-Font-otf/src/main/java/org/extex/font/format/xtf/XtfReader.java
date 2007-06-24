@@ -416,6 +416,11 @@ public class XtfReader implements XMLWriterConvertible {
     private TtfTableCMAP cmap;
 
     /**
+     * The font data.
+     */
+    private byte[] fontdata;
+
+    /**
      * Table glyf (required).
      */
     private TtfTableGLYF glyf;
@@ -774,6 +779,16 @@ public class XtfReader implements XMLWriterConvertible {
     public int getDescent() {
 
         return hhea.getDescender();
+    }
+
+    /**
+     * Returns the data of the font.
+     * 
+     * @return the data of the font.
+     */
+    public byte[] getFontData() {
+
+        return fontdata;
     }
 
     /**
@@ -1207,17 +1222,15 @@ public class XtfReader implements XMLWriterConvertible {
         // sort tables for init
         XtfTable[] tabs = tablemap.getTables();
 
-        Arrays.sort(tabs, new Comparator() {
+        Arrays.sort(tabs, new Comparator<XtfTable>() {
 
             /**
              * @see java.util.Comparator#compare(java.lang.Object,
              *      java.lang.Object)
              */
-            public int compare(Object arg0, Object arg1) {
+            public int compare(XtfTable arg0, XtfTable arg1) {
 
-                XtfTable t0 = (XtfTable) arg0;
-                XtfTable t1 = (XtfTable) arg1;
-                if (t0.getInitOrder() > t1.getInitOrder()) {
+                if (arg0.getInitOrder() > arg1.getInitOrder()) {
                     return 1;
                 }
                 return 0;
@@ -1228,6 +1241,8 @@ public class XtfReader implements XMLWriterConvertible {
         for (int i = 0; i < tabs.length; i++) {
             tabs[i].init();
         }
+
+        fontdata = rar.getData();
 
         // close
         rar.close();

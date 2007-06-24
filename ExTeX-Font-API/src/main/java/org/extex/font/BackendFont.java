@@ -48,4 +48,11 @@ public interface BackendFont {
      */
     String getName();
 
+    /**
+     * Returns the actual FontKey for this font after a font substitution.
+     * 
+     * @return Returns the actual FontKey for this font.
+     */
+    FontKey getActualFontKey();
+
 }

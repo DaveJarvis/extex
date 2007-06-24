@@ -39,13 +39,14 @@ import org.extex.font.FontAware;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.page.Page;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.PageSize;
-import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.PdfWriter;
 
 /**
@@ -60,6 +61,13 @@ public class PdfDocumentWriter
             SingleDocumentStream,
             Configurable,
             FontAware/* ,PdftexSupport */{
+
+    /**
+     * The field <tt>localizer</tt> contains the localizer. It is initiated
+     * with a localizer for the name of this class.
+     */
+    private Localizer localizer =
+            LocalizerFactory.getLocalizer(PdfDocumentWriter.class);
 
     /**
      * The {@link CoreFontFactory}.
@@ -132,8 +140,6 @@ public class PdfDocumentWriter
 
         corefactory = factory;
         List<String> sl = new ArrayList<String>();
-        sl.add("tfm");
-        sl.add("afm");
         sl.add("ttf");
         manager = corefactory.createManager(sl);
 
@@ -192,10 +198,10 @@ public class PdfDocumentWriter
         try {
             if (document == null) {
                 document = new Document();
-                writer=PdfWriter.getInstance(document, out);
+                writer = PdfWriter.getInstance(document, out);
                 document.open();
 
-                nodevisitor = new PdfNodeVisitor(document,writer);
+                nodevisitor = new PdfNodeVisitor(document, writer, manager);
             }
             pageSize();
             document.newPage();
@@ -207,8 +213,6 @@ public class PdfDocumentWriter
 
             NodeList nodes = page.getNodes();
             nodes.visit(nodevisitor, nodes);
-
-          //  document.add(new Paragraph("Hello World"));
 
         } catch (DocumentException e) {
             throw new DocumentWriterException(e.getMessage());
@@ -223,7 +227,7 @@ public class PdfDocumentWriter
 
         // TODO mgn: set the right page size.
         document.setPageSize(PageSize.A4);
-        
+
         nodevisitor.setPageSize(PageSize.A4);
     }
 
