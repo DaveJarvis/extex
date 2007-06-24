@@ -3475,7 +3475,7 @@ public class TeXParagraphBuilder
 
         int idx = 0;
         WideGlue lineGlue = new WideGlue();
-        NodeList adjust = new HorizontalListNode();
+        NodeList adjust;
 
         // repeat
         do {
