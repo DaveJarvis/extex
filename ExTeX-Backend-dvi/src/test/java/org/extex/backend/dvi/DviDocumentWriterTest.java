@@ -383,7 +383,7 @@ public class DviDocumentWriterTest extends TestCase {
          * 
          * @see org.extex.backend.documentWriter.DocumentWriterOptions#getTokensOption(java.lang.String)
          */
-        public Tokens getTokensOption(String name) {
+        public String getTokensOption(String name) {
 
             return null;
         }

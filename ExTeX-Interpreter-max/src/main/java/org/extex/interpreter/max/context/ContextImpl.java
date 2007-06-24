@@ -1206,9 +1206,9 @@ public class ContextImpl
     /**
      * @see org.extex.backend.documentWriter.DocumentWriterOptions#getTokensOption(java.lang.String)
      */
-    public Tokens getTokensOption(String name) {
+    public String getTokensOption(String name) {
 
-        return group.getToks(name);
+        return group.getToks(name).toString();
     }
 
     /**
