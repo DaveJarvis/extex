@@ -56,7 +56,7 @@ public class ExTeXRunner extends TestCase {
     /**
      * inner ExTeX class.
      */
-    public class MyExTeX extends ExTeX {
+    public static class MyExTeX extends ExTeX {
 
         /**
          * Creates a new object and initializes the properties from given
