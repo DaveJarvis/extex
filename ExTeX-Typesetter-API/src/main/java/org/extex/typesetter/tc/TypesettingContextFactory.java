@@ -33,9 +33,8 @@ import org.extex.typesetter.tc.font.impl.NullFont;
 
 /**
  * This class provides a factory for a
- * {@link org.extex.typesetter.tc.TypesettingContext
- *  TypesettingContext}.
- *
+ * {@link org.extex.typesetter.tc.TypesettingContext TypesettingContext}.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4399 $
  */
@@ -68,21 +67,28 @@ public class TypesettingContextFactory extends AbstractFactory {
     }
 
     /**
-     * Configure the factory according to a given Configuration.
-     *
+     * Configure the factory according to a given Configuration. The
+     * configuration must have the attribute <tt>class</tt> which names a
+     * fully qualified class name. This class is instantiated using its
+     * no-argument constructor.
+     * 
+     * <pre>
+     *  &lt;typesettingContext class="the.class"/&gt;
+     * </pre>
+     * 
      * @param configuration the configuration for this factory
-     *
+     * 
      * @throws ConfigurationException in case of an error
-     * <ul>
-     * <li>ConfigurationMissingAttributeException in case that the
-     *      attribute <tt>CLASS_ATTRIBUTE</tt> is not set for the given
-     *      configuration.</li>
-     * <li>ConfigurationInstantiationException in case that the
-     *      instantiation of the given class causes a SecurityException.</li>
-     * <li>ConfigurationClassNotFoundException in case that the named class
-     *      could not be loaded.</li>
-     * </ul>
-     *
+     *         <ul>
+     *         <li>ConfigurationMissingAttributeException in case that the
+     *         attribute <tt>CLASS_ATTRIBUTE</tt> is not set for the given
+     *         configuration.</li>
+     *         <li>ConfigurationInstantiationException in case that the
+     *         instantiation of the given class causes a SecurityException.</li>
+     *         <li>ConfigurationClassNotFoundException in case that the named
+     *         class could not be loaded.</li>
+     *         </ul>
+     * 
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
@@ -110,11 +116,11 @@ public class TypesettingContextFactory extends AbstractFactory {
 
     /**
      * Factory method to acquire an instance of the TypesettingContext.
-     *
+     * 
      * @return an appropriate instance of the TypesettingContext.
-     *
+     * 
      * @throws ConfigurationInstantiationException in case that the
-     *             instantiation of the class failed.
+     *         instantiation of the class failed.
      */
     protected ModifiableTypesettingContext newInstance()
             throws ConfigurationInstantiationException {
@@ -135,14 +141,14 @@ public class TypesettingContextFactory extends AbstractFactory {
 
     /**
      * Factory method to acquire an instance of the TypesettingContext.
-     *
+     * 
      * @param context the typesetting context to clone
      * @param color the new value for the color
-     *
+     * 
      * @return an appropriate instance of the TypesettingContext.
-     *
+     * 
      * @throws ConfigurationInstantiationException in case that the
-     *             instantiation of the class failed.
+     *         instantiation of the class failed.
      */
     public TypesettingContext newInstance(TypesettingContext context,
             Color color) throws ConfigurationInstantiationException {
@@ -156,18 +162,17 @@ public class TypesettingContextFactory extends AbstractFactory {
 
     /**
      * Factory method to acquire an instance of the TypesettingContext.
-     *
+     * 
      * @param context the typesetting context to clone
      * @param direction the new value for the direction
-     *
+     * 
      * @return an appropriate instance of the TypesettingContext.
-     *
+     * 
      * @throws ConfigurationInstantiationException in case that the
-     *             instantiation of the class failed.
+     *         instantiation of the class failed.
      */
     public TypesettingContext newInstance(TypesettingContext context,
-            Direction direction)
-            throws ConfigurationInstantiationException {
+            Direction direction) throws ConfigurationInstantiationException {
 
         ModifiableTypesettingContext c = newInstance();
         c.set(context);
@@ -178,17 +183,17 @@ public class TypesettingContextFactory extends AbstractFactory {
 
     /**
      * Factory method to acquire an instance of the TypesettingContext.
-     *
+     * 
      * @param context the typesetting context to clone
      * @param font the new value for the font
-     *
+     * 
      * @return an appropriate instance of the TypesettingContext.
-     *
+     * 
      * @throws ConfigurationInstantiationException in case that the
-     *             instantiation of the class failed.
+     *         instantiation of the class failed.
      */
-    public TypesettingContext newInstance(TypesettingContext context,
-            Font font) throws ConfigurationInstantiationException {
+    public TypesettingContext newInstance(TypesettingContext context, Font font)
+            throws ConfigurationInstantiationException {
 
         ModifiableTypesettingContext c = newInstance();
         c.set(context);
@@ -200,12 +205,12 @@ public class TypesettingContextFactory extends AbstractFactory {
     /**
      * Factory method to acquire an instance of the TypesettingContext with a
      * new value for the language.
-     *
+     * 
      * @param context the typesetting context to clone
      * @param language the new value for the hyphenation table
-     *
+     * 
      * @return an appropriate instance of the TypesettingContext.
-     *
+     * 
      * @throws ConfigurationException in case of a configuration problem
      */
     public TypesettingContext newInstance(TypesettingContext context,
@@ -221,16 +226,15 @@ public class TypesettingContextFactory extends AbstractFactory {
     /**
      * Factory method to acquire an instance of the TypesettingContext with a
      * new value for the language. The language might be loaded if necessary.
-     *
+     * 
      * @param tc the typesetting context to clone
      * @param language the new value for the hyphenation table
-     *
+     * 
      * @return an appropriate instance of the TypesettingContext.
-     *
+     * 
      * @throws ConfigurationException in case of a configuration problem
      */
-    public TypesettingContext newInstance(TypesettingContext tc,
-            String language) {
+    public TypesettingContext newInstance(TypesettingContext tc, String language) {
 
         ModifiableTypesettingContext c = newInstance();
         c.set(tc);
@@ -241,7 +245,7 @@ public class TypesettingContextFactory extends AbstractFactory {
 
     /**
      * Setter for the language manager.
-     *
+     * 
      * @param languageManager the new language manager
      */
     public void setLanguageManager(LanguageManager languageManager) {
@@ -251,9 +255,9 @@ public class TypesettingContextFactory extends AbstractFactory {
 
     /**
      * Getter for the initial instance.
-     *
+     * 
      * @return the initial instance
-     *
+     * 
      * @throws ConfigurationException in case of an error
      */
     public TypesettingContext initial() {
@@ -268,11 +272,11 @@ public class TypesettingContextFactory extends AbstractFactory {
     /**
      * Create a new instance of a typesetting context. The typesetting context
      * passed in as argument may not be under the control of this factory.
-     *
+     * 
      * @param tc the typesetting context to take over
-     *
+     * 
      * @return a typesetting context with the same attributes as the argument
-     *
+     * 
      * @throws ConfigurationException in case of an error
      */
     public TypesettingContext newInstance(TypesettingContext tc) {
