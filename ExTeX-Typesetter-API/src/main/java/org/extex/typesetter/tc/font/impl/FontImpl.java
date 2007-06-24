@@ -88,6 +88,17 @@ public class FontImpl extends NullFont implements ModifiableFont {
     /**
      * {@inheritDoc}
      *
+     * @see org.extex.typesetter.tc.font.impl.NullFont#getActualFontKey()
+     */
+    @Override
+    public FontKey getActualFontKey() {
+
+        return font.getFontKey();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
      * @see org.extex.typesetter.tc.font.Font#getActualSize()
      */
     @Override
