@@ -31,33 +31,26 @@ import java.io.IOException;
 public interface RandomAccessR extends DataInput {
 
     /**
-     * TODO mgn
-     * 
-     * @throws IOException ...
-     * 
+     * kill the highest 8 bit (by a 32 bit int)
+     */
+    int KILL32 = 0xff000000;
+
+    /**
+     * get bit 24
+     */
+    int X24 = 0x800000;
+
+    /**
      * @see java.io.RandomAccessFile#close()
      */
     void close() throws IOException;
 
     /**
-     * TODO mgn
+     * Returns the data.
      * 
-     * @return ...
-     * @throws IOException ...
-     * 
-     * @see java.io.RandomAccessFile#length()
+     * @return the data.
      */
-    long length() throws IOException;
-
-    /**
-     * TODO mgn
-     * 
-     * @param arg0 ...
-     * @throws IOException ...
-     * 
-     * @see java.io.RandomAccessFile#seek(long)
-     */
-    void seek(long arg0) throws IOException;
+    byte[] getData() throws IOException;
 
     /**
      * Returns the pointer in the buffer.
@@ -66,6 +59,19 @@ public interface RandomAccessR extends DataInput {
      * @return Returns the pointer in the buffer
      */
     long getPointer() throws IOException;
+
+    /**
+     * Check, if EOF is reached.
+     * 
+     * @return Returns <code>true</code>, if EOF is reached.
+     * @throws IOException if an IO error occurs.
+     */
+    boolean isEOF() throws IOException;
+
+    /**
+     * @see java.io.RandomAccessFile#length()
+     */
+    long length() throws IOException;
 
     /**
      * Reads a byte of data from this file. The byte is returned as an integer
@@ -77,6 +83,14 @@ public interface RandomAccessR extends DataInput {
     int readByteAsInt() throws IOException;
 
     /**
+     * Reads a int with 16 bit (2x8).
+     * 
+     * @return Returns a int value.
+     * @throws IOException if an IO error occurs.
+     */
+    int readInt16() throws IOException;
+
+    /**
      * Reads a int with 24 bit (3x8).
      * 
      * @return Returns a int value.
@@ -85,14 +99,12 @@ public interface RandomAccessR extends DataInput {
     int readInt24() throws IOException;
 
     /**
-     * get bit 24
+     * Reads a int with 8 bit (1x8).
+     * 
+     * @return Returns a int value.
+     * @throws IOException if an IO error occurs.
      */
-    int X24 = 0x800000;
-
-    /**
-     * kill the highest 8 bit (by a 32 bit int)
-     */
-    int KILL32 = 0xff000000;
+    int readInt8() throws IOException;
 
     /**
      * Reads a sign int with 24 bit (3x8). The sign is calculated with the
@@ -104,27 +116,8 @@ public interface RandomAccessR extends DataInput {
     int readSignInt24() throws IOException;
 
     /**
-     * Reads a int with 16 bit (2x8).
-     * 
-     * @return Returns a int value.
-     * @throws IOException if an IO error occurs.
+     * @see java.io.RandomAccessFile#seek(long)
      */
-    int readInt16() throws IOException;
-
-    /**
-     * Reads a int with 8 bit (1x8).
-     * 
-     * @return Returns a int value.
-     * @throws IOException if an IO error occurs.
-     */
-    int readInt8() throws IOException;
-
-    /**
-     * Check, if EOF is reached.
-     * 
-     * @return Returns <code>true</code>, if EOF is reached.
-     * @throws IOException if an IO error occurs.
-     */
-    boolean isEOF() throws IOException;
+    void seek(long arg0) throws IOException;
 
 }

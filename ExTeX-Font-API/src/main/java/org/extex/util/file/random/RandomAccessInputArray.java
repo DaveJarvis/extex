@@ -98,6 +98,16 @@ public class RandomAccessInputArray implements RandomAccessR {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.util.file.random.RandomAccessR#getData()
+     */
+    public byte[] getData() {
+
+        return buffer;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.file.random.RandomAccessR#getPointer()
      */
     public long getPointer() {
@@ -339,8 +349,6 @@ public class RandomAccessInputArray implements RandomAccessR {
      * </blockquote>
      * <p>
      * 
-     * @return TODO mgn
-     * @throws IOException TODO mgn
      * @see java.io.DataInput#readInt()
      */
     public int readInt24() throws IOException {

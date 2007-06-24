@@ -106,6 +106,16 @@ public class RandomAccessInputStream implements RandomAccessR {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.util.file.random.RandomAccessR#getData()
+     */
+    public byte[] getData() {
+
+        return buffer;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.file.random.RandomAccessR#getPointer()
      */
     public long getPointer() {

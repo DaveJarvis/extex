@@ -90,6 +90,21 @@ public class RandomAccessInputFileDebug implements RandomAccessR {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.util.file.random.RandomAccessR#getData()
+     */
+    public byte[] getData() throws IOException {
+
+        long p = getPointer();
+        seek(0);
+        byte[] buffer = new byte[(int) length()];
+        readFully(buffer);
+        seek(p);
+        return buffer;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.file.random.RandomAccessR#getPointer()
      */
     public long getPointer() throws IOException {
