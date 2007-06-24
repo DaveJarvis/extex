@@ -19,6 +19,8 @@
 
 package org.extex.backend.documentWriter.postscript.util;
 
+import java.io.PrintStream;
+
 import org.extex.core.count.Count;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
@@ -41,7 +43,7 @@ public abstract class PsUnit {
      * The constant <tt>CM100_PER_IN</tt> contains the number of 100
      * centimeters per inch.
      */
-    private static final int CM100_PER_IN = 254;
+    public static final int CM100_PER_IN = 254;
 
     /**
      * The constant <tt>FLOAT_DIGITS</tt> contains the number of digits to
@@ -56,12 +58,12 @@ public abstract class PsUnit {
      * The field <tt>POINT_PER_100_IN</tt> contains the conversion factor from
      * inch to point. The value contained is the number of points in 100 inch.
      */
-    private static final int POINT_PER_100_IN = 7227;
+    public static final int POINT_PER_100_IN = 7227;
 
     /**
      * The constant <tt>PT_PER_PC</tt> contains the number of points per pica.
      */
-    private static final int PT_PER_PC = 12;
+    public static final int PT_PER_PC = 12;
 
     /**
      * Get the next character from a character sequence.
@@ -247,7 +249,23 @@ public abstract class PsUnit {
      * This method produces a printable representation of a length in terms of
      * PostScript points. This means that 72 PostScript points are 1 inch.
      * 
-     * @param d the dimen to convert
+     * @param d the length to convert
+     * @param out the target buffer
+     * @param strip indicator whether rounding to the next higher integral
+     *        number is desirable
+     */
+    public static void toPoint(FixedDimen d, PrintStream  out, boolean strip) {
+
+        StringBuffer sb = new StringBuffer();
+        toPoint(d, sb, strip);
+        out.append(sb);
+    }
+
+    /**
+     * This method produces a printable representation of a length in terms of
+     * PostScript points. This means that 72 PostScript points are 1 inch.
+     * 
+     * @param d the length to convert
      * @param out the target buffer
      * @param strip indicator whether rounding to the next higher integral
      *        number is desirable

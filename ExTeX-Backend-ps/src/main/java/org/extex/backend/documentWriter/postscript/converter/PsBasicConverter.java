@@ -17,25 +17,24 @@
  *
  */
 
-package org.extex.backend.documentWriter.postscript.util;
+package org.extex.backend.documentWriter.postscript.converter;
 
-import java.io.FileNotFoundException;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.PrintStream;
 
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.documentWriter.exception.DocumentWriterIOException;
+import org.extex.backend.documentWriter.postscript.util.FontManager;
+import org.extex.backend.documentWriter.postscript.util.PsUnit;
 import org.extex.color.Color;
 import org.extex.color.ColorAware;
 import org.extex.color.ColorConverter;
 import org.extex.color.model.GrayscaleColor;
-import org.extex.color.model.RgbColor;
 import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
-import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.resource.ResourceAware;
-import org.extex.resource.ResourceFinder;
+import org.extex.font.BackendCharacter;
 import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.Node;
@@ -69,11 +68,9 @@ import org.extex.typesetter.type.page.Page;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class PsBasicConverter
+public class PsBasicConverter extends AbstractConverter
         implements
-            PsConverter,
-            NodeVisitor<Object, StringBuffer>,
-            ResourceAware,
+            NodeVisitor<Object, PrintStream>,
             ColorAware {
 
     /**
@@ -86,9 +83,9 @@ public class PsBasicConverter
     private class Buffer {
 
         /**
-         * The field <tt>charBuffer</tt> contains the dynamic buffer.
+         * The field <tt>charBuffer</tt> contains the dynamic text.
          */
-        private StringBuffer buffer = new StringBuffer();
+        private StringBuffer text = new StringBuffer();
 
         /**
          * The field <tt>currX</tt> contains the x coordinate for the first
@@ -103,7 +100,7 @@ public class PsBasicConverter
         private Dimen currY = new Dimen(Long.MIN_VALUE);
 
         /**
-         * The field <tt>empty</tt> contains the indicator that the buffer is
+         * The field <tt>empty</tt> contains the indicator that the text is
          * empty.
          */
         private boolean empty = true;
@@ -129,59 +126,48 @@ public class PsBasicConverter
          * @param xx the x position
          * @param yy the y position
          */
-        public void add(UnicodeChar c, Dimen xx, Dimen yy) {
+        public void add(char c, Dimen xx, Dimen yy) {
 
             if (empty) {
-                shift = currY.ne(yy);
                 empty = false;
+                shift = currY.ne(yy);
                 this.currX.set(xx);
                 this.currY.set(yy);
             }
-            int cp = c.getCodePoint();
-            switch (cp) {
+            switch (c) {
                 case '\\':
                 case '(':
                 case ')':
-                    buffer.append('\\');
+                    text.append('\\');
                     break;
                 default:
-                    if (cp < ' ' || cp >= 127) {
-                        buffer.append('\\');
-                        buffer.append(Integer.toOctalString(cp));
+                    if (c < ' ' || c >= 127) {
+                        text.append('\\');
+                        text.append(Integer.toOctalString(c));
                         return;
                     }
                     // nothing to do
             }
-            buffer.append(c.toString());
+            text.append(c);
         }
 
         /**
          * Ship the collected characters out.
          * 
-         * @param out the target string buffer
+         * @param out the target string text
          */
-        public void clear(StringBuffer out) {
+        public void clear(PrintStream out) {
 
             if (empty) {
                 return;
             }
             if (shift) {
-                out.append("(");
-                out.append(buffer);
-                out.append(")");
-                PsUnit.toPoint(currX, out, false);
-                out.append(' ');
-                PsUnit.toPoint(currY, out, false);
-                out.append(" s\n");
+                ps.putText(out, text, x, y);
             } else {
-                out.append("(");
-                out.append(buffer);
-                out.append(")");
-                PsUnit.toPoint(currX, out, false);
-                out.append(" x\n");
+                ps.putText(out, text, x);
             }
 
-            buffer.delete(0, buffer.length());
+            text.delete(0, text.length());
             empty = true;
         }
 
@@ -195,7 +181,7 @@ public class PsBasicConverter
     }
 
     /**
-     * The field <tt>buffer</tt> contains the character buffer.
+     * The field <tt>text</tt> contains the character text.
      */
     private Buffer buffer = new Buffer();
 
@@ -211,19 +197,9 @@ public class PsBasicConverter
     private Color currentColor = null;
 
     /**
-     * The field <tt>finder</tt> contains the resource finder.
+     * The field <tt>ps</tt> contains the library manager for Postscript code.
      */
-    private ResourceFinder finder;
-
-    /**
-     * The field <tt>fm</tt> contains the font manager.
-     */
-    private FontManager fm = null;
-
-    /**
-     * The field <tt>hm</tt> contains the header manager.
-     */
-    private HeaderManager hm = null;
+    private Ps ps = new Ps();
 
     /**
      * The field <tt>x</tt> contains the current x position.
@@ -244,69 +220,8 @@ public class PsBasicConverter
     }
 
     /**
-     * Perform some initializations for each document.
+     * {@inheritDoc}
      * 
-     * @param header the header manager
-     * 
-     * @throws IOException in case of an error while loading
-     */
-    public void init(HeaderManager header) throws IOException {
-
-        String name = this.getClass().getName().replace('.', '/') + ".ps";
-        InputStream stream =
-                getClass().getClassLoader().getResourceAsStream(name);
-        if (stream != null) {
-            header.add(stream, name.substring(name.lastIndexOf('/') + 1));
-            stream.close();
-        }
-    }
-
-    /**
-     * Translate nodes into PostScript code. This method traverses the nodes
-     * tree recursively and produces the corresponding PostScript code for each
-     * node visited.
-     * 
-     * @param page the nodes to translate into PostScript code
-     * @param fontManager the font manager to inform about characters
-     * @param headerManager the header manager
-     * 
-     * @return the bytes representing the current page
-     * 
-     * @throws DocumentWriterException in case of an error
-     * 
-     * @see org.extex.backend.documentWriter.postscript.util.PsConverter#toPostScript(
-     *      org.extex.typesetter.type.page.Page,
-     *      org.extex.backend.documentWriter.postscript.util.FontManager,
-     *      org.extex.backend.documentWriter.postscript.util.HeaderManager)
-     */
-    public byte[] toPostScript(Page page, FontManager fontManager,
-            HeaderManager headerManager) throws DocumentWriterException {
-
-        x.set(page.getMediaHOffset());
-        y.set(page.getMediaHeight());
-        y.subtract(page.getMediaVOffset());
-
-        fm = fontManager;
-        hm = headerManager;
-        buffer.reset();
-        StringBuffer out = new StringBuffer("TeXDict begin\n");
-
-        try {
-            page.getNodes().visit(this, out);
-        } catch (GeneralException e) {
-            Throwable cause = e.getCause();
-            if (cause instanceof FileNotFoundException) {
-
-                throw new DocumentWriterIOException(cause);
-            }
-            throw new DocumentWriterException(e);
-        }
-
-        out.append("end\n");
-        return out.toString().getBytes();
-    }
-
-    /**
      * @see org.extex.color.ColorAware#setColorConverter(
      *      org.extex.color.ColorConverter)
      */
@@ -316,90 +231,51 @@ public class PsBasicConverter
     }
 
     /**
-     * @see org.extex.resource.ResourceAware#setResourceFinder(
-     *      org.extex.resource.ResourceFinder)
-     */
-    public void setResourceFinder(ResourceFinder resourceFinder) {
-
-        this.finder = resourceFinder;
-    }
-
-    /**
-     * Add some text from a resource to the header section.
-     * 
-     * @param name the name of the resource to add as header
-     * 
-     * @throws GeneralException in case of an error
-     */
-    private void specialHeader(String name) throws GeneralException {
-
-        try {
-            InputStream s = finder.findResource(name, "pro");
-            if (s != null) {
-                hm.add(s, name);
-                s.close();
-            } else {
-                throw new DocumentWriterIOException(new FileNotFoundException());
-            }
-        } catch (ConfigurationException e) {
-            throw new GeneralException(e);
-        } catch (IOException e) {
-            throw new GeneralException(e);
-        }
-    }
-
-    /**
-     * Find a PS resource and include its contents into the output stream.
-     * 
-     * @param out the target buffer
-     * @param name the name of the resource
-     * 
-     * @throws GeneralException in case of an error
-     */
-    private void specialPsfile(StringBuffer out, String name)
-            throws GeneralException {
-
-        try {
-            InputStream s = finder.findResource(name, "ps");
-            if (s != null) {
-                int c;
-                while ((c = s.read()) >= 0) {
-                    out.append((char) c);
-                }
-                s.close();
-            } else {
-                throw new DocumentWriterIOException(new FileNotFoundException());
-            }
-        } catch (ConfigurationException e) {
-            throw new GeneralException(e);
-        } catch (IOException e) {
-            throw new GeneralException(e);
-        }
-    }
-
-    /**
      * Switch to another color.
      * 
      * @param color the color to switch to
-     * @param out the target buffer
+     * @param out the target text
      */
-    private void switchColors(Color color, StringBuffer out) {
+    private void switchColors(Color color, PrintStream out) {
 
-        out.append(' ');
         if (color instanceof GrayscaleColor) {
-            PsUnit.toPoint(new Dimen(((GrayscaleColor) color).getGray()
-                    * Dimen.ONE), out, false);
-            out.append(" Cg\n");
+            ps.setgray(out, (GrayscaleColor) color);
         } else {
-            RgbColor rgb = cc.toRgb(color);
-            PsUnit.toPoint(new Dimen(rgb.getRed() * Dimen.ONE), out, false);
-            out.append(' ');
-            PsUnit.toPoint(new Dimen(rgb.getGreen() * Dimen.ONE), out, false);
-            out.append(' ');
-            PsUnit.toPoint(new Dimen(rgb.getBlue() * Dimen.ONE), out, false);
-            out.append(" Cr\n");
+            ps.setrgb(out, cc.toRgb(color));
         }
         currentColor = color;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.backend.documentWriter.postscript.converter.PsConverter#toPostScript(
+     *      org.extex.typesetter.type.page.Page)
+     */
+    public byte[] toPostScript(Page page) throws DocumentWriterException {
+
+        x.set(page.getMediaHOffset());
+        y.set(page.getMediaHeight());
+        y.subtract(page.getMediaVOffset());
+
+        buffer.reset();
+        ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+        PrintStream out = new PrintStream(outStream, true);
+        out.println("TeXDict begin");
+
+        try {
+            page.getNodes().visit(this, out);
+        } catch (GeneralException e) {
+            Throwable cause = e.getCause();
+            if (cause instanceof IOException) {
+                throw new DocumentWriterIOException(cause);
+            }
+            throw new DocumentWriterException(e);
+        }
+
+        ps.eop(out);
+        out.println("end");
+        return outStream.toByteArray();
     }
 
     /**
@@ -408,10 +284,10 @@ public class PsBasicConverter
      * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(
      *      org.extex.typesetter.type.node.AdjustNode, java.lang.Object)
      */
-    public Object visitAdjust(AdjustNode node, StringBuffer oOut)
+    public Object visitAdjust(AdjustNode node, PrintStream out)
             throws GeneralException {
 
-        buffer.clear(oOut);
+        buffer.clear(out);
         return null;
     }
 
@@ -421,10 +297,10 @@ public class PsBasicConverter
      * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(
      *      org.extex.typesetter.type.node.AfterMathNode, java.lang.Object)
      */
-    public Object visitAfterMath(AfterMathNode node, StringBuffer oOut)
+    public Object visitAfterMath(AfterMathNode node, PrintStream out)
             throws GeneralException {
 
-        buffer.clear(oOut);
+        buffer.clear(out);
         return null;
     }
 
@@ -434,10 +310,10 @@ public class PsBasicConverter
      * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(
      *      org.extex.typesetter.type.node.AlignedLeadersNode, java.lang.Object)
      */
-    public Object visitAlignedLeaders(AlignedLeadersNode node, StringBuffer oOut)
+    public Object visitAlignedLeaders(AlignedLeadersNode node, PrintStream out)
             throws GeneralException {
 
-        buffer.clear(oOut);
+        buffer.clear(out);
         return null;
     }
 
@@ -447,10 +323,10 @@ public class PsBasicConverter
      * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(
      *      org.extex.typesetter.type.node.BeforeMathNode, java.lang.Object)
      */
-    public Object visitBeforeMath(BeforeMathNode node, StringBuffer oOut)
+    public Object visitBeforeMath(BeforeMathNode node, PrintStream out)
             throws GeneralException {
 
-        buffer.clear(oOut);
+        buffer.clear(out);
         return null;
     }
 
@@ -461,10 +337,10 @@ public class PsBasicConverter
      *      org.extex.typesetter.type.node.CenteredLeadersNode,
      *      java.lang.Object)
      */
-    public Object visitCenteredLeaders(CenteredLeadersNode node,
-            StringBuffer oOut) throws GeneralException {
+    public Object visitCenteredLeaders(CenteredLeadersNode node, PrintStream out)
+            throws GeneralException {
 
-        buffer.clear(oOut);
+        buffer.clear(out);
         return null;
     }
 
@@ -474,13 +350,14 @@ public class PsBasicConverter
      * @see org.extex.typesetter.type.NodeVisitor#visitChar(
      *      org.extex.typesetter.type.node.CharNode, java.lang.Object)
      */
-    public Object visitChar(CharNode node, StringBuffer out)
+    public Object visitChar(CharNode node, PrintStream out)
             throws GeneralException {
 
         TypesettingContext tc = node.getTypesettingContext();
         UnicodeChar c = node.getCharacter();
         Font font = tc.getFont();
 
+        FontManager fm = getFontManager();
         String fnt = fm.add(font, c);
         if (fnt != null) {
             buffer.clear(out);
@@ -494,7 +371,15 @@ public class PsBasicConverter
             switchColors(color, out);
         }
 
-        buffer.add(c, x, y);
+        BackendCharacter cid = fm.getRecognizedCharId();
+        if (cid != null) {
+            buffer.add((char) cid.getId(), x, y);
+        } else {
+            buffer.clear(out);
+            out.append(' ');
+            PsUnit.toPoint(font.getWidth(c).getLength(), out, false);
+            out.append(" 0 rmoveto ");
+        }
         return null;
     }
 
@@ -504,10 +389,10 @@ public class PsBasicConverter
      * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(
      *      org.extex.typesetter.type.node.DiscretionaryNode, java.lang.Object)
      */
-    public Object visitDiscretionary(DiscretionaryNode node, StringBuffer oOut)
+    public Object visitDiscretionary(DiscretionaryNode node, PrintStream out)
             throws GeneralException {
 
-        buffer.clear(oOut);
+        buffer.clear(out);
         return null;
     }
 
@@ -518,10 +403,10 @@ public class PsBasicConverter
      *      org.extex.typesetter.type.node.ExpandedLeadersNode,
      *      java.lang.Object)
      */
-    public Object visitExpandedLeaders(ExpandedLeadersNode node,
-            StringBuffer oOut) throws GeneralException {
+    public Object visitExpandedLeaders(ExpandedLeadersNode node, PrintStream out)
+            throws GeneralException {
 
-        buffer.clear(oOut);
+        buffer.clear(out);
         return null;
     }
 
@@ -531,10 +416,10 @@ public class PsBasicConverter
      * @see org.extex.typesetter.type.NodeVisitor#visitGlue(
      *      org.extex.typesetter.type.node.GlueNode, java.lang.Object)
      */
-    public Object visitGlue(GlueNode node, StringBuffer oOut)
+    public Object visitGlue(GlueNode node, PrintStream out)
             throws GeneralException {
 
-        buffer.clear(oOut);
+        buffer.clear(out);
         return null;
     }
 
@@ -544,7 +429,7 @@ public class PsBasicConverter
      * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(
      *      org.extex.typesetter.type.node.HorizontalListNode, java.lang.Object)
      */
-    public Object visitHorizontalList(HorizontalListNode node, StringBuffer out)
+    public Object visitHorizontalList(HorizontalListNode node, PrintStream out)
             throws GeneralException {
 
         buffer.clear(out);
@@ -571,10 +456,10 @@ public class PsBasicConverter
      * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(
      *      org.extex.typesetter.type.node.InsertionNode, java.lang.Object)
      */
-    public Object visitInsertion(InsertionNode node, StringBuffer oOut)
+    public Object visitInsertion(InsertionNode node, PrintStream out)
             throws GeneralException {
 
-        buffer.clear(oOut);
+        buffer.clear(out);
         return null;
     }
 
@@ -584,10 +469,10 @@ public class PsBasicConverter
      * @see org.extex.typesetter.type.NodeVisitor#visitKern(
      *      org.extex.typesetter.type.node.KernNode, java.lang.Object)
      */
-    public Object visitKern(KernNode node, StringBuffer oOut)
+    public Object visitKern(KernNode node, PrintStream out)
             throws GeneralException {
 
-        buffer.clear(oOut);
+        buffer.clear(out);
         return null;
     }
 
@@ -597,10 +482,10 @@ public class PsBasicConverter
      * @see org.extex.typesetter.type.NodeVisitor#visitLigature(
      *      org.extex.typesetter.type.node.LigatureNode, java.lang.Object)
      */
-    public Object visitLigature(LigatureNode node, StringBuffer oOut)
+    public Object visitLigature(LigatureNode node, PrintStream out)
             throws GeneralException {
 
-        return visitChar(node, oOut);
+        return visitChar(node, out);
     }
 
     /**
@@ -609,10 +494,10 @@ public class PsBasicConverter
      * @see org.extex.typesetter.type.NodeVisitor#visitMark(
      *      org.extex.typesetter.type.node.MarkNode, java.lang.Object)
      */
-    public Object visitMark(MarkNode node, StringBuffer oOut)
+    public Object visitMark(MarkNode node, PrintStream out)
             throws GeneralException {
 
-        buffer.clear(oOut);
+        buffer.clear(out);
         return null;
     }
 
@@ -622,10 +507,10 @@ public class PsBasicConverter
      * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(
      *      org.extex.typesetter.type.node.PenaltyNode, java.lang.Object)
      */
-    public Object visitPenalty(PenaltyNode node, StringBuffer oOut)
+    public Object visitPenalty(PenaltyNode node, PrintStream out)
             throws GeneralException {
 
-        buffer.clear(oOut);
+        buffer.clear(out);
         return null;
     }
 
@@ -635,28 +520,17 @@ public class PsBasicConverter
      * @see org.extex.typesetter.type.NodeVisitor#visitRule(
      *      org.extex.typesetter.type.node.RuleNode, java.lang.Object)
      */
-    public Object visitRule(RuleNode node, StringBuffer out)
+    public Object visitRule(RuleNode node, PrintStream out)
             throws GeneralException {
 
         buffer.clear(out);
 
-        TypesettingContext tc = node.getTypesettingContext();
-        Color color = tc.getColor();
+        Color color = node.getTypesettingContext().getColor();
         if (color != currentColor) {
             switchColors(color, out);
         }
 
-        PsUnit.toPoint(node.getWidth(), out, false);
-        out.append(' ');
-        PsUnit.toPoint(node.getHeight(), out, false);
-        out.append(' ');
-        PsUnit.toPoint(x, out, false);
-        out.append(' ');
-        PsUnit.toPoint(y, out, false);
-        out.append(' ');
-        out.append("rule");
-        out.append('\n');
-
+        ps.rule(out, node.getWidth(), node.getHeight(), x, y);
         return null;
     }
 
@@ -666,10 +540,10 @@ public class PsBasicConverter
      * @see org.extex.typesetter.type.NodeVisitor#visitSpace(
      *      org.extex.typesetter.type.node.SpaceNode, java.lang.Object)
      */
-    public Object visitSpace(SpaceNode node, StringBuffer oOut)
+    public Object visitSpace(SpaceNode node, PrintStream out)
             throws GeneralException {
 
-        buffer.clear(oOut);
+        buffer.clear(out);
         return null;
     }
 
@@ -679,7 +553,7 @@ public class PsBasicConverter
      * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(
      *      org.extex.typesetter.type.node.VerticalListNode, java.lang.Object)
      */
-    public Object visitVerticalList(VerticalListNode node, StringBuffer out)
+    public Object visitVerticalList(VerticalListNode node, PrintStream out)
             throws GeneralException {
 
         buffer.clear(out);
@@ -707,11 +581,11 @@ public class PsBasicConverter
      * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(
      *      org.extex.typesetter.type.node.VirtualCharNode, java.lang.Object)
      */
-    public Object visitVirtualChar(VirtualCharNode node, StringBuffer oOut)
+    public Object visitVirtualChar(VirtualCharNode node, PrintStream out)
             throws GeneralException {
 
-        buffer.clear(oOut);
-        return visitChar(node, oOut);
+        buffer.clear(out);
+        return visitChar(node, out);
     }
 
     /**
@@ -720,45 +594,28 @@ public class PsBasicConverter
      * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(
      *      org.extex.typesetter.type.node.WhatsItNode, java.lang.Object)
      */
-    public Object visitWhatsIt(WhatsItNode node, StringBuffer out)
+    public Object visitWhatsIt(WhatsItNode node, PrintStream out)
             throws GeneralException {
 
         buffer.clear(out);
 
         if (node instanceof SpecialNode) {
-            String text = ((SpecialNode) node).getText();
-            if (text == null || text.length() == 0) {
-                return null;
-            }
-            switch (text.charAt(0)) {
-                case 'p':
-                    if (text.startsWith("ps:")) {
-                        out.append(text.substring(3));
-                    } else if (text.startsWith("psfile=")) {
-                        specialPsfile(out, text.substring(7));
-                    }
-                    break;
-                case 'h':
-                    if (text.startsWith("header=")) {
-                        specialHeader(text.substring(7));
-                    }
-                    break;
-                case '"':
-                    out.append("gsave ");
-                    out.append(text.substring(1));
-                    out.append("grestore\n");
-                    break;
-                case '!':
-                    try {
-                        hm.add(text.substring(1), "!");
-                    } catch (IOException e) {
-                        throw new GeneralException(e);
-                    }
-                    break;
-                default:
-                    // ignored on purpose
-            }
+            treatSpecial(out, (SpecialNode) node);
         }
         return null;
     }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.backend.documentWriter.postscript.converter.AbstractConverter#writeHeaders(
+     *      java.io.PrintStream)
+     */
+    @Override
+    public void writeHeaders(PrintStream out) throws IOException {
+
+        super.writeHeaders(out);
+        ps.writeDict(out);
+    }
+
 }

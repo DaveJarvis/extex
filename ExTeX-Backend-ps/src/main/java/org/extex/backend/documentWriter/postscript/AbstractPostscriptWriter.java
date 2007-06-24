@@ -20,29 +20,38 @@
 package org.extex.backend.documentWriter.postscript;
 
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.PrintStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.extex.backend.documentWriter.DocumentWriter;
 import org.extex.backend.documentWriter.MultipleDocumentStream;
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
+import org.extex.backend.documentWriter.postscript.converter.PsBasicConverter;
+import org.extex.backend.documentWriter.postscript.converter.PsBoxConverter;
+import org.extex.backend.documentWriter.postscript.converter.PsConverter;
 import org.extex.backend.documentWriter.postscript.util.FontManager;
 import org.extex.backend.documentWriter.postscript.util.HeaderManager;
-import org.extex.backend.documentWriter.postscript.util.PsBasicConverter;
-import org.extex.backend.documentWriter.postscript.util.PsBoxConverter;
-import org.extex.backend.documentWriter.postscript.util.PsConverter;
+import org.extex.backend.documentWriter.postscript.util.PsUnit;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.color.ColorAware;
 import org.extex.color.ColorConverter;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
 import org.extex.font.CoreFontFactory;
 import org.extex.font.FontAware;
+import org.extex.font.manager.ManagerInfo;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
-import org.extex.typesetter.tc.font.Font;
+import org.extex.typesetter.type.NodeList;
 
 /**
  * This is the abstract base class for document writers producing PostScript
@@ -59,6 +68,18 @@ public abstract class AbstractPostscriptWriter
             ResourceAware,
             FontAware,
             ColorAware {
+
+    /**
+     * The constant <tt>COMMENT</tt> contains two percent signs as start of a
+     * comment.
+     */
+    protected static final byte[] COMMENT = new byte[]{'%', '%'};
+
+    /**
+     * The field <tt>DF</tt> contains the formatter for the date.
+     */
+    protected static final DateFormat DF =
+            new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 
     /**
      * The field <tt>boxed</tt> contains the indicator whether the box-only
@@ -80,7 +101,7 @@ public abstract class AbstractPostscriptWriter
     /**
      * The field <tt>extension</tt> contains the extension.
      */
-    private String extension = "ps";
+    private String extension;
 
     /**
      * The field <tt>finder</tt> contains the resource finder as set from the
@@ -94,6 +115,16 @@ public abstract class AbstractPostscriptWriter
     private CoreFontFactory fontFactory;
 
     /**
+     * The field <tt>fontManager</tt> contains the font manager.
+     */
+    private FontManager fontManager;
+
+    /**
+     * The field <tt>headerManager</tt> contains the header manager.
+     */
+    private HeaderManager headerManager = new HeaderManager();
+
+    /**
      * The field <tt>parameter</tt> contains the map for parameters.
      */
     private Map<String, String> parameter = new HashMap<String, String>();
@@ -105,13 +136,16 @@ public abstract class AbstractPostscriptWriter
 
     /**
      * Creates a new object.
+     * 
+     * @param extension the default extension
      */
-    public AbstractPostscriptWriter() {
+    public AbstractPostscriptWriter(String extension) {
 
         super();
-        parameter.put("Creator", "ExTeX.psWriter");
-        parameter.put("Title", "<title>");
+        parameter.put("Creator", "ExTeX-Backend-ps");
+        parameter.put("Title", "");
         parameter.put("PageOrder", "Ascend");
+        this.extension = extension;
     }
 
     /**
@@ -138,24 +172,18 @@ public abstract class AbstractPostscriptWriter
     /**
      * Create a PostScript converter.
      * 
-     * @param headerManager the header manager
-     * 
      * @return the new converter
      * 
      * @throws IOException in case of an IO error
      */
-    protected PsConverter getConverter(HeaderManager headerManager)
-            throws IOException {
+    protected PsConverter getConverter() throws IOException {
 
         if (converter != null) {
             return converter;
         }
 
-        if (boxed) {
-            converter = new PsBoxConverter();
-        } else {
-            converter = new PsBasicConverter();
-        }
+        converter = (boxed ? new PsBoxConverter() : new PsBasicConverter());
+
         if (converter instanceof ColorAware) {
             ((ColorAware) converter).setColorConverter(colorConverter);
         }
@@ -164,7 +192,7 @@ public abstract class AbstractPostscriptWriter
         }
 
         headerManager.reset();
-        converter.init(headerManager);
+        converter.init(headerManager, fontManager);
         return converter;
     }
 
@@ -193,6 +221,16 @@ public abstract class AbstractPostscriptWriter
     }
 
     /**
+     * Getter for fontManager.
+     * 
+     * @return the fontManager
+     */
+    protected FontManager getFontManager() {
+
+        return fontManager;
+    }
+
+    /**
      * Getter for a named parameter.
      * 
      * @param name the name of the parameter
@@ -213,10 +251,10 @@ public abstract class AbstractPostscriptWriter
      * 
      * @throws DocumentWriterException in case of an error
      */
-    protected OutputStream newOutputStream(String type)
+    protected PrintStream newOutputStream(String type)
             throws DocumentWriterException {
 
-        return writerFactory.getOutputStream(null, type);
+        return new PrintStream(writerFactory.getOutputStream(null, type));
     }
 
     /**
@@ -234,11 +272,11 @@ public abstract class AbstractPostscriptWriter
 
     /**
      * Setter for extension.
-     *
+     * 
      * @param extension the extension to set
      */
     protected void setExtension(String extension) {
-    
+
         this.extension = extension;
     }
 
@@ -250,6 +288,11 @@ public abstract class AbstractPostscriptWriter
     public void setFontFactory(CoreFontFactory factory) {
 
         this.fontFactory = factory;
+
+        List<String> types = new ArrayList<String>();
+        types.add("pfa");
+        types.add("pfb");
+        fontManager = new FontManager(factory.createManager(types));
     }
 
     /**
@@ -269,6 +312,21 @@ public abstract class AbstractPostscriptWriter
      * Setter for a named parameter. Parameters are a general mechanism to
      * influence the behavior of the document writer. Any parameter not known by
      * the document writer has to be ignored.
+     * <p>
+     * This document writer uses the following parameters:
+     * <dl>
+     * <dt>Creator</dt>
+     * <dd>This is the identifier of the creating component. The default value
+     * is <tt>ExTeX-Backend-ps</tt>. </dd>
+     * <dt>Title</dt>
+     * <dd>This is the title of the document. The default is empty. </dd>
+     * <dt>PageOrder</dt>
+     * <dd>This parameter denotes the order in which pages are contained. The
+     * default is <tt>Ascend</tt>. It denotes ascending order of pages.
+     * Alternately the value <tt>Descend</tt> can e used to denote descending
+     * order. Any other value is silently interpreted to be the same as Ascend</dd>
+     * </dl>
+     * </p>
      * 
      * @param name the name of the parameter
      * @param value the value of the parameter
@@ -295,20 +353,44 @@ public abstract class AbstractPostscriptWriter
     }
 
     /**
-     * Write a meta comment according to the Document Structuring Conventions.
+     * Fill the initial segment of a PostScript file.
+     * 
+     * @param out the output stream
+     * @param magicVersion the version string
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    protected void startFile(PrintStream out, String magicVersion)
+            throws IOException {
+
+        out.print("%!");
+        out.println(magicVersion);
+        writeDsc(out, "Creator", getParameter("Creator"));
+        writeDsc(out, "CreationDate", //
+            DF.format(Calendar.getInstance().getTime()));
+        writeDsc(out, "Title", getParameter("Title"));
+    }
+
+    /**
+     * Write a BoundingBox DSC to an output stream.
      * 
      * @param stream the target stream to write to
-     * @param name the name of the DSC comment
+     * @param width the width
+     * @param height the height (including the depth)
      * 
      * @throws IOException in case of an error during writing
      */
-    protected void writeDsc(OutputStream stream, String name)
-            throws IOException {
+    protected void writeBoundingBox(PrintStream stream, FixedDimen width,
+            FixedDimen height) throws IOException {
 
-        stream.write('%');
-        stream.write('%');
-        stream.write(name.getBytes());
-        stream.write('\n');
+        stream.write(COMMENT);
+        stream.print("BoundingBox");
+        stream.print(": 0 0 ");
+        PsUnit.toPoint(width, stream, true);
+        stream.write(' ');
+        Dimen d = new Dimen(height);
+        PsUnit.toPoint(d, stream, true);
+        stream.println();
     }
 
     /**
@@ -316,24 +398,25 @@ public abstract class AbstractPostscriptWriter
      * 
      * @param stream the target stream to write to
      * @param name the name of the DSC comment
-     * @param value the value of the DSC comment
+     * @param values the value of the DSC comment
      * 
      * @throws IOException in case of an error during writing
      */
-    protected void writeDsc(OutputStream stream, String name, String value)
+    protected void writeDsc(PrintStream stream, String name, String... values)
             throws IOException {
 
-        stream.write('%');
-        stream.write('%');
-        stream.write(name.getBytes());
-        stream.write(':');
-        stream.write(' ');
-        stream.write(value.getBytes());
-        stream.write('\n');
-
+        stream.write(COMMENT);
+        stream.print(name);
+        if (values.length > 0) {
+            stream.write(':');
+            for (String s : values) {
+                stream.write(' ');
+                stream.print(s);
+            }
+        }
+        stream.println();
     }
 
-    
     /**
      * Write a meta comment according to the Document Structuring Conventions
      * containing the <tt>DocumentFonts</tt>.
@@ -343,16 +426,37 @@ public abstract class AbstractPostscriptWriter
      * 
      * @throws IOException in case of an error during writing
      */
-    protected void writeFonts(OutputStream stream, FontManager fontManager)
+    protected void writeFonts(PrintStream stream, FontManager fontManager)
             throws IOException {
 
-        stream.write("%%DocumentFonts:".getBytes());
+        stream.print("%%DocumentFonts:");
 
-        for (Font f : fontManager.listFonts()) {
+        for (ManagerInfo mi : fontManager) {
             stream.write(' ');
-            stream.write(f.getFontName().getBytes());
+            stream.print(mi.getBackendFont().getName());
         }
-        stream.write('\n');
+        stream.println();
     }
 
+    /**
+     * Write a HiResBoundingBox DSC to an output stream.
+     * 
+     * @param stream the target stream to write to
+     * @param nodes the nodes to extract the dimensions from
+     * 
+     * @throws IOException in case of an error during writing
+     */
+    protected void writeHighResBoundingBox(PrintStream stream, NodeList nodes)
+            throws IOException {
+
+        stream.write(COMMENT);
+        stream.print("HiResBoundingBox");
+        stream.print(": 0.0 0.0 ");
+        PsUnit.toPoint(nodes.getWidth(), stream, false);
+        stream.write(' ');
+        Dimen d = new Dimen(nodes.getHeight());
+        d.add(nodes.getDepth());
+        PsUnit.toPoint(d, stream, false);
+        stream.println();
+    }
 }

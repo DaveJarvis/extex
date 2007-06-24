@@ -20,13 +20,10 @@
 package org.extex.backend.documentWriter.postscript;
 
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.PrintStream;
 
 import org.extex.backend.documentWriter.DocumentWriterOptions;
-import org.extex.backend.documentWriter.postscript.util.FontManager;
-import org.extex.backend.documentWriter.postscript.util.HeaderManager;
-import org.extex.backend.documentWriter.postscript.util.PsConverter;
-import org.extex.backend.documentWriter.postscript.util.PsUnit;
+import org.extex.backend.documentWriter.postscript.converter.PsConverter;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.typesetter.type.NodeList;
@@ -41,30 +38,18 @@ import org.extex.typesetter.type.page.Page;
 public class EpsWriter extends AbstractPostscriptWriter {
 
     /**
-     * The field <tt>fontManager</tt> contains the font manager.
-     */
-    private FontManager fontManager;
-
-    /**
-     * The field <tt>headerManager</tt> contains the header manager.
-     */
-    private HeaderManager headerManager = new HeaderManager();
-
-    /**
      * Creates a new object.
      * 
      * @param options the options for the document writer
      */
     public EpsWriter(DocumentWriterOptions options) {
 
-        super();
-        fontManager = new FontManager();
-        setExtension("eps");
+        super("eps");
     }
 
     /**
      * This method is invoked upon the end of the processing. It does simply
-     * nothing for this class.
+     * nothing for this class since all pages have already been written out.
      * 
      * @see org.extex.backend.documentWriter.DocumentWriter#close()
      */
@@ -98,87 +83,28 @@ public class EpsWriter extends AbstractPostscriptWriter {
             return 0;
         }
 
-        PsConverter converter = getConverter(headerManager);
+        PsConverter converter = getConverter();
+        PrintStream out = newOutputStream("eps");
 
-        OutputStream stream = newOutputStream("eps");
+        startFile(out, "PS-Adobe-2.0 EPSF-2.0");
+        NodeList nodes = page.getNodes();
+        Dimen d = new Dimen(nodes.getHeight());
+        d.add(nodes.getDepth());
+        writeBoundingBox(out, nodes.getWidth(), d);
+        writeHighResBoundingBox(out, nodes);
 
-        byte[] bytes = converter.toPostScript(page, fontManager, headerManager);
-
-        stream.write("%!PS-Adobe-2.0 EPSF-2.0\n".getBytes());
-        writeDsc(stream, "Creator", getParameter("Creator"));
-        writeDsc(stream, "Title", getParameter("Title"));
-        writeBB(stream, "BoundingBox", page.getNodes());
-        writeHRBB(stream, "HiResBoundingBox", page.getNodes());
-        writeFonts(stream, fontManager);
-        writeDsc(stream, "EndComments");
-        fontManager.write(stream);
-        fontManager.clear();
-        headerManager.write(stream);
-        stream.write(bytes);
-        writeDsc(stream, "EOF");
-        stream.close();
-        stream = null;
+        byte[] bytes = converter.toPostScript(page);
+        writeFonts(out, getFontManager());
+        writeDsc(out, "EndComments");
+        out.println("/TeXDict 300 dict def");
+        getFontManager().write(out);
+        getFontManager().reset();
+        converter.writeHeaders(out);
+        out.write(bytes);
+        writeDsc(out, "EOF");
+        out.close();
+        out = null;
         return 1;
-    }
-
-    /**
-     * Write a BoundingBox DSC to an output stream.
-     * 
-     * @param stream the target stream to write to
-     * @param name the name of the DSC comment
-     * @param nodes the nodes to extract the dimensions from
-     * 
-     * @throws IOException in case of an error during writing
-     */
-    private void writeBB(OutputStream stream, String name, NodeList nodes)
-            throws IOException {
-
-        StringBuffer sb = new StringBuffer();
-        stream.write('%');
-        stream.write('%');
-        stream.write(name.getBytes());
-        stream.write(':');
-        stream.write(' ');
-        stream.write("0 0 ".getBytes());
-        PsUnit.toPoint(nodes.getWidth(), sb, true);
-        stream.write(sb.toString().getBytes());
-        sb.delete(0, sb.length() - 1);
-        stream.write(' ');
-        Dimen d = new Dimen(nodes.getHeight());
-        d.add(nodes.getDepth());
-        PsUnit.toPoint(d, sb, true);
-        stream.write(sb.toString().getBytes());
-        stream.write('\n');
-    }
-
-    /**
-     * Write a HiResBoundingBox DSC to an output stream.
-     * 
-     * @param stream the target stream to write to
-     * @param name the name of the DSC comment
-     * @param nodes the nodes to extract the dimensions from
-     * 
-     * @throws IOException in case of an error during writing
-     */
-    private void writeHRBB(OutputStream stream, String name, NodeList nodes)
-            throws IOException {
-
-        StringBuffer sb = new StringBuffer();
-        stream.write('%');
-        stream.write('%');
-        stream.write(name.getBytes());
-        stream.write(':');
-        stream.write(' ');
-        stream.write("0 0 ".getBytes());
-        PsUnit.toPoint(nodes.getWidth(), sb, false);
-        stream.write(sb.toString().getBytes());
-        sb.delete(0, sb.length() - 1);
-        stream.write(' ');
-        Dimen d = new Dimen(nodes.getHeight());
-        d.add(nodes.getDepth());
-        PsUnit.toPoint(d, sb, false);
-        stream.write(sb.toString().getBytes());
-        stream.write('\n');
     }
 
 }

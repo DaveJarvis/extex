@@ -21,20 +21,16 @@ package org.extex.backend.documentWriter.postscript;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import org.extex.backend.documentWriter.DocumentWriterOptions;
 import org.extex.backend.documentWriter.SingleDocumentStream;
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
-import org.extex.backend.documentWriter.postscript.util.FontManager;
-import org.extex.backend.documentWriter.postscript.util.HeaderManager;
-import org.extex.backend.documentWriter.postscript.util.PsConverter;
 import org.extex.backend.documentWriter.postscript.util.PsUnit;
 import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.typesetter.type.page.Page;
 
@@ -49,22 +45,6 @@ public class PsWriter extends AbstractPostscriptWriter
             SingleDocumentStream {
 
     /**
-     * The field <tt>DF</tt> contains the formatter for the date.
-     */
-    private static final DateFormat DF =
-            new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-
-    /**
-     * The field <tt>fontManager</tt> contains the font manager.
-     */
-    private FontManager fontManager = new FontManager();
-
-    /**
-     * The field <tt>headerManager</tt> contains the header manager.
-     */
-    private HeaderManager headerManager = new HeaderManager();
-
-    /**
      * The field <tt>page</tt> contains the byte arrays of the single pages.
      */
     private List<byte[]> page = new ArrayList<byte[]>();
@@ -72,17 +52,17 @@ public class PsWriter extends AbstractPostscriptWriter
     /**
      * The field <tt>pageHeight</tt> contains the height of the paper.
      */
-    private Dimen pageHeight = new Dimen(Dimen.ONE * 297 * 7227 / 2540);
+    private Dimen pageHeight;
 
     /**
      * The field <tt>pageWidth</tt> contains the width of the paper.
      */
-    private Dimen pageWidth = new Dimen(Dimen.ONE * 210 * 7227 / 2540);
+    private Dimen pageWidth;
 
     /**
      * The field <tt>writer</tt> contains the target output stream.
      */
-    private OutputStream stream = null;
+    private PrintStream stream = null;
 
     /**
      * Creates a new object.
@@ -91,8 +71,23 @@ public class PsWriter extends AbstractPostscriptWriter
      */
     public PsWriter(DocumentWriterOptions options) {
 
-        super();
-        setExtension("ps");
+        super("ps");
+        FixedDimen mediaWidth = options.getDimenOption("mediawidth");
+        if (mediaWidth != null && mediaWidth.gt(Dimen.ZERO_PT)) {
+            pageWidth = new Dimen(mediaWidth);
+        } else {
+            pageWidth =
+                    new Dimen(Dimen.ONE * 210 * PsUnit.POINT_PER_100_IN
+                            / (PsUnit.CM100_PER_IN * 10));
+        }
+        FixedDimen mediaHeight = options.getDimenOption("mediaheight");
+        if (mediaHeight != null && mediaHeight.gt(Dimen.ZERO_PT)) {
+            pageWidth = new Dimen(mediaHeight);
+        } else {
+            pageHeight =
+                    new Dimen(Dimen.ONE * 297 * PsUnit.POINT_PER_100_IN
+                            / (PsUnit.CM100_PER_IN * 10));
+        }
     }
 
     /**
@@ -102,30 +97,22 @@ public class PsWriter extends AbstractPostscriptWriter
      */
     public void close() throws DocumentWriterException, IOException {
 
+        boolean orderDesc = "Descend".equals(getParameter("PageOrder"));
         int pages = page.size();
-        stream.write("%!PS-Adobe-3.0\n".getBytes());
-        writeDsc(stream, "Creator", getParameter("Creator"));
-        writeDsc(stream, "CreationDate", DF.format(Calendar.getInstance()
-            .getTime()));
-        writeDsc(stream, "Title", getParameter("Title"));
+        startFile(stream, "PS-Adobe-2.0");
         writeDsc(stream, "Pages", Integer.toString(pages));
-        writeDsc(stream, "PageOrder", getParameter("PageOrder"));
+        writeDsc(stream, "PageOrder", orderDesc ? "Descend" : "Ascend");
+        writeBoundingBox(stream, pageWidth, pageHeight);
 
-        stream.write("%%BoundingBox: 0 0 ".getBytes());
-        StringBuffer sb = new StringBuffer(' ');
-        PsUnit.toPoint(pageWidth, sb, true);
-        sb.append(' ');
-        PsUnit.toPoint(pageHeight, sb, true);
-        sb.append('\n');
-        stream.write(sb.toString().getBytes());
-
-        writeFonts(stream, fontManager);
+        writeFonts(stream, getFontManager());
         writeDsc(stream, "EndComments");
-        headerManager.write(stream);
-        fontManager.write(stream);
-        fontManager.clear();
 
-        if ("Descend".equals(getParameter("PageOrder"))) {
+        stream.println("/TeXDict 300 dict def");
+        getConverter().writeHeaders(stream);
+        getFontManager().write(stream);
+        getFontManager().reset();
+
+        if (orderDesc) {
             for (int i = pages - 1; i >= 0; i--) {
                 writePage(i);
             }
@@ -147,7 +134,7 @@ public class PsWriter extends AbstractPostscriptWriter
      */
     public void setOutputStream(OutputStream out) {
 
-        this.stream = out;
+        this.stream = new PrintStream(out, true);
     }
 
     /**
@@ -161,8 +148,7 @@ public class PsWriter extends AbstractPostscriptWriter
         if (p == null) {
             return 0;
         }
-        PsConverter converter = getConverter(headerManager);
-        page.add(converter.toPostScript(p, fontManager, headerManager));
+        page.add(getConverter().toPostScript(p));
         return 1;
     }
 
@@ -175,14 +161,10 @@ public class PsWriter extends AbstractPostscriptWriter
      */
     private void writePage(int no) throws IOException {
 
-        stream.write("%%Page: ".getBytes());
-        byte[] pageno = Integer.toString(no + 1).getBytes();
-        stream.write(pageno);
-        stream.write(' ');
-        stream.write(pageno);
-        stream.write('\n');
+        String n = Integer.toString(no + 1);
+        writeDsc(stream, "Page", n, n);
         stream.write(page.get(no));
-        stream.write("showpage\n".getBytes());
+        stream.println("showpage");
     }
 
 }

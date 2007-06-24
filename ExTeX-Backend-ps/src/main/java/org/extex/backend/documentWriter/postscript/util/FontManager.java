@@ -20,124 +20,176 @@
 package org.extex.backend.documentWriter.postscript.util;
 
 import java.io.IOException;
-import java.io.OutputStream;
-import java.util.HashMap;
+import java.io.PrintStream;
 import java.util.Iterator;
-import java.util.Map;
 
 import org.extex.core.UnicodeChar;
+import org.extex.core.exception.GeneralException;
+import org.extex.core.exception.helping.NoHelpException;
+import org.extex.font.BackendCharacter;
+import org.extex.font.BackendFont;
+import org.extex.font.BackendFontManager;
+import org.extex.font.exception.FontException;
+import org.extex.font.manager.ManagerInfo;
 import org.extex.typesetter.tc.font.Font;
 
 /**
  * The font manager keeps track of the fonts and characters used.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class FontManager {
-
-    /**
-     * The field <tt>fonts</tt> contains the registered fonts and characters.
-     */
-    private Map<Font, Map<UnicodeChar, UnicodeChar>> fonts =
-            new HashMap<Font, Map<UnicodeChar, UnicodeChar>>();
-
-    /**
-     * Creates a new object.
-     */
-    public FontManager() {
-
-        super();
-    }
+public class FontManager implements Iterable<ManagerInfo> {
 
     /**
      * The field <tt>currentFont</tt> contains the font encountered most
      * recently.
      */
-    private Font currentFont = null;
+    private BackendFont currentFont = null;
+
+    /**
+     * The field <tt>fntNo</tt> contains the next number to be used for a font
+     * changing macro number.
+     */
+    private int fntNo = 1;
+
+    /**
+     * The field <tt>fonts</tt> contains the registered fonts and characters.
+     */
+    // private Map<Font, Map<UnicodeChar, UnicodeChar>> fonts =
+    // new HashMap<Font, Map<UnicodeChar, UnicodeChar>>();
+    /**
+     * The field <tt>manager</tt> contains the encapsulated back-end font
+     * manager.
+     */
+    private BackendFontManager manager;
 
     /**
      * The field <tt>texdict</tt> contains the definition of font changing
      * functions.
      */
-    private StringBuffer texdict = new StringBuffer("TeXDict begin\n");
+    private StringBuffer texdict = null;
 
     /**
-     * The field <tt>fntNo</tt> contains the next number to be used for a
-     * font changing macro number.
+     * The field <tt>recognizedCharId</tt> contains the most recently
+     * recognized back-end character.
      */
-    private int fntNo = 1;
+    private BackendCharacter recognizedCharId = null;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param manager the back-end front manager
+     */
+    public FontManager(BackendFontManager manager) {
+
+        super();
+        this.manager = manager;
+    }
 
     /**
      * Receive the information that a character in a certain font has been used
      * and should be remembered.
-     *
+     * 
      * @param font the font which is used
      * @param c the character in the font which is used
-     *
+     * 
      * @return <code>true</code> iff the font is not the one previously
-     *  reported
+     *         reported
+     * 
+     * @throws GeneralException in case of an error
      */
-    public String add(Font font, UnicodeChar c) {
+    public String add(Font font, UnicodeChar c) throws GeneralException {
 
-        Map<UnicodeChar, UnicodeChar> map = fonts.get(font);
-        if (map == null) {
-            map = new HashMap<UnicodeChar, UnicodeChar>();
-            fonts.put(font, map);
+        try {
+            if (manager.recognize(font.getActualFontKey(), c)) {
+                BackendFont fnt = manager.getRecognizedFont();
+                recognizedCharId = manager.getRecognizedCharId();
+
+                // Map<UnicodeChar, UnicodeChar> map = fonts.get(font);
+                // if (map == null) {
+                // map = new HashMap<UnicodeChar, UnicodeChar>();
+                // fonts.put(font, map);
+                // }
+                // map.put(c, c);
+
+                if (fnt != currentFont) {
+                    currentFont = fnt;
+                    String n = Integer.toString(fntNo++);
+                    if (texdict == null) {
+                        texdict = new StringBuffer("TeXDict begin\n");
+                    }
+                    texdict.append("/F");
+                    texdict.append(n);
+                    texdict.append("{/");
+                    texdict.append(fnt.getName());
+                    texdict.append(" findfont ");
+                    PsUnit.toPoint(font.getActualSize(), texdict, false);
+                    texdict.append(" scalefont setfont}def\n");
+
+                    return "F" + n + " ";
+                }
+            } else {
+                recognizedCharId = null;
+            }
+        } catch (FontException e) {
+            throw new NoHelpException(e);
         }
-        map.put(c, c);
 
-        if (font != currentFont) {
-            currentFont = font;
-            String n = Integer.toString(fntNo++);
-            texdict.append("/F");
-            texdict.append(n);
-            texdict.append("{/Times-Roman findfont "); //TODO gene: use the correct font
-            PsUnit.toPoint(font.getActualSize(), texdict, false);
-            texdict.append(" scalefont setfont}def\n");
-
-            return "F" + n + " ";
-        }
         return null;
+    }
+
+    /**
+     * Get the most recently recognized back-end character. This might be
+     * <code>null</code> if the character is not defined in the font.
+     * 
+     * @return the back-end character
+     * 
+     * @see org.extex.font.BackendFontManager#getRecognizedCharId()
+     */
+    public BackendCharacter getRecognizedCharId() {
+
+        return recognizedCharId;
+    }
+
+    /**
+     * Return the iterator for all recognized back-end fonts as
+     * {@link ManagerInfo}. The fonts are sorted by the name.
+     * 
+     * @return the iterator for all recognized back-end font as
+     *         {@link ManagerInfo}.
+     * 
+     * @see org.extex.font.BackendFontManager#iterate()
+     */
+    public Iterator<ManagerInfo> iterator() {
+
+        return manager.iterate();
     }
 
     /**
      * Clear the memory and forget everything about fonts used.
      */
-    public void clear() {
+    public void reset() {
 
-        fonts.clear();
+        // fonts.clear();
         currentFont = null;
         fntNo = 1;
-    }
-
-    /**
-     * Getter for the list of fonts.
-     *
-     * @return the list of fonts
-     */
-    public Font[] listFonts() {
-
-        Font[] f = new Font[fonts.size()];
-        Iterator<Font> iter = fonts.keySet().iterator();
-        int i = 0;
-        while (iter.hasNext()) {
-            f[i++] = iter.next();
-        }
-        return f;
+        manager.reset();
     }
 
     /**
      * Write all fonts to a given PostScript stream.
-     *
+     * 
      * @param stream the target stream
-     *
+     * 
      * @throws IOException in case of an IO error
      */
-    public void write(OutputStream stream) throws IOException {
+    public void write(PrintStream stream) throws IOException {
 
-        texdict.append("end\n");
-        stream.write(texdict.toString().getBytes());
+        if (texdict != null) {
+            stream.print(texdict);
+            stream.println("end");
+        }
     }
 
 }
