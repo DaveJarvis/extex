@@ -253,7 +253,7 @@ public class BaseHyphenationTableTest extends TestCase {
     /**
      * This mock implementation is for test purposes only.
      */
-    private class MyMockContext extends MockContext {
+    private static class MyMockContext extends MockContext {
 
         /**
          * The constant <tt>serialVersionUID</tt> contains the id for
