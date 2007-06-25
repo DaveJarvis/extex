@@ -162,6 +162,7 @@
    <module>ExTeX-Main-fmt</module>
    <module>ExTeX-Main-tex</module>
    <module>ExTeX-Scanner</module>
+   <module>ExTeX-Pdf-API</module>
    <!-- <module>ExTeX-Scanner32</module> -->
    <module>ExTeX-Scanner-API</module>
    <module>ExTeX-Unit-color</module>
