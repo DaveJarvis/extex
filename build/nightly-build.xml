@@ -34,7 +34,7 @@
   <property name="report.file"
             value="target/application/html/snapshot/build.html" />
 
-  <property name="main.target" value="clean all" />
+  <property name="main.target" value="all" />
 
   <condition property="bat" value=".bat" else="">
     <os family="windows" />
@@ -58,6 +58,7 @@
       <arg value="org.apache.tools.ant.XmlLogger" />
       <arg value="-logfile" />
       <arg value="${log.file}" />
+      <arg value="clean" />
       <arg value="${main.target}" />
     </exec>
     <tuneAntLog file="${log.file}" />
