@@ -74,6 +74,7 @@ import org.extex.framework.configuration.exception.ConfigurationNoSuchMethodExce
 import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.ErrorHandler;
 import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.InterpreterFactory;
@@ -1417,8 +1418,10 @@ public class ExTeX {
         if (fontFactory instanceof Configurable) {
             ((Configurable) fontFactory).configure(config);
         }
+        if (fontFactory instanceof LogEnabled) {
+            ((LogEnabled) fontFactory).enableLogging(logger);
+        }
         if (fontFactory instanceof ResourceAware) {
-
             ((ResourceAware) fontFactory).setResourceFinder(finder);
         }
         if (fontFactory instanceof PropertyAware) {
