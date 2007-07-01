@@ -45,7 +45,7 @@ public class LigatureBuilderImplTest extends TestCase {
     /**
      * This class provides a mock implementation for a font.
      */
-    private class MockFont extends NullFont {
+    private static class MockFont extends NullFont {
 
         /**
          * The constant <tt>serialVersionUID</tt> contains the id for serialization.
