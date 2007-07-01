@@ -213,6 +213,7 @@ public class ExTeXLauncher extends TestCase {
                     "../texmf/src/main/texmf" + SEP + //
                     "../texmf/src/texmf");
         provide(properties, "extex.nobanner", "true");
+        provide(properties, "extex.typesetter", "devel");
     }
 
     /**
