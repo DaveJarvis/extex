@@ -54,7 +54,7 @@ public class CMR10 implements Font, Serializable {
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision: 4784 $
      */
-    public class MyGlyph implements Serializable {
+    public static class MyGlyph implements Serializable {
 
         /**
          * The constant <tt>serialVersionUID</tt> contains the id for
@@ -123,7 +123,7 @@ public class CMR10 implements Font, Serializable {
     /**
      * The field <tt>ONE_683332</tt> contains the ...
      */
-    private static final long ONE_683332 = Dimen.ONE * 683332;
+//    private static final long ONE_683332 = Dimen.ONE * 683332;
 
     /**
      * The field <tt>ONE_722224</tt> contains the ...
