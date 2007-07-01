@@ -39,8 +39,6 @@ import org.extex.color.ColorConverter;
 import org.extex.core.exception.GeneralException;
 import org.extex.font.CoreFontFactory;
 import org.extex.font.FontAware;
-import org.extex.framework.configuration.Configurable;
-import org.extex.framework.configuration.Configuration;
 import org.extex.resource.PropertyAware;
 import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
@@ -56,7 +54,6 @@ public class BackendDriverImpl
         implements
             BackendDriver,
             MultipleDocumentStream,
-            Configurable,
             PropertyAware,
             ColorAware,
             ResourceAware,
@@ -139,11 +136,6 @@ public class BackendDriverImpl
      * The field <tt>colorConverter</tt> contains the color converter.
      */
     private ColorConverter colorConverter;
-
-    /**
-     * The field <tt>configuration</tt> contains the configuration.
-     */
-    private Configuration configuration;
 
     /**
      * The field <tt>counter</tt> contains the counter page pipe which will
@@ -258,17 +250,6 @@ public class BackendDriverImpl
             }
             documentWriter = null;
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(
-     *      org.extex.framework.configuration.Configuration)
-     */
-    public void configure(Configuration config) {
-
-        configuration = config;
     }
 
     /**
