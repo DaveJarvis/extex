@@ -20,11 +20,10 @@
   #
   ######################################################################### -->
 
-<project name="ExTeX-Typesetter-API" basedir=".">
+<project name="ExTeX-Typesetter-core" basedir=".">
 
   <description>
-    The ExTeX Typesetter API contains the set of classes and interfaces for the
-    typesetters.
+    The ExTeX Typesetter core contains code to be used in several typesetters
   </description>
 
   <import file="../build/common-build.xml"/>
