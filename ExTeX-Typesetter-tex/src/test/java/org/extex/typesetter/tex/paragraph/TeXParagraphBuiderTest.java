@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.typesetter.paragraphBuilder.texImpl;
+package org.extex.typesetter.tex.paragraph;
 
 import org.extex.typesetter.paragraphBuilder.AbstractParagraphBuiderTester;
 import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
