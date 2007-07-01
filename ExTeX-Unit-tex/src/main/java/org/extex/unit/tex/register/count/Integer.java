@@ -27,7 +27,7 @@ import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
-import org.extex.unit.base.register.count.util.IntegerCode;
+import org.extex.unit.base.register.count.IntegerCode;
 
 /**
  * This class provides an implementation for the primitive <code>\integer</code>.

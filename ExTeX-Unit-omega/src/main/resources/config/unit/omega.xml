@@ -21,10 +21,10 @@
   <primitives>
     <define name="maxError"
             namespace="system"
-            class="org.extex.unit.base.register.count.util.IntegerCode">100</define>
+            class="org.extex.unit.base.register.count.IntegerCode">100</define>
     <define name="maxRegister"
             namespace="system"
-            class="org.extex.unit.base.register.count.util.IntegerCode">65535</define>
+            class="org.extex.unit.base.register.count.IntegerCode">65535</define>
 
     <define name="addafterocplist"
             class="org.extex.unit.omega.ocp.Addafterocplist"/>

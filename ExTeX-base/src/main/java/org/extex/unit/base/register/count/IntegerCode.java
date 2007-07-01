@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.unit.base.register.count.util;
+package org.extex.unit.base.register.count;
 
 import org.extex.core.exception.helping.ArithmeticOverflowException;
 import org.extex.core.exception.helping.HelpingException;

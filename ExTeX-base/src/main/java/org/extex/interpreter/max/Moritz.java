@@ -103,7 +103,7 @@ import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.tc.font.Font;
-import org.extex.unit.base.register.count.util.IntegerCode;
+import org.extex.unit.base.register.count.IntegerCode;
 import org.extex.unit.base.register.toks.ToksParameter;
 
 /**

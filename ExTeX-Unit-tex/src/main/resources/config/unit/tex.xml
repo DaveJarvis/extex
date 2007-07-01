@@ -23,10 +23,10 @@
   <primitives>
     <define name="maxError"
             namespace="system"
-            class="org.extex.unit.base.register.count.util.IntegerCode">100</define>
+            class="org.extex.unit.base.register.count.IntegerCode">100</define>
     <define name="maxRegister"
             namespace="system"
-            class="org.extex.unit.base.register.count.util.IntegerCode">255</define>
+            class="org.extex.unit.base.register.count.IntegerCode">255</define>
 
     <define name=" "
             class="org.extex.unit.tex.typesetter.spacing.Space"/>
