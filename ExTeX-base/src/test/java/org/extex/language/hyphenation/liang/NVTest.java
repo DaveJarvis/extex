@@ -286,7 +286,7 @@ public class NVTest extends TestCase {
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision:4527 $
      */
-    private class MockGlyph {
+    private static class MockGlyph {
 
         /**
          * The field <tt>c</tt> contains the character.

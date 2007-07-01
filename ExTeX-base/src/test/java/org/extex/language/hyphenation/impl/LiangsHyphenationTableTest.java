@@ -33,7 +33,7 @@ import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.tokens.Tokens;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a test suite for LiangsHyphenationTable.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4527 $
@@ -46,7 +46,7 @@ public class LiangsHyphenationTableTest extends TestCase {
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision:4527 $
      */
-    private class MyMockContext extends MockContext {
+    private static class MyMockContext extends MockContext {
 
         /**
          * The constant <tt>serialVersionUID</tt> contains the id for serialization.
