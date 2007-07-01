@@ -19,6 +19,7 @@
 
 package org.extex.typesetter.tex;
 
+import java.io.ObjectStreamException;
 import java.io.Serializable;
 
 import org.extex.backend.BackendDriver;
@@ -268,6 +269,20 @@ public class TeXOutputRoutine implements OutputRoutine, Serializable {
                 .getLocalizer(TeXOutputRoutine.class),
                 "TTP.NonEmptyOutBoxAfter", context.esc("box"), OUTPUT_BOX);
         }
+    }
+
+    /**
+     * Magic method for deserialization.
+     *
+     * @return the reconnection result
+     *
+     * @throws ObjectStreamException in case of an error
+     */
+    protected Object readResolve() throws ObjectStreamException {
+
+        rightBrace = null;
+        outputToken = null;
+        return this;
     }
 
 }
