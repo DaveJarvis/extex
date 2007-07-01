@@ -64,7 +64,7 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
 
 /**
  * This is the abstract base class to test a paragraph builder.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -72,20 +72,17 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
 
     /**
      * Inner class for the typesetter options.
-     *
+     * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
      */
     private static class MockOptions implements TypesetterOptions {
 
         /**
-         * Getter for a count register.
-         *
-         * @param name the name of the register
-         *
-         * @return the content of the count register
-         *
-         * @see org.extex.typesetter.TypesetterOptions#getCountOption(java.lang.String)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.TypesetterOptions#getCountOption(
+         *      java.lang.String)
          */
         public FixedCount getCountOption(String name) {
 
@@ -106,13 +103,10 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Getter for a dimen register.
-         *
-         * @param name the name of the register
-         *
-         * @return the content of the dimen register
-         *
-         * @see org.extex.typesetter.TypesetterOptions#getDimenOption(java.lang.String)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.TypesetterOptions#getDimenOption(
+         *      java.lang.String)
          */
         public FixedDimen getDimenOption(String name) {
 
@@ -123,12 +117,8 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Getter for a current font register.
-         *
-         * @param name the name or the number of the register
-         *
-         * @return the named font register or <code>null</code> if none is set
-         *
+         * {@inheritDoc}
+         * 
          * @see org.extex.typesetter.TypesetterOptions#getFont(java.lang.String)
          */
         public Font getFont(String name) {
@@ -137,13 +127,10 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Getter for a glue register.
-         *
-         * @param name the name of the register
-         *
-         * @return the content of the glue register
-         *
-         * @see org.extex.typesetter.TypesetterOptions#getGlueOption(java.lang.String)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.TypesetterOptions#getGlueOption(
+         *      java.lang.String)
          */
         public FixedGlue getGlueOption(String name) {
 
@@ -154,14 +141,10 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Getter for the lccode mapping of upper case characters to their
-         * lower case equivalent.
-         *
-         * @param uc the upper case character
-         *
-         * @return the lower case equivalent or null if none exists
-         *
-         * @see org.extex.typesetter.TypesetterOptions#getLccode(org.extex.core.UnicodeChar)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.TypesetterOptions#getLccode(
+         *      org.extex.core.UnicodeChar)
          */
         public UnicodeChar getLccode(UnicodeChar uc) {
 
@@ -170,8 +153,9 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
-         * @see org.extex.typesetter.TypesetterOptions#getMuskip(java.lang.String)
+         * 
+         * @see org.extex.typesetter.TypesetterOptions#getMuskip(
+         *      java.lang.String)
          */
         public Muskip getMuskip(String name) {
 
@@ -180,7 +164,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.TypesetterOptions#getNamespace()
          */
         public String getNamespace() {
@@ -190,7 +174,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.TypesetterOptions#getParshape()
          */
         public ParagraphShape getParshape() {
@@ -200,7 +184,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.TypesetterOptions#getTokenFactory()
          */
         public TokenFactory getTokenFactory() {
@@ -210,7 +194,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.TypesetterOptions#getTypesettingContext()
          */
         public TypesettingContext getTypesettingContext() {
@@ -220,7 +204,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.TypesetterOptions#getTypesettingContextFactory()
          */
         public TypesettingContextFactory getTypesettingContextFactory() {
@@ -230,7 +214,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.TypesetterOptions#setCountOption(
          *      java.lang.String, long)
          */
@@ -242,7 +226,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
 
         /**
          * {@inheritDoc}
-         *
+         * 
          * @see org.extex.typesetter.TypesetterOptions#setParshape(
          *      org.extex.typesetter.paragraphBuilder.ParagraphShape)
          */
@@ -253,19 +237,20 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
     }
 
     /**
-     * The field <tt>p1</tt> contains the ...
+     * The field <tt>pDisc</tt> contains the pattern to discover a
+     * discretionary.
      */
-    private static Pattern p1 = null;
+    private static Pattern pDisc = null;
 
     /**
-     * The field <tt>p2</tt> contains the ...
+     * The field <tt>pRule</tt> contains the pattern to discover a rule.
      */
-    private static Pattern p2 = null;
+    private static Pattern pRule = null;
 
     /**
-     * The field <tt>p3</tt> contains the ...
+     * The field <tt>pGlue</tt> contains the pattern to discover a glue.
      */
-    private static Pattern p3 = null;
+    private static Pattern pGlue = null;
 
     /**
      * The field <tt>tracer</tt> contains the logger for the output.
@@ -288,7 +273,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
     private TypesettingContextImpl tc = new TypesettingContextImpl(new Font() {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the ...
+         * The field <tt>serialVersionUID</tt> contains the version number.
          */
         private static final long serialVersionUID = 1L;
 
@@ -303,10 +288,18 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         private UnicodeChar skewChar = null;
 
         /**
-         * Returns the actual size.
-         *
-         * @return the actual size
-         *
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.Font#getActualFontKey()
+         */
+        public FontKey getActualFontKey() {
+
+            return null;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.typesetter.tc.font.Font#getActualSize()
          */
         public FixedDimen getActualSize() {
@@ -315,10 +308,8 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Returns the check sum of the font.
-         *
-         * @return the check sum of the font
-         *
+         * {@inheritDoc}
+         * 
          * @see org.extex.typesetter.tc.font.Font#getCheckSum()
          */
         public int getCheckSum() {
@@ -327,13 +318,10 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Returns the depth of the character.
-         *
-         * @param uc the character
-         *
-         * @return the depth of the character
-         *
-         * @see org.extex.typesetter.tc.font.Font#getDepth(org.extex.core.UnicodeChar)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.Font#getDepth(
+         *      org.extex.core.UnicodeChar)
          */
         public FixedGlue getDepth(UnicodeChar uc) {
 
@@ -341,10 +329,8 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Returns the design size of the font.
-         *
-         * @return the design size of the font
-         *
+         * {@inheritDoc}
+         * 
          * @see org.extex.typesetter.tc.font.Font#getDesignSize()
          */
         public FixedDimen getDesignSize() {
@@ -353,13 +339,10 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Getter for the ef code.
-         *
-         * @param uc the character
-         *
-         * @return the ef code
-         *
-         * @see org.extex.typesetter.tc.font.Font#getEfCode(org.extex.core.UnicodeChar)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.Font#getEfCode(
+         *      org.extex.core.UnicodeChar)
          */
         public long getEfCode(UnicodeChar uc) {
 
@@ -367,10 +350,8 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Returns the size of 1em.
-         *
-         * @return the size of 1em.
-         *
+         * {@inheritDoc}
+         * 
          * @see org.extex.typesetter.tc.font.Font#getEm()
          */
         public FixedDimen getEm() {
@@ -379,10 +360,8 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Returns the size of 1ex.
-         *
-         * @return the size of 1ex.
-         *
+         * {@inheritDoc}
+         * 
          * @see org.extex.typesetter.tc.font.Font#getEx()
          */
         public FixedDimen getEx() {
@@ -391,12 +370,8 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Returns the size of the parameter with the name 'name'.
-         *
-         * @param key the name of the parameter
-         *
-         * @return the size of the parameter with the name 'name'.
-         *
+         * {@inheritDoc}
+         * 
          * @see org.extex.typesetter.tc.font.Font#getFontDimen(java.lang.String)
          */
         public FixedDimen getFontDimen(String key) {
@@ -405,10 +380,8 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Returns the FontKey for this font.
-         *
-         * @return the FontKey for this font
-         *
+         * {@inheritDoc}
+         * 
          * @see org.extex.typesetter.tc.font.Font#getFontKey()
          */
         public FontKey getFontKey() {
@@ -417,10 +390,8 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Returns the name of the font.
-         *
-         * @return the name of the font
-         *
+         * {@inheritDoc}
+         * 
          * @see org.extex.typesetter.tc.font.Font#getFontName()
          */
         public String getFontName() {
@@ -429,13 +400,10 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Returns the height of a character.
-         *
-         * @param uc the character
-         *
-         * @return the height of the character
-         *
-         * @see org.extex.typesetter.tc.font.Font#getHeight(org.extex.core.UnicodeChar)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.Font#getHeight(
+         *      org.extex.core.UnicodeChar)
          */
         public FixedGlue getHeight(UnicodeChar uc) {
 
@@ -443,10 +411,8 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Returns the hyphen character.
-         *
-         * @return the hyphen character
-         *
+         * {@inheritDoc}
+         * 
          * @see org.extex.typesetter.tc.font.Font#getHyphenChar()
          */
         public UnicodeChar getHyphenChar() {
@@ -455,13 +421,10 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Returns the italic correction of a character.
-         *
-         * @param uc the character
-         *
-         * @return the italic correction of the character
-         *
-         * @see org.extex.typesetter.tc.font.Font#getItalicCorrection(org.extex.core.UnicodeChar)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.Font#getItalicCorrection(
+         *      org.extex.core.UnicodeChar)
          */
         public FixedDimen getItalicCorrection(UnicodeChar uc) {
 
@@ -469,44 +432,40 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Returns the kerning between two characters.
-         *
-         * @param uc1 the first character
-         * @param uc2 the second character
-         *
-         * @return the kerning between two characters
-         *
+         * {@inheritDoc}
+         * 
          * @see org.extex.typesetter.tc.font.Font#getKerning(
          *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
          */
-        public FixedDimen getKerning(UnicodeChar uc1,
-                UnicodeChar uc2) {
+        public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
 
             return null;
         }
 
         /**
-         * Returns the ligature for two characters.
-         *
-         * @param uc1 the first character
-         * @param uc2 the second character
-         *
-         * @return Returns the ligature for two characters
-         *
+         * {@inheritDoc}
+         * 
          * @see org.extex.typesetter.tc.font.Font#getLigature(
          *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
          */
-        public UnicodeChar getLigature(UnicodeChar uc1,
-                UnicodeChar uc2) {
+        public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
 
             return null;
         }
 
         /**
-         * Returns the skew char.
-         *
-         * @return the skew char
-         *
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.Font#getScaleFactor()
+         */
+        public FixedCount getScaleFactor() {
+
+            return Count.THOUSAND;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.typesetter.tc.font.Font#getSkewChar()
          */
         public UnicodeChar getSkewChar() {
@@ -515,10 +474,8 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Returns the size of the 'space'.
-         *
-         * @return the size of the 'space'.
-         *
+         * {@inheritDoc}
+         * 
          * @see org.extex.typesetter.tc.font.Font#getSpace()
          */
         public FixedGlue getSpace() {
@@ -527,13 +484,10 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Returns the width of a character.
-         *
-         * @param uc the character
-         *
-         * @return the width of the character
-         *
-         * @see org.extex.typesetter.tc.font.Font#getWidth(org.extex.core.UnicodeChar)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.Font#getWidth(
+         *      org.extex.core.UnicodeChar)
          */
         public FixedGlue getWidth(UnicodeChar uc) {
 
@@ -541,14 +495,10 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Determine whether the glyph for a given character is present in this
-         * font.
-         *
-         * @param uc the character
-         *
-         * @return <code>true</code> iff the glyph is present
-         *
-         * @see org.extex.typesetter.tc.font.Font#hasGlyph(org.extex.core.UnicodeChar)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.Font#hasGlyph(
+         *      org.extex.core.UnicodeChar)
          */
         public boolean hasGlyph(UnicodeChar uc) {
 
@@ -556,13 +506,8 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Setter for the ef code.
-         * The ef code influences the stretchability of characters. It has a
-         * positive value. 1000 means "normal" stretchability.
-         *
-         * @param uc the character
-         * @param code the associated code
-         *
+         * {@inheritDoc}
+         * 
          * @see org.extex.typesetter.tc.font.Font#setEfCode(
          *      org.extex.core.UnicodeChar, long)
          */
@@ -573,11 +518,8 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Set the new value for the font parameter.
-         *
-         * @param key the name of the parameter
-         * @param value the value to set
-         *
+         * {@inheritDoc}
+         * 
          * @see org.extex.typesetter.tc.font.Font#setFontDimen(
          *      java.lang.String, org.extex.core.dimen.Dimen)
          */
@@ -586,10 +528,8 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Set the hyphen character.
-         *
-         * @param hyphen the hyphen character
-         *
+         * {@inheritDoc}
+         * 
          * @see org.extex.typesetter.tc.font.Font#setHyphenChar(
          *      org.extex.core.UnicodeChar)
          */
@@ -599,40 +539,14 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         }
 
         /**
-         * Set the skew character.
-         *
-         * @param skew the skew character
-         *
-         * @see org.extex.typesetter.tc.font.Font#setSkewChar(org.extex.core.UnicodeChar)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.tc.font.Font#setSkewChar(
+         *      org.extex.core.UnicodeChar)
          */
         public void setSkewChar(UnicodeChar skew) {
 
             skewChar = skew;
-        }
-
-        /**
-         * Returns the scale factor of the font.
-         *
-         * @return the scale factor of the font
-         *
-         * @see org.extex.typesetter.tc.font.Font#getScaleFactor()
-         */
-        public FixedCount getScaleFactor() {
-
-            return Count.THOUSAND;
-        }
-
-        /**
-         * Returns the actual FontKey for this font.
-         * The font key may differ from the one requested.
-         *
-         * @return the actual FontKey for this font.
-         *
-         * @see org.extex.typesetter.tc.font.Font#getActualFontKey()
-         */
-        public FontKey getActualFontKey() {
-
-            return null;
         }
 
     });
@@ -640,36 +554,40 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         tc.setLanguage(new Language() {
 
             /**
-             * The field <tt>serialVersionUID</tt> contains the ...
+             * The field <tt>serialVersionUID</tt> contains the version
+             * number.
              */
             private static final long serialVersionUID = 1L;
 
             public void addHyphenation(UnicodeCharList word,
-                    TypesetterOptions context)
+                    TypesetterOptions context) throws HyphenationException {
+
+                throw new RuntimeException("unimplemented");
+            }
+
+            public void addPattern(Tokens pattern) throws HyphenationException {
+
+                throw new RuntimeException("unimplemented");
+            }
+
+            public int findWord(NodeList nodes, int start, UnicodeCharList word)
                     throws HyphenationException {
 
                 throw new RuntimeException("unimplemented");
             }
 
-            public void addPattern(Tokens pattern)
-                    throws HyphenationException {
-
-                throw new RuntimeException("unimplemented");
-            }
-
-            public int findWord(NodeList nodes, int start,
-                    UnicodeCharList word) throws HyphenationException {
-
-                throw new RuntimeException("unimplemented");
-            }
-
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.language.hyphenation.Hyphenator#getLeftHyphenmin()
+             */
             public long getLeftHyphenmin() throws HyphenationException {
 
                 return 0;
             }
 
-            public UnicodeChar getLigature(UnicodeChar c1,
-                    UnicodeChar c2, Font f) throws HyphenationException {
+            public UnicodeChar getLigature(UnicodeChar c1, UnicodeChar c2,
+                    Font f) throws HyphenationException {
 
                 return f.getLigature(c1, c2);
             }
@@ -700,9 +618,9 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
                 return 0;
             }
 
-            public void insertShy(NodeList nodes,
-                    int insertionPoint, boolean[] spec,
-                    CharNode hyphenNode) throws HyphenationException {
+            public void insertShy(NodeList nodes, int insertionPoint,
+                    boolean[] spec, CharNode hyphenNode)
+                    throws HyphenationException {
 
                 throw new RuntimeException("unimplemented");
             }
@@ -713,8 +631,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
             }
 
             public UnicodeCharList normalize(UnicodeCharList word,
-                    TypesetterOptions options)
-                    throws HyphenationException {
+                    TypesetterOptions options) throws HyphenationException {
 
                 throw new RuntimeException("unimplemented");
             }
@@ -725,8 +642,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
                 // not needed
             }
 
-            public void setLeftHyphenmin(long left)
-                    throws HyphenationException {
+            public void setLeftHyphenmin(long left) throws HyphenationException {
 
                 // not needed
             }
@@ -746,10 +662,8 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void _test4() throws Exception {
@@ -773,10 +687,8 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void _test5() throws Exception {
@@ -801,33 +713,8 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void _testBreak1() throws Exception {
-
-        NodeList list = pb.build(makeList("a"));
-
-        assertTrue(list instanceof VerticalListNode);
-        assertEquals(1, list.size());
-
-        Node node = list.get(0);
-        assertTrue(node instanceof HorizontalListNode);
-        list = (NodeList) node;
-        assertTrue(list.get(0) instanceof CharNode);
-        assertTrue(list.get(1) instanceof PenaltyNode);
-        assertTrue(list.get(2) instanceof GlueNode);
-        assertEquals(3, list.size());
-    }
-
-    /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void _testBreak2() throws Exception {
@@ -849,11 +736,9 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that discretionary without content may be contained
-     *  in the non-broken text.
-     * </testcase>
-     *
+     * <testcase> Test case checking that discretionary without content may be
+     * contained in the non-broken text. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void _testDisc2() throws Exception {
@@ -877,43 +762,30 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the empty list is treated correctly.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void _testEmpty1() throws Exception {
-
-        NodeList list = pb.build(makeList(""));
-
-        assertTrue(list instanceof VerticalListNode);
-        assertEquals(0, list.size());
-    }
-
-    /**
      * This method creates a new paragraph builder to be tested.
-     *
+     * 
      * @return the new paragraph builder
      */
     protected abstract ParagraphBuilder getParagraphBuilder();
 
     /**
      * Build a node list from a string specification.
-     *
+     * 
      * @param spec the spec
      * @return the node list
      */
     protected HorizontalListNode makeList(String spec) {
 
-        String s = spec;
-        if (p1 == null) {
-            p1 =
-                    Pattern
-                        .compile("^\\\\discretionary\\{([^{}]*)\\}\\{([^{}]*)\\}\\{([^{}]*)\\}(.*)");
-            p2 = Pattern.compile("^\\\\rule\\{([^{}]*)\\}(.*)");
-            p3 = Pattern.compile("^\\\\glue(.*)");
+        if (pDisc == null) {
+            pDisc =
+                    Pattern.compile("^\\\\discretionary"
+                            + "\\{([^{}]*)\\}\\{([^{}]*)\\}"
+                            + "\\{([^{}]*)\\}(.*)");
+            pRule = Pattern.compile("^\\\\rule\\{([^{}]*)\\}(.*)");
+            pGlue = Pattern.compile("^\\\\glue(.*)");
         }
+
+        String s = spec;
         HorizontalListNode nodes = new HorizontalListNode();
 
         for (int i = 0; i < s.length(); i++) {
@@ -921,7 +793,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
             if (c == ' ') {
                 nodes.add(new SpaceNode(new Glue(Dimen.ONE_PT)));
             } else if (c == '\\') {
-                Matcher m = p1.matcher(s.substring(i));
+                Matcher m = pDisc.matcher(s.substring(i));
                 if (m.matches()) {
                     nodes.add(new DiscretionaryNode(makeList(m.group(1)),
                         makeList(m.group(2)), makeList(m.group(3))));
@@ -929,7 +801,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
                     i = -1;
                     continue;
                 }
-                m = p2.matcher(s.substring(i));
+                m = pRule.matcher(s.substring(i));
                 if (m.matches()) {
                     nodes.add(new RuleNode(VPT, Dimen.ONE_PT, Dimen.ONE_PT, tc,
                         true));
@@ -937,7 +809,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
                     i = -1;
                     continue;
                 }
-                m = p3.matcher(s.substring(i));
+                m = pGlue.matcher(s.substring(i));
                 if (m.matches()) {
                     nodes.add(new GlueNode(Dimen.ONE_PT, true));
                     s = m.group(1);
@@ -953,7 +825,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see junit.framework.TestCase#setUp()
      */
     @Override
@@ -962,9 +834,8 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
         super.setUp();
 
         if (tracer == null) {
-            tracer =
-                    Logger.getLogger(AbstractParagraphBuiderTester.class
-                        .getName());
+            tracer = Logger.getLogger(//
+                AbstractParagraphBuiderTester.class.getName());
             tracer.setUseParentHandlers(false);
             if (traceonline()) {
                 Handler handler = new ConsoleHandler();
@@ -983,10 +854,8 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test6() throws Exception {
@@ -1028,11 +897,30 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that discretionary without content may be contained
-     *  in the non-broken text.
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testBreak1() throws Exception {
+
+        NodeList list = pb.build(makeList("a"));
+
+        assertTrue(list instanceof VerticalListNode);
+        assertEquals(1, list.size());
+
+        Node node = list.get(0);
+        assertTrue(node instanceof HorizontalListNode);
+        list = (NodeList) node;
+        assertTrue(list.get(0) instanceof CharNode);
+        assertTrue(list.get(1) instanceof PenaltyNode);
+        assertTrue(list.get(2) instanceof GlueNode);
+        assertEquals(3, list.size());
+    }
+
+    /**
+     * <testcase> Test case checking that discretionary without content may be
+     * contained in the non-broken text. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testDisc1() throws Exception {
@@ -1050,16 +938,41 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
 
         NodeList list = pb.build(nodes);
 
+        // assertTrue(list instanceof VerticalListNode);
+        // assertEquals(2, list.size());
+        assertEquals("\\vbox(0.0pt+0.0pt)x23.0pt\n" //
+                + ".\\hbox(0.0pt+0.0pt)x23.0pt\n" //
+                + "..a\n" //
+                + "..b\n" //
+                + "..space 1.0pt\n" //
+                + "..c\n" //
+                + "..\\discretionary{}{}{}\n" //
+                + "..d\n" //
+                + "..space 1.0pt\n" //
+                + "..e\n" //
+                + "..\\penalty 10000\n" //
+                + "..\\glue0.01526pt", list.toString());
+    }
+
+    /**
+     * <testcase> Test case checking that the empty list is treated correctly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testEmpty1() throws Exception {
+
+        NodeList list = pb.build(new HorizontalListNode());
+
         assertTrue(list instanceof VerticalListNode);
-        assertEquals(2, list.size());
+        assertEquals(0, list.size());
     }
 
     /**
      * This method provides an indicator whether or not the tracing should be
-     * written to the console.
-     * This method is meant to be overwritten by derived classes to change the
-     * default behavior.
-     *
+     * written to the console. This method is meant to be overwritten by derived
+     * classes to change the default behavior.
+     * 
      * @return <code>true</code> iff the tracing is requested
      */
     protected boolean traceonline() {
