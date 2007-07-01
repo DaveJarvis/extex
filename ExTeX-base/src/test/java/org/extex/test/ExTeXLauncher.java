@@ -318,12 +318,12 @@ public class ExTeXLauncher extends TestCase {
     public Interpreter assertOutput(Properties properties, String code,
             String log, String expect) throws HelpingException {
 
-        Validator logValidator =
-                (log == null ? null : new EqualityValidator("log stream", log));
-        Validator outputValidator =
-                (expect == null ? null : new EqualityValidator("out stream",
-                    expect));
-        return assertOutput(properties, code, logValidator, outputValidator);
+        return assertOutput(properties,
+            code, //
+            (log == null ? null : new EqualityValidator("log stream", log)),
+            (expect == null
+                    ? null
+                    : new EqualityValidator("out stream", expect)));
     }
 
     /**
@@ -413,17 +413,15 @@ public class ExTeXLauncher extends TestCase {
         try {
             interpreter = extex.run();
         } catch (CharacterCodingException e) {
-            errorP = true;
+            fail("Character coding error: " + e.getLocalizedMessage());
         } catch (ConfigurationException e) {
-            errorP = true;
-            e.printStackTrace();
+            fail("Configuration error: " + e.getLocalizedMessage());
         } catch (IOException e) {
-            errorP = true;
+            fail("I/O error: " + e.getLocalizedMessage());
         } catch (GeneralException e) {
             errorP = true;
         } catch (Throwable e) {
-            e.printStackTrace();
-            fail();
+            fail("Error: " + e.getLocalizedMessage());
         }
 
         handler.close();
