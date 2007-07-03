@@ -39,6 +39,7 @@ import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.font.BackendCharacter;
+import org.extex.font.BackendFont;
 import org.extex.font.BackendFontManager;
 import org.extex.font.CoreFontFactory;
 import org.extex.font.FontAware;
@@ -331,6 +332,18 @@ public class XMLDocumentWriter
             writer.writeAttribute("type", info.getManager().getClass()
                 .getName());
             writer.writeAttribute("font", info.getFontKey().getName());
+            BackendFont backendfont = info.getBackendFont();
+            if (backendfont != null) {
+                writer.writeAttribute("isType1", info.getBackendFont()
+                    .isType1());
+                writer.writeAttribute("isXtf", info.getBackendFont().isXtf());
+                writer.writeAttribute("hasPfb",
+                    info.getBackendFont().getPfb() != null ? true : false);
+                writer.writeAttribute("hasPfa",
+                    info.getBackendFont().getPfa() != null ? true : false);
+                writer.writeAttribute("hasXtf",
+                    info.getBackendFont().getXtf() != null ? true : false);
+            }
             writer
                 .writeAttribute("fontparameter", info.getFontKey().toString());
             Iterator<BackendCharacter> chit = info.iterate();

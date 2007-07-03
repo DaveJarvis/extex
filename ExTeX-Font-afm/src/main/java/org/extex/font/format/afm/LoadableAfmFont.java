@@ -19,11 +19,13 @@
 
 package org.extex.font.format.afm;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
@@ -40,7 +42,11 @@ import org.extex.font.exception.CorruptFontException;
 import org.extex.font.exception.FontException;
 import org.extex.font.fontparameter.FontParameter;
 import org.extex.font.format.AfmMetricFont;
+import org.extex.font.format.pfb.PfbParser;
 import org.extex.font.unicode.GlyphName;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
+import org.extex.framework.logger.LogEnabled;
 import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 
@@ -62,6 +68,7 @@ public class LoadableAfmFont
             LoadableFont,
             ResourceAware,
             BackendFont,
+            LogEnabled,
             AfmMetricFont {
 
     /**
@@ -101,6 +108,18 @@ public class LoadableAfmFont
     private UnicodeChar lastUsedUc = null;
 
     /**
+     * The field <tt>localizer</tt> contains the localizer. It is initiated
+     * with a localizer for the name of this class.
+     */
+    private Localizer localizer =
+            LocalizerFactory.getLocalizer(LoadableAfmFont.class);
+
+    /**
+     * The logger.
+     */
+    private Logger logger;
+
+    /**
      * Use no kerning information.
      */
     private boolean nokerning = false;
@@ -119,6 +138,26 @@ public class LoadableAfmFont
      * The afm parser.
      */
     private AfmParser parser;
+
+    /**
+     * The pfa data.
+     */
+    private byte[] pfadata;
+
+    /**
+     * The pfb data.
+     */
+    private byte[] pfbdata;
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
+     */
+    public void enableLogging(Logger logger) {
+
+        this.logger = logger;
+    }
 
     /**
      * Convert a float value to a <code>Dimen</code>.
@@ -151,6 +190,16 @@ public class LoadableAfmFont
     public FixedDimen getActualSize() {
 
         return actualFontKey.getDimen("size");
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#getAfm()
+     */
+    public byte[] getAfm() {
+
+        return parser.getFontData();
     }
 
     /**
@@ -244,17 +293,6 @@ public class LoadableAfmFont
         }
         float xh = parser.getHeader().getXheight();
         return floatToDimen(xh);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getFontData()
-     */
-    public byte[] getFontData() {
-
-        // TODO mgn: getFontData unimplemented
-        return null;
     }
 
     /**
@@ -391,6 +429,45 @@ public class LoadableAfmFont
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.BackendFont#getPfa()
+     */
+    public byte[] getPfa() {
+
+        return pfadata;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#getPfb()
+     */
+    public byte[] getPfb() {
+
+        if (pfbdata == null) {
+            // search pfb file
+            InputStream pfbin =
+                    finder.findResource(actualFontKey.getName(), "pfb");
+            if (pfbin == null) {
+                logger.severe(localizer.format("Afm.missingPfb", actualFontKey
+                    .getName()));
+            } else {
+                try {
+                    PfbParser pfbParser = new PfbParser(pfbin);
+                    pfbdata = pfbParser.getPfbdata();
+                    ByteArrayOutputStream out = new ByteArrayOutputStream();
+                    pfbParser.toPfa(out);
+                    pfadata = out.toByteArray();
+                } catch (Exception e) {
+                    logger.severe(e.getLocalizedMessage());
+                }
+            }
+        }
+        return pfbdata;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getScaleFactor()
      */
     public FixedCount getScaleFactor() {
@@ -434,11 +511,52 @@ public class LoadableAfmFont
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.BackendFont#getXtf()
+     */
+    public byte[] getXtf() {
+
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#hasEncodingVector()
+     */
+    public boolean hasEncodingVector() {
+
+        // TODO mgn: hasEncodingVector unimplemented
+        return false;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#hasGlyph(org.extex.core.UnicodeChar)
      */
     public boolean hasGlyph(UnicodeChar uc) {
 
         return getCharMetric(uc) != null ? true : false;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#isType1()
+     */
+    public boolean isType1() {
+
+        return true;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#isXtf()
+     */
+    public boolean isXtf() {
+
+        return false;
     }
 
     /**

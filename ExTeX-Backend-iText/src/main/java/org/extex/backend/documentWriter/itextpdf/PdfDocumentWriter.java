@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import org.extex.backend.documentWriter.DocumentWriter;
 import org.extex.backend.documentWriter.DocumentWriterOptions;
@@ -41,6 +42,7 @@ import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
+import org.extex.framework.logger.LogEnabled;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.page.Page;
 
@@ -60,6 +62,7 @@ public class PdfDocumentWriter
             DocumentWriter,
             SingleDocumentStream,
             Configurable,
+            LogEnabled,
             FontAware/* ,PdftexSupport */{
 
     /**
@@ -141,6 +144,8 @@ public class PdfDocumentWriter
         corefactory = factory;
         List<String> sl = new ArrayList<String>();
         sl.add("ttf");
+        sl.add("afm");
+        sl.add("tfm");
         manager = corefactory.createManager(sl);
 
     }
@@ -201,7 +206,10 @@ public class PdfDocumentWriter
                 writer = PdfWriter.getInstance(document, out);
                 document.open();
 
-                nodevisitor = new PdfNodeVisitor(document, writer, manager);
+                PdfFontFactory.setLogger(logger);
+                nodevisitor =
+                        new PdfNodeVisitor(document, writer, manager, logger,
+                            localizer);
             }
             pageSize();
             document.newPage();
@@ -249,4 +257,19 @@ public class PdfDocumentWriter
      */
     private DocumentWriterOptions docoptions;
 
+    /**
+     * The logger.
+     */
+    private Logger logger;
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
+     */
+    public void enableLogging(Logger logger) {
+
+        this.logger = logger;
+
+    }
 }

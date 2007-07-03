@@ -33,6 +33,7 @@ import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.logger.LogEnabled;
 import org.extex.resource.PropertyAware;
 import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
@@ -46,13 +47,14 @@ import org.extex.resource.ResourceFinder;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class FontFactoryImpl
+public class FontFactoryImpl extends AbstractFactory
         implements
             CoreFontFactory,
             ResourceAware,
             Configurable,
             PropertyAware,
-            BackendFontFactory {
+            BackendFontFactory,
+            LogEnabled {
 
     /**
      * The null font
@@ -187,7 +189,11 @@ public class FontFactoryImpl
                     ResourceAware consumer = (ResourceAware) font;
                     consumer.setResourceFinder(finder);
                 }
-
+                if (font instanceof LogEnabled) {
+                    LogEnabled logen = (LogEnabled)font;
+                    logen.enableLogging(getLogger());
+                }
+                
                 font.loadFont(in, this, key);
 
                 // store in the cache

@@ -20,6 +20,8 @@
 package org.extex.font.format.afm;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -57,6 +59,11 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     private static final int BASEHEX = 16;
 
     /**
+     * The buffer size.
+     */
+    private static final int BUFFERSIZE = 0xffff;
+
+    /**
      * The field <tt>serialVersionUID</tt>.
      */
     private static final long serialVersionUID = 1L;
@@ -72,6 +79,11 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
      */
     private Map<String, Integer> afmCharNameNumber =
             new HashMap<String, Integer>(ARRAYLISTINITSIZE);
+
+    /**
+     * The afm data.
+     */
+    private byte[] afmdata;
 
     /**
      * Represents the section KerningPairs in the AFM file.
@@ -101,9 +113,7 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     public AfmParser(InputStream in) throws FontException {
 
         try {
-            // create a Reader (AFM use US_ASCII)
-            BufferedReader reader =
-                    new BufferedReader(new InputStreamReader(in, "US-ASCII"));
+            BufferedReader reader = createReader(in);
             header = new AfmHeader();
             readAFMFile(reader);
             reader.close();
@@ -195,6 +205,31 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
                 .format("AfmParser.MissingEndCharMetrics"));
         }
         return isMetrics;
+    }
+
+    /**
+     * Create a reader and copy the font data.
+     * 
+     * @param in The input.
+     * @return Returns the {@link BufferedReader}.
+     * @throws IOException if a io-error occurred.
+     */
+    private BufferedReader createReader(InputStream in) throws IOException {
+
+        // copy
+        ByteArrayOutputStream out = new ByteArrayOutputStream(BUFFERSIZE);
+        byte[] buf = new byte[BUFFERSIZE];
+        int len;
+        while ((len = in.read(buf)) > 0) {
+            out.write(buf, 0, len);
+        }
+        afmdata = out.toByteArray();
+        out.close();
+
+        // create a Reader (AFM use US_ASCII)
+        ByteArrayInputStream bin = new ByteArrayInputStream(afmdata);
+        return new BufferedReader(new InputStreamReader(bin, "US-ASCII"),
+            BUFFERSIZE);
     }
 
     /**
@@ -318,6 +353,16 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     public String getFamilyname() {
 
         return header.getFamilyname();
+    }
+
+    /**
+     * Returns the font data.
+     * 
+     * @return Returns the font data.
+     */
+    public byte[] getFontData() {
+
+        return afmdata;
     }
 
     /**

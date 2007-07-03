@@ -21,10 +21,12 @@ package org.extex.backend.documentWriter.itextpdf;
 
 import java.io.IOException;
 import java.util.WeakHashMap;
+import java.util.logging.Logger;
 
 import org.extex.font.BackendFont;
 import org.extex.font.FontKey;
-import org.extex.font.format.XtfMetricFont;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
@@ -41,6 +43,18 @@ public class PdfFontFactory {
      * The map for the fonts.
      */
     private static WeakHashMap<FontKey, BaseFont> fonts;
+
+    /**
+     * The field <tt>localizer</tt> contains the localizer. It is initiated
+     * with a localizer for the name of this class.
+     */
+    private static Localizer localizer =
+            LocalizerFactory.getLocalizer(PdfFontFactory.class);
+
+    /**
+     * The logger.
+     */
+    private static Logger logger;
 
     /**
      * Returns the font for the pdf backend.
@@ -68,24 +82,84 @@ public class PdfFontFactory {
             return font;
         }
 
-        if (backendfont instanceof XtfMetricFont) {
-            byte[] data = backendfont.getFontData();
+        if (backendfont.isXtf()) {
+            byte[] data = backendfont.getXtf();
             // TODO mgn: check encoding
             font =
-                    BaseFont.createFont(key.getName() + ".ttf" /* name */,
-                        BaseFont.IDENTITY_H /* BaseFont.CP1252 */ /* encoding */,
-                        true /* embedded */, true /* cached */,
-                        data /* ttf,afm */, null /* pfb */);
+                    BaseFont
+                        .createFont(
+                            key.getName() + ".ttf" /* name */,
+                            BaseFont.IDENTITY_H /* BaseFont.CP1252 *//* encoding */,
+                            true /* embedded */, true /* cached */,
+                            data /* ttf,afm */, null /* pfb */);
+            logInfo(localizer.format("PdfFontFactory.useFont", "XTF", key
+                .getName()));
+        }
+        if (backendfont.isType1()) {
+            byte[] afmdata = backendfont.getAfm();
+            byte[] pfbdata = backendfont.getPfb();
+
+            if (afmdata != null && pfbdata != null) {
+                // TODO mgn: check encoding
+                font =
+                        BaseFont
+                            .createFont(
+                                key.getName() + ".afm" /* name */,
+                                "" /* BaseFont.CP1252 *//* encoding */,
+                                true /* embedded */, true /* cached */,
+                                afmdata /* ttf,afm */, pfbdata /* pfb */);
+                logInfo(localizer.format("PdfFontFactory.useFont", "Type1", key
+                    .getName()));
+            } else {
+                logSevere(localizer.format("PdfFontFactory.missingAfmPfb", key
+                    .getName()));
+            }
         }
         if (font == null) {
             font =
                     BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1252,
                         BaseFont.EMBEDDED);
+            logSevere(localizer.format("PdfFontFactory.defaultFont", key
+                .getName()));
         }
         // store it
         fonts.put(key, font);
 
         return font;
+    }
+
+    /**
+     * Log a info message.
+     * 
+     * @param msg The message.
+     */
+    private static void logInfo(String msg) {
+
+        if (logger != null) {
+            logger.info(msg);
+        }
+    }
+
+    /**
+     * Log a severe message.
+     * 
+     * @param msg The message.
+     */
+    private static void logSevere(String msg) {
+
+        if (logger != null) {
+            logger.severe(msg);
+        }
+    }
+
+    /**
+     * Setter for logger.
+     * 
+     * @param logger the logger to set
+     */
+    public static void setLogger(Logger logger) {
+
+        PdfFontFactory.logger = logger;
     }
 
 }

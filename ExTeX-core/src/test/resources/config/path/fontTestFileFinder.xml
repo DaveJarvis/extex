@@ -43,20 +43,22 @@
     </fmt>
     <pfb>
       <extension>.pfb</extension>
+      <path>../texmf/src/texmf/fonts/afm</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
     </pfb>
     <pfa>
       <extension>.pfa</extension>
+      <path>../texmf/src/texmf/fonts/afm</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
     </pfa>
     <afm>
       <extension>.afm</extension>
-      <path>.</path>
       <path>../texmf/src/texmf/fonts/afm</path>
+      <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
     </afm>

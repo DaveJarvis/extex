@@ -102,6 +102,16 @@ public class LoadableXtfFont
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.BackendFont#getAfm()
+     */
+    public byte[] getAfm() {
+
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.BackendFont#getCheckSum()
      */
     public int getCheckSum() {
@@ -167,16 +177,6 @@ public class LoadableXtfFont
             xh = bb.getHeight();
         }
         return intToDimen(xh);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getFontData()
-     */
-    public byte[] getFontData() {
-
-        return reader.getFontData();
     }
 
     /**
@@ -288,6 +288,26 @@ public class LoadableXtfFont
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.BackendFont#getPfa()
+     */
+    public byte[] getPfa() {
+
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#getPfb()
+     */
+    public byte[] getPfb() {
+
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * Returns allways 0.
      * 
      * @see org.extex.font.ExtexFont#getScaleFactor()
@@ -330,6 +350,26 @@ public class LoadableXtfFont
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.BackendFont#getXtf()
+     */
+    public byte[] getXtf() {
+
+        return reader.getFontData();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#hasEncodingVector()
+     */
+    public boolean hasEncodingVector() {
+
+        return false;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#hasGlyph(org.extex.core.UnicodeChar)
      */
     public boolean hasGlyph(UnicodeChar uc) {
@@ -353,6 +393,26 @@ public class LoadableXtfFont
         long l = getActualSize().getValue() * i / 1000;
 
         return new Dimen(l);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#isType1()
+     */
+    public boolean isType1() {
+
+        return false;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#isXtf()
+     */
+    public boolean isXtf() {
+
+        return true;
     }
 
     /**

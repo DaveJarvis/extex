@@ -20,14 +20,15 @@
 package org.extex.backend.documentWriter.itextpdf;
 
 import java.awt.Color;
+import java.util.logging.Logger;
 
 import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
-import org.extex.font.BackendFont;
 import org.extex.font.BackendFontManager;
 import org.extex.font.FontKey;
+import org.extex.framework.i18n.Localizer;
 import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
@@ -72,6 +73,11 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
      * The line width.
      */
     private static final float LINEWIDTH = 0.1f;
+
+    /**
+     * The logger.
+     */
+    private Logger logger;
 
     /**
      * The base font.
@@ -129,15 +135,24 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
      * @param document The pdf document.
      * @param writer The pdf writer.
      * @param manager The backend font manager
+     * @param logger The logger.
+     * @param localizer The localizer
      */
     public PdfNodeVisitor(Document document, PdfWriter writer,
-            BackendFontManager manager) {
+            BackendFontManager manager, Logger logger, Localizer localizer) {
 
         this.document = document;
         this.writer = writer;
         this.manager = manager;
+        this.logger = logger;
+        this.localizer = localizer;
         cb = writer.getDirectContent();
     }
+
+    /**
+     * The localizer.
+     */
+    private Localizer localizer;
 
     /**
      * Draw a box around the node (only for test).
@@ -289,6 +304,9 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
             throws GeneralException {
 
         try {
+
+            drawNode(node);
+
             UnicodeChar uc = node.getCharacter();
             Font newfont = node.getTypesettingContext().getFont();
             FontKey newfountkey = newfont.getFontKey();
@@ -297,7 +315,8 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
 
             boolean aviable = manager.recognize(newfont.getFontKey(), uc);
             if (!aviable) {
-                // TODO mgn: log ausgeben
+                logger.severe(localizer.format("Pdf.incompatiblefont", newfont
+                    .getFontKey(), uc.toString()));
             } else {
 
                 if (!newfountkey.equals(oldfountkey)) {
@@ -318,7 +337,6 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
                 cb.showText(uc.toString());
                 cb.endText();
             }
-            drawNode(node);
             currentX.add(node.getWidth());
         } catch (Exception e) {
             throw new GeneralException(e.getMessage());
@@ -377,12 +395,13 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
         Dimen saveX = new Dimen(currentX);
         Dimen saveY = new Dimen(currentY);
 
+        drawNode(node);
+
         for (Node n : node) {
             n.visit(this, node);
         }
         currentX.set(saveX);
         currentY.set(saveY);
-        drawNode(node);
         currentX.add(node.getWidth());
 
         return null;
@@ -491,12 +510,13 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
         Dimen saveX = new Dimen(currentX);
         Dimen saveY = new Dimen(currentY);
 
+        drawNode(node);
+
         for (Node n : node) {
             n.visit(this, node);
         }
         currentX.set(saveX);
         currentY.set(saveY);
-        drawNode(node);
         currentY.add(node.getDepth());
         currentY.add(node.getHeight());
 

@@ -19,10 +19,12 @@
 
 package org.extex.font.format.tfm;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import org.extex.core.Unicode;
 import org.extex.core.UnicodeChar;
@@ -37,8 +39,16 @@ import org.extex.font.CoreFontFactory;
 import org.extex.font.FontKey;
 import org.extex.font.LoadableFont;
 import org.extex.font.exception.CorruptFontException;
+import org.extex.font.exception.FontException;
 import org.extex.font.format.TfmMetricFont;
+import org.extex.font.format.pfb.PfbParser;
+import org.extex.font.format.psfontmap.PsFontEncoding;
+import org.extex.font.format.psfontmap.PsFontsMapReader;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.logger.LogEnabled;
+import org.extex.resource.ResourceAware;
+import org.extex.resource.ResourceFinder;
+import org.extex.util.file.random.RandomAccessInputStream;
 
 /**
  * Class to load tfm fonts.
@@ -50,6 +60,8 @@ public class LoadableTfmFont
         implements
             LoadableFont,
             BackendFont,
+            ResourceAware,
+            LogEnabled,
             TfmMetricFont {
 
     /**
@@ -58,9 +70,24 @@ public class LoadableTfmFont
     private FontKey actualFontKey;
 
     /**
+     * If type1 checked?
+     */
+    private boolean checkType1 = false;
+
+    /**
+     * If xtf checked?
+     */
+    private boolean checkXtf = false;
+
+    /**
      * The code point map.
      */
     private Map<UnicodeChar, Integer> codepointmap;
+
+    /**
+     * The resource finder.
+     */
+    private ResourceFinder finder;
 
     /**
      * The font key.
@@ -68,9 +95,49 @@ public class LoadableTfmFont
     private FontKey fontKey;
 
     /**
+     * Is the psfont.map file loaded?
+     */
+    private boolean loadPsFontMap = false;
+
+    /**
+     * The logger.
+     */
+    private Logger logger;
+
+    /**
+     * The psfonts.map entry.
+     */
+    private PsFontEncoding mapentry;
+
+    /**
+     * The pfa data.
+     */
+    private byte[] pfadata = null;
+
+    /**
+     * The pfb data.
+     */
+    private byte[] pfbdata = null;
+
+    /**
      * The tfm reader.
      */
     private TfmReader reader;
+
+    /**
+     * Is this a type1 font?
+     */
+    private boolean type1 = false;
+
+    /**
+     * Is this a xtf font?
+     */
+    private boolean xtf = false;
+
+    /**
+     * The xtf data.
+     */
+    private byte[] xtfdata = null;
 
     /**
      * Returns the char position of a Unicode char.
@@ -102,6 +169,93 @@ public class LoadableTfmFont
     }
 
     /**
+     * Check the tpye1.
+     */
+    private void checkType1() {
+
+        if (!checkType1) {
+            loadPsFontMap();
+
+            if (mapentry != null) {
+                String fontfile = mapentry.getFontfile();
+                if (fontfile.matches("$//.[pP][fF][bBaA]")) {
+                    type1 = true;
+
+                    if (fontfile.matches("$//.[pP][fF][bB]")) {
+                        InputStream pfbin =
+                                finder.findResource(fontfile, "pfb");
+                        if (pfbin == null) {
+                            logger.severe("pfb file: " + fontfile
+                                    + " not found!");
+                        } else {
+                            try {
+                                RandomAccessInputStream rar =
+                                        new RandomAccessInputStream(pfbin);
+                                pfbdata = rar.getData();
+                                rar.close();
+                            } catch (IOException e) {
+                                logger.severe("pfb file: " + e.getMessage());
+                            }
+                        }
+                    } else {
+                        // pfa
+                        logger.severe("pfa file: not yet implemented");
+                        // TODO mgn: add pfa ...
+                    }
+                }
+            }
+        }
+        checkType1 = true;
+    }
+
+    /**
+     * Check the xtf.
+     */
+    private void checkXtf() {
+
+        if (!checkXtf) {
+            loadPsFontMap();
+
+            if (mapentry != null) {
+                String fontfile = mapentry.getFontfile();
+                if (fontfile.matches("$//.[tToO][tT][fF]")) {
+                    xtf = true;
+                    InputStream xtfin = null;
+                    if (fontfile.matches("$//.[tT][tT][fF]")) {
+                        finder.findResource(fontfile, "ttf");
+                    } else {
+                        finder.findResource(fontfile, "otf");
+                    }
+                    if (xtfin == null) {
+                        logger.severe("xtf file: " + fontfile + " not found!");
+                    } else {
+                        try {
+                            RandomAccessInputStream rar =
+                                    new RandomAccessInputStream(xtfin);
+                            xtfdata = rar.getData();
+                            rar.close();
+                        } catch (IOException e) {
+                            logger.severe("xtf file: " + e.getMessage());
+                        }
+                    }
+                }
+            }
+        }
+        checkXtf = true;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
+     */
+    public void enableLogging(Logger logger) {
+
+        this.logger = logger;
+
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.font.BaseFont#getActualFontKey()
@@ -119,6 +273,17 @@ public class LoadableTfmFont
     public FixedDimen getActualSize() {
 
         return actualFontKey.getDimen(FontKey.SIZE);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#getAfm()
+     */
+    public byte[] getAfm() {
+
+        // TODO mgn: getAfm unimplemented
+        return null;
     }
 
     /**
@@ -281,6 +446,53 @@ public class LoadableTfmFont
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.BackendFont#getName()
+     */
+    public String getName() {
+
+        return fontKey.getName();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#getPfa()
+     */
+    public byte[] getPfa() {
+
+        checkType1();
+        if (pfadata != null) {
+            return pfadata;
+        }
+        if (pfbdata != null) {
+
+            try {
+                PfbParser parser = new PfbParser(pfbdata);
+                ByteArrayOutputStream pfa = new ByteArrayOutputStream();
+                parser.toPfa(pfa);
+                pfadata = pfa.toByteArray();
+
+            } catch (Exception e) {
+//                logger.severe("pfb file: error: " + e.getMessage());
+            }
+        }
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#getPfb()
+     */
+    public byte[] getPfb() {
+
+        checkType1();
+        return pfbdata;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getScaleFactor()
      */
     public FixedCount getScaleFactor() {
@@ -323,6 +535,32 @@ public class LoadableTfmFont
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.BackendFont#getXtf()
+     */
+    public byte[] getXtf() {
+
+        checkXtf();
+        return xtfdata;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#hasEncodingVector()
+     */
+    public boolean hasEncodingVector() {
+
+        String encfile = mapentry.getEncfile();
+
+        if (encfile != null && encfile.length() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.typesetter.tc.font.Font#hasGlyph(org.extex.core.UnicodeChar)
      */
     public boolean hasGlyph(UnicodeChar uc) {
@@ -333,6 +571,28 @@ public class LoadableTfmFont
             return false;
         }
         return true;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#isType1()
+     */
+    public boolean isType1() {
+
+        checkType1();
+        return type1;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#isXtf()
+     */
+    public boolean isXtf() {
+
+        checkXtf();
+        return xtf;
     }
 
     /**
@@ -395,24 +655,45 @@ public class LoadableTfmFont
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.BackendFont#getFontData()
+     * Load the psfonts.map file.
      */
-    public byte[] getFontData() {
+    private void loadPsFontMap() {
 
-        // TODO mgn: getFontData unimplemented
-        return null;
+        if (!loadPsFontMap) {
+            try {
+                InputStream mapin = finder.findResource("psfonts.map", "map");
+                PsFontsMapReader mapReader =
+                        PsFontsMapReader.getInstance(mapin);
+
+                mapentry = mapReader.getPSFontEncoding(fontKey.getName());
+                if (mapentry == null) {
+                    // TODO mgn: use properties...
+                   // logger.severe("psfonts.map: font " + fontKey.getName()
+                  //          + " not found!");
+                    type1 = false;
+                    xtf = false;
+                }
+            } catch (FontException e) {
+                // map file is not available!
+                // not use any font file
+                // TODO mgn: use properties...
+                //logger.severe("psfonts.map: " + e.getMessage());
+                type1 = false;
+                xtf = false;
+            }
+        }
+        loadPsFontMap = true;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.font.BackendFont#getName()
+     * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
      */
-    public String getName() {
+    public void setResourceFinder(ResourceFinder finder) {
 
-        return fontKey.getName();
+        this.finder = finder;
+
     }
 
 }

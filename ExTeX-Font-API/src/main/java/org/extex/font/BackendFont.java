@@ -28,18 +28,25 @@ package org.extex.font;
 public interface BackendFont {
 
     /**
+     * Returns the actual FontKey for this font after a font substitution.
+     * 
+     * @return Returns the actual FontKey for this font.
+     */
+    FontKey getActualFontKey();
+
+    /**
+     * Returns the afm data, or <code>null</code>, if not available.
+     * 
+     * @return Returns the afm data, or <code>null</code>, if not available.
+     */
+    byte[] getAfm();
+
+    /**
      * Returns the checksum of the font.
      * 
      * @return the checksum.
      */
     int getCheckSum();
-
-    /**
-     * Returns the data of the font.
-     * 
-     * @return the data of the font.
-     */
-    byte[] getFontData();
 
     /**
      * Returns the internal name of the font.
@@ -49,10 +56,48 @@ public interface BackendFont {
     String getName();
 
     /**
-     * Returns the actual FontKey for this font after a font substitution.
+     * Returns the pfa data, or <code>null</code>, if not available.
      * 
-     * @return Returns the actual FontKey for this font.
+     * @return Returns the pfa data, or <code>null</code>, if not available.
      */
-    FontKey getActualFontKey();
+    byte[] getPfa();
+
+    /**
+     * Returns the pfb data, or <code>null</code>, if not available.
+     * 
+     * @return Returns the pfb data, or <code>null</code>, if not available.
+     */
+    byte[] getPfb();
+
+    /**
+     * Returns the xtf data, or <code>null</code>, if not available.
+     * 
+     * @return Returns the xtf data, or <code>null</code>, if not available.
+     */
+    byte[] getXtf();
+
+    /**
+     * Returns <code>true</code>, if the font is a type 1 font (with
+     * afm/pfb), otherwise <code>false</code>.
+     * 
+     * @return Returns <code>true</code>, if the font is a type 1 font (with
+     *         afm/pfb), otherwise <code>false</code>.
+     */
+    boolean isType1();
+
+    /**
+     * Returns <code>true</code>, if the font is a ttf/otf font, otherwise
+     * <code>false</code>.
+     * 
+     * @return Returns <code>true</code>, if the font is a ttf/otf font,
+     *         otherwise <code>false</code>.
+     */
+    boolean isXtf();
+
+    /**
+     * Returns <code>true</code>, if the font has an encoding vector,
+     * otherwise <code>false</code>.
+     */
+    boolean hasEncodingVector();
 
 }

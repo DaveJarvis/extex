@@ -44,17 +44,25 @@ public class RunPdfExTeX {
     public static void main(String[] args) throws Exception {
 
         Properties prop = new Properties(System.getProperties());
+        // prop.setProperty("extex.typesetter", "devel");
         prop.setProperty("extex.output", "itext");
         File file = new File("test.pdf");
-        File filexml = new File("test.xml");
-        run(prop, "\\font\\hugo=LinLibertine " + "\\hugo " + "Hugo " + "\\end",
+
+        run(prop, "\\font\\hugo=fxlr " + "\\hugo " + "Hugo " + "\\end",
             new FileOutputStream(file));
         System.out.println("create " + file.getPath());
 
-        prop.setProperty("extex.output", "xml");
-        run(prop, "\\font\\hugo=LinLibertine " + "\\hugo " + "Hugo " + "\\end",
-            new FileOutputStream(filexml));
-        System.out.println("create " + file.getPath());
+        // File filexml = new File("test.xml");
+        // File filedump = new File("test.dump");
+        // prop.setProperty("extex.output", "xml");
+        // run(prop, "\\font\\hugo=cmr12 " + "\\hugo " + "Hugo " + "\\end",
+        // new FileOutputStream(filexml));
+        // System.out.println("create " + filexml.getPath());
+        //
+        // prop.setProperty("extex.output", "dump");
+        // run(prop, "\\font\\hugo=cmr12 " + "\\hugo " + "Hugo " + "\\end",
+        // new FileOutputStream(filedump));
+        // System.out.println("create " + filedump.getPath());
 
     }
 
