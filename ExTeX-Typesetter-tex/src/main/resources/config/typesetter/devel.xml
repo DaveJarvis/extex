@@ -22,7 +22,7 @@
 
   <PageBuilder class="org.extex.typesetter.pageBuilder.impl.PageBuilderImpl"/>
 
-  <ParagraphBuilder class="org.extex.typesetter.paragraphBuilder.trivial.TrivialBuilder"/>
+  <ParagraphBuilder class="org.extex.typesetter.core.paragraphBuilder.trivial.TrivialBuilder"/>
 
   <NodeFactory class="org.extex.typesetter.type.node.factory.CachingUnicodeNodeFactory"/>
 

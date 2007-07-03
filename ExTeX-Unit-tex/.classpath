@@ -17,5 +17,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font-tfm"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Backend-dump"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Interpreter-max"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Typesetter-core"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
