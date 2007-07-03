@@ -19,9 +19,11 @@
 
 package org.extex.font.format.tfm;
 
+import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -44,7 +46,10 @@ import org.extex.font.format.TfmMetricFont;
 import org.extex.font.format.pfb.PfbParser;
 import org.extex.font.format.psfontmap.PsFontEncoding;
 import org.extex.font.format.psfontmap.PsFontsMapReader;
+import org.extex.font.format.texencoding.EncReader;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
@@ -70,6 +75,11 @@ public class LoadableTfmFont
     private FontKey actualFontKey;
 
     /**
+     * The afm data.
+     */
+    private byte[] afmdata;
+
+    /**
      * If type1 checked?
      */
     private boolean checkType1 = false;
@@ -85,6 +95,11 @@ public class LoadableTfmFont
     private Map<UnicodeChar, Integer> codepointmap;
 
     /**
+     * The encoding vector.
+     */
+    private String[] encvec;
+
+    /**
      * The resource finder.
      */
     private ResourceFinder finder;
@@ -98,6 +113,13 @@ public class LoadableTfmFont
      * Is the psfont.map file loaded?
      */
     private boolean loadPsFontMap = false;
+
+    /**
+     * The field <tt>localizer</tt> contains the localizer. It is initiated
+     * with a localizer for the name of this class.
+     */
+    private Localizer localizer =
+            LocalizerFactory.getLocalizer(LoadableTfmFont.class);
 
     /**
      * The logger.
@@ -178,15 +200,16 @@ public class LoadableTfmFont
 
             if (mapentry != null) {
                 String fontfile = mapentry.getFontfile();
-                if (fontfile.matches("$//.[pP][fF][bBaA]")) {
+                if (fontfile.matches(".*\\.[pP][fF][bBaA]")) {
                     type1 = true;
 
-                    if (fontfile.matches("$//.[pP][fF][bB]")) {
+                    if (fontfile.matches(".*\\.[pP][fF][bB]")) {
                         InputStream pfbin =
-                                finder.findResource(fontfile, "pfb");
+                                finder.findResource(fontfile.replaceAll(
+                                    "\\.[pP][fF][bB]", ""), "pfb");
                         if (pfbin == null) {
-                            logger.severe("pfb file: " + fontfile
-                                    + " not found!");
+                            logger.severe(localizer.format(
+                                "Tfm.pfbFontNotFound", fontfile));
                         } else {
                             try {
                                 RandomAccessInputStream rar =
@@ -194,7 +217,9 @@ public class LoadableTfmFont
                                 pfbdata = rar.getData();
                                 rar.close();
                             } catch (IOException e) {
-                                logger.severe("pfb file: " + e.getMessage());
+                                logger.severe(localizer
+                                    .format("Tfm.pfbReadError", e
+                                        .getLocalizedMessage()));
                             }
                         }
                     } else {
@@ -203,6 +228,8 @@ public class LoadableTfmFont
                         // TODO mgn: add pfa ...
                     }
                 }
+                readerEncVec();
+                createAfm();
             }
         }
         checkType1 = true;
@@ -218,16 +245,19 @@ public class LoadableTfmFont
 
             if (mapentry != null) {
                 String fontfile = mapentry.getFontfile();
-                if (fontfile.matches("$//.[tToO][tT][fF]")) {
+                if (fontfile.matches(".*\\.[tToO][tT][fF]")) {
                     xtf = true;
                     InputStream xtfin = null;
-                    if (fontfile.matches("$//.[tT][tT][fF]")) {
-                        finder.findResource(fontfile, "ttf");
+                    if (fontfile.matches(".*\\.[tT][tT][fF]")) {
+                        finder.findResource(fontfile.replaceAll(
+                            "\\.[tT][tT][fF]", ""), "ttf");
                     } else {
-                        finder.findResource(fontfile, "otf");
+                        finder.findResource(fontfile.replaceAll(
+                            "\\.[tToO][tT][fF]", ""), "otf");
                     }
                     if (xtfin == null) {
-                        logger.severe("xtf file: " + fontfile + " not found!");
+                        logger.severe(localizer.format("Tfm.xtfFontNotFound",
+                            fontfile));
                     } else {
                         try {
                             RandomAccessInputStream rar =
@@ -235,13 +265,69 @@ public class LoadableTfmFont
                             xtfdata = rar.getData();
                             rar.close();
                         } catch (IOException e) {
-                            logger.severe("xtf file: " + e.getMessage());
+                            logger.severe(localizer.format("Tfm.xtfReadError",
+                                e.getLocalizedMessage()));
                         }
                     }
                 }
+                readerEncVec();
             }
         }
         checkXtf = true;
+    }
+
+    /**
+     * Convert Glue to the afm value.
+     * 
+     * @param val The glue value.
+     * @return Return the afm value.
+     */
+    private int convertGlue2AfmValue(FixedGlue val) {
+
+        return (int) (val.getLength().getValue() * 1000 / getActualSize()
+            .getValue());
+    }
+
+    /**
+     * Create the temporary afm data.
+     */
+    private void createAfm() {
+
+        if (afmdata == null && encvec != null) {
+            try {
+                ByteArrayOutputStream out = new ByteArrayOutputStream();
+                BufferedWriter writer =
+                        new BufferedWriter(new OutputStreamWriter(out,
+                            "US-ASCII"));
+                writer.write("StartFontMetrics 2.0\n");
+                writer.write("FontName " + actualFontKey.getName() + "\n");
+                writer.write("FullName " + actualFontKey.getName() + "\n");
+                writer.write("FamilyName " + actualFontKey.getName() + "\n");
+                writer.write("Weight Regular\n");
+                writer.write("StartCharMetrics " + encvec.length + "\n");
+                for (int i = 0; i < encvec.length; i++) {
+                    writer.write("C ");
+                    writer.write(String.valueOf(i));
+                    writer.write(" ; WX ");
+                    writer.write(String
+                        .valueOf(convertGlue2AfmValue(getWidth(UnicodeChar
+                            .get(i)))));
+                    writer.write(" ; N ");
+                    writer.write(encvec[i]);
+                    writer.write("\n");
+                }
+                writer.write("EndCharMetrics\n");
+                writer.write("EndFontMetrics\n");
+                writer.write("\n");
+                writer.close();
+                afmdata = out.toByteArray();
+
+            } catch (Exception e) {
+                logger.severe(localizer.format("Tfm.afmWriteError", e
+                    .getLocalizedMessage()));
+            }
+
+        }
     }
 
     /**
@@ -282,8 +368,8 @@ public class LoadableTfmFont
      */
     public byte[] getAfm() {
 
-        // TODO mgn: getAfm unimplemented
-        return null;
+        checkType1();
+        return afmdata;
     }
 
     /**
@@ -330,6 +416,18 @@ public class LoadableTfmFont
     public FixedDimen getEm() {
 
         return getFontDimen("QUAD");
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#getEncodingVector()
+     */
+    public String[] getEncodingVector() {
+
+        checkType1();
+        checkXtf();
+        return encvec;
     }
 
     /**
@@ -473,7 +571,7 @@ public class LoadableTfmFont
                 pfadata = pfa.toByteArray();
 
             } catch (Exception e) {
-//                logger.severe("pfb file: error: " + e.getMessage());
+                // logger.severe("pfb file: error: " + e.getMessage());
             }
         }
         return null;
@@ -661,28 +759,63 @@ public class LoadableTfmFont
 
         if (!loadPsFontMap) {
             try {
-                InputStream mapin = finder.findResource("psfonts.map", "map");
+                InputStream mapin = finder.findResource("psfonts", "map");
                 PsFontsMapReader mapReader =
                         PsFontsMapReader.getInstance(mapin);
 
                 mapentry = mapReader.getPSFontEncoding(fontKey.getName());
                 if (mapentry == null) {
-                    // TODO mgn: use properties...
-                   // logger.severe("psfonts.map: font " + fontKey.getName()
-                  //          + " not found!");
+                    logger.severe(localizer.format("Tfm.psfontmapFontNotFound",
+                        fontKey.getName()));
                     type1 = false;
                     xtf = false;
                 }
             } catch (FontException e) {
                 // map file is not available!
                 // not use any font file
-                // TODO mgn: use properties...
-                //logger.severe("psfonts.map: " + e.getMessage());
+                logger.severe(localizer.format("Tfm.psfontmapError", e
+                    .getLocalizedMessage()));
                 type1 = false;
                 xtf = false;
             }
         }
         loadPsFontMap = true;
+    }
+
+    /**
+     * Read the encoding vector.
+     */
+    private void readerEncVec() {
+
+        if (encvec == null) {
+            String encfile = mapentry.getEncfile();
+            if (encfile != null && encfile.length() > 0) {
+                InputStream encin = finder.findResource(encfile, "enc");
+                if (encin != null) {
+                    try {
+                        EncReader encReader = new EncReader(encin);
+                        encvec = encReader.getTableWithoutSlash();
+                    } catch (FontException e) {
+                        logger.severe(localizer.format("Tfm.encReadError", e
+                            .getLocalizedMessage()));
+                    }
+                } else {
+                    logger.severe(localizer.format("Tfm.encNotFound", encfile));
+                }
+            }
+        }
+        if (encvec == null) {
+            // try to get the encoding vector from the pfbdata
+            if (pfbdata != null) {
+                try {
+                    PfbParser pfbParser = new PfbParser(pfbdata);
+                    encvec = pfbParser.getEncoding();
+                } catch (FontException e) {
+                    logger.severe(localizer.format("Tfm.pfbReadError", e
+                        .getLocalizedMessage()));
+                }
+            }
+        }
     }
 
     /**

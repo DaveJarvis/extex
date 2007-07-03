@@ -93,12 +93,14 @@
     </tfm>
     <enc>
       <extension>.enc</extension>
+      <path>../texmf/src/texmf/fonts/enc</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
     </enc>
     <map>
-      <extension>.enc</extension>
+      <extension>.map</extension>
+      <path>../texmf/src/texmf/fonts/map</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
@@ -111,5 +113,12 @@
       <extension></extension>
     </default>
   </Finder>
-
+  <Finder class="org.extex.resource.FileFinderRPathImpl"
+	  trace="false" >
+	  <pfb>
+		  <extension>.pfb</extension>
+		  <path>../texmf/src/texmf/fonts/type1</path>
+	  </pfb>
+  
+  </Finder>
 </Resource>

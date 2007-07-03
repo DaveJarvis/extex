@@ -44,11 +44,11 @@ public class RunPdfExTeX {
     public static void main(String[] args) throws Exception {
 
         Properties prop = new Properties(System.getProperties());
-        // prop.setProperty("extex.typesetter", "devel");
+        //prop.setProperty("extex.typesetter", "devel");
         prop.setProperty("extex.output", "itext");
         File file = new File("test.pdf");
 
-        run(prop, "\\font\\hugo=fxlr " + "\\hugo " + "Hugo " + "\\end",
+        run(prop, "\\font\\hugo=cmr12 " + "\\hugo " + "Hugo " + "\\end",
             new FileOutputStream(file));
         System.out.println("create " + file.getPath());
 

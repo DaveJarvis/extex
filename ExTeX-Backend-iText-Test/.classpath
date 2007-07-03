@@ -33,5 +33,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-pdftex"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-tex"/>
 	<classpathentry kind="lib" path="/ExTeX-Backend-iText/lib/iText.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Typesetter-core"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -153,7 +153,7 @@ public class FileFinderRPathImpl
 
         File file;
         for (String ext : cfg.getValues("extension")) {
-            file = new File(fpath, name + (ext.equals("") ? "" : ".") + ext);
+            file = new File(fpath, name + (ext.equals("") ? "" : ".") + ext.replaceAll("^\\.", ""));
             if (trace && logger != null) {
                 logger.fine("FileFinder: Try " + file + "\n");
             }

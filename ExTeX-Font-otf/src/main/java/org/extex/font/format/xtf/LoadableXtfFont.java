@@ -163,6 +163,16 @@ public class LoadableXtfFont
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.BackendFont#getEncodingVector()
+     */
+    public String[] getEncodingVector() {
+
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getEx()
      */
     public FixedDimen getEx() {
@@ -449,7 +459,7 @@ public class LoadableXtfFont
         }
 
         // TODO mgn check the fontnumber
-        // usse at the moment the first font in cff
+        // use at the moment the first font in cff
 
     }
 

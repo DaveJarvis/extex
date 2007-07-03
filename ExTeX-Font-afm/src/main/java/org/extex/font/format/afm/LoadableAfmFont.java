@@ -283,6 +283,17 @@ public class LoadableAfmFont
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.BackendFont#getEncodingVector()
+     */
+    public String[] getEncodingVector() {
+
+        // TODO mgn: getEncodingVector unimplemented
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.ExtexFont#getEx()
      */
     public FixedDimen getEx() {

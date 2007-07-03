@@ -49,6 +49,14 @@ public interface BackendFont {
     int getCheckSum();
 
     /**
+     * Returns the encoding vector as string array (without a '/') or
+     * <code>null</code>, if no one exists.
+     * 
+     * @return Returns the encoding vector.
+     */
+    String[] getEncodingVector();
+
+    /**
      * Returns the internal name of the font.
      * 
      * @return the internal name of the font.
@@ -77,6 +85,12 @@ public interface BackendFont {
     byte[] getXtf();
 
     /**
+     * Returns <code>true</code>, if the font has an encoding vector,
+     * otherwise <code>false</code>.
+     */
+    boolean hasEncodingVector();
+
+    /**
      * Returns <code>true</code>, if the font is a type 1 font (with
      * afm/pfb), otherwise <code>false</code>.
      * 
@@ -93,11 +107,5 @@ public interface BackendFont {
      *         otherwise <code>false</code>.
      */
     boolean isXtf();
-
-    /**
-     * Returns <code>true</code>, if the font has an encoding vector,
-     * otherwise <code>false</code>.
-     */
-    boolean hasEncodingVector();
 
 }

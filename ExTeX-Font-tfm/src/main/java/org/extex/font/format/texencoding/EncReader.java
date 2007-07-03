@@ -52,6 +52,11 @@ public class EncReader implements Serializable {
     private String encname = "";
 
     /**
+     * The list for the glyphs.
+     */
+    private Map<String, Integer> glyphlist = null;
+
+    /**
      * The field <tt>localizer</tt> contains the localizer. It is initiated
      * with a localizer for the name of this class.
      */
@@ -119,11 +124,6 @@ public class EncReader implements Serializable {
     }
 
     /**
-     * The list for the glyphs.
-     */
-    private Map<String, Integer> glyphlist = null;
-
-    /**
      * Returns the position of the glyph in the table.
      * 
      * @param name The glyph name.
@@ -155,5 +155,19 @@ public class EncReader implements Serializable {
     public String[] getTable() {
 
         return table;
+    }
+
+    /**
+     * Returns the encoding table without a slash in the name.
+     * 
+     * @return Returns the encoding table.
+     */
+    public String[] getTableWithoutSlash() {
+
+        String[] xtab = new String[table.length];
+        for (int i = 0, n = xtab.length; i < n; i++) {
+            xtab[i] = table[i].replaceAll("/", "");
+        }
+        return xtab;
     }
 }
