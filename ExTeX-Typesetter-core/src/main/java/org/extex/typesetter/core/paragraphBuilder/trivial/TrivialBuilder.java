@@ -39,7 +39,6 @@ import org.extex.typesetter.paragraphBuilder.HangingParagraphShape;
 import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
 import org.extex.typesetter.type.Node;
-import org.extex.typesetter.type.NodeIterator;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.AfterMathNode;
 import org.extex.typesetter.type.node.BeforeMathNode;
