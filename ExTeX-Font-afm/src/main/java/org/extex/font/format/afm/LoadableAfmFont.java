@@ -737,7 +737,7 @@ public class LoadableAfmFont
             }
             encodingVectors.add(actualDynEnc);
             encodingVectorsPos = encodingVectors.size() - 1;
-            if (encodingVectors.size() > 1) {
+            if (encodingVectors.size() >= 1) {
                 hasMultiFonts = true;
             }
         }

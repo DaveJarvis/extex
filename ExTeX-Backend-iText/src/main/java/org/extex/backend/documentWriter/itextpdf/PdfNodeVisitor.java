@@ -115,11 +115,6 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     private org.extex.color.Color oldcolor = null;
 
     /**
-     * the fount key from the character before.
-     */
-    private FontKey oldfountkey = null;
-
-    /**
      * The page size.
      */
     private Rectangle pageSize;
@@ -308,21 +303,17 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
             drawNode(node);
 
             UnicodeChar uc = node.getCharacter();
-            Font newfont = node.getTypesettingContext().getFont();
-            FontKey newfountkey = newfont.getFontKey();
+            Font font = node.getTypesettingContext().getFont();
             org.extex.color.Color newcolor =
                     node.getTypesettingContext().getColor();
 
-            boolean aviable = manager.recognize(newfont.getFontKey(), uc);
+            boolean aviable = manager.recognize(font.getFontKey(), uc);
             if (!aviable) {
-                logger.severe(localizer.format("Pdf.incompatiblefont", newfont
+                logger.severe(localizer.format("Pdf.incompatiblefont", font
                     .getFontKey(), uc.toString()));
             } else {
 
-                if (!newfountkey.equals(oldfountkey)) {
-                    bf = PdfFontFactory.getFont(manager.getRecognizedFont(),uc);
-                    oldfountkey = newfountkey;
-                }
+                bf = PdfFontFactory.getFont(manager.getRecognizedFont(), uc);
 
                 // the same color?
                 if (!newcolor.equals(oldcolor)) {
@@ -330,7 +321,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
                     oldcolor = newcolor;
                 }
                 cb.beginText();
-                cb.setFontAndSize(bf, (float) Unit.getDimenAsPT(newfont
+                cb.setFontAndSize(bf, (float) Unit.getDimenAsPT(font
                     .getActualSize()));
                 cb.setTextMatrix(Unit.getDimenAsBP(currentX), pageSize.height()
                         - Unit.getDimenAsBP(currentY));

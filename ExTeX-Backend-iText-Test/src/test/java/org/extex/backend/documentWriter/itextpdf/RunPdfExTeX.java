@@ -36,6 +36,23 @@ import org.extex.core.exception.helping.HelpingException;
 public class RunPdfExTeX {
 
     /**
+     * The constant <tt>DEFINE_BRACES</tt> contains the definition of the
+     * usual category codes for braces { and }.
+     */
+    public static final String DEFINE_BRACES =
+            "\\catcode`\\{=1 " + "\\catcode`\\}=2\\relax ";
+
+    /**
+     * The constant <tt>DEFINE_CATCODES</tt> contains the definition of the
+     * usual category codes for {, }, $, &, #, ^, _, and ^^10.
+     */
+    public static final String DEFINE_CATCODES =
+            "\\catcode`\\{=1 " + "\\catcode`\\}=2 " + "\\catcode`\\$=3 "
+                    + "\\catcode`\\&=4 " + "\\catcode`\\#=6 "
+                    + "\\catcode`\\^=7 " + "\\catcode`\\_=8 "
+                    + "\\catcode`\\^^I=10 ";
+
+    /**
      * main.
      * 
      * @param args The command line arguments.
@@ -48,8 +65,8 @@ public class RunPdfExTeX {
         prop.setProperty("extex.output", "itext2");
         File file = new File("test.pdf");
 
-        run(prop, "\\font\\hugo=fxlr " + "\\hugo " + "Hugo " + "\\end",
-            new FileOutputStream(file));
+        run(prop, DEFINE_CATCODES + "\\font\\hugo=fxlr " + "\\hugo "
+                + "Hugo : ^^^^016e" + "\\end", new FileOutputStream(file));
         System.out.println("create " + file.getPath());
 
         // File filexml = new File("test.xml");
@@ -80,7 +97,8 @@ public class RunPdfExTeX {
         properties.setProperty("extex.code", code);
         properties.setProperty("extex.file", "");
         properties.setProperty("extex.nobanner", "true");
-        properties.setProperty("extex.config", "base-test.xml");
+        properties.setProperty("extex.config", "base32-test.xml");
+        properties.setProperty("extex.token.stream", "base32");
 
         ExTeX extex = new ExTeX(properties);
         extex.setOutStream(out);
