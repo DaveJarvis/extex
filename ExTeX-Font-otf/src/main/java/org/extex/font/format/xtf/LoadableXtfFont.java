@@ -21,6 +21,7 @@ package org.extex.font.format.xtf;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
@@ -29,6 +30,7 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
+import org.extex.font.BackendCharacter;
 import org.extex.font.BackendFont;
 import org.extex.font.CoreFontFactory;
 import org.extex.font.FontKey;
@@ -163,9 +165,19 @@ public class LoadableXtfFont
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.font.BackendFont#getEncodingVector()
+     * @see org.extex.font.BackendFont#getEncodingForChar(int)
      */
-    public String[] getEncodingVector() {
+    public int getEncodingForChar(int codepoint) {
+
+        return -1;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#getEncodingVectors()
+     */
+    public List<String[]> getEncodingVectors() {
 
         return null;
     }
@@ -392,6 +404,16 @@ public class LoadableXtfFont
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#hasMultiFonts()
+     */
+    public boolean hasMultiFonts() {
+
+        return false;
+    }
+
+    /**
      * Convert a int value to a <code>Dimen</code>.
      * 
      * @param val the value
@@ -460,6 +482,17 @@ public class LoadableXtfFont
 
         // TODO mgn check the fontnumber
         // use at the moment the first font in cff
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#usedCharacter(org.extex.font.BackendCharacter)
+     */
+    public void usedCharacter(BackendCharacter bc) {
+
+        // ignored
 
     }
 

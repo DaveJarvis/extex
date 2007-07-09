@@ -24,7 +24,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -36,6 +38,7 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
+import org.extex.font.BackendCharacter;
 import org.extex.font.BackendFont;
 import org.extex.font.CoreFontFactory;
 import org.extex.font.FontKey;
@@ -421,13 +424,28 @@ public class LoadableTfmFont
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.font.BackendFont#getEncodingVector()
+     * @see org.extex.font.BackendFont#getEncodingForChar(int)
      */
-    public String[] getEncodingVector() {
+    public int getEncodingForChar(int codepoint) {
+
+        return -1;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#getEncodingVectors()
+     */
+    public List<String[]> getEncodingVectors() {
 
         checkType1();
         checkXtf();
-        return encvec;
+        if (encvec == null) {
+            return null;
+        }
+        ArrayList<String[]> l = new ArrayList<String[]>();
+        l.add(encvec);
+        return l;
     }
 
     /**
@@ -674,6 +692,16 @@ public class LoadableTfmFont
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.BackendFont#hasMultiFonts()
+     */
+    public boolean hasMultiFonts() {
+
+        return false;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.BackendFont#isType1()
      */
     public boolean isType1() {
@@ -826,6 +854,17 @@ public class LoadableTfmFont
     public void setResourceFinder(ResourceFinder finder) {
 
         this.finder = finder;
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#usedCharacter(org.extex.font.BackendCharacter)
+     */
+    public void usedCharacter(BackendCharacter bc) {
+
+        // ignored
 
     }
 

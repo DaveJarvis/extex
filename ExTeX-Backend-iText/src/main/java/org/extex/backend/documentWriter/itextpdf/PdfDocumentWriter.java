@@ -248,14 +248,14 @@ public class PdfDocumentWriter
     public PdfDocumentWriter(Configuration config, DocumentWriterOptions options) {
 
         super();
-        docoptions = options;
+        this.options = options;
         configure(config);
     }
 
     /**
      * The document writer options.
      */
-    private DocumentWriterOptions docoptions;
+    private DocumentWriterOptions options;
 
     /**
      * The logger.

@@ -114,11 +114,19 @@
     </default>
   </Finder>
   <Finder class="org.extex.resource.FileFinderRPathImpl"
-	  trace="false" >
+	  trace="false" default="default">
 	  <pfb>
 		  <extension>.pfb</extension>
 		  <path>../texmf/src/texmf/fonts/type1</path>
+		  <path>../texmf/src/texmf/fonts/afm</path>
 	  </pfb>
-  
+	  <afm>
+		  <extension>.pfb</extension>
+		  <path>../texmf/src/texmf/fonts/afm</path>
+	  </afm>
+	  <default>
+		  <extension></extension>
+		  <path>../texmf/src/texmf</path>
+	  </default>
   </Finder>
 </Resource>

@@ -19,6 +19,8 @@
 
 package org.extex.font;
 
+import java.util.List;
+
 /**
  * Interface for a backend font.
  * 
@@ -49,12 +51,12 @@ public interface BackendFont {
     int getCheckSum();
 
     /**
-     * Returns the encoding vector as string array (without a '/') or
+     * Returns the encoding vectors as list of string array (without a '/') or
      * <code>null</code>, if no one exists.
      * 
-     * @return Returns the encoding vector.
+     * @return Returns the encoding vectors.
      */
-    String[] getEncodingVector();
+    List<String[]> getEncodingVectors();
 
     /**
      * Returns the internal name of the font.
@@ -91,6 +93,22 @@ public interface BackendFont {
     boolean hasEncodingVector();
 
     /**
+     * If <code>true</code>, the font has more the one font in it.
+     * 
+     * @return Returns <code>true</code>, if the font has more fonts in it.
+     */
+    boolean hasMultiFonts();
+
+    /**
+     * Returns the number of the encoding vector for the codepoint. If no
+     * enocding vector exists, -1 is returned.
+     * 
+     * @param codepoint The codepoint of the char.
+     * @return Returns the number of the encoding vector for the codepoint.
+     */
+    int getEncodingForChar(int codepoint);
+
+    /**
      * Returns <code>true</code>, if the font is a type 1 font (with
      * afm/pfb), otherwise <code>false</code>.
      * 
@@ -108,4 +126,10 @@ public interface BackendFont {
      */
     boolean isXtf();
 
+    /**
+     * Tells the font, which character is used.
+     * 
+     * @param bc The character.
+     */
+    void usedCharacter(BackendCharacter bc);
 }

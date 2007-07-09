@@ -22,8 +22,11 @@ package org.extex.font.format.afm;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -34,6 +37,7 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
+import org.extex.font.BackendCharacter;
 import org.extex.font.BackendFont;
 import org.extex.font.CoreFontFactory;
 import org.extex.font.FontKey;
@@ -72,9 +76,29 @@ public class LoadableAfmFont
             AfmMetricFont {
 
     /**
+     * The actual dynamic encoding vector.
+     */
+    private String[] actualDynEnc = null;
+
+    /**
+     * The actual position in the encoding vector.
+     */
+    private int actualDynPos = 0;
+
+    /**
      * The actual font key.
      */
     private FontKey actualFontKey;
+
+    /**
+     * The list of encoding vectors.
+     */
+    private List<String[]> encodingVectors = null;
+
+    /**
+     * The position of the encoding vector.
+     */
+    private int encodingVectorsPos = 0;
 
     /**
      * The resource finder.
@@ -96,6 +120,11 @@ public class LoadableAfmFont
      * The glyph name Unicode table.
      */
     private GlyphName glyphname;
+
+    /**
+     * Has multi fonts.
+     */
+    private boolean hasMultiFonts = false;
 
     /**
      * The last used char metric (for caching).
@@ -148,6 +177,13 @@ public class LoadableAfmFont
      * The pfb data.
      */
     private byte[] pfbdata;
+
+    /**
+     * Map for the used code points and the corresponding encoding vector
+     * position.
+     */
+    private Map<Integer, Integer> useCodepoints =
+            new HashMap<Integer, Integer>();
 
     /**
      * {@inheritDoc}
@@ -283,12 +319,26 @@ public class LoadableAfmFont
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.font.BackendFont#getEncodingVector()
+     * @see org.extex.font.BackendFont#getEncodingForChar(int)
      */
-    public String[] getEncodingVector() {
+    public int getEncodingForChar(int codepoint) {
 
-        // TODO mgn: getEncodingVector unimplemented
-        return null;
+        Integer pos = useCodepoints.get(codepoint);
+        if (pos != null) {
+            return pos.intValue();
+        }
+
+        return -1;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#getEncodingVectors()
+     */
+    public List<String[]> getEncodingVectors() {
+
+        return encodingVectors;
     }
 
     /**
@@ -553,6 +603,16 @@ public class LoadableAfmFont
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.BackendFont#hasMultiFonts()
+     */
+    public boolean hasMultiFonts() {
+
+        return hasMultiFonts;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.font.BackendFont#isType1()
      */
     public boolean isType1() {
@@ -650,6 +710,54 @@ public class LoadableAfmFont
     public void setResourceFinder(ResourceFinder finder) {
 
         this.finder = finder;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.BackendFont#usedCharacter(org.extex.font.BackendCharacter)
+     */
+    public void usedCharacter(BackendCharacter bc) {
+
+        // check, if the char is in the default encoding.
+        int codepoint = bc.getId();
+        if (codepoint >= 0 && codepoint < 256) {
+            String glyph = parser.getDefaultEncodingVector()[codepoint];
+            if (glyph != null && !glyph.equals(".notdef")) {
+                // default encoding -> exit
+                return;
+            }
+        }
+
+        if (actualDynEnc == null) {
+            actualDynEnc = new String[256];
+            Arrays.fill(actualDynEnc, ".notdef");
+            if (encodingVectors == null) {
+                encodingVectors = new ArrayList<String[]>();
+            }
+            encodingVectors.add(actualDynEnc);
+            encodingVectorsPos = encodingVectors.size() - 1;
+            if (encodingVectors.size() > 1) {
+                hasMultiFonts = true;
+            }
+        }
+        if (!useCodepoints.containsKey(codepoint)) {
+            useCodepoints.put(codepoint, encodingVectorsPos);
+
+            try {
+                String name =
+                        GlyphName.getInstance().getGlyphname(
+                            UnicodeChar.get(codepoint));
+                actualDynEnc[actualDynPos++] = name;
+                if (actualDynPos >= actualDynEnc.length) {
+                    actualDynEnc = null;
+                }
+
+            } catch (IOException e) {
+                logger.severe(localizer.format("Afm.errorGlyphName", e
+                    .getLocalizedMessage()));
+            }
+        }
     }
 
 }

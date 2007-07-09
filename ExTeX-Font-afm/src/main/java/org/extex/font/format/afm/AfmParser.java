@@ -27,6 +27,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -112,6 +113,8 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
      */
     public AfmParser(InputStream in) throws FontException {
 
+        Arrays.fill(defaultEncodingVector, ".notdef");
+
         try {
             BufferedReader reader = createReader(in);
             header = new AfmHeader();
@@ -189,6 +192,11 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
             }
             afmCharMetrics.add(cm);
 
+            int pos = cm.getC();
+            if (pos >= 0 && pos < 256) {
+                defaultEncodingVector[pos] = cm.getN();
+            }
+
             // store name and number
             if (afmCharNameNumber.containsKey(cm.getN())) {
                 if (cm.getC() != -1) {
@@ -206,6 +214,11 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
         }
         return isMetrics;
     }
+
+    /**
+     * The default encoding.
+     */
+    private String[] defaultEncodingVector = new String[256];
 
     /**
      * Create a reader and copy the font data.
@@ -781,6 +794,16 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
         }
 
         writer.writeEndElement();
+    }
+
+    /**
+     * Getter for defaultEncodingVector.
+     * 
+     * @return the defaultEncodingVector
+     */
+    public String[] getDefaultEncodingVector() {
+
+        return defaultEncodingVector;
     }
 
 }

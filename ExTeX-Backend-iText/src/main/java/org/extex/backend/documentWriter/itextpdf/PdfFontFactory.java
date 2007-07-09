@@ -20,11 +20,14 @@
 package org.extex.backend.documentWriter.itextpdf;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.WeakHashMap;
 import java.util.logging.Logger;
 
+import org.extex.core.UnicodeChar;
 import org.extex.font.BackendFont;
 import org.extex.font.FontKey;
+import org.extex.font.unicode.GlyphName;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
@@ -42,7 +45,7 @@ public class PdfFontFactory {
     /**
      * The map for the fonts.
      */
-    private static WeakHashMap<FontKey, BaseFont> fonts;
+    private static WeakHashMap<String, BaseFont> fonts;
 
     /**
      * The field <tt>localizer</tt> contains the localizer. It is initiated
@@ -60,11 +63,12 @@ public class PdfFontFactory {
      * Returns the font for the pdf backend.
      * 
      * @param backendfont The backend font.
+     * @param uc The unicode character.
      * @return Returns the font for the pdf backend.
      * @throws DocumentException if a document error occurred.
      * @throws IOException if a io-error occurred.
      */
-    public static BaseFont getFont(BackendFont backendfont)
+    public static BaseFont getFont(BackendFont backendfont, UnicodeChar uc)
             throws DocumentException,
                 IOException {
 
@@ -73,10 +77,16 @@ public class PdfFontFactory {
         }
 
         if (fonts == null) {
-            fonts = new WeakHashMap<FontKey, BaseFont>();
+            fonts = new WeakHashMap<String, BaseFont>();
         }
         FontKey key = backendfont.getActualFontKey();
-        BaseFont font = fonts.get(key);
+        String encodingVectorKey = " encVec: -";
+        int encpos = -1;
+        if (backendfont.hasMultiFonts() && uc != null) {
+            encpos = backendfont.getEncodingForChar(uc.getCodePoint());
+            encodingVectorKey = " encVec: " + String.valueOf(encpos);
+        }
+        BaseFont font = fonts.get(key.toString() + encodingVectorKey);
 
         if (font != null) {
             return font;
@@ -100,14 +110,42 @@ public class PdfFontFactory {
             byte[] pfbdata = backendfont.getPfb();
 
             if (afmdata != null && pfbdata != null) {
-                // TODO mgn: check encoding
+                String encoding = "";
+                if (encpos >= 0) {
+                    // Example for a "full" encoding for a Type1 Tex font:
+                    // "# full
+                    // 'A' nottriangeqlleft 0041
+                    // 'B' dividemultiply 0042
+                    // 32 space 0020"
+
+                    List<String[]> enclist = backendfont.getEncodingVectors();
+                    String enc[] = enclist.get(encpos);
+                    if (enc != null) {
+                        StringBuffer buf = new StringBuffer("# full");
+                        GlyphName glyphName = GlyphName.getInstance();
+                        for (int i = 0; i < enc.length; i++) {
+                            if (!enc[i].equals(".notdef")) {
+                                buf.append(" ").append(i).append(" ");
+                                buf.append(enc[i]).append(" ");
+                                UnicodeChar uni = glyphName.getUnicode(enc[i]);
+                                if (uni != null) {
+                                    buf.append(Integer.toHexString(uni
+                                        .getCodePoint()));
+                                } else {
+                                    // uses the number
+                                    buf.append(Integer.toHexString(i));
+                                }
+                            }
+                        }
+                        encoding = buf.toString();
+                    }
+                }
+
                 font =
-                        BaseFont
-                            .createFont(
-                                key.getName() + ".afm" /* name */,
-                                "" /* BaseFont.CP1252 *//* encoding */,
-                                true /* embedded */, true /* cached */,
-                                afmdata /* ttf,afm */, pfbdata /* pfb */);
+                        BaseFont.createFont(key.getName() + ".afm" /* name */,
+                            encoding /* BaseFont.CP1252 *//* encoding */,
+                            true /* embedded */, true /* cached */,
+                            afmdata /* ttf,afm */, pfbdata /* pfb */);
                 logInfo(localizer.format("PdfFontFactory.useFont", "Type1", key
                     .getName()));
             } else {
@@ -123,7 +161,7 @@ public class PdfFontFactory {
                 .getName()));
         }
         // store it
-        fonts.put(key, font);
+        fonts.put(key.toString() + encodingVectorKey, font);
 
         return font;
     }

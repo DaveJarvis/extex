@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,16 +19,10 @@
 
 package org.extex.backend.documentWriter.itextpdf;
 
-import java.awt.Color;
-import java.util.logging.Logger;
-
 import org.extex.core.UnicodeChar;
-import org.extex.core.dimen.Dimen;
-import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.font.BackendFontManager;
-import org.extex.font.FontKey;
-import org.extex.framework.i18n.Localizer;
+import org.extex.font.exception.FontException;
 import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeVisitor;
@@ -52,181 +46,29 @@ import org.extex.typesetter.type.node.SpaceNode;
 import org.extex.typesetter.type.node.VerticalListNode;
 import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.WhatsItNode;
-import org.extex.util.Unit;
-
-import com.lowagie.text.Document;
-import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
-import com.lowagie.text.pdf.PdfWriter;
 
 /**
- * PDF NodeVisitor.
+ * Node visitor, which collect all nodes.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
+public class CollectNodeVisitor implements NodeVisitor<Object, Object> {
 
-public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
-
-    /**
-     * The line width.
-     */
-    private static final float LINEWIDTH = 0.1f;
 
     /**
-     * The logger.
-     */
-    private Logger logger;
-
-    /**
-     * The base font.
-     */
-    private BaseFont bf;
-
-    /**
-     * The direct content of the pdf page.
-     */
-    private PdfContentByte cb;
-
-    /**
-     * current x position.
-     */
-    private Dimen currentX = new Dimen();
-
-    /**
-     * current y position.
-     */
-    private Dimen currentY = new Dimen();
-
-    /**
-     * The pdf document.
-     */
-    private Document document;
-
-    /**
-     * The backend font manager.
+     * The backend manager.
      */
     private BackendFontManager manager;
 
     /**
-     * the color from the character before.
-     */
-    private org.extex.color.Color oldcolor = null;
-
-    /**
-     * the fount key from the character before.
-     */
-    private FontKey oldfountkey = null;
-
-    /**
-     * The page size.
-     */
-    private Rectangle pageSize;
-
-    /**
-     * The pdf writer.
-     */
-    private PdfWriter writer;
-
-    /**
      * Creates a new object.
      * 
-     * @param document The pdf document.
-     * @param writer The pdf writer.
-     * @param manager The backend font manager
-     * @param logger The logger.
-     * @param localizer The localizer
+     * @param manager
      */
-    public PdfNodeVisitor(Document document, PdfWriter writer,
-            BackendFontManager manager, Logger logger, Localizer localizer) {
+    public CollectNodeVisitor(BackendFontManager manager) {
 
-        this.document = document;
-        this.writer = writer;
         this.manager = manager;
-        this.logger = logger;
-        this.localizer = localizer;
-        cb = writer.getDirectContent();
-    }
-
-    /**
-     * The localizer.
-     */
-    private Localizer localizer;
-
-    /**
-     * Draw a box around the node (only for test).
-     * 
-     * @param node the node
-     * @param fill fill the box.
-     */
-    private void drawNode(Node node) {
-
-        Color line = Color.GREEN;
-        if (node instanceof VerticalListNode) {
-            line = Color.RED;
-        } else if (node instanceof HorizontalListNode) {
-            line = Color.YELLOW;
-        }
-        cb.setColorStroke(line);
-        cb.setLineWidth(LINEWIDTH);
-        float cx = Unit.getDimenAsBP(currentX);
-        float cy = Unit.getDimenAsBP(currentY);
-        float w = Unit.getDimenAsBP(node.getWidth());
-        float h = Unit.getDimenAsBP(node.getHeight());
-        float d = Unit.getDimenAsBP(node.getDepth());
-
-        cb.moveTo(cx, pageSize.height() - cy);
-        cb.lineTo(cx + w, pageSize.height() - cy);
-        cb.moveTo(cx, pageSize.height() - cy);
-        cb.lineTo(cx, pageSize.height() - cy + h);
-        cb.moveTo(cx + w, pageSize.height() - cy);
-        cb.lineTo(cx + w, pageSize.height() - cy + h);
-        cb.moveTo(cx + w, pageSize.height() - cy + h);
-        cb.lineTo(cx, pageSize.height() - cy + h);
-        cb.stroke();
-        if (node.getDepth().getValue() != 0) {
-            cb.moveTo(cx, pageSize.height() - cy);
-            cb.lineTo(cx, pageSize.height() - cy - d);
-            cb.moveTo(cx, pageSize.height() - cy - d);
-            cb.lineTo(cx + w, pageSize.height() - cy - d);
-            cb.moveTo(cx + w, pageSize.height() - cy - d);
-            cb.lineTo(cx + w, pageSize.height() - cy);
-            cb.stroke();
-        }
-    }
-
-    /**
-     * Set the page size.
-     * 
-     * @param pageSize The size of the page.
-     */
-    public void setPageSize(Rectangle pageSize) {
-
-        this.pageSize = pageSize;
-
-    }
-
-    /**
-     * Set the x position.
-     * 
-     * @param x The x value.
-     */
-    public void setX(FixedDimen x) {
-
-        currentX.set(x);
-
-    }
-
-    /**
-     * Set the y position.
-     * 
-     * @param y The y value.
-     */
-    public void setY(FixedDimen y) {
-
-        currentY.set(y);
-
     }
 
     /**
@@ -238,7 +80,6 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     public Object visitAdjust(AdjustNode node, Object value)
             throws GeneralException {
 
-        // TODO mgn: visitAdjust unimplemented
         return null;
     }
 
@@ -251,7 +92,6 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     public Object visitAfterMath(AfterMathNode node, Object value)
             throws GeneralException {
 
-        // TODO mgn: visitAfterMath unimplemented
         return null;
     }
 
@@ -264,7 +104,6 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     public Object visitAlignedLeaders(AlignedLeadersNode node, Object value)
             throws GeneralException {
 
-        // TODO mgn: visitAlignedLeaders unimplemented
         return null;
     }
 
@@ -277,7 +116,6 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     public Object visitBeforeMath(BeforeMathNode node, Object value)
             throws GeneralException {
 
-        // TODO mgn: visitBeforeMath unimplemented
         return null;
     }
 
@@ -290,7 +128,6 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     public Object visitCenteredLeaders(CenteredLeadersNode node, Object value)
             throws GeneralException {
 
-        // TODO mgn: visitCenteredLeaders unimplemented
         return null;
     }
 
@@ -305,42 +142,14 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
 
         try {
 
-            drawNode(node);
-
             UnicodeChar uc = node.getCharacter();
-            Font newfont = node.getTypesettingContext().getFont();
-            FontKey newfountkey = newfont.getFontKey();
-            org.extex.color.Color newcolor =
-                    node.getTypesettingContext().getColor();
+            Font font = node.getTypesettingContext().getFont();
+            manager.recognize(font.getFontKey(), uc);
 
-            boolean aviable = manager.recognize(newfont.getFontKey(), uc);
-            if (!aviable) {
-                logger.severe(localizer.format("Pdf.incompatiblefont", newfont
-                    .getFontKey(), uc.toString()));
-            } else {
-
-                if (!newfountkey.equals(oldfountkey)) {
-                    bf = PdfFontFactory.getFont(manager.getRecognizedFont(),uc);
-                    oldfountkey = newfountkey;
-                }
-
-                // the same color?
-                if (!newcolor.equals(oldcolor)) {
-                    // newcolor.visit(colorVisitor, contentStream);
-                    oldcolor = newcolor;
-                }
-                cb.beginText();
-                cb.setFontAndSize(bf, (float) Unit.getDimenAsPT(newfont
-                    .getActualSize()));
-                cb.setTextMatrix(Unit.getDimenAsBP(currentX), pageSize.height()
-                        - Unit.getDimenAsBP(currentY));
-                cb.showText(uc.toString());
-                cb.endText();
-            }
-            currentX.add(node.getWidth());
-        } catch (Exception e) {
-            throw new GeneralException(e.getMessage());
+        } catch (FontException e) {
+            throw new GeneralException(e.getLocalizedMessage());
         }
+
         return null;
     }
 
@@ -353,7 +162,6 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     public Object visitDiscretionary(DiscretionaryNode node, Object value)
             throws GeneralException {
 
-        // TODO mgn: visitDiscretionary unimplemented
         return null;
     }
 
@@ -366,7 +174,6 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     public Object visitExpandedLeaders(ExpandedLeadersNode node, Object value)
             throws GeneralException {
 
-        // TODO mgn: visitExpandedLeaders unimplemented
         return null;
     }
 
@@ -379,7 +186,6 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     public Object visitGlue(GlueNode node, Object value)
             throws GeneralException {
 
-        // TODO mgn: visitGlue unimplemented
         return null;
     }
 
@@ -392,18 +198,9 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     public Object visitHorizontalList(HorizontalListNode node, Object value)
             throws GeneralException {
 
-        Dimen saveX = new Dimen(currentX);
-        Dimen saveY = new Dimen(currentY);
-
-        drawNode(node);
-
         for (Node n : node) {
             n.visit(this, node);
         }
-        currentX.set(saveX);
-        currentY.set(saveY);
-        currentX.add(node.getWidth());
-
         return null;
     }
 
@@ -416,7 +213,6 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     public Object visitInsertion(InsertionNode node, Object value)
             throws GeneralException {
 
-        // TODO mgn: visitInsertion unimplemented
         return null;
     }
 
@@ -429,7 +225,6 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     public Object visitKern(KernNode node, Object value)
             throws GeneralException {
 
-        // TODO mgn: visitKern unimplemented
         return null;
     }
 
@@ -442,7 +237,6 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     public Object visitLigature(LigatureNode node, Object value)
             throws GeneralException {
 
-        // TODO mgn: visitLigature unimplemented
         return null;
     }
 
@@ -455,7 +249,6 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     public Object visitMark(MarkNode node, Object value)
             throws GeneralException {
 
-        // TODO mgn: visitMark unimplemented
         return null;
     }
 
@@ -468,7 +261,6 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     public Object visitPenalty(PenaltyNode node, Object value)
             throws GeneralException {
 
-        // TODO mgn: visitPenalty unimplemented
         return null;
     }
 
@@ -481,7 +273,6 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     public Object visitRule(RuleNode node, Object value)
             throws GeneralException {
 
-        // TODO mgn: visitRule unimplemented
         return null;
     }
 
@@ -494,7 +285,6 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     public Object visitSpace(SpaceNode node, Object value)
             throws GeneralException {
 
-        // TODO mgn: visitSpace unimplemented
         return null;
     }
 
@@ -507,18 +297,9 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     public Object visitVerticalList(VerticalListNode node, Object value)
             throws GeneralException {
 
-        Dimen saveX = new Dimen(currentX);
-        Dimen saveY = new Dimen(currentY);
-
-        drawNode(node);
-
         for (Node n : node) {
             n.visit(this, node);
         }
-        currentX.set(saveX);
-        currentY.set(saveY);
-        currentY.add(node.getDepth());
-        currentY.add(node.getHeight());
 
         return null;
     }
@@ -532,7 +313,6 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     public Object visitVirtualChar(VirtualCharNode node, Object value)
             throws GeneralException {
 
-        // TODO mgn: visitVirtualChar unimplemented
         return null;
     }
 
@@ -545,7 +325,6 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     public Object visitWhatsIt(WhatsItNode node, Object value)
             throws GeneralException {
 
-        // TODO mgn: visitWhatsIt unimplemented
         return null;
     }
 
