@@ -27,7 +27,6 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.font.BackendFontManager;
-import org.extex.font.FontKey;
 import org.extex.framework.i18n.Localizer;
 import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.Node;
@@ -370,7 +369,9 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     public Object visitGlue(GlueNode node, Object value)
             throws GeneralException {
 
-        // TODO mgn: visitGlue unimplemented
+        currentX.add(node.getWidth());
+        currentY.add(node.getHeight());
+        currentY.add(node.getDepth());
         return null;
     }
 
@@ -485,7 +486,9 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     public Object visitSpace(SpaceNode node, Object value)
             throws GeneralException {
 
-        // TODO mgn: visitSpace unimplemented
+        currentX.add(node.getWidth());
+        currentY.add(node.getHeight());
+        currentY.add(node.getDepth());
         return null;
     }
 
