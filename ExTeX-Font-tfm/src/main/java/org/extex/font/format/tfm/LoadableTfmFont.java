@@ -98,14 +98,14 @@ public class LoadableTfmFont
     private Map<UnicodeChar, Integer> codepointmap;
 
     /**
-     * The encoding vector.
-     */
-    private String[] encvec;
-
-    /**
      * The resource finder.
      */
     private ResourceFinder finder;
+
+    /**
+     * The encoding vector from the font.
+     */
+    private String[] fontEncvec;
 
     /**
      * The font key.
@@ -296,7 +296,7 @@ public class LoadableTfmFont
      */
     private void createAfm() {
 
-        if (afmdata == null && encvec != null) {
+        if (afmdata == null && fontEncvec != null) {
             try {
                 ByteArrayOutputStream out = new ByteArrayOutputStream();
                 BufferedWriter writer =
@@ -307,8 +307,8 @@ public class LoadableTfmFont
                 writer.write("FullName " + actualFontKey.getName() + "\n");
                 writer.write("FamilyName " + actualFontKey.getName() + "\n");
                 writer.write("Weight Regular\n");
-                writer.write("StartCharMetrics " + encvec.length + "\n");
-                for (int i = 0; i < encvec.length; i++) {
+                writer.write("StartCharMetrics " + fontEncvec.length + "\n");
+                for (int i = 0; i < fontEncvec.length; i++) {
                     writer.write("C ");
                     writer.write(String.valueOf(i));
                     writer.write(" ; WX ");
@@ -316,7 +316,7 @@ public class LoadableTfmFont
                         .valueOf(convertGlue2AfmValue(getWidth(UnicodeChar
                             .get(i)))));
                     writer.write(" ; N ");
-                    writer.write(encvec[i]);
+                    writer.write(fontEncvec[i]);
                     writer.write("\n");
                 }
                 writer.write("EndCharMetrics\n");
@@ -440,11 +440,11 @@ public class LoadableTfmFont
 
         checkType1();
         checkXtf();
-        if (encvec == null) {
+        if (fontEncvec == null) {
             return null;
         }
         ArrayList<String[]> l = new ArrayList<String[]>();
-        l.add(encvec);
+        l.add(fontEncvec);
         return l;
     }
 
@@ -666,9 +666,9 @@ public class LoadableTfmFont
      */
     public boolean hasEncodingVector() {
 
-        String encfile = mapentry.getEncfile();
-
-        if (encfile != null && encfile.length() > 0) {
+        checkType1();
+        checkXtf();
+        if (fontEncvec != null) {
             return true;
         }
         return false;
@@ -815,14 +815,14 @@ public class LoadableTfmFont
      */
     private void readerEncVec() {
 
-        if (encvec == null) {
+        if (fontEncvec == null) {
             String encfile = mapentry.getEncfile();
             if (encfile != null && encfile.length() > 0) {
                 InputStream encin = finder.findResource(encfile, "enc");
                 if (encin != null) {
                     try {
                         EncReader encReader = new EncReader(encin);
-                        encvec = encReader.getTableWithoutSlash();
+                        fontEncvec = encReader.getTableWithoutSlash();
                     } catch (FontException e) {
                         logger.severe(localizer.format("Tfm.encReadError", e
                             .getLocalizedMessage()));
@@ -832,12 +832,12 @@ public class LoadableTfmFont
                 }
             }
         }
-        if (encvec == null) {
+        if (fontEncvec == null) {
             // try to get the encoding vector from the pfbdata
             if (pfbdata != null) {
                 try {
                     PfbParser pfbParser = new PfbParser(pfbdata);
-                    encvec = pfbParser.getEncoding();
+                    fontEncvec = pfbParser.getEncoding();
                 } catch (FontException e) {
                     logger.severe(localizer.format("Tfm.pfbReadError", e
                         .getLocalizedMessage()));

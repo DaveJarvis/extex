@@ -421,7 +421,7 @@ public class PdfNodeVisitor implements NodeVisitor<Object, Object> {
     public Object visitKern(KernNode node, Object value)
             throws GeneralException {
 
-        // TODO mgn: visitKern unimplemented
+        currentX.subtract(node.getWidth());
         return null;
     }
 

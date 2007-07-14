@@ -124,6 +124,10 @@
 		  <extension>.pfb</extension>
 		  <path>../texmf/src/texmf/fonts/afm</path>
 	  </afm>
+	  <tfm>
+		  <extension>.tfm</extension>
+		  <path>../texmf/src/texmf/fonts/tfm</path>
+	  </tfm>
 	  <default>
 		  <extension></extension>
 		  <path>../texmf/src/texmf</path>

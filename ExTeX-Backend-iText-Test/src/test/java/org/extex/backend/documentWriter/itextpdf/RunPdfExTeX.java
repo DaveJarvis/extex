@@ -62,11 +62,16 @@ public class RunPdfExTeX {
 
         Properties prop = new Properties(System.getProperties());
         prop.setProperty("extex.typesetter", "devel");
-        prop.setProperty("extex.output", "itext2");
+        prop.setProperty("extex.output", "itext");
         File file = new File("test.pdf");
 
-        run(prop, DEFINE_CATCODES + "\\font\\hugo=fxlr " + "\\hugo "
-                + "Hugo : ^^^^016e" + "\\end", new FileOutputStream(file));
+        StringBuffer buf = new StringBuffer(DEFINE_CATCODES);
+        buf.append("\\font\\hugo=antpb ");
+        buf.append("\\hugo " + "Hugo : x");
+        buf.append("\\par");
+        buf.append("\\end");
+
+        run(prop, buf.toString(), new FileOutputStream(file));
         System.out.println("create " + file.getPath());
 
         // File filexml = new File("test.xml");
