@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -21,6 +21,7 @@ package org.extex.font.format.xtf;
 
 import java.io.IOException;
 
+import org.extex.font.format.xtf.cff.LookupTableFactory;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
@@ -34,17 +35,8 @@ import org.extex.util.xml.XMLWriterConvertible;
 public class OtfTableGSUB extends AbstractXtfTable
         implements
             XtfTable,
+            LookupTableFactory,
             XMLWriterConvertible {
-
-    /**
-     * Version
-     */
-    private int version;
-
-    /**
-     * scriptlist
-     */
-    private XtfScriptList scriptList;
 
     /**
      * featurelist
@@ -55,6 +47,16 @@ public class OtfTableGSUB extends AbstractXtfTable
      * lookuplist
      */
     private XtfLookupList lookupList;
+
+    /**
+     * scriptlist
+     */
+    private XtfScriptList scriptList;
+
+    /**
+     * Version
+     */
+    private int version;
 
     /**
      * Create a new object
@@ -84,27 +86,8 @@ public class OtfTableGSUB extends AbstractXtfTable
                 new XtfFeatureList(rar, de.getOffset() + featureListOffset);
 
         // Lookup List
-        lookupList = new XtfLookupList(rar, de.getOffset() + lookupListOffset);
-    }
-
-    /**
-     * Get the table type, as a table directory value.
-     * 
-     * @return Returns the table type
-     */
-    public int getType() {
-
-        return XtfReader.GSUB;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.font.format.xtf.XtfTable#getShortcut()
-     */
-    public String getShortcut() {
-
-        return "gsub";
+        lookupList =
+                new XtfLookupList(rar, de.getOffset() + lookupListOffset, this);
     }
 
     /**
@@ -132,6 +115,26 @@ public class OtfTableGSUB extends AbstractXtfTable
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.XtfTable#getShortcut()
+     */
+    public String getShortcut() {
+
+        return "gsub";
+    }
+
+    /**
+     * Get the table type, as a table directory value.
+     * 
+     * @return Returns the table type
+     */
+    public int getType() {
+
+        return XtfReader.GSUB;
+    }
+
+    /**
      * @return Returns the version.
      */
     public int getVersion() {
@@ -141,15 +144,43 @@ public class OtfTableGSUB extends AbstractXtfTable
 
     /**
      * {@inheritDoc}
-     *
+     * 
+     * @see org.extex.font.format.xtf.cff.LookupTableFactory#read(org.extex.util.file.random.RandomAccessR,
+     *      int, int)
+     */
+    public XtfLookupTable read(RandomAccessR rar, int type, int offset)
+            throws IOException {
+
+        switch (type) {
+            case XtfLookup.SINGLE:
+                return XtfSingleTable.newInstance(rar, offset);
+            case XtfLookup.MULTIPLE:
+                return XtfMultipleTable.newInstance(rar, offset);
+            case XtfLookup.ALTERNATE:
+                return XtfAlternateTable.newInstance(rar, offset);
+            case XtfLookup.LIGATURE:
+                return XtfLigatureTable.newInstance(rar, offset);
+            case XtfLookup.CONTEXT:
+                return XtfContextTable.newInstance(rar, offset);
+            case XtfLookup.CHAINING:
+                return XtfChainingTable.newInstance(rar, offset);
+        }
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writeStartElement(writer);
-        writer.writeComment("incomplete");
+        writer.writeAttribute("version", version);
+        scriptList.writeXML(writer);
+        featureList.writeXML(writer);
+        lookupList.writeXML(writer);
         writer.writeEndElement();
     }
-
 }

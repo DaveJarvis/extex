@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -22,157 +22,98 @@ package org.extex.font.format.xtf;
 import java.io.IOException;
 
 import org.extex.util.file.random.RandomAccessR;
-
+import org.extex.util.xml.XMLStreamWriter;
+import org.extex.util.xml.XMLWriterConvertible;
 
 /**
- * LookupTable for a ligature
- *
+ * LookupTable for a ligature.
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public abstract class XtfLigatureTable extends XtfLookupTable {
 
     /**
-     * format 1
+     * ligature
      */
-    private static final int FORMAT1 = 1;
-
-    // TODO other formats!
-
-    /**
-     * Create a new object.
-     * @param format    the format
-     */
-    XtfLigatureTable(int format) {
-
-        super(format);
-
-    }
-
-    /**
-     * Create a new instance.
-     * @param rar       the input
-     * @param offset    the offset
-     * @return Returns the new ligaturetable
-     * @throws IOException if an IO-error occurs.
-     */
-    static XtfLigatureTable newInstance(RandomAccessR rar, int offset)
-            throws IOException {
-
-        XtfLigatureTable ls = null;
-        rar.seek(offset);
-        int format = rar.readUnsignedShort();
-        if (format == FORMAT1) {
-            ls = new LigatureTableFormat1(rar, offset);
-        }
-        return ls;
-    }
-
-    /**
-     * Table for format1
-     */
-    public static class LigatureTableFormat1 extends XtfLigatureTable {
+    public class Ligature implements XMLWriterConvertible {
 
         /**
-         * coverageOffset
+         * compCount
          */
-        private int coverageOffset;
+        private int compCount;
 
         /**
-         * ligSetCount
+         * components
          */
-        private int ligSetCount;
+        private int[] components;
 
         /**
-         * ligatureSetOffsets
+         * ligGlyph
          */
-        private int[] ligatureSetOffsets;
-
-        /**
-         * coverage
-         */
-        private XtfCoverage coverage;
-
-        /**
-         * ligatureSets
-         */
-        private LigatureSet[] ligatureSets;
+        private int ligGlyph;
 
         /**
          * Create a new object.
-         * @param rar       the input
-         * @param offset    the offset
+         * 
+         * @param rar the input
          * @throws IOException if an IO-error occurs
          */
-        LigatureTableFormat1(RandomAccessR rar, int offset)
-                throws IOException {
+        Ligature(RandomAccessR rar) throws IOException {
 
-            super(FORMAT1);
-            coverageOffset = rar.readUnsignedShort();
-            ligSetCount = rar.readUnsignedShort();
-            ligatureSetOffsets = new int[ligSetCount];
-            ligatureSets = new LigatureSet[ligSetCount];
-            for (int i = 0; i < ligSetCount; i++) {
-                ligatureSetOffsets[i] = rar.readUnsignedShort();
-            }
-            rar.seek(offset + coverageOffset);
-            coverage = XtfCoverage.newInstance(rar);
-            for (int i = 0; i < ligSetCount; i++) {
-                ligatureSets[i] = new LigatureSet(rar, offset
-                        + ligatureSetOffsets[i]);
+            ligGlyph = rar.readUnsignedShort();
+            compCount = rar.readUnsignedShort();
+            components = new int[compCount - 1];
+            for (int i = 0; i < compCount - 1; i++) {
+                components[i] = rar.readUnsignedShort();
             }
         }
 
         /**
-         * Returns the coverage.
-         * @return Returns the coverage.
+         * Returns the glyph count.
+         * 
+         * @return Returns the glyph count.
          */
-        public XtfCoverage getCoverage() {
+        public int getGlyphCount() {
 
-            return coverage;
+            return compCount;
         }
 
         /**
-         * Returns the coverageOffset.
-         * @return Returns the coverageOffset.
+         * Returns the glyph id.
+         * 
+         * @param i the index
+         * @return Returns the glyph id.
          */
-        public int getCoverageOffset() {
+        public int getGlyphId(int i) {
 
-            return coverageOffset;
+            return (i == 0) ? ligGlyph : components[i - 1];
         }
 
         /**
-         * Returns the ligatureSetOffsets.
-         * @return Returns the ligatureSetOffsets.
+         * {@inheritDoc}
+         * 
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
          */
-        public int[] getLigatureSetOffsets() {
+        public void writeXML(XMLStreamWriter writer) throws IOException {
 
-            return ligatureSetOffsets;
-        }
-
-        /**
-         * Returns the ligatureSets.
-         * @return Returns the ligatureSets.
-         */
-        public LigatureSet[] getLigatureSets() {
-
-            return ligatureSets;
-        }
-
-        /**
-         * Returns the ligSetCount.
-         * @return Returns the ligSetCount.
-         */
-        public int getLigSetCount() {
-
-            return ligSetCount;
+            writer.writeStartElement("ligature");
+            writer.writeAttribute("compcount", compCount);
+            writer.writeAttribute("ligglyph", ligGlyph);
+            for (int i = 0; i < components.length; i++) {
+                writer.writeStartElement("component");
+                writer.writeAttribute("id", i);
+                writer.writeAttribute("value", components[i]);
+                writer.writeEndElement();
+            }
+            writer.writeEndElement();
         }
     }
 
     /**
      * ligature set
      */
-    public class LigatureSet {
+    public class LigatureSet implements XMLWriterConvertible {
 
         /**
          * ligatureCount
@@ -191,13 +132,12 @@ public abstract class XtfLigatureTable extends XtfLookupTable {
 
         /**
          * Create a new object.
-         *
-         * @param rar       the input
-         * @param offset    the offset
+         * 
+         * @param rar the input
+         * @param offset the offset
          * @throws IOException if an IO-error occurs
          */
-        LigatureSet(RandomAccessR rar, int offset)
-                throws IOException {
+        LigatureSet(RandomAccessR rar, int offset) throws IOException {
 
             rar.seek(offset);
             ligatureCount = rar.readUnsignedShort();
@@ -214,6 +154,7 @@ public abstract class XtfLigatureTable extends XtfLookupTable {
 
         /**
          * Returns the ligatureCount.
+         * 
          * @return Returns the ligatureCount.
          */
         public int getLigatureCount() {
@@ -223,6 +164,7 @@ public abstract class XtfLigatureTable extends XtfLookupTable {
 
         /**
          * Returns the ligatureOffsets.
+         * 
          * @return Returns the ligatureOffsets.
          */
         public int[] getLigatureOffsets() {
@@ -232,68 +174,191 @@ public abstract class XtfLigatureTable extends XtfLookupTable {
 
         /**
          * Returns the ligatures.
+         * 
          * @return Returns the ligatures.
          */
         public Ligature[] getLigatures() {
 
             return ligatures;
         }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+         */
+        public void writeXML(XMLStreamWriter writer) throws IOException {
+
+            writer.writeStartElement("ligatureset");
+            writer.writeAttribute("count", ligatureCount);
+            for (int i = 0; i < ligatureCount; i++) {
+                Ligature lig = ligatures[i];
+                lig.writeXML(writer);
+            }
+            writer.writeEndElement();
+        }
     }
 
     /**
-     * ligature
+     * Table for format1
      */
-    public class Ligature {
+    public static class LigatureTableFormat1 extends XtfLigatureTable {
 
         /**
-         * ligGlyph
+         * coverage
          */
-        private int ligGlyph;
+        private XtfCoverage coverage;
 
         /**
-         * compCount
+         * coverageOffset
          */
-        private int compCount;
+        private int coverageOffset;
 
         /**
-         * components
+         * ligatureSetOffsets
          */
-        private int[] components;
+        private int[] ligatureSetOffsets;
+
+        /**
+         * ligatureSets
+         */
+        private LigatureSet[] ligatureSets;
+
+        /**
+         * ligSetCount
+         */
+        private int ligSetCount;
 
         /**
          * Create a new object.
-         *
-         * @param rar       the input
+         * 
+         * @param rar the input
+         * @param offset the offset
          * @throws IOException if an IO-error occurs
          */
-        Ligature(RandomAccessR rar) throws IOException {
+        LigatureTableFormat1(RandomAccessR rar, int offset) throws IOException {
 
-            ligGlyph = rar.readUnsignedShort();
-            compCount = rar.readUnsignedShort();
-            components = new int[compCount - 1];
-            for (int i = 0; i < compCount - 1; i++) {
-                components[i] = rar.readUnsignedShort();
+            super(FORMAT1);
+            coverageOffset = rar.readUnsignedShort();
+            ligSetCount = rar.readUnsignedShort();
+            ligatureSetOffsets = new int[ligSetCount];
+            ligatureSets = new LigatureSet[ligSetCount];
+            for (int i = 0; i < ligSetCount; i++) {
+                ligatureSetOffsets[i] = rar.readUnsignedShort();
+            }
+            rar.seek(offset + coverageOffset);
+            coverage = XtfCoverage.newInstance(rar);
+            for (int i = 0; i < ligSetCount; i++) {
+                ligatureSets[i] =
+                        new LigatureSet(rar, offset + ligatureSetOffsets[i]);
             }
         }
 
         /**
-         * Returns the glyph count.
-         * @return Returns the glyph count.
+         * Returns the coverage.
+         * 
+         * @return Returns the coverage.
          */
-        public int getGlyphCount() {
+        public XtfCoverage getCoverage() {
 
-            return compCount;
+            return coverage;
         }
 
         /**
-         * Returns the glyph id.
-         * @param i the index
-         * @return Returns the glyph id.
+         * Returns the coverageOffset.
+         * 
+         * @return Returns the coverageOffset.
          */
-        public int getGlyphId(int i) {
+        public int getCoverageOffset() {
 
-            return (i == 0) ? ligGlyph : components[i - 1];
+            return coverageOffset;
         }
+
+        /**
+         * Returns the ligatureSetOffsets.
+         * 
+         * @return Returns the ligatureSetOffsets.
+         */
+        public int[] getLigatureSetOffsets() {
+
+            return ligatureSetOffsets;
+        }
+
+        /**
+         * Returns the ligatureSets.
+         * 
+         * @return Returns the ligatureSets.
+         */
+        public LigatureSet[] getLigatureSets() {
+
+            return ligatureSets;
+        }
+
+        /**
+         * Returns the ligSetCount.
+         * 
+         * @return Returns the ligSetCount.
+         */
+        public int getLigSetCount() {
+
+            return ligSetCount;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+         */
+        public void writeXML(XMLStreamWriter writer) throws IOException {
+
+            writer.writeStartElement("ligaturetable");
+            writer.writeAttribute("format", getFormat());
+            writer.writeAttribute("ligsetcount", ligSetCount);
+
+            for (int i = 0; i < ligSetCount; i++) {
+                LigatureSet ligset = ligatureSets[i];
+                ligset.writeXML(writer);
+            }
+
+            writer.writeEndElement();
+        }
+    }
+
+    /**
+     * format 1
+     */
+    private static final int FORMAT1 = 1;
+
+    /**
+     * Create a new instance.
+     * 
+     * @param rar the input
+     * @param offset the offset
+     * @return Returns the new ligature table.
+     * @throws IOException if an IO-error occurs.
+     */
+    static XtfLigatureTable newInstance(RandomAccessR rar, int offset)
+            throws IOException {
+
+        XtfLigatureTable ls = null;
+        rar.seek(offset);
+        int format = rar.readUnsignedShort();
+        // TODO mgn: missing other formats
+        if (format == FORMAT1) {
+            ls = new LigatureTableFormat1(rar, offset);
+        }
+        return ls;
+    }
+
+    /**
+     * Create a new object.
+     * 
+     * @param format the format
+     */
+    XtfLigatureTable(int format) {
+
+        super(format);
+
     }
 
 }

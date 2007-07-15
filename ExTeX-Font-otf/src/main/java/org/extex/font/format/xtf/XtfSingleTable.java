@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -22,9 +22,10 @@ package org.extex.font.format.xtf;
 import java.io.IOException;
 
 import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.xml.XMLStreamWriter;
 
 /**
- * SingleTable
+ * SingleTable.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -132,6 +133,20 @@ public abstract class XtfSingleTable extends XtfLookupTable {
             }
             return glyphId;
         }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+         */
+        public void writeXML(XMLStreamWriter writer) throws IOException {
+
+            writer.writeStartElement("singletable");
+            writer.writeAttribute("format", getFormat());
+            coverage.writeXML(writer);
+
+            writer.writeEndElement();
+        }
     }
 
     /**
@@ -192,6 +207,30 @@ public abstract class XtfSingleTable extends XtfLookupTable {
                 return substitutes[i];
             }
             return glyphId;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+         */
+        public void writeXML(XMLStreamWriter writer) throws IOException {
+
+            writer.writeStartElement("singletable");
+            writer.writeAttribute("format", getFormat());
+            writer.writeAttribute("glyphcount", glyphCount);
+
+            writer.writeStartElement("substitutes");
+            for (int i = 0; i < glyphCount; i++) {
+                writer.writeStartElement("sub");
+                writer.writeAttribute("id", i);
+                writer.writeAttribute("value", substitutes[i]);
+                writer.writeEndElement();
+            }
+            writer.writeEndElement();
+            coverage.writeXML(writer);
+
+            writer.writeEndElement();
         }
     }
 }

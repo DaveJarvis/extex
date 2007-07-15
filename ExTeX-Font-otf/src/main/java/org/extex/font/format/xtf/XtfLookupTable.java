@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,13 +19,15 @@
 
 package org.extex.font.format.xtf;
 
+import org.extex.util.xml.XMLWriterConvertible;
+
 /**
  * Lookup tables provide a way of looking up information about a glyph index.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public abstract class XtfLookupTable {
+public abstract class XtfLookupTable implements XMLWriterConvertible {
 
     /**
      * The table format
@@ -34,6 +36,7 @@ public abstract class XtfLookupTable {
 
     /**
      * Create a new object.
+     * 
      * @param f the format
      */
     public XtfLookupTable(int f) {
@@ -43,6 +46,7 @@ public abstract class XtfLookupTable {
 
     /**
      * Returns the format.
+     * 
      * @return Returns the format.
      */
     public int getFormat() {

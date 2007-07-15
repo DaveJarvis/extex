@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -20,301 +20,47 @@
 package org.extex.font.format.xtf;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.extex.util.file.random.RandomAccessR;
-
+import org.extex.util.xml.XMLStreamWriter;
+import org.extex.util.xml.XMLWriterConvertible;
 
 /**
- * ScriptList
- *
+ * ScriptList.
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class XtfScriptList {
+public class XtfScriptList implements XMLWriterConvertible {
 
     /**
-     * script count
+     * The class for a langsys.
      */
-    private int scriptCount = 0;
-
-    /**
-     * script records
-     */
-    private Record[] records;
-
-    /**
-     * scripts
-     */
-    private Script[] scripts;
-
-    /**
-     * Create a new object
-     *
-     * @param rar       input
-     * @param offset    offset
-     * @throws IOException if an IO-error occurs
-     */
-    XtfScriptList(RandomAccessR rar, int offset) throws IOException {
-
-        rar.seek(offset);
-
-        scriptCount = rar.readUnsignedShort();
-        records = new Record[scriptCount];
-        scripts = new Script[scriptCount];
-        for (int i = 0; i < scriptCount; i++) {
-            records[i] = new Record(rar);
-        }
-        for (int i = 0; i < scriptCount; i++) {
-            scripts[i] = new Script(rar, offset + records[i].getOffset());
-        }
-    }
-
-    /**
-     * Returns the scriptcount
-     * @return Returns the scriptcount
-     */
-    public int getCount() {
-
-        return scriptCount;
-    }
-
-    /**
-     * Returns the script record
-     * @param i     the number
-     * @return Rweturns the script record
-     */
-    public Record getRecord(int i) {
-
-        return records[i];
-    }
-
-    /**
-     * Find a script
-     * @param tag   the tag for the script
-     * @return Returns the script
-     */
-    public Script findScript(String tag) {
-
-        if (tag.length() != 4) {
-            return null;
-        }
-        int tagVal = ((tag.charAt(0) << 24) | (tag.charAt(1) << 16)
-                | (tag.charAt(2) << 8) | tag.charAt(3));
-        for (int i = 0; i < scriptCount; i++) {
-            if (records[i].getTag() == tagVal) {
-                return scripts[i];
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Returns the info for this class
-     * @return Returns the info for this class
-     */
-    @Override
-    public String toString() {
-
-        StringBuffer buf = new StringBuffer();
-        buf.append("ScriptList\n");
-        buf.append("   count : " + String.valueOf(scriptCount) + '\n');
-        for (int i = 0; i < records.length; i++) {
-            buf.append(records[i].toString());
-        }
-        for (int i = 0; i < scripts.length; i++) {
-            buf.append(scripts[i].toString());
-        }
-        return buf.toString();
-    }
-
-    /**
-     * Record
-     */
-    public class Record {
+    public static class LangSys implements XMLWriterConvertible {
 
         /**
-         * tag
+         * feature count
          */
-        private int tag;
+        private int featureCount;
 
         /**
-         * offset
+         * The list of the feature index.
          */
-        private int offset;
+        private List<Integer> featureIndexList;
 
         /**
-         * Create a new object
-         *
-         * @param rar       input
-         * @throws IOException if an IO-error occurs
+         * The map of the feature index.
          */
-        Record(RandomAccessR rar) throws IOException {
-
-            tag = rar.readInt();
-            offset = rar.readUnsignedShort();
-        }
+        private Map<Integer, Integer> featureIndexMap;
 
         /**
-         * Returns the tag
-         * @return Returns the tag
+         * The index. The value '-1' means the defaultLang.
          */
-        public int getTag() {
-
-            return tag;
-        }
-
-        /**
-         * Returns the offset
-         * @return returns the offset
-         */
-        public int getOffset() {
-
-            return offset;
-        }
-
-        /**
-         * Returns the info for this class
-         * @return Returns the info for this class
-         */
-        @Override
-        public String toString() {
-
-            StringBuffer buf = new StringBuffer();
-            buf.append("ScriptRecord\n");
-            buf.append("   tag    : " + String.valueOf(tag) + '\n');
-            buf.append("   offset : " + String.valueOf(offset) + '\n');
-            return buf.toString();
-        }
-
-    }
-
-    /**
-     * Script
-     */
-    public class Script {
-
-        /**
-         * defaultLangSysOffset
-         */
-        private int defaultLangSysOffset;
-
-        /**
-         * LangSysCount
-         */
-        private int langSysCount;
-
-        /**
-         * LangSysRecord
-         */
-        private LangSysRecord[] langSysRecords;
-
-        /**
-         * LangSys
-         */
-        private LangSys defaultLangSys;
-
-        /**
-         * langsys
-         */
-        private LangSys[] langSys;
-
-        /**
-         * Create a new object
-         *
-         * @param rar       input
-         * @param offset    offset
-         * @throws IOException if an IO-error occurs
-         */
-        Script(RandomAccessR rar, int offset) throws IOException {
-
-            rar.seek(offset);
-
-            defaultLangSysOffset = rar.readUnsignedShort();
-            langSysCount = rar.readUnsignedShort();
-            if (langSysCount > 0) {
-                langSysRecords = new LangSysRecord[langSysCount];
-                for (int i = 0; i < langSysCount; i++) {
-                    langSysRecords[i] = new LangSysRecord(rar);
-                }
-            }
-
-            // Read the LangSys tables
-            if (langSysCount > 0) {
-                langSys = new LangSys[langSysCount];
-                for (int i = 0; i < langSysCount; i++) {
-                    rar.seek(offset + langSysRecords[i].getOffset());
-                    langSys[i] = new LangSys(rar);
-                }
-            }
-            if (defaultLangSysOffset > 0) {
-                rar.seek(offset + defaultLangSysOffset);
-                defaultLangSys = new LangSys(rar);
-            }
-        }
-
-        /**
-         * Returns the default LangSys
-         * @return Returns the default LangSys
-         */
-        public LangSys getDefaultLangSys() {
-
-            return defaultLangSys;
-        }
-
-        /**
-         * Returns the defaultLangSysOffset.
-         * @return Returns the defaultLangSysOffset.
-         */
-        public int getDefaultLangSysOffset() {
-
-            return defaultLangSysOffset;
-        }
-
-        /**
-         * Returns the langSys.
-         * @return Returns the langSys.
-         */
-        public LangSys[] getLangSys() {
-
-            return langSys;
-        }
-
-        /**
-         * @return Returns the langSysCount.
-         */
-        public int getLangSysCount() {
-
-            return langSysCount;
-        }
-
-        /**
-         * Returns the langSysRecords.
-         * @return Returns the langSysRecords.
-         */
-        public LangSysRecord[] getLangSysRecords() {
-
-            return langSysRecords;
-        }
-
-        /**
-         * Returns the info for this class
-         * @return Returns the info for this class
-         */
-        @Override
-        public String toString() {
-
-            StringBuffer buf = new StringBuffer();
-            buf.append("Script\n");
-            buf.append("   langSyscount : " + String.valueOf(langSysCount)
-                    + '\n');
-            return buf.toString();
-        }
-    }
-
-    /**
-     * langsys
-     */
-    public static class LangSys {
+        private int index;
 
         /**
          * lookup order
@@ -327,50 +73,31 @@ public class XtfScriptList {
         private int reqFeatureIndex;
 
         /**
-         * feature count
-         */
-        private int featureCount;
-
-        /**
-         * feature index
-         */
-        private int[] featureIndex;
-
-        /**
          * Create a new object
-         *
-         * @param rar       input
+         * 
+         * @param rar input
+         * @param index The index.
          * @throws IOException if an IO-error occurs
          */
-        LangSys(RandomAccessR rar) throws IOException {
+        LangSys(RandomAccessR rar, int index) throws IOException {
 
+            this.index = index;
             lookupOrder = rar.readUnsignedShort();
             reqFeatureIndex = rar.readUnsignedShort();
             featureCount = rar.readUnsignedShort();
-            featureIndex = new int[featureCount];
+            featureIndexList = new ArrayList<Integer>(featureCount);
+            featureIndexMap = new HashMap<Integer, Integer>(featureCount);
             for (int i = 0; i < featureCount; i++) {
-                featureIndex[i] = rar.readUnsignedShort();
+                int value = rar.readUnsignedShort();
+                featureIndexList.add(value);
+                featureIndexMap.put(i, value);
             }
         }
 
         /**
-         * Check, if is a feature index
-         * @param n the index
-         * @return  Returns <code>true</code>, if is a feature index,
-         *          otherwise <code>false</code>
-         */
-        public boolean isFeatureIndexed(int n) {
-
-            for (int i = 0; i < featureCount; i++) {
-                if (featureIndex[i] == n) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        /**
-         * @return Returns the featureCount.
+         * Returns the featureIndex.
+         * 
+         * @return Returns the featureIndex.
          */
         public int getFeatureCount() {
 
@@ -378,11 +105,23 @@ public class XtfScriptList {
         }
 
         /**
+         * Returns the featureIndex.
+         * 
          * @return Returns the featureIndex.
          */
-        public int[] getFeatureIndex() {
+        public int getFeatureIndex(int idx) {
 
-            return featureIndex;
+            return featureIndexList.get(idx);
+        }
+
+        /**
+         * Getter for index.
+         * 
+         * @return the index
+         */
+        public int getIndex() {
+
+            return index;
         }
 
         /**
@@ -402,28 +141,66 @@ public class XtfScriptList {
         }
 
         /**
+         * Check, if is a feature index.
+         * 
+         * @param n the index
+         * @return Returns <code>true</code>, if is a feature index,
+         *         otherwise <code>false</code>
+         */
+        public boolean isFeatureIndexed(int n) {
+
+            return featureIndexMap.get(n) != null ? true : false;
+        }
+
+        /**
          * Returns the info for this class
+         * 
          * @return Returns the info for this class
          */
         @Override
         public String toString() {
 
-            StringBuffer buf = new StringBuffer();
-            buf.append("LangSys\n");
-            buf.append("   feature count : ").append(featureCount).append('\n');
+            StringBuffer buf = new StringBuffer("LangSys\n");
+            buf.append("   feature count : ").append(featureCount).append("\n");
+            for (int i = 0, n = featureIndexList.size(); i < n; i++) {
+                buf.append(i).append(" ").append(featureIndexList.get(i))
+                    .append("\n");
+            }
             return buf.toString();
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+         */
+        public void writeXML(XMLStreamWriter writer) throws IOException {
+
+            writer.writeStartElement("langsys");
+            writer.writeAttribute("lookuporder", lookupOrder);
+            writer.writeAttribute("reqfeatureindex", reqFeatureIndex);
+            writer.writeAttribute("featurecount", featureCount);
+
+            for (int i = 0; i < featureCount; i++) {
+                Integer fil = featureIndexList.get(i);
+                writer.writeStartElement("featureindex");
+                writer.writeAttribute("id", i);
+                writer.writeAttribute("value", fil.intValue());
+                writer.writeEndElement();
+            }
+            writer.writeEndElement();
         }
     }
 
     /**
-     * langsysrecord
+     * The class for a langsysrecord.
      */
-    public class LangSysRecord {
+    public class LangSysRecord implements XMLWriterConvertible {
 
         /**
-         * tag
+         * The index.
          */
-        private int tag;
+        private int index;
 
         /**
          * offset
@@ -431,19 +208,37 @@ public class XtfScriptList {
         private int offset;
 
         /**
+         * tag
+         */
+        private int tag;
+
+        /**
          * Create a new object
-         *
-         * @param rar       input
+         * 
+         * @param rar input
+         * @param index The index.
          * @throws IOException if an IO-error occurs
          */
-        LangSysRecord(RandomAccessR rar) throws IOException {
+        LangSysRecord(RandomAccessR rar, int index) throws IOException {
 
+            this.index = index;
             tag = rar.readInt();
             offset = rar.readUnsignedShort();
         }
 
         /**
+         * Getter for index.
+         * 
+         * @return the index
+         */
+        public int getIndex() {
+
+            return index;
+        }
+
+        /**
          * Returns the offset.
+         * 
          * @return Returns the offset.
          */
         public int getOffset() {
@@ -453,6 +248,7 @@ public class XtfScriptList {
 
         /**
          * Returns the tag.
+         * 
          * @return Returns the tag.
          */
         public int getTag() {
@@ -462,18 +258,469 @@ public class XtfScriptList {
 
         /**
          * Returns the info for this class
+         * 
          * @return Returns the info for this class
          */
         @Override
         public String toString() {
 
-            StringBuffer buf = new StringBuffer();
-            buf.append("LangSysRecord\n");
-            buf.append("   tag    : " + String.valueOf(tag) + '\n');
-            buf.append("   offset : " + String.valueOf(offset) + '\n');
+            StringBuffer buf = new StringBuffer("LangSysRecord\n");
+            buf.append("   index  : ").append(index).append("\n");
+            buf.append("   tag    : ").append(tag).append("\n");
+            buf.append("   tag    : ").append(tag2String(tag)).append("\n");
+            buf.append("   offset : ").append(offset).append("\n");
             return buf.toString();
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+         */
+        public void writeXML(XMLStreamWriter writer) throws IOException {
+
+            writer.writeStartElement("langsysrecord");
+            writer.writeAttribute("index", index);
+            writer.writeAttribute("tag", tag2String(tag));
+            writer.writeEndElement();
+
+        }
+
+    }
+
+    /**
+     * The class for a Record.
+     */
+    public class Record implements XMLWriterConvertible {
+
+        /**
+         * offset
+         */
+        private int offset;
+
+        /**
+         * The record index.
+         */
+        private int recIndex;
+
+        /**
+         * tag
+         */
+        private int tag;
+
+        /**
+         * Create a new object
+         * 
+         * @param rar input
+         * @param recIndex The record index.
+         * @throws IOException if an IO-error occurs
+         */
+        Record(RandomAccessR rar, int recIndex) throws IOException {
+
+            this.recIndex = recIndex;
+            tag = rar.readInt();
+            offset = rar.readUnsignedShort();
+        }
+
+        /**
+         * Returns the offset
+         * 
+         * @return returns the offset
+         */
+        public int getOffset() {
+
+            return offset;
+        }
+
+        /**
+         * Getter for recIndex.
+         * 
+         * @return the recIndex
+         */
+        public int getRecIndex() {
+
+            return recIndex;
+        }
+
+        /**
+         * Returns the tag
+         * 
+         * @return Returns the tag
+         */
+        public int getTag() {
+
+            return tag;
+        }
+
+        /**
+         * Returns the info for this class
+         * 
+         * @return Returns the info for this class
+         */
+        @Override
+        public String toString() {
+
+            StringBuffer buf = new StringBuffer("ScriptRecord : ");
+            buf.append(recIndex).append("\n");
+            buf.append("   tag    : ").append(tag).append("\n");
+            buf.append("   tag    : ").append(tag2String(tag)).append("\n");
+            buf.append("   offset : ").append(offset).append("\n");
+            return buf.toString();
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+         */
+        public void writeXML(XMLStreamWriter writer) throws IOException {
+
+            writer.writeStartElement("record");
+            writer.writeAttribute("index", recIndex);
+            writer.writeAttribute("tag", tag2String(tag));
+            writer.writeAttribute("offset", offset);
+            writer.writeEndElement();
+
+        }
+
+    }
+
+    /**
+     * Script
+     */
+    public class Script implements XMLWriterConvertible {
+
+        /**
+         * LangSys
+         */
+        private LangSys defaultLangSys;
+
+        /**
+         * defaultLangSysOffset
+         */
+        private int defaultLangSysOffset;
+
+        /**
+         * langsys
+         */
+        private LangSys[] langSys;
+
+        /**
+         * LangSysCount
+         */
+        private int langSysCount;
+
+        /**
+         * LangSysRecord
+         */
+        private LangSysRecord[] langSysRecords;
+
+        /**
+         * The index of the script.
+         */
+        private int scriptIndex;
+
+        /**
+         * Create a new object
+         * 
+         * @param rar input
+         * @param offset offset
+         * @param scriptIndex The script index.
+         * @throws IOException if an IO-error occurs
+         */
+        Script(RandomAccessR rar, int offset, int scriptIndex)
+                throws IOException {
+
+            this.scriptIndex = scriptIndex;
+            rar.seek(offset);
+
+            defaultLangSysOffset = rar.readUnsignedShort();
+            langSysCount = rar.readUnsignedShort();
+            if (langSysCount > 0) {
+                langSysRecords = new LangSysRecord[langSysCount];
+                for (int i = 0; i < langSysCount; i++) {
+                    langSysRecords[i] = new LangSysRecord(rar, i);
+                }
+            }
+
+            // Read the LangSys tables
+            if (langSysCount > 0) {
+                langSys = new LangSys[langSysCount];
+                for (int i = 0; i < langSysCount; i++) {
+                    rar.seek(offset + langSysRecords[i].getOffset());
+                    langSys[i] = new LangSys(rar, i);
+                }
+            }
+            if (defaultLangSysOffset > 0) {
+                rar.seek(offset + defaultLangSysOffset);
+                defaultLangSys = new LangSys(rar, -1);
+            }
+        }
+
+        /**
+         * Returns the default LangSys
+         * 
+         * @return Returns the default LangSys
+         */
+        public LangSys getDefaultLangSys() {
+
+            return defaultLangSys;
+        }
+
+        /**
+         * Returns the defaultLangSysOffset.
+         * 
+         * @return Returns the defaultLangSysOffset.
+         */
+        public int getDefaultLangSysOffset() {
+
+            return defaultLangSysOffset;
+        }
+
+        /**
+         * Returns the langSys.
+         * 
+         * @return Returns the langSys.
+         */
+        public LangSys[] getLangSys() {
+
+            return langSys;
+        }
+
+        /**
+         * @return Returns the langSysCount.
+         */
+        public int getLangSysCount() {
+
+            return langSysCount;
+        }
+
+        /**
+         * Returns the langSysRecords.
+         * 
+         * @return Returns the langSysRecords.
+         */
+        public LangSysRecord[] getLangSysRecords() {
+
+            return langSysRecords;
+        }
+
+        /**
+         * Getter for scriptIndex.
+         * 
+         * @return the scriptIndex
+         */
+        public int getScriptIndex() {
+
+            return scriptIndex;
+        }
+
+        /**
+         * Returns the info for this class
+         * 
+         * @return Returns the info for this class
+         */
+        @Override
+        public String toString() {
+
+            StringBuffer buf = new StringBuffer("Script\n");
+            buf.append("   langSyscount : ").append(langSysCount).append("\n");
+            return buf.toString();
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+         */
+        public void writeXML(XMLStreamWriter writer) throws IOException {
+
+            writer.writeStartElement("script");
+            writer.writeAttribute("index", scriptIndex);
+            writer.writeAttribute("langsyscount", langSysCount);
+
+            writer.writeStartElement("langsysrecord");
+            for (int i = 0; i < langSysCount; i++) {
+                LangSysRecord lsr = langSysRecords[i];
+                lsr.writeXML(writer);
+            }
+            writer.writeEndElement();
+
+            writer.writeStartElement("langsys");
+            for (int i = 0; i < langSysCount; i++) {
+                LangSys ls = langSys[i];
+                ls.writeXML(writer);
+            }
+            writer.writeEndElement();
+
+            if (defaultLangSys != null) {
+                writer.writeStartElement("dafaultlangsys");
+                defaultLangSys.writeXML(writer);
+                writer.writeEndElement();
+            }
+
+            writer.writeEndElement();
+
+        }
+    }
+
+    /**
+     * Convert the tag string into a int value.
+     * 
+     * @param tag The tag as string.
+     * @return Returns the int value.
+     */
+    public static int tag2Int(String tag) {
+
+        return ((tag.charAt(0) << 24) | (tag.charAt(1) << 16)
+                | (tag.charAt(2) << 8) | tag.charAt(3));
+
+    }
+
+    /**
+     * Convert the tag value to a string.
+     * 
+     * @param tag The tag as int value.
+     * @return Return the tag string.
+     */
+    public static String tag2String(int tag) {
+
+        return new StringBuffer().append((char) ((tag >> 24) & 0xff)).append(
+            (char) ((tag >> 16) & 0xff)).append((char) ((tag >> 8) & 0xff))
+            .append((char) ((tag) & 0xff)).toString();
+    }
+
+    /**
+     * The list of the records.
+     */
+    private List<Record> recordList;
+
+    /**
+     * The map for the records (to improve the search in the list).
+     */
+    private Map<Integer, Record> recordMap;
+
+    /**
+     * script count
+     */
+    private int scriptCount = 0;
+
+    /**
+     * The list of the scripts.
+     */
+    private List<Script> scriptList;
+
+    /**
+     * Create a new object
+     * 
+     * @param rar input
+     * @param offset offset
+     * @throws IOException if an IO-error occurs
+     */
+    XtfScriptList(RandomAccessR rar, int offset) throws IOException {
+
+        rar.seek(offset);
+
+        scriptCount = rar.readUnsignedShort();
+        recordList = new ArrayList<Record>(scriptCount);
+        recordMap = new HashMap<Integer, Record>(scriptCount);
+        scriptList = new ArrayList<Script>(scriptCount);
+
+        for (int i = 0; i < scriptCount; i++) {
+            Record record = new Record(rar, i);
+            recordList.add(record);
+            recordMap.put(record.getRecIndex(), record);
+        }
+        for (int i = 0; i < scriptCount; i++) {
+            scriptList
+                .add(new Script(rar, offset + getRecord(i).getOffset(), i));
+        }
+    }
+
+    /**
+     * Find a script. If no one is found, <code>null</code> is returned.
+     * 
+     * @param tag the tag for the script
+     * @return Returns the script.
+     */
+    public Script findScript(String tag) {
+
+        if (tag.length() != 4) {
+            return null;
+        }
+        int tagVal = tag2Int(tag);
+        Record recpos = recordMap.get(tagVal);
+        if (recpos == null) {
+            return null;
+        }
+        return scriptList.get(recpos.getRecIndex());
+    }
+
+    /**
+     * Returns the scriptcount
+     * 
+     * @return Returns the scriptcount
+     */
+    public int getCount() {
+
+        return scriptCount;
+    }
+
+    /**
+     * Returns the script record.
+     * 
+     * @param i the number
+     * @return Returns the script record
+     */
+    public Record getRecord(int i) {
+
+        return recordList.get(i);
+    }
+
+    /**
+     * Returns the info for this class
+     * 
+     * @return Returns the info for this class
+     */
+    @Override
+    public String toString() {
+
+        StringBuffer buf = new StringBuffer();
+        buf.append("ScriptList\n");
+        buf.append("   count : " + String.valueOf(scriptCount) + '\n');
+        for (int i = 0; i < getCount(); i++) {
+            buf.append(getRecord(i).toString());
+        }
+        for (int i = 0; i < getCount(); i++) {
+            buf.append(scriptList.get(i).toString());
+        }
+        return buf.toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+     */
+    public void writeXML(XMLStreamWriter writer) throws IOException {
+
+        writer.writeStartElement("scriptlist");
+
+        writer.writeStartElement("recordlist");
+        for (int i = 0; i < scriptCount; i++) {
+            Record record = recordList.get(i);
+            record.writeXML(writer);
+        }
+        writer.writeEndElement();
+
+        writer.writeStartElement("scriptlists");
+        for (int i = 0; i < scriptCount; i++) {
+            Script script = scriptList.get(i);
+            script.writeXML(writer);
+        }
+        writer.writeEndElement();
+
+        writer.writeEndElement();
+
     }
 }
-

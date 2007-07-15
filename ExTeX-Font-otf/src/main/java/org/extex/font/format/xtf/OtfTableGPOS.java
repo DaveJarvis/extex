@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.extex.font.format.xtf.cff.LookupTableFactory;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
@@ -218,11 +219,12 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
- * @version $Revision:5595 $
+ * @version $Revision$
  */
 public class OtfTableGPOS extends AbstractXtfTable
         implements
             XtfTable,
+            LookupTableFactory,
             XMLWriterConvertible {
 
     /**
@@ -608,27 +610,46 @@ public class OtfTableGPOS extends AbstractXtfTable
         // writer.writeAttribute("script", scriptListOffset, 8);
 
         writer.writeStartElement("scriptrecord");
-        writer.writeAttribute("count", scriptRecord.length);
-        for (int i = 0; i < scriptRecord.length; i++) {
-            scriptRecord[i].writeXML(writer);
+        if (scriptRecord != null) {
+            writer.writeAttribute("count", scriptRecord.length);
+            for (int i = 0; i < scriptRecord.length; i++) {
+                scriptRecord[i].writeXML(writer);
+            }
         }
         writer.writeEndElement();
 
         writer.writeStartElement("featurerecord");
-        writer.writeAttribute("count", featureRecord.length);
-        for (int i = 0; i < featureRecord.length; i++) {
-            featureRecord[i].writeXML(writer);
+        if (featureRecord != null) {
+            writer.writeAttribute("count", featureRecord.length);
+            for (int i = 0; i < featureRecord.length; i++) {
+                featureRecord[i].writeXML(writer);
+            }
         }
         writer.writeEndElement();
 
         writer.writeStartElement("lookuptable");
-        writer.writeAttribute("count", lookupTable.length);
-        for (int i = 0; i < lookupTable.length; i++) {
-            lookupTable[i].writeXML(writer);
+        if (lookupTable != null) {
+            writer.writeAttribute("count", lookupTable.length);
+            for (int i = 0; i < lookupTable.length; i++) {
+                lookupTable[i].writeXML(writer);
+            }
         }
         writer.writeEndElement();
 
         writer.writeComment("incomplete");
         writer.writeEndElement();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.cff.LookupTableFactory#read(org.extex.util.file.random.RandomAccessR,
+     *      int, int)
+     */
+    public XtfLookupTable read(RandomAccessR rar, int type, int offset)
+            throws IOException {
+
+        // TODO mgn: read unimplemented
+        return null;
     }
 }

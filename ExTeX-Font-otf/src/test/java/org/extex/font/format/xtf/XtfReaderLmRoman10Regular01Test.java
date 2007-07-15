@@ -111,7 +111,7 @@ public class XtfReaderLmRoman10Regular01Test extends TestCase {
         assertEquals("LMRoman10", font.getFamilyName());
         assertEquals("Normal", font.getWeight());
         assertEquals("StandardEncoding", font.getEncoding());
-        assertEquals(false, font.isIsFixedPitch());
+        assertEquals(false, font.isFixedPitch());
         assertEquals(0, font.getItalicAngle());
         assertEquals(-146, font.getUnderlinePosition());
         assertEquals(40, font.getUnderlineThickness());

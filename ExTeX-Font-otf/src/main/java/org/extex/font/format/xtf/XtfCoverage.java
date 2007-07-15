@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -22,6 +22,8 @@ package org.extex.font.format.xtf;
 import java.io.IOException;
 
 import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.xml.XMLStreamWriter;
+import org.extex.util.xml.XMLWriterConvertible;
 
 /**
  * Abstract class for all coverage
@@ -29,7 +31,7 @@ import org.extex.util.file.random.RandomAccessR;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public abstract class XtfCoverage {
+public abstract class XtfCoverage implements XMLWriterConvertible {
 
     /**
      * format 1
@@ -97,7 +99,9 @@ public abstract class XtfCoverage {
     /**
      * Coverage for FORMAT1
      */
-    public static class CoverageFormat1 extends XtfCoverage {
+    public static class CoverageFormat1 extends XtfCoverage
+            implements
+                XMLWriterConvertible {
 
         /**
          * glyph count
@@ -142,6 +146,24 @@ public abstract class XtfCoverage {
             return -1;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+         */
+        public void writeXML(XMLStreamWriter writer) throws IOException {
+
+            writer.writeStartElement("coverage");
+            writer.writeAttribute("format", getFormat());
+            writer.writeAttribute("glyphcount", glyphCount);
+            for (int i = 0; i < glyphCount; i++) {
+                writer.writeStartElement("coverage");
+                writer.writeAttribute("id", i);
+                writer.writeAttribute("value", glyphIds[i]);
+                writer.writeEndElement();
+            }
+            writer.writeEndElement();
+        }
     }
 
     /**
@@ -193,12 +215,30 @@ public abstract class XtfCoverage {
             return -1;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+         */
+        public void writeXML(XMLStreamWriter writer) throws IOException {
+
+            writer.writeStartElement("coverage");
+            writer.writeAttribute("format", getFormat());
+            writer.writeAttribute("rangecount", rangeCount);
+            for (int i = 0; i < rangeCount; i++) {
+                writer.writeStartElement("range");
+                RangeRecord rec = rangeRecords[i];
+                rec.writeXML(writer);
+                writer.writeEndElement();
+            }
+            writer.writeEndElement();
+        }
     }
 
     /**
      * Coverage Index (GlyphID) = StartCoverageIndex + GlyphID - Start GlyphID
      */
-    public class RangeRecord {
+    public class RangeRecord implements XMLWriterConvertible {
 
         /**
          * start
@@ -251,6 +291,20 @@ public abstract class XtfCoverage {
                 return startCoverageIndex + glyphId - start;
             }
             return -1;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+         */
+        public void writeXML(XMLStreamWriter writer) throws IOException {
+
+            writer.writeStartElement("rangerecord");
+            writer.writeAttribute("start", start);
+            writer.writeAttribute("end", end);
+            writer.writeAttribute("startcoverageindex", startCoverageIndex);
+            writer.writeEndElement();
         }
     }
 }

@@ -993,7 +993,7 @@ public class CffFont implements XMLWriterConvertible {
      * 
      * @return Returns the isfixedpitch.
      */
-    public boolean isIsFixedPitch() {
+    public boolean isFixedPitch() {
 
         return isfixedpitch;
     }

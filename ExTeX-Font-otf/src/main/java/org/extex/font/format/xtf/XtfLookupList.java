@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -21,16 +21,18 @@ package org.extex.font.format.xtf;
 
 import java.io.IOException;
 
+import org.extex.font.format.xtf.cff.LookupTableFactory;
 import org.extex.util.file.random.RandomAccessR;
-
+import org.extex.util.xml.XMLStreamWriter;
+import org.extex.util.xml.XMLWriterConvertible;
 
 /**
  * List for all LookupTables.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class XtfLookupList {
+public class XtfLookupList implements XMLWriterConvertible {
 
     /**
      * lookup count
@@ -38,7 +40,12 @@ public class XtfLookupList {
     private int lookupCount;
 
     /**
-     * lookup offsetes
+     * lookupFactory
+     */
+    private LookupTableFactory lookupFactory;
+
+    /**
+     * lookup offsets
      */
     private int[] lookupOffsets;
 
@@ -49,13 +56,16 @@ public class XtfLookupList {
 
     /**
      * Create a new object
-     *
-     * @param rar       input
-     * @param offset    offset
+     * 
+     * @param rar The input.
+     * @param offset The offset.
+     * @param lookupFactory The factory for the lookup table.
      * @throws IOException if an IO-error occurs
      */
-    XtfLookupList(RandomAccessR rar, int offset) throws IOException {
+    XtfLookupList(RandomAccessR rar, int offset,
+            LookupTableFactory lookupFactory) throws IOException {
 
+        this.lookupFactory = lookupFactory;
         rar.seek(offset);
         lookupCount = rar.readUnsignedShort();
         lookupOffsets = new int[lookupCount];
@@ -64,14 +74,17 @@ public class XtfLookupList {
             lookupOffsets[i] = rar.readUnsignedShort();
         }
         for (int i = 0; i < lookupCount; i++) {
-            lookups[i] = new XtfLookup(rar, offset + lookupOffsets[i]);
+            lookups[i] =
+                    new XtfLookup(rar, offset + lookupOffsets[i],
+                        lookupFactory, i);
         }
     }
 
     /**
      * Returns the lookup
-     * @param feature   feature
-     * @param index     index
+     * 
+     * @param feature feature
+     * @param index index
      * @return Returns the lookup
      */
     public XtfLookup getLookup(XtfFeatureList.Feature feature, int index) {
@@ -85,6 +98,7 @@ public class XtfLookupList {
 
     /**
      * Returns the lookupCount.
+     * 
      * @return Returns the lookupCount.
      */
     public int getLookupCount() {
@@ -94,6 +108,7 @@ public class XtfLookupList {
 
     /**
      * Returns the lookupOffsets.
+     * 
      * @return Returns the lookupOffsets.
      */
     public int[] getLookupOffsets() {
@@ -103,6 +118,7 @@ public class XtfLookupList {
 
     /**
      * Returns the lookups.
+     * 
      * @return Returns the lookups.
      */
     public XtfLookup[] getLookups() {
@@ -112,6 +128,7 @@ public class XtfLookupList {
 
     /**
      * Returns the info for this class
+     * 
      * @return Returns the info for this class
      */
     @Override
@@ -121,5 +138,22 @@ public class XtfLookupList {
         buf.append("LookupList\n");
         buf.append("   lookup count  : ").append(lookupCount).append('\n');
         return buf.toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+     */
+    public void writeXML(XMLStreamWriter writer) throws IOException {
+
+        writer.writeStartElement("lookuplist");
+        writer.writeAttribute("count", lookupCount);
+
+        for (int i = 0; i < lookupCount; i++) {
+            XtfLookup lu = lookups[i];
+            lu.writeXML(writer);
+        }
+        writer.writeEndElement();
     }
 }
