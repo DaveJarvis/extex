@@ -54,7 +54,6 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
 /**
  * This class implements a trivial paragraph builder.
  * 
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -179,7 +178,6 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      * @param accumulator an accumulator for the glue
      * @param height the accumulator for the height
      * @param depth the accumulator for the depth
-     * 
      * @return the index of the first node after the ones already processed
      */
     private int breakLine(int start, int len, HorizontalListNode nodes,
@@ -190,22 +188,23 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
         hlist.add(node);
         node.addWidthTo(accumulator);
         int i = start + 1;
+        int point = i;
         WideGlue w = new WideGlue();
 
         while (i < len) {
 
-            int point = findNextBreakPoint(nodes, i, w);
+            point = findNextBreakPoint(nodes, point, w);
             if (w.getLength().gt(width)) {
                 if (i == start + 1) {
-                    // avoid infinite loop and accept overful box
-                    i =
-                            saveNodes(nodes, i, point, hlist, accumulator,
-                                height, depth);
+                    // avoid infinite loop and accept overfull box
+                    i = saveNodes(nodes, i, point, hlist, //
+                        accumulator, height, depth);
                 }
                 return discardNodes(i, len, nodes);
             }
 
             i = saveNodes(nodes, i, point, hlist, accumulator, height, depth);
+            point = i + 1;
         }
 
         return i;
@@ -217,10 +216,8 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * @param nodes the horizontal node list containing all nodes for the
      *        paragraph
-     * 
      * @return the {@link org.extex.typesetter.type.node.VerticalListNode
      *         VerticalListNode} containing the hboxes of the lines
-     * 
      * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#build(
      *      org.extex.typesetter.type.node.HorizontalListNode)
      */
@@ -275,9 +272,8 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
 
             hlist.addSkip(leftskip);
             accumulator.add(leftskip);
-            i =
-                    breakLine(i, len, nodes, hlist, wd, accumulator, hlist
-                        .getHeight(), hlist.getDepth());
+            i = breakLine(i, len, nodes, hlist, wd, //
+                accumulator, hlist.getHeight(), hlist.getDepth());
             hlist.addSkip(rightskip);
             accumulator.add(rightskip);
 
@@ -298,7 +294,6 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      * @param start the index to start at
      * @param len the length of the node list
      * @param nodes the node list to take into account
-     * 
      * @return the index of the next non-discardable node
      */
     private int discardNodes(int start, int len, NodeList nodes) {
@@ -314,7 +309,6 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      * Setter for the logger.
      * 
      * @param log the logger to use
-     * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
@@ -329,7 +323,6 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      * @param nodes the list of nodes to consider
      * @param start the initial index
      * @param width an accumulator for the width
-     * 
      * @return the index of the next break point or the index of the element
      *         past the end of the list if none is found
      */
@@ -425,7 +418,6 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      * @param accumulator the accumulator for the glue of the saved nodes
      * @param height the accumulator for the height
      * @param depth the accumulator for the depth
-     * 
      * @return the index of the first node which has not been copied
      */
     private int saveNodes(HorizontalListNode nodes, int start, int end,
@@ -453,7 +445,6 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      * Setter for the node factory.
      * 
      * @param nodeFactory the node factory
-     * 
      * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#setNodefactory(
      *      org.extex.typesetter.type.node.factory.NodeFactory)
      */
@@ -466,7 +457,6 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      * Setter for options.
      * 
      * @param options the options to set.
-     * 
      * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#setOptions(
      *      org.extex.typesetter.TypesetterOptions)
      */
