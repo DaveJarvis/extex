@@ -26,7 +26,70 @@ import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
 
 /**
- * List of Feature (see Chap6feat).
+ * List of Feature.
+ * 
+ * <p>
+ * future list table
+ * </p>
+ * <p>
+ * The headers of the GSUB and GPOS tables contain offsets to Feature List
+ * tables (FeatureList) that enumerate all the features in a font. Features in a
+ * particular FeatureList are not limited to any single script. A FeatureList
+ * contains the entire list of either the GSUB or GPOS features that are used to
+ * render the glyphs in all the scripts in the font. <br/> The FeatureList table
+ * enumerates features in an array of records (FeatureRecord) and specifies the
+ * total number of features (FeatureCount). Every feature must have a
+ * FeatureRecord, which consists of a FeatureTag that identifies the feature and
+ * an offset to a Feature table (described next). The FeatureRecord array is
+ * arranged alphabetically by FeatureTag names. <br/> Note: The values stored in
+ * the FeatureIndex array of a LangSys table are used to locate records in the
+ * FeatureRecord array of a FeatureList table.
+ * </p>
+ * <p>
+ * FeatureList table
+ * </p>
+ * <table border="1">
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * <tr>
+ * <td>uint16</td>
+ * <td>FeatureCount</td>
+ * <td>Number of FeatureRecords in this table</td>
+ * </tr>
+ * <tr>
+ * <td>struct</td>
+ * <td>FeatureRecord[FeatureCount]</td>
+ * <td>Array of FeatureRecords-zero-based (first feature has FeatureIndex =
+ * 0)-listed alphabetically by FeatureTag</td>
+ * </tr>
+ * </table>
+ * <p>
+ * </p>
+ * <p>
+ * FeatureRecord
+ * </p>
+ * <table border="1">
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * <tr>
+ * <td>Tag</td>
+ * <td>FeatureTag</td>
+ * <td>4-byte feature identification tag</td>
+ * </tr>
+ * <tr>
+ * <td>Offset</td>
+ * <td>Feature</td>
+ * <td>Offset to Feature table-from beginning of FeatureList</td>
+ * </tr>
+ * </table>
+ * <p>
+ * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$

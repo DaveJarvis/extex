@@ -21,7 +21,6 @@ package org.extex.font.format.xtf;
 
 import java.io.IOException;
 
-import org.extex.font.format.xtf.cff.LookupTableFactory;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
@@ -67,75 +66,143 @@ import org.extex.util.xml.XMLWriterConvertible;
 public class XtfLookup implements XMLWriterConvertible {
 
     /**
-     * 3 - Alternate - Replace one glyph with one of many glyphs
+     * If set, skips over base glyphs.
      */
-    public static final int ALTERNATE = 3;
+    public static final int FLAG_IGNORE_BASE_GLYPHS = 0x0002;
 
     /**
-     * 6 - Chaining - Context Replace one or more glyphs in chained context
+     * If set, skips over ligatures.
      */
-    public static final int CHAINING = 6;
+    public static final int FLAG_IGNORE_BASE_LIGATURES = 0x0004;
 
     /**
-     * 5 - Context - Replace one or more glyphs in context
+     * If set, skips over combining marks.
      */
-    public static final int CONTEXT = 5;
+    public static final int FLAG_IGNORE_BASE_MARKS = 0x0008;
 
     /**
-     * LookupFlag IGNORE_BASE_GLYPHS
+     * If not zero, skips over all marks of attachment type different from
+     * specified.
      */
-    public static final int IGNORE_BASE_GLYPHS = 0x0002;
+    public static final int FLAG_MARK_ATTACHMENT_TYPE = 0xFF00;
 
     /**
-     * LookupFlag IGNORE_BASE_LIGATURES
+     * For future use.
      */
-    public static final int IGNORE_BASE_LIGATURES = 0x0004;
+    public static final int FLAG_RESERVED = 0x00f0;
 
     /**
-     * LookupFlag IGNORE_BASE_MARKS
+     * This bit relates only to the correct processing of the cursive attachment
+     * lookup type (GPOS lookup type 3). When this bit is set, the last glyph in
+     * a given sequence to which the cursive attachment lookup is applied, will
+     * be positioned on the baseline. Note: Setting of this bit is not intended
+     * to be used by operating systems or applications to determine text
+     * direction.
      */
-    public static final int IGNORE_BASE_MARKS = 0x0008;
+    public static final int FLAG_RIGHT_TO_LEFT = 0x0001;
 
     /**
-     * 4 - Ligature - Replace multiple glyphs with one glyph
+     * 1 - Single adjustment -Adjust position of a single glyph
      */
-    public static final int LIGATURE = 4;
+    public static final int GPOS_1_SINGLE = 1;
 
     /**
-     * The name of the lookup types.
+     * 2 - Pair adjustment - Adjust position of a pair of glyphs
      */
-    private final static String[] LOOKUP_TYPE_NAMES =
-            {"Single", "Multiple", "Alternate", "Ligature", "Context",
-                    "Chaining"};
+    public static final int GPOS_2_PAIR = 2;
 
     /**
-     * LookupFlag MARK_ATTACHMENT_TYP
+     * 3 - Cursive attachment - Attach cursive glyphs
      */
-    public static final int MARK_ATTACHMENT_TYPE = 0xFF00;
+    public static final int GPOS_3_CURSIVE_ATTACHMENT = 3;
 
     /**
-     * 2 - Multiple - Replace one glyph with more than one glyph
+     * 4 - MarkToBase attachment - Attach a combining mark to a base glyph
      */
-    public static final int MULTIPLE = 2;
+    public static final int GPOS_4_MARKTOBASE_ATTACHMENT = 4;
+
+    /**
+     * 5 - MarkToLigature attachment - Attach a combining mark to a ligature
+     */
+    public static final int GPOS_5_MARKTOLIGATURE_ATTACHMENT = 5;
+
+    /**
+     * 6 - MarkToMark attachment - Attach a combining mark to another mark
+     */
+    public static final int GPOS_6_MARKTOMARK_ATTACHMENT = 6;
+
+    /**
+     * 7 - Context positioning - Position one or more glyphs in context
+     */
+    public static final int GPOS_7_CONTEXT_POSITIONING = 7;
+
+    /**
+     * 8 - Chained Context positioning - Position one or more glyphs in chained
+     * context
+     */
+    public static final int GPOS_8_CHAINED_CONTEXT_POSITIONING = 8;
+
+    /**
+     * 9 - Extension positioning - Extension mechanism for other positionings
+     */
+    public static final int GPOS_9_EXTENSION_POSITIONING = 9;
 
     /**
      * 1 - Single - Replace one glyph with one glyph
      */
-    public static final int SINGLE = 1;
+    public static final int GSUB_1_SINGLE = 1;
 
     /**
-     * Returns the name of the lookup type (The start index is 1!).
-     * 
-     * @param type The type.
-     * @return Returns the name of the lookup type.
+     * 2 - Multiple - Replace one glyph with more than one glyph
      */
-    public static String lookupType(int type) {
+    public static final int GSUB_2_MULTIPLE = 2;
 
-        if (type >= 1 && type < LOOKUP_TYPE_NAMES.length - 1) {
-            return LOOKUP_TYPE_NAMES[type - 1];
-        }
-        return "Unknown";
-    }
+    /**
+     * 3 - Alternate - Replace one glyph with one of many glyphs
+     */
+    public static final int GSUB_3_ALTERNATE = 3;
+
+    /**
+     * 4 - Ligature - Replace multiple glyphs with one glyph
+     */
+    public static final int GSUB_4_LIGATURE = 4;
+
+    /**
+     * 5 - Context - Replace one or more glyphs in context
+     */
+    public static final int GSUB_5_CONTEXT = 5;
+
+    /**
+     * 6 - Chaining - Context Replace one or more glyphs in chained context
+     */
+    public static final int GSUB_6_CHAINING_CONTEXTUAL = 6;
+
+    /**
+     * 7 - Extension Substitution - Extension mechanism for other substitutions
+     * (i.e. this excludes the Extension type substitution itself)
+     */
+    public static final int GSUB_7_EXTENSION = 7;
+
+    /**
+     * 8 - Reverse chaining context single - Applied in reverse order, replace
+     * single glyph in chaining context
+     */
+    public static final int GSUB_8_REVERSE_CHAINING_CONTEXT_SINGLE = 8;
+
+    /**
+     * The name of the lookup types (GPOS).
+     */
+    public final static String[] LOOKUP_TYPE_NAMES_GPOS =
+            {"Single", "Pair", "Cursive", "MarkToBase", "MarkToLigature",
+                    "MarkToMark", "Context", "Chained", "Extension"};
+
+    /**
+     * The name of the lookup types (GSUB).
+     */
+    public final static String[] LOOKUP_TYPE_NAMES_GSUB =
+            {"Single", "Multiple", "Alternate", "Ligature", "Context",
+                    "Chaining Context", "Extension Substitution",
+                    "Reverse chaining context single"};
 
     /**
      * flag
@@ -146,6 +213,11 @@ public class XtfLookup implements XMLWriterConvertible {
      * The index.
      */
     private int index;
+
+    /**
+     * The lookup factory.
+     */
+    private LookupTableFactory lookupFactory;
 
     /**
      * subtable count
@@ -180,6 +252,7 @@ public class XtfLookup implements XMLWriterConvertible {
             int index) throws IOException {
 
         this.index = index;
+        this.lookupFactory = lookupFactory;
         rar.seek(offset);
 
         type = rar.readUnsignedShort();
@@ -194,6 +267,22 @@ public class XtfLookup implements XMLWriterConvertible {
             subTables[i] =
                     lookupFactory.read(rar, type, offset + subTableOffsets[i]);
         }
+    }
+
+    /**
+     * Check, if the flag is set.
+     * 
+     * @param value The value.
+     * @param flag The flag.
+     * @return Return <code>true</code>, if the flag is set.
+     */
+    private boolean checkFlag(int value, int flag) {
+
+        int erg = value & flag;
+        if (erg > 0) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -261,7 +350,18 @@ public class XtfLookup implements XMLWriterConvertible {
         writer.writeStartElement("lookup");
         writer.writeAttribute("index", index);
         writer.writeAttribute("typeid", type);
-        writer.writeAttribute("type", lookupType(type));
+        writer.writeAttribute("type", lookupFactory.lookupType(type));
+
+        writer.writeAttribute("flag", flag, 4);
+        writer.writeAttribute("RightToLeft",
+            checkFlag(flag, FLAG_RIGHT_TO_LEFT));
+        writer.writeAttribute("IgnoreBaseGlyphs", checkFlag(flag,
+            FLAG_IGNORE_BASE_GLYPHS));
+        writer.writeAttribute("IgnoreBaseLigature", checkFlag(flag,
+            FLAG_IGNORE_BASE_LIGATURES));
+        writer.writeAttribute("IgnoreMarks", checkFlag(flag,
+            FLAG_IGNORE_BASE_MARKS));
+
         for (int i = 0; i < subTables.length; i++) {
             XtfLookupTable st = subTables[i];
             if (st != null) {

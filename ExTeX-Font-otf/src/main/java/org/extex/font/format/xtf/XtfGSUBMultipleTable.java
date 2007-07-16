@@ -30,14 +30,14 @@ import org.extex.util.xml.XMLStreamWriter;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class XtfMultipleTable extends XtfLookupTable {
+public class XtfGSUBMultipleTable extends XtfLookupTable {
 
     /**
      * Create a new object.
      * 
      * @param format the format
      */
-    XtfMultipleTable(int format) {
+    XtfGSUBMultipleTable(int format) {
 
         super(format);
 
@@ -51,10 +51,10 @@ public class XtfMultipleTable extends XtfLookupTable {
      * @return Returns the new instance.
      * @throws IOException if an IO-error occurs
      */
-    public static XtfMultipleTable newInstance(RandomAccessR rar, int offset)
+    public static XtfGSUBMultipleTable newInstance(RandomAccessR rar, int offset)
             throws IOException {
 
-        // XtfSingleTable s = null;
+        // XtfGSUBSingleTable s = null;
         // rar.seek(offset);
         // int format = rar.readUnsignedShort();
         // if (format == 1) {
@@ -62,7 +62,7 @@ public class XtfMultipleTable extends XtfLookupTable {
         // } else if (format == 2) {
         // s = new SingleTableFormat2(rar, offset);
         // }
-        return new XtfMultipleTable(0);
+        return new XtfGSUBMultipleTable(0);
     }
 
     /**

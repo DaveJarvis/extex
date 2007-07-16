@@ -17,12 +17,10 @@
  *
  */
 
-package org.extex.font.format.xtf.cff;
+package org.extex.font.format.xtf;
 
 import java.io.IOException;
 
-import org.extex.font.format.xtf.LookupTable;
-import org.extex.font.format.xtf.XtfLookupTable;
 import org.extex.util.file.random.RandomAccessR;
 
 /**
@@ -56,5 +54,13 @@ public interface LookupTableFactory {
      */
     XtfLookupTable read(RandomAccessR rar, int type, int offset)
             throws IOException;
+
+    /**
+     * Returns the name of the lookup type (The start index is 1!).
+     * 
+     * @param type The type.
+     * @return Returns the name of the lookup type.
+     */
+    String lookupType(int type);
 
 }

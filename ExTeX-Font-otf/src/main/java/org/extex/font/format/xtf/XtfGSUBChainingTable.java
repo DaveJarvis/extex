@@ -25,19 +25,19 @@ import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
- * XtfChainingTable.
+ * XtfGSUBChainingTable.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class XtfChainingTable extends XtfLookupTable {
+public class XtfGSUBChainingTable extends XtfLookupTable {
 
     /**
      * Create a new object.
      * 
      * @param format the format
      */
-    XtfChainingTable(int format) {
+    XtfGSUBChainingTable(int format) {
 
         super(format);
 
@@ -51,10 +51,10 @@ public class XtfChainingTable extends XtfLookupTable {
      * @return Returns the new instance.
      * @throws IOException if an IO-error occurs
      */
-    public static XtfChainingTable newInstance(RandomAccessR rar, int offset)
+    public static XtfGSUBChainingTable newInstance(RandomAccessR rar, int offset)
             throws IOException {
 
-        // XtfSingleTable s = null;
+        // XtfGSUBSingleTable s = null;
         // rar.seek(offset);
         // int format = rar.readUnsignedShort();
         // if (format == 1) {
@@ -62,7 +62,7 @@ public class XtfChainingTable extends XtfLookupTable {
         // } else if (format == 2) {
         // s = new SingleTableFormat2(rar, offset);
         // }
-        return new XtfChainingTable(0);
+        return new XtfGSUBChainingTable(0);
     }
 
     /**

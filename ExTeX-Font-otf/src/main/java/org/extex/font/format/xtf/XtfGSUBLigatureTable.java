@@ -31,7 +31,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public abstract class XtfLigatureTable extends XtfLookupTable {
+public abstract class XtfGSUBLigatureTable extends XtfLookupTable {
 
     /**
      * ligature
@@ -202,7 +202,7 @@ public abstract class XtfLigatureTable extends XtfLookupTable {
     /**
      * Table for format1
      */
-    public static class LigatureTableFormat1 extends XtfLigatureTable {
+    public static class LigatureTableFormat1 extends XtfGSUBLigatureTable {
 
         /**
          * coverage
@@ -337,10 +337,10 @@ public abstract class XtfLigatureTable extends XtfLookupTable {
      * @return Returns the new ligature table.
      * @throws IOException if an IO-error occurs.
      */
-    static XtfLigatureTable newInstance(RandomAccessR rar, int offset)
+    static XtfGSUBLigatureTable newInstance(RandomAccessR rar, int offset)
             throws IOException {
 
-        XtfLigatureTable ls = null;
+        XtfGSUBLigatureTable ls = null;
         rar.seek(offset);
         int format = rar.readUnsignedShort();
         // TODO mgn: missing other formats
@@ -355,7 +355,7 @@ public abstract class XtfLigatureTable extends XtfLookupTable {
      * 
      * @param format the format
      */
-    XtfLigatureTable(int format) {
+    XtfGSUBLigatureTable(int format) {
 
         super(format);
 

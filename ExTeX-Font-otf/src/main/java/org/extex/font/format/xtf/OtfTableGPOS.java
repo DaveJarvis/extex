@@ -20,10 +20,7 @@
 package org.extex.font.format.xtf;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
-import org.extex.font.format.xtf.cff.LookupTableFactory;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
@@ -228,46 +225,19 @@ public class OtfTableGPOS extends AbstractXtfTable
             XMLWriterConvertible {
 
     /**
-     * featurelist.
+     * featurelist
      */
-    private int featureListOffset;
+    private XtfFeatureList featureList;
 
     /**
-     * Array of FeatureRecords-zero-based (first feature has FeatureIndex =
-     * 0)-listed alphabetically by FeatureTag.
+     * lookuplist
      */
-    private FeatureRecord[] featureRecord;
+    private XtfLookupList lookupList;
 
     /**
-     * The base offset of the table.
+     * scriptlist
      */
-    private int gposBaseOffset;
-
-    /**
-     * lockuplist.
-     */
-    private int lookupListOffset;
-
-    /**
-     * The lookup table array.
-     */
-    private LookupTable[] lookupTable;
-
-    /**
-     * The map for the script list.
-     */
-    private Map<String, ScriptRecord> scriptListMap =
-            new HashMap<String, ScriptRecord>();
-
-    /**
-     * scriptlist.
-     */
-    private int scriptListOffset;
-
-    /**
-     * The script record array.
-     */
-    private ScriptRecord[] scriptRecord;
+    private XtfScriptList scriptList;
 
     /**
      * Version.
@@ -286,33 +256,334 @@ public class OtfTableGPOS extends AbstractXtfTable
             RandomAccessR rar) throws IOException {
 
         super(tablemap);
-
-        gposBaseOffset = de.getOffset();
-        rar.seek(gposBaseOffset);
+        rar.seek(de.getOffset());
 
         // GPOS Header
         version = rar.readInt();
-        scriptListOffset = rar.readUnsignedShort();
-        featureListOffset = rar.readUnsignedShort();
-        lookupListOffset = rar.readUnsignedShort();
+        int scriptListOffset = rar.readUnsignedShort();
+        int featureListOffset = rar.readUnsignedShort();
+        int lookupListOffset = rar.readUnsignedShort();
 
-        // TODO mgn: no GPOS at the moment
-        // readScriptList(rar);
-        // readFeatureList(rar);
-        // readLookupList(rar);
+        // Script List
+        scriptList = new XtfScriptList(rar, de.getOffset() + scriptListOffset);
+
+        // Feature List
+        featureList =
+                new XtfFeatureList(rar, de.getOffset() + featureListOffset);
+
+        // Lookup List
+        lookupList =
+                new XtfLookupList(rar, de.getOffset() + lookupListOffset, this);
+
+    }
+
+    // /**
+    // * Returns the ScriptList with the tag name. If no scriptlist found,
+    // * <code>null</code> is returned.
+    // *
+    // * @param tag The tag.
+    // * @return Returns the ScriptList with the tag name.
+    // */
+    // public ScriptRecord getScriptRecord(String tag) {
+    //
+    // return scriptListMap.get(tag);
+    // }
+
+    /**
+     * Getter for featureList.
+     * 
+     * @return the featureList
+     */
+    public XtfFeatureList getFeatureList() {
+
+        return featureList;
     }
 
     /**
-     * Returns the ScriptList with the tag name. If no scriptlist found,
-     * <code>null</code> is returned.
+     * Getter for lookupList.
      * 
-     * @param tag The tag.
-     * @return Returns the ScriptList with the tag name.
+     * @return the lookupList
      */
-    public ScriptRecord getScriptRecord(String tag) {
+    public XtfLookupList getLookupList() {
 
-        return scriptListMap.get(tag);
+        return lookupList;
     }
+
+    /**
+     * Getter for scriptList.
+     * 
+     * @return the scriptList
+     */
+    public XtfScriptList getScriptList() {
+
+        return scriptList;
+    }
+
+    // /**
+    // * Read the future list table.
+    // * <p>
+    // * The headers of the GSUB and GPOS tables contain offsets to Feature List
+    // * tables (FeatureList) that enumerate all the features in a font.
+    // Features
+    // * in a particular FeatureList are not limited to any single script. A
+    // * FeatureList contains the entire list of either the GSUB or GPOS
+    // features
+    // * that are used to render the glyphs in all the scripts in the font.
+    // <br/>
+    // * The FeatureList table enumerates features in an array of records
+    // * (FeatureRecord) and specifies the total number of features
+    // * (FeatureCount). Every feature must have a FeatureRecord, which consists
+    // * of a FeatureTag that identifies the feature and an offset to a Feature
+    // * table (described next). The FeatureRecord array is arranged
+    // * alphabetically by FeatureTag names. <br/> Note: The values stored in
+    // the
+    // * FeatureIndex array of a LangSys table are used to locate records in the
+    // * FeatureRecord array of a FeatureList table.
+    // * </p>
+    // * <p>
+    // * FeatureList table
+    // * </p>
+    // * <table border="1">
+    // * <tr>
+    // * <td><b>Type</b></td>
+    // * <td><b>Name</b></td>
+    // * <td><b>Description</b></td>
+    // * </tr>
+    // * <tr>
+    // * <td>uint16</td>
+    // * <td>FeatureCount</td>
+    // * <td>Number of FeatureRecords in this table</td>
+    // * </tr>
+    // * <tr>
+    // * <td>struct</td>
+    // * <td>FeatureRecord[FeatureCount]</td>
+    // * <td>Array of FeatureRecords-zero-based (first feature has FeatureIndex
+    // =
+    // * 0)-listed alphabetically by FeatureTag</td>
+    // * </tr>
+    // * </table>
+    // * <p>
+    // * </p>
+    // * <p>
+    // * FeatureRecord
+    // * </p>
+    // * <table border="1">
+    // * <tr>
+    // * <td><b>Type</b></td>
+    // * <td><b>Name</b></td>
+    // * <td><b>Description</b></td>
+    // * </tr>
+    // * <tr>
+    // * <td>Tag</td>
+    // * <td>FeatureTag</td>
+    // * <td>4-byte feature identification tag</td>
+    // * </tr>
+    // * <tr>
+    // * <td>Offset</td>
+    // * <td>Feature</td>
+    // * <td>Offset to Feature table-from beginning of FeatureList</td>
+    // * </tr>
+    // * </table>
+    // * <p>
+    // * </p>
+    // *
+    // * @param rar The input.
+    // * @throws IOException if a io-error occurred.
+    // */
+    // private void readFeatureList(RandomAccessR rar) throws IOException {
+    //
+    // rar.seek(gposBaseOffset + featureListOffset);
+    //
+    // int featureCount = rar.readUnsignedShort();
+    //
+    // featureRecord = new FeatureRecord[featureCount];
+    //
+    // for (int i = 0; i < featureCount; i++) {
+    // featureRecord[i] = new FeatureRecord(this, rar);
+    // }
+    //
+    // // read the feature table
+    // for (int i = 0; i < featureCount; i++) {
+    // featureRecord[i].read(rar, gposBaseOffset + featureListOffset);
+    // }
+    //
+    // }
+
+    // /**
+    // * Read the lookup list table.
+    // * <p>
+    // * The headers of the GSUB and GPOS tables contain offsets to Lookup List
+    // * tables (LookupList) for glyph substitution (GSUB table) and glyph
+    // * positioning (GPOS table). The LookupList table contains an array of
+    // * offsets to Lookup tables (Lookup). The font developer defines the
+    // Lookup
+    // * sequence in the Lookup array to control the order in which a
+    // * text-processing client applies lookup data to glyph substitution and
+    // * positioning operations. LookupCount specifies the total number of
+    // Lookup
+    // * table offsets in the array.
+    // * </p>
+    // *
+    // * <table border="1">
+    // * <tr>
+    // * <td><b>Type</b></td>
+    // * <td><b>Name</b></td>
+    // * <td><b>Description</b></td>
+    // * </tr>
+    // * <tr>
+    // * <td>uint16</td>
+    // * <td>LookupCount</td>
+    // * <td>Number of lookups in this table</td>
+    // * </tr>
+    // * <tr>
+    // * <td>Offset</td>
+    // * <td>Lookup[LookupCount]</td>
+    // * <td>Array of offsets to Lookup tables-from beginning of LookupList
+    // -zero
+    // * based (first lookup is Lookup index = 0)</td>
+    // * </tr>
+    // * </td>
+    // * </table>
+    // * <p>
+    // * </p>
+    // *
+    // * @param rar The input.
+    // * @throws IOException if a io-error occurred.
+    // */
+    // private void readLookupList(RandomAccessR rar) throws IOException {
+    //
+    // rar.seek(gposBaseOffset + lookupListOffset);
+    //
+    // int lookupCount = rar.readUnsignedShort();
+    //
+    // int[] lookupOffsetArray = new int[lookupCount];
+    //
+    // for (int i = 0; i < lookupCount; i++) {
+    // lookupOffsetArray[i] = rar.readUnsignedShort();
+    // }
+    //
+    // lookupTable = new LookupTable[lookupCount];
+    // for (int i = 0; i < lookupCount; i++) {
+    // lookupTable[i] =
+    // new LookupTable(this, rar, gposBaseOffset
+    // + lookupListOffset, lookupOffsetArray[i]);
+    //
+    // }
+    //
+    // }
+
+    // /**
+    // * Read the script list.
+    // *
+    // * <p>
+    // * ScriptList table
+    // * </p>
+    // * <table border="1" >
+    // * <tr>
+    // * <td><b>Type</b></td>
+    // * <td><b>Name</b></td>
+    // * <td><b>Description</b></td>
+    // * </tr>
+    // * <tr>
+    // * <td>uint16</td>
+    // * <td>ScriptCount</td>
+    // * <td>Number of ScriptRecords</td>
+    // * </tr>
+    // * <tr>
+    // * <td>struct</td>
+    // * <td>ScriptRecord<br>
+    // * [ScriptCount]</td>
+    // * <td>Array of ScriptRecords<br>
+    // * -listed alphabetically by ScriptTag</td>
+    // * </tr>
+    // * </table> <br/>
+    // * <p>
+    // * ScriptRecord
+    // * </p>
+    // * <table border="1">
+    // * <tr>
+    // * <td><b>Type</b></td>
+    // * <td><b>Name</b></td>
+    // * <td><b>Description</b></td>
+    // * </tr>
+    // * <tr>
+    // * <td>Tag</td>
+    // * <td>ScriptTag</td>
+    // * <td>4-byte ScriptTag identifier</td>
+    // * </tr>
+    // * <tr>
+    // * <td>Offset</td>
+    // * <td>Script</td>
+    // * <td>Offset to Script table-from beginning of ScriptList</td>
+    // * </tr>
+    // * </table> <br/>
+    // * <p>
+    // * Script Table and Language System Record
+    // * </p>
+    // * <p>
+    // * A Script table identifies each language system that defines how to use
+    // * the glyphs in a script for a particular language. It also references a
+    // * default language system that defines how to use the script's glyphs in
+    // * the absence of language-specific knowledge.<br/> A Script table begins
+    // * with an offset to the Default Language System table (DefaultLangSys),
+    // * which defines the set of features that regulate the default behavior of
+    // * the script. Next, Language System Count (LangSysCount) defines the
+    // number
+    // * of language systems (excluding the DefaultLangSys) that use the script.
+    // * In addition, an array of Language System Records (LangSysRecord)
+    // defines
+    // * each language system (excluding the default) with an identification tag
+    // * (LangSysTag) and an offset to a Language System table (LangSys). The
+    // * LangSysRecord array stores the records alphabetically by
+    // LangSysTag.<br/>
+    // * If no language-specific script behavior is defined, the LangSysCount is
+    // * set to zero (0), and no LangSysRecords are allocated. <br/>
+    // * <p>
+    // * ScriptList table
+    // * </p>
+    // * <table border="1">
+    // * <tr>
+    // * <td><b>Type</b></td>
+    // * <td><b>Name</b></td>
+    // * <td><b>Description</b></td>
+    // * </tr>
+    // * <tr>
+    // * <td>uint16</td>
+    // * <td>ScriptCount</td>
+    // * <td>Number of ScriptRecords</td>
+    // * </tr>
+    // * <tr>
+    // * <td>struct</td>
+    // * <td>ScriptRecord<br>
+    // * [ScriptCount]</td>
+    // * <td>Array of ScriptRecords<br>
+    // * -listed alphabetically by ScriptTag</td>
+    // * </tr>
+    // * </table>
+    // *
+    // * @param rar input
+    // * @throws IOException if an IO-error occurs
+    // */
+    // private void readScriptList(RandomAccessR rar) throws IOException {
+    //
+    // rar.seek(gposBaseOffset + scriptListOffset);
+    //
+    // int striptCount = rar.readUnsignedShort();
+    //
+    // scriptRecord = new ScriptRecord[striptCount];
+    // for (int i = 0; i < striptCount; i++) {
+    // scriptRecord[i] = new ScriptRecord(this, rar);
+    // }
+    //
+    // // read the script table
+    // for (int i = 0; i < striptCount; i++) {
+    // scriptRecord[i].readScriptTable(rar, gposBaseOffset
+    // + scriptListOffset);
+    // scriptListMap.put(scriptRecord[i].getTag().toString(),
+    // scriptRecord[i]);
+    // }
+    //
+    // }
 
     /**
      * @see org.extex.font.format.xtf.XtfTable#getShortcut()
@@ -343,313 +614,49 @@ public class OtfTableGPOS extends AbstractXtfTable
     }
 
     /**
-     * Read the future list table.
-     * <p>
-     * The headers of the GSUB and GPOS tables contain offsets to Feature List
-     * tables (FeatureList) that enumerate all the features in a font. Features
-     * in a particular FeatureList are not limited to any single script. A
-     * FeatureList contains the entire list of either the GSUB or GPOS features
-     * that are used to render the glyphs in all the scripts in the font. <br/>
-     * The FeatureList table enumerates features in an array of records
-     * (FeatureRecord) and specifies the total number of features
-     * (FeatureCount). Every feature must have a FeatureRecord, which consists
-     * of a FeatureTag that identifies the feature and an offset to a Feature
-     * table (described next). The FeatureRecord array is arranged
-     * alphabetically by FeatureTag names. <br/> Note: The values stored in the
-     * FeatureIndex array of a LangSys table are used to locate records in the
-     * FeatureRecord array of a FeatureList table.
-     * </p>
-     * <p>
-     * FeatureList table
-     * </p>
-     * <table border="1">
-     * <tr>
-     * <td><b>Type</b></td>
-     * <td><b>Name</b></td>
-     * <td><b>Description</b></td>
-     * </tr>
-     * <tr>
-     * <td>uint16</td>
-     * <td>FeatureCount</td>
-     * <td>Number of FeatureRecords in this table</td>
-     * </tr>
-     * <tr>
-     * <td>struct</td>
-     * <td>FeatureRecord[FeatureCount]</td>
-     * <td>Array of FeatureRecords-zero-based (first feature has FeatureIndex =
-     * 0)-listed alphabetically by FeatureTag</td>
-     * </tr>
-     * </table>
-     * <p>
-     * </p>
-     * <p>
-     * FeatureRecord
-     * </p>
-     * <table border="1">
-     * <tr>
-     * <td><b>Type</b></td>
-     * <td><b>Name</b></td>
-     * <td><b>Description</b></td>
-     * </tr>
-     * <tr>
-     * <td>Tag</td>
-     * <td>FeatureTag</td>
-     * <td>4-byte feature identification tag</td>
-     * </tr>
-     * <tr>
-     * <td>Offset</td>
-     * <td>Feature</td>
-     * <td>Offset to Feature table-from beginning of FeatureList</td>
-     * </tr>
-     * </table>
-     * <p>
-     * </p>
+     * {@inheritDoc}
      * 
-     * @param rar The input.
-     * @throws IOException if a io-error occurred.
+     * @see org.extex.font.format.xtf.LookupTableFactory#lookupType(int)
      */
-    private void readFeatureList(RandomAccessR rar) throws IOException {
+    public String lookupType(int type) {
 
-        rar.seek(gposBaseOffset + featureListOffset);
-
-        int featureCount = rar.readUnsignedShort();
-
-        featureRecord = new FeatureRecord[featureCount];
-
-        for (int i = 0; i < featureCount; i++) {
-            featureRecord[i] = new FeatureRecord(this, rar);
+        if (type >= 1 && type < XtfLookup.LOOKUP_TYPE_NAMES_GPOS.length - 1) {
+            return XtfLookup.LOOKUP_TYPE_NAMES_GPOS[type - 1];
         }
-
-        // read the feature table
-        for (int i = 0; i < featureCount; i++) {
-            featureRecord[i].read(rar, gposBaseOffset + featureListOffset);
-        }
-
+        return "Unknown";
     }
 
     /**
-     * Read the lookup list table.
-     * <p>
-     * The headers of the GSUB and GPOS tables contain offsets to Lookup List
-     * tables (LookupList) for glyph substitution (GSUB table) and glyph
-     * positioning (GPOS table). The LookupList table contains an array of
-     * offsets to Lookup tables (Lookup). The font developer defines the Lookup
-     * sequence in the Lookup array to control the order in which a
-     * text-processing client applies lookup data to glyph substitution and
-     * positioning operations. LookupCount specifies the total number of Lookup
-     * table offsets in the array.
-     * </p>
+     * {@inheritDoc}
      * 
-     * <table border="1">
-     * <tr>
-     * <td><b>Type</b></td>
-     * <td><b>Name</b></td>
-     * <td><b>Description</b></td>
-     * </tr>
-     * <tr>
-     * <td>uint16</td>
-     * <td>LookupCount</td>
-     * <td>Number of lookups in this table</td>
-     * </tr>
-     * <tr>
-     * <td>Offset</td>
-     * <td>Lookup[LookupCount]</td>
-     * <td>Array of offsets to Lookup tables-from beginning of LookupList -zero
-     * based (first lookup is Lookup index = 0)</td>
-     * </tr>
-     * </td>
-     * </table>
-     * <p>
-     * </p>
-     * 
-     * @param rar The input.
-     * @throws IOException if a io-error occurred.
+     * @see org.extex.font.format.xtf.LookupTableFactory#read(org.extex.util.file.random.RandomAccessR,
+     *      int, int)
      */
-    private void readLookupList(RandomAccessR rar) throws IOException {
+    public XtfLookupTable read(RandomAccessR rar, int type, int offset)
+            throws IOException {
 
-        rar.seek(gposBaseOffset + lookupListOffset);
-
-        int lookupCount = rar.readUnsignedShort();
-
-        int[] lookupOffsetArray = new int[lookupCount];
-
-        for (int i = 0; i < lookupCount; i++) {
-            lookupOffsetArray[i] = rar.readUnsignedShort();
+        switch (type) {
+            case XtfLookup.GPOS_1_SINGLE:
+                return XtfGPOSSingleTable.newInstance(rar, offset);
+            case XtfLookup.GPOS_2_PAIR:
+                return XtfGPOSPairTable.newInstance(rar, offset);
         }
-
-        lookupTable = new LookupTable[lookupCount];
-        for (int i = 0; i < lookupCount; i++) {
-            lookupTable[i] =
-                    new LookupTable(this, rar, gposBaseOffset
-                            + lookupListOffset, lookupOffsetArray[i]);
-
-        }
-
+        return null;
     }
 
     /**
-     * Read the script list.
+     * {@inheritDoc}
      * 
-     * <p>
-     * ScriptList table
-     * </p>
-     * <table border="1" >
-     * <tr>
-     * <td><b>Type</b></td>
-     * <td><b>Name</b></td>
-     * <td><b>Description</b></td>
-     * </tr>
-     * <tr>
-     * <td>uint16</td>
-     * <td>ScriptCount</td>
-     * <td>Number of ScriptRecords</td>
-     * </tr>
-     * <tr>
-     * <td>struct</td>
-     * <td>ScriptRecord<br>
-     * [ScriptCount]</td>
-     * <td>Array of ScriptRecords<br>
-     * -listed alphabetically by ScriptTag</td>
-     * </tr>
-     * </table> <br/>
-     * <p>
-     * ScriptRecord
-     * </p>
-     * <table border="1">
-     * <tr>
-     * <td><b>Type</b></td>
-     * <td><b>Name</b></td>
-     * <td><b>Description</b></td>
-     * </tr>
-     * <tr>
-     * <td>Tag</td>
-     * <td>ScriptTag</td>
-     * <td>4-byte ScriptTag identifier</td>
-     * </tr>
-     * <tr>
-     * <td>Offset</td>
-     * <td>Script</td>
-     * <td>Offset to Script table-from beginning of ScriptList</td>
-     * </tr>
-     * </table> <br/>
-     * <p>
-     * Script Table and Language System Record
-     * </p>
-     * <p>
-     * A Script table identifies each language system that defines how to use
-     * the glyphs in a script for a particular language. It also references a
-     * default language system that defines how to use the script's glyphs in
-     * the absence of language-specific knowledge.<br/> A Script table begins
-     * with an offset to the Default Language System table (DefaultLangSys),
-     * which defines the set of features that regulate the default behavior of
-     * the script. Next, Language System Count (LangSysCount) defines the number
-     * of language systems (excluding the DefaultLangSys) that use the script.
-     * In addition, an array of Language System Records (LangSysRecord) defines
-     * each language system (excluding the default) with an identification tag
-     * (LangSysTag) and an offset to a Language System table (LangSys). The
-     * LangSysRecord array stores the records alphabetically by LangSysTag.<br/>
-     * If no language-specific script behavior is defined, the LangSysCount is
-     * set to zero (0), and no LangSysRecords are allocated. <br/>
-     * <p>
-     * ScriptList table
-     * </p>
-     * <table border="1">
-     * <tr>
-     * <td><b>Type</b></td>
-     * <td><b>Name</b></td>
-     * <td><b>Description</b></td>
-     * </tr>
-     * <tr>
-     * <td>uint16</td>
-     * <td>ScriptCount</td>
-     * <td>Number of ScriptRecords</td>
-     * </tr>
-     * <tr>
-     * <td>struct</td>
-     * <td>ScriptRecord<br>
-     * [ScriptCount]</td>
-     * <td>Array of ScriptRecords<br>
-     * -listed alphabetically by ScriptTag</td>
-     * </tr>
-     * </table>
-     * 
-     * @param rar input
-     * @throws IOException if an IO-error occurs
-     */
-    private void readScriptList(RandomAccessR rar) throws IOException {
-
-        rar.seek(gposBaseOffset + scriptListOffset);
-
-        int striptCount = rar.readUnsignedShort();
-
-        scriptRecord = new ScriptRecord[striptCount];
-        for (int i = 0; i < striptCount; i++) {
-            scriptRecord[i] = new ScriptRecord(this, rar);
-        }
-
-        // read the script table
-        for (int i = 0; i < striptCount; i++) {
-            scriptRecord[i].readScriptTable(rar, gposBaseOffset
-                    + scriptListOffset);
-            scriptListMap.put(scriptRecord[i].getTag().toString(),
-                scriptRecord[i]);
-        }
-
-    }
-
-    /**
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
      *      org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writeStartElement(writer);
-        writer.writeAttribute("version", version, 8);
-        // writer.writeAttribute("feature", featureListOffset, 8);
-        // writer.writeAttribute("lookup", lookupListOffset, 8);
-        // writer.writeAttribute("script", scriptListOffset, 8);
-
-        writer.writeStartElement("scriptrecord");
-        if (scriptRecord != null) {
-            writer.writeAttribute("count", scriptRecord.length);
-            for (int i = 0; i < scriptRecord.length; i++) {
-                scriptRecord[i].writeXML(writer);
-            }
-        }
+        writer.writeAttribute("version", version);
+        scriptList.writeXML(writer);
+        featureList.writeXML(writer);
+        lookupList.writeXML(writer);
         writer.writeEndElement();
-
-        writer.writeStartElement("featurerecord");
-        if (featureRecord != null) {
-            writer.writeAttribute("count", featureRecord.length);
-            for (int i = 0; i < featureRecord.length; i++) {
-                featureRecord[i].writeXML(writer);
-            }
-        }
-        writer.writeEndElement();
-
-        writer.writeStartElement("lookuptable");
-        if (lookupTable != null) {
-            writer.writeAttribute("count", lookupTable.length);
-            for (int i = 0; i < lookupTable.length; i++) {
-                lookupTable[i].writeXML(writer);
-            }
-        }
-        writer.writeEndElement();
-
-        writer.writeComment("incomplete");
-        writer.writeEndElement();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.cff.LookupTableFactory#read(org.extex.util.file.random.RandomAccessR,
-     *      int, int)
-     */
-    public XtfLookupTable read(RandomAccessR rar, int type, int offset)
-            throws IOException {
-
-        // TODO mgn: read unimplemented
-        return null;
     }
 }

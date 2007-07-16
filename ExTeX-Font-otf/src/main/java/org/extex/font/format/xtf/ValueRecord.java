@@ -252,6 +252,8 @@ public class ValueRecord implements XMLWriterConvertible {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {

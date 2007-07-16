@@ -32,6 +32,89 @@ import org.extex.util.xml.XMLWriterConvertible;
 /**
  * ScriptList.
  * 
+ * <p>
+ * ScriptList table
+ * </p>
+ * <table border="1" >
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * <tr>
+ * <td>uint16</td>
+ * <td>ScriptCount</td>
+ * <td>Number of ScriptRecords</td>
+ * </tr>
+ * <tr>
+ * <td>struct</td>
+ * <td>ScriptRecord<br>
+ * [ScriptCount]</td>
+ * <td>Array of ScriptRecords<br>
+ * -listed alphabetically by ScriptTag</td>
+ * </tr>
+ * </table> <br/>
+ * <p>
+ * ScriptRecord
+ * </p>
+ * <table border="1">
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * <tr>
+ * <td>Tag</td>
+ * <td>ScriptTag</td>
+ * <td>4-byte ScriptTag identifier</td>
+ * </tr>
+ * <tr>
+ * <td>Offset</td>
+ * <td>Script</td>
+ * <td>Offset to Script table-from beginning of ScriptList</td>
+ * </tr>
+ * </table> <br/>
+ * <p>
+ * Script Table and Language System Record
+ * </p>
+ * <p>
+ * A Script table identifies each language system that defines how to use the
+ * glyphs in a script for a particular language. It also references a default
+ * language system that defines how to use the script's glyphs in the absence of
+ * language-specific knowledge.<br/> A Script table begins with an offset to
+ * the Default Language System table (DefaultLangSys), which defines the set of
+ * features that regulate the default behavior of the script. Next, Language
+ * System Count (LangSysCount) defines the number of language systems (excluding
+ * the DefaultLangSys) that use the script. In addition, an array of Language
+ * System Records (LangSysRecord) defines each language system (excluding the
+ * default) with an identification tag (LangSysTag) and an offset to a Language
+ * System table (LangSys). The LangSysRecord array stores the records
+ * alphabetically by LangSysTag.<br/> If no language-specific script behavior
+ * is defined, the LangSysCount is set to zero (0), and no LangSysRecords are
+ * allocated. <br/>
+ * <p>
+ * ScriptList table
+ * </p>
+ * <table border="1">
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * <tr>
+ * <td>uint16</td>
+ * <td>ScriptCount</td>
+ * <td>Number of ScriptRecords</td>
+ * </tr>
+ * <tr>
+ * <td>struct</td>
+ * <td>ScriptRecord<br>
+ * [ScriptCount]</td>
+ * <td>Array of ScriptRecords<br>
+ * -listed alphabetically by ScriptTag</td>
+ * </tr>
+ * </table>
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */

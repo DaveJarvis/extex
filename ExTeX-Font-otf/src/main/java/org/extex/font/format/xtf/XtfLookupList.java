@@ -21,13 +21,47 @@ package org.extex.font.format.xtf;
 
 import java.io.IOException;
 
-import org.extex.font.format.xtf.cff.LookupTableFactory;
 import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
 
 /**
  * List for all LookupTables.
+ * 
+ * <p>
+ * lookup list table
+ * </p>
+ * <p>
+ * The headers of the GSUB and GPOS tables contain offsets to Lookup List tables
+ * (LookupList) for glyph substitution (GSUB table) and glyph positioning (GPOS
+ * table). The LookupList table contains an array of offsets to Lookup tables
+ * (Lookup). The font developer defines the Lookup sequence in the Lookup array
+ * to control the order in which a text-processing client applies lookup data to
+ * glyph substitution and positioning operations. LookupCount specifies the
+ * total number of Lookup table offsets in the array.
+ * </p>
+ * 
+ * <table border="1">
+ * <tr>
+ * <td><b>Type</b></td>
+ * <td><b>Name</b></td>
+ * <td><b>Description</b></td>
+ * </tr>
+ * <tr>
+ * <td>uint16</td>
+ * <td>LookupCount</td>
+ * <td>Number of lookups in this table</td>
+ * </tr>
+ * <tr>
+ * <td>Offset</td>
+ * <td>Lookup[LookupCount]</td>
+ * <td>Array of offsets to Lookup tables-from beginning of LookupList -zero
+ * based (first lookup is Lookup index = 0)</td>
+ * </tr>
+ * </td>
+ * </table>
+ * <p>
+ * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$

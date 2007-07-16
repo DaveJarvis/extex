@@ -25,19 +25,19 @@ import org.extex.util.file.random.RandomAccessR;
 import org.extex.util.xml.XMLStreamWriter;
 
 /**
- * XtfContextTable.
+ * XtfGSUBContextTable.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class XtfContextTable extends XtfLookupTable {
+public class XtfGSUBContextTable extends XtfLookupTable {
 
     /**
      * Create a new object.
      * 
      * @param format the format
      */
-    XtfContextTable(int format) {
+    XtfGSUBContextTable(int format) {
 
         super(format);
 
@@ -51,10 +51,10 @@ public class XtfContextTable extends XtfLookupTable {
      * @return Returns the new instance.
      * @throws IOException if an IO-error occurs
      */
-    public static XtfContextTable newInstance(RandomAccessR rar, int offset)
+    public static XtfGSUBContextTable newInstance(RandomAccessR rar, int offset)
             throws IOException {
 
-        // XtfSingleTable s = null;
+        // XtfGSUBSingleTable s = null;
         // rar.seek(offset);
         // int format = rar.readUnsignedShort();
         // if (format == 1) {
@@ -62,7 +62,7 @@ public class XtfContextTable extends XtfLookupTable {
         // } else if (format == 2) {
         // s = new SingleTableFormat2(rar, offset);
         // }
-        return new XtfContextTable(0);
+        return new XtfGSUBContextTable(0);
     }
 
     /**

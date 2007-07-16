@@ -30,7 +30,7 @@ import org.extex.util.xml.XMLStreamWriter;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public abstract class XtfSingleTable extends XtfLookupTable {
+public abstract class XtfGSUBSingleTable extends XtfLookupTable {
 
     /**
      * format 1
@@ -47,7 +47,7 @@ public abstract class XtfSingleTable extends XtfLookupTable {
      * 
      * @param format the format
      */
-    XtfSingleTable(int format) {
+    XtfGSUBSingleTable(int format) {
 
         super(format);
 
@@ -69,10 +69,10 @@ public abstract class XtfSingleTable extends XtfLookupTable {
      * @return Returns the new instance.
      * @throws IOException if an IO-error occurs
      */
-    public static XtfSingleTable newInstance(RandomAccessR rar, int offset)
+    public static XtfGSUBSingleTable newInstance(RandomAccessR rar, int offset)
             throws IOException {
 
-        XtfSingleTable s = null;
+        XtfGSUBSingleTable s = null;
         rar.seek(offset);
         int format = rar.readUnsignedShort();
         if (format == 1) {
@@ -86,7 +86,7 @@ public abstract class XtfSingleTable extends XtfLookupTable {
     /**
      * SingleTable for format 1
      */
-    public static class SingleTableFormat1 extends XtfSingleTable {
+    public static class SingleTableFormat1 extends XtfGSUBSingleTable {
 
         /**
          * coverageOffset
@@ -122,7 +122,7 @@ public abstract class XtfSingleTable extends XtfLookupTable {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.font.format.xtf.XtfSingleTable#substitute(int)
+         * @see org.extex.font.format.xtf.XtfGSUBSingleTable#substitute(int)
          */
         @Override
         public int substitute(int glyphId) {
@@ -152,7 +152,7 @@ public abstract class XtfSingleTable extends XtfLookupTable {
     /**
      * SingleTable for format 2
      */
-    public static class SingleTableFormat2 extends XtfSingleTable {
+    public static class SingleTableFormat2 extends XtfGSUBSingleTable {
 
         /**
          * coverageOffset
@@ -197,7 +197,7 @@ public abstract class XtfSingleTable extends XtfLookupTable {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.font.format.xtf.XtfSingleTable#substitute(int)
+         * @see org.extex.font.format.xtf.XtfGSUBSingleTable#substitute(int)
          */
         @Override
         public int substitute(int glyphId) {

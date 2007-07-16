@@ -1,19 +1,19 @@
 /*
  * Copyright (C) 2007 The ExTeX Group and individual authors listed below
  *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
  *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
  */
 
@@ -22,9 +22,15 @@ package org.extex.font.format.xtf;
 import java.io.IOException;
 
 import org.extex.util.file.random.RandomAccessR;
+import org.extex.util.xml.XMLStreamWriter;
+import org.extex.util.xml.XMLWriterConvertible;
 
 /**
+ * The GPOS table <b>Pair</b>.
+ * 
+ * <p>
  * Lookup Type 2: Pair Adjustment Positioning Subtable.
+ * </p>
  * 
  * <p>
  * A pair adjustment positioning subtable (PairPos) is used to adjust the
@@ -386,68 +392,322 @@ import org.extex.util.file.random.RandomAccessR;
  * <p>
  * </p>
  * 
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public abstract class LookupType2 extends LookupType {
+public abstract class XtfGPOSPairTable extends XtfLookupTable {
 
     /**
-     * Format identifier-format.
+     * PairTable format 1.
      */
-    private int posFormat;
+    public static class PairTableFormat1 extends XtfGPOSPairTable
+            implements
+                XMLWriterConvertible {
 
-    /**
-     * Creates a new object.
-     * 
-     * @param type The lookup tpye.
-     * @param format The pos format.
-     * @param offset The offset of the table.
-     * @throws IOException if a io-error occurred.
-     */
-    protected LookupType2(int type, int format, int offset) throws IOException {
+        /**
+         * Offset to Coverage table-from beginning of PairPos subtable-only the
+         * first glyph in each pair.
+         */
+        private int coverageOffset;
 
-        super(type, offset);
+        /**
+         * Array of offsets to PairSet tables-from beginning of PairPos
+         * subtable-ordered by Coverage Index.
+         */
+        private int[] pairSetOffsetArray;
 
-        posFormat = format;
+        /**
+         * Defines the types of data in ValueRecord1-for the first glyph in the
+         * pair -may be zero (0).
+         */
+        private int valueFormat1;
+
+        /**
+         * Defines the types of data in ValueRecord2-for the second glyph in the
+         * pair -may be zero (0).
+         */
+        private int valueFormat2;
+
+        /**
+         * Create a new object.
+         * 
+         * @param rar the input
+         * @param offset the offset
+         * @throws IOException if an IO_error occurs
+         */
+        PairTableFormat1(RandomAccessR rar, int offset) throws IOException {
+
+            super(FORMAT1);
+
+            coverageOffset = rar.readUnsignedShort();
+            valueFormat1 = rar.readUnsignedShort();
+            valueFormat2 = rar.readUnsignedShort();
+            int pairSetCount = rar.readUnsignedShort();
+            pairSetOffsetArray = new int[pairSetCount];
+            for (int i = 0; i < pairSetCount; i++) {
+                pairSetOffsetArray[i] = rar.readUnsignedShort();
+            }
+
+            PairSetTable[] pairSetTable = new PairSetTable[pairSetCount];
+            for (int i = 0; i < pairSetCount; i++) {
+                // TODO mgn: check offset : vorher getBaseoffset
+                pairSetTable[i] =
+                        new PairSetTable(rar, offset + pairSetOffsetArray[i]);
+            }
+        }
+
+        /**
+         * Getter for coverageOffset.
+         * 
+         * @return the coverageOffset
+         */
+        public int getCoverageOffset() {
+
+            return coverageOffset;
+        }
+
+        /**
+         * Getter for pairSetOffsetArray.
+         * 
+         * @return the pairSetOffsetArray
+         */
+        public int[] getPairSetOffsetArray() {
+
+            return pairSetOffsetArray;
+        }
+
+        /**
+         * Getter for valueFormat1.
+         * 
+         * @return the valueFormat1
+         */
+        public int getValueFormat1() {
+
+            return valueFormat1;
+        }
+
+        /**
+         * Getter for valueFormat2.
+         * 
+         * @return the valueFormat2
+         */
+        public int getValueFormat2() {
+
+            return valueFormat2;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+         */
+        public void writeXML(XMLStreamWriter writer) throws IOException {
+
+            writer.writeStartElement("pairtable");
+            writer.writeAttribute("coverageOffset", coverageOffset, 4);
+            writer.writeAttribute("valueFormat1", valueFormat1);
+            writer.writeAttribute("valueFormat2", valueFormat2);
+            writer.writeIntArrayAsEntries(pairSetOffsetArray);
+            writer.writeEndElement();
+        }
 
     }
 
     /**
-     * Returns a instance of the lookup type.
-     * 
-     * @param rar The input.
-     * @param type The lookup tpye.
-     * @param offset The offset.
-     * @return Returns a instance of the lookup type.
-     * @throws IOException if a io-error occurred.
+     * Pair Format 2
      */
-    public static LookupType getInstance(RandomAccessR rar, int type, int offset)
+    public static class PairTableFormat2 extends XtfGPOSPairTable
+            implements
+                XMLWriterConvertible {
+
+        /**
+         * Array of Class1 records-ordered by Class1.
+         */
+        private Class1Record[] class1RecordArray;
+
+        /**
+         * Offset to ClassDef table-from beginning of PairPos subtable-for the
+         * first glyph of the pair.
+         */
+        private int classDef1Offset;
+
+        /**
+         * Offset to ClassDef table-from beginning of PairPos subtable-for the
+         * second glyph of the pair.
+         */
+        private int classDef2Offset;
+
+        /**
+         * Offset to Coverage table-from beginning of PairPos subtable-for the
+         * first glyph of the pair.
+         */
+        private int coverageOffset;
+
+        /**
+         * ValueRecord definition-for the first glyph of the pair-may be zero
+         * (0)
+         */
+        private int valueFormat1;
+
+        /**
+         * ValueRecord definition-for the second glyph of the pair-may be zero
+         * (0).
+         */
+        private int valueFormat2;
+
+        /**
+         * Create a new object.
+         * 
+         * @param rar the input
+         * @param offset the offset
+         * @throws IOException if an IO_error occurs
+         */
+        PairTableFormat2(RandomAccessR rar, int offset) throws IOException {
+
+            super(FORMAT2);
+
+            coverageOffset = rar.readUnsignedShort();
+            valueFormat1 = rar.readUnsignedShort();
+            valueFormat2 = rar.readUnsignedShort();
+            classDef1Offset = rar.readUnsignedShort();
+            classDef2Offset = rar.readUnsignedShort();
+            int class1Count = rar.readUnsignedShort();
+            int class2Count = rar.readUnsignedShort();
+
+            class1RecordArray = new Class1Record[class1Count];
+            for (int i = 0; i < class1Count; i++) {
+                class1RecordArray[i] = new Class1Record(rar, class2Count);
+            }
+
+        }
+
+        /**
+         * Getter for class1RecordArray.
+         * 
+         * @return the class1RecordArray
+         */
+        public Class1Record[] getClass1RecordArray() {
+
+            return class1RecordArray;
+        }
+
+        /**
+         * Getter for classDef1Offset.
+         * 
+         * @return the classDef1Offset
+         */
+        public int getClassDef1Offset() {
+
+            return classDef1Offset;
+        }
+
+        /**
+         * Getter for classDef2Offset.
+         * 
+         * @return the classDef2Offset
+         */
+        public int getClassDef2Offset() {
+
+            return classDef2Offset;
+        }
+
+        /**
+         * Getter for coverageOffset.
+         * 
+         * @return the coverageOffset
+         */
+        public int getCoverageOffset() {
+
+            return coverageOffset;
+        }
+
+        /**
+         * Getter for valueFormat1.
+         * 
+         * @return the valueFormat1
+         */
+        public int getValueFormat1() {
+
+            return valueFormat1;
+        }
+
+        /**
+         * Getter for valueFormat2.
+         * 
+         * @return the valueFormat2
+         */
+        public int getValueFormat2() {
+
+            return valueFormat2;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+         */
+        public void writeXML(XMLStreamWriter writer) throws IOException {
+
+            writer.writeStartElement("pairtable");
+            writer.writeAttribute("format", getFormat());
+
+            writer.writeAttribute("coverageOffset", coverageOffset, 4);
+            writer.writeAttribute("valueFormat1", valueFormat1);
+            writer.writeAttribute("valueFormat2", valueFormat2);
+            writer.writeAttribute("classDef1Offset", classDef1Offset);
+            writer.writeAttribute("classDef2Offset", classDef2Offset);
+            for (int i = 0; i < class1RecordArray.length; i++) {
+                class1RecordArray[i].writeXML(writer);
+            }
+
+            writer.writeEndElement();
+        }
+
+    }
+
+    /**
+     * format 1
+     */
+    private static final int FORMAT1 = 1;
+
+    /**
+     * format 2
+     */
+    private static final int FORMAT2 = 2;
+
+    /**
+     * Create a new Instance.
+     * 
+     * @param rar the input
+     * @param offset the offset
+     * @return Returns the new instance.
+     * @throws IOException if an IO-error occurs
+     */
+    public static XtfGPOSPairTable newInstance(RandomAccessR rar, int offset)
             throws IOException {
 
+        XtfGPOSPairTable s = null;
         rar.seek(offset);
+        int format = rar.readUnsignedShort();
 
-        int posFormat = rar.readUnsignedShort();
-
-        switch (posFormat) {
-            case 1:
-                return new LookupType21(rar, type, posFormat, offset);
-
-            case 2:
-                return new LookupType22(rar, type, posFormat, offset);
-
-            default:
-                throw new IOException("wrong posformat");
+        if (format == FORMAT1) {
+            s = new PairTableFormat1(rar, offset);
+        } else if (format == FORMAT2) {
+            s = new PairTableFormat2(rar, offset);
         }
+        return s;
     }
 
     /**
-     * Getter for posFormat.
+     * Create a new object.
      * 
-     * @return the posFormat
+     * @param format the format
      */
-    public int getPosFormat() {
+    XtfGPOSPairTable(int format) {
 
-        return posFormat;
+        super(format);
+
     }
 
 }
