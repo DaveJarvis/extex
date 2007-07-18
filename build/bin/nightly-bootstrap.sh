@@ -30,4 +30,8 @@ svn update >>$LOG 2>&1
 cd build
 source bin/nightly-build.sh >>$LOG 2>&1
 
+if test $? != "0"; then
+    mail -s 'ExTeX build failed' gene@gerd-neugebauer.de < $LOG
+fi
+
 #
