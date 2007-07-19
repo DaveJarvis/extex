@@ -27,7 +27,7 @@
 
   <property name="deploy.dir" location="target/site" />
 
-  <property name="log.dir" value="target/application/html/snapshot" />
+  <property name="log.dir" value="target" />
   <property name="log.file" value="${log.dir}/build.log" />
   <property name="log.style" location="./src/xslt/ant-log.xsl" />
 
