@@ -38,7 +38,8 @@ import org.extex.typesetter.Typesetter;
 public class OmegaUnitInfo extends UnitInfo implements LoadedObserver {
 
     /**
-     * TODO gene: missing JavaDoc.
+     * This class provides a stream decorator which is capable to access the
+     * context.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
