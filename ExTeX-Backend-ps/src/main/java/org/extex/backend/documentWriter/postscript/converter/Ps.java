@@ -31,6 +31,7 @@ import org.extex.color.model.GrayscaleColor;
 import org.extex.color.model.RgbColor;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
+import org.extex.typesetter.type.Node;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -99,6 +100,56 @@ public class Ps {
     }
 
     /**
+     * Draw a little box showing the dimensions of the node.
+     * 
+     * @param out the target string buffer
+     * @param node the node to draw
+     * @param x TODO
+     * @param y TODO
+     */
+    protected void drawBox(PrintStream out, Node node, FixedDimen x,
+            FixedDimen y) {
+
+        FixedDimen height = node.getHeight();
+        if (height.ne(Dimen.ZERO_PT)) {
+            PsUnit.toPoint(node.getWidth(), out, false);
+            out.write(' ');
+            PsUnit.toPoint(height, out, false);
+            out.write(' ');
+            PsUnit.toPoint(x, out, false);
+            out.write(' ');
+            PsUnit.toPoint(y, out, false);
+            out.write(' ');
+            addLib(out, "box");
+        }
+    }
+
+    /**
+     * Draw a little box showing the dimensions of the node.
+     * 
+     * @param out the target string buffer
+     * @param node the node to draw
+     * @param x TODO
+     * @param y TODO
+     */
+    protected void drawGrayBox(PrintStream out, Node node, FixedDimen x,
+            FixedDimen y) {
+
+        FixedDimen height = node.getHeight();
+        if (height.ne(Dimen.ZERO_PT)) {
+            PsUnit.toPoint(node.getWidth(), out, false);
+            out.write(' ');
+            PsUnit.toPoint(height, out, false);
+            out.write(' ');
+            PsUnit.toPoint(x, out, false);
+            out.write(' ');
+            PsUnit.toPoint(y, out, false);
+            out.write(' ');
+            addLib(out, "Box");
+        }
+    }
+
+    /**
      * Produce a eop hook invocation.
      * 
      * @param out the output stream
@@ -111,7 +162,7 @@ public class Ps {
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @param out the output stream
      * @param text the text
      * @param x the x coordinate
@@ -131,7 +182,7 @@ public class Ps {
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @param out the output stream
      * @param text the text
      * @param x the x coordinate

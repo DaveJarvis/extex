@@ -29,7 +29,6 @@ import org.extex.backend.documentWriter.exception.DocumentWriterIOException;
 import org.extex.backend.documentWriter.postscript.util.PsUnit;
 import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.Dimen;
-import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.tc.font.Font;
@@ -102,31 +101,6 @@ public class PsBoxConverter extends AbstractConverter
     }
 
     /**
-     * Draw a little box showing the dimensions of the node.
-     * 
-     * @param node the node to draw
-     * @param out the target string buffer
-     * @param height the height; this can be negative as well
-     * @param box the name of the box command to use for printing
-     */
-    private void drawBox(Node node, PrintStream out, FixedDimen height,
-            String box) {
-
-        if (height.ne(Dimen.ZERO_PT)) {
-            PsUnit.toPoint(node.getWidth(), out, false);
-            out.write(' ');
-            PsUnit.toPoint(height, out, false);
-            out.write(' ');
-            PsUnit.toPoint(x, out, false);
-            out.write(' ');
-            PsUnit.toPoint(y, out, false);
-            out.write(' ');
-            out.append(box);
-            out.println();
-        }
-    }
-
-    /**
      * This method draws a single box. It makes use of a PostScript def to do
      * the real job.
      * 
@@ -142,11 +116,11 @@ public class PsBoxConverter extends AbstractConverter
             trace(out, node);
         }
 
-        drawBox(node, out, node.getHeight(), box);
+        ps.drawBox(out, node, x, y);
 
         Dimen depth = new Dimen(node.getDepth());
         depth.negate();
-        drawBox(node, out, depth, box);
+        ps.drawBox(out, node, x, y);
         return null;
     }
 
@@ -213,7 +187,8 @@ public class PsBoxConverter extends AbstractConverter
     public Object visitAdjust(AdjustNode node, PrintStream out)
             throws GeneralException {
 
-        return drawBox(node, out, "box");
+        ps.drawBox(out, node, x, y);
+        return null;
     }
 
     /**
@@ -237,7 +212,8 @@ public class PsBoxConverter extends AbstractConverter
     public Object visitAlignedLeaders(AlignedLeadersNode node, PrintStream out)
             throws GeneralException {
 
-        return drawBox(node, out, "box");
+        ps.drawBox(out, node, x, y);
+        return null;
     }
 
     /**
@@ -262,7 +238,8 @@ public class PsBoxConverter extends AbstractConverter
     public Object visitCenteredLeaders(CenteredLeadersNode node, PrintStream out)
             throws GeneralException {
 
-        return drawBox(node, out, "box");
+        ps.drawBox(out, node, x, y);
+        return null;
     }
 
     /**
@@ -274,7 +251,7 @@ public class PsBoxConverter extends AbstractConverter
     public Object visitChar(CharNode node, PrintStream out)
             throws GeneralException {
 
-        drawBox(node, out, "box");
+        ps.drawBox(out, node, x, y);
 
         TypesettingContext tc = node.getTypesettingContext();
 
@@ -333,7 +310,8 @@ public class PsBoxConverter extends AbstractConverter
     public Object visitExpandedLeaders(ExpandedLeadersNode node, PrintStream out)
             throws GeneralException {
 
-        return drawBox(node, out, "box");
+        ps.drawBox(out, node, x, y);
+        return null;
     }
 
     /**
@@ -345,7 +323,8 @@ public class PsBoxConverter extends AbstractConverter
     public Object visitGlue(GlueNode node, PrintStream out)
             throws GeneralException {
 
-        return drawBox(node, out, "box");
+        ps.drawBox(out, node, x, y);
+        return null;
     }
 
     /**
@@ -362,7 +341,7 @@ public class PsBoxConverter extends AbstractConverter
         x.add(node.getMove());
         y.add(node.getShift());
 
-        drawBox(node, out, "Box");
+        ps.drawGrayBox(out, node, x, y);
 
         for (Node n : node) {
             n.visit(this, out);
@@ -384,7 +363,8 @@ public class PsBoxConverter extends AbstractConverter
     public Object visitInsertion(InsertionNode node, PrintStream out)
             throws GeneralException {
 
-        return drawBox(node, out, "box");
+        ps.drawBox(out, node, x, y);
+        return null;
     }
 
     /**
@@ -453,7 +433,8 @@ public class PsBoxConverter extends AbstractConverter
     public Object visitRule(RuleNode node, PrintStream out)
             throws GeneralException {
 
-        return drawBox(node, out, "box");
+        ps.drawBox(out, node, x, y);
+        return null;
     }
 
     /**
@@ -485,7 +466,7 @@ public class PsBoxConverter extends AbstractConverter
         x.add(node.getMove());
         y.add(node.getShift());
 
-        drawBox(node, out, "Box");
+        ps.drawGrayBox(out, node, x, y);
 
         for (Node n : node) {
             n.visit(this, out);
@@ -520,7 +501,7 @@ public class PsBoxConverter extends AbstractConverter
     public Object visitWhatsIt(WhatsItNode node, PrintStream out)
             throws GeneralException {
 
-        drawBox(node, out, "box");
+        ps.drawBox(out, node, x, y);
 
         if (node instanceof SpecialNode) {
             treatSpecial(out, (SpecialNode) node);
