@@ -1,363 +1,1 @@
-<!--
-  ############################################################################
-  # This is the Ant build file for ExTeX
-  ############################################################################
-  # Copyright (C) 2004-2007 The ExTeX Group
-  #
-  # This library is free software; you can redistribute it and/or modify it
-  # under the terms of the GNU Lesser General Public License as published by
-  # the Free Software Foundation; either version 2.1 of the License, or (at
-  # your option) any later version.
-  #
-  # This library is distributed in the hope that it will be useful, but
-  # WITHOUT ANY WARRANTY; without even the implied warranty of
-  # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser
-  # General Public License for more details.
-  #
-  # You should have received a copy of the GNU Lesser General Public License
-  # along with this library; if not, write to the Free Software Foundation,
-  # Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
-  #
-  ######################################################################### -->
-
-<project name="ExTeX build system" default="all" basedir=".">
-
-  <description>
-    This build file is the central entry for the automatic creation of the
-    essential pieces. There are two modes of operation. One mode takes all
-    sub-projects in the parent directory and performs the necessary actions on
-    them. The sub-projects are names ExTeX-* and contain a build file of their
-    own.
-
-    The second mode of operation takes a selected subset of the sub-projects
-    and works on them. Thus it is possible to select the sub-projects which
-    are production ready to make it into the distribution.
-  </description>
-
-  <property name="target" location="target" />
-  <property name="application" value="application" />
-
-  <!-- 
-    -  The configuration can be found in application.config
-    -  or wherever the property "application" points to.
-    -  This configuration is transformed into something digestable by Ant and
-    -  imported.
-    -->
-  <mkdir dir="${target}" />
-  <xslt in="${application}.config"
-        out="${target}/${application}.cfg"
-        style="src/xslt/application.xsl" />
-  <import file="${target}/${application}.cfg" />
-
-  <import file="build-sub-projects.xml" />
-
-  <property name="snapshot" location="${target}/${application}/html/snapshot" />
-  <property name="classes" location="target/${application}/classes" />
-  <property name="javac.deprecation" value="off" />
-  <property name="jar.file" value="extex" />
-  <property name="main.class" value="org.extex.main.tex.TeX" />
-
-  <property name="javadoc" location="${snapshot}/javadoc" />
-
-  <property name="installer.dir" location="../util/Installer" />
-
-  <property name="target.lib" location="${target}/${application}/lib" />
-
-  <property name="tests.haltonfailure" value="no" />
-  <property name="test.classes"
-            location="${target}/${application}/test-classes" />
-  <property name="test.results"
-            location="${target}/${application}/test-results" />
-  <property name="test.results.html" location="${snapshot}/tests" />
-
-  <!-- ==================================================================== -->
-  <taskdef name="checkstyle"
-           classname="com.puppycrawl.tools.checkstyle.CheckStyleTask"
-           classpath="lib/checkstyle-all-4.2.jar" />
-
-  <!-- ==================================================================== -->
-  <taskdef name="izpack"
-           classpath="${installer.dir}/IzPack/lib/compiler.jar"
-           classname="com.izforge.izpack.ant.IzPackTask" />
-
-  <!-- ==================================================================== -->
-  <target name="all"
-          description="Build nearly everything"
-          depends="javadoc,checkstyle,test,site" />
-
-  <!-- ==================================================================== -->
-  <target name="checkstyle"
-          depends="jar"
-          description="Generates a report of violations of the coding conventions">
-    <checkstyle config="../develop/eclipse/extex_checkstyle.xml"
-                failureProperty="checkstyle.failure"
-                failOnViolation="false">
-      <classpath refid="application.class.path" />
-      <formatter type="xml" tofile="${target}/${application}/checkstyle.xml" />
-      <fileset refid="application.source.files" />
-    </checkstyle>
-
-    <mkdir dir="${snapshot}" />
-    <xslt in="${target}/${application}/checkstyle.xml"
-          out="${snapshot}/checkstyle.html"
-          style="src/xslt/checkstyle-frames.xsl" />
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="clean" description="Remove unneccesary files and directories.">
-
-    <iterate target="clean" />
-    <delete dir="${classes}" />
-    <delete dir="${target}/${application}" />
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="compile" description="Compile the production Java files">
-
-    <mkdir dir="${classes}" />
-    <javac destdir="${classes}"
-           debug="on"
-           encoding="ISO8859-1"
-           deprecation="${javac.deprecation}">
-      <classpath refid="application.class.path" />
-      <src refid="application.source.path" />
-    </javac>
-
-    <copy todir="${classes}">
-      <mapper type="regexp"
-              from="^[^/\\]*\${file.separator}src\${file.separator}[a-z]*\${file.separator}[a-z]*\${file.separator}(.*)$$"
-              to="\1" />
-      <fileset refid="application.resource.files" />
-    </copy>
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="doc" description="Build the documentation">
-
-    <ant dir="../doc/UsersGuide" target="all">
-    </ant>
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="formats" description="Compile the format files">
-
-    <ant dir="../texmf" target="formats">
-      <property name="target" value="${target}" />
-      <property name="format.jar"
-                value="${target}/${application}/extex-formats.jar" />
-    </ant>
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="init" description="Compile the build Java files">
-
-    <mkdir dir="target/classes" />
-    <javac destdir="target/classes" debug="on" deprecation="false">
-      <fileset dir="src/main/java" includes="*.java" />
-    </javac>
-
-    <copy todir="target/classes">
-      <fileset dir="src/main/java" excludes="*.java" />
-    </copy>
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="installer"
-          depends="jar,formats,lib,texmf"
-          description="Create the standalone installer for ExTeX.">
-    <mkdir dir="${snapshot}" />
-    <izpack input="${installer.dir}/install.xml"
-            output="${snapshot}/ExTeX-setup.jar"
-            installerType="standard"
-            basedir="${installer.dir}"
-            izPackDir="${installer.dir}/IzPack/" />
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="jar"
-          depends="compile"
-          description="Create the ExTeX jar file containing all compiled classes
-                       except test cases.">
-
-    <mkdir dir="${target}/${application}" />
-    <jar jarfile="${target}/${application}/${jar.file}.jar">
-      <fileset dir="${classes}">
-        <patternset>
-          <exclude name="**/*Test.class" />
-          <exclude name="**/*Tests.class" />
-        </patternset>
-      </fileset>
-      <fileset dir=".">
-        <patternset>
-          <include name="LICENSE.txt" />
-        </patternset>
-      </fileset>
-      <manifest>
-        <attribute name="Built-By" value="${user.name}" />
-        <attribute name="Main-Class" value="${main.class}" />
-      </manifest>
-    </jar>
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="javadoc" description="Create JavaDoc HTML pages.">
-    <mkdir dir="${javadoc}" />
-    <javadoc destdir="${javadoc}"
-             sourcepathref="application.source.path"
-             packagenames="org.extex.*"
-             overview="../ExTeX-base/src/main/java/org/extex/overview.html"
-             stylesheetfile="src/javadoc/stylesheet.css"
-             author="true"
-             version="true"
-             use="true"
-             splitindex="true"
-             notree="false"
-             nonavbar="false"
-             noindex="false"
-             nodeprecatedlist="false"
-             nodeprecated="false"
-             Author="true"
-             Verbose="false">
-      <classpath refid="application.class.path" />
-    </javadoc>
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="lib" description="Collect the libraries in target">
-    <mkdir dir="${target.lib}" />
-    <copy todir="${target.lib}" flatten="true">
-      <fileset refid="application.libraries" />
-    </copy>
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="site"
-          depends="site.static,installer,test,javadoc"
-          description="Build the site">
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="site.static"
-          description="Build the static structure of the site">
-
-    <mkdir dir="${target}/${application}/html" />
-    <subant antfile="../www/build.xml" buildpath="../www" target="site">
-      <property name="site" value="${target}/${application}/html" />
-    </subant>
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="test"
-          depends="jar"
-          description="Run JUnit tests and produce a HTML test report">
-
-    <delete dir="${test.results}" />
-    <mkdir dir="${test.results}" />
-
-    <mkdir dir="${test.classes}" />
-    <javac destdir="${test.classes}"
-           debug="on"
-           encoding="ISO8859-1"
-           deprecation="${javac.deprecation}">
-      <classpath>
-        <pathelement path="${target}/${application}/${jar.file}.jar" />
-        <pathelement path="lib/junit-4.1.jar" />
-      </classpath>
-      <classpath refid="test.class.path" />
-      <src refid="test.source.path" />
-    </javac>
-
-    <copy todir="${test.classes}">
-      <mapper type="regexp"
-              from="^[^/\\]*\${file.separator}src\${file.separator}test\${file.separator}[a-z]*\${file.separator}(.*)$$"
-              to="\1" />
-      <fileset dir="..">
-        <include name="ExTeX-*/src/test/**/*" />
-        <exclude name="**/*.java" />
-        <exclude name="**/*.class" />
-        <exclude name="**/*.html" />
-      </fileset>
-    </copy>
-
-    <junit printsummary="on"
-           haltonfailure="no"
-           fork="yes"
-      	   timeout="100000"
-           tempdir="target">
-      <jvmarg value="-Xms128m" />
-      <jvmarg value="-Xmx512m" />
-      <classpath>
-        <pathelement path="${test.classes}" />
-        <pathelement path="${target}/${application}/${jar.file}.jar" />
-      </classpath>
-      <classpath refid="test.class.path" />
-      <formatter type="xml" />
-      <batchtest fork="yes" todir="${test.results}">
-        <fileset dir="${test.classes}">
-          <include name="**/*Test.class" />
-        </fileset>
-      </batchtest>
-    </junit>
-
-    <delete dir="${test.results.html}" />
-    <mkdir dir="${test.results.html}" />
-    <junitreport todir="${test.results}">
-      <fileset dir="${test.results}">
-        <include name="TEST-*.xml" />
-      </fileset>
-      <report format="frames"
-              styledir="src/xslt"
-              todir="${test.results.html}" />
-    </junitreport>
-  </target>
-
-  <!-- ==================================================================== -->
-  <target name="tests" description="Alias for test" depends="test" />
-
-  <!-- ==================================================================== -->
-  <target name="texmf" description="Create a minimal TeX-MF tree">
-
-    <subant antfile="../texmf/build.xml" buildpath="../texmf" target="texmf">
-      <property name="target" value="${target}" />
-    </subant>
-  </target>
-
-
-
-  <!-- === testreport =========================
-  <target name="testreport" depends="compile-develop,jar,checkstyle" 
-          description="Run Checkstyle and create a HTML report">
-    <java fork="true"
-          classname="org.extex.checkstyle.ReportAddAuthor" 
-          classpath="${target}/test-classes">
-      <classpath path="${target}/lib/${jar.file}.jar"/>
-      <classpath refid="application.class.path" />
-      <classpath refid="develop.class.path" />
-      <arg value="${target}/checkstyle.xml"/>
-      <arg value="${target}/checkstyle-author.xml"/>
-    </java>
-    <mkdir dir="${target}/html" />
-    <xslt style="src/xslt/checkstyleauthorreport.xsl" 
-          out="${target}/html/checkstyleauthorreport.html"
-          in="${target}/checkstyle-author.xml" />
-  </target>
-  ================================== -->
-  <!-- === site ===============================
-  <target name="*** site ***" depends="compile-develop"
-          description="">
-    <java classname="org.extex.site.report.Summary"
-          classpath="${target}/test-classes"
-          output="target/tests/index.xml">
-      <arg value="-dir"/>
-      <arg value="target/tests"/>
-    </java>
-    <xslt basedir="${target.test}"
-          destdir="${target}/www/reports/tests"
-          extension=".html"
-          style="develop/reports/junit.xsl">
-      <classpath refid="develop.class.path" />
-    </xslt>
-  </target>
-================================== -->
-
-</project>
+<!--  ############################################################################  # This is the Ant build file for ExTeX  ############################################################################  # Copyright (C) 2004-2007 The ExTeX Group  #  # This library is free software; you can redistribute it and/or modify it  # under the terms of the GNU Lesser General Public License as published by  # the Free Software Foundation; either version 2.1 of the License, or (at  # your option) any later version.  #  # This library is distributed in the hope that it will be useful, but  # WITHOUT ANY WARRANTY; without even the implied warranty of  # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser  # General Public License for more details.  #  # You should have received a copy of the GNU Lesser General Public License  # along with this library; if not, write to the Free Software Foundation,  # Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  #  ######################################################################### --><project name="ExTeX build system" default="all" basedir=".">  <description>    This build file is the central entry for the automatic creation of the    essential pieces. There are two modes of operation. One mode takes all    sub-projects in the parent directory and performs the necessary actions on    them. The sub-projects are names ExTeX-* and contain a build file of their    own.    The second mode of operation takes a selected subset of the sub-projects    and works on them. Thus it is possible to select the sub-projects which    are production ready to make it into the distribution.  </description>  <property name="target" location="target" />  <property name="application" value="application" />  <!--     -  The configuration can be found in application.config    -  or wherever the property "application" points to.    -  This configuration is transformed into something digestable by Ant and    -  imported.    -->  <mkdir dir="${target}" />  <xslt in="${application}.config"        out="${target}/${application}.cfg"        style="src/xslt/application.xsl" />  <import file="${target}/${application}.cfg" />  <import file="build-sub-projects.xml" />  <property name="snapshot" location="${target}/${application}/html/snapshot" />  <property name="classes" location="target/${application}/classes" />  <property name="javac.deprecation" value="off" />  <property name="jar.file" value="extex" />  <property name="main.class" value="org.extex.main.tex.TeX" />  <property name="javadoc" location="${snapshot}/javadoc" />  <property name="installer.dir" location="../util/Installer" />  <property name="target.lib" location="${target}/${application}/lib" />  <property name="tests.haltonfailure" value="no" />  <property name="test.classes"            location="${target}/${application}/test-classes" />  <property name="test.results"            location="${target}/${application}/test-results" />  <property name="test.results.html" location="${snapshot}/tests" />  <!-- ==================================================================== -->  <taskdef name="checkstyle"           classname="com.puppycrawl.tools.checkstyle.CheckStyleTask"           classpath="lib/checkstyle-all-4.2.jar" />  <!-- ==================================================================== -->  <taskdef name="izpack"           classpath="${installer.dir}/IzPack/lib/compiler.jar"           classname="com.izforge.izpack.ant.IzPackTask" />  <!-- ==================================================================== -->  <target name="all"          description="Build nearly everything"          depends="javadoc,checkstyle,test,site" />  <!-- ==================================================================== -->  <target name="checkstyle"          depends="jar"          description="Generates a report of violations of the coding conventions">    <checkstyle config="../develop/eclipse/extex_checkstyle.xml"                failureProperty="checkstyle.failure"                failOnViolation="false">      <classpath refid="application.class.path" />      <formatter type="xml" tofile="${target}/${application}/checkstyle.xml" />      <fileset refid="application.source.files" />    </checkstyle>    <mkdir dir="${snapshot}" />    <xslt in="${target}/${application}/checkstyle.xml"          out="${snapshot}/checkstyle.html"          style="src/xslt/checkstyle-frames.xsl" />  </target>  <!-- ==================================================================== -->  <target name="clean" description="Remove unneccesary files and directories.">    <iterate target="clean" />    <delete dir="${classes}" />    <delete dir="${target}/${application}" />  </target>  <!-- ==================================================================== -->  <target name="compile" description="Compile the production Java files">    <mkdir dir="${classes}" />    <javac destdir="${classes}"           debug="on"           encoding="ISO8859-1"           deprecation="${javac.deprecation}">      <classpath refid="application.class.path" />      <src refid="application.source.path" />    </javac>    <copy todir="${classes}">      <mapper type="regexp"              from="^[^/\\]*\${file.separator}src\${file.separator}[a-z]*\${file.separator}[a-z]*\${file.separator}(.*)$$"              to="\1" />      <fileset refid="application.resource.files" />    </copy>  </target>  <!-- ==================================================================== -->  <target name="doc" description="Build the documentation">    <ant dir="../doc/UsersGuide" target="all">    </ant>  </target>  <!-- ==================================================================== -->  <target name="formats" description="Compile the format files">    <ant dir="../texmf" target="formats">      <property name="target" value="${target}" />      <property name="format.jar"                value="${target}/${application}/extex-formats.jar" />    </ant>  </target>  <!-- ==================================================================== -->  <target name="init" description="Compile the build Java files">    <mkdir dir="target/classes" />    <javac destdir="target/classes" debug="on" deprecation="false">      <fileset dir="src/main/java" includes="*.java" />    </javac>    <copy todir="target/classes">      <fileset dir="src/main/java" excludes="*.java" />    </copy>  </target>  <!-- ==================================================================== -->  <target name="installer"          depends="jar,formats,lib,texmf"          description="Create the standalone installer for ExTeX.">    <mkdir dir="${snapshot}" />    <izpack input="${installer.dir}/install.xml"            output="${snapshot}/ExTeX-setup.jar"            installerType="standard"            basedir="${installer.dir}"            izPackDir="${installer.dir}/IzPack/" />  </target>  <!-- ==================================================================== -->  <target name="jar"          depends="compile"          description="Create the ExTeX jar file containing all compiled classes                       except test cases.">    <mkdir dir="${target}/${application}" />    <jar jarfile="${target}/${application}/${jar.file}.jar">      <fileset dir="${classes}">        <patternset>          <exclude name="**/*Test.class" />          <exclude name="**/*Tests.class" />        </patternset>      </fileset>      <fileset dir=".">        <patternset>          <include name="LICENSE.txt" />        </patternset>      </fileset>      <manifest>        <attribute name="Built-By" value="${user.name}" />        <attribute name="Main-Class" value="${main.class}" />      </manifest>    </jar>  </target>  <!-- ==================================================================== -->  <target name="javadoc" description="Create JavaDoc HTML pages.">    <mkdir dir="${javadoc}" />    <javadoc destdir="${javadoc}"             sourcepathref="application.source.path"             packagenames="org.extex.*"             overview="../ExTeX-base/src/main/java/org/extex/overview.html"             stylesheetfile="src/javadoc/stylesheet.css"             author="true"             version="true"             use="true"             splitindex="true"             notree="false"             nonavbar="false"             noindex="false"             nodeprecatedlist="false"             nodeprecated="false"             Author="true"             Verbose="false">      <classpath refid="application.class.path" />    </javadoc>  </target>  <!-- ==================================================================== -->  <target name="lib" description="Collect the libraries in target">    <mkdir dir="${target.lib}" />    <copy todir="${target.lib}" flatten="true">      <fileset refid="application.libraries" />    </copy>  </target>  <!-- ==================================================================== -->  <target name="site"          depends="site.static,installer,test,javadoc"          description="Build the site">  </target>  <!-- ==================================================================== -->  <target name="site.static"          description="Build the static structure of the site">    <mkdir dir="${target}/${application}/html" />    <subant antfile="../www/build.xml" buildpath="../www" target="site">      <property name="site" value="${target}/${application}/html" />    </subant>  </target>  <!-- ==================================================================== -->  <target name="test"          depends="jar"          description="Run JUnit tests and produce a HTML test report">    <delete dir="${test.results}" />    <mkdir dir="${test.results}" />    <mkdir dir="${test.classes}" />    <javac destdir="${test.classes}"           debug="on"           encoding="ISO8859-1"           deprecation="${javac.deprecation}">      <classpath>        <pathelement path="${target}/${application}/${jar.file}.jar" />        <pathelement path="lib/junit-4.1.jar" />      </classpath>      <classpath refid="test.class.path" />      <src refid="test.source.path" />    </javac>    <copy todir="${test.classes}">      <mapper type="regexp"              from="^[^/\\]*\${file.separator}src\${file.separator}test\${file.separator}[a-z]*\${file.separator}(.*)$$"              to="\1" />      <fileset dir="..">        <include name="ExTeX-*/src/test/**/*" />        <exclude name="**/*.java" />        <exclude name="**/*.class" />        <exclude name="**/*.html" />      </fileset>    </copy>    <junit printsummary="on"           haltonfailure="no"           fork="yes"      	   timeout="100000"           tempdir="target">      <jvmarg value="-Xms128m" />      <jvmarg value="-Xmx512m" />      <classpath>        <pathelement path="${test.classes}" />        <pathelement path="${target}/${application}/${jar.file}.jar" />      </classpath>      <classpath refid="test.class.path" />      <formatter type="xml" />      <batchtest fork="yes" todir="${test.results}">        <fileset dir="${test.classes}">          <include name="**/*Test.class" />        </fileset>      </batchtest>    </junit>    <delete dir="${test.results.html}" />    <mkdir dir="${test.results.html}" />    <junitreport todir="${test.results}">      <fileset dir="${test.results}">        <include name="TEST-*.xml" />      </fileset>      <report format="frames"              styledir="src/xslt"              todir="${test.results.html}" />    </junitreport>  </target>  <!-- ==================================================================== -->  <target name="tests" description="Alias for test" depends="test" />  <!-- ==================================================================== -->  <target name="texmf" description="Create a minimal TeX-MF tree">    <subant antfile="../texmf/build.xml" buildpath="../texmf" target="texmf">      <property name="target" value="${target}" />    </subant>  </target>  <!-- === testreport =========================  <target name="testreport" depends="compile-develop,jar,checkstyle"           description="Run Checkstyle and create a HTML report">    <java fork="true"          classname="org.extex.checkstyle.ReportAddAuthor"           classpath="${target}/test-classes">      <classpath path="${target}/lib/${jar.file}.jar"/>      <classpath refid="application.class.path" />      <classpath refid="develop.class.path" />      <arg value="${target}/checkstyle.xml"/>      <arg value="${target}/checkstyle-author.xml"/>    </java>    <mkdir dir="${target}/html" />    <xslt style="src/xslt/checkstyleauthorreport.xsl"           out="${target}/html/checkstyleauthorreport.html"          in="${target}/checkstyle-author.xml" />  </target>  ================================== -->  <!-- === site ===============================  <target name="*** site ***" depends="compile-develop"          description="">    <java classname="org.extex.site.report.Summary"          classpath="${target}/test-classes"          output="target/tests/index.xml">      <arg value="-dir"/>      <arg value="target/tests"/>    </java>    <xslt basedir="${target.test}"          destdir="${target}/www/reports/tests"          extension=".html"          style="develop/reports/junit.xsl">      <classpath refid="develop.class.path" />    </xslt>  </target>================================== --></project>
