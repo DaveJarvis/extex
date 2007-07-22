@@ -72,10 +72,6 @@ import org.extex.resource.ResourceFinder;
  * <dd> If this interface is implemented then a
  * {@link java.util.logging.Logger Logger} is passed in with the interface
  * method. </dd>
- * <dt>{@link org.extex.framework.i18n.Localizable Localizable}</dt>
- * <dd> If this interface is implemented then a
- * {@link org.extex.framework.i18n.Localizer Localizer} is passed in with the
- * interface method. </dd>
  * <dt>{@link org.extex.resource.ResourceAware ResourceAware}</dt>
  * <dd> If this interface is implemented then a
  * {@link org.extex.resource.ResourceFinder ResourceFinder} is passed in with
