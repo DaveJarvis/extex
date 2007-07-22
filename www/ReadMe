@@ -1,7 +1,7 @@
 
 This tree contains a simple generator for a Web site written in Perl.
 
-The aim is the ease of maintainance for normal content of pages. They
+The aim is the ease of maintenance for normal content of pages. They
 are stored as simple HTML files and augmented automatically upon
 publication.
 
@@ -9,8 +9,8 @@ The layout is separated form the content and stored in several files.
 This makes it very easy to adapt the appearance without touching the
 contents.
 
-The sources are kept in the subdirectory src.
-The generated files are written into the subdirectory target/site.
+The sources are kept in the sub-directory src.
+The generated files are written into the sub-directory target/site.
 Both locations can be configured.
 
 To generate the Web site run the following command:
@@ -72,7 +72,7 @@ The current layout has the following scheme:
 The header contains the right aligned Logo only.
 It is the same on all pages.
 
-The Tab bar shows the topmost navigation items with the Tab metophor.
+The Tab bar shows the topmost navigation items with the Tab metaphor.
 In the
 
 The Navigation Area shows all navigation items.
