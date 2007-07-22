@@ -203,7 +203,7 @@ public class TCount extends Count implements EType {
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#parse(
+     * @see org.extex.interpreter.expression.EType#parseNumber(
      *      java.lang.CharSequence)
      */
     public EType parse(CharSequence sequence) {

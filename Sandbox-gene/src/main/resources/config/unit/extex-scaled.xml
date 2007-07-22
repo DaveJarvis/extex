@@ -21,10 +21,10 @@
   <primitives>
     <define name="maxError"
             namespace="system"
-            class="org.extex.unit.base.register.count.util.IntegerCode">100</define>
+            class="org.extex.unit.base.register.count.IntegerCode">100</define>
     <define name="maxRegister"
             namespace="system"
-            class="org.extex.unit.base.register.count.util.IntegerCode">-1</define>
+            class="org.extex.unit.base.register.count.IntegerCode">-1</define>
 
     <define name="everydisplayend"
             class="org.extex.unit.base.register.toks.ToksParameter"/>
