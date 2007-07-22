@@ -18,6 +18,14 @@
    </div>
 
    <div class="info">
+    Developer Meeting
+    <div class="infoitems">
+     The &ExTeX; developers have scheduled a meeting for mid of August
+     2007 in Haimhausen near Munich (Germany).
+    </div>
+   </div>
+
+   <div class="info">
     Snapshots Available
     <div class="infoitems">
      The <a href="&top;snapshot/ExTeX-setup.jar">&ExTeX; installer</a>
@@ -36,19 +44,12 @@
    </div>
 
    <div class="info">
-    Developer Meeting
-    <div class="infoitems">
-     The &ExTeX; developers have scheduled a meeting for mid of August
-     2007 in Haimhausen near Munich (Germany).
-    </div>
-   </div>
-
-   <div class="info">
     <a href="http://www.gutenberg.eu.org/eurotex2005/en/157-intro.html">EuroTeX 2005</a>
     <div class="infoitems">
      &ExTeX; slides in <a href="&top;documentation">documentation</a>
     </div>
    </div>
+
    <div class="info">
     Contact Address
     <div class="infoitems">
