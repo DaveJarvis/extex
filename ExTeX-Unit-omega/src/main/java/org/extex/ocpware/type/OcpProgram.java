@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.unit.omega.ocpware.type;
+package org.extex.ocpware.type;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,8 +30,8 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * TODO gene: missing JavaDoc.
- *
+ * This class represents a compiled omega program.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -56,14 +56,13 @@ public class OcpProgram implements Serializable {
     /**
      * Dump a number as hex and as decimal and optionally as character to an
      * output stream.
-     *
+     * 
      * @param out the output stream
      * @param pre the prefix string
      * @param value the value to print
      * @param post the postfix string
      */
-    private static void dump(PrintStream out, String pre,
-            int value, String post) {
+    private static void dump(PrintStream out, String pre, int value, String post) {
 
         out.print(pre);
         out.print(Integer.toHexString(value));
@@ -80,11 +79,11 @@ public class OcpProgram implements Serializable {
 
     /**
      * Load an OCP program from an input stream.
-     *
+     * 
      * @param stream the input stream
-     *
+     * 
      * @return the program
-     *
+     * 
      * @throws IOException in case of an IO error
      */
     public static OcpProgram load(InputStream stream) throws IOException {
@@ -115,16 +114,15 @@ public class OcpProgram implements Serializable {
 
     /**
      * Read an array of words.
-     *
+     * 
      * @param in the input stream
      * @param len the number of words to read
-     *
+     * 
      * @return the array read
-     *
+     * 
      * @throws IOException in case of an error
      */
-    private static int[] read(InputStream in, int len)
-            throws IOException {
+    private static int[] read(InputStream in, int len) throws IOException {
 
         int[] a = new int[len];
         for (int i = 0; i < len; i++) {
@@ -135,11 +133,11 @@ public class OcpProgram implements Serializable {
 
     /**
      * Read a single word of 4 bytes (octets).
-     *
+     * 
      * @param in the input stream
-     *
+     * 
      * @return the word read
-     *
+     * 
      * @throws IOException in case of an error
      */
     private static int readWord(InputStream in) throws IOException {
@@ -165,7 +163,7 @@ public class OcpProgram implements Serializable {
     }
 
     /**
-     * The field <tt>arithStack</tt> contains the ...
+     * The field <tt>arithStack</tt> contains the stack for execution.
      */
     private Stack<Integer> arithStack = new Stack<Integer>();
 
@@ -175,9 +173,10 @@ public class OcpProgram implements Serializable {
     private int first = 0;
 
     /**
-     * The field <tt>input</tt> contains the input parameter.
+     * The field <tt>input</tt> contains the input parameter. The default is
+     * 2.
      */
-    private int input = 0;
+    private int input = 2;
 
     /**
      * The field <tt>last</tt> contains the ...
@@ -191,17 +190,18 @@ public class OcpProgram implements Serializable {
     private int length = -1;
 
     /**
-     * The field <tt>output</tt> contains the output parameter.
+     * The field <tt>output</tt> contains the output parameter. The default is
+     * 2.
      */
-    private int output = 0;
+    private int output = 2;
 
     /**
-     * The field <tt>pc</tt> contains the ...
+     * The field <tt>pc</tt> contains the program counter.
      */
     private int pc = 0;
 
     /**
-     * The field <tt>state</tt> contains the ...
+     * The field <tt>state</tt> contains the current state.
      */
     private int state = 0;
 
@@ -222,7 +222,7 @@ public class OcpProgram implements Serializable {
 
     /**
      * Creates a new object.
-     *
+     * 
      */
     public OcpProgram() {
 
@@ -231,7 +231,7 @@ public class OcpProgram implements Serializable {
 
     /**
      * Add a state.
-     *
+     * 
      * @param t the state to add
      */
     public void addState(int[] t) {
@@ -241,7 +241,7 @@ public class OcpProgram implements Serializable {
 
     /**
      * Add a table.
-     *
+     * 
      * @param t the table to add
      */
     public void addTable(int[] t) {
@@ -251,7 +251,7 @@ public class OcpProgram implements Serializable {
 
     /**
      * Dump the contents of the instance to an output stream.
-     *
+     * 
      * @param out the output stream
      * @param orig ...
      */
@@ -313,11 +313,11 @@ public class OcpProgram implements Serializable {
 
     /**
      * Dump a dis-assembled form of an instruction.
-     *
+     * 
      * @param out the output stream
      * @param t the array
      * @param j the index
-     *
+     * 
      * @return <code>true</code> iff another word as argument is required
      */
     private boolean dumpDis(PrintStream out, int[] t, int j) {
@@ -451,7 +451,7 @@ public class OcpProgram implements Serializable {
 
     /**
      * Getter for input.
-     *
+     * 
      * @return the input
      */
     public int getInput() {
@@ -461,7 +461,7 @@ public class OcpProgram implements Serializable {
 
     /**
      * Getter for output.
-     *
+     * 
      * @return the output
      */
     public int getOutput() {
@@ -481,8 +481,7 @@ public class OcpProgram implements Serializable {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     *
+     * Start the execution.
      */
     public void run() {
 
@@ -491,7 +490,7 @@ public class OcpProgram implements Serializable {
 
     /**
      * Setter for input.
-     *
+     * 
      * @param input the input to set
      */
     public void setInput(int input) {
@@ -501,7 +500,7 @@ public class OcpProgram implements Serializable {
 
     /**
      * Setter for the length.
-     *
+     * 
      * @param len the length
      */
     private void setLength(int len) {
@@ -511,7 +510,7 @@ public class OcpProgram implements Serializable {
 
     /**
      * Setter for output.
-     *
+     * 
      * @param output the output to set
      */
     public void setOutput(int output) {
@@ -521,7 +520,7 @@ public class OcpProgram implements Serializable {
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @param in the input stream
      * @param out the output stream
      * @param currentState the stack of states
@@ -551,7 +550,7 @@ public class OcpProgram implements Serializable {
                     break;
                 case 5:
                     // OTP_RIGHT_SOME
-                    //two = false;
+                    // two = false;
                     break;
                 case 6:
                     // OTP_PBACK_OUTPUT
@@ -686,13 +685,13 @@ public class OcpProgram implements Serializable {
                     break;
                 case 34:
                     // OTP_GOTO_BEG
-                    if (false) { //TODO at beginning
+                    if (false) { // TODO at beginning
                         pc = c & TWELVE_BIT_MASK;
                     }
                     break;
                 case 35:
                     // OTP_GOTO_END
-                    if (false) { //TODO at end
+                    if (false) { // TODO at end
                         pc = c & TWELVE_BIT_MASK;
                     }
                     break;
@@ -700,7 +699,7 @@ public class OcpProgram implements Serializable {
                     // OTP_STOP
                     return;
                 default:
-                    //TODO gene: unimplemented
+                    // TODO gene: unimplemented
                     throw new RuntimeException("unimplemented");
             }
         }

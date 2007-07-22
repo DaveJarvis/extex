@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.unit.omega.ocpware;
+package org.extex.ocpware;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,7 +25,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.PrintStream;
 
-import org.extex.unit.omega.ocpware.type.OcpProgram;
+import org.extex.ocpware.type.OcpProgram;
 
 /**
  * This class provides a main program to print the contents of an ocp file.

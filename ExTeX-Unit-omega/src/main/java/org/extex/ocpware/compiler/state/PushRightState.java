@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,33 +17,41 @@
  *
  */
 
-package org.extex.unit.omega.mode;
-
-import org.extex.core.exception.helping.HelpingException;
-import org.extex.framework.i18n.LocalizerFactory;
+package org.extex.ocpware.compiler.state;
 
 /**
- * This exception signals that an invalid specification for an output mode has
- * been encountered.
+ * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
+ * @version $Revision$
  */
-public class BadOutputModeException extends HelpingException {
+public class PushRightState implements RightState {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
-     * serialization.
+     * The field <tt>state</tt> contains the state.
      */
-    protected static final long serialVersionUID = 2007L;
+    private String state;
 
     /**
      * Creates a new object.
+     * 
+     * @param state the state
      */
-    public BadOutputModeException() {
+    public PushRightState(String state) {
 
-        super(LocalizerFactory.getLocalizer(BadOutputModeException.class),
-            "Omega.BadMode");
+        super();
+        this.state = state;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        return "<push: " + state + ">";
     }
 
 }

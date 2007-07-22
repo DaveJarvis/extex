@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,33 +17,43 @@
  *
  */
 
-package org.extex.unit.omega.mode;
+package org.extex.ocpware.compiler.left;
 
-import org.extex.core.exception.helping.HelpingException;
-import org.extex.framework.i18n.LocalizerFactory;
+import java.util.List;
 
 /**
- * This exception signals that an invalid specification for an output mode has
- * been encountered.
+ * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
+ * @version $Revision$
  */
-public class BadOutputModeException extends HelpingException {
+public class LeftList implements Left {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
-     * serialization.
+     * The field <tt>list</tt> contains the ...
      */
-    protected static final long serialVersionUID = 2007L;
+    private List<Left> list;
 
     /**
      * Creates a new object.
+     * 
+     * @param list the left list
      */
-    public BadOutputModeException() {
+    public LeftList(List<Left> list) {
 
-        super(LocalizerFactory.getLocalizer(BadOutputModeException.class),
-            "Omega.BadMode");
+        super();
+        this.list = list;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        return "(" + list.toString() + ")";
     }
 
 }

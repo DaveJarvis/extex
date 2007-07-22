@@ -23,9 +23,9 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * this exception signals that an invalid specification for a direction has been
- * encountered.
- *
+ * This exception signals that an invalid specification for an input mode has
+ * been encountered.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
@@ -35,11 +35,10 @@ public class BadInputModeException extends HelpingException {
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    protected static final long serialVersionUID = 2006L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
      */
     public BadInputModeException() {
 

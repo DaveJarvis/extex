@@ -23,7 +23,7 @@ import java.io.ObjectStreamException;
 import java.io.Serializable;
 
 /**
- * This class contains th definitions of input modes in Omega. The definitions
+ * This class contains the definitions of input modes in Omega. The definitions
  * are provides as constants defined in this class.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

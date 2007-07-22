@@ -17,7 +17,9 @@
   -  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
   -
   -->
-<unit name="omega">
+<unit name="omega"
+      class="org.extex.unit.omega.OmegaUnitInfo">
+
   <primitives>
     <define name="maxError"
             namespace="system"

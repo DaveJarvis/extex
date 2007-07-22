@@ -29,7 +29,7 @@ import org.extex.scanner.type.token.Token;
 /**
  * This is the abstract base class for primitives dealing with an input or
  * output mode as defined by Omega.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4411 $
  */
@@ -41,10 +41,11 @@ public abstract class AbstractModeCode extends AbstractCode {
     protected static final String DEFAULT_INPUT_MODE = "defaultInputMode";
 
     /**
-     * The constant <tt>DEFAULT_INPUT_TRANSLATION</tt> contains the key for the
-     * default input translation.
+     * The constant <tt>DEFAULT_INPUT_TRANSLATION</tt> contains the key for
+     * the default input translation.
      */
-    protected static final String DEFAULT_INPUT_TRANSLATION = "defaultInputTranslation.";
+    protected static final String DEFAULT_INPUT_TRANSLATION =
+            "defaultInputTranslation.";
 
     /**
      * The constant <tt>OUTPUT_MODE</tt> contains the key for the output mode.
@@ -52,10 +53,11 @@ public abstract class AbstractModeCode extends AbstractCode {
     protected static final String DEFAULT_OUTPUT_MODE = "defaultOutputMode";
 
     /**
-     * The constant <tt>DEFAULT_OUTPUT_TRANSLATION</tt> contains the key for the
-     * default output translation.
+     * The constant <tt>DEFAULT_OUTPUT_TRANSLATION</tt> contains the key for
+     * the default output translation.
      */
-    protected static final String DEFAULT_OUTPUT_TRANSLATION = "defaultOutputTranslation.";
+    protected static final String DEFAULT_OUTPUT_TRANSLATION =
+            "defaultOutputTranslation.";
 
     /**
      * The constant <tt>INPUT_MODE</tt> contains the key for the input mode.
@@ -63,8 +65,8 @@ public abstract class AbstractModeCode extends AbstractCode {
     protected static final String INPUT_MODE = "inputMode";
 
     /**
-     * The constant <tt>INPUT_TRANSLATION</tt> contains the key for the
-     * input translation.
+     * The constant <tt>INPUT_TRANSLATION</tt> contains the key for the input
+     * translation.
      */
     protected static final String INPUT_TRANSLATION = "inputTranslation";
 
@@ -81,7 +83,7 @@ public abstract class AbstractModeCode extends AbstractCode {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param codeName the name for tracing
      */
     public AbstractModeCode(String codeName) {
@@ -91,16 +93,16 @@ public abstract class AbstractModeCode extends AbstractCode {
 
     /**
      * Scan the token source for a keyword describing an input mode.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
-     *
+     * 
      * @return mode
-     *
+     * 
      * @throws HelpingException in case of an error
      */
-    protected OmegaMode scanInputMode(Context context,
-            TokenSource source) throws HelpingException {
+    protected OmegaMode scanInputMode(Context context, TokenSource source)
+            throws HelpingException {
 
         OmegaMode mode = scanMode(context, source);
 
@@ -119,12 +121,12 @@ public abstract class AbstractModeCode extends AbstractCode {
 
     /**
      * Scan the token source for a keyword describing a mode.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
-     *
+     * 
      * @return the mode or <code>null</code> if none is found
-     *
+     * 
      * @throws HelpingException in case of an error
      */
     private OmegaMode scanMode(Context context, TokenSource source)
@@ -145,16 +147,16 @@ public abstract class AbstractModeCode extends AbstractCode {
 
     /**
      * Scan the token source for a keyword describing an input mode.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
-     *
+     * 
      * @return the mode
-     *
+     * 
      * @throws HelpingException in case of an error
      */
-    protected OmegaMode scanOutputMode(Context context,
-            TokenSource source) throws HelpingException {
+    protected OmegaMode scanOutputMode(Context context, TokenSource source)
+            throws HelpingException {
 
         OmegaMode mode = scanMode(context, source);
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,33 +17,44 @@
  *
  */
 
-package org.extex.unit.omega.mode;
-
-import org.extex.core.exception.helping.HelpingException;
-import org.extex.framework.i18n.LocalizerFactory;
+package org.extex.ocpware.compiler.left;
 
 /**
- * This exception signals that an invalid specification for an output mode has
- * been encountered.
+ * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4732 $
+ * @version $Revision$
  */
-public class BadOutputModeException extends HelpingException {
+public class LeftNumber implements Left {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
-     * serialization.
+     * The field <tt>n</tt> contains the number.
      */
-    protected static final long serialVersionUID = 2007L;
+    private int n;
 
     /**
      * Creates a new object.
+     * 
+     * @param n the number
      */
-    public BadOutputModeException() {
+    public LeftNumber(int n) {
 
-        super(LocalizerFactory.getLocalizer(BadOutputModeException.class),
-            "Omega.BadMode");
+        super();
+        this.n = n;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        if (n >= ' ' && n < 126) {
+            return "`" + Character.toString((char) n) + "'";
+        }
+        return "@\"" + Integer.toHexString(n);
     }
 
 }

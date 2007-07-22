@@ -36,9 +36,9 @@ import org.extex.unit.tex.typesetter.spacing.VerticalSkip;
  * This class provides an implementation for the primitive <code>\vfi</code>.
  * 
  * <doc name="vfi">
- * <h3>The Primitive <tt>\vfil</tt></h3>
+ * <h3>The Primitive <tt>\vfi</tt></h3>
  * <p>
- * The primitive <tt>\vfill</tt> inserts vertical glue into the current list.
+ * The primitive <tt>\vfi</tt> inserts vertical glue into the current list.
  * It switches to vertical mode if necessary. The amount of glue inserted has
  * the natural height of 0pt and a stretchability of 1fi.
  * </p>
