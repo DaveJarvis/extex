@@ -281,6 +281,8 @@
 
     <junit printsummary="on"
            haltonfailure="no"
+           fork="yes"
+      	   timeout="100000"
            tempdir="target">
       <jvmarg value="-Xms128m" />
       <jvmarg value="-Xmx512m" />
