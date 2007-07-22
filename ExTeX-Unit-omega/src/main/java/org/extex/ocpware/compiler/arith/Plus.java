@@ -20,12 +20,13 @@
 package org.extex.ocpware.compiler.arith;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents the binary addition operation of two arithmetic
+ * expressions.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Plus implements ArithExpr {
+public class Plus extends ArithExpr {
 
     /**
      * The field <tt>left</tt> contains the left argument.
@@ -55,6 +56,7 @@ public class Plus implements ArithExpr {
      * 
      * @see org.extex.ocpware.compiler.arith.ArithExpr#eval()
      */
+    @Override
     public int eval() {
 
         return left.eval() + right.eval();

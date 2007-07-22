@@ -22,7 +22,7 @@ package org.extex.ocpware.compiler.left;
 import java.util.List;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a list of left items.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -30,7 +30,7 @@ import java.util.List;
 public class LeftList implements Left {
 
     /**
-     * The field <tt>list</tt> contains the ...
+     * The field <tt>list</tt> contains the list.
      */
     private List<Left> list;
 

@@ -20,7 +20,7 @@
 package org.extex.ocpware.compiler.left;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a marker interface for left items.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

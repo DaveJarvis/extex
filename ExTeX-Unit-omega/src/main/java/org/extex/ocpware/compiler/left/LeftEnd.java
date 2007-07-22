@@ -20,7 +20,7 @@
 package org.extex.ocpware.compiler.left;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a reference to the end of the sequence.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

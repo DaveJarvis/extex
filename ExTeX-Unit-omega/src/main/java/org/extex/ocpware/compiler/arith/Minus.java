@@ -20,12 +20,12 @@
 package org.extex.ocpware.compiler.arith;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a subtraction of two arguments.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Minus implements ArithExpr {
+public class Minus extends ArithExpr {
 
     /**
      * The field <tt>left</tt> contains the left argument.
@@ -55,6 +55,7 @@ public class Minus implements ArithExpr {
      * 
      * @see org.extex.ocpware.compiler.arith.ArithExpr#eval()
      */
+    @Override
     public int eval() {
 
         return left.eval() - right.eval();

@@ -21,7 +21,7 @@ package org.extex.ocpware.compiler.sexpression;
 
 /**
  * This class represents the last character of the prefix.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -37,7 +37,7 @@ public class PrefixLast implements Expr {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
@@ -46,5 +46,4 @@ public class PrefixLast implements Expr {
         return "\\$";
     }
 
-    
 }

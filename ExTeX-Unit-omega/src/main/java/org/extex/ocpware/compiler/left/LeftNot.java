@@ -19,9 +19,8 @@
 
 package org.extex.ocpware.compiler.left;
 
-
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a negated list of left items.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -35,7 +34,7 @@ public class LeftNot implements Left {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param list the left list
      */
     public LeftNot(Left list) {

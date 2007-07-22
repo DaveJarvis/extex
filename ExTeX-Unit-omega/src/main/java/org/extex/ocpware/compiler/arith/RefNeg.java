@@ -25,7 +25,7 @@ package org.extex.ocpware.compiler.arith;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class RefNeg implements ArithExpr {
+public class RefNeg extends ArithExpr {
 
     /**
      * The field <tt>n</tt> contains the offset of the reference.
@@ -48,6 +48,7 @@ public class RefNeg implements ArithExpr {
      * 
      * @see org.extex.ocpware.compiler.arith.ArithExpr#eval()
      */
+    @Override
     public int eval() {
 
         // TODO gene: eval unimplemented

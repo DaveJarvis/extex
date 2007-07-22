@@ -20,17 +20,19 @@
 package org.extex.ocpware.compiler.arith;
 
 /**
- * TODO gene: missing JavaDoc.
- *
+ * This class represents the binary modulo operation of two arithmetic
+ * expressions.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Mod implements ArithExpr {
+public class Mod extends ArithExpr {
 
     /**
      * The field <tt>left</tt> contains the left argument.
      */
     private ArithExpr left;
+
     /**
      * The field <tt>right</tt> contains the right argument.
      */
@@ -38,8 +40,8 @@ public class Mod implements ArithExpr {
 
     /**
      * Creates a new object.
-     *
-     * @param left the left argument 
+     * 
+     * @param left the left argument
      * @param right the right argument
      */
     public Mod(ArithExpr left, ArithExpr right) {
@@ -51,9 +53,10 @@ public class Mod implements ArithExpr {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.ocpware.compiler.arith.ArithExpr#eval()
      */
+    @Override
     public int eval() {
 
         return left.eval() % right.eval();
@@ -67,7 +70,7 @@ public class Mod implements ArithExpr {
     @Override
     public String toString() {
 
-        return Arith.toString(left, " div: ", right);
+        return ArithExpr.toString(left, " div: ", right);
     }
 
 }

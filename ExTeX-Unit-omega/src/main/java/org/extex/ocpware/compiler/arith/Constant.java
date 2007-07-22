@@ -19,13 +19,16 @@
 
 package org.extex.ocpware.compiler.arith;
 
+import org.extex.ocpware.compiler.left.Left;
+import org.extex.ocpware.compiler.sexpression.Expr;
+
 /**
- * TODO gene: missing JavaDoc.
+ * This class provides a constant arithmetic expression. It holds a number.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Constant implements ArithExpr {
+public class Constant extends ArithExpr implements Expr, Left {
 
     /**
      * The field <tt>n</tt> contains the value.
@@ -48,6 +51,7 @@ public class Constant implements ArithExpr {
      * 
      * @see org.extex.ocpware.compiler.arith.ArithExpr#eval()
      */
+    @Override
     public int eval() {
 
         return n;

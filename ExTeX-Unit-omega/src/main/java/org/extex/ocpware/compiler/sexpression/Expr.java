@@ -20,7 +20,7 @@
 package org.extex.ocpware.compiler.sexpression;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface represents an string expression.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

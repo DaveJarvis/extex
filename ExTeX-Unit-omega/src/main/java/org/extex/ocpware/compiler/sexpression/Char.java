@@ -20,7 +20,7 @@
 package org.extex.ocpware.compiler.sexpression;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class references a character in the matched prefix.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -28,14 +28,14 @@ package org.extex.ocpware.compiler.sexpression;
 public class Char implements Expr {
 
     /**
-     * The field <tt>n</tt> contains the ...
+     * The field <tt>n</tt> contains the character code.
      */
     private int n;
 
     /**
      * Creates a new object.
      * 
-     * @param n ...
+     * @param n the character code
      */
     public Char(int n) {
 

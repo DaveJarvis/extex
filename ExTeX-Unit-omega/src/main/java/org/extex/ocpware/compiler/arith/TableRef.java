@@ -20,12 +20,12 @@
 package org.extex.ocpware.compiler.arith;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents an arithmetic expression for a table reference.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class TableRef implements ArithExpr {
+public class TableRef extends ArithExpr {
 
     /**
      * The field <tt>table</tt> contains the name of the table.
@@ -33,7 +33,7 @@ public class TableRef implements ArithExpr {
     private String table;
 
     /**
-     * The field <tt>n</tt> contains the ...
+     * The field <tt>n</tt> contains the offset.
      */
     private ArithExpr n;
 
@@ -55,6 +55,7 @@ public class TableRef implements ArithExpr {
      * 
      * @see org.extex.ocpware.compiler.arith.ArithExpr#eval()
      */
+    @Override
     public int eval() {
 
         // TODO gene: eval unimplemented

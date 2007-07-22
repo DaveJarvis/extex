@@ -20,7 +20,7 @@
 package org.extex.ocpware.compiler.sexpression;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a prefix which is trimmed on both sides.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -28,12 +28,12 @@ package org.extex.ocpware.compiler.sexpression;
 public class PrefixTrim implements Expr {
 
     /**
-     * The field <tt>n</tt> contains the ...
+     * The field <tt>n</tt> contains the left trim.
      */
     private int n;
 
     /**
-     * The field <tt>m</tt> contains the ...
+     * The field <tt>m</tt> contains the right trim.
      */
     private int m;
 

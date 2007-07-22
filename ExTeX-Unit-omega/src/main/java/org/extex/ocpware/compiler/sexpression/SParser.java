@@ -23,11 +23,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.extex.ocpware.compiler.arith.Arith;
+import org.extex.ocpware.compiler.arith.ArithExpr;
+import org.extex.ocpware.compiler.arith.Constant;
 import org.extex.ocpware.compiler.parser.ParserStream;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This utility class contains the string expression parser.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -43,7 +44,7 @@ public final class SParser {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Parse a list of expressions.
      * 
      * @param s the input stream
      * 
@@ -60,14 +61,14 @@ public final class SParser {
             switch (c) {
                 case '"':
                     for (c = s.read(); c >= 0 && c != '"'; c = s.read()) {
-                        result.add(new ExpressionConstant(c));
+                        result.add(new Constant(c));
                     }
                     break;
                 case '\\':
-                    result.add(parseXX(s));
+                    result.add(parseRef(s));
                     break;
                 case '#':
-                    result.add(Arith.parse(s));
+                    result.add(ArithExpr.parse(s));
                     break;
                 case '`':
                 case '@':
@@ -81,7 +82,7 @@ public final class SParser {
                 case '7':
                 case '8':
                 case '9':
-                    result.add(new ExpressionConstant(s.parseNumber(c)));
+                    result.add(new Constant(s.parseNumber(c)));
                     break;
                 default:
                     s.unread(c);
@@ -91,15 +92,15 @@ public final class SParser {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Parse a reference.
      * 
      * @param s the input stream
      * 
-     * @return ...
+     * @return the expression found
      * 
      * @throws IOException in case of an I/O error
      */
-    private static Expr parseXX(ParserStream s) throws IOException {
+    private static Expr parseRef(ParserStream s) throws IOException {
 
         int c = s.read();
 

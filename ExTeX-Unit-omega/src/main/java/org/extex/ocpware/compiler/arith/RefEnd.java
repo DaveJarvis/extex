@@ -20,12 +20,13 @@
 package org.extex.ocpware.compiler.arith;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents the reference to a character in the matched sequence
+ * counted from the end of the sequence.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class RefEnd implements ArithExpr {
+public class RefEnd extends ArithExpr {
 
     /**
      * Creates a new object.
@@ -40,6 +41,7 @@ public class RefEnd implements ArithExpr {
      * 
      * @see org.extex.ocpware.compiler.arith.ArithExpr#eval()
      */
+    @Override
     public int eval() {
 
         // TODO gene: eval unimplemented

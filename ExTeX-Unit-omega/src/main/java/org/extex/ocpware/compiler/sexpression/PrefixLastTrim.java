@@ -20,21 +20,38 @@
 package org.extex.ocpware.compiler.sexpression;
 
 /**
- * TODO gene: missing JavaDoc.
- *
+ * This class represents the n but last character of the prefix.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class PrefixLastTrim implements Expr {
 
     /**
+     * The field <tt>n</tt> contains the trim.
+     */
+    private int n;
+
+    /**
      * Creates a new object.
-     *
-     * @param n ...
+     * 
+     * @param n the trim
      */
     public PrefixLastTrim(int n) {
 
-        // TODO gene: Trim constructor unimplemented
+        super();
+        this.n = n;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        return "\\($" + Integer.toString(n) + ")";
     }
 
 }

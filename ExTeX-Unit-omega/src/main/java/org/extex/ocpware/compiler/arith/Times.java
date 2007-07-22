@@ -20,20 +20,21 @@
 package org.extex.ocpware.compiler.arith;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents the binary multiplication operation of two arithmetic
+ * expressions.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Times implements ArithExpr {
+public class Times extends ArithExpr {
 
     /**
-     * The field <tt>left</tt> contains the ...
+     * The field <tt>left</tt> contains the left argument.
      */
     private ArithExpr left;
 
     /**
-     * The field <tt>right</tt> contains the ...
+     * The field <tt>right</tt> contains the right argument.
      */
     private ArithExpr right;
 
@@ -55,6 +56,7 @@ public class Times implements ArithExpr {
      * 
      * @see org.extex.ocpware.compiler.arith.ArithExpr#eval()
      */
+    @Override
     public int eval() {
 
         return left.eval() * right.eval();
@@ -68,7 +70,7 @@ public class Times implements ArithExpr {
     @Override
     public String toString() {
 
-        return Arith.toString(left, " div: ", right);
+        return ArithExpr.toString(left, " div: ", right);
     }
 
 }

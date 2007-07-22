@@ -20,7 +20,7 @@
 package org.extex.ocpware.compiler.left;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a range of characters as left item.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -28,12 +28,12 @@ package org.extex.ocpware.compiler.left;
 public class LeftRange implements Left {
 
     /**
-     * The field <tt>from</tt> contains the ...
+     * The field <tt>from</tt> contains the lower bound.
      */
     private int from;
 
     /**
-     * The field <tt>to</tt> contains the ...
+     * The field <tt>to</tt> contains the upper bound.
      */
     private int to;
 
@@ -59,19 +59,19 @@ public class LeftRange implements Left {
     public String toString() {
 
         StringBuffer sb = new StringBuffer();
-        x(sb, from);
+        toString(sb, from);
         sb.append("-");
-        x(sb, to);
+        toString(sb, to);
         return sb.toString();
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Format a number into a target string buffer.
      *
      * @param sb the target buffer
      * @param n the number
      */
-    private static void x(StringBuffer sb, int n) {
+    private static void toString(StringBuffer sb, int n) {
 
         if (n >= ' ' && n < 126) {
             sb.append("`");

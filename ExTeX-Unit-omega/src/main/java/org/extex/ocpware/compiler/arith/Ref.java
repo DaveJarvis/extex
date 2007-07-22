@@ -20,12 +20,12 @@
 package org.extex.ocpware.compiler.arith;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents the reference to a character in the matched sequence.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Ref implements ArithExpr {
+public class Ref extends ArithExpr {
 
     /**
      * The field <tt>n</tt> contains the index of the reference.
@@ -48,6 +48,7 @@ public class Ref implements ArithExpr {
      * 
      * @see org.extex.ocpware.compiler.arith.ArithExpr#eval()
      */
+    @Override
     public int eval() {
 
         // TODO gene: eval unimplemented

@@ -20,7 +20,7 @@
 package org.extex.ocpware.compiler.type;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a table of character values.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

@@ -21,6 +21,7 @@ package org.extex.ocpware.compiler;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.compiler.type.Table;
@@ -51,9 +52,12 @@ public final class OtpCompiler {
         ocp.setInput(cs.getIn());
         ocp.setOutput(cs.getOut());
 
-        for (Table t : cs.getTables()) {
+        List<Table> tables = cs.getTables();
+        if (tables != null) {
+            for (Table t : tables) {
 
-//            ocp.addTable(null);
+                // ocp.addTable(null);
+            }
         }
 
         // TODO translate the compiler state into an ocp

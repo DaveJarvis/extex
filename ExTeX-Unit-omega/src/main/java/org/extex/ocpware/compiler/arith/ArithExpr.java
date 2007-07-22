@@ -19,21 +19,276 @@
 
 package org.extex.ocpware.compiler.arith;
 
+import java.io.IOException;
+
+import org.extex.ocpware.compiler.parser.ParserStream;
 import org.extex.ocpware.compiler.sexpression.Expr;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is the abstract base class for arithmetic expressions. It provides some
+ * methods for parsing and pretty-printing.
+ * <p>
+ * The arithmetic expression has the following syntax:
+ * </p>
+ * 
+ * <pre class="syntax">
+ *    &lang;arith expression&rang;
+ *      &rarr; &lang;n&rang;
+ *       | <tt>\</tt>&lang;n&rang;
+ *       | <tt>\$</tt>
+ *       | <tt>\($-</tt>&lang;n&rang;<tt>)</tt>
+ *       | &lang;arith expression&rang; <tt>+</tt> &lang;arith expression&rang;
+ *       | &lang;arith expression&rang; <tt>-</tt> &lang;arith expression&rang;
+ *       | &lang;arith expression&rang; <tt>*</tt> &lang;arith expression&rang;
+ *       | &lang;arith expression&rang; <tt>div:</tt> &lang;arith expression&rang;
+ *       | &lang;arith expression&rang; <tt>mod:</tt> &lang;arith expression&rang;
+ *       | &lang;id&rang;<tt>[</tt>&lang;arith expression&rang;<tt>]</tt>
+ *       | <tt>(</tt>&lang;arith expression&rang;<tt>)</tt>  </pre>
+ * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface ArithExpr extends Expr {
+public abstract class ArithExpr implements Expr {
+
+    /**
+     * This enumeration provides constants for addition and subtraction.
+     */
+    private enum Op {
+
+        /**
+         * The field <tt>MINUS</tt> contains the subtraction.
+         */
+        MINUS {
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.ocpware.compiler.arith.ArithExpr.Op#eval(
+             *      org.extex.ocpware.compiler.arith.ArithExpr,
+             *      org.extex.ocpware.compiler.arith.ArithExpr)
+             */
+            @Override
+            public ArithExpr eval(ArithExpr left, ArithExpr right) {
+
+                return new Minus(left, right);
+            }
+        },
+
+        /**
+         * The field <tt>PLUS</tt> contains the addition.
+         */
+        PLUS {
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.ocpware.compiler.arith.ArithExpr.Op#eval(
+             *      org.extex.ocpware.compiler.arith.ArithExpr,
+             *      org.extex.ocpware.compiler.arith.ArithExpr)
+             */
+            @Override
+            public ArithExpr eval(ArithExpr left, ArithExpr right) {
+
+                return new Plus(left, right);
+            }
+        };
+
+        /**
+         * This methods creates an arithmetic expression for two arguments.
+         * 
+         * @param left the left argument
+         * @param right the right argument
+         * 
+         * @return the combined term
+         */
+        public abstract ArithExpr eval(ArithExpr left, ArithExpr right);
+
+    }
+
+    /**
+     * Parse an arithmetic expression.
+     * 
+     * @param s the input stream
+     * 
+     * @return the term found
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public static ArithExpr parse(ParserStream s) throws IOException {
+
+        Op op = null;
+        ArithExpr save = null;
+        ArithExpr left = parseTerm(s);
+        String t;
+
+        for (;;) {
+            int c = s.skipSpace();
+            switch (c) {
+                case '+':
+                    if (save != null) {
+                        save = op.eval(save, left);
+                    } else {
+                        save = left;
+                    }
+                    op = Op.PLUS;
+                    left = parseTerm(s);
+                    break;
+                case '-':
+                    if (save != null) {
+                        save = op.eval(save, left);
+                    } else {
+                        save = left;
+                    }
+                    op = Op.MINUS;
+                    left = parseTerm(s);
+                    break;
+                case '*':
+                    left = new Times(left, parseTerm(s));
+                    break;
+                case 'd':
+                    s.unread(c);
+                    t = s.parseId();
+                    if ("div".equals(t)) {
+                        s.expect(':');
+                        left = new Div(left, parseTerm(s));
+                    } else {
+                        s.unread(t.getBytes());
+                    }
+                    break;
+                case 'm':
+                    s.unread(c);
+                    t = s.parseId();
+                    if ("mod".equals(t)) {
+                        s.expect(':');
+                        left = new Mod(left, parseTerm(s));
+                    } else {
+                        s.unread(t.getBytes());
+                    }
+                    break;
+                default:
+                    s.unread(c);
+                    if (save != null) {
+                        left = op.eval(save, left);
+                    }
+                    return left;
+            }
+        }
+    }
+
+    /**
+     * Parse a reference. The starting backslash has already been consumed.
+     * 
+     * @param s the input stream
+     * 
+     * @return the arithmetic reference
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    private static ArithExpr parseArithRef(ParserStream s) throws IOException {
+
+        int c = s.skipSpace();
+
+        if (c == '$') {
+            return new RefEnd();
+        } else if (c == '(') {
+            s.expect('$');
+            s.expect('-');
+            RefNeg result = new RefNeg(s.parseNumber(s.skipSpace()));
+            s.expect(')');
+            return result;
+        }
+
+        return new Ref(s.parseNumber(c));
+    }
+
+    /**
+     * Parse a term.
+     * 
+     * @param s the input stream
+     * 
+     * @return the term
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    private static ArithExpr parseTerm(ParserStream s) throws IOException {
+
+        ArithExpr ex;
+        int c = s.skipSpace();
+
+        switch (c) {
+            case '\\':
+                return parseArithRef(s);
+            case '(':
+                ex = parse(s);
+                s.expect(')');
+                return ex;
+            case '@':
+            case '`':
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+                return new Constant(s.parseNumber(c));
+            default:
+                String id = s.parseId();
+                s.expect('[');
+                ArithExpr a = ArithExpr.parse(s);
+                s.expect(']');
+                return new TableRef(id, a);
+        }
+    }
+
+    /**
+     * Create a string representation for an binary operation.
+     * 
+     * @param x the first argument
+     * @param op the operator
+     * @param y the second argument
+     * 
+     * @return the string representation
+     */
+    public static String toString(ArithExpr x, String op, ArithExpr y) {
+
+        StringBuffer sb = new StringBuffer();
+
+        if (x instanceof Plus || x instanceof Minus) {
+            sb.append("(");
+            sb.append(x.toString());
+            sb.append(")");
+        } else {
+            sb.append(x.toString());
+        }
+        sb.append(op);
+        if (y instanceof Plus || y instanceof Minus) {
+            sb.append("(");
+            sb.append(y.toString());
+            sb.append(")");
+        } else {
+            sb.append(x.toString());
+        }
+
+        return sb.toString();
+    }
+
+    /**
+     * Creates a new object.
+     */
+    public ArithExpr() {
+
+        super();
+    }
 
     /**
      * Evaluate the expression to a number.
-     *
+     * 
      * @return the result
      */
-    int eval();
-
+    abstract int eval();
 }

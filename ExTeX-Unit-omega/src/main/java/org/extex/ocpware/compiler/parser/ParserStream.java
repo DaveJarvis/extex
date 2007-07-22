@@ -24,7 +24,8 @@ import java.io.InputStream;
 import java.io.PushbackInputStream;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class provides a pushback input stream which can parse certain basic
+ * entities.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -57,7 +58,7 @@ public class ParserStream extends PushbackInputStream {
      * 
      * @param c the character read
      * 
-     * @return the excepion 
+     * @return the excepion
      */
     public ParserException error(int c) {
 
@@ -65,7 +66,8 @@ public class ParserStream extends PushbackInputStream {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Skip to the next non-white-space character and compare it to a given one.
+     * If the comparison fails then an exception is raised.
      * 
      * @param ex the expected character
      * 
@@ -84,7 +86,7 @@ public class ParserStream extends PushbackInputStream {
 
     /**
      * Parse an id.
-     *
+     * 
      * @param ex the expected characters
      * 
      * @throws IOException in case of an I/O error
@@ -100,7 +102,9 @@ public class ParserStream extends PushbackInputStream {
     }
 
     /**
-     * Parse an id.
+     * Parse an id. An id is a non empty sequence of characters made up of
+     * letters (a-z,A-Z), digits (0-9), and the underscore character(_) where
+     * the first character is not a digit.
      * 
      * @return the identifier read
      * 
@@ -139,8 +143,8 @@ public class ParserStream extends PushbackInputStream {
     }
 
     /**
-     * Parse an id.
-     *
+     * Parse a number.
+     * 
      * @param cc the character already scanned
      * 
      * @return the number read

@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.ocpware.compiler.arith.ArithExpr;
+import org.extex.ocpware.compiler.arith.Constant;
 import org.extex.ocpware.compiler.left.Left;
 import org.extex.ocpware.compiler.left.LeftBeg;
 import org.extex.ocpware.compiler.left.LeftEnd;
@@ -138,8 +139,7 @@ public class Expression {
      * 
      * @throws IOException in case of an I/O error
      */
-    private static List<Expr> parsePushBack(ParserStream s)
-            throws IOException {
+    private static List<Expr> parsePushBack(ParserStream s) throws IOException {
 
         int c = s.skipSpace();
         if (c != '<') {
@@ -157,7 +157,7 @@ public class Expression {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Parse a right list.
      * 
      * @param s the input stream
      * 
@@ -173,7 +173,7 @@ public class Expression {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Parse an optional total left list.
      * 
      * @param s the input stream
      * 
@@ -360,7 +360,9 @@ public class Expression {
         }
         sb.append(" => ");
         for (Expr r : right) {
-            if (r instanceof ArithExpr) {
+            if (r instanceof Constant) {
+                sb.append(r.toString());
+            } else if (r instanceof ArithExpr) {
                 sb.append("#(");
                 sb.append(r.toString());
                 sb.append(")");

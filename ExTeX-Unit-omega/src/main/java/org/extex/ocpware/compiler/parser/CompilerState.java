@@ -85,10 +85,6 @@ public final class CompilerState {
         for (String t = s.parseId(); t != null; t = s.parseId()) {
             if ("expressions".equals(t)) {
                 s.unread(t.getBytes());
-                return map;
-            }
-            if ("expressions".equals(t)) {
-                s.unread(t.getBytes());
                 break;
             }
             s.expect('=');

@@ -20,27 +20,27 @@
 package org.extex.ocpware.compiler.left;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a reference to an alias as left item.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LeftNumber implements Left {
+public class LeftAliasRef implements Left {
 
     /**
-     * The field <tt>n</tt> contains the number.
+     * The field <tt>ref</tt> contains the reference.
      */
-    private int n;
+    private String ref;
 
     /**
      * Creates a new object.
-     * 
-     * @param n the number
+     *
+     * @param ref the reference
      */
-    public LeftNumber(int n) {
+    public LeftAliasRef(String ref) {
 
         super();
-        this.n = n;
+        this.ref = ref;
     }
 
     /**
@@ -51,10 +51,7 @@ public class LeftNumber implements Left {
     @Override
     public String toString() {
 
-        if (n >= ' ' && n < 126) {
-            return "`" + Character.toString((char) n) + "'";
-        }
-        return "@\"" + Integer.toHexString(n);
+        return "{" + ref + "}";
     }
 
 }

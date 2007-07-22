@@ -23,10 +23,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.ocpware.compiler.arith.Constant;
 import org.extex.ocpware.compiler.parser.ParserStream;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This utility class contains parser methods for left items.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -35,7 +36,6 @@ public final class LeftParser {
 
     /**
      * Creates a new object.
-     * 
      */
     private LeftParser() {
 
@@ -109,7 +109,7 @@ public final class LeftParser {
             case '{':
                 String t = s.parseId();
                 s.expect('}');
-                return new LeftRef(t);
+                return new LeftAliasRef(t);
             case '^':
                 s.expect('(');
                 Left not = parseOrList(s);
@@ -132,7 +132,7 @@ public final class LeftParser {
                 c = s.skipSpace();
                 if (c != '-') {
                     s.unread(c);
-                    return new LeftNumber(n);
+                    return new Constant(n);
                 }
                 return new LeftRange(n, s.parseNumber(s.skipSpace()));
             default:

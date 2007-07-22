@@ -25,7 +25,7 @@ package org.extex.ocpware.compiler.arith;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Div implements ArithExpr {
+public class Div extends ArithExpr {
 
     /**
      * The field <tt>left</tt> contains the ...
@@ -55,6 +55,7 @@ public class Div implements ArithExpr {
      * 
      * @see org.extex.ocpware.compiler.arith.ArithExpr#eval()
      */
+    @Override
     public int eval() {
 
         // TODO gene: eval unimplemented
@@ -69,7 +70,7 @@ public class Div implements ArithExpr {
     @Override
     public String toString() {
 
-        return Arith.toString(left, " div: ", right);
+        return ArithExpr.toString(left, " div: ", right);
     }
 
 }

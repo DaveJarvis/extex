@@ -36,12 +36,14 @@ public class ParserException extends IOException {
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>found</tt> contains the ...
+     * The field <tt>found</tt> contains the character found or a negative
+     * value for undefined.
      */
     private int found;
 
     /**
-     * The field <tt>expected</tt> contains the ...
+     * The field <tt>expected</tt> contains the expected character or a
+     * negative value for undefined.
      */
     private int expected;
 
