@@ -302,15 +302,16 @@ public class OutputFactory extends AbstractFactory
             return null;
         }
 
-        try {
-            File file = new File(dir, filename);
-            OutputStream os =
-                    new NamedOutputStream(file.toString(),
-                        new BufferedOutputStream(new FileOutputStream(file)));
-            return os;
-        } catch (FileNotFoundException e) {
-            return null;
+        File file = new File(dir, filename);
+        if (file.canWrite()) {
+            try {
+                return new NamedOutputStream(file.toString(),
+                    new BufferedOutputStream(new FileOutputStream(file)));
+            } catch (FileNotFoundException e) {
+                // should not happen
+            }
         }
+        return null;
     }
 
     /**
