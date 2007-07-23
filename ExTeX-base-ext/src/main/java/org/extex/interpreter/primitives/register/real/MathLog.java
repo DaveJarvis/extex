@@ -62,7 +62,7 @@ public class MathLog extends AbstractMath
      * Creates a new object.
      * 
      * @param name the name for debugging
-     * @throws GeneralException ...
+     * @throws GeneralException if an error occurred.
      */
     public MathLog(String name) throws GeneralException {
 

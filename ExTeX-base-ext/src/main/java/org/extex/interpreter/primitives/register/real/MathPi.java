@@ -56,7 +56,7 @@ public class MathPi extends AbstractMath
      * Creates a new object.
      * 
      * @param name the name for debugging
-     * @throws HelpingException ...
+     * @throws HelpingException if an error occurred.
      */
     public MathPi(String name) throws HelpingException {
 

@@ -44,13 +44,44 @@
       <define name="transformdef"
          class="org.extex.interpreter.primitives.register.transform.TransformDef" />
 
+      <define name="mathpi"
+         class="org.extex.interpreter.primitives.register.real.MathPi" />
+      <define name="mathabs"
+         class="org.extex.interpreter.primitives.register.real.MathAbs" />
+      <define name="mathacos"
+         class="org.extex.interpreter.primitives.register.real.MathACos" />
+      <define name="mathadd"
+         class="org.extex.interpreter.primitives.register.real.MathAdd" />
+      <define name="mathasin"
+         class="org.extex.interpreter.primitives.register.real.MathASin" />
+      <define name="mathatan"
+         class="org.extex.interpreter.primitives.register.real.MathATan" />
+     <define name="mathatantwo"
+         class="org.extex.interpreter.primitives.register.real.MathATanTwo" />
+     <define name="mathceil"
+         class="org.extex.interpreter.primitives.register.real.MathCeil" />
+     <define name="mathcos"
+         class="org.extex.interpreter.primitives.register.real.MathCos" />
+     <define name="mathdiv"
+         class="org.extex.interpreter.primitives.register.real.MathDiv" />
+     <define name="mathe"
+         class="org.extex.interpreter.primitives.register.real.MathE" />
+     <define name="mathexp"
+         class="org.extex.interpreter.primitives.register.real.MathExp" />
+     <define name="mathfloor"
+         class="org.extex.interpreter.primitives.register.real.MathFloor" />
+     <define name="mathlog"
+         class="org.extex.interpreter.primitives.register.real.MathLog" />
+     <define name="mathmax"
+         class="org.extex.interpreter.primitives.register.real.MathMax" />
+     <define name="mathmin"
+         class="org.extex.interpreter.primitives.register.real.MathMin" />
+     <define name="mathmul"
+         class="org.extex.interpreter.primitives.register.real.MathMul" />
+
       <!-- 
          <define name="mathexpr"
          class="org..extex.interpreter.primitives.register.real.MathExpression" />
-         <define name="mathpi"
-         class="org.extex.interpreter.primitives.register.real.MathPi" />
-         <define name="mathsin"
-         class="org.extex.interpreter.primitives.register.real.MathSin" />
       -->
    </primitives>
 </unit>

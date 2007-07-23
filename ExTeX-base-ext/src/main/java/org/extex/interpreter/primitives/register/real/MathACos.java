@@ -53,7 +53,7 @@ public class MathACos extends AbstractMath
             CountConvertible {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt>.
      */
     private static final long serialVersionUID = 1L;
 
@@ -61,7 +61,7 @@ public class MathACos extends AbstractMath
      * Creates a new object.
      * 
      * @param name the name for debugging
-     * @throws GeneralException ...
+     * @throws GeneralException if an error occurred.
      */
     public MathACos(String name) throws GeneralException {
 
