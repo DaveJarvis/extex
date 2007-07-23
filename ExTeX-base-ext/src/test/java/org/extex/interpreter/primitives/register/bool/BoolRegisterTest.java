@@ -91,10 +91,10 @@ public class BoolRegisterTest extends ExTeXLauncher {
     public void testGlobal2() throws Exception {
 
         assertSuccess(// --- input code ---
-            "\\begingroup\\global\\booldef\\x=42 \\x=123\\endgroup"
+            "\\begingroup\\global\\booldef\\x=42 \\x=true\\endgroup"
                     + "\\the\\x \\end",
             // --- output channel ---
-            "0" + TERM);
+            "true" + TERM);
     }
 
     /**
@@ -109,10 +109,10 @@ public class BoolRegisterTest extends ExTeXLauncher {
     public void testGlobal3() throws Exception {
 
         assertSuccess(// --- input code ---
-            "\\globaldefs=1\\begingroup\\booldef\\x=42 \\x=123\\endgroup"
+            "\\globaldefs=1\\begingroup\\booldef\\x=42 \\x=true\\endgroup"
                     + "\\the\\x \\end",
             // --- output channel ---
-            "123" + TERM);
+            "true" + TERM);
     }
 
 }
