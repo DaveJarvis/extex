@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--
-  -  Copyright (C) 2003-2006-2007 The ExTeX Group
+  -  Copyright (C) 2007 The ExTeX Group
   -
   -  This library is free software; you can redistribute it and/or modify it
   -  under the terms of the GNU Lesser General Public License as published by
@@ -17,16 +17,7 @@
   -  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
   -
   -->
-<unit name="exttex">
-  <primitives>
-    <define name="inputencoding" 
-            class="de.dante.extex.interpreter.primitives.register.toks.ToksParameter"
-            >ISO8859-1</define>
-    <define name="inputfile" 
-            class="de.dante.extex.interpreter.primitives.file.InputFile"/>
-    <define name="inputfileencoding" 
-            class="de.dante.extex.interpreter.primitives.file.InputFileEncoding"/>
-    <define name="printformat" 
-            class="de.dante.extex.interpreter.primitives.format.PrintFormat"/>
-  </primitives>
-</unit>
+<Context class="org.extex.interpreter.context.impl.extension.ContextExtensionImpl">
+	<Group class="org.extex.interpreter.context.impl.extension.GroupExtensionImpl"/>
+  <TypesettingContext class="org.extex.typesetter.tc.TypesettingContextImpl"/>
+</Context>
