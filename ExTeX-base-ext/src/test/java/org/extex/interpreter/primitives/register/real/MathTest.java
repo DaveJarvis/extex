@@ -44,43 +44,6 @@ public class MathTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\mathpi">
-     * 
-     * Test case checking that <tt>\mathpi</tt> returns the right value.
-     * 
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testMathPi01() throws Exception {
-
-        assertSuccess(
-        // --- input code ---
-            "\\the\\mathpi \\end",
-            // --- output channel ---
-            String.valueOf(Math.PI) + TERM);
-    }
-
-    /**
-     * <testcase primitive="\mathpi">
-     * 
-     * Test case: 3 + pi
-     * 
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testMathPi02() throws Exception {
-
-        assertSuccess(
-        // --- input code ---
-            "\\realdef\\x=42 " + "\\real42=3.0 "
-                    + "\\advance\\real42 by \\mathpi" + "\\the\\real42 \\end",
-            // --- output channel ---
-            String.valueOf(3.0 + Math.PI) + TERM);
-    }
-
-    /**
      * <testcase primitive="\mathabs">
      * 
      * Test case: abs(0.234)
@@ -369,6 +332,24 @@ public class MathTest extends ExTeXLauncher {
     }
 
     /**
+     * <testcase primitive="\mathpow">
+     * 
+     * Test case: 0.234 * 0.34
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testMathMPow01() throws Exception {
+
+        assertSuccess(
+        // --- input code ---
+            "\\the\\mathpow 0.234 0.34 \\end",
+            // --- output channel ---
+            String.valueOf(Math.pow(0.234d, 0.34d)) + TERM);
+    }
+
+    /**
      * <testcase primitive="\mathmul">
      * 
      * Test case: 0.234 * 0.34
@@ -387,21 +368,40 @@ public class MathTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\mathpow">
+     * <testcase primitive="\mathpi">
      * 
-     * Test case: 0.234 * 0.34
+     * Test case checking that <tt>\mathpi</tt> returns the right value.
      * 
      * </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void testMathMPow01() throws Exception {
+    public void testMathPi01() throws Exception {
 
         assertSuccess(
         // --- input code ---
-            "\\the\\mathpow 0.234 0.34 \\end",
+            "\\the\\mathpi \\end",
             // --- output channel ---
-            String.valueOf(Math.pow(0.234d, 0.34d)) + TERM);
+            String.valueOf(Math.PI) + TERM);
+    }
+
+    /**
+     * <testcase primitive="\mathpi">
+     * 
+     * Test case: 3 + pi
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testMathPi02() throws Exception {
+
+        assertSuccess(
+        // --- input code ---
+            "\\realdef\\x=42 " + "\\real42=3.0 "
+                    + "\\advance\\real42 by \\mathpi" + "\\the\\real42 \\end",
+            // --- output channel ---
+            String.valueOf(3.0 + Math.PI) + TERM);
     }
 
     /**
@@ -546,77 +546,6 @@ public class MathTest extends ExTeXLauncher {
             "\\the\\mathtoradians 0.234 \\end",
             // --- output channel ---
             String.valueOf(Math.toRadians(0.234d)) + TERM);
-    }
-
-    /**
-     * <testcase primitive="\mathexpr">
-     * 
-     * Test case: expr(2*7)
-     * 
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testMathExpr01() throws Exception {
-
-        assertSuccess(
-        // --- input code ---
-            DEFINE_CATCODES + "\\the\\mathexpr{2*7} \\end",
-            // --- output channel ---
-            String.valueOf(2d * 7d) + TERM);
-    }
-
-    /**
-     * <testcase primitive="\mathexpr">
-     * 
-     * Test case: expr(2*sin(0.5))
-     * 
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testMathExpr02() throws Exception {
-
-        assertSuccess(
-        // --- input code ---
-            DEFINE_CATCODES + "\\the\\mathexpr{2*sin(0.5)} \\end",
-            // --- output channel ---
-            String.valueOf(2d * Math.sin(0.5d)) + TERM);
-    }
-
-    /**
-     * <testcase primitive="\mathexpr">
-     * 
-     * Test case: expr(2/x)
-     * 
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testMathExpr03() throws Exception {
-
-        assertFailure(// --- input code ---
-            DEFINE_CATCODES + "\\the\\mathexpr{2/x} \\end",
-            // --- error channel ---
-            "Error in the math expression: The name \"x\" is unknown. "
-                    + "(at column 3)\n2/x\n ^\n");
-    }
-
-    /**
-     * <testcase primitive="\mathexpr">
-     * 
-     * Test case: expr(2+3/0)
-     * 
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    public void testMathExpr04() throws Exception {
-
-        assertFailure(// --- input code ---
-            DEFINE_CATCODES + "\\the\\mathexpr{2+3/0} \\end",
-            // --- error channel ---
-            "Error in the math expression at runtime: / by zero\n");
     }
 
 }

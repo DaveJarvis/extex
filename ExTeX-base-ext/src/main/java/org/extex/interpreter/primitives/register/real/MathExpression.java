@@ -19,10 +19,8 @@
 
 package org.extex.interpreter.primitives.register.real;
 
-import gnu.jel.CompilationException;
-import gnu.jel.CompiledExpression;
-import gnu.jel.Evaluator;
-import gnu.jel.Library;
+import net.sourceforge.jeval.EvaluationException;
+import net.sourceforge.jeval.Evaluator;
 
 import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.helping.HelpingException;
@@ -36,11 +34,8 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * Math. Expressions to get a real-value. It use the Java Expressions Library.
- * 
- * <p>
- * see {@link http://kinetic.ac.donetsk.ua/JEL/}
- * </p>
+ * Math. Expressions to get a real-value. It use the JEval
+ * {@link http://jeval.sourceforge.net/}.
  * 
  * <p>
  * Example
@@ -77,27 +72,9 @@ public class MathExpression extends AbstractMath
 
         super(name);
 
-        // use java.lang.Math
-        Class[] staticLib = new Class[1];
-        try {
-            staticLib[0] = Class.forName("java.lang.Math");
-        } catch (ClassNotFoundException e) {
-            throw new GeneralException(e.getMessage());
-        }
+        evaluator = new Evaluator();
 
-        // init library
-        lib = new Library(staticLib, null, null, null, null);
-        try {
-            lib.markStateDependent("random", null);
-        } catch (CompilationException e) {
-            throw new GeneralException(e.getMessage());
-        }
     }
-
-    /**
-     * Library
-     */
-    private Library lib = null;
 
     /**
      * The field <tt>localizer</tt> contains the localizer. It is initiated
@@ -105,6 +82,11 @@ public class MathExpression extends AbstractMath
      */
     private Localizer localizer =
             LocalizerFactory.getLocalizer(MathExpression.class);
+
+    /**
+     * JEval Evaluator.
+     */
+    private Evaluator evaluator;
 
     /**
      * {@inheritDoc}
@@ -120,37 +102,16 @@ public class MathExpression extends AbstractMath
         // \mathexpr{7+5+3}
         String expr = source.scanTokensAsString(context, getName());
 
-        // compile
-        CompiledExpression compileexpr = null;
         try {
-            compileexpr = Evaluator.compile(expr, lib);
-        } catch (CompilationException ce) {
-            int col = ce.getColumn();
-            StringBuffer buf = new StringBuffer();
-            for (int i = 1; i < col; i++) {
-                buf.append(' ');
-            }
-            buf.append('^');
-
-            throw new HelpingException(localizer, "MathExpr.error", ce
-                .getMessage()
-                    + " (at column " + String.valueOf(col) + ")", expr, buf
-                .toString());
-        }
-
-        if (compileexpr != null) {
-
-            Object result = null;
-            try {
-                result = compileexpr.evaluate(null);
-            } catch (Throwable e) {
-                throw new HelpingException(localizer, "MathExpr.errorrun",
-                    e.getMessage());
-            }
-
+            String result = evaluator.evaluate(expr);
             if (result != null) {
-                real = new Real(Double.parseDouble(result.toString()));
+                real.setValue(Double.parseDouble(result));
             }
+        } catch (EvaluationException e) {
+
+            throw new HelpingException(localizer, "MathExpr.error", e
+                .getLocalizedMessage());
+
         }
 
         return real;
