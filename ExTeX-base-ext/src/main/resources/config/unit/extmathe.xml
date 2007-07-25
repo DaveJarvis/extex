@@ -56,52 +56,51 @@
          class="org.extex.interpreter.primitives.register.real.MathASin" />
       <define name="mathatan"
          class="org.extex.interpreter.primitives.register.real.MathATan" />
-     <define name="mathatantwo"
+      <define name="mathatantwo"
          class="org.extex.interpreter.primitives.register.real.MathATanTwo" />
-     <define name="mathceil"
+      <define name="mathceil"
          class="org.extex.interpreter.primitives.register.real.MathCeil" />
-     <define name="mathcos"
+      <define name="mathcos"
          class="org.extex.interpreter.primitives.register.real.MathCos" />
-     <define name="mathdiv"
+      <define name="mathdiv"
          class="org.extex.interpreter.primitives.register.real.MathDiv" />
-     <define name="mathe"
+      <define name="mathe"
          class="org.extex.interpreter.primitives.register.real.MathE" />
-     <define name="mathexp"
+      <define name="mathexp"
          class="org.extex.interpreter.primitives.register.real.MathExp" />
-     <define name="mathfloor"
+      <define name="mathfloor"
          class="org.extex.interpreter.primitives.register.real.MathFloor" />
-     <define name="mathlog"
+      <define name="mathlog"
          class="org.extex.interpreter.primitives.register.real.MathLog" />
-     <define name="mathmax"
+      <define name="mathmax"
          class="org.extex.interpreter.primitives.register.real.MathMax" />
-     <define name="mathmin"
+      <define name="mathmin"
          class="org.extex.interpreter.primitives.register.real.MathMin" />
-     <define name="mathmul"
+      <define name="mathmul"
          class="org.extex.interpreter.primitives.register.real.MathMul" />
-     <define name="mathpow"
+      <define name="mathpow"
          class="org.extex.interpreter.primitives.register.real.MathPow" />
-     <define name="mathrandom"
+      <define name="mathrandom"
          class="org.extex.interpreter.primitives.register.real.MathRandom" />
-     <define name="mathrint"
+      <define name="mathrint"
          class="org.extex.interpreter.primitives.register.real.MathRint" />
-     <define name="mathround"
+      <define name="mathround"
          class="org.extex.interpreter.primitives.register.real.MathRound" />
-     <define name="mathsin"
+      <define name="mathsin"
          class="org.extex.interpreter.primitives.register.real.MathSin" />
-     <define name="mathsqrt"
+      <define name="mathsqrt"
          class="org.extex.interpreter.primitives.register.real.MathSqrt" />
-     <define name="mathsub"
+      <define name="mathsub"
          class="org.extex.interpreter.primitives.register.real.MathSub" />
-     <define name="mathtan"
+      <define name="mathtan"
          class="org.extex.interpreter.primitives.register.real.MathTan" />
-     <define name="mathtodegrees"
+      <define name="mathtodegrees"
          class="org.extex.interpreter.primitives.register.real.MathToDegrees" />
-     <define name="mathtoradians"
+      <define name="mathtoradians"
          class="org.extex.interpreter.primitives.register.real.MathToRadians" />
 
-      <!-- 
-         <define name="mathexpr"
-         class="org..extex.interpreter.primitives.register.real.MathExpression" />
-      -->
+      <define name="mathexpr"
+         class="org.extex.interpreter.primitives.register.real.MathExpression" />
+
    </primitives>
 </unit>

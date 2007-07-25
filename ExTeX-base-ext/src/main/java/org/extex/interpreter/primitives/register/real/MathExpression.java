@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -34,7 +34,11 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * Math. Expressions to get a real-value.
+ * Math. Expressions to get a real-value. It use the Java Expressions Library.
+ * 
+ * <p>
+ * see {@link http://kinetic.ac.donetsk.ua/JEL/}
+ * </p>
  * 
  * <p>
  * Example
@@ -64,7 +68,7 @@ public class MathExpression extends AbstractMath
      * Creates a new object.
      * 
      * @param name the name for debugging
-     * @throws GeneralException ...
+     * @throws GeneralException if an error occurred.
      */
     @SuppressWarnings("unchecked")
     public MathExpression(String name) throws GeneralException {
@@ -135,7 +139,6 @@ public class MathExpression extends AbstractMath
                     e.getMessage());
             }
 
-            System.err.println("\nresult = " + result);
             if (result != null) {
                 real = new Real(Double.parseDouble(result.toString()));
             }

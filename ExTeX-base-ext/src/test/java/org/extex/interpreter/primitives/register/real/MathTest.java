@@ -548,4 +548,40 @@ public class MathTest extends ExTeXLauncher {
             String.valueOf(Math.toRadians(0.234d)) + TERM);
     }
 
+    /**
+     * <testcase primitive="\mathexpr">
+     * 
+     * Test case: expr(2*7)
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testMathExpr01() throws Exception {
+
+        assertSuccess(
+        // --- input code ---
+            DEFINE_CATCODES + "\\the\\mathexpr{2*7} \\end",
+            // --- output channel ---
+            String.valueOf(2d * 7d) + TERM);
+    }
+
+    /**
+     * <testcase primitive="\mathexpr">
+     * 
+     * Test case: expr(2*sin(0.5))
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testMathExpr02() throws Exception {
+
+        assertSuccess(
+        // --- input code ---
+            DEFINE_CATCODES + "\\the\\mathexpr{2*sin(0.5)} \\end",
+            // --- output channel ---
+            String.valueOf(2d * Math.sin(0.5d)) + TERM);
+    }
+
 }
