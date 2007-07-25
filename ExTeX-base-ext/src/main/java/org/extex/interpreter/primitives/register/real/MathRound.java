@@ -62,7 +62,7 @@ public class MathRound extends AbstractMath
      * Creates a new object.
      * 
      * @param name the name for debugging
-     * @throws GeneralException ...
+     * @throws GeneralException if an error occurred.
      */
     public MathRound(String name) throws GeneralException {
 

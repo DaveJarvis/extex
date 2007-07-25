@@ -62,7 +62,7 @@ public class MathTan extends AbstractMath
      * Creates a new object.
      * 
      * @param name the name for debugging
-     * @throws GeneralException ...
+     * @throws GeneralException if an error occurred.
      */
     public MathTan(String name) throws GeneralException {
 

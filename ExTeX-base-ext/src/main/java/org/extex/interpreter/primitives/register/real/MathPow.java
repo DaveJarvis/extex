@@ -63,7 +63,7 @@ public class MathPow extends AbstractMath
      * Creates a new object.
      * 
      * @param name the name for debugging
-     * @throws GeneralException ...
+     * @throws GeneralException if an error occurred.
      */
     public MathPow(String name) throws GeneralException {
 

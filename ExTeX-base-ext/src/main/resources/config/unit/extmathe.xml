@@ -78,6 +78,26 @@
          class="org.extex.interpreter.primitives.register.real.MathMin" />
      <define name="mathmul"
          class="org.extex.interpreter.primitives.register.real.MathMul" />
+     <define name="mathpow"
+         class="org.extex.interpreter.primitives.register.real.MathPow" />
+     <define name="mathrandom"
+         class="org.extex.interpreter.primitives.register.real.MathRandom" />
+     <define name="mathrint"
+         class="org.extex.interpreter.primitives.register.real.MathRint" />
+     <define name="mathround"
+         class="org.extex.interpreter.primitives.register.real.MathRound" />
+     <define name="mathsin"
+         class="org.extex.interpreter.primitives.register.real.MathSin" />
+     <define name="mathsqrt"
+         class="org.extex.interpreter.primitives.register.real.MathSqrt" />
+     <define name="mathsub"
+         class="org.extex.interpreter.primitives.register.real.MathSub" />
+     <define name="mathtan"
+         class="org.extex.interpreter.primitives.register.real.MathTan" />
+     <define name="mathtodegrees"
+         class="org.extex.interpreter.primitives.register.real.MathToDegrees" />
+     <define name="mathtoradians"
+         class="org.extex.interpreter.primitives.register.real.MathToRadians" />
 
       <!-- 
          <define name="mathexpr"

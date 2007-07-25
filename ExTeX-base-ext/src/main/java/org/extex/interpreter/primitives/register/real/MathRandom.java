@@ -58,7 +58,7 @@ public class MathRandom extends AbstractMath
      * 
      * @param name the name for debugging
      * 
-     * @throws HelpingException ...
+     * @throws HelpingException if an error occurred.
      */
     public MathRandom(String name) throws HelpingException {
 

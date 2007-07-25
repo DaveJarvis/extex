@@ -386,4 +386,166 @@ public class MathTest extends ExTeXLauncher {
             String.valueOf(0.234d * 0.34d) + TERM);
     }
 
+    /**
+     * <testcase primitive="\mathpow">
+     * 
+     * Test case: 0.234 * 0.34
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testMathMPow01() throws Exception {
+
+        assertSuccess(
+        // --- input code ---
+            "\\the\\mathpow 0.234 0.34 \\end",
+            // --- output channel ---
+            String.valueOf(Math.pow(0.234d, 0.34d)) + TERM);
+    }
+
+    /**
+     * <testcase primitive="\mathrint">
+     * 
+     * Test case: 0.234 * 0.34
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testMathRint01() throws Exception {
+
+        assertSuccess(
+        // --- input code ---
+            "\\the\\mathrint 1.234 \\end",
+            // --- output channel ---
+            String.valueOf(Math.rint(1.234d)) + TERM);
+    }
+
+    /**
+     * <testcase primitive="\mathround">
+     * 
+     * Test case: round(1.234)
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testMathRound01() throws Exception {
+
+        assertSuccess(
+        // --- input code ---
+            "\\the\\mathround 1.234 \\end",
+            // --- output channel ---
+            String.valueOf((double) Math.round(1.234d)) + TERM);
+    }
+
+    /**
+     * <testcase primitive="\mathsin">
+     * 
+     * Test case: sin(0.234)
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testMathSin01() throws Exception {
+
+        assertSuccess(
+        // --- input code ---
+            "\\the\\mathsin 0.234 \\end",
+            // --- output channel ---
+            String.valueOf(Math.sin(0.234d)) + TERM);
+    }
+
+    /**
+     * <testcase primitive="\mathsqrt">
+     * 
+     * Test case: sqrt(4)
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testMathSqrt01() throws Exception {
+
+        assertSuccess(
+        // --- input code ---
+            "\\the\\mathsqrt 4 \\end",
+            // --- output channel ---
+            String.valueOf(Math.sqrt(4d)) + TERM);
+    }
+
+    /**
+     * <testcase primitive="\mathsub">
+     * 
+     * Test case: 0.234 - 0.34
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testMathSub01() throws Exception {
+
+        assertSuccess(
+        // --- input code ---
+            "\\the\\mathsub 0.234 0.34 \\end",
+            // --- output channel ---
+            String.valueOf(0.234d - 0.34d) + TERM);
+    }
+
+    /**
+     * <testcase primitive="\mathtan">
+     * 
+     * Test case: tan(0.234)
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testMathTan01() throws Exception {
+
+        assertSuccess(
+        // --- input code ---
+            "\\the\\mathtan 0.234 \\end",
+            // --- output channel ---
+            String.valueOf(Math.tan(0.234d)) + TERM);
+    }
+
+    /**
+     * <testcase primitive="\mathtodegrees">
+     * 
+     * Test case: todegreess(0.234)
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testMathToDegrees01() throws Exception {
+
+        assertSuccess(
+        // --- input code ---
+            "\\the\\mathtodegrees 0.234 \\end",
+            // --- output channel ---
+            String.valueOf(Math.toDegrees(0.234d)) + TERM);
+    }
+
+    /**
+     * <testcase primitive="\mathtoradians">
+     * 
+     * Test case: toradians(0.234)
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testMathToRadians01() throws Exception {
+
+        assertSuccess(
+        // --- input code ---
+            "\\the\\mathtoradians 0.234 \\end",
+            // --- output channel ---
+            String.valueOf(Math.toRadians(0.234d)) + TERM);
+    }
+
 }
