@@ -46,7 +46,7 @@ import org.extex.typesetter.exception.TypesetterException;
 public class HashToksDef extends AbstractAssignment {
 
     /**
-     * The field <tt>serialVersionUID</tt> contaons the version number for
+     * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 1L;
@@ -78,7 +78,6 @@ public class HashToksDef extends AbstractAssignment {
                 "hashtoks#"
                         + Long.toString(source.parseInteger(context, source,
                             typesetter));
-        context.setCode(tok, new NamedHashToks(key), prefix.isGlobal());
-        prefix.clearGlobal();
+        context.setCode(tok, new NamedHashToks(key), prefix.clearGlobal());
     }
 }

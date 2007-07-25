@@ -60,7 +60,7 @@ public class NamedBool extends AbstractAssignment
             BoolConvertible {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt>.
      */
     private static final long serialVersionUID = 1L;
 

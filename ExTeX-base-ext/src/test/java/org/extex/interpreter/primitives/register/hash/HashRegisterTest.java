@@ -76,9 +76,68 @@ public class HashRegisterTest extends ExTeXLauncher {
     public void testGlobal1() throws Exception {
 
         assertFailure(// --- input code ---
-            "\\begingroup\\hashtoksdef\\x=42 \\endgroup" + "\\the\\x \\end",
+            DEFINE_CATCODES + "\\begingroup\\hashtoksdef\\x=42 \\endgroup"
+                    + "\\the\\x \\end",
             // --- error channel ---
             "Undefined control sequence \\x");
+    }
+
+    /**
+     * <testcase primitive="\hashtoksdef">
+     * 
+     * Test case checking that <tt>\hashtoksdef</tt> respects a group.
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testGlobal2() throws Exception {
+
+        assertSuccess(// --- input code ---
+            DEFINE_CATCODES
+                    + "\\begingroup\\global\\hashtoksdef\\x=42 \\x={{key1}{value1}{key2}{value2}}\\endgroup"
+                    + "\\the\\x \\end",
+            // --- output channel ---
+            "{\n}\n\n\n");
+    }
+
+    /**
+     * <testcase primitive="\hashtoksdef">
+     * 
+     * Test case checking that <tt>\hashtoksdef</tt> respects a group.
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testGlobal3() throws Exception {
+
+        assertSuccess(// --- input code ---
+            DEFINE_CATCODES
+                    + "\\begingroup\\global\\hashtoksdef\\x=42 \\global\\hashtoks42={{key1}{value1}{key2}{value2}}\\endgroup"
+                    + "\\the\\x \\end",
+            // --- output channel ---
+            "{\n{key1}{value1}\n{key2}{value2}\n}\n" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\hashtoksdef">
+     * 
+     * Test case checking that <tt>\hashtoksdef</tt> respects
+     * <tt>\globaldefs</tt>.
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testGlobal4() throws Exception {
+
+        assertSuccess(// --- input code ---
+            DEFINE_CATCODES
+                    + "\\globaldefs=1\\begingroup\\hashtoksdef\\x=42 \\hashtoks42={{key1}{value1}{key2}{value2}}\\endgroup"
+                    + "\\the\\x \\end",
+            // --- output channel ---
+            "{\n{key1}{value1}\n{key2}{value2}\n}\n" + TERM);
     }
 
 }

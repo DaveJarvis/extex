@@ -79,4 +79,58 @@ public class RealRegisterTest extends ExTeXLauncher {
             "Undefined control sequence \\x");
     }
 
+    /**
+     * <testcase primitive="\realdef">
+     * 
+     * Test case checking that <tt>\realdef</tt> respects a group.
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testGlobal2() throws Exception {
+
+        assertSuccess(// --- input code ---
+            "\\begingroup\\global\\realdef\\x=42 \\x=1.2\\endgroup"
+                    + "\\the\\x \\end",
+            // --- output channel ---
+            "0.0" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\realdef">
+     * 
+     * Test case checking that <tt>\realdef</tt> respects a group.
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testGlobal3() throws Exception {
+
+        assertSuccess(// --- input code ---
+            "\\begingroup\\global\\realdef\\x=42 \\global\\x=1.2\\endgroup"
+                    + "\\the\\x \\end",
+            // --- output channel ---
+            "1.2" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\realdef">
+     * 
+     * Test case checking that <tt>\realdef</tt> respects <tt>\globaldefs</tt>.
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testGlobal4() throws Exception {
+
+        assertSuccess(// --- input code ---
+            "\\globaldefs=1\\begingroup\\realdef\\x=42 \\x=1.2\\endgroup"
+                    + "\\the\\x \\end",
+            // --- output channel ---
+            "1.2" + TERM);
+    }
+
 }

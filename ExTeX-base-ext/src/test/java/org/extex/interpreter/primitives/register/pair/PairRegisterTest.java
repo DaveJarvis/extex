@@ -79,4 +79,58 @@ public class PairRegisterTest extends ExTeXLauncher {
             "Undefined control sequence \\x");
     }
 
+    /**
+     * <testcase primitive="\pairdef">
+     * 
+     * Test case checking that <tt>\pairdef</tt> respects a group.
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testGlobal2() throws Exception {
+
+        assertSuccess(// --- input code ---
+            "\\begingroup\\global\\pairdef\\x=42 \\x=1.234 3.45 \\endgroup"
+                    + "\\the\\x \\end",
+            // --- output channel ---
+            "0.0 0.0" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\pairdef">
+     * 
+     * Test case checking that <tt>\pairdef</tt> respects a group.
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testGlobal3() throws Exception {
+
+        assertSuccess(// --- input code ---
+            "\\begingroup\\global\\pairdef\\x=42 \\global\\x=1.234 3.45\\endgroup"
+                    + "\\the\\x \\end",
+            // --- output channel ---
+            "1.234 3.45" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\pairdef">
+     * 
+     * Test case checking that <tt>\pairdef</tt> respects <tt>\globaldefs</tt>.
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testGlobal4() throws Exception {
+
+        assertSuccess(// --- input code ---
+            "\\globaldefs=1\\begingroup\\pairdef\\x=42 \\x=1.234 3.45\\endgroup"
+                    + "\\the\\x \\end",
+            // --- output channel ---
+            "1.234 3.45" + TERM);
+    }
+
 }

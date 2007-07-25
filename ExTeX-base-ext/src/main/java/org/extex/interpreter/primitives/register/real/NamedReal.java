@@ -95,8 +95,7 @@ public class NamedReal extends AbstractAssignment
             String key = getKey(context, source, typesetter);
             source.getOptionalEquals(context);
             Real value = new Real(context, source, typesetter);
-            contextextex.setReal(key, value, prefix.isGlobal());
-            prefix.clearGlobal();
+            contextextex.setReal(key, value, prefix.clearGlobal());
 
         } else {
             throw new InterpreterExtensionException();

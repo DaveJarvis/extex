@@ -81,4 +81,59 @@ public class TransformRegisterTest extends ExTeXLauncher {
             "Undefined control sequence \\x");
     }
 
+    /**
+     * <testcase primitive="\transformdef">
+     * 
+     * Test case checking that <tt>\transformdef</tt> respects a group.
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testGlobal2() throws Exception {
+
+        assertSuccess(// --- input code ---
+            "\\begingroup\\global\\transformdef\\x=42 \\x=1.1 2.2 3.3 4.4 5.5 6.6\\endgroup"
+                    + "\\the\\x \\end",
+            // --- output channel ---
+            "0.0 0.0 0.0 0.0 0.0 0.0" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\transformdef">
+     * 
+     * Test case checking that <tt>\transformdef</tt> respects a group.
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testGlobal3() throws Exception {
+
+        assertSuccess(// --- input code ---
+            "\\begingroup\\global\\transformdef\\x=42 \\global\\x=1.1 2.2 3.3 4.4 5.5 6.6\\endgroup"
+                    + "\\the\\x \\end",
+            // --- output channel ---
+            "1.1 2.2 3.3 4.4 5.5 6.6" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\transformdef">
+     * 
+     * Test case checking that <tt>\transformdef</tt> respects
+     * <tt>\globaldefs</tt>.
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testGlobal4() throws Exception {
+
+        assertSuccess(// --- input code ---
+            "\\globaldefs=1\\begingroup\\transformdef\\x=42 \\x=1.1 2.2 3.3 4.4 5.5 6.6\\endgroup"
+                    + "\\the\\x \\end",
+            // --- output channel ---
+            "1.1 2.2 3.3 4.4 5.5 6.6" + TERM);
+    }
+
 }

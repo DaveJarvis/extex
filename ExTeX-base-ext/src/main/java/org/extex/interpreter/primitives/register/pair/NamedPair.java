@@ -55,7 +55,7 @@ public class NamedPair extends AbstractAssignment
             PairConvertible {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt>.
      */
     private static final long serialVersionUID = 1L;
 
@@ -87,8 +87,7 @@ public class NamedPair extends AbstractAssignment
             String key = getKey(context, source, typesetter);
             source.getOptionalEquals(context);
             Pair value = new Pair(context, source, typesetter);
-            contextextex.setPair(key, value, prefix.isGlobal());
-            prefix.clearGlobal();
+            contextextex.setPair(key, value, prefix.clearGlobal());
 
         } else {
             throw new InterpreterExtensionException();

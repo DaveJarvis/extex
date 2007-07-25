@@ -94,6 +94,24 @@ public class BoolRegisterTest extends ExTeXLauncher {
             "\\begingroup\\global\\booldef\\x=42 \\x=true\\endgroup"
                     + "\\the\\x \\end",
             // --- output channel ---
+            "false" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\booldef">
+     * 
+     * Test case checking that <tt>\booldef</tt> respects a group.
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testGlobal3() throws Exception {
+
+        assertSuccess(// --- input code ---
+            "\\begingroup\\global\\booldef\\x=42 \\global\\x=true\\endgroup"
+                    + "\\the\\x \\end",
+            // --- output channel ---
             "true" + TERM);
     }
 
@@ -106,7 +124,7 @@ public class BoolRegisterTest extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
-    public void testGlobal3() throws Exception {
+    public void testGlobal4() throws Exception {
 
         assertSuccess(// --- input code ---
             "\\globaldefs=1\\begingroup\\booldef\\x=42 \\x=true\\endgroup"
