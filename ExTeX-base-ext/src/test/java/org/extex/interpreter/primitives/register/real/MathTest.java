@@ -584,4 +584,39 @@ public class MathTest extends ExTeXLauncher {
             String.valueOf(2d * Math.sin(0.5d)) + TERM);
     }
 
+    /**
+     * <testcase primitive="\mathexpr">
+     * 
+     * Test case: expr(2/x)
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testMathExpr03() throws Exception {
+
+        assertFailure(// --- input code ---
+            DEFINE_CATCODES + "\\the\\mathexpr{2/x} \\end",
+            // --- error channel ---
+            "Error in the math expression: The name \"x\" is unknown. "
+                    + "(at column 3)\n2/x\n ^\n");
+    }
+
+    /**
+     * <testcase primitive="\mathexpr">
+     * 
+     * Test case: expr(2+3/0)
+     * 
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testMathExpr04() throws Exception {
+
+        assertFailure(// --- input code ---
+            DEFINE_CATCODES + "\\the\\mathexpr{2+3/0} \\end",
+            // --- error channel ---
+            "Error in the math expression at runtime: / by zero\n");
+    }
+
 }

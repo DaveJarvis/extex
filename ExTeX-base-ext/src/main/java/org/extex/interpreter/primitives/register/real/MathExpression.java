@@ -26,6 +26,8 @@ import gnu.jel.Library;
 
 import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.helping.HelpingException;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.parser.CountConvertible;
@@ -98,6 +100,13 @@ public class MathExpression extends AbstractMath
     private Library lib = null;
 
     /**
+     * The field <tt>localizer</tt> contains the localizer. It is initiated
+     * with a localizer for the name of this class.
+     */
+    private Localizer localizer =
+            LocalizerFactory.getLocalizer(MathExpression.class);
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.interpreter.primitives.register.real.AbstractMath#calculate(org.extex.interpreter.context.Context,
@@ -123,7 +132,7 @@ public class MathExpression extends AbstractMath
             }
             buf.append('^');
 
-            throw new HelpingException(getLocalizer(), "TTP.MathExpr", ce
+            throw new HelpingException(localizer, "MathExpr.error", ce
                 .getMessage()
                     + " (at column " + String.valueOf(col) + ")", expr, buf
                 .toString());
@@ -135,7 +144,7 @@ public class MathExpression extends AbstractMath
             try {
                 result = compileexpr.evaluate(null);
             } catch (Throwable e) {
-                throw new HelpingException(getLocalizer(), "TTP.MathExprError",
+                throw new HelpingException(localizer, "MathExpr.errorrun",
                     e.getMessage());
             }
 
