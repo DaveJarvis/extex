@@ -20,7 +20,7 @@
 package org.extex.ocpware.compiler.type;
 
 /**
- * This class represents a table of character values.
+ * This class represents a table of character values as two byte numbers.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

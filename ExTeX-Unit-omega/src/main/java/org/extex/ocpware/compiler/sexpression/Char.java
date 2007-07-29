@@ -19,6 +19,12 @@
 
 package org.extex.ocpware.compiler.sexpression;
 
+import java.io.IOException;
+
+import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
+import org.extex.ocpware.compiler.parser.CompilerState;
+import org.extex.ocpware.type.OcpProgram;
+
 /**
  * This class references a character in the matched prefix.
  * 
@@ -41,6 +47,19 @@ public class Char implements Expr {
 
         super();
         this.n = n;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.ocpware.compiler.sexpression.Expr#outRight(
+     *      org.extex.ocpware.compiler.parser.CompilerState)
+     */
+    public void outRight(CompilerState cs)
+            throws IOException,
+                ArgmentTooBigException {
+
+        cs.putInstruction(OcpProgram.RIGHT_CHAR, n);
     }
 
     /**

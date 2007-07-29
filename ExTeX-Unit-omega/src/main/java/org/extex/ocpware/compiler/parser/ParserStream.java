@@ -23,8 +23,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PushbackInputStream;
 
+import org.extex.ocpware.compiler.exception.SyntaxException;
+
 /**
- * This class provides a pushback input stream which can parse certain basic
+ * This class provides a push-back input stream which can parse certain basic
  * entities.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -58,11 +60,11 @@ public class ParserStream extends PushbackInputStream {
      * 
      * @param c the character read
      * 
-     * @return the excepion
+     * @return the exception
      */
-    public ParserException error(int c) {
+    public SyntaxException error(int c) {
 
-        return new ParserException(c, line, lineno);
+        return new SyntaxException(c, line, lineno);
     }
 
     /**
@@ -72,15 +74,16 @@ public class ParserStream extends PushbackInputStream {
      * @param ex the expected character
      * 
      * @throws IOException in case of an I/O error
+     * @throws SyntaxException in case of a syntax error
      */
-    public void expect(char ex) throws IOException {
+    public void expect(char ex) throws IOException, SyntaxException {
 
         int c = skipSpace();
         if (c < 0) {
-            throw new ParserException(line, lineno);
+            throw new SyntaxException(line, lineno);
         }
         if (c != ex) {
-            throw new ParserException(c, ex, line, lineno);
+            throw new SyntaxException(c, ex, line, lineno);
         }
     }
 
@@ -90,27 +93,54 @@ public class ParserStream extends PushbackInputStream {
      * @param ex the expected characters
      * 
      * @throws IOException in case of an I/O error
+     * @throws SyntaxException in case of a syntax error
      */
-    public void expect(String ex) throws IOException {
+    public void expect(String ex) throws IOException, SyntaxException {
 
         String t = parseId();
         if (t == null) {
-            throw new ParserException(line, lineno);
+            throw new SyntaxException(line, lineno);
         } else if (!t.equals(ex)) {
             throw new IOException("unexpected " + t + " instead of " + ex);
         }
+        int c = skipSpace();
+        if (c < 0) {
+            throw new SyntaxException(line, lineno);
+        }
+        unread(c);
+    }
+
+    /**
+     * Getter for line.
+     * 
+     * @return the line
+     */
+    public StringBuffer getLine() {
+
+        return line;
+    }
+
+    /**
+     * Getter for lineno.
+     * 
+     * @return the lineno
+     */
+    public int getLineno() {
+
+        return lineno;
     }
 
     /**
      * Parse an id. An id is a non empty sequence of characters made up of
-     * letters (a-z,A-Z), digits (0-9), and the underscore character(_) where
-     * the first character is not a digit.
+     * letters (a-z,A-Z), digits (0-9), the underscore character(_), and the
+     * colon (:) where the first character is not a digit or a colon.
      * 
      * @return the identifier read
      * 
      * @throws IOException in case of an I/O error
+     * @throws SyntaxException in case of a syntax error
      */
-    public String parseId() throws IOException {
+    public String parseId() throws IOException, SyntaxException {
 
         StringBuffer sb = new StringBuffer();
 
@@ -122,7 +152,7 @@ public class ParserStream extends PushbackInputStream {
         } else if (c < 0) {
             return null;
         } else {
-            throw new ParserException(c, line, lineno);
+            throw new SyntaxException(c, line, lineno);
         }
 
         for (;;) {
@@ -132,7 +162,7 @@ public class ParserStream extends PushbackInputStream {
             } else if ((c >= '0' && c <= '9') //
                     || (c >= 'a' && c <= 'z') //
                     || (c >= 'A' && c <= 'Z') //
-                    || c == '_') {
+                    || c == '_' || c == ':') {
                 sb.append((char) c);
             } else {
                 unread(c);
@@ -150,9 +180,9 @@ public class ParserStream extends PushbackInputStream {
      * @return the number read
      * 
      * @throws IOException in case of an I/O error
-     * @throws ParserException in case of an parser error
+     * @throws SyntaxException in case of an parser error
      */
-    public int parseNumber(int cc) throws IOException, ParserException {
+    public int parseNumber(int cc) throws IOException, SyntaxException {
 
         int n = 0;
         int c = cc;
@@ -162,7 +192,7 @@ public class ParserStream extends PushbackInputStream {
             if (c == '\'') {
                 c = read();
                 if (c < '0' || c > '7') {
-                    throw new ParserException(c, line, lineno);
+                    throw new SyntaxException(c, line, lineno);
                 }
                 n = c - '0';
                 for (c = read(); c >= '0' && c <= '7'; c = read()) {
@@ -180,7 +210,7 @@ public class ParserStream extends PushbackInputStream {
                 } else if (c >= 'A' && c <= 'F') {
                     n = c - 'A' + 10;
                 } else {
-                    throw new ParserException(c, line, lineno);
+                    throw new SyntaxException(c, line, lineno);
                 }
                 for (;;) {
                     c = read();
@@ -197,17 +227,17 @@ public class ParserStream extends PushbackInputStream {
                 unread(c);
 
             } else {
-                throw new ParserException(c, line, lineno);
+                throw new SyntaxException(c, line, lineno);
             }
 
         } else if (c == '`') {
             n = read();
             if (n < 0) {
-                throw new ParserException(c, line, lineno);
+                throw new SyntaxException(c, line, lineno);
             }
             c = read();
             if (c != '\'') {
-                throw new ParserException(c, line, lineno);
+                throw new SyntaxException(c, line, lineno);
             }
 
         } else if (c >= '0' && c <= '9') {
@@ -219,7 +249,7 @@ public class ParserStream extends PushbackInputStream {
             unread(c);
 
         } else {
-            throw new ParserException(c, line, lineno);
+            throw new SyntaxException(c, line, lineno);
         }
 
         return n;

@@ -19,13 +19,34 @@
 
 package org.extex.ocpware.compiler.sexpression;
 
+import java.io.IOException;
+
+import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
+import org.extex.ocpware.compiler.exception.TableNotDefinedException;
+import org.extex.ocpware.compiler.parser.CompilerState;
+
 /**
  * This interface represents an string expression.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public interface Expr {
 
-    //
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param cs the compiler state for lookup
+     * 
+     * @throws ArgmentTooBigException in case that an argument is encountered
+     *         which does not fit into two bytes
+     * @throws IOException in case of an I/O error
+     * @throws TableNotDefinedException in case that no matching table is known
+     *         for a symbolic table reference
+     */
+    void outRight(CompilerState cs)
+            throws ArgmentTooBigException,
+                IOException,
+                TableNotDefinedException;
+
 }

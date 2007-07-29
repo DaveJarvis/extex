@@ -21,8 +21,12 @@ package org.extex.ocpware.compiler.arith;
 
 import java.io.IOException;
 
+import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
+import org.extex.ocpware.compiler.exception.SyntaxException;
+import org.extex.ocpware.compiler.exception.TableNotDefinedException;
+import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.compiler.parser.ParserStream;
-import org.extex.ocpware.compiler.sexpression.Expr;
+import org.extex.ocpware.type.OcpProgram;
 
 /**
  * This is the abstract base class for arithmetic expressions. It provides some
@@ -49,7 +53,7 @@ import org.extex.ocpware.compiler.sexpression.Expr;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public abstract class ArithExpr implements Expr {
+public abstract class ArithExpr {
 
     /**
      * This enumeration provides constants for addition and subtraction.
@@ -71,7 +75,7 @@ public abstract class ArithExpr implements Expr {
             @Override
             public ArithExpr eval(ArithExpr left, ArithExpr right) {
 
-                return new Minus(left, right);
+                return new BinaryOp(OcpProgram.SUB, " - ", left, right);
             }
         },
 
@@ -90,7 +94,7 @@ public abstract class ArithExpr implements Expr {
             @Override
             public ArithExpr eval(ArithExpr left, ArithExpr right) {
 
-                return new Plus(left, right);
+                return new BinaryOp(OcpProgram.ADD, " + ", left, right);
             }
         };
 
@@ -114,8 +118,11 @@ public abstract class ArithExpr implements Expr {
      * @return the term found
      * 
      * @throws IOException in case of an I/O error
+     * @throws SyntaxException in case of a syntax error
      */
-    public static ArithExpr parse(ParserStream s) throws IOException {
+    public static ArithExpr parse(ParserStream s)
+            throws IOException,
+                SyntaxException {
 
         Op op = null;
         ArithExpr save = null;
@@ -144,14 +151,15 @@ public abstract class ArithExpr implements Expr {
                     left = parseTerm(s);
                     break;
                 case '*':
-                    left = new Times(left, parseTerm(s));
+                    left = new BinaryOp2(OcpProgram.MULT, " * ", //
+                        left, parseTerm(s));
                     break;
                 case 'd':
                     s.unread(c);
                     t = s.parseId();
-                    if ("div".equals(t)) {
-                        s.expect(':');
-                        left = new Div(left, parseTerm(s));
+                    if ("div:".equals(t)) {
+                        left = new BinaryOp2(OcpProgram.DIV, " DIV: ", //
+                            left, parseTerm(s));
                     } else {
                         s.unread(t.getBytes());
                     }
@@ -159,9 +167,9 @@ public abstract class ArithExpr implements Expr {
                 case 'm':
                     s.unread(c);
                     t = s.parseId();
-                    if ("mod".equals(t)) {
-                        s.expect(':');
-                        left = new Mod(left, parseTerm(s));
+                    if ("mod:".equals(t)) {
+                        left = new BinaryOp2(OcpProgram.MOD, " MOD: ", //
+                            left, parseTerm(s));
                     } else {
                         s.unread(t.getBytes());
                     }
@@ -184,17 +192,20 @@ public abstract class ArithExpr implements Expr {
      * @return the arithmetic reference
      * 
      * @throws IOException in case of an I/O error
+     * @throws SyntaxException in case of a syntax error
      */
-    private static ArithExpr parseArithRef(ParserStream s) throws IOException {
+    private static ArithExpr parseArithLast(ParserStream s)
+            throws IOException,
+                SyntaxException {
 
         int c = s.skipSpace();
 
         if (c == '$') {
-            return new RefEnd();
+            return new Last(0);
         } else if (c == '(') {
             s.expect('$');
             s.expect('-');
-            RefNeg result = new RefNeg(s.parseNumber(s.skipSpace()));
+            Last result = new Last(s.parseNumber(s.skipSpace()));
             s.expect(')');
             return result;
         }
@@ -210,15 +221,18 @@ public abstract class ArithExpr implements Expr {
      * @return the term
      * 
      * @throws IOException in case of an I/O error
+     * @throws SyntaxException in case of a syntax error
      */
-    private static ArithExpr parseTerm(ParserStream s) throws IOException {
+    private static ArithExpr parseTerm(ParserStream s)
+            throws IOException,
+                SyntaxException {
 
         ArithExpr ex;
         int c = s.skipSpace();
 
         switch (c) {
             case '\\':
-                return parseArithRef(s);
+                return parseArithLast(s);
             case '(':
                 ex = parse(s);
                 s.expect(')');
@@ -237,6 +251,7 @@ public abstract class ArithExpr implements Expr {
             case '9':
                 return new Constant(s.parseNumber(c));
             default:
+                s.unread(c);
                 String id = s.parseId();
                 s.expect('[');
                 ArithExpr a = ArithExpr.parse(s);
@@ -258,7 +273,7 @@ public abstract class ArithExpr implements Expr {
 
         StringBuffer sb = new StringBuffer();
 
-        if (x instanceof Plus || x instanceof Minus) {
+        if (x.needsParen()) {
             sb.append("(");
             sb.append(x.toString());
             sb.append(")");
@@ -266,7 +281,7 @@ public abstract class ArithExpr implements Expr {
             sb.append(x.toString());
         }
         sb.append(op);
-        if (y instanceof Plus || y instanceof Minus) {
+        if (y.needsParen()) {
             sb.append("(");
             sb.append(y.toString());
             sb.append(")");
@@ -286,9 +301,30 @@ public abstract class ArithExpr implements Expr {
     }
 
     /**
-     * Evaluate the expression to a number.
+     * Return the indicator that parentheses are needed when printed in a wider
+     * arithmetic context.
      * 
-     * @return the result
+     * @return the indicator
      */
-    abstract int eval();
+    public boolean needsParen() {
+
+        return false;
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param cs the compiler state
+     * 
+     * @throws ArgmentTooBigException in case that an argument is encountered
+     *         which does not fit into two bytes
+     * @throws IOException in case of an I/O error
+     * @throws TableNotDefinedException in case that no matching table is known
+     *         for a symbolic table reference
+     */
+    abstract void outExpr(CompilerState cs)
+            throws ArgmentTooBigException,
+                IOException,
+                TableNotDefinedException;
+
 }

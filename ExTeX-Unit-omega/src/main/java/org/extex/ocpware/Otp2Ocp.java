@@ -22,10 +22,17 @@ package org.extex.ocpware;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintStream;
+import java.text.MessageFormat;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 
+import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.type.OcpProgram;
+import org.extex.ocpware.writer.OcpFileWriter;
 
 /**
  * This class provides a main program to compile the contents of an otp file
@@ -60,40 +67,79 @@ public final class Otp2Ocp {
      */
     public static void main(String[] args) {
 
-        PrintStream err = System.err;
+        System.exit(main(args, System.out, System.err));
+    }
+
+    /**
+     * Process the command line options and return the exit code. As side effect
+     * an error message might be written to the error stream.
+     * 
+     * @param args the command line arguments
+     * @param out the output stream
+     * @param err the error stream
+     * 
+     * @return the exit code
+     */
+    public static int main(String[] args, PrintStream out, PrintStream err) {
+
         String file = null;
-        boolean orig = true;
+        String outFile = null;
 
         for (int i = 0; i < args.length; i++) {
-            if (args[i].equals("-v")) {
-                orig = false;
-            } else if (file != null) {
-                err.println("outocp: Too many arguments");
-                System.exit(-1);
-            } else {
+            if (file == null) {
                 file = args[i];
+            } else if (outFile == null) {
+                outFile = args[i];
+            } else {
+                return err(err, "Otp2Ocp.TooManyArguments");
             }
         }
 
         if (file == null) {
-            err.println("outocp: No file given");
-            System.exit(-1);
+            return err(err, "Otp2Ocp.NoFile");
+        }
+        if (outFile == null) {
+            outFile = file.replaceAll("\\.[oO][tT][pP]$", "") + ".ocp";
         }
 
         try {
             InputStream stream = new FileInputStream(new File(file));
-
-            OcpProgram.load(stream).dump(System.err, orig);
-
+            CompilerState cs = new CompilerState(stream);
             stream.close();
+            OcpProgram ocp = cs.compile();
+            OutputStream os = new FileOutputStream(outFile);
+            new OcpFileWriter().write(os, ocp);
+            os.close();
 
         } catch (FileNotFoundException e) {
-            err.println("outocp: " + file + " not found");
-            System.exit(-1);
+            return err(err, "Otp2Ocp.FileNotFound", file);
         } catch (Exception e) {
-            err.println(file + ": " + e.getMessage());
-            System.exit(-1);
+            return err(err, "Otp2Ocp.Error", e.getMessage());
         }
+        return 0;
+    }
+
+    /**
+     * Print a localized error message to the error stream.
+     * 
+     * @param err the error stream
+     * @param msg the key for the message
+     * @param a the array of arguments
+     * 
+     * @return the exit code (-1)
+     */
+    private static int err(PrintStream err, String msg, Object... a) {
+
+        ResourceBundle bundle =
+                ResourceBundle.getBundle(Otp2Ocp.class.getName());
+        try {
+            String fmt = bundle.getString(msg);
+            err.println(MessageFormat.format(fmt, a));
+        } catch (MissingResourceException e) {
+            err.println("***" + msg);
+        }
+
+        return -1;
     }
 
 }

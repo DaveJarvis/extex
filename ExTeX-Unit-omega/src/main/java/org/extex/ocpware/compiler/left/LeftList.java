@@ -19,7 +19,12 @@
 
 package org.extex.ocpware.compiler.left;
 
+import java.io.IOException;
 import java.util.List;
+
+import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
+import org.extex.ocpware.compiler.parser.CompilerState;
+import org.extex.ocpware.compiler.parser.State;
 
 /**
  * This class represents a list of left items.
@@ -43,6 +48,32 @@ public class LeftList implements Left {
 
         super();
         this.list = list;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.ocpware.compiler.left.Left#compile(
+     *      org.extex.ocpware.compiler.parser.CompilerState)
+     */
+    public void compile(CompilerState cs) {
+
+        // TODO gene: compile unimplemented
+        throw new RuntimeException("unimplemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.ocpware.compiler.left.Left#genLeft(
+     *      org.extex.ocpware.compiler.parser.State, CompilerState)
+     */
+    public List<Integer> genLeft(State state, CompilerState cs)
+            throws IOException,
+                ArgmentTooBigException {
+
+        // TODO gene: genLeft unimplemented
+        throw new RuntimeException("unimplemented");
     }
 
     /**

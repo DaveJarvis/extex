@@ -19,13 +19,49 @@
 
 package org.extex.ocpware.compiler.left;
 
+import java.io.IOException;
+import java.util.List;
+
+import org.extex.ocpware.compiler.exception.AliasNotDefinedException;
+import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
+import org.extex.ocpware.compiler.exception.IllegalOpcodeException;
+import org.extex.ocpware.compiler.parser.CompilerState;
+import org.extex.ocpware.compiler.parser.State;
+
 /**
- * This is a marker interface for left items.
- *
+ * This is the interface for left items.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public interface Left {
 
-    //
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param cs the compiler state
+     */
+    void compile(CompilerState cs);
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param state the current state
+     * @param cs TODO
+     * 
+     * @return the list of instructions to fix
+     * 
+     * @throws AliasNotDefinedException in case that no matching alias is known
+     *         for a symbolic table reference
+     * @throws ArgmentTooBigException in case that an argument is encountered
+     *         which does not fit into two bytes
+     * @throws IOException in case of an I/O error
+     * @throws IllegalOpcodeException in case of an illegal op code
+     */
+    List<Integer> genLeft(State state, CompilerState cs)
+            throws AliasNotDefinedException,
+                ArgmentTooBigException,
+                IOException,
+                IllegalOpcodeException;
+
 }

@@ -24,6 +24,7 @@ import java.io.InputStream;
 
 import junit.framework.TestCase;
 
+import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.type.OcpProgram;
 import org.junit.Test;
 
@@ -57,8 +58,9 @@ public class OtpCompilerTest extends TestCase {
                         + "\r\n" + "<VERBATIM>@\"F001 => <pop:> ;\r\n" + "\r\n"
                         + ". => \\1;\r\n" + "";
         InputStream stream = new ByteArrayInputStream(s.getBytes());
-
-        OcpProgram ocp = OtpCompiler.compile(stream);
+        CompilerState cs = new CompilerState(stream);
+        stream.close();
+        OcpProgram ocp = cs.compile();
         assertNotNull(ocp);
         assertEquals(1, ocp.getInput());
         assertEquals(2, ocp.getOutput());
@@ -161,7 +163,9 @@ public class OtpCompilerTest extends TestCase {
                         + "\r\n" + ". => \\1;\r\n" + "\r\n" + "\r\n" + "";
         InputStream stream = new ByteArrayInputStream(s.getBytes());
 
-        OcpProgram ocp = OtpCompiler.compile(stream);
+        CompilerState cs = new CompilerState(stream);
+        stream.close();
+        OcpProgram ocp = cs.compile();
         assertNotNull(ocp);
         assertEquals(2, ocp.getInput());
         assertEquals(2, ocp.getOutput());
@@ -212,7 +216,9 @@ public class OtpCompilerTest extends TestCase {
                         + "%.      => @\"FFFD;\r\n" + ". => \\1;\r\n" + "\r\n";
         InputStream stream = new ByteArrayInputStream(s.getBytes());
 
-        OcpProgram ocp = OtpCompiler.compile(stream);
+        CompilerState cs = new CompilerState(stream);
+        stream.close();
+        OcpProgram ocp = cs.compile();
         assertNotNull(ocp);
         assertEquals(1, ocp.getInput());
         assertEquals(2, ocp.getOutput());

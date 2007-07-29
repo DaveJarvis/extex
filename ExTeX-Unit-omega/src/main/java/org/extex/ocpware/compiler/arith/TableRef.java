@@ -19,6 +19,13 @@
 
 package org.extex.ocpware.compiler.arith;
 
+import java.io.IOException;
+
+import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
+import org.extex.ocpware.compiler.exception.TableNotDefinedException;
+import org.extex.ocpware.compiler.parser.CompilerState;
+import org.extex.ocpware.type.OcpProgram;
+
 /**
  * This class represents an arithmetic expression for a table reference.
  * 
@@ -28,14 +35,14 @@ package org.extex.ocpware.compiler.arith;
 public class TableRef extends ArithExpr {
 
     /**
-     * The field <tt>table</tt> contains the name of the table.
-     */
-    private String table;
-
-    /**
      * The field <tt>n</tt> contains the offset.
      */
     private ArithExpr n;
+
+    /**
+     * The field <tt>table</tt> contains the name of the table.
+     */
+    private String table;
 
     /**
      * Creates a new object.
@@ -53,13 +60,17 @@ public class TableRef extends ArithExpr {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.ocpware.compiler.arith.ArithExpr#eval()
+     * @see org.extex.ocpware.compiler.arith.ArithExpr#outExpr( CompilerState)
      */
     @Override
-    public int eval() {
+    void outExpr(CompilerState cs)
+            throws IOException,
+                TableNotDefinedException,
+                ArgmentTooBigException {
 
-        // TODO gene: eval unimplemented
-        throw new RuntimeException("unimplemented");
+        cs.putInstruction(OcpProgram.PUSH_NUM, cs.lookupTable(table));
+        n.outExpr(cs);
+        cs.putInstruction(OcpProgram.LOOKUP);
     }
 
     /**

@@ -26,10 +26,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.extex.ocpware.compiler.exception.AliasDefinedException;
+import org.extex.ocpware.compiler.exception.AliasNotDefinedException;
+import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
+import org.extex.ocpware.compiler.exception.IllegalOpcodeException;
+import org.extex.ocpware.compiler.exception.MissingExpressionsException;
+import org.extex.ocpware.compiler.exception.StateDefinedException;
+import org.extex.ocpware.compiler.exception.StateNotDefinedException;
+import org.extex.ocpware.compiler.exception.SyntaxException;
+import org.extex.ocpware.compiler.exception.TableDefinedException;
+import org.extex.ocpware.compiler.exception.TableNotDefinedException;
+import org.extex.ocpware.compiler.expression.Expression;
 import org.extex.ocpware.compiler.left.Left;
 import org.extex.ocpware.compiler.left.LeftParser;
-import org.extex.ocpware.compiler.type.Expression;
 import org.extex.ocpware.compiler.type.Table;
+import org.extex.ocpware.type.OcpProgram;
 
 /**
  * This class provides a compiler state to translate an otp file into an ocp.
@@ -40,76 +51,385 @@ import org.extex.ocpware.compiler.type.Table;
 public final class CompilerState {
 
     /**
-     * The enumeration names the different parts.
+     * The constant <tt>INITIAL</tt> contains the symbolic name for the
+     * initial state.
      */
-    private enum Part {
-        /**
-         * The field <tt>ALIASES</tt> contains the value foe aliases.
-         */
-        aliases,
-        /**
-         * The field <tt>EXPRESSIONS</tt> contains the value for expressions.
-         */
-        expressions,
-        /**
-         * The field <tt>INPUT</tt> contains the value for input.
-         */
-        input,
-        /**
-         * The field <tt>OUTPUT</tt> contains the the value for output.
-         */
-        output,
-        /**
-         * The field <tt>STATES</tt> contains the the value for states.
-         */
-        states,
-        /**
-         * The field <tt>TABLES</tt> contains the the value for tables.
-         */
-        tables
+    private static final String INITIAL = "INITIAL";
+
+    /**
+     * The field <tt>aliases</tt> contains the aliases.
+     */
+    private Map<String, Left> aliases = new HashMap<String, Left>();
+
+    /**
+     * The field <tt>currentState</tt> contains the current state.
+     */
+    private State currentState;
+
+    /**
+     * The field <tt>currentStateIndex</tt> contains the current state.
+     */
+    private int currentStateIndex = 0;
+
+    /**
+     * The field <tt>expressions</tt> contains the list of expressions.
+     */
+    private List<Expression> expressions;
+
+    /**
+     * The field <tt>in</tt> contains the number of bytes in the input stream.
+     */
+    private int in;
+
+    /**
+     * The field <tt>states</tt> contains the list of states.
+     */
+    private Map<String, Integer> namedStates = new HashMap<String, Integer>();
+
+    /**
+     * The field <tt>out</tt> contains the number of bytes in the output
+     * stream.
+     */
+    private int out;
+
+    /**
+     * The field <tt>states</tt> contains the ...
+     */
+    private List<State> states = new ArrayList<State>();
+
+    /**
+     * The field <tt>tables</tt> contains the list of tables.
+     */
+    private Map<String, Table> tables = new HashMap<String, Table>();
+
+    /**
+     * Creates a new object.
+     * 
+     * @throws StateDefinedException in case that the INITIAL state is already
+     *         known &ndash; extremely unlikely
+     */
+    public CompilerState() throws StateDefinedException {
+
+        super();
+        storeState(INITIAL);
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param stream the input stream
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws ArgmentTooBigException if the argument of the instruction exceeds
+     *         the 16 bit value
+     * @throws StateDefinedException in case that a state is about to be defined
+     *         a second time
+     * @throws TableDefinedException in case that a table is about to be defined
+     *         a second time
+     * @throws SyntaxException in case of a syntax error
+     * @throws AliasDefinedException in case that an attempt has been
+     *         encountered to define an alias a second time
+     * @throws MissingExpressionsException in case of a syntax error
+     */
+    public CompilerState(InputStream stream)
+            throws IOException,
+                ArgmentTooBigException,
+                StateDefinedException,
+                SyntaxException,
+                TableDefinedException,
+                AliasDefinedException,
+                MissingExpressionsException {
+
+        this();
+        parse(stream);
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @return the OCP program
+     * 
+     * @throws AliasNotDefinedException in case that no matching alias is known
+     *         for a symbolic table reference
+     * @throws ArgmentTooBigException in case that an argument is encountered
+     *         which does not fit into two bytes
+     * @throws IOException in case of an I/O error
+     * @throws StateNotDefinedException in case that no matching state is known
+     *         for a symbolic table reference
+     * @throws TableNotDefinedException in case that no matching table is known
+     *         for a symbolic table reference
+     */
+    public OcpProgram compile()
+            throws AliasNotDefinedException,
+                ArgmentTooBigException,
+                IOException,
+                StateNotDefinedException,
+                TableNotDefinedException {
+
+        OcpProgram ocp = new OcpProgram();
+        ocp.setInput(in);
+        ocp.setOutput(out);
+
+        for (Table t : tables.values()) {
+            ocp.addTable(t.getContents());
+        }
+
+        for (Expression e : expressions) {
+            e.compile(this);
+        }
+
+        for (State state : states) {
+            state.close();
+            ocp.addState(state.getInstructions());
+        }
+
+        return ocp;
+    }
+
+    /**
+     * Getter for aliases.
+     * 
+     * @return the aliases
+     */
+    public Map<String, Left> getAliases() {
+
+        return aliases;
+    }
+
+    /**
+     * Getter for current state.
+     * 
+     * @return the current state
+     */
+    public State getCurrentState() {
+
+        return currentState;
+    }
+
+    /**
+     * Getter for expressions.
+     * 
+     * @return the expressions
+     */
+    public List<Expression> getExpressions() {
+
+        return expressions;
+    }
+
+    /**
+     * Getter for in.
+     * 
+     * @return the in
+     */
+    public int getIn() {
+
+        return in;
+    }
+
+    /**
+     * Getter for out.
+     * 
+     * @return the out
+     */
+    public int getOut() {
+
+        return out;
+    }
+
+    /**
+     * Getter for state.
+     * 
+     * @return the state
+     */
+    public List<State> getState() {
+
+        return states;
+    }
+
+    /**
+     * Getter for states.
+     * 
+     * @return the states
+     */
+    public Map<String, Integer> getStates() {
+
+        return namedStates;
+    }
+
+    /**
+     * Getter for tables.
+     * 
+     * @return the tables
+     */
+    public Map<String, Table> getTables() {
+
+        return tables;
+    }
+
+    /**
+     * Increment the number of expressions for the current state.
+     */
+    public void incrExpr() {
+
+        currentState.incrExpr();
+    }
+
+    /**
+     * Find a value for an alias name.
+     * 
+     * @param alias the string representation of the alias
+     * 
+     * @return the left item of the alias
+     * 
+     * @throws AliasNotDefinedException in case that the alias is not defined
+     */
+    public Left lookupAlias(String alias) throws AliasNotDefinedException {
+
+        Left s = aliases.get(alias);
+        if (s == null) {
+            throw new AliasNotDefinedException(alias);
+        }
+        return s;
+    }
+
+    /**
+     * Find a number representation for a state name.
+     * 
+     * @param state the string representation of the state
+     * 
+     * @return the number of the state
+     * 
+     * @throws StateNotDefinedException in case that the state is not defined
+     */
+    public int lookupState(String state) throws StateNotDefinedException {
+
+        Integer s = namedStates.get(state);
+        if (s == null) {
+            throw new StateNotDefinedException(state);
+        }
+        return s.intValue();
+    }
+
+    /**
+     * Get the numeric index of a table from the symbolic name.
+     * 
+     * @param table the name of the table
+     * 
+     * @return the numeric index of a table
+     * 
+     * @throws TableNotDefinedException in case that no matching table is known
+     */
+    public int lookupTable(String table) throws TableNotDefinedException {
+
+        Integer s = namedStates.get(table);
+        if (s == null) {
+            throw new TableNotDefinedException(table);
+        }
+        return s.intValue();
+    }
+
+    /**
+     * Compile an input stream into an oc program.
+     * 
+     * @param stream the input stream
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws ArgmentTooBigException if the argument of the instruction exceeds
+     *         the 16 bit value
+     * @throws SyntaxException in case of a syntax error
+     * @throws StateDefinedException in case that a state is about to be defined
+     *         a second time
+     * @throws TableDefinedException in case that a table is about to be defined
+     *         a second time
+     * @throws AliasDefinedException in case that an attempt has been
+     *         encountered to define an alias a second time
+     * @throws MissingExpressionsException in case of a syntax error
+     */
+    public void parse(InputStream stream)
+            throws IOException,
+                ArgmentTooBigException,
+                SyntaxException,
+                StateDefinedException,
+                TableDefinedException,
+                AliasDefinedException,
+                MissingExpressionsException {
+
+        ParserStream s = new ParserStream(stream);
+
+        for (String t = s.parseId(); t != null; t = s.parseId()) {
+
+            if ("input:".equals(t)) {
+                in = s.parseNumber(s.skipSpace());
+                s.expect(';');
+            } else if ("output:".equals(t)) {
+                out = s.parseNumber(s.skipSpace());
+                s.expect(';');
+            } else if ("states:".equals(t)) {
+                parseStates(s);
+            } else if ("tables:".equals(t)) {
+                parseTables(s);
+            } else if ("aliases:".equals(t)) {
+                parseAliases(s);
+            } else if ("expressions:".equals(t)) {
+                expressions = Expression.parseExpressions(s);
+                break;
+            } else {
+                throw new SyntaxException(t, s.getLine(), s.getLineno());
+            }
+        }
+
+        if (expressions == null) {
+            throw new MissingExpressionsException();
+        }
     }
 
     /**
      * Parse a list of aliases.
      * 
      * @param s the input stream
-     * @return the list of aliases found
      * 
      * @throws IOException in case of an I/O error
+     * @throws SyntaxException in case of a syntax error
+     * @throws AliasDefinedException in case that an attempt has been
+     *         encountered to define an alias a second time
      */
-    private static Map<String, Left> parseAliases(ParserStream s)
-            throws IOException {
-
-        Map<String, Left> map = new HashMap<String, Left>();
+    private void parseAliases(ParserStream s)
+            throws IOException,
+                SyntaxException,
+                AliasDefinedException {
 
         for (String t = s.parseId(); t != null; t = s.parseId()) {
-            if ("expressions".equals(t)) {
+            if ("expressions:".equals(t)) {
                 s.unread(t.getBytes());
                 break;
             }
+            if (aliases.get(t) != null) {
+                throw new AliasDefinedException(t);
+            }
             s.expect('=');
-            map.put(t, LeftParser.parseLeft(s));
+            aliases.put(t, LeftParser.completeLeft(s));
             s.expect(';');
         }
-
-        return map;
     }
 
     /**
      * Parse a comma separated list of states.
      * 
      * @param s the input stream
-     * @return the list of states
      * 
      * @throws IOException in case of an I/O error
+     * @throws SyntaxException in case of a syntax error
+     * @throws StateDefinedException in case that a state is about to be defined
+     *         a second time
      */
-    private static List<String> parseStates(ParserStream s) throws IOException {
+    private void parseStates(ParserStream s)
+            throws IOException,
+                StateDefinedException,
+                SyntaxException {
 
-        List<String> list = new ArrayList<String>();
         int c;
-
         do {
-            list.add(s.parseId());
+            storeState(s.parseId());
             c = s.skipSpace();
         } while (c == ',');
 
@@ -117,25 +437,31 @@ public final class CompilerState {
             throw s.error(c);
         }
 
-        return list;
     }
 
     /**
      * Parse a list of tables.
      * 
      * @param s the input stream
-     * @return the list of tables found
      * 
      * @throws IOException in case of an I/O error
+     * @throws SyntaxException in case of a syntax error
+     * @throws TableDefinedException in case that a table is about to be defined
+     *         a second time
      */
-    private static List<Table> parseTables(ParserStream s) throws IOException {
+    private void parseTables(ParserStream s)
+            throws IOException,
+                TableDefinedException,
+                SyntaxException {
 
-        List<Table> result = new ArrayList<Table>();
-        String id;
+        String name;
 
-        for (id = s.parseId(); id != null && !"expressions".equals(id); id =
+        for (name = s.parseId(); name != null && !"expressions:".equals(name); name =
                 s.parseId()) {
 
+            if (tables.get(name) != null) {
+                throw new TableDefinedException(name);
+            }
             s.expect('[');
             int n = s.parseNumber(s.skipSpace());
             s.expect(']');
@@ -157,104 +483,66 @@ public final class CompilerState {
             for (int i = 0; i < size; i++) {
                 a[i] = tab.get(i).intValue();
             }
-            result.add(new Table(id, n, a));
+            tables.put(name, new Table(name, n, a));
         }
-        s.unread(id.getBytes());
-        return result;
+        s.unread(name.getBytes());
     }
 
     /**
-     * The field <tt>aliases</tt> contains the aliases.
-     */
-    private Map<String, Left> aliases;
-
-    /**
-     * The field <tt>expressions</tt> contains the list of expressions.
-     */
-    private List<Expression> expressions;
-
-    /**
-     * The field <tt>in</tt> contains the number of bytes in the input stream.
-     */
-    private int in;
-
-    /**
-     * The field <tt>out</tt> contains the number of bytes in the output
-     * stream.
-     */
-    private int out;
-
-    /**
-     * The field <tt>states</tt> contains the list of states.
-     */
-    private List<String> states;
-
-    /**
-     * The field <tt>tables</tt> contains the list of tables.
-     */
-    private List<Table> tables;
-
-    /**
-     * Creates a new object.
-     */
-    public CompilerState() {
-
-        super();
-    }
-
-    /**
-     * Compile an input stream into an oc program.
+     * Put an instruction of one op code and no argument into the store.
      * 
-     * @param stream the input stream
+     * @param opCode the op code
+     * 
+     * @return the index of the next free position in the instruction array
      * 
      * @throws IOException in case of an I/O error
+     * @throws IllegalOpcodeException in case of an illegal op code
      */
-    public void parse(InputStream stream) throws IOException {
+    public int putInstruction(int opCode) throws IOException {
 
-        ParserStream s = new ParserStream(stream);
-
-        for (String t = s.parseId(); t != null; t = s.parseId()) {
-            Part part = Part.valueOf(t);
-            if (part == null) {
-                throw new IOException("unexpected " + t);
-            }
-            s.expect(':');
-
-            switch (part) {
-                case input:
-                    in = s.parseNumber(s.skipSpace());
-                    s.expect(';');
-                    break;
-                case output:
-                    out = s.parseNumber(s.skipSpace());
-                    s.expect(';');
-                    break;
-                case states:
-                    states = parseStates(s);
-                    break;
-                case tables:
-                    tables = parseTables(s);
-                    break;
-                case aliases:
-                    aliases = parseAliases(s);
-                    break;
-                case expressions:
-                    expressions = Expression.parseExpressions(s);
-                    break;
-                default:
-                    return;
-            }
-        }
+        return currentState.putInstruction(opCode);
     }
 
     /**
-     * Getter for aliases.
+     * Put an instruction of one op code and one argument into the store.
      * 
-     * @return the aliases
+     * @param opCode the op code
+     * @param n the first argument
+     * 
+     * @return the index of the next free position in the instruction array
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws ArgmentTooBigException if the argument of the instruction exceeds
+     *         the 16 bit value
+     * @throws IllegalOpcodeException in case of an illegal op code
      */
-    public Map<String, Left> getAliases() {
+    public int putInstruction(int opCode, int n)
+            throws IOException,
+                ArgmentTooBigException {
 
-        return aliases;
+        return currentState.putInstruction(opCode, n);
+    }
+
+    /**
+     * Put an instruction of one op code and three arguments into the store.
+     * 
+     * @param opCode the op code
+     * @param n the first argument
+     * @param a the second argument
+     * @param b the third argument
+     * 
+     * @return the index of the next free position in the instruction array
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws ArgmentTooBigException if the argument of the instruction exceeds
+     *         the 16 bit value
+     * @throws IllegalOpcodeException in case of an illegal op code
+     */
+    public int putInstruction(int opCode, int n, int a, int b)
+            throws IOException,
+                ArgmentTooBigException {
+
+        return currentState.putInstruction(opCode, n, a, b);
     }
 
     /**
@@ -268,13 +556,31 @@ public final class CompilerState {
     }
 
     /**
-     * Getter for expressions.
+     * Setter for current state.
      * 
-     * @return the expressions
+     * @param state the current state index
      */
-    public List<Expression> getExpressions() {
+    public void setCurrentState(int state) {
 
-        return expressions;
+        this.currentStateIndex = state;
+        this.currentState = states.get(currentStateIndex);
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param state the new state
+     * 
+     * @throws StateNotDefinedException in case that the state is not defined
+     */
+    public void setCurrentState(String state) throws StateNotDefinedException {
+
+        if (state == null) {
+            currentStateIndex = 0;
+        } else {
+            currentStateIndex = lookupState(state);
+        }
+        this.currentState = states.get(currentStateIndex);
     }
 
     /**
@@ -288,16 +594,6 @@ public final class CompilerState {
     }
 
     /**
-     * Getter for in.
-     * 
-     * @return the in
-     */
-    public int getIn() {
-
-        return in;
-    }
-
-    /**
      * Setter for in.
      * 
      * @param in the in to set
@@ -305,16 +601,6 @@ public final class CompilerState {
     public void setIn(int in) {
 
         this.in = in;
-    }
-
-    /**
-     * Getter for out.
-     * 
-     * @return the out
-     */
-    public int getOut() {
-
-        return out;
     }
 
     /**
@@ -328,43 +614,30 @@ public final class CompilerState {
     }
 
     /**
-     * Getter for states.
-     * 
-     * @return the states
-     */
-    public List<String> getStates() {
-
-        return states;
-    }
-
-    /**
-     * Setter for states.
-     * 
-     * @param states the states to set
-     */
-    public void setStates(List<String> states) {
-
-        this.states = states;
-    }
-
-    /**
-     * Getter for tables.
-     * 
-     * @return the tables
-     */
-    public List<Table> getTables() {
-
-        return tables;
-    }
-
-    /**
      * Setter for tables.
      * 
      * @param tables the tables to set
      */
-    public void setTables(List<Table> tables) {
+    public void setTables(Map<String, Table> tables) {
 
         this.tables = tables;
+    }
+
+    /**
+     * Save a new name as name of a state.
+     * 
+     * @param name the name of the state
+     * 
+     * @throws StateDefinedException in case that the name is already registered
+     *         as state
+     */
+    public void storeState(String name) throws StateDefinedException {
+
+        if (namedStates.get(name) != null) {
+            throw new StateDefinedException(name);
+        }
+        namedStates.put(name, Integer.valueOf(namedStates.size()));
+        states.add(new State());
     }
 
     /**
@@ -384,25 +657,27 @@ public final class CompilerState {
         sb.append(";\n");
         if (tables != null && !tables.isEmpty()) {
             sb.append("tables:\n");
-            for (Table t : tables) {
+            for (Table t : tables.values()) {
                 sb.append(t.toString());
             }
             sb.append("\n");
         }
-        if (states != null && !states.isEmpty()) {
+        if (namedStates.size() > 1) {
             sb.append("states:\n  ");
             boolean sep = false;
-            for (String s : states) {
-                if (sep) {
-                    sb.append(",\n  ");
-                } else {
-                    sep = true;
+            for (String s : namedStates.keySet()) {
+                if (!INITIAL.equals(s)) {
+                    if (sep) {
+                        sb.append(",\n  ");
+                    } else {
+                        sep = true;
+                    }
+                    sb.append(s);
                 }
-                sb.append(s);
             }
             sb.append(";\n");
         }
-        if (aliases != null && !aliases.isEmpty()) {
+        if (!aliases.isEmpty()) {
             sb.append("aliases:\n");
             for (String a : aliases.keySet()) {
                 sb.append("  ");
@@ -417,9 +692,7 @@ public final class CompilerState {
             sb.append("expressions:\n");
             for (Expression ex : expressions) {
                 sb.append(ex.toString());
-                sb.append("\n");
             }
-            sb.append("\n");
         }
 
         return sb.toString();

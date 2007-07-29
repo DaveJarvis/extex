@@ -22,7 +22,6 @@ package org.extex.ocpware.type;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintStream;
 import java.io.PushbackInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -33,9 +32,195 @@ import java.util.Stack;
  * This class represents a compiled omega program.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5975 $
  */
 public class OcpProgram implements Serializable {
+
+    /**
+     * The field <tt>ADD</tt> contains the op code for the ocp instruction to
+     * add two numbers from the stack.
+     */
+    public static final int ADD = 11;
+
+    /**
+     * The field <tt>DIV</tt> contains the op code for the ocp instruction to
+     * divide two numbers from the stack.
+     */
+    public static final int DIV = 14;
+
+    /**
+     * The field <tt>GOTO</tt> contains the op code for the ocp instruction to
+     * adjust the program counter.
+     */
+    public static final int GOTO = 26;
+
+    /**
+     * The field <tt>GOTO_BEG</tt> contains the op code for the ocp
+     * instruction to ...
+     */
+    public static final int GOTO_BEG = 34;
+
+    /**
+     * The field <tt>GOTO_END</tt> contains the op code for the ocp
+     * instruction to ...
+     */
+    public static final int GOTO_END = 35;
+
+    /**
+     * The field <tt>GOTO_EQ</tt> contains the op code for the ocp instruction
+     * conditionally adjust the program counter.
+     */
+    public static final int GOTO_EQ = 28;
+
+    /**
+     * The field <tt>GOTO_GE</tt> contains the op code for the ocp instruction
+     * conditionally adjust the program counter.
+     */
+    public static final int GOTO_GE = 32;
+
+    /**
+     * The field <tt>GOTO_GT</tt> contains the op code for the ocp instruction
+     * conditionally adjust the program counter.
+     */
+    public static final int GOTO_GT = 31;
+
+    /**
+     * The field <tt>GOTO_LE</tt> contains the op code for the ocp instruction
+     * to ...
+     */
+    public static final int GOTO_LE = 30;
+
+    /**
+     * The field <tt>GOTO_LT</tt> contains the op code for the ocp instruction
+     * conditionally adjust the program counter.
+     */
+    public static final int GOTO_LT = 29;
+
+    /**
+     * The field <tt>GOTO_NE</tt> contains the op code for the ocp instruction
+     * conditionally adjust the program counter.
+     */
+    public static final int GOTO_NE = 27;
+
+    /**
+     * The field <tt>GOTO_NO_ADVANCE</tt> contains the op code for the ocp
+     * instruction to ...
+     */
+    public static final int GOTO_NO_ADVANCE = 33;
+
+    /**
+     * The field <tt>LEFT_BACKUP</tt> contains the op code for the ocp
+     * instruction to ...
+     */
+    public static final int LEFT_BACKUP = 25;
+
+    /**
+     * The field <tt>LEFT_RETURN</tt> contains the op code for the ocp
+     * instruction to ...
+     */
+    public static final int LEFT_RETURN = 24;
+
+    /**
+     * The field <tt>LEFT_START</tt> contains the op code for the ocp
+     * instruction to ...
+     */
+    public static final int LEFT_START = 23;
+
+    /**
+     * The field <tt>LOOKUP</tt> contains the op code for the ocp instruction
+     * to lookup a table entry.
+     */
+    public static final int LOOKUP = 16;
+
+    /**
+     * The field <tt>MOD</tt> contains the op code for the ocp instruction to
+     * compute the remainer of two aruments from the stack.
+     */
+    public static final int MOD = 15;
+
+    /**
+     * The field <tt>MULT</tt> contains the op code for the ocp instruction to
+     * multiply two arguments from the stack.
+     */
+    public static final int MULT = 13;
+
+    /**
+     * The field <tt>PBACK_CHAR</tt> contains the op code for the ocp
+     * instruction to ...
+     */
+    public static final int PBACK_CHAR = 8;
+
+    /**
+     * The field <tt>PBACK_LCHAR</tt> contains the op code for the ocp
+     * instruction to push back a character.
+     */
+    public static final int PBACK_LCHAR = 9;
+
+    /**
+     * The field <tt>PBACK_NUM</tt> contains the op code for the ocp
+     * instruction to push back a number.
+     */
+    public static final int PBACK_NUM = 7;
+
+    /**
+     * The field <tt>PBACK_OUTPUT</tt> contains the op code for the ocp
+     * instruction to ...
+     */
+    public static final int PBACK_OUTPUT = 6;
+
+    /**
+     * The field <tt>PBACK_SOME</tt> contains the op code for the ocp
+     * instruction to push back a match.
+     */
+    public static final int PBACK_SOME = 10;
+
+    /**
+     * The field <tt>PUSH_CHAR</tt> contains the op code for the ocp
+     * instruction to push back a character.
+     */
+    public static final int PUSH_CHAR = 18;
+
+    /**
+     * The field <tt>PUSH_LCHAR</tt> contains the op code for the ocp
+     * instruction to push a referenced character.
+     */
+    public static final int PUSH_LCHAR = 19;
+
+    /**
+     * The field <tt>PUSH_NUM</tt> contains the op code for the ocp
+     * instruction to push a number.
+     */
+    public static final int PUSH_NUM = 17;
+
+    /**
+     * The field <tt>RIGHT_CHAR</tt> contains the op code for the ocp
+     * instruction to ...
+     */
+    public static final int RIGHT_CHAR = 3;
+
+    /**
+     * The field <tt>RIGHT_LCHAR</tt> contains the op code for the ocp
+     * instruction to ...
+     */
+    public static final int RIGHT_LCHAR = 4;
+
+    /**
+     * The field <tt>RIGHT_NUM</tt> contains the op code for the ocp
+     * instruction to ...
+     */
+    public static final int RIGHT_NUM = 2;
+
+    /**
+     * The field <tt>RIGHT_OUTPUT</tt> contains the op code for the ocp
+     * instruction to ...
+     */
+    public static final int RIGHT_OUTPUT = 1;
+
+    /**
+     * The field <tt>RIGHT_SOME</tt> contains the op code for the ocp
+     * instruction to ...
+     */
+    public static final int RIGHT_SOME = 5;
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -49,33 +234,39 @@ public class OcpProgram implements Serializable {
     private static final int SIXTEEN_BIT_MASK = 0xffff;
 
     /**
+     * The field <tt>STATE_CHANGE</tt> contains the op code for the ocp
+     * instruction to ...
+     */
+    public static final int STATE_CHANGE = 20;
+
+    /**
+     * The field <tt>STATE_POP</tt> contains the op code for the ocp
+     * instruction to pop a state fron the state stack.
+     */
+    public static final int STATE_POP = 22;
+
+    /**
+     * The field <tt>STATE_PUSH</tt> contains the op code for the ocp
+     * instruction to push a state onto the state stack.
+     */
+    public static final int STATE_PUSH = 21;
+
+    /**
+     * The field <tt>STOP</tt> contains the op code for the ocp instruction to
+     * end the processing.
+     */
+    public static final int STOP = 36;
+
+    /**
+     * The field <tt>SUB</tt> contains the op code for the ocp instruction to
+     * subtract two numbers from the stack.
+     */
+    public static final int SUB = 12;
+
+    /**
      * The field <tt>TWELVE_BIT_MASK</tt> contains the bit mask with 12 bits.
      */
     private static final int TWELVE_BIT_MASK = 0xfff;
-
-    /**
-     * Dump a number as hex and as decimal and optionally as character to an
-     * output stream.
-     * 
-     * @param out the output stream
-     * @param pre the prefix string
-     * @param value the value to print
-     * @param post the postfix string
-     */
-    private static void dump(PrintStream out, String pre, int value, String post) {
-
-        out.print(pre);
-        out.print(Integer.toHexString(value));
-        out.print(" (");
-        out.print(value);
-        if (value >= ' ' && value <= 0x7d) {
-            out.print(",`");
-            out.print((char) value);
-            out.print("'");
-        }
-        out.print(")");
-        out.print(post);
-    }
 
     /**
      * Load an OCP program from an input stream.
@@ -211,7 +402,7 @@ public class OcpProgram implements Serializable {
     private List<int[]> states = new ArrayList<int[]>();
 
     /**
-     * The field <tt>stateStack</tt> contains the ...
+     * The field <tt>stateStack</tt> contains the stack of states.
      */
     private Stack<Integer> stateStack = new Stack<Integer>();
 
@@ -250,206 +441,6 @@ public class OcpProgram implements Serializable {
     }
 
     /**
-     * Dump the contents of the instance to an output stream.
-     * 
-     * @param out the output stream
-     * @param orig ...
-     */
-    public void dump(PrintStream out, boolean orig) {
-
-        if (length >= 0) {
-            dump(out, "ctp_length     : ", length, "\n");
-        }
-        dump(out, "ctp_input      : ", input, "\n");
-        dump(out, "ctp_output     : ", output, "\n");
-        dump(out, "ctp_no_tables  : ", tables.size(), "\n");
-        int mem = 0;
-        for (int i = 0; i < tables.size(); i++) {
-            mem += tables.get(i).length;
-        }
-        dump(out, "ctp_room_tables: ", mem, "\n");
-        dump(out, "ctp_no_states  : ", states.size(), "\n");
-        mem = 0;
-        for (int i = 0; i < states.size(); i++) {
-            mem += states.get(i).length;
-        }
-        dump(out, "ctp_room_states: ", mem, "\n");
-
-        for (int i = 0; i < states.size(); i++) {
-            int[] t = states.get(i);
-            dump(out, "\nState ", i, "");
-            dump(out, ": ", t.length, " entries\n\n");
-
-            boolean dis = true;
-
-            for (int j = 0; j < t.length; j++) {
-                if (orig) {
-                    dump(out, "State ", i, ", ");
-                    dump(out, "entry ", j, ": ");
-                } else {
-                    String hex = Integer.toHexString(j);
-                    out.print("           ".substring(hex.length()));
-                    out.print(hex);
-                    out.print("\t");
-                }
-
-                if (dis) {
-                    if (orig) {
-                        out.print("OTP_");
-                    }
-                    dis = dumpDis(out, t, j);
-                } else {
-                    if (orig) {
-                        out.print("    ");
-                    }
-                    out.print("                ");
-                    dump(out, "", t[j], "");
-                    dis = true;
-                }
-                out.println();
-            }
-        }
-    }
-
-    /**
-     * Dump a dis-assembled form of an instruction.
-     * 
-     * @param out the output stream
-     * @param t the array
-     * @param j the index
-     * 
-     * @return <code>true</code> iff another word as argument is required
-     */
-    private boolean dumpDis(PrintStream out, int[] t, int j) {
-
-        boolean two = true;
-        int c = t[j];
-        switch (c >> 24) {
-            case 1:
-                out.print("RIGHT_OUTPUT    ");
-                break;
-            case 2:
-                out.print("RIGHT_NUM       ");
-                break;
-            case 3:
-                out.print("RIGHT_CHAR      ");
-                break;
-            case 4:
-                out.print("RIGHT_LCHAR     ");
-                break;
-            case 5:
-                out.print("RIGHT_SOME      ");
-                two = false;
-                break;
-            case 6:
-                out.print("PBACK_OUTPUT    ");
-                break;
-            case 7:
-                out.print("PBACK_NUM       ");
-                break;
-            case 8:
-                out.print("PBACK_CHAR      ");
-                break;
-            case 9:
-                out.print("PBACK_LCHAR     ");
-                break;
-            case 10:
-                out.print("PBACK_SOME      ");
-                two = false;
-                break;
-            case 11:
-                out.print("ADD             ");
-                break;
-            case 12:
-                out.print("SUB             ");
-                break;
-            case 13:
-                out.print("MULT            ");
-                break;
-            case 14:
-                out.print("DIV             ");
-                break;
-            case 15:
-                out.print("MOD             ");
-                break;
-            case 16:
-                out.print("LOOKUP          ");
-                break;
-            case 17:
-                out.print("PUSH_NUM        ");
-                break;
-            case 18:
-                out.print("PUSH_CHAR       ");
-                break;
-            case 19:
-                out.print("PUSH_LCHAR      ");
-                break;
-            case 20:
-                out.print("STATE_CHANGE    ");
-                break;
-            case 21:
-                out.print("STATE_PUSH      ");
-                break;
-            case 22:
-                out.print("STATE_POP       ");
-                break;
-            case 23:
-                out.print("LEFT_START      ");
-                break;
-            case 24:
-                out.print("LEFT_RETURN     ");
-                break;
-            case 25:
-                out.print("LEFT_BACKUP     ");
-                break;
-            case 26:
-                out.print("GOTO            ");
-                break;
-            case 27:
-                out.print("GOTO_NE         ");
-                two = false;
-                break;
-            case 28:
-                out.print("GOTO_EQ         ");
-                two = false;
-                break;
-            case 29:
-                out.print("GOTO_LT         ");
-                two = false;
-                break;
-            case 30:
-                out.print("GOTO_LE         ");
-                two = false;
-                break;
-            case 31:
-                out.print("GOTO_GT         ");
-                two = false;
-                break;
-            case 32:
-                out.print("GOTO_GE         ");
-                two = false;
-                break;
-            case 33:
-                out.print("GOTO_NO_ADVANCE ");
-                break;
-            case 34:
-                out.print("GOTO_BEG        ");
-                break;
-            case 35:
-                out.print("GOTO_END        ");
-                break;
-            case 36:
-                out.print("STOP            ");
-                break;
-            default:
-                dump(out, "                ", c, "");
-                return true;
-        }
-        dump(out, "", c & SIXTEEN_BIT_MASK, "");
-        return two;
-    }
-
-    /**
      * Getter for input.
      * 
      * @return the input
@@ -460,6 +451,16 @@ public class OcpProgram implements Serializable {
     }
 
     /**
+     * Getter for the length.
+     * 
+     * @return the length
+     */
+    public int getLength() {
+
+        return length;
+    }
+
+    /**
      * Getter for output.
      * 
      * @return the output
@@ -467,6 +468,26 @@ public class OcpProgram implements Serializable {
     public int getOutput() {
 
         return this.output;
+    }
+
+    /**
+     * Getter for states.
+     * 
+     * @return the states
+     */
+    public List<int[]> getStates() {
+
+        return states;
+    }
+
+    /**
+     * Getter for tables.
+     * 
+     * @return the tables
+     */
+    public List<int[]> getTables() {
+
+        return tables;
     }
 
     /**
@@ -523,180 +544,143 @@ public class OcpProgram implements Serializable {
      * 
      * @param in the input stream
      * @param out the output stream
-     * @param currentState the stack of states
+     * @param ds the stack of states
      */
-    private void step(PushbackInputStream in, OutputStream out,
-            int[] currentState) {
+    private void step(PushbackInputStream in, OutputStream out, int[] ds) {
 
         int a;
         int b;
         int c;
 
         for (;;) {
-            c = currentState[pc++];
+            c = ds[pc++];
 
             switch (c >> 24) {
-                case 1:
-                    // OTP_RIGHT_OUTPUT
+                case RIGHT_OUTPUT:
                     break;
-                case 2:
-                    // OTP_RIGHT_NUM
+                case RIGHT_NUM:
                     break;
-                case 3:
-                    // OTP_RIGHT_CHAR
+                case RIGHT_CHAR:
                     break;
-                case 4:
-                    // OTP_RIGHT_LCHAR
+                case RIGHT_LCHAR:
                     break;
-                case 5:
-                    // OTP_RIGHT_SOME
+                case RIGHT_SOME:
                     // two = false;
                     break;
-                case 6:
-                    // OTP_PBACK_OUTPUT
+                case PBACK_OUTPUT:
                     break;
-                case 7:
-                    // OTP_PBACK_NUM
+                case PBACK_NUM:
                     break;
-                case 8:
-                    // OTP_PBACK_CHAR
+                case PBACK_CHAR:
                     break;
-                case 9:
-                    // OTP_PBACK_LCHAR
+                case PBACK_LCHAR:
                     break;
-                case 10:
-                    // OTP_PBACK_SOME
-                    a = currentState[pc++];
+                case PBACK_SOME:
+                    a = ds[pc++];
                     break;
-                case 11:
-                    // OTP_ADD
+                case ADD:
                     a = arithStack.pop().intValue();
                     b = arithStack.pop().intValue();
                     arithStack.push(new Integer(b + a));
                     break;
-                case 12:
-                    // OTP_SUB
+                case SUB:
                     a = arithStack.pop().intValue();
                     b = arithStack.pop().intValue();
                     arithStack.push(new Integer(b - a));
                     break;
-                case 13:
-                    // OTP_MULT
+                case MULT:
                     a = arithStack.pop().intValue();
                     b = arithStack.pop().intValue();
                     arithStack.push(new Integer(b * a));
                     break;
-                case 14:
-                    // OTP_DIV
+                case DIV:
                     a = arithStack.pop().intValue();
                     b = arithStack.pop().intValue();
                     arithStack.push(new Integer(b / a));
                     break;
-                case 15:
-                    // OTP_MOD
+                case MOD:
                     a = arithStack.pop().intValue();
                     b = arithStack.pop().intValue();
                     arithStack.push(new Integer(b % a));
                     break;
-                case 16:
-                    // OTP_LOOKUP
+                case LOOKUP:
                     break;
-                case 17:
-                    // OTP_PUSH_NUM
+                case PUSH_NUM:
                     break;
-                case 18:
-                    // OTP_PUSH_CHAR
+                case PUSH_CHAR:
                     break;
-                case 19:
-                    // OTP_PUSH_LCHAR
+                case PUSH_LCHAR:
                     break;
-                case 20:
-                    // OTP_STATE_CHANGE
+                case STATE_CHANGE:
                     state = c & TWELVE_BIT_MASK;
                     break;
-                case 21:
-                    // OTP_STATE_PUSH
+                case STATE_PUSH:
                     stateStack.push(new Integer(state));
                     state = c & TWELVE_BIT_MASK;
                     break;
-                case 22:
-                    // OTP_STATE_POP
+                case STATE_POP:
                     break;
-                case 23:
-                    // OTP_LEFT_START
+                case LEFT_START:
                     first = last + 1;
                     break;
-                case 24:
-                    // OTP_LEFT_RETURN
+                case LEFT_RETURN:
                     last = first + 1;
                     break;
-                case 25:
-                    // OTP_LEFT_BACKUP
+                case LEFT_BACKUP:
                     last--; // ???
                     break;
-                case 26:
-                    // OTP_GOTO
+                case GOTO:
                     pc = c & TWELVE_BIT_MASK;
                     break;
-                case 27:
-                    // OTP_GOTO_NE
-                    a = currentState[pc++];
+                case GOTO_NE:
+                    a = ds[pc++];
                     if ((a & SIXTEEN_BIT_MASK) != (a >> 16)) {
                         pc = c & TWELVE_BIT_MASK;
                     }
                     break;
-                case 28:
-                    // OTP_GOTO_EQ
-                    a = currentState[pc++];
+                case GOTO_EQ:
+                    a = ds[pc++];
                     if ((a & SIXTEEN_BIT_MASK) == (a >> 16)) {
                         pc = c & TWELVE_BIT_MASK;
                     }
                     break;
-                case 29:
-                    // OTP_GOTO_LT
-                    a = currentState[pc++];
+                case GOTO_LT:
+                    a = ds[pc++];
                     if ((a & SIXTEEN_BIT_MASK) < (a >> 16)) {
                         pc = c & TWELVE_BIT_MASK;
                     }
                     break;
-                case 30:
-                    // OTP_GOTO_LE
-                    a = currentState[pc++];
+                case GOTO_LE:
+                    a = ds[pc++];
                     if ((a & SIXTEEN_BIT_MASK) <= (a >> 16)) {
                         pc = c & TWELVE_BIT_MASK;
                     }
                     break;
-                case 31:
-                    // OTP_GOTO_GT
-                    a = currentState[pc++];
+                case GOTO_GT:
+                    a = ds[pc++];
                     if ((a & SIXTEEN_BIT_MASK) > (a >> 16)) {
                         pc = c & TWELVE_BIT_MASK;
                     }
                     break;
-                case 32:
-                    // OTP_GOTO_GE
-                    a = currentState[pc++];
+                case GOTO_GE:
+                    a = ds[pc++];
                     if ((a & SIXTEEN_BIT_MASK) >= (a >> 16)) {
                         pc = c & TWELVE_BIT_MASK;
                     }
                     break;
-                case 33:
-                    // OTP_GOTO_NO_ADVANCE
+                case GOTO_NO_ADVANCE:
                     break;
-                case 34:
-                    // OTP_GOTO_BEG
+                case GOTO_BEG:
                     if (false) { // TODO at beginning
                         pc = c & TWELVE_BIT_MASK;
                     }
                     break;
-                case 35:
-                    // OTP_GOTO_END
+                case GOTO_END:
                     if (false) { // TODO at end
                         pc = c & TWELVE_BIT_MASK;
                     }
                     break;
-                case 36:
-                    // OTP_STOP
+                case STOP:
                     return;
                 default:
                     // TODO gene: unimplemented

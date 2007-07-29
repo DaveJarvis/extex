@@ -24,20 +24,29 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.text.MessageFormat;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 
 import org.extex.ocpware.type.OcpProgram;
+import org.extex.ocpware.writer.OcpExTeXWriter;
+import org.extex.ocpware.writer.OcpOmegaWriter;
 
 /**
  * This class provides a main program to print the contents of an ocp file.
- *
+ * 
  * <p>
- *  The program takes as one argument the name of the ocp file:
+ * The program takes as one argument the name of the ocp file and optionally one
+ * file as output file name.
  * </p>
+ * 
  * <pre class="CLI">
- *   java org.extex.ocpware.Outocp &lang;<i>file</i>&rang;
+ *   java org.extex.ocpware.Otp2ocp &lang;<i>file</i>&rang; &lang;<i>outfile</i>&rang;
  * </pre>
- *
- *
+ * 
+ * The <i>outfile</i> is optional and defaults to the input file with the
+ * suffix <tt>.otp</tt> deleted and <tt>.ocp</tt> appended.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -53,12 +62,26 @@ public final class OutOcp {
 
     /**
      * This is the command line interface.
-     *
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
-        PrintStream err = System.err;
+        System.exit(main(args, System.out, System.err));
+    }
+
+    /**
+     * Process the command line options and return the exit code. As side effect
+     * an error message might be written to the error stream.
+     * 
+     * @param args the command line arguments
+     * @param out the output stream
+     * @param err the error stream
+     * 
+     * @return the exit code
+     */
+    public static int main(String[] args, PrintStream out, PrintStream err) {
+
         String file = null;
         boolean orig = true;
 
@@ -66,32 +89,58 @@ public final class OutOcp {
             if (args[i].equals("-v")) {
                 orig = false;
             } else if (file != null) {
-                err.println("outocp: Too many arguments");
-                System.exit(-1);
+                return err(err, "OutOcp.TooManyArguments");
             } else {
                 file = args[i];
             }
         }
 
         if (file == null) {
-            err.println("outocp: No file given");
-            System.exit(-1);
+            return err(err, "OutOcp.NoFile");
         }
 
         try {
             InputStream stream = new FileInputStream(new File(file));
 
-            OcpProgram.load(stream).dump(System.err, orig);
+            OcpProgram ocp = OcpProgram.load(stream);
+            if (orig) {
+                new OcpOmegaWriter().write(out, ocp);
+            } else {
+                new OcpExTeXWriter().write(out, ocp);
+            }
 
             stream.close();
 
         } catch (FileNotFoundException e) {
-            err.println("outocp: " + file + " not found");
-            System.exit(-1);
+            return err(err, "OutOcp.FileNotFound", file);
         } catch (Exception e) {
-            err.println(file + ": " + e.getMessage());
-            System.exit(-1);
+            return err(err, "OutOcp.Error", e.getMessage());
         }
+
+        return 0;
+    }
+
+    /**
+     * Print a localized error message to the error stream.
+     * 
+     * @param err the error stream
+     * @param msg the key for the message
+     * @param a the array of arguments
+     * 
+     * @return the exit code (-1)
+     */
+    private static int err(PrintStream err, String msg, Object... a) {
+
+        ResourceBundle bundle =
+                ResourceBundle.getBundle(OutOcp.class.getName());
+        try {
+            String fmt = bundle.getString(msg);
+            err.println(MessageFormat.format(fmt, a));
+        } catch (MissingResourceException e) {
+            err.println("***" + msg);
+        }
+
+        return -1;
     }
 
 }

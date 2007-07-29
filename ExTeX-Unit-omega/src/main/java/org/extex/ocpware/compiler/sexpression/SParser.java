@@ -23,8 +23,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.ocpware.compiler.arith.Arith;
 import org.extex.ocpware.compiler.arith.ArithExpr;
 import org.extex.ocpware.compiler.arith.Constant;
+import org.extex.ocpware.compiler.exception.SyntaxException;
 import org.extex.ocpware.compiler.parser.ParserStream;
 
 /**
@@ -51,8 +53,11 @@ public final class SParser {
      * @return the list of expressions found
      * 
      * @throws IOException in case of an I/O error
+     * @throws SyntaxException in case of a syntax error
      */
-    public static List<Expr> parse(ParserStream s) throws IOException {
+    public static List<Expr> parse(ParserStream s)
+            throws IOException,
+                SyntaxException {
 
         List<Expr> result = new ArrayList<Expr>();
 
@@ -68,7 +73,8 @@ public final class SParser {
                     result.add(parseRef(s));
                     break;
                 case '#':
-                    result.add(ArithExpr.parse(s));
+                    ArithExpr a = ArithExpr.parse(s);
+                    result.add(new Arith(a));
                     break;
                 case '`':
                 case '@':
@@ -99,23 +105,26 @@ public final class SParser {
      * @return the expression found
      * 
      * @throws IOException in case of an I/O error
+     * @throws SyntaxException in case of a syntax error
      */
-    private static Expr parseRef(ParserStream s) throws IOException {
+    private static Expr parseRef(ParserStream s)
+            throws IOException,
+                SyntaxException {
 
         int c = s.read();
 
         switch (c) {
             case '$':
-                return new PrefixLast();
+                return new LastChar(0);
             case '*':
-                return new Prefix();
+                return new Some(0, 0);
             case '(':
                 c = s.skipSpace();
                 if (c == '$') {
                     s.expect('-');
                     int n = s.parseNumber(s.skipSpace());
                     s.expect(')');
-                    return new PrefixLastTrim(n);
+                    return new LastChar(n);
                 } else if (c == '*') {
                     c = s.skipSpace();
                     if (c == '+') {
@@ -124,16 +133,16 @@ public final class SParser {
                         if (c == '-') {
                             int m = s.parseNumber(s.skipSpace());
                             s.expect(')');
-                            return new PrefixTrim(n, m);
+                            return new Some(n, m);
                         } else if (c == ')') {
-                            return new PrefixTrimLeft(n);
+                            return new Some(n, 0);
                         } else {
                             throw s.error(c);
                         }
                     } else if (c == '-') {
-                        int n = s.parseNumber(s.skipSpace());
+                        int m = s.parseNumber(s.skipSpace());
                         s.expect(')');
-                        return new PrefixTrimRight(n);
+                        return new Some(0, m);
                     } else {
                         throw s.error(c);
                     }

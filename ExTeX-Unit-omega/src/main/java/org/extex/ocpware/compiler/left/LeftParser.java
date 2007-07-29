@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.ocpware.compiler.arith.Constant;
+import org.extex.ocpware.compiler.exception.SyntaxException;
 import org.extex.ocpware.compiler.parser.ParserStream;
 
 /**
@@ -35,14 +36,6 @@ import org.extex.ocpware.compiler.parser.ParserStream;
 public final class LeftParser {
 
     /**
-     * Creates a new object.
-     */
-    private LeftParser() {
-
-        // unused
-    }
-
-    /**
      * TODO gene: missing JavaDoc
      * 
      * @param s the input stream
@@ -50,37 +43,18 @@ public final class LeftParser {
      * @return the list of left items recognized
      * 
      * @throws IOException in case of an I/O error
+     * @throws SyntaxException in case of a syntax error
      */
-    public static List<Left> parseLeftList(ParserStream s) throws IOException {
+    public static Left choiceLeft(ParserStream s)
+            throws IOException,
+                SyntaxException {
 
-        List<Left> result = new ArrayList<Left>();
-        int c;
-        do {
-            result.add(parseLeft(s));
-            c = s.skipSpace();
-            s.unread(c);
-        } while (c >= 0 && c != '=' && c != 'e');
-
-        return result;
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param s the input stream
-     * 
-     * @return the list of left items recognized
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    public static Left parseOrList(ParserStream s) throws IOException {
-
-        LeftOr result = new LeftOr();
+        ChoiceLeft result = new ChoiceLeft();
         List<Left> ins = new ArrayList<Left>();
         result.add(ins);
         int c;
         do {
-            ins.add(parseLeft(s));
+            ins.add(oneLeft(s));
             c = s.skipSpace();
             if (c == '|') {
                 ins = new ArrayList<Left>();
@@ -92,6 +66,47 @@ public final class LeftParser {
     }
 
     /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param s the input stream
+     *
+     * @return the complete left item
+     *
+     * @throws IOException in case of an I/O error
+     * @throws SyntaxException in case of a syntax error
+     */
+    public static Left completeLeft(ParserStream s)
+            throws IOException,
+                SyntaxException {
+
+        int c = s.skipSpace();
+        if (c == '"') {
+            StringBuffer sb = new StringBuffer();
+            // TODO
+            return new StringLeft(sb.toString());
+        }
+        s.unread(c);
+        Left left = oneLeft(s);
+        c = s.skipSpace();
+        if (c != '<') {
+            s.unread(c);
+            return left;
+        }
+
+        int from = s.parseNumber(c);
+        s.expect(',');
+        c = s.skipSpace();
+        if (c == '>') {
+            return new PlusLeft(left, from);
+        }
+        s.unread(c);
+        int to = s.parseNumber(c);
+        s.expect('>');
+
+        return new CompleteLeft(left, from, to);
+    }
+
+    /**
      * Parse a left item.
      * 
      * @param s the input stream
@@ -99,23 +114,26 @@ public final class LeftParser {
      * @return the left item acquired
      * 
      * @throws IOException in case of an I/O error
+     * @throws SyntaxException in case of a syntax error
      */
-    public static Left parseLeft(ParserStream s) throws IOException {
+    public static Left oneLeft(ParserStream s)
+            throws IOException,
+                SyntaxException {
 
         int c = s.skipSpace();
         switch (c) {
             case '(':
-                return parseOrList(s);
+                return choiceLeft(s);
             case '{':
                 String t = s.parseId();
                 s.expect('}');
-                return new LeftAliasRef(t);
+                return new AliasLeft(t);
             case '^':
                 s.expect('(');
-                Left not = parseOrList(s);
-                return new LeftNot(not);
+                Left not = choiceLeft(s);
+                return new NotChoiceLeft(not);
             case '.':
-                return new LeftPoint();
+                return new WildCard();
             case '`':
             case '@':
             case '0':
@@ -134,7 +152,7 @@ public final class LeftParser {
                     s.unread(c);
                     return new Constant(n);
                 }
-                return new LeftRange(n, s.parseNumber(s.skipSpace()));
+                return new DoubleLeft(n, s.parseNumber(s.skipSpace()));
             default:
                 if (c >= 0) {
                     throw s.error(c);
@@ -142,6 +160,39 @@ public final class LeftParser {
         }
 
         return null;
+    }
+
+    /**
+     * Parse a list of left items.
+     * 
+     * @param s the input stream
+     * 
+     * @return the list of left items recognized
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws SyntaxException in case of a syntax error
+     */
+    public static List<Left> left(ParserStream s)
+            throws IOException,
+                SyntaxException {
+
+        List<Left> result = new ArrayList<Left>();
+        int c;
+        do {
+            result.add(oneLeft(s));
+            c = s.skipSpace();
+            s.unread(c);
+        } while (c >= 0 && c != '=' && c != 'e');
+
+        return result;
+    }
+
+    /**
+     * Creates a new object.
+     */
+    private LeftParser() {
+
+        // unused
     }
 
 }

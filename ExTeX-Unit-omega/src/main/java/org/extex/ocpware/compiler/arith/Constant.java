@@ -19,8 +19,17 @@
 
 package org.extex.ocpware.compiler.arith;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
+import org.extex.ocpware.compiler.exception.IllegalOpcodeException;
 import org.extex.ocpware.compiler.left.Left;
+import org.extex.ocpware.compiler.parser.CompilerState;
+import org.extex.ocpware.compiler.parser.State;
 import org.extex.ocpware.compiler.sexpression.Expr;
+import org.extex.ocpware.type.OcpProgram;
 
 /**
  * This class provides a constant arithmetic expression. It holds a number.
@@ -49,12 +58,55 @@ public class Constant extends ArithExpr implements Expr, Left {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.ocpware.compiler.arith.ArithExpr#eval()
+     * @see org.extex.ocpware.compiler.left.Left#compile(
+     *      org.extex.ocpware.compiler.parser.CompilerState)
+     */
+    public void compile(CompilerState cs) {
+
+        // TODO gene: compile unimplemented
+        throw new RuntimeException("unimplemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.ocpware.compiler.left.Left#genLeft(
+     *      org.extex.ocpware.compiler.parser.State, CompilerState)
+     */
+    public List<Integer> genLeft(State state, CompilerState cs)
+            throws ArgmentTooBigException,
+                IOException,
+                IllegalOpcodeException {
+
+        int ptr = state.putInstruction(OcpProgram.GOTO_NE, n, 0, 0);
+        List<Integer> holes = new ArrayList<Integer>();
+        holes.add(Integer.valueOf(ptr - 1));
+        return holes;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.ocpware.compiler.arith.ArithExpr#outExpr(
+     *      org.extex.ocpware.compiler.parser.CompilerState)
      */
     @Override
-    public int eval() {
+    void outExpr(CompilerState cs) throws IOException, ArgmentTooBigException {
 
-        return n;
+        cs.putInstruction(OcpProgram.PUSH_NUM, n);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.ocpware.compiler.sexpression.Expr#outRight(
+     *      org.extex.ocpware.compiler.parser.CompilerState)
+     */
+    public void outRight(CompilerState cs)
+            throws IOException,
+                ArgmentTooBigException {
+
+        cs.putInstruction(OcpProgram.RIGHT_NUM, n);
     }
 
     /**

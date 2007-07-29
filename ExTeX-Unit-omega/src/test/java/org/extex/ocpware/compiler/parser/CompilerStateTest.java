@@ -21,18 +21,346 @@ package org.extex.ocpware.compiler.parser;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.Locale;
 
 import junit.framework.TestCase;
 
+import org.extex.ocpware.compiler.exception.AliasDefinedException;
+import org.extex.ocpware.compiler.exception.AliasNotDefinedException;
+import org.extex.ocpware.compiler.exception.MissingExpressionsException;
+import org.extex.ocpware.compiler.exception.StateDefinedException;
+import org.extex.ocpware.compiler.exception.StateNotDefinedException;
+import org.extex.ocpware.compiler.exception.SyntaxException;
+import org.extex.ocpware.compiler.exception.TableDefinedException;
+import org.extex.ocpware.compiler.exception.TableNotDefinedException;
 import org.junit.Test;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a test suite for the compiler state.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class CompilerStateTest extends TestCase {
+
+    /**
+     * Test case showing that an empty file misses an expression section and
+     * leads to an error.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testError0() throws Exception {
+
+        Locale.setDefault(Locale.ENGLISH);
+        InputStream stream = new ByteArrayInputStream("\n".getBytes());
+
+        try {
+            new CompilerState(stream);
+        } catch (MissingExpressionsException e) {
+            assertEquals("syntax error: missing an expressions section", //
+                e.getLocalizedMessage());
+            return;
+        } finally {
+            stream.close();
+        }
+        assertTrue(false);
+    }
+
+    /**
+     * Test case showing that a undefined section leads to an error.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testError1() throws Exception {
+
+        Locale.setDefault(Locale.ENGLISH);
+        InputStream stream = new ByteArrayInputStream("abc\n".getBytes());
+
+        try {
+            new CompilerState(stream);
+        } catch (SyntaxException e) {
+            assertEquals("2: syntax error; unexpected 'abc':\n", //
+                e.getLocalizedMessage());
+            return;
+        } finally {
+            stream.close();
+        }
+        assertTrue(false);
+    }
+
+    /**
+     * Test case showing that a missing : after a section name leads to an
+     * error.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testError2() throws Exception {
+
+        Locale.setDefault(Locale.ENGLISH);
+        InputStream stream = new ByteArrayInputStream("input 2\n".getBytes());
+
+        try {
+            new CompilerState(stream);
+        } catch (SyntaxException e) {
+            assertEquals("1: syntax error; unexpected \'input\':\n" + "input", //
+                e.getLocalizedMessage());
+            return;
+        } finally {
+            stream.close();
+        }
+        assertTrue(false);
+    }
+
+    /**
+     * Test case showing that a missing : after a section name leads to an
+     * error.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testError3() throws Exception {
+
+        Locale.setDefault(Locale.ENGLISH);
+        InputStream stream = new ByteArrayInputStream("output 2\n".getBytes());
+
+        try {
+            new CompilerState(stream);
+        } catch (SyntaxException e) {
+            assertEquals(
+                "1: syntax error; unexpected \'output\':\n" + "output", //
+                e.getLocalizedMessage());
+            return;
+        } finally {
+            stream.close();
+        }
+        assertTrue(false);
+    }
+
+    /**
+     * Test case showing that a missing : after a section name leads to an
+     * error.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testError4() throws Exception {
+
+        Locale.setDefault(Locale.ENGLISH);
+        InputStream stream =
+                new ByteArrayInputStream("input: 2\n output: 1;\n".getBytes());
+
+        try {
+            new CompilerState(stream);
+        } catch (SyntaxException e) {
+            assertEquals("2: syntax error; unexpected 'o' instead of ';':\n"
+                    + " o", //
+                e.getLocalizedMessage());
+            return;
+        } finally {
+            stream.close();
+        }
+        assertTrue(false);
+    }
+
+    /**
+     * Test case showing that a double definition of a state leads to an error.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testErrorState1() throws Exception {
+
+        Locale.setDefault(Locale.ENGLISH);
+        InputStream stream =
+                new ByteArrayInputStream(("states: X, X;\n" + "expressions:\n"
+                        + ". => \\1;\n").getBytes());
+
+        try {
+            new CompilerState(stream);
+        } catch (StateDefinedException e) {
+            assertEquals("state X is already defined", e.getLocalizedMessage());
+            return;
+        } finally {
+            stream.close();
+        }
+        assertTrue(false);
+    }
+
+    /**
+     * Test case showing that a reference to a non-defined state leads to an
+     * error.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testErrorState2() throws Exception {
+
+        Locale.setDefault(Locale.ENGLISH);
+        InputStream stream =
+                new ByteArrayInputStream(("expressions:\n" + "<X> . => \\1;\n")
+                    .getBytes());
+
+        try {
+            new CompilerState(stream).compile();
+        } catch (StateNotDefinedException e) {
+            assertEquals("state X is not defined", e.getLocalizedMessage());
+            return;
+        } finally {
+            stream.close();
+        }
+        assertTrue(false);
+    }
+
+    /**
+     * Test case showing that an error in the states leads to an error.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testErrorState3() throws Exception {
+
+        Locale.setDefault(Locale.ENGLISH);
+        InputStream stream =
+                new ByteArrayInputStream(("states: X.\n" + "expressions:\n"
+                        + ". => \\1;\n").getBytes());
+
+        try {
+            new CompilerState(stream);
+        } catch (SyntaxException e) {
+            assertEquals("1: syntax error; unexpected '.' instead of ',':\n" + 
+            		"states: X.", e.getLocalizedMessage());
+            return;
+        } finally {
+            stream.close();
+        }
+        assertTrue(false);
+    }
+
+    /**
+     * Test case showing that a double definition of a table leads to an error.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testErrorTable1() throws Exception {
+
+        Locale.setDefault(Locale.ENGLISH);
+        InputStream stream =
+                new ByteArrayInputStream(("tables: X[1]={1}; X[2]={2,2};\n"
+                        + "expressions:\n" + ". => \\1;\n").getBytes());
+
+        try {
+            new CompilerState(stream);
+        } catch (TableDefinedException e) {
+            assertEquals("table X is already defined", e.getLocalizedMessage());
+            return;
+        } finally {
+            stream.close();
+        }
+        assertTrue(false);
+    }
+
+    /**
+     * Test case showing that a reference to a non-defined table leads to an
+     * error.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testErrorTable2() throws Exception {
+
+        Locale.setDefault(Locale.ENGLISH);
+        InputStream stream =
+                new ByteArrayInputStream(("expressions:\n" + ". => #X[1];\n")
+                    .getBytes());
+
+        try {
+            new CompilerState(stream).compile();
+        } catch (TableNotDefinedException e) {
+            assertEquals("table X is not defined", e.getLocalizedMessage());
+            return;
+        } finally {
+            stream.close();
+        }
+        assertTrue(false);
+    }
+
+    /**
+     * Test case showing that a double definition of an alias leads to an error.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testErrorAlias1() throws Exception {
+
+        Locale.setDefault(Locale.ENGLISH);
+        InputStream stream =
+                new ByteArrayInputStream(("aliases: aa=1; aa=2;\n"
+                        + "expressions:\n" + ". => \\1;\n").getBytes());
+
+        try {
+            new CompilerState(stream);
+        } catch (AliasDefinedException e) {
+            assertEquals("alias aa is already defined", e.getLocalizedMessage());
+            return;
+        } finally {
+            stream.close();
+        }
+        assertTrue(false);
+    }
+
+    /**
+     * Test case showing that a reference to a non-defined alias leads to an
+     * error.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testErrorAlias2() throws Exception {
+
+        Locale.setDefault(Locale.ENGLISH);
+        InputStream stream =
+                new ByteArrayInputStream(("expressions:\n" + "{X} => \\1;\n")
+                    .getBytes());
+
+        try {
+            new CompilerState(stream).compile();
+        } catch (AliasNotDefinedException e) {
+            assertEquals("alias X is not defined", e.getLocalizedMessage());
+            return;
+        } finally {
+            stream.close();
+        }
+        assertTrue(false);
+    }
+
+    /**
+     * Test case showing that a syntax eror min the aliases leads to an error.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testErrorAlias3() throws Exception {
+
+        Locale.setDefault(Locale.ENGLISH);
+        InputStream stream =
+                new ByteArrayInputStream(("aliases: aa=1.\n" + "expressions:\n"
+                        + ". => \\1;\n").getBytes());
+
+        try {
+            new CompilerState(stream);
+        } catch (SyntaxException e) {
+            assertEquals("1: syntax error; unexpected '.' instead of ';':\n"
+                    + "aliases: aa=1.", e.getLocalizedMessage());
+            return;
+        } finally {
+            stream.close();
+        }
+        assertTrue(false);
+    }
 
     /**
      * lat2uni.otp
@@ -42,34 +370,10 @@ public class CompilerStateTest extends TestCase {
     @Test
     public final void testParse1() throws Exception {
 
+        Locale.setDefault(Locale.ENGLISH);
         InputStream stream =
-                new ByteArrayInputStream(//
-                    ("input: 1;\n"
-                            + "output: 2;\n"
-                            + "\n"
-                            + "states: VERBATIM;\n"
-                            + "\n"
-                            + "expressions:\n"
-                            + "\n"
-                            + "`-'`-'`-' => @\"2014;\n"
-                            + "`-'`-' => @\"2013;\n"
-                            + "%`-' => @\"2010;\n"
-                            + "``'``' => @\"201C;\n"
-                            + "``' => @\"2018;\n"
-                            + "`''`'' => @\"201D;\n"
-                            + "`'' => @\"2019;\n"
-                            + "`,'`,' => @\"201E;\n"
-                            + "`<'`<' => @\"00AB;\n"
-                            + "`>'`>' => @\"00BB;\n"
-                            + "\n"
-                            + "@\"F000 => <push: VERBATIM> ;\n"
-                            + "\n"
-                            + "<VERBATIM>@\"0021-@\"007F => #(\\1 + @\"F000) ;\n"
-                            + "\n" + "<VERBATIM>@\"F001 => <pop:> ;\n" + "\n"
-                            + ". => \\1;\n").getBytes());
-
-        CompilerState cs = new CompilerState();
-        cs.parse(stream);
+                new ByteArrayInputStream(OTP.OMEGA_LAT2UNI_OTP.getBytes());
+        CompilerState cs = new CompilerState(stream);
         stream.close();
 
         assertEquals("Compiler state", //
@@ -81,7 +385,7 @@ public class CompilerStateTest extends TestCase {
                     + "  `<'`<' => @\"ab;\n" + "  `>'`>' => @\"bb;\n"
                     + "  @\"f000 => <push: VERBATIM>;\n"
                     + "  <VERBATIM>`!'-@\"7f => #(\\1 + @\"f000);\n"
-                    + "  <VERBATIM>@\"f001 => <pop:>;\n" + "  . => \\1;\n\n", //
+                    + "  <VERBATIM>@\"f001 => <pop:>;\n" + "  . => \\1;\n", //
             cs.toString());
     }
 
@@ -93,181 +397,10 @@ public class CompilerStateTest extends TestCase {
     @Test
     public final void testParse2() throws Exception {
 
+        Locale.setDefault(Locale.ENGLISH);
         InputStream stream =
-                new ByteArrayInputStream(//
-                    ("input:  2;\n"
-                            + "output: 2;\n"
-                            + "states:\n  MEDIAL,\n  NUMERAL;\n"
-                            + "aliases:\n"
-                            + "UNIFORM = (@\"0621 | @\"0674 | @\"066E | @\"066F | @\"06EF | @\"063F);\n"
-                            + "SPECIAL = (@\"FDF2);\n"
-                            + "BIFORM = (@\"0622-@\"0625 | @\"0627 | @\"0629 | @\"062F-@\"0632 | @\"0648 | \n"
-                            + "@\"0649 | @\"065D | @\"065E | \n"
-                            + "@\"0671-@\"0673 | @\"0675-@\"0677 | @\"0688-@\"069A |\n"
-                            + "@\"06BA | @\"06C0-@\"06CB | @\"06CD | @\"06D2 | @\"06D3 |\n"
-                            + "@\"06FF);\n"
-                            + "QUADRIFORM = (@\"0626 | @\"0628 | @\"062A-@\"062E | @\"0633-@\"063A | \n"
-                            + "@\"0640-@\"0647 |\n"
-                            + "@\"0649 | @\"064A | \n"
-                            + "@\"0655-@\"0657 | @\"065B | @\"065C | \n"
-                            + "@\"0678-@\"0687 | @\"069A-@\"06B7 |\n"
-                            + "@\"06BB-@\"06BF | @\"06CC | @\"06CE | @\"06D0 | @\"06D1 |\n"
-                            + "@\"06FE);\n"
-                            + "ACCENT = (@\"064B-@\"0652 | @\"0670);\n"
-                            + "ARABIC_LETTER = ({BIFORM} | {QUADRIFORM});\n"
-                            + "NOT_ARABIC_LETTER = ^(@\"0621-@\"065F | @\"0670-@\"06D3);\n"
-                            + "NOT_ARABIC_OR_UNI = ({NOT_ARABIC_LETTER}|{UNIFORM});\n"
-                            + "ARABIC_NUMBER = (@\"0030-@\"0039 | @\"0660-@\"0669 | @\"06F0-@\"06F9);\n"
-                            + "NOT_ARABIC_NUMBER = ^(@\"0030-@\"0039 | @\"0660-@\"0669 | @\"06F0-@\"06F9);\n"
-                            + "LAM_LIKE = (@\"0644 | @\"06B5-@\"06B7 | @\"06FE);\n"
-                            + "ALIF_LIKE = (@\"0622|@\"0623|@\"0625|@\"0627|@\"0671-@\"0673);\n"
-                            + "\n"
-                            + "expressions:\n"
-                            + "\n"
-                            + "{UNIFORM}@\"0651{ACCENT}\n"
-                            + "    => #(\\1 + @\"DA00) #(\\3 + @\"DA90)\n"
-                            + "    ;\n"
-                            + "{UNIFORM}{ACCENT}\n"
-                            + "    => #(\\1 + @\"DA00) #(\\2 + @\"DA00)\n"
-                            + "    ;\n"
-                            + "{UNIFORM}\n"
-                            + "    => #(\\1 + @\"DA00)\n"
-                            + "    ;\n"
-                            + "{SPECIAL}@\"0651{ACCENT}\n"
-                            + "    => \\1 #(\\3 + @\"DA90)\n"
-                            + "    ;\n"
-                            + "{SPECIAL}{ACCENT}\n"
-                            + "    => \\1 #(\\2 + @\"DA00)\n"
-                            + "    ;\n"
-                            + "{SPECIAL}\n"
-                            + "    => \\1\n"
-                            + "    ;\n"
-                            + "<NUMERAL>{ARABIC_NUMBER} end:\n"
-                            + "    => #(\\1) \"}\"\n"
-                            + "    <pop:>\n"
-                            + "    ;\n"
-                            + "<NUMERAL>{ARABIC_NUMBER}\n"
-                            + "    => #(\\1)\n"
-                            + "    ;\n"
-                            + "<NUMERAL>(@\"002B|@\"002D|@\"002E|@\"066B|@\"066C){ARABIC_NUMBER} end:\n"
-                            + "    => #(\\1) #(\\2) \"}\"\n"
-                            + "    <pop:>\n"
-                            + "    ;\n"
-                            + "<NUMERAL>(@\"002B|@\"002D|@\"002E|@\"066B|@\"066C){ARABIC_NUMBER}\n"
-                            + "    => #(\\1) #(\\2)\n"
-                            + "    ;\n"
-                            + "<NUMERAL>{NOT_ARABIC_NUMBER}\n"
-                            + "    => \"}\"\n"
-                            + "    <= #(\\1)\n"
-                            + "    <pop:>\n"
-                            + "    ;\n"
-                            + "(@\"002B|@\"002D|@\"002E){ARABIC_NUMBER} end:\n"
-                            + "    => \"{\\textdir TLT{}\" #(\\1) #(\\2) \"}\"\n"
-                            + "    ;\n"
-                            + "(@\"002B|@\"002D|@\"002E){ARABIC_NUMBER}\n"
-                            + "    => \"{\\textdir TLT{}\" #(\\1) #(\\2)\n"
-                            + "    <push: NUMERAL>\n"
-                            + "    ;\n"
-                            + "{ARABIC_NUMBER} end:\n"
-                            + "    => #(\\1)\n"
-                            + "    ;\n"
-                            + "{ARABIC_NUMBER}\n"
-                            + "    => \"{\\textdir TLT{}\" #(\\1)\n"
-                            + "    <push: NUMERAL>\n"
-                            + "    ;\n"
-                            + "{NOT_ARABIC_LETTER}\n"
-                            + "    => #(\\1)\n"
-                            + "    ;\n"
-                            + "{QUADRIFORM}{NOT_ARABIC_OR_UNI}\n"
-                            + "    => #(\\1 + @\"DA00) <= \\2\n"
-                            + "    ;\n"
-                            + "{QUADRIFORM} end:\n"
-                            + "    => #(\\1 + @\"DA00)\n"
-                            + "    ;\n"
-                            + "{QUADRIFORM}@\"0651{ACCENT}{NOT_ARABIC_OR_UNI}\n"
-                            + "    => #(\\1 + @\"DA00) #(\\3 + @\"DA90)\n"
-                            + "    <= #(\\4)\n"
-                            + "    ;\n"
-                            + "{QUADRIFORM}{ACCENT}{NOT_ARABIC_OR_UNI}\n"
-                            + "    => #(\\1 + @\"DA00) #(\\2 + @\"DA00)\n"
-                            + "    <= #(\\3)\n"
-                            + "    ;\n"
-                            + "{QUADRIFORM}@\"0651{ACCENT} end:\n"
-                            + "    => #(\\1 + @\"DA00) #(\\3 + @\"DA90)\n"
-                            + "    ;\n"
-                            + "{QUADRIFORM}{ACCENT} end:\n"
-                            + "    => #(\\1 + @\"DA00) #(\\2 + @\"DA00)\n"
-                            + "    ;\n"
-                            + "   \n"
-                            + "% @\"0620 is our internal keshideh (not Unicode keshideh which is @\"0640)\n"
-                            + "\n"
-                            + "{QUADRIFORM}@\"0651{ACCENT}\n"
-                            + "    => #(\\1 + @\"DB00) #(\\3 + @\"DA90) @\"0620\n"
-                            + "    <push: MEDIAL>\n"
-                            + "    ;\n"
-                            + "{QUADRIFORM}{ACCENT}\n"
-                            + "    => #(\\1 + @\"DB00) #(\\2 + @\"DA00) @\"0620\n"
-                            + "    <push: MEDIAL>\n"
-                            + "    ;\n"
-                            + "{QUADRIFORM}\n"
-                            + "    => #(\\1 + @\"DB00) @\"0620\n"
-                            + "    <push: MEDIAL>\n"
-                            + "    ;\n"
-                            + "{BIFORM}@\"0651{ACCENT}\n"
-                            + "    => #(\\1 + @\"DA00) #(\\3 + @\"DA90)\n"
-                            + "    ;\n"
-                            + "{BIFORM}{ACCENT}\n"
-                            + "    => #(\\1 + @\"DA00) #(\\2 + @\"DA00)\n"
-                            + "    ;\n"
-                            + "{BIFORM}\n"
-                            + "    => #(\\1 + @\"DA00)\n"
-                            + "    ;\n"
-                            + "<MEDIAL>{QUADRIFORM}{NOT_ARABIC_OR_UNI}\n"
-                            + "    => #(\\1 + @\"DD00)\n"
-                            + "    <= #(\\2)\n"
-                            + "    <pop:>\n"
-                            + "    ;\n"
-                            + "<MEDIAL>{QUADRIFORM} end:\n"
-                            + "    => #(\\1 + @\"DD00)\n"
-                            + "    <pop:>\n"
-                            + "    ;\n"
-                            + "<MEDIAL>{QUADRIFORM}@\"0651{ACCENT}{NOT_ARABIC_OR_UNI}\n"
-                            + "    => #(\\1 + @\"DD00) #(\\3 + @\"DA90)\n"
-                            + "    <= #(\\4)\n"
-                            + "    <pop:>\n"
-                            + "    ;\n"
-                            + "<MEDIAL>{QUADRIFORM}{ACCENT}{NOT_ARABIC_OR_UNI}\n"
-                            + "    => #(\\1 + @\"DD00) #(\\2 + @\"DA00)\n"
-                            + "    <= #(\\3)\n"
-                            + "    <pop:>\n"
-                            + "    ;\n"
-                            + "<MEDIAL>{QUADRIFORM}@\"0651{ACCENT} end:\n"
-                            + "    => #(\\1 + @\"DD00) #(\\3 + @\"DA90)\n"
-                            + "    <pop:>\n"
-                            + "    ;\n"
-                            + "<MEDIAL>{QUADRIFORM}{ACCENT} end:\n"
-                            + "    => #(\\1 + @\"DD00) #(\\2 + @\"DA00)\n"
-                            + "    <pop:>\n"
-                            + "    ;\n"
-                            + "<MEDIAL>{QUADRIFORM}@\"0651{ACCENT}\n"
-                            + "    => #(\\1 + @\"DC00) #(\\3 + @\"DA90) @\"0620\n"
-                            + "    ;\n"
-                            + "<MEDIAL>{QUADRIFORM}{ACCENT}\n"
-                            + "    => #(\\1 + @\"DC00) #(\\2 + @\"DA00) @\"0620\n"
-                            + "    ;\n" + "<MEDIAL>{QUADRIFORM}\n"
-                            + "    => #(\\1 + @\"DC00) @\"0620\n" + "    ;\n"
-                            + "<MEDIAL>{BIFORM}@\"0651{ACCENT}\n"
-                            + "    => #(\\1 + @\"DD00) #(\\3 + @\"DA90)\n"
-                            + "    <pop:>\n" + "    ;\n"
-                            + "<MEDIAL>{BIFORM}{ACCENT}\n"
-                            + "    => #(\\1 + @\"DD00) #(\\2 + @\"DA00)\n"
-                            + "    <pop:>\n" + "    ;\n" + "<MEDIAL>{BIFORM}\n"
-                            + "    => #(\\1 + @\"DD00)\n" + "    <pop:>\n"
-                            + "    ;\n" + "   \n"
-                            + "@\"F000-@\"F07F => \\1 ;\n" + "").getBytes());
-
-        CompilerState cs = new CompilerState();
-        cs.parse(stream);
+                new ByteArrayInputStream(OTP.OMEGA_UNI2CUNI_OTP.getBytes());
+        CompilerState cs = new CompilerState(stream);
         stream.close();
 
         assertEquals(
@@ -282,11 +415,15 @@ public class CompilerStateTest extends TestCase {
                     + "  UNIFORM=@\"621 | @\"674 | @\"66e | @\"66f | @\"6ef | @\"63f\n"
                     + "  ALIF_LIKE=@\"622 | @\"623 | @\"625 | @\"627 | @\"671-@\"673\n"
                     + "  LAM_LIKE=@\"644 | @\"6b5-@\"6b7 | @\"6fe\n"
-                    + "  BIFORM=@\"622-@\"625 | @\"627 | @\"629 | @\"62f-@\"632 | @\"648 | @\"649 | @\"65d | @\"65e | @\"671-@\"673 | @\"675-@\"677 | @\"688-@\"69a | @\"6ba | @\"6c0-@\"6cb | @\"6cd | @\"6d2 | @\"6d3 | @\"6ff\n"
+                    + "  BIFORM=@\"622-@\"625 | @\"627 | @\"629 | @\"62f-@\"632 | @\"648 | @\"649 "
+                    + "| @\"65d | @\"65e | @\"671-@\"673 | @\"675-@\"677 | @\"688-@\"69a | @\"6ba | "
+                    + "@\"6c0-@\"6cb | @\"6cd | @\"6d2 | @\"6d3 | @\"6ff\n"
                     + "  NOT_ARABIC_LETTER=^(@\"621-@\"65f | @\"670-@\"6d3)\n"
                     + "  ARABIC_NUMBER=`0\'-`9\' | @\"660-@\"669 | @\"6f0-@\"6f9\n"
                     + "  ACCENT=@\"64b-@\"652 | @\"670\n"
-                    + "  QUADRIFORM=@\"626 | @\"628 | @\"62a-@\"62e | @\"633-@\"63a | @\"640-@\"647 | @\"649 | @\"64a | @\"655-@\"657 | @\"65b | @\"65c | @\"678-@\"687 | @\"69a-@\"6b7 | @\"6bb-@\"6bf | @\"6cc | @\"6ce | @\"6d0 | @\"6d1 | @\"6fe\n"
+                    + "  QUADRIFORM=@\"626 | @\"628 | @\"62a-@\"62e | @\"633-@\"63a | @\"640-@\"647 "
+                    + "| @\"649 | @\"64a | @\"655-@\"657 | @\"65b | @\"65c | @\"678-@\"687 | "
+                    + "@\"69a-@\"6b7 | @\"6bb-@\"6bf | @\"6cc | @\"6ce | @\"6d0 | @\"6d1 | @\"6fe\n"
                     + "  NOT_ARABIC_OR_UNI={NOT_ARABIC_LETTER} | {UNIFORM}\n"
                     + "\n"
                     + "expressions:\n"
@@ -300,16 +437,19 @@ public class CompilerStateTest extends TestCase {
                     + "  <NUMERAL>{ARABIC_NUMBER} => #(\\1);\n"
                     + "  <NUMERAL>`+\' | `-\' | `.\' | @\"66b | @\"66c{ARABIC_NUMBER}end: => #(\\1)#(\\2)`}\'<pop:>;\n"
                     + "  <NUMERAL>`+\' | `-\' | `.\' | @\"66b | @\"66c{ARABIC_NUMBER} => #(\\1)#(\\2);\n"
-                    + "  <NUMERAL>{NOT_ARABIC_NUMBER} => `}\' <= \\1<pop:>;\n"
-                    + "  `+\' | `-\' | `.\'{ARABIC_NUMBER}end: => `{\'`\\\'`t\'`e\'`x\'`t\'`d\'`i\'`r\'` \'`T\'`L\'`T\'`{\'`}\'#(\\1)#(\\2)`}\';\n"
-                    + "  `+\' | `-\' | `.\'{ARABIC_NUMBER} => `{\'`\\\'`t\'`e\'`x\'`t\'`d\'`i\'`r\'` \'`T\'`L\'`T\'`{\'`}\'#(\\1)#(\\2)<push: NUMERAL>;\n"
+                    + "  <NUMERAL>{NOT_ARABIC_NUMBER} => `}\' <= #(\\1)<pop:>;\n"
+                    + "  `+\' | `-\' | `.\'{ARABIC_NUMBER}end: => `{\'`\\\'`t\'"
+                    + "`e\'`x\'`t\'`d\'`i\'`r\'` \'`T\'`L\'`T\'`{\'`}\'#(\\1)#(\\2)`}\';\n"
+                    + "  `+\' | `-\' | `.\'{ARABIC_NUMBER} => `{\'`\\\'`t\'`e\'"
+                    + "`x\'`t\'`d\'`i\'`r\'` \'`T\'`L\'`T\'`{\'`}\'#(\\1)#(\\2)<push: NUMERAL>;\n"
                     + "  {ARABIC_NUMBER}end: => #(\\1);\n"
-                    + "  {ARABIC_NUMBER} => `{\'`\\\'`t\'`e\'`x\'`t\'`d\'`i\'`r\'` \'`T\'`L\'`T\'`{\'`}\'#(\\1)<push: NUMERAL>;\n"
+                    + "  {ARABIC_NUMBER} => `{\'`\\\'`t\'`e\'`x\'`t\'`d\'`i\'"
+                    + "`r\'` \'`T\'`L\'`T\'`{\'`}\'#(\\1)<push: NUMERAL>;\n"
                     + "  {NOT_ARABIC_LETTER} => #(\\1);\n"
                     + "  {QUADRIFORM}{NOT_ARABIC_OR_UNI} => #(\\1 + @\"da00) <= \\2;\n"
                     + "  {QUADRIFORM}end: => #(\\1 + @\"da00);\n"
-                    + "  {QUADRIFORM}@\"651{ACCENT}{NOT_ARABIC_OR_UNI} => #(\\1 + @\"da00)#(\\3 + @\"da90) <= \\4;\n"
-                    + "  {QUADRIFORM}{ACCENT}{NOT_ARABIC_OR_UNI} => #(\\1 + @\"da00)#(\\2 + @\"da00) <= \\3;\n"
+                    + "  {QUADRIFORM}@\"651{ACCENT}{NOT_ARABIC_OR_UNI} => #(\\1 + @\"da00)#(\\3 + @\"da90) <= #(\\4);\n"
+                    + "  {QUADRIFORM}{ACCENT}{NOT_ARABIC_OR_UNI} => #(\\1 + @\"da00)#(\\2 + @\"da00) <= #(\\3);\n"
                     + "  {QUADRIFORM}@\"651{ACCENT}end: => #(\\1 + @\"da00)#(\\3 + @\"da90);\n"
                     + "  {QUADRIFORM}{ACCENT}end: => #(\\1 + @\"da00)#(\\2 + @\"da00);\n"
                     + "  {QUADRIFORM}@\"651{ACCENT} => #(\\1 + @\"db00)#(\\3 + @\"da90)@\"620<push: MEDIAL>;\n"
@@ -318,10 +458,11 @@ public class CompilerStateTest extends TestCase {
                     + "  {BIFORM}@\"651{ACCENT} => #(\\1 + @\"da00)#(\\3 + @\"da90);\n"
                     + "  {BIFORM}{ACCENT} => #(\\1 + @\"da00)#(\\2 + @\"da00);\n"
                     + "  {BIFORM} => #(\\1 + @\"da00);\n"
-                    + "  <MEDIAL>{QUADRIFORM}{NOT_ARABIC_OR_UNI} => #(\\1 + @\"dd00) <= \\2<pop:>;\n"
+                    + "  <MEDIAL>{QUADRIFORM}{NOT_ARABIC_OR_UNI} => #(\\1 + @\"dd00) <= #(\\2)<pop:>;\n"
                     + "  <MEDIAL>{QUADRIFORM}end: => #(\\1 + @\"dd00)<pop:>;\n"
-                    + "  <MEDIAL>{QUADRIFORM}@\"651{ACCENT}{NOT_ARABIC_OR_UNI} => #(\\1 + @\"dd00)#(\\3 + @\"da90) <= \\4<pop:>;\n"
-                    + "  <MEDIAL>{QUADRIFORM}{ACCENT}{NOT_ARABIC_OR_UNI} => #(\\1 + @\"dd00)#(\\2 + @\"da00) <= \\3<pop:>;\n"
+                    + "  <MEDIAL>{QUADRIFORM}@\"651{ACCENT}{NOT_ARABIC_OR_UNI} "
+                    + "=> #(\\1 + @\"dd00)#(\\3 + @\"da90) <= #(\\4)<pop:>;\n"
+                    + "  <MEDIAL>{QUADRIFORM}{ACCENT}{NOT_ARABIC_OR_UNI} => #(\\1 + @\"dd00)#(\\2 + @\"da00) <= #(\\3)<pop:>;\n"
                     + "  <MEDIAL>{QUADRIFORM}@\"651{ACCENT}end: => #(\\1 + @\"dd00)#(\\3 + @\"da90)<pop:>;\n"
                     + "  <MEDIAL>{QUADRIFORM}{ACCENT}end: => #(\\1 + @\"dd00)#(\\2 + @\"da00)<pop:>;\n"
                     + "  <MEDIAL>{QUADRIFORM}@\"651{ACCENT} => #(\\1 + @\"dc00)#(\\3 + @\"da90)@\"620;\n"
@@ -330,7 +471,7 @@ public class CompilerStateTest extends TestCase {
                     + "  <MEDIAL>{BIFORM}@\"651{ACCENT} => #(\\1 + @\"dd00)#(\\3 + @\"da90)<pop:>;\n"
                     + "  <MEDIAL>{BIFORM}{ACCENT} => #(\\1 + @\"dd00)#(\\2 + @\"da00)<pop:>;\n"
                     + "  <MEDIAL>{BIFORM} => #(\\1 + @\"dd00)<pop:>;\n"
-                    + "  @\"f000-@\"f07f => \\1;\n\n", //
+                    + "  @\"f000-@\"f07f => \\1;\n", //
             cs.toString());
     }
 
@@ -342,44 +483,10 @@ public class CompilerStateTest extends TestCase {
     @Test
     public final void testParse3() throws Exception {
 
+        Locale.setDefault(Locale.ENGLISH);
         InputStream stream =
-                new ByteArrayInputStream(//
-                    ("input:    1;\n"
-                            + "output: 2;\n"
-                            + "\n"
-                            + "tables:\n"
-                            + " \n"
-                            + "tab8859_3[@\"60] = {\n"
-                            + " @\"00A0, @\"0126, @\"02D8, @\"00A3, @\"00A4, @\"FFFD, @\"0124, @\"00A7,\n"
-                            + " @\"00A8, @\"0130, @\"015E, @\"011E, @\"0134, @\"00AD, @\"FFFD, @\"017B,\n"
-                            + " @\"00B0, @\"0127, @\"00B2, @\"00B3, @\"00B4, @\"00B5, @\"0125, @\"00B7,\n"
-                            + " @\"00B8, @\"0131, @\"015F, @\"011F, @\"0135, @\"00BD, @\"FFFD, @\"017C,\n"
-                            + " @\"00C0, @\"00C1, @\"00C2, @\"FFFD, @\"00C4, @\"010A, @\"0108, @\"00C7,\n"
-                            + " @\"00C8, @\"00C9, @\"00CA, @\"00CB, @\"00CC, @\"00CD, @\"00CE, @\"00CF,\n"
-                            + " @\"FFFD, @\"00D1, @\"00D2, @\"00D3, @\"00D4, @\"0120, @\"00D6, @\"00D7,\n"
-                            + " @\"011C, @\"00D9, @\"00DA, @\"00DB, @\"00DC, @\"016C, @\"015C, @\"00DF,\n"
-                            + " @\"00E0, @\"00E1, @\"00E2, @\"FFFD, @\"00E4, @\"010B, @\"0109, @\"00E7,\n"
-                            + " @\"00E8, @\"00E9, @\"00EA, @\"00EB, @\"00EC, @\"00ED, @\"00EE, @\"00EF,\n"
-                            + " @\"FFFD, @\"00F1, @\"00F2, @\"00F3, @\"00F4, @\"0121, @\"00F6, @\"00F7,\n"
-                            + " @\"011D, @\"00F9, @\"00FA, @\"00FB, @\"00FC, @\"016D, @\"015D, @\"02D9\n"
-                            + "};\n" + "\n" + "expressions:\n"
-                            + "`<\'`C\'  => #(@\"0108) ;\n"
-                            + "`<\'`c\'  => #(@\"0109) ;\n"
-                            + "`<\'`G\'  => #(@\"011C) ;\n"
-                            + "`<\'`g\'  => #(@\"011D) ;\n"
-                            + "`<\'`H\'  => #(@\"0124) ;\n"
-                            + "`<\'`h\'  => #(@\"0125) ;\n"
-                            + "`<\'`J\'  => #(@\"0134) ;\n"
-                            + "`<\'`j\'  => #(@\"0135) ;\n"
-                            + "`<\'`S\'  => #(@\"015C) ;\n"
-                            + "`<\'`s\'  => #(@\"015D) ;\n" + "\n"
-                            + "@\"00-@\"9F   => \\1;\n"
-                            + "@\"A0-@\"FF   => #(tab8859_3[\\1-@\"A0]);\n"
-                            + "%.      => @\"FFFD;\n" + ". => \\1;\n")
-                        .getBytes());
-
-        CompilerState cs = new CompilerState();
-        cs.parse(stream);
+                new ByteArrayInputStream(OTP.OMEGA_7IN88593_OTP.getBytes());
+        CompilerState cs = new CompilerState(stream);
         stream.close();
 
         assertEquals(
@@ -400,239 +507,33 @@ public class CompilerStateTest extends TestCase {
                     + "     @\"e8, @\"e9, @\"ea, @\"eb, @\"ec, @\"ed, @\"ee, @\"ef,\n"
                     + "     @\"fffd, @\"f1, @\"f2, @\"f3, @\"f4, @\"121, @\"f6, @\"f7,\n"
                     + "     @\"11d, @\"f9, @\"fa, @\"fb, @\"fc, @\"16d, @\"15d, @\"2d9};\n"
-                    + "\n" + "expressions:\n" + "  `<\'`C\' => @\"108;\n"
-                    + "  `<\'`c\' => @\"109;\n" + "  `<\'`G\' => @\"11c;\n"
-                    + "  `<\'`g\' => @\"11d;\n" + "  `<\'`H\' => @\"124;\n"
-                    + "  `<\'`h\' => @\"125;\n" + "  `<\'`J\' => @\"134;\n"
-                    + "  `<\'`j\' => @\"135;\n" + "  `<\'`S\' => @\"15c;\n"
-                    + "  `<\'`s\' => @\"15d;\n" + "  @\"0-@\"9f => \\1;\n"
-                    + "  @\"a0-@\"ff => #(ab8859_3[\\1 - @\"a0]);\n"
-                    + "  . => \\1;\n\n", //
+                    + "\n" + "expressions:\n" + "  `<\'`C\' => #(@\"108);\n"
+                    + "  `<\'`c\' => #(@\"109);\n"
+                    + "  `<\'`G\' => #(@\"11c);\n"
+                    + "  `<\'`g\' => #(@\"11d);\n"
+                    + "  `<\'`H\' => #(@\"124);\n"
+                    + "  `<\'`h\' => #(@\"125);\n"
+                    + "  `<\'`J\' => #(@\"134);\n"
+                    + "  `<\'`j\' => #(@\"135);\n"
+                    + "  `<\'`S\' => #(@\"15c);\n"
+                    + "  `<\'`s\' => #(@\"15d);\n" + "  @\"0-@\"9f => \\1;\n"
+                    + "  @\"a0-@\"ff => #(tab8859_3[\\1 - @\"a0]);\n"
+                    + "  . => \\1;\n", //
             cs.toString());
     }
 
     /**
-     * 7in88593.otp
+     * lowercase.otp
      * 
      * @throws Exception in case of an error
      */
-    @Test
     public final void testParse4() throws Exception {
 
+        Locale.setDefault(Locale.ENGLISH);
         InputStream stream =
-                new ByteArrayInputStream(//
-                    ("input: 2;\n"
-                            + "\n"
-                            + "output: 2;\n"
-                            + "\n"
-                            + "expressions:\n"
-                            + "\n"
-                            + "% Fake ASCII\n"
-                            + "\n"
-                            + "@\"e100 - @\"e17f => \\1 ;\n"
-                            + "\n"
-                            + "% Mandatory first eleven\n"
-                            + "\n"
-                            + "@\"0022 => \"\\char\'042 \" ;\n"
-                            + "@\"0023 => \"\\char\'043 \" ;\n"
-                            + "@\"0024 => \"\\char\'044 \" ;\n"
-                            + "@\"0025 => \"\\char\'045 \" ;\n"
-                            + "@\"0026 => \"\\char\'046 \" ;\n"
-                            + "@\"005c => \"\\char\'134 \" ;\n"
-                            + "@\"005e => \"\\char\'136 \" ;\n"
-                            + "@\"005f => \"\\char\'137 \" ;\n"
-                            + "@\"007b => \"\\char123 \" ;\n"
-                            + "@\"007d => \"\\char125 \" ;\n"
-                            + "@\"007e => \"\\char\'176 \" ;\n"
-                            + "\n"
-                            + "% Latin\n"
-                            + "\n"
-                            + "@\"0020 - @\"0040 => \\1 ;\n"
-                            + "@\"0041 - @\"005a => #(\\1 + 32) ;\n"
-                            + "@\"005b - @\"00bf => \\1 ;\n"
-                            + "@\"00c0 - @\"00d6 => #(\\1 + 32) ;\n"
-                            + "@\"00d7 => \\1 ;\n"
-                            + "@\"00d8 - @\"00de => #(\\1 + 32) ;\n"
-                            + "@\"00df - @\"00ff => \\1 ;\n"
-                            + "@\"0100 - @\"012f => #(\\1 + 1 - (\\1 mod: 2)) ;\n"
-                            + "@\"0130 => @\"e184 ; %lowercase Turkish \\.I\n"
-                            + "@\"0132 - @\"0137 => #(\\1 + 1 - (\\1 mod: 2)) ;\n"
-                            + "@\"0138 => \\1 ;      %uppercase kra\n"
-                            + "@\"0139 - @\"0148 => #(\\1 + (\\1 mod: 2)) ;\n"
-                            + "@\"0149 => \\1 ;      %uppercase Afrikaans \'n\n"
-                            + "@\"014a - @\"0177 => #(\\1 + 1 - (\\1 mod: 2)) ;\n"
-                            + "@\"0178 => @\"00ff ; %\\\"Y\n"
-                            + "@\"0179 - @\"017e => #(\\1 + (\\1 mod: 2)) ;\n"
-                            + "@\"017f => \\1 ;      %uppercase long s\n"
-                            + "@\"0180 - @\"01c3 => \\1 ; %to be treated later on (African stuff)\n"
-                            + "@\"01c4 - @\"01c6 => @\"01c6 ;\n"
-                            + "@\"01c7 - @\"01c9 => @\"01c9 ;\n"
-                            + "@\"01ca - @\"01cc => @\"01cc ;\n"
-                            + "@\"01cd - @\"01dc => #(\\1 + (\\1 mod: 2)) ;\n"
-                            + "@\"01dd => \\1 ;\n"
-                            + "@\"01de - @\"01ef => #(\\1 + 1 - (\\1 mod: 2)) ;\n"
-                            + "@\"01f0 => @\"e18e ; %\\v J\n"
-                            + "@\"01f1 - @\"01f3 => @\"01f3 ;\n"
-                            + "@\"01f4 - @\"0217 => #(\\1 + 1 - (\\1 mod: 2)) ;\n"
-                            + "@\"0250 - @\"0385 => \\1 ; %Phonetic and other stuff\n"
-                            + "\n"
-                            + "% Greek!\n"
-                            + "\n"
-                            + "@\"0386 => @\"03ac ;\n"
-                            + "@\"0388 - @\"038a => #(\\1 + 37) ;\n"
-                            + "@\"038c => @\"e1a5 ;\n"
-                            + "@\"038e => @\"e1a6 ;\n"
-                            + "@\"038f => @\"e1a7 ;\n"
-                            + "@\"0390 => \\1 ;\n"
-                            + "@\"0391 - @\"03ab => #(\\1 + 32) ;\n"
-                            + "@\"03ac - @\"03d1 => \\1 ;\n"
-                            + "@\"03d2 => @\"0386 ;\n"
-                            + "@\"03d3 => @\"0388 ;\n"
-                            + "@\"03d4 => @\"0389 ;\n"
-                            + "@\"03d5 - @\"03d6 => \\1 ;\n"
-                            + "@\"03da => @\"e1aa ;\n"
-                            + "@\"03dc => @\"e1ab ;\n"
-                            + "@\"03de => @\"e1ac ;\n"
-                            + "@\"03e0 => @\"e1ad ;\n"
-                            + "@\"03e2 - @\"03ef => #(\\1 + 1 - (\\1 mod: 2)) ;\n"
-                            + "@\"03f0 - @\"03f3 => \\1 ;\n"
-                            + "\n"
-                            + "% Cyrillic!\n"
-                            + "\n"
-                            + "@\"0401 - @\"040f => #(\\1 + 80) ;\n"
-                            + "@\"0410 - @\"042f => #(\\1 + 32) ;\n"
-                            + "@\"0430 - @\"045f => \\1 ;\n"
-                            + "@\"0460 - @\"04bf => #(\\1 +1 - (\\1 mod: 2)) ;\n"
-                            + "@\"04c0 => \\1 ;\n"
-                            + "@\"04c1 - @\"04cc => #(\\1 + (\\1 mod: 2)) ;\n"
-                            + "@\"04d0 - @\"04f9 => #(\\1 + 1 - (\\1 mod: 2)) ;\n"
-                            + "\n"
-                            + "% Armenian!\n"
-                            + "\n"
-                            + "@\"0531 - @\"0556 => #(\\1 + 48) ;\n"
-                            + "@\"0559 - @\"055f => \\1 ;\n"
-                            + "@\"0561 - @\"0589 => \\1 ;\n"
-                            + "\n"
-                            + "% Additional Latin\n"
-                            + "\n"
-                            + "@\"1e00 - @\"1e95 => #(\\1 + 1 - (\\1 mod: 2)) ;\n"
-                            + "@\"1e96 - @\"1e9a => \\1 ;\n"
-                            + "@\"1ea0 - @\"1ef9 => #(\\1 + 1 - (\\1 mod: 2)) ;\n"
-                            + "\n"
-                            + "% Real Greek! (the one with accents and spirits)\n"
-                            + "\n"
-                            + "@\"1f00 - @\"1f07 => \\1 ;\n"
-                            + "@\"1f08 - @\"1f0f => #(\\1 - 8) ;\n"
-                            + "@\"1f10 - @\"1f17 => \\1 ;\n"
-                            + "@\"1f18 - @\"1f1f => #(\\1 - 8) ;\n"
-                            + "@\"1f20 - @\"1f27 => \\1 ;\n"
-                            + "@\"1f28 - @\"1f2f => #(\\1 - 8) ;\n"
-                            + "@\"1f30 - @\"1f37 => \\1 ;\n"
-                            + "@\"1f38 - @\"1f3f => #(\\1 - 8) ;\n"
-                            + "@\"1f40 - @\"1f47 => \\1 ;\n"
-                            + "@\"1f48 - @\"1f4f => #(\\1 - 8) ;\n"
-                            + "@\"1f50 - @\"1f57 => \\1 ;\n"
-                            + "@\"1f59 - @\"1f5f => #(\\1 - 8) ;\n"
-                            + "@\"1f60 - @\"1f67 => \\1 ;\n"
-                            + "@\"1f68 - @\"1f6f => #(\\1 - 8) ;\n"
-                            + "@\"1f70 - @\"1f87 => \\1 ;\n"
-                            + "@\"1f88 - @\"1f8f => #(\\1 - 8) ;\n"
-                            + "@\"1f90 - @\"1f97 => \\1 ;\n"
-                            + "@\"1f98 - @\"1f9f => #(\\1 - 8) ;\n"
-                            + "@\"1fa0 - @\"1fa7 => \\1 ;\n"
-                            + "@\"1fa8 - @\"1faf => #(\\1 - 8) ;\n"
-                            + "@\"1fb0 - @\"1fb7 => \\1 ;\n"
-                            + "@\"1fb8 - @\"1fb9 => #(\\1 - 8) ;\n"
-                            + "@\"1fba => @\"1f70 ;\n"
-                            + "@\"1fbb => @\"1f71 ;\n"
-                            + "@\"1fbc => @\"1fb3 ;\n"
-                            + "@\"1fbd - @\"1fc7 => \\1 ;\n"
-                            + "@\"1fc8 => @\"1f72 ;\n"
-                            + "@\"1fc9 => @\"1f73 ;\n"
-                            + "@\"1fca => @\"1f74 ;\n"
-                            + "@\"1fcb => @\"1f75 ;\n"
-                            + "@\"1fcc => @\"1fc3 ;\n"
-                            + "@\"1fcd - @\"1fd7 => \\1 ;\n"
-                            + "@\"1fd8 => @\"1fd0 ;\n"
-                            + "@\"1fd9 => @\"1fd1 ;\n"
-                            + "@\"1fda => @\"1f76 ;\n"
-                            + "@\"1fdb => @\"1f77 ;\n"
-                            + "@\"1fdc - @\"1fe7 => \\1 ;\n"
-                            + "@\"1fe8 => @\"1fe0 ;\n"
-                            + "@\"1fe9 => @\"1fe1 ;\n"
-                            + "@\"1fea => @\"1f7a ;\n"
-                            + "@\"1feb => @\"1f7b ;\n"
-                            + "@\"1fec => @\"1fe5 ;\n"
-                            + "@\"1fed - @\"1ff7 => \\1 ;\n"
-                            + "@\"1ff8 => @\"1f78 ;\n"
-                            + "@\"1ff9 => @\"1f79 ;\n"
-                            + "@\"1ffa => @\"1f7c ;\n"
-                            + "@\"1ffb => @\"1f7d ;\n"
-                            + "@\"1ffc => @\"1ff3 ;\n"
-                            + "@\"1ffd - @\"215f => \\1 ;\n"
-                            + "\n"
-                            + "% Roman numerals\n"
-                            + "\n"
-                            + "@\"2160 - @\"216f => #(\\1 + 16) ;\n"
-                            + "\n"
-                            + "% Private zone\n"
-                            + "\n"
-                            + "@\"e180 => @\"00df ; %German \\ss\n"
-                            + "@\"e181 - @\"e182 => @\"e181 ; %German special \\ss\n"
-                            + "@\"e183 => @\"0131 ; %Turkish \\i\n"
-                            + "@\"e184 => \\1 ;     %Turkish i with dot\n"
-                            + "@\"e185 => @\"0138 ; %kra\n"
-                            + "@\"e186 => @\"0149 ; %\'n\n"
-                            + "@\"e187 => @\"017f ; %long s\n"
-                            + "@\"e188 - @\"e18c => #(\\1 - @\"c2f2) ;\n"
-                            + "@\"e18d - @\"e18e => @\"e18e ; %\\j\n"
-                            + "@\"e18f => @\"01f0 ; %\\v\\j\n"
-                            + "@\"e191 . => \\2 ;   %Fixed case for \\2\n"
-                            + "@\"e192 . => \"\\uppercase{\" \\2 \"}\" ; \n"
-                            + "@\"e1a5 - @\"e1a7 => #(\\1 - @\"dcd3) ;\n"
-                            + "\n" + "@\"e1a0 => @\"0390 ; %Greek \"\'i\n"
-                            + "@\"e1a1 => @\"03b0 ; % \"\'u\n"
-                            + "@\"e1a2 => @\"03c2 ; % final sigma\n"
-                            + "@\"e1a3 => @\"03d0 ;\n"
-                            + "@\"e1a4 => @\"03d1 ;\n"
-                            + "@\"e1a5 - @\"e1a7 => \\1 ;\n"
-                            + "@\"e1a8 => @\"03d5 ;\n"
-                            + "@\"e1a9 => @\"03d6 ;\n"
-                            + "@\"e1aa - @\"e1ad => \\1 ;\n"
-                            + "@\"e1ae - @\"e1b1 => #(\\1 - @\"ddb1) ;\n"
-                            + "@\"e1b2 => @\"1f50 ;\n"
-                            + "@\"e1b3 => @\"1f52 ;\n"
-                            + "@\"e1b4 => @\"1f54 ;\n"
-                            + "@\"e1b5 => @\"1f56 ;\n"
-                            + "@\"e1b6 => @\"1fb2 ;\n"
-                            + "@\"e1b7 => @\"1fb4 ;\n"
-                            + "@\"e1b8 => @\"1fb6 ;\n"
-                            + "@\"e1b9 => @\"1fb7 ;\n"
-                            + "@\"e1ba => @\"1fc2 ;\n"
-                            + "@\"e1bb => @\"1fc4 ;\n"
-                            + "@\"e1bc => @\"1fc6 ;\n"
-                            + "@\"e1bd => @\"1fc7 ;\n"
-                            + "@\"e1be => @\"1fd2 ;\n"
-                            + "@\"e1bf => @\"1fd3 ;\n"
-                            + "@\"e1c0 => @\"1fd6 ;\n"
-                            + "@\"e1c1 => @\"1fd7 ;\n"
-                            + "@\"e1c2 => @\"1fe2 ;\n"
-                            + "@\"e1c3 => @\"1fe3 ;\n"
-                            + "@\"e1c4 => @\"1fe6 ;\n"
-                            + "@\"e1c5 => @\"1fe7 ;\n"
-                            + "@\"e1c6 => @\"1fe4 ;\n"
-                            + "@\"e1c7 => @\"1ff2 ;\n"
-                            + "@\"e1c8 => @\"1ff4 ;\n"
-                            + "@\"e1c9 => @\"1ff6 ;\n"
-                            + "@\"e1ca => @\"1ff7 ;\n"
-                            + "@\"e1cb => @\"0587 ;\n" + "\n"
-                            + "% All others (wow, they are many of them!)\n"
-                            + "\n" + ". => \\1 ;\n\n").getBytes());
-
-        CompilerState cs = new CompilerState();
-        cs.parse(stream);
+                new ByteArrayInputStream(OTP.OMEGA_LOWERCASE_OTP.getBytes());
+        CompilerState cs = new CompilerState(stream);
         stream.close();
-
         assertEquals(
             "Compiler state", //
             "input:  2;\n"
@@ -657,26 +558,26 @@ public class CompilerStateTest extends TestCase {
                     + "  @\"d7 => \\1;\n"
                     + "  @\"d8-@\"de => #(\\1 + ` ');\n"
                     + "  @\"df-@\"ff => \\1;\n"
-                    + "  @\"100-@\"12f => #(\\1 + @\"1 - \\1 div: \\1);\n"
+                    + "  @\"100-@\"12f => #(\\1 + @\"1 - \\1 MOD: @\"2);\n"
                     + "  @\"130 => @\"e184;\n"
-                    + "  @\"132-@\"137 => #(\\1 + @\"1 - \\1 div: \\1);\n"
+                    + "  @\"132-@\"137 => #(\\1 + @\"1 - \\1 MOD: @\"2);\n"
                     + "  @\"138 => \\1;\n"
-                    + "  @\"139-@\"148 => #(\\1 + \\1 div: \\1);\n"
+                    + "  @\"139-@\"148 => #(\\1 + \\1 MOD: @\"2);\n"
                     + "  @\"149 => \\1;\n"
-                    + "  @\"14a-@\"177 => #(\\1 + @\"1 - \\1 div: \\1);\n"
+                    + "  @\"14a-@\"177 => #(\\1 + @\"1 - \\1 MOD: @\"2);\n"
                     + "  @\"178 => @\"ff;\n"
-                    + "  @\"179-@\"17e => #(\\1 + \\1 div: \\1);\n"
+                    + "  @\"179-@\"17e => #(\\1 + \\1 MOD: @\"2);\n"
                     + "  @\"17f => \\1;\n"
                     + "  @\"180-@\"1c3 => \\1;\n"
                     + "  @\"1c4-@\"1c6 => @\"1c6;\n"
                     + "  @\"1c7-@\"1c9 => @\"1c9;\n"
                     + "  @\"1ca-@\"1cc => @\"1cc;\n"
-                    + "  @\"1cd-@\"1dc => #(\\1 + \\1 div: \\1);\n"
+                    + "  @\"1cd-@\"1dc => #(\\1 + \\1 MOD: @\"2);\n"
                     + "  @\"1dd => \\1;\n"
-                    + "  @\"1de-@\"1ef => #(\\1 + @\"1 - \\1 div: \\1);\n"
+                    + "  @\"1de-@\"1ef => #(\\1 + @\"1 - \\1 MOD: @\"2);\n"
                     + "  @\"1f0 => @\"e18e;\n"
                     + "  @\"1f1-@\"1f3 => @\"1f3;\n"
-                    + "  @\"1f4-@\"217 => #(\\1 + @\"1 - \\1 div: \\1);\n"
+                    + "  @\"1f4-@\"217 => #(\\1 + @\"1 - \\1 MOD: @\"2);\n"
                     + "  @\"250-@\"385 => \\1;\n"
                     + "  @\"386 => @\"3ac;\n"
                     + "  @\"388-@\"38a => #(\\1 + `%');\n"
@@ -694,21 +595,21 @@ public class CompilerStateTest extends TestCase {
                     + "  @\"3dc => @\"e1ab;\n"
                     + "  @\"3de => @\"e1ac;\n"
                     + "  @\"3e0 => @\"e1ad;\n"
-                    + "  @\"3e2-@\"3ef => #(\\1 + @\"1 - \\1 div: \\1);\n"
+                    + "  @\"3e2-@\"3ef => #(\\1 + @\"1 - \\1 MOD: @\"2);\n"
                     + "  @\"3f0-@\"3f3 => \\1;\n"
                     + "  @\"401-@\"40f => #(\\1 + `P');\n"
                     + "  @\"410-@\"42f => #(\\1 + ` ');\n"
                     + "  @\"430-@\"45f => \\1;\n"
-                    + "  @\"460-@\"4bf => #(\\1 + @\"1 - \\1 div: \\1);\n"
+                    + "  @\"460-@\"4bf => #(\\1 + @\"1 - \\1 MOD: @\"2);\n"
                     + "  @\"4c0 => \\1;\n"
-                    + "  @\"4c1-@\"4cc => #(\\1 + \\1 div: \\1);\n"
-                    + "  @\"4d0-@\"4f9 => #(\\1 + @\"1 - \\1 div: \\1);\n"
+                    + "  @\"4c1-@\"4cc => #(\\1 + \\1 MOD: @\"2);\n"
+                    + "  @\"4d0-@\"4f9 => #(\\1 + @\"1 - \\1 MOD: @\"2);\n"
                     + "  @\"531-@\"556 => #(\\1 + `0');\n"
                     + "  @\"559-@\"55f => \\1;\n"
                     + "  @\"561-@\"589 => \\1;\n"
-                    + "  @\"1e00-@\"1e95 => #(\\1 + @\"1 - \\1 div: \\1);\n"
+                    + "  @\"1e00-@\"1e95 => #(\\1 + @\"1 - \\1 MOD: @\"2);\n"
                     + "  @\"1e96-@\"1e9a => \\1;\n"
-                    + "  @\"1ea0-@\"1ef9 => #(\\1 + @\"1 - \\1 div: \\1);\n"
+                    + "  @\"1ea0-@\"1ef9 => #(\\1 + @\"1 - \\1 MOD: @\"2);\n"
                     + "  @\"1f00-@\"1f07 => \\1;\n"
                     + "  @\"1f08-@\"1f0f => #(\\1 - @\"8);\n"
                     + "  @\"1f10-@\"1f17 => \\1;\n"
@@ -791,7 +692,7 @@ public class CompilerStateTest extends TestCase {
                     + "  @\"e1c6 => @\"1fe4;\n" + "  @\"e1c7 => @\"1ff2;\n"
                     + "  @\"e1c8 => @\"1ff4;\n" + "  @\"e1c9 => @\"1ff6;\n"
                     + "  @\"e1ca => @\"1ff7;\n" + "  @\"e1cb => @\"587;\n"
-                    + "  . => \\1;\n\n", //
+                    + "  . => \\1;\n", //
             cs.toString());
     }
 

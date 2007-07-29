@@ -19,6 +19,12 @@
 
 package org.extex.ocpware.compiler.arith;
 
+import java.io.IOException;
+
+import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
+import org.extex.ocpware.compiler.parser.CompilerState;
+import org.extex.ocpware.type.OcpProgram;
+
 /**
  * This class represents the reference to a character in the matched sequence.
  * 
@@ -46,13 +52,12 @@ public class Ref extends ArithExpr {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.ocpware.compiler.arith.ArithExpr#eval()
+     * @see org.extex.ocpware.compiler.arith.ArithExpr#outExpr( CompilerState)
      */
     @Override
-    public int eval() {
+    void outExpr(CompilerState cs) throws IOException, ArgmentTooBigException {
 
-        // TODO gene: eval unimplemented
-        return 0;
+        cs.putInstruction(OcpProgram.PUSH_CHAR, n);
     }
 
     /**

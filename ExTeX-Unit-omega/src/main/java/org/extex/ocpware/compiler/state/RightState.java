@@ -19,13 +19,33 @@
 
 package org.extex.ocpware.compiler.state;
 
+import java.io.IOException;
+
+import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
+import org.extex.ocpware.compiler.exception.StateNotDefinedException;
+import org.extex.ocpware.compiler.parser.CompilerState;
+
 /**
- * TODO gene: missing JavaDoc.
- *
+ * This interface describes the variants of a state change instruction.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public interface RightState {
 
-    //
+    /**
+     * Translate a right state expression into a set of instructions.
+     * 
+     * @param cs the compiler state
+     * 
+     * @throws ArgmentTooBigException in case that an argument is encountered
+     *         which does not fit into two bytes
+     * @throws IOException in case of an error
+     * @throws StateNotDefinedException
+     */
+    void compile(CompilerState cs)
+            throws ArgmentTooBigException,
+                IOException,
+                StateNotDefinedException;
+
 }
