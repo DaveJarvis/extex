@@ -102,5 +102,8 @@
       <define name="mathexpr"
          class="org.extex.interpreter.primitives.register.real.MathExpression" />
 
+      <define name="printformat"
+         class="org.extex.interpreter.primitives.format.PrintFormat" />
+
    </primitives>
 </unit>

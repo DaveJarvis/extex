@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.format;
+package org.extex.interpreter.primitives.format;
 
 import java.text.DecimalFormat;
 
@@ -29,6 +29,9 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.parser.CountConvertible;
+import org.extex.interpreter.primitives.register.pair.Pair;
+import org.extex.interpreter.primitives.register.pair.PairConvertible;
 import org.extex.interpreter.primitives.register.real.Real;
 import org.extex.interpreter.primitives.register.real.RealConvertible;
 import org.extex.interpreter.type.AbstractCode;
@@ -42,7 +45,6 @@ import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
-
 /**
  * This class provides an implementation for the primitive
  * <code>\printformat</code>. It format the next primitive for the output
@@ -55,6 +57,14 @@ import org.extex.typesetter.exception.TypesetterException;
  * \the\printformat{pattern}\real7
  * </pre>
  * 
+ * <pre>
+ * \the\printformat{pattern}\count7
+ * </pre>
+ * 
+ * <pre>
+ * \the\printformat{pattern}\pair7
+ * </pre>
+ * 
  * @see java.text.DecimalFormat
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -62,7 +72,7 @@ import org.extex.typesetter.exception.TypesetterException;
 public class PrintFormat extends AbstractCode implements Theable {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the ...
+     * The field <tt>serialVersionUID</tt>.
      */
     private static final long serialVersionUID = 1L;
 
@@ -96,7 +106,8 @@ public class PrintFormat extends AbstractCode implements Theable {
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws ConfigurationException,
-                HelpingException, TypesetterException {
+                HelpingException,
+                TypesetterException {
 
         // \the\printformat{pattern}\real7
 
@@ -105,6 +116,7 @@ public class PrintFormat extends AbstractCode implements Theable {
         if (pattern == null || pattern.trim().length() == 0) {
             pattern = "0.00";
         }
+        DecimalFormat form = new DecimalFormat(pattern);
 
         Token cs = source.getToken(context);
 
@@ -122,13 +134,35 @@ public class PrintFormat extends AbstractCode implements Theable {
             Real val =
                     ((RealConvertible) code).convertReal(context, source,
                         typesetter);
-            DecimalFormat form = new DecimalFormat(pattern);
             try {
                 return context.getTokenFactory().toTokens( //
                     form.format(val.getValue()));
             } catch (CatcodeException e) {
                 throw new NoHelpException(e);
             }
+        } else if (code instanceof CountConvertible) {
+            long val =
+                    ((CountConvertible) code).convertCount(context, source,
+                        typesetter);
+            try {
+                return context.getTokenFactory().toTokens( //
+                    form.format(val));
+            } catch (CatcodeException e) {
+                throw new NoHelpException(e);
+            }
+
+        } else if (code instanceof PairConvertible) {
+            Pair val =
+                    ((PairConvertible) code).convertPair(context, source,
+                        typesetter);
+            try {
+                return context.getTokenFactory().toTokens( //
+                    form.format(val.getX().getValue()) + " "
+                            + form.format(val.getY().getValue()));
+            } catch (CatcodeException e) {
+                throw new NoHelpException(e);
+            }
+
         } else {
             throw new CantUseAfterException(cs.toText(),
                 printableControlSequence(context));
