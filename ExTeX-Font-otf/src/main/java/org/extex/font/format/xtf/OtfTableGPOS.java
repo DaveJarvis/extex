@@ -640,6 +640,10 @@ public class OtfTableGPOS extends AbstractXtfTable
                 return XtfGPOSSingleTable.newInstance(rar, offset);
             case XtfLookup.GPOS_2_PAIR:
                 return XtfGPOSPairTable.newInstance(rar, offset);
+            case XtfLookup.GPOS_3_CURSIVE_ATTACHMENT:
+                return XtfGPOSCursiveTable.newInstance(rar, offset);
+            case XtfLookup.GPOS_4_MARKTOBASE_ATTACHMENT:
+                return XtfGPOSMarkToBaseTable.newInstance(rar, offset);
         }
         return null;
     }

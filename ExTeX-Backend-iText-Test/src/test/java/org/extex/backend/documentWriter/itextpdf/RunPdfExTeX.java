@@ -67,7 +67,7 @@ public class RunPdfExTeX {
 
         StringBuffer buf = new StringBuffer(DEFINE_CATCODES);
         buf.append("\\font\\hugo=antpb ");
-        buf.append("\\hugo " + "Hugo : x");
+        buf.append("\\hugo " + "Hugo : x--");
         buf.append("\\par");
         buf.append("\\end");
 
