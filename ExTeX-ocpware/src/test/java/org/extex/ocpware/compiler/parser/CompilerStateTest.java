@@ -230,8 +230,8 @@ public class CompilerStateTest extends TestCase {
         try {
             new CompilerState(stream);
         } catch (SyntaxException e) {
-            assertEquals("1: syntax error; unexpected '.' instead of ',':\n" + 
-            		"states: X.", e.getLocalizedMessage());
+            assertEquals("1: syntax error; unexpected '.' instead of ',':\n"
+                    + "states: X.", e.getLocalizedMessage());
             return;
         } finally {
             stream.close();
