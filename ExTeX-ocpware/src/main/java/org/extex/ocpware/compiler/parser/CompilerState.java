@@ -36,6 +36,7 @@ import org.extex.ocpware.compiler.exception.StateNotDefinedException;
 import org.extex.ocpware.compiler.exception.SyntaxException;
 import org.extex.ocpware.compiler.exception.TableDefinedException;
 import org.extex.ocpware.compiler.exception.TableNotDefinedException;
+import org.extex.ocpware.compiler.exception.UnexpectedException;
 import org.extex.ocpware.compiler.expression.Expression;
 import org.extex.ocpware.compiler.left.Left;
 import org.extex.ocpware.compiler.left.LeftParser;
@@ -46,7 +47,7 @@ import org.extex.ocpware.type.OcpProgram;
  * This class provides a compiler state to translate an otp file into an ocp.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public final class CompilerState {
 
@@ -374,7 +375,7 @@ public final class CompilerState {
                 expressions = Expression.parseExpressions(s);
                 break;
             } else {
-                throw new SyntaxException(t, s.getLine(), s.getLineno());
+                throw new UnexpectedException(t, s.getLine(), s.getLineno());
             }
         }
 

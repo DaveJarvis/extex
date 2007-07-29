@@ -29,25 +29,13 @@ import java.util.ResourceBundle;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class SyntaxException extends OcpException {
+public class UnexpectedException extends SyntaxException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
-
-    /**
-     * The field <tt>expected</tt> contains the expected character or a
-     * negative value for undefined.
-     */
-    private int expected;
-
-    /**
-     * The field <tt>found</tt> contains the character found or a negative
-     * value for undefined.
-     */
-    private int found;
 
     /**
      * The field <tt>line</tt> contains the current line up to the last
@@ -61,58 +49,21 @@ public class SyntaxException extends OcpException {
     private int lineno;
 
     /**
-     * Creates a new object.
+     * The field <tt>unexpected</tt> contains the ...
      */
-    protected SyntaxException() {
-
-        super("");
-    }
+    private String unexpected;
 
     /**
      * Creates a new object.
      * 
+     * @param unexpected the unexpected id
      * @param line the current line up to the last character read
      * @param lineno the number of the current line
      */
-    public SyntaxException(CharSequence line, int lineno) {
+    public UnexpectedException(String unexpected, CharSequence line, int lineno) {
 
-        super("");
-        this.found = -1;
-        this.expected = -1;
-        this.line = line;
-        this.lineno = lineno;
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param found the character found; negative values indicate EOF
-     * @param line the current line up to the last character read
-     * @param lineno the number of the current line
-     */
-    public SyntaxException(int found, CharSequence line, int lineno) {
-
-        super("");
-        this.found = found;
-        this.expected = -1;
-        this.line = line;
-        this.lineno = lineno;
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param found the character found; negative values indicate EOF
-     * @param expected the expected character
-     * @param line the current line up to the last character read
-     * @param lineno the number of the current line
-     */
-    public SyntaxException(int found, int expected, CharSequence line,
-            int lineno) {
-
-        super("");
-        this.found = found;
-        this.expected = expected;
+        super();
+        this.unexpected = unexpected;
         this.line = line;
         this.lineno = lineno;
     }
@@ -128,18 +79,10 @@ public class SyntaxException extends OcpException {
         try {
             ResourceBundle bundle =
                     ResourceBundle.getBundle(getClass().getName());
-
-            String[] x =
-                    new String[]{"Message1", "Message2", "Message3", "Message4"};
-            return MessageFormat
-                .format(
-                    bundle.getString(x[(found < 0 ? 0 : 2)
-                            + (expected < 0 ? 0 : 1)]), //
-                    (found < 0 ? "EOF" : Character.toString((char) found)),
-                    (expected < 0 ? "EOF" : Character.toString((char) expected)),
-                    Integer.toString(lineno), line);
+            return MessageFormat.format(bundle.getString("Message"), //
+                unexpected, Integer.toString(lineno), line);
         } catch (MissingResourceException e) {
-            return super.getLocalizedMessage();
+            return super.getMessage();
         }
     }
 }
