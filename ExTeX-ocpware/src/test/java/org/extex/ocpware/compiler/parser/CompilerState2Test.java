@@ -22,6 +22,7 @@ package org.extex.ocpware.compiler.parser;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.util.Locale;
 
 import junit.framework.TestCase;
 
@@ -34,7 +35,7 @@ import org.junit.Test;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public class CompilerState2Test extends TestCase {
 
@@ -64,7 +65,8 @@ public class CompilerState2Test extends TestCase {
             new OcpExTeXWriter().write(baos, ocp);
         }
         baos.close();
-        assertEquals("Compiler result", expect, baos.toString());
+        assertEquals("Compiler result", expect, //
+            baos.toString().replaceAll("\r", ""));
     }
 
     /**
@@ -73,41 +75,35 @@ public class CompilerState2Test extends TestCase {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testParse1() throws Exception {
+    public final void testLunatesigma() throws Exception {
 
-        run(
-            OTP.OMEGA_LUNATESIGMA_OTP,
-            true,
-            "ctp_input      : 2 (2)\n" //
-                    + "ctp_output     : 2 (2)\n"
-                    + "ctp_no_tables  : 0 (0)\n"
-                    + "ctp_room_tables: 0 (0)\n"
-                    + "ctp_no_states  : 1 (1)\n"
-                    + "ctp_room_states: 15 (21)\n"
-                    + "\n"
-                    + "State 0 (0): 15 (21) entries\n"
-                    + "\n"
-                    + "State 0 (0), entry 0 (0): OTP_LEFT_START        0 (0)\n"
-                    + "State 0 (0), entry 1 (1): OTP_GOTO_NE           3a3 (931)\n"
-                    + "State 0 (0), entry 2 (2):                       5 (5)\n"
-                    + "State 0 (0), entry 3 (3): OTP_RIGHT_NUM         3fe (1022)\n"
-                    + "State 0 (0), entry 4 (4): OTP_STOP              0 (0)\n"
-                    + "State 0 (0), entry 5 (5): OTP_LEFT_RETURN       0 (0)\n"
-                    + "State 0 (0), entry 6 (6): OTP_GOTO_NE           3c2 (962)\n"
-                    + "State 0 (0), entry 7 (7):                       a (10)\n"
-                    + "State 0 (0), entry 8 (8): OTP_RIGHT_NUM         3f2 (1010)\n"
-                    + "State 0 (0), entry 9 (9): OTP_STOP              0 (0)\n"
-                    + "State 0 (0), entry a (10): OTP_LEFT_RETURN      0 (0)\n"
-                    + "State 0 (0), entry b (11): OTP_GOTO_NE          3c3 (963)\n"
-                    + "State 0 (0), entry c (12):                      f (15)\n"
-                    + "State 0 (0), entry d (13): OTP_RIGHT_NUM        3f2 (1010)\n"
-                    + "State 0 (0), entry e (14): OTP_STOP             0 (0)\n"
-                    + "State 0 (0), entry f (15): OTP_LEFT_RETURN      0 (0)\n"
-                    + "State 0 (0), entry 10 (16): OTP_RIGHT_CHAR      1 (1)\n"
-                    + "State 0 (0), entry 11 (17): OTP_STOP            0 (0)\n"
-                    + "State 0 (0), entry 12 (18): OTP_LEFT_RETURN     0 (0)\n"
-                    + "State 0 (0), entry 13 (19): OTP_RIGHT_CHAR      1 (1)\n"
-                    + "State 0 (0), entry 14 (20): OTP_STOP            0 (0)\n"
+        Locale.setDefault(Locale.ENGLISH);
+        run(OTP.OMEGA_LUNATESIGMA_OTP, true, "ctp_input      : 2 (2)\n"
+                + "ctp_output     : 2 (2)\n" + "ctp_no_tables  : 0 (0)\n"
+                + "ctp_room_tables: 0 (0)\n" + "ctp_no_states  : 1 (1)\n"
+                + "ctp_room_states: 15 (21)\n" + "\n"
+                + "State 0 (0): 15 (21) entries\n" + "\n"
+                + "State 0 (0), entry 0 (0): OTP_LEFT_START      0 (0)\n"
+                + "State 0 (0), entry 1 (1): OTP_GOTO_NE         3a3 (931)\n"
+                + "State 0 (0), entry 2 (2):                     5 (5) \n"
+                + "State 0 (0), entry 3 (3): OTP_RIGHT_NUM       3fe (1022)\n"
+                + "State 0 (0), entry 4 (4): OTP_STOP            0 (0)\n"
+                + "State 0 (0), entry 5 (5): OTP_LEFT_RETURN     0 (0)\n"
+                + "State 0 (0), entry 6 (6): OTP_GOTO_NE         3c2 (962)\n"
+                + "State 0 (0), entry 7 (7):                     a (10) \n"
+                + "State 0 (0), entry 8 (8): OTP_RIGHT_NUM       3f2 (1010)\n"
+                + "State 0 (0), entry 9 (9): OTP_STOP            0 (0)\n"
+                + "State 0 (0), entry a (10): OTP_LEFT_RETURN     0 (0)\n"
+                + "State 0 (0), entry b (11): OTP_GOTO_NE         3c3 (963)\n"
+                + "State 0 (0), entry c (12):                     f (15) \n"
+                + "State 0 (0), entry d (13): OTP_RIGHT_NUM       3f2 (1010)\n"
+                + "State 0 (0), entry e (14): OTP_STOP            0 (0)\n"
+                + "State 0 (0), entry f (15): OTP_LEFT_RETURN     0 (0)\n"
+                + "State 0 (0), entry 10 (16): OTP_RIGHT_CHAR      1 (1)\n"
+                + "State 0 (0), entry 11 (17): OTP_STOP            0 (0)\n"
+                + "State 0 (0), entry 12 (18): OTP_LEFT_RETURN     0 (0)\n"
+                + "State 0 (0), entry 13 (19): OTP_RIGHT_CHAR      1 (1)\n"
+                + "State 0 (0), entry 14 (20): OTP_STOP            0 (0)\n"
         // + "\n"
         // + "file length should be: 1d( 29)\n"
         // + "number words read : 1d( 29)\n"
@@ -122,36 +118,37 @@ public class CompilerState2Test extends TestCase {
     @Test
     public final void testParse1n() throws Exception {
 
-        run(OTP.OMEGA_LUNATESIGMA_OTP, false, "ctp_input      : 2 (2)\n" //
-                + "ctp_output     : 2 (2)\n"
-                + "ctp_no_tables  : 0 (0)\n"
-                + "ctp_room_tables: 0 (0)\n"
-                + "ctp_no_states  : 1 (1)\n"
-                + "ctp_room_states: 15 (21)\n"
+        Locale.setDefault(Locale.ENGLISH);
+        run(OTP.OMEGA_LUNATESIGMA_OTP, false, "ctp_input      : 2\n" //
+                + "ctp_output     : 2\n"
+                + "ctp_no_tables  : 0\n"
+                + "ctp_room_tables: 0\n"
+                + "ctp_no_states  : 1\n"
+                + "ctp_room_states: 21\n"
                 + "\n"
-                + "State 0 (0): 15 (21) entries\n"
+                + "State 0: 15 entries\n"
                 + "\n"
-                + "          0  LEFT_START      0 (0)\n"
-                + "          1  GOTO_NE         3a3 (931)\n"
-                + "          2                  5 (5)\n"
-                + "          3  RIGHT_NUM       3fe (1022)\n"
-                + "          4  STOP            0 (0)\n"
-                + "          5  LEFT_RETURN     0 (0)\n"
-                + "          6  GOTO_NE         3c2 (962)\n"
-                + "          7                  a (10)\n"
-                + "          8  RIGHT_NUM       3f2 (1010)\n"
-                + "          9  STOP            0 (0)\n"
-                + "          a  LEFT_RETURN     0 (0)\n"
-                + "          b  GOTO_NE         3c3 (963)\n"
-                + "          c                  f (15)\n"
-                + "          d  RIGHT_NUM       3f2 (1010)\n"
-                + "          e  STOP            0 (0)\n"
-                + "          f  LEFT_RETURN     0 (0)\n"
-                + "         10  RIGHT_CHAR      1 (1)\n"
-                + "         11  STOP            0 (0)\n"
-                + "         12  LEFT_RETURN     0 (0)\n"
-                + "         13  RIGHT_CHAR      1 (1)\n"
-                + "         14  STOP            0 (0)\n");
+                + "          0  LEFT_START      0x0 (0)\n"
+                + "          1  GOTO_NE         0x3a3 (931)\n"
+                + "          2                  0x5 (5)\n"
+                + "          3  RIGHT_NUM       0x3fe (1022)\n"
+                + "          4  STOP            0x0 (0)\n"
+                + "          5  LEFT_RETURN     0x0 (0)\n"
+                + "          6  GOTO_NE         0x3c2 (962)\n"
+                + "          7                  0xa (10)\n"
+                + "          8  RIGHT_NUM       0x3f2 (1010)\n"
+                + "          9  STOP            0x0 (0)\n"
+                + "          a  LEFT_RETURN     0x0 (0)\n"
+                + "          b  GOTO_NE         0x3c3 (963)\n"
+                + "          c                  0xf (15)\n"
+                + "          d  RIGHT_NUM       0x3f2 (1010)\n"
+                + "          e  STOP            0x0 (0)\n"
+                + "          f  LEFT_RETURN     0x0 (0)\n"
+                + "         10  RIGHT_CHAR      0x1 (1)\n"
+                + "         11  STOP            0x0 (0)\n"
+                + "         12  LEFT_RETURN     0x0 (0)\n"
+                + "         13  RIGHT_CHAR      0x1 (1)\n"
+                + "         14  STOP            0x0 (0)\n");
     }
 
 }
