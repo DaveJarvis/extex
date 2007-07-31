@@ -21,15 +21,61 @@ package org.extex.ocpware.type;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PushbackInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 /**
  * This class represents a compiled omega program.
+ * 
+ * 
+ * <h3>The &Omega;CP File Format</h3>
+ * 
+ * <h3>The &Omega;CP Programming Model</h3>
+ * 
+ * <table style="borderstyle:solid;bordercolor:black;borderwidth:1pt">
+ * <tr>
+ * <td>Tables </td>
+ * <td>table[] </td>
+ * </tr>
+ * <tr>
+ * <td>States </td>
+ * <td>state[] </td>
+ * </tr>
+ * <tr>
+ * <td>Program counter </td>
+ * <td>pc </td>
+ * </tr>
+ * <tr>
+ * <td>Stack </td>
+ * <td>stack[] </td>
+ * </tr>
+ * <tr>
+ * <td>State stack </td>
+ * <td>stateStack[] </td>
+ * </tr>
+ * </table>
+ * 
+ * The following instructions are available:
+ * 
+ * {@link #ADD ADD}, {@link #DIV DIV}, {@link #GOTO GOTO}, {@link #GOTO_BEG
+ * GOTO_BEG}, {@link #GOTO_END GOTO_END}, {@link #GOTO_EQ GOTO_EQ},
+ * {@link #GOTO_GE GOTO_GE}, {@link #GOTO_GT GOTO_GT}, {@link #GOTO_LE GOTO_LE},
+ * {@link #GOTO_LT GOTO_LT}, {@link #GOTO_NE GOTO_NE},
+ * {@link #GOTO_NO_ADVANCE GOTO_NO_ADVANCE}, {@link #LEFT_BACKUP LEFT_BACKUP},
+ * {@link #LEFT_RETURN LEFT_RETURN}, {@link #LEFT_START LEFT_START},
+ * {@link #LOOKUP LOOKUP}, {@link #MOD MOD}, {@link #MULT MULT},
+ * {@link #PBACK_CHAR PBACK_CHAR}, {@link #PBACK_LCHAR PBACK_LCHAR}, {@link
+ * #PBACK_NUM PBACK_NUM}, {@link #PBACK_OUTPUT PBACK_OUTPUT},
+ * {@link #PBACK_SOME PBACK_SOME}, {@link #PUSH_CHAR PUSH_CHAR},
+ * {@link #PUSH_LCHAR PUSH_LCHAR}, {@link #PUSH_NUM PUSH_NUM},
+ * {@link #RIGHT_CHAR RIGHT_CHAR}, {@link #RIGHT_LCHAR RIGHT_LCHAR},
+ * {@link #RIGHT_NUM RIGHT_NUM}, {@link #RIGHT_OUTPUT RIGHT_OUTPUT},
+ * {@link #RIGHT_SOME RIGHT_SOME}, {@link #STATE_CHANGE STATE_CHANGE}, {@link
+ * #STATE_POP STATE_POP}, {@link #STATE_PUSH STATE_PUSH}, {@link #STOP STOP},
+ * {@link #SUB SUB}.
+ * 
+ * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5975 $
@@ -56,13 +102,15 @@ public class OcpProgram implements Serializable {
 
     /**
      * The field <tt>GOTO_BEG</tt> contains the op code for the ocp
-     * instruction to ...
+     * instruction to conditionally adjust the program counter at the beginning
+     * of input.
      */
     public static final int GOTO_BEG = 34;
 
     /**
      * The field <tt>GOTO_END</tt> contains the op code for the ocp
-     * instruction to ...
+     * instruction to conditionally adjust the program counter at the end of
+     * input.
      */
     public static final int GOTO_END = 35;
 
@@ -80,31 +128,32 @@ public class OcpProgram implements Serializable {
 
     /**
      * The field <tt>GOTO_GT</tt> contains the op code for the ocp instruction
-     * conditionally adjust the program counter.
+     * to conditionally adjust the program counter.
      */
     public static final int GOTO_GT = 31;
 
     /**
      * The field <tt>GOTO_LE</tt> contains the op code for the ocp instruction
-     * to ...
+     * to conditionally adjust the program counter.
      */
     public static final int GOTO_LE = 30;
 
     /**
      * The field <tt>GOTO_LT</tt> contains the op code for the ocp instruction
-     * conditionally adjust the program counter.
+     * to conditionally adjust the program counter.
      */
     public static final int GOTO_LT = 29;
 
     /**
      * The field <tt>GOTO_NE</tt> contains the op code for the ocp instruction
-     * conditionally adjust the program counter.
+     * to conditionally adjust the program counter.
      */
     public static final int GOTO_NE = 27;
 
     /**
      * The field <tt>GOTO_NO_ADVANCE</tt> contains the op code for the ocp
-     * instruction to ...
+     * instruction to conditionally adjust the program counter after advancing
+     * last.
      */
     public static final int GOTO_NO_ADVANCE = 33;
 
@@ -226,22 +275,17 @@ public class OcpProgram implements Serializable {
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    private static final long serialVersionUID = 2006L;
-
-    /**
-     * The field <tt>SIXTEEN_BIT_MASK</tt> contains the bit mask with 16 bits.
-     */
-    private static final int SIXTEEN_BIT_MASK = 0xffff;
+    private static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>STATE_CHANGE</tt> contains the op code for the ocp
-     * instruction to ...
+     * instruction to set a new state.
      */
     public static final int STATE_CHANGE = 20;
 
     /**
      * The field <tt>STATE_POP</tt> contains the op code for the ocp
-     * instruction to pop a state fron the state stack.
+     * instruction to pop a state from the state stack.
      */
     public static final int STATE_POP = 22;
 
@@ -262,11 +306,6 @@ public class OcpProgram implements Serializable {
      * subtract two numbers from the stack.
      */
     public static final int SUB = 12;
-
-    /**
-     * The field <tt>TWELVE_BIT_MASK</tt> contains the bit mask with 12 bits.
-     */
-    private static final int TWELVE_BIT_MASK = 0xfff;
 
     /**
      * Load an OCP program from an input stream.
@@ -354,25 +393,10 @@ public class OcpProgram implements Serializable {
     }
 
     /**
-     * The field <tt>arithStack</tt> contains the stack for execution.
-     */
-    private Stack<Integer> arithStack = new Stack<Integer>();
-
-    /**
-     * The field <tt>first</tt> contains the ...
-     */
-    private int first = 0;
-
-    /**
      * The field <tt>input</tt> contains the input parameter. The default is
      * 2.
      */
     private int input = 2;
-
-    /**
-     * The field <tt>last</tt> contains the ...
-     */
-    private int last = 0;
 
     /**
      * The field <tt>length</tt> contains the length for dumping. A negative
@@ -387,24 +411,9 @@ public class OcpProgram implements Serializable {
     private int output = 2;
 
     /**
-     * The field <tt>pc</tt> contains the program counter.
-     */
-    private int pc = 0;
-
-    /**
-     * The field <tt>state</tt> contains the current state.
-     */
-    private int state = 0;
-
-    /**
      * The field <tt>states</tt> contains the states.
      */
     private List<int[]> states = new ArrayList<int[]>();
-
-    /**
-     * The field <tt>stateStack</tt> contains the stack of states.
-     */
-    private Stack<Integer> stateStack = new Stack<Integer>();
 
     /**
      * The field <tt>tables</tt> contains the tables.
@@ -413,7 +422,6 @@ public class OcpProgram implements Serializable {
 
     /**
      * Creates a new object.
-     * 
      */
     public OcpProgram() {
 
@@ -491,25 +499,6 @@ public class OcpProgram implements Serializable {
     }
 
     /**
-     * Reset the internal state of the program to the initial values.
-     */
-    public void reset() {
-
-        pc = 0;
-        state = 0;
-        stateStack.clear();
-        arithStack.clear();
-    }
-
-    /**
-     * Start the execution.
-     */
-    public void run() {
-
-        step(null, null, states.get(state));
-    }
-
-    /**
      * Setter for input.
      * 
      * @param input the input to set
@@ -537,156 +526,6 @@ public class OcpProgram implements Serializable {
     public void setOutput(int output) {
 
         this.output = output;
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param in the input stream
-     * @param out the output stream
-     * @param ds the stack of states
-     */
-    private void step(PushbackInputStream in, OutputStream out, int[] ds) {
-
-        int a;
-        int b;
-        int c;
-
-        for (;;) {
-            c = ds[pc++];
-
-            switch (c >> 24) {
-                case RIGHT_OUTPUT:
-                    break;
-                case RIGHT_NUM:
-                    break;
-                case RIGHT_CHAR:
-                    break;
-                case RIGHT_LCHAR:
-                    break;
-                case RIGHT_SOME:
-                    // two = false;
-                    break;
-                case PBACK_OUTPUT:
-                    break;
-                case PBACK_NUM:
-                    break;
-                case PBACK_CHAR:
-                    break;
-                case PBACK_LCHAR:
-                    break;
-                case PBACK_SOME:
-                    a = ds[pc++];
-                    break;
-                case ADD:
-                    a = arithStack.pop().intValue();
-                    b = arithStack.pop().intValue();
-                    arithStack.push(new Integer(b + a));
-                    break;
-                case SUB:
-                    a = arithStack.pop().intValue();
-                    b = arithStack.pop().intValue();
-                    arithStack.push(new Integer(b - a));
-                    break;
-                case MULT:
-                    a = arithStack.pop().intValue();
-                    b = arithStack.pop().intValue();
-                    arithStack.push(new Integer(b * a));
-                    break;
-                case DIV:
-                    a = arithStack.pop().intValue();
-                    b = arithStack.pop().intValue();
-                    arithStack.push(new Integer(b / a));
-                    break;
-                case MOD:
-                    a = arithStack.pop().intValue();
-                    b = arithStack.pop().intValue();
-                    arithStack.push(new Integer(b % a));
-                    break;
-                case LOOKUP:
-                    break;
-                case PUSH_NUM:
-                    break;
-                case PUSH_CHAR:
-                    break;
-                case PUSH_LCHAR:
-                    break;
-                case STATE_CHANGE:
-                    state = c & TWELVE_BIT_MASK;
-                    break;
-                case STATE_PUSH:
-                    stateStack.push(new Integer(state));
-                    state = c & TWELVE_BIT_MASK;
-                    break;
-                case STATE_POP:
-                    break;
-                case LEFT_START:
-                    first = last + 1;
-                    break;
-                case LEFT_RETURN:
-                    last = first + 1;
-                    break;
-                case LEFT_BACKUP:
-                    last--; // ???
-                    break;
-                case GOTO:
-                    pc = c & TWELVE_BIT_MASK;
-                    break;
-                case GOTO_NE:
-                    a = ds[pc++];
-                    if ((a & SIXTEEN_BIT_MASK) != (a >> 16)) {
-                        pc = c & TWELVE_BIT_MASK;
-                    }
-                    break;
-                case GOTO_EQ:
-                    a = ds[pc++];
-                    if ((a & SIXTEEN_BIT_MASK) == (a >> 16)) {
-                        pc = c & TWELVE_BIT_MASK;
-                    }
-                    break;
-                case GOTO_LT:
-                    a = ds[pc++];
-                    if ((a & SIXTEEN_BIT_MASK) < (a >> 16)) {
-                        pc = c & TWELVE_BIT_MASK;
-                    }
-                    break;
-                case GOTO_LE:
-                    a = ds[pc++];
-                    if ((a & SIXTEEN_BIT_MASK) <= (a >> 16)) {
-                        pc = c & TWELVE_BIT_MASK;
-                    }
-                    break;
-                case GOTO_GT:
-                    a = ds[pc++];
-                    if ((a & SIXTEEN_BIT_MASK) > (a >> 16)) {
-                        pc = c & TWELVE_BIT_MASK;
-                    }
-                    break;
-                case GOTO_GE:
-                    a = ds[pc++];
-                    if ((a & SIXTEEN_BIT_MASK) >= (a >> 16)) {
-                        pc = c & TWELVE_BIT_MASK;
-                    }
-                    break;
-                case GOTO_NO_ADVANCE:
-                    break;
-                case GOTO_BEG:
-                    if (false) { // TODO at beginning
-                        pc = c & TWELVE_BIT_MASK;
-                    }
-                    break;
-                case GOTO_END:
-                    if (false) { // TODO at end
-                        pc = c & TWELVE_BIT_MASK;
-                    }
-                    break;
-                case STOP:
-                    return;
-                default:
-                    // TODO gene: unimplemented
-                    throw new RuntimeException("unimplemented");
-            }
-        }
     }
 
 }

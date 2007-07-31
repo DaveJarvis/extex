@@ -31,7 +31,7 @@ import org.extex.ocpware.compiler.parser.ParserStream;
  * This utility class contains parser methods for left items.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public final class LeftParser {
 
@@ -69,9 +69,9 @@ public final class LeftParser {
      * TODO gene: missing JavaDoc
      * 
      * @param s the input stream
-     *
+     * 
      * @return the complete left item
-     *
+     * 
      * @throws IOException in case of an I/O error
      * @throws SyntaxException in case of a syntax error
      */
@@ -82,7 +82,21 @@ public final class LeftParser {
         int c = s.skipSpace();
         if (c == '"') {
             StringBuffer sb = new StringBuffer();
-            // TODO
+            for (;;) {
+                c = s.read();
+                if (c < 0) {
+                    s.expect('"'); // force an error
+                } else if (c == '"') {
+                    c = s.read();
+                    if (c < 0) {
+                        s.expect('"'); // force an error
+                    } else if (c != '"') {
+                        s.unread(c);
+                        break;
+                    }
+                }
+                sb.append((char) c);
+            }
             return new StringLeft(sb.toString());
         }
         s.unread(c);

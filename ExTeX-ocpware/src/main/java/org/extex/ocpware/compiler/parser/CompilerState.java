@@ -530,7 +530,6 @@ public final class CompilerState {
      * @param opCode the op code
      * @param n the first argument
      * @param a the second argument
-     * @param b the third argument
      * 
      * @return the index of the next free position in the instruction array
      * 
@@ -539,11 +538,11 @@ public final class CompilerState {
      *         the 16 bit value
      * @throws IllegalOpcodeException in case of an illegal op code
      */
-    public int putInstruction(int opCode, int n, int a, int b)
+    public int putInstruction(int opCode, int n, int a)
             throws IOException,
                 ArgmentTooBigException {
 
-        return currentState.putInstruction(opCode, n, a, b);
+        return currentState.putInstruction(opCode, n, a);
     }
 
     /**

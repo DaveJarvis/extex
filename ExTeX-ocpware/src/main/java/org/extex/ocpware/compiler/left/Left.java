@@ -32,22 +32,15 @@ import org.extex.ocpware.compiler.parser.State;
  * This is the interface for left items.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public interface Left {
 
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param cs the compiler state
-     */
-    void compile(CompilerState cs);
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
      * @param state the current state
-     * @param cs TODO
+     * @param cs the compiler state
      * 
      * @return the list of instructions to fix
      * 

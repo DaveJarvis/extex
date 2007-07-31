@@ -35,7 +35,7 @@ import org.extex.ocpware.type.OcpProgram;
  * This class provides a constant arithmetic expression. It holds a number.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public class Constant extends ArithExpr implements Expr, Left {
 
@@ -58,18 +58,6 @@ public class Constant extends ArithExpr implements Expr, Left {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.ocpware.compiler.left.Left#compile(
-     *      org.extex.ocpware.compiler.parser.CompilerState)
-     */
-    public void compile(CompilerState cs) {
-
-        // TODO gene: compile unimplemented
-        throw new RuntimeException("unimplemented");
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.extex.ocpware.compiler.left.Left#genLeft(
      *      org.extex.ocpware.compiler.parser.State, CompilerState)
      */
@@ -78,7 +66,7 @@ public class Constant extends ArithExpr implements Expr, Left {
                 IOException,
                 IllegalOpcodeException {
 
-        int ptr = state.putInstruction(OcpProgram.GOTO_NE, n, 0, 0);
+        int ptr = state.putInstruction(OcpProgram.GOTO_NE, n, 0);
         List<Integer> holes = new ArrayList<Integer>();
         holes.add(Integer.valueOf(ptr - 1));
         return holes;

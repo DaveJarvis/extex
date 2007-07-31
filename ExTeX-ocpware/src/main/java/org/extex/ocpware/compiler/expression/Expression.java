@@ -316,18 +316,18 @@ public class Expression {
 
         cs.setCurrentState(leftState);
         cs.incrExpr();
-        outLeft(cs);
-        // rightOffset = 0;
+        List<Integer> holes = outLeft(cs);
+        // TODO rightOffset = 0;
 
         if (right != null) {
             right.compile(cs);
-            // right_offset=OTP_PBACK_OFFSET;
+            // TODO right_offset=OTP_PBACK_OFFSET;
         }
         if (rightState != null) {
             rightState.compile(cs);
         }
         cs.putInstruction(OcpProgram.STOP);
-        // TODO fill_in(left_false_holes);
+        cs.getCurrentState().fillIn(holes);
     }
 
     /**
@@ -420,13 +420,10 @@ public class Expression {
                 int ptr =
                         cs.getCurrentState().putInstruction(
                             OcpProgram.GOTO_NO_ADVANCE);
-                // left_false_holes = cons(out_ptr-1,left_false_holes);
-                leftFalseHoles.add(0, Integer.valueOf(ptr - 1));
+                leftFalseHoles.add(Integer.valueOf(ptr - 1));
             }
 
-            if (holes != null) {
-                leftFalseHoles.addAll(holes);
-            }
+            leftFalseHoles.addAll(holes);
         }
 
         return leftFalseHoles;

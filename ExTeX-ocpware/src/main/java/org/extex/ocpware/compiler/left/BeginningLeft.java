@@ -32,7 +32,7 @@ import org.extex.ocpware.type.OcpProgram;
  * This class represents a reference to the beginning of the sequence.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public class BeginningLeft implements Left {
 
@@ -47,18 +47,6 @@ public class BeginningLeft implements Left {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.ocpware.compiler.left.Left#compile(
-     *      org.extex.ocpware.compiler.parser.CompilerState)
-     */
-    public void compile(CompilerState cs) {
-
-        // TODO gene: compile unimplemented
-        throw new RuntimeException("unimplemented");
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.extex.ocpware.compiler.left.Left#genLeft(
      *      org.extex.ocpware.compiler.parser.State, CompilerState)
      */
@@ -67,12 +55,12 @@ public class BeginningLeft implements Left {
                 ArgmentTooBigException {
 
         int ptr = state.putInstruction(OcpProgram.GOTO_BEG, 0);
-        List<Integer> trueHoles = new ArrayList<Integer>();
-        trueHoles.add(Integer.valueOf(ptr -1));
+        List<Integer> holes = new ArrayList<Integer>();
+        holes.add(Integer.valueOf(ptr -1));
         ptr = state.putInstruction(OcpProgram.GOTO, 0);
         List<Integer> falseHoles = new ArrayList<Integer>();
         falseHoles.add(Integer.valueOf(ptr -1));
-        state.fillIn(trueHoles);
+        state.fillIn(holes);
         return falseHoles;
     }
 

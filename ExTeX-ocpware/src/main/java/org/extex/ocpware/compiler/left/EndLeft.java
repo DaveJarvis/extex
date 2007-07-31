@@ -32,7 +32,7 @@ import org.extex.ocpware.type.OcpProgram;
  * This class represents a reference to the end of the sequence.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public class EndLeft implements Left {
 
@@ -42,18 +42,6 @@ public class EndLeft implements Left {
     public EndLeft() {
 
         super();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.left.Left#compile(
-     *      org.extex.ocpware.compiler.parser.CompilerState)
-     */
-    public void compile(CompilerState cs) {
-
-        // TODO gene: compile unimplemented
-        throw new RuntimeException("unimplemented");
     }
 
     /**

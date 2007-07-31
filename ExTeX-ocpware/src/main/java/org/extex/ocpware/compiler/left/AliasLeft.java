@@ -31,7 +31,7 @@ import org.extex.ocpware.compiler.parser.State;
  * This class represents a reference to an alias as left item.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public class AliasLeft implements Left {
 
@@ -49,18 +49,6 @@ public class AliasLeft implements Left {
 
         super();
         this.ref = ref;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.left.Left#compile(
-     *      org.extex.ocpware.compiler.parser.CompilerState)
-     */
-    public void compile(CompilerState cs) {
-
-        // TODO gene: compile unimplemented
-        throw new RuntimeException("unimplemented");
     }
 
     /**

@@ -20,17 +20,21 @@
 package org.extex.ocpware.compiler.left;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.ocpware.compiler.exception.AliasNotDefinedException;
 import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
+import org.extex.ocpware.compiler.exception.IllegalOpcodeException;
 import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.compiler.parser.State;
+import org.extex.ocpware.type.OcpProgram;
 
 /**
  * This class represents a ... as left item.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public class CompleteLeft implements Left {
 
@@ -40,7 +44,8 @@ public class CompleteLeft implements Left {
     private int from;
 
     /**
-     * The field <tt>left</tt> contains the ...
+     * The field <tt>left</tt> contains the left item to apply the constraints
+     * to.
      */
     private Left left;
 
@@ -72,22 +77,34 @@ public class CompleteLeft implements Left {
      */
     public List<Integer> genLeft(State state, CompilerState cs)
             throws IOException,
-                ArgmentTooBigException {
+                ArgmentTooBigException,
+                AliasNotDefinedException,
+                IllegalOpcodeException {
 
-        // TODO gene: genLeft unimplemented
-        throw new RuntimeException("unimplemented");
-    }
+        List<Integer> holes = new ArrayList<Integer>();
+        if (from > to) {
+            return holes;
+        }
+        List<Integer> trueHoles = new ArrayList<Integer>();
+        List<Integer> backupHoles = new ArrayList<Integer>();
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ocpware.compiler.left.Left#compile(
-     *      org.extex.ocpware.compiler.parser.CompilerState)
-     */
-    public void compile(CompilerState cs) {
+        for (int k = 1; k <= from; k++) {
+            holes.addAll(left.genLeft(state, cs));
+            int ptr = state.putInstruction(OcpProgram.GOTO_NO_ADVANCE, 0);
+            holes.add(Integer.valueOf(ptr - 1));
+        }
+        for (int k = 1; k <= from; k++) {
+            trueHoles.addAll(left.genLeft(state, cs));
+            int ptr = state.putInstruction(OcpProgram.GOTO_NO_ADVANCE, 0);
+            backupHoles.add(Integer.valueOf(ptr - 1));
+        }
+        trueHoles.addAll(left.genLeft(state, cs));
+        state.putInstruction(OcpProgram.GOTO, state.getPointer() + 2);
+        state.fillIn(trueHoles);
+        state.putInstruction(OcpProgram.LEFT_BACKUP, 0);
+        state.fillIn(backupHoles);
 
-        // TODO gene: compile unimplemented
-        throw new RuntimeException("unimplemented");
+        return holes;
     }
 
     /**

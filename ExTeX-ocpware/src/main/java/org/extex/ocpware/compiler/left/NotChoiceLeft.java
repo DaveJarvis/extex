@@ -20,6 +20,7 @@
 package org.extex.ocpware.compiler.left;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
@@ -30,7 +31,7 @@ import org.extex.ocpware.compiler.parser.State;
  * This class represents a negated list of left items.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public class NotChoiceLeft implements Left {
 
@@ -53,18 +54,6 @@ public class NotChoiceLeft implements Left {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.ocpware.compiler.left.Left#compile(
-     *      org.extex.ocpware.compiler.parser.CompilerState)
-     */
-    public void compile(CompilerState cs) {
-
-        // TODO gene: compile unimplemented
-        throw new RuntimeException("unimplemented");
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.extex.ocpware.compiler.left.Left#genLeft(
      *      org.extex.ocpware.compiler.parser.State, CompilerState)
      */
@@ -72,6 +61,15 @@ public class NotChoiceLeft implements Left {
             throws IOException,
                 ArgmentTooBigException {
 
+        List<Integer> holes = new ArrayList<Integer>();
+
+//        for (Left l : list) {
+//            
+//        }
+
+        
+        
+        
         // TODO gene: genLeft unimplemented
         throw new RuntimeException("unimplemented");
     }

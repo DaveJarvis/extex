@@ -32,7 +32,7 @@ import org.extex.ocpware.type.OcpProgram;
  * This class represents a string of characters as left item.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public class StringLeft implements Left {
 
@@ -55,18 +55,6 @@ public class StringLeft implements Left {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.ocpware.compiler.left.Left#compile(
-     *      org.extex.ocpware.compiler.parser.CompilerState)
-     */
-    public void compile(CompilerState cs) {
-
-        // TODO gene: compile unimplemented
-        throw new RuntimeException("unimplemented");
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.extex.ocpware.compiler.left.Left#genLeft(State, CompilerState)
      */
     public List<Integer> genLeft(State state, CompilerState cs)
@@ -78,7 +66,7 @@ public class StringLeft implements Left {
         char c = s.charAt(0);
         for (int i = 0; i < length;) {
 
-            int ptr = state.putInstruction(OcpProgram.GOTO_NE, c, 0, 0);
+            int ptr = state.putInstruction(OcpProgram.GOTO_NE, c, 0);
             holes.add(Integer.valueOf(ptr - 1));
 
             if (++i < length) {

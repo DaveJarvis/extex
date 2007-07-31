@@ -31,7 +31,7 @@ import org.extex.ocpware.type.OcpProgram;
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public class State {
 
@@ -73,6 +73,11 @@ public class State {
         }
         putInstruction(OcpProgram.RIGHT_CHAR, 1);
         putInstruction(OcpProgram.STOP);
+    }
+
+    public int getPointer() {
+        
+        return instructions.size();
     }
 
     /**
@@ -151,7 +156,7 @@ public class State {
         if (opCode < 1 || opCode > 36) {
             throw new IllegalOpcodeException(opCode);
         }
-        if (n > 0xffff) {
+        if (n > 0xffffff) {
             throw new ArgmentTooBigException(n);
         }
         instructions.add(Integer.valueOf((opCode << 24) | n));
@@ -164,7 +169,6 @@ public class State {
      * @param opCode the op code
      * @param n the first argument
      * @param a the second argument
-     * @param b the third argument
      * 
      * @return the index of the next free position in the instruction array
      * 
@@ -173,7 +177,7 @@ public class State {
      *         the 16 bit value
      * @throws IllegalOpcodeException in case of an illegal op code
      */
-    public int putInstruction(int opCode, int n, int a, int b)
+    public int putInstruction(int opCode, int n, int a)
             throws ArgmentTooBigException,
                 IOException,
                 IllegalOpcodeException {
@@ -181,17 +185,14 @@ public class State {
         if (opCode < 1 || opCode > 36) {
             throw new IllegalOpcodeException(opCode);
         }
-        if (n > 0xffff) {
+        if (n > 0xffffff) {
             throw new ArgmentTooBigException(n);
         }
-        if (a > 0xffff) {
+        if (a > 0xffffff) {
             throw new ArgmentTooBigException(a);
         }
-        if (b > 0xffff) {
-            throw new ArgmentTooBigException(b);
-        }
         instructions.add(Integer.valueOf((opCode << 24) | n));
-        instructions.add(Integer.valueOf((a << 16) | b));
+        instructions.add(Integer.valueOf(a));
         return instructions.size();
     }
 

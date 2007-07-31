@@ -30,7 +30,7 @@ import org.extex.ocpware.compiler.exception.SyntaxException;
  * entities.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public class ParserStream extends PushbackInputStream {
 
@@ -79,10 +79,7 @@ public class ParserStream extends PushbackInputStream {
     public void expect(char ex) throws IOException, SyntaxException {
 
         int c = skipSpace();
-        if (c < 0) {
-            throw new SyntaxException(line, lineno);
-        }
-        if (c != ex) {
+        if (c < 0 || c != ex) {
             throw new SyntaxException(c, ex, line, lineno);
         }
     }

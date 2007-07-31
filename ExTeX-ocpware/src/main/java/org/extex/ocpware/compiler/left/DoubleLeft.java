@@ -32,7 +32,7 @@ import org.extex.ocpware.type.OcpProgram;
  * This class represents a range of characters as left item.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public class DoubleLeft implements Left {
 
@@ -81,18 +81,6 @@ public class DoubleLeft implements Left {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.ocpware.compiler.left.Left#compile(
-     *      org.extex.ocpware.compiler.parser.CompilerState)
-     */
-    public void compile(CompilerState cs) {
-
-        // TODO gene: compile unimplemented
-        throw new RuntimeException("unimplemented");
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.extex.ocpware.compiler.left.Left#genLeft(
      *      org.extex.ocpware.compiler.parser.State, CompilerState)
      */
@@ -101,9 +89,9 @@ public class DoubleLeft implements Left {
                 ArgmentTooBigException {
 
         List<Integer> holes = new ArrayList<Integer>();
-        int ptr = state.putInstruction(OcpProgram.GOTO_LT, from, 0, 0);
+        int ptr = state.putInstruction(OcpProgram.GOTO_LT, from, 0);
         holes.add(Integer.valueOf(ptr - 1));
-        ptr = state.putInstruction(OcpProgram.GOTO_GT, to, 0, 0);
+        ptr = state.putInstruction(OcpProgram.GOTO_GT, to, 0);
         holes.add(Integer.valueOf(ptr - 1));
         return holes;
     }

@@ -19,6 +19,7 @@
 
 package org.extex.ocpware.compiler.left;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.extex.ocpware.compiler.parser.CompilerState;
@@ -28,7 +29,7 @@ import org.extex.ocpware.compiler.parser.State;
  * This class represents an arbitrary character as left items.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public class WildCard implements Left {
 
@@ -43,24 +44,12 @@ public class WildCard implements Left {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.ocpware.compiler.left.Left#compile(
-     *      org.extex.ocpware.compiler.parser.CompilerState)
-     */
-    public void compile(CompilerState cs) {
-
-        // TODO gene: compile unimplemented
-        throw new RuntimeException("unimplemented");
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.extex.ocpware.compiler.left.Left#genLeft(
      *      org.extex.ocpware.compiler.parser.State, CompilerState)
      */
     public List<Integer> genLeft(State state, CompilerState cs) {
 
-        return null;
+        return new ArrayList<Integer>();
     }
 
     /**

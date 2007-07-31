@@ -26,12 +26,13 @@ import java.util.List;
 import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
 import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.compiler.parser.State;
+import org.extex.ocpware.type.OcpProgram;
 
 /**
  * This class represents a list of alternative left items.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public class ChoiceLeft extends ArrayList<List<Left>> implements Left {
 
@@ -52,18 +53,6 @@ public class ChoiceLeft extends ArrayList<List<Left>> implements Left {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.ocpware.compiler.left.Left#compile(
-     *      org.extex.ocpware.compiler.parser.CompilerState)
-     */
-    public void compile(CompilerState cs) {
-
-        // TODO gene: compile unimplemented
-        throw new RuntimeException("unimplemented");
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.extex.ocpware.compiler.left.Left#genLeft(
      *      org.extex.ocpware.compiler.parser.State, CompilerState)
      */
@@ -71,8 +60,30 @@ public class ChoiceLeft extends ArrayList<List<Left>> implements Left {
             throws IOException,
                 ArgmentTooBigException {
 
+        List<Integer> trueHoles = new ArrayList<Integer>();
+        List<Integer> holes = new ArrayList<Integer>();
+
+        for (List<Left> list : this) {
+
+            // p=arg->more_lefts;
+            // while (p!=nil) {
+            // false_holes = gen_left(p->val);
+            // if (p->ptr) {
+            // out_int(OTP_GOTO, 0);
+            int ptr = state.putInstruction(OcpProgram.GOTO, 0);
+            // true_holes=cons(out_ptr-1, true_holes);
+            trueHoles.add(Integer.valueOf(ptr - 1));
+            // fill_in(false_holes);
+            cs.getCurrentState().fillIn(holes);
+            // }
+            // p=p->ptr;
+        }
+        cs.getCurrentState().fillIn(trueHoles);
+
         //TODO gene: genLeft unimplemented
         throw new RuntimeException("unimplemented");
+        
+        //        return holes;
     }
 
     /**
