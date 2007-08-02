@@ -88,13 +88,18 @@ public final class CompilerState {
     private Map<String, Integer> namedStates = new HashMap<String, Integer>();
 
     /**
+     * The field <tt>states</tt> contains the list of states.
+     */
+    private Map<String, Integer> namedTables = new HashMap<String, Integer>();
+
+    /**
      * The field <tt>out</tt> contains the number of bytes in the output
      * stream.
      */
     private int out;
 
     /**
-     * The field <tt>states</tt> contains the ...
+     * The field <tt>states</tt> contains the list of states.
      */
     private List<State> states = new ArrayList<State>();
 
@@ -146,7 +151,7 @@ public final class CompilerState {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Compile the current compiler state into an ocp program.
      * 
      * @return the OCP program
      * 
@@ -322,7 +327,7 @@ public final class CompilerState {
      */
     public int lookupTable(String table) throws TableNotDefinedException {
 
-        Integer s = namedStates.get(table);
+        Integer s = namedTables.get(table);
         if (s == null) {
             throw new TableNotDefinedException(table);
         }
@@ -484,6 +489,7 @@ public final class CompilerState {
             for (int i = 0; i < size; i++) {
                 a[i] = tab.get(i).intValue();
             }
+            namedTables.put(name, Integer.valueOf(tables.size()));
             tables.put(name, new Table(name, n, a));
         }
         s.unread(name.getBytes());

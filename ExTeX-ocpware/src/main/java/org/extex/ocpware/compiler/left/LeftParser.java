@@ -45,24 +45,24 @@ public final class LeftParser {
      * @throws IOException in case of an I/O error
      * @throws SyntaxException in case of a syntax error
      */
-    public static Left choiceLeft(ParserStream s)
+    public static ChoiceLeft choiceLeft(ParserStream s)
             throws IOException,
                 SyntaxException {
 
         ChoiceLeft result = new ChoiceLeft();
         List<Left> ins = new ArrayList<Left>();
-        result.add(ins);
+        result.add(new LeftList(ins));
         int c;
         do {
             ins.add(oneLeft(s));
             c = s.skipSpace();
             if (c == '|') {
                 ins = new ArrayList<Left>();
-                result.add(ins);
+                result.add(new LeftList(ins));
             }
         } while (c >= 0 && c != ')');
 
-        return (result.size() == 1 ? new LeftList(result.get(0)) : result);
+        return result;
     }
 
     /**
@@ -144,8 +144,7 @@ public final class LeftParser {
                 return new AliasLeft(t);
             case '^':
                 s.expect('(');
-                Left not = choiceLeft(s);
-                return new NotChoiceLeft(not);
+                return new NotChoiceLeft(choiceLeft(s));
             case '.':
                 return new WildCard();
             case '`':

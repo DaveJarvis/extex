@@ -17,18 +17,19 @@
  *
  */
 
-package org.extex.ocpware.compiler.parser;
+package org.extex.ocpware.compiler;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class provides the contents of some OTP files as String.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public final class OTP {
 
     /**
-     * The field <tt>_7IN88593_OTP</tt> contains the ...
+     * The constant <tt>OMEGA_7IN88593_OTP</tt> contains the contents of the
+     * file <tt>otp/omega/7in88593.otp</tt>.
      */
     public static final String OMEGA_7IN88593_OTP =
             "input:    1;\n"
@@ -65,6 +66,14 @@ public final class OTP {
                     + "%.      => @\"FFFD;\n" + ". => \\1;\n";
 
     /**
+     * The constant <tt>OMEGA_DESTROY_OTP</tt> contains the contents of the
+     * file <tt>otp/omega/destroy.otp</tt>.
+     */
+    public static final String OMEGA_DESTROY_OTP = "input: 1;\n" //
+            + "output: 1;\n\n" //
+            + "expressions:\n" + ". => \"*\";\n";
+
+    /**
      * The field <tt>LAT2UNI_OTP</tt> contains the ...
      */
     public static final String OMEGA_LAT2UNI_OTP =
@@ -81,7 +90,8 @@ public final class OTP {
                     + ". => \\1;\n";
 
     /**
-     * The field <tt>LOWERCASE_OTP</tt> contains the ...
+     * The constant <tt>OMEGA_LOWERCASE_OTP</tt> contains the contents of the
+     * file <tt>otp/omega/lowercase.otp</tt>.
      */
     public static final String OMEGA_LOWERCASE_OTP =
             "input: 2;\n\noutput: 2;\n\n"
@@ -230,6 +240,19 @@ public final class OTP {
                     + "@\"e1ca => @\"1ff7 ;\n" + "@\"e1cb => @\"0587 ;\n\n"
                     + "% All others (wow, they are many of them!)\n" + "\n"
                     + ". => \\1 ;\n\n";
+
+    /**
+     * The field <tt>OMEGA_LUNATESIGMA_OTP</tt> contains the ...
+     */
+    public static final String OMEGA_LUNATESIGMA_OTP =
+            "input: 2;\n" //
+                    + "output: 2;\n" + "\n" + "expressions:\n"
+                    + "\n"
+                    + "@\"03A3 =>  @\"03FE ;\n"
+                    + "\n"
+                    + "@\"03C2 =>  @\"03F2 ;\n"
+                    + "\n"
+                    + "@\"03C3 =>  @\"03F2 ;\n" + "\n" + ". => \\1;\n";
 
     /**
      * The field <tt>UNI2CUNI_OTP</tt> contains the ...
@@ -398,17 +421,84 @@ public final class OTP {
                     + "   \n" + "@\"F000-@\"F07F => \\1 ;\n";
 
     /**
-     * The field <tt>OMEGA_LUNATESIGMA_OTP</tt> contains the ...
+     * The constant <tt>OMEGA_UNI2LAT_OTP</tt> contains the contents of the
+     * file <tt>otp/omega/uni2lat.otp</tt>.
      */
-    public static final String OMEGA_LUNATESIGMA_OTP =
-            "input: 2;\n" //
-                    + "output: 2;\n" + "\n" + "expressions:\n"
+    public static final String OMEGA_UNI2LAT_OTP =
+            "input: 2;\n"
+                    + "output: 2;\n"
                     + "\n"
-                    + "@\"03A3 =>  @\"03FE ;\n"
+                    + "expressions:\n"
                     + "\n"
-                    + "@\"03C2 =>  @\"03F2 ;\n"
+                    + "%`f\'`f\'`i\'`j\' => @\"022C; % for Dutch only\n"
+                    + "`f\'`f\'`i\' => @\"0223;\n"
+                    + "`f\'`f\'`l\' => @\"0224;\n"
+                    + "`f\'`f\'`j\' => @\"022A;\n"
+                    + "`f\'`f\'@\"012F => @\"0226;\n"
+                    + "`f\'`f\'@\"0142 => @\"0228;\n"
+                    + "`f\'`f\'@\"013A => @\"022E;\n"
+                    + "`f\'`f\'@\"013C => @\"0230;\n"
+                    + "`f\'`f\'@\"013E => @\"0232;\n"
+                    + "`f\'`f\'@\"0140 => @\"0234;\n"
+                    + "`f\'`f\' => @\"0220;\n"
+                    + "%`f\'`i\'`j\' => @\"022B; % for Dutch only\n"
+                    + "`f\'`i\' => @\"0221;\n"
+                    + "`f\'`l\' => @\"0222;\n"
+                    + "`f\'`j\' => @\"0229;\n"
+                    + "`f\'@\"012F => @\"0225;\n"
+                    + "`f\'@\"0142 => @\"0227;\n"
+                    + "`f\'@\"013A => @\"022D;\n"
+                    + "`f\'@\"013C => @\"022F;\n"
+                    + "`f\'@\"013E => @\"0231;\n"
+                    + "`f\'@\"0140 => @\"0233;\n"
+                    + "%\n"
+                    + "% s-long ligatures\n"
+                    + "%\n"
+                    + "@\"017F@\"017F`i\' => @\"0238;\n"
+                    + "@\"017F@\"017F`l\' => @\"0239;\n"
+                    + "@\"017F@\"017F => @\"0235;\n"
+                    + "@\"017F`i\' => @\"0236;\n"
+                    + "@\"017F`l\' => @\"0237;\n"
+                    + "% French calligraphic ones\n"
+                    + "%`s\'`t\' => @\"023A;\n"
+                    + "%`c\'`t\' => @\"023B;\n"
                     + "\n"
-                    + "@\"03C3 =>  @\"03F2 ;\n" + "\n" + ". => \\1;\n";
+                    + "%\n"
+                    + "% Tifinagh ligatures\n"
+                    + "%\n"
+                    + "% slanted l and n\n"
+                    + "(@\"0C4E|@\"0C4C)(@\"0C45|@\"0C4F)@\"0C4E => #(\\1) @\"0C82 ;\n"
+                    + "(@\"0C4E|@\"0C4C)@\"0C4E => #(\\1) @\"0C82 ;\n"
+                    + "(@\"0C4E|@\"0C4C)(@\"0C45|@\"0C4F)@\"0C4C => #(\\1) @\"0C81 ;\n"
+                    + "(@\"0C4E|@\"0C4C)@\"0C4C => #(\\1) @\"0C81 ;\n"
+                    + "% ng\n"
+                    + "@\"0C4E(@\"0C45|@\"0C4F)@\"0C47 => @\"0C80 ;\n"
+                    + "@\"0C4E@\"0C47 => @\"0C80 ;\n" + "% bt, ct, etc.\n"
+                    + "@\"0C42(@\"0C45|@\"0C4F)@\"0C54 => @\"0C83 ;\n"
+                    + "@\"0C42@\"0C54 => @\"0C83 ;\n"
+                    + "@\"0C43(@\"0C45|@\"0C4F)@\"0C54 => @\"0C84 ;\n"
+                    + "@\"0C43@\"0C54 => @\"0C84 ;\n"
+                    + "@\"0C47(@\"0C45|@\"0C4F)@\"0C54 => @\"0C86 ;\n"
+                    + "@\"0C47@\"0C54 => @\"0C86 ;\n"
+                    + "@\"0C4D(@\"0C45|@\"0C4F)@\"0C54 => @\"0C87 ;\n"
+                    + "@\"0C4D@\"0C54 => @\"0C87 ;\n"
+                    + "@\"0C52(@\"0C45|@\"0C4F)@\"0C54 => @\"0C88 ;\n"
+                    + "@\"0C52@\"0C54 => @\"0C88 ;\n"
+                    + "@\"0C53(@\"0C45|@\"0C4F)@\"0C54 => @\"0C89 ;\n"
+                    + "@\"0C53@\"0C54 => @\"0C89 ;\n"
+                    + "@\"0C7A(@\"0C45|@\"0C4F)@\"0C54 => @\"0C8A ;\n"
+                    + "@\"0C7A@\"0C54 => @\"0C8A ;\n" + "\n"
+                    + "@\"2010-@\"2046 => #(\\1 - @\"1000);\n" + "\n" + "%\n"
+                    + "% Latin extended additional (0600-06FF)\n" + "%\n"
+                    + "@\"1E00-@\"1EFF => #(\\1 - @\"1800);\n" + "\n" + "%\n"
+                    + "% Verbatim mode\n" + "@\"F023 => @\"0083;\n"
+                    + "@\"F024 => @\"0084;\n" + "@\"F025 => @\"0085;\n"
+                    + "@\"F026 => @\"0086;\n" + "@\"F07B => @\"008B;\n"
+                    + "@\"F05C => @\"008C;\n" + "@\"F07D => @\"008D;\n"
+                    + "@\"F05E => @\"008E;\n" + "@\"F05F => @\"008F;\n"
+                    + "@\"F07E => @\"0080;\n"
+                    + "@\"F000-@\"F07F => \"\\string\" #(\\1 - @\"F000) ; \n"
+                    + "\n" + ". => \\1;\n" + "\n" + "\n" + "";
 
     /**
      * Creates a new object.

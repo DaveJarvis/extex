@@ -20,9 +20,12 @@
 package org.extex.ocpware.compiler.left;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.ocpware.compiler.exception.AliasNotDefinedException;
 import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
+import org.extex.ocpware.compiler.exception.IllegalOpcodeException;
 import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.compiler.parser.State;
 
@@ -57,11 +60,17 @@ public class LeftList implements Left {
      *      org.extex.ocpware.compiler.parser.State, CompilerState)
      */
     public List<Integer> genLeft(State state, CompilerState cs)
-            throws IOException,
-                ArgmentTooBigException {
+            throws AliasNotDefinedException,
+                ArgmentTooBigException,
+                IOException,
+                IllegalOpcodeException {
 
-        // TODO gene: genLeft unimplemented
-        throw new RuntimeException("unimplemented");
+        List<Integer> holes = new ArrayList<Integer>();
+
+        for (Left l : list) {
+            holes.addAll(l.genLeft(state, cs));
+        }
+        return holes;
     }
 
     /**

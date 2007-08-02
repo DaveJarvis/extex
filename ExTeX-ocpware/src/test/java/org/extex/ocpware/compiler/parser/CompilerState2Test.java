@@ -26,6 +26,7 @@ import java.util.Locale;
 
 import junit.framework.TestCase;
 
+import org.extex.ocpware.compiler.OTP;
 import org.extex.ocpware.type.OcpProgram;
 import org.extex.ocpware.writer.OcpExTeXWriter;
 import org.extex.ocpware.writer.OcpOmegaWriter;
@@ -151,4 +152,29 @@ public class CompilerState2Test extends TestCase {
                 + "         14  STOP            0x0 (0)\n");
     }
 
+    /**
+     * lunatesigma.otp
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testParseDestroyN() throws Exception {
+
+        Locale.setDefault(Locale.ENGLISH);
+        run(OTP.OMEGA_DESTROY_OTP, false, "ctp_input      : 1\n" //
+                + "ctp_output     : 1\n"
+                + "ctp_no_tables  : 0\n"
+                + "ctp_room_tables: 0\n"
+                + "ctp_no_states  : 1\n"
+                + "ctp_room_states: 6\n"
+                + "\n"
+                + "State 0: 6 entries\n"
+                + "\n"
+                + "          0  LEFT_START      0x0 (0)\n"
+                + "          1  RIGHT_NUM       0x2a (42,`*\')\n"
+                + "          2  STOP            0x0 (0)\n"
+                + "          3  LEFT_RETURN     0x0 (0)\n"
+                + "          4  RIGHT_CHAR      0x1 (1)\n"
+                + "          5  STOP            0x0 (0)\n");
+    }
 }

@@ -25,6 +25,7 @@ import java.util.Locale;
 
 import junit.framework.TestCase;
 
+import org.extex.ocpware.compiler.OTP;
 import org.extex.ocpware.compiler.exception.AliasDefinedException;
 import org.extex.ocpware.compiler.exception.AliasNotDefinedException;
 import org.extex.ocpware.compiler.exception.MissingExpressionsException;

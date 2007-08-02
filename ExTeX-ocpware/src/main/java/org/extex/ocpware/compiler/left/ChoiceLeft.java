@@ -23,7 +23,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.ocpware.compiler.exception.AliasNotDefinedException;
 import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
+import org.extex.ocpware.compiler.exception.IllegalOpcodeException;
 import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.compiler.parser.State;
 import org.extex.ocpware.type.OcpProgram;
@@ -34,7 +36,7 @@ import org.extex.ocpware.type.OcpProgram;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6007 $
  */
-public class ChoiceLeft extends ArrayList<List<Left>> implements Left {
+public class ChoiceLeft extends ArrayList<Left> implements Left {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -58,32 +60,28 @@ public class ChoiceLeft extends ArrayList<List<Left>> implements Left {
      */
     public List<Integer> genLeft(State state, CompilerState cs)
             throws IOException,
-                ArgmentTooBigException {
+                ArgmentTooBigException,
+                AliasNotDefinedException,
+                IllegalOpcodeException {
 
         List<Integer> trueHoles = new ArrayList<Integer>();
         List<Integer> holes = new ArrayList<Integer>();
+        boolean first = true;
 
-        for (List<Left> list : this) {
+        for (Left left : this) {
 
-            // p=arg->more_lefts;
-            // while (p!=nil) {
-            // false_holes = gen_left(p->val);
-            // if (p->ptr) {
-            // out_int(OTP_GOTO, 0);
-            int ptr = state.putInstruction(OcpProgram.GOTO, 0);
-            // true_holes=cons(out_ptr-1, true_holes);
-            trueHoles.add(Integer.valueOf(ptr - 1));
-            // fill_in(false_holes);
-            cs.getCurrentState().fillIn(holes);
-            // }
-            // p=p->ptr;
+            if (first) {
+                first = false;
+            } else {
+                int ptr = state.putInstruction(OcpProgram.GOTO, 0);
+                trueHoles.add(Integer.valueOf(ptr - 1));
+                cs.getCurrentState().fillIn(holes);
+            }
+            holes = left.genLeft(state, cs);
         }
         cs.getCurrentState().fillIn(trueHoles);
 
-        //TODO gene: genLeft unimplemented
-        throw new RuntimeException("unimplemented");
-        
-        //        return holes;
+        return holes;
     }
 
     /**
@@ -97,15 +95,13 @@ public class ChoiceLeft extends ArrayList<List<Left>> implements Left {
         StringBuffer sb = new StringBuffer();
         boolean sep = false;
 
-        for (List<Left> list : this) {
+        for (Left left : this) {
             if (sep) {
                 sb.append(" | ");
             } else {
                 sep = true;
             }
-            for (Left l : list) {
-                sb.append(l.toString());
-            }
+            sb.append(left.toString());
         }
         return sb.toString();
     }

@@ -36,16 +36,16 @@ import org.extex.ocpware.compiler.parser.State;
 public class NotChoiceLeft implements Left {
 
     /**
-     * The field <tt>list</tt> contains the list.
+     * The field <tt>list</tt> contains the list of left items contained.
      */
-    private Left list;
+    private List<Left> list;
 
     /**
      * Creates a new object.
      * 
      * @param list the left list
      */
-    public NotChoiceLeft(Left list) {
+    public NotChoiceLeft(ChoiceLeft list) {
 
         super();
         this.list = list;
@@ -63,12 +63,21 @@ public class NotChoiceLeft implements Left {
 
         List<Integer> holes = new ArrayList<Integer>();
 
-//        for (Left l : list) {
-//            
-//        }
+        // for (Left l : list) {
+        //            
+        // }
 
-        
-        
+//        true_holes=nil;
+//        p=arg->more_lefts;
+//        while (p!=nil) {
+//            false_holes = gen_left(p->val);
+//            out_int(OTP_GOTO, 0);
+//            true_holes=cons(out_ptr-1, true_holes);
+//            fill_in(false_holes);
+//            p=p->ptr;
+//        }
+//        return true_holes;
+
         
         // TODO gene: genLeft unimplemented
         throw new RuntimeException("unimplemented");
@@ -82,7 +91,17 @@ public class NotChoiceLeft implements Left {
     @Override
     public String toString() {
 
-        return "^(" + list.toString() + ")";
+        StringBuffer sb = new StringBuffer("^(");
+        boolean first = true;
+        for (Left l : list) {
+            if (first) {
+                first = false;
+            } else {
+                sb.append(" | ");
+            }
+            sb.append(l.toString());
+        }
+        sb.append(")");
+        return sb.toString();
     }
-
 }
