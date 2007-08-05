@@ -23,6 +23,8 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.List;
 
+import org.extex.ocpware.type.IllegalOpCodeException;
+import org.extex.ocpware.type.OcpCode;
 import org.extex.ocpware.type.OcpProgram;
 
 /**
@@ -31,46 +33,166 @@ import org.extex.ocpware.type.OcpProgram;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class OcpExTeXWriter extends OcpOmegaWriter {
+public class OcpExTeXWriter extends AbstractWriter {
 
-    private static int[] noArgs = {//
-            0, // 1 RIGHT_OUTPUT
-                    1, // 2 RIGHT_NUM
-                    1, // 3 RIGHT_CHAR
-                    1, // 4 RIGHT_LCHAR
-                    2, // 5 RIGHT_SOME
-                    0, // 6 PBACK_OUTPUT
-                    1, // 7 PBACK_NUM
-                    1, // 8 PBACK_CHAR
-                    1, // 9 PBACK_LCHAR
-                    2, // 10 PBACK_SOME
-                    0, // 11 ADD
-                    0, // 12 SUB
-                    0, // 13 MULT
-                    0, // 14 DIV
-                    0, // 15 MOD
-                    0, // 16 LOOKUP
-                    1, // 17 PUSH_NUM
-                    1, // 18 PUSH_CHAR
-                    1, // 19 PUSH_LCHAR
-                    1, // 20 STATE_CHANGE
-                    1, // 21 STATE_PUSH
-                    1, // 22 STATE_POP
-                    0, // 23 LEFT_START
-                    0, // 24 LEFT_RETURN
-                    0, // 25 LEFT_BACKUP
-                    1, // 26 GOTO
-                    2, // 27 GOTO_NE
-                    2, // 28 GOTO_EQ
-                    2, // 29 GOTO_LT
-                    2, // 30 GOTO_LE
-                    2, // 31 GOTO_GT
-                    2, // 32 GOTO_GE
-                    1, // 33 GOTO_NO_ADVANCE
-                    1, // 34 GOTO_BEG
-                    1, // 35 GOTO_END
-                    0 // 36 STOP
-            };
+    /**
+     * Creates a new object.
+     * 
+     */
+    public OcpExTeXWriter() {
+
+        super();
+    }
+
+    /**
+     * Fill a list of labels for all instructions which are addressed within
+     * some goto statements in the code.
+     * 
+     * @param instructions the list of instructions
+     * @param labels the list of labels for each instruction
+     */
+    private void collectLabels(int[] instructions, String[] labels) {
+
+        int no = 1;
+
+        for (int codePointer = 0; codePointer < instructions.length;) {
+
+            int arg = instructions[codePointer++];
+
+            OcpCode code = OcpCode.get(arg >> OcpCode.OPCODE_OFFSET);
+            if (code == null) {
+                throw new IllegalOpCodeException(Integer
+                    .toString(arg >> OcpCode.OPCODE_OFFSET));
+            }
+
+            byte[] noArgs = code.getArguments();
+
+            boolean first = true;
+
+            for (byte b : noArgs) {
+                if (first) {
+                    first = false;
+                    arg = arg & OcpCode.ARGUMENT_BIT_MASK;
+                } else {
+                    arg =
+                            instructions[codePointer++]
+                                    & OcpCode.ARGUMENT_BIT_MASK;
+                }
+                switch (b) {
+                    case 'l':
+                        if (labels[arg] == null) {
+                            labels[arg] = "_" + Integer.toString(no++);
+                        }
+                        break;
+                    // case 's':
+                    // out.print("_S" + Integer.toString(arg));
+                    // break;
+                    default:
+                        // continue
+                }
+            }
+        }
+    }
+
+    /**
+     * Disassemble a single instruction.
+     * 
+     * @param out the output stream
+     * @param instructions the list of instructions
+     * @param cp the code pointer
+     * @param stateNames the list of names for each state
+     * @param labels the list of labels for each instruction
+     * 
+     * @return the index of the next unprocessed instruction
+     */
+    private int disassemble(PrintStream out, int[] instructions, int cp,
+            String[] stateNames, String[] labels) {
+
+        int codePointer = cp;
+        int arg = instructions[codePointer];
+
+        OcpCode code = OcpCode.get(arg >> OcpCode.OPCODE_OFFSET);
+        if (code == null) {
+            throw new IllegalOpCodeException(Integer
+                .toString(arg >> OcpCode.OPCODE_OFFSET));
+        }
+
+        String label = labels[codePointer++];
+        out.print("  ");
+        if (label == null) {
+            out.print("              ");
+        } else {
+            out.print(label);
+            out.print(":");
+            if (label.length() < 14) {
+                out.print("                ".substring(0, 13 - label.length()));
+            } else {
+                out.print("\n                  ");
+            }
+        }
+
+        String s = code.getInstruction();
+        byte[] noArgs = code.getArguments();
+        out.print(s);
+        if (noArgs.length != 0) {
+            int len = s.length();
+            out.print("                ".substring(0, len > 16 ? 1 : 16 - len));
+        }
+
+        boolean first = true;
+
+        for (byte b : noArgs) {
+            if (first) {
+                first = false;
+                arg = arg & OcpCode.ARGUMENT_BIT_MASK;
+            } else {
+                out.print(", ");
+                arg = instructions[codePointer++] & OcpCode.ARGUMENT_BIT_MASK;
+            }
+            switch (b) {
+                case 'n':
+                    out.print(Integer.toString(arg));
+                    break;
+                case 'c':
+                    out.print("0x" + Integer.toHexString(arg));
+                    break;
+                case 'l':
+                    out.print(labels[arg]);
+                    break;
+                case 's':
+                    out.print(stateNames[arg]);
+                    break;
+                default:
+                    out.print("???");
+            }
+        }
+
+        out.println();
+
+        return codePointer;
+    }
+
+    /**
+     * Print a number as hex and as decimal and optionally as character to an
+     * output stream.
+     * 
+     * @param out the output stream
+     * @param key the resource bundle key
+     * @param value the value to print
+     */
+    protected void print(PrintStream out, String key, int value) {
+
+        String s = "";
+        if (value >= ' ' && value <= 0x7d) {
+            StringBuffer sb = new StringBuffer(",`");
+            sb.append((char) value);
+            sb.append('\'');
+            s = sb.toString();
+        }
+        String hex = Integer.toHexString(value);
+        String dec = Integer.toString(value);
+        out.print(format(key, hex, dec, s));
+    }
 
     /**
      * {@inheritDoc}
@@ -78,7 +200,6 @@ public class OcpExTeXWriter extends OcpOmegaWriter {
      * @see org.extex.ocpware.writer.OcpOmegaWriter#write(java.io.OutputStream,
      *      org.extex.ocpware.type.OcpProgram)
      */
-    @Override
     public void write(OutputStream stream, OcpProgram ocp) {
 
         PrintStream out = new PrintStream(stream);
@@ -87,8 +208,6 @@ public class OcpExTeXWriter extends OcpOmegaWriter {
         if (length >= 0) {
             print(out, "LENGTH", length);
         }
-        print(out, "INPUT", ocp.getInput());
-        print(out, "OUTPUT", ocp.getOutput());
         List<int[]> tables = ocp.getTables();
         print(out, "NO_TABLES", tables.size());
         int mem = 0;
@@ -104,27 +223,55 @@ public class OcpExTeXWriter extends OcpOmegaWriter {
         }
         print(out, "ROOM_STATES", mem);
 
+        print(out, "INPUT", ocp.getInput());
+        print(out, "OUTPUT", ocp.getOutput());
+
+        if (tables.size() > 0) {
+            out.append("\ntables:");
+
+            for (int i = 0; i < tables.size(); i++) {
+                int[] table = tables.get(i);
+                print(out, "TABLE", i);
+                print(out, "TABLE_ENTRIES", table.length);
+
+                boolean first = true;
+                for (int j = 0; j < table.length; j++) {
+                    if (first) {
+                        first = false;
+                        out.append("  ");
+                    } else if (j % 4 == 0) {
+                        out.append(",\n  ");
+                    } else {
+                        out.append(", ");
+                    }
+                    String hex = Integer.toHexString(table[j]);
+                    out.append("0x0000".substring(0, hex.length() < 4 ? 6 - hex
+                        .length() : 2));
+                    out.append(hex);
+                }
+                out.append("}\n");
+            }
+        }
+
+        String[] stateNames = new String[states.size()];
+        for (int i = 0; i < states.size(); i++) {
+            stateNames[i] = "_S" + Integer.toString(i);
+        }
+
         for (int i = 0; i < states.size(); i++) {
             int[] instructions = states.get(i);
-            print(out, "STATE", i);
+            out.append("\nState ");
+            out.append(stateNames[i]);
+            out.append(":");
             print(out, "ENTRIES", instructions.length);
 
-            boolean dis = true;
+            String[] labels = new String[instructions.length];
+            collectLabels(instructions, labels);
 
-            for (int j = 0; j < instructions.length; j++) {
-                String hex = Integer.toHexString(j);
-                out.print("           ".substring(hex.length()));
-                out.print(hex);
-                out.print("  ");
-
-                if (dis) {
-                    dis = disassemble(out, instructions, j);
-                } else {
-                    out.print("                ");
-                    print(out, "INSTRUCTION", instructions[j]);
-                    dis = true;
-                }
-                out.println();
+            for (int codePointer = 0; codePointer < instructions.length;) {
+                codePointer =
+                        disassemble(out, instructions, codePointer, stateNames,
+                            labels);
             }
         }
 

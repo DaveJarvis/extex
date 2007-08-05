@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This reader applies an &Omega;CP program to an input stream.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -34,33 +34,29 @@ import java.util.Stack;
 public class OcpReader extends Reader {
 
     /**
-     * The field <tt>TWENTYFOUR_BIT_MASK</tt> contains the bit mask with 24
-     * bits.
-     */
-    private static final int TWENTYFOUR_BIT_MASK = 0xffffff;
-
-    /**
      * The field <tt>arithStack</tt> contains the stack for execution.
      */
     private Stack<Integer> arithStack = new Stack<Integer>();
 
     /**
-     * The field <tt>buffer</tt> contains the ...
+     * The field <tt>buffer</tt> contains the input buffer.
      */
     private char[] buffer = new char[1024];
 
     /**
-     * The field <tt>bufferEnd</tt> contains the ...
+     * The field <tt>bufferEnd</tt> contains the pointer to the end of the
+     * input buffer.
      */
     private int bufferEnd = 0;
 
     /**
-     * The field <tt>bufferPtr</tt> contains the ...
+     * The field <tt>bufferPtr</tt> contains the pointer to the current
+     * position in the input buffer.
      */
     private int bufferPtr = 0;
 
     /**
-     * The field <tt>code</tt> contains the ...
+     * The field <tt>code</tt> contains the code currently run.
      */
     private int[] code;
 
@@ -93,7 +89,8 @@ public class OcpReader extends Reader {
     private int pc = 0;
 
     /**
-     * The field <tt>program</tt> contains the reference to the entire program.
+     * The field <tt>program</tt> contains the reference to the entire
+     * program.
      */
     private OcpProgram program;
 
@@ -125,14 +122,27 @@ public class OcpReader extends Reader {
     /**
      * Creates a new object.
      * 
-     * @param reader the reader for input characters
-     * @param program the program code to run
+     * @param reader the reader for input characters. This is not allowed to be
+     *        <code>null</code>.
+     * @param program the program code to run. This is not allowed to be
+     *        <code>null</code>.
+     * 
+     * @throws IllegalArgumentException in case that one of the arguments is
+     *         <code>null</code>
      */
-    public OcpReader(Reader reader, OcpProgram program) {
+    public OcpReader(Reader reader, OcpProgram program)
+            throws IllegalArgumentException {
 
         super();
+        if (reader == null) {
+            throw new IllegalArgumentException("reader");
+        }
+        if (program == null) {
+            throw new IllegalArgumentException("program");
+        }
         this.reader = reader;
         this.program = program;
+        this.code = program.getCode(state);
     }
 
     /**
@@ -147,16 +157,6 @@ public class OcpReader extends Reader {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @return <code>true</code> iff end of file has been reached
-     */
-    private boolean fillLine() {
-
-        return false;
-    }
-
-    /**
      * {@inheritDoc}
      * 
      * @see java.io.Reader#read()
@@ -164,166 +164,183 @@ public class OcpReader extends Reader {
     @Override
     public int read() throws IOException {
 
+        if (bufferPtr < bufferEnd) {
+            return buffer[bufferPtr++];
+        }
+
         int a;
         int c;
 
         for (;;) {
             c = code[pc++];
 
-            switch (c >> 24) {
-                case OcpProgram.RIGHT_OUTPUT:
+            switch (c >> OcpCode.OPCODE_OFFSET) {
+                case OcpCode.OP_RIGHT_OUTPUT:
                     return arithStack.pop().intValue();
-                case OcpProgram.RIGHT_NUM:
-                    return c & TWENTYFOUR_BIT_MASK;
-                case OcpProgram.RIGHT_CHAR:
-                    return line[first + (c & TWENTYFOUR_BIT_MASK)];
-                case OcpProgram.RIGHT_LCHAR:
-                    return line[last - (c & TWENTYFOUR_BIT_MASK)];
-                case OcpProgram.RIGHT_SOME:
-                    a = code[pc++] & TWENTYFOUR_BIT_MASK;
-                    //TODO
+                case OcpCode.OP_RIGHT_NUM:
+                    return c & OcpCode.ARGUMENT_BIT_MASK;
+                case OcpCode.OP_RIGHT_CHAR:
+                    return line[first + (c & OcpCode.ARGUMENT_BIT_MASK)];
+                case OcpCode.OP_RIGHT_LCHAR:
+                    return line[last - (c & OcpCode.ARGUMENT_BIT_MASK)];
+                case OcpCode.OP_RIGHT_SOME:
+                    c &= OcpCode.ARGUMENT_BIT_MASK;
+                    a = code[pc++] & OcpCode.ARGUMENT_BIT_MASK;
+                    if (a - c + 1 < buffer.length) {
+                        // TODO gene: extend buffer unimplemented
+                        throw new RuntimeException("unimplemented");
+                    }
+                    bufferPtr = 0;
+                    bufferEnd = 0;
+                    // TODO
                     break;
-                case OcpProgram.PBACK_OUTPUT:
+                case OcpCode.OP_PBACK_OUTPUT:
                     // TODO gene: step unimplemented
                     throw new RuntimeException("unimplemented");
-                case OcpProgram.PBACK_NUM:
+                case OcpCode.OP_PBACK_NUM:
                     // TODO gene: step unimplemented
                     throw new RuntimeException("unimplemented");
-                case OcpProgram.PBACK_CHAR:
+                case OcpCode.OP_PBACK_CHAR:
                     // TODO gene: step unimplemented
                     throw new RuntimeException("unimplemented");
-                case OcpProgram.PBACK_LCHAR:
+                case OcpCode.OP_PBACK_LCHAR:
                     // TODO gene: step unimplemented
                     throw new RuntimeException("unimplemented");
-                case OcpProgram.PBACK_SOME:
-                    a = code[pc++] & TWENTYFOUR_BIT_MASK;
+                case OcpCode.OP_PBACK_SOME:
+                    a = code[pc++] & OcpCode.ARGUMENT_BIT_MASK;
                     // TODO gene: read unimplemented
                     throw new RuntimeException("unimplemented");
-                case OcpProgram.ADD:
+                case OcpCode.OP_ADD:
                     a = arithStack.pop().intValue();
                     c = arithStack.pop().intValue();
                     arithStack.push(Integer.valueOf(c + a));
                     break;
-                case OcpProgram.SUB:
+                case OcpCode.OP_SUB:
                     a = arithStack.pop().intValue();
                     c = arithStack.pop().intValue();
                     arithStack.push(Integer.valueOf(c - a));
                     break;
-                case OcpProgram.MULT:
+                case OcpCode.OP_MULT:
                     a = arithStack.pop().intValue();
                     c = arithStack.pop().intValue();
                     arithStack.push(Integer.valueOf(c * a));
                     break;
-                case OcpProgram.DIV:
+                case OcpCode.OP_DIV:
                     a = arithStack.pop().intValue();
                     c = arithStack.pop().intValue();
                     arithStack.push(Integer.valueOf(c / a));
                     break;
-                case OcpProgram.MOD:
+                case OcpCode.OP_MOD:
                     a = arithStack.pop().intValue();
                     c = arithStack.pop().intValue();
                     arithStack.push(Integer.valueOf(c % a));
                     break;
-                case OcpProgram.LOOKUP:
+                case OcpCode.OP_LOOKUP:
                     a = arithStack.pop().intValue();
                     c = arithStack.pop().intValue();
                     int[] t = tables.get(c);
                     arithStack.push(Integer.valueOf(t[a]));
                     break;
-                case OcpProgram.PUSH_NUM:
-                    arithStack.push(Integer.valueOf(c & TWENTYFOUR_BIT_MASK));
+                case OcpCode.OP_PUSH_NUM:
+                    arithStack.push(Integer.valueOf(c
+                            & OcpCode.ARGUMENT_BIT_MASK));
                     break;
-                case OcpProgram.PUSH_CHAR:
+                case OcpCode.OP_PUSH_CHAR:
                     arithStack.push(Integer.valueOf(line[first
-                            + (c & TWENTYFOUR_BIT_MASK)]));
+                            + (c & OcpCode.ARGUMENT_BIT_MASK)]));
                     break;
-                case OcpProgram.PUSH_LCHAR:
+                case OcpCode.OP_PUSH_LCHAR:
                     arithStack.push(Integer.valueOf(line[last
-                            - (c & TWENTYFOUR_BIT_MASK)]));
+                            - (c & OcpCode.ARGUMENT_BIT_MASK)]));
                     break;
-                case OcpProgram.STATE_CHANGE:
-                    state = c & TWENTYFOUR_BIT_MASK;
+                case OcpCode.OP_STATE_CHANGE:
+                    state = c & OcpCode.ARGUMENT_BIT_MASK;
                     break;
-                case OcpProgram.STATE_PUSH:
+                case OcpCode.OP_STATE_PUSH:
                     stateStack.push(Integer.valueOf(state));
-                    state = c & TWENTYFOUR_BIT_MASK;
+                    state = c & OcpCode.ARGUMENT_BIT_MASK;
                     break;
-                case OcpProgram.STATE_POP:
+                case OcpCode.OP_STATE_POP:
                     state = stateStack.pop().intValue();
                     break;
-                case OcpProgram.LEFT_START:
+                case OcpCode.OP_LEFT_START:
                     first = last + 1;
                     break;
-                case OcpProgram.LEFT_RETURN:
+                case OcpCode.OP_LEFT_RETURN:
                     last = first + 1;
                     break;
-                case OcpProgram.LEFT_BACKUP:
-                    last--; // ???
-                    break;
-                case OcpProgram.GOTO:
-                    pc = c & TWENTYFOUR_BIT_MASK;
-                    break;
-                case OcpProgram.GOTO_NE:
-                    a = code[pc++];
-                    if (line[last] != (c & TWENTYFOUR_BIT_MASK)) {
-                        pc = a & TWENTYFOUR_BIT_MASK;
+                case OcpCode.OP_LEFT_BACKUP:
+                    last--;
+                    if (last <= first) {
+                        // TODO gene: read unimplemented
+                        throw new RuntimeException("unimplemented");
                     }
                     break;
-                case OcpProgram.GOTO_EQ:
+                case OcpCode.OP_GOTO:
+                    pc = c & OcpCode.ARGUMENT_BIT_MASK;
+                    break;
+                case OcpCode.OP_GOTO_NE:
                     a = code[pc++];
-                    if (line[last] == (c & TWENTYFOUR_BIT_MASK)) {
-                        pc = a & TWENTYFOUR_BIT_MASK;
+                    if (line[last] != (c & OcpCode.ARGUMENT_BIT_MASK)) {
+                        pc = a & OcpCode.ARGUMENT_BIT_MASK;
                     }
                     break;
-                case OcpProgram.GOTO_LT:
+                case OcpCode.OP_GOTO_EQ:
                     a = code[pc++];
-                    if (line[last] < (c & TWENTYFOUR_BIT_MASK)) {
-                        pc = a & TWENTYFOUR_BIT_MASK;
+                    if (line[last] == (c & OcpCode.ARGUMENT_BIT_MASK)) {
+                        pc = a & OcpCode.ARGUMENT_BIT_MASK;
                     }
                     break;
-                case OcpProgram.GOTO_LE:
+                case OcpCode.OP_GOTO_LT:
                     a = code[pc++];
-                    if (line[last] <= (c & TWENTYFOUR_BIT_MASK)) {
-                        pc = a & TWENTYFOUR_BIT_MASK;
+                    if (line[last] < (c & OcpCode.ARGUMENT_BIT_MASK)) {
+                        pc = a & OcpCode.ARGUMENT_BIT_MASK;
                     }
                     break;
-                case OcpProgram.GOTO_GT:
+                case OcpCode.OP_GOTO_LE:
                     a = code[pc++];
-                    if (line[last] > (c & TWENTYFOUR_BIT_MASK)) {
-                        pc = a & TWENTYFOUR_BIT_MASK;
+                    if (line[last] <= (c & OcpCode.ARGUMENT_BIT_MASK)) {
+                        pc = a & OcpCode.ARGUMENT_BIT_MASK;
                     }
                     break;
-                case OcpProgram.GOTO_GE:
+                case OcpCode.OP_GOTO_GT:
                     a = code[pc++];
-                    if (line[last] >= (c & TWENTYFOUR_BIT_MASK)) {
-                        pc = a & TWENTYFOUR_BIT_MASK;
+                    if (line[last] > (c & OcpCode.ARGUMENT_BIT_MASK)) {
+                        pc = a & OcpCode.ARGUMENT_BIT_MASK;
                     }
                     break;
-                case OcpProgram.GOTO_NO_ADVANCE:
+                case OcpCode.OP_GOTO_GE:
+                    a = code[pc++];
+                    if (line[last] >= (c & OcpCode.ARGUMENT_BIT_MASK)) {
+                        pc = a & OcpCode.ARGUMENT_BIT_MASK;
+                    }
+                    break;
+                case OcpCode.OP_GOTO_NO_ADVANCE:
                     a = code[pc++];
                     last++;
                     refill();
                     if (false) { // TODO check for end of buffer
-                        pc = a & TWENTYFOUR_BIT_MASK;
+                        pc = a & OcpCode.ARGUMENT_BIT_MASK;
                     }
                     break;
-                case OcpProgram.GOTO_BEG:
-                    if (false) { // TODO at beginning
-                        pc = c & TWENTYFOUR_BIT_MASK;
+                case OcpCode.OP_GOTO_BEG:
+                    if (first == 0) { // at beginning
+                        pc = c & OcpCode.ARGUMENT_BIT_MASK;
                     }
-                    // TODO gene: step unimplemented
-                    throw new RuntimeException("unimplemented");
-                case OcpProgram.GOTO_END:
+                    break;
+                case OcpCode.OP_GOTO_END:
                     if (false) { // TODO at end
-                        pc = c & TWENTYFOUR_BIT_MASK;
+                        pc = c & OcpCode.ARGUMENT_BIT_MASK;
+                        // TODO gene: step unimplemented
+                        throw new RuntimeException("unimplemented");
                     }
-                    // TODO gene: step unimplemented
-                    throw new RuntimeException("unimplemented");
-                case OcpProgram.STOP:
-                    return 1;
+                    break;
+                case OcpCode.OP_STOP:
+                    pc = 0; // ???
+                    break;
                 default:
                     throw new IllegalOpCodeException(//
-                        Integer.valueOf(c >> 24).toString());
+                        Integer.valueOf(c >> OcpCode.OPCODE_OFFSET).toString());
             }
         }
     }
@@ -357,13 +374,12 @@ public class OcpReader extends Reader {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
+     * Gets some more characters into the input buffer.
      */
     private void refill() {
 
         // TODO gene: refill unimplemented
-
+        throw new RuntimeException("unimplemented");
     }
 
 }

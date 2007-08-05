@@ -24,10 +24,10 @@ import java.io.IOException;
 import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
 import org.extex.ocpware.compiler.exception.StateNotDefinedException;
 import org.extex.ocpware.compiler.parser.CompilerState;
-import org.extex.ocpware.type.OcpProgram;
+import org.extex.ocpware.type.OcpCode;
 
 /**
- * This state change instruction pushed the current state to the state stack and
+ * This state change instruction pushes the current state to the state stack and
  * sets the current state to a new value. In the input stream it is represented
  * by a sequence of th following form:
  * 
@@ -37,7 +37,7 @@ import org.extex.ocpware.type.OcpProgram;
  * Here &lang;state&rang; denotes the symbolic name of a state.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public class StatePush implements RightState {
 
@@ -61,15 +61,14 @@ public class StatePush implements RightState {
      * {@inheritDoc}
      * 
      * @see org.extex.ocpware.compiler.state.RightState#compile(
-     *      org.extex.ocpware.compiler.parser.CompilerState)
+     *      org.extex.ocpware.compiler.parser.CompilerState, boolean)
      */
-    public void compile(CompilerState cs)
+    public void compile(CompilerState cs, boolean withOffset)
             throws IOException,
                 StateNotDefinedException,
                 ArgmentTooBigException {
 
-        cs.putInstruction(OcpProgram.STATE_PUSH, cs.lookupState(state));
-
+        cs.putInstruction(OcpCode.OP_STATE_PUSH, cs.lookupState(state));
     }
 
     /**

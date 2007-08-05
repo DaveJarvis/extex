@@ -28,15 +28,17 @@ package org.extex.ocpware.type;
 public enum OcpMode {
 
     /**
-     * The field <tt>ONE_BYTE</tt> contains the ...
+     * The field <tt>ONE_BYTE</tt> contains the value for one byte.
      */
     ONE_BYTE,
     /**
-     * The field <tt>TWO_BYTES</tt> contains the ...
+     * The field <tt>TWO_BYTES</tt> contains the value for two-byte higher
+     * endian.
      */
     TWO_BYTES,
     /**
-     * The field <tt>TWO_BYTES_LE</tt> contains the ...
+     * The field <tt>TWO_BYTES_LE</tt> contains the value for two-byte lower
+     * endian
      */
     TWO_BYTES_LE
 

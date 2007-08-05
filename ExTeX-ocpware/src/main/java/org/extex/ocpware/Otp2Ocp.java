@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
@@ -32,7 +33,6 @@ import java.util.ResourceBundle;
 
 import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.type.OcpProgram;
-import org.extex.ocpware.writer.OcpFileWriter;
 
 /**
  * This class provides a main program to compile the contents of an otp file
@@ -48,7 +48,7 @@ import org.extex.ocpware.writer.OcpFileWriter;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public final class Otp2Ocp {
 
@@ -102,20 +102,51 @@ public final class Otp2Ocp {
             outFile = file.replaceAll("\\.[oO][tT][pP]$", "") + ".ocp";
         }
 
+        CompilerState cs;
+        InputStream stream = null;
         try {
-            InputStream stream = new FileInputStream(new File(file));
-            CompilerState cs = new CompilerState(stream);
+            stream = new FileInputStream(new File(file));
+            cs = new CompilerState(stream);
             stream.close();
-            OcpProgram ocp = cs.compile();
-            OutputStream os = new FileOutputStream(outFile);
-            new OcpFileWriter().write(os, ocp);
-            os.close();
-
         } catch (FileNotFoundException e) {
             return err(err, "Otp2Ocp.FileNotFound", file);
         } catch (Exception e) {
             return err(err, "Otp2Ocp.Error", e.getMessage());
+        } finally {
+            try {
+                if (stream != null) {
+                    stream.close();
+                }
+            } catch (IOException e) {
+                return err(err, "Otp2Ocp.Error", e.getMessage());
+            }
         }
+
+        OcpProgram ocp;
+        try {
+            ocp = cs.compile();
+        } catch (Exception e) {
+            return err(err, "Otp2Ocp.Error", e.getMessage());
+        }
+
+        OutputStream os = null;
+        try {
+            os = new FileOutputStream(outFile);
+            ocp.save(os);
+        } catch (FileNotFoundException e) {
+            return err(err, "Otp2Ocp.FileNotFound", outFile);
+        } catch (Exception e) {
+            return err(err, "Otp2Ocp.Error", e.getMessage());
+        } finally {
+            try {
+                if (os != null) {
+                    os.close();
+                }
+            } catch (IOException e) {
+                return err(err, "Otp2Ocp.Error", e.getMessage());
+            }
+        }
+
         return 0;
     }
 

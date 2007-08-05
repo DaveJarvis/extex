@@ -20,7 +20,8 @@
 package org.extex.ocpware.compiler.exception;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This exception indicates that an op code of an &Omega;CP instruction has been
+ * encountered which is not defined.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

@@ -29,7 +29,7 @@ import org.extex.ocpware.compiler.parser.CompilerState;
  * This interface describes the variants of a state change instruction.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public interface RightState {
 
@@ -37,13 +37,14 @@ public interface RightState {
      * Translate a right state expression into a set of instructions.
      * 
      * @param cs the compiler state
+     * @param withOffset push back instead of output
      * 
      * @throws ArgmentTooBigException in case that an argument is encountered
      *         which does not fit into two bytes
      * @throws IOException in case of an error
      * @throws StateNotDefinedException
      */
-    void compile(CompilerState cs)
+    void compile(CompilerState cs, boolean withOffset)
             throws ArgmentTooBigException,
                 IOException,
                 StateNotDefinedException;

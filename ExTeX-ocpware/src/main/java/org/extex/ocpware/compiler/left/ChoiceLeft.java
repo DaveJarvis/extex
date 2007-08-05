@@ -28,7 +28,7 @@ import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
 import org.extex.ocpware.compiler.exception.IllegalOpcodeException;
 import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.compiler.parser.State;
-import org.extex.ocpware.type.OcpProgram;
+import org.extex.ocpware.type.OcpCode;
 
 /**
  * This class represents a list of alternative left items.
@@ -73,7 +73,7 @@ public class ChoiceLeft extends ArrayList<Left> implements Left {
             if (first) {
                 first = false;
             } else {
-                int ptr = state.putInstruction(OcpProgram.GOTO, 0);
+                int ptr = state.putInstruction(OcpCode.OP_GOTO, 0);
                 trueHoles.add(Integer.valueOf(ptr - 1));
                 cs.getCurrentState().fillIn(holes);
             }

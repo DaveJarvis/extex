@@ -26,7 +26,7 @@ import java.util.List;
 import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
 import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.compiler.parser.State;
-import org.extex.ocpware.type.OcpProgram;
+import org.extex.ocpware.type.OcpCode;
 
 /**
  * This class represents a range of characters as left item.
@@ -89,9 +89,9 @@ public class DoubleLeft implements Left {
                 ArgmentTooBigException {
 
         List<Integer> holes = new ArrayList<Integer>();
-        int ptr = state.putInstruction(OcpProgram.GOTO_LT, from, 0);
+        int ptr = state.putInstruction(OcpCode.OP_GOTO_LT, from, 0);
         holes.add(Integer.valueOf(ptr - 1));
-        ptr = state.putInstruction(OcpProgram.GOTO_GT, to, 0);
+        ptr = state.putInstruction(OcpCode.OP_GOTO_GT, to, 0);
         holes.add(Integer.valueOf(ptr - 1));
         return holes;
     }

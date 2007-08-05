@@ -25,10 +25,10 @@ import java.util.List;
 
 import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
 import org.extex.ocpware.compiler.exception.IllegalOpcodeException;
-import org.extex.ocpware.type.OcpProgram;
+import org.extex.ocpware.type.OcpCode;
 
 /**
- * TODO gene: missing JavaDoc.
+ * The class state represents a state in the &Omega;CP engine for the compiler.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6007 $
@@ -67,14 +67,19 @@ public class State {
                 IllegalOpcodeException {
 
         if (numExpr == 0) {
-            putInstruction(OcpProgram.LEFT_START);
+            putInstruction(OcpCode.OP_LEFT_START);
         } else {
-            putInstruction(OcpProgram.LEFT_RETURN);
+            putInstruction(OcpCode.OP_LEFT_RETURN);
         }
-        putInstruction(OcpProgram.RIGHT_CHAR, 1);
-        putInstruction(OcpProgram.STOP);
+        putInstruction(OcpCode.OP_RIGHT_CHAR, 1);
+        putInstruction(OcpCode.OP_STOP);
     }
 
+    /**
+     * Getter for the current inter to the end of the code.
+     *
+     * @return the current inter to the end of the code
+     */
     public int getPointer() {
         
         return instructions.size();

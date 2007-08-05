@@ -29,7 +29,7 @@ import org.extex.ocpware.compiler.left.Left;
 import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.compiler.parser.State;
 import org.extex.ocpware.compiler.sexpression.Expr;
-import org.extex.ocpware.type.OcpProgram;
+import org.extex.ocpware.type.OcpCode;
 
 /**
  * This class provides a constant arithmetic expression. It holds a number.
@@ -66,7 +66,7 @@ public class Constant extends ArithExpr implements Expr, Left {
                 IOException,
                 IllegalOpcodeException {
 
-        int ptr = state.putInstruction(OcpProgram.GOTO_NE, n, 0);
+        int ptr = state.putInstruction(OcpCode.OP_GOTO_NE, n, 0);
         List<Integer> holes = new ArrayList<Integer>();
         holes.add(Integer.valueOf(ptr - 1));
         return holes;
@@ -81,20 +81,22 @@ public class Constant extends ArithExpr implements Expr, Left {
     @Override
     void outExpr(CompilerState cs) throws IOException, ArgmentTooBigException {
 
-        cs.putInstruction(OcpProgram.PUSH_NUM, n);
+        cs.putInstruction(OcpCode.OP_PUSH_NUM, n);
     }
 
     /**
      * {@inheritDoc}
      * 
      * @see org.extex.ocpware.compiler.sexpression.Expr#outRight(
-     *      org.extex.ocpware.compiler.parser.CompilerState)
+     *      org.extex.ocpware.compiler.parser.CompilerState, boolean)
      */
-    public void outRight(CompilerState cs)
+    public void outRight(CompilerState cs, boolean withOffset)
             throws IOException,
                 ArgmentTooBigException {
 
-        cs.putInstruction(OcpProgram.RIGHT_NUM, n);
+        cs.putInstruction(withOffset
+                ? OcpCode.OP_PBACK_NUM
+                : OcpCode.OP_RIGHT_NUM, n);
     }
 
     /**

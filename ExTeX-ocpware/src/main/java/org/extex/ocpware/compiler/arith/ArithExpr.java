@@ -26,7 +26,7 @@ import org.extex.ocpware.compiler.exception.SyntaxException;
 import org.extex.ocpware.compiler.exception.TableNotDefinedException;
 import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.compiler.parser.ParserStream;
-import org.extex.ocpware.type.OcpProgram;
+import org.extex.ocpware.type.OcpCode;
 
 /**
  * This is the abstract base class for arithmetic expressions. It provides some
@@ -51,7 +51,7 @@ import org.extex.ocpware.type.OcpProgram;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public abstract class ArithExpr {
 
@@ -75,7 +75,7 @@ public abstract class ArithExpr {
             @Override
             public ArithExpr eval(ArithExpr left, ArithExpr right) {
 
-                return new BinaryOp(OcpProgram.SUB, " - ", left, right);
+                return new BinaryOp(OcpCode.OP_SUB, " - ", left, right);
             }
         },
 
@@ -94,7 +94,7 @@ public abstract class ArithExpr {
             @Override
             public ArithExpr eval(ArithExpr left, ArithExpr right) {
 
-                return new BinaryOp(OcpProgram.ADD, " + ", left, right);
+                return new BinaryOp(OcpCode.OP_ADD, " + ", left, right);
             }
         };
 
@@ -151,14 +151,14 @@ public abstract class ArithExpr {
                     left = parseTerm(s);
                     break;
                 case '*':
-                    left = new BinaryOp2(OcpProgram.MULT, " * ", //
+                    left = new BinaryOp2(OcpCode.OP_MULT, " * ", //
                         left, parseTerm(s));
                     break;
                 case 'd':
                     s.unread(c);
                     t = s.parseId();
                     if ("div:".equals(t)) {
-                        left = new BinaryOp2(OcpProgram.DIV, " DIV: ", //
+                        left = new BinaryOp2(OcpCode.OP_DIV, " DIV: ", //
                             left, parseTerm(s));
                     } else {
                         s.unread(t.getBytes());
@@ -168,7 +168,7 @@ public abstract class ArithExpr {
                     s.unread(c);
                     t = s.parseId();
                     if ("mod:".equals(t)) {
-                        left = new BinaryOp2(OcpProgram.MOD, " MOD: ", //
+                        left = new BinaryOp2(OcpCode.OP_MOD, " MOD: ", //
                             left, parseTerm(s));
                     } else {
                         s.unread(t.getBytes());
@@ -312,7 +312,7 @@ public abstract class ArithExpr {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Compile the arithmetic expression into a set of &Omega;CP instructions.
      * 
      * @param cs the compiler state
      * 

@@ -37,7 +37,11 @@ import org.extex.ocpware.compiler.parser.State;
 public interface Left {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Compile the left item and add the appropriate instructions to the state.
+     * As a result a list of indices into the code is returned which should need
+     * to be fixed. This fix inserts the position of the code into the places
+     * given. Thus it is possible to put destinations for goto statements into
+     * the holes.
      * 
      * @param state the current state
      * @param cs the compiler state

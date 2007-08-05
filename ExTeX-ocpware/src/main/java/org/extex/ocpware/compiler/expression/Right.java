@@ -29,7 +29,7 @@ import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.compiler.sexpression.Expr;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a list of expressions.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -53,9 +53,10 @@ public class Right {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Compile a right item into appropriate instructions.
      * 
      * @param cs the compiler state
+     * @param withOffset use push back instead of output
      *
      * @throws ArgmentTooBigException in case that an argument is encountered
      *         which does not fit into two bytes
@@ -64,14 +65,14 @@ public class Right {
      * @throws TableNotDefinedException in case that no matching table is known
      *         for a symbolic table reference
      */
-    public void compile(CompilerState cs)
+    public void compile(CompilerState cs, boolean withOffset)
             throws StateNotDefinedException,
                 IOException,
                 TableNotDefinedException,
                 ArgmentTooBigException {
 
         for (Expr x : right) {
-            x.outRight(cs);
+            x.outRight(cs, withOffset);
         }
     }
 

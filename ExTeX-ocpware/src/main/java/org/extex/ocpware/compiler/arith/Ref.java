@@ -23,13 +23,13 @@ import java.io.IOException;
 
 import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
 import org.extex.ocpware.compiler.parser.CompilerState;
-import org.extex.ocpware.type.OcpProgram;
+import org.extex.ocpware.type.OcpCode;
 
 /**
  * This class represents the reference to a character in the matched sequence.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public class Ref extends ArithExpr {
 
@@ -57,7 +57,7 @@ public class Ref extends ArithExpr {
     @Override
     void outExpr(CompilerState cs) throws IOException, ArgmentTooBigException {
 
-        cs.putInstruction(OcpProgram.PUSH_CHAR, n);
+        cs.putInstruction(OcpCode.OP_PUSH_CHAR, n);
     }
 
     /**

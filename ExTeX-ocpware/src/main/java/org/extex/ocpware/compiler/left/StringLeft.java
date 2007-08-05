@@ -26,7 +26,7 @@ import java.util.List;
 import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
 import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.compiler.parser.State;
-import org.extex.ocpware.type.OcpProgram;
+import org.extex.ocpware.type.OcpCode;
 
 /**
  * This class represents a string of characters as left item.
@@ -66,12 +66,12 @@ public class StringLeft implements Left {
         char c = s.charAt(0);
         for (int i = 0; i < length;) {
 
-            int ptr = state.putInstruction(OcpProgram.GOTO_NE, c, 0);
+            int ptr = state.putInstruction(OcpCode.OP_GOTO_NE, c, 0);
             holes.add(Integer.valueOf(ptr - 1));
 
             if (++i < length) {
                 c = s.charAt(i);
-                ptr = state.putInstruction(OcpProgram.GOTO_NO_ADVANCE);
+                ptr = state.putInstruction(OcpCode.OP_GOTO_NO_ADVANCE);
                 holes.add(Integer.valueOf(ptr - 1));
             }
         }

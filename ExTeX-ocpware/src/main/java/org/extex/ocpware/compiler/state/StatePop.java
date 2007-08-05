@@ -22,7 +22,7 @@ package org.extex.ocpware.compiler.state;
 import java.io.IOException;
 
 import org.extex.ocpware.compiler.parser.CompilerState;
-import org.extex.ocpware.type.OcpProgram;
+import org.extex.ocpware.type.OcpCode;
 
 /**
  * This state change instruction pops the current state from the state stack.
@@ -31,7 +31,7 @@ import org.extex.ocpware.type.OcpProgram;
  *  &lt;pop:&gt;   </pre>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public class StatePop implements RightState {
 
@@ -48,11 +48,11 @@ public class StatePop implements RightState {
      * {@inheritDoc}
      * 
      * @see org.extex.ocpware.compiler.state.RightState#compile(
-     *      org.extex.ocpware.compiler.parser.CompilerState)
+     *      org.extex.ocpware.compiler.parser.CompilerState, boolean)
      */
-    public void compile(CompilerState cs) throws IOException {
+    public void compile(CompilerState cs, boolean withOffset) throws IOException {
 
-        cs.putInstruction(OcpProgram.STATE_POP);
+        cs.putInstruction(OcpCode.OP_STATE_POP);
     }
     
     /**

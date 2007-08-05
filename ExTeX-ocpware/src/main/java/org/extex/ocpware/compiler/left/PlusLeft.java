@@ -28,10 +28,10 @@ import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
 import org.extex.ocpware.compiler.exception.IllegalOpcodeException;
 import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.compiler.parser.State;
-import org.extex.ocpware.type.OcpProgram;
+import org.extex.ocpware.type.OcpCode;
 
 /**
- * This class represents a ... as left item.
+ * This class represents a left item with a lower bound of occurrences.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6007 $
@@ -78,19 +78,19 @@ public class PlusLeft implements Left {
 
         for (int k = 1; k < from; k++) {
             holes.addAll(left.genLeft(state, cs));
-            int ptr = state.putInstruction(OcpProgram.GOTO_NO_ADVANCE, 0);
+            int ptr = state.putInstruction(OcpCode.OP_GOTO_NO_ADVANCE, 0);
             holes.add(Integer.valueOf(ptr - 1));
         }
 
         holes.addAll(left.genLeft(state, cs));
 
-        int ptr = state.putInstruction(OcpProgram.GOTO_NO_ADVANCE, 0);
+        int ptr = state.putInstruction(OcpCode.OP_GOTO_NO_ADVANCE, 0);
         int savePtr = ptr;
         trueHoles.add(Integer.valueOf(ptr -1));
         List<Integer> backupHoles = left.genLeft(state, cs);
-        state.putInstruction(OcpProgram.GOTO, savePtr);
+        state.putInstruction(OcpCode.OP_GOTO, savePtr);
         state.fillIn(backupHoles);
-        state.putInstruction(OcpProgram.LEFT_BACKUP, 0);
+        state.putInstruction(OcpCode.OP_LEFT_BACKUP, 0);
         state.fillIn(trueHoles);
         return holes;
     }

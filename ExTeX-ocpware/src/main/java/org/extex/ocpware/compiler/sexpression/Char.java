@@ -23,13 +23,13 @@ import java.io.IOException;
 
 import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
 import org.extex.ocpware.compiler.parser.CompilerState;
-import org.extex.ocpware.type.OcpProgram;
+import org.extex.ocpware.type.OcpCode;
 
 /**
  * This class references a character in the matched prefix.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public class Char implements Expr {
 
@@ -53,13 +53,15 @@ public class Char implements Expr {
      * {@inheritDoc}
      * 
      * @see org.extex.ocpware.compiler.sexpression.Expr#outRight(
-     *      org.extex.ocpware.compiler.parser.CompilerState)
+     *      org.extex.ocpware.compiler.parser.CompilerState, boolean)
      */
-    public void outRight(CompilerState cs)
+    public void outRight(CompilerState cs, boolean withOffset)
             throws IOException,
                 ArgmentTooBigException {
 
-        cs.putInstruction(OcpProgram.RIGHT_CHAR, n);
+        cs.putInstruction(withOffset
+                ? OcpCode.OP_PBACK_CHAR
+                : OcpCode.OP_RIGHT_CHAR, n);
     }
 
     /**

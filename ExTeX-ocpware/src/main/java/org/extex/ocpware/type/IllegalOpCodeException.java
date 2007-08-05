@@ -20,21 +20,23 @@
 package org.extex.ocpware.type;
 
 /**
- * TODO gene: missing JavaDoc.
- *
+ * This exception signals that an illegal op code for an &Omega;CP instruction
+ * has been encountered.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class IllegalOpCodeException extends RuntimeException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param message the message
      */
     public IllegalOpCodeException(String message) {

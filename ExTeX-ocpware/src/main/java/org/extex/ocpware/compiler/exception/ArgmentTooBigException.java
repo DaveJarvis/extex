@@ -20,7 +20,8 @@
 package org.extex.ocpware.compiler.exception;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This exception indicates that an argument has been encountered which does not
+ * fit into the 24 bits of an &Omega;CP register.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

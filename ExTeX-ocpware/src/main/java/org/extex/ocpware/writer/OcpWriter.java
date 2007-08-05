@@ -24,7 +24,7 @@ import java.io.OutputStream;
 import org.extex.ocpware.type.OcpProgram;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes a writer for an &Omega;CP program.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -32,10 +32,10 @@ import org.extex.ocpware.type.OcpProgram;
 public interface OcpWriter {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Write the &Omega;CP program to an output stream.
      *
      * @param out the output stream
-     * @param ocp TODO
+     * @param ocp the ocp program
      */
     void write(OutputStream out, OcpProgram ocp);
 

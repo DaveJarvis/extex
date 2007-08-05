@@ -26,12 +26,12 @@ import java.util.List;
 import org.extex.ocpware.compiler.exception.AliasNotDefinedException;
 import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
 import org.extex.ocpware.compiler.exception.IllegalOpcodeException;
-import org.extex.ocpware.compiler.exception.SyntaxException;
 import org.extex.ocpware.compiler.exception.StateNotDefinedException;
+import org.extex.ocpware.compiler.exception.SyntaxException;
 import org.extex.ocpware.compiler.exception.TableNotDefinedException;
-import org.extex.ocpware.compiler.left.Left;
 import org.extex.ocpware.compiler.left.BeginningLeft;
 import org.extex.ocpware.compiler.left.EndLeft;
+import org.extex.ocpware.compiler.left.Left;
 import org.extex.ocpware.compiler.left.LeftParser;
 import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.compiler.parser.ParserStream;
@@ -42,7 +42,7 @@ import org.extex.ocpware.compiler.state.RightState;
 import org.extex.ocpware.compiler.state.StateChange;
 import org.extex.ocpware.compiler.state.StatePop;
 import org.extex.ocpware.compiler.state.StatePush;
-import org.extex.ocpware.type.OcpProgram;
+import org.extex.ocpware.type.OcpCode;
 
 /**
  * This class represents an expression.
@@ -263,22 +263,23 @@ public class Expression {
     private List<Expr> pushBack;
 
     /**
-     * The field <tt>right</tt> contains the ...
+     * The field <tt>right</tt> contains the right item of the expression.
      */
     private Right right;
 
     /**
-     * The field <tt>rightState</tt> contains the ...
+     * The field <tt>rightState</tt> contains the optional right state to
+     * switch to.
      */
     private RightState rightState;
 
     /**
-     * The field <tt>state</tt> contains the ...
+     * The field <tt>state</tt> contains the right state.
      */
     private RightState state;
 
     /**
-     * The field <tt>totalLeft</tt> contains the ...
+     * The field <tt>totalLeft</tt> contains the total left list.
      */
     private List<Left> totalLeft;
 
@@ -292,7 +293,8 @@ public class Expression {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Compile an expression in &Omega;CP instructions and store them in a
+     * compiler state.
      * 
      * @param cs the compiler state
      * 
@@ -317,16 +319,14 @@ public class Expression {
         cs.setCurrentState(leftState);
         cs.incrExpr();
         List<Integer> holes = outLeft(cs);
-        // TODO rightOffset = 0;
 
         if (right != null) {
-            right.compile(cs);
-            // TODO right_offset=OTP_PBACK_OFFSET;
+            right.compile(cs, false);
         }
         if (rightState != null) {
-            rightState.compile(cs);
+            rightState.compile(cs, true);
         }
-        cs.putInstruction(OcpProgram.STOP);
+        cs.putInstruction(OcpCode.OP_STOP);
         cs.getCurrentState().fillIn(holes);
     }
 
@@ -381,11 +381,11 @@ public class Expression {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Output instructions for left items.
      * 
      * @param cs the compiler state
      * 
-     * @return the list of left items
+     * @return the list of holes to fix
      * 
      * @throws AliasNotDefinedException in case that no matching alias is known
      *         for a symbolic table reference
@@ -403,8 +403,8 @@ public class Expression {
         State currentState = cs.getCurrentState();
 
         currentState.putInstruction(currentState.getNumExpr() == 1
-                ? OcpProgram.LEFT_START
-                : OcpProgram.LEFT_RETURN);
+                ? OcpCode.OP_LEFT_START
+                : OcpCode.OP_LEFT_RETURN);
 
         List<Integer> leftFalseHoles = new ArrayList<Integer>();
 
@@ -419,7 +419,7 @@ public class Expression {
 
                 int ptr =
                         cs.getCurrentState().putInstruction(
-                            OcpProgram.GOTO_NO_ADVANCE);
+                            OcpCode.OP_GOTO_NO_ADVANCE);
                 leftFalseHoles.add(Integer.valueOf(ptr - 1));
             }
 
@@ -450,9 +450,9 @@ public class Expression {
     }
 
     /**
-     * Setter for right.
+     * Setter for right item.
      * 
-     * @param right the right to set
+     * @param right the right item to set
      */
     public void setRight(Right right) {
 
@@ -460,7 +460,7 @@ public class Expression {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Setter for the right state.
      * 
      * @param rightState
      */

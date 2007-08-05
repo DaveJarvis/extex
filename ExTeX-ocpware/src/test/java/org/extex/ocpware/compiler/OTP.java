@@ -74,7 +74,8 @@ public final class OTP {
             + "expressions:\n" + ". => \"*\";\n";
 
     /**
-     * The field <tt>LAT2UNI_OTP</tt> contains the ...
+     * The constant <tt>OMEGA_LAT2UNI_OTP</tt> contains the contents of the
+     * file <tt>otp/omega/lat2uni.otp</tt>.
      */
     public static final String OMEGA_LAT2UNI_OTP =
             "input: 1;\n" + "output: 2;\n" + "\n" + "states: VERBATIM;\n"
@@ -242,7 +243,8 @@ public final class OTP {
                     + ". => \\1 ;\n\n";
 
     /**
-     * The field <tt>OMEGA_LUNATESIGMA_OTP</tt> contains the ...
+     * The field <tt>OMEGA_LUNATESIGMA_OTP</tt> contains the contents of the
+     * file <tt>otp/omega/lunatesigma.otp</tt>.
      */
     public static final String OMEGA_LUNATESIGMA_OTP =
             "input: 2;\n" //
@@ -255,7 +257,8 @@ public final class OTP {
                     + "@\"03C3 =>  @\"03F2 ;\n" + "\n" + ". => \\1;\n";
 
     /**
-     * The field <tt>UNI2CUNI_OTP</tt> contains the ...
+     * The field <tt>UNI2CUNI_OTP</tt> contains the contents of the file
+     * <tt>otp/omega/uni2cuni.otp</tt>.
      */
     public static final String OMEGA_UNI2CUNI_OTP =
             "input:  2;\n"

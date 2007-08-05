@@ -25,13 +25,13 @@ import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
 import org.extex.ocpware.compiler.exception.TableNotDefinedException;
 import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.compiler.sexpression.Expr;
-import org.extex.ocpware.type.OcpProgram;
+import org.extex.ocpware.type.OcpCode;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents an arithmetic expression as a whole.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public class Arith implements Expr {
 
@@ -55,15 +55,17 @@ public class Arith implements Expr {
      * {@inheritDoc}
      * 
      * @see org.extex.ocpware.compiler.sexpression.Expr#outRight(
-     *      org.extex.ocpware.compiler.parser.CompilerState)
+     *      org.extex.ocpware.compiler.parser.CompilerState, boolean)
      */
-    public void outRight(CompilerState cs)
+    public void outRight(CompilerState cs, boolean withOffset)
             throws IOException,
                 TableNotDefinedException,
                 ArgmentTooBigException {
 
         expr.outExpr(cs);
-        cs.putInstruction(OcpProgram.RIGHT_OUTPUT);
+        cs.putInstruction(withOffset
+                ? OcpCode.OP_PBACK_OUTPUT
+                : OcpCode.OP_RIGHT_OUTPUT);
     }
 
     /**

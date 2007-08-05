@@ -29,7 +29,7 @@ import org.extex.ocpware.type.OcpProgram;
 import org.junit.Test;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a test suite for the OcpCompiler.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6007 $
@@ -37,12 +37,12 @@ import org.junit.Test;
 public class OtpCompilerTest extends TestCase {
 
     /**
-     * ...
+     * lat2uni.otp
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public final void testCompilelat2Uni() throws Exception {
+    public final void testCompileLat2uni() throws Exception {
 
         InputStream stream =
                 new ByteArrayInputStream(OTP.OMEGA_LAT2UNI_OTP.getBytes());
@@ -75,8 +75,6 @@ public class OtpCompilerTest extends TestCase {
     }
 
     /**
-     * ...
-     * 
      * 7in88593.otp
      * 
      * @throws Exception in case of an error

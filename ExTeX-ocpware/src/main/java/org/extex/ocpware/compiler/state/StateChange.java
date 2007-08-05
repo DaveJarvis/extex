@@ -24,7 +24,7 @@ import java.io.IOException;
 import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
 import org.extex.ocpware.compiler.exception.StateNotDefinedException;
 import org.extex.ocpware.compiler.parser.CompilerState;
-import org.extex.ocpware.type.OcpProgram;
+import org.extex.ocpware.type.OcpCode;
 
 /**
  * This state change instruction simply sets the current state to a new value.
@@ -34,7 +34,7 @@ import org.extex.ocpware.type.OcpProgram;
  * Here &lang;state&rang; denotes the symbolic name of a state.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public class StateChange implements RightState {
 
@@ -58,13 +58,13 @@ public class StateChange implements RightState {
      * {@inheritDoc}
      * 
      * @see org.extex.ocpware.compiler.state.RightState#compile(
-     *      org.extex.ocpware.compiler.parser.CompilerState)
+     *      org.extex.ocpware.compiler.parser.CompilerState, boolean)
      */
-    public void compile(CompilerState cs)
+    public void compile(CompilerState cs, boolean withOffset)
             throws IOException,
                 StateNotDefinedException, ArgmentTooBigException {
 
-        cs.putInstruction(OcpProgram.STATE_CHANGE, cs.lookupState(state));
+        cs.putInstruction(OcpCode.OP_STATE_CHANGE, cs.lookupState(state));
     }
 
     /**

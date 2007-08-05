@@ -49,7 +49,7 @@ public class UnexpectedException extends SyntaxException {
     private int lineno;
 
     /**
-     * The field <tt>unexpected</tt> contains the ...
+     * The field <tt>unexpected</tt> contains the unexpected item.
      */
     private String unexpected;
 

@@ -19,36 +19,50 @@
 
 package org.extex.ocpware.writer;
 
-import java.io.OutputStream;
-
-import org.extex.ocpware.type.OcpProgram;
+import java.text.MessageFormat;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is an abstract base class for &Omega;CP writers which handles the
+ * application of a resource bundle.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class OcpFileWriter implements OcpWriter {
+public abstract class AbstractWriter implements OcpWriter {
+
+    /**
+     * The field <tt>bundle</tt> contains the resource bundle for i18n.
+     */
+    private ResourceBundle bundle;
 
     /**
      * Creates a new object.
      */
-    public OcpFileWriter() {
+    public AbstractWriter() {
 
         super();
+        bundle = ResourceBundle.getBundle(getClass().getName());
     }
 
+
     /**
-     * {@inheritDoc}
+     * Apply a message format and handle exceptions gracefully.
      * 
-     * @see org.extex.ocpware.writer.OcpWriter#write(java.io.OutputStream,
-     *      org.extex.ocpware.type.OcpProgram)
+     * @param key the resource key
+     * @param a the arguments
+     * 
+     * @return the formatted result
      */
-    public void write(OutputStream out, OcpProgram ocp) {
+    protected String format(String key, Object... a) {
 
-        // TODO gene: write unimplemented
-
+        try {
+            String fmt = bundle.getString(key);
+            return MessageFormat.format(fmt, a);
+        } catch (MissingResourceException e) {
+            return "???" + key + "???";
+        }
     }
 
 }

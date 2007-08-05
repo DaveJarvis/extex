@@ -469,7 +469,7 @@ public final class CompilerState {
                 throw new TableDefinedException(name);
             }
             s.expect('[');
-            int n = s.parseNumber(s.skipSpace());
+            int len = s.parseNumber(s.skipSpace());
             s.expect(']');
             s.expect('=');
             s.expect('{');
@@ -490,7 +490,7 @@ public final class CompilerState {
                 a[i] = tab.get(i).intValue();
             }
             namedTables.put(name, Integer.valueOf(tables.size()));
-            tables.put(name, new Table(name, n, a));
+            tables.put(name, new Table(name, a));
         }
         s.unread(name.getBytes());
     }
@@ -573,7 +573,7 @@ public final class CompilerState {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Setter for the current state.
      * 
      * @param state the new state
      * 

@@ -81,7 +81,11 @@ public class LeftList implements Left {
     @Override
     public String toString() {
 
-        return "(" + list.toString() + ")";
+        StringBuffer sb = new StringBuffer();
+        for (Left l : list) {
+            sb.append(l.toString());
+        }
+        return sb.toString();
     }
 
 }

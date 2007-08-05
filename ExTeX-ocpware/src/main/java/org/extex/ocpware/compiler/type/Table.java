@@ -23,7 +23,7 @@ package org.extex.ocpware.compiler.type;
  * This class represents a table of character values as two byte numbers.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public class Table {
 
@@ -31,11 +31,6 @@ public class Table {
      * The field <tt>contents</tt> contains the contents of the table.
      */
     private int[] contents;
-
-    /**
-     * The field <tt>n</tt> contains the offset.
-     */
-    private int n;
 
     /**
      * The field <tt>name</tt> contains the name of the table.
@@ -46,14 +41,12 @@ public class Table {
      * Creates a new object.
      * 
      * @param name the name of the table
-     * @param n the index
      * @param contents the items
      */
-    public Table(String name, int n, int[] contents) {
+    public Table(String name, int[] contents) {
 
         super();
         this.name = name;
-        this.n = n;
         this.contents = contents;
     }
 
@@ -88,7 +81,7 @@ public class Table {
         StringBuffer sb = new StringBuffer("  ");
         sb.append(name);
         sb.append("[@\"");
-        sb.append(Integer.toHexString(n));
+        sb.append(Integer.toHexString(contents.length));
         sb.append("] = {");
 
         boolean sep = false;

@@ -412,7 +412,7 @@ public class CompilerStateTest extends TestCase {
                     + "aliases:\n"
                     + "  NOT_ARABIC_NUMBER=^(`0\'-`9\' | @\"660-@\"669 | @\"6f0-@\"6f9)\n"
                     + "  ARABIC_LETTER={BIFORM} | {QUADRIFORM}\n"
-                    + "  SPECIAL=([@\"fdf2])\n"
+                    + "  SPECIAL=@\"fdf2\n"
                     + "  UNIFORM=@\"621 | @\"674 | @\"66e | @\"66f | @\"6ef | @\"63f\n"
                     + "  ALIF_LIKE=@\"622 | @\"623 | @\"625 | @\"627 | @\"671-@\"673\n"
                     + "  LAM_LIKE=@\"644 | @\"6b5-@\"6b7 | @\"6fe\n"

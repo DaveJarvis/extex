@@ -23,13 +23,14 @@ import java.io.IOException;
 
 import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
 import org.extex.ocpware.compiler.parser.CompilerState;
-import org.extex.ocpware.type.OcpProgram;
+import org.extex.ocpware.type.OcpCode;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents an arithmetic expression which references a character
+ * in the prefix relative to last.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public class Last extends ArithExpr {
 
@@ -57,7 +58,7 @@ public class Last extends ArithExpr {
     @Override
     void outExpr(CompilerState cs) throws IOException, ArgmentTooBigException {
 
-        cs.putInstruction(OcpProgram.PUSH_LCHAR, n);
+        cs.putInstruction(OcpCode.OP_PUSH_LCHAR, n);
     }
 
     /**

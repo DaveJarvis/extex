@@ -24,13 +24,13 @@ import java.io.IOException;
 import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
 import org.extex.ocpware.compiler.exception.TableNotDefinedException;
 import org.extex.ocpware.compiler.parser.CompilerState;
-import org.extex.ocpware.type.OcpProgram;
+import org.extex.ocpware.type.OcpCode;
 
 /**
  * This class represents an arithmetic expression for a table reference.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public class TableRef extends ArithExpr {
 
@@ -68,9 +68,9 @@ public class TableRef extends ArithExpr {
                 TableNotDefinedException,
                 ArgmentTooBigException {
 
-        cs.putInstruction(OcpProgram.PUSH_NUM, cs.lookupTable(table));
+        cs.putInstruction(OcpCode.OP_PUSH_NUM, cs.lookupTable(table));
         n.outExpr(cs);
-        cs.putInstruction(OcpProgram.LOOKUP);
+        cs.putInstruction(OcpCode.OP_LOOKUP);
     }
 
     /**

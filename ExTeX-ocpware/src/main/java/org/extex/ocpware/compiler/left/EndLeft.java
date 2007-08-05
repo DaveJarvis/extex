@@ -26,7 +26,7 @@ import java.util.List;
 import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
 import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.compiler.parser.State;
-import org.extex.ocpware.type.OcpProgram;
+import org.extex.ocpware.type.OcpCode;
 
 /**
  * This class represents a reference to the end of the sequence.
@@ -55,9 +55,9 @@ public class EndLeft implements Left {
                 ArgmentTooBigException {
 
         List<Integer> trueHoles = new ArrayList<Integer>();
-        int ptr = state.putInstruction(OcpProgram.GOTO_END);
+        int ptr = state.putInstruction(OcpCode.OP_GOTO_END);
         trueHoles.add(Integer.valueOf(ptr - 1));
-        ptr = state.putInstruction(OcpProgram.GOTO, 0);
+        ptr = state.putInstruction(OcpCode.OP_GOTO, 0);
         List<Integer> holes = new ArrayList<Integer>();
         holes.add(Integer.valueOf(ptr - 1));
         state.fillIn(trueHoles);

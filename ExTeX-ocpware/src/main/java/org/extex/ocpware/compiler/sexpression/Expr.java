@@ -29,22 +29,23 @@ import org.extex.ocpware.compiler.parser.CompilerState;
  * This interface represents an string expression.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public interface Expr {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Compile the string expression into a set of &Omega;CP instructions.
      * 
      * @param cs the compiler state for lookup
-     * 
+     * @param withOffset use push back instead of output
+     *
      * @throws ArgmentTooBigException in case that an argument is encountered
      *         which does not fit into two bytes
      * @throws IOException in case of an I/O error
      * @throws TableNotDefinedException in case that no matching table is known
      *         for a symbolic table reference
      */
-    void outRight(CompilerState cs)
+    void outRight(CompilerState cs, boolean withOffset)
             throws ArgmentTooBigException,
                 IOException,
                 TableNotDefinedException;

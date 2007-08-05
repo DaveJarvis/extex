@@ -36,7 +36,7 @@ import org.extex.ocpware.compiler.parser.ParserStream;
 public final class LeftParser {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Parse a choice left item.
      * 
      * @param s the input stream
      * 
@@ -66,7 +66,7 @@ public final class LeftParser {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Parse a complete left item.
      * 
      * @param s the input stream
      * 

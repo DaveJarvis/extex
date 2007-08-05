@@ -23,9 +23,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.ocpware.compiler.exception.AliasNotDefinedException;
 import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
+import org.extex.ocpware.compiler.exception.IllegalOpcodeException;
 import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.compiler.parser.State;
+import org.extex.ocpware.type.OcpCode;
 
 /**
  * This class represents a negated list of left items.
@@ -59,28 +62,19 @@ public class NotChoiceLeft implements Left {
      */
     public List<Integer> genLeft(State state, CompilerState cs)
             throws IOException,
-                ArgmentTooBigException {
+                ArgmentTooBigException,
+                AliasNotDefinedException,
+                IllegalOpcodeException {
 
         List<Integer> holes = new ArrayList<Integer>();
 
-        // for (Left l : list) {
-        //            
-        // }
-
-//        true_holes=nil;
-//        p=arg->more_lefts;
-//        while (p!=nil) {
-//            false_holes = gen_left(p->val);
-//            out_int(OTP_GOTO, 0);
-//            true_holes=cons(out_ptr-1, true_holes);
-//            fill_in(false_holes);
-//            p=p->ptr;
-//        }
-//        return true_holes;
-
-        
-        // TODO gene: genLeft unimplemented
-        throw new RuntimeException("unimplemented");
+        for (Left l : list) {
+            List<Integer> falseHoles = l.genLeft(state, cs);
+            int ptr = state.putInstruction(OcpCode.OP_GOTO, 0);
+            holes.add(Integer.valueOf(ptr - 1));
+            state.fillIn(falseHoles);
+        }
+        return holes;
     }
 
     /**

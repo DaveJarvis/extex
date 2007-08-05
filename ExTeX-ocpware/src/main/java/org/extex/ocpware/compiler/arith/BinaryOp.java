@@ -30,7 +30,7 @@ import org.extex.ocpware.compiler.parser.CompilerState;
  * expressions.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
 public class BinaryOp extends ArithExpr {
 
@@ -40,12 +40,13 @@ public class BinaryOp extends ArithExpr {
     private ArithExpr left;
 
     /**
-     * The field <tt>op</tt> contains the ...
+     * The field <tt>op</tt> contains the name of the operator
      */
     private String op;
 
     /**
-     * The field <tt>opCode</tt> contains the ...
+     * The field <tt>opCode</tt> contains the op code of the associated
+     * &Omega;CP instruction
      */
     private int opCode;
 
