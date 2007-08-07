@@ -17,66 +17,63 @@
  *
  */
 
-package org.extex.ocpware.compiler.left;
+package org.extex.ocpware.compiler.arith;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
 import org.extex.ocpware.compiler.parser.CompilerState;
-import org.extex.ocpware.compiler.parser.State;
+import org.extex.ocpware.compiler.sexpression.Expr;
 import org.extex.ocpware.type.OcpCode;
 
 /**
- * This class represents a string of characters as left item.
+ * This class represents the reference to a character in the matched sequence.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6007 $
  */
-public class StringLeft implements Left {
+public class Char extends ArithExpr implements Expr {
 
     /**
-     * The field <tt>s</tt> contains the string.
+     * The field <tt>n</tt> contains the index of the reference.
      */
-    private String s;
+    private int n;
 
     /**
      * Creates a new object.
      * 
-     * @param s the string
+     * @param n the index of the reference
      */
-    public StringLeft(String s) {
+    public Char(int n) {
 
         super();
-        this.s = s;
+        this.n = n;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.ocpware.compiler.left.Left#genLeft(State, CompilerState)
+     * @see org.extex.ocpware.compiler.arith.ArithExpr#outExpr( CompilerState)
      */
-    public List<Integer> genLeft(State state, CompilerState cs)
+    @Override
+    void outExpr(CompilerState cs) throws IOException, ArgmentTooBigException {
+
+        cs.putInstruction(OcpCode.OP_PUSH_CHAR, n);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.ocpware.compiler.sexpression.Expr#outRight(
+     *      org.extex.ocpware.compiler.parser.CompilerState, boolean)
+     */
+    public void outRight(CompilerState cs, boolean withOffset)
             throws IOException,
                 ArgmentTooBigException {
 
-        List<Integer> holes = new ArrayList<Integer>();
-        int length = s.length();
-        char c = s.charAt(0);
-        for (int i = 0; i < length;) {
-
-            int ptr = state.putInstruction(OcpCode.OP_GOTO_NE, c, 0);
-            holes.add(Integer.valueOf(ptr - 1));
-
-            if (++i < length) {
-                c = s.charAt(i);
-                ptr = state.putInstruction(OcpCode.OP_GOTO_NO_ADVANCE);
-                holes.add(Integer.valueOf(ptr - 1));
-            }
-        }
-
-        return holes;
+        cs.putInstruction(withOffset
+                ? OcpCode.OP_PBACK_CHAR
+                : OcpCode.OP_RIGHT_CHAR, n);
     }
 
     /**
@@ -87,7 +84,7 @@ public class StringLeft implements Left {
     @Override
     public String toString() {
 
-        return "\"" + s + "\"";
+        return "\\" + Integer.toString(n);
     }
 
 }

@@ -23,7 +23,7 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.List;
 
-import org.extex.ocpware.type.IllegalOpCodeException;
+import org.extex.ocpware.engine.IllegalOpCodeException;
 import org.extex.ocpware.type.OcpCode;
 import org.extex.ocpware.type.OcpProgram;
 
@@ -37,7 +37,6 @@ public class OcpExTeXWriter extends AbstractWriter {
 
     /**
      * Creates a new object.
-     * 
      */
     public OcpExTeXWriter() {
 
@@ -206,25 +205,17 @@ public class OcpExTeXWriter extends AbstractWriter {
 
         int length = ocp.getLength();
         if (length >= 0) {
-            print(out, "LENGTH", length);
+            print(out, "Length", length);
         }
         List<int[]> tables = ocp.getTables();
         print(out, "NO_TABLES", tables.size());
-        int mem = 0;
-        for (int i = 0; i < tables.size(); i++) {
-            mem += tables.get(i).length;
-        }
-        print(out, "ROOM_TABLES", mem);
+        print(out, "ROOM_TABLES", room(tables));
         List<int[]> states = ocp.getStates();
         print(out, "NO_STATES", states.size());
-        mem = 0;
-        for (int i = 0; i < states.size(); i++) {
-            mem += states.get(i).length;
-        }
-        print(out, "ROOM_STATES", mem);
+        print(out, "ROOM_STATES", room(states));
 
-        print(out, "INPUT", ocp.getInput());
-        print(out, "OUTPUT", ocp.getOutput());
+        print(out, "Input", ocp.getInput());
+        print(out, "Output", ocp.getOutput());
 
         if (tables.size() > 0) {
             out.append("\ntables:");
@@ -245,8 +236,9 @@ public class OcpExTeXWriter extends AbstractWriter {
                         out.append(", ");
                     }
                     String hex = Integer.toHexString(table[j]);
-                    out.append("0x0000".substring(0, hex.length() < 4 ? 6 - hex
-                        .length() : 2));
+                    out.append("0x0000000".substring(0, hex.length() < 4
+                            ? 6 - hex.length()
+                            : 2));
                     out.append(hex);
                 }
                 out.append("}\n");

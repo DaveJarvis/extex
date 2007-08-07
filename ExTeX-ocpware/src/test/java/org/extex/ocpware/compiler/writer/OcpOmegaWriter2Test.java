@@ -43,7 +43,7 @@ public class OcpOmegaWriter2Test extends WriterTester {
 
         Locale.setDefault(Locale.ENGLISH);
         run(OTP.OMEGA_LUNATESIGMA_OTP, new OcpOmegaWriter2(),
-            "ctp_length     : 28\n"
+            "ctp_length     : 29\n"
                     + "ctp_input      : 2\n" //
                     + "ctp_output     : 2\n" + "ctp_no_tables  : 0\n"
                     + "ctp_room_tables: 0\n" + "ctp_no_states  : 1\n"
@@ -77,11 +77,11 @@ public class OcpOmegaWriter2Test extends WriterTester {
      * @throws Exception in case of an error
      */
     @Test
-    public final void testParseDestroyN() throws Exception {
+    public final void testParseDestroy() throws Exception {
 
         Locale.setDefault(Locale.ENGLISH);
         run(OTP.OMEGA_DESTROY_OTP, new OcpOmegaWriter2(),
-            "ctp_length     : 13\n"
+            "ctp_length     : 14\n"
                     + "ctp_input      : 1\n" //
                     + "ctp_output     : 1\n" + "ctp_no_tables  : 0\n"
                     + "ctp_room_tables: 0\n" + "ctp_no_states  : 1\n"
@@ -104,11 +104,11 @@ public class OcpOmegaWriter2Test extends WriterTester {
 
         Locale.setDefault(Locale.ENGLISH);
         run(OTP.OMEGA_7IN88593_OTP, new OcpOmegaWriter2(),
-            "ctp_length     : 219\n" + "ctp_input      : 1\n"
+            "ctp_length     : 220\n" + "ctp_input      : 1\n"
                     + "ctp_output     : 2\n" + "ctp_no_tables  : 1\n"
                     + "ctp_room_tables: 96\n" + "ctp_no_states  : 1\n"
                     + "ctp_room_states: 115\n" + "\n"
-                    + "Table   0:  60 entries\n" + "\n" + "    a0(160),\n"
+                    + "Table 0: 60 entries\n" + "\n" + "    a0(160),\n"
                     + "    126(294),\n" + "    2d8(728),\n" + "    a3(163),\n"
                     + "    a4(164),\n" + "    fffd(65533),\n"
                     + "    124(292),\n" + "    a7(167),\n" + "    a8(168),\n"

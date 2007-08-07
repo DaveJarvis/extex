@@ -45,6 +45,14 @@ import org.extex.ocpware.type.OcpProgram;
 
 /**
  * This class provides a compiler state to translate an otp file into an ocp.
+ * <p>
+ * The processing is done in two phases. In the first phase a parse tree is
+ * build up. This happens within the method
+ * {@link #parse(InputStream) parse(InputStream)} or
+ * {@link #CompilerState(InputStream) CompilerState(InputStream)} In the second
+ * phase the parse tree is traversed and code is generated. This happens within
+ * the method {@link #compile() compile()}.
+ * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6007 $
@@ -79,8 +87,9 @@ public final class CompilerState {
 
     /**
      * The field <tt>in</tt> contains the number of bytes in the input stream.
+     * The default is 2.
      */
-    private int in;
+    private int in = 2;
 
     /**
      * The field <tt>states</tt> contains the list of states.
@@ -94,9 +103,9 @@ public final class CompilerState {
 
     /**
      * The field <tt>out</tt> contains the number of bytes in the output
-     * stream.
+     * stream. The default is 2.
      */
-    private int out;
+    private int out = 2;
 
     /**
      * The field <tt>states</tt> contains the list of states.
@@ -223,7 +232,7 @@ public final class CompilerState {
     }
 
     /**
-     * Getter for in.
+     * Getter for in. The default is 2.
      * 
      * @return the in
      */
@@ -233,7 +242,7 @@ public final class CompilerState {
     }
 
     /**
-     * Getter for out.
+     * Getter for out. The default is 2.
      * 
      * @return the out
      */
@@ -277,7 +286,7 @@ public final class CompilerState {
      */
     public void incrExpr() {
 
-        currentState.incrExpr();
+        currentState.incrExpressions();
     }
 
     /**
@@ -581,11 +590,7 @@ public final class CompilerState {
      */
     public void setCurrentState(String state) throws StateNotDefinedException {
 
-        if (state == null) {
-            currentStateIndex = 0;
-        } else {
-            currentStateIndex = lookupState(state);
-        }
+        currentStateIndex = (state == null ? 0 : lookupState(state));
         this.currentState = states.get(currentStateIndex);
     }
 

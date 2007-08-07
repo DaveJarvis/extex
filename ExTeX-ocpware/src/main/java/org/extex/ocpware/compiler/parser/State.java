@@ -41,9 +41,10 @@ public class State {
     private List<Integer> instructions = new ArrayList<Integer>();
 
     /**
-     * The field <tt>numExpr</tt> contains the number of expressions.
+     * The field <tt>numberExpressions</tt> contains the number of expressions
+     * stored in this state.
      */
-    private int numExpr = 0;
+    private int numberExpressions = 0;
 
     /**
      * Creates a new object.
@@ -66,7 +67,7 @@ public class State {
                 IOException,
                 IllegalOpcodeException {
 
-        if (numExpr == 0) {
+        if (numberExpressions == 0) {
             putInstruction(OcpCode.OP_LEFT_START);
         } else {
             putInstruction(OcpCode.OP_LEFT_RETURN);
@@ -76,13 +77,35 @@ public class State {
     }
 
     /**
-     * Getter for the current inter to the end of the code.
-     *
-     * @return the current inter to the end of the code
+     * Adjust some instructions by adding the current instruction pointer to
+     * them. Usually goto instructions do not know the position in the
+     * instructions to jump to when they are generated. Thus a hole is recorded.
+     * These holes are filled in at some time later.
+     * <p>
+     * The conditional gotos contain the jump position in the second argument.
+     * This is generated as 0. Adding the position fixes this hole.
+     * </p>
+     * <p>
+     * The other gotos contain the jump position in the first argument. The
+     * instruction contains the op code only. Adding the position fixes this
+     * hole and leaves the op code intact.
+     * </p>
+     * 
+     * @param holes the instructions to adjust
      */
-    public int getPointer() {
-        
-        return instructions.size();
+    public void fillIn(List<Integer> holes) {
+
+        int ptr = instructions.size();
+        if (ptr > OcpCode.ARGUMENT_BIT_MASK) {
+            throw new ArgmentTooBigException(ptr);
+        }
+
+        for (Integer in : holes) {
+            int i = in.intValue();
+            Integer value =
+                    Integer.valueOf(instructions.get(i).intValue() + ptr);
+            instructions.set(i, value);
+        }
     }
 
     /**
@@ -102,25 +125,35 @@ public class State {
     }
 
     /**
-     * Getter for numExpr.
+     * Getter for the number of expressions.
      * 
-     * @return the numExpr
+     * @return the number of expressions
      */
-    public int getNumExpr() {
+    public int getNumberExpressions() {
 
-        return numExpr;
+        return numberExpressions;
     }
 
     /**
-     * Increment the number of expressions contained.
+     * Getter for the current pointer to the end of the code.
+     * 
+     * @return the current pointer to the end of the code
      */
-    public void incrExpr() {
+    public int getPointer() {
 
-        numExpr++;
+        return instructions.size();
     }
 
     /**
-     * Put an instruction of one op code and no argument into the store. 
+     * Increment the number of expressions contained in this state.
+     */
+    public void incrExpressions() {
+
+        numberExpressions++;
+    }
+
+    /**
+     * Put an instruction of one op code and no argument into the store.
      * 
      * @param opCode the op code
      * 
@@ -133,18 +166,18 @@ public class State {
             throws IOException,
                 IllegalOpcodeException {
 
-        if (opCode < 1 || opCode > 36) {
+        if (OcpCode.get(opCode) == null) {
             throw new IllegalOpcodeException(opCode);
         }
-        instructions.add(Integer.valueOf(opCode << 24));
+        instructions.add(Integer.valueOf(opCode << OcpCode.OPCODE_OFFSET));
         return instructions.size();
     }
 
     /**
-     * Put an instruction of one op code and one argument into the store. 
+     * Put an instruction of one op code and one argument into the store.
      * 
      * @param opCode the op code
-     * @param n the first argument
+     * @param arg1 the first argument
      * 
      * @return the index of the next free position in the instruction array
      * 
@@ -153,27 +186,28 @@ public class State {
      *         the 16 bit value
      * @throws IllegalOpcodeException in case of an illegal op code
      */
-    public int putInstruction(int opCode, int n)
+    public int putInstruction(int opCode, int arg1)
             throws ArgmentTooBigException,
                 IOException,
                 IllegalOpcodeException {
 
-        if (opCode < 1 || opCode > 36) {
+        if (OcpCode.get(opCode) == null) {
             throw new IllegalOpcodeException(opCode);
         }
-        if (n > 0xffffff) {
-            throw new ArgmentTooBigException(n);
+        if (arg1 > OcpCode.ARGUMENT_BIT_MASK) {
+            throw new ArgmentTooBigException(arg1);
         }
-        instructions.add(Integer.valueOf((opCode << 24) | n));
+        instructions.add(Integer.valueOf((opCode << OcpCode.OPCODE_OFFSET)
+                | arg1));
         return instructions.size();
     }
 
     /**
-     * Put an instruction of one op code and three arguments into the store. 
+     * Put an instruction of one op code and two arguments into the store.
      * 
      * @param opCode the op code
-     * @param n the first argument
-     * @param a the second argument
+     * @param arg1 the first argument
+     * @param arg2 the second argument
      * 
      * @return the index of the next free position in the instruction array
      * 
@@ -182,38 +216,24 @@ public class State {
      *         the 16 bit value
      * @throws IllegalOpcodeException in case of an illegal op code
      */
-    public int putInstruction(int opCode, int n, int a)
+    public int putInstruction(int opCode, int arg1, int arg2)
             throws ArgmentTooBigException,
                 IOException,
                 IllegalOpcodeException {
 
-        if (opCode < 1 || opCode > 36) {
+        if (OcpCode.get(opCode) == null) {
             throw new IllegalOpcodeException(opCode);
         }
-        if (n > 0xffffff) {
-            throw new ArgmentTooBigException(n);
+        if (arg1 > OcpCode.ARGUMENT_BIT_MASK) {
+            throw new ArgmentTooBigException(arg1);
         }
-        if (a > 0xffffff) {
-            throw new ArgmentTooBigException(a);
+        if (arg2 > OcpCode.ARGUMENT_BIT_MASK) {
+            throw new ArgmentTooBigException(arg2);
         }
-        instructions.add(Integer.valueOf((opCode << 24) | n));
-        instructions.add(Integer.valueOf(a));
+        instructions.add(Integer.valueOf((opCode << OcpCode.OPCODE_OFFSET)
+                | arg1));
+        instructions.add(Integer.valueOf(arg2));
         return instructions.size();
-    }
-
-    /**
-     * Adjust some instructions by adding the current pointer to them.
-     * 
-     * @param holes the instructions to adjust
-     */
-    public void fillIn(List<Integer> holes) {
-
-        int ptr = instructions.size();
-        for (Integer in : holes) {
-            int i = in.intValue();
-            int x = instructions.get(i).intValue();
-            instructions.set(i, Integer.valueOf(x + ptr));
-        }
     }
 
 }

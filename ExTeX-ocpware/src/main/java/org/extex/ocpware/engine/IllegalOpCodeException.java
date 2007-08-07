@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.ocpware.type;
+package org.extex.ocpware.engine;
 
 /**
  * This exception signals that an illegal op code for an &Omega;CP instruction

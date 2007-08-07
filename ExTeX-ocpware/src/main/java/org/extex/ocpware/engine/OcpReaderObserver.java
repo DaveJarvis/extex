@@ -17,54 +17,31 @@
  *
  */
 
-package org.extex.ocpware.compiler.arith;
+package org.extex.ocpware.engine;
 
 /**
- * This class represents the binary addition operation of two arithmetic
- * expressions.
+ * This interface describes an observer of an OcpReader. The callback methods
+ * are invoked when a matching event is recognized.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class BinaryOp2 extends BinaryOp {
+public interface OcpReaderObserver {
 
     /**
-     * Creates a new object.
+     * Observe one step in the processing of an &Omega;CP reader.
      * 
-     * @param opCode the op code
-     * @param op the print presentation
-     * @param left the left argument
-     * @param right the right argument
+     * @param reader the &Omega;CP reader
+     * @param opcode the op code
+     * @param arg the argument
      */
-    public BinaryOp2(int opCode, String op, ArithExpr left, ArithExpr right) {
-
-        super(opCode, op, left, right);
-    }
+    void step(OcpReader reader, int opcode, int arg);
 
     /**
-     * {@inheritDoc}
-     *
-     * @see org.extex.ocpware.compiler.arith.BinaryOp#needsParen()
-     */
-    @Override
-    public boolean needsParen() {
-
-        return false;
-    }
-
-    /**
-     * {@inheritDoc}
+     * Observe the closing of the reader.
      * 
-     * @see java.lang.Object#toString()
+     * @param reader the &Omega;CP reader
      */
-    @Override
-    public String toString() {
-
-        StringBuffer sb = new StringBuffer();
-        sb.append(getLeft().toString());
-        sb.append(getOp());
-        sb.append(getRight().toString());
-        return sb.toString();
-    }
+    void close(OcpReader reader);
 
 }

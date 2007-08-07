@@ -37,7 +37,7 @@ import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.compiler.parser.ParserStream;
 import org.extex.ocpware.compiler.parser.State;
 import org.extex.ocpware.compiler.sexpression.Expr;
-import org.extex.ocpware.compiler.sexpression.SParser;
+import org.extex.ocpware.compiler.sexpression.ExprListParser;
 import org.extex.ocpware.compiler.state.RightState;
 import org.extex.ocpware.compiler.state.StateChange;
 import org.extex.ocpware.compiler.state.StatePop;
@@ -78,6 +78,40 @@ public class Expression {
     }
 
     /**
+     * Parse a right state specification.
+     * 
+     * @param s the input stream
+     * 
+     * @return the right state or <code>null</code>
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws SyntaxException in case of a syntax error
+     */
+    private static RightState optionalRightState(ParserStream s)
+            throws IOException,
+                SyntaxException {
+
+        int c = s.skipSpace();
+        if (c != '<') {
+            s.unread(c);
+            return null;
+        }
+
+        RightState state = null;
+        String t = s.parseId();
+        if ("push:".equals(t)) {
+            t = s.parseId();
+            state = new StatePush(t);
+        } else if ("pop:".equals(t)) {
+            state = new StatePop();
+        } else {
+            state = new StateChange(t);
+        }
+        s.expect('>');
+        return state;
+    }
+
+    /**
      * Parse an expression.
      * 
      * @param stream the input stream
@@ -101,8 +135,8 @@ public class Expression {
         expression.setLeftState(optionalLeftState(stream));
         expression.setTotalLeft(totalLeft(stream));
         expression.setRight(right(stream));
-        expression.setPushBack(parsePushBack(stream));
-        expression.setRightState(parseOptionalRightState(stream));
+        expression.setPushBack(pushBack(stream));
+        expression.setRightState(optionalRightState(stream));
         stream.expect(';');
         return expression;
     }
@@ -130,40 +164,6 @@ public class Expression {
     }
 
     /**
-     * Parse a right state specification.
-     * 
-     * @param s the input stream
-     * 
-     * @return the right state or <code>null</code>
-     * 
-     * @throws IOException in case of an I/O error
-     * @throws SyntaxException in case of a syntax error
-     */
-    private static RightState parseOptionalRightState(ParserStream s)
-            throws IOException,
-                SyntaxException {
-
-        int c = s.skipSpace();
-        if (c != '<') {
-            s.unread(c);
-            return null;
-        }
-
-        RightState state = null;
-        String t = s.parseId();
-        if ("push:".equals(t)) {
-            t = s.parseId();
-            state = new StatePush(t);
-        } else if ("pop:".equals(t)) {
-            state = new StatePop();
-        } else {
-            state = new StateChange(t);
-        }
-        s.expect('>');
-        return state;
-    }
-
-    /**
      * Parse the push back tokens.
      * 
      * @param s the input stream
@@ -173,7 +173,7 @@ public class Expression {
      * @throws IOException in case of an I/O error
      * @throws SyntaxException in case of a syntax error
      */
-    private static List<Expr> parsePushBack(ParserStream s)
+    private static List<Expr> pushBack(ParserStream s)
             throws IOException,
                 SyntaxException {
 
@@ -189,7 +189,7 @@ public class Expression {
             return null;
         }
 
-        return SParser.parse(s);
+        return ExprListParser.parse(s);
     }
 
     /**
@@ -208,7 +208,7 @@ public class Expression {
 
         s.expect('=');
         s.expect('>');
-        return new Right(SParser.parse(s));
+        return new Right(ExprListParser.parse(s));
     }
 
     /**
@@ -323,6 +323,11 @@ public class Expression {
         if (right != null) {
             right.compile(cs, false);
         }
+        if (pushBack != null) {
+            for(Expr ex: pushBack) {
+                ex.outRight(cs, true);
+            }
+        }
         if (rightState != null) {
             rightState.compile(cs, true);
         }
@@ -402,7 +407,7 @@ public class Expression {
 
         State currentState = cs.getCurrentState();
 
-        currentState.putInstruction(currentState.getNumExpr() == 1
+        currentState.putInstruction(currentState.getNumberExpressions() == 1
                 ? OcpCode.OP_LEFT_START
                 : OcpCode.OP_LEFT_RETURN);
 

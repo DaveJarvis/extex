@@ -151,15 +151,15 @@ public abstract class ArithExpr {
                     left = parseTerm(s);
                     break;
                 case '*':
-                    left = new BinaryOp2(OcpCode.OP_MULT, " * ", //
-                        left, parseTerm(s));
+                    left = new BinaryOp(OcpCode.OP_MULT, " * ", left, //
+                        parseTerm(s), false);
                     break;
                 case 'd':
                     s.unread(c);
                     t = s.parseId();
                     if ("div:".equals(t)) {
-                        left = new BinaryOp2(OcpCode.OP_DIV, " DIV: ", //
-                            left, parseTerm(s));
+                        left = new BinaryOp(OcpCode.OP_DIV, " DIV: ", left, //
+                            parseTerm(s), false);
                     } else {
                         s.unread(t.getBytes());
                     }
@@ -168,8 +168,8 @@ public abstract class ArithExpr {
                     s.unread(c);
                     t = s.parseId();
                     if ("mod:".equals(t)) {
-                        left = new BinaryOp2(OcpCode.OP_MOD, " MOD: ", //
-                            left, parseTerm(s));
+                        left = new BinaryOp(OcpCode.OP_MOD, " MOD: ", left, //
+                            parseTerm(s), false);
                     } else {
                         s.unread(t.getBytes());
                     }
@@ -201,16 +201,16 @@ public abstract class ArithExpr {
         int c = s.skipSpace();
 
         if (c == '$') {
-            return new Last(0);
+            return new LastChar(0);
         } else if (c == '(') {
             s.expect('$');
             s.expect('-');
-            Last result = new Last(s.parseNumber(s.skipSpace()));
+            LastChar result = new LastChar(s.parseNumber(s.skipSpace()));
             s.expect(')');
             return result;
         }
 
-        return new Ref(s.parseNumber(c));
+        return new Char(s.parseNumber(c));
     }
 
     /**

@@ -34,6 +34,14 @@ import org.extex.ocpware.type.OcpProgram;
 public class OcpOmegaWriter2 extends OcpOmegaWriter {
 
     /**
+     * Creates a new object.
+     */
+    public OcpOmegaWriter2() {
+
+        super(16, false);
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.ocpware.writer.OcpOmegaWriter#write(java.io.OutputStream,
@@ -46,41 +54,28 @@ public class OcpOmegaWriter2 extends OcpOmegaWriter {
 
         int length = ocp.getLength();
         if (length >= 0) {
-            print(out, "LENGTH", length);
+            print(out, "Length", length);
         }
-        print(out, "INPUT", ocp.getInput());
-        print(out, "OUTPUT", ocp.getOutput());
+        print(out, "Input", ocp.getInput());
+        print(out, "Output", ocp.getOutput());
         List<int[]> tables = ocp.getTables();
-        print(out, "NO_TABLES", tables.size());
-        int mem = 0;
-        for (int i = 0; i < tables.size(); i++) {
-            mem += tables.get(i).length;
-        }
-        print(out, "ROOM_TABLES", mem);
+        printNum(22, out, "Tables", tables.size(), room(tables));
         List<int[]> states = ocp.getStates();
-        print(out, "NO_STATES", states.size());
-        mem = 0;
-        for (int i = 0; i < states.size(); i++) {
-            mem += states.get(i).length;
-        }
-        print(out, "ROOM_STATES", mem);
+        printNum(22, out, "States", states.size(), room(states));
 
         for (int i = 0; i < tables.size(); i++) {
             int[] table = tables.get(i);
-            printNum(out, "TABLE", i);
-            printNum(out, "TABLE_ENTRIES", table.length);
+            printNum(22, out, "Table", i, table.length);
 
             for (int j = 0; j < table.length; j++) {
-                printNum(out, "ENTRY_TABLE", i);
-                printNum(out, "TABLE_ENTRY", j);
-                print(out, "TABLE_ITEM", table[j]);
+                printNum(22, out, "TableEntry", i, j);
+                print(out, "TableItem", table[j]);
             }
         }
 
         for (int i = 0; i < states.size(); i++) {
             int[] instructions = states.get(i);
-            print(out, "STATE", i);
-            print(out, "ENTRIES", instructions.length);
+            printNum(22, out, "State", i, instructions.length);
 
             boolean dis = true;
 
@@ -94,7 +89,7 @@ public class OcpOmegaWriter2 extends OcpOmegaWriter {
                     dis = disassemble(out, instructions, j);
                 } else {
                     out.print("                ");
-                    print(out, "INSTRUCTION", instructions[j]);
+                    print(out, "Instruction", instructions[j]);
                     dis = true;
                 }
                 out.println();

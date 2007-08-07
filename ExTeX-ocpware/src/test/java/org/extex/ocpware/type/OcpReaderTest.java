@@ -28,6 +28,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.extex.ocpware.compiler.parser.CompilerState;
+import org.extex.ocpware.engine.OcpReader;
+import org.extex.ocpware.engine.OcpReaderObserver;
 import org.junit.Test;
 
 /**
@@ -37,6 +39,11 @@ import org.junit.Test;
  * @version $Revision$
  */
 public class OcpReaderTest {
+
+    /**
+     * The field <tt>buffer</tt> contains the ...
+     */
+    private StringBuffer buffer = new StringBuffer();
 
     /**
      * Test method.
@@ -57,7 +64,7 @@ public class OcpReaderTest {
     }
 
     /**
-     * Test method for {@link org.extex.ocpware.type.OcpReader#close()}.
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
      * 
      * @throws IOException not very likely
      */
@@ -72,7 +79,7 @@ public class OcpReaderTest {
     }
 
     /**
-     * Test method for {@link org.extex.ocpware.type.OcpReader#close()}.
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
      * 
      * @throws IOException not very likely
      */
@@ -88,7 +95,7 @@ public class OcpReaderTest {
     }
 
     /**
-     * Test method for {@link org.extex.ocpware.type.OcpReader#read()}.
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#read()}.
      * 
      * @throws Exception not very likely
      */
@@ -103,20 +110,19 @@ public class OcpReaderTest {
         stream.close();
         OcpProgram ocpProgram = cs.compile();
         OcpReader r =
-                new OcpReader(new CharArrayReader("".toCharArray()),
-                    ocpProgram);
+                new OcpReader(new CharArrayReader("".toCharArray()), ocpProgram);
 
         assertEquals(-1, r.read());
     }
 
     /**
-     * Test method for {@link org.extex.ocpware.type.OcpReader#read()}.
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#read()}.
      * 
      * @throws Exception not very likely
      */
     @Test
     @SuppressWarnings("boxing")
-    public final void testRead1() throws Exception {
+    public final void testRead01() throws Exception {
 
         InputStream stream =
                 new ByteArrayInputStream(
@@ -125,12 +131,164 @@ public class OcpReaderTest {
         stream.close();
         OcpProgram ocpProgram = cs.compile();
         OcpReader r =
-                new OcpReader(new CharArrayReader("abc\n".toCharArray()),
+                new OcpReader(new CharArrayReader("".toCharArray()), ocpProgram);
+
+        assertEquals(-1, r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#read()}.
+     * 
+     * @throws Exception not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testRead2() throws Exception {
+
+        InputStream stream =
+                new ByteArrayInputStream(
+                    "input: 1;output: 1;expressions: . => `*';".getBytes());
+        CompilerState cs = new CompilerState(stream);
+        stream.close();
+        OcpProgram ocpProgram = cs.compile();
+        OcpReader r =
+                new OcpReader(new CharArrayReader("a".toCharArray()),
+                    ocpProgram);
+
+        assertEquals(42, r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#read()}.
+     * 
+     * @throws Exception not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testRead3() throws Exception {
+
+        InputStream stream =
+                new ByteArrayInputStream(
+                    "input: 1;output: 1;expressions: . => `*';".getBytes());
+        CompilerState cs = new CompilerState(stream);
+        stream.close();
+        OcpProgram ocpProgram = cs.compile();
+        OcpReader r =
+                new OcpReader(new CharArrayReader("a b".toCharArray()),
                     ocpProgram);
 
         assertEquals(42, r.read());
         assertEquals(42, r.read());
         assertEquals(42, r.read());
+        assertEquals(-1, r.read());
     }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#read()}.
+     * 
+     * @throws Exception not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testRead4() throws Exception {
+
+        InputStream stream =
+                new ByteArrayInputStream(
+                    "input: 1;output: 1;expressions: . => #\\$;".getBytes());
+        CompilerState cs = new CompilerState(stream);
+        stream.close();
+        OcpProgram ocpProgram = cs.compile();
+        OcpReader r =
+                new OcpReader(new CharArrayReader("a b".toCharArray()),
+                    ocpProgram);
+
+        assertEquals(97, r.read());
+        assertEquals(32, r.read());
+        assertEquals(98, r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.ocpware.engine.OcpReader#register(OcpReaderObserver)}.
+     * 
+     * @throws Exception not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testRegister1() throws Exception {
+
+        if (buffer.length() > 0) {
+            buffer.delete(0, buffer.length() - 1);
+        }
+
+        InputStream stream =
+                new ByteArrayInputStream(
+                    "input: 1;output: 1;expressions: . => #\\$;".getBytes());
+        CompilerState cs = new CompilerState(stream);
+        stream.close();
+        OcpProgram ocpProgram = cs.compile();
+        OcpReader r =
+                new OcpReader(new CharArrayReader("a b".toCharArray()),
+                    ocpProgram);
+        r.register(new OcpReaderObserver() {
+
+            public void step(OcpReader reader, int opcode, int arg) {
+
+                buffer.append(OcpCode.get(opcode).toString());
+                buffer.append('\n');
+            }
+
+            public void close(OcpReader reader) {
+                // nope
+            }
+        });
+
+        assertEquals(97, r.read());
+        assertEquals(32, r.read());
+        assertEquals(98, r.read());
+        assertEquals(-1, r.read());
+        assertEquals("LEFT_START\n" + "PUSH_LCHAR\n" + "RIGHT_OUTPUT\n"
+                + "STOP\n" + "LEFT_START\n" + "PUSH_LCHAR\n" + "RIGHT_OUTPUT\n"
+                + "STOP\n" + "LEFT_START\n" + "PUSH_LCHAR\n" + "RIGHT_OUTPUT\n"
+                + "STOP\n" + "LEFT_START\n", buffer.toString());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#read()}.
+     * 
+     * @throws Exception not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testRead5() throws Exception {
+
+        InputStream stream =
+                new ByteArrayInputStream(
+                    "input: 1;output: 1;expressions: .. => 42;".getBytes());
+        CompilerState cs = new CompilerState(stream);
+        stream.close();
+        OcpProgram ocpProgram = cs.compile();
+        OcpReader r =
+                new OcpReader(new CharArrayReader("ab".toCharArray()),
+                    ocpProgram);
+//        r.register(new OcpReaderObserver() {
+//
+//            public void step(OcpReader reader, int opcode, int arg) {
+//
+//                System.err.println(OcpCode.get(opcode).toString());
+//            }
+//
+//            public void close(OcpReader reader) {
+//                // nope
+//            }
+//        });
+
+        assertEquals(42, r.read());
+        assertEquals(-1, r.read());
+    }
+
 
 }

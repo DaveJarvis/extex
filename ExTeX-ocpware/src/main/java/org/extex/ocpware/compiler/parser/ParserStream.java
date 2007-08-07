@@ -271,6 +271,36 @@ public class ParserStream extends PushbackInputStream {
     }
 
     /**
+     * Parse a string specification. It is assumed that the starting double
+     * quote (") has already been digested. The string reaches to the
+     * terminating double quote. This terminating character is absorbed but not
+     * included into the result.
+     * <p>
+     * If two double quotes occur in sequence then this is interpreted as one
+     * double quote character embedded in the string.
+     * </p>
+     * 
+     * @return the string value
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public String parseString() throws IOException {
+
+        StringBuffer sb = new StringBuffer();
+        for (int c = read(); c >= 0; c = read()) {
+            if (c == '"') {
+                c = read();
+                if (c != '"') {
+                    unread(c);
+                    break;
+                }
+            }
+            sb.append((char) c);
+        }
+        return sb.toString();
+    }
+
+    /**
      * Skip whitespace and comments and advance to the next real character. This
      * character is returned. If end of file is reached -1 is returned.
      * 

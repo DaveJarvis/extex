@@ -56,6 +56,12 @@ public class BinaryOp extends ArithExpr {
     private ArithExpr right;
 
     /**
+     * The field <tt>needsParen</tt> contains the indicator for the precedence
+     * of the operator.
+     */
+    private boolean needsParen = true;
+
+    /**
      * Creates a new object.
      * 
      * @param opCode the op code
@@ -70,6 +76,22 @@ public class BinaryOp extends ArithExpr {
         this.right = right;
         this.opCode = opCode;
         this.op = op;
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param opCode the op code
+     * @param op the print presentation
+     * @param left the left argument
+     * @param right the right argument
+     * @param needsParen the indicator for the precedence of the operator
+     */
+    public BinaryOp(int opCode, String op, ArithExpr left, ArithExpr right,
+            boolean needsParen) {
+
+        this(opCode, op, left, right);
+        this.needsParen = needsParen;
     }
 
     /**
@@ -110,13 +132,13 @@ public class BinaryOp extends ArithExpr {
     @Override
     public boolean needsParen() {
 
-        return true;
+        return needsParen;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.ocpware.compiler.arith.ArithExpr#outExpr( CompilerState)
+     * @see org.extex.ocpware.compiler.arith.ArithExpr#outExpr(CompilerState)
      */
     @Override
     void outExpr(CompilerState cs)

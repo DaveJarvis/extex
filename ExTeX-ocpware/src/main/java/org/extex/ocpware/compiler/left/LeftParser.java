@@ -81,23 +81,7 @@ public final class LeftParser {
 
         int c = s.skipSpace();
         if (c == '"') {
-            StringBuffer sb = new StringBuffer();
-            for (;;) {
-                c = s.read();
-                if (c < 0) {
-                    s.expect('"'); // force an error
-                } else if (c == '"') {
-                    c = s.read();
-                    if (c < 0) {
-                        s.expect('"'); // force an error
-                    } else if (c != '"') {
-                        s.unread(c);
-                        break;
-                    }
-                }
-                sb.append((char) c);
-            }
-            return new StringLeft(sb.toString());
+            return new StringItem(s.parseString());
         }
         s.unread(c);
         Left left = oneLeft(s);

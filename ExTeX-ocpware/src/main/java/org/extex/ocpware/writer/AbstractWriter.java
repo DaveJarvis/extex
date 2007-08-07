@@ -20,6 +20,7 @@
 package org.extex.ocpware.writer;
 
 import java.text.MessageFormat;
+import java.util.List;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
@@ -46,6 +47,21 @@ public abstract class AbstractWriter implements OcpWriter {
         bundle = ResourceBundle.getBundle(getClass().getName());
     }
 
+    /**
+     * Compute the sum of length of a list of arrays.
+     * 
+     * @param a a list of arrays
+     * 
+     * @return the sum of length
+     */
+    protected int room(List<int[]> a) {
+
+        int mem = 0;
+        for (int i = 0; i < a.size(); i++) {
+            mem += a.get(i).length;
+        }
+        return mem;
+    }
 
     /**
      * Apply a message format and handle exceptions gracefully.
@@ -62,6 +78,23 @@ public abstract class AbstractWriter implements OcpWriter {
             return MessageFormat.format(fmt, a);
         } catch (MissingResourceException e) {
             return "???" + key + "???";
+        }
+    }
+
+    /**
+     * Extract a boolean value from a resource bundle.
+     * 
+     * @param key the key in the resource bundle
+     *
+     * @return the boolean value; it defaults to <code>false</code>
+     */
+    protected boolean booleanResource(String key) {
+
+        try {
+            String fmt = bundle.getString(key);
+            return Boolean.getBoolean(fmt);
+        } catch (MissingResourceException e) {
+            return false;
         }
     }
 

@@ -43,7 +43,7 @@ public class OcpExTeXWriterTest extends WriterTester {
 
         Locale.setDefault(Locale.ENGLISH);
         run(OTP.OMEGA_LUNATESIGMA_OTP, new OcpExTeXWriter(), //
-            "% length = 28\n" //
+            "% length = 29\n" //
                     + "% 0 tables in 0 words\n" //
                     + "% 1 states in 21 words\n\n" //
                     + "input = 2\n" //
@@ -79,7 +79,7 @@ public class OcpExTeXWriterTest extends WriterTester {
     public final void testParseDestroy() throws Exception {
 
         Locale.setDefault(Locale.ENGLISH);
-        run(OTP.OMEGA_DESTROY_OTP, new OcpExTeXWriter(), "% length = 13\n"
+        run(OTP.OMEGA_DESTROY_OTP, new OcpExTeXWriter(), "% length = 14\n"
                 + "% 0 tables in 0 words\n" + "% 1 states in 6 words\n" + "\n"
                 + "input = 1\n" + "output = 1\n" + "\n"
                 + "State _S0: % 6 entries\n" + "\n"
@@ -99,7 +99,7 @@ public class OcpExTeXWriterTest extends WriterTester {
     public final void testParse7in88593() throws Exception {
 
         Locale.setDefault(Locale.ENGLISH);
-        run(OTP.OMEGA_7IN88593_OTP, new OcpExTeXWriter(), "% length = 219\n"
+        run(OTP.OMEGA_7IN88593_OTP, new OcpExTeXWriter(), "% length = 220\n"
                 + "% 1 tables in 96 words\n"
                 + "% 1 states in 115 words\n"
                 + "\n"
@@ -220,7 +220,7 @@ public class OcpExTeXWriterTest extends WriterTester {
     public final void testParseLat2uni() throws Exception {
 
         Locale.setDefault(Locale.ENGLISH);
-        run(OTP.OMEGA_LAT2UNI_OTP, new OcpExTeXWriter(), "% length = 106\n"
+        run(OTP.OMEGA_LAT2UNI_OTP, new OcpExTeXWriter(), "% length = 107\n"
                 + "% 0 tables in 0 words\n" + "% 2 states in 98 words\n" + "\n"
                 + "input = 1\n" + "output = 2\n" + "\n"
                 + "State _S0: % 80 entries\n" + "\n"

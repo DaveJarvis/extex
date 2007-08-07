@@ -36,11 +36,34 @@ import org.extex.ocpware.type.OcpProgram;
 public class OcpOmegaWriter extends AbstractWriter {
 
     /**
+     * The field <tt>adjust</tt> contains the ...
+     */
+    private int adjust = 20;
+
+    /**
+     * The field <tt>fill</tt> contains the ...
+     */
+    private boolean fill = true;
+
+    /**
      * Creates a new object.
      */
     public OcpOmegaWriter() {
 
+        this(20, true);
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param adjust the adjust length
+     * @param fill the fill indicator
+     */
+    protected OcpOmegaWriter(int adjust, boolean fill) {
+
         super();
+        this.adjust = adjust;
+        this.fill = fill;
     }
 
     /**
@@ -58,9 +81,9 @@ public class OcpOmegaWriter extends AbstractWriter {
         OcpCode code = OcpCode.get(c >> OcpCode.OPCODE_OFFSET);
 
         if (code != null) {
-            out.print((code.getInstruction() + "                ").substring(0,
-                16));
-            print(out, "ARG", c & OcpCode.ARGUMENT_BIT_MASK);
+            out.print(format("Code", code.getInstruction())
+                .substring(0, adjust));
+            print(out, "Arg", c & OcpCode.ARGUMENT_BIT_MASK);
             return (code.getArguments().length < 2);
         }
 
@@ -86,7 +109,22 @@ public class OcpOmegaWriter extends AbstractWriter {
             s = sb.toString();
         }
         String hex = Integer.toHexString(value);
+        if (fill && hex.length() == 1) {
+            hex = " " + hex;
+        }
         String dec = Integer.toString(value);
+        if (fill) {
+            switch (dec.length()) {
+                case 1:
+                    dec = "  " + dec;
+                    break;
+                case 2:
+                    dec = " " + dec;
+                    break;
+                default:
+                    // leave alone
+            }
+        }
         out.print(format(key, hex, dec, s));
     }
 
@@ -99,29 +137,107 @@ public class OcpOmegaWriter extends AbstractWriter {
      */
     protected void printNum(PrintStream out, String key, int value) {
 
+        String s = "";
+        if (value >= ' ' && value <= 0x7d) {
+            StringBuffer sb = new StringBuffer(",`");
+            sb.append((char) value);
+            sb.append('\'');
+            s = sb.toString();
+        }
         String hex = Integer.toHexString(value);
-        switch (hex.length()) {
-            case 1:
-                hex = "  " + hex;
-                break;
-            case 2:
-                hex = " " + hex;
-                break;
-            default:
-                // leave alone
+        if (fill) {
+            switch (hex.length()) {
+                case 1:
+                    hex = "  " + hex;
+                    break;
+                case 2:
+                    hex = " " + hex;
+                    break;
+                default:
+                    // leave alone
+            }
         }
         String dec = Integer.toString(value);
-        switch (dec.length()) {
-            case 1:
-                dec = "  " + dec;
-                break;
-            case 2:
-                dec = " " + dec;
-                break;
-            default:
-                // leave alone
+        if (fill) {
+            switch (dec.length()) {
+                case 1:
+                    dec = "  " + dec;
+                    break;
+                case 2:
+                    dec = " " + dec;
+                    break;
+                default:
+                    // leave alone
+            }
         }
-        out.print(format(key, hex, dec, ""));
+        out.print(format(key, hex, dec, s));
+    }
+
+    /**
+     * Print a number as hex and as decimal to an output stream.
+     * 
+     * @param off offset
+     * @param out the output stream
+     * @param key the resource bundle key
+     * @param value the value to print
+     * @param value2 the second value to print
+     */
+    protected void printNum(int off, PrintStream out, String key, int value,
+            int value2) {
+
+        String hex = Integer.toHexString(value);
+        if (fill) {
+            switch (hex.length() - off) {
+                case 1:
+                    hex = "  " + hex;
+                    break;
+                case 2:
+                    hex = " " + hex;
+                    break;
+                default:
+                    // leave alone
+            }
+        }
+        String dec = Integer.toString(value);
+        if (fill) {
+            switch (dec.length() - off) {
+                case 1:
+                    dec = "  " + dec;
+                    break;
+                case 2:
+                    dec = " " + dec;
+                    break;
+                default:
+                    // leave alone
+            }
+        }
+        String hex2 = Integer.toHexString(value2);
+        if (fill) {
+            switch (hex2.length()) {
+                case 1:
+                    hex2 = "  " + hex2;
+                    break;
+                case 2:
+                    hex2 = " " + hex2;
+                    break;
+                default:
+                    // leave alone
+            }
+        }
+        String dec2 = Integer.toString(value2);
+        if (fill) {
+            switch (dec2.length()) {
+                case 1:
+                    dec2 = "  " + dec2;
+                    break;
+                case 2:
+                    dec2 = " " + dec2;
+                    break;
+                default:
+                    // leave alone
+            }
+        }
+        out.print(format(key, hex, dec, "", hex2, dec2, ""));
     }
 
     /**
@@ -136,54 +252,55 @@ public class OcpOmegaWriter extends AbstractWriter {
 
         int length = ocp.getLength();
         if (length >= 0) {
-            printNum(out, "LENGTH", length);
+            printNum(out, "Length", length);
         }
-        printNum(out, "INPUT", ocp.getInput());
-        printNum(out, "OUTPUT", ocp.getOutput());
+        printNum(out, "Input", ocp.getInput());
+        printNum(out, "Output", ocp.getOutput());
         List<int[]> tables = ocp.getTables();
-        printNum(out, "NO_TABLES", tables.size());
-        int mem = 0;
-        for (int i = 0; i < tables.size(); i++) {
-            mem += tables.get(i).length;
-        }
-        printNum(out, "ROOM_TABLES", mem);
+        printNum(0, out, "Tables", tables.size(), room(tables));
         List<int[]> states = ocp.getStates();
-        printNum(out, "NO_STATES", states.size());
-        mem = 0;
-        for (int i = 0; i < states.size(); i++) {
-            mem += states.get(i).length;
-        }
-        printNum(out, "ROOM_STATES", mem);
+        printNum(0, out, "States", states.size(), room(states));
 
-        for (int i = 0; i < tables.size(); i++) {
-            int[] table = tables.get(i);
-            printNum(out, "TABLE", i);
-            printNum(out, "TABLE_ENTRIES", table.length);
+        if (tables.size() > 0) {
+            out.println();
 
-            for (int j = 0; j < table.length; j++) {
-                printNum(out, "ENTRY_TABLE", i);
-                printNum(out, "TABLE_ENTRY", j);
-                print(out, "TABLE_ITEM", table[j]);
+            for (int i = 0; i < tables.size(); i++) {
+                int[] table = tables.get(i);
+                printNum(0, out, "Table", i, table.length);
+            }
+
+            out.println();
+
+            for (int i = 0; i < tables.size(); i++) {
+                int[] table = tables.get(i);
+
+                for (int j = 0; j < table.length; j++) {
+                    printNum(0, out, "TableEntry", i, j);
+                    print(out, "TableItem", table[j]);
+                }
             }
         }
 
+        out.println();
+
+        for (int i = 0; i < states.size(); i++) {
+            printNum(-1, out, "State", i, states.get(i).length);
+        }
+
+        out.println();
+
         for (int i = 0; i < states.size(); i++) {
             int[] instructions = states.get(i);
-            printNum(out, "STATE", i);
-            printNum(out, "ENTRIES", instructions.length);
-
             boolean dis = true;
 
             for (int j = 0; j < instructions.length; j++) {
-                printNum(out, "ENTRY_STATE", i);
-                printNum(out, "ENTRY", j);
+                printNum(-1, out, "StateEntry", i, j);
 
                 if (dis) {
-                    out.print("OTP_");
                     dis = disassemble(out, instructions, j);
                 } else {
                     out.print("                    ");
-                    print(out, "INSTRUCTION", instructions[j]);
+                    print(out, "Instruction", instructions[j]);
                     dis = true;
                 }
                 out.println();

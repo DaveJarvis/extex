@@ -25,22 +25,25 @@ import java.util.List;
 
 import org.extex.ocpware.compiler.arith.Arith;
 import org.extex.ocpware.compiler.arith.ArithExpr;
+import org.extex.ocpware.compiler.arith.Char;
 import org.extex.ocpware.compiler.arith.Constant;
+import org.extex.ocpware.compiler.arith.LastChar;
 import org.extex.ocpware.compiler.exception.SyntaxException;
+import org.extex.ocpware.compiler.left.StringItem;
 import org.extex.ocpware.compiler.parser.ParserStream;
 
 /**
  * This utility class contains the string expression parser.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6007 $
  */
-public final class SParser {
+public final class ExprListParser {
 
     /**
      * Creates a new object.
      */
-    private SParser() {
+    private ExprListParser() {
 
         // unused
     }
@@ -65,9 +68,7 @@ public final class SParser {
             int c = s.skipSpace();
             switch (c) {
                 case '"':
-                    for (c = s.read(); c >= 0 && c != '"'; c = s.read()) {
-                        result.add(new Constant(c));
-                    }
+                    result.add(new StringItem(s.parseString()));
                     break;
                 case '\\':
                     result.add(parseRef(s));

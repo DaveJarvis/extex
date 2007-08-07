@@ -35,9 +35,9 @@ import org.extex.ocpware.type.OcpCode;
 public class TableRef extends ArithExpr {
 
     /**
-     * The field <tt>n</tt> contains the offset.
+     * The field <tt>index</tt> contains the offset.
      */
-    private ArithExpr n;
+    private ArithExpr index;
 
     /**
      * The field <tt>table</tt> contains the name of the table.
@@ -54,7 +54,7 @@ public class TableRef extends ArithExpr {
 
         super();
         this.table = id;
-        this.n = n;
+        this.index = n;
     }
 
     /**
@@ -69,7 +69,7 @@ public class TableRef extends ArithExpr {
                 ArgmentTooBigException {
 
         cs.putInstruction(OcpCode.OP_PUSH_NUM, cs.lookupTable(table));
-        n.outExpr(cs);
+        index.outExpr(cs);
         cs.putInstruction(OcpCode.OP_LOOKUP);
     }
 
@@ -81,7 +81,7 @@ public class TableRef extends ArithExpr {
     @Override
     public String toString() {
 
-        return table + "[" + n.toString() + "]";
+        return table + "[" + index.toString() + "]";
     }
 
 }

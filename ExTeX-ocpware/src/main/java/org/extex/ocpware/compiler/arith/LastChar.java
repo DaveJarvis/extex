@@ -17,36 +17,49 @@
  *
  */
 
-package org.extex.ocpware.compiler.sexpression;
+package org.extex.ocpware.compiler.arith;
 
 import java.io.IOException;
 
 import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
 import org.extex.ocpware.compiler.parser.CompilerState;
+import org.extex.ocpware.compiler.sexpression.Expr;
 import org.extex.ocpware.type.OcpCode;
 
 /**
- * This class represents the n but last character of the prefix.
+ * This class represents an arithmetic expression which references a character
+ * in the prefix relative to last.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6007 $
  */
-public class LastChar implements Expr {
+public class LastChar extends ArithExpr implements Expr {
 
     /**
-     * The field <tt>n</tt> contains the trim.
+     * The field <tt>n</tt> contains the offset of the reference.
      */
     private int n;
 
     /**
      * Creates a new object.
      * 
-     * @param n the trim
+     * @param n the number of positions from the right
      */
     public LastChar(int n) {
 
         super();
         this.n = n;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.ocpware.compiler.arith.ArithExpr#outExpr( CompilerState)
+     */
+    @Override
+    void outExpr(CompilerState cs) throws IOException, ArgmentTooBigException {
+
+        cs.putInstruction(OcpCode.OP_PUSH_LCHAR, n);
     }
 
     /**
@@ -75,7 +88,7 @@ public class LastChar implements Expr {
         if (n == 0) {
             return "\\$";
         }
-        return "\\($" + Integer.toString(n) + ")";
+        return "\\($-" + Integer.toString(n) + ")";
     }
 
 }

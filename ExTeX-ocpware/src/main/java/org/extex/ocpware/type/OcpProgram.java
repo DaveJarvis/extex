@@ -195,8 +195,11 @@ public class OcpProgram implements Serializable {
      * Add a table.
      * 
      * @param t the table to add
+     * 
+     * @throws IndexOutOfBoundsException if the index is out of range (index
+     *        &lt; 0 || index &gt;= tables.size()).
      */
-    public void addTable(int[] t) {
+    public void addTable(int[] t) throws IndexOutOfBoundsException {
 
         tables.add(t);
     }
@@ -207,16 +210,19 @@ public class OcpProgram implements Serializable {
      * @param state the state
      * 
      * @return the code
+     *
+     * @throws IndexOutOfBoundsException if the index is out of range (index
+     *        &lt; 0 || index &gt;= states.size()).
      */
-    public int[] getCode(int state) {
+    public int[] getCode(int state) throws IndexOutOfBoundsException {
 
         return states.get(state);
     }
 
     /**
-     * Getter for input.
+     * Getter for the number of input bytes.
      * 
-     * @return the input
+     * @return the number of input bytes
      */
     public int getInput() {
 
@@ -242,7 +248,7 @@ public class OcpProgram implements Serializable {
         for (int[] t : states) {
             stateSpace += t.length;
         }
-        return 6 + tableSpace + tables.size() + stateSpace + states.size();
+        return 7 + tableSpace + tables.size() + stateSpace + states.size();
     }
 
     /**
