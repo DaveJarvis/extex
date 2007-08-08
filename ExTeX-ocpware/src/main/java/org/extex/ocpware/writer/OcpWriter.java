@@ -19,6 +19,7 @@
 
 package org.extex.ocpware.writer;
 
+import java.io.IOException;
 import java.io.OutputStream;
 
 import org.extex.ocpware.type.OcpProgram;
@@ -36,7 +37,9 @@ public interface OcpWriter {
      *
      * @param out the output stream
      * @param ocp the ocp program
+     * 
+     * @throws IOException in case of an error 
      */
-    void write(OutputStream out, OcpProgram ocp);
+    void write(OutputStream out, OcpProgram ocp) throws IOException;
 
 }

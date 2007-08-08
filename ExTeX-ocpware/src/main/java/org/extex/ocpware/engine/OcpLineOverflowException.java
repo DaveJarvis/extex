@@ -17,18 +17,18 @@
  *
  */
 
-package org.extex.ocpware.compiler.exception;
+package org.extex.ocpware.engine;
 
 import org.extex.ocpware.exception.OcpException;
 
 /**
- * This exception signals that a table has been encountered which is not
- * defined.
+ * This exception signals that an access to an empty stack in an &Omega;CP
+ * program has been encountered.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class TableNotDefinedException extends OcpException {
+public class OcpLineOverflowException extends OcpException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -38,12 +38,10 @@ public class TableNotDefinedException extends OcpException {
 
     /**
      * Creates a new object.
-     * 
-     * @param s the name of the table
      */
-    public TableNotDefinedException(String s) {
+    public OcpLineOverflowException() {
 
-        super(s);
+        super("");
     }
 
 }

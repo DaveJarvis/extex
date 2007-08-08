@@ -17,18 +17,22 @@
  *
  */
 
-package org.extex.ocpware.compiler.exception;
+package org.extex.ocpware.exception;
 
-import org.extex.ocpware.exception.OcpException;
+import java.io.IOException;
+import java.text.MessageFormat;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 
 /**
- * This exception signals that a table has been encountered which is not
- * defined.
+ * This exception is a base class for Exceptions thrown within the &Omega;CP
+ * engine. It is derived from {@link IOException IOException} since this is the
+ * only exception thrown by the read() method of a reader.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class TableNotDefinedException extends OcpException {
+public class OcpException extends IOException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -37,13 +41,36 @@ public class TableNotDefinedException extends OcpException {
     private static final long serialVersionUID = 2007L;
 
     /**
+     * The field <tt>s</tt> contains the name of the state.
+     */
+    private String s;
+
+    /**
      * Creates a new object.
      * 
-     * @param s the name of the table
+     * @param s the name of the state
      */
-    public TableNotDefinedException(String s) {
+    public OcpException(String s) {
 
         super(s);
+        this.s = s;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see java.lang.Throwable#getLocalizedMessage()
+     */
+    @Override
+    public String getLocalizedMessage() {
+
+        try {
+            ResourceBundle bundle =
+                    ResourceBundle.getBundle(getClass().getName());
+            return MessageFormat.format(bundle.getString("Message"), s);
+        } catch (MissingResourceException e) {
+            return super.getLocalizedMessage();
+        }
     }
 
 }

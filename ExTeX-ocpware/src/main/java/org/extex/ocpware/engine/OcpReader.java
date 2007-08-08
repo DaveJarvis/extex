@@ -22,6 +22,7 @@ package org.extex.ocpware.engine;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.util.List;
 import java.util.Stack;
 
@@ -76,9 +77,10 @@ public class OcpReader extends Reader {
     private int inputStart = 0;
 
     /**
-     * The field <tt>line</tt> contains the ...
+     * The field <tt>line</tt> contains the intermediate buffer for the
+     * characters read. The buffer will be extended dynamically if required.
      */
-    private char[] line = new char[1024];
+    private char[] line = new char[128];
 
     /**
      * The field <tt>lineEnd</tt> contains the index of the character
@@ -92,7 +94,8 @@ public class OcpReader extends Reader {
     private List<OcpReaderObserver> observers = null;
 
     /**
-     * The field <tt>pc</tt> contains the program counter.
+     * The field <tt>pc</tt> contains the program counter. It must be in the
+     * range from 0 to <tt>code.length</tt>.
      */
     private int pc = 0;
 
@@ -122,6 +125,8 @@ public class OcpReader extends Reader {
      */
     private List<int[]> tables = new ArrayList<int[]>();
 
+    private int outMax;
+
     /**
      * Creates a new object.
      * 
@@ -146,6 +151,18 @@ public class OcpReader extends Reader {
         this.reader = reader;
         this.program = program;
         this.code = program.getCode(state);
+
+        switch (program.getOutput()) {
+            case 1:
+                outMax = 0xff;
+                break;
+            case 2:
+                outMax = 0xffff;
+                break;
+            default:
+                // TODO gene: read unimplemented
+                throw new RuntimeException("unimplemented");
+        }
     }
 
     /**
@@ -186,8 +203,9 @@ public class OcpReader extends Reader {
             return true;
         }
         if (lineEnd >= line.length) {
-            // TODO gene: refill unimplemented
-            throw new RuntimeException("unimplemented");
+            char[] l = new char[line.length + 128];
+            System.arraycopy(line, 0, l, 0, line.length);
+            line = l;
         }
         line[lineEnd++] = (char) c;
         return false;
@@ -301,30 +319,73 @@ public class OcpReader extends Reader {
      * {@inheritDoc}
      * 
      * @see java.io.Reader#read()
+     * 
+     * @throws OcpEmptyStackException ...
+     * @throws IllegalPcException if the program counter points outside the code
+     *         area
      */
     @Override
-    public int read() throws IOException {
+    public int read()
+            throws IOException,
+                OcpEmptyStackException,
+                IllegalPcException {
 
         if (bufferPtr < bufferEnd) {
             return buffer[bufferPtr++];
         }
+
+        int c;
+
+        try {
+            c = step();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new IllegalPcException(pc);
+        } catch (EmptyStackException e) {
+            throw new OcpEmptyStackException();
+        }
+
+        if (c >= outMax) {
+            // TODO gene: read unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+        return c;
+    }
+
+    /**
+     * Perform steps of the engine until an output character is encountered or
+     * the end of input is reached.
+     * 
+     * @return the output character or -1 on EOF
+     * 
+     * @throws IllegalTableItemException ...
+     * @throws IllegalTableException ...
+     * @throws OcpLineUnderflowException ...
+     * @throws IllegalOpCodeException if an unknown op code is encountered
+     * @throws IOException in case of an I/O error
+     */
+    private int step()
+            throws IllegalTableItemException,
+                IllegalTableException,
+                IOException,
+                OcpLineUnderflowException,
+                IllegalOpCodeException {
 
         int a;
         int c;
 
         for (;;) {
             c = code[pc];
+            int opcode = c >> OcpCode.OPCODE_OFFSET;
 
             if (observers != null) {
-                a = c >> OcpCode.OPCODE_OFFSET;
                 int arg = c & OcpCode.ARGUMENT_BIT_MASK;
                 for (OcpReaderObserver observer : observers) {
-                    observer.step(this, a, arg);
+                    observer.step(this, opcode, arg);
                 }
             }
             pc++;
 
-            switch (c >> OcpCode.OPCODE_OFFSET) {
+            switch (opcode) {
                 case OcpCode.OP_RIGHT_OUTPUT:
                     // otp_right_output: begin
                     // incr(otp_output_end);
@@ -384,7 +445,8 @@ public class OcpReader extends Reader {
                     // incr(otp_pc);
                     // otp_set_instruction;
                     // otp_second_arg:=otp_no_input_chars-otp_arg;
-                    // for otp_counter:=otp_first_arg to otp_second_arg do begin
+                    // for otp_counter:=otp_first_arg to otp_second_arg do
+                    // begin
                     // otp_get_char(otp_counter);
                     // incr(otp_output_end);
                     // if otp_output_end >ocp_buf_size then
@@ -395,13 +457,21 @@ public class OcpReader extends Reader {
                     // end
                     c &= OcpCode.ARGUMENT_BIT_MASK;
                     a = code[pc++] & OcpCode.ARGUMENT_BIT_MASK;
-                    if (a - c + 1 < buffer.length) {
-                        // TODO gene: extend buffer unimplemented
-                        throw new RuntimeException("unimplemented");
+                    if (a - c + 1 >= buffer.length) {
+                        // enlarge the buffer
+                        buffer = new char[a - c + 16];
+                        // a little bit more space than needed
                     }
                     bufferPtr = 0;
                     bufferEnd = 0;
-                    // TODO
+
+                    while (c < a) {
+                        buffer[bufferEnd++] = line[inputStart + c];
+                        c++;
+                    }
+                    if (bufferPtr < bufferEnd) {
+                        return buffer[bufferPtr++];
+                    }
                     break;
 
                 case OcpCode.OP_PBACK_OUTPUT:
@@ -457,7 +527,8 @@ public class OcpReader extends Reader {
                     // incr(otp_pc);
                     // otp_set_instruction;
                     // otp_second_arg:=otp_no_input_chars-otp_arg;
-                    // for otp_counter:=otp_first_arg to otp_second_arg do begin
+                    // for otp_counter:=otp_first_arg to otp_second_arg do
+                    // begin
                     // otp_get_char(otp_counter);
                     // incr(otp_stack_new);
                     // if otp_stack_new >= ocp_stack_size then
@@ -503,8 +574,14 @@ public class OcpReader extends Reader {
                 case OcpCode.OP_LOOKUP:
                     a = arithStack.pop().intValue();
                     c = arithStack.pop().intValue();
-                    int[] t = tables.get(c);
-                    arithStack.push(Integer.valueOf(t[a]));
+                    try {
+                        int[] t = tables.get(c);
+                        arithStack.push(Integer.valueOf(t[a]));
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        throw new IllegalTableItemException(a);
+                    } catch (IndexOutOfBoundsException e) {
+                        throw new IllegalTableException(c);
+                    }
                     break;
 
                 case OcpCode.OP_PUSH_NUM:
@@ -513,6 +590,15 @@ public class OcpReader extends Reader {
                     break;
 
                 case OcpCode.OP_PUSH_CHAR:
+                    // otp_push_char: begin
+                    // otp_get_char(otp_arg);
+                    // incr(otp_calc_ptr);
+                    // if otp_calc_ptr >= ocp_stack_size then
+                    // overflow_ocp_stack_size;
+                    // otp_calcs[otp_calc_ptr]:=otp_calculated_char;
+                    // incr(otp_pc);
+                    // end;
+
                     a = c & OcpCode.ARGUMENT_BIT_MASK;
                     if (a >= lineEnd) {
                         // TODO gene: read unimplemented
@@ -533,8 +619,9 @@ public class OcpReader extends Reader {
                 case OcpCode.OP_STATE_CHANGE:
                     // otp_state_change: begin
                     // otp_input_start:=otp_input_last;
-                    inputStart = inputLast;
-                    // for otp_counter:=1 to (otp_stack_new-otp_stack_used) do
+                    inputStart = inputLast + 1;
+                    // for otp_counter:=1 to (otp_stack_new-otp_stack_used)
+                    // do
                     // begin
                     // otp_stack_buf[otp_counter] :=
                     // otp_stack_buf[otp_counter+otp_stack_used];
@@ -543,18 +630,19 @@ public class OcpReader extends Reader {
                     // otp_stack_last:=otp_stack_new;
                     // otp_stack_used:=0;
                     // otp_states[otp_state_ptr]:=otp_arg;
-                    // otp_pc:=0;
-                    // end;
                     state = c & OcpCode.ARGUMENT_BIT_MASK;
                     code = program.getCode(state);
+                    // otp_pc:=0;
                     pc = 0;
+                    // end;
                     break;
 
                 case OcpCode.OP_STATE_PUSH:
                     // otp_state_push: begin
                     // otp_input_start:=otp_input_last;
                     inputStart = inputLast;
-                    // for otp_counter:=1 to (otp_stack_new-otp_stack_used) do
+                    // for otp_counter:=1 to (otp_stack_new-otp_stack_used)
+                    // do
                     // begin
                     // otp_stack_buf[otp_counter] :=
                     // otp_stack_buf[otp_counter+otp_stack_used];
@@ -578,7 +666,12 @@ public class OcpReader extends Reader {
                     // otp_state_pop: begin
                     // otp_input_start:=otp_input_last;
                     inputStart = inputLast;
-                    // for otp_counter:=1 to (otp_stack_new-otp_stack_used) do
+                    if (inputStart >= lineEnd && fillInLineCharacter()) {
+                        pc--;
+                        return -1;
+                    }
+                    // for otp_counter:=1 to (otp_stack_new-otp_stack_used)
+                    // do
                     // begin
                     // otp_stack_buf[otp_counter] :=
                     // otp_stack_buf[otp_counter+otp_stack_used];
@@ -587,11 +680,11 @@ public class OcpReader extends Reader {
                     // otp_stack_last:=otp_stack_new;
                     // otp_stack_used:=0;
                     // if otp_state_ptr>0 then decr(otp_state_ptr);
-                    // otp_pc:=0;
-                    // end
                     state = stateStack.pop().intValue();
                     code = program.getCode(state);
+                    // otp_pc:=0;
                     pc = 0;
+                    // end
                     break;
 
                 case OcpCode.OP_LEFT_START:
@@ -604,7 +697,8 @@ public class OcpReader extends Reader {
                         pc--;
                         return -1;
                     }
-                    // if (otp_stack_last=0) and (otp_input_last>=otp_input_end)
+                    // if (otp_stack_last=0) and
+                    // (otp_input_last>=otp_input_end)
                     // then
                     // otp_finished:=true
                     // else if (otp_stack_used < otp_stack_last) then begin
@@ -624,14 +718,47 @@ public class OcpReader extends Reader {
                     break;
 
                 case OcpCode.OP_LEFT_RETURN:
+                    // otp_left_return: begin
+                    // otp_input_last:=otp_input_start;
                     inputLast = inputStart + 1;
+                    if (inputStart >= lineEnd && fillInLineCharacter()) {
+                        pc--;
+                        return -1;
+                    }
+                    // otp_stack_used:=0;
+                    // if (otp_stack_used < otp_stack_last) then begin
+                    // incr(otp_stack_used); {no overflow problem}
+                    // otp_input_char:=otp_stack_buf[otp_stack_used];
+                    // otp_no_input_chars:=1;
+                    // incr(otp_pc);
+                    // end
+                    // else begin
+                    // incr(otp_input_last); {no overflow problem}
+                    // otp_input_char:=otp_input_buf[otp_input_last];
+                    // otp_no_input_chars:=1;
+                    // incr(otp_pc);
+                    // end;
+                    // end;
+
                     break;
 
                 case OcpCode.OP_LEFT_BACKUP:
+                    // otp_left_backup: begin
+                    // if otp_input_start < otp_input_last then begin
+                    // decr(otp_input_last);
+                    // otp_input_char:=otp_input_buf[otp_input_last];
+                    // end
+                    // else begin
+                    // decr(otp_stack_used);
+                    // otp_input_char:=otp_stack_buf[otp_stack_used];
+                    // end;
+                    // decr(otp_no_input_chars);
+                    // incr(otp_pc);
+                    // end
+
                     inputLast--;
                     if (inputLast <= inputStart) {
-                        // TODO gene: read unimplemented
-                        throw new RuntimeException("unimplemented");
+                        throw new OcpLineUnderflowException();
                     }
                     break;
 
@@ -643,6 +770,17 @@ public class OcpReader extends Reader {
                     break;
 
                 case OcpCode.OP_GOTO_NE:
+                    // otp_goto_ne: begin
+                    // otp_first_arg:=otp_arg;
+                    // incr(otp_pc);
+                    // otp_set_instruction;
+                    // if otp_input_char <> otp_first_arg then begin
+                    // otp_pc:=otp_arg;
+                    // end
+                    // else begin
+                    // incr(otp_pc);
+                    // end;
+                    // end;
                     a = code[pc++];
                     if (line[inputLast] != (c & OcpCode.ARGUMENT_BIT_MASK)) {
                         pc = a & OcpCode.ARGUMENT_BIT_MASK;
@@ -650,6 +788,17 @@ public class OcpReader extends Reader {
                     break;
 
                 case OcpCode.OP_GOTO_EQ:
+                    // otp_goto_eq: begin
+                    // otp_first_arg:=otp_arg;
+                    // incr(otp_pc);
+                    // otp_set_instruction;
+                    // if otp_input_char = otp_first_arg then begin
+                    // otp_pc:=otp_arg;
+                    // end
+                    // else begin
+                    // incr(otp_pc);
+                    // end;
+                    // end;
                     a = code[pc++];
                     if (line[inputLast] == (c & OcpCode.ARGUMENT_BIT_MASK)) {
                         pc = a & OcpCode.ARGUMENT_BIT_MASK;
@@ -698,12 +847,15 @@ public class OcpReader extends Reader {
                     // else begin
                     // incr(otp_input_last); {no overflow problem}
                     inputLast++;
+                    if (inputLast >= lineEnd && fillInLineCharacter()) {
+                        pc--;
+                        return -1;
+                    }
                     // otp_input_char:=otp_input_buf[otp_input_last];
                     // incr(otp_no_input_chars); {no overflow problem}
                     // incr(otp_pc);
                     // end;
                     // end;
-                    fillInLineCharacter();
                     if (false) { // TODO check for end of buffer
                         pc = c & OcpCode.ARGUMENT_BIT_MASK;
                     }
@@ -727,7 +879,12 @@ public class OcpReader extends Reader {
                     // otp_stop: begin
                     // otp_input_start:=otp_input_last;
                     inputStart = inputLast + 1;
-                    // for otp_counter:=1 to (otp_stack_new-otp_stack_used) do
+                    if (inputStart >= lineEnd && fillInLineCharacter()) {
+                        pc--;
+                        return -1;
+                    }
+                    // for otp_counter:=1 to (otp_stack_new-otp_stack_used)
+                    // do
                     // begin
                     // otp_stack_buf[otp_counter] :=
                     // otp_stack_buf[otp_counter+otp_stack_used];
@@ -741,8 +898,7 @@ public class OcpReader extends Reader {
                     break;
 
                 default:
-                    throw new IllegalOpCodeException(//
-                        Integer.valueOf(c >> OcpCode.OPCODE_OFFSET).toString());
+                    throw new IllegalOpCodeException(opcode);
             }
         }
     }
@@ -776,7 +932,7 @@ public class OcpReader extends Reader {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Register an observer to be informed about certain events.
      * 
      * @param observer the observer to register
      */
@@ -787,4 +943,16 @@ public class OcpReader extends Reader {
         }
         observers.add(observer);
     }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        return Integer.toString(pc);
+    }
+
 }

@@ -19,6 +19,8 @@
 
 package org.extex.ocpware.compiler.exception;
 
+import org.extex.ocpware.exception.OcpException;
+
 /**
  * This exception signals that the file doe not contain an expressions section.
  * 

@@ -19,31 +19,64 @@
 
 package org.extex.ocpware.engine;
 
-import org.extex.ocpware.exception.OcpException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
 
 /**
- * This exception signals that an illegal op code for an &Omega;CP instruction
- * has been encountered.
+ * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class IllegalOpCodeException extends OcpException {
+public class OneByteInputStreamReader extends Reader {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
-     * serialization.
+     * The field <tt>stream</tt> contains the stream to read bytes from.
      */
-    private static final long serialVersionUID = 2007L;
+    private InputStream stream;
 
     /**
      * Creates a new object.
      * 
-     * @param opcode the illegal op code
+     * @param stream the stream to read from
      */
-    public IllegalOpCodeException(int opcode) {
+    public OneByteInputStreamReader(InputStream stream) {
 
-        super(Integer.toString(opcode));
+        super();
+        this.stream = stream;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.io.Reader#close()
+     */
+    @Override
+    public void close() throws IOException {
+
+        stream.close();
+        stream = null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.io.Reader#read(char[], int, int)
+     */
+    @Override
+    public int read(char[] cbuf, int off, int len) throws IOException {
+
+        int n = 0;
+        while (n < len) {
+            int c = stream.read();
+            if (c < 0) {
+                return n;
+            }
+            cbuf[off + n] = (char) c;
+            n++;
+        }
+        return n;
     }
 
 }

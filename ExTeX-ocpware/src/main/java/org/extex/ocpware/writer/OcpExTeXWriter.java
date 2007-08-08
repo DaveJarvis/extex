@@ -19,11 +19,13 @@
 
 package org.extex.ocpware.writer;
 
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.List;
 
 import org.extex.ocpware.engine.IllegalOpCodeException;
+import org.extex.ocpware.type.OcpArgumentType;
 import org.extex.ocpware.type.OcpCode;
 import org.extex.ocpware.type.OcpProgram;
 
@@ -49,8 +51,11 @@ public class OcpExTeXWriter extends AbstractWriter {
      * 
      * @param instructions the list of instructions
      * @param labels the list of labels for each instruction
+     * 
+     * @throws IllegalOpCodeException in case of an illegal op code
      */
-    private void collectLabels(int[] instructions, String[] labels) {
+    private void collectLabels(int[] instructions, String[] labels)
+            throws IllegalOpCodeException {
 
         int no = 1;
 
@@ -60,15 +65,14 @@ public class OcpExTeXWriter extends AbstractWriter {
 
             OcpCode code = OcpCode.get(arg >> OcpCode.OPCODE_OFFSET);
             if (code == null) {
-                throw new IllegalOpCodeException(Integer
-                    .toString(arg >> OcpCode.OPCODE_OFFSET));
+                throw new IllegalOpCodeException(arg >> OcpCode.OPCODE_OFFSET);
             }
 
-            byte[] noArgs = code.getArguments();
+            OcpArgumentType[] args = code.getArguments();
 
             boolean first = true;
 
-            for (byte b : noArgs) {
+            for (OcpArgumentType a : args) {
                 if (first) {
                     first = false;
                     arg = arg & OcpCode.ARGUMENT_BIT_MASK;
@@ -77,17 +81,13 @@ public class OcpExTeXWriter extends AbstractWriter {
                             instructions[codePointer++]
                                     & OcpCode.ARGUMENT_BIT_MASK;
                 }
-                switch (b) {
-                    case 'l':
-                        if (labels[arg] == null) {
-                            labels[arg] = "_" + Integer.toString(no++);
-                        }
-                        break;
+                if (a == OcpArgumentType.LABEL) {
+                    if (labels[arg] == null) {
+                        labels[arg] = "_" + Integer.toString(no++);
+                    }
                     // case 's':
                     // out.print("_S" + Integer.toString(arg));
                     // break;
-                    default:
-                        // continue
                 }
             }
         }
@@ -103,17 +103,18 @@ public class OcpExTeXWriter extends AbstractWriter {
      * @param labels the list of labels for each instruction
      * 
      * @return the index of the next unprocessed instruction
+     * 
+     * @throws IllegalOpCodeException in case of an illegal op code
      */
     private int disassemble(PrintStream out, int[] instructions, int cp,
-            String[] stateNames, String[] labels) {
+            String[] stateNames, String[] labels) throws IllegalOpCodeException {
 
         int codePointer = cp;
         int arg = instructions[codePointer];
 
         OcpCode code = OcpCode.get(arg >> OcpCode.OPCODE_OFFSET);
         if (code == null) {
-            throw new IllegalOpCodeException(Integer
-                .toString(arg >> OcpCode.OPCODE_OFFSET));
+            throw new IllegalOpCodeException(arg >> OcpCode.OPCODE_OFFSET);
         }
 
         String label = labels[codePointer++];
@@ -131,16 +132,16 @@ public class OcpExTeXWriter extends AbstractWriter {
         }
 
         String s = code.getInstruction();
-        byte[] noArgs = code.getArguments();
+        OcpArgumentType[] args = code.getArguments();
         out.print(s);
-        if (noArgs.length != 0) {
+        if (args.length != 0) {
             int len = s.length();
             out.print("                ".substring(0, len > 16 ? 1 : 16 - len));
         }
 
         boolean first = true;
 
-        for (byte b : noArgs) {
+        for (OcpArgumentType a : args) {
             if (first) {
                 first = false;
                 arg = arg & OcpCode.ARGUMENT_BIT_MASK;
@@ -148,21 +149,16 @@ public class OcpExTeXWriter extends AbstractWriter {
                 out.print(", ");
                 arg = instructions[codePointer++] & OcpCode.ARGUMENT_BIT_MASK;
             }
-            switch (b) {
-                case 'n':
-                    out.print(Integer.toString(arg));
-                    break;
-                case 'c':
-                    out.print("0x" + Integer.toHexString(arg));
-                    break;
-                case 'l':
-                    out.print(labels[arg]);
-                    break;
-                case 's':
-                    out.print(stateNames[arg]);
-                    break;
-                default:
-                    out.print("???");
+            if (a == OcpArgumentType.NUMBER) {
+                out.print(Integer.toString(arg));
+            } else if (a == OcpArgumentType.CHARACTER) {
+                out.print("0x" + Integer.toHexString(arg));
+            } else if (a == OcpArgumentType.LABEL) {
+                out.print(labels[arg]);
+            } else if (a == OcpArgumentType.STATE) {
+                out.print(stateNames[arg]);
+            } else {
+                out.print("???");
             }
         }
 
@@ -188,9 +184,8 @@ public class OcpExTeXWriter extends AbstractWriter {
             sb.append('\'');
             s = sb.toString();
         }
-        String hex = Integer.toHexString(value);
-        String dec = Integer.toString(value);
-        out.print(format(key, hex, dec, s));
+        out.print(format(key, //
+            Integer.toHexString(value), Integer.toString(value), s));
     }
 
     /**
@@ -199,7 +194,7 @@ public class OcpExTeXWriter extends AbstractWriter {
      * @see org.extex.ocpware.writer.OcpOmegaWriter#write(java.io.OutputStream,
      *      org.extex.ocpware.type.OcpProgram)
      */
-    public void write(OutputStream stream, OcpProgram ocp) {
+    public void write(OutputStream stream, OcpProgram ocp) throws IOException {
 
         PrintStream out = new PrintStream(stream);
 

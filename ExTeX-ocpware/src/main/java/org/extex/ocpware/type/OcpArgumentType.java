@@ -17,33 +17,34 @@
  *
  */
 
-package org.extex.ocpware.compiler.exception;
-
-import org.extex.ocpware.exception.OcpException;
+package org.extex.ocpware.type;
 
 /**
- * This exception signals that a table has been encountered which is not
- * defined.
+ * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class TableNotDefinedException extends OcpException {
+public enum OcpArgumentType {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
-     * serialization.
+     * The field <tt>NUMBER</tt> contains an indicator for a number. The
+     * corresponding argument is a number.
      */
-    private static final long serialVersionUID = 2007L;
-
+    NUMBER,
     /**
-     * Creates a new object.
-     * 
-     * @param s the name of the table
+     * The field <tt>CHARACTER</tt> contains an indicator for a character
+     * code.
      */
-    public TableNotDefinedException(String s) {
-
-        super(s);
-    }
-
+    CHARACTER,
+    /**
+     * The field <tt>LABEL</tt> contains the indicator for a label; i.e. a
+     * jump destination.
+     */
+    LABEL,
+    /**
+     * The field <tt>STATE</tt> contains an indicator for a state index.
+     */
+    STATE;
+    
 }

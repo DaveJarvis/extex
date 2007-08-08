@@ -23,6 +23,8 @@ import java.text.MessageFormat;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
+import org.extex.ocpware.exception.OcpException;
+
 /**
  * This exception class signals the occurrence of a syntax error.
  * 

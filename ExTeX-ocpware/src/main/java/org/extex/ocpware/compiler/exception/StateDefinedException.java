@@ -19,6 +19,8 @@
 
 package org.extex.ocpware.compiler.exception;
 
+import org.extex.ocpware.exception.OcpException;
+
 /**
  * This exception signals that a definition of a state has been encountered
  * which is already defined.

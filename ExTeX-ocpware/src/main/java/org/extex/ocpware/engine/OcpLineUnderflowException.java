@@ -17,20 +17,18 @@
  *
  */
 
-package org.extex.ocpware.compiler.exception;
+package org.extex.ocpware.engine;
 
-import java.text.MessageFormat;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
+import org.extex.ocpware.exception.OcpException;
 
 /**
- * This exception signals that a state has been encountered which is not
- * defined.
+ * This exception signals that an access to an empty stack in an &Omega;CP
+ * program has been encountered.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class OcpRuntimeException extends Exception {
+public class OcpLineUnderflowException extends OcpException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -39,37 +37,11 @@ public class OcpRuntimeException extends Exception {
     private static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>s</tt> contains the name of the state.
-     */
-    private String s;
-
-    /**
      * Creates a new object.
-     * 
-     * @param s the name of the state
      */
-    public OcpRuntimeException(String s) {
+    public OcpLineUnderflowException() {
 
-        super(s);
-        this.s = s;
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see java.lang.Throwable#getLocalizedMessage()
-     */
-    @Override
-    public String getLocalizedMessage() {
-
-        try {
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle(getClass().getName());
-            String fmt = bundle.getString("Message");
-            return MessageFormat.format(fmt, s);
-        } catch (MissingResourceException e) {
-            return super.getLocalizedMessage();
-        }
+        super("");
     }
 
 }

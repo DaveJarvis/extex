@@ -17,18 +17,18 @@
  *
  */
 
-package org.extex.ocpware.compiler.exception;
+package org.extex.ocpware.engine;
 
 import org.extex.ocpware.exception.OcpException;
 
 /**
- * This exception signals that a table has been encountered which is not
- * defined.
+ * This exception signals that an illegal table index an &Omega;CP program
+ * has been encountered.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class TableNotDefinedException extends OcpException {
+public class IllegalTableException extends OcpException {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -39,11 +39,11 @@ public class TableNotDefinedException extends OcpException {
     /**
      * Creates a new object.
      * 
-     * @param s the name of the table
+     * @param table the illegal table index
      */
-    public TableNotDefinedException(String s) {
+    public IllegalTableException(int table) {
 
-        super(s);
+        super(Integer.toString(table));
     }
 
 }

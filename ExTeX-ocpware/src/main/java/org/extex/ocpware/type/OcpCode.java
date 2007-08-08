@@ -23,6 +23,65 @@ package org.extex.ocpware.type;
  * This enumeration provides information about the &Omega;CP instructions.
  * 
  * 
+ * <h3>The &Omega;CP Code Format</h3>
+ * <p>
+ * A &Omega;CP Program consists of a set of instructions. The instructions are
+ * stored in words of the length of 4 bytes (of 8 bits each). Each instruction
+ * is determined by an op code of one byte. The instruction can have 0 to 2
+ * arguments. Any argument is at most 3 bytes (24 bits) long.
+ * </p>
+ * <p>
+ * An instruction without arguments has the following layout:
+ * </p>
+ * 
+ * <table cellpadding="0" cellspacing="0" border="0">
+ * <tr>
+ * <td style="width:6em; border-style:none; font-size:60%;">8 bit</td>
+ * <td style="width:18em; border-style:none;; font-size:60%;">24 bit</td>
+ * </tr>
+ * <tr style="padding:0pt; spacing:0pt;">
+ * <td style="border-color:gray; border-width:1pt; border-style:solid;">op code</td>
+ * <td style="border-color:gray; border-width:1pt; border-style:solid;">unused</td>
+ * </tr>
+ * </table>
+ * 
+ * <p>
+ * An instruction with one argument has the following layout:
+ * </p>
+ * 
+ * <table cellpadding="0" cellspacing="0" border="0">
+ * <tr>
+ * <td style="width:6em; border-style:none; font-size:60%;">8 bit</td>
+ * <td style="width:18em; border-style:none;; font-size:60%;">24 bit</td>
+ * </tr>
+ * <tr style="padding:0pt; spacing:0pt;">
+ * <td style="border-color:gray; border-width:1pt; border-style:solid;">op code</td>
+ * <td style="border-color:gray; border-width:1pt; border-style:solid;">argument
+ * 1</td>
+ * </tr>
+ * </table>
+ * 
+ * <p>
+ * An instruction with two arguments has the following layout:
+ * </p>
+ * 
+ * <table cellpadding="0" cellspacing="0" border="0">
+ * <tr>
+ * <td style="width:6em; border-style:none; font-size:60%;">8 bit</td>
+ * <td style="width:18em; border-style:none;; font-size:60%;">24 bit</td>
+ * </tr>
+ * <tr style="padding:0pt; spacing:0pt;">
+ * <td style="border-color:gray; border-width:1pt; border-style:solid;">op code</td>
+ * <td style="border-color:gray; border-width:1pt; border-style:solid;">argument
+ * 1</td>
+ * </tr>
+ * <tr>
+ * <td style="border-color:gray; border-width:1pt; border-style:solid;">unused</td>
+ * <td style="border-color:gray; border-width:1pt; border-style:solid;">argument
+ * 2</td>
+ * </tr>
+ * </table>
+ * 
  * <h3>The &Omega;CP Programming Model</h3>
  * 
  * <table style="borderstyle:solid;bordercolor:black;borderwidth:1pt;">
@@ -107,115 +166,115 @@ public enum OcpCode {
      * &Omega;CP instruction to output the topmost number from the arithmetic
      * stack. This element is removed from the stack.
      */
-    RIGHT_OUTPUT(1, "RIGHT_OUTPUT", ""),
+    RIGHT_OUTPUT(1, "RIGHT_OUTPUT"),
 
     /**
      * The constant <tt>RIGHT_NUM</tt> contains the description of the
      * &Omega;CP instruction to output a constant character number. The constant
      * is passed in as argument.
      */
-    RIGHT_NUM(2, "RIGHT_NUM", "c"),
+    RIGHT_NUM(2, "RIGHT_NUM", OcpArgumentType.CHARACTER),
 
     /**
      * The constant <tt>RIGHT_CHAR</tt> contains the description of the
      * &Omega;CP instruction to output a character from the right end of the
      * prefix.
      */
-    RIGHT_CHAR(3, "RIGHT_CHAR", "n"),
+    RIGHT_CHAR(3, "RIGHT_CHAR", OcpArgumentType.NUMBER),
 
     /**
      * The constant <tt>RIGHT_LCHAR</tt> contains the description of the
      * &Omega;CP instruction to output a character from the left end of the
      * prefix.
      */
-    RIGHT_LCHAR(4, "RIGHT_LCHAR", "n"),
+    RIGHT_LCHAR(4, "RIGHT_LCHAR", OcpArgumentType.NUMBER),
 
     /**
      * The constant <tt>RIGHT_SOME</tt> contains the description of the
      * &Omega;CP instruction to output some characters from the prefix.
      */
-    RIGHT_SOME(5, "RIGHT_SOME", "nn"),
+    RIGHT_SOME(5, "RIGHT_SOME", OcpArgumentType.NUMBER, OcpArgumentType.NUMBER),
 
     /**
      * The constant <tt>PBACK_OUTPUT</tt> contains the description of the
      * &Omega;CP instruction to push back the top value from the arithmetic
      * stack.
      */
-    PBACK_OUTPUT(6, "PBACK_OUTPUT", ""),
+    PBACK_OUTPUT(6, "PBACK_OUTPUT"),
 
     /**
      * The constant <tt>PBACK_NUM</tt> contains the description of the
      * &Omega;CP instruction to push back a constant taken from the argument.
      */
-    PBACK_NUM(7, "PBACK_NUM", "c"),
+    PBACK_NUM(7, "PBACK_NUM", OcpArgumentType.CHARACTER),
 
     /**
      * The constant <tt>PBACK_CHAR</tt> contains the description of the
      * &Omega;CP instruction to push back a character from the right end of the
      * prefix.
      */
-    PBACK_CHAR(8, "PBACK_CHAR", "n"),
+    PBACK_CHAR(8, "PBACK_CHAR", OcpArgumentType.NUMBER),
 
     /**
      * The constant <tt>PBACK_LCHAR</tt> contains the description of the
      * &Omega;CP instruction to push back a character from the left end of the
      * prefix.
      */
-    PBACK_LCHAR(9, "PBACK_LCHAR", "n"),
+    PBACK_LCHAR(9, "PBACK_LCHAR", OcpArgumentType.NUMBER),
 
     /**
      * The constant <tt>PBACK_SOME</tt> contains the description of the
      * &Omega;CP instruction to push back some characters from the prefix.
      */
-    PBACK_SOME(10, "PBACK_SOME", "nn"),
+    PBACK_SOME(10, "PBACK_SOME", OcpArgumentType.NUMBER, OcpArgumentType.NUMBER),
 
     /**
      * The constant <tt>ADD</tt> contains the description of the &Omega;CP
      * instruction to add two numbers from the stack. The result is returned via
      * the stack.
      */
-    ADD(11, "ADD", ""),
+    ADD(11, "ADD"),
 
     /**
      * The constant <tt>SUB</tt> contains the description of the &Omega;CP
      * instruction to subtract two numbers from the stack. The result is
      * returned via the stack.
      */
-    SUB(12, "SUB", ""),
+    SUB(12, "SUB"),
 
     /**
      * The constant <tt>MULT</tt> contains the description of the &Omega;CP
      * instruction to multiply two numbers from the stack. The result is
      * returned via the stack.
      */
-    MULT(13, "MULT", ""),
+    MULT(13, "MULT"),
 
     /**
      * The constant <tt>DIV</tt> contains the description of the &Omega;CP
      * instruction to divide two numbers from the stack. The result is returned
      * via the stack.
      */
-    DIV(14, "DIV", ""),
+    DIV(14, "DIV"),
 
     /**
      * The constant <tt>MOD</tt> contains the description of the &Omega;CP
      * instruction to compute the remainder of two numbers from the stack. The
      * result is returned via the stack.
      */
-    MOD(15, "MOD", ""),
+    MOD(15, "MOD"),
 
     /**
      * The constant <tt>LOOKUP</tt> contains the description of the &Omega;CP
      * instruction to look-up a value from a table. The index and the table
      * number are passed in via the stack. The result is returned on the stack.
      */
-    LOOKUP(16, "LOOKUP", ""),
+    LOOKUP(16, "LOOKUP"),
 
     /**
      * The constant <tt>PUSH_NUM</tt> contains the description of the
      * &Omega;CP instruction to push a constant to the stack.
      */
-    PUSH_NUM(17, "PUSH_NUM", "c"),
+    PUSH_NUM(17, "PUSH_NUM", OcpArgumentType.CHARACTER),
 
     /**
      * The constant <tt>PUSH_CHAR</tt> contains the description of the
@@ -223,7 +282,7 @@ public enum OcpCode {
      * The argument passed in is the index of the character counted from the
      * right end.
      */
-    PUSH_CHAR(18, "PUSH_CHAR", "n"),
+    PUSH_CHAR(18, "PUSH_CHAR", OcpArgumentType.NUMBER),
 
     /**
      * The constant <tt>PUSH_LCHAR</tt> contains the description of the
@@ -231,51 +290,51 @@ public enum OcpCode {
      * The argument passed in is the index of the character counted from the
      * left end.
      */
-    PUSH_LCHAR(19, "PUSH_LCHAR", "n"),
+    PUSH_LCHAR(19, "PUSH_LCHAR", OcpArgumentType.NUMBER),
 
     /**
      * The constant <tt>STATE_CHANGE</tt> contains the description of the
      * &Omega;CP instruction to set the current state to a given value. The
      * argument is the state to use.
      */
-    STATE_CHANGE(20, "STATE_CHANGE", "s"),
+    STATE_CHANGE(20, "STATE_CHANGE", OcpArgumentType.STATE),
 
     /**
      * The constant <tt>STATE_PUSH</tt> contains the description of the
      * &Omega;CP instruction to push a state to the state stack.
      */
-    STATE_PUSH(21, "STATE_PUSH", "s"),
+    STATE_PUSH(21, "STATE_PUSH", OcpArgumentType.STATE),
 
     /**
      * The constant <tt>STATE_POP</tt> contains the description of the
      * &Omega;CP instruction to pop the current state from the state stack.
      */
-    STATE_POP(22, "STATE_POP", ""),
+    STATE_POP(22, "STATE_POP"),
 
     /**
      * The constant <tt>LEFT_START</tt> contains the description of the
      * &Omega;CP instruction to set the first character position to last + 1.
      */
-    LEFT_START(23, "LEFT_START", ""),
+    LEFT_START(23, "LEFT_START"),
 
     /**
      * The constant <tt>LEFT_RETURN</tt> contains the description of the
      * &Omega;CP instruction to reset the last pointer to first - 1.
      */
-    LEFT_RETURN(24, "LEFT_RETURN", ""),
+    LEFT_RETURN(24, "LEFT_RETURN"),
 
     /**
      * The constant <tt>LEFT_BACKUP</tt> contains the description of the
      * &Omega;CP instruction to back up the last pointer by 1.
      */
-    LEFT_BACKUP(25, "LEFT_BACKUP", ""),
+    LEFT_BACKUP(25, "LEFT_BACKUP"),
 
     /**
      * The constant <tt>GOTO</tt> contains the description of the &Omega;CP
      * instruction to unconditionally branch to another instruction. The
      * argument is the number of the instruction to set the program counter to.
      */
-    GOTO(26, "GOTO", "l"),
+    GOTO(26, "GOTO", OcpArgumentType.LABEL),
 
     /**
      * The constant <tt>GOTO_NE</tt> contains the description of the &Omega;CP
@@ -284,7 +343,7 @@ public enum OcpCode {
      * branching is performed if they are not equal. The second argument is the
      * number of the instruction to set the program counter to.
      */
-    GOTO_NE(27, "GOTO_NE", "cl"),
+    GOTO_NE(27, "GOTO_NE", OcpArgumentType.CHARACTER, OcpArgumentType.LABEL),
 
     /**
      * The constant <tt>GOTO_EQ</tt> contains the description of the &Omega;CP
@@ -293,7 +352,7 @@ public enum OcpCode {
      * branching is performed if they are equal. The second argument is the
      * number of the instruction to set the program counter to.
      */
-    GOTO_EQ(28, "GOTO_EQ", "cl"),
+    GOTO_EQ(28, "GOTO_EQ", OcpArgumentType.CHARACTER, OcpArgumentType.LABEL),
 
     /**
      * The constant <tt>GOTO_LT</tt> contains the description of the &Omega;CP
@@ -303,7 +362,7 @@ public enum OcpCode {
      * The second argument is the number of the instruction to set the program
      * counter to.
      */
-    GOTO_LT(29, "GOTO_LT", "cl"),
+    GOTO_LT(29, "GOTO_LT", OcpArgumentType.CHARACTER, OcpArgumentType.LABEL),
 
     /**
      * The constant <tt>GOTO_LE</tt> contains the description of the &Omega;CP
@@ -313,7 +372,7 @@ public enum OcpCode {
      * argument. The second argument is the number of the instruction to set the
      * program counter to.
      */
-    GOTO_LE(30, "GOTO_LE", "cl"),
+    GOTO_LE(30, "GOTO_LE", OcpArgumentType.CHARACTER, OcpArgumentType.LABEL),
 
     /**
      * The constant <tt>GOTO_GT</tt> contains the description of the &Omega;CP
@@ -323,7 +382,7 @@ public enum OcpCode {
      * argument. The second argument is the number of the instruction to set the
      * program counter to.
      */
-    GOTO_GT(31, "GOTO_GT", "cl"),
+    GOTO_GT(31, "GOTO_GT", OcpArgumentType.CHARACTER, OcpArgumentType.LABEL),
 
     /**
      * The constant <tt>GOTO_GE</tt> contains the description of the &Omega;CP
@@ -333,7 +392,7 @@ public enum OcpCode {
      * argument. The second argument is the number of the instruction to set the
      * program counter to.
      */
-    GOTO_GE(32, "GOTO_GE", "cl"),
+    GOTO_GE(32, "GOTO_GE", OcpArgumentType.CHARACTER, OcpArgumentType.LABEL),
 
     /**
      * The constant <tt>GOTO_NO_ADVANCE</tt> contains the description of the
@@ -342,7 +401,7 @@ public enum OcpCode {
      * reached the end of input. The argument is the number of the instruction
      * to set the program counter to.
      */
-    GOTO_NO_ADVANCE(33, "GOTO_NO_ADVANCE", "l"),
+    GOTO_NO_ADVANCE(33, "GOTO_NO_ADVANCE", OcpArgumentType.LABEL),
 
     /**
      * The constant <tt>GOTO_BEG</tt> contains the description of the
@@ -350,7 +409,7 @@ public enum OcpCode {
      * branching is performed at the beginning of input. The argument is the
      * number of the instruction to set the program counter to.
      */
-    GOTO_BEG(34, "GOTO_BEG", "l"),
+    GOTO_BEG(34, "GOTO_BEG", OcpArgumentType.LABEL),
 
     /**
      * The constant <tt>GOTO_END</tt> contains the description of the
@@ -358,13 +417,13 @@ public enum OcpCode {
      * branching is performed at the end of input. The argument is the number of
      * the instruction to set the program counter to.
      */
-    GOTO_END(35, "GOTO_END", "l"),
+    GOTO_END(35, "GOTO_END", OcpArgumentType.LABEL),
 
     /**
      * The constant <tt>STOP</tt> contains the description of the &Omega;CP
      * instruction to stop the processing of the current prefix.
      */
-    STOP(36, "STOP", "");
+    STOP(36, "STOP");
 
     /**
      * The constant <tt>OP_ADD</tt> contains the op code for the &Omega;CP
@@ -704,7 +763,7 @@ public enum OcpCode {
      * The field <tt>arguments</tt> contains the descriptions of the
      * arguments.
      */
-    private byte[] arguments;
+    private OcpArgumentType[] arguments;
 
     /**
      * The field <tt>opcode</tt> contains the op code.
@@ -723,10 +782,10 @@ public enum OcpCode {
      * @param instruction the name of the instruction
      * @param arguments the specification of the arguments
      */
-    OcpCode(int opcode, String instruction, String arguments) {
+    OcpCode(int opcode, String instruction, OcpArgumentType... arguments) {
 
         this.instruction = instruction;
-        this.arguments = arguments.getBytes();
+        this.arguments = arguments;
         this.opcode = opcode;
     }
 
@@ -748,7 +807,7 @@ public enum OcpCode {
      * 
      * @return the args
      */
-    public byte[] getArguments() {
+    public OcpArgumentType[] getArguments() {
 
         return arguments;
     }
