@@ -1,0 +1,189 @@
+% length = 246
+% 0 tables in 0 words
+% 1 states in 238 words
+
+input = 1
+output = 2
+
+State _S0: % 238 entries
+
+                LEFT_START
+                GOTO_NE         0x47, _1
+                GOTO_NO_ADVANCE _1
+                GOTO_NE         0x48, _2
+                GOTO            _3
+  _2:           GOTO_NE         0x68, _1
+  _3:           RIGHT_NUM       0x194
+                STOP
+  _1:           LEFT_RETURN
+                GOTO_NE         0x67, _4
+                GOTO_NO_ADVANCE _4
+                GOTO_NE         0x68, _4
+                RIGHT_NUM       0x263
+                STOP
+  _4:           LEFT_RETURN
+                GOTO_NE         0x2e, _5
+                GOTO_NO_ADVANCE _5
+                GOTO_NE         0x44, _5
+                RIGHT_NUM       0x1e0c
+                STOP
+  _5:           LEFT_RETURN
+                GOTO_NE         0x2e, _6
+                GOTO_NO_ADVANCE _6
+                GOTO_NE         0x64, _6
+                RIGHT_NUM       0x1e0d
+                STOP
+  _6:           LEFT_RETURN
+                GOTO_NE         0x2e, _7
+                GOTO_NO_ADVANCE _7
+                GOTO_NE         0x45, _7
+                RIGHT_NUM       0x190
+                STOP
+  _7:           LEFT_RETURN
+                GOTO_NE         0x2e, _8
+                GOTO_NO_ADVANCE _8
+                GOTO_NE         0x65, _8
+                RIGHT_NUM       0x25b
+                STOP
+  _8:           LEFT_RETURN
+                GOTO_NE         0x2e, _9
+                GOTO_NO_ADVANCE _9
+                GOTO_NE         0x47, _9
+                RIGHT_NUM       0x11e
+                STOP
+  _9:           LEFT_RETURN
+                GOTO_NE         0x2e, _10
+                GOTO_NO_ADVANCE _10
+                GOTO_NE         0x67, _10
+                RIGHT_NUM       0x11f
+                STOP
+  _10:          LEFT_RETURN
+                GOTO_NE         0x2e, _11
+                GOTO_NO_ADVANCE _11
+                GOTO_NE         0x48, _11
+                RIGHT_NUM       0x1e24
+                STOP
+  _11:          LEFT_RETURN
+                GOTO_NE         0x2e, _12
+                GOTO_NO_ADVANCE _12
+                GOTO_NE         0x68, _12
+                RIGHT_NUM       0x1e25
+                STOP
+  _12:          LEFT_RETURN
+                GOTO_NE         0x2e, _13
+                GOTO_NO_ADVANCE _13
+                GOTO_NE         0x4e, _13
+                RIGHT_NUM       0xd1
+                STOP
+  _13:          LEFT_RETURN
+                GOTO_NE         0x2e, _14
+                GOTO_NO_ADVANCE _14
+                GOTO_NE         0x6e, _14
+                RIGHT_NUM       0xf1
+                STOP
+  _14:          LEFT_RETURN
+                GOTO_NE         0x2e, _15
+                GOTO_NO_ADVANCE _15
+                GOTO_NE         0x53, _15
+                RIGHT_NUM       0x1e62
+                STOP
+  _15:          LEFT_RETURN
+                GOTO_NE         0x2e, _16
+                GOTO_NO_ADVANCE _16
+                GOTO_NE         0x73, _16
+                RIGHT_NUM       0x1e63
+                STOP
+  _16:          LEFT_RETURN
+                GOTO_NE         0x2e, _17
+                GOTO_NO_ADVANCE _17
+                GOTO_NE         0x54, _17
+                RIGHT_NUM       0x1e6c
+                STOP
+  _17:          LEFT_RETURN
+                GOTO_NE         0x2e, _18
+                GOTO_NO_ADVANCE _18
+                GOTO_NE         0x74, _18
+                RIGHT_NUM       0x1e6d
+                STOP
+  _18:          LEFT_RETURN
+                GOTO_NE         0x2e, _19
+                GOTO_NO_ADVANCE _19
+                GOTO_NE         0x5a, _19
+                RIGHT_NUM       0x1e92
+                STOP
+  _19:          LEFT_RETURN
+                GOTO_NE         0x2e, _20
+                GOTO_NO_ADVANCE _20
+                GOTO_NE         0x7a, _20
+                RIGHT_NUM       0x1e93
+                STOP
+  _20:          LEFT_RETURN
+                GOTO_NE         0x2e, _21
+                GOTO_NO_ADVANCE _21
+                GOTO_NE         0x49, _21
+                RIGHT_NUM       0x49
+                STOP
+  _21:          LEFT_RETURN
+                GOTO_NE         0x2e, _22
+                GOTO_NO_ADVANCE _22
+                GOTO_NE         0x69, _22
+                RIGHT_NUM       0x69
+                STOP
+  _22:          LEFT_RETURN
+                GOTO_NE         0x2d, _23
+                GOTO_NO_ADVANCE _23
+                GOTO_NE         0x2d, _23
+                GOTO_NO_ADVANCE _23
+                GOTO_NE         0x2d, _23
+                RIGHT_NUM       0x2014
+                STOP
+  _23:          LEFT_RETURN
+                GOTO_NE         0x2d, _24
+                GOTO_NO_ADVANCE _24
+                GOTO_NE         0x2d, _24
+                RIGHT_NUM       0xf05f
+                STOP
+  _24:          LEFT_RETURN
+                GOTO_NE         0x60, _25
+                GOTO_NO_ADVANCE _25
+                GOTO_NE         0x60, _25
+                RIGHT_NUM       0x201c
+                STOP
+  _25:          LEFT_RETURN
+                GOTO_NE         0x60, _26
+                RIGHT_NUM       0x2018
+                STOP
+  _26:          LEFT_RETURN
+                GOTO_NE         0x27, _27
+                GOTO_NO_ADVANCE _27
+                GOTO_NE         0x27, _27
+                RIGHT_NUM       0x201d
+                STOP
+  _27:          LEFT_RETURN
+                GOTO_NE         0x27, _28
+                RIGHT_NUM       0x2019
+                STOP
+  _28:          LEFT_RETURN
+                GOTO_NE         0x2c, _29
+                GOTO_NO_ADVANCE _29
+                GOTO_NE         0x2c, _29
+                RIGHT_NUM       0x201e
+                STOP
+  _29:          LEFT_RETURN
+                GOTO_NE         0x3c, _30
+                GOTO_NO_ADVANCE _30
+                GOTO_NE         0x3c, _30
+                RIGHT_NUM       0xab
+                STOP
+  _30:          LEFT_RETURN
+                GOTO_NE         0x3e, _31
+                GOTO_NO_ADVANCE _31
+                GOTO_NE         0x3e, _31
+                RIGHT_NUM       0xbb
+                STOP
+  _31:          LEFT_RETURN
+                RIGHT_CHAR      1
+                STOP
+                LEFT_RETURN
+                RIGHT_CHAR      1
+                STOP

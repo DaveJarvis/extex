@@ -67,6 +67,25 @@ public class OcpOmegaWriter extends AbstractWriter {
     }
 
     /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param value the character code
+     *
+     * @return the character string
+     */
+    protected String charString(int value) {
+
+        String s = "";
+        if (value >= ' ' && value <= 0x7e) {
+            StringBuffer sb = new StringBuffer(",`");
+            sb.append((char) value);
+            sb.append('\'');
+            s = sb.toString();
+        }
+        return s;
+    }
+
+    /**
      * Dump a dis-assembled form of an instruction.
      * 
      * @param out the output stream
@@ -101,61 +120,10 @@ public class OcpOmegaWriter extends AbstractWriter {
      */
     protected void print(PrintStream out, String key, int value) {
 
-        String s = "";
-        if (value >= ' ' && value <= 0x7d) {
-            StringBuffer sb = new StringBuffer(",`");
-            sb.append((char) value);
-            sb.append('\'');
-            s = sb.toString();
-        }
+        String s = charString(value);
         String hex = Integer.toHexString(value);
         if (fill && hex.length() == 1) {
             hex = " " + hex;
-        }
-        String dec = Integer.toString(value);
-        if (fill) {
-            switch (dec.length()) {
-                case 1:
-                    dec = "  " + dec;
-                    break;
-                case 2:
-                    dec = " " + dec;
-                    break;
-                default:
-                    // leave alone
-            }
-        }
-        out.print(format(key, hex, dec, s));
-    }
-
-    /**
-     * Print a number as hex and as decimal to an output stream.
-     * 
-     * @param out the output stream
-     * @param key the resource bundle key
-     * @param value the value to print
-     */
-    protected void printNum(PrintStream out, String key, int value) {
-
-        String s = "";
-        if (value >= ' ' && value <= 0x7d) {
-            StringBuffer sb = new StringBuffer(",`");
-            sb.append((char) value);
-            sb.append('\'');
-            s = sb.toString();
-        }
-        String hex = Integer.toHexString(value);
-        if (fill) {
-            switch (hex.length()) {
-                case 1:
-                    hex = "  " + hex;
-                    break;
-                case 2:
-                    hex = " " + hex;
-                    break;
-                default:
-                    // leave alone
-            }
         }
         String dec = Integer.toString(value);
         if (fill) {
@@ -241,6 +209,45 @@ public class OcpOmegaWriter extends AbstractWriter {
     }
 
     /**
+     * Print a number as hex and as decimal to an output stream.
+     * 
+     * @param out the output stream
+     * @param key the resource bundle key
+     * @param value the value to print
+     */
+    protected void printNum(PrintStream out, String key, int value) {
+
+        String s = charString(value);
+        String hex = Integer.toHexString(value);
+        if (fill) {
+            switch (hex.length()) {
+                case 1:
+                    hex = "  " + hex;
+                    break;
+                case 2:
+                    hex = " " + hex;
+                    break;
+                default:
+                    // leave alone
+            }
+        }
+        String dec = Integer.toString(value);
+        if (fill) {
+            switch (dec.length()) {
+                case 1:
+                    dec = "  " + dec;
+                    break;
+                case 2:
+                    dec = " " + dec;
+                    break;
+                default:
+                    // leave alone
+            }
+        }
+        out.print(format(key, hex, dec, s));
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.ocpware.writer.OcpWriter#write(java.io.OutputStream,
@@ -266,7 +273,7 @@ public class OcpOmegaWriter extends AbstractWriter {
 
             for (int i = 0; i < tables.size(); i++) {
                 int[] table = tables.get(i);
-                printNum(0, out, "Table", i, table.length);
+                printNum(-1, out, "Table", i, table.length);
             }
 
             out.println();
@@ -275,7 +282,7 @@ public class OcpOmegaWriter extends AbstractWriter {
                 int[] table = tables.get(i);
 
                 for (int j = 0; j < table.length; j++) {
-                    printNum(0, out, "TableEntry", i, j);
+                    printNum(-1, out, "TableEntry", i, j);
                     print(out, "TableItem", table[j]);
                 }
             }

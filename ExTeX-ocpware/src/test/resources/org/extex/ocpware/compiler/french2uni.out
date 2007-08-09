@@ -1,0 +1,21 @@
+input:  1;
+output: 2;
+expressions:
+  `-'`-'`-' => @"2014;
+  `-'`-' => @"2013;
+  ``'``' => "\LeftDoubleQuotationMark{}";
+  ``' => @"2018;
+  `''`'' => "\RightDoubleQuotationMark{}";
+  `'' => @"2019;
+  `,'`,' => @"201e;
+  `;' => "\Semicolon{}";
+  `:' => "\Colon{}";
+  `?' => "\QuestionMark{}";
+  `!' => "\ExclamationMark{}";
+  `<'`<'` ' => "\LeftPointingDoubleAngleQuotationMark{}";
+  @"ab` ' => "\LeftPointingDoubleAngleQuotationMark{}";
+  `<'`<' => "\LeftPointingDoubleAngleQuotationMark{}";
+  `>'`>' => "\RightPointingDoubleAngleQuotationMark{}";
+  @"ab => "\LeftPointingDoubleAngleQuotationMark{}";
+  @"bb => "\RightPointingDoubleAngleQuotationMark{}";
+  . => \1;

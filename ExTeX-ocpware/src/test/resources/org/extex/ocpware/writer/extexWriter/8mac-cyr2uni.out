@@ -1,0 +1,541 @@
+% length = 673
+% 0 tables in 0 words
+% 1 states in 665 words
+
+input = 1
+output = 2
+
+State _S0: % 665 entries
+
+                LEFT_START
+                GOTO_NE         0x80, _1
+                RIGHT_NUM       0x410
+                STOP
+  _1:           LEFT_RETURN
+                GOTO_NE         0x81, _2
+                RIGHT_NUM       0x411
+                STOP
+  _2:           LEFT_RETURN
+                GOTO_NE         0x82, _3
+                RIGHT_NUM       0x412
+                STOP
+  _3:           LEFT_RETURN
+                GOTO_NE         0x83, _4
+                RIGHT_NUM       0x413
+                STOP
+  _4:           LEFT_RETURN
+                GOTO_NE         0x84, _5
+                RIGHT_NUM       0x414
+                STOP
+  _5:           LEFT_RETURN
+                GOTO_NE         0x85, _6
+                RIGHT_NUM       0x415
+                STOP
+  _6:           LEFT_RETURN
+                GOTO_NE         0x86, _7
+                RIGHT_NUM       0x416
+                STOP
+  _7:           LEFT_RETURN
+                GOTO_NE         0x87, _8
+                RIGHT_NUM       0x417
+                STOP
+  _8:           LEFT_RETURN
+                GOTO_NE         0x88, _9
+                RIGHT_NUM       0x418
+                STOP
+  _9:           LEFT_RETURN
+                GOTO_NE         0x89, _10
+                RIGHT_NUM       0x419
+                STOP
+  _10:          LEFT_RETURN
+                GOTO_NE         0x8a, _11
+                RIGHT_NUM       0x41a
+                STOP
+  _11:          LEFT_RETURN
+                GOTO_NE         0x8b, _12
+                RIGHT_NUM       0x41b
+                STOP
+  _12:          LEFT_RETURN
+                GOTO_NE         0x8c, _13
+                RIGHT_NUM       0x41c
+                STOP
+  _13:          LEFT_RETURN
+                GOTO_NE         0x8d, _14
+                RIGHT_NUM       0x41d
+                STOP
+  _14:          LEFT_RETURN
+                GOTO_NE         0x8e, _15
+                RIGHT_NUM       0x41e
+                STOP
+  _15:          LEFT_RETURN
+                GOTO_NE         0x8f, _16
+                RIGHT_NUM       0x41f
+                STOP
+  _16:          LEFT_RETURN
+                GOTO_NE         0x90, _17
+                RIGHT_NUM       0x420
+                STOP
+  _17:          LEFT_RETURN
+                GOTO_NE         0x91, _18
+                RIGHT_NUM       0x421
+                STOP
+  _18:          LEFT_RETURN
+                GOTO_NE         0x92, _19
+                RIGHT_NUM       0x422
+                STOP
+  _19:          LEFT_RETURN
+                GOTO_NE         0x93, _20
+                RIGHT_NUM       0x423
+                STOP
+  _20:          LEFT_RETURN
+                GOTO_NE         0x94, _21
+                RIGHT_NUM       0x424
+                STOP
+  _21:          LEFT_RETURN
+                GOTO_NE         0x95, _22
+                RIGHT_NUM       0x425
+                STOP
+  _22:          LEFT_RETURN
+                GOTO_NE         0x96, _23
+                RIGHT_NUM       0x426
+                STOP
+  _23:          LEFT_RETURN
+                GOTO_NE         0x97, _24
+                RIGHT_NUM       0x427
+                STOP
+  _24:          LEFT_RETURN
+                GOTO_NE         0x98, _25
+                RIGHT_NUM       0x428
+                STOP
+  _25:          LEFT_RETURN
+                GOTO_NE         0x99, _26
+                RIGHT_NUM       0x429
+                STOP
+  _26:          LEFT_RETURN
+                GOTO_NE         0x9a, _27
+                RIGHT_NUM       0x42a
+                STOP
+  _27:          LEFT_RETURN
+                GOTO_NE         0x9b, _28
+                RIGHT_NUM       0x42b
+                STOP
+  _28:          LEFT_RETURN
+                GOTO_NE         0x9c, _29
+                RIGHT_NUM       0x42c
+                STOP
+  _29:          LEFT_RETURN
+                GOTO_NE         0x9d, _30
+                RIGHT_NUM       0x42d
+                STOP
+  _30:          LEFT_RETURN
+                GOTO_NE         0x9e, _31
+                RIGHT_NUM       0x42e
+                STOP
+  _31:          LEFT_RETURN
+                GOTO_NE         0x9f, _32
+                RIGHT_NUM       0x42f
+                STOP
+  _32:          LEFT_RETURN
+                GOTO_NE         0xa0, _33
+                RIGHT_NUM       0x2020
+                STOP
+  _33:          LEFT_RETURN
+                GOTO_NE         0xa1, _34
+                RIGHT_NUM       0xb0
+                STOP
+  _34:          LEFT_RETURN
+                GOTO_NE         0xa2, _35
+                RIGHT_NUM       0xa2
+                STOP
+  _35:          LEFT_RETURN
+                GOTO_NE         0xa3, _36
+                RIGHT_NUM       0xa3
+                STOP
+  _36:          LEFT_RETURN
+                GOTO_NE         0xa4, _37
+                RIGHT_NUM       0xa7
+                STOP
+  _37:          LEFT_RETURN
+                GOTO_NE         0xa5, _38
+                RIGHT_NUM       0x2022
+                STOP
+  _38:          LEFT_RETURN
+                GOTO_NE         0xa6, _39
+                RIGHT_NUM       0xb6
+                STOP
+  _39:          LEFT_RETURN
+                GOTO_NE         0xa7, _40
+                RIGHT_NUM       0x406
+                STOP
+  _40:          LEFT_RETURN
+                GOTO_NE         0xa8, _41
+                RIGHT_NUM       0xae
+                STOP
+  _41:          LEFT_RETURN
+                GOTO_NE         0xa9, _42
+                RIGHT_NUM       0xa9
+                STOP
+  _42:          LEFT_RETURN
+                GOTO_NE         0xaa, _43
+                RIGHT_NUM       0x2122
+                STOP
+  _43:          LEFT_RETURN
+                GOTO_NE         0xab, _44
+                RIGHT_NUM       0x402
+                STOP
+  _44:          LEFT_RETURN
+                GOTO_NE         0xac, _45
+                RIGHT_NUM       0x452
+                STOP
+  _45:          LEFT_RETURN
+                GOTO_NE         0xad, _46
+                RIGHT_NUM       0x2260
+                STOP
+  _46:          LEFT_RETURN
+                GOTO_NE         0xae, _47
+                RIGHT_NUM       0x403
+                STOP
+  _47:          LEFT_RETURN
+                GOTO_NE         0xaf, _48
+                RIGHT_NUM       0x453
+                STOP
+  _48:          LEFT_RETURN
+                GOTO_NE         0xb0, _49
+                RIGHT_NUM       0x221e
+                STOP
+  _49:          LEFT_RETURN
+                GOTO_NE         0xb1, _50
+                RIGHT_NUM       0xb1
+                STOP
+  _50:          LEFT_RETURN
+                GOTO_NE         0xb2, _51
+                RIGHT_NUM       0x2264
+                STOP
+  _51:          LEFT_RETURN
+                GOTO_NE         0xb3, _52
+                RIGHT_NUM       0x2265
+                STOP
+  _52:          LEFT_RETURN
+                GOTO_NE         0xb4, _53
+                RIGHT_NUM       0xa5
+                STOP
+  _53:          LEFT_RETURN
+                GOTO_NE         0xb5, _54
+                RIGHT_NUM       0xb5
+                STOP
+  _54:          LEFT_RETURN
+                GOTO_NE         0xb6, _55
+                RIGHT_NUM       0x2202
+                STOP
+  _55:          LEFT_RETURN
+                GOTO_NE         0xb7, _56
+                RIGHT_NUM       0x408
+                STOP
+  _56:          LEFT_RETURN
+                GOTO_NE         0xb8, _57
+                RIGHT_NUM       0x404
+                STOP
+  _57:          LEFT_RETURN
+                GOTO_NE         0xb9, _58
+                RIGHT_NUM       0x454
+                STOP
+  _58:          LEFT_RETURN
+                GOTO_NE         0xba, _59
+                RIGHT_NUM       0x407
+                STOP
+  _59:          LEFT_RETURN
+                GOTO_NE         0xbb, _60
+                RIGHT_NUM       0x457
+                STOP
+  _60:          LEFT_RETURN
+                GOTO_NE         0xbc, _61
+                RIGHT_NUM       0x409
+                STOP
+  _61:          LEFT_RETURN
+                GOTO_NE         0xbd, _62
+                RIGHT_NUM       0x459
+                STOP
+  _62:          LEFT_RETURN
+                GOTO_NE         0xbe, _63
+                RIGHT_NUM       0x40a
+                STOP
+  _63:          LEFT_RETURN
+                GOTO_NE         0xbf, _64
+                RIGHT_NUM       0x45a
+                STOP
+  _64:          LEFT_RETURN
+                GOTO_NE         0xc0, _65
+                RIGHT_NUM       0x458
+                STOP
+  _65:          LEFT_RETURN
+                GOTO_NE         0xc1, _66
+                RIGHT_NUM       0x405
+                STOP
+  _66:          LEFT_RETURN
+                GOTO_NE         0xc2, _67
+                RIGHT_NUM       0xac
+                STOP
+  _67:          LEFT_RETURN
+                GOTO_NE         0xc3, _68
+                RIGHT_NUM       0x221a
+                STOP
+  _68:          LEFT_RETURN
+                GOTO_NE         0xc4, _69
+                RIGHT_NUM       0x192
+                STOP
+  _69:          LEFT_RETURN
+                GOTO_NE         0xc5, _70
+                RIGHT_NUM       0x2248
+                STOP
+  _70:          LEFT_RETURN
+                GOTO_NE         0xc6, _71
+                RIGHT_NUM       0x2206
+                STOP
+  _71:          LEFT_RETURN
+                GOTO_NE         0xc7, _72
+                RIGHT_NUM       0xab
+                STOP
+  _72:          LEFT_RETURN
+                GOTO_NE         0xc8, _73
+                RIGHT_NUM       0xbb
+                STOP
+  _73:          LEFT_RETURN
+                GOTO_NE         0xc9, _74
+                RIGHT_NUM       0x2026
+                STOP
+  _74:          LEFT_RETURN
+                GOTO_NE         0xca, _75
+                RIGHT_NUM       0xa0
+                STOP
+  _75:          LEFT_RETURN
+                GOTO_NE         0xcb, _76
+                RIGHT_NUM       0x40b
+                STOP
+  _76:          LEFT_RETURN
+                GOTO_NE         0xcc, _77
+                RIGHT_NUM       0x45b
+                STOP
+  _77:          LEFT_RETURN
+                GOTO_NE         0xcd, _78
+                RIGHT_NUM       0x40c
+                STOP
+  _78:          LEFT_RETURN
+                GOTO_NE         0xce, _79
+                RIGHT_NUM       0x45c
+                STOP
+  _79:          LEFT_RETURN
+                GOTO_NE         0xcf, _80
+                RIGHT_NUM       0x455
+                STOP
+  _80:          LEFT_RETURN
+                GOTO_NE         0xd0, _81
+                RIGHT_NUM       0x2013
+                STOP
+  _81:          LEFT_RETURN
+                GOTO_NE         0xd1, _82
+                RIGHT_NUM       0x2014
+                STOP
+  _82:          LEFT_RETURN
+                GOTO_NE         0xd2, _83
+                RIGHT_NUM       0x201c
+                STOP
+  _83:          LEFT_RETURN
+                GOTO_NE         0xd3, _84
+                RIGHT_NUM       0x201d
+                STOP
+  _84:          LEFT_RETURN
+                GOTO_NE         0xd4, _85
+                RIGHT_NUM       0x2018
+                STOP
+  _85:          LEFT_RETURN
+                GOTO_NE         0xd5, _86
+                RIGHT_NUM       0x2019
+                STOP
+  _86:          LEFT_RETURN
+                GOTO_NE         0xd6, _87
+                RIGHT_NUM       0xf7
+                STOP
+  _87:          LEFT_RETURN
+                GOTO_NE         0xd7, _88
+                RIGHT_NUM       0x201e
+                STOP
+  _88:          LEFT_RETURN
+                GOTO_NE         0xd8, _89
+                RIGHT_NUM       0x40e
+                STOP
+  _89:          LEFT_RETURN
+                GOTO_NE         0xd9, _90
+                RIGHT_NUM       0x45e
+                STOP
+  _90:          LEFT_RETURN
+                GOTO_NE         0xda, _91
+                RIGHT_NUM       0x40f
+                STOP
+  _91:          LEFT_RETURN
+                GOTO_NE         0xdb, _92
+                RIGHT_NUM       0x45f
+                STOP
+  _92:          LEFT_RETURN
+                GOTO_NE         0xdc, _93
+                RIGHT_NUM       0x2116
+                STOP
+  _93:          LEFT_RETURN
+                GOTO_NE         0xdd, _94
+                RIGHT_NUM       0x401
+                STOP
+  _94:          LEFT_RETURN
+                GOTO_NE         0xde, _95
+                RIGHT_NUM       0x451
+                STOP
+  _95:          LEFT_RETURN
+                GOTO_NE         0xdf, _96
+                RIGHT_NUM       0x44f
+                STOP
+  _96:          LEFT_RETURN
+                GOTO_NE         0xe0, _97
+                RIGHT_NUM       0x430
+                STOP
+  _97:          LEFT_RETURN
+                GOTO_NE         0xe1, _98
+                RIGHT_NUM       0x431
+                STOP
+  _98:          LEFT_RETURN
+                GOTO_NE         0xe2, _99
+                RIGHT_NUM       0x432
+                STOP
+  _99:          LEFT_RETURN
+                GOTO_NE         0xe3, _100
+                RIGHT_NUM       0x433
+                STOP
+  _100:         LEFT_RETURN
+                GOTO_NE         0xe4, _101
+                RIGHT_NUM       0x434
+                STOP
+  _101:         LEFT_RETURN
+                GOTO_NE         0xe5, _102
+                RIGHT_NUM       0x435
+                STOP
+  _102:         LEFT_RETURN
+                GOTO_NE         0xe6, _103
+                RIGHT_NUM       0x436
+                STOP
+  _103:         LEFT_RETURN
+                GOTO_NE         0xe7, _104
+                RIGHT_NUM       0x437
+                STOP
+  _104:         LEFT_RETURN
+                GOTO_NE         0xe8, _105
+                RIGHT_NUM       0x438
+                STOP
+  _105:         LEFT_RETURN
+                GOTO_NE         0xe9, _106
+                RIGHT_NUM       0x439
+                STOP
+  _106:         LEFT_RETURN
+                GOTO_NE         0xea, _107
+                RIGHT_NUM       0x43a
+                STOP
+  _107:         LEFT_RETURN
+                GOTO_NE         0xeb, _108
+                RIGHT_NUM       0x43b
+                STOP
+  _108:         LEFT_RETURN
+                GOTO_NE         0xec, _109
+                RIGHT_NUM       0x43c
+                STOP
+  _109:         LEFT_RETURN
+                GOTO_NE         0xed, _110
+                RIGHT_NUM       0x43d
+                STOP
+  _110:         LEFT_RETURN
+                GOTO_NE         0xee, _111
+                RIGHT_NUM       0x43e
+                STOP
+  _111:         LEFT_RETURN
+                GOTO_NE         0xef, _112
+                RIGHT_NUM       0x43f
+                STOP
+  _112:         LEFT_RETURN
+                GOTO_NE         0xf0, _113
+                RIGHT_NUM       0x440
+                STOP
+  _113:         LEFT_RETURN
+                GOTO_NE         0xf1, _114
+                RIGHT_NUM       0x441
+                STOP
+  _114:         LEFT_RETURN
+                GOTO_NE         0xf2, _115
+                RIGHT_NUM       0x442
+                STOP
+  _115:         LEFT_RETURN
+                GOTO_NE         0xf3, _116
+                RIGHT_NUM       0x443
+                STOP
+  _116:         LEFT_RETURN
+                GOTO_NE         0xf4, _117
+                RIGHT_NUM       0x444
+                STOP
+  _117:         LEFT_RETURN
+                GOTO_NE         0xf5, _118
+                RIGHT_NUM       0x445
+                STOP
+  _118:         LEFT_RETURN
+                GOTO_NE         0xf6, _119
+                RIGHT_NUM       0x446
+                STOP
+  _119:         LEFT_RETURN
+                GOTO_NE         0xf7, _120
+                RIGHT_NUM       0x447
+                STOP
+  _120:         LEFT_RETURN
+                GOTO_NE         0xf8, _121
+                RIGHT_NUM       0x448
+                STOP
+  _121:         LEFT_RETURN
+                GOTO_NE         0xf9, _122
+                RIGHT_NUM       0x449
+                STOP
+  _122:         LEFT_RETURN
+                GOTO_NE         0xfa, _123
+                RIGHT_NUM       0x44a
+                STOP
+  _123:         LEFT_RETURN
+                GOTO_NE         0xfb, _124
+                RIGHT_NUM       0x44b
+                STOP
+  _124:         LEFT_RETURN
+                GOTO_NE         0xfc, _125
+                RIGHT_NUM       0x44c
+                STOP
+  _125:         LEFT_RETURN
+                GOTO_NE         0xfd, _126
+                RIGHT_NUM       0x44d
+                STOP
+  _126:         LEFT_RETURN
+                GOTO_NE         0xfe, _127
+                RIGHT_NUM       0x44e
+                STOP
+  _127:         LEFT_RETURN
+                GOTO_NE         0xff, _128
+                RIGHT_NUM       0xa4
+                STOP
+  _128:         LEFT_RETURN
+                GOTO_NE         0x2d, _129
+                GOTO_NO_ADVANCE _129
+                GOTO_NE         0x2d, _129
+                GOTO_NO_ADVANCE _129
+                GOTO_NE         0x2d, _129
+                RIGHT_NUM       0x2014
+                STOP
+  _129:         LEFT_RETURN
+                GOTO_NE         0x2d, _130
+                GOTO_NO_ADVANCE _130
+                GOTO_NE         0x2d, _130
+                RIGHT_NUM       0x2013
+                STOP
+  _130:         LEFT_RETURN
+                RIGHT_CHAR      1
+                STOP
+                LEFT_RETURN
+                RIGHT_CHAR      1
+                STOP

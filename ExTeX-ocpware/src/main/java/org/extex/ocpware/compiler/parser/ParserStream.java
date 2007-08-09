@@ -56,6 +56,17 @@ public class ParserStream extends PushbackInputStream {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see java.io.PushbackInputStream#close()
+     */
+    @Override
+    public synchronized void close() throws IOException {
+
+        super.close();
+    }
+
+    /**
      * Create an exception containing the context.
      * 
      * @param c the character read
@@ -253,24 +264,6 @@ public class ParserStream extends PushbackInputStream {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.PushbackInputStream#read()
-     */
-    @Override
-    public int read() throws IOException {
-
-        int c = super.read();
-        if (c == '\n') {
-            lineno++;
-            line.delete(0, line.length());
-        } else if (c >= 0) {
-            line.append((char) c);
-        }
-        return c;
-    }
-
-    /**
      * Parse a string specification. It is assumed that the starting double
      * quote (") has already been digested. The string reaches to the
      * terminating double quote. This terminating character is absorbed but not
@@ -298,6 +291,27 @@ public class ParserStream extends PushbackInputStream {
             sb.append((char) c);
         }
         return sb.toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.io.PushbackInputStream#read()
+     */
+    @Override
+    public int read() throws IOException {
+
+        if (in == null) {
+            return -1;
+        }
+        int c = super.read();
+        if (c == '\n') {
+            lineno++;
+            line.delete(0, line.length());
+        } else if (c >= 0) {
+            line.append((char) c);
+        }
+        return c;
     }
 
     /**

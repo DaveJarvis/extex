@@ -1,0 +1,1802 @@
+% length = 2612
+% 0 tables in 0 words
+% 3 states in 2602 words
+
+input = 2
+output = 2
+
+State _S0: % 1381 entries
+
+                LEFT_START
+                GOTO_NE         0x621, _1
+                GOTO            _2
+  _1:           GOTO_NE         0x674, _3
+                GOTO            _2
+  _3:           GOTO_NE         0x66e, _4
+                GOTO            _2
+  _4:           GOTO_NE         0x66f, _5
+                GOTO            _2
+  _5:           GOTO_NE         0x6ef, _6
+                GOTO            _2
+  _6:           GOTO_NE         0x63f, _7
+  _2:           GOTO_NO_ADVANCE _7
+                GOTO_NE         0x651, _7
+                GOTO_NO_ADVANCE _7
+                GOTO_LT         0x64b, _8
+                GOTO_GT         0x652, _8
+                GOTO            _9
+  _8:           GOTO_NE         0x670, _7
+  _9:           PUSH_CHAR       1
+                PUSH_NUM        0xda00
+                ADD
+                RIGHT_OUTPUT
+                PUSH_CHAR       3
+                PUSH_NUM        0xda90
+                ADD
+                RIGHT_OUTPUT
+                STOP
+  _7:           LEFT_RETURN
+                GOTO_NE         0x621, _10
+                GOTO            _11
+  _10:          GOTO_NE         0x674, _12
+                GOTO            _11
+  _12:          GOTO_NE         0x66e, _13
+                GOTO            _11
+  _13:          GOTO_NE         0x66f, _14
+                GOTO            _11
+  _14:          GOTO_NE         0x6ef, _15
+                GOTO            _11
+  _15:          GOTO_NE         0x63f, _16
+  _11:          GOTO_NO_ADVANCE _16
+                GOTO_LT         0x64b, _17
+                GOTO_GT         0x652, _17
+                GOTO            _18
+  _17:          GOTO_NE         0x670, _16
+  _18:          PUSH_CHAR       1
+                PUSH_NUM        0xda00
+                ADD
+                RIGHT_OUTPUT
+                PUSH_CHAR       2
+                PUSH_NUM        0xda00
+                ADD
+                RIGHT_OUTPUT
+                STOP
+  _16:          LEFT_RETURN
+                GOTO_NE         0x621, _19
+                GOTO            _20
+  _19:          GOTO_NE         0x674, _21
+                GOTO            _20
+  _21:          GOTO_NE         0x66e, _22
+                GOTO            _20
+  _22:          GOTO_NE         0x66f, _23
+                GOTO            _20
+  _23:          GOTO_NE         0x6ef, _24
+                GOTO            _20
+  _24:          GOTO_NE         0x63f, _25
+  _20:          PUSH_CHAR       1
+                PUSH_NUM        0xda00
+                ADD
+                RIGHT_OUTPUT
+                STOP
+  _25:          LEFT_RETURN
+                GOTO_NE         0xfdf2, _26
+                GOTO_NO_ADVANCE _26
+                GOTO_NE         0x651, _26
+                GOTO_NO_ADVANCE _26
+                GOTO_LT         0x64b, _27
+                GOTO_GT         0x652, _27
+                GOTO            _28
+  _27:          GOTO_NE         0x670, _26
+  _28:          RIGHT_CHAR      1
+                PUSH_CHAR       3
+                PUSH_NUM        0xda90
+                ADD
+                RIGHT_OUTPUT
+                STOP
+  _26:          LEFT_RETURN
+                GOTO_NE         0xfdf2, _29
+                GOTO_NO_ADVANCE _29
+                GOTO_LT         0x64b, _30
+                GOTO_GT         0x652, _30
+                GOTO            _31
+  _30:          GOTO_NE         0x670, _29
+  _31:          RIGHT_CHAR      1
+                PUSH_CHAR       2
+                PUSH_NUM        0xda00
+                ADD
+                RIGHT_OUTPUT
+                STOP
+  _29:          LEFT_RETURN
+                GOTO_NE         0xfdf2, _32
+                RIGHT_CHAR      1
+                STOP
+  _32:          LEFT_RETURN
+                GOTO_NE         0x2b, _33
+                GOTO            _34
+  _33:          GOTO_NE         0x2d, _35
+                GOTO            _34
+  _35:          GOTO_NE         0x2e, _36
+  _34:          GOTO_NO_ADVANCE _36
+                GOTO_LT         0x30, _37
+                GOTO_GT         0x39, _37
+                GOTO            _38
+  _37:          GOTO_LT         0x660, _39
+                GOTO_GT         0x669, _39
+                GOTO            _38
+  _39:          GOTO_LT         0x6f0, _36
+                GOTO_GT         0x6f9, _36
+  _38:          GOTO_END        _40
+                GOTO            _36
+  _40:          RIGHT_NUM       0x7b
+                RIGHT_NUM       0x5c
+                RIGHT_NUM       0x74
+                RIGHT_NUM       0x65
+                RIGHT_NUM       0x78
+                RIGHT_NUM       0x74
+                RIGHT_NUM       0x64
+                RIGHT_NUM       0x69
+                RIGHT_NUM       0x72
+                RIGHT_NUM       0x20
+                RIGHT_NUM       0x54
+                RIGHT_NUM       0x4c
+                RIGHT_NUM       0x54
+                RIGHT_NUM       0x7b
+                RIGHT_NUM       0x7d
+                PUSH_CHAR       1
+                RIGHT_OUTPUT
+                PUSH_CHAR       2
+                RIGHT_OUTPUT
+                RIGHT_NUM       0x7d
+                STOP
+  _36:          LEFT_RETURN
+                GOTO_NE         0x2b, _41
+                GOTO            _42
+  _41:          GOTO_NE         0x2d, _43
+                GOTO            _42
+  _43:          GOTO_NE         0x2e, _44
+  _42:          GOTO_NO_ADVANCE _44
+                GOTO_LT         0x30, _45
+                GOTO_GT         0x39, _45
+                GOTO            _46
+  _45:          GOTO_LT         0x660, _47
+                GOTO_GT         0x669, _47
+                GOTO            _46
+  _47:          GOTO_LT         0x6f0, _44
+                GOTO_GT         0x6f9, _44
+  _46:          RIGHT_NUM       0x7b
+                RIGHT_NUM       0x5c
+                RIGHT_NUM       0x74
+                RIGHT_NUM       0x65
+                RIGHT_NUM       0x78
+                RIGHT_NUM       0x74
+                RIGHT_NUM       0x64
+                RIGHT_NUM       0x69
+                RIGHT_NUM       0x72
+                RIGHT_NUM       0x20
+                RIGHT_NUM       0x54
+                RIGHT_NUM       0x4c
+                RIGHT_NUM       0x54
+                RIGHT_NUM       0x7b
+                RIGHT_NUM       0x7d
+                PUSH_CHAR       1
+                RIGHT_OUTPUT
+                PUSH_CHAR       2
+                RIGHT_OUTPUT
+                STATE_PUSH      _S2
+                STOP
+  _44:          LEFT_RETURN
+                GOTO_LT         0x30, _48
+                GOTO_GT         0x39, _48
+                GOTO            _49
+  _48:          GOTO_LT         0x660, _50
+                GOTO_GT         0x669, _50
+                GOTO            _49
+  _50:          GOTO_LT         0x6f0, _51
+                GOTO_GT         0x6f9, _51
+  _49:          GOTO_END        _52
+                GOTO            _51
+  _52:          PUSH_CHAR       1
+                RIGHT_OUTPUT
+                STOP
+  _51:          LEFT_RETURN
+                GOTO_LT         0x30, _53
+                GOTO_GT         0x39, _53
+                GOTO            _54
+  _53:          GOTO_LT         0x660, _55
+                GOTO_GT         0x669, _55
+                GOTO            _54
+  _55:          GOTO_LT         0x6f0, _56
+                GOTO_GT         0x6f9, _56
+  _54:          RIGHT_NUM       0x7b
+                RIGHT_NUM       0x5c
+                RIGHT_NUM       0x74
+                RIGHT_NUM       0x65
+                RIGHT_NUM       0x78
+                RIGHT_NUM       0x74
+                RIGHT_NUM       0x64
+                RIGHT_NUM       0x69
+                RIGHT_NUM       0x72
+                RIGHT_NUM       0x20
+                RIGHT_NUM       0x54
+                RIGHT_NUM       0x4c
+                RIGHT_NUM       0x54
+                RIGHT_NUM       0x7b
+                RIGHT_NUM       0x7d
+                PUSH_CHAR       1
+                RIGHT_OUTPUT
+                STATE_PUSH      _S2
+                STOP
+  _56:          LEFT_RETURN
+                GOTO_LT         0x621, _57
+                GOTO_GT         0x65f, _57
+                GOTO            _58
+  _57:          GOTO_LT         0x670, _59
+                GOTO_GT         0x6d3, _59
+                GOTO            _58
+  _59:          PUSH_CHAR       1
+                RIGHT_OUTPUT
+                STOP
+  _58:          LEFT_RETURN
+                GOTO_NE         0x626, _60
+                GOTO            _61
+  _60:          GOTO_NE         0x628, _62
+                GOTO            _61
+  _62:          GOTO_LT         0x62a, _63
+                GOTO_GT         0x62e, _63
+                GOTO            _61
+  _63:          GOTO_LT         0x633, _64
+                GOTO_GT         0x63a, _64
+                GOTO            _61
+  _64:          GOTO_LT         0x640, _65
+                GOTO_GT         0x647, _65
+                GOTO            _61
+  _65:          GOTO_NE         0x649, _66
+                GOTO            _61
+  _66:          GOTO_NE         0x64a, _67
+                GOTO            _61
+  _67:          GOTO_LT         0x655, _68
+                GOTO_GT         0x657, _68
+                GOTO            _61
+  _68:          GOTO_NE         0x65b, _69
+                GOTO            _61
+  _69:          GOTO_NE         0x65c, _70
+                GOTO            _61
+  _70:          GOTO_LT         0x678, _71
+                GOTO_GT         0x687, _71
+                GOTO            _61
+  _71:          GOTO_LT         0x69a, _72
+                GOTO_GT         0x6b7, _72
+                GOTO            _61
+  _72:          GOTO_LT         0x6bb, _73
+                GOTO_GT         0x6bf, _73
+                GOTO            _61
+  _73:          GOTO_NE         0x6cc, _74
+                GOTO            _61
+  _74:          GOTO_NE         0x6ce, _75
+                GOTO            _61
+  _75:          GOTO_NE         0x6d0, _76
+                GOTO            _61
+  _76:          GOTO_NE         0x6d1, _77
+                GOTO            _61
+  _77:          GOTO_NE         0x6fe, _78
+  _61:          GOTO_NO_ADVANCE _78
+                GOTO_LT         0x621, _79
+                GOTO_GT         0x65f, _79
+                GOTO            _80
+  _79:          GOTO_LT         0x670, _81
+                GOTO_GT         0x6d3, _81
+                GOTO            _80
+  _81:          GOTO            _82
+  _80:          GOTO_NE         0x621, _83
+                GOTO            _82
+  _83:          GOTO_NE         0x674, _84
+                GOTO            _82
+  _84:          GOTO_NE         0x66e, _85
+                GOTO            _82
+  _85:          GOTO_NE         0x66f, _86
+                GOTO            _82
+  _86:          GOTO_NE         0x6ef, _87
+                GOTO            _82
+  _87:          GOTO_NE         0x63f, _78
+  _82:          PUSH_CHAR       1
+                PUSH_NUM        0xda00
+                ADD
+                RIGHT_OUTPUT
+                PBACK_CHAR      2
+                STOP
+  _78:          LEFT_RETURN
+                GOTO_NE         0x626, _88
+                GOTO            _89
+  _88:          GOTO_NE         0x628, _90
+                GOTO            _89
+  _90:          GOTO_LT         0x62a, _91
+                GOTO_GT         0x62e, _91
+                GOTO            _89
+  _91:          GOTO_LT         0x633, _92
+                GOTO_GT         0x63a, _92
+                GOTO            _89
+  _92:          GOTO_LT         0x640, _93
+                GOTO_GT         0x647, _93
+                GOTO            _89
+  _93:          GOTO_NE         0x649, _94
+                GOTO            _89
+  _94:          GOTO_NE         0x64a, _95
+                GOTO            _89
+  _95:          GOTO_LT         0x655, _96
+                GOTO_GT         0x657, _96
+                GOTO            _89
+  _96:          GOTO_NE         0x65b, _97
+                GOTO            _89
+  _97:          GOTO_NE         0x65c, _98
+                GOTO            _89
+  _98:          GOTO_LT         0x678, _99
+                GOTO_GT         0x687, _99
+                GOTO            _89
+  _99:          GOTO_LT         0x69a, _100
+                GOTO_GT         0x6b7, _100
+                GOTO            _89
+  _100:         GOTO_LT         0x6bb, _101
+                GOTO_GT         0x6bf, _101
+                GOTO            _89
+  _101:         GOTO_NE         0x6cc, _102
+                GOTO            _89
+  _102:         GOTO_NE         0x6ce, _103
+                GOTO            _89
+  _103:         GOTO_NE         0x6d0, _104
+                GOTO            _89
+  _104:         GOTO_NE         0x6d1, _105
+                GOTO            _89
+  _105:         GOTO_NE         0x6fe, _106
+  _89:          GOTO_END        _107
+                GOTO            _106
+  _107:         PUSH_CHAR       1
+                PUSH_NUM        0xda00
+                ADD
+                RIGHT_OUTPUT
+                STOP
+  _106:         LEFT_RETURN
+                GOTO_NE         0x626, _108
+                GOTO            _109
+  _108:         GOTO_NE         0x628, _110
+                GOTO            _109
+  _110:         GOTO_LT         0x62a, _111
+                GOTO_GT         0x62e, _111
+                GOTO            _109
+  _111:         GOTO_LT         0x633, _112
+                GOTO_GT         0x63a, _112
+                GOTO            _109
+  _112:         GOTO_LT         0x640, _113
+                GOTO_GT         0x647, _113
+                GOTO            _109
+  _113:         GOTO_NE         0x649, _114
+                GOTO            _109
+  _114:         GOTO_NE         0x64a, _115
+                GOTO            _109
+  _115:         GOTO_LT         0x655, _116
+                GOTO_GT         0x657, _116
+                GOTO            _109
+  _116:         GOTO_NE         0x65b, _117
+                GOTO            _109
+  _117:         GOTO_NE         0x65c, _118
+                GOTO            _109
+  _118:         GOTO_LT         0x678, _119
+                GOTO_GT         0x687, _119
+                GOTO            _109
+  _119:         GOTO_LT         0x69a, _120
+                GOTO_GT         0x6b7, _120
+                GOTO            _109
+  _120:         GOTO_LT         0x6bb, _121
+                GOTO_GT         0x6bf, _121
+                GOTO            _109
+  _121:         GOTO_NE         0x6cc, _122
+                GOTO            _109
+  _122:         GOTO_NE         0x6ce, _123
+                GOTO            _109
+  _123:         GOTO_NE         0x6d0, _124
+                GOTO            _109
+  _124:         GOTO_NE         0x6d1, _125
+                GOTO            _109
+  _125:         GOTO_NE         0x6fe, _126
+  _109:         GOTO_NO_ADVANCE _126
+                GOTO_NE         0x651, _126
+                GOTO_NO_ADVANCE _126
+                GOTO_LT         0x64b, _127
+                GOTO_GT         0x652, _127
+                GOTO            _128
+  _127:         GOTO_NE         0x670, _126
+  _128:         GOTO_NO_ADVANCE _126
+                GOTO_LT         0x621, _129
+                GOTO_GT         0x65f, _129
+                GOTO            _130
+  _129:         GOTO_LT         0x670, _131
+                GOTO_GT         0x6d3, _131
+                GOTO            _130
+  _131:         GOTO            _132
+  _130:         GOTO_NE         0x621, _133
+                GOTO            _132
+  _133:         GOTO_NE         0x674, _134
+                GOTO            _132
+  _134:         GOTO_NE         0x66e, _135
+                GOTO            _132
+  _135:         GOTO_NE         0x66f, _136
+                GOTO            _132
+  _136:         GOTO_NE         0x6ef, _137
+                GOTO            _132
+  _137:         GOTO_NE         0x63f, _126
+  _132:         PUSH_CHAR       1
+                PUSH_NUM        0xda00
+                ADD
+                RIGHT_OUTPUT
+                PUSH_CHAR       3
+                PUSH_NUM        0xda90
+                ADD
+                RIGHT_OUTPUT
+                PUSH_CHAR       4
+                PBACK_OUTPUT
+                STOP
+  _126:         LEFT_RETURN
+                GOTO_NE         0x626, _138
+                GOTO            _139
+  _138:         GOTO_NE         0x628, _140
+                GOTO            _139
+  _140:         GOTO_LT         0x62a, _141
+                GOTO_GT         0x62e, _141
+                GOTO            _139
+  _141:         GOTO_LT         0x633, _142
+                GOTO_GT         0x63a, _142
+                GOTO            _139
+  _142:         GOTO_LT         0x640, _143
+                GOTO_GT         0x647, _143
+                GOTO            _139
+  _143:         GOTO_NE         0x649, _144
+                GOTO            _139
+  _144:         GOTO_NE         0x64a, _145
+                GOTO            _139
+  _145:         GOTO_LT         0x655, _146
+                GOTO_GT         0x657, _146
+                GOTO            _139
+  _146:         GOTO_NE         0x65b, _147
+                GOTO            _139
+  _147:         GOTO_NE         0x65c, _148
+                GOTO            _139
+  _148:         GOTO_LT         0x678, _149
+                GOTO_GT         0x687, _149
+                GOTO            _139
+  _149:         GOTO_LT         0x69a, _150
+                GOTO_GT         0x6b7, _150
+                GOTO            _139
+  _150:         GOTO_LT         0x6bb, _151
+                GOTO_GT         0x6bf, _151
+                GOTO            _139
+  _151:         GOTO_NE         0x6cc, _152
+                GOTO            _139
+  _152:         GOTO_NE         0x6ce, _153
+                GOTO            _139
+  _153:         GOTO_NE         0x6d0, _154
+                GOTO            _139
+  _154:         GOTO_NE         0x6d1, _155
+                GOTO            _139
+  _155:         GOTO_NE         0x6fe, _156
+  _139:         GOTO_NO_ADVANCE _156
+                GOTO_LT         0x64b, _157
+                GOTO_GT         0x652, _157
+                GOTO            _158
+  _157:         GOTO_NE         0x670, _156
+  _158:         GOTO_NO_ADVANCE _156
+                GOTO_LT         0x621, _159
+                GOTO_GT         0x65f, _159
+                GOTO            _160
+  _159:         GOTO_LT         0x670, _161
+                GOTO_GT         0x6d3, _161
+                GOTO            _160
+  _161:         GOTO            _162
+  _160:         GOTO_NE         0x621, _163
+                GOTO            _162
+  _163:         GOTO_NE         0x674, _164
+                GOTO            _162
+  _164:         GOTO_NE         0x66e, _165
+                GOTO            _162
+  _165:         GOTO_NE         0x66f, _166
+                GOTO            _162
+  _166:         GOTO_NE         0x6ef, _167
+                GOTO            _162
+  _167:         GOTO_NE         0x63f, _156
+  _162:         PUSH_CHAR       1
+                PUSH_NUM        0xda00
+                ADD
+                RIGHT_OUTPUT
+                PUSH_CHAR       2
+                PUSH_NUM        0xda00
+                ADD
+                RIGHT_OUTPUT
+                PUSH_CHAR       3
+                PBACK_OUTPUT
+                STOP
+  _156:         LEFT_RETURN
+                GOTO_NE         0x626, _168
+                GOTO            _169
+  _168:         GOTO_NE         0x628, _170
+                GOTO            _169
+  _170:         GOTO_LT         0x62a, _171
+                GOTO_GT         0x62e, _171
+                GOTO            _169
+  _171:         GOTO_LT         0x633, _172
+                GOTO_GT         0x63a, _172
+                GOTO            _169
+  _172:         GOTO_LT         0x640, _173
+                GOTO_GT         0x647, _173
+                GOTO            _169
+  _173:         GOTO_NE         0x649, _174
+                GOTO            _169
+  _174:         GOTO_NE         0x64a, _175
+                GOTO            _169
+  _175:         GOTO_LT         0x655, _176
+                GOTO_GT         0x657, _176
+                GOTO            _169
+  _176:         GOTO_NE         0x65b, _177
+                GOTO            _169
+  _177:         GOTO_NE         0x65c, _178
+                GOTO            _169
+  _178:         GOTO_LT         0x678, _179
+                GOTO_GT         0x687, _179
+                GOTO            _169
+  _179:         GOTO_LT         0x69a, _180
+                GOTO_GT         0x6b7, _180
+                GOTO            _169
+  _180:         GOTO_LT         0x6bb, _181
+                GOTO_GT         0x6bf, _181
+                GOTO            _169
+  _181:         GOTO_NE         0x6cc, _182
+                GOTO            _169
+  _182:         GOTO_NE         0x6ce, _183
+                GOTO            _169
+  _183:         GOTO_NE         0x6d0, _184
+                GOTO            _169
+  _184:         GOTO_NE         0x6d1, _185
+                GOTO            _169
+  _185:         GOTO_NE         0x6fe, _186
+  _169:         GOTO_NO_ADVANCE _186
+                GOTO_NE         0x651, _186
+                GOTO_NO_ADVANCE _186
+                GOTO_LT         0x64b, _187
+                GOTO_GT         0x652, _187
+                GOTO            _188
+  _187:         GOTO_NE         0x670, _186
+  _188:         GOTO_END        _189
+                GOTO            _186
+  _189:         PUSH_CHAR       1
+                PUSH_NUM        0xda00
+                ADD
+                RIGHT_OUTPUT
+                PUSH_CHAR       3
+                PUSH_NUM        0xda90
+                ADD
+                RIGHT_OUTPUT
+                STOP
+  _186:         LEFT_RETURN
+                GOTO_NE         0x626, _190
+                GOTO            _191
+  _190:         GOTO_NE         0x628, _192
+                GOTO            _191
+  _192:         GOTO_LT         0x62a, _193
+                GOTO_GT         0x62e, _193
+                GOTO            _191
+  _193:         GOTO_LT         0x633, _194
+                GOTO_GT         0x63a, _194
+                GOTO            _191
+  _194:         GOTO_LT         0x640, _195
+                GOTO_GT         0x647, _195
+                GOTO            _191
+  _195:         GOTO_NE         0x649, _196
+                GOTO            _191
+  _196:         GOTO_NE         0x64a, _197
+                GOTO            _191
+  _197:         GOTO_LT         0x655, _198
+                GOTO_GT         0x657, _198
+                GOTO            _191
+  _198:         GOTO_NE         0x65b, _199
+                GOTO            _191
+  _199:         GOTO_NE         0x65c, _200
+                GOTO            _191
+  _200:         GOTO_LT         0x678, _201
+                GOTO_GT         0x687, _201
+                GOTO            _191
+  _201:         GOTO_LT         0x69a, _202
+                GOTO_GT         0x6b7, _202
+                GOTO            _191
+  _202:         GOTO_LT         0x6bb, _203
+                GOTO_GT         0x6bf, _203
+                GOTO            _191
+  _203:         GOTO_NE         0x6cc, _204
+                GOTO            _191
+  _204:         GOTO_NE         0x6ce, _205
+                GOTO            _191
+  _205:         GOTO_NE         0x6d0, _206
+                GOTO            _191
+  _206:         GOTO_NE         0x6d1, _207
+                GOTO            _191
+  _207:         GOTO_NE         0x6fe, _208
+  _191:         GOTO_NO_ADVANCE _208
+                GOTO_LT         0x64b, _209
+                GOTO_GT         0x652, _209
+                GOTO            _210
+  _209:         GOTO_NE         0x670, _208
+  _210:         GOTO_END        _211
+                GOTO            _208
+  _211:         PUSH_CHAR       1
+                PUSH_NUM        0xda00
+                ADD
+                RIGHT_OUTPUT
+                PUSH_CHAR       2
+                PUSH_NUM        0xda00
+                ADD
+                RIGHT_OUTPUT
+                STOP
+  _208:         LEFT_RETURN
+                GOTO_NE         0x626, _212
+                GOTO            _213
+  _212:         GOTO_NE         0x628, _214
+                GOTO            _213
+  _214:         GOTO_LT         0x62a, _215
+                GOTO_GT         0x62e, _215
+                GOTO            _213
+  _215:         GOTO_LT         0x633, _216
+                GOTO_GT         0x63a, _216
+                GOTO            _213
+  _216:         GOTO_LT         0x640, _217
+                GOTO_GT         0x647, _217
+                GOTO            _213
+  _217:         GOTO_NE         0x649, _218
+                GOTO            _213
+  _218:         GOTO_NE         0x64a, _219
+                GOTO            _213
+  _219:         GOTO_LT         0x655, _220
+                GOTO_GT         0x657, _220
+                GOTO            _213
+  _220:         GOTO_NE         0x65b, _221
+                GOTO            _213
+  _221:         GOTO_NE         0x65c, _222
+                GOTO            _213
+  _222:         GOTO_LT         0x678, _223
+                GOTO_GT         0x687, _223
+                GOTO            _213
+  _223:         GOTO_LT         0x69a, _224
+                GOTO_GT         0x6b7, _224
+                GOTO            _213
+  _224:         GOTO_LT         0x6bb, _225
+                GOTO_GT         0x6bf, _225
+                GOTO            _213
+  _225:         GOTO_NE         0x6cc, _226
+                GOTO            _213
+  _226:         GOTO_NE         0x6ce, _227
+                GOTO            _213
+  _227:         GOTO_NE         0x6d0, _228
+                GOTO            _213
+  _228:         GOTO_NE         0x6d1, _229
+                GOTO            _213
+  _229:         GOTO_NE         0x6fe, _230
+  _213:         GOTO_NO_ADVANCE _230
+                GOTO_NE         0x651, _230
+                GOTO_NO_ADVANCE _230
+                GOTO_LT         0x64b, _231
+                GOTO_GT         0x652, _231
+                GOTO            _232
+  _231:         GOTO_NE         0x670, _230
+  _232:         PUSH_CHAR       1
+                PUSH_NUM        0xdb00
+                ADD
+                RIGHT_OUTPUT
+                PUSH_CHAR       3
+                PUSH_NUM        0xda90
+                ADD
+                RIGHT_OUTPUT
+                RIGHT_NUM       0x620
+                STATE_PUSH      _S1
+                STOP
+  _230:         LEFT_RETURN
+                GOTO_NE         0x626, _233
+                GOTO            _234
+  _233:         GOTO_NE         0x628, _235
+                GOTO            _234
+  _235:         GOTO_LT         0x62a, _236
+                GOTO_GT         0x62e, _236
+                GOTO            _234
+  _236:         GOTO_LT         0x633, _237
+                GOTO_GT         0x63a, _237
+                GOTO            _234
+  _237:         GOTO_LT         0x640, _238
+                GOTO_GT         0x647, _238
+                GOTO            _234
+  _238:         GOTO_NE         0x649, _239
+                GOTO            _234
+  _239:         GOTO_NE         0x64a, _240
+                GOTO            _234
+  _240:         GOTO_LT         0x655, _241
+                GOTO_GT         0x657, _241
+                GOTO            _234
+  _241:         GOTO_NE         0x65b, _242
+                GOTO            _234
+  _242:         GOTO_NE         0x65c, _243
+                GOTO            _234
+  _243:         GOTO_LT         0x678, _244
+                GOTO_GT         0x687, _244
+                GOTO            _234
+  _244:         GOTO_LT         0x69a, _245
+                GOTO_GT         0x6b7, _245
+                GOTO            _234
+  _245:         GOTO_LT         0x6bb, _246
+                GOTO_GT         0x6bf, _246
+                GOTO            _234
+  _246:         GOTO_NE         0x6cc, _247
+                GOTO            _234
+  _247:         GOTO_NE         0x6ce, _248
+                GOTO            _234
+  _248:         GOTO_NE         0x6d0, _249
+                GOTO            _234
+  _249:         GOTO_NE         0x6d1, _250
+                GOTO            _234
+  _250:         GOTO_NE         0x6fe, _251
+  _234:         GOTO_NO_ADVANCE _251
+                GOTO_LT         0x64b, _252
+                GOTO_GT         0x652, _252
+                GOTO            _253
+  _252:         GOTO_NE         0x670, _251
+  _253:         PUSH_CHAR       1
+                PUSH_NUM        0xdb00
+                ADD
+                RIGHT_OUTPUT
+                PUSH_CHAR       2
+                PUSH_NUM        0xda00
+                ADD
+                RIGHT_OUTPUT
+                RIGHT_NUM       0x620
+                STATE_PUSH      _S1
+                STOP
+  _251:         LEFT_RETURN
+                GOTO_NE         0x626, _254
+                GOTO            _255
+  _254:         GOTO_NE         0x628, _256
+                GOTO            _255
+  _256:         GOTO_LT         0x62a, _257
+                GOTO_GT         0x62e, _257
+                GOTO            _255
+  _257:         GOTO_LT         0x633, _258
+                GOTO_GT         0x63a, _258
+                GOTO            _255
+  _258:         GOTO_LT         0x640, _259
+                GOTO_GT         0x647, _259
+                GOTO            _255
+  _259:         GOTO_NE         0x649, _260
+                GOTO            _255
+  _260:         GOTO_NE         0x64a, _261
+                GOTO            _255
+  _261:         GOTO_LT         0x655, _262
+                GOTO_GT         0x657, _262
+                GOTO            _255
+  _262:         GOTO_NE         0x65b, _263
+                GOTO            _255
+  _263:         GOTO_NE         0x65c, _264
+                GOTO            _255
+  _264:         GOTO_LT         0x678, _265
+                GOTO_GT         0x687, _265
+                GOTO            _255
+  _265:         GOTO_LT         0x69a, _266
+                GOTO_GT         0x6b7, _266
+                GOTO            _255
+  _266:         GOTO_LT         0x6bb, _267
+                GOTO_GT         0x6bf, _267
+                GOTO            _255
+  _267:         GOTO_NE         0x6cc, _268
+                GOTO            _255
+  _268:         GOTO_NE         0x6ce, _269
+                GOTO            _255
+  _269:         GOTO_NE         0x6d0, _270
+                GOTO            _255
+  _270:         GOTO_NE         0x6d1, _271
+                GOTO            _255
+  _271:         GOTO_NE         0x6fe, _272
+  _255:         PUSH_CHAR       1
+                PUSH_NUM        0xdb00
+                ADD
+                RIGHT_OUTPUT
+                RIGHT_NUM       0x620
+                STATE_PUSH      _S1
+                STOP
+  _272:         LEFT_RETURN
+                GOTO_LT         0x622, _273
+                GOTO_GT         0x625, _273
+                GOTO            _274
+  _273:         GOTO_NE         0x627, _275
+                GOTO            _274
+  _275:         GOTO_NE         0x629, _276
+                GOTO            _274
+  _276:         GOTO_LT         0x62f, _277
+                GOTO_GT         0x632, _277
+                GOTO            _274
+  _277:         GOTO_NE         0x648, _278
+                GOTO            _274
+  _278:         GOTO_NE         0x649, _279
+                GOTO            _274
+  _279:         GOTO_NE         0x65d, _280
+                GOTO            _274
+  _280:         GOTO_NE         0x65e, _281
+                GOTO            _274
+  _281:         GOTO_LT         0x671, _282
+                GOTO_GT         0x673, _282
+                GOTO            _274
+  _282:         GOTO_LT         0x675, _283
+                GOTO_GT         0x677, _283
+                GOTO            _274
+  _283:         GOTO_LT         0x688, _284
+                GOTO_GT         0x69a, _284
+                GOTO            _274
+  _284:         GOTO_NE         0x6ba, _285
+                GOTO            _274
+  _285:         GOTO_LT         0x6c0, _286
+                GOTO_GT         0x6cb, _286
+                GOTO            _274
+  _286:         GOTO_NE         0x6cd, _287
+                GOTO            _274
+  _287:         GOTO_NE         0x6d2, _288
+                GOTO            _274
+  _288:         GOTO_NE         0x6d3, _289
+                GOTO            _274
+  _289:         GOTO_NE         0x6ff, _290
+  _274:         GOTO_NO_ADVANCE _290
+                GOTO_NE         0x651, _290
+                GOTO_NO_ADVANCE _290
+                GOTO_LT         0x64b, _291
+                GOTO_GT         0x652, _291
+                GOTO            _292
+  _291:         GOTO_NE         0x670, _290
+  _292:         PUSH_CHAR       1
+                PUSH_NUM        0xda00
+                ADD
+                RIGHT_OUTPUT
+                PUSH_CHAR       3
+                PUSH_NUM        0xda90
+                ADD
+                RIGHT_OUTPUT
+                STOP
+  _290:         LEFT_RETURN
+                GOTO_LT         0x622, _293
+                GOTO_GT         0x625, _293
+                GOTO            _294
+  _293:         GOTO_NE         0x627, _295
+                GOTO            _294
+  _295:         GOTO_NE         0x629, _296
+                GOTO            _294
+  _296:         GOTO_LT         0x62f, _297
+                GOTO_GT         0x632, _297
+                GOTO            _294
+  _297:         GOTO_NE         0x648, _298
+                GOTO            _294
+  _298:         GOTO_NE         0x649, _299
+                GOTO            _294
+  _299:         GOTO_NE         0x65d, _300
+                GOTO            _294
+  _300:         GOTO_NE         0x65e, _301
+                GOTO            _294
+  _301:         GOTO_LT         0x671, _302
+                GOTO_GT         0x673, _302
+                GOTO            _294
+  _302:         GOTO_LT         0x675, _303
+                GOTO_GT         0x677, _303
+                GOTO            _294
+  _303:         GOTO_LT         0x688, _304
+                GOTO_GT         0x69a, _304
+                GOTO            _294
+  _304:         GOTO_NE         0x6ba, _305
+                GOTO            _294
+  _305:         GOTO_LT         0x6c0, _306
+                GOTO_GT         0x6cb, _306
+                GOTO            _294
+  _306:         GOTO_NE         0x6cd, _307
+                GOTO            _294
+  _307:         GOTO_NE         0x6d2, _308
+                GOTO            _294
+  _308:         GOTO_NE         0x6d3, _309
+                GOTO            _294
+  _309:         GOTO_NE         0x6ff, _310
+  _294:         GOTO_NO_ADVANCE _310
+                GOTO_LT         0x64b, _311
+                GOTO_GT         0x652, _311
+                GOTO            _312
+  _311:         GOTO_NE         0x670, _310
+  _312:         PUSH_CHAR       1
+                PUSH_NUM        0xda00
+                ADD
+                RIGHT_OUTPUT
+                PUSH_CHAR       2
+                PUSH_NUM        0xda00
+                ADD
+                RIGHT_OUTPUT
+                STOP
+  _310:         LEFT_RETURN
+                GOTO_LT         0x622, _313
+                GOTO_GT         0x625, _313
+                GOTO            _314
+  _313:         GOTO_NE         0x627, _315
+                GOTO            _314
+  _315:         GOTO_NE         0x629, _316
+                GOTO            _314
+  _316:         GOTO_LT         0x62f, _317
+                GOTO_GT         0x632, _317
+                GOTO            _314
+  _317:         GOTO_NE         0x648, _318
+                GOTO            _314
+  _318:         GOTO_NE         0x649, _319
+                GOTO            _314
+  _319:         GOTO_NE         0x65d, _320
+                GOTO            _314
+  _320:         GOTO_NE         0x65e, _321
+                GOTO            _314
+  _321:         GOTO_LT         0x671, _322
+                GOTO_GT         0x673, _322
+                GOTO            _314
+  _322:         GOTO_LT         0x675, _323
+                GOTO_GT         0x677, _323
+                GOTO            _314
+  _323:         GOTO_LT         0x688, _324
+                GOTO_GT         0x69a, _324
+                GOTO            _314
+  _324:         GOTO_NE         0x6ba, _325
+                GOTO            _314
+  _325:         GOTO_LT         0x6c0, _326
+                GOTO_GT         0x6cb, _326
+                GOTO            _314
+  _326:         GOTO_NE         0x6cd, _327
+                GOTO            _314
+  _327:         GOTO_NE         0x6d2, _328
+                GOTO            _314
+  _328:         GOTO_NE         0x6d3, _329
+                GOTO            _314
+  _329:         GOTO_NE         0x6ff, _330
+  _314:         PUSH_CHAR       1
+                PUSH_NUM        0xda00
+                ADD
+                RIGHT_OUTPUT
+                STOP
+  _330:         LEFT_RETURN
+                GOTO_LT         0xf000, _331
+                GOTO_GT         0xf07f, _331
+                RIGHT_CHAR      1
+                STOP
+  _331:         LEFT_RETURN
+                RIGHT_CHAR      1
+                STOP
+
+State _S1: % 1083 entries
+
+                LEFT_START
+                GOTO_NE         0x626, _1
+                GOTO            _2
+  _1:           GOTO_NE         0x628, _3
+                GOTO            _2
+  _3:           GOTO_LT         0x62a, _4
+                GOTO_GT         0x62e, _4
+                GOTO            _2
+  _4:           GOTO_LT         0x633, _5
+                GOTO_GT         0x63a, _5
+                GOTO            _2
+  _5:           GOTO_LT         0x640, _6
+                GOTO_GT         0x647, _6
+                GOTO            _2
+  _6:           GOTO_NE         0x649, _7
+                GOTO            _2
+  _7:           GOTO_NE         0x64a, _8
+                GOTO            _2
+  _8:           GOTO_LT         0x655, _9
+                GOTO_GT         0x657, _9
+                GOTO            _2
+  _9:           GOTO_NE         0x65b, _10
+                GOTO            _2
+  _10:          GOTO_NE         0x65c, _11
+                GOTO            _2
+  _11:          GOTO_LT         0x678, _12
+                GOTO_GT         0x687, _12
+                GOTO            _2
+  _12:          GOTO_LT         0x69a, _13
+                GOTO_GT         0x6b7, _13
+                GOTO            _2
+  _13:          GOTO_LT         0x6bb, _14
+                GOTO_GT         0x6bf, _14
+                GOTO            _2
+  _14:          GOTO_NE         0x6cc, _15
+                GOTO            _2
+  _15:          GOTO_NE         0x6ce, _16
+                GOTO            _2
+  _16:          GOTO_NE         0x6d0, _17
+                GOTO            _2
+  _17:          GOTO_NE         0x6d1, _18
+                GOTO            _2
+  _18:          GOTO_NE         0x6fe, _19
+  _2:           GOTO_NO_ADVANCE _19
+                GOTO_LT         0x621, _20
+                GOTO_GT         0x65f, _20
+                GOTO            _21
+  _20:          GOTO_LT         0x670, _22
+                GOTO_GT         0x6d3, _22
+                GOTO            _21
+  _22:          GOTO            _23
+  _21:          GOTO_NE         0x621, _24
+                GOTO            _23
+  _24:          GOTO_NE         0x674, _25
+                GOTO            _23
+  _25:          GOTO_NE         0x66e, _26
+                GOTO            _23
+  _26:          GOTO_NE         0x66f, _27
+                GOTO            _23
+  _27:          GOTO_NE         0x6ef, _28
+                GOTO            _23
+  _28:          GOTO_NE         0x63f, _19
+  _23:          PUSH_CHAR       1
+                PUSH_NUM        0xdd00
+                ADD
+                RIGHT_OUTPUT
+                PUSH_CHAR       2
+                PBACK_OUTPUT
+                STATE_POP
+                STOP
+  _19:          LEFT_RETURN
+                GOTO_NE         0x626, _29
+                GOTO            _30
+  _29:          GOTO_NE         0x628, _31
+                GOTO            _30
+  _31:          GOTO_LT         0x62a, _32
+                GOTO_GT         0x62e, _32
+                GOTO            _30
+  _32:          GOTO_LT         0x633, _33
+                GOTO_GT         0x63a, _33
+                GOTO            _30
+  _33:          GOTO_LT         0x640, _34
+                GOTO_GT         0x647, _34
+                GOTO            _30
+  _34:          GOTO_NE         0x649, _35
+                GOTO            _30
+  _35:          GOTO_NE         0x64a, _36
+                GOTO            _30
+  _36:          GOTO_LT         0x655, _37
+                GOTO_GT         0x657, _37
+                GOTO            _30
+  _37:          GOTO_NE         0x65b, _38
+                GOTO            _30
+  _38:          GOTO_NE         0x65c, _39
+                GOTO            _30
+  _39:          GOTO_LT         0x678, _40
+                GOTO_GT         0x687, _40
+                GOTO            _30
+  _40:          GOTO_LT         0x69a, _41
+                GOTO_GT         0x6b7, _41
+                GOTO            _30
+  _41:          GOTO_LT         0x6bb, _42
+                GOTO_GT         0x6bf, _42
+                GOTO            _30
+  _42:          GOTO_NE         0x6cc, _43
+                GOTO            _30
+  _43:          GOTO_NE         0x6ce, _44
+                GOTO            _30
+  _44:          GOTO_NE         0x6d0, _45
+                GOTO            _30
+  _45:          GOTO_NE         0x6d1, _46
+                GOTO            _30
+  _46:          GOTO_NE         0x6fe, _47
+  _30:          GOTO_END        _48
+                GOTO            _47
+  _48:          PUSH_CHAR       1
+                PUSH_NUM        0xdd00
+                ADD
+                RIGHT_OUTPUT
+                STATE_POP
+                STOP
+  _47:          LEFT_RETURN
+                GOTO_NE         0x626, _49
+                GOTO            _50
+  _49:          GOTO_NE         0x628, _51
+                GOTO            _50
+  _51:          GOTO_LT         0x62a, _52
+                GOTO_GT         0x62e, _52
+                GOTO            _50
+  _52:          GOTO_LT         0x633, _53
+                GOTO_GT         0x63a, _53
+                GOTO            _50
+  _53:          GOTO_LT         0x640, _54
+                GOTO_GT         0x647, _54
+                GOTO            _50
+  _54:          GOTO_NE         0x649, _55
+                GOTO            _50
+  _55:          GOTO_NE         0x64a, _56
+                GOTO            _50
+  _56:          GOTO_LT         0x655, _57
+                GOTO_GT         0x657, _57
+                GOTO            _50
+  _57:          GOTO_NE         0x65b, _58
+                GOTO            _50
+  _58:          GOTO_NE         0x65c, _59
+                GOTO            _50
+  _59:          GOTO_LT         0x678, _60
+                GOTO_GT         0x687, _60
+                GOTO            _50
+  _60:          GOTO_LT         0x69a, _61
+                GOTO_GT         0x6b7, _61
+                GOTO            _50
+  _61:          GOTO_LT         0x6bb, _62
+                GOTO_GT         0x6bf, _62
+                GOTO            _50
+  _62:          GOTO_NE         0x6cc, _63
+                GOTO            _50
+  _63:          GOTO_NE         0x6ce, _64
+                GOTO            _50
+  _64:          GOTO_NE         0x6d0, _65
+                GOTO            _50
+  _65:          GOTO_NE         0x6d1, _66
+                GOTO            _50
+  _66:          GOTO_NE         0x6fe, _67
+  _50:          GOTO_NO_ADVANCE _67
+                GOTO_NE         0x651, _67
+                GOTO_NO_ADVANCE _67
+                GOTO_LT         0x64b, _68
+                GOTO_GT         0x652, _68
+                GOTO            _69
+  _68:          GOTO_NE         0x670, _67
+  _69:          GOTO_NO_ADVANCE _67
+                GOTO_LT         0x621, _70
+                GOTO_GT         0x65f, _70
+                GOTO            _71
+  _70:          GOTO_LT         0x670, _72
+                GOTO_GT         0x6d3, _72
+                GOTO            _71
+  _72:          GOTO            _73
+  _71:          GOTO_NE         0x621, _74
+                GOTO            _73
+  _74:          GOTO_NE         0x674, _75
+                GOTO            _73
+  _75:          GOTO_NE         0x66e, _76
+                GOTO            _73
+  _76:          GOTO_NE         0x66f, _77
+                GOTO            _73
+  _77:          GOTO_NE         0x6ef, _78
+                GOTO            _73
+  _78:          GOTO_NE         0x63f, _67
+  _73:          PUSH_CHAR       1
+                PUSH_NUM        0xdd00
+                ADD
+                RIGHT_OUTPUT
+                PUSH_CHAR       3
+                PUSH_NUM        0xda90
+                ADD
+                RIGHT_OUTPUT
+                PUSH_CHAR       4
+                PBACK_OUTPUT
+                STATE_POP
+                STOP
+  _67:          LEFT_RETURN
+                GOTO_NE         0x626, _79
+                GOTO            _80
+  _79:          GOTO_NE         0x628, _81
+                GOTO            _80
+  _81:          GOTO_LT         0x62a, _82
+                GOTO_GT         0x62e, _82
+                GOTO            _80
+  _82:          GOTO_LT         0x633, _83
+                GOTO_GT         0x63a, _83
+                GOTO            _80
+  _83:          GOTO_LT         0x640, _84
+                GOTO_GT         0x647, _84
+                GOTO            _80
+  _84:          GOTO_NE         0x649, _85
+                GOTO            _80
+  _85:          GOTO_NE         0x64a, _86
+                GOTO            _80
+  _86:          GOTO_LT         0x655, _87
+                GOTO_GT         0x657, _87
+                GOTO            _80
+  _87:          GOTO_NE         0x65b, _88
+                GOTO            _80
+  _88:          GOTO_NE         0x65c, _89
+                GOTO            _80
+  _89:          GOTO_LT         0x678, _90
+                GOTO_GT         0x687, _90
+                GOTO            _80
+  _90:          GOTO_LT         0x69a, _91
+                GOTO_GT         0x6b7, _91
+                GOTO            _80
+  _91:          GOTO_LT         0x6bb, _92
+                GOTO_GT         0x6bf, _92
+                GOTO            _80
+  _92:          GOTO_NE         0x6cc, _93
+                GOTO            _80
+  _93:          GOTO_NE         0x6ce, _94
+                GOTO            _80
+  _94:          GOTO_NE         0x6d0, _95
+                GOTO            _80
+  _95:          GOTO_NE         0x6d1, _96
+                GOTO            _80
+  _96:          GOTO_NE         0x6fe, _97
+  _80:          GOTO_NO_ADVANCE _97
+                GOTO_LT         0x64b, _98
+                GOTO_GT         0x652, _98
+                GOTO            _99
+  _98:          GOTO_NE         0x670, _97
+  _99:          GOTO_NO_ADVANCE _97
+                GOTO_LT         0x621, _100
+                GOTO_GT         0x65f, _100
+                GOTO            _101
+  _100:         GOTO_LT         0x670, _102
+                GOTO_GT         0x6d3, _102
+                GOTO            _101
+  _102:         GOTO            _103
+  _101:         GOTO_NE         0x621, _104
+                GOTO            _103
+  _104:         GOTO_NE         0x674, _105
+                GOTO            _103
+  _105:         GOTO_NE         0x66e, _106
+                GOTO            _103
+  _106:         GOTO_NE         0x66f, _107
+                GOTO            _103
+  _107:         GOTO_NE         0x6ef, _108
+                GOTO            _103
+  _108:         GOTO_NE         0x63f, _97
+  _103:         PUSH_CHAR       1
+                PUSH_NUM        0xdd00
+                ADD
+                RIGHT_OUTPUT
+                PUSH_CHAR       2
+                PUSH_NUM        0xda00
+                ADD
+                RIGHT_OUTPUT
+                PUSH_CHAR       3
+                PBACK_OUTPUT
+                STATE_POP
+                STOP
+  _97:          LEFT_RETURN
+                GOTO_NE         0x626, _109
+                GOTO            _110
+  _109:         GOTO_NE         0x628, _111
+                GOTO            _110
+  _111:         GOTO_LT         0x62a, _112
+                GOTO_GT         0x62e, _112
+                GOTO            _110
+  _112:         GOTO_LT         0x633, _113
+                GOTO_GT         0x63a, _113
+                GOTO            _110
+  _113:         GOTO_LT         0x640, _114
+                GOTO_GT         0x647, _114
+                GOTO            _110
+  _114:         GOTO_NE         0x649, _115
+                GOTO            _110
+  _115:         GOTO_NE         0x64a, _116
+                GOTO            _110
+  _116:         GOTO_LT         0x655, _117
+                GOTO_GT         0x657, _117
+                GOTO            _110
+  _117:         GOTO_NE         0x65b, _118
+                GOTO            _110
+  _118:         GOTO_NE         0x65c, _119
+                GOTO            _110
+  _119:         GOTO_LT         0x678, _120
+                GOTO_GT         0x687, _120
+                GOTO            _110
+  _120:         GOTO_LT         0x69a, _121
+                GOTO_GT         0x6b7, _121
+                GOTO            _110
+  _121:         GOTO_LT         0x6bb, _122
+                GOTO_GT         0x6bf, _122
+                GOTO            _110
+  _122:         GOTO_NE         0x6cc, _123
+                GOTO            _110
+  _123:         GOTO_NE         0x6ce, _124
+                GOTO            _110
+  _124:         GOTO_NE         0x6d0, _125
+                GOTO            _110
+  _125:         GOTO_NE         0x6d1, _126
+                GOTO            _110
+  _126:         GOTO_NE         0x6fe, _127
+  _110:         GOTO_NO_ADVANCE _127
+                GOTO_NE         0x651, _127
+                GOTO_NO_ADVANCE _127
+                GOTO_LT         0x64b, _128
+                GOTO_GT         0x652, _128
+                GOTO            _129
+  _128:         GOTO_NE         0x670, _127
+  _129:         GOTO_END        _130
+                GOTO            _127
+  _130:         PUSH_CHAR       1
+                PUSH_NUM        0xdd00
+                ADD
+                RIGHT_OUTPUT
+                PUSH_CHAR       3
+                PUSH_NUM        0xda90
+                ADD
+                RIGHT_OUTPUT
+                STATE_POP
+                STOP
+  _127:         LEFT_RETURN
+                GOTO_NE         0x626, _131
+                GOTO            _132
+  _131:         GOTO_NE         0x628, _133
+                GOTO            _132
+  _133:         GOTO_LT         0x62a, _134
+                GOTO_GT         0x62e, _134
+                GOTO            _132
+  _134:         GOTO_LT         0x633, _135
+                GOTO_GT         0x63a, _135
+                GOTO            _132
+  _135:         GOTO_LT         0x640, _136
+                GOTO_GT         0x647, _136
+                GOTO            _132
+  _136:         GOTO_NE         0x649, _137
+                GOTO            _132
+  _137:         GOTO_NE         0x64a, _138
+                GOTO            _132
+  _138:         GOTO_LT         0x655, _139
+                GOTO_GT         0x657, _139
+                GOTO            _132
+  _139:         GOTO_NE         0x65b, _140
+                GOTO            _132
+  _140:         GOTO_NE         0x65c, _141
+                GOTO            _132
+  _141:         GOTO_LT         0x678, _142
+                GOTO_GT         0x687, _142
+                GOTO            _132
+  _142:         GOTO_LT         0x69a, _143
+                GOTO_GT         0x6b7, _143
+                GOTO            _132
+  _143:         GOTO_LT         0x6bb, _144
+                GOTO_GT         0x6bf, _144
+                GOTO            _132
+  _144:         GOTO_NE         0x6cc, _145
+                GOTO            _132
+  _145:         GOTO_NE         0x6ce, _146
+                GOTO            _132
+  _146:         GOTO_NE         0x6d0, _147
+                GOTO            _132
+  _147:         GOTO_NE         0x6d1, _148
+                GOTO            _132
+  _148:         GOTO_NE         0x6fe, _149
+  _132:         GOTO_NO_ADVANCE _149
+                GOTO_LT         0x64b, _150
+                GOTO_GT         0x652, _150
+                GOTO            _151
+  _150:         GOTO_NE         0x670, _149
+  _151:         GOTO_END        _152
+                GOTO            _149
+  _152:         PUSH_CHAR       1
+                PUSH_NUM        0xdd00
+                ADD
+                RIGHT_OUTPUT
+                PUSH_CHAR       2
+                PUSH_NUM        0xda00
+                ADD
+                RIGHT_OUTPUT
+                STATE_POP
+                STOP
+  _149:         LEFT_RETURN
+                GOTO_NE         0x626, _153
+                GOTO            _154
+  _153:         GOTO_NE         0x628, _155
+                GOTO            _154
+  _155:         GOTO_LT         0x62a, _156
+                GOTO_GT         0x62e, _156
+                GOTO            _154
+  _156:         GOTO_LT         0x633, _157
+                GOTO_GT         0x63a, _157
+                GOTO            _154
+  _157:         GOTO_LT         0x640, _158
+                GOTO_GT         0x647, _158
+                GOTO            _154
+  _158:         GOTO_NE         0x649, _159
+                GOTO            _154
+  _159:         GOTO_NE         0x64a, _160
+                GOTO            _154
+  _160:         GOTO_LT         0x655, _161
+                GOTO_GT         0x657, _161
+                GOTO            _154
+  _161:         GOTO_NE         0x65b, _162
+                GOTO            _154
+  _162:         GOTO_NE         0x65c, _163
+                GOTO            _154
+  _163:         GOTO_LT         0x678, _164
+                GOTO_GT         0x687, _164
+                GOTO            _154
+  _164:         GOTO_LT         0x69a, _165
+                GOTO_GT         0x6b7, _165
+                GOTO            _154
+  _165:         GOTO_LT         0x6bb, _166
+                GOTO_GT         0x6bf, _166
+                GOTO            _154
+  _166:         GOTO_NE         0x6cc, _167
+                GOTO            _154
+  _167:         GOTO_NE         0x6ce, _168
+                GOTO            _154
+  _168:         GOTO_NE         0x6d0, _169
+                GOTO            _154
+  _169:         GOTO_NE         0x6d1, _170
+                GOTO            _154
+  _170:         GOTO_NE         0x6fe, _171
+  _154:         GOTO_NO_ADVANCE _171
+                GOTO_NE         0x651, _171
+                GOTO_NO_ADVANCE _171
+                GOTO_LT         0x64b, _172
+                GOTO_GT         0x652, _172
+                GOTO            _173
+  _172:         GOTO_NE         0x670, _171
+  _173:         PUSH_CHAR       1
+                PUSH_NUM        0xdc00
+                ADD
+                RIGHT_OUTPUT
+                PUSH_CHAR       3
+                PUSH_NUM        0xda90
+                ADD
+                RIGHT_OUTPUT
+                RIGHT_NUM       0x620
+                STOP
+  _171:         LEFT_RETURN
+                GOTO_NE         0x626, _174
+                GOTO            _175
+  _174:         GOTO_NE         0x628, _176
+                GOTO            _175
+  _176:         GOTO_LT         0x62a, _177
+                GOTO_GT         0x62e, _177
+                GOTO            _175
+  _177:         GOTO_LT         0x633, _178
+                GOTO_GT         0x63a, _178
+                GOTO            _175
+  _178:         GOTO_LT         0x640, _179
+                GOTO_GT         0x647, _179
+                GOTO            _175
+  _179:         GOTO_NE         0x649, _180
+                GOTO            _175
+  _180:         GOTO_NE         0x64a, _181
+                GOTO            _175
+  _181:         GOTO_LT         0x655, _182
+                GOTO_GT         0x657, _182
+                GOTO            _175
+  _182:         GOTO_NE         0x65b, _183
+                GOTO            _175
+  _183:         GOTO_NE         0x65c, _184
+                GOTO            _175
+  _184:         GOTO_LT         0x678, _185
+                GOTO_GT         0x687, _185
+                GOTO            _175
+  _185:         GOTO_LT         0x69a, _186
+                GOTO_GT         0x6b7, _186
+                GOTO            _175
+  _186:         GOTO_LT         0x6bb, _187
+                GOTO_GT         0x6bf, _187
+                GOTO            _175
+  _187:         GOTO_NE         0x6cc, _188
+                GOTO            _175
+  _188:         GOTO_NE         0x6ce, _189
+                GOTO            _175
+  _189:         GOTO_NE         0x6d0, _190
+                GOTO            _175
+  _190:         GOTO_NE         0x6d1, _191
+                GOTO            _175
+  _191:         GOTO_NE         0x6fe, _192
+  _175:         GOTO_NO_ADVANCE _192
+                GOTO_LT         0x64b, _193
+                GOTO_GT         0x652, _193
+                GOTO            _194
+  _193:         GOTO_NE         0x670, _192
+  _194:         PUSH_CHAR       1
+                PUSH_NUM        0xdc00
+                ADD
+                RIGHT_OUTPUT
+                PUSH_CHAR       2
+                PUSH_NUM        0xda00
+                ADD
+                RIGHT_OUTPUT
+                RIGHT_NUM       0x620
+                STOP
+  _192:         LEFT_RETURN
+                GOTO_NE         0x626, _195
+                GOTO            _196
+  _195:         GOTO_NE         0x628, _197
+                GOTO            _196
+  _197:         GOTO_LT         0x62a, _198
+                GOTO_GT         0x62e, _198
+                GOTO            _196
+  _198:         GOTO_LT         0x633, _199
+                GOTO_GT         0x63a, _199
+                GOTO            _196
+  _199:         GOTO_LT         0x640, _200
+                GOTO_GT         0x647, _200
+                GOTO            _196
+  _200:         GOTO_NE         0x649, _201
+                GOTO            _196
+  _201:         GOTO_NE         0x64a, _202
+                GOTO            _196
+  _202:         GOTO_LT         0x655, _203
+                GOTO_GT         0x657, _203
+                GOTO            _196
+  _203:         GOTO_NE         0x65b, _204
+                GOTO            _196
+  _204:         GOTO_NE         0x65c, _205
+                GOTO            _196
+  _205:         GOTO_LT         0x678, _206
+                GOTO_GT         0x687, _206
+                GOTO            _196
+  _206:         GOTO_LT         0x69a, _207
+                GOTO_GT         0x6b7, _207
+                GOTO            _196
+  _207:         GOTO_LT         0x6bb, _208
+                GOTO_GT         0x6bf, _208
+                GOTO            _196
+  _208:         GOTO_NE         0x6cc, _209
+                GOTO            _196
+  _209:         GOTO_NE         0x6ce, _210
+                GOTO            _196
+  _210:         GOTO_NE         0x6d0, _211
+                GOTO            _196
+  _211:         GOTO_NE         0x6d1, _212
+                GOTO            _196
+  _212:         GOTO_NE         0x6fe, _213
+  _196:         PUSH_CHAR       1
+                PUSH_NUM        0xdc00
+                ADD
+                RIGHT_OUTPUT
+                RIGHT_NUM       0x620
+                STOP
+  _213:         LEFT_RETURN
+                GOTO_LT         0x622, _214
+                GOTO_GT         0x625, _214
+                GOTO            _215
+  _214:         GOTO_NE         0x627, _216
+                GOTO            _215
+  _216:         GOTO_NE         0x629, _217
+                GOTO            _215
+  _217:         GOTO_LT         0x62f, _218
+                GOTO_GT         0x632, _218
+                GOTO            _215
+  _218:         GOTO_NE         0x648, _219
+                GOTO            _215
+  _219:         GOTO_NE         0x649, _220
+                GOTO            _215
+  _220:         GOTO_NE         0x65d, _221
+                GOTO            _215
+  _221:         GOTO_NE         0x65e, _222
+                GOTO            _215
+  _222:         GOTO_LT         0x671, _223
+                GOTO_GT         0x673, _223
+                GOTO            _215
+  _223:         GOTO_LT         0x675, _224
+                GOTO_GT         0x677, _224
+                GOTO            _215
+  _224:         GOTO_LT         0x688, _225
+                GOTO_GT         0x69a, _225
+                GOTO            _215
+  _225:         GOTO_NE         0x6ba, _226
+                GOTO            _215
+  _226:         GOTO_LT         0x6c0, _227
+                GOTO_GT         0x6cb, _227
+                GOTO            _215
+  _227:         GOTO_NE         0x6cd, _228
+                GOTO            _215
+  _228:         GOTO_NE         0x6d2, _229
+                GOTO            _215
+  _229:         GOTO_NE         0x6d3, _230
+                GOTO            _215
+  _230:         GOTO_NE         0x6ff, _231
+  _215:         GOTO_NO_ADVANCE _231
+                GOTO_NE         0x651, _231
+                GOTO_NO_ADVANCE _231
+                GOTO_LT         0x64b, _232
+                GOTO_GT         0x652, _232
+                GOTO            _233
+  _232:         GOTO_NE         0x670, _231
+  _233:         PUSH_CHAR       1
+                PUSH_NUM        0xdd00
+                ADD
+                RIGHT_OUTPUT
+                PUSH_CHAR       3
+                PUSH_NUM        0xda90
+                ADD
+                RIGHT_OUTPUT
+                STATE_POP
+                STOP
+  _231:         LEFT_RETURN
+                GOTO_LT         0x622, _234
+                GOTO_GT         0x625, _234
+                GOTO            _235
+  _234:         GOTO_NE         0x627, _236
+                GOTO            _235
+  _236:         GOTO_NE         0x629, _237
+                GOTO            _235
+  _237:         GOTO_LT         0x62f, _238
+                GOTO_GT         0x632, _238
+                GOTO            _235
+  _238:         GOTO_NE         0x648, _239
+                GOTO            _235
+  _239:         GOTO_NE         0x649, _240
+                GOTO            _235
+  _240:         GOTO_NE         0x65d, _241
+                GOTO            _235
+  _241:         GOTO_NE         0x65e, _242
+                GOTO            _235
+  _242:         GOTO_LT         0x671, _243
+                GOTO_GT         0x673, _243
+                GOTO            _235
+  _243:         GOTO_LT         0x675, _244
+                GOTO_GT         0x677, _244
+                GOTO            _235
+  _244:         GOTO_LT         0x688, _245
+                GOTO_GT         0x69a, _245
+                GOTO            _235
+  _245:         GOTO_NE         0x6ba, _246
+                GOTO            _235
+  _246:         GOTO_LT         0x6c0, _247
+                GOTO_GT         0x6cb, _247
+                GOTO            _235
+  _247:         GOTO_NE         0x6cd, _248
+                GOTO            _235
+  _248:         GOTO_NE         0x6d2, _249
+                GOTO            _235
+  _249:         GOTO_NE         0x6d3, _250
+                GOTO            _235
+  _250:         GOTO_NE         0x6ff, _251
+  _235:         GOTO_NO_ADVANCE _251
+                GOTO_LT         0x64b, _252
+                GOTO_GT         0x652, _252
+                GOTO            _253
+  _252:         GOTO_NE         0x670, _251
+  _253:         PUSH_CHAR       1
+                PUSH_NUM        0xdd00
+                ADD
+                RIGHT_OUTPUT
+                PUSH_CHAR       2
+                PUSH_NUM        0xda00
+                ADD
+                RIGHT_OUTPUT
+                STATE_POP
+                STOP
+  _251:         LEFT_RETURN
+                GOTO_LT         0x622, _254
+                GOTO_GT         0x625, _254
+                GOTO            _255
+  _254:         GOTO_NE         0x627, _256
+                GOTO            _255
+  _256:         GOTO_NE         0x629, _257
+                GOTO            _255
+  _257:         GOTO_LT         0x62f, _258
+                GOTO_GT         0x632, _258
+                GOTO            _255
+  _258:         GOTO_NE         0x648, _259
+                GOTO            _255
+  _259:         GOTO_NE         0x649, _260
+                GOTO            _255
+  _260:         GOTO_NE         0x65d, _261
+                GOTO            _255
+  _261:         GOTO_NE         0x65e, _262
+                GOTO            _255
+  _262:         GOTO_LT         0x671, _263
+                GOTO_GT         0x673, _263
+                GOTO            _255
+  _263:         GOTO_LT         0x675, _264
+                GOTO_GT         0x677, _264
+                GOTO            _255
+  _264:         GOTO_LT         0x688, _265
+                GOTO_GT         0x69a, _265
+                GOTO            _255
+  _265:         GOTO_NE         0x6ba, _266
+                GOTO            _255
+  _266:         GOTO_LT         0x6c0, _267
+                GOTO_GT         0x6cb, _267
+                GOTO            _255
+  _267:         GOTO_NE         0x6cd, _268
+                GOTO            _255
+  _268:         GOTO_NE         0x6d2, _269
+                GOTO            _255
+  _269:         GOTO_NE         0x6d3, _270
+                GOTO            _255
+  _270:         GOTO_NE         0x6ff, _271
+  _255:         PUSH_CHAR       1
+                PUSH_NUM        0xdd00
+                ADD
+                RIGHT_OUTPUT
+                STATE_POP
+                STOP
+  _271:         LEFT_RETURN
+                RIGHT_CHAR      1
+                STOP
+
+State _S2: % 138 entries
+
+                LEFT_START
+                GOTO_LT         0x30, _1
+                GOTO_GT         0x39, _1
+                GOTO            _2
+  _1:           GOTO_LT         0x660, _3
+                GOTO_GT         0x669, _3
+                GOTO            _2
+  _3:           GOTO_LT         0x6f0, _4
+                GOTO_GT         0x6f9, _4
+  _2:           GOTO_END        _5
+                GOTO            _4
+  _5:           PUSH_CHAR       1
+                RIGHT_OUTPUT
+                RIGHT_NUM       0x7d
+                STATE_POP
+                STOP
+  _4:           LEFT_RETURN
+                GOTO_LT         0x30, _6
+                GOTO_GT         0x39, _6
+                GOTO            _7
+  _6:           GOTO_LT         0x660, _8
+                GOTO_GT         0x669, _8
+                GOTO            _7
+  _8:           GOTO_LT         0x6f0, _9
+                GOTO_GT         0x6f9, _9
+  _7:           PUSH_CHAR       1
+                RIGHT_OUTPUT
+                STOP
+  _9:           LEFT_RETURN
+                GOTO_NE         0x2b, _10
+                GOTO            _11
+  _10:          GOTO_NE         0x2d, _12
+                GOTO            _11
+  _12:          GOTO_NE         0x2e, _13
+                GOTO            _11
+  _13:          GOTO_NE         0x66b, _14
+                GOTO            _11
+  _14:          GOTO_NE         0x66c, _15
+  _11:          GOTO_NO_ADVANCE _15
+                GOTO_LT         0x30, _16
+                GOTO_GT         0x39, _16
+                GOTO            _17
+  _16:          GOTO_LT         0x660, _18
+                GOTO_GT         0x669, _18
+                GOTO            _17
+  _18:          GOTO_LT         0x6f0, _15
+                GOTO_GT         0x6f9, _15
+  _17:          GOTO_END        _19
+                GOTO            _15
+  _19:          PUSH_CHAR       1
+                RIGHT_OUTPUT
+                PUSH_CHAR       2
+                RIGHT_OUTPUT
+                RIGHT_NUM       0x7d
+                STATE_POP
+                STOP
+  _15:          LEFT_RETURN
+                GOTO_NE         0x2b, _20
+                GOTO            _21
+  _20:          GOTO_NE         0x2d, _22
+                GOTO            _21
+  _22:          GOTO_NE         0x2e, _23
+                GOTO            _21
+  _23:          GOTO_NE         0x66b, _24
+                GOTO            _21
+  _24:          GOTO_NE         0x66c, _25
+  _21:          GOTO_NO_ADVANCE _25
+                GOTO_LT         0x30, _26
+                GOTO_GT         0x39, _26
+                GOTO            _27
+  _26:          GOTO_LT         0x660, _28
+                GOTO_GT         0x669, _28
+                GOTO            _27
+  _28:          GOTO_LT         0x6f0, _25
+                GOTO_GT         0x6f9, _25
+  _27:          PUSH_CHAR       1
+                RIGHT_OUTPUT
+                PUSH_CHAR       2
+                RIGHT_OUTPUT
+                STOP
+  _25:          LEFT_RETURN
+                GOTO_LT         0x30, _29
+                GOTO_GT         0x39, _29
+                GOTO            _30
+  _29:          GOTO_LT         0x660, _31
+                GOTO_GT         0x669, _31
+                GOTO            _30
+  _31:          GOTO_LT         0x6f0, _32
+                GOTO_GT         0x6f9, _32
+                GOTO            _30
+  _32:          RIGHT_NUM       0x7d
+                PUSH_CHAR       1
+                PBACK_OUTPUT
+                STATE_POP
+                STOP
+  _30:          LEFT_RETURN
+                RIGHT_CHAR      1
+                STOP

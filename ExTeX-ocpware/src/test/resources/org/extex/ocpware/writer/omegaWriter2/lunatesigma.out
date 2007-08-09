@@ -1,0 +1,31 @@
+ctp_length     : 29
+ctp_input      : 2
+ctp_output     : 2
+ctp_no_tables  : 0
+ctp_room_tables: 0
+ctp_no_states  : 1
+ctp_room_states: 21
+
+State 0: 21 entries
+
+          0  LEFT_START      0x0 (0)
+          1  GOTO_NE         0x3a3 (931)
+          2                  0x5 (5)
+          3  RIGHT_NUM       0x3fe (1022)
+          4  STOP            0x0 (0)
+          5  LEFT_RETURN     0x0 (0)
+          6  GOTO_NE         0x3c2 (962)
+          7                  0xa (10)
+          8  RIGHT_NUM       0x3f2 (1010)
+          9  STOP            0x0 (0)
+          a  LEFT_RETURN     0x0 (0)
+          b  GOTO_NE         0x3c3 (963)
+          c                  0xf (15)
+          d  RIGHT_NUM       0x3f2 (1010)
+          e  STOP            0x0 (0)
+          f  LEFT_RETURN     0x0 (0)
+         10  RIGHT_CHAR      0x1 (1)
+         11  STOP            0x0 (0)
+         12  LEFT_RETURN     0x0 (0)
+         13  RIGHT_CHAR      0x1 (1)
+         14  STOP            0x0 (0)

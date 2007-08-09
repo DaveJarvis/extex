@@ -1,0 +1,54 @@
+% length = 72
+% 0 tables in 0 words
+% 1 states in 64 words
+
+input = 2
+output = 2
+
+State _S0: % 64 entries
+
+                LEFT_START
+                GOTO_LT         0x3ac, _1
+                GOTO_GT         0x3d1, _1
+                GOTO            _2
+  _1:           GOTO_NE         0x3d5, _3
+                GOTO            _2
+  _3:           GOTO_NE         0x3d6, _4
+                GOTO            _2
+  _4:           GOTO_LT         0x3f0, _5
+                GOTO_GT         0x3f3, _5
+                GOTO            _2
+  _5:           GOTO_LT         0x1f00, _6
+                GOTO_GT         0x1fff, _6
+  _2:           GOTO_NO_ADVANCE _6
+                GOTO_NE         0x3b2, _6
+                GOTO_NO_ADVANCE _6
+                GOTO_NE         0x3b2, _6
+                RIGHT_CHAR      1
+                RIGHT_NUM       0x3d0
+                RIGHT_NUM       0x3d0
+                STOP
+  _6:           LEFT_RETURN
+                GOTO_LT         0x3ac, _7
+                GOTO_GT         0x3d1, _7
+                GOTO            _8
+  _7:           GOTO_NE         0x3d5, _9
+                GOTO            _8
+  _9:           GOTO_NE         0x3d6, _10
+                GOTO            _8
+  _10:          GOTO_LT         0x3f0, _11
+                GOTO_GT         0x3f3, _11
+                GOTO            _8
+  _11:          GOTO_LT         0x1f00, _12
+                GOTO_GT         0x1fff, _12
+  _8:           GOTO_NO_ADVANCE _12
+                GOTO_NE         0x3b2, _12
+                RIGHT_CHAR      1
+                RIGHT_NUM       0x3d0
+                STOP
+  _12:          LEFT_RETURN
+                RIGHT_CHAR      1
+                STOP
+                LEFT_RETURN
+                RIGHT_CHAR      1
+                STOP

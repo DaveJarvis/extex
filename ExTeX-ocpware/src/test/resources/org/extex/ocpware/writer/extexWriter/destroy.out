@@ -1,0 +1,15 @@
+% length = 14
+% 0 tables in 0 words
+% 1 states in 6 words
+
+input = 1
+output = 1
+
+State _S0: % 6 entries
+
+                LEFT_START
+                RIGHT_NUM       0x2a
+                STOP
+                LEFT_RETURN
+                RIGHT_CHAR      1
+                STOP

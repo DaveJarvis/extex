@@ -1,0 +1,7 @@
+input:  2;
+output: 2;
+expressions:
+  @"3a3 => @"3fe;
+  @"3c2 => @"3f2;
+  @"3c3 => @"3f2;
+  . => \1;

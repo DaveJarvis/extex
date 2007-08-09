@@ -1,0 +1,48 @@
+ctp_length     : 46
+ctp_input      : 2
+ctp_output     : 2
+ctp_no_tables  : 0
+ctp_room_tables: 0
+ctp_no_states  : 1
+ctp_room_states: 38
+
+State 0: 38 entries
+
+          0  LEFT_START      0x0 (0)
+          1  GOTO_NE         0x2e (46,`.')
+          2                  0x8 (8)
+          3  GOTO_NO_ADVANCE 0x8 (8)
+          4  GOTO_NE         0x3b9 (953)
+          5                  0x8 (8)
+          6  RIGHT_NUM       0x3f5 (1013)
+          7  STOP            0x0 (0)
+          8  LEFT_RETURN     0x0 (0)
+          9  GOTO_NE         0x2e (46,`.')
+          a                  0x10 (16)
+          b  GOTO_NO_ADVANCE 0x10 (16)
+          c  GOTO_NE         0x399 (921)
+          d                  0x10 (16)
+          e  RIGHT_NUM       0x3f4 (1012)
+          f  STOP            0x0 (0)
+         10  LEFT_RETURN     0x0 (0)
+         11  GOTO_NE         0x2e (46,`.')
+         12                  0x18 (24)
+         13  GOTO_NO_ADVANCE 0x18 (24)
+         14  GOTO_NE         0x3c5 (965)
+         15                  0x18 (24)
+         16  RIGHT_NUM       0x3f7 (1015)
+         17  STOP            0x0 (0)
+         18  LEFT_RETURN     0x0 (0)
+         19  GOTO_NE         0x2e (46,`.')
+         1a                  0x20 (32,` ')
+         1b  GOTO_NO_ADVANCE 0x20 (32,` ')
+         1c  GOTO_NE         0x3a5 (933)
+         1d                  0x20 (32,` ')
+         1e  RIGHT_NUM       0x3f6 (1014)
+         1f  STOP            0x0 (0)
+         20  LEFT_RETURN     0x0 (0)
+         21  RIGHT_CHAR      0x1 (1)
+         22  STOP            0x0 (0)
+         23  LEFT_RETURN     0x0 (0)
+         24  RIGHT_CHAR      0x1 (1)
+         25  STOP            0x0 (0)

@@ -1,0 +1,16 @@
+ctp_length     : 14
+ctp_input      : 1
+ctp_output     : 1
+ctp_no_tables  : 0
+ctp_room_tables: 0
+ctp_no_states  : 1
+ctp_room_states: 6
+
+State 0: 6 entries
+
+          0  LEFT_START      0x0 (0)
+          1  RIGHT_NUM       0x2a (42,`*')
+          2  STOP            0x0 (0)
+          3  LEFT_RETURN     0x0 (0)
+          4  RIGHT_CHAR      0x1 (1)
+          5  STOP            0x0 (0)

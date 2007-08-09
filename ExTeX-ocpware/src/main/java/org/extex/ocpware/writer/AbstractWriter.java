@@ -83,7 +83,7 @@ public abstract class AbstractWriter implements OcpWriter {
 
     /**
      * Extract a boolean value from a resource bundle.
-     * 
+     *
      * @param key the key in the resource bundle
      *
      * @return the boolean value; it defaults to <code>false</code>

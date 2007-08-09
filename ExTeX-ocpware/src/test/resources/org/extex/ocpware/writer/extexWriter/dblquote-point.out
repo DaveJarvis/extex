@@ -1,0 +1,25 @@
+% length = 27
+% 0 tables in 0 words
+% 1 states in 19 words
+
+input = 1
+output = 1
+
+State _S0: % 19 entries
+
+                LEFT_START
+                GOTO_NE         0x27, _1
+                GOTO_NO_ADVANCE _1
+                GOTO_NE         0x27, _1
+                GOTO_NO_ADVANCE _1
+                GOTO_NE         0x2e, _1
+                RIGHT_NUM       0x2e
+                RIGHT_NUM       0x27
+                RIGHT_NUM       0x27
+                STOP
+  _1:           LEFT_RETURN
+                RIGHT_CHAR      1
+                STOP
+                LEFT_RETURN
+                RIGHT_CHAR      1
+                STOP

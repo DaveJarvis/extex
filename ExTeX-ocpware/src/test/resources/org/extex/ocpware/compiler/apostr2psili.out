@@ -1,0 +1,11 @@
+input:  2;
+output: 2;
+aliases:
+  LETTER=@"386-@"3f3 | @"1f70-@"1ffc
+
+expressions:
+  {LETTER}`'' => \1@"1fbf;
+  `''{LETTER} => @"1fbf\1;
+  {LETTER}@"2019 => \1@"1fbf;
+  @"2019{LETTER} => @"1fbf\1;
+  . => \1;

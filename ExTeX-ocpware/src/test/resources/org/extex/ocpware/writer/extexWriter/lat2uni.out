@@ -1,0 +1,89 @@
+% length = 107
+% 0 tables in 0 words
+% 2 states in 98 words
+
+input = 1
+output = 2
+
+State _S0: % 80 entries
+
+                LEFT_START
+                GOTO_NE         0x2d, _1
+                GOTO_NO_ADVANCE _1
+                GOTO_NE         0x2d, _1
+                GOTO_NO_ADVANCE _1
+                GOTO_NE         0x2d, _1
+                RIGHT_NUM       0x2014
+                STOP
+  _1:           LEFT_RETURN
+                GOTO_NE         0x2d, _2
+                GOTO_NO_ADVANCE _2
+                GOTO_NE         0x2d, _2
+                RIGHT_NUM       0x2013
+                STOP
+  _2:           LEFT_RETURN
+                GOTO_NE         0x60, _3
+                GOTO_NO_ADVANCE _3
+                GOTO_NE         0x60, _3
+                RIGHT_NUM       0x201c
+                STOP
+  _3:           LEFT_RETURN
+                GOTO_NE         0x60, _4
+                RIGHT_NUM       0x2018
+                STOP
+  _4:           LEFT_RETURN
+                GOTO_NE         0x27, _5
+                GOTO_NO_ADVANCE _5
+                GOTO_NE         0x27, _5
+                RIGHT_NUM       0x201d
+                STOP
+  _5:           LEFT_RETURN
+                GOTO_NE         0x27, _6
+                RIGHT_NUM       0x2019
+                STOP
+  _6:           LEFT_RETURN
+                GOTO_NE         0x2c, _7
+                GOTO_NO_ADVANCE _7
+                GOTO_NE         0x2c, _7
+                RIGHT_NUM       0x201e
+                STOP
+  _7:           LEFT_RETURN
+                GOTO_NE         0x3c, _8
+                GOTO_NO_ADVANCE _8
+                GOTO_NE         0x3c, _8
+                RIGHT_NUM       0xab
+                STOP
+  _8:           LEFT_RETURN
+                GOTO_NE         0x3e, _9
+                GOTO_NO_ADVANCE _9
+                GOTO_NE         0x3e, _9
+                RIGHT_NUM       0xbb
+                STOP
+  _9:           LEFT_RETURN
+                GOTO_NE         0xf000, _10
+                STATE_PUSH      _S1
+                STOP
+  _10:          LEFT_RETURN
+                RIGHT_CHAR      1
+                STOP
+                LEFT_RETURN
+                RIGHT_CHAR      1
+                STOP
+
+State _S1: % 18 entries
+
+                LEFT_START
+                GOTO_LT         0x21, _1
+                GOTO_GT         0x7f, _1
+                PUSH_CHAR       1
+                PUSH_NUM        0xf000
+                ADD
+                RIGHT_OUTPUT
+                STOP
+  _1:           LEFT_RETURN
+                GOTO_NE         0xf001, _2
+                STATE_POP
+                STOP
+  _2:           LEFT_RETURN
+                RIGHT_CHAR      1
+                STOP

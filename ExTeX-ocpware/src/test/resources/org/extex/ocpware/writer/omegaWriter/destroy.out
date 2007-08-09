@@ -1,0 +1,16 @@
+ctp_length     :   e( 14)
+ctp_input      :   1(  1)
+ctp_output     :   1(  1)
+ctp_no_tables  :   0(  0)
+ctp_room_tables:   0(  0)
+ctp_no_states  :   1(  1)
+ctp_room_states:   6(  6)
+
+State  0( 0):   6(  6) entries
+
+State  0( 0), entry   0(  0): OTP_LEFT_START       0(  0)
+State  0( 0), entry   1(  1): OTP_RIGHT_NUM       2a( 42,`*')
+State  0( 0), entry   2(  2): OTP_STOP             0(  0)
+State  0( 0), entry   3(  3): OTP_LEFT_RETURN      0(  0)
+State  0( 0), entry   4(  4): OTP_RIGHT_CHAR       1(  1)
+State  0( 0), entry   5(  5): OTP_STOP             0(  0)

@@ -1,0 +1,9 @@
+input:  2;
+output: 2;
+aliases:
+  LETTER=@"3ac-@"3d1 | @"3d5 | @"3d6 | @"3f0-@"3f3 | @"1f00-@"1fff
+
+expressions:
+  {LETTER}@"3b2@"3b2 => \1@"3d0@"3d0;
+  {LETTER}@"3b2 => \1@"3d0;
+  . => \1;

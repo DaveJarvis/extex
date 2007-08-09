@@ -1,0 +1,61 @@
+input:  2;
+output: 2;
+states:
+  MEDIAL,
+  NUMERAL;
+aliases:
+  NOT_ARABIC_NUMBER=^(`0'-`9' | @"660-@"669 | @"6f0-@"6f9)
+  ARABIC_LETTER={BIFORM} | {QUADRIFORM}
+  SPECIAL=@"fdf2
+  UNIFORM=@"621 | @"674 | @"66e | @"66f | @"6ef | @"63f
+  ALIF_LIKE=@"622 | @"623 | @"625 | @"627 | @"671-@"673
+  LAM_LIKE=@"644 | @"6b5-@"6b7 | @"6fe
+  BIFORM=@"622-@"625 | @"627 | @"629 | @"62f-@"632 | @"648 | @"649 | @"65d | @"65e | @"671-@"673 | @"675-@"677 | @"688-@"69a | @"6ba | @"6c0-@"6cb | @"6cd | @"6d2 | @"6d3 | @"6ff
+  NOT_ARABIC_LETTER=^(@"621-@"65f | @"670-@"6d3)
+  ARABIC_NUMBER=`0'-`9' | @"660-@"669 | @"6f0-@"6f9
+  ACCENT=@"64b-@"652 | @"670
+  QUADRIFORM=@"626 | @"628 | @"62a-@"62e | @"633-@"63a | @"640-@"647 | @"649 | @"64a | @"655-@"657 | @"65b | @"65c | @"678-@"687 | @"69a-@"6b7 | @"6bb-@"6bf | @"6cc | @"6ce | @"6d0 | @"6d1 | @"6fe
+  NOT_ARABIC_OR_UNI={NOT_ARABIC_LETTER} | {UNIFORM}
+
+expressions:
+  {UNIFORM}@"651{ACCENT} => #(\1 + @"da00)#(\3 + @"da90);
+  {UNIFORM}{ACCENT} => #(\1 + @"da00)#(\2 + @"da00);
+  {UNIFORM} => #(\1 + @"da00);
+  {SPECIAL}@"651{ACCENT} => \1#(\3 + @"da90);
+  {SPECIAL}{ACCENT} => \1#(\2 + @"da00);
+  {SPECIAL} => \1;
+  <NUMERAL>{ARABIC_NUMBER}end: => #(\1)"}"<pop:>;
+  <NUMERAL>{ARABIC_NUMBER} => #(\1);
+  <NUMERAL>`+' | `-' | `.' | @"66b | @"66c{ARABIC_NUMBER}end: => #(\1)#(\2)"}"<pop:>;
+  <NUMERAL>`+' | `-' | `.' | @"66b | @"66c{ARABIC_NUMBER} => #(\1)#(\2);
+  <NUMERAL>{NOT_ARABIC_NUMBER} => "}" <= #(\1)<pop:>;
+  `+' | `-' | `.'{ARABIC_NUMBER}end: => "{\textdir TLT{}"#(\1)#(\2)"}";
+  `+' | `-' | `.'{ARABIC_NUMBER} => "{\textdir TLT{}"#(\1)#(\2)<push: NUMERAL>;
+  {ARABIC_NUMBER}end: => #(\1);
+  {ARABIC_NUMBER} => "{\textdir TLT{}"#(\1)<push: NUMERAL>;
+  {NOT_ARABIC_LETTER} => #(\1);
+  {QUADRIFORM}{NOT_ARABIC_OR_UNI} => #(\1 + @"da00) <= \2;
+  {QUADRIFORM}end: => #(\1 + @"da00);
+  {QUADRIFORM}@"651{ACCENT}{NOT_ARABIC_OR_UNI} => #(\1 + @"da00)#(\3 + @"da90) <= #(\4);
+  {QUADRIFORM}{ACCENT}{NOT_ARABIC_OR_UNI} => #(\1 + @"da00)#(\2 + @"da00) <= #(\3);
+  {QUADRIFORM}@"651{ACCENT}end: => #(\1 + @"da00)#(\3 + @"da90);
+  {QUADRIFORM}{ACCENT}end: => #(\1 + @"da00)#(\2 + @"da00);
+  {QUADRIFORM}@"651{ACCENT} => #(\1 + @"db00)#(\3 + @"da90)@"620<push: MEDIAL>;
+  {QUADRIFORM}{ACCENT} => #(\1 + @"db00)#(\2 + @"da00)@"620<push: MEDIAL>;
+  {QUADRIFORM} => #(\1 + @"db00)@"620<push: MEDIAL>;
+  {BIFORM}@"651{ACCENT} => #(\1 + @"da00)#(\3 + @"da90);
+  {BIFORM}{ACCENT} => #(\1 + @"da00)#(\2 + @"da00);
+  {BIFORM} => #(\1 + @"da00);
+  <MEDIAL>{QUADRIFORM}{NOT_ARABIC_OR_UNI} => #(\1 + @"dd00) <= #(\2)<pop:>;
+  <MEDIAL>{QUADRIFORM}end: => #(\1 + @"dd00)<pop:>;
+  <MEDIAL>{QUADRIFORM}@"651{ACCENT}{NOT_ARABIC_OR_UNI} => #(\1 + @"dd00)#(\3 + @"da90) <= #(\4)<pop:>;
+  <MEDIAL>{QUADRIFORM}{ACCENT}{NOT_ARABIC_OR_UNI} => #(\1 + @"dd00)#(\2 + @"da00) <= #(\3)<pop:>;
+  <MEDIAL>{QUADRIFORM}@"651{ACCENT}end: => #(\1 + @"dd00)#(\3 + @"da90)<pop:>;
+  <MEDIAL>{QUADRIFORM}{ACCENT}end: => #(\1 + @"dd00)#(\2 + @"da00)<pop:>;
+  <MEDIAL>{QUADRIFORM}@"651{ACCENT} => #(\1 + @"dc00)#(\3 + @"da90)@"620;
+  <MEDIAL>{QUADRIFORM}{ACCENT} => #(\1 + @"dc00)#(\2 + @"da00)@"620;
+  <MEDIAL>{QUADRIFORM} => #(\1 + @"dc00)@"620;
+  <MEDIAL>{BIFORM}@"651{ACCENT} => #(\1 + @"dd00)#(\3 + @"da90)<pop:>;
+  <MEDIAL>{BIFORM}{ACCENT} => #(\1 + @"dd00)#(\2 + @"da00)<pop:>;
+  <MEDIAL>{BIFORM} => #(\1 + @"dd00)<pop:>;
+  @"f000-@"f07f => \1;

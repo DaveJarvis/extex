@@ -1,0 +1,224 @@
+ctp_length     : 220
+ctp_input      : 1
+ctp_output     : 2
+ctp_no_tables  : 1
+ctp_room_tables: 96
+ctp_no_states  : 1
+ctp_room_states: 115
+
+Table 0: 96 entries
+
+    a0(160),
+    126(294),
+    2d8(728),
+    a3(163),
+    a4(164),
+    fffd(65533),
+    124(292),
+    a7(167),
+    a8(168),
+    130(304),
+    15e(350),
+    11e(286),
+    134(308),
+    ad(173),
+    fffd(65533),
+    17b(379),
+    b0(176),
+    127(295),
+    b2(178),
+    b3(179),
+    b4(180),
+    b5(181),
+    125(293),
+    b7(183),
+    b8(184),
+    131(305),
+    15f(351),
+    11f(287),
+    135(309),
+    bd(189),
+    fffd(65533),
+    17c(380),
+    c0(192),
+    c1(193),
+    c2(194),
+    fffd(65533),
+    c4(196),
+    10a(266),
+    108(264),
+    c7(199),
+    c8(200),
+    c9(201),
+    ca(202),
+    cb(203),
+    cc(204),
+    cd(205),
+    ce(206),
+    cf(207),
+    fffd(65533),
+    d1(209),
+    d2(210),
+    d3(211),
+    d4(212),
+    120(288),
+    d6(214),
+    d7(215),
+    11c(284),
+    d9(217),
+    da(218),
+    db(219),
+    dc(220),
+    16c(364),
+    15c(348),
+    df(223),
+    e0(224),
+    e1(225),
+    e2(226),
+    fffd(65533),
+    e4(228),
+    10b(267),
+    109(265),
+    e7(231),
+    e8(232),
+    e9(233),
+    ea(234),
+    eb(235),
+    ec(236),
+    ed(237),
+    ee(238),
+    ef(239),
+    fffd(65533),
+    f1(241),
+    f2(242),
+    f3(243),
+    f4(244),
+    121(289),
+    f6(246),
+    f7(247),
+    11d(285),
+    f9(249),
+    fa(250),
+    fb(251),
+    fc(252),
+    16d(365),
+    15d(349),
+    2d9(729),
+
+State 0: 115 entries
+
+          0  LEFT_START      0x0 (0)
+          1  GOTO_NE         0x3c (60,`<')
+          2                  0x9 (9)
+          3  GOTO_NO_ADVANCE 0x9 (9)
+          4  GOTO_NE         0x43 (67,`C')
+          5                  0x9 (9)
+          6  PUSH_NUM        0x108 (264)
+          7  RIGHT_OUTPUT    0x0 (0)
+          8  STOP            0x0 (0)
+          9  LEFT_RETURN     0x0 (0)
+          a  GOTO_NE         0x3c (60,`<')
+          b                  0x12 (18)
+          c  GOTO_NO_ADVANCE 0x12 (18)
+          d  GOTO_NE         0x63 (99,`c')
+          e                  0x12 (18)
+          f  PUSH_NUM        0x109 (265)
+         10  RIGHT_OUTPUT    0x0 (0)
+         11  STOP            0x0 (0)
+         12  LEFT_RETURN     0x0 (0)
+         13  GOTO_NE         0x3c (60,`<')
+         14                  0x1b (27)
+         15  GOTO_NO_ADVANCE 0x1b (27)
+         16  GOTO_NE         0x47 (71,`G')
+         17                  0x1b (27)
+         18  PUSH_NUM        0x11c (284)
+         19  RIGHT_OUTPUT    0x0 (0)
+         1a  STOP            0x0 (0)
+         1b  LEFT_RETURN     0x0 (0)
+         1c  GOTO_NE         0x3c (60,`<')
+         1d                  0x24 (36,`$')
+         1e  GOTO_NO_ADVANCE 0x24 (36,`$')
+         1f  GOTO_NE         0x67 (103,`g')
+         20                  0x24 (36,`$')
+         21  PUSH_NUM        0x11d (285)
+         22  RIGHT_OUTPUT    0x0 (0)
+         23  STOP            0x0 (0)
+         24  LEFT_RETURN     0x0 (0)
+         25  GOTO_NE         0x3c (60,`<')
+         26                  0x2d (45,`-')
+         27  GOTO_NO_ADVANCE 0x2d (45,`-')
+         28  GOTO_NE         0x48 (72,`H')
+         29                  0x2d (45,`-')
+         2a  PUSH_NUM        0x124 (292)
+         2b  RIGHT_OUTPUT    0x0 (0)
+         2c  STOP            0x0 (0)
+         2d  LEFT_RETURN     0x0 (0)
+         2e  GOTO_NE         0x3c (60,`<')
+         2f                  0x36 (54,`6')
+         30  GOTO_NO_ADVANCE 0x36 (54,`6')
+         31  GOTO_NE         0x68 (104,`h')
+         32                  0x36 (54,`6')
+         33  PUSH_NUM        0x125 (293)
+         34  RIGHT_OUTPUT    0x0 (0)
+         35  STOP            0x0 (0)
+         36  LEFT_RETURN     0x0 (0)
+         37  GOTO_NE         0x3c (60,`<')
+         38                  0x3f (63,`?')
+         39  GOTO_NO_ADVANCE 0x3f (63,`?')
+         3a  GOTO_NE         0x4a (74,`J')
+         3b                  0x3f (63,`?')
+         3c  PUSH_NUM        0x134 (308)
+         3d  RIGHT_OUTPUT    0x0 (0)
+         3e  STOP            0x0 (0)
+         3f  LEFT_RETURN     0x0 (0)
+         40  GOTO_NE         0x3c (60,`<')
+         41                  0x48 (72,`H')
+         42  GOTO_NO_ADVANCE 0x48 (72,`H')
+         43  GOTO_NE         0x6a (106,`j')
+         44                  0x48 (72,`H')
+         45  PUSH_NUM        0x135 (309)
+         46  RIGHT_OUTPUT    0x0 (0)
+         47  STOP            0x0 (0)
+         48  LEFT_RETURN     0x0 (0)
+         49  GOTO_NE         0x3c (60,`<')
+         4a                  0x51 (81,`Q')
+         4b  GOTO_NO_ADVANCE 0x51 (81,`Q')
+         4c  GOTO_NE         0x53 (83,`S')
+         4d                  0x51 (81,`Q')
+         4e  PUSH_NUM        0x15c (348)
+         4f  RIGHT_OUTPUT    0x0 (0)
+         50  STOP            0x0 (0)
+         51  LEFT_RETURN     0x0 (0)
+         52  GOTO_NE         0x3c (60,`<')
+         53                  0x5a (90,`Z')
+         54  GOTO_NO_ADVANCE 0x5a (90,`Z')
+         55  GOTO_NE         0x73 (115,`s')
+         56                  0x5a (90,`Z')
+         57  PUSH_NUM        0x15d (349)
+         58  RIGHT_OUTPUT    0x0 (0)
+         59  STOP            0x0 (0)
+         5a  LEFT_RETURN     0x0 (0)
+         5b  GOTO_LT         0x0 (0)
+         5c                  0x61 (97,`a')
+         5d  GOTO_GT         0x9f (159)
+         5e                  0x61 (97,`a')
+         5f  RIGHT_CHAR      0x1 (1)
+         60  STOP            0x0 (0)
+         61  LEFT_RETURN     0x0 (0)
+         62  GOTO_LT         0xa0 (160)
+         63                  0x6d (109,`m')
+         64  GOTO_GT         0xff (255)
+         65                  0x6d (109,`m')
+         66  PUSH_NUM        0x0 (0)
+         67  PUSH_CHAR       0x1 (1)
+         68  PUSH_NUM        0xa0 (160)
+         69  SUB             0x0 (0)
+         6a  LOOKUP          0x0 (0)
+         6b  RIGHT_OUTPUT    0x0 (0)
+         6c  STOP            0x0 (0)
+         6d  LEFT_RETURN     0x0 (0)
+         6e  RIGHT_CHAR      0x1 (1)
+         6f  STOP            0x0 (0)
+         70  LEFT_RETURN     0x0 (0)
+         71  RIGHT_CHAR      0x1 (1)
+         72  STOP            0x0 (0)

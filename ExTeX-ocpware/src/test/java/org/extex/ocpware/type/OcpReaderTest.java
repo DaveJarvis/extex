@@ -396,7 +396,12 @@ public class OcpReaderTest {
 
                 System.err.print(Integer.toHexString(reader.getPc()));
                 System.err.print(" ");
-                System.err.println(OcpCode.get(opcode).toString());
+                OcpCode ocpCode = OcpCode.get(opcode);
+                System.err.print(ocpCode.toString());
+                if (ocpCode.getArguments().length > 0) {
+                    System.err.print(" 0x"+Integer.toHexString(arg));
+                }
+                System.err.println();
             }
 
             public void close(OcpReader reader) {
