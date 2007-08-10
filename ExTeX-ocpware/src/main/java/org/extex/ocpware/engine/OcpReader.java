@@ -38,26 +38,34 @@ import org.extex.ocpware.type.OcpProgram;
 public class OcpReader extends Reader {
 
     /**
+     * The constant <tt>LINE_SIZE_INCREMENT</tt> contains the increment of the
+     * size of the line buffer. This value has to be a positive number.
+     */
+    private static final int LINE_SIZE_INCREMENT = 128;
+
+    /**
+     * The constant <tt>LINIE_INITIAL_SIZE</tt> contains the initial size of
+     * the line buffer. The value must not be negative. The line buffer may be
+     * expanded when necessary.
+     */
+    private static final int LINIE_INITIAL_SIZE = 128;
+
+    /**
      * The field <tt>arithStack</tt> contains the stack for execution.
      */
     private Stack<Integer> arithStack = new Stack<Integer>();
 
     /**
-     * The field <tt>buffer</tt> contains the input buffer.
-     */
-    private char[] buffer = new char[1024];
-
-    /**
      * The field <tt>bufferEnd</tt> contains the pointer to the end of the
      * input buffer.
      */
-    private int bufferEnd = 0;
+    private int someEnd = 0;
 
     /**
      * The field <tt>bufferPtr</tt> contains the pointer to the current
      * position in the input buffer.
      */
-    private int bufferPtr = 0;
+    private int somePtr = 0;
 
     /**
      * The field <tt>code</tt> contains the code currently run.
@@ -80,7 +88,7 @@ public class OcpReader extends Reader {
      * The field <tt>line</tt> contains the intermediate buffer for the
      * characters read. The buffer will be extended dynamically if required.
      */
-    private char[] line = new char[128];
+    private char[] line = new char[LINIE_INITIAL_SIZE];
 
     /**
      * The field <tt>lineEnd</tt> contains the index of the character
@@ -92,6 +100,12 @@ public class OcpReader extends Reader {
      * The field <tt>observers</tt> contains the list of observers.
      */
     private List<OcpReaderObserver> observers = null;
+
+    /**
+     * The field <tt>outMax</tt> contains the maximum number requested for an
+     * output character.
+     */
+    private int outMax;
 
     /**
      * The field <tt>pc</tt> contains the program counter. It must be in the
@@ -124,8 +138,6 @@ public class OcpReader extends Reader {
      * The field <tt>tables</tt> contains the tables.
      */
     private List<int[]> tables = new ArrayList<int[]>();
-
-    private int outMax;
 
     /**
      * Creates a new object.
@@ -203,7 +215,7 @@ public class OcpReader extends Reader {
             return true;
         }
         if (lineEnd >= line.length) {
-            char[] l = new char[line.length + 128];
+            char[] l = new char[line.length + LINE_SIZE_INCREMENT];
             System.arraycopy(line, 0, l, 0, line.length);
             line = l;
         }
@@ -222,23 +234,13 @@ public class OcpReader extends Reader {
     }
 
     /**
-     * Getter for buffer.
-     * 
-     * @return the buffer
-     */
-    public char[] getBuffer() {
-
-        return buffer;
-    }
-
-    /**
      * Getter for bufferEnd.
      * 
      * @return the bufferEnd
      */
     public int getBufferEnd() {
 
-        return bufferEnd;
+        return someEnd;
     }
 
     /**
@@ -248,7 +250,16 @@ public class OcpReader extends Reader {
      */
     public int getBufferPtr() {
 
-        return bufferPtr;
+        return somePtr;
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     */
+    public int getCodeWord() {
+
+        return code[pc + 1];
     }
 
     /**
@@ -330,8 +341,8 @@ public class OcpReader extends Reader {
                 OcpEmptyStackException,
                 IllegalPcException {
 
-        if (bufferPtr < bufferEnd) {
-            return buffer[bufferPtr++];
+        if (somePtr < someEnd) {
+            return line[somePtr++];
         }
 
         int c;
@@ -349,6 +360,47 @@ public class OcpReader extends Reader {
             throw new RuntimeException("unimplemented");
         }
         return c;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.io.Reader#read(char[], int, int)
+     */
+    @Override
+    public int read(char[] cbuf, int off, int len) throws IOException {
+
+        int i = off;
+        int n = 0;
+        do {
+            while (somePtr < someEnd) {
+                cbuf[i++] = line[somePtr++];
+                if (++n >= len) {
+                    return n;
+                }
+            }
+            int c = read();
+            if (c < 0) {
+                return n;
+            }
+            cbuf[i++] = (char) c;
+            n++;
+        } while (n < len);
+
+        return n;
+    }
+
+    /**
+     * Register an observer to be informed about certain events.
+     * 
+     * @param observer the observer to register
+     */
+    public void register(OcpReaderObserver observer) {
+
+        if (observers == null) {
+            observers = new ArrayList<OcpReaderObserver>();
+        }
+        observers.add(observer);
     }
 
     /**
@@ -417,11 +469,11 @@ public class OcpReader extends Reader {
                     // otp_output_buf[otp_output_end]:=otp_calculated_char;
                     // incr(otp_pc);
                     // end;
-                    if (a >= lineEnd) {
+                    if (inputLast - a + 1 < 0) {
                         // TODO gene: read unimplemented
                         throw new RuntimeException("unimplemented");
                     }
-                    return line[inputLast - a - 1];
+                    return line[inputLast - a + 1];
 
                 case OcpCode.OP_RIGHT_LCHAR:
                     // otp_right_lchar: begin
@@ -455,22 +507,15 @@ public class OcpReader extends Reader {
                     // end;
                     // incr(otp_pc);
                     // end
-                    c &= OcpCode.ARGUMENT_BIT_MASK;
-                    a = code[pc++] & OcpCode.ARGUMENT_BIT_MASK;
-                    if (a - c + 1 >= buffer.length) {
-                        // enlarge the buffer
-                        buffer = new char[a - c + 16];
-                        // a little bit more space than needed
-                    }
-                    bufferPtr = 0;
-                    bufferEnd = 0;
-
-                    while (c < a) {
-                        buffer[bufferEnd++] = line[inputStart + c];
-                        c++;
-                    }
-                    if (bufferPtr < bufferEnd) {
-                        return buffer[bufferPtr++];
+                    somePtr = inputStart + (c & OcpCode.ARGUMENT_BIT_MASK);
+                    someEnd =
+                            inputStart
+                                    + (code[pc++] & OcpCode.ARGUMENT_BIT_MASK);
+                    if (somePtr <= someEnd) {
+                        if (someEnd > lineEnd) {
+                            throw new OcpLineOverflowException();
+                        }
+                        return line[somePtr++];
                     }
                     break;
 
@@ -901,47 +946,6 @@ public class OcpReader extends Reader {
                     throw new IllegalOpCodeException(opcode);
             }
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.Reader#read(char[], int, int)
-     */
-    @Override
-    public int read(char[] cbuf, int off, int len) throws IOException {
-
-        int i = off;
-        int n = 0;
-        do {
-            while (bufferPtr < bufferEnd) {
-                cbuf[i++] = buffer[bufferPtr++];
-                if (++n >= len) {
-                    return n;
-                }
-            }
-            int c = read();
-            if (c < 0) {
-                return n;
-            }
-            cbuf[i++] = (char) c;
-            n++;
-        } while (n < len);
-
-        return n;
-    }
-
-    /**
-     * Register an observer to be informed about certain events.
-     * 
-     * @param observer the observer to register
-     */
-    public void register(OcpReaderObserver observer) {
-
-        if (observers == null) {
-            observers = new ArrayList<OcpReaderObserver>();
-        }
-        observers.add(observer);
     }
 
     /**
