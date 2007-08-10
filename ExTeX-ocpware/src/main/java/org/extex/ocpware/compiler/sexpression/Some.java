@@ -68,7 +68,7 @@ public class Some implements Expr {
 
         cs.putInstruction(withOffset
                 ? OcpCode.OP_PBACK_SOME
-                : OcpCode.OP_RIGHT_SOME, n);
+                : OcpCode.OP_RIGHT_SOME, n, m);
     }
 
     /**
