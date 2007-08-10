@@ -56,17 +56,6 @@ public class ParserStream extends PushbackInputStream {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.PushbackInputStream#close()
-     */
-    @Override
-    public synchronized void close() throws IOException {
-
-        super.close();
-    }
-
-    /**
      * Create an exception containing the context.
      * 
      * @param c the character read
