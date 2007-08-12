@@ -5,7 +5,7 @@
 input = 2
 output = 2
 
-State _S0: % 64 entries
+State INITIAL: % 64 entries
 
                 LEFT_START
                 GOTO_LT         0x3ac, _1

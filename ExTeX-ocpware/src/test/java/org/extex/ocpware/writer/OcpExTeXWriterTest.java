@@ -41,17 +41,19 @@ public class OcpExTeXWriterTest extends WriterTester {
 
         Locale.setDefault(Locale.ENGLISH);
         run("input: 1;output: 1;" + "expressions: .. => \\*;\n. => \\*;",
-            new OcpExTeXWriter(), "% length = 18\n" + "% 0 tables in 0 words\n"
-                    + "% 1 states in 10 words\n" + "\n" + "input = 1\n"
-                    + "output = 1\n" + "\n" + "State _S0: % 10 entries\n"
+            new OcpExTeXWriter(), "% length = 20\n" + "% 0 tables in 0 words\n"
+                    + "% 1 states in 12 words\n" + "\n" + "input = 1\n"
+                    + "output = 1\n" + "\n" + "State INITIAL: % 12 entries\n"
                     + "\n" + "                LEFT_START\n"
                     + "                GOTO_NO_ADVANCE _1\n"
                     + "                RIGHT_SOME      0, 0\n"
+                    + "                STOP\n"
                     + "  _1:           LEFT_RETURN\n"
                     + "                RIGHT_SOME      0, 0\n"
+                    + "                STOP\n"
                     + "                LEFT_RETURN\n"
                     + "                RIGHT_CHAR      1\n"
-                    + "                STOP\n" + "");
+                    + "                STOP\n");
     }
 
     /**
@@ -562,5 +564,4 @@ public class OcpExTeXWriterTest extends WriterTester {
         run("uppercase");
     }
 
-    
 }

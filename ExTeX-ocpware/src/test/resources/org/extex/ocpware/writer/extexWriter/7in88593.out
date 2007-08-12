@@ -32,7 +32,7 @@ table 0[] = { % 60 entries
   0x011d, 0x00f9, 0x00fa, 0x00fb,
   0x00fc, 0x016d, 0x015d, 0x02d9}
 
-State _S0: % 115 entries
+State INITIAL: % 115 entries
 
                 LEFT_START
                 GOTO_NE         0x3c, _1

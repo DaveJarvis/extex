@@ -5,7 +5,7 @@
 input = 1
 output = 1
 
-State _S0: % 6 entries
+State INITIAL: % 6 entries
 
                 LEFT_START
                 RIGHT_NUM       0x2a

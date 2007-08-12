@@ -91,7 +91,7 @@ public final class LeftParser {
             return left;
         }
 
-        int from = s.parseNumber(c);
+        int from = s.parseNumber(s.skipSpace());
         s.expect(',');
         c = s.skipSpace();
         if (c == '>') {
@@ -176,7 +176,7 @@ public final class LeftParser {
         List<Left> result = new ArrayList<Left>();
         int c;
         do {
-            result.add(oneLeft(s));
+            result.add(completeLeft(s));
             c = s.skipSpace();
             s.unread(c);
         } while (c >= 0 && c != '=' && c != 'e');

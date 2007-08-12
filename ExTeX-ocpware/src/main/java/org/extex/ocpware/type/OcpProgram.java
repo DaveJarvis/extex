@@ -282,6 +282,18 @@ public class OcpProgram implements Serializable {
     }
 
     /**
+     * Getter for a table.
+     *
+     * @param i the index
+     * 
+     * @return the table
+     */
+    public int[] getTable(int i) {
+
+        return tables.get(i);
+    }
+
+    /**
      * Save an OCP program to an output stream.
      * 
      * @param stream the output stream

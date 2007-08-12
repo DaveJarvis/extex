@@ -19,16 +19,8 @@
 
 package org.extex.ocpware.compiler;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
-import org.extex.ocpware.compiler.parser.CompilerState;
-import org.extex.ocpware.type.OcpProgram;
-import org.extex.ocpware.writer.OcpWriter;
 
 /**
  * This class provides the contents of some OTP files as String.

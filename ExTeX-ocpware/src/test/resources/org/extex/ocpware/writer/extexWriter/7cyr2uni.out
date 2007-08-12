@@ -5,7 +5,7 @@
 input = 1
 output = 2
 
-State _S0: % 1818 entries
+State INITIAL: % 1818 entries
 
                 LEFT_START
                 GOTO_NE         0x2d, _1

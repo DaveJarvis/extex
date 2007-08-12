@@ -28,13 +28,12 @@ import java.io.InputStream;
 
 import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.type.OcpProgram;
-import org.extex.ocpware.writer.OcpWriter;
 
 /**
  * This abstract base class provides some utility methods for testing writers.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:6021 $
  */
 public abstract class WriterTester {
 

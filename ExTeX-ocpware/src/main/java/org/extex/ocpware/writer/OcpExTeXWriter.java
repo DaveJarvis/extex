@@ -244,6 +244,7 @@ public class OcpExTeXWriter extends AbstractWriter {
         for (int i = 0; i < states.size(); i++) {
             stateNames[i] = "_S" + Integer.toString(i);
         }
+        stateNames[0] = "INITIAL";
 
         for (int i = 0; i < states.size(); i++) {
             int[] instructions = states.get(i);

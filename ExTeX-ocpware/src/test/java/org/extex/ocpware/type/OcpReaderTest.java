@@ -29,11 +29,17 @@ import java.io.InputStream;
 import java.io.PrintStream;
 
 import org.extex.ocpware.compiler.parser.CompilerState;
+import org.extex.ocpware.engine.CharacterOutOfRangeException;
 import org.extex.ocpware.engine.IllegalOpCodeException;
+import org.extex.ocpware.engine.IllegalPcException;
+import org.extex.ocpware.engine.IllegalTableException;
+import org.extex.ocpware.engine.IllegalTableItemException;
 import org.extex.ocpware.engine.OcpEmptyStackException;
 import org.extex.ocpware.engine.OcpLineOverflowException;
+import org.extex.ocpware.engine.OcpLineUnderflowException;
 import org.extex.ocpware.engine.OcpReader;
 import org.extex.ocpware.engine.OcpReaderObserver;
+import org.extex.ocpware.engine.UnsupportedOutputException;
 import org.junit.Test;
 
 /**
@@ -109,19 +115,42 @@ public class OcpReaderTest {
     }
 
     /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testLeftBackup1() throws IOException {
+
+        OcpReader r = prepare("expressions:\n`a'<1,> => `x'; . => \\1;", //
+            "aaab");
+        // new OcpExTeXWriter().write(System.out, r.getProgram());
+        // attachObserver(r);
+
+        assertEquals((int) 'x', r.read());
+        assertEquals((int) 'b', r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
      * Test method.
+     * 
+     * @throws IOException in case of an error
      */
     @Test(expected = IllegalArgumentException.class)
-    public final void testError1() {
+    public final void testError1() throws IOException {
 
         new OcpReader(null, null);
     }
 
     /**
      * Test method.
+     * 
+     * @throws IOException in case of an error
      */
     @Test(expected = IllegalArgumentException.class)
-    public final void testError2() {
+    public final void testError2() throws IOException {
 
         new OcpReader(new CharArrayReader("".toCharArray()), null);
     }
@@ -146,13 +175,61 @@ public class OcpReaderTest {
      * 
      * @throws IOException not very likely
      */
-    @Test(expected = OcpLineOverflowException.class)
-    @SuppressWarnings("boxing")
+    @Test(expected = UnsupportedOutputException.class)
     public final void testError4() throws IOException {
 
-        OcpReader r = prepare("expressions:\n. => \\(*-2);", //
-            "x");
-        r.read();
+        OcpProgram ocpProgram = new OcpProgram();
+        ocpProgram.addState(new int[1]);
+        ocpProgram.setOutput(3);
+        new OcpReader(new CharArrayReader("".toCharArray()), ocpProgram);
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#getState()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testGetState1() throws IOException {
+
+        OcpProgram ocpProgram = new OcpProgram();
+        ocpProgram.addState(new int[1]);
+        OcpReader r =
+                new OcpReader(new CharArrayReader("".toCharArray()), ocpProgram);
+        assertEquals(0, r.getState());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#getProgram()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test
+    public final void testGetProgram1() throws IOException {
+
+        OcpProgram ocpProgram = new OcpProgram();
+        ocpProgram.addState(new int[1]);
+        OcpReader r =
+                new OcpReader(new CharArrayReader("".toCharArray()), ocpProgram);
+        assertEquals(ocpProgram, r.getProgram());
+    }
+
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#getPc()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testGetPc1() throws IOException {
+
+        OcpProgram ocpProgram = new OcpProgram();
+        ocpProgram.addState(new int[1]);
+        OcpReader r =
+                new OcpReader(new CharArrayReader("".toCharArray()), ocpProgram);
+        assertEquals(0, r.getPc());
     }
 
     /**
@@ -232,7 +309,6 @@ public class OcpReaderTest {
                 new OcpReader(new CharArrayReader(".".toCharArray()),
                     ocpProgram);
         r.read();
-        assertTrue(false);
     }
 
     /**
@@ -249,7 +325,6 @@ public class OcpReaderTest {
                 new OcpReader(new CharArrayReader(".".toCharArray()),
                     ocpProgram);
         r.read();
-        assertTrue(false);
     }
 
     /**
@@ -257,17 +332,185 @@ public class OcpReaderTest {
      * 
      * @throws IOException not very likely
      */
-    @Test(expected = OcpEmptyStackException.class)
+    @Test(expected = IllegalPcException.class)
     public final void testCodeError3() throws IOException {
 
         OcpProgram ocpProgram = new OcpProgram();
-        ocpProgram.addState(//
-            new int[]{OcpCode.OP_LOOKUP << OcpCode.OPCODE_OFFSET});
+        ocpProgram.addState(new int[]{});
         OcpReader r =
                 new OcpReader(new CharArrayReader(".".toCharArray()),
                     ocpProgram);
         r.read();
-        assertTrue(false);
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#read()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test(expected = org.extex.ocpware.engine.IllegalStateException.class)
+    public final void testStateChange4() throws IOException {
+
+        OcpProgram ocpProgram = new OcpProgram();
+        ocpProgram
+            .addState(new int[]{(OcpCode.OP_STATE_CHANGE << OcpCode.OPCODE_OFFSET) + 1});
+        OcpReader r =
+                new OcpReader(new CharArrayReader(".".toCharArray()),
+                    ocpProgram);
+        r.read();
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#read()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test(expected = org.extex.ocpware.engine.IllegalStateException.class)
+    public final void testStatePush4() throws IOException {
+
+        OcpProgram ocpProgram = new OcpProgram();
+        ocpProgram
+            .addState(new int[]{(OcpCode.OP_STATE_PUSH << OcpCode.OPCODE_OFFSET) + 1});
+        OcpReader r =
+                new OcpReader(new CharArrayReader(".".toCharArray()),
+                    ocpProgram);
+        r.read();
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#read()}.
+     * 
+     * @throws Exception not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testReadEof1() throws Exception {
+
+        OcpReader r =
+                prepare("input: 1;output: 1;" + "expressions:\n. => `*';", //
+                    "");
+
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#read()}.
+     * 
+     * @throws Exception not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testReadEof2() throws Exception {
+
+        OcpReader r =
+                prepare("input: 1;output: 1;" + "expressions:\n. => `*';", //
+                    "");
+
+        assertEquals(-1, r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#read()}.
+     * 
+     * @throws Exception not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testRightNum1() throws Exception {
+
+        OcpReader r = prepare("expressions:\n.. => 42;", //
+            "ab");
+
+        assertEquals((int) '*', r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#read()}.
+     * 
+     * @throws Exception not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testPushNum1() throws Exception {
+
+        OcpReader r =
+                prepare("input: 1;output: 1;" + "expressions:\n. => `*';", //
+                    "a");
+
+        assertEquals((int) '*', r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#read()}.
+     * 
+     * @throws Exception not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testPushNum2() throws Exception {
+
+        OcpReader r =
+                prepare("input: 1;output: 1;" + "expressions:\n. => `*';", //
+                    "a b");
+
+        assertEquals((int) '*', r.read());
+        assertEquals((int) '*', r.read());
+        assertEquals((int) '*', r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#read()}.
+     * 
+     * @throws Exception not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testRightChar1() throws Exception {
+
+        OcpReader r =
+                prepare("input: 1;output: 1;" + "expressions:\n. => \\1;", //
+                    "a");
+
+        assertEquals((int) 'a', r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#read()}.
+     * 
+     * @throws Exception not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testRightLchar1() throws Exception {
+
+        OcpReader r =
+                prepare("input: 1;output: 1;" + "expressions:\n. => \\$;", //
+                    "a");
+
+        assertEquals((int) 'a', r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#read()}.
+     * 
+     * @throws Exception not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testPushChar1() throws Exception {
+
+        OcpReader r = prepare("expressions:\n. => `-'#(\\1);", //
+            "x");
+
+        assertEquals((int) '-', r.read());
+        assertEquals((int) 'x', r.read());
+        assertEquals(-1, r.read());
     }
 
     /**
@@ -377,7 +620,6 @@ public class OcpReaderTest {
 
         OcpReader r = prepare("expressions:\n. => #(12 div: 0);", //
             "x");
-
         r.read();
     }
 
@@ -388,12 +630,13 @@ public class OcpReaderTest {
      */
     @Test
     @SuppressWarnings("boxing")
-    public final void testRead0() throws Exception {
+    public final void testLookup1() throws Exception {
 
         OcpReader r =
-                prepare("input: 1;output: 1;" + "expressions:\n. => `*';", //
-                    "");
-
+                prepare("tables: a[1] = {123}; "
+                        + "expressions:\n. => #(a[0]);", //
+                    "x");
+        assertEquals(123, r.read());
         assertEquals(-1, r.read());
     }
 
@@ -402,51 +645,472 @@ public class OcpReaderTest {
      * 
      * @throws Exception not very likely
      */
-    @Test
+    @Test(expected = IllegalTableItemException.class)
     @SuppressWarnings("boxing")
-    public final void testRead01() throws Exception {
+    public final void testLookup2() throws Exception {
 
         OcpReader r =
-                prepare("input: 1;output: 1;" + "expressions:\n. => `*';", //
-                    "");
-
-        assertEquals(-1, r.read());
-        assertEquals(-1, r.read());
+                prepare("tables: a[1] = {123}; "
+                        + "expressions:\n. => #(a[2]);", //
+                    "x");
+        r.read();
     }
 
     /**
      * Test method for {@link org.extex.ocpware.engine.OcpReader#read()}.
      * 
-     * @throws Exception not very likely
+     * @throws IOException not very likely
+     */
+    @Test(expected = OcpEmptyStackException.class)
+    public final void testLookup3() throws IOException {
+
+        OcpProgram ocpProgram = new OcpProgram();
+        ocpProgram.addState(//
+            new int[]{OcpCode.OP_LOOKUP << OcpCode.OPCODE_OFFSET});
+        OcpReader r =
+                new OcpReader(new CharArrayReader(".".toCharArray()),
+                    ocpProgram);
+        r.read();
+        assertTrue(false);
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#read()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test(expected = IllegalTableException.class)
+    public final void testLookup4() throws IOException {
+
+        OcpProgram ocpProgram = new OcpProgram();
+        ocpProgram.addState(//
+            new int[]{(OcpCode.OP_PUSH_NUM << OcpCode.OPCODE_OFFSET) + 2,
+                    (OcpCode.OP_PUSH_NUM << OcpCode.OPCODE_OFFSET) + 2,
+                    OcpCode.OP_LOOKUP << OcpCode.OPCODE_OFFSET});
+        OcpReader r =
+                new OcpReader(new CharArrayReader(".".toCharArray()),
+                    ocpProgram);
+        r.read();
+        assertTrue(false);
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test(expected = OcpLineOverflowException.class)
+    @SuppressWarnings("boxing")
+    public final void testRightSome1() throws IOException {
+
+        OcpReader r = prepare("expressions:\n. => \\(*-2);", //
+            "x");
+        r.read();
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
      */
     @Test
     @SuppressWarnings("boxing")
-    public final void testRead2() throws Exception {
+    public final void testRightSome2() throws IOException {
+
+        OcpReader r = prepare("expressions:\n.. => \\(*+0-1);", //
+            "xy");
+
+        assertEquals((int) 'x', r.read());
+        assertEquals((int) 'y', r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testPBackOutput1() throws IOException {
+
+        OcpReader r = prepare("expressions:\n`a' => `x' <= #(65); . => \\*;", //
+            "a");
+
+        assertEquals((int) 'x', r.read());
+        assertEquals((int) 'A', r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test(expected = CharacterOutOfRangeException.class)
+    @SuppressWarnings("boxing")
+    public final void testPBackOutput2() throws IOException {
 
         OcpReader r =
-                prepare("input: 1;output: 1;" + "expressions:\n. => `*';", //
+                prepare("expressions:\n`a' => `.' <= #@\"10000; . => \\*;", //
                     "a");
 
-        assertEquals((int) '*', r.read());
+        r.read();
+        r.read();
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testPBackNum1() throws IOException {
+
+        OcpReader r = prepare("expressions:\n`a' => `x' <= 65; . => \\*;", //
+            "a");
+
+        assertEquals((int) 'x', r.read());
+        assertEquals((int) 'A', r.read());
         assertEquals(-1, r.read());
     }
 
     /**
-     * Test method for {@link org.extex.ocpware.engine.OcpReader#read()}.
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
      * 
-     * @throws Exception not very likely
+     * @throws IOException not very likely
+     */
+    @Test(expected = CharacterOutOfRangeException.class)
+    @SuppressWarnings("boxing")
+    public final void testPBackNum2() throws IOException {
+
+        OcpReader r =
+                prepare("expressions:\n`a' => `.' <= @\"10000; . => \\*;", //
+                    "a");
+
+        r.read();
+        r.read();
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
      */
     @Test
     @SuppressWarnings("boxing")
-    public final void testRead3() throws Exception {
+    public final void testPBackChar1() throws IOException {
+
+        OcpReader r = prepare("expressions:\n`a'`b' => `x' <= \\1; . => \\*;", //
+            "ab");
+
+        assertEquals((int) 'x', r.read());
+        assertEquals((int) 'a', r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test(expected = OcpLineUnderflowException.class)
+    @SuppressWarnings("boxing")
+    public final void testPBackChar2() throws IOException {
+
+        OcpReader r = prepare("expressions:\n`a'`b' => `x' <= \\0; . => \\1;", //
+            "ab");
+
+        r.read();
+        r.read();
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test(expected = OcpLineOverflowException.class)
+    @SuppressWarnings("boxing")
+    public final void testPBackChar3() throws IOException {
+
+        OcpReader r = prepare("expressions:\n`a'`b' => `x' <= \\3; . => \\1;", //
+            "ab");
+
+        r.read();
+        r.read();
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testPBackLchar1() throws IOException {
+
+        OcpReader r = prepare("expressions:\n`a'`b' => `x' <= \\$; . => \\1;", //
+            "ab");
+
+        assertEquals((int) 'x', r.read());
+        assertEquals((int) 'b', r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testPBackSome1() throws IOException {
 
         OcpReader r =
-                prepare("input: 1;output: 1;" + "expressions:\n. => `*';", //
-                    "a b");
+                prepare("expressions:\n`a'`b' => `x' <= \\(*+1-1); . => \\1;", //
+                    "ab");
 
-        assertEquals((int) '*', r.read());
-        assertEquals((int) '*', r.read());
-        assertEquals((int) '*', r.read());
+        assertEquals((int) 'x', r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testPBackSome2() throws IOException {
+
+        OcpReader r =
+                prepare("expressions:\n`a'`b' => `x' <= \\(*+0-1); . => \\1;", //
+                    "ab");
+
+        assertEquals((int) 'x', r.read());
+        assertEquals((int) 'a', r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testLeftRetrun1() throws IOException {
+
+        OcpReader r =
+                prepare("expressions:\n" + "`a'`b'`c' => 123;"
+                        + "\n`a\'`b\' => `x' <= \\$; . => \\1;", //
+                    "ab");
+
+        assertEquals((int) 'x', r.read());
+        assertEquals((int) 'b', r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testLeftRetrun2() throws IOException {
+
+        OcpReader r =
+                prepare("expressions:\n" + "`a'`b'`c' => 123;\n"
+                        + "`a' => `x' <= `p'; . => \\1;", //
+                    "ab");
+
+        assertEquals((int) 'x', r.read());
+        assertEquals((int) 'p', r.read());
+        assertEquals((int) 'b', r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testLeftRetrun3() throws IOException {
+
+        OcpReader r =
+                prepare("expressions:\n" + "`a'`b'`c' => 123;"
+                        + "\n`a'`b' => `x' <= \\$; . => \\1;", //
+                    "abd");
+
+        assertEquals((int) 'x', r.read());
+        assertEquals((int) 'b', r.read());
+        assertEquals((int) 'd', r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test(expected = OcpLineUnderflowException.class)
+    @SuppressWarnings("boxing")
+    public final void testPBackLchar3() throws IOException {
+
+        OcpReader r =
+                prepare("expressions:\n`a'`b' => `x' <= \\($-3); . => \\1;", //
+                    "ab");
+
+        r.read();
+        r.read();
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test(expected = OcpEmptyStackException.class)
+    @SuppressWarnings("boxing")
+    public final void testStatePop1() throws IOException {
+
+        OcpReader r = prepare("expressions:\n. => `x' <pop:>;", //
+            "ab");
+
+        assertEquals((int) 'x', r.read());
+        r.read();
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testStatePop2() throws IOException {
+
+        OcpReader r =
+                prepare("states: a;\n" + "expressions:\n"
+                        + "`a' => `y' <push: a>;\n" + "<a>. =>`x' <pop:>;\n", //
+                    "ab");
+
+        assertEquals((int) 'y', r.read());
+        assertEquals((int) 'x', r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testStatePop3() throws IOException {
+
+        OcpReader r =
+                prepare("states: a;\n" + "expressions:\n"
+                        + "`a' => `y' <push: a>;\n" + "<a>. =>`x' <pop:>;\n", //
+                    "aba");
+
+        assertEquals((int) 'y', r.read());
+        assertEquals((int) 'x', r.read());
+        assertEquals((int) 'y', r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testStateChange1() throws IOException {
+
+        OcpReader r =
+                prepare("states: a;\n" + "expressions:\n" + "`a' => `y' <a>;\n"
+                        + "<a>. =>`x';\n", //
+                    "aba");
+
+        assertEquals((int) 'y', r.read());
+        assertEquals((int) 'x', r.read());
+        assertEquals((int) 'x', r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testGotoLtGt1() throws IOException {
+
+        OcpReader r =
+                prepare("states: a;\n" + "expressions:\n" + "`a'-`z' => `.';\n"
+                        + ". =>`-';\n", //
+                    "a");
+
+        assertEquals((int) '.', r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testGotoLtGt2() throws IOException {
+
+        OcpReader r =
+                prepare("states: a;\n" + "expressions:\n" + "`a'-`z' => `.';\n"
+                        + ". =>`-';\n", //
+                    "A");
+        assertEquals((int) '-', r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testGotoLtGt3() throws IOException {
+
+        OcpReader r =
+                prepare("states: a;\n" + "expressions:\n" + "`A'-`Z' => `.';\n"
+                        + ". =>`-';\n", //
+                    "a");
+        assertEquals((int) '-', r.read());
+        assertEquals(-1, r.read());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#close()}.
+     * 
+     * @throws IOException not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testGoto1() throws IOException {
+
+        OcpReader r =
+                prepare("states: a;\n" + "expressions:\n"
+                        + "(`A'|`B') => `.';\n" + ". =>`-';\n", //
+                    "A");
+        assertEquals((int) '.', r.read());
         assertEquals(-1, r.read());
     }
 
@@ -496,7 +1160,7 @@ public class OcpReaderTest {
 
             public void close(OcpReader reader) {
 
-                // nope
+                buffer.append("*\n");
             }
         });
 
@@ -504,27 +1168,11 @@ public class OcpReaderTest {
         assertEquals((int) ' ', r.read());
         assertEquals((int) 'b', r.read());
         assertEquals(-1, r.read());
+        r.close();
         assertEquals("LEFT_START\n" + "PUSH_LCHAR\n" + "RIGHT_OUTPUT\n"
                 + "STOP\n" + "LEFT_START\n" + "PUSH_LCHAR\n" + "RIGHT_OUTPUT\n"
                 + "STOP\n" + "LEFT_START\n" + "PUSH_LCHAR\n" + "RIGHT_OUTPUT\n"
-                + "STOP\n" // + "LEFT_START\n"
-        , buffer.toString());
-    }
-
-    /**
-     * Test method for {@link org.extex.ocpware.engine.OcpReader#read()}.
-     * 
-     * @throws Exception not very likely
-     */
-    @Test
-    @SuppressWarnings("boxing")
-    public final void testRead5() throws Exception {
-
-        OcpReader r = prepare("expressions:\n.. => 42;", //
-            "ab");
-
-        assertEquals((int) '*', r.read());
-        assertEquals(-1, r.read());
+                + "STOP\n*\n", buffer.toString());
     }
 
     /**
@@ -555,9 +1203,90 @@ public class OcpReaderTest {
 
         OcpReader r = prepare("expressions: .. => \\*;\n. => \\*;", //
             "ab");
-        // attachObserver(r);
 
         assertEquals((int) 'a', r.read());
         assertEquals(-1, r.read());
     }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#read()}.
+     * 
+     * @throws Exception not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testRead100() throws Exception {
+
+        OcpReader r = prepare("expressions: .. => \\*;\n. => \\*;", //
+            "ab");
+
+        char[] cbuff = new char[12];
+        assertEquals(1, r.read(cbuff));
+        assertEquals('a', cbuff[0]);
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#read()}.
+     * 
+     * @throws Exception not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testRead101() throws Exception {
+
+        OcpReader r = prepare("expressions:\n. => \\*;", //
+            "abc");
+
+        char[] cbuff = new char[2];
+        assertEquals(2, r.read(cbuff));
+        assertEquals('a', cbuff[0]);
+        assertEquals('b', cbuff[1]);
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#read()}.
+     * 
+     * @throws Exception not very likely
+     */
+    @Test
+    @SuppressWarnings("boxing")
+    public final void testRead102() throws Exception {
+
+        OcpReader r = prepare("expressions:\n.. => \\(*+0-1);", //
+            "abcd");
+        // attachObserver(r);
+
+        char[] cbuff = new char[2];
+        assertEquals(2, r.read(cbuff));
+        assertEquals('a', cbuff[0]);
+        assertEquals('b', cbuff[1]);
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#toString()}.
+     * 
+     * @throws Exception not very likely
+     */
+    @Test
+    public final void testToString0() throws Exception {
+
+        OcpReader r = prepare("expressions:\n.. => \\(*+0-1);", //
+            "abcd");
+        assertEquals("[0/0] \n", r.toString());
+    }
+
+    /**
+     * Test method for {@link org.extex.ocpware.engine.OcpReader#toString()}.
+     * 
+     * @throws Exception not very likely
+     */
+    @Test
+    public final void testToString1() throws Exception {
+
+        OcpReader r = prepare("expressions:\n.. => \\(*+0-1);", //
+            "abcd");
+        r.read(new char[2]);
+        assertEquals("[0/4] ab\n", r.toString());
+    }
+
 }

@@ -478,7 +478,7 @@ public final class CompilerState {
                 throw new TableDefinedException(name);
             }
             s.expect('[');
-            int len = s.parseNumber(s.skipSpace());
+            s.parseNumber(s.skipSpace()); // length; not used
             s.expect(']');
             s.expect('=');
             s.expect('{');

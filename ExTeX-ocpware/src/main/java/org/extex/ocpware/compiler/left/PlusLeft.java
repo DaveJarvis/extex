@@ -73,6 +73,9 @@ public class PlusLeft implements Left {
                 AliasNotDefinedException,
                 IllegalOpcodeException {
 
+        // false_holes=nil;
+        // true_holes=nil;
+        // backup_holes=nil;
         List<Integer> holes = new ArrayList<Integer>();
         List<Integer> trueHoles = new ArrayList<Integer>();
 
@@ -83,12 +86,11 @@ public class PlusLeft implements Left {
         }
 
         holes.addAll(left.genLeft(state, cs));
-
         int ptr = state.putInstruction(OcpCode.OP_GOTO_NO_ADVANCE, 0);
         int savePtr = ptr;
-        trueHoles.add(Integer.valueOf(ptr -1));
+        trueHoles.add(Integer.valueOf(ptr - 1));
         List<Integer> backupHoles = left.genLeft(state, cs);
-        state.putInstruction(OcpCode.OP_GOTO, savePtr);
+        state.putInstruction(OcpCode.OP_GOTO, savePtr - 1);
         state.fillIn(backupHoles);
         state.putInstruction(OcpCode.OP_LEFT_BACKUP, 0);
         state.fillIn(trueHoles);
