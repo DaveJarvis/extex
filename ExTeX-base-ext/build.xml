@@ -1,6 +1,6 @@
 <!--
   ############################################################################
-  # This is the Ant build file for ExTeX-Backend-PS
+  # This is the Ant build file for ExTeX-base-ext
   ############################################################################
   # Copyright (C) 2006-2007 The ExTeX Group
   #
@@ -20,13 +20,13 @@
   #
   ######################################################################### -->
 
-<project name="ExTeX-Backend-PS" default="help" basedir=".">
+<project name="ExTeX-base-ext" default="help" basedir=".">
 
-  <description>Build file for the ExTeX back-end PS</description>
+	<description>Build file for the ExTeX base-ext</description>
 
-  <!-- ==================================================================== -->
-  <target name="help" description="Displays usage information">
-    <echo>Usage: ant &lt;target&gt;
+	<!-- ==================================================================== -->
+	<target name="help" description="Displays usage information">
+		<echo>Usage: ant &lt;target&gt;
           The following targets are supported:
           all
               Build nearly everything
@@ -40,50 +40,47 @@
               Perfom all tests and produce HTML reports.
           clean
         </echo>
-  </target>
+	</target>
 
-  <property name="tests.haltonfailure" value="no" />
-  <property name="cases" value="**/*Test.java" />
-  <property name="javac.deprecation" value="off" />
-  <property name="extexjarfile" value="extex" />
-  <property name="testsuitejarfile" value="testsuite" />
-  <property name="src" location="src/java" />
-  <property name="src.tests" location="src/test" />
-  <property name="classes" location="target/classes" />
-  <property name="javadoc" location="target/javadoc" />
-  <property name="target" location="target" />
-  <property name="target.lib" location="target/lib" />
-  <property name="tmp" location="tmp" />
-  <property name="target.tests" location="target/tests" />
-  <!-- classpath for the application -->
-  <path id="main.class.path">
-    <fileset dir="lib">
-      <include name="*.jar" />
-    </fileset>
-  </path>
-  <path id="test.class.path">
-    <fileset dir="lib">
-      <include name="*.jar" />
-    </fileset>
-    <fileset dir="develop/lib">
-      <include name="*.jar" />
-      <exclude name="ant.jar" />
-    </fileset>
-  </path>
+	<property name="tests.haltonfailure" value="no" />
+	<property name="cases" value="**/*Test.java" />
+	<property name="javac.deprecation" value="off" />
+	<property name="extexjarfile" value="extex" />
+	<property name="testsuitejarfile" value="testsuite" />
+	<property name="src" location="src/main/java" />
+	<property name="src.tests" location="src/test/java" />
+	<property name="classes" location="target/classes" />
+	<property name="javadoc" location="target/javadoc" />
+	<property name="target" location="target" />
+	<property name="target.lib" location="target/lib" />
+	<property name="tmp" location="tmp" />
+	<property name="target.tests" location="target/tests" />
+	<!-- classpath for the application -->
+	<path id="main.class.path">
+		<fileset dir="lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+	<path id="test.class.path">
+		<fileset dir="lib">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="develop/lib">
+			<include name="*.jar" />
+			<exclude name="ant.jar" />
+		</fileset>
+	</path>
 
-  <!-- ==================================================================== -->
-  <target name="all"
-          description="Build nearly everything"
-          depends="compile,javadoc,tests" />
+	<!-- ==================================================================== -->
+	<target name="all" description="Build nearly everything" depends="compile,javadoc,tests" />
 
-  <!-- ==================================================================== -->
-  <target name="clean"
-          description="Remove unneccesary files and directories.">
-    <delete dir="${classes}" />
-    <delete dir="${deploy}" />
-    <delete dir="${target.tests}" />
-    <delete dir="${javadoc}" />
-    <!--
+	<!-- ==================================================================== -->
+	<target name="clean" description="Remove unneccesary files and directories.">
+		<delete dir="${classes}" />
+		<delete dir="${deploy}" />
+		<delete dir="${target.tests}" />
+		<delete dir="${javadoc}" />
+		<!--
     <delete>
       <fileset dir="develop/test/data">
         <include name="*.log*" />
@@ -91,146 +88,122 @@
       </fileset>
     </delete>
     -->
-    <delete dir="${target.lib}" />
-    <delete file="${target}/checkstyle.txt" />
-    <delete file="${target}/ExTeX-setup.jar" />
-  </target>
+		<delete dir="${target.lib}" />
+		<delete file="${target}/checkstyle.txt" />
+		<delete file="${target}/ExTeX-setup.jar" />
+	</target>
 
-  <!-- ==================================================================== -->
-  <target name="compile" description="Compile the Java files (without tests)">
-    <mkdir dir="${classes}" />
-    <javac srcdir="${src}"
-           destdir="${classes}"
-           debug="on"
-           deprecation="${javac.deprecation}">
-      <classpath refid="main.class.path" />
-    </javac>
-    <copy todir="${classes}">
-      <fileset dir="src/java">
-        <include name="**/*.properties" />
-        <include name="**/*.xml" />
-      </fileset>
-    </copy>
-  </target>
+	<!-- ==================================================================== -->
+	<target name="compile" description="Compile the Java files (without tests)">
+		<mkdir dir="${classes}" />
+		<javac srcdir="${src}" destdir="${classes}" debug="on" deprecation="${javac.deprecation}">
+			<classpath refid="main.class.path" />
+		</javac>
+		<copy todir="${classes}">
+			<fileset dir="${src}">
+				<include name="**/*.properties" />
+				<include name="**/*.xml" />
+			</fileset>
+		</copy>
+	</target>
 
-  <!-- ==================================================================== -->
-  <target name="compile.tests"
-          description="Compile the Java files (with tests)">
-    <mkdir dir="${classes}" />
-    <javac srcdir="${src.tests}" destdir="${classes}" debug="on">
-      <classpath refid="main.class.path" />
-      <classpath refid="develop.class.path" />
-      <classpath>
-       <pathelement path="${classes}"/>
-      </classpath>
-    </javac>
-    <copy todir="${classes}">
-      <fileset dir="src">
-        <include name="**/*.properties" />
-        <include name="**/*.xml" />
-        <include name="**/ExTeX-PL" />
-      </fileset>
-    </copy>
-  </target>
+	<!-- ==================================================================== -->
+	<target name="compile.tests" description="Compile the Java files (with tests)">
+		<mkdir dir="${classes}" />
+		<javac srcdir="${src.tests}" destdir="${classes}" debug="on">
+			<classpath refid="main.class.path" />
+			<classpath refid="test.class.path" />
+			<classpath>
+				<pathelement path="${classes}" />
+			</classpath>
+		</javac>
+		<copy todir="${classes}">
+			<fileset dir="src">
+				<include name="**/*.properties" />
+				<include name="**/*.xml" />
+				<include name="**/ExTeX-PL" />
+			</fileset>
+		</copy>
+	</target>
 
-  <!-- ==================================================================== -->
-  <target name="jar"
-          depends="compile"
-          description="Create the ExTeX jar file containing all compiled classes
+	<!-- ==================================================================== -->
+	<target name="jar" depends="compile" description="Create the ExTeX jar file containing all compiled classes
                        except test cases.">
-    <mkdir dir="${target.lib}" />
-    <jar jarfile="${target.lib}/${extexjarfile}.jar">
-      <fileset dir="${classes}">
-        <patternset>
-          <exclude name="**/*Test.class" />
-          <exclude name="**/*Tests.class" />
-        </patternset>
-      </fileset>
-      <fileset dir=".">
-        <patternset>
-          <include name="LICENSE.txt" />
-        </patternset>
-      </fileset>
-      <manifest>
-        <attribute name="Built-By" value="${user.name}" />
-        <attribute name="Main-Class" value="de.dante.extex.main.TeX" />
-      </manifest>
-    </jar>
-  </target>
+		<mkdir dir="${target.lib}" />
+		<jar jarfile="${target.lib}/${extexjarfile}.jar">
+			<fileset dir="${classes}">
+				<patternset>
+					<exclude name="**/*Test.class" />
+					<exclude name="**/*Tests.class" />
+				</patternset>
+			</fileset>
+			<fileset dir=".">
+				<patternset>
+					<include name="LICENSE.txt" />
+				</patternset>
+			</fileset>
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<attribute name="Main-Class" value="de.dante.extex.main.TeX" />
+			</manifest>
+		</jar>
+	</target>
 
-  <!-- ==================================================================== -->
-  <target name="jar.tests"
-          depends="compile.tests"
-          description="Create test suite jar file">
-    <mkdir dir="${target.lib}" />
-    <jar jarfile="${target.lib}/${testsuitejarfile}.jar">
-      <fileset dir="${classes}">
-        <patternset>
-          <include name="**/*Test.class" />
-          <include name="**/AllTests.class" />
-        </patternset>
-      </fileset>
-      <manifest>
-        <attribute name="Built-By" value="${user.name}" />
-      </manifest>
-    </jar>
-  </target>
+	<!-- ==================================================================== -->
+	<target name="jar.tests" depends="compile.tests" description="Create test suite jar file">
+		<mkdir dir="${target.lib}" />
+		<jar jarfile="${target.lib}/${testsuitejarfile}.jar">
+			<fileset dir="${classes}">
+				<patternset>
+					<include name="**/*Test.class" />
+					<include name="**/AllTests.class" />
+				</patternset>
+			</fileset>
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+			</manifest>
+		</jar>
+	</target>
 
-  <!-- ==================================================================== -->
-  <target name="javadoc"
-          description="Create JavaDoc HTML pages.">
-    <mkdir dir="${javadoc}" />
-    <javadoc destdir="${javadoc}"
-             overview="${src}/overview.html"
-             stylesheetfile="src/javadoc/stylesheet.css"
-             author="true"
-             version="true"
-             use="true"
-             splitindex="true"
-             notree="false"
-             nonavbar="false"
-             noindex="false"
-             nodeprecatedlist="false"
-             nodeprecated="false">
-      <classpath refid="main.class.path" />
-      <packageset dir="${src}" defaultexcludes="yes" />
-    </javadoc>
-    <copy todir="${javadoc}">
-      <fileset dir="${src}">
-        <include name="**/*.gif" />
-        <include name="**/*.png" />
-      </fileset>
-    </copy>
-  </target>
+	<!-- ==================================================================== -->
+	<target name="javadoc" description="Create JavaDoc HTML pages.">
+		<mkdir dir="${javadoc}" />
+		<javadoc destdir="${javadoc}" overview="${src}/overview.html" stylesheetfile="src/javadoc/stylesheet.css" author="true" version="true" use="true" splitindex="true" notree="false" nonavbar="false" noindex="false" nodeprecatedlist="false" nodeprecated="false">
+			<classpath refid="main.class.path" />
+			<packageset dir="${src}" defaultexcludes="yes" />
+		</javadoc>
+		<copy todir="${javadoc}">
+			<fileset dir="${src}">
+				<include name="**/*.gif" />
+				<include name="**/*.png" />
+			</fileset>
+		</copy>
+	</target>
 
-  <!-- ==================================================================== -->
-  <target name="tests"
-          depends="jar,jar.tests"
-          description="Run JUnit tests and produce an HTML test report">
-    <delete dir="${target.tests}" />
-    <mkdir dir="${target.tests}" />
-    <junit printsummary="on" haltonfailure="no">
-      <jvmarg value="-Xms128m"/>
-      <jvmarg value="-Xmx512m"/>
-      <classpath>
-        <pathelement path="${classes}" />
-      </classpath>
-      <classpath refid="test.class.path" />
-      <formatter type="xml"/>
-      <batchtest fork="yes" todir="${target.tests}">
-        <fileset dir="${src.tests}">
-          <include name="${cases}" />
-        </fileset>
-      </batchtest>
-    </junit>
-    <junitreport todir="${target.tests}">
-      <fileset dir="${target.tests}">
-        <include name="TEST-*.xml"/>
-      </fileset>
-      <report format="frames"
-              styledir="develop/reports"
-         todir="${target}/www/reports/tests"/>
-    </junitreport>
-  </target>
+	<!-- ==================================================================== -->
+	<target name="tests" depends="jar,jar.tests" description="Run JUnit tests and produce an HTML test report">
+		<delete dir="${target.tests}" />
+		<mkdir dir="${target.tests}" />
+		<junit printsummary="on" haltonfailure="no">
+			<jvmarg value="-Xms128m" />
+			<jvmarg value="-Xmx512m" />
+			<classpath>
+				<pathelement path="${classes}" />
+			</classpath>
+			<classpath refid="test.class.path" />
+			<formatter type="xml" />
+			<batchtest fork="yes" todir="${target.tests}">
+				<fileset dir="${src.tests}">
+					<include name="${cases}" />
+				</fileset>
+			</batchtest>
+		</junit>
+		<junitreport todir="${target.tests}">
+			<fileset dir="${target.tests}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="frames" styledir="develop/reports" todir="${target}/www/reports/tests" />
+		</junitreport>
+	</target>
 
 </project>
