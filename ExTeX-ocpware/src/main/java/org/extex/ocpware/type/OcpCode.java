@@ -832,4 +832,26 @@ public enum OcpCode {
         return instruction;
     }
 
+    /**
+     * Get the first word of the instruction withput argument.
+     *
+     * @return the instruction without argument
+     */
+    public int inst() {
+
+        return opcode << OPCODE_OFFSET;
+    }
+
+    /**
+     * Get the first word of the instruction with one argument.
+     *
+     * @param arg the argument
+     *
+     * @return the instruction with one argument
+     */
+    public int inst(int arg) {
+
+        return (opcode << OPCODE_OFFSET) | arg;
+    }
+
 }
