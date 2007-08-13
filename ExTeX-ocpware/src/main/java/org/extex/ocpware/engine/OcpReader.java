@@ -32,10 +32,30 @@ import org.extex.ocpware.type.OcpProgram;
 /**
  * This reader applies an &Omega;CP program to an input stream.
  * 
+ * <dl>
+ * <dt>Note:</dt>
+ * <dd>This class used buffers which are extended dynamically but not reduced.
+ * This is a potential memory leak.</dd>
+ * </dl>
+ * 
+ * @see OcpCode
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class OcpReader extends Reader {
+
+    /**
+     * The field <tt>ARITH_STACK_INCREMENT</tt> contains the increment for the
+     * arithmetic stack if the current stack is full.
+     */
+    private static final int ARITH_STACK_INCREMENT = 32;
+
+    /**
+     * The constant <tt>ARITH_STACK_SIZE</tt> contains the initial size of the
+     * arithmetic stack.
+     */
+    private static final int ARITH_STACK_SIZE = 32;
 
     /**
      * The constant <tt>LINE_SIZE_INCREMENT</tt> contains the increment of the
@@ -53,7 +73,13 @@ public class OcpReader extends Reader {
     /**
      * The field <tt>arithStack</tt> contains the stack for execution.
      */
-    private Stack<Integer> arithStack = new Stack<Integer>();
+    private int[] arithStack = new int[ARITH_STACK_SIZE];
+
+    /**
+     * The field <tt>arithStackPtr</tt> contains the pointer to the first free
+     * item on the arithmetic stack.
+     */
+    private int arithStackPtr = 0;
 
     /**
      * The field <tt>code</tt> contains the code currently run.
@@ -67,7 +93,7 @@ public class OcpReader extends Reader {
     private int inputLast = 0;
 
     /**
-     * The field <tt>first</tt> contains the index of the first character of
+     * The field <tt>start</tt> contains the index of the first character of
      * the prefix matched.
      */
     private int inputStart = 0;
@@ -109,7 +135,8 @@ public class OcpReader extends Reader {
 
     /**
      * The field <tt>pushbackBuffer</tt> contains the buffer for push-back
-     * characters.
+     * characters. The first character will never be read and processed but used
+     * to determine the beginning of the line.
      */
     private char[] pushbackBuffer = new char[LINIE_INITIAL_SIZE];
 
@@ -132,7 +159,9 @@ public class OcpReader extends Reader {
 
     /**
      * The field <tt>somePtr</tt> contains the pointer for delivering <i>some</i>
-     * values.
+     * values. If it is less then someEnd then the processing is not continued
+     * but a character is delivered from the line position pointed to in this
+     * field.
      */
     private int somePtr = 0;
 
@@ -195,11 +224,10 @@ public class OcpReader extends Reader {
      */
     private int arithPop() throws OcpEmptyStackException {
 
-        try {
-            return arithStack.pop().intValue();
-        } catch (EmptyStackException e) {
+        if (arithStackPtr == 0) {
             throw new OcpEmptyStackException();
         }
+        return arithStack[--arithStackPtr];
     }
 
     /**
@@ -209,7 +237,12 @@ public class OcpReader extends Reader {
      */
     private void arithPush(int x) {
 
-        arithStack.push(Integer.valueOf(x));
+        if (arithStackPtr >= arithStack.length) {
+            int[] newStack = new int[arithStack.length + ARITH_STACK_INCREMENT];
+            System.arraycopy(arithStack, 0, newStack, 0, arithStack.length);
+            arithStack = newStack;
+        }
+        arithStack[arithStackPtr++] = x;
     }
 
     /**
@@ -306,29 +339,9 @@ public class OcpReader extends Reader {
      * 
      * @return the arithStack
      */
-    public Stack<Integer> getArithStack() {
+    public int[] getArithStack() {
 
         return arithStack;
-    }
-
-    /**
-     * Getter for someEnd.
-     * 
-     * @return the someEnd
-     */
-    public int getSomeEnd() {
-
-        return someEnd;
-    }
-
-    /**
-     * Getter for somePtr.
-     * 
-     * @return the somePtr
-     */
-    public int getSomePtr() {
-
-        return somePtr;
     }
 
     /**
@@ -354,16 +367,6 @@ public class OcpReader extends Reader {
     public int getLast() {
 
         return inputLast;
-    }
-
-    /**
-     * Getter for start.
-     * 
-     * @return the start
-     */
-    public int getStart() {
-
-        return inputStart;
     }
 
     /**
@@ -398,6 +401,36 @@ public class OcpReader extends Reader {
     public OcpProgram getProgram() {
 
         return program;
+    }
+
+    /**
+     * Getter for someEnd.
+     * 
+     * @return the someEnd
+     */
+    public int getSomeEnd() {
+
+        return someEnd;
+    }
+
+    /**
+     * Getter for somePtr.
+     * 
+     * @return the somePtr
+     */
+    public int getSomePtr() {
+
+        return somePtr;
+    }
+
+    /**
+     * Getter for start.
+     * 
+     * @return the start
+     */
+    public int getStart() {
+
+        return inputStart;
     }
 
     /**
@@ -771,7 +804,8 @@ public class OcpReader extends Reader {
                     break;
 
                 case OcpCode.OP_GOTO_BEG:
-                    if (inputStart == 0) { // at beginning
+                    if (inputLast == 1
+                            || (inputLast >= 1 && line[inputLast - 1] == '\n')) {
                         pc = c & OcpCode.ARGUMENT_BIT_MASK;
                     }
                     break;
@@ -796,6 +830,11 @@ public class OcpReader extends Reader {
                         lineEnd = pushbackEnd;
                         pushbackBuffer = save;
                         pushbackEnd = 0;
+                        inputStart = 0;
+                        inputLast = 0;
+                    } else if (line[inputLast - 1] == '\n') {
+                        lineEnd -= inputLast;
+                        System.arraycopy(line, inputLast, line, 0, lineEnd);
                         inputStart = 0;
                         inputLast = 0;
                     }
