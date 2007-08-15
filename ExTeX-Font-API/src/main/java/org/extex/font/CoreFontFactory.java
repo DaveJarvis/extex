@@ -38,11 +38,16 @@ public interface CoreFontFactory extends ResourceFinder {
     /**
      * Create a manager for the back-end font.
      * 
-     * @param fontTypes the font types, which the back-end can use.
+     * @param fontTypes the font types, which the back-end can use. The order of
+     *        the entries in the list determine the preference for the font
+     *        format. This should be taken into account when several
+     *        alternatives are possible.
      * @return the new manager.
+     * 
      * @throws ConfigurationException from the configuration system.
      */
-    BackendFontManager createManager(List<String> fontTypes);
+    BackendFontManager createManager(List<String> fontTypes)
+            throws ConfigurationException;
 
     /**
      * Returns a font key for the font.
