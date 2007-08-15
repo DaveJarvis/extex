@@ -97,6 +97,7 @@ import org.extex.interpreter.type.PrefixCode;
 import org.extex.interpreter.type.ProtectedCode;
 import org.extex.interpreter.unit.UnitInfo;
 import org.extex.language.LanguageManager;
+import org.extex.resource.ResourceFinder;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.exception.CatcodeException;
 import org.extex.scanner.type.Catcode;
@@ -1231,19 +1232,20 @@ public abstract class Max
      * Load a unit.
      * 
      * @param name the name of the configuration
+     * @param resourceFinder the resource finder
      * 
      * @throws ConfigurationException in case of an error
      * 
-     * @see org.extex.interpreter.Interpreter#loadUnit(java.lang.String)
+     * @see org.extex.interpreter.Interpreter#loadUnit(String, ResourceFinder)
      */
-    public void loadUnit(String name) {
+    public void loadUnit(String name, ResourceFinder resourceFinder) {
 
         Configuration unitConfig =
                 ConfigurationFactory.newInstance("unit/" + name);
 
         try {
             LoadUnit.loadUnit(unitConfig, getContext(), this, getTypesetter(),
-                getLogger(), outFactory);
+                getLogger(), outFactory, resourceFinder);
         } catch (GeneralException e) {
             Throwable cause = e.getCause();
             if (cause instanceof ConfigurationException) {

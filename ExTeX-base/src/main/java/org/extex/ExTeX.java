@@ -1073,7 +1073,7 @@ public class ExTeX {
                 for (Iterator<Configuration> iterator = config.iterator("unit"); iterator
                     .hasNext();) {
                     LoadUnit.loadUnit(iterator.next(), context, interpreter,
-                        null, logger, outFactory);
+                        null, logger, outFactory, finder);
                 }
 
             } finally {
@@ -1216,7 +1216,7 @@ public class ExTeX {
      * @param finder the resource finder if one is requested by the document
      *        writer
      * @param fontFactory the font factory for the document writer
-     *
+     * 
      * @return the new document writer
      * 
      * @throws DocumentWriterException in case of an error
@@ -1313,7 +1313,7 @@ public class ExTeX {
         if (units != null) {
             for (String s : units.split(":")) {
                 if (!s.equals("")) {
-                    interpreter.loadUnit(s);
+                    interpreter.loadUnit(s, finder);
                 }
             }
         }

@@ -26,6 +26,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.file.AbstractFileCode;
@@ -37,14 +38,24 @@ import org.extex.unit.omega.ocp.util.Ocp;
  * <doc name="ocp">
  * <h3>The Primitive <tt>\ocp</tt></h3>
  * <p>
- * TODO missing documentation
+ * The primitive <tt>\ocp</tt> can be used to define a control sequence which
+ * holds an &Omega;CP program.
  * </p>
+ * <p>
+ * This primitive is an assignment. This means that the value of
+ * <tt>\globaldefs</tt> and <tt>\afterassignment</tt> are taken into account.
+ * </p>
+ *
  * <h4>Syntax</h4>
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;ocp&rang;
- *      &rarr; <tt>\ocp</tt> ...  </pre>
+ *      &rarr; &lang;prefix&rang; <tt>\ocp</tt> {@linkplain
+ *       org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
+ *       &lang;control sequence&rang;}  {@linkplain
+ *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
+ *        &lang;equals&rang;} &lang;resource name&rang;  </pre>
  * 
  * <h4>Examples</h4>
  * 
@@ -91,10 +102,25 @@ public class OcpPrimitive extends AbstractFileCode implements ResourceAware {
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws TypesetterException, HelpingException {
 
+        long globaldef = context.getCount("globaldefs").getValue();
+        if (globaldef != 0) {
+            prefix.setGlobal((globaldef > 0));
+        }
+
         CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
         String file = scanFileName(context, source);
-        context.setCode(cs, Ocp.load(file, finder), prefix.clearGlobal());
+        Ocp ocp = Ocp.load(file, finder);
+        if (ocp == null) {
+            throw new HelpingException(getLocalizer(), "message", file);
+        }
+        context.setCode(cs, ocp, prefix.clearGlobal());
+
+        Token afterassignment = context.getAfterassignment();
+        if (afterassignment != null) {
+            context.setAfterassignment(null);
+            source.push(afterassignment);
+        }
     }
 
     /**

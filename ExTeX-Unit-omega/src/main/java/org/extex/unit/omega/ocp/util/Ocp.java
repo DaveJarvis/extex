@@ -25,16 +25,29 @@ import java.io.Serializable;
 
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.Code;
+import org.extex.ocpware.compiler.exception.AliasDefinedException;
+import org.extex.ocpware.compiler.exception.AliasNotDefinedException;
+import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
+import org.extex.ocpware.compiler.exception.MissingExpressionsException;
+import org.extex.ocpware.compiler.exception.StateDefinedException;
+import org.extex.ocpware.compiler.exception.StateNotDefinedException;
+import org.extex.ocpware.compiler.exception.SyntaxException;
+import org.extex.ocpware.compiler.exception.TableDefinedException;
+import org.extex.ocpware.compiler.exception.TableNotDefinedException;
+import org.extex.ocpware.compiler.parser.CompilerState;
+import org.extex.ocpware.type.OcpProgram;
 import org.extex.resource.ResourceFinder;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a loaded OCP instance. It encapsulates an &Omega;CP
+ * program.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4411 $
@@ -53,7 +66,7 @@ public class Ocp implements Code, OcpConvertible, Serializable {
      * @param resource the name of the resource
      * @param finder the resource finder
      * 
-     * @return the OCP encountered
+     * @return the OCP encountered or <code>null</code> if none is found
      * 
      * @throws HelpingException in case of an error
      * @throws ConfigurationException in case of an configuration error
@@ -65,7 +78,55 @@ public class Ocp implements Code, OcpConvertible, Serializable {
         InputStream stream = null;
         try {
             stream = finder.findResource(resource, "ocp");
-            return new Ocp(resource, stream);
+            if (stream != null) {
+                return new Ocp(resource, OcpProgram.load(stream));
+            }
+
+            stream = finder.findResource(resource, "otp");
+            if (stream != null) {
+                return new Ocp(resource, new CompilerState(stream).compile());
+            }
+
+        } catch (AliasNotDefinedException e) {
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(Ocp.class), "alias.not.defined", //
+                e.getMessage());
+        } catch (StateNotDefinedException e) {
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(Ocp.class), "state.not.defined", //
+                e.getMessage());
+        } catch (TableNotDefinedException e) {
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(Ocp.class), "table.not.defined", //
+                e.getMessage());
+        } catch (StateDefinedException e) {
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(Ocp.class), "state.defined", //
+                e.getMessage());
+        } catch (SyntaxException e) {
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(Ocp.class), "syntax.exception", //
+                e.getMessage());
+        } catch (TableDefinedException e) {
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(Ocp.class), "table.defined", //
+                e.getMessage());
+        } catch (AliasDefinedException e) {
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(Ocp.class), "alias.defined", //
+                e.getMessage());
+        } catch (MissingExpressionsException e) {
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(Ocp.class), "missing expression", //
+                e.getMessage());
+        } catch (ArgmentTooBigException e) {
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(Ocp.class), "argument.too.big", //
+                e.getMessage());
+        } catch (IOException e) {
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(Ocp.class), "io.exception", //
+                e.getMessage());
         } finally {
             if (stream != null) {
                 try {
@@ -75,54 +136,60 @@ public class Ocp implements Code, OcpConvertible, Serializable {
                 }
             }
         }
+        return null;
     }
 
     /**
-     * The field <tt>name</tt> contains the name.
+     * The field <tt>name</tt> contains the name of the resource.
      */
     private String name;
 
     /**
-     * The field <tt>ocp</tt> contains the ...
+     * The field <tt>program</tt> contains the program contained in this
+     * instance.
      */
-    private Ocp ocp;
+    private OcpProgram program;
 
     /**
      * Creates a new object.
      * 
      * @param resource the name of the resource
-     * @param stream the stream to read the resource from
+     * @param program the program
+     * 
+     * @throws HelpingException in case of an error
      */
-    public Ocp(String resource, InputStream stream) {
+    public Ocp(String resource, OcpProgram program) throws HelpingException {
 
         super();
-        // TODO gene: load unimplemented
+        this.name = resource;
+        this.program = program;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.omega.ocp.util.OcpConvertible#convertOcp(org.extex.interpreter.context.Context,
+     * @see org.extex.unit.omega.ocp.util.OcpConvertible#convertOcp(
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Ocp convertOcp(Context context, TokenSource source,
             Typesetter typesetter) {
 
-        return ocp;
+        return this;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.Code#execute(org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        // TODO gene: unimplemented
-        throw new RuntimeException("unimplemented");
+        throw new HelpingException(LocalizerFactory.getLocalizer(Ocp.class),
+            "message");
     }
 
     /**
@@ -135,6 +202,16 @@ public class Ocp implements Code, OcpConvertible, Serializable {
     public String getName() {
 
         return name;
+    }
+
+    /**
+     * Getter for program.
+     * 
+     * @return the program
+     */
+    public OcpProgram getProgram() {
+
+        return program;
     }
 
     /**
@@ -170,6 +247,16 @@ public class Ocp implements Code, OcpConvertible, Serializable {
     public void setName(String name) {
 
         this.name = name;
+    }
+
+    /**
+     * Setter for program.
+     * 
+     * @param program the program to set
+     */
+    public void setProgram(OcpProgram program) {
+
+        this.program = program;
     }
 
 }

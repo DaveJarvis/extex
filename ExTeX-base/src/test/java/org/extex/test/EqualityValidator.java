@@ -44,7 +44,7 @@ public class EqualityValidator implements Validator {
     /**
      * Creates a new object.
      * 
-     * @param comment the error message coment
+     * @param comment the error message comment
      * @param expected the expected value or <code>null</code> to accept
      *        anything
      */

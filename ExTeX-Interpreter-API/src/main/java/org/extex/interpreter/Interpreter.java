@@ -30,6 +30,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.exception.ErrorLimitException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.loader.LoaderException;
+import org.extex.resource.ResourceFinder;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.typesetter.Typesetter;
@@ -102,10 +103,12 @@ public interface Interpreter extends TokenSource {
      * Load a unit.
      * 
      * @param name the name of the configuration
+     * @param finder the resource finder
      * 
      * @throws ConfigurationException in case of an error
      */
-    void loadUnit(String name) throws ConfigurationException;
+    void loadUnit(String name, ResourceFinder finder)
+            throws ConfigurationException;
 
     /**
      * Process the current token streams by repeatedly reading a single token
@@ -139,7 +142,8 @@ public interface Interpreter extends TokenSource {
     void run(TokenStream stream)
             throws ConfigurationException,
                 ErrorLimitException,
-                HelpingException, TypesetterException;
+                HelpingException,
+                TypesetterException;
 
     /**
      * Setter for the context. Use with care!

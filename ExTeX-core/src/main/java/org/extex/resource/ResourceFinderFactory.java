@@ -32,18 +32,17 @@ import org.extex.framework.configuration.exception.ConfigurationMissingAttribute
 import org.extex.framework.configuration.exception.ConfigurationNoSuchMethodException;
 import org.extex.framework.logger.LogEnabled;
 
-
 /**
  * This class provides a factory for ResourceFinders.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class ResourceFinderFactory {
 
     /**
-     * The constant <tt>CLASS_ATTRIBUTE</tt> contains the name of the attribute
-     * containing the class name.
+     * The constant <tt>CLASS_ATTRIBUTE</tt> contains the name of the
+     * attribute containing the class name.
      */
     private static final String CLASS_ATTRIBUTE = "class";
 
@@ -57,20 +56,20 @@ public class ResourceFinderFactory {
 
     /**
      * Get an instance of a resource finder.
-     *
+     * 
      * @param config the configuration to use
      * @param logger the logger to pass to the Resource finder elements
      * @param properties the properties to pass to the resource finder elements
      * @param provider the interaction provider
-     *
+     * 
      * @return the resource finder
-     *
-     * @throws ConfigurationException in cse of an error in the configuration
-     *  or during instantiation
+     * 
+     * @throws ConfigurationException in case of an error in the configuration
+     *         or during instantiation
      */
     public ResourceFinder createResourceFinder(Configuration config,
-            Logger logger, Properties properties,
-            InteractionIndicator provider) throws ConfigurationException {
+            Logger logger, Properties properties, InteractionIndicator provider)
+            throws ConfigurationException {
 
         ResourceFinderList list = new ResourceFinderList();
 
@@ -80,15 +79,16 @@ public class ResourceFinderFactory {
             String classname = cfg.getAttribute(CLASS_ATTRIBUTE);
             if (classname == null) {
                 throw new ConfigurationMissingAttributeException(
-                        CLASS_ATTRIBUTE, cfg);
+                    CLASS_ATTRIBUTE, cfg);
             }
 
             ResourceFinder finder;
 
             try {
-                finder = (ResourceFinder) (Class.forName(classname)
-                        .getConstructor(new Class[]{Configuration.class})
-                        .newInstance(new Object[]{cfg}));
+                finder =
+                        (ResourceFinder) (Class.forName(classname)
+                            .getConstructor(new Class[]{Configuration.class})
+                            .newInstance(new Object[]{cfg}));
             } catch (IllegalArgumentException e) {
                 throw new ConfigurationInstantiationException(e);
             } catch (SecurityException e) {

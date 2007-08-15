@@ -19,21 +19,65 @@
 
 package org.extex.unit.omega.ocp.util;
 
+import org.extex.core.exception.helping.HelpingException;
+import org.extex.framework.i18n.LocalizerFactory;
+import org.extex.interpreter.Flags;
+import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.context.Context;
+import org.extex.interpreter.type.AbstractCode;
+import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
+import org.extex.unit.omega.ocp.Addafterocplist;
+
 /**
  * TODO gene: missing JavaDoc.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class OcpList {
+public class OcpList extends AbstractCode {
+
+    /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     *
+     * 
+     * @param codeName
      */
-    public OcpList() {
+    public OcpList(String codeName) {
 
-        super();
+        super(codeName);
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param value the index
+     * @param prog the program
+     */
+    public void add(long value, Ocp prog) {
+
+        // TODO gene: add unimplemented
+        throw new RuntimeException("unimplemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractCode#execute(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     */
+    @Override
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
+
+        throw new HelpingException(LocalizerFactory
+            .getLocalizer(Addafterocplist.class), "message");
     }
 
 }

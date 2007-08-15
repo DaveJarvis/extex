@@ -23,10 +23,13 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.AbstractAssignment;
+import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.unit.omega.ocp.util.OcpList;
+import org.extex.unit.omega.ocp.util.OcpListBuilder;
 
 /**
  * This class provides an implementation for the primitive <code>\ocplist</code>.
@@ -54,7 +57,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
-public class OcplistPrimitive extends AbstractCode {
+public class OcplistPrimitive extends AbstractAssignment {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -75,19 +78,30 @@ public class OcplistPrimitive extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
+    public void assign(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
+        Code code;
+        OcpList list = new OcpList("");
 
-        // TODO gene: unimplemented
-        throw new RuntimeException("unimplemented");
+        do {
+            CodeToken t = source.getControlSequence(context, typesetter);
+            code = context.getCode(t);
+            if (!(code instanceof OcpListBuilder)) {
+                throw new HelpingException(getLocalizer(), "Message");
+            }
+
+        } while (((OcpListBuilder) code).build(list, context, source,
+            typesetter));
+
+        context.setCode(cs, list, prefix.clearGlobal());
     }
 
 }

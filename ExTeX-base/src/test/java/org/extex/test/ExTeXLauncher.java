@@ -174,7 +174,7 @@ public class ExTeXLauncher extends TestCase {
     /**
      * The field <tt>SEP</tt> contains the separator for properties.
      */
-    private static final String SEP = ":";
+    private static final String SEP = System.getProperty("path.separator", ":");
 
     /**
      * The constant <tt>TERM</tt> contains the terminating string for output.
@@ -208,8 +208,12 @@ public class ExTeXLauncher extends TestCase {
 
         provide(properties, "extex.output", "test-plain");
         provide(properties, "extex.interaction", "batchmode");
+        provide(properties, "extex.texinputs", //
+            "." + SEP + "../texmf/src/texmf/test/texmf" + SEP + //
+                    "../texmf/src/main/texmf" + SEP + //
+                    "../texmf/src/texmf");
         provide(properties, "extex.fonts", //
-            "../texmf/src/texmf/test/texmf" + SEP + //
+            "." + SEP + "../texmf/src/texmf/test/texmf" + SEP + //
                     "../texmf/src/main/texmf" + SEP + //
                     "../texmf/src/texmf");
         provide(properties, "extex.nobanner", "true");
@@ -419,6 +423,10 @@ public class ExTeXLauncher extends TestCase {
         } catch (IOException e) {
             fail("I/O error: " + e.getLocalizedMessage());
         } catch (GeneralException e) {
+            if (e.getCause() != null
+                    && e.getCause() instanceof RuntimeException) {
+                fail("Error: " + e.getLocalizedMessage());
+            }
             errorP = true;
         } catch (Throwable e) {
             fail("Error: " + e.getLocalizedMessage());

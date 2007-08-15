@@ -39,6 +39,8 @@ import org.extex.interpreter.unit.Loader;
 import org.extex.interpreter.unit.StartableUnit;
 import org.extex.interpreter.unit.UnitInfo;
 import org.extex.interpreter.unit.UnitInfoFactory;
+import org.extex.resource.ResourceAware;
+import org.extex.resource.ResourceFinder;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.CodeToken;
@@ -100,13 +102,15 @@ public final class LoadUnit extends AbstractFactory {
      * @param typesetter the typesetter
      * @param logger the logger to use
      * @param outputFactory the output stream factory
+     * @param resourcefinder the resource finder
      * 
      * @throws ConfigurationException in case of a configuration error
      * @throws GeneralException in case of an error
      */
     public static void loadUnit(Configuration configuration, Context context,
             TokenSource source, Typesetter typesetter, Logger logger,
-            OutputStreamFactory outputFactory) throws GeneralException {
+            OutputStreamFactory outputFactory, ResourceFinder resourcefinder)
+            throws GeneralException {
 
         TokenFactory tokenFactory = context.getTokenFactory();
         LoadUnit primitiveFactory = new LoadUnit();
@@ -136,7 +140,7 @@ public final class LoadUnit extends AbstractFactory {
         Iterator<Configuration> iterator = configuration.iterator("primitives");
         while (iterator.hasNext()) {
             primitiveFactory.define(iterator.next(), tokenFactory, context,
-                typesetter, logger, outputFactory);
+                typesetter, logger, outputFactory, resourcefinder);
         }
 
         iterator = configuration.iterator("import");
@@ -192,6 +196,7 @@ public final class LoadUnit extends AbstractFactory {
      * @param typesetter the typesetter
      * @param outputLogger the logger to produce output to
      * @param outputFactory the factory for new output streams
+     * @param resourcefinder the resource finder
      * 
      * @throws GeneralException In case of an error
      * @throws ConfigurationException in case of an error
@@ -208,7 +213,8 @@ public final class LoadUnit extends AbstractFactory {
      */
     public void define(Configuration configuration, TokenFactory tokenFactory,
             Context context, Typesetter typesetter, Logger outputLogger,
-            OutputStreamFactory outputFactory) throws GeneralException {
+            OutputStreamFactory outputFactory, ResourceFinder resourcefinder)
+            throws GeneralException {
 
         enableLogging(outputLogger);
         UnicodeChar esc = UnicodeChar.get('\\');
@@ -237,6 +243,9 @@ public final class LoadUnit extends AbstractFactory {
             if (code instanceof OutputStreamConsumer) {
                 ((OutputStreamConsumer) code)
                     .setOutputStreamFactory(outputFactory);
+            }
+            if (code instanceof ResourceAware) {
+                ((ResourceAware) code).setResourceFinder(resourcefinder);
             }
         }
     }

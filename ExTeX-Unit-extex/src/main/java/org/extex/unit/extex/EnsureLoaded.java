@@ -35,6 +35,8 @@ import org.extex.interpreter.LoadUnit;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.resource.ResourceAware;
+import org.extex.resource.ResourceFinder;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -77,7 +79,8 @@ import org.extex.typesetter.exception.TypesetterException;
 public class EnsureLoaded extends AbstractCode
         implements
             OutputStreamConsumer,
-            LogEnabled {
+            LogEnabled,
+            ResourceAware {
 
     /**
      * The constant <tt>CONFIG_UNIT</tt> contains the prefix for the path of
@@ -89,7 +92,7 @@ public class EnsureLoaded extends AbstractCode
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>logger</tt> contains the logger to use.
@@ -100,6 +103,11 @@ public class EnsureLoaded extends AbstractCode
      * The field <tt>outFactory</tt> contains the output factory.
      */
     private transient OutputStreamFactory outFactory;
+
+    /**
+     * The field <tt>resourcefinder</tt> contains the resource finder.
+     */
+    private ResourceFinder resourcefinder;
 
     /**
      * Creates a new object.
@@ -143,7 +151,7 @@ public class EnsureLoaded extends AbstractCode
             Configuration configuration =
                     ConfigurationFactory.newInstance(CONFIG_UNIT + configName);
             LoadUnit.loadUnit(configuration, context, source, typesetter,
-                logger, outFactory);
+                logger, outFactory, resourcefinder);
         } catch (HelpingException e) {
             throw e;
         } catch (GeneralException e) {
@@ -165,6 +173,17 @@ public class EnsureLoaded extends AbstractCode
     public void setOutputStreamFactory(OutputStreamFactory factory) {
 
         this.outFactory = factory;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.resource.ResourceAware#setResourceFinder(
+     *      org.extex.resource.ResourceFinder)
+     */
+    public void setResourceFinder(ResourceFinder finder) {
+
+        resourcefinder = finder;
     }
 
 }

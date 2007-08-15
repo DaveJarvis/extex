@@ -29,6 +29,8 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.unit.omega.ocp.util.OcpList;
+import org.extex.unit.omega.ocp.util.OcpListBuilder;
 
 /**
  * This class provides an implementation for the primitive
@@ -37,13 +39,15 @@ import org.extex.typesetter.exception.TypesetterException;
  * <doc name="nullocplist">
  * <h3>The Primitive <tt>\nullocplist</tt></h3>
  * <p>
- * TODO missing documentation
+ * The primitive <tt>\nullocplist</tt> can be used to build up an &Omega;PC
+ * list. It is valid in the context of the primitive <tt>\ocplist</tt> only.
  * </p>
+ * 
  * <h4>Syntax</h4>
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
- *    &lang;popocplist&rang;
+ *    &lang;nullocplist&rang;
  *      &rarr; <tt>\nullocplist</tt>  </pre>
  * 
  * <h4>Examples</h4>
@@ -57,7 +61,10 @@ import org.extex.typesetter.exception.TypesetterException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
-public class Nullocplist extends AbstractCode implements LogEnabled {
+public class Nullocplist extends AbstractCode
+        implements
+            LogEnabled,
+            OcpListBuilder {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -78,6 +85,19 @@ public class Nullocplist extends AbstractCode implements LogEnabled {
     public Nullocplist(String name) {
 
         super(name);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.unit.omega.ocp.util.OcpListBuilder#build( OcpList,
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     */
+    public boolean build(OcpList list, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException {
+
+        return false;
     }
 
     /**

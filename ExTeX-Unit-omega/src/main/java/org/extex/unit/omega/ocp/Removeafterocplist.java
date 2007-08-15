@@ -20,12 +20,15 @@
 package org.extex.unit.omega.ocp;
 
 import org.extex.core.exception.helping.HelpingException;
+import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.unit.omega.ocp.util.OcpList;
+import org.extex.unit.omega.ocp.util.OcpListBuilder;
 
 /**
  * This class provides an implementation for the primitive
@@ -34,14 +37,16 @@ import org.extex.typesetter.exception.TypesetterException;
  * <doc name="removeafterocplist">
  * <h3>The Primitive <tt>\removeafterocplist</tt></h3>
  * <p>
- * TODO missing documentation
+ * The primitive <tt>\removeafterocplist</tt> can be used to build up an
+ * &Omega;PC list. It is valid in the context of the primitive <tt>\ocplist</tt>
+ * only.
  * </p>
  * <h4>Syntax</h4>
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;removeafterocplist&rang;
- *      &rarr; ...  </pre>
+ *      &rarr; <tt>\removeafterocplist</tt> ...  </pre>
  * 
  * <h4>Examples</h4>
  * 
@@ -54,7 +59,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
-public class Removeafterocplist extends AbstractCode {
+public class Removeafterocplist extends AbstractCode implements OcpListBuilder {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -83,8 +88,21 @@ public class Removeafterocplist extends AbstractCode {
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        // TODO gene: unimplemented
-        throw new RuntimeException("unimplemented");
+        throw new HelpingException(LocalizerFactory
+            .getLocalizer(Removeafterocplist.class), "message");
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.unit.omega.ocp.util.OcpListBuilder#build(OcpList,
+     *      org.extex.interpreter.context.Context, org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     */
+    public boolean build(OcpList list, Context context, TokenSource source, Typesetter typesetter)
+            throws HelpingException {
+
+        // TODO gene: build unimplemented
+        return true;
     }
 
 }

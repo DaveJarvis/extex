@@ -36,11 +36,11 @@ import org.extex.framework.configuration.exception.ConfigurationMissingException
 /**
  * This file finder searches for the file in different directories and with
  * several extensions.
- *
+ * 
  * <h2>Configuration</h2>
- * The file finder can be configured to influence its actions.
- * The following example shows a configuration for a file finder:
- *
+ * The file finder can be configured to influence its actions. The following
+ * example shows a configuration for a file finder:
+ * 
  * <pre>
  * &lt;Finder class="de.dante.util.resource.FileFinder"
  *         trace="false"
@@ -67,49 +67,54 @@ import org.extex.framework.configuration.exception.ConfigurationMissingException
  *   &lt;/default&gt;
  * &lt;/Finder&gt;
  * </pre>
- *
+ * 
  * <p>
- *  Whenever a resource is sought its type is used to find the appropriate
- *  parameters for the search. If the sub-configuration with the name of the
- *  type exists then this sub-configuration is used. For instance if the
- *  resource <tt>tex</tt> with the type <tt>fmt</tt> is sought then the
- *  sub-configuration <tt>fmt</tt> determines how to find this file.
+ * Whenever a resource is sought its type is used to find the appropriate
+ * parameters for the search. If the sub-configuration with the name of the type
+ * exists then this sub-configuration is used. For instance if the resource
+ * <tt>tex</tt> with the type <tt>fmt</tt> is sought then the
+ * sub-configuration <tt>fmt</tt> determines how to find this file.
  * </p>
  * <p>
- *  If no sub-configuration of the given type is present then the attribute
- *  <tt>default</tt> is used to find the default sub-configuration. In the
- *  example given above this default configuration is called <tt>default</tt>.
- *  Nevertheless it would also be possible to point the default configuration
- *  to another existing configuration. The attribute <tt>default</tt> is
- *  mandatory.
+ * If no sub-configuration of the given type is present then the attribute
+ * <tt>default</tt> is used to find the default sub-configuration. In the
+ * example given above this default configuration is called <tt>default</tt>.
+ * Nevertheless it would also be possible to point the default configuration to
+ * another existing configuration. The attribute <tt>default</tt> is
+ * mandatory.
  * </p>
  * <p>
- *  Each sub-configuration takes the tags <tt>path</tt> and <tt>extension</tt>
- *  in arbitrary number.
- *  <tt>path</tt> contains the path prepended before the resource name.
- *  <tt>extension</tt> contains the extension appended after the resource name.
+ * Each sub-configuration takes the tags <tt>path</tt> and <tt>extension</tt>
+ * in arbitrary number. <tt>path</tt> contains the path prepended before the
+ * resource name. <tt>extension</tt> contains the extension appended after the
+ * resource name.
  * </p>
  * <p>
- *  <tt>path</tt> can carry the attribute <tt>property</tt>. In this case the
- *  value is ignored and the value is taken from the property named in the
- *  attribute. Otherwise the value of the tag is taken as path. The value taken
- *  from the property can contain several paths. They are separated by the
- *  separator specified for the platform. For instance on windows the separator
- *  <tt>;</tt> is used and on Unix the seprator <tt>:</tt> is used.
+ * <tt>path</tt> can carry the attribute <tt>property</tt>. In this case
+ * the value is ignored and the value is taken from the property named in the
+ * attribute. Otherwise the value of the tag is taken as path. The value taken
+ * from the property can contain several paths. They are separated by the
+ * separator specified for the platform. For instance on windows the separator
+ * <tt>;</tt> is used and on Unix the separator <tt>:</tt> is used.
  * </p>
  * <p>
- *  All combinations of path, resource name and extension are tried in turn.
- *  If one combination leads to a readable file then an input stream to this
- *  file is used.
+ * When the full file name contains the string <tt>{type}</tt> this string is
+ * replaced by the type currently sought. This can for instance be used in
+ * default specification to attach the type as extension.
  * </p>
  * <p>
- *  The attribute <tt>trace</tt> can be used to force a tracing of the actions
- *  in the log file. The tracing is performed only if a logger is present when
- *  needed. The tracing flag can be overwritten at run-time.
- *  The attribute <tt>trace</tt> is optional.
+ * All combinations of path, resource name and extension are tried in turn. If
+ * one combination leads to a readable file then an input stream to this file is
+ * used.
  * </p>
- *
- *
+ * <p>
+ * The attribute <tt>trace</tt> can be used to force a tracing of the actions
+ * in the log file. The tracing is performed only if a logger is present when
+ * needed. The tracing flag can be overwritten at run-time. The attribute
+ * <tt>trace</tt> is optional.
+ * </p>
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -128,9 +133,9 @@ public class FileFinder extends AbstractFinder implements PropertyAware {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param configuration the encapsulated configuration object
-     *
+     * 
      * @throws ConfigurationMissingException in case of an error
      */
     public FileFinder(Configuration configuration)
@@ -141,20 +146,24 @@ public class FileFinder extends AbstractFinder implements PropertyAware {
 
     /**
      * Try to find a file by adding extensions.
-     *
+     * 
      * @param name the name of the file to find
      * @param path the path of the file to find
      * @param cfg the configuration
-     *
+     * @param type the current type
+     * 
      * @return the input stream for the file or <code>null</code> if none was
-     *  found.
+     *         found.
      */
-    private InputStream find(String name, String path,
-            Configuration cfg) {
+    private InputStream find(String name, String path, Configuration cfg,
+            String type) {
+
+        String p = path.replaceAll("\\{type\\}", type);
 
         for (String ext : cfg.getValues(EXTENSION_TAG)) {
 
-            File file = new File(path, name + ext);
+            String n = (name + ext).replaceAll("\\{type\\}", type);
+            File file = new File(p, n);
 
             trace("Try", file.toString(), null);
             if (file.canRead()) {
@@ -175,23 +184,24 @@ public class FileFinder extends AbstractFinder implements PropertyAware {
 
     /**
      * Try to find a file on some paths by adding extensions.
-     *
+     * 
      * @param name the name of the file to find
      * @param paths a list of paths to explore
      * @param cfg the configuration
-     *
+     * @param type the current type
+     * 
      * @return the input stream for the file or <code>null</code> if none was
-     *  found.
+     *         found.
      */
     private InputStream find(String name, List<String> paths,
-            Configuration cfg) {
+            Configuration cfg, String type) {
 
         InputStream stream = null;
         Iterator<String> iterator = paths.iterator();
 
         while (stream == null && iterator.hasNext()) {
             String p = iterator.next();
-            stream = find(name, p, cfg);
+            stream = find(name, p, cfg, type);
         }
 
         return stream;
@@ -233,12 +243,12 @@ public class FileFinder extends AbstractFinder implements PropertyAware {
                         list.add(s);
                     }
 
-                    stream = find(name, list, cfg);
+                    stream = find(name, list, cfg, type);
                 } else {
                     trace("UndefinedProperty", prop, null);
                 }
             } else {
-                stream = find(name, c.getValue(), cfg);
+                stream = find(name, c.getValue(), cfg, type);
             }
         }
 

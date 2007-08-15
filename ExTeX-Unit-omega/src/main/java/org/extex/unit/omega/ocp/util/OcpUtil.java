@@ -19,8 +19,6 @@
 
 package org.extex.unit.omega.ocp.util;
 
-import java.io.InputStream;
-
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.UndefinedControlSequenceException;
@@ -28,6 +26,7 @@ import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.Code;
+import org.extex.resource.ResourceFinder;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.SpaceToken;
 import org.extex.scanner.type.token.Token;
@@ -101,8 +100,8 @@ public final class OcpUtil {
 
         } else {
             source.push(t);
-            InputStream resource = null; // TODO gene: provide the stream
-            return new Ocp(scanOcpFileName(source, context), resource );
+            ResourceFinder finder = null; // TODO gene: provide a resource finder
+            return Ocp.load(scanOcpFileName(source, context), finder);
         }
 
         source.push(t);

@@ -63,11 +63,11 @@
       <path property="texinputs"/>
     </afm>
     <fontinfo>
-	    <extension>.fontinfo</extension>
-	    <path>.</path>
-	    <path>../texmf/src/texmf/fonts/afm</path>
-	    <path property="extex.fonts"/>
-	    <path property="texinputs"/>
+      <extension>.fontinfo</extension>
+      <path>.</path>
+      <path>../texmf/src/texmf/fonts/afm</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
     </fontinfo>
     <ttf>
       <extension>.ttf</extension>
@@ -111,6 +111,7 @@
       <path property="extex.fonts"/>
       <path>.</path>
       <extension></extension>
+      <extension>.{type}</extension>
     </default>
   </Finder>
   <Finder class="org.extex.resource.FileFinderRPathImpl"
