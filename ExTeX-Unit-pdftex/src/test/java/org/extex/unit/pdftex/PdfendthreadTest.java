@@ -30,13 +30,13 @@ import org.extex.test.NoFlagsButProtectedPrimitiveTester;
 public class PdfendthreadTest extends NoFlagsButProtectedPrimitiveTester {
 
     /**
-     * Creates a new namesect.
+     * Creates a new object.
      *
      * @param arg the name
      */
     public PdfendthreadTest(String arg) {
 
-        super(arg, "pdfendthread", "");
+        super(arg, "pdfendthread", "", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 

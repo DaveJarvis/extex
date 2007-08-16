@@ -23,7 +23,7 @@ import org.extex.test.NoFlagsButProtectedPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\pdfcatalog</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,30 +31,29 @@ public class PdfcatalogTest extends NoFlagsButProtectedPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public PdfcatalogTest(String arg) {
 
-        super(arg, "pdfcatalog", "{}", "");
+        super(arg, "pdfcatalog", "{}", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 
     /**
-     * <testcase primitive="\pdfcatalog">
-     *  Test case checking that ...
+     * <testcase primitive="\pdfcatalog"> Test case checking that ...
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testError1() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES + "a \\pdfcatalog b",
-                //--- output message ---
-                "Missing `{' inserted");
+        assertFailure(// --- input code ---
+            DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfcatalog b",
+            // --- output message ---
+            "Missing `{' inserted");
     }
 
-    //TODO implement more primitive specific test cases
+    // TODO implement more primitive specific test cases
 
 }

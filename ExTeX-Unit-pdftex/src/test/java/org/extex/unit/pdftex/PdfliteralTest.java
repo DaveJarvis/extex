@@ -36,7 +36,7 @@ public class PdfliteralTest extends NoFlagsButProtectedPrimitiveTester {
      */
     public PdfliteralTest(String arg) {
 
-        super(arg, "pdfliteral", "{}", "");
+        super(arg, "pdfliteral", "{}", "", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 
@@ -50,7 +50,7 @@ public class PdfliteralTest extends NoFlagsButProtectedPrimitiveTester {
     public void testError1() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES + "a \\pdfliteral b",
+                DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfliteral b",
                 //--- output message ---
                 "Missing `{' inserted");
     }

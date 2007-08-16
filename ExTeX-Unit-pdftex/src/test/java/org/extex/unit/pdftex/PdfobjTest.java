@@ -23,7 +23,7 @@ import org.extex.test.NoFlagsButImmediateAndProtectedPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\pdfobj</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,30 +31,28 @@ public class PdfobjTest extends NoFlagsButImmediateAndProtectedPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public PdfobjTest(String arg) {
 
-        super(arg, "pdfobj", "{}");
+        super(arg, "pdfobj", "{}", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 
     /**
-     * <testcase primitive="\pdfobj">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\pdfobj"> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testError1() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES + "a \\pdfobj b",
-                //--- output message ---
-                "Missing `{' inserted");
+        assertFailure(// --- input code ---
+            DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfobj b",
+            // --- output message ---
+            "Missing `{' inserted");
     }
 
-    //TODO implement more primitive specific test cases
+    // TODO implement more primitive specific test cases
 
 }

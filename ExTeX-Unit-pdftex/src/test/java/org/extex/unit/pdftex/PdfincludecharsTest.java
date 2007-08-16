@@ -23,7 +23,7 @@ import org.extex.test.NoFlagsButProtectedPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\pdfincludechars</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,30 +31,30 @@ public class PdfincludecharsTest extends NoFlagsButProtectedPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public PdfincludecharsTest(String arg) {
 
-        super(arg, "pdfincludechars", "\\f{}", "\\font\\f=cmr10 ");
+        super(arg, "pdfincludechars", "\\f{}", "\\font\\f=cmr10 "
+                + "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 
     /**
-     * <testcase primitive="\pdfincludechars">
-     *  Test case checking that ...
+     * <testcase primitive="\pdfincludechars"> Test case checking that ...
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testError1() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES + "a \\pdfincludechars b",
-                //--- output message ---
-                "Missing font identifier");
+        assertFailure(// --- input code ---
+            DEFINE_BRACES + "a \\pdfincludechars b",
+            // --- output message ---
+            "Missing font identifier");
     }
 
-    //TODO implement more primitive specific test cases
+    // TODO implement more primitive specific test cases
 
 }

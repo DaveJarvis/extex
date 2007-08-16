@@ -23,38 +23,38 @@ import org.extex.test.NoFlagsButImmediateAndProtectedPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\pdfthread</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
-public class PdfthreadTest extends NoFlagsButImmediateAndProtectedPrimitiveTester {
+public class PdfthreadTest
+        extends
+            NoFlagsButImmediateAndProtectedPrimitiveTester {
 
     /**
-     * Creates a new threadect.
-     *
+     * Creates a new object.
+     * 
      * @param arg the name
      */
     public PdfthreadTest(String arg) {
 
-        super(arg, "pdfthread", " name {a}{}");
+        super(arg, "pdfthread", " name {a}{}", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 
     /**
-     * <testcase primitive="\pdfthread">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\pdfthread"> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testError1() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES + "a \\pdfthread name b",
-                //--- output message ---
-                "Missing `{' inserted");
+        assertFailure(// --- input code ---
+            DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfthread name b",
+            // --- output message ---
+            "Missing `{' inserted");
     }
 
-    //TODO implement more primitive specific test cases
+    // TODO implement more primitive specific test cases
 
 }

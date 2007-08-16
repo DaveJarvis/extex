@@ -36,7 +36,7 @@ public class PdfdestTest extends NoFlagsButProtectedPrimitiveTester {
      */
     public PdfdestTest(String arg) {
 
-        super(arg, "pdfdest", " name {abc} fit", "a ");
+        super(arg, "pdfdest", " name {abc} fit", "a ", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 

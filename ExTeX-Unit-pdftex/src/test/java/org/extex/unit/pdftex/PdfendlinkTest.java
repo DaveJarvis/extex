@@ -30,13 +30,13 @@ import org.extex.test.NoFlagsButProtectedPrimitiveTester;
 public class PdfendlinkTest extends NoFlagsButProtectedPrimitiveTester {
 
     /**
-     * Creates a new namesect.
+     * Creates a new object.
      *
      * @param arg the name
      */
     public PdfendlinkTest(String arg) {
 
-        super(arg, "pdfendlink", "");
+        super(arg, "pdfendlink", "", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 

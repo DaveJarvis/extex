@@ -36,7 +36,7 @@ public class PdfrefximageTest extends NoFlagsButProtectedPrimitiveTester {
      */
     public PdfrefximageTest(String arg) {
 
-        super(arg, "pdfrefximage", "1", "");
+        super(arg, "pdfrefximage", "1", "", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 
@@ -50,7 +50,7 @@ public class PdfrefximageTest extends NoFlagsButProtectedPrimitiveTester {
     public void testError1() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES + "a \\pdfrefximage b",
+                DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfrefximage b",
                 //--- output message ---
                 "Missing number, treated as zero");
     }

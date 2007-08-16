@@ -23,7 +23,7 @@ import org.extex.test.NoFlagsButProtectedPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\pdfoutline</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,30 +31,29 @@ public class PdfoutlineTest extends NoFlagsButProtectedPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public PdfoutlineTest(String arg) {
 
-        super(arg, "pdfoutline", " thread name {a}{}", "");
+        super(arg, "pdfoutline", " thread name {a}{}", "", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 
     /**
-     * <testcase primitive="\pdfoutline">
-     *  Test case checking that ...
+     * <testcase primitive="\pdfoutline"> Test case checking that ...
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testError1() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES + "a \\pdfoutline thread name a b",
-                //--- output message ---
-                "Missing `{' inserted");
+        assertFailure(// --- input code ---
+            DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfoutline thread name a b",
+            // --- output message ---
+            "Missing `{' inserted");
     }
 
-    //TODO implement more primitive specific test cases
+    // TODO implement more primitive specific test cases
 
 }

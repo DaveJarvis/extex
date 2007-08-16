@@ -23,7 +23,7 @@ import org.extex.test.NoFlagsButProtectedPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\pdffontname</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,30 +31,29 @@ public class PdffontnameTest extends NoFlagsButProtectedPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public PdffontnameTest(String arg) {
 
-        super(arg, "pdffontname", "\\f{}", "\\font\\f=cmr10 ");
+        super(arg, "pdffontname", "\\f{}", "\\font\\f=cmr10 ", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 
     /**
-     * <testcase primitive="\pdffontname">
-     *  Test case checking that ...
+     * <testcase primitive="\pdffontname"> Test case checking that ...
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testError1() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES + "a \\pdffontname b",
-                //--- output message ---
-                "Missing font identifier");
+        assertFailure(// --- input code ---
+            DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdffontname b",
+            // --- output message ---
+            "Missing font identifier");
     }
 
-    //TODO implement more primitive specific test cases
+    // TODO implement more primitive specific test cases
 
 }

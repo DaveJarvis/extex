@@ -23,7 +23,7 @@ import org.extex.test.count.AbstractReadonlyCountRegisterTester;
 
 /**
  * This is a test suite for the primitive <tt>\pdffontobjnum</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,15 +31,16 @@ public class PdffontobjnumTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public PdffontobjnumTest(String arg) {
 
-        super(arg, "pdffontobjnum", "\\f", "0", "\\font\\f cmr10 ");
+        super(arg, "pdffontobjnum", "\\f", "0", "\\font\\f cmr10 "
+                + "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 
-    //TODO implement more primitive specific test cases
+    // TODO implement more primitive specific test cases
 
 }

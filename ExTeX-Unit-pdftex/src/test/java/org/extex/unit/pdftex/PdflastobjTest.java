@@ -23,7 +23,7 @@ import org.extex.test.count.AbstractReadonlyCountRegisterTester;
 
 /**
  * This is a test suite for the primitive <tt>\pdflastobj</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,15 +31,15 @@ public class PdflastobjTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public PdflastobjTest(String arg) {
 
-        super(arg, "pdflastobj", "0");
+        super(arg, "pdflastobj", "0", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 
-    //TODO implement more primitive specific test cases
+    // TODO implement more primitive specific test cases
 
 }

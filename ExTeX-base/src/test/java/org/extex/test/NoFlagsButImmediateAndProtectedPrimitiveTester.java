@@ -43,6 +43,11 @@ public abstract class NoFlagsButImmediateAndProtectedPrimitiveTester
     private String args;
 
     /**
+     * The field <tt>prepare</tt> contains the ...
+     */
+    private String prepare = "";
+
+    /**
      * Creates a new object.
      *
      * @param name the name of the test case
@@ -58,6 +63,22 @@ public abstract class NoFlagsButImmediateAndProtectedPrimitiveTester
     }
 
     /**
+     * Creates a new object.
+     *
+     * @param name the name of the test case
+     * @param primitive the name of the primitive
+     * @param args additional arguments for the flag test
+     */
+    public NoFlagsButImmediateAndProtectedPrimitiveTester(String name,
+            String primitive, String args, String prepare) {
+
+        super(name);
+        this.primitive = primitive;
+        this.args = args;
+        this.prepare = prepare;
+    }
+
+    /**
      * <testcase>
      *  Test case checking that the <tt>\global</tt> flag leads to an error.
      * </testcase>
@@ -67,7 +88,7 @@ public abstract class NoFlagsButImmediateAndProtectedPrimitiveTester
     public void testNoGlobalFlag() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_CATCODES + "\\global\\" + primitive + args,
+                DEFINE_CATCODES + prepare + "\\global\\" + primitive + args,
                 //--- log message ---
                 "You can\'t use the prefix `\\global\' with the control sequence \\"
                         + primitive);
@@ -83,7 +104,7 @@ public abstract class NoFlagsButImmediateAndProtectedPrimitiveTester
     public void testNoLongFlag() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_CATCODES + "\\long\\" + primitive + args,
+                DEFINE_CATCODES + prepare + "\\long\\" + primitive + args,
                 //--- log message ---
                 "You can\'t use the prefix `\\long\' with the control sequence \\"
                         + primitive);
@@ -99,7 +120,7 @@ public abstract class NoFlagsButImmediateAndProtectedPrimitiveTester
     public void testNoOuterFlag() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_CATCODES + "\\outer\\" + primitive + args,
+                DEFINE_CATCODES + prepare + "\\outer\\" + primitive + args,
                 //--- log message ---
                 "You can\'t use the prefix `\\outer\' with the control sequence \\"
                         + primitive);

@@ -36,7 +36,7 @@ public class PdfxformTest extends NoFlagsButImmediateAndProtectedPrimitiveTester
      */
     public PdfxformTest(String arg) {
 
-        super(arg, "pdfxform", "0");
+        super(arg, "pdfxform", "0", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 
@@ -50,7 +50,7 @@ public class PdfxformTest extends NoFlagsButImmediateAndProtectedPrimitiveTester
     public void testError1() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES + "a \\pdfxform b",
+                DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfxform b",
                 //--- output message ---
                 "Missing number, treated as zero");
     }

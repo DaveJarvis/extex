@@ -36,7 +36,7 @@ public class PdfximageTest extends NoFlagsButImmediateAndProtectedPrimitiveTeste
      */
     public PdfximageTest(String arg) {
 
-        super(arg, "pdfximage", "{}");
+        super(arg, "pdfximage", "{}", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 
@@ -50,7 +50,7 @@ public class PdfximageTest extends NoFlagsButImmediateAndProtectedPrimitiveTeste
     public void testError1() throws Exception {
 
         assertFailure(//--- input code ---
-                DEFINE_BRACES + "a \\pdfximage b",
+                DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfximage b",
                 //--- output message ---
                 "Missing `{' inserted");
     }
