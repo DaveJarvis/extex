@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,17 +17,17 @@
  *
  */
 
-package org.extex.unit.omega.ocp;
+package org.extex.unit.omega.ocp.util;
 
 import org.extex.test.ExTeXLauncher;
 
 /**
- * This is a test suite for the primitive <tt>\nullocplist</tt>.
+ * This is a test suite for the primitives definex with <tt>\ocp</tt>.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class NullocplistTest extends ExTeXLauncher {
+public class OcpTest extends ExTeXLauncher {
 
     /**
      * The command line interface.
@@ -36,7 +36,7 @@ public class NullocplistTest extends ExTeXLauncher {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(NullocplistTest.class);
+        junit.textui.TestRunner.run(OcpTest.class);
     }
 
     /**
@@ -44,24 +44,36 @@ public class NullocplistTest extends ExTeXLauncher {
      * 
      * @param arg the name
      */
-    public NullocplistTest(String arg) {
+    public OcpTest(String arg) {
 
         super(arg);
         setConfig("omega-test");
     }
 
     /**
-     * <testcase primitive="\nullocplist"> Test case checking that
-     * <tt>\nullocplist</tt> can not be used in a normal mode. </testcase>
+     * <testcase> Test case checking that an OCP needs ... </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void testError1() throws Exception {
+    public void testErrEof1() throws Exception {
 
         assertFailure(// --- input code ---
-            "\\nullocplist",
+            "\\ocp\\x=../ExTeX-Unit-Omega/src/test/resources/destroy " + "\\x ",
             // --- output channel ---
             "To use ocps, use the \\pushocplist primitive");
+    }
+
+    /**
+     * <testcase> Test case checking that an OCP is showable. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test1() throws Exception {
+
+        assertFailure(// --- input code ---
+            "\\ocp\\x=../ExTeX-Unit-Omega/src/test/resources/destroy " + "\\show\\x ",
+            // --- output channel ---
+            "> \\x=select ocp ../ExTeX-Unit-Omega/src/test/resources/destroy.");
     }
 
     // TODO implement more primitive specific test cases

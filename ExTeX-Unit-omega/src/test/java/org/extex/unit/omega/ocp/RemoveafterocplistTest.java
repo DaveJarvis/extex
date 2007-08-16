@@ -22,12 +22,12 @@ package org.extex.unit.omega.ocp;
 import org.extex.test.ExTeXLauncher;
 
 /**
- * This is a test suite for the primitive <tt>\nullocplist</tt>.
+ * This is a test suite for the primitive <tt>\removeafterocplist</tt>.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class NullocplistTest extends ExTeXLauncher {
+public class RemoveafterocplistTest extends ExTeXLauncher {
 
     /**
      * The command line interface.
@@ -36,7 +36,7 @@ public class NullocplistTest extends ExTeXLauncher {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(NullocplistTest.class);
+        junit.textui.TestRunner.run(RemoveafterocplistTest.class);
     }
 
     /**
@@ -44,22 +44,22 @@ public class NullocplistTest extends ExTeXLauncher {
      * 
      * @param arg the name
      */
-    public NullocplistTest(String arg) {
+    public RemoveafterocplistTest(String arg) {
 
         super(arg);
         setConfig("omega-test");
     }
 
     /**
-     * <testcase primitive="\nullocplist"> Test case checking that
-     * <tt>\nullocplist</tt> can not be used in a normal mode. </testcase>
+     * <testcase primitive="\removeafterocplist"> Test case checking that
+     * <tt>\removeafterocplist</tt> can not be used in a normal mode. </testcase>
      * 
      * @throws Exception in case of an error
      */
     public void testError1() throws Exception {
 
         assertFailure(// --- input code ---
-            "\\nullocplist",
+            "\\removeafterocplist",
             // --- output channel ---
             "To use ocps, use the \\pushocplist primitive");
     }
