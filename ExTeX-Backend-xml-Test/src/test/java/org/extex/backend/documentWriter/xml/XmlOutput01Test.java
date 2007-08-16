@@ -19,6 +19,7 @@
 
 package org.extex.backend.documentWriter.xml;
 
+import java.io.File;
 import java.util.Properties;
 
 import org.extex.test.EqualityValidator;
@@ -43,6 +44,12 @@ public class XmlOutput01Test extends ExTeXLauncher {
     public XmlOutput01Test() {
 
         super("xml backend test 01");
+
+        setConfig("base-xml.xml");
+
+        // delete temp files after the test
+        new File("texput.log").deleteOnExit();
+
     }
 
     @Override
@@ -237,8 +244,8 @@ public class XmlOutput01Test extends ExTeXLauncher {
                 , "H" // 5
                 , "423362" // 6
                 , "655" // 7
-                , "458752" // 8
-                , "458752" // 9
+                , "197066752" // 8
+                , "197066752" // 9
         };
 
         // H
