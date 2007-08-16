@@ -225,9 +225,9 @@ public class OutputFactory extends AbstractFactory
             }
         }
 
-        Configuration c = getConfiguration();
+        Configuration config = getConfiguration();
         String format;
-        if (c != null) {
+        if (config != null) {
             format = selectConfiguration(ext).getAttribute(FORMAT_ATTRIBUTE);
         } else {
             format = "{0}{1}{2,number,0000}{3}";
@@ -266,9 +266,9 @@ public class OutputFactory extends AbstractFactory
             }
         }
 
-        if (c != null) {
+        if (config != null) {
             try {
-                Configuration cfg = c.getConfiguration(ext);
+                Configuration cfg = config.getConfiguration(ext);
                 Iterator<Configuration> iter = cfg.iterator(PATH_TAG);
                 while (iter.hasNext()) {
                     OutputStream os =
@@ -303,15 +303,12 @@ public class OutputFactory extends AbstractFactory
         }
 
         File file = new File(dir, filename);
-        if (file.canWrite()) {
-            try {
-                return new NamedOutputStream(file.toString(),
-                    new BufferedOutputStream(new FileOutputStream(file)));
-            } catch (FileNotFoundException e) {
-                // should not happen
-            }
+        try {
+            return new NamedOutputStream(file.toString(),
+                new BufferedOutputStream(new FileOutputStream(file)));
+        } catch (FileNotFoundException e) {
+            return null;
         }
-        return null;
     }
 
     /**
