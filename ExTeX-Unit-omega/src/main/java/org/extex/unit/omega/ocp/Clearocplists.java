@@ -27,7 +27,6 @@ import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.omega.OmegaExtension;
-import org.extex.unit.omega.ocp.util.OcpList;
 
 /**
  * This class provides an implementation for the primitive

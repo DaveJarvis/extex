@@ -26,15 +26,18 @@ import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.Code;
+import org.extex.ocpware.type.OcpProgram;
 import org.extex.resource.ResourceFinder;
+import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.SpaceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
+import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class contains utility methods.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4411 $
  */
@@ -49,17 +52,68 @@ public final class OcpUtil {
     }
 
     /**
+     * Scan an &Omega;CP file name.
+     * 
+     * <doc type="syntax" name="filename"> This method parses the following
+     * syntactic entity:
+     * 
+     * <pre class="syntax">
+     *   &lang;ocp file name&rang; </pre>
+     * 
+     * The scanning is performed in one of two ways:
+     * <ul>
+     * <li>If the first token is a left brace then a block is read until the
+     * matching right brace is found. On the way the tokens are expanded. </li>
+     * <li>Otherwise tokens are read until a space token is encountered. </li>
+     * </ul>
+     * 
+     * </doc>
+     * 
+     * @param context the processing context
+     * @param source the source for new tokens
+     * @param primitive the name of the primitive for reporting
+     * 
+     * @return the file name as string
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
+     */
+    public static String scanOcpFileName(Context context, TokenSource source,
+            String primitive) throws HelpingException, TypesetterException {
+
+        Token t = source.scanNonSpace(context);
+
+        if (t == null) {
+            throw new EofException(primitive);
+        } else if (t.isa(Catcode.LEFTBRACE)) {
+            source.push(t);
+            String name = source.scanTokensAsString(context, primitive);
+            return name;
+
+        }
+
+        StringBuffer sb = new StringBuffer(t.toText());
+
+        for (t = source.getToken(context); //
+        t != null && !(t instanceof SpaceToken); //
+        t = source.getToken(context)) {
+            sb.append(t.toText());
+        }
+
+        return sb.toString();
+    }
+
+    /**
      * Get an ocp file name.
-     *
+     * 
      * @param source the source for new tokens
      * @param context the interpreter context
-     *
+     * 
      * @return the ocp file name
-     *
+     * 
      * @throws HelpingException in case of an error
      */
-    public static String scanOcpFileName(TokenSource source,
-            Context context) throws HelpingException {
+    public static String scanOcpFileName(TokenSource source, Context context)
+            throws HelpingException {
 
         StringBuffer sb = new StringBuffer();
 
@@ -74,16 +128,15 @@ public final class OcpUtil {
 
     /**
      * Get an ocp.
-     *
-     * @param source the source for new tokens
      * @param context the interpreter context
+     * @param source the source for new tokens
      * @param typesetter the typesetter
-     *
+     * 
      * @return the ocp file name
-     *
+     * 
      * @throws HelpingException in case of an error
      */
-    public static Ocp scanOcp(TokenSource source, Context context,
+    public static Ocp scanOcp(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException {
 
         Token t = source.getToken(context);
@@ -95,19 +148,43 @@ public final class OcpUtil {
                 throw new UndefinedControlSequenceException(t.toString());
             } else if (code instanceof OcpConvertible) {
                 return ((OcpConvertible) code).convertOcp(context, source,
-                        typesetter);
+                    typesetter);
             }
 
         } else {
             source.push(t);
-            ResourceFinder finder = null; // TODO gene: provide a resource finder
+            ResourceFinder finder = null; // TODO gene: provide a resource
+            // finder
             return Ocp.load(scanOcpFileName(source, context), finder);
         }
 
         source.push(t);
         throw new HelpingException(
-                LocalizerFactory.getLocalizer(OcpUtil.class),
-                "Omega.MissingOcp");
+            LocalizerFactory.getLocalizer(OcpUtil.class), "Omega.MissingOcp");
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param context
+     * @param source
+     * @param typesetter
+     * @param primitive
+     *
+     * @return
+     *
+     * @throws HelpingException in case of an error
+     */
+    public static OcpProgram scanOcpCode(Context context, TokenSource source,
+            Typesetter typesetter, String primitive) throws HelpingException {
+
+        CodeToken cs = source.getControlSequence(context, typesetter);
+        Code code = context.getCode(cs);
+        if (!(code instanceof Ocp)) {
+            throw new OmegaOcpException(primitive);
+        }
+        return ((Ocp) code).getProgram();
+
     }
 
 }

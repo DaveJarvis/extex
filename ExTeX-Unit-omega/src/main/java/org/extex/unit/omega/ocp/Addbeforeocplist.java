@@ -26,13 +26,12 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
-import org.extex.interpreter.type.Code;
-import org.extex.scanner.type.token.CodeToken;
+import org.extex.ocpware.type.OcpProgram;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
-import org.extex.unit.omega.ocp.util.Ocp;
 import org.extex.unit.omega.ocp.util.OcpList;
 import org.extex.unit.omega.ocp.util.OcpListBuilder;
+import org.extex.unit.omega.ocp.util.OcpUtil;
 import org.extex.unit.omega.ocp.util.OmegaOcpException;
 
 /**
@@ -99,12 +98,10 @@ public class Addbeforeocplist extends AbstractCode implements OcpListBuilder {
         } catch (TypesetterException e) {
             throw new NoHelpException(e);
         }
-        CodeToken cs = source.getControlSequence(context, typesetter);
-        Code code = context.getCode(cs);
-        if (!(code instanceof Ocp)) {
-            throw new OmegaOcpException(getName());
-        }
-        list.addBefore(scaled, ((Ocp) code).getProgram());
+        OcpProgram prog =
+            OcpUtil.scanOcpCode(context, source, typesetter,
+                printableControlSequence(context));
+        list.addBefore(scaled, prog);
 
         return list;
     }

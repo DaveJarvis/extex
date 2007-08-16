@@ -23,14 +23,14 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 import org.extex.scanner.type.token.CodeToken;
-import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
-import org.extex.unit.base.file.AbstractFileCode;
 import org.extex.unit.omega.ocp.util.Ocp;
+import org.extex.unit.omega.ocp.util.OcpUtil;
 
 /**
  * This class provides an implementation for the primitive <code>\ocp</code>.
@@ -43,9 +43,10 @@ import org.extex.unit.omega.ocp.util.Ocp;
  * </p>
  * <p>
  * This primitive is an assignment. This means that the value of
- * <tt>\globaldefs</tt> and <tt>\afterassignment</tt> are taken into account.
+ * <tt>\globaldefs</tt> and <tt>\afterassignment</tt> are taken into
+ * account.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
  * The formal description of this primitive is the following:
  * 
@@ -68,7 +69,7 @@ import org.extex.unit.omega.ocp.util.Ocp;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
-public class OcpPrimitive extends AbstractFileCode implements ResourceAware {
+public class OcpPrimitive extends AbstractAssignment implements ResourceAware {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -94,33 +95,24 @@ public class OcpPrimitive extends AbstractFileCode implements ResourceAware {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
+    public void assign(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws TypesetterException, HelpingException {
-
-        long globaldef = context.getCount("globaldefs").getValue();
-        if (globaldef != 0) {
-            prefix.setGlobal((globaldef > 0));
-        }
 
         CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
-        String file = scanFileName(context, source);
-        Ocp ocp = Ocp.load(file, finder);
+        String resource =
+                OcpUtil.scanOcpFileName(context, source,
+                    printableControlSequence(context));
+        Ocp ocp = Ocp.load(resource, finder);
         if (ocp == null) {
-            throw new HelpingException(getLocalizer(), "message", file);
+            throw new HelpingException(getLocalizer(), "message", resource);
         }
         context.setCode(cs, ocp, prefix.clearGlobal());
-
-        Token afterassignment = context.getAfterassignment();
-        if (afterassignment != null) {
-            context.setAfterassignment(null);
-            source.push(afterassignment);
-        }
     }
 
     /**

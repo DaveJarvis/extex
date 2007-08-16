@@ -19,11 +19,8 @@
 
 package org.extex.unit.omega.ocp;
 
-import java.util.logging.Logger;
-
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
-import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -69,7 +66,6 @@ import org.extex.unit.omega.ocp.util.OmegaOcpException;
 public class Nullocplist extends AbstractCode
         implements
             Showable,
-            LogEnabled,
             OcpListBuilder {
 
     /**
@@ -77,11 +73,6 @@ public class Nullocplist extends AbstractCode
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
-
-    /**
-     * The field <tt>logger</tt> contains the logger.
-     */
-    private transient Logger logger;
 
     /**
      * Creates a new object.
@@ -104,19 +95,6 @@ public class Nullocplist extends AbstractCode
             Typesetter typesetter) throws HelpingException {
 
         return list;
-    }
-
-    /**
-     * Setter for the logger.
-     * 
-     * @param log the logger to use
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
-     */
-    public void enableLogging(Logger log) {
-
-        this.logger = log;
     }
 
     /**
