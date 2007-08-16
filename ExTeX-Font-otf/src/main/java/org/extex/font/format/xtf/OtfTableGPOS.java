@@ -272,9 +272,10 @@ public class OtfTableGPOS extends AbstractXtfTable
                 new XtfFeatureList(rar, de.getOffset() + featureListOffset);
 
         // Lookup List
-        lookupList =
-                new XtfLookupList(rar, de.getOffset() + lookupListOffset, this);
+        // lookupList =
+        // new XtfLookupList(rar, de.getOffset() + lookupListOffset, this);
 
+        // TODO mgn: error by reading the GPOS LinLibertine.ttf
     }
 
     // /**
