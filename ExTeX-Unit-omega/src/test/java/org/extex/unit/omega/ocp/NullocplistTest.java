@@ -52,7 +52,7 @@ public class NullocplistTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\nullocp"> Test case checking that
-     * <tt>\nullocplist</tt> ... </testcase>
+     * <tt>\nullocplist</tt> can not be used in a normal mode. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -61,7 +61,7 @@ public class NullocplistTest extends ExTeXLauncher {
         assertFailure(// --- input code ---
             "\\nullocplist",
             // --- output channel ---
-            "");
+            "To use ocps, use the \\pushocplist primitive");
     }
 
     // TODO implement more primitive specific test cases
