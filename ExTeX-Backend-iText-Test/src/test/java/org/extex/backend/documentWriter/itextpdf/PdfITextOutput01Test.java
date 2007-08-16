@@ -19,6 +19,7 @@
 
 package org.extex.backend.documentWriter.itextpdf;
 
+import java.io.File;
 import java.util.Properties;
 
 import org.extex.test.EqualityValidator;
@@ -44,6 +45,10 @@ public class PdfITextOutput01Test extends ExTeXLauncher {
     public PdfITextOutput01Test() {
 
         super("pdf (iText) backend test 01");
+
+        // delete temp files after the test
+        new File("texput.log").deleteOnExit();
+
     }
 
     @Override
