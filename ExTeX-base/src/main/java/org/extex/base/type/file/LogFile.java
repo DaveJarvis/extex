@@ -82,12 +82,12 @@ public class LogFile extends OutputFile {
     }
 
     /**
-     * Open the current file.
-     * 
-     * @see org.extex.scanner.type.file.OutFile#open()
+     * {@inheritDoc}
+     *
+     * @see org.extex.base.type.file.OutputFile#open(java.lang.String)
      */
     @Override
-    public void open() {
+    public void open(String encoding) {
 
         // nothing to do
     }

@@ -69,14 +69,15 @@ public class WhatsItOpenNode extends WhatsItNode {
      * 
      * @see org.extex.typesetter.type.Node#atShipping(
      *      org.extex.interpreter.context.Context,
-     *      org.extex.typesetter.Typesetter,
-     *      org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
+     *      org.extex.typesetter.Typesetter, org.extex.core.dimen.FixedDimen,
+     *      org.extex.core.dimen.FixedDimen)
      */
     @Override
     public Node atShipping(PageContext context, Typesetter typesetter,
             FixedDimen posX, FixedDimen posY) throws GeneralException {
 
-        file.open();
+        String encoding = null; // TODO gene: provide encoding
+        file.open(encoding);
         context.setOutFile(key, file, true);
 
         return null;

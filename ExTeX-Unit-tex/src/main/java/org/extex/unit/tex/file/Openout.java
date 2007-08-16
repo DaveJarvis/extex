@@ -123,7 +123,8 @@ public class Openout extends AbstractFileCode {
         OutFile file = new OutputFile(new File(name));
 
         if (prefix.clearImmediate()) {
-            file.open();
+            String encoding = null; // TODO gene: provide encoding
+            file.open(encoding);
             context.setOutFile(key, file, true);
         } else {
             typesetter.add(new WhatsItOpenNode(key, file));

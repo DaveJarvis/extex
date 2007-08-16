@@ -22,8 +22,11 @@ package org.extex.base.type.file;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 
 import org.extex.core.UnicodeChar;
@@ -279,19 +282,44 @@ public class OutputFile implements OutFile {
 
     /**
      * Open the current file.
+     *
+     * {@inheritDoc}
+     *
+     * @see org.extex.scanner.type.file.OutFile#open(java.lang.String)
      */
-    public void open() {
+    public void open(String encoding) {
 
         if (file != null) {
             try {
-                writer = new BufferedWriter(new FileWriter(file));
+                stream = new FileOutputStream(file);
+                OutputStreamWriter w;
+                if (encoding != null) {
+                    w = new OutputStreamWriter(stream, encoding);
+                } else {
+                    w = new OutputStreamWriter(stream);
+                }
+                writer = new BufferedWriter(w);
             } catch (FileNotFoundException e) {
                 // ignored on purpose
-            } catch (IOException e) {
-                // ignored on purpose
+            } catch (UnsupportedEncodingException e) {
+                if (stream != null) {
+                    try {
+                        stream.close();
+                    } catch (IOException e1) {
+                        // ignored
+                    }
+                }
+                // TODO gene: error handling unimplemented
+                e.printStackTrace();
+                throw new RuntimeException("unimplemented");
             }
         }
     }
+
+    /**
+     * The field <tt>stream</tt> contains the ...
+     */
+    private transient OutputStream stream = null;
 
     /**
      * Write some tokens to the output writer.
@@ -306,12 +334,13 @@ public class OutputFile implements OutFile {
         if (writer == null) {
             return;
         }
+        Writer w = use(writer);
         int len = toks.length();
 
         for (int i = 0; i < len; i++) {
             try {
 
-                toks.get(i).visit(VISITOR, writer);
+                toks.get(i).visit(VISITOR, w);
 
             } catch (IOException e) {
                 throw e;
@@ -321,6 +350,18 @@ public class OutputFile implements OutFile {
                 throw new NoHelpException(e);
             }
         }
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param w
+     * 
+     * @return
+     */
+    protected Writer use(Writer w) {
+
+        return w;
     }
 
 }

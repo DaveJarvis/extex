@@ -1,20 +1,15 @@
 /*
  * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version. This library is distributed in the hope that it will be
+ * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
+ * General Public License for more details. You should have received a copy of
+ * the GNU Lesser General Public License along with this library; if not, write
+ * to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+ * 02111-1307 USA
  */
 
 package org.extex.scanner.stream;
@@ -51,9 +46,7 @@ import org.extex.scanner.stream.observer.string.OpenStringObserverList;
  * This is the factory to provide an instance of a
  * {@link org.extex.scanner.TokenStream TokenStream}. Like any good factory it
  * is controlled by its configuration.
- * 
  * <h3>Configuration</h3>
- * 
  * <p>
  * Mainly the configuration needs to specify which class to use for the
  * TokenStream. The name of the class is given as the argument <tt>class</tt>
@@ -75,7 +68,6 @@ import org.extex.scanner.stream.observer.string.OpenStringObserverList;
  * </pre>
  * 
  * </p>
- * 
  * <p>
  * If the Token stream is fed from a file then the additional parameter
  * <tt>buffersize</tt> is taken into account. This parameter is optional. Its
@@ -91,7 +83,6 @@ import org.extex.scanner.stream.observer.string.OpenStringObserverList;
  * is 0 or empty then no buffer will be used. If it is negative, then the
  * default buffer size will be used.
  * </p>
- * 
  * <p>
  * In addition to the class for the Token stream the reader class can be
  * specified for the case that reading from a file is requested. In this case
@@ -109,7 +100,6 @@ import org.extex.scanner.stream.observer.string.OpenStringObserverList;
  * the value is the empty string then <tt>java.io.InputStreamReader</tt> is
  * used instead.
  * </p>
- * 
  * <h3>Observable Events</h3>
  * <p>
  * Observers can be registered for several events:
@@ -119,11 +109,9 @@ import org.extex.scanner.stream.observer.string.OpenStringObserverList;
  * <dd>This event is triggered by the request for a TokenStream fed from a
  * file. It is deferred until the file has been found and opened. The name of
  * the file is passed as argument to the observer. </dd>
- * 
  * <dt><tt>reader</tt></dt>
  * <dd>This event is triggered by the request for a TokenStream fed from an
  * arbitrary Reader. The reader is passed as argument to the observer. </dd>
- * 
  * <dt><tt>string</tt></dt>
  * <dd>This event is triggered by the request for a TokenStream fed from a
  * String. The string is passed as argument to the observer. </dd>
@@ -159,7 +147,7 @@ public class TokenStreamFactory extends AbstractFactory
 
     /**
      * The field <tt>openFileObservers</tt> contains the observers registered
-     * for the "file" event
+     * for the "file" event.
      */
     private OpenFileObserver openFileObservers = null;
 
@@ -208,13 +196,11 @@ public class TokenStreamFactory extends AbstractFactory
      * Creates a new object.
      * 
      * @param tag the tag name of the sub-configuration to use
-     * 
      * @throws ConfigurationException in case of an error in the configuration
      */
     public TokenStreamFactory(String tag) throws ConfigurationException {
 
         super();
-
         this.tag = tag;
     }
 
@@ -279,9 +265,7 @@ public class TokenStreamFactory extends AbstractFactory
      * Provide a new instance of a token stream reading from a string.
      * 
      * @param line the line of input to read from
-     * 
      * @return the new instance
-     * 
      * @throws ConfigurationException in case of an error in the configuration
      */
     public TokenStream newInstance(CharSequence line)
@@ -320,9 +304,7 @@ public class TokenStreamFactory extends AbstractFactory
      * Provide a new instance of a token stream reading from a Reader.
      * 
      * @param reader the reader to get new characters from
-     * 
      * @return the new instance
-     * 
      * @throws ConfigurationException in case of an error in the configuration
      */
     public TokenStream newInstance(Reader reader) throws ConfigurationException {
@@ -334,10 +316,9 @@ public class TokenStreamFactory extends AbstractFactory
         TokenStream stream;
         try {
 
-            stream =
-                    (TokenStream) readerConstructor.newInstance(//
-                        new Object[]{configuration, options, reader,
-                                Boolean.FALSE, "*"});
+            stream = (TokenStream) readerConstructor.newInstance(//
+                new Object[]{configuration, options, reader,//
+                        Boolean.FALSE, "*"});
 
         } catch (IllegalArgumentException e) {
             throw new ConfigurationInstantiationException(e);
@@ -365,10 +346,8 @@ public class TokenStreamFactory extends AbstractFactory
      * @param name the name of the file to be read
      * @param type the type of the file to be read
      * @param encoding the name of the encoding to use
-     * 
      * @return the new instance or <code>null</code> if the resource could not
      *         be located
-     * 
      * @throws ConfigurationException in case of an error in the configuration
      */
     public TokenStream newInstance(String name, String type, String encoding)
@@ -386,7 +365,8 @@ public class TokenStreamFactory extends AbstractFactory
         stream = new BufferedInputStream(stream);
 
         if (decorators != null) {
-            for (int i = 0; i < decorators.size(); i++) {
+            int size = decorators.size();
+            for (int i = 0; i < size; i++) {
                 stream = decorators.get(i).pipe(stream);
             }
         }

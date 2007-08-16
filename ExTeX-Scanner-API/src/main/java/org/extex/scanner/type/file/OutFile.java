@@ -49,8 +49,11 @@ public interface OutFile extends Serializable {
 
     /**
      * Open the current file.
+     * 
+     * @param encoding the encoding or <code>null</code> for the default
+     *        encoding
      */
-    public void open();
+    public void open(String encoding);
 
     /**
      * Write some tokens to the output writer.
