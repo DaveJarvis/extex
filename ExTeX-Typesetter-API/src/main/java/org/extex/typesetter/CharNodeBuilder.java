@@ -41,11 +41,11 @@ public interface CharNodeBuilder {
      * 
      * @param uc the Unicode character
      * @param tc the default typesetting context to use
-     * @param fatory the factory to acquire new nodes from
+     * @param factory the factory to acquire new nodes from
      * 
      * @return the node for the character or <code>null</code> if none can be
      *         determined
      */
     CharNode buildCharNode(UnicodeChar uc, TypesettingContext tc,
-            NodeFactory fatory);
+            NodeFactory factory);
 }
