@@ -56,7 +56,7 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     public OcpPrimitiveTest(String arg) {
 
         super(arg, "ocp",
-            "\\abc=../ExTeX-Unit-Omega/src/test/resources/destroy");
+            "\\abc=../ExTeX-Unit-omega/src/test/resources/destroy");
         setConfig("omega-test");
     }
 
@@ -98,7 +98,7 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertFailure(// --- input code ---
             DEFINE_BRACES
-                    + "{\\ocp\\x=../ExTeX-Unit-Omega/src/test/resources/destroy }"
+                    + "{\\ocp\\x=../ExTeX-Unit-omega/src/test/resources/destroy }"
                     + "\\x\\end",
             // --- error channel ---
             "Undefined control sequence \\x");
@@ -114,7 +114,7 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertFailure(// --- input code ---
             DEFINE_BRACES
-                    + "{\\global\\ocp\\x=../ExTeX-Unit-Omega/src/test/resources/destroy }"
+                    + "{\\global\\ocp\\x=../ExTeX-Unit-omega/src/test/resources/destroy }"
                     + "\\x\\end",
             // --- error channel ---
             "To use ocps, use the \\pushocplist primitive");
@@ -131,7 +131,7 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
         assertFailure(// --- input code ---
             DEFINE_BRACES
                     + "\\globaldefs=1 "
-                    + "{\\ocp\\x=../ExTeX-Unit-Omega/src/test/resources/destroy }"
+                    + "{\\ocp\\x=../ExTeX-Unit-omega/src/test/resources/destroy }"
                     + "\\x\\end",
             // --- error channel ---
             "To use ocps, use the \\pushocplist primitive");
@@ -160,7 +160,7 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     public void test1() throws Exception {
 
         Interpreter interp = assertSuccess(// --- input code ---
-            "\\ocp\\x=../ExTeX-Unit-Omega/src/test/resources/destroy \\end",
+            "\\ocp\\x=../ExTeX-Unit-omega/src/test/resources/destroy \\end",
             // --- output channel ---
             "");
         assertNotNull(interp);
@@ -187,7 +187,7 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
         assertSuccess(// --- input code ---
             DEFINE_BRACES
                     + "\\afterassignment 1 "
-                    + "\\ocp\\x=../ExTeX-Unit-Omega/src/test/resources/destroy "
+                    + "\\ocp\\x=../ExTeX-Unit-omega/src/test/resources/destroy "
                     + "\\end",
             // --- output channel ---
             "1" + TERM);

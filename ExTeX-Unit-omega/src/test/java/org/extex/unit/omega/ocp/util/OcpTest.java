@@ -58,7 +58,7 @@ public class OcpTest extends ExTeXLauncher {
     public void testErrEof1() throws Exception {
 
         assertFailure(// --- input code ---
-            "\\ocp\\x=../ExTeX-Unit-Omega/src/test/resources/destroy " + "\\x ",
+            "\\ocp\\x=../ExTeX-Unit-omega/src/test/resources/destroy " + "\\x ",
             // --- output channel ---
             "To use ocps, use the \\pushocplist primitive");
     }
@@ -71,9 +71,9 @@ public class OcpTest extends ExTeXLauncher {
     public void test1() throws Exception {
 
         assertFailure(// --- input code ---
-            "\\ocp\\x=../ExTeX-Unit-Omega/src/test/resources/destroy " + "\\show\\x ",
+            "\\ocp\\x=../ExTeX-Unit-omega/src/test/resources/destroy " + "\\show\\x ",
             // --- output channel ---
-            "> \\x=select ocp ../ExTeX-Unit-Omega/src/test/resources/destroy.");
+            "> \\x=select ocp ../ExTeX-Unit-omega/src/test/resources/destroy.");
     }
 
     // TODO implement more primitive specific test cases
