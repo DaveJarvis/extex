@@ -105,9 +105,9 @@ public class EnsureLoaded extends AbstractCode
     private transient OutputStreamFactory outFactory;
 
     /**
-     * The field <tt>resourcefinder</tt> contains the resource finder.
+     * The field <tt>finder</tt> contains the resource finder.
      */
-    private ResourceFinder resourcefinder;
+    private transient ResourceFinder finder;
 
     /**
      * Creates a new object.
@@ -151,7 +151,7 @@ public class EnsureLoaded extends AbstractCode
             Configuration configuration =
                     ConfigurationFactory.newInstance(CONFIG_UNIT + configName);
             LoadUnit.loadUnit(configuration, context, source, typesetter,
-                logger, outFactory, resourcefinder);
+                logger, outFactory, finder);
         } catch (HelpingException e) {
             throw e;
         } catch (GeneralException e) {
@@ -183,7 +183,7 @@ public class EnsureLoaded extends AbstractCode
      */
     public void setResourceFinder(ResourceFinder finder) {
 
-        resourcefinder = finder;
+        this.finder = finder;
     }
 
 }
