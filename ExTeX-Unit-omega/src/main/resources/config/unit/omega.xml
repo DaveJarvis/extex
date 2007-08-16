@@ -116,6 +116,10 @@
             class="org.extex.unit.omega.dir.Unnaturaldir"/>
     <define name="vfi"
             class="org.extex.unit.omega.typesetter.Vfi"/>
+    <define name="gluestretchorder"
+            class="org.extex.unit.omega.register.Ogluestretchorder"/>
+    <define name="glueshrinkorder"
+            class="org.extex.unit.omega.register.Oglueshrinkorder"/>
   </primitives>
  </unit>
  

@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.unit.omega.register.skip;
+package org.extex.unit.omega.register;
 
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.glue.Glue;
@@ -34,13 +34,13 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive
- * <code>\gluestretchorder</code>.
+ * <code>\glueshrinkorder</code>.
  * 
- * <doc name="gluestretchorder">
- * <h3>The Primitive <tt>\gluestretchorder</tt></h3>
+ * <doc name="glueshrinkorder">
+ * <h3>The Primitive <tt>\glueshrinkorder</tt></h3>
  * <p>
- * The primitive <tt>\gluestretchorder</tt> determines the order of the glue
- * stretch component of the following glue specification. A fixed,
+ * The primitive <tt>\glueshrinkorder</tt> determines the order of the glue
+ * shrink component of the following glue specification. A fixed,
  * non-stretchable glue returns the value 0. Glue with the order fi gives 1, fil
  * gives 2, fill gives 3, and filll gives 4.
  * </p>
@@ -53,8 +53,8 @@ import org.extex.typesetter.exception.TypesetterException;
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
- *    &lang;gluestretchorder&rang;
- *      &rarr; <tt>\gluestretchorder</tt> {@linkplain
+ *    &lang;glueshrinkorder&rang;
+ *      &rarr; <tt>\glueshrinkorder</tt> {@linkplain
  *        org.extex.interpreter.parser.GlueParser#parseGlue(
  *        org.extex.interpreter.context.Context,
  *        org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
@@ -63,15 +63,16 @@ import org.extex.typesetter.exception.TypesetterException;
  * <h4>Examples</h4>
  * 
  * <pre class="TeXSample">
- *   \gluestretchorder\skip1  </pre>
+ *   \glueshrinkorder\skip1  </pre>
  * 
  * </doc>
+ * 
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
-public class Ogluestretchorder extends AbstractCode
+public class Oglueshrinkorder extends AbstractCode
         implements
             CountConvertible,
             Theable {
@@ -87,7 +88,7 @@ public class Ogluestretchorder extends AbstractCode
      * 
      * @param name the name for debugging
      */
-    public Ogluestretchorder(String name) {
+    public Oglueshrinkorder(String name) {
 
         super(name);
     }
@@ -103,7 +104,7 @@ public class Ogluestretchorder extends AbstractCode
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Glue glue = source.parseGlue(context, source, typesetter);
-        return glue.getStretch().getOrder();
+        return glue.getShrink().getOrder();
     }
 
     /**
