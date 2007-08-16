@@ -36,7 +36,7 @@ public class PdfrefximageTest extends NoFlagsButProtectedPrimitiveTester {
      */
     public PdfrefximageTest(String arg) {
 
-        super(arg, "pdfrefximage", "1", "", "\\pdfoutput=1 ");
+        super(arg, "pdfrefximage", "1", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 

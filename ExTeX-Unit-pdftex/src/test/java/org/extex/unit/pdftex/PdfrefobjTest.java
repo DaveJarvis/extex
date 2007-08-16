@@ -36,7 +36,7 @@ public class PdfrefobjTest extends NoFlagsButProtectedPrimitiveTester {
      */
     public PdfrefobjTest(String arg) {
 
-        super(arg, "pdfrefobj", "1", "", "\\pdfoutput=1 ");
+        super(arg, "pdfrefobj", "1", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 

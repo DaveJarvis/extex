@@ -23,7 +23,7 @@ import org.extex.test.NoFlagsButProtectedPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\pdfdest</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,43 +31,39 @@ public class PdfdestTest extends NoFlagsButProtectedPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public PdfdestTest(String arg) {
 
-        super(arg, "pdfdest", " name {abc} fit", "a ", "\\pdfoutput=1 ");
+        super(arg, "pdfdest", " name {abc} fit", "a " + "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 
     /**
-     * <testcase primitive="\pdfdest">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\pdfdest"> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testError1() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\pdfoutput=0 a \\pdfdest num 23 A",
-                //--- output message ---
-                "pdfTeX error (ext1): \\pdfdest used while pdfoutput is not set");
+        assertFailure(// --- input code ---
+            DEFINE_BRACES + "\\pdfoutput=0 a \\pdfdest num 23 A",
+            // --- output message ---
+            "pdfTeX error (ext1): \\pdfdest used while pdfoutput is not set");
     }
 
     /**
-     * <testcase primitive="\pdfdest">
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="\pdfdest"> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testError2() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\pdfoutput=1 a \\pdfdest num 23 A",
-                //--- output message ---
-                "pdfTeX error (ext1): destination type missing");
+        assertFailure(// --- input code ---
+            DEFINE_BRACES + "\\pdfoutput=1 a \\pdfdest num 23 A",
+            // --- output message ---
+            "pdfTeX error (ext1): destination type missing");
     }
 
 }

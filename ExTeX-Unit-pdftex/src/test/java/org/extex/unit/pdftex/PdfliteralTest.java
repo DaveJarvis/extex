@@ -23,7 +23,7 @@ import org.extex.test.NoFlagsButProtectedPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\pdfliteral</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,30 +31,29 @@ public class PdfliteralTest extends NoFlagsButProtectedPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public PdfliteralTest(String arg) {
 
-        super(arg, "pdfliteral", "{}", "", "\\pdfoutput=1 ");
+        super(arg, "pdfliteral", "{}", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 
     /**
-     * <testcase primitive="\pdfliteral">
-     *  Test case checking that ...
+     * <testcase primitive="\pdfliteral"> Test case checking that ...
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testError1() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfliteral b",
-                //--- output message ---
-                "Missing `{' inserted");
+        assertFailure(// --- input code ---
+            DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfliteral b",
+            // --- output message ---
+            "Missing `{' inserted");
     }
 
-    //TODO implement more primitive specific test cases
+    // TODO implement more primitive specific test cases
 
 }

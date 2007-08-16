@@ -36,7 +36,7 @@ public class PdfoutlineTest extends NoFlagsButProtectedPrimitiveTester {
      */
     public PdfoutlineTest(String arg) {
 
-        super(arg, "pdfoutline", " thread name {a}{}", "", "\\pdfoutput=1 ");
+        super(arg, "pdfoutline", " thread name {a}{}", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 
