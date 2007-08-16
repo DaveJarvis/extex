@@ -63,6 +63,7 @@
     </ttf>
     <vf>
       <extension>.vf</extension>
+      <path>../ExTeX-Font-tfm/src/font</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
@@ -73,6 +74,7 @@
       <path>../texmf/src/texmf/fonts/tfm/public/latex</path>
       <path>../texmf/src/texmf/fonts/tfm/public/misc</path>
       <path>../texmf/src/texmf/fonts/tfm/public/mflogo</path>
+      <path>../ExTeX-Font-tfm/src/font</path>
       <path>../ExTeX-Font-API-Test/src/test/resources</path>
       <path>.</path>
       <path property="extex.fonts"/>
@@ -103,6 +105,7 @@
 </Resource>
 
   <Fonts class="org.extex.font.FontFactoryImpl">
+      <Font type="vf" class="org.extex.font.format.vf.LoadableVfFont" />
 		<Font type="tfm" class="org.extex.font.format.tfm.LoadableTfmFont" />
 		<Font type="afm" class="org.extex.font.format.afm.LoadableAfmFont" />
 		<Font type="ttf" class="org.extex.font.format.xtf.LoadableXtfFont" />
