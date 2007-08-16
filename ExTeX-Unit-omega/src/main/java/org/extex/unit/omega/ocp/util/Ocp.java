@@ -83,12 +83,21 @@ public class Ocp implements Code, Showable, OcpConvertible, Serializable {
         try {
             stream = finder.findResource(resource, "ocp");
             if (stream != null) {
-                return new Ocp(resource, OcpProgram.load(stream));
+                try {
+                    return new Ocp(resource, OcpProgram.load(stream));
+                } finally {
+                    stream.close();
+                }
             }
 
             stream = finder.findResource(resource, "otp");
             if (stream != null) {
-                return new Ocp(resource, new CompilerState(stream).compile());
+                try {
+                    return new Ocp(resource, new CompilerState(stream)
+                        .compile());
+                } finally {
+                    stream.close();
+                }
             }
 
         } catch (AliasNotDefinedException e) {
