@@ -22,6 +22,7 @@ package org.extex.typesetter.type.node.factory;
 import org.extex.core.UnicodeChar;
 import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.type.Node;
+import org.extex.typesetter.type.node.VirtualCharNode;
 
 /**
  * This interface describes a node factory.
@@ -47,5 +48,16 @@ public interface NodeFactory {
      */
     Node getNode(TypesettingContext typesettingContext,
             UnicodeChar uc);
+
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param typesettingContext the typographic context for the node
+     * @param uc the Unicode character
+     * 
+     * @return the new character node
+     */
+    VirtualCharNode getVirtualCharNode(
+            TypesettingContext typesettingContext, UnicodeChar uc);
 
 }
