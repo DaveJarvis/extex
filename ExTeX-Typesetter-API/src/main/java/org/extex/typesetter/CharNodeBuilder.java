@@ -21,6 +21,7 @@ package org.extex.typesetter;
 
 import org.extex.core.UnicodeChar;
 import org.extex.typesetter.tc.TypesettingContext;
+import org.extex.typesetter.tc.TypesettingContextFactory;
 import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.factory.NodeFactory;
@@ -42,10 +43,11 @@ public interface CharNodeBuilder {
      * @param uc the Unicode character
      * @param tc the default typesetting context to use
      * @param factory the factory to acquire new nodes from
+     * @param tcFactory the factor for new typesetting contexts
      * 
      * @return the node for the character or <code>null</code> if none can be
      *         determined
      */
     CharNode buildCharNode(UnicodeChar uc, TypesettingContext tc,
-            NodeFactory factory);
+            NodeFactory factory, TypesettingContextFactory tcFactory);
 }
