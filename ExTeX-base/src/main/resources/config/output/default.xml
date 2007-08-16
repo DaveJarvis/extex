@@ -24,6 +24,6 @@
   -  {0} is replaced with the base name of the output file. 
   -  {1} is replaced with the name supplied or the empty string if null.
   -  {2} is replaced with the number. This can be formatted freely.
-  -  {3} is replaced by the type preceeded by  period (.).
+  -  {3} is replaced by the type preceded by period (.).
   -->
 <Output format="{0}{1}{2,number,0000}.{3}"/>
