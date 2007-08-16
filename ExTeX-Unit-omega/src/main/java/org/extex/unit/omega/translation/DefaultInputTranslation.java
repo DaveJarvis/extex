@@ -94,7 +94,7 @@ public class DefaultInputTranslation extends AbstractModeCode {
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         OmegaMode mode = scanInputMode(context, source);
-        Ocp ocp = OcpUtil.scanOcp(source, context, typesetter);
+        Ocp ocp = OcpUtil.scanOcp(context, source, typesetter);
 
         context.set(OmegaExtension.NAME, //
             DEFAULT_INPUT_TRANSLATION + mode.toString(), //

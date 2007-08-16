@@ -94,7 +94,7 @@ public class DefaultOutputTranslation extends AbstractModeCode {
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         OmegaMode mode = scanOutputMode(context, source);
-        Ocp ocp = OcpUtil.scanOcp(source, context, typesetter);
+        Ocp ocp = OcpUtil.scanOcp(context, source, typesetter);
 
         context.set(OmegaExtension.NAME, //
             DEFAULT_OUTPUT_TRANSLATION + mode.toString(), //
