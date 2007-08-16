@@ -17,23 +17,52 @@
  *
  */
 
-package org.extex.unit.omega.ocp.util;
+package org.extex.unit.omega.ocp;
+
+import org.extex.test.ExTeXLauncher;
 
 /**
- * TODO gene: missing JavaDoc.
- *
+ * This is a test suite for the primitive <tt>\nullocplist</tt>.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class OcpQueue {
+public class NullocplistTest extends ExTeXLauncher {
+
+    /**
+     * The command line interface.
+     * 
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+
+        junit.textui.TestRunner.run(NullocplistTest.class);
+    }
 
     /**
      * Creates a new object.
-     *
+     * 
+     * @param arg the name
      */
-    public OcpQueue() {
+    public NullocplistTest(String arg) {
 
-        // TODO gene: OcpQueue constructor unimplemented
+        super(arg);
+        setConfig("omega-test");
     }
 
+    /**
+     * <testcase primitive="\nullocp"> Test case checking that
+     * <tt>\nullocplist</tt> ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError1() throws Exception {
+
+        assertFailure(// --- input code ---
+            "\\nullocplist",
+            // --- output channel ---
+            "");
+    }
+
+    // TODO implement more primitive specific test cases
 }

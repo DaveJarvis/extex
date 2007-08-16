@@ -22,15 +22,20 @@ package org.extex.unit.omega.ocp;
 import java.util.logging.Logger;
 
 import org.extex.core.exception.helping.HelpingException;
+import org.extex.core.exception.helping.NoHelpException;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.Showable;
+import org.extex.scanner.exception.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.omega.ocp.util.OcpList;
 import org.extex.unit.omega.ocp.util.OcpListBuilder;
+import org.extex.unit.omega.ocp.util.OmegaOcpException;
 
 /**
  * This class provides an implementation for the primitive
@@ -63,6 +68,7 @@ import org.extex.unit.omega.ocp.util.OcpListBuilder;
  */
 public class Nullocplist extends AbstractCode
         implements
+            Showable,
             LogEnabled,
             OcpListBuilder {
 
@@ -94,10 +100,10 @@ public class Nullocplist extends AbstractCode
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public boolean build(OcpList list, Context context, TokenSource source,
+    public OcpList build(OcpList list, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException {
 
-        return false;
+        return list;
     }
 
     /**
@@ -124,7 +130,32 @@ public class Nullocplist extends AbstractCode
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        logger.info(getLocalizer().format("Message"));
+        throw new OmegaOcpException(getName());
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.unit.omega.ocp.util.OcpListBuilder#isTerminator()
+     */
+    public boolean isTerminator() {
+
+        return true;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.Showable#show(
+     *      org.extex.interpreter.context.Context)
+     */
+    public Tokens show(Context context) throws HelpingException {
+
+        try {
+            return context.getTokenFactory().toTokens("select ocp list ");
+        } catch (CatcodeException e) {
+            throw new NoHelpException(e);
+        }
     }
 
 }

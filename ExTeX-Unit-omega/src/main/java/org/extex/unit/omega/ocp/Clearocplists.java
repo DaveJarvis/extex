@@ -23,9 +23,11 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.unit.omega.OmegaExtension;
+import org.extex.unit.omega.ocp.util.OcpList;
 
 /**
  * This class provides an implementation for the primitive
@@ -34,8 +36,10 @@ import org.extex.typesetter.exception.TypesetterException;
  * <doc name="clearocplists">
  * <h3>The Primitive <tt>\clearocplists</tt></h3>
  * <p>
- * TODO missing documentation
+ * The primitive <tt>\clearocplists</tt> disables the currently active
+ * ocplist. This operation respects grouping. It is an assignment.
  * </p>
+ * 
  * <h4>Syntax</h4>
  * The formal description of this primitive is the following:
  * 
@@ -54,7 +58,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
-public class Clearocplists extends AbstractCode {
+public class Clearocplists extends AbstractAssignment {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -75,16 +79,15 @@ public class Clearocplists extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
+    public void assign(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        // TODO gene: unimplemented
-        throw new RuntimeException("unimplemented");
+        context.set(OmegaExtension.NAME, "ocplist", null, prefix.clearGlobal());
     }
 
 }

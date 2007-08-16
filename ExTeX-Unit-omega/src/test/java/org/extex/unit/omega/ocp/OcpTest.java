@@ -31,7 +31,7 @@ import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 import org.extex.unit.omega.ocp.util.Ocp;
 
 /**
- * This is a test suite for the primitive <tt>\DefaultInputMode</tt>.
+ * This is a test suite for the primitive <tt>\Ocp</tt>.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

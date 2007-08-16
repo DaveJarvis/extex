@@ -88,20 +88,38 @@ public class OcplistPrimitive extends AbstractAssignment {
 
         CodeToken cs = source.getControlSequence(context, typesetter);
         source.getOptionalEquals(context);
-        Code code;
-        OcpList list = new OcpList("");
-
-        do {
-            CodeToken t = source.getControlSequence(context, typesetter);
-            code = context.getCode(t);
-            if (!(code instanceof OcpListBuilder)) {
-                throw new HelpingException(getLocalizer(), "Message");
-            }
-
-        } while (((OcpListBuilder) code).build(list, context, source,
-            typesetter));
-
+        OcpList list = scanList(context, source, typesetter);
         context.setCode(cs, list, prefix.clearGlobal());
+    }
+
+    /**
+     * This method collects the constituents of an &Omega;CP list and applies
+     * them back to front. This is necessary to follow the resverse definition
+     * in Omega.
+     * 
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     * 
+     * @return the list found
+     * 
+     * @throws HelpingException in case of an error
+     */
+    private OcpList scanList(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException {
+
+        CodeToken t = source.getControlSequence(context, typesetter);
+        Code code = context.getCode(t);
+        if (!(code instanceof OcpListBuilder)) {
+            throw new HelpingException(getLocalizer(), "Message");
+        }
+        OcpList list;
+        if (((OcpListBuilder) code).isTerminator()) {
+            list = new OcpList("");
+        } else {
+            list = scanList(context, source, typesetter);
+        }
+        return ((OcpListBuilder) code).build(list, context, source, typesetter);
     }
 
 }

@@ -19,12 +19,22 @@
 
 package org.extex.unit.omega.ocp.util;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.extex.core.exception.helping.HelpingException;
+import org.extex.core.exception.helping.NoHelpException;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.Showable;
+import org.extex.ocpware.type.OcpProgram;
+import org.extex.scanner.exception.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.omega.ocp.Addafterocplist;
@@ -35,7 +45,7 @@ import org.extex.unit.omega.ocp.Addafterocplist;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class OcpList extends AbstractCode {
+public class OcpList extends AbstractCode implements Showable, OcpListBuilder {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -44,9 +54,15 @@ public class OcpList extends AbstractCode {
     private static final long serialVersionUID = 2007L;
 
     /**
+     * The field <tt>map</tt> contains the ...
+     */
+    private Map<Long, List<OcpProgram>> map =
+            new HashMap<Long, List<OcpProgram>>();
+
+    /**
      * Creates a new object.
      * 
-     * @param codeName
+     * @param codeName the name for debugging
      */
     public OcpList(String codeName) {
 
@@ -56,13 +72,59 @@ public class OcpList extends AbstractCode {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param value the index
-     * @param prog the program
+     * @param scaled the index
+     * @param program the program
      */
-    public void add(long value, Ocp prog) {
+    public void addAfter(long scaled, OcpProgram program) {
 
-        // TODO gene: add unimplemented
-        throw new RuntimeException("unimplemented");
+        Long l = Long.valueOf(scaled);
+        List<OcpProgram> list = map.get(l);
+        if (list == null) {
+            list = new ArrayList<OcpProgram>();
+            map.put(l, list);
+        }
+
+        list.add(program);
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param scaled the index
+     * @param program the program
+     */
+    public void addBefore(long scaled, OcpProgram program) {
+
+        Long l = Long.valueOf(scaled);
+        List<OcpProgram> list = map.get(l);
+        if (list == null) {
+            list = new ArrayList<OcpProgram>();
+            map.put(l, list);
+        }
+
+        list.add(0, program);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.unit.omega.ocp.util.OcpListBuilder#build(
+     *      org.extex.unit.omega.ocp.util.OcpList,
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     */
+    public OcpList build(OcpList list, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException {
+
+        for (Long k : list.map.keySet()) {
+            List<OcpProgram> progList = new ArrayList<OcpProgram>();
+            for (OcpProgram p : list.map.get(k)) {
+                progList.add(p);
+            }
+            map.put(k, progList);
+        }
+
+        return list;
     }
 
     /**
@@ -78,6 +140,80 @@ public class OcpList extends AbstractCode {
 
         throw new HelpingException(LocalizerFactory
             .getLocalizer(Addafterocplist.class), "message");
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.unit.omega.ocp.util.OcpListBuilder#isTerminator()
+     */
+    public boolean isTerminator() {
+
+        return true;
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     */
+    public void pop() {
+
+        //TODO gene: pop unimplemented
+        throw new RuntimeException("unimplemented");
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     *
+     * @param ocpList
+     */
+    public void push(OcpList ocpList) {
+
+        //TODO gene: push unimplemented
+        throw new RuntimeException("unimplemented");
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param scaled the index
+     * @param program the program
+     */
+    public void removeAfter(long scaled, OcpProgram program) {
+
+        // TODO gene: removeAfter unimplemented
+        throw new RuntimeException("unimplemented");
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param scaled the index
+     * @param program the program
+     */
+    public void removeBefore(long scaled, OcpProgram program) {
+
+        // TODO gene: removeBefore unimplemented
+        throw new RuntimeException("unimplemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.Showable#show(
+     *      org.extex.interpreter.context.Context)
+     */
+    public Tokens show(Context context) throws HelpingException {
+
+        StringBuffer sb = new StringBuffer("select ocp list ");
+
+        // TODO gene: show content
+
+        try {
+            return context.getTokenFactory().toTokens(sb);
+        } catch (CatcodeException e) {
+            throw new NoHelpException(e);
+        }
     }
 
 }

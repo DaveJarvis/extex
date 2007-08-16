@@ -20,38 +20,32 @@
 package org.extex.unit.omega.ocp.util;
 
 import org.extex.core.exception.helping.HelpingException;
-import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Context;
-import org.extex.typesetter.Typesetter;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class indicates that an &Omega;CP instruction has been used in an
+ * invalid context.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface OcpListBuilder {
+public class OmegaOcpException extends HelpingException {
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param list the current list
-     * @param context the context
-     * @param source the token source
-     * @param typesetter the typesetter
-     * 
-     * @return <code>false</code> iff this is the last item in the list
-     * 
-     * @throws HelpingException in case of an error
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
-    OcpList build(OcpList list, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException;
+    protected static final long serialVersionUID = 2007L;
 
     /**
-     * Getter for the indicator for the terminator.
-     *
-     * @return the indicator for the terminator
+     * Creates a new object.
+     * 
+     * @param primitive the name of the primitive
      */
-    boolean isTerminator();
+    public OmegaOcpException(String primitive) {
+
+        super(LocalizerFactory.getLocalizer(OmegaOcpException.class),
+            "Message", primitive);
+    }
 
 }

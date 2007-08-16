@@ -21,7 +21,7 @@ package org.extex.unit.omega.ocp;
 
 import org.extex.base.parser.ScaledNumberParser;
 import org.extex.core.exception.helping.HelpingException;
-import org.extex.framework.i18n.LocalizerFactory;
+import org.extex.core.exception.helping.NoHelpException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -33,6 +33,7 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.omega.ocp.util.Ocp;
 import org.extex.unit.omega.ocp.util.OcpList;
 import org.extex.unit.omega.ocp.util.OcpListBuilder;
+import org.extex.unit.omega.ocp.util.OmegaOcpException;
 
 /**
  * This class provides an implementation for the primitive
@@ -89,25 +90,23 @@ public class Addafterocplist extends AbstractCode implements OcpListBuilder {
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public boolean build(OcpList list, Context context, TokenSource source,
+    public OcpList build(OcpList list, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException {
 
         long scaled;
         try {
             scaled = ScaledNumberParser.parse(context, source, typesetter);
         } catch (TypesetterException e) {
-            //TODO gene: build unimplemented
-            throw new RuntimeException("unimplemented");
+            throw new NoHelpException(e);
         }
         CodeToken cs = source.getControlSequence(context, typesetter);
         Code code = context.getCode(cs);
         if (!(code instanceof Ocp)) {
-            //TODO gene: build unimplemented
-            throw new RuntimeException("unimplemented");
+            throw new OmegaOcpException(getName());
         }
+        list.addAfter(scaled, ((Ocp) code).getProgram());
 
-        // TODO gene: build unimplemented
-        return true;
+        return list;
     }
 
     /**
@@ -121,8 +120,17 @@ public class Addafterocplist extends AbstractCode implements OcpListBuilder {
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        throw new HelpingException(LocalizerFactory
-            .getLocalizer(Addafterocplist.class), "message");
+        throw new OmegaOcpException(getName());
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.extex.unit.omega.ocp.util.OcpListBuilder#isTerminator()
+     */
+    public boolean isTerminator() {
+
+        return false;
     }
 
 }

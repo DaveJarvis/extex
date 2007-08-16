@@ -24,12 +24,14 @@ import java.io.InputStream;
 import java.io.Serializable;
 
 import org.extex.core.exception.helping.HelpingException;
+import org.extex.core.exception.helping.NoHelpException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.Code;
+import org.extex.interpreter.type.Showable;
 import org.extex.ocpware.compiler.exception.AliasDefinedException;
 import org.extex.ocpware.compiler.exception.AliasNotDefinedException;
 import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
@@ -42,6 +44,8 @@ import org.extex.ocpware.compiler.exception.TableNotDefinedException;
 import org.extex.ocpware.compiler.parser.CompilerState;
 import org.extex.ocpware.type.OcpProgram;
 import org.extex.resource.ResourceFinder;
+import org.extex.scanner.exception.CatcodeException;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
@@ -52,7 +56,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4411 $
  */
-public class Ocp implements Code, OcpConvertible, Serializable {
+public class Ocp implements Code, Showable, OcpConvertible, Serializable {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -188,8 +192,7 @@ public class Ocp implements Code, OcpConvertible, Serializable {
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        throw new HelpingException(LocalizerFactory.getLocalizer(Ocp.class),
-            "message");
+        throw new OmegaOcpException(name);
     }
 
     /**
@@ -257,6 +260,21 @@ public class Ocp implements Code, OcpConvertible, Serializable {
     public void setProgram(OcpProgram program) {
 
         this.program = program;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.Showable#show(
+     *      org.extex.interpreter.context.Context)
+     */
+    public Tokens show(Context context) throws HelpingException {
+
+        try {
+            return context.getTokenFactory().toTokens("select ocp " + name);
+        } catch (CatcodeException e) {
+            throw new NoHelpException(e);
+        }
     }
 
 }

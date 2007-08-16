@@ -19,16 +19,21 @@
 
 package org.extex.unit.omega.ocp;
 
+import org.extex.base.parser.ScaledNumberParser;
 import org.extex.core.exception.helping.HelpingException;
-import org.extex.framework.i18n.LocalizerFactory;
+import org.extex.core.exception.helping.NoHelpException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.Code;
+import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.unit.omega.ocp.util.Ocp;
 import org.extex.unit.omega.ocp.util.OcpList;
 import org.extex.unit.omega.ocp.util.OcpListBuilder;
+import org.extex.unit.omega.ocp.util.OmegaOcpException;
 
 /**
  * This class provides an implementation for the primitive
@@ -41,7 +46,7 @@ import org.extex.unit.omega.ocp.util.OcpListBuilder;
  * &Omega;PC list. It is valid in the context of the primitive <tt>\ocplist</tt>
  * only.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
  * The formal description of this primitive is the following:
  * 
@@ -81,6 +86,32 @@ public class Removebeforeocplist extends AbstractCode implements OcpListBuilder 
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.unit.omega.ocp.util.OcpListBuilder#build(OcpList,
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     */
+    public OcpList build(OcpList list, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException {
+
+        long scaled;
+        try {
+            scaled = ScaledNumberParser.parse(context, source, typesetter);
+        } catch (TypesetterException e) {
+            throw new NoHelpException(e);
+        }
+        CodeToken cs = source.getControlSequence(context, typesetter);
+        Code code = context.getCode(cs);
+        if (!(code instanceof Ocp)) {
+            throw new OmegaOcpException(getName());
+        }
+        list.removeBefore(scaled, ((Ocp) code).getProgram());
+
+        return list;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.type.AbstractCode#execute(
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
@@ -89,20 +120,17 @@ public class Removebeforeocplist extends AbstractCode implements OcpListBuilder 
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        throw new HelpingException(LocalizerFactory
-            .getLocalizer(Removebeforeocplist.class), "message");
+        throw new OmegaOcpException(getName());
     }
 
     /**
      * {@inheritDoc}
-     *
-     * @see org.extex.unit.omega.ocp.util.OcpListBuilder#build(OcpList, org.extex.interpreter.context.Context, org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     * 
+     * @see org.extex.unit.omega.ocp.util.OcpListBuilder#isTerminator()
      */
-    public boolean build(OcpList list, Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException {
+    public boolean isTerminator() {
 
-        // TODO gene: build unimplemented
-        return true;
+        return false;
     }
 
 }

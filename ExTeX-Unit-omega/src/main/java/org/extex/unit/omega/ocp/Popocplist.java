@@ -26,6 +26,8 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.unit.omega.OmegaExtension;
+import org.extex.unit.omega.ocp.util.OcpList;
 
 /**
  * This class provides an implementation for the primitive
@@ -83,8 +85,13 @@ public class Popocplist extends AbstractCode {
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        // TODO gene: unimplemented
-        throw new RuntimeException("unimplemented");
+        OcpList list = (OcpList) context.get(OcpList.class, "ocplist");
+        if (list == null) {
+            throw new HelpingException(getLocalizer(), "Message");
+        }
+
+        list.pop();
+        context.set(OmegaExtension.NAME, "ocplist", list, prefix.clearGlobal());
     }
 
 }

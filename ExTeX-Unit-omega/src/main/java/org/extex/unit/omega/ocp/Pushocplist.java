@@ -28,6 +28,7 @@ import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.unit.omega.OmegaExtension;
 import org.extex.unit.omega.ocp.util.OcpList;
 
 /**
@@ -89,11 +90,12 @@ public class Pushocplist extends AbstractCode {
         Code code = context.getCode(cs);
 
         if (!(code instanceof OcpList)) {
-            throw new HelpingException(getLocalizer(), "O.MissingOcp");
+            throw new HelpingException(getLocalizer(), "Message");
         }
 
-        // TODO gene: unimplemented
-        throw new RuntimeException("unimplemented");
+        OcpList list = (OcpList) context.get(OcpList.class, "ocplist");
+        list.push(((OcpList)code));
+        context.set(OmegaExtension.NAME, "ocplist", list, prefix.clearGlobal());
     }
 
 }
