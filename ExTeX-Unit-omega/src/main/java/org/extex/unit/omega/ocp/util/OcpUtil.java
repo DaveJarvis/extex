@@ -128,16 +128,19 @@ public final class OcpUtil {
 
     /**
      * Get an ocp.
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
+     * @param finder the resource finder to use
      * 
      * @return the ocp file name
      * 
      * @throws HelpingException in case of an error
      */
     public static Ocp scanOcp(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException {
+            Typesetter typesetter, ResourceFinder finder)
+            throws HelpingException {
 
         Token t = source.getToken(context);
         if (t == null) {
@@ -153,8 +156,6 @@ public final class OcpUtil {
 
         } else {
             source.push(t);
-            ResourceFinder finder = null; // TODO gene: provide a resource
-            // finder
             return Ocp.load(scanOcpFileName(source, context), finder);
         }
 
@@ -164,15 +165,16 @@ public final class OcpUtil {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     *
-     * @param context
-     * @param source
-     * @param typesetter
-     * @param primitive
-     *
-     * @return
-     *
+     * San the input for a control sequence and extract an &Omega;CP from its
+     * code value.
+     * 
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     * @param primitive the name of the primitive for error messages
+     * 
+     * @return the &Omega;CP program stored in the code area
+     * 
      * @throws HelpingException in case of an error
      */
     public static OcpProgram scanOcpCode(Context context, TokenSource source,
