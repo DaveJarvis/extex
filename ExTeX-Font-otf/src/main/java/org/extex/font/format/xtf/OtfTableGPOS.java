@@ -661,7 +661,7 @@ public class OtfTableGPOS extends AbstractXtfTable
         writer.writeAttribute("version", version);
         scriptList.writeXML(writer);
         featureList.writeXML(writer);
-        lookupList.writeXML(writer);
+        //lookupList.writeXML(writer);
         writer.writeEndElement();
     }
 }
