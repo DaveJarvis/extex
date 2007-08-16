@@ -30,6 +30,7 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.omega.ocp.util.OcpList;
 import org.extex.unit.omega.ocp.util.OcpListBuilder;
+import org.extex.unit.omega.ocp.util.OcpListBuilderCommand;
 
 /**
  * This class provides an implementation for the primitive <code>\ocplist</code>.
@@ -108,18 +109,33 @@ public class OcplistPrimitive extends AbstractAssignment {
     private OcpList scanList(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException {
 
+        // CodeToken t = source.getControlSequence(context, typesetter);
+        // Code code = context.getCode(t);
+        // if (!(code instanceof OcpListBuilder)) {
+        // throw new HelpingException(getLocalizer(), "Message");
+        // }
+        // OcpList list;
+        // if (((OcpListBuilder) code).isTerminator()) {
+        // list = new OcpList("");
+        // } else {
+        // list = scanList(context, source, typesetter);
+        // }
+        // return ((OcpListBuilder) code).build(list, context, source,
+        // typesetter);
         CodeToken t = source.getControlSequence(context, typesetter);
         Code code = context.getCode(t);
         if (!(code instanceof OcpListBuilder)) {
             throw new HelpingException(getLocalizer(), "Message");
         }
+        OcpListBuilderCommand cmd =
+                ((OcpListBuilder) code).build(context, source, typesetter);
         OcpList list;
         if (((OcpListBuilder) code).isTerminator()) {
-            list = new OcpList("");
+            list = null;
         } else {
             list = scanList(context, source, typesetter);
         }
-        return ((OcpListBuilder) code).build(list, context, source, typesetter);
+        return cmd.apply(list);
     }
 
 }

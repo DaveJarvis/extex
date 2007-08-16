@@ -54,6 +54,50 @@ public class OcpList extends AbstractCode implements Showable, OcpListBuilder {
     private static final long serialVersionUID = 2007L;
 
     /**
+     * TODO gene: missing JavaDoc.
+     * 
+     */
+    private class Command implements OcpListBuilderCommand {
+
+        /**
+         * The field <tt>map</tt> contains the ...
+         */
+        private Map<Long, List<OcpProgram>> map;
+
+        /**
+         * Creates a new object.
+         * 
+         * @param map the map
+         */
+        public Command(Map<Long, List<OcpProgram>> map) {
+
+            super();
+            this.map = map;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.unit.omega.ocp.util.OcpListBuilderCommand#apply(
+         *      org.extex.unit.omega.ocp.util.OcpList)
+         */
+        public OcpList apply(OcpList list) {
+
+            for (Long k : map.keySet()) {
+                List<OcpProgram> progList = list.map.get(k);
+                if (progList == null) {
+                    progList = new ArrayList<OcpProgram>();
+                    list.map.put(k, progList);
+                }
+                for (OcpProgram p : progList) {
+                    progList.add(p);
+                }
+            }
+            return list;
+        }
+    }
+
+    /**
      * The field <tt>map</tt> contains the ...
      */
     private Map<Long, List<OcpProgram>> map =
@@ -109,22 +153,13 @@ public class OcpList extends AbstractCode implements Showable, OcpListBuilder {
      * {@inheritDoc}
      * 
      * @see org.extex.unit.omega.ocp.util.OcpListBuilder#build(
-     *      org.extex.unit.omega.ocp.util.OcpList,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public OcpList build(OcpList list, Context context, TokenSource source,
+    public OcpListBuilderCommand build(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException {
 
-        for (Long k : list.map.keySet()) {
-            List<OcpProgram> progList = new ArrayList<OcpProgram>();
-            for (OcpProgram p : list.map.get(k)) {
-                progList.add(p);
-            }
-            map.put(k, progList);
-        }
-
-        return list;
+        return new Command(map);
     }
 
     /**
@@ -154,22 +189,22 @@ public class OcpList extends AbstractCode implements Showable, OcpListBuilder {
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      */
     public void pop() {
 
-        //TODO gene: pop unimplemented
+        // TODO gene: pop unimplemented
         throw new RuntimeException("unimplemented");
     }
 
     /**
      * TODO gene: missing JavaDoc
-     *
+     * 
      * @param ocpList
      */
     public void push(OcpList ocpList) {
 
-        //TODO gene: push unimplemented
+        // TODO gene: push unimplemented
         throw new RuntimeException("unimplemented");
     }
 
@@ -207,7 +242,7 @@ public class OcpList extends AbstractCode implements Showable, OcpListBuilder {
 
         StringBuffer sb = new StringBuffer("select ocp list ");
 
-        // TODO gene: show content
+        // TODO gene: show content?
 
         try {
             return context.getTokenFactory().toTokens(sb);

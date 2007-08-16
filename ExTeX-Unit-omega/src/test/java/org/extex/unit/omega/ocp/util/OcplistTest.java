@@ -22,12 +22,12 @@ package org.extex.unit.omega.ocp.util;
 import org.extex.test.ExTeXLauncher;
 
 /**
- * This is a test suite for the primitives defined with <tt>\ocp</tt>.
+ * This is a test suite for the primitives defined with <tt>\ocplist</tt>.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class OcpTest extends ExTeXLauncher {
+public class OcplistTest extends ExTeXLauncher {
 
     /**
      * The command line interface.
@@ -36,7 +36,7 @@ public class OcpTest extends ExTeXLauncher {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(OcpTest.class);
+        junit.textui.TestRunner.run(OcplistTest.class);
     }
 
     /**
@@ -44,36 +44,37 @@ public class OcpTest extends ExTeXLauncher {
      * 
      * @param arg the name
      */
-    public OcpTest(String arg) {
+    public OcplistTest(String arg) {
 
         super(arg);
         setConfig("omega-test");
     }
 
     /**
-     * <testcase> Test case checking that an OCP needs ... </testcase>
+     * <testcase> Test case checking that an OCP list needs ... </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void testErrEof1() throws Exception {
+    public void test0() throws Exception {
 
         assertFailure(// --- input code ---
-            "\\ocp\\x=../ExTeX-Unit-omega/src/test/resources/destroy " + "\\x ",
+            "\\ocplist\\a \\nullocplist \\show\\a\\end",
             // --- output channel ---
-            "To use ocps, use the \\pushocplist primitive");
+            "> \\a=select ocp list .\n");
     }
 
     /**
-     * <testcase> Test case checking that an OCP is showable. </testcase>
+     * <testcase> Test case checking that an OCP list needs ... </testcase>
      * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
         assertFailure(// --- input code ---
-            "\\ocp\\x=../ExTeX-Unit-omega/src/test/resources/destroy " + "\\show\\x ",
+            "\\ocp\\x=../ExTeX-Unit-omega/src/test/resources/destroy "
+                    + "\\ocplist\\a \\addbeforeocplist 1 \\x \\nullocplist \\show\\a\\end",
             // --- output channel ---
-            "> \\x=select ocp ../ExTeX-Unit-omega/src/test/resources/destroy.");
+            "> \\a=select ocp list .\n");
     }
 
     // TODO implement more primitive specific test cases

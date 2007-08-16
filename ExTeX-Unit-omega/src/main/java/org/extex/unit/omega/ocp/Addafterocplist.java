@@ -31,6 +31,7 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.omega.ocp.util.OcpList;
 import org.extex.unit.omega.ocp.util.OcpListBuilder;
+import org.extex.unit.omega.ocp.util.OcpListBuilderCommand;
 import org.extex.unit.omega.ocp.util.OcpUtil;
 import org.extex.unit.omega.ocp.util.OmegaOcpException;
 
@@ -83,13 +84,55 @@ public class Addafterocplist extends AbstractCode implements OcpListBuilder {
     }
 
     /**
+     * TODO gene: missing JavaDoc.
+     *
+     */
+    private class Command implements OcpListBuilderCommand {
+
+        /**
+         * The field <tt>scaled</tt> contains the index.
+         */
+        private long scaled;
+
+        /**
+         * The field <tt>prog</tt> contains the program.
+         */
+        private OcpProgram prog;
+
+        /**
+         * Creates a new object.
+         * 
+         * @param scaled the index
+         * @param prog the program
+         */
+        public Command(long scaled, OcpProgram prog) {
+
+            super();
+            this.scaled = scaled;
+            this.prog = prog;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.unit.omega.ocp.util.OcpListBuilderCommand#apply(
+         *      org.extex.unit.omega.ocp.util.OcpList)
+         */
+        public OcpList apply(OcpList list) {
+
+            list.addAfter(scaled, prog);
+            return list;
+        }
+    }
+
+    /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.omega.ocp.util.OcpListBuilder#build(OcpList,
+     * @see org.extex.unit.omega.ocp.util.OcpListBuilder#build(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public OcpList build(OcpList list, Context context, TokenSource source,
+    public OcpListBuilderCommand build(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException {
 
         long scaled;
@@ -101,9 +144,8 @@ public class Addafterocplist extends AbstractCode implements OcpListBuilder {
         OcpProgram prog =
                 OcpUtil.scanOcpCode(context, source, typesetter,
                     printableControlSequence(context));
-        list.addAfter(scaled, prog);
 
-        return list;
+        return new Command(scaled, prog);
     }
 
     /**

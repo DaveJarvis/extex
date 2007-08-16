@@ -19,38 +19,21 @@
 
 package org.extex.unit.omega.ocp.util;
 
-import org.extex.core.exception.helping.HelpingException;
-import org.extex.interpreter.TokenSource;
-import org.extex.interpreter.context.Context;
-import org.extex.typesetter.Typesetter;
-
 /**
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface OcpListBuilder {
+public interface OcpListBuilderCommand {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Apply the command to a list and return the modified list.
      * 
-     * @param context the context
-     * @param source the token source
-     * @param typesetter the typesetter
-     * 
-     * @return the command to execute for delayed evaluation
-     * 
-     * @throws HelpingException in case of an error
-     */
-    OcpListBuilderCommand build(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException;
-
-    /**
-     * Getter for the indicator for the terminator.
+     * @param list the list to process
      *
-     * @return the indicator for the terminator
+     * @return the result
      */
-    boolean isTerminator();
+    OcpList apply(OcpList list);
 
 }

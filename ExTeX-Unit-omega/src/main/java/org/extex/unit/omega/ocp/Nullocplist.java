@@ -32,6 +32,7 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.omega.ocp.util.OcpList;
 import org.extex.unit.omega.ocp.util.OcpListBuilder;
+import org.extex.unit.omega.ocp.util.OcpListBuilderCommand;
 import org.extex.unit.omega.ocp.util.OmegaOcpException;
 
 /**
@@ -87,14 +88,26 @@ public class Nullocplist extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.omega.ocp.util.OcpListBuilder#build( OcpList,
+     * @see org.extex.unit.omega.ocp.util.OcpListBuilder#build(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public OcpList build(OcpList list, Context context, TokenSource source,
+    public OcpListBuilderCommand build(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException {
 
-        return list;
+        return new OcpListBuilderCommand() {
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.unit.omega.ocp.util.OcpListBuilderCommand#apply(
+             *      org.extex.unit.omega.ocp.util.OcpList)
+             */
+            public OcpList apply(OcpList list) {
+
+                return new OcpList("");
+            }
+        };
     }
 
     /**
