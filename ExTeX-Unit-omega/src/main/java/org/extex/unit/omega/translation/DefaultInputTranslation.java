@@ -23,6 +23,8 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.resource.ResourceAware;
+import org.extex.resource.ResourceFinder;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.omega.OmegaExtension;
@@ -64,13 +66,20 @@ import org.extex.unit.omega.ocp.util.OcpUtil;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4411 $
  */
-public class DefaultInputTranslation extends AbstractModeCode {
+public class DefaultInputTranslation extends AbstractModeCode
+        implements
+            ResourceAware {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
     protected static final long serialVersionUID = 2006L;
+
+    /**
+     * The field <tt>finder</tt> contains the resource finder.
+     */
+    private transient ResourceFinder finder;
 
     /**
      * Creates a new object.
@@ -94,11 +103,22 @@ public class DefaultInputTranslation extends AbstractModeCode {
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         OmegaMode mode = scanInputMode(context, source);
-        Ocp ocp = OcpUtil.scanOcp(context, source, typesetter);
+        Ocp ocp = OcpUtil.scanOcp(context, source, typesetter, finder);
 
         context.set(OmegaExtension.NAME, //
             DEFAULT_INPUT_TRANSLATION + mode.toString(), //
             ocp, prefix.clearGlobal());
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.resource.ResourceAware#setResourceFinder(
+     *      org.extex.resource.ResourceFinder)
+     */
+    public void setResourceFinder(ResourceFinder finder) {
+
+        this.finder = finder;
     }
 
 }
