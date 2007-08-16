@@ -36,7 +36,7 @@ import org.extex.unit.omega.ocp.util.Ocp;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class OcpTest extends NoFlagsButGlobalPrimitiveTester {
+public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * The command line interface.
@@ -45,7 +45,7 @@ public class OcpTest extends NoFlagsButGlobalPrimitiveTester {
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(OcpTest.class);
+        junit.textui.TestRunner.run(OcpPrimitiveTest.class);
     }
 
     /**
@@ -53,7 +53,7 @@ public class OcpTest extends NoFlagsButGlobalPrimitiveTester {
      * 
      * @param arg the name
      */
-    public OcpTest(String arg) {
+    public OcpPrimitiveTest(String arg) {
 
         super(arg, "ocp",
             "\\abc=../ExTeX-Unit-Omega/src/test/resources/destroy");
