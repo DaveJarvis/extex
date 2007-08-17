@@ -66,7 +66,8 @@ public class FontInst01Test extends ExTeXLauncher {
                     "../ExTeX-fontware/src/texmf/tex/fontinst/mathmtx" + SEP + //
                     "../ExTeX-fontware/src/texmf/tex/fontinst/misc" + SEP + //
                     "../ExTeX-fontware/src/texmf/tex/fontinst/smbletx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/smblmtx" //
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/smblmtx" + SEP + //
+                    "../ExTeX-fontware/src/texmf/tex/misc" //
         );
         return props;
     }
