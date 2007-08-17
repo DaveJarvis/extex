@@ -26,6 +26,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.typesetter.CharNodeBuilder;
 import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.tc.TypesettingContextFactory;
+import org.extex.typesetter.tc.font.impl.FontImpl;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.factory.SimpleNodeFactory;
@@ -78,22 +79,50 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
         assertNotNull(key);
     }
 
+//    /**
+//     * Test for the CharNodeBuilder.
+//     * 
+//     * @throws Exception if an error occurred.
+//     */
+//    public void test2() throws Exception {
+//
+//        assertNotNull(font);
+//        assertNotNull(key);
+//        assertTrue(font instanceof CharNodeBuilder);
+//
+//        TypesettingContextFactory tcFactory = new TypesettingContextFactory();
+//        tcFactory.configure(ConfigurationFactory.newInstance("tc.xml"));
+//        TypesettingContext tc = tcFactory.initial();
+//        Node node =
+//                ((CharNodeBuilder) font).buildCharNode(UnicodeChar.get(0xffff),
+//                    tc, new SimpleNodeFactory(), tcFactory);
+//
+//        assertNull("node", node);
+//        // assertTrue("node class", node instanceof CharNode);
+//    }
+
     /**
-     * Test for the font key.
+     * Test for the CharNodeBuilder.
      * 
      * @throws Exception if an error occurred.
      */
-    public void test2() throws Exception {
+    public void test3() throws Exception {
 
         assertNotNull(font);
         assertNotNull(key);
         assertTrue(font instanceof CharNodeBuilder);
+
+        FontImpl tcfont = new FontImpl(font);
         TypesettingContextFactory tcFactory = new TypesettingContextFactory();
         tcFactory.configure(ConfigurationFactory.newInstance("tc.xml"));
         TypesettingContext tc = tcFactory.initial();
+
+        tc = tcFactory.newInstance(tc, tcfont);
+
         Node node =
-                ((CharNodeBuilder) font).buildCharNode(UnicodeChar.get('X'),
-                    tc, new SimpleNodeFactory(), tcFactory);
+                ((CharNodeBuilder) font).buildCharNode(UnicodeChar.get(0), tc,
+                    new SimpleNodeFactory(), tcFactory);
+
         assertNotNull("node", node);
         assertTrue("node class", node instanceof CharNode);
     }

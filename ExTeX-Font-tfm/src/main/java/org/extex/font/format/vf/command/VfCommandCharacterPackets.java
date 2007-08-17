@@ -200,6 +200,12 @@ public class VfCommandCharacterPackets extends VfCommand {
         return width;
     }
 
+    @Override
+    public String toString() {
+
+        return "charcode: " + charactercode;
+    }
+
     /**
      * {@inheritDoc}
      * 
@@ -227,7 +233,6 @@ public class VfCommandCharacterPackets extends VfCommand {
 
     }
 
- 
     // /**
     // * @see de.dante.extex.font.type.PlFormat#toPL(
     // * de.dante.extex.font.type.PlWriter)
