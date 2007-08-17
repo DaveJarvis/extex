@@ -30,6 +30,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ExpandableCode;
+import org.extex.interpreter.type.PrefixCode;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
@@ -48,7 +49,10 @@ import org.extex.typesetter.exception.TypesetterException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4045 $
  */
-public abstract class AbstractIf extends AbstractCode implements ExpandableCode {
+public abstract class AbstractIf extends AbstractCode
+        implements
+            ExpandableCode,
+            PrefixCode {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
