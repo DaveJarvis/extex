@@ -65,12 +65,19 @@ public class VirtualCharNode extends CharNode implements NodeList {
 
         /**
          * Creates a new object.
-         * 
-         * @param n the parent node
          */
-        public NL(VirtualCharNode n) {
+        public NL() {
 
             super();
+        }
+
+        /**
+         * Setter for the parent.
+         *
+         * @param n the parent node
+         */
+        public void setParent(VirtualCharNode n) {
+            
             this.node = n;
         }
 
@@ -120,7 +127,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
     /**
      * The field <tt>nodes</tt> contains the encapsulated node list.
      */
-    private NodeList nodes;
+    private NL nodes = new NL();
 
     /**
      * Creates a new object.
@@ -131,7 +138,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
     public VirtualCharNode(TypesettingContext context, UnicodeChar uc) {
 
         super(context, uc);
-        nodes = new NL(this);
+        nodes.setParent(this);
     }
 
     /**
