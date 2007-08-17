@@ -251,15 +251,9 @@ public abstract class AbstractFileCode extends AbstractCode
         StringBuffer sb = new StringBuffer(t.toText());
 
         for (t = source.getToken(context); t != null
-                && !(t instanceof SpaceToken); t = source.getToken(context)) {
-            
-            if (t instanceof CodeToken) {
-                Code code = context.getCode((CodeToken)t);
-                if (code instanceof Relax) {
-                    break;
-                }
-            }
-                        
+                && !(t instanceof SpaceToken) && !(t instanceof CodeToken); t =
+                source.getToken(context)) {
+
             sb.append(t.toText());
         }
 
