@@ -114,10 +114,9 @@ public class Input extends AbstractFileCode {
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         String name = scanFileName(context, source);
-        String encoding = getEncoding(context);
-        TokenStreamFactory factory = source.getTokenStreamFactory();
-
-        TokenStream stream = factory.getStream(name, FILE_TYPE, encoding);
+        TokenStream stream =
+                source.getTokenStreamFactory().getStream(name, FILE_TYPE,
+                    getEncoding(context));
         if (stream == null) {
             throw new HelpingException(getLocalizer(), "TTP.FileNotFound", name);
         }

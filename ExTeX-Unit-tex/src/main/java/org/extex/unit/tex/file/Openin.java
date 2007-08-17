@@ -82,6 +82,12 @@ import org.extex.unit.base.file.AbstractFileCode;
 public class Openin extends AbstractFileCode {
 
     /**
+     * The field <tt>FILE_TYPE</tt> contains the file type to create an input
+     * stream for.
+     */
+    private static final String FILE_TYPE = "tex";
+
+    /**
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
@@ -118,7 +124,7 @@ public class Openin extends AbstractFileCode {
         try {
             context.setInteraction(Interaction.BATCHMODE);
             TokenStream stream =
-                    source.getTokenStreamFactory().getStream(name, "tex",
+                    source.getTokenStreamFactory().getStream(name, FILE_TYPE,
                         getEncoding(context));
             if (stream != null) {
                 file = new InputFile(stream, false);
