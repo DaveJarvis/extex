@@ -38,6 +38,7 @@ import junit.framework.TestCase;
 
 import org.extex.ExTeX;
 import org.extex.backend.outputStream.OutputStreamFactory;
+import org.extex.core.Locator;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.helping.HelpingException;
@@ -49,6 +50,9 @@ import org.extex.interpreter.ErrorHandler;
 import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.observer.expandMacro.ExpandMacroObservable;
+import org.extex.interpreter.observer.expandMacro.ExpandMacroObserver;
+import org.extex.interpreter.type.Code;
 import org.extex.logging.LogFormatter;
 import org.extex.resource.ResourceFinder;
 import org.extex.scanner.type.token.Token;
@@ -259,6 +263,11 @@ public class ExTeXLauncher extends TestCase {
     private boolean setHsize = true;
 
     /**
+     * The field <tt>trace</tt> contains the indicator for tracing.
+     */
+    private boolean trace = false;;
+
+    /**
      * Creates a new object.
      * 
      * @param arg the name
@@ -357,6 +366,11 @@ public class ExTeXLauncher extends TestCase {
         properties.setProperty("extex.nobanner", "true");
         properties.setProperty("extex.config", getConfig());
 
+        if (Boolean.valueOf(properties.getProperty("extex.launcher.trace", //
+            "false")).booleanValue()) {
+            trace = true;
+        }
+
         ExTeX extex = new ExTeX(properties) {
 
             /**
@@ -385,6 +399,18 @@ public class ExTeXLauncher extends TestCase {
                 if (setHsize) {
                     context.setDimen("hsize", new Dimen(Dimen.ONE * 3000), //
                         true);
+                }
+                if (trace && interpreter instanceof ExpandMacroObservable) {
+                    ((ExpandMacroObservable) interpreter)
+                        .registerObserver(new ExpandMacroObserver() {
+
+                            public void update(Token token, Code code,
+                                    Locator locator) {
+
+                                System.err.print(locator.toString() + ": ");
+                                System.err.println(token.toText());
+                            }
+                        });
                 }
                 return interpreter;
             }

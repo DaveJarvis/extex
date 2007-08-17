@@ -1605,7 +1605,7 @@ public abstract class Max
 
         Code code = context.getCode(token);
         if (observersMacro != null) {
-            observersMacro.update(token, code);
+            observersMacro.update(token, code, getLocator());
         }
         if (code == null) {
             Count ignoreVoid = context.getCount("ignorevoid");

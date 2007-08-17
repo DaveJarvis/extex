@@ -19,6 +19,7 @@
 
 package org.extex.interpreter.observer.expandMacro;
 
+import org.extex.core.Locator;
 import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.token.Token;
 
@@ -37,7 +38,8 @@ public interface ExpandMacroObserver {
      * @param token the token to be expanded
      * @param code The code to which the token is expanded. This might be
      *  <code>null</code> for undefined macros
+     * @param locator the locator
      */
-    void update(Token token, Code code);
+    void update(Token token, Code code, Locator locator);
 
 }

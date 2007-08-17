@@ -22,12 +22,13 @@ package org.extex.interpreter.observer.expandMacro;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.extex.core.Locator;
 import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.token.Token;
 
 /**
  * This class provides a type-safe list of observers for the expand event.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
@@ -36,10 +37,10 @@ public final class ExpandMacroObserverList implements ExpandMacroObserver {
     /**
      * Take a list and add an observer. If the list is <code>null</code> then
      * a new one is created.
-     *
+     * 
      * @param list the input list or <code>null</code>
      * @param observer the observer to add
-     *
+     * 
      * @return the input list or a new one with the observer added
      */
     public static ExpandMacroObserver register(ExpandMacroObserver list,
@@ -68,7 +69,7 @@ public final class ExpandMacroObserverList implements ExpandMacroObserver {
 
     /**
      * Add an observer to the list.
-     *
+     * 
      * @param observer the observer to add to the list
      */
     public void add(ExpandMacroObserver observer) {
@@ -77,20 +78,16 @@ public final class ExpandMacroObserverList implements ExpandMacroObserver {
     }
 
     /**
-     * This method is meant to be invoked just before a macro is expanded.
-     *
-     * @param token the token to be expanded
-     * @param code The code to which the token is expanded. This might be
-     *  <code>null</code> for undefined macros
-     *
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.observer.expandMacro.ExpandMacroObserver#update(
-     *      org.extex.scanner.type.token.Token,
-     *      org.extex.interpreter.type.Code)
+     *      org.extex.scanner.type.token.Token, org.extex.interpreter.type.Code,
+     *      org.extex.core.Locator)
      */
-    public void update(Token token, Code code) {
+    public void update(Token token, Code code, Locator locator) {
 
         for (ExpandMacroObserver obs : list) {
-            obs.update(token, code);
+            obs.update(token, code, locator);
         }
     }
 
