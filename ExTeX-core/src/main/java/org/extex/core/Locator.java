@@ -165,8 +165,15 @@ public class Locator implements Serializable {
         if (causeLinit >= 0) {
             Locator c = cause;
             for (int i = 0; c != null && i < causeLinit; i++) {
+                if (c.resource != null) {
+                    sb.insert(0, c.resource);
+                }
+                sb.append(';');
+                if (lineNumber >= 0) {
+                    sb.append(lineNumber);
+                }
+                sb.append(';');
                 sb.insert(0, "..");
-                sb.insert(0, c.resource);
                 c = c.cause;
             }
             if (c == null) {
@@ -177,7 +184,9 @@ public class Locator implements Serializable {
             sb.append(resource);
         }
         sb.append(':');
-        sb.append(lineNumber);
+        if (lineNumber >= 0) {
+            sb.append(lineNumber);
+        }
         sb.append(':');
         return sb.toString();
     }
