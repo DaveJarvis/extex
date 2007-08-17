@@ -19,8 +19,16 @@
 
 package org.extex.font;
 
+import org.extex.core.UnicodeChar;
 import org.extex.font.exception.FontException;
+import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.typesetter.CharNodeBuilder;
+import org.extex.typesetter.tc.TypesettingContext;
+import org.extex.typesetter.tc.TypesettingContextFactory;
+import org.extex.typesetter.type.Node;
+import org.extex.typesetter.type.node.CharNode;
+import org.extex.typesetter.type.node.factory.SimpleNodeFactory;
 
 /**
  * Test for the font factory (vf with creation nodes).
@@ -68,6 +76,26 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
 
         assertNotNull(font);
         assertNotNull(key);
+    }
+
+    /**
+     * Test for the font key.
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void test2() throws Exception {
+
+        assertNotNull(font);
+        assertNotNull(key);
+        assertTrue(font instanceof CharNodeBuilder);
+        TypesettingContextFactory tcFactory = new TypesettingContextFactory();
+        tcFactory.configure(ConfigurationFactory.newInstance("tc.xml"));
+        TypesettingContext tc = tcFactory.initial();
+        Node node =
+                ((CharNodeBuilder) font).buildCharNode(UnicodeChar.get('X'),
+                    tc, new SimpleNodeFactory(), tcFactory);
+        assertNotNull("node", node);
+        assertTrue("node class", node instanceof CharNode);
     }
 
 }
