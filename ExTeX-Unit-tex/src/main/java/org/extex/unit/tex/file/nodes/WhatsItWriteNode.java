@@ -66,21 +66,28 @@ public class WhatsItWriteNode extends WhatsItNode {
     private transient TokenSource source;
 
     /**
+     * The field <tt>typesetter</tt> contains the typesetter.
+     */
+    private transient Typesetter typesetter;
+
+    /**
      * Creates a new object.
      * 
      * @param key the key for the OutFile
      * @param tokens the tokens to write (after expansion)
      * @param source the interpreter for expansion
+     * @param typesetter the typesetter
      * @param writer the target writer
      */
     public WhatsItWriteNode(String key, Tokens tokens, TokenSource source,
-            TokensWriter writer) {
+            Typesetter typesetter, TokensWriter writer) {
 
         super();
         this.key = key;
         this.tokens = tokens;
         this.source = source;
         this.writer = writer;
+        this.typesetter = typesetter; 
     }
 
     /**
