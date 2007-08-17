@@ -940,7 +940,7 @@ public class Moritz extends Max
         }
 
         if (stream == null) {
-            stream = getTokenStreamFactory().newInstance("");
+            stream = getTokenStreamFactory().getStream("");
         }
         stream.put(token);
     }
@@ -954,7 +954,7 @@ public class Moritz extends Max
     public void push(Token[] tokens) throws HelpingException {
 
         if (stream == null) {
-            stream = getTokenStreamFactory().newInstance("");
+            stream = getTokenStreamFactory().getStream("");
         }
 
         for (int i = tokens.length - 1; i >= 0; i--) {
@@ -980,7 +980,7 @@ public class Moritz extends Max
         }
 
         if (stream == null) {
-            stream = getTokenStreamFactory().newInstance("");
+            stream = getTokenStreamFactory().getStream("");
         }
 
         for (int i = tokens.length() - 1; i >= 0; i--) {
@@ -1005,7 +1005,7 @@ public class Moritz extends Max
             return;
         }
         if (stream == null) {
-            stream = getTokenStreamFactory().newInstance("");
+            stream = getTokenStreamFactory().getStream("");
         }
         stream.put(t);
 

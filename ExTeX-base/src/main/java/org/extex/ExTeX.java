@@ -970,7 +970,7 @@ public class ExTeX {
         if (filename != null && !filename.equals("")) {
 
             TokenStream stream =
-                    factory.newInstance(filename, "tex", prop
+                    factory.getStream(filename, "tex", prop
                         .getProperty(PROP_ENCODING));
             if (stream == null) {
                 logger.severe(localizer.format("TTP.FileNotFound", filename));
@@ -983,7 +983,7 @@ public class ExTeX {
         String post = prop.getProperty(PROP_CODE);
 
         if (post != null && !post.equals("")) {
-            interpreter.addStream(factory.newInstance(post));
+            interpreter.addStream(factory.getStream(post));
             notInitialized = false;
         }
 

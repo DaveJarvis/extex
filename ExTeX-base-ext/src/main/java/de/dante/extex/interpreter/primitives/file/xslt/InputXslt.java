@@ -133,7 +133,7 @@ public class InputXslt extends AbstractFileCode {
                     new InputStreamReader(new ByteArrayInputStream(out
                         .toByteArray()));
 
-            source.addStream(factory.newInstance(reader));
+            source.addStream(factory.getStream(reader));
 
         } catch (TransformerException e) {
             throw new NoHelpException(e);

@@ -216,7 +216,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
         }
         TokenStreamFactory factory = source.getTokenStreamFactory();
         String t = tokens.toText(context.escapechar());
-        source.addStream(new TokenStreamProxy(factory.newInstance(t)));
+        source.addStream(new TokenStreamProxy(factory.getStream(t)));
     }
 
     /**

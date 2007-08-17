@@ -16,7 +16,9 @@ package org.extex.scanner.stream;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.StringReader;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -175,18 +177,6 @@ public class TokenStreamFactory extends AbstractFactory
     private Constructor<?> readerConstructor;
 
     /**
-     * The field <tt>streamConstructor</tt> contains the constructor for the
-     * file variant.
-     */
-    private Constructor<?> streamConstructor;
-
-    /**
-     * The field <tt>stringConstructor</tt> contains the constructor for the
-     * string variant.
-     */
-    private Constructor<?> stringConstructor;
-
-    /**
      * The field <tt>tag</tt> contains the tag name of the sub-configuration
      * to use.
      */
@@ -205,10 +195,16 @@ public class TokenStreamFactory extends AbstractFactory
     }
 
     /**
-     * Initialize.
+     * {@inheritDoc}
+     * 
+     * @see org.extex.framework.AbstractFactory#configure(
+     *      org.extex.framework.configuration.Configuration)
      */
-    private void init() {
+    @Override
+    public void configure(Configuration theConfiguration)
+            throws ConfigurationException {
 
+        super.configure(theConfiguration);
         this.configuration = selectConfiguration(tag);
         String classname = configuration.getAttribute(CLASS_ATTRIBUTE);
         if (classname == null) {
@@ -229,36 +225,6 @@ public class TokenStreamFactory extends AbstractFactory
             throw new ConfigurationClassNotFoundException(classname,
                 configuration);
         }
-
-        try {
-            stringConstructor =
-                    Class.forName(classname).getConstructor(
-                        new Class[]{Configuration.class,
-                                TokenStreamOptions.class, String.class,
-                                String.class});
-        } catch (SecurityException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (NoSuchMethodException e) {
-            throw new ConfigurationNoSuchMethodException(e);
-        } catch (ClassNotFoundException e) {
-            throw new ConfigurationClassNotFoundException(classname,
-                configuration);
-        }
-
-        try {
-            streamConstructor =
-                    Class.forName(classname).getConstructor(
-                        new Class[]{Configuration.class,
-                                TokenStreamOptions.class, InputStream.class,
-                                String.class, String.class});
-        } catch (SecurityException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (NoSuchMethodException e) {
-            throw new ConfigurationNoSuchMethodException(e);
-        } catch (ClassNotFoundException e) {
-            throw new ConfigurationClassNotFoundException(classname,
-                configuration);
-        }
     }
 
     /**
@@ -268,30 +234,11 @@ public class TokenStreamFactory extends AbstractFactory
      * @return the new instance
      * @throws ConfigurationException in case of an error in the configuration
      */
-    public TokenStream newInstance(CharSequence line)
+    public TokenStream getStream(CharSequence line)
             throws ConfigurationException {
 
-        if (stringConstructor == null) {
-            init();
-        }
-
-        TokenStream stream;
-        try {
-
-            stream = (TokenStream) stringConstructor.newInstance(//
-                new Object[]{configuration, options, line, ""});
-
-        } catch (IllegalArgumentException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (InstantiationException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (IllegalAccessException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (InvocationTargetException e) {
-            throw new ConfigurationInstantiationException(e);
-        }
-
-        enableLogging(stream, getLogger());
+        TokenStream stream = getStream(new StringReader(line.toString()), //
+            Boolean.FALSE, "*");
 
         if (openStringObservers != null) {
             openStringObservers.update(line);
@@ -307,10 +254,33 @@ public class TokenStreamFactory extends AbstractFactory
      * @return the new instance
      * @throws ConfigurationException in case of an error in the configuration
      */
-    public TokenStream newInstance(Reader reader) throws ConfigurationException {
+    public TokenStream getStream(Reader reader) throws ConfigurationException {
 
-        if (readerConstructor == null) {
-            init();
+        TokenStream stream = getStream(reader, Boolean.FALSE, "*");
+
+        if (openReaderObservers != null) {
+            openReaderObservers.update(reader);
+        }
+
+        return stream;
+    }
+
+    /**
+     * Provide a new instance of a token stream reading from a Reader.
+     * 
+     * @param reader the reader to get new characters from
+     * @param isFile the indicator for file readers
+     * @param source the description of the source
+     * 
+     * @return the new instance
+     * 
+     * @throws ConfigurationException in case of an error in the configuration
+     */
+    protected TokenStream getStream(Reader reader, Boolean isFile, String source)
+            throws ConfigurationException {
+
+        if (reader == null) {
+            throw new IllegalArgumentException("reader");
         }
 
         TokenStream stream;
@@ -318,7 +288,7 @@ public class TokenStreamFactory extends AbstractFactory
 
             stream = (TokenStream) readerConstructor.newInstance(//
                 new Object[]{configuration, options, reader,//
-                        Boolean.FALSE, "*"});
+                        isFile, source});
 
         } catch (IllegalArgumentException e) {
             throw new ConfigurationInstantiationException(e);
@@ -331,10 +301,6 @@ public class TokenStreamFactory extends AbstractFactory
         }
 
         enableLogging(stream, getLogger());
-
-        if (openReaderObservers != null) {
-            openReaderObservers.update(reader);
-        }
 
         return stream;
     }
@@ -346,57 +312,40 @@ public class TokenStreamFactory extends AbstractFactory
      * @param name the name of the file to be read
      * @param type the type of the file to be read
      * @param encoding the name of the encoding to use
+     * 
      * @return the new instance or <code>null</code> if the resource could not
      *         be located
      * @throws ConfigurationException in case of an error in the configuration
      */
-    public TokenStream newInstance(String name, String type, String encoding)
+    public TokenStream getStream(String name, String type, String encoding)
             throws ConfigurationException {
 
         ResourceFinder resourceFinder = getResourceFinder();
         if (resourceFinder == null) {
             throw new MissingResourceFinderException("");
         }
-        InputStream stream = resourceFinder.findResource(name, type);
+        InputStream istream = resourceFinder.findResource(name, type);
 
-        if (stream == null) {
+        if (istream == null) {
             return null;
         }
-        stream = new BufferedInputStream(stream);
+        istream = new BufferedInputStream(istream);
 
         if (decorators != null) {
             int size = decorators.size();
             for (int i = 0; i < size; i++) {
-                stream = decorators.get(i).pipe(stream);
+                istream = decorators.get(i).pipe(istream);
             }
         }
 
-        if (streamConstructor == null) {
-            init();
-        }
-
-        TokenStream tokenStream;
-        try {
-            tokenStream = (TokenStream) streamConstructor.newInstance(//
-                new Object[]{configuration, options, stream, name, encoding});
-
-        } catch (IllegalArgumentException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (InstantiationException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (IllegalAccessException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (InvocationTargetException e) {
-            throw new ConfigurationInstantiationException(e
-                .getTargetException());
-        }
+        TokenStream stream =
+                getStream(new InputStreamReader(istream), Boolean.TRUE, name);
 
         if (openFileObservers != null) {
-            openFileObservers.update(name, type, stream);
+            openFileObservers.update(name, type, istream);
         }
 
-        enableLogging(stream, getLogger());
-        return tokenStream;
+        return stream;
     }
 
     /**

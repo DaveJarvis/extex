@@ -23,14 +23,15 @@ import org.extex.test.ExTeXLauncher;
 
 /**
  * This is a test suite for read-only count registers.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher {
 
     /**
-     * The field <tt>primitive</tt> contains the name of the primitive to test.
+     * The field <tt>primitive</tt> contains the name of the primitive to
+     * test.
      */
     private String primitive;
 
@@ -51,13 +52,13 @@ public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher 
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      * @param primitive the name of the primitive
      * @param defaultValue the default value
      */
-    public AbstractReadonlyCountRegisterTester(String arg,
-            String primitive, String defaultValue) {
+    public AbstractReadonlyCountRegisterTester(String arg, String primitive,
+            String defaultValue) {
 
         super(arg);
         this.primitive = primitive;
@@ -66,15 +67,14 @@ public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher 
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      * @param primitive the name of the primitive
      * @param argument the argument
      * @param defaultValue the default value
      */
-    public AbstractReadonlyCountRegisterTester(String arg,
-            String primitive, String argument,
-            String defaultValue) {
+    public AbstractReadonlyCountRegisterTester(String arg, String primitive,
+            String argument, String defaultValue) {
 
         super(arg);
         this.primitive = primitive;
@@ -84,16 +84,15 @@ public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher 
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      * @param primitive the name of the primitive
      * @param argument the argument
      * @param defaultValue the default value
      * @param prepare ...
      */
-    public AbstractReadonlyCountRegisterTester(String arg,
-            String primitive, String argument,
-            String defaultValue, String prepare) {
+    public AbstractReadonlyCountRegisterTester(String arg, String primitive,
+            String argument, String defaultValue, String prepare) {
 
         super(arg);
         this.primitive = primitive;
@@ -103,127 +102,116 @@ public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher 
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the primitive is not allowed in vertical mode.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive is not allowed in
+     * vertical mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testErrorVerticalMode1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\" + primitive + " ",
-                //--- log message ---
-                "You can't use `\\" + primitive + "' in vertical mode");
+        assertFailure(// --- input code ---
+            "\\" + primitive + " ",
+            // --- log message ---
+            "You can't use `\\" + primitive + "' in vertical mode");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the primitive is not allowed in inner vertical
-     *  mode.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive is not allowed in inner
+     * vertical mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testErrorVerticalMode2() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\vbox{\\" + primitive + "} ",
-                //--- log message ---
-                "You can't use `\\" + primitive + "' in inner vertical mode");
+        assertFailure(// --- input code ---
+            DEFINE_BRACES + "\\vbox{\\" + primitive + "} ",
+            // --- log message ---
+            "You can't use `\\" + primitive + "' in inner vertical mode");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the primitive is not allowed in horizontal mode.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive is not allowed in
+     * horizontal mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testErrorHorizonalMode1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "x\\" + primitive + " ",
-                //--- log message ---
-                "You can't use `\\" + primitive + "' in horizontal mode");
+        assertFailure(// --- input code ---
+            "x\\" + primitive + " ",
+            // --- log message ---
+            "You can't use `\\" + primitive + "' in horizontal mode");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the primitive is not allowed in restricted
-     *  horizontal mode.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive is not allowed in
+     * restricted horizontal mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testErrorHorizonalMode2() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES + "\\hbox{\\" + primitive + "} ",
-                //--- log message ---
-                "You can't use `\\" + primitive
-                        + "' in restricted horizontal mode");
+        assertFailure(// --- input code ---
+            DEFINE_BRACES + "\\hbox{\\" + primitive + "} ",
+            // --- log message ---
+            "You can't use `\\" + primitive + "' in restricted horizontal mode");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the primitive is not allowed in math mode.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive is not allowed in math
+     * mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testErrorMathMode1() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_MATH + "$\\" + primitive + "$ ",
-                //--- log message ---
-                "You can't use `\\" + primitive + "' in math mode");
+        assertFailure(// --- input code ---
+            DEFINE_MATH + "$\\" + primitive + "$ ",
+            // --- log message ---
+            "You can't use `\\" + primitive + "' in math mode");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the primitive is not allowed in math mode.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive is not allowed in math
+     * mode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testErrorMathMode2() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_MATH + "$$\\" + primitive + "$$ ",
-                //--- log message ---
-                "You can't use `\\" + primitive + "' in displaymath mode");
+        assertFailure(// --- input code ---
+            DEFINE_MATH + "$$\\" + primitive + "$$ ",
+            // --- log message ---
+            "You can't use `\\" + primitive + "' in displaymath mode");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the primitive is theable and has the default
-     *  value 0.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive is theable and has the
+     * default value 0. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testDefaultValue1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                prepare + "\\the\\" + primitive + argument + " \\end",
-                //--- log message ---
-                defaultValue + TERM);
+        assertFailure(// --- input code ---
+            prepare + "\\showthe\\" + primitive + argument + " \\end",
+            // --- log message ---
+            "> " + defaultValue + ".\n");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that the primitive is assignable to a count register.
-     * </testcase>
-     *
+     * <testcase> Test case checking that the primitive is assignable to a count
+     * register. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCountAssignment1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                prepare + "\\count0=\\" + primitive + argument + "\\the\\count0\\end",
-                //--- log message ---
-                defaultValue + TERM);
+        assertFailure(// --- input code ---
+            prepare + "\\count0=\\" + primitive + argument
+                    + "\\showthe\\count0\\end",
+            // --- log message ---
+            "> " + defaultValue + ".\n");
     }
 
 }

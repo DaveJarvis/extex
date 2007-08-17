@@ -981,7 +981,7 @@ public class TeX extends ExTeX {
 
         try {
             interpreter.addStream(factory
-                .newInstance(new TeXInputReader(getLogger(), properties
+                .getStream(new TeXInputReader(getLogger(), properties
                     .getProperty(PROP_ENCODING), interpreter)));
         } catch (UnsupportedEncodingException e) {
             throw new ConfigurationUnsupportedEncodingException(properties
@@ -1095,7 +1095,7 @@ public class TeX extends ExTeX {
         Logger logger = getLogger();
 
         interpreter.getContext().setStandardTokenStream(
-            interpreter.getTokenStreamFactory().newInstance(
+            interpreter.getTokenStreamFactory().getStream(
                 new InputStreamReader(System.in)));
 
         if (fileRecorder != null && interpreter instanceof OpenFileObservable) {

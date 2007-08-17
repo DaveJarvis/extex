@@ -77,7 +77,7 @@ public class DimenRegisterTest extends TestCase {
         Interpreter source =
                 new InterpreterFactory(config.getConfiguration("Interpreter"),
                     null).newInstance(null, null);
-        source.addStream(fac.newInstance(spec));
+        source.addStream(fac.getStream(spec));
         source.setTokenStreamFactory(fac);
 
         return source.parseDimen(new MockContext(), source, null).getValue();

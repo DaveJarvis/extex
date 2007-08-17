@@ -118,7 +118,7 @@ public class Openin extends AbstractFileCode {
         try {
             context.setInteraction(Interaction.BATCHMODE);
             TokenStream stream =
-                    source.getTokenStreamFactory().newInstance(name, "tex",
+                    source.getTokenStreamFactory().getStream(name, "tex",
                         getEncoding(context));
             if (stream != null) {
                 file = new InputFile(stream, false);

@@ -20,12 +20,13 @@
 package org.extex.scanner.base;
 
 import java.io.IOException;
+import java.io.StringReader;
 
 import org.extex.scanner.TokenStream;
 
 /**
  * Test cases for the string implementation of a token stream.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -33,7 +34,7 @@ public class TokenStreamReaderImplTest extends TokenStreamStringImplTest {
 
     /**
      * Command line interface.
-     *
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
@@ -43,7 +44,7 @@ public class TokenStreamReaderImplTest extends TokenStreamStringImplTest {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name
      */
     public TokenStreamReaderImplTest(String name) {
@@ -53,7 +54,7 @@ public class TokenStreamReaderImplTest extends TokenStreamStringImplTest {
 
     /**
      * Create a stream of tokens fed from a string.
-     *
+     * 
      * @param line the input string
      * @return the new token stream
      * @throws IOException in case of an error
@@ -61,7 +62,8 @@ public class TokenStreamReaderImplTest extends TokenStreamStringImplTest {
     @Override
     protected TokenStream makeStream(String line) throws IOException {
 
-        return new TokenStreamImpl(null, null, line, "test");
+        return new TokenStreamImpl(null, null, new StringReader(line),
+            Boolean.FALSE, "test");
     }
 
 }

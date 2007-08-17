@@ -117,7 +117,7 @@ public class Input extends AbstractFileCode {
         String encoding = getEncoding(context);
         TokenStreamFactory factory = source.getTokenStreamFactory();
 
-        TokenStream stream = factory.newInstance(name, FILE_TYPE, encoding);
+        TokenStream stream = factory.getStream(name, FILE_TYPE, encoding);
         if (stream == null) {
             throw new HelpingException(getLocalizer(), "TTP.FileNotFound", name);
         }

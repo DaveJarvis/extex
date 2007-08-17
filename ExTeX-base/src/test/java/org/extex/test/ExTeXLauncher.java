@@ -379,7 +379,7 @@ public class ExTeXLauncher extends TestCase {
                 Context context = interpreter.getContext();
                 context.set(new LauncherFont(), true);
                 context.setStandardTokenStream(interpreter
-                    .getTokenStreamFactory().newInstance(
+                    .getTokenStreamFactory().getStream(
                         new InputStreamReader(System.in)));
                 context.set(context.getLanguage("0"), true);
                 if (setHsize) {

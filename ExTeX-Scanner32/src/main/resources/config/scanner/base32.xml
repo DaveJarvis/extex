@@ -17,6 +17,4 @@
   -  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
   -
   -->
-<Scanner class="org.extex.scanner.stream.impl32.TokenStreamImpl32"
-         buffersize="">
-</Scanner>
+<Scanner class="org.extex.scanner.stream.impl32.TokenStreamImpl32"/>

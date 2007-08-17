@@ -25,7 +25,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.io.Reader;
-import java.io.StringReader;
 
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
@@ -685,26 +684,6 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
         super(isFile.booleanValue());
         this.in = new LineNumberReader(reader);
-        this.source = theSource;
-    }
-
-    /**
-     * Creates a new object.
-     *
-     * @param config the configuration object for this instance; This
-     *            configuration is ignored in this implementation.
-     * @param options ignored here
-     * @param theLine the string to use as source for characters
-     * @param theSource the description of the input source
-     *
-     * @throws IOException in case of an IO error
-     */
-    public TokenStreamImpl(Configuration config,
-            TokenStreamOptions options, String theLine,
-            String theSource) throws IOException {
-
-        super(false);
-        this.in = new LineNumberReader(new StringReader(theLine));
         this.source = theSource;
     }
 

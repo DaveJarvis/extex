@@ -173,7 +173,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
                                 case 'i':
                                 case 'I':
                                     source.addStream(source
-                                        .getTokenStreamFactory().newInstance(
+                                        .getTokenStreamFactory().getStream(
                                             line.substring(1)));
                                     break;
                                 case 'h':
