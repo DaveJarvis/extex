@@ -27,6 +27,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ExpandableCode;
+import org.extex.interpreter.type.PrefixCode;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -73,7 +74,7 @@ import org.extex.unit.tex.conditional.Ifcase;
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
  * @version $Revision: 4770 $
  */
-public class Unless extends AbstractCode implements ExpandableCode {
+public class Unless extends AbstractCode implements ExpandableCode, PrefixCode {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for the
