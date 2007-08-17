@@ -78,7 +78,20 @@ public class UserAndLogFile extends OutputFile {
     @Override
     public boolean isOpen() {
 
-        return logger != null;
+        return true;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.extex.base.type.file.OutputFile#newline()
+     */
+    @Override
+    public void newline() throws IOException {
+
+        if (logger != null) {
+            logger.info("\n");
+        }
     }
 
     /**

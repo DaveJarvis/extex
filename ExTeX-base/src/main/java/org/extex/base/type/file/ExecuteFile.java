@@ -88,6 +88,17 @@ public class ExecuteFile extends OutputFile {
     /**
      * {@inheritDoc}
      *
+     * @see org.extex.base.type.file.OutputFile#newline()
+     */
+    @Override
+    public void newline() throws IOException {
+
+        // nothing to do
+    }
+
+    /**
+     * {@inheritDoc}
+     *
      * @see org.extex.base.type.file.OutputFile#open(java.lang.String)
      */
     @Override

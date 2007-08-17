@@ -238,6 +238,12 @@ public class OutputFile implements OutFile {
     private File file;
 
     /**
+     * The field <tt>stream</tt> contains the stream to use. When the instance
+     * is persisted this stream is left behind.
+     */
+    private transient OutputStream stream = null;
+
+    /**
      * The field <tt>writer</tt> contains the real writer assigned to this
      * instance.
      */
@@ -281,10 +287,22 @@ public class OutputFile implements OutFile {
     }
 
     /**
-     * Open the current file.
-     *
      * {@inheritDoc}
-     *
+     * 
+     * @see org.extex.scanner.type.file.OutFile#newline()
+     */
+    public void newline() throws IOException {
+
+        if (writer != null) {
+            writer.write('\n');
+        }
+    }
+
+    /**
+     * Open the current file.
+     * 
+     * {@inheritDoc}
+     * 
      * @see org.extex.scanner.type.file.OutFile#open(java.lang.String)
      */
     public void open(String encoding) {
@@ -317,9 +335,16 @@ public class OutputFile implements OutFile {
     }
 
     /**
-     * The field <tt>stream</tt> contains the ...
+     * Interceptor method for writer initialization.
+     * 
+     * @param w the writer at hand
+     * 
+     * @return the writer to use instead
      */
-    private transient OutputStream stream = null;
+    protected Writer use(Writer w) {
+
+        return w;
+    }
 
     /**
      * Write some tokens to the output writer.
@@ -350,18 +375,6 @@ public class OutputFile implements OutFile {
                 throw new NoHelpException(e);
             }
         }
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     *
-     * @param w
-     * 
-     * @return
-     */
-    protected Writer use(Writer w) {
-
-        return w;
     }
 
 }

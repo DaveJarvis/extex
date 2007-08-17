@@ -21,12 +21,13 @@ package org.extex.interpreter.type;
 
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.context.Context;
+import org.extex.scanner.type.file.OutFile;
 import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This interface describes the ability to write some tokens to a output file
  * register.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -34,14 +35,17 @@ public interface TokensWriter {
 
     /**
      * Immediately write some tokens to a write register.
-     *
+     * 
      * @param key the name (number) of the write register
      * @param toks the tokens to write
      * @param context the processing context
-     *
+     * 
+     * @return the output file on which the writing has been performed; or
+     *         <code>null</code>
+     * 
      * @throws HelpingException in case of another error
      */
-    void write(String key, Tokens toks, Context context)
+    OutFile write(String key, Tokens toks, Context context)
             throws HelpingException;
 
 }
