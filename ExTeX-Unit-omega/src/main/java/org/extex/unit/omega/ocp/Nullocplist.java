@@ -31,8 +31,7 @@ import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.omega.ocp.util.OcpList;
-import org.extex.unit.omega.ocp.util.OcpListBuilder;
-import org.extex.unit.omega.ocp.util.OcpListBuilderCommand;
+import org.extex.unit.omega.ocp.util.OcplistConvertible;
 import org.extex.unit.omega.ocp.util.OmegaOcpException;
 
 /**
@@ -67,7 +66,7 @@ import org.extex.unit.omega.ocp.util.OmegaOcpException;
 public class Nullocplist extends AbstractCode
         implements
             Showable,
-            OcpListBuilder {
+            OcplistConvertible {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -88,31 +87,6 @@ public class Nullocplist extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.omega.ocp.util.OcpListBuilder#build(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public OcpListBuilderCommand build(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException {
-
-        return new OcpListBuilderCommand() {
-
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.unit.omega.ocp.util.OcpListBuilderCommand#apply(
-             *      org.extex.unit.omega.ocp.util.OcpList)
-             */
-            public OcpList apply(OcpList list) {
-
-                return new OcpList("");
-            }
-        };
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.extex.interpreter.type.AbstractCode#execute(
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
@@ -122,16 +96,6 @@ public class Nullocplist extends AbstractCode
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         throw new OmegaOcpException(getName());
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.omega.ocp.util.OcpListBuilder#isTerminator()
-     */
-    public boolean isTerminator() {
-
-        return true;
     }
 
     /**
@@ -147,6 +111,19 @@ public class Nullocplist extends AbstractCode
         } catch (CatcodeException e) {
             throw new NoHelpException(e);
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.unit.omega.ocp.util.OcplistConvertible#convertOcplist(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     */
+    public OcpList convertOcplist(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException {
+
+        return new OcpList("");
     }
 
 }

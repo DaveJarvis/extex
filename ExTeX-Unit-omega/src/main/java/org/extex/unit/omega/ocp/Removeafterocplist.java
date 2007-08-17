@@ -22,18 +22,13 @@ package org.extex.unit.omega.ocp;
 import org.extex.base.parser.ScaledNumberParser;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
-import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.type.AbstractCode;
 import org.extex.ocpware.type.OcpProgram;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.omega.ocp.util.OcpList;
-import org.extex.unit.omega.ocp.util.OcpListBuilder;
-import org.extex.unit.omega.ocp.util.OcpListBuilderCommand;
 import org.extex.unit.omega.ocp.util.OcpUtil;
-import org.extex.unit.omega.ocp.util.OmegaOcpException;
 
 /**
  * This class provides an implementation for the primitive
@@ -51,12 +46,12 @@ import org.extex.unit.omega.ocp.util.OmegaOcpException;
  * 
  * <pre class="syntax">
  *    &lang;removeafterocplist&rang;
- *      &rarr; <tt>\removeafterocplist</tt> ...  </pre>
+ *      &rarr; <tt>\removeafterocplist</tt> &lang;<i>float</i>&rang; &lang;<i>ocp register</i>&rang;  </pre>
  * 
  * <h4>Examples</h4>
  * 
  * <pre class="TeXSample">
- * \removeafterocplist ... </pre>
+ * \removeafterocplist  1.5 \myopc </pre>
  * 
  * </doc>
  * 
@@ -64,49 +59,7 @@ import org.extex.unit.omega.ocp.util.OmegaOcpException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
-public class Removeafterocplist extends AbstractCode implements OcpListBuilder {
-
-    /**
-     * TODO gene: missing JavaDoc.
-     *
-     */
-    private class Command implements OcpListBuilderCommand {
-
-        /**
-         * The field <tt>scaled</tt> contains the index.
-         */
-        private long scaled;
-
-        /**
-         * The field <tt>prog</tt> contains the program.
-         */
-        private OcpProgram prog;
-
-        /**
-         * Creates a new object.
-         * 
-         * @param scaled the index
-         * @param prog the program
-         */
-        public Command(long scaled, OcpProgram prog) {
-
-            super();
-            this.scaled = scaled;
-            this.prog = prog;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.unit.omega.ocp.util.OcpListBuilderCommand#apply(
-         *      org.extex.unit.omega.ocp.util.OcpList)
-         */
-        public OcpList apply(OcpList list) {
-
-            list.removeAfter(scaled, prog);
-            return list;
-        }
-    }
+public class Removeafterocplist extends AbstractOcplist {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -127,11 +80,11 @@ public class Removeafterocplist extends AbstractCode implements OcpListBuilder {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.omega.ocp.util.OcpListBuilder#build(
+     * @see org.extex.unit.omega.ocp.util.OcplistConvertible#convertOcplist(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public OcpListBuilderCommand build(Context context, TokenSource source,
+    public OcpList convertOcplist(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException {
 
         long scaled;
@@ -143,32 +96,9 @@ public class Removeafterocplist extends AbstractCode implements OcpListBuilder {
         OcpProgram prog =
                 OcpUtil.scanOcpCode(context, source, typesetter,
                     printableControlSequence(context));
-
-        return new Command(scaled, prog);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void execute(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        throw new OmegaOcpException(getName());
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.omega.ocp.util.OcpListBuilder#isTerminator()
-     */
-    public boolean isTerminator() {
-
-        return false;
+        OcpList list = scanOcplist(context, source, typesetter);
+        list.removeAfter(scaled, prog);
+        return list;
     }
 
 }

@@ -45,57 +45,16 @@ import org.extex.unit.omega.ocp.Addafterocplist;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class OcpList extends AbstractCode implements Showable, OcpListBuilder {
+public class OcpList extends AbstractCode
+        implements
+            Showable,
+            OcplistConvertible {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
     private static final long serialVersionUID = 2007L;
-
-    /**
-     * TODO gene: missing JavaDoc.
-     * 
-     */
-    private class Command implements OcpListBuilderCommand {
-
-        /**
-         * The field <tt>map</tt> contains the ...
-         */
-        private Map<Long, List<OcpProgram>> map;
-
-        /**
-         * Creates a new object.
-         * 
-         * @param map the map
-         */
-        public Command(Map<Long, List<OcpProgram>> map) {
-
-            super();
-            this.map = map;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.unit.omega.ocp.util.OcpListBuilderCommand#apply(
-         *      org.extex.unit.omega.ocp.util.OcpList)
-         */
-        public OcpList apply(OcpList list) {
-
-            for (Long k : map.keySet()) {
-                List<OcpProgram> progList = list.map.get(k);
-                if (progList == null) {
-                    progList = new ArrayList<OcpProgram>();
-                    list.map.put(k, progList);
-                }
-                for (OcpProgram p : progList) {
-                    progList.add(p);
-                }
-            }
-            return list;
-        }
-    }
 
     /**
      * The field <tt>map</tt> contains the ...
@@ -152,14 +111,23 @@ public class OcpList extends AbstractCode implements Showable, OcpListBuilder {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.omega.ocp.util.OcpListBuilder#build(
+     * @see org.extex.unit.omega.ocp.util.OcplistConvertible#convertOcplist(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    public OcpListBuilderCommand build(Context context, TokenSource source,
+    public OcpList convertOcplist(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException {
 
-        return new Command(map);
+        OcpList result = new OcpList("");
+
+        for (Long k : map.keySet()) {
+            List<OcpProgram> progList = new ArrayList<OcpProgram>();
+            result.map.put(k, progList);
+            for (OcpProgram p : progList) {
+                progList.add(p);
+            }
+        }
+        return result;
     }
 
     /**
@@ -175,16 +143,6 @@ public class OcpList extends AbstractCode implements Showable, OcpListBuilder {
 
         throw new HelpingException(LocalizerFactory
             .getLocalizer(Addafterocplist.class), "message");
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.unit.omega.ocp.util.OcpListBuilder#isTerminator()
-     */
-    public boolean isTerminator() {
-
-        return true;
     }
 
     /**

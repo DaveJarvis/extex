@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,32 +25,27 @@ import org.extex.interpreter.context.Context;
 import org.extex.typesetter.Typesetter;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes the feature of a code to be convertible into an
+ * &Omega;PC list.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:4411 $
  */
-public interface OcpListBuilder {
+public interface OcplistConvertible {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Convert the value into an &Omega;PC list. Some tokens may be read from
+     * the input stream to perform the job.
      * 
-     * @param context the context
-     * @param source the token source
+     * @param context the interpreter context
+     * @param source the source for new tokens
      * @param typesetter the typesetter
      * 
-     * @return the command to execute for delayed evaluation
+     * @return the &Omega;PC list encountered
      * 
      * @throws HelpingException in case of an error
      */
-    OcpListBuilderCommand build(Context context, TokenSource source,
+    OcpList convertOcplist(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException;
-
-    /**
-     * Getter for the indicator for the terminator.
-     *
-     * @return the indicator for the terminator
-     */
-    boolean isTerminator();
 
 }

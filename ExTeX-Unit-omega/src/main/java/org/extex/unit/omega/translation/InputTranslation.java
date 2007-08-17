@@ -23,11 +23,14 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.resource.ResourceAware;
+import org.extex.resource.ResourceFinder;
 import org.extex.scanner.type.file.InFile;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.file.AbstractFileCode;
 import org.extex.unit.omega.mode.AbstractModeCode;
+import org.extex.unit.omega.ocp.util.Ocp;
 import org.extex.unit.omega.ocp.util.OcpUtil;
 
 /**
@@ -44,12 +47,12 @@ import org.extex.unit.omega.ocp.util.OcpUtil;
  * 
  * <pre class="syntax">
  *    &lang;InputTranslation&rang;
- *      &rarr; ...  </pre>
+ *      &rarr; <tt>\InputTranslation</tt> &lang;in file&rang; &lang;ocp file name&rang;  </pre>
  * 
  * <h4>Examples</h4>
  * 
  * <pre class="TeXSample">
- * \InputTranslation... </pre>
+ * \InputTranslation 4 myocp </pre>
  * 
  * </doc>
  * 
@@ -57,13 +60,18 @@ import org.extex.unit.omega.ocp.util.OcpUtil;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4411 $
  */
-public class InputTranslation extends AbstractModeCode {
+public class InputTranslation extends AbstractModeCode implements ResourceAware {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
+
+    /**
+     * The field <tt>finder</tt> contains the resource finder.
+     */
+    private transient ResourceFinder finder;
 
     /**
      * Creates a new object.
@@ -92,11 +100,24 @@ public class InputTranslation extends AbstractModeCode {
         } else {
             file = AbstractFileCode.scanInFileKey(context, source, typesetter);
         }
-        String resource = OcpUtil.scanOcpFileName(source, context);
         InFile inFile = context.getInFile(file);
+        String resource = OcpUtil.scanOcpFileName(source, context);
+        Ocp ocp = Ocp.load(resource, finder);
+        
 
         // TODO gene: unimplemented
         throw new RuntimeException("unimplemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.resource.ResourceAware#setResourceFinder(
+     *      org.extex.resource.ResourceFinder)
+     */
+    public void setResourceFinder(ResourceFinder finder) {
+
+        this.finder = finder;
     }
 
 }
