@@ -25,6 +25,7 @@ import java.util.logging.Logger;
 import org.extex.base.type.file.ExecuteFile;
 import org.extex.base.type.file.LogFile;
 import org.extex.base.type.file.UserAndLogFile;
+import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.EofInToksException;
 import org.extex.core.exception.helping.HelpingException;
@@ -187,8 +188,7 @@ public class Write extends AbstractCode
      * {@inheritDoc}
      * 
      * @see org.extex.interpreter.type.AbstractCode#execute(
-     * org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -203,7 +203,23 @@ public class Write extends AbstractCode
             Tokens toks =
                     source.scanUnprotectedTokens(context, false, false,
                         printableControlSequence(context));
-            write(key, toks, context);
+            try {
+                toks = source.expand(toks, typesetter);
+            } catch (HelpingException e) {
+                throw e;
+            } catch (TypesetterException e) {
+                throw e;
+            } catch (GeneralException e) {
+                throw new NoHelpException(e);
+            }
+            OutFile of = write(key, toks, context);
+            if (of != null) {
+                try {
+                    of.newline();
+                } catch (IOException e) {
+                    throw new NoHelpException(e);
+                }
+            }
 
         } else {
 
@@ -214,7 +230,8 @@ public class Write extends AbstractCode
                 throw new EofInToksException(printableControlSequence(context));
             }
 
-            typesetter.add(new WhatsItWriteNode(key, tokens, source, this));
+            typesetter.add(new WhatsItWriteNode(key, tokens, source,
+                typesetter, this));
         }
     }
 
@@ -225,7 +242,7 @@ public class Write extends AbstractCode
      *      org.extex.scanner.type.tokens.Tokens,
      *      org.extex.interpreter.context.Context)
      */
-    public void write(String key, Tokens toks, Context context)
+    public OutFile write(String key, Tokens toks, Context context)
             throws HelpingException {
 
         OutFile file = context.getOutFile(key);
@@ -249,11 +266,17 @@ public class Write extends AbstractCode
             }
         }
 
+        if (file == null) {
+            // TODO gene: this should not be necessary
+            file = new UserAndLogFile(logger);
+        }
+
         try {
             file.write(toks);
         } catch (IOException e) {
             throw new NoHelpException(e);
         }
+        return file;
     }
 
 }
