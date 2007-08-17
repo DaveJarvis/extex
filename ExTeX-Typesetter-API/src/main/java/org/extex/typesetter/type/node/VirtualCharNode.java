@@ -73,11 +73,11 @@ public class VirtualCharNode extends CharNode implements NodeList {
 
         /**
          * Setter for the parent.
-         *
+         * 
          * @param n the parent node
          */
         public void setParent(VirtualCharNode n) {
-            
+
             this.node = n;
         }
 
@@ -130,6 +130,21 @@ public class VirtualCharNode extends CharNode implements NodeList {
     private NL nodes = new NL();
 
     /**
+     * The field <tt>d</tt> contains the depth for delayed initialization.
+     */
+    private FixedDimen d;
+
+    /**
+     * The field <tt>h</tt> contains the height for delayed initialization.
+     */
+    private FixedDimen h;
+
+    /**
+     * The field <tt>w</tt> contains the width for delayed initialization.
+     */
+    private FixedDimen w;
+
+    /**
      * Creates a new object.
      * 
      * @param context the typesetting context
@@ -139,6 +154,16 @@ public class VirtualCharNode extends CharNode implements NodeList {
 
         super(context, uc);
         nodes.setParent(this);
+
+        if (w != null) {
+            this.nodes.setWidth(w);
+        }
+        if (d != null) {
+            this.nodes.setDepth(d);
+        }
+        if (h != null) {
+            this.nodes.setHeight(h);
+        }
     }
 
     /**
@@ -407,7 +432,11 @@ public class VirtualCharNode extends CharNode implements NodeList {
     @Override
     public void setDepth(FixedDimen depth) {
 
-        this.nodes.setDepth(depth);
+        if (nodes == null) {
+            d = depth;
+        } else {
+            this.nodes.setDepth(depth);
+        }
     }
 
     /**
@@ -421,7 +450,11 @@ public class VirtualCharNode extends CharNode implements NodeList {
     @Override
     public void setHeight(FixedDimen height) {
 
-        this.nodes.setHeight(height);
+        if (nodes == null) {
+            h = height;
+        } else {
+            this.nodes.setHeight(height);
+        }
     }
 
     /**
@@ -465,7 +498,11 @@ public class VirtualCharNode extends CharNode implements NodeList {
     @Override
     public void setWidth(FixedDimen width) {
 
-        this.nodes.setWidth(width);
+        if (nodes == null) {
+            w = width;
+        } else {
+            this.nodes.setWidth(width);
+        }
     }
 
     /**
