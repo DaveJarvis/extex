@@ -22,6 +22,13 @@ package org.extex.font.format.dvi.command;
 /**
  * DVI: character.
  * 
+ * <p>
+ * Typeset character number 0..x from font f such that the reference point of
+ * the character is at (h, v). Then increase h by the width of that character.
+ * Note that a character may have zero or negative width, so one cannot be sure
+ * that h will advance after this command; but h usually does increase.
+ * </p>
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */

@@ -21,6 +21,10 @@ package org.extex.font.format.vf.command;
 
 import java.io.IOException;
 
+import org.extex.core.count.Count;
+import org.extex.core.count.FixedCount;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
 import org.extex.font.exception.FontException;
 import org.extex.font.format.tfm.TfmFixWord;
 import org.extex.framework.i18n.Localizer;
@@ -204,6 +208,16 @@ public class VfCommandFontDef extends VfCommand {
     }
 
     /**
+     * Returns the designsize as {@link Dimen}.
+     * 
+     * @return Returns the designsize as {@link Dimen}.
+     */
+    public FixedDimen getDesignsizeAsDimen() {
+
+        return new Dimen(designsize.getValue() >> 4);
+    }
+
+    /**
      * Getter for fontname.
      * 
      * @return the fontname
@@ -231,6 +245,16 @@ public class VfCommandFontDef extends VfCommand {
     public TfmFixWord getScalefactor() {
 
         return scalefactor;
+    }
+
+    /**
+     * Return the scalefactor as {@link Count}.
+     * 
+     * @return Return the scalefactor as {@link Count}.
+     */
+    public FixedCount getScalefactorAsCount() {
+
+        return new Count(scalefactor.getValue() >> 4);
     }
 
     /**

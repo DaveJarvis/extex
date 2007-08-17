@@ -56,6 +56,12 @@ import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
+import org.extex.typesetter.CharNodeBuilder;
+import org.extex.typesetter.tc.TypesettingContext;
+import org.extex.typesetter.tc.TypesettingContextFactory;
+import org.extex.typesetter.type.Node;
+import org.extex.typesetter.type.node.CharNode;
+import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.extex.util.file.random.RandomAccessInputStream;
 
 /**
@@ -70,7 +76,8 @@ public class LoadableTfmFont
             BackendFont,
             ResourceAware,
             LogEnabled,
-            TfmMetricFont {
+            TfmMetricFont,
+            CharNodeBuilder {
 
     /**
      * The actual font key.
@@ -163,6 +170,24 @@ public class LoadableTfmFont
      * The xtf data.
      */
     private byte[] xtfdata = null;
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.CharNodeBuilder#buildCharNode(org.extex.core.UnicodeChar,
+     *      org.extex.typesetter.tc.TypesettingContext,
+     *      org.extex.typesetter.type.node.factory.NodeFactory,
+     *      org.extex.typesetter.tc.TypesettingContextFactory)
+     */
+    public CharNode buildCharNode(UnicodeChar uc, TypesettingContext tc,
+            NodeFactory factory, TypesettingContextFactory tcFactory) {
+
+        Node node = factory.getNode(tc, uc);
+        if (node instanceof CharNode) {
+            return (CharNode) node;
+        }
+        return null;
+    }
 
     /**
      * Returns the char position of a Unicode char.
@@ -867,5 +892,4 @@ public class LoadableTfmFont
         // ignored
 
     }
-
 }

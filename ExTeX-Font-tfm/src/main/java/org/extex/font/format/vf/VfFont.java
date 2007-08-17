@@ -22,11 +22,15 @@ package org.extex.font.format.vf;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.extex.font.exception.FontException;
 import org.extex.font.format.tfm.TfmReader;
 import org.extex.font.format.vf.command.VfCommand;
+import org.extex.font.format.vf.command.VfCommandCharacterPackets;
+import org.extex.font.format.vf.command.VfCommandFontDef;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.util.file.random.RandomAccessInputStream;
@@ -106,6 +110,16 @@ public class VfFont implements XMLWriterConvertible {
     private List<VfCommand> cmds;
 
     /**
+     * The map for the fonts.
+     */
+    private Map<Integer, VfCommandFontDef> fonts;
+
+    /**
+     * The map for the characters.
+     */
+    private Map<Integer, VfCommandCharacterPackets> chars;
+
+    /**
      * reads the virtual font.
      * 
      * @throws IOException if an
@@ -113,6 +127,8 @@ public class VfFont implements XMLWriterConvertible {
     private void readVF(InputStream in) throws FontException {
 
         cmds = new ArrayList<VfCommand>();
+        fonts = new HashMap<Integer, VfCommandFontDef>();
+        chars = new HashMap<Integer, VfCommandCharacterPackets>();
 
         try {
             RandomAccessR rar = new RandomAccessInputStream(in);
@@ -121,6 +137,15 @@ public class VfFont implements XMLWriterConvertible {
                 VfCommand command = VfCommand.getInstance(localizer, rar);
                 if (command == null) {
                     break;
+                }
+                if (command instanceof VfCommandFontDef) {
+                    VfCommandFontDef fcmd = (VfCommandFontDef) command;
+                    fonts.put(fcmd.getFontnumbers(), fcmd);
+                }
+                if (command instanceof VfCommandCharacterPackets) {
+                    VfCommandCharacterPackets ccmd =
+                            (VfCommandCharacterPackets) command;
+                    chars.put(ccmd.getCharactercode(), ccmd);
                 }
                 cmds.add(command);
             }
@@ -153,6 +178,28 @@ public class VfFont implements XMLWriterConvertible {
     }
 
     /**
+     * Returns the font command or <code>null</code>, if not found.
+     * 
+     * @param number The number of the font.
+     * @return Returns the font command.
+     */
+    public VfCommandFontDef getFont(int number) {
+
+        return fonts.get(number);
+    }
+
+    /**
+     * Returns the char command or <code>null</code>, if not found.
+     * 
+     * @param number The number of the char.
+     * @return Returns the char command.
+     */
+    public VfCommandCharacterPackets getChar(int number) {
+
+        return chars.get(number);
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
@@ -168,6 +215,16 @@ public class VfFont implements XMLWriterConvertible {
         }
         writer.writeEndElement();
 
+    }
+
+    /**
+     * Getter for fonts.
+     * 
+     * @return the fonts
+     */
+    public Map<Integer, VfCommandFontDef> getFonts() {
+
+        return fonts;
     }
 
     // /**

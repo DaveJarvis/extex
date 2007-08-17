@@ -37,6 +37,7 @@ import org.extex.core.glue.Glue;
 import org.extex.font.BackendCharacter;
 import org.extex.font.BackendFont;
 import org.extex.font.CoreFontFactory;
+import org.extex.font.FontAware;
 import org.extex.font.FontKey;
 import org.extex.font.LoadableFont;
 import org.extex.font.exception.CorruptFontException;
@@ -44,12 +45,19 @@ import org.extex.font.exception.FontException;
 import org.extex.font.format.tfm.TfmFixWord;
 import org.extex.font.format.tfm.TfmReader;
 import org.extex.font.format.tfm.U2tFactory;
+import org.extex.font.format.vf.command.VfCommandCharacterPackets;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
+import org.extex.typesetter.CharNodeBuilder;
+import org.extex.typesetter.tc.TypesettingContext;
+import org.extex.typesetter.tc.TypesettingContextFactory;
+import org.extex.typesetter.type.node.CharNode;
+import org.extex.typesetter.type.node.factory.NodeFactory;
+import org.extex.util.file.random.RandomAccessInputArray;
 
 /**
  * Class to load the virtual font.
@@ -62,7 +70,9 @@ public class LoadableVfFont
             LoadableFont,
             BackendFont,
             ResourceAware,
-            LogEnabled {
+            LogEnabled,
+            CharNodeBuilder,
+            FontAware {
 
     /**
      * The actual font key.
@@ -592,6 +602,60 @@ public class LoadableVfFont
     public void usedCharacter(BackendCharacter bc) {
 
         // TODO mgn: usedCharacter unimplemented
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.CharNodeBuilder#buildCharNode(org.extex.core.UnicodeChar,
+     *      org.extex.typesetter.tc.TypesettingContext,
+     *      org.extex.typesetter.type.node.factory.NodeFactory,
+     *      org.extex.typesetter.tc.TypesettingContextFactory)
+     */
+    public CharNode buildCharNode(UnicodeChar uc, TypesettingContext tc,
+            NodeFactory factory, TypesettingContextFactory tcFactory) {
+
+        int cp = charPos(uc);
+        if (cp < 0 && cp > 255) {
+            // char position out of range
+            return null;
+        }
+
+        VfDvi2Node dvi =
+                new VfDvi2Node(uc, tc, factory, tcFactory, fontfactory, cp,
+                    vfFont);
+
+        VfCommandCharacterPackets ccmd = vfFont.getChar(cp);
+        if (ccmd == null) {
+            // no dvi command found
+            return null;
+        }
+        byte[] dvicode = ccmd.getDvi();
+        try {
+            dvi.interpret(new RandomAccessInputArray(dvicode));
+
+        } catch (Exception e) {
+            // VirtualCharnode can not be created.
+            return null;
+        }
+
+        return dvi.getVcharNode();
+    }
+
+    /**
+     * The font factory.
+     */
+    private CoreFontFactory fontfactory;
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.FontAware#setFontFactory(org.extex.font.CoreFontFactory)
+     */
+    public void setFontFactory(CoreFontFactory factory) {
+
+        fontfactory = factory;
 
     }
 

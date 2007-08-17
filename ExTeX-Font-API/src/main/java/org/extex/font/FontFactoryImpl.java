@@ -190,10 +190,14 @@ public class FontFactoryImpl extends AbstractFactory
                     consumer.setResourceFinder(finder);
                 }
                 if (font instanceof LogEnabled) {
-                    LogEnabled logen = (LogEnabled)font;
+                    LogEnabled logen = (LogEnabled) font;
                     logen.enableLogging(getLogger());
                 }
-                
+                if (font instanceof FontAware) {
+                    FontAware fa = (FontAware) font;
+                    fa.setFontFactory(this);
+                }
+
                 font.loadFont(in, this, key);
 
                 // store in the cache

@@ -20,30 +20,45 @@
 package org.extex.font.format.dvi;
 
 /**
+ * Values for dvi.
+ * 
+ * <p>
  * The values of <code>h</code>, <code>v</code>, <code>w</code>,
  * <code>x</code>, <code>y</code>, and <code>z</code> are signed
- * integers having up to 32 bits, including the sign. Since they represent
- * physical distances, there is a small unit of measurement such that increasing
- * <code>h</code> by 1 means moving a certain tiny distance to the right. The
- * actual unit of measurement is variable.
+ * integers having up to 32 bits, including the sign.
+ * </p>
+ * 
+ * <p>
+ * Since they represent physical distances, there is a small unit of measurement
+ * such that increasing <code>h</code> by 1 means moving a certain tiny
+ * distance to the right. The actual unit of measurement is variable.
+ * </p>
+ * 
  * <p>
  * The current font <code>f</code> is an integer; this value is changed only
  * by <code>fnt</code> and <code>fnt_num</code> commands.
  * <p>
+ * 
+ * <p>
  * The current position on the page is given by two numbers called the
  * horizontal and vertical coordinates, <code>h</code> and <code>v</code>.
+ * </p>
+ * 
+ * <p>
  * Both coordinates are zero at the upper left corner of the page; moving to the
  * right corresponds to increasing the horizontal coordinate, and moving down
  * corresponds to increasing the vertical coordinate. Thus, the coordinates are
  * essentially Cartesian, except that vertical directions are flipped; the
  * Cartesian version of <code>(h,v)</code> would be <code>(h,-v)</code>.
  * </p>
+ * 
  * <p>
  * The current spacing amounts are given by four numbers <code>w</code>,
  * <code>x</code>, <code>y</code>, and <code>z</code>, where
  * <code>w</code> and <code>x</code> are used for horizontal spacing and
  * where <code>y</code> and <code>z</code> are used for vertical spacing.
  * </p>
+ * 
  * <p>
  * There is a stack containing <code>(h,v,w,x,y,z)</code> values; the DVI
  * commands <code>push</code> and <code>pop</code> are used to change the
@@ -58,37 +73,37 @@ package org.extex.font.format.dvi;
 public class DviValues {
 
     /**
-     * f
+     * f: the font number
      */
     private int f;
 
     /**
-     * h
+     * h: horizontal
      */
     private int h;
 
     /**
-     * v
+     * v: vertical
      */
     private int v;
 
     /**
-     * w
+     * w: horizontal spacing
      */
     private int w;
 
     /**
-     * x
+     * x: horizontal spacing
      */
     private int x;
 
     /**
-     * y
+     * y: vertical spacing
      */
     private int y;
 
     /**
-     * z
+     * z: vertical spacing
      */
     private int z;
 
@@ -142,6 +157,19 @@ public class DviValues {
         x = 0;
         y = 0;
         z = 0;
+    }
+
+    /**
+     * Check, if the values (h,v,w,x,z,z) all zero.
+     * 
+     * @return Returns <code>true</code>, if all values are zero.
+     */
+    public boolean isClear() {
+
+        if (h == 0 && v == 0 && w == 0 && x == 0 && y == 0 && z == 0) {
+            return true;
+        }
+        return false;
     }
 
     /**
