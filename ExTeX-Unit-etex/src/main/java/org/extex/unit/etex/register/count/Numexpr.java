@@ -35,7 +35,7 @@ import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
-import org.extex.unit.tex.Relax;
+import org.extex.unit.base.Relax;
 
 /**
  * This class provides an implementation for the primitive <code>\numexpr</code>.

@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.unit.tex;
+package org.extex.unit.base;
 
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;

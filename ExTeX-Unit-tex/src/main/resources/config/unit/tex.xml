@@ -504,7 +504,7 @@
     <define name="read"
             class="org.extex.unit.tex.file.Read"/>
     <define name="relax"
-            class="org.extex.unit.tex.Relax"/>
+            class="org.extex.unit.base.Relax"/>
     <define name="relpenalty"
             class="org.extex.unit.tex.register.count.IntegerParameter"/>
     <define name="right"

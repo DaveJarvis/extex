@@ -39,7 +39,7 @@ import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
-import org.extex.unit.tex.Relax;
+import org.extex.unit.base.Relax;
 
 /**
  * This class provides an implementation for the primitive <code>\csname</code>.
@@ -56,7 +56,7 @@ import org.extex.unit.tex.Relax;
  * <p>
  * If the meaning of the new token is currently not defined then it is defined
  * to be equivalent to the original meaning of
- * {@link org.extex.unit.tex.Relax \relax}.
+ * {@link org.extex.unit.base.Relax \relax}.
  * </p>
  * <p>
  * If a non-expandable token is encountered then an error is raised.
