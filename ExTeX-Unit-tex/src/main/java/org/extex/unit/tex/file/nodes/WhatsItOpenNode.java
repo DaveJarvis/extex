@@ -42,6 +42,11 @@ public class WhatsItOpenNode extends WhatsItNode {
     protected static final long serialVersionUID = 2007L;
 
     /**
+     * The field <tt>encoding</tt> contains the proposed encoding.
+     */
+    private String encoding;
+
+    /**
      * The field <tt>file</tt> contains the output file.
      */
     private OutFile file;
@@ -56,27 +61,27 @@ public class WhatsItOpenNode extends WhatsItNode {
      * 
      * @param theKey the key of the file to open
      * @param outFile the out file to open
+     * @param encoding the proposed encoding
      */
-    public WhatsItOpenNode(String theKey, OutFile outFile) {
+    public WhatsItOpenNode(String theKey, OutFile outFile, String encoding) {
 
         super();
         this.key = theKey;
         this.file = outFile;
+        this.encoding = encoding;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.Node#atShipping(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.typesetter.Typesetter, org.extex.core.dimen.FixedDimen,
-     *      org.extex.core.dimen.FixedDimen)
+     * @see org.extex.typesetter.type.node.AbstractNode#atShipping(
+     *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
+     *      org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
      */
     @Override
     public Node atShipping(PageContext context, Typesetter typesetter,
             FixedDimen posX, FixedDimen posY) throws GeneralException {
 
-        String encoding = null; // TODO gene: provide encoding
         file.open(encoding);
         context.setOutFile(key, file, true);
 
