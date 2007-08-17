@@ -135,6 +135,7 @@ public class Openin extends AbstractFileCode {
             context.setInteraction(interaction);
         }
         context.setInFile(key, file, true);
+        prefix.clearImmediate(); // strange; does this make any sense?
     }
 
 }

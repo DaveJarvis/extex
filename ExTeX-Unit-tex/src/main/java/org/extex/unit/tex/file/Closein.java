@@ -100,6 +100,7 @@ public class Closein extends AbstractCode {
         if (file != null) {
             file.close();
         }
+        prefix.clearImmediate(); // strange; does this make any sense?
     }
 
 }
