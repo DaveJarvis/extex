@@ -24,7 +24,7 @@ import java.io.Serializable;
 /**
  * The locator is the container for the information about the name of a resource
  * and the current line number.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision:5417 $
@@ -32,7 +32,8 @@ import java.io.Serializable;
 public class Locator implements Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     private static final long serialVersionUID = 1L;
 
@@ -65,14 +66,14 @@ public class Locator implements Serializable {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param resource the name of the resource; e.g. the file name
      * @param lineNo the line number
      * @param currentLine the current line of input
      * @param currentLinePointer the current position in the line of input
      */
-    public Locator(String resource, int lineNo,
-            String currentLine, int currentLinePointer) {
+    public Locator(String resource, int lineNo, String currentLine,
+            int currentLinePointer) {
 
         super();
         this.resource = resource;
@@ -83,7 +84,7 @@ public class Locator implements Serializable {
 
     /**
      * Getter for cause.
-     *
+     * 
      * @return the cause
      */
     public final Locator getCause() {
@@ -93,7 +94,7 @@ public class Locator implements Serializable {
 
     /**
      * Getter for the line.
-     *
+     * 
      * @return the line.
      */
     public String getLine() {
@@ -102,10 +103,9 @@ public class Locator implements Serializable {
     }
 
     /**
-     * Getter for the line number.
-     * If the line number is negative then it has the meaning of an undefined
-     * value.
-     *
+     * Getter for the line number. If the line number is negative then it has
+     * the meaning of an undefined value.
+     * 
      * @return the line number
      */
     public int getLineNumber() {
@@ -114,10 +114,9 @@ public class Locator implements Serializable {
     }
 
     /**
-     * Getter for the line pointer.
-     * The line pointer is the position within the line at which something
-     * happened.
-     *
+     * Getter for the line pointer. The line pointer is the position within the
+     * line at which something happened.
+     * 
      * @return the line pointer.
      */
     public int getLinePointer() {
@@ -126,10 +125,9 @@ public class Locator implements Serializable {
     }
 
     /**
-     * Getter for the resource name.
-     * The resource name can be unset. In this case <code>null</code> is
-     * returned.
-     *
+     * Getter for the resource name. The resource name can be unset. In this
+     * case <code>null</code> is returned.
+     * 
      * @return the resource name or <code>null</code>
      */
     public String getResourceName() {
@@ -139,7 +137,7 @@ public class Locator implements Serializable {
 
     /**
      * Setter for cause.
-     *
+     * 
      * @param cause the cause to set
      */
     public final void setCause(Locator cause) {
@@ -148,21 +146,56 @@ public class Locator implements Serializable {
     }
 
     /**
-     * Return a printable representation of this instance.
+     * Return a printable representation of this instance including the cause.
      * The result contains the file name and the line number separated by colon.
-     * This is the Unix style of presenting a file position.
-     * If the file name is null then it is treated as if it where the empty
-     * string.
-     *
+     * This is the Unix style of presenting a file position. If the file name is
+     * null then it is treated as if it where the empty string.
+     * 
+     * @param causeLinit the limit for the number of causes to be shown. If
+     *        negative then the optional, preceding continuation indicator (..)
+     *        is suppressed
+     * 
      * @return the printable representation
-     *
+     * 
+     * @see #toString()
+     */
+    public String toString(int causeLinit) {
+
+        StringBuffer sb = new StringBuffer();
+        if (causeLinit >= 0) {
+            Locator c = cause;
+            for (int i = 0; c != null && i < causeLinit; i++) {
+                sb.insert(0, "..");
+                sb.insert(0, c.resource);
+                c = c.cause;
+            }
+            if (c == null) {
+                sb.delete(0, 2);
+            }
+        }
+        if (resource != null) {
+            sb.append(resource);
+        }
+        sb.append(':');
+        sb.append(lineNumber);
+        sb.append(':');
+        return sb.toString();
+    }
+
+    /**
+     * Return a printable representation of this instance. The result contains
+     * the file name and the line number separated by colon. This is the Unix
+     * style of presenting a file position. If the file name is null then it is
+     * treated as if it where the empty string.
+     * 
+     * @return the printable representation
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
 
-        return (resource != null ? resource : "") + ":"
-                + (lineNumber >= 0 ? Integer.toString(lineNumber) : "");
+        return toString(-1);
     }
 
 }
