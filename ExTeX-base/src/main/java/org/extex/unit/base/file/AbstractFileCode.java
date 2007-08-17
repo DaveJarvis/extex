@@ -28,14 +28,12 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
-import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.SpaceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
-import org.extex.unit.base.Relax;
 
 /**
  * This abstract class provides some common methods for primitives dealing with
@@ -251,9 +249,13 @@ public abstract class AbstractFileCode extends AbstractCode
         StringBuffer sb = new StringBuffer(t.toText());
 
         for (t = source.getToken(context); t != null
-                && !(t instanceof SpaceToken) && !(t instanceof CodeToken); t =
+                && !(t instanceof SpaceToken) ; t =
                 source.getToken(context)) {
 
+            if (t instanceof CodeToken) {
+                source.push(t);
+                break;
+            }
             sb.append(t.toText());
         }
 
