@@ -407,7 +407,8 @@ public class ExTeXLauncher extends TestCase {
                             public void update(Token token, Code code,
                                     Locator locator) {
 
-                                System.err.print(locator.toString() + ": ");
+                                System.err.print(locator.toString(1));
+                                System.err.print('\t');
                                 System.err.println(token.toText());
                             }
                         });
@@ -451,7 +452,7 @@ public class ExTeXLauncher extends TestCase {
         } catch (GeneralException e) {
             if (e.getCause() != null
                     && e.getCause() instanceof RuntimeException) {
-                fail("Error: " + e.getLocalizedMessage());
+                fail("Error: " + e.getCause().getMessage());
             }
             errorP = true;
         } catch (Throwable e) {
