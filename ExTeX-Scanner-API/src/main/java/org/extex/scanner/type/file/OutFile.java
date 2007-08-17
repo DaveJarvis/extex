@@ -38,22 +38,30 @@ public interface OutFile extends Serializable {
      * 
      * @throws IOException in case of an error
      */
-    public void close() throws IOException;
+    void close() throws IOException;
 
     /**
      * Check whether the output file is open.
      * 
      * @return <code>true</code> iff the instance is open
      */
-    public boolean isOpen();
+    boolean isOpen();
 
+    
     /**
      * Open the current file.
      * 
      * @param encoding the encoding or <code>null</code> for the default
      *        encoding
      */
-    public void open(String encoding);
+    void open(String encoding);
+
+    /**
+     * Write out a newline.
+     *
+     * @throws IOException in case of an error
+     */
+    void newline() throws IOException;
 
     /**
      * Write some tokens to the output writer.
@@ -63,6 +71,6 @@ public interface OutFile extends Serializable {
      * @throws HelpingException in case of an error
      * @throws IOException in case of an IO error
      */
-    public void write(Tokens toks) throws HelpingException, IOException;
+    void write(Tokens toks) throws HelpingException, IOException;
 
 }
