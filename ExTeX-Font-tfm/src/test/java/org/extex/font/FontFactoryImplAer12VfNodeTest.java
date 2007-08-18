@@ -61,7 +61,10 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
      */
     private static FontKey key;
 
-    private CoreFontFactory factory;
+    /**
+     * The factory.
+     */
+    private static CoreFontFactory factory;
 
     /**
      * Creates a new object.
@@ -73,7 +76,7 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
             throws ConfigurationException,
                 FontException {
 
-        if (key == null) {
+        if (factory == null) {
             factory = makeFontFactory();
             key = factory.getFontKey("aer12");
 
@@ -86,7 +89,7 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
      * 
      * @throws Exception if an error occurred.
      */
-    public void test5() throws Exception {
+    public void test6() throws Exception {
 
         assertNotNull(font);
         assertNotNull(key);
@@ -101,7 +104,7 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
 
         Node node =
                 ((CharNodeBuilder) font)
-                    .buildCharNode(UnicodeChar.get(014/* oct */), tc,
+                    .buildCharNode(UnicodeChar.get(040/* oct */), tc,
                         new SimpleNodeFactory(), tcFactory);
 
         assertNotNull("node", node);
@@ -111,44 +114,47 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
         VirtualCharNode vnode = (VirtualCharNode) node;
         assertEquals(1, vnode.getNodes().size());
 
-        // test aer12 Char 12 (14o): Width=169863, Height=0, Depth=152559, IC=0
-        assertEquals(169863, vnode.getWidth().getValue());
+        // test aer12 Char 32: Width=456128, Height=0, Depth=157280, IC=0
+        assertEquals(456128, vnode.getWidth().getValue());
         assertEquals(0, vnode.getHeight().getValue());
-        assertEquals(152559, vnode.getDepth().getValue());
+        assertEquals(157280, vnode.getDepth().getValue());
 
-        Node xn = vnode.get(0);
-        assertNotNull(xn);
-        assertTrue(xn instanceof HorizontalListNode);
-        HorizontalListNode hbox = (HorizontalListNode) xn;
-        assertEquals(TfmFixWord.toDimen(font.getDesignSize(), 379585)
-            .toString(), hbox.getShift().toString());
-
-        assertEquals(1, hbox.size());
-
-        Node cn = hbox.get(0);
-        assertTrue(cn instanceof CharNode);
-        CharNode charnode = (CharNode) cn;
-        FontKey actualFontKey =
-                charnode.getTypesettingContext().getFont().getActualFontKey();
-        assertEquals("cmmi12", actualFontKey.getName());
-        assertEquals("799", actualFontKey.getCount(FontKey.SCALE).toString());
-
-        // cmmi
-        Map<String, Count> map = new HashMap<String, Count>();
-        map.put(FontKey.SCALE, new Count(799));
-        FontKey cmmikey =
-                factory.getFontKey("cmmi12", new Dimen(Dimen.ONE * 12), map);
-        assertNotNull(cmmikey);
-        ExtexFont cmmifont = factory.getInstance(cmmikey);
-        assertNotNull(cmmifont);
-        FixedGlue w = cmmifont.getWidth(UnicodeChar.get(Unicode.OFFSET + 44));
-        assertNotNull(w);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(170906)
-            .eq(w));
-
-        // test cmmi12 scaled 799 Char 44: Width=170906, Height=284942,
-        // Depth=-29237, IC=0
-        assertEquals(w.getLength().getValue(), charnode.getWidth().getValue());
+        // Node xn = vnode.get(0);
+        // assertNotNull(xn);
+        // assertTrue(xn instanceof HorizontalListNode);
+        // HorizontalListNode hbox = (HorizontalListNode) xn;
+        // assertEquals(TfmFixWord.toDimen(font.getDesignSize(), 379585)
+        // .toString(), hbox.getShift().toString());
+        //
+        // assertEquals(1, hbox.size());
+        //
+        // Node cn = hbox.get(0);
+        // assertTrue(cn instanceof CharNode);
+        // CharNode charnode = (CharNode) cn;
+        // FontKey actualFontKey =
+        // charnode.getTypesettingContext().getFont().getActualFontKey();
+        // assertEquals("cmmi12", actualFontKey.getName());
+        // assertEquals("799",
+        // actualFontKey.getCount(FontKey.SCALE).toString());
+        //
+        // // cmmi
+        // Map<String, Count> map = new HashMap<String, Count>();
+        // map.put(FontKey.SCALE, new Count(799));
+        // FontKey cmmikey =
+        // factory.getFontKey("cmmi12", new Dimen(Dimen.ONE * 12), map);
+        // assertNotNull(cmmikey);
+        // ExtexFont cmmifont = factory.getInstance(cmmikey);
+        // assertNotNull(cmmifont);
+        // FixedGlue w = cmmifont.getWidth(UnicodeChar.get(Unicode.OFFSET +
+        // 44));
+        // assertNotNull(w);
+        // assertTrue(Long.toString(w.getLength().getValue()), new Glue(170906)
+        // .eq(w));
+        //
+        // // test cmmi12 scaled 799 Char 44: Width=170906, Height=284942,
+        // // Depth=-29237, IC=0
+        // assertEquals(w.getLength().getValue(),
+        // charnode.getWidth().getValue());
 
     }
 
@@ -291,6 +297,77 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
         kn = (KernNode) xn;
         assertEquals(TfmFixWord.toDimen(font.getDesignSize(), -384821)
             .toString(), kn.getWidth().toString());
+
+    }
+
+    /**
+     * Test for the CharNodeBuilder.
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void test5() throws Exception {
+
+        assertNotNull(font);
+        assertNotNull(key);
+        assertTrue(font instanceof CharNodeBuilder);
+
+        FontImpl tcfont = new FontImpl(font);
+        TypesettingContextFactory tcFactory = new TypesettingContextFactory();
+        tcFactory.configure(ConfigurationFactory.newInstance("tc.xml"));
+        TypesettingContext tc = tcFactory.initial();
+
+        tc = tcFactory.newInstance(tc, tcfont);
+
+        Node node =
+                ((CharNodeBuilder) font)
+                    .buildCharNode(UnicodeChar.get(014/* oct */), tc,
+                        new SimpleNodeFactory(), tcFactory);
+
+        assertNotNull("node", node);
+        assertTrue("node class", node instanceof CharNode);
+        assertTrue("node class", node instanceof VirtualCharNode);
+
+        VirtualCharNode vnode = (VirtualCharNode) node;
+        assertEquals(1, vnode.getNodes().size());
+
+        // test aer12 Char 12 (14o): Width=169863, Height=0, Depth=152559, IC=0
+        assertEquals(169863, vnode.getWidth().getValue());
+        assertEquals(0, vnode.getHeight().getValue());
+        assertEquals(152559, vnode.getDepth().getValue());
+
+        Node xn = vnode.get(0);
+        assertNotNull(xn);
+        assertTrue(xn instanceof HorizontalListNode);
+        HorizontalListNode hbox = (HorizontalListNode) xn;
+        assertEquals(TfmFixWord.toDimen(font.getDesignSize(), 379585)
+            .toString(), hbox.getShift().toString());
+
+        assertEquals(1, hbox.size());
+
+        Node cn = hbox.get(0);
+        assertTrue(cn instanceof CharNode);
+        CharNode charnode = (CharNode) cn;
+        FontKey actualFontKey =
+                charnode.getTypesettingContext().getFont().getActualFontKey();
+        assertEquals("cmmi12", actualFontKey.getName());
+        assertEquals("799", actualFontKey.getCount(FontKey.SCALE).toString());
+
+        // cmmi
+        Map<String, Count> map = new HashMap<String, Count>();
+        map.put(FontKey.SCALE, new Count(799));
+        FontKey cmmikey =
+                factory.getFontKey("cmmi12", new Dimen(Dimen.ONE * 12), map);
+        assertNotNull(cmmikey);
+        ExtexFont cmmifont = factory.getInstance(cmmikey);
+        assertNotNull(cmmifont);
+        FixedGlue w = cmmifont.getWidth(UnicodeChar.get(Unicode.OFFSET + 44));
+        assertNotNull(w);
+        assertTrue(Long.toString(w.getLength().getValue()), new Glue(170906)
+            .eq(w));
+
+        // test cmmi12 scaled 799 Char 44: Width=170906, Height=284942,
+        // Depth=-29237, IC=0
+        assertEquals(w.getLength().getValue(), charnode.getWidth().getValue());
 
     }
 
