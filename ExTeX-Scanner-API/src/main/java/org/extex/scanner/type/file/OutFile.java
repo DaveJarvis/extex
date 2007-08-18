@@ -21,6 +21,7 @@ package org.extex.scanner.type.file;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.scanner.stream.TokenStreamFactory;
@@ -48,19 +49,21 @@ public interface OutFile extends Serializable {
      */
     boolean isOpen();
 
-    
     /**
      * Open the current file.
      * 
      * @param encoding the encoding or <code>null</code> for the default
      *        encoding
      * @param factory the token stream factory
+     * 
+     * @throws UnsupportedEncodingException in case of an invalid encoding
      */
-    void open(String encoding, TokenStreamFactory factory);
+    void open(String encoding, TokenStreamFactory factory)
+            throws UnsupportedEncodingException;
 
     /**
      * Write out a newline.
-     *
+     * 
      * @throws IOException in case of an error
      */
     void newline() throws IOException;
@@ -70,9 +73,11 @@ public interface OutFile extends Serializable {
      * 
      * @param toks tokens to write
      * 
+     * @return <code>true</code> iff the writing was successful 
+     * 
      * @throws HelpingException in case of an error
      * @throws IOException in case of an IO error
      */
-    void write(Tokens toks) throws HelpingException, IOException;
+    boolean write(Tokens toks) throws HelpingException, IOException;
 
 }

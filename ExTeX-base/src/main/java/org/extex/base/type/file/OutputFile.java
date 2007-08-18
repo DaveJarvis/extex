@@ -19,13 +19,10 @@
 
 package org.extex.base.type.file;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 
@@ -239,12 +236,6 @@ public class OutputFile implements OutFile {
     private File file;
 
     /**
-     * The field <tt>stream</tt> contains the stream to use. When the instance
-     * is persisted this stream is left behind.
-     */
-    private transient OutputStream stream = null;
-
-    /**
      * The field <tt>writer</tt> contains the real writer assigned to this
      * instance.
      */
@@ -304,33 +295,19 @@ public class OutputFile implements OutFile {
      * 
      * {@inheritDoc}
      * 
-     * @see org.extex.scanner.type.file.OutFile#open(java.lang.String, TokenStreamFactory)
+     * @see org.extex.scanner.type.file.OutFile#open(java.lang.String,
+     *      TokenStreamFactory)
      */
-    public void open(String encoding, TokenStreamFactory factory) {
+    public void open(String encoding, TokenStreamFactory factory)
+            throws UnsupportedEncodingException {
 
         if (file != null) {
+
             try {
-                stream = new FileOutputStream(file);
-                OutputStreamWriter w;
-                if (encoding != null) {
-                    w = new OutputStreamWriter(stream, encoding);
-                } else {
-                    w = new OutputStreamWriter(stream);
-                }
-                writer = new BufferedWriter(w);
+                writer = factory.writerStream(new FileOutputStream(file), //
+                    encoding);
             } catch (FileNotFoundException e) {
                 // ignored on purpose
-            } catch (UnsupportedEncodingException e) {
-                if (stream != null) {
-                    try {
-                        stream.close();
-                    } catch (IOException e1) {
-                        // ignored
-                    }
-                }
-                // TODO gene: error handling unimplemented
-                e.printStackTrace();
-                throw new RuntimeException("unimplemented");
             }
         }
     }
@@ -348,17 +325,14 @@ public class OutputFile implements OutFile {
     }
 
     /**
-     * Write some tokens to the output writer.
-     * 
-     * @param toks tokens to write
-     * 
-     * @throws HelpingException in case of an error
-     * @throws IOException in case of an IO error
+     * {@inheritDoc}
+     *
+     * @see org.extex.scanner.type.file.OutFile#write(org.extex.scanner.type.tokens.Tokens)
      */
-    public void write(Tokens toks) throws HelpingException, IOException {
+    public boolean write(Tokens toks) throws HelpingException, IOException {
 
         if (writer == null) {
-            return;
+            return false;
         }
         Writer w = use(writer);
         int len = toks.length();
@@ -376,6 +350,7 @@ public class OutputFile implements OutFile {
                 throw new NoHelpException(e);
             }
         }
+        return true;
     }
 
 }

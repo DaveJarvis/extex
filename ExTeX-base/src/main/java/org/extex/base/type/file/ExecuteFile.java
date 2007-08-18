@@ -110,17 +110,13 @@ public class ExecuteFile extends OutputFile {
     }
 
     /**
-     * Write some tokens to the output writer.
+     * {@inheritDoc}
      * 
-     * @param toks tokens to write
-     * 
-     * @throws IOException in case of an IO error
-     * 
-     * @see org.extex.scanner.type.file.OutFile#write(
+     * @see org.extex.base.type.file.OutputFile#write(
      *      org.extex.scanner.type.tokens.Tokens)
      */
     @Override
-    public void write(Tokens toks) throws IOException {
+    public boolean write(Tokens toks) throws IOException {
 
         Localizer localizer = LocalizerFactory.getLocalizer(ExecuteFile.class);
         String command = toks.toText();
@@ -137,6 +133,7 @@ public class ExecuteFile extends OutputFile {
         } catch (InterruptedException e) {
             logger.fine(localizer.format("Interrupted.Message", command));
         }
+        return true;
     }
 
 }

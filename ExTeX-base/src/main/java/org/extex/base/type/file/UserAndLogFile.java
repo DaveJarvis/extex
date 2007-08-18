@@ -114,11 +114,12 @@ public class UserAndLogFile extends OutputFile {
      *      org.extex.scanner.type.tokens.Tokens)
      */
     @Override
-    public void write(Tokens toks) throws IOException {
+    public boolean write(Tokens toks) throws IOException {
 
         if (logger != null) {
             logger.info(toks.toText());
         }
+        return true;
     }
 
 }

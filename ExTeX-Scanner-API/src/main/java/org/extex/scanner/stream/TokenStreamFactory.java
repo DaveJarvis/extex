@@ -15,12 +15,15 @@
 package org.extex.scanner.stream;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.BufferedWriter;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.StringReader;
+import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -463,10 +466,20 @@ public class TokenStreamFactory extends AbstractFactory
      *        <code>null</code> then it is ignored
      * 
      * @return the writer for th task
+     * 
+     * @throws UnsupportedEncodingException in case of an error with the
+     *         encoding
      */
-    public Writer writerStream(OutputStream stream, String encoding) {
+    public Writer writerStream(OutputStream stream, String encoding)
+            throws UnsupportedEncodingException {
 
-        return new OutputStreamWriter(stream);
+        OutputStreamWriter w;
+        if (encoding != null) {
+            w = new OutputStreamWriter(stream, encoding);
+        } else {
+            w = new OutputStreamWriter(stream);
+        }
+        return new BufferedWriter(w);
     }
 
 }

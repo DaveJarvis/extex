@@ -188,8 +188,7 @@ public class Write extends AbstractCode implements TokensWriter, LogEnabled {
                 throw new EofInToksException(printableControlSequence(context));
             }
 
-            typesetter.add(new WhatsItWriteNode(key, tokens, source,
-                this));
+            typesetter.add(new WhatsItWriteNode(key, tokens, source, this));
         }
     }
 
@@ -225,7 +224,18 @@ public class Write extends AbstractCode implements TokensWriter, LogEnabled {
         }
 
         try {
-            file.write(toks);
+            if (!file.write(toks)) {
+
+                // second try
+                file = context.getOutFile(USER_AND_LOG);
+                if (file == null) {
+                    // this should not be necessary
+                    file = new UserAndLogFile(logger);
+                    context.setOutFile(USER_AND_LOG, file, false);
+                }
+                file.write(toks);
+            }
+
         } catch (IOException e) {
             throw new NoHelpException(e);
         }

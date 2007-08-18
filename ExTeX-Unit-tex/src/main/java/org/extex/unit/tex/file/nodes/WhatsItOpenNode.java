@@ -19,6 +19,8 @@
 
 package org.extex.unit.tex.file.nodes;
 
+import java.io.UnsupportedEncodingException;
+
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.scanner.stream.TokenStreamFactory;
@@ -92,7 +94,13 @@ public class WhatsItOpenNode extends WhatsItNode {
     public Node atShipping(PageContext context, Typesetter typesetter,
             FixedDimen posX, FixedDimen posY) throws GeneralException {
 
-        file.open(encoding, factory);
+        try {
+            file.open(encoding, factory);
+        } catch (UnsupportedEncodingException e) {
+            // TODO gene: error handling unimplemented
+            e.printStackTrace();
+            throw new RuntimeException("unimplemented");
+        }
         context.setOutFile(key, file, true);
 
         return null;

@@ -20,6 +20,7 @@
 package org.extex.unit.tex.file;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 
 import org.extex.base.type.file.OutputFile;
 import org.extex.core.exception.helping.HelpingException;
@@ -123,7 +124,13 @@ public class Openout extends AbstractFileCode {
         OutFile file = new OutputFile(new File(name));
 
         if (prefix.clearImmediate()) {
-            file.open(getEncoding(context), source.getTokenStreamFactory());
+            try {
+                file.open(getEncoding(context), source.getTokenStreamFactory());
+            } catch (UnsupportedEncodingException e) {
+                // TODO gene: error handling unimplemented
+                e.printStackTrace();
+                throw new RuntimeException("unimplemented");
+            }
             context.setOutFile(key, file, true);
         } else {
             typesetter.add(new WhatsItOpenNode(key, file, getEncoding(context),
