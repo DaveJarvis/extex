@@ -30,13 +30,13 @@ import org.extex.test.count.AbstractReadonlyCountRegisterTester;
 public class PdflastxformTest extends AbstractReadonlyCountRegisterTester {
 
     /**
-     * Creates a new xformect.
+     * Creates a new object.
      *
      * @param arg the name
      */
     public PdflastxformTest(String arg) {
 
-        super(arg, "pdflastxform", "0", "\\pdfoutput=1 ");
+        super(arg, "pdflastxform", "", "0", "\\pdfoutput=1 ");
         setConfig("pdftex-test");
     }
 
