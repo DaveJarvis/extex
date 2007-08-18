@@ -21,8 +21,14 @@ package org.extex.unit.tex;
 
 import java.util.logging.Logger;
 
+import org.extex.base.type.file.ExecuteFile;
+import org.extex.base.type.file.LogFile;
+import org.extex.base.type.file.UserAndLogFile;
 import org.extex.core.count.Count;
 import org.extex.core.exception.helping.HelpingException;
+import org.extex.framework.configuration.Configurable;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -80,12 +86,13 @@ import org.extex.typesetter.Typesetter;
  */
 public class TexUnitInfo extends UnitInfo
         implements
+            Configurable,
             Loader,
             LoadedObserver,
             LogEnabled {
 
     /**
-     * TODO gene: missing JavaDoc.
+     * Observer to reestablish a trace commands observer after loading.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
@@ -93,7 +100,7 @@ public class TexUnitInfo extends UnitInfo
     private final class Observer implements CountObserver {
 
         /**
-         * The field <tt>source</tt> contains the ...
+         * The field <tt>source</tt> contains the token source.
          */
         private TokenSource source;
 
@@ -127,16 +134,33 @@ public class TexUnitInfo extends UnitInfo
     }
 
     /**
+     * The constant <tt>LOG_FILE</tt> contains the key for the log file.
+     */
+    private static final String LOG_FILE = "-1";
+
+    /**
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2007L;
+
+    /**
+     * The field <tt>SYSTEM</tt> contains the key for the system execute
+     * (\write18).
+     */
+    private static final String SYSTEM = "18";
 
     /**
      * The field <tt>TRACING_COMMANDS</tt> contains the name of the count
      * register controlling the activation of command tracing.
      */
     private static final String TRACING_COMMANDS = "tracingcommands";
+
+    /**
+     * The field <tt>USER_AND_LOG</tt> contains the key for the user trace and
+     * log file.
+     */
+    private static final String USER_AND_LOG = "17";
 
     /**
      * The field <tt>logger</tt> contains the local reference to the logger.
@@ -150,6 +174,12 @@ public class TexUnitInfo extends UnitInfo
     private transient boolean notRegistered = true;
 
     /**
+     * The field <tt>write18</tt> contains the indicator that the ancient
+     * \write18 feature of <logo>TeX</logo> should be enabled.
+     */
+    private boolean write18 = false;
+
+    /**
      * Creates a new object.
      */
     public TexUnitInfo() {
@@ -157,6 +187,18 @@ public class TexUnitInfo extends UnitInfo
         super();
         logger = null;
         notRegistered = true;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.framework.configuration.Configurable#configure(
+     *      org.extex.framework.configuration.Configuration)
+     */
+    public void configure(Configuration config) throws ConfigurationException {
+
+        String a = config.getAttribute("write18");
+        write18 = (a != null && Boolean.getBoolean(a));
     }
 
     /**
@@ -204,8 +246,8 @@ public class TexUnitInfo extends UnitInfo
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
-    public void receiveLoaded(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException {
+    public void receiveLoaded(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException {
 
         if (context.getCount(TRACING_COMMANDS).gt(Count.ZERO)) {
             if (notRegistered && source instanceof CommandObservable) {
@@ -217,6 +259,13 @@ public class TexUnitInfo extends UnitInfo
             ((CountObservable) context).registerCountObserver(TRACING_COMMANDS,
                 new Observer(source));
         }
+
+        context.setOutFile(LOG_FILE, new LogFile(logger), true);
+        context.setOutFile(USER_AND_LOG, new UserAndLogFile(logger), true);
+        if (write18) {
+            context.setOutFile(SYSTEM, new ExecuteFile(logger), true);
+        }
+
     }
 
 }

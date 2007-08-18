@@ -18,7 +18,8 @@
   -
   -->
 <unit name="tex"
-      class="org.extex.unit.tex.TexUnitInfo">
+      class="org.extex.unit.tex.TexUnitInfo"
+      write18="false">
 
   <primitives>
     <define name="maxError"
@@ -672,8 +673,7 @@
     <define name="widowpenalty"
             class="org.extex.unit.tex.register.count.IntegerParameter"/>
     <define name="write"
-            class="org.extex.unit.tex.file.Write"
-            write18="false"/>
+            class="org.extex.unit.tex.file.Write"/>
     <define name="xdef"
             class="org.extex.unit.tex.macro.Xdef"/>
     <define name="xleaders"

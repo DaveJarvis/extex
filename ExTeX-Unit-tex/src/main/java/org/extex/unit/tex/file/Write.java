@@ -22,7 +22,6 @@ package org.extex.unit.tex.file;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-import org.extex.base.type.file.ExecuteFile;
 import org.extex.base.type.file.LogFile;
 import org.extex.base.type.file.UserAndLogFile;
 import org.extex.core.exception.GeneralException;
@@ -30,9 +29,6 @@ import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.EofInToksException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
-import org.extex.framework.configuration.Configurable;
-import org.extex.framework.configuration.Configuration;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
@@ -99,11 +95,7 @@ import org.extex.unit.tex.file.nodes.WhatsItWriteNode;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4441 $
  */
-public class Write extends AbstractCode
-        implements
-            TokensWriter,
-            LogEnabled,
-            Configurable {
+public class Write extends AbstractCode implements TokensWriter, LogEnabled {
 
     /**
      * The constant <tt>LOG_FILE</tt> contains the key for the log file.
@@ -117,33 +109,15 @@ public class Write extends AbstractCode
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>SYSTEM</tt> contains the key for the system execute
-     * (\write18).
-     */
-    private static final String SYSTEM = "18";
-
-    /**
      * The field <tt>USER_AND_LOG</tt> contains the key for the user trace and
      * log file.
      */
     private static final String USER_AND_LOG = "17";
 
     /**
-     * The field <tt>init</tt> contains the indicator that the standard
-     * streams are initialized.
-     */
-    private transient boolean init = false;
-
-    /**
      * The field <tt>logger</tt> contains the target channel for the message.
      */
     private transient Logger logger = null;
-
-    /**
-     * The field <tt>write18</tt> contains the indicator that the ancient
-     * \write18 feature of <logo>TeX</logo> should be enabled.
-     */
-    private boolean write18 = false;
 
     /**
      * Creates a new object.
@@ -153,22 +127,6 @@ public class Write extends AbstractCode
     public Write(String name) {
 
         super(name);
-    }
-
-    /**
-     * Configure an object according to a given Configuration.
-     * 
-     * @param config the configuration object to consider
-     * 
-     * @throws ConfigurationException in case that something went wrong
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(
-     *      org.extex.framework.configuration.Configuration)
-     */
-    public void configure(Configuration config) throws ConfigurationException {
-
-        write18 =
-                Boolean.valueOf(config.getAttribute("write18")).booleanValue();
     }
 
     /**
@@ -249,26 +207,21 @@ public class Write extends AbstractCode
 
         if (file == null || !file.isOpen()) {
 
-            if (!init) {
-                init = true;
-                context.setOutFile(LOG_FILE, new LogFile(logger), true);
-                context.setOutFile(USER_AND_LOG, new UserAndLogFile(logger),
-                    true);
-                if (write18) {
-                    context.setOutFile(SYSTEM, new ExecuteFile(logger), true);
-                }
-            }
-
             if (key == null || "".equals(key) || key.charAt(0) == '-') {
                 file = context.getOutFile(LOG_FILE);
+                if (file == null) {
+                    // this should not be necessary
+                    file = new LogFile(logger);
+                    context.setOutFile(LOG_FILE, file, false);
+                }
             } else {
                 file = context.getOutFile(USER_AND_LOG);
+                if (file == null) {
+                    // this should not be necessary
+                    file = new UserAndLogFile(logger);
+                    context.setOutFile(USER_AND_LOG, file, false);
+                }
             }
-        }
-
-        if (file == null) {
-            // TODO gene: this should not be necessary
-            file = new UserAndLogFile(logger);
         }
 
         try {
