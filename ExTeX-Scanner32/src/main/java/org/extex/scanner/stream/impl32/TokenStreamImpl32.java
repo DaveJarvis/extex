@@ -20,12 +20,10 @@
 package org.extex.scanner.stream.impl32;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.Reader;
 
 import org.extex.core.UnicodeChar;
 import org.extex.framework.configuration.Configuration;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.scanner.Tokenizer;
 import org.extex.scanner.exception.ScannerException;
 import org.extex.scanner.stream.TokenStreamOptions;
@@ -77,28 +75,6 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
      * @param config the configuration object for this instance; This
      *        configuration is ignored in this implementation.
      * @param options ignored here
-     * @param theSource the description of the information source; e.g. the file
-     *        name
-     * @param encoding the encoding to use
-     * @param stream the input stream to read
-     * 
-     * @throws ConfigurationException in case of an error in the configuration
-     * @throws IOException in case of an IO error
-     */
-    public TokenStreamImpl32(Configuration config, TokenStreamOptions options,
-            InputStream stream, String theSource, String encoding)
-            throws IOException,
-                ConfigurationException {
-
-        super(config, options, stream, theSource, encoding);
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param config the configuration object for this instance; This
-     *        configuration is ignored in this implementation.
-     * @param options ignored here
      * @param reader the reader
      * @param isFile indicator for file streams
      * @param theSource the description of the input source
@@ -108,22 +84,6 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
             Reader reader, Boolean isFile, String theSource) throws IOException {
 
         super(config, options, reader, isFile, theSource);
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param config the configuration object for this instance; This
-     *        configuration is ignored in this implementation.
-     * @param options ignored here
-     * @param theLine the string to use as source for characters
-     * @param theSource the description of the input source
-     * @throws IOException in case of an IO error
-     */
-    public TokenStreamImpl32(Configuration config, TokenStreamOptions options,
-            String theLine, String theSource) throws IOException {
-
-        super(config, options, theLine, theSource);
     }
 
     /**

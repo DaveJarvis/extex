@@ -26,7 +26,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.observer.load.LoadedObserver;
 import org.extex.interpreter.unit.UnitInfo;
-import org.extex.scanner.stream.StreamDecorator;
+import org.extex.scanner.stream.InputStreamInterceptor;
 import org.extex.typesetter.Typesetter;
 
 /**
@@ -44,7 +44,7 @@ public class OmegaUnitInfo extends UnitInfo implements LoadedObserver {
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
      */
-    private final class Interceptor implements StreamDecorator {
+    private final class Interceptor implements InputStreamInterceptor {
 
         /**
          * The field <tt>context</tt> contains the interpreter context.
@@ -65,7 +65,8 @@ public class OmegaUnitInfo extends UnitInfo implements LoadedObserver {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.scanner.stream.StreamDecorator#pipe(java.io.InputStream)
+         * @see org.extex.scanner.stream.InputStreamInterceptor#pipe(
+         *      java.io.InputStream)
          */
         public InputStream pipe(InputStream stream) {
 

@@ -19,20 +19,14 @@
 
 package org.extex.scanner.stream.impl32;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.io.Reader;
-import java.io.StringReader;
 
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
 import org.extex.core.exception.GeneralException;
 import org.extex.framework.configuration.Configuration;
-import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.Tokenizer;
 import org.extex.scanner.base.TokenStreamBaseImpl;
@@ -95,12 +89,6 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         }
 
     }
-
-    /**
-     * The constant <tt>BUFFERSIZE_ATTRIBUTE</tt> contains the name of the
-     * attribute used to get the buffer size.
-     */
-    private static final String BUFFERSIZE_ATTRIBUTE = "buffersize";
 
     /**
      * The constant <tt>CARET_LIMIT</tt> contains the threshold for the ^
@@ -477,51 +465,6 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      * @param config the configuration object for this instance; This
      *        configuration is ignored in this implementation.
      * @param options ignored here
-     * @param theSource the description of the information source; e.g. the file
-     *        name
-     * @param encoding the encoding to use
-     * @param stream the input stream to read
-     * 
-     * @throws ConfigurationException in case of an error in the configuration
-     * @throws IOException in case of an IO error
-     */
-    public TokenStreamImpl(Configuration config, TokenStreamOptions options,
-            InputStream stream, String theSource, String encoding)
-            throws IOException,
-                ConfigurationException {
-
-        super(true);
-
-        int bufferSize = -1;
-        String size = config.getAttribute(BUFFERSIZE_ATTRIBUTE).trim();
-        if (size != null && !size.equals("")) {
-            try {
-                bufferSize = Integer.parseInt(size);
-            } catch (NumberFormatException e) {
-                throw new ConfigurationSyntaxException(e.getLocalizedMessage(),
-                    config.toString() + "#" + BUFFERSIZE_ATTRIBUTE);
-            }
-        }
-
-        InputStream inputStream = stream;
-        if (bufferSize > 0) {
-            inputStream = new BufferedInputStream(inputStream, bufferSize);
-        } else if (bufferSize < 0) {
-            inputStream = new BufferedInputStream(inputStream);
-        }
-
-        this.source = theSource;
-        this.in = new LineNumberReader(//
-            new InputStreamReader(inputStream, encoding));
-
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param config the configuration object for this instance; This
-     *        configuration is ignored in this implementation.
-     * @param options ignored here
      * @param reader the reader
      * @param isFile indicator for file streams
      * @param theSource the description of the input source
@@ -533,25 +476,6 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
         super(isFile.booleanValue());
         this.in = new LineNumberReader(reader);
-        this.source = theSource;
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param config the configuration object for this instance; This
-     *        configuration is ignored in this implementation.
-     * @param options ignored here
-     * @param theLine the string to use as source for characters
-     * @param theSource the description of the input source
-     * 
-     * @throws IOException in case of an IO error
-     */
-    public TokenStreamImpl(Configuration config, TokenStreamOptions options,
-            String theLine, String theSource) throws IOException {
-
-        super(false);
-        this.in = new LineNumberReader(new StringReader(theLine));
         this.source = theSource;
     }
 

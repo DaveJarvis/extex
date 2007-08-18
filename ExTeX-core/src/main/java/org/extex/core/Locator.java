@@ -169,8 +169,8 @@ public class Locator implements Serializable {
                     sb.insert(0, c.resource);
                 }
                 sb.append(';');
-                if (lineNumber >= 0) {
-                    sb.append(lineNumber);
+                if (c.lineNumber >= 0) {
+                    sb.append(c.lineNumber);
                 }
                 sb.append(';');
                 sb.insert(0, "..");

@@ -130,10 +130,22 @@ public class TokenStreamFactory extends AbstractFactory
             OpenReaderObservable {
 
     /**
+     * The constant <tt>BUFFERSIZE_ATTRIBUTE</tt> contains the name of the
+     * attribute used to get the buffer size.
+     */
+    private static final String BUFFERSIZE_ATTRIBUTE = "buffersize";
+
+    /**
      * The constant <tt>CLASS_ATTRIBUTE</tt> contains the name of the
      * attribute used to get the class name.
      */
     private static final String CLASS_ATTRIBUTE = "class";
+
+    /**
+     * The field <tt>bufferSize</tt> contains the buffer size. A value less
+     * than 1 indicates that the default should be used.
+     */
+    private int bufferSize;
 
     /**
      * The field <tt>configuration</tt> contains the configuration for this
@@ -145,7 +157,13 @@ public class TokenStreamFactory extends AbstractFactory
      * The field <tt>decorators</tt> contains the list of decorators for input
      * streams acquired from a resource.
      */
-    private List<StreamDecorator> decorators = null;
+    private List<InputStreamInterceptor> decorators = null;
+
+    /**
+     * The field <tt>interceptors</tt> contains the list of decorators for
+     * readers.
+     */
+    private List<ReaderInterceptor> interceptors = null;
 
     /**
      * The field <tt>openFileObservers</tt> contains the observers registered
@@ -201,10 +219,9 @@ public class TokenStreamFactory extends AbstractFactory
      *      org.extex.framework.configuration.Configuration)
      */
     @Override
-    public void configure(Configuration theConfiguration)
-            throws ConfigurationException {
+    public void configure(Configuration config) throws ConfigurationException {
 
-        super.configure(theConfiguration);
+        super.configure(config);
         this.configuration = selectConfiguration(tag);
         String classname = configuration.getAttribute(CLASS_ATTRIBUTE);
         if (classname == null) {
@@ -224,6 +241,12 @@ public class TokenStreamFactory extends AbstractFactory
         } catch (ClassNotFoundException e) {
             throw new ConfigurationClassNotFoundException(classname,
                 configuration);
+        }
+        String bs = config.getAttribute(BUFFERSIZE_ATTRIBUTE);
+        if (bs != null && bs.matches("^[0-9]+$")) {
+            bufferSize = Integer.parseInt(bs);
+        } else {
+            bufferSize = 0;
         }
     }
 
@@ -282,13 +305,19 @@ public class TokenStreamFactory extends AbstractFactory
         if (reader == null) {
             throw new IllegalArgumentException("reader");
         }
+        Reader r = reader;
+
+        if (interceptors != null) {
+            for (ReaderInterceptor inter : interceptors) {
+                r = inter.pipe(r);
+            }
+        }
 
         TokenStream stream;
         try {
 
             stream = (TokenStream) readerConstructor.newInstance(//
-                new Object[]{configuration, options, reader,//
-                        isFile, source});
+                new Object[]{configuration, options, r, isFile, source});
 
         } catch (IllegalArgumentException e) {
             throw new ConfigurationInstantiationException(e);
@@ -329,12 +358,15 @@ public class TokenStreamFactory extends AbstractFactory
         if (istream == null) {
             return null;
         }
-        istream = new BufferedInputStream(istream);
+        if (bufferSize > 0) {
+            istream = new BufferedInputStream(istream, bufferSize);
+        } else {
+            istream = new BufferedInputStream(istream);
+        }
 
         if (decorators != null) {
-            int size = decorators.size();
-            for (int i = 0; i < size; i++) {
-                istream = decorators.get(i).pipe(istream);
+            for (InputStreamInterceptor dec : decorators) {
+                istream = dec.pipe(istream);
             }
         }
 
@@ -349,15 +381,29 @@ public class TokenStreamFactory extends AbstractFactory
     }
 
     /**
+     * Register a reader decorator to be applied for each token stream
+     * originated at a resource.
+     * 
+     * @param decorator the additional decorator
+     */
+    public void register(ReaderInterceptor decorator) {
+
+        if (interceptors == null) {
+            interceptors = new ArrayList<ReaderInterceptor>();
+        }
+        interceptors.add(decorator);
+    }
+
+    /**
      * Register a input stream decorator to be applied for each token stream
      * originated at a resource.
      * 
      * @param decorator the additional decorator
      */
-    public void register(StreamDecorator decorator) {
+    public void register(InputStreamInterceptor decorator) {
 
         if (decorators == null) {
-            decorators = new ArrayList<StreamDecorator>();
+            decorators = new ArrayList<InputStreamInterceptor>();
         }
         decorators.add(decorator);
     }
