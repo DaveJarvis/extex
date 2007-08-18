@@ -28,7 +28,6 @@ import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
 import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.Dimen;
-import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
 import org.extex.font.CoreFontFactory;
 import org.extex.font.ExtexFont;
@@ -69,6 +68,7 @@ import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.tc.font.impl.FontImpl;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
+import org.extex.typesetter.type.node.HorizontalListNode;
 import org.extex.typesetter.type.node.ImplicitKernNode;
 import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.factory.NodeFactory;
@@ -161,6 +161,7 @@ public class VfDvi2Node implements DviInterpreter, DviExecuteCommand {
         this.vfFont = vfFont;
         vcharnode = factory.getVirtualCharNode(tc, uc);
         actualNodeList = vcharnode;
+        nodestack.push(vcharnode);
 
         val.clear();
         stack.clear();
@@ -556,6 +557,26 @@ public class VfDvi2Node implements DviInterpreter, DviExecuteCommand {
         }
         val.addV(val.getY());
 
+        makeHBox();
+        actualNodeList.setShift(TfmFixWord.toDimen(vfFont.getDesignSize(), val
+            .getY()));
+
+    }
+
+    /**
+     * Stack for the nodelists.
+     */
+    private NodeListStack nodestack = new NodeListStack();
+
+    /**
+     * Make a hbox.
+     */
+    private void makeHBox() {
+
+        HorizontalListNode hnode = new HorizontalListNode();
+        actualNodeList.add(hnode);
+        actualNodeList = hnode;
+        nodestack.push(hnode);
     }
 
     /**
