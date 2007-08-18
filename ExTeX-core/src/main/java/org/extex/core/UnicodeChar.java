@@ -163,7 +163,7 @@ public class UnicodeChar implements Serializable {
      * @throws IllegalArgumentException in case that the code point is not in
      *         the acceptable rage from MIN_VALUE to MAX_VALUE
      */
-    protected UnicodeChar(int codePoint) {
+    protected UnicodeChar(int codePoint) throws IllegalArgumentException {
 
         super();
         if (codePoint < UCharacter.MIN_VALUE
