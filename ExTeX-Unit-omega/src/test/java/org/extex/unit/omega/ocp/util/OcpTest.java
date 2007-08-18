@@ -73,7 +73,7 @@ public class OcpTest extends ExTeXLauncher {
         assertFailure(// --- input code ---
             "\\ocp\\x=../ExTeX-Unit-omega/src/test/resources/destroy " + "\\show\\x ",
             // --- output channel ---
-            "> \\x=select ocp ../ExTeX-Unit-omega/src/test/resources/destroy.");
+            "> \\x=select ocp ../ExTeX-Unit-omega/src/test/resources/destroy.\n");
     }
 
     // TODO implement more primitive specific test cases
