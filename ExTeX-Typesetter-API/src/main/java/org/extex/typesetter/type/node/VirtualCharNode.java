@@ -72,16 +72,6 @@ public class VirtualCharNode extends CharNode implements NodeList {
         }
 
         /**
-         * Setter for the parent.
-         * 
-         * @param n the parent node
-         */
-        public void setParent(VirtualCharNode n) {
-
-            this.node = n;
-        }
-
-        /**
          * Add some glue to the node list. The other attributes (width, height,
          * depth) are not modified.
          * 
@@ -94,6 +84,16 @@ public class VirtualCharNode extends CharNode implements NodeList {
         public void addSkip(FixedGlue glue) {
 
             // glues are ignored
+        }
+
+        /**
+         * Setter for the parent.
+         * 
+         * @param n the parent node
+         */
+        public void setParent(VirtualCharNode n) {
+
+            this.node = n;
         }
 
         /**
@@ -125,11 +125,6 @@ public class VirtualCharNode extends CharNode implements NodeList {
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>nodes</tt> contains the encapsulated node list.
-     */
-    private NL nodes = new NL();
-
-    /**
      * The field <tt>d</tt> contains the depth for delayed initialization.
      */
     private FixedDimen d;
@@ -138,6 +133,11 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * The field <tt>h</tt> contains the height for delayed initialization.
      */
     private FixedDimen h;
+
+    /**
+     * The field <tt>nodes</tt> contains the encapsulated node list.
+     */
+    private NL nodes = new NL();
 
     /**
      * The field <tt>w</tt> contains the width for delayed initialization.
@@ -532,6 +532,17 @@ public class VirtualCharNode extends CharNode implements NodeList {
     public void spreadWidth(FixedDimen width, FixedGlueComponent sum) {
 
         this.nodes.spreadWidth(width, sum);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.type.node.AbstractNode#toString()
+     */
+    @Override
+    public String toString() {
+
+        return (nodes != null ? nodes.toString() : super.toString());
     }
 
     /**
