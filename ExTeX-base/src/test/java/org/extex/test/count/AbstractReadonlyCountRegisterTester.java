@@ -124,7 +124,7 @@ public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher 
     public void testErrorVerticalMode2() throws Exception {
 
         assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\vbox{\\" + primitive + "} ",
+            DEFINE_BRACES + prepare + "\\vbox{\\" + primitive + "} ",
             // --- log message ---
             "You can't use `\\" + primitive + "' in inner vertical mode");
     }
