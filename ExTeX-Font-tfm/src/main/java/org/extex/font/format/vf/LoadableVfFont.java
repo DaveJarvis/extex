@@ -55,7 +55,9 @@ import org.extex.resource.ResourceFinder;
 import org.extex.typesetter.CharNodeBuilder;
 import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.tc.TypesettingContextFactory;
+import org.extex.typesetter.tc.font.impl.FontImpl;
 import org.extex.typesetter.type.node.CharNode;
+import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.extex.util.file.random.RandomAccessInputArray;
 
@@ -469,7 +471,8 @@ public class LoadableVfFont
 
         int cp = charPos(uc);
         TfmFixWord w = reader.getWidth(cp);
-        if (w == null || w.getValue() == 0) {
+        if (w == null /* || w.getValue() == 0 */) {
+            // vf font can have glyphs with zero width
             return false;
         }
         return true;
@@ -622,6 +625,9 @@ public class LoadableVfFont
             return null;
         }
 
+        // set the new font
+        tc = tcFactory.newInstance(tc, new FontImpl(this));
+
         VfDvi2Node dvi =
                 new VfDvi2Node(uc, tc, factory, tcFactory, fontfactory, cp,
                     vfFont);
@@ -640,7 +646,13 @@ public class LoadableVfFont
             return null;
         }
 
-        return dvi.getVcharNode();
+        VirtualCharNode vcharNode = dvi.getVcharNode();
+        if (vcharNode != null) {
+            vcharNode.setWidth(getWidth(uc).getLength());
+            vcharNode.setHeight(getHeight(uc).getLength());
+            vcharNode.setDepth(getDepth(uc).getLength());
+        }
+        return vcharNode;
     }
 
     /**

@@ -63,6 +63,11 @@ public class FontKey implements Serializable {
     public static final String KERNING = "kerning";
 
     /**
+     * The language for the font.
+     */
+    public static final String LANGUAGE = "language";
+
+    /**
      * Use the letterspaced information of the font.
      */
     public static final String LETTERSPACE = "letterspaced";
@@ -71,11 +76,6 @@ public class FontKey implements Serializable {
      * Use the ligature information of the font.
      */
     public static final String LIGATURES = "ligatures";
-
-    /**
-     * The language for the font.
-     */
-    public static final String LANGUAGE = "language";
 
     /**
      * The scaling factor of the font.
@@ -154,6 +154,65 @@ public class FontKey implements Serializable {
         glueMap = new HashMap<String, FixedGlue>();
         countMap = new HashMap<String, FixedCount>();
         booleanMap = new HashMap<String, Boolean>();
+
+    }
+
+    /**
+     * Check, if the font keys are equals.
+     * 
+     * @param k The font key for the check.
+     * @return Returns <code>true</code>, if the keys are equals.
+     */
+    public boolean eq(FontKey k) {
+
+        if (k == null) {
+            return false;
+        }
+        if (!getName().equals(k.getName())) {
+            return false;
+        }
+
+        Iterator<String> it = dimenMap.keySet().iterator();
+        while (it.hasNext()) {
+            String key = it.next();
+            if (!getDimen(key).eq(k.getDimen(key))) {
+                return false;
+            }
+        }
+
+        it = countMap.keySet().iterator();
+        while (it.hasNext()) {
+            String key = it.next();
+            if (!getCount(key).eq(k.getCount(key))) {
+                return false;
+            }
+        }
+
+        it = booleanMap.keySet().iterator();
+        while (it.hasNext()) {
+            String key = it.next();
+            if (getBoolean(key) != k.getBoolean(key)) {
+                return false;
+            }
+        }
+
+        it = glueMap.keySet().iterator();
+        while (it.hasNext()) {
+            String key = it.next();
+            if (!getGlue(key).eq(k.getGlue(key))) {
+                return false;
+            }
+        }
+
+        it = stringMap.keySet().iterator();
+        while (it.hasNext()) {
+            String key = it.next();
+            if (!getString(key).equals(k.getString(key))) {
+                return false;
+            }
+        }
+
+        return true;
 
     }
 
@@ -512,5 +571,4 @@ public class FontKey implements Serializable {
 
         return buf.toString();
     }
-
 }

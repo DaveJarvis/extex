@@ -26,6 +26,7 @@ import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -212,7 +213,9 @@ public class LoadableTfmFont
             if (ipos != null) {
                 cp = ipos.intValue();
             } else {
-                cp = -1;
+                if (cp < 0 || cp > 255) {
+                    cp = -1;
+                }
             }
         }
         return cp;
@@ -890,6 +893,36 @@ public class LoadableTfmFont
     public void usedCharacter(BackendCharacter bc) {
 
         // ignored
+
+    }
+
+    /**
+     * The code point map reverse.
+     */
+    private Map<Integer, UnicodeChar> codepointmapreverse = null;
+
+    /**
+     * Returns the Unicode char for the position or <code>null</code>, if not
+     * found.
+     * 
+     * @param pos The position.
+     * @return Returns the Unicode char.
+     */
+    public UnicodeChar getUnicodeChar(int pos) {
+
+        if (codepointmapreverse == null) {
+
+            codepointmapreverse = new HashMap<Integer, UnicodeChar>();
+
+            Iterator<UnicodeChar> it = codepointmap.keySet().iterator();
+            while (it.hasNext()) {
+                UnicodeChar uc = it.next();
+                Integer value = codepointmap.get(uc);
+                codepointmapreverse.put(value, uc);
+            }
+        }
+
+        return codepointmapreverse.get(pos);
 
     }
 }

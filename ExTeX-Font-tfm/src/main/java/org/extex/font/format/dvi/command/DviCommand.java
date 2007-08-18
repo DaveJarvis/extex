@@ -1891,4 +1891,9 @@ public abstract class DviCommand {
      */
     public abstract String getName();
 
+    @Override
+    public String toString() {
+
+        return getName();
+    }
 }

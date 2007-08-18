@@ -29,10 +29,10 @@ import org.extex.core.dimen.FixedDimen;
 /**
  * TFM-FixWord.
  * <p>
- * The dimensions are represented in the same way as in tfm files. Higher
- * 12 bits is the whole part and lower 20 bits is the fractional part.
+ * The dimensions are represented in the same way as in tfm files. Higher 12
+ * bits is the whole part and lower 20 bits is the fractional part.
  * </p>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -69,7 +69,7 @@ public class TfmFixWord implements Serializable {
     public static final int POINTSHIFT = 20;
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt>.
      */
     private static final long serialVersionUID = 1L;
 
@@ -95,38 +95,41 @@ public class TfmFixWord implements Serializable {
 
     /**
      * Convert the fixword value to a dimen value.
-     *
      * <p>
-     * the simple calculation
-     *     fw.getValue() * actualsize.getValue() /
-     *     TFMFixWord.FIXWORDDENOMINATOR
-     * leads to different rounding than in TeX due to
-     * a limitation to 4 byte integer precission. Note
-     * that fw.getValue() * actualsize.getValue() might
-     * exceed the 4 byte range.
-     * Hence TTP 571 cancels actualsize.getValue() and
-     * TFMFixWord.FIXWORDDENOMINATOR to allow for a
-     * bytewise calculation. We do not need this bytewise
-     * calculation since we have long integers, but we
-     * need to be precise in performing the same rounding.
+     * see toDimen(FixedDimen size)
      * </p>
-     *
-     * @param size  The font size
-     *              (design size for font dimen, actual size for all others)
-     * @return Returns the Dimen value.
+     * 
+     * @param designsize The design size.
+     * @param val The value.
+     * @return Return the {@link Dimen} of the value.
      */
-    public Dimen toDimen(FixedDimen size) {
+    public static Dimen toDimen(FixedDimen designsize, long val) {
 
-        if (size == null) {
-            throw new IllegalArgumentException("size");
+        if (designsize == null) {
+            throw new IllegalArgumentException("designsize");
         }
         int shift = POINTSHIFT;
-        long z = size.getValue();
+        long z = designsize.getValue();
         while (z >= MAX_FIXWORD_VALUE) {
             z >>= 1;
             shift -= 1;
         }
-        return new Dimen(z * value >> shift);
+        return new Dimen(z * val >> shift);
+    }
+
+    /**
+     * Convert the fixword to a dimen value.
+     * <p>
+     * see toDimen(FixedDimen size)
+     * </p>
+     * 
+     * @param designsize The design size.
+     * @param fw The fix word.
+     * @return Return the {@link Dimen} of the value.
+     */
+    public static Dimen toDimen(FixedDimen designsize, TfmFixWord fw) {
+
+        return toDimen(designsize, fw.getValue());
     }
 
     /**
@@ -144,9 +147,9 @@ public class TfmFixWord implements Serializable {
 
     /**
      * Create a new object.
-     *
-     * @param val the values as int. 
-     *            This int value represents the length in points.
+     * 
+     * @param val the values as int. This int value represents the length in
+     *        points.
      */
     public TfmFixWord(int val) {
 
@@ -155,11 +158,11 @@ public class TfmFixWord implements Serializable {
 
     /**
      * Create new object.
-     *
+     * 
      * The value represented by this instance is num / den in points.
-     *
-     * @param num   the num
-     * @param den   the den
+     * 
+     * @param num the num
+     * @param den the den
      */
     public TfmFixWord(int num, int den) {
 
@@ -168,7 +171,7 @@ public class TfmFixWord implements Serializable {
 
     /**
      * Create a new object.
-     *
+     * 
      * @param val the values as String
      */
     public TfmFixWord(String val) {
@@ -183,7 +186,7 @@ public class TfmFixWord implements Serializable {
 
     /**
      * Return the internal value.
-     *
+     * 
      * @return the internal value
      */
     public long getValue() {
@@ -193,10 +196,10 @@ public class TfmFixWord implements Serializable {
 
     /**
      * less than.
-     *
+     * 
      * @param num the value to compare
-     * @return <code>true</code>, if the internal values is lesser,
-     * otherwise <code>false</code>
+     * @return <code>true</code>, if the internal values is lesser, otherwise
+     *         <code>false</code>
      */
     public boolean lessThan(int num) {
 
@@ -205,10 +208,10 @@ public class TfmFixWord implements Serializable {
 
     /**
      * more than.
-     *
+     * 
      * @param num the value to compare
-     * @return <code>true</code>, if the internal values are more,
-     * otherwise <code>false</code>
+     * @return <code>true</code>, if the internal values are more, otherwise
+     *         <code>false</code>
      */
     public boolean moreThan(int num) {
 
@@ -217,6 +220,7 @@ public class TfmFixWord implements Serializable {
 
     /**
      * Set the value.
+     * 
      * @param v The value to set.
      */
     public void setValue(long v) {
@@ -225,19 +229,52 @@ public class TfmFixWord implements Serializable {
     }
 
     /**
+     * Convert the fixword value to a dimen value.
+     * 
+     * <p>
+     * the simple calculation fw.getValue() * actualsize.getValue() /
+     * TFMFixWord.FIXWORDDENOMINATOR leads to different rounding than in TeX due
+     * to a limitation to 4 byte integer precission. Note that fw.getValue() *
+     * actualsize.getValue() might exceed the 4 byte range. Hence TTP 571
+     * cancels actualsize.getValue() and TFMFixWord.FIXWORDDENOMINATOR to allow
+     * for a bytewise calculation. We do not need this bytewise calculation
+     * since we have long integers, but we need to be precise in performing the
+     * same rounding.
+     * </p>
+     * 
+     * @param size The font size (design size for font dimen, actual size for
+     *        all others)
+     * @return Returns the Dimen value.
+     */
+    public Dimen toDimen(FixedDimen size) {
+
+        if (size == null) {
+            throw new IllegalArgumentException("size");
+        }
+        int shift = POINTSHIFT;
+        long z = size.getValue();
+        while (z >= MAX_FIXWORD_VALUE) {
+            z >>= 1;
+            shift -= 1;
+        }
+        return new Dimen(z * value >> shift);
+    }
+
+    /**
      * Returns the value as double in untis.
+     * 
      * @return Returns the value as double in untis.
      */
     public double toDouble() {
 
         // mgn check!
-        return (double) value /*  * TFMConstants.CONST_1000*/
+        return (double) value /* * TFMConstants.CONST_1000 */
                 / FIXWORDDENOMINATOR;
     }
 
     /**
      * Return the values as String.
-     *
+     * 
      * @return the values as String
      */
     @Override
@@ -260,7 +297,7 @@ public class TfmFixWord implements Serializable {
                 v += unity / 2 - delta / 2;
             }
             buf.append(Character.forDigit((int) (v >>> POINTSHIFT),
-                    TfmConstants.CONST_10));
+                TfmConstants.CONST_10));
             v = TfmConstants.CONST_10 * (v & mask);
         } while (v > (delta *= TfmConstants.CONST_10));
         return buf.toString();
@@ -268,6 +305,7 @@ public class TfmFixWord implements Serializable {
 
     /**
      * Returns the value as Sting in untis with comma (0.00000..).
+     * 
      * @return Returns the value as Sting in untis with comma.
      */
     public String toStringComma() {
@@ -284,17 +322,17 @@ public class TfmFixWord implements Serializable {
      * <p>
      * It devide the value by 1000.
      * </p>
-     *
+     * 
      * @return the value as String in units
      */
     public String toStringUnits() {
 
         if (value > 0) {
             return String
-                    .valueOf((value * TfmConstants.CONST_1000) >>> POINTSHIFT);
+                .valueOf((value * TfmConstants.CONST_1000) >>> POINTSHIFT);
         }
         return String
-                .valueOf(-((-value * TfmConstants.CONST_1000) >>> POINTSHIFT));
+            .valueOf(-((-value * TfmConstants.CONST_1000) >>> POINTSHIFT));
     }
 
 }

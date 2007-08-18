@@ -26,7 +26,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.extex.core.dimen.FixedDimen;
 import org.extex.font.exception.FontException;
+import org.extex.font.format.tfm.TfmFixWord;
 import org.extex.font.format.tfm.TfmReader;
 import org.extex.font.format.vf.command.VfCommand;
 import org.extex.font.format.vf.command.VfCommandCharacterPackets;
@@ -76,6 +78,22 @@ public class VfFont implements XMLWriterConvertible {
      * The tfm reader.
      */
     private TfmReader tfmReader;
+
+    /**
+     * @see org.extex.font.format.tfm.TfmReader#getDesignSize()
+     */
+    public FixedDimen getDesignSize() {
+
+        return tfmReader.getDesignSize();
+    }
+
+    /**
+     * @see org.extex.font.format.tfm.TfmReader#getDesignSizeAsFixWord()
+     */
+    public TfmFixWord getDesignSizeAsFixWord() {
+
+        return tfmReader.getDesignSizeAsFixWord();
+    }
 
     /**
      * Creates a new object.

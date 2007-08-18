@@ -25,7 +25,11 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.extex.core.UnicodeChar;
+import org.extex.core.count.Count;
 import org.extex.core.count.FixedCount;
+import org.extex.core.dimen.Dimen;
+import org.extex.core.dimen.FixedDimen;
+import org.extex.core.glue.FixedGlue;
 import org.extex.font.CoreFontFactory;
 import org.extex.font.ExtexFont;
 import org.extex.font.FontKey;
@@ -54,12 +58,18 @@ import org.extex.font.format.dvi.command.DviX;
 import org.extex.font.format.dvi.command.DviXXX;
 import org.extex.font.format.dvi.command.DviY;
 import org.extex.font.format.dvi.command.DviZ;
+import org.extex.font.format.tfm.LoadableTfmFont;
+import org.extex.font.format.tfm.TfmFixWord;
 import org.extex.font.format.vf.command.VfCommandFontDef;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.tc.TypesettingContextFactory;
+import org.extex.typesetter.tc.font.Font;
+import org.extex.typesetter.tc.font.impl.FontImpl;
+import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
+import org.extex.typesetter.type.node.ImplicitKernNode;
 import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.extex.util.file.random.RandomAccessR;
@@ -158,9 +168,10 @@ public class VfDvi2Node implements DviInterpreter, DviExecuteCommand {
     }
 
     /**
-     * The map fir the extex fonts.
+     * The map for the extex fonts.
      */
-    Map<Integer, ExtexFont> extexfonts = new HashMap<Integer, ExtexFont>();
+    private Map<Integer, ExtexFont> extexfonts =
+            new HashMap<Integer, ExtexFont>();
 
     /**
      * Load the {@link ExtexFont}s.
@@ -175,11 +186,21 @@ public class VfDvi2Node implements DviInterpreter, DviExecuteCommand {
         while (it.hasNext()) {
             Integer number = it.next();
             VfCommandFontDef fcmd = fonts.get(number);
-            HashMap<String, FixedCount> m = new HashMap<String, FixedCount>();
-            m.put(FontKey.SCALE, fcmd.getScalefactorAsCount());
-            FontKey key =
-                    fontfactory.getFontKey(fcmd.getFontname(), fcmd
-                        .getDesignsizeAsDimen(), m);
+            FontKey key;
+            if (fcmd.getScalefactorAsCount().getValue() != Dimen.ONE) {
+                HashMap<String, FixedCount> m =
+                        new HashMap<String, FixedCount>();
+                m.put(FontKey.SCALE, new Count(fcmd.getScalefactorAsCount()
+                    .getValue()
+                        * 1000 / Dimen.ONE));
+                key =
+                        fontfactory.getFontKey(fcmd.getFontname(), fcmd
+                            .getDesignsizeAsDimen(), m);
+            } else {
+                key =
+                        fontfactory.getFontKey(fcmd.getFontname(), fcmd
+                            .getDesignsizeAsDimen());
+            }
 
             ExtexFont f = fontfactory.getInstance(key);
             extexfonts.put(number, f);
@@ -292,11 +313,45 @@ public class VfDvi2Node implements DviInterpreter, DviExecuteCommand {
      */
     public void execute(DviChar command) throws FontException {
 
-        int f = val.getF();
+        ExtexFont f = checkFont();
+        UnicodeChar nuc = UnicodeChar.get(command.getCh());
+
+        if (f instanceof LoadableTfmFont) {
+            // a tfm font maps the position to unicode
+            LoadableTfmFont tfmfont = (LoadableTfmFont) f;
+            UnicodeChar tmpuc = tfmfont.getUnicodeChar(command.getCh());
+            if (tmpuc != null) {
+                nuc = tmpuc;
+            }
+        }
+        FixedGlue width = f.getWidth(nuc);
+        Node node = factory.getNode(tc, nuc);
+        actualNodeList.add(node);
+
         if (!command.isPut()) {
-            val.addH((int) 0/* width.getValue() */);
+            val.addH((int) width.getLength().getValue());
         }
 
+    }
+
+    /**
+     * Check, if the font is changed.
+     * 
+     * If it changed, it create a new typesetting context with the new font.
+     * 
+     * @return Returns the actual extex font.
+     */
+    private ExtexFont checkFont() {
+
+        ExtexFont ff = extexfonts.get(val.getF());
+        FontKey ffkey = ff.getActualFontKey();
+        Font tcf = tc.getFont();
+        FontKey akey = tcf.getActualFontKey();
+
+        if (!ffkey.eq(akey)) {
+            tc = tcFactory.newInstance(tc, new FontImpl(ff));
+        }
+        return ff;
     }
 
     /**
@@ -456,6 +511,11 @@ public class VfDvi2Node implements DviInterpreter, DviExecuteCommand {
             val.setW(command.getValue());
         }
         val.addH(val.getW());
+
+        ImplicitKernNode knode =
+                new ImplicitKernNode(TfmFixWord.toDimen(vfFont.getDesignSize(),
+                    val.getW()), true);
+        actualNodeList.add(knode);
 
     }
 
