@@ -38,7 +38,7 @@ public class LocatorTest extends TestCase {
     public final void testToString0() {
 
         Locator locator = new Locator(null, -1, null, 0);
-        assertEquals(":", locator.toString());
+        assertEquals("::", locator.toString());
     }
 
     /**
@@ -48,7 +48,7 @@ public class LocatorTest extends TestCase {
     public final void testToString1() {
 
         Locator locator = new Locator(null, 0, null, 0);
-        assertEquals(":0", locator.toString());
+        assertEquals(":0:", locator.toString());
     }
 
     /**
@@ -58,7 +58,37 @@ public class LocatorTest extends TestCase {
     public final void testToString2() {
 
         Locator locator = new Locator("XYZ", 42, null, 0);
-        assertEquals("XYZ:42", locator.toString());
+        assertEquals("XYZ:42:", locator.toString());
+    }
+
+    /**
+     * Test method for {@link org.extex.core.Locator#toString()}.
+     */
+    @Test
+    public final void testToStringInt0() {
+
+        Locator locator = new Locator(null, -1, null, 0);
+        assertEquals("::", locator.toString(1));
+    }
+
+    /**
+     * Test method for {@link org.extex.core.Locator#toString()}.
+     */
+    @Test
+    public final void testToStringInt1() {
+
+        Locator locator = new Locator(null, 0, null, 0);
+        assertEquals(":0:", locator.toString(1));
+    }
+
+    /**
+     * Test method for {@link org.extex.core.Locator#toString()}.
+     */
+    @Test
+    public final void testToStringInt2() {
+
+        Locator locator = new Locator("XYZ", 42, null, 0);
+        assertEquals("XYZ:42:", locator.toString(1));
     }
 
 }
