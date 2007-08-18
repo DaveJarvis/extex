@@ -22,6 +22,7 @@ package org.extex.scanner.base;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -73,8 +74,8 @@ public class TokenStreamStreamImplBufferedTest
     @Override
     protected TokenStream makeStream(String line) throws IOException {
 
-        return new TokenStreamImpl(CONF, null, new ByteArrayInputStream(line
-            .getBytes()), "test", "ISO-8859-1");
+        return new TokenStreamImpl(CONF, null, new InputStreamReader(
+            new ByteArrayInputStream(line.getBytes())), Boolean.FALSE, "test");
     }
 
     /**
@@ -86,7 +87,8 @@ public class TokenStreamStreamImplBufferedTest
 
         try {
             new TokenStreamImpl(new MyConfiguration("1.6"), null,
-                new ByteArrayInputStream("".getBytes()), "test", "ISO-8859-1");
+                new InputStreamReader(new ByteArrayInputStream("".getBytes())),
+                Boolean.FALSE, "test");
             assertFalse(true);
         } catch (ConfigurationException e) {
             assertTrue(true);
@@ -102,14 +104,14 @@ public class TokenStreamStreamImplBufferedTest
 
         TokenStreamImpl stream =
                 new TokenStreamImpl(new MyConfiguration("16"), null,
-                    new InputStream() {
+                    new InputStreamReader(new InputStream() {
 
                         @Override
                         public int read() throws IOException {
 
                             throw new IOException();
                         }
-                    }, "test", "ISO-8859-1");
+                    }), Boolean.FALSE, "test");
         try {
             stream.get(FACTORY, TOKENIZER);
             assertFalse(true);

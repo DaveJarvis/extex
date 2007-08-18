@@ -50,7 +50,6 @@ public final class AllTests {
         //$JUnit-BEGIN$
         suite.addTestSuite(TokenStreamBaseImplTest.class);
         suite.addTestSuite(TokenStreamStringImplTest.class);
-        suite.addTestSuite(TokenStreamStreamImplTest.class);
         suite.addTestSuite(TokenStreamStreamImplBufferedTest.class);
         suite.addTestSuite(TokenStreamReaderImplTest.class);
         //$JUnit-END$
