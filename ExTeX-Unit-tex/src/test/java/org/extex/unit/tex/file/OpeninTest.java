@@ -19,7 +19,7 @@
 
 package org.extex.unit.tex.file;
 
-import org.extex.test.NoFlagsPrimitiveTester;
+import org.extex.test.NoFlagsButImmediatePrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\openin</tt>.
@@ -27,7 +27,7 @@ import org.extex.test.NoFlagsPrimitiveTester;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
-public class OpeninTest extends NoFlagsPrimitiveTester {
+public class OpeninTest extends NoFlagsButImmediatePrimitiveTester {
 
     /**
      * Method for running the tests standalone.

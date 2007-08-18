@@ -125,7 +125,7 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
         assertOutput(//--- input code ---
                 DEFINE_BRACES + "\\immediate\\write 2{abc} \\end",
                 //--- log message ---
-                "abc", "");
+                "abc\n", "");
     }
 
     /**
