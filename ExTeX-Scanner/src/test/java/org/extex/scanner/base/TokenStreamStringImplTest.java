@@ -822,9 +822,9 @@ public class TokenStreamStringImplTest extends TestCase {
         TokenStream stream = makeStream("abc");
         Locator locator = stream.getLocator();
         assertNotNull(locator);
-        assertEquals("test:0", locator.toString());
+        assertEquals("test:0:", locator.toString());
         assertNotNull(stream.get(FACTORY, TOKENIZER));
-        assertEquals("test:0", locator.toString());
+        assertEquals("test:0:", locator.toString());
     }
 
     /**

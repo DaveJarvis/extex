@@ -83,23 +83,6 @@ public class TokenStreamStreamImplBufferedTest
      * 
      * @throws Exception in case of an error
      */
-    public void testError2() throws Exception {
-
-        try {
-            new TokenStreamImpl(new MyConfiguration("1.6"), null,
-                new InputStreamReader(new ByteArrayInputStream("".getBytes())),
-                Boolean.FALSE, "test");
-            assertFalse(true);
-        } catch (ConfigurationException e) {
-            assertTrue(true);
-        }
-    }
-
-    /**
-     * <testcase> ... </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
     public void testException1() throws Exception {
 
         TokenStreamImpl stream =
