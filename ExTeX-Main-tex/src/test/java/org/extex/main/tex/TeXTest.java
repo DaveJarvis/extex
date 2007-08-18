@@ -596,7 +596,7 @@ public class TeXTest extends TestCase {
     public void testHaltOnError() throws Exception {
 
         runFailure(new String[]{"-ini", "-halt-on-error", "\\xxxx"}, //
-            BANNER_TEX + ":1: Undefined control sequence \\xxxx\n" + "\\xxxx\n"
+            BANNER_TEX + "*:1: Undefined control sequence \\xxxx\n" + "\\xxxx\n"
                     + "_____^\n" + "? \n" + "End of file on the terminal!\n"
                     + TRANSCRIPT_TEXPUT);
         new File(".", "texput.log").delete();
