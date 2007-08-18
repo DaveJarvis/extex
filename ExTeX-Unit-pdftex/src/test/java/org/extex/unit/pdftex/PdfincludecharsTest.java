@@ -50,7 +50,7 @@ public class PdfincludecharsTest extends NoFlagsButProtectedPrimitiveTester {
     public void testError1() throws Exception {
 
         assertFailure(// --- input code ---
-            DEFINE_BRACES + "a \\pdfincludechars b",
+            DEFINE_BRACES + "\\pdfoutput=1 " + "a \\pdfincludechars b",
             // --- output message ---
             "Missing font identifier");
     }
