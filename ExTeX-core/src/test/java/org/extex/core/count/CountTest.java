@@ -45,7 +45,7 @@ public class CountTest extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.core.count.Count#add(org.extex.core.count.Count)}.
+     * {@link org.extex.core.count.Count#add(FixedCount)}.
      */
     @Test
     @SuppressWarnings("boxing")
@@ -85,7 +85,7 @@ public class CountTest extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.core.count.Count#divide(org.extex.core.count.Count)}.
+     * {@link org.extex.core.count.Count#divide(FixedCount)}.
      */
     @Test(expected = ArithmeticException.class)
     public final void testDivideCount0() {
@@ -101,7 +101,7 @@ public class CountTest extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.core.count.Count#divide(org.extex.core.count.Count)}.
+     * {@link org.extex.core.count.Count#divide(FixedCount)}.
      */
     @Test
     @SuppressWarnings("boxing")
@@ -126,7 +126,7 @@ public class CountTest extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.core.count.Count#set(org.extex.core.count.Count)}.
+     * {@link org.extex.core.count.Count#set(FixedCount)}.
      */
     @Test
     @SuppressWarnings("boxing")
@@ -139,7 +139,7 @@ public class CountTest extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.core.count.Count#multiply(org.extex.core.count.Count)}.
+     * {@link org.extex.core.count.Count#multiply(FixedCount)}.
      */
     @Test
     @SuppressWarnings("boxing")
@@ -176,7 +176,7 @@ public class CountTest extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.core.count.Count#divide(org.extex.core.count.Count)}.
+     * {@link org.extex.core.count.Count#divide(FixedCount)}.
      */
     @Test
     @SuppressWarnings("boxing")
@@ -189,7 +189,7 @@ public class CountTest extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.core.count.Count#divide(org.extex.core.count.Count)}.
+     * {@link org.extex.core.count.Count#divide(FixedCount)}.
      */
     @Test
     @SuppressWarnings("boxing")
@@ -226,7 +226,7 @@ public class CountTest extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.core.count.Count#multiply(org.extex.core.count.Count)}.
+     * {@link org.extex.core.count.Count#multiply(FixedCount)}.
      */
     @Test
     @SuppressWarnings("boxing")
@@ -239,7 +239,7 @@ public class CountTest extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.core.count.Count#multiply(org.extex.core.count.Count)}.
+     * {@link org.extex.core.count.Count#multiply(FixedCount)}.
      */
     @Test
     @SuppressWarnings("boxing")
@@ -264,7 +264,7 @@ public class CountTest extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.core.count.Count#set(org.extex.core.count.Count)}.
+     * {@link org.extex.core.count.Count#set(FixedCount)}.
      */
     @Test
     @SuppressWarnings("boxing")
