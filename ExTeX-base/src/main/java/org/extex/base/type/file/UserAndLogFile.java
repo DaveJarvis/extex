@@ -22,6 +22,7 @@ package org.extex.base.type.file;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.type.tokens.Tokens;
 
 /**
@@ -83,7 +84,7 @@ public class UserAndLogFile extends OutputFile {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.base.type.file.OutputFile#newline()
      */
     @Override
@@ -96,11 +97,12 @@ public class UserAndLogFile extends OutputFile {
 
     /**
      * {@inheritDoc}
-     *
-     * @see org.extex.base.type.file.OutputFile#open(java.lang.String)
+     * 
+     * @see org.extex.base.type.file.OutputFile#open(java.lang.String,
+     *      TokenStreamFactory)
      */
     @Override
-    public void open(String encoding) {
+    public void open(String encoding, TokenStreamFactory factory) {
 
         // nothing to do
     }

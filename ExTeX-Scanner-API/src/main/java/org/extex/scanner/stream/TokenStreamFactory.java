@@ -17,8 +17,11 @@ package org.extex.scanner.stream;
 import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.StringReader;
+import java.io.Writer;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -446,6 +449,24 @@ public class TokenStreamFactory extends AbstractFactory
     public void setOptions(TokenStreamOptions options) {
 
         this.options = options;
+    }
+
+    /**
+     * Construct a Writer for an output stream. This may build up a pipe of
+     * output stream and writers to perform all desirable steps.
+     * <p>
+     * The encoding can be given as a hint.
+     * </p>
+     * 
+     * @param stream the stream to put bytes to
+     * @param encoding the optional encoding. If the encoding is
+     *        <code>null</code> then it is ignored
+     * 
+     * @return the writer for th task
+     */
+    public Writer writerStream(OutputStream stream, String encoding) {
+
+        return new OutputStreamWriter(stream);
     }
 
 }

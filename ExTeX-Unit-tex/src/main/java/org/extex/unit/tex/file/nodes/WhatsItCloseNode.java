@@ -69,9 +69,8 @@ public class WhatsItCloseNode extends WhatsItNode implements LogEnabled {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.Node#atShipping(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.typesetter.Typesetter,
+     * @see org.extex.typesetter.type.node.AbstractNode#atShipping(
+     *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
      *      org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
      */
     @Override

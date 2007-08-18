@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.Serializable;
 
 import org.extex.core.exception.helping.HelpingException;
+import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.type.tokens.Tokens;
 
 /**
@@ -53,8 +54,9 @@ public interface OutFile extends Serializable {
      * 
      * @param encoding the encoding or <code>null</code> for the default
      *        encoding
+     * @param factory the token stream factory
      */
-    void open(String encoding);
+    void open(String encoding, TokenStreamFactory factory);
 
     /**
      * Write out a newline.

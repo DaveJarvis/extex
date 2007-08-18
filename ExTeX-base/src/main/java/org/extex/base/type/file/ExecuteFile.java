@@ -24,6 +24,7 @@ import java.util.logging.Logger;
 
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
+import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.type.tokens.Tokens;
 
 /**
@@ -87,7 +88,7 @@ public class ExecuteFile extends OutputFile {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.base.type.file.OutputFile#newline()
      */
     @Override
@@ -98,11 +99,12 @@ public class ExecuteFile extends OutputFile {
 
     /**
      * {@inheritDoc}
-     *
-     * @see org.extex.base.type.file.OutputFile#open(java.lang.String)
+     * 
+     * @see org.extex.base.type.file.OutputFile#open(java.lang.String,
+     *      TokenStreamFactory)
      */
     @Override
-    public void open(String encoding) {
+    public void open(String encoding, TokenStreamFactory factory) {
 
         // nothing to do
     }

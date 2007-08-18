@@ -189,7 +189,7 @@ public class Write extends AbstractCode implements TokensWriter, LogEnabled {
             }
 
             typesetter.add(new WhatsItWriteNode(key, tokens, source,
-                typesetter, this));
+                this));
         }
     }
 

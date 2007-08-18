@@ -32,6 +32,7 @@ import java.io.Writer;
 import org.extex.core.UnicodeChar;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
+import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.type.file.OutFile;
 import org.extex.scanner.type.token.ActiveCharacterToken;
 import org.extex.scanner.type.token.ControlSequenceToken;
@@ -303,9 +304,9 @@ public class OutputFile implements OutFile {
      * 
      * {@inheritDoc}
      * 
-     * @see org.extex.scanner.type.file.OutFile#open(java.lang.String)
+     * @see org.extex.scanner.type.file.OutFile#open(java.lang.String, TokenStreamFactory)
      */
-    public void open(String encoding) {
+    public void open(String encoding, TokenStreamFactory factory) {
 
         if (file != null) {
             try {

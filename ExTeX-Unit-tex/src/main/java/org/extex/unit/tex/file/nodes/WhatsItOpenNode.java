@@ -21,6 +21,7 @@ package org.extex.unit.tex.file.nodes;
 
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
+import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.type.file.OutFile;
 import org.extex.typesetter.PageContext;
 import org.extex.typesetter.Typesetter;
@@ -57,18 +58,27 @@ public class WhatsItOpenNode extends WhatsItNode {
     private String key;
 
     /**
+     * The field <tt>factory</tt> contains the token stream factory.
+     */
+    private TokenStreamFactory factory;
+
+    /**
      * Creates a new object.
      * 
      * @param theKey the key of the file to open
      * @param outFile the out file to open
-     * @param encoding the proposed encoding
+     * @param encoding the proposed encoding if can be <code>null</code> to
+     *        propose nothing
+     * @param factory the token stream factory
      */
-    public WhatsItOpenNode(String theKey, OutFile outFile, String encoding) {
+    public WhatsItOpenNode(String theKey, OutFile outFile, String encoding,
+            TokenStreamFactory factory) {
 
         super();
         this.key = theKey;
         this.file = outFile;
         this.encoding = encoding;
+        this.factory = factory;
     }
 
     /**
@@ -82,7 +92,7 @@ public class WhatsItOpenNode extends WhatsItNode {
     public Node atShipping(PageContext context, Typesetter typesetter,
             FixedDimen posX, FixedDimen posY) throws GeneralException {
 
-        file.open(encoding);
+        file.open(encoding, factory);
         context.setOutFile(key, file, true);
 
         return null;
