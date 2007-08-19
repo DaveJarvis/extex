@@ -141,7 +141,9 @@ public class LoadableVfFont
             if (ipos != null) {
                 cp = ipos.intValue();
             } else {
-                cp = -1;
+                if (cp < 0 || cp > 255) {
+                    cp = -1;
+                }
             }
         }
         return cp;

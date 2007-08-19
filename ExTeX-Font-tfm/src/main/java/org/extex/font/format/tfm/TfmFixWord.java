@@ -99,17 +99,17 @@ public class TfmFixWord implements Serializable {
      * see toDimen(FixedDimen size)
      * </p>
      * 
-     * @param designsize The design size.
+     * @param desingsize The design size.
      * @param val The value.
      * @return Return the {@link Dimen} of the value.
      */
-    public static Dimen toDimen(FixedDimen designsize, long val) {
+    public static Dimen toDimen(FixedDimen desingsize, long val) {
 
-        if (designsize == null) {
+        if (desingsize == null) {
             throw new IllegalArgumentException("designsize");
         }
         int shift = POINTSHIFT;
-        long z = designsize.getValue();
+        long z = desingsize.getValue();
         while (z >= MAX_FIXWORD_VALUE) {
             z >>= 1;
             shift -= 1;
@@ -123,13 +123,37 @@ public class TfmFixWord implements Serializable {
      * see toDimen(FixedDimen size)
      * </p>
      * 
-     * @param designsize The design size.
+     * @param desingsize The design size.
      * @param fw The fix word.
      * @return Return the {@link Dimen} of the value.
      */
-    public static Dimen toDimen(FixedDimen designsize, TfmFixWord fw) {
+    public static Dimen toDimen(FixedDimen desingsize, TfmFixWord fw) {
 
-        return toDimen(designsize, fw.getValue());
+        return toDimen(desingsize, fw.getValue());
+    }
+
+    /**
+     * Convert a dimen to a fix word value.
+     * 
+     * @param desingsize The design size.
+     * @param dimen The dimen value.
+     * @return Returns the fix word value of the dimen.
+     */
+    public static long toValue(FixedDimen desingsize, FixedDimen dimen) {
+
+        if (desingsize == null) {
+            throw new IllegalArgumentException("designsize");
+        }
+        if (dimen == null) {
+            throw new IllegalArgumentException("dimen");
+        }
+        int shift = POINTSHIFT;
+        long z = desingsize.getValue();
+        while (z >= MAX_FIXWORD_VALUE) {
+            z >>= 1;
+            shift -= 1;
+        }
+        return (dimen.getValue() << shift) / z;
     }
 
     /**
