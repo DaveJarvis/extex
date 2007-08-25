@@ -25,7 +25,7 @@ import org.extex.framework.i18n.LocalizerFactory;
 /**
  * This exception is thrown when a problem in the configuration has been
  * detected.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -43,7 +43,7 @@ public abstract class ConfigurationException extends RuntimeException {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param message the message string
      */
     public ConfigurationException(String message) {
@@ -53,7 +53,7 @@ public abstract class ConfigurationException extends RuntimeException {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param message the message string
      * @param source the name of the file causing this error
      */
@@ -65,7 +65,7 @@ public abstract class ConfigurationException extends RuntimeException {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param message message the message string
      * @param cause the next Throwable in the chained list
      */
@@ -75,50 +75,47 @@ public abstract class ConfigurationException extends RuntimeException {
     }
 
     /**
-     * Getter for the localized message of this Exception.
-     * The text is taken from the resource bundle <tt>ConfigurationEception</tt>
-     * The key depends on the further information present:
-     *
+     * Getter for the localized message of this Exception. The text is taken
+     * from the resource bundle <tt>ConfigurationEception</tt> The key depends
+     * on the further information present:
+     * 
      * <p>
-     * <tt>ConfigurationException.FormatCauseMessageLocation</tt>
-     * is used when a cause, a message, and a location are present.
-     * The arguments {1}, {2}, and {3} are set respectively.
+     * <tt>ConfigurationException.FormatCauseMessageLocation</tt> is used when
+     * a cause, a message, and a location are present. The arguments {1}, {2},
+     * and {3} are set respectively.
      * </p>
      * <p>
-     * <tt>ConfigurationException.FormatCauseLocation</tt>
-     * is used when a cause and a location are present.
-     * The arguments {1} and {2} are set respectively.
+     * <tt>ConfigurationException.FormatCauseLocation</tt> is used when a
+     * cause and a location are present. The arguments {1} and {2} are set
+     * respectively.
      * </p>
      * <p>
-     * <tt>ConfigurationException.FormatCauseMessage</tt>
-     * is used when a cause and a message are present.
-     * The arguments {1} and {2} are set respectively.
+     * <tt>ConfigurationException.FormatCauseMessage</tt> is used when a cause
+     * and a message are present. The arguments {1} and {2} are set
+     * respectively.
      * </p>
      * <p>
-     * <tt>ConfigurationException.FormatCause</tt>
-     * is used when a cause is present.
-     * The argument {1} is set respectively.
+     * <tt>ConfigurationException.FormatCause</tt> is used when a cause is
+     * present. The argument {1} is set respectively.
      * </p>
      * <p>
-     * <tt>ConfigurationException.FormatMessageLocation</tt>
-     * is used when a message and a location are present.
-     * The arguments {1} and {2} are set respectively.
+     * <tt>ConfigurationException.FormatMessageLocation</tt> is used when a
+     * message and a location are present. The arguments {1} and {2} are set
+     * respectively.
      * </p>
      * <p>
-     * <tt>ConfigurationException.FormatMessage</tt>
-     * is used when a message is present.
-     * The argument {1} is set respectively.
+     * <tt>ConfigurationException.FormatMessage</tt> is used when a message is
+     * present. The argument {1} is set respectively.
      * </p>
      * <p>
-     * <tt>ConfigurationException.FormatLocation</tt>
-     * is used when a location is present.
-     * The argument {1} is set respectively.
+     * <tt>ConfigurationException.FormatLocation</tt> is used when a location
+     * is present. The argument {1} is set respectively.
      * </p>
      * <p>
      * The arguments {0} is always replaced by the text from
      * {@link #getText() getText()}.
      * </p>
-     *
+     * 
      * @return the message
      */
     @Override
@@ -173,7 +170,7 @@ public abstract class ConfigurationException extends RuntimeException {
 
     /**
      * Getter for localizer.
-     *
+     * 
      * @return the localizer.
      */
     protected Localizer getLocalizer() {
@@ -186,10 +183,20 @@ public abstract class ConfigurationException extends RuntimeException {
     }
 
     /**
-     * Getter for the text prefix of this ConfigurationException.
-     * The text is taken from the resource bundle <tt>ConfigurationEception</tt>
-     * under the key <tt>ConfigurationException.Text</tt>.
-     *
+     * Getter for source.
+     * 
+     * @return the source
+     */
+    public String getSource() {
+
+        return source;
+    }
+
+    /**
+     * Getter for the text prefix of this ConfigurationException. The text is
+     * taken from the resource bundle <tt>ConfigurationEception</tt> under the
+     * key <tt>ConfigurationException.Text</tt>.
+     * 
      * @return the text
      */
     protected String getText() {
