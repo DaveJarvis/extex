@@ -257,6 +257,12 @@ sub includeFile
     s|\&TeX;|TeX|g;
     s|\&LaTeX;|LaTeX|g;
     s|\&ExTeX;|ExTeX|g;
+    if ( m|<teaser pattern="([^"]*)" max="([^"]*)"[ ]*/>|i ) {
+      print $out $`;
+      my $a = $';
+      teaser($fromdir,$1,$2,$top,$out);
+      print $out $a;
+    }
     if ( m|</head>|i ) {
       includeFile($fromdir,".headEnd",$out,$top,$fromdir);
       print $out $_;
@@ -280,13 +286,14 @@ sub includeFile
       my @files = glob("$fromdir/*");
       foreach $_ (@files)
       { next if m|/CVS$|;
-	next if m|/index.html$|;
-	next if m|/~$|;
-	print "$_\n";
+        next if m|/.svn$|;
+        next if m|/index.html$|;
+        next if m|/~$|;
+        print "$_\n";
 #	my ($dev,$ino,$mode,$nlink,$uid,$gid,$rdev,$size,
 #            $atime,$mtime,$ctime,$blksize,$blocks)
 #           = stat($_);
-	s|.*/||;
+        s|.*/||;
         print $out "    <tr>\n      <td><a href=\"$_\">$_</a></td>\n    </tr>\n";
       }
       print $out "  </table>\n";
@@ -298,6 +305,20 @@ sub includeFile
   }
 
   $in->close();
+}
+
+#------------------------------------------------------------------------------
+# Function:	teaser
+#
+sub teaser {
+	my ($fromdir,$pattern,$no,$top, $out) = @_;
+	
+    my @files = glob("$fromdir/$pattern");
+    foreach $_ (@files)
+    { next if m|/CVS$|;
+      next if m|/.svn$|;
+      print $out " $_";
+    }
 }
 
 #------------------------------------------------------------------------------
