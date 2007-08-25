@@ -222,6 +222,17 @@ public class MacroCode extends AbstractCode
 
             tokens.push(token);
         }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.lang.Object#toString()
+         */
+        @Override
+        public String toString() {
+
+            return getName() + " -> " + locator.toString();
+        }
     }
 
     /**
@@ -329,7 +340,7 @@ public class MacroCode extends AbstractCode
                 t = body.get(++i);
                 if (t == null) {
                     throw new HelpingException(getLocalizer(),
-                        "TTP.EOFinMatch", printableControlSequence(context));
+                        "TTP.EOFinMatch", getName());
                 } else if (t instanceof MacroParamToken) {
                     toks.add(t);
                 } else if (t instanceof OtherToken && t.getChar().isDigit()) {
@@ -433,7 +444,7 @@ public class MacroCode extends AbstractCode
      * @param typesetter the typesetter
      * @param args the array of Tokens to fill
      * @param len the length of the patterns
-     * @param i the starting index
+     * @param index the starting index
      * 
      * @return the index of the character after the parameter
      * 
@@ -441,38 +452,45 @@ public class MacroCode extends AbstractCode
      * @throws TypesetterException in case of an error in the typesetter
      */
     private int matchParameter(Context context, TokenSource source,
-            Typesetter typesetter, Tokens[] args, int len, int i)
+            Typesetter typesetter, Tokens[] args, int len, int index)
             throws HelpingException,
                 TypesetterException {
 
         Token t;
 
-        if (i >= len) {
+        if (index >= len) {
             t = source.getToken(context);
             source.push(t);
 
             if (t instanceof LeftBraceToken) {
-                return i;
+                return index;
             }
             throw new HelpingException(getLocalizer(), "TTP.UseDoesntMatch",
                 getName());
         }
-        Token ti = pattern.get(i);
+        Token ti = pattern.get(index);
         if (ti instanceof MacroParamToken) {
             t = source.getToken(context);
             if (ti.equals(t)) {
-                return i;
+                return index;
             }
-        } else if (ti instanceof OtherToken && ti.getChar().isDigit()) {
+        } else if (ti instanceof OtherToken) {
             int no = ti.getChar().getCodePoint() - '0';
-            int i1 = i + 1;
-            if (i1 < len && !(pattern.get(i1) instanceof MacroParamToken)) {
+            if (no >= 0 && no <= 9) {
+                int i = index + 1;
+                if (i >= len) {
+                    args[no] = getTokenOrBlock(context, source, typesetter);
+                    return i;
+                }
+                ti = pattern.get(i);
+                if (ti instanceof MacroParamToken) {
+                    args[no] = getTokenOrBlock(context, source, typesetter);
+                    return i;
+                }
                 // TODO gene: #1##
-                args[no] = scanTo(context, source, pattern.get(i1));
-                return i + 2;
+                args[no] = scanTo(context, source, ti);
+                return index + 2;
             }
-            args[no] = getTokenOrBlock(context, source, typesetter);
-            return i1;
         }
         throw new HelpingException(getLocalizer(), "TTP.UseDoesntMatch",
             getName());
