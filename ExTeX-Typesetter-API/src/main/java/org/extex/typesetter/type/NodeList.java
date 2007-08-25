@@ -39,8 +39,6 @@ import org.extex.core.glue.FixedGlue;
  * height, or depth.
  * </p>
  * 
- * @see org.extex.interpreter.type.box.Box
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4739 $
  */
