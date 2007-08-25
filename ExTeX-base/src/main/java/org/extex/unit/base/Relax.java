@@ -96,4 +96,32 @@ public class Relax extends AbstractCode {
         // relax
     }
 
+    /**
+     * All instances of this class are treated as equal.
+     * This is needed for the comparison (\ifx) of tokens defined via \csname.
+     * 
+     * {@inheritDoc}
+     *
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object obj) {
+
+        return obj instanceof Relax;
+    }
+
+    /**
+     * All instances of this class are treated as equal.
+     * Thus all receive the same hash code.
+     * 
+     * {@inheritDoc}
+     *
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+
+        return 4711;
+    }
+
 }
