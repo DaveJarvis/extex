@@ -51,14 +51,14 @@ public interface OutFile extends Serializable {
 
     /**
      * Open the current file.
-     * 
+     * @param key TODO
      * @param encoding the encoding or <code>null</code> for the default
      *        encoding
      * @param factory the token stream factory
      * 
      * @throws UnsupportedEncodingException in case of an invalid encoding
      */
-    void open(String encoding, TokenStreamFactory factory)
+    void open(String key, String encoding, TokenStreamFactory factory)
             throws UnsupportedEncodingException;
 
     /**
