@@ -124,4 +124,45 @@ public class MacroCodeTest extends ExTeXLauncher {
             "-9-87-6" + TERM);
     }
 
+    /**
+     * <testcase> Test case checking that ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError1() throws Exception {
+
+        assertFailure(// --- input code ---
+            DEFINE_CATCODES + "\\def\\abc#1{}"
+                    + "\\abc",
+            // --- output channel ---
+            "File ended while scanning use of \\abc");
+    }
+
+    /**
+     * <testcase> Test case checking that ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError2() throws Exception {
+
+        assertFailure(// --- input code ---
+            DEFINE_CATCODES + "\\def\\abc1{}"
+                    + "\\abc",
+            // --- output channel ---
+        "Use of \\abc doesn't match its definition");
+    }
+
+    /**
+     * <testcase> Test case checking that ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError3() throws Exception {
+
+        assertFailure(// --- input code ---
+            DEFINE_CATCODES + "\\def\\abc#1:{}"
+                    + "\\abc",
+            // --- output channel ---
+        "File ended while scanning use of \\abc");
+    }
 }
