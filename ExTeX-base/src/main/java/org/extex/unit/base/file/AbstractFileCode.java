@@ -25,15 +25,20 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
-import org.extex.scanner.type.Catcode;
+import org.extex.interpreter.type.Code;
+import org.extex.interpreter.type.ExpandableCode;
 import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.LeftBraceToken;
+import org.extex.scanner.type.token.RightBraceToken;
 import org.extex.scanner.type.token.SpaceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.unit.base.Relax;
 
 /**
  * This abstract class provides some common methods for primitives dealing with
@@ -233,33 +238,54 @@ public abstract class AbstractFileCode extends AbstractCode
             throws HelpingException,
                 TypesetterException {
 
+        Typesetter typesetter = null;
         Token t = source.scanNonSpace(context);
 
         if (t == null) {
             throw new EofException(printableControlSequence(context));
-        } else if (strictTeX && t.isa(Catcode.LEFTBRACE)) {
-            source.push(t);
-            String name =
-                    source.scanTokensAsString(context,
-                        printableControlSequence(context));
-            return name;
-
+            // } else if (t.isa(Catcode.LEFTBRACE)) {
+            // source.push(t);
+            // String name =
+            // source.scanTokensAsString(context,
+            // printableControlSequence(context));
+            // return name;
         }
 
-        StringBuffer sb = new StringBuffer(t.toText());
+        int depth = 0;
+        StringBuffer sb = new StringBuffer();
 
-        for (t = source.getToken(context); t != null
-                && !(t instanceof SpaceToken) ; t =
+        for (; t != null && !(t instanceof SpaceToken); t =
                 source.getToken(context)) {
 
             if (t instanceof CodeToken) {
-                source.push(t);
-                break;
+                Code code = context.getCode((CodeToken) t);
+                if (code instanceof ExpandableCode) {
+                    ((ExpandableCode) code).expand(Flags.NONE, context, source,
+                        typesetter);
+                } else {
+                    if (!(code instanceof Relax)) {
+                        source.push(t);
+                    }
+                    break;
+                }
+            } else if (t instanceof LeftBraceToken) {
+                depth++;
+            } else if (t instanceof RightBraceToken) {
+                depth--;
+                if (depth <= 0) {
+                    if (depth < 0) {
+                        source.push(t);
+                        break;
+                    }
+                    if (sb.length() != 0) {
+                        break;
+                    }
+                }
+            } else {
+                sb.append(t.toText());
             }
-            sb.append(t.toText());
         }
 
         return sb.toString();
     }
-
 }
