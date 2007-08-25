@@ -81,7 +81,8 @@ public class DocumentWriterFactory extends AbstractFactory {
      * 
      * @throws ConfigurationException in case of an error
      */
-    public DocumentWriterFactory(Configuration configuration, Logger logger) {
+    public DocumentWriterFactory(Configuration configuration, Logger logger)
+            throws ConfigurationException {
 
         super();
         enableLogging(logger);
