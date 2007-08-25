@@ -15,7 +15,6 @@
 package org.extex.scanner.stream;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -49,6 +48,9 @@ import org.extex.scanner.stream.observer.reader.OpenReaderObserverList;
 import org.extex.scanner.stream.observer.string.OpenStringObservable;
 import org.extex.scanner.stream.observer.string.OpenStringObserver;
 import org.extex.scanner.stream.observer.string.OpenStringObserverList;
+import org.extex.scanner.stream.observer.writer.OpenWriterObservable;
+import org.extex.scanner.stream.observer.writer.OpenWriterObserver;
+import org.extex.scanner.stream.observer.writer.OpenWriterObserverList;
 
 /**
  * This is the factory to provide an instance of a
@@ -133,7 +135,8 @@ public class TokenStreamFactory extends AbstractFactory
         implements
             OpenFileObservable,
             OpenStringObservable,
-            OpenReaderObservable {
+            OpenReaderObservable,
+            OpenWriterObservable {
 
     /**
      * The constant <tt>BUFFERSIZE_ATTRIBUTE</tt> contains the name of the
@@ -163,13 +166,13 @@ public class TokenStreamFactory extends AbstractFactory
      * The field <tt>decorators</tt> contains the list of decorators for input
      * streams acquired from a resource.
      */
-    private List<InputStreamInterceptor> decorators = null;
+    private List<InputStreamInterceptor> inStreamInterceptors = null;
 
     /**
      * The field <tt>interceptors</tt> contains the list of decorators for
      * readers.
      */
-    private List<ReaderInterceptor> interceptors = null;
+    private List<ReaderInterceptor> inReaderInterceptors = null;
 
     /**
      * The field <tt>openFileObservers</tt> contains the observers registered
@@ -190,6 +193,12 @@ public class TokenStreamFactory extends AbstractFactory
     private OpenStringObserver openStringObservers = null;
 
     /**
+     * The field <tt>openWriterObservers</tt> contains the observers
+     * registered for the "writer" event.
+     */
+    private OpenWriterObserver openWriterObservers;
+
+    /**
      * The field <tt>options</tt> contains the options for the token stream.
      */
     private TokenStreamOptions options = null;
@@ -205,6 +214,16 @@ public class TokenStreamFactory extends AbstractFactory
      * to use.
      */
     private String tag;
+
+    /**
+     * The field <tt>outWriterInterceptors</tt> contains the ...
+     */
+    private List<WriterInterceptor> outWriterInterceptors;
+
+    /**
+     * The field <tt>outStreamInterceptors</tt> contains the ...
+     */
+    private List<OutputStreamInterceptor> outStreamInterceptors;
 
     /**
      * Creates a new object.
@@ -313,9 +332,9 @@ public class TokenStreamFactory extends AbstractFactory
         }
         Reader r = reader;
 
-        if (interceptors != null) {
-            for (ReaderInterceptor inter : interceptors) {
-                r = inter.pipe(r);
+        if (inReaderInterceptors != null) {
+            for (ReaderInterceptor iri : inReaderInterceptors) {
+                r = iri.pipe(r);
             }
         }
 
@@ -370,9 +389,9 @@ public class TokenStreamFactory extends AbstractFactory
             istream = new BufferedInputStream(istream);
         }
 
-        if (decorators != null) {
-            for (InputStreamInterceptor dec : decorators) {
-                istream = dec.pipe(istream);
+        if (inStreamInterceptors != null) {
+            for (InputStreamInterceptor isi : inStreamInterceptors) {
+                istream = isi.pipe(istream);
             }
         }
 
@@ -387,31 +406,58 @@ public class TokenStreamFactory extends AbstractFactory
     }
 
     /**
-     * Register a reader decorator to be applied for each token stream
+     * Register an input stream interceptor to be applied for each token stream
      * originated at a resource.
      * 
-     * @param decorator the additional decorator
+     * @param interceptor the additional interceptor
      */
-    public void register(ReaderInterceptor decorator) {
+    public void register(InputStreamInterceptor interceptor) {
 
-        if (interceptors == null) {
-            interceptors = new ArrayList<ReaderInterceptor>();
+        if (inStreamInterceptors == null) {
+            inStreamInterceptors = new ArrayList<InputStreamInterceptor>();
         }
-        interceptors.add(decorator);
+        inStreamInterceptors.add(interceptor);
     }
 
     /**
-     * Register a input stream decorator to be applied for each token stream
+     * Register an output stream interceptor to be applied for each output
+     * stream.
+     * 
+     * @param interceptor the additional interceptor
+     */
+    public void register(OutputStreamInterceptor interceptor) {
+
+        if (outStreamInterceptors == null) {
+            outStreamInterceptors = new ArrayList<OutputStreamInterceptor>();
+        }
+        outStreamInterceptors.add(interceptor);
+    }
+
+    /**
+     * Register a reader interceptor to be applied for each token stream
      * originated at a resource.
      * 
-     * @param decorator the additional decorator
+     * @param interceptor the additional interceptor
      */
-    public void register(InputStreamInterceptor decorator) {
+    public void register(ReaderInterceptor interceptor) {
 
-        if (decorators == null) {
-            decorators = new ArrayList<InputStreamInterceptor>();
+        if (inReaderInterceptors == null) {
+            inReaderInterceptors = new ArrayList<ReaderInterceptor>();
         }
-        decorators.add(decorator);
+        inReaderInterceptors.add(interceptor);
+    }
+
+    /**
+     * Register a writer interceptor to be applied for each writer.
+     * 
+     * @param interceptor the additional interceptor
+     */
+    public void register(WriterInterceptor interceptor) {
+
+        if (outWriterInterceptors == null) {
+            outWriterInterceptors = new ArrayList<WriterInterceptor>();
+        }
+        outWriterInterceptors.add(interceptor);
     }
 
     /**
@@ -445,6 +491,18 @@ public class TokenStreamFactory extends AbstractFactory
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.stream.observer.writer.OpenWriterObservable#registerObserver(
+     *      org.extex.scanner.stream.observer.writer.OpenWriterObserver)
+     */
+    public void registerObserver(OpenWriterObserver observer) {
+
+        openWriterObservers =
+                OpenWriterObserverList.register(openWriterObservers, observer);
+    }
+
+    /**
      * Setter for options.
      * 
      * @param options the options to set.
@@ -462,24 +520,43 @@ public class TokenStreamFactory extends AbstractFactory
      * </p>
      * 
      * @param stream the stream to put bytes to
+     * @param key the name in terms of the interpreter
      * @param encoding the optional encoding. If the encoding is
      *        <code>null</code> then it is ignored
-     * 
-     * @return the writer for th task
+     * @return the writer for the task
      * 
      * @throws UnsupportedEncodingException in case of an error with the
      *         encoding
      */
-    public Writer writerStream(OutputStream stream, String encoding)
+    public Writer writerStream(OutputStream stream, String key, String encoding)
             throws UnsupportedEncodingException {
+
+        OutputStream s = stream;
+
+        if (outStreamInterceptors != null) {
+            for (OutputStreamInterceptor i : outStreamInterceptors) {
+                s = i.pipe(s);
+            }
+        }
 
         OutputStreamWriter w;
         if (encoding != null) {
-            w = new OutputStreamWriter(stream, encoding);
+            w = new OutputStreamWriter(s, encoding);
         } else {
             w = new OutputStreamWriter(stream);
         }
-        return new BufferedWriter(w);
+        Writer writer = new BufferedWriter(w);
+
+        if (outWriterInterceptors != null) {
+            for (WriterInterceptor i : outWriterInterceptors) {
+                writer = i.pipe(writer);
+            }
+        }
+
+        if (openWriterObservers != null) {
+            openWriterObservers.update(writer);
+        }
+        return writer;
     }
 
 }
