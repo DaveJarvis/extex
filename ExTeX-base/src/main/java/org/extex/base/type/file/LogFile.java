@@ -98,11 +98,11 @@ public class LogFile extends OutputFile {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.base.type.file.OutputFile#open(java.lang.String,
-     *      TokenStreamFactory)
+     * @see org.extex.base.type.file.OutputFile#open(String,
+     *      java.lang.String, TokenStreamFactory)
      */
     @Override
-    public void open(String encoding, TokenStreamFactory factory) {
+    public void open(String key, String encoding, TokenStreamFactory factory) {
 
         // nothing to do
     }

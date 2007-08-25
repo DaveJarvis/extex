@@ -125,7 +125,8 @@ public class Openout extends AbstractFileCode {
 
         if (prefix.clearImmediate()) {
             try {
-                file.open(getEncoding(context), source.getTokenStreamFactory());
+                file.open(key, getEncoding(context), source
+                    .getTokenStreamFactory());
             } catch (UnsupportedEncodingException e) {
                 // TODO gene: error handling unimplemented
                 e.printStackTrace();

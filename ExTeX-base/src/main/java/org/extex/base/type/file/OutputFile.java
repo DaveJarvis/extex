@@ -296,16 +296,16 @@ public class OutputFile implements OutFile {
      * {@inheritDoc}
      * 
      * @see org.extex.scanner.type.file.OutFile#open(java.lang.String,
-     *      TokenStreamFactory)
+     *      java.lang.String, TokenStreamFactory)
      */
-    public void open(String encoding, TokenStreamFactory factory)
+    public void open(String key, String encoding, TokenStreamFactory factory)
             throws UnsupportedEncodingException {
 
         if (file != null) {
 
             try {
                 writer = factory.writerStream(new FileOutputStream(file), //
-                    encoding);
+                    key, encoding);
             } catch (FileNotFoundException e) {
                 // ignored on purpose
             }

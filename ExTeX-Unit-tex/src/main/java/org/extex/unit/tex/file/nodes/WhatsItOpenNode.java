@@ -95,7 +95,7 @@ public class WhatsItOpenNode extends WhatsItNode {
             FixedDimen posX, FixedDimen posY) throws GeneralException {
 
         try {
-            file.open(encoding, factory);
+            file.open(key, encoding, factory);
         } catch (UnsupportedEncodingException e) {
             // TODO gene: error handling unimplemented
             e.printStackTrace();
