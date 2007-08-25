@@ -19,6 +19,7 @@
 
 package org.extex.framework.configuration;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 
@@ -54,7 +55,7 @@ public class ConfigurationFactory {
      * The field <tt>ext</tt> contains extensions to use when searching for
      * configuration files.
      */
-    private static final String[] XML_EXTENSIONS = new String[]{"", ".xml"};
+    private static final String[] XML_EXTENSIONS = new String[]{".xml", ""};
 
     /**
      * The field <tt>path</tt> contains the path to use when searching for
@@ -102,7 +103,6 @@ public class ConfigurationFactory {
         if (source == null || "".equals(source)) {
             throw new ConfigurationInvalidResourceException();
         }
-        Configuration config = null;
 
         String classname = System.getProperty("Util.Configuration.class");
 
@@ -114,7 +114,7 @@ public class ConfigurationFactory {
                     InputStream stream =
                             classloader.getResourceAsStream(fullName);
                     if (stream != null) {
-                        return new XmlConfiguration(stream, source);
+                        return new XmlConfiguration(stream, fullName);
                     }
                 }
             }
@@ -123,10 +123,8 @@ public class ConfigurationFactory {
         }
 
         try {
-            config =
-                    (Configuration) (Class.forName(classname).getConstructor(
-                        new Class[]{String.class})
-                        .newInstance(new Object[]{source}));
+            return (Configuration) (Class.forName(classname).getConstructor(
+                new Class[]{String.class}).newInstance(new Object[]{source}));
         } catch (IllegalArgumentException e) {
             throw new ConfigurationInstantiationException(e);
         } catch (SecurityException e) {
@@ -146,8 +144,6 @@ public class ConfigurationFactory {
         } catch (ClassNotFoundException e) {
             throw new ConfigurationClassNotFoundException(classname);
         }
-
-        return config;
     }
 
     /**
