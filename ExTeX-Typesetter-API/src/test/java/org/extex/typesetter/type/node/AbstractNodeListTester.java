@@ -178,18 +178,22 @@ public abstract class AbstractNodeListTester extends TestCase {
 
             public void setEfCode(UnicodeChar uc, long code) {
 
+                //
             }
 
             public void setFontDimen(String name, Dimen value) {
 
+                //
             }
 
             public void setHyphenChar(UnicodeChar uc) {
 
+                //
             }
 
             public void setSkewChar(UnicodeChar uc) {
 
+                //
             }
         };
 
