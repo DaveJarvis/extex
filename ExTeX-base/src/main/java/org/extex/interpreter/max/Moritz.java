@@ -1398,6 +1398,17 @@ public class Moritz extends Max
     }
 
     /**
+     * {@inheritDoc}
+     *
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        return getLocator().toString();
+    }
+
+    /**
      * Send the string to the named observer. The observer must be capable to
      * deal with a string argument.
      * 
