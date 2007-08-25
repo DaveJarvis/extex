@@ -66,7 +66,7 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * This is the abstract base class to test a paragraph builder.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5952 $
  */
 public abstract class AbstractParagraphBuiderTester extends TestCase {
 
@@ -74,7 +74,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
      * Inner class for the typesetter options.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision$
+     * @version $Revision:5952 $
      */
     private static class MockOptions implements TypesetterOptions {
 
@@ -525,6 +525,7 @@ public abstract class AbstractParagraphBuiderTester extends TestCase {
          */
         public void setFontDimen(String key, Dimen value) {
 
+            //
         }
 
         /**
