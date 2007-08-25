@@ -47,6 +47,17 @@ import org.extex.unit.tex.macro.util.ProtectedMacroCode;
  * <doc name="def">
  * <h3>The Primitive <tt>\def</tt></h3>
  * <p>
+ * The primitive <tt>\def</tt> defines a new macro. The macro is assigned to a
+ * control sequence or an active character.
+ * </p>
+ * <p>
+ * A macro has a body with the expansion tokens. Whenever the macro is expanded
+ * the tokens from the body are used.
+ * </p>
+ * <p>
+ * A macro can have a non-trivial pattern for matching arguments.
+ * </p>
+ * <p>
  * TODO missing documentation
  * </p>
  * 
