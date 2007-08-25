@@ -68,6 +68,7 @@ public abstract class NoFlagsButImmediateAndProtectedPrimitiveTester
      * @param name the name of the test case
      * @param primitive the name of the primitive
      * @param args additional arguments for the flag test
+     * @param prepare the preparing code
      */
     public NoFlagsButImmediateAndProtectedPrimitiveTester(String name,
             String primitive, String args, String prepare) {
