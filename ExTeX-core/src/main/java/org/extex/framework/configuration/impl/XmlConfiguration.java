@@ -805,7 +805,7 @@ public class XmlConfiguration implements Configuration {
                 theResource);
         } catch (SAXException e) {
             throw new ConfigurationSyntaxException(e.getLocalizedMessage(),
-                fullName);
+                fullName != null ? fullName : theResource);
         } catch (FactoryConfigurationError e) {
             throw new ConfigurationSyntaxException(e.getLocalizedMessage(),
                 theResource);
