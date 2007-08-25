@@ -50,8 +50,9 @@ import org.extex.unit.base.Relax;
  * The primitive <tt>\csname</tt> absorbs further tokens until a matching
  * {@link org.extex.unit.tex.macro.Endcsname <tt>\endcsname</tt>} is found. The
  * tokens found are expanded. Spaces are ignored. The expansion should lead to
- * character tokens only. A new token is constructed from the characters. The
- * escape character is the current escape character.
+ * character tokens only. No primitives producing something different are
+ * allowed. A new token is constructed from the characters. The escape character
+ * is the current escape character.
  * </p>
  * <p>
  * If the meaning of the new token is currently not defined then it is defined
