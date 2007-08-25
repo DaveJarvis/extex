@@ -48,8 +48,8 @@ public class IfxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt> ...
-     * </testcase>
+     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
+     * complains at end of line. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -62,29 +62,29 @@ public class IfxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt> ...
-     * </testcase>
+     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
+     * recognized identical letters. </testcase>
      * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
         assertSuccess(// --- input code ---
-            "\\ifx aa true\\else false\\fi",
+            DEFINE_CATCODES + "\\ifx aa true\\else false\\fi",
             // --- output channel ---
             "true" + TERM);
     }
 
     /**
-     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt> ...
-     * </testcase>
+     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
+     * recognized different letters as differnt. </testcase>
      * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
         assertSuccess(// --- input code ---
-            "\\ifx ab true\\else false\\fi",
+            DEFINE_CATCODES + "\\ifx ab true\\else false\\fi",
             // --- output channel ---
             "false" + TERM);
     }
@@ -151,6 +151,51 @@ public class IfxTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
+     * classifies a let control sequences as identical to the original meaning.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testMacro5() throws Exception {
+
+        assertSuccess(// --- input code ---
+            "\\let\\xx\\def\\ifx \\xx\\def true\\else false\\fi",
+            // --- output channel ---
+            "true" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
+     * classifies a let control sequences as identical to the original meaning.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testMacro6() throws Exception {
+
+        assertSuccess(// --- input code ---
+            "\\let\\def\\xx\\ifx \\xx\\def true\\else false\\fi",
+            // --- output channel ---
+            "true" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
+     * classifies ...
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testCsname1() throws Exception {
+
+        assertSuccess(// --- input code ---
+            "\\expandafter\\ifx \\csname xx\\endcsname\\relax true\\else false\\fi",
+            // --- output channel ---
+            "true" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
      * reproduces the example from the TeXbook. </testcase>
      * 
      * <p>
@@ -184,8 +229,8 @@ public class IfxTest extends ConditionalTester {
     }
 
     /**
-     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt> ...
-     * </testcase>
+     * <testcase primitive="\ifx"> Test case checking that <tt>\ifx</tt>
+     * recognizes identical fonts. </testcase>
      * 
      * @throws Exception in case of an error
      */
