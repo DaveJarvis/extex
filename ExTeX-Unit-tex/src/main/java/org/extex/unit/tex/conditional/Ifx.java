@@ -125,6 +125,7 @@ public class Ifx extends AbstractIf {
                 } else if (c1 == null && c2 == null) {
                     return true;
                 }
+                return c1.equals(c2);
             }
 
         } else if (t2 instanceof CodeToken) {
