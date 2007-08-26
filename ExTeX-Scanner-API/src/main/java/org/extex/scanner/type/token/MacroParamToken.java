@@ -26,23 +26,24 @@ import org.extex.scanner.type.Catcode;
  * This class represents a macro parameter token.
  * <p>
  * This class has a protected constructor only. Use the factory
- * {@link org.extex.scanner.type.token.TokenFactory TokenFactory}
- * to get an instance of this class.
+ * {@link org.extex.scanner.type.token.TokenFactory TokenFactory} to get an
+ * instance of this class.
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4738 $
  */
 public class MacroParamToken extends AbstractToken implements Token {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param uc the actual value
      */
     protected MacroParamToken(UnicodeChar uc) {
@@ -51,10 +52,32 @@ public class MacroParamToken extends AbstractToken implements Token {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.type.token.AbstractToken#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object t) {
+
+        if (!(t instanceof MacroParamToken)) {
+            return false;
+        }
+        UnicodeChar uct = ((MacroParamToken) t).getChar();
+        UnicodeChar uc = getChar();
+        if (uct == null) {
+            return uc == null;
+        }
+        if (uc == null) {
+            return false;
+        }
+        return uc.equals(uct);
+    }
+
+    /**
      * Getter for the catcode.
-     *
+     * 
      * @return the catcode
-     *
+     * 
      * @see org.extex.scanner.type.token.Token#getCatcode()
      */
     @Override
@@ -64,10 +87,22 @@ public class MacroParamToken extends AbstractToken implements Token {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.type.token.AbstractToken#hashCode()
+     */
+    @Override
+    public int hashCode() {
+
+        UnicodeChar uc = getChar();
+        return Catcode.MACROPARAM.hashCode() | (uc == null ? 0 : uc.hashCode());
+    }
+
+    /**
      * Get the string representation of this object for debugging purposes.
-     *
+     * 
      * @return the string representation
-     *
+     * 
      * @see "<logo>TeX</logo> &ndash; The Program [298]"
      */
     @Override
@@ -78,9 +113,9 @@ public class MacroParamToken extends AbstractToken implements Token {
 
     /**
      * Print the token into a StringBuffer.
-     *
+     * 
      * @param sb the target string buffer
-     *
+     * 
      * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
      */
     public void toString(StringBuffer sb) {
@@ -91,20 +126,19 @@ public class MacroParamToken extends AbstractToken implements Token {
 
     /**
      * Invoke the appropriate visit method for the current class.
+     * 
      * @param visitor the calling visitor
      * @param arg1 the first argument to pass
-     *
+     * 
      * @return the result object
-     *
+     * 
      * @throws Exception in case of an error
-     *
+     * 
      * @see org.extex.scanner.type.token.Token#visit(
-     *      org.extex.scanner.type.token.TokenVisitor,
-     *      java.lang.Object)
+     *      org.extex.scanner.type.token.TokenVisitor, java.lang.Object)
      */
     @SuppressWarnings("unchecked")
-    public Object visit(TokenVisitor visitor, Object arg1)
-            throws Exception {
+    public Object visit(TokenVisitor visitor, Object arg1) throws Exception {
 
         return visitor.visitMacroParam(this, arg1);
     }
