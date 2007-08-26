@@ -175,4 +175,20 @@ public class MacroCodeTest extends ExTeXLauncher {
             "--1--2--3--" + TERM);
     }
 
+    /**
+     * <testcase> Test case checking that braces are added when the last # is
+     * followed by a {. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test11() throws Exception {
+
+        assertOutput(// --- input code ---
+            DEFINE_CATCODES + "\\def\\abc#1#{\\write22 }" + "\\abc1{23}\\end",
+            // --- error channel ---
+            "23",
+            // --- output channel ---
+            "\n");
+    }
+
 }
