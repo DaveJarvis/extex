@@ -48,8 +48,7 @@ public class MacroCodeTest extends ExTeXLauncher {
     public void test1() throws Exception {
 
         assertSuccess(// --- input code ---
-            DEFINE_CATCODES + "\\def\\abc#1{-#1-}"
-                    + "\\abc987\\end",
+            DEFINE_CATCODES + "\\def\\abc#1{-#1-}" + "\\abc987\\end",
             // --- output channel ---
             "-9-87" + TERM);
     }
@@ -62,8 +61,7 @@ public class MacroCodeTest extends ExTeXLauncher {
     public void test2() throws Exception {
 
         assertSuccess(// --- input code ---
-            DEFINE_CATCODES + "\\def\\abc#1#2{-#1-#2-}"
-                    + "\\abc987\\end",
+            DEFINE_CATCODES + "\\def\\abc#1#2{-#1-#2-}" + "\\abc987\\end",
             // --- output channel ---
             "-9-8-7" + TERM);
     }
@@ -76,8 +74,7 @@ public class MacroCodeTest extends ExTeXLauncher {
     public void test3() throws Exception {
 
         assertSuccess(// --- input code ---
-            DEFINE_CATCODES + "\\def\\abc#1x#2{-#1-#2-}"
-                    + "\\abc9x87\\end",
+            DEFINE_CATCODES + "\\def\\abc#1x#2{-#1-#2-}" + "\\abc9x87\\end",
             // --- output channel ---
             "-9-8-7" + TERM);
     }
@@ -90,8 +87,7 @@ public class MacroCodeTest extends ExTeXLauncher {
     public void test4() throws Exception {
 
         assertSuccess(// --- input code ---
-            DEFINE_CATCODES + "\\def\\abc#1x#2{-#1-#2-}"
-                    + "\\abc98x7\\end",
+            DEFINE_CATCODES + "\\def\\abc#1x#2{-#1-#2-}" + "\\abc98x7\\end",
             // --- output channel ---
             "-98-7-" + TERM);
     }
@@ -104,8 +100,7 @@ public class MacroCodeTest extends ExTeXLauncher {
     public void test5() throws Exception {
 
         assertSuccess(// --- input code ---
-            DEFINE_CATCODES + "\\def\\abc#1#2{-#1-#2-}"
-                    + "\\abc{98}7\\end",
+            DEFINE_CATCODES + "\\def\\abc#1#2{-#1-#2-}" + "\\abc{98}7\\end",
             // --- output channel ---
             "-98-7-" + TERM);
     }
@@ -118,51 +113,66 @@ public class MacroCodeTest extends ExTeXLauncher {
     public void test6() throws Exception {
 
         assertSuccess(// --- input code ---
-            DEFINE_CATCODES + "\\def\\abc#1#2{-#1-#2-}"
-                    + "\\abc9{87}6\\end",
+            DEFINE_CATCODES + "\\def\\abc#1#2{-#1-#2-}" + "\\abc9{87}6\\end",
             // --- output channel ---
             "-9-87-6" + TERM);
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     * <testcase> Test case checking that scanning for a parameter at eof leads
+     * to an exception. </testcase>
      * 
      * @throws Exception in case of an error
      */
     public void testError1() throws Exception {
 
         assertFailure(// --- input code ---
-            DEFINE_CATCODES + "\\def\\abc#1{}"
-                    + "\\abc",
+            DEFINE_CATCODES + "\\def\\abc#1{}" + "\\abc",
             // --- output channel ---
             "File ended while scanning use of \\abc");
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     * <testcase> Test case checking that scanning for a token which does never
+     * come leads to an exception. </testcase>
      * 
      * @throws Exception in case of an error
      */
     public void testError2() throws Exception {
 
         assertFailure(// --- input code ---
-            DEFINE_CATCODES + "\\def\\abc1{}"
-                    + "\\abc",
+            DEFINE_CATCODES + "\\def\\abc1{}" + "\\abc",
             // --- output channel ---
-        "Use of \\abc doesn't match its definition");
+            "Use of \\abc doesn't match its definition");
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     * <testcase> Test case checking that scanning for a token after a parameter
+     * which does never come leads to an exception. </testcase>
      * 
      * @throws Exception in case of an error
      */
     public void testError3() throws Exception {
 
         assertFailure(// --- input code ---
-            DEFINE_CATCODES + "\\def\\abc#1:{}"
-                    + "\\abc",
+            DEFINE_CATCODES + "\\def\\abc#1:{}" + "\\abc",
             // --- output channel ---
-        "File ended while scanning use of \\abc");
+            "File ended while scanning use of \\abc");
     }
+
+    /**
+     * <testcase> Test case checking that braces are removed when scanning for a
+     * following token. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test10() throws Exception {
+
+        assertSuccess(// --- input code ---
+            DEFINE_CATCODES + "\\def\\abc#1#2#3\\then{--#1--#2--#3--}"
+                    + "\\abc12{3}\\then\\end",
+            // --- output channel ---
+            "--1--2--3--" + TERM);
+    }
+
 }
