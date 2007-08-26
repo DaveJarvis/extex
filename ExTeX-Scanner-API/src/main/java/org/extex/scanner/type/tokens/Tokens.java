@@ -220,6 +220,20 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
      * Remove the last token from the list and return it. If the list is empty
      * then <code>null</code> is returned.
      *
+     * @return the first token or <code>null</code>
+     */
+    public Token removeFirst() {
+
+        if (tokens.size() == 0) {
+            return null;
+        }
+        return tokens.remove(0);
+    }
+
+    /**
+     * Remove the last token from the list and return it. If the list is empty
+     * then <code>null</code> is returned.
+     *
      * @return the last token or <code>null</code>
      */
     public Token removeLast() {
