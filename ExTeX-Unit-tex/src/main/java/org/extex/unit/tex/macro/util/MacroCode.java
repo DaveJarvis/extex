@@ -19,7 +19,10 @@
 
 package org.extex.unit.tex.macro.util;
 
+import java.util.logging.Logger;
+
 import org.extex.core.Locator;
+import org.extex.core.count.Count;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.ImpossibleException;
 import org.extex.core.exception.helping.EofException;
@@ -27,6 +30,7 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -76,7 +80,8 @@ public class MacroCode extends AbstractCode
             PrefixCode,
             ExpandableCode,
             ComparableCode,
-            Showable {
+            Showable,
+            LogEnabled {
 
     /**
      * This inner class provides the tokens of a macro as a token stream.
@@ -84,14 +89,14 @@ public class MacroCode extends AbstractCode
     private class MacroTokenStream implements TokenStream {
 
         /**
-         * The field <tt>tokens</tt> contains the tokens.
-         */
-        private Tokens tokens;
-
-        /**
          * The field <tt>locator</tt> contains the locator.
          */
         private Locator locator;
+
+        /**
+         * The field <tt>tokens</tt> contains the tokens.
+         */
+        private Tokens tokens;
 
         /**
          * Creates a new object.
@@ -248,6 +253,11 @@ public class MacroCode extends AbstractCode
     private Tokens body;
 
     /**
+     * The field <tt>logger</tt> contains the logger for debugging.
+     */
+    private Logger logger;
+
+    /**
      * The field <tt>notLong</tt> contains the negated <tt>\long</tt> flag.
      * This field indicates that no macros <tt>\par</tt> are allowed in macro
      * parameter values.
@@ -308,6 +318,17 @@ public class MacroCode extends AbstractCode
             return false;
         }
         return body.equals(macro.body);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
+     *      java.util.logging.Logger)
+     */
+    public void enableLogging(Logger logger) {
+
+        this.logger = logger;
     }
 
     /**
@@ -445,6 +466,7 @@ public class MacroCode extends AbstractCode
      * @param args the array of Tokens to fill
      * @param len the length of the patterns
      * @param index the starting index
+     * @param trace the indicator for tracing
      * 
      * @return the index of the character after the parameter
      * 
@@ -452,9 +474,8 @@ public class MacroCode extends AbstractCode
      * @throws TypesetterException in case of an error in the typesetter
      */
     private int matchParameter(Context context, TokenSource source,
-            Typesetter typesetter, Tokens[] args, int len, int index)
-            throws HelpingException,
-                TypesetterException {
+            Typesetter typesetter, Tokens[] args, int len, int index,
+            boolean trace) throws HelpingException, TypesetterException {
 
         Token t;
 
@@ -469,31 +490,53 @@ public class MacroCode extends AbstractCode
                 getName());
         }
         Token ti = pattern.get(index);
+        int i;
+        int no;
+
         if (ti instanceof MacroParamToken) {
+            // ##
             t = source.getToken(context);
             if (ti.equals(t)) {
                 return index;
             }
+            throw new HelpingException(getLocalizer(), "TTP.UseDoesntMatch",
+                getName());
+
         } else if (ti instanceof OtherToken) {
-            int no = ti.getChar().getCodePoint() - '0';
+            no = ti.getChar().getCodePoint() - '0';
             if (no >= 0 && no <= 9) {
-                int i = index + 1;
+                i = index + 1;
                 if (i >= len) {
                     args[no] = getTokenOrBlock(context, source, typesetter);
-                    return i;
+                } else {
+                    ti = pattern.get(i);
+                    if (ti instanceof MacroParamToken) {
+                        args[no] = getTokenOrBlock(context, source, typesetter);
+                    } else {
+                        // TODO gene: #1##
+                        args[no] = scanTo(context, source, ti);
+                        i = index + 2;
+                    }
                 }
-                ti = pattern.get(i);
-                if (ti instanceof MacroParamToken) {
-                    args[no] = getTokenOrBlock(context, source, typesetter);
-                    return i;
-                }
-                // TODO gene: #1##
-                args[no] = scanTo(context, source, ti);
-                return index + 2;
+            } else {
+                throw new HelpingException(getLocalizer(),
+                    "TTP.UseDoesntMatch", getName());
             }
+        } else {
+            throw new HelpingException(getLocalizer(), "TTP.UseDoesntMatch",
+                getName());
         }
-        throw new HelpingException(getLocalizer(), "TTP.UseDoesntMatch",
-            getName());
+
+        if (trace) {
+            // see [TTP; 400]
+            StringBuffer sb = new StringBuffer("#");
+            sb.append(no);
+            sb.append("<-");
+            sb.append(args[no].toText());
+            sb.append('\n');
+            logger.info(sb.toString());
+        }
+        return i;
     }
 
     /**
@@ -520,11 +563,14 @@ public class MacroCode extends AbstractCode
         Token ti;
         int len = pattern.length();
         int i = 0;
+        Count tracingmaros = context.getCount("tracingmacros");
+        boolean trace = (tracingmaros != null && tracingmaros.gt(Count.ZERO));
 
         while (i < len) {
             ti = pattern.get(i++);
             if (ti instanceof MacroParamToken) {
-                i = matchParameter(context, source, typesetter, args, len, i);
+                i = matchParameter(context, source, typesetter, //
+                    args, len, i, trace);
             } else {
                 Token t = source.getToken(context);
                 if (!ti.equals(t)) {
@@ -556,12 +602,22 @@ public class MacroCode extends AbstractCode
 
         Tokens toks = new Tokens();
         int depth = 0;
+        Token t = source.getToken(context);
+        int groups = 0;
+        boolean group = (t instanceof LeftBraceToken);
 
-        for (Token t = source.getToken(context); t != null; t =
-                source.getToken(context)) {
+        for (; t != null; t = source.getToken(context)) {
             if (depth == 0 && t.equals(to)) {
+                if (group
+                        && groups == 1
+                        && toks.get(toks.length() - 1) instanceof RightBraceToken) {
+                    toks.removeLast();
+                    toks.removeFirst();
+                }
                 return toks;
+
             } else if (t instanceof LeftBraceToken) {
+                groups++;
                 depth++;
             } else if (t instanceof RightBraceToken) {
                 depth--;
