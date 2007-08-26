@@ -132,7 +132,12 @@ public class Def extends AbstractAssignment {
                             ? source.scanUnprotectedTokens(context, false,
                                 false, getName())//
                             : source.getTokens(context, source, typesetter);
-            // TODO gene: maybe the treatment of # is incorrect
+
+            Token t = pattern.get(pattern.length() - 1);
+            if (t instanceof LeftBraceToken) {
+                body.add(t);
+            }
+
         } catch (EofException e) {
             throw new EofInToksException(csName);
         }
@@ -167,6 +172,10 @@ public class Def extends AbstractAssignment {
             if (t instanceof LeftBraceToken) {
                 source.push(t);
                 pattern.setArity(no);
+                if (afterHash) {
+                    pattern.removeLast();
+                    pattern.add(t);
+                }
                 return pattern;
             } else if (t instanceof RightBraceToken) {
                 throw new HelpingException(getLocalizer(),

@@ -478,17 +478,6 @@ public class MacroCode extends AbstractCode
             boolean trace) throws HelpingException, TypesetterException {
 
         Token t;
-
-        if (index >= len) {
-            t = source.getToken(context);
-            source.push(t);
-
-            if (t instanceof LeftBraceToken) {
-                return index;
-            }
-            throw new HelpingException(getLocalizer(), "TTP.UseDoesntMatch",
-                getName());
-        }
         Token ti = pattern.get(index);
         int i;
         int no;
