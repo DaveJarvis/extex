@@ -477,43 +477,39 @@ public class MacroCode extends AbstractCode
             Typesetter typesetter, Tokens[] args, int len, int index,
             boolean trace) throws HelpingException, TypesetterException {
 
-        Token t;
         Token ti = pattern.get(index);
-        int i;
-        int no;
 
         if (ti instanceof MacroParamToken) {
             // ##
-            t = source.getToken(context);
+            Token t = source.getToken(context);
             if (ti.equals(t)) {
                 return index;
             }
             throw new HelpingException(getLocalizer(), "TTP.UseDoesntMatch",
                 getName());
+        }
 
-        } else if (ti instanceof OtherToken) {
-            no = ti.getChar().getCodePoint() - '0';
-            if (no >= 0 && no <= 9) {
-                i = index + 1;
-                if (i >= len) {
-                    args[no] = getTokenOrBlock(context, source, typesetter);
-                } else {
-                    ti = pattern.get(i);
-                    if (ti instanceof MacroParamToken) {
-                        args[no] = getTokenOrBlock(context, source, typesetter);
-                    } else {
-                        // TODO gene: #1##
-                        args[no] = scanTo(context, source, ti);
-                        i = index + 2;
-                    }
-                }
-            } else {
-                throw new HelpingException(getLocalizer(),
-                    "TTP.UseDoesntMatch", getName());
-            }
-        } else {
+        if (!(ti instanceof OtherToken)) {
             throw new HelpingException(getLocalizer(), "TTP.UseDoesntMatch",
                 getName());
+        }
+        int no = ti.getChar().getCodePoint() - '0';
+        if (no < 0 || no > args.length) {
+            throw new HelpingException(getLocalizer(), "TTP.UseDoesntMatch",
+                getName());
+        }
+        int i = index + 1;
+        if (i >= len) {
+            args[no] = getTokenOrBlock(context, source, typesetter);
+        } else {
+            ti = pattern.get(i);
+            if (ti instanceof MacroParamToken) {
+                args[no] = getTokenOrBlock(context, source, typesetter);
+            } else {
+                // TODO gene: #1##
+                args[no] = scanTo(context, source, ti);
+                i = index + 2;
+            }
         }
 
         if (trace) {
