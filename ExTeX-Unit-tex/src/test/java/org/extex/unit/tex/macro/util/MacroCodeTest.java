@@ -41,6 +41,20 @@ public class MacroCodeTest extends ExTeXLauncher {
     }
 
     /**
+     * <testcase> Test case checking that an empty pattern does not absorb
+     * anything. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test0() throws Exception {
+
+        assertSuccess(// --- input code ---
+            DEFINE_CATCODES + "\\def\\abc{--}" + "\\abc987\\end",
+            // --- output channel ---
+            "--987" + TERM);
+    }
+
+    /**
      * <testcase> Test case checking that ... </testcase>
      * 
      * @throws Exception in case of an error
@@ -128,7 +142,7 @@ public class MacroCodeTest extends ExTeXLauncher {
 
         assertFailure(// --- input code ---
             DEFINE_CATCODES + "\\def\\abc#1{}" + "\\abc",
-            // --- output channel ---
+            // --- error channel ---
             "File ended while scanning use of \\abc");
     }
 
@@ -142,7 +156,7 @@ public class MacroCodeTest extends ExTeXLauncher {
 
         assertFailure(// --- input code ---
             DEFINE_CATCODES + "\\def\\abc1{}" + "\\abc",
-            // --- output channel ---
+            // --- error channel ---
             "Use of \\abc doesn't match its definition");
     }
 
@@ -156,7 +170,49 @@ public class MacroCodeTest extends ExTeXLauncher {
 
         assertFailure(// --- input code ---
             DEFINE_CATCODES + "\\def\\abc#1:{}" + "\\abc",
-            // --- output channel ---
+            // --- error channel ---
+            "File ended while scanning use of \\abc");
+    }
+
+    /**
+     * <testcase> Test case checking that scanning for an unclosed argument
+     * block leads to an exception. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError4() throws Exception {
+
+        assertFailure(// --- input code ---
+            DEFINE_CATCODES + "\\def\\abc#1{}" + "\\abc{",
+            // --- error channel ---
+            "File ended while scanning use of \\abc");
+    }
+
+    /**
+     * <testcase> Test case checking that scanning for an unopened argument
+     * block leads to an exception. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError5() throws Exception {
+
+        assertFailure(// --- input code ---
+            DEFINE_CATCODES + "\\def\\abc#1{}" + "\\abc}",
+            // --- error channel ---
+            "Argument of \\abc has an extra }");
+    }
+
+    /**
+     * <testcase> Test case checking that scanning for an unopened argument
+     * block leads to an exception. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError6() throws Exception {
+
+        assertFailure(// --- input code ---
+            DEFINE_CATCODES + "\\def\\abc#1{#}" + "\\abc9\\end",
+            // --- error channel ---
             "File ended while scanning use of \\abc");
     }
 
@@ -189,6 +245,80 @@ public class MacroCodeTest extends ExTeXLauncher {
             "23",
             // --- output channel ---
             "\n");
+    }
+
+    /**
+     * <testcase> Test case checking that ## in parameters are matched against a
+     * single #. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test12() throws Exception {
+
+        assertOutput(// --- input code ---
+            DEFINE_CATCODES + "\\def\\abc#1##{\\write22{-#1-}}"
+                    + "\\abc1#\\end",
+            // --- error channel ---
+            "-1-",
+            // --- output channel ---
+            "\n");
+    }
+
+    /**
+     * <testcase> Test case checking that ## in parameters are matched against a
+     * single #. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test13() throws Exception {
+
+        assertFailure(// --- input code ---
+            DEFINE_CATCODES + "\\def\\abc#1##{\\write22{-#1-}}" + "\\abc1",
+            // --- error channel ---
+            "Use of \\abc doesn't match its definition");
+    }
+
+    /**
+     * <testcase> Test case checking that a \par in a macro argument of a macro
+     * which is not long leads to an exception. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test14() throws Exception {
+
+        assertFailure(// --- input code ---
+            DEFINE_CATCODES + "\\def\\abc#1.{}" + "\\abc a\\par b.",
+            // --- error channel ---
+            "Paragraph ended before \\abc was complete");
+    }
+
+    /**
+     * <testcase> Test case checking that a \par in a macro argument of a macro
+     * which is long does not lead to an exception. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test15() throws Exception {
+
+        assertSuccess(// --- input code ---
+            DEFINE_CATCODES + "\\long\\def\\abc#1.{}" + "\\abc a\\par b.\\end",
+            // --- output channel ---
+            "");
+    }
+
+    /**
+     * <testcase> Test case checking that a # in a macro body is passed out.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test16() throws Exception {
+
+        assertSuccess(// --- input code ---
+            DEFINE_CATCODES + "\\def\\abc{\\def\\x##1{-##1-}}"
+                    + "\\abc\\x9 \\end",
+            // --- output channel ---
+            "-9-" +  TERM);
     }
 
 }
