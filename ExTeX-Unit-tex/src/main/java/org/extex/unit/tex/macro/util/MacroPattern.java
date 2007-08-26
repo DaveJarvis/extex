@@ -23,7 +23,7 @@ import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * This class provides a container for the pattern of a macro.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
@@ -36,7 +36,8 @@ public class MacroPattern extends Tokens {
     public static final MacroPattern EMPTY = new MacroPattern(Tokens.EMPTY, 0);
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
@@ -57,7 +58,7 @@ public class MacroPattern extends Tokens {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param tokens the tokens contained
      * @param theArity the number of parameters
      */
@@ -69,9 +70,8 @@ public class MacroPattern extends Tokens {
     }
 
     /**
-     * Getter for the arity.
-     * The arity is the number of parameters.
-     *
+     * Getter for the arity. The arity is the number of parameters.
+     * 
      * @return the arity
      */
     public int getArity() {
@@ -81,12 +81,28 @@ public class MacroPattern extends Tokens {
 
     /**
      * Setter for the arity.
-     *
+     * 
      * @param arity the new arity
      */
     public void setArity(int arity) {
 
         this.arity = arity;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.type.tokens.Tokens#toString()
+     */
+    @Override
+    public String toString() {
+
+        StringBuffer sb = new StringBuffer();
+        int n = this.getArity();
+        for (int i = 0; i < n; i++) {
+            sb.append(get(i).toText());
+        }
+        return sb.toString();
     }
 
 }
