@@ -98,7 +98,7 @@ public class MacroPattern extends Tokens {
     public String toString() {
 
         StringBuffer sb = new StringBuffer();
-        int n = this.getArity();
+        int n = this.length();
         for (int i = 0; i < n; i++) {
             sb.append(get(i).toText());
         }
