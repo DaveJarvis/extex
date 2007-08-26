@@ -251,6 +251,44 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
                 "");
     }
 
+    /**
+     * <testcase primitive="\showtokens">
+     *  Test case checking that <tt>\showtokens</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test31() throws Exception {
+
+        assertOutput(//--- input code ---
+                DEFINE_CATCODES
+                + "\\def\\a#1{\\showtokens{#1}}"
+                + "\\a{0}"
+                + "\\end",
+                //--- output channel ---
+                "> 0.\n",
+                "");
+    }
+
+    /**
+     * <testcase primitive="\showtokens">
+     *  Test case checking that <tt>\showtokens</tt> ...
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test32() throws Exception {
+
+        assertOutput(//--- input code ---
+                DEFINE_CATCODES
+                + "\\def\\a#1{\\showtokens{#1}}"
+                + "\\a{{0}}"
+                + "\\end",
+                //--- output channel ---
+                "> {0}.\n",
+                "");
+    }
+
     //TODO implement the primitive specific test cases
 
 }
