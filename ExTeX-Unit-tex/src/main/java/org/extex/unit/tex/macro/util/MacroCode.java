@@ -439,6 +439,9 @@ public class MacroCode extends AbstractCode
                     getName());
             }
             return toks;
+        } else if (t instanceof RightBraceToken) {
+            throw new HelpingException(getLocalizer(), "TTP.ExtraRightBrace",
+                getName());
         }
 
         return new Tokens(t);
@@ -483,7 +486,7 @@ public class MacroCode extends AbstractCode
             // ##
             Token t = source.getToken(context);
             if (ti.equals(t)) {
-                return index;
+                return index + 1;
             }
             throw new HelpingException(getLocalizer(), "TTP.UseDoesntMatch",
                 getName());
@@ -506,7 +509,6 @@ public class MacroCode extends AbstractCode
             if (ti instanceof MacroParamToken) {
                 args[no] = getTokenOrBlock(context, source, typesetter);
             } else {
-                // TODO gene: #1##
                 args[no] = scanTo(context, source, ti);
                 i = index + 2;
             }
@@ -545,25 +547,26 @@ public class MacroCode extends AbstractCode
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Tokens[] args = new Tokens[pattern.getArity()];
-        Token ti;
         int len = pattern.length();
-        int i = 0;
-        Count tracingmaros = context.getCount("tracingmacros");
-        boolean trace = (tracingmaros != null && tracingmaros.gt(Count.ZERO));
+        if (len > 0) {
+            Count tracingmaros = context.getCount("tracingmacros");
+            boolean trace =
+                    (tracingmaros != null && tracingmaros.gt(Count.ZERO));
 
-        while (i < len) {
-            ti = pattern.get(i++);
-            if (ti instanceof MacroParamToken) {
-                i = matchParameter(context, source, typesetter, //
-                    args, len, i, trace);
-            } else {
-                Token t = source.getToken(context);
-                if (!ti.equals(t)) {
-                    throw new HelpingException(getLocalizer(),
-                        "TTP.UseDoesntMatch", getName());
-                } else if (notLong && t.equals(Catcode.ESCAPE, "par")) {
-                    throw new HelpingException(getLocalizer(),
-                        "TTP.RunawayArg", getName());
+            for (int i = 0; i < len;) {
+                Token ti = pattern.get(i++);
+                if (ti instanceof MacroParamToken) {
+                    i = matchParameter(context, source, typesetter, //
+                        args, len, i, trace);
+                } else {
+                    Token t = source.getToken(context);
+                    if (!ti.equals(t)) {
+                        throw new HelpingException(getLocalizer(),
+                            "TTP.UseDoesntMatch", getName());
+                    } else if (notLong && t.equals(Catcode.ESCAPE, "par")) {
+                        throw new HelpingException(getLocalizer(),
+                            "TTP.RunawayArg", getName());
+                    }
                 }
             }
         }
