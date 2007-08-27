@@ -31,6 +31,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ExpandableCode;
+import org.extex.interpreter.type.PrefixCode;
 import org.extex.scanner.exception.CatcodeException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.CodeToken;
@@ -100,7 +101,7 @@ import org.extex.unit.base.Relax;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
-public class Csname extends AbstractCode implements ExpandableCode {
+public class Csname extends AbstractCode implements ExpandableCode, PrefixCode {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
