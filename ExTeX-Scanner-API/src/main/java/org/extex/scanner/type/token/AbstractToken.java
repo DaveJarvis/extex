@@ -50,7 +50,7 @@ public abstract class AbstractToken implements Token, Serializable {
      * The field <tt>uniCode</tt> contains the Unicode character assigned to
      * this token. Note that <code>null</code> is a legal value.
      */
-    private UnicodeChar character = null;
+    private UnicodeChar character;
 
     /**
      * Creates a new object for a Unicode character.
