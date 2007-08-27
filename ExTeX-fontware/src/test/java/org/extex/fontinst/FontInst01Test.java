@@ -24,6 +24,7 @@ import java.io.FileInputStream;
 import java.util.Calendar;
 import java.util.Properties;
 
+import org.extex.font.format.texencoding.EncReader;
 import org.extex.test.ExTeXLauncher;
 
 /**
@@ -71,7 +72,7 @@ public class FontInst01Test extends ExTeXLauncher {
                     "../ExTeX-fontware/src/texmf/tex/fontinst/smblmtx" + SEP + //
                     "../ExTeX-fontware/src/texmf/tex/misc" //
         );
-//        props.setProperty("extex.launcher.trace", "true");
+        // props.setProperty("extex.launcher.trace", "true");
         return props;
     }
 
@@ -431,4 +432,40 @@ public class FontInst01Test extends ExTeXLauncher {
 
         enc.deleteOnExit();
     }
+
+    /**
+     * Test for fontinst misc.
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void testMisc02() throws Exception {
+
+        setConfig("tex");
+        assertOutput(getMyProps(), // --- input code ---
+            "\\input finstmsc.sty " + "\\etxtoenc{T1}{t1} " + "\\bye",
+            // --- log channel ---
+            "No file finstmsc.rc.\nEncoding vector written on t1.enc.\n",
+            // --- output channel ---
+            TERM);
+
+        File enc = new File("t1.enc");
+        assertNotNull(enc.canRead());
+        FileInputStream in = new FileInputStream(enc);
+        assertNotNull(in);
+        EncReader reader = new EncReader(in);
+
+        assertEquals("fontinst-autoenc-T1", reader.getEncname());
+
+        String[] tab = reader.getTableWithoutSlash();
+        assertNotNull(tab);
+        assertEquals(256, tab.length);
+        assertEquals("grave", tab[0]);
+        assertEquals("quotedblleft", tab[16]);
+        assertEquals("P", tab[80]);
+        assertEquals("oslash", tab[248]);
+        assertEquals("germandbls", tab[255]);
+
+        enc.deleteOnExit();
+    }
+
 }
