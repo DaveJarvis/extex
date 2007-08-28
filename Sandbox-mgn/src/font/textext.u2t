@@ -1,0 +1,288 @@
+# Mapping of Unicode characters to TeX encoded font positions
+# (c) 2007 The ExTeX Group
+#
+#
+#	65	The letter A [65]
+0041=41
+#	913	The letter A [65]
+0391=41
+#	66	The letter B [66]
+0042=42
+#	914	The letter B [66]
+0392=42
+#	67	The letter C [67]
+0043=43
+#	68	The letter D [68]
+0044=44
+#	69	The letter E [69]
+0045=45
+#	917	The letter E [69]
+0395=45
+#	70	The letter F [70]
+0046=46
+#	71	The letter G [71]
+0047=47
+#	72	The letter H [72]
+0048=48
+#	919	The letter H [72]
+0397=48
+#	73	The letter I [73]
+0049=49
+#	921	The letter I [73]
+0399=49
+#	74	The letter J [74]
+004a=4a
+#	75	The letter K [75]
+004b=4b
+#	922	The letter K [75]
+039a=4b
+#	76	The letter L [76]
+004c=4c
+#	77	The letter M [77]
+004d=4d
+#	924	The letter M [77]
+039c=4d
+#	78	The letter N [78]
+004e=4e
+#	925	The letter N [78]
+039d=4e
+#	79	The letter O [79]
+004f=4f
+#	927	The letter O [79]
+039f=4f
+#	80	The letter P [80]
+0050=50
+#	929	The letter P [80]
+03a1=50
+#	81	The letter Q [81]
+0051=51
+#	82	The letter R [82]
+0052=52
+#	83	The letter S [83]
+0053=53
+#	84	The letter T [84]
+0054=54
+#	932	The letter T [84]
+03a4=54
+#	85	The letter U [85]
+0055=55
+#	86	The letter V [86]
+0056=56
+#	87	The letter W [87]
+0057=57
+#	88	The letter X [88]
+0058=58
+#	935	The letter X [88]
+03a7=58
+#	89	The letter Y [89]
+0059=59
+#	90	The letter Z [90]
+005a=5a
+#	918	The letter Z [90]
+0396=5a
+#	97	The letter a [97]
+0061=61
+#	98	The letter b [98]
+0062=62
+#	99	The letter c [99]
+0063=63
+#	100	The letter d [100]
+0064=64
+#	101	The letter e [101]
+0065=65
+#	102	The letter f [102]
+0066=66
+#	103	The letter g [103]
+0067=67
+#	104	The letter h [104]
+0068=68
+#	105	The letter i [105]
+0069=69
+#	106	The letter j [106]
+006a=6a
+#	107	The letter k [107]
+006b=6b
+#	108	The letter l [108]
+006c=6c
+#	109	The letter m [109]
+006d=6d
+#	110	The letter n [110]
+006e=6e
+#	111	The letter o [111]
+006f=6f
+#	112	The letter p [112]
+0070=70
+#	113	The letter q [113]
+0071=71
+#	114	The letter r [114]
+0072=72
+#	115	The letter s [115]
+0073=73
+#	116	The letter t [116]
+0074=74
+#	117	The letter u [117]
+0075=75
+#	118	The letter v [118]
+0076=76
+#	119	The letter w [119]
+0077=77
+#	120	The letter x [120]
+0078=78
+#	121	The letter y [121]
+0079=79
+#	122	The letter z [122]
+007a=7a
+#	915	Uppercase Greek Gamma [0]
+0393=00
+#	916	Uppercase Greek Delta [1]
+0394=01
+#	920	Uppercase Greek Theta [2]
+0398=02
+#	923	Uppercase Greek Lambda [3]
+039b=03
+#	926	Uppercase Greek Xi [4]
+039e=04
+#	928	Uppercase Greek Pi [5]
+03a0=05
+#	931	Uppercase Greek Sigma [6]
+03a3=06
+#	933	Uppercase Greek Upsilon [7]
+03a5=07
+#	934	Uppercase Greek Phi [8]
+03a6=08
+#	936	Uppercase Greek Psi [9]
+03a8=09
+#	937	Uppercase Greek Omega [10]
+03a9=0a
+#	48	The numeral 0 [48]
+0030=30
+#	49	The numeral 1 [49]
+0031=31
+#	50	The numeral 2 [50]
+0032=32
+#	51	The numeral 3 [51]
+0033=33
+#	52	The numeral 4 [52]
+0034=34
+#	53	The numeral 5 [53]
+0035=35
+#	54	The numeral 6 [54]
+0036=36
+#	55	The numeral 7 [55]
+0037=37
+#	56	The numeral 8 [56]
+0038=38
+#	57	The numeral 9 [57]
+0039=39
+#	36	Dollar sign [36]
+0024=24
+#	38	Ampersand [38]
+0026=26
+#	63	Question mark [63]
+003f=3f
+#		Spanish open question mark [62]
+#0000=3e
+#		Dotless letter i [16]
+#0000=10
+#		Dotless letter j [17]
+#0000=11
+#	223	German letter es-zet (sharp s) [25]
+00df=19
+#	230	The ligature ae [26]
+00e6=1a
+#		The ligature oe [27]
+#0000=1b
+#	248	Scandinavian letter o/slash [28]
+00f8=1c
+#		The ligature AE [29]
+#0000=1d
+#		The ligature OE [30]
+#0000=1e
+#	216	Scandinavian letter O/slash [31]
+00d8=1f
+#	33	Exclamation point [33]
+0021=21
+#		Spanish open exclamation point [60]
+#0000=3c
+#	35	Hash mark (number sign) [35]
+0023=23
+#	37	Per cent sign [37]
+0025=25
+#	39	Apostrophe [39]
+0027=27
+#	40	Left parenthesis [40]
+0028=28
+#	41	Right parenthesis [41]
+0029=29
+#	42	Asterisk [42]
+002a=2a
+#	43	Plus sign [43]
+002b=2b
+#	44	Comma [44]
+002c=2c
+#	46	Period [46]
+002e=2e
+#	47	Virgule (slash) [47]
+002f=2f
+#	58	Colon [58]
+003a=3a
+#	59	Semicolon [59]
+003b=3b
+#	61	Equals sign [61]
+003d=3d
+#	64	At sign [64]
+0040=40
+#	91	Left bracket [91]
+005b=5b
+#	93	Right bracket [93]
+005d=5d
+#	96	Reverse apostrophe [96]
+0060=60
+#	96	Grave accent [18]
+0060=12
+#	180	Acute accent [19]
+00b4=13
+#	39	Acute accent [19]
+0027=13
+#		Hachek (check) accent [20]
+#0000=14
+#		Breve accent [21]
+#0000=15
+#		Macron (bar) accent [22]
+#0000=16
+#		Scandinavian circle accent [23]
+#0000=17
+#	184	Cedilla accent [24]
+00b8=18
+#		Cross for Polish l and L [32]
+#0000=20
+#	94	Circumflex (hat) accent [94]
+005e=5e
+#		Dot accent [95]
+#0000=5f
+#		Long Hungarian umlaut accent [125]
+#0000=7d
+#		Tilde (squiggle) accent [126]
+#0000=7e
+#		Umlaut (double dot) accent [127]
+#0000=7f
+#		The ligature ff [11]
+#0000=0b
+#		The ligature fi [12]
+#0000=0c
+#		The ligature fl [13]
+#0000=0d
+#		The ligature ffi [14]
+#0000=0e
+#		The ligature ffl [15]
+#0000=0f
+#		Closing quotes [34]
+#0000=22
+#		Hyphen [45]
+#0000=2d
+#		Opening quotes [92]
+#0000=5c
+#		En dash [123]
+#0000=7b
+#		Em dash [124]
+#0000=7c
