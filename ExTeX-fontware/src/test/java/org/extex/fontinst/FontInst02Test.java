@@ -48,6 +48,10 @@ public class FontInst02Test extends ExTeXLauncher {
 
         // delete temp files after the test
         new File("texput.log").deleteOnExit();
+        new File("fxlr.mtx").deleteOnExit();
+        new File("fxlr.pl").deleteOnExit();
+        new File("fxlr8r.mtx").deleteOnExit();
+        new File("fxlr8r.pl").deleteOnExit();
     }
 
     /**
@@ -97,10 +101,6 @@ public class FontInst02Test extends ExTeXLauncher {
             // --- output channel ---
             TERM);
 
-        new File("fxlr.mtx").deleteOnExit();
-        new File("fxlr.pl").deleteOnExit();
-        new File("fxlr8r.mtx").deleteOnExit();
-        new File("fxlr8r.pl").deleteOnExit();
     }
 
 }
