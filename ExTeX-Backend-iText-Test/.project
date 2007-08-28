@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>ExTeX-Backend-iText-Test</name>
+	<name>Test-Backend-iText</name>
 	<comment></comment>
 	<projects>
 		<project>ExTeX</project>
