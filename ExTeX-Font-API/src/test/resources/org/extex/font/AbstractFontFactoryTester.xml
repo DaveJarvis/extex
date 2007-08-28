@@ -40,7 +40,7 @@
     <afm>
       <extension>.afm</extension>
       <path>../texmf/src/texmf/fonts/afm</path>
-      <path>../ExTeX-Font-API-Test/src/test/resources</path>
+      <path>../Test-Font-API/src/test/resources</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
@@ -48,7 +48,7 @@
     <fontinfo>
       <extension>.fontinfo</extension>
       <path>../texmf/src/texmf/fonts/afm</path>
-      <path>../ExTeX-Font-API-Test/src/test/resources</path>
+      <path>../Test-Font-API/src/test/resources</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
@@ -56,7 +56,7 @@
     <ttf>
       <extension>.ttf</extension>
       <path>../texmf/src/texmf/fonts/ttf</path>
-      <path>../ExTeX-Font-API-Test/src/test/resources</path>
+      <path>../Test-Font-API/src/test/resources</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
@@ -75,7 +75,7 @@
       <path>../texmf/src/texmf/fonts/tfm/public/misc</path>
       <path>../texmf/src/texmf/fonts/tfm/public/mflogo</path>
       <path>../ExTeX-Font-tfm/src/font</path>
-      <path>../ExTeX-Font-API-Test/src/test/resources</path>
+      <path>../Test-Font-API/src/test/resources</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
@@ -97,7 +97,7 @@
       <path property="texinputs"/>
       <path property="extex.fonts"/>
       <path>.</path>
-      <path>../ExTeX-Font-API-Test/src/test/resources</path>
+      <path>../Test-Font-API/src/test/resources</path>
       <extension></extension>
     </default>
   </Finder>
