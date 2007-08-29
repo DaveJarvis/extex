@@ -26,20 +26,18 @@ import org.extex.util.file.random.RandomAccessR;
 
 /**
  * Class for TFM exten array.
- *
+ * 
  * <p>
- * Extensible characters are specified by an extensible_recipe,
- * which consists of four bytes called top, mid, bot, and
- * rep (in this order). These bytes are the character codes of
- * individual pieces used to build up a large symbol.
+ * Extensible characters are specified by an extensible_recipe, which consists
+ * of four bytes called top, mid, bot, and rep (in this order). These bytes are
+ * the character codes of individual pieces used to build up a large symbol.
  * </p>
- *
+ * 
  * <p>
- * Information from:
- * The DVI Driver Standard, Level 0
- * The TUG DVI Driver Standards Committee
+ * Information from: The DVI Driver Standard, Level 0 The TUG DVI Driver
+ * Standards Committee
  * </p>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -58,12 +56,12 @@ public class TfmExtenArray implements Serializable {
 
     /**
      * Create a new object.
-     * @param rar   the input
-     * @param ne    number of words in the extensible character table
+     * 
+     * @param rar the input
+     * @param ne number of words in the extensible character table
      * @throws IOException if an IO-error occurs.
      */
-    public TfmExtenArray(RandomAccessR rar, short ne)
-            throws IOException {
+    public TfmExtenArray(RandomAccessR rar, int ne) throws IOException {
 
         extensiblerecipe = new TfmExtensibleRecipe[ne];
         for (int i = 0; i < ne; i++) {
@@ -73,6 +71,7 @@ public class TfmExtenArray implements Serializable {
 
     /**
      * Returns the extensiblerecipe.
+     * 
      * @return Returns the extensiblerecipe.
      */
     public TfmExtensibleRecipe[] getExtensiblerecipe() {

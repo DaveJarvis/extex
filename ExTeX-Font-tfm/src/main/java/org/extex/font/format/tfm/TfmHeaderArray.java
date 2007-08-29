@@ -26,36 +26,45 @@ import org.extex.util.file.random.RandomAccessR;
 
 /**
  * Class for TFM header information.
- *
+ * 
  * <p>
  * header : array [0 .. (lh-1)] of stuff
  * </p>
- *
+ * 
  * <table border="1">
- *   <tr><td>header[0]</td><td>a 32-bit check sum</td></tr>
- *   <tr><td>header[1]</td><td>a fix word containing the design size
- *                             of the font, in units of TEX points
- *                             (7227 TEX points =254 cm)</td></tr>
- *   <tr><td>header[2..11]</td><td>if present, contains 40 bytes that
- *                             identify the character coding scheme.</td></tr>
- *   <tr><td>header[12..16]</td><td>if present, contains 20 bytes that
- *                             name the font family.</td></tr>
- *   <tr><td>header[17]</td><td>if present, contains a first byte
- *                              called the seven_bit_safe_flag,
- *                              then two bytes that are ignored,
- *                              and a fourth byte called the face.
- *   <tr><td>header[18..(lh-1)]</td><td>might also be present:
- *                              the individual words are simply called
- *                              header[18], header[19], etc.,
- *                              at the moment.</td></tr>
+ * <tr>
+ * <td>header[0]</td>
+ * <td>a 32-bit check sum</td>
+ * </tr>
+ * <tr>
+ * <td>header[1]</td>
+ * <td>a fix word containing the design size of the font, in units of TEX
+ * points (7227 TEX points =254 cm)</td>
+ * </tr>
+ * <tr>
+ * <td>header[2..11]</td>
+ * <td>if present, contains 40 bytes that identify the character coding scheme.</td>
+ * </tr>
+ * <tr>
+ * <td>header[12..16]</td>
+ * <td>if present, contains 20 bytes that name the font family.</td>
+ * </tr>
+ * <tr>
+ * <td>header[17]</td>
+ * <td>if present, contains a first byte called the seven_bit_safe_flag, then
+ * two bytes that are ignored, and a fourth byte called the face.
+ * <tr>
+ * <td>header[18..(lh-1)]</td>
+ * <td>might also be present: the individual words are simply called
+ * header[18], header[19], etc., at the moment.</td>
+ * </tr>
  * </table>
- *
+ * 
  * <p>
- * Information from:
- * The DVI Driver Standard, Level 0
- * The TUG DVI Driver Standards Committee
+ * Information from: The DVI Driver Standard, Level 0 The TUG DVI Driver
+ * Standards Committee
  * </p>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -123,31 +132,31 @@ public class TfmHeaderArray implements Serializable {
 
     /**
      * Create a new object
-     * @param rar   the input
-     * @param lh    length of the header data
+     * 
+     * @param rar the input
+     * @param lh length of the header data
      * @throws IOException if an IO-error occurs.
      */
-    public TfmHeaderArray(RandomAccessR rar, short lh)
-            throws IOException {
+    public TfmHeaderArray(RandomAccessR rar, int lh) throws IOException {
 
         int hr = lh;
         checksum = rar.readInt();
         hr--;
-        designsize = new TfmFixWord(rar.readInt(),
-                TfmFixWord.FIXWORDDENOMINATOR);
+        designsize =
+                new TfmFixWord(rar.readInt(), TfmFixWord.FIXWORDDENOMINATOR);
         hr--;
 
         // optional: coding scheme
         if (hr >= CODING_SCHEME_SIZE) {
-            codingscheme = readBCPL(rar, TfmConstants.CONST_4
-                    * CODING_SCHEME_SIZE);
+            codingscheme =
+                    readBCPL(rar, TfmConstants.CONST_4 * CODING_SCHEME_SIZE);
             fonttype = new TfmFontType(codingscheme);
             hr -= CODING_SCHEME_SIZE;
 
             // optional: font family
             if (hr >= FONT_FAMILY_SIZE) {
-                fontfamily = readBCPL(rar, TfmConstants.CONST_4
-                        * FONT_FAMILY_SIZE);
+                fontfamily =
+                        readBCPL(rar, TfmConstants.CONST_4 * FONT_FAMILY_SIZE);
                 hr -= FONT_FAMILY_SIZE;
                 // optional: seven_bit_safe_flag
                 if (hr >= 1) {
@@ -171,6 +180,7 @@ public class TfmHeaderArray implements Serializable {
 
     /**
      * Returns the checksum.
+     * 
      * @return Returns the checksum.
      */
     public int getChecksum() {
@@ -180,6 +190,7 @@ public class TfmHeaderArray implements Serializable {
 
     /**
      * Returns the codingscheme.
+     * 
      * @return Returns the codingscheme.
      */
     public String getCodingscheme() {
@@ -189,6 +200,7 @@ public class TfmHeaderArray implements Serializable {
 
     /**
      * Returns the designsize.
+     * 
      * @return Returns the designsize.
      */
     public TfmFixWord getDesignsize() {
@@ -198,6 +210,7 @@ public class TfmHeaderArray implements Serializable {
 
     /**
      * Returns the face.
+     * 
      * @return Returns the face.
      */
     public int getFace() {
@@ -207,6 +220,7 @@ public class TfmHeaderArray implements Serializable {
 
     /**
      * Returns the fontfamily.
+     * 
      * @return Returns the fontfamily.
      */
     public String getFontfamily() {
@@ -216,6 +230,7 @@ public class TfmHeaderArray implements Serializable {
 
     /**
      * Returns the fontype.
+     * 
      * @return Returns the fontype.
      */
     public TfmFontType getFontType() {
@@ -225,6 +240,7 @@ public class TfmHeaderArray implements Serializable {
 
     /**
      * Returns the headerrest.
+     * 
      * @return Returns the headerrest.
      */
     public int[] getHeaderrest() {
@@ -234,7 +250,7 @@ public class TfmHeaderArray implements Serializable {
 
     /**
      * Getter for xeroxfacecode.
-     *
+     * 
      * @return Returns the xeroxfacecode.
      */
     public int getXeroxfacecode() {
@@ -244,6 +260,7 @@ public class TfmHeaderArray implements Serializable {
 
     /**
      * Returns the sevenBitSafe.
+     * 
      * @return Returns the sevenBitSafe.
      */
     public boolean isSevenBitSafe() {
@@ -252,17 +269,15 @@ public class TfmHeaderArray implements Serializable {
     }
 
     /**
-     * Reads a character string from the header.
-     * The string is stored as its length in first byte
-     * then the string (the rest of area is not used).
-     *
-     * @param rar   the input
-     * @param size  the size of string area in the header.
+     * Reads a character string from the header. The string is stored as its
+     * length in first byte then the string (the rest of area is not used).
+     * 
+     * @param rar the input
+     * @param size the size of string area in the header.
      * @return the string
      * @throws IOException if an I/O error occured
      */
-    private String readBCPL(RandomAccessR rar, int size)
-            throws IOException {
+    private String readBCPL(RandomAccessR rar, int size) throws IOException {
 
         int len = rar.readByte();
         StringBuffer buf = new StringBuffer();

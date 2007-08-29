@@ -19,7 +19,6 @@
 
 package org.extex.font.format.tfm;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
@@ -183,22 +182,6 @@ public class TfmReader implements Serializable {
         // create the lig/kern map for each character
         charinfo.createLigKernMap();
 
-    }
-
-    /**
-     * remove the path, if exists.
-     * 
-     * @param file the filename
-     * @return the filename without the path
-     */
-    private String filenameWithoutPath(String file) {
-
-        String rt = file;
-        int i = rt.lastIndexOf(File.separator);
-        if (i > 0) {
-            rt = rt.substring(i + 1);
-        }
-        return rt;
     }
 
     /**

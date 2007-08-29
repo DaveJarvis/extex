@@ -26,37 +26,73 @@ import org.extex.util.file.random.RandomAccessR;
 
 /**
  * Class for TFM header length table.
- *
+ * 
  * <p>
- * The first 24 bytes of a TFM file contain
- * the lengths of the various subsequent portions of the file.
- * (12 x 16-bit interger) or (6 words x 32 bit)
+ * The first 24 bytes of a TFM file contain the lengths of the various
+ * subsequent portions of the file. (12 x 16-bit interger) or (6 words x 32 bit)
  * </p>
- *
- * <table border="1">
- *  <thead>
- *    <tr><td><b>name</b></td><td><b>description</b></td></tr>
- *  </thead>
- *  <tr><td>lf</td><td>length of the entire file, in words</td></tr>
- *  <tr><td>lh</td><td>length of the header data, in words</td></tr>
- *  <tr><td>bc</td><td>smallest character code in the font</td></tr>
- *  <tr><td>ec</td><td>largest character code in the font</td></tr>
- *  <tr><td>nw</td><td>number of words in the width table</td></tr>
- *  <tr><td>nh</td><td>number of words in the height table</td></tr>
- *  <tr><td>nd</td><td>number of words in the depth table</td></tr>
- *  <tr><td>ni</td><td>number of words in the italic correction table</td></tr>
- *  <tr><td>nl</td><td>number of words in the lig/kern table</td></tr>
- *  <tr><td>nk</td><td>number of words in the kern table</td></tr>
- *  <tr><td>ne</td><td>number of words in the extensible character table</td></tr>
- *  <tr><td>np</td><td>number of font parameter words</td></tr>
+ * 
+ * <table border="1"> <thead>
+ * <tr>
+ * <td><b>name</b></td>
+ * <td><b>description</b></td>
+ * </tr>
+ * </thead>
+ * <tr>
+ * <td>lf</td>
+ * <td>length of the entire file, in words</td>
+ * </tr>
+ * <tr>
+ * <td>lh</td>
+ * <td>length of the header data, in words</td>
+ * </tr>
+ * <tr>
+ * <td>bc</td>
+ * <td>smallest character code in the font</td>
+ * </tr>
+ * <tr>
+ * <td>ec</td>
+ * <td>largest character code in the font</td>
+ * </tr>
+ * <tr>
+ * <td>nw</td>
+ * <td>number of words in the width table</td>
+ * </tr>
+ * <tr>
+ * <td>nh</td>
+ * <td>number of words in the height table</td>
+ * </tr>
+ * <tr>
+ * <td>nd</td>
+ * <td>number of words in the depth table</td>
+ * </tr>
+ * <tr>
+ * <td>ni</td>
+ * <td>number of words in the italic correction table</td>
+ * </tr>
+ * <tr>
+ * <td>nl</td>
+ * <td>number of words in the lig/kern table</td>
+ * </tr>
+ * <tr>
+ * <td>nk</td>
+ * <td>number of words in the kern table</td>
+ * </tr>
+ * <tr>
+ * <td>ne</td>
+ * <td>number of words in the extensible character table</td>
+ * </tr>
+ * <tr>
+ * <td>np</td>
+ * <td>number of font parameter words</td>
+ * </tr>
  * </table>
- *
+ * 
  * <p>
- * Information from:
- * The DVI Driver Standard, Level 0
- * The TUG DVI Driver Standards Committee
+ * Information from: The DVI Driver Standard, Level 0 The TUG DVI Driver
+ * Standards Committee
  * </p>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -73,79 +109,89 @@ public class TfmHeaderLengths implements Serializable {
     private static final int MAXCHARS = 255;
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt>.
      */
     private static final long serialVersionUID = 1L;
 
     /**
      * smallest character code in the font.
      */
-    private short bc;
+    protected int bc;
 
     /**
      * number of character.
      */
-    private int cc;
+    protected int cc;
 
     /**
      * largest character code in the font.
      */
-    private short ec;
+    protected int ec;
 
     /**
      * length of the entire file.
      */
-    private short lf;
+    protected int lf;
 
     /**
      * length of the header data.
      */
-    private short lh;
+    protected int lh;
 
     /**
      * number of words in the depth table.
      */
-    private short nd;
+    protected int nd;
 
     /**
      * number of words in the extensible character table.
      */
-    private short ne;
+    protected int ne;
 
     /**
      * number of words in the height table.
      */
-    private short nh;
+    protected int nh;
 
     /**
      * number of words in the italic correction table.
      */
-    private short ni;
+    protected int ni;
 
     /**
      * number of words in the kern table.
      */
-    private short nk;
+    protected int nk;
 
     /**
      * number of words in the lig/kern table.
      */
-    private short nl;
+    protected int nl;
 
     /**
      * number of font parameter words.
      */
-    private short np;
+    protected int np;
 
     /**
      * number of words in the width table.
      */
-    private short nw;
+    protected int nw;
+
+    /**
+     * Creates a new object.
+     * 
+     * Only for OfmHeaderLengths
+     */
+    protected TfmHeaderLengths() {
+
+        super();
+    }
 
     /**
      * Create a new object.
-     *
-     * @param rar   the input
+     * 
+     * @param rar the input
      * @throws IOException if an IO-error occurs.
      */
     public TfmHeaderLengths(RandomAccessR rar) throws IOException {
@@ -174,7 +220,7 @@ public class TfmHeaderLengths implements Serializable {
                 || (nw == 0 || nh == 0 || nd == 0 || ni == 0)) {
             throw new IOException();
             // mgn: umbauen
-            //throw new TFMReadFileException();
+            // throw new TFMReadFileException();
         }
 
         cc = ec + 1 - bc;
@@ -186,15 +232,17 @@ public class TfmHeaderLengths implements Serializable {
 
     /**
      * Returns the bc.
+     * 
      * @return Returns the bc.
      */
-    public short getBc() {
+    public int getBc() {
 
         return bc;
     }
 
     /**
      * Returns the cc.
+     * 
      * @return Returns the cc.
      */
     public int getCc() {
@@ -204,99 +252,110 @@ public class TfmHeaderLengths implements Serializable {
 
     /**
      * Returns the ec.
+     * 
      * @return Returns the ec.
      */
-    public short getEc() {
+    public int getEc() {
 
         return ec;
     }
 
     /**
      * Returns the lf.
+     * 
      * @return Returns the lf.
      */
-    public short getLf() {
+    public int getLf() {
 
         return lf;
     }
 
     /**
      * Returns the lh.
+     * 
      * @return Returns the lh.
      */
-    public short getLh() {
+    public int getLh() {
 
         return lh;
     }
 
     /**
      * Returns the nd.
+     * 
      * @return Returns the nd.
      */
-    public short getNd() {
+    public int getNd() {
 
         return nd;
     }
 
     /**
      * Returns the ne.
+     * 
      * @return Returns the ne.
      */
-    public short getNe() {
+    public int getNe() {
 
         return ne;
     }
 
     /**
      * Returns the nh.
+     * 
      * @return Returns the nh.
      */
-    public short getNh() {
+    public int getNh() {
 
         return nh;
     }
 
     /**
      * Returns the ni.
+     * 
      * @return Returns the ni.
      */
-    public short getNi() {
+    public int getNi() {
 
         return ni;
     }
 
     /**
      * Returns the nk.
+     * 
      * @return Returns the nk.
      */
-    public short getNk() {
+    public int getNk() {
 
         return nk;
     }
 
     /**
      * Returns the nl.
+     * 
      * @return Returns the nl.
      */
-    public short getNl() {
+    public int getNl() {
 
         return nl;
     }
 
     /**
      * Returns the np.
+     * 
      * @return Returns the np.
      */
-    public short getNp() {
+    public int getNp() {
 
         return np;
     }
 
     /**
      * Returns the nw.
+     * 
      * @return Returns the nw.
      */
-    public short getNw() {
+    public int getNw() {
 
         return nw;
     }

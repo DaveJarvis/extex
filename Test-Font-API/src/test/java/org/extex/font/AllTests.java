@@ -25,6 +25,7 @@ import junit.framework.TestSuite;
 import org.extex.font.fontparameter.FontParameterTest;
 import org.extex.font.format.afm.AfmParserTest;
 import org.extex.font.format.afm.FontFactoryImplAfmTest;
+import org.extex.font.format.ofm.OfmReaderTest;
 import org.extex.font.format.pfb.PfbParserTest;
 import org.extex.font.format.tfm.TfmFixWordTest;
 import org.extex.font.format.tfm.TfmReaderTest;
@@ -91,6 +92,7 @@ public class AllTests {
         suite.addTestSuite(FontFactoryImplManagerTest.class);
         suite.addTestSuite(FontFactoryImplManagerAfmTest.class);
         suite.addTestSuite(PfbParserTest.class);
+        suite.addTestSuite(OfmReaderTest.class);
 
         // $JUnit-END$
         return suite;

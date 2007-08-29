@@ -120,7 +120,7 @@ public class TfmLigKernArray implements /* PlFormat, */Serializable {
     /**
      * smallest character code in the font.
      */
-    private short bc;
+    private int bc;
 
     /**
      * Invisible right boundary character code.
@@ -166,7 +166,7 @@ public class TfmLigKernArray implements /* PlFormat, */Serializable {
      * @param nl number of words in the lig/kern table
      * @throws IOException if an IO-error occurs.
      */
-    public TfmLigKernArray(RandomAccessR rar, short nl) throws IOException {
+    public TfmLigKernArray(RandomAccessR rar, int nl) throws IOException {
 
         ligkerncommand = new TfmLigKernCommand[nl];
         for (int i = 0; i < nl; i++) {
@@ -226,7 +226,7 @@ public class TfmLigKernArray implements /* PlFormat, */Serializable {
      * @param akern the kern
      * @param abc smallest character code in the font
      */
-    public void calculate(TfmCharInfoArray chari, TfmKernArray akern, short abc) {
+    public void calculate(TfmCharInfoArray chari, TfmKernArray akern, int abc) {
 
         charinfo = chari;
         kern = akern;
@@ -271,7 +271,7 @@ public class TfmLigKernArray implements /* PlFormat, */Serializable {
      * 
      * @return Returns the bc.
      */
-    public short getBc() {
+    public int getBc() {
 
         return bc;
     }

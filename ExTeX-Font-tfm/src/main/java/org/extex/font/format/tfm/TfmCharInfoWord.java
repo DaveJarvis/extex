@@ -179,7 +179,7 @@ public class TfmCharInfoWord implements Serializable {
     /**
      * smallest character code in the font.
      */
-    private short bc;
+    private int bc;
 
     /**
      * bottom part chracter code.
@@ -481,7 +481,7 @@ public class TfmCharInfoWord implements Serializable {
      * 
      * @return Returns the bc.
      */
-    public short getBc() {
+    public int getBc() {
 
         return bc;
     }
@@ -739,7 +739,7 @@ public class TfmCharInfoWord implements Serializable {
      * 
      * @param abc The bc to set.
      */
-    public void setBc(short abc) {
+    public void setBc(int abc) {
 
         bc = abc;
     }

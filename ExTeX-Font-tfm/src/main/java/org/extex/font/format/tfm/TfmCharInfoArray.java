@@ -26,29 +26,43 @@ import org.extex.util.file.random.RandomAccessR;
 
 /**
  * Class for TFM char info.
- *
- * <p>Each character has one char_info_word.</p>
- * <p>Each char_info_word contains six fields packed
- *    into four bytes as follows.</p>
- *
- * <table border="1">
- *   <thead>
- *     <tr><td>byte</td><td>description</td></tr>
- *   </thead>
- *   <tr><td>first  </td><td>width_index (8 bits)</td></tr>
- *   <tr><td>second </td><td>height_index (4 bits) times 16,
- *                           plus depth_index (4 bits)</td></tr>
- *   <tr><td>third  </td><td>italic_index (6 bits) times 4,
- *                           plus tag (2 bits)</td></tr>
- *   <tr><td>fourth </td><td>remainder (8 bits)</td></tr>
- * </table>
- *
+ * 
  * <p>
- * Information from:
- * The DVI Driver Standard, Level 0
- * The TUG DVI Driver Standards Committee
+ * Each character has one char_info_word.
  * </p>
- *
+ * <p>
+ * Each char_info_word contains six fields packed into four bytes as follows.
+ * </p>
+ * 
+ * <table border="1"> <thead>
+ * <tr>
+ * <td>byte</td>
+ * <td>description</td>
+ * </tr>
+ * </thead>
+ * <tr>
+ * <td>first </td>
+ * <td>width_index (8 bits)</td>
+ * </tr>
+ * <tr>
+ * <td>second </td>
+ * <td>height_index (4 bits) times 16, plus depth_index (4 bits)</td>
+ * </tr>
+ * <tr>
+ * <td>third </td>
+ * <td>italic_index (6 bits) times 4, plus tag (2 bits)</td>
+ * </tr>
+ * <tr>
+ * <td>fourth </td>
+ * <td>remainder (8 bits)</td>
+ * </tr>
+ * </table>
+ * 
+ * <p>
+ * Information from: The DVI Driver Standard, Level 0 The TUG DVI Driver
+ * Standards Committee
+ * </p>
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -63,7 +77,7 @@ public class TfmCharInfoArray implements Serializable {
     /**
      * smallest character code in the font.
      */
-    private short bc;
+    private int bc;
 
     /**
      * the char info.
@@ -107,12 +121,12 @@ public class TfmCharInfoArray implements Serializable {
 
     /**
      * Create a new object.
-     * @param rar   the input
-     * @param cc    number of character
+     * 
+     * @param rar the input
+     * @param cc number of character
      * @throws IOException if an IO-error occurs.
      */
-    public TfmCharInfoArray(RandomAccessR rar, int cc)
-            throws IOException {
+    public TfmCharInfoArray(RandomAccessR rar, int cc) throws IOException {
 
         charinfoword = new TfmCharInfoWord[cc];
         for (int i = 0; i < cc; i++) {
@@ -122,8 +136,8 @@ public class TfmCharInfoArray implements Serializable {
 
     /**
      * Check the existence of particular character in the font.
-     *
-     * @param pos   the checked character code.
+     * 
+     * @param pos the checked character code.
      * @return <code>true</code> if the character is present.
      */
     private boolean charExists(short pos) {
@@ -134,18 +148,18 @@ public class TfmCharInfoArray implements Serializable {
 
     /**
      * Create the char table.
-     * @param widtha        the width table
-     * @param heighta       the height table
-     * @param deptha        the depth table
-     * @param italica       the italic table
-     * @param extena        the exten table
-     * @param abc           the bc
-     * @param lk            the ligKernTable
+     * 
+     * @param widtha the width table
+     * @param heighta the height table
+     * @param deptha the depth table
+     * @param italica the italic table
+     * @param extena the exten table
+     * @param abc the bc
+     * @param lk the ligKernTable
      */
-    public void createCharTable(TfmWidthArray widtha,
-            TfmHeightArray heighta, TfmDepthArray deptha,
-            TfmItalicArray italica, TfmExtenArray extena,
-            short abc, TfmLigKern[] lk) {
+    public void createCharTable(TfmWidthArray widtha, TfmHeightArray heighta,
+            TfmDepthArray deptha, TfmItalicArray italica, TfmExtenArray extena,
+            int abc, TfmLigKern[] lk) {
 
         width = widtha;
         height = heighta;
@@ -161,21 +175,21 @@ public class TfmCharInfoArray implements Serializable {
             if (charinfoword[pos].exists()) {
                 TfmCharInfoWord ciw = charinfoword[pos];
                 ciw.setWidth(takeDimen(width.getTable(), ciw.getWidthindex(),
-                        pos));
+                    pos));
                 ciw.setHeight(takeDimen(height.getTable(),
-                        ciw.getHeightindex(), pos));
+                    ciw.getHeightindex(), pos));
                 ciw.setDepth(takeDimen(depth.getTable(), ciw.getDepthindex(),
-                        pos));
+                    pos));
                 ciw.setItalic(takeDimen(italic.getTable(),
-                        ciw.getItalicindex(), pos));
+                    ciw.getItalicindex(), pos));
                 if (ciw.getTag() == TfmCharInfoWord.LIST_TAG) {
                     if (validCharList(pos)) {
                         ciw.setNextchar(ciw.getRemainder());
                     }
                 } else if (ciw.getTag() == TfmCharInfoWord.EXT_TAG) {
                     if (ciw.getRemainder() < exten.getExtensiblerecipe().length) {
-                        TfmExtensibleRecipe er = exten.getExtensiblerecipe()[ciw
-                                .getRemainder()];
+                        TfmExtensibleRecipe er =
+                                exten.getExtensiblerecipe()[ciw.getRemainder()];
                         ciw.setTop((er.getTop() != 0)
                                 ? er.getTop()
                                 : TfmCharInfoWord.NOCHARCODE);
@@ -207,15 +221,17 @@ public class TfmCharInfoArray implements Serializable {
 
     /**
      * Returns the bc.
+     * 
      * @return Returns the bc.
      */
-    public short getBc() {
+    public int getBc() {
 
         return bc;
     }
 
     /**
      * Returns the charinfoword.
+     * 
      * @return Returns the charinfoword.
      */
     public TfmCharInfoWord[] getCharinfoword() {
@@ -224,10 +240,9 @@ public class TfmCharInfoArray implements Serializable {
     }
 
     /**
-     * Returns the charinfoword for the character.
-     * If the position less then bc (first character in the font),
-     * <code>null</code> will be returned.
-     *
+     * Returns the charinfoword for the character. If the position less then bc
+     * (first character in the font), <code>null</code> will be returned.
+     * 
      * @param i the position of the character
      * @return Returns the charinfoword for the character.
      */
@@ -248,6 +263,7 @@ public class TfmCharInfoArray implements Serializable {
 
     /**
      * Returns the depth.
+     * 
      * @return Returns the depth.
      */
     public TfmDepthArray getDepth() {
@@ -257,6 +273,7 @@ public class TfmCharInfoArray implements Serializable {
 
     /**
      * Returns the height.
+     * 
      * @return Returns the height.
      */
     public TfmHeightArray getHeight() {
@@ -266,6 +283,7 @@ public class TfmCharInfoArray implements Serializable {
 
     /**
      * Returns the italic.
+     * 
      * @return Returns the italic.
      */
     public TfmItalicArray getItalic() {
@@ -275,6 +293,7 @@ public class TfmCharInfoArray implements Serializable {
 
     /**
      * Returns the width.
+     * 
      * @return Returns the width.
      */
     public TfmWidthArray getWidth() {
@@ -284,7 +303,8 @@ public class TfmCharInfoArray implements Serializable {
 
     /**
      * Set the encdoing table.
-     * @param et    the encoding table
+     * 
+     * @param et the encoding table
      */
     public void setEncodingTable(String[] et) {
 
@@ -300,15 +320,14 @@ public class TfmCharInfoArray implements Serializable {
 
     /**
      * Gets referenced character dimension from apropriate table.
-     *
-     * @param table     referenced table of dimensions.
-     * @param i         referenced index to the dimension table.
-     * @param pos       the position of character in <code>charTable</code> for
-     *                  error messages.
+     * 
+     * @param table referenced table of dimensions.
+     * @param i referenced index to the dimension table.
+     * @param pos the position of character in <code>charTable</code> for
+     *        error messages.
      * @return Returns the FixWord
      */
-    private TfmFixWord takeDimen(TfmFixWord[] table, short i,
-            int pos) {
+    private TfmFixWord takeDimen(TfmFixWord[] table, short i, int pos) {
 
         if (i < table.length) {
             return table[i];
@@ -319,10 +338,11 @@ public class TfmCharInfoArray implements Serializable {
     /**
      * Checks the consistency of larger character chain. It checks only the
      * characters which have less position in |charTable| then the given
-     * character position and are supossed to have the corresponding <code>CharInfo</code>
-     * already created.
-     *
-     * @param pos position of currently processed character in <code>charTable</code>.
+     * character position and are supossed to have the corresponding
+     * <code>CharInfo</code> already created.
+     * 
+     * @param pos position of currently processed character in
+     *        <code>charTable</code>.
      * @return <code>true</code> if the associated chain is consistent.
      */
     private boolean validCharList(int pos) {
