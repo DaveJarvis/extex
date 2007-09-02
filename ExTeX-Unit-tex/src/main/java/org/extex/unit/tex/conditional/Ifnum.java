@@ -102,7 +102,7 @@ public class Ifnum extends AbstractIf {
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         long value = source.parseInteger(context, source, typesetter);
-        Token rel = source.getToken(context);
+        Token rel = source.getNonSpace(context);
         if (rel == null) {
             throw new EofException(printableControlSequence(context));
         }

@@ -93,11 +93,9 @@ public class Or extends AbstractCode {
         if (cond == null) {
             throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
                 printableControlSequence(context));
-        } else if (AbstractIf.skipToElseOrFi(context, source,
-            printableControlSequence(context))) {
+        } else if (AbstractIf.skipToElseOrFi(context, source, getName())) {
             // \else has been found; search for the \fi
-            if (AbstractIf.skipToElseOrFi(context, source,
-                printableControlSequence(context))) {
+            if (AbstractIf.skipToElseOrFi(context, source, getName())) {
                 // just another \else is too much
                 throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
                     context.esc("else"));
@@ -134,10 +132,10 @@ public class Or extends AbstractCode {
             throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
                 printableControlSequence(context));
         } else if (AbstractIf.skipToElseOrFi(context, source,
-            printableControlSequence(context))) {
+            getName())) {
             // \else has been found; search for the \fi
             if (AbstractIf.skipToElseOrFi(context, source,
-                printableControlSequence(context))) {
+                getName())) {
                 // just another \else is too much
                 throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
                     context.esc("else"));
