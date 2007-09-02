@@ -122,8 +122,7 @@ public class Ifcase extends AbstractIf {
 
         long branch = source.parseInteger(context, source, typesetter);
         if (branch < 0) {
-            if (skipToElseOrFi(context, source,
-                printableControlSequence(context))) {
+            if (skipToElseOrFi(context, source, getName())) {
                 context.pushConditional(source.getLocator(), true, this, -1,
                     false);
             }
