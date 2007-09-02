@@ -24,11 +24,11 @@ import org.extex.test.ExTeXLauncher;
 /**
  * This is a test suite for def primitives.
  * <p>
- *  In a derived class the actual name of the def primitive to be tested is
- *  passed in via the constructor. It can be used with the getter
- *  {@link #getDef() getDef()}.
+ * In a derived class the actual name of the def primitive to be tested is
+ * passed in via the constructor. It can be used with the getter
+ * {@link #getDef() getDef()}.
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -41,7 +41,7 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name
      * @param def the name of the primitive
      */
@@ -52,338 +52,298 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testImmediate1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             DEFINE_BRACES + "\\immediate\\" + def + "\\aaa{}",
-            //--- log message ---
+            // --- log message ---
             "You can't use the prefix `\\immediate' with the control sequence \\"
                     + def);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testBasic1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             DEFINE_BRACES + "\\" + def + "\\aaa{AAA}" + "--\\aaa--\\end",
-            //--- output message ---
+            // --- output message ---
             "--AAA--" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that long is an accepted prefix.
+     * <testcase> Test case checking that long is an accepted prefix.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testLong1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             DEFINE_BRACES + "\\long\\" + def + "\\aaa{AAA}" + "--\\aaa--\\end",
-            //--- output message ---
+            // --- output message ---
             "--AAA--" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testLong2() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             DEFINE_BRACES + "\\long\\" + def + "\\aaa{AAA\\par BBB}"
                     + "--\\aaa--\\end",
-            //--- output message ---
+            // --- output message ---
             "--AAA\n\nBBB--" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testArguments1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\aaa#1{A#1A}"
                     + "--\\aaa 1--\\end",
-            //--- output message ---
+            // --- output message ---
             "--A1A--" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testArguments2() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\aaa#1{A#1A}"
                     + "--\\aaa {1}--\\end",
-            //--- output message ---
+            // --- output message ---
             "--A1A--" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testArguments3() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\aaa#1{A#1A}"
                     + "--\\aaa {12}--\\end",
-            //--- output message ---
+            // --- output message ---
             "--A12A--" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that two arguments are parsed.
-     * </testcase>
-     *
+     * <testcase> Test case checking that two arguments are parsed. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testTwoArguments1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\a#1#2{--#1--#2--}"
                     + "\\a 2." + "\\end ",
-            //--- output channel ---
+            // --- output channel ---
             "--2--.--" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testPattern1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\aaa#1.{--#1--}"
                     + "\\aaa 2." + "\\end ",
-            //--- output channel ---
+            // --- output channel ---
             "--2--" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testPattern2() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\aaa#1.{--#1--}"
                     + "\\aaa {2.1}." + "\\end ",
-            //--- output channel ---
+            // --- output channel ---
             "--2.1--" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testBrace1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\aaa#1.{--#1--}"
                     + "\\aaa }.",
-            //--- output channel ---
+            // --- output channel ---
             "Argument of \\aaa has an extra }");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHashArgument1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\a{--##--}\\end",
-            //--- output channel ---
+            // --- output channel ---
             "");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHashArgument2() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\a{--##--}\\a ",
-            //--- output channel ---
+            // --- output channel ---
             "You can't use `macro parameter character #' in horizontal mode");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that a final hash requires a left brace upon
-     *  invocation: failure case.
-     * </testcase>
-     *
+     * <testcase> Test case checking that a final hash requires a left brace
+     * upon invocation: failure case. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHash10() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             DEFINE_BRACES + DEFINE_HASH + "\\" + getDef() + "\\a#{xxx}"
                     + "\\a \\end",
-            //--- output channel ---
+            // --- output channel ---
             "Use of \\a doesn't match its definition");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that a final hash requires a left brace upon
-     *  invocation: success case.
-     * </testcase>
-     *
+     * <testcase> Test case checking that a final hash requires a left brace
+     * upon invocation: success case. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHash11() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             DEFINE_BRACES + DEFINE_HASH + "\\" + getDef() + "\\a#{xxx}"
                     + "\\a{} \\end",
-            //--- output channel ---
+            // --- output channel ---
             "xxx" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHashError1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\aaa#2{--#1--}",
-            //--- output channel ---
+            // --- output channel ---
             "Parameters must be numbered consecutively");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHashError2() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             DEFINE_BRACES + DEFINE_HASH + "\\" + def + "\\aaa#a{--#1--}",
-            //--- output channel ---
+            // --- output channel ---
             "Parameters must be numbered consecutively");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that a ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that a ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testRight1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             DEFINE_BRACES + DEFINE_HASH + "\\" + getDef() + "\\a}",
-            //--- output channel ---
+            // --- output channel ---
             "Missing { inserted");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that a ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that an outer control sequence leads to an
+     * error in the pattern of a macro. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testOuter1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             DEFINE_BRACES + DEFINE_HASH + "\\outer\\def\\x{x}\\" + getDef()
                     + "\\a\\x{}",
-            //--- output channel ---
-            "Forbidden control sequence found while scanning definition of \\"
-                    + getDef());
+            // --- output channel ---
+            "Forbidden control sequence found while scanning definition of \\a");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that an eof in the pattern of the
+     * definition of a macro is recognized. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testEof1() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             "\\" + getDef() + "\\a",
-            //--- output channel ---
-            "File ended while scanning definition of \\" + getDef());
+            // --- output channel ---
+            "File ended while scanning definition of \\a");
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase> Test case checking that ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testEof2() throws Exception {
 
-        assertFailure(//--- input code ---
+        assertFailure(// --- input code ---
             DEFINE_BRACES + "\\" + getDef() + "\\a{",
-            //--- output channel ---
+            // --- output channel ---
             "File ended while scanning text of \\a");
     }
 
     /**
      * Getter for def.
-     *
+     * 
      * @return the def
      */
     public String getDef() {
