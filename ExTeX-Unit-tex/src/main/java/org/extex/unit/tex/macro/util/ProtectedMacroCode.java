@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.macro.util;
 
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.type.ProtectedCode;
 import org.extex.scanner.type.tokens.Tokens;
@@ -26,29 +27,34 @@ import org.extex.scanner.type.tokens.Tokens;
 /**
  * This class is identical to the super class MacroCode but in addition it
  * implements the marker interface ProtectedCode.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
 public class ProtectedMacroCode extends MacroCode implements ProtectedCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 20060405L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the initial name of the macro
      * @param flags the flags controlling the behavior of the macro
      * @param thePattern the pattern for the acquiring of the arguments
      * @param theBody the expansion text
+     * @param notLong ...
+     * 
+     * @throws HelpingException in case of an error
      */
-    public ProtectedMacroCode(String name, Flags flags,
-            MacroPattern thePattern, Tokens theBody) {
+    public ProtectedMacroCode(String name, Flags flags, boolean notLong,
+            MacroPattern thePattern, Tokens theBody)
+            throws HelpingException {
 
-        super(name, flags, thePattern, theBody);
+        super(name, flags, notLong, thePattern, theBody);
     }
 
 }

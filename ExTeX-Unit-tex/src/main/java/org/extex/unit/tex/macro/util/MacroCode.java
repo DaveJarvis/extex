@@ -25,7 +25,6 @@ import org.extex.core.Locator;
 import org.extex.core.count.Count;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.ImpossibleException;
-import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
 import org.extex.framework.i18n.Localizer;
@@ -48,17 +47,15 @@ import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.ControlSequenceToken;
-import org.extex.scanner.type.token.LeftBraceToken;
 import org.extex.scanner.type.token.MacroParamToken;
 import org.extex.scanner.type.token.OtherToken;
-import org.extex.scanner.type.token.RightBraceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.macro.LetCode;
-import org.extex.unit.tex.typesetter.paragraph.Par;
+import org.extex.unit.tex.macro.exceptions.EofInDefException;
 
 /**
  * This class provides an implementation for any macro code bound to a control
@@ -258,6 +255,11 @@ public class MacroCode extends AbstractCode
     private Logger logger;
 
     /**
+     * The field <tt>outerP</tt> contains the indicator for outer definitions.
+     */
+    private boolean outerP;
+
+    /**
      * The field <tt>notLong</tt> contains the negated <tt>\long</tt> flag.
      * This field indicates that no macros <tt>\par</tt> are allowed in macro
      * parameter values.
@@ -265,13 +267,9 @@ public class MacroCode extends AbstractCode
     private boolean notLong;
 
     /**
-     * The field <tt>outerP</tt> contains the indicator for outer definitions.
-     */
-    private boolean outerP;
-
-    /**
      * The field <tt>pattern</tt> contains the specification for the argument
-     * matching.
+     * matching. A value of <code>null</code> means that no argument are
+     * expected.
      */
     private MacroPattern pattern;
 
@@ -280,16 +278,23 @@ public class MacroCode extends AbstractCode
      * 
      * @param name the initial name of the macro
      * @param flags the flags controlling the behavior of the macro
-     * @param pattern the pattern for the acquiring of the arguments
+     * @param notLong inverted indicator for the long macros
+     * @param pattern the pattern for the acquiring of the arguments. The value
+     *        of <code>null</code> means that no arguments are expected
      * @param body the expansion text
      */
-    public MacroCode(String name, Flags flags, MacroPattern pattern, Tokens body) {
+    public MacroCode(String name, Flags flags, boolean notLong,
+            MacroPattern pattern, Tokens body) {
 
         super(name);
         this.body = body;
-        this.pattern = pattern;
-        this.notLong = !flags.clearLong();
         this.outerP = flags.clearOuter();
+        this.notLong = notLong;
+        if (pattern == null || pattern.length() == 0) {
+            this.pattern = null;
+        } else {
+            this.pattern = pattern;
+        }
     }
 
     /**
@@ -312,12 +317,29 @@ public class MacroCode extends AbstractCode
             return false;
         }
         MacroCode macro = (MacroCode) code;
-        if (notLong != macro.notLong //
-                || outerP != macro.outerP //
-                || !pattern.equals(macro.pattern)) {
-            return false;
+        return (notLong == macro.notLong //
+                && outerP == macro.outerP //
+                && compare(pattern, macro.pattern) //
+        && body.equals(macro.body));
+    }
+
+    /**
+     * Compare two patterns. This involves the treatment of <code>null</code>
+     * values which are equivalent to empty patterns.
+     * 
+     * @param p1 the first pattern
+     * @param p2 the second pattern
+     * 
+     * @return <code>true</code> iff the two patterns are equivalent
+     */
+    private boolean compare(MacroPattern p1, MacroPattern p2) {
+
+        if (p1 == null) {
+            return (p2 == null || p2.length() == 0);
+        } else if (p2 == null) {
+            return p1.length() == 0;
         }
-        return body.equals(macro.body);
+        return p1.equals(p2);
     }
 
     /**
@@ -332,6 +354,36 @@ public class MacroCode extends AbstractCode
     }
 
     /**
+     * The field <tt>TRACER</tt> contains the ...
+     */
+    private final ArgumentMatchingObserver TRACER =
+            new ArgumentMatchingObserver() {
+
+                public void observeArgument(int index, Tokens value,
+                        CodeToken cs) {
+
+                    // // see [TTP; 400]
+                    StringBuffer sb = new StringBuffer("#");
+                    sb.append(index + 1);
+                    sb.append("<-");
+                    sb.append(value.toText());
+                    sb.append('\n');
+//                    String s = cs.toText();
+//                    if (s.startsWith("\\make_factor")) {
+//                        System.err.print(s + " ");
+//                        System.err.println(sb.toString());
+//                    }
+                     logger.info(sb.toString());
+                }
+
+            };
+
+    /**
+     * The constant <tt>NO_TOKENS</tt> contains the empty tokens array.
+     */
+    private static final Tokens[] NO_TOKENS = new Tokens[0];
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.interpreter.type.AbstractCode#execute(
@@ -342,7 +394,17 @@ public class MacroCode extends AbstractCode
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        Tokens[] args = matchPattern(context, source, typesetter);
+        Tokens[] args;
+        if (pattern == null) {
+            args = NO_TOKENS;
+        } else {
+            Count tracingmaros = context.getCount("tracingmacros");
+            ArgumentMatchingObserver tracer =
+                    (tracingmaros != null && tracingmaros.gt(Count.ZERO)
+                            ? TRACER
+                            : null);
+            args = pattern.match(context, source, typesetter, notLong, tracer);
+        }
         Tokens toks = new Tokens();
         int len = body.length();
         int no = 1;
@@ -360,12 +422,11 @@ public class MacroCode extends AbstractCode
             if (t instanceof MacroParamToken) {
                 t = body.get(++i);
                 if (t == null) {
-                    throw new HelpingException(getLocalizer(),
-                        "TTP.EOFinMatch", getName());
+                    throw new EofInDefException(getName());
                 } else if (t instanceof MacroParamToken) {
                     toks.add(t);
                 } else if (t instanceof OtherToken && t.getChar().isDigit()) {
-                    no = t.getChar().getCodePoint() - '0';
+                    no = t.getChar().getCodePoint() - '1';
                     if (args[no] == null) {
                         throw new ImpossibleException("MacroCode:NullArg");
                     }
@@ -410,44 +471,6 @@ public class MacroCode extends AbstractCode
     }
 
     /**
-     * Get a single token or a block if the first token is a LeftBraceToken.
-     * 
-     * @param context the processor context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return the tokens accumulated
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    private Tokens getTokenOrBlock(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Token t = source.getToken(context);
-
-        if (t == null) {
-            throw new HelpingException(getLocalizer(), "TTP.EOFinMatch",
-                getName());
-        } else if (t instanceof LeftBraceToken) {
-            source.push(t);
-            Tokens toks;
-            try {
-                toks = source.getTokens(context, source, typesetter);
-            } catch (EofException e) {
-                throw new HelpingException(getLocalizer(), "TTP.EOFinMatch",
-                    getName());
-            }
-            return toks;
-        } else if (t instanceof RightBraceToken) {
-            throw new HelpingException(getLocalizer(), "TTP.ExtraRightBrace",
-                getName());
-        }
-
-        return new Tokens(t);
-    }
-
-    /**
      * Getter for the outer flag.
      * 
      * @return <code>true</code> iff the code is defined outer.
@@ -458,172 +481,6 @@ public class MacroCode extends AbstractCode
     public boolean isOuter() {
 
         return outerP;
-    }
-
-    /**
-     * Match a single parameter.
-     * 
-     * @param context the processor context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * @param args the array of Tokens to fill
-     * @param len the length of the patterns
-     * @param index the starting index
-     * @param trace the indicator for tracing
-     * 
-     * @return the index of the character after the parameter
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    private int matchParameter(Context context, TokenSource source,
-            Typesetter typesetter, Tokens[] args, int len, int index,
-            boolean trace) throws HelpingException, TypesetterException {
-
-        Token ti = pattern.get(index);
-
-        if (ti instanceof MacroParamToken) {
-            // ##
-            Token t = source.getToken(context);
-            if (ti.equals(t)) {
-                return index + 1;
-            }
-            throw new HelpingException(getLocalizer(), "TTP.UseDoesntMatch",
-                getName());
-        }
-
-        if (!(ti instanceof OtherToken)) {
-            throw new HelpingException(getLocalizer(), "TTP.UseDoesntMatch",
-                getName());
-        }
-        int no = ti.getChar().getCodePoint() - '0';
-        if (no < 0 || no > args.length) {
-            throw new HelpingException(getLocalizer(), "TTP.UseDoesntMatch",
-                getName());
-        }
-        int i = index + 1;
-        if (i >= len) {
-            args[no] = getTokenOrBlock(context, source, typesetter);
-        } else {
-            ti = pattern.get(i);
-            if (ti instanceof MacroParamToken) {
-                args[no] = getTokenOrBlock(context, source, typesetter);
-            } else {
-                args[no] = scanTo(context, source, ti);
-                i = index + 2;
-            }
-        }
-
-        if (trace) {
-            // see [TTP; 400]
-            StringBuffer sb = new StringBuffer("#");
-            sb.append(no);
-            sb.append("<-");
-            sb.append(args[no].toText());
-            sb.append('\n');
-            logger.info(sb.toString());
-        }
-        return i;
-    }
-
-    /**
-     * Match the pattern of this macro with the next tokens from the token
-     * source. As a result the matching arguments are stored in an array of
-     * {@link org.extex.scanner.type.tokens.Tokens Tokens}. This array is
-     * returned.
-     * 
-     * @param context the processor context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return a new array of parameters which have been found during the
-     *         matching. Note that some of th elements of the array might be
-     *         <code>null</code>.
-     * 
-     * @throws HelpingException in case of an error during the matching
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    private Tokens[] matchPattern(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        Tokens[] args = new Tokens[pattern.getArity()];
-        int len = pattern.length();
-        if (len > 0) {
-            Count tracingmaros = context.getCount("tracingmacros");
-            boolean trace =
-                    (tracingmaros != null && tracingmaros.gt(Count.ZERO));
-
-            for (int i = 0; i < len;) {
-                Token ti = pattern.get(i++);
-                if (ti instanceof MacroParamToken) {
-                    i = matchParameter(context, source, typesetter, //
-                        args, len, i, trace);
-                } else {
-                    Token t = source.getToken(context);
-                    if (!ti.equals(t)) {
-                        throw new HelpingException(getLocalizer(),
-                            "TTP.UseDoesntMatch", getName());
-                    } else if (notLong && t.equals(Catcode.ESCAPE, "par")) {
-                        throw new HelpingException(getLocalizer(),
-                            "TTP.RunawayArg", getName());
-                    }
-                }
-            }
-        }
-
-        return args;
-    }
-
-    /**
-     * Collect all tokens until a given token is found.
-     * 
-     * @param context the processor context
-     * @param source the source for new tokens
-     * @param to the terminating token
-     * 
-     * @return the tokens accumulated in between
-     * 
-     * @throws HelpingException in case of an error
-     */
-    private Tokens scanTo(Context context, TokenSource source, Token to)
-            throws HelpingException {
-
-        Tokens toks = new Tokens();
-        int depth = 0;
-        Token t = source.getToken(context);
-        int groups = 0;
-        boolean group = (t instanceof LeftBraceToken);
-
-        for (; t != null; t = source.getToken(context)) {
-            if (depth == 0 && t.equals(to)) {
-                if (group
-                        && groups == 1
-                        && toks.get(toks.length() - 1) instanceof RightBraceToken) {
-                    toks.removeLast();
-                    toks.removeFirst();
-                }
-                return toks;
-
-            } else if (t instanceof LeftBraceToken) {
-                groups++;
-                depth++;
-            } else if (t instanceof RightBraceToken) {
-                depth--;
-                if (depth < 0) {
-                    throw new HelpingException(getLocalizer(),
-                        "TTP.ExtraRightBrace", getName());
-                }
-            } else if (notLong && t instanceof CodeToken) {
-                Code code = context.getCode((CodeToken) t);
-                if (code instanceof Par) {
-                    throw new HelpingException(getLocalizer(),
-                        "TTP.RunawayArg", getName());
-                }
-            }
-            toks.add(t);
-        }
-
-        throw new HelpingException(getLocalizer(), "TTP.EOFinMatch", getName());
     }
 
     /**
@@ -654,7 +511,9 @@ public class MacroCode extends AbstractCode
             sb.append(getLocalizer().format("TTP.macro"));
             sb.append(":\n");
             Tokens toks = context.getTokenFactory().toTokens(sb);
-            show(pattern, context, toks);
+            if (pattern != null) {
+                show(pattern, context, toks);
+            }
             toks.add(context.getTokenFactory().toTokens("->"));
             show(body, context, toks);
             return toks;
@@ -677,20 +536,18 @@ public class MacroCode extends AbstractCode
             throws CatcodeException {
 
         TokenFactory factory = context.getTokenFactory();
+        long esc = context.getCount("escapechar").getValue();
         Token t;
 
         for (int i = 0; i < tokens.length(); i++) {
             t = tokens.get(i);
             if (t instanceof ControlSequenceToken) {
-                long esc = context.getCount("escapechar").getValue();
                 if (esc >= 0) {
                     toks.add(factory.createToken(Catcode.OTHER, (char) (esc),
                         Namespace.DEFAULT_NAMESPACE));
                 }
-                toks.add(factory.toTokens(t.toString()));
-                // } else if (t instanceof MacroParamToken) {
-                // toks.add(factory.createToken(Catcode.OTHER, '#',
-                // Namespace.DEFAULT_NAMESPACE));
+                toks
+                    .add(factory.toTokens(((ControlSequenceToken) t).getName()));
             } else {
                 toks.add(factory.createToken(Catcode.OTHER, t.getChar(),
                     Namespace.DEFAULT_NAMESPACE));

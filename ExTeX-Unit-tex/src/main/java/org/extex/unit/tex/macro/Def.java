@@ -19,24 +19,22 @@
 
 package org.extex.unit.tex.macro;
 
+import java.util.logging.Logger;
+
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.EofInToksException;
 import org.extex.core.exception.helping.HelpingException;
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractAssignment;
-import org.extex.interpreter.type.Code;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.LeftBraceToken;
-import org.extex.scanner.type.token.MacroParamToken;
-import org.extex.scanner.type.token.OtherToken;
-import org.extex.scanner.type.token.RightBraceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
-import org.extex.unit.base.macro.LetCode;
 import org.extex.unit.tex.macro.util.MacroCode;
 import org.extex.unit.tex.macro.util.MacroPattern;
 import org.extex.unit.tex.macro.util.ProtectedMacroCode;
@@ -93,13 +91,18 @@ import org.extex.unit.tex.macro.util.ProtectedMacroCode;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
-public class Def extends AbstractAssignment {
+public class Def extends AbstractAssignment implements LogEnabled {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
      * serialization.
      */
     protected static final long serialVersionUID = 2007L;
+
+    /**
+     * The field <tt>logger</tt> contains the logger.
+     */
+    private Logger logger;
 
     /**
      * Creates a new object.
@@ -123,9 +126,13 @@ public class Def extends AbstractAssignment {
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         CodeToken cs = source.getControlSequence(context, typesetter);
-        MacroPattern pattern = getPattern(context, source);
+        boolean notLong = !prefix.clearLong();
+        MacroPattern pattern =
+                MacroPattern.getPattern(context, source, notLong, cs);
         String csName = printable(context, cs);
         Tokens body;
+        boolean global = prefix.clearGlobal();
+        boolean protect = prefix.clearProtected();
         try {
             body =
                     prefix.clearExpanded() //
@@ -142,79 +149,25 @@ public class Def extends AbstractAssignment {
             throw new EofInToksException(csName);
         }
 
-        MacroCode macroCode = (prefix.clearProtected() //
-                ? new ProtectedMacroCode(csName, prefix, pattern, body) //
-                : new MacroCode(csName, prefix, pattern, body));
+        MacroCode macroCode =
+                (protect //
+                        ? new ProtectedMacroCode(csName, prefix, notLong,
+                            pattern, body) //
+                        : new MacroCode(csName, prefix, notLong, pattern, body));
+        macroCode.enableLogging(logger);
 
-        context.setCode(cs, macroCode, prefix.clearGlobal());
+        context.setCode(cs, macroCode, global);
     }
 
     /**
-     * Parse the pattern.
+     * {@inheritDoc}
      * 
-     * @param context the processor context
-     * @param source the source for new tokens
-     * 
-     * @return the tokens read
-     * 
-     * @throws HelpingException in case of an error
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
+     *      java.util.logging.Logger)
      */
-    protected MacroPattern getPattern(Context context, TokenSource source)
-            throws HelpingException {
+    public void enableLogging(Logger logger) {
 
-        MacroPattern pattern = new MacroPattern();
-        int no = 1;
-        boolean afterHash = false;
-
-        for (Token t = source.getToken(context); t != null; t =
-                source.getToken(context)) {
-
-            if (t instanceof LeftBraceToken) {
-                source.push(t);
-                pattern.setArity(no);
-                if (afterHash) {
-                    pattern.removeLast();
-                    pattern.add(t);
-                }
-                return pattern;
-            } else if (t instanceof RightBraceToken) {
-                throw new HelpingException(getLocalizer(),
-                    "TTP.MissingLeftDefBrace",
-                    printableControlSequence(context));
-            } else if (t instanceof CodeToken) {
-                Code code = context.getCode((CodeToken) t);
-                if (code == null) {
-                    // undefined
-                } else if (code.isOuter()) {
-                    throw new HelpingException(getLocalizer(),
-                        "TTP.OuterInDef", printableControlSequence(context));
-                } else if (code instanceof LetCode) {
-                    t = ((LetCode) code).getToken();
-                }
-            }
-
-            if (afterHash) {
-                if (t instanceof OtherToken) {
-                    if (t.getChar().getCodePoint() != '0' + no) {
-                        throw new HelpingException(getLocalizer(),
-                            "TTP.NonConsequtiveParams",
-                            printableControlSequence(context));
-                    }
-                    no++;
-                } else if (!(t instanceof MacroParamToken)) {
-                    throw new HelpingException(getLocalizer(),
-                        "TTP.NonConsequtiveParams",
-                        printableControlSequence(context));
-                }
-                afterHash = false;
-            } else {
-                afterHash = (t instanceof MacroParamToken);
-            }
-            pattern.add(t);
-        }
-
-        throw new HelpingException(getLocalizer(), "TTP.EOFinDef",
-            printableControlSequence(context));
+        this.logger = logger;
     }
 
 }
