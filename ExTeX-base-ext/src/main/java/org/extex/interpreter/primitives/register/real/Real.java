@@ -123,10 +123,10 @@ public class Real implements Serializable {
         Token t = source.scanNonSpace(context);
         if (t == null) {
             throw new MissingNumberException();
-        } else if (t.equals(Catcode.OTHER, "-")) {
+        } else if (t.eq(Catcode.OTHER, "-")) {
             neg = true;
             t = source.scanNonSpace(context);
-        } else if (t.equals(Catcode.OTHER, "+")) {
+        } else if (t.eq(Catcode.OTHER, "+")) {
             t = source.scanNonSpace(context);
         } else if (t instanceof ControlSequenceToken) {
             Code code = context.getCode((ControlSequenceToken) t);
@@ -147,8 +147,8 @@ public class Real implements Serializable {
             sb.append('-');
         }
 
-        if (t != null && !t.equals(Catcode.OTHER, ".")
-                && !t.equals(Catcode.OTHER, ",")) {
+        if (t != null && !t.eq(Catcode.OTHER, ".")
+                && !t.eq(Catcode.OTHER, ",")) {
             source.push(t);
             val = source.parseNumber(context, source, typesetter);
             t = source.getToken(context);
@@ -159,8 +159,8 @@ public class Real implements Serializable {
         val = 0;
 
         if (t != null
-                && (t.equals(Catcode.OTHER, ".") || t
-                    .equals(Catcode.OTHER, ","))) {
+                && (t.eq(Catcode.OTHER, ".") || t
+                    .eq(Catcode.OTHER, ","))) {
             val = source.parseNumber(context, source, typesetter);
         } else {
             source.push(t);

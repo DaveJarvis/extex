@@ -160,8 +160,8 @@ public class Read extends AbstractAssignment implements LogEnabled {
         }
         Flags f = prefix.copy();
         f.setGlobal(prefix.isGlobal());
-        context.setCode(cs, new MacroCode(cs.getName(), f, MacroPattern.EMPTY,
-            toks), prefix.clearGlobal());
+        context.setCode(cs, new MacroCode(cs.getName(), f, false,
+            MacroPattern.EMPTY, toks), prefix.clearGlobal());
     }
 
     /**

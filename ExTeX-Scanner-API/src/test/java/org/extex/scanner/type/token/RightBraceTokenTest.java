@@ -94,42 +94,42 @@ public class RightBraceTokenTest extends TestCase {
      */
     public void testEqualsCatcodeString0() {
 
-        assertTrue(t.equals(Catcode.RIGHTBRACE, ">"));
+        assertTrue(t.eq(Catcode.RIGHTBRACE, ">"));
     }
 
     /**
      */
     public void testEqualsCatcodeString1() {
 
-        assertFalse(t.equals(Catcode.LETTER, ">"));
+        assertFalse(t.eq(Catcode.LETTER, ">"));
     }
 
     /**
      */
     public void testEqualsCatcodechar0() {
 
-        assertTrue(t.equals(Catcode.RIGHTBRACE, '>'));
+        assertTrue(t.eq(Catcode.RIGHTBRACE, '>'));
     }
 
     /**
      */
     public void testEqualsCatcodechar1() {
 
-        assertFalse(t.equals(Catcode.LETTER, '>'));
+        assertFalse(t.eq(Catcode.LETTER, '>'));
     }
 
     /**
      */
     public void testEqualschar0() {
 
-        assertTrue(t.equals('>'));
+        assertTrue(t.eq('>'));
     }
 
     /**
      */
     public void testEqualschar1() {
 
-        assertFalse(t.equals('.'));
+        assertFalse(t.eq('.'));
     }
 
     /**

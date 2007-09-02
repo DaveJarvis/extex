@@ -113,8 +113,7 @@ public class Unless extends AbstractCode implements ExpandableCode, PrefixCode {
 
         if (!((AbstractIf) code).conditional(context, source, typesetter)) {
             context.pushConditional(source.getLocator(), true, code, 1, true);
-        } else if (AbstractIf.skipToElseOrFi(context, source,
-            printableControlSequence(context))) {
+        } else if (AbstractIf.skipToElseOrFi(context, source, getName())) {
             context.pushConditional(source.getLocator(), true, code, -1, true);
         }
     }

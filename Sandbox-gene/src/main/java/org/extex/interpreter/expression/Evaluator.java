@@ -461,7 +461,7 @@ public class Evaluator {
         Token t = source.getNonSpace(context);
         if (t == null) {
             throw new EofException();
-        } else if (!t.equals(Catcode.OTHER, ',')) {
+        } else if (!t.eq(Catcode.OTHER, ',')) {
             throw new HelpingException(LocalizerFactory
                 .getLocalizer(Evaluator.class), "MissingComma", t.toString());
         }
@@ -602,7 +602,7 @@ public class Evaluator {
 
         EType a = evalTerm(context, source, typesetter);
         Token t = source.getNonSpace(context);
-        if (t != null && t.equals(Catcode.OTHER, ')')) {
+        if (t != null && t.eq(Catcode.OTHER, ')')) {
             return a;
         }
         source.push(t);
@@ -611,7 +611,7 @@ public class Evaluator {
             if (c == '+' || c == '-' || c == '*' || c == '/') {
                 a = evalExpression(a, context, source, typesetter);
                 t = source.getNonSpace(context);
-                if (t != null && t.equals(Catcode.OTHER, ')')) {
+                if (t != null && t.eq(Catcode.OTHER, ')')) {
                     return a;
                 }
             }
@@ -619,7 +619,7 @@ public class Evaluator {
             if (op != null) {
                 a = op.apply(a, evalExpression(context, source, typesetter));
                 t = source.getNonSpace(context);
-                if (t != null && t.equals(Catcode.OTHER, ')')) {
+                if (t != null && t.eq(Catcode.OTHER, ')')) {
                     return a;
                 }
                 source.push(t);
@@ -628,7 +628,7 @@ public class Evaluator {
             if (op != null) {
                 a = evalJunction(a, op, context, source, typesetter);
                 t = source.getNonSpace(context);
-                if (t != null && t.equals(Catcode.OTHER, ')')) {
+                if (t != null && t.eq(Catcode.OTHER, ')')) {
                     return a;
                 }
                 source.push(t);
@@ -858,7 +858,7 @@ public class Evaluator {
                 t = source.getNonSpace(context);
                 if (t == null) {
                     throw new EofException();
-                } else if (!t.equals(Catcode.OTHER, '(')) {
+                } else if (!t.eq(Catcode.OTHER, '(')) {
                     throw new HelpingException(LocalizerFactory
                         .getLocalizer(Evaluator.class),
                         "MissingOpenParenthesis", name, t.toString());
@@ -880,7 +880,7 @@ public class Evaluator {
                 t = source.getNonSpace(context);
                 if (t == null) {
                     throw new EofException();
-                } else if (!t.equals(Catcode.OTHER, ')')) {
+                } else if (!t.eq(Catcode.OTHER, ')')) {
                     throw new HelpingException(LocalizerFactory
                         .getLocalizer(Evaluator.class), "MissingParenthesis", t
                         .toString());
@@ -921,14 +921,14 @@ public class Evaluator {
                     return LOR;
                 case '&':
                     t2 = source.getToken(context);
-                    if (t2 != null && t2.equals(Catcode.OTHER, '&')) {
+                    if (t2 != null && t2.eq(Catcode.OTHER, '&')) {
                         return LAND;
                     }
                     source.push(t2);
                     break;
                 case '|':
                     t2 = source.getToken(context);
-                    if (t2 == null || t2.equals(Catcode.OTHER, '|')) {
+                    if (t2 == null || t2.eq(Catcode.OTHER, '|')) {
                         return LOR;
                     }
                     source.push(t2);
@@ -965,7 +965,7 @@ public class Evaluator {
                         return true;
                     case '&':
                         Token t2 = source.getToken(context);
-                        if (t2 != null && t2.equals(Catcode.OTHER, '&')) {
+                        if (t2 != null && t2.eq(Catcode.OTHER, '&')) {
                             return true;
                         }
                         source.push(t2);
@@ -984,7 +984,7 @@ public class Evaluator {
                         return true;
                     case '|':
                         Token t2 = source.getToken(context);
-                        if (t2 != null && t2.equals(Catcode.OTHER, '|')) {
+                        if (t2 != null && t2.eq(Catcode.OTHER, '|')) {
                             return true;
                         }
                         source.push(t2);
@@ -1029,26 +1029,26 @@ public class Evaluator {
                     return NE;
                 case '!':
                     t = source.getToken(context);
-                    if (t != null && t.equals(Catcode.OTHER, '=')) {
+                    if (t != null && t.eq(Catcode.OTHER, '=')) {
                         return NE;
                     }
                     break;
                 case '=':
                     t = source.getToken(context);
-                    if (t == null || !t.equals(Catcode.OTHER, '=')) {
+                    if (t == null || !t.eq(Catcode.OTHER, '=')) {
                         source.push(t);
                     }
                     return EQ;
                 case '<':
                     t = source.getToken(context);
-                    if (t == null || !t.equals(Catcode.OTHER, '=')) {
+                    if (t == null || !t.eq(Catcode.OTHER, '=')) {
                         source.push(t);
                         return LT;
                     }
                     return LE;
                 case '>':
                     t = source.getToken(context);
-                    if (t == null || !t.equals(Catcode.OTHER, '=')) {
+                    if (t == null || !t.eq(Catcode.OTHER, '=')) {
                         source.push(t);
                         return GT;
                     }

@@ -195,22 +195,22 @@ public final class ConstantCountParser implements Parser<Count>, CountParser {
             if (t == null) {
                 throw new MissingNumberException();
 
-            } else if (t.equals(Catcode.OTHER, '*')) {
+            } else if (t.eq(Catcode.OTHER, '*')) {
                 val *= scanInteger(context, source, typesetter);
 
-            } else if (t.equals(Catcode.OTHER, '/')) {
+            } else if (t.eq(Catcode.OTHER, '/')) {
                 long x = scanInteger(context, source, typesetter);
                 if (x == 0) {
                     throw new ArithmeticOverflowException("");
                 }
                 val /= x;
 
-            } else if (t.equals(Catcode.OTHER, '+')) {
+            } else if (t.eq(Catcode.OTHER, '+')) {
                 saveVal = op.apply(saveVal, val);
                 val = scanInteger(context, source, typesetter);
                 op = PLUS;
 
-            } else if (t.equals(Catcode.OTHER, '-')) {
+            } else if (t.eq(Catcode.OTHER, '-')) {
                 saveVal = op.apply(saveVal, val);
                 val = scanInteger(context, source, typesetter);
                 op = MINUS;
@@ -269,23 +269,27 @@ public final class ConstantCountParser implements Parser<Count>, CountParser {
             if (t == null) {
                 throw new MissingNumberException();
 
-            } else if (t.equals(Catcode.OTHER, '(')) {
-                long val = evalExpr(context, source, typesetter);
-                t = source.getToken(context);
-                if (t != null && t.equals(Catcode.OTHER, ')')) {
-                    return val;
+            } else if (t instanceof OtherToken) {
+                if (t.eq(Catcode.OTHER, '(')) {
+                    long val = evalExpr(context, source, typesetter);
+                    t = source.getToken(context);
+                    if (t != null && t.eq(Catcode.OTHER, ')')) {
+                        return val;
+                    }
+
+                    throw new HelpingException(LocalizerFactory
+                        .getLocalizer(ConstantCountParser.class),
+                        "MissingParenthesis", (t == null ? "null" : t
+                            .toString()));
+
+                } else if (t.eq(Catcode.OTHER, '-')) {
+                    return -scanInteger(context, source, typesetter);
+
+                } else if (t.eq(Catcode.OTHER, '+')) {
+                    // continue
+                } else {
+                    return scanNumber(context, source, typesetter, t);
                 }
-
-                throw new HelpingException(LocalizerFactory
-                    .getLocalizer(ConstantCountParser.class),
-                    "MissingParenthesis", (t == null ? "null" : t.toString()));
-
-            } else if (t.equals(Catcode.OTHER, '-')) {
-                return -scanInteger(context, source, typesetter);
-
-            } else if (t.equals(Catcode.OTHER, '+')) {
-                // continue
-
             } else if (t instanceof CodeToken) {
                 Code code = context.getCode((CodeToken) t);
                 if (code instanceof CountConvertible) {

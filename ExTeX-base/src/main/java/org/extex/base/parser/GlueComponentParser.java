@@ -195,7 +195,7 @@ public class GlueComponentParser {
             }
             switch (c) {
                 case 'b':
-                    if (t.equals(Catcode.LETTER, 'p')) {
+                    if (t.eq(Catcode.LETTER, 'p')) {
                         v = v * POINT_PER_100_IN / BP100_PER_IN;
                     } else {
                         break;
@@ -206,9 +206,9 @@ public class GlueComponentParser {
                     source.skipSpace();
                     return new GlueComponent(v);
                 case 'c':
-                    if (t.equals(Catcode.LETTER, 'm')) {
+                    if (t.eq(Catcode.LETTER, 'm')) {
                         v = v * POINT_PER_100_IN / CM100_PER_IN;
-                    } else if (t.equals(Catcode.LETTER, 'c')) {
+                    } else if (t.eq(Catcode.LETTER, 'c')) {
                         v = v * 14856 / 1157;
                     } else {
                         break;
@@ -219,9 +219,9 @@ public class GlueComponentParser {
                     source.skipSpace();
                     return new GlueComponent(v);
                 case 'd':
-                    if (t.equals(Catcode.LETTER, 'd')) {
+                    if (t.eq(Catcode.LETTER, 'd')) {
                         v = v * 1238 / 1157;
-                    } else if (t.equals(Catcode.LETTER, 'm')) {
+                    } else if (t.eq(Catcode.LETTER, 'm')) {
                         v = v * POINT_PER_100_IN / CM100_PER_IN / 10;
                     } else {
                         break;
@@ -232,12 +232,12 @@ public class GlueComponentParser {
                     source.skipSpace();
                     return new GlueComponent(v);
                 case 'e':
-                    if (t.equals(Catcode.LETTER, 'x')) {
+                    if (t.eq(Catcode.LETTER, 'x')) {
                         FixedDimen ex =
                                 context.getTypesettingContext().getFont()
                                     .getEm();
                         v = v * ex.getValue() / GlueComponent.ONE;
-                    } else if (t.equals(Catcode.LETTER, 'm')) {
+                    } else if (t.eq(Catcode.LETTER, 'm')) {
                         FixedDimen em =
                                 context.getTypesettingContext().getFont()
                                     .getEm();
@@ -251,10 +251,10 @@ public class GlueComponentParser {
                     source.skipSpace();
                     return new GlueComponent(v);
                 case 'f':
-                    if (fixed && t.equals(Catcode.LETTER, 'i')) {
+                    if (fixed && t.eq(Catcode.LETTER, 'i')) {
                         int order = 1;
                         for (t = source.getToken(context); //
-                        (t != null && (t.equals('l') || t.equals('L'))); //
+                        (t != null && (t.eq('l') || t.eq('L'))); //
                         t = source.getToken(context)) {
                             order++;
                         }
@@ -267,7 +267,7 @@ public class GlueComponentParser {
                     }
                     break;
                 case 'i':
-                    if (t.equals(Catcode.LETTER, 'n')) {
+                    if (t.eq(Catcode.LETTER, 'n')) {
                         v = v * POINT_PER_100_IN / 100;
                     } else {
                         break;
@@ -278,7 +278,7 @@ public class GlueComponentParser {
                     source.skipSpace();
                     return new GlueComponent(v);
                 case 'k':
-                    if (t.equals(Catcode.LETTER, 'm')) {
+                    if (t.eq(Catcode.LETTER, 'm')) {
                         v = v * POINT_PER_100_IN / CM100_PER_IN / 100000;
                     } else {
                         break;
@@ -289,7 +289,7 @@ public class GlueComponentParser {
                     source.skipSpace();
                     return new GlueComponent(v);
                 case 'm':
-                    if (t.equals(Catcode.LETTER, 'm')) {
+                    if (t.eq(Catcode.LETTER, 'm')) {
                         v = v * POINT_PER_100_IN / (CM100_PER_IN * 10);
                     } else {
                         break;
@@ -300,9 +300,9 @@ public class GlueComponentParser {
                     source.skipSpace();
                     return new GlueComponent(v);
                 case 'n':
-                    if (t.equals(Catcode.LETTER, 'd')) {
+                    if (t.eq(Catcode.LETTER, 'd')) {
                         v = v * 4818 / 635;
-                    } else if (t.equals(Catcode.LETTER, 'c')) {
+                    } else if (t.eq(Catcode.LETTER, 'c')) {
                         v = v * 803 / 1270;
                     } else {
                         break;
@@ -313,9 +313,9 @@ public class GlueComponentParser {
                     source.skipSpace();
                     return new GlueComponent(v);
                 case 'p':
-                    if (t.equals(Catcode.LETTER, 't')) {
+                    if (t.eq(Catcode.LETTER, 't')) {
                         // nothing to do
-                    } else if (t.equals(Catcode.LETTER, 'c')) {
+                    } else if (t.eq(Catcode.LETTER, 'c')) {
                         v = v * PT_PER_PC;
                     } else {
                         break;
@@ -326,7 +326,7 @@ public class GlueComponentParser {
                     source.skipSpace();
                     return new GlueComponent(v);
                 case 's':
-                    if (t.equals(Catcode.LETTER, 'p')) {
+                    if (t.eq(Catcode.LETTER, 'p')) {
                         v = v / GlueComponent.ONE;
                     } else {
                         break;

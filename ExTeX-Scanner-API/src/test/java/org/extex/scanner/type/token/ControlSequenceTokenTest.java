@@ -120,35 +120,35 @@ public class ControlSequenceTokenTest extends TestCase {
      */
     public void testEqualsCatcodeString0() {
 
-        assertTrue(t.equals(Catcode.ESCAPE, "x"));
+        assertTrue(t.eq(Catcode.ESCAPE, "x"));
     }
 
     /**
      */
     public void testEqualsCatcodeString1() {
 
-        assertFalse(t.equals(Catcode.OTHER, "x"));
+        assertFalse(t.eq(Catcode.OTHER, "x"));
     }
 
     /**
      */
     public void testEqualsCatcodechar0() {
 
-        assertTrue(t.equals(Catcode.ESCAPE, 'x'));
+        assertTrue(t.eq(Catcode.ESCAPE, 'x'));
     }
 
     /**
      */
     public void testEqualsCatcodechar1() {
 
-        assertFalse(t.equals(Catcode.OTHER, ' '));
+        assertFalse(t.eq(Catcode.OTHER, ' '));
     }
 
     /**
      */
     public void testEqualschar0() {
 
-        boolean b = t.equals('x');
+        boolean b = t.eq('x');
         assertTrue(b);
     }
 
@@ -156,7 +156,7 @@ public class ControlSequenceTokenTest extends TestCase {
      */
     public void testEqualschar1() {
 
-        assertFalse(t.equals('.'));
+        assertFalse(t.eq('.'));
     }
 
     /**

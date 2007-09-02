@@ -557,8 +557,8 @@ public class Moritz extends Max
 
             if (t == null) {
                 return false;
-            } else if (!(t.equals(Catcode.LETTER, s.charAt(i)) //
-                    || t.equals(Catcode.OTHER, s.charAt(i)))
+            } else if (!(t.eq(Catcode.LETTER, s.charAt(i)) //
+                    || t.eq(Catcode.OTHER, s.charAt(i)))
                     || !getKeyword(context, s, i + 1)) {
                 put(t);
                 return false;
@@ -741,7 +741,7 @@ public class Moritz extends Max
         skipSpaces = true;
         Token t = getToken(context);
 
-        if (t != null && t.equals(Catcode.OTHER, '=')) {
+        if (t != null && t.eq(Catcode.OTHER, '=')) {
             skipSpaces = true;
         } else {
             put(t);

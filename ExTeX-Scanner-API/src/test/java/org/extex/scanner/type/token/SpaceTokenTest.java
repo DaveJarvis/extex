@@ -93,42 +93,42 @@ public class SpaceTokenTest extends TestCase {
      */
     public void testEqualsCatcodeString0() {
 
-        assertTrue(t.equals(Catcode.SPACE, " "));
+        assertTrue(t.eq(Catcode.SPACE, " "));
     }
 
     /**
      */
     public void testEqualsCatcodeString1() {
 
-        assertFalse(t.equals(Catcode.ACTIVE, " "));
+        assertFalse(t.eq(Catcode.ACTIVE, " "));
     }
 
     /**
      */
     public void testEqualsCatcodechar0() {
 
-        assertTrue(t.equals(Catcode.SPACE, ' '));
+        assertTrue(t.eq(Catcode.SPACE, ' '));
     }
 
     /**
      */
     public void testEqualsCatcodechar1() {
 
-        assertFalse(t.equals(Catcode.ACTIVE, ' '));
+        assertFalse(t.eq(Catcode.ACTIVE, ' '));
     }
 
     /**
      */
     public void testEqualschar0() {
 
-        assertTrue(t.equals(' '));
+        assertTrue(t.eq(' '));
     }
 
     /**
      */
     public void testEqualschar1() {
 
-        assertFalse(t.equals('.'));
+        assertFalse(t.eq('.'));
     }
 
     /**

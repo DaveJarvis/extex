@@ -133,7 +133,7 @@ public class Hyphenation extends HyphenationPrimitive {
                 return word;
             }
 
-            if (t.equals(Catcode.OTHER, '-')) {
+            if (t.eq(Catcode.OTHER, '-')) {
                 if (hyphen) {
                     word.add(t.getChar());
                 } else {

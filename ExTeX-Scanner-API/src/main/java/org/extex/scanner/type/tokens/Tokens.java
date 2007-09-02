@@ -25,13 +25,17 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.extex.core.UnicodeChar;
+import org.extex.scanner.exception.CatcodeException;
+import org.extex.scanner.type.Catcode;
+import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.token.TokenFactory;
 
 /**
  * This class is a container for a list of
  * {@link org.extex.scanner.type.token.Token Token}s.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision:4399 $
@@ -44,7 +48,8 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
     public static final Tokens EMPTY = new ImmutableTokens();
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 20060415L;
 
@@ -63,7 +68,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param t the initial token
      */
     public Tokens(Token t) {
@@ -74,7 +79,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
 
     /**
      * Add another token to the end of the Tokens.
-     *
+     * 
      * @param t The token to add
      */
     public void add(Token t) {
@@ -84,7 +89,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
 
     /**
      * Add another token list to the end of the Tokens.
-     *
+     * 
      * @param toks the tokens to add
      */
     public void add(Tokens toks) {
@@ -106,6 +111,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
 
     /**
      * {@inheritDoc}
+     * 
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
@@ -130,11 +136,11 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
 
     /**
      * Get a specified token from the toks register.
-     *
+     * 
      * @param i the index for the token to get
-     *
+     * 
      * @return the i<sup>th</sup> token or <code>null</code> if i is out of
-     *  bounds
+     *         bounds
      */
     public Token get(int i) {
 
@@ -143,9 +149,9 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
 
     /**
      * Returns a hash code value for the object.
-     *
-     * @return  a hash code value for this object.
-     *
+     * 
+     * @return a hash code value for this object.
+     * 
      * @see java.lang.Object#hashCode()
      */
     @Override
@@ -160,7 +166,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
 
     /**
      * Add a token to the list at a certain position.
-     *
+     * 
      * @param index the index to add the token to
      * @param t the token to add
      */
@@ -171,7 +177,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see java.lang.Iterable#iterator()
      */
     public Iterator<Token> iterator() {
@@ -182,7 +188,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
     /**
      * Getter for the length of the token register, this is the number of
      * elements contained.
-     *
+     * 
      * @return the number of elements in the token register
      */
     public int length() {
@@ -192,9 +198,9 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
 
     /**
      * Remove the first toke from the list and return it.
-     *
+     * 
      * @return the token taken from the from the front of the list or
-     *   <code>null</code> if the list is empty
+     *         <code>null</code> if the list is empty
      */
     public Token pop() {
 
@@ -208,7 +214,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
 
     /**
      * Push a token to the front of the list.
-     *
+     * 
      * @param token the token to push
      */
     public void push(Token token) {
@@ -219,7 +225,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
     /**
      * Remove the last token from the list and return it. If the list is empty
      * then <code>null</code> is returned.
-     *
+     * 
      * @return the first token or <code>null</code>
      */
     public Token removeFirst() {
@@ -233,7 +239,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
     /**
      * Remove the last token from the list and return it. If the list is empty
      * then <code>null</code> is returned.
-     *
+     * 
      * @return the last token or <code>null</code>
      */
     public Token removeLast() {
@@ -245,8 +251,37 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
     }
 
     /**
+     * Determine the printable representation of the object and append it to a
+     * list of Tokens.
+     * 
+     * @param toks the tokens to add to
+     * @param factory the token factory
+     * @param esc the escape character
+     * 
+     * @throws CatcodeException in case of an error
+     */
+    public void show(Tokens toks, TokenFactory factory, long esc)
+            throws CatcodeException {
+
+        for (int i = 0; i < tokens.size(); i++) {
+            Token t = tokens.get(i);
+            if (t instanceof ControlSequenceToken) {
+                if (esc >= 0) {
+                    toks.add(factory.createToken(Catcode.OTHER, (char) (esc),
+                        Namespace.DEFAULT_NAMESPACE));
+                }
+                toks
+                    .add(factory.toTokens(((ControlSequenceToken) t).getName()));
+            } else {
+                toks.add(factory.createToken(Catcode.OTHER, t.getChar(),
+                    Namespace.DEFAULT_NAMESPACE));
+            }
+        }
+    }
+
+    /**
      * Return a String, which show all tokens in the list.
-     *
+     * 
      * @return a String, which show all tokens in the list
      */
     @Override
@@ -259,7 +294,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
 
     /**
      * Print the token into a StringBuffer.
-     *
+     * 
      * @param sb the target string buffer
      */
     public void toString(StringBuffer sb) {
@@ -272,9 +307,9 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
 
     /**
      * Return a String, which shows all tokens (in text format) in the list.
-     *
+     * 
      * @return a String, which show all tokens (in text format) in the list
-     *
+     * 
      * @see org.extex.scanner.type.tokens.FixedTokens#toText()
      */
     public String toText() {
@@ -295,11 +330,11 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
 
     /**
      * Return a String, which shows all tokens (in text format) in the list.
-     *
+     * 
      * @param esc the escape character to use
-     *
+     * 
      * @return a String, which show all tokens (in text format) in the list
-     *
+     * 
      * @see org.extex.scanner.type.tokens.FixedTokens#toText(UnicodeChar)
      */
     public String toText(UnicodeChar esc) {

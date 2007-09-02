@@ -60,12 +60,12 @@ public class CrToken extends AbstractToken implements Token {
      *
      * @return <code>true</code> iff the tokens are equal
      *
-     * @see org.extex.scanner.type.token.AbstractToken#equals(
+     * @see org.extex.scanner.type.token.AbstractToken#eq(
      *      org.extex.scanner.type.Catcode,
      *      char)
      */
     @Override
-    public boolean equals(Catcode cc, char c) {
+    public boolean eq(Catcode cc, char c) {
 
         return cc == getCatcode();
     }
@@ -80,11 +80,11 @@ public class CrToken extends AbstractToken implements Token {
      *
      * @return <code>true</code> iff the tokens are equal
      *
-     * @see org.extex.scanner.type.token.AbstractToken#equals(
+     * @see org.extex.scanner.type.token.AbstractToken#eq(
      *      org.extex.scanner.type.Catcode, java.lang.String)
      */
     @Override
-    public boolean equals(Catcode cc, String s) {
+    public boolean eq(Catcode cc, String s) {
 
         return cc == getCatcode();
     }
@@ -97,10 +97,10 @@ public class CrToken extends AbstractToken implements Token {
      *
      * @return <code>true</code> iff the tokens are equal
      *
-     * @see org.extex.scanner.type.token.AbstractToken#equals(char)
+     * @see org.extex.scanner.type.token.AbstractToken#eq(char)
      */
     @Override
-    public boolean equals(char c) {
+    public boolean eq(char c) {
 
         return false;
     }

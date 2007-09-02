@@ -255,22 +255,22 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
             if (t == null) {
                 throw new EofException(getName());
 
-            } else if (t.equals(Catcode.OTHER, '*')) {
+            } else if (t.eq(Catcode.OTHER, '*')) {
                 val *= evalOperand(context, source, typesetter);
 
-            } else if (t.equals(Catcode.OTHER, '/')) {
+            } else if (t.eq(Catcode.OTHER, '/')) {
                 long x = evalOperand(context, source, typesetter);
                 if (x == 0) {
                     throw new ArithmeticOverflowException(getName());
                 }
                 val /= x;
 
-            } else if (t.equals(Catcode.OTHER, '+')) {
+            } else if (t.eq(Catcode.OTHER, '+')) {
                 saveVal = op.apply(saveVal, val);
                 val = evalOperand(context, source, typesetter);
                 op = PLUS;
 
-            } else if (t.equals(Catcode.OTHER, '-')) {
+            } else if (t.eq(Catcode.OTHER, '-')) {
                 saveVal = op.apply(saveVal, val);
                 val = evalOperand(context, source, typesetter);
                 op = MINUS;
@@ -301,17 +301,17 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
         if (t == null) {
             throw new EofException(getName());
 
-        } else if (t.equals(Catcode.OTHER, '(')) {
+        } else if (t.eq(Catcode.OTHER, '(')) {
             long val = evalExpr(context, source, typesetter);
             t = source.getToken(context);
-            if (t != null && t.equals(Catcode.OTHER, ')')) {
+            if (t != null && t.eq(Catcode.OTHER, ')')) {
                 return val;
             }
 
             throw new HelpingException(getLocalizer(), "MissingParenthesis",
                 (t == null ? "null" : t.toString()));
 
-        } else if (t.equals(Catcode.OTHER, '-')) {
+        } else if (t.eq(Catcode.OTHER, '-')) {
             long val = evalOperand(context, source, typesetter);
             return -val;
 

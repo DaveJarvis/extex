@@ -94,49 +94,49 @@ public class ActiveCharacterTokenTest extends TestCase {
      */
     public void testEqualsCatcodeString0() {
 
-        assertTrue(t.equals(Catcode.ACTIVE, "x"));
+        assertTrue(t.eq(Catcode.ACTIVE, "x"));
     }
 
     /**
      */
     public void testEqualsCatcodeString1() {
 
-        assertFalse(t.equals(Catcode.ACTIVE, " "));
+        assertFalse(t.eq(Catcode.ACTIVE, " "));
     }
 
     /**
      */
     public void testEqualsCatcodeString2() {
 
-        assertFalse(t.equals(Catcode.OTHER, " "));
+        assertFalse(t.eq(Catcode.OTHER, " "));
     }
 
     /**
      */
     public void testEqualsCatcodechar0() {
 
-        assertTrue(t.equals(Catcode.ACTIVE, 'x'));
+        assertTrue(t.eq(Catcode.ACTIVE, 'x'));
     }
 
     /**
      */
     public void testEqualsCatcodechar1() {
 
-        assertFalse(t.equals(Catcode.OTHER, 'x'));
+        assertFalse(t.eq(Catcode.OTHER, 'x'));
     }
 
     /**
      */
     public void testEqualschar0() {
 
-        assertTrue(t.equals('x'));
+        assertTrue(t.eq('x'));
     }
 
     /**
      */
     public void testEqualschar1() {
 
-        assertFalse(t.equals('.'));
+        assertFalse(t.eq('.'));
     }
 
     /**

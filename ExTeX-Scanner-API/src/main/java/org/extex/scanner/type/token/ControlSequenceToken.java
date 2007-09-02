@@ -27,17 +27,17 @@ import org.extex.scanner.type.Namespace;
  * This class represents a control sequence token.
  * <p>
  * This class has a protected constructor only. Use the factory
- * {@link org.extex.scanner.type.token.TokenFactory TokenFactory}
- * to get an instance of this class.
+ * {@link org.extex.scanner.type.token.TokenFactory TokenFactory} to get an
+ * instance of this class.
  * </p>
- *
+ * 
  * <p>
- *  Note that in contrast to <logo>TeX</logo> the escape character leading to
- *  this control sequence token is stored in the character code of the abstract
- *  base class.
+ * Note that in contrast to <logo>TeX</logo> the escape character leading to
+ * this control sequence token is stored in the character code of the abstract
+ * base class.
  * </p>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4399 $
  */
@@ -50,7 +50,8 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     private static final int HASH_FACTOR = 17;
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
@@ -65,12 +66,12 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     private String namespace;
 
     /**
-     * Creates a new object from the first character of a String.
-     * If the string is empty then a space character is used instead.
-     *
+     * Creates a new object from the first character of a String. If the string
+     * is empty then a space character is used instead.
+     * 
      * @param esc the escape character
      * @param name the name of the control sequence &ndash; without the leading
-     *  escape character token
+     *        escape character token
      * @param namespace the name space
      */
     protected ControlSequenceToken(UnicodeChar esc, String name,
@@ -83,10 +84,11 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
 
     /**
      * Create a new instance of the token where the name space is the default
-     * name space and the other attributes are the same as for the current token.
-     *
+     * name space and the other attributes are the same as for the current
+     * token.
+     * 
      * @return the new token
-     *
+     * 
      * @see org.extex.scanner.type.token.CodeToken#cloneInDefaultNamespace()
      */
     public CodeToken cloneInDefaultNamespace() {
@@ -101,11 +103,11 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     /**
      * Create a new instance of the token where the name space is the given one
      * and the other attributes are the same as for the current token.
-     *
+     * 
      * @param theNamespace the name space to use
-     *
+     * 
      * @return the new token
-     *
+     * 
      * @see org.extex.scanner.type.token.CodeToken#cloneInNamespace(
      *      java.lang.String)
      */
@@ -121,17 +123,17 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * Compare the current token with a pair of catcode and character value.
      * This pair constitutes a virtual token. They are the same if the catcode
      * and the value are the same.
-     *
+     * 
      * @param cc the catcode
      * @param c the value
-     *
+     * 
      * @return <code>true</code> iff the tokens are equal
-     *
-     * @see org.extex.scanner.type.token.AbstractToken#equals(
+     * 
+     * @see org.extex.scanner.type.token.AbstractToken#eq(
      *      org.extex.scanner.type.Catcode, char)
      */
     @Override
-    public boolean equals(Catcode cc, char c) {
+    public boolean eq(Catcode cc, char c) {
 
         return getCatcode() == cc && name.length() == 1 && name.charAt(0) == c;
     }
@@ -140,17 +142,17 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * Compare the current token with a pair of catcode and String value. This
      * pair constitutes a virtual token. They are the same if the catcode and
      * the value are the same.
-     *
+     * 
      * @param cc the catcode
      * @param s the value
-     *
+     * 
      * @return <code>true</code> iff the tokens are equal
-     *
-     * @see org.extex.scanner.type.token.Token#equals(
+     * 
+     * @see org.extex.scanner.type.token.Token#eq(
      *      org.extex.scanner.type.Catcode, java.lang.String)
      */
     @Override
-    public boolean equals(Catcode cc, String s) {
+    public boolean eq(Catcode cc, String s) {
 
         return getCatcode() == cc && name.equals(s);
     }
@@ -158,44 +160,45 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     /**
      * Compare the current token with a character value. They are the same if
      * the values are the same.
-     *
+     * 
      * @param c the value
-     *
+     * 
      * @return <code>true</code> iff the tokens are equal
-     *
-     * @see org.extex.scanner.type.token.AbstractToken#equals(char)
+     * 
+     * @see org.extex.scanner.type.token.AbstractToken#eq(char)
      */
     @Override
-    public boolean equals(char c) {
+    public boolean eq(char c) {
 
         return name.length() == 1 && name.charAt(0) == c;
     }
 
     /**
      * Indicates whether some other object is "equal to" this one.
-     *
-     * @param   other   the reference object with which to compare.
-     * @return  <code>true</code> if this object is the same as the obj
-     *          argument; <code>false</code> otherwise.
-     *
+     * 
+     * @param other the reference object with which to compare.
+     * @return <code>true</code> if this object is the same as the obj
+     *         argument; <code>false</code> otherwise.
+     * 
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
     public boolean equals(Object other) {
 
-        if (other instanceof ControlSequenceToken) {
-            ControlSequenceToken othertoken = (ControlSequenceToken) other;
-            return (name.equals(othertoken.getName()) //
-            && namespace.equals(othertoken.namespace));
+        if (!(other instanceof ControlSequenceToken)) {
+            return false;
         }
-        return false;
+
+        ControlSequenceToken othertoken = (ControlSequenceToken) other;
+        return name.equals(othertoken.getName()) //
+                && namespace.equals(othertoken.namespace);
     }
 
     /**
      * Getter for the catcode.
-     *
+     * 
      * @return the catcode
-     *
+     * 
      * @see org.extex.scanner.type.token.Token#getCatcode()
      */
     @Override
@@ -205,12 +208,11 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     }
 
     /**
-     * Getter for the name.
-     * The name is the string representation without the escape character
-     * in front.
-     *
+     * Getter for the name. The name is the string representation without the
+     * escape character in front.
+     * 
      * @return the name of the token
-     *
+     * 
      * @see org.extex.scanner.type.token.CodeToken#getName()
      */
     public String getName() {
@@ -220,9 +222,9 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
 
     /**
      * Getter for the name space.
-     *
+     * 
      * @return the name space
-     *
+     * 
      * @see org.extex.scanner.type.token.CodeToken#getNamespace()
      */
     public String getNamespace() {
@@ -232,20 +234,20 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
 
     /**
      * Returns a hash code value for the object.
-     *
-     * @return  a hash code value for this object
-     *
+     * 
+     * @return a hash code value for this object
+     * 
      * @see java.lang.Object#hashCode()
      */
     @Override
     public int hashCode() {
 
-        return name.hashCode() + HASH_FACTOR * namespace.hashCode();
+        return name.hashCode(); // + HASH_FACTOR * namespace.hashCode();
     }
 
     /**
      * Get the string representation of this object for debugging purposes.
-     *
+     * 
      * @return the string representation
      */
     @Override
@@ -258,9 +260,9 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
 
     /**
      * Print the token into a StringBuffer.
-     *
+     * 
      * @param sb the target string buffer
-     *
+     * 
      * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
      */
     public void toString(StringBuffer sb) {
@@ -271,9 +273,9 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
 
     /**
      * Return the text representation of this object.
-     *
+     * 
      * @return the text representation
-     *
+     * 
      * @see org.extex.scanner.type.token.AbstractToken#toText()
      */
     @Override
@@ -290,11 +292,11 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     /**
      * Return the printable representation of this token as it can be read back
      * in.
-     *
+     * 
      * @param esc the escape character
-     *
+     * 
      * @return the printable representation
-     *
+     * 
      * @see org.extex.scanner.type.token.Token#toText(
      *      org.extex.core.UnicodeChar)
      */
@@ -310,20 +312,19 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
 
     /**
      * Invoke the appropriate visit method for the current class.
+     * 
      * @param visitor the calling visitor
      * @param arg1 the first argument to pass
-     *
+     * 
      * @return the result object
-     *
+     * 
      * @throws Exception in case of an error
-     *
+     * 
      * @see org.extex.scanner.type.token.Token#visit(
-     *      org.extex.scanner.type.token.TokenVisitor,
-     *      java.lang.Object)
+     *      org.extex.scanner.type.token.TokenVisitor, java.lang.Object)
      */
     @SuppressWarnings("unchecked")
-    public Object visit(TokenVisitor visitor, Object arg1)
-            throws Exception {
+    public Object visit(TokenVisitor visitor, Object arg1) throws Exception {
 
         return visitor.visitEscape(this, arg1);
     }

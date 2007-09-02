@@ -120,42 +120,42 @@ public class LetterTokenTest extends TestCase {
      */
     public void testEqualsCatcodeString0() {
 
-        assertTrue(t.equals(Catcode.LETTER, "x"));
+        assertTrue(t.eq(Catcode.LETTER, "x"));
     }
 
     /**
      */
     public void testEqualsCatcodeString1() {
 
-        assertFalse(t.equals(Catcode.OTHER, "x"));
+        assertFalse(t.eq(Catcode.OTHER, "x"));
     }
 
     /**
      */
     public void testEqualsCatcodechar0() {
 
-        assertTrue(t.equals(Catcode.LETTER, 'x'));
+        assertTrue(t.eq(Catcode.LETTER, 'x'));
     }
 
     /**
      */
     public void testEqualsCatcodechar1() {
 
-        assertFalse(t.equals(Catcode.OTHER, ' '));
+        assertFalse(t.eq(Catcode.OTHER, ' '));
     }
 
     /**
      */
     public void testEqualschar0() {
 
-        assertTrue(t.equals('x'));
+        assertTrue(t.eq('x'));
     }
 
     /**
      */
     public void testEqualschar1() {
 
-        assertFalse(t.equals('.'));
+        assertFalse(t.eq('.'));
     }
 
     /**

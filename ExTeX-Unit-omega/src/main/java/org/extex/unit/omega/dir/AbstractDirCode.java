@@ -101,13 +101,13 @@ public class AbstractDirCode extends AbstractCode {
 
         if (t == null) {
             throw new EofException();
-        } else if (t.equals(Catcode.LETTER, 'L')) {
+        } else if (t.eq(Catcode.LETTER, 'L')) {
             return Direction.Dir.L;
-        } else if (t.equals(Catcode.LETTER, 'R')) {
+        } else if (t.eq(Catcode.LETTER, 'R')) {
             return Direction.Dir.R;
-        } else if (t.equals(Catcode.LETTER, 'T')) {
+        } else if (t.eq(Catcode.LETTER, 'T')) {
             return Direction.Dir.T;
-        } else if (t.equals(Catcode.LETTER, 'B')) {
+        } else if (t.eq(Catcode.LETTER, 'B')) {
             return Direction.Dir.B;
         }
 

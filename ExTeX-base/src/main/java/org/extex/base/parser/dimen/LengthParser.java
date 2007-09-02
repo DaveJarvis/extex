@@ -164,7 +164,7 @@ public final class LengthParser {
                 Token t;
                 evalExpr(accumulator, context, source, typesetter);
                 for (t = source.getNonSpace(context); t != null
-                        && t.equals(Catcode.OTHER, ','); t =
+                        && t.eq(Catcode.OTHER, ','); t =
                         source.getNonSpace(context)) {
                     Accumulator x = new Accumulator();
                     evalExpr(x, context, source, typesetter);
@@ -203,7 +203,7 @@ public final class LengthParser {
                 Token t;
                 evalExpr(accumulator, context, source, typesetter);
                 for (t = source.getNonSpace(context); t != null
-                        && t.equals(Catcode.OTHER, ','); t =
+                        && t.eq(Catcode.OTHER, ','); t =
                         source.getNonSpace(context)) {
                     Accumulator x = new Accumulator();
                     evalExpr(x, context, source, typesetter);
@@ -343,7 +343,7 @@ public final class LengthParser {
         for (t = source.getNonSpace(context); t != null; t =
                 source.getNonSpace(context)) {
 
-            if (t.equals(Catcode.OTHER, '*')) {
+            if (t.eq(Catcode.OTHER, '*')) {
                 Accumulator x = new Accumulator();
                 evalTerm(x, context, source, typesetter);
                 val.value *= x.value;
@@ -354,7 +354,7 @@ public final class LengthParser {
                     val.sp += x.sp;
                 }
 
-            } else if (t.equals(Catcode.OTHER, '/')) {
+            } else if (t.eq(Catcode.OTHER, '/')) {
                 Accumulator x = new Accumulator();
                 evalTerm(x, context, source, typesetter);
                 if (x.value == 0) {
@@ -368,12 +368,12 @@ public final class LengthParser {
                 }
                 val.value /= x.value;
 
-            } else if (t.equals(Catcode.OTHER, '+')) {
+            } else if (t.eq(Catcode.OTHER, '+')) {
                 op.apply(accumulator, val);
                 evalTerm(val, context, source, typesetter);
                 op = PLUS;
 
-            } else if (t.equals(Catcode.OTHER, '-')) {
+            } else if (t.eq(Catcode.OTHER, '-')) {
                 op.apply(accumulator, val);
                 evalTerm(val, context, source, typesetter);
                 op = MINUS;
@@ -408,10 +408,10 @@ public final class LengthParser {
                 source.getNonSpace(context)) {
 
             if (t instanceof OtherToken) {
-                if (t.equals(Catcode.OTHER, '(')) {
+                if (t.eq(Catcode.OTHER, '(')) {
                     evalExpr(accumulator, context, source, typesetter);
                     t = source.getNonSpace(context);
-                    if (t != null && t.equals(Catcode.OTHER, ')')) {
+                    if (t != null && t.eq(Catcode.OTHER, ')')) {
                         return;
                     }
 
@@ -420,12 +420,12 @@ public final class LengthParser {
                         "MissingParenthesis", (t == null ? "null" : t
                             .toString()));
 
-                } else if (t.equals(Catcode.OTHER, '-')) {
+                } else if (t.eq(Catcode.OTHER, '-')) {
                     evalTerm(accumulator, context, source, typesetter);
                     accumulator.value = -accumulator.value;
                     return;
 
-                } else if (t.equals(Catcode.OTHER, '+')) {
+                } else if (t.eq(Catcode.OTHER, '+')) {
                     // continue
                 } else {
 
@@ -437,10 +437,12 @@ public final class LengthParser {
                             GlueComponentParser.attachUnit(value, context,
                                 source, typesetter, false);
                     if (gc == null) {
-                        accumulator.value = value;
+                        accumulator.value *= value;
+                        accumulator.value /= ScaledNumber.ONE;
                         accumulator.sp = 0;
                     } else {
-                        accumulator.value = gc.getValue();
+                        accumulator.value *= gc.getValue();
+                        accumulator.value /= ScaledNumber.ONE;
                         accumulator.sp = 1;
                     }
 
@@ -449,30 +451,28 @@ public final class LengthParser {
             } else if (t instanceof CodeToken) {
                 Code code = context.getCode((CodeToken) t);
                 if (code instanceof DimenConvertible) {
-                    accumulator.value =
+                    accumulator.value *=
                             ((DimenConvertible) code).convertDimen(context,
                                 source, typesetter);
-                    accumulator.sp = 1;
+                    accumulator.value /= ScaledNumber.ONE;
+                    accumulator.sp += 1;
                     return;
 
                 } else if (code instanceof ScaledConvertible) {
-                    accumulator.value =
+                    accumulator.value *=
                             ((ScaledConvertible) code).convertScaled(context,
                                 source, typesetter);
-                    accumulator.sp = 0;
-                    return;
+                    accumulator.value /= ScaledNumber.ONE;
 
                 } else if (code instanceof CountConvertible) {
-                    accumulator.value =
+                    accumulator.value *=
                             ((CountConvertible) code).convertCount(context,
-                                source, typesetter)
-                                    * ScaledNumber.ONE;
-                    accumulator.sp = 0;
-                    return;
+                                source, typesetter);
 
                 } else if (code instanceof ExpandableCode) {
                     ((ExpandableCode) code).expand(Flags.NONE, context, source,
                         typesetter);
+
                 } else {
                     break;
                 }
@@ -489,7 +489,12 @@ public final class LengthParser {
                 Object f = functions.get(name);
                 if (f == null) {
                     source.push(tokens);
-                    break;
+                    GlueComponent gc =
+                            GlueComponentParser.attachUnit(accumulator.value,
+                                context, source, typesetter, false);
+                    accumulator.value = gc.getValue();
+                    accumulator.sp++;
+                    return;
                 }
                 if (f instanceof Function0) {
                     ((Function0) f).apply(accumulator);
@@ -503,7 +508,7 @@ public final class LengthParser {
                 t = source.getNonSpace(context);
                 if (t == null) {
                     throw new EofException();
-                } else if (!t.equals(Catcode.OTHER, '(')) {
+                } else if (!t.eq(Catcode.OTHER, '(')) {
                     throw new HelpingException(LocalizerFactory
                         .getLocalizer(LengthParser.class),
                         "MissingOpenParenthesis", name, t.toString());
@@ -525,7 +530,7 @@ public final class LengthParser {
                 t = source.getNonSpace(context);
                 if (t == null) {
                     throw new EofException();
-                } else if (!t.equals(Catcode.OTHER, ')')) {
+                } else if (!t.eq(Catcode.OTHER, ')')) {
                     throw new HelpingException(LocalizerFactory
                         .getLocalizer(LengthParser.class),
                         "MissingParenthesis", t.toString());
@@ -556,7 +561,7 @@ public final class LengthParser {
     public static Dimen parse(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        Accumulator accumulator = new Accumulator();
+        Accumulator accumulator = new Accumulator(ScaledNumber.ONE);
         evalTerm(accumulator, context, source, typesetter);
         if (accumulator.sp != 1) {
             throw new HelpingException(LocalizerFactory
@@ -627,7 +632,7 @@ public final class LengthParser {
         Token t = source.getNonSpace(context);
         if (t == null) {
             throw new EofException();
-        } else if (!t.equals(Catcode.OTHER, ',')) {
+        } else if (!t.eq(Catcode.OTHER, ',')) {
             throw new HelpingException(LocalizerFactory
                 .getLocalizer(LengthParser.class), "MissingComma", t.toString());
         }

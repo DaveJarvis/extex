@@ -133,7 +133,7 @@ public class HyphenationPrimitive extends AbstractHyphenationCode {
                 return word;
             }
 
-            if (t.equals(Catcode.OTHER, '-')) {
+            if (t.eq(Catcode.OTHER, '-')) {
                 word.add(UnicodeChar.SHY);
             } else {
                 uc = t.getChar();

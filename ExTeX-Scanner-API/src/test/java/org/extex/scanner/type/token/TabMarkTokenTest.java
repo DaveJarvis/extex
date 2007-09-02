@@ -94,42 +94,42 @@ public class TabMarkTokenTest extends TestCase {
      */
     public void testEqualsCatcodeString0() {
 
-        assertTrue(t.equals(Catcode.TABMARK, "*"));
+        assertTrue(t.eq(Catcode.TABMARK, "*"));
     }
 
     /**
      */
     public void testEqualsCatcodeString1() {
 
-        assertFalse(t.equals(Catcode.LETTER, "*"));
+        assertFalse(t.eq(Catcode.LETTER, "*"));
     }
 
     /**
      */
     public void testEqualsCatcodechar0() {
 
-        assertTrue(t.equals(Catcode.TABMARK, '*'));
+        assertTrue(t.eq(Catcode.TABMARK, '*'));
     }
 
     /**
      */
     public void testEqualsCatcodechar1() {
 
-        assertFalse(t.equals(Catcode.LETTER, '*'));
+        assertFalse(t.eq(Catcode.LETTER, '*'));
     }
 
     /**
      */
     public void testEqualschar0() {
 
-        assertTrue(t.equals('*'));
+        assertTrue(t.eq('*'));
     }
 
     /**
      */
     public void testEqualschar1() {
 
-        assertFalse(t.equals('.'));
+        assertFalse(t.eq('.'));
     }
 
     /**

@@ -197,7 +197,7 @@ public class Readline extends AbstractAssignment implements LogEnabled {
 
         boolean longP = prefix.clearLong();
         boolean outerP = prefix.clearOuter();
-        context.setCode(cs, new MacroCode(cs.getName(), prefix,
+        context.setCode(cs, new MacroCode(cs.getName(), prefix, false,
             MacroPattern.EMPTY, toks), prefix.clearGlobal());
         if (longP) {
             prefix.setLong();

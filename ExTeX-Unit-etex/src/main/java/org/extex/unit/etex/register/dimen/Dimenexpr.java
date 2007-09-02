@@ -210,9 +210,9 @@ public class Dimenexpr extends AbstractCode
             if (t == null) {
                 throw new EofException(getName());
 
-            } else if (t.equals(Catcode.OTHER, '+')) {
+            } else if (t.eq(Catcode.OTHER, '+')) {
                 val += evalOperand(context, source, typesetter);
-            } else if (t.equals(Catcode.OTHER, '-')) {
+            } else if (t.eq(Catcode.OTHER, '-')) {
                 val -= evalOperand(context, source, typesetter);
 
             } else {
@@ -248,9 +248,9 @@ public class Dimenexpr extends AbstractCode
         for (Token t = source.getNonSpace(context); t != null; t =
                 source.getNonSpace(context)) {
 
-            if (t.equals(Catcode.OTHER, '*')) {
+            if (t.eq(Catcode.OTHER, '*')) {
                 val *= evalOperand(context, source, typesetter);
-            } else if (t.equals(Catcode.OTHER, '/')) {
+            } else if (t.eq(Catcode.OTHER, '/')) {
                 long x = evalOperand(context, source, typesetter);
                 if (x == 0) {
                     throw new ArithmeticOverflowException(getName());
@@ -287,19 +287,19 @@ public class Dimenexpr extends AbstractCode
         Token t = start;
         for (;;) {
             if (t instanceof OtherToken) {
-                if (t.equals(Catcode.OTHER, '(')) {
+                if (t.eq(Catcode.OTHER, '(')) {
                     long val = evalExpr(context, source, typesetter);
                     t = source.getToken(context);
-                    if (t != null && t.equals(Catcode.OTHER, ')')) {
+                    if (t != null && t.eq(Catcode.OTHER, ')')) {
                         return val;
                     }
                     throw new HelpingException(getLocalizer(),
                         "MissingParenthesis", (t == null ? "null" : t
                             .toString()));
-                } else if (t.equals(Catcode.OTHER, '-')) {
+                } else if (t.eq(Catcode.OTHER, '-')) {
                     return -evalOperand(context, source, typesetter);
-                } else if (t.equals(Catcode.OTHER, '.')
-                        || t.equals(Catcode.OTHER, ',')) {
+                } else if (t.eq(Catcode.OTHER, '.')
+                        || t.eq(Catcode.OTHER, ',')) {
                     source.push(t);
                     return ConstantDimenParser
                         .scan(context, source, typesetter).getValue();
@@ -309,8 +309,8 @@ public class Dimenexpr extends AbstractCode
                 t = source.getToken(context);
                 if (t == null) {
                     return pre;
-                } else if (t.equals(Catcode.OTHER, '.')
-                        || t.equals(Catcode.OTHER, ',')) {
+                } else if (t.eq(Catcode.OTHER, '.')
+                        || t.eq(Catcode.OTHER, ',')) {
                     source.push(t);
                     try {
                         source.push(context.getTokenFactory().toTokens(pre));

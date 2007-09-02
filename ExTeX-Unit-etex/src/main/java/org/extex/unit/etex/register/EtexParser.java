@@ -100,11 +100,11 @@ public class EtexParser {
         Token t = source.getNonSpace(context);
         if (t == null) {
             throw new MissingNumberException();
-        } else if (t.equals(Catcode.OTHER, '(')) {
+        } else if (t.eq(Catcode.OTHER, '(')) {
 
             long value = integerExpr(context, source, typesetter);
             t = source.getNonSpace(context);
-            if (!t.equals(Catcode.OTHER, ')')) {
+            if (!t.eq(Catcode.OTHER, ')')) {
                 source.push(t);
                 throw new RuntimeException("uninplemented");
             }

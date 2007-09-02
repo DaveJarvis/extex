@@ -73,13 +73,13 @@ public abstract class AbstractToken implements Token, Serializable {
      *
      * @return <code>true</code> iff the tokens are equal
      *
-     * @see org.extex.scanner.type.token.Token#equals(
+     * @see org.extex.scanner.type.token.Token#eq(
      *      org.extex.scanner.type.Catcode,
      *      char)
      */
-    public boolean equals(Catcode cc, char c) {
+    public boolean eq(Catcode cc, char c) {
 
-        return getCatcode() == cc && equals(c);
+        return getCatcode() == cc && eq(c);
     }
 
     /**
@@ -92,11 +92,11 @@ public abstract class AbstractToken implements Token, Serializable {
      *
      * @return <code>true</code> iff the tokens are equal
      *
-     * @see org.extex.scanner.type.token.Token#equals(
+     * @see org.extex.scanner.type.token.Token#eq(
      *      org.extex.scanner.type.Catcode,
      *      java.lang.String)
      */
-    public boolean equals(Catcode cc, String s) {
+    public boolean eq(Catcode cc, String s) {
 
         return getCatcode() == cc && s.length() == 1
                 && character.getCodePoint() == s.charAt(0);
@@ -110,9 +110,9 @@ public abstract class AbstractToken implements Token, Serializable {
      *
      * @return <code>true</code> iff the tokens are equal
      *
-     * @see org.extex.scanner.type.token.Token#equals(char)
+     * @see org.extex.scanner.type.token.Token#eq(char)
      */
-    public boolean equals(char c) {
+    public boolean eq(char c) {
 
         UnicodeChar uc = getChar();
 

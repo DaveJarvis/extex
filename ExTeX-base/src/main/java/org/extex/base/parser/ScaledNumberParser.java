@@ -151,11 +151,11 @@ public class ScaledNumberParser {
             if (t == null) {
                 throw new EofException();
 
-            } else if (t.equals(Catcode.OTHER, '*')) {
+            } else if (t.eq(Catcode.OTHER, '*')) {
                 val *= parse(context, source, typesetter);
                 val /= ScaledNumber.ONE;
 
-            } else if (t.equals(Catcode.OTHER, '/')) {
+            } else if (t.eq(Catcode.OTHER, '/')) {
                 long x = parse(context, source, typesetter);
                 if (x == 0) {
                     throw new ArithmeticOverflowException("");
@@ -163,12 +163,12 @@ public class ScaledNumberParser {
                 val *= ScaledNumber.ONE;
                 val /= x;
 
-            } else if (t.equals(Catcode.OTHER, '+')) {
+            } else if (t.eq(Catcode.OTHER, '+')) {
                 saveVal = op.apply(saveVal, val);
                 val = parse(context, source, typesetter);
                 op = PLUS;
 
-            } else if (t.equals(Catcode.OTHER, '-')) {
+            } else if (t.eq(Catcode.OTHER, '-')) {
                 saveVal = op.apply(saveVal, val);
                 val = parse(context, source, typesetter);
                 op = MINUS;
@@ -201,10 +201,10 @@ public class ScaledNumberParser {
                 throw new EofException();
 
             } else if (t instanceof OtherToken) {
-                if (t.equals(Catcode.OTHER, '(')) {
+                if (t.eq(Catcode.OTHER, '(')) {
                     long val = evalExpr(context, source, typesetter);
                     t = source.getToken(context);
-                    if (t != null && t.equals(Catcode.OTHER, ')')) {
+                    if (t != null && t.eq(Catcode.OTHER, ')')) {
                         source.skipSpace();
                         return val;
                     }
@@ -214,7 +214,7 @@ public class ScaledNumberParser {
                         "MissingParenthesis", (t == null ? "null" : t
                             .toString()));
 
-                } else if (t.equals(Catcode.OTHER, '-')) {
+                } else if (t.eq(Catcode.OTHER, '-')) {
                     return -parse(context, source, typesetter);
                 } else {
                     return scanFloat(context, source, typesetter, t);
@@ -295,22 +295,22 @@ public class ScaledNumberParser {
         }
 
         while (t != null) {
-            if (t.equals(Catcode.OTHER, '-')) {
+            if (t.eq(Catcode.OTHER, '-')) {
                 neg = !neg;
-            } else if (!t.equals(Catcode.OTHER, '+')) {
+            } else if (!t.eq(Catcode.OTHER, '+')) {
                 break;
             }
             t = source.scanNonSpace(context);
         }
-        if (t != null && !t.equals(Catcode.OTHER, ".")
-                && !t.equals(Catcode.OTHER, ",")) {
+        if (t != null && !t.eq(Catcode.OTHER, ".")
+                && !t.eq(Catcode.OTHER, ",")) {
             source.push(t);
             val = ConstantCountParser.scanNumber(context, source, typesetter);
             t = source.getToken(context);
         }
         if (t != null
-                && (t.equals(Catcode.OTHER, '.') || t
-                    .equals(Catcode.OTHER, ','))) {
+                && (t.eq(Catcode.OTHER, '.') || t
+                    .eq(Catcode.OTHER, ','))) {
             // @see "TeX -- The Program [102]"
             int[] dig = new int[FLOAT_DIGITS];
             int k = 0;

@@ -49,7 +49,7 @@ public interface Token extends Serializable {
      *
      * @return <code>true</code> iff the tokens are equal
      */
-    boolean equals(Catcode cc, char c);
+    boolean eq(Catcode cc, char c);
 
     /**
      * Compare the current token with a pair of catcode and String value. This
@@ -61,7 +61,7 @@ public interface Token extends Serializable {
      *
      * @return <code>true</code> iff the tokens are equal
      */
-    boolean equals(Catcode cc, String s);
+    boolean eq(Catcode cc, String s);
 
     /**
      * Compare the current token with a character value. They are the same if
@@ -71,7 +71,7 @@ public interface Token extends Serializable {
      *
      * @return <code>true</code> iff the tokens are equal
      */
-    boolean equals(char c);
+    boolean eq(char c);
 
     /**
      * Compare the current token to another token. They are the same if the

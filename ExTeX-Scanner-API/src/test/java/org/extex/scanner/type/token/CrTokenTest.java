@@ -93,7 +93,7 @@ public class CrTokenTest extends TestCase {
      */
     public void testEqualsCatcodeString0() {
 
-        assertTrue(t.equals(Catcode.CR, "x"));
+        assertTrue(t.eq(Catcode.CR, "x"));
     }
 
     /**
@@ -107,28 +107,28 @@ public class CrTokenTest extends TestCase {
      */
     public void testEqualsCatcodechar0() {
 
-        assertTrue(t.equals(Catcode.CR, 'x'));
+        assertTrue(t.eq(Catcode.CR, 'x'));
     }
 
     /**
      */
     public void testEqualsCatcodechar1() {
 
-        assertFalse(t.equals(Catcode.LETTER, ' '));
+        assertFalse(t.eq(Catcode.LETTER, ' '));
     }
 
     /**
      */
     public void testEqualschar0() {
 
-        assertFalse(t.equals('x'));
+        assertFalse(t.eq('x'));
     }
 
     /**
      */
     public void testEqualschar1() {
 
-        assertFalse(t.equals('.'));
+        assertFalse(t.eq('.'));
     }
 
     /**
