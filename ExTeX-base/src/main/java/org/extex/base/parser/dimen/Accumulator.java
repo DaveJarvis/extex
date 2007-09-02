@@ -33,6 +33,18 @@ public class Accumulator {
     }
 
     /**
+     * Creates a new object.
+     * 
+     * @param value the value
+     */
+    public Accumulator(long value) {
+
+        super();
+        this.sp = 0;
+        this.value = value;
+    }
+
+    /**
      * Returns a string representation of the object.
      *
      * @return  a string representation of the object.
