@@ -358,8 +358,8 @@ public class IfTest extends ConditionalTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.TokenSource#getFont(org.extex.interpreter.context.Context,
-         *      java.lang.String)
+         * @see org.extex.interpreter.TokenSource#getFont(
+         *      org.extex.interpreter.context.Context, java.lang.String)
          */
         public Font getFont(Context context, String primitive)
                 throws TypesetterException {
@@ -370,8 +370,8 @@ public class IfTest extends ConditionalTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.TokenSource#getKeyword(org.extex.interpreter.context.Context,
-         *      java.lang.String)
+         * @see org.extex.interpreter.TokenSource#getKeyword(
+         *      org.extex.interpreter.context.Context, java.lang.String)
          */
         public boolean getKeyword(Context context, String keyword) {
 
@@ -590,7 +590,8 @@ public class IfTest extends ConditionalTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.TokenSource#scanToken(org.extex.interpreter.context.Context)
+         * @see org.extex.interpreter.TokenSource#scanToken(
+         *      org.extex.interpreter.context.Context)
          */
         public Token scanToken(Context context)
                 throws HelpingException,
@@ -738,6 +739,7 @@ public class IfTest extends ConditionalTester {
 
             return null;
         }
+
     };
 
     /**
