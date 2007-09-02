@@ -114,17 +114,17 @@ public class Expandafter extends AbstractCode implements ExpandableCode {
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException {
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Token t = source.getToken(context);
         if (t == null) {
             throw new EofException(printableControlSequence(context));
         }
-        Token token = source.getToken(context);
+        Token token = source.scanToken(context);
         if (token == null) {
             throw new EofException(printableControlSequence(context));
         }
-        source.execute(token, context, typesetter);
+        source.push(token);
         source.push(t);
     }
 
