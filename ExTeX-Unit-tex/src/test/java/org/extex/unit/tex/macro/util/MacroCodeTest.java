@@ -213,7 +213,7 @@ public class MacroCodeTest extends ExTeXLauncher {
         assertFailure(// --- input code ---
             DEFINE_CATCODES + "\\def\\abc#1{#}" + "\\abc9\\end",
             // --- error channel ---
-            "File ended while scanning use of \\abc");
+            "File ended while scanning definition of \\abc");
     }
 
     /**
@@ -318,7 +318,183 @@ public class MacroCodeTest extends ExTeXLauncher {
             DEFINE_CATCODES + "\\def\\abc{\\def\\x##1{-##1-}}"
                     + "\\abc\\x9 \\end",
             // --- output channel ---
-            "-9-" +  TERM);
+            "-9-" + TERM);
+    }
+
+    /**
+     * <testcase> Test case checking that ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testShow1() throws Exception {
+
+        assertOutput(// --- input code ---
+            DEFINE_CATCODES + "\\def\\abc{}" //
+                    + "\\show\\abc \\end",
+            // --- error channel ---
+            "> \\abc=macro:\n" + "->.\n",
+            // --- output channel ---
+            "");
+    }
+
+    /**
+     * <testcase> Test case checking that ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testShow2() throws Exception {
+
+        assertOutput(// --- input code ---
+            DEFINE_CATCODES + "\\def\\abc{xyz}" //
+                    + "\\show\\abc \\end",
+            // --- error channel ---
+            "> \\abc=macro:\n" + "->xyz.\n",
+            // --- output channel ---
+            "");
+    }
+
+    /**
+     * <testcase> Test case checking that ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testShow3() throws Exception {
+
+        assertOutput(// --- input code ---
+            DEFINE_CATCODES + "\\def\\abc#1{xyz}" //
+                    + "\\show\\abc \\end",
+            // --- error channel ---
+            "> \\abc=macro:\n" + "#1->xyz.\n",
+            // --- output channel ---
+            "");
+    }
+
+    /**
+     * <testcase> Test case checking that ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testShow4() throws Exception {
+
+        assertOutput(// --- input code ---
+            DEFINE_CATCODES + "\\def\\abc#1#{xyz}" //
+                    + "\\show\\abc \\end",
+            // --- error channel ---
+            "> \\abc=macro:\n" + "#1{->xyz{.\n",
+            // --- output channel ---
+            "");
+    }
+
+    /**
+     * <testcase> Test case checking that ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testShow5() throws Exception {
+
+        assertOutput(// --- input code ---
+            DEFINE_CATCODES + "\\def\\abc#1{x#1x}" //
+                    + "\\show\\abc \\end",
+            // --- error channel ---
+            "> \\abc=macro:\n" + "#1->x#1x.\n",
+            // --- output channel ---
+            "");
+    }
+
+    /**
+     * <testcase> Test case checking that ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testShow6() throws Exception {
+
+        assertOutput(// --- input code ---
+            DEFINE_CATCODES + "\\def\\abc#1{x##1x}" //
+                    + "\\show\\abc \\end",
+            // --- error channel ---
+            "> \\abc=macro:\n" + "#1->x##1x.\n",
+            // --- output channel ---
+            "");
+    }
+
+    /**
+     * <testcase> Test case checking that ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testShow7() throws Exception {
+
+        assertOutput(// --- input code ---
+            DEFINE_CATCODES + "\\long\\def\\abc#1#{xyz}" //
+                    + "\\show\\abc \\end",
+            // --- error channel ---
+            "> \\abc=\\long macro:\n" + "#1{->xyz{.\n",
+            // --- output channel ---
+            "");
+    }
+
+    /**
+     * <testcase> Test case checking that ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testShow8() throws Exception {
+
+        assertOutput(// --- input code ---
+            DEFINE_CATCODES + "\\outer\\def\\abc#1#{xyz}" //
+                    + "\\show\\abc \\end",
+            // --- error channel ---
+            "> \\abc=\\outer macro:\n" + "#1{->xyz{.\n",
+            // --- output channel ---
+            "");
+    }
+
+    /**
+     * <testcase> Test case checking that ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testShow9() throws Exception {
+
+        assertOutput(// --- input code ---
+            DEFINE_CATCODES + "\\outer\\long\\def\\abc#1#{xyz}" //
+                    + "\\show\\abc \\end",
+            // --- error channel ---
+            "> \\abc=\\long\\outer macro:\n" + "#1{->xyz{.\n",
+            // --- output channel ---
+            "");
+    }
+
+    /**
+     * <testcase> Test case checking that ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testShow10() throws Exception {
+
+        assertOutput(// --- input code ---
+            DEFINE_CATCODES + "\\def\\abc#1{\\xyz}" //
+                    + "\\show\\abc \\end",
+            // --- error channel ---
+            "> \\abc=macro:\n" + "#1->\\xyz.\n",
+            // --- output channel ---
+            "");
+    }
+
+    /**
+     * <testcase> Test case checking that ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testShow11() throws Exception {
+
+        assertOutput(// --- input code ---
+            DEFINE_CATCODES + "\\escapechar=-1 " + "\\def\\abc#1{\\xyz}" //
+                    + "\\show\\abc \\end",
+            // --- error channel ---
+            "> abc=macro:\n" + "#1->xyz.\n",
+            // --- output channel ---
+            "");
     }
 
 }
