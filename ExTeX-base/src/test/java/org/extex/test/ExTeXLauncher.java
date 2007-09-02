@@ -65,15 +65,25 @@ import org.extex.test.font.LauncherFont;
  * This class provides some properties in addition to those provided by
  * {@link ExTeX ExTeX} or supporting classes. The following list defines them:
  * </p>
+ * 
  * <dl>
  * <dt>extex.launcher.loglevel</dt>
  * <dd>This property sets the log level of the logger in effect. It takes
  * symbolic (String) names of the log levels: <tt>config</tt>, <tt>info</tt>,
  * <tt>warning</tt>, <tt>severe</tt>, <tt>fine</tt>, <tt>finer</tt>,
  * <tt>finest</tt></dd>
+ * 
  * <dt>extex.launcher.verbose</dt>
  * <dd>This property is a boolean value which indicates that the code to be run
  * should be logged.</dd>
+ * 
+ * <dt>extex.launcher.trace</dt>
+ * <dd>This property is a boolean value which indicates that the code executed
+ * should be logged.</dd>
+ * 
+ * <dt>extex.launcher.time</dt>
+ * <dd>This property is a boolean value which indicates that the time elapsed
+ * in the execution of the test code should be logged.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -441,6 +451,7 @@ public class ExTeXLauncher extends TestCase {
         init(extex);
 
         Interpreter interpreter = null;
+        long t = System.currentTimeMillis();
         try {
             interpreter = extex.run();
         } catch (CharacterCodingException e) {
@@ -452,11 +463,32 @@ public class ExTeXLauncher extends TestCase {
         } catch (GeneralException e) {
             if (e.getCause() != null
                     && e.getCause() instanceof RuntimeException) {
-                fail("Error: " + e.getCause().getMessage());
+                String message = e.getCause().toString();
+                fail("Error: " + ("".equals(message) ? e.toString() : message));
             }
             errorP = true;
         } catch (Throwable e) {
             fail("Error: " + e.getLocalizedMessage());
+        } finally {
+            if (Boolean.valueOf(properties.getProperty("extex.launcher.time", //
+                "false")).booleanValue()) {
+                t = System.currentTimeMillis() - t;
+                StringBuffer sb = new StringBuffer();
+                sb.append(t % 1000);
+                sb.append("ms");
+                t = t / 1000;
+                if (t > 0) {
+                    sb.insert(0, " ");
+                    sb.insert(0, t % 60);
+                    t = t / 60;
+                    if (t > 0) {
+                        sb.insert(0, ":");
+                        sb.insert(0, t);
+                    }
+                }
+                sb.insert(0, "time = ");
+                System.err.println(sb.toString());
+            }
         }
 
         handler.close();
