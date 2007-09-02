@@ -36,7 +36,15 @@ import org.extex.typesetter.exception.TypesetterException;
  * <doc name="number">
  * <h3>The Primitive <tt>\number</tt></h3>
  * <p>
- * TODO missing documentation
+ * The primitive <tt>\number</tt> takes a following number specification of
+ * any kind and produces a decimal representation of it. The associated tokens
+ * &ndash; with category code 12 &ndash; are pushed back to the input stream.
+ * Any leading zeroes and whitespace characters are omitted.
+ * </p>
+ * <p>
+ * The primitive can be applied to a constant which is rather pointless except
+ * that leading zeroes are discarded. It can as well be applied to a register in
+ * which case one gets the tokens representing the content of the register.
  * </p>
  * 
  * <h4>Syntax</h4>
@@ -44,12 +52,21 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <pre class="syntax">
  *    &lang;number&rang;
- *        &rarr; <tt>\number</tt> &lang;...&rang; </pre>
+ *        &rarr; <tt>\number</tt> {@linkplain
+ *           org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *           &lang;number&rang;}  </pre>
  * 
  * <h4>Examples</h4>
  * 
  * <pre class="TeXSample">
- *    \number ...  </pre>
+ *    \number 42  &rarr; 42</pre>
+ * 
+ * <pre class="TeXSample">
+ *    \count=-123
+ *    \number -\count3  &rarr; 123 </pre>
+ * 
+ * <pre class="TeXSample">
+ *    \number -0042  &rarr; -42</pre>
  * 
  * </doc>
  * 
