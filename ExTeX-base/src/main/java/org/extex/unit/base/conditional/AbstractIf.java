@@ -93,8 +93,8 @@ public abstract class AbstractIf extends AbstractCode
 
         Code code;
         int n = 0;
-
         Locator locator = source.getLocator();
+
         for (Token t = source.getToken(context); t != null; t =
                 source.getToken(context)) {
 
@@ -114,13 +114,14 @@ public abstract class AbstractIf extends AbstractCode
                     n++;
                 } else if (code.isOuter()) {
                     throw new HelpingException(getMyLocalizer(),
-                        "TTP.OuterInSkipped", name, Integer.toString(locator
-                            .getLineNumber()));
+                        "TTP.OuterInSkipped", context.esc(name), //
+                        Integer.toString(locator.getLineNumber()));
                 }
             }
         }
 
-        throw new HelpingException(getMyLocalizer(), "TTP.EOFinSkipped", name,
+        throw new HelpingException(getMyLocalizer(), "TTP.EOFinSkipped",
+            context.esc(name), // 
             locator != null ? Integer.toString(locator.getLineNumber()) : "");
     }
 
@@ -166,8 +167,7 @@ public abstract class AbstractIf extends AbstractCode
 
         if (conditional(context, source, typesetter)) {
             context.pushConditional(source.getLocator(), true, this, 1, false);
-        } else if (skipToElseOrFi(context, source,
-            printableControlSequence(context))) {
+        } else if (skipToElseOrFi(context, source, getName())) {
             context.pushConditional(source.getLocator(), true, this, -1, false);
         }
     }
@@ -184,8 +184,7 @@ public abstract class AbstractIf extends AbstractCode
 
         if (conditional(context, source, typesetter)) {
             context.pushConditional(source.getLocator(), true, this, 1, false);
-        } else if (skipToElseOrFi(context, source,
-            printableControlSequence(context))) {
+        } else if (skipToElseOrFi(context, source, getName())) {
             context.pushConditional(source.getLocator(), true, this, -1, false);
         }
     }

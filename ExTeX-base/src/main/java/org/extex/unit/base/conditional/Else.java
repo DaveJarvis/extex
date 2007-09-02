@@ -31,47 +31,51 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the primitive <code>\else</code>.
- *
+ * 
  * <doc name="else">
  * <h3>The Primitive <tt>\else</tt></h3>
  * <p>
- *  The primitive <tt>\else</tt> can appear in the context of a conditional.
- *  It terminates the preceding branch and starts the next one.
+ * The primitive <tt>\else</tt> can appear in the context of a conditional. It
+ * terminates the preceding branch and starts the next one.
  * </p>
  * <p>
- *  The primitive <tt>\else</tt> can not be used alone. It always comes in
- *  conjunction with a conditional. A isolated <tt>\else</tt> leads immediately
- *  to an error.
+ * The primitive <tt>\else</tt> can not be used alone. It always comes in
+ * conjunction with a conditional. A isolated <tt>\else</tt> leads immediately
+ * to an error.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;else&rang;
  *      &rarr; <tt>\else</tt>  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \ifnum 1&lt;2\else no\fi  </pre>
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * Note:<br />
  * This primitive is <emph>not</emph> expandable!
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4439 $
  */
 public class Else extends AbstractCode implements PrefixCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for
+     * serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name for debugging
      */
     public Else(String name) {
@@ -82,31 +86,26 @@ public class Else extends AbstractCode implements PrefixCode {
     /**
      * Executes the primitive.
      * <p>
-     *  This primitive can only be seen when a conditional has been opened
-     *  before for which the then branch is expanded. Thus the else branch
-     *  has to be skipped. Additionally the conditional stack has to be
-     *  updated. If the conditional stack is already empty then an exception
-     *  is raised.
+     * This primitive can only be seen when a conditional has been opened before
+     * for which the then branch is expanded. Thus the else branch has to be
+     * skipped. Additionally the conditional stack has to be updated. If the
+     * conditional stack is already empty then an exception is raised.
      * </p>
-     *
+     * 
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource,
-     *      org.extex.typesetter.Typesetter)
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
-    public void execute(Flags prefix, Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+    public void execute(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Conditional cond = context.popConditional();
 
         if (cond == null
-                || AbstractIf.skipToElseOrFi(context, source,
-                    printableControlSequence(context))) {
+                || AbstractIf.skipToElseOrFi(context, source, getName())) {
             throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
                 printableControlSequence(context));
         }
