@@ -117,14 +117,11 @@ public class Expandafter extends AbstractCode implements ExpandableCode {
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Token t = source.getToken(context);
-        if (t == null) {
+        Token token = source.getToken(context);
+        if (t == null || token == null) {
             throw new EofException(printableControlSequence(context));
         }
-        Token token = source.scanToken(context);
-        if (token == null) {
-            throw new EofException(printableControlSequence(context));
-        }
-        source.push(token);
+        source.push(source.expand(token, context, typesetter));
         source.push(t);
     }
 
