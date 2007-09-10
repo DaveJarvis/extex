@@ -46,14 +46,12 @@ public class FlagsImplTest extends TestCase {
     public void testClear() {
 
         Flags f = new FlagsImpl();
-        f.setExpanded();
         f.setGlobal();
         f.setImmediate();
         f.setLong();
         f.setOuter();
         f.setProtected();
         f.clear();
-        assertFalse(f.isExpanded());
         assertFalse(f.isGlobal());
         assertFalse(f.isImmediate());
         assertFalse(f.isLong());
@@ -63,46 +61,16 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
-    public void testClearExpanded1() {
-
-        Flags f = new FlagsImpl();
-        f.setExpanded();
-        f.setGlobal();
-        f.setImmediate();
-        f.setLong();
-        f.setOuter();
-        f.setProtected();
-        assertTrue(f.clearExpanded());
-        assertEquals("GLOIP-", f.toString());
-    }
-
-    /**
-     */
-    public void testClearExpanded2() {
-
-        Flags f = new FlagsImpl();
-        f.setGlobal();
-        f.setImmediate();
-        f.setLong();
-        f.setOuter();
-        f.setProtected();
-        assertFalse(f.clearExpanded());
-        assertEquals("GLOIP-", f.toString());
-    }
-
-    /**
-     */
     public void testClearGlobal1() {
 
         Flags f = new FlagsImpl();
-        f.setExpanded();
         f.setGlobal();
         f.setImmediate();
         f.setLong();
         f.setOuter();
         f.setProtected();
         assertTrue(f.clearGlobal());
-        assertEquals("-LOIPX", f.toString());
+        assertEquals("-LOIP", f.toString());
     }
 
     /**
@@ -110,13 +78,12 @@ public class FlagsImplTest extends TestCase {
     public void testClearGlobal2() {
 
         Flags f = new FlagsImpl();
-        f.setExpanded();
         f.setImmediate();
         f.setLong();
         f.setOuter();
         f.setProtected();
         assertFalse(f.clearGlobal());
-        assertEquals("-LOIPX", f.toString());
+        assertEquals("-LOIP", f.toString());
     }
 
     /**
@@ -124,14 +91,13 @@ public class FlagsImplTest extends TestCase {
     public void testClearImmediate1() {
 
         Flags f = new FlagsImpl();
-        f.setExpanded();
         f.setGlobal();
         f.setImmediate();
         f.setLong();
         f.setOuter();
         f.setProtected();
         assertTrue(f.clearImmediate());
-        assertEquals("GLO-PX", f.toString());
+        assertEquals("GLO-P", f.toString());
     }
 
     /**
@@ -139,13 +105,12 @@ public class FlagsImplTest extends TestCase {
     public void testClearImmediate2() {
 
         Flags f = new FlagsImpl();
-        f.setExpanded();
         f.setGlobal();
         f.setLong();
         f.setOuter();
         f.setProtected();
         assertFalse(f.clearImmediate());
-        assertEquals("GLO-PX", f.toString());
+        assertEquals("GLO-P", f.toString());
     }
 
     /**
@@ -153,14 +118,13 @@ public class FlagsImplTest extends TestCase {
     public void testClearLong1() {
 
         Flags f = new FlagsImpl();
-        f.setExpanded();
         f.setGlobal();
         f.setImmediate();
         f.setLong();
         f.setOuter();
         f.setProtected();
         assertTrue(f.clearLong());
-        assertEquals("G-OIPX", f.toString());
+        assertEquals("G-OIP", f.toString());
     }
 
     /**
@@ -168,13 +132,12 @@ public class FlagsImplTest extends TestCase {
     public void testClearLong2() {
 
         Flags f = new FlagsImpl();
-        f.setExpanded();
         f.setGlobal();
         f.setImmediate();
         f.setOuter();
         f.setProtected();
         assertFalse(f.clearLong());
-        assertEquals("G-OIPX", f.toString());
+        assertEquals("G-OIP", f.toString());
     }
 
     /**
@@ -182,14 +145,13 @@ public class FlagsImplTest extends TestCase {
     public void testClearOuter1() {
 
         Flags f = new FlagsImpl();
-        f.setExpanded();
         f.setGlobal();
         f.setImmediate();
         f.setLong();
         f.setOuter();
         f.setProtected();
         assertTrue(f.clearOuter());
-        assertEquals("GL-IPX", f.toString());
+        assertEquals("GL-IP", f.toString());
     }
 
     /**
@@ -197,13 +159,12 @@ public class FlagsImplTest extends TestCase {
     public void testClearOuter2() {
 
         Flags f = new FlagsImpl();
-        f.setExpanded();
         f.setGlobal();
         f.setImmediate();
         f.setLong();
         f.setProtected();
         assertFalse(f.clearOuter());
-        assertEquals("GL-IPX", f.toString());
+        assertEquals("GL-IP", f.toString());
     }
 
     /**
@@ -211,14 +172,13 @@ public class FlagsImplTest extends TestCase {
     public void testClearProtected1() {
 
         Flags f = new FlagsImpl();
-        f.setExpanded();
         f.setGlobal();
         f.setImmediate();
         f.setLong();
         f.setOuter();
         f.setProtected();
         assertTrue(f.clearProtected());
-        assertEquals("GLOI-X", f.toString());
+        assertEquals("GLOI-", f.toString());
     }
 
     /**
@@ -226,13 +186,12 @@ public class FlagsImplTest extends TestCase {
     public void testClearProtected2() {
 
         Flags f = new FlagsImpl();
-        f.setExpanded();
         f.setGlobal();
         f.setImmediate();
         f.setLong();
         f.setOuter();
         assertFalse(f.clearProtected());
-        assertEquals("GLOI-X", f.toString());
+        assertEquals("GLOI-", f.toString());
     }
 
     /**
@@ -242,7 +201,7 @@ public class FlagsImplTest extends TestCase {
         Flags fl = new FlagsImpl();
         Flags f = fl.copy();
         assertNotSame(fl, f);
-        assertEquals("------", f.toString());
+        assertEquals("-----", f.toString());
     }
 
     /**
@@ -250,7 +209,6 @@ public class FlagsImplTest extends TestCase {
     public void testCopy1() {
 
         Flags fl = new FlagsImpl();
-        fl.setExpanded();
         fl.setGlobal();
         fl.setImmediate();
         fl.setLong();
@@ -258,7 +216,7 @@ public class FlagsImplTest extends TestCase {
         fl.setProtected();
         Flags f = fl.copy();
         assertNotSame(fl, f);
-        assertEquals("GLOIPX", f.toString());
+        assertEquals("GLOIP", f.toString());
     }
 
     /**
@@ -266,12 +224,11 @@ public class FlagsImplTest extends TestCase {
     public void testCopy2() {
 
         Flags fl = new FlagsImpl();
-        fl.setExpanded();
         fl.setGlobal();
         fl.setOuter();
         Flags f = fl.copy();
         assertNotSame(fl, f);
-        assertEquals("G-O--X", f.toString());
+        assertEquals("G-O--", f.toString());
     }
 
     /**
@@ -311,15 +268,6 @@ public class FlagsImplTest extends TestCase {
 
     /**
      */
-    public void testIsDirty4() {
-
-        Flags f = new FlagsImpl();
-        f.setExpanded();
-        assertTrue(f.isDirty());
-    }
-
-    /**
-     */
     public void testIsDirty5() {
 
         Flags f = new FlagsImpl();
@@ -344,18 +292,9 @@ public class FlagsImplTest extends TestCase {
         f.setGlobal();
         f.setLong();
         f.setOuter();
-        f.setExpanded();
         f.setProtected();
         f.setImmediate();
         assertTrue(f.isDirty());
-    }
-
-    /**
-     */
-    public void testIsExpanded1() {
-
-        Flags f = new FlagsImpl();
-        assertFalse(f.isExpanded());
     }
 
     /**
@@ -405,7 +344,7 @@ public class FlagsImplTest extends TestCase {
         Flags fl = new FlagsImpl();
         Flags f = new FlagsImpl();
         f.set(fl);
-        assertEquals("------", f.toString());
+        assertEquals("-----", f.toString());
     }
 
     /**
@@ -416,7 +355,7 @@ public class FlagsImplTest extends TestCase {
         fl.setGlobal();
         Flags f = new FlagsImpl();
         f.set(fl);
-        assertEquals("G-----", f.toString());
+        assertEquals("G----", f.toString());
     }
 
     /**
@@ -427,21 +366,11 @@ public class FlagsImplTest extends TestCase {
         fl.setGlobal();
         fl.setLong();
         fl.setOuter();
-        fl.setExpanded();
         fl.setProtected();
         fl.setImmediate();
         Flags f = new FlagsImpl();
         f.set(fl);
-        assertEquals("GLOIPX", f.toString());
-    }
-
-    /**
-     */
-    public void testSetExpanded() {
-
-        Flags f = new FlagsImpl();
-        f.setExpanded();
-        assertTrue(f.isExpanded());
+        assertEquals("GLOIP", f.toString());
     }
 
     /**
@@ -450,7 +379,6 @@ public class FlagsImplTest extends TestCase {
 
         Flags f = new FlagsImpl();
         f.setGlobal();
-        assertFalse(f.isExpanded());
         assertTrue(f.isGlobal());
         assertFalse(f.isImmediate());
         assertFalse(f.isLong());
@@ -464,7 +392,6 @@ public class FlagsImplTest extends TestCase {
 
         Flags f = new FlagsImpl();
         f.setGlobal(true);
-        assertFalse(f.isExpanded());
         assertTrue(f.isGlobal());
         assertFalse(f.isImmediate());
         assertFalse(f.isLong());
@@ -478,7 +405,6 @@ public class FlagsImplTest extends TestCase {
 
         Flags f = new FlagsImpl();
         f.setGlobal(false);
-        assertFalse(f.isExpanded());
         assertFalse(f.isGlobal());
         assertFalse(f.isImmediate());
         assertFalse(f.isLong());
@@ -492,7 +418,6 @@ public class FlagsImplTest extends TestCase {
 
         Flags f = new FlagsImpl();
         f.setImmediate();
-        assertFalse(f.isExpanded());
         assertFalse(f.isGlobal());
         assertTrue(f.isImmediate());
         assertFalse(f.isLong());
@@ -506,7 +431,6 @@ public class FlagsImplTest extends TestCase {
 
         Flags f = new FlagsImpl();
         f.setLong();
-        assertFalse(f.isExpanded());
         assertFalse(f.isGlobal());
         assertFalse(f.isImmediate());
         assertTrue(f.isLong());
@@ -520,7 +444,6 @@ public class FlagsImplTest extends TestCase {
 
         Flags f = new FlagsImpl();
         f.setOuter();
-        assertFalse(f.isExpanded());
         assertFalse(f.isGlobal());
         assertFalse(f.isImmediate());
         assertFalse(f.isLong());
@@ -534,7 +457,6 @@ public class FlagsImplTest extends TestCase {
 
         Flags f = new FlagsImpl();
         f.setProtected();
-        assertFalse(f.isExpanded());
         assertFalse(f.isGlobal());
         assertFalse(f.isImmediate());
         assertFalse(f.isLong());
@@ -547,7 +469,7 @@ public class FlagsImplTest extends TestCase {
     public void testToString0() {
 
         Flags f = new FlagsImpl();
-        assertEquals("------", f.toString());
+        assertEquals("-----", f.toString());
     }
 
     /**
@@ -557,7 +479,7 @@ public class FlagsImplTest extends TestCase {
         Flags f = new FlagsImpl();
         f.setGlobal();
         f.setLong();
-        assertEquals("GL----", f.toString());
+        assertEquals("GL---", f.toString());
     }
 
     /**
@@ -566,7 +488,7 @@ public class FlagsImplTest extends TestCase {
 
         Flags f = new FlagsImpl();
         f.setProtected();
-        assertEquals("----P-", f.toString());
+        assertEquals("----P", f.toString());
     }
 
     /**
@@ -577,10 +499,9 @@ public class FlagsImplTest extends TestCase {
         f.setGlobal();
         f.setLong();
         f.setOuter();
-        f.setExpanded();
         f.setProtected();
         f.setImmediate();
-        assertEquals("GLOIPX", f.toString());
+        assertEquals("GLOIP", f.toString());
     }
 
     /**
@@ -600,10 +521,9 @@ public class FlagsImplTest extends TestCase {
         f.setGlobal();
         f.setLong();
         f.setOuter();
-        f.setExpanded();
         f.setProtected();
         f.setImmediate();
-        assertEquals("global, long, outer, immediate, protected, and expanded",
+        assertEquals("global, long, outer, immediate, and protected",
             f.toText());
     }
 
@@ -615,10 +535,9 @@ public class FlagsImplTest extends TestCase {
         Flags f = new FlagsImpl();
         f.setLong();
         f.setOuter();
-        f.setExpanded();
         f.setProtected();
         f.setImmediate();
-        assertEquals("long, outer, immediate, protected, and expanded", f
+        assertEquals("long, outer, immediate, and protected", f
             .toText());
     }
 
@@ -629,10 +548,9 @@ public class FlagsImplTest extends TestCase {
         Locale.setDefault(Locale.ENGLISH);
         Flags f = new FlagsImpl();
         f.setOuter();
-        f.setExpanded();
         f.setProtected();
         f.setImmediate();
-        assertEquals("outer, immediate, protected, and expanded", f.toText());
+        assertEquals("outer, immediate, and protected", f.toText());
     }
 
     /**
@@ -641,26 +559,14 @@ public class FlagsImplTest extends TestCase {
 
         Locale.setDefault(Locale.ENGLISH);
         Flags f = new FlagsImpl();
-        f.setExpanded();
         f.setProtected();
         f.setImmediate();
-        assertEquals("immediate, protected, and expanded", f.toText());
+        assertEquals("immediate and protected", f.toText());
     }
 
     /**
      */
     public void testToText5() {
-
-        Locale.setDefault(Locale.ENGLISH);
-        Flags f = new FlagsImpl();
-        f.setExpanded();
-        f.setProtected();
-        assertEquals("protected and expanded", f.toText());
-    }
-
-    /**
-     */
-    public void testToText6() {
 
         Locale.setDefault(Locale.ENGLISH);
         Flags f = new FlagsImpl();
