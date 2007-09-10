@@ -26,7 +26,6 @@ import org.extex.interpreter.context.Context;
 import org.extex.scanner.exception.CatcodeException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.CodeToken;
-import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.conditional.AbstractIf;
@@ -93,10 +92,9 @@ public class Ifcsname extends AbstractIf {
     public boolean conditional(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        Tokens toks =
+        String csname =
                 Csname.scanToEndCsname(context, source, typesetter,
                     getLocalizer());
-        String csname = toks.toText();
         try {
             return context.getCode((CodeToken) context.getTokenFactory()
                 .createToken(Catcode.ESCAPE, null, csname,

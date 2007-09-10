@@ -125,7 +125,7 @@ public class Csname extends AbstractCode implements ExpandableCode, PrefixCode {
      * @throws TypesetterException in case of an error in the typesetter
      * @throws ConfigurationException in case of an configuration error
      */
-    public static Tokens scanToEndCsname(Context context, TokenSource source,
+    public static String scanToEndCsname(Context context, TokenSource source,
             Typesetter typesetter, Localizer loc)
             throws HelpingException,
                 ConfigurationException,
@@ -140,7 +140,7 @@ public class Csname extends AbstractCode implements ExpandableCode, PrefixCode {
 
                 if (code instanceof Endcsname) {
 
-                    return toks;
+                    return toks.toText();
 
                 } else if (code instanceof ExpandableCode) {
 
@@ -187,17 +187,14 @@ public class Csname extends AbstractCode implements ExpandableCode, PrefixCode {
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        Tokens toks =
-                scanToEndCsname(context, source, typesetter, getLocalizer());
-        String s = toks.toText();
+        String s = scanToEndCsname(context, source, typesetter, getLocalizer());
 
         try {
             CodeToken t =
                     (CodeToken) context.getTokenFactory().createToken(
                         Catcode.ESCAPE, context.escapechar(), s,
                         context.getNamespace());
-            Code code = context.getCode(t);
-            if (code == null) {
+            if (context.getCode(t) == null) {
                 context.setCode(t, new Relax(s), true);
             }
             source.push(t);
@@ -219,17 +216,14 @@ public class Csname extends AbstractCode implements ExpandableCode, PrefixCode {
                 ConfigurationException,
                 TypesetterException {
 
-        Tokens toks =
-                scanToEndCsname(context, source, typesetter, getLocalizer());
-        String s = toks.toText();
+        String s = scanToEndCsname(context, source, typesetter, getLocalizer());
 
         try {
             CodeToken t =
                     (CodeToken) context.getTokenFactory().createToken(
                         Catcode.ESCAPE, context.escapechar(), s,
                         context.getNamespace());
-            Code code = context.getCode(t);
-            if (code == null) {
+            if (context.getCode(t) == null) {
                 context.setCode(t, new Relax(s), true);
             }
             source.push(t);
