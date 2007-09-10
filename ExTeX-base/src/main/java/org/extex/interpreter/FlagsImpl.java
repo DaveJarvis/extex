@@ -32,11 +32,6 @@ import org.extex.framework.i18n.LocalizerFactory;
 public class FlagsImpl implements Flags {
 
     /**
-     * The field <tt>expandedP</tt> contains the expanded flag.
-     */
-    private boolean expandedP = false;
-
-    /**
      * The field <tt>globalP</tt> contains the global flag.
      */
     private boolean globalP = false;
@@ -80,23 +75,8 @@ public class FlagsImpl implements Flags {
         globalP = false;
         longP = false;
         outerP = false;
-        expandedP = false;
         immediateP = false;
         protectedP = false;
-    }
-
-    /**
-     * Setter for the expanded flag. The flag is reset to <code>false</code>.
-     *
-     * @return the old value of the expanded flag
-     *
-     * @see org.extex.interpreter.Flags#clearExpanded()
-     */
-    public boolean clearExpanded() {
-
-        boolean flag = expandedP;
-        expandedP = false;
-        return flag;
     }
 
     /**
@@ -179,9 +159,6 @@ public class FlagsImpl implements Flags {
     public Flags copy() {
 
         Flags f = new FlagsImpl();
-        if (expandedP) {
-            f.setExpanded();
-        }
         if (globalP) {
             f.setGlobal();
         }
@@ -214,8 +191,7 @@ public class FlagsImpl implements Flags {
                 + (longP ? 1 : 0) //
                 + (outerP ? 1 : 0) //
                 + (immediateP ? 1 : 0) //
-                + (protectedP ? 1 : 0) //
-        + (expandedP ? 1 : 0))];
+                + (protectedP ? 1 : 0))];
         int i = 0;
         if (globalP) {
             result[i++] = localizer.format("global.text");
@@ -232,9 +208,6 @@ public class FlagsImpl implements Flags {
         if (protectedP) {
             result[i++] = localizer.format("protected.text");
         }
-        if (expandedP) {
-            result[i++] = localizer.format("expanded.text");
-        }
         return result;
     }
 
@@ -247,18 +220,7 @@ public class FlagsImpl implements Flags {
      */
     public boolean isDirty() {
 
-        return globalP || longP || immediateP || outerP || protectedP
-                || expandedP;
-    }
-
-    /**
-     * Getter for the expanded flag.
-     *
-     * @return the current value of the expanded flag
-     */
-    public boolean isExpanded() {
-
-        return expandedP;
+        return globalP || longP || immediateP || outerP || protectedP;
     }
 
     /**
@@ -327,16 +289,7 @@ public class FlagsImpl implements Flags {
         immediateP = flags.isImmediate();
         longP = flags.isLong();
         outerP = flags.isOuter();
-        expandedP = flags.isExpanded();
         protectedP = flags.isProtected();
-    }
-
-    /**
-     * Setter for the expanded flag.
-     */
-    public void setExpanded() {
-
-        expandedP = true;
     }
 
     /**
@@ -405,7 +358,6 @@ public class FlagsImpl implements Flags {
         sb.append(outerP ? 'O' : '-');
         sb.append(immediateP ? 'I' : '-');
         sb.append(protectedP ? 'P' : '-');
-        sb.append(expandedP ? 'X' : '-');
         return sb.toString();
     }
 
