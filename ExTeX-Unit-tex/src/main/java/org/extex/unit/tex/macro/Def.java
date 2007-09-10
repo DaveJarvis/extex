@@ -127,28 +127,23 @@ public class Def extends AbstractAssignment implements LogEnabled {
 
         CodeToken cs = source.getControlSequence(context, typesetter);
         boolean notLong = !prefix.clearLong();
-        MacroPattern pattern =
-                MacroPattern.getPattern(context, source, notLong, cs);
-        String csName = printable(context, cs);
-        Tokens body;
         boolean global = prefix.clearGlobal();
         boolean protect = prefix.clearProtected();
+        MacroPattern pattern =
+                MacroPattern.getPattern(context, source, notLong, cs);
+        Tokens body;
         try {
-            body =
-                    prefix.clearExpanded() //
-                            ? source.scanUnprotectedTokens(context, false,
-                                false, getName())//
-                            : source.getTokens(context, source, typesetter);
+            body = source.getTokens(context, source, typesetter);
 
             Token t = pattern.get(pattern.length() - 1);
             if (t instanceof LeftBraceToken) {
                 body.add(t);
             }
-
         } catch (EofException e) {
-            throw new EofInToksException(csName);
+            throw new EofInToksException(cs.toText(context.escapechar()));
         }
 
+        String csName = printable(context, cs);
         MacroCode macroCode =
                 (protect //
                         ? new ProtectedMacroCode(csName, prefix, notLong,
