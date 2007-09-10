@@ -112,6 +112,22 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
     void executeGroup() throws HelpingException;
 
     /**
+     * Try to expand a single token and return the result.
+     * 
+     * @param token the token to expand
+     * @param context the interpreter context
+     * @param typesetter the typesetter
+     * 
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of a typesetter error
+     * @throws ConfigurationException in case of a configuration error
+     */
+    Token expand(Token token, Context context, Typesetter typesetter)
+            throws HelpingException,
+                ConfigurationException,
+                TypesetterException;
+
+    /**
      * Expand some tokens.
      * 
      * @param tokens the tokens to expand
@@ -691,7 +707,7 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * @param primitive the name of the invoking primitive for error handling
      * 
      * @return the next tokens as <code>String</code> or <code>null</code>
-     *
+     * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
@@ -700,10 +716,11 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
                 TypesetterException;
 
     /**
-     * Get the next expanded token form the input streams between <code>{</code>
-     * and <code>}</code>. If the current input stream is at its end then the
-     * next one on the streamStack is used until a token could be read. If all
-     * stream are at the end then <code>null</code> is returned.
+     * Get the next expanded tokens from the input streams between
+     * <code>{</code> and <code>}</code>. If the current input stream is at
+     * its end then the next one on the streamStack is used until a token could
+     * be read. If all stream are at the end then <code>null</code> is
+     * returned.
      * <p>
      * Normally all expandable tokens are expanded. This method honors the
      * protected mark and does not try to expand protected code.

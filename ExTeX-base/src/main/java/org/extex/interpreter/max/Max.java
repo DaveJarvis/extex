@@ -758,6 +758,33 @@ public abstract class Max
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.TokenSource#expand(
+     *      org.extex.scanner.type.token.Token,
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.typesetter.Typesetter)
+     */
+    public Token expand(Token token, Context context, Typesetter typesetter)
+            throws HelpingException, ConfigurationException, TypesetterException {
+
+        Token t = token;
+
+        if (t instanceof CodeToken) {
+            if (observersExpand != null) {
+                observersExpand.update(t);
+            }
+            Code code = context.getCode((CodeToken) t);
+            if (code instanceof ExpandableCode) {
+                ((ExpandableCode) code).expand(prefix, context, this,
+                    typesetter);
+                t = getToken(context);
+            }
+        }
+        return t;
+    }
+
+    /**
      * Expand some tokens.
      * 
      * @param tokens the tokens to expand
