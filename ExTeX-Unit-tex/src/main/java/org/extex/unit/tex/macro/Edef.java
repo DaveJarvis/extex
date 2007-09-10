@@ -19,12 +19,25 @@
 
 package org.extex.unit.tex.macro;
 
+import java.util.logging.Logger;
+
+import org.extex.core.exception.helping.EofException;
+import org.extex.core.exception.helping.EofInToksException;
 import org.extex.core.exception.helping.HelpingException;
+import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.type.AbstractAssignment;
+import org.extex.scanner.type.token.CodeToken;
+import org.extex.scanner.type.token.LeftBraceToken;
+import org.extex.scanner.type.token.Token;
+import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
+import org.extex.unit.tex.macro.util.MacroCode;
+import org.extex.unit.tex.macro.util.MacroPattern;
+import org.extex.unit.tex.macro.util.ProtectedMacroCode;
 
 /**
  * This class provides an implementation for the primitive <code>\edef</code>.
@@ -61,7 +74,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
-public class Edef extends Def {
+public class Edef extends AbstractAssignment implements LogEnabled {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
@@ -90,8 +103,50 @@ public class Edef extends Def {
     public void assign(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        prefix.setExpanded();
-        super.assign(prefix, context, source, typesetter);
+        CodeToken cs = source.getControlSequence(context, typesetter);
+        boolean notLong = !prefix.clearLong();
+        boolean global = prefix.clearGlobal();
+        boolean protect = prefix.clearProtected();
+        MacroPattern pattern =
+                MacroPattern.getPattern(context, source, notLong, cs);
+        Tokens body;
+        try {
+            body = source.scanUnprotectedTokens(context, //
+                false, false, getName());
+
+            Token t = pattern.get(pattern.length() - 1);
+            if (t instanceof LeftBraceToken) {
+                body.add(t);
+            }
+        } catch (EofException e) {
+            throw new EofInToksException(cs.toText(context.escapechar()));
+        }
+
+        String csName = printable(context, cs);
+        MacroCode macroCode =
+                (protect //
+                        ? new ProtectedMacroCode(csName, prefix, notLong,
+                            pattern, body) //
+                        : new MacroCode(csName, prefix, notLong, pattern, body));
+        macroCode.enableLogging(logger);
+
+        context.setCode(cs, macroCode, global);
+    }
+
+    /**
+     * The field <tt>logger</tt> contains the logger.
+     */
+    private Logger logger;
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(
+     *      java.util.logging.Logger)
+     */
+    public void enableLogging(Logger logger) {
+
+        this.logger = logger;
     }
 
 }

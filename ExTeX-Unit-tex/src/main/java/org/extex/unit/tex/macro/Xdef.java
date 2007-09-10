@@ -62,7 +62,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4732 $
  */
-public class Xdef extends Def {
+public class Xdef extends Edef {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
@@ -91,7 +91,6 @@ public class Xdef extends Def {
     public void assign(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        prefix.setExpanded();
         prefix.setGlobal();
         super.assign(prefix, context, source, typesetter);
     }
