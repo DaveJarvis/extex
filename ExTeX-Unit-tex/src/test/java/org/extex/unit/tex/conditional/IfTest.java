@@ -740,6 +740,12 @@ public class IfTest extends ConditionalTester {
             return null;
         }
 
+        public Token expand(Token token, Context context, Typesetter typesetter) {
+
+            // TODO gene: expand unimplemented
+            return null;
+        }
+
     };
 
     /**
