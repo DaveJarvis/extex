@@ -354,7 +354,8 @@ public class MacroCode extends AbstractCode
     }
 
     /**
-     * The field <tt>TRACER</tt> contains the ...
+     * The field <tt>TRACER</tt> contains the observer for the argument
+     * parsing.
      */
     private final ArgumentMatchingObserver TRACER =
             new ArgumentMatchingObserver() {
@@ -368,12 +369,7 @@ public class MacroCode extends AbstractCode
                     sb.append("<-");
                     sb.append(value.toText());
                     sb.append('\n');
-//                    String s = cs.toText();
-//                    if (s.startsWith("\\make_factor")) {
-//                        System.err.print(s + " ");
-//                        System.err.println(sb.toString());
-//                    }
-                     logger.info(sb.toString());
+                    logger.info(sb.toString());
                 }
 
             };
