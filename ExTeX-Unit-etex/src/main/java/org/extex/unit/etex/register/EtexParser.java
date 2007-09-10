@@ -41,9 +41,9 @@ public class EtexParser {
      * Creates a new object.
      * 
      */
-    public EtexParser() {
+    private EtexParser() {
 
-        // TODO gene: EtexParser constructor unimplemented
+        // not used
     }
 
     /**
