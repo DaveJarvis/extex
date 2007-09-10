@@ -65,6 +65,12 @@ public class MacroPattern extends Tokens {
     private class ArgumentMatcher implements Matcher {
 
         /**
+         * The field <tt>serialVersionUID</tt> contains the version number for
+         * serialization.
+         */
+        private static final long serialVersionUID = 2007L;
+
+        /**
          * The field <tt>no</tt> contains the index of the argument.
          */
         private int no;
@@ -117,6 +123,12 @@ public class MacroPattern extends Tokens {
      * token is accepted.
      */
     private class CollectingMatcher implements Matcher {
+
+        /**
+         * The field <tt>serialVersionUID</tt> contains the version number for
+         * serialization.
+         */
+        private static final long serialVersionUID = 2007L;
 
         /**
          * The field <tt>no</tt> contains the index of the argument.
@@ -176,6 +188,12 @@ public class MacroPattern extends Tokens {
     private class ConstantMatcher implements Matcher {
 
         /**
+         * The field <tt>serialVersionUID</tt> contains the version number for
+         * serialization.
+         */
+        private static final long serialVersionUID = 2007L;
+
+        /**
          * The field <tt>token</tt> contains the token to look for.
          */
         private Token token;
@@ -233,6 +251,12 @@ public class MacroPattern extends Tokens {
      * This matcher collects the tokens from a group.
      */
     private class GroupMatcher implements Matcher {
+
+        /**
+         * The field <tt>serialVersionUID</tt> contains the version number for
+         * serialization.
+         */
+        private static final long serialVersionUID = 2007L;
 
         /**
          * The field <tt>no</tt> contains the index of the argument.
