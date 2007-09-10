@@ -20,11 +20,13 @@
 package org.extex.unit.base.conditional;
 
 import org.extex.core.exception.helping.HelpingException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Conditional;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
+import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.PrefixCode;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -65,7 +67,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4439 $
  */
-public class Else extends AbstractCode implements PrefixCode {
+public class Else extends AbstractCode implements PrefixCode, ExpandableCode {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
@@ -101,6 +103,28 @@ public class Else extends AbstractCode implements PrefixCode {
     @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
+
+        Conditional cond = context.popConditional();
+
+        if (cond == null
+                || AbstractIf.skipToElseOrFi(context, source, getName())) {
+            throw new HelpingException(getLocalizer(), "TTP.ExtraOrElseFi",
+                printableControlSequence(context));
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.ExpandableCode#expand(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     */
+    public void expand(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter)
+            throws ConfigurationException,
+                HelpingException,
+                TypesetterException {
 
         Conditional cond = context.popConditional();
 
