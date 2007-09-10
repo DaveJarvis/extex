@@ -33,14 +33,6 @@ package org.extex.interpreter;
  *   <th>Description</th>
  *  </tr>
  *  <tr>
- *   <td><b>expanded</b></td>
- *   <td></td>
- *   <td>The expanded flag is used internally to signal that expansion should
- *    be used for a definition. This is applied in <tt>\edef</tt> and
- *    <tt>\xdef</tt>.
- *   </td>
- *  </tr>
- *  <tr>
  *   <td><b>global</b></td>
  *   <td><tt>\global</tt></td>
  *   <td>The global flag controls the scope of assignments like <tt>\def</tt>s.
@@ -76,7 +68,7 @@ package org.extex.interpreter;
  * </table>
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
 public interface Flags {
 
@@ -91,14 +83,7 @@ public interface Flags {
          */
         public void clear() {
 
-        }
-
-        /**
-         * @see org.extex.interpreter.Flags#clearExpanded()
-         */
-        public boolean clearExpanded() {
-
-            return false;
+            // nothing to do
         }
 
         /**
@@ -166,14 +151,6 @@ public interface Flags {
         }
 
         /**
-         * @see org.extex.interpreter.Flags#isExpanded()
-         */
-        public boolean isExpanded() {
-
-            return false;
-        }
-
-        /**
          * @see org.extex.interpreter.Flags#isGlobal()
          */
         public boolean isGlobal() {
@@ -217,14 +194,6 @@ public interface Flags {
          * @see org.extex.interpreter.Flags#set(org.extex.interpreter.Flags)
          */
         public void set(Flags flags) {
-
-            throw new UnsupportedOperationException();
-        }
-
-        /**
-         * @see org.extex.interpreter.Flags#setExpanded()
-         */
-        public void setExpanded() {
 
             throw new UnsupportedOperationException();
         }
@@ -290,16 +259,6 @@ public interface Flags {
      * This method clears all flags.
      */
     void clear();
-
-    /**
-     * Setter for the expanded flag. The flag is reset to <code>false</code>.
-     *
-     * @return the old value of the expanded flag
-     *
-     * @see #isExpanded()
-     * @see #setExpanded()
-     */
-    boolean clearExpanded();
 
     /**
      * Setter for the global flag. The flag is reset to <code>false</code>.
@@ -374,16 +333,6 @@ public interface Flags {
     boolean isDirty();
 
     /**
-     * Getter for the expanded flag.
-     *
-     * @return the current value of the expanded flag
-     *
-     * @see #clearExpanded()
-     * @see #setExpanded()
-     */
-    boolean isExpanded();
-
-    /**
      * Getter for the global flag.
      *
      * @return the current value of the global flag
@@ -440,14 +389,6 @@ public interface Flags {
      * @param flags the flags to copy
      */
     void set(Flags flags);
-
-    /**
-     * Setter for the expanded flag. The flag is set to <code>true</code>.
-     *
-     * @see #clearExpanded()
-     * @see #isExpanded()
-     */
-    void setExpanded();
 
     /**
      * Setter for the global flag. The flag is set to <code>true</code>.
