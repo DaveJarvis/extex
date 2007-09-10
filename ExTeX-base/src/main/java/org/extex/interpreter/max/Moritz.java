@@ -1321,6 +1321,8 @@ public class Moritz extends Max
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.TokenSource#scanUnprotectedTokens(
      *      org.extex.interpreter.context.Context, boolean, boolean,
      *      java.lang.String)
@@ -1346,10 +1348,6 @@ public class Moritz extends Max
 
             token = expandUnproteced(getToken(context), toks);
 
-            if (token == null) {
-                throw new EofException();
-            }
-
             if (token instanceof LeftBraceToken) {
                 toks.add(token);
                 ++balance;
@@ -1368,6 +1366,8 @@ public class Moritz extends Max
                     toks.add(token);
                 }
 
+            } else if (token == null) {
+                throw new EofException();
             } else {
                 toks.add(token);
             }
@@ -1399,7 +1399,7 @@ public class Moritz extends Max
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
