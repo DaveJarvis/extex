@@ -20,9 +20,11 @@
 package org.extex.unit.tex.file;
 
 import org.extex.core.exception.helping.HelpingException;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.type.ExpandableCode;
 import org.extex.scanner.TokenStream;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -77,7 +79,7 @@ import org.extex.unit.base.file.AbstractFileCode;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4441 $
  */
-public class Input extends AbstractFileCode {
+public class Input extends AbstractFileCode implements ExpandableCode {
 
     /**
      * The field <tt>FILE_TYPE</tt> contains the file type to create an input
@@ -111,6 +113,29 @@ public class Input extends AbstractFileCode {
     @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
+
+        String name = scanFileName(context, source);
+        TokenStream stream =
+                source.getTokenStreamFactory().getStream(name, FILE_TYPE,
+                    getEncoding(context));
+        if (stream == null) {
+            throw new HelpingException(getLocalizer(), "TTP.FileNotFound", name);
+        }
+        source.addStream(stream);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.ExpandableCode#expand(
+     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     */
+    public void expand(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter)
+            throws ConfigurationException,
+                HelpingException,
+                TypesetterException {
 
         String name = scanFileName(context, source);
         TokenStream stream =
