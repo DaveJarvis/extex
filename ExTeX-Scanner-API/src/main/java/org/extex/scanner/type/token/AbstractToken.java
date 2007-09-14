@@ -221,6 +221,9 @@ public abstract class AbstractToken implements Token, Serializable {
      */
     public String toText() {
 
+        if (character == null) {
+            return "";
+        }
         return character.toString();
     }
 
@@ -237,6 +240,9 @@ public abstract class AbstractToken implements Token, Serializable {
      */
     public String toText(UnicodeChar esc) {
 
+        if (character == null) {
+            return "";
+        }
         return character.toString();
     }
 
