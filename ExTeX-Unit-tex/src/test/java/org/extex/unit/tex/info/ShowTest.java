@@ -212,7 +212,7 @@ public class ShowTest extends NoFlagsPrimitiveTester {
         assertFailure(//--- input code ---
             DEFINE_CATCODES + "\\show ^^10" + "\\end",
             //--- output channel ---
-            "> the character ^^10.\n");
+            "> the character ^^P.\n");
     }
 
     /**
