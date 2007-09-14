@@ -30,7 +30,15 @@ import org.extex.scanner.type.Catcode;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4756 $
  */
-public class LetterTokenTest extends TestCase {
+public class LetterTokenTest extends TokenTester {
+
+    /**
+     * Creates a new object.
+     */
+    public LetterTokenTest() {
+
+        super(t, Catcode.LETTER, "x", "the letter x");
+    }
 
     /**
      * Command line interface.
@@ -48,33 +56,34 @@ public class LetterTokenTest extends TestCase {
 
     /**
      */
-    public void testGetCatcode() {
-
-        assertEquals(Catcode.LETTER, t.getCatcode());
-    }
-
-    /**
-     */
-    public void testToString1() {
-
-        assertEquals("the letter x", t.toString());
-    }
-
-    /**
-     */
     public void testToString2() {
 
-        assertEquals("the letter ^^1", new LetterToken(UnicodeChar.get(1))
+        assertEquals("the letter ^^@", new LetterToken(UnicodeChar.get(0))
             .toString());
     }
 
     /**
      */
-    public void testToStringBuffer1() {
+    public void testToString3() {
 
-        StringBuffer sb = new StringBuffer();
-        t.toString(sb);
-        assertEquals("the letter x", sb.toString());
+        assertEquals("the letter ^^A", new LetterToken(UnicodeChar.get(1))
+            .toString());
+    }
+
+    /**
+     */
+    public void testToString4() {
+
+        assertEquals("the letter ^^B", new LetterToken(UnicodeChar.get(2))
+            .toString());
+    }
+
+    /**
+     */
+    public void testToString5() {
+
+        assertEquals("the letter ^^?", new LetterToken(UnicodeChar.get(127))
+            .toString());
     }
 
     /**
@@ -83,28 +92,7 @@ public class LetterTokenTest extends TestCase {
 
         StringBuffer sb = new StringBuffer();
         new LetterToken(UnicodeChar.get(1)).toString(sb);
-        assertEquals("the letter ^^1", sb.toString());
-    }
-
-    /**
-     */
-    public void testToText() {
-
-        assertEquals("x", t.toText());
-    }
-
-    /**
-     */
-    public void testGetChar() {
-
-        assertEquals('x', t.getChar().getCodePoint());
-    }
-
-    /**
-     */
-    public void testEqualsToken0() {
-
-        assertTrue(t.equals(t));
+        assertEquals("the letter ^^A", sb.toString());
     }
 
     /**
@@ -114,160 +102,6 @@ public class LetterTokenTest extends TestCase {
         Token t1 = new LetterToken(UnicodeChar.get(' '));
         Token t2 = new OtherToken(UnicodeChar.get(' '));
         assertFalse(t1.equals(t2));
-    }
-
-    /**
-     */
-    public void testEqualsCatcodeString0() {
-
-        assertTrue(t.eq(Catcode.LETTER, "x"));
-    }
-
-    /**
-     */
-    public void testEqualsCatcodeString1() {
-
-        assertFalse(t.eq(Catcode.OTHER, "x"));
-    }
-
-    /**
-     */
-    public void testEqualsCatcodechar0() {
-
-        assertTrue(t.eq(Catcode.LETTER, 'x'));
-    }
-
-    /**
-     */
-    public void testEqualsCatcodechar1() {
-
-        assertFalse(t.eq(Catcode.OTHER, ' '));
-    }
-
-    /**
-     */
-    public void testEqualschar0() {
-
-        assertTrue(t.eq('x'));
-    }
-
-    /**
-     */
-    public void testEqualschar1() {
-
-        assertFalse(t.eq('.'));
-    }
-
-    /**
-     */
-    public void testIsa0() {
-
-        assertFalse(t.isa(Catcode.SPACE));
-    }
-
-    /**
-     */
-    public void testIsa1() {
-
-        assertFalse(t.isa(Catcode.ACTIVE));
-    }
-
-    /**
-     */
-    public void testIsa2() {
-
-        assertFalse(t.isa(Catcode.COMMENT));
-    }
-
-    /**
-     */
-    public void testIsa3() {
-
-        assertFalse(t.isa(Catcode.CR));
-    }
-
-    /**
-     */
-    public void testIsa4() {
-
-        assertFalse(t.isa(Catcode.ESCAPE));
-    }
-
-    /**
-     */
-    public void testIsa5() {
-
-        assertFalse(t.isa(Catcode.IGNORE));
-    }
-
-    /**
-     */
-    public void testIsa6() {
-
-        assertFalse(t.isa(Catcode.INVALID));
-    }
-
-    /**
-     */
-    public void testIsa7() {
-
-        assertFalse(t.isa(Catcode.LEFTBRACE));
-    }
-
-    /**
-     */
-    public void testIsa8() {
-
-        assertTrue(t.isa(Catcode.LETTER));
-    }
-
-    /**
-     */
-    public void testIsa9() {
-
-        assertFalse(t.isa(Catcode.MACROPARAM));
-    }
-
-    /**
-     */
-    public void testIsa10() {
-
-        assertFalse(t.isa(Catcode.MATHSHIFT));
-    }
-
-    /**
-     */
-    public void testIsa11() {
-
-        assertFalse(t.isa(Catcode.OTHER));
-    }
-
-    /**
-     */
-    public void testIsa12() {
-
-        assertFalse(t.isa(Catcode.RIGHTBRACE));
-    }
-
-    /**
-     */
-    public void testIsa13() {
-
-        assertFalse(t.isa(Catcode.SUBMARK));
-    }
-
-    /**
-     */
-    public void testIsa14() {
-
-        assertFalse(t.isa(Catcode.SUPMARK));
-    }
-
-    /**
-     */
-    public void testIsa15() {
-
-        assertFalse(t.isa(Catcode.TABMARK));
     }
 
 }

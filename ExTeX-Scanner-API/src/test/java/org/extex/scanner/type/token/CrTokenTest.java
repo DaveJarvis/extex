@@ -19,21 +19,30 @@
 
 package org.extex.scanner.type.token;
 
-import junit.framework.TestCase;
-
+import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
+import org.junit.Test;
 
 /**
  * Test cases for CR tokens.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4756 $
  */
-public class CrTokenTest extends TestCase {
+public class CrTokenTest extends TokenTester {
+
+    /**
+     * Creates a new object.
+     */
+    public CrTokenTest() {
+
+        super(token, Catcode.CR, "[]", "end of alignment template");
+    }
 
     /**
      * Command line interface.
-     * @param args the argiuments
+     * 
+     * @param args the arguments
      */
     public static void main(String[] args) {
 
@@ -43,204 +52,71 @@ public class CrTokenTest extends TestCase {
     /**
      * The field <tt>t</tt> contains the reference token.
      */
-    private static Token t = new CrToken(null);
+    private static CrToken token = new CrToken(null);
 
     /**
+     * A CR token ignores the character value.
      */
-    public void testGetCatcode() {
+    @Test
+    @Override
+    public void testEq1() {
 
-        assertEquals(Catcode.CR, t.getCatcode());
+        assertTrue(token.eq(Catcode.CR, "="));
+    }
+
+    /**
+     * A CR token ignores the character value.
+     */
+    @Test
+    @Override
+    public void testEq20() {
+
+        assertFalse(token.toString(), token.eq('x'));
     }
 
     /**
      */
-    public void testToString() {
+    @Test
+    @Override
+    public void testToTextString0() {
 
-        assertEquals("end of alignment template", t.toString());
+        assertEquals("", token.toText(null));
     }
 
     /**
      */
-    public void testToText() {
+    @Test
+    @Override
+    public void testToTextString1() {
 
-        assertEquals("[]", t.toText());
+        assertEquals("", token.toText(UnicodeChar.get(65)));
     }
 
     /**
      */
-    public void testGetChar() {
+    @Test
+    @Override
+    public void testGetChar0() {
 
-        assertNull(t.getChar());
+        assertNull(token.getChar());
     }
 
     /**
      */
-    public void testEqualsToken0() {
+    @Test
+    public void testToText3() {
 
-        assertTrue(t.equals(t));
+        assertEquals("", token.toText(UnicodeChar.get(65)));
     }
 
     /**
      */
+    @Test
     public void testEqualsToken1() {
 
         Token t1 = new CrToken(null);
         Token t2 = new SpaceToken(" ");
         assertFalse(t1.equals(t2));
-    }
-
-    /**
-     */
-    public void testEqualsCatcodeString0() {
-
-        assertTrue(t.eq(Catcode.CR, "x"));
-    }
-
-    /**
-     */
-    public void testEqualsCatcodeString1() {
-
-        //assertFalse(t.equals(Catcode.LETTER, ' '));
-    }
-
-    /**
-     */
-    public void testEqualsCatcodechar0() {
-
-        assertTrue(t.eq(Catcode.CR, 'x'));
-    }
-
-    /**
-     */
-    public void testEqualsCatcodechar1() {
-
-        assertFalse(t.eq(Catcode.LETTER, ' '));
-    }
-
-    /**
-     */
-    public void testEqualschar0() {
-
-        assertFalse(t.eq('x'));
-    }
-
-    /**
-     */
-    public void testEqualschar1() {
-
-        assertFalse(t.eq('.'));
-    }
-
-    /**
-     */
-    public void testIsa0() {
-
-        assertFalse(t.isa(Catcode.SPACE));
-    }
-
-    /**
-     */
-    public void testIsa1() {
-
-        assertFalse(t.isa(Catcode.ACTIVE));
-    }
-
-    /**
-     */
-    public void testIsa2() {
-
-        assertFalse(t.isa(Catcode.COMMENT));
-    }
-
-    /**
-     */
-    public void testIsa3() {
-
-        assertTrue(t.isa(Catcode.CR));
-    }
-
-    /**
-     */
-    public void testIsa4() {
-
-        assertFalse(t.isa(Catcode.ESCAPE));
-    }
-
-    /**
-     */
-    public void testIsa5() {
-
-        assertFalse(t.isa(Catcode.IGNORE));
-    }
-
-    /**
-     */
-    public void testIsa6() {
-
-        assertFalse(t.isa(Catcode.INVALID));
-    }
-
-    /**
-     */
-    public void testIsa7() {
-
-        assertFalse(t.isa(Catcode.LEFTBRACE));
-    }
-
-    /**
-     */
-    public void testIsa8() {
-
-        assertFalse(t.isa(Catcode.LETTER));
-    }
-
-    /**
-     */
-    public void testIsa9() {
-
-        assertFalse(t.isa(Catcode.MACROPARAM));
-    }
-
-    /**
-     */
-    public void testIsa10() {
-
-        assertFalse(t.isa(Catcode.MATHSHIFT));
-    }
-
-    /**
-     */
-    public void testIsa11() {
-
-        assertFalse(t.isa(Catcode.OTHER));
-    }
-
-    /**
-     */
-    public void testIsa12() {
-
-        assertFalse(t.isa(Catcode.RIGHTBRACE));
-    }
-
-    /**
-     */
-    public void testIsa13() {
-
-        assertFalse(t.isa(Catcode.SUBMARK));
-    }
-
-    /**
-     */
-    public void testIsa14() {
-
-        assertFalse(t.isa(Catcode.SUPMARK));
-    }
-
-    /**
-     */
-    public void testIsa15() {
-
-        assertFalse(t.isa(Catcode.TABMARK));
     }
 
 }

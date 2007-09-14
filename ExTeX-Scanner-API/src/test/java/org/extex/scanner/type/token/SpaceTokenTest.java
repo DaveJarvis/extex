@@ -19,10 +19,9 @@
 
 package org.extex.scanner.type.token;
 
-import junit.framework.TestCase;
-
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
+import org.junit.Test;
 
 /**
  * Test cases for space tokens.
@@ -30,7 +29,15 @@ import org.extex.scanner.type.Catcode;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4756 $
  */
-public class SpaceTokenTest extends TestCase {
+public class SpaceTokenTest extends TokenTester {
+
+    /**
+     * Creates a new object.
+     */
+    public SpaceTokenTest() {
+
+        super(token, Catcode.SPACE, " ", "blank space  ");
+    }
 
     /**
      * Command line interface.
@@ -42,205 +49,37 @@ public class SpaceTokenTest extends TestCase {
     }
 
     /**
-     * The field <tt>t</tt> contains the reference token.
+     * The field <tt>token</tt> contains the reference token.
      */
-    private static Token t = new SpaceToken("x");
+    private static Token token = new SpaceToken("x");
 
     /**
      */
-    public void testGetCatcode() {
+    @Test
+    @Override
+    public void testEq10() {
 
-        assertEquals(Catcode.SPACE, t.getCatcode());
+        assertTrue(token.eq(Catcode.SPACE, ' '));
     }
 
     /**
      */
-    public void testToString() {
+    @Test
+    @Override
+    public void testEq20() {
 
-        assertEquals("blank space  ", t.toString());
+        assertTrue(token.toString(), token.eq(' '));
     }
 
     /**
      */
-    public void testToText() {
+    @Test
+    @Override
+    public void testGetChar0() {
 
-        assertEquals(" ", t.toText());
-    }
-
-    /**
-     */
-    public void testGetChar() {
-
-        assertEquals(' ', t.getChar().getCodePoint());
-    }
-
-    /**
-     */
-    public void testEqualsToken0() {
-
-        assertTrue(t.equals(t));
-    }
-
-    /**
-     */
-    public void testEqualsToken1() {
-
-        Token t2 = new ActiveCharacterToken(UnicodeChar.get(' '), "");
-        assertFalse(t.equals(t2));
-    }
-
-    /**
-     */
-    public void testEqualsCatcodeString0() {
-
-        assertTrue(t.eq(Catcode.SPACE, " "));
-    }
-
-    /**
-     */
-    public void testEqualsCatcodeString1() {
-
-        assertFalse(t.eq(Catcode.ACTIVE, " "));
-    }
-
-    /**
-     */
-    public void testEqualsCatcodechar0() {
-
-        assertTrue(t.eq(Catcode.SPACE, ' '));
-    }
-
-    /**
-     */
-    public void testEqualsCatcodechar1() {
-
-        assertFalse(t.eq(Catcode.ACTIVE, ' '));
-    }
-
-    /**
-     */
-    public void testEqualschar0() {
-
-        assertTrue(t.eq(' '));
-    }
-
-    /**
-     */
-    public void testEqualschar1() {
-
-        assertFalse(t.eq('.'));
-    }
-
-    /**
-     */
-    public void testIsa0() {
-
-        assertTrue(t.isa(Catcode.SPACE));
-    }
-
-    /**
-     */
-    public void testIsa1() {
-
-        assertFalse(t.isa(Catcode.ACTIVE));
-    }
-
-    /**
-     */
-    public void testIsa2() {
-
-        assertFalse(t.isa(Catcode.COMMENT));
-    }
-
-    /**
-     */
-    public void testIsa3() {
-
-        assertFalse(t.isa(Catcode.CR));
-    }
-
-    /**
-     */
-    public void testIsa4() {
-
-        assertFalse(t.isa(Catcode.ESCAPE));
-    }
-
-    /**
-     */
-    public void testIsa5() {
-
-        assertFalse(t.isa(Catcode.IGNORE));
-    }
-
-    /**
-     */
-    public void testIsa6() {
-
-        assertFalse(t.isa(Catcode.INVALID));
-    }
-
-    /**
-     */
-    public void testIsa7() {
-
-        assertFalse(t.isa(Catcode.LEFTBRACE));
-    }
-
-    /**
-     */
-    public void testIsa8() {
-
-        assertFalse(t.isa(Catcode.LETTER));
-    }
-
-    /**
-     */
-    public void testIsa9() {
-
-        assertFalse(t.isa(Catcode.MACROPARAM));
-    }
-
-    /**
-     */
-    public void testIsa10() {
-
-        assertFalse(t.isa(Catcode.MATHSHIFT));
-    }
-
-    /**
-     */
-    public void testIsa11() {
-
-        assertFalse(t.isa(Catcode.OTHER));
-    }
-
-    /**
-     */
-    public void testIsa12() {
-
-        assertFalse(t.isa(Catcode.RIGHTBRACE));
-    }
-
-    /**
-     */
-    public void testIsa13() {
-
-        assertFalse(t.isa(Catcode.SUBMARK));
-    }
-
-    /**
-     */
-    public void testIsa14() {
-
-        assertFalse(t.isa(Catcode.SUPMARK));
-    }
-
-    /**
-     */
-    public void testIsa15() {
-
-        assertFalse(t.isa(Catcode.TABMARK));
+        UnicodeChar x = token.getChar();
+        assertNotNull(x);
+        assertEquals(32, x.getCodePoint());
     }
 
 }

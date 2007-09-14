@@ -19,21 +19,21 @@
 
 package org.extex.scanner.type.token;
 
-import junit.framework.TestCase;
-
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
+import org.junit.Test;
 
 /**
  * Test class for ActiveCharacterToken.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4756 $
  */
-public class ActiveCharacterTokenTest extends TestCase {
+public class ActiveCharacterTokenTest extends TokenTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
@@ -42,213 +42,97 @@ public class ActiveCharacterTokenTest extends TestCase {
     }
 
     /**
-     * The field <tt>t</tt> contains the reference token
+     * Creates a new object.
      */
-    private static Token t = new ActiveCharacterToken(UnicodeChar.get('x'), "");
+    public ActiveCharacterTokenTest() {
 
-    /**
-     */
-    public void testGetCatcode() {
-
-        assertEquals(Catcode.ACTIVE, t.getCatcode());
+        super(token, Catcode.ACTIVE, "x", "the active character x");
     }
 
     /**
+     * The field <tt>token</tt> contains the reference token
      */
-    public void testToString() {
-
-        assertEquals("the active character x", t.toString());
-    }
+    private static ActiveCharacterToken token =
+            new ActiveCharacterToken(UnicodeChar.get('x'), "abc");
 
     /**
      */
-    public void testToText() {
-
-        assertEquals("x", t.toText());
-    }
-
-    /**
-     */
-    public void testGetValue() {
-
-        //assertEquals("x", t.getValue());
-    }
-
-    /**
-     */
-    public void testEqualsToken0() {
-
-        assertTrue(t.equals(t));
-    }
-
-    /**
-     */
+    @Test
     public void testEqualsToken1() {
 
-        Token t1 = new ActiveCharacterToken(UnicodeChar.get(' '), "");
-        Token t2 = new OtherToken(UnicodeChar.get(' '));
-        assertFalse(t1.equals(t2));
+        Token t2 = new OtherToken(UnicodeChar.get('x'));
+        assertFalse(token.equals(t2));
     }
 
     /**
      */
-    public void testEqualsCatcodeString0() {
+    @Test
+    public void testGetName1() {
 
-        assertTrue(t.eq(Catcode.ACTIVE, "x"));
+        assertEquals("", token.getName());
     }
 
     /**
      */
-    public void testEqualsCatcodeString1() {
+    @Test
+    public void testGetNamespace1() {
 
-        assertFalse(t.eq(Catcode.ACTIVE, " "));
+        assertEquals("abc", token.getNamespace());
     }
 
     /**
      */
-    public void testEqualsCatcodeString2() {
+    @Test
+    public void testCloneInNamespace0() {
 
-        assertFalse(t.eq(Catcode.OTHER, " "));
+        CodeToken x = token.cloneInNamespace(null);
+        assertNotNull(x);
+        assertEquals(x, token);
     }
 
     /**
      */
-    public void testEqualsCatcodechar0() {
+    @Test
+    public void testCloneInNamespace1() {
 
-        assertTrue(t.eq(Catcode.ACTIVE, 'x'));
+        CodeToken x = token.cloneInNamespace("abc");
+        assertNotNull(x);
+        assertEquals(x, token);
     }
 
     /**
      */
-    public void testEqualsCatcodechar1() {
+    @Test
+    public void testCloneInNamespace2() {
 
-        assertFalse(t.eq(Catcode.OTHER, 'x'));
+        CodeToken x = token.cloneInNamespace("xyz");
+        assertNotNull(x);
+        assertEquals("xyz", x.getNamespace());
+        assertEquals(token.getCatcode(), x.getCatcode());
+        assertEquals(token.getChar(), x.getChar());
     }
 
     /**
      */
-    public void testEqualschar0() {
+    @Test
+    public void testCloneInDefaultNamespace0() {
 
-        assertTrue(t.eq('x'));
+        CodeToken x = token.cloneInDefaultNamespace();
+        assertNotNull(x);
+        assertEquals("", x.getNamespace());
+        assertEquals(token.getCatcode(), x.getCatcode());
+        assertEquals(token.getChar(), x.getChar());
     }
 
     /**
      */
-    public void testEqualschar1() {
+    @Test
+    public void testCloneInDefaultNamespace1() {
 
-        assertFalse(t.eq('.'));
-    }
-
-    /**
-     */
-    public void testIsa0() {
-
-        assertFalse(t.isa(Catcode.SPACE));
-    }
-
-    /**
-     */
-    public void testIsa1() {
-
-        assertTrue(t.isa(Catcode.ACTIVE));
-    }
-
-    /**
-     */
-    public void testIsa2() {
-
-        assertFalse(t.isa(Catcode.COMMENT));
-    }
-
-    /**
-     */
-    public void testIsa3() {
-
-        assertFalse(t.isa(Catcode.CR));
-    }
-
-    /**
-     */
-    public void testIsa4() {
-
-        assertFalse(t.isa(Catcode.ESCAPE));
-    }
-
-    /**
-     */
-    public void testIsa5() {
-
-        assertFalse(t.isa(Catcode.IGNORE));
-    }
-
-    /**
-     */
-    public void testIsa6() {
-
-        assertFalse(t.isa(Catcode.INVALID));
-    }
-
-    /**
-     */
-    public void testIsa7() {
-
-        assertFalse(t.isa(Catcode.LEFTBRACE));
-    }
-
-    /**
-     */
-    public void testIsa8() {
-
-        assertFalse(t.isa(Catcode.LETTER));
-    }
-
-    /**
-     */
-    public void testIsa9() {
-
-        assertFalse(t.isa(Catcode.MACROPARAM));
-    }
-
-    /**
-     */
-    public void testIsa10() {
-
-        assertFalse(t.isa(Catcode.MATHSHIFT));
-    }
-
-    /**
-     */
-    public void testIsa11() {
-
-        assertFalse(t.isa(Catcode.OTHER));
-    }
-
-    /**
-     */
-    public void testIsa12() {
-
-        assertFalse(t.isa(Catcode.RIGHTBRACE));
-    }
-
-    /**
-     */
-    public void testIsa13() {
-
-        assertFalse(t.isa(Catcode.SUBMARK));
-    }
-
-    /**
-     */
-    public void testIsa14() {
-
-        assertFalse(t.isa(Catcode.SUPMARK));
-    }
-
-    /**
-     */
-    public void testIsa15() {
-
-        assertFalse(t.isa(Catcode.TABMARK));
+        CodeToken y = token.cloneInNamespace("");
+        CodeToken x = y.cloneInDefaultNamespace();
+        assertNotNull(x);
+        assertTrue("the same", x == y);
     }
 
 }
