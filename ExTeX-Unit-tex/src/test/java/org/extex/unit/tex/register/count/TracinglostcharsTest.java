@@ -23,7 +23,7 @@ import org.extex.test.count.AbstractCountRegisterTester;
 
 /**
  * This is a test suite for the primitive <tt>\tracinglostchars</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,6 +31,7 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
@@ -40,7 +41,7 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public TracinglostcharsTest(String arg) {
@@ -49,73 +50,85 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
     }
 
     /**
-     * <testcase primitive="\tracinglostchars">
-     *  Test case checking that <tt>\tracinglostchars</tt> ...
+     * <testcase primitive="\tracinglostchars"> Test case checking that without
+     * <tt>\tracinglostchars</tt> a lost character is silently dropped.
      * <testcase>
-     *
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test0() throws Exception {
+
+        assertSuccess(// --- input code ---
+            "\\nullfont a \\end",
+            // --- output stream ---
+            "\n");
+    }
+
+    /**
+     * <testcase primitive="\tracinglostchars"> Test case checking that
+     * <tt>\tracinglostchars</tt> ... <testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test01() throws Exception {
 
-        assertOutput(//--- input code ---
+        assertOutput(// --- input code ---
             "\\nullfont\\tracinglostchars=1 a \\end",
-            //--- log message ---
+            // --- log message ---
             "Missing character: There is no a in font nullfont!\n",
-            //--- output stream ---
-            TERM);
+            // --- output stream ---
+            "\n");
     }
 
     /**
-     * <testcase primitive="\tracinglostchars">
-     *  Test case checking that <tt>\tracinglostchars</tt> ...
-     * <testcase>
-     *
+     * <testcase primitive="\tracinglostchars"> Test case checking that
+     * <tt>\tracinglostchars</tt> ... <testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        assertOutput(//--- input code ---
+        assertOutput(// --- input code ---
             "\\tracinglostchars=1 a \\end",
-            //--- log message ---
+            // --- log message ---
             "",
-            //--- output stream ---
+            // --- output stream ---
             "a" + TERM);
     }
 
     /**
-     * <testcase primitive="\tracinglostchars">
-     *  Test case checking that <tt>\tracinglostchars</tt> ...
-     * <testcase>
-     *
+     * <testcase primitive="\tracinglostchars"> Test case checking that
+     * <tt>\tracinglostchars</tt> ... <testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test02() throws Exception {
 
-        assertOutput(//--- input code ---
+        assertOutput(// --- input code ---
             DEFINE_BRACES + "\\nullfont\\tracinglostchars=1\\hbox{a}\\end",
-            //--- log message ---
+            // --- log message ---
             "Missing character: There is no a in font nullfont!\n",
-            //--- output stream ---
+            // --- output stream ---
             TERM);
     }
 
     /**
-     * <testcase primitive="\tracinglostchars">
-     *  Test case checking that <tt>\tracinglostchars</tt> ...
-     * <testcase>
-     *
+     * <testcase primitive="\tracinglostchars"> Test case checking that
+     * <tt>\tracinglostchars</tt> ... <testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
-        assertOutput(//--- input code ---
+        assertOutput(// --- input code ---
             DEFINE_BRACES + "\\tracinglostchars=1\\hbox{a}\\end",
-            //--- log message ---
+            // --- log message ---
             "",
-            //--- output stream ---
+            // --- output stream ---
             "a" + TERM);
     }
 
-    //TODO implement more primitive specific test cases (lost chars in math mode...)
+    // TODO implement more primitive specific test cases (lost chars in math
+    // mode...)
 
 }
