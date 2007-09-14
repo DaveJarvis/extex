@@ -253,7 +253,7 @@ public class TokenStreamStringImplTest extends TestCase {
     public void testCaretA2() throws Exception {
 
         TokenStream stream = makeStream("^^A");
-        assertEquals("the character ^^1", stream.get(FACTORY, TOKENIZER)
+        assertEquals("the character ^^A", stream.get(FACTORY, TOKENIZER)
             .toString());
         Token token = stream.get(FACTORY, TOKENIZER);
         assertNotNull(token);
@@ -271,7 +271,7 @@ public class TokenStreamStringImplTest extends TestCase {
     public void testCaretA3() throws Exception {
 
         TokenStream stream = makeStream("^^A;");
-        assertEquals("the character ^^1", stream.get(FACTORY, TOKENIZER)
+        assertEquals("the character ^^A", stream.get(FACTORY, TOKENIZER)
             .toString());
         assertEquals("the character ;", stream.get(FACTORY, TOKENIZER)
             .toString());
@@ -289,7 +289,7 @@ public class TokenStreamStringImplTest extends TestCase {
     public void testCaretA4() throws Exception {
 
         TokenStream stream = makeStream("^^2;");
-        assertEquals("the character ^^2", stream.get(FACTORY, TOKENIZER)
+        assertEquals("the character ^^B", stream.get(FACTORY, TOKENIZER)
             .toString());
         assertEquals("the character ;", stream.get(FACTORY, TOKENIZER)
             .toString());
