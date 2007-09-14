@@ -210,7 +210,7 @@ public class IfnumTest extends ConditionalTester {
     public void testExpand1() throws Exception {
 
         assertSuccess(// --- input code ---
-            "\\count0=\\ifnum 2>1 123\\else 456\\fi \\the\\count0\\end",
+            "\\count0=\\ifnum 2>1 123 \\else 456 \\fi \\the\\count0\\end",
             // --- output channel ---
             "123" + TERM);
     }
