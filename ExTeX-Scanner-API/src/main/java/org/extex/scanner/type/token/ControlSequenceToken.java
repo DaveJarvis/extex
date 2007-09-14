@@ -135,7 +135,8 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     @Override
     public boolean eq(Catcode cc, char c) {
 
-        return getCatcode() == cc && name.length() == 1 && name.charAt(0) == c;
+        return Catcode.ESCAPE == cc && name.length() == 1
+                && name.charAt(0) == c;
     }
 
     /**
@@ -154,7 +155,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     @Override
     public boolean eq(Catcode cc, String s) {
 
-        return getCatcode() == cc && name.equals(s);
+        return Catcode.ESCAPE == cc && name.equals(s);
     }
 
     /**
