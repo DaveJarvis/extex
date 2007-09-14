@@ -172,7 +172,7 @@ public class Dump extends AbstractCode
             new SerialLoader().save(stream, jobname, context);
 
         } catch (IOException e) {
-            throw new NoHelpException(e);
+            throw new NoHelpException(e.toString());
         } catch (DocumentWriterException e) {
             throw new NoHelpException(e);
         } finally {
