@@ -102,7 +102,7 @@ public class Def extends AbstractAssignment implements LogEnabled {
     /**
      * The field <tt>logger</tt> contains the logger.
      */
-    private Logger logger;
+    private transient Logger logger;
 
     /**
      * Creates a new object.

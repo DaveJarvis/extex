@@ -83,6 +83,11 @@ public class Edef extends AbstractAssignment implements LogEnabled {
     protected static final long serialVersionUID = 2007L;
 
     /**
+     * The field <tt>logger</tt> contains the logger.
+     */
+    private transient Logger logger;
+
+    /**
      * Creates a new object.
      * 
      * @param name the name for debugging
@@ -132,11 +137,6 @@ public class Edef extends AbstractAssignment implements LogEnabled {
 
         context.setCode(cs, macroCode, global);
     }
-
-    /**
-     * The field <tt>logger</tt> contains the logger.
-     */
-    private Logger logger;
 
     /**
      * {@inheritDoc}

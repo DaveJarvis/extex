@@ -252,7 +252,7 @@ public class MacroCode extends AbstractCode
     /**
      * The field <tt>logger</tt> contains the logger for debugging.
      */
-    private Logger logger;
+    private transient Logger logger;
 
     /**
      * The field <tt>outerP</tt> contains the indicator for outer definitions.
