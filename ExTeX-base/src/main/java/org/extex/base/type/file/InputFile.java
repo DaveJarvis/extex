@@ -20,9 +20,9 @@
 package org.extex.base.type.file;
 
 import org.extex.core.exception.helping.NoHelpException;
-import org.extex.scanner.TokenStream;
-import org.extex.scanner.Tokenizer;
-import org.extex.scanner.exception.ScannerException;
+import org.extex.scanner.api.TokenStream;
+import org.extex.scanner.api.Tokenizer;
+import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.type.file.InFile;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
@@ -124,7 +124,7 @@ public class InputFile implements InFile {
      * {@inheritDoc}
      * 
      * @see org.extex.scanner.type.file.InFile#read(org.extex.scanner.type.token.TokenFactory,
-     *      org.extex.scanner.Tokenizer)
+     *      org.extex.scanner.api.Tokenizer)
      */
     public Tokens read(TokenFactory factory, Tokenizer tokenizer)
             throws NoHelpException {

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,69 +17,42 @@
  *
  */
 
-package org.extex.scanner.exception;
-
-import org.extex.core.UnicodeChar;
+package org.extex.scanner.api.exception;
 
 /**
- * This exception signals that an invalid character has been encountered.
- * 
+ * This exception is thrown when something in the context of catcode creation or
+ * access goes wrong.
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5563 $
  */
-public class InvalidCharacterScannerException extends ScannerException {
+public class CatcodeVisitorException extends CatcodeException {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 2007L;
-
-    /**
-     * The field <tt>c</tt> contains the invalid character.
-     */
-    private UnicodeChar c;
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
-     * 
-     * @param c the character
      */
-    public InvalidCharacterScannerException(UnicodeChar c) {
+    public CatcodeVisitorException() {
 
         super();
-        this.c = c;
-    }
-
-    /**
-     * Getter for the invalid character.
-     * 
-     * @return the invalid character
-     */
-    public UnicodeChar getC() {
-
-        return c;
     }
 
     /**
      * Creates a localized description of this throwable.
-     * 
+     *
      * @return the localized description of this throwable
-     * 
+     *
      * @see java.lang.Throwable#getLocalizedMessage()
      */
     @Override
     public String getLocalizedMessage() {
 
-        String s;
-        if (c == null) {
-            s = "";
-        } else if (c.isPrintable()) {
-            s = c.toString();
-        } else {
-            s = "^^" + Integer.toString(c.getCodePoint());
-        }
-        return getLocalizer().format("Text", s);
+        return getLocalizer().format("CatcodeVisitorException.Text", //
+                super.getMessage());
     }
 
 }

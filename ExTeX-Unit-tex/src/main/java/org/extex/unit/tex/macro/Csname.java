@@ -32,7 +32,7 @@ import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.PrefixCode;
-import org.extex.scanner.exception.CatcodeException;
+import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.SpaceToken;

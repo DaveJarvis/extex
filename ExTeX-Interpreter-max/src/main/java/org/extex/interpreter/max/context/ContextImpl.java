@@ -87,8 +87,8 @@ import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.unit.UnitInfo;
 import org.extex.language.Language;
 import org.extex.language.LanguageManager;
-import org.extex.scanner.TokenStream;
-import org.extex.scanner.Tokenizer;
+import org.extex.scanner.api.TokenStream;
+import org.extex.scanner.api.Tokenizer;
 import org.extex.scanner.stream.TokenStreamOptions;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.file.InFile;
@@ -689,7 +689,7 @@ public class ContextImpl
      * 
      * @return the catcode for the character
      * 
-     * @see org.extex.scanner.Tokenizer#getCatcode(org.extex.core.UnicodeChar)
+     * @see org.extex.scanner.api.Tokenizer#getCatcode(org.extex.core.UnicodeChar)
      */
     public Catcode getCatcode(UnicodeChar uc) {
 
@@ -2404,7 +2404,7 @@ public class ContextImpl
      * @param standardTokenStream the standardTokenStream to set.
      * 
      * @see org.extex.interpreter.context.Context#setStandardTokenStream(
-     *      org.extex.scanner.TokenStream)
+     *      org.extex.scanner.api.TokenStream)
      */
     public void setStandardTokenStream(TokenStream standardTokenStream) {
 

@@ -25,7 +25,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.interaction.Interaction;
-import org.extex.scanner.TokenStream;
+import org.extex.scanner.api.TokenStream;
 import org.extex.scanner.type.file.InFile;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;

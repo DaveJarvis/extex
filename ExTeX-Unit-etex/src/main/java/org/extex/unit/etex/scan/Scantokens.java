@@ -29,9 +29,9 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.ExpandableCode;
-import org.extex.scanner.TokenStream;
-import org.extex.scanner.Tokenizer;
-import org.extex.scanner.exception.ScannerException;
+import org.extex.scanner.api.TokenStream;
+import org.extex.scanner.api.Tokenizer;
+import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
@@ -108,7 +108,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
          * 
          * @return <code>true</code> if the closing was successful
          * 
-         * @see org.extex.scanner.TokenStream#closeFileStream()
+         * @see org.extex.scanner.api.TokenStream#closeFileStream()
          */
         public boolean closeFileStream() {
 
@@ -129,9 +129,9 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
          * 
          * @throws ScannerException in case of an error
          * 
-         * @see org.extex.scanner.TokenStream#get(
+         * @see org.extex.scanner.api.TokenStream#get(
          *      org.extex.scanner.type.token.TokenFactory,
-         *      org.extex.scanner.Tokenizer)
+         *      org.extex.scanner.api.Tokenizer)
          */
         public Token get(TokenFactory factory, Tokenizer tokenizer)
                 throws ScannerException {
@@ -140,7 +140,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
         }
 
         /**
-         * @see org.extex.scanner.TokenStream#getLocator()
+         * @see org.extex.scanner.api.TokenStream#getLocator()
          */
         public Locator getLocator() {
 
@@ -148,7 +148,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
         }
 
         /**
-         * @see org.extex.scanner.TokenStream#isEof()
+         * @see org.extex.scanner.api.TokenStream#isEof()
          */
         public boolean isEof() throws ScannerException {
 
@@ -156,7 +156,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
         }
 
         /**
-         * @see org.extex.scanner.TokenStream#isEol()
+         * @see org.extex.scanner.api.TokenStream#isEol()
          */
         public boolean isEol() throws ScannerException {
 
@@ -164,7 +164,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
         }
 
         /**
-         * @see org.extex.scanner.TokenStream#isFileStream()
+         * @see org.extex.scanner.api.TokenStream#isFileStream()
          */
         public boolean isFileStream() {
 
@@ -172,7 +172,7 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
         }
 
         /**
-         * @see org.extex.scanner.TokenStream#put(
+         * @see org.extex.scanner.api.TokenStream#put(
          *      org.extex.scanner.type.token.Token)
          */
         public void put(Token token) {

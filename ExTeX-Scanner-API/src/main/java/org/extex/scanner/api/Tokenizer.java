@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.scanner;
+package org.extex.scanner.api;
 
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
@@ -27,7 +27,7 @@ import org.extex.scanner.type.Catcode;
  * the category codes.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
 public interface Tokenizer {
 

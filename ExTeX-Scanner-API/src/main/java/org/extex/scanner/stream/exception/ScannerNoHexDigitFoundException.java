@@ -19,7 +19,7 @@
 
 package org.extex.scanner.stream.exception;
 
-import org.extex.scanner.exception.ScannerException;
+import org.extex.scanner.api.exception.ScannerException;
 
 /**
  * ScannerException, if no hex digit are not found after '^^^^'.

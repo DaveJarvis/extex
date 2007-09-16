@@ -30,8 +30,8 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.parser.Parser;
 import org.extex.interpreter.type.box.Box;
-import org.extex.scanner.TokenStream;
-import org.extex.scanner.exception.CatcodeException;
+import org.extex.scanner.api.TokenStream;
+import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.CodeToken;
@@ -229,7 +229,7 @@ public class IfTest extends ConditionalTester {
          * @param stream the new stream to read from
          * 
          * @see org.extex.interpreter.TokenSource#addStream(
-         *      org.extex.scanner.TokenStream)
+         *      org.extex.scanner.api.TokenStream)
          */
         public void addStream(TokenStream stream) {
 

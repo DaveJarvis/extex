@@ -22,7 +22,7 @@ package org.extex.scanner.type.file;
 import java.io.Serializable;
 
 import org.extex.core.exception.helping.HelpingException;
-import org.extex.scanner.Tokenizer;
+import org.extex.scanner.api.Tokenizer;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.tokens.Tokens;
 

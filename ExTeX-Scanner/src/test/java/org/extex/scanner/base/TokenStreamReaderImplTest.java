@@ -22,7 +22,7 @@ package org.extex.scanner.base;
 import java.io.IOException;
 import java.io.StringReader;
 
-import org.extex.scanner.TokenStream;
+import org.extex.scanner.api.TokenStream;
 
 /**
  * Test cases for the string implementation of a token stream.

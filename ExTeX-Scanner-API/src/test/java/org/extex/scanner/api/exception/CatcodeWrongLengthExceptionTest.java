@@ -17,13 +17,13 @@
  *
  */
 
-package org.extex.scanner.exception;
+package org.extex.scanner.api.exception;
 
 import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import org.extex.core.UnicodeChar;
+import org.extex.scanner.api.exception.CatcodeWrongLengthException;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
@@ -33,7 +33,7 @@ import org.junit.runner.JUnitCore;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5563 $
  */
-public class InvalidCharacterScannerExceptionTest {
+public class CatcodeWrongLengthExceptionTest {
 
     /**
      * Command line interface.
@@ -42,33 +42,31 @@ public class InvalidCharacterScannerExceptionTest {
      */
     public static void main(String[] args) {
 
-        JUnitCore.runClasses(InvalidCharacterScannerExceptionTest.class);
+        JUnitCore.runClasses(CatcodeWrongLengthExceptionTest.class);
     }
 
     /**
      * Test method for
-     * {@link org.extex.scanner.exception.CatcodeWrongLengthException#getLocalizedMessage()}.
+     * {@link org.extex.scanner.api.exception.CatcodeWrongLengthException#getLocalizedMessage()}.
      */
     @Test
     public final void testGetLocalizedMessage1() {
 
         Locale.setDefault(Locale.ENGLISH);
-        assertEquals("Invalid character x recognized",
-            new InvalidCharacterScannerException(UnicodeChar.get('x'))
-                .getLocalizedMessage());
+        assertEquals("Expecting a single character instead of xxx",
+            new CatcodeWrongLengthException("xxx").getLocalizedMessage());
     }
 
     /**
      * Test method for
-     * {@link org.extex.scanner.exception.CatcodeWrongLengthException#getLocalizedMessage()}.
+     * {@link org.extex.scanner.api.exception.CatcodeWrongLengthException#getLocalizedMessage()}.
      */
     @Test
     public final void testGetLocalizedMessage2() {
 
         Locale.setDefault(Locale.GERMAN);
-        assertEquals("Ungültiges Zeichen x erkannt",
-            new InvalidCharacterScannerException(UnicodeChar.get('x'))
-                .getLocalizedMessage());
+        assertEquals("Einzelnes Zeichen erwartet anstatt xxx",
+            new CatcodeWrongLengthException("xxx").getLocalizedMessage());
     }
 
 }

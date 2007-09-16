@@ -37,7 +37,7 @@ import org.extex.interpreter.primitives.register.real.RealConvertible;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.Theable;
-import org.extex.scanner.exception.CatcodeException;
+import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;

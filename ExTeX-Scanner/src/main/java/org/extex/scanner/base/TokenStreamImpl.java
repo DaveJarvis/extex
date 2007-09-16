@@ -26,11 +26,11 @@ import java.io.Reader;
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
 import org.extex.framework.configuration.Configuration;
-import org.extex.scanner.TokenStream;
-import org.extex.scanner.Tokenizer;
-import org.extex.scanner.exception.CatcodeException;
-import org.extex.scanner.exception.InvalidCharacterScannerException;
-import org.extex.scanner.exception.ScannerException;
+import org.extex.scanner.api.TokenStream;
+import org.extex.scanner.api.Tokenizer;
+import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.api.exception.InvalidCharacterScannerException;
+import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.stream.TokenStreamOptions;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeVisitor;
@@ -725,7 +725,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      * 
      * @return the locator
      * 
-     * @see org.extex.scanner.TokenStream#getLocator()
+     * @see org.extex.scanner.api.TokenStream#getLocator()
      */
     @Override
     public Locator getLocator() {
@@ -746,7 +746,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      * 
      * @see org.extex.scanner.base.TokenStreamBaseImpl#getNext(
      *      org.extex.scanner.type.token.TokenFactory,
-     *      org.extex.scanner.Tokenizer)
+     *      org.extex.scanner.api.Tokenizer)
      */
     @Override
     protected Token getNext(TokenFactory factory, Tokenizer tokenizer)
@@ -817,7 +817,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      *         Especially if an IO exceptions occurs it is delivered as chained
      *         exception in a ScannerException.
      * 
-     * @see org.extex.scanner.TokenStream#isEof()
+     * @see org.extex.scanner.api.TokenStream#isEof()
      */
     @Override
     public boolean isEof() throws ScannerException {
@@ -844,7 +844,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      * 
      * @return <code>true</code> if the stream is at end of line
      * 
-     * @see org.extex.scanner.TokenStream#isEol()
+     * @see org.extex.scanner.api.TokenStream#isEol()
      */
     @Override
     public boolean isEol() {

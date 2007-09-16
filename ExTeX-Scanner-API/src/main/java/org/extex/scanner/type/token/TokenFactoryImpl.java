@@ -24,9 +24,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.extex.core.UnicodeChar;
-import org.extex.scanner.exception.CatcodeException;
-import org.extex.scanner.exception.CatcodeVisitorException;
-import org.extex.scanner.exception.CatcodeWrongLengthException;
+import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.api.exception.CatcodeVisitorException;
+import org.extex.scanner.api.exception.CatcodeWrongLengthException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.CatcodeVisitor;
 import org.extex.scanner.type.Namespace;

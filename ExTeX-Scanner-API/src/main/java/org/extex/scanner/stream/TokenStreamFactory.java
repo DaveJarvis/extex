@@ -37,7 +37,7 @@ import org.extex.framework.configuration.exception.ConfigurationInstantiationExc
 import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
 import org.extex.framework.configuration.exception.ConfigurationNoSuchMethodException;
 import org.extex.resource.ResourceFinder;
-import org.extex.scanner.TokenStream;
+import org.extex.scanner.api.TokenStream;
 import org.extex.scanner.stream.exception.MissingResourceFinderException;
 import org.extex.scanner.stream.observer.file.OpenFileObservable;
 import org.extex.scanner.stream.observer.file.OpenFileObserver;
@@ -54,7 +54,7 @@ import org.extex.scanner.stream.observer.writer.OpenWriterObserverList;
 
 /**
  * This is the factory to provide an instance of a
- * {@link org.extex.scanner.TokenStream TokenStream}. Like any good factory it
+ * {@link org.extex.scanner.api.TokenStream TokenStream}. Like any good factory it
  * is controlled by its configuration.
  * <h3>Configuration</h3>
  * <p>
@@ -69,7 +69,7 @@ import org.extex.scanner.stream.observer.writer.OpenWriterObserverList;
  * </p>
  * <p>
  * The class given must implement the interface
- * {@link org.extex.scanner.TokenStream TokenStream}. In addition an
+ * {@link org.extex.scanner.api.TokenStream TokenStream}. In addition an
  * appropriate constructor is required:
  * 
  * <pre>

@@ -31,7 +31,7 @@ import org.extex.interpreter.exception.ErrorLimitException;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.loader.LoaderException;
 import org.extex.resource.ResourceFinder;
-import org.extex.scanner.TokenStream;
+import org.extex.scanner.api.TokenStream;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;

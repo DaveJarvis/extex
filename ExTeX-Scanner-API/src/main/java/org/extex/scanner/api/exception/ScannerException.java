@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,42 +17,60 @@
  *
  */
 
-package org.extex.scanner.exception;
+package org.extex.scanner.api.exception;
+
+import org.extex.core.exception.GeneralException;
 
 /**
- * This exception is thrown when something in the context of catcode creation or
- * access goes wrong.
+ * This is the base class for all exceptions thrown by the scanner.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:5563 $
+ * @version $Revision: 4726 $
  */
-public class CatcodeVisitorException extends CatcodeException {
+public class ScannerException extends GeneralException {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2007L;
+    protected static final long serialVersionUID = 2005L;
 
     /**
      * Creates a new object.
      */
-    public CatcodeVisitorException() {
+    public ScannerException() {
 
         super();
     }
 
     /**
-     * Creates a localized description of this throwable.
+     * Creates a new object.
      *
-     * @return the localized description of this throwable
-     *
-     * @see java.lang.Throwable#getLocalizedMessage()
+     * @param message the textual representation
      */
-    @Override
-    public String getLocalizedMessage() {
+    public ScannerException(String message) {
 
-        return getLocalizer().format("CatcodeVisitorException.Text", //
-                super.getMessage());
+        super(message);
+    }
+
+    /**
+     * Creates a new object.
+     *
+     * @param message the textual representation
+     * @param cause the root of all evil
+     */
+    public ScannerException(String message, Throwable cause) {
+
+        super(message, cause);
+    }
+
+    /**
+     * Creates a new object.
+     *
+     * @param cause the root of all evil
+     */
+    public ScannerException(Throwable cause) {
+
+        super(cause);
     }
 
 }

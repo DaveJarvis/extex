@@ -38,7 +38,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
-import org.extex.scanner.exception.CatcodeException;
+import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.ActiveCharacterToken;

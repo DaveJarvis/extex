@@ -17,12 +17,14 @@
  *
  */
 
-package org.extex.scanner.exception;
+package org.extex.scanner.api.exception;
 
 import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
+import org.extex.core.UnicodeChar;
+import org.extex.scanner.api.exception.InvalidCharacterScannerException;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
@@ -32,7 +34,7 @@ import org.junit.runner.JUnitCore;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5563 $
  */
-public class CatcodeVisitorExceptionTest {
+public class InvalidCharacterScannerExceptionTest {
 
     /**
      * Command line interface.
@@ -41,31 +43,33 @@ public class CatcodeVisitorExceptionTest {
      */
     public static void main(String[] args) {
 
-        JUnitCore.runClasses(CatcodeVisitorExceptionTest.class);
+        JUnitCore.runClasses(InvalidCharacterScannerExceptionTest.class);
     }
 
     /**
      * Test method for
-     * {@link org.extex.scanner.exception.CatcodeVisitorException#getLocalizedMessage()}.
+     * {@link org.extex.scanner.api.exception.CatcodeWrongLengthException#getLocalizedMessage()}.
      */
     @Test
     public final void testGetLocalizedMessage1() {
 
         Locale.setDefault(Locale.ENGLISH);
-        assertEquals("Catcode: Neither character not value given",
-            new CatcodeVisitorException().getLocalizedMessage());
+        assertEquals("Invalid character x recognized",
+            new InvalidCharacterScannerException(UnicodeChar.get('x'))
+                .getLocalizedMessage());
     }
 
     /**
      * Test method for
-     * {@link org.extex.scanner.exception.CatcodeVisitorException#getLocalizedMessage()}.
+     * {@link org.extex.scanner.api.exception.CatcodeWrongLengthException#getLocalizedMessage()}.
      */
     @Test
     public final void testGetLocalizedMessage2() {
 
         Locale.setDefault(Locale.GERMAN);
-        assertEquals("Catcode: Weder Zeichen noch Wert vorhanden",
-            new CatcodeVisitorException().getLocalizedMessage());
+        assertEquals("Ungültiges Zeichen x erkannt",
+            new InvalidCharacterScannerException(UnicodeChar.get('x'))
+                .getLocalizedMessage());
     }
 
 }

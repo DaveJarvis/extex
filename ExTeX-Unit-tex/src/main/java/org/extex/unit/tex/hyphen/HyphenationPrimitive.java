@@ -30,7 +30,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.Code;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
-import org.extex.scanner.exception.CatcodeException;
+import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.LeftBraceToken;

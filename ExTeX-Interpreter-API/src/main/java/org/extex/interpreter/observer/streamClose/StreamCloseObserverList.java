@@ -22,7 +22,7 @@ package org.extex.interpreter.observer.streamClose;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.extex.scanner.TokenStream;
+import org.extex.scanner.api.TokenStream;
 
 /**
  * This class provides a type-safe list of observers for the stream close event.
@@ -76,7 +76,7 @@ public final class StreamCloseObserverList implements StreamCloseObserver {
      * @param stream the stream to be closed
      *
      * @see org.extex.interpreter.observer.streamClose.StreamCloseObserver#update(
-     *      org.extex.scanner.TokenStream)
+     *      org.extex.scanner.api.TokenStream)
      */
     public void update(TokenStream stream) {
 

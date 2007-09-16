@@ -22,7 +22,7 @@ package org.extex.main.tex;
 import java.util.logging.Logger;
 
 import org.extex.interpreter.observer.streamClose.StreamCloseObserver;
-import org.extex.scanner.TokenStream;
+import org.extex.scanner.api.TokenStream;
 
 /**
  * This observer waits for update events when files are closed. According to the
@@ -56,7 +56,7 @@ public class FileCloseObserver implements StreamCloseObserver {
      * @param stream the stream to be closed
      *
      * @see org.extex.interpreter.observer.streamClose.StreamCloseObserver#update(
-     *      org.extex.scanner.TokenStream)
+     *      org.extex.scanner.api.TokenStream)
      */
     public void update(TokenStream stream) {
 

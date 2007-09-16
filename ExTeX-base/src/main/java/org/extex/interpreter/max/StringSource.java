@@ -26,10 +26,10 @@ import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.scanner.TokenStream;
-import org.extex.scanner.Tokenizer;
-import org.extex.scanner.exception.CatcodeException;
-import org.extex.scanner.exception.ScannerException;
+import org.extex.scanner.api.TokenStream;
+import org.extex.scanner.api.Tokenizer;
+import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
@@ -82,7 +82,7 @@ public class StringSource extends Moritz {
          * 
          * @return <code>true</code> if the closing was successful
          * 
-         * @see org.extex.scanner.TokenStream#closeFileStream()
+         * @see org.extex.scanner.api.TokenStream#closeFileStream()
          */
         public boolean closeFileStream() {
 
@@ -103,9 +103,9 @@ public class StringSource extends Moritz {
          * 
          * @throws ScannerException in case of an error
          * 
-         * @see org.extex.scanner.TokenStream#get(
+         * @see org.extex.scanner.api.TokenStream#get(
          *      org.extex.scanner.type.token.TokenFactory,
-         *      org.extex.scanner.Tokenizer)
+         *      org.extex.scanner.api.Tokenizer)
          */
         public Token get(TokenFactory factory, Tokenizer tokenizer)
                 throws ScannerException {
@@ -133,7 +133,7 @@ public class StringSource extends Moritz {
          * 
          * @return the locator
          * 
-         * @see org.extex.scanner.TokenStream#getLocator()
+         * @see org.extex.scanner.api.TokenStream#getLocator()
          */
         public Locator getLocator() {
 
@@ -150,7 +150,7 @@ public class StringSource extends Moritz {
          *         Especially if an IO exceptions occurs it is delivered as
          *         chained exception in a ScannerException.
          * 
-         * @see org.extex.scanner.TokenStream#isEof()
+         * @see org.extex.scanner.api.TokenStream#isEof()
          */
         public boolean isEof() throws ScannerException {
 
@@ -166,7 +166,7 @@ public class StringSource extends Moritz {
          *         Especially if an IO exceptions occurs it is delivered as
          *         chained exception in a ScannerException.
          * 
-         * @see org.extex.scanner.TokenStream#isEol()
+         * @see org.extex.scanner.api.TokenStream#isEol()
          */
         public boolean isEol() throws ScannerException {
 
@@ -179,7 +179,7 @@ public class StringSource extends Moritz {
          * 
          * @return <code>true</code> if the stream is a file stream
          * 
-         * @see org.extex.scanner.TokenStream#isFileStream()
+         * @see org.extex.scanner.api.TokenStream#isFileStream()
          */
         public boolean isFileStream() {
 
@@ -197,7 +197,7 @@ public class StringSource extends Moritz {
          * 
          * @param token the token to push back
          * 
-         * @see org.extex.scanner.TokenStream#put(
+         * @see org.extex.scanner.api.TokenStream#put(
          *      org.extex.scanner.type.token.Token)
          */
         public void put(Token token) {

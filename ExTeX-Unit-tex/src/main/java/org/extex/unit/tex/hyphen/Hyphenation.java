@@ -25,7 +25,7 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.Code;
-import org.extex.scanner.exception.CatcodeException;
+import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.LetterToken;
@@ -61,16 +61,21 @@ import org.extex.unit.base.register.CharCode;
  * <p>
  *  In addition to the behavior of the original <logo>TeX</logo> definition
  *  this implementation can be used to insert words with hyphens as well. To
- *  specify the places where a hyphen occurs literally you just ave to include
+ *  specify the places where a hyphen occurs literally you just have to include
  *  two hyphens in the hyphenation list.
  * </p>
  *
  * <h4>Syntax</h4>
  *  <pre class="syntax">
  *    &lang;hyphenation&rang;
- *     &rarr; <tt>\hyphenation</tt> {...}  </pre>
+ *     &rarr; <tt>\hyphenation</tt> {&lang;words&rang;}
+ *     
+ *    &lang;words&rang;
+ *     &rarr; 
+ *      |  &lang;word&rang;
+ *      |  &lang;word&rang; &lang;spaces&rang; &lang;words&rang;  </pre>
  *
- * <h4>Example:</h4>
+ * <h4>Examples</h4>
  *  <pre class="TeXSample">
  *   \hyphenation{as-so-ciate as-so-ciates}  </pre>
  *  <pre class="TeXSample">

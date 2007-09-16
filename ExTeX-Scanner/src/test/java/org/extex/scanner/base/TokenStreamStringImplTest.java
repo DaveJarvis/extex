@@ -26,9 +26,9 @@ import junit.framework.TestCase;
 
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
-import org.extex.scanner.TokenStream;
-import org.extex.scanner.Tokenizer;
-import org.extex.scanner.exception.ScannerException;
+import org.extex.scanner.api.TokenStream;
+import org.extex.scanner.api.Tokenizer;
+import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
@@ -65,7 +65,7 @@ public class TokenStreamStringImplTest extends TestCase {
          * 
          * @return the category code of a character
          * 
-         * @see org.extex.scanner.Tokenizer#getCatcode(
+         * @see org.extex.scanner.api.Tokenizer#getCatcode(
          *      org.extex.core.UnicodeChar)
          */
         public Catcode getCatcode(UnicodeChar c) {
@@ -115,7 +115,7 @@ public class TokenStreamStringImplTest extends TestCase {
          * 
          * @return the name space
          * 
-         * @see org.extex.scanner.Tokenizer#getNamespace()
+         * @see org.extex.scanner.api.Tokenizer#getNamespace()
          */
         public String getNamespace() {
 

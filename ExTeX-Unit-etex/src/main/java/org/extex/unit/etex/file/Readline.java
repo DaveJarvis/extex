@@ -29,7 +29,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.interaction.Interaction;
 import org.extex.interpreter.type.AbstractAssignment;
-import org.extex.scanner.Tokenizer;
+import org.extex.scanner.api.Tokenizer;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.file.InFile;
@@ -100,7 +100,7 @@ public class Readline extends AbstractAssignment implements LogEnabled {
          *
          * @return the category code of a character
          *
-         * @see org.extex.scanner.Tokenizer#getCatcode(
+         * @see org.extex.scanner.api.Tokenizer#getCatcode(
          *      org.extex.core.UnicodeChar)
          */
         public Catcode getCatcode(UnicodeChar c) {
@@ -113,7 +113,7 @@ public class Readline extends AbstractAssignment implements LogEnabled {
          *
          * @return the name space
          *
-         * @see org.extex.scanner.Tokenizer#getNamespace()
+         * @see org.extex.scanner.api.Tokenizer#getNamespace()
          */
         public String getNamespace() {
 

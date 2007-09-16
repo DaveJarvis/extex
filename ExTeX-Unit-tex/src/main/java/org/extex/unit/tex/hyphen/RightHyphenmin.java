@@ -34,7 +34,7 @@ import org.extex.interpreter.type.code.Divideable;
 import org.extex.interpreter.type.code.Multiplyable;
 import org.extex.language.Language;
 import org.extex.language.hyphenation.exception.HyphenationException;
-import org.extex.scanner.exception.CatcodeException;
+import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;

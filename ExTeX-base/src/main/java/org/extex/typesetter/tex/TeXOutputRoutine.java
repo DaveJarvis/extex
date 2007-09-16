@@ -35,7 +35,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.exception.InterpreterException;
 import org.extex.interpreter.type.box.Box;
-import org.extex.scanner.exception.CatcodeException;
+import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.Token;

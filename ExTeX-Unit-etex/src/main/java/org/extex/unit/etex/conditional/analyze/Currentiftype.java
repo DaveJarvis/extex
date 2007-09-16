@@ -31,7 +31,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.parser.CountConvertible;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Theable;
-import org.extex.scanner.exception.CatcodeException;
+import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;

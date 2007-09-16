@@ -25,8 +25,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import org.extex.framework.configuration.Configuration;
-import org.extex.scanner.TokenStream;
-import org.extex.scanner.exception.ScannerException;
+import org.extex.scanner.api.TokenStream;
+import org.extex.scanner.api.exception.ScannerException;
 
 /**
  * Test cases for the string implementation of a token stream.

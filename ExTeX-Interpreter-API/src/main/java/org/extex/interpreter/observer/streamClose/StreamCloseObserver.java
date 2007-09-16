@@ -19,7 +19,7 @@
 
 package org.extex.interpreter.observer.streamClose;
 
-import org.extex.scanner.TokenStream;
+import org.extex.scanner.api.TokenStream;
 
 /**
  * This interface describes the ability to receive a notification just before

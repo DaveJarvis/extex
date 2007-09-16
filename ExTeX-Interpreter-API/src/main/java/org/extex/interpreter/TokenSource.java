@@ -31,7 +31,7 @@ import org.extex.interpreter.parser.DimenParser;
 import org.extex.interpreter.parser.GlueParser;
 import org.extex.interpreter.parser.Parser;
 import org.extex.interpreter.type.box.Box;
-import org.extex.scanner.TokenStream;
+import org.extex.scanner.api.TokenStream;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;

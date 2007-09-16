@@ -31,7 +31,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.Theable;
-import org.extex.scanner.exception.CatcodeException;
+import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
@@ -44,8 +44,33 @@ import org.extex.typesetter.exception.TypesetterException;
  * <doc name="showthe">
  * <h3>The Primitive <tt>\showthe</tt></h3>
  * <p>
- * TODO missing documentation
+ * The primitive <tt>\showthe</tt> produces on the terminal and the error log
+ * the exact result as the primitive <tt>\the</tt>. the tokens are preceded
+ * by a greater sign (&gt;) and followed by a period (.).
  * </p>
+ * <p>
+ * If the token following the primitive is not applicable to <tt>\the</tt>
+ * then an error s raised.
+ * </p>
+ * <p>
+ * Different entities might have different ideas about what the result of this
+ * primitive is. In doubt consult the documentation of the primitive.
+ * </p>
+ * 
+ * <h4>Syntax</h4>
+ * The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
+ *    &lang;showthe&rang;
+ *      &rarr; <tt>\showthe</tt> &lang;internal quantity&rang;  </pre>
+ * 
+ * <h4>Examples</h4>
+ * 
+ * <pre class="TeXSample">
+ *    \toks2={UTF-8}
+ *    \showthe\toks2
+ *    &rarr; > UTF-(.  </pre>
+ * 
  * </doc>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

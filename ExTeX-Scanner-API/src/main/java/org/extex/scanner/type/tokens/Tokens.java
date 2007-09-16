@@ -25,7 +25,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.extex.core.UnicodeChar;
-import org.extex.scanner.exception.CatcodeException;
+import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.ControlSequenceToken;

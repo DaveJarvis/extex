@@ -25,8 +25,8 @@ import java.io.StringReader;
 import junit.framework.TestCase;
 
 import org.extex.core.UnicodeChar;
-import org.extex.scanner.TokenStream;
-import org.extex.scanner.Tokenizer;
+import org.extex.scanner.api.TokenStream;
+import org.extex.scanner.api.Tokenizer;
 import org.extex.scanner.stream.exception.ScannerNoUnicodeNameException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.OtherToken;

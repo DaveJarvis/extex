@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,60 +17,44 @@
  *
  */
 
-package org.extex.scanner.exception;
-
-import org.extex.core.exception.GeneralException;
+package org.extex.scanner.api.exception;
 
 /**
- * This is the base class for all exceptions thrown by the scanner.
+ * This exception is thrown when a value is encountered which has the wrong
+ * number of characters in it.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4726 $
+ * @version $Revision:5563 $
  */
-public class ScannerException extends GeneralException {
+public class CatcodeWrongLengthException extends CatcodeException {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
-
-    /**
-     * Creates a new object.
-     */
-    public ScannerException() {
-
-        super();
-    }
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
      *
-     * @param message the textual representation
+     * @param message the message of the exception
      */
-    public ScannerException(String message) {
+    public CatcodeWrongLengthException(String message) {
 
         super(message);
     }
 
     /**
-     * Creates a new object.
+     * Creates a localized description of this throwable.
      *
-     * @param message the textual representation
-     * @param cause the root of all evil
-     */
-    public ScannerException(String message, Throwable cause) {
-
-        super(message, cause);
-    }
-
-    /**
-     * Creates a new object.
+     * @return the localized description of this throwable
      *
-     * @param cause the root of all evil
+     * @see java.lang.Throwable#getLocalizedMessage()
      */
-    public ScannerException(Throwable cause) {
+    @Override
+    public String getLocalizedMessage() {
 
-        super(cause);
+        return getLocalizer().format("CatcodeWrongLengthException.Text", //
+            super.getMessage());
     }
 
 }

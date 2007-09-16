@@ -33,7 +33,7 @@ import org.extex.language.hyphenation.exception.DuplicateHyphenationException;
 import org.extex.language.hyphenation.exception.IllegalTokenHyphenationException;
 import org.extex.language.hyphenation.exception.IllegalValueHyphenationException;
 import org.extex.language.hyphenation.exception.ImmutableHyphenationException;
-import org.extex.scanner.exception.CatcodeException;
+import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.ActiveCharacterToken;

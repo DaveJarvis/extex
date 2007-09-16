@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.scanner.exception;
+package org.extex.scanner.api.exception;
 
 import org.extex.core.exception.GeneralException;
 

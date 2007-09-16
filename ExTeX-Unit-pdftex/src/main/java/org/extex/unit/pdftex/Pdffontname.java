@@ -28,7 +28,7 @@ import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
 import org.extex.interpreter.type.tokens.TokensConvertible;
 import org.extex.pdf.api.PdftexSupport;
-import org.extex.scanner.exception.CatcodeException;
+import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;

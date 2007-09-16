@@ -77,10 +77,10 @@ import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.type.box.Boxable;
 import org.extex.interpreter.type.font.FontConvertible;
 import org.extex.interpreter.type.tokens.TokensConvertible;
-import org.extex.scanner.TokenStream;
-import org.extex.scanner.Tokenizer;
-import org.extex.scanner.exception.CatcodeException;
-import org.extex.scanner.exception.ScannerException;
+import org.extex.scanner.api.TokenStream;
+import org.extex.scanner.api.Tokenizer;
+import org.extex.scanner.api.exception.CatcodeException;
+import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.stream.observer.file.OpenFileObservable;
 import org.extex.scanner.stream.observer.file.OpenFileObserver;
@@ -312,7 +312,7 @@ public class Moritz extends Max
      * @param theStream the new stream to read from
      * 
      * @see org.extex.interpreter.TokenSource#addStream(
-     *      org.extex.scanner.TokenStream)
+     *      org.extex.scanner.api.TokenStream)
      */
     public void addStream(TokenStream theStream) {
 

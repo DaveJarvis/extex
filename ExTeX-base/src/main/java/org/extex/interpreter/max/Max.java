@@ -98,8 +98,8 @@ import org.extex.interpreter.type.ProtectedCode;
 import org.extex.interpreter.unit.UnitInfo;
 import org.extex.language.LanguageManager;
 import org.extex.resource.ResourceFinder;
-import org.extex.scanner.TokenStream;
-import org.extex.scanner.exception.CatcodeException;
+import org.extex.scanner.api.TokenStream;
+import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.ActiveCharacterToken;
@@ -1445,7 +1445,7 @@ public abstract class Max
      * @throws ErrorLimitException in case that the error limit has been reached
      * 
      * @see org.extex.interpreter.Interpreter#run(
-     *      org.extex.scanner.TokenStream)
+     *      org.extex.scanner.api.TokenStream)
      */
     public void run(TokenStream stream)
             throws HelpingException,

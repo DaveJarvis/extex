@@ -32,7 +32,7 @@ import org.extex.interpreter.primitives.register.hash.HashToks;
 import org.extex.interpreter.primitives.register.pair.Pair;
 import org.extex.interpreter.primitives.register.real.Real;
 import org.extex.interpreter.primitives.register.transform.Transform;
-import org.extex.scanner.Tokenizer;
+import org.extex.scanner.api.Tokenizer;
 
 
 /**

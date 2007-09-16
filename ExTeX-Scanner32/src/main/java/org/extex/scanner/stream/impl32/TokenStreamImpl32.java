@@ -24,8 +24,8 @@ import java.io.Reader;
 
 import org.extex.core.UnicodeChar;
 import org.extex.framework.configuration.Configuration;
-import org.extex.scanner.Tokenizer;
-import org.extex.scanner.exception.ScannerException;
+import org.extex.scanner.api.Tokenizer;
+import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.stream.TokenStreamOptions;
 import org.extex.scanner.stream.exception.ScannerNoHexDigitFoundException;
 import org.extex.scanner.stream.exception.ScannerNoUnicodeNameException;
@@ -90,7 +90,7 @@ public class TokenStreamImpl32 extends TokenStreamImpl {
      * {@inheritDoc}
      * 
      * @see org.extex.scanner.stream.impl32.TokenStreamImpl#getChar(
-     *      org.extex.scanner.Tokenizer)
+     *      org.extex.scanner.api.Tokenizer)
      */
     @Override
     protected UnicodeChar getChar(Tokenizer tokenizer) throws ScannerException {

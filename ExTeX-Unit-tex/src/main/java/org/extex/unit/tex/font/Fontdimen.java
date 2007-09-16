@@ -30,7 +30,7 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.ExpandableCode;
 import org.extex.interpreter.type.Theable;
-import org.extex.scanner.exception.CatcodeException;
+import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;

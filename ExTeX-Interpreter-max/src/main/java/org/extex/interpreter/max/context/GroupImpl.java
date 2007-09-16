@@ -37,9 +37,9 @@ import org.extex.interpreter.context.observer.group.AfterGroupObserver;
 import org.extex.interpreter.context.observer.group.AfterGroupObserverList;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.box.Box;
-import org.extex.scanner.TokenStream;
-import org.extex.scanner.Tokenizer;
-import org.extex.scanner.exception.ScannerException;
+import org.extex.scanner.api.TokenStream;
+import org.extex.scanner.api.Tokenizer;
+import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.file.InFile;
@@ -368,7 +368,7 @@ public class GroupImpl implements Group {
      * 
      * @return the category code of a character
      * 
-     * @see org.extex.scanner.Tokenizer#getCatcode( org.extex.core.UnicodeChar)
+     * @see org.extex.scanner.api.Tokenizer#getCatcode( org.extex.core.UnicodeChar)
      */
     public Catcode getCatcode(UnicodeChar c) {
 
@@ -1479,7 +1479,7 @@ public class GroupImpl implements Group {
      * @param standardTokenStream the standardTokenStream to set.
      * 
      * @see org.extex.interpreter.max.context.Group#setStandardTokenStream(
-     *      org.extex.scanner.TokenStream)
+     *      org.extex.scanner.api.TokenStream)
      */
     public void setStandardTokenStream(TokenStream standardTokenStream) {
 

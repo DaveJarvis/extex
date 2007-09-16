@@ -20,7 +20,7 @@
 package org.extex.scanner.type.token;
 
 import org.extex.core.UnicodeChar;
-import org.extex.scanner.exception.CatcodeException;
+import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.tokens.Tokens;
 

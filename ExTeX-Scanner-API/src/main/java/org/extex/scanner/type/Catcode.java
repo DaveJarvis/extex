@@ -22,7 +22,7 @@ package org.extex.scanner.type;
 import java.io.ObjectStreamException;
 import java.io.Serializable;
 
-import org.extex.scanner.exception.CatcodeException;
+import org.extex.scanner.api.exception.CatcodeException;
 
 /**
  * This class provides a type-save enumeration of the category codes for

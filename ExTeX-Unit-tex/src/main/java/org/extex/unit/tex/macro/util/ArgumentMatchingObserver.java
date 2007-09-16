@@ -23,19 +23,20 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 
 /**
- * TODO gene: missing JavaDoc.
- *
+ * This interface describes an observer to be informed about the argument
+ * matching of a macro invocation.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public interface ArgumentMatchingObserver {
 
     /**
-     * TODO gene: missing JavaDoc
-     *
-     * @param index
-     * @param value
-     * @param cs TODO
+     * Observe the acquisition of an argument for a macro invocation.
+     * 
+     * @param index the number of the argument acquired
+     * @param value the value of the argument
+     * @param cs the token for which the expansion is performed
      */
     void observeArgument(int index, Tokens value, CodeToken cs);
 

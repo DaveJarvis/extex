@@ -45,8 +45,8 @@ import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.unit.UnitInfo;
 import org.extex.language.Language;
 import org.extex.language.LanguageManager;
-import org.extex.scanner.TokenStream;
-import org.extex.scanner.Tokenizer;
+import org.extex.scanner.api.TokenStream;
+import org.extex.scanner.api.Tokenizer;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.file.InFile;
@@ -236,7 +236,7 @@ public class MockContext implements Context, TypesetterOptions {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.scanner.Tokenizer#getCatcode(org.extex.core.UnicodeChar)
+     * @see org.extex.scanner.api.Tokenizer#getCatcode(org.extex.core.UnicodeChar)
      */
     public Catcode getCatcode(UnicodeChar c) {
 
@@ -528,7 +528,7 @@ public class MockContext implements Context, TypesetterOptions {
     /**
      * {@inheritDoc}
      *
-     * @see org.extex.scanner.Tokenizer#getNamespace()
+     * @see org.extex.scanner.api.Tokenizer#getNamespace()
      */
     public String getNamespace() {
 
@@ -1086,7 +1086,7 @@ public class MockContext implements Context, TypesetterOptions {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.context.Context#setStandardTokenStream(org.extex.scanner.TokenStream)
+     * @see org.extex.interpreter.context.Context#setStandardTokenStream(org.extex.scanner.api.TokenStream)
      */
     public void setStandardTokenStream(TokenStream standardTokenStream) {
 

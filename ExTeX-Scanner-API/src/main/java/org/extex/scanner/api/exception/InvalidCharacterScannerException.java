@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,44 +17,69 @@
  *
  */
 
-package org.extex.scanner.exception;
+package org.extex.scanner.api.exception;
+
+import org.extex.core.UnicodeChar;
 
 /**
- * This exception is thrown when a value is encountered which has the wrong
- * number of characters in it.
- *
+ * This exception signals that an invalid character has been encountered.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5563 $
  */
-public class CatcodeWrongLengthException extends CatcodeException {
+public class InvalidCharacterScannerException extends ScannerException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    protected static final long serialVersionUID = 2007L;
+    private static final long serialVersionUID = 2007L;
+
+    /**
+     * The field <tt>c</tt> contains the invalid character.
+     */
+    private UnicodeChar c;
 
     /**
      * Creates a new object.
-     *
-     * @param message the message of the exception
+     * 
+     * @param c the character
      */
-    public CatcodeWrongLengthException(String message) {
+    public InvalidCharacterScannerException(UnicodeChar c) {
 
-        super(message);
+        super();
+        this.c = c;
+    }
+
+    /**
+     * Getter for the invalid character.
+     * 
+     * @return the invalid character
+     */
+    public UnicodeChar getC() {
+
+        return c;
     }
 
     /**
      * Creates a localized description of this throwable.
-     *
+     * 
      * @return the localized description of this throwable
-     *
+     * 
      * @see java.lang.Throwable#getLocalizedMessage()
      */
     @Override
     public String getLocalizedMessage() {
 
-        return getLocalizer().format("CatcodeWrongLengthException.Text", //
-            super.getMessage());
+        String s;
+        if (c == null) {
+            s = "";
+        } else if (c.isPrintable()) {
+            s = c.toString();
+        } else {
+            s = "^^" + Integer.toString(c.getCodePoint());
+        }
+        return getLocalizer().format("Text", s);
     }
 
 }
