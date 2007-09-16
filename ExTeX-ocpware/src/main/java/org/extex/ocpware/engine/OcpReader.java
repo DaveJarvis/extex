@@ -64,11 +64,11 @@ public class OcpReader extends Reader {
     private static final int LINE_SIZE_INCREMENT = 128;
 
     /**
-     * The constant <tt>LINIE_INITIAL_SIZE</tt> contains the initial size of
+     * The constant <tt>LINE_INITIAL_SIZE</tt> contains the initial size of
      * the line buffer. The value must not be negative. The line buffer may be
      * expanded when necessary.
      */
-    private static final int LINIE_INITIAL_SIZE = 128;
+    private static final int LINE_INITIAL_SIZE = 128;
 
     /**
      * The field <tt>arithStack</tt> contains the stack for execution.
@@ -102,7 +102,7 @@ public class OcpReader extends Reader {
      * The field <tt>line</tt> contains the intermediate buffer for the
      * characters read. The buffer will be extended dynamically if required.
      */
-    private char[] line = new char[LINIE_INITIAL_SIZE];
+    private char[] line = new char[LINE_INITIAL_SIZE];
 
     /**
      * The field <tt>lineEnd</tt> contains the index of the character
@@ -138,7 +138,7 @@ public class OcpReader extends Reader {
      * characters. The first character will never be read and processed but used
      * to determine the beginning of the line.
      */
-    private char[] pushbackBuffer = new char[LINIE_INITIAL_SIZE];
+    private char[] pushbackBuffer = new char[LINE_INITIAL_SIZE];
 
     /**
      * The field <tt>pushbackEnd</tt> contains the index of the first free
