@@ -229,7 +229,7 @@ public class FontPrimitive extends AbstractAssignment
             long s = source.parseInteger(context, source, typesetter);
             if (s <= 0) {
                 throw new HelpingException(getLocalizer(), "TTP.IllegalMag",
-                    Long.toString(s), "32768"); // TODO gene: max ok?
+                    Long.toString(s), "32768"); // max, as reported by TeX 
             }
             scale = new Count(s);
         }
