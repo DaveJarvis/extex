@@ -19,17 +19,23 @@
 
 package org.extex.scanner.type;
 
-import org.extex.scanner.exception.CatcodeException;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-import junit.framework.TestCase;
+import org.extex.scanner.exception.CatcodeException;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
- * Test cases for Catcodes
- *
+ * Test cases for Catcodes.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5563 $
  */
-public class CatcodeTest extends TestCase implements CatcodeVisitor {
+public class CatcodeTest
+        implements
+            CatcodeVisitor<String, String, String, String> {
 
     /**
      * The field <tt>CAT_INVALID</tt> contains the numerical value for invalid
@@ -86,8 +92,8 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     private static final int CAT_SUP = 7;
 
     /**
-     * The field <tt>CAT_HASH</tt> contains the numerical value for hash
-     * mark characters &ndash; used for macro parameters.
+     * The field <tt>CAT_HASH</tt> contains the numerical value for hash mark
+     * characters &ndash; used for macro parameters.
      */
     private static final int CAT_HASH = 6;
 
@@ -98,8 +104,8 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     private static final int CAT_CR = 5;
 
     /**
-     * The field <tt>CAT_TAB</tt> contains the numerical value for TAB
-     * mark characters.
+     * The field <tt>CAT_TAB</tt> contains the numerical value for TAB mark
+     * characters.
      */
     private static final int CAT_TAB = 4;
 
@@ -110,8 +116,8 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     private static final int CAT_MATH = 3;
 
     /**
-     * The field <tt>CAT_RIGHT</tt> contains the numerical value for right brace
-     * characters.
+     * The field <tt>CAT_RIGHT</tt> contains the numerical value for right
+     * brace characters.
      */
     private static final int CAT_RIGHT = 2;
 
@@ -129,19 +135,21 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
 
-        junit.textui.TestRunner.run(CatcodeTest.class);
+        JUnitCore.runClasses(CatcodeTest.class);
     }
 
     /**
      * Test that escape tokens have correct code, name, and string
      * representation.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCatcode0() throws Exception {
 
         assertEquals(Catcode.ESCAPE, Catcode.toCatcode(CAT_ESC));
@@ -153,9 +161,10 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     /**
      * Test that left brace tokens have correct code, name, and string
      * representation.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCatcode1() throws Exception {
 
         assertEquals(Catcode.LEFTBRACE, Catcode.toCatcode(CAT_LEFT));
@@ -167,9 +176,10 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     /**
      * Test that right brace tokens have correct code, name, and string
      * representation.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCatcode2() throws Exception {
 
         assertEquals(Catcode.RIGHTBRACE, Catcode.toCatcode(CAT_RIGHT));
@@ -181,9 +191,10 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     /**
      * Test that math shift tokens have correct code, name, and string
      * representation.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCatcode3() throws Exception {
 
         assertEquals(Catcode.MATHSHIFT, Catcode.toCatcode(CAT_MATH));
@@ -195,9 +206,10 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     /**
      * Test that tab mark tokens have correct code, name, and string
      * representation.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCatcode4() throws Exception {
 
         assertEquals(Catcode.TABMARK, Catcode.toCatcode(CAT_TAB));
@@ -207,11 +219,11 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
-     * Test that CR tokens have correct code, name, and string
-     * representation.
-     *
+     * Test that CR tokens have correct code, name, and string representation.
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCatcode5() throws Exception {
 
         assertEquals(Catcode.CR, Catcode.toCatcode(CAT_CR));
@@ -223,9 +235,10 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     /**
      * Test that macro parameter tokens have correct code, name, and string
      * representation.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCatcode6() throws Exception {
 
         assertEquals(Catcode.MACROPARAM, Catcode.toCatcode(CAT_HASH));
@@ -237,9 +250,10 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     /**
      * Test that superscript mark tokens have correct code, name, and string
      * representation.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCatcode7() throws Exception {
 
         assertEquals(Catcode.SUPMARK, Catcode.toCatcode(CAT_SUP));
@@ -251,9 +265,10 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     /**
      * Test that subscript mark tokens have correct code, name, and string
      * representation.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCatcode8() throws Exception {
 
         assertEquals(Catcode.SUBMARK, Catcode.toCatcode(CAT_SUB));
@@ -265,9 +280,10 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     /**
      * Test that ignore tokens have correct code, name, and string
      * representation.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCatcode9() throws Exception {
 
         assertEquals(Catcode.IGNORE, Catcode.toCatcode(CAT_IGNORE));
@@ -279,9 +295,10 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     /**
      * Test that space tokens have correct code, name, and string
      * representation.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCatcode10() throws Exception {
 
         assertEquals(Catcode.SPACE, Catcode.toCatcode(CAT_SPACE));
@@ -293,9 +310,10 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     /**
      * Test that letter tokens have correct code, name, and string
      * representation.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCatcode11() throws Exception {
 
         assertEquals(Catcode.LETTER, Catcode.toCatcode(CAT_LETTER));
@@ -307,9 +325,10 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     /**
      * Test that other tokens have correct code, name, and string
      * representation.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCatcode12() throws Exception {
 
         assertEquals(Catcode.OTHER, Catcode.toCatcode(CAT_OTHER));
@@ -321,9 +340,10 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     /**
      * Test that active tokens have correct code, name, and string
      * representation.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCatcode13() throws Exception {
 
         assertEquals(Catcode.ACTIVE, Catcode.toCatcode(CAT_ACTIVE));
@@ -335,9 +355,10 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     /**
      * Test that comment tokens have correct code, name, and string
      * representation.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCatcode14() throws Exception {
 
         assertEquals(Catcode.COMMENT, Catcode.toCatcode(CAT_COMMENT));
@@ -349,9 +370,10 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     /**
      * Test that invalid tokens have correct code, name, and string
      * representation.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testCatcode15() throws Exception {
 
         assertEquals(Catcode.INVALID, Catcode.toCatcode(CAT_INVALID));
@@ -363,9 +385,10 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     /**
      * Test that the static method toCatcode() throws an exception when invoked
      * with a negative number.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testToCatcodeFail1() throws Exception {
 
         try {
@@ -379,9 +402,10 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     /**
      * Test that the static method toCatcode() throws an exception when invoked
      * with a to large number.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testToCatcodeFail2() throws Exception {
 
         try {
@@ -393,531 +417,440 @@ public class CatcodeTest extends TestCase implements CatcodeVisitor {
     }
 
     /**
-     * The field <tt>visited</tt> contains the indicator that a visitor has been
-     * invoked. It will be set by the visit* methods to the catcode encountered.
+     * The field <tt>visited</tt> contains the indicator that a visitor has
+     * been invoked. It will be set by the visit* methods to the catcode
+     * encountered.
      */
     private static int visited = -1;
 
     /**
      * Test that the catcode visitor works for escape tokens.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVisit0() throws Exception {
 
-        assertEquals("esc", Catcode.ESCAPE.visit(this, "1", "2", null));
+        assertEquals("esc", Catcode.ESCAPE.visit(this, "1", "2", "3"));
         assertEquals(CAT_ESC, visited);
     }
 
     /**
      * Test that the catcode visitor works for left brace tokens.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVisit1() throws Exception {
 
-        assertEquals("{", Catcode.LEFTBRACE.visit(this, "1", "2", null));
+        assertEquals("{", Catcode.LEFTBRACE.visit(this, "1", "2", "3"));
         assertEquals(CAT_LEFT, visited);
     }
 
     /**
      * Test that the catcode visitor works for right brace tokens.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVisit2() throws Exception {
 
-        assertEquals("}", Catcode.RIGHTBRACE.visit(this, "1", "2", null));
+        assertEquals("}", Catcode.RIGHTBRACE.visit(this, "1", "2", "3"));
         assertEquals(CAT_RIGHT, visited);
     }
 
     /**
      * Test that the catcode visitor works for math shift tokens.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVisit3() throws Exception {
 
-        assertEquals("$", Catcode.MATHSHIFT.visit(this, "1", "2", null));
+        assertEquals("$", Catcode.MATHSHIFT.visit(this, "1", "2", "3"));
         assertEquals(CAT_MATH, visited);
     }
 
     /**
      * Test that the catcode visitor works for tab mark tokens.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVisit4() throws Exception {
 
-        assertEquals("&", Catcode.TABMARK.visit(this, "1", "2", null));
+        assertEquals("&", Catcode.TABMARK.visit(this, "1", "2", "3"));
         assertEquals(CAT_TAB, visited);
     }
 
     /**
      * Test that the catcode visitor works for CR tokens.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVisit5() throws Exception {
 
-        assertEquals("cr", Catcode.CR.visit(this, "1", "2", null));
+        assertEquals("cr", Catcode.CR.visit(this, "1", "2", "3"));
         assertEquals(CAT_CR, visited);
     }
 
     /**
      * Test that the catcode visitor works for macro parameter tokens.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVisit6() throws Exception {
 
-        assertEquals("#", Catcode.MACROPARAM.visit(this, "1", "2", null));
+        assertEquals("#", Catcode.MACROPARAM.visit(this, "1", "2", "3"));
         assertEquals(CAT_HASH, visited);
     }
 
     /**
      * Test that the catcode visitor works for superscript mark tokens.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVisit7() throws Exception {
 
-        assertEquals("^", Catcode.SUPMARK.visit(this, "1", "2", null));
+        assertEquals("^", Catcode.SUPMARK.visit(this, "1", "2", "3"));
         assertEquals(CAT_SUP, visited);
     }
 
     /**
      * Test that the catcode visitor works for subscript mark tokens.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVisit8() throws Exception {
 
-        assertEquals("_", Catcode.SUBMARK.visit(this, "1", "2", null));
+        assertEquals("_", Catcode.SUBMARK.visit(this, "1", "2", "3"));
         assertEquals(CAT_SUB, visited);
     }
 
     /**
      * Test that the catcode visitor works for ignore tokens.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVisit9() throws Exception {
 
-        assertEquals("ignore", Catcode.IGNORE.visit(this, "1", "2", null));
+        assertEquals("ignore", Catcode.IGNORE.visit(this, "1", "2", "3"));
         assertEquals(CAT_IGNORE, visited);
     }
 
     /**
      * Test that the catcode visitor works for space tokens.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVisit10() throws Exception {
 
-        assertEquals(" ", Catcode.SPACE.visit(this, "1", "2", null));
+        assertEquals(" ", Catcode.SPACE.visit(this, "1", "2", "3"));
         assertEquals(CAT_SPACE, visited);
     }
 
     /**
      * Test that the catcode visitor works for letter tokens.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVisit11() throws Exception {
 
-        assertEquals("letter", Catcode.LETTER.visit(this, "1", "2", null));
+        assertEquals("letter", Catcode.LETTER.visit(this, "1", "2", "3"));
         assertEquals(CAT_LETTER, visited);
     }
 
     /**
      * Test that the catcode visitor works for other tokens.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVisit12() throws Exception {
 
-        assertEquals(".", Catcode.OTHER.visit(this, "1", "2", null));
+        assertEquals(".", Catcode.OTHER.visit(this, "1", "2", "3"));
         assertEquals(CAT_OTHER, visited);
     }
 
     /**
      * Test that the catcode visitor works for active tokens.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVisit13() throws Exception {
 
-        assertEquals("active", Catcode.ACTIVE.visit(this, "1", "2", null));
+        assertEquals("active", Catcode.ACTIVE.visit(this, "1", "2", "3"));
         assertEquals(CAT_ACTIVE, visited);
     }
 
     /**
      * Test that the catcode visitor works for comment tokens.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVisit14() throws Exception {
 
-        assertEquals("%", Catcode.COMMENT.visit(this, "1", "2", null));
+        assertEquals("%", Catcode.COMMENT.visit(this, "1", "2", "3"));
         assertEquals(CAT_COMMENT, visited);
     }
 
     /**
      * Test that the catcode visitor works for invalid tokens.
-     *
+     * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testVisit15() throws Exception {
 
-        assertEquals("invalid", Catcode.INVALID.visit(this, "1", "2", null));
+        assertEquals("invalid", Catcode.INVALID.visit(this, "1", "2", "3"));
         assertEquals(CAT_INVALID, visited);
     }
 
     /**
-     * This visit method is invoked on an active token.
-     * In <logo>TeX</logo> this is e.g. ~.
-     *
-     * @param arg1 the first argument to pass
-     * @param arg2 the second argument to pass
-     * @param uc the third argument to pass
-     *
-     * @return some value
-     *
-     * @see org.extex.scanner.type.CatcodeVisitor#visitActive(
-     *      java.lang.Object,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.type.CatcodeVisitor#visitActive( java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public Object visitActive(Object arg1, Object arg2,
-            Object uc) {
+    public String visitActive(String arg1, String arg2, String arg3) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
+        assertEquals("3", arg3);
         visited = CAT_ACTIVE;
         return "active";
     }
 
     /**
-     * This visit method is invoked on a comment token.
-     * In <logo>TeX</logo> this normally is a %.
-     *
-     * @param arg1 the first argument to pass
-     * @param arg2 the second argument to pass
-     * @param uc the third argument to pass
-     *
-     * @return some value
-     *
+     * {@inheritDoc}
+     * 
      * @see org.extex.scanner.type.CatcodeVisitor#visitComment(
      *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public final Object visitComment(Object arg1, Object arg2,
-            Object uc) {
+    public final String visitComment(String arg1, String arg2, String arg3) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
+        assertEquals("3", arg3);
         visited = CAT_COMMENT;
         return "%";
     }
 
     /**
-     * This visit method is invoked on a cr token.
-     *
-     * @param arg1 the first argument to pass
-     * @param arg2 the second argument to pass
-     * @param uc the third argument to pass
-     *
-     * @return some value
-     *
-     * @see org.extex.scanner.type.CatcodeVisitor#visitCr(
-     *      java.lang.Object, java.lang.Object, java.lang.Object)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.type.CatcodeVisitor#visitCr( java.lang.Object,
+     *      java.lang.Object, java.lang.Object)
      */
-    public final Object visitCr(Object arg1, Object arg2,
-            Object uc) {
+    public final String visitCr(String arg1, String arg2, String arg3) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
+        assertEquals("3", arg3);
         visited = CAT_CR;
         return "cr";
     }
 
     /**
-     * This visit method is invoked on an escape token.
-     * In <logo>TeX</logo> this normally means a control sequence.
-     *
-     * @param arg1 the first argument to pass
-     * @param arg2 the second argument to pass
-     * @param uc the third argument to pass
-     *
-     * @return some value
-     *
-     * @see org.extex.scanner.type.CatcodeVisitor#visitEscape(
-     *      java.lang.Object, java.lang.Object, java.lang.Object)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.type.CatcodeVisitor#visitEscape( java.lang.Object,
+     *      java.lang.Object, java.lang.Object)
      */
-    public final Object visitEscape(Object arg1, Object arg2,
-            Object uc) {
+    public final String visitEscape(String arg1, String arg2, String arg3) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
+        assertEquals("3", arg3);
         visited = CAT_ESC;
         return "esc";
     }
 
     /**
-     * This visit method is invoked on an ignore token.
-     *
-     * @param arg1 the first argument to pass
-     * @param arg2 the second argument to pass
-     * @param uc the third argument to pass
-     *
-     * @return some value
-     *
-     * @see org.extex.scanner.type.CatcodeVisitor#visitIgnore(
-     *      java.lang.Object, java.lang.Object, java.lang.Object)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.type.CatcodeVisitor#visitIgnore( java.lang.Object,
+     *      java.lang.Object, java.lang.Object)
      */
-    public final Object visitIgnore(Object arg1, Object arg2,
-            Object uc) {
+    public final String visitIgnore(String arg1, String arg2, String arg3) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
+        assertEquals("3", arg3);
         visited = CAT_IGNORE;
         return "ignore";
     }
 
     /**
-     * This visit method is invoked on an invalid token.
-     *
-     * @param arg1 the first argument to pass
-     * @param arg2 the second argument to pass
-     * @param uc the third argument to pass
-     *
-     * @return some value
-     *
+     * {@inheritDoc}
+     * 
      * @see org.extex.scanner.type.CatcodeVisitor#visitInvalid(
      *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public final Object visitInvalid(Object arg1, Object arg2,
-            Object uc) {
+    public final String visitInvalid(String arg1, String arg2, String arg3) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
+        assertEquals("3", arg3);
         visited = CAT_INVALID;
         return "invalid";
     }
 
     /**
-     * This visit method is invoked on a left brace token.
-     *
-     * @param arg1 the first argument to pass
-     * @param arg2 the second argument to pass
-     * @param uc the third argument to pass
-     *
-     * @return some value
-     *
+     * {@inheritDoc}
+     * 
      * @see org.extex.scanner.type.CatcodeVisitor#visitLeftBrace(
      *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public final Object visitLeftBrace(Object arg1, Object arg2,
-            Object uc) {
+    public final String visitLeftBrace(String arg1, String arg2, String arg3) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
+        assertEquals("3", arg3);
         visited = CAT_LEFT;
         return "{";
     }
 
     /**
-     * This visit method is invoked on a letter token.
-     *
-     * @param arg1 the first argument to pass
-     * @param arg2 the second argument to pass
-     * @param uc the third argument to pass
-     *
-     * @return some value
-     *
-     * @see org.extex.scanner.type.CatcodeVisitor#visitLetter(
-     *      java.lang.Object, java.lang.Object, java.lang.Object)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.type.CatcodeVisitor#visitLetter( java.lang.Object,
+     *      java.lang.Object, java.lang.Object)
      */
-    public final Object visitLetter(Object arg1, Object arg2,
-            Object uc) {
+    public final String visitLetter(String arg1, String arg2, String arg3) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
+        assertEquals("3", arg3);
         visited = CAT_LETTER;
         return "letter";
     }
 
     /**
-     * This visit method is invoked on a macro parameter token.
-     * In <logo>TeX</logo> this normally is a #.
-     *
-     * @param arg1 the first argument to pass
-     * @param arg2 the second argument to pass
-     * @param uc the third argument to pass
-     *
-     * @return some value
-     *
+     * {@inheritDoc}
+     * 
      * @see org.extex.scanner.type.CatcodeVisitor#visitMacroParam(
      *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public final Object visitMacroParam(Object arg1, Object arg2,
-            Object uc) {
+    public final String visitMacroParam(String arg1, String arg2, String arg3) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
+        assertEquals("3", arg3);
         visited = CAT_HASH;
         return "#";
     }
 
     /**
-     * This visit method is invoked on a math shift token.
-     * In <logo>TeX</logo> this normally is a $.
-     *
-     * @param arg1 the first argument to pass
-     * @param arg2 the second argument to pass
-     * @param uc the third argument to pass
-     *
-     * @return some value
-     *
+     * {@inheritDoc}
+     * 
      * @see org.extex.scanner.type.CatcodeVisitor#visitMathShift(
-     *      java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+     *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public final Object visitMathShift(Object arg1, Object arg2,
-            Object uc) {
+    public final String visitMathShift(String arg1, String arg2, String arg3) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
+        assertEquals("3", arg3);
         visited = CAT_MATH;
         return "$";
     }
 
     /**
-     * This visit method is invoked on an other token.
-     *
-     * @param arg1 the first argument to pass
-     * @param arg2 the second argument to pass
-     * @param uc the third argument to pass
-     *
-     * @return some value
-     *
-     * @see org.extex.scanner.type.CatcodeVisitor#visitOther(
-     *      java.lang.Object,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.type.CatcodeVisitor#visitOther( java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public final Object visitOther(Object arg1, Object arg2,
-            Object uc) {
+    public final String visitOther(String arg1, String arg2, String arg3) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
+        assertEquals("3", arg3);
         visited = CAT_OTHER;
         return ".";
     }
 
     /**
-     * This visit method is invoked on a right brace token.
-     *
-     * @param arg1 the first argument to pass
-     * @param arg2 the second argument to pass
-     * @param uc the third argument to pass
-     *
-     * @return some value
-     *
+     * {@inheritDoc}
+     * 
      * @see org.extex.scanner.type.CatcodeVisitor#visitRightBrace(
-     *      java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+     *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public final Object visitRightBrace(Object arg1, Object arg2,
-            Object uc) {
+    public final String visitRightBrace(String arg1, String arg2, String arg3) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
+        assertEquals("3", arg3);
         visited = CAT_RIGHT;
         return "}";
     }
 
     /**
-     * This visit method is invoked on a space token.
-     *
-     * @param arg1 the first argument to pass
-     * @param arg2 the second argument to pass
-     * @param uc the third argument to pass
-     *
-     * @return some value
-     *
-     * @see org.extex.scanner.type.CatcodeVisitor#visitSpace(
-     *      java.lang.Object, java.lang.Object, java.lang.Object)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.scanner.type.CatcodeVisitor#visitSpace( java.lang.Object,
+     *      java.lang.Object, java.lang.Object)
      */
-    public final Object visitSpace(Object arg1, Object arg2,
-            Object uc) {
+    public final String visitSpace(String arg1, String arg2, String arg3) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
+        assertEquals("3", arg3);
         visited = CAT_SPACE;
         return " ";
     }
 
     /**
-     * This visit method is invoked on a sub mark token.
-     * In <logo>TeX</logo> this normally is a _.
-     *
-     * @param arg1 the first argument to pass
-     * @param arg2 the second argument to pass
-     * @param uc the third argument to pass
-     *
-     * @return some value
-     *
+     * {@inheritDoc}
+     * 
      * @see org.extex.scanner.type.CatcodeVisitor#visitSubMark(
      *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public final Object visitSubMark(Object arg1, Object arg2,
-            Object uc) {
+    public final String visitSubMark(String arg1, String arg2, String arg3) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
+        assertEquals("3", arg3);
         visited = CAT_SUB;
         return "_";
     }
 
     /**
-     * This visit method is invoked on a sup mark token.
-     * In <logo>TeX</logo> this normally is a ^.
-     *
-     * @param arg1 the first argument to pass
-     * @param arg2 the second argument to pass
-     * @param uc the third argument to pass
-     *
-     * @return some value
-     *
+     * {@inheritDoc}
+     * 
      * @see org.extex.scanner.type.CatcodeVisitor#visitSupMark(
      *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public final Object visitSupMark(Object arg1, Object arg2,
-            Object uc) {
+    public final String visitSupMark(String arg1, String arg2, String arg3) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
+        assertEquals("3", arg3);
         visited = CAT_SUP;
         return "^";
     }
 
     /**
-     * This visit method is invoked on a tab mark token.
-     * In <logo>TeX</logo> this normally is a &.
-     *
-     * @param arg1 the first argument to pass
-     * @param arg2 the second argument to pass
-     * @param uc the third argument to pass
-     *
-     * @return some value
-     *
+     * {@inheritDoc}
+     * 
      * @see org.extex.scanner.type.CatcodeVisitor#visitTabMark(
      *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public final Object visitTabMark(Object arg1, Object arg2,
-            Object uc) {
+    public final String visitTabMark(String arg1, String arg2, String arg3) {
 
         assertEquals("1", arg1);
         assertEquals("2", arg2);
+        assertEquals("3", arg3);
         visited = CAT_TAB;
         return "&";
     }
