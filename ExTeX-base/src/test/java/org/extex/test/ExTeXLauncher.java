@@ -24,6 +24,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.nio.charset.CharacterCodingException;
 import java.util.HashMap;
 import java.util.Locale;
@@ -261,6 +262,11 @@ public class ExTeXLauncher extends TestCase {
     private String defaultLog = "";
 
     /**
+     * The field <tt>err</tt> contains the error stream for reporting.
+     */
+    private PrintStream err = System.err;
+
+    /**
      * The field <tt>props</tt> contains the merged properties from the system
      * properties and the properties loaded from <tt>.extex-test</tt>.
      */
@@ -270,12 +276,12 @@ public class ExTeXLauncher extends TestCase {
      * The field <tt>setHsize</tt> contains the indicator to use a wider
      * hsize.
      */
-    private boolean setHsize = true;
+    private boolean setHsize = true;;
 
     /**
      * The field <tt>trace</tt> contains the indicator for tracing.
      */
-    private boolean trace = false;;
+    private boolean trace = false;
 
     /**
      * Creates a new object.
@@ -417,9 +423,8 @@ public class ExTeXLauncher extends TestCase {
                             public void update(Token token, Code code,
                                     Locator locator) {
 
-                                System.err.print(locator.toString(1));
-                                System.err.print('\t');
-                                System.err.println(token.toText());
+                                err.println(locator.toString(1) + "\t"
+                                        + token.toText());
                             }
                         });
                 }
@@ -487,7 +492,7 @@ public class ExTeXLauncher extends TestCase {
                     }
                 }
                 sb.insert(0, "time = ");
-                System.err.println(sb.toString());
+                err.println(sb.toString());
             }
         }
 
