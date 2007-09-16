@@ -633,9 +633,10 @@ public abstract class Max
      * 
      * @param config the configuration object to consider.
      * 
-     * @throws ConfigurationException in case of a configuration error
+     * @throws ConfigurationMissingException in case of a configuration error
      */
-    public void configure(Configuration config) {
+    public void configure(Configuration config)
+            throws ConfigurationMissingException {
 
         if (config == null) {
             throw new ConfigurationMissingException("Interpreter");
@@ -766,7 +767,9 @@ public abstract class Max
      *      org.extex.typesetter.Typesetter)
      */
     public Token expand(Token token, Context context, Typesetter typesetter)
-            throws HelpingException, ConfigurationException, TypesetterException {
+            throws HelpingException,
+                ConfigurationException,
+                TypesetterException {
 
         Token t = token;
 
