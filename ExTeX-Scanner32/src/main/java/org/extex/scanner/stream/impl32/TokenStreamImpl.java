@@ -25,7 +25,6 @@ import java.io.Reader;
 
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
-import org.extex.core.exception.GeneralException;
 import org.extex.framework.configuration.Configuration;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.Tokenizer;
@@ -155,309 +154,306 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      * The field <tt>visitor</tt> contains the visitor to separate the cases
      * according to the catcode.
      */
-    private CatcodeVisitor visitor = new CatcodeVisitor() {
+    private CatcodeVisitor<Token, TokenFactory, Tokenizer, UnicodeChar> visitor =
+            new CatcodeVisitor<Token, TokenFactory, Tokenizer, UnicodeChar>() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.CatcodeVisitor#visitActive(
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
-         */
-        public Object visitActive(Object oFactory, Object oTokenizer, Object uc)
-                throws GeneralException {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitActive(
+                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 */
+                public Token visitActive(TokenFactory factory,
+                        Tokenizer tokenizer, UnicodeChar uc)
+                        throws CatcodeException {
 
-            state = MID_LINE;
+                    state = MID_LINE;
 
-            TokenFactory tokenFactory = (TokenFactory) oFactory;
-            Tokenizer tokenizer = (Tokenizer) oTokenizer;
-            return tokenFactory.createToken(Catcode.ACTIVE, (UnicodeChar) uc,
-                tokenizer.getNamespace());
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.CatcodeVisitor#visitComment(
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
-         */
-        public Object visitComment(Object oFactory, Object oTokenizer, Object uc)
-                throws GeneralException {
-
-            endLine();
-            return null;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.CatcodeVisitor#visitCr( java.lang.Object,
-         *      java.lang.Object, java.lang.Object)
-         */
-        public Object visitCr(Object oFactory, Object oTokenizer, Object uchar)
-                throws GeneralException {
-
-            TokenFactory factory = (TokenFactory) oFactory;
-            Tokenizer tokenizer = (Tokenizer) oTokenizer;
-            Token t = null;
-
-            if (state == MID_LINE) {
-                t =
-                        factory.createToken(Catcode.SPACE, ' ', tokenizer
-                            .getNamespace());
-            } else if (state == NEW_LINE) {
-                t =
-                        factory.createToken(Catcode.ESCAPE,
-                            (UnicodeChar) uchar, "par", tokenizer
-                                .getNamespace());
-            } else {
-                // drop the character
-            }
-
-            endLine();
-            return t;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.CatcodeVisitor#visitEscape(
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
-         */
-        public Object visitEscape(Object oFactory, Object oTokenizer,
-                Object uchar) throws GeneralException {
-
-            TokenFactory factory = (TokenFactory) oFactory;
-            Tokenizer tokenizer = (Tokenizer) oTokenizer;
-            String namespace = tokenizer.getNamespace();
-
-            if (atEndOfLine()) {
-                // empty control sequence; see "The TeXbook, Chapter 8, p. 47"
-                return factory.createToken(Catcode.ESCAPE, (UnicodeChar) uchar,
-                    "", namespace);
-            }
-
-            UnicodeChar uc = getChar(tokenizer);
-
-            if (uc == null) {
-                return factory.createToken(Catcode.ESCAPE, (UnicodeChar) uchar,
-                    "", namespace);
-
-            } else if (tokenizer.getCatcode(uc) == Catcode.LETTER) {
-                StringBuffer sb = new StringBuffer();
-                sb.append((char) (uc.getCodePoint()));
-                state = SKIP_BLANKS;
-
-                while (!atEndOfLine() && (uc = getChar(tokenizer)) != null) {
-                    if (tokenizer.getCatcode(uc) != Catcode.LETTER) {
-                        ungetChar(uc);
-                        return factory.createToken(Catcode.ESCAPE,
-                            (UnicodeChar) uchar, sb.toString(), namespace);
-                    }
-                    sb.append((char) (uc.getCodePoint()));
+                    return factory.createToken(Catcode.ACTIVE, uc, //
+                        tokenizer.getNamespace());
                 }
 
-                return factory.createToken(Catcode.ESCAPE, (UnicodeChar) uchar,
-                    sb.toString(), namespace);
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitComment(
+                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 */
+                public Token visitComment(TokenFactory factory,
+                        Tokenizer tokenizer, UnicodeChar uc) {
 
-            } else {
-                state = MID_LINE;
-                return factory.createToken(Catcode.ESCAPE, uc, namespace);
+                    endLine();
+                    return null;
+                }
 
-            }
-        }
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitCr(
+                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 */
+                public Token visitCr(TokenFactory factory, Tokenizer tokenizer,
+                        UnicodeChar uchar) throws CatcodeException {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.CatcodeVisitor#visitIgnore(
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
-         */
-        public Object visitIgnore(Object oFactory, Object oTokenizer, Object uc)
-                throws GeneralException {
+                    Token t = null;
 
-            return null;
-        }
+                    if (state == MID_LINE) {
+                        t = factory.createToken(Catcode.SPACE, ' ', //
+                            tokenizer.getNamespace());
+                    } else if (state == NEW_LINE) {
+                        t = factory.createToken(Catcode.ESCAPE, uchar, //
+                            "par", tokenizer.getNamespace());
+                    } else {
+                        // drop the character
+                    }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.CatcodeVisitor#visitInvalid(
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
-         */
-        public Object visitInvalid(Object oFactory, Object oTokenizer, Object uc)
-                throws GeneralException {
+                    endLine();
+                    return t;
+                }
 
-            state = MID_LINE;
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitEscape(
+                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 */
+                public Token visitEscape(TokenFactory factory,
+                        Tokenizer tokenizer, UnicodeChar uchar)
+                        throws CatcodeException, ScannerException {
 
-            throw new InvalidCharacterScannerException((UnicodeChar) uc);
-        }
+                    String namespace = tokenizer.getNamespace();
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.CatcodeVisitor#visitLeftBrace(
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
-         */
-        public Object visitLeftBrace(Object oFactory, Object oTokenizer,
-                Object uc) throws GeneralException {
+                    if (atEndOfLine()) {
+                        // empty control sequence; see "The TeXbook, Chapter 8,
+                        // p. 47"
+                        return factory.createToken(Catcode.ESCAPE, uchar, "",
+                            namespace);
+                    }
 
-            Tokenizer tokenizer = (Tokenizer) oTokenizer;
-            state = MID_LINE;
+                    UnicodeChar uc = getChar(tokenizer);
 
-            return ((TokenFactory) oFactory).createToken(Catcode.LEFTBRACE,
-                (UnicodeChar) uc, tokenizer.getNamespace());
-        }
+                    if (uc == null) {
+                        return factory.createToken(Catcode.ESCAPE, uchar, "",
+                            namespace);
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.CatcodeVisitor#visitLetter(
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
-         */
-        public Object visitLetter(Object oFactory, Object oTokenizer, Object uc)
-                throws GeneralException {
+                    } else if (tokenizer.getCatcode(uc) == Catcode.LETTER) {
+                        StringBuffer sb = new StringBuffer();
+                        sb.append((char) (uc.getCodePoint()));
+                        state = SKIP_BLANKS;
 
-            Tokenizer tokenizer = (Tokenizer) oTokenizer;
-            state = MID_LINE;
+                        while (!atEndOfLine()
+                                && (uc = getChar(tokenizer)) != null) {
+                            if (tokenizer.getCatcode(uc) != Catcode.LETTER) {
+                                ungetChar(uc);
+                                return factory.createToken(Catcode.ESCAPE,
+                                    uchar, sb.toString(), namespace);
+                            }
+                            sb.append((char) (uc.getCodePoint()));
+                        }
 
-            return ((TokenFactory) oFactory).createToken(Catcode.LETTER,
-                (UnicodeChar) uc, tokenizer.getNamespace());
-        }
+                        return factory.createToken(Catcode.ESCAPE, uchar, //
+                            sb.toString(), namespace);
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.CatcodeVisitor#visitMacroParam(
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
-         */
-        public Object visitMacroParam(Object oFactory, Object oTokenizer,
-                Object uc) throws GeneralException {
+                    } else {
+                        state = MID_LINE;
+                        return factory.createToken(Catcode.ESCAPE, uc,
+                            namespace);
 
-            Tokenizer tokenizer = (Tokenizer) oTokenizer;
-            state = MID_LINE;
+                    }
+                }
 
-            return ((TokenFactory) oFactory).createToken(Catcode.MACROPARAM,
-                (UnicodeChar) uc, tokenizer.getNamespace());
-        }
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitIgnore(
+                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 */
+                public Token visitIgnore(TokenFactory factory,
+                        Tokenizer tokenizer, UnicodeChar uc) {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.CatcodeVisitor#visitMathShift(
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
-         */
-        public Object visitMathShift(Object oFactory, Object oTokenizer,
-                Object uc) throws GeneralException {
+                    return null;
+                }
 
-            Tokenizer tokenizer = (Tokenizer) oTokenizer;
-            state = MID_LINE;
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitInvalid(
+                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 */
+                public Token visitInvalid(TokenFactory factory,
+                        Tokenizer tokenizer, UnicodeChar uc)
+                        throws InvalidCharacterScannerException {
 
-            return ((TokenFactory) oFactory).createToken(Catcode.MATHSHIFT,
-                (UnicodeChar) uc, tokenizer.getNamespace());
-        }
+                    state = MID_LINE;
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.CatcodeVisitor#visitOther(
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
-         */
-        public Object visitOther(Object oFactory, Object oTokenizer, Object uc)
-                throws GeneralException {
+                    throw new InvalidCharacterScannerException(uc);
+                }
 
-            Tokenizer tokenizer = (Tokenizer) oTokenizer;
-            state = MID_LINE;
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitLeftBrace(
+                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 */
+                public Token visitLeftBrace(TokenFactory factory,
+                        Tokenizer tokenizer, UnicodeChar uc)
+                        throws CatcodeException {
 
-            return ((TokenFactory) oFactory).createToken(Catcode.OTHER,
-                (UnicodeChar) uc, tokenizer.getNamespace());
-        }
+                    state = MID_LINE;
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.CatcodeVisitor#visitRightBrace(
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
-         */
-        public Object visitRightBrace(Object oFactory, Object oTokenizer,
-                Object uc) throws GeneralException {
+                    return factory.createToken(Catcode.LEFTBRACE, uc, //
+                        tokenizer.getNamespace());
+                }
 
-            Tokenizer tokenizer = (Tokenizer) oTokenizer;
-            state = MID_LINE;
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitLetter(
+                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 */
+                public Token visitLetter(TokenFactory factory,
+                        Tokenizer tokenizer, UnicodeChar uc)
+                        throws CatcodeException {
 
-            return ((TokenFactory) oFactory).createToken(Catcode.RIGHTBRACE,
-                (UnicodeChar) uc, tokenizer.getNamespace());
-        }
+                    state = MID_LINE;
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.CatcodeVisitor#visitSpace(
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
-         * @see "The TeXbook [Chapter 8, page 47]"
-         */
-        public Object visitSpace(Object oFactory, Object oTokenizer, Object uc)
-                throws CatcodeException {
+                    return factory.createToken(Catcode.LETTER, uc, //
+                        tokenizer.getNamespace());
+                }
 
-            TokenFactory factory = (TokenFactory) oFactory;
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitMacroParam(
+                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 */
+                public Token visitMacroParam(TokenFactory factory,
+                        Tokenizer tokenizer, UnicodeChar uc)
+                        throws CatcodeException {
 
-            if (state == MID_LINE) {
-                state = SKIP_BLANKS;
-                return factory.createToken(Catcode.SPACE, ' ',
-                    Namespace.DEFAULT_NAMESPACE);
-            }
+                    state = MID_LINE;
 
-            return null;
-        }
+                    return factory.createToken(Catcode.MACROPARAM, uc, //
+                        tokenizer.getNamespace());
+                }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.CatcodeVisitor#visitSubMark(
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
-         */
-        public Object visitSubMark(Object oFactory, Object oTokenizer, Object uc)
-                throws GeneralException {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitMathShift(
+                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 */
+                public Token visitMathShift(TokenFactory factory,
+                        Tokenizer tokenizer, UnicodeChar uc)
+                        throws CatcodeException {
 
-            Tokenizer tokenizer = (Tokenizer) oTokenizer;
-            state = MID_LINE;
+                    state = MID_LINE;
 
-            return ((TokenFactory) oFactory).createToken(Catcode.SUBMARK,
-                (UnicodeChar) uc, tokenizer.getNamespace());
-        }
+                    return factory.createToken(Catcode.MATHSHIFT, uc, //
+                        tokenizer.getNamespace());
+                }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.CatcodeVisitor#visitSupMark(
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
-         */
-        public Object visitSupMark(Object oFactory, Object oTokenizer, Object uc)
-                throws GeneralException {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitOther(
+                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 */
+                public Token visitOther(TokenFactory factory,
+                        Tokenizer tokenizer, UnicodeChar uc)
+                        throws CatcodeException {
 
-            Tokenizer tokenizer = (Tokenizer) oTokenizer;
-            state = MID_LINE;
+                    state = MID_LINE;
 
-            return ((TokenFactory) oFactory).createToken(Catcode.SUPMARK,
-                (UnicodeChar) uc, tokenizer.getNamespace());
-        }
+                    return factory.createToken(Catcode.OTHER, uc, //
+                        tokenizer.getNamespace());
+                }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.scanner.type.CatcodeVisitor#visitTabMark(
-         *      java.lang.Object, java.lang.Object, java.lang.Object)
-         */
-        public Object visitTabMark(Object oFactory, Object oTokenizer, Object uc)
-                throws GeneralException {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitRightBrace(
+                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 */
+                public Token visitRightBrace(TokenFactory factory,
+                        Tokenizer tokenizer, UnicodeChar uc)
+                        throws CatcodeException {
 
-            Tokenizer tokenizer = (Tokenizer) oTokenizer;
-            state = MID_LINE;
+                    state = MID_LINE;
 
-            return ((TokenFactory) oFactory).createToken(Catcode.TABMARK,
-                (UnicodeChar) uc, tokenizer.getNamespace());
-        }
+                    return factory.createToken(Catcode.RIGHTBRACE, uc, //
+                        tokenizer.getNamespace());
+                }
 
-    };
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitSpace(
+                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 * @see "The TeXbook [Chapter 8, page 47]"
+                 */
+                public Token visitSpace(TokenFactory factory,
+                        Tokenizer tokenizer, UnicodeChar uc)
+                        throws CatcodeException {
+
+                    if (state == MID_LINE) {
+                        state = SKIP_BLANKS;
+                        return factory.createToken(Catcode.SPACE, ' ',
+                            Namespace.DEFAULT_NAMESPACE);
+                    }
+
+                    return null;
+                }
+
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitSubMark(
+                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 */
+                public Token visitSubMark(TokenFactory factory,
+                        Tokenizer tokenizer, UnicodeChar uc)
+                        throws CatcodeException {
+
+                    state = MID_LINE;
+
+                    return factory.createToken(Catcode.SUBMARK, uc, //
+                        tokenizer.getNamespace());
+                }
+
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitSupMark(
+                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 */
+                public Token visitSupMark(TokenFactory factory,
+                        Tokenizer tokenizer, UnicodeChar uc)
+                        throws CatcodeException {
+
+                    state = MID_LINE;
+
+                    return factory.createToken(Catcode.SUPMARK, uc, //
+                        tokenizer.getNamespace());
+                }
+
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitTabMark(
+                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 */
+                public Token visitTabMark(TokenFactory factory,
+                        Tokenizer tokenizer, UnicodeChar uc)
+                        throws CatcodeException {
+
+                    state = MID_LINE;
+
+                    return factory.createToken(Catcode.TABMARK, uc, //
+                        tokenizer.getNamespace());
+                }
+
+            };
 
     /**
      * Creates a new object.
