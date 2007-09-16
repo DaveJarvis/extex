@@ -36,31 +36,32 @@ import org.extex.scanner.type.tokens.Tokens;
  * This is a implementation of a token factory. This means that the factory
  * pattern is applied here. This pattern opens the possibility to cache the
  * instances for Tokens to reduce the number of objects present in the system.
- *
+ * 
  * <h2>The Visitor Pattern</h2>
  * <p>
  * In addition the visitor pattern is used to select the appropriate
  * instantiation method. The visit methods are not meant to be used externally.
- * They are purely internal.
- * Despite their general definition the <tt>visit</tt>
+ * They are purely internal. Despite their general definition the <tt>visit</tt>
  * methods are in fact used in the following way:
  * </p>
- *
+ * 
  * <pre>
  *  Token visit<i>*</i>(String value, UnicodeChar character) throws CatcodeException
  * </pre>
- *
+ * 
  * <p>
- * This means that they are expected to return the new token. The first
- * argument is the value, which is mainly meaningful for control sequence
- * tokens. The third argument contains the Unicode character for single letter
- * tokens.
+ * This means that they are expected to return the new token. The first argument
+ * is the value, which is mainly meaningful for control sequence tokens. The
+ * third argument contains the Unicode character for single letter tokens.
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4738 $
  */
-public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
+public class TokenFactoryImpl
+        implements
+            TokenFactory,
+            CatcodeVisitor<Token, String, UnicodeChar, String> {
 
     /**
      * The field <tt>crToken</tt> contains the one and only cr token in the
@@ -102,8 +103,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
             new HashMap<UnicodeChar, WeakReference<LetterToken>>();
 
     /**
-     * The field <tt>macroParamCache</tt> contains the cache for macro parameter
-     * tokens.
+     * The field <tt>macroParamCache</tt> contains the cache for macro
+     * parameter tokens.
      */
     private Map<UnicodeChar, WeakReference<MacroParamToken>> macroParamCache =
             new HashMap<UnicodeChar, WeakReference<MacroParamToken>>();
@@ -135,7 +136,8 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
             new HashMap<UnicodeChar, WeakReference<SubMarkToken>>();
 
     /**
-     * The field <tt>supMarkCache</tt> contains the cache for super mark tokens.
+     * The field <tt>supMarkCache</tt> contains the cache for super mark
+     * tokens.
      */
     private Map<UnicodeChar, WeakReference<SupMarkToken>> supMarkCache =
             new HashMap<UnicodeChar, WeakReference<SupMarkToken>>();
@@ -158,26 +160,24 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      * Create a new {@link org.extex.scanner.type.token.Token Token} of the
      * appropriate kind. Tokens are immutable (no setters) thus the factory
      * pattern can be applied.
-     *
+     * 
      * @param code the category code
      * @param c the character value
      * @param namespace the name space to use
-     *
+     * 
      * @return the new token
-     *
+     * 
      * @throws CatcodeException in case of an error
-     *
+     * 
      * @see org.extex.scanner.type.token.TokenFactory#createToken(
-     *      org.extex.scanner.type.Catcode,
-     *      int,
-     *      java.lang.String)
+     *      org.extex.scanner.type.Catcode, int, java.lang.String)
      */
-    public Token createToken(Catcode code, int c,
-            String namespace) throws CatcodeException {
+    public Token createToken(Catcode code, int c, String namespace)
+            throws CatcodeException {
 
         try {
-            return (Token) code.visit(this, null, //
-                UnicodeChar.get(c), namespace);
+            return (Token) code.visit(this, null, UnicodeChar.get(c), //
+                namespace);
         } catch (CatcodeException e) {
             throw e;
         } catch (RuntimeException e) {
@@ -191,23 +191,22 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     /**
      * Get an instance of a token with a given Catcode and Unicode character
      * value.
-     *
+     * 
      * @param code the catcode
      * @param c the Unicode character value
      * @param namespace the name space for the token. This is relevant for
-     *   ACTIVE and ESCAPE category codes only.
-     *
+     *        ACTIVE and ESCAPE category codes only.
+     * 
      * @return the appropriate token
-     *
+     * 
      * @throws CatcodeException in case of an error
-     *
+     * 
      * @see org.extex.scanner.type.token.TokenFactory#createToken(
-     *      org.extex.scanner.type.Catcode,
-     *      org.extex.core.UnicodeChar,
+     *      org.extex.scanner.type.Catcode, org.extex.core.UnicodeChar,
      *      java.lang.String)
      */
-    public Token createToken(Catcode code, UnicodeChar c,
-            String namespace) throws CatcodeException {
+    public Token createToken(Catcode code, UnicodeChar c, String namespace)
+            throws CatcodeException {
 
         try {
             return (Token) code.visit(this, null, c, namespace);
@@ -223,25 +222,23 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
 
     /**
      * Get an instance of a token with a given Catcode and value.
-     *
+     * 
      * @param code the catcode
      * @param esc the Unicode character value of the escape character
      * @param value the value
      * @param namespace the name space for the token. This is relevant for
-     *  ACTIVE and ESCAPE category codes only.
-     *
+     *        ACTIVE and ESCAPE category codes only.
+     * 
      * @return the appropriate token
-     *
+     * 
      * @throws CatcodeException in case of an error
-     *
+     * 
      * @see org.extex.scanner.type.token.TokenFactory#createToken(
-     *      org.extex.scanner.type.Catcode,
-     *      org.extex.core.UnicodeChar,
-     *      java.lang.String,
-     *      java.lang.String)
+     *      org.extex.scanner.type.Catcode, org.extex.core.UnicodeChar,
+     *      java.lang.String, java.lang.String)
      */
-    public Token createToken(Catcode code, UnicodeChar esc,
-            String value, String namespace) throws CatcodeException {
+    public Token createToken(Catcode code, UnicodeChar esc, String value,
+            String namespace) throws CatcodeException {
 
         try {
             return (Token) code.visit(this, value, esc, namespace);
@@ -259,16 +256,16 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
      * Convert a character sequence to a list of tokens.
      * <p>
      * Each character of the string is converted into a <code>OtherToken</code>
-     * and added to the internal list. An exception is made for spaces which
-     * are converted into a <code>SpaceToken</code>.
+     * and added to the internal list. An exception is made for spaces which are
+     * converted into a <code>SpaceToken</code>.
      * </p>
-     *
+     * 
      * @param s the character sequence to translate to tokens
-     *
+     * 
      * @return the token list
-     *
+     * 
      * @throws CatcodeException in case of an error
-     *
+     * 
      * @see org.extex.scanner.type.token.TokenFactory#toTokens(java.lang.CharSequence)
      */
     public Tokens toTokens(CharSequence s) throws CatcodeException {
@@ -292,16 +289,16 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     /**
      * Convert a long value into a list of tokens.
      * <p>
-     * Each character is converted into a <code>OtherToken</code>
-     * and added to the internal list.
+     * Each character is converted into a <code>OtherToken</code> and added to
+     * the internal list.
      * </p>
-     *
+     * 
      * @param l the value to convert
-     *
+     * 
      * @return the token list
-     *
+     * 
      * @throws CatcodeException in case of an error
-     *
+     * 
      * @see org.extex.scanner.type.token.TokenFactory#toTokens(long)
      */
     public Tokens toTokens(long l) throws CatcodeException {
@@ -323,25 +320,25 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     /**
      * Active characters are cached. Thus a look-up in the cache precedes the
      * creation of a new token.
-     *
-     * @param oValue the string value of the token
-     * @param oChar the character value of the token
-     * @param oNamespace the name space of the token
-     *
+     * 
+     * @param value the string value of the token
+     * @param uchar the character value of the token
+     * @param namespace the name space of the token
+     * 
      * @return the active token
-     *
-     * @see org.extex.scanner.type.CatcodeVisitor#visitActive(
-     *      java.lang.Object,
+     * 
+     * @throws CatcodeException in case of an error
+     * 
+     * @see org.extex.scanner.type.CatcodeVisitor#visitActive( java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public Object visitActive(Object oValue, Object oChar,
-            Object oNamespace) throws CatcodeException {
+    public Token visitActive(String value, UnicodeChar uchar, String namespace)
+            throws CatcodeException {
 
         UnicodeChar uc;
-        if (oChar != null) {
-            uc = (UnicodeChar) oChar;
-        } else if (oValue != null) {
-            String value = (String) oValue;
+        if (uchar != null) {
+            uc = uchar;
+        } else if (value != null) {
             if (value.length() != 1) {
                 throw new CatcodeWrongLengthException(value);
             }
@@ -350,7 +347,6 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
             throw new CatcodeVisitorException();
         }
 
-        String namespace = (String) oNamespace;
         Map<UnicodeChar, WeakReference<ActiveCharacterToken>> map =
                 activeCache.get(namespace);
 
@@ -373,70 +369,65 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
 
     /**
      * Comments are ignored thus <code>null</code> is returned in any case.
-     *
-     * @param oValue the string value of the token
-     * @param oChar the character value of the token
-     * @param ignore the name space of the token
-     *
+     * 
+     * @param value the string value of the token
+     * @param uchar the character value of the token
+     * @param namespace the name space of the token
+     * 
      * @return <code>null</code>
-     *
+     * 
      * @see org.extex.scanner.type.CatcodeVisitor#visitComment(
-     *      java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+     *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public Object visitComment(Object oValue, Object oChar,
-            Object ignore) {
+    public Token visitComment(String value, UnicodeChar uchar, String namespace) {
 
         return null;
     }
 
     /**
      * There is only one CrToken.
-     *
-     * @param oValue the string value of the token
-     * @param oChar the character value of the token
-     * @param ignore the name space of the token
-     *
+     * 
+     * @param value the string value of the token
+     * @param uchar the character value of the token
+     * @param namespace the name space of the token
+     * 
      * @return the CR token
-     *
+     * 
      * @see org.extex.scanner.type.CatcodeVisitor#visitCr(java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public Object visitCr(Object oValue, Object oChar,
-            Object ignore) {
+    public Token visitCr(String value, UnicodeChar uchar, String namespace) {
 
         return CR_TOKEN;
     }
 
     /**
-     * This visit method is invoked on an escape token.
-     * In <logo>TeX</logo> this normally means a control sequence.
-     *
-     * @param oValue the string value of the token
-     * @param oChar the character value of the token
-     * @param oNamespace the name space of the token
-     *
+     * This visit method is invoked on an escape token. In <logo>TeX</logo>
+     * this normally means a control sequence.
+     * 
+     * @param value the string value of the token
+     * @param uchar the character value of the token
+     * @param namespace the name space of the token
+     * 
      * @return the token requested
-     *
+     * 
      * @throws CatcodeException in case of an error
-     *
-     * @see org.extex.scanner.type.CatcodeVisitor#visitEscape(
-     *      java.lang.Object,
+     * 
+     * @see org.extex.scanner.type.CatcodeVisitor#visitEscape( java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public Object visitEscape(Object oValue, Object oChar,
-            Object oNamespace) throws CatcodeException {
+    public Token visitEscape(String value, UnicodeChar uchar, String namespace)
+            throws CatcodeException {
 
-        String value;
-        if (oValue != null) {
-            value = (String) oValue;
-        } else if (oChar != null) {
-            value = ((UnicodeChar) oChar).toString();
+        String name;
+        if (value != null) {
+            name = value;
+        } else if (uchar != null) {
+            name = uchar.toString();
         } else {
             throw new CatcodeVisitorException();
         }
 
-        String namespace = (String) oNamespace;
         Map<String, WeakReference<ControlSequenceToken>> map =
                 csCache.get(namespace);
 
@@ -445,17 +436,15 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
             csCache.put(namespace, map);
         }
 
-        WeakReference<ControlSequenceToken> wr = map.get(value);
+        WeakReference<ControlSequenceToken> wr = map.get(name);
         ControlSequenceToken token = null;
 
         if (wr != null) {
             token = wr.get();
         }
         if (token == null) {
-            token =
-                    new ControlSequenceToken((UnicodeChar) oChar, value,
-                        namespace);
-            map.put(value, new WeakReference<ControlSequenceToken>(token));
+            token = new ControlSequenceToken(uchar, name, namespace);
+            map.put(name, new WeakReference<ControlSequenceToken>(token));
         }
 
         return token;
@@ -463,61 +452,59 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
 
     /**
      * Ignored characters are simply ignored;-)
-     *
-     * @param oValue the string value token or <code>null</code>
-     * @param oChar the requested character code
-     * @param ignore the third argument is ignored
-     *
+     * 
+     * @param value the string value token or <code>null</code>
+     * @param uchar the requested character code
+     * @param namespace the third argument is ignored
+     * 
      * @return <code>null</code>
-     *
-     * @see org.extex.scanner.type.CatcodeVisitor#visitIgnore(
-     *      java.lang.Object,
+     * 
+     * @see org.extex.scanner.type.CatcodeVisitor#visitIgnore( java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public Object visitIgnore(Object oValue, Object oChar,
-            Object ignore) {
+    public Token visitIgnore(String value, UnicodeChar uchar, String namespace) {
 
         return null;
     }
 
     /**
      * Invalid characters are ignored; even without any error message.
-     *
-     * @param oValue the string value token or <code>null</code>
-     * @param oChar the requested character code
-     * @param ignore the third argument is ignored
-     *
+     * 
+     * @param value the string value token or <code>null</code>
+     * @param uchar the requested character code
+     * @param namespace the third argument is ignored
+     * 
      * @return <code>null</code>
-     *
+     * 
      * @see org.extex.scanner.type.CatcodeVisitor#visitInvalid(
-     *      java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+     *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public Object visitInvalid(Object oValue, Object oChar,
-            Object ignore) {
+    public Token visitInvalid(String value, UnicodeChar uchar, String namespace) {
 
         return null;
     }
 
     /**
      * A left brace token is expected to take a single character only.
-     *
-     * @param oValue the string value of the token
-     * @param oChar the character value of the token
-     * @param ignore the name space of the token
-     *
+     * 
+     * @param value the string value of the token
+     * @param uchar the character value of the token
+     * @param namespace the name space of the token
+     * 
+     * @throws CatcodeException in case of an error
+     * 
+     * @return the token requested
+     * 
      * @see org.extex.scanner.type.CatcodeVisitor#visitLeftBrace(
-     *      java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+     *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public Object visitLeftBrace(Object oValue, Object oChar,
-            Object ignore) throws CatcodeException {
+    public Token visitLeftBrace(String value, UnicodeChar uchar,
+            String namespace) throws CatcodeException {
 
         UnicodeChar uc;
-        if (oChar != null) {
-            uc = (UnicodeChar) oChar;
-        } else if (oValue != null) {
-            String value = (String) oValue;
+        if (uchar != null) {
+            uc = uchar;
+        } else if (value != null) {
             if (value.length() != 1) {
                 throw new CatcodeWrongLengthException(value);
             }
@@ -539,23 +526,25 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
 
     /**
      * A letter token is expected to take a single character only.
-     *
-     * @param oValue the string value of the token
-     * @param oChar the character value of the token
-     * @param ignore the name space of the token
-     *
-     * @see org.extex.scanner.type.CatcodeVisitor#visitLetter(
-     *      java.lang.Object,
+     * 
+     * @param value the string value of the token
+     * @param uchar the character value of the token
+     * @param namespace the name space of the token
+     * 
+     * @return the token requested
+     * 
+     * @throws CatcodeException in case of an error
+     * 
+     * @see org.extex.scanner.type.CatcodeVisitor#visitLetter( java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public Object visitLetter(Object oValue, Object oChar,
-            Object ignore) throws CatcodeException {
+    public Token visitLetter(String value, UnicodeChar uchar, String namespace)
+            throws CatcodeException {
 
         UnicodeChar uc;
-        if (oChar != null) {
-            uc = (UnicodeChar) oChar;
-        } else if (oValue != null) {
-            String value = (String) oValue;
+        if (uchar != null) {
+            uc = uchar;
+        } else if (value != null) {
             if (value.length() != 1) {
                 throw new CatcodeWrongLengthException(value);
             }
@@ -576,22 +565,24 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * @param oValue the string value of the token
-     * @param oChar the character value of the token
-     * @param ignore the name space of the token
-     *
+     * @param value the string value of the token
+     * @param uchar the character value of the token
+     * @param namespace the name space of the token
+     * 
+     * @return the token requested
+     * 
+     * @throws CatcodeException in case of an error
+     * 
      * @see org.extex.scanner.type.CatcodeVisitor#visitMacroParam(
-     *      java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+     *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public Object visitMacroParam(Object oValue, Object oChar,
-            Object ignore) throws CatcodeException {
+    public Token visitMacroParam(String value, UnicodeChar uchar,
+            String namespace) throws CatcodeException {
 
         UnicodeChar uc;
-        if (oChar != null) {
-            uc = (UnicodeChar) oChar;
-        } else if (oValue != null) {
-            String value = (String) oValue;
+        if (uchar != null) {
+            uc = uchar;
+        } else if (value != null) {
             if (value.length() != 1) {
                 throw new CatcodeWrongLengthException(value);
             }
@@ -612,22 +603,24 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * @param oValue the string value of the token
-     * @param oChar the character value of the token
-     * @param ignore the name space of the token
-     *
+     * @param value the string value of the token
+     * @param uchar the character value of the token
+     * @param namespace the name space of the token
+     * 
+     * @return the token requested
+     * 
+     * @throws CatcodeException in case of an error
+     * 
      * @see org.extex.scanner.type.CatcodeVisitor#visitMathShift(
-     *      java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+     *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public Object visitMathShift(Object oValue, Object oChar,
-            Object ignore) throws CatcodeException {
+    public Token visitMathShift(String value, UnicodeChar uchar,
+            String namespace) throws CatcodeException {
 
         UnicodeChar uc;
-        if (oChar != null) {
-            uc = (UnicodeChar) oChar;
-        } else if (oValue != null) {
-            String value = (String) oValue;
+        if (uchar != null) {
+            uc = uchar;
+        } else if (value != null) {
             if (value.length() != 1) {
                 throw new CatcodeWrongLengthException(value);
             }
@@ -648,22 +641,24 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * @param oValue the string value of the token
-     * @param oChar the character value of the token
-     * @param ignore the name space of the token
-     *
-     * @see org.extex.scanner.type.CatcodeVisitor#visitOther(
-     *      java.lang.Object,
+     * @param value the string value of the token
+     * @param uchar the character value of the token
+     * @param namespace the name space of the token
+     * 
+     * @return the token requested
+     * 
+     * @throws CatcodeException in case of an error
+     * 
+     * @see org.extex.scanner.type.CatcodeVisitor#visitOther( java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      */
-    public Object visitOther(Object oValue, Object oChar,
-            Object ignore) throws CatcodeException {
+    public Token visitOther(String value, UnicodeChar uchar, String namespace)
+            throws CatcodeException {
 
         UnicodeChar uc;
-        if (oChar != null) {
-            uc = (UnicodeChar) oChar;
-        } else if (oValue != null) {
-            String value = (String) oValue;
+        if (uchar != null) {
+            uc = uchar;
+        } else if (value != null) {
             if (value.length() != 1) {
                 throw new CatcodeWrongLengthException(value);
             }
@@ -684,22 +679,24 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * @param oValue the string value of the token
-     * @param oChar the character value of the token
-     * @param ignore the name space of the token
-     *
+     * @param value the string value of the token
+     * @param uchar the character value of the token
+     * @param namespace the name space of the token
+     * 
+     * @return the token requested
+     * 
+     * @throws CatcodeException in case of an error
+     * 
      * @see org.extex.scanner.type.CatcodeVisitor#visitRightBrace(
-     *      java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+     *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public Object visitRightBrace(Object oValue, Object oChar,
-            Object ignore) throws CatcodeException {
+    public Token visitRightBrace(String value, UnicodeChar uchar,
+            String namespace) throws CatcodeException {
 
         UnicodeChar uc;
-        if (oChar != null) {
-            uc = (UnicodeChar) oChar;
-        } else if (oValue != null) {
-            String value = (String) oValue;
+        if (uchar != null) {
+            uc = uchar;
+        } else if (value != null) {
             if (value.length() != 1) {
                 throw new CatcodeWrongLengthException(value);
             }
@@ -721,41 +718,41 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
 
     /**
      * There is only one space token. It has the character code 32.
-     *
-     * @param oValue the string value token or <code>null</code>
-     * @param oChar the requested character code
-     * @param ignore the third argument is ignored
-     *
+     * 
+     * @param value the string value token or <code>null</code>
+     * @param uchar the requested character code
+     * @param namespace the third argument is ignored
+     * 
      * @return the space token.
-     *
-     * @see org.extex.scanner.type.CatcodeVisitor#visitSpace(
-     *      java.lang.Object,
+     * 
+     * @see org.extex.scanner.type.CatcodeVisitor#visitSpace( java.lang.Object,
      *      java.lang.Object, java.lang.Object)
      * @see "The TeXbook [Chapter 8, p. 47]"
      */
-    public Object visitSpace(Object oValue, Object oChar,
-            Object ignore) {
+    public Token visitSpace(String value, UnicodeChar uchar, String namespace) {
 
         return SPACE_TOKEN;
     }
 
     /**
-     * @param oValue the string value of the token
-     * @param oChar the character value of the token
-     * @param ignore the name space of the token
-     *
+     * @param value the string value of the token
+     * @param uchar the character value of the token
+     * @param namespace the name space of the token
+     * 
+     * @return the token requested
+     * 
+     * @throws CatcodeException in case of an error
+     * 
      * @see org.extex.scanner.type.CatcodeVisitor#visitSubMark(
-     *      java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+     *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public Object visitSubMark(Object oValue, Object oChar,
-            Object ignore) throws CatcodeException {
+    public Token visitSubMark(String value, UnicodeChar uchar, String namespace)
+            throws CatcodeException {
 
         UnicodeChar uc;
-        if (oChar != null) {
-            uc = (UnicodeChar) oChar;
-        } else if (oValue != null) {
-            String value = (String) oValue;
+        if (uchar != null) {
+            uc = uchar;
+        } else if (value != null) {
             if (value.length() != 1) {
                 throw new CatcodeWrongLengthException(value);
             }
@@ -776,22 +773,24 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * @param oValue the string value of the token
-     * @param oChar the character value of the token
-     * @param ignore the name space of the token
-     *
+     * @param value the string value of the token
+     * @param uchar the character value of the token
+     * @param namespace the name space of the token
+     * 
+     * @return the token requested
+     * 
+     * @throws CatcodeException in case of an error
+     * 
      * @see org.extex.scanner.type.CatcodeVisitor#visitSupMark(
-     *      java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+     *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public Object visitSupMark(Object oValue, Object oChar,
-            Object ignore) throws CatcodeException {
+    public Token visitSupMark(String value, UnicodeChar uchar, String namespace)
+            throws CatcodeException {
 
         UnicodeChar uc;
-        if (oChar != null) {
-            uc = (UnicodeChar) oChar;
-        } else if (oValue != null) {
-            String value = (String) oValue;
+        if (uchar != null) {
+            uc = uchar;
+        } else if (value != null) {
             if (value.length() != 1) {
                 throw new CatcodeWrongLengthException(value);
             }
@@ -812,22 +811,24 @@ public class TokenFactoryImpl implements TokenFactory, CatcodeVisitor {
     }
 
     /**
-     * @param oValue the string value of the token
-     * @param oChar the character value of the token
-     * @param ignore the name space of the token
-     *
+     * @param value the string value of the token
+     * @param uchar the character value of the token
+     * @param namespace the name space of the token
+     * 
+     * @return the token requested
+     * 
+     * @throws CatcodeException in case of an error
+     * 
      * @see org.extex.scanner.type.CatcodeVisitor#visitTabMark(
-     *      java.lang.Object,
-     *      java.lang.Object, java.lang.Object)
+     *      java.lang.Object, java.lang.Object, java.lang.Object)
      */
-    public Object visitTabMark(Object oValue, Object oChar,
-            Object ignore) throws CatcodeException {
+    public Token visitTabMark(String value, UnicodeChar uchar, String namespace)
+            throws CatcodeException {
 
         UnicodeChar uc;
-        if (oChar != null) {
-            uc = (UnicodeChar) oChar;
-        } else if (oValue != null) {
-            String value = (String) oValue;
+        if (uchar != null) {
+            uc = uchar;
+        } else if (value != null) {
             if (value.length() != 1) {
                 throw new CatcodeWrongLengthException(value);
             }

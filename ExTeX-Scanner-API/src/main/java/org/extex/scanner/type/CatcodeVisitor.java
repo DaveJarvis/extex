@@ -24,10 +24,15 @@ package org.extex.scanner.type;
  * codes.
  * This interface is used to implement the visitor pattern.
  *
+ * @param <RET> the type of the return value 
+ * @param <ARG1> the type of the first argument
+ * @param <ARG2> the type of the second argument
+ * @param <ARG3> the type of the third argument
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:5563 $
  */
-public interface CatcodeVisitor {
+public interface CatcodeVisitor<RET, ARG1, ARG2, ARG3> {
 
     /**
      * This visit method is invoked on an active token.
@@ -41,7 +46,7 @@ public interface CatcodeVisitor {
      *
      * @throws Exception in case of an error
      */
-    Object visitActive(Object arg1, Object arg2, Object arg3) throws Exception;
+    RET visitActive(ARG1 arg1, ARG2 arg2, ARG3 arg3) throws Exception;
 
     /**
      * This visit method is invoked on a comment token.
@@ -55,7 +60,7 @@ public interface CatcodeVisitor {
      *
      * @throws Exception in case of an error
      */
-    Object visitComment(Object arg1, Object arg2, Object arg3) throws Exception;
+    RET visitComment(ARG1 arg1, ARG2 arg2, ARG3 arg3) throws Exception;
 
     /**
      * This visit method is invoked on a cr token.
@@ -68,7 +73,7 @@ public interface CatcodeVisitor {
      *
      * @throws Exception in case of an error
      */
-    Object visitCr(Object arg1, Object arg2, Object arg3) throws Exception;
+    RET visitCr(ARG1 arg1, ARG2 arg2, ARG3 arg3) throws Exception;
 
     /**
      * This visit method is invoked on an escape token.
@@ -82,7 +87,7 @@ public interface CatcodeVisitor {
      *
      * @throws Exception in case of an error
      */
-    Object visitEscape(Object arg1, Object arg2, Object arg3) throws Exception;
+    RET visitEscape(ARG1 arg1, ARG2 arg2, ARG3 arg3) throws Exception;
 
     /**
      * This visit method is invoked on an ignore token.
@@ -95,7 +100,7 @@ public interface CatcodeVisitor {
      *
      * @throws Exception in case of an error
      */
-    Object visitIgnore(Object arg1, Object arg2, Object arg3) throws Exception;
+    RET visitIgnore(ARG1 arg1, ARG2 arg2, ARG3 arg3) throws Exception;
 
     /**
      * This visit method is invoked on an invalid token.
@@ -108,7 +113,7 @@ public interface CatcodeVisitor {
      *
      * @throws Exception in case of an error
      */
-    Object visitInvalid(Object arg1, Object arg2, Object arg3) throws Exception;
+    RET visitInvalid(ARG1 arg1, ARG2 arg2, ARG3 arg3) throws Exception;
 
     /**
      * This visit method is invoked on a left brace token.
@@ -121,7 +126,7 @@ public interface CatcodeVisitor {
      *
      * @throws Exception in case of an error
      */
-    Object visitLeftBrace(Object arg1, Object arg2, Object arg3)
+    RET visitLeftBrace(ARG1 arg1, ARG2 arg2, ARG3 arg3)
             throws Exception;
 
     /**
@@ -135,7 +140,7 @@ public interface CatcodeVisitor {
      *
      * @throws Exception in case of an error
      */
-    Object visitLetter(Object arg1, Object arg2, Object arg3) throws Exception;
+    RET visitLetter(ARG1 arg1, ARG2 arg2, ARG3 arg3) throws Exception;
 
     /**
      * This visit method is invoked on a macro parameter token.
@@ -149,7 +154,7 @@ public interface CatcodeVisitor {
      *
      * @throws Exception in case of an error
      */
-    Object visitMacroParam(Object arg1, Object arg2, Object arg3)
+    RET visitMacroParam(ARG1 arg1, ARG2 arg2, ARG3 arg3)
             throws Exception;
 
     /**
@@ -164,7 +169,7 @@ public interface CatcodeVisitor {
      *
      * @throws Exception in case of an error
      */
-    Object visitMathShift(Object arg1, Object arg2, Object arg3)
+    RET visitMathShift(ARG1 arg1, ARG2 arg2, ARG3 arg3)
             throws Exception;
 
     /**
@@ -178,7 +183,7 @@ public interface CatcodeVisitor {
      *
      * @throws Exception in case of an error
      */
-    Object visitOther(Object arg1, Object arg2, Object arg3) throws Exception;
+    RET visitOther(ARG1 arg1, ARG2 arg2, ARG3 arg3) throws Exception;
 
     /**
      * This visit method is invoked on a right brace token.
@@ -191,7 +196,7 @@ public interface CatcodeVisitor {
      *
      * @throws Exception in case of an error
      */
-    Object visitRightBrace(Object arg1, Object arg2, Object arg3)
+    RET visitRightBrace(ARG1 arg1, ARG2 arg2, ARG3 arg3)
             throws Exception;
 
     /**
@@ -205,7 +210,7 @@ public interface CatcodeVisitor {
      *
      * @throws Exception in case of an error
      */
-    Object visitSpace(Object arg1, Object arg2, Object arg3) throws Exception;
+    RET visitSpace(ARG1 arg1, ARG2 arg2, ARG3 arg3) throws Exception;
 
     /**
      * This visit method is invoked on a sub mark token.
@@ -219,7 +224,7 @@ public interface CatcodeVisitor {
      *
      * @throws Exception in case of an error
      */
-    Object visitSubMark(Object arg1, Object arg2, Object arg3) throws Exception;
+    RET visitSubMark(ARG1 arg1, ARG2 arg2, ARG3 arg3) throws Exception;
 
     /**
      * This visit method is invoked on a sup mark token.
@@ -233,7 +238,7 @@ public interface CatcodeVisitor {
      *
      * @throws Exception in case of an error
      */
-    Object visitSupMark(Object arg1, Object arg2, Object arg3) throws Exception;
+    RET visitSupMark(ARG1 arg1, ARG2 arg2, ARG3 arg3) throws Exception;
 
     /**
      * This visit method is invoked on a tab mark token.
@@ -247,6 +252,6 @@ public interface CatcodeVisitor {
      *
      * @throws Exception in case of an error
      */
-    Object visitTabMark(Object arg1, Object arg2, Object arg3) throws Exception;
+    RET visitTabMark(ARG1 arg1, ARG2 arg2, ARG3 arg3) throws Exception;
 
 }
