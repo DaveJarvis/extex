@@ -95,12 +95,6 @@ public class OutputFactory extends AbstractFactory
     }
 
     /**
-     * The constant <tt>ENCODING_ATTRIBUTE</tt> contains the name of the
-     * attribute to get the encoding from.
-     */
-    private static final String ENCODING_ATTRIBUTE = "encoding";
-
-    /**
      * The field <tt>FORMAT_ATTRIBUTE</tt> contains the name of the attribute
      * to get the format for the file name from.
      */
