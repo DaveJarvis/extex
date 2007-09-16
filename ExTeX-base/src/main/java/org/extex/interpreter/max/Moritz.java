@@ -271,11 +271,15 @@ public class Moritz extends Max
     public Moritz() {
 
         super();
-        register(Count.class, new ConstantCountParser());
-        register(Dimen.class, new ConstantDimenParser());
-        register(Glue.class, new ConstantGlueParser());
-        register(Mudimen.class, new ConstantMudimenParser());
-        register(Muskip.class, new ConstantMuskipParser());
+        try {
+            register(Count.class, new ConstantCountParser());
+            register(Dimen.class, new ConstantDimenParser());
+            register(Glue.class, new ConstantGlueParser());
+            register(Mudimen.class, new ConstantMudimenParser());
+            register(Muskip.class, new ConstantMuskipParser());
+        } catch (HelpingException e) {
+            throw new RuntimeException(e); // TODO gene: improve it?
+        }
         registerObserver(new StartObserver() {
 
             /**
@@ -1018,29 +1022,26 @@ public class Moritz extends Max
      *      org.extex.interpreter.parser.Parser)
      */
     @SuppressWarnings("unchecked")
-    public Parser register(Class c, Parser p) {
+    public Parser register(Class c, Parser p) throws HelpingException {
 
         Parser old = parsers.put(c, p);
         if (c == Count.class) {
             if (p instanceof CountParser) {
                 countParser = (CountParser) p;
             } else {
-                // TODO gene: unimplemented
-                throw new RuntimeException("unimplemented");
+                throw new HelpingException(getLocalizer(), "IllegalCountParser");
             }
         } else if (c == Dimen.class) {
             if (p instanceof DimenParser) {
                 dimenParser = (DimenParser) p;
             } else {
-                // TODO gene: unimplemented
-                throw new RuntimeException("unimplemented");
+                throw new HelpingException(getLocalizer(), "IllegalDimenParser");
             }
         } else if (c == Glue.class) {
             if (p instanceof GlueParser) {
                 glueParser = (GlueParser) p;
             } else {
-                // TODO gene: unimplemented
-                throw new RuntimeException("unimplemented");
+                throw new HelpingException(getLocalizer(), "IllegalGLueParser");
             }
         }
         return old;
