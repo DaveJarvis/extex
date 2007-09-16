@@ -325,7 +325,7 @@ public abstract class PsUnit {
     }
 
     /**
-     * Creating a new object is impossible.
+     * Creating a new instance is made impossible.
      */
     private PsUnit() {
 
