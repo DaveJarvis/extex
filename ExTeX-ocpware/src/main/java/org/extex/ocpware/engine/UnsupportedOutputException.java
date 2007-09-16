@@ -22,8 +22,8 @@ package org.extex.ocpware.engine;
 import org.extex.ocpware.exception.OcpException;
 
 /**
- * This exception signals that an illegal state index an &Omega;CP program
- * has been encountered.
+ * This exception signals that an illegal state index has been encountered in an
+ * &Omega;CP program.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
