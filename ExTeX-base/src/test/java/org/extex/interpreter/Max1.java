@@ -428,7 +428,7 @@ public class Max1 extends TestCase {
          * {@inheritDoc}
          * 
          * @see org.extex.typesetter.ListMaker#setPrevDepth(
-         *      org.extex.core.dimen.Dimen)
+         *      org.extex.core.dimen.FixedDimen)
          */
         public void setPrevDepth(FixedDimen pd) {
 
@@ -589,7 +589,7 @@ public class Max1 extends TestCase {
                     null).newInstance(null, null);
         TokenStreamFactory factory = new TokenStreamFactory("base");
         factory.configure(config.getConfiguration("Scanner"));
-//        factory.setResourceFinder(finder);
+        // factory.setResourceFinder(finder);
         interpreter.setTokenStreamFactory(factory);
 
         TestTypesetter typesetter = new TestTypesetter();
