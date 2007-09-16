@@ -50,7 +50,7 @@ public class ToksTest extends AbstractToksRegisterTester {
 
     /**
      * <testcase primitive="\toks">
-     *   Test case checking that ...
+     *   Test case checking that the assignment of a tokens register works.
      * </testcase>
      *
      * @throws Exception in case of an error
