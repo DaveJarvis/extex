@@ -40,19 +40,29 @@ import org.extex.typesetter.tc.font.impl.NullFont;
  * <doc name="nullfont">
  * <h3>The Primitive <tt>\nullfont</tt></h3>
  * <p>
- * TODO missing documentation
+ * The primitive <tt>\nullfont</tt> provides access to an internal font
+ * contain no characters at all. Thus any attempt to produce a typeset output
+ * will not succeed. Nevertheless the font dimens can be read and written
+ * freely.
  * </p>
  * 
  * <h4>Syntax</h4>
  * The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
- *    <tt>\nullfont</tt>  </pre>
+ *    &lang;nullfont&rang;
+ *      &rarr; <tt>\nullfont</tt>  </pre>
  * 
  * <h4>Examples</h4>
  * 
  * <pre class="TeXSample">
  *    \font123=\nullfont  </pre>
+ * 
+ * <h4>The</h4>
+ * <p>
+ * <tt>\nullfont</tt> produces the primitive name <tt>\nullfont</tt> when
+ * applied to <tt>\the</tt> or <tt>\showthe</tt>.
+ * </p>
  * 
  * </doc>
  * 
