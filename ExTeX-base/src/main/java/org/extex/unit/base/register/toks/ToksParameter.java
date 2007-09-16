@@ -25,7 +25,6 @@ import org.extex.core.exception.helping.EofInToksException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -114,8 +113,6 @@ public class ToksParameter extends AbstractToks
      * Configure an object according to a given Configuration.
      * 
      * @param config the configuration object to consider
-     * 
-     * @throws ConfigurationException in case that something went wrong
      * 
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
