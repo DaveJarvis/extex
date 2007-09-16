@@ -61,4 +61,25 @@ public class InvalidCharacterScannerException extends ScannerException {
         return c;
     }
 
+    /**
+     * Creates a localized description of this throwable.
+     * 
+     * @return the localized description of this throwable
+     * 
+     * @see java.lang.Throwable#getLocalizedMessage()
+     */
+    @Override
+    public String getLocalizedMessage() {
+
+        String s;
+        if (c == null) {
+            s = "";
+        } else if (c.isPrintable()) {
+            s = c.toString();
+        } else {
+            s = "^^" + Integer.toString(c.getCodePoint());
+        }
+        return getLocalizer().format("Text", s);
+    }
+
 }
