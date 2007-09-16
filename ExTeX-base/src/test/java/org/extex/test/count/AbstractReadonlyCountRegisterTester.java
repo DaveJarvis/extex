@@ -46,7 +46,8 @@ public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher 
     private String argument = "";
 
     /**
-     * The field <tt>prepare</tt> contains the ...
+     * The field <tt>prepare</tt> contains the preparation code inserted
+     * before the invocation.
      */
     private String prepare = "";
 
@@ -89,7 +90,7 @@ public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher 
      * @param primitive the name of the primitive
      * @param argument the argument
      * @param defaultValue the default value
-     * @param prepare ...
+     * @param prepare the preparation code inserted before the invocation
      */
     public AbstractReadonlyCountRegisterTester(String arg, String primitive,
             String argument, String defaultValue, String prepare) {
