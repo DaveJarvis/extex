@@ -129,6 +129,6 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
     }
 
     // TODO implement more primitive specific test cases (lost chars in math
-    // mode...)
+    // mode, etc)
 
 }
