@@ -20,12 +20,13 @@
 package org.extex.engine.typesetter;
 
 import org.extex.framework.AbstractFactory;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Interpreter;
 import org.extex.typesetter.output.OutputRoutine;
 
 /**
  * This class provides a factory for the output routines.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4728 $
  */
@@ -41,17 +42,17 @@ public class OutputRoutineFactory extends AbstractFactory {
 
     /**
      * Create a new output routine.
-     *
-     * @param interpreter the current interpreter. This interpreter can be
-     *   used to run the output routine in; alternatively it can be used to
-     *   access all information necessary
-     *
+     * 
+     * @param interpreter the current interpreter. This interpreter can be used
+     *        to run the output routine in; alternatively it can be used to
+     *        access all information necessary
+     * 
      * @return the output routine
-     *
-     * @throws org.extex.framework.configuration.exception.ConfigurationException
-     *   in case of a configuration error
+     * 
+     * @throws ConfigurationException in case of a configuration error
      */
-    public OutputRoutine newInstance(Interpreter interpreter) {
+    public OutputRoutine newInstance(Interpreter interpreter)
+            throws ConfigurationException {
 
         return (OutputRoutine) createInstanceForConfiguration(
             getConfiguration(), OutputRoutine.class, Interpreter.class,
