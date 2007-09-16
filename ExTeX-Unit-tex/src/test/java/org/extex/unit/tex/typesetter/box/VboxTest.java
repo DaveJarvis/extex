@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,6 +20,7 @@
 package org.extex.unit.tex.typesetter.box;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\vbox</tt>.
@@ -50,11 +51,12 @@ public class VboxTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\vbox"> Test case checking that a vbox ...
-     * </testcase>
+     * <testcase primitive="\vbox"> Test case checking that a vbox needs an
+     * argument in braces. Nothing at all is not enough </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -64,11 +66,12 @@ public class VboxTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\vbox"> Test case checking that a vbox ...
-     * </testcase>
+     * <testcase primitive="\vbox"> Test case checking that a vbox needs an
+     * argument in braces. an opening brace is not enough. </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError2() throws Exception {
 
         assertOutput(// --- input code ---
@@ -78,11 +81,13 @@ public class VboxTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\vbox"> Test case checking that a vbox ...
-     * </testcase>
+     * <testcase primitive="\vbox"> Test case checking that a vbox needs an
+     * argument in braces. Anything else than an opening brace is not
+     * sufficient. </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testError3() throws Exception {
 
         assertFailure(// --- input code ---
@@ -92,12 +97,14 @@ public class VboxTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\vbox"> Test case checking that a vbox containing
-     * "abc" ... </testcase>
+     * <testcase primitive="\vbox"> Test case checking that a vbox with fixed
+     * width containing "abc" in font cmtt12 has the correct height and depth.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void testHboxTo1() throws Exception {
+    @Test
+    public void testTo1() throws Exception {
 
         assertSuccess(// --- input code ---
             DEFINE_BRACES + "\\font\\fnt cmtt12 \\fnt"
@@ -108,12 +115,14 @@ public class VboxTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\vbox"> Test case checking that a vbox containing
-     * "abc" ... </testcase>
+     * <testcase primitive="\vbox"> Test case checking that a spread vbox
+     * containing "abc" in font cmtt12 has the correct height and depth.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void testVboxSpread1() throws Exception {
+    @Test
+    public void testSpread1() throws Exception {
 
         assertSuccess(// --- input code ---
             DEFINE_BRACES + "\\font\\fnt cmtt12 \\fnt"
@@ -125,10 +134,11 @@ public class VboxTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\vbox"> Test case checking that a vbox containing
-     * "abc" ... </testcase>
+     * "abcd" produces the desired nodes. </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void test1() throws Exception {
 
         assertSuccess(showNodesProperties(),
@@ -148,6 +158,6 @@ public class VboxTest extends NoFlagsPrimitiveTester {
                     + ".....d\n");
     }
 
-    // TODO implement primitive specific test cases
+    // TODO implement more primitive specific test cases
 
 }
