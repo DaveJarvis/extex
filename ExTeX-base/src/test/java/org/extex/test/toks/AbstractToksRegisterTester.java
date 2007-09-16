@@ -22,16 +22,17 @@ package org.extex.test.toks;
 import org.extex.test.ExTeXLauncher;
 
 /**
- * This is a abstract base class for testing toks registers.
- * It provides some test cases common to all toks registers.
- *
+ * This is a abstract base class for testing tokens registers. It provides some
+ * test cases common to all tokens registers.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4694 $
  */
 public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
 
     /**
-     * The field <tt>primitive</tt> contains the name of the primitive to test.
+     * The field <tt>primitive</tt> contains the name of the primitive to
+     * test.
      */
     private String primitive;
 
@@ -53,11 +54,11 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name of the test suite
      * @param primitive the name of the integer register to test
      * @param args the parameters for the invocation
-     * @param init ...
+     * @param init the default value
      */
     public AbstractToksRegisterTester(String arg, String primitive,
             String args, String init) {
@@ -70,11 +71,11 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name of the test suite
      * @param primitive the name of the integer register to test
      * @param args the parameters for the invocation
-     * @param init ...
+     * @param init the default value
      * @param prepare the preparation code
      */
     public AbstractToksRegisterTester(String arg, String primitive,
@@ -85,257 +86,246 @@ public abstract class AbstractToksRegisterTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase>
-     *  Test case showing that the prefix <tt>\immediate</tt> is not applicable.
-     * </testcase>
-     *
+     * <testcase> Test case showing that the prefix <tt>\immediate</tt> is not
+     * applicable. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testToksRegisterImmediatePrefix1() throws Exception {
 
-        assertFailure(//--- input code ---
-                prepare + "\\immediate\\" + invocation + "= {} ",
-                //--- error channel ---
-                "You can't use the prefix `\\immediate' with the control sequence"
-                        + (primitive.length() > 14 ? "\n" : " ") + "\\"
-                        + primitive);
+        assertFailure(// --- input code ---
+            prepare + "\\immediate\\" + invocation + "= {} ",
+            // --- error channel ---
+            "You can't use the prefix `\\immediate' with the control sequence"
+                    + (primitive.length() > 14 ? "\n" : " ") + "\\" + primitive);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that the prefix <tt>\long</tt> is not applicable.
-     * </testcase>
-     *
+     * <testcase> Test case showing that the prefix <tt>\long</tt> is not
+     * applicable. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testToksRegisterLongPrefix1() throws Exception {
 
-        assertFailure(//--- input code ---
-                prepare + "\\long\\" + invocation + "= {} ",
-                //--- error channel ---
-                "You can't use the prefix `\\long' with the control sequence"
-                        + (primitive.length() > 19 ? "\n" : " ") + "\\"
-                        + primitive);
+        assertFailure(// --- input code ---
+            prepare + "\\long\\" + invocation + "= {} ",
+            // --- error channel ---
+            "You can't use the prefix `\\long' with the control sequence"
+                    + (primitive.length() > 19 ? "\n" : " ") + "\\" + primitive);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that the prefix <tt>\outer</tt> is not applicable.
-     * </testcase>
-     *
+     * <testcase> Test case showing that the prefix <tt>\outer</tt> is not
+     * applicable. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testToksRegisterOuterPrefix1() throws Exception {
 
-        assertFailure(//--- input code ---
-                prepare + "\\outer\\" + invocation + "= {} ",
-                //--- error channel ---
-                "You can't use the prefix `\\outer' with the control sequence"
-                        + (primitive.length() > 18 ? "\n" : " ") + "\\"
-                        + primitive);
+        assertFailure(// --- input code ---
+            prepare + "\\outer\\" + invocation + "= {} ",
+            // --- error channel ---
+            "You can't use the prefix `\\outer' with the control sequence"
+                    + (primitive.length() > 18 ? "\n" : " ") + "\\" + primitive);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that the primitive is defined and has its default
-     *  value.
-     * </testcase>
-     *
+     * <testcase> Test case showing that the primitive is defined and has its
+     * default value. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testToksRegisterDefault1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                prepare + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                init + (init.length() != 0 ? TERM : ""));
+        assertSuccess(// --- input code ---
+            prepare + "\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            init + (init.length() != 0 ? TERM : ""));
     }
 
     /**
-     * <testcase>
-     *  Test case showing that the primitive is applicable to \showthe.
-     * </testcase>
-     *
+     * <testcase> Test case showing that the primitive is applicable to
+     * \showthe. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testToksRegisterShowthe1() throws Exception {
 
-        assertOutput(//--- input code ---
-                prepare + "\\showthe\\" + invocation + "\\end",
-                //--- output channel ---
-                out(init),
-                "");
+        assertOutput(// --- input code ---
+            prepare + "\\showthe\\" + invocation + "\\end",
+            // --- output channel ---
+            out(init), "");
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment of a constant {abc} works when
-     *  using an equal sign after the primitive name.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an assignment of a constant {abc} works
+     * when using an equal sign after the primitive name. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testToksRegisterAssign1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                prepare + "\\" + invocation + "={abc}\\the\\" + invocation
-                        + "\\end",
-                //--- output channel ---
-                "abc" + TERM);
+        assertSuccess(// --- input code ---
+            prepare + "\\" + invocation + "={abc}\\the\\" + invocation
+                    + "\\end",
+            // --- output channel ---
+            "abc" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment of a constant {abc} works when
-     *  using no equal sign after the primitive name.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an assignment of a constant {abc} works
+     * when using no equal sign after the primitive name. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testToksRegisterAssign2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                prepare + "\\" + invocation + " {abc}\\the\\" + invocation
-                        + "\\end",
-                //--- output channel ---
-                "abc" + TERM);
+        assertSuccess(// --- input code ---
+            prepare + "\\" + invocation + " {abc}\\the\\" + invocation
+                    + "\\end",
+            // --- output channel ---
+            "abc" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment of a constant {a{b}c} works when
-     *  using no equal sign after the primitive name.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an assignment of a constant {a{b}c}
+     * works when using no equal sign after the primitive name. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testToksRegisterAssign3() throws Exception {
 
-        assertSuccess(//--- input code ---
-                prepare + "\\" + invocation + " {a{b}c}\\the\\" + invocation
-                        + "\\end",
-                //--- output channel ---
-                "abc" + TERM);
+        assertSuccess(// --- input code ---
+            prepare + "\\" + invocation + " {a{b}c}\\the\\" + invocation
+                    + "\\end",
+            // --- output channel ---
+            "abc" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment of a constant {a#c} results in
-     *  a#c when the catcode of # is OTHER.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an assignment of a constant {a#c}
+     * results in a#c when the catcode of # is OTHER. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testToksRegisterAssign4() throws Exception {
 
-        assertSuccess(//--- input code ---
-                prepare + "\\" + invocation + " {a#c}\\the\\" + invocation
-                        + "\\end",
-                //--- output channel ---
-                "a#c" + TERM);
+        assertSuccess(// --- input code ---
+            prepare + "\\" + invocation + " {a#c}\\the\\" + invocation
+                    + "\\end",
+            // --- output channel ---
+            "a#c" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment of a constant {a#c} results in
-     *  a#c when the catcode of # is OTHER.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an assignment of a constant {a#c}
+     * results in a#c when the catcode of # is OTHER. </testcase>
+     * 
      * @throws Exception in case of an error
      */
-    public void ___testToksRegisterAssign5() throws Exception {
+    public void testToksRegisterAssign5() throws Exception {
 
-        assertSuccess(//--- input code ---
-                DEFINE_CATCODES + "\\" + invocation + " {a#c}\\the\\"
-                        + invocation + "\\end",
-                //--- output channel ---
-                "a#c" + TERM); //TODO gene: check; maybe double the #
+        assertOutput(// --- input code ---
+            DEFINE_CATCODES + "\\" + invocation + " {a#c}\\showthe\\"
+                    + invocation + "\\end",
+            // --- error channel ---
+            "> a##c.\n",
+            // --- output channel ---
+            ""); // checked with TeX
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment respects <tt>\afterassignment</tt>.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an assignment respects
+     * <tt>\afterassignment</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testToksRegisterAfterassignment1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                prepare + "\\afterassignment b a" + "\\" + invocation
-                        + "{xyz}c\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "abcxyz" + TERM);
+        assertSuccess(// --- input code ---
+            prepare + "\\afterassignment b a" + "\\" + invocation
+                    + "{xyz}c\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "abcxyz" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment respects grouping.
+     * <testcase> Test case showing that an assignment respects grouping.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testToksRegisterGroup1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                prepare + "\\" + invocation + "={xyz}\\begingroup\\"
-                        + invocation + "={abc}\\endgroup" + " \\the\\"
-                        + invocation + "\\end",
-                //--- output channel ---
-                "xyz" + TERM);
+        assertSuccess(// --- input code ---
+            prepare + "\\" + invocation + "={xyz}\\begingroup\\" + invocation
+                    + "={abc}\\endgroup" + " \\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "xyz" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment of a constant 12.3mu works when using
-     *  an equal sign after the primitive name.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an assignment of a constant 12.3mu
+     * works when using an equal sign after the primitive name. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testToksRegisterGlobalAssign1() throws Exception {
 
         assertSuccess(
-                //--- input code ---
-                prepare + "\\begingroup\\global\\" + invocation
-                        + "={abc}\\endgroup" + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "abc" + TERM);
+        // --- input code ---
+            prepare + "\\begingroup\\global\\" + invocation
+                    + "={abc}\\endgroup" + "\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "abc" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that an assignment of a constant 12.3mu works when using
-     *  no equal sign after the primitive name.
-     * </testcase>
-     *
+     * <testcase> Test case showing that an assignment of a constant 12.3mu
+     * works when using no equal sign after the primitive name. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testToksRegisterGlobalAssign2() throws Exception {
 
         assertSuccess(
-                //--- input code ---
-                prepare + "\\begingroup\\global\\" + invocation
-                        + " {abc}\\endgroup" + "\\the\\" + invocation + "\\end",
-                //--- output channel ---
-                "abc" + TERM);
+        // --- input code ---
+            prepare + "\\begingroup\\global\\" + invocation
+                    + " {abc}\\endgroup" + "\\the\\" + invocation + "\\end",
+            // --- output channel ---
+            "abc" + TERM);
     }
 
     /**
-     * <testcase>
-     *  Test case showing that ...
+     * <testcase> Test case showing that the tokens register needs a parameter.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testEof1() throws Exception {
 
         assertFailure(
-                //--- input code ---
-                prepare + "\\" + invocation,
-                //--- output channel ---
-                "File ended while scanning text of \\" + primitive);
+        // --- input code ---
+            prepare + "\\" + invocation,
+            // --- output channel ---
+            "File ended while scanning text of \\" + primitive);
     }
 
-    //TODO gene: add more test cases
+    /**
+     * <testcase> Test case showing that the tokens register needs a complete
+     * parameter. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testEof2() throws Exception {
+
+        assertFailure(
+        // --- input code ---
+            prepare + "\\" + invocation + "{",
+            // --- output channel ---
+            "File ended while scanning text of \\" + primitive);
+    }
+
+    // TODO gene: add more test cases
 }
