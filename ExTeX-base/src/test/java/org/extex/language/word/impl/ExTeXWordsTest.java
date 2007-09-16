@@ -29,7 +29,6 @@ import org.extex.language.word.WordTokenizer;
 import org.extex.test.font.CMR10;
 import org.extex.typesetter.tc.ModifiableTypesettingContext;
 import org.extex.typesetter.tc.TypesettingContextImpl;
-import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.DiscretionaryNode;
@@ -39,7 +38,7 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.extex.typesetter.type.node.factory.SimpleNodeFactory;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a test suite for ExTeXWords.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4805 $
@@ -59,15 +58,10 @@ public class ExTeXWordsTest extends TestCase {
     private static NodeFactory nf = new SimpleNodeFactory();
 
     /**
-     * The field <tt>cmr10</tt> contains the font cmr10 in a memory-only version.
-     */
-    private static Font cmr10 = new CMR10();
-
-    /**
      * The field <tt>tc</tt> contains the typesetting context.
      */
     private static ModifiableTypesettingContext tc =
-            new TypesettingContextImpl(cmr10);
+            new TypesettingContextImpl(new CMR10());
 
     {
         BaseHyphenationTable lan = new BaseHyphenationTable();
@@ -139,7 +133,7 @@ public class ExTeXWordsTest extends TestCase {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Translate a string into a list of nodes.
      *
      * @param s the characters to insert into the list
      *
