@@ -126,7 +126,7 @@ public class PageManager {
      *
      * @throws IllegalArgumentException in case of a parse error
      */
-    public void addPages(CharSequence spec) {
+    public void addPages(CharSequence spec) throws IllegalArgumentException {
 
         if (pages == null) {
             pages = new ArrayList<Range>();
