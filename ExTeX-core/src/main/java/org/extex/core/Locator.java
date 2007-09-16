@@ -151,7 +151,7 @@ public class Locator implements Serializable {
      * This is the Unix style of presenting a file position. If the file name is
      * null then it is treated as if it where the empty string.
      * 
-     * @param causeLinit the limit for the number of causes to be shown. If
+     * @param causeLimit the limit for the number of causes to be shown. If
      *        negative then the optional, preceding continuation indicator (..)
      *        is suppressed
      * 
@@ -159,12 +159,12 @@ public class Locator implements Serializable {
      * 
      * @see #toString()
      */
-    public String toString(int causeLinit) {
+    public String toString(int causeLimit) {
 
         StringBuffer sb = new StringBuffer();
-        if (causeLinit >= 0) {
+        if (causeLimit >= 0) {
             Locator c = cause;
-            for (int i = 0; c != null && i < causeLinit; i++) {
+            for (int i = 0; c != null && i < causeLimit; i++) {
                 if (c.resource != null) {
                     sb.insert(0, c.resource);
                 }
