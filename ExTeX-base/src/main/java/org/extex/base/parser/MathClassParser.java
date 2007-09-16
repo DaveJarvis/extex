@@ -73,19 +73,19 @@ public class MathClassParser implements Serializable {
 
         if (t instanceof OtherToken) {
             source.push(t);
-//            try {
-                long n = source.parseNumber(context, source, typesetter);
-                try {
-                    return MathClass.getMathClass((int) n);
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    // TODO gene: unimplemented
-                    throw new RuntimeException("unimplemented");
-                }
+            // try {
+            long n = source.parseNumber(context, source, typesetter);
+            try {
+                return MathClass.getMathClass((int) n);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                throw new HelpingException(LocalizerFactory
+                    .getLocalizer(MathClassParser.class), "TTP.MissingDelim");
+            }
 
-//            } catch (MissingNumberException e) {
-//                throw new HelpingException(LocalizerFactory
-//                    .getLocalizer(MathClassParser.class), "TTP.MissingDelim");
-//            }
+            // } catch (MissingNumberException e) {
+            // throw new HelpingException(LocalizerFactory
+            // .getLocalizer(MathClassParser.class), "TTP.MissingDelim");
+            // }
         } else if (t instanceof LetterToken) {
             source.push(t);
             switch (t.getChar().getCodePoint()) {
