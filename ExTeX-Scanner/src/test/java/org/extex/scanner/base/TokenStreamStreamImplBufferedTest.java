@@ -25,7 +25,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import org.extex.framework.configuration.Configuration;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.scanner.TokenStream;
 import org.extex.scanner.exception.ScannerException;
 
