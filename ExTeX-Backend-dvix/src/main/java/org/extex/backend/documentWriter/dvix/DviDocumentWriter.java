@@ -304,7 +304,7 @@ public class DviDocumentWriter
                         dviH += dist;
 
                         for (int i = list.size() - 1; i >= 0; i--) {
-                            Object n = list.get(i);
+                            DviCode n = list.get(i);
                             if (n instanceof DviRight) {
                                 ((DviRight) n).add((int) dist);
                                 return;
