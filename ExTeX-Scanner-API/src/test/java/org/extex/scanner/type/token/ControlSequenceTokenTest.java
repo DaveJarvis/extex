@@ -21,7 +21,6 @@ package org.extex.scanner.type.token;
 
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
-import org.extex.scanner.type.Namespace;
 import org.junit.Test;
 
 /**
