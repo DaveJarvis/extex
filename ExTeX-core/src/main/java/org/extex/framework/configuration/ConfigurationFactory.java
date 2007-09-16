@@ -19,7 +19,6 @@
 
 package org.extex.framework.configuration;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 
