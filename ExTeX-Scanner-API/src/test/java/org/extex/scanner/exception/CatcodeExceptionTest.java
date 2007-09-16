@@ -17,30 +17,41 @@
  *
  */
 
-package org.extex.scanner.type;
+package org.extex.scanner.exception;
+
+import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import org.extex.scanner.exception.CatcodeException;
-
-import junit.framework.TestCase;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * Test suite for the exception.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5563 $
  */
-public class CatcodeExceptionTest extends TestCase {
+public class CatcodeExceptionTest {
+
+    /**
+     * Command line interface.
+     * 
+     * @param args the arguments
+     */
+    public static void main(String[] args) {
+
+        JUnitCore.runClasses(CatcodeExceptionTest.class);
+    }
 
     /**
      * Test method for {@link java.lang.Throwable#getLocalizedMessage()}.
      */
+    @Test
     public final void testGetLocalizedMessage() {
 
         Locale.setDefault(Locale.ENGLISH);
-        assertEquals("xxx",
-            new CatcodeException("xxx").getLocalizedMessage());
+        assertEquals("xxx", new CatcodeException("xxx").getLocalizedMessage());
     }
 
 }

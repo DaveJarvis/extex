@@ -17,25 +17,38 @@
  *
  */
 
-package org.extex.scanner.type;
+package org.extex.scanner.exception;
+
+import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import org.extex.scanner.exception.CatcodeWrongLengthException;
-
-import junit.framework.TestCase;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * Test suite for the exception.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5563 $
  */
-public class CatcodeWrongLengthExceptionTest extends TestCase {
+public class CatcodeWrongLengthExceptionTest {
 
     /**
-     * Test method for {@link org.extex.scanner.exception.CatcodeWrongLengthException#getLocalizedMessage()}.
+     * Command line interface.
+     * 
+     * @param args the arguments
      */
+    public static void main(String[] args) {
+
+        JUnitCore.runClasses(CatcodeWrongLengthExceptionTest.class);
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.scanner.exception.CatcodeWrongLengthException#getLocalizedMessage()}.
+     */
+    @Test
     public final void testGetLocalizedMessage1() {
 
         Locale.setDefault(Locale.ENGLISH);
@@ -44,8 +57,10 @@ public class CatcodeWrongLengthExceptionTest extends TestCase {
     }
 
     /**
-     * Test method for {@link org.extex.scanner.exception.CatcodeWrongLengthException#getLocalizedMessage()}.
+     * Test method for
+     * {@link org.extex.scanner.exception.CatcodeWrongLengthException#getLocalizedMessage()}.
      */
+    @Test
     public final void testGetLocalizedMessage2() {
 
         Locale.setDefault(Locale.GERMAN);

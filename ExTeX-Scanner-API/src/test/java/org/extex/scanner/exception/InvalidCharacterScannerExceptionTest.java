@@ -17,40 +17,58 @@
  *
  */
 
-package org.extex.scanner.type;
+package org.extex.scanner.exception;
+
+import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import org.extex.scanner.exception.CatcodeVisitorException;
-
-import junit.framework.TestCase;
+import org.extex.core.UnicodeChar;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 /**
  * Test suite for the exception.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5563 $
  */
-public class CatcodeVisitorExceptionTest extends TestCase {
+public class InvalidCharacterScannerExceptionTest {
 
     /**
-     * Test method for {@link org.extex.scanner.exception.CatcodeVisitorException#getLocalizedMessage()}.
+     * Command line interface.
+     * 
+     * @param args the arguments
      */
-    public final void testGetLocalizedMessage1() {
+    public static void main(String[] args) {
 
-        Locale.setDefault(Locale.ENGLISH);
-        assertEquals("Catcode: Neither character not value given",
-            new CatcodeVisitorException().getLocalizedMessage());
+        JUnitCore.runClasses(InvalidCharacterScannerExceptionTest.class);
     }
 
     /**
-     * Test method for {@link org.extex.scanner.exception.CatcodeVisitorException#getLocalizedMessage()}.
+     * Test method for
+     * {@link org.extex.scanner.exception.CatcodeWrongLengthException#getLocalizedMessage()}.
      */
+    @Test
+    public final void testGetLocalizedMessage1() {
+
+        Locale.setDefault(Locale.ENGLISH);
+        assertEquals("Invalid character x recognized",
+            new InvalidCharacterScannerException(UnicodeChar.get('x'))
+                .getLocalizedMessage());
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.scanner.exception.CatcodeWrongLengthException#getLocalizedMessage()}.
+     */
+    @Test
     public final void testGetLocalizedMessage2() {
 
         Locale.setDefault(Locale.GERMAN);
-        assertEquals("Catcode: Weder Zeichen noch Wert vorhanden",
-            new CatcodeVisitorException().getLocalizedMessage());
+        assertEquals("Ungültiges Zeichen x erkannt",
+            new InvalidCharacterScannerException(UnicodeChar.get('x'))
+                .getLocalizedMessage());
     }
 
 }
