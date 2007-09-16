@@ -19,8 +19,10 @@
 
 package org.extex.unit.tex.macro;
 
+import org.junit.Test;
+
 /**
- * This is a test suite for xdef primitives.
+ * This is a test suite for \xdef-like primitives.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 2974 $
@@ -43,6 +45,7 @@ public abstract class AbstractXdefTester extends AbstractDefTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testExpand1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -57,6 +60,7 @@ public abstract class AbstractXdefTester extends AbstractDefTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testExpand2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -71,6 +75,7 @@ public abstract class AbstractXdefTester extends AbstractDefTester {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testExpand3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -82,10 +87,12 @@ public abstract class AbstractXdefTester extends AbstractDefTester {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     * <testcase> Test case checking that \noexpand prevent expansion of the
+     * following token </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testNoexpand1() throws Exception {
 
         assertOutput(// --- input code ---

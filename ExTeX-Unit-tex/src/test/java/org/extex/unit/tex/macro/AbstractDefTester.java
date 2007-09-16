@@ -20,6 +20,7 @@
 package org.extex.unit.tex.macro;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Test;
 
 /**
  * This is a test suite for def primitives.
@@ -52,10 +53,12 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     * <testcase> Test case checking that \\immediate leads to an error
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testImmediate1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -66,14 +69,32 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     * <testcase> Test case checking that a simple definition of a control
+     * sequence without parameters works. </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testBasic1() throws Exception {
 
         assertSuccess(// --- input code ---
             DEFINE_BRACES + "\\" + def + "\\aaa{AAA}" + "--\\aaa--\\end",
+            // --- output message ---
+            "--AAA--" + TERM);
+    }
+
+    /**
+     * <testcase> Test case checking that a simple definition of an active
+     * character without parameters works. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testBasic2() throws Exception {
+
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\catcode`\\~=13 " //
+                    + "\\" + def + "~{AAA}" + "--~--\\end",
             // --- output message ---
             "--AAA--" + TERM);
     }
@@ -84,6 +105,7 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testLong1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -93,7 +115,8 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     * <testcase> Test case checking that along definition accepts a \par in the
+     * replacement text. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -107,10 +130,12 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     * <testcase> Test case checking that a single argument works for a single
+     * token parameter. </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testArguments1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -121,10 +146,12 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     * <testcase> Test case checking that a single argument works for a
+     * parameter block with one token. </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testArguments2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -135,10 +162,12 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     * <testcase> Test case checking that a single argument works for a
+     * parameter block with two tokens. </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testArguments3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -153,6 +182,7 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testTwoArguments1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -163,10 +193,12 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     * <testcase> Test case checking that a single argument with delimiter works
+     * for a parameter block with one token. </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testPattern1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -177,10 +209,12 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     * <testcase> Test case checking that a single argument with delimiter works
+     * for a parameter block which contains the delimiter. </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testPattern2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -191,10 +225,12 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     * <testcase> Test case checking that an additional closing brace is
+     * reported as error. </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testBrace1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -205,10 +241,12 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> Test case checking that ... </testcase>
+     * <testcase> Test case checking that a double hash is consumed in the
+     * replacement text. </testcase>
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHashArgument1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -222,6 +260,7 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHashArgument2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -236,6 +275,7 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHash10() throws Exception {
 
         assertFailure(// --- input code ---
@@ -251,6 +291,7 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHash11() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -265,6 +306,7 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHashError1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -278,6 +320,7 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testHashError2() throws Exception {
 
         assertFailure(// --- input code ---
@@ -291,6 +334,7 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testRight1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -305,6 +349,7 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testOuter1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -320,6 +365,7 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof1() throws Exception {
 
         assertFailure(// --- input code ---
@@ -333,6 +379,7 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
      * 
      * @throws Exception in case of an error
      */
+    @Test
     public void testEof2() throws Exception {
 
         assertFailure(// --- input code ---
