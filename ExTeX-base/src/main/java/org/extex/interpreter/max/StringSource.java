@@ -36,7 +36,7 @@ import org.extex.scanner.type.token.TokenFactory;
 
 /**
  * This class provides a token source which is fed from a string.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4408 $
  */
@@ -44,20 +44,21 @@ public class StringSource extends Moritz {
 
     /**
      * This Token stream is fed from a CharSequence.
-     *
+     * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision:4408 $
      */
     private static class TStream implements TokenStream {
 
         /**
-         * The field <tt>cs</tt> contains the char sequence containing the chars
-         * to read.
+         * The field <tt>cs</tt> contains the char sequence containing the
+         * chars to read.
          */
         private CharSequence cs;
 
         /**
-         * The field <tt>next</tt> contains the pointer to the next char to read.
+         * The field <tt>next</tt> contains the pointer to the next char to
+         * read.
          */
         private int next = 0;
 
@@ -68,7 +69,7 @@ public class StringSource extends Moritz {
 
         /**
          * Creates a new object.
-         *
+         * 
          * @param cs the character sequence to read from
          */
         protected TStream(CharSequence cs) {
@@ -78,9 +79,9 @@ public class StringSource extends Moritz {
 
         /**
          * Close this stream if it is a file stream.
-         *
+         * 
          * @return <code>true</code> if the closing was successful
-         *
+         * 
          * @see org.extex.scanner.TokenStream#closeFileStream()
          */
         public boolean closeFileStream() {
@@ -90,19 +91,18 @@ public class StringSource extends Moritz {
         }
 
         /**
-         * Get the next token from the token stream.
-         * If tokens are on the push-back stack then those are delivered otherwise
-         * new tokens might be extracted utilizing the token factory and the
-         * tokenizer.
-         *
+         * Get the next token from the token stream. If tokens are on the
+         * push-back stack then those are delivered otherwise new tokens might
+         * be extracted utilizing the token factory and the tokenizer.
+         * 
          * @param factory the token factory
          * @param tokenizer the tokenizer
-         *
+         * 
          * @return the next Token or <code>null</code> if no more tokens are
-         * available
-         *
+         *         available
+         * 
          * @throws ScannerException in case of an error
-         *
+         * 
          * @see org.extex.scanner.TokenStream#get(
          *      org.extex.scanner.type.token.TokenFactory,
          *      org.extex.scanner.Tokenizer)
@@ -127,13 +127,12 @@ public class StringSource extends Moritz {
         }
 
         /**
-         * Getter for the locator.
-         * The locator describes the place the tokens have been read from in terms
-         * of the user. This information is meant for the end user to track down
-         * problems.
-         *
+         * Getter for the locator. The locator describes the place the tokens
+         * have been read from in terms of the user. This information is meant
+         * for the end user to track down problems.
+         * 
          * @return the locator
-         *
+         * 
          * @see org.extex.scanner.TokenStream#getLocator()
          */
         public Locator getLocator() {
@@ -142,14 +141,15 @@ public class StringSource extends Moritz {
         }
 
         /**
-         * Check to see if a further token can be acquired from the token stream.
-         *
+         * Check to see if a further token can be acquired from the token
+         * stream.
+         * 
          * @return <code>true</code> if the stream is at its end
-         *
+         * 
          * @throws ScannerException in case that an error has been encountered.
-         *  Especially if an IO exceptions occurs it is delivered as chained
-         *  exception in a ScannerException.
-         *
+         *         Especially if an IO exceptions occurs it is delivered as
+         *         chained exception in a ScannerException.
+         * 
          * @see org.extex.scanner.TokenStream#isEof()
          */
         public boolean isEof() throws ScannerException {
@@ -159,13 +159,13 @@ public class StringSource extends Moritz {
 
         /**
          * Check to see if the token stream is currently at the end of line.
-         *
+         * 
          * @return <code>true</code> if the stream is at end of line
-         *
+         * 
          * @throws ScannerException in case that an error has been encountered.
-         *  Especially if an IO exceptions occurs it is delivered as chained
-         *  exception in a ScannerException.
-         *
+         *         Especially if an IO exceptions occurs it is delivered as
+         *         chained exception in a ScannerException.
+         * 
          * @see org.extex.scanner.TokenStream#isEol()
          */
         public boolean isEol() throws ScannerException {
@@ -174,10 +174,11 @@ public class StringSource extends Moritz {
         }
 
         /**
-         * Check whether the current stream is associated with a file to read from.
-         *
+         * Check whether the current stream is associated with a file to read
+         * from.
+         * 
          * @return <code>true</code> if the stream is a file stream
-         *
+         * 
          * @see org.extex.scanner.TokenStream#isFileStream()
          */
         public boolean isFileStream() {
@@ -186,17 +187,16 @@ public class StringSource extends Moritz {
         }
 
         /**
-         * Push back a token into the stream.
-         * If the token is <code>null</code> then nothing happens:
-         * a <code>null</code> token is not pushed!
+         * Push back a token into the stream. If the token is <code>null</code>
+         * then nothing happens: a <code>null</code> token is not pushed!
          * <p>
-         * Note that it is up to the implementation to accept tokens not produced
-         * with the token factory for push back. In general the behavior in such a
-         * case is not defined and should be avoided.
+         * Note that it is up to the implementation to accept tokens not
+         * produced with the token factory for push back. In general the
+         * behavior in such a case is not defined and should be avoided.
          * </p>
-         *
+         * 
          * @param token the token to push back
-         *
+         * 
          * @see org.extex.scanner.TokenStream#put(
          *      org.extex.scanner.type.token.Token)
          */
@@ -217,23 +217,23 @@ public class StringSource extends Moritz {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param cs the character sequence to read from
-     *
+     * 
      * @throws ConfigurationException in case of errors in the configuration
      */
-    public StringSource(CharSequence cs) {
+    public StringSource(CharSequence cs) throws ConfigurationException {
 
         super();
         addStream(new TStream(cs));
     }
 
     /**
-     * Reset the input to come from a new source. Any state information is
-     * reset to initial values.
-     *
+     * Reset the input to come from a new source. Any state information is reset
+     * to initial values.
+     * 
      * @param cs the character sequence to read from
-     *
+     * 
      * @throws HelpingException in case of an error
      */
     public void reset(CharSequence cs) throws HelpingException {
