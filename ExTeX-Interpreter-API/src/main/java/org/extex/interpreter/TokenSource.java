@@ -117,6 +117,8 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * @param token the token to expand
      * @param context the interpreter context
      * @param typesetter the typesetter
+     *
+     * @return the next token
      * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of a typesetter error
@@ -497,9 +499,10 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * 
      * @return the old parser for this class or <code>null</code> if none has
      *         been registered
+     * @throws HelpingException TODO
      */
     @SuppressWarnings("unchecked")
-    Parser register(Class c, Parser p);
+    Parser register(Class c, Parser p) throws HelpingException;
 
     /**
      * Scan the input stream for tokens making up a character code, this is a
