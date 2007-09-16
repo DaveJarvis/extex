@@ -112,6 +112,21 @@ public class MacroParamToken extends AbstractToken implements Token {
     }
 
     /**
+     * Return the text representation of this object.
+     * 
+     * @return the text representation
+     */
+    @Override
+    public String toText() {
+
+        UnicodeChar uc = getChar();
+        if (uc == null) {
+            return "";
+        }
+        return uc.toString() + uc.toString();
+    }
+
+    /**
      * Print the token into a StringBuffer.
      * 
      * @param sb the target string buffer
