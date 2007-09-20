@@ -98,4 +98,14 @@ public class MacroParamTokenTest extends TokenTester {
         assertFalse(t.eq('.'));
     }
 
+    /**
+     */
+    @Test
+    @Override
+    public void testToText0() {
+
+        assertEquals("xx", t.toText());
+    }
+
+
 }
