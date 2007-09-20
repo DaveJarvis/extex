@@ -184,7 +184,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
     public void test11() throws Exception {
 
         assertSuccess(//--- input code ---
-            "\\ifhbox1\\else \\the\\currentiftype \\fi\\end",
+            "\\ifhbox1 \\else \\the\\currentiftype \\fi\\end",
             //--- log message ---
             "11" + TERM);
     }
@@ -199,7 +199,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
     public void test12() throws Exception {
 
         assertSuccess(//--- input code ---
-            "\\ifvbox1\\else \\the\\currentiftype \\fi\\end",
+            "\\ifvbox1 \\else \\the\\currentiftype \\fi\\end",
             //--- log message ---
             "12" + TERM);
     }
