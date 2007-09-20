@@ -92,7 +92,7 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
         assertFailure(//--- input code ---
             "\\multiply a",
             //--- log message ---
-            "You can\'t use `a\' after \\multiply");
+            "You can\'t use `the letter a\' after \\multiply");
     }
 
     /**
@@ -108,7 +108,7 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
         assertFailure(//--- input code ---
             "\\multiply 12 ",
             //--- log message ---
-            "You can\'t use `1\' after \\multiply");
+            "You can\'t use `the character 1\' after \\multiply");
     }
 
     /**
@@ -124,7 +124,7 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
         assertFailure(//--- input code ---
             "\\catcode`#=6 " + "\\multiply #2 ",
             //--- log message ---
-            "You can\'t use `#\' after \\multiply");
+            "You can\'t use `macro parameter character #\' after \\multiply");
     }
 
     /**
@@ -140,7 +140,7 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
         assertFailure(//--- input code ---
             "\\multiply \\relax ",
             //--- log message ---
-            "You can\'t use `\\relax\' after \\multiply");
+            "You can\'t use `the control sequence \\relax\' after \\multiply");
     }
 
     /**

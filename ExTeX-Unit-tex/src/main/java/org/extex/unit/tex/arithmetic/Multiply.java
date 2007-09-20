@@ -134,7 +134,7 @@ public class Multiply extends AbstractAssignment {
         } else if (cs == null) {
             throw new EofException(printableControlSequence(context));
         }
-        throw new CantUseAfterException(cs.toText(),
+        throw new CantUseAfterException(cs.toString(),
                 printableControlSequence(context));
     }
 

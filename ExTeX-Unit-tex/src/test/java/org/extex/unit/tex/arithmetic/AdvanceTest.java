@@ -92,7 +92,7 @@ public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
         assertFailure(//--- input code ---
                 "\\advance a",
                 //--- log message ---
-                "You can\'t use `a\' after \\advance");
+                "You can\'t use `the letter a\' after \\advance");
     }
 
     /**
@@ -108,7 +108,7 @@ public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
         assertFailure(//--- input code ---
                 "\\advance 12 ",
                 //--- log message ---
-                "You can\'t use `1\' after \\advance");
+                "You can\'t use `the character 1\' after \\advance");
     }
 
     /**
@@ -125,7 +125,7 @@ public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
                 "\\catcode`#=6 "
                 + "\\advance #2 ",
                 //--- log message ---
-                "You can\'t use `#\' after \\advance");
+                "You can\'t use `macro parameter character #\' after \\advance");
     }
 
     /**
@@ -141,7 +141,7 @@ public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
         assertFailure(//--- input code ---
                 "\\advance \\relax ",
                 //--- log message ---
-                "You can\'t use `\\relax\' after \\advance");
+                "You can\'t use `the control sequence \\relax\' after \\advance");
     }
 
     /**
