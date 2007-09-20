@@ -140,7 +140,7 @@ public class ShowtokensTest extends NoFlagsPrimitiveTester {
                 + "\\showtokens{x#x}"
                 + "\\end",
                 //--- output channel ---
-                "> x#x.\n",
+                "> x##x.\n",
                 "");
     }
 
