@@ -24,7 +24,7 @@ import org.extex.unit.tex.math.AbstractMathTester;
 
 /**
  * This is a test suite for the primitive <tt>\u005cnless</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -32,7 +32,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
@@ -42,7 +42,7 @@ public class UnlessTest extends ExTeXLauncher {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public UnlessTest(String arg) {
@@ -52,342 +52,352 @@ public class UnlessTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\u005cnless">
-     *  Test case checking that <tt>\u005cnless</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> needs a following control sequence. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError0() throws Exception {
+
+        assertFailure(
+        // --- input code ---
+            "\\unless",
+            // --- error channel ---
+            "Missing control sequence inserted");
+    }
+
+    /**
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> needs a following control sequence. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testError1() throws Exception {
 
         assertFailure(
-        //--- input code ---
-                "\\unless",
-                //--- error channel ---
-                "Missing control sequence inserted");
+        // --- input code ---
+            "\\unless a",
+            // --- error channel ---
+            "Missing control sequence inserted");
     }
 
     /**
-     * <testcase primitive="\u005cnless">
-     *  Test case checking that <tt>\u005cnless</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> needs a following conditional. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testError2() throws Exception {
 
         assertFailure(
-        //--- input code ---
-                "\\unless\\relax",
-                //--- error channel ---
-                "You can't use `\\relax' after \\unless");
+        // --- input code ---
+            "\\unless\\relax",
+            // --- error channel ---
+            "You can't use `\\relax' after \\unless");
     }
 
     /**
-     * <testcase primitive="\u005cnless">
-     *  Test case checking that <tt>\u005cnless</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> needs a following control sequence. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testError3() throws Exception {
 
         assertFailure(
-        //--- input code ---
-                "\\unless A",
-                //--- error channel ---
-                "Missing control sequence inserted");
+        // --- input code ---
+            "\\unless 1",
+            // --- error channel ---
+            "Missing control sequence inserted");
     }
 
     /**
-     * <testcase primitive="\u005cnless">
-     *  Test case checking that <tt>\u005cnless</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> does not work with \ifcase. </testcase>
+     * 
      * @throws Exception in case of an error
      */
-    public void testErr2() throws Exception {
+    public void testError4() throws Exception {
 
         assertFailure(
-        //--- input code ---
-                "\\unless\\ifcase",
-                //--- error channel ---
-                "You can't use `\\ifcase' after \\unless");
+        // --- input code ---
+            "\\unless\\ifcase",
+            // --- error channel ---
+            "You can't use `\\ifcase' after \\unless");
     }
 
     /**
-     * <testcase primitive="\u005cnless">
-     *  Test case checking that <tt>\u005cnless</tt> ...
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> does not work with \u005cunless. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError5() throws Exception {
+
+        assertFailure(
+        // --- input code ---
+            "\\unless\\unless\\ifcase",
+            // --- error channel ---
+            "You can't use `\\unless' after \\unless");
+    }
+
+    /**
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> reverses the expansion of \ifnum on equals.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
         assertSuccess(
-        //--- input code ---
-                "\\unless\\ifnum1=1 a\\else b\\fi \\end",
-                //--- output channel ---
-                "b" + TERM);
+        // --- input code ---
+            "\\unless\\ifnum1=1 a\\else b\\fi \\end",
+            // --- output channel ---
+            "b" + TERM);
     }
 
     /**
-     * <testcase primitive="\u005cnless">
-     *  Test case checking that <tt>\u005cnless</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> reverses the expansion of \ifnum. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
         assertSuccess(
-        //--- input code ---
-                "\\unless\\ifnum1=3 a\\else b\\fi \\end",
-                //--- output channel ---
-                "a" + TERM);
+        // --- input code ---
+            "\\unless\\ifnum1=3 a\\else b\\fi \\end",
+            // --- output channel ---
+            "a" + TERM);
     }
 
     /**
-     * <testcase primitive="\u005cnless">
-     *  Test case checking that <tt>\u005cnless</tt>...
-     * </testcase>
-     *
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> reverses the expansion of \if. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testA1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\unless\\if AA a\\else b\\fi\\end",
-                //--- log message ---
-                "b" + TERM);
+        assertSuccess(// --- input code ---
+            "\\unless\\if AA a\\else b\\fi\\end",
+            // --- log message ---
+            "b" + TERM);
     }
 
     /**
-     * <testcase primitive="\u005cnless">
-     *  Test case checking that <tt>\u005cnless</tt>...
-     * </testcase>
-     *
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> reverses the expansion of \ifcat. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testA2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\unless\\ifcat AA a\\else b\\fi\\end",
-                //--- log message ---
-                "b" + TERM);
+        assertSuccess(// --- input code ---
+            "\\unless\\ifcat AA a\\else b\\fi\\end",
+            // --- log message ---
+            "b" + TERM);
     }
 
     /**
-     * <testcase primitive="\u005cnless">
-     *  Test case checking that <tt>\u005cnless</tt>...
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> reverses the expansion of \ifnum (ne case).
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testA3() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\unless\\ifnum 1=2 a\\else b\\fi\\end",
-                //--- log message ---
-                "a" + TERM);
+        assertSuccess(// --- input code ---
+            "\\unless\\ifnum 1=2 a\\else b\\fi\\end",
+            // --- log message ---
+            "a" + TERM);
     }
 
     /**
-     * <testcase primitive="\u005cnless">
-     *  Test case checking that <tt>\u005cnless</tt>...
-     * </testcase>
-     *
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> reverses the expansion of \ifdim. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testA4() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\unless\\ifdim 1sp=2sp a\\else b\\fi\\end",
-                //--- log message ---
-                "a" + TERM);
+        assertSuccess(// --- input code ---
+            "\\unless\\ifdim 1sp=2sp a\\else b\\fi\\end",
+            // --- log message ---
+            "a" + TERM);
     }
 
     /**
-     * <testcase primitive="\u005cnless">
-     *  Test case checking that <tt>\u005cnless</tt>...
-     * </testcase>
-     *
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> reverses the expansion of \ifodd. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testA5() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\unless\\ifodd2 a\\else b\\fi\\end",
-                //--- log message ---
-                "a" + TERM);
+        assertSuccess(// --- input code ---
+            "\\unless\\ifodd2 a\\else b\\fi\\end",
+            // --- log message ---
+            "a" + TERM);
     }
 
     /**
-     * <testcase primitive="\u005cnless">
-     *  Test case checking that <tt>\u005cnless</tt>...
-     * </testcase>
-     *
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> reverses the expansion of \ifvmode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testA6() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\unless\\ifvmode a\\else b\\fi\\end",
-                //--- log message ---
-                "b" + TERM);
+        assertSuccess(// --- input code ---
+            "\\unless\\ifvmode a\\else b\\fi\\end",
+            // --- log message ---
+            "b" + TERM);
     }
 
     /**
-     * <testcase primitive="\u005cnless">
-     *  Test case checking that <tt>\u005cnless</tt>...
-     * </testcase>
-     *
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> reverses the expansion of \ifmmode. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testA8() throws Exception {
 
         assertSuccess(
-        //--- input code ---
-                AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_CATCODES
-                + "$\\unless\\ifmmode a\\else b\\fi$\\end",
-                //--- log message ---
-                "b" + TERM);
+        // --- input code ---
+            AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_CATCODES
+                    + "$\\unless\\ifmmode a\\else b\\fi$\\end",
+            // --- log message ---
+            "b" + TERM);
     }
 
     /**
-     * <testcase primitive="\u005cnless">
-     *  Test case checking that <tt>\u005cnless</tt>...
-     * </testcase>
-     *
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> reverses the expansion of \ifvoid. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testA10() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\unless\\ifvoid0 a\\else b\\fi\\end",
-                //--- log message ---
-                "b" + TERM);
+        assertSuccess(// --- input code ---
+            "\\unless\\ifvoid0 a\\else b\\fi\\end",
+            // --- log message ---
+            "b" + TERM);
     }
 
     /**
-     * <testcase primitive="\u005cnless">
-     *  Test case checking that <tt>\u005cnless</tt>...
-     * </testcase>
-     *
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> reverses the expansion of \ifhbox. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testA11() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\unless\\ifhbox1 a\\else b\\fi\\end",
-                //--- log message ---
-                "a" + TERM);
+        assertSuccess(// --- input code ---
+            "\\unless\\ifhbox1 a\\else b\\fi\\end",
+            // --- log message ---
+            "a" + TERM);
     }
 
     /**
-     * <testcase primitive="\u005cnless">
-     *  Test case checking that <tt>\u005cnless</tt>...
-     * </testcase>
-     *
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> reverses the expansion of \ifvbox. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testA12() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\unless\\ifvbox1 a\\else b\\fi\\end",
-                //--- log message ---
-                "a" + TERM);
+        assertSuccess(// --- input code ---
+            "\\unless\\ifvbox1 a\\else b\\fi\\end",
+            // --- log message ---
+            "a" + TERM);
     }
 
     /**
-     * <testcase primitive="\u005cnless">
-     *  Test case checking that <tt>\u005cnless</tt>...
-     * </testcase>
-     *
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> reverses the expansion of \ifx. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testA13() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\unless\\ifx AA a\\else b\\fi\\end",
-                //--- log message ---
-                "b" + TERM);
+        assertSuccess(// --- input code ---
+            "\\unless\\ifx AA a\\else b\\fi\\end",
+            // --- log message ---
+            "b" + TERM);
     }
 
     /**
-     * <testcase primitive="\u005cnless">
-     *  Test case checking that <tt>\u005cnless</tt>...
-     * </testcase>
-     *
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> reverses the expansion of \ifeof. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testA14() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\unless\\ifeof1 a\\else b\\fi\\end",
-                //--- log message ---
-                "b" + TERM);
+        assertSuccess(// --- input code ---
+            "\\unless\\ifeof1 a\\else b\\fi\\end",
+            // --- log message ---
+            "b" + TERM);
     }
 
     /**
-     * <testcase primitive="\u005cnless">
-     *  Test case checking that <tt>\u005cnless</tt>...
-     * </testcase>
-     *
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> reverses the expansion of \iftrue. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testA15() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\unless\\iftrue a\\else b\\fi\\end",
-                //--- log message ---
-                "b" + TERM);
+        assertSuccess(// --- input code ---
+            "\\unless\\iftrue a\\else b\\fi\\end",
+            // --- log message ---
+            "b" + TERM);
     }
 
     /**
-     * <testcase primitive="\u005cnless">
-     *  Test case checking that <tt>\u005cnless</tt>...
-     * </testcase>
-     *
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> reverses the expansion of \iffalse. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testA16() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\unless\\iffalse a\\else b\\fi\\end",
-                //--- log message ---
-                "a" + TERM);
+        assertSuccess(// --- input code ---
+            "\\unless\\iffalse a\\else b\\fi\\end",
+            // --- log message ---
+            "a" + TERM);
     }
 
     /**
-     * <testcase primitive="\u005cnless">
-     *  Test case checking that <tt>\u005cnless</tt>...
-     * </testcase>
-     *
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> reverses the expansion of \ifcsname. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testA19() throws Exception {
 
         assertSuccess(
-        //--- input code ---
-                "\\unless\\ifcsname aaa\\endcsname a\\else b\\fi\\end",
-                //--- log message ---
-                "a" + TERM);
+        // --- input code ---
+            "\\unless\\ifcsname aaa\\endcsname a\\else b\\fi\\end",
+            // --- log message ---
+            "a" + TERM);
     }
 
     /**
-     * <testcase primitive="\u005cnless">
-     *  Test case checking that <tt>\u005cnless</tt>...
-     * </testcase>
-     *
+     * <testcase primitive="\u005cnless"> Test case checking that
+     * <tt>\u005cnless</tt> reverses the expansion of \iffontchar. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testA20() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\unless\\iffontchar\\nullfont`\\a a\\else b\\fi\\end",
-                //--- log message ---
-                "a" + TERM);
+        assertSuccess(// --- input code ---
+            "\\unless\\iffontchar\\nullfont`\\a a\\else b\\fi\\end",
+            // --- log message ---
+            "a" + TERM);
     }
 
 }
