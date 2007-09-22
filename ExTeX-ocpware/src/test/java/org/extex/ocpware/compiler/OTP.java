@@ -31,7 +31,7 @@ import java.io.InputStream;
 public final class OTP {
 
     /**
-     * TODO gene: missing JavaDoc
+     * Provide the contents of an OTP file.
      * 
      * @param name the name of the resource
      * 
@@ -63,7 +63,6 @@ public final class OTP {
 
     /**
      * Creates a new object.
-     * 
      */
     private OTP() {
 
