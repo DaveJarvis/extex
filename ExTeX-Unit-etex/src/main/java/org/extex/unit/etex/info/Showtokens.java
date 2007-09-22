@@ -48,7 +48,8 @@ import org.extex.typesetter.exception.TypesetterException;
  * <doc name="showtokens">
  * <h3>The Primitive <tt>\showtokens</tt></h3>
  * <p>
- * TODO missing documentation
+ * The primitive <tt>\showtokens</tt> shows some tokens on the log stream. This
+ * is meant for diagnostic and debugging purposes.
  * </p>
  * 
  * <h4>Syntax</h4>
@@ -56,7 +57,9 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <pre class="syntax">
  *    &lang;showtokens&rang;
- *       &rarr; <tt>\showtokens</tt> ...  </pre>
+ *       &rarr; <tt>\showtokens</tt> {@linkplain
+ *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
+ *        &lang;tokens&rang;}  </pre>
  * 
  * <h4>Examples</h4>
  * 
