@@ -57,8 +57,29 @@ import org.extex.unit.tex.register.count.AbstractReadonlyCount;
  * <doc name="lastnodetype">
  * <h3>The Primitive <tt>\lastnodetype</tt></h3>
  * <p>
- * TODO missing documentation
+ * The primitive <tt>\lastnodetype</tt> inspects the last node in the
+ * typesetter and returns a count value according to the node type found. The
+ * following table shows the values returned:
  * </p>
+ * <table>
+ * <tr><td>-1</td><td>no node; i.e. the list is empty</td></tr>
+ * <tr><td>0</td><td>char node</td></tr>
+ * <tr><td>1</td><td>hlist node</td></tr>
+ * <tr><td>2</td><td>vlist node</td></tr>
+ * <tr><td>3</td><td>rule node</td></tr>
+ * <tr><td>4</td><td>insertion node</td></tr>
+ * <tr><td>5</td><td>mark node</td></tr>
+ * <tr><td>6</td><td>adjust node</td></tr>
+ * <tr><td>7</td><td>ligature node</td></tr>
+ * <tr><td>8</td><td>discretionary node</td></tr>
+ * <tr><td>9</td><td>whatsit node</td></tr>
+ * <tr><td>10</td><td>math node</td></tr>
+ * <tr><td>11</td><td>glue node</td></tr>
+ * <tr><td>12</td><td>kern node</td></tr>
+ * <tr><td>13</td><td>penalty node</td></tr>
+ * <tr><td>14</td><td>unset node (not used in ExTeX)</td></tr>
+ * <tr><td>15</td><td>math mode nodes</td></tr>
+ * </table>
  * 
  * <h4>Syntax</h4>
  * The formal description of this primitive is the following:
@@ -97,13 +118,12 @@ public class Lastnodetype extends AbstractReadonlyCount {
         /**
          * Type number for adjust nodes.
          */
-        private static final Integer NODETYPE_ADJUST = new Integer(6);
+        private static final Integer NODETYPE_ADJUST = Integer.valueOf(6);
 
         /**
          * Type number for aftermath nodes.
          */
-        // TODO: is this correct? (TE)
-        private static final Integer NODETYPE_AFTERMATH = new Integer(15);
+        private static final Integer NODETYPE_AFTERMATH = Integer.valueOf(10);
 
         /**
          * Type number for aligned leaders nodes.
@@ -113,8 +133,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
         /**
          * Type number for before math nodes.
          */
-        // TODO: is this correct? (TE)
-        private static final Integer NODETYPE_BEFOREMATH = new Integer(10);
+        private static final Integer NODETYPE_BEFOREMATH = Integer.valueOf(10);
 
         /**
          * Type number for centered leaders nodes.
@@ -124,12 +143,13 @@ public class Lastnodetype extends AbstractReadonlyCount {
         /**
          * Type number for char nodes.
          */
-        private static final Integer NODETYPE_CHAR = new Integer(0);
+        private static final Integer NODETYPE_CHAR = Integer.valueOf(0);
 
         /**
          * Type number for discretionary nodes.
          */
-        private static final Integer NODETYPE_DISCRETIONARY = new Integer(8);
+        private static final Integer NODETYPE_DISCRETIONARY =
+                Integer.valueOf(8);
 
         /**
          * Type number for expanded leaders nodes.
@@ -139,57 +159,53 @@ public class Lastnodetype extends AbstractReadonlyCount {
         /**
          * Type number for glue nodes.
          */
-        private static final Integer NODETYPE_GLUE = new Integer(11);
+        private static final Integer NODETYPE_GLUE = Integer.valueOf(11);
 
         /**
          * Type number for horizontal list nodes.
          */
-        private static final Integer NODETYPE_HORIZONTALLIST = new Integer(1);
+        private static final Integer NODETYPE_HORIZONTALLIST =
+                Integer.valueOf(1);
 
         /**
          * Type number for insertion nodes.
          */
-        private static final Integer NODETYPE_INSERTION = new Integer(4);
+        private static final Integer NODETYPE_INSERTION = Integer.valueOf(4);
 
         /**
          * Type number for kern nodes.
          */
-        private static final Integer NODETYPE_KERN = new Integer(12);
+        private static final Integer NODETYPE_KERN = Integer.valueOf(12);
 
         /**
          * Type number for ligature nodes.
          */
-        private static final Integer NODETYPE_LIGATURE = new Integer(7);
+        private static final Integer NODETYPE_LIGATURE = Integer.valueOf(7);
 
         /**
          * Type number for mark nodes.
          */
-        private static final Integer NODETYPE_MARK = new Integer(5);
+        private static final Integer NODETYPE_MARK = Integer.valueOf(5);
 
         /**
          * Type number for penalty nodes.
          */
-        private static final Integer NODETYPE_PENALTY = new Integer(13);
+        private static final Integer NODETYPE_PENALTY = Integer.valueOf(13);
 
         /**
          * Type number for rule nodes.
          */
-        private static final Integer NODETYPE_RULE = new Integer(3);
+        private static final Integer NODETYPE_RULE = Integer.valueOf(3);
 
-        /**
-         * Type number for space nodes.
-         */
-        // TODO
-        // private static final int NODETYPE_SPACE = 4444;
         /**
          * Type number for vertical list nodes.
          */
-        private static final Integer NODETYPE_VERTICALLIST = new Integer(2);
+        private static final Integer NODETYPE_VERTICALLIST = Integer.valueOf(2);
 
         /**
          * Type number for whatsit nodes.
          */
-        private static final Integer NODETYPE_WHATSIT = new Integer(9);
+        private static final Integer NODETYPE_WHATSIT = Integer.valueOf(9);
 
         /**
          * Returns the Node for an specified node.
@@ -208,9 +224,8 @@ public class Lastnodetype extends AbstractReadonlyCount {
 
             try {
                 return ((Integer) node.visit(this, null)).intValue();
-            } catch (HelpingException e) {
-                throw e;
             } catch (GeneralException e) {
+                // this should not happen
                 throw new NoHelpException(e);
             }
         }
@@ -270,16 +285,14 @@ public class Lastnodetype extends AbstractReadonlyCount {
          * Return type number for before math nodes. Both arguments are not
          * used.
          * 
-         * @param node the visited node
-         * @param arg null
+         * {@inheritDoc}
          * 
-         * @return type number of node as <code>Integer</code>
-         * 
-         * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(BeforeMathNode,
-         *      java.lang.Object)
+         * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(
+         *      org.extex.typesetter.type.node.BeforeMathNode, java.lang.Object)
          */
         public Integer visitBeforeMath(BeforeMathNode node, Object arg) {
 
+            // not relevant since you can't get your hand in here
             return NODETYPE_BEFOREMATH;
         }
 
@@ -371,7 +384,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
         }
 
         /**
-         * Return type number for horizontallist nodes. Both arguments are not
+         * Return type number for horizontal list nodes. Both arguments are not
          * used.
          * 
          * @param node the visited node
@@ -496,9 +509,7 @@ public class Lastnodetype extends AbstractReadonlyCount {
          */
         public Integer visitSpace(SpaceNode node, Object arg) {
 
-            // TODO unimplemented
-            throw new RuntimeException("unimplemented");
-            // return new Integer(NODETYPE_SPACE);
+             return NODETYPE_GLUE;
         }
 
         /**
@@ -519,7 +530,10 @@ public class Lastnodetype extends AbstractReadonlyCount {
         }
 
         /**
-         * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(org.extex.typesetter.type.node.VirtualCharNode,
+         * {@inheritDoc}
+         * 
+         * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(
+         *      org.extex.typesetter.type.node.VirtualCharNode,
          *      java.lang.Object)
          */
         public Integer visitVirtualChar(VirtualCharNode node, Object value) {
@@ -549,7 +563,8 @@ public class Lastnodetype extends AbstractReadonlyCount {
      */
     private static final NodetypeReader NODETYPE_READER = new NodetypeReader();
 
-    // TODO: type 14 (unset) is missing (TE)
+    // type 14 (unset) is missing (TE)
+    // it is not used in ExTeX (gene)
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
