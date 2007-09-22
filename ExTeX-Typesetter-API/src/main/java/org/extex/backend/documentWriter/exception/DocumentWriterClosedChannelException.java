@@ -21,7 +21,7 @@ package org.extex.backend.documentWriter.exception;
 
 /**
  * DocumentWriter: clodes channel.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -30,13 +30,14 @@ public class DocumentWriterClosedChannelException
             DocumentWriterIOException {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 1L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param message the error message
      */
     public DocumentWriterClosedChannelException(String message) {
@@ -46,19 +47,18 @@ public class DocumentWriterClosedChannelException
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param message the message
      * @param cause the cause
      */
-    public DocumentWriterClosedChannelException(String message,
-            Throwable cause) {
+    public DocumentWriterClosedChannelException(String message, Throwable cause) {
 
         super(message, cause);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param cause the cause
      */
     public DocumentWriterClosedChannelException(Throwable cause) {

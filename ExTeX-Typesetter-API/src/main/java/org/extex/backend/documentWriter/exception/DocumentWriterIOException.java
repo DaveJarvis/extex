@@ -28,7 +28,8 @@ package org.extex.backend.documentWriter.exception;
 public class DocumentWriterIOException extends DocumentWriterException {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 1L;
 
