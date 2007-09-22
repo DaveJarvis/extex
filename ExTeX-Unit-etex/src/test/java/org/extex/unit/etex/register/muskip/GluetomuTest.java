@@ -51,7 +51,7 @@ public class GluetomuTest extends NonExecuteTester {
 
     /**
      * <testcase>
-     *  Test case showing that ...
+     *  Test case showing that a constant in points translates identical to mu.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -67,7 +67,7 @@ public class GluetomuTest extends NonExecuteTester {
 
     /**
      * <testcase>
-     *  Test case showing that ...
+     *  Test case showing that \gluetomu can be applied to \show.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -82,6 +82,6 @@ public class GluetomuTest extends NonExecuteTester {
                 "");
     }
 
-    //TODO implement the primitive specific test cases
+    //TODO implement more primitive specific test cases
 
 }
