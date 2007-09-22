@@ -39,7 +39,9 @@ import org.junit.Test;
 public class GenericListNodeTest extends AbstractNodeListTester {
 
     /**
-     * The field <tt>VISITOR</tt> contains the ...
+     * The constant <tt>VISITOR</tt> contains the a node visitor which return
+     * a horizontal list node only. The other ndes are mapped to
+     * <code>null</code>.
      */
     private static final NodeVisitor<Object, Object> VISITOR =
             new NodeVisitor<Object, Object>() {
@@ -177,7 +179,8 @@ public class GenericListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#toString(java.lang.StringBuffer, java.lang.String, int, int)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#toString(
+     * java.lang.StringBuffer, java.lang.String, int, int)}.
      */
     public final void ___testToStringStringBufferStringIntInt() {
 
@@ -260,7 +263,8 @@ public class GenericListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#HorizontalListNode(org.extex.core.dimen.FixedDimen)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#HorizontalListNode(
+     * org.extex.core.dimen.FixedDimen)}.
      */
     @Test
     public final void testHorizontalListNodeFixedDimen() {
@@ -271,7 +275,8 @@ public class GenericListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#HorizontalListNode(org.extex.typesetter.type.Node)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#HorizontalListNode(
+     * org.extex.typesetter.type.Node)}.
      */
     @Test
     public final void testHorizontalListNodeNode1() {
@@ -282,7 +287,8 @@ public class GenericListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#HorizontalListNode(org.extex.typesetter.type.Node)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#HorizontalListNode(
+     * org.extex.typesetter.type.Node)}.
      */
     @Test
     public final void testHorizontalListNodeNode2() {
@@ -297,7 +303,8 @@ public class GenericListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#HorizontalListNode(org.extex.typesetter.type.Node, org.extex.typesetter.type.Node)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#HorizontalListNode(
+     * org.extex.typesetter.type.Node, org.extex.typesetter.type.Node)}.
      */
     @Test
     public final void testHorizontalListNodeNodeNode() {
@@ -372,7 +379,8 @@ public class GenericListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#hpack(org.extex.core.dimen.FixedDimen)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#hpack(
+     * org.extex.core.dimen.FixedDimen)}.
      */
     @Test
     public final void testHpackFixedDimen4() {
@@ -407,7 +415,8 @@ public class GenericListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#spreadWidth(org.extex.core.dimen.FixedDimen, org.extex.core.glue.FixedGlueComponent)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#spreadWidth(
+     * org.extex.core.dimen.FixedDimen, org.extex.core.glue.FixedGlueComponent)}.
      */
     @Test
     public final void testSpreadWidth() {
@@ -486,7 +495,8 @@ public class GenericListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#toText(java.lang.StringBuffer, java.lang.String)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#toText(
+     * java.lang.StringBuffer, java.lang.String)}.
      */
     @Test
     public final void testToTextStringBufferString0() {
@@ -499,7 +509,8 @@ public class GenericListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#toText(java.lang.StringBuffer, java.lang.String)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#toText(
+     * java.lang.StringBuffer, java.lang.String)}.
      */
     @Test
     public final void testToTextStringBufferString1() {
