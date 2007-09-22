@@ -618,7 +618,7 @@ public class LoadableVfFont
      *      org.extex.typesetter.type.node.factory.NodeFactory,
      *      org.extex.typesetter.tc.TypesettingContextFactory)
      */
-    public CharNode buildCharNode(UnicodeChar uc, TypesettingContext tc,
+    public CharNode buildCharNode(UnicodeChar uc, TypesettingContext tcArg,
             NodeFactory factory, TypesettingContextFactory tcFactory) {
 
         int cp = charPos(uc);
@@ -628,7 +628,7 @@ public class LoadableVfFont
         }
 
         // set the new font
-        tc = tcFactory.newInstance(tc, new FontImpl(this));
+        TypesettingContext tc = tcFactory.newInstance(tcArg, new FontImpl(this));
 
         VfDvi2Node dvi =
                 new VfDvi2Node(uc, tc, factory, tcFactory, fontfactory, cp,
