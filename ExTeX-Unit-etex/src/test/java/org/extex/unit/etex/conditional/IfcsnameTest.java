@@ -52,7 +52,7 @@ public class IfcsnameTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcsname"> Test case checking that
-     * <tt>\ifcsname</tt> ... </testcase>
+     * <tt>\ifcsname</tt> needs some more tokens to follow. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -66,7 +66,35 @@ public class IfcsnameTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcsname"> Test case checking that
-     * <tt>\ifcsname</tt> ... </testcase>
+     * <tt>\ifcsname</tt> needs a matching \endcsname. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError2() throws Exception {
+
+        assertFailure(// --- input code ---
+            "\\ifcsname abc ",
+            // --- output channel ---
+            "Unexpected end of file");
+    }
+
+    /**
+     * <testcase primitive="\ifcsname"> Test case checking that
+     * <tt>\ifcsname</tt> needs a matching \endcsname. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError3() throws Exception {
+
+        assertFailure(// --- input code ---
+            "\\ifcsname abc \\par",
+            // --- output channel ---
+            "Missing \\endcsname inserted");
+    }
+
+    /**
+     * <testcase primitive="\ifcsname"> Test case checking that
+     * <tt>\ifcsname</tt> on relax expands the then branch. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -80,7 +108,67 @@ public class IfcsnameTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifcsname"> Test case checking that
-     * <tt>\ifcsname</tt> ... </testcase>
+     * <tt>\ifcsname</tt> on par expands the then branch. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test2() throws Exception {
+
+        assertSuccess(// --- input code ---
+            "\\ifcsname par\\endcsname a\\else b\\fi \\end",
+            // --- output channel ---
+            "a" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\ifcsname"> Test case checking that
+     * <tt>\ifcsname</tt> expands macros on the fly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test3() throws Exception {
+
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\def\\x{par}"
+                    + "\\ifcsname \\x\\endcsname a\\else b\\fi \\end",
+            // --- output channel ---
+            "a" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\ifcsname"> Test case checking that
+     * <tt>\ifcsname</tt> expands macros on the fly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test4() throws Exception {
+
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\def\\x{ar}"
+                    + "\\ifcsname p\\x\\endcsname a\\else b\\fi \\end",
+            // --- output channel ---
+            "a" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\ifcsname"> Test case checking that
+     * <tt>\ifcsname</tt> ignores embedded spaces. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test5() throws Exception {
+
+        assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\def\\x{ar}"
+                    + "\\ifcsname p \\x\\endcsname a\\else b\\fi \\end",
+            // --- output channel ---
+            "a" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\ifcsname"> Test case checking that
+     * <tt>\ifcsname</tt> on an undefined control sequence expands the else
+     * branch. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -92,6 +180,6 @@ public class IfcsnameTest extends ConditionalTester {
             "b" + TERM);
     }
 
-    // TODO implement the primitive specific test cases
+    // TODO implement more primitive specific test cases
 
 }
