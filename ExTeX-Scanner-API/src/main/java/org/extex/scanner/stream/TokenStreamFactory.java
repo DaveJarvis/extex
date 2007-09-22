@@ -54,8 +54,8 @@ import org.extex.scanner.stream.observer.writer.OpenWriterObserverList;
 
 /**
  * This is the factory to provide an instance of a
- * {@link org.extex.scanner.api.TokenStream TokenStream}. Like any good factory it
- * is controlled by its configuration.
+ * {@link org.extex.scanner.api.TokenStream TokenStream}. Like any good factory
+ * it is controlled by its configuration.
  * <h3>Configuration</h3>
  * <p>
  * Mainly the configuration needs to specify which class to use for the
@@ -216,12 +216,14 @@ public class TokenStreamFactory extends AbstractFactory
     private String tag;
 
     /**
-     * The field <tt>outWriterInterceptors</tt> contains the ...
+     * The field <tt>outWriterInterceptors</tt> contains the output writer
+     * interceptor list.
      */
     private List<WriterInterceptor> outWriterInterceptors;
 
     /**
-     * The field <tt>outStreamInterceptors</tt> contains the ...
+     * The field <tt>outStreamInterceptors</tt> contains the output stream
+     * interceptor list.
      */
     private List<OutputStreamInterceptor> outStreamInterceptors;
 
