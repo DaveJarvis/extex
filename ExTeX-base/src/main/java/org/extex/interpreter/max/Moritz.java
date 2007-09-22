@@ -28,6 +28,7 @@ import org.extex.base.parser.ConstantDimenParser;
 import org.extex.base.parser.ConstantGlueParser;
 import org.extex.base.parser.ConstantMudimenParser;
 import org.extex.base.parser.ConstantMuskipParser;
+import org.extex.base.parser.MathClassParser;
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
@@ -53,6 +54,7 @@ import org.extex.interpreter.Flags;
 import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
+import org.extex.interpreter.exception.MissingParserException;
 import org.extex.interpreter.observer.eof.EofObservable;
 import org.extex.interpreter.observer.eof.EofObserver;
 import org.extex.interpreter.observer.eof.EofObserverList;
@@ -103,6 +105,7 @@ import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.tc.font.Font;
+import org.extex.typesetter.type.math.MathClass;
 import org.extex.unit.base.register.count.IntegerCode;
 import org.extex.unit.base.register.toks.ToksParameter;
 
@@ -277,6 +280,7 @@ public class Moritz extends Max
             register(Glue.class, new ConstantGlueParser());
             register(Mudimen.class, new ConstantMudimenParser());
             register(Muskip.class, new ConstantMuskipParser());
+            register(MathClass.class, new MathClassParser());
         } catch (HelpingException e) {
             throw new RuntimeException(e); // TODO gene: improve it?
         }
@@ -873,6 +877,9 @@ public class Moritz extends Max
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         Parser parser = parsers.get(c);
+        if (parser == null) {
+            throw new MissingParserException(c.toString());
+        }
         return parser.parse(context, source, typesetter);
     }
 

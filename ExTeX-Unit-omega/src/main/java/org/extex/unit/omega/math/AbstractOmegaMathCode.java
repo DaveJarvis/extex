@@ -212,8 +212,8 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
         Token t = source.getToken(context);
         if (t instanceof LeftBraceToken) {
             MathClass mc =
-                    MathClassParser.parse(context, source, typesetter,
-                        primitive);
+                    (MathClass) source.parse(MathClass.class, context, source,
+                        typesetter);
             long family = source.parseNumber(context, source, typesetter);
             UnicodeChar c =
                     source.scanCharacterCode(context, typesetter, primitive);
