@@ -45,10 +45,12 @@ import org.extex.typesetter.exception.TypesetterException;
  * <h3>The Primitive <tt>\writerType</tt></h3>
  * <p>
  * The primitive <tt>\writerType</tt> provides access to the type of the
- * document writer. 
+ * document writer in use. The type is a sequence of letter, other, and space
+ * tokens.
  * </p>
  * <p>
- * TODO missing documentation
+ * The primitive can be used wherever a token register is applicable. It acts
+ * like a read only register.
  * </p>
  * 
  * <h4>Syntax</h4>
@@ -62,7 +64,8 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <pre class="TeXSample">
  *    \writerType  </pre>
- * 
+ * <p>
+ * This invocation might expand to "dvi" or "ps".
  * </p>
  * </doc>
  * 
@@ -103,7 +106,7 @@ public class WriterType extends AbstractCode
 
         String type = typesetter.getBackendDriver().getDocumentWriterType();
         try {
-            return context.getTokenFactory().toTokens(type);
+            return context.getTokenFactory().toTokens(type == null ? "" : type);
         } catch (CatcodeException e) {
             throw new NoHelpException(e);
         }
