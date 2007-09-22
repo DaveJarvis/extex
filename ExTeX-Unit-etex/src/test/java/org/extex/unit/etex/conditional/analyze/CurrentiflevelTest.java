@@ -23,7 +23,7 @@ import org.extex.test.count.AbstractReadonlyCountRegisterTester;
 
 /**
  * This is a test suite for the primitive <tt>\currentiflevel</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,7 +31,7 @@ public class CurrentiflevelTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * Method for running the tests standalone.
-     *
+     * 
      * @param args command line parameter
      */
     public static void main(String[] args) {
@@ -41,7 +41,7 @@ public class CurrentiflevelTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public CurrentiflevelTest(String arg) {
@@ -51,33 +51,59 @@ public class CurrentiflevelTest extends AbstractReadonlyCountRegisterTester {
     }
 
     /**
-     * <testcase primitive="\currentiflevel">
-     *  Test case checking that <tt>\currentiflevel</tt>...
-     * </testcase>
-     *
+     * <testcase primitive="\currentiflevel"> Test case checking that
+     * <tt>\currentiflevel</tt> returns 0 outside any conditional. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test0() throws Exception {
+
+        assertSuccess(// --- input code ---
+            "\\the\\currentiflevel\\end",
+            // --- log message ---
+            "0" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\currentiflevel"> Test case checking that
+     * <tt>\currentiflevel</tt> returns 0 outside any conditional. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test0b() throws Exception {
+
+        assertSuccess(// --- input code ---
+            "\\iffalse abc\\fi\\the\\currentiflevel\\end",
+            // --- log message ---
+            "0" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\currentiflevel"> Test case checking that
+     * <tt>\currentiflevel</tt> is 1 inside a single conditional. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\iftrue\\the\\currentiflevel \\fi\\end",
-                //--- log message ---
-                "1" + TERM);
+        assertSuccess(// --- input code ---
+            "\\iftrue\\the\\currentiflevel \\fi\\end",
+            // --- log message ---
+            "1" + TERM);
     }
 
     /**
-     * <testcase primitive="\currentiflevel">
-     *  Test case checking that <tt>\currentiflevel</tt>...
-     * </testcase>
-     *
+     * <testcase primitive="\currentiflevel"> Test case checking that
+     * <tt>\currentiflevel</tt> is 2 inside two conditionals. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\iftrue\\iftrue\\the\\currentiflevel \\fi\\fi\\end",
-                //--- log message ---
-                "2" + TERM);
+        assertSuccess(// --- input code ---
+            "\\iftrue\\iftrue\\the\\currentiflevel \\fi\\fi\\end",
+            // --- log message ---
+            "2" + TERM);
     }
 
 }
