@@ -23,7 +23,7 @@ import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\integer</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,6 +31,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
@@ -40,7 +41,7 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param arg the name
      */
     public IntegerTest(String arg) {
@@ -50,158 +51,152 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\integer">
-     *  Test case showing that the ...
+     * <testcase primitive="\integer"> Test case showing that the control
+     * sequence defined with \integer can be used after \the and \showthe.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        assertOutput(//--- input code ---
-                "\\integer\\x=123 \\showthe\\x" + "\\end",
-                //--- output channel ---
-                "> 123.\n", "");
+        assertOutput(// --- input code ---
+            "\\integer\\x=123 \\showthe\\x" + "\\end",
+            // --- output channel ---
+            "> 123.\n", "");
     }
 
     /**
-     * <testcase primitive="\integer">
-     *  Test case showing that the ...
+     * <testcase primitive="\integer"> Test case showing that the control
+     * sequence defined with \integer can be assigned to a count register.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
-        assertOutput(//--- input code ---
-                "\\integer\\x=123 \\count0=\\x \\showthe\\count0" + "\\end",
-                //--- output channel ---
-                "> 123.\n", "");
+        assertOutput(// --- input code ---
+            "\\integer\\x=123 \\count0=\\x \\showthe\\count0" + "\\end",
+            // --- output channel ---
+            "> 123.\n", "");
     }
 
     /**
-     * <testcase primitive="\integer">
-     *  Test case showing that the ...
+     * <testcase primitive="\integer"> Test case showing that the control
+     * sequence defined with \integer can be assigned a new constant value.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void testAssign1() throws Exception {
 
-        assertOutput(//--- input code ---
-                "\\integer\\x=123 \\x=456 \\showthe\\x" + "\\end",
-                //--- output channel ---
-                "> 456.\n", "");
+        assertOutput(// --- input code ---
+            "\\integer\\x=123 \\x=456 \\showthe\\x" + "\\end",
+            // --- output channel ---
+            "> 456.\n", "");
     }
 
     /**
-     * <testcase primitive="\integer">
-     *  Test case showing that the ...
-     * </testcase>
-     *
+     * <testcase primitive="\integer"> Test case showing that the control
+     * sequence defined with \integer can be assigned a new value from a count
+     * register. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testAssign2() throws Exception {
 
-        assertOutput(//--- input code ---
-                "\\count0=987 \\integer\\x=123 \\x=\\count0 \\showthe\\x"
-                        + "\\end",
-                //--- output channel ---
-                "> 987.\n", "");
+        assertOutput(// --- input code ---
+            "\\count0=987 \\integer\\x=123 \\x=\\count0 \\showthe\\x" + "\\end",
+            // --- output channel ---
+            "> 987.\n", "");
     }
 
     /**
-     * <testcase primitive="\integer">
-     *  Test case showing that the ...
-     * </testcase>
-     *
+     * <testcase primitive="\integer"> Test case showing that the control
+     * sequence defined with \integer can be advanced. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testAdvance1() throws Exception {
 
-        assertOutput(//--- input code ---
-                "\\integer\\x=123 \\advance\\x5 \\showthe\\x" + "\\end",
-                //--- output channel ---
-                "> 128.\n", "");
+        assertOutput(// --- input code ---
+            "\\integer\\x=123 \\advance\\x5 \\showthe\\x" + "\\end",
+            // --- output channel ---
+            "> 128.\n", "");
     }
 
     /**
-     * <testcase primitive="\integer">
-     *  Test case showing that the ...
-     * </testcase>
-     *
+     * <testcase primitive="\integer"> Test case showing that the control
+     * sequence defined with \integer can be multiplied. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testMultiply1() throws Exception {
 
-        assertOutput(//--- input code ---
-                "\\integer\\x=123 \\multiply\\x2 \\showthe\\x" + "\\end",
-                //--- output channel ---
-                "> 246.\n", "");
+        assertOutput(// --- input code ---
+            "\\integer\\x=123 \\multiply\\x2 \\showthe\\x" + "\\end",
+            // --- output channel ---
+            "> 246.\n", "");
     }
 
     /**
-     * <testcase primitive="\integer">
-     *  Test case showing that the ...
-     * </testcase>
-     *
+     * <testcase primitive="\integer"> Test case showing that the control
+     * sequence defined with \integer can be divided. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testDivide1() throws Exception {
 
-        assertOutput(//--- input code ---
-                "\\integer\\x=128 \\divide\\x 2 \\showthe\\x" + "\\end",
-                //--- output channel ---
-                "> 64.\n", "");
+        assertOutput(// --- input code ---
+            "\\integer\\x=128 \\divide\\x 2 \\showthe\\x" + "\\end",
+            // --- output channel ---
+            "> 64.\n", "");
     }
 
     /**
-     * <testcase primitive="\integer">
-     *  Test case showing that the ...
+     * <testcase primitive="\integer"> Test case showing that the control
+     * sequence defined with \integer does not respect groups in assignment.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test10() throws Exception {
 
-        assertOutput(//--- input code ---
-                DEFINE_BRACES + "{\\integer\\x=123 {\\x=987} \\showthe\\x}"
-                        + "\\end",
-                //--- output channel ---
-                "> 987.\n", "");
+        assertOutput(// --- input code ---
+            DEFINE_BRACES + "{\\integer\\x=123 {\\x=987} \\showthe\\x}"
+                    + "\\end",
+            // --- output channel ---
+            "> 987.\n", "");
     }
 
     /**
-     * <testcase primitive="\integer">
-     *  Test case showing that the ...
-     * </testcase>
-     *
+     * <testcase primitive="\integer"> Test case showing that the control
+     * sequence defined with \integer can be defined \global. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test11() throws Exception {
 
-        assertOutput(//--- input code ---
-                DEFINE_BRACES + "{\\global\\integer\\x=123 }\\showthe\\x"
-                        + "\\end",
-                //--- output channel ---
-                "> 123.\n", "");
+        assertOutput(// --- input code ---
+            DEFINE_BRACES + "{\\global\\integer\\x=123 }\\showthe\\x" + "\\end",
+            // --- output channel ---
+            "> 123.\n", "");
     }
 
     /**
-     * <testcase primitive="\integer">
-     *  Test case showing that the ...
+     * <testcase primitive="\integer"> Test case showing that the control
+     * sequence defined with \integer is not defined outside it's primary group.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test12() throws Exception {
 
-        assertOutput(//--- input code ---
-                DEFINE_BRACES + "{\\integer\\x=123 }\\showthe\\x" + "\\end",
-                //--- output channel ---
-                "You can't use `the control sequence \\x' after \\showthe", "");
+        assertOutput(// --- input code ---
+            DEFINE_BRACES + "{\\integer\\x=123 }\\showthe\\x" + "\\end",
+            // --- output channel ---
+            "You can't use `the control sequence \\x' after \\showthe", "");
     }
 
-    //TODO implement the primitive specific test cases
+    // TODO implement more primitive specific test cases
 
 }
