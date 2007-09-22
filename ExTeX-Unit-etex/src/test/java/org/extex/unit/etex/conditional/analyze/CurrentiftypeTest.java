@@ -53,7 +53,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is 1 in an \if.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -68,7 +68,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is 2 in an \ifcat.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -83,7 +83,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is 3 in an \ifnum.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -98,7 +98,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is 4 in an \ifdimen.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -113,7 +113,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is 5 in an \ifodd.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -128,7 +128,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is 6 in an \ifvmode.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -143,7 +143,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is 8 in an \ifmmode.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -161,7 +161,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is 10 in an \ifvoid.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -176,7 +176,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is 11 in an \ifhbox.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -191,7 +191,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is 12 in an \ifvbox.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -206,7 +206,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is 13 in an \ifx.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -221,7 +221,24 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is 14 in an &5c;unless\ifeof.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void test14() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\nonstopmode"
+                    + "\\ifeof1 \\the\\currentiftype \\else\\the\\currentiftype \\fi"
+                    + "\\end",
+            //--- log message ---
+            "14" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\currentiftype">
+     *  Test case checking that <tt>\currentiftype</tt> is 15 in an \iftrue.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -236,7 +253,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is 16 in an \iffalse.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -251,7 +268,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is 17 in an \ifcase.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -266,7 +283,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is 19 in an \ifcsname.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -281,7 +298,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is 20 in an \iffontchar.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -297,7 +314,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is -1 in an &5c;unless\if.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -312,7 +329,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is -2 in an &5c;unless\ifcat.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -327,7 +344,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is -3 in an &5c;unless\ifnum.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -342,7 +359,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is -4 in an &5c;unless\ifdim.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -357,7 +374,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is -5 in an &5c;unless\ifodd.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -372,7 +389,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is -6 in an &5c;unless\ifvmode.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -387,7 +404,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is -8 in an &5c;unless\ifmmode.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -405,7 +422,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is -10 in an &5c;unless\ifvoid.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -420,7 +437,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is -11 in an &5c;unless\ifhbox.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -435,7 +452,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is -12 in an &5c;unless\ifvbox.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -450,7 +467,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is -13 in an &5c;unless\ifx.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -465,7 +482,24 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is -14 in an &5c;unless\ifeof.
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+    public void testNeg14() throws Exception {
+
+        assertSuccess(//--- input code ---
+            "\\nonstopmode"
+                    + "\\unless\\ifeof1 \\the\\currentiftype \\else\\the\\currentiftype \\fi"
+                    + "\\end",
+            //--- log message ---
+            "-14" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\currentiftype">
+     *  Test case checking that <tt>\currentiftype</tt> is -15 in an &5c;unless\iftrue.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -480,7 +514,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is -16 in an &5c;unless\iffalse.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -495,7 +529,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is -19 in an &5c;unless\ifcsname.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -512,7 +546,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
 
     /**
      * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
+     *  Test case checking that <tt>\currentiftype</tt> is -20 in an &5c;unless\iffontchar.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -525,40 +559,6 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
                     + "\\end",
             //--- log message ---
             "-20" + TERM);
-    }
-
-    /**
-     * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void test14() throws Exception {
-
-        assertSuccess(//--- input code ---
-            "\\nonstopmode"
-                    + "\\ifeof1 \\the\\currentiftype \\else\\the\\currentiftype \\fi"
-                    + "\\end",
-            //--- log message ---
-            "14" + TERM);
-    }
-
-    /**
-     * <testcase primitive="\currentiftype">
-     *  Test case checking that <tt>\currentiftype</tt>...
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    public void testNeg14() throws Exception {
-
-        assertSuccess(//--- input code ---
-            "\\nonstopmode"
-                    + "\\unless\\ifeof1 \\the\\currentiftype \\else\\the\\currentiftype \\fi"
-                    + "\\end",
-            //--- log message ---
-            "-14" + TERM);
     }
 
 }
