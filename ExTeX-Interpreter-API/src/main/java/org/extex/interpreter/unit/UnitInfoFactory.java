@@ -38,7 +38,8 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  *  <tt>class</tt> of the sub-configuration as shown below.
  *  <pre>
  *   &lt;unit class="org.extex.interpreter.unit.tex.Setup"&gt;
- *   ...
+ *   . . .
+ *   &lt;/unit&gt;
  *  </pre>
  * </p>
  * <p>
