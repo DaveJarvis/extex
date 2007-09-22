@@ -173,7 +173,7 @@ public class LengthParserTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testAdd1() throws Exception {
+    public void _testAdd1() throws Exception {
 
         assertSuccess(//
                 "\\dimen1=2pt"
@@ -191,7 +191,7 @@ public class LengthParserTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testSubtract1() throws Exception {
+    public void _testSubtract1() throws Exception {
 
         assertSuccess(//
                 "\\dimen1=2pt"
@@ -208,7 +208,7 @@ public class LengthParserTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testMult1() throws Exception {
+    public void _testMult1() throws Exception {
 
         assertSuccess(//
                 "\\dimen1=1.23pt"
@@ -226,7 +226,7 @@ public class LengthParserTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testMult2() throws Exception {
+    public void _testMult2() throws Exception {
 
         assertSuccess(//
                 "\\dimen1=1.23pt"
@@ -243,7 +243,7 @@ public class LengthParserTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testMult3() throws Exception {
+    public void _testMult3() throws Exception {
 
         assertSuccess(//
                 "\\dimen1=2pt"
@@ -261,7 +261,7 @@ public class LengthParserTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testMult4() throws Exception {
+    public void _testMult4() throws Exception {
 
         assertSuccess(//
                 "\\dimen1=2pt"
@@ -279,7 +279,7 @@ public class LengthParserTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testDivError1() throws Exception {
+    public void _testDivError1() throws Exception {
 
         assertFailure(//
                 "\\dimen1=2pt"
@@ -296,7 +296,7 @@ public class LengthParserTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testDiv1() throws Exception {
+    public void _testDiv1() throws Exception {
 
         assertSuccess(//
                 "\\dimen1=2pt"
@@ -313,7 +313,7 @@ public class LengthParserTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testTerm1() throws Exception {
+    public void _testTerm1() throws Exception {
 
         assertSuccess(//
                 "\\dimen1=1.2pt"
@@ -346,7 +346,7 @@ public class LengthParserTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testUnitError2() throws Exception {
+    public void _testUnitError2() throws Exception {
 
         assertFailure(//
                 "\\dimen1=2pt"
@@ -392,7 +392,7 @@ public class LengthParserTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testMax1() throws Exception {
+    public void _testMax1() throws Exception {
 
         assertSuccess(//
                 "\\dimen1=1.2pt"
@@ -409,7 +409,7 @@ public class LengthParserTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testMax2() throws Exception {
+    public void _testMax2() throws Exception {
 
         assertSuccess(//
                 "\\dimen0=max(1pt, 2pt, 3pt)"
@@ -425,7 +425,7 @@ public class LengthParserTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testMax3() throws Exception {
+    public void _testMax3() throws Exception {
 
         assertSuccess(//
                 "\\dimen0=max(4pt, 2pt, 3pt)"
@@ -471,7 +471,7 @@ public class LengthParserTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testMin1() throws Exception {
+    public void _testMin1() throws Exception {
 
         assertSuccess(//
                 "\\dimen1=1.2pt"
@@ -488,7 +488,7 @@ public class LengthParserTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testMin2() throws Exception {
+    public void _testMin2() throws Exception {
 
         assertSuccess(//
                 "\\dimen0=min(1pt, 2pt, 3pt)"
@@ -504,7 +504,7 @@ public class LengthParserTest extends ExTeXLauncher {
      *
      * @throws Exception in case of an error
      */
-    public void testMin3() throws Exception {
+    public void _testMin3() throws Exception {
 
         assertSuccess(//
                 "\\dimen0=min(4pt, 2pt, 3pt)"
