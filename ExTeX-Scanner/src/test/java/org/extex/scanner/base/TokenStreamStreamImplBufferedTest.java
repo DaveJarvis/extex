@@ -78,7 +78,8 @@ public class TokenStreamStreamImplBufferedTest
     }
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> This test case validates that an IOException is remapped into
+     * a Scanner Exception. </testcase>
      * 
      * @throws Exception in case of an error
      */

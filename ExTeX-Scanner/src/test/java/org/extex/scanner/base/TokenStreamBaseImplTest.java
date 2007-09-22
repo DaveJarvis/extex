@@ -28,7 +28,7 @@ import org.extex.scanner.type.tokens.Tokens;
 
 /**
  * Test suite for TokenStreamBaseImpl.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -36,7 +36,7 @@ public class TokenStreamBaseImplTest extends TestCase {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param name the name
      */
     public TokenStreamBaseImplTest(String name) {
@@ -45,10 +45,9 @@ public class TokenStreamBaseImplTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that the constructor injects a token
+     * list with one element. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public final void testTokenStreamBaseImplBooleanTokens() throws Exception {
@@ -64,9 +63,8 @@ public class TokenStreamBaseImplTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  ...
-     * </testcase>
+     * <testcase> This test case validates that closeFileStream() succeeds on an
+     * empty file stream. </testcase>
      */
     public final void testCloseFileStream1() {
 
@@ -74,10 +72,9 @@ public class TokenStreamBaseImplTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that closeFileStream() discards any
+     * remaining characters. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public final void testCloseFileStream2() throws Exception {
@@ -91,9 +88,8 @@ public class TokenStreamBaseImplTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  ...
-     * </testcase>
+     * <testcase> This test case validates that closeFileStream() fails on an
+     * empty non-file stream. </testcase>
      */
     public final void testCloseFileStream11() {
 
@@ -101,10 +97,9 @@ public class TokenStreamBaseImplTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that closeFileStream() discards any
+     * remaining characters. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public final void testCloseFileStream12() throws Exception {
@@ -118,10 +113,9 @@ public class TokenStreamBaseImplTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that get() returns <code>null</code>
+     * on en empty stream. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public final void testGet1() throws Exception {
@@ -132,9 +126,8 @@ public class TokenStreamBaseImplTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  ...
-     * </testcase>
+     * <testcase> This test case validates that getLocator() returns an locator
+     * pointing initially to the line 0. </testcase>
      */
     public final void testGetLocator() {
 
@@ -146,10 +139,9 @@ public class TokenStreamBaseImplTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that an empty stream reports isEof()
+     * as <code>true</code>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public final void testIsEof1() throws Exception {
@@ -158,10 +150,10 @@ public class TokenStreamBaseImplTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that a non-empty stream reports
+     * isEof() as <code>false</code> which changes when the token has been
+     * retrieved. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public final void testIsEof2() throws Exception {
@@ -176,10 +168,9 @@ public class TokenStreamBaseImplTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that an empty stream reports isEol()
+     * as <code>true</code>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public final void testIsEol1() throws Exception {
@@ -188,10 +179,10 @@ public class TokenStreamBaseImplTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that a non-empty stream reports
+     * isEol() as <code>false</code> which changes when the token has been
+     * retrieved. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public final void testIsEol2() throws Exception {
@@ -203,9 +194,8 @@ public class TokenStreamBaseImplTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  ...
-     * </testcase>
+     * <testcase> This test case validates that the boolean constructor flag
+     * indicates a file stream (positive case). </testcase>
      */
     public final void testIsFileStream1() {
 
@@ -213,9 +203,8 @@ public class TokenStreamBaseImplTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  ...
-     * </testcase>
+     * <testcase> This test case validates that the boolean constructor flag
+     * indicates a file stream (negative case). </testcase>
      */
     public final void testIsFileStream2() {
 
@@ -223,10 +212,9 @@ public class TokenStreamBaseImplTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that put() puts a single token back
+     * into the stream. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public final void testPut1() throws Exception {
@@ -243,10 +231,9 @@ public class TokenStreamBaseImplTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that put() puts several tokens back
+     * into the stream. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public final void testPut2() throws Exception {
@@ -268,10 +255,9 @@ public class TokenStreamBaseImplTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that skipSpaces() does not harm a
+     * letter token. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public final void testSkipSpaces1() throws Exception {
@@ -288,10 +274,9 @@ public class TokenStreamBaseImplTest extends TestCase {
     }
 
     /**
-     * <testcase>
-     *  ...
-     * </testcase>
-     *
+     * <testcase> This test case validates that skipSpaces() forces the deletion
+     * of a space token. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public final void testSkipSpaces2() throws Exception {
@@ -302,6 +287,30 @@ public class TokenStreamBaseImplTest extends TestCase {
         Token space = TokenStreamStringImplTest.FACTORY.createToken(//
             Catcode.SPACE, ' ', "");
         stream.put(token);
+        stream.put(space);
+        stream.skipSpaces();
+        assertEquals(token, stream.get(TokenStreamStringImplTest.FACTORY,
+            TokenStreamStringImplTest.TOKENIZER));
+        assertNull(stream.get(TokenStreamStringImplTest.FACTORY,
+            TokenStreamStringImplTest.TOKENIZER));
+    }
+
+    /**
+     * <testcase> This test case validates that skipSpaces() forces the deletion
+     * of multiple space token. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public final void testSkipSpaces3() throws Exception {
+
+        TokenStreamBaseImpl stream = new TokenStreamBaseImpl(false);
+        Token token = TokenStreamStringImplTest.FACTORY.createToken(//
+            Catcode.LETTER, 'a', "");
+        Token space = TokenStreamStringImplTest.FACTORY.createToken(//
+            Catcode.SPACE, ' ', "");
+        stream.put(token);
+        stream.put(space);
+        stream.put(space);
         stream.put(space);
         stream.skipSpaces();
         assertEquals(token, stream.get(TokenStreamStringImplTest.FACTORY,

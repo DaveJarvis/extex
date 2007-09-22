@@ -282,7 +282,8 @@ public class TokenStreamStringImplTest extends TestCase {
     }
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> This test case validates that ^^ followed by a number is
+     * parsed correctly. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -300,7 +301,8 @@ public class TokenStreamStringImplTest extends TestCase {
     }
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> This test case validates that ^^ followed by a space is parsed
+     * correctly. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -333,7 +335,8 @@ public class TokenStreamStringImplTest extends TestCase {
     }
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> This test case validates that a single newline translates into
+     * a space. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -356,7 +359,7 @@ public class TokenStreamStringImplTest extends TestCase {
      */
     public void ___testCr2() throws Exception {
 
-        TokenStream stream = makeStream("x\n\n");
+        TokenStream stream = makeStream("x\n\nx");
         assertEquals("the letter x", stream.get(FACTORY, TOKENIZER).toString());
         Token t = stream.get(FACTORY, TOKENIZER);
         assertEquals(SPACE, t.getChar().getCodePoint());
@@ -557,7 +560,8 @@ public class TokenStreamStringImplTest extends TestCase {
     }
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> An embedded space between letters is treated correctly.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -799,7 +803,8 @@ public class TokenStreamStringImplTest extends TestCase {
     }
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> Test that isEof() reports <code>false</code> if something is
+     * left on the stream. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -813,7 +818,7 @@ public class TokenStreamStringImplTest extends TestCase {
     }
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> Test that getLocator() returns something sensible. </testcase>
      * 
      * @throws Exception in case of an error
      */
