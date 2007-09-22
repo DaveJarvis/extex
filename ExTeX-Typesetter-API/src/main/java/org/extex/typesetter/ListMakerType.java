@@ -20,7 +20,7 @@
 package org.extex.typesetter;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class provides a type-save encapsulation for list maker types.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -28,7 +28,7 @@ package org.extex.typesetter;
 public class ListMakerType {
 
     /**
-     * The field <tt>id</tt> contains the ...
+     * The field <tt>id</tt> contains the name of the type.
      */
     private String id;
 
