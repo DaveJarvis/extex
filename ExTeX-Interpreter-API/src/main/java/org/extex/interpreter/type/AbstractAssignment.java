@@ -54,7 +54,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <pre class="syntax">
  *    &lang;globaldefs&rang;
- *       &rarr; <tt>\globaldefs</tt> ...  </pre>
+ *       &rarr; <tt>\globaldefs</tt> {@linkplain
+ *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
+ *        &lang;equals&rang;} {@linkplain
+ *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *        &lang;number&rang;}  </pre>
  * 
  * <h4>Examples</h4>
  * 
