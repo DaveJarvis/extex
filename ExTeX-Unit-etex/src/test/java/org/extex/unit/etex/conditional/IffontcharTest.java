@@ -52,32 +52,92 @@ public class IffontcharTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\iffontchar"> Test case checking that
-     * <tt>\iffontchar</tt> ... </testcase>
+     * <tt>\iffontchar</tt> needs an argument. </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void testErr1() throws Exception {
+    public void testError1() throws Exception {
 
         assertFailure(// --- input code ---
-            "\\iffontchar x true\\else false\\fi \\end",
+            "\\iffontchar ",
+            // --- output channel ---
+            "Unexpected end of file while processing \\iffontchar");
+    }
+
+    /**
+     * <testcase primitive="\iffontchar"> Test case checking that
+     * <tt>\iffontchar</tt> needs a font argument. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError2() throws Exception {
+
+        assertFailure(// --- input code ---
+            "\\iffontchar x",
             // --- output channel ---
             "Missing font identifier");
     }
 
     /**
      * <testcase primitive="\iffontchar"> Test case checking that
-     * <tt>\iffontchar</tt> ... </testcase>
+     * <tt>\iffontchar</tt> needs a character token after the font argument.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void testErr2() throws Exception {
+    public void testError3() throws Exception {
 
         assertFailure(// --- input code ---
-            "\\iffontchar \\nullfont x true\\else false\\fi \\end",
+            "\\iffontchar \\nullfont",
             // --- output channel ---
             "Missing number, treated as zero");
     }
 
-    // TODO implement the primitive specific test cases
+    /**
+     * <testcase primitive="\iffontchar"> Test case checking that
+     * <tt>\iffontchar</tt> needs a character number after the font argument.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError4() throws Exception {
+
+        assertFailure(// --- input code ---
+            "\\iffontchar \\nullfont \\relax",
+            // --- output channel ---
+            "Missing number, treated as zero");
+    }
+
+    /**
+     * <testcase primitive="\iffontchar"> Test case checking that
+     * <tt>\iffontchar</tt> needs a character number after the font argument.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError5() throws Exception {
+
+        assertFailure(// --- input code ---
+            "\\iffontchar \\nullfont x ",
+            // --- output channel ---
+            "Missing number, treated as zero");
+    }
+
+    /**
+     * <testcase primitive="\iffontchar"> Test case checking that
+     * <tt>\iffontchar</tt> expands the then branch for A in cmr10.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test1() throws Exception {
+
+        assertSuccess(// --- input code ---
+            "\\font\\f cmr10 " + "\\iffontchar \\f 65 a\\else b\\fi\\end",
+            // --- output channel ---
+            "a" + TERM);
+    }
+
+    // TODO implement more primitive specific test cases
 
 }
