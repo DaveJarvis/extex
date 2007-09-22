@@ -499,7 +499,8 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * 
      * @return the old parser for this class or <code>null</code> if none has
      *         been registered
-     * @throws HelpingException TODO
+     *
+     * @throws HelpingException in case of an error
      */
     @SuppressWarnings("unchecked")
     Parser register(Class c, Parser p) throws HelpingException;
