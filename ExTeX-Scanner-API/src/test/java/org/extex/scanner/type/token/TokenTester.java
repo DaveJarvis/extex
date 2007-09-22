@@ -34,55 +34,58 @@ import org.junit.Test;
  */
 public class TokenTester extends TestCase {
 
-    /** The constant <tt>ACTIVE_TOKEN</tt> contains the ... */
+    /** The constant <tt>ACTIVE_TOKEN</tt> contains an active character token. */
     public static final ActiveCharacterToken ACTIVE_TOKEN =
             new ActiveCharacterToken(UnicodeChar.get('x'),
                 Namespace.DEFAULT_NAMESPACE);
 
-    /** The constant <tt>CR_TOKEN</tt> contains the ... */
+    /** The constant <tt>CR_TOKEN</tt> contains an cr token. */
     public static final CrToken CR_TOKEN = new CrToken(UnicodeChar.get('x'));
 
-    /** The constant <tt>CONTROL_SEQUENCE_TOKEN</tt> contains the ... */
+    /**
+     * The constant <tt>CONTROL_SEQUENCE_TOKEN</tt> contains a control
+     * seqeunce token.
+     */
     public static final ControlSequenceToken CONTROL_SEQUENCE_TOKEN =
             new ControlSequenceToken(UnicodeChar.get('x'), "abc",
                 Namespace.DEFAULT_NAMESPACE);
 
-    /** The constant <tt>LEFT_BRACE_TOKEN</tt> contains the ... */
+    /** The constant <tt>LEFT_BRACE_TOKEN</tt> contains a left brace token. */
     public static final LeftBraceToken LEFT_BRACE_TOKEN =
             new LeftBraceToken(UnicodeChar.get('x'));
 
-    /** The constant <tt>LETTER_TOKEN</tt> contains the ... */
+    /** The constant <tt>LETTER_TOKEN</tt> contains a letter token. */
     public static final LetterToken LETTER_TOKEN =
             new LetterToken(UnicodeChar.get('x'));
 
-    /** The constant <tt>MACRO_PARAM_TOKEN</tt> contains the ... */
+    /** The constant <tt>MACRO_PARAM_TOKEN</tt> contains a macro param token. */
     public static final MacroParamToken MACRO_PARAM_TOKEN =
             new MacroParamToken(UnicodeChar.get('x'));
 
-    /** The constant <tt>MATH_SHIF_TOKEN</tt> contains the ... */
+    /** The constant <tt>MATH_SHIF_TOKEN</tt> contains a math shift token. */
     public static final MathShiftToken MATH_SHIF_TOKEN =
             new MathShiftToken(UnicodeChar.get('x'));
 
-    /** The constant <tt>OTHER_TOKEN</tt> contains the ... */
+    /** The constant <tt>OTHER_TOKEN</tt> contains an other token. */
     public static final OtherToken OTHER_TOKEN =
             new OtherToken(UnicodeChar.get('x'));
 
-    /** The constant <tt>RIGHT_BRACE_TOKEN</tt> contains the ... */
+    /** The constant <tt>RIGHT_BRACE_TOKEN</tt> contains a right brace token. */
     public static final RightBraceToken RIGHT_BRACE_TOKEN =
             new RightBraceToken(UnicodeChar.get('x'));
 
-    /** The constant <tt>SPACE_TOKEN</tt> contains the ... */
+    /** The constant <tt>SPACE_TOKEN</tt> contains a space token. */
     public static final SpaceToken SPACE_TOKEN = new SpaceToken(" ");
 
-    /** The constant <tt>SUB_MARK_TOKEN</tt> contains the ... */
+    /** The constant <tt>SUB_MARK_TOKEN</tt> contains a sub mark token. */
     public static final SubMarkToken SUB_MARK_TOKEN =
             new SubMarkToken(UnicodeChar.get('x'));
 
-    /** The constant <tt>SUP_MARK_TOKEN</tt> contains the ... */
+    /** The constant <tt>SUP_MARK_TOKEN</tt> contains a super mark token. */
     public static final SupMarkToken SUP_MARK_TOKEN =
             new SupMarkToken(UnicodeChar.get('x'));
 
-    /** The constant <tt>TAB_MARK_TOKEN</tt> contains the ... */
+    /** The constant <tt>TAB_MARK_TOKEN</tt> contains a tab mark token. */
     public static final TabMarkToken TAB_MARK_TOKEN =
             new TabMarkToken(UnicodeChar.get('x'));
 
