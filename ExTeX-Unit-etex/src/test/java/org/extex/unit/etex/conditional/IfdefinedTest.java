@@ -52,11 +52,11 @@ public class IfdefinedTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifdefined"> Test case checking that
-     * <tt>\ifdefined</tt> ... </testcase>
+     * <tt>\ifdefined</tt> on \relax expands the then branch. </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public void test1() throws Exception {
+    public void test0() throws Exception {
 
         assertSuccess(// --- input code ---
             "\\ifdefined \\relax a\\else b\\fi \\end",
@@ -66,7 +66,22 @@ public class IfdefinedTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifdefined"> Test case checking that
-     * <tt>\ifdefined</tt> ... </testcase>
+     * <tt>\ifdefined</tt> on \par expands the then branch. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void test1() throws Exception {
+
+        assertSuccess(// --- input code ---
+            "\\ifdefined \\par a\\else b\\fi \\end",
+            // --- output channel ---
+            "a" + TERM);
+    }
+
+    /**
+     * <testcase primitive="\ifdefined"> Test case checking that
+     * <tt>\ifdefined</tt> on an undefined control sequence expands the else
+     * branch. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -80,7 +95,8 @@ public class IfdefinedTest extends ConditionalTester {
 
     /**
      * <testcase primitive="\ifdefined"> Test case checking that
-     * <tt>\ifdefined</tt> ... </testcase>
+     * <tt>\ifdefined</tt> on a defined macro expands the then branch.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -93,6 +109,5 @@ public class IfdefinedTest extends ConditionalTester {
             "a" + TERM);
     }
 
-    // TODO implement the primitive specific test cases
-
+    // TODO implement more primitive specific test cases
 }
