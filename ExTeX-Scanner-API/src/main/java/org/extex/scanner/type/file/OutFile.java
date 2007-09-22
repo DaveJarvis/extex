@@ -51,7 +51,8 @@ public interface OutFile extends Serializable {
 
     /**
      * Open the current file.
-     * @param key TODO
+     *
+     * @param key the key
      * @param encoding the encoding or <code>null</code> for the default
      *        encoding
      * @param factory the token stream factory
