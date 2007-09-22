@@ -23,7 +23,7 @@ import org.extex.test.NonExecuteTester;
 
 /**
  * This is a test suite for the primitive <tt>\parshapeindent</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,6 +31,7 @@ public class ParshapeindentTest extends NonExecuteTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
@@ -40,7 +41,7 @@ public class ParshapeindentTest extends NonExecuteTester {
 
     /**
      * Constructor for ParshapelengthTest.
-     *
+     * 
      * @param arg the name
      */
     public ParshapeindentTest(String arg) {
@@ -50,269 +51,254 @@ public class ParshapeindentTest extends NonExecuteTester {
     }
 
     /**
-     * <testcase primitive="\parshapeindent">
-     *  Test case showing that <tt>\parshapeindent</tt> is applicable to
-     *  <tt>\the</tt>.
-     * </testcase>
-     *
+     * <testcase primitive="\parshapeindent"> Test case showing that
+     * <tt>\parshapeindent</tt> is applicable to <tt>\the</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\the\\parshapeindent0 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "0.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapeindent">
-     *  Test case showing that <tt>\parshapeindent</tt> on a negative index
-     *  returns 0pt.
-     * </testcase>
-     *
+     * <testcase primitive="\parshapeindent"> Test case showing that
+     * <tt>\parshapeindent</tt> on a negative index returns 0pt. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\the\\parshapeindent-1 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "0.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapeindent">
-     *  Test case showing that ...
-     * </testcase>
-     *
+     * <testcase primitive="\parshapeindent"> Test case showing that
+     * \parshapeindent outside any parshape returns 0pt. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test3() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\the\\parshapeindent2 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "0.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapeindent">
-     *  Test case showing that ...
+     * <testcase primitive="\parshapeindent"> Test case showing that
+     * \parshapeindent at index 0 on one pair returns the first value.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test4() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\parshape1 12pt 24pt \\the\\parshapeindent0 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "12.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapeindent">
-     *  Test case showing that ...
+     * <testcase primitive="\parshapeindent"> Test case showing that
+     * \parshapeindent at index 0 on two pairs returns the first value.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test5() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\parshape2 12pt 24pt 36pt 48pt \\the\\parshapeindent0 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "12.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapeindent">
-     *  Test case showing that ...
+     * <testcase primitive="\parshapeindent"> Test case showing that
+     * \parshapeindent at index 1 on two pairs returns the third value.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test6() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\parshape2 12pt 24pt 36pt 48pt \\the\\parshapeindent1 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "36.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapeindent">
-     *  Test case showing that the last value is repeated.
-     * </testcase>
-     *
+     * <testcase primitive="\parshapeindent"> Test case showing that the last
+     * value is repeated. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test7() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\parshape2 12pt 24pt 36pt 48pt \\the\\parshapeindent2 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "36.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapeindent">
-     *  Test case showing that the last value is repeated.
-     * </testcase>
-     *
+     * <testcase primitive="\parshapeindent"> Test case showing that the last
+     * value is repeated. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test8() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\parshape2 12pt 24pt 36pt 48pt \\the\\parshapeindent222 \\end",
-            //--- output channel ---
+            // --- output channel ---
             "36.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapeindent">
-     *  Test case showing that <tt>\parshapeindent</tt> is applicable to
-     *  <tt>\the</tt>.
-     * </testcase>
-     *
+     * <testcase primitive="\parshapeindent"> Test case showing that
+     * <tt>\parshapeindent</tt> is applicable to <tt>\the</tt>. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test111() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\dimen0=\\parshapeindent0 \\the\\dimen0\\end",
-            //--- output channel ---
+            // --- output channel ---
             "0.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapeindent">
-     *  Test case showing that <tt>\parshapeindent</tt> on a negative index
-     *  returns 0pt.
-     * </testcase>
-     *
+     * <testcase primitive="\parshapeindent"> Test case showing that
+     * <tt>\parshapeindent</tt> on a negative index returns 0pt. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test112() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\dimen0=\\parshapeindent-1 \\the\\dimen0\\end",
-            //--- output channel ---
+            // --- output channel ---
             "0.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapeindent">
-     *  Test case showing that ...
+     * <testcase primitive="\parshapeindent"> Test case showing that
+     * \parshapeindent at index 0 on no pair is assignable to a dimen register.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test113() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\dimen0=\\parshapeindent2 \\the\\dimen0\\end",
-            //--- output channel ---
+            // --- output channel ---
             "0.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapeindent">
-     *  Test case showing that ...
+     * <testcase primitive="\parshapeindent"> Test case showing that
+     * \parshapeindent at index 0 on one pair is assignable to a dimen register.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     public void test114() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\parshape1 12pt 24pt "
                     + "\\dimen0=\\parshapeindent0 \\the\\dimen0\\end",
-            //--- output channel ---
+            // --- output channel ---
             "12.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapeindent">
-     *  Test case showing that ...
-     * </testcase>
-     *
+     * <testcase primitive="\parshapeindent"> Test case showing that
+     * \parshapeindent at index 0 on two pairs is assignable to a dimen
+     * register. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test115() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\parshape2 12pt 24pt 36pt 48pt "
                     + "\\dimen0=\\parshapeindent0 \\the\\dimen0\\end",
-            //--- output channel ---
+            // --- output channel ---
             "12.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapeindent">
-     *  Test case showing that ...
-     * </testcase>
-     *
+     * <testcase primitive="\parshapeindent"> Test case showing that
+     * \parshapeindent at index 1 on two pairs is assignable to a dimen
+     * register. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test116() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\parshape2 12pt 24pt 36pt 48pt "
                     + "\\dimen0=\\parshapeindent1 \\the\\dimen0\\end",
-            //--- output channel ---
+            // --- output channel ---
             "36.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapeindent">
-     *  Test case showing that the last value is repeated.
-     * </testcase>
-     *
+     * <testcase primitive="\parshapeindent"> Test case showing that the last
+     * value is repeated. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test117() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\parshape2 12pt 24pt 36pt 48pt "
                     + "\\dimen0=\\parshapeindent2 \\the\\dimen0\\end",
-            //--- output channel ---
+            // --- output channel ---
             "36.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapeindent">
-     *  Test case showing that the last value is repeated.
-     * </testcase>
-     *
+     * <testcase primitive="\parshapeindent"> Test case showing that the last
+     * value is repeated. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test118() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\parshape2 12pt 24pt 36pt 48pt "
                     + "\\dimen0=\\parshapeindent222 \\the\\dimen0\\end",
-            //--- output channel ---
+            // --- output channel ---
             "36.0pt" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshapeindent">
-     *  Test case showing that <tt>\parshapeindent</tt> is count-convertible.
-     * </testcase>
-     *
+     * <testcase primitive="\parshapeindent"> Test case showing that
+     * <tt>\parshapeindent</tt> is count-convertible. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testConvertible1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\count1=\\parshapeindent0 \\the\\count1\\end",
-            //--- output channel ---
+            // --- output channel ---
             "0" + TERM);
     }
 
-    //TODO implement primitive specific test cases
-
+    // TODO implement more primitive specific test cases
 }
