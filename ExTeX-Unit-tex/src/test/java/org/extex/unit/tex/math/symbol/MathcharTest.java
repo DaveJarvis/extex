@@ -41,7 +41,7 @@ public class MathcharTest extends AbstractMathTester {
 
     /**
      * <testcase primitive="\mathchar">
-     *  Test case checking that ...
+     *  Test case checking that a math char of -1 is not accepted.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -58,7 +58,7 @@ public class MathcharTest extends AbstractMathTester {
 
     /**
      * <testcase primitive="\mathchar">
-     *  Test case checking that ...
+     *  Test case checking that a math char of 32769 is not accepted.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -74,7 +74,7 @@ public class MathcharTest extends AbstractMathTester {
 
     /**
      * <testcase primitive="\mathchar">
-     *  Test case checking that ...
+     *  Test case checking that mathchar in the legal range works.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -125,7 +125,7 @@ public class MathcharTest extends AbstractMathTester {
 
     /**
      * <testcase primitive="\mathchar">
-     *  Test case checking that ...
+     *  Test case checking that the extended notation works.
      * </testcase>
      *
      * @throws Exception in case of an error
