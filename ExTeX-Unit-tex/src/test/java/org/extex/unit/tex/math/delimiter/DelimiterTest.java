@@ -23,7 +23,7 @@ import org.extex.unit.tex.math.AbstractMathTester;
 
 /**
  * This is a test suite for the primitive <tt>\delimiter</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,7 +31,7 @@ public class DelimiterTest extends AbstractMathTester {
 
     /**
      * Constructor for MathdelimiterTest.
-     *
+     * 
      * @param arg the name
      */
     public DelimiterTest(String arg) {
@@ -40,24 +40,23 @@ public class DelimiterTest extends AbstractMathTester {
     }
 
     /**
-     * <testcase>
-     *  Test case checking that ...
-     * </testcase>
-     *
+     * <testcase primitive="delimiter"> Test case checking that \delimiter
+     * produces an adequate node construction. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
         assertSuccess(showNodesProperties(),
-        //--- input code ---
+        // --- input code ---
             DEFINE_BRACES + DEFINE_MATH + DEFINE_MATH_FONTS
                     + "$\\delimiter\"0161161 $\\end",
-            //--- output channel ---
+            // --- output channel ---
             "\\vbox(4.30554pt+0.0pt)x5.28589pt\n"
                     + ".\\hbox(4.30554pt+0.0pt)x5.28589pt\n" + "..\\mathon\n"
                     + "..a\n" + "..\\mathoff\n");
     }
 
-    //TODO implement the primitive specific test cases
+    // TODO implement more primitive specific test cases
 
 }
