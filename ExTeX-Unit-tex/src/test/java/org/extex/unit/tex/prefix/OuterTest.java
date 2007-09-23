@@ -49,7 +49,7 @@ public class OuterTest extends PrefixTester {
 
     /**
      * <testcase primitive="\outer">
-     *  Test case checking that ...
+     *  Test case checking that \outer sets the flag.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -86,7 +86,7 @@ public class OuterTest extends PrefixTester {
 
     /**
      * <testcase primitive="\outer">
-     *  Test case checking that ...
+     *  Test case checking that \outer does not interfere with \long.
      * </testcase>
      *
      * @throws Exception in case of an error
