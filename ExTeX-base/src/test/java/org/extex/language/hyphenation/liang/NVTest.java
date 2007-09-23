@@ -56,7 +56,7 @@ public class NVTest extends TestCase {
     private class MockFont extends NullFont {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the ...
+         * The field <tt>serialVersionUID</tt> contains the version number.
          */
         private static final long serialVersionUID = 1L;
 
@@ -264,7 +264,7 @@ public class NVTest extends TestCase {
         @Override
         public void setEfCode(UnicodeChar uc, long code) {
 
-            // TODO gene: setEfcode unimplemented
+            // not needed
         }
 
         /**
@@ -275,7 +275,7 @@ public class NVTest extends TestCase {
         @Override
         public long getEfCode(UnicodeChar uc) {
 
-            // TODO gene: getEfcode unimplemented
+            // not needed
             return 0;
         }
     }
