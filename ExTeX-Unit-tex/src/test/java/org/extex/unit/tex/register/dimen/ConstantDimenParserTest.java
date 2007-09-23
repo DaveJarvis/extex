@@ -23,7 +23,7 @@ import org.extex.test.ExTeXLauncher;
 import org.junit.Test;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a test suite for the constant dimen parser.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -41,8 +41,9 @@ public class ConstantDimenParserTest extends ExTeXLauncher {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.base.parser.ConstantDimenParser#parse(org.extex.interpreter.context.Context, org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)}.
+     * Test method for {@link org.extex.base.parser.ConstantDimenParser#parse(
+     * org.extex.interpreter.context.Context, org.extex.interpreter.TokenSource,
+     * org.extex.typesetter.Typesetter)}.
      * 
      * @throws Exception in case of an error
      */
@@ -58,16 +59,16 @@ public class ConstantDimenParserTest extends ExTeXLauncher {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.base.parser.ConstantDimenParser#parse(org.extex.interpreter.context.Context, org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)}.
+     * Test method for {@link org.extex.base.parser.ConstantDimenParser#parse(
+     * org.extex.interpreter.context.Context, org.extex.interpreter.TokenSource,
+     * org.extex.typesetter.Typesetter)}.
      * 
      * @throws Exception in case of an error
      */
     @Test
     public final void testParse2() throws Exception {
 
-        assertOutput("\\dimen0=--12 pt"
-                + "\\showthe\\dimen0 " + "\\end",
+        assertOutput("\\dimen0=--12 pt" + "\\showthe\\dimen0 " + "\\end",
         //
             "> 12.0pt.\n",
             //
@@ -75,16 +76,16 @@ public class ConstantDimenParserTest extends ExTeXLauncher {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.base.parser.ConstantDimenParser#parse(org.extex.interpreter.context.Context, org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)}.
+     * Test method for {@link org.extex.base.parser.ConstantDimenParser#parse(
+     * org.extex.interpreter.context.Context, org.extex.interpreter.TokenSource,
+     * org.extex.typesetter.Typesetter)}.
      * 
      * @throws Exception in case of an error
      */
     @Test
     public final void testParse3() throws Exception {
 
-        assertOutput("\\dimen0=- -12 pt"
-                + "\\showthe\\dimen0 " + "\\end",
+        assertOutput("\\dimen0=- -12 pt" + "\\showthe\\dimen0 " + "\\end",
         //
             "> 12.0pt.\n",
             //
