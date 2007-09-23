@@ -69,7 +69,7 @@ import org.extex.unit.base.Relax;
  * 
  * <pre class="syntax">
  *    &lang;csname&rang;
- *      &rarr; <tt>\csname</tt> &lang;...&rang; <tt>\endcsname</tt>  </pre>
+ *      &rarr; <tt>\csname</tt> &lang;expandable tokens&rang; <tt>\endcsname</tt>  </pre>
  * 
  * <h4>Examples</h4>
  * 
