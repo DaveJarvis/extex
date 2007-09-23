@@ -23,6 +23,7 @@ import java.io.UnsupportedEncodingException;
 
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
+import org.extex.core.exception.helping.HelpingException;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.type.file.OutFile;
 import org.extex.typesetter.PageContext;
@@ -97,9 +98,7 @@ public class WhatsItOpenNode extends WhatsItNode {
         try {
             file.open(key, encoding, factory);
         } catch (UnsupportedEncodingException e) {
-            // TODO gene: error handling unimplemented
-            e.printStackTrace();
-            throw new RuntimeException("unimplemented");
+            throw new HelpingException(getLocalizer(), "Encoding", encoding);
         }
         context.setOutFile(key, file, true);
 

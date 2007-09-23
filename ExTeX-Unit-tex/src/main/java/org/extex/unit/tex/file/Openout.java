@@ -123,19 +123,17 @@ public class Openout extends AbstractFileCode {
 
         OutFile file = new OutputFile(new File(name));
 
+        String encoding = getEncoding(context);
         if (prefix.clearImmediate()) {
             try {
-                file.open(key, getEncoding(context), source
-                    .getTokenStreamFactory());
+                file.open(key, encoding, source.getTokenStreamFactory());
             } catch (UnsupportedEncodingException e) {
-                // TODO gene: error handling unimplemented
-                e.printStackTrace();
-                throw new RuntimeException("unimplemented");
+                throw new HelpingException(getLocalizer(), "Encoding", encoding);
             }
             context.setOutFile(key, file, true);
         } else {
-            typesetter.add(new WhatsItOpenNode(key, file, getEncoding(context),
-                source.getTokenStreamFactory()));
+            typesetter.add(new WhatsItOpenNode(key, file, encoding, source
+                .getTokenStreamFactory()));
         }
     }
 
