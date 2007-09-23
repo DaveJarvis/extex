@@ -54,7 +54,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * <h4>Examples</h4>
  * 
  * <pre class="TeXSample">
- *    \string ...  </pre>
+ *    \string \relax  </pre>
  * 
  * </doc>
  * 
