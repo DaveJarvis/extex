@@ -23,7 +23,7 @@ import org.extex.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\parshape</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,6 +31,7 @@ public class ParshapeTest extends NoFlagsPrimitiveTester {
 
     /**
      * Command line interface.
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
@@ -40,7 +41,7 @@ public class ParshapeTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for ParshapeTest.
-     *
+     * 
      * @param arg the name
      */
     public ParshapeTest(String arg) {
@@ -49,65 +50,76 @@ public class ParshapeTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\parshape">
-     *  Test case showing that ...
-     * </testcase>
-     *
+     * <testcase primitive="\parshape"> Test case showing that
+     * <tt>\parshape</tt> needs an argument. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError1() throws Exception {
+
+        assertFailure(// --- input code ---
+            "\\parshape",
+            // --- output channel ---
+            "Missing number, treated as zero");
+    }
+
+    /**
+     * <testcase primitive="\parshape"> Test case showing that
+     * <tt>\parshape</tt> is theable and returns the number of entries if they
+     * are 0. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\parshape0 \\the\\parshape \\end",
-                //--- output channel ---
-                "0" + TERM);
+        assertSuccess(// --- input code ---
+            "\\parshape0 \\the\\parshape \\end",
+            // --- output channel ---
+            "0" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshape">
-     *  Test case showing that ...
-     * </testcase>
-     *
+     * <testcase primitive="\parshape"> Test case showing that
+     * <tt>\parshape</tt> on a length of 1 returns 1. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void test2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\parshape1 1pt2pt \\the\\parshape \\end",
-                //--- output channel ---
-                "1" + TERM);
+        assertSuccess(// --- input code ---
+            "\\parshape1 1pt2pt \\the\\parshape \\end",
+            // --- output channel ---
+            "1" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshape">
-     *  Test case showing that ...
-     * </testcase>
-     *
+     * <testcase primitive="\parshape"> Test case showing that
+     * <tt>\parshape</tt> is a count value. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCount1() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\parshape0 \\count1=\\parshape \\the\\count1 \\end",
-                //--- output channel ---
-                "0" + TERM);
+        assertSuccess(// --- input code ---
+            "\\parshape0 \\count1=\\parshape \\the\\count1 \\end",
+            // --- output channel ---
+            "0" + TERM);
     }
 
     /**
-     * <testcase primitive="\parshape">
-     *  Test case showing that ...
-     * </testcase>
-     *
+     * <testcase primitive="\parshape"> Test case showing that
+     * <tt>\parshape</tt> returns the count value of the length. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testCount2() throws Exception {
 
-        assertSuccess(//--- input code ---
-                "\\parshape1 2pt3pt \\count1=\\parshape \\the\\count1 \\end",
-                //--- output channel ---
-                "1" + TERM);
+        assertSuccess(// --- input code ---
+            "\\parshape1 2pt3pt \\count1=\\parshape \\the\\count1 \\end",
+            // --- output channel ---
+            "1" + TERM);
     }
 
-    //TODO implement more primitive specific test cases
+    // TODO implement more primitive specific test cases
 
 }
