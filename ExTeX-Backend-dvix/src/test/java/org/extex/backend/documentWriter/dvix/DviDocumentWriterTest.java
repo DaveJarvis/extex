@@ -19,12 +19,12 @@
 
 package org.extex.backend.documentWriter.dvix;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
-
-import junit.framework.TestCase;
 
 import org.extex.backend.documentWriter.DocumentWriterOptions;
 import org.extex.core.count.Count;
@@ -38,12 +38,12 @@ import org.extex.typesetter.type.page.Page;
 import org.junit.Test;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a test suite for the dvi document writer.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class DviDocumentWriterTest extends TestCase {
+public class DviDocumentWriterTest {
 
     /**
      * The field <tt>OPTIONS</tt> contains the dummy options.
@@ -51,6 +51,12 @@ public class DviDocumentWriterTest extends TestCase {
     private static final DocumentWriterOptions OPTIONS =
             new DocumentWriterOptions() {
 
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.backend.documentWriter.DocumentWriterOptions#getCountOption(
+                 *      java.lang.String)
+                 */
                 public FixedCount getCountOption(String name) {
 
                     if ("day".equals(name)) {
@@ -63,16 +69,33 @@ public class DviDocumentWriterTest extends TestCase {
                     return Count.ZERO;
                 }
 
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.backend.documentWriter.DocumentWriterOptions#getDimenOption(
+                 *      java.lang.String)
+                 */
                 public FixedDimen getDimenOption(String name) {
 
                     return null;
                 }
 
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.backend.documentWriter.DocumentWriterOptions#getMagnification()
+                 */
                 public long getMagnification() {
 
                     return 1000;
                 }
 
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.backend.documentWriter.DocumentWriterOptions#getTokensOption(
+                 *      java.lang.String)
+                 */
                 public String getTokensOption(String name) {
 
                     return null;
