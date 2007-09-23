@@ -54,8 +54,10 @@ import org.extex.typesetter.exception.TypesetterException;
  * <pre class="syntax">
  *    &lang;expandafter&rang;
  *     &rarr; <tt>\expandafter</tt> {@linkplain
- *         org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
- *         &lang;control sequence&rang;} ...  </pre>
+ *         org.extex.interpreter.TokenSource#getToken(Context)
+ *         &lang;token&rang;} {@linkplain
+ *         org.extex.interpreter.TokenSource#getToken(Context)
+ *         &lang;token&rang;}  </pre>
  * 
  * <h4>Examples</h4>
  * 
