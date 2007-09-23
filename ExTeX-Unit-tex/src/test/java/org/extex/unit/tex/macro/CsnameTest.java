@@ -163,7 +163,7 @@ public class CsnameTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\csname"> Test case checking that <tt>\csname</tt>
-     * ... </testcase>
+     * complains an undefined control sequence. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -177,7 +177,7 @@ public class CsnameTest extends ExTeXLauncher {
 
     /**
      * <testcase primitive="\csname"> Test case checking that <tt>\csname</tt>
-     * ... </testcase>
+     * complains a missing \endcsname. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -204,7 +204,8 @@ public class CsnameTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\csname"> Test case checking that ... </testcase>
+     * <testcase primitive="\csname"> Test case checking that \csname creates a
+     * defined control sequence. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -223,7 +224,8 @@ public class CsnameTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase primitive="\csname"> Test case checking that ... </testcase>
+     * <testcase primitive="\csname"> Test case checking that non-letters can be
+     * embedded in the defined control sequence. </testcase>
      * 
      * @throws Exception in case of an error
      */
