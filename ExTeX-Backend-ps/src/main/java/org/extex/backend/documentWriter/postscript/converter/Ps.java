@@ -34,7 +34,7 @@ import org.extex.core.dimen.FixedDimen;
 import org.extex.typesetter.type.Node;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This utility class provides some routines for writing PostScript code.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -104,8 +104,8 @@ public class Ps {
      * 
      * @param out the target string buffer
      * @param node the node to draw
-     * @param x TODO
-     * @param y TODO
+     * @param x the x coordinate
+     * @param y the y coordinate
      */
     protected void drawBox(PrintStream out, Node node, FixedDimen x,
             FixedDimen y) {
@@ -129,8 +129,8 @@ public class Ps {
      * 
      * @param out the target string buffer
      * @param node the node to draw
-     * @param x TODO
-     * @param y TODO
+     * @param x the x coordinate
+     * @param y the y coordinate
      */
     protected void drawGrayBox(PrintStream out, Node node, FixedDimen x,
             FixedDimen y) {
@@ -161,7 +161,7 @@ public class Ps {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Put some text at a certain position.
      * 
      * @param out the output stream
      * @param text the text
@@ -181,7 +181,7 @@ public class Ps {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Put some text at a certain position given by x coordinate only.
      * 
      * @param out the output stream
      * @param text the text
