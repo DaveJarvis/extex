@@ -49,7 +49,7 @@ public class LongTest extends PrefixTester {
 
     /**
      * <testcase primitive="\long">
-     *  Test case checking that ...
+     *  Test case checking that \long sets the long flag.
      * </testcase>
      *
      * @throws Exception in case of an error
@@ -86,7 +86,7 @@ public class LongTest extends PrefixTester {
 
     /**
      * <testcase primitive="\long">
-     *  Test case checking that ...
+     *  Test case checking that \long interacts with \outer.
      * </testcase>
      *
      * @throws Exception in case of an error
