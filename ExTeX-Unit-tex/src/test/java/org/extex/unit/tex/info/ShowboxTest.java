@@ -23,7 +23,7 @@ import org.extex.test.NoFlagsPrimitiveTester;
 
 /**
  * This is a test suite for the primitive <tt>\showbox</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -31,7 +31,7 @@ public class ShowboxTest extends NoFlagsPrimitiveTester {
 
     /**
      * Constructor for JobnameTest.
-     *
+     * 
      * @param arg the name
      */
     public ShowboxTest(String arg) {
@@ -40,67 +40,75 @@ public class ShowboxTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\showbox">
-     *  Test case checking that <tt>\showbox</tt> ...
-     * </testcase>
-     *
+     * <testcase primitive="\showbox"> Test case checking that <tt>\showbox</tt>
+     * needs an argument. </testcase>
+     * 
      * @throws Exception in case of an error
      */
-    public void testErr1() throws Exception {
+    public void testError0() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\showbox -1",
-                //--- error channel ---
-                "Bad register code (-1)");
+        assertFailure(// --- input code ---
+            "\\showbox ",
+            // --- error channel ---
+            "Missing number, treated as zero");
     }
 
     /**
-     * <testcase primitive="\showbox">
-     *  Test case checking that <tt>\showbox</tt> of a void register works.
-     * </testcase>
-     *
+     * <testcase primitive="\showbox"> Test case checking that <tt>\showbox</tt>
+     * complains about a negative register code. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public void testError1() throws Exception {
+
+        assertFailure(// --- input code ---
+            "\\showbox -1",
+            // --- error channel ---
+            "Bad register code (-1)");
+    }
+
+    /**
+     * <testcase primitive="\showbox"> Test case checking that <tt>\showbox</tt>
+     * of a void register works. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testVoid1() throws Exception {
 
-        assertFailure(//--- input code ---
-                "\\showbox 1 \\end",
-                //--- error channel ---
-                "\\box1=void\nOK\n");
+        assertFailure(// --- input code ---
+            "\\showbox 1 \\end",
+            // --- error channel ---
+            "\\box1=void\nOK\n");
     }
 
     /**
-     * <testcase primitive="\showbox">
-     *  Test case checking that <tt>\showbox</tt> of a hbox works.
-     * </testcase>
-     *
+     * <testcase primitive="\showbox"> Test case checking that <tt>\showbox</tt>
+     * of a hbox works. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testHbox1() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES
-                + "\\setbox1=\\hbox{}\\showbox 1 \\end",
-                //--- error channel ---
-                "\\box1=\n\\hbox(0.0pt+0.0pt)x0.0pt\nOK\n");
+        assertFailure(// --- input code ---
+            DEFINE_BRACES + "\\setbox1=\\hbox{}\\showbox 1 \\end",
+            // --- error channel ---
+            "\\box1=\n\\hbox(0.0pt+0.0pt)x0.0pt\nOK\n");
     }
 
     /**
-     * <testcase primitive="\showbox">
-     *  Test case checking that <tt>\showbox</tt> of a vbox works.
-     * </testcase>
-     *
+     * <testcase primitive="\showbox"> Test case checking that <tt>\showbox</tt>
+     * of a vbox works. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     public void testVbox1() throws Exception {
 
-        assertFailure(//--- input code ---
-                DEFINE_BRACES
-                + "\\setbox1=\\vbox{}\\showbox 1 \\end",
-                //--- error channel ---
-                "\\box1=\n\\vbox(0.0pt+0.0pt)x0.0pt\nOK\n");
+        assertFailure(// --- input code ---
+            DEFINE_BRACES + "\\setbox1=\\vbox{}\\showbox 1 \\end",
+            // --- error channel ---
+            "\\box1=\n\\vbox(0.0pt+0.0pt)x0.0pt\nOK\n");
     }
 
-    //TODO implement more primitive specific test cases
+    // TODO implement more primitive specific test cases
 
 }
