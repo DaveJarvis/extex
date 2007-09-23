@@ -65,7 +65,7 @@ import org.extex.typesetter.type.node.DiscretionaryNode;
  * 
  * <pre class="syntax">
  *    &lang;discretionary&rang;
- *      &rarr; <tt>\discretionary</tt>{...}{...}{...}  </pre>
+ *      &rarr; <tt>\discretionary</tt>{&lang;pre&rang;}{&lang;post&rang;}{&lang;nobreak&rang;}  </pre>
  * 
  * <h4>Examples</h4>
  * 
